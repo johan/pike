@@ -89,9 +89,10 @@ static void f_default_domain(INT32 args)
 static void f_server(INT32 args)
 {
   int err;
-  char *ret;
+  char *ret, *map;
 
-  err = yp_master(this->domain, sp[-1].u.string->str, &ret);
+  get_all_args("server", args, "%s", &map);
+  err = yp_master(this->domain, map, &ret);
 
   YPERROR( err );
 
