@@ -706,7 +706,7 @@ class File
   static void __stdio_close_callback()
   {
     string s=::read(0, 1);
-    werror(sprintf("__stdio_close_callback(): s:%O\n", s));
+    //werror(sprintf("__stdio_close_callback(): s:%O\n", s));
     if(!s)
     {
       switch(errno())
