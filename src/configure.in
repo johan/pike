@@ -2495,6 +2495,17 @@ const int foo(int bar) { return bar; }
   fi
 fi
 
+AC_MSG_CHECKING([if restrict keyword is available (C99)])
+AC_CACHE_VAL(pike_cv_keyword_restrict, [
+  AC_TRY_COMPILE([
+extern int foo(void *bar[restrict], void *restrict baz);
+  ], [], [ pike_cv_keyword_restrict="yes" ], [ pike_cv_keyword_restrict="no" ])
+])
+AC_MSG_RESULT($pike_cv_keyword_restrict)
+if test "x$pike_cv_keyword_restrict" = "xno"; then
+  AC_DEFINE(restrict, [ /* Not supported */ ])
+fi
+
 AC_C_CHAR_UNSIGNED
 
 AC_MSG_CHECKING(if we can cast void * to a function pointer)

@@ -327,8 +327,11 @@
 /* You have cl-type __declspec? */
 #undef HAVE_DECLSPEC
 
-/* Do your compiler grock 'volatile' */
+/* Does your compiler grock 'volatile' */
 #define VOLATILE volatile
+
+/* Define to empty if your compiler doesn't support C99's restrict keyword. */
+#undef restrict
 
 /* Define this if your compiler doesn't allow cast of void * to function pointer */
 #undef NO_CAST_TO_FUN
