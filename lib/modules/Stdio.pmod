@@ -17,6 +17,10 @@ class File
 #endif
   mixed ___id;
 
+#ifdef __STDIO_DEBUG
+  string __closed_backtrace;
+#endif
+
   int errno()
   {
     return _fd && ::errno();
@@ -124,7 +128,12 @@ class File
   int close(void|string how)
   {
     if(::close(how||"rw"))
+    {
       _fd=0;
+#ifdef __STDIO_DEBUG
+      __closed_backtrace=master()->describe_backtrace(backtrace());
+#endif
+    }
     return 1;
 #if 0
     if(how)
@@ -204,6 +213,18 @@ class File
 #endif
     )
   {
+#ifdef __STDIO_DEBUG
+    if(!_fd)
+    {
+      throw(({
+	"Stdio.File(): set_nonblocking on closed file.\n"+
+	  (__closed_backtrace ? 
+	   sprintf("File was closed from:\n    %-=200s\n",__closed_backtrace) :
+	   "This file has never been open.\n" ),
+	  backtrace()}));
+      
+    }
+#endif
     SET(read_callback,rcb);
     SET(write_callback,wcb);
     ___close_callback=ccb;
