@@ -860,6 +860,9 @@ void describe_svalue(struct svalue *s,int indent,struct processing *p)
 
 
     case T_FUNCTION:
+      /* FIXME: What if the functionname is a wide-string?
+       * /grubba 1999-10-21
+       */
       if(s->subtype == FUNCTION_BUILTIN)
       {
 	my_binary_strcat(s->u.efun->name->str,s->u.efun->name->len);
