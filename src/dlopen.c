@@ -20,6 +20,11 @@
 #include <memory.h>
 #include <sys/stat.h>
 #include <assert.h>
+#include <math.h>
+
+/* In case we're compiling with NDEBUG */
+_CRTIMP void __cdecl _assert(void*, void*, unsigned);
+
 
 static char *dlerr=0;
 
