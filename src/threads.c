@@ -571,8 +571,8 @@ TH_RETURN_TYPE new_thread_func(void * data)
    * effective uid & gid.
    */
   if (!geteuid()) {
-    setegid(arg->egid);
-    seteuid(arg->euid);
+    setegid(arg.egid);
+    seteuid(arg.euid);
   }
 #endif /* HAVE_BROKEN_LINUX_THREAD_EUID */
   
