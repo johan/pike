@@ -207,7 +207,7 @@ The name is assumed to begin with a capital letter.")
 	    (list pike-font-lock-type-regexp
 		  '(1 font-lock-type-face)
 		  '(font-lock-match-pike-declarations
-		    (goto-char (match-end 0))
+		    (goto-char (match-end 1))
 		    (goto-char (match-end 0))
 		    (0 font-lock-variable-name-face)))
 
@@ -301,7 +301,14 @@ The name is assumed to begin with a capital letter.")
 ;; the cursor to fontify more identifiers.
 (defun font-lock-match-pike-declarations (limit)
   "Match and skip over variable definitions."
-  (while (looking-at ")")
+  (while (and (looking-at ")")
+	      (condition-case nil
+		  (save-excursion
+		    (up-list -1)
+		    (skip-syntax-backward " ")
+		    (skip-syntax-backward "w")
+		    (looking-at pike-font-lock-type-regexp))
+		(error nil)))
     (forward-char 1))
 ;  (if (looking-at "\\s *\\(\\[\\s *\\]\\s *\\)*")
 ;      (goto-char (match-end 0)))
