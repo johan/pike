@@ -782,6 +782,21 @@ static int do_docode2(node *n, INT16 flags)
 	}
 	break;
 
+	case F_EXTERNAL:
+	  /* Check that it is in this context */
+	  if(Pike_compiler ->new_program->id == CDR(n)->u.integer.a)
+	  {
+	    /* Check that it is a variable */
+	    if(IDENTIFIER_IS_VARIABLE( ID_FROM_INT(Pike_compiler->new_program, CDR(n)->u.integer.b)->identifier_flags))
+	    {
+	      code_expression(CAR(n), 0, "RHS");
+	      emit1(flags & DO_POP ? F_ASSIGN_GLOBAL_AND_POP:F_ASSIGN_GLOBAL,
+		    CDR(n)->u.integer.b);
+	      break;
+	    }
+	  }
+	  /* fall through */
+
       default:
       normal_assign:
 	tmp1=do_docode(CDR(n),DO_LVALUE);
