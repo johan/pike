@@ -15,7 +15,9 @@
  */
 
 
+#ifndef CONFIGURE_TEST
 #include "machine.h"
+#endif
 
 /* Needed for the sigset_t typedef, which is needed for
  * the pthread_sigsetmask() prototype on Solaris 2.x.

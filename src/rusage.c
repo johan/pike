@@ -13,7 +13,6 @@
 #include <windows.h>
 #endif
 #include <sys/stat.h>
-#include "time_stuff.h"
 #include <fcntl.h>
 #include <errno.h>
 #include "pike_rusage.h"
@@ -33,7 +32,10 @@ RCSID("$Id$");
 #include <time.h>
 #endif
 
+#ifndef CONFIGURE_TEST
+#include "time_stuff.h"
 #include "fd_control.h"
+#endif
 
 /*
  * Here comes a long blob with stuff to see how to find out about
