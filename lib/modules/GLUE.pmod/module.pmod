@@ -888,6 +888,8 @@ class BaseTexture {
       mode = GL_RGB;
       m = ([ "rgb":imgs->image ]);
       break;
+    default:
+      error("Unknown alpha format.\n");
     }
 
     int imode;
@@ -965,6 +967,8 @@ class BaseTexture {
 	case 2: m = ([ "alpha":a ]); break;
 	case 1: m = ([ "rgb":i, "alpha":a ]); break;
 	case 0: m = ([ "rgb":i ]); break;
+        default:
+	  error("Unknown alpha format.\n");
       }
       if(zero_type(dx))
 	glTexImage2D( texture_type, ++level, mode || imode, 0, m );
@@ -1020,6 +1024,8 @@ class BaseTexture {
 	break;
       case GL_RGB:
 	m->rgb = i;
+      default:
+	error("Cannot paste in this texture type.\n");
     }
     use();
 
