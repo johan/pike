@@ -1445,6 +1445,23 @@ fi
 
 #############################################################################
 
+AC_MSG_CHECKING([for union wait (old BSD convention)])
+AC_CACHE_VAL(pike_cv_union_wait, [ AC_TRY_COMPILE([
+#ifdef HAVE_SYS_WAIT_H
+#include <sys/wait.h>
+], [
+  union wait status;
+  exit(0);
+], pike_cv_union_wait=yes, pike_cv_union_wait=no)
+])
+
+AC_MSG_RESULT($pike_cv_union_wait)
+if test "x$pike_cv_union_wait" = "xyes" ; then
+  AC_DEFINE(HAVE_UNION_WAIT)
+fi
+
+#############################################################################
+
 AC_MSG_CHECKING(how to extract an unsigned char)
 AC_CACHE_VAL(pike_cv_method_extract_uchar,
 [
