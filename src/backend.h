@@ -46,7 +46,7 @@ void *query_write_oob_callback_data(int fd);
 #endif /* WITH_OOB */
 void do_debug(void);
 void backend(void);
-int write_to_stderr(char *a, INT32 len);
+int write_to_stderr(char *a, size_t len);
 /* Prototypes end here */
 
 #define add_backend_callback(X,Y,Z) \

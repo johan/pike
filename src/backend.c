@@ -1008,15 +1008,16 @@ void backend(void)
   UNSETJMP(back);
 }
 
-int write_to_stderr(char *a, INT32 len)
+int write_to_stderr(char *a, size_t len)
 {
 #ifdef __NT__
-  int e;
+  size_t e;
   for(e=0;e<len;e++)
     putc(a[e],stderr);
 #else
   int nonblock=0;
-  INT32 pos, tmp;
+  size_t pos;
+  int tmp;
 
   if(!len) return 1;
 
