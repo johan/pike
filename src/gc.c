@@ -1030,7 +1030,7 @@ int gc_do_weak_free(void *a)
 
   if (!a) fatal("Got null pointer.\n");
   if (Pike_in_gc != GC_PASS_MARK && Pike_in_gc != GC_PASS_CYCLE &&
-      !(Pike_in_gc == GC_PASS_FREE && gc_ext_weak_refs))
+      Pike_in_gc != GC_PASS_FREE)
     fatal("gc_do_weak_free() called in invalid gc pass.\n");
   if (gc_debug) {
     if (!(m = find_marker(a)))
@@ -1068,8 +1068,7 @@ int gc_mark(void *a)
 
 #ifdef PIKE_DEBUG
   if (!a) fatal("Got null pointer.\n");
-  if (Pike_in_gc != GC_PASS_MARK &&
-      !(Pike_in_gc == GC_PASS_FREE && gc_ext_weak_refs))
+  if (Pike_in_gc != GC_PASS_MARK && Pike_in_gc != GC_PASS_FREE)
     fatal("gc mark attempted in invalid pass.\n");
   if (!*(INT32 *) a)
     gc_fatal(a, 0, "Marked a thing without refs.\n");
