@@ -4,6 +4,8 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#include <errno.h>
+
 #ifdef HAVE_SYS_MMAN_H
 #include <sys/mman.h>
 #else
@@ -371,7 +373,7 @@ static INLINE void input_finish(void)
 static INLINE struct pike_string* gimme_some_data(unsigned long pos)
 {
    struct buffer *b;
-   unsigned long len;
+   long len;
 
    /* We have a file cache, read from it */
    if (THIS->fd!=-1)
@@ -380,7 +382,14 @@ static INLINE struct pike_string* gimme_some_data(unsigned long pos)
       len=THIS->pos-pos;
       if (len>READ_BUFFER_SIZE) len=READ_BUFFER_SIZE;
       lseek(THIS->fd,pos,0); /* SEEK_SET */
-      read(THIS->fd,static_buffer,len);
+      do {
+	len = read(THIS->fd,static_buffer,len);
+	if (len < 0) {
+	  if (errno != EINTR) {
+	    return(NULL);
+	  }
+	}
+      } while(len < 0);
       return make_shared_binary_string(static_buffer,len);
    }
 
