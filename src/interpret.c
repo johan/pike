@@ -243,7 +243,7 @@ use_malloc:
   SET_INSTR_ADDRESS(F_MULTIPLY,		o_multiply);
   SET_INSTR_ADDRESS(F_DIVIDE,		o_divide);
   SET_INSTR_ADDRESS(F_MOD,		o_mod);
-  SET_INSTR_ADDRESS(F_CAST,		o_cast);
+  SET_INSTR_ADDRESS(F_CAST,		f_cast);
   SET_INSTR_ADDRESS(F_CAST_TO_INT,	o_cast_to_int);
   SET_INSTR_ADDRESS(F_CAST_TO_STRING,	o_cast_to_string);
   SET_INSTR_ADDRESS(F_RANGE,		o_range);
