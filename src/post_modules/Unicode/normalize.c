@@ -322,8 +322,9 @@ struct pike_string *unicode_normalize( struct pike_string *source,
   if( how & COMPOSE_BIT )
   {
     struct pike_string *d2;
-    debug_malloc_touch(d2);
+    debug_malloc_touch(d);
     d2 = unicode_compose( d, how );
+    debug_malloc_touch(d2);
     free_string(d);
     return d2;
   }
