@@ -1452,7 +1452,7 @@ header_stuff:
  *!       Use this as palette for pseudocolor encoding
  *!       (Note: encoding with alpha channel and pseudocolor
  *!       at the same time are not supported)
- *!   @mapping
+ *!   @endmapping
  *!
  *! @seealso
  *!   @[__decode]
