@@ -1144,7 +1144,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
       if(s->u.object->prog)
       {
 	int fun=FIND_LFUN(s->u.object->prog, LFUN__SPRINTF);
-	if(fun != -1)
+	if(fun != -1 || !Pike_interpreter.evaluator_stack)
 	{
 	  /* We require some tricky coding to make this work
 	   * with tracing...
