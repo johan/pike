@@ -10,7 +10,7 @@ OBJS= $(MASS_DESTRUCTION_OBJS) crypto.o invert.o sha.o md5.o pipe.o cbc.o
 
 MODULE_ARCHIVES=lib/algorithms.a
 MODULE_SUBDIRS=lib
-MODULE_LDFLAGS=@LDFLAGS@
+MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 
 @SET_MAKE@
 
