@@ -104,9 +104,9 @@ static void regexp_match(INT32 args)
   get_all_args("Regexp.regexp->match", args, "%s", &str);
   
 #ifdef USE_SYSTEM_REGEXP
-  ALLOW_THREADS();
+  THREADS_ALLOW();
   i = !regexec(regexp, str, 0, NULL, 0);
-  DISALLOW_THREADS();
+  THREADS_DISALLOW();
 #else
   i=pike_regexec(regexp, str);
 #endif /* USE_SYSTEM_REGEXP */
