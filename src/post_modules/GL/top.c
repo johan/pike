@@ -5,6 +5,8 @@
 || $Id$
 */
 
+#include "global.h"
+
 #include "config.h"
 
 #ifdef HAVE_GL
@@ -20,8 +22,6 @@
 #endif /* HAVE_GL_GLX_H */
 
 #endif /* HAVE_GL */
-
-#include "global.h"
 
 RCSID("$Id$");
 #include "stralloc.h"
