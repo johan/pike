@@ -394,7 +394,7 @@ static INT32 calcC(struct cpp *this,WCHAR *data,INT32 len,INT32 pos)
     if(!GOBBLE(']'))
       error("Missing ']'");
   }
-  D/* UMPPOS("after calcC"); */
+  /* DUMPPOS("after calcC"); */
   return pos;
 }
 
