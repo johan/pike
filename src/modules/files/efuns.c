@@ -984,8 +984,7 @@ void f_get_dir(INT32 args)
     closedir(dir);
 
     END_AGGREGATE_ARRAY;
-    if(args)
-      stack_pop_n_elems_keep_top(args);
+    stack_pop_n_elems_keep_top(args);
   } else {
     pop_n_elems(args);
     push_int(0);
