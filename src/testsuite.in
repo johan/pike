@@ -4475,6 +4475,20 @@ test_do([[
     if (!a[i]) error ("Can't find multiset member in itself: %O\n", i);
 ]])
 
+test_any([[
+  object o1 = class{}(), o2 = class{}(), o3 = class{}();
+  multiset m = (<o1, o2, o3, 17>);
+  destruct (o1), destruct (o2), destruct (o3);
+  return m[17];
+]], 1);
+
+test_any_equal([[
+  object o1 = class{}(), o2 = class{}(), o3 = class{}();
+  multiset m = (<o1, o2, o3, 17>);
+  destruct (o1), destruct (o2), destruct (o3);
+  return copy_value (m);
+]], (<17>));
+
 // mapping tests
 
 test_any([[mapping m=([]);int e;
