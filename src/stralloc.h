@@ -64,12 +64,6 @@ struct pike_string *debug_findstring(const struct pike_string *foo);
 #define EXTRACT_CHARP(PTR,SHIFT) INDEX_CHARP((PTR),0,(SHIFT))
 #define CHARP_ADD(PTR,X,SHIFT) (PTR)+=(X)<<(SHIFT)
 
-typedef struct p_wchar_p
-{
-  char *ptr;
-  int shift;
-} PCHARP;
-
 #define INDEX_PCHARP(X,Y) INDEX_CHARP((X).ptr,(Y),(X).shift)
 #define SET_INDEX_PCHARP(X,Y,Z) INDEX_CHARP((X).ptr,(Y),(X).shift,(Z))
 #define EXTRACT_PCHARP(X) INDEX_CHARP((X).ptr,(0),(X).shift)
