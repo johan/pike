@@ -473,6 +473,46 @@ void f_setegid(INT32 args)
 }
 #endif /* HAVE_SETEUID || HAVE_SETRESUID */
 
+#if defined(HAVE_GETPGID) || defined(HAVE_GETPGRP)
+void f_getpgrp(INT32 args)
+{
+  int pid = 0;
+  int pgid = 0
+
+  if (args) {
+    if (sp[-args].type != T_INT) {
+      error("Bad argument 1 to getpgrp()\n");
+    }
+    id = sp[-args].u.integer;
+  }
+  pop_n_elems(args);
+#ifdef HAVE_GETPGID
+  pgid = getpgid(pid);
+
+  if (pgid < 0) {
+    char *error_msg = "Unknown reason";
+
+    switch (errno) {
+    case EPERM:
+      error_msg = "Permission denied";
+      break;
+    case ESRCH:
+      error_msg = "No such process";
+      break;
+    }
+    error("getpgrp(): Failed: %s\n", error_msg);
+  }
+#elif defined(HAVE_GETPGRP)
+  if (pid && (pid != getpid())) {
+    error("getpgrp(): Mode not supported on this OS\n");
+  }
+  pgid = getpgrp();
+#endif
+
+  push_int(pgid);
+}
+#endif /* HAVE_GETPGID || HAVE_GETPGRP */
+
 #define get(X) void f_##X(INT32 args){ pop_n_elems(args); push_int((INT32)X()); }
 
 get(getuid);
@@ -483,9 +523,7 @@ get(geteuid);
 get(getegid);
 #endif
 get(getpid);
-#ifdef HAVE_GETPGRP
-get(getpgrp);
-#endif
+
 #ifdef HAVE_GETPPID
 get(getppid);
 #endif
