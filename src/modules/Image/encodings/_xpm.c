@@ -386,7 +386,6 @@ void f__xpm_trim_rows( INT32 args )
   get_all_args("___", args, "%a", &a );
   for(i=0; i<a->size; i++)
   {
-    char *ns;
     int len,start;
     struct pike_string *s = a->item[i].u.string;
     if(a->item[i].type != T_STRING)

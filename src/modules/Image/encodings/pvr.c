@@ -466,7 +466,6 @@ static void pvr_decode_alpha_twiddled(INT32 attr, unsigned char *s,
 				      unsigned int sz)
 {
   unsigned int x, y;
-  unsigned char *src;
   switch(attr&0xff) {
    case MODE_ARGB1555:
      for(y=0; y<sz; y++) {

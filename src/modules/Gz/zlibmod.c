@@ -229,7 +229,7 @@ static void gz_deflate(INT32 args)
   }
 
   this->gz.next_in=(Bytef *)data->str;
-  this->gz.avail_in = DO_NOT_WARN(data->len);
+  this->gz.avail_in = DO_NOT_WARN((unsigned INT32)(data->len));
 
   initialize_buf(&buf);
 
@@ -403,7 +403,7 @@ static void gz_inflate(INT32 args)
   data=sp[-args].u.string;
 
   this->gz.next_in=(Bytef *)data->str;
-  this->gz.avail_in = DO_NOT_WARN(data->len);
+  this->gz.avail_in = DO_NOT_WARN((unsigned INT32)(data->len));
 
   initialize_buf(&buf);
 
@@ -472,7 +472,7 @@ static void gz_crc32(INT32 args)
 	 
    crc=crc32(crc,
 	     (unsigned char*)sp[-args].u.string->str,
-	     DO_NOT_WARN(sp[-args].u.string->len));
+	     DO_NOT_WARN((unsigned INT32)(sp[-args].u.string->len)));
 
    pop_n_elems(args);
    push_int((INT32)crc);

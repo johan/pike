@@ -477,7 +477,6 @@ static struct pike_string *encode_pcx_8( struct pcx_header *pcx_header,
                                          struct options *opts )
 {
   struct pike_string *b;
-  int x, y;
   char *buffer;
 
   pcx_header->planes = 1;
@@ -569,7 +568,6 @@ void image_pcx_encode( INT32 args )
   struct pike_string *res;
   struct object *i;
   struct image *img;
-  ONERROR onerr;
 
   get_all_args( "Image.PCX.encode", args, "%o", &i );
 

@@ -542,7 +542,7 @@ static void image_ras_encode(INT32 args)
   {
     unsigned char *pkdata = (unsigned char *)xalloc(rs.ras_length+16);
     unsigned char *pk = pkdata, *src = STR0(res2);
-    INT32 pklen = 0, pkleft = rs.ras_length+16;
+    ptrdiff_t pklen = 0, pkleft = rs.ras_length+16;
     for(y=0; y<img->ysize; y++) {
       ptrdiff_t n = pack_rle(src, llen, pk, pkleft);
       src += llen;
@@ -555,7 +555,7 @@ static void image_ras_encode(INT32 args)
     if(pklen<rs.ras_length) {
       free((char *)res2);
       res2 = make_shared_binary_string((char *)pkdata, pklen);
-      rs.ras_length = pklen;
+      rs.ras_length = DO_NOT_WARN((INT32)pklen);
       rs.ras_type = RT_BYTE_ENCODED;
     } else
       res2 = end_shared_string(res2);
