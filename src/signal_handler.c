@@ -127,11 +127,11 @@ RCSID("$Id$");
 #include <dos/dos.h>
 #include <dos/dostags.h>
 #include <dos/exall.h>
-#include <clib/dos_protos.h>
 #ifdef __amigaos4__
 #include <interfaces/dos.h>
 #include <inline4/dos.h>
 #else
+#include <clib/dos_protos.h>
 #include <inline/dos.h>
 #endif
 #undef timeval
