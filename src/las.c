@@ -1042,6 +1042,9 @@ node *copy_node(node *n)
     if(b->name) free_string(b->name);
     add_ref(b->name=n->name);
   }
+  /* FIXME: Should b->name be kept if n->name is NULL?
+   * /grubba 1999-09-22
+   */
   b->line_number = n->line_number;
   b->node_info = n->node_info;
   b->tree_info = n->tree_info;
