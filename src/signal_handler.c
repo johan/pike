@@ -732,7 +732,7 @@ static void free_perishables(struct perishables *storage)
   
 #endif
 
-  exit_threads_disable();
+  exit_threads_disable(NULL);
 }
 
 #endif
@@ -972,7 +972,7 @@ void f_create_process(INT32 args)
     storage.wanted_gids_array=0;
 #endif
 
-    init_threads_disable();
+    init_threads_disable(NULL);
 
     SET_ONERROR(err, free_perishables, &storage);
 
