@@ -181,6 +181,25 @@ void cpp_handle_exception(struct cpp *this, const char *cpp_error_fmt, ...)
   free_svalue(&thrown);
 }
 
+static void cpp_warning(struct cpp *this, const char *err)
+{
+  if((this->handler && this->handler->prog) || get_master())
+  {
+    ref_push_string(this->current_file);
+    push_int(this->current_line);
+    push_text(err);
+    low_safe_apply_handler("compile_warning", this->handler,
+			   this->compat_handler, 3);
+    pop_stack();
+  }else{
+    (void)fprintf(stderr, "%s:%ld: %s\n",
+		  this->current_file->str,
+		  (long)this->current_line,
+		  err);
+    fflush(stderr);
+  }
+}
+
 /*! @class MasterObject
  */
 

@@ -7939,6 +7939,11 @@ test_compile_error([[
 #error Gurgel
 ]])
 
+// #warning
+test_compile_warning([[
+#warning Gurgel
+]])
+
 // <<<<<<<
 test_eval_error( cpp("<<<<<<<") )
 test_compile_error([[

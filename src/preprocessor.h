@@ -2136,6 +2136,34 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	  break;
 	}
       }
+    case 'w': /* warning */
+      {
+	static WCHAR warning_[] = { 'w', 'a', 'r', 'n', 'i', 'n', 'g' };
+
+	if(WGOBBLE2(warning_))
+	{
+	  ptrdiff_t foo;
+
+          SKIPSPACE();
+          foo=pos;
+          FIND_EOL();
+	  if(OUTP())
+	  {
+#if (SHIFT == 0)
+	    push_string(make_shared_binary_string((char *)data+foo, pos-foo));
+#else /* SHIFT != 0 */
+#if (SHIFT == 1)
+	    push_string(make_shared_binary_string1(data+foo, pos-foo));
+#else /* SHIFT != 1 */
+	    push_string(make_shared_binary_string2(data+foo, pos-foo));
+#endif /* SHIFT == 1 */
+#endif /* SHIFT == 0 */
+	    cpp_warning(this, Pike_sp[-1].u.string->str);
+	  }
+	  break;
+	}
+	goto unknown_preprocessor_directive;
+      }
     default:
     unknown_preprocessor_directive:
       {
