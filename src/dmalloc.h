@@ -83,7 +83,7 @@ void dmalloc_accept_leak(void *);
 #define dmalloc_touch_svalue(X)
 #define dmalloc_register(X,Y,Z,W)
 #define dmalloc_unregister(X,Y)
-#define debug_free(X,Y,Z,Q) free((X))
+#define debug_free(X,Y,Z) free((X))
 #define debug_malloc_name(P,FN,LINE)
 #define debug_malloc_copy_names(p,p2)
 #define search_all_memheaders_for_references()
