@@ -930,10 +930,7 @@ static string low_pike_sprintf(char *format,
       case 'F':
       {
         INT32 l;
-#ifdef DOUBLE_IS_IEEE_LITTLE
-	double td;
-#endif
-#ifdef DOUBLE_IS_IEEE_BIG
+#if defined(DOUBLE_IS_IEEE_LITTLE) || defined(DOUBLE_IS_IEEE_BIG)
 	double td;
 #endif
         DO_OP();
