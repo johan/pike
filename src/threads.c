@@ -1434,8 +1434,8 @@ void f_cond_wait(INT32 args)
 
 #ifdef PICKY_MUTEX
   if (!mutex_obj->prog) {
-    if (!m->num_waiting)
-      co_destroy (&m->condition);
+    if (!mut->num_waiting)
+      co_destroy (&mut->condition);
     Pike_error ("Mutex was destructed while waiting for lock.\n");
   }
 #endif
