@@ -1548,22 +1548,8 @@ static void thread_was_checked(struct object *o)
 
 #ifdef PIKE_DEBUG
   if(tmp->swapped)
-  {
-    struct pike_frame *f;
-    debug_malloc_touch(o);
-    gc_mark_external_svalues(tmp->state.evaluator_stack,
-			     tmp->state.stack_pointer-tmp->state.evaluator_stack,
-			     " in idle thread stack");
-    
-    for(f=tmp->state.frame_pointer;f;f=f->next)
-    {
-      debug_malloc_touch(f);
-      if(f->context.parent)
-	gc_mark_external (f->context.parent, " in Pike_fp->context.parent of idle thread");
-      gc_mark_external (f->current_object, " in Pike_fp->current_object of idle thread");
-      gc_mark_external (f->context.prog, " in Pike_fp->context.prog of idle thread");
-    }
-  }
+    gc_mark_stack_external (tmp->state.frame_pointer, tmp->state.stack_pointer,
+			    tmp->state.evaluator_stack);
 #endif
 }
 
