@@ -64,11 +64,15 @@ manual.xml: $(XMLFILES) ../bin/join-autodoc.pike
 	@$(PIKE) ../bin/join-autodoc.pike --post-process manual.xml $(XMLFILES)
 
 build/src/Makefile: Makefile.in build/src
-	@sed -e "s#@SRCDIR@#../../../src#" -e "s#@ROOT@#../..#" \
+	@sed -e "s#@SRCDIR@#../../../src#" \
+	     -e "s#@ROOT@#../..#" \
+	     -e "s#@BUILDROOT@#..#" \
 	  <Makefile.in >build/src/Makefile
 
 build/lib/Makefile: Makefile.in build/lib
-	@sed -e "s#@SRCDIR@#../../../lib#" -e "s#@ROOT@#../..#" \
+	@sed -e "s#@SRCDIR@#../../../lib#" \
+	     -e "s#@ROOT@#../..#" \
+	     -e "s#@BUILDROOT@#..#" \
 	  <Makefile.in >build/lib/Makefile
 
 manual/Makefile: PostMakefile.in manual
