@@ -3292,6 +3292,57 @@ struct pike_string *get_type_of_svalue(struct svalue *s)
   }
 }
 
+static struct pike_string *low_object_type_to_program_type(char *obj_t)
+{
+  struct pike_string *res = NULL;
+  struct pike_string *sub;
+  struct svalue sval;
+  int id;
+
+  while(EXTRACT_UCHAR(obj_t) == T_OR) {
+    obj_t++;
+    sub = low_object_type_to_program_type(obj_t);
+    if (!sub) {
+      if (res) {
+	free_string(res);
+      }
+      return NULL;
+    }
+    if (res) {
+      struct pike_string *tmp = or_pike_types(res, sub, 1);
+      free_string(res);
+      free_string(sub);
+      res = tmp;
+    } else {
+      res = sub;
+    }
+    obj_t += type_length(obj_t);
+  }
+  sval.type = T_PROGRAM;
+  if ((EXTRACT_UCHAR(obj_t) != T_OBJECT) ||
+      (!(id = extract_type_int(obj_t + 2))) ||
+      (!(sval.u.program = id_to_program(id))) ||
+      (!(sub = get_type_of_svalue(&sval)))) {
+    if (res) {
+      free_string(res);
+    }
+    return NULL;
+  }
+  if (res) {
+    struct pike_string *tmp = or_pike_types(res, sub, 1);
+    free_string(res);
+    free_string(sub);
+    return tmp;
+  }
+  return sub;
+}
+
+/* Used by fix_object_program_type() */
+struct pike_string *object_type_to_program_type(struct pike_string *obj_t)
+{
+  return low_object_type_to_program_type(obj_t->str);
+}
+
 char *get_name_of_type(int t)
 {
   switch(t)
