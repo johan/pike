@@ -402,6 +402,15 @@
 #undef USE_FCNTL_FNDELAY
 #undef USE_FCNTL_O_NONBLOCK
 
+/* How well is OOB TCP working?
+ * -1 = unknown
+ *  0 = doesn't seem to be working at all
+ *  1 = very limited functionality
+ *  2 = should be working as long as you are cautious
+ *  3 = works excellently
+ */
+#define PIKE_OOB_WORKS -1
+
 /* We want to use errno later */
 #ifdef _SGI_SPROC_THREADS
 /* Magic define of _SGI_MP_SOURCE above might redefine errno below */

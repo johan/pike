@@ -2826,8 +2826,14 @@ void pike_module_init(void)
   add_integer_constant("PROP_SHUTDOWN",fd_CAN_SHUTDOWN,0);
   add_integer_constant("PROP_BUFFERED",fd_BUFFERED,0);
   add_integer_constant("PROP_BIDIRECTIONAL",fd_BIDIRECTIONAL,0);
+
 #ifdef WITH_OOB
   add_integer_constant("__HAVE_OOB__",1,0);
+#ifdef PIKE_OOB_WORKS
+  add_integer_constant("__OOB__",PIKE_OOB_WORKS,0);
+#else
+  add_integer_constant("__OOB__",-1,0); /* unknown */
+#endif
 #endif
 
 #ifdef PIKE_DEBUG
