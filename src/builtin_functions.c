@@ -340,6 +340,8 @@ void f_random(INT32 args)
   {
     pop_n_elems(args-1);
     apply(sp[-1].u.object,"_random",0);
+    stack_swap();
+    pop_stack();
     return;
   }
 

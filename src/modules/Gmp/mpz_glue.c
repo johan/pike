@@ -994,7 +994,7 @@ static void mpzmod_random(INT32 args)
 
   res=clone_object(mpzmod_program,0);
   /* We add two to assure reasonably uniform randomness */
-  mpz_random(OBTOMPZ(res), mpz_size(OBTOMPZ(res)) + 2);
+  mpz_random(OBTOMPZ(res), mpz_size(THIS) + 2);
   mpz_fdiv_r(OBTOMPZ(res), OBTOMPZ(res), THIS); /* modulo */
   PUSH_REDUCED(res);
 }
