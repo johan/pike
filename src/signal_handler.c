@@ -1796,13 +1796,13 @@ void f_fork(INT32 args)
     error("You cannot use fork in a multithreaded application.\n");
 #endif
 
-  THREADS_ALLOW_UID();
+/*   THREADS_ALLOW_UID(); */
 #if defined(HAVE_FORK1) && defined(_REENTRANT)
   pid=fork1();
 #else
   pid=fork();
 #endif
-  THREADS_DISALLOW_UID();
+/*  THREADS_DISALLOW_UID(); */
 
   if(pid==-1) {
     error("Fork failed\n"
