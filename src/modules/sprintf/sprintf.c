@@ -924,7 +924,7 @@ static string low_pike_sprintf(char *format,
         l=4;
         if(fsp->width > 0) l=fsp->width;
 	if(l != 4 && l != 8)
-	  sprintf_error("Invalid IEEE witdh %d.\n", l);
+	  sprintf_error("Invalid IEEE width %d.\n", l);
 	fsp->b=(char *)alloca(l);
 	fsp->len=l;
 	GET_FLOAT(tf);
