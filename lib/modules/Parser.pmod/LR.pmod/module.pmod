@@ -122,7 +122,7 @@ class Rule
   //! 
   //!   might be created as
   //! 
-  //!	   rule(4, ({ 9, ";", 5, ";" }), "add_rule");
+  //!	   rule(4, ({ 9, ":", 5, ";" }), "add_rule");
   //! 
   //!   where 4 corresponds to the nonterminal "rule", 9 to "nonterminal"
   //!   and 5 to "symbols", and the function "add_rule" is too be called
