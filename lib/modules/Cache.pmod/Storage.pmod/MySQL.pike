@@ -30,7 +30,7 @@ data longblob NOT NULL, \
 dependants longblob \
 )"
 
-Sql.sql db;
+Sql.Sql db;
 int have_dependants=0;
 
 #if 0                           // set to 1 to enable debugging
@@ -186,7 +186,7 @@ void aget(string key,
 void create(string sql_url) {
   array result=0;
   mixed err=0;
-  db=Sql.sql(sql_url);
+  db=Sql.Sql(sql_url);
   // used to determine whether there already is a DB here.
   err=catch(result=db->query("select stamp from cache_admin"));
   if (err || !sizeof(result)) {
