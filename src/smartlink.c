@@ -132,8 +132,8 @@ int main(int argc, char **argv)
   rpath[0] = 0;
   lpath[0] = 0;
 
-  /* 5 extra args should be enough... */
-  if (!(new_argv = malloc(sizeof(char *)*(argc + 5)))) {
+  /* 150 extra args should be enough... */
+  if (!(new_argv = malloc(sizeof(char *)*(argc + 150)))) {
     fatal("Out of memory (5)!\n");
   }
 
@@ -214,7 +214,17 @@ int main(int argc, char **argv)
 	if (new_argv[i][0] == '-' && new_argv[i][1]=='W' &&
 	    new_argv[i][2]=='l' && new_argv[i][3]==',')
 	{
+	  char *ptr;
 	  new_argv[i]=new_argv[i]+4;
+
+	  while((ptr=strchr(new_argv[i],',')))
+	  {
+	    int e;
+	    *ptr=0;
+	    for(e=argc;e>=i;e--) new_argv[e+1]=new_argv[e];
+	    new_argv[i+1]=ptr+1;
+	    i++;
+	  }
 	}
       }
     }
