@@ -4257,7 +4257,6 @@ PMOD_EXPORT void f_mktime (INT32 args)
     retval += Pike_sp[7-args].u.integer + date.__tm_gmtoff;
 #endif /* STRUCT_TM_HAS_GMTOFF */
   }
-#endif /* STRUCT_TM_HAS_GMTOFF || STRUCT_TM_HAS___TM_GMTOFF */
 
   if ((args > 6) && (Pike_sp[6-args].subtype == NUMBER_NUMBER) &&
       (Pike_sp[6-args].u.integer != -1) &&
@@ -4265,6 +4264,7 @@ PMOD_EXPORT void f_mktime (INT32 args)
     /* Some stupid libc's (Hi Linux!) don't accept that we've set isdst... */
     retval += 3600 * (Pike_sp[6-args].u.integer - date.tm_isdst);
   }
+#endif /* STRUCT_TM_HAS_GMTOFF || STRUCT_TM_HAS___TM_GMTOFF */
 
   pop_n_elems(args);
   push_int(retval);
