@@ -3307,12 +3307,19 @@ struct program *compile(struct pike_string *prog,
   CDFPRINTF((stderr, "th(%ld) compile() starting compilation_depth=%d\n",
 	     (long)th_self(),compilation_depth));
 
+  low_init_threads_disable();
+  saved_threads_disabled = threads_disabled;
+
+#ifdef PIKE_DEBUG
+  SET_ONERROR(tmp, fatal_on_error,"Compiler exited with longjump!\n");
+#endif
+
   error_handler = handler;
   compat_handler=0;
   
   if(error_handler)
   {
-    apply(error_handler,"get_default_module",0);
+    safe_apply(error_handler, "get_default_module", 0);
     if(IS_ZERO(Pike_sp-1))
     {
       pop_stack();
@@ -3321,13 +3328,6 @@ struct program *compile(struct pike_string *prog,
   }else{
     ref_push_mapping(get_builtin_constants());
   }
-
-  low_init_threads_disable();
-  saved_threads_disabled = threads_disabled;
-
-#ifdef PIKE_DEBUG
-  SET_ONERROR(tmp, fatal_on_error,"Compiler exited with longjump!\n");
-#endif
 
   Pike_compiler->num_used_modules=0;
 
