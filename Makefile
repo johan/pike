@@ -59,6 +59,7 @@ configure: src/configure builddir
 	    configureargs="$(CONFIGUREARGS)"; \
 	  fi; \
 	  echo; \
+	  MAKE=$(MAKE) ; export MAKE ;\
 	  echo Configure arguments: $$configureargs; \
 	  echo; \
 	  if test -f Makefile -a -f config.cache -a -f .configureargs && \
