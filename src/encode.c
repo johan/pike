@@ -272,14 +272,21 @@ static void encode_type(struct pike_type *t, struct encode_data *data)
  one_more_type:
   if (t->type == T_MANY) {
     addchar(T_FUNCTION);
+    addchar(T_MANY);
+  } else if (t->type != PIKE_T_NAME) {
+    addchar(t->type);
   }
-  addchar(t->type);
   switch(t->type) {
     default:
       fatal("error in type tree: %d.\n", t->type);
       /*NOTREACHED*/
 
       break;
+
+    case PIKE_T_NAME:
+      /* Strip the name. */
+      t=t->cdr;
+      goto one_more_type;
     
     case T_ASSIGN:
       addchar((ptrdiff_t)t->car);
@@ -1131,7 +1138,7 @@ one_more_type:
   switch(tmp)
   {
     default:
-      fatal("error in type string.\n");
+      fatal("error in type string (%d).\n", tmp);
       /*NOTREACHED*/
       break;
 
