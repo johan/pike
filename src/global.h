@@ -324,6 +324,7 @@ typedef struct p_wchar_p
 #define DO_IF_DEBUG(X) X
 #else
 #define DO_IF_DEBUG(X)
+#define NDEBUG
 #endif
 
 #if defined(__GNUC__) && !defined(PIKE_DEBUG) && !defined(lint)
