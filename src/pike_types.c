@@ -1826,6 +1826,10 @@ struct pike_string *zzap_function_return(char *a, INT32 id)
       push_type(T_FUNCTION);
       return pop_unfinished_type();
   }
+  fatal("zzap_function_return() called with unexpected value: %d\n",
+	EXTRACT_UCHAR(a));
+  /* NOT_REACHED */
+  return NULL;
 }
 
 struct pike_string *get_type_of_svalue(struct svalue *s)
