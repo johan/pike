@@ -54,12 +54,12 @@ static void f_CryptGenRandom(INT32 args)
 {
   struct cryptcontext_storage *c = THIS_CRYPTCONTEXT;
   struct pike_string *str = NULL, *res;
-  ptrdiff_t siz;
+  INT_TYPE siz;
 
   get_all_args("CryptGenRandom()", args, (args>1? "%i%S":"%i"), &siz, &str);
 
   if(siz == 0 && str != NULL)
-    siz = str->len;
+    siz = DO_NOT_WARN(str->len);
 
   res = begin_shared_string(siz);
   if(str != NULL && siz > 0)
