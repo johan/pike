@@ -48,6 +48,10 @@ RCSID("$Id$");
 #include <sys/protosw.h>
 #endif
 
+#ifdef HAVE_SYS_STREAM_H
+#include <sys/stream.h>
+#endif
+
 #ifdef HAVE_SYS_SOCKETVAR_H
 #include <sys/socketvar.h>
 #endif
