@@ -1859,6 +1859,7 @@ void _main(array(string) orig_argv, array(string) env)
 #ifdef PIKE_AUTORELOAD
       case "autoreload":
 	autoreload_on++;
+	break;
 #endif
 
       case "debug_without":
