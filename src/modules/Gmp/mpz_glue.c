@@ -59,6 +59,7 @@ static void get_mpz_from_digits(MP_INT *tmp,
       mpz_mul_2exp(digit, digit, (digits->len - i - 1) * 8);
       mpz_ior(tmp, tmp, digit);
     }
+    mpz_clear(digit);
   }
   else
   {
