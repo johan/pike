@@ -685,7 +685,7 @@ static void sprintf_error(struct format_stack *fs,
   va_start(args,s);
   free_sprintf_strings(fs);
 
-  sprintf(buf,"Sprintf: %s",s);
+  sprintf(buf,"sprintf: %s",s);
   va_error(buf,args);
   va_end(args);
 }
