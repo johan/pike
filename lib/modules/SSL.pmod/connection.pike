@@ -171,7 +171,7 @@ int handle_alert(string s)
   }
   if (description == ALERT_close_notify)
   {
-    return 1;
+    return 0;
   }
   if (description == ALERT_no_certificate)
   {
