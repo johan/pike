@@ -1,6 +1,6 @@
 # $Id$
 AC_INIT(iso2022.c)
-#AC_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADER(config.h)
 
 AC_MODULE_INIT()
 
