@@ -136,6 +136,10 @@ void image_mirrory(INT32 args);
 
 void image_toppm(INT32 args);
 void image_frompnm(INT32 args);
+
+/* x.c */
+
+void image_x_encode_pseudocolor(INT32 args);
  
 /* pattern.c */
 

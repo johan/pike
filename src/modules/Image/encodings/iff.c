@@ -13,6 +13,7 @@ RCSID("$Id$");
 #include "array.h"
 #include "error.h"
 #include "operators.h"
+#include "builtin_functions.h"
 
 
 static INT32 low_parse_iff(unsigned char *data, INT32 len, unsigned char *hdr,

@@ -67,6 +67,7 @@
 #include "cyclic.h"
 #include "signal_handler.h"
 #include "security.h"
+#include "builtin_functions.h"
 
 
 #include "image.h"

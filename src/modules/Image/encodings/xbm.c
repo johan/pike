@@ -33,7 +33,7 @@ RCSID("$Id$");
 #include "cyclic.h"
 #include "signal_handler.h"
 #include "security.h"
-
+#include "builtin_functions.h"
 
 #include "image.h"
 #include "colortable.h"
@@ -250,7 +250,6 @@ static struct pike_string *param_bg;
 static struct pike_string *param_invert;
 static void image_xbm__decode( INT32 args )
 {
-  extern void f_aggregate(INT32 args);
   struct array *fg = NULL;
   struct array *bg = NULL;
   int invert=0, ele;
