@@ -1564,7 +1564,7 @@ void o_sscanf(INT32 args)
 #endif
   INT32 e,i;
   int x;
-  long matched_chars;
+  ptrdiff_t matched_chars;
   struct svalue *save_sp=sp;
 
   if(sp[-args].type != T_STRING)
@@ -1691,7 +1691,7 @@ PMOD_EXPORT void f_sscanf(INT32 args)
 #endif
   INT32 e,i;
   int x;
-  long matched_chars;
+  ptrdiff_t matched_chars;
   struct svalue *save_sp=sp;
   struct array *a;
 

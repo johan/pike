@@ -484,7 +484,7 @@ struct program *id_to_program(INT32 id)
  */
 void optimize_program(struct program *p)
 {
-  SIZE_T size=0;
+  size_t size=0;
   char *data;
 
   /* Already done (shouldn't happen, but who knows?) */

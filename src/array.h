@@ -89,7 +89,7 @@ typedef short_cmpfun (*cmpfun_getter)(TYPE_T);
 
 
 /* Prototypes begin here */
-PMOD_EXPORT struct array *low_allocate_array(INT32 size,INT32 extra_space);
+PMOD_EXPORT struct array *low_allocate_array(ptrdiff_t size, ptrdiff_t extra_space);
 void really_free_array(struct array *v);
 PMOD_EXPORT void do_free_array(struct array *a);
 PMOD_EXPORT void array_index_no_free(struct svalue *s,struct array *v,INT32 index);
