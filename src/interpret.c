@@ -1276,7 +1276,7 @@ static int eval_instruction(unsigned char *pc)
       break;
 
       CASE(F_BRANCH_AND_POP_WHEN_NON_ZERO);
-      if(!IS_ZERO(sp-1))
+      if(IS_ZERO(sp-1))
       {
 	pc+=sizeof(INT32);
       }else{
