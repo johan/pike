@@ -32,7 +32,7 @@ modlist_headers: Makefile
 modlist_segment: Makefile
 	echo >modlist_segment " ,{ \"$(MODNAME)\", pike_module_$(MODNAME)_init, pike_module_$(MODNAME)_exit } "
 
-Makefile: $(SRCDIR)/Makefile.in $(SRCDIR)/dependencies
+Makefile: @srcdir@/static_module_makefile $(SRCDIR)/Makefile.in $(SRCDIR)/dependencies
 	CONFIG_FILES=Makefile CONFIG_HEADERS= ./config.status
 	@echo "Run make again"
 	@exit 1
