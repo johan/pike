@@ -792,6 +792,7 @@ void low_exit_main(void)
   void exit_iterators(void);
   void exit_backend(void);
   void cleanup_pike_type_table(void);
+  void destruct_objects_to_destruct_cb(void);
 
 #ifdef AUTO_BIGNUM
   void exit_auto_bignum(void);
@@ -874,8 +875,10 @@ void low_exit_main(void)
       fprintf(stderr,"Multisets left: %d (%d bytes)\n",num,size);
 
 
+    destruct_objects_to_destruct_cb();
     if(recount)
     {
+
       fprintf(stderr,"Garbage collecting..\n");
       do_gc();
       
@@ -921,6 +924,7 @@ void low_exit_main(void)
   zap_all_arrays();
   zap_all_mappings();
 
+  destruct_objects_to_destruct_cb();
 #endif
 
   really_clean_up_interpret();
