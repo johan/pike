@@ -4480,7 +4480,7 @@ PMOD_EXPORT void f_mktime (INT32 args)
   /* date.tm_zone = NULL; */
 
 #ifdef HAVE_GMTIME
-  if(args > 7)
+  if ((args > 7) && (Pike_sp[7-args].subtype == NUMBER_NUMBER))
   {
     /* UTC-relative time. Use my_timegm(). */
     retval = my_timegm(&date);
@@ -4521,7 +4521,7 @@ PMOD_EXPORT void f_mktime (INT32 args)
       PIKE_ERROR("mktime", "Cannot convert.\n", Pike_sp, args);
 
 #if defined(STRUCT_TM_HAS_GMTOFF) || defined(STRUCT_TM_HAS___TM_GMTOFF)
-    if(args > 7)
+    if((args > 7) && (Pike_sp[7-args].subtype == NUMBER_NUMBER))
     {
       /* Post-adjust for the timezone.
        *
