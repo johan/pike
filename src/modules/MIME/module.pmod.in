@@ -504,7 +504,8 @@ class Message {
     if (boundary && type=="multipart" && !body_parts &&
        (encoded_data || decoded_data)) {
       array(string) parts = ("\n"+getdata())/("\n--"+boundary);
-      if (parts[-1][0..2]!="--\n" && parts[-1][0..3]!="--\r\n")
+      if (parts[-1][0..2]!="--\n" && parts[-1][0..3]!="--\r\n" &&
+	  parts[-1]!="--")
 	throw(({ "multipart message improperly terminated\n", backtrace() }));
       encoded_data = 0;
       decoded_data = parts[0][1..];
