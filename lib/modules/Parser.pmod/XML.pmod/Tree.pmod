@@ -127,8 +127,10 @@ class XMLNSParser {
     mapping(string:string) namespaces = namespace_stack->top() + ([]);
     foreach(attrs; string attr; string val) {
       if (attr == "xmlns") {
+	if (val == "") error("Bad namespace specification (%O=\"\")\n", attr);
 	namespaces[0] = val;
       } else if (has_prefix(attr, "xmlns:")) {
+	if (val == "") error("Bad namespace specification (%O=\"\")\n", attr);
 	namespaces[attr[6..]] = val;
       }
     }
@@ -881,7 +883,6 @@ class Node {
     }
     // Then set the short namespaces for any attributes.
     foreach(indices(attrs), string attr_name) {
-      int i, j;
       if (!has_prefix(attr_name, "xmlns:")) {
 	int i = search(attr_name, ":");
 	int j = search(attr_name, "/");
