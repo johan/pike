@@ -276,7 +276,6 @@ int(0..1) has_statement(Resource subj, Resource pred, Resource obj) {
 int(0..1) remove_statement(Resource subj, Resource pred, Resource obj) {
   if(!has_statement(subj, pred, obj)) return 0;
   ADT.Relation.Binary rel = statements[pred];
-  rel->contains(subj,obj);
   rel->remove(subj,obj);
   if(!sizeof(statements[pred])) m_delete(statements, pred);
   return 1;
