@@ -1328,9 +1328,9 @@ void cleanup_objects(void)
     }
     SET_NEXT_AND_FREE(o,free_object);
   }
-  free_object(master_object);
+  if (master_object) free_object(master_object);
   master_object=0;
-  free_program(master_program);
+  if (master_program) free_program(master_program);
   master_program=0;
   destruct_objects_to_destruct();
 }
