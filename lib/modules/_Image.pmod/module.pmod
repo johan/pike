@@ -20,7 +20,7 @@
 //! 	All data is read, ie nothing happens until the file is closed.
 //!	Throws upon error.
 
-mapping _decode( string data, mixed|void tocolor, void|int triedmac )
+mapping _decode( string data, mixed|void tocolor )
 {
   Image.image i, a;
   string format;
