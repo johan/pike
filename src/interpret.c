@@ -989,7 +989,8 @@ void *dummy_label = NULL;
 #define EXIT_MACHINE_CODE()
 #endif
 
-#ifdef OPCODE_INLINE_BRANCH
+#if defined(OPCODE_INLINE_BRANCH) || defined(INS_F_JUMP) || \
+    defined(INS_F_JUMP_WITH_ARG) || defined(INS_F_JUMP_WITH_TWO_ARGS)
 /* Intended to be called from machine code on backward branch jumps,
  * to ensure thread switching. */
 void branch_check_threads_etc()
