@@ -31,7 +31,7 @@
 <!--      <insert-move entity="Stdio.stderr"/> -->
       <insert-move entity="Stdio.Port"/>
       <insert-move entity="Stdio.UDP"/>
-<!--      <insert-move entity="Stdio.Terminfo"/> -->
+      <insert-move entity="Stdio.Terminfo"/>
       <insert-move entity="Stdio.Readline"/>
       <insert-move entity="Stdio"/>
     </chapter>
