@@ -229,7 +229,6 @@ PIKEFUN int was_init(int flags) {
  *!  @[SDL.init()],  @[SDL.init_sub_system()], @[SDL.quit_sub_system()]
  */ 
 PIKEFUN void quit() {
-printf("SDL Quit\n");
   SDL_Quit();
 }
 
