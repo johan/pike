@@ -1268,7 +1268,7 @@ class Port
     debug_ip = (ip||"ANY");
     debug_port = p;
 
-    if( cb )
+    if( cb || ip )
       if( ip )
         ::create( p, cb, ip );
       else
