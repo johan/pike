@@ -160,13 +160,13 @@
 **!    write_image("top layer","b",lay(({ltrans,b}))->image());
 **!    write_image("bottom layer","a",lay(({ltrans,a}))->image());
 **! 
-**!    write(mktag("tr",0,mktag("td",0,mktag("hr"))));
+**!    write(mktag("tr",0,mktag("td",0,"\240")));
 **! 
 **!    foreach (Layer()->available_modes(),string mode)
 **!    {
 **!	  if ((&lt;"add","equal","replace","replace_hsv","darken",
 **!	        "dissolve","screen","logic_equal">)[mode])
-**!          write(mktag("tr",0,mktag("td",0,mktag("hr"))));
+**!          write(mktag("tr",0,mktag("td",0,"\240")));
 **!
 **! 	  ({lc2,lc2b,li2,li2b,lr2,lzo1})->set_mode(mode);
 **! 

@@ -137,9 +137,9 @@
 **! 			      }),colored);
 **! 
 **!    Array.map(({orig}),color_info);
-**!    write(mktag("hr"));
+**!    write("\240");
 **!    Array.map(({grey}),color_info);
-**!    write(mktag("hr"));
+**!    write("\240");
 **!    Array.map(colored/8.0,color_info);
 **! }
 **! 
