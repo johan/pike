@@ -58,6 +58,11 @@ void set_notify_callback(int|function f, int|float|void poll_delay) {
 		poll(poll_delay);
 }
 
+string quote(string s)
+{
+  return replace(s, ({ "\\", "'", "\0" }), ({ "\\\\", "''", "\\0" }) );
+}
+
 void create_db(string db) {
 	big_query(sprintf("CREATE DATABASE %s",db));
 }
