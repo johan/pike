@@ -751,7 +751,6 @@ int a()
      (has_value(testargs/" ", "-q") ||
       has_value(testargs/" ", "-quiet") ) )
     quiet=1;
-  return 1;
 
   int total_tests;
   for(maxdepth=1;maxdepth<9 && !errors;maxdepth++)
@@ -3034,7 +3033,6 @@ ifefun(gc,
        (has_value(testargs/" ", "-q") ||
         has_value(testargs/" ", "-quiet") ) )
       quiet=1;
-    return 1;
 
     int test_failed = 0;
     for (int test = 0; test < sizeof (destruct_order_tests); test++) {
