@@ -47,7 +47,9 @@
  */
 
 struct precompiled_mysql {
+#ifdef PIKE_THREADS
   DEFINE_MUTEX(lock);
+#endif /* PIKE_THREADS */
 
   MYSQL		*mysql, *socket;
   struct pike_string	*host, *database, *user, *password;	/* Reconnect */
