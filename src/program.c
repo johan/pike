@@ -1417,6 +1417,7 @@ int low_define_variable(struct pike_string *name,
   dummy.run_time_type=run_time_type;
   dummy.func.offset=offset;
 #ifdef PROFILING
+  dummy.self_time=0;
   dummy.num_calls=0;
   dummy.total_time=0;
 #endif
@@ -1596,6 +1597,7 @@ int add_constant(struct pike_string *name,
   ref.inherit_offset=0;
 
 #ifdef PROFILING
+  dummy.self_time=0;
   dummy.num_calls=0;
   dummy.total_time=0;
 #endif
@@ -1742,6 +1744,7 @@ INT32 define_function(struct pike_string *name,
   INT32 i;
 
 #ifdef PROFILING
+  fun.self_time=0;
   fun.num_calls=0;
   fun.total_time=0;
 #endif
