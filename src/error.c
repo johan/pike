@@ -218,10 +218,22 @@ void new_error(const char *name, const char *text, struct svalue *oldsp,
 
 void exit_on_error(void *msg)
 {
+  fprintf(stderr,"%s\n",(char *)msg);
 #ifdef PIKE_DEBUG
   dump_backlog();
 #endif
   fprintf(stderr,"%s\n",(char *)msg);
+#ifdef PIKE_DEBUG
+  {
+    char *s;
+    fprintf(stderr,"Attempting to dump raw error: (may fail)\n");
+    init_buf();
+    describe_svalue(&throw_value,0,0);
+    s=simple_free_buf();
+    fprintf(stderr,"%s\n",s);
+    free(s);
+  }
+#endif
   exit(1);
 }
 
