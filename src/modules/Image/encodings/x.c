@@ -642,14 +642,14 @@ static void x_encode_pseudocolor(INT32 args)
 	 get_storage(sp[4-args].u.object,image_colortable_program)))
       error("Image.X.encode_pseudocolor: illegal argument 4 (expected colortable object)\n");
 
-   if (args>5)
+   if (args>5) {
       if (sp[5-args].type!=T_STRING)
 	 error("Image.X.encode_pseudocolor: illegal argument 6 (expected string)\n");
       else if (sp[5-args].u.string->len!=((vbpp>8)?2:1)<<vbpp)
 	 error("Image.X.encode_pseudocolor: illegal argument 6 (expected translate string of length %d, not %d)\n",((vbpp>8)?2:1)<<vbpp,sp[5-args].u.string->len);
       else 
 	 translate=sp[5-args].u.string->str;
-	 
+   } 
    if ( vbpp==8 && bpp==8 && !((bpp*img->xsize)%alignbits) )
       x_encode_pseudocolor_1byte_exact(args,img,nct,vbpp,bpp,alignbits,
 				       (unsigned char*)translate);
