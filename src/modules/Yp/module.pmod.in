@@ -8,8 +8,6 @@
 
 inherit @module@;
 
-constant __Domain = Domain;	// Work-around for scope bug.
-
 // Usual nicknames
 constant nicknames = ([
   "passwd":"passwd.byname",
@@ -23,15 +21,15 @@ constant nicknames = ([
 ]);
 
 class Map {
-  object(__Domain) domain;
+  object(Domain) domain;
   string ypmap;
 
   void create(string map,string|void d)
   {
     if (d) {
-      domain = __Domain(d);
+      domain = Domain(d);
     } else {
-      domain = __Domain();
+      domain = Domain();
     }
     ypmap = map;
     array err;
