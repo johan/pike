@@ -200,6 +200,7 @@ struct inherit
   INT16 identifier_level;
   INT16 parent_identifier;
   INT16 parent_offset;
+  size_t identifier_ref_offset;
   ptrdiff_t storage_offset;
   struct object *parent;
   struct program *prog;
