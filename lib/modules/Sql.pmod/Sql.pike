@@ -162,7 +162,7 @@ void create(void|string|object host, void|string|mapping(string:int|string) db,
 
       // The hostname is on the format:
       //
-      // [dbtype://][user[:password]@]hostname[:port][/database]
+      // dbtype://[user[:password]@]hostname[:port][/database]
 
       array(string) arr = host/"://";
       if ((sizeof(arr) > 1) && (arr[0] != "")) {
