@@ -843,6 +843,11 @@ fi #if test "x$enable_binary" != "xno"
 # Restore the -O2 that the default AC_PROG_CC adds.
 
 AC_SYS_COMPILER_FLAG(+O3,plus_O3,OPTIMIZE, [
+  if test "x`uname -p`" = "xia64"; then
+    # We don't trust -O3 on ia64.
+    AC_MSG_WARN([Disabling use of -O3 since the architecture is IA64.])
+    pike_cv_option_O3=no;
+  fi
   AC_SYS_COMPILER_FLAG(-O3,O3,OPTIMIZE, [
     AC_SYS_COMPILER_FLAG(-O2,O2,OPTIMIZE, [
       AC_SYS_COMPILER_FLAG(-O,O,OPTIMIZE)
