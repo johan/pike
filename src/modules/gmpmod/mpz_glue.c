@@ -159,7 +159,7 @@ static struct pike_string *low_get_digits(MP_INT *mpz, int base)
   }
   else if (base == 256)
   {
-    INT8 i;
+    INT32 i;
     mpz_t tmp;
     
     if (mpz_sgn(mpz) < 0)
@@ -167,7 +167,8 @@ static struct pike_string *low_get_digits(MP_INT *mpz, int base)
     len = (mpz_sizeinbase(mpz, 2) + 7) / 8;
     s = begin_shared_string(len);
     mpz_init_set(tmp, mpz);
-    for (i = len - 1; i>= 0; i-- )
+    i = len;
+    while(i--)
     {
       s->str[i] = mpz_get_ui(tmp) & 0xff;
       mpz_tdiv_q_2exp(tmp, tmp, 8);
