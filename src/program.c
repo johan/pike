@@ -3214,10 +3214,10 @@ void store_linenumber(INT32 current_line, struct pike_string *current_file)
       add_to_linenumbers(0);
       copy_shared_string(Pike_compiler->last_file, current_file);
     }
-    insert_small_number(DO_NOT_WARN((INT32)(PC-Pike_compiler->last_pc)));
+    insert_small_number(DO_NOT_WARN((INT32)(PIKE_PC-Pike_compiler->last_pc)));
     insert_small_number(current_line-Pike_compiler->last_line);
     Pike_compiler->last_line=current_line;
-    Pike_compiler->last_pc = DO_NOT_WARN((INT32)PC);
+    Pike_compiler->last_pc = DO_NOT_WARN((INT32)PIKE_PC);
   }
 }
 

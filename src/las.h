@@ -257,7 +257,7 @@ void resolv_program(node *n);
 #define add_to_mem_block(N,Data,Size) low_my_binary_strcat(Data,Size,areas+N)
 #define IDENTIFIERP(i) (Pike_compiler->new_program->identifier_references+(i))
 #define INHERIT(i) (Pike_compiler->new_program->inherits+(i))
-#define PC (Pike_compiler->new_program->num_program)
+#define PIKE_PC (Pike_compiler->new_program->num_program)
 
 #ifndef PIKE_DEBUG
 #define check_tree(X,Y)
