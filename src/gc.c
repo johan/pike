@@ -816,7 +816,7 @@ again:
 
     case T_PROGRAM:
     {
-      struct pike_string *tmp;
+      char *tmp;
       INT32 line;
       int foo=0;
 
@@ -829,16 +829,14 @@ again:
 	fprintf(stderr,"%*s**The program was written in C.\n",indent,"");
       }
 
-      tmp = get_program_line(p, &line);
-      if(strcmp(tmp->str, "-"))
+      tmp = debug_get_program_line(p, &line);
+      if(strcmp(tmp, "-"))
       {
 	fprintf(stderr,"%*s**Location: %s:%ld\n",
-		indent, "", tmp->str, (long)line);
-	free_string(tmp);
+		indent, "", tmp, (long)line);
 	foo=1;
 	break;
       }
-      free_string(tmp);
 #if 0
       if(!foo && p->num_linenumbers>1 && EXTRACT_UCHAR(p->linenumbers)=='\177')
       {
