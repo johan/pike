@@ -937,4 +937,21 @@ long long gethrtime()
 
 #endif
 
+#ifndef HAVE_LDEXP
+double LDEXP(double x, int exp)
+{
+  return x * pow(2.0,(double)exp);
+}
+#endif
+
+#ifndef HAVE_FREXP
+double FREXP(double x, int *exp)
+{
+  double ret;
+  *exp = DO_NOT_WARN((int)ceil(log(fabs(x))/log(2.0)));
+  ret = (x*pow(2.0,(double)-*exp));
+  return ret;
+}
+#endif
+
 #endif

@@ -63,27 +63,6 @@ RCSID("$Id$");
 #undef STACK_POINTER_WAS_DEFINED
 #endif /* STACKPOINTER_WAS_DEFINED */
 
-#ifdef HAVE_FREXP
-#define FREXP frexp
-#else
-double FREXP(double x, int *exp)
-{
-  double ret;
-  *exp = DO_NOT_WARN((int)ceil(log(fabs(x))/log(2.0)));
-  ret = (x*pow(2.0,(double)-*exp));
-  return ret;
-}
-#endif
-
-#if HAVE_LDEXP
-#define LDEXP ldexp
-#else
-double LDEXP(double x, int exp)
-{
-  return x * pow(2.0,(double)exp);
-}
-#endif
-
 #ifdef PIKE_DEBUG
 #define encode_value2 encode_value2_
 #define decode_value2 decode_value2_
