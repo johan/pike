@@ -1744,14 +1744,41 @@ static void find_references_to(void *block, int indent, int depth, int flags)
 {
   unsigned long h;
   struct memhdr *m;
+  int warned=0;
 
   for(h=0;h<(unsigned long)memhdr_hash_table_size;h++)
   {
+    /* Avoid infinite recursion */
+    int num_to_check=0;
+    void *to_check[1000];
     for(m=memhdr_hash_table[h];m;m=m->next)
+    {
+      if(num_to_check >= NELEM(to_check))
+      {
+	warned=1;
+	fprintf(stderr,"  <We might miss some references!!>\n");
+	break;
+      }
+      to_check[num_to_check++]=m->data;
+    }
+
+    while(--num_to_check >= 0)
     {
       unsigned int e;
       struct memhdr *tmp;
-      void **p=m->data;
+      void **p;
+
+      p=to_check[num_to_check];
+      m=find_memhdr(p);
+      if(!m)
+      {
+	if(!warned)
+	{
+	  warned=1;
+	  fprintf(stderr,"  <We might miss some references!!>\n");
+	}
+	continue;
+      }
       
       if( ! ((sizeof(void *)-1) & (long) p ))
       {
