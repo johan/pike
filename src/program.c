@@ -387,6 +387,13 @@ struct node_s *find_module_identifier(struct pike_string *ident)
     }
   }
 
+  /* Handle this_program */
+  if (ident == this_program_string) {
+    struct svalue s;
+    s.type=T_PROGRAM;
+    s.u.program=new_program;
+    return mkconstantsvaluenode(&s);
+  }
 
   if(resolve_cache)
   {
@@ -435,14 +442,6 @@ struct node_s *find_module_identifier(struct pike_string *ident)
       END_CYCLIC();
     }
     if(ret) return ret;
-  }
-
-  /* Handle this_program */
-  if (ident == this_program_string) {
-    struct svalue s;
-    s.type=T_PROGRAM;
-    s.u.program=new_program;
-    return mkconstantsvaluenode(&s);
   }
 
   return 0;
