@@ -21,6 +21,9 @@
     <chapter-ref file="not_extracted/data_types.xml"/>
   </file>
   <file>
+    <chapter-ref file="not_extracted/operators.xml"/>
+  </file>
+  <file>
     <chapter title="LFUN">
       <insert-move entity="lfun::"/>
       <insert-move entity="::"/>
