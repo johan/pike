@@ -148,17 +148,17 @@ static void my_init_destination(struct jpeg_compress_struct *cinfo)
 static boolean my_empty_output_buffer(struct jpeg_compress_struct *cinfo)
 {
    struct my_destination_mgr *dm=(struct my_destination_mgr *)cinfo->dest;
-   int pos;
+   size_t pos;
    char *new;
 
    pos=dm->len; /* foo! dm->len-dm->pub.free_in_buffer; */
    new=(char*)realloc(dm->buf,dm->len+BUF_INCREMENT);
    if (!new) return FALSE;
 
-   dm->buf=new;
-   dm->len+=BUF_INCREMENT;
-   dm->pub.free_in_buffer=dm->len-pos;
-   dm->pub.next_output_byte=(JOCTET*)new+pos;
+   dm->buf = new;
+   dm->len += BUF_INCREMENT;
+   dm->pub.free_in_buffer = DO_NOT_WARN(dm->len - pos);
+   dm->pub.next_output_byte = (JOCTET*)new + pos;
 
    return TRUE;
 }
@@ -327,10 +327,10 @@ struct my_source_mgr
 
 static void my_init_source(struct jpeg_decompress_struct *cinfo)
 {
-  struct my_source_mgr *sm=(struct my_source_mgr *)cinfo->src;
+  struct my_source_mgr *sm = (struct my_source_mgr *)cinfo->src;
   
-  sm->pub.next_input_byte=(JOCTET*)sm->str->str;
-  sm->pub.bytes_in_buffer=sm->str->len;
+  sm->pub.next_input_byte = (JOCTET*)sm->str->str;
+  sm->pub.bytes_in_buffer = DO_NOT_WARN(sm->str->len);
 }
 
 static boolean my_fill_input_buffer(struct jpeg_decompress_struct *cinfo)

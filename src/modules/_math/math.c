@@ -96,11 +96,11 @@ void f_acos(INT32 args)
 
 void f_tan(INT32 args)
 {
-  float f;
+  double f;
   if(args<1) error("Too few arguments to tan()\n");
   if(sp[-args].type!=T_FLOAT) error("Bad argument 1 to tan()\n");
 
-  f=(sp[-args].u.float_number-M_PI/2) / M_PI;
+  f = (sp[-args].u.float_number-M_PI/2) / M_PI;
   if(f==floor(f+0.5))
   {
     error("Impossible tangent.\n");

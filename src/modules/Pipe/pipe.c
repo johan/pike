@@ -622,8 +622,8 @@ static INLINE void output_try_write_some(struct object *obj)
 {
   struct output *out;
   struct pike_string *s;
-  unsigned long len;
-  INT32 ret;
+  size_t len;
+  INT_TYPE ret;
   
   out=(struct output*)(obj->storage);
 

@@ -387,7 +387,7 @@ void port_exit_program(void)
 
 void port_setup_program(void)
 {
-  INT32 offset;
+  ptrdiff_t offset;
   start_new_program();
   offset=ADD_STORAGE(struct port);
   map_variable("_accept_callback","mixed",0,offset+OFFSETOF(port,accept_callback),PIKE_T_MIXED);

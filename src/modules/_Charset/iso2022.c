@@ -149,7 +149,7 @@ static ptrdiff_t eat_text(unsigned char *src, ptrdiff_t srclen,
   return srclen;
 }
 
-static INT32 parse_esc(unsigned char *src, INT32 srclen,
+static INT32 parse_esc(unsigned char *src, ptrdiff_t srclen,
 		       struct iso2022_stor *s)
 {
   int grp=-1, wide=0, final, mode, l=1;
@@ -323,7 +323,7 @@ static ptrdiff_t eat_chars(unsigned char *src, ptrdiff_t srclen,
 static void eat_string(struct pike_string *str, struct iso2022_stor *s)
 {
   struct pike_string *tmpstr = NULL;
-  INT32 l;
+  ptrdiff_t l;
 
   if(s->retain != NULL) {
     tmpstr = add_shared_strings(s->retain, str);
