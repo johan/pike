@@ -245,8 +245,13 @@ void create(string|object host, void|string|mapping(string:int|string) db,
 
 
     program p;
+    mixed e;
 
-    p = Sql[program_name];
+    // we look in Sql.type and Sql.Provider.type.type for a valid sql class.
+    if(Sql[program_name])
+      p = Sql[program_name];
+    else if(Sql.Provider[program_name])
+      p = Sql.Provider[program_name][program_name];
 
     if (p) {
       if (options) {
