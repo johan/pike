@@ -166,6 +166,31 @@ Specifies the name of the master program (overridden by
 .BI \-m master_program
 ).
 .RE
+.LP
+On NT, the default master program is affected by the following keys in the
+registry:
+
+.nr
+.B HKEY_CURRENT_USER\eSoftware\eIdonex\ePike\e0.6\eshare_prefix
+.B HKEY_LOCAL_MACHINE\eSoftware\eIdonex\ePike\e0.6\eshare_prefix
+.RS
+Specifies the prefix for architecture independant files.
+.BI share_prefix /include
+is added to the include path, and
+.BI share_prefix /modules
+is added to the module path.
+.RE
+
+.nr
+.B HKEY_CURRENT_USER\eSoftware\eIdonex\ePike\e0.6\elib_prefix
+.B HKEY_LOCAL_MACHINE\eSoftware\eIdonex\ePike\e0.6\elib_prefix
+.RS
+Specifies the prefix for architecture dependant files.
+.BI lib_prefix /include
+is added to the include path, and
+.BI lib_prefix /modules
+is added to the module path.
+.RE
 .SH ENVIRONMENT
 Pike is affected by the following environment variables:
 .TP
