@@ -8136,6 +8136,13 @@ return 1;
 #endif
 ]],1)
 
+test_any([[
+#if 0
+#blahong
+#endif
+return 1;
+]],1)
+
 // #if efun
 // see test for add_constant()
 
@@ -9019,6 +9026,7 @@ test_equal(get_dir("get_dir_test"),({}))
 test_do(Stdio.write_file("get_dir_test/x", "x"));
 test_equal(get_dir("get_dir_test"),({"x"}))
 test_do(Stdio.recursive_rm("get_dir_test"))
+test_true(arrayp(get_dir()))
 
 // - get_groups_for_user
 // - get_weak_flag
