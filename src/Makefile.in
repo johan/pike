@@ -213,6 +213,8 @@ all: module_objects tools
 	  echo; \
 	fi
 
+doc: documentation
+
 documentation: onepage.xml traditional.xml modref.xml
 	cd $(DOCDIR) && $(MAKE) $(MAKE_FLAGS) PIKE="$(RUNPIKE)" \
 	  BUILDDIR="$(TMP_BUILDDIR)" $(DOCTARGET)
