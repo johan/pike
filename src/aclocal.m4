@@ -356,6 +356,8 @@ pushdef([AC_OUTPUT],
   export WARN
   AC_SUBST(CCSHARED)
   export CCSHARED
+  AC_SUBST(LDSHARED)
+  export LDSHARED
 
   PMOD_TARGETS=`echo $srcdir/*.cmod | sed -e "s/\.cmod/\.c/g" | sed -e "s|$srcdir/|\\$(SRCDIR)/|g"`
   test "$PMOD_TARGETS" = '$(SRCDIR)/*.c' && PMOD_TARGETS=

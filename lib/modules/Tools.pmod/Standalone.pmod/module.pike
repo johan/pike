@@ -239,7 +239,8 @@ int main(int argc, array(string) argv)
 		    "CFLAGS="+(specs->CFLAGS||""),
 		    "CPPFLAGS="+(specs->CPPFLAGS||""),
 		    "CPP="+(specs->CPP||""),
-		    "LDFLAGS="+(specs->LDFLAGS||""));
+		    "LDFLAGS="+(specs->LDFLAGS||""),
+		    "LDSHARED="+(specs->LDSHARED||""));
       }
     }
   }

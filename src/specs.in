@@ -4,4 +4,5 @@ CFLAGS=@CFLAGS@
 LDFLAGS=@LDFLAGS@
 CPPFLAGS=@CPPFLAGS@
 CPP=@CPP@
+LDSHARED=@LDSHARED@
 configure_args=@ac_configure_args@
