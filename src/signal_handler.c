@@ -1123,21 +1123,21 @@ static void internal_add_limit( struct perishables *storage,
   } else if(limit_value->type == T_MAPPING) {
     struct svalue *tmp3;
     l = malloc(sizeof( struct plimit ));
-    if((tmp3=simple_mapping_string_lookup(limit_value->u.mapping, "soft")))
+    if((tmp3=simple_mapping_string_lookup(limit_value->u.mapping, "soft"))) {
       if(tmp3->type == T_INT)
         l->rlp.rlim_cur=
           tmp3->u.integer>=0?tmp3->u.integer:ol.rlim_cur;
       else
         l->rlp.rlim_cur = RLIM_INFINITY;
-    else
+    } else
       l->rlp.rlim_cur = ol.rlim_cur;
-    if((tmp3=simple_mapping_string_lookup(limit_value->u.mapping, "hard")))
+    if((tmp3=simple_mapping_string_lookup(limit_value->u.mapping, "hard"))) {
       if(tmp3->type == T_INT)
         l->rlp.rlim_max =
           tmp3->u.integer>=0?tmp3->u.integer:ol.rlim_max;
       else
         l->rlp.rlim_max = RLIM_INFINITY;
-    else
+    } else
       l->rlp.rlim_max = ol.rlim_max;
   } else if(limit_value->type == T_ARRAY && limit_value->u.array->size == 2) {
     l = malloc(sizeof( struct plimit ));
