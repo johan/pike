@@ -1731,7 +1731,7 @@ static void internal_add_limit( struct perishables *storage,
  *!  @enddl
  */
 
-/*! @decl void Process.create_process.create(array(string) command_args, void|mapping modifiers);
+/*! @decl void create(array(string) command_args, void|mapping modifiers);
  *!
  *! @param command_args
  *! The command name and its command-line arguments. You do not have
