@@ -1835,7 +1835,7 @@ static void internal_add_limit( struct perishables *storage,
  *!  string containing the name of the group. (See @[setuid]
  *!  and @[getgrgid] for more info.)
  *!
- *! @mamber int(0..1) "setsid"
+ *! @member int(0..1) "setsid"
  *!  Set this to @tt{1@} to create a new session group.
  *!
  *! @member array(int|string) "setgroups"
