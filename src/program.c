@@ -3560,7 +3560,7 @@ int find_shared_string_identifier(struct pike_string *name,
   return low_find_shared_string_identifier(name,prog);
 }
 
-PMOD_EXPORT int find_identifier(char *name,struct program *prog)
+PMOD_EXPORT int find_identifier(const char *name,struct program *prog)
 {
   struct pike_string *n;
   if(!prog) {

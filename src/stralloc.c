@@ -16,6 +16,7 @@
 #include "bignum.h"
 #include "interpret.h"
 #include "block_alloc.h"
+#include "operators.h"
 
 #include <errno.h>
 #include <float.h>

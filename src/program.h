@@ -484,7 +484,7 @@ int low_find_shared_string_identifier(struct pike_string *name,
 struct ff_hash;
 int find_shared_string_identifier(struct pike_string *name,
 				  struct program *prog);
-PMOD_EXPORT int find_identifier(char *name,struct program *prog);
+PMOD_EXPORT int find_identifier(const char *name,struct program *prog);
 int store_prog_string(struct pike_string *str);
 int store_constant(struct svalue *foo,
 		   int equal,

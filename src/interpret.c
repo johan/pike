@@ -85,7 +85,8 @@ static char trace_buffer[2000];
 PMOD_EXPORT struct Pike_interpreter Pike_interpreter;
 PMOD_EXPORT int Pike_stack_size = EVALUATOR_STACK_SIZE;
 
-void do_trace_call(INT32);
+static void trace_return_value(void);
+static void do_trace_call(INT32);
 
 void gdb_stop_here(void)
 {

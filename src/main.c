@@ -750,6 +750,7 @@ DECLSPEC(noreturn) void pike_do_exit(int num) ATTRIBUTE((noreturn))
 void low_init_main(void)
 {
   void init_builtin(void);
+  void init_iterators(void);
 
   init_backend();
   init_iterators();
