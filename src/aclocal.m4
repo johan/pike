@@ -479,7 +479,7 @@ pushdef([AC_OUTPUT],
     if_autoconf(2,50,,[
       # Kludge for autoconf 2.13 and earlier prefixing all substitution
       # source files with $ac_given_source_dir/ (aka $srcdir/).
-      make_variables_in="`cd $srcdir;pwd|sed -e 's@[[^/]]*@@g;s@/@../@g'`$make_variables_in"
+      make_variables_in="`cd $srcdir;pwd|sed -e 's@[[[^/]]]*@@g;s@/@../@g'`$make_variables_in"
     ])
   else
 
