@@ -96,6 +96,7 @@ static void f_server(INT32 args)
 }
 
 /*! @decl void create(string|void domain)
+ *! @decl void bind(string domain)
  *!
  *! If @[domain] is not specified , the default domain will be used.
  *! (As returned by @[Yp.default_yp_domain()]).
