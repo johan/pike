@@ -681,32 +681,32 @@ PIKECLASS mpf
        mpf_cmp(THISMPF, get_mpf(q, 1, 0)) OP 0 :	\
        mpf_cmp_ui(THISMPF, q->u.integer) OP 0)
 	
-  PIKEFUN int `>(int|float|object q)
+  PIKEFUN int `>(mixed q)
     flags ID_STATIC;
     {
       RETURN CMPOP(>);
     }
 
-  PIKEFUN int `<(int|float|object q)
+  PIKEFUN int `<(mixed q)
     flags ID_STATIC;
     {
       RETURN CMPOP(<);
     }
   
-  PIKEFUN int `>=(int|float|object q)
+  PIKEFUN int `>=(mixed q)
     flags ID_STATIC;
   {
     RETURN CMPOP(>=);
   }
   
-  PIKEFUN int `<=(int|float|object q)
+  PIKEFUN int `<=(mixed q)
     flags ID_STATIC;
   {
     RETURN CMPOP(<=);
   }
 
 
-  PIKEFUN int `==(int|float|object q)
+  PIKEFUN int `==(mixed q)
     flags ID_STATIC;
   {
     MP_FLT *arg;
@@ -717,7 +717,7 @@ PIKECLASS mpf
     RETURN (arg && !mpf_cmp(THISMPF, arg));
   }
 
-  PIKEFUN int `!=(int|float|object q)
+  PIKEFUN int `!=(mixed q)
     flags ID_STATIC;
   {
     MP_FLT *arg;

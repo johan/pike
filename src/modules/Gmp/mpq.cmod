@@ -789,39 +789,39 @@ PIKECLASS mpq
       RETURN o;
     }
 
-  PIKEFUN int `>(int|float|object q)
+  PIKEFUN int `>(mixed q)
     flags ID_STATIC;
     {
       RETURN mpq_cmp(THISMPQ, get_mpq(q, 1)) > 0;
     }
 
-  PIKEFUN int `<(int|float|object q)
+  PIKEFUN int `<(mixed q)
     flags ID_STATIC;
     {
       RETURN mpq_cmp(THISMPQ, get_mpq(q, 1)) < 0;
     }
   
-  PIKEFUN int `>=(int|float|object q)
+  PIKEFUN int `>=(mixed q)
     flags ID_STATIC;
   {
     RETURN mpq_cmp(THISMPQ, get_mpq(q, 1)) >= 0;
   }
   
-  PIKEFUN int `<=(int|float|object q)
+  PIKEFUN int `<=(mixed q)
     flags ID_STATIC;
   {
     RETURN mpq_cmp(THISMPQ, get_mpq(q, 1)) <= 0;
   }
 
 
-  PIKEFUN int `==(int|float|object q)
+  PIKEFUN int `==(mixed q)
     flags ID_STATIC;
   {
     MP_RAT *arg=get_mpq(q, 0);
     RETURN arg && !mpq_cmp(THISMPQ, arg);
   }
 
-  PIKEFUN int `!=(int|float|object q)
+  PIKEFUN int `!=(mixed q)
     flags ID_STATIC;
   {
     MP_RAT *arg=get_mpq(q, 0);
