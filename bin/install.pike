@@ -537,7 +537,7 @@ void do_export()
     module_node->
       add_child(WixNode("CustomAction", ([
 			  "Id":"SetFinalizePike",
-			  "Property":"FinalizePike"
+			  "Property":"FinalizePike",
 			  "Value":"[TARGETDIR]",
 			  "Execute":"immediate",
 			])))->
@@ -545,7 +545,7 @@ void do_export()
       add_child(WixNode("CustomAction", ([
 			  "Id":"FinalizePike",
 			  "BinaryKey":"PikeInstaller",
-			  "VBScriptCall":"FinalizePike"
+			  "VBScriptCall":"FinalizePike",
 			  "Execute":"deferred",
 			])))->
       add_child(Standards.XML.Wix.line_feed)->
