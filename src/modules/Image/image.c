@@ -379,9 +379,11 @@ THREADS_ALLOW();
    ey=height-by;
    
    d=malloc(sizeof(rgb_group)*img->xsize*img->ysize +1);
+THREADS_DISALLOW();
 
    if(!d) error("Out of memory.\n");
    
+THREADS_ALLOW();
 CHRONO("apply_matrix, one");
 
    for (y=by; y<img->ysize-ey; y++)
@@ -1843,9 +1845,11 @@ void image_distancesq(INT32 args)
    i=img->xsize*img->ysize;
    while (i--)
    {
+     int dist;
 #define DISTANCE(A,B) \
-   (sq((long)(A).r-(B).r)+sq((long)(A).g-(B).g)+sq((long)(A).b-(B).b))
-      d->r=d->g=d->b=testrange(DISTANCE(*s,rgb)>>8);
+     (sq((long)(A).r-(B).r)+sq((long)(A).g-(B).g)+sq((long)(A).b-(B).b))
+      dist = DISTANCE(*s,rgb)>>8;
+      d->r=d->g=d->b=testrange(dist);
       d++; s++;
    }
    THREADS_DISALLOW();
@@ -2401,11 +2405,8 @@ void image_modify_by_intensity(INT32 args)
    THREADS_ALLOW();
    while (x--)
    {
-      i= testrange( ((((long)s->r)*rgb.r+
-		      ((long)s->g)*rgb.g+
-		      ((long)s->b)*rgb.b)/div) );
-      *d=list[i];
-      d++;
+      int q = ((((int)s->r)*rgb.r+((int)s->g)*rgb.g+((int)s->b)*rgb.b)/div);
+      *(d++)=list[testrange( q )];
       s++;
    }
    THREADS_DISALLOW();
