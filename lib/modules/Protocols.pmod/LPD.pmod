@@ -225,9 +225,11 @@ werror("job file:\n\n" + control  + "\n\n");
   }
 
 //! Create a new LPD client connection.
-//! @param hostname contains the hostname or ipaddress of the print host.
+//! @param hostname
+//! Contains the hostname or ipaddress of the print host.
 //! if not provided, defaults to @i{localhost@}.
-//! @param portnum contains the port the print host is listening on.
+//! @param portnum
+//! Cntains the port the print host is listening on.
 //! if not provided, defaults to port @i{515@}, the RFC 1179 standard.
   void create(string|void hostname, int|void portnum)
   {
