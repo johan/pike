@@ -28,20 +28,7 @@
 #include "builtin_functions.h"
 #include "fsort.h"
 #include "port.h"
-#include "fd_control.h"
 
-/*! @decl int(0..1) set_close_on_exec(int fd, int which)
- *!
- *! Raw set_close_on_exec().
- *!
- *! @seealso
- *!   @[Stdio.File()->set_close_on_exec()
- */
-PIKEFUN int set_close_on_exec(int fd, int which)
-{
-  int retval = set_close_on_exec(fd, which);
-  RETURN retval;
-}
 
 /*! @decl array(array(int|string)) _describe_program(program p)
  *!
