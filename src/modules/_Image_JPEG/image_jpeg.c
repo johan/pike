@@ -39,6 +39,13 @@
 #endif
 RCSID("$Id$");
 
+/* For some reason EXTERN can be defined here.
+ * This is not good, since it confuses compilation.h.
+ */
+#ifdef EXTERN
+#undef EXTERN
+#endif
+
 #include "pike_macros.h"
 #include "object.h"
 #include "constants.h"
