@@ -282,8 +282,10 @@ void img_bmp_encode(INT32 args)
    apply(o,"mirrory",0);
    free_object(o);
    if (sp[-1].type!=T_OBJECT ||
-       !(img=(struct image*)get_storage(o=sp[-1].u.object,image_program)))
+       !(img=(struct image*)get_storage(o=sp[-1].u.object,image_program))) {
+      free_object(oc);
       Pike_error("Image.BMP.encode: wierd result from ->mirrory()\n");
+   }
    if (nct) push_object(oc);
 
    /* bitmapinfo */
@@ -505,7 +507,6 @@ void img_bmp_encode(INT32 args)
       stack_swap();
       pop_stack();
    }
-   if (oc) free_object(oc);
    stack_swap();
    pop_stack();  /* get rid of colortable & source objects */
 }
@@ -697,11 +698,11 @@ void i_img_bmp__decode(INT32 args,int header_only)
 
    if (comp==1195724874) /* "JPEG" */
    {
-      int n=int_from_32bit(os+10);
+      int i=int_from_32bit(os+10);
 
       push_text("image");
 
-      if (olen-n<0)
+      if (olen-i<0)
 	 Pike_error("Image.BMP.decode: unexpected EOF in JFIF data\n");
 
       push_text("Image");
@@ -712,7 +713,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
       push_text("decode");
       f_index(2);
 
-      push_string(make_shared_binary_string((char *)os+n,olen-n));
+      push_string(make_shared_binary_string((char *)os+i,olen-i));
 
       push_text("quant_tables");
 
