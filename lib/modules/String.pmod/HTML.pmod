@@ -241,7 +241,7 @@ class OBox {
 
   //! Ensures that all rows have the same number of cells.
   void pad_rows() {
-    rows = ::pad_rows(rows, "<td bgcolor='" + cell_color + "'>&nbsp;</td>");
+    rows = global::pad_rows(rows, "<td bgcolor='" + cell_color + "'>&nbsp;</td>");
   }
 
   //! Returns the result.
