@@ -1156,7 +1156,7 @@ void init_pdf_pdflib(void)
                 tFunc(tIoF tIoF,tObj),0);
 
    set_init_callback(init_pdf);
-   set_init_callback(exit_pdf);
+   set_exit_callback(exit_pdf);
    end_class("PDFgen",0);
 
    add_float_constant("a0_width",a0_width, 0);
