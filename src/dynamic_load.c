@@ -6,6 +6,7 @@
 #  include "module.h"
 #  include "stralloc.h"
 #  include "pike_macros.h"
+#  include "main.h"
 
 RCSID("$Id$");
 
