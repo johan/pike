@@ -53,6 +53,7 @@ struct compiler_frame
   int current_function_number;
   int recur_label;
   int is_inline;
+  unsigned int opt_flags;
   struct local_variable variable[MAX_LOCAL];
 };
 
