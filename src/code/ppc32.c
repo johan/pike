@@ -226,8 +226,8 @@ void ppc32_local_lvalue(INT32 arg)
     /* addi r3,r3,offs */
     ADDI(PPC_REG_ARG1, PPC_REG_ARG1, offs);
   }
-  /* li r0,T_LVALUE */
-  SET_REG(0, MAKE_TYPE_WORD(T_LVALUE, 0));
+  /* li r0,T_SVALUE_PTR */
+  SET_REG(0, MAKE_TYPE_WORD(T_SVALUE_PTR, 0));
   /* stw r0,0(pike_sp) */
   STW(0, PPC_REG_PIKE_SP, 0);
   /* li r0,T_VOID */
