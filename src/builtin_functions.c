@@ -2602,9 +2602,13 @@ PMOD_EXPORT void f_next_object(INT32 args)
   }
 }
 
-/*! @decl program object_program(mixed o)
+/*! @decl program|function object_program(mixed o)
  *!
- *!   Return the program from which @[o] was instantiated.
+ *!   Return the program from which @[o] was instantiated. If the
+ *!   object was instantiated from an unnamed program, the
+ *!   generating function will be returned. E.g.
+ *!   @expr{object_program(class { }())@} will return the @i{function@}
+ *!   "class {}".
  *!
  *!   If @[o] is not an object or has been destructed @expr{0@} (zero)
  *!   will be returned.
@@ -7833,8 +7837,9 @@ void init_builtin_efuns(void)
 		tFunc(tPrg(tObj),tPrg(tObj)),
 		tFunc(tArray,tArray)),OPT_EXTERNAL_DEPEND);
   
-/* function(mixed:program) */
-  ADD_EFUN2("object_program", f_object_program,tFunc(tMix, tOr(tPrg(tObj),tObj)),
+  /* function(mixed:program|function) */
+  ADD_EFUN2("object_program", f_object_program,
+	    tFunc(tMix, tOr(tPrg(tObj),tFunction)),
 	    OPT_TRY_OPTIMIZE, fix_object_program_type, 0);
   
 /* function(mixed:int) */
