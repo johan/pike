@@ -120,6 +120,7 @@ int|array(string|int) fetch_row()
       return(0);
     }
     sort(indices(master_res[index]), res = values(master_res[index]));
+    index++;
     return(res);
   }
   return (master_res->fetch_row());
