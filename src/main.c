@@ -33,6 +33,7 @@ RCSID("$Id$");
 
 
 char *master_file;
+char **ARGV;
 
 int d_flag=0;
 int c_flag=0;
@@ -57,6 +58,8 @@ void main(int argc, char **argv, char **env)
   int e, num;
   char *p;
   struct array *a;
+
+  ARGV=argv;
 
 #ifdef HAVE_SETLOCALE
 #ifdef LC_NUMERIC
