@@ -349,7 +349,15 @@ void f_random(INT32 args)
 void f_random_seed(INT32 args)
 {
   INT_TYPE i;
+#ifdef AUTO_BIGNUM
+  check_all_args("random_seed",args,BIT_INT | BIT_OBJECT, 0);
+  if(sp[-args].type == T_INT)
+    i=sp[-args].u.integer;
+  else
+    i=hash_svalue(sp-args);
+#else
   get_all_args("random_seed",args,"%i",&i);
+#endif
   my_srand(i);
   pop_n_elems(args);
 }

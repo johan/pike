@@ -1257,6 +1257,7 @@ class: modifiers F_CLASS optional_identifier
       int i;
       struct program *p;
       struct identifier *id;
+      int tmp=compiler_pass;
       i=isidentifier($3->u.sval.u.string);
       if(i<0)
       {
@@ -1280,6 +1281,7 @@ class: modifiers F_CLASS optional_identifier
 	  low_start_new_program(new_program, 0,0);
 	}
       }
+      compiler_pass=tmp;
     }
     num_parse_error=num_errors; /* Kluge to prevent gazillion error messages */
   }

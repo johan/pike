@@ -547,6 +547,10 @@ void low_exit_main(void)
   void cleanup_compiler(void);
   void cleanup_backend(void);
 
+#ifdef AUTO_BIGNUM
+  void exit_auto_bignum(void);
+  exit_auto_bignum();
+#endif
   th_cleanup();
   exit_object();
   exit_dynamic_load();

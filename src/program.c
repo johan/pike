@@ -554,8 +554,10 @@ void low_start_new_program(struct program *p,
   if(!p)
   {
     p=low_allocate_program();
+    e=1;
   }else{
     add_ref(p);
+    e=2;
   }
 
   if(name)
@@ -570,6 +572,8 @@ void low_start_new_program(struct program *p,
 
 #define PUSH
 #include "compilation.h"
+
+  compiler_pass=e;
 
   num_used_modules=0;
 
