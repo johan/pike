@@ -1688,18 +1688,18 @@ static void call_atexits(void)
     (*atexit_fnc[--atexit_cnt])();
 }
 
-#else
+#else /* DYNAMIC_MODULE */
 
 static void call_atexits(void)
 {
 }
 
-#endif
+#endif /* DYNAMIC_MODULE */
 
 #else /* HAVE_ORACLE */
 
-void pike_modle_init(void)  {}
-void pike_modle_exit(void)  {}
+void pike_module_init(void)  {}
+void pike_module_exit(void)  {}
 
 #endif
 
