@@ -1206,3 +1206,5 @@ class UDP
 	callback(i,@extra);
    }
 }
+
+constant werror=predef::werror;
