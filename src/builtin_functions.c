@@ -4401,19 +4401,15 @@ void f__leak(INT32 args)
 
 void f__typeof(INT32 args)
 {
-  INT32 i;
-  struct pike_string *s,*t;
+  struct pike_string *s;
   if(!args)
     SIMPLE_TOO_FEW_ARGS_ERROR("_typeof", 1);
 
-  low_init_threads_disable();
-  s=get_type_of_svalue(sp-args);
-  t=describe_type(s);
-  exit_threads_disable(NULL);
+  s = get_type_of_svalue(sp-args);
 
-  free_string(s);
   pop_n_elems(args);
-  push_string(t);
+  push_string(s);
+  sp[-1].type = T_TYPE;
 }
 
 void f_replace_master(INT32 args)
@@ -5730,7 +5726,7 @@ void init_builtin_efuns(void)
 
   ADD_EFUN("_refs",f__refs,tFunc(tRef,tInt),OPT_EXTERNAL_DEPEND);
   ADD_EFUN("_leak",f__leak,tFunc(tRef,tInt),OPT_EXTERNAL_DEPEND);
-  ADD_EFUN("_typeof",f__typeof,tFunc(tMix,tStr),0);
+  ADD_EFUN("_typeof",f__typeof,tFunc(tMix,tType),0);
 
   /* class __master
    * Used to prototype the master object.
