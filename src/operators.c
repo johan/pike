@@ -1846,6 +1846,13 @@ PMOD_EXPORT void o_lsh(void)
       SIMPLE_BAD_ARG_ERROR("`<<", 1, "int|object");
     SIMPLE_BAD_ARG_ERROR("`<<", 2, "int|object");
   }
+#ifndef AUTO_BIGNUM
+  if (sp[-1].u.integer > 31) {
+    sp--;
+    sp[-1].u.integer = 0;
+    return;
+  }
+#endif /* !AUTO_BIGNUM */
   sp--;
   sp[-1].u.integer = sp[-1].u.integer << sp->u.integer;
 }
@@ -1904,6 +1911,16 @@ PMOD_EXPORT void o_rsh(void)
   {
     sp--;
     sp[-1].u.integer = 0;
+    return;
+  }
+#else /* !AUTO_BIGNUM */
+  if (sp[-1].u.integer > 31) {
+    sp--;
+    if (sp[-1].u.integer < 0) {
+      sp[-1].u.integer = -1;
+    } else {
+      sp[-1].u.integer = 0;
+    }
     return;
   }
 #endif /* AUTO_BIGNUM */
