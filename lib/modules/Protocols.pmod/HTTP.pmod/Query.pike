@@ -358,8 +358,8 @@ string headers_encode(mapping(string:array(string)|string) h)
 	 buf->add( String.capitalize(replace(name,"_","-")), ": ",
 		   value, "\r\n" );
      } else {
-       werror("Protocols.HTTP.Query()->headers_encode(): Bad header: %O:%O.\n",
-	      name, value);
+       error("Protocols.HTTP.Query()->headers_encode(): Bad header: %O:%O.\n",
+	     name, value);
      }
    return (string)buf;
 }
