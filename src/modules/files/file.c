@@ -237,6 +237,7 @@ static void just_close_fd(void)
 #endif /* WITH_OOB */
   check_internal_reference(THIS);
 
+  FD=-1;
   while(1)
   {
     int i;
@@ -250,6 +251,7 @@ static void just_close_fd(void)
       {
 	default:
 	  ERRNO=errno;
+	  FD=fd;
 	  error("Failed to close file.\n");
 	  
 	case EBADF:
@@ -261,7 +263,6 @@ static void just_close_fd(void)
     }
     break;
   }
-  FD=-1;
 }
 
 static void close_fd(void)
