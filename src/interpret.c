@@ -1438,7 +1438,21 @@ static int eval_instruction(unsigned char *pc)
     break;
 
     CASE(F_CALL_FUNCTION_AND_RETURN);
-    return sp - *--mark_sp;
+    {
+      INT32 args=sp - *--mark_sp;
+      if(!args)
+	error("Too few arguments to call_function()\n");
+      switch(sp[-args].type)
+      {
+	case T_INT:
+	case T_STRING:
+	case T_FLOAT:
+	case T_MAPPING:
+	case T_MULTISET:
+	  error("Attempting to call a non-function value (%s).\n",get_name_of_type(sp[-args].type));
+      }
+      return args;
+    }
 
     default:
       fatal("Strange instruction %ld\n",(long)instr);
