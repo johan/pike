@@ -446,6 +446,7 @@ static int low_yylex(YYSTYPE *yylval)
 	  if(ISWORD("switch")) return TOK_SWITCH;
 	  break;
 	case TWO_CHAR('t','y'):
+	  if(ISWORD("typedef")) return TOK_TYPEDEF;
 	  if(ISWORD("typeof")) return TOK_TYPEOF;
 	  break;
 	case TWO_CHAR('v','a'):
