@@ -96,7 +96,7 @@ static object recv_packet(string data)
 //! close_notifies.
 void send_packet(object packet, int|void priority)
 {
-  if (closing) {
+  if (closing & 1) {
 #ifdef SSL3_DEBUG
     werror("SSL.connection->send_packet: ignoring packet after close\n");
 #endif
@@ -214,8 +214,6 @@ int handle_alert(string s)
 #ifdef SSL3_DEBUG
     werror("SSL.connection: Close notify  alert %d\n", description);
 #endif
-    if (!(closing & 1))
-      send_close();
     closing |= 2;
     return 1;
   }
@@ -391,7 +389,7 @@ string|int got_data(string|int s)
       }
     }
   }
-  return closing ? 1 : res;
+  return closing & 2 ? 1 : res;
 }
 
 #endif
