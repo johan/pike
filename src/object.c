@@ -922,9 +922,6 @@ void gc_mark_object_as_referenced(struct object *o)
       if(frame.context.prog->gc_marked)
 	frame.context.prog->gc_marked(o);
 
-      if(frame.context.parent)
-	gc_mark_object_as_referenced(frame.context.parent);
-
       for(d=0;d<(int)frame.context.prog->num_identifiers;d++)
       {
 	if(!IDENTIFIER_IS_VARIABLE(frame.context.prog->identifiers[d].identifier_flags)) 
@@ -959,7 +956,7 @@ void gc_check_all_objects(void)
   {
 #ifdef DEBUG
     if(o->parent)
-      if(gc_check(o->parent)==-2)
+      if(debug_gc_check(o->parent,T_OBJECT,o)==-2)
 	fprintf(stderr,"(in object at %lx -> parent)\n",(long)o);
 #else
     if(o->parent)
@@ -973,9 +970,6 @@ void gc_check_all_objects(void)
       {
 	struct inherit in=o->prog->inherits[e];
 	char *base=o->storage + in.storage_offset;
-
-	if(in.parent)
-	  gc_check(in.parent);
 
 	for(d=0;d<in.prog->num_identifiers;d++)
 	{
