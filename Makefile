@@ -40,10 +40,11 @@ force_configure:
 builddir:
 	@builddir="$(BUILDDIR)"; \
 	{ \
-	  IFS='/'; dir=""; \
+	  IFS='/'; \
+	  dir=`echo "$$builddir" | sed -e 's|[^/].*||'`; \
 	  for d in $$builddir; do \
 	    dir="$$dir$$d"; \
-	    test -z "$$dir" -o -d "$$dir" || mkdir "$$dir" || exit 1; \
+	    test x"$$dir" = x -o -d "$$dir" || mkdir "$$dir" || exit 1; \
 	    dir="$$dir/"; \
 	  done; \
 	}
