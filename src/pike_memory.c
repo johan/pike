@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 #include "pike_memory.h"
 #include "error.h"
@@ -27,6 +28,12 @@ char *strdup(const char *str)
   return(res);
 }
 #endif /* !HAVE_STRDUP */
+
+int pcharp_memcmp(PCHARP a, PCHARP b, int sz)
+{
+  return generic_quick_binary_strcmp(a.str, sz, a.shift,
+				     b.str, sz, b.shift);
+}
 
 INLINE p_wchar1 *MEMCHR1(p_wchar1 *p,p_wchar1 c,INT32 e)
 {
