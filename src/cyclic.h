@@ -22,7 +22,8 @@ typedef struct CYCLIC
   CYCLIC cyclic_struct__
 
 #define BEGIN_CYCLIC(A,B) \
-   begin_cyclic(&cyclic_struct__, &cyclic_identifier__, (void *)th_self(), (void *)(A), (void *)(B))
+   begin_cyclic(&cyclic_struct__, &cyclic_identifier__, \
+                (void *)(ptrdiff_t)th_self(), (void *)(A), (void *)(B))
 
 #define SET_CYCLIC_RET(RET) \
    cyclic_struct__.ret=(void *)(RET)

@@ -125,7 +125,7 @@ struct program_state;
 union idptr
 {
   void (*c_fun)(INT32);
-  INT32 offset;
+  ptrdiff_t offset;
 };
 
 #define IDENTIFIER_PIKE_FUNCTION 1

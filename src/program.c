@@ -517,8 +517,10 @@ void optimize_program(struct program *p)
 int program_function_index_compare(const void *a,const void *b)
 {
   return
-    my_order_strcmp(ID_FROM_INT(Pike_compiler->new_program, *(unsigned short *)a)->name,
-		    ID_FROM_INT(Pike_compiler->new_program, *(unsigned short *)b)->name);
+    DO_NOT_WARN((int)my_order_strcmp(ID_FROM_INT(Pike_compiler->new_program,
+						 *(unsigned short *)a)->name,
+				     ID_FROM_INT(Pike_compiler->new_program,
+						 *(unsigned short *)b)->name));
 }
 
 #ifdef PIKE_DEBUG
@@ -1382,7 +1384,8 @@ PMOD_EXPORT struct program *debug_end_program(void)
  * Allocate needed for this program in the object structure.
  * An offset to the data is returned.
  */
-PMOD_EXPORT size_t low_add_storage(size_t size, size_t alignment, int modulo_orig)
+PMOD_EXPORT size_t low_add_storage(size_t size, size_t alignment,
+				   ptrdiff_t modulo_orig)
 {
   ptrdiff_t offset;
   ptrdiff_t modulo;
@@ -1420,7 +1423,8 @@ PMOD_EXPORT size_t low_add_storage(size_t size, size_t alignment, int modulo_ori
   }
 
   if(Pike_compiler->new_program->alignment_needed<alignment)
-    Pike_compiler->new_program->alignment_needed=alignment;
+    Pike_compiler->new_program->alignment_needed =
+      DO_NOT_WARN((unsigned INT8)alignment);
 
 #ifdef PIKE_DEBUG
   if(offset < Pike_compiler->new_program->storage_needed)
@@ -1437,7 +1441,7 @@ PMOD_EXPORT size_t low_add_storage(size_t size, size_t alignment, int modulo_ori
 
   Pike_compiler->new_program->storage_needed = offset + size;
 
-  return (SIZE_T) offset;
+  return (size_t) offset;
 }
 
 
