@@ -2379,6 +2379,3 @@ cond([[all_constants()->_verify_internals]],
 [[
   test_do(_verify_internals())
 ]])
-
-// - Yabu
-// test_true(compile_file("../lib/modules/Yabu.pmod/module.pmod")()->main())
