@@ -41,9 +41,9 @@ void image_dct(INT32 args)
    
    if (!THIS->img) error("no image\n");
 
-   fprintf(stderr,"%d bytes, %d bytes\n",
-	   sizeof(rgbd_group)*THIS->xsize*THIS->ysize,
-	   sizeof(rgb_group)*THIS->xsize*THIS->ysize+1);
+   fprintf(stderr,"%lu bytes, %lu bytes\n",
+	   (unsigned long)(sizeof(rgbd_group)*THIS->xsize*THIS->ysize),
+	   (unsigned long)(sizeof(rgb_group)*THIS->xsize*THIS->ysize+1));
     
    if (!(area=malloc(sizeof(rgbd_group)*THIS->xsize*THIS->ysize+1)))
       error("Out of memory\n");
