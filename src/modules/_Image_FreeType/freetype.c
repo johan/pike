@@ -102,7 +102,7 @@ static void image_ft_face_write_char( INT32 args )
   {
     int p = slot->bitmap.pitch;
     int g = slot->bitmap.num_grays;
-    char *s = slot->bitmap.buffer;
+    unsigned char *s = slot->bitmap.buffer;
     if( s )
       for( y = 0; y<i->ysize; y++ )
         for( x = 0; x<i->xsize; x++ )
