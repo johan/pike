@@ -314,7 +314,9 @@ void describe_location(void *real_memblock,
     }
   }
 
+#ifdef DEBUG_MALLOC
   dmalloc_describe_location(memblock, location, indent);
+#endif
 }
 
 static void gdb_gc_stop_here(void *a)
