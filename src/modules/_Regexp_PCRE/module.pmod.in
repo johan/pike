@@ -236,7 +236,7 @@ class Studied
    }
 }
 
-#if constant(@module@.buildconfig_UTF8)
+#if constant(@module@.UTF8_SUPPORTED)
 #define PCRE_GOT_WIDESTRINGS
 
 //! Wrapper class around Plain, that will allow widestring
