@@ -10,8 +10,10 @@
 
 #include "program.h"
 
-#ifndef INCLUDED_FROM_LANGUAGE_YACC
-/* language.c duplicates the definitions in language.h. */
+#if !defined(INCLUDED_FROM_LANGUAGE_YACC) && !defined(TOK_ARROW)
+/* language.c duplicates the definitions in language.h.
+ * language.h is usually not protected against multiple inclusion.
+ */
 #include "language.h"
 #endif
 
