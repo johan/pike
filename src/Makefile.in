@@ -517,6 +517,9 @@ manpages: wmml
 	fi) | (cd wmml && $(RUNPIKE) $(TMP_BINDIR)/wmmltohtml2 \
 	  $(TMP_BINDIR)/manpages man/man)
 
+tutorial: wmml
+	( cd $(SRCDIR)/../tutorial/ ; $(MAKE) pike="$(RUNPIKE)" $(TARGET) )
+
 # Lobotomization...
 
 lobotomize_crypto:
