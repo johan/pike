@@ -1497,7 +1497,7 @@ static void file_grantpt( INT32 args )
 #else /* USE_CHGPT */
   /* chgpt on HPUX doesn't like getting any arguments... */
   push_constant_text(USE_CHGPT);
-  f_aggregatew(1);
+  f_aggregate(1);
 
   /* chgpt wants to get the pty on fd 0. */
   push_constant_text("stdin");
