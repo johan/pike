@@ -1308,7 +1308,7 @@ void pike_module_init(void)
 #endif
   }
 
-  init_udp();
+  init_dumudp();
 
 #ifdef ENABLE_STREAMED_PARSER
   start_new_program();

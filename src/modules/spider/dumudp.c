@@ -434,7 +434,7 @@ static void udp_query_address(INT32 args)
 }
 
 
-void init_udp(void)
+void init_dumudp(void)
 {
   start_new_program();
 
