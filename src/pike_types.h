@@ -216,6 +216,7 @@ void push_object_type(int flag, INT32 id);
 void push_object_type_backwards(int flag, INT32 id);
 INT32 extract_type_int(char *p);
 void push_unfinished_type(char *s);
+void push_assign_type(int marker);
 void push_finished_type(struct pike_type *type);
 void push_finished_type_backwards(struct pike_type *type);
 struct pike_type *debug_pop_unfinished_type(void);

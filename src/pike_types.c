@@ -265,6 +265,12 @@ void push_int_type(INT32 min, INT32 max)
   push_type(T_INT);
 }
 
+static void push_assign_type(int marker)
+{
+  push_type(marker);
+  push_type(T_ASSIGN);
+}
+
 void push_object_type(int flag, INT32 id)
 {
   push_type_int(id);
