@@ -2220,6 +2220,10 @@ class Codec
     {
       if(sscanf(x,"efun:%s",x)) return f[x];
       if(sscanf(x,"resolv:%s",x)) return resolv(x);
+      if(sscanf(x,"mpath:%s",x))
+	foreach(pike_module_path, string path)
+	  if(object ret=low_cast_to_object(combine_path(path,x),0))
+	    return ret;
       return cast_to_object(x,0);
     }
   
@@ -2227,6 +2231,10 @@ class Codec
     {
       if(sscanf(x,"efun:%s",x)) return f[x];
       if(sscanf(x,"resolv:%s",x)) return resolv(x);
+      if(sscanf(x,"mpath:%s",x))
+	foreach(pike_module_path, string path)
+	  if(program ret=cast_to_program(combine_path(path,x),0))
+	    return ret;
       return cast_to_program(x,0);
     }
   
