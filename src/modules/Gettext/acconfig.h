@@ -7,7 +7,7 @@
 @TOP@
 
 /* define if you have gettext */
-#define HAVE_GETTEXT
+#undef HAVE_GETTEXT
 
 @BOTTOM@
 
