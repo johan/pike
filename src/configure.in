@@ -3386,6 +3386,9 @@ case "x$LD" in
   $CC*)
     # Options in CFLAGS, no stuff needs to be added
   ;;
+  \$\(CC\)*)
+    # Options in CFLAGS, no stuff needs to be added
+  ;;
   *)
     LD="${LD} ${LD_FALLBACK_FLAGS-}"
   ;;
