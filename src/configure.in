@@ -951,6 +951,8 @@ AC_CHECK_FUNCS( \
  alarm \
  fork \
  fork1 \
+ setuid getuid seteuid geteuid \
+ setgid getgid setegid getegid \
 )
 
 if test $ac_cv_func_crypt$ac_cv_func__crypt = nono ; then
