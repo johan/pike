@@ -6,16 +6,16 @@
 
 #if constant(Nettle.Yarrow)
 
-#if constant(Crypto.NT)
-static string urandom;
-static string random;
+#if !constant(Crypto.NT)
+static string dev_urandom;
+static string dev_random;
 
 void create() {
-  if(file_stat("/dev/urandom")) urandom = "/dev/urandom";
-  if(file_stat("/dev/random")) random = "/dev/random";
-  if(random && !urandom) urandom=random;
-  if(!random && urandom) ranfom=urandom;
-  if(!random && !urandom) error("No entropy source found.\n");
+  if(file_stat("/dev/urandom")) dev_urandom = "/dev/urandom";
+  if(file_stat("/dev/random")) dev_random = "/dev/random";
+  if(dev_random && !dev_urandom) dev_urandom=dev_random;
+  if(!dev_random && dev_urandom) dev_random=dev_urandom;
+  if(!dev_random && !dev_urandom) error("No entropy source found.\n");
 }
 #endif
 
@@ -44,9 +44,9 @@ static class RND {
     seed( ctx->CryptGenRandom(min_seed_size()*2) );
 #else
     if(no_block)
-      f = Stdio.File("/dev/urandom", "r");
+      f = Stdio.File(dev_urandom, "r");
     else
-      f = Stdio.File("/dev/random", "r");
+      f = Stdio.File(dev_random, "r");
 
     seed( f->read(min_seed_size()*2) );
 #endif
