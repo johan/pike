@@ -66,7 +66,7 @@ void init_modules(void)
     JMP_BUF recovery;
     if (!p) {
       start_new_program();
-      p = Pike_compiler->new_program;
+      p = Pike_compiler.new_program;
     }
     if(SETJMP(recovery)) {
       /* FIXME: We could loop here until we find p. */
