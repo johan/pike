@@ -307,7 +307,7 @@ void finish()
 	
       case 2:
 	werror("Testing accept. ");
-	string data1=strmult("foobar",4711);
+	string data1 = "foobar" * 4711;
 	for(int e=0;e<10;e++)
 	{
 	  sock1=Socket();
@@ -346,8 +346,8 @@ void finish()
 	werror("Copying "+((tests/2)*(2<<(tests/2))*11)+" bytes of data on "+(tests&~1)+" "+(tests&1?"pipes":"sockets")+" ");
 	for(int e=0;e<tests/2;e++)
 	{
-	  string data1=strmult("foobar",2<<(tests/2));
-	  string data2=strmult("fubar",2<<(tests/2));
+	  string data1 = "foobar" * (2<<(tests/2));
+	  string data2 = "fubar" * (2<<(tests/2));
 	  socks=spair(!(tests & 1));
 	  sock1=socks[0];
 	  sock2=socks[1];
@@ -419,7 +419,7 @@ void accept_callback()
     werror("Accept failed");
   }
   o=Socket(o);
-  o->expected_data=strmult("foobar",4711);
+  o->expected_data = "foobar" * 4711;
 }
 
 int main()
