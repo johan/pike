@@ -2331,11 +2331,12 @@ void image_colortable_reduce_fs(INT32 args)
    struct object *o;
    struct neo_colortable *nct;
 
-   if (args) 
+   if (args) {
      if (sp[-args].type!=T_INT) 
 	SIMPLE_BAD_ARG_ERROR("Image.Colortable->reduce",1,"int");
      else
 	numcolors=sp[-args].u.integer;
+   }
 
    if (numcolors<2)
       SIMPLE_BAD_ARG_ERROR("Image.Colortable->reduce",1,"int(2..)");
