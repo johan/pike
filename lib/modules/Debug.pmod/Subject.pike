@@ -1,5 +1,7 @@
 // $Id$
 
+#pike __REAL_VERSION__
+
 //! This is a probe subject which you can send in somewhere to
 //! get probed (not to be confused with a probe object, which
 //! does some active probing). All calls to LFUNs will be printed
