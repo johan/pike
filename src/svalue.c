@@ -1278,7 +1278,8 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	  if (id) name = id->name;
 
 	  if(name && (prog->flags & PROGRAM_FINISHED) &&
-	     Pike_interpreter.evaluator_stack && !Pike_in_gc) {
+	     Pike_interpreter.evaluator_stack && !Pike_in_gc &&
+	     master_object) {
 	    DECLARE_CYCLIC();
 	    debug_malloc_touch(obj);
 	    if (!BEGIN_CYCLIC(obj, 0)) {
@@ -1362,7 +1363,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	my_strcat("0");
       else {
 	if ((prog->flags & PROGRAM_FINISHED) &&
-	    Pike_interpreter.evaluator_stack && !Pike_in_gc) {
+	    Pike_interpreter.evaluator_stack && !Pike_in_gc && master_object) {
 	  DECLARE_CYCLIC();
 	  int fun=FIND_LFUN(prog, LFUN__SPRINTF);
 	  debug_malloc_touch(prog);
@@ -1489,7 +1490,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
       struct program *prog = s->u.program;
 
       if((prog->flags & PROGRAM_FINISHED) &&
-	 Pike_interpreter.evaluator_stack && !Pike_in_gc) {
+	 Pike_interpreter.evaluator_stack && !Pike_in_gc && master_object) {
 	DECLARE_CYCLIC();
 	debug_malloc_touch(prog);
 	if (!BEGIN_CYCLIC(prog, 0)) {
