@@ -1739,6 +1739,26 @@ static void low_print_tree(node *foo,int needlval)
     }
     break;
 
+  case F_EXTERNAL:
+    if(needlval) fputc('&', stderr);
+    {
+      struct program_state *state = Pike_compiler;
+      char *name = "external";
+      int program_id = foo->u.integer.a;
+      while(state && (state->new_program->id != program_id)) {
+	state = state->previous;
+      }
+      if (state) {
+	int id_no = foo->u.integer.b;
+	struct identifier *id = ID_FROM_INT(state->new_program, id_no);
+	if (id && id->name) {
+	  name = id->name->str;
+	}
+      }
+      fprintf(stderr, "%s", name);
+    }
+    break;
+
   case F_TRAMPOLINE:
     if (Pike_compiler->new_program) {
       fprintf(stderr, "trampoline<%s>",
