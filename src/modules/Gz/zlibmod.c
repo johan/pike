@@ -312,7 +312,7 @@ static void exit_gz_deflate(struct object *o)
  *!   @[deflate]
  */
 
-/*! @decl void create()
+/*! @decl void create(int|void magic)
  */
 static void gz_inflate_create(INT32 args)
 {
@@ -328,10 +328,16 @@ static void gz_inflate_create(INT32 args)
   THIS->gz.zalloc=Z_NULL;
   THIS->gz.zfree=Z_NULL;
   THIS->gz.opaque=(void *)THIS;
-
-  pop_n_elems(args);
+  if( args  && Pike_sp[-1].type == PIKE_T_INT )
+  {
+    tmp=inflateInit2(& THIS->gz, Pike_sp[-1].u.integer);
+  }
+  else
+  {
+    pop_n_elems(args);
+    tmp=inflateInit( &THIS->gz );
+  }
 /*    mt_lock(& THIS->lock);  */
-  tmp=inflateInit(& THIS->gz);
 /*    mt_unlock(& THIS->lock); */
   switch(tmp)
   {
