@@ -46,22 +46,24 @@ PMOD_EXPORT void convert_stack_top_to_bignum(void)
 {
   apply_svalue(&auto_bignum_program, 1);
 
-  if(sp[-1].type != T_OBJECT)
+  if(sp[-1].type != T_OBJECT) {
      if (auto_bignum_program.type!=T_PROGRAM)
 	Pike_error("Gmp.mpz conversion failed (Gmp.bignum not loaded).\n");
      else
 	Pike_error("Gmp.mpz conversion failed (unknown error).\n");
+  }
 }
 
 PMOD_EXPORT void convert_stack_top_with_base_to_bignum(void)
 {
   apply_svalue(&auto_bignum_program, 2);
 
-  if(sp[-1].type != T_OBJECT)
+  if(sp[-1].type != T_OBJECT) {
      if (auto_bignum_program.type!=T_PROGRAM)
 	Pike_error("Gmp.mpz conversion failed (Gmp.bignum not loaded).\n");
      else
 	Pike_error("Gmp.mpz conversion failed (unknown error).\n");
+  }
 }
 
 int is_bignum_object(struct object *o)
@@ -151,8 +153,10 @@ PMOD_EXPORT void push_int64(INT64 i)
     apply_svalue(&auto_bignum_program, 2);
 
 
-    if(neg)
+    if(neg) {
       apply_low(sp[-1].u.object,FIND_LFUN(sp[-1].u.object->prog,LFUN_COMPL),0);
+      stack_pop_n_elems_keep_top(1);
+    }
   }
 }
 
