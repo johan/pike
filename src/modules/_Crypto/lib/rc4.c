@@ -5,7 +5,9 @@
 #include "crypto_types.h"
 #include <rc4.h>
 
+#ifdef RCSID
 RCSID("$Id$");
+#endif
 
 #define SWAP(a,b) do { int _t = a; a = b; b = _t; } while(0)
 
