@@ -565,7 +565,7 @@ static void worker(void *this_)
 
   low_do_sendfile(this);
 
-  mt_lock(&interpreter_lock);
+  mt_lock_interpreter();
 
   /*
    * Unlock the fd's
@@ -606,7 +606,7 @@ static void worker(void *this_)
   /* We're gone... */
   num_threads--;
     
-  mt_unlock(&interpreter_lock);
+  mt_unlock_interpreter();
 
   /* Die */
   return;

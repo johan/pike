@@ -3734,11 +3734,7 @@ char *get_storage(struct object *o, struct program *p)
   int offset;
 
 #ifdef _REENTRANT
-#ifndef __NT__
-  if(d_flag)
-    if(!mt_trylock(& interpreter_lock))
-      fatal("get_storage running unlocked!\n");
-#endif
+  if(d_flag) CHECK_INTERPRETER_LOCK();
 #endif
 
   offset= low_get_storage(o->prog, p);
