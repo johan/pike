@@ -748,15 +748,6 @@ int dbm_main(int argc, char **argv)
 
   init_object();
 
-  TRACE((stderr, "Init modules...\n"));
-
-  init_modules();
-
-#ifdef TEST_MULTISET
-  /* A C-level testsuite for the low level stuff in multisets. */
-  test_multiset();
-#endif
-
   if(SETJMP(back))
   {
     if(throw_severity == THROW_EXIT)
@@ -784,6 +775,15 @@ int dbm_main(int argc, char **argv)
     }
   }else{
     back.severity=THROW_EXIT;
+
+    TRACE((stderr, "Init modules...\n"));
+
+    init_modules();
+
+#ifdef TEST_MULTISET
+    /* A C-level testsuite for the low level stuff in multisets. */
+    test_multiset();
+#endif
 
     TRACE((stderr, "Init master...\n"));
 
