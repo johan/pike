@@ -24,6 +24,19 @@
 /* Define this to enable the internal Pike security system */
 #undef PIKE_SECURITY
 
+/* The following four are used by smartlink */
+/* Define this if your ld sets the run path with -rpath */
+#undef USE_RPATH
+
+/* Define this if your ld sets the run path with -R */
+#undef USE_R
+
+/* Define this if your ld uses -rpath, but your cc wants -Wl,-rpath, */
+#undef USE_Wl
+
+/* Define this if your ld doesn't have an option to set the run path */
+#undef USE_LD_LIBRARY_PATH
+
 @TOP@
 
 /* Enable profiling */
