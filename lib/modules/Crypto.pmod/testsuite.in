@@ -26,6 +26,7 @@ dnl Crypto.rsa
 test_do( add_constant("RSA", Crypto.rsa()) )
 test_do( RSA->generate_key(1024) )
 test_equal( RSA->raw_sign("hej"), RSA->raw_sign("hej") )
+test_true( RSA->raw_verify("tjo", RSA->raw_sign("tjo")) )
 test_equal( RSA->get_n(), RSA->get_n() )
 test_true( functionp(RSA->get_n()->gcdext2) )
 test_equal( RSA->get_e(), RSA->get_e() )
