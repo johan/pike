@@ -311,10 +311,11 @@ int(-1..0) reply_new_session(array(int) cipher_suites,
     ADT.struct struct = ADT.struct();
     struct->put_var_uint_array(context->preferred_auth_methods, 1, 1);
 
-    int len = `+(@ Array.map(context->authorities_cache, lambda(object s)
+    int len = `+(@ Array.map(context->authorities_cache,
+			     lambda(Tools.X509.TBSCertificate s)
        { return sizeof(s->subject->get_der());} ));
     struct->put_uint(len + 2 * sizeof(context->authorities_cache), 2);
-    foreach(context->authorities_cache, object auth)
+    foreach(context->authorities_cache, Tools.X509.TBSCertificate auth)
       struct->put_var_string(auth->subject->get_der(), 2);
     send_packet(handshake_packet(HANDSHAKE_certificate_request,
 				 struct->pop_data()));

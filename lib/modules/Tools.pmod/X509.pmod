@@ -323,18 +323,18 @@ class TBSCertificate
   string der;
   
   int version;
-  object serial;
-  object algorithm;  /* Algorithm Identifier */
-  object issuer;
+  Gmp.mpz serial;
+  Sequence algorithm;  /* Algorithm Identifier */
+  Sequence issuer;
   mapping not_after;
   mapping not_before;
 
-  object subject;
+  Sequence subject;
   Verifier public_key;
 
   /* Optional */
-  object issuer_id;
-  object subject_id;
+  BitString issuer_id;
+  BitString subject_id;
   object extensions;
 
   this_program init(Object asn1)
