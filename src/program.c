@@ -3000,6 +3000,8 @@ struct program *end_first_pass(int finish)
 
   if(Pike_compiler->num_parse_error > 0)
   {
+    CDFPRINTF((stderr, "th(%ld) Compilation errors (%d).\n",
+	       (long)th_self(), Pike_compiler->num_parse_error));
     prog=0;
   }else{
     prog=Pike_compiler->new_program;
