@@ -63,7 +63,7 @@ extern struct program *image_program;
 #define CUBICLE_DEFAULT_R 10
 #define CUBICLE_DEFAULT_G 10
 #define CUBICLE_DEFAULT_B 10
-#define CUBICLE_DEFAULT_ACCUR 16
+#define CUBICLE_DEFAULT_ACCUR 4
 
 #ifndef MAX
 #define MAX(X,Y) ((X)>(Y)?(X):(Y))
