@@ -1572,8 +1572,25 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
     }
 
     case T_FLOAT:
-      sprintf(buf,"%f",(double)s->u.float_number);
-      my_strcat(buf);
+      {
+	double d = s->u.float_number;
+	if (d && ((d == d*2.0) || (d != d))) {
+	  if (d > 0.0) {
+	    if (d < 0.0) {
+	      my_strcat("nan");
+	    } else {
+	      my_strcat("inf");
+	    }
+	  } else if (d < 0.0) {
+	    my_strcat("-inf");
+	  } else {
+	    my_strcat("nan");
+	  }
+	} else {
+	  sprintf(buf, "%f", d);
+	  my_strcat(buf);
+	}
+      }
       break;
 
     case T_ARRAY:
