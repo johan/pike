@@ -2355,10 +2355,11 @@ void f_create_process(INT32 args)
 #endif
     }while(pid==-1 && errno==EINTR);
 
-    if(pid)
+    if(pid) {
       th_atfork_parent();
-    else
+    } else {
       th_atfork_child();
+    }
 
     UNSET_ONERROR(err);
 
@@ -2760,10 +2761,11 @@ void f_fork(INT32 args)
 #endif
 /*  THREADS_DISALLOW_UID(); */
 
-  if(pid)
+  if(pid) {
     th_atfork_parent();
-  else
+  } else {
     th_atfork_child();
+  }
   
   if(pid==-1) {
     error("Fork failed\n"
