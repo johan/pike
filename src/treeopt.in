@@ -1162,7 +1162,7 @@ F_FOR(0 = F_APPLY(1 = F_CONSTANT
 	node *n;
 	if ((!plus_name && !(plus_name = findstring("`+"))) ||
 	    !(n=find_module_identifier(plus_name, 0))) {
-	  my_yyerror("Internally used efun undefined: `+");
+	  yyerror("Internally used efun undefined: `+");
 	  tmp3 = mkintnode(0);
         } else {
 	  ADD_NODE_REF2(*arg2,
@@ -1181,7 +1181,7 @@ F_FOR(0 = F_APPLY(1 = F_CONSTANT
 	node *n;
 	if ((!minus_name && !(minus_name = findstring("`-"))) ||
 	    !(n=find_module_identifier(minus_name, 0))) {
-	  my_yyerror("Internally used efun undefined: `-");
+	  yyerror("Internally used efun undefined: `-");
 	  tmp3 = mkintnode(0);
         } else {
 	  ADD_NODE_REF2(*arg2,

@@ -4565,8 +4565,8 @@ void yyexplain_nonmatching_types(struct pike_type *type_a,
       yywarning("Expected: %s",s1->str);
       yywarning("Got     : %s",s2->str);
     }else{
-      my_yyerror("Expected: %s",s1->str);
-      my_yyerror("Got     : %s",s2->str);
+      my_yyerror("Expected: %S", s1);
+      my_yyerror("Got     : %S", s2);
     }
     free_string(s1);
     free_string(s2);
