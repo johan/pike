@@ -1280,7 +1280,7 @@ static int eval_instruction(unsigned char *pc)
       LOOP(F_INC_NEQ_LOOP, ++, !=, f_add(2), !is_eq);
       LOOP(F_DEC_NEQ_LOOP, --, !=, o_subtract(), !is_eq);
 
-      CASE(F_FOREACH) /* array, lvalue , i */
+      CASE(F_FOREACH) /* array, lvalue, X, i */
       {
 	if(sp[-4].type != T_ARRAY)
 	  PIKE_ERROR("foreach", "Bad argument 1.\n", sp-3, 1);
