@@ -180,14 +180,6 @@ class OutputController
 
   static int width(string s)
   {
-#if 1
-    // FIXME: On Digital Unix, the terminal handler doesn't seem to
-    // like what Pike does in Readline, so it hangs. But it doesn't do
-    // that if we provoke output (even a null string output!) at this
-    // point. A less ugly fix than outfd->write("") might be desirable
-    // in the future.
-    outfd->write("");
-#endif
     return strlen(s);
   }
 
