@@ -218,7 +218,9 @@ static void pike_mysql_reconnect(void)
   socket = mysql_connect(mysql, host, user, password);
 
 #ifdef HAVE_MYSQL_PORT
-  mysql_port = saved_port;
+  if (port) {
+    mysql_port = saved_port;
+  }
 
   STUPID_PORT_UNLOCK();
 #endif /* HAVE_MYSQL_PORT */
