@@ -1488,7 +1488,10 @@ static void file_grantpt( INT32 args )
   ref_push_object(Pike_fp->current_object);
   ref_push_object(Pike_fp->current_object);
   f_aggregate(2);
-  f_aggregate_mapping(2);
+  /* /usr/lbin/chgpt on HPUX 10.20 wants to get the pty on fd 0. */
+  push_constant_text("stdin");
+  ref_push_object(Pike_fp->current_object);
+  f_aggregate_mapping(3);
   apply_svalue(Pike_sp-3, 2);
   apply(Pike_sp[-1].u.object, "wait", 0);
   if(!UNSAFE_IS_ZERO(Pike_sp-1))
