@@ -38,7 +38,4 @@
 /* Define if you have the mysql_unix_port variable. */
 #undef HAVE_MYSQL_UNIX_PORT
 
-/* Define if you have the `CreateSemaphoreA' function. */
-#undef HAVE_CREATESEMAPHOREA
-
 #endif /* PIKE_MYSQL_CONFIG_H */
