@@ -182,13 +182,15 @@ void simple_array_index_no_free(struct svalue *s,
       break;
 
     case T_STRING:
-      check_stack(4);
-      ref_push_array(a);
-      assign_svalue_no_free(sp++,ind);
-      f_column(2);
-      s[0]=sp[-1];
-      sp--;
-      break;
+      if (ind->subtype == 1) {
+	check_stack(4);
+	ref_push_array(a);
+	assign_svalue_no_free(sp++,ind);
+	f_column(2);
+	s[0]=sp[-1];
+	sp--;
+	break;
+      }
 	
     default:
       {
