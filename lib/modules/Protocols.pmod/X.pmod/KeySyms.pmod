@@ -1458,9 +1458,9 @@
        "@" : "XK_at",
        "[" : "XK_bracketleft",
        "\\": "XK_backslash",
-       "]" : "XK_bracketright"
+       "]" : "XK_bracketright",
 //"XK_asciicircum":         0x05e,
-       "_" : "XK_underscore"
+       "_" : "XK_underscore",
        ]);
 
      if(sizeof(str)>3 && str[0..2]=="XK_")
