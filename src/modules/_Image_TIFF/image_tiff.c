@@ -86,6 +86,12 @@ static void increase_buffer_size( struct buffer * buffer )
   if(buffer->len > 1024*1024*400)
     error("Too large buffer (temprary error..)\n");
   if(!buffer->len) buffer->len = INITIAL_WRITE_BUFFER_SIZE;
+
+  /* FIXME: According to DMALLOC this leaks.
+   *
+   * NOTE: buffer->str seems to point into Pike strings sometimes,
+   * in which case realloc() is wrong.
+   */
   new_d = realloc( buffer->str, buffer->len*2 );
   if(!new_d) error("Realloc (%d->%d) failed!\n", buffer->len,buffer->len*2);
   MEMSET(new_d+buffer->len, 0, buffer->len);
