@@ -1106,6 +1106,7 @@ static INT32 lower_cpp(struct cpp *this,
 	if(WGOBBLE2(line_))
 	{
 	  /* FIXME: Why not use SKIPSPACE()? */
+	  /* Because SKIPSPACE skips newlines? - Hubbe */
 	  while(data[pos]==' ' || data[pos]=='\t') pos++;
 	}else{
 	  goto unknown_preprocessor_directive;
