@@ -617,6 +617,8 @@ void exit_dynamic_load(void)
     UNSETJMP(recovery);
     free_program(tmp->module_prog);
     tmp->module_prog = NULL;
+    free_string(tmp->name);
+    tmp->name = NULL;
   }
 #endif
 }
@@ -634,11 +636,8 @@ void free_dynamic_load(void)
 #endif
 #ifdef PIKE_DEBUG
     if (tmp->module_prog)
-      Pike_fatal ("There's still a program for dynamic module \"%s\".\n",
-		  tmp->name->str);
+      Pike_fatal ("There's still a program for a dynamic module.\n");
 #endif
-    free_string(tmp->name);
-    tmp->name = NULL;
     free((char *)tmp);
   }
 #endif
