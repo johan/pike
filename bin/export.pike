@@ -93,6 +93,7 @@ int main(int argc, string *argv)
 
   tmp=reverse(argv[0]/"/");
   except_modules=mklist(argv[1..]);
+
   e=search(tmp,"pike");
   if(e==-1)
   {
