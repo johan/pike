@@ -2584,11 +2584,13 @@ size_t do_gc(void *ignored, int explicit_call)
   Pike_in_gc=GC_PASS_CHECK;
   gc_ext_weak_refs = 0;
   /* First we count internal references */
-  gc_check_all_arrays();
-  gc_check_all_multisets();
-  gc_check_all_mappings();
-  gc_check_all_programs();
-  gc_check_all_objects();
+  ACCEPT_UNFINISHED_TYPE_FIELDS {
+    gc_check_all_arrays();
+    gc_check_all_multisets();
+    gc_check_all_mappings();
+    gc_check_all_programs();
+    gc_check_all_objects();
+  } END_ACCEPT_UNFINISHED_TYPE_FIELDS;
 
 #ifdef PIKE_DEBUG
   if(master_object)
@@ -2624,19 +2626,21 @@ size_t do_gc(void *ignored, int explicit_call)
   /* Next we mark anything with external references. Note that we can
    * follow the same reference several times, e.g. with shared mapping
    * data blocks. */
-  gc_mark_all_arrays();
-  run_queue(&gc_mark_queue);
-  gc_mark_all_multisets();
-  run_queue(&gc_mark_queue);
-  gc_mark_all_mappings();
-  run_queue(&gc_mark_queue);
-  gc_mark_all_programs();
-  run_queue(&gc_mark_queue);
-  gc_mark_all_objects();
-  run_queue(&gc_mark_queue);
+  ACCEPT_UNFINISHED_TYPE_FIELDS {
+    gc_mark_all_arrays();
+    run_queue(&gc_mark_queue);
+    gc_mark_all_multisets();
+    run_queue(&gc_mark_queue);
+    gc_mark_all_mappings();
+    run_queue(&gc_mark_queue);
+    gc_mark_all_programs();
+    run_queue(&gc_mark_queue);
+    gc_mark_all_objects();
+    run_queue(&gc_mark_queue);
 #ifdef PIKE_DEBUG
-  if(gc_debug) gc_mark_all_strings();
+    if(gc_debug) gc_mark_all_strings();
 #endif /* PIKE_DEBUG */
+  } END_ACCEPT_UNFINISHED_TYPE_FIELDS;
 
   GC_VERBOSE_DO(fprintf(stderr,
 			"| mark: %u markers referenced, %u weak references freed,\n"

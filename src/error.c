@@ -111,6 +111,10 @@ PMOD_EXPORT JMP_BUF *init_recovery(JMP_BUF *r, size_t stack_pop_levels DEBUG_LIN
 
 PMOD_EXPORT DECLSPEC(noreturn) void pike_throw(void) ATTRIBUTE((noreturn))
 {
+#ifdef TRACE_UNFINISHED_TYPE_FIELDS
+  accept_unfinished_type_fields++;
+#endif
+
   while(Pike_interpreter.recoveries && throw_severity > Pike_interpreter.recoveries->severity)
   {
     while(Pike_interpreter.recoveries->onerror)
@@ -156,6 +160,10 @@ PMOD_EXPORT DECLSPEC(noreturn) void pike_throw(void) ATTRIBUTE((noreturn))
 				 Pike_interpreter.recoveries->file);
     debug_malloc_touch(throw_value.u.refs);
   }
+#endif
+
+#ifdef TRACE_UNFINISHED_TYPE_FIELDS
+  accept_unfinished_type_fields--;
 #endif
 
   longjmp(Pike_interpreter.recoveries->recovery,1);
