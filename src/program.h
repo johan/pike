@@ -246,8 +246,8 @@ struct identifier
  */
 struct program_constant
 {
-  struct svalue sval;
-  struct pike_string *name;
+  struct svalue sval;	/* Value. */
+  ptrdiff_t offset;	/* Offset in identifiers to initialization function. */
 };
 
 /*

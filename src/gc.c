@@ -440,8 +440,13 @@ void describe_location(void *real_memblock,
       {
 	e = ((char *)ptr - (char *)(p->constants)) /
 	  sizeof(struct program_constant);
+#if 0
 	fprintf(stderr,"%*s  **In p->constants[%"PRINTPTRDIFFT"d] (%s)\n",indent,"",
 		e, p->constants[e].name ? p->constants[e].name->str : "no name");
+#else /* !0 */
+	fprintf(stderr,"%*s  **In p->constants[%"PRINTPTRDIFFT"d] (%d)\n",indent,"",
+		e, p->constants[e].offset);
+#endif /* 0 */
 	break;
       }
 

@@ -8,7 +8,6 @@
 #include "global.h"
 RCSID("$Id$");
 
-#include "language.h"
 #include "interpret.h"
 #include "las.h"
 #include "array.h"
@@ -5470,10 +5469,12 @@ ptrdiff_t eval_low(node *n,int print_error)
     p_const = prog->constants + prog->num_constants;
 
     free_svalue(&p_const->sval);
+#if 0
     if (p_const->name) {
       free_string(p_const->name);
       p_const->name = NULL;
     }
+#endif /* 0 */
   }
 
 #ifdef PIKE_USE_MACHINE_CODE
