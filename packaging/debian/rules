@@ -199,7 +199,7 @@ install: build
 	-rm -f `find $(CURDIR)/debian/$(PIKE)-core/usr/lib/pike/$(VERSION)/ -name ".autodoc" -type f -print`
 	-@for f in `cat $(CURDIR)/debian/toremove.txt | sed -e 's/@PIKE@/$(PIKE)/g;s/@VERSION@/$(VERSION)/g'`; do \
 	    echo Removing $(CURDIR)/debian/$(PIKE)-core/$$f ; \
-	    rm -f $(CURDIR)/debian/$(PIKE)-core/$$f ; \
+	    rm $(CURDIR)/debian/$(PIKE)-core/$$f &> /dev/null || echo "  FAILED"; \
 	done
 
 	# an eye-candy
