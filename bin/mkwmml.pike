@@ -247,7 +247,7 @@ string fixdesc(string s,string prefix,string where)
    {
       s+=replace(t,"\n\n","\n\n<p>");
 
-      s+="<illustration __from__='"+where+"' src=lena.gif"+q+">\n"
+      s+="<illustration __from__='"+where+"' src=image_ill.pnm"+q+">\n"
 	 +replace(u,"lena()","src")+"</illustration>";
 
       t=v;
