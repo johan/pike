@@ -12,7 +12,7 @@
 //   Rename sections
 //   Support section symbols (used by pthread.lib)
 
-#define DEBUG
+//#define DEBUG
 
 class Reloc
 {
@@ -1182,7 +1182,15 @@ int main(int argc, array(string) argv)
     output_machine = 0;
 
   foreach(argv[1..],string file)
-    dumpfile(Stdio.read_file(file),0,0,file+":"+file);
+  {
+#if 0
+    werror("file: "+file+"\n");
+    werror("cwd:  "+getcwd()+"\n");
+    werror("stat: %O\n",file_stat( file ) );
+#endif
+    string data = Stdio.read_file( file );
+    dumpfile(data,0,0,file+":"+file);
+  }
 
   if(strip)
   {
