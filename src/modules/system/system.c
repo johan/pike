@@ -1842,7 +1842,7 @@ int get_inet_addr(PIKE_SOCKADDR *addr,char *name,char *service, INT_TYPE port, i
     }
 #endif
   } else if(port >= 0)
-    addr->ipv4.sin_port = htons((u_short)port);
+    addr->ipv4.sin_port = htons((unsigned INT16)port);
   else
     addr->ipv4.sin_port = 0;
 

@@ -270,7 +270,7 @@ static void udp_bind(INT32 args)
     fd_close(fd);
     THIS->my_errno=errno;
     Pike_error("UDP->bind: failed to bind to port %d\n",
-	       (u_short)Pike_sp[-args].u.integer);
+	       (unsigned INT16)Pike_sp[-args].u.integer);
     return;
   }
 
