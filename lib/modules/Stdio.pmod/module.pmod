@@ -1384,7 +1384,7 @@ class FILE
   }
 
   //! This function does approximately the same as:
-  //! @code{@[write](@[sprintf](@[format],@@@[data]))@}.
+  //! @expr{@[write](@[sprintf](@[format],@@@[data]))@}.
   //!
   //! @seealso
   //! @[write()], @[sprintf()]

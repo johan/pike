@@ -229,7 +229,7 @@ class AbstractNode {
   }
   
   //! The [] operator indexes among the node children, so
-  //! @code{node[0]@} returns the first node and @code{node[-1]@} the last.
+  //! @expr{node[0]@} returns the first node and @expr{node[-1]@} the last.
   //! @note
   //!   The [] operator will select a node from all the nodes children,
   //!   not just its element children.

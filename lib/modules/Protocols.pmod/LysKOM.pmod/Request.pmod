@@ -115,7 +115,7 @@ class _Request
    int(0..1) ok;
 
    //!	How the call failed.
-   //!	The call has completed if @code{(ok||error)@}.
+   //!	The call has completed if @expr{(ok||error)@}.
    //!
    object error;
 

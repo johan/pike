@@ -15,7 +15,9 @@ class SGML
 //!	but finding the corresponding end-tags.
 //!	
 //!	It's used like this:
-//!	@code{array res=Parser.SGML()->feed(string)->finish()->result();@}
+//! @code
+//! array res=Parser.SGML()->feed(string)->finish()->result();
+//! @endcode
 //!
 //!	The resulting structure is an array of atoms,
 //!	where the atom can be a string or a tag.

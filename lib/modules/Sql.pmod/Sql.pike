@@ -348,8 +348,10 @@ private array(string|mapping(string|int:mixed)) handle_extraargs(string query, a
 //!     value for that index is substituted (quoted) into the query wherever
 //!     the variable is used.
 //!
-//!     @code{ query("select foo from bar where gazonk=:baz",
-//!         ([":baz":"value"])) ) @}
+//! @code
+//! query("select foo from bar where gazonk=:baz",
+//!   ([":baz":"value"])) )
+//! @endcode
 //!
 //!     Binary values (BLOBs) may need to be placed in multisets.
 //!
@@ -357,7 +359,9 @@ private array(string|mapping(string|int:mixed)) handle_extraargs(string query, a
 //!     Arguments as you would use in sprintf. They are automatically
 //!     quoted.
 //!
-//!     @code{ query("select foo from bar where gazonk=%s","value") ) @}
+//! @code
+//! query("select foo from bar where gazonk=%s","value") )
+//! @endcode
 //!   @endol
 array(mapping(string:mixed)) query(object|string q,
                                    mixed ... extraargs)
