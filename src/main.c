@@ -857,7 +857,6 @@ void low_exit_main(void)
   exit_auto_bignum();
 #endif
   exit_pike_searching();
-  th_cleanup();
   exit_object();
   exit_signals();
   exit_builtin();
