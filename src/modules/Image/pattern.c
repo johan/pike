@@ -45,7 +45,7 @@ static unsigned short noise_p1[NOISE_PTS],noise_p2[NOISE_PTS];
 
 #define FRAC(X) ((X)-floor(X))
 
-static INLINE double noise(double Vx,double Vy,unsigned short *noise_p)
+static double noise(double Vx,double Vy,unsigned short *noise_p)
 {
    int Ax[3],Ay[3];
    int n,i,j;
