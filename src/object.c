@@ -922,6 +922,8 @@ void gc_mark_object_as_referenced(struct object *o)
       if(frame.context.prog->gc_marked)
 	frame.context.prog->gc_marked(o);
 
+      if(frame.context.parent)
+	gc_mark_object_as_referenced(frame.context.parent);
 
       for(d=0;d<(int)frame.context.prog->num_identifiers;d++)
       {
@@ -971,6 +973,10 @@ void gc_check_all_objects(void)
       {
 	struct inherit in=o->prog->inherits[e];
 	char *base=o->storage + in.storage_offset;
+
+	if(in.parent)
+	  gc_check(in.parent);
+
 	for(d=0;d<in.prog->num_identifiers;d++)
 	{
 	  struct identifier *i=in.prog->identifiers+d;
