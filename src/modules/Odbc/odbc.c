@@ -321,7 +321,9 @@ void pike_module_init(void)
   RETCODE err = SQLAllocEnv(&odbc_henv);
 
   if (err != SQL_SUCCESS) {
-    error("odbc_module_init(): SQLAllocEnv() failed with code %08x\n", err);
+    odbc_henv = SQL_NULL_HENV;
+    return;
+    /*    error("odbc_module_init(): SQLAllocEnv() failed with code %08x\n", err); */
   }
 
   start_new_program();
