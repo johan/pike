@@ -668,9 +668,21 @@ static void f_fetch_fields(INT32 args)
 	  break;
 
 	case SQLT_NUM:
+	  type_name="number";
+	  if(scale>0)
+	  {
+	    data_size=sizeof(info->data.u.f);
+	    type=SQLT_FLT;
+	  }else{
+	    data_size=sizeof(info->data.u.i);
+	    type=SQLT_INT;
+	  }
+	  break;
+	      
 	case SQLT_FLT:
 	  type_name="float";
 	  data_size=sizeof(info->data.u.f);
+	  type=SQLT_FLT;
 	  break;
 
 	case SQLT_STR: /* string */
@@ -784,6 +796,7 @@ static void push_inout_value(struct inout *inout)
 	((struct dbdate *)sp[-1].u.object->storage)->date = inout->u.date;
 	break;
 	
+      case SQLT_NUM:
       case SQLT_INT:
 	ref_push_object(nullint_object);
 	break;
