@@ -2053,12 +2053,10 @@ PMOD_EXPORT struct mapping *copy_mapping_recursively(struct mapping *m,
   add_ref(md);
   NEW_MAPPING_LOOP(md)
   {
-    copy_svalues_recursively_no_free(Pike_sp,&k->ind, 1, &doing);
-    Pike_sp++;
-    dmalloc_touch_svalue(Pike_sp-1);
-    copy_svalues_recursively_no_free(Pike_sp,&k->val, 1, &doing);
-    Pike_sp++;
-    dmalloc_touch_svalue(Pike_sp-1);
+    push_int(0);
+    push_int(0);
+    copy_svalues_recursively_no_free(Pike_sp-2,&k->ind, 1, &doing);
+    copy_svalues_recursively_no_free(Pike_sp-1,&k->val, 1, &doing);
     
     low_mapping_insert(ret, Pike_sp-2, Pike_sp-1, 2);
     pop_n_elems(2);
