@@ -1104,7 +1104,8 @@ static void feed_utf7e(struct utf7_stor *u7, struct string_builder *sb,
     {
       p_wchar0 c, *p = STR0(str);
       while(l--)
-	if((c=*p++)>=33 && c<=125 && c!=43 && c!=92) {
+	if(((c=*p++)>=32 && c<=125 && c!=43 && c!=92)
+	   || c==9 || c==10 || c==13) {
 	  if(shift) {
 	    if(datbit) {
 	      string_builder_putchar(sb, fwd64t[dat<<(6-datbit)]);
@@ -1139,7 +1140,8 @@ static void feed_utf7e(struct utf7_stor *u7, struct string_builder *sb,
     {
       p_wchar1 c, *p = STR1(str);
       while(l--)
-	if((c=*p++)>=33 && c<=125 && c!=43 && c!=92) {
+	if(((c=*p++)>=32 && c<=125 && c!=43 && c!=92)
+	   || c==9 || c==10 || c==13) {
 	  if(shift) {
 	    if(datbit) {
 	      string_builder_putchar(sb, fwd64t[dat<<(6-datbit)]);
@@ -1174,7 +1176,8 @@ static void feed_utf7e(struct utf7_stor *u7, struct string_builder *sb,
     {
       p_wchar2 c, *p = STR2(str);
       while(l--)
-	if((c=*p++)>=33 && c<=125 && c!=43 && c!=92) {
+	if(((c=*p++)>=32 && c<=125 && c!=43 && c!=92)
+	   || c==9 || c==10 || c==13) {
 	  if(shift) {
 	    if(datbit) {
 	      string_builder_putchar(sb, fwd64t[dat<<(6-datbit)]);
