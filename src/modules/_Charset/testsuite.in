@@ -53,6 +53,10 @@ test_eq([[_Charset.encoder("utf-16BE")->feed("hej")->drain()]],"\0h\0e\0j")
 test_eq([[_Charset.decoder("utf-16LE")->feed("h\0e\0j\0")->drain()]],"hej")
 test_eq([[_Charset.encoder("utf-16LE")->feed("hej")->drain()]],"h\0e\0j\0")
 
+// Multichar
+test_eq([[_Charset.decoder("gbk")->feed("hej\x81\x40")->drain()]],"hej\x4e02")
+test_eq([[_Charset.decoder("949")->feed("hej\x81\x41")->drain()]],"hej\xac02")
+
 // Find codecs for all IANA names
 define(test_codec,[[
   test_true(objectp(_Charset.encoder("$1")))
