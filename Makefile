@@ -67,13 +67,13 @@ compile: configure
 	@builddir="$(BUILDDIR)"; \
 	metatarget="$(METATARGET)"; \
 	test -f "$$builddir"/pike || metatarget="new_peep_engine pike $$metatarget"; \
-	cd "$$builddir" && ( \
-	  echo Making in "$$builddir"; \
+	cd "$$builddir" && for target in all $$metatarget; do \
+	  echo Making $$target in "$$builddir"; \
 	  rm -f remake; \
-	  $(MAKE) "MAKE=$(MAKE)" all $$metatarget || ( \
-	    test -f remake && $(MAKE) "MAKE=$(MAKE)" all $$metatarget \
+	  $(MAKE) "MAKE=$(MAKE)" $$target || ( \
+	    test -f remake && $(MAKE) "MAKE=$(MAKE)" $$target \
 	  ) \
-	)
+	done
 
 bin/pike: force
 	sed -e "s|\"BASEDIR\"|\"`pwd`\"|" < bin/pike.in > bin/pike
