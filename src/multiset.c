@@ -53,11 +53,11 @@ DECLSPEC(noreturn) static void debug_multiset_fatal (
 #ifdef PIKE_DEBUG
 
 /* To get good type checking. */
-static inline union msnode **msnode_ptr_check (union msnode **x)
+static INLINE union msnode **msnode_ptr_check (union msnode **x)
   {return x;}
-static inline struct msnode_ind *msnode_ind_check (struct msnode_ind *x)
+static INLINE struct msnode_ind *msnode_ind_check (struct msnode_ind *x)
   {return x;}
-static inline struct msnode_indval *msnode_indval_check (struct msnode_indval *x)
+static INLINE struct msnode_indval *msnode_indval_check (struct msnode_indval *x)
   {return x;}
 
 #define sub_extra_ref(X) do {						\
@@ -751,7 +751,9 @@ static union msnode *alloc_msnode_verbatim (struct multiset_data *msd)
       (NODE) = alloc_msnode_verbatim (MSD);				\
     else {								\
       (NODE) = (MSD)->free_list;					\
-      DO_IF_DEBUG (if (!(NODE)) Pike_fatal ("Multiset data block unexpectedly full.\n")); \
+      DO_IF_DEBUG (							\
+	if (!(NODE)) Pike_fatal ("Multiset data block unexpectedly full.\n"); \
+      );								\
       (MSD)->free_list = NEXT_FREE (NODE);				\
       if ((NODE)->i.ind.type == PIKE_T_UNKNOWN) (MSD)->size++;		\
     }									\
@@ -842,8 +844,8 @@ PMOD_EXPORT struct multiset *allocate_multiset (int allocsize,
 {
   struct multiset *l = alloc_multiset();
 
-  /* FIXME: It's currently little use making "inflated" multisets with
-   * allocsize, since prepare_for_add shrinks them. */
+  /* FIXME: There's currently little use in making "inflated"
+   * multisets with allocsize, since prepare_for_add shrinks them. */
 
 #ifdef PIKE_DEBUG
   if (cmp_less) check_svalue (cmp_less);

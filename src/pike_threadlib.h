@@ -416,7 +416,7 @@ extern THREAD_T debug_locking_thread;
 
 #endif
 
-static inline int threads_disabled_wait(void)
+static INLINE int threads_disabled_wait(void)
 {
   do {
     THREADS_FPRINTF(1, (stderr, "Thread %d: Wait on threads_disabled\n",

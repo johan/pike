@@ -153,7 +153,7 @@ PMOD_EXPORT void multiset_clear_node_refs (struct multiset *l);
 
 #ifdef PIKE_DEBUG
 /* To get good type checking. */
-static inline union msnode *msnode_check (union msnode *x)
+static INLINE union msnode *msnode_check (union msnode *x)
   {return x;}
 PMOD_EXPORT extern const char msg_no_multiset_flag_marker[];
 #else
@@ -190,7 +190,7 @@ union msnode *low_multiset_find_eq (struct multiset *l, struct svalue *key);
 #define low_use_multiset_index(NODE, VAR)				\
   ((VAR) = msnode_check (NODE)->i.ind,					\
    DO_IF_DEBUG ((VAR).type & MULTISET_FLAG_MARKER ? 0 :			\
-		Pike_fatal (msg_no_multiset_flag_marker) COMMA)		\
+		(Pike_fatal (msg_no_multiset_flag_marker), 0) COMMA)	\
    (VAR).type &= ~MULTISET_FLAG_MASK,					\
    &(VAR))
 

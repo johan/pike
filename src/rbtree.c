@@ -281,7 +281,7 @@ PMOD_EXPORT struct rb_node_hdr *rb_link_next (struct rb_node_hdr *node)
  *            /   \                    /    \
  *           a     b                  b      c
  */
-static inline struct rb_node_hdr *rot_right (struct rb_node_hdr *node)
+static INLINE struct rb_node_hdr *rot_right (struct rb_node_hdr *node)
 {
   /* Note that we don't need to do anything special to keep the
    * pointers in a, b and c intact, even if they're thread
@@ -309,7 +309,7 @@ static inline struct rb_node_hdr *rot_right (struct rb_node_hdr *node)
  *                /   \             /    \
  *               b     c           a      b
  */
-static inline struct rb_node_hdr *rot_left (struct rb_node_hdr *node)
+static INLINE struct rb_node_hdr *rot_left (struct rb_node_hdr *node)
 {
   struct rb_node_hdr *ret = node->next;
   if (ret->flags & RB_THREAD_PREV) {
