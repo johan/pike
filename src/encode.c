@@ -402,7 +402,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
        */
       if (data->canonic)
 	Pike_error("Canonical encoding of the type type not supported.\n");
-      code_entry(TAG_TYPE, val->u.type->len, data);
+      code_entry(TAG_TYPE, 0, data);	/* Type encoding #0 */
       encode_type(val->u.type->str, data);
       mapping_insert(data->encoded, val, &data->counter);
       data->counter.u.integer++;
@@ -1212,6 +1212,8 @@ static void decode_value2(struct decode_data *data)
     case TAG_TYPE:
     {
       struct pike_type *t;
+
+      /* FIXME: Should check that num is 0 here. */
 
       decode_type(t, data);
       check_type_string(t);
