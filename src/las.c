@@ -271,6 +271,11 @@ void free_all_nodes(void)
 void free_node(node *n)
 {
   if(!n) return;
+#ifdef DEBUG
+  if(l_flag>9)
+    print_tree(n);
+#endif
+
   switch(n->token)
   {
   case USHRT_MAX:
@@ -2413,6 +2418,13 @@ int dooptcode(struct pike_string *name,
   if(compiler_pass==1)
   {
     tmp.offset=-1;
+#ifdef DEBUG
+    if(a_flag > 4)
+    {
+      fprintf(stderr,"Making prototype (pass 1) for: ");
+      print_tree(n);
+    }
+#endif
   }else{
     n=mknode(F_ARG_LIST,n,0);
     
