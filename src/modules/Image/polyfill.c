@@ -733,13 +733,11 @@ static INLINE struct vertex *polyfill_add(struct vertex *top,
    struct vertex *first,*last,*cur = NULL;
    int n;
 
-   if(a->type_field & ~(BIT_INT|BIT_FLOAT)) {
-     array_fix_type_field(a);
-     if(a->type_field & ~(BIT_INT|BIT_FLOAT)) {
-       polyfill_free(top);
-       Pike_error("Illegal argument %d to %s. %d Expected array(float|int).\n",arg,what, a->type_field);
-       return NULL;
-     }
+   if( (a->type_field & ~(BIT_INT|BIT_FLOAT)) &&
+       (array_fix_type_field(a) & ~(BIT_INT|BIT_FLOAT)) ) {
+     polyfill_free(top);
+     Pike_error("Illegal argument %d to %s. %d Expected array(float|int).\n",arg,what, a->type_field);
+     return NULL;
    }
 
    if (a->size<6) 

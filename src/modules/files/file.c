@@ -1070,11 +1070,9 @@ static void file_write(INT32 args)
   if (Pike_sp[-args].type == PIKE_T_ARRAY) {
     struct array *a = Pike_sp[-args].u.array;
 
-    if(a->type_field & ~BIT_STRING) {
-      array_fix_type_field(a);
-      if(a->type_field & ~BIT_STRING)
-	SIMPLE_BAD_ARG_ERROR("Stdio.File->write()", 1, "string|array(string)");
-    }
+    if( (a->type_field & ~BIT_STRING) &&
+	(array_fix_type_field(a) & ~BIT_STRING) )
+      SIMPLE_BAD_ARG_ERROR("Stdio.File->write()", 1, "string|array(string)");
 
     i = a->size;
     while(i--)

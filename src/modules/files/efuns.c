@@ -1150,9 +1150,9 @@ void f_exece(INT32 args)
   case 2:
     if(sp[1-args].type != T_ARRAY)
       SIMPLE_BAD_ARG_ERROR("exece", 2, "array(string)");
-    array_fix_type_field(sp[1-args].u.array);
 
-    if(sp[1-args].u.array->type_field & ~BIT_STRING)
+
+    if(array_fix_type_field(sp[1-args].u.array) & ~BIT_STRING)
       SIMPLE_BAD_ARG_ERROR("exece", 2, "array(string)");
 
   case 1:

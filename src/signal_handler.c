@@ -2567,11 +2567,9 @@ void f_create_process(INT32 args)
       if(cmd->size < 1)
 	Pike_error("Too few elements in argument array.\n");
       
-      if(cmd->type_field & ~BIT_STRING) {
-	array_fix_type_field(cmd);
-	if(cmd->type_field & ~BIT_STRING)
-	  Pike_error("Bad argument 1 to Process().\n");
-      }
+      if( (cmd->type_field & ~BIT_STRING) &&
+	  (array_fix_type_field(cmd) & ~BIT_STRING) )
+	Pike_error("Bad argument 1 to Process().\n");
 
       for(e=0;e<cmd->size;e++)
 	if(ITEM(cmd)[e].u.string->size_shift)

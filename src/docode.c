@@ -2146,8 +2146,7 @@ static int do_docode2(node *n, int flags)
 	  switch(n->u.sval.type)
 	  {
 	    case T_ARRAY:
-	      array_fix_type_field(n->u.sval.u.array);
-	      if(n->u.sval.u.array -> type_field & BIT_COMPLEX)
+	      if(array_fix_type_field(n->u.sval.u.array) & BIT_COMPLEX)
 		emit0(F_COPY_VALUE);
 	      break;
 
