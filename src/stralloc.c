@@ -160,7 +160,7 @@ int generic_compare_strings(const void *a,int alen, int asize,
   if(alen != blen) return 0;
   if(asize==bsize)
   {
-    return !MEMCPY(a,b,alen<<asize);
+    return !MEMCMP(a,b,alen<<asize);
   }else{
     INT32 pos;
     for(pos=0;pos< alen ;pos++)
