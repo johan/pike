@@ -31,7 +31,7 @@ else
   old_CPPFLAGS="$CPPFLAGS"
   CPPFLAGS="-framework GLUT $CPPFLAGS"
   AC_CHECK_HEADERS(GLUT/glut.h)
-  if test x"$ac_cv_header_GLUT_gl_h" = xno; then
+  if test x"$ac_cv_header_glut_gl_h" = xno; then
     CPPFLAGS="$old_CPPFLAGS"
   fi
 
@@ -92,7 +92,7 @@ else
     AC_DEFINE_UNQUOTED(HAVE_LIBGLUT)
     LIBS="-lglut $LIBS"
     AUTO=auto.o
-  elif test x"$ac_cv_header_GLUT_glut_h$pike_cv_framework_glut" = "xyesyes"; then
+  elif test x"$ac_cv_header_glut_glut_h$pike_cv_framework_glut" = "xyesyes"; then
     AC_DEFINE_UNQUOTED(HAVE_LIBGLUT)
     LIBS="-framework GLUT -lobjc $LIBS"
     AUTO=auto.o
