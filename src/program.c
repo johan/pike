@@ -769,7 +769,7 @@ struct program *end_first_pass(int finish)
 
 
   /* Collect references to inherited __INIT functions */
-  for(e=1;e<new_program->num_inherits;e++)
+  for(e=new_program->num_inherits-1;e>1;e--)
   {
     int id;
     if(new_program->inherits[e].inherit_level!=1) continue;
@@ -777,9 +777,9 @@ struct program *end_first_pass(int finish)
     if(id!=-1)
     {
       init_node=mknode(F_ARG_LIST,
-		       init_node,
 		       mkcastnode(void_type_string,
-				  mkapplynode(mkidentifiernode(id),0)));
+				  mkapplynode(mkidentifiernode(id),0)),
+		       init_node);
     }
   }
 
