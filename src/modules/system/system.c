@@ -750,7 +750,7 @@ void get_inet_addr(struct sockaddr_in *addr,char *name)
   }
   else if(my_isipnr(name)) /* I do not entirely trust inet_addr */
   {
-    if ((long)inet_addr(name) == (long)-1)
+    if (inet_addr(name) == (in_addr_t)-1)
       error("Malformed ip number.\n");
 
     addr->sin_addr.s_addr = inet_addr(name);
