@@ -660,6 +660,8 @@ INT32 real_gc_check(void *a)
       fatal_after_gc="Refs changed in gc()\n";
     }
   m->saved_refs = *(INT32 *)a;
+#else
+  m = get_marker(a);
 #endif
 
   m->flags |= GC_CHECKED;
