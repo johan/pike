@@ -185,14 +185,14 @@ static void udp_bind(INT32 args)
     Pike_error("UDP.bind: setsockopt SO_REUSEADDR failed\n");
   }
 
-#ifdef IP_HDRINCL
+#if defined(IP_HDRINCL) && defined(SOL_IP)
   /*  From mtr-0.28:net.c: FreeBSD wants this to avoid sending
       out packets with protocol type RAW to the network. */
 
   if (THIS->type==SOCK_RAW && THIS->protocol==255 /* raw */)
      if(fd_setsockopt(fd, SOL_IP, IP_HDRINCL, (char *)&o, sizeof(int)))
 	Pike_error("UDP.bind: setsockopt IP_HDRINCL failed\n");
-#endif
+#endif /* IP_HDRINCL && SOL_IP */
 
   MEMSET((char *)&addr,0,sizeof(struct sockaddr_in));
 
