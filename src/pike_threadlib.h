@@ -659,7 +659,7 @@ PMOD_EXPORT extern int Pike_in_gc;
 
 #define THREADS_DISALLOW() \
      REVEAL_GLOBAL_VARIABLES(); \
-     if(_tmp->swapped) { \
+     if(_tmp && _tmp->swapped) { \
        low_mt_lock_interpreter(); \
        THREADS_FPRINTF(1, (stderr, "THREADS_DISALLOW() %s:%d t:%08x(#%d)\n", \
 			   __FILE__, __LINE__, \
@@ -706,7 +706,7 @@ PMOD_EXPORT extern int Pike_in_gc;
 
 #define THREADS_DISALLOW_UID() \
      REVEAL_GLOBAL_VARIABLES(); \
-     if(_tmp_uid->swapped) { \
+     if(_tmp_uid && _tmp_uid->swapped) { \
        low_mt_lock_interpreter(); \
        live_threads--; \
        THREADS_FPRINTF(1, (stderr, \
