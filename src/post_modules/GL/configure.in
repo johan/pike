@@ -13,7 +13,6 @@ if test x$with_GL = xno; then
 else
 
   AC_PATH_XTRA()
-
   AC_ARG_WITH(lib-GL,     [  --with-lib-GL           use '-lGL'])
   AC_ARG_WITH(lib-MesaGL, [  --with-lib-MesaGL       use '-lMesaGL'])
 

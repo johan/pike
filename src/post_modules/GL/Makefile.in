@@ -4,6 +4,7 @@ VPATH=@srcdir@:@srcdir@/../..:../..
 OBJS=top.o @AUTO_OBJS@
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 CONFIG_HEADERS=@CONFIG_HEADERS@
+MODULE_CFLAGS=@X_CFLAGS@
 
 @dynamic_module_makefile@
 
