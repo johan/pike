@@ -61,9 +61,6 @@ enum Pike_opcodes
   F_RETURN_LOCAL,
   F_RETURN_IF_TRUE,
 
-  F_FOREACH,
-  F_NEW_FOREACH,
-
 #include "interpret_protos.h"
 /*
  * These are token values that needn't have an associated code for the

@@ -201,8 +201,6 @@ struct keyword instr_names[]=
 { "for",		F_FOR,0 },
 { "index",              F_INDEX,0 },
 
-{ "foreach",		F_FOREACH, I_ISJUMP },
-{ "foreach++",		F_NEW_FOREACH, I_ISJUMP },
 { "pointer",		F_POINTER, I_ISPOINTER },
 { "data",		F_DATA, I_DATA },
 { "byte",		F_BYTE, I_DATA },
