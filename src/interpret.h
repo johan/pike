@@ -323,8 +323,11 @@ do{ \
     SAFE_APPLY_MASTER(FUN, ARGS);				\
   } while(0)
 
-#define check_threads_etc() \
-  call_callback(& evaluator_callbacks, (void *)0)
+
+#define check_threads_etc() do { \
+  if(evaluator_callbacks.callbacks) \
+    call_callback(& evaluator_callbacks, (void *)0); \
+}while(0) 
 
 #ifdef PIKE_DEBUG
 #define fast_check_threads_etc(X) do { \
