@@ -60,6 +60,13 @@ static void get_mpz_from_digits(MP_INT *tmp,
 {
   if(!base || ((base >= 2) && (base <= 36)))
   {
+    /* We want to parse 0x.... even though we exceplicitly have set the
+       base to 16.  Funny enough, Mpz won't allow us to have 0x... if
+       base is not 0. */
+    if(base == 16 && digits->len > 2 && digits->str[0] == '0' &&
+       (digits->str[1] == 'x' || digits->str[1] == 'X'))
+      base = 0;   /* Mpz can deduce base 16 itself. */
+    
     if (mpz_set_str(tmp, digits->str, base))
       error("invalid digits, cannot convert to mpz");
   }
