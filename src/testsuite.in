@@ -122,8 +122,8 @@ cond([[all_constants()->thread_create]],
   test_do(thread_create(lambda() { }))
 
 // /precompiled/mutex
-  test_true(Builtin.mutex())
-  test_do(add_constant("_tmp_mutex",Builtin.mutex()))
+  test_true(Thread.Mutex())
+  test_do(add_constant("_tmp_mutex",Builtin.Mutex()))
   test_true(_tmp_mutex->lock())
   test_true(_tmp_mutex->lock())
   test_true(_tmp_mutex->trylock())
@@ -131,13 +131,12 @@ cond([[all_constants()->thread_create]],
   test_do(add_constant("_tmp_mutex"))
 
 // /precompiled/condition
-  test_true(Builtin.condition())
-  test_do(Builtin.condition()->signal())
-  test_do(Builtin.condition()->broadcast())
+  test_true(Thread.Condition())
+  test_do(Thread.Condition()->signal())
+  test_do(Thread.Condition()->broadcast())
 
-// /precompiled/fifo
-  test_true(objectp(clone(Fifo.Fifo)))
-  test_true(objectp(clone(Fifo.Queue)))
+  test_true(objectp(clone(Thread.Fifo)))
+  test_true(objectp(clone(Thread.Queue)))
 ]])
 
 
