@@ -578,7 +578,7 @@ class fetch
 
     werror("Options specified. "
 	   "wanted: %O, section:%O, atom: %O, raw: %O\n",
-	   wanted, section, origin, atom, raw_wanted);
+	   wanted, section, atom, raw_wanted);
 
     /* Should requesting any part of the body really count as reading it? */
     if ( (< "body", "rfc822", "rfc822.text" >) [wanted])
