@@ -4701,18 +4701,18 @@ static void gc_check_frame(struct pike_frame *f)
   if(f->flags & PIKE_FRAME_MALLOCED_LOCALS)
   {
     if(f->current_object)
-      debug_gc_check2(f->current_object, PIKE_T_UNKNOWN, f,
+      debug_gc_check2(f->current_object, T_PIKE_FRAME, f,
 		      " as current_object in trampoline frame");
     if(f->context.prog)
-      debug_gc_check2(f->context.prog, PIKE_T_UNKNOWN, f,
+      debug_gc_check2(f->context.prog, T_PIKE_FRAME, f,
 		      " as context.prog in trampoline frame");
     if(f->context.parent)
-      debug_gc_check2(f->context.parent, PIKE_T_UNKNOWN, f,
+      debug_gc_check2(f->context.parent, T_PIKE_FRAME, f,
 		      " as context.parent in trampoline frame");
     if(f->flags & PIKE_FRAME_MALLOCED_LOCALS)
-      debug_gc_check_svalues2(f->locals, f->num_locals, PIKE_T_UNKNOWN, f,
+      debug_gc_check_svalues2(f->locals, f->num_locals, T_PIKE_FRAME, f,
 			      " in locals of trampoline frame");
-    if(f->scope && !debug_gc_check2(f->scope, PIKE_T_UNKNOWN, f,
+    if(f->scope && !debug_gc_check2(f->scope, T_PIKE_FRAME, f,
 				    " as scope frame of trampoline frame"))
       gc_check_frame(f->scope);
   }
