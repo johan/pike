@@ -1331,12 +1331,13 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	    break;
 	  }
 	  else if (id && id->func.offset != -1) {
-	    struct pike_string *file;
+	    char *file;
 	    INT32 line;
-	    if ((file = low_get_line(prog->program + id->func.offset, prog, &line))) {
+	    if ((file = low_get_line_plain (prog->program + id->func.offset,
+					    prog, &line, 1))) {
 	      my_strcat("function(");
-	      my_strcat(file->str);
-	      free_string(file);
+	      my_strcat(file);
+	      free(file);
 	      if (line) {
 		sprintf(buf, ":%d", line);
 		my_strcat(buf);
@@ -1462,12 +1463,12 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	  break;
 	}
 	else {
-	  struct pike_string *file;
+	  char *file;
 	  INT32 line;
-	  if ((file = low_get_program_line(prog, &line))) {
+	  if ((file = low_get_program_line_plain (prog, &line, 1))) {
 	    my_strcat("object(");
-	    my_strcat(file->str);
-	    free_string(file);
+	    my_strcat(file);
+	    free(file);
 	    if (line) {
 	      sprintf(buf, ":%d", line);
 	      my_strcat(buf);
@@ -1534,12 +1535,12 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
       }
 
       {
-	struct pike_string *file;
+	char *file;
 	INT32 line;
-	if ((file = low_get_program_line(prog, &line))) {
+	if ((file = low_get_program_line_plain (prog, &line, 1))) {
 	  my_strcat("program(");
-	  my_strcat(file->str);
-	  free_string(file);
+	  my_strcat(file);
+	  free(file);
 	  if (line) {
 	    sprintf(buf, ":%d", line);
 	    my_strcat(buf);
