@@ -20,6 +20,12 @@
 /* Define if you have the struct fs_data */
 #undef HAVE_STRUCT_FS_DATA
 
+/* Define if you have the struct statvfs */
+#undef HAVE_STRUCT_STATVFS
+
+/* Define if your statvfs struct has the member f_basetype */
+#undef HAVE_STATVFS_F_BASETYPE
+
 /* Define if your readdir_r is POSIX compatible. */
 #undef HAVE_POSIX_READDIR_R
 
