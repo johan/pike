@@ -101,13 +101,13 @@ static array(string) _indices() {
 
 //! The values of a struct is the values of the struct items.
 static array _values() {
-  return items + ({});
+  return items->get();
 }
 
 //! The size of the struct object is the number of bytes
 //! allocated for the struct.
 static int _sizeof() {
-  return `+( @items->size );
+  return `+( 0, @items->size );
 }
 
 //! The struct can be casted into a string, which is eqivivalent
