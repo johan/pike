@@ -4131,6 +4131,13 @@ PMOD_EXPORT void f_localtime(INT32 args)
  *!
  *!   Or you can just send them all on one line as the second syntax suggests.
  *!
+ *! @note
+ *!   On some operating systems (notably AIX), dates before Jan 1, 1970
+ *!   00:00:00 UTC are not supported.
+ *!
+ *!   On most systems, the supported range of dates are Dec 13, 1901
+ *!   20:45:52 UTC through Jan 19, 2038 03:14:07 UTC (inclusive).
+ *!
  *! @seealso
  *!   @[time()], @[ctime()], @[localtime()], @[gmtime()]
  */
