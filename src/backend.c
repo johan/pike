@@ -200,6 +200,9 @@ void backend()
     my_add_timeval(&next_timeout, &current_time);
 
     call_callback(& backend_callbacks, (void *)0);
+
+    check_threads_etc();
+
     sets=selectors;
 
     alloca(0);			/* Do garbage collect */
@@ -222,8 +225,6 @@ void backend()
     GETTIMEOFDAY(&current_time);
     THREADS_DISALLOW();
 
-    check_threads_etc();
-    
     if(i>=0)
     {
       for(i=0; i<max_fd+1; i++)
