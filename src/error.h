@@ -250,6 +250,9 @@ void cleanup_error(void);
 
 #endif
 
+/* forward compatibility */
+#define Pike_error error
+
 #ifndef PIKE_DEBUG
 #define check_recovery_context() ((void)0)
 #endif
