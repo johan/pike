@@ -39,6 +39,7 @@ class ber_decode {
 #ifdef SSL3_DEBUG
     werror(sprintf("contents: %O\n", contents));
 #endif
+    value = contents; /* Default is no conversion */
     if (tag & 0x20)
     {
       object seq = object_program(this_object())(contents);
@@ -75,6 +76,8 @@ class ber_decode {
     case 5: /* Null */
       if (strlen(contents))
 	throw( ({ "SSL.asn1: Invalid NULL value.\n", backtrace() }) );
+      tag = "NULL";
+      value = 0;
       break;
     case 6: /* Object id */
     {
