@@ -1552,7 +1552,7 @@ static void image_map_fs(INT32 args)
    struct object *o;
    int *res,w;
    rgbl_group *errb;
-   
+
    if (!THIS->img) error("no image\n");
    if (args<1
        || sp[-args].type!=T_ARRAY)
@@ -1581,7 +1581,7 @@ static void image_map_fs(INT32 args)
    THREADS_ALLOW();
    while (i--)
    {
-      image_floyd_steinberg(s,xs,errb,w=!w,res,ct);
+      image_floyd_steinberg(s,xs,errb,w=!w,res,ct,1);
       for (j=0; j<THIS->xsize; j++)
 	 *(d++)=ct->clut[res[j]];
       s+=xs;
@@ -1715,6 +1715,8 @@ static void image_to8bit_fs(INT32 args)
        || sp[-args].type!=T_ARRAY)
       error("illegal argument to image->map_fs()\n");
 
+
+fprintf(stderr,"c\n");
      
    res=(int*)xalloc(sizeof(int)*THIS->xsize);
    errb=(rgbl_group*)xalloc(sizeof(rgbl_group)*THIS->xsize);
@@ -1735,7 +1737,7 @@ static void image_to8bit_fs(INT32 args)
    THREADS_ALLOW();
    while (i--)
    {
-      image_floyd_steinberg(s,xs,errb,w=!w,res,ct);
+      image_floyd_steinberg(s,xs,errb,w=!w,res,ct,1);
       for (j=0; j<THIS->xsize; j++)
 	 *(d++)=ct->index[res[j]];
       s+=xs;

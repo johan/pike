@@ -71,11 +71,13 @@ struct colortable *colortable_from_array(struct array *arr,char *from);
 struct pike_string *
    image_encode_gif(struct image *img,struct colortable *ct,
 		    rgb_group *transparent,
-		    int floyd_steinberg);
+		    int floyd_steinberg,
+		    int closest);
 void image_floyd_steinberg(rgb_group *rgb,int xsize,
 			   rgbl_group *errl,
 			   int way,int *res,
-			   struct colortable *ct);
+			   struct colortable *ct,
+			   int closest);
 
 int image_decode_gif(struct image *dest,struct image *dest_alpha,
 		     unsigned char *src,unsigned long len);
