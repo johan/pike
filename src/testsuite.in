@@ -6431,6 +6431,27 @@ int z() {return 0;}
 mixed a() {return functionp(X(Y));}
 ")()->a()]])
 
+test_any([[
+  class handler {mapping get_predefines() {return (["x": "1", "y": "", "z": 0]);}};
+  return cpp ("x y z p", "-", 0, handler());
+]], "# 1 \"-\"\n1   p");
+test_eval_error([[
+  class handler {mixed get_predefines() {return (<"x">);}};
+  cpp ("x y z", "-", 0, handler());
+]]);
+test_eval_error([[
+  class handler {mapping get_predefines() {return ([0: 0]);}};
+  cpp ("x y z", "-", 0, handler());
+]]);
+test_eval_error([[
+  class handler {mapping get_predefines() {return (["": 1]);}};
+  cpp ("x y z", "-", 0, handler());
+]]);
+test_eval_error([[
+  class handler {mapping get_predefines() {return (["x": 1]);}};
+  cpp ("x y z", "-", 0, handler());
+]]);
+
 test_any(int e; object o=clone(Stdio.File); if(!o->open("conftest.h","wct")) return -1; e=o->write("return 17;\n"); if(!o->close()) return -1; return e,11)
 
 test_compile_any([[import Stdio.Readline; mapping x=([]);]]);
