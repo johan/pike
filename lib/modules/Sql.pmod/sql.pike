@@ -179,9 +179,9 @@ void create(void|string|object host, void|string db,
       program_names = indices(Sql);
       // Restore compiler errors mode to whatever it was before.
       master()->inhibit_compile_errors = old_inhib;
+#endif /* PIKE_SQL_DEBUG */
 
       throw_errors = 0;
-#endif /* PIKE_SQL_DEBUG */
     }
 
     foreach(program_names, string program_name) {
@@ -220,8 +220,6 @@ void create(void|string|object host, void|string db,
 	      } else {
 		master_sql = p();
 	      }
-	      if(master_sql)
-		break;
 	    };
 	    if (err) {
 	      if (throw_errors) {
@@ -243,6 +241,8 @@ void create(void|string|object host, void|string db,
 #endif /* PIKE_SQL_DEBUG */
 	  }
 	};
+	if(master_sql)
+	  break;
 	if (err && throw_errors) {
 	  throw(err);
 	}
