@@ -22,6 +22,11 @@ static int _sizeof()
   return head - tail;
 }
 
+static array _values()
+{
+  return l[tail..head];
+}
+
 void write(mixed item)
 {
   put(item);
