@@ -158,9 +158,10 @@ struct thread_starter
 
 void exit_threads_disable(struct object *o)
 {
-  if(threads_disabled) threads_disabled--;
   /* fprintf(stderr, "exit_threads_disable(): threads_disabled:%d\n", threads_disabled); */
-  co_broadcast(&threads_disabled_change);
+  if(threads_disabled)
+    if(!--threads_disabled)
+      co_broadcast(&threads_disabled_change);
 }
 
 void init_threads_disable(struct object *o)
