@@ -1698,7 +1698,7 @@ static void f_parse_pike_type( INT32 args )
   free_type(t);
 }
 
-/*! @decl mapping (string:mixed) all_constant()
+/*! @decl mapping (string:mixed) all_constants()
  *!
  *!   Returns a mapping containing all global constants, indexed on the name
  *!   of the constant, and with the value of the constant as value.
