@@ -775,20 +775,30 @@ void document(string enttype,
    }
 }
 
-void make_doc_files()
+void make_doc_files(string imgdest)
 {
    Stdio.stderr->write("modules: "+sort(indices(parse)-({" appendix"}))*", "+"\n");
 
-   Stdio.stdout->write("<module name=''>\n");
-   
+   object f = class {
+       string doc = "";
+       int write(string in) {
+	 doc += in;
+	 return sizeof(in);
+       }
+       string read() {
+	 return "<module name=''>\n" + doc + "</module>";
+       }
+     }();
+
    foreach (sort(indices(parse)-({"_order", " appendix"})),string module)
-      document("module",parse[module],module,module+".", Stdio.stdout);
+      document("module",parse[module],module,module+".", f);
 
    if(appendixM)
      foreach(parse[" appendix"]->_order, string title)
-       document("appendix",parse[" appendix"][title],title,"", Stdio.stdout);
+       document("appendix",parse[" appendix"][title],title,"", f);
 
-   Stdio.stdout->write("</module>\n");
+   werror("%O\n", getcwd());
+   write( Tools.AutoDoc.ProcessXML.moveImages(f->read(), ".", imgdest) );
 }
 
 void process_line(string s,string currentfile,int line)
