@@ -9,6 +9,8 @@ string fr;
 
 array encoded=({});
 
+#define werror _werror
+
 void handle_error(mixed err)
 {
   foreach(encoded, mixed o)
