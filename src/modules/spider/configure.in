@@ -13,6 +13,4 @@ AC_HAVE_HEADERS(arpa/inet.h netinet/in.h sys/mman.h netdb.h \
         sys/socket.h sys/sockio.h sys/conf.h stropts.h \
 	sys/uio.h unistd.h)
 
-AC_CHECK_TYPE(time_t, long)
-
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
