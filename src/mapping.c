@@ -495,6 +495,16 @@ struct svalue *low_mapping_string_lookup(struct mapping *m,
   return low_mapping_lookup(m, &tmp);
 }
 
+void mapping_string_insert(struct mapping *m,
+			   struct pike_string *p,
+			   struct svalue *val)
+{
+  struct svalue tmp;
+  tmp.type=T_STRING;
+  tmp.u.string=p;
+  mapping_insert(m, &tmp, val);
+}
+
 struct svalue *simple_mapping_string_lookup(struct mapping *m,
 					    char *p)
 {
