@@ -2053,7 +2053,7 @@ void cleanup_memhdrs(void)
 	  break;
 	}
 	
-	find_references_to(p,0,2,0);
+	find_references_to(p,0,0,0);
 	dump_memhdr_locations(m, 0,0);
       }
     }
