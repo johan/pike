@@ -353,6 +353,8 @@ void describe_something(void *a, int t, int dm)
     case T_MAPPING:
       fprintf(stderr,"**Describing mapping:\n");
       debug_dump_mapping((struct mapping *)a);
+      fprintf(stderr,"**Describing mapping data block:\n");
+      describe_something( ((struct mapping *)a)->data, -1, dm);
       break;
 
     case T_STRING:
