@@ -1498,6 +1498,9 @@ class joinnode
 	}
       }
     }
+    foreach(indices(fallback_module), string index) {
+      `[](index);
+    }
     _cache_full = 1;
   }
 
