@@ -522,20 +522,27 @@ void docdecl(string enttype,
 
 	 // Find name
 	 string n = "";
+	 i++;
 	 for (; i<sizeof(in); i++) {
-	   if(in[i]==')')
+	   if(in[i]==')') {
+	     if(!sizeof(String.trim_all_whites(n)))
+	       throw( ({ "Empty argument name.\n", backtrace() }) );
 	     return res + "<argument name=" + S(n) + "><type>" + t +
 	       "</type></argument>\n";
+	   }
 	   if(in[i]==',') {
+	     if(!sizeof(String.trim_all_whites(n)))
+		throw( ({ "Empty argument name.\n", backtrace() }) );
 	     res += "<argument name=" + S(n) + "><type>" + t +
 	       "</type></argument>\n";
 	     break;
 	   }
-	   if(in[i]==' ')
+	   if(in[i]==' ') {
 	     if(n=="...") {
 	       n = "";
 	       t = "<varargs>" + t  + "</varargs>";
 	     }
+	   }
 	   else
 	     n += in[i..i];
 	 }
