@@ -4,6 +4,8 @@
 
 #define PIKE_OPCODE_T	unsigned INT32
 
+#define LOW_GET_JUMP()	(PROG_COUNTER[0])
+#define LOW_SKIPJUMP()	(SET_PROG_COUNTER(PROG_COUNTER + 1))
 #define PROG_COUNTER (((INT32 **)__builtin_frame_address(1))[2])
 
 #define SET_REG(REG, X) do {						  \
@@ -61,6 +63,9 @@
 	 0x03ffffff);						\
     }								\
   } while(0)
+
+extern void ppc32_flush_instruction_cache(void *addr, size_t len);
+#define FLUSH_INSTRUCTION_CACHE ppc32_flush_instruction_cache
 
 /*
 struct dynamic_buffer_s;
