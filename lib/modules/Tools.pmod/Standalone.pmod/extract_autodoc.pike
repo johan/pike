@@ -197,9 +197,10 @@ string extract(string filename, string imgdest, int(0..1) rootless,
     return 0;
   }
 
-  if(result && sizeof(result) && imgdest)
-    return Tools.AutoDoc.ProcessXML.moveImages(result, builddir,
-					       imgdest, !verbosity);
+  if(!result) result="";
 
-  return "\n";
+  if(sizeof(result) && imgdest)
+    result = Tools.AutoDoc.ProcessXML.moveImages(result, builddir,
+						 imgdest, !verbosity);
+  return result+"\n";
 }
