@@ -99,7 +99,7 @@ private int queue_write()
     if (catch {
       socket->set_write_callback(ssl_write_callback);
     }) {
-      return(0);
+      return 0;
     }
   }
 #ifdef SSL3_DEBUG

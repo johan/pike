@@ -33,7 +33,7 @@ static array(float) init_cap_sin_table()
   for (int i = 0; i < CAPSTEPS; i++) {
     s_t[i] = sin(PI*i/(CAPSTEPS-1));
   }
-  return(s_t);
+  return s_t;
 }
 
 static array(float) cap_sin_table = init_cap_sin_table();
@@ -45,7 +45,7 @@ static array(float) init_cap_cos_table()
   for (int i = 0; i < CAPSTEPS; i++) {
     c_t[i] = cos(PI*i/(CAPSTEPS-1));
   }
-  return(c_t);
+  return c_t;
 }
 
 static array(float) cap_cos_table = init_cap_cos_table();

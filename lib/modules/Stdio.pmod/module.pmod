@@ -461,7 +461,7 @@ class File
       set_nonblocking(0, 0, 0, 0, 0);
       call_out(_async_check_cb, 0);
     }
-    return(1);	// OK so far. (Or rather the callback will be used).
+    return 1;	// OK so far. (Or rather the callback will be used).
   }
 
   //! This function creates a bi-directional pipe between the object it

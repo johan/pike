@@ -32,9 +32,9 @@ void drop_db( string db )
 //!   String to quote.
 string quote(string s)
 {
-  return(replace(s,
+  return replace(s,
 		 ({ "\\", "\"", "\0", "\'", "\n", "\r" }),
-		 ({ "\\\\", "\\\"", "\\0", "\\\'", "\\n", "\\r" })));
+		 ({ "\\\\", "\\\"", "\\0", "\\\'", "\\n", "\\r" }));
 }
 
 // The following time conversion functions assumes the SQL server

@@ -17,7 +17,7 @@
 //!   String to quote.
 string quote(string s)
 {
-  return(replace(s, "\'", "\'\'"));
+  return replace(s, "\'", "\'\'");
 }
 
 //! Throw an error in case an unimplemented function is called.
