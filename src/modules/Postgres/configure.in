@@ -134,6 +134,7 @@ dnl last check, just to be sure
 		if test x$pike_cv_pgres_lib_dir != xno; then
 			LDFLAGS="$LDFLAGS -L$pike_cv_pgres_lib_dir"
 		fi
+		AC_CHECK_LIB(crypt, crypt)
 		AC_CHECK_LIB(pq,PQclear)
 	fi
 	AC_CHECK_FUNCS(PQsetdbLogin)
