@@ -830,7 +830,7 @@ static void image_x_decode_truecolor(INT32 args)
 	 d->b=s[bpos];
 	 d++;
 
-	 if (n && Bpp>=len) 
+	 if (n && (unsigned long)Bpp>=len) 
 	    break;
 	 len-=Bpp;
 	 s+=Bpp;
