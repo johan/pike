@@ -1308,8 +1308,6 @@ void pike_module_init(void)
 #endif
   }
 
-  init_dumudp();
-
 #ifdef ENABLE_STREAMED_PARSER
   start_new_program();
   add_storage( sizeof (struct streamed_parser) );
