@@ -40,6 +40,9 @@
       <target module="Standards" class="URI"/>
     </file>
   </dir>
+  <file name="Array.xml">
+    <target module="Array"/>
+  </file>
   <file name="Calendar.xml">
     <target module="Calendar"/>
   </file>
@@ -48,6 +51,9 @@
   </file>
   <file name="GDK.xml">
     <target module="GDK"/>
+  </file>
+  <file name="Geography.xml">
+    <target module="Geography"/>
   </file>
   <file name="Gnome.xml">
     <target module="Gnome"/>
@@ -62,8 +68,15 @@
   <file name="GTK.xml">
     <target module="GTK"/>
   </file>
+  <file name="Gz.xml">
+    <target module="Gz"/>
+  </file>
+  <file name="MIME.xml">
+    <target module="MIME"/>
+  </file>
   <file name="Sql.xml">
     <target module="Sql"/>
+    <target module="Mysql"/>
   </file>
   <file name="index.xml">
     <!-- Import all remaining crawled data to this file: -->
