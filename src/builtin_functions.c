@@ -823,7 +823,7 @@ PMOD_EXPORT void f_search(INT32 args)
 
       /* First try lfun::_search(). */
       if (id >= 0) {
-	apply_lfun(o, id, args-1);
+	apply_low(o, id, args-1);
 	stack_pop_n_elems_keep_top(1);
 	return;
       }
@@ -843,14 +843,14 @@ PMOD_EXPORT void f_search(INT32 args)
 	/* At this point we have two values on the stack. */
 
 	while(1) {
-	  apply_lfun(o, id, 0);
+	  apply_low(o, id, 0);
 	  if (is_eq(Pike_sp-2, Pike_sp-1)) {
 	    /* Found. */
-	    apply_lfun(o, ind, 0);
+	    apply_low(o, ind, 0);
 	    stack_pop_n_elems_keep_top(3);
 	    return;
 	  }
-	  apply_lfun(o, next, 0);
+	  apply_low(o, next, 0);
 	  if (UNSAFE_IS_ZERO(Pike_sp-1)) {
 	    /* Not found. */
 	    pop_n_elems(4);
