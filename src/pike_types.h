@@ -219,8 +219,8 @@ struct pike_string *make_pike_type(char *t);
 #define dtOr4(A,B,C,D) dtOr(A,dtOr3(B,C,D))
 #define dtOr5(A,B,C,D,E) dtOr(A,dtOr4(B,C,D,E))
 #define dtOr6(A,B,C,D,E,F) dtOr(A,dtOr5(B,C,D,E,F))
-#define dtMix {unsafe_push_type(T_MIXED);}
-#define dtMixed {unsafe_push_type(T_MIXED);}
+#define dtMix {unsafe_push_type(PIKE_T_MIXED);}
+#define dtMixed {unsafe_push_type(PIKE_T_MIXED);}
 #define dtComplex dtStore(tComplex)
 #define dtStringIndicable dtStore(tStringIndicable)
 #define dtRef dtStore(tRef)
