@@ -230,6 +230,25 @@ use_malloc:
   /* Initialize the fcode_to_opcode table. */
   eval_instruction(NULL);
 #endif /* HAVE_COMPUTED_GOTO */
+#if defined(PIKE_USE_MACHINE_CODE) && !defined(PIKE_DEBUG)
+  /* Simple operator opcodes... */
+#define SET_INSTR_ADDRESS(X, Y)	(instrs[(X)-F_OFFSET].address = (void *)Y)
+  SET_INSTR_ADDRESS(F_COMPL,		o_compl);
+  SET_INSTR_ADDRESS(F_LSH,		o_lsh);
+  SET_INSTR_ADDRESS(F_RSH,		o_rsh);
+  SET_INSTR_ADDRESS(F_SUBTRACT,		o_subtract);
+  SET_INSTR_ADDRESS(F_AND,		o_and);
+  SET_INSTR_ADDRESS(F_OR,		o_or);
+  SET_INSTR_ADDRESS(F_XOR,		o_xor);
+  SET_INSTR_ADDRESS(F_MULTIPLY,		o_multiply);
+  SET_INSTR_ADDRESS(F_DIVIDE,		o_divide);
+  SET_INSTR_ADDRESS(F_MOD,		o_mod);
+  SET_INSTR_ADDRESS(F_CAST,		o_cast);
+  SET_INSTR_ADDRESS(F_CAST_TO_INT,	o_cast_to_int);
+  SET_INSTR_ADDRESS(F_CAST_TO_STRING,	o_cast_to_string);
+  SET_INSTR_ADDRESS(F_RANGE,		o_range);
+  SET_INSTR_ADDRESS(F_SSCANF,		o_sscanf);
+#endif /* PIKE_USE_MACHINE_CODE && !PIKE_DEBUG */
 }
 
 
