@@ -3,7 +3,7 @@
  *
  * GL Utilities module.
  */
-#if constant(GL)
+#if constant(GL.glGet)
 import GL;
 import Math;
 
