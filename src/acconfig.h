@@ -245,6 +245,9 @@
 /* Define this to use machine code */
 #undef PIKE_USE_MACHINE_CODE
 
+/* Define this to one of the available bytecode methods. */
+#undef PIKE_BYTECODE_METHOD
+
 /* You have gcc-type function attributes? */
 #undef HAVE_FUNCTION_ATTRIBUTES
 
