@@ -320,7 +320,7 @@ install: pike hilfe pike-module aclocal
 	@if [ -d "$(MANDIR_SRC)/." ]; then \
 	  echo ; echo "Installing manual pages..."; \
 	  for f in `cd "$(MANDIR_SRC)/"; echo *.1`; do \
-	    dest = "$(man_prefix)/man1/$$f"; \
+	    dest="$(man_prefix)/man1/$$f"; \
 	    if cmp "$$dest" "$(MANDIR_SRC)/$$f" >/dev/null 2>&1 ; \
 	    then : ; else \
 	      echo "$$dest"; \
