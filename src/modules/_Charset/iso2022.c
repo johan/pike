@@ -366,7 +366,8 @@ static int call_repcb(struct svalue *repcb, p_wchar2 ch)
 	  } else if(rep != NULL) \
             eat_enc_string(rep, s, NULL, NULL); \
 	  else \
-	    Pike_error("Character unsupported by encoding.\n");
+	    Pike_error("Character %lu unsupported by encoding.\n", \
+		       (unsigned long) ch);
 
 
 static void eat_enc_string(struct pike_string *str, struct iso2022enc_stor *s,
