@@ -1162,7 +1162,8 @@ static void image_ttf_faceinstance_write(INT32 args)
 
 	    if ((res=TT_Get_Glyph_Pixmap(glyph,
 					 &rastermap,
-					 -metrics.bbox.xMin,
+					 -metrics.bbox.xMin+
+					 pos&63,
 					 face_i->height*64-
 					 face_i->trans)))
 	       { errs="TT_Get_Glyph_Pixmap: "; break; }
