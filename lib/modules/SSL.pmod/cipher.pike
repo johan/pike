@@ -4,6 +4,11 @@
  *
  */
 
+#pragma dont_save_parent
+// Override if someone set __pragma_save_parent__ globally. Other code
+// assumes the constants can be indexed out of this class directly. It
+// should probably be a pmod instead. /mast
+
 //! Encryption and MAC algorithms used in SSL.
 
 inherit "constants";
