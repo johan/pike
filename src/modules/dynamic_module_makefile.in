@@ -77,4 +77,14 @@ local_install: $(MODULE_INSTALL)
 	fi; \
 	$(TMP_BINDIR)/install_module module.pmod $(LOCAL_MODULE_PATH)/$(MODDIR)$(MODNAME).pmod 
 
+dump_module: install
+	-rm -f dumpmodule.log
+	args=$${args:-"--log-file --update-only=dumpversion --report-failed"}; \
+	$(RUNPIKE) -x dump $$args \
+	--recursive "$(SYSTEM_MODULE_PATH)/$(MODDIR)$(MODNAME).pmod"
 
+dump_local_module: install
+	-rm -f dumpmodule.log
+	args=$${args:-"--log-file --update-only=dumpversion --report-failed"}; \
+	$(RUNPIKE) -x dump $$args \
+	--recursive "$(LOCAL_MODULE_PATH)/$(MODDIR)$(MODNAME).pmod"
