@@ -68,7 +68,7 @@ dnl [#]line __oline__ "[$]0"
 [#]line __oline__ "configure"
 #include "confdefs.h"
 #include <stdio.h>
-char size_info[] = {
+char size_info[[]] = {
   0, 'S', 'i', 'Z', 'e', '_', 'I', 'n', 'F', 'o', '_',
   '0' + sizeof([$1]), 0
 };
