@@ -161,7 +161,7 @@ PMOD_EXPORT extern const char Pike_check_c_stack_errmsg[];
 #ifdef PIKE_DEBUG
 #define STACK_LEVEL_START(depth)	\
   do { \
-    struct svalue *save_stack_level = Pike_sp - (depth);
+    struct svalue *save_stack_level = (Pike_sp - (depth))
 
 #define STACK_LEVEL_DONE(depth)		\
     STACK_LEVEL_CHECK(depth);		\
