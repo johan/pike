@@ -37,7 +37,7 @@ struct string_builder
 {
   struct pike_string *s;
   ptrdiff_t malloced;
-  size_t known_shift;
+  INT32 known_shift;
 };
 
 /* Flags used by string_builder_append_integer() */
