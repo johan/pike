@@ -1452,10 +1452,12 @@ inherit CompatResolver;
 string _pike_file_name;
 string _master_file_name;
 
-//flag. Gets set to 1 if we're in async-mode (script->main() returned <0)
-private int _async=0;
+// Gets set to 1 if we're in async-mode (script->main() returned <0)
+private int(0..1) _async=0;
 
-int asyncp() {
+//! Returns 1 if we´re in async-mode, e.g. if the main method has
+//! returned a negative number.
+int(0..1) asyncp() {
   return _async;
 }
 
