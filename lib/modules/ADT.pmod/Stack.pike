@@ -123,9 +123,9 @@ array _values() {
 //! A stack added with another stack yields a third
 //! a third stack will all the stack elements from
 //! the two first stacks.
-ADT.Stack `+(ADT.Stack s) {
+this_program `+(this_program s) {
   array elem = arr[..ptr-1]+values(s);
-  ADT.Stack ns = ADT.Stack(1);
+  this_program ns = this_program(1);
   ns->set_stack(elem);
   return ns;
 }
