@@ -55,11 +55,13 @@ static B_ALGORITHM_METHOD *rsa_chooser[] =
   &AM_RSA_ENCRYPT, &AM_RSA_DECRYPT, NULL
 };
 
+#ifdef PIKE_RSA_DEBUG
+
 /*
  * Debug code.
  */
 
-void low_dump_string(char *name, unsigned char *buffer, int len)
+static void low_dump_string(char *name, unsigned char *buffer, int len)
 {
   int i;
   fprintf(stderr, "%s:\n", name);
@@ -74,6 +76,8 @@ void low_dump_string(char *name, unsigned char *buffer, int len)
     fprintf(stderr, "\n");
   }
 }
+
+#endif /* PIKE_RSA_DEBUG */
 
 /*
  * RSA memory handling glue code.
@@ -382,7 +386,7 @@ static void f_decrypt(INT32 args)
   int i;
 
   if ((!THIS->n) || (!THIS->d)) {
-    error("Public key has not been set.\n");
+    error("Private key has not been set.\n");
   }
 
   get_all_args("decrypt", args, "%S", &s);
@@ -415,7 +419,9 @@ static void f_decrypt(INT32 args)
     error("decrypt failed: %04x\n", err);
   }
 
+#ifdef PIKE_RSA_DEBUG
   fprintf(stderr, "RSA: Decrypt len: %d\n", len);
+#endif /* PIKE_RSA_DEBUG */
 
   flen = 0;
   if ((err = B_DecryptFinal(THIS->cipher, buffer + len, &flen, s->len - len,
@@ -425,7 +431,9 @@ static void f_decrypt(INT32 args)
     error("Decrypt failed: %04x\n", err);
   }
 
+#ifdef PIKE_RSA_DEBUG
   fprintf(stderr, "RSA: Decrypt flen: %d\n", flen);
+#endif /* PIKE_RSA_DEBUG */
 
   len += flen;
 
@@ -440,6 +448,7 @@ static void f_decrypt(INT32 args)
   /* FIXME: Enforce i being 1? */
   if ((buffer[i] != 2) ||
       ((i += strlen(buffer + i)) < 9) || (len != THIS->n->len)) {
+#ifdef PIKE_RSA_DEBUG
     fprintf(stderr, "Decrypt failed: i:%d, len:%d, n->len:%d, buffer[0]:%d\n",
 	    i, len, THIS->n->len, buffer[0]);
     low_dump_string("s", s->str, s->len);
@@ -447,6 +456,7 @@ static void f_decrypt(INT32 args)
     low_dump_string("n", THIS->n->str, THIS->n->len);
     low_dump_string("e", THIS->e->str, THIS->e->len);
     low_dump_string("d", THIS->d->str, THIS->d->len);
+#endif /* PIKE_RSA_DEBUG */
     pop_n_elems(args);
     push_int(0);
     return;
