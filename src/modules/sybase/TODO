@@ -1,5 +1,5 @@
 # TODO file for the sybase pike driver
-# by Francesco Chemolli, (C) Roxen IS
+# by Francesco Chemolli
 # $Id$
 
 Improve the checks for the sybase-libraries, and use a lock to serialize

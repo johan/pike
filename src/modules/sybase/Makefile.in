@@ -1,6 +1,5 @@
 # $Id$
 # by Francesco Chemolli <kinkie@roxen.com>
-# (C) Roxen IS
 
 @make_variables@
 SRCDIR=@srcdir@

@@ -1,8 +1,6 @@
 /*
  * Postgres95 and PostgreSQL support for pike/0.5 and up
  *
- * (C) 1997 Francesco Chemolli <kinkie@kame.usr.dsi.unimi.it>
- *
  * This code is provided AS IS, and may be distributed under the terms
  * of the GNU General Public License, version 2.
  */

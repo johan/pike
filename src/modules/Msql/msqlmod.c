@@ -1,11 +1,8 @@
 /*
- * This code is (C) Francesco Chemolli, 1997.
  * You may use, modify and redistribute it freely under the terms
  * of the GNU General Public License, version 2.
  * $Id$
  *
- * This version is intended for Pike/0.5 and later.
- * It won't compile under older versions of the Pike interpreter.
  */
 
 /* All this code is pretty useless if we don't have a msql library...*/

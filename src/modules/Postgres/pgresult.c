@@ -3,8 +3,6 @@
  *
  * Postgres95 support for pike/0.5 and up
  *
- * (C) 1997 Francesco Chemolli <kinkie@kame.usr.dsi.unimi.it>
- *
  * This code is provided AS IS, and may be copied and distributed freely,
  * under the terms of the GNU General Public License, version 2.
  *

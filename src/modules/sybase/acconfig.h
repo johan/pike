@@ -4,7 +4,6 @@
  * Config-file for the Pike sybase driver module
  *
  * by Francesco Chemolli
- * (C) Roxen IS
  */
 
 #ifndef __PIKE_SYBASE_CONFIG_H

@@ -1,5 +1,4 @@
 # $Id$
-# (C) 1997 Francesco Chemolli <kinkie@kame.usr.dsi.unimi.it>
 
 @make_variables@
 VPATH=@srcdir@:@srcdir@/../..:../..
