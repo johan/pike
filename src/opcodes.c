@@ -328,6 +328,9 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 		  shift = 1;
 		  if (val > 0xffff) {
 		    shift = 2;
+		    while(i--)
+		      if (a->item[i].type != T_INT)
+			error("cast: Item %d is not an integer.\n", i);
 		    break;
 		  }
 		  while(i--) {
@@ -337,6 +340,9 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 		    val = (unsigned INT32)a->item[i].u.integer;
 		    if (val > 0xffff) {
 		      shift = 2;
+		      while(i--)
+			if (a->item[i].type != T_INT)
+			  error("cast: Item %d is not an integer.\n", i);
 		      break;
 		    }
 		  }
