@@ -354,9 +354,6 @@ node *mknode(short token,node *a,node *b)
   if(a) a->parent = res;
   if(b) b->parent = res;
 
-  /* We try to optimize most things, but argument lists are hard... */
-  if(token != F_ARG_LIST && (a || b))
-    res->node_info |= OPT_TRY_OPTIMIZE;
 
   switch(token)
   {
@@ -378,6 +375,7 @@ node *mknode(short token,node *a,node *b)
   case F_MAGIC_INDEX:
   case F_MAGIC_SET_INDEX:
     res->node_info |= OPT_EXTERNAL_DEPEND;
+    break;
 
   case F_UNDEFINED:
     res->node_info |= OPT_EXTERNAL_DEPEND | OPT_SIDE_EFFECT;
@@ -413,6 +411,10 @@ node *mknode(short token,node *a,node *b)
     break;
     
     default:
+      /* We try to optimize most things, but argument lists are hard... */
+      if(token != F_ARG_LIST && (a || b))
+	res->node_info |= OPT_TRY_OPTIMIZE;
+
       res->tree_info = res->node_info;
       if(a) res->tree_info |= a->tree_info;
       if(b) res->tree_info |= b->tree_info;

@@ -235,6 +235,24 @@ static int do_docode2(node *n,int flags)
     flags &=~DO_INDIRECT;
   }
 
+  /* Stack check */
+  {
+    long x_= ((char *)&x_) + STACK_DIRECTION * (32768) - stack_top ;
+    x_*=STACK_DIRECTION;						
+    if(x_>0)
+    {
+      yyerror("Too dep recursion in compiler. (please report this)");
+
+      emit(F_NUMBER,0);
+      if(flags & DO_LVALUE)
+      {
+	emit(F_NUMBER,0);
+	return 2;
+      }
+      return 1;
+    }
+  }
+
   switch(n->token)
   {
   case F_MAGIC_INDEX:
