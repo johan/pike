@@ -113,7 +113,7 @@ F_CAST(0 = +[$$->type == void_type_string], *):
 ;
 
 // This one is probably not needed, since it's handled by mkcastnode()
-0 = F_CAST(1 = +[$$->type == $0->type](*, *), *):
+0 = F_CAST(1 = F_CAST[$$->type == $0->type](*, *), *):
   $1;
 
 // Propagate casts towards the root instead.
