@@ -266,7 +266,8 @@ class fetch
 	switch(lower_case(request->atom))
 	{
 #define ATTR(x) ([ "wanted" : (x) ])
-#define ATTR_SECTION(x,y) ([ "wanted" : (x), "section" : (y) ])
+#define ATTR_SECTION(x,y) ([ "wanted" : (x), "section" : (y), \
+                             "raw_wanted" : ({ (x), @(y) })*"." ])
 	case "all":
 	  fetch_attrs = ({ ATTR("flags"), ATTR("internaldate"),
 			   ATTR_SECTION("rfc822", ({ "size" })),
