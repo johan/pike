@@ -273,6 +273,7 @@ $3;
 return 0;
 }
 ], pike_cv_func_$1=yes, pike_cv_func_$1=no, [
+      echo $ac_n "crosscompiling... $ac_c" 1>&6
       AC_TRY_LINK([$2], [$3], pike_cv_func_$1=yes, pike_cv_func_$1=no)
     ])
   ])
