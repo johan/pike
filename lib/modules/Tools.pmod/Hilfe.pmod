@@ -1767,9 +1767,25 @@ class Evaluator {
     program p;
     mixed err;
 
+#if constant(_assembler_debug)
+    if(assembler_debug_level)
+      _assembler_debug(assembler_debug_level);
+#endif
+#if constant(_compiler_trace)
+    if(compiler_trace_level)
+      _compiler_trace(compiler_trace_level);
+#endif
+
     last_compile_time = gethrtime();
     err = catch(p=compile_string(prog, "HilfeInput", handler));
     last_compile_time = gethrtime()-last_compile_time;
+
+#if constant(_assembler_debug)
+    _assembler_debug(0);
+#endif
+#if constant(_compiler_trace)
+    _compiler_trace(0);
+#endif
 
     if(err) {
       handler->show_warnings();
@@ -1792,14 +1808,6 @@ class Evaluator {
   {
     if(trace_level)
       a = "\ntrace("+trace_level+");\n" + a;
-#if constant(_assembler_debug)
-    if(assembler_debug_level)
-      a = "\n_assembler_debug("+assembler_debug_level+");\n" + a;
-#endif
-#if constant(_compiler_trace)
-    if(compiler_trace_level)
-      a = "\n_compiler_trace("+compiler_trace_level+");\n" + a;
-#endif
 #if constant(_debug)
     if(debug_level)
       a = "\n_debug("+debug_level+");\n" + a;
@@ -1814,12 +1822,6 @@ class Evaluator {
       mixed err = catch{
 	res = o->___HilfeWrapper();
 	trace(0);
-#if constant(_assembler_debug)
-	_assembler_debug(0);
-#endif
-#if constant(_compiler_trace)
-	_compiler_trace(0);
-#endif
 #if constant(_debug)
 	_debug(0);
 #endif
