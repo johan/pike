@@ -213,7 +213,7 @@
 	/* Fall through */
       }
       
-      case 0:
+      case 0:	/* Variable */
       {
 	/* FIXME:
 	 * Use new-style tail-recursion instead
@@ -261,6 +261,11 @@
 
 	debug_malloc_touch(Pike_fp);
 	pc=new_frame->context.prog->program + function->func.offset;
+
+	/*
+	 * FIXME: The following stack stuff could probably
+	 *        be moved to an opcode.
+	 */
 
 	num_locals = READ_INCR_BYTE(pc);
 	num_args = READ_INCR_BYTE(pc);
