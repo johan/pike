@@ -3301,7 +3301,7 @@ void fix_type_field(node *n)
 	free_string(op_string);
 	break;
       }
-      my_yyerror("Bad arguments to %s().", op_string->str);
+      my_yyerror("Bad arguments to %s=().", op_string->str);
       yytype_error(NULL, op_node->type ? op_node->type : mixed_type_string,
 		   call_type, 0);
       free_node(op_node);
