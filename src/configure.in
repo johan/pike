@@ -181,8 +181,8 @@ AC_ARG_WITH(mysql,       [  --without-mysql        no support for the Mysql data
 AC_ARG_WITH(dmalloc,     [  --with-dmalloc         enable memory-leak tests],[AC_DEFINE(DEBUG_MALLOC,10)],[])
 AC_ARG_WITH(profiling,   [  --with-profiling       add code used to profile pike code ],[AC_DEFINE(PROFILING)],[])
 AC_ARG_WITH(poll,        [  --with-poll            use poll instead of select],[],[
-  # Neither --with-poll nor --without-poll specified
-  case "x$pike_cv_sys_os" in
+  # Neither --with-poll nor --without-poll was specified
+  case "$pike_cv_sys_os" in
     Solaris|AIX|HP-UX|OSF1|IRIX)
       AC_MSG_WARN([Defaulting to --with-poll since OS is $pike_cv_sys_os.])
       with_poll=yes;
