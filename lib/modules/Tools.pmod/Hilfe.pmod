@@ -812,6 +812,8 @@ private class Expression {
     if( notype[ t ] )
       return -1;
 
+    if( t=="." ) position++;
+
     for(; position<sizeof(positions); position++) {
       if( notype[ `[](position+1) ] )
         return -1;
