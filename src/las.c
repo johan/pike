@@ -1712,7 +1712,7 @@ node *recursive_add_call_arg(node *n, node *arg)
 
     case F_AUTO_MAP:
     case F_APPLY:
-      if(CAR(n)->token == F_CONSTANT &&
+      if(CAR(n) && CAR(n)->token == F_CONSTANT &&
 	 CAR(n)->u.sval.type == T_FUNCTION &&
 	 CAR(n)->u.sval.subtype == FUNCTION_BUILTIN &&
 	 CAR(n)->u.sval.u.efun->name &&
