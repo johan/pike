@@ -173,6 +173,7 @@
 #endif
   
       if(function->func.offset == -1) {
+	new_frame->num_args = args;
 	generic_error(NULL, Pike_sp, args,
 		      "Calling undefined function.\n");
       }
