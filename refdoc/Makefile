@@ -28,7 +28,7 @@ traditional: traditional_manual build/traditional.xml
 	@$(PIKE) presentation/make_html.pike --img=images/ build/traditional.xml
 
 build/autodoc.xml: recursive_join
-	@$(MAKE) PIKE="$(PIKE)" XMLFILES="`echo build/*/*.xml not_extracted/*.xml`" \
+	@$(MAKE) PIKE="$(PIKE)" XMLFILES="`echo build/*/*.xml`" \
 	  autodoc.xml
 
 recursive_join: images
