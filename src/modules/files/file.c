@@ -2366,6 +2366,7 @@ static void file_set_buffer(INT32 args)
   }else{
     flags=FILE_READ | FILE_WRITE;
   }
+  pop_n_elems(args);
 
 #ifdef SOCKET_BUFFER_MAX
 #if SOCKET_BUFFER_MAX
