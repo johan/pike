@@ -1475,10 +1475,11 @@ void init_files_efuns(void)
   }
 #endif
 
-/* function(string,int|void:int *) */
+/* function(string,int|void:object) */
   ADD_EFUN("file_stat",f_file_stat,tFunc(tStr tOr(tInt,tVoid),tObj), OPT_EXTERNAL_DEPEND);
 
-  ADD_EFUN("file_truncate",f_file_truncate,tFunc(tStr tInt,tInt),0);
+  /* function(string,int:int(0..1)) */
+  ADD_EFUN("file_truncate",f_file_truncate,tFunc(tStr tInt,tInt),OPT_EXTERNAL_DEPEND|OPT_SIDE_EFFECT);
 
 
 #if defined(HAVE_STATVFS) || defined(HAVE_STATFS) || defined(HAVE_USTAT) || defined(__NT__)
