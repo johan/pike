@@ -34,6 +34,10 @@ RCSID("$Id$");
 #include <signal.h>
 #include <errno.h>
 
+#ifdef HAVE_LIMITS_H
+#include <limits.h>
+#endif /* HAVE_LIMITS_H */
+
 #if HAVE_DIRENT_H
 # include <dirent.h>
 # define NAMLEN(dirent) strlen((dirent)->d_name)
