@@ -713,7 +713,7 @@ static void pipe_input(INT32 args)
 #ifdef HAVE_SETEUID
 	   seteuid(0);
 #else /* ! HAVE_SETEUID */
-#ifdef HAVE_SETREUID
+#ifdef HAVE_SETRESUID
 	   setresuid(-1, 0, -1);
 #endif /* HAVE_SETRESUID */
 #endif /* HAVE_SETEUID */
@@ -725,7 +725,7 @@ static void pipe_input(INT32 args)
 #ifdef HAVE_SETEUID
 	   seteuid(ou);
 #else /* ! HAVE_SETEUID */
-#ifdef HAVE_SETREUID
+#ifdef HAVE_SETRESUID
 	   setresuid(-1, ou, -1);
 #endif /* HAVE_SETRESUID */
 #endif /* HAVE_SETEUID */
