@@ -14,7 +14,7 @@
 #include "pike_error.h"
 #include "mapping.h"
 #include "object.h"
-#include "opcodes.h"
+#include "operators.h"
 
 #define sp Pike_sp
 

@@ -35,7 +35,6 @@
 #include "mapping.h"
 #include "multiset.h"
 #include "builtin_functions.h"
-#include "opcodes.h"
 #include "pike_macros.h"
 #include "version.h"
 

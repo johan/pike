@@ -15,7 +15,6 @@ RCSID("$Id$");
 #include "object.h"
 #include "builtin_functions.h"
 #include "operators.h"
-#include "opcodes.h"
 #include "program_id.h"
 
 #include <sys/stat.h>

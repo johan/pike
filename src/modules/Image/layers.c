@@ -32,7 +32,6 @@ RCSID("$Id$");
 #include "dmalloc.h"
 #include "operators.h"
 #include "module_support.h"
-#include "opcodes.h"
 
 #include "image.h"
 

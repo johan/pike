@@ -34,7 +34,6 @@ RCSID("$Id$");
 #include "pike_types.h"
 #include "pike_error.h"
 #include "builtin_functions.h"
-#include "opcodes.h"
 #include "module_support.h"
 #include "bignum.h"
 #include "operators.h"

@@ -36,7 +36,6 @@ RCSID("$Id$");
 #include "encode.h"
 #include "module_support.h"
 #include "module.h"
-#include "opcodes.h"
 #include "cyclic.h"
 #include "signal_handler.h"
 #include "builtin_functions.h"

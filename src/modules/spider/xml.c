@@ -22,7 +22,6 @@
 #include "module_support.h"
 #include "operators.h"
 #include "pike_error.h"
-#include "opcodes.h"
 #include "block_alloc.h"
 #include "bignum.h"
 

@@ -210,7 +210,7 @@ RCSID("$Id$");
 #include "dmalloc.h"
 #include "operators.h"
 #include "module_support.h"
-#include "opcodes.h"
+#include "sscanf.h"
 #include "program_id.h"
 
 #include "image.h"

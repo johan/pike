@@ -14,7 +14,6 @@
 #include "module_support.h"
 #include "operators.h"
 #include "bignum.h"
-#include "opcodes.h"
 
 #include <math.h>
 
