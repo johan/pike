@@ -1438,8 +1438,7 @@ void _main(array(string) orig_argv, array(string) env)
 	exit(1);
      }
 
-     _static_modules.files()->_stdout->write(version()+"\n"+
-					     v()*"\n"+"\n");
+     _static_modules.files()->_stdout->write(v()*"\n"+"\n");
      exit(0);
   }
 
