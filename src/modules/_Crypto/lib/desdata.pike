@@ -152,6 +152,12 @@ array(int) sorder = ({
 	7, 5, 3, 1, 6, 4, 2, 0,
 });
 
+#if !constant(has_suffix)
+int has_suffix(string a, string b) {
+  return a[sizeof(a)-sizeof(b)..]==b;
+}
+#endif
+
 int main(int argc, array(string) argv)
 {
 	int d, i, j, k, l, m, n, s;
