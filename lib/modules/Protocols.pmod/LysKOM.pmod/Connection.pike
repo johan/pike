@@ -122,8 +122,6 @@ class SyncRequest
       if (!m) return ret;
       else return m;
    }
-
-  string _sprintf(){ return "SyncRequest()"; }
 }
 
 class AsyncRequest
@@ -141,8 +139,6 @@ class AsyncRequest
       req->async(@args);
       return req;
    }
-
-  string _sprintf(){ return "AsyncRequest()"; }
 }
 
 class AsyncCBRequest
@@ -161,8 +157,6 @@ class AsyncCBRequest
       req->async(@args);
       return req;
    }
-
-  string _sprintf(){ return "AsyncCBRequest()"; }
 }
 
 mixed `->(string request)
@@ -181,5 +175,3 @@ mixed `->(string request)
 }
 
 mixed `[](string request) { return `->(request); }
-
-string _sprintf(){ return "Connection()"; }
