@@ -278,6 +278,8 @@ struct program
 #define free_program(p) do{ struct program *_=(p); debug_malloc_touch(_); if(!--_->refs) really_free_program(_); }while(0)
 
 
+extern struct object *error_handler;
+
 extern struct object *fake_object;
 extern struct program *new_program;
 extern struct program *first_program;
@@ -420,7 +422,7 @@ void start_line_numbering(void);
 void store_linenumber(INT32 current_line, struct pike_string *current_file);
 char *get_line(unsigned char *pc,struct program *prog,INT32 *linep);
 void my_yyerror(char *fmt,...)  ATTRIBUTE((format(printf,1,2)));
-struct program *compile(struct pike_string *prog);
+struct program *compile(struct pike_string *prog, struct object *handler);
 int add_function(char *name,void (*cfun)(INT32),char *type,INT16 flags);
 int quick_add_function(char *name,
 		       int name_length,
