@@ -2618,6 +2618,9 @@ PMOD_EXPORT void f_values(INT32 args)
 PMOD_EXPORT void f_next_object(INT32 args)
 {
   struct object *o;
+
+  CHECK_SECURITY_OR_ERROR(SECURITY_BIT_SECURITY, ("next_object: permission denied.\n"));
+
   if(args < 1)
   {
     o = first_object;
@@ -3869,9 +3872,8 @@ PMOD_EXPORT void f__verify_internals(INT32 args)
   CHECK_SECURITY_OR_ERROR(SECURITY_BIT_SECURITY,
 			  ("_verify_internals: permission denied.\n"));
   d_flag=0x7fffffff;
-  do_debug();
+  do_debug();			/* Runs gc too since d_flag > 3. */
   d_flag=tmp;
-  do_gc();
   pop_n_elems(args);
 }
 
