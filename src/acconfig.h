@@ -416,6 +416,12 @@
 /* Define if you want to enable use of the struct pike_type (EXPERIMENTAL) */
 #undef USE_PIKE_TYPE
 
+/* set this to the modifier type string to print size_t, like "" or "l" */
+#undef PRINTSIZET
+
+/* set this to the modifier type string to print ptrdiff_t, like "" or "l" */
+#undef PRINTPTRDIFFT
+
 /* set this to the modifier type string to print INT_TYPE, like "" or "ll" */
 #undef PRINTPIKEINT
 
