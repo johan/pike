@@ -199,7 +199,7 @@ static void f_create(INT32 args)
     user = make_shared_string("");
   }
   if (!server) {
-    server = make_shared_string("");
+    server = make_shared_string("default");
   }
   if (PIKE_ODBC->flags & PIKE_ODBC_CONNECTED) {
     PIKE_ODBC->flags &= ~PIKE_ODBC_CONNECTED;
