@@ -155,7 +155,7 @@ depend: $(SRC_TARGETS) $(PMOD_TARGETS) Makefile
 	done
 
 #verify / debug
-module_testsuite: $(SRCDIR)/testsuite.in $(REAL_TESTSUITE)
+module_testsuite: $(SRCDIR)/testsuite.in $(REAL_TESTSUITE) $(TMP_BINDIR)/mktestsuite
 	@if test "x$(REAL_TESTSUITE)" != x ; then \
 	  cp $(SRCDIR)/$(REAL_TESTSUITE) module_testsuite; \
 	else \

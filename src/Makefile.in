@@ -841,7 +841,7 @@ stamp-h: $(SRCDIR)/stamp-h.in $(SRCDIR)/machine.h.in config.status
 	touch stamp-h
 	-@rm cfl.$@
 
-testsuite: $(SRCDIR)/testsuite.in
+testsuite: $(SRCDIR)/testsuite.in $(TMP_BINDIR)/mktestsuite
 	if test "$$PIKE_PATH_TRANSLATE" = ""; then \
 	  $(TMP_BINDIR)/mktestsuite $(SRCDIR)/testsuite.in >testsuite \
 	    -DSRCDIR="$(SRCDIR)"; \
