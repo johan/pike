@@ -1256,13 +1256,13 @@ void o_divide(void)
 	
 	if(len<0)
 	{
-	  len=-len;
-	  size=sp[-2].u.array->size / len;
-	  pos=sp[-2].u.array->size % len;
+	  len = -len;
+	  pos = sp[-2].u.array->size % len;
 	}else{
-	  size=sp[-2].u.array->size / len;
-	  pos=0;
+	  pos = 0;
 	}
+	size = sp[-2].u.array->size / len;
+
 	a=allocate_array(size);
 	for(e=0;e<size;e++)
 	{
