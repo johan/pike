@@ -835,10 +835,11 @@ void f_object_program(INT32 args)
   if(args < 1)
     error("Too few argumenets to object_program()\n");
 
-  if(sp[-args].type != T_OBJECT)
-    error("Bad argument 1 to object_program()\n");
+  if(sp[-args].type == T_OBJECT)
+    p=sp[-args].u.object->prog;
+  else
+    p=0;
 
-  p=sp[-args].u.object->prog;
   pop_n_elems(args);
 
   if(!p)
