@@ -60,7 +60,7 @@ mapping _decode( string data, mixed|void tocolor )
     foreach( ({ "ANY", "XCF", "PSD", "PNG",  "BMP",  "TGA", "PCX",
                 "XBM", "XPM", "TIFF", "ILBM", "PS", "PVR",
        /* Image formats low on headers below this mark */
-                "HRZ", "AVS", "WBF",
+                "TIM", "HRZ", "AVS", "WBF",
        /* "XFace" Always succeds*/
     }), string fmt )
     {
