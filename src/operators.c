@@ -73,7 +73,7 @@ COMPARISON(f_ge,"`>=",!is_lt)
 
 void f_add(INT32 args)
 {
-  INT32 e,size;
+  INT_TYPE e,size;
   TYPE_FIELD types;
 
   types=0;
