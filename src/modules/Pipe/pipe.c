@@ -49,6 +49,17 @@ RCSID("$Id$");
 #define BLOCKING_CLOSE
 */
 
+#ifndef SEEK_SET
+#define SEEK_SET	0
+#endif /* SEEK_SET */
+#ifndef SEEK_CUR
+#define SEEK_CUR	1
+#endif /* SEEK_CUR */
+#ifndef SEEK_END
+#define SEEK_END	2
+#endif /* SEEK_END */
+
+
 #if 0
 #define INSISTANT_WRITE
 #endif
@@ -265,8 +276,8 @@ static INLINE int append_buffer(struct pike_string *s)
 
    if(THIS->fd!= -1)
    {
-     lseek(THIS->fd,THIS->pos,0);
-     write(THIS->fd,s->str,s->len);
+     lseek(THIS->fd, THIS->pos, SEEK_SET);
+     write(THIS->fd, s->str, s->len);
      THIS->pos+=s->len;
      return 0;
    }
@@ -422,7 +433,7 @@ static INLINE struct pike_string* gimme_some_data(unsigned long pos)
       len=this->pos-pos;
       if (len>READ_BUFFER_SIZE) len=READ_BUFFER_SIZE;
       THREADS_ALLOW();
-      lseek(this->fd, pos, 0); /* SEEK_SET */
+      lseek(this->fd, pos, SEEK_SET);
       THREADS_DISALLOW();
       do {
 	THREADS_ALLOW();
@@ -831,7 +842,7 @@ static void pipe_output(INT32 args)
       {
 	b=THIS->firstbuffer;
 	THIS->firstbuffer=b->next;
-	lseek(THIS->fd,THIS->pos,0);
+	lseek(THIS->fd, THIS->pos, SEEK_SET);
 	write(THIS->fd,b->s->str,b->s->len);
 	sbuffers-=b->s->len;
 	nbuffers--;
