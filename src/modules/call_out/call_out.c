@@ -50,7 +50,7 @@ static int call_buffer_size;     /* no of pointers in buffer */
 #define CMP(X,Y) my_timercmp(& CALL(X).tv, <, & CALL(Y).tv)
 #define SWAP(X,Y) do{ call_out _tmp=CALL(X); CALL(X)=CALL(Y); CALL(Y)=_tmp; } while(0)
 
-static void verify_call_outs()
+static void verify_call_outs(void)
 {
 #ifdef DEBUG
   struct array *v;
@@ -382,7 +382,7 @@ void f_remove_call_out(INT32 args)
 /* return an array containing info about all call outs:
  * ({  ({ delay, caller, function, args, ... }), ... })
  */
-struct array *get_all_call_outs()
+struct array *get_all_call_outs(void)
 {
   int e;
   struct array *ret;
@@ -422,7 +422,7 @@ void f_call_out_info(INT32 args)
   push_array(get_all_call_outs());
 }
 
-void free_all_call_outs()
+void free_all_call_outs(void)
 {
   int e;
   verify_call_outs();
@@ -437,7 +437,7 @@ void free_all_call_outs()
 }
 
 #ifdef DEBUG
-void verify_all_call_outs()
+void verify_all_call_outs(void)
 {
   verify_call_outs();
 }

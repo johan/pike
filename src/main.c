@@ -266,9 +266,9 @@ void init_main(void)
 
 void exit_main(void)
 {
-  void cleanup_added_efuns();
-  void cleanup_pike_types();
-  void cleanup_program();
+  void cleanup_added_efuns(void);
+  void cleanup_pike_types(void);
+  void cleanup_program(void);
 
   th_cleanup();
   cleanup_objects();

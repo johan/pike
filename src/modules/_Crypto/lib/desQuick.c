@@ -22,7 +22,7 @@ unsigned INT32 des_bigmap[0x4000];	/* big lookup table */
 /* fill in the 64k table used by the `quick' option */
 
 void
-DesQuickInit()
+DesQuickInit(void)
 {
 	int s1, s3, x;
 	unsigned INT32 * t0, * t1, * t2, * t3;
@@ -49,6 +49,6 @@ DesQuickInit()
 /* free the 64k table, if necessary */
 
 void
-DesQuickDone()
+DesQuickDone(void)
 {
 }

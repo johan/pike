@@ -244,12 +244,12 @@ void udp_sendto(INT32 args)
 }
 
 
-void zero_udp()
+void zero_udp(struct object *ignored)
 {
   MEMSET(THIS, 0, sizeof(struct dumudp));
 }
 
-void exit_udp()
+void exit_udp(struct object *ignored)
 {
   if(THIS->fd)
   {
@@ -303,7 +303,7 @@ static void udp_set_nonblocking(INT32 args)
   set_nonblocking(FD,1);
 }
 
-void init_udp()
+void init_udp(void)
 {
   start_new_program();
 
@@ -321,3 +321,4 @@ void init_udp()
   /* otherwise... */
   end_class("dumUDP",0);
 }
+

@@ -128,7 +128,7 @@ static void exit_mysql_struct(struct object *o)
 }
 
 
-static void pike_mysql_reconnect()
+static void pike_mysql_reconnect(void)
 {
   MYSQL *mysql = &(PIKE_MYSQL->mysql);
   MYSQL *socket;

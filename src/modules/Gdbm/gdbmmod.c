@@ -32,7 +32,7 @@ struct gdbm_glue
 
 #define THIS ((struct gdbm_glue *)(fp->current_storage))
 
-static void do_free()
+static void do_free(void)
 {
   if(THIS->dbf)
   {

@@ -2662,7 +2662,7 @@ void image_select_colors(INT32 args)
 void init_font_programs(void);
 void exit_font(void);
 
-void pike_module_init()
+void pike_module_init(void)
 {
    int i;
 

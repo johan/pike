@@ -1,5 +1,8 @@
 #include "global.h"
 
+/* Prototypes are needed for these */
+extern double floor(double);
+
 #include <unistd.h>
 #include <math.h>
 
@@ -578,7 +581,7 @@ static INLINE void polygone_free(struct vertex *top)
    }
 }
 
-static INLINE struct vertex *polygone_begin()
+static INLINE struct vertex *polygone_begin(void)
 {
    return NULL;
 }

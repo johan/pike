@@ -1744,7 +1744,7 @@ static void f_get_prof_info(INT32 args)
 }
 #endif /* PROFILING */
 
-void init_builtin_efuns()
+void init_builtin_efuns(void)
 {
   init_operators();
 

@@ -939,7 +939,7 @@ void check_mapping(struct mapping *m)
   
 }
 
-void check_all_mappings()
+void check_all_mappings(void)
 {
   struct mapping *m;
   for(m=first_mapping;m;m=m->next)
@@ -975,7 +975,7 @@ void gc_mark_mapping_as_referenced(struct mapping *m)
   }
 }
 
-void gc_check_all_mappings()
+void gc_check_all_mappings(void)
 {
   INT32 e;
   struct keypair *k;
@@ -1006,7 +1006,7 @@ void gc_check_all_mappings()
   }
 }
 
-void gc_mark_all_mappings()
+void gc_mark_all_mappings(void)
 {
   struct mapping *m;
   for(m=first_mapping;m;m=m->next)
@@ -1014,7 +1014,7 @@ void gc_mark_all_mappings()
       gc_mark_mapping_as_referenced(m);
 }
 
-void gc_free_all_unreferenced_mappings()
+void gc_free_all_unreferenced_mappings(void)
 {
   INT32 e;
   struct keypair *k;
@@ -1059,7 +1059,7 @@ void gc_free_all_unreferenced_mappings()
 
 #endif /* GC2 */
 
-void zap_all_mappings()
+void zap_all_mappings(void)
 {
   INT32 e;
   struct keypair *k;

@@ -182,7 +182,7 @@ RCSID("$Id$");
 #define YYDEBUG 1
 #endif
 
-void free_all_local_names();
+void free_all_local_names(void);
 void add_local_name(struct pike_string *,struct pike_string *);
 
 /*
@@ -1424,7 +1424,7 @@ int islocal(struct pike_string *str)
   return -1;
 }
 
-void free_all_local_names()
+void free_all_local_names(void)
 {
   int e;
 

@@ -335,7 +335,7 @@ static MP_INT *get_mpz(struct svalue *s, int throw_error)
  * case of errors..
  */
 static struct object *temporary;
-MP_INT *get_tmp()
+MP_INT *get_tmp(void)
 {
   if(!temporary)
     temporary=clone_object(mpzmod_program,0);

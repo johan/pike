@@ -226,7 +226,7 @@ static unsigned long ssleay_thread_id(void)
   return (unsigned long)th_self();
 }
       
-static void ssleay_init_threads()
+static void ssleay_init_threads(void)
 {
   int i;
   for (i = 0; i<CRYPTO_NUM_LOCKS; i++)
@@ -261,7 +261,7 @@ void exit_connection(struct object *o)
 
 #endif /* HAVE_SSLEAY */
 
-void pike_module_exit()
+void pike_module_exit(void)
 {
 #ifdef HAVE_SSLEAY
   free_program(ssleay_connection_program);
