@@ -3362,21 +3362,9 @@ static struct pike_type *debug_low_index_type(struct pike_type *t,
 	  add_ref(mixed_type_string);
 	  return mixed_type_string;
 	}else{
-#if 0
-	  if(t->car ||
-	     (p->identifier_references[i].id_flags & ID_NOMASK) ||
-	    (ID_FROM_INT(p, i)->identifier_flags & IDENTIFIER_PROTOTYPED))
-	  {
-#endif
-	    add_ref(ID_FROM_INT(p, i)->type);
-	    return ID_FROM_INT(p, i)->type;
-#if 0
-	  }else{
-	    add_ref(mixed_type_string);
-	    return mixed_type_string;
-	  }
-#endif
-	}	   
+	  add_ref(ID_FROM_INT(p, i)->type);
+	  return ID_FROM_INT(p, i)->type;
+	}
       }
     }
   }
