@@ -330,8 +330,8 @@ PMOD_EXPORT void MEMMOVE(void *b,const void *aa,size_t s)
 #ifndef HAVE_MEMCMP
 PMOD_EXPORT int MEMCMP(const void *bb,const void *aa,size_t s)
 {
-  char *a=(char *)aa;
-  char *b=(char *)bb;
+  unsigned char *a=(unsigned char *)aa;
+  unsigned char *b=(unsigned char *)bb;
   for(;s;s--,b++,a++)
   {
     if(*b!=*a)
