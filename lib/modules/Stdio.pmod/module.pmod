@@ -1881,7 +1881,7 @@ static class nb_sendfile
     werror("Stdio.sendfile(): Blocking writer.\n");
 #endif /* SENDFILE_DEBUG */
 
-    int bytes = to->write(to_write);
+    int bytes = sizeof(to_write) && to->write(to_write);
 
     if (bytes >= 0) {
       sent += bytes;
@@ -1901,7 +1901,7 @@ static class nb_sendfile
 	  }
 	}
       }
-      // Not reached, but...
+
       return 1;
     } else {
 #ifdef SENDFILE_DEBUG
