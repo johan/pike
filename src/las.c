@@ -1241,7 +1241,7 @@ void fix_type_field(node *n)
 	
       case F_CONSTANT:
       default:
-	name="function call";
+	name="`() (function call)";
       }
 
       if(max_correct_args == count_arguments(s))
