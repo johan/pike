@@ -898,7 +898,7 @@ static int _png_write_rgb(rgb_group *w1,
 	 switch (bpp)
 	 {
 	    case 8:
-	       if (n>len/3) n=len/3;
+	       if (n>len/4) n=len/4;
 	       while (n)
 	       {
 		  d1->r=*(s++);
@@ -911,7 +911,7 @@ static int _png_write_rgb(rgb_group *w1,
 	       }
 	       break;
 	    case 16:
-	       if (n>len/6) n=len/6;
+	       if (n>len/8) n=len/8;
 	       while (n)
 	       {
 		  d1->r=*(s++);
