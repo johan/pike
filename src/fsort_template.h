@@ -173,7 +173,7 @@ static void MKNAME(_do_sort)(register PTYPE bas,
       else
       {
 	DEC(a);
-	if( -1 < (char *)last - (char *)b )
+	if( STEP(0,-1) < (char *)last - (char *)b )
 	{
 	  MKNAME(_do_sort)(bas,a,max_recursion XARGS);
 	  bas=b;
