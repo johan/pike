@@ -368,10 +368,10 @@ void pike_pipe_init(void)
   ADD_FUNCTION("query_block_size", f_query_block_size, tFunc(tNone, tInt), 0);
   /* function(void:int) */
   ADD_FUNCTION("query_key_length", f_query_key_length, tFunc(tNone, tInt), 0);
-  /* function(string:object) */
+  /* function(string ...:object) */
   ADD_FUNCTION("set_encrypt_key", f_set_encrypt_key,
                tFuncV(tNone, tStr, tObj), 0);
-  /* function(string:object) */
+  /* function(string ...:object) */
   ADD_FUNCTION("set_decrypt_key", f_set_decrypt_key,
 	       tFuncV(tNone, tStr, tObj), 0);
   /* function(string:string) */
