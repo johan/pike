@@ -378,7 +378,7 @@ static void image_gif__gce_block(INT32 args)
 **! arg string colortable
 **!	Colortable with colors to write as palette.
 **!	If this argument is zero, no local colortable is written.
-**!	Colortable string len must be 1<<bpp.
+**!	Colortable string len must be 1&lt;&lt;bpp.
 **! arg int interlace
 **!     Interlace index data and set interlace bit. The given string
 **!	should _not_ be pre-interlaced.

@@ -2159,7 +2159,7 @@ void image_select_from(INT32 args)
 **!	);
 **!	</illustration>
 **!	</td>
-**!	<tr><td></td><td>greyed</td></table>
+**!	<tr><td></td><td>greyed</td></tr></table>
 **!
 **!	This function is not very fast -- and it's hard to 
 **!	optimize it more, not using assembler.
