@@ -603,7 +603,22 @@ PIKECLASS Shuffle
     *! If start and length are not specified, the whole source will be
     *! sent, if start but not length is specified, the whole source,
     *! excluding the first @[start] bytes will be sent.
-    *! 
+    *!
+    *! Currently supported sources
+    *! @dl
+    *!   @item String
+    *!     An ordinary 8-bit wide pike string.
+    *!   @item Memory
+    *!     An initialized instance of the System.Memory class.
+    *!   @item Normal file
+    *!     Stdio.File instance pointing to a normal file.
+    *!   @item Stream
+    *!     Stdio.File instance pointing to a stream of some kind
+    *!     (network socket, named pipe, stdin etc).
+    *!   @item Pike-stream
+    *!     Stdio.File lookalike with read callback support
+    *!     (set_read_callback and set_close_callback).
+    *! @enddl
     */
   {
     INT64 rstart=0, rlength=-1;
