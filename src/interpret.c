@@ -1049,6 +1049,12 @@ void mega_apply2(enum apply_type type, INT32 args, void *arg1, void *arg2)
 	int num_args;
 	int num_locals;
 	unsigned char *pc;
+
+#ifdef PIKE_DEBUG
+	if (Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_KILL)
+	  fatal("Pike code called within gc.\n");
+#endif
+
 	debug_malloc_touch(fp);
 	pc=new_frame->context.prog->program + function->func.offset;
 	
