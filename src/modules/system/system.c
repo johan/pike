@@ -1186,7 +1186,8 @@ void pike_module_init(void)
   init_passwd();
 
 #ifdef GETHOSTBYNAME_MUTEX_EXISTS
-  add_to_callback(& fork_child_callback, cleanup_after_fork, 0, 0);
+  dmalloc_accept_leak(add_to_callback(& fork_child_callback,
+				      cleanup_after_fork, 0, 0));
 #endif
 
 #ifdef __NT__

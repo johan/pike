@@ -638,7 +638,7 @@ void really_free_string(struct pike_string *s)
   }
 #endif
   unlink_pike_string(s);
-  free((char *)s);
+  debug_free((char *)s,__FILE__,__LINE__,1);
 }
 
 void debug_free_string(struct pike_string *s)

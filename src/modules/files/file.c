@@ -2627,10 +2627,10 @@ void pike_module_init(void)
 #endif
 
 #ifdef PIKE_DEBUG
-  add_to_callback(&do_debug_callbacks,
-		  check_static_file_data,
-		  0,
-		  0);
+  dmalloc_accept_leak(add_to_callback(&do_debug_callbacks,
+				      check_static_file_data,
+				      0,
+				      0));
 #endif
 }
 

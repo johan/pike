@@ -161,7 +161,8 @@ fi
 CC="$SMARTLINK $REALCC"
 pike_cv_prog_CC="$CC"
 
-AC_SUBST(SMARTLINK REALCC)
+AC_SUBST(SMARTLINK)
+AC_SUBST(REALCC)
 export REALCC SMARTLINK
 
 #############################################################################

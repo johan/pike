@@ -102,6 +102,7 @@ struct pike_frame
     really_free_pike_frame(fp);						\
   }else{								\
     DO_IF_DEBUG(if( fp->locals+fp->num_locals>sp) fatal("Stack failure in POP_PIKE_FRAME!\n"));                                                      \
+    debug_malloc_touch(fp); \
     if(fp->num_locals)							\
     {									\
       struct svalue *s=(struct svalue *)xalloc(sizeof(struct svalue)*	\

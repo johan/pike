@@ -184,7 +184,7 @@ static int may_need_wakeup=0;
 
 static struct callback_list backend_callbacks;
 
-struct callback *add_backend_callback(callback_func call,
+struct callback *debug_add_backend_callback(callback_func call,
 				      void *arg,
 				      callback_func free_func)
 {

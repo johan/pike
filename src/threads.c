@@ -560,6 +560,7 @@ void f_thread_create(INT32 args)
     {
       threads_evaluator_callback=add_to_callback(&evaluator_callbacks,
 						 check_threads, 0,0);
+      dmalloc_accept_leak(threads_evaluator_callback);
     }
     ref_push_object(arg->id);
     THREADS_FPRINTF(0, (stderr, "THREAD_CREATE -> t:%08x\n",

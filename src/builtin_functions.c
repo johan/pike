@@ -3506,6 +3506,12 @@ void f__memory_usage(INT32 args)
   push_text("callable_bytes");
   push_int(size);
 
+  count_memory_in_pike_frames(&num, &size);
+  push_text("num_frames");
+  push_int(num);
+  push_text("frame_bytes");
+  push_int(size);
+
   call_callback(&memory_usage_callback, (void *)0);
 
   f_aggregate_mapping(sp-ss);
