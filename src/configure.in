@@ -3081,6 +3081,28 @@ fi
 
 ########################################################################
 
+PIKE_CHECK_CONSTANTS(mutex error check flag,
+                     PTHREAD_MUTEX_ERRORCHECK PTHREAD_MUTEX_ERRORCHECK_NP, [
+#ifdef HAVE_PTHREAD_H
+#include <pthread.h>
+#elif defined (HAVE_THREAD_H)
+#include <thread.h>
+#endif
+                     ], PIKE_MUTEX_ERRORCHECK)
+
+########################################################################
+
+PIKE_CHECK_CONSTANTS(recursive mutex flag,
+                     PTHREAD_MUTEX_RECURSIVE PTHREAD_MUTEX_RECURSIVE_NP, [
+#ifdef HAVE_PTHREAD_H
+#include <pthread.h>
+#elif defined (HAVE_THREAD_H)
+#include <thread.h>
+#endif
+                     ], PIKE_MUTEX_RECURSIVE)
+
+########################################################################
+
 # NOTE: The following test is hardcoded to fail when crosscompiling
 # It also clobbers $LIBOBJS.
 
@@ -4054,22 +4076,6 @@ MY_CHECK_FUNCTION(fork,
   exit(fork()==-1);
 ])
 
-########################################################################
-MY_CHECK_FUNCTION(PTHREAD_MUTEX_RECURSIVE,
-[
-#include <pthread.h>
-], [
-  PTHREAD_MUTEX_RECURSIVE;
-  exit(0);
-])
-########################################################################
-MY_CHECK_FUNCTION(PTHREAD_MUTEX_RECURSIVE_NP,
-[
-#include <pthread.h>
-], [
-  PTHREAD_MUTEX_RECURSIVE_NP;
-  exit(0);
-])
 ########################################################################
 MY_CHECK_FUNCTION(fpsetmask,
 [

@@ -23,6 +23,7 @@ extern int try_use_mmx;
 #define NO_TAILRECURSION 2
 #define NO_PEEP_OPTIMIZING 4
 #define GC_RESET_DMALLOC 8
+#define ERRORCHECK_MUTEXES 16
 
 /* Runtime options */
 #define RUNTIME_CHECK_TYPES  1
