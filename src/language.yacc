@@ -1830,20 +1830,22 @@ comma_expr_or_maxint: /* empty */ { $$=mkintnode(0x7fffffff); }
 gauge: F_GAUGE catch_arg
   {
 #ifdef HAVE_GETHRVTIME
-    $$=mkopernode("`-",
+    $$=mkefuncallnode("abs",
 		  mkopernode("`/", 
 			     mkopernode("`-", mkefuncallnode("gethrvtime",0),
 					mknode(F_ARG_LIST,$2,
 					       mkefuncallnode("gethrvtime",0))),
-			     mkintnode(1000)), 0);
+			     mkfloatnode((FLOAT_TYPE)1000000.0)));
 #else
-  $$=mkopernode("`-",
-		  mkopernode("`-",
-			     mknode(F_INDEX,mkefuncallnode("rusage",0),
-				    mkintnode(GAUGE_RUSAGE_INDEX)),
-			     mknode(F_ARG_LIST,$2,
-				    mknode(F_INDEX,mkefuncallnode("rusage",0),
-					   mkintnode(GAUGE_RUSAGE_INDEX)))),0);
+  $$=mkefuncallnode("abs",
+	mkopernode("`/", 
+		mkopernode("`-",
+			 mknode(F_INDEX,mkefuncallnode("rusage",0),
+				mkintnode(GAUGE_RUSAGE_INDEX)),
+		         mknode(F_ARG_LIST,$2,
+				mknode(F_INDEX,mkefuncallnode("rusage",0),
+				       mkintnode(GAUGE_RUSAGE_INDEX)))),
+		mkfloatnode((FLOAT_TYPE)1000.0)));
 #endif
   };
 
