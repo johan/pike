@@ -2024,7 +2024,7 @@ catch_arg: '(' comma_expr ')'  { $$=$2; }
   | '(' error '}' { $$=0; yyerror("Missing ')'."); }
   | '(' error ';' { $$=0; yyerror("Missing ')'."); }
   | block
-  | error { $$=0; yerror("Bad expression for catch."); }
+  | error { $$=0; yyerror("Bad expression for catch."); }
   ; 
 
 catch: F_CATCH
