@@ -16,6 +16,8 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "operators.h"
 
+#include "module_support.h"
+
 #include "file.h"
 
 

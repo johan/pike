@@ -292,7 +292,7 @@ int send_iov(int fd, struct iovec *iov, int iovcnt)
       sent += bytes;
 
       while (bytes) {
-	if ((unsigned int)bytes >= iov->iov_len) {
+	if ((unsigned int)bytes >= (unsigned int)iov->iov_len) {
 	  bytes -= iov->iov_len;
 	  iov++;
 	  iovcnt--;

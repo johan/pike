@@ -7,6 +7,7 @@
 RCSID("$Id$");
 #include "pike_macros.h"
 #include "object.h"
+#include "mapping.h"
 #include "constants.h"
 #include "interpret.h"
 #include "svalue.h"

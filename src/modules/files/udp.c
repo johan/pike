@@ -22,6 +22,8 @@ RCSID("$Id$");
 #include "pike_types.h"
 #include "threads.h"
 
+#include "module_support.h"
+
 #ifdef HAVE_SYS_TYPE_H
 #include <sys/types.h>
 #endif

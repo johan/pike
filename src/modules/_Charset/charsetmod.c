@@ -265,7 +265,7 @@ static INT32 feed_utf7(const p_wchar0 *p, INT32 l, struct std_cs_stor *s)
 
   for(;;)
     if(shift) {
-      int c, z;
+      int c = 0, z;
       while(l-->0 && (c=(*p++)-'+')>=0 && c<=('z'-'+') && (z=rev64t[c])>=0) {
 	dat = (dat<<6)|z;
 	if((datbit+=6)>=16) {
