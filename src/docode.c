@@ -1592,13 +1592,13 @@ static int do_docode2(node *n, INT16 flags)
 	}
       }
       
+    default:
 #ifdef PIKE_DEBUG
-      case T_OBJECT:
-	if(n->u.sval.u.object->next == n->u.sval.u.object)
-	  fatal("Internal error: Pointer to parent cannot be a compile time constant!\n");
+      if((n->type == T_OBJECT) &&
+	 (n->u.sval.u.object->next == n->u.sval.u.object))
+	fatal("Internal error: Pointer to parent cannot be a compile time constant!\n");
 #endif
 
-    default:
       tmp1=store_constant(&(n->u.sval),
 			  !(n->tree_info & OPT_EXTERNAL_DEPEND),
 			  n->name);
