@@ -183,7 +183,7 @@ static void f(int i, struct block *key, struct block *a, struct block *x)
         transpose(x, &ptr, 32);
 }
 
-static inline void definekey(char *k)
+static void definekey(char *k)
 {
 
         key = *((struct block *) k);
