@@ -5305,8 +5305,14 @@ void init_builtin_efuns(void)
 /* function(:int *) */
   ADD_EFUN("rusage", f_rusage,tFunc(tNone,tArr(tInt)),OPT_EXTERNAL_DEPEND);
   
-/* function(string,string,void|int:int)|function(array,mixed,void|int:int)|function(mapping,mixed,void|mixed:mixed) */
-  ADD_EFUN("search",f_search,tOr3(tFunc(tStr tStr tOr(tVoid,tInt),tInt),tFunc(tArray tMix tOr(tVoid,tInt),tInt),tFunc(tMapping tMix tOr(tVoid,tMix),tMix)),0);
+  ADD_EFUN("search",f_search,
+	   tOr3(tFunc(tStr tStr tOr(tVoid,tInt),
+		      tInt),
+		tFunc(tArr(tSetvar(0,tMix)) tVar(0) tOr(tVoid,tInt),
+		      tInt),
+		tFunc(tMap(tSetvar(1,tMix),tSetvar(2,tMix)) tVar(2) tOr(tVoid,tVar(1)),
+		      tVar(1))),
+	   0);
   
 /* function(float|int,int|void:void) */
   ADD_EFUN("sleep", f_sleep,tFunc(tOr(tFlt,tInt) tOr(tInt,tVoid),tVoid),OPT_SIDE_EFFECT);
