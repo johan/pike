@@ -114,10 +114,7 @@ import SSL.Constants;
   }
 
 static function(string:string) get_attr_decoder (string attr,
-#ifdef DEBUG
-						 void|int nowarn
-#endif
-						)
+						 DO_IF_DEBUG (void|int nowarn))
 {
   if (mapping(string:mixed) attr_descr = get_attr_type_descr (attr)) {
     if (function(string:string) decoder =
@@ -997,11 +994,8 @@ mapping(string:array(string)) get_root_dse()
 	  // they haven't bothered to include in their schema. Send
 	  // the nowarn flag to get_attr_encoder to avoid complaints
 	  // about that.
-	  if (function(string:string) decoder = get_attr_decoder (attr,
-#ifdef DEBUG
-								  1
-#endif
-								 ))
+	  if (function(string:string) decoder =
+	      get_attr_decoder (attr, DO_IF_DEBUG (1)))
 	    root_dse[attr] = map (root_dse[attr], decoder);
       });
   }
