@@ -43,6 +43,10 @@ RCSID("$Id$");
 # include <grp.h>
 #endif
 
+#ifdef HAVE_SYS_ID_H
+# include <sys/id.h>
+#endif
+
 #ifdef HAVE_WINBASE_H
 #include <winbase.h>
 #endif
