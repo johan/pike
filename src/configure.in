@@ -2274,7 +2274,7 @@ fi
 
 #############################################################################
 if test "x$ac_cv_header_mmx_h" = xyes ; then
-  AC_MSG_CHECKING(Working MMX)
+  AC_MSG_CHECKING(for working MMX)
 
   AC_CACHE_VAL(pike_cv_sys_has_working_mmx,
   [
@@ -2282,9 +2282,11 @@ if test "x$ac_cv_header_mmx_h" = xyes ; then
 #include <mmx.h>
     ],[
     {
+      int try_use_mmx;
       mmx_t a;
       mmx_t b;
       paddw(a,b);
+      try_use_mmx=mmx_ok();
     }
     ], pike_cv_sys_has_working_mmx=yes,pike_cv_sys_has_working_mmx=no)
   ])
