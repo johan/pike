@@ -40,7 +40,7 @@ static int(0..1) booted;
 //!   Data to be decoded and populate the struct. Can
 //!   either be a file object or a string.
 void create(void|string|object file) {
-  foreach(indices(this_object()), string index) {
+  foreach(indices(this), string index) {
     mixed val = ::`[](index, 2);
     if(objectp(val) && val->is_item) names[index]=val;
   }
@@ -169,11 +169,12 @@ class Byte {
   string encode() { return sprintf("%c", value); }
 
   static string _sprintf(int t) {
-    return t=='O' && sprintf("%O(%d/%O)", this_program, value, (string)({value}));
+    return t=='O' && sprintf("%O(%d/%O)", this_program, value,
+			     (string)({value}));
   }
 }
 
-//! One word in network order, integer value between 0 and 65535.
+//! One word (2 bytes) in network order, integer value between 0 and 65535.
 //! @seealso
 //! @[Drow]
 class Word {
@@ -199,7 +200,7 @@ class Word {
   }
 }
 
-//! One word in intel order, integer value between 0 and 65535.
+//! One word (2 bytes) in intel order, integer value between 0 and 65535.
 //! @seealso
 //! @[Word]
 class Drow {
@@ -208,7 +209,7 @@ class Drow {
   string encode() { return sprintf("%-"+size+"c", value); }
 }
 
-//! One longword in network order, integer value between 0 and 2^32.
+//! One longword (4 bytes) in network order, integer value between 0 and 2^32.
 //! @seealso
 //! @[Gnol]
 class Long {
@@ -216,13 +217,14 @@ class Long {
   int size = 4;
 }
 
-//! One longword in inte order, integer value between 0 and 2^32.
+//! One longword (4 bytes) in intel order, integer value between 0 and 2^32.
 //! @seealso
 //! @[Long]
 class Gnol {
   inherit Drow;
   int size = 4;
 }
+
 
 //! A string of bytes.
 class Chars {
@@ -292,5 +294,10 @@ class Varchars {
 }
 
 string _sprintf(int t) {
-  return t=='O' && sprintf("%O(%O)", this_program, items);
+  if(t!='O') return UNDEFINED;
+  string ret = sprintf("%O(\n", this_program);
+  foreach(items, Item item)
+    ret += sprintf("  %20s : %s\n", search(names,item),
+		   (sprintf("%O", item)/"->")[-1]);
+  return ret + ")";
 }
