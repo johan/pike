@@ -266,7 +266,6 @@ void f_setlocale(INT32 args)
   INT_TYPE category;
   get_all_args("Gettext.setlocale", args, "%d%S", &category, &locale);
 
-  fprintf(stderr, "locale: %s, category: %d\n", locale->str, category);
   returnstring = setlocale(category, locale->str);
   pop_n_elems(args);
   if(returnstring == NULL)
