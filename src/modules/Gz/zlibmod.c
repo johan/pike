@@ -351,12 +351,12 @@ static void gz_crc32(INT32 args)
        sp[-args].type!=T_STRING)
       error("Gz.crc32: illegal or missing argument 1 (expected string)\n");
 
-   if (args>1)
+   if (args>1) {
       if (sp[1-args].type!=T_INT)
 	 error("Gz.crc32: illegal argument 2 (expected integer)\n");
       else
 	 crc=(unsigned INT32)sp[1-args].u.integer;
-   else
+   } else
       crc=0;
 	 
    crc=crc32(crc,
