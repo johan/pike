@@ -2651,9 +2651,10 @@ struct pike_string *zzap_function_return(char *a, INT32 id)
       push_type(T_FUNCTION);
       return pop_unfinished_type();
   }
+/* This error is bogus /Hubbe
   fatal("zzap_function_return() called with unexpected value: %d\n",
 	EXTRACT_UCHAR(a));
-  /* NOT_REACHED */
+*/
   return NULL;
 }
 
@@ -2753,6 +2754,12 @@ struct pike_string *get_type_of_svalue(struct svalue *s)
     }
     if((tmp=zzap_function_return(a, s->u.program->id)))
       return tmp;
+
+    a=function_type_string->str;
+    if((tmp=zzap_function_return(a, s->u.program->id)))
+      return tmp;
+
+    fatal("Completely failed to zzap function return!\n");
   }
 
   default:
