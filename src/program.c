@@ -27,6 +27,12 @@ RCSID("$Id$");
 #include <errno.h>
 #include <fcntl.h>
 
+/*
+ * Define the size of the cache that is used for method lookup.
+ */
+#define FIND_FUNCTION_HASHSIZE 4711
+
+
 #define FILE_STATE
 #define PROGRAM_STATE
 

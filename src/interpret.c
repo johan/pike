@@ -45,6 +45,11 @@ RCSID("$Id$");
 #endif
 #endif
 
+/*
+ * Define the default evaluator stack size, used for just about everything.
+ */
+#define EVALUATOR_STACK_SIZE	100000
+
 #define TRACE_LEN (100 + t_flag * 10)
 
 

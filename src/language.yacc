@@ -177,6 +177,10 @@ RCSID("$Id$");
 
 #define YYMAXDEPTH	600
 
+#ifdef DEBUG
+#define YYDEBUG 1
+#endif
+
 static void push_locals();
 static void pop_locals();
 void free_all_local_names();
