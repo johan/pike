@@ -95,6 +95,9 @@ static void f_call_with_creds(INT32 args)
   struct object *o;
   ONERROR tmp;
 
+  if(args < 1)
+    SIMPLE_TOO_FEW_ARGS_ERROR("call_with_creds", 1);
+
   switch(Pike_sp[-args].type)
   {
     case T_INT:
@@ -118,7 +121,7 @@ static void f_call_with_creds(INT32 args)
       break;
 
     default:
-      Pike_error("Bad argument 1 to call_with_creds.\n");
+      SIMPLE_BAD_ARG_ERROR("call_with_creds", 1, "int|object");
   }
     
   if(!valid_creds_object(o))
@@ -286,8 +289,8 @@ static void creds_get_data_bits(INT32 args)
  */
 static void creds_apply(INT32 args)
 {
-  if(args < 0 || Pike_sp[-args].type > MAX_COMPLEX)
-    Pike_error("Bad argument 1 to creds->apply()\n");
+  if(args < 1 || Pike_sp[-args].type > MAX_COMPLEX)
+    Pike_error("Bad argument 1 to creds->apply().\n");
 
   if( CHECK_SECURITY(SECURITY_BIT_SECURITY) ||
       (Pike_sp[-args].u.array->prot &&
@@ -316,8 +319,8 @@ static void creds_apply(INT32 args)
 static void f_get_object_creds(INT32 args)
 {
   struct object *o;
-  if(args < 0 || Pike_sp[-args].type > MAX_COMPLEX)
-    Pike_error("Bad argument 1 to get_object_creds\n");
+  if(args < 1 || Pike_sp[-args].type > MAX_COMPLEX)
+    Pike_error("Bad argument 1 to get_object_creds().\n");
   if((o=Pike_sp[-args].u.array->prot))
   {
     add_ref(o);
