@@ -90,6 +90,11 @@ int main(int argc, array(string) argv)
 		  (info[2]<0)?"-":"",
 		  (info[2]<0)?-info[2]:info[2]));
   }
+  
+  for (lineno=0; lineno<sizeof(ci); lineno++)
+    if (ci[lineno][0] > 0xff)
+      break;
+  write(sprintf("#define CASE_INFO_SHIFT0_HIGH 0x%04x\n", lineno));
 
   exit(0);
 }
