@@ -8,7 +8,7 @@
 /* #define AAP_DEBUG 1 */
 #define CACHE_HTABLE_SIZE 40951
 
-#ifndef __NT__
+#if !defined(__NT__) && !defined(__WIN32__)
 #ifdef HAVE_SIGNAL
 # define HAVE_TIMEOUTS
 #endif

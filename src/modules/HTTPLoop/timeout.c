@@ -6,7 +6,7 @@
 */
 
 #include "config.h"
-#ifndef __NT__
+#if !defined(__NT__) && !defined(__WIN32__)
 #include <global.h>
 #include <threads.h>
 #include <signal.h>
