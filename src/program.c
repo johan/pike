@@ -211,14 +211,15 @@ struct node_s *find_module_identifier(struct pike_string *ident)
       {
 	struct identifier *id;
 	id=ID_FROM_INT(p->new_program, i);
+#if 0
 	if(IDENTIFIER_IS_CONSTANT(id->identifier_flags))
 	{
 	  ret=mksvaluenode(PROG_FROM_INT(p->new_program, i)->constants+
 			   id->func.offset);
 	  return ret;
-	}else{
-	  return mkexternalnode(n, i, id);
 	}
+#endif
+	  return mkexternalnode(n, i, id);
       }
     }
   }
