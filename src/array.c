@@ -374,11 +374,11 @@ PMOD_EXPORT struct array *array_shrink(struct array *v, ptrdiff_t size)
     v->size=0;
     free_array(v);
     return a;
-  }else{
+  } else if (v->size != size) {
     free_svalues(ITEM(v) + size, v->size - size, v->type_field);
     v->size=size;
-    return v;
   }
+  return v;
 }
 
 /*
