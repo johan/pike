@@ -1531,7 +1531,7 @@ void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
       
       if(fun<0)
       {
-	pop_n_elems(args);
+	pop_n_elems(sp-save_sp);
 	push_int(0);
 	return;
       }
