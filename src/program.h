@@ -96,6 +96,7 @@ struct object;
 #include "compilation.h"
 
 /* Byte-code method identification. */
+#define PIKE_BYTECODE_PORTABLE	-1	/* Only used by the codec. */
 #define PIKE_BYTECODE_DEFAULT	0
 #define PIKE_BYTECODE_GOTO	1
 #define PIKE_BYTECODE_SPARC	2
