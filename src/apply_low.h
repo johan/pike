@@ -43,6 +43,7 @@
 	      do_debug();
 	    break;
 	  case 4:
+	  default:
 	    do_debug();
 	}
       }
