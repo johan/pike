@@ -1619,7 +1619,7 @@ static void free_encode_data(struct encode_data *data)
   free_array(data->delayed);
 }
 
-/*! @decl string encode_value(mixed value, object|void codec)
+/*! @decl string encode_value(mixed value, Codec|void codec)
  *!
  *! Code a value into a string.
  *!
@@ -1633,6 +1633,11 @@ static void free_encode_data(struct encode_data *data)
  *!
  *! To encode objects, programs and functions, a codec object must be
  *! provided.
+ *!
+ *! If @expr{codec->nameof(o)@} returns @tt{UNDEFINED@} for an object,
+ *! @expr{val = o->encode_object(o)@} will be called. The returned value
+ *! will be passed to @expr{o->decode_object(o, val)@} when the object is
+ *! decoded.
  *!
  *! @note
  *!
