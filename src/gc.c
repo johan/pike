@@ -2824,7 +2824,7 @@ size_t do_gc(void *ignored, int explicit_call)
   /* Destruct the live objects in cycles, but first warn about any bad
    * cycles. */
   pre_kill_objs = num_objects;
-  if (last_cycle) {
+  if (last_cycle && Pike_interpreter.evaluator_stack) {
     objs -= num_objects;
     warn_bad_cycles();
     objs += num_objects;
