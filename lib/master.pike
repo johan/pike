@@ -324,7 +324,7 @@ class dirnode
     dirname=name;
     tm=the_master;
 
-    if(mixed module=tm->findmodule(dirname+"/module"))
+    if(module=tm->findmodule(dirname+"/module"))
       if(mixed tmp=module->_module_value)
 	module=tmp;
   }
