@@ -286,8 +286,8 @@ class Node
 	  }
 	  // FIXME: Assert that the reference is correct?
 	  return create_reference(make_filename(),
-				  replace(res_obj->make_class_path(),
-					  "()->", "."),
+				  replace(replace(res_obj->make_class_path(),
+					  "()->", "."), "()", ""),
 				  _reference);
 	}
 
