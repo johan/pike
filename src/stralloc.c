@@ -15,8 +15,13 @@
 #include "stuff.h"
 
 #include <errno.h>
+#include <float.h>
 #include <ctype.h>
 #include <math.h>
+
+#ifndef HUGE
+#define HUGE HUGE_VAL
+#endif /*!HUGE*/
 
 RCSID("$Id$");
 
