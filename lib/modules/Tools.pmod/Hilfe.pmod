@@ -35,7 +35,7 @@ class Command {
 
   //! The actual command callback. Messages to the user should be
   //! written out by using the write method in the @[Evaluator] object.
-  void exec(Evaluator, string, array(string));
+  void exec(Evaluator e, string line, array(string) tokens);
 }
 
 //! Variable reset command. Put ___Hilfe->commands->reset = Tools.Hilfe.CommandReset();
