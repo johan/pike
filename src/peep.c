@@ -343,7 +343,14 @@ void assemble(void)
 #endif
       FLUSH_CODE_GENERATOR_STATE();
       labels[c->arg] = DO_NOT_WARN((INT32)PIKE_PC);
-      UPDATE_PC();
+      if ((e+1 < length) &&
+	  (c[1].opcode != F_LABEL) &&
+	  (c[1].opcode != F_BYTE) &&
+	  (c[1].opcode != F_DATA)) {
+	/* Don't add redundant code before labels or raw data. */
+	UPDATE_PC();
+      }
+
       break;
 
     case F_VOLATILE_RETURN:
