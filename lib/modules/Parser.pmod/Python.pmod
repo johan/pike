@@ -100,20 +100,30 @@ array(string) split(string data) {
 
     case '\'':
       if( data[pos+1]=='\'' && data[pos+2]=='\'' ) {
-	while( data[++pos]!='\'' && data[pos+1]!='\'' && data[pos+2]!='\'' )
+	pos += 2;
+	while( !(data[++pos]=='\'' && data[pos+1]=='\'' && data[pos+2]=='\'') )
 	  if( data[pos]=='\\' ) pos++;
+	pos += 2;
       }
-      while( data[++pos]!='\'' )
-	if( data[pos]=='\\' ) pos++;
+      else
+	while( data[++pos]!='\'' )
+	  if( data[pos]=='\\' ) pos++;
+
+      pos++;
       break;
 
     case '"':
       if( data[pos+1]=='\"' && data[pos+2]=='\"' ) {
-	while( data[++pos]!='\"' && data[pos+1]!='\"' && data[pos+2]!='\"' )
+	pos += 2;
+	while( !(data[++pos]=='\"' && data[pos+1]=='\"' && data[pos+2]=='\"') )
 	  if( data[pos]=='\\' ) pos++;
+	pos += 2;
       }
-      while( data[++pos]!='\"' )
-	if( data[pos]=='\\' ) pos++;
+      else
+	while( data[++pos]!='\"' )
+	  if( data[pos]=='\\' ) pos++;
+
+      pos++;
       break;
 
     case '<': case '>':
