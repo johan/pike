@@ -1362,7 +1362,7 @@ OPCODE0_BRANCH(F_FOREACH, "foreach", 0, { /* array, lvalue, X, i */
   }
 });
 
-OPCODE0(F_MAKE_ITERATOR, "Iterator", 0, {
+OPCODE0(F_MAKE_ITERATOR, "get_iterator", 0, {
   f_get_iterator(1);
 });
 
