@@ -610,6 +610,12 @@ void resolv_constant(node *n)
       push_int(0);
       return;
 
+    case F_UNDEFINED:
+      if(compiler_pass==2)
+	yyerror("Expected constant, got undefined identifier");
+      push_int(0);
+      return;
+
     default:
       yyerror("Expected constant, got something else");
       push_int(0);
