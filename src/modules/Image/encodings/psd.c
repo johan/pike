@@ -265,11 +265,12 @@ static void decode_layers_and_masks( struct psd_image *dst,
 
 static struct buffer
 packbitsdecode(struct buffer src, 
-               struct buffer dst)
+               struct buffer dst, 
+               int nbytes)
 {
   int n, b;
 
-  while( dst.len > 0  )
+  while( nbytes--  )
   {
     n = read_uchar( &src );
     if(n >= 128)
@@ -343,22 +344,18 @@ static void f_decode_packbits_encoded(INT32 args)
   switch(compression)
   {
    case 1:
-     push_text("");
-     while(nelems--)
-     {
-       dest = begin_shared_string( width );
-       d.str = dest->str; d.len = width;
-       ob = packbitsdecode( ob, d );
-       ref_push_string( end_shared_string( dest ) );
-       f_add( 2 );
-     }
+     dest = begin_shared_string( width * nelems );
+     d.str = dest->str; d.len = width*nelems;
+/*      while(nelems--) */
+     /*ob =*/ 
+     packbitsdecode( ob, d, width*nelems );
+     push_string( end_shared_string( dest ) );
      break;
    case 0:
      push_string( make_shared_binary_string(b.str,b.len));
      break;
    default:
      error("Impossible compression (%d)!\n", src->str[1]);
-
   }
   stack_swap();
   pop_stack();
