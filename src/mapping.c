@@ -2460,6 +2460,7 @@ void zap_all_mappings(void)
 int mapping_is_constant(struct mapping *m,
 			struct processing *p)
 {
+  int ret=1;
   INT32 e;
   struct keypair *k;
   struct mapping_data *md=m->data;
@@ -2470,11 +2471,16 @@ int mapping_is_constant(struct mapping *m,
     add_ref(md);
     NEW_MAPPING_LOOP(md)
       {
-	if(!svalues_are_constant(&k->ind, 1, md->ind_types, p)) return 0;
-	if(!svalues_are_constant(&k->val, 1, md->val_types, p)) return 0;
+	if(!svalues_are_constant(&k->ind, 1, md->ind_types, p) ||
+	   !svalues_are_constant(&k->val, 1, md->val_types, p))
+	{
+	  ret=0;
+	  e=md->hashsize;
+	  break;
+	}
       }
     md->valrefs--;
     free_mapping_data(md);
   }
-  return 1;
+  return ret;
 }
