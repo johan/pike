@@ -27,6 +27,7 @@
 
 
 
+RCSID("$Id$");
 /*
 **! module Image
 **! submodule TGA
