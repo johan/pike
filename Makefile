@@ -51,6 +51,7 @@ configure_help: src/configure
 builddir:
 	@builddir="$(BUILDDIR)"; \
 	if [ -d $$builddir ]; then : ; else NEWBUILD=YEP ; fi; \
+	OLDIFS="$IFS"; \
 	IFS='/'; \
 	dir=`echo "$$builddir" | sed -e 's|[^/].*||'`; \
 	for d in $$builddir; do \
@@ -61,11 +62,13 @@ builddir:
 	  fi; \
 	  dir="$$dir/"; \
 	done; \
+	IFS="$OLDIFS"; \
 	if [ x$$NEWBUILD = xYEP ]; then \
-	  test -f refdoc/autodoc.xml && cp refdoc/autodoc.xml "$$builddir"; \
-	  mkdir "$$builddir"/doc_build; \
-	  test -d refdoc/images && \
-	    cp -R refdoc/images "$$builddir"/doc_build/images; \
+	  test -f "refdoc/autodoc.xml" && \
+	    cp "refdoc/autodoc.xml" "$$builddir"; \
+	  mkdir "$$builddir/doc_build"; \
+	  test -d "refdoc/images" && \
+	    cp -R "refdoc/images" "$$builddir/doc_build/images"; \
 	fi; \
 	cd "$$builddir"
 
