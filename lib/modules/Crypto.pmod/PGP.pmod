@@ -3,6 +3,8 @@
 
 #pike __REAL_VERSION__
 
+#if constant(Crypto.SHA)
+
 //! Decodes a PGP public key.
 //! @returns
 //!   @mapping
@@ -210,3 +212,5 @@ static int verify_signature(string text, string sig, string pubkey)
   };
   return 0;
 }
+
+#endif
