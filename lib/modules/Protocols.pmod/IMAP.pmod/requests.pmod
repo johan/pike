@@ -92,11 +92,11 @@ class request
       case "any":
 	/* A single atom or string or a list of atoms (with
 	 * options), lists. Used for fetch. */
-	return parser->get_any(arg_info[argc][1], 0, 0, append_arg);
+	return parser->get_any(arg_info[argc][1], 0, 1, append_arg);
 
       case "varargs":
 	/* Like any, but with an implicit list at top-level */
-	return parser->get_varargs(arg_info[argc][1], 0, append_arg);
+	return parser->get_varargs(arg_info[argc][1], 0, 0, append_arg);
 
       default:
 	throw( ({ sprintf("IMAP.requests: Unknown argument type %O\n",
@@ -575,7 +575,9 @@ class fetch
     string section;
     string origin;
 
-    /* Hmm... Isn't this supposed to be decoded by get_atom()? */
+    /* Hmm... Isn't this supposed to be decoded by get_atom()?
+     * No, but by get_atom_options().
+     */
     if (sscanf(wanted, "%[^[][%[^]]]%s", wanted, section, origin) > 1) {
       if (origin == "") {
 	origin = 0;
