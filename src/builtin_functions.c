@@ -1469,7 +1469,7 @@ void init_builtin_efuns()
   add_efun("mappingp",f_mappingp,"function(mixed:int)",OPT_TRY_OPTIMIZE);
   add_efun("mkmapping",f_mkmapping,"function(mixed *,mixed *:mapping)",OPT_TRY_OPTIMIZE);
   add_efun("next_object",f_next_object,"function(void|object:object)",OPT_EXTERNAL_DEPEND);
-  add_efun("object_program",f_object_program,"function(object:program)",0);
+  add_efun("object_program",f_object_program,"function(mixed:program)",0);
   add_efun("objectp", f_objectp, "function(mixed:int)",0);
   add_efun("programp",f_programp,"function(mixed:int)",0);
   add_efun("query_host_name",f_query_host_name,"function(:string)",0);
@@ -1490,7 +1490,7 @@ void init_builtin_efuns()
   add_efun("trace",f_trace,"function(int:int)",OPT_SIDE_EFFECT);
   add_efun("upper_case",f_upper_case,"function(string:string)",0);
   add_efun("values",f_values,"function(string|multiset:int*)|function(array|mapping|object:mixed*)",0);
-  add_efun("zero_type",f_zero_type,"function(int:int)",0);
+  add_efun("zero_type",f_zero_type,"function(mixed:int)",0);
 
 #ifdef HAVE_LOCALTIME
   add_efun("localtime",f_localtime,"function(int:mapping(string:int))",OPT_EXTERNAL_DEPEND);
