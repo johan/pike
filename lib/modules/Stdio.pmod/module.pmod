@@ -365,7 +365,7 @@ class File
 		    function(int, mixed ...:void) callback,
 		    mixed ... args)
   {
-    if (!(_fd || query_address()) && !open_socket()) {
+    if (!(_fd || !catch(query_address())) && !open_socket()) {
       // Out of sockets?
       return 0;
     }
