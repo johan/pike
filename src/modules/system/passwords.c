@@ -100,7 +100,7 @@ void f_getpwuid(INT32 args)
 }
 #endif
  
-#ifdef HAVE_GETPWENT
+#ifdef HAVE_SETPWENT
 /* int setpwent() */
 void f_setpwent(INT32 args)
 {
@@ -108,7 +108,9 @@ void f_setpwent(INT32 args)
   pop_n_elems(args);
   push_int(0);
 }
+#endif /* HAVE_SETPWENT */
  
+#ifdef HAVE_GETPWENT
 /* int endpwent() */
 void f_endpwent(INT32 args)
 {
@@ -131,5 +133,5 @@ void f_getpwent(INT32 args)
   push_pwent(foo);
 }
 
-#endif
+#endif /* HAVE_GETPWENT */
  
