@@ -1793,7 +1793,7 @@ void check_program(struct program *p)
 		    storage_offset +
 		    ID_FROM_INT(p, variable_positions[offset+q])->func.offset +
 		    sizeof_variable(ID_FROM_INT(p, variable_positions[offset+q]
-						)->run_time_type),
+						)->run_time_type)-1,
 		    offset, offset+size-1);
 	    } else {
 	      fatal("Variable '%s' and anonymous variable (%d) overlap\n"
@@ -1807,7 +1807,7 @@ void check_program(struct program *p)
 		    storage_offset +
 		    ID_FROM_INT(p, variable_positions[offset+q])->func.offset +
 		    sizeof_variable(ID_FROM_INT(p, variable_positions[offset+q]
-						)->run_time_type),
+						)->run_time_type)-1,
 		    offset, offset+size-1);
 	    }
 	  }
