@@ -28,7 +28,7 @@ object|array master_res;
 //.   If the result was an array, this is the current row.
 int index;
 
-import Array;
+// import Array;
 
 //. - create
 //.   Create a new Sql.sql_result object
