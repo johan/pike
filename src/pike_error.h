@@ -229,8 +229,14 @@ void init_error(void);
 void cleanup_error(void);
 /* Prototypes end here */
 
+#if 1
 #define fatal \
  fprintf(stderr,"%s:%d: Fatal error:\n",__FILE__,__LINE__),debug_fatal
+#else
+/* This is useful when debugging assembler code sometimes... -Hubbe */
+#define fatal \
+ fprintf(stderr,"%s: Fatal error:\n",__FILE__ ":" DEFINETOSTR(__LINE__) ),debug_fatal
+#endif
 
 /* Some useful error macros. */
 
