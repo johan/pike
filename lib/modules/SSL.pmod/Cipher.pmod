@@ -20,6 +20,8 @@ class CipherAlgorithm {
   optional string crypt(string);
   optional string unpad(string);
   optional string pad();
+
+  optional this_program set_iv(string);
 }
 
 //! Message Authentication Code interface.
