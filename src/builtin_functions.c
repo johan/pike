@@ -2060,7 +2060,7 @@ void f_localtime(INT32 args)
 #endif
 
 #ifdef HAVE_MKTIME
-static void f_mktime (INT32 args)
+void f_mktime (INT32 args)
 {
   INT32 sec, min, hour, mday, mon, year, isdst;
   struct tm date;

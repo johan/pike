@@ -330,12 +330,6 @@ void destruct(struct object *o)
 
   o->prog=0;
 
-  if(o->parent)
-  {
-    free_object(o->parent);
-    o->parent=0;
-  }
-
   frame.parent_frame=fp;
   frame.current_object=o;  /* refs already updated */
   frame.locals=0;
@@ -377,6 +371,12 @@ void destruct(struct object *o)
 
   free_object(frame.current_object);
   fp = frame.parent_frame;
+
+  if(o->parent)
+  {
+    free_object(o->parent);
+    o->parent=0;
+  }
 
   free_program(p);
 }
