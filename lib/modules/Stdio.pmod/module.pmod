@@ -341,7 +341,7 @@ class File
     }
     _async_cb = callback;
     _async_args = args;
-    set_nonblocking(0, _async_connected, _async_failed);
+    set_nonblocking(0, _async_connected, _async_failed, _async_failed, 0);
     mixed err;
     int res;
     if (err = catch(res = connect(host, port))) {
