@@ -57,7 +57,8 @@ static void f_update(INT32 args)
   struct pike_string *s;
   get_all_args("_Crypto.sha->update", args, "%S", &s);
 
-  sha_update(THIS, (unsigned INT8 *) s->str, s->len);
+  sha_update(THIS, (unsigned INT8 *) s->str,
+	     DO_NOT_WARN(s->len));
   pop_n_elems(args);
   push_object(this_object());
 }

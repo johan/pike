@@ -135,9 +135,9 @@ static void f_set_decrypt_key(INT32 args)
 /* string encrypt(string) */
 static void f_crypt_block(INT32 args)
 {
-  unsigned len;
+  size_t len;
   struct pike_string *s;
-  unsigned INT32 i;
+  size_t i;
   
   if (args != 1) {
     error("Wrong number of arguments to des->crypt_block()\n");

@@ -110,9 +110,9 @@ static void f_set_decrypt_key(INT32 args)
 /* string crypt_block(string) */
 static void f_crypt_block(INT32 args)
 {
-  int len;
+  ptrdiff_t len;
   struct pike_string *s;
-  INT32 i;
+  ptrdiff_t i;
   
   if (args != 1) {
     error("Wrong number of arguemnts to idea->crypt()\n");

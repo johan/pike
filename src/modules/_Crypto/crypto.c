@@ -42,8 +42,8 @@
 
 struct pike_crypto {
   struct object *object;
-  INT32 block_size;
-  INT32 backlog_len;
+  ptrdiff_t block_size;
+  ptrdiff_t backlog_len;
   unsigned char *backlog;
 };
 
@@ -312,9 +312,9 @@ static void f_set_decrypt_key(INT32 args)
 static void f_crypto_crypt(INT32 args)
 {
   unsigned char *result;
-  INT32 roffset = 0;
-  INT32 soffset = 0;
-  INT32 len;
+  ptrdiff_t roffset = 0;
+  ptrdiff_t soffset = 0;
+  ptrdiff_t len;
 
   if (args != 1) {
     error("Wrong number of arguments to crypto->crypt()\n");
