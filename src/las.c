@@ -86,7 +86,9 @@ void check_tree(node *n, int depth)
   if(n->token==USHRT_MAX)
     fatal("Free node in tree.\n");
 
+#ifdef SHARED_NODES
   check_node_hash(n);
+#endif /* SHARED_NODES */
 
   if(d_flag<2) return;
 
