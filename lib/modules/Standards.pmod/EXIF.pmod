@@ -1025,6 +1025,7 @@ static mapping parse_tag(Stdio.File file, mapping tags, mapping exif_info,
   
   if(tag_type==3 || tag_type==8) // (S)SHORT
   {
+    if(tag_count>0xffff) return ([]); // Impossible amount of tags.
     array a=allocate(tag_count);
     for(int i=0; i<tag_count; i++)
       a[i]=short_value(file->read(2), order);
