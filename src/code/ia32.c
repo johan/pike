@@ -552,8 +552,12 @@ void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b)
       /* 
        * This would work nicely for all pike types, but we would
        * have to augment dumping
+       *
+       * Note: The constants table may contain UNDEFINED in case of being
+       *       called through decode_value() in PORTABLE_BYTECODE mode.
        */
-      if(Pike_compiler->new_program->constants[b].sval.type > MAX_REF_TYPE)
+      if((Pike_compiler->new_program->constants[b].sval.type > MAX_REF_TYPE) &&
+	 !Pike_compiler->new_program->constants[b].sval.subtype)
       {
 	ins_debug_instr_prologue (a - F_OFFSET, b, 0);
 	ia32_push_constant(& Pike_compiler->new_program->constants[b].sval);
