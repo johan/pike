@@ -6718,6 +6718,12 @@ test_any([[
   return ret;
 ]],315)
 
+test_eval_error([[
+  int i;
+  foreach (class{}(); mixed a; mixed b) i++;
+  return i;
+]])
+
 // do-while
 test_any(int e;string t=""; e=0; do{ t+=e; }while(++e<6); return t,"012345";)
 
