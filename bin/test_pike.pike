@@ -179,6 +179,10 @@ int main(int argc, string *argv)
 	  mixed a,b;
 	
 	  if(check) _verify_internals();
+	  if(check>3) {
+	    gc();
+	    _verify_internals();
+	  }
 	
 	  test=tests[e];	
 	  if(sscanf(test,"COND %s\n%s",condition,test)==2)
