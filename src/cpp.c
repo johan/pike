@@ -57,6 +57,10 @@
 #define CALC_DUMPPOS(X)
 #endif /* 0 */
 
+static struct pike_string *efun_str;
+static struct pike_string *constant_str;
+static struct pike_string *defined_str;
+
 /* Some string builder debug. */
 #if 0
 
@@ -1892,6 +1896,10 @@ void init_cpp()
   defined_macro->magic=check_defined;
   defined_macro->args=1;
 
+  efun_str = make_shared_string ("efun");
+  constant_str = make_shared_string ("constant");
+  defined_str = make_shared_string ("defined");
+
   use_initial_predefs = 1;
 
 /* function(string, string|void, int|string|void, object|void, int|void, int|void:string) */
@@ -1956,5 +1964,9 @@ void exit_cpp(void)
   }
   free_string(defined_macro->link.s);
   free((char *)defined_macro);
+
+  free_string (efun_str);
+  free_string (constant_str);
+  free_string (defined_str);
 #endif
 }
