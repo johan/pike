@@ -11,6 +11,7 @@ test_eq(1e-1,0.1)
 test_eq('\x20',32)
 test_eq("\x20","\040")
 test_eq('Å',"Å"[0])
+test_eq(0x80000000-0x80000000, 0)
 test_true([[1.0e-40]])
 test_eq([[#"foo
 bar"]],[["foo\nbar"]])
