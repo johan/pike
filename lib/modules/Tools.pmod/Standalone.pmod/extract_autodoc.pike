@@ -21,7 +21,7 @@ string imgdir;
 
 int main(int n, array(string) args) {
 
-  if(n!=4) {
+  if(n!=5) {
     write("%s <srcdir> <imgsrc> <builddir> <imgdir>\n", args[0]);
     exit(1);
   }
