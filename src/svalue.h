@@ -103,6 +103,8 @@ struct svalue
 #define T_ARRAY_LVALUE 254
 #define T_MIXED 255
 
+extern char *type_name[];
+
 #define tArr(VAL) "\000" VAL
 #define tArray tArr(tMix)
 #define tMap(IND,VAL) "\001" IND VAL

@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 #include "main.h"
 #include "svalue.h"
@@ -25,6 +26,15 @@ RCSID("$Id$");
 
 struct svalue dest_ob_zero = { T_INT, 0 };
 
+/*
+ * This one is useful for error-handling.
+ */
+char *type_name[] = {
+  "array", "mapping", "multiset", "object",
+  "function", "program", "string", "float",
+  "int", 0, 0, 0, 0, 0, 0, 0,
+  "void", "many",
+};
 
 /*
  * This routine frees a short svalue given a pointer to it and
