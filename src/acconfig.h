@@ -302,7 +302,7 @@
 #undef WITH_OOB
 
 /* Enable individual tracing of threads */
-#undef TRACE_THREADS
+#undef THREAD_TRACE
 
 /* Enable tracing of the compiler */
 #undef YYDEBUG
