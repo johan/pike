@@ -3478,6 +3478,10 @@ extern void init_image_x(void);
 extern void exit_image_x(void);
 extern void init_image_any(void);
 extern void exit_image_any(void);
+extern void init_image_tga(void);
+extern void exit_image_tga(void);
+extern void init_image_pcx(void);
+extern void exit_image_pcx(void);
 
 /* dynamic encoders (dependent on other modules, loaded dynamically) */
 
@@ -3837,6 +3841,8 @@ void pike_module_init(void)
    init_image_bmp();
    init_image_xwd();
    init_image_any();
+   init_image_tga();
+   init_image_pcx();
    init_image_x();
 }
 
@@ -3856,6 +3862,8 @@ void pike_module_exit(void)
    exit_image_bmp();
    exit_image_xwd();
    exit_image_any();
+   exit_image_tga();
+   exit_image_pcx();
    if (png_object) 
    {
       free_object(png_object);
