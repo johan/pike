@@ -3,8 +3,11 @@
 VPATH=@srcdir@:@srcdir@/../..:../..
 OBJS=mird_glue.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
+MODULE_SUBDIRS=@MODULE_SUBDIRS@
+MODULE_ARCHIVES=@MODULE_ARCHIVES@
+MODULE_LDFLAGS=@LDFLAGS@
 
 CONFIG_HEADERS=@CONFIG_HEADERS@
-
+@SET_MAKE@
 @dynamic_module_makefile@
 @dependencies@
