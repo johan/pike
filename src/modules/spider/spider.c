@@ -1098,11 +1098,11 @@ struct thread_args
   struct thread_args *next;
   struct object *from;
   struct object *to;
-  int to_fd, from_fd;
+  INT_TYPE to_fd, from_fd;
   struct svalue cb;
   struct svalue args;
-  int len;
-  int sent;
+  INT_TYPE len;
+  INT_TYPE sent;
   char buffer[BUFFER];
 };
 

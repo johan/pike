@@ -1597,7 +1597,7 @@ static int set_priority( int pid, char *to )
 
 void f_set_priority( INT32 args )
 {
-  int pid;
+  INT_TYPE pid;
   char *plevel;
 #ifdef PIKE_SECURITY
   if(!CHECK_SECURITY(SECURITY_BIT_SECURITY))

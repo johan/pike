@@ -2389,11 +2389,11 @@ void image_invert(INT32 args)
 
 void image_threshold(INT32 args)
 {
-   INT32 x;
+   INT_TYPE x;
    rgb_group *s,*d,rgb;
    struct object *o;
    struct image *img;
-   int level=-1;
+   INT_TYPE level=-1;
 
    if (!THIS->img) error("Called Image.Image object is not initialized\n");;
 

@@ -810,7 +810,7 @@ CHAROPT(							\
 extern double LDEXP(double x, int exp); /* defined in encode.c */
 #endif
 
-static INLINE float low_parse_IEEE_float(char *b, int sz)
+static INLINE FLOAT_TYPE low_parse_IEEE_float(char *b, int sz)
 {
   unsigned INT32 f, extra_f;
   int s, e;
@@ -855,11 +855,11 @@ static INLINE float low_parse_IEEE_float(char *b, int sz)
       
       /* Hmm...  No idea how to generate NaN in a portable way. */
       /* Let's turn it into a 0 for now... */
-      return (float)0.0;
+      return (FLOAT_TYPE)0.0;
     } else {
       /* +/- Infinity */
 #ifdef HUGE_VAL
-      return (float)(s? -HUGE_VAL:HUGE_VAL);
+      return (FLOAT_TYPE)(s? -HUGE_VAL:HUGE_VAL);
 #else
       /* This number is infinite enough...  :) */
       e = 1024;
@@ -871,7 +871,7 @@ static INLINE float low_parse_IEEE_float(char *b, int sz)
   r = (double)f;
   if(extra_f)
     r += ((double)extra_f)/4294967296.0;
-  return (float)(s? -LDEXP(r, e):LDEXP(r, e));
+  return (FLOAT_TYPE)(s? -LDEXP(r, e):LDEXP(r, e));
 }
 
 #endif

@@ -4015,7 +4015,7 @@ void yywarning(char *fmt, ...) ATTRIBUTE((format(printf,1,2)))
   va_end(args);
 
   if(strlen(buf)>sizeof(buf))
-    fatal("Buffer overfloat in yywarning!\n");
+    fatal("Buffer overflow in yywarning!\n");
 
   if ((error_handler && error_handler->prog) || get_master()) {
     ref_push_string(lex.current_file);

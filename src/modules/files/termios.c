@@ -342,7 +342,7 @@ void file_tcflush(INT32 args)
 
 void file_tcsendbreak(INT32 args)
 {
-  int len=0;
+  INT_TYPE len=0;
 
   get_all_args("tcsendbreak", args, "%d", &len);
   pop_stack();

@@ -64,7 +64,7 @@ double FREXP(double x, int *exp)
 {
   double ret;
   *exp=(int)ceil(log(fabs(x))/log(2.0));
-  ret=(x*pow(2.0,(float)-*exp));
+  ret=(x*pow(2.0,(FLOAT_TYPE)-*exp));
   return ret;
 }
 #endif

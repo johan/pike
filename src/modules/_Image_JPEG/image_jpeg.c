@@ -926,7 +926,7 @@ void image_jpeg_quant_tables(INT32 args)
 
    if (args)
    {
-      int q;
+      INT_TYPE q;
       get_all_args("Image.JPEG.quant_tables",args,"%i",&q);
       jpeg_set_quality(&cinfo,q,0);
    }

@@ -332,7 +332,7 @@ void f_error_cast(INT32 args)
 
 void f_error_index(INT32 args)
 {
-  int ind;
+  INT_TYPE ind;
   get_all_args("error->`[]",args,"%i",&ind);
 
   switch(ind)

@@ -253,7 +253,7 @@ static void exit_font_struct(struct object *obj)
 static INLINE int char_space(struct font *this, INT32 c)
 {
   if(c==0x20)
-    return (int)((float)(this->height*this->xspacing_scale)/4.5);
+    return (int)((double)(this->height*this->xspacing_scale)/4.5);
   else if(c==0x20+128)
     return (this->height*this->xspacing_scale)/18;
   return this->charinfo[c].spacing*this->xspacing_scale;

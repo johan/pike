@@ -419,7 +419,7 @@ static void f_rsa_pad(INT32 args)
 /* string low_unpad(string block, int type) */
 static void f_low_unpad(INT32 args)
 {
-  INT32 type;
+  INT_TYPE type;
   int i = 0;
   struct pike_string *block = NULL;
   struct pike_string *res;
@@ -459,7 +459,7 @@ static void f_low_unpad(INT32 args)
 static void f_rsa_unpad(INT32 args)
 {
   struct object *block = NULL;
-  INT32 type;
+  INT_TYPE type;
   int i;
   struct pike_string *res;
 

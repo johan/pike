@@ -1018,7 +1018,7 @@ void f_aap_reply_with_cache(INT32 args)
 {
   struct cache_entry *ce;
   struct pike_string *reply;
-  int time_to_keep, t, freed=0;
+  INT_TYPE time_to_keep, t, freed=0;
   if(!THIS->request)
     error("Reply already called.\n");
 

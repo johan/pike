@@ -257,8 +257,8 @@ static void f_scanner_set_option( INT32 args )
 {
   char *name;
   int no;
-  SANE_Int int_value;
-  float float_value;
+  INT_TYPE int_value;
+  FLOAT_TYPE float_value;
   SANE_Int tmp;
   const SANE_Option_Descriptor *d;
   get_all_args( "set_option", args, "%s", &name );

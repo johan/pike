@@ -77,7 +77,7 @@ static void f_CryptGenRandom(INT32 args)
 static void f_CryptAcquireContext(INT32 args)
 {
   char *str1=NULL, *str2=NULL;
-  INT32 typ, flags, fake1, fake2;
+  INT_TYPE typ, flags, fake1, fake2;
   int nullflag=0;
   HCRYPTPROV prov;
 

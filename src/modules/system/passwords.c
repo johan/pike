@@ -221,7 +221,7 @@ void push_grent(struct group *ent)
 /* array getgrgid(int gid) */
 void f_getgrgid(INT32 args)
 {
-  int gid;
+  INT_TYPE gid;
   struct group *foo;
   get_all_args("getgrgid", args, "%d", &gid);
 
@@ -283,7 +283,7 @@ void f_getpwnam(INT32 args)
 /* array getpwuid(int uid) */
 void f_getpwuid(INT32 args)
 {
-  int uid;
+  INT_TYPE uid;
   struct passwd *foo;
   
   get_all_args("getpwuid", args, "%i", &uid);

@@ -852,7 +852,7 @@ void f_mutex_trylock(INT32 args)
 {
   struct mutex_storage  *m;
   struct object *o;
-  int type;
+  INT_TYPE type;
   int i=0;
 
   /* No reason to release the interpreter lock here

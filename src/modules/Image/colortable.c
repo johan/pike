@@ -2725,7 +2725,7 @@ void image_colortable_full(INT32 args)
 
 void image_colortable_rigid(INT32 args)
 {
-   int r,g,b;
+   INT_TYPE r,g,b;
 
    if (args)
    {
@@ -4055,7 +4055,7 @@ static int *ordered_make_diff(int *errors,int sz,int err)
    int *dest;
    int *d;
    int n=sz;
-   float q;
+   double q;
 
    d=dest=(int*)malloc(sizeof(int)*sz);
    if (!d) return d;

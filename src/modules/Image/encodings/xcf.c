@@ -785,7 +785,7 @@ void image_xcf_f__rle_decode( INT32 args )
   struct pike_string *t;
   struct buffer s;
   struct buffer od, d;
-  int bpp, xsize, ysize, i;
+  INT_TYPE bpp, xsize, ysize, i;
   get_all_args( "_rle_decode", args, "%S%d%d%d", &t, &bpp, &xsize, &ysize);
 
   s.len = t->len;
@@ -1098,7 +1098,7 @@ void image_xcf_f__decode_tiles( INT32 args )
   struct image *i, *a=NULL;
   struct neo_colortable *cmap = NULL;
   rgb_group *colortable=NULL;
-  int rle, bpp, span;
+  INT_TYPE rle, bpp, span;
   unsigned int l, x=0, y=0, cx, cy;
   get_all_args( "_decode_tiles", args, "%o%O%a%i%i%O",
                 &io, &ao, &tiles, &rle, &bpp, &cmapo);
