@@ -128,6 +128,7 @@
 %token F_VOID_ID
 %token F_WHILE
 %token F_XOR_EQ
+%token F_NOP
 
 %token F_ALIGN
 %token F_POINTER
@@ -422,8 +423,10 @@ import: modifiers F_IMPORT idents ';'
 constant_name: F_IDENTIFIER '=' expr0
   {
     int tmp;
+    node *n;
     /* This can be made more lenient in the future */
-    if(!is_const($3))
+    n=mknode(F_ARG_LIST,$3,0); /* Make sure it is optimized */
+    if(!is_const(n))
     {
       struct svalue tmp;
       yyerror("Constant definition is not constant.");
@@ -431,8 +434,8 @@ constant_name: F_IDENTIFIER '=' expr0
       tmp.u.integer=0;
       add_constant($1,&tmp, current_modifiers);
     } else {
-      tmp=eval_low($3);
-      free_node($3);
+      tmp=eval_low(n);
+      free_node(n);
       if(tmp < 1)
       {
 	yyerror("Error in constant definition.");
