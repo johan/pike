@@ -5,4 +5,4 @@
  * used as the module's release version
  */
 
-#define MSQLMOD_VERSION "mSQL/1.1"
+#define MSQLMOD_VERSION "mSQL/1.1.1"
