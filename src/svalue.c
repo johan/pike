@@ -1417,6 +1417,8 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
       if (!prog)
 	my_strcat("0");
       else {
+	prog = prog->inherits[s->subtype].prog;
+
 	if ((prog->flags & PROGRAM_FINISHED) &&
 	    Pike_interpreter.evaluator_stack && !Pike_in_gc && master_object) {
 	  DECLARE_CYCLIC();
@@ -1465,7 +1467,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	      restore_buffer (&save_buf);
 	      Pike_interpreter.trace_level=save_t_flag;
 	      pop_stack();
-	      prog = obj->prog;
+	      if (!obj->prog) prog = NULL
 	    }
 	    END_CYCLIC();
 	  }
@@ -1483,7 +1485,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	    
 	    debug_malloc_touch(obj);
 	    
-	    ref_push_object(obj);
+	    ref_push_object_inherit(obj, s->subtype);
 	    SAFE_APPLY_MASTER("describe_object", 1);
 	    
 	    debug_malloc_touch(obj);
@@ -1509,7 +1511,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	    restore_buffer (&save_buf);
 	    Pike_interpreter.trace_level=save_t_flag;
 	    pop_stack();
-	    prog = obj->prog;
+	    if (!obj->prog) prog = NULL
 	  }
 	  END_CYCLIC();
 	}
