@@ -622,9 +622,11 @@ void f_thread_create(INT32 args)
   arg->id=clone_object(thread_id_prog,0);
   OBJ2THREAD(arg->id)->status=THREAD_RUNNING;
 
-  tmp=th_create(& OBJ2THREAD(arg->id)->id,
-		new_thread_func,
-		arg);
+  do {
+    tmp=th_create(& OBJ2THREAD(arg->id)->id,
+		  new_thread_func,
+		  arg);
+  } while( tmp == EINTR );
 
   if(!tmp)
   {

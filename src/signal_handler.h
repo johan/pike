@@ -18,7 +18,7 @@ void my_signal(int sig, sigfunctype fun);
 void check_signals(struct callback *foo, void *bar, void *gazonk);
 void set_default_signal_handler(int signum, void (*func)(INT32));
 void process_started(pid_t pid);
-void process_done(pid_t pid);
+void process_done(pid_t pid, char *from);
 struct wait_data;
 struct pid_status;
 struct perishables;
