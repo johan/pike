@@ -116,6 +116,6 @@ cond( [[ master()->resolv("Gmp")->mpz ]],
   test_eq(Gmp.mpz(17)->popcount(), 2)
   test_eq(Gmp.mpz(4711)->popcount(), 7)
   test_eq(Gmp.mpz(17)->pow(17)->popcount(), 31)
-  test_true(catch(Gmp.mpz(-1)->popcount()))
+  test_eq(Gmp.mpz(-1)->popcount(), -1)
 ]]);
 

@@ -14,4 +14,7 @@
 /* Define this if you have -lgmp */
 #undef HAVE_LIBGMP
 
+/* Define this if you have mpz_popcount */
+#undef HAVE_MPZ_POPCOUNT
+
 #endif

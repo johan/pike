@@ -103,6 +103,7 @@ the option --without-bignums.
       fi
     ])
   ])
+  AC_CHECK_FUNC(__gmpz_popcount, AC_DEFINE_UNQUOTED(HAVE_MPZ_POPCOUNT))
 fi
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
