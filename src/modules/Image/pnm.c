@@ -58,8 +58,7 @@ void image_toppm(INT32 args)
 {
    pop_n_elems(args);
    
-   THISOBJ->refs++;
-   push_object(THISOBJ);
+   ref_push_object(THISOBJ);
 
    img_pnm_encode_binary(1);
 }
@@ -76,7 +75,6 @@ void image_frompnm(INT32 args)
    if (!THIS->img) error("out of memory\n");
    MEMCPY(THIS->img,img->img,img->xsize*img->ysize*sizeof(rgb_group));
    pop_n_elems(1);
-   THISOBJ->refs++;
-   push_object(THISOBJ);
+   ref_push_object(THISOBJ);
 }
 

@@ -172,9 +172,9 @@ void streamed_parser_set_data( INT32 args )
 {
   get_all_args("spider.streamed_parser->set_data", args, "%m%m%m",
 	       &(DATA->start_tags), &(DATA->content_tags), &(DATA->end_tags));
-  DATA->start_tags->refs++;
-  DATA->content_tags->refs++;
-  DATA->end_tags->refs++;
+  add_ref(DATA->start_tags);
+  add_ref(DATA->content_tags);
+  add_ref(DATA->end_tags);
   pop_n_elems(args);
 }
 

@@ -323,7 +323,7 @@ void img_pnm_encode_P2(INT32 args) /* ascii PGM */
    if (!img->img)
       error("Image.PNM.encode_P2(): Given image is empty\n");
 
-   o->refs++;
+   add_ref(o);
    pop_n_elems(args);
 
    sprintf(buf,"P2\n%d %d\n255\n",img->xsize,img->ysize);
@@ -364,7 +364,7 @@ void img_pnm_encode_P3(INT32 args) /* ascii PPM */
    if (!img->img)
       error("Image.PNM.encode_P3(): Given image is empty\n");
 
-   o->refs++;
+   add_ref(o);
    pop_n_elems(args);
 
    sprintf(buf,"P3\n%d %d\n255\n",img->xsize,img->ysize);

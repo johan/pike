@@ -773,7 +773,6 @@ void image_polyfill(INT32 args)
    
    free(buf);
 
-   THISOBJ->refs++;
-   push_object(THISOBJ);
+   ref_push_object(THISOBJ);
 }
 

@@ -230,8 +230,7 @@ static void f_create(INT32 args)
     error("Bad argument 1 to mysql_result()\n");
   }
 
-  PIKE_MYSQL_RES->connection = sp[-args].u.object;
-  PIKE_MYSQL_RES->connection->refs++;
+  add_ref(PIKE_MYSQL_RES->connection = sp[-args].u.object);
   PIKE_MYSQL_RES->result = mysql->last_result;
   mysql->last_result = NULL;
   

@@ -284,7 +284,7 @@ static void mpzmod_cast(INT32 args)
     error("Bad argument 1 to mpz->cast().\n");
 
   s = sp[-args].u.string;
-  s->refs++;
+  add_ref(s);
 
   pop_n_elems(args);
 

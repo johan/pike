@@ -134,8 +134,7 @@ static void f_create(INT32 args)
     if (args != 1) {
       error("Too many arguments to cbc->create()\n");
     }
-    THIS->object = sp[-args].u.object;
-    THIS->object->refs++;
+    add_ref(THIS->object = sp[-args].u.object);
   }
   pop_stack(); /* Just one element left on the stack in both cases */
 

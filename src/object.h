@@ -39,7 +39,7 @@ extern struct program *master_program;
 #define GET_GLOBAL(O,I) LOW_GET_GLOBAL(O,I,ID_FROM_INT((O)->prog,I))
 #define GLOBAL_FROM_INT(I) GET_GLOBAL(fp->current_object, I)
 
-#define this_object() (fp->current_object->refs++,fp->current_object)
+#define this_object() (add_ref(fp->current_object), fp->current_object)
 
 /* Prototypes begin here */
 void setup_fake_object(void);

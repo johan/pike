@@ -240,8 +240,7 @@ static struct array * new_call_out(int num_arg,struct svalue *argp)
 
   if(fp && fp->current_object)
   {
-    new->caller=fp->current_object;
-    new->caller->refs++;
+    add_ref(new->caller=fp->current_object);
   }else{
     new->caller=0;
   }
@@ -488,8 +487,7 @@ struct array *get_all_call_outs(void)
     if(CALL(e).caller)
     {
       ITEM(v)[1].type=T_OBJECT;
-      ITEM(v)[1].u.object=CALL(e).caller;
-      CALL(e).caller->refs++;
+      add_ref(ITEM(v)[1].u.object=CALL(e).caller);
     }else{
       ITEM(v)[1].type=T_INT;
       ITEM(v)[1].subtype=NUMBER_NUMBER;

@@ -233,7 +233,7 @@ void pgresult_init (void)
 			OPT_EXTERNAL_DEPEND|OPT_RETURN);
 	pgresult_program=end_program();
 	add_program_constant("postgres_result",pgresult_program,0);
-	pgresult_program->refs++;
+	add_ref(pgresult_program);
 }
 
 #else
