@@ -2021,8 +2021,15 @@ static void low_build_function_type(node *n)
   if(function_type_max++ > 999)
   {
     reset_type_stack();
+
     push_type(T_MIXED);
-    push_type(T_MIXED); /* is varargs */
+    push_type(T_VOID);
+    push_type(T_OR);  /* return type is void or mixed */
+
+    push_type(T_MIXED);
+    push_type(T_VOID);
+    push_type(T_OR);  /* varargs */
+
     push_type(T_MANY);
     return;
   }
@@ -2036,8 +2043,15 @@ static void low_build_function_type(node *n)
 
   case F_PUSH_ARRAY: /* We let this ruin type-checking for now.. */
     reset_type_stack();
+
     push_type(T_MIXED);
-    push_type(T_MIXED); /* is varargs */
+    push_type(T_VOID);
+    push_type(T_OR);  /* return type is void or mixed */
+
+    push_type(T_MIXED);
+    push_type(T_VOID);
+    push_type(T_OR);  /* varargs */
+
     push_type(T_MANY);
     return;
 
@@ -2174,7 +2188,10 @@ void fix_type_field(node *n)
       char *name;
       INT32 max_args,args;
 
-      push_type(T_MIXED); /* match any return type, even void */
+      push_type(T_MIXED); /* match any return type */
+      push_type(T_VOID);  /* even void */
+      push_type(T_OR);
+
       push_type(T_VOID); /* not varargs */
       push_type(T_MANY);
       function_type_max=0;

@@ -995,7 +995,13 @@ opt_function_type: '('
   | /* empty */
   {
    push_type(T_MIXED);
+   push_type(T_VOID);
+   push_type(T_OR);
+
    push_type(T_MIXED);
+   push_type(T_VOID);
+   push_type(T_OR);
+
    push_type(T_MANY);
   }
   ;
