@@ -69,6 +69,8 @@ struct hash_entry;
 struct hash_table;
 #endif
 
+#define NEW_LEX
+
 struct lex
 {
   char *pos;
@@ -76,6 +78,7 @@ struct lex
   INT32 current_line;
   INT32 pragmas;
   struct pike_string *current_file;
+  int (*current_lexer)(YYSTYPE *);
 };
 
 extern struct lex lex;
@@ -88,6 +91,11 @@ void init_lex(void);
 char *low_get_f_name(int n,struct program *p);
 char *get_f_name(int n);
 char *get_token_name(int n);
+
+int yylex0(YYSTYPE *);
+int yylex1(YYSTYPE *);
+int yylex2(YYSTYPE *);
+
 /* Prototypes end here */
 
 #endif

@@ -15,7 +15,6 @@ RCSID("$Id$");
 #include "constants.h"
 #include "mapping.h"
 #include "stralloc.h"
-#include "lex.h"
 #include "multiset.h"
 #include "pike_types.h"
 #include "rusage.h"
@@ -1693,9 +1692,10 @@ void f_compile(INT32 args)
   if(sp[-args].type != T_STRING)
     PIKE_ERROR("compile", "Bad argument 1.\n", sp, args);
 
+#if 0
   if(sp[-args].u.string->size_shift)
     PIKE_ERROR("compile", "Wide strings not supported yet.\n", sp, args);
-
+#endif /* 0 */
 
   p=compile(sp[-args].u.string);
   pop_n_elems(args);
