@@ -277,10 +277,10 @@ int main(int argc, string *argv)
 		werror(fname + " failed.\n");
 		bzot(test);
 		if (arrayp(err) && sizeof(err) && stringp(err[0])) {
-		  werror("Error: " + err[0]);
+		  werror("Error: " + master()->describe_backtrace(err));
 		}
 		if (objectp(err)) {
-		  werror("Error: " + err[0]);
+		  werror("Error: " + master()->describe_backtrace(err));
 		}
 		errors++;
 		break;
