@@ -54,8 +54,11 @@ configure: src/configure builddir
 	@builddir="$(BUILDDIR)"; \
 	srcdir=`pwd`/src; \
 	cd "$$builddir" && { \
-	  if test -f .configureargs -a -z "$(CONFIGUREARGS)"; then \
-	    configureargs="`cat .configureargs`"; \
+	  if test -f .configureargs; then \
+	    oldconfigureargs="`cat .configureargs`"; \
+	  else :; fi; \
+	  if test "x$(CONFIGUREARGS)" = x; then \
+	    configureargs="$$oldconfigureargs"; \
 	  else \
 	    configureargs="$(CONFIGUREARGS)"; \
 	  fi; \
@@ -63,12 +66,17 @@ configure: src/configure builddir
 	  MAKE=$(MAKE) ; export MAKE ;\
 	  echo Configure arguments: $$configureargs; \
 	  echo; \
-	  if test -f Makefile -a -f config.cache -a -f config.status -a -f .configureargs && \
-	     test "`cat .configureargs`" = "$$configureargs"; then :; \
+	  if test -f Makefile -a -f config.status -a -f .configureargs -a \
+		  "x$$oldconfigureargs" = "x$$configureargs"; then :; \
 	  else \
 	    echo Running $$srcdir/configure $$configureargs in $$builddir; \
 	    CONFIG_SITE=x "$$srcdir"/configure $$configureargs && \
 	      echo "$$configureargs" > .configureargs; \
+	    if test "x$$oldconfigureargs" = "x$$configureargs"; then :; \
+	    else \
+	      echo Configure arguments have changed - doing make clean; \
+	      $(MAKE) "MAKE=$(MAKE)" clean; \
+	    fi; \
 	  fi; \
 	}
 
