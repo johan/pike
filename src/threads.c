@@ -179,7 +179,7 @@ void init_threads_disable(struct object *o)
 
 static struct thread_state *thread_table_chains[THREAD_TABLE_SIZE];
 
-void thread_table_init()
+void thread_table_init(void)
 {
   INT32 x;
   for(x=0; x<THREAD_TABLE_SIZE; x++)
@@ -885,7 +885,7 @@ static void *farm(void *_a)
   } while(1);
 }
 
-int th_num_idle_farmers()
+int th_num_idle_farmers(void)
 {
   int q = 0;
   struct farmer *f = farmers;

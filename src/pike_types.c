@@ -63,7 +63,7 @@ struct pike_string *any_type_string;
 
 static struct pike_string *a_markers[10],*b_markers[10];
 
-static void clear_markers()
+static void clear_markers(void)
 {
   unsigned int e;
   for(e=0;e<NELEM(a_markers);e++)
