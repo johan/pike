@@ -127,8 +127,6 @@ class sql {
 	    }
 	    return;
 	  };
-	  werror(err[0]);
-	  describe_backtrace(err[1]);
 	}
       }
     }
