@@ -401,8 +401,9 @@ lib: $(LIBDIR_SRC)/master.pike.in Makefile
 
 
 master.pike: $(LIBDIR_SRC)/master.pike.in Makefile
-	sed -e 's!¤lib_prefix¤!$(TMP_LIBDIR)!' <$(LIBDIR_SRC)/master.pike.in \
-	  | sed -e 's!¤share_prefix¤!$(LIBDIR_SRC)!' >master.pike
+	t="$$PIKE_PATH_TRANSLATE"; if test "x$$t" = "x"; then t=s,x,x,; else :; fi; \
+	sed -e 's!¤lib_prefix¤!'"`echo \"$(TMP_LIBDIR)\" | sed -e \"$$t\"`"'!' <$(LIBDIR_SRC)/master.pike.in \
+	  | sed -e 's!¤share_prefix¤!'"`echo \"$(LIBDIR_SRC)\" | sed -e \"$$t\"`"'!' >master.pike
 
 pike-module: $(SRCDIR)/pike-module.in Makefile ./pike
 	$(RUNPIKE) $(SRCDIR)/pike-module.in --fixate=$(SRCDIR)/pike-module.in \
