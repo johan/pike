@@ -17,12 +17,30 @@ RCSID("$Id$");
 
 extern struct program *image_program;
 
-/* ! @module Image
+/*! @module Image
  */
 
-/* ! @module NEO
+/*! @module NEO
  */
 
+/*! @decl mapping _decode(string data)
+ *! @returns
+ *!   @mapping
+ *!     @member Image.Image "image"
+ *!       The decoded bitmap
+ *!     @member string "filename"
+ *!       The filename stored into the file.
+ *!     @member int(0..15) "right_limit"
+ *!     @member int(0..15) "left_limit"
+ *!       The palette color range to be color cycled.
+ *!     @member int(0..255) "speed"
+ *!       The animation speed, expressed as the number of VBLs
+ *!       per animation frame.
+ *!     @member string "direction"
+ *!       Color cycling direction. Can be either @expr{"left"@}
+ *!       or @expr{"right"@}.
+ *!   @endmapping
+ */
 void image_neo_f__decode(INT32 args)
 {
   unsigned int res, size = 0;
@@ -87,6 +105,9 @@ void image_neo_f__decode(INT32 args)
   f_aggregate_mapping(size);
 }
 
+/*! @decl Image.Image decode(string data)
+ *! Decodes the image @[data] into an @[Image.Image] object.
+ */
 void image_neo_f_decode(INT32 args)
 {
   image_neo_f__decode(args);
@@ -94,10 +115,10 @@ void image_neo_f_decode(INT32 args)
   f_index(2);
 }
 
-/* ! @endmodule
+/*! @endmodule
  */
 
-/* ! @endmodule
+/*! @endmodule
  */
 
 void init_image_neo()
