@@ -68,7 +68,7 @@
 #endif /* HAVE_SYS_MMAN_H */
 #endif
 
-#define SF_DEBUG
+/* #define SF_DEBUG */
 
 #ifdef SF_DEBUG
 #define SF_DFPRINTF(X)	fprintf X
