@@ -5021,6 +5021,7 @@ static int find_gt(struct array *a, int i, int *stack, int top)
   struct svalue *x = a->item + i;
   int l,h;
 
+  /* FIXME: Should it perhaps be is_ge below instead? */
   if (!top || !is_lt(x, a->item + stack[top - 1])) return top;
 
   l = 0;
