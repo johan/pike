@@ -147,8 +147,9 @@ mixed `&(mixed rel)
                        { return rel->contains(left, right);});
 }
 
-//! The expression `rel1 | rel2' returns a new relation which has
-//! all the relation entries present in rel1, or rel2, or both.
+//! The expression `rel1 | rel2' and `rel1 + rel2' returns a new
+//! relation which has all the relation entries present in rel1,
+//! or rel2, or both.
 mixed `|(mixed rel)
 {
   ADT.Relation.Binary res = ADT.Relation.Binary(id, rel);
@@ -157,7 +158,6 @@ mixed `|(mixed rel)
       res->add(left, right);
   return res;
 }
-
 mixed `+ = `|;
 
 //! The expression `rel1 - rel2' returns a new relation which has
