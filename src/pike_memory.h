@@ -60,7 +60,7 @@ struct generic_mem_searcher
 #define MEMCHR0 MEMCHR
 
 /* Note to self: Prototypes must be updated manually /Hubbe */
-PMOD_EXPORT int pcharp_memcmp(PCHARP a, PCHARP b, int sz);
+PMOD_EXPORT ptrdiff_t pcharp_memcmp(PCHARP a, PCHARP b, int sz);
 PMOD_EXPORT long pcharp_strlen(PCHARP a);
 PMOD_EXPORT INLINE p_wchar1 *MEMCHR1(p_wchar1 *p, p_wchar1 c, ptrdiff_t e);
 PMOD_EXPORT INLINE p_wchar2 *MEMCHR2(p_wchar2 *p, p_wchar2 c, ptrdiff_t e);

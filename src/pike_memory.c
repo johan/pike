@@ -27,7 +27,7 @@ char *strdup(const char *str)
 }
 #endif /* !HAVE_STRDUP */
 
-int pcharp_memcmp(PCHARP a, PCHARP b, int sz)
+ptrdiff_t pcharp_memcmp(PCHARP a, PCHARP b, int sz)
 {
   return generic_quick_binary_strcmp((char *)a.ptr, sz, a.shift,
 				     (char *)b.ptr, sz, b.shift);
