@@ -2655,7 +2655,7 @@ void dump_program_tables (struct program *p, int indent)
   }
   fprintf(stderr, "\n"
 	  "%*sConstant table:\n"
-	  "%*s  ####: Type Name\n",
+	  "%*s  ####: Type            Name\n",
 	  indent, "", indent, "");
   for (d = 0; d < p->num_constants; d++) {
     struct program_constant *c = p->constants + d;
