@@ -31,7 +31,7 @@ static object(Cache.Policy.Base) policy;
 mixed lookup(string key) {
   if (!stringp(key)) key=(string)key; // paranoia.
   object(Cache.Data) tmp=storage->get(key);
-  return (tmp?tmp->data():([])["zero"]);
+  return (tmp?tmp->data():UNDEFINED);
 }
 
 //structure: "key" -> (< ({function,args,0|timeout_call_out_id}) ...>)
@@ -41,7 +41,7 @@ mixed lookup(string key) {
 private mapping (string:multiset(array)) pending_requests=([]);
 
 private void got_results(string key, int|Cache.Data value) {
-  mixed data=([])[0]; //undef
+  mixed data=UNDEFINED;
   if (pending_requests[key]) {
     if (value) {
       data=value->data();
@@ -103,7 +103,7 @@ void alookup(string key,
 void store(string key, mixed value, void|int max_life,
             void|float preciousness, void|multiset(string) dependants ) {
   if (!stringp(key)) key=(string)key; // paranoia
-  multiset(string) rd=([])[0];  // real-dependants, after string-check
+  multiset(string) rd=UNDEFINED;  // real-dependants, after string-check
   if (dependants) {
     rd=(<>);
     foreach((array)dependants,mixed d) {
