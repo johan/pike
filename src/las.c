@@ -1278,6 +1278,10 @@ void fix_type_field(node *n)
     break;
 
   case F_RETURN:
+    if(CAR(n)->type == void_type_string)
+    {
+      yyerror("You cannot return a void expression");
+    }
     if(local_variables &&
        local_variables->current_return_type &&
        !match_types(local_variables->current_return_type,CAR(n)->type) &&
