@@ -1689,6 +1689,18 @@ int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 
 void low_return(void)
 {
+#if defined (PIKE_USE_MACHINE_CODE) && defined (OPCODE_RETURN_JUMPADDR)
+  /* If the function that returns is the only ref to the current
+   * object and its program then the program would be freed in
+   * destruct_objects_to_destruct below. However, we're still
+   * executing in an opcode in its code so we need prog->program to
+   * stick around for a little while more to handle the returned
+   * address. We therefore add a ref to the current object so that
+   * it'll live through this function. */
+  struct object *o = Pike_fp->current_object;
+  add_ref (o);
+#endif
+
   basic_low_return();
   if(save_sp+1 > Pike_sp)
   {
@@ -1704,10 +1716,20 @@ void low_return(void)
     }
     if(Pike_interpreter.trace_level>1) trace_return_value();
   }
+
+#if defined (PIKE_USE_MACHINE_CODE) && defined (OPCODE_RETURN_JUMPADDR)
+  free_object (o);
+#endif
 }
 
 void low_return_pop(void)
 {
+#if defined (PIKE_USE_MACHINE_CODE) && defined (OPCODE_RETURN_JUMPADDR)
+  /* See note above. */
+  struct object *o = Pike_fp->current_object;
+  add_ref (o);
+#endif
+
   basic_low_return();
 
   if(save_sp < Pike_sp)
@@ -1716,6 +1738,10 @@ void low_return_pop(void)
     /* consider using a flag for immediate destruct instead... */
     destruct_objects_to_destruct();
   }
+
+#if defined (PIKE_USE_MACHINE_CODE) && defined (OPCODE_RETURN_JUMPADDR)
+  sub_ref (o);
+#endif
 }
 
 
