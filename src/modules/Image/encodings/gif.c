@@ -2319,7 +2319,7 @@ static void image_gif_lzw_decode(INT32 args)
 {
    unsigned char *s,*dest0,*dest;
    int earlychange=0;
-   unsigned long len,n;
+   signed long len,n;
    signed long clearcode,endcode,last,q,bit,m,dlen,dlen0;
    unsigned int mask;
    struct lzwc *c;
@@ -2331,7 +2331,7 @@ static void image_gif_lzw_decode(INT32 args)
       error("Image.GIF.lzw_encode(): illegal argument\n");
 
    s=(unsigned char*)sp[-args].u.string->str;
-   len=(unsigned long)sp[-args].u.string->len;
+   len=(signed long)sp[-args].u.string->len;
 
    if (args>=2 && !IS_ZERO(sp+1-args))
       earlychange=1;
