@@ -24,9 +24,8 @@
 
 #include <winsock.h>
 #include <windows.h>
-#include <winbase.h>
-#include <lm.h>
 #include <accctrl.h>
+#include <lm.h>
 
 static void f_cp(INT32 args)
 {
