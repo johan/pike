@@ -2110,6 +2110,7 @@ OPCODE1(F_CALL_BUILTIN1_AND_POP, "call builtin1 & pop", 0, {
   });									   \
 									   \
                                                                            \
+  SET_PROG_COUNTER(addr);						   \
   new_frame->fun=Pike_fp->fun;						   \
   DO_IF_PROFILING( new_frame->ident=Pike_fp->ident );			   \
   new_frame->current_storage=Pike_fp->current_storage;                     \
@@ -2120,7 +2121,6 @@ OPCODE1(F_CALL_BUILTIN1_AND_POP, "call builtin1 & pop", 0, {
   if(new_frame->context.parent)						   \
     add_ref(new_frame->context.parent);					   \
   Pike_fp=new_frame;							   \
-  SET_PROG_COUNTER(addr);						   \
   new_frame->flags=PIKE_FRAME_RETURN_INTERNAL | XFLAGS;			   \
 									   \
   FETCH;								   \
