@@ -192,6 +192,12 @@ char *alloca ();
 #define INT16 short
 #define INT8 char
 
+#ifdef INT64
+#define LONGEST INT64
+#else
+#define LONGEST INT32
+#endif
+
 #define SIZE_T unsigned INT32
 
 #define TYPE_T unsigned INT8
