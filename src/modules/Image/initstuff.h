@@ -50,6 +50,7 @@ IMAGE_SUBMODULE("XWD",   init_image_xwd,  exit_image_xwd  )
 IMAGE_SUBMODULE("_XPM",  init_image__xpm, exit_image__xpm ) 
 IMAGE_SUBMODULE("WBF",   init_image_wbf,  exit_image_wbf ) 
 IMAGE_SUBMODULE("WBMP",  init_image_wbf,  exit_image_wbf ) 
+IMAGE_SUBMODULE("NEO",   init_image_neo,  exit_image_neo ) 
 
 IMAGE_SUBMODMAG("PNG",   init_image_png,  exit_image_png  )
 
