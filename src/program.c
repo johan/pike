@@ -3604,8 +3604,8 @@ PMOD_EXPORT int simple_add_variable(char *name,
 }
 
 PMOD_EXPORT int add_constant(struct pike_string *name,
-		 struct svalue *c,
-		 INT32 flags)
+			     struct svalue *c,
+			     INT32 flags)
 {
   int n;
   struct identifier dummy;
@@ -5754,6 +5754,11 @@ struct program *compile(struct pike_string *aprog,
 			 "Compilation failed.\n");
     }
     debug_malloc_touch(ret);
+#ifdef PIKE_DEBUG
+    if (a_flag > 2) {
+      dump_program_tables(ret, 0);
+    }
+#endif /* PIKE_DEBUG */
     verify_supporters();
     return ret;
   }
