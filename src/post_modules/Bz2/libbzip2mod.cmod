@@ -62,10 +62,8 @@ RCSID("$Id$");
 #define bzWriteClose		BZ2_bzWriteClose
 
 /* use 64 bit counting struct */
-#define TOTAL_OUT (s->total_out_lo32 + (s->total_out_hi32 << 32))
-#endif /* HAVE_BZ2_BZCOMPRESSINIT */
-
-#ifndef HAVE_BZ2_BZCOMPRESSINIT
+#define TOTAL_OUT (s->total_out_lo32 + (((INT64)s->total_out_hi32) << 32))
+#else
 #define TOTAL_OUT s->total_out
 #endif
 
@@ -116,7 +114,7 @@ RCSID("$Id$");
  *! so it can be re-used.
  */
 
-#ifdef HAVE_LIBBZ2
+#ifdef HAVE_BZ2LIB
 #ifdef HAVE_BZLIB_H
 PIKECLASS Deflate
 {
@@ -1144,7 +1142,7 @@ PIKECLASS File
 
 PIKE_MODULE_INIT
 {
-#ifdef HAVE_LIBBZ2
+#ifdef HAVE_BZ2LIB
 #ifdef HAVE_BZLIB_H
   add_integer_constant("BZ_RUN", BZ_RUN, 0);
   add_integer_constant("BZ_FLUSH", BZ_FLUSH, 0);
@@ -1156,7 +1154,7 @@ PIKE_MODULE_INIT
 
 PIKE_MODULE_EXIT
 {
-#ifdef HAVE_LIBBZ2
+#ifdef HAVE_BZ2LIB
 #ifdef HAVE_BZLIB_H	
   EXIT
 #endif
