@@ -3539,4 +3539,6 @@ int pike_type_allow_premature_toss(char *type)
     case T_STRING:
       return 1;
   }
+  /* NOT_REACHED */
+  return 0;
 }
