@@ -2869,7 +2869,7 @@ PIKE_MODULE_INIT
 
 /* there is always a pike_get_rusage */
   ADD_FUNCTION("getrusage", f_getrusage,
-	       tFunc(, tMap(tStr,tInt)), 0);
+	       tFunc(tNone, tMap(tStr,tInt)), 0);
 
 #ifdef ITIMER_TYPE_IS_02
 #define tITimer tInt02
