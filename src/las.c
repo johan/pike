@@ -4024,12 +4024,6 @@ int dooptcode(struct pike_string *name,
 	   tmp.c_fun != f_this_object &&
 	   tmp.c_fun != f_backtrace)
 	{
-	  ret=define_function(name,
-			      type,
-			      modifiers,
-			    IDENTIFIER_C_FUNCTION | vargs,
-			      &tmp);
-	  free_node(n);
 #ifdef PIKE_DEBUG
 	  if(a_flag > 1)
 	    fprintf(stderr,"%s:%d: IDENTIFIER OPTIMIZATION %s == %s\n",
@@ -4038,6 +4032,12 @@ int dooptcode(struct pike_string *name,
 		    name->str,
 		    foo->u.efun->name->str);
 #endif
+	  ret=define_function(name,
+			      type,
+			      modifiers,
+			    IDENTIFIER_C_FUNCTION | vargs,
+			      &tmp);
+	  free_node(n);
 	  return ret;
 	}
       }
