@@ -34,6 +34,7 @@ old GIF API compat stuff
 #include "operators.h"
 
 #include "image.h"
+#include "colortable.h"
 
 #define THIS ((struct image *)(fp->current_storage))
 #define THISOBJ (fp->current_object)
