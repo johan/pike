@@ -2509,6 +2509,11 @@ size_t do_gc(void *ignored, int explicit_call)
 
   if(Pike_in_gc) return 0;
 
+#ifdef DEBUG_MALLOC
+  if (gc_keep_markers && marker_hash_table)
+    cleanup_markers();
+#endif
+
   if (gc_enabled <= 0 && (gc_enabled < 0 || !explicit_call)) {
     num_allocs = 0;
     alloc_threshold = GC_MAX_ALLOC_THRESHOLD;
