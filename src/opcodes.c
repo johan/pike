@@ -692,15 +692,16 @@ static int PIKE_CONCAT(read_set,SIZE) (				\
 	error("Error in sscanf format string.\n");		\
 								\
 CHAROPT(							\
-      if(last < sizeof(set->c))					\
+      if(last < (unsigned long)sizeof(set->c))			\
       {								\
-	if(match[cnt] < sizeof(set->c))				\
+	if(match[cnt] < (unsigned long)sizeof(set->c))		\
 	{							\
 )								\
 	  for(e=last;e<=match[cnt];e++) set->c[e]=1;		\
 CHAROPT(							\
 	}else{							\
-	  for(e=last;e<sizeof(set->c);e++) set->c[e]=1;		\
+	  for(e=last;e<(unsigned long)sizeof(set->c);e++)	\
+            set->c[e]=1;					\
 								\
 	  check_stack(2);					\
 	  push_int(256);					\
@@ -716,11 +717,12 @@ CHAROPT(							\
       continue;							\
     }								\
     last=match[cnt];						\
-    if(last < sizeof(set->c))					\
+    if(last < (unsigned long)sizeof(set->c))			\
       set->c[last]=1;						\
 CHAROPT(							\
     else{							\
-      if(set_size && sp[-1].u.integer == last-1)		\
+      if(set_size &&						\
+	 ((unsigned long)sp[-1].u.integer) == last-1)		\
       {								\
 	sp[-1].u.integer++;					\
       }else{							\
@@ -739,7 +741,7 @@ CHAROPT(							\
     INT32 *order;						\
     set->a=aggregate_array(set_size*2);				\
     order=get_switch_order(set->a);				\
-    for(e=0;e<set->a->size;e+=2)				\
+    for(e=0;e<(unsigned long)set->a->size;e+=2)			\
     {								\
       if(order[e]+1 != order[e+1])				\
       {								\
@@ -747,8 +749,8 @@ CHAROPT(							\
         set->a=0;						\
         free((char *)order);					\
         error("Overlapping ranges in sscanf not supported.\n");	\
-     }								\
-   }								\
+      }								\
+    }								\
 								\
     order_array(set->a,order);					\
     free((char *)order);					\
