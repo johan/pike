@@ -289,6 +289,8 @@ void assemble(void)
 	jumps[c->arg]=tmp;
 	break;
 
+	case I_TWO_ARGS:
+	  /* */
 	case I_HASARG:
 	  ins_f_byte_with_arg(c->opcode, c->arg);
 	  break;

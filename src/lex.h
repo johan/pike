@@ -25,6 +25,8 @@ struct keyword
 #define I_ISPOINTER 3
 #define I_ISJUMP 7
 #define I_DATA 9
+#define I_ACCUMULATOR 16
+#define I_TWO_ARGS 17
 
 #ifdef PIKE_DEBUG
 #define INSTR_PROFILING

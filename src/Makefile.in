@@ -533,6 +533,11 @@ module_objects: machine.h global.h modules/static_module_makefile modules/dynami
 	   $(MAKE) $(MAKE_PARALLEL) $(MAKE_FLAGS) || \
 	     ( test -f remake && $(MAKE) $(MAKE_PARALLEL) $(MAKE_FLAGS) ) ) || exit $$?
 
+interpret_protos.h: $(SRCDIR)/interpret_functions.h
+	egrep '^OPCODE' <$(SRCDIR)/interpret_functions.h >interpret_protos.h
+
+lex.o: $(SRCDIR)/lex.c interpret_protos.h
+
 language.o: $(SRCDIR)/language.c $(SRCDIR)/object.h $(SRCDIR)/interpret.h $(SRCDIR)/program.h
 
 $(SRCDIR)/language.h: $(SRCDIR)/language.yacc
