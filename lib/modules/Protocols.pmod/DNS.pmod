@@ -814,7 +814,7 @@ class client
   //!       DNS name(s).
   //!	@endarray
   //!
-  array gethostbyaddr(string hostip)
+  array gethostbyaddr(string s)
   {
     mapping m=do_sync_query(mkquery(arpa_from_ip(s), C_IN, T_PTR));
     if (m) {
