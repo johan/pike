@@ -7007,7 +7007,7 @@ $bundle_info])
         if test "$f" = "no"; then
 	  break
 	fi
-        lib_name="`echo $f|sed -e 's/^lib\(.*\).a$/\1.lib/`"
+        lib_name="`echo $f|sed -e 's/^lib\(.*\)\.a$/\1.lib/'`"
 	if cmp "bundles/lib/$f" "bundles/lib/$lib_name" 2>/dev/null; then
 	  :
 	else
