@@ -8,5 +8,8 @@ MODULE_CPPFLAGS=@DEFS@ @CPPFLAGS@
 OBJS=mysql.o result.o
 MODULE_LDFLAGS=@LDFLAGS@ @MYSQL_LIBS@
 
+DUMMY=dummy.o
+LINKER_OPTIONS=modules/Mysql/dummy.o
+
 @dynamic_module_makefile@
 @dependencies@
