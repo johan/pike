@@ -20,6 +20,7 @@
 #include "operators.h"
 #include "builtin_functions.h"
 #include "security.h"
+#include "bignum.h"
 
 #include "file_machine.h"
 #include "file.h"
@@ -84,7 +85,11 @@ struct array *encode_stat(struct stat *s)
   ITEM(a)[0].u.integer=s->st_mode;
   switch(S_IFMT & s->st_mode)
   {
-  case S_IFREG: ITEM(a)[1].u.integer=s->st_size; break;
+  case S_IFREG:
+    push_int64((INT64)s->st_size);
+    ITEM(a)[1] = *(--sp);
+    break;
+    
   case S_IFDIR: ITEM(a)[1].u.integer=-2; break;
 #ifdef S_IFLNK
   case S_IFLNK: ITEM(a)[1].u.integer=-3; break;
