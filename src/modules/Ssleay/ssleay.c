@@ -23,6 +23,10 @@ RCSID("$Id$");
 #include <sys/types.h>
 #endif
 
+/* must be included last */
+#include "module_magic.h"
+
+
 #ifdef HAVE_SSLEAY
 
 #include <ssl.h>
