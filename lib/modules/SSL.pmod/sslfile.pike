@@ -491,14 +491,16 @@ void set_blocking()
 #ifdef SSL3_DEBUG
   werror("SSL.sslfile->set_blocking\n");
 #endif
+  if(socket)
+    socket->set_blocking();
+
+  blocking = 1;
+
   if (sizeof (write_buffer) && !blocking && socket)
     ssl_write_callback(socket->query_id());
-  blocking = 1;
+
   if(socket)
-  {
-    socket->set_blocking();
     get_blocking_to_handshake_finished_state();
-  }
 }
 
 string query_address(int|void arg)
