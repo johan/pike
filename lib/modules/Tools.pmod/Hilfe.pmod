@@ -751,7 +751,7 @@ private class Expression {
     if(t>=sizeof(positions))
       t = sizeof(positions)-1;
 
-    // Negative t not boundry checked.
+    // Negative t not boundary checked.
     return tokens[positions[f]..positions[t]]*"";
   }
 
