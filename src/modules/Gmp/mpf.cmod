@@ -253,6 +253,7 @@ PIKECLASS mpf
 	  in+=expptr;
 	  *(out++)='.';
 	  MEMCPY(out,in,len-expptr);
+	  out += len-expptr;
 	}
       }
       *out=0;
