@@ -759,6 +759,12 @@ INLINE static int do_one(struct format_stack *fs,
 		 push_int(fs->fsp->width);				      \
                  n+=2;							      \
 	      }								      \
+	      if((fs->fsp->flags&FIELD_LEFT))
+	      {								      \
+		 push_constant_text("flag_left");	       		      \
+		 push_int(1);						      \
+                 n+=2;							      \
+	      }								      \
 	      f_aggregate_mapping(n);					      \
 									      \
 	      apply_low(sv->u.object, fun, 2);                                \
