@@ -244,6 +244,17 @@ struct callback;
 extern struct callback_list evaluator_callbacks;
 extern void call_callback(struct callback_list *, void *);
 
+/* Things to try:
+ * we could reduce thread swapping to a pointer operation if
+ * we do something like:
+ *   #define Pike_interpreter (*Pike_interpreter_pointer)
+ *
+ * Since global variables are usually accessed through indirection
+ * anyways, it might not make any speed differance.
+ *
+ * The above define could also be used to facilitate dynamic loading
+ * on Win32..
+ */
 extern struct Pike_interpreter Pike_interpreter;
 
 #define Pike_sp Pike_interpreter.stack_pointer
