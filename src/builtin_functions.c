@@ -94,7 +94,28 @@ void f_hash(INT32 args)
     PIKE_ERROR("hash", "Too few arguments.\n", sp, 0);
   if(sp[-args].type != T_STRING)
     PIKE_ERROR("hash", "Bad argument 1.\n", sp, args);
-  i=hashstr((unsigned char *)sp[-args].u.string->str,100);
+
+  switch(sp[-args].u.string->size_shift)
+  {
+    case 0:
+      i=hashstr((unsigned char *)sp[-args].u.string->str,100);
+      break;
+
+    case 1:
+      i=simple_hashmem((unsigned char *)sp[-args].u.string->str,
+		       sp[-args].u.string->len << 1,
+		       200);
+      break;
+
+    case 2:
+      i=simple_hashmem((unsigned char *)sp[-args].u.string->str,
+		       sp[-args].u.string->len << 2,
+		       400);
+      break;
+
+    default:
+      fatal("Foo!\n");
+  }
   
   if(args > 1)
   {

@@ -242,6 +242,23 @@ unsigned INT32 hashstr(const unsigned char *str,INT32 maxn)
   return ret;
 }
 
+unsigned INT32 simple_hashmem(const unsigned char *str,INT32 len, INT32 maxn)
+{
+  unsigned INT32 ret,c;
+  
+  ret=len*92873743;
+
+  len=MINIMUM(maxn,len);
+  for(; len>=0; len--)
+  {
+    c=str++[0];
+    ret ^= ( ret << 4 ) + c ;
+    ret &= 0x7fffffff;
+  }
+
+  return ret;
+}
+
 
 /*
  * a quick memory search function.
