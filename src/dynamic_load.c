@@ -41,6 +41,12 @@ RCSID("$Id$");
 #endif
 #endif /* 0 */
 
+#ifdef USE_MY_WIN32_DLOPEN
+#include "pike_dlfcn.h"
+#define HAVE_SOME_DLOPEN
+#define HAVE_DLOPEN
+#endif
+
 #endif
 #endif
 #else

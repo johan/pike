@@ -321,7 +321,8 @@ typedef struct p_wchar_p
  */
 #ifndef PMOD_EXPORT
 #if defined(__NT__) && !defined(DYNAMIC_MODULE)
-#define PMOD_EXPORT __declspec(dllexport)
+/* #define PMOD_EXPORT __declspec(dllexport) */
+#define PMOD_EXPORT
 #else
 #define PMOD_EXPORT
 #endif

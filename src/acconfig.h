@@ -381,6 +381,7 @@
 #undef HAVE_FREELIBRARY
 #undef HAVE_GETPROCADDRESS
 #undef DL_EXPORT
+#undef USE_MY_WIN32_DLOPEN
 
 /* How to set a socket non-blocking */
 #undef USE_IOCTL_FIONBIO
