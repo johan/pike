@@ -120,8 +120,10 @@ void ins_f_byte_with_2_args(unsigned int a,
 
 void ppc32_flush_instruction_cache(void *addr, size_t len)
 {
-#ifndef _AIX
   INT32 a = (INT32)addr;
+#ifdef _AIX
+  __asm__(".machine \"ppc\"");
+#endif
   len >>= 2;
   while(len>0) {
     __asm__("dcbst 0,%0" : : "r" (a));
@@ -129,6 +131,5 @@ void ppc32_flush_instruction_cache(void *addr, size_t len)
     a += 4;
     --len;
   }
-#endif
   __asm__("sync");
 }
