@@ -203,7 +203,6 @@ void pike_module_exit(void) {}
 
 void pike_module_init(void)
 {
-  start_new_program();
   ADD_STORAGE(struct regexp_glue);
   
   /* function(void|string:void) */
@@ -215,5 +214,4 @@ void pike_module_init(void)
 
   set_init_callback(init_regexp_glue);
   set_exit_callback(exit_regexp_glue);
-  end_class("_module_value", 0);
 }
