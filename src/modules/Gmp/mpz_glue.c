@@ -40,6 +40,9 @@ RCSID("$Id$");
 
 #include <limits.h>
 
+#if SIZEOF_INT_TYPE > 4
+#define BIG_PIKE_INT
+#endif
 
 #define sp Pike_sp
 #define fp Pike_fp
@@ -87,7 +90,7 @@ void mpzmod_reduce(struct object *o)
 
      mpz_init_set(t,OBTOMPZ(o));
      mpz_init(u);
-     while (pos<sizeof(INT_TYPE)*CHAR_BIT)
+     while (pos<(int)sizeof(INT_TYPE)*CHAR_BIT)
      {
         a=mpz_get_ui(t)&FILTER;
         if (!a && mpz_cmp_si(t,0)==0) 
@@ -196,7 +199,7 @@ void get_new_mpz(MP_INT *tmp, struct svalue *s)
   switch(s->type)
   {
   case T_INT:
-#if BIG_PIKE_INT
+#ifdef BIG_PIKE_INT
 /*  INT_TYPE is bigger then long int  */
   {
      INT_TYPE x=s->u.integer;
