@@ -2106,6 +2106,12 @@ static void file_mode(INT32 args)
  *!
  *! Sets this file to nonblocking operation.
  *!
+ *! @note
+ *!   Nonblocking operation is not supported on all Stdio.File objects.
+ *!   Notably it is not guaranteed to be supported on objects returned
+ *!   by @[pipe()] unless @[PROP_NONBLOCK] was specified in the call
+ *!   to @[pipe()].
+ *!
  *! @seealso
  *!   @[set_blocking()]
  */
