@@ -2624,7 +2624,7 @@ static void image_map_fs(INT32 args)
    while (i--)
    {
       image_floyd_steinberg(s,xs,errb,w=!w,res,ct,1);
-      for (j=0; j<THIS->xsize; j++)
+      for (j=0; j<xs; j++)
 	 *(d++)=ct->clut[res[j]];
       s+=xs;
    }
