@@ -609,18 +609,22 @@ void resolv_constant(node *n)
       break;
 
     case F_LOCAL:
+      /* FIXME: Ought to have the name of the identifier in the message. */
       yyerror("Expected constant, got local variable");
       push_int(0);
       return;
 
     case F_GLOBAL:
+      /* FIXME: Ought to have the name of the identifier in the message. */
       yyerror("Expected constant, got global variable");
       push_int(0);
       return;
 
     case F_UNDEFINED:
-      if(compiler_pass==2)
+      if(compiler_pass==2) {
+	/* FIXME: Ought to have the name of the identifier in the message. */
 	yyerror("Expected constant, got undefined identifier");
+      }
       push_int(0);
       return;
 
@@ -637,7 +641,7 @@ void resolv_constant(node *n)
       push_svalue(PROG_FROM_INT(p, numid)->constants +
 		  i->func.offset);
     }else{
-      yyerror("Identifier is not a constant");
+      my_yyerror("Identifier '%s' is not a constant", i->name->str);
       push_int(0);
     }
   }
