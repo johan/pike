@@ -2074,7 +2074,7 @@ int do_gc(void)
   gc_internal_object = 0;
 
 #ifdef PIKE_DEBUG
-  if(fatal_after_gc) fatal(fatal_after_gc);
+  if(fatal_after_gc) fatal("%s", fatal_after_gc);
 #endif
 
   /* Pike code may run again now. */
@@ -2136,7 +2136,7 @@ int do_gc(void)
     if (n != (unsigned) num_objects)
       fatal("Object count wrong after gc; expected %d, got %d.\n", num_objects, n);
     GC_VERBOSE_DO(fprintf(stderr, "| posttouch: %u things\n", n));
-    if(fatal_after_gc) fatal(fatal_after_gc);
+    if(fatal_after_gc) fatal("%s", fatal_after_gc);
   }
   if (gc_extra_refs)
     fatal("Lost track of %d extra refs to things in gc.\n", gc_extra_refs);

@@ -106,19 +106,15 @@ static INLINE int getrgb(struct image *img,
    img->rgb.g=(unsigned char)sp[1-args+args_start].u.integer;
    img->rgb.b=(unsigned char)sp[2-args+args_start].u.integer;
 
-   if (max > 3 && args-args_start>=4) 
-      if (sp[3-args+args_start].type!=T_INT)
+   if (max > 3 && args-args_start>=4) {
+      if (sp[3-args+args_start].type!=T_INT) {
          error("Illegal alpha argument to %s\n",name);
-      else
-      {
-         img->alpha=sp[3-args+args_start].u.integer;
-	 return 4;
       }
-   else
-   {
-      img->alpha=0;
-      return 3;
+      img->alpha=sp[3-args+args_start].u.integer;
+      return 4;
    }
+   img->alpha=0;
+   return 3;
 }
 
 

@@ -178,7 +178,7 @@ enum apply_type
 
 #define APPLY_MASTER(FUN,ARGS) \
 do{ \
-  static int fun_,master_cnt=0; \
+  static int fun_, master_cnt=0; \
   struct object *master_ob=master(); \
   if(master_cnt != master_ob->prog->id) \
   { \
@@ -190,7 +190,7 @@ do{ \
 
 #define SAFE_APPLY_MASTER(FUN,ARGS) \
 do{ \
-  static int fun_,master_cnt=0; \
+  static int fun_, master_cnt=0; \
   struct object *master_ob=master(); \
   if(master_cnt != master_ob->prog->id) \
   { \
@@ -257,7 +257,7 @@ static inline void strict_apply_svalue(struct svalue *sval, INT32 args)
 }
 #else /* !__ECL */
 #define apply_low(O,FUN,ARGS) \
-  mega_apply(APPLY_LOW, (ARGS), (void*)(O),(void*)(FUN))
+  mega_apply(APPLY_LOW, (ARGS), (void*)(O),(void*)(ptrdiff_t)(FUN))
 
 #define strict_apply_svalue(SVAL,ARGS) \
   mega_apply(APPLY_SVALUE, (ARGS), (void*)(SVAL),0)
