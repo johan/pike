@@ -493,6 +493,8 @@ program cast_to_program(string pname, string current_file, object|void handler)
   }
   if(IS_ABSOLUTE_PATH(pname))
   {
+    if (programs[pname])
+      return programs[pname];
     pname=combine_path("/",pname);
     return findprog(pname,ext,handler);
   }else{
