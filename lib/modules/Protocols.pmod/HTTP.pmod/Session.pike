@@ -18,7 +18,6 @@ typedef string|Standards.URI|SessionURL URL;
 //!	works to stop loops.
 //! @seealso
 //!	@[Request.follow_redirects]
-
 int follow_redirects=20;
 
 //! Default HTTP headers. 
