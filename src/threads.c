@@ -176,6 +176,8 @@ void low_init_threads_disable(void)
 		    (stderr, "low_init_threads_disable(): Locking IM's...\n"));
 
     if (thread_id) {
+      /* Threads have been enabled. */
+
       IMUTEX_T *im;
 
       THREADS_ALLOW();
@@ -193,6 +195,8 @@ void low_init_threads_disable(void)
 
       THREADS_DISALLOW();
     } else {
+      /* Threads haven't been enabled yet. */
+
       IMUTEX_T *im;
 
       /* Keep this the entire session. */
