@@ -5,8 +5,6 @@
 || $Id$
 */
 
-#define UNDEFINED (([])[0])
-
 string fr;
 
 array encoded=({});
@@ -26,7 +24,7 @@ void handle_error(mixed err)
 
 void compile_error(string file,int line,string err)
 {
-  werror(sprintf("%s:%s:%s\n",file, line?(string)line:"-",err));
+  werror("%s:%s:%s\n", file, line?(string)line:"-", err);
 }
 
 string fakeroot(string s)
@@ -60,10 +58,11 @@ class Codec
     return UNDEFINED;
   } 
 }
-void _main(string *argv, string *env)
+
+void _main(array(string) argv, array(string) env)
 {
   foreach(argv[1..sizeof(argv)-2], string f)
-    sscanf(f,"--fakeroot=%s",fr);
+    sscanf(f, "--fakeroot=%s", fr);
     
   program p=compile_file(argv[-1]);
   string s=encode_value(p, Codec());
@@ -71,5 +70,4 @@ void _main(string *argv, string *env)
   exit(0);
 }
 
-
-mixed resolv() { return ([])[0]; }
+mixed resolv() { return UNDEFINED; }
