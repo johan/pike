@@ -202,7 +202,6 @@ PMOD_EXPORT void Pike_vsnprintf(char *str, size_t size,
 
       fmt++;
 
-      fprintf(stderr, "X %c\n", fmt[0]);
       switch( fmt++[0] ) {
 
       case 'O':
