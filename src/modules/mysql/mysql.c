@@ -686,7 +686,7 @@ void pike_module_init(void)
   set_exit_callback(exit_mysql_struct);
 
   mysql_program = end_program();
-  add_program_constant("mysql");
+  add_program_constant("mysql", mysql_program, 0);
 
   init_mysql_res_programs();
 #endif /* HAVE_MYSQL */
