@@ -4,7 +4,7 @@
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
 /**/
-#define NO_PIKE_SHORTCUTS
+#define NO_PIKE_SHORTHAND
 #include "global.h"
 #include "pike_macros.h"
 #include "error.h"
