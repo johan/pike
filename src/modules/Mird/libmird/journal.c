@@ -14,10 +14,10 @@
 
 /* handles the journal file */
 
-#include "internal.h"
-
 #include <unistd.h>
 #include <stdlib.h>
+
+#include "internal.h"
 
 #include "dmalloc.h"
 #include <stdio.h> 

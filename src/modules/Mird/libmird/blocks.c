@@ -14,11 +14,11 @@
 
 /* handles blocks, freelist and fragmented blocks */
 
-#include "internal.h"
-
 #include <unistd.h>
 #include <errno.h>
 #include <stdlib.h>
+
+#include "internal.h"
 
 #include "dmalloc.h"
 

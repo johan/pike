@@ -16,6 +16,8 @@
  * a frag is a small piece of data, of limited size
  */
 
+#include <unistd.h>
+
 #include "internal.h"
 
 #ifndef NULL

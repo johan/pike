@@ -12,9 +12,10 @@
 ** also see http://www.mirar.org/mird/
 */
 
-#include "internal.h"
-
 #include <stdlib.h>
+#include <unistd.h>
+
+#include "internal.h"
 
 #ifdef HAVE_STRING_H
 #include <string.h>

@@ -15,12 +15,12 @@
 /* #define MSL_COUNTER */
 #ifdef MSL_COUNTER
 #include <sys/time.h>
-#include <unistd.h>
 #endif
 
-#include "internal.h"
-
 #include <stdlib.h>
+#include <unistd.h>
+
+#include "internal.h"
 
 #include "dmalloc.h"
 

@@ -12,9 +12,11 @@
 ** also see http://www.mirar.org/mird/
 */
 
+#include <stdlib.h>
+#include <unistd.h>
+
 #include "internal.h"
 
-#include <stdlib.h>
 #ifdef HAVE_MEMORY_H
 #include <memory.h>
 #endif

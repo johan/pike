@@ -15,9 +15,10 @@
 /* handles hashtrie nodes
  */
 
-#include "internal.h"
-
 #include <stdlib.h>
+#include <unistd.h>
+
+#include "internal.h"
 
 /* AIX requires this to be the first thing in the file.  */
 #if HAVE_ALLOCA_H

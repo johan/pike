@@ -14,9 +14,10 @@
  * a cell is some amount of data of unregulated size
  */
 
-#include "internal.h"
-
+#include <unistd.h>
 #include <stdlib.h>
+
+#include "internal.h"
 
 static const char RCSID[]=
    "$Id$";
