@@ -183,7 +183,7 @@ static struct case_info *find_ci(int c)
       hi = mid;
     }
   }
-  return(cache = case_info + lo);
+  return(cache = (struct case_info *)case_info + lo);
 }
 
 #define DO_LOWER_CASE(C) do {\
