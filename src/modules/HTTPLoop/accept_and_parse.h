@@ -134,10 +134,10 @@ struct log
 
 struct log_object
 {
-  int time;
-  int reply;
-  ptrdiff_t sent_bytes;
-  ptrdiff_t received_bytes;
+  INT_TYPE time;
+  INT_TYPE reply;
+  INT_TYPE sent_bytes;
+  INT_TYPE received_bytes;
   struct pike_string *raw;
   struct pike_string *url;
   struct pike_string *method;
