@@ -196,7 +196,6 @@ struct options
   float ydpy;
 };
 
-#define MAX(X,Y) ((X)>(Y)?(X):(Y))
 
 void low_image_tiff_encode( struct buffer *buf, 
                             struct imagealpha *img,
@@ -258,7 +257,7 @@ void low_image_tiff_encode( struct buffer *buf,
   if(opts->name)
     TIFFSetField(tif, TIFFTAG_DOCUMENTNAME, opts->name);
   TIFFSetField(tif, TIFFTAG_SAMPLESPERPIXEL, spp);
-  TIFFSetField(tif, TIFFTAG_ROWSPERSTRIP, MAX(8192/i->xsize/spp,1));
+  TIFFSetField(tif, TIFFTAG_ROWSPERSTRIP, MAXIMUM(8192/i->xsize/spp,1));
   TIFFSetField(tif, TIFFTAG_PLANARCONFIG, PLANARCONFIG_CONTIG);
   TIFFSetField(tif, TIFFTAG_RESOLUTIONUNIT, RESUNIT_INCH);
   TIFFSetField(tif, TIFFTAG_XRESOLUTION, opts->xdpy);
