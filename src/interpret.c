@@ -31,6 +31,7 @@ RCSID("$Id$");
 #include "fd_control.h"
 #include "security.h"
 #include "block_alloc.h"
+#include "bignum.h"
 
 #include <fcntl.h>
 #include <errno.h>
