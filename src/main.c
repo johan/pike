@@ -683,7 +683,9 @@ void low_exit_main(void)
   cleanup_callbacks();
   free_all_callable_blocks();
   exit_destroy_called_mark_hash();
+
   free_all_mapping_blocks();
+  first_mapping=0;
 #endif
 }
 
