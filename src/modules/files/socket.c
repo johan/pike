@@ -412,7 +412,7 @@ void port_setup_program(void)
   /* function(:int) */
   ADD_FUNCTION("errno",port_errno,tFunc(tNone,tInt),0);
   /* function(:object) */
-  ADD_FUNCTION("accept",port_accept,tFunc(tNone,tObj_STDIO_FD),0);
+  ADD_FUNCTION("accept",port_accept,tFunc(tNone,tObjIs_STDIO_FD),0);
   /* function(void|string|int,void|mixed,void|string:void) */
   ADD_FUNCTION("create",port_create,tFunc(tOr3(tVoid,tStr,tInt) tOr(tVoid,tMix) tOr(tVoid,tStr),tVoid),0);
 
