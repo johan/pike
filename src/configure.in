@@ -5563,14 +5563,6 @@ MY_AC_CHECK_PRINTF_INT_TYPE(ptrdiff_t,
 			    "" "l" "ll" "L", "",
 			    PRINTPTRDIFFT,
 			    [%${res}d, %${res}x])
-MY_AC_CHECK_PRINTF_INT_TYPE(INT_TYPE,
-			    "" "l" "ll" "L", "",
-			    PRINTPIKEINT,
-			    [%${res}d, %${res}x])
-MY_AC_CHECK_PRINTF_FLOAT_TYPE(FLOAT_TYPE,
-			      "" "l" "L" "ll", "",
-			      PRINTPIKEFLOAT,
-			      [%${res}g, %${res}f])
 
 #######################################################################
 

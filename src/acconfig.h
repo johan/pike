@@ -487,12 +487,6 @@
 /* set this to the modifier type string to print ptrdiff_t, like "" or "l" */
 #undef PRINTPTRDIFFT
 
-/* set this to the modifier type string to print INT_TYPE, like "" or "ll" */
-#undef PRINTPIKEINT
-
-/* set this to the modifier type string to print FLOAT_TYPE, like "L" or "" */
-#undef PRINTPIKEFLOAT
-
 /* Define if the compiler understand union initializations. */
 #undef HAVE_UNION_INIT
 
