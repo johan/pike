@@ -1219,6 +1219,10 @@ static int eval_instruction_low(PIKE_OPCODE_T *pc)
   fprintf(stderr,"We have reached the end of the world!\n");
 #endif
 
+#ifdef __GNUC__
+  goto *dummy_label;
+#endif
+
   if (dummy_label) {
   inter_escape_catch_label:
     EXIT_MACHINE_CODE();
