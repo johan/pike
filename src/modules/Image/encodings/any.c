@@ -123,6 +123,11 @@ void image_any__decode(INT32 args)
 	 push_text("image/x-ilbm");
 	 goto simple_image;
 
+      case CHAR2('B','M'):
+	 /* BMP */
+	 img_bmp__decode(1);
+	 return;
+
       case CHAR2(0,0):
 	 switch (CHAR2(sp[-args].u.string->str[2],sp[-args].u.string->str[3]))
 	 {
