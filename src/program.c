@@ -2132,8 +2132,10 @@ typedef void (*oldhandlertype)(struct object *);
 static void compat_event_handler(int e)
 {
   oldhandlertype handler;
+  debug_malloc_touch(Pike_fp->current_object);
   handler=((oldhandlertype *)Pike_fp->context.prog->program)[e];
   if(handler) handler(Pike_fp->current_object);
+  debug_malloc_touch(Pike_fp->current_object);
 }
 
 static void add_compat_event_handler(void)
