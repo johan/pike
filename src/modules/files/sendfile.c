@@ -463,6 +463,8 @@ static void sf_create(INT32 args)
   push_array(sf.args = aggregate_array(args-7));
   args = 8;
 
+  /* FIXME: Ought to fix fp so that the backtraces look right. */
+
   /* Do some extra arg checking */
   sf.hd_cnt = 0;
   if (sf.headers) {
@@ -599,26 +601,28 @@ static void sf_create(INT32 args)
     sf.buffer = (char *)xalloc(BUF_SIZE);
   }
 
-  /*
-   * Setup done. Note that we keep refs to all refcounted svalues in
-   * our object.
-   */
-  sp -= args;
-  *THIS = sf;
-  args = 0;
-
   if (((sf.from_fd >= 0) || (!sf.from_file)) && (sf.to_fd >= 0)) {
     /* Threaded blocking mode possible */
     THREAD_T th_id;
 
     /* Make sure both file objects are in blocking mode.
      */
-    if (THIS->from_file) {
-      apply(THIS->from_file, "set_blocking", 0);
+    if (sf.from_file) {
+      apply(sf.from_file, "set_blocking", 0);
       pop_stack();
     }
-    apply(THIS->to_file, "set_blocking", 0);
+    apply(sf.to_file, "set_blocking", 0);
     pop_stack();
+    
+    /*
+     * Setup done. Note that we keep refs to all refcounted svalues in
+     * our object.
+     */
+    sp -= args;
+    *THIS = sf;
+    args = 0;
+
+    /* FIXME: Ought to fix fp so that the backtraces look right. */
 
     /* Note: we hold a reference to ourselves.
      * The gc() won't find it, so be carefull.
