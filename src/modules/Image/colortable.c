@@ -60,8 +60,8 @@ extern struct program *image_program;
 		 (COLORLOOKUPCACHEHASHB*(int)(b)))% \
 		COLORLOOKUPCACHEHASHSIZE) 
 
-#define SPACEFACTOR_R 2
-#define SPACEFACTOR_G 3
+#define SPACEFACTOR_R 3
+#define SPACEFACTOR_G 4
 #define SPACEFACTOR_B 1
 
 #define CUBICLE_DEFAULT_R 4
@@ -3007,7 +3007,7 @@ void image_colortable_map(INT32 args)
 **!	distance factors. This is used when comparing distances
 **!	in the colorspace and comparing grey levels.
 **!
-**!	Default factors are 2, 3 and 1; blue is much 
+**!	Default factors are 3, 4 and 1; blue is much 
 **!	darker than green. Compare with <ref>Image.image::grey</ref>().
 **!
 **! returns the called object
