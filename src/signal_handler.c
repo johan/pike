@@ -1302,18 +1302,39 @@ static TH_RETURN_TYPE wait_thread(void *data)
 
     if(pid>0)
     {
-#if defined(HAVE_PTRACE) && defined(SIGPROF)
-      if (WIFSTOPPED(status) && (WSTOPSIG(status) == SIGPROF)) {
+#if defined(HAVE_PTRACE) && \
+    (defined(SIGPROF) || \
+     defined(_W_SLWTED) || defined(_W_SEWTED) || defined(_W_SFWTED))
+      if (WIFSTOPPED(status) &&
+#ifdef SIGPROF
+	  (WSTOPSIG(status) == SIGPROF)
+#else
+	  ((status & 0xff) != 0x7f)
+#endif
+	  ) {
 	/* FreeBSD sends spurious SIGPROF signals to the child process
 	 * which interferes with the process trace startup code.
 	 */
+	/* AIX has these...
+	 *   _W_SLWTED	Stopped after Load Wait TracED.
+	 *   _W_SEWTED	Stopped after Exec Wait TracED.
+	 *   _W_SFWTED	Stopped after Fork Wait TracED.
+	 *
+	 * Ignore them for now.
+	 */
 #ifdef PROC_DEBUG
+#ifdef SIGPROF
 	fprintf(stderr, "wait thread: Got SIGPROF from pid %d\n",pid);
-#endif
+#else /* !SIGPROF */
+	fprintf(stderr, "wait thread: Got L/E/F status (0x%08x) from pid %d\n",
+		status, pid);
+#endif /* SIGPROF */
+#endif /* PROC_DEBUG */
 	ptrace(PTRACE_CONT, pid, CAST_TO_PTRACE_ADDR(1), SIGPROF);
 	continue;
       }
-#endif /* HAVE_PTRACE && SIGPROF */
+#endif /* HAVE_PTRACE && (SIGPROF || _W_SLWTED || _W_SEWTED || _W_SFWTED) */
+
 #ifdef PROC_DEBUG
       fprintf(stderr, "wait thread: locking interpreter, pid=%d\n",pid);
 #endif
