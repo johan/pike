@@ -286,9 +286,7 @@ int dbm_main(int argc, char **argv)
     /* This has already been done by initialize_dmalloc(). */
     init_callback_blocks();
 #endif /* !DEBUG_MALLOC */
-#ifdef PIKE_NEW_MULTISETS
     init_multiset();
-#endif
     init_builtin_constants();
   }
 
@@ -1121,8 +1119,6 @@ void low_exit_main(void)
   free_all_object_blocks();
   first_program=0;
   free_all_program_blocks();
-#ifdef PIKE_NEW_MULTISETS
   exit_multiset();
-#endif
 #endif
 }

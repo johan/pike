@@ -65,9 +65,6 @@
 /* Define this to use the new keypair loop. */
 #undef PIKE_MAPPING_KEYPAIR_LOOP
 
-/* Define this to use the new multiset implementation. */
-#undef PIKE_NEW_MULTISETS
-
 /* Define this to get portable dumped bytecode. */
 #undef PIKE_PORTABLE_BYTECODE
 

@@ -960,7 +960,6 @@ static int alpha_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
 
       case T_MULTISET:
 	if (a == b) return 0;
-#ifdef PIKE_NEW_MULTISETS
 	{
 	  ptrdiff_t a_pos = multiset_first (a->u.multiset);
 	  ptrdiff_t b_pos = multiset_first (b->u.multiset);
@@ -980,17 +979,6 @@ static int alpha_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
 	  sub_msnode_ref (b->u.multiset);
 	  return res;
 	}
-#else
-	if (multiset_is_empty (a->u.multiset))
-	  if (multiset_is_empty (b->u.multiset))
-	    return 0;
-	  else
-	    return -1;
-	else
-	  if (multiset_is_empty (b->u.multiset))
-	    return 1;
-	return alpha_svalue_cmpfun (ITEM (a->u.multiset->ind), ITEM (b->u.multiset->ind));
-#endif
 
       case T_OBJECT:
 	if(a->u.object == b->u.object) return 0;

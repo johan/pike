@@ -1867,7 +1867,6 @@ static void f_big_typed_query_create(INT32 args)
 	  case T_MULTISET:
 	    if(multiset_sizeof(value->u.multiset) == 1) {
 	      struct pike_string *s;
-#ifdef PIKE_NEW_MULTISETS
 	      {
 		struct svalue tmp;
 		if (use_multiset_index (value->u.multiset,
@@ -1877,12 +1876,6 @@ static void f_big_typed_query_create(INT32 args)
 		else
 		  s = NULL;
 	      }
-#else
-	      if (ITEM(value->u.multiset->ind)[0].type == T_STRING)
-		s = ITEM(value->u.multiset->ind)[0].u.string;
-	      else
-		s = NULL;
-#endif
 	      if (s) {
 		addr = (ub1 *)s->str;
 		len = s->len;

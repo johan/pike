@@ -1489,12 +1489,6 @@ MY_AC_ARG_WITH(lock,
 	  [enable experimental code for multicpu machines (EXPERIMENTAL).]),
 		[],[AC_DEFINE(PIKE_RUN_UNLOCKED)])
 
-MY_AC_ARG_WITH(new-multisets,
-	       MY_DESCR([--without-new-multisets],
-			[disable the new multiset implementation.]),
-	       [AC_DEFINE(PIKE_NEW_MULTISETS)],[],
-	       [AC_DEFINE(PIKE_NEW_MULTISETS)])
-
 AC_ARG_WITH(pike-type, MY_DESCR([--without-pike-type],
 				[disable struct pike_type (IGNORED).]))
 

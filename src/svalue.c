@@ -1734,9 +1734,7 @@ void low_thorough_check_short_svalue (const union anything *u, TYPE_T type)
     case T_ARRAY: check_array(u->array); break;
     case T_PROGRAM: check_program(u->program); break;
     case T_OBJECT: check_object(u->object); break;
-#ifdef PIKE_NEW_MULTISETS
     case T_MULTISET: check_multiset(u->multiset, 0); break;
-#endif
   }
 
   if (thoroughly_checking != &checking)
