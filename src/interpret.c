@@ -1816,6 +1816,11 @@ static int o_catch(unsigned char *pc)
   }
 }
 
+void f_call_function(INT32 args)
+{
+  mega_apply(APPLY_STACK,args,0,0);
+}
+
 int apply_low_safe_and_stupid(struct object *o, INT32 offset)
 {
   JMP_BUF tmp;

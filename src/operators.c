@@ -1418,11 +1418,6 @@ static int generate_sizeof(node *n)
   return 1;
 }
 
-void f_call_function(INT32 args)
-{
-  mega_apply(APPLY_STACK,args,0,0);
-}
-
 static int generate_call_function(node *n)
 {
   node **arg;

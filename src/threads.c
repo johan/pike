@@ -14,6 +14,7 @@ int threads_disabled = 0;
 #include "constants.h"
 #include "program.h"
 #include "gc.h"
+#include "main.h"
 
 #ifdef __NT__
 
@@ -214,7 +215,6 @@ void *new_thread_func(void * data)
   free((char *)data); /* Moved by per, to avoid some bugs.... */
   UNSETJMP(back);
 
-  destruct(thread_id);
   THREADS_FPRINTF((stderr,"THREADS_ALLOW() Thread %08x done\n",
 		   (unsigned int)thread_id));
 

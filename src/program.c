@@ -478,9 +478,14 @@ void really_free_program(struct program *p)
 
   for(e=1; e<p->num_inherits; e++)
   {
-    free_program(p->inherits[e].prog);
-    if(p->inherits[e].parent)
-      free_object(p->inherits[e].parent);
+    if(p->inherits[e].name)
+      free_string(p->inherits[e].name);
+    if(e)
+    {
+      free_program(p->inherits[e].prog);
+      if(p->inherits[e].parent)
+	free_object(p->inherits[e].parent);
+    }
   }
 
   if(p->prev)
@@ -777,7 +782,7 @@ struct program *end_first_pass(int finish)
 /*
  * Finish this program, returning the newly built program
  */
-struct program *end_program(void)
+struct program *debug_end_program(void)
 {
   return end_first_pass(1);
 }
@@ -937,8 +942,7 @@ void low_inherit(struct program *p,
     {
       if(e==0)
       {
-	inherit.name=name;
-	reference_shared_string(name);
+	copy_shared_string(inherit.name,name);
       }
       else if(inherit.name)
       {
@@ -1397,7 +1401,7 @@ int add_function_constant(char *name, void (*cfun)(INT32), char * type, INT16 fl
 }
 
 
-int end_class(char *name, INT32 flags)
+int debug_end_class(char *name, INT32 flags)
 {
   INT32 ret;
   struct svalue tmp;

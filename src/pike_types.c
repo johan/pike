@@ -914,9 +914,14 @@ int match_types(struct pike_string *a,struct pike_string *b)
 }
 
 
+#ifdef DEBUG_MALLOC
+#define low_index_type(X,Y) ((struct pike_string *)debug_malloc_touch(debug_low_index_type((X),(Y))))
+#else
+#define low_index_type debug_low_index_type
+#endif
 
 /* FIXME, add the index */
-static struct pike_string *low_index_type(char *t, node *n)
+static struct pike_string *debug_low_index_type(char *t, node *n)
 {
   switch(EXTRACT_UCHAR(t++))
   {
@@ -969,6 +974,8 @@ static struct pike_string *low_index_type(char *t, node *n)
     if(!a) return b;
     push_finished_type(b);
     push_finished_type(a);
+    free_string(a);
+    free_string(b);
     push_type(T_OR);
     return pop_unfinished_type();
   }
