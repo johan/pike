@@ -736,7 +736,7 @@ void document(string enttype,
 		  method_names-=method->names;
 	       }
 	    if (method_names[method_name])
-	       Stdio.stderr->write("failed to find "+method_name+" again, wierd...\n");
+	       werror("failed to find "+method_name+" again, wierd...\n");
 	 }
    }
 
@@ -780,9 +780,10 @@ string make_doc_files(string builddir, string imgdest, string|void namespace)
    string here = getcwd();
    cd(builddir);
 
-   Stdio.stderr->write("modules: " +
-		       sort(indices(parse)-({" appendix"}))*", " +
-		       "\n");
+   if (verbosity > 0)
+     werror("modules: " +
+	    sort(indices(parse)-({" appendix"}))*", " +
+	    "\n");
 
    namespace = namespace || "predef::";
    if (has_suffix(namespace, "::")) {
