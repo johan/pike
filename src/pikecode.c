@@ -21,6 +21,8 @@
 #include "code/ia32.c"
 #elif defined(sparc) || defined(__sparc__) || defined(__sparc)
 #include "code/sparc.c"
+#elif defined(__ppc__) || defined(_POWER)
+#include "code/ppc32.c"
 #else /* Unsupported cpu */
 #error Unknown CPU
 #endif /* CPU type */

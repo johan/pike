@@ -29,6 +29,7 @@ void ins_f_byte_with_2_args(unsigned int a,
 #define PIKE_BYTECODE_GOTO	1
 #define PIKE_BYTECODE_SPARC	2
 #define PIKE_BYTECODE_IA32	3
+#define PIKE_BYTECODE_PPC32     4
 
 /* Note: PIKE_BYTECODE_METHOD gets defined to one of the above values below. */
 
@@ -39,6 +40,9 @@ void ins_f_byte_with_2_args(unsigned int a,
 #elif defined(sparc) || defined(__sparc__) || defined(__sparc)
 #define PIKE_BYTECODE_METHOD	PIKE_BYTECODE_SPARC
 #include "code/sparc.h"
+#elif defined(__ppc__) || defined(_POWER)
+#define PIKE_BYTECODE_METHOD	PIKE_BYTECODE_PPC32
+#include "code/ppc32.h"
 #else /* Unsupported cpu */
 #error Unknown CPU. Run configure --without-machine-code.
 #endif /* CPU type */

@@ -850,14 +850,22 @@ static int eval_instruction(PIKE_OPCODE_T *pc)
 			: "=m" (pc)
 			:
 			: "cc", "memory", "eax" );
-#else /* !__i386__ */
+#elif defined(__ppc__) || defined(_POWER)
+  __asm__ __volatile__( "       mtlr %0\n"
+			"	blr"
+			:
+			: "r" (pc)
+			: "cc", "memory", "r0", "r3", "r4", "r5",
+			  "r6", "r7", "r8", "r9", "r10", "r11", "r12",
+			  "lr", "ctr");
+#else /* !__i386__ && !__ppc__ */
   /* The test is needed to get the labels to work... */
   if (pc) {
     /* No extra setup needed!
      */
     return ((int (*)(void))pc)();
   }
-#endif /* __i386__ */
+#endif /* __i386__ || __ppc__ */
   /* This code is never reached, but will
    * prevent gcc from optimizing the labels below too much
    */
