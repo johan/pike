@@ -2990,6 +2990,10 @@ void f_map_array(INT32 args)
   struct svalue *fun;
   struct array *ret,*foo;
 
+  if (args < 2)
+    error("Bad number of arguments to "
+	  "map_array(array, function, mixed ...).\n");
+
   if(sp[-args].type != T_ARRAY)
     error("Bad argument 1 to map_array().\n");
   
