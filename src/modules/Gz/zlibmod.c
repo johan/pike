@@ -859,8 +859,8 @@ PIKE_MODULE_INIT
   start_new_program();
   ADD_STORAGE(struct zipper);
   
-  /* function(int|void:void) */
-  ADD_FUNCTION("create",gz_inflate_create,tFunc(tOr(tInt,tVoid),tVoid),0);
+  /* function(:void) */
+  ADD_FUNCTION("create",gz_inflate_create,tFunc(tNone,tVoid),0);
   /* function(string:string) */
   ADD_FUNCTION("inflate",gz_inflate,tFunc(tStr,tStr),0);
 
