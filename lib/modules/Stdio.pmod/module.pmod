@@ -630,6 +630,33 @@ class FILE {
       return extract(p-bpos, 1);
     }
 
+    array(string) ngets(void|int(1..) n)
+    {
+       if (!n) return read()/"\n";
+
+       array res=b[bpos..]/"\n";
+       bpos=strlen(b)-strlen(res[-1]);
+       res=res[..sizeof(res)-2];
+
+       while (sizeof(res)<n)
+       {
+	  if (!get_data()) 
+	     if (string s=gets()) return res+({s});
+	     else if (!sizeof(res)) return 0;
+	     else return res;
+
+	  array a=b[bpos..]/"\n";
+	  bpos=strlen(b)-strlen(a[-1]);
+	  res+=a[..sizeof(a)-2];
+       }
+       if (sizeof(res)>n)
+       {
+	  bpos-=`+(@map(res[n..],strlen))+(sizeof(res)-n);
+	  return res[..n-1];
+       }
+       return res;
+    }
+
     int seek(int pos)
     {
       bpos=0;
