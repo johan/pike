@@ -521,7 +521,6 @@ mapping get_properties(Stdio.File|string file)
 
   if (skip[strlen(skip)-6..]!="Exif\0\0")
   {
-     werror("BIPA\n");
      skip=file->read(100);
      int z=search(skip,"Exif\0\0");
      if (z==-1) return ([]); // no exif header?
