@@ -723,8 +723,6 @@ void backend(void)
   if(SETJMP(back))
   {
     call_handle_error();
-    free_svalue(&throw_value);
-    throw_value.type=T_INT;
     throw_value.subtype=NUMBER_UNDEFINED;
     throw_value.u.integer=0;
   }

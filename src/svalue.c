@@ -469,7 +469,7 @@ PMOD_EXPORT unsigned INT32 hash_svalue(struct svalue *s)
 
     if(FIND_LFUN(s->u.object->prog,LFUN___HASH) != -1)
     {
-      safe_apply_low(s->u.object, FIND_LFUN(s->u.object->prog,LFUN___HASH), 0);
+      safe_apply_low2(s->u.object, FIND_LFUN(s->u.object->prog,LFUN___HASH), 0, 1);
       if(sp[-1].type == T_INT)
       {
 	q=sp[-1].u.integer;
@@ -515,7 +515,7 @@ PMOD_EXPORT int svalue_is_true(struct svalue *s)
 
     if(FIND_LFUN(s->u.object->prog,LFUN_NOT)!=-1)
     {
-      safe_apply_low(s->u.object,FIND_LFUN(s->u.object->prog,LFUN_NOT),0);
+      safe_apply_low2(s->u.object,FIND_LFUN(s->u.object->prog,LFUN_NOT),0,1);
       if(sp[-1].type == T_INT && sp[-1].u.integer == 0)
       {
 	pop_stack();
@@ -1062,7 +1062,7 @@ PMOD_EXPORT void describe_svalue(struct svalue *s,int indent,struct processing *
 	  push_constant_text("indent");
 	  push_int(indent);
 	  f_aggregate_mapping(2);					      
-	  safe_apply_low(s->u.object, fun ,2);
+	  safe_apply_low2(s->u.object, fun ,2,1);
 
 	  if(!IS_ZERO(sp-1))
 	  {

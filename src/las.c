@@ -1645,6 +1645,8 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 	     *
 	     * FIXME: Report the error thrown.
 	     */
+	    free_svalue(&throw_value);
+	    throw_value.type = T_INT;
 	    if (Pike_sp > save_sp) {
 	      pop_n_elems(Pike_sp - save_sp);
 	    } else if (Pike_sp != save_sp) {
@@ -4551,6 +4553,8 @@ ptrdiff_t eval_low(node *n)
 	  yyerror("Nonstandard error format.");
 	}
       }
+      free_svalue(&throw_value);
+      throw_value.type = T_INT;
     }else{
       if(foo.yes)
 	pop_n_elems(Pike_sp-save_sp);
