@@ -1363,9 +1363,9 @@ opt_int_range: /* Empty */
       if ($2->u.sval.type == T_INT) {
 	min = $2->u.sval.u.integer;
 #ifdef AUTO_BIGNUM
-      } else if (is_bignum_object_in_svalue(&$4->u.sval)) {
+      } else if (is_bignum_object_in_svalue(&$2->u.sval)) {
 	push_int(0);
-	if (is_lt(Pike_sp-1, &$4->u.sval)) {
+	if (is_lt(Pike_sp-1, &$2->u.sval)) {
 	  min = MAX_INT32;
 	}
 	pop_stack();
