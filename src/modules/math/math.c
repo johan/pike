@@ -12,6 +12,14 @@
 #include "module_support.h"
 #include "operators.h"
 
+#ifdef HAVE_IEEEFP_H
+#include <ieeefp.h>
+#endif
+
+#ifdef HAVE_FLOATINPOINT_H
+#include <floatingpoint.h>
+#endif
+
 RCSID("$Id$");
 
 #ifndef M_PI
@@ -235,6 +243,9 @@ void f_sgn(INT32 args)
 
 void pike_module_init(void)
 {
+#ifdef HAVE_FPSETMASK
+  fpsetmask(0);
+#endif
   add_efun("sin",f_sin,"function(float:float)",0);
   add_efun("asin",f_asin,"function(float:float)",0);
   add_efun("cos",f_cos,"function(float:float)",0);
