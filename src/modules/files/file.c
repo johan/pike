@@ -1981,10 +1981,10 @@ static void file_tell(INT32 args)
  */
 static void file_truncate(INT32 args)
 {
-#if defined (INT64) || defined (HAVE_FTRUNCATE64)
-  INT64 len;
+#if defined(INT64)
+  INT64 len = 0;
 #else
-  off_t len;
+  off_t len = 0;
 #endif
   int res;
 
