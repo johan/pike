@@ -704,7 +704,7 @@ static char *raw_lfun_types[] = {
  *!
  *!   Sprintf callback.
  *!
- *!   This method is called by @[sprintf()] to print objects. If it is
+ *!   This method is called by @[predef::sprintf()] to print objects. If it is
  *!   not present, printing of the object will not be supported for any
  *!   conversion-type except for the @tt{%O@}-conversion-type, which
  *!   will output @tt{"object"@}.
