@@ -2100,7 +2100,7 @@ static int PIKE_CONCAT(Y,_function_number);
 #define FILE_FUNC(X,Y,Z) \
 void PIKE_CONCAT(Y,_ref) (INT32 args) {\
   struct object *o=REF; \
-  if(!o || !o-prog) error("Stdio.File(): not open.\n"); \
+  if(!o || !o->prog) error("Stdio.File(): not open.\n"); \
   if(o->prog != file_program) \
      error("Wrong type of object in Stdio.File->_fd\n"); \
   apply_low(o, PIKE_CONCAT(Y,_function_number), args); \
