@@ -795,7 +795,7 @@ void f_aggregate_mapping(INT32 args)
   struct mapping *m;
 
   if(args & 1)
-    error("Uneven number of arguments to aggregage_mapping.\n");
+    error("Uneven number of arguments to aggregate_mapping.\n");
 
   m=allocate_mapping(MAP_SLOTS(args / 2));
 

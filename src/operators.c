@@ -1233,7 +1233,7 @@ void f_index(INT32 args)
     o_range();
     break;
   default:
-    error("Too manu arguments to `[]\n");
+    error("Too many arguments to `[]\n");
   }
 }
 
@@ -1251,7 +1251,7 @@ void f_arrow(INT32 args)
     o_index();
     break;
   default:
-    error("Too manu arguments to `->\n");
+    error("Too many arguments to `->\n");
   }
 }
 
