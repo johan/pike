@@ -2697,6 +2697,9 @@ test_eq(replace("f--barf--",({"f--bar","f--"}),({"f--","f--bar"})),"f--f--bar")
 test_eq(replace("test\ntest\n\ntest\ntest",({"\n","\n\n"}),({" ","<p>"})),"test test<p>test test")
 test_eq(replace("test\ntest\n\ntest\ntest",({"\n\n","\n"}),({"<p>"," "})),"test test<p>test test")
 
+test_eq("123\000456""890"-"\0", "123\456""890")
+test_eq("123\456000""890"-"\0", "123\456000""890")
+
 test_any([[
 function reference=lambda(string x, string *a, string *b)
 {
