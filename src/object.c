@@ -201,6 +201,7 @@ struct object *debug_clone_object(struct program *p, int args)
   SET_ONERROR(tmp, do_free_object, o);
   debug_malloc_touch(o);
   call_c_initializers(o);
+  debug_malloc_touch(o);
   call_pike_initializers(o,args);
   UNSET_ONERROR(tmp);
   return o;
