@@ -407,11 +407,6 @@ double STRTOD(char * nptr, char **endptr)
   if (*s == '-' || *s == '+')
     ++s;
 
-  /* Get the sign.  */
-  sign = *s == '-' ? -1 : 1;
-  if (*s == '-' || *s == '+')
-    ++s;
-
   num = 0.0;
   got_dot = 0;
   got_digit = 0;
