@@ -6576,8 +6576,7 @@ static void gc_check_frame(struct pike_frame *f)
       debug_gc_check (f->context.prog, " as context.prog in trampoline frame");
     if(f->context.parent)
       debug_gc_check (f->context.parent, " as context.parent in trampoline frame");
-    if(f->flags & PIKE_FRAME_MALLOCED_LOCALS)
-      debug_gc_check_svalues (f->locals, f->num_locals, " in locals of trampoline frame");
+    debug_gc_check_svalues (f->locals, f->num_locals, " in locals of trampoline frame");
     if(f->scope && !debug_gc_check (f->scope, " as scope frame of trampoline frame"))
       gc_check_frame(f->scope);
   }
