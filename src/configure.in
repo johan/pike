@@ -5138,10 +5138,10 @@ echo "install.......$INSTALL" >>config.info
 
 echo >>config.info
 echo "features:" >>config.info
-echo "dynamic loading....$pike_cv_sys_dynamic_loading" >>config.info
+echo "PAD_FEATURE([dynamic loading])$pike_cv_sys_dynamic_loading" >>config.info
 
 ls -1 pike_*.feature 2>/dev/null | xargs cat | sort >>config.info 
-ls -1 post-modules/*/pike_*.feature modules/*/pike_*.feature 2>/dev/null |  xargs cat | sort >>config.info
+ls -1 post_modules/*/pike_*.feature modules/*/pike_*.feature 2>/dev/null |  xargs cat | sort >>config.info
 
 echo "=========================================================" >>config.info
 

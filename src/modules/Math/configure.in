@@ -4,7 +4,7 @@ AC_CONFIG_HEADER(config.h)
 
 AC_MODULE_INIT()
 
-PIKE_FEATURE_OK(Math,Math...............)
+PIKE_FEATURE_OK(Math.)
 
 AC_C_CHAR_UNSIGNED
 

@@ -8,7 +8,7 @@ AC_CONFIG_SUBDIRS(encodings)
 
 AC_MODULE_INIT()
 
-PIKE_FEATURE_OK(Image,Image..............)
+PIKE_FEATURE_OK(Image)
 
 AC_FUNC_MMAP
 
