@@ -288,8 +288,8 @@ static mapping NIKON_990_MAKERNOTE = ([
   0x000F:	({"MN_ISOSelection", 	    	0, ([]) }),
   0x0080:	({"MN_ImageAdjustment",	    	0, ([]) }),
   0x0082:	({"MN_AuxiliaryLens",	    	0, ([]) }),
-  0x0085:	({"MN_ManualFocusDistance",  	"FLOAT"}),
-  0x0086:	({"MN_DigitalZoomFactor",    	"FLOAT"}),
+  0x0085:	({"MN_ManualFocusDistance",  	"FLOAT", ([]) }),
+  0x0086:	({"MN_DigitalZoomFactor",    	"FLOAT", ([]) }),
   0x0088:	({"MN_AFFocusPosition",	    	"MAP",
 		    ([ "\00\00\00\00": "Center",
 		       "\00\01\00\00": "Top",
@@ -968,7 +968,7 @@ mapping get_properties(Stdio.File file)
 
   string skip=file->read(12);  // skip the jpeg header
 
-  if (skip[strlen(skip)-6..]!="Exif\0\0")
+  if (skip[sizeof(skip)-6..]!="Exif\0\0")
   {
      skip=file->read(100);
      int z=search(skip,"Exif\0\0");
