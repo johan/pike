@@ -30,7 +30,7 @@ $MODULES: force
 modules: $(MODULES)
 	@for a in $(MODULES) ; do \
 	  echo Making $$a; \
-	  ( cd $$a; \
+	  ( cd $$a || exit $$?; \
 	    rm remake >/dev/null 2>&1 || : ; \
 	    $(MAKE) $(MAKE_FLAGS) MODNAME=$$a || \
 	      ( test -f remake && $(MAKE) $(MAKE_FLAGS) MODNAME=$$a ) \
