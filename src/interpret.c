@@ -68,6 +68,13 @@ struct svalue **mark_sp; /* Current position */
 struct svalue **mark_stack; /* Start of stack */
 int mark_stack_malloced = 0;
 
+#ifdef PROFILING
+#ifdef HAVE_GETHRTIME
+long long accounted_time =0;
+long long time_base =0;
+#endif
+#endif
+
 void push_sp_mark(void)
 {
   if(mark_sp == mark_stack + stack_size)
@@ -1792,7 +1799,6 @@ void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
   struct svalue *save_sp=sp-args;
 #ifdef PROFILING
 #ifdef HAVE_GETHRTIME
-  static long long accounted_time =0;
   long long children_base = accounted_time;
   long long start_time = gethrtime();
   unsigned INT32 self_time_base;
