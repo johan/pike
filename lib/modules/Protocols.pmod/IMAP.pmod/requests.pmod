@@ -480,9 +480,7 @@ class fetch
 	case "full":
 	  fetch_attrs = ({ ATTR("flags"), ATTR("internaldate"),
 			   ATTR_SECTION("rfc822", ({ "size" })),
-			   ATTR("envelope"),
-			   ([ "wanted" : "bodystructure",
-			      "no_extention_data" : 1 ]) });
+			   ATTR("envelope"), ATTR("body") });
 	  break;
 #undef ATTR
 #undef ATTR_SECTION
