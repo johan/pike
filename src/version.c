@@ -14,5 +14,5 @@ RCSID("$Id$");
 void f_version(INT32 args)
 {
   pop_n_elems(args);
-  push_text("Pike v0.6 release 37");
+  push_text("Pike v0.6 release 38");
 }
