@@ -446,7 +446,7 @@ PMOD_EXPORT DECLSPEC(noreturn) void debug_fatal(const char *fmt, ...) ATTRIBUTE(
  *!   description of an exception.
  *!
  *! @param exception
- *!   Something that was thrown. Usually an @[Error] object, or
+ *!   Something that was thrown. Usually an @[Error.Generic] object, or
  *!   an array with the following content:
  *!   @array
  *!     @elem string msg
@@ -469,7 +469,11 @@ PMOD_EXPORT DECLSPEC(noreturn) void debug_fatal(const char *fmt, ...) ATTRIBUTE(
 /*! @endclass
  */
 
-/*! @class Error
+/*! @module Error
+ */
+
+/*! @class Generic
+ *! Class for exception objects for errors of unspecified type.
  */
 
 #define ERR_DECLARE
@@ -636,6 +640,9 @@ static void f_error_create(INT32 args)
 }
 
 /*! @endclass
+ */
+
+/*! @endmodule
  */
 
 #ifdef ERROR_DEBUG
