@@ -126,6 +126,8 @@
 #define PIKE_XCONCAT3(X,Y,Z)	PIKE_CONCAT(X,Y,Z)
 #define PIKE_XCONCAT4(X,Y,Z,Q)	PIKE_CONCAT(X,Y,Z,Q)
 
+/* Useful to get a literal comma in an argument to a macro. */
+#define COMMA ,
 
 /* Needed for fsort_template.h */
 PMOD_EXPORT int my_log2(size_t x);
