@@ -90,7 +90,7 @@ string number(int num)
     return "minus "+number(-num);
   switch(num)
   {
-   case 0:  return "";
+   case 0:  return "zero";
    case 1:  return "one";
    case 2:  return "two";
    case 3:  return "three";
