@@ -269,6 +269,7 @@ static INT32 count_cases(node *n)
 static int do_docode2(node *n,int flags)
 {
   INT32 tmp1,tmp2,tmp3;
+  int ret;
 
   if(!n) return 0;
 
@@ -568,7 +569,8 @@ static int do_docode2(node *n,int flags)
   }
 
   case ' ':
-    return do_docode(CAR(n),0)+do_docode(CDR(n),DO_LVALUE);
+    ret = do_docode(CAR(n),0);
+    return ret + do_docode(CDR(n),DO_LVALUE);
 
   case F_FOREACH:
   {
@@ -978,7 +980,8 @@ static int do_docode2(node *n,int flags)
   }
 
   case F_LVALUE_LIST:
-    return do_docode(CAR(n),DO_LVALUE)+do_docode(CDR(n),DO_LVALUE);
+    ret = do_docode(CAR(n),DO_LVALUE);
+    return ret + do_docode(CDR(n),DO_LVALUE);
 
   case F_ARROW:
     if(CDR(n)->token != F_CONSTANT || CDR(n)->u.sval.type!=T_STRING)
@@ -1097,7 +1100,8 @@ static int do_docode2(node *n,int flags)
     return 1;
 
   case F_VAL_LVAL:
-    return do_docode(CAR(n),flags)+do_docode(CDR(n),flags | DO_LVALUE);
+    ret = do_docode(CAR(n),flags);
+    return ret + do_docode(CDR(n),flags | DO_LVALUE);
     
   default:
     fatal("Infernal compiler error (unknown parse-tree-token).\n");
