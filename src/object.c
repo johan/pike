@@ -23,7 +23,35 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "cyclic.h"
 
+#ifdef HAVE_SYS_FILE_H
+#include <sys/file.h>
+#endif /* HAVE_SYS_FILE_H */
+
 #include "dmalloc.h"
+
+
+#ifndef SEEK_SET
+#ifdef L_SET
+#define SEEK_SET	L_SET
+#else /* !L_SET */
+#define SEEK_SET	0
+#endif /* L_SET */
+#endif /* SEEK_SET */
+#ifndef SEEK_CUR
+#ifdef L_INCR
+#define SEEK_SET	L_INCR
+#else /* !L_INCR */
+#define SEEK_CUR	1
+#endif /* L_INCR */
+#endif /* SEEK_CUR */
+#ifndef SEEK_END
+#ifdef L_XTND
+#define SEEK_END	L_XTND
+#else /* !L_XTND */
+#define SEEK_END	2
+#endif /* L_XTND */
+#endif /* SEEK_END */
+
 
 struct object *master_object = 0;
 struct program *master_program =0;
