@@ -230,28 +230,6 @@ char *STRCHR(char *s,int c);
 #  endif
 #endif
 
-#ifndef HAVE_STRRCHR
-#  ifdef HAVE_RINDEX
-#    define STRRCHR(X,Y) ((char *)rindex(X,Y))
-#  else
-PMOD_EXPORT char *STRRCHR(char *s,int c);
-#  endif
-#else
-#  define STRRCHR strrchr
-#endif
-
-#ifndef HAVE_STRSTR
-PMOD_EXPORT char *STRSTR(char *s1,const char *s2);
-#else
-#  define STRSTR strstr
-#endif
-
-#ifndef HAVE_STRTOK
-PMOD_EXPORT char *STRTOK(char *s1,char *s2);
-#else
-#  define STRTOK strtok
-#endif
-
 #if !defined(HAVE_VFPRINTF) || !defined(HAVE_VSPRINTF) || !defined(HAVE_VSNPRINTF)
 #  include <stdarg.h>
 #endif
