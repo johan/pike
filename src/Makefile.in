@@ -464,8 +464,8 @@ TAGS:
 testsuites:
 	( cd modules && $(MAKE) $(MAKE_FLAGS) testsuites )
 	( cd post_modules && $(MAKE) $(MAKE_FLAGS) testsuites )
-	( $(TMP_BINDIR)/mklibtests.sh --srcdir=$(LIBDIR_SRC) \
-	  --destdir=$(TMP_BUILDDIR)/tlib --bindir=$(TMP_BINDIR) )
+	( cd $(TMP_BUILDDIR) && $(TMP_BINDIR)/mklibtests.sh --srcdir=$(LIBDIR_SRC) \
+	  --destdir=tlib --bindir=$(TMP_BINDIR) )
 
 just_verify: testsuites testsuite master-stamp
 	if test "x$(TESTARGS)" = x ; then args="-a -v" ; \
