@@ -1297,7 +1297,12 @@ typeof: F_TYPEOF '(' expr0 ')'
   {
     node *tmp;
     tmp=mknode(F_ARG_LIST,$3,0);
-    $$=mkstrnode(describe_type($3->type));
+    if($3 && $3->type)
+    {
+       $$=mkstrnode(describe_type($3->type));
+    }else{
+       $$=mkstrnode(describe_type(mixed_type_string));
+    }
     free_node(tmp);
   } ;
  
