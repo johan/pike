@@ -443,14 +443,6 @@ PMOD_EXPORT extern struct Pike_interpreter Pike_interpreter;
 #define Pike_thread_id Pike_interpreter.thread_id
 #endif
 
-#ifndef NO_PIKE_SHORTHAND
-
-/* Shouldn't this be in Pike_interpreter? - Hubbe */
-#define sp Pike_sp
-#define fp Pike_fp
-#define mark_sp Pike_mark_sp
-
-#endif /* !NO_PIKE_SHORTHAND */
 
 #define CURRENT_STORAGE (dmalloc_touch(struct pike_frame *,Pike_fp)->current_storage)
 
