@@ -19,7 +19,7 @@ constant raw_ecb_vt = #string "rijndael_ecb_vt.txt";
 int run_test(string raw, function(mapping(string:string):int) fun)
 {
   int fail;
-  foreach (replace(raw, "\r\n", "\n") / "\n\n", string segment) {
+  foreach (raw / "\n\n", string segment) {
     if (has_prefix(segment, "==") || !has_value(segment, "=")) continue;
     if (fun(aggregate_mapping(@(map(segment/"\n" - ({""}), `/, "=") *
 				({}))))) {
