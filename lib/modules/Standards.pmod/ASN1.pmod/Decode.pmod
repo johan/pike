@@ -15,7 +15,9 @@ import .Types;
 //! Primitive unconstructed ASN1 data type.
 class primitive
 {
+  //! @decl inherit Types.Object
   inherit Object;
+
   constant constructed = 0;
   int combined_tag;
 
@@ -50,7 +52,9 @@ class primitive
 //! constructed type
 class constructed
 {
+  //! @decl inherit Types.Object
   inherit Object;
+
   constant constructed = 1;
   int combined_tag;
 
