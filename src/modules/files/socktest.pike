@@ -125,12 +125,12 @@ void die()
 }
 
 int counter;
-
+int quiet;
 
 void got_callback()
 {
   counter++;
-  if(!(counter & 0xf))
+  if(!quiet && !(counter & 0xf))
     predef::write(sprintf("%c\b","|/-\\" [ (counter>>4) & 3 ]));
   remove_call_out(die);
   call_out(die,20);
@@ -369,6 +369,12 @@ void accept_callback()
 
 int main()
 {
+  string testargs=getenv()->TESTARGS;
+  if(testargs &&
+     (has_value(testargs/" ", "-q") ||
+      has_value(testargs/" ", "-quiet") ) )
+    quiet=1;
+
   if(!port1::bind(0, accept_callback))
   {
     werror("Bind failed. (%d)\n",port1::errno());
