@@ -726,7 +726,7 @@ void actually_send(struct send_args *a)
       len = 0;
     }
 
-    if ((off = tell(a->from_fd)) < 0) {
+    if ((off = lseek(a->from_fd, 0, SEEK_CUR)) < 0) {
       /* Probably a pipe, so sendfile() will probably fail anyway,
        * but it doesn't hurt to try...
        */
