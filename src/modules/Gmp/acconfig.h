@@ -8,6 +8,9 @@
 #ifndef GMP_MACHINE_H
 #define GMP_MACHINE_H
 
+@TOP@
+@BOTTOM@
+
 /* Define this to the prefix used by __MPN() (usually __mpn_ or __gmpn_). */
 #undef PIKE_MPN_PREFIX
 
@@ -28,5 +31,11 @@
 
 /* define this if INT_TYPE is bigger then signed long int */
 #undef BIG_PIKE_INT
+
+/* Define if your cpp supports the ANSI concatenation operator ## */
+#undef HAVE_ANSI_CONCAT
+
+/* Define if your cpp supports K&R-style concatenation */
+#undef HAVE_KR_CONCAT
 
 #endif

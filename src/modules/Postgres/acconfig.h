@@ -7,18 +7,9 @@
 
 #undef STDC_HEADERS
 
-/* Define if you have the <postgres.h> header file.  */
-#undef HAVE_POSTGRES_H
-/* Define if you have the <postgres_fe.h> header file.  */
-#undef HAVE_POSTGRES_FE_H
-/* Define if you have the <libpq-fe.h> header file.  */
-#undef HAVE_LIBPQ_FE_H
-/* Define if you have the pq library (-lpq).  */
-#undef HAVE_LIBPQ
-/* Define if you have the PQsetdbLogin function.  */
-#undef HAVE_PQSETDBLOGIN
-/* Define if you have the PGsetnonblocking function.  */
-#undef HAVE_PQSETNONBLOCKING
+@TOP@
+@BOTTOM@
+
 /* Define if we are running PostgreSQL 7.2 or newer */
 #undef HAVE_PG72
 

@@ -7,13 +7,8 @@
 
 #undef STDC_HEADERS
 
-#undef HAVE_MSQL_H
-
-#undef HAVE_LIBMSQL
-
-#undef HAVE_MSQLLISTINDEX
-
-#undef HAVE_PIKE_SVALUE_H
+@TOP@
+@BOTTOM@
 
 /* End of autoconfigurable section */
 #undef HAVE_MSQL
