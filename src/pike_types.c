@@ -240,6 +240,13 @@ void debug_free_type(struct pike_type *t)
     struct pike_type *car, *cdr;
     unsigned INT32 type;
 
+    /* PIKE_DEBUG code */
+    if (hash >= pike_type_hash_size) {
+      Pike_fatal("Modulo operation failed for hash:%u, index:%u, size:%u.\n",
+		 t->hash, hash, pike_type_hash_size);
+    }
+    /* End PIKE_DEBUG code */
+
     while (*t2) {
       if (*t2 == t) {
 	*t2 = t->next;
