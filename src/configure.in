@@ -940,6 +940,7 @@ AC_FUNC_MMAP
 
 AC_CHECK_FUNCS( \
  _crypt \
+ poll \
  bcopy \
  bzero \
  clock \
