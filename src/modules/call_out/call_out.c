@@ -421,9 +421,9 @@ static void mark_call_outs(struct callback *foo, void *bar, void *gazonk)
   int e;
   for(e=0;e<num_pending_calls;e++)
   {
-    gc_external_mark(CALL(e)->args);
+    gc_external_mark2(CALL(e)->args,0,"call out args");
     if(CALL(e)->caller)
-      gc_external_mark(CALL(e)->caller);
+      gc_external_mark2(CALL(e)->caller,0,"call out caller");
   }
 }
 #endif
