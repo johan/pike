@@ -1569,7 +1569,16 @@ void describe_mapping(struct mapping *m,struct processing *p,int indent)
     
       describe_svalue(ITEM(a)+e, indent+2, &doing);
       my_putchar(':');
-      if((tmp=low_mapping_lookup(m, ITEM(a)+e)))
+      
+      {
+	int save_t_flag=t_flag;
+	t_flag=0;
+	
+	tmp=low_mapping_lookup(m, ITEM(a)+e);
+	
+	t_flag=save_t_flag;
+      }
+      if(tmp)
 	describe_svalue(tmp, indent+2, &doing);
       else
 	my_strcat("** gone **");
