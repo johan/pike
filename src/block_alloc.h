@@ -247,6 +247,7 @@ void PIKE_CONCAT3(exit_,DATA,_hash)(void)				     \
   PIKE_CONCAT3(free_all_,DATA,_blocks)();				     \
   free(PIKE_CONCAT(DATA,_hash_table));					     \
   PIKE_CONCAT(DATA,_hash_table)=0;					     \
+  PIKE_CONCAT(num_,DATA)=0;						     \
 }
 
 #define BLOCK_ALLOC_NEXT next
