@@ -2,6 +2,8 @@
 #pike __REAL_VERSION__
 
 //!
+//! @fixme
+//!   Ought to have support for charset conversion.
 class OutputController
 {
   static private .File outfd;
@@ -128,10 +130,14 @@ class OutputController
     disable();
   }
 
-  //! Check the terminal width.
+  //! Check and return the terminal width.
+  //!
+  //! @note
+  //!   In Pike 7.4 and earlier this function returned @expr{void@}.
+  //!
   //! @seealso
   //!   @[get_number_of_columns]
-  void check_columns()
+  int check_columns()
   {
     catch {
       int c = outfd->tcgetattr()->columns;
@@ -140,6 +146,7 @@ class OutputController
     };
     if(!columns)
       columns = term->tgetnum("co") || 80;
+    return columns;
   }
 
   //! Returns the width of the terminal.
@@ -417,6 +424,8 @@ class OutputController
 }
 
 //!
+//! @fixme
+//!   Ought to have support for charset conversion.
 class InputController
 {
   static private object infd, term;
