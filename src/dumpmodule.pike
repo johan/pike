@@ -87,6 +87,9 @@ class Codec
       case "program":
 	if(p!=x)
 	{
+	  if (tmp = static_lookup[x]) {
+	    return "resolv:_static_modules."+tmp;
+	  }
 	  if(tmp = search(master()->programs,x))
 	  {
 	    if(has_suffix(tmp, ".pike"))
@@ -100,6 +103,9 @@ class Codec
 	break;
 
       case "object":
+	if (tmp = static_lookup[x]) {
+	  return "resolv:_static_modules."+tmp;
+	}
 	if(program p=search(master()->objects,x))
 	{
 	  if(tmp = search(master()->programs,p))
