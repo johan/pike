@@ -537,11 +537,11 @@ class FILE {
       return file::open_socket();
     }
 
-    object pipe()
+    object pipe(void|int flags)
     {
       bpos=0;
       b="";
-      return file::pipe();
+      return query_num_arg() ? file::pipe(flags) : file::pipe();
     }
 
     int assign(object foo)
