@@ -96,6 +96,9 @@ bin/pike: force
 install:
 	@$(MAKE) "METATARGET=install"
 
+just_verify:
+	@$(MAKE) $(MAKE_FLAGS) "METATARGET=just_verify"
+
 verify:
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=verify"
 
