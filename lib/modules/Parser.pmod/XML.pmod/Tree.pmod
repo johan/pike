@@ -1,3 +1,7 @@
+/*
+ * $Id$
+ *
+ */
 
 #define STOP_WALK  -1
 #define  XML_ROOT     0x0001
@@ -36,19 +40,10 @@ class AbstractNode {
   AbstractNode get_root()
   {
     AbstractNode  parent, node;
-
-#if TIMER	
-    __get_root += gauge {
-#endif
-  
-      parent = this_object();
-      while (node = parent->mParent)
-	parent = node;
-
-#if TIMER
-    };
-#endif
-
+    
+    parent = this_object();
+    while (node = parent->mParent)
+      parent = node;
     return (parent);
   }
 
