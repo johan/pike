@@ -3,7 +3,9 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
+#include "config.h"
 RCSID("$Id$");
 #include "array.h"
 #include "dynamic_buffer.h"
