@@ -15,7 +15,11 @@ RCSID("$Id$");
 
 /*! @decl string version()
  *!
- *! Report the version of Pike.
+ *! Report the version of Pike. Does the same as
+ *! @code
+ *! sprintf("Pike v%d.%d release %d", __REAL_VERSION__,
+ *!         __REAL_MINOR__, __REAL_BUILD__);
+ *! @endcode
  *!
  *! @seealso
  *!   @[__VERSION__], @[__MINOR__], @[__BUILD__],
