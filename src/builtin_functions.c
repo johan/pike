@@ -1510,6 +1510,9 @@ void f_glob(INT32 args)
     matches=0;
     for(i=0;i<a->size;i++)
     {
+      if(ITEM(a)[i].type != T_STRING)
+	error("Bad argument 2 to glob()\n");
+
       if(does_match(ITEM(a)[i].u.string->str,
 		    ITEM(a)[i].u.string->len,
 		    glob->str,
