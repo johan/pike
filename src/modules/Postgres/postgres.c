@@ -300,7 +300,7 @@ static void f_error (INT32 args)
 	check_all_args("Postgres->error",args,0);
 
 	if (THIS->last_error)
-		push_string(THIS->last_error);
+		ref_push_string(THIS->last_error);
 	else
 		push_int(0);
 	return;
