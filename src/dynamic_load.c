@@ -31,12 +31,16 @@ RCSID("$Id$");
 #define HAVE_SOME_DLOPEN
 #define EMULATE_DLOPEN
 #else
+
+#if 0
 #if defined(HAVE_LOADLIBRARY) && defined(HAVE_FREELIBRARY) && \
     defined(HAVE_GETPROCADDRESS) && defined(HAVE_WINBASE_H)
 #define USE_LOADLIBRARY
 #define HAVE_SOME_DLOPEN
 #define EMULATE_DLOPEN
 #endif
+#endif /* 0 */
+
 #endif
 #endif
 #else
