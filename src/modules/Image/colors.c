@@ -400,7 +400,7 @@ static void image_color_hsvf(INT32 args)
    if(r==max) h = (g-b)/delta;
    else if(g==max) h = 2+(b-r)/delta;
    else /*if(b==max)*/ h = 4+(r-g)/delta;
-   h *= 60; // now in degrees.
+   h *= 60; /* now in degrees. */
    if(h<0) h+=360;
 
    push_float(h);
