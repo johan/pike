@@ -881,7 +881,7 @@ void _main(string *orig_argv, string *env)
       ({"optimizer_debug",tmp->MAY_HAVE_ARG,"--optimizer-debug"}),
       ({"debug",tmp->MAY_HAVE_ARG,"--debug",0,1}),
       ({"trace",tmp->MAY_HAVE_ARG,"--trace",0,1}),
-      ({"ignore",tmp->MAY_HAVE_ARG,"-Dqdatpl",0,1}),
+      ({"ignore",tmp->MAY_HAVE_ARG,"-Dqdatplr",0,1}),
       ({"ignore",tmp->HAS_ARG,"-s"}),
     }), 1);
     
