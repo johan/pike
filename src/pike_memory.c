@@ -1477,6 +1477,10 @@ static struct memhdr *low_make_memhdr(void *p, int s, LOCATION location)
   unsigned long l=lhash(mh,location);
 
   mh->size=s;
+  mh->flags=0;
+#ifdef DMALLOC_AD_HOC
+  mh->misses=0;
+#endif
   mh->locations=ml;
   mh->gc_generation=gc_generation * 1000 + Pike_in_gc;
   ml->location=location;
