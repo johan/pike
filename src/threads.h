@@ -57,6 +57,19 @@ extern struct object *thread_id;
 
 
 #ifdef POSIX_THREADS
+
+#ifdef HAVE_PTHREAD_ATFORK
+#define th_atfork(X,Y,Z) pthread_atfork((X),(Y),(Z))
+#define th_atfork_prepare()
+#define th_atfork_parent()
+#define th_atfork_child()
+#else
+int th_atfork(void (*)(void),void (*)(void),void (*)(void));
+void th_atfork_prepare(void);
+void th_atfork_parent(void);
+void th_atfork_child(void);
+#endif
+
 #define THREAD_T pthread_t
 #define MUTEX_T pthread_mutex_t
 #define mt_init(X) pthread_mutex_init((X),0)

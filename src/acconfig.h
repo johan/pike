@@ -238,6 +238,9 @@
 /* Define if you have the pthread_attr_setstacksize function.  */
 #undef HAVE_PTHREAD_ATTR_SETSTACKSIZE
 
+/* Define if you have the pthread_atfork function.  */
+#undef HAVE_PTHREAD_ATFORK
+
 /* Define if you have the pthread_cond_init function.  */
 #undef HAVE_PTHREAD_COND_INIT
 

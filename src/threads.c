@@ -25,6 +25,37 @@ COND_T live_threads_change;
 COND_T threads_disabled_change;
 size_t thread_stack_size=1024 * 1204;
 
+#ifndef HAVE_PTHREAD_ATFORK
+#include "callback.h"
+
+static struct callback_list atfork_prepare_callback;
+static struct callback_list atfork_parent_callback;
+static struct callback_list atfork_child_callback;
+
+int th_atfork(void (*prepare)(void),void (*parent)(void),void (*child)(void))
+{
+  if(prepare)
+    add_to_callback(&atfork_prepare_callback, (callback_func) prepare, 0, 0);
+  if(parent)
+    add_to_callback(&atfork_parent_callback, (callback_func) parent, 0, 0);
+  if(child)
+    add_to_callback(&atfork_child_callback, (callback_func) child, 0, 0);
+  return 0;
+}
+void th_atfork_prepare(void)
+{
+  call_callback(& atfork_prepare_callback, 0);
+}
+void th_atfork_parent(void)
+{
+  call_callback(& atfork_parent_callback, 0);
+}
+void th_atfork_child(void)
+{
+  call_callback(& atfork_child_callback, 0);
+}
+#endif
+
 #ifdef __NT__
 
 int low_nt_create_thread(unsigned stack_size,
