@@ -1367,8 +1367,16 @@ int main(int argc, char **argv)
         AC_MSG_RESULT(no)
       else
         AC_MSG_RESULT(yes)
-        CFLAGS="${CFLAGS} -pthread"
-        LD_FALLBACK_FLAGS="${LD_FALLBACK_FLAGS-} -lc_r"
+
+        AC_PATH_PROG(PTHREAD_CONFIG,pthread-config,no)
+        if [ "x$PTHREAD_CONFIG" = xno ]; then
+          CFLAGS="${CFLAGS} -pthread"
+          LD_FALLBACK_FLAGS="${LD_FALLBACK_FLAGS-} -lc_r"
+        else
+          CFLAGS="$CFLAGS `pthread-config --cflags`"
+          LIBS="$LIBS `pthread-config --libs`"
+          LDFLAGS="$CFLAGS `pthread-config --ldflags`"
+        fi
       fi
     ;;
 
