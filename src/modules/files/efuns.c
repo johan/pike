@@ -826,7 +826,6 @@ void f_get_dir(INT32 args)
   struct svalue *save_sp=sp;
   DIR *dir;
   struct dirent *d;
-  struct array *a=0;
   struct pike_string *str;
 
   VALID_FILE_IO("get_dir","read");
@@ -868,6 +867,8 @@ void f_get_dir(INT32 args)
       closedir(dir);
       Pike_error("get_dir(): Out of memory\n");
     }
+
+    BEGIN_AGGREGATE_ARRAY(10);
 
     while(1)
     {
@@ -975,17 +976,23 @@ void f_get_dir(INT32 args)
 	push_string(make_shared_binary_string(d->d_name,NAMLEN(d)));
       else
 	break;
+      DO_AGGREGATE_ARRAY(120);
     }
     THREADS_ALLOW();
     free(tmp);
     closedir(dir);
     THREADS_DISALLOW();
-    a = aggregate_array(DO_NOT_WARN((INT32)(sp - save_sp)));
+
+    END_AGGREGATE_ARRAY;
+
+    stack_pop_n_elems_keep_top(args);
   }
 #else
   dir = opendir(str->str);
   if(dir)
   {
+    BEGIN_AGGREGATE_ARRAY(10);
+
     for(d=readdir(dir); d; d=readdir(dir))
     {
       /* Filter "." and ".." from the list. */
@@ -995,17 +1002,19 @@ void f_get_dir(INT32 args)
 	if(d->d_name[1]=='.' && NAMLEN(d)==2) continue;
       }
       push_string(make_shared_binary_string(d->d_name, NAMLEN(d)));
+
+      DO_AGGREGATE_ARRAY(120);
     }
     closedir(dir);
-    a=aggregate_array(sp-save_sp);
+    END_AGGREGATE_ARRAY;
+
+    stack_pop_n_elems_keep_top(args);
   }
 #endif
-
-  pop_n_elems(args);
-  if(a)
-    push_array(a);
-  else
+  else {
+    pop_n_elems(args);
     push_int(0);
+  }
 }
 
 /*! @decl int cd(string s)
