@@ -243,9 +243,10 @@ struct svalue
 /* Max type handled by svalue primitives */
 #define MAX_TYPE PIKE_T_FLOAT
 
-#define NUMBER_NUMBER 0
-#define NUMBER_UNDEFINED 1
+#define NUMBER_NUMBER     0
+#define NUMBER_UNDEFINED  1
 #define NUMBER_DESTRUCTED 2
+#define NUMBER_LOCKED     USHRT_MAX	/* NOTE: Kludge, only in Pike 7.4. */
 
 #define FUNCTION_BUILTIN USHRT_MAX
 
