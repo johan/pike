@@ -131,11 +131,15 @@ string number(int num)
      return number(num/100)+" hundred and "+number(num%100);
    case 1001..1099:
      return number(num/1000)+" thousand and "+number(num%1000);
-   case 1000: case 1100..999999:
+   case 1000:
+     return "one thousand";
+   case 1100..999999:
      return number(num/1000)+" thousand "+number(num%1000);
    case 1000001..1000099:
      return number(num/1000000)+" million and "+number(num%1000000);
-   case 1000000: case 1000100..999999999:
+   case 1000000:
+     return "one million";
+   case 1000100..999999999:
      return number(num/1000000)+" million "+number(num%1000000);
    default:
     return "many";
