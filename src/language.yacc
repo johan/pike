@@ -1775,7 +1775,7 @@ low_idents: F_IDENTIFIER
     for(e=1;e<(int)new_program->num_inherits;e++)
     {
       if(new_program->inherits[e].inherit_level!=1) continue;
-      i=low_reference_inherited_identifier(0,e,$2->u.sval.u.string);
+      i=low_reference_inherited_identifier(0,e,$2->u.sval.u.string,SEE_STATIC);
       if(i==-1) continue;
       if($$)
       {
