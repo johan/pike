@@ -6,7 +6,7 @@
 **!	$Id$
 **! submodule PNM
 **!
-**!	This submodule keep the PNM encode/decode capabilities
+**!	This submodule keeps the PNM encode/decode capabilities
 **!	of the <ref>Image</ref> module.
 **!
 **!	PNM is a common image storage format on unix systems,

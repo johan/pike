@@ -2364,7 +2364,7 @@ void image_colortable_full(INT32 args)
 **!	of your colortable; a large number (10×10×10 or bigger)
 **!	of cubicles is recommended when you use the colortable
 **!	repeatedly, since the calculation takes much
-**!	more time then usage.
+**!	more time than usage.
 **!
 **!	recommended values:
 **!
@@ -2406,7 +2406,7 @@ void image_colortable_full(INT32 args)
 **!
 **! note
 **!     this method doesn't figure out the cubicles, this is 
-**!     done on the first use of the colortable
+**!     done on the first use of the colortable.
 **!
 **!     Not applicable to colorcube types of colortable.
 **/
