@@ -23,11 +23,17 @@ void expire(Cache.Storage storage) {
   string key=storage->first();
   while (key) {
     Cache.Data got=storage->get(key,1);
-    werror(sprintf("examining '%s' (age: %d, e: %d, v: %f)\n",
-                   key, now-got->atime, got->etime, got->cost));
+    if (!objectp(got)) {
+      //if got==0, there must have been some
+      //dependents acting. This is kludgy... :-(
+      key=storage->next();
+      continue;
+    }
     if (got->atime < limit ||
         (got->etime && got->etime < now) ) {
-      werror("deleting\n");
+      werror("deleting %s (age: %d, now: %d, etime: %d)\n",
+             key, now - got->atime, 
+             now, got->etime);
       storage->delete(key);
     }
     key=storage->next();

@@ -30,7 +30,8 @@ int(0..0)|string next() {
 // on the backend. This allows the storage managers to have their own
 // Data class implementation.
 void set(string key, mixed value,
-         void|int max_life, void|float preciousness) {
+         void|int max_life, void|float preciousness, 
+         void|multiset(string) dependants) {
   T();
 }
 
@@ -54,6 +55,7 @@ void aget(string key,
 // deletes some entry from the cache.
 // returns the deleted entry.
 // if hard==1, some backends may force a destruct() on the deleted value
+// dependants (if present) are automatically deleted.
 void delete(string key, void|int(0..1) hard) {
   T();
 }
