@@ -333,7 +333,7 @@
 	return 1;
       }
 
-      default:
+      default:;
 #ifdef PIKE_DEBUG
 	Pike_fatal("Unknown identifier type.\n");
 #endif

@@ -1405,7 +1405,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 		  pop_stack();
 		  break;
 
-		default:
+		default:;
 #ifdef PIKE_DEBUG
 		  Pike_fatal ("Unknown identifier type.\n");
 #endif

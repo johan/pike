@@ -1095,7 +1095,7 @@ PMOD_EXPORT void low_object_index_no_free(struct svalue *to,
     break;
   }
 
-  default:
+  default:;
 #ifdef PIKE_DEBUG
     Pike_fatal ("Unknown identifier type.\n");
 #endif
