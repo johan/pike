@@ -119,6 +119,9 @@ struct timeval;
 #endif
 
 /* Warning, these run 'C' more than once */
+/* FIXME: Is it that great that every wide char is considered an
+ * identifier char? Doesn't strike me as very unicode compliant.
+ * isalnum, isdigit and islower also look seriously borken. /mast */
 #define WIDE_ISSPACE(C)	(((C) < 256)?ISSPACE(C):0)
 #define WIDE_ISIDCHAR(C) (((C) < 256)?isidchar(C):1)
 #define WIDE_ISALNUM(C)	(((C) < 256)?isalnum(C):0)
