@@ -1166,8 +1166,10 @@ int main(int argc, array(string) argv)
         dumpfile(file, 0, 0, filename);
         found=1;
         break;
+      } else {
+	werror("WARNING: Failed to read library file: %O (errno:%d).\n",
+	       filename, errno());
       }
-      
     }
     if(!found)
     {
