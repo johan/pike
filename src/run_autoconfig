@@ -87,7 +87,7 @@ if [ "`echo \"$autoconf_version\"|awk -F. '{ print $1 }'`" -ne "2" -o \
     if [ "`echo \"$autoconf_version\"|awk -F. '{ print $2 }'`" -le "53" ]; then
       # autoconf 2.53 doesn't have --prepend-include.
       ac_args="-Wno-obsolete --include=$localdir"
-      ah_args="-Wno-obsolete --include=$localdir"
+      ah_args="--include=$localdir"
     else
       ac_args="-Wno-obsolete --prepend-include=$localdir"
       ah_args="-Wno-obsolete --prepend-include=$localdir"
