@@ -1587,6 +1587,7 @@ static void debug_dump_rb_tree (struct rb_node_hdr *tree, dump_data_fn *dump_dat
     }, {			/* Pop. */
       fputc (')', stderr);
     skip_node:
+      ;
     });
     fputc ('\n', stderr);
   }
