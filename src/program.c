@@ -2642,7 +2642,7 @@ INT32 define_function(struct pike_string *name,
 
       funp->identifier_flags=function_flags;
 
-      funp->opt_flags = opt_flags;
+      funp->opt_flags &= opt_flags;
 
       free_string(funp->type);
       copy_shared_string(funp->type, type);
