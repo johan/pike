@@ -220,9 +220,8 @@ void reparse_uri(object(this_program)|string|void base_uri)
 
   // Parse query information
   sscanf(uri, "%s?%s", uri, query);
-  if(query && !sizeof(query)) query = 0;
   debug("Found query %O", query);
- 
+
   // Parse path:
   path = uri;						
   debug("Found path %O", path);
