@@ -6984,6 +6984,14 @@ test_equal([[ (mapping)({})]], [[ ([]) ]])
 test_equal([[ ({}) ]], [[ (array)([]) ]])
 test_eval_error([[ mapping m=(mapping)({ ({1,2,3}), ({4,5,6}) }); ]])
 
+test_any([[
+  object x = class {
+      mixed cast (string t) {return t == "string" && "foo";}
+    }();
+  destruct (x);
+  return (string) x;
+]], "0")
+
 // testing @
 test_equal(({1,2,3}),lambda(mixed ... x) { return x; }(@a()))
 test_equal("foo"/"",lambda(mixed ... x) { return x; }(@a()))
