@@ -464,8 +464,8 @@ PIKECLASS Shuffle
 
     if( sent < 0 )
     {
-      _all_done( t, 1 );
       _give_back( t, amount );
+      _all_done( t, 1 );
       return;
     }
     if( sent )
