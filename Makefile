@@ -296,6 +296,13 @@ depend: configure
 	  else exit $$res; fi; \
 	} || exit $$?
 
+#! Creates tags files src/TAGS (C-level methods) and lib/modules/TAGS
+#! (pike-level methods). The typical use case for an etags file is finding the
+#! file and line where a class or method was defined. This feature is by
+#! default bound to the keyboard sequence Meta-. in emacs.
+#! @note
+#!   Finding C-level methods isn't trivial even with the src/TAGS table loaded;
+#!   this make target could use some improvement.
 pikefun_TAGS:
 	cd src && etags -l none -r \
 	'/[ 	]*\(PMOD_PROTO \|PMOD_EXPORT \|static \|extern \)*void[ 	]\{1,\}f_\([a-zA-Z0-9_]*\)[ 	]*([ 	]*INT32/\2/' \
