@@ -662,13 +662,6 @@ static void sf_create(INT32 args)
       SIMPLE_BAD_ARG_ERROR("sendfile", 2, "object(Stdio.File)");
     }
     sf.from_fd = sf.from->fd;
-    /* Fix offset */
-    if (sf.offset < 0) {
-      sf.offset = fd_lseek(sf.from_fd, 0, SEEK_CUR);
-      if (sf.offset < 0) {
-	sf.offset = 0;
-      }
-    }
   }
 
   /* Do some extra arg checking */
@@ -765,6 +758,14 @@ static void sf_create(INT32 args)
       /* set_blocking */
       set_nonblocking(sf.from_fd, 0);
       sf.from->open_mode &= ~FILE_NONBLOCKING;
+
+      /* Fix offset */
+      if (sf.offset < 0) {
+	sf.offset = fd_lseek(sf.from_fd, 0, SEEK_CUR);
+	if (sf.offset < 0) {
+	  sf.offset = 0;
+	}
+      }
     }
     /* set_blocking */
     set_nonblocking(sf.to_fd, 0);
