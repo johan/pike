@@ -1217,6 +1217,9 @@ void make_wix()
   Directory root = Directory("SourceDir",
 			     Standards.UUID.UUID(version_guid)->encode(),
 			     "TARGETDIR");
+  /* Workaround for bug in light. */
+  root->extra_ids["PIKE_TARGETDIR"] = 1;
+
   root->merge_module(".", "Pike_module.msm", "Pike", "TARGETDIR");
 
   string title = 
