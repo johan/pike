@@ -16,6 +16,8 @@
 #define QUANT_SELECT_CACHE 6
 
 #define COLORTYPE unsigned char
+#define COLORSIZE 1
+#define COLORMAX 255
 
 #define FS_SCALE 1024
 
