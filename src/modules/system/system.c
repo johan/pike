@@ -35,6 +35,7 @@ RCSID("$Id$");
 #include "constants.h"
 #include "pike_memory.h"
 #include "security.h"
+#include "bignum.h"
 
 /* The sp macro conflicts with Solaris 2.5.1's <sys/conf.h>. */
 #ifdef sp
