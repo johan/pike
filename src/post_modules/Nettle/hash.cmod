@@ -145,7 +145,7 @@ PIKECLASS HashInfo
     optflags OPT_EXTERNAL_DEPEND;
     {
     void *ctx;
-    int len;
+    int len, fd;
     char *read_buffer;
     PIKE_STAT_T st;
     struct pike_string *out;
@@ -172,7 +172,7 @@ PIKECLASS HashInfo
       Pike_error("Object not Fd_ref or subclass.\n");
 
     safe_apply(in, "query_fd", 0);
-    int fd = Pike_sp[-1].u.integer;
+    fd = Pike_sp[-1].u.integer;
     pop_stack();
 
     if (fd_fstat(fd, &st)<0)
