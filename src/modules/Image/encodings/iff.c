@@ -18,13 +18,14 @@ RCSID("$Id$");
 /* MUST BE INCLUDED LAST */
 #include "module_magic.h"
 
-static INT32 low_parse_iff(unsigned char *data, INT32 len, unsigned char *hdr,
-			   struct mapping *m, unsigned char *stopchunk)
+static ptrdiff_t low_parse_iff(unsigned char *data, ptrdiff_t len,
+			       unsigned char *hdr,
+			       struct mapping *m, unsigned char *stopchunk)
 {
-  INT32 clen;
+  ptrdiff_t clen;
   clen = (EXTRACT_CHAR(hdr+4)<<24)|(hdr[5]<<16)|(hdr[6]<<8)|hdr[7];
 
-  if(clen==-1)
+  if((clen & 0xffffffff) == 0xffffffff)
     clen = len;
   else {
     if(!memcmp(hdr, "FORM", 4))
@@ -36,9 +37,10 @@ static INT32 low_parse_iff(unsigned char *data, INT32 len, unsigned char *hdr,
   }
 
   if((!memcmp(hdr, "FORM", 4)) || (!memcmp(hdr, "LIST", 4))) {
-    INT32 pos=0;
+    ptrdiff_t pos=0;
     while(pos+8 <= clen) {
-      INT32 l = low_parse_iff(data+pos+8, clen-pos-8, data+pos, m, stopchunk);
+      ptrdiff_t l = low_parse_iff(data+pos+8, clen-pos-8, data+pos,
+				  m, stopchunk);
       if(!l)
 	return 0;
       pos += l+8;
@@ -54,7 +56,7 @@ static INT32 low_parse_iff(unsigned char *data, INT32 len, unsigned char *hdr,
   return clen + (clen & 1);
 }
 
-void parse_iff(char *id, unsigned char *data, INT32 len,
+void parse_iff(char *id, unsigned char *data, ptrdiff_t len,
 	       struct mapping *m, char *stopchunk)
 {
   if(len<12 || memcmp("FORM", data, 4))

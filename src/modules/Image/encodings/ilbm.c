@@ -95,7 +95,7 @@ static void image_ilbm___decode(INT32 args)
    struct pike_string *str;
    struct mapping *m;
    int n;
-   extern void parse_iff(char *, unsigned char *, INT32,
+   extern void parse_iff(char *, unsigned char *, ptrdiff_t,
 			 struct mapping *, char *);
 
    get_all_args("__decode", args, "%S", &str);
