@@ -152,9 +152,9 @@ void create(void|string|object host, void|string db,
       }
       arr = host/"/";
       if (sizeof(arr) > 1) {
+	host = arr[..sizeof(arr)-2]*"/";
 	if (!db) {
 	  db = arr[-1];
-	  host = arr[..sizeof(arr)-2]*"/";
 	}
       }
     }
