@@ -102,7 +102,6 @@ RCSID("$Id$");
 #define LOG_PERROR 0
 #endif
 
-/* openlog(string ident, int option, int facility) */
 /*! @decl void openlog(string ident, int options, facility)
  *!
  *! Initializes the connection to syslogd.
