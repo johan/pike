@@ -2629,7 +2629,8 @@ void test()
 
   Process.Process writer = Process.create_process (
     ({master()->_pike_file_name,
-      "-m" + master()->_master_file_name,
+      @(master()->_master_file_name ?
+	({"-m" + master()->_master_file_name}) : ({})),
       "-e",
       sprintf ("sleep (0.5); "
 	       "Stdio.File f = Stdio.File (%O, \"w\"); "
