@@ -613,6 +613,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
 	  code_number(p->inherits[d].inherit_level,data);
 	  code_number(p->inherits[d].identifier_level,data);
 	  code_number(p->inherits[d].parent_offset,data);
+	  code_number(p->inherits[d].parent_identifier,data);
 	  code_number(p->inherits[d].storage_offset,data);
 
 	  if(p->inherits[d].parent)
@@ -1433,6 +1434,7 @@ static void decode_value2(struct decode_data *data)
 	    decode_number(p->inherits[d].inherit_level,data);
 	    decode_number(p->inherits[d].identifier_level,data);
 	    decode_number(p->inherits[d].parent_offset,data);
+	    decode_number(p->inherits[d].parent_identifier,data);
 	    decode_number(p->inherits[d].storage_offset,data);
 
 	    decode_value2(data);
