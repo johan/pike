@@ -21,6 +21,9 @@ src/configure: src/configure.in
 	cd src && ./run_autoconfig . 2>&1 | grep -v warning
 	-@(cd "$(BUILDDIR)" && rm -f Makefile .prefix-h)
 
+force_configure:
+	cd src && ./run_autoconfig . 2>&1 | grep -v warning
+
 configure: src/configure
 	@builddir="$(BUILDDIR)"; \
 	srcdir=`pwd`/src; \
