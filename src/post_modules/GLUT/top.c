@@ -40,4 +40,3 @@ void pike_module_init( void )
 void pike_module_exit( void )
 {
 }
-
