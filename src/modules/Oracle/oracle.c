@@ -983,9 +983,6 @@ static void push_inout_value(struct inout *inout)
       case SQLT_ODT:
       case SQLT_DAT:
 	ref_push_object(nulldate_object);
-	push_object(low_clone(Date_program));
-	call_c_initializers(Pike_sp[-1].u.object);
-	((struct dbdate *)STORAGE(Pike_sp[-1].u.object))->date = inout->u.date;
 	break;
 	
       case SQLT_NUM:
