@@ -2006,13 +2006,20 @@ fi
 
 ########################################################################
 
+# NOTE: The following test is hardcoded to fail when crosscompiling
+# It also clobbers $LIBOBJS.
+
+OLD_LIBOBJS="${LIBOBJS}"
+
 AC_FUNC_MEMCMP
 
-if test "${OLD_LIBOBJS}" = "${LIBOBJS}" ; then
+if test "x$ac_cv_func_memcmp_clean" = "xyes"; then
   AC_DEFINE(HAVE_MEMCMP)
 fi
 
 LIBOBJS="${OLD_LIBOBJS}"
+
+########################################################################
 
 AC_FUNC_MMAP
 
@@ -2532,8 +2539,6 @@ if test "x$ac_cv_func_ualarm" = "xyes"; then
     AC_MSG_RESULT(1)
   fi
 fi
-
-OLD_LIBOBJS="${LIBOBJS}"
 
 ########################################################################
 AC_MSG_CHECKING(stack direction)
