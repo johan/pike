@@ -1650,6 +1650,18 @@ node *make_node_from_mapping(struct mapping *m)
   }
 }
 
+/*! @decl mapping aggregate_mapping(mixed ... elems)
+ *!
+ *! Construct a mapping.
+ *!
+ *! Groups the arguments together two and two in key-index pairs and
+ *! creates a mapping of those pairs. An alternative and more preferrable
+ *! syntax is:
+ *! @code{([ key1:val1, key2:val2, ... ])@}
+ *!
+ *! @seealso
+ *!   @[sizeof()], @[mappingp()], @[mkmapping()]
+ */
 PMOD_EXPORT void f_aggregate_mapping(INT32 args)
 {
   INT32 e;

@@ -295,6 +295,17 @@ node * make_node_from_multiset(struct multiset *l)
   }
 }
 
+/*! @decl multiset aggregate_multiset(mixed ... elems)
+ *!
+ *! Construct a multiset.
+ *!
+ *! Construct a multiset with the arguments as indices.
+ *! An alternative and more preferrable syntax is:
+ *! @code{(< elem1, elem2, ... >)@}
+ *!
+ *! @seealso
+ *!   @[sizeof()], @[multisetp()], @[mkmultiset()]
+ */
 PMOD_EXPORT void f_aggregate_multiset(INT32 args)
 {
   struct multiset *l;
