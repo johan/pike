@@ -40,7 +40,10 @@ dummy:	linker_options modlist_headers modlist_segment module.pmod module.a
 	if test x$$tmp = x ; then tmp="$(MODNAME)"; else :; fi ;\
 	$(TMP_BINDIR)/install_module module.pmod $(TMP_LIBDIR)/modules/$$tmp.pmod
 
-.SUFFIXES: .c .o
+.SUFFIXES: .c .o .cmod
+
+.cmod.c:
+	$(BUILD_BASE)/precompile.sh $(TMP_BINDIR)/precompile.pike >"$@" "$<" || { rm "$@"; exit 1; }
 
 # GCC dumps core on some files @ OSF1
 # This kluge should work around that...
