@@ -1325,6 +1325,7 @@ void pike_module_init(void)
     MPZ_DEFS();
 
     id=add_program_constant("bignum", bignum_program=end_program(), 0);
+    bignum_program->flags |= PROGRAM_NO_WEAK_DESTRUCT|PROGRAM_NO_EXPLICIT_DESTRUCT;
     
     /* Alert bignum.c that we have been loaded /Hubbe */
     gmp_library_loaded=1;
