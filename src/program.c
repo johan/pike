@@ -5536,14 +5536,8 @@ void my_yyerror(char *fmt,...)  ATTRIBUTE((format(printf,1,2)))
 {
   va_list args;
   char buf[8192];
-
   va_start(args,fmt);
-
   VSNPRINTF (buf, sizeof (buf), fmt, args);
-
-  if((size_t)strlen(buf) >= (size_t)sizeof(buf))
-    Pike_fatal("Buffer overflow in my_yyerror.\n");
-
   yyerror(buf);
   va_end(args);
 }
