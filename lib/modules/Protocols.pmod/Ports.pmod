@@ -1356,6 +1356,7 @@ constant tcp = ([
   "unicall":         4343,	//   UNICALL
   "krb524":          4444,	//   KRB524
   "rfa":             4672,	//   remote file access server
+  "lyskom":          4894,	//   LysKOM (Lysator Academic Computer Society)
   "commplex-main":   5000,	//
   "commplex-link":   5001,	//
   "rfe":             5002,	//   radio free ethernet
@@ -1397,4 +1398,3 @@ constant tcp = ([
   "man":             9535,	//
   "isode-dua":      17007,	//
 ]);
-
