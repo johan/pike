@@ -563,6 +563,23 @@ int(1..1) logout()
    return 1;
 }
 
+//! method object new_text(string subject,string body)
+//! method object new_text(string subject,string body,object|array(object) mottagare,object|array(object) comment_to,object|array(object) footnote_to,multiset flags)
+//! method void new_text(string subject,string body,object|array(object) mottagare,object|array(object) comment_to,object|array(object) footnote_to,multiset flags,function callback,mixed ...extra)
+//! 	Creates a new text. 
+//!
+//! 	if "callback" are given, this function will be called when the text 
+//! 	is created.
+
+object|void new_text(string subject,string body,
+		     object|array(object) mottagare,
+		     object|array(object) comment_to,
+		     object|array(object) footnote_to,
+		     multiset flags,
+		     function callback,
+		     mixed ...extra)
+{
+}
 
 /*
 
