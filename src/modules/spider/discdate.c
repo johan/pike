@@ -152,7 +152,7 @@ static void print(struct disc_time tick)
 { 
   if (tick.day==-1) 
   {
-    push_string(make_shared_string("St. Tib's Day!"));
+    push_text("St. Tib's Day!");
   } else { 
     static char foo[10000], *e;
     sprintf(foo, "%s, the %d%s day of %s",
@@ -160,15 +160,15 @@ static void print(struct disc_time tick)
 	    e=ending(tick.day),seasons[tick.season]);
     free(e);
     tick.day++;
-    push_string(make_shared_string(foo));
+    push_text(foo);
   }
   push_int(tick.year);
   if ((tick.day==5)||(tick.day==50))
   { 
     if (tick.day==5)
-      push_string(make_shared_string(holidays[tick.season][0]));
+      push_text(holidays[tick.season][0]);
     else
-      push_string(make_shared_string(holidays[tick.season][1]));
+      push_text(holidays[tick.season][1]);
   } else {
     push_int(0);
   }

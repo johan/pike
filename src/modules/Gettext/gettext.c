@@ -186,7 +186,7 @@ void f_textdomain(INT32 args)
   }
   returnstring = textdomain(domain);
   pop_n_elems(args);
-  push_string(make_shared_string(returnstring));
+  push_text(returnstring);
 }
 
 /*! @decl string bindtextdomain(string|void domainname, string|void dirname)
@@ -240,7 +240,7 @@ void f_bindtextdomain(INT32 args)
   if(returnstring == NULL)
     push_int(0);
   else 
-    push_string(make_shared_string(returnstring));
+    push_text(returnstring);
 }
 
 /*! @decl int setlocale(int category, string locale)

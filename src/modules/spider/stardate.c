@@ -140,7 +140,7 @@ void f_stardate (INT32 args)
   sprintf (fmt, OUTPUTFORMAT, precis + 6, precis);
   sprintf (buf, fmt, (double) jd + gmst / 24.0);
   pop_n_elems(args);
-  push_string(make_shared_string(buf));
+  push_text(buf);
 }
 
 /*! @endmodule

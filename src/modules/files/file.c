@@ -3238,7 +3238,7 @@ static void file_query_address(INT32 args)
 #endif
   sprintf(buffer+strlen(buffer)," %d",(int)(ntohs(addr.ipv4.sin_port)));
 
-  push_string(make_shared_string(buffer));
+  push_text(buffer);
 }
 
 /*! @decl Stdio.File `<<(string data)

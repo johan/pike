@@ -1082,7 +1082,7 @@ void f_getcwd(INT32 args)
   }
 
   pop_n_elems(args);
-  push_string(make_shared_string(e));
+  push_text(e);
   free(e);
 }
 
@@ -1182,7 +1182,7 @@ void f_exece(INT32 args)
     for(e=0;e<i->size;e++)
     {
       push_string(ITEM(i)[e].u.string);
-      push_string(make_shared_string("="));
+      push_constant_text("=");
       push_string(ITEM(v)[e].u.string);
       f_add(3);
       env[e]=sp[-1].u.string->str;

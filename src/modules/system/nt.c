@@ -216,7 +216,7 @@ static void push_regvalue(DWORD type, char* buffer, DWORD len)
 				 DO_NOT_WARN((DWORD)(sizeof(buffer)-len-1)));
       if(type>sizeof(buffer)-len-1 || !type)
 	Pike_error("RegGetValue: Failed to expand data.\n");
-      push_string(make_shared_string(buffer+len));
+      push_text(buffer+len);
       break;
       
     case REG_MULTI_SZ:
@@ -257,6 +257,7 @@ static const HKEY hkeys[] = {
   HKEY_LOCAL_MACHINE,
   HKEY_CURRENT_USER,
   HKEY_USERS,
+  /* HKEY_CURRENT_CONFIG */
 };
 
 /*! @decl string|int|array(string) RegGetValue(int hkey, string key, @
@@ -3432,7 +3433,7 @@ static void f_sctx_getusername(INT32 args)
     return;
   }
 
-  push_string(make_shared_string(name.sUserName));
+  push_text(name.sUserName);
 
   freecontextbuffer(name.sUserName);
 }
@@ -3458,8 +3459,8 @@ static void f_sctx_getlasterror(INT32 args)
                 NULL 
                 );
   sprintf(buf, "0x%04x: ", sctx->lastError);
-  push_string(make_shared_string(buf));
-  push_string(make_shared_string(lpMsgBuf));
+  push_text(buf);
+  push_text(lpMsgBuf);
   f_add(2);
   LocalFree(lpMsgBuf);
 }

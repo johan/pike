@@ -322,7 +322,7 @@ void image_gif_header_block(INT32 args)
 void image_gif_end_block(INT32 args)
 {
    pop_n_elems(args);
-   push_string(make_shared_string("\x3b"));
+   push_constant_text("\x3b");
 }
 
 /*

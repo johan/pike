@@ -322,14 +322,14 @@ void img_tim_decode(INT32 args, int header_only)
 static void image_tim_f_decode(INT32 args)
 {
    img_tim_decode(args,0);
-   push_string(make_shared_string("image"));
+   push_constant_text("image");
    f_index(2);
 }
 
 static void image_tim_f_decode_alpha(INT32 args)
 {
    img_tim_decode(args,0);
-   push_string(make_shared_string("alpha"));
+   push_constant_text("alpha");
    f_index(2);
 }
 
