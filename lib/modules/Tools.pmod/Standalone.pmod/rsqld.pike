@@ -330,6 +330,10 @@ class Server
     servsock = Stdio.Port();
     if(!servsock->bind(@({port, accept_callback})+(ip? ({ip}):({}))))
       throw(({"Failed to bind port "+port+".\n", backtrace()}));
+    if(ip)
+      write("RSQL available on port %d on %s.\n", port, ip);
+    else
+      write("RSQL available on port %d.\n", port);
   }
 }
 
