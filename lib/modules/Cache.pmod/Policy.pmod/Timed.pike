@@ -5,6 +5,8 @@
  * $Id$
  */
 
+//! An access-time-based expiration policy manager.
+
 #pike __REAL_VERSION__
 
 //TODO: use the preciousness somehow.

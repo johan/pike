@@ -9,6 +9,15 @@
 
 #pike __REAL_VERSION__
 
+//! Base class for cache expiration policies.
+
+//! Expire callback.
+//!
+//!   This function is called to expire parts
+//!   of @[storage].
+//!
+//! @note
+//!   All Storage.Policy classes must MUST implement this method.
 void expire(Cache.Storage.Base storage) {
   throw("Override this!");
 }

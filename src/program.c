@@ -6907,6 +6907,13 @@ void init_program(void)
   debug_malloc_touch(Pike_compiler->fake_object->storage);
   pike_trampoline_program=end_program();
 
+  /*! @decl constant __null_program
+   *!
+   *! Program used internally by the compiler.
+   *!
+   *! @seealso
+   *!   @[__placeholder_object]
+   */
   {
     struct svalue s;
     start_new_program();
@@ -6917,6 +6924,13 @@ void init_program(void)
     debug_malloc_touch(null_program);
   }
 
+  /*! @decl constant __placeholder_object
+   *!
+   *! Object used internally by the compiler.
+   *!
+   *! @seealso
+   *!   @[__null_program]
+   */
   {
     struct svalue s;
     start_new_program();

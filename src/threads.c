@@ -1295,6 +1295,20 @@ void exit_mutex_obj(struct object *o)
 /*! @endclass
  */
 
+/*! @class MutexKey
+ *!
+ *! Objects of this class are returned by @[Mutex()->lock()]
+ *! and @[Mutex()->trylock()]. They are also passed as arguments
+ *! to @[Condition()->wait()].
+ *!
+ *! As long as they are held, the corresponding mutex will be locked.
+ *!
+ *! The corresponding mutex will be unlocked when the object
+ *! is destructed (eg by not having any references left).
+ *!
+ *! @seealso
+ *!   @[Mutex], @[Condition]
+ */
 #define THIS_KEY ((struct key_storage *)(CURRENT_STORAGE))
 void init_mutex_key_obj(struct object *o)
 {
@@ -1335,6 +1349,9 @@ void exit_mutex_key_obj(struct object *o)
     co_signal(& mut->condition);
   }
 }
+
+/*! @endclass
+ */
 
 #define THIS_COND ((COND_T *)(CURRENT_STORAGE))
 

@@ -1,4 +1,4 @@
-// Graph sub-module for drawing pie-charts.
+//! Graph sub-module for drawing pie-charts.
 // $Id$
 //
 // These functions were written by Henrik "Hedda" Wallin (hedda@roxen.com)
