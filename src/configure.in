@@ -2235,7 +2235,7 @@ else
 fi
 
 if test "$ac_cv_func___priocntl" = yes; then
-  AC_TYPE_CHECK(pri_t, short)
+  AC_CHECK_TYPE(pri_t, short)
 fi
 
 ########################################################################

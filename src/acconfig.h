@@ -105,6 +105,9 @@
 /* Define if your signals are one-shot */
 #undef SIGNAL_ONESHOT
 
+/* Define if you don't have the pri_t typedef. */
+#undef pri_t
+
 /* You have gcc stype function attributes? */
 #undef HAVE_FUNCTION_ATTRIBUTES
 
