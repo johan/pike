@@ -663,7 +663,7 @@ pike_des3_set_key(void *c,
 {
   struct des3_ctx *ctx = (struct des3_ctx *) c;
   int i;
-  char *nkotb[24];
+  char nkotb[24];
 
   switch( length ) {
   case 7+7:
