@@ -6069,6 +6069,14 @@ test_eq([[(float)1]],[[1.0]])
 test_eq([[(float)-1]],[[-1.0]])
 test_eq([[(string)1]],[["1"]])
 test_eq([[(string)-1]],[["-1"]])
+test_any([[
+  array foo=({ 1 });
+  return (string)sizeof(foo);
+]], [["1"]])
+test_any([[
+  array foo=({ -1 });
+  return (string)-sizeof(foo);
+]], [["-1"]])
 test_equal([[(array)(["1":1])]],[[ ({ ({"1", 1}) }) ]])
 test_equal([[(array(int)) ({"1","4711",2.0,4})]],[[({1,4711,2,4})]])
 test_equal([[(array(array))({({})})]],[[({({})})]])
