@@ -1147,6 +1147,8 @@ int apply_low_safe_and_stupid(struct object *o, INT32 offset)
   new_frame.context=o->prog->inherits[0];
   new_frame.locals = evaluator_stack;
   new_frame.args = 0;
+  new_frame.num_args=0;
+  new_frame.num_locals=0;
   new_frame.fun = -1;
   new_frame.pc = 0;
   new_frame.current_storage=o->storage;
