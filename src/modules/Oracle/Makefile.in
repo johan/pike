@@ -1,0 +1,12 @@
+#
+# $Id$
+#
+
+SRCDIR=@srcdir@
+VPATH=@srcdir@:@srcdir@/../..:../..
+MODULE_CPPFLAGS=@DEFS@ @CPPFLAGS@
+OBJS=oracle.o
+MODULE_LDFLAGS=@LDFLAGS@ @ORACLE_LIBS@
+
+@dynamic_module_makefile@
+@dependencies@
