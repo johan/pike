@@ -2122,6 +2122,9 @@ void f_cpp(INT32 args)
 #ifdef __NT__
   simple_add_define(&this,"__NT__"," 1 ");
 #endif
+#ifdef __amigaos__
+  simple_add_define(&this,"__amigaos__"," 1 ");
+#endif
 
   for (tmpf=pike_predefs; tmpf; tmpf=tmpf->next)
     simple_add_define(&this, tmpf->name, tmpf->value);
