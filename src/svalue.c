@@ -23,6 +23,14 @@
 #include <ctype.h>
 #include "queue.h"
 #include "bignum.h"
+#include <math.h>
+#ifdef HAVE_FLOATINGPOINT_H
+#include <floatingpoint.h>
+#endif
+
+#ifdef HAVE_IEEEFP_H
+#include <ieeefp.h>
+#endif
 
 RCSID("$Id$");
 
@@ -817,10 +825,18 @@ PMOD_EXPORT int is_lt(struct svalue *a,struct svalue *b)
   if (a->type != b->type)
   {
     if(a->type == T_FLOAT && b->type==T_INT)
+#ifdef HAVE_ISLESS
+      return isless(a->u.float_number, (FLOAT_TYPE)b->u.integer);
+#else
       return a->u.float_number < (FLOAT_TYPE)b->u.integer;
+#endif
 
     if(a->type == T_INT && b->type==T_FLOAT)
+#ifdef HAVE_ISLESS
+      return isless((FLOAT_TYPE)a->u.integer, b->u.float_number);
+#else
       return (FLOAT_TYPE)a->u.integer < b->u.float_number;
+#endif
 
     if(a->type == T_OBJECT)
     {
@@ -878,7 +894,11 @@ PMOD_EXPORT int is_lt(struct svalue *a,struct svalue *b)
     return my_strcmp(a->u.string, b->u.string) < 0;
 
   case T_FLOAT:
+#ifdef HAVE_ISLESS
+    return isless(a->u.float_number, b->u.float_number);
+#else
     return a->u.float_number < b->u.float_number;
+#endif
 
   }
 }

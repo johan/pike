@@ -143,6 +143,9 @@
 /* Define if you have fpsetround */
 #undef HAVE_FPSETROUND
 
+/* Define if you have isless */
+#undef HAVE_ISLESS
+
 /* Define if you have crypt.  */
 #undef HAVE_CRYPT
 

@@ -2889,6 +2889,22 @@ MY_CHECK_FUNCTION(fpsetround,
   exit(0);
 ])
 ########################################################################
+MY_CHECK_FUNCTION(isless,
+[
+#include <math.h>
+#ifdef HAVE_FLOATINGPOINT_H
+#include <floatingpoint.h>
+#endif
+
+#ifdef HAVE_IEEEFP_H
+#include <ieeefp.h>
+#endif
+
+], [
+  int t = isless(0.0, 0.0);
+  exit(0);
+])
+########################################################################
 
 MY_CHECK_FUNCTION(dlopen,
 [
