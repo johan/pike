@@ -713,7 +713,7 @@ void document(string enttype,
 
    if (huh["see also"])
    {
-      res+="<group><see_also/>\n";
+      res+="<group><seealso/>\n";
       res+=fixdesc(
 	 map(huh["see also"],
 	       lambda(string s)
