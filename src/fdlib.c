@@ -7,11 +7,9 @@ RCSID("$Id$");
 
 #ifdef HAVE_WINSOCK_H
 
-#ifdef _REENTRANT
 #include "threads.h"
 
 static MUTEX_T fd_mutex;
-#endif
 
 HANDLE da_handle[MAX_OPEN_FILEDESCRIPTORS];
 int fd_type[MAX_OPEN_FILEDESCRIPTORS];
