@@ -94,7 +94,7 @@ int main(int argc, string *argv)
 
   system("ln -s pike "+vpath);
 
-  files=sum(({ vpath+"/README" }),
+  files=sum(({ vpath+"/README", vpath+"/ANNOUNCE" }),
 	    get_files(vpath+"/src"),
 	    get_files(vpath+"/lib"),
 	    get_files(vpath+"/bin"));
