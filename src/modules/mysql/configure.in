@@ -103,8 +103,8 @@ if test x$with_mysql = xyes; then
     AC_CHECK_LIB(m, floor, [], [])
 
     # Pthreads is still needed in 3.20.0.
-    AC_CHECK_LIB(pthread, pthread_self, [], [])
-    AC_CHECK_LIB(pthreads, pthread_self, [], [])
+    # AC_CHECK_LIB(pthread, pthread_self, [], [])
+    # AC_CHECK_LIB(pthreads, pthread_self, [], [])
 
     AC_CHECK_LIB(dbug, _db_doprnt_, [], [])
 
