@@ -199,6 +199,108 @@ void f_atan2(INT32 args)
   pop_stack();
 }
 
+/* insert configure test if necessary */
+#if 1 
+/*! @decl float sinh(float f)
+ *!
+ *! Returns the hyperbolic sine value for @[f].
+ *! @[f] should be specified in radians.
+ *!
+ *! @seealso
+ *!   @[asinh()], @[cosh()], @[tanh()]
+ */
+void f_sinh(INT32 args)
+{
+  ARG_CHECK("sin");
+  sp[-1].u.float_number =
+    DO_NOT_WARN((FLOAT_TYPE)sinh(sp[-1].u.float_number));
+}
+
+/*! @decl float asinh(float f)
+ *!
+ *! Return the arcus sine value for @[f].
+ *! The result will be in radians.
+ *!
+ *! @seealso
+ *!   @[sinh()], @[acosh()]
+ */
+void f_asinh(INT32 args)
+{
+  ARG_CHECK("asin");
+  sp[-1].u.float_number =
+    DO_NOT_WARN((FLOAT_TYPE)asinh(sp[-1].u.float_number));
+}
+
+/*! @decl float cosh(float f)
+ *!
+ *! Return the cosine value for @[f].
+ *! @[f] should be specified in radians.
+ *!
+ *! @seealso
+ *!   @[acosh()], @[sinh()], @[tanh()]
+ */
+void f_cosh(INT32 args)
+{
+  ARG_CHECK("cos");
+  sp[-1].u.float_number =
+    DO_NOT_WARN((FLOAT_TYPE)cosh(sp[-1].u.float_number));
+}
+
+/*! @decl float acosh(float f)
+ *!
+ *! Return the arcus cosine value for @[f].
+ *! The result will be in radians.
+ *!
+ *! @seealso
+ *!   @[cosh()], @[asinh()]
+ */
+void f_acosh(INT32 args)
+{
+  ARG_CHECK("acos");
+  sp[-1].u.float_number =
+    DO_NOT_WARN((FLOAT_TYPE)acosh(sp[-1].u.float_number));
+}
+
+/*! @decl float tanh(float f)
+ *!
+ *! Returns the hyperbolic tangent value for @[f].
+ *! @[f] should be specified in radians.
+ *!
+ *! @seealso
+ *!   @[atanh()], @[sinh()], @[cosh()]
+ */
+void f_tanh(INT32 args)
+{
+  double f;
+  ARG_CHECK("tan");
+
+  f = (sp[-1].u.float_number-M_PI/2) / M_PI;
+  if (f==floor(f+0.5))
+  {
+    Pike_error("Impossible tangent.\n");
+    return;
+  }
+  sp[-1].u.float_number =
+    DO_NOT_WARN((FLOAT_TYPE)tanh(sp[-1].u.float_number));
+}
+
+/*! @decl float atanh(float f)
+ *!
+ *! Returns the hyperbolic arcus tangent value for @[f].
+ *! The result will be in radians.
+ *!
+ *! @seealso
+ *!   @[tanh()], @[asinh()], @[acosh()], @[atan2h()]
+ */ 
+void f_atanh(INT32 args)
+{
+  ARG_CHECK("atan");
+  sp[-1].u.float_number =
+    DO_NOT_WARN((FLOAT_TYPE)atanh(sp[-1].u.float_number));
+}
+
+#endif
+
 /*! @decl float sqrt(float f)
  *! @decl int sqrt(int i)
  *! @decl mixed sqrt(object o)
@@ -570,7 +672,14 @@ PIKE_MODULE_INIT
   
 /* function(float,float:float) */
   ADD_EFUN("atan2",f_atan2,tFunc(tFlt tFlt,tFlt),0);
-  
+ 
+  ADD_EFUN("sinh",f_sinh,tFunc(tFlt,tFlt),0);
+  ADD_EFUN("asinh",f_asinh,tFunc(tFlt,tFlt),0);
+  ADD_EFUN("cosh",f_cosh,tFunc(tFlt,tFlt),0);
+  ADD_EFUN("acosh",f_acosh,tFunc(tFlt,tFlt),0);
+  ADD_EFUN("tanh",f_tanh,tFunc(tFlt,tFlt),0);
+  ADD_EFUN("atanh",f_atanh,tFunc(tFlt,tFlt),0);
+ 
 /* function(float:float)|function(int:int) */
   ADD_EFUN("sqrt",f_sqrt,tOr3(tFunc(tFlt,tFlt),
 			      tFunc(tInt,tInt),
