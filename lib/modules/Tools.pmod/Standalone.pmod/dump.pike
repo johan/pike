@@ -9,7 +9,7 @@
 || $Id$
 */
 
-constant description = "Dumps pike files into object files.";
+constant description = "Dumps Pike files into object files.";
 
 int quiet=1, report_failed=0, recursive=0, update=0, nt_install=0;
 string target_dir = 0;
