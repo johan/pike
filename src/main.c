@@ -422,6 +422,15 @@ int dbm_main(int argc, char **argv)
 	lim.rlim_cur=Pike_INITIAL_STACK_SIZE;
 #endif
 
+#if defined(__linux__) && defined(PIKE_THREADS)
+      /* This is a really really *stupid* limit in glibc 2.x
+       * which is not detectable since __pthread_initial_thread_bos
+       * went static. On a stupidity-scale from 1-10, this rates a
+       * solid 11. - Hubbe
+       */
+      if(lim.rlim_cur > 2*1024*1024) lim.rlim_cur=2*1024*1024;
+#endif
+
       stack_top += STACK_DIRECTION * lim.rlim_cur;
 
 #ifdef HAVE_PTHREAD_INITIAL_THREAD_BOS
