@@ -901,7 +901,7 @@ static void eval_instruction(unsigned char *pc)
     do_return:
 #if defined(DEBUG) && defined(GC2)
       if(d_flag > 2) do_gc();
-      check_signals();
+      check_threads_etc();
 #endif
 
       /* fall through */

@@ -252,7 +252,7 @@ static struct pike_string *do_read(int fd,
       i=read(fd, str->str+bytes_read, r);
       THREADS_DISALLOW();
 
-      check_signals();
+      check_signals(0,0,0);
 
       if(i>0)
       {
