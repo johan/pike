@@ -1513,8 +1513,11 @@ PMOD_EXPORT struct mapping *add_mappings(struct svalue *argp, INT32 args)
     if(!(md->flags  & MAPPING_WEAK))
     {
 #if 1 /* major optimization */
-      if(e==md->size)
-	return copy_mapping(m);
+      if(e==md->size) {
+	ret = copy_mapping(m);
+	mapping_set_flags(m, 0);
+	return ret;
+      }
 #endif
     
       if(m->refs == 1 && !md->hardlinks)
