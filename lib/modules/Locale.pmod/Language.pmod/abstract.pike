@@ -40,10 +40,23 @@ string month(int(1..12) num)
   return months[ num - 1 ];
 }
 
+//! Returns an abbreviated month name from the month number @[num].
+string short_month(int(1..12) num)
+{
+  return months[ num - 1][..2];
+}
+
 //! Returns the name of weekday number @[num].
 string day(int(1..7) num)
 {
   return days[ num - 1 ];
+}
+
+//! Returns an abbreviated weekday name from the weekday number
+//! @[num].
+string short_day(int(1..7) num)
+{
+  return days[ num - 1][..1];
 }
 
 //! Returns the number @[i] as a string.

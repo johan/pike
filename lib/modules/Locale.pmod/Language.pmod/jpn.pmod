@@ -122,8 +122,18 @@ string month(int num)
   return mknumber(num)+"月";
 }
 
+string short_month(int num)
+{
+  return month(num);
+}
+
 string day(int num)
 {
   return ({ "日", "月", "火", "水", "木", "金", "土" })[ num - 1 ]+
 	    "曜日";
+}
+
+string short_day(int num)
+{
+  return ({ "日", "月", "火", "水", "木", "金", "土" })[ num - 1 ];
 }
