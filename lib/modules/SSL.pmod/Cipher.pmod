@@ -339,7 +339,7 @@ class DHKeyExchange
     return this;
   }
 
-  object get_shared() {
+  Gmp.mpz get_shared() {
     return other->powm(secret, parameters->p);
   }
 }
