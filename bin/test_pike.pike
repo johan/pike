@@ -164,6 +164,7 @@ int main(int argc, string *argv)
 		{
 		  werror("Test "+(e+1)+" failed.\n");
 		  werror(test+"\n");
+		  werror(sprintf("o->a(): %O\n",a));
 		  errors++;
 		}else{
 		  successes++;
