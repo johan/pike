@@ -536,7 +536,7 @@ void f_setuid(INT32 args)
 #ifdef HAVE_SETGID
 void f_setgid(INT32 args)
 {
-  int id;
+  INT_TYPE id;
 
 #ifdef PIKE_SECURITY
   if(!CHECK_SECURITY(SECURITY_BIT_SECURITY))
