@@ -127,9 +127,11 @@ struct neo_colortable
       struct nctd_ordered
       {
 	 int xs,ys;
+	 int xa,ya;
 	 int *rdiff,*gdiff,*bdiff;
 	 int rx,ry,gx,gy,bx,by;
 	 int row;
+         int same; /* true if rdiff, gdiff & bdiff is the same */
       } ordered;
    } du;
 };
