@@ -1846,11 +1846,12 @@ void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
     pop_n_elems(sp-save_sp-1);
   }
 
-  if(save_sp+1 > sp && type != APPLY_SVALUE)
+  if(save_sp+1 > sp)
   {
-    push_int(0);
+    if(type != APPLY_SVALUE)
+      push_int(0);
   }else{
-    if(t_flag) trace_return_value();
+    if(t_flag>1) trace_return_value();
   }
 }
 
