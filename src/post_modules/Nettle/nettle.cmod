@@ -110,6 +110,8 @@ PIKECLASS Yarrow
    */
   PIKEFUN string get_seed()
   {
+    if( !yarrow256_is_seeded(&THIS->ctx) )
+      Pike_error("Random generator not seeded.\n");
     RETURN make_shared_binary_string(THIS->ctx.seed_file, YARROW256_SEED_FILE_SIZE);
   }
 
