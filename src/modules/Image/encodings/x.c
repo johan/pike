@@ -344,8 +344,8 @@ THREADS_ALLOW();
 	    while (x>=3)
 	    {
 	       d[0]^=d[1],d[1]^=d[0],d[0]^=d[1];
-	       d+=3;
-	       x-=3;
+	       d+=2;
+	       x-=2;
 	    }
 	    break;
          case 1:
