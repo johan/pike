@@ -3418,11 +3418,7 @@ PMOD_EXPORT int quick_map_variable(char *name,
   struct pike_type *t;
 
   n = make_shared_binary_string(name, name_length);
-#ifdef USE_PIKE_TYPE
   t = make_pike_type(type);
-#else /* !USE_PIKE_TYPE */
-  t = make_shared_binary_string(type, type_length);
-#endif /* USE_PIKE_TYPE */
 
 #ifdef PROGRAM_BUILD_DEBUG
   {
@@ -5811,11 +5807,7 @@ PMOD_EXPORT int quick_add_function(char *name,
   union idptr tmp;
 /*  fprintf(stderr,"ADD_FUNC: %s\n",name); */
   name_tmp = make_shared_binary_string(name, name_length);
-#ifdef USE_PIKE_TYPE
   type_tmp = make_pike_type(type);
-#else /* !USE_PIKE_TYPE */
-  type_tmp = make_shared_binary_string(type, type_length);
-#endif /* USE_PIKE_TYPE */
 
   if(cfun)
   {

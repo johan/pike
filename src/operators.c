@@ -2988,21 +2988,12 @@ PMOD_EXPORT void o_compl(void)
 
   case T_TYPE:
     type_stack_mark();
-#ifdef USE_PIKE_TYPE
     if (sp[-1].u.type->type == T_NOT) {
       push_finished_type(sp[-1].u.type->car);
     } else {
       push_finished_type(sp[-1].u.type);
       push_type(T_NOT);
     }
-#else /* !USE_PIKE_TYPE */
-    if (EXTRACT_UCHAR(sp[-1].u.type->str) == T_NOT) {
-      push_unfinished_type(sp[-1].u.type->str + 1);
-    } else {
-      push_finished_type(sp[-1].u.type);
-      push_type(T_NOT);
-    }
-#endif /* USE_PIKE_TYPE */
     pop_stack();
     push_type_value(pop_unfinished_type());
     break;

@@ -915,12 +915,10 @@ void low_exit_main(void)
 	describe_something(o, T_OBJECT, 0,2,0, NULL);
     }
 
-#ifdef USE_PIKE_TYPE
     count_memory_in_pike_types(&num, &size);
     if (num)
       fprintf(stderr, "Types left: %d (%d bytes)\n", num, size);
     describe_all_types();
-#endif /* USE_PIKE_TYPE */
   }
 #else
 

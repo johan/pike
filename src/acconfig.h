@@ -440,9 +440,6 @@
 /* Define if you have the <sys/resource.h> header file.  */
 #undef HAVE_SYS_RESOURCE_H
 
-/* Define if you want to enable use of the struct pike_type (EXPERIMENTAL) */
-#undef USE_PIKE_TYPE
-
 /* set this to the modifier type string to print size_t, like "" or "l" */
 #undef PRINTSIZET
 

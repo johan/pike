@@ -105,7 +105,7 @@ struct svalue
 #define T_MANY       17
 
 #define PIKE_T_RING 240
-#define PIKE_T_NAME 241		/* Only supported in USE_PIKE_TYPE-mode. */
+#define PIKE_T_NAME 241		/* Named type. */
 #define PIKE_T_SCOPE 243	/* Not supported yet */
 #define PIKE_T_TUPLE 244	/* Not supported yet */
 #define T_ASSIGN 245

@@ -1898,12 +1898,8 @@ void gdb_backtrace (
 	    break;
 
 	  case T_TYPE:
-#ifdef USE_PIKE_TYPE
 	    /* FIXME: */
 	    fputs("type-value", stderr);
-#else /* !USE_PIKE_TYPE */
-	    stupid_describe_type (arg->u.type->str, arg->u.type->len);
-#endif /* USE_PIKE_TYPE */
 	    break;
 
 	  case T_STRING: {
