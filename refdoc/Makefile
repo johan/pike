@@ -31,17 +31,17 @@ build/autodoc.xml: recursive_join
 	@$(MAKE) PIKE="$(PIKE)" XMLFILES="`echo build/*/*.xml`" \
 	  autodoc.xml
 
-recursive_join: images
+recursive_join: extract
 	@(cd build/src && $(MAKE) PIKE="$(PIKE)" join)
 	@(cd build/lib && $(MAKE) PIKE="$(PIKE)" join)
 
-images: extract
-	@cp ../src/post_modules/GTK/refdoc/images/*.png \
-	  build/src/post_modules/GTK/refdoc/images
-
-extract: build/src/Makefile build/lib/Makefile build/images
+extract: build/src/Makefile build/lib/Makefile build/images images
 	@(cd build/src && $(MAKE) PIKE="$(PIKE)" extract)
 	@(cd build/lib && $(MAKE) PIKE="$(PIKE)" extract)
+
+images: build/src/post_modules/GTK/refdoc/images
+	@cp ../src/post_modules/GTK/refdoc/images/*.png \
+	  build/src/post_modules/GTK/refdoc/images
 
 manual.xml: build/autodoc.xml structure/onepage.xml bin/assembler.pike
 	@$(PIKE) bin/assembler.pike structure/onepage.xml build/autodoc.xml > manual.xml
@@ -91,6 +91,16 @@ html_manual:
 traditional_manual:
 	@test -d traditional_manual || mkdir traditional_manual
 	@test -d traditional_manual/images || mkdir traditional_manual/images
+
+build/src/post_modules/GTK/refdoc/images: build/src
+	@test -d build/src/post_modules || \
+	  mkdir build/src/post_modules
+	@test -d build/src/post_modules/GTK || \
+	  mkdir build/src/post_modules/GTK
+	@test -d build/src/post_modules/GTK/refdoc || \
+	  mkdir build/src/post_modules/GTK/refdoc
+	@test -d build/src/post_modules/GTK/refdoc/images || \
+	  mkdir build/src/post_modules/GTK/refdoc/images
 
 # Cleanup
 
