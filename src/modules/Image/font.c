@@ -169,7 +169,7 @@ struct font
 
 /***************** init & exit *********************************/
 
-static inline void free_font_struct(struct font *font)
+static INLINE void free_font_struct(struct font *font)
 {
    if (font)
    {
