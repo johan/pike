@@ -63,7 +63,8 @@ struct fd_callback_box
   int fd;			/* Use change_fd_for_box to change this. May
 				 * be negative, in which case only the ref
 				 * magic on backend and ref_obj is done. The
-				 * backend might change a negative value. */
+				 * backend might change a negative value to a
+				 * different negative value. */
   int events;			/* Bitfield with wanted events. Always use
 				 * set_fd_callback_events to change this. It's
 				 * ok to have hooked boxes where no events are
