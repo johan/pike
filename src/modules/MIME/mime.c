@@ -804,6 +804,11 @@ static void low_tokenize( INT32 args, int mode )
       break;
 
     default:
+      if(*src == '\0') {
+	/* Multiple occurance header.  Ignore all but first. */
+	cnt = 0;
+	break;
+      }
       error( "Invalid character in header field\n" );
     }
 
