@@ -4015,6 +4015,8 @@ struct program *compile(struct pike_string *prog,
 	   placeholder, placeholder->storage, placeholder->prog, p); */
 	destruct(placeholder);
       } else {
+	/* FIXME: Is this correct? */
+	free_program(placeholder->prog);
 	placeholder->prog = NULL;
       }
       placeholder=0;
@@ -4111,6 +4113,8 @@ struct program *compile(struct pike_string *prog,
 	   placeholder, placeholder->storage, placeholder->prog, p); */
 	destruct(placeholder);
       } else {
+	/* FIXME: Is this correct? */
+	free_program(placeholder->prog);
 	placeholder->prog = NULL;
       }
       placeholder=0;
