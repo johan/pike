@@ -2752,7 +2752,22 @@ void pike_module_init(void)
 /* Used from backend */
 int pike_make_pipe(int *fds)
 {
-  return socketpair(AF_UNIX, SOCK_STREAM, 0, fds);
+  int res = socketpair(AF_UNIX, SOCK_STREAM, 0, fds);
+  if (res < 0) return res;
+  if ((fds[0] > MAX_OPEN_FILEDESCRIPTORS) ||
+      (fds[1] > MAX_OPEN_FILEDESCRIPTORS)) {
+    close(fds[0]);
+    close(fds[1]);
+#ifdef EMFILE
+    errno = EMFILE;
+#else /* !EMFILE */
+#ifdef EBADF
+    errno = EBADF;
+#endif /* EBADF */
+#endif /* EMFILE */
+    return -1;
+  }
+  return res;
 }
 
 int fd_from_object(struct object *o)
