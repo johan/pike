@@ -119,7 +119,7 @@ void store(string key, mixed value, void|int max_life,
 
 //! Forcibly removes some key.
 //! If the 'hard' parameter is supplied and true, deleted objects will also
-//! have their @[lfun::destruct] method called upon removal by some
+//! have their @[lfun::destroy] method called upon removal by some
 //! backends (i.e. memory)
 void delete(string key, void|int(0..1)hard) {
   if (!stringp(key)) key=(string)key; // paranoia
