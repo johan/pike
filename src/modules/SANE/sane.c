@@ -759,7 +759,7 @@ static void f_scanner_cancel_scan( INT32 args )
  *! @decl constant FrameRGB
  *! @decl constant FrameRed
  *! @decl constant FrameGreen
- *! @decl cosntant FrameBlue
+ *! @decl constant FrameBlue
  */
 
 /*! @endmodule
