@@ -1164,6 +1164,8 @@ mixed handle_import(string what, string|void current_file, object|void handler)
     tmp=EXPLODE_PATH(current_file);
     tmp[-1]=what;
     path=combine_path_with_cwd( tmp*"/");
+  } else {
+    path = combine_path_with_cwd(what);
   }
   if (handler) {
     return dirnode(path, handler);
