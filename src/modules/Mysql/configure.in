@@ -47,7 +47,7 @@ if test x$with_mysql = xyes; then
 
   if test x$pike_cv_mysql_lib_dir = xno; then :; else
     echo Adding $pike_cv_mysql_lib_dir to the library search path.
-    LDFLAGS="-L$pike_cv_mysql_lib_dir ${LDFLAGS}"
+    LDFLAGS="-R$pike_cv_mysql_lib_dir -L$pike_cv_mysql_lib_dir ${LDFLAGS}"
   fi
 
   AC_MSG_CHECKING(Checking for Mysql include-directory)
