@@ -390,15 +390,14 @@ PMOD_EXPORT void assign_to_short_svalue(union anything *u,
 
   if(s->type == type)
   {
-    INT32 *tmp;
     switch(type)
     {
       case T_INT: u->integer=s->u.integer; break;
       case T_FLOAT: u->float_number=s->u.float_number; break;
       default:
 	if(u->refs && --*(u->refs) <= 0) really_free_short_svalue(u,type);
-	u->refs = tmp = s->u.refs;
-	tmp[0]++;
+	u->refs = s->u.refs;
+	add_ref(u->dummy);
     }
   }else if(type<=MAX_REF_TYPE && UNSAFE_IS_ZERO(s)){
     if(u->refs && --*(u->refs) <= 0) really_free_short_svalue(u,type);
@@ -419,14 +418,13 @@ PMOD_EXPORT void assign_to_short_svalue_no_free(union anything *u,
 
   if(s->type == type)
   {
-    INT32 *tmp;
     switch(type)
     {
       case T_INT: u->integer=s->u.integer; break;
       case T_FLOAT: u->float_number=s->u.float_number; break;
       default:
-	u->refs = tmp = s->u.refs;
-	tmp[0]++;
+	u->refs = s->u.refs;
+	add_ref(u->dummy);
     }
   }else if(type<=MAX_REF_TYPE && UNSAFE_IS_ZERO(s)){
     u->refs=0;
