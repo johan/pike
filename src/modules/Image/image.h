@@ -22,7 +22,7 @@
 typedef struct 
 {
    COLORTYPE r,g,b;
-   COLORTYPE __padding_dont_use__;
+/*   COLORTYPE __padding_dont_use__;*/
 } rgb_group;
 
 typedef struct 

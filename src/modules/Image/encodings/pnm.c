@@ -278,7 +278,7 @@ void img_pnm_encode_P6(INT32 args)
       unsigned char *c;
       int n=img->xsize*img->ysize;
       rgb_group *s=img->img;
-      c=(unsigned char*)(b=begin_shared_string(n*3));
+      c=(unsigned char*)((b=begin_shared_string(n*3))->str);
       while (n--)
       {
 	 *(c++)=s->r;
