@@ -6,7 +6,7 @@
 //! Alert package.
 
 import .Constants;
-inherit "packet" : packet;
+inherit .packet : packet;
 
 int level;
 int description;

@@ -25,7 +25,7 @@ function(object,int|object,string:void) alert_callback;
 
 import .Constants;
 
-inherit "handshake";
+inherit .handshake;
 
 constant PRI_alert = 1;
 constant PRI_urgent = 2;
