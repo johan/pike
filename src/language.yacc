@@ -3150,7 +3150,7 @@ idents2: idents
 	 * error is removed then local:: will do nothing on variables
 	 * except forcing a lookup in the closest surrounding class
 	 * scope. */
-	yyerror ("Cannot make local references variables.");
+	yyerror ("Cannot make local references to variables.");
 	$$ = 0;
       }
       else {
