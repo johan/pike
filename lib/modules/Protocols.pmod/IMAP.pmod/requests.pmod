@@ -609,24 +609,29 @@ class fetch
 	return 0;
       }
 	
-      array path = atom->options[0]->atom / ".";
+      if (sizeof(atom->options)) {
+	array path = atom->options[0]->atom / ".";
 
-      /* Extract numeric prefix */
-      array part_number = ({ });
-      int i;
+	/* Extract numeric prefix */
+	array part_number = ({ });
+	int i;
 
-      for(i = 0; i<sizeof(path); i++)
-      {
-	int n = string_to_number(path[i]);
-	if (n<0)
-	  break;
-	part_number += ({ n });
+	for(i = 0; i<sizeof(path); i++)
+	{
+	  int n = string_to_number(path[i]);
+	  if (n<0)
+	    break;
+	  part_number += ({ n });
+	}
+
+	res->section = path[i..];
+	res->part = part_number;
+	res->options = atom->options[1..];
+      } else {
+	res->options = ({});
       }
 
       res->raw_options = atom->options->atom;
-      res->section = path[i..];
-      res->part = part_number;
-      res->options = atom->options[1..];
       res->partial = atom->range;
 
       return res;
