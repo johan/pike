@@ -1531,7 +1531,7 @@ void check_array(struct array *a)
 
   for(e=0;e<a->size;e++)
   {
-    if(! ( (1 << ITEM(a)[e].type) & (a->type_field) ))
+    if(! ( (1 << ITEM(a)[e].type) & (a->type_field) ) && ITEM(a)[e].type<16)
       fatal("Type field lies.\n");
     
     check_svalue(ITEM(a)+e);
