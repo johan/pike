@@ -683,7 +683,8 @@ static void make_jargs(jvalue *jargs, INT32 args, char *dorelease, char *sig,
       switch(sv->u.string->size_shift) {
       case 0:
 	{
-	  jchar *newstr = malloc(2*sv->u.string->len);
+	  /* Extra byte added to avoid zero length allocation */
+	  jchar *newstr = (jchar *) xalloc(2 * sv->u.string->len + 1);
 	  INT32 i;
 	  p_wchar0 *p = STR0(sv->u.string);
 	  for(i=sv->u.string->len; --i>=0; )
@@ -701,7 +702,8 @@ static void make_jargs(jvalue *jargs, INT32 args, char *dorelease, char *sig,
       case 2:
 	{
 	  /* FIXME?: Does not make surrogates for plane 1-16 in group 0... */
-	  jchar *newstr = malloc(2*sv->u.string->len);
+	  /* Extra byte added to avoid zero length allocation */
+	  jchar *newstr = (jchar *) xalloc(2 * sv->u.string->len + 1);
 	  INT32 i;
 	  p_wchar2 *p = STR2(sv->u.string);
 	  for(i=sv->u.string->len; --i>=0; )
