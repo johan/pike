@@ -60,7 +60,8 @@ define([MY_AC_ARG_WITH], [
 ])
 
 dnl flag, descr
-define([MY_DESCR],[  substr([$1][                                  ],0,33) $2])
+define([MY_DESCR],
+       [  substr([$1][                                  ],0,33) [$2]])
 
 define([MY_AC_PROG_CC],
 [
