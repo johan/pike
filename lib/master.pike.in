@@ -20,7 +20,7 @@
 #undef PIKE_MODULE_RELOC
 
 #ifndef PIKE_WARNINGS
-#define PIKE_WARNINGS 0
+#define PIKE_WARNINGS 1
 #endif /* PIKE_WARNINGS */
 
 
@@ -1228,7 +1228,6 @@ class CompatResolver
   array(string) pike_module_path=({});
   array(string) pike_program_path=({});
   mapping(string:string) predefines = ([]);
-  int want_warnings = PIKE_WARNINGS;
   string ver;
 
   //! The ComparResolver is initialized with a value that can be
