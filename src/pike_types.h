@@ -91,19 +91,24 @@ extern struct pike_string *any_type_string;
 #define exit_type_stack pop_stack_mark
 #endif
 
+/* Hmm, these will cause fatals if they fail... */
 #define push_type(X) do {				\
-  *type_stackp=(X);					\
-  type_stackp++;					\
   if(type_stackp >= type_stack + sizeof(type_stack))	\
     yyerror("Type stack overflow.");			\
+  else {						\
+    *type_stackp=(X);					\
+    type_stackp++;					\
+  }							\
 } while(0)
 
 
 #define type_stack_mark() do {				\
-  *pike_type_mark_stackp=type_stackp;				\
-  pike_type_mark_stackp++;					\
   if(pike_type_mark_stackp >= pike_type_mark_stack + NELEM(pike_type_mark_stack))	\
     yyerror("Type mark stack overflow.");		\
+  else {						\
+    *pike_type_mark_stackp=type_stackp;				\
+    pike_type_mark_stackp++;					\
+  }							\
 } while(0)
 
 #define reset_type_stack() do {			\
