@@ -965,14 +965,13 @@ void dmalloc_register(void *p, int s, char *file, int line)
   low_make_memhdr(p,s,location_number(file, line));
 }
 
-void *dmalloc_accept_leak(void *p)
+void dmalloc_accept_leak(void *p)
 {
   if(p)
   {
     struct memhdr *mh;
     if((mh=my_find_memhdr(p,0))) add_location(mh, 0);
   }
-  return p;
 }
 
 int dmalloc_unregister(void *p, int already_gone)
