@@ -24,6 +24,7 @@
 #include "stuff.h"
 #include "version.h"
 #include "bignum.h"
+#include "pikecode.h"
 
 RCSID("$Id$");
 

@@ -2,8 +2,6 @@
  * $Id$
  */
 
-#define PIKE_OPCODE_T	unsigned INT32
-
 #define PPC_INSTR_B_FORM(OPCD,BO,BI,BD,AA,LK)			\
       add_to_program(((OPCD)<<26)|((BO)<<21)|((BI)<<16)|	\
 		     (((BD)&0x3fff)<<2)|((AA)<<1)|(LK))

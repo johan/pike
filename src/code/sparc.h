@@ -2,8 +2,6 @@
  * $Id$
  */
 
-#define PIKE_OPCODE_T	unsigned INT32
-
 #define PIKE_OPCODE_ALIGN	4
 
 #define LOW_GET_JUMP()	(PROG_COUNTER[0])

@@ -2,7 +2,6 @@
  * $Id$
  */
 
-#define PIKE_OPCODE_T	unsigned INT8
 /* #define ALIGN_PIKE_JUMPS 8 */
 
 #define LOW_GET_JUMP()	EXTRACT_INT(PROG_COUNTER)

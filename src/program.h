@@ -17,7 +17,6 @@
 #include "svalue.h"
 #include "time_stuff.h"
 #include "program_id.h"
-#include "pikecode.h"
 #include "block_alloc_h.h"
 
 #define STRUCT
@@ -101,6 +100,18 @@ struct node_s;
 #ifndef STRUCT_OBJECT_DECLARED
 #define STRUCT_OBJECT_DECLARED
 struct object;
+#endif
+
+#if PIKE_BYTECODE_METHOD == PIKE_BYTECODE_IA32
+#define PIKE_OPCODE_T unsigned INT8
+#elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_SPARC
+#define PIKE_OPCODE_T unsigned INT32
+#elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_PPC32
+#define PIKE_OPCODE_T unsigned INT32
+#elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_GOTO
+#define PIKE_OPCODE_T void *
+#else
+#define PIKE_OPCODE_T unsigned INT8
 #endif
 
 /* I need:
