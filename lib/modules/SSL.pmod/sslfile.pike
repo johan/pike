@@ -122,6 +122,12 @@ void close()
       write_blocking();
     }
 
+    if (!blocking)
+    {
+      // FIXME: Timeout?
+      return;
+    }
+
     if (socket) socket->close();
   }
   socket = 0;
@@ -389,7 +395,15 @@ private void ssl_write_callback(mixed id)
     res = queue_write();
   }
   if (!strlen(write_buffer) && socket)
+  {
     socket->set_write_callback(0);
+    if (is_closed)
+    {
+      socket->close();
+      socket = 0;
+      return;
+    }
+  }
   if (res)
     die(res);
 }
