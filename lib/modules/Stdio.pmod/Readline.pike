@@ -545,7 +545,7 @@ class InputController
 
 class DefaultEditKeys
 {
-  static private multiset word_break_chars = mkmultiset("\t \n\r/*?_-.[]~&;\!#$%^(){}<>\""/"");
+  static private multiset word_break_chars = mkmultiset("\t \n\r/*?_-.[]~&;\!#$%^(){}<>\"'`"/"");
   static object _readline;
 
   void self_insert_command(string str)
