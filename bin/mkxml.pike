@@ -487,12 +487,11 @@ string doctype(string type,void|string indent)
 
    return nindent+"<object>"+type+"</object>";
 }
+
 void docdecl(string enttype,
 	     string decl,
 	     object f)
 {
-   f->write("<!-- "+decl+" -->\n");
-
    string rv,name,params=0;
    sscanf(decl,"%s %s(%s",rv,name,params);
 
