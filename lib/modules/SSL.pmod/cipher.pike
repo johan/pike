@@ -35,9 +35,17 @@ class mac_sha
 
   string hash_raw(string data)
   {
+#ifdef SSL3_DEBUG
+    werror(sprintf("SSL.cipher: hash_raw('%s')\n", data));
+#endif
+    
     object h = algorithm();
-    h->update(data);
-    return h->digest();
+    string res = h->update(data)->digest();
+#ifdef SSL3_DEBUG
+    werror(sprintf("SSL.cipher: hash_raw->'%s'\n",res));
+#endif
+    
+    return res;
   }
   
   string hash(object packet, object seq_num)
