@@ -9,7 +9,11 @@
 #define LEX_H
 
 #include "program.h"
+
+#ifndef INCLUDED_FROM_LANGUAGE_YACC
+/* language.c duplicates the definitions in language.h. */
 #include "language.h"
+#endif
 
 #define NEW_LEX
 

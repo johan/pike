@@ -183,6 +183,7 @@ static void __yy_memcpy(char *to, YY_FROM_CONST char *from,
 
 %{
 /* Needs to be included after YYSTYPE is defined. */
+#define INCLUDED_FROM_LANGUAGE_YACC
 #include "lex.h"
 %}
 
