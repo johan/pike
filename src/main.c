@@ -311,9 +311,9 @@ int dbm_main(int argc, char **argv)
     }
   }
 #endif
-
+  
   GETTIMEOFDAY(&current_time);
-
+  
   init_shared_string_table();
   init_interpreter();
   init_cpp();
