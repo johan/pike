@@ -1888,6 +1888,17 @@ test_program(inherit test; int a() { return foo; } )
 test_define_program(test,[[class TEST { int a() { return 1; } }]])
 test_program(inherit test; inherit TEST; )
 
+
+test_any([[
+  class Foo {  };
+  return  function_object(object_program(Foo())) == this_program;
+]], 1)
+
+test_any([[
+  class Foo {  };
+  return  function_name(object_program(Foo()));
+]], "Foo")
+
 test_compile_error(class c { object(Stdio.File) foo=class {} ();})
 test_compile_error(class c { object(Stdio.File) foo=class {} ();})
 test_compile_error(class c { object(Stdio.File) foo=class {} ();})

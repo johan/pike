@@ -284,6 +284,7 @@ struct program
 
   struct program *next;
   struct program *prev;
+  struct program *parent; /* FIXME: Use this -Hubbe */
 
   void (*event_handler)(enum pike_program_event);
 #ifdef PIKE_DEBUG
