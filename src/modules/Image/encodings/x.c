@@ -13,12 +13,12 @@
 **!
 **! see also: Image, Image.image, Image.colortable
 */
+#include "global.h"
 
 #include <math.h>
 #include <ctype.h>
 
 #include "stralloc.h"
-#include "global.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>

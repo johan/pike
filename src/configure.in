@@ -347,7 +347,7 @@ else
       if test "$CC" = "$BINDIR/smartlink cc" -a -x /usr/bin/cc ; then
         CC="$BINDIR/smartlink /usr/bin/cc"
       fi
-      CFLAGS="-Aa -D_HPUX_SOURCE +Olibcalls $CFLAGS"
+      CFLAGS="-Ae +Olibcalls $CFLAGS"
       AC_TRY_COMPILE([int foo(int bar);],[],[],[
         CC="$OLD_CC"
 	CFLAGS="$OLD_CFLAGS"

@@ -1,3 +1,4 @@
+#include "global.h"
 #include <config.h>
 
 /* $Id$ */
@@ -20,7 +21,6 @@
 #undef COLORTABLE_DEBUG
 #undef COLORTABLE_REDUCE_DEBUG
 
-#include "global.h"
 RCSID("$Id$");
 
 #include <sys/types.h>

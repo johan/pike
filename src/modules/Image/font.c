@@ -1,4 +1,5 @@
 /* $Id$ */
+#include "global.h"
 #include <config.h>
 
 #define SPACE_CHAR 'i'
@@ -139,7 +140,6 @@ Kerningtable types:
 
 
 
-#include "global.h"
 #include "fdlib.h"
 
 #include <sys/types.h>

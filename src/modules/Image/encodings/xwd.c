@@ -19,12 +19,12 @@
 **!
 **! see also: Image, Image.image, Image.PNM, Image.X
 */
+#include "global.h"
 
 #include <math.h>
 #include <ctype.h>
 
 #include "stralloc.h"
-#include "global.h"
 RCSID("$Id$");
 #include "pike_macros.h"
 #include "object.h"
