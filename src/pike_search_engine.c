@@ -172,7 +172,7 @@ void NameN(init_boyer_moore_hubbe)(struct boyer_moore_hubbe_searcher *s,
 
 #ifdef PIKE_DEBUG
   if(needlelen < 2)
-    Pike_fatal("boyer-boore-hubbe search does not work with single-character search strings!\n");
+    Pike_fatal("boyer-moore-hubbe search does not work with single-character search strings!\n");
 #endif
   
 #ifdef TUNAFISH
