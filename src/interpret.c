@@ -1324,7 +1324,9 @@ void slow_check_stack(void)
   debug_check_stack();
 
   if(sp > &(evaluator_stack[stack_size]))
-    fatal("Stack overflow.\n");
+    fatal("Svalue stack overflow. "
+	  "(%d entries on stack, stack_size is %d entries)\n",
+	  sp-evaluator_stack,stack_size);
 
   if(mark_sp > &(mark_stack[stack_size]))
     fatal("Mark stack overflow.\n");
