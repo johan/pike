@@ -202,7 +202,6 @@ static void odbc_fix_fields(void)
       break;
     case SQL_VARCHAR:
       push_text("var string");
-      odbc_field_types[i] = SQL_C_BINARY;
       break;
     case SQL_DATE:
       push_text("date");
@@ -212,7 +211,6 @@ static void odbc_fix_fields(void)
       break;
     case SQL_LONGVARCHAR:
       push_text("var string");
-      odbc_field_types[i] = SQL_C_BINARY;
       break;
     case SQL_BINARY:
       push_text("binary");
@@ -237,7 +235,6 @@ static void odbc_fix_fields(void)
       break;
     default:
       push_text("unknown");
-      odbc_field_types[i] = SQL_C_BINARY;
       break;
     }
     push_text("length"); push_int64(precision);
@@ -434,7 +431,7 @@ static void f_fetch_row(INT32 args)
 	  }
 	  odbc_check_error("odbc->fetch_row", "SQLGetData() failed",
 			   code, NULL);
-	  if (len == SQL_NULL_DATA) {
+	  if (code == SQL_NULL_DATA) {
 #ifdef ODBC_DEBUG
 	    fprintf(stderr, "ODBC:fetch_row(): NULL\n");
 #endif /* ODBC_DEBUG */
