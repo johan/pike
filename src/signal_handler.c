@@ -2584,7 +2584,10 @@ void f_create_process(INT32 args)
       {
 	/* Restore the signals to the defaults. */
 #ifdef HAVE_SIGNAL
-        for(i=0; i<60; i++)
+#ifndef NSIG
+#define NSIG 60
+#endif /* !NSIG */
+        for(i=0; i<NSIG; i++)
           signal(i, SIG_DFL);
 #else
 #endif
