@@ -708,6 +708,8 @@ PMOD_EXPORT extern const char msg_thr_states_mixed[];
 #ifdef PIKE_DEBUG
 PMOD_EXPORT extern const char msg_thr_allow_in_gc[];
 PMOD_EXPORT extern const char msg_thr_allow_in_disabled[];
+PMOD_EXPORT extern const char msg_global_dynbuf_in_use[];
+extern dynamic_buffer pike_global_buffer;
 #endif
 
 PMOD_EXPORT extern int Pike_in_gc;
@@ -717,6 +719,8 @@ PMOD_EXPORT extern int Pike_in_gc;
      DO_IF_DEBUG({ \
        if (Pike_in_gc > 50 && Pike_in_gc < 300) \
 	 Pike_fatal(msg_thr_allow_in_gc, Pike_in_gc);			\
+       if (pike_global_buffer.s.str)					\
+	 Pike_fatal(msg_global_dynbuf_in_use);				\
      }) \
      if(num_threads > 1 && !threads_disabled) { \
        SWAP_OUT_THREAD(_tmp); \
@@ -754,6 +758,8 @@ PMOD_EXPORT extern int Pike_in_gc;
      DO_IF_DEBUG({ \
        if ((Pike_in_gc > 50) && (Pike_in_gc < 300)) { \
 	 debug_fatal(msg_thr_allow_in_gc, Pike_in_gc); \
+       if (pike_global_buffer.s.str)					\
+	 Pike_fatal(msg_global_dynbuf_in_use);				\
        } \
      }) \
      if(num_threads > 1 && !threads_disabled) { \

@@ -286,6 +286,8 @@ PMOD_EXPORT const char msg_thr_allow_in_gc[] =
 PMOD_EXPORT const char msg_thr_allow_in_disabled[] =
   "Threads allowed from a different thread "
   "while threads are disabled.\n";
+PMOD_EXPORT const char msg_global_dynbuf_in_use[] =
+  "Threads allowed while the global dynamic buffer is in use.\n";
 #endif
 
 struct thread_local
