@@ -1110,7 +1110,8 @@ multiset(string) get_supported_controls()
   //! Search LDAP directory.
   //!
   //! @param filter
-  //!   Search filter used when searching directory objects.
+  //!   Search filter used when searching directory objects. See RFC
+  //!   2254.
   //!
   //! @param attrs
   //!   The array of attribute names which will be returned by server.
@@ -1154,7 +1155,8 @@ multiset(string) get_supported_controls()
   //!	to follow his logic better.
   //!
   //! @seealso
-  //!  @[result], @[result.fetch], @[get_supported_controls]
+  //!  @[result], @[result.fetch], @[get_supported_controls],
+  //!  @[Protocols.LDAP.quote_filter_value]
   object|int search (string|void filter, array(string)|void attrs,
 		     int|void attrsonly,
 		     void|mapping(string:array(int|string)) controls) {
