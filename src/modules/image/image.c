@@ -1721,7 +1721,7 @@ void init_image_programs()
 		"function(int,int:object)",0);
 
    add_function("apply_matrix",image_apply_matrix,
-                "function(array,void|int ...:object)",0);
+                "function(array(array(int|array(int))), void|int ...:object)",0);
    add_function("modify_by_intensity",image_modify_by_intensity,
                 "function(int,int,int,int,int:object)",0);
 
