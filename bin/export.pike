@@ -93,7 +93,7 @@ int main(int argc, string *argv)
     sscanf(s,"%s release %d%s",string pre, int rel, string post);
     rel++;
     Stdio.File("pike/src/version.c","wct")->write(pre+" release "+rel+post);
-    system("cd pike/src ; cvs commit -m 'release number bumped by export.pike' version.c");
+    system("cvs commit -m 'release number bumped by export.pike' src/version.c");
 
     vpath=replace(getversion()," ","-");
     string tag=replace(vpath,({"Pike-","."}),({"","_"}));

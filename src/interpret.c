@@ -1471,6 +1471,7 @@ static int eval_instruction(unsigned char *pc)
     default:
       fatal("Strange instruction %ld\n",(long)instr);
     }
+
   }
 }
 
