@@ -2421,6 +2421,8 @@ PMOD_EXPORT int convert_stack_top_string_to_inumber(int base)
    character after the last one used in the number is put in *ENDPTR.  */
 PMOD_EXPORT double STRTOD_PCHARP(PCHARP nptr, PCHARP *endptr)
 {
+  /* Note: Code duplication in STRTOD. */
+
   register PCHARP s;
   short int sign;
 
@@ -2554,8 +2556,10 @@ PMOD_EXPORT double STRTOD_PCHARP(PCHARP nptr, PCHARP *endptr)
 
  underflow:
   /* Return an underflow error.  */
+#if 0
   if (endptr != NULL)
     *endptr = nptr;
+#endif
   errno = ERANGE;
   return 0.0;
   

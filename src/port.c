@@ -413,6 +413,8 @@ PMOD_EXPORT char *STRTOK(char *s1,char *s2)
    character after the last one used in the number is put in *ENDPTR.  */
 PMOD_EXPORT double STRTOD(const char * nptr, char **endptr)
 {
+  /* Note: Code duplication in STRTOD_PCHARP. */
+
   register const unsigned char *s;
   short int sign;
 
