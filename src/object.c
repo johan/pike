@@ -370,6 +370,7 @@ void destruct(struct object *o)
     if(!BEGIN_CYCLIC(o,0))
     {
       SET_CYCLIC_RET(1);
+      /* fprintf(stderr, "destruct(): Calling destroy().\n"); */
       safe_apply_low(o, e, 0);
       pop_stack();
       END_CYCLIC();
@@ -387,6 +388,8 @@ void destruct(struct object *o)
 
   if(o->parent)
   {
+    /* fprintf(stderr, "destruct(): Zapping parent.\n"); */
+
     free_object(o->parent);
     o->parent=0;
   }
@@ -485,12 +488,6 @@ void really_free_object(struct object *o)
     if(--o->refs > 0) return;
   }
 
-  if(o->parent)
-  {
-    free_object(o->parent);
-    o->parent=0;
-  }
-
   if(o->prev)
     o->prev->next=o->next;
   else
@@ -511,6 +508,14 @@ void really_free_object(struct object *o)
     o->prev=0;
     objects_to_destruct=o;
   } else {
+    if(o->parent)
+    {
+      /* fprintf(stderr, "really_free_object(): Zapping parent.\n"); */
+
+      free_object(o->parent);
+      o->parent=0;
+    }
+
     FREE_PROT(o);
     free((char *)o);
     GC_FREE();
