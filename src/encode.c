@@ -1101,6 +1101,11 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
 	 */
 	code_number(PIKE_BYTECODE_METHOD, data);
 
+#ifdef PIKE_USE_MACHINE_CODE
+        /* Add the checksum of the instrs array. */
+        code_number(instrs_checksum, data);
+#endif /* PIKE_USE_MACHINE_CODE */
+
 	/* program */
 #ifdef ENCODE_PROGRAM
 #ifdef PIKE_DEBUG
@@ -3124,6 +3129,18 @@ static void decode_value2(struct decode_data *data)
 	  if (bytecode_method != PIKE_BYTECODE_METHOD) {
 	    Pike_error("Unsupported byte-code method: %d\n", bytecode_method);
 	  }
+
+#ifdef PIKE_USE_MACHINE_CODE
+          {
+            size_t csum;
+            /* Check the checksum of the instrs array. */
+            decode_number(csum, data);
+            if (csum != instrs_checksum) {
+              Pike_error("Bad instruction checksum: %d (expected %d)\n",
+                         csum, instrs_checksum);
+            }       
+          }
+#endif /* PIKE_USE_MACHINE_CODE */
 
 	  /* Decode program */
 	  if (data->ptr + (int)local_num_program >= data->len) {

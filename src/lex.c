@@ -326,6 +326,7 @@ struct keyword instr_names[]=
 };
 
 struct instr instrs[F_MAX_INSTR - F_OFFSET];
+unsigned INT32 instrs_checksum;
 
 struct reserved
 {
@@ -365,6 +366,10 @@ void init_lex()
     instrs[instr_names[i].token - F_OFFSET].address=instr_names[i].address;
 #endif
   }
+
+#ifdef PIKE_USE_MACHINE_CODE
+  instrs_checksum = hashmem(instrs, sizeof(instrs), sizeof(instrs));
+#endif /* PIKE_USE_MACHINE_CODE */
 
 #ifdef PIKE_DEBUG
   for(i=1; i<F_MAX_OPCODE-F_OFFSET;i++)

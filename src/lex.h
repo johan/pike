@@ -119,6 +119,7 @@ struct lex
 
 extern struct lex lex;
 extern struct instr instrs[];
+extern unsigned INT32 instrs_checksum;
 
 /* Prototypes begin here */
 void exit_lex(void);
