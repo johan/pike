@@ -658,6 +658,8 @@ class Table {
 	return 0;
     }
 
+    /* Remove old junk, just in case. */
+    rm(filename+".opt");
     /* Create new database. */
     object opt = Chunk(filename+".opt", mode, this_object(), ([]));
 
