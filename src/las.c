@@ -204,7 +204,7 @@ struct pike_string *find_return_type(node *n)
 
   if(a)
   {
-    if(b && a!=b) return or_pike_types(a, b);
+    if(b && a!=b) return or_pike_types(a, b, 1);
     add_ref(a);
     return a;
   }
