@@ -736,9 +736,8 @@ static void f_error_create(INT32 args)
   do_free_string(GENERIC_ERROR_THIS->error_message);
   copy_shared_string(GENERIC_ERROR_THIS->error_message, msg);
   f_backtrace(0);
-  push_int (0);
-  push_int (Pike_sp[-2].u.array->size-2);
-  o_range ();
+  push_int (1);
+  o_range2 (RANGE_LOW_OPEN|RANGE_HIGH_FROM_END);
   assign_to_short_svalue ((union anything *)&GENERIC_ERROR_THIS->error_backtrace,
 			  PIKE_T_ARRAY, Pike_sp-1);
   pop_n_elems(args+1);
