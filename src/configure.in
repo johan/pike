@@ -319,9 +319,13 @@ fi
 
 LIBDIR=`(cd $srcdir/../lib ; pwd)`
 BINDIR=`(cd $srcdir/../bin ; pwd)`
+MANDIR=`(cd $srcdir/../man ; pwd)`
+BASEDIR=`(cd $srcdir/.. ; pwd)`
 BUILDDIR=`pwd`
 AC_SUBST(LIBDIR)
 AC_SUBST(BINDIR)
+AC_SUBST(MANDIR)
+AC_SUBST(BASEDIR)
 AC_SUBST(BUILDDIR)
 
 #############################################################################
