@@ -405,6 +405,7 @@ struct thread_state {
        DO_IF_PROFILING( (_tmp)->time_base = gethrtime() - time_base; ) \
        DO_IF_SECURITY( (_tmp)->current_creds = current_creds ;) \
        SWAP_OUT_TRACE(_tmp); \
+       thread_id = (struct object *)-1; \
       } while(0)
 
 #define SWAP_IN_THREAD(_tmp) do {\
