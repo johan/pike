@@ -1231,6 +1231,10 @@ PIKECLASS Backend
 #ifdef WSAENOTSOCK
 			case WSAENOTSOCK:
 #endif
+
+#ifdef DEBUG_MALLOC
+			  debug_malloc_dump_fd(i);
+#endif
 			  fatal("Filedescriptor %d (%s) caused fatal error %d in backend.\n",i,fd_info(i),errno);
 			  
 			case EINTR:
