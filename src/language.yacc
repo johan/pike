@@ -3332,6 +3332,14 @@ int low_add_local_name(struct compiler_frame *frame,
 		   "previous declaration on line %d\n",
 		   STR0(str), frame->variable[tmp].line);
     }
+
+    if(type == void_type_string)
+    {
+      if(str->size_shift)
+	my_yyerror("Local variables cannot be of type of 'void'.\n");
+      else
+	my_yyerror("Local variable '%s' is void.\n",STR0(str));
+    }
   }
 
   debug_malloc_touch(def);
