@@ -174,6 +174,9 @@
 /* Define if you have the pthread_yield function.  */
 #undef HAVE_PTHREAD_YIELD
 
+/* Define if your OS has the union wait. */
+#undef HAVE_UNION_WAIT
+
 /* Define if your cpp supports the ANSI concatenation operator ## */
 #undef HAVE_ANSI_CONCAT
 
