@@ -2624,7 +2624,7 @@ static RETSIGTYPE fatal_signal(int signum)
 void init_signals(void)
 {
   int e;
-
+  THREAD_T dummy;
 #ifdef USE_SIGCHLD
   my_signal(SIGCHLD, receive_sigchild);
 #endif
@@ -2632,7 +2632,7 @@ void init_signals(void)
 #ifdef USE_WAIT_THREAD
   co_init(& process_status_change);
   co_init(& start_wait_thread);
-  th_create_small(0,wait_thread,0);
+  th_create_small(&dummy,wait_thread,0);
 #endif
 
 #ifdef SIGPIPE
