@@ -854,8 +854,7 @@ void process_line(string s, string currentfile, int line)
       d=getridoftabs(d);
       descM->desc+=d;
     }
-    else
-    {
+    else if (descM) {
       if (!descM->desc) descM->desc="";
       else descM->desc+="\n";
     }
