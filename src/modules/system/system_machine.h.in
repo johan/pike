@@ -77,6 +77,9 @@
 /* Define if you have getprgp() */
 #undef HAVE_GETPGRP
 
+/* Define if you have getpgid() */
+#undef HAVE_GETPGID
+
 /* Define if you have getppid() */
 #undef HAVE_GETPPID
 
