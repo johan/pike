@@ -11,7 +11,3 @@ CONFIG_HEADERS=@CONFIG_HEADERS@
 
 @dynamic_module_makefile@
 @dependencies@
-
-spotless: clean
-	-rm config.* pgres_config.h
-
