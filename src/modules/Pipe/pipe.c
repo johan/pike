@@ -333,7 +333,7 @@ static int read_some_data(void)
 
   if (!i || i->type != I_BLOCKING_OBJ) {
     fatal("PIPE: read_some_data(): Bad input type!\n");
-    return;
+    return(0);	/* Keep compiler happy */
   }
   push_int(8192);
   push_int(1);    /* We don't care if we don't get all 8192 bytes. */
