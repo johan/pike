@@ -1326,7 +1326,7 @@ static TH_RETURN_TYPE wait_thread(void *data)
  *!       The process was killed by a signal.
  *!   @endint
  *!
- *! @seelalso
+ *! @seealso
  *!   @[TraceProcess()->wait()]
  */
 static void f_pid_status_wait(INT32 args)
