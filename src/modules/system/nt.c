@@ -18,7 +18,11 @@
 
 #ifdef __NT__
 
+#ifdef HAVE_WINSOCK2_H
+#include <winsock2.h>
+#else
 #include <winsock.h>
+#endif
 #include <windows.h>
 #include <accctrl.h>
 #include <lm.h>
