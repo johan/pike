@@ -48,6 +48,10 @@
   
 #define isidchar(X) is8bitalnum(X)
 
+#ifndef HAVE_ISGRAPH
+#define isgraph(X)	(ispunct(X) || isupper(X) || islower(X) || isdigit(X))
+#endif /* !HAVE_ISGRAPH */
+
 #define ALIGN_BOUND sizeof(char *)
 
 #ifdef __GNUC__
