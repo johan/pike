@@ -5195,6 +5195,12 @@ static void run_cleanup(struct compilation *c, int delayed)
 
 #ifdef PIKE_DEBUG
       if (p->refs > 1) {
+	/* Other programs can have indexed out constants from p, which
+	 * might be broken themselves and/or keep references to p
+	 * through the parent pointer. We should find all those other
+	 * programs and invalidate them too, but how can that be done?
+	 * The whole delayed compilation thingie is icky icky icky... :P
+	 * /mast */
 	fprintf(stderr, "Warning: Program still got %d "
 		"external refs after unregister:\n", p->refs - 1);
 	locate_references(p);
