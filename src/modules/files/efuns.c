@@ -900,10 +900,11 @@ void f_get_dir(INT32 args)
 #else
 #error Unknown readdir_r variant
 #endif
+	/* Filter "." and ".." from the list. */
 	if(d->d_name[0]=='.')
 	{
-	  if(!d->d_name[1]) continue;
-	  if(d->d_name[1]=='.' && !d->d_name[2]) continue;
+	  if(NAMLEN(d)==1) continue;
+	  if(d->d_name[1]=='.' && NAMLEN(d)==2) continue;
 	}
 	if(num_files >= FPR) break;
 	lens[num_files]=NAMLEN(d);
