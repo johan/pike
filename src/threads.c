@@ -11,6 +11,7 @@ int threads_disabled = 0;
 #include "macros.h"
 #include "callback.h"
 
+
 struct object *thread_id;
 static struct callback *threads_evaluator_callback=0;
 
@@ -99,7 +100,9 @@ void f_thread_create(INT32 args)
   arg=ALLOC_STRUCT(thread_starter);
   arg->args=aggregate_array(args);
   arg->id=clone(thread_id_prog,0);
+
   tmp=th_create(&dummy,new_thread_func,arg);
+
   if(!tmp)
   {
     num_threads++;
@@ -142,6 +145,10 @@ void f_this_thread(INT32 args)
 
 void th_init()
 {
+#ifdef SGI_SPROC_THREADS
+#error /* Need to specify a filename */
+  us_cookie = usinit("");
+#endif /* SGI_SPROC_THREADS */
   mt_lock( & interpreter_lock);
 #ifdef POSIX_THREADS
   pthread_attr_init(&pattr);
