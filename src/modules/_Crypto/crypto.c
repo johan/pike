@@ -521,6 +521,7 @@ void pike_module_init(void)
   MOD_INIT(crypto)();
   MOD_INIT(idea)();
   MOD_INIT(des)();
+  MOD_INIT(cast)();
   MOD_INIT(rc4)();
   MOD_INIT(invert)();
 
@@ -540,6 +541,7 @@ void pike_module_exit(void)
   MOD_EXIT(md5)();
   MOD_EXIT(crypto)();
   MOD_EXIT(idea)();
+  MOD_EXIT(cast)();  
   MOD_EXIT(des)();
   MOD_EXIT(rc4)();
   MOD_EXIT(invert)();
