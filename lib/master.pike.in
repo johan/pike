@@ -835,7 +835,6 @@ class dirnode
     {
 #ifdef MODULE_TRACE
       werror("%*ndirnode(%O,%O);\n",sizeof(backtrace())-1,d,h);
-      _verify_internals();
 //      werror(describe_backtrace( ({"HERE\n",backtrace()})));
 #endif
       dirname=d;
@@ -2466,12 +2465,9 @@ string describe_backtrace(mixed trace, void|int linewidth)
       // looks odd when the repeat message ends the backtrace.
       array(string) tail = frames[loop_start + sizeof(frames) ..
 				  loop_next - 1 + sizeof(frames)];
-      if (loops) {
-	frames += ({
-	  sprintf("... last %d frames above repeated %d times ...\n",
-			     -loop_start, loops)
-	});
-      }
+      if (loops)
+	frames += ({sprintf("... last %d frames above repeated %d times ...\n",
+			     -loop_start, loops)});
       frames += tail;
     }
 
