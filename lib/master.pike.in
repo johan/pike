@@ -724,7 +724,7 @@ class joinnode
         {
 	  // Only join directorynodes (or joinnodes).
 	  res += ({ ret });
-	} else if ( ret ) {
+	} else if ( !zero_type(ret) ) {
 	  return (ret);
 	} else {
 	  // Ignore
