@@ -2027,6 +2027,12 @@ node *low_mkconstantsvaluenode(struct svalue *s)
   node *res = mkemptynode();
   res->token = F_CONSTANT;
   assign_svalue_no_free(& res->u.sval, s);
+#ifdef SHARED_NODES
+  if (s->type != T_INT && s->type != T_STRING && s->type != T_FUNCTION)
+    /* The subtype is part of the hash, so make sure it got a defined
+     * value here. */
+    res->u.sval.subtype = 0;
+#endif
   if(s->type == T_OBJECT ||
      (s->type==T_FUNCTION && s->subtype!=FUNCTION_BUILTIN))
   {
