@@ -338,6 +338,7 @@ OPCODE1(F_ARRAY_LVALUE, "[ lvalues ]")
   /* FIXME: Shouldn't a ref be added here? */
   Pike_sp[0] = Pike_sp[-1];
   Pike_sp[-1].type = T_ARRAY_LVALUE;
+  dmalloc_touch_svalue(Pike_sp);
   Pike_sp++;
 BREAK;
 
