@@ -306,6 +306,12 @@ hilfe: $(TMP_BINDIR)/hilfe Makefile
 	fi
 	@echo "Done."
 
+dump_modules: pike master-stamp $(SRCDIR)/dumpmodule.pike
+	args="$(DUMPARGS)"; \
+	cd $(LIBDIR_SRC) && \
+	$(RUNPIKE) $(SRCDIR)/dumpmodule.pike \
+	$${args:- --update-only="$(TMP_BUILDDIR)/dumpversion" --report-failed} \
+	--recursive --target-dir="$(TMP_BUILDDIR)/lib" modules 2>dumpmodule.log
 
 .SUFFIXES: .c .h .o .cmod .pp .pph .protos .h_src
 
