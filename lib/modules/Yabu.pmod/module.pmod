@@ -14,9 +14,9 @@ constant cvs_id = "$Id$";
 
 #if constant(thread_create)
 #define THREAD_SAFE
-#define LOCK() do { object key___; catch(key___=lock())
+#define LOCK() do { object key___; catch(key___=mutex_lock())
 #define UNLOCK() key___=0; } while(0)
-#define INHERIT_MUTEX static inherit Thread.Mutex;
+#define INHERIT_MUTEX static inherit Thread.Mutex:mutex; function(int(0..2)|void:object) mutex_lock = mutex::lock;
 #else
 #undef  THREAD_SAFE
 #define LOCK() do {
