@@ -57,20 +57,8 @@ multiset(string) prefix_tokens = (<>);
 
 //. + number
 //.   Sequence number of this rule (used for conflict resolving)
+//.   Also used to identify the rule.
 int number = 0;
-
-//. + rule_hash
-//.   Hash value used to compare rules.
-string rule_hash;
-
-//. - make_rule_hash
-//.   Compute the rule_hash.
-void make_rule_hash()
-{
-  if (!rule_hash) {
-    rule_hash = sprintf("%O:%O:%O", nonterminal, symbols, action);
-  }
-}
 
 /*
  * Functions
