@@ -23,7 +23,7 @@ object make_time(int t)
 {
   Calendar.Second second = Calendar.Second(t)->set_timezone("UTC");
 
-  if (second->year_no() >= 2050) {
+  if (second->year_no() >= 2050)
     error( "Tools.X509.make_time: "
 	   "Times later than 2049 not supported yet\n" );
 
