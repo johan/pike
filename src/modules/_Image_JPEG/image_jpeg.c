@@ -43,7 +43,7 @@ RCSID("$Id$");
 #ifdef DYNAMIC_MODULE
 static struct program *image_program=NULL;
 #else
-extern struct program *image_program=NULL; 
+extern struct program *image_program; 
 /* Image module is probably linked static too. */
 #endif
 
