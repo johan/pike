@@ -338,9 +338,12 @@ void udp_wait(INT32 args)
   pollfds->events = POLLIN;
   pollfds->revents = 0;
   ms = timeout * 1000;
-  res = poll(pollfds, 1, ms);
-  e = errno;
 
+  do {
+    res = poll(pollfds, 1, ms);
+    e = errno;
+  } while (res < 0 && e == EINTR)
+    
   THREADS_DISALLOW();
   if (!res) {
     /* Timeout */
