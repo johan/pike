@@ -17,16 +17,26 @@ pushdef([AC_PROG_CC],
 
   AC_PROG_CC
 
-  case "`$CC -V 2>&1|head -1`" in
-    tcc*)
-      TCC="yes"
-      if echo "$CC $CFLAGS $CPPFLAGS" | grep " -Y" >/dev/null; then :; else
-	# We want to use the system API's...
-	CPPFLAGS="-Ysystem $CPPFLAGS"
-      fi
-    ;;
-    *) TCC="no" ;;
-  esac
+  AC_MSG_CHECKING([if we are using TCC])
+  AC_CACHE_VAL(pike_cv_prog_tcc, [
+    case "`$CC -V 2>&1|head -1`" in
+      tcc*)
+        pike_cv_prog_tcc="yes"
+      ;;
+      *) pike_cv_prog_tcc="no" ;;
+    esac
+  ])
+  if test "x$pike_cv_prog_tcc" = "xyes"; then
+    AC_MSG_RESULT(yes)
+    TCC="yes"
+    if echo "$CC $CFLAGS $CPPFLAGS" | grep " -Y" >/dev/null; then :; else
+      # We want to use the system API's...
+      CPPFLAGS="-Ysystem $CPPFLAGS"
+    else :; fi
+  else
+    AC_MSG_RESULT(no)
+    TCC=no
+  fi
 ])
 
 define([MY_AC_PROG_CC],
@@ -119,21 +129,25 @@ ifdef([PIKE_INCLUDE_PATH],
 dynamic_module_makefile=PIKE_INCLUDE_PATH/dynamic_module_makefile
 static_module_makefile=PIKE_INCLUDE_PATH/dynamic_module_makefile
 ],[
-dynamic_module_makefile=../dynamic_module_makefile
-static_module_makefile=../static_module_makefile
+  AC_MSG_CHECKING([for the Pike module base directory])
 
-counter=.
+  dynamic_module_makefile=../dynamic_module_makefile
+  static_module_makefile=../static_module_makefile
 
-while test ! -f "$dynamic_module_makefile"
-do
-  counter=.$counter
-  if test $counter = .......... ; then
-    exit 1
-  else
-    :
-  fi
-  dynamic_module_makefile=../$dynamic_module_makefile
-  static_module_makefile=../$static_module_makefile
-done
+  counter=.
+
+  while test ! -f "$dynamic_module_makefile"
+  do
+    counter=.$counter
+    if test $counter = .......... ; then
+      AC_MSG_RESULT(failed)
+      exit 1
+    else
+      :
+    fi
+    dynamic_module_makefile=../$dynamic_module_makefile
+    static_module_makefile=../$static_module_makefile
+  done
+  AC_MSG_RESULT(found)
 ])
 ])
