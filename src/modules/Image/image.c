@@ -1673,6 +1673,7 @@ static void image_gradients(INT32 args)
 
 /*
 **! method object test()
+**! method object test(int seed)
 **!    	Generates a test image, currently random gradients.
 **!
 **!	<table><tr valign=center>
@@ -1693,7 +1694,8 @@ static void image_gradients(INT32 args)
 void image_test(INT32 args)
 {
    int i;
-   pop_n_elems(args);
+
+   if (args) f_random_seed(args);
 
    for (i=0; i<5; i++)
    {
@@ -3774,7 +3776,7 @@ void pike_module_init(void)
                 "function(:object)",0);
 
    add_function("test",image_test,
-		"function(:object)",0);
+		"function(void|int:object)",0);
 
    set_init_callback(init_image_struct);
    set_exit_callback(exit_image_struct);
