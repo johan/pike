@@ -2375,7 +2375,7 @@ static void low_search_all_memheaders_for_references(void)
 	  __except( 1 ) {
 	    fprintf(stderr,"*** DMALLOC memory access error ***\n");
 	    fprintf(stderr,"Failed to access this memory block:\n");
-	    fprintf(stderr,"Location: %p, size=%ld, gc_generation=%d, flags=%d\n",
+	    fprintf(stderr,"Block: %p, size=%ld, gc_generation=%d, flags=%d\n",
 		    m->data,
 		    m->size,
 		    m->gc_generation,
