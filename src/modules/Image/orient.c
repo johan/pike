@@ -169,8 +169,11 @@ void image_orient(INT32 args)
       mag=sp[-args].u.integer;
     else if (sp[-args].type==T_FLOAT)
       mag=sp[-args].u.float_number;
-    else
+    else {
       error("Illegal argument 1 to image->orient\n");
+      /* Not reached, but keeps the compiler happy. */
+      mag = 0.0;
+    }
   }
   else mag=1.0;
 
