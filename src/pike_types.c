@@ -1211,7 +1211,7 @@ void simple_describe_type(struct pike_type *s)
 	
       case PIKE_T_UNKNOWN: printf("unknown"); break;
       case PIKE_T_RING:
-	printf("ring(";
+	printf("ring(");
 	simple_describe_type(s->car);
 	printf("°");
 	simple_describe_type(s->cdr);
