@@ -23,11 +23,17 @@
 									\
     __asm__("\tmr %0,"PPC_REGNAME(2) : "=r" (toc_));			\
     delta_ = ((char *)func_) - ((char *)toc_);				\
-    if(delta_ < -32768 || delta_ > 32767)				\
-      Pike_fatal("Function pointer %p out of range for TOC @ %p!\n",		\
-	    func_, toc_);						\
-    /* lwz r0,delta(r2)	*/						\
-    LWZ(0, 2, delta_);							\
+    if(delta_ < -32768 || delta_ > 32767) {				\
+      /* addis r11,r2,%hi(delta) */					\
+      ADDIS(11, 2, (delta_+32768)>>16);					\
+      if ((delta_ &= 0xffff) > 32767)					\
+	delta_ -= 65536;						\
+      /* lwz r0,%lo(delta)(r11) */					\
+      LWZ(0, 11, delta_);						\
+    } else {								\
+      /* lwz r0,delta(r2)	*/					\
+      LWZ(0, 2, delta_);						\
+    }									\
     /* mtlr r0 */							\
     add_to_program(0x7c0803a6);						\
     /* blrl */								\
