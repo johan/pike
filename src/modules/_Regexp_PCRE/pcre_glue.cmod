@@ -91,7 +91,6 @@ PIKECLASS _pcre
 	       break;
 	 }
 	 add_ref(THIS->pattern);
-	 add_ref(THIS->pattern);
 
 	 if (THIS->re) (*pcre_free)(THIS->re); /* -> free() usually */
 	 if (THIS->extra) (*pcre_free)(THIS->extra); /* -> free() usually */
@@ -318,6 +317,17 @@ PIKECLASS _pcre
 	 }
       }
 
+/*! @decl int get_stringnumber(string stringname)
+ *!    returns the number of a named subpattern
+ */
+
+   PIKEFUN int get_stringnumber(string stringname)
+      {
+	 if (stringname->size_shift)
+	    SIMPLE_BAD_ARG_ERROR("get_stringnumber",1,"string (8bit)");
+	 RETURN pcre_get_stringnumber(THIS->re,stringname->str);
+      }
+
    INIT
       {
 	 THIS->re=NULL;
@@ -329,19 +339,8 @@ PIKECLASS _pcre
       {
 	 if (THIS->re) (*pcre_free)(THIS->re); /* -> free() usually */
 	 if (THIS->extra) (*pcre_free)(THIS->extra); /* -> free() usually */
-	 if (THIS->pattern) free_string(THIS->pattern);
       }
 
-/*! @decl int get_stringnumber(string stringname)
- *!    returns the number of a named subpattern
- */
-
-   PIKEFUN int get_stringnumber(string stringname)
-      {
-	 if (stringname->size_shift)
-	    SIMPLE_BAD_ARG_ERROR("get_stringnumber",1,"string (8bit)");
-	 RETURN pcre_get_stringnumber(THIS->re,stringname->str);
-      }
 }
 
 /*! @endclass
