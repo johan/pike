@@ -9,7 +9,9 @@
 //! of the system directories @tt{/opt/share, /usr/local/share,
 //! /opt@} or @tt{/usr/local/@}. The user's home directory is
 //! determined by examining the environment variable HOME, and
-//! if that fails the environment variable USERPROFILE.
+//! if that fails the environment variable USERPROFILE. If the 
+//! environment variable PIKE_LOCAL_PATH is set, the paths specified
+//! there will be searched first.
 //! @seealso
 //!   @[Local.add_path()], @[Local.remove_path()]
 //!
@@ -65,9 +67,15 @@ static void create() {
   add_path("/opt/pike_modules");
   add_path("/opt/share/pike_modules");
   add_path("/usr/local/share/pike_modules");
+
   if( (tmp=getenv("HOME")) || (tmp=getenv("USERPROFILE")) ) {
     tmp = (tmp[-1]=='/'?tmp:tmp+"/")+"pike_modules/";
     add_path(tmp);
+  }
+
+  if(tmp = getenv("PIKE_LOCAL_PATH") ) {
+    array to_add=tmp/":";
+    add_path( to_add[*] ); 
   }
 }
 
