@@ -1841,6 +1841,10 @@ void init_signals(void)
 #endif
 #endif
 
+#ifdef IGNORE_SIGFPE
+  my_signal(SIGFPE, SIG_IGN);
+#endif
+
   for(e=0;e<MAX_SIGNALS;e++)
     signal_callbacks[e].type=T_INT;
 
