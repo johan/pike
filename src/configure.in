@@ -5688,19 +5688,21 @@ CFLAGS="$NEW_CFLAGS"
 ##########################################################################
 
 case "x$pike_cv_sys_os" in
-  xSolaris | xAIX | xDarwin)
+  xWindows_NT)
+  ;;
+
+  xLinux)
+    # Linux's stupid thread implementation doesn't survive USE_WAIT_THREAD.
+    AC_DEFINE(USE_SIGCHILD)
+  ;;
+
+  *)
+   # This is valid for at least Solaris, AIX and Darwin.
    if grep _REENTRANT confdefs.h >/dev/null 2>&1; then
      AC_DEFINE(USE_WAIT_THREAD)
    else
      AC_DEFINE(USE_SIGCHILD)
    fi
-  ;;
-
-  xWindows_NT)
-  ;;
-
-  *)
-    AC_DEFINE(USE_SIGCHILD)
   ;;
 esac
 
