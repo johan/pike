@@ -374,7 +374,7 @@ static void encode_type(struct pike_type *t, struct encode_data *data)
 
       if(t->cdr)
       {
-	ptrdiff_t id = CAR_TO_INT(t);
+	ptrdiff_t id = CDR_TO_INT(t);
 	if( id >= PROG_DYNAMIC_ID_START )
 	{
 	  struct program *p=id_to_program(id);
