@@ -70,8 +70,7 @@ int encoder_flg(AVCodec *codec) {
   return(flg);
 }
 
-/*!
- *! @module _Ffmpeg
+/*! @module _Ffmpeg
  */
 
 /*! @class ffmpeg
