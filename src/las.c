@@ -312,6 +312,8 @@ struct pike_type *find_return_type(node *n)
 
   if(!n) return 0;
 
+  optimize(n);
+
   if (n->token == F_RETURN) {
     if (CAR(n)) {
       if (CAR(n)->type) {
