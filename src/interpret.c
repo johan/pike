@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 RCSID("$Id$");
 #include "interpret.h"
@@ -854,7 +855,8 @@ void mega_apply2(enum apply_type type, INT32 args, void *arg1, void *arg2)
       fp = new_frame;
       
       if(function->func.offset == -1)
-	PIKE_ERROR(function->name->str, "Calling undefined function.\n", sp, args);
+	PIKE_ERROR(function->name->str, "Calling undefined function.\n",
+		   sp, args);
       
       tailrecurse=-1;
 
