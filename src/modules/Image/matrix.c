@@ -674,7 +674,6 @@ static void img_skewx(struct image *src,
    s=src->img;
 
    if (!src->xsize || !src->ysize) {
-     free(d);
      return;
    }
 
@@ -763,7 +762,6 @@ static void img_skewy(struct image *src,
    rgb=dest->rgb;
 
    if (!src->xsize || !src->ysize) {
-     free(d);
      return;
    }
 
