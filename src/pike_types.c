@@ -106,6 +106,7 @@ void init_types(void)
   string_type_string = CONSTTYPE(tString);
   int_type_string = CONSTTYPE(tInt);
   object_type_string = CONSTTYPE(tObj);
+  program_type_string = CONSTTYPE(tPrg);
   float_type_string = CONSTTYPE(tFloat);
   mixed_type_string=CONSTTYPE(tMix);
   array_type_string=CONSTTYPE(tArray);
