@@ -654,7 +654,10 @@ static int internal_cmpfun(INT32 *a,
 			   cmpfun current_cmpfun,
 			   struct svalue *current_array_p)
 {
-  return current_cmpfun(current_array_p + *a, current_array_p + *b);
+  int res = current_cmpfun(current_array_p + *a, current_array_p + *b);
+  /* If the comparison considers the elements equal we compare their
+   * positions. Thus we get a stable sort function. */
+  return res ? res : *a - *b;
 }
 
 #define CMP(X,Y) internal_cmpfun((X),(Y),current_cmpfun, current_array_p)
@@ -669,6 +672,7 @@ static int internal_cmpfun(INT32 *a,
 #undef EXTRA_ARGS
 #undef XARGS
 
+/* The sort is stable. */
 INT32 *get_order(struct array *v, cmpfun fun)
 {
   INT32 e, *current_order;
