@@ -1083,7 +1083,7 @@ soft_cast: '[' type ']'
     }
     ;
 
-full_type: type8
+full_type: type4
   | full_type '*'
   {
     if (Pike_compiler->compiler_pass == 2) {
