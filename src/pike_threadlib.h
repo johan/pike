@@ -299,7 +299,7 @@ extern pthread_attr_t small_pattr;
 
 #define THREAD_T unsigned
 #define th_setconcurrency(X)
-#define th_create(ID,fun,arg) low_nt_create_thread(2*1024*1024,fun, arg,ID)
+#define th_create(ID,fun,arg) low_nt_create_thread(thread_stack_size,fun, arg,ID)
 #define th_create_small(ID,fun,arg) low_nt_create_thread(8192*sizeof(char *), fun,arg,ID)
 #define TH_RETURN_TYPE unsigned __stdcall
 #define TH_STDCALL __stdcall

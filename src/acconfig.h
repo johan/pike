@@ -530,6 +530,9 @@
 
 @BOTTOM@
 
+/* Define to the size of the c-stack for new threads */
+#undef PIKE_THREAD_C_STACK_SIZE
+
 /* NT stuff */
 #undef HAVE_GETSYSTEMTIMEASFILETIME
 #undef HAVE_LOADLIBRARY
