@@ -1802,6 +1802,8 @@ void init_shared_string_table(void)
   }
 #endif
   empty_pike_string = make_shared_string("");
+
+  initialize_global_buf();
 }
 
 #ifdef DEBUG_MALLOC

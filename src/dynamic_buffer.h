@@ -44,6 +44,7 @@ PMOD_EXPORT char *make_buf_space(INT32 space);
 PMOD_EXPORT void my_putchar(char b);
 PMOD_EXPORT void my_binary_strcat(const char *b, ptrdiff_t l);
 PMOD_EXPORT void my_strcat(const char *b);
+PMOD_EXPORT void initialize_global_buf(void);
 PMOD_EXPORT void init_buf(void);
 PMOD_EXPORT void init_buf_with_string(string s);
 PMOD_EXPORT char *debug_return_buf(void);
