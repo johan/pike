@@ -910,11 +910,13 @@ while(1)					\
     if(data[pos+1]=='\n')			\
     {						\
       pos++;					\
+      this->current_line++;			\
       continue;					\
     }						\
     if(data[pos+1]=='\r' && data[pos+2]=='\n')	\
     {						\
       pos+=2;					\
+      this->current_line++;			\
       continue;					\
     }						\
     READCHAR(tmp);				\
