@@ -1637,7 +1637,7 @@ static void file_open(INT32 args)
 	ref_push_string(flag_str);
 	push_int(access);
 
-	safe_apply(OBJ2CREDS(Pike_interpreter.current_creds)->user,"valid_open",5);
+	safe_apply(OBJ2CREDS(CURRENT_CREDS)->user,"valid_open",5);
 	switch(Pike_sp[-1].type)
 	{
 	   case PIKE_T_INT:
