@@ -47,6 +47,10 @@
 #ifdef _MIT_POSIX_THREADS
 #define POSIX_THREADS
 #include <pthread.h>
+
+/* AIX is *STUPID* - Hubbe */
+#undef func_data
+
 #undef HAVE_PTHREAD_H
 #endif /* _MIT_POSIX_THREADS */
 
