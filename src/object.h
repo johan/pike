@@ -69,7 +69,6 @@ PMOD_EXPORT struct object *debug_master(void);
 struct destroy_called_mark;
 PTR_HASH_ALLOC(destroy_called_mark,128)
 static void call_destroy(struct object *o, int foo);
-void low_destruct(struct object *o,int do_free);
 PMOD_EXPORT void destruct(struct object *o);
 PMOD_EXPORT void destruct_objects_to_destruct(void);
 PMOD_EXPORT void schedule_really_free_object(struct object *o);
