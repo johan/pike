@@ -153,7 +153,7 @@ struct format_info
   short flags;
   char pos_pad;
   int column_width;
-  int column_modulo;
+  ptrdiff_t column_modulo;
 };
 
 /* FIXME:
@@ -588,7 +588,7 @@ INLINE static int do_one(struct format_stack *fs,
   }
   else if(f->flags & COLUMN_MODE)
   {
-    int mod;
+    ptrdiff_t mod;
     ptrdiff_t col;
     PCHARP end;
 
