@@ -343,6 +343,7 @@ void print_return_value(void)
 
 void pop_n_elems(INT32 x)
 {
+  if(!x) return;
 #ifdef DEBUG
   if(sp - evaluator_stack < x)
     fatal("Popping out of stack.\n");
