@@ -51,3 +51,17 @@ multiset(object /* (item) */ ) relation = (<>);
 //. + counter
 //.   Depth counter (used when compiling).
 int counter = 0;
+
+//. + item_hash
+//.   Hash used to compare items.
+string item_hash;
+
+//. - make_item_hash
+//.   Calculate the item hash.
+void make_item_hash()
+{
+  r->make_rule_hash();
+  if (!item_hash) {
+    item_hash = r->rule_hash + "·" + offset;
+  }
+}
