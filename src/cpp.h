@@ -21,13 +21,10 @@ struct cpp;
 static void cpp_error(struct cpp *this, const char *err);
 static void cpp_error_vsprintf (struct cpp *this, const char *fmt,
 				va_list args);
-static void cpp_error_sprintf(struct cpp *this, const char *fmt, ...)
-  ATTRIBUTE((format(printf,2,3)));
+static void cpp_error_sprintf(struct cpp *this, const char *fmt, ...);
 static void cpp_handle_exception(struct cpp *this,
-				 const char *cpp_error_fmt, ...)
-  ATTRIBUTE((format(printf,2,3)));
-static void cpp_warning(struct cpp *this, const char *cpp_warn_fmt, ...)
-  ATTRIBUTE((format(printf,2,3)));
+				 const char *cpp_error_fmt, ...);
+static void cpp_warning(struct cpp *this, const char *cpp_warn_fmt, ...);
 void PUSH_STRING(char *str,
 		 INT32 len,
 		 dynamic_buffer *buf);
