@@ -1414,9 +1414,7 @@ OPCODE0(F_NEGATE, "unary minus", 0, {
   }
 });
 
-OPCODE0(F_COMPL, "~", 0, {
-  o_compl();
-});
+OPCODE0_ALIAS(F_COMPL, "~", 0, o_compl);
 
 OPCODE0(F_NOT, "!", 0, {
   switch(Pike_sp[-1].type)
@@ -1444,13 +1442,8 @@ OPCODE0(F_NOT, "!", 0, {
   }
 });
 
-OPCODE0(F_LSH, "<<", 0, {
-  o_lsh();
-});
-
-OPCODE0(F_RSH, ">>", 0, {
-  o_rsh();
-});
+OPCODE0_ALIAS(F_LSH, "<<", 0, o_lsh);
+OPCODE0_ALIAS(F_RSH, ">>", 0, o_rsh);
 
 #define COMPARISON(ID,DESC,EXPR)	\
   OPCODE0(ID, DESC, 0, {		\
