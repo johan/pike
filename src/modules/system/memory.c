@@ -338,7 +338,7 @@ static void memory__mmap(INT32 args,int complain,int private)
 #ifndef MAP_FAILED
 #define MAP_FAILED ((void*)(ptrdiff_t)-1)
 #endif
-   if ((mem==MAP_FAILED) && (errno==EACCES)) /* try without write */
+   if ((mem==(void *)MAP_FAILED) && (errno==EACCES)) /* try without write */
    {
       resflags&=~MEM_WRITE;
       mem=mmap(NULL,size,PROT_READ,flags,fd,offset);
@@ -346,7 +346,7 @@ static void memory__mmap(INT32 args,int complain,int private)
 
    if (doclose) fd_close(fd); /* don't need this one anymore */
 
-   if (mem==MAP_FAILED)
+   if (mem==(void *)MAP_FAILED)
    {
       if (!complain)
 	 RETURN(0);
