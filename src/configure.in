@@ -999,6 +999,7 @@ AC_CHECK_FUNCS( \
  getgrent getgrnam \
  initgroups setgroups \
  socketpair \
+ nice \
 )
 
 if test x$pike_cv_sys_os = xWindows_NT ; then
