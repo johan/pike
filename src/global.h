@@ -436,8 +436,7 @@ typedef struct p_wchar_p
 #endif
 
 #ifndef DO_PIKE_CLEANUP
-#if defined(PURIFY) || defined(__CHECKER__) ||				\
-  defined(DEBUG_MALLOC) || defined(USE_VALGRIND)
+#if defined(PURIFY) || defined(__CHECKER__) || defined(DEBUG_MALLOC)
 #define DO_PIKE_CLEANUP
 #endif
 #endif
