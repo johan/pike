@@ -3882,6 +3882,8 @@ void pike_module_init(void)
 		tFunc(tOr3(tObj,tArr(tInt),tInt),tObj),0);
    ADD_FUNCTION("`*",image_operator_multiply,
 		tFunc(tOr3(tObj,tArr(tInt),tInt),tObj),0);
+   ADD_FUNCTION("`/",image_operator_divide,
+		tFunc(tOr3(tObj,tArr(tInt),tInt),tObj),0);
    ADD_FUNCTION("`&",image_operator_minimum,
 		tFunc(tOr3(tObj,tArr(tInt),tInt),tObj),0);
    ADD_FUNCTION("`|",image_operator_maximum,
