@@ -427,9 +427,9 @@ int main()
       return 0;
    return 1;
 }
-],[pike_cv_have_rdtsc=yes],[pike_cv_have_rdtsc=no])])
+],[pike_cv_have_rdtsc=yes],[pike_cv_have_rdtsc=no],[pike_cv_have_rdtsc="possibly not"])])
 AC_MSG_RESULT($pike_cv_have_rdtsc)
-if test $pike_cv_have_rdtsc = yes; then
+if test "$pike_cv_have_rdtsc" = yes; then
   AC_DEFINE(HAVE_RDTSC)
 fi
 
