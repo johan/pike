@@ -29,7 +29,7 @@ void seek(int skip) {
 }
 
 int eof() {
-  return recno>sizeof(stash);
+  return recno>=sizeof(stash);
 }
 
 int num_rows() {
