@@ -2848,7 +2848,7 @@ static TH_RETURN_TYPE proxy_thread(void * data)
 
   fd_close(p->to);
   fd_close(p->from);
-  mt_lock_interpreter();
+  low_mt_lock_interpreter();	/* Can run even if threads_disabled. */
   num_threads--;
   mt_unlock_interpreter();
   free((char *)p);

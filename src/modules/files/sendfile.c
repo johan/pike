@@ -605,7 +605,7 @@ static void worker(void *this_)
 
   low_do_sendfile(this);
 
-  mt_lock_interpreter();
+  low_mt_lock_interpreter();	/* Can run even if threads_disabled. */
 
   /*
    * Unlock the fd's
