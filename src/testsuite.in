@@ -3644,6 +3644,26 @@ test_any([[
 return FOOa(3);
 ]],3)
 
+test_any_equal([[
+#define FOOa(X,Y...) ({X,Y})
+return FOOa(3);
+]],({3}))
+
+test_any_equal([[
+#define FOOa(X,Y...) ({X,Y})
+return FOOa(3,4);
+]],({3,4}))
+
+test_any_equal([[
+#define FOOa(X,Y...) ({X,Y})
+return FOOa(3,4,5);
+]],({3,4,5}))
+
+test_any_equal([[
+#define FOOa(X,Y...) ({X,Y})
+return FOOa(3,4,5,6);
+]],({3,4,5,6}))
+
 test_any([[
 #define FOOa(X) "bar\
 gazonk"
