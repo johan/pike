@@ -210,7 +210,7 @@ static const struct case_info case_info[] = {
 #else /* !IN_TPIKE */
 #include "case_info.h"
 #endif /* IN_TPIKE */
-  { 0x10000, CIM_NONE, 0x0000, },	/* End sentinel. */
+  { 0x7fffffff, CIM_NONE, 0x0000, },	/* End sentinel. */
 };
 
 static struct case_info *find_ci(int c)
@@ -220,7 +220,7 @@ static struct case_info *find_ci(int c)
   int lo = 0;
   int hi = NELEM(case_info);
 
-  if ((c < 0) || (c > 0xffff))
+  if ((c < 0) || (c > 0xeffff))
     return NULL;
 
   if ((ci) && (ci[0].low <= c) && (ci[1].low > c)) {
@@ -248,7 +248,7 @@ static struct case_info *find_ci_shift0(int c)
   int lo = 0;
   int hi = CASE_INFO_SHIFT0_HIGH;
 
-  if ((c < 0) || (c > 0xffff))
+  if ((c < 0) || (c > 0xeffff))
     return NULL;
 
   if ((ci) && (ci[0].low <= c) && (ci[1].low > c)) {
