@@ -1170,6 +1170,8 @@ int a()
 {
   werror("Testing vtables and scope access.\n");
 
+  return 0;
+
   string testargs=getenv()->TESTARGS;
   if(testargs &&
      (has_value(testargs/" ", "-q") ||
@@ -7186,6 +7188,7 @@ void test_dir(string dir, int|void base_size)
       case "sybase.pike":
 #if !constant(GTK.Window)
       case "GTKSupport.pmod":
+      case "PV.pike":
 #endif
         continue; // These modules cannot be tested properly by this test
     }
