@@ -582,7 +582,11 @@ class fetch
       }
       atom->options = ({ ([ "type":"atom", "atom":section ]) });
 
-      werror("Options specified. wanted: %O, section:%O, origin:%O, atom: %O\n",
+      res->raw_wanted = atom->atom;
+      res->wanted = wanted;
+
+      werror("Options specified. "
+	     "wanted: %O, section:%O, origin:%O, atom: %O\n",
 	     wanted, section, origin, atom);
     }
 
