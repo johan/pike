@@ -257,10 +257,10 @@ BLOCK_ALLOC(multiset, 511)
  * msnode_is_deleted tells whether the referenced node has been
  * deleted. The relative position of a deleted node is remembered by
  * keeping pointers to the neighbors it had when it was deleted. A
- * "defensive" strategy is used when a deleted node is used in a
- * function: If going forward then the previous neighbor is followed
- * until a nondeleted node is found, which is then used as the start
- * node for the forward movement. Vice versa in the backward
+ * "defensive" strategy is employed when a deleted node is used in a
+ * function: If going forward then the previous neighbor links are
+ * followed until a nondeleted neighbor is found, which is then used
+ * as the base for the forward movement. Vice versa in the backward
  * direction. This has the effect that if nodes are added and removed
  * in a multiset that is being traversed in some direction, then no
  * newly added nodes in the vicinity of the current one are missed. It
