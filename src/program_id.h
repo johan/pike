@@ -96,6 +96,8 @@
 #define     PROG_SIGNLE_STRING_REPLACE_ID			    050
 #define     PROG_BOOTSTRING_ID					    051
 #define     PROG_TIME_ID					    052
+/* Kludge for #define TIME time in port.h */
+#define     PROG_time_ID					    052
 #define     PROG_TIMER_ID					    053
 #define     PROG_AUTOMAP_MARKER_ID				    054
 #define     PROG_LIST_ID					    055
