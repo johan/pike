@@ -2038,7 +2038,7 @@ bad_expr_ident:
   | F_DO
   { yyerror("do is a reserved word."); }
   | F_ELSE
-  { yyerror("else is a reserved word."); }
+  { yyerror("else without if."); }
   | F_RETURN
   { yyerror("return is a reserved word."); }
   | F_CONSTANT
