@@ -754,6 +754,18 @@ void dump_backlog(void)
 #endif
 static int o_catch(unsigned char *pc);
 
+struct light_frame_info
+{
+  struct svalue *expendible;
+  struct svalue *locals;
+};
+
+static void restore_light_frame_info(struct light_frame_info *info)
+{
+  Pike_fp->expendible = info->expendible;
+  Pike_fp->locals = info->locals;
+}
+
 #ifdef PIKE_DEBUG
 #define EVAL_INSTR_RET_CHECK(x)						\
   if (x == -2)								\
