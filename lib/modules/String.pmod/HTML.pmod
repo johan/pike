@@ -1,5 +1,7 @@
 // $Id$
 
+#pike __REAL_VERSION__
+
 //! Functions that helps generating HTML. All functions generates
 //! HTML that is XHTML compliant as well as backwards compatible
 //! with old HTML standards in what extent is possible.
@@ -178,7 +180,7 @@ class OBox {
       if(!_args->bgcolor) _args->bgcolor = cell_color;
     }
     else
-      foreach(_args, mapping m)
+      foreach([array(mapping(string:string))]_args, mapping m)
 	if(!m->bgcolor) m->bgcolor = cell_color;
 
     args = _args;
@@ -211,7 +213,7 @@ class OBox {
     if(cb)
       rows[-1] += ({ cb(x, y, cell_color, contents) });
     else if(args && mappingp(args))
-      add_tagdata_cell( "td", args, contents );
+      add_tagdata_cell( "td", [mapping(string:string)]args, contents );
     else if(args && sizeof(args)>x)
       add_tagdata_cell( "td", args[x], contents );
     else
