@@ -114,7 +114,7 @@ PMOD_EXPORT extern const char msg_unsetjmp_nosync_2[];
 #define DEBUG_LINE_ARGS 
 #define SETJMP(X) setjmp((init_recovery(&X, 0)->recovery))
 #define SETJMP_SP(jmp, stack_pop_levels)				\
-  setjmp((init_recovery(&X, stack_pop_levels)->recovery))
+  setjmp((init_recovery(&jmp, stack_pop_levels)->recovery))
 #define UNSETJMP(X) Pike_interpreter.recoveries=X.previous
 #endif
 
