@@ -1404,7 +1404,7 @@ void f_thread_id__sprintf (INT32 args)
     return;
   }
   push_constant_text ("Thread.Thread(");
-  push_int64((ptrdiff_t)THIS_THREAD->id);
+  push_int64(((char *)THREAD_T_TO_PTR(THIS_THREAD->id))-(char *)0);
   push_constant_text (")");
   f_add (3);
 }
@@ -1419,7 +1419,7 @@ void f_thread_id__sprintf (INT32 args)
 void f_thread_id_id_number(INT32 args)
 {
   pop_n_elems(args);
-  push_int64((ptrdiff_t)THIS_THREAD->id);
+  push_int64(((char *)THREAD_T_TO_PTR(THIS_THREAD->id))-(char *)0);
 }
 
 /*! @decl mixed result()
