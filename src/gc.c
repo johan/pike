@@ -1986,10 +1986,10 @@ int do_gc(void)
   struct mapping *m;
   struct program *p;
   struct object *o;
-#ifdef PIKE_DEBUG
 #ifdef HAVE_GETHRTIME
   hrtime_t gcstarttime = 0;
 #endif
+#ifdef PIKE_DEBUG
   unsigned destroy_count, obj_count;
   ONERROR uwp;
 #endif
