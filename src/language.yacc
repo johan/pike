@@ -3362,8 +3362,6 @@ inherit_specifier: TOK_IDENTIFIER TOK_COLON_COLON
 
 low_idents: TOK_IDENTIFIER
   {
-    int i;
-
     if(Pike_compiler->last_identifier) free_string(Pike_compiler->last_identifier);
     copy_shared_string(Pike_compiler->last_identifier, $1->u.sval.u.string);
 
