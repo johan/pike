@@ -625,6 +625,7 @@ define(MY_AC_CHECK_PRINTF_INT_TYPE, [
     AC_TRY_COMPILE([
 #define CONFIGURE_TEST
 #include "global.h"
+#include "pike_int_types.h"
     ], [
 $1 tmp;
     ], [
@@ -636,6 +637,7 @@ $1 tmp;
 
 #define CONFIGURE_TEST
 #include "global.h"
+#include "pike_int_types.h"
 
 int main() {
   char buf[50];
