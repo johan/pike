@@ -168,7 +168,7 @@ if test x$with_oracle = xyes; then
   if test "x$oracle_lib_dir" = xno -o "x$oracle_include_dir" = xno; then :; else
 
     CPPFLAGS="-I$oracle_include_dir ${CPPFLAGS}"
-    LDFLAGS="${LDFLAGS} -L$oracle_lib_dir"
+    LDFLAGS="${LDFLAGS} -L$oracle_lib_dir -R$oracle_lib_dir"
 
     if test -f "$oracle_lib_dir/libcore4.a"; then
       ORACLE_LIBS="-lclntsh -lcommon -lcore4 -lnlsrtl3 $pike_cv_oracle_sysliblist $oracle_aio -lm -lcore4"
