@@ -447,7 +447,7 @@ static node *optimize_eq(node *n)
   if(count_args(CDR(n))==2)
   {
     first_arg=my_get_arg(&_CDR(n), 0);
-    second_arg=my_get_arg(&_CAR(n), 1);
+    second_arg=my_get_arg(&_CDR(n), 1);
 
 #ifdef PIKE_DEBUG
     if(!first_arg || !second_arg)
