@@ -943,7 +943,7 @@ struct program *end_first_pass(int finish)
 
   compilation_depth--;
   if(!--threads_disabled)
-    co_signal(&threads_disabled_change);
+    co_broadcast(&threads_disabled_change);
 
   /* fprintf(stderr, "end_first_pass(): compilation_depth:%d\n", compilation_depth); */
 
@@ -2188,7 +2188,7 @@ struct program *compile(struct pike_string *prog)
   threads_disabled = saved_threads_disabled;
   /* fprintf(stderr, "compile() Leave: threads_disabled:%d, compilation_depth:%d\n", threads_disabled, compilation_depth); */
   if(!threads_disabled)
-    co_signal(&threads_disabled_change);
+    co_broadcast(&threads_disabled_change);
 
   free_string(lex.current_file);
   lex=save_lex;
