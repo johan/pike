@@ -351,7 +351,7 @@ void f_readlink(INT32 args)
 #endif /* !HAVE_RESOLVEPATH */
 
 #ifdef HAVE_RESOLVEPATH
-/*! string resolvepath(string path)
+/*! @decl string resolvepath(string path)
  *!
  *! Resolve all symbolic links of a pathname.
  *!
@@ -2175,6 +2175,8 @@ void f_system_getitimer(INT32 args)
 }
 #endif
 
+/*! @endmodule
+ */
 
 /*
  * Module linkage
@@ -2488,5 +2490,3 @@ void pike_module_exit(void)
   }
 #endif
 }
-
-/*! @endmodule */
