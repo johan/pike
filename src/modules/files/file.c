@@ -744,6 +744,11 @@ static void file_read(INT32 args)
  *!
  *! @seealso
  *!   @[errno()], @[read()]
+ *!
+ *! @note
+ *!    The function may be interrupted prematurely
+ *!    of the timeout (due to signals); 
+ *!    check the timing manually if this is imporant.
  */
 static void file_peek(INT32 args)
 {
