@@ -264,7 +264,7 @@ static void PUSH_STRING(WCHAR *str,
 	  string_builder_putchar(buf, ((c>>6)&7)+'0');
 	  string_builder_putchar(buf, ((c>>3)&7)+'0');
 	  string_builder_putchar(buf, (c&7)+'0');
-	  if((str[p2+1] >= '0') && (str[p2+1] <= '7'))
+	  if((str[p2+1] >= '0') && (str[p2+1] <= '9'))
 	  {
 	    string_builder_putchar(buf, '"');
 	    string_builder_putchar(buf, '"');
