@@ -2027,7 +2027,7 @@ void cleanup_memhdrs(void)
 	  }
 	}else{
 #ifdef PIKE_DEBUG
-	  describe_something(p, attempt_to_identify(p), 0,2,8, NULL);
+	  describe_something(p, attempt_to_identify(p, NULL), 0,2,8, NULL);
 #endif
 	}
 	mt_lock(&debug_malloc_mutex);
