@@ -2024,8 +2024,12 @@ PIKECLASS Backend
       THIS->active_set.num_in_poll=0;
 #endif /* !HAVE_POLL */
 
-      if(pike_make_pipe(THIS->wakeup_pipe) < 0)
-	Pike_error("Couldn't create backend wakeup pipe! errno=%d.\n",errno);
+      if(pike_make_pipe(THIS->wakeup_pipe) < 0) {
+	if (default_backend)
+	  Pike_error("Couldn't create backend wakeup pipe! errno=%d.\n",errno);
+	else
+	  Pike_fatal("Couldn't create backend wakeup pipe! errno=%d.\n",errno);
+      }
 
       set_nonblocking(THIS->wakeup_pipe[0],1);
       set_nonblocking(THIS->wakeup_pipe[1],1);
