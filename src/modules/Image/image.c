@@ -2697,6 +2697,7 @@ void image_select_colors(INT32 args)
 void init_font_programs(void);
 void init_colortable_programs(void);
 void exit_font(void);
+void exit_colortable(void);
 
 void pike_module_init(void)
 {
@@ -2903,6 +2904,7 @@ void pike_module_exit(void)
     image_program=0;
   }
   exit_font();
+  exit_colortable();
 }
 
 
