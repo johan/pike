@@ -1800,6 +1800,9 @@ class Codec {
     return ([ "efun:trace":trace, "efun:werror":werror, "efun:`+":`+ ])[x] ||
       0;
   }
+
+  mixed encode_object (object o) {}
+  void decode_object (object o, mixed d) {}
 }
 
 void low_generate(int depth,
@@ -2461,6 +2464,9 @@ class Test
 	if (string name = search (all_constants(), what)) return name;
 	return ([])[0];
       }
+
+      mixed encode_object (object o) {}
+      void decode_object (object o, mixed d) {}
     }
 
     mixed main()
@@ -2495,6 +2501,8 @@ class Test
       {
 	return ([])[0];
       }
+      mixed encode_object (object o) {}
+      void decode_object (object o, mixed d) {}
     }
 
     int main()
