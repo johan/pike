@@ -4452,7 +4452,12 @@ void init_image_colortable(void)
    ADD_FUNCTION("randomgrey",image_colortable_randomgrey,tOr(tFunc(tNone,tObj),tFunc(tInt,tObj)),0);
    /* function(:object)"
       "|function(int,int,int:object) */
-   ADD_FUNCTION("ordered",image_colortable_ordered,tOr(tFunc(tNone,tObj),tFunc(tInt tInt tInt,tObj)),0);
+   ADD_FUNCTION("ordered",image_colortable_ordered,
+		tOr5(tFunc(tNone,tObj),
+		     tFunc(tInt tInt tInt,tObj),
+		     tFunc(tInt tInt tInt tInt tInt,tObj),
+		     tFunc(tInt tInt tInt tInt tInt tInt tInt,tObj),
+		     tFunc(tInt tInt tInt tInt tInt tInt tInt tInt tInt tInt tInt,tObj)),0);
 
    /* function(:object) */
    ADD_FUNCTION("image",image_colortable_image,tFunc(tNone,tObj),0);
