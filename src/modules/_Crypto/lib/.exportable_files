@@ -1,2 +1,0 @@
-# $Id$
-configure.in md5.c sha.c

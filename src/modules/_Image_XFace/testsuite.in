@@ -1,4 +1,0 @@
-// $Id$
-cond([[ master()->resolv("_Image_XFace")->decode ]],
-[[
-]])
