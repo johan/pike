@@ -449,9 +449,12 @@ void f_get_groups_for_user(INT32 arg)
     pw=getpwuid(uid);
     THREADS_DISALLOW_UID();
 
-    sp[-1].u.string=make_shared_string(pw->pw_name);
-    sp[-1].type=T_STRING;
-    user=sp[-1].u.string->str;
+    if(pw)
+    {
+      sp[-1].u.string=make_shared_string(pw->pw_name);
+      sp[-1].type=T_STRING;
+      user=sp[-1].u.string->str;
+    }
   }else{
     user=sp[-1].u.string->str;
 
