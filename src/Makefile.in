@@ -652,7 +652,7 @@ $(SRCDIR)/language.h_src: $(SRCDIR)/language.yacc
 	 mv y.tab.c language.c &&\
 	 mv y.tab.h language.h_src )
 
-$(SRCDIR)/language.c: $(SRCDIR)/language.yacc
+$(SRCDIR)/language.c: $(SRCDIR)/language.h_src
 	touch $(SRCDIR)/language.c
 
 #
