@@ -359,10 +359,12 @@ badresult:
 		  for(;k>0 && value[k]==' ';k--);
 		  break;
 #endif
+#ifdef HAVE_PQUNESCAPEBYTEA
 		case BYTEAOID:
 		  if(binbuf=PQunescapeBytea(value,&binlen))
 		    value=binbuf,k=binlen;
 		  break;
+#endif
 		}
 		push_string(make_shared_binary_string(value,k));
 		if(binbuf)

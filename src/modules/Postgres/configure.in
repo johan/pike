@@ -171,7 +171,7 @@ dnl last check, just to be sure
     AC_CHECK_LIB(crypt, crypt)
     AC_CHECK_LIB(pq,PQclear)
   fi
-  AC_CHECK_FUNCS(PQsetdbLogin PQsetnonblocking)
+  AC_CHECK_FUNCS(PQsetdbLogin PQsetnonblocking PQunescapeBytea)
   if test x$ac_cv_func_PQsetdbLogin = xno; then
     AC_MSG_WARN(No Login-related functions, username and password will be silently ignored)
   fi
