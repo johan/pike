@@ -1220,7 +1220,7 @@ CHAROPT(							\
     for(e=0;e<(size_t)set->a->size;e+=2)			\
     {								\
       if(order[e]+1 != order[e+1] &&				\
-         order[e+1]+1 != order[e])				\
+         order[e+1]+1 != order[e]) {				\
         free_array(set->a);					\
         set->a=0;						\
         free((char *)order);					\
