@@ -312,9 +312,7 @@ void exit_mutex_key_obj(struct object *o)
     }
     THIS_KEY->mut=0;
     THIS_KEY->initialized=0;
-    THREADS_ALLOW();
     co_signal(& mut->condition);
-    THREADS_DISALLOW();
   }
 }
 
