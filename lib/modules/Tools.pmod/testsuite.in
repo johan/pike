@@ -101,6 +101,7 @@ test_hilfe("int z;", "Hilfe Error: \"z\" already defined as constant.\n")
 test_hilfe("int y;", "Hilfe Error: \"y\" already defined as constant.\n")
 test_hilfe("array|Stdio.File ä;", "")
 test_hilfe("Stdio.File|array ä;", "")
+test_hilfe("int(1..3)|string b=3;", "")
 
 // Test variable bindings.
 test_hilfe("new", "")
