@@ -643,10 +643,6 @@ static void worker(void *this_)
    * * Call the callback.
    * * Get rid of extra ref to the object, and free ourselves.
    */
-#ifdef PIKE_DEBUG
-  if (this->backend_callback)
-    Pike_fatal ("Didn't expect a backend callback to be installed already.\n");
-#endif
   this->backend_callback =
     add_backend_callback(call_callback_and_free, this, 0);
 
