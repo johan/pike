@@ -413,6 +413,10 @@ long debug_fd_write(FD fd, void *buf, long len)
       {
 	errno=WSAGetLastError();
 	FDDEBUG(fprintf(stderr,"Write on %d failed (%d)\n",fd,errno));
+	if (errno == ENOENT) {
+	  /* UGLY kludge */
+	  errno = WSAEWOULDBLOCK;
+	}
 	return -1;
       }
       FDDEBUG(fprintf(stderr,"Wrote %d bytes to %d)\n",len,fd));
