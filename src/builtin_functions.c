@@ -5132,7 +5132,7 @@ void f_string_width(INT32 args)
 {
   struct pike_string *s;
   int ret;
-  get_all_args("String.width",args,"%S",&s);
+  get_all_args("String.width",args,"%W",&s);
   ret=s->size_shift;
   pop_n_elems(args);
   push_int(8 * (1<<ret));
