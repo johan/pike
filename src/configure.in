@@ -1197,7 +1197,13 @@ AC_ARG_WITH(computed-goto,
 	    [], [with_computed_goto=no])
 AC_ARG_WITH(machine-code,
 	MY_DESCR([--without-machine-code],
-		 [don't try to use of machine code on supported architectures.]))
+		 [don't try to use of machine code on supported architectures.]),
+	[], [
+	  # Currently only supported with gcc.
+	  #
+	  # Further tests later on.
+	  with_machine_code="$GCC"
+	])
 
 MY_AC_ARG_WITH(keypair-loop,
 	MY_DESCR([--with-keypair-loop],
