@@ -3954,7 +3954,7 @@ int dooptcode(struct pike_string *name,
 		      type,
 		      modifiers,
 		      IDENTIFIER_PIKE_FUNCTION | vargs,
-		      Pike_compiler->num_parse_error?NULL:&tmp)
+		      num_parse_error?NULL:&tmp)
 
 
 #ifdef PIKE_DEBUG
