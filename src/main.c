@@ -646,6 +646,8 @@ void low_exit_main(void)
   throw_value.type=T_INT;
   do_gc();
 
+  cleanup_gc();
+
 #if defined(PIKE_DEBUG) && defined(DEBUG_MALLOC)
   if(verbose_debug_exit)
   {
