@@ -11,6 +11,9 @@ OS=`uname -srm|sed -e 's/ /-/g'|tr '[A-Z]' '[a-z]'|tr '/' '_'`
 BUILDDIR=build/$(OS)
 METATARGET=
 
+# Used to avoid make compatibility problems.
+BIN_TRUE=":"
+
 all: bin/pike compile
 
 src/configure: src/configure.in
@@ -46,6 +49,7 @@ compile: configure
 	)
 
 force:
+	-@$(BIN_TRUE)
 
 bin/pike: force
 	sed -e "s|\"BASEDIR\"|\"`pwd`\"|" < bin/pike.in > bin/pike
@@ -61,8 +65,10 @@ verify_installed:
 	@$(MAKE) "MAKE=$(MAKE)" "prefix=$(prefix)" "BUILDDIR=$(BUILDDIR)" "METATARGET=verify_installed"
 
 check: verify
+	-@$(BIN_TRUE)
 
 sure: verify
+	-@$(BIN_TRUE)
 
 verbose_verify:
 	@$(MAKE) "MAKE=$(MAKE)" "prefix=$(prefix)" "BUILDDIR=$(BUILDDIR)" "METATARGET=verbose_verify"
