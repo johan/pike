@@ -1166,6 +1166,11 @@ f_get(f_getppid, getppid)
  *!
  *! Changes the root directory for this process to the indicated directory.
  *!
+ *! @returns
+ *!   A nonzero value is returned if the call is successful. If
+ *!   there's an error then zero is returned and @[errno] is set
+ *!   appropriately.
+ *!
  *! @note
  *!   Since this function modifies the directory structure as seen from
  *!   Pike, you have to modify the environment variables PIKE_MODULE_PATH
