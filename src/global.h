@@ -137,10 +137,10 @@ void *alloca();
 #endif
 
 #ifdef HAVE_MALLOC_H
-#if !defined(__FreeBSD__) || !defined(__OpenBSD__)
+#if !defined(__FreeBSD__) && !defined(__OpenBSD__)
 /* FreeBSD and OpenBSD has <malloc.h>, but it just contains a warning... */
 #include <malloc.h>
-#endif /* !__FreeBSD__ || !__OpenBSD */
+#endif /* !__FreeBSD__ && !__OpenBSD */
 #undef HAVE_MALLOC_H
 #endif
 
