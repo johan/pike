@@ -860,7 +860,7 @@ class Evaluator {
 	int pos = search(files, "HilfeInput");
 	write(describe_backtrace( ({ err[0], err[1][sizeof(err[1])-pos..] }) ));
      } else
-	write("Hilfe Error: Unknown format of thrown error (not backtrace).\n");
+	write("Hilfe Error: Unknown format of thrown error (not backtrace).\n(%O)\n", err);
     };
     if(err2)
       write("Hilfe Error: Error while printing backtrace.\n");
