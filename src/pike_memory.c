@@ -740,6 +740,11 @@ struct memloc
   int times;
 };
 
+/* MEM_FREE is defined by winnt.h */
+#ifdef MEM_FREE
+#undef MEM_FREE
+#endif
+
 #define MEM_PADDED			1
 #define MEM_WARN_ON_FREE		2
 #define MEM_REFERENCED			4
@@ -2043,7 +2048,7 @@ static void low_search_all_memheaders_for_references(void)
       {
 	if(m->size > 0)
 	{
-#ifdef __NT__
+#if defined(__NT__) && !defined(__GNUC__)
 	  __try {
 #endif
 	    for(e=0;e<m->size/sizeof(void *);e++) {
@@ -2069,7 +2074,7 @@ static void low_search_all_memheaders_for_references(void)
 	      if((tmp=just_find_memhdr(addr)))
 		tmp->flags |= MEM_REFERENCED;
 	    }
-#ifdef __NT__
+#if defined(__NT__) && !defined(__GNUC__)
 	  }
 	  __except( 1 ) {
 	    fprintf(stderr,"*** DMALLOC memory access error ***\n");
