@@ -1379,7 +1379,7 @@ static void lm_normal(rgb_group *s,rgb_group *l,rgb_group *d,
 
 
 #if defined(__ECL) && 1
-#define WARN_TRACE(X)	static char PIKE_CONCAT(foo__, X) = (char)0.0
+#define WARN_TRACE(X)	static char PIKE_CONCAT(foo__, X) (double d) { return (char)d; }
 #else /* !__ECL */
 #define WARN_TRACE(X)
 #endif /* __ECL */
