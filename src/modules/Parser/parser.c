@@ -147,7 +147,7 @@ static void parser_magic_index(INT32 args)
    {
       pop_stack();
       stack_dup();
-      push_text("_Parser_");
+      push_constant_text("_Parser_");
       stack_swap();
       f_add(2);
       SAFE_APPLY_MASTER("resolv",1);
@@ -156,7 +156,7 @@ static void parser_magic_index(INT32 args)
    {
       pop_stack();
       stack_dup();
-      push_text("_Parser");
+      push_constant_text("_Parser");
       SAFE_APPLY_MASTER("resolv",1);
       stack_swap();
       if(sp[-2].type == T_INT)

@@ -487,10 +487,10 @@ void udp_read(INT32 args)
   /* Now comes the interresting part.
    * make a nice mapping from this stuff..
    */
-  push_text("data");
+  push_constant_text("data");
   push_string( make_shared_binary_string(buffer, res) );
 
-  push_text("ip");
+  push_constant_text("ip");
 #ifdef HAVE_INET_NTOP
   push_text( inet_ntop( SOCKADDR_FAMILY(from), SOCKADDR_IN_ADDR(from),
 			buffer, sizeof(buffer) ) );
@@ -498,7 +498,7 @@ void udp_read(INT32 args)
   push_text( inet_ntoa( *SOCKADDR_IN_ADDR(from) ) );
 #endif
 
-  push_text("port");
+  push_constant_text("port");
   push_int(ntohs(from.ipv4.sin_port));
   f_aggregate_mapping( 6 );
 }

@@ -156,7 +156,7 @@ static void image_magic_index(INT32 args)
    {
       pop_stack();
       stack_dup();
-      push_text("_Image_");
+      push_constant_text("_Image_");
       stack_swap();
       f_add(2);
       SAFE_APPLY_MASTER("resolv",1);
@@ -165,7 +165,7 @@ static void image_magic_index(INT32 args)
    {
       pop_stack();
       stack_dup();
-      push_text("_Image");
+      push_constant_text("_Image");
       SAFE_APPLY_MASTER("resolv",1);
       stack_swap();
       f_index(2);
