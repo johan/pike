@@ -95,6 +95,7 @@ struct svalue
 #define T_VOID       16	/* Can't return any value */
 #define T_MANY       17
 
+#define T_MAPPING_DATA 242
 #define PIKE_T_SCOPE 243	/* Not supported yet */
 #define PIKE_T_TUPLE 244	/* Not supported yet */
 #define T_ASSIGN 245
@@ -229,10 +230,13 @@ struct svalue
 
 #define IS_UNDEFINED(X) ((X)->type==PIKE_T_INT&&!(X)->u.integer&&(X)->subtype==1)
 
+#define IS_DESTRUCTED(X) \
+  (((X)->type == PIKE_T_OBJECT || (X)->type==PIKE_T_FUNCTION) && !(X)->u.object->prog)
+
 #define check_destructed(S) \
 do{ \
   struct svalue *_s=(S); \
-  if((_s->type == PIKE_T_OBJECT || _s->type==PIKE_T_FUNCTION) && !_s->u.object->prog) { \
+  if(IS_DESTRUCTED(_s)) { \
     free_object(_s->u.object); \
     _s->type = PIKE_T_INT; \
     _s->subtype = NUMBER_DESTRUCTED ; \
