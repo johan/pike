@@ -239,7 +239,7 @@ void create(string|object host, void|string|mapping(string:int|string) db,
     }
     /* Don't call ourselves... */
     if ((sizeof(program_name / "_result") != 1) ||
-	(lower_case(program_name[..2]) == "sql")) {
+	  ((< "Sql", "sql", "sql_util", "module" >)[program_name]) ) {
       ERROR("Unsupported protocol: %O\n", program_name);
     }
 
