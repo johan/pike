@@ -28,8 +28,9 @@ void create(void|string|object host, void|string db,
     return;
   } else {
     foreach(get_dir(Sql->dirname), string program_name) {
-      if (sizeof(program_name / "_result") == 1 &&
-	  (program_name != "sql.pike")) {
+      if ((sizeof(program_name / "_result") == 1) &&
+	  (program_name != "sql.pike") &&
+	  (program_name != "CVS")) {
 	/* Don't call ourselves... */
 	array(mixed) err;
 	
