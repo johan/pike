@@ -45,7 +45,7 @@ void init_modules(void)
   {
     start_new_program();
     module_list[e].init();
-    end_class(module_list[e].name,0);
+    debug_end_class(module_list[e].name,strlen(module_list[e].name),0);
   }
   push_text("_static_modules");
   push_object(low_clone(p=end_program()));

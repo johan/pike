@@ -294,7 +294,9 @@ void init_dynamic_load(void)
 #if defined(HAVE_DLOPEN) || defined(USE_DLD) || defined(USE_HPUX_DL)
   dlinit();
 
-  add_efun("load_module",f_load_module,"function(string:program)",OPT_EXTERNAL_DEPEND);
+  
+/* function(string:program) */
+  ADD_EFUN("load_module",f_load_module,tFunc(tStr,tPrg),OPT_EXTERNAL_DEPEND);
 #endif
 }
 

@@ -2159,7 +2159,9 @@ void init_cpp()
   constant_macro->magic=check_constant;
   constant_macro->args=1;
 
-  add_efun("cpp",f_cpp,"function(string,string|void:string)",OPT_EXTERNAL_DEPEND);
+  
+/* function(string,string|void:string) */
+  ADD_EFUN("cpp",f_cpp,tFunc(tStr tOr(tStr,tVoid),tStr),OPT_EXTERNAL_DEPEND);
 }
 
 

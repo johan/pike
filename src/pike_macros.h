@@ -60,4 +60,6 @@
 #define ALIGNOF(X) ((int)&(((struct { char ignored_ ; X fooo_; } *)0)->fooo_))
 
 #define DO_ALIGN(X,Y) (((long)(X)+((Y)-1)) & -(Y))
+#define CONSTANT_STRLEN(X) (sizeof(X) - sizeof(""))
+
 #endif

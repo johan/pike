@@ -87,7 +87,7 @@ static void clear_markers(void)
 }
 
 #ifdef PIKE_DEBUG
-static void CHECK_TYPE(struct pike_string *s)
+void check_type_string(struct pike_string *s)
 {
   if(debug_findstring(s) != s)
     fatal("Type string not shared.\n");
@@ -98,8 +98,6 @@ static void CHECK_TYPE(struct pike_string *s)
     fatal("Length of type is wrong. (should be %d, is %d)\n",type_length(s->str),s->len);
   }
 }
-#else
-#define CHECK_TYPE(X)
 #endif
 
 void init_types(void)
@@ -267,14 +265,14 @@ static void push_unfinished_type_with_markers(char *s, struct pike_string **am)
 void push_finished_type(struct pike_string *type)
 {
   int e;
-  CHECK_TYPE(type);
+  check_type_string(type);
   for(e=type->len-1;e>=0;e--) push_type(type->str[e]);
 }
 
 void push_finished_type_backwards(struct pike_string *type)
 {
   int e;
-  CHECK_TYPE(type);
+  check_type_string(type);
   MEMCPY(type_stackp, type->str, type->len);
   type_stackp+=type->len;
 }
@@ -289,7 +287,7 @@ struct pike_string *debug_pop_unfinished_type(void)
   MEMCPY(s->str, type_stackp, len);
   reverse(s->str, len, 1);
   s=end_shared_string(s);
-  CHECK_TYPE(s);
+  check_type_string(s);
   return s;
 }
 
@@ -1270,8 +1268,8 @@ static int low_get_return_type(char *a,char *b)
 
 int match_types(struct pike_string *a,struct pike_string *b)
 {
-  CHECK_TYPE(a);
-  CHECK_TYPE(b);
+  check_type_string(a);
+  check_type_string(b);
   clear_markers();
   return 0!=low_match_types(a->str, b->str,0);
 }
@@ -1460,8 +1458,8 @@ int check_indexing(struct pike_string *type,
 		   struct pike_string *index_type,
 		   node *n)
 {
-  CHECK_TYPE(type);
-  CHECK_TYPE(index_type);
+  check_type_string(type);
+  check_type_string(index_type);
 
   return low_check_indexing(type->str, index_type->str, n);
 }
@@ -1509,7 +1507,7 @@ static int low_count_arguments(char *q)
  */
 int count_arguments(struct pike_string *s)
 {
-  CHECK_TYPE(s);
+  check_type_string(s);
 
   return low_count_arguments(s->str);
 }
@@ -1517,8 +1515,8 @@ int count_arguments(struct pike_string *s)
 struct pike_string *check_call(struct pike_string *args,
 			       struct pike_string *type)
 {
-  CHECK_TYPE(args);
-  CHECK_TYPE(type);
+  check_type_string(args);
+  check_type_string(type);
   clear_markers();
   type_stack_mark();
   max_correct_args=0;
@@ -1535,7 +1533,7 @@ struct pike_string *check_call(struct pike_string *args,
 INT32 get_max_args(struct pike_string *type)
 {
   INT32 ret,tmp=max_correct_args;
-  CHECK_TYPE(type);
+  check_type_string(type);
   clear_markers();
   type=check_call(function_type_string, type);
   if(type) free_string(type);

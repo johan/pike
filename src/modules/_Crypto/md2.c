@@ -131,7 +131,9 @@ static void f_cast(INT32 args)
 
 void init_md2_efuns(void)
 {
-  /* add_efun()s */
+  /* 
+/* function(string:void) */
+  ADD_EFUN()s */
 }
 
 void init_md2_programs(void)
@@ -157,9 +159,11 @@ void init_md2_programs(void)
   start_new_program();
   ADD_STORAGE(struct pike_md2);
 
-  add_function("push", f_push, "function(string:void)", 0);
-  add_function("cast", f_cast, "function(string:mixed)", 0);
-  add_function("cast_to_string", f_cast_to_string, "function(void:string)", 0);
+  add_function("push", f_push,tFunc(tStr,tVoid), 0);
+  /* function(string:mixed) */
+  ADD_FUNCTION("cast", f_cast,tFunc(tStr,tMix), 0);
+  /* function(void:string) */
+  ADD_FUNCTION("cast_to_string", f_cast_to_string,tFunc(tVoid,tStr), 0);
 
   set_init_callback(init_pike_md2);
   set_exit_callback(exit_pike_md2);

@@ -99,9 +99,13 @@ void pike_sha_init(void)
 {
   start_new_program();
   ADD_STORAGE(struct sha_ctx);
-  add_function("name", f_name, "function(void:string)", OPT_TRY_OPTIMIZE);
-  add_function("create", f_create, "function(void|object:void)", 0);
-  add_function("update", f_update, "function(string:object)", 0);
-  add_function("digest", f_digest, "function(void:string)", 0);
+  /* function(void:string) */
+  ADD_FUNCTION("name", f_name,tFunc(tVoid,tStr), OPT_TRY_OPTIMIZE);
+  /* function(void|object:void) */
+  ADD_FUNCTION("create", f_create,tFunc(tOr(tVoid,tObj),tVoid), 0);
+  /* function(string:object) */
+  ADD_FUNCTION("update", f_update,tFunc(tStr,tObj), 0);
+  /* function(void:string) */
+  ADD_FUNCTION("digest", f_digest,tFunc(tVoid,tStr), 0);
   end_class("sha", 0);
 }

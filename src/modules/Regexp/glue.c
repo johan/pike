@@ -206,9 +206,12 @@ void pike_module_init(void)
   start_new_program();
   ADD_STORAGE(struct regexp_glue);
   
-  add_function("create",regexp_create,"function(void|string:void)",0);
-  add_function("match",regexp_match,"function(string:int)",0);
-  add_function("split",regexp_split,"function(string:string*)",0);
+  /* function(void|string:void) */
+  ADD_FUNCTION("create",regexp_create,tFunc(tOr(tVoid,tStr),tVoid),0);
+  /* function(string:int) */
+  ADD_FUNCTION("match",regexp_match,tFunc(tStr,tInt),0);
+  /* function(string:string*) */
+  ADD_FUNCTION("split",regexp_split,tFunc(tStr,tArr(tStr)),0);
 
   set_init_callback(init_regexp_glue);
   set_exit_callback(exit_regexp_glue);

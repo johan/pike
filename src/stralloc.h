@@ -10,6 +10,7 @@
 #ifndef STRALLOC_H
 #define STRALLOC_H
 #include "global.h"
+#include "pike_macros.h"
 
 #define STRINGS_ARE_SHARED
 
@@ -114,7 +115,7 @@ extern struct shared_string_location *all_shared_string_locations;
 #define MAKE_CONSTANT_SHARED_STRING(var, text) do {	\
   static struct shared_string_location str_;		\
   if(!str_.s) { 					\
-    str_.s=make_shared_string((text));			\
+    str_.s=make_shared_binary_string((text),CONSTANT_STRLEN(text));			\
     str_.next=all_shared_string_locations;		\
     all_shared_string_locations=&str_;			\
   }							\

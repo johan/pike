@@ -262,6 +262,10 @@ struct object *get_master(void)
       JMP_BUF tmp;
       if(SETJMP(tmp))
       {
+#ifdef DEBUG
+	if(d_flag)
+	  debug_describe_svalue(&throw_value);
+#endif
 	/* do nothing */
 	UNSETJMP(tmp);
       }else{
@@ -277,6 +281,11 @@ struct object *get_master(void)
 	pop_stack();
 	  
       }
+#ifdef DEBUG
+      if(d_flag)
+	fprintf(stderr,"Failed to import dumped master!\n");
+#endif
+
     }
     s2=low_read_file(master_file);
     if(s2)

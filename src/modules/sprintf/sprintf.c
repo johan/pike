@@ -1197,7 +1197,9 @@ void f_sprintf(INT32 num_arg)
 
 void pike_module_init(void)
 {
-  add_efun("sprintf", f_sprintf,"function(string, mixed ... : string)",
+  
+/* function(string, mixed ... : string) */
+  ADD_EFUN("sprintf", f_sprintf,tFuncV(tStr,tMix,tStr),
 	   OPT_TRY_OPTIMIZE);
 }
 
