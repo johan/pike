@@ -23,17 +23,22 @@ class ber_decode {
     string contents;
     mixed value;
     
+#ifdef SSL3_DEBUG
     werror(sprintf("decoding tag %x\n", tag));
+#endif
     if ( (tag & 0x1f) == 0x1f)
       throw( ({ "high tag numbers is not supported\n", backtrace() }) );
     int len = get_int(1);
     if (len & 0x80)
       len = get_int(len & 0x7f);
     
+#ifdef SSL3_DEBUG
     werror(sprintf("len : %d\n", len));
-
+#endif
     contents = get_fix_string(len);
+#ifdef SSL3_DEBUG
     werror(sprintf("contents: %O\n", contents));
+#endif
     if (tag & 0x20)
     {
       object seq = object_program(this_object())(contents);
@@ -41,7 +46,9 @@ class ber_decode {
       while(! seq->is_empty())
       {
 	array elem = seq->get_asn1();
+#ifdef SSL3_DEBUG
 	// werror(sprintf("elem: %O\n", elem));
+#endif
 	value += ({ elem });
       }
     }
