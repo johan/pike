@@ -23,7 +23,7 @@
 **!	<ref>setpixel</ref>, 
 **!	<ref>treshold</ref>,
 **!	<ref>tuned_box</ref>,
-**!	<ref>polygone</ref>
+**!	<ref>polyfill</ref>
 **!
 **!	operators: <ref>`&</ref>,
 **!	<ref>`*</ref>,
@@ -2770,7 +2770,9 @@ void pike_module_init(void)
 		"function(int,int,int,int,"RGB_TYPE":object)",0);
    add_function("tuned_box",image_tuned_box,
 		"function(int,int,int,int,array:object)",0);
-   add_function("polygone",image_polygone,
+   add_function("polygone",image_polyfill,
+		"function(array(float|int) ...:object)",0);
+   add_function("polyfill",image_polyfill,
 		"function(array(float|int) ...:object)",0);
 
    add_function("gray",image_grey,
@@ -2877,6 +2879,7 @@ void pike_module_init(void)
 
    init_image_gif();
    init_image_pnm();
+   init_image_png();
 }
 
 void pike_module_exit(void) 
@@ -2891,6 +2894,7 @@ void pike_module_exit(void)
 
   exit_image_gif();
   exit_image_pnm();
+  exit_image_png();
 }
 
 

@@ -137,6 +137,6 @@ void image_tobitmap(INT32 args);
 
 /* polyfill.c */
 
-void image_polygone(INT32 args);
+void image_polyfill(INT32 args);
 
 
