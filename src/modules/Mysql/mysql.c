@@ -182,8 +182,6 @@ static void pike_mysql_reconnect(void)
       *portptr = 0;
       portptr++;
       port = (unsigned int) atoi(portptr);
-
-      fprintf(stderr, "Mysql.mysql(): Port %d specified\n", port);
     }
   }
   if (PIKE_MYSQL->database) {
