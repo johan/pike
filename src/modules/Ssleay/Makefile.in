@@ -1,7 +1,6 @@
 # $Id$
 @make_variables@
 VPATH=@srcdir@
-MODULE_CFLAGS=@DEFS@ @CPPFLAGS@
 OBJS=ssleay.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 
