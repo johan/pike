@@ -505,17 +505,17 @@ class client
 	  break;
 
       if (!resolv_conf) {
-	if (system->get_netinfo_property) {
+	if (System->get_netinfo_property) {
 	  //  Mac OS X / Darwin (and possibly other systems) that use
 	  //  NetInfo may have these values in the database.
 	  if (nameservers =
-	      system->get_netinfo_property(".",
+	      System->get_netinfo_property(".",
 					   "/locations/resolver",
 					   "nameserver")) {
 	    nameservers = map(nameservers, `-, "\n");
 	  }
 	  
-	  if (domains = system->get_netinfo_property(".",
+	  if (domains = System->get_netinfo_property(".",
 						    "/locations/resolver",
 						    "domain")) {
 	    domains = map(domains, `-, "\n");
