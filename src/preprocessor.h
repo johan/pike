@@ -893,6 +893,7 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	    if(!GOBBLE('('))
 	    {
 	      string_builder_shared_strcat(&this->buf,s);
+	      if(s) free_string(s);
 	      break;
 	    }
 	    
