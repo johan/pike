@@ -53,6 +53,10 @@ static struct DATA *PIKE_CONCAT3(alloc_,DATA,_unlocked)(void)		\
       PIKE_CONCAT3(free_,DATA,s)=n->x+e;				\
     }									\
   }									\
+  DO_IF_DEBUG(								\
+    else if (PIKE_CONCAT3(free_,DATA,s) == (struct DATA *)-1)		\
+      fatal("Block alloc not initialized.\n");				\
+  )									\
 									\
   tmp=PIKE_CONCAT3(free_,DATA,s);					\
   PIKE_CONCAT3(free_,DATA,s)=(struct DATA *)tmp->BLOCK_ALLOC_NEXT;	\
