@@ -1603,13 +1603,12 @@ string read_file(string filename,void|int start,void|int len)
     len=0x7fffffff;
   case 3:
     while(start-- && f->gets());
-    object(String.String_buffer) buf=String.String_buffer();
+    String.Buffer buf=String.Buffer();
     while(len-- && (tmp=f->gets()))
     {
-      buf->append(tmp);
-      buf->append("\n");
+      buf->add(tmp, "\n");
     }
-    ret=buf->get_buffer();
+    ret=buf->get();
     destruct(buf);
   }
   f->close();
