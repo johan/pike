@@ -496,7 +496,7 @@ void o_cast(struct pike_type *type, INT32 run_time_type)
 	Pike_error("No cast method in object.\n");
       s=describe_type(type);
       push_string(s);
-      apply_lfun(o, f, 1);
+      apply_low(o, f, 1);
       stack_pop_keep_top();
     }else
 
