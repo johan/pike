@@ -174,6 +174,12 @@ void f_add(INT32 args)
       if(sp[e].u.string->size_shift > max_shift)
 	max_shift=sp[e].u.string->size_shift;
     }
+
+    if(size == sp[-args].u.string->len)
+    {
+      pop_n_elems(args-1);
+      return;
+    }
     
     tmp=sp[-args].u.string->len;
     r=new_realloc_shared_string(sp[-args].u.string,size,max_shift);

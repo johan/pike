@@ -308,7 +308,8 @@ static struct pike_string *internal_findstring(const char *s,
     if (full_hash_value == curr->hval &&
 	len==curr->len &&
 	size_shift==curr->size_shift &&
-	!MEMCMP(curr->str, s,len<<size_shift)) /* found it */
+	( curr->str == s ||
+	  !MEMCMP(curr->str, s,len<<size_shift))) /* found it */
     {
       *prev = curr->next;
       curr->next = *base;
