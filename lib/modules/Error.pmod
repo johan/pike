@@ -2,15 +2,6 @@
 
 // $Id$
 
-//! @class Generic
-//!
-//! Class for exception objects for errors of unspecified type.
-//!
-//! @note
-//! For historical reasons, erro
-
-//! @endclass
-
 constant Generic = __builtin.GenericError;
 
 constant Index = __builtin.IndexError;
