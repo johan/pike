@@ -631,7 +631,7 @@ void generic_error_va(struct object *o,
 #endif /* HAVE_VSNPRINTF */
   in_error=buf;
 
-  if (1 || !master_program) {
+  if (!master_program) {
     fprintf(stderr, "ERROR: %s\n", buf);
   }
 
