@@ -2121,9 +2121,9 @@ void dump_program_tables (struct program *p, int indent)
 	  indent, "");
   {
     INT32 off = 0, line = 0;
-    char *cnt = p->line_numbers;
+    char *cnt = p->linenumbers;
 
-    while (cnt < p->line_numbers + p->num_linenumbers) {
+    while (cnt < p->linenumbers + p->num_linenumbers) {
       if (*cnt == 127) {
 	int len, shift;
 	char *file;
