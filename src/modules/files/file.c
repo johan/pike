@@ -1087,13 +1087,13 @@ retry_connect:
   retry_accept:
     sv[0]=accept(fd,(struct sockaddr *)&addr,&len);
 
-    set_nonblocking(sv[0],0);
-
     if(sv[0] < 0) {
       if(errno==EINTR) goto retry_accept;
       close(sv[1]);
       return -1;
     }
+
+    set_nonblocking(sv[0],0);
 
     /* We do not trust accept */
     len=sizeof(addr);
