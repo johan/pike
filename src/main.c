@@ -49,8 +49,12 @@ RCSID("$Id$");
 
 #include "las.h"
 
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
+#ifdef HAVE_ERRNO_H
 #include <errno.h>
+#endif
 
 #ifdef HAVE_LOCALE_H
 #include <locale.h>
