@@ -907,18 +907,17 @@ PIKE_MODULE_INIT
 {
 #ifdef HAVE_LIBTIFF
 #ifdef DYNAMIC_MODULE
-   push_string(make_shared_string("Image")); push_int(0);
-   SAFE_APPLY_MASTER("resolv",2);
+   push_text("Image");
+   SAFE_APPLY_MASTER("resolv",1);
    if (sp[-1].type==T_OBJECT) 
    {
-     push_string(make_shared_string("image"));
+     stack_dup();
+     push_text("Image");
      f_index(2);
      image_program=program_from_svalue(sp-1);
      pop_stack();
 
-     push_string(make_shared_string("Image")); push_int(0);
-     SAFE_APPLY_MASTER("resolv",2);
-     push_string(make_shared_string("colortable"));
+     push_text("Colortable");
      f_index(2);
      image_colortable_program=program_from_svalue(sp-1);
      pop_stack();

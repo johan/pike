@@ -160,16 +160,14 @@ static void pdf_magic_index(INT32 args)
       push_text("_PDF_");
       stack_swap();
       f_add(2);
-      push_int(0);
-      SAFE_APPLY_MASTER("resolv",2);
+      SAFE_APPLY_MASTER("resolv",1);
    }
    if (sp[-1].type==T_INT)
    {
       pop_stack();
       stack_dup();
       push_text("_PDF");
-      push_int(0);
-      SAFE_APPLY_MASTER("resolv",2);
+      SAFE_APPLY_MASTER("resolv",1);
       stack_swap();
       f_index(2);
    }

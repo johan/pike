@@ -2739,22 +2739,21 @@ PIKE_MODULE_INIT
 {
 #ifdef DYNAMIC_MODULE
   /* These could be re-written to use PIKE_MODULE_IMPORT */
-   push_string(make_shared_string("Image"));
-   push_int(0);
-   SAFE_APPLY_MASTER("resolv",2);
+   push_text("Image");
+   SAFE_APPLY_MASTER("resolv",1);
    if (sp[-1].type==T_OBJECT) 
    {
       stack_dup();
       stack_dup();
-      push_string(make_shared_string("Image"));
+      push_text("Image");
       f_index(2);
       image_program=program_from_svalue(sp-1);
       pop_stack();
-      push_string(make_shared_string("Colortable"));
+      push_text("Colortable");
       f_index(2);
       image_colortable_program=program_from_svalue(sp-1);
       pop_stack();
-      push_string(make_shared_string("Layer"));
+      push_text("Layer");
       f_index(2);
       image_layer_program=program_from_svalue(sp-1);
    }
