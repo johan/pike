@@ -31,7 +31,7 @@ share_prefix = $(data_prefix)/pike
 man_prefix = $(prefix)/man
 
 # Arguments for test_pike.pike used by the verify targets.
-TESTARGS = -a
+#TESTARGS = -a
 
 #
 # use bison please, yacc isn't good enough.
