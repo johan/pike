@@ -105,6 +105,9 @@ object server_hello_packet()
   object struct = Struct();
   /* Build server_hello message */
   struct->put_uint(3,1); struct->put_uint(version[1],1); /* version */
+#ifdef SSL3_DEBUG
+  werror("Writing server hello, with version: 3."+version[1]+"\n");
+#endif
   struct->put_fix_string(server_random);
   struct->put_var_string(session->identity, 1);
   struct->put_uint(session->cipher_suite, 2);
