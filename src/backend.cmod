@@ -1390,6 +1390,10 @@ PIKECLASS Backend
     if (FDS_ISSET(fd, write_oob.callback)) {
       events |= MY_POLLWREXCEPT;
     }
+#ifdef POLL_DEBUG
+    fprintf(stderr, "UPDATE_BLACK_BOX(%d, %d) ==> events: %d\n",
+	    me->set, fd, events);
+#endif /* POLL_DEBUG */
     POLL_DEVICE_SET_EVENTS(me->set, fd, events);
   }
 #endif /* POLL_DEVICE_IS_BLACK */
