@@ -395,7 +395,11 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	    return;
 	    
 	  case T_FUNCTION:
-	    sp[-1].type = T_OBJECT;
+	    if (sp[-1].subtype == FUNCTION_BUILTIN) {
+	      Pike_error("Cannot cast builtin functions to object.\n");
+	    } else {
+	      sp[-1].type = T_OBJECT;
+	    }
 	    break;
 
 	  default:
