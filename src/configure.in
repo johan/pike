@@ -668,6 +668,7 @@ AC_CHECK_FUNCS(
  dlsym \
  dld_link \
  dld_get_func \
+ pipe \
 )
 
 if test $ac_cv_func_crypt$ac_cv_func__crypt = nono ; then
