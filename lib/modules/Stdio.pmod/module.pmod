@@ -109,7 +109,7 @@ class File
   static string debug_mode;
   static int debug_bits;
 
-  void setup_debug( string f, string m, int|void b )
+  void _setup_debug( string f, string m, int|void b )
   {
     debug_file = f;
     debug_mode = m;
