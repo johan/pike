@@ -1,7 +1,7 @@
 # $Id$
 SRCDIR=@srcdir@
 VPATH=@srcdir@:@srcdir@/../..:../..
-OBJS = image.o font.o togif.o matrix.o pnm.o blit.o \
+OBJS = image.o font.o togif.o matrix.o pnm_compat.o blit.o \
 	pattern.o dct.o operator.o x.o colortable.o polyfill.o \
 	orient.o colors.o search.o
 MODNAME=image
