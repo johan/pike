@@ -2290,7 +2290,7 @@ static INT32 low_sscanf(struct pike_string *data, struct pike_string *format)
  *!   @value "*"
  *!     The operator will only match its argument, without assigning any
  *!     variable.
- *!   @value "number"
+ *!   @value number
  *!     You may define a field width by supplying a numeric modifier. This
  *!     means that the format should match that number of characters in the
  *!     input data; be it a @i{number@} characters long string, integer or
@@ -2302,7 +2302,7 @@ static INT32 low_sscanf(struct pike_string *data, struct pike_string *format)
  *!     (big-endian) byte order.
  *!   @value "+"
  *!     Interpret the data as a signed entity. In other words, "%+1c" will
- *!     read "\0xFF" as -1 instead of 255, as "%1c" would have.
+ *!     read "\xFF" as -1 instead of 255, as "%1c" would have.
  *! @endstring
  *!
  *! @note
