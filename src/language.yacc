@@ -1592,17 +1592,17 @@ local_constant_name: TOK_IDENTIFIER '=' safe_expr0
   ;
 
 local_constant_list: local_constant_name
-  | local_constant_list ',' local_constant_list
+  | local_constant_list ',' local_constant_name
   ;
 
-local_constant: TOK_CONSTANT local_constant_list ;
-  |  TOK_CONSTANT error ';' { yyerrok; }
-  |  TOK_CONSTANT error TOK_LEX_EOF
+local_constant: TOK_CONSTANT local_constant_list ';'
+  | TOK_CONSTANT error ';' { yyerrok; }
+  | TOK_CONSTANT error TOK_LEX_EOF
   {
     yyerror("Missing ';'.");
     yyerror("Unexpected end of file.");
   }
-  |  TOK_CONSTANT error '}' { yyerror("Missing ';'."); }
+  | TOK_CONSTANT error '}' { yyerror("Missing ';'."); }
   ;
 
 
