@@ -578,134 +578,42 @@ static void image_layer_alpha_value(INT32 args)
 **! method object set_mode(string mode)
 **! method string mode()
 **! method array(string) available_modes()
-**!	Set/get layer mode. Mode is one of these:
+**!	Set/get layer mode. Mode is one of these: 
 **!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>normal</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
+**!  	"normal",        
+**!  	"add",            
+**!  	"subtract",       
+**!  	"multiply",       
+**!  	"divide",         
+**!  	"modulo",         
+**!  	"invsubtract",    
+**!  	"invdivide",      
+**!  	"invmodulo",      
+**!  	"difference",     
+**!  	"max",            
+**!  	"min",            
+**!  	"bitwize_and",    
+**!  	"bitwize_or",     
+**!  	"bitwize_xor",    
+**!  			 
+**!  	"replace",       
+**!  	"red",           
+**!  	"green",         
+**!  	"blue",          
+**!  			 
+**!  	"replace_hsv",   
+**!  	"hue",           
+**!  	"saturation",    
+**!  	"value",         
+**!  	"color",         
+**!  			 
+**!  	"darken",         
+**!  	"lighten",        
+**!  			 
+**!  	"dissolve",       
+**!  	"behind",         
+**!  	"erase",          
 **!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>addition</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>behind</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>color</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>darken</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>difference</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>dissolve</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>divide</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>erase</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>hue</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>lighten</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>multiply</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>overlay</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>replace</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>saturation</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>screen</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>subtract</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!
-**!	<tr><td valign=top align=left>
-**!	<b><tt>value</tt><b></br>
-**!	?
-**!	</td><td align=left valign=top>
-**!	<illustration> return lena(); </illustration>
-**!	<td></tr>
-**!	
 **!	<ref>available_modes</ref>() simply gives an array 
 **!	containing the names of these modes.
 **!
