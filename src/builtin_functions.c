@@ -1749,6 +1749,14 @@ void f_gethrtime(INT32 args)
   pop_n_elems(args);
   push_int((INT32)(gethrtime()/1000)); 
 }
+#else
+void f_gethrtime(INT32 args)
+{
+  struct timeval tv;
+  pop_n_elems(args);
+  GETTIMEOFDAY(&tv);
+  push_int((INT32)((tv.tv_sec *1000000) + tv.tv_usec));
+}
 #endif /* HAVE_GETHRVTIME */
 
 #ifdef PROFILING
@@ -1815,9 +1823,10 @@ void init_builtin_efuns(void)
 {
   init_operators();
 
+  add_efun("gethrtime", f_gethrtime,"function(void:int)", OPT_EXTERNAL_DEPEND);
+
 #ifdef HAVE_GETHRVTIME
   add_efun("gethrvtime",f_gethrvtime,"function(void:int)",OPT_EXTERNAL_DEPEND);
-  add_efun("gethrtime", f_gethrtime,"function(void:int)", OPT_EXTERNAL_DEPEND);
 #endif
   
 #ifdef PROFILING
