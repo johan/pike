@@ -25,6 +25,7 @@
 #include "bignum.h"
 #include "cyclic.h"
 #include "multiset.h"
+#include "mapping.h"
 
 RCSID("$Id$");
 
@@ -2117,7 +2118,7 @@ PMOD_EXPORT struct array *copy_array_recursively(struct array *a,
   bb.type = T_ARRAY;
   bb.subtype = 0;
   bb.u.array = ret;
-  low_mapping_insert(m, &aa, &bb);
+  low_mapping_insert(m, &aa, &bb, 1);
 
   ret->flags = a->flags & ~ARRAY_LVALUE;
 
