@@ -2575,7 +2575,7 @@ void image_hsv_to_rgb(INT32 args)
 #undef p
 #undef q
 #undef t
-#define FIX(X) ((X)<0.0?0:(X)>=1.0?255:DOULE_TO_INT((X)*255.0))
+#define FIX(X) ((X)<0.0?0:(X)>=1.0?255:DOUBLE_TO_INT((X)*255.0))
      d->r = FIX(r);
      d->g = FIX(g);
      d->b = FIX(b);
