@@ -20,6 +20,9 @@
 #undef __STDC__
 #define __STDC__ 0
 #endif /* __STDC__ != 0 */
+#ifdef _NO_LONGLONG
+#undef _NO_LONGLONG
+#endif /* _NO_LONGLONG */
 #endif /* __TenDRA__ */
 
 #ifndef _LARGEFILE_SOURCE
