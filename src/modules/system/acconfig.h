@@ -65,4 +65,7 @@
 /* Define if you have the RDTSC instruction */
 #undef HAVE_RDTSC
 
+/* Define if syslog() might have races which makes it unsafe to run unlocked. */
+#undef MIGHT_HAVE_SYSLOG_RACES
+
 #endif /* SYSTEM_MACHINE_H */
