@@ -27,6 +27,8 @@ RCSID("$Id$");
 #include "multiset.h"
 #include "program.h"
 
+#ifdef HAVE_ODBC
+
 #include "precompiled_odbc.h"
 
 /*
@@ -275,6 +277,7 @@ static void f_reload(INT32 args)
 }
 
 
+#endif /* HAVE_ODBC */
 
 /*
  * Module linkage
