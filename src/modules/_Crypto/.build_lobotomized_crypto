@@ -32,7 +32,8 @@ for d in . include lib; do
 done
 
 echo "Censoring sensitive files"
-for f in crypto.c Makefile.in lib/Makefile.in testsuite.in ; do
+# configure* catches configure.in and maybe configure too /Mirar
+for f in configure* crypto.c Makefile.in lib/Makefile.in testsuite.in ; do
     echo $f
     sed '/BEGIN NATIONAL SECURITY/,/END NATIONAL SECURITY/d' \
     < $f > .temporary_file
