@@ -580,7 +580,7 @@ static void file_open(INT32 args)
   }
   else if(fd < 0)
   {
-    ERRNO=EBADF;
+    ERRNO=errno;
   }
   else
   {
