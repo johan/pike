@@ -130,6 +130,11 @@ void f_strerror(INT32 args);
 void push_stat(PIKE_STAT_T *s);
 /* Prototypes end here */
 
+/* Defined by winnt.h */
+#ifdef FILE_CREATE
+#undef FILE_CREATE
+#endif
+
 /* open_mode
  *
  * Note: The lowest 8 bits are reserved for the fd_* flags from "fdlib.h".
