@@ -743,3 +743,31 @@ WARNING: $1
 
 EOF
 ])
+
+dnl PIKE_ENABLE_BUNDLE(bundle_name, invalidate_set, opt_error_msg)
+dnl Checks if bundle_name is available, and if it is enables it and
+dnl invalidates the cache variable specified in invalidate_set.
+dnl Otherwise if opt_error_msg has been specified performs an error exit.
+define(PIKE_ENABLE_BUNDLE, [
+  if test "$pike_bundle_dir" = ""; then
+    # Bundles not available.
+    ifelse([$3], , :, [ AC_MSG_ERROR([$3]) ])
+  else
+    for f in "$pike_bundle_dir/[$1]"*.tar.gz no; do
+      if test -f "$f"; then
+        # Notify toplevel that we want the bundle.
+	# Note that invalidation of the cache variables can't be done
+	# until the bundle actually has been built.
+	PIKE_MSG_WARN([Enabling bundle $1 from $f.])
+        echo "[$2]" >"[$1].bundle"
+	break
+      fi
+    done
+    ifelse([$3], , , [
+      if test "$f" = "no"; then      
+	# Bundle not available.
+	AC_MSG_ERROR([$3])
+      fi
+    ])
+  fi
+])
