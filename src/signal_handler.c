@@ -2101,6 +2101,7 @@ extern int pike_make_pipe(int *);
 #define PROCE_DUP		10
 #define PROCE_SETSID		11
 #define PROCE_SETCTTY		12
+#define PROCE_CHROOT		13
 
 #define PROCERROR(err, id)	do { int _l, _i; \
     buf[0] = err; buf[1] = errno; buf[2] = id; \
@@ -3737,7 +3738,7 @@ void f_create_process(INT32 args)
 	  fprintf(stderr, "[%d] child: chroot(\"%s\") failed, errno=%d\n",
 		  getpid(), chroot, errno);
 #endif /* PROC_DEBUG */
-          PROCERROR(PROCE_CHDIR, 0);
+          PROCERROR(PROCE_CHROOT, 0);
         }
       }
 
