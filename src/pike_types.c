@@ -1474,9 +1474,14 @@ static void low_describe_type(struct pike_type *t)
     }
     case T_FLOAT: my_strcat("float"); break;
     case T_PROGRAM:
-      my_strcat("program(");
-      my_describe_type(t->car);
-      my_strcat(")");
+      if ((t->car->type == T_OBJECT) &&
+	  (!t->car->cdr)) {
+	my_strcat("program");
+      } else {
+	my_strcat("program(");
+	my_describe_type(t->car);
+	my_strcat(")");
+      }
       break;
     case T_OBJECT:
       if (t->cdr)
