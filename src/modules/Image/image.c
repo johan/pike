@@ -1795,19 +1795,19 @@ void image_hsv_to_rgb(INT32 args)
 #define p (v * (1 - sat))
 #define q (v * (1 - (sat * f)))
 #define t (v * (1 - (sat * (1 -f))))
-       switch((int)i)
-       {
-	case 6: /* 360 degrees. Same as 0.. */
-	case 0:	 r = v;	 g = t;	 b = p;	 break;
-	case 1:	 r = q;	 g = v;	 b = p;	 break;
-	case 2:	 r = p;  g = v;	 b = t;	 break;
-	case 3:	 r = p;	 g = q;	 b = v;	 break;
-	case 4:	 r = t;	 g = p;	 b = v;	 break;
-	case 5:	 r = v;	 g = p;	 b = q;	 break;
-	default:
-	  err = "Nope. Not possible";
-	  goto exit_loop;
-       }
+	switch((int)i)
+	{
+	   case 6: /* 360 degrees. Same as 0.. */
+	   case 0: r = v; g = t; b = p;	 break;
+	   case 1: r = q; g = v; b = p;	 break;
+	   case 2: r = p; g = v; b = t;	 break;
+	   case 3: r = p; g = q; b = v;	 break;
+	   case 4: r = t; g = p; b = v;	 break;
+	   case 5: r = v; g = p; b = q;	 break;
+	   default:
+	      err = "Nope. Not possible";
+	      goto exit_loop;
+	}
      }
 #undef i
 #undef f
