@@ -892,17 +892,19 @@ node *debug_mktrampolinenode(int i)
 }
 
 node *debug_mkexternalnode(int level,
-		     int i,
-		     struct identifier *id)
+			   int i,
+			   struct identifier *id)
 {
   node *res = mkemptynode();
   res->token = F_EXTERNAL;
 
+  /* Kludge */
+  id = ID_FROM_INT(parent_compilation(level), i);
+
   copy_shared_string(res->type, id->type);
 
   /* FIXME */
-  if(IDENTIFIER_IS_CONSTANT(ID_FROM_INT(parent_compilation(level),
-					i)->identifier_flags))
+  if(IDENTIFIER_IS_CONSTANT(id->identifier_flags))
   {
     res->node_info = OPT_EXTERNAL_DEPEND;
   }else{
@@ -919,7 +921,9 @@ node *debug_mkexternalnode(int level,
   /* Bzot-i-zot */
   Pike_compiler->new_program->flags |= PROGRAM_USES_PARENT;
 
-  return freeze_node(res);
+  /* Can't freeze the node, since the type-info may become wrong. */
+  /* return freeze_node(res); */
+  return res;
 }
 
 node *debug_mkcastnode(struct pike_string *type,node *n)
