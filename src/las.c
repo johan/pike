@@ -347,6 +347,19 @@ struct pike_string *find_return_type(node *n)
   return b;
 }
 
+int check_tailrecursion(void)
+{
+  int e;
+  if(debug_options & NO_TAILRECURSION) return 0;
+  for(e=0;e<Pike_compiler->compiler_frame->max_number_of_locals;e++)
+  {
+    if(!pike_type_allow_premature_toss(
+      Pike_compiler->compiler_frame->variable[e].type->str))
+      return 0;
+  }
+  return 1;
+}
+
 
 #define NODES 128 /* 256 */
 

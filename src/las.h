@@ -119,6 +119,7 @@ int cdr_is_node(node *n);
 void check_tree(node *n, int depth);
 INT32 count_args(node *n);
 struct pike_string *find_return_type(node *n);
+int check_tailrecursion(void);
 struct node_chunk;
 void free_all_nodes(void);
 void debug_free_node(node *n);
