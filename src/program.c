@@ -4507,14 +4507,7 @@ PMOD_EXPORT struct pike_string *get_line(PIKE_OPCODE_T *pc,
     return optimizer;
   }
 
-#ifdef PIKE_USE_MACHINE_CODE
-  if( (long)pc > (long)prog->program)
-    offset = pc - prog->program;
-  else
-    offset = (long) pc;
-#else
   offset = pc - prog->program;
-#endif
 
   if ((offset > (ptrdiff_t)prog->num_program) || (offset < 0)) {
     struct pike_string *not_found;
