@@ -62,7 +62,7 @@ union anything
   struct object *object;
   struct program *program;
   struct pike_string *string;
-  ptrdiff_t *refs;
+  INT32 *refs;
   INT_TYPE integer;
   FLOAT_TYPE float_number;
   struct svalue *lval;   /* only used on stack */
