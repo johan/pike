@@ -42,9 +42,9 @@ extern struct program *magic_set_index_program;
 
 #define LOW_GET_GLOBAL(O,I,ID) ((O)->storage+INHERIT_FROM_INT((O)->prog, (I))->storage_offset+(ID)->func.offset)
 #define GET_GLOBAL(O,I) LOW_GET_GLOBAL(O,I,ID_FROM_INT((O)->prog,I))
-#define GLOBAL_FROM_INT(I) GET_GLOBAL(fp->current_object, I)
+#define GLOBAL_FROM_INT(I) GET_GLOBAL(Pike_fp->current_object, I)
 
-#define this_object() (add_ref(fp->current_object), fp->current_object)
+#define this_object() (add_ref(Pike_fp->current_object), Pike_fp->current_object)
 
 #include "block_alloc_h.h"
 /* Prototypes begin here */
