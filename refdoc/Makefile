@@ -86,5 +86,5 @@ touch-mirardoc:
 
 # Cleanup
 
-spotless: clean
+spotless:
 	-test -f .cvsignore && rm -rf `cat .cvsignore`
