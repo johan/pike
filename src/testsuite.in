@@ -640,6 +640,11 @@ test_compile_error( [[
   }
 ]])
 
+test_compile_error( [[
+  // This triggs a compiler bug on old Pike 7.5.
+  return lambda(object (([mixed]a)->syntax_error) { return 0; }(0);
+]])
+
 test_any( [[
 // bug [2861] ------------------------------------------------------------
 // http://community/crunch/show_bug.cgi?id=2861
