@@ -12,7 +12,7 @@ object mac;
 object crypt;
 object compress;
 
-object(Gmp.mpz) seq_num;    /* Bignum, values 0, .. 2^64-1 are valid */
+object(Gmp.mpz)|int seq_num;    /* Bignum, values 0, .. 2^64-1 are valid */
 
 constant Alert = SSL.alert;
 
