@@ -4438,8 +4438,12 @@ PMOD_EXPORT void *parent_storage(int depth)
 PMOD_EXPORT void change_compiler_compatibility(int major, int minor)
 {
   if(major == Pike_compiler->compat_major &&
-     minor == Pike_compiler->compat_minor)
+     minor == Pike_compiler->compat_minor) {
+    if (compat_handler) {
+      add_ref(compat_handler);
+    }
     return;
+  }
 
   if(major == PIKE_MAJOR_VERSION && minor == PIKE_MINOR_VERSION)
   {
