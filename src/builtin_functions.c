@@ -2177,7 +2177,7 @@ PMOD_EXPORT void f_exit(INT32 args)
   in_exit=1;
 
   if(args>1 && Pike_sp[1-args].type==T_STRING) {
-    f_werror(args-1);
+    safe_apply(get_master(), "werror", args-1);
     args=1;
   }
 
