@@ -11,4 +11,7 @@ MODULE_CFLAGS=@X_CFLAGS@
 $(SRCDIR)/auto.c : $(SRCDIR)/auto.c.in $(SRCDIR)/features.pike $(SRCDIR)/constants.pike $(SRCDIR)/gen.pike
 	$(RUNPIKE) $(SRCDIR)/gen.pike < $(SRCDIR)/auto.c.in > $(SRCDIR)/auto.c
 
+# Compatibility with stupid makes..
+auto.o: $(SRCDIR)/auto.c
+
 @dependencies@
