@@ -6,6 +6,7 @@
 CC=@CC@
 CPP=@CPP@
 AR=@AR@
+LIBGCC=@LIBGCC@
 
 PREFLAGS=-I. -I$(SRCDIR) -I$(SRCDIR)/../.. -I../.. -I. $(MODULE_CPPFLAGS) $(DEFINES) -DDYNAMIC_MODULE
 CFLAGS=$(PREFLAGS) $(OTHERFLAGS) @CCSHARED@ $(MODULE_CFLAGS)
@@ -48,7 +49,7 @@ config.status: $(SRCDIR)/configure
 	./config.status --recheck
 
 module.so: $(OBJS)  $(MODULE_ARCHIVES)
-	$(TMP_BINDIR)/smartlink "@LDSHARED@" -o module.@SO@ $(OBJS) $(MODULE_ARCHIVES) $(MODULE_LDFLAGS) -lc
+	$(TMP_BINDIR)/smartlink "@LDSHARED@" -o module.@SO@ $(OBJS) $(MODULE_ARCHIVES) $(MODULE_LDFLAGS) $(LIBGCC) -lc $(LIBGCC)
 	if test @SO@ != so ; then mv module.@SO@ module.so ; else :; fi
 
 clean:
