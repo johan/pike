@@ -33,10 +33,10 @@ struct nct_scale
    struct nct_scale *next;
    rgb_group low,high;
    rgbl_group vector; /* high-low */
-   float invsqvector; /* |vector|² */
+   double invsqvector; /* |vector|² */
    INT32 realsteps;
    int steps;
-   float mqsteps;     /* 1.0/(steps-1) */
+   double mqsteps;     /* 1.0/(steps-1) */
    int no[1];  /* actually no[steps] */
 };
 
