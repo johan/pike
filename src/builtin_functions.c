@@ -2186,8 +2186,7 @@ void f__exit(INT32 args)
 #ifdef PIKE_DEBUG
   {
     /* This will allow -p to work with _exit -Hubbe */
-    extern void exit_lex(void);
-    exit_lex();
+    exit_opcodes();
   }
 #endif
 

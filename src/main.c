@@ -37,6 +37,7 @@ RCSID("$Id$");
 #include "program.h"
 #include "pike_rusage.h"
 #include "module_support.h"
+#include "opcodes.h"
 
 #ifdef AUTO_BIGNUM
 #include "bignum.h"
@@ -699,9 +700,9 @@ int dbm_main(int argc, char **argv)
 
   init_types();
 
-  TRACE((stderr, "Init lexer...\n"));
+  TRACE((stderr, "Init opcodes...\n"));
 
-  init_lex();
+  init_opcodes();
 
   TRACE((stderr, "Init programs...\n"));
 
@@ -814,7 +815,7 @@ DECLSPEC(noreturn) void pike_do_exit(int num) ATTRIBUTE((noreturn))
 
 #ifdef PIKE_DEBUG
   /* For profiling */
-  exit_lex();
+  exit_opcodes();
 #endif
 
 #ifdef INTERNAL_PROFILING
