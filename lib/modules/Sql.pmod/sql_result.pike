@@ -101,7 +101,7 @@ void seek(int skip)
   if (arrayp(master_res)) {
     index += skip;
   } else if (functionp(master_res->seek)) {
-    master_res->seek(index);
+    master_res->seek(skip);
   } else {
     while (skip--) {
       master_res->fetch_row();
