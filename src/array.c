@@ -2310,28 +2310,6 @@ void debug_dump_array(struct array *a)
 #endif
 
 
-void zap_all_arrays(void)
-{
-  struct array *a,*next;
-
-  for(a=empty_array.next;a!=&empty_array;a=next)
-  {
-
-#if defined(PIKE_DEBUG) && defined(DEBUG_MALLOC)
-    if(verbose_debug_exit && a!=&empty_array &&
-       a!=&weak_empty_array && a!=&weak_shrink_empty_array)
-      describe(a);
-#endif
-    
-    add_ref(a);
-    free_svalues(ITEM(a), a->size, a->type_field);
-    a->size=0;
-
-    SET_NEXT_AND_FREE(a,free_array);
-  }
-}
-
-
 void count_memory_in_arrays(INT32 *num_, INT32 *size_)
 {
   INT32 num=0, size=0;

@@ -174,7 +174,6 @@ void gc_zap_ext_weak_refs_in_arrays(void);
 size_t gc_free_all_unreferenced_arrays(void);
 void debug_dump_type_field(TYPE_FIELD t);
 void debug_dump_array(struct array *a);
-void zap_all_arrays(void);
 void count_memory_in_arrays(INT32 *num_, INT32 *size_);
 PMOD_EXPORT struct array *explode_array(struct array *a, struct array *b);
 PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);

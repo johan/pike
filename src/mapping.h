@@ -176,7 +176,6 @@ void gc_zap_ext_weak_refs_in_mappings(void);
 size_t gc_free_all_unreferenced_mappings(void);
 void simple_describe_mapping(struct mapping *m);
 void debug_dump_mapping(struct mapping *m);
-void zap_all_mappings(void);
 int mapping_is_constant(struct mapping *m,
 			struct processing *p);
 /* Prototypes end here */
