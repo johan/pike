@@ -450,7 +450,7 @@ class Node
   }
 
   string make_navbar_low(Node root)
-  { 
+  {
     string res="";
 
     res += make_hier_list(root);
@@ -504,7 +504,7 @@ class Node
 
     Node tmp;
 
-    if(index==0)
+    if(index==0 || index == -1)
       return parent;
 
     tmp = siblings[index-1];
