@@ -625,6 +625,8 @@ int main()
       ;;
     esac
 
+    AC_CHECK_FUNCS(pthread_init)
+
     AC_CACHE_VAL(pike_cv_posix_threads, [
       AC_TRY_RUN([
 #define _REENTRANT
@@ -641,6 +643,9 @@ pthread_t gazonk;
 int main()
 {
   void *sune;
+#ifdef HAVE_PTHREAD_INIT
+  pthread_init();
+#endif /* HAVE_PTHREAD_INIT */
   pthread_mutexattr_init(&attr);
   pthread_mutex_init(&tmp, &attr);
   pthread_mutex_lock(&tmp);
