@@ -1462,6 +1462,7 @@ void f_create_process(INT32 args)
     THREADS_DISALLOW_UID();
     
     if(env) pop_stack();
+    if(command_line) free(command_line);
 
 #if 1
     if(t1!=INVALID_HANDLE_VALUE) CloseHandle(t1);
