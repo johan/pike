@@ -1161,9 +1161,7 @@ class dirnode
   static array(string) _indices()
   {
     fill_cache();
-    return indices(filter(cache, lambda(mixed x) {
-				   return cache[x] != ZERO_TYPE;
-				 } ));
+    return indices(filter(cache, lambda(mixed x) {return x != ZERO_TYPE;} ));
   }
 
   static array(mixed) _values()
@@ -1298,7 +1296,7 @@ class joinnode
   array(string) _indices()
   {
     fill_cache();
-    return indices(filter(cache, lambda(mixed x){ return cache[x] != ZERO_TYPE; }));
+    return indices(filter(cache, lambda(mixed x){ return x != ZERO_TYPE; }));
   }
   array(mixed) _values()
   {
