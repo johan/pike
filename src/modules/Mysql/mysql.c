@@ -268,7 +268,6 @@ static void pike_mysql_set_options(struct mapping *options)
   }
 #ifdef HAVE_MYSQL_OPTIONS
 #ifdef MYSQL_READ_DEFAULT_FILE
-  printf("\n\n\nREADING MYSQL DEFAULTS FILE\n\n\n");
   if ((val = simple_mapping_string_lookup(options, "mysql_config_file")) &&
       (val->type == T_STRING) && (!val->u.string->size_shift)) {
     mysql_options(PIKE_MYSQL->mysql, MYSQL_READ_DEFAULT_FILE,
@@ -402,7 +401,8 @@ static void pike_mysql_reconnect(void)
 #endif /* HAVE_MYSQL_UNIX_PORT */
 
 #ifdef HAVE_MYSQL_REAL_CONNECT
-  if ((val = simple_mapping_string_lookup((struct mapping *)PIKE_MYSQL->options, "connect_options")) &&
+  if ((val = simple_mapping_string_lookup(PIKE_MYSQL->options,
+					  "connect_options")) &&
       (val->type == T_INT) && (val->u.integer)) {
     options = (unsigned int)val->u.integer;
   }
