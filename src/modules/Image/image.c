@@ -507,9 +507,8 @@ THREADS_DISALLOW();
 **!	  "cmyk" : make a rgb image from cmyk (cyan, magenta, yellow, black)
 **!
 **!	generate modes; all extra arguments is given to the
-**!	generation function. These has the same name as the 
-**!	method:
-**!	  "<ref>test<ref>," 
+**!	generation function. These has the same name as the method:
+**!	  "<ref>test</ref>," 
 **!	  "<ref>gradients</ref>"
 **!	  "<ref>noise</ref>"
 **!	  "<ref>turbulence</ref>"
