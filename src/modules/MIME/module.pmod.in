@@ -110,6 +110,31 @@ class support {
     return 0;
   }
 
+  array(mapping(string:string)|string) parse_headers(string message)
+  {
+    mapping(string:string) headers = ([ ]);
+    string head, body, header, hname, hcontents;
+    int mesgsep;
+    int mesgsep1 = search(message, "\r\n\r\n");
+    int mesgsep2 = search(message, "\n\n");
+    mesgsep = (mesgsep1<0? mesgsep2 :
+	       (mesgsep2<0? mesgsep1 :
+		(mesgsep1<mesgsep2? mesgsep1 : mesgsep2)));
+    if (mesgsep<0) {
+      head = message;
+      body = "";
+    } else {
+      head = (mesgsep>0? message[..mesgsep-1]:"");
+      body = message[mesgsep+(message[mesgsep]=='\r'? 4:2)..];
+    }
+    foreach( replace(head, ({"\r", "\n ", "\n\t"}),
+		     ({"", " ", " "}))/"\n", header ) {
+      if(4==sscanf(header, "%[!-9;-~]%*[ \t]:%*[ \t]%s", hname, hcontents))
+	headers[lower_case(hname)] = hcontents;
+    }
+    return ({ headers, body });
+  }
+
 };
 
 inherit support;
@@ -292,28 +317,9 @@ class Message {
 	  headers[lower_case(hname)] = hdrs[hname];
       body_parts = parts;
     } else if (message) {
-      string head, body, header, hname, hcontents;
-      int mesgsep;
-      {
-	int mesgsep1 = search(message, "\r\n\r\n");
-	int mesgsep2 = search(message, "\n\n");
-	mesgsep = (mesgsep1<0? mesgsep2 :
-		   (mesgsep2<0? mesgsep1 :
-		    (mesgsep1<mesgsep2? mesgsep1 : mesgsep2)));
-      }
-      if (mesgsep<0) {
-	head = message;
-	body = "";
-      } else {
-	head = (mesgsep>0? message[..mesgsep-1]:"");
-	body = message[mesgsep+(message[mesgsep]=='\r'? 4:2)..];
-      }
-      foreach( replace(head, ({"\r", "\n ", "\n\t"}),
-		       ({"", " ", " "}))/"\n", header ) {
-	if(4==sscanf(header, "%[!-9;-~]%*[ \t]:%*[ \t]%s", hname, hcontents))
-	  headers[lower_case(hname)] = hcontents;
-      }
-      encoded_data = body;
+      array(mapping(string:string)|string) h = parse_headers(message);
+      headers = h[0];
+      encoded_data = h[1];
     }
     if (headers["content-type"]) {
       array(array(string|int)) arr =
