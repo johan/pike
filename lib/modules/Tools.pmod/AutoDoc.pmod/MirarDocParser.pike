@@ -542,7 +542,7 @@ void document(string enttype,
 	 break;
       default:
 	f->write("<docgroup homogen-type="+S(enttype));
-	if(huh->decl) {
+	if(huh->decl && sizeof(names)==1) {
 	  lambda() {
 	    string m,n;
 
