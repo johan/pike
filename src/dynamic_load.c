@@ -264,8 +264,11 @@ void f_load_module(INT32 args)
   module_name = sp[-args].u.string->str;
 
   /* Removing RTLD_GLOBAL breaks some PiGTK themes - Hubbe */
+  /* Using RTLD_LAZY is faster, but makes it impossible to 
+   * detect linking problems at runtime..
+   */
   module=dlopen(module_name, 
-                (d_flag ? RTLD_NOW : RTLD_LAZY) |RTLD_GLOBAL  );
+                RTLD_NOW |RTLD_GLOBAL  );
 
   if(!module)
   {
