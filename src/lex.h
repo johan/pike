@@ -9,6 +9,7 @@
 #define LEX_H
 
 #include "program.h"
+#include "language.h"
 
 #define NEW_LEX
 
