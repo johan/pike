@@ -1052,7 +1052,7 @@ PMOD_EXPORT void f_add_constant(INT32 args)
  *!   In all other cases @[zero_type()] will return @tt{0@} (zero).
  *!
  *! @seealso
- *!   @[fund_call_out()]
+ *!   @[find_call_out()]
  */
 PMOD_EXPORT void f_zero_type(INT32 args)
 {
