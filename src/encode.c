@@ -896,6 +896,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
       break;
 
     case T_FUNCTION:
+      /* FIXME: Ought to have special treatment of trampolines. */
       if (data->canonic)
 	Pike_error("Canonical encoding of functions not supported.\n");
       check_stack(1);
