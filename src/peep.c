@@ -530,7 +530,7 @@ INT32 assemble(int store_linenumbers)
       case I_ISPTRJUMPARGS:
 #ifdef INS_F_JUMP_WITH_TWO_ARGS
 	tmp = INS_F_JUMP_WITH_TWO_ARGS(c->opcode, c->arg, c->arg2,
-				       (labels[c->arg] != -1));
+				       (labels[c[1].arg] != -1));
 	if(tmp != -1)
 	{
 #ifdef ADJUST_PIKE_PC
@@ -566,7 +566,7 @@ INT32 assemble(int store_linenumbers)
 
       case I_ISPTRJUMPARG:
 #ifdef INS_F_JUMP_WITH_ARG
-	tmp = INS_F_JUMP_WITH_ARG(c->opcode, c->arg, (labels[c->arg] != -1));
+	tmp = INS_F_JUMP_WITH_ARG(c->opcode, c->arg, (labels[c[1].arg] != -1));
 	if(tmp != -1)
 	{
 #ifdef ADJUST_PIKE_PC
