@@ -346,5 +346,5 @@ pikefun_TAGS:
 	cd src && etags -l none -r \
 	'/[ 	]*\(PMOD_PROTO \|PMOD_EXPORT \|static \|extern \)*void[ 	]\{1,\}f_\([a-zA-Z0-9_]*\)[ 	]*([ 	]*INT32/\2/' \
 	`find . -type f -name '*.[ch]' -print`
-	cd lib/modules && ../../bin/pike_etags \
+	cd lib/modules && ../../bin/pike_etags.sh \
 	  `find . -type f '(' -name '*.pmod' -o -name '*.pike' ')' -print`
