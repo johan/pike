@@ -1164,13 +1164,7 @@ static void f__sprintf(INT32 args) {
 
 /*! @class Stream
  *!
- *! Represents an elementary data stream.
- *!
- *! @note
- *!   Because of license policy the current stream code is dumb.
- *!   For reviving of code you must replace psparser.c source
- *!   file with one from http://hop.at.unibase.cz/moje/dvb/
- *!   and recompile Pike.
+ *! Represents an elementary data stream (PES).
  */
 
 /*  @decl int set_buffer(int len)
