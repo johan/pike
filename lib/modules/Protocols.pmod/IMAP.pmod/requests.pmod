@@ -249,6 +249,8 @@ class select
 
 static private class low_fetch
 {
+  mapping bad(string msg);
+
   mapping easy_process(object message_set, mapping request)
   {
     werror(sprintf("fetch->easy_process(X, %O)\n", request));
