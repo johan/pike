@@ -3,6 +3,8 @@
 
 inherit @module@;
 
+#if constant(@module@.inflate)
+
 //! Low-level implementation of read/write support for GZip files
 class _file {
 
@@ -409,3 +411,4 @@ class File {
   }
 }
 
+#endif // constant(@module@.inflate)
