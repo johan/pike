@@ -2463,8 +2463,8 @@ void init_operators(void)
   ADD_EFUN2("`==",f_eq,
 	    tOr5(tFuncV(tOr(tInt,tFloat) tOr(tInt,tFloat),
 			tOr(tInt,tFloat),tInt01),
-		 tFuncV(tSetvar(0,tOr4(tString,tMapping,tSet,tArray)) tVar(0),
-			tVar(0),tInt01),
+		 tFuncV(tSetvar(0,tOr4(tString,tMapping,tMultiset,tArray))
+			tVar(0), tVar(0),tInt01),
 		 tFuncV(tOr3(tObject,tProgram,tFunction) tMix,tMix,tInt01),
 		 tFuncV(tMix tOr3(tObject,tProgram,tFunction),tMix,tInt01),
 		 tFuncV(tType tType,tOr3(tProgram,tFunction,tType),tInt01)),
@@ -2473,8 +2473,8 @@ void init_operators(void)
   ADD_EFUN2("`!=",f_ne,
 	    tOr5(tFuncV(tOr(tInt,tFloat) tOr(tInt,tFloat),
 			tOr(tInt,tFloat),tInt01),
-		 tFuncV(tSetvar(0,tOr4(tString,tMapping,tSet,tArray)) tVar(0),
-			tVar(0),tInt01),
+		 tFuncV(tSetvar(0,tOr4(tString,tMapping,tMultiset,tArray))
+			tVar(0), tVar(0),tInt01),
 		 tFuncV(tOr3(tObject,tProgram,tFunction) tMix,tMix,tInt01),
 		 tFuncV(tMix tOr3(tObject,tProgram,tFunction),tMix,tInt01),
 		 tFuncV(tType tType,tOr3(tProgram,tFunction,tType),tInt01)),
