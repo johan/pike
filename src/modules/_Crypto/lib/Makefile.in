@@ -113,6 +113,10 @@ desdata:	desdata.o
 		$(CODEGEN.c) $<
 		$(COMPILE.c) $*.s
 
+.c.o:
+	@echo "Compiling $<" ;\
+	$(CC) $(CFLAGS) -c $< -o $@
+
 # slowest to quickest
 desSmallFips.c:
 		@echo '#include "desCode.h"' > $@
