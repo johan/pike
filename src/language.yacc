@@ -2403,7 +2403,7 @@ typedef: modifiers TOK_TYPEDEF full_type simple_identifier ';'
     if ($4) {
       ref_push_type_value(t);
       add_constant($4->u.sval.u.string, Pike_sp-1,
-		   Pike_compiler->current_modifiers & ~ID_EXTERN);
+		   (Pike_compiler->current_modifiers & ~ID_EXTERN) | ID_INLINE);
       pop_stack();
       free_node($4);
     }
