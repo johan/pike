@@ -235,7 +235,14 @@ static void __yy_memcpy(char *to, char *from, int count);
 }
 
 %{
+/* Include <stdio.h> our selves, so that we can do our magic
+ * without being disturbed... */
+#include <stdio.h>
 int yylex(YYSTYPE *yylval);
+/* Bison is stupid, and tries to optimize for space... */
+#ifdef YYBISON
+#define short int
+#endif /* YYBISON */
 %}
 
 %type <fnum> F_FLOAT
