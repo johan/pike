@@ -138,7 +138,7 @@ MIRD_RES mird_open(struct mird *db)
    if ( (db->flags & MIRD_EXCL) ) flags|=O_EXCL;
 
    res=mird_open_file(db,flags,!(db->flags&MIRD_READONLY),&(db->db_fd));
-   if (res) 
+   if (res) {
       if (res->error_no!=MIRDE_CREATED_FILE)
 	 return res;
       else
@@ -163,7 +163,7 @@ MIRD_RES mird_open(struct mird *db)
 
 	 /* always open the new file as an old anyway */
       }
-
+   }
    db->buffer=smalloc(db->block_size);
    if (!db->buffer)
    {

@@ -16,6 +16,32 @@
 
 #include <stdlib.h>
 
+/* AIX requires this to be the first thing in the file.  */
+#if HAVE_ALLOCA_H
+# include <alloca.h>
+# ifdef __GNUC__
+#  ifdef alloca
+#   undef alloca
+#  endif
+#  define alloca __builtin_alloca
+# endif 
+#else
+# ifdef __GNUC__
+#  ifdef alloca
+#   undef alloca
+#  endif
+#  define alloca __builtin_alloca
+# else
+#  ifdef _AIX
+ #pragma alloca
+#  else
+#   ifndef alloca /* predefined by HP cc +Olibcalls */
+void *alloca();
+#   endif
+#  endif
+# endif
+#endif
+
 static const char RCSID[]=
    "$Id$";
 
