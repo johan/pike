@@ -26,15 +26,6 @@ struct object *master_object = 0;
 struct program *master_program =0;
 struct object *first_object;
 
-struct object fake_object = { 1 }; /* start with one reference */
-
-void setup_fake_object(void)
-{
-  fake_object.prog=new_program;
-  fake_object.next=0;
-  fake_object.refs=0xffffff;
-}
-
 struct object *low_clone(struct program *p)
 {
   int e;
