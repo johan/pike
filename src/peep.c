@@ -148,7 +148,7 @@ void ins_f_byte(unsigned int b)
     Pike_error("Instruction too big %d\n",b);
 #endif
 #ifdef HAVE_COMPUTED_GOTO
-  add_to_program(fcode_to_opcode[b-1]);
+  add_to_program(fcode_to_opcode[b]);
 #else /* !HAVE_COMPUTED_GOTO */
   add_to_program((unsigned char)b);
 #endif /* HAVE_COMPUTED_GOTO */
