@@ -604,7 +604,7 @@
 #endif /* !HAVE_WORKING___FUNC__ */
 
 #ifndef HAVE_WORKING_REALLOC_NULL
-#define realloc(PTR, SZ)	pike_realloc((PTR),(SZ))
+#define realloc(PTR, SZ)	pike_realloc(PTR,SZ)
 #endif
 
 /* NOTE:
