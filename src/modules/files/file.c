@@ -441,6 +441,10 @@ static void file_write(INT32 args)
     i=write(fd, str->str + written, str->len - written);
     THREADS_DISALLOW();
 
+#ifdef _REENTRANT
+    if(FD<0) error("File destructed while in file->write.\");
+#endif
+
     if(i<0)
     {
       switch(errno)
