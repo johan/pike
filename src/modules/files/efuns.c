@@ -735,6 +735,7 @@ void f_mkdir(INT32 args)
     THREADS_ALLOW_UID();
     i = mkdir(str->str) != -1;
     umask(mask);
+    REVEAL_GLOBAL_VARIABLES();
     if (i) {
       /* Attempt to set the mode.
        *
@@ -753,11 +754,16 @@ void f_mkdir(INT32 args)
 	  if (i || errno != EINTR) break;
 	  /* Must have do { ... } while(0) around these since
 	   * THREADS_DISALLOW_UID contains "} while (0)" and
-	   * THREADS_ALLOW_UID "do {". */
+	   * THREADS_ALLOW_UID "do {".
+	   *
+	   * The same thing applies to {HIDE,REVEAL}_HIDDEN_VARIABLES().
+	   */
 	  do {
+	    HIDE_GLOBAL_VARIABLES();
 	    THREADS_DISALLOW_UID();
 	    check_threads_etc();
 	    THREADS_ALLOW_UID();
+	    REVEAL_GLOBAL_VARIABLES();
 	  } while (0);
 	} while (1);
       }
@@ -774,6 +780,7 @@ void f_mkdir(INT32 args)
 	rmdir(str->str);
       }
     }
+    HIDE_GLOBAL_VARIABLES();
     THREADS_DISALLOW_UID();
   }
 #endif
