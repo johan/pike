@@ -139,7 +139,7 @@ void init_types(void)
 				  tFuncV(tNone,tZero,tOr(tMix,tVoid))));
 }
 
-static int type_length(char *t)
+static ptrdiff_t type_length(char *t)
 {
   char *q=t;
 one_more_type:
@@ -208,7 +208,7 @@ unsigned char type_stack[PIKE_TYPE_STACK_SIZE];
 unsigned char *pike_type_mark_stack[PIKE_TYPE_STACK_SIZE/4];
 
 
-INT32 pop_stack_mark(void)
+ptrdiff_t pop_stack_mark(void)
 { 
   Pike_compiler->pike_type_mark_stackp--;
   if(Pike_compiler->pike_type_mark_stackp<pike_type_mark_stack)
@@ -319,7 +319,7 @@ static void push_unfinished_type_with_markers(char *s,
 
 void push_finished_type(struct pike_string *type)
 {
-  int e;
+  ptrdiff_t e;
   check_type_string(type);
   for(e=type->len-1;e>=0;e--) push_type(type->str[e]);
 }
@@ -751,9 +751,9 @@ struct pike_string *parse_type(char *s)
 }
 
 #ifdef PIKE_DEBUG
-void stupid_describe_type(char *a,INT32 len)
+void stupid_describe_type(char *a, ptrdiff_t len)
 {
-  INT32 e;
+  ptrdiff_t e;
   for(e=0;e<len;e++)
   {
     if(e) printf(" ");

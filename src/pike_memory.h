@@ -18,7 +18,8 @@
 struct link
 {
   struct link *next;
-  INT32 key, offset;
+  INT32 key;
+  ptrdiff_t offset;
 };
 
 enum methods {
