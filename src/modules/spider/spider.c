@@ -1264,7 +1264,6 @@ struct thread_args
   int len;
   int sent;
   char buffer[BUFFER];
-  THREAD_T tid;
 };
 
 MUTEX_T done_lock;
