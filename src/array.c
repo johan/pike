@@ -1807,7 +1807,7 @@ void gc_check_all_arrays(void)
 
       /* Ugly, but we are not allowed to change type_field
        * at the same time as the array is being built...
-       * Actually we just need beter primitives for building arrays.
+       * Actually we just need better primitives for building arrays.
        */
       if(!(a->type_field & BIT_UNFINISHED) || a->refs!=1)
 	a->type_field = t;
