@@ -1812,8 +1812,14 @@ void f_create_process(INT32 args)
 	  {
 	    switch(ITEM(cmd)[e].u.string->str[d])
 	    {
-	      case '"':
+	      /* Hopefully this should work better -Hubbe */
 	      case '\\':
+		low_my_putchar('"', &buf);
+		low_my_putchar('\\', &buf);
+		low_my_putchar('\\', &buf);
+		low_my_putchar('"', &buf);
+		break;
+	      case '"':
 		low_my_putchar('\\', &buf);
 	      default:
 		low_my_putchar(ITEM(cmd)[e].u.string->str[d], &buf);
