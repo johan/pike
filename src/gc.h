@@ -20,12 +20,12 @@ extern struct callback_list evaluator_callbacks;
 extern void *gc_svalue_location;
 #endif
 
-#define ADD_GC_CALLBACK() gc_evaluator_callback=add_to_callback(&evaluator_callbacks,(callback_func)do_gc,0,0)
+#define ADD_GC_CALLBACK() do { if(!gc_evaluator_callback)  gc_evaluator_callback=add_to_callback(&evaluator_callbacks,(callback_func)do_gc,0,0); }while(0)
 
 #ifdef ALWAYS_GC
-#define GC_ALLOC(OBJ) do{ num_objects++; num_allocs++; if (Pike_in_gc) remove_marker(OBJ); if(!gc_evaluator_callback) ADD_GC_CALLBACK(); } while(0)
+#define GC_ALLOC(OBJ) do{ num_objects++; num_allocs++; if (Pike_in_gc) remove_marker(OBJ); ADD_GC_CALLBACK(); } while(0)
 #else
-#define GC_ALLOC(OBJ) do{ num_objects++; num_allocs++; if (Pike_in_gc) remove_marker(OBJ); if(num_allocs == alloc_threshold && !gc_evaluator_callback) ADD_GC_CALLBACK(); } while(0)
+#define GC_ALLOC(OBJ) do{ num_objects++; num_allocs++; if (Pike_in_gc) remove_marker(OBJ); if(num_allocs == alloc_threshold) ADD_GC_CALLBACK(); } while(0)
 #endif
 
 struct marker
