@@ -165,13 +165,14 @@
 
       if(Pike_interpreter.trace_level)
       {
+	dynamic_buffer save_buf;
 	char buf[50];
 
-	init_buf();
+	init_buf(&save_buf);
 	sprintf(buf, "%lx->", DO_NOT_WARN((long) PTR_TO_INT (o)));
 	my_strcat(buf);
 	my_strcat(function->name->str);
-	do_trace_call(args);
+	do_trace_call(args, &save_buf);
       }
 
 #ifdef PIKE_DEBUG      

@@ -2565,10 +2565,11 @@ static void low_print_tree(node *foo,int needlval)
 
   case F_CAST:
   {
+    dynamic_buffer save_buf;
     char *s;
-    init_buf();
+    init_buf(&save_buf);
     my_describe_type(foo->type);
-    s=simple_free_buf();
+    s=simple_free_buf(&save_buf);
     fprintf(stderr, "(%s){",s);
     free(s);
     low_print_tree(_CAR(foo),0);
@@ -2578,10 +2579,11 @@ static void low_print_tree(node *foo,int needlval)
 
   case F_SOFT_CAST:
   {
+    dynamic_buffer save_buf;
     char *s;
-    init_buf();
+    init_buf(&save_buf);
     my_describe_type(foo->type);
-    s=simple_free_buf();
+    s=simple_free_buf(&save_buf);
     fprintf(stderr, "[%s]{",s);
     free(s);
     low_print_tree(_CAR(foo),0);
@@ -2629,10 +2631,11 @@ static void low_print_tree(node *foo,int needlval)
 
   case F_CONSTANT:
   {
+    dynamic_buffer save_buf;
     char *s;
-    init_buf();
+    init_buf(&save_buf);
     describe_svalue(& foo->u.sval, 0, 0);
-    s=simple_free_buf();
+    s=simple_free_buf(&save_buf);
     fprintf(stderr, "const(%s)",s);
     free(s);
     break;

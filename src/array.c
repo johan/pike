@@ -1894,10 +1894,11 @@ void describe_array_low(struct array *a, struct processing *p, int indent)
 
 PMOD_EXPORT void simple_describe_array(struct array *a)
 {
+  dynamic_buffer save_buf;
   char *s;
-  init_buf();
+  init_buf(&save_buf);
   describe_array_low(a,0,0);
-  s=simple_free_buf();
+  s=simple_free_buf(&save_buf);
   fprintf(stderr,"({\n%s\n})\n",s);
   free(s);
 }

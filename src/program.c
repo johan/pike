@@ -6557,6 +6557,7 @@ static void not_trampoline(INT32 args)
 
 static void sprintf_trampoline (INT32 args)
 {
+  dynamic_buffer save_buf;
   dynbuf_string str;
 
   if (!args || sp[-args].type != T_INT || sp[-args].u.integer != 'O' ||
@@ -6568,9 +6569,9 @@ static void sprintf_trampoline (INT32 args)
   pop_n_elems (args);
 
   ref_push_function (THIS->frame->current_object, THIS->func);
-  init_buf();
+  init_buf(&save_buf);
   describe_svalue (sp - 1, 0, 0);
-  str = complex_free_buf();
+  str = complex_free_buf(&save_buf);
   pop_stack();
   push_string (make_shared_binary_string (str.str, str.len));
   free (str.str);

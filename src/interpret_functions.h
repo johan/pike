@@ -2120,9 +2120,10 @@ OPCODE1_JUMP(F_CALL_OTHER_AND_RETURN,"call other & return", I_UPDATE_ALL, {
     struct svalue *s=&Pike_fp->context.prog->constants[arg1].sval;	 \
   if(Pike_interpreter.trace_level>1)					 \
   {									 \
-    init_buf();								 \
+    dynamic_buffer save_buf;						 \
+    init_buf(&save_buf);						 \
     describe_svalue(s, 0,0);						 \
-    do_trace_call(args);						 \
+    do_trace_call(args, &save_buf);					 \
   }									 \
   (*(s->u.efun->function))(args);					 \
   s->u.efun->runs++;                                                     \

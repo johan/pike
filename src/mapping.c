@@ -2443,10 +2443,11 @@ size_t gc_free_all_unreferenced_mappings(void)
 
 void simple_describe_mapping(struct mapping *m)
 {
+  dynamic_buffer save_buf;
   char *s;
-  init_buf();
+  init_buf(&save_buf);
   describe_mapping(m,0,2);
-  s=simple_free_buf();
+  s=simple_free_buf(&save_buf);
   fprintf(stderr,"%s\n",s);
   free(s);
 }

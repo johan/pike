@@ -3504,10 +3504,11 @@ void describe_multiset (struct multiset *l, struct processing *p, int indent)
 
 void simple_describe_multiset (struct multiset *l)
 {
+  dynamic_buffer save_buf;
   char *desc;
-  init_buf();
+  init_buf(&save_buf);
   describe_multiset (l, NULL, 2);
-  desc = simple_free_buf();
+  desc = simple_free_buf(&save_buf);
   fprintf (stderr, "%s\n", desc);
   free (desc);
 }

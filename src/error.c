@@ -328,15 +328,16 @@ PMOD_EXPORT void exit_on_error(const void *msg)
   fprintf(stderr,"%s\n",(char *)msg);
 #ifdef PIKE_DEBUG
   {
+    dynamic_buffer save_buf;
     char *s;
     struct svalue thrown;
     fprintf(stderr,"Attempting to dump raw error: (may fail)\n");
-    init_buf();
+    init_buf(&save_buf);
     move_svalue (&thrown, &throw_value);
     throw_value.type = PIKE_T_INT;
     describe_svalue(&thrown,0,0);
     free_svalue (&thrown);
-    s=simple_free_buf();
+    s=simple_free_buf(&save_buf);
     fprintf(stderr,"%s\n",s);
     free(s);
   }

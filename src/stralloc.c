@@ -983,9 +983,10 @@ PMOD_EXPORT void debug_free_string(struct pike_string *s)
  */
 struct pike_string *add_string_status(int verbose)
 {
+  dynamic_buffer save_buf;
   char b[200];
 
-  init_buf();
+  init_buf(&save_buf);
 
   if (verbose)
   {
@@ -1030,7 +1031,7 @@ struct pike_string *add_string_status(int verbose)
       (long)num_str_searches, (double)search_len / num_str_searches);
   my_strcat(b);
 */
-  return free_buf();
+  return free_buf(&save_buf);
 }
 
 /*** PIKE_DEBUG ***/
@@ -1817,8 +1818,6 @@ void init_shared_string_table(void)
   }
 #endif
   empty_pike_string = make_shared_string("");
-
-  initialize_global_buf();
 }
 
 #ifdef DEBUG_MALLOC
