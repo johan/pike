@@ -5110,11 +5110,13 @@ void f_filter(INT32 args)
 
 	 push_svalue(sp-args);
 	 f_indices(1);
-	 sp[-args-3]=*--sp;
+	 sp--;
+	 sp[-args-2]=*sp;
 	 dmalloc_touch_svalue(sp);
 	 push_svalue(sp-args);
 	 f_values(1);
-	 sp[-args-2]=*--sp;
+	 sp--;
+	 sp[-args-1]=*sp;
 	 dmalloc_touch_svalue(sp);
 
 	 assign_svalue(sp-args,sp-args-1); /* loop values only */
