@@ -154,9 +154,11 @@ class Request
       {
 	 if(!con) con=give_me_connection(url_requested);
 	 con->sync_request(@args);
-	 if (con->ok) 
+	 if (con->ok)
 	 {
 	    check_for_cookies();
+	    while( con->status == 100 )
+	       con->ponder_answer( con->datapos );
 	    if (con->status>=300 && con->status<400 &&
 		con->headers->location && follow_redirects)
 	    {
