@@ -75,6 +75,9 @@ RCSID("$Id$");
 #include <netdb.h>
 #endif
 
+#include "dmalloc.h"
+
+
 #ifndef SEEK_SET
 #define SEEK_SET 0
 #endif

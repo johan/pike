@@ -615,40 +615,17 @@ void f_throw(INT32 args)
   pike_throw();
 }
 
-static struct callback_list exit_callbacks;
-
-struct callback *add_exit_callback(callback_func call,
-				   void *arg,
-				   callback_func free_func)
-{
-  return add_to_callback(&exit_callbacks, call, arg, free_func);
-}
-
 void f_exit(INT32 args)
 {
-  ONERROR tmp;
-  int i;
   if(args < 1)
     error("Too few arguments to exit.\n");
 
   if(sp[-args].type != T_INT)
     error("Bad argument 1 to exit.\n");
 
-  i=sp[-args].u.integer;
-
-#ifdef _REENTRANT
-  if(num_threads>1) exit(i);
-#endif
-
-  SET_ONERROR(tmp,exit_on_error,"Error in handle_error in master object!");
-
-  call_callback(&exit_callbacks, (void *)0);
-  free_callback(&exit_callbacks);
-
-  exit_modules();
-
-  UNSET_ONERROR(tmp);
-  exit(i);
+  assign_svalue(&throw_value, sp-args);
+  throw_severity=THROW_EXIT;
+  pike_throw();
 }
 
 void f_time(INT32 args)

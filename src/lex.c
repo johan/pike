@@ -502,7 +502,11 @@ static int yylex2(YYSTYPE *yylval)
 	  READBUF(C!='\n');
 	  if (strcmp(buf, "all_inline") == 0)
 	  {
-	    lex.pragmas |= PRAGMA_ALL_INLINE;
+	    lex.pragmas |= ID_INLINE;
+	  }
+	  else if (strcmp(buf, "all_nomask") == 0)
+	  {
+	    lex.pragmas |= ID_NOMASK;
 	  }
 	  break;
 	}
@@ -842,9 +846,6 @@ static int yylex2(YYSTYPE *yylval)
 	  break;
 	  case TWO_CHAR('t','y'):
 	    if(ISWORD("typeof")) return F_TYPEOF;
-	  break;
-	  case TWO_CHAR('v','a'):
-	    if(ISWORD("varargs")) return F_VARARGS;
 	  break;
 	  case TWO_CHAR('v','o'):
 	    if(ISWORD("void")) return F_VOID_ID;

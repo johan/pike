@@ -609,7 +609,11 @@ void init_image_pnm(void)
 
    image_pnm_module_program=end_program();
    push_object(clone_object(image_pnm_module_program,0));
-   add_constant(make_shared_string("PNM"),sp-1,0);
+   {
+     struct pike_string *s=make_shared_string("PNM");
+     add_constant(s,sp-1,0);
+     free_string(s);
+   }
    pop_stack();
 }
 

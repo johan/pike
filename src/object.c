@@ -201,15 +201,10 @@ struct object *get_master(void)
       error("Couldn't load master program. (%s)\n",master_file);
     }
   }
-  master_object=clone_object(master_program,0);
+  master_object=low_clone(master_program);
 
   call_c_initializers(master_object);
   call_pike_initializers(master_object,0);
-
-  apply_lfun(master_object,LFUN___INIT,0);
-  pop_stack();
-  apply_lfun(master_object,LFUN_CREATE,0);
-  pop_stack();
   
   inside = 0;
   return master_object;

@@ -807,7 +807,7 @@ static int do_docode2(node *n,int flags)
       if(current_switch_jumptable[e]==-1)
 	current_switch_jumptable[e]=current_switch_default;
 
-    sp[-1].u.array=order_array(sp[-1].u.array,order);
+    order_array(sp[-1].u.array,order);
 
     reorder((void *)(current_switch_jumptable+1),cases,sizeof(INT32)*2,order);
     free((char *)order);

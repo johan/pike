@@ -46,6 +46,7 @@ RCSID("$Id$");
 
 #include "image.h"
 #include "colortable.h"
+#include "dmalloc.h"
 
 struct program *image_colortable_program;
 extern struct program *image_program;

@@ -12,6 +12,9 @@ test_eq([[cpp("#define MAX(X,Y) ((X)>(Y)?(X):(Y))\n#define MAX3(X,Y,Z) MAX(MAX(X
 
 test_program([[class foo { program x() { return class {}; }}; class bar { inherit foo; program x() { return class {}; }} int a() { return foo()->x != bar()->x(); }]])
 
+// Testing the 'inline' keyword
+test_program([[class foo { inline int c() { return time(); } int d() { return c(); } }; class bar { inherit foo; int c() { return 0; } } int a() { return !bar()->d(); }]],0)
+
 test_any([[object o=class foo{int c;class bar{void create(){c++;};}}(); o->bar(); return o->c;]],1)
 test_do([[add_constant("GURKA2",class foo { int c; class bar{void create() {c+=17;}}}()); ]])
 test_any([[class x { inherit GURKA2.bar; }(); return GURKA2->c;]],17)

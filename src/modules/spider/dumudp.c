@@ -77,6 +77,8 @@ RCSID("$Id$");
 #include <netdb.h>
 #endif
 
+#include "dmalloc.h"
+
 struct dumudp {
   int fd;
   struct svalue read_callback;

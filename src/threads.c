@@ -181,14 +181,22 @@ void *new_thread_func(void * data)
   THREADS_FPRINTF((stderr,"THREAD %08x INITED\n",(unsigned int)thread_id));
   if(SETJMP(back))
   {
-    ONERROR tmp;
-    SET_ONERROR(tmp,exit_on_error,"Error in handle_error in master object!");
-    assign_svalue_no_free(sp++, & throw_value);
-    APPLY_MASTER("handle_error", 1);
-    pop_stack();
-    UNSET_ONERROR(tmp);
+    if(throw_severity < THROW_EXIT)
+    {
+      ONERROR tmp;
+      SET_ONERROR(tmp,exit_on_error,"Error in handle_error in master object!");
+      assign_svalue_no_free(sp++, & throw_value);
+      APPLY_MASTER("handle_error", 1);
+      pop_stack();
+      UNSET_ONERROR(tmp);
+    }
+    if(throw_severity == THROW_EXIT)
+    {
+      do_exit(throw_value.u.integer);
+    }
   } else {
     INT32 args=arg.args->size;
+    back.severity=THROW_EXIT;
     push_array_items(arg.args);
     arg.args=0;
     f_call_function(args);
