@@ -928,7 +928,7 @@ static void image_layer_descriptions(INT32 args)
    pop_n_elems(args);
       
    for (i=0; i<LAYER_MODES; i++)
-      ref_push_string(make_shared_string(layer_mode[i].desc));
+     push_string(make_shared_string(layer_mode[i].desc));
 
    f_aggregate(LAYER_MODES);
 }
