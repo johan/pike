@@ -64,6 +64,8 @@ void pike_throw(void) ATTRIBUTE((noreturn))
 #endif
     free_object(fp->current_object);
     free_program(fp->context.prog);
+    if(fp->context.parent)
+      free_object(fp->context.parent);
     
     fp = fp->parent_frame;
   }
