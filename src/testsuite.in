@@ -45,6 +45,14 @@ test_eval_error([[class Foo {
   Foo()->foo();
 ]])
 
+test_do([[
+  void foo (int i) {
+    multiset res = (<>);
+    if (i) res = res;
+  };
+  foo (1);
+]])
+
 test_any([[int a=0xffffffff; return a+17]], 0x100000010);
 test_any([[int a=0xffffffff; return a-17]], 0xffffffee);
 test_any([[int a=0xffffffff; return a*17]], 0x10ffffffef);
