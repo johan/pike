@@ -89,7 +89,11 @@ void init_interpreter()
       fd=open("/dev/zero",O_RDONLY);
       if(fd >= 0) break;
       if(errno != EINTR)
-	fatal("Failed to open /dev/zero.\n");
+      {
+	evaluator_stack=0;
+	mark_stack=0;
+	goto use_malloc;
+      }
     }
   }
 #endif
@@ -107,6 +111,7 @@ void init_interpreter()
   mark_stack=0;
 #endif
 
+use_malloc:
   if(!evaluator_stack)
   {
     evaluator_stack=(struct svalue *)xalloc(stack_size*sizeof(struct svalue));
