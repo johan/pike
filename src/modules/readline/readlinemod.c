@@ -17,10 +17,6 @@ RCSID("$Id$");
 
 #include <errno.h>
 
-#ifndef HAVE_LIBTERMCAP
-#undef HAVE_LIBREADLINE
-#endif
-
 #if !defined(HAVE_READLINE_H) && !defined(HAVE_READLINE_READLINE_H)
 #undef HAVE_LIBREADLINE
 #endif
