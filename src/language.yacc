@@ -1224,6 +1224,10 @@ low_idents: F_IDENTIFIER
 	}else{
 	  my_yyerror("'%s' undefined.", $1->str);
 	}
+      } else {
+	push_int(0);
+	$$=mkconstantsvaluenode(sp-1);
+	pop_stack();
       }
     }
     free_string($1);
