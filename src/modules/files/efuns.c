@@ -846,21 +846,20 @@ void f_get_dir(INT32 args)
   f_add(2);
   str = Pike_sp[-1].u.string;
 
-#ifdef READDIR_DEBUG
-  fprintf(stderr, "FindFirstFile(\"%s\")...\n", str->str);
-#endif /* READDIR_DEBUG */
-
   if ((!(dir_str = require_wstring1(str, &to_free))) ||
       (wcslen(dir_str) != (size_t)str->len)) {
     /* Filenames with NUL and filenames that are
      * too wide are not supported. */
     if (to_free) free(to_free);
-    fprintf(stderr, "require_wstring1() failed or spurious NUL.\n");
     errno = ENOENT;
     pop_n_elems(args);
     push_int(0);
     return;
   }
+
+#ifdef READDIR_DEBUG
+  fprintf(stderr, "FindFirstFile(\"%S\")...\n", dir_str);
+#endif /* READDIR_DEBUG */
 
   dir = FindFirstFileW(dir_str, &d);
 
