@@ -246,7 +246,7 @@ void f_aap_scan_for_query(INT32 args)
 	 push_string(make_shared_binary_string(work_area+last,k-last));
 	 n++;
 	 begin = k+1;
-	 f_aggregate_multiset(DO_NOT_WARN(n));
+	 f_aggregate_multiset(DO_NOT_WARN((INT32)n));
 	 goto done2;
       }
     }
@@ -882,7 +882,10 @@ void actually_send(struct send_args *a)
   }
 #endif /* HAVE_SENDFILE && !HAVE_FREEBSD_SENDFILE */
 
+#if defined(HAVE_FREEBSD_SENDFILE) || defined(HAVE_SENDFILE)
  normal:
+#endif /* HAVE_FREEBSD_SENDFILE || HAVE_SENDFILE */
+
 #ifdef AAP_DEBUG
   fprintf(stderr, "using normal fallback... \n");
 #endif
