@@ -2525,6 +2525,9 @@ void f_create_process(INT32 args)
 		buf[1]);
 	  break;
 	case PROCE_DUP2:
+	  if (buf[1] == EINVAL) {
+	    error("Process.create_process(): dup2() failed with EINVAL.\n");
+	  }
 	  error("Process.create_process(): dup2() failed. errno:%d\n",
 		buf[1]);
 	  break;
@@ -2533,6 +2536,11 @@ void f_create_process(INT32 args)
 		buf[2], buf[1]);
 	  break;
 	case PROCE_SETGROUPS:
+	  if (buf[1] == EINVAL) {
+	    error("Process.create_process(): setgroups() failed with EINVAL.\n"
+		  "Too many supplementary groups (%d)?\n",
+		  storage.num_wanted_gids);
+	  }
 	  error("Process.create_process(): setgroups() failed. errno:%d\n",
 		buf[1]);
 	  break;
@@ -2545,10 +2553,20 @@ void f_create_process(INT32 args)
 		buf[1]);
 	  break;
 	case PROCE_SETUID:
+	  if (buf[1] == EINVAL) {
+	    error("Process.create_process(): Invalid uid: %d.\n",
+		  wanted_uid);
+	  }
 	  error("Process.create_process(): setuid(%d) failed. errno:%d\n",
 		buf[2], buf[1]);
 	  break;
 	case PROCE_EXEC:
+	  if (buf[1] == ENOENT) {
+	    error("Process.create_process(): Executable file not found.\n");
+	  }
+	  if (buf[1] == EACCESS) {
+	    error("Process.create_process(): Access denied.\n");
+	  }
 	  error("Process.create_process(): exec() failed. errno:%d\n"
 		"File not found?\n", buf[1]);
 	  break;
