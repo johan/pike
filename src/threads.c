@@ -935,7 +935,7 @@ void f_cond_wait(INT32 args)
 
   c=THIS_COND;
 
-  if((args > 0) && !((sp[-1].type == T_INT) && (!sp[-1].u.integer)))
+  if((args > 0) && !IS_ZERO(sp-1))
   {
     struct object *key;
     struct mutex_storage *mut;
