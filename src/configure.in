@@ -181,6 +181,11 @@ AC_DEFUN(AC_SYS_COMPILER_FLAG,
       #
       # cc: 1501-228 input file +O3 not found
       pike_cv_option_$2=no
+    elif grep -i 'ignored' <conftezt.out.2 >/dev/null; then
+      # gcc/AIX says the following regarding -fpic:
+      #
+      # cc1: warning: -fpic ignored (all code is position independent)
+      pike_cv_option_$2=no
     else :; fi
     rm conftezt.out.2
   ])
