@@ -1112,6 +1112,7 @@ static struct program *streamed_parser;
 
 extern void init_udp(void);
 extern void init_xml(void);
+extern void exit_xml(void);
 
 
 /* Hohum. Here we go. This is try number three for a more optimized Roxen. */
@@ -1366,5 +1367,7 @@ void pike_module_exit(void)
       fd_marks[i]=0;
     }
   }
+
+  exit_xml();
 }
 
