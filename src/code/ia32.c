@@ -410,7 +410,7 @@ static void ia32_call_c_function(void *addr)
   CLEAR_REGS();
 }
 
-/* NOTE: This code is not safe for generic since constants, since thay
+/* NOTE: This code is not safe for generic constants, since they
  * can be overridden by inherit. */
 static void ia32_push_constant(struct svalue *tmp)
 {
