@@ -60,7 +60,7 @@ static size_t add_xstorage(size_t size,
   }						\
 }while(0)
 
-BLOCK_ALLOC(program, 104); 
+BLOCK_ALLOC(program, 104)
 
 
 /* #define COMPILER_DEBUG */

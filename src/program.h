@@ -396,7 +396,7 @@ struct program
 
 #define free_program(p) do{ struct program *_=(p); debug_malloc_touch(_); if(!sub_ref(_)) really_free_program(_); }while(0)
 
-BLOCK_ALLOC(program, n/a);
+BLOCK_ALLOC(program, n/a)
 
 
 extern struct object *error_handler;
