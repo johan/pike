@@ -404,7 +404,11 @@ define([AC_LOW_MODULE_INIT],
   if test "x$enable_binary" = "xno"; then
     RUNPIKE="USE_PIKE"
   else
-    RUNPIKE="DEFAULT_RUNPIKE"
+    if test "x$cross_compiling" = "xyes"; then
+      RUNPIKE="USE_PIKE"
+    else
+      RUNPIKE="DEFAULT_RUNPIKE"
+    fi
   fi
   AC_SUBST(RUNPIKE)
 ])
