@@ -246,6 +246,9 @@ static void pike_mysql_reconnect(void)
 
   if (!mysql) {
     mysql = PIKE_MYSQL->mysql = (MYSQL *)xalloc(sizeof(MYSQL));
+#if defined(HAVE_MYSQL_REAL_CONNECT)
+    mysql_init(mysql);
+#endif /* HAVE_MYSQL_REAL_CONNECT */
   }
 
   socket = PIKE_MYSQL->socket;
@@ -275,7 +278,12 @@ static void pike_mysql_reconnect(void)
   }
 #endif /* HAVE_MYSQL_UNIX_PORT */
 
+#ifdef HAVE_MYSQL_REAL_CONNECT
+  socket = mysql_real_connect(mysql, host, user, password,
+                              NULL, port, portptr, 0);
+#else
   socket = mysql_connect(mysql, host, user, password);
+#endif /* HAVE_MYSQL_REAL_CONNECT */
 
 #ifdef HAVE_MYSQL_PORT
   if (port) {
