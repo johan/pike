@@ -366,8 +366,8 @@ int is_equal(struct svalue *a,struct svalue *b);
 int is_lt(struct svalue *a,struct svalue *b);
 void describe_svalue(struct svalue *s,int indent,struct processing *p);
 void print_svalue (FILE *out, struct svalue *s);
-void clear_svalues(struct svalue *s, size_t num);
-void clear_svalues_undefined(struct svalue *s, size_t num);
+void clear_svalues(struct svalue *s, ptrdiff_t num);
+void clear_svalues_undefined(struct svalue *s, ptrdiff_t num);
 void copy_svalues_recursively_no_free(struct svalue *to,
 				      struct svalue *from,
 				      size_t num,

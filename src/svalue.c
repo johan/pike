@@ -1110,24 +1110,26 @@ void print_svalue (FILE *out, struct svalue *s)
   free (str.str);
 }
 
-void clear_svalues(struct svalue *s, size_t num)
+/* NOTE: Must handle num being negative. */
+void clear_svalues(struct svalue *s, ptrdiff_t num)
 {
   struct svalue dum;
   dum.type=T_INT;
   dum.subtype=NUMBER_NUMBER;
   dum.u.refs=0;
   dum.u.integer=0;
-  while(num--) *(s++)=dum;
+  while(num-- > 0) *(s++)=dum;
 }
 
-void clear_svalues_undefined(struct svalue *s, size_t num)
+/* NOTE: Must handle num being negative. */
+void clear_svalues_undefined(struct svalue *s, ptrdiff_t num)
 {
   struct svalue dum;
   dum.type=T_INT;
   dum.subtype=NUMBER_UNDEFINED;
   dum.u.refs=0;
   dum.u.integer=0;
-  while(num--) *(s++)=dum;
+  while(num-- > 0) *(s++)=dum;
 }
 
 void copy_svalues_recursively_no_free(struct svalue *to,
