@@ -17,6 +17,9 @@
 /*
  * Includes
  */
+#ifdef HAVE_WINSOCK_H
+#include <winsock.h>
+#endif
 
 /* From the mysql-dist */
 /* Workaround for versions prior to 3.20.0 not beeing protected for
