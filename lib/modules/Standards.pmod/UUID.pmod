@@ -301,6 +301,10 @@ UUID make_version3(string name, string namespace) {
   // FIXME: I don't see why the following reversals are needed;
   //        the namespace should already be in network byte order.
   //  /grubba 2004-10-05
+  //    Otherwise we get a result that differs from the example
+  //    execution of the reference implementation in the Internet
+  //    Draft.
+  //  /nilsson 2004-10-05
 
   // step 2
   namespace = reverse(namespace[0..3]) + reverse(namespace[4..5]) +
