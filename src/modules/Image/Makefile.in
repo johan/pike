@@ -18,9 +18,16 @@ CONFIG_HEADERS=@CONFIG_HEADERS@
 
 @dynamic_module_makefile@
 
+.SUFFIXES: .s
+
 .s.o:  $<
-	echo "Compiling $<"
-	@nasm -f elf -g -o $@ $<
+	@echo "Compiling $<"
+	@if nasm -f elf -g -o $@ $< ; then :; else \
+	  status=$$?; \
+	  echo "Compilation command was:" >&2; \
+	  echo "nasm -f elf -g -o $@ $<" >&2; \
+	  exit $$status; \
+	fi
 
 pike: all
 	cd ../..; $(MAKE) "AR=$(AR)"
