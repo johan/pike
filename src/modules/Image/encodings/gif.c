@@ -1809,12 +1809,10 @@ static void image_gif__decode(INT32 args)
       error("Image.GIF._decode: internal error: "
 	    "illegal result from __decode\n");
    
-   (a=sp[-1].u.array)->refs++;
+   a=sp[-1].u.array;
    if (a->size<5)
       error("Image.GIF._decode: given (__decode'd) array "
 	    "is too small\n");
-
-   pop_n_elems(1);
 
    push_svalue(a->item+0); /* xsize */
    push_svalue(a->item+1); /* ysize */
@@ -1978,6 +1976,8 @@ static void image_gif__decode(INT32 args)
 	 }
 
    f_aggregate(n);
+   stack_swap();
+   pop_stack();
 }
 
 /*
