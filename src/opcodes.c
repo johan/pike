@@ -1733,7 +1733,7 @@ CHAROPT2(								 \
 	  case 'x': base = 16; break;					 \
 	  }								 \
 									 \
-	  wide_string_to_svalue_inumber(&sval, input+eye, (void **)&t,	 \
+	  wide_string_to_svalue_inumber(&sval, input+eye, &t,		 \
 					base, field_length,		 \
 					INPUT_SHIFT);			 \
 									 \

@@ -741,7 +741,7 @@ static int low_yylex(YYSTYPE *yylval)
 
       wide_string_to_svalue_inumber(&sval,
 				    lex.pos,
-				    (void **)&p2,
+				    &p2,
 				    0,
 				    0,
 				    SHIFT);
