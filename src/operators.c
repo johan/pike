@@ -507,11 +507,11 @@ PMOD_EXPORT void f_add(INT32 args)
 	break;
 
       case T_INT:
-	sprintf(buffer,"%ld",(long)sp[e].u.integer);
+	sprintf(buffer,"%"PRINTPIKEINT"d",sp[e].u.integer);
 	goto append_buffer;
 
       case T_FLOAT:
-	sprintf(buffer,"%f",(double)sp[e].u.float_number);
+	sprintf(buffer,"%"PRINTPIKEFLOAT"f",sp[e].u.float_number);
       append_buffer:
 	switch(max_shift)
 	{
@@ -3262,7 +3262,7 @@ PMOD_EXPORT void o_negate(void)
 
 PMOD_EXPORT void o_range(void)
 {
-  ptrdiff_t from,to;
+  INT_TYPE from, to;
 
   if(sp[-3].type==T_OBJECT)
   {
