@@ -42,16 +42,6 @@ PMOD_EXPORT int threads_disabled = 0;
 #include <sys/prctl.h>
 #endif /* HAVE_SYS_PRCTL_H */
 
-#ifdef HAVE_MACH_TASK_INFO_H
-#include <mach/task_info.h>
-#endif
-#ifdef HAVE_MACH_TASK_H
-#include <mach/task.h>
-#endif
-#ifdef HAVE_MACH_MACH_INIT_H
-#include <mach/mach_init.h>
-#endif
-
 #ifdef HAVE_SYS_TIME_H
 #include <sys/time.h>
 #endif
