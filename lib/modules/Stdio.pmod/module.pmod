@@ -1113,3 +1113,34 @@ object sendfile(array(string) headers,
   // Use nb_sendfile instead.
   return nb_sendfile(headers, from, offset, len, trailers, to, cb, @args);
 }
+
+
+class UDP
+{
+   inherit files.UDP;
+
+   private static array extra=0;
+   private static function callback=0;
+
+   object set_nonblocking(mixed ...stuff)
+   {
+      if (stuff!=({})) 
+	 set_read_callback(@stuff);
+      return _set_nonblocking();
+   }
+
+   object set_read_callback(function f,mixed ...ext)
+   {
+      extra=ext;
+      callback=f;
+      _set_read_callback(_read_callback);
+      return this_object();
+   }
+   
+   private static void _read_callback()
+   {
+      mapping i;
+      while (i=read())
+	 callback(i,@extra);
+   }
+}
