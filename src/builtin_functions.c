@@ -3064,7 +3064,7 @@ void init_builtin_efuns(void)
 #ifdef HAVE_LOCALTIME
   add_efun("localtime",f_localtime,"function(int:mapping(string:int))",OPT_EXTERNAL_DEPEND);
 #endif
-#ifdef HAVE_LOCALTIME
+#ifdef HAVE_GMTIME
   add_efun("gmtime",f_gmtime,"function(int:mapping(string:int))",OPT_EXTERNAL_DEPEND);
 #endif
 
