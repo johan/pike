@@ -298,9 +298,6 @@ PMOD_EXPORT void Pike_vsnprintf(char *str, size_t size,
 }
 
 
-/* FIXME: NOTE: This function uses a static buffer.
- * Check sizes of arguments passed!
- */
 void DECLSPEC(noreturn) va_error(const char *fmt, va_list args)
      ATTRIBUTE((noreturn))
 {
