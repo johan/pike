@@ -536,6 +536,11 @@ class dumpfile
 	r->type=i2(pos+8);
 	pos+=10;
 
+	if (!r->sym) {
+	  write("  Failed to find symbol %O for relocation.\n",
+		getsymbolname(i4(pos+4)));
+	}
+
 	ret+=({r});
       }
 
