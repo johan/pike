@@ -10,7 +10,7 @@ log() {
 
 log_start() {
   log "BEGIN $1"
-  date >> build/xenofarm/mainlog.txt
+  TZ=GMT date >> build/xenofarm/mainlog.txt
 }
 
 log_end() {
@@ -20,7 +20,7 @@ log_end() {
   else
     log "FAIL"
   fi
-  date >> build/xenofarm/mainlog.txt
+  TZ=GMT date >> build/xenofarm/mainlog.txt
 }
 
 xenofarm_build() {
