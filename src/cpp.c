@@ -224,6 +224,9 @@ void cpp_describe_exception(struct cpp *this, struct svalue *thrown)
  *!
  *! @returns
  *!   @[raw] decoded to UNICODE, or @tt{0@} (zero) if the decoding failed.
+ *!
+ *! @seealso
+ *!   @[Locale.Charset]
  */
 
 /*! @endclass
