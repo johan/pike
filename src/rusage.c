@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
@@ -24,6 +25,8 @@ RCSID("$Id$");
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
+
+#include "fd_control.h"
 
 static INT32 rusage_values[30];
 /*
