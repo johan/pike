@@ -1082,6 +1082,8 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
 	    next_identifier_ref:
 #ifdef ENCODE_DEBUG
 	      data->depth -= 2;
+#else
+	      ;  /* Windows compiler requires a statement here */
 #endif
 	    }
 
