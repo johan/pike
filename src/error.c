@@ -60,8 +60,6 @@ PMOD_EXPORT const char msg_div_by_zero[] =
  * Recoveries handling.
  */
 
-JMP_BUF *recoveries=0;
-
 #ifdef PIKE_DEBUG
 PMOD_EXPORT void check_recovery_context(void)
 {
