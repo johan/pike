@@ -1895,13 +1895,12 @@ static INT32 lower_cpp(struct cpp *this,
 	  if (sp[-1].type != PIKE_T_STRING) {
 	    pop_stack();
 	    cpp_error(this, "Unknown charset.");
+	  } else {
+	    low_cpp(this, sp[-1].u.string->str, sp[-1].u.string->len,
+		    sp[-1].u.string->size_shift, flags,
+		    auto_convert, charset);
+	    pop_stack();
 	  }
-
-	  low_cpp(this, sp[-1].u.string->str, sp[-1].u.string->len,
-		  sp[-1].u.string->size_shift, flags,
-		  auto_convert, charset);
-	  pop_stack();
-
 	  /* FIXME: Is this the correct thing to return? */
 	  return len;
 	} else {
