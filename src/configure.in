@@ -463,6 +463,21 @@ fi
 
 AC_C_CONST
 
+# The above doesn't find IBM C's buggy const.
+
+if test "$ac_cv_c_const" = "yes"; then
+  AC_MSG_CHECKING(if const really does work)
+  AC_TRY_COMPILE([
+const int foo(int bar) { return bar; }
+  ], [
+    return bar(0);
+  ], [], [
+    ac_cv_c_const=no
+    AC_DEFINE(const, [])
+  ])
+  AC_MSG_RESULT($ac_cv_c_const)
+fi
+
 #############################################################################
 
 AC_MSG_CHECKING(first yacc define)
