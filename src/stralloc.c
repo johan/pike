@@ -335,7 +335,7 @@ static struct pike_string *internal_findstring(const char *s,
   return 0; /* not found */
 }
 
-PMOD_EXPORT struct pike_string *binary_findstring(const char *foo, INT32 l)
+PMOD_EXPORT struct pike_string *binary_findstring(const char *foo, ptrdiff_t l)
 {
   return internal_findstring(foo, l, 0, StrHash(foo,l));
 }
