@@ -5826,6 +5826,11 @@ export LDFLAGS CFLAGS CPPFLAGS LIBS
 export prefix exec_prefix OTHERFLAGS
 export TMP_BINDIR DEFINES INSTALL
 
+PIKE_SRC_DIR=$srcdir
+export PIKE_SRC_DIR
+BUILD_BASE=`pwd`
+export BUILD_BASE
+
 default_master=$prefix/pike/%d.%d.%d/lib/master.pike
 AC_DEFINE_UNQUOTED(DEFAULT_MASTER,"$default_master")
 

@@ -305,26 +305,8 @@ ifdef([PIKE_INCLUDE_PATH],
 dynamic_module_makefile=PIKE_INCLUDE_PATH/dynamic_module_makefile
 static_module_makefile=PIKE_INCLUDE_PATH/dynamic_module_makefile
 ],[
-  AC_MSG_CHECKING([for the Pike module base directory])
-
-  counter=.
-
-  uplevels=../
-  while test ! -f "${uplevels}dynamic_module_makefile"
-  do
-    counter=.$counter
-    if test $counter = .......... ; then
-      AC_MSG_RESULT(failed)
-      exit 1
-    else
-      :
-    fi
-    uplevels=../$uplevels
-  done
-
-  dynamic_module_makefile=${uplevels}dynamic_module_makefile
-  static_module_makefile=${uplevels}static_module_makefile
-  AC_MSG_RESULT(${uplevels}.)
+dynamic_module_makefile=$BUILD_BASE/modules/dynamic_module_makefile
+static_module_makefile=$BUILD_BASE/modules/static_module_makefile
 ])
 
 ])
@@ -345,6 +327,10 @@ pushdef([AC_OUTPUT],
   export BINDIR
   AC_SUBST(BUILDDIR)
   export BUILDDIR
+  AC_SUBST(PIKE_SRC_DIR)
+  export PIKE_SRC_DIR
+  AC_SUBST(BUILD_BASE)
+  export BUILD_BASE
   AC_SUBST(INSTALL)
   export INSTALL
   AC_SUBST(AR)
