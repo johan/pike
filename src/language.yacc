@@ -296,6 +296,7 @@ int yylex(YYSTYPE *yylval);
 %type <n> gauge
 %type <n> idents
 %type <n> idents2
+%type <n> labeled_statement
 %type <n> lambda
 %type <n> local_name_list
 %type <n> local_name_list2
@@ -308,7 +309,9 @@ int yylex(YYSTYPE *yylval);
 %type <n> m_expr_list2
 %type <n> new_local_name
 %type <n> new_local_name2
+%type <n> normal_label_statement
 %type <n> optional_else_part
+%type <n> optional_label
 %type <n> return
 %type <n> sscanf
 %type <n> statement
@@ -1618,19 +1621,12 @@ statements: { $$=0; }
   ;
 
 
-statement: unused2 ';'
+normal_label_statement: unused2 ';'
   | import { $$=0; }
   | cond
-  | while
-  | do
-  | for
-  | switch
-  | case
-  | default
   | return expected_semicolon
   | local_constant { $$=0; }
   | block
-  | foreach
   | break expected_semicolon
   | continue expected_semicolon
   | error ';' { reset_type_stack(); $$=0; yyerrok; }
@@ -1651,8 +1647,43 @@ statement: unused2 ';'
   | ';' { $$=0; } 
   ;
 
+statement: normal_label_statement
+  {
+    Pike_compiler->compiler_frame->opt_flags &= ~OPT_CUSTOM_LABELS;
+  }
+  | while
+  | do
+  | for
+  | foreach
+  | switch
+  | case
+  | default
+  | labeled_statement
+  ;
 
-break: TOK_BREAK { $$=mknode(F_BREAK,0,0); } ;
+labeled_statement: TOK_IDENTIFIER
+  {
+    $<number>$ = lex.current_line;
+    Pike_compiler->compiler_frame->opt_flags &= ~OPT_CUSTOM_LABELS;
+  }
+  ':' statement
+  {
+    $$ = mknode(Pike_compiler->compiler_frame->opt_flags & OPT_CUSTOM_LABELS ?
+		F_CUSTOM_STMT_LABEL : F_NORMAL_STMT_LABEL,
+		$1, $4);
+
+    /* FIXME: This won't be correct if the node happens to be shared.
+     * That's an issue to be solved with shared nodes in general,
+     * though. */
+    $$->line_number = $<number>2;
+  }
+  ;
+
+optional_label: TOK_IDENTIFIER
+  | /* empty */ {$$ = 0;}
+  ;
+
+break: TOK_BREAK optional_label { $$=mknode(F_BREAK,$2,0); } ;
 default: TOK_DEFAULT ':'  { $$=mknode(F_DEFAULT,0,0); }
   | TOK_DEFAULT
   {
@@ -1660,7 +1691,7 @@ default: TOK_DEFAULT ':'  { $$=mknode(F_DEFAULT,0,0); }
   }
   ;
 
-continue: TOK_CONTINUE { $$=mknode(F_CONTINUE,0,0); } ;
+continue: TOK_CONTINUE optional_label { $$=mknode(F_CONTINUE,$2,0); } ;
 
 push_compiler_frame1: /* empty */
   {
@@ -2305,6 +2336,7 @@ foreach: TOK_FOREACH
     }
     pop_local_variables($<number>2);
     Pike_compiler->compiler_frame->last_block_level=$<number>3;
+    Pike_compiler->compiler_frame->opt_flags |= OPT_CUSTOM_LABELS;
   }
   ;
 
@@ -2312,6 +2344,7 @@ do: TOK_DO statement TOK_WHILE '(' safe_comma_expr end_cond expected_semicolon
   {
     $$=mknode(F_DO,$2,$5);
     $$->line_number=$1;
+    Pike_compiler->compiler_frame->opt_flags |= OPT_CUSTOM_LABELS;
   }
   | TOK_DO statement TOK_WHILE TOK_LEX_EOF
   {
@@ -2354,6 +2387,7 @@ for: TOK_FOR
     lex.current_line=i;
     pop_local_variables($<number>2);
     Pike_compiler->compiler_frame->last_block_level=$<number>3;
+    Pike_compiler->compiler_frame->opt_flags |= OPT_CUSTOM_LABELS;
   }
   ;
 
@@ -2375,6 +2409,7 @@ while:  TOK_WHILE
     lex.current_line=i;
     pop_local_variables($<number>2);
     Pike_compiler->compiler_frame->last_block_level=$<number>3;
+    Pike_compiler->compiler_frame->opt_flags |= OPT_CUSTOM_LABELS;
   }
   ;
 
