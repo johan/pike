@@ -3744,6 +3744,7 @@ static struct pike_type *debug_low_range_type(struct pike_type *t,
 	  free_type(call_type);
 	  return tmp;
 	}
+	free_type(call_type);
 
 	add_ref(mixed_type_string);
 	return mixed_type_string;
@@ -3780,6 +3781,7 @@ static struct pike_type *debug_low_range_type(struct pike_type *t,
 	  free_type(call_type);
 	  return tmp;
 	}
+	free_type(call_type);
 
 	add_ref(mixed_type_string);
 	return mixed_type_string;
