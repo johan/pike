@@ -2663,7 +2663,7 @@ PMOD_EXPORT int debug_end_class(char *name, ptrdiff_t namelen, INT32 flags)
  */
 INT32 define_function(struct pike_string *name,
 		      struct pike_string *type,
-		      unsigned INT8 flags,
+		      unsigned INT16 flags,
 		      unsigned INT8 function_flags,
 		      union idptr *func,
 		      unsigned INT16 opt_flags)
