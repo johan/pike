@@ -2283,6 +2283,31 @@ static void file_query_fd(INT32 args)
   push_int(FD);
 }
 
+/*! @decl int release_fd()
+ *!
+ *! Returns the file descriptor number associated with this object,
+ *! in addition to releasing it (temporarily) from the callbacks.
+ *! @seealso
+ *!   @[query_fd()], @[take_fd()]
+ */
+static void file_release_fd(INT32 args)
+{
+  file_query_fd(args);
+  change_fd_for_box(&THIS->box, -1);
+}
+
+/*! @decl void take_fd(int fd)
+ *!
+ *! Rehooks the given file descriptor number to be associated with this object.
+ *! @seealso
+ *!   @[release_fd()]
+ */
+static void file_take_fd(INT32 args)
+{
+  change_fd_for_box(&THIS->box, Pike_sp[-args].u.integer);
+  pop_n_elems(args);
+}
+
 struct object *file_make_object_from_fd(int fd, int mode, int guess)
 {
   struct object *o=low_clone(file_program);

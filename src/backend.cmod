@@ -2,7 +2,6 @@
 || This file is part of Pike. For copyright information see COPYRIGHT.
 || Pike is distributed under GPL, LGPL and MPL. See the file COPYING
 || for more information.
-|| $Id$
 */
 
 #include "global.h"
@@ -1542,8 +1541,7 @@ PIKECLASS Backend
     (FD) < (ME)->fd_boxes_start + (ME)->fd_boxes_size ?			\
     GET_ACTIVE_BOX (ME, FD) : NULL)
 
-   PMOD_EXPORT struct fd_callback_box *
-    safe_get_box (struct Backend_struct *me, int fd)
+   static struct fd_callback_box *safe_get_box (struct Backend_struct *me, int fd)
    {
      if (fd < 0) {
        fd = ~fd;
