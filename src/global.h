@@ -167,11 +167,11 @@ char *alloca ();
 #if SIZEOF_LONG >= 8
 #define INT64 long
 #else
-#if SIZEOF_LONG_LONG - 0 >= 8
-#define INT64 long long
-#else
 #if SIZEOF___INT64 - 0 >= 8
 #define INT64 __int64
+#else
+#if SIZEOF_LONG_LONG - 0 >= 8
+#define INT64 long long
 #endif
 #endif
 #endif
