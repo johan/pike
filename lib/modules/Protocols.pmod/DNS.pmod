@@ -248,6 +248,22 @@ class client
 	res += ({ RegGetValue(HKEY_LOCAL_MACHINE, key, val) });
       };
     }
+
+#if constant(RegGetKeyNames)
+    /* Catch if RegGetKeyNames() doesn't find the directory. */
+    catch {
+      foreach(RegGetKeyNames(HKEY_LOCAL_MACHINE,
+                           "SYSTEM\\CurrentControlSet\\Services\\Tcpip\\"
+                           "Parameters\\Interfaces"), string key)
+      {
+	catch {
+	  res += ({ RegGetValue(HKEY_LOCAL_MACHINE,
+				"SYSTEM\\CurrentControlSet\\Services\\Tcpip\\"
+				"Parameters\\Interfaces\\" + key, val) });
+	};
+      }
+    };
+#endif
     return sizeof(res) ? res : ({ fallbackvalue });
   }
 #endif
