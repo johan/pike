@@ -27,11 +27,11 @@ RCSID("$Id$");
  */
 void f_version(INT32 args)
 {
-  char buffer[128];
-  sprintf(buffer,"Pike v%d.%d release %d",
-	  PIKE_MAJOR_VERSION,
-	  PIKE_MINOR_VERSION,
-	  PIKE_BUILD_VERSION);
   pop_n_elems(args);
-  push_text(buffer);
+  push_constant_text ("Pike v"
+		      DEFINETOSTR (PIKE_MAJOR_VERSION)
+		      "."
+		      DEFINETOSTR (PIKE_MINOR_VERSION)
+		      " release "
+		      DEFINETOSTR (PIKE_BUILD_VERSION));
 }
