@@ -5689,6 +5689,17 @@ void gc_free_all_unreferenced_multisets(void)
   }
 }
 
+void gc_reallocate_shrunk_multisets(void)
+{
+  struct multiset *l;
+  for(l=first_multiset; l; l=l->next) {
+    if (l->ind->flags & ARRAY_CONSIDER_REALLOC) {
+      l->ind = array_shrink(l->ind, l->ind->size);
+      l->ind->flags &= ~ARRAY_CONSIDER_REALLOC;
+    }
+  }
+}
+
 void count_memory_in_multisets(INT32 *num_, INT32 *size_)
 {
   struct multiset *m;

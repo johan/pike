@@ -489,6 +489,7 @@ void gc_check_all_multisets(void);
 void gc_mark_all_multisets(void);
 void gc_cycle_check_all_multisets(void);
 void gc_free_all_unreferenced_multisets(void);
+void gc_reallocate_shrunk_multisets(void);
 void count_memory_in_multisets(INT32 *num_, INT32 *size_);
 int multiset_is_constant(struct multiset *m,
 			 struct processing *p);

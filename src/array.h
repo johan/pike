@@ -28,10 +28,11 @@ struct array
   struct svalue real_item[1];
 };
 
-#define ARRAY_WEAK_FLAG 1
-#define ARRAY_CYCLIC 2
-#define ARRAY_LVALUE 4
-#define ARRAY_WEAK_SHRINK 8
+#define ARRAY_WEAK_FLAG		1
+#define ARRAY_CYCLIC		2
+#define ARRAY_LVALUE		4
+#define ARRAY_WEAK_SHRINK	8
+#define ARRAY_CONSIDER_REALLOC	16
 
 PMOD_EXPORT extern struct array empty_array, weak_empty_array, weak_shrink_empty_array;
 extern struct array *gc_internal_array;

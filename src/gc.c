@@ -3164,6 +3164,10 @@ int do_gc(void)
   if(d_flag > 3) ADD_GC_CALLBACK();
 #endif
 
+#ifndef PIKE_NEW_MULTISETS
+  gc_reallocate_shrunk_multisets();
+#endif
+
   return objs;
 }
 
