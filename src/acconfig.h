@@ -250,6 +250,9 @@
 /* Define if your ptrace takes four args. */
 #undef PTRACE_TAKES_FOUR_ARGS
 
+/* Define if argument 3 to ptrace is a pointer type. */
+#undef PTRACE_ADDR_TYPE_IS_POINTER
+
 /* Define if gettimeofday takes to arguments */
 #undef GETTIMEOFDAY_TAKES_TWO_ARGS
 
