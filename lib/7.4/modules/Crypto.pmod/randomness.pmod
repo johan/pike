@@ -11,6 +11,8 @@
 
 // #pragma strict_types
 
+#if constant(Crypto.SHA1.name)
+
 static constant RANDOM_DEVICE = "/dev/random";
 static constant PRANDOM_DEVICE = "/dev/urandom";
 
@@ -168,3 +170,5 @@ RandomSource really_random(int|void may_block)
 
   error( "No source found.\n" );
 }
+
+#endif // constant(Crypto.SHA1)
