@@ -933,6 +933,9 @@ static string low_pike_sprintf(char *format,
 #ifdef DOUBLE_IS_IEEE_LITTLE
 	double td;
 #endif
+#ifdef DOUBLE_IS_IEEE_BIG
+	double td;
+#endif
         DO_OP();
         l=4;
         if(fsp->width > 0) l=fsp->width;
