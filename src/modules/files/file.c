@@ -893,7 +893,7 @@ static void file_write(INT32 args)
 #endif /* HAVE_WRITEV */
       ref_push_array(a);
       push_constant_text("");
-      o_mult();
+      o_multiply();
       sp--;
       assign_svalue(sp-args, sp);
 
