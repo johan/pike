@@ -79,14 +79,14 @@ static void exit_pike_des(struct object *o)
 static void f_query_block_size(INT32 args)
 {
   pop_n_elems(args);
-  push_integer(8);
+  push_int(8);
 }
 
 /* int query_key_length(void) */
 static void f_query_key_length(INT32 args)
 {
   pop_n_elems(args);
-  push_integer(8);
+  push_int(8);
 }
 
 /* void set_key(string) */
