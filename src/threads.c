@@ -649,10 +649,12 @@ TH_RETURN_TYPE new_thread_func(void * data)
 		      (unsigned int)thread_id));
 
   cleanup_interpret();
-  DO_IF_DMALLOC(
+  DO_IF_DMALLOC({
+    struct object *o = thread_id;
     SWAP_OUT_THREAD(OBJ2THREAD(thread_id)); /* de-Init struct */
+    thread_id = o;
     OBJ2THREAD(thread_id)->swapped=0;
-    )
+  })
   thread_table_delete(thread_id);
   free_object(thread_id);
   thread_id=0;
