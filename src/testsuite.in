@@ -9113,6 +9113,28 @@ test_program(inherit test2; inherit test; mixed a() { setw(20); setb(22); return
 
 test_eval_error(return clone(class c{int i;void foo(){ destruct(this_object());i=0;return i;}})->foo())
 
+// master defined functions
+
+test_eq(dirname("/a/b/"),"/a/b")
+test_eq(dirname("/a/b"),"/a")
+test_eq(dirname("/a/"),"/a")
+test_eq(dirname("/a"),"/")
+test_eq(dirname("/"),"/")
+test_eq(dirname(""),"")
+test_eq(dirname("a/b/"),"a/b")
+test_eq(dirname("a/b"),"a")
+test_eq(dirname("a/"),"a")
+test_eq(dirname("a"),"")
+
+test_eq(basename("/a/b"),"b")
+test_eq(basename("/a/"),"")
+test_eq(basename("/a"),"a")
+test_eq(basename("/"),"")
+test_eq(basename("a/b"),"b")
+test_eq(basename("a/"),"")
+test_eq(basename("a"),"a")
+test_eq(basename(""),"")
+
 // Pike modules
 
 // - this failed in Calendar.Timezone
