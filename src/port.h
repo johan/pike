@@ -235,7 +235,7 @@ PMOD_EXPORT void my_srand(long seed);
 
 #ifdef OWN_GETHRTIME
 void own_gethrtime_init(void);
-void own_gethrtime_update(struct timeval *ptr);
+int own_gethrtime_update(struct timeval *ptr);
 long long gethrtime(void);
 
 #define hrtime_t long long
