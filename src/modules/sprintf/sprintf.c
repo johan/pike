@@ -1023,7 +1023,7 @@ static void low_pike_sprintf(struct string_builder *r,
 	
 	/* Pad with ending zeroes, if necessary. */
 	if(fsp->precision<0 &&
-	   fsp->len>0 && '0'<=x[0] && x[0]<='9' && fabs(tf)!=0.0)
+	   (('0'<x[0] && x[0]<='9') || ('0'<x[1] && x[1]<='9')))
 	{
 	  INT32 i;
 	  for(i = 0; i<-fsp->precision; i++)
