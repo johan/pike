@@ -221,7 +221,7 @@ void img_tim_decode(INT32 args, int header_only)
 #endif
      error("24bit TIMs not supported. Please send an example to peter@roxen.com\n");
    case MODE_CLUT4:
-     //dx and dy word ignored
+     /* dx and dy word ignored */
 #ifdef TIM_DEBUG
      printf("CLUT4\n");
      printf("dx: %d, dy: %d\n", s[0]|(s[1]<<8), s[2]|(s[3]<<8));
@@ -234,7 +234,7 @@ void img_tim_decode(INT32 args, int header_only)
      hasalpha = 1;
      break;    
    case MODE_CLUT8:
-     //dx and dy word ignored
+     /* dx and dy word ignored */
 #ifdef TIM_DEBUG
      printf("CLUT8\n");
      printf("dx: %d, dy: %d\n", s[0]|(s[1]<<8), s[2]|(s[3]<<8));
