@@ -52,6 +52,10 @@ void f_closelog(INT32 args);
  * memory.c
  */
 
+#ifdef HAVE_WINDOWS_H
+#define WIN32SHM
+#endif
+
 struct memory_storage
 {
    unsigned char *p;
@@ -63,5 +67,7 @@ struct memory_storage
 #define MEM_FREE_MUNMAP 0x20   
 #define MEM_FREE_SHMDEL 0x40
    unsigned long flags;
+#ifdef WIN32SHM
    void *extra;
+#endif
 };

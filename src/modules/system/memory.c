@@ -49,7 +49,6 @@ RCSID("$Id$");
 
 #ifdef HAVE_WINDOWS_H
 #include <windows.h>
-#define WIN32SHM
 #endif
 
 #ifdef HAVE_CYGWIN_SHM_H
