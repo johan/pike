@@ -87,6 +87,7 @@ mapping _decode( string data, mixed|void tocolor )
     "format":format,
     "alpha":a,
     "img":i,
+    "image":i,
   ]);
 
 }
