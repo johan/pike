@@ -9330,7 +9330,7 @@ cond([[ file_stat("/bin/cat") && file_stat("/dev/null") && all_constants()->thre
 	        })
 	      });
     }
-    for(int e=0;e<50;e++)  Stdio.Port()->bind(0);
+    // for(int e=0;e<50;e++)  Stdio.Port()->bind(0);
     for(int e=0;e<10;e++) fifo->write(1);
     fnord->wait();
     __signal_watchdog();
