@@ -7,7 +7,7 @@
 //! will degenerate into a reasonably strong pseudo random generator
 //! @deprecated Crypto.Random
 
-#pike __REAL_VERSION__
+#pike 7.5
 
 // #pragma strict_types
 
