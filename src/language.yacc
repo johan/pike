@@ -330,13 +330,9 @@ all: program { YYACCEPT; }
 /*  | error TOK_LEX_EOF { YYABORT; } */
   ;
 
-program: program def optional_semi_colons
-/*  | error { yyerrok; } */
+program: program def
+  | program ';'
   |  /* empty */
-  ;
-
-optional_semi_colons: /* empty */
-  | optional_semi_colons ';'
   ;
 
 string_constant: string
