@@ -1003,6 +1003,11 @@ class dumpfile
       filename=f;
       if(!len) len=strlen(d)-base;
 
+#ifdef DEBUG
+      write("Dumping: Data[%d] Base:0x%08x Len:0x%08x Filename:%O\n",
+	    sizeof(d), p, len, f);
+#endif /* DEBUG */
+
       if(range(0,8) == "!<arch>\n")
       {
 #ifdef DEBUG
