@@ -70,6 +70,11 @@ RCSID("$Id$");
 
 /* #define PROC_DEBUG */
 
+/* Added so we are able to patch older versions of Pike. */
+#ifndef add_ref
+#define add_ref(X)	((X)->refs++)
+#endif /* add_ref */
+
 extern int fd_from_object(struct object *o);
 
 static struct svalue signal_callbacks[MAX_SIGNALS];
