@@ -39,7 +39,7 @@ struct std_cs_stor {
 };
 
 struct std_rfc_stor {
-  UNICHAR *table;
+  UNICHAR const *table;
 };
 static SIZE_T std_rfc_stor_offs = 0;
 
@@ -532,7 +532,7 @@ static void f_rfc1345(INT32 args)
 
 static INT32 feed_94(const p_wchar0 *p, INT32 l, struct std_cs_stor *s)
 {
-  UNICHAR *table =
+  UNICHAR const *table =
     ((struct std_rfc_stor *)(((char*)s)+std_rfc_stor_offs))->table;
   while(l--) {
     p_wchar0 x = *p++;
@@ -551,7 +551,7 @@ static void f_feed_94(INT32 args)
 
 static INT32 feed_96(const p_wchar0 *p, INT32 l, struct std_cs_stor *s)
 {
-  UNICHAR *table =
+  UNICHAR const *table =
     ((struct std_rfc_stor *)(((char*)s)+std_rfc_stor_offs))->table;
   while(l--) {
     p_wchar0 x = *p++;
@@ -570,7 +570,7 @@ static void f_feed_96(INT32 args)
 
 static INT32 feed_9494(const p_wchar0 *p, INT32 l, struct std_cs_stor *s)
 {
-  UNICHAR *table =
+  UNICHAR const *table =
     ((struct std_rfc_stor *)(((char*)s)+std_rfc_stor_offs))->table;
   while(l--) {
     p_wchar0 y, x = (*p++)&0x7f;
@@ -596,7 +596,7 @@ static void f_feed_9494(INT32 args)
 
 static INT32 feed_9696(const p_wchar0 *p, INT32 l, struct std_cs_stor *s)
 {
-  UNICHAR *table =
+  UNICHAR const *table =
     ((struct std_rfc_stor *)(((char*)s)+std_rfc_stor_offs))->table;
   while(l--) {
     p_wchar0 y, x = (*p++)&0x7f;
@@ -622,7 +622,7 @@ static void f_feed_9696(INT32 args)
 
 static INT32 feed_8bit(const p_wchar0 *p, INT32 l, struct std_cs_stor *s)
 {
-  UNICHAR *table =
+  UNICHAR const *table =
     ((struct std_rfc_stor *)(((char*)s)+std_rfc_stor_offs))->table;
   struct std_misc_stor *misc =
     ((struct std_misc_stor *)(((char*)s)+std_misc_stor_offs));
