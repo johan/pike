@@ -115,7 +115,7 @@
 **!       y+=YZz;
 **!    }
 **! 
-**!    write(illustration(i,a));
+**!    write(illustration(i,(["alpha":a])));
 **!    write(mktag("br"));
 **! }
 **! 
