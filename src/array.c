@@ -181,7 +181,8 @@ PMOD_EXPORT void do_free_array(struct array *a)
 }
 
 /**
- *  Set flags on an array. If the array is empty, 
+ *  Set the flags on an array. If the array is empty then only the
+ *  weak flag is significant.
  */
 PMOD_EXPORT struct array *array_set_flags(struct array *a, int flags)
 {
@@ -189,14 +190,10 @@ PMOD_EXPORT struct array *array_set_flags(struct array *a, int flags)
     a->flags = flags;
   else {
     free_array(a);
-    switch (flags) {
-      case 0:
-	add_ref(a = &empty_array); break;
-      case ARRAY_WEAK_FLAG:
-	add_ref(a = &weak_empty_array); break;
-      default:
-	Pike_fatal("Invalid flags %x\n", flags);
-    }
+    if (flags & ARRAY_WEAK_FLAG)
+      add_ref(a = &weak_empty_array);
+    else
+      add_ref(a = &empty_array);
   }
   return a;
 }
@@ -2206,7 +2203,7 @@ PMOD_EXPORT struct array *copy_array_recursively(struct array *a,
 
   if (!a->size) {
     add_ref(&empty_array);
-    return array_set_flags(&empty_array, a->flags & ~ARRAY_LVALUE);
+    return array_set_flags(&empty_array, a->flags);
   }
 
   ret=allocate_array_no_init(a->size,0);
