@@ -1507,7 +1507,13 @@ AC_MSG_RESULT($LINKFORSHARED)
 #############################################################################
 
 cat >conftest.c <<EOF
-void testfunc(void) { testfunc2(); exit(1); }
+#include <stdio.h>
+void testfunc(void) {
+  fprintf(stderr,"Calling testfunc2\n");
+  testfunc2();
+  fprintf(stderr,"testfunc2 returned!\n");
+  exit(1);
+}
 EOF
 
 AC_MSG_CHECKING(if dynamic loading works)
