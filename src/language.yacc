@@ -818,7 +818,7 @@ new_name: optional_stars F_IDENTIFIER
 
 new_local_name: optional_stars F_IDENTIFIER
   {
-    push_finished_type(compiler_frame->current_type);
+    push_finished_type($<n>0->u.sval.u.string);
     while($1--) push_type(T_ARRAY);
     add_local_name($2->u.sval.u.string, pop_type());
     $$=mknode(F_ASSIGN,mkintnode(0), mklocalnode(islocal($2->u.sval.u.string)));
@@ -826,7 +826,7 @@ new_local_name: optional_stars F_IDENTIFIER
   }
   | optional_stars F_IDENTIFIER '=' expr0
   {
-    push_finished_type(compiler_frame->current_type);
+    push_finished_type($<n>0->u.sval.u.string);
     while($1--) push_type(T_ARRAY);
     add_local_name($2->u.sval.u.string, pop_type());
     $$=mknode(F_ASSIGN,$4,mklocalnode(islocal($2->u.sval.u.string)));
@@ -852,7 +852,7 @@ failsafe_block: block
   
 
 local_name_list: new_local_name
-  | local_name_list ',' new_local_name { $$=mknode(F_ARG_LIST,$1,$3); }
+  | local_name_list ',' { $<n>$=$<n>0; } new_local_name { $$=mknode(F_ARG_LIST,$1,$4); }
   ;
 
 statements: { $$=0; }
@@ -1135,12 +1135,7 @@ optional_comma_expr: { $$=0; }
   ;
 
 comma_expr: comma_expr2
-  | type2
-  {
-    if(compiler_frame->current_type)
-      free_string(compiler_frame->current_type);
-    compiler_frame->current_type=pop_type();
-  } local_name_list { $$=$3; }
+  | simple_type local_name_list { $$=$2; free_node($1); }
   ;
           
 
