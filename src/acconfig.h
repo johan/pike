@@ -374,4 +374,7 @@
 #endif /* HAVE_KR_CONCAT */
 #endif /* HAVE_ANSI_CONCAT */
 
+#define TOSTR(X)	#X
+#define DEFINETOSTR(X)	TOSTR(X)
+
 #endif /* MACHINE_H */
