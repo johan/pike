@@ -87,7 +87,7 @@ typedef int FD;
 #define fd_write(fd,X,Y) debug_fd_write(dmalloc_touch_fd(fd),(X),(Y))
 #define fd_read(fd,X,Y) debug_fd_read(dmalloc_touch_fd(fd),(X),(Y))
 #define fd_lseek(fd,X,Y) debug_fd_lseek(dmalloc_touch_fd(fd),(X),(Y))
-#define fd_ftruncate(fd,X,Y) debug_fd_ftruncate(dmalloc_touch_fd(fd),(X),(Y))
+#define fd_ftruncate(fd,X) debug_fd_ftruncate(dmalloc_touch_fd(fd),(X))
 #define fd_flock(fd,X) debug_fd_flock(dmalloc_touch_fd(fd),(X))
 #define fd_fstat(fd,X) debug_fd_fstat(dmalloc_touch_fd(fd),(X))
 #define fd_select debug_fd_select /* fixme */
