@@ -19,8 +19,6 @@
 //. These functions are kept here mainly to avoid circular references.
 //.
 
-#define throw_error(X)	throw(({ (X), backtrace() }))
-
 //. - quote
 //.   Quote a string so that it can safely be put in a query.
 //. > s - String to quote.
@@ -31,7 +29,7 @@ string quote(string s)
 
 //. - fallback
 //.   Throw an error in case an unimplemented function is called.
-void fallback(void)
+void fallback()
 {
-  throw_error ("Function not supported in this database.");
+  throw(({ "Function not supported in this database.", backtrace() }));
 }
