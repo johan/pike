@@ -34,4 +34,4 @@ extern void pike_rsa_init(void);
 extern void pike_rsa_exit(void);
 extern void pike_pipe_init(void);
 extern void pike_pipe_exit(void);
-
+extern char *crypt_md5(const char *pw, const char *salt);
