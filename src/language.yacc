@@ -1881,7 +1881,12 @@ lambda: TOK_LAMBDA line_number_info push_compiler_frame1
 
     debug_malloc_touch($7);
     $7=mknode(F_COMMA_EXPR,$7,mknode(F_RETURN,mkintnode(0),0));
-    type=find_return_type($7);
+    if (Pike_compiler->compiler_pass == 2)
+      /* Doing this in pass 1 might induce too strict checks on types
+       * in cases where we got placeholders. */
+      type=find_return_type($7);
+    else
+      type = NULL;
 
     if(type) {
       push_finished_type(type);
@@ -3049,7 +3054,12 @@ optional_block: ';' /* EMPTY */ { $$=0; }
 
     debug_malloc_touch($5);
     $5=mknode(F_COMMA_EXPR,$5,mknode(F_RETURN,mkintnode(0),0));
-    type=find_return_type($5);
+    if (Pike_compiler->compiler_pass == 2)
+      /* Doing this in pass 1 might induce too strict checks on types
+       * in cases where we got placeholders. */
+      type=find_return_type($5);
+    else
+      type = NULL;
 
     if(type) {
       push_finished_type(type);
