@@ -951,7 +951,6 @@ static int gobble(struct xmldata *data, char *s)
 	  if(THIS->entities)						 \
 	    mapping_string_insert_string(THIS->entities, name, s);	 \
 	  CALL_AND_UNSET_ONERROR(tmp2);					 \
-	  free_string(s);						 \
 	}								 \
       }while(0);							 \
       CALL_AND_UNSET_ONERROR(tmp4);					 \
