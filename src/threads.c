@@ -1306,6 +1306,14 @@ int th_num_farmers()
 static struct farmer *new_farmer(void (*fun)(void *), void *args)
 {
   struct farmer *me = malloc(sizeof(struct farmer));
+
+  if (!me) {
+    /* Out of memory */
+    fatal("new_farmer(): Out of memory!\n");
+  }
+
+  dmalloc_accept_leak(me);
+
   _num_farmers++;
   me->neighbour = 0;
   me->field = args;
