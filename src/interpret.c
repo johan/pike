@@ -1211,12 +1211,13 @@ int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 
       CHECK_INTERPRETER_LOCK();
 
-      if( Pike_interpreter.thread_id && !th_equal( OBJ2THREAD(Pike_interpreter.thread_id)->id, self) )
+      if( Pike_interpreter.thread_state &&
+	  !th_equal(Pike_interpreter.thread_state->id, self) )
 	Pike_fatal("Current thread is wrong.\n");
 	
-      if(thread_for_id(th_self()) != Pike_interpreter.thread_id)
-	Pike_fatal("thread_for_id() (or Pike_interpreter.thread_id) failed in mega_apply! "
-	      "%p != %p\n", thread_for_id(self), Pike_interpreter.thread_id);
+      if(thread_for_id(th_self()) != Pike_interpreter.thread_obj)
+	Pike_fatal("thread_for_id() (or Pike_interpreter.thread_obj) failed in mega_apply! "
+	      "%p != %p\n", thread_for_id(self), Pike_interpreter.thread_obj);
     }
 #endif
 

@@ -3117,7 +3117,7 @@ static void low_file_lock(INT32 args, int flags)
   {
     if(THIS->key
 #ifdef _REENTRANT
-       && OB2KEY(THIS->key)->owner == Pike_interpreter.thread_id
+       && OB2KEY(THIS->key)->owner == Pike_interpreter.thread_obj
 #endif
       )
     {
@@ -3202,8 +3202,8 @@ static void init_file_lock_key(struct object *o)
 {
   THIS_KEY->f=0;
 #ifdef _REENTRANT
-  THIS_KEY->owner=Pike_interpreter.thread_id;
-  add_ref(Pike_interpreter.thread_id);
+  THIS_KEY->owner=Pike_interpreter.thread_obj;
+  add_ref(Pike_interpreter.thread_obj);
 #endif
 }
 

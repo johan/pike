@@ -35,6 +35,7 @@ struct thread_state {
   THREAD_T id;
   struct mapping *thread_local;
   struct thread_state *hashlink, **backlink;
+  struct svalue result;
 #ifdef PROFILING
 #if SIZEOF_LONG_LONG - 0 != 0
   long long time_base;
@@ -62,8 +63,8 @@ void init_interleave_mutex(IMUTEX_T *im);
 void exit_interleave_mutex(IMUTEX_T *im);
 void thread_table_init(void);
 unsigned INT32 thread_table_hash(THREAD_T *tid);
-PMOD_EXPORT void thread_table_insert(struct object *o);
-PMOD_EXPORT void thread_table_delete(struct object *o);
+PMOD_EXPORT void thread_table_insert(struct thread_state *s);
+PMOD_EXPORT void thread_table_delete(struct thread_state *s);
 PMOD_EXPORT struct thread_state *thread_state_for_id(THREAD_T tid);
 PMOD_EXPORT struct object *thread_for_id(THREAD_T tid);
 PMOD_EXPORT void f_all_threads(INT32 args);

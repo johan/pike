@@ -1621,7 +1621,7 @@ struct decode_data
   struct pike_string *raw;
   struct decode_data *next;
 #ifdef PIKE_THREADS
-  struct object *thread_id;
+  struct thread_state *thread_state;
 #endif
 #ifdef ENCODE_DEBUG
   int debug, depth;
@@ -3648,7 +3648,7 @@ static void free_decode_data(struct decode_data *data)
     free((char *)tmp);
   }
 #ifdef PIKE_THREADS
-  free_object(data->thread_id);
+  data->thread_state = NULL;
 #endif
 
   free( (char *) data);
@@ -3684,7 +3684,7 @@ static INT32 my_decode(struct pike_string *tmp,
   for (data = current_decode; data; data=data->next) {
     if (data->raw == tmp && data->codec == codec
 #ifdef PIKE_THREADS
-	&& data->thread_id == Pike_interpreter.thread_id
+	&& data->thread_state == Pike_interpreter.thread_state
 #endif
        ) {
       struct svalue *res;
@@ -3718,7 +3718,7 @@ static INT32 my_decode(struct pike_string *tmp,
   data->raw = tmp;
   data->next = current_decode;
 #ifdef PIKE_THREADS
-  data->thread_id = Pike_interpreter.thread_id;
+  data->thread_state = Pike_interpreter.thread_state;
 #endif
 #ifdef ENCODE_DEBUG
   data->debug = debug;
@@ -3735,10 +3735,6 @@ static INT32 my_decode(struct pike_string *tmp,
     free( (char *) data);
     return 0;
   }
-
-#ifdef PIKE_THREADS
-  add_ref(Pike_interpreter.thread_id);
-#endif
 
   data->decoded=allocate_mapping(128);
 

@@ -219,7 +219,7 @@ void aap_exit_timeouts(void)
   fprintf(stderr, "AAP: aap_exit_timeouts.\n");
 #endif /* AAP_DEBUG */
   aap_time_to_die = 1;
-  if (Pike_interpreter.thread_id) {
+  if (Pike_interpreter.thread_state) {
     THREADS_ALLOW();
     th_join(aap_timeout_thread, &res);
     THREADS_DISALLOW();

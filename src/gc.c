@@ -2927,7 +2927,7 @@ size_t do_gc(void *ignored, int explicit_call)
 
     if (!explicit_call && last_gc_time != (cpu_time_t) -1) {
 #if CPU_TIME_IS_THREAD_LOCAL == PIKE_YES
-      OBJ2THREAD(Pike_interpreter.thread_id)->auto_gc_time += last_gc_time;
+      Pike_interpreter.thread_state->auto_gc_time += last_gc_time;
 #elif CPU_TIME_IS_THREAD_LOCAL == PIKE_NO
       auto_gc_time += last_gc_time;
 #endif
