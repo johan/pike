@@ -95,6 +95,13 @@ array(string) read_tests( string fn ) {
   return tests[0..sizeof(tests)-2];
 }
 
+class WarningFlag {
+  int(0..1) warning;
+
+  void compile_warning(mixed ... args) {
+    warning = 1;
+  }
+}
 
 //
 // Watchdog stuff
@@ -210,6 +217,9 @@ void run_watchdog(int pid) {
 #endif
 }
 
+//
+// Main program
+//
 
 int main(int argc, array(string) argv)
 {
@@ -268,6 +278,7 @@ int main(int argc, array(string) argv)
 #ifdef HAVE_DEBUG
     ({"debug",Getopt.MAY_HAVE_ARG,({"-d","--debug"})}),
 #endif
+    ({"regression",Getopt.NO_ARG,({"-r","--regression"})}),
     )),array opt)
     {
       switch(opt[0])
@@ -301,6 +312,10 @@ int main(int argc, array(string) argv)
 
 	case "auto":
 	  testsuites=find_testsuites(".");
+	  break;
+
+        case "regression":
+	  add_constant("regression", 1);
 	  break;
 
 #ifdef HAVE_DEBUG
@@ -586,7 +601,31 @@ int main(int argc, array(string) argv)
 	  }
 	  master()->set_inhibit_compile_errors(0);
 	  break;
-	    
+
+	case "COMPILE_WARNING":
+	  WarningFlag wf = WarningFlag();
+	  master()->set_inhibit_compile_errors(wf);
+	  _dmalloc_set_name(fname,0);
+	  if(catch(compile_string(to_compile, testsuite)))
+	  {
+	    _dmalloc_set_name();
+	    werror(pad_on_error + fname + " failed.\n");
+	    bzot(test);
+	    errors++;
+	  }
+	  else {
+	    _dmalloc_set_name();
+	    if( wf->warning )
+	      successes++;
+	    else {
+	      werror(pad_on_error + fname + " failed (expected compile warning).\n");
+	      bzot(test);
+	      errors++;
+	    }
+	  }
+	  master()->set_inhibit_compile_errors(0);
+	  break;
+
 	case "EVAL_ERROR":
 	  master()->set_inhibit_compile_errors(1);
 	  _dmalloc_set_name(fname,0);
