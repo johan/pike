@@ -184,6 +184,9 @@
 /* Define if you have memcpy.  */
 #undef HAVE_MEMCPY
 
+/* Define if you have strcoll */
+#undef HAVE_STRCOLL
+
 /* Define this if you have dlopen */
 #undef HAVE_DLOPEN
 
