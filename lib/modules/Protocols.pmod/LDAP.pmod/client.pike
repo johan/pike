@@ -1277,8 +1277,8 @@ int _prof_gtim;
   //! Gets referrals.
   //!
   //! @returns
-  //!   Returns mapping of referrals or @tt{0@}.
-  mapping|int get_referrals() {
+  //!   Returns array of referrals or @tt{0@}.
+  array|int get_referrals() {
     if(last_rv->referrals)
       return last_rv->referrals;
     return 0;
