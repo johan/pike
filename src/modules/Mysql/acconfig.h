@@ -68,4 +68,7 @@
 /* Define if your mysql.h defines MYSQL_OPT_LOCAL_INFILE */
 #undef HAVE_MYSQL_OPT_LOCAL_INFILE
 
+/* Define if your mysql.h defines SHUTDOWN_DEFAULT */
+#undef HAVE_SHUTDOWN_DEFAULT
+
 #endif /* PIKE_MYSQL_CONFIG_H */
