@@ -294,7 +294,11 @@ void cleanup_error(void);
 #define exception_endtry \
             else \
                 __exception_rethrow = 1; \
-            if(!__is_exception) \
+            if(__is_exception) { \
+		free_svalue(&throw_value); \
+		throw_value.type = T_INT; \
+	    } \
+	    else \
                 UNSETJMP(exception); \
             if(__exception_rethrow) \
                 rethrow; \

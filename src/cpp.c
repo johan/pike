@@ -1225,6 +1225,8 @@ static int do_safe_index_call(struct pike_string *s)
   
   if (SETJMP(recovery)) {
     res = 0;
+    free_svalue(&throw_value);
+    throw_value.type = T_INT;
   } else {
     ref_push_string(s);
     f_index(2);

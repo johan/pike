@@ -3833,9 +3833,9 @@ static void safe_inc_enum(void)
   struct svalue *save_sp = Pike_sp;
   JMP_BUF recovery;
 
-  free_svalue(&throw_value);
-  throw_value.type = T_INT;
   if (SETJMP(recovery)) {
+    free_svalue(&throw_value);
+    throw_value.type = T_INT;
     yyerror("Bad implicit enum value (failed to add 1).");
     while(Pike_sp > save_sp) pop_stack();
   } else {
