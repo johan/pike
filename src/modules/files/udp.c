@@ -189,7 +189,7 @@ void udp_enable_broadcast(INT32 args)
 
 void udp_read(INT32 args)
 {
-  int flags = 0, res=0, fd;
+  int flags = 0, res=0, fd, e;
   struct sockaddr_in from;
   char buffer[UDP_BUFFSIZE];
   ACCEPT_SIZE_T fromlen = sizeof(struct sockaddr_in);
@@ -216,12 +216,13 @@ void udp_read(INT32 args)
     THREADS_ALLOW();
     res = fd_recvfrom(fd, buffer, UDP_BUFFSIZE, flags,
 		      (struct sockaddr *)&from, &fromlen);
+    e = errno;
     THREADS_DISALLOW();
 
-    check_threads_etc();
-  } while((res==-1) && (errno==EINTR));
+    check_signals(0, 0, 0);
+  } while((res==-1) && (e==EINTR));
 
-  THIS->my_errno=errno;
+  THIS->my_errno=e;
 
   if(res<0)
   {
@@ -272,7 +273,7 @@ void udp_read(INT32 args)
 
 void udp_sendto(INT32 args)
 {
-  int flags = 0, res=0, i, fd;
+  int flags = 0, res=0, i, fd, e;
   struct sockaddr_in to;
   char *str;
   INT32 len;
@@ -315,10 +316,11 @@ void udp_sendto(INT32 args)
     THREADS_ALLOW();
     res = fd_sendto( fd, str, len, flags, (struct sockaddr *)&to,
 		     sizeof( struct sockaddr_in ));
+    e = errno;
     THREADS_DISALLOW();
 
-    check_threads_etc();
-  } while((res == -1) && errno==EINTR);
+    check_signals(0, 0, 0);
+  } while((res == -1) && e==EINTR);
   
   if(res<0)
   {
