@@ -53,7 +53,7 @@ module.so: $(OBJS)  $(MODULE_ARCHIVES)
 	if test @SO@ != so ; then mv module.@SO@ module.so ; else :; fi
 
 clean:
-	-rm -f *.o *.a *.so module.so
+	-rm -f *.o *.a *.so module.so linker_options modlist_headers modlist_segment module_testsuite
 	for a in '' $(MODULE_SUBDIRS) ; do if test "x$$a" = "x"; then :; else echo cleaning $$a ; ( cd $$a ; $(MAKE) $(MAKE_FLAGS) clean ) ; fi ; done
 
 
