@@ -21,6 +21,9 @@
 /* Define this if you want malloc debugging */
 #undef DEBUG_MALLOC
 
+/* Define this if you want checkpoints */
+#undef DMALLOC_TRACE
+
 /* Define this to enable the internal Pike security system */
 #undef PIKE_SECURITY
 

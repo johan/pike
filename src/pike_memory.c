@@ -634,6 +634,23 @@ char *debug_qalloc(size_t size)
   return NULL;	/* Keep the compiler happy. */
 }
 
+#ifdef DMALLOC_TRACE
+/* this can be used to supplement debugger data
+ * to find out *how* the interpreter got to a certain
+ * point, it is also useful when debuggers are not working.
+ * -Hubbe
+ *
+ * Please note: We *should* probably make this so that
+ * it remembers which thread was there too, and then we
+ * would need a mutex to make sure all acceses to dmalloc_tracelogptr
+ * are atomic.
+ * -Hubbe
+ */
+char *dmalloc_tracelog[DMALLOC_TRACELOGSIZE];
+size_t dmalloc_tracelogptr=0;
+#endif
+
+
 #ifdef DEBUG_MALLOC
 
 #include "threads.h"
@@ -1201,6 +1218,10 @@ static void add_location(struct memhdr *mh, LOCATION location)
 {
   struct memloc *ml;
   unsigned long l;
+
+#ifdef DMALLOC_TRACE
+  DMALLOC_TRACE_LOG(location);
+#endif
 
 #if DEBUG_MALLOC - 0 < 2
   if(find_location(&no_leak_memlocs, location)) return;
