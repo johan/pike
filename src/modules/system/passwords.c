@@ -294,7 +294,8 @@ void f_getpwent(INT32 args)
   THREADS_DISALLOW_UID();
   if(!foo)
   {
-    mt_unlock(&password_protection_mutex);
+    UNLOCK_IMUTEX(&password_protection_mutex);
+
     push_int(0);
     return;
   }
@@ -465,7 +466,8 @@ void f_get_groups_for_user(INT32 arg)
 
   if(!pw)
   {
-    mt_unlock(&password_protection_mutex);
+    UNLOCK_IMUTEX(&password_protection_mutex);
+
     pop_stack();
     push_int(0);
     return;
