@@ -4081,6 +4081,11 @@ test_true([[(array(array))([1:2,3:4]) ]])
 test_true([[(array(array))([1:2,3:4,5:6]) ]])
 test_equal( [[ (multiset) ({1})]], [[ (< 1 >) ]] )
 test_eval_error([[return (mapping)""]])
+test_equal( (mapping)({({1,2}),({3,4})}), ([1:2,3:4]) )
+test_equal( ({({1,2})}), (array)([1:2]) )
+test_equal( (mapping)({}), ([]) )
+test_equal( ({}), (array)([]) )
+
 
 // testing @
 test_equal(({1,2,3}),lambda(mixed ... x) { return x; }(@a()))
