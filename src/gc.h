@@ -101,7 +101,6 @@ void f__gc_status(INT32 args);
       fatal("Panic!! less than zero objects!\n");	\
   )							\
   num_objects-- ;					\
-  if(Pike_in_gc) remove_marker(X);			\
 }while(0)
 
 #define GC_FREE(X) do {						\
