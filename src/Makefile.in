@@ -674,8 +674,8 @@ $(SRCDIR)/language.h_src: $(SRCDIR)/language.yacc
 	@echo "Expect 1 shift/reduce conflict."
 	( cd $(SRCDIR) &&\
 	 $(YACC) $(YFLAGS) language.yacc &&\
-	 mv y.tab.c language.c &&\
-	 mv y.tab.h language.h_src )
+	 sed -e 's/YY_COUNT_TYPE/@YY_COUNT_TYPE@/' <y.tab.c >language.c &&\
+	 mv y.tab.h language.h_src && rm y.tab.c)
 
 $(SRCDIR)/language.c: $(SRCDIR)/language.h_src
 	touch $(SRCDIR)/language.c
