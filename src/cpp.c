@@ -1026,41 +1026,6 @@ while(1)					\
   break;					\
 }
 
-#define FINDTOK() 				\
-  do {						\
-  SKIPSPACE();					\
-  if(data[pos]=='/')				\
-  {						\
-    ptrdiff_t tmp;				\
-    switch(data[pos+1])				\
-    {						\
-    case '/':					\
-      FIND_EOL();				\
-      break;					\
-      						\
-    case '*':					\
-      tmp=pos+2;				\
-      while(1)					\
-      {						\
-        if(data[tmp]=='*')			\
-	{					\
-	  if(data[tmp+1] == '/')		\
-	  {					\
-	    pos=tmp+2;				\
-	    break;				\
-	  }					\
-	  break;				\
-	}					\
-						\
-	if(data[tmp]=='\n')			\
-	  break;				\
-        tmp++;					\
-      }						\
-    }						\
-  }						\
-  break;					\
-  }while(1)
-
 static struct pike_string *recode_string(struct cpp *this, struct pike_string *data)
 {
   /* Observations:
