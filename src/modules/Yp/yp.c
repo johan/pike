@@ -178,7 +178,7 @@ static void f_all(INT32 args)
  *!
  *! For each entry in @[map], call the function specified by @[fun].
  *!
- *! @[fun()] will get two arguments, the first being the key, and the
+ *! @[fun] will get two arguments, the first being the key, and the
  *! second the value.
  *!
  *! @[map] is the YP-map to search in. This must be the full map name.
