@@ -1,7 +1,7 @@
 # $Id$
 SRCDIR=@srcdir@
 VPATH=@srcdir@:@srcdir@/../..:../..
-OBJS=file.o efuns.o socket.o
+OBJS=file.o efuns.o socket.o termios.o
 MODULE_LDFLAGS=@LIBS@
 MODULE_TESTS=local_tests
 
