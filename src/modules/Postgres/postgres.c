@@ -459,7 +459,7 @@ static void f_big_query(INT32 args)
 	{
 #define CURSORPREFIX	"DECLARE "CURSORNAME" CURSOR FOR "
 #define CPREFLEN	sizeof(CURSORPREFIX)
-	  int qlen=strlen(query);
+	  unsigned int qlen=strlen(query);
 	  char *nquery;
 	  if(qlen>LIMITLENSC && strcmp(query+qlen-LIMITLENSC,LIMIT1STRSC)
 	     && strcmp(query+qlen-LIMITLEN,LIMIT1STR)

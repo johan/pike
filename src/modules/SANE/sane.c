@@ -741,7 +741,8 @@ static void f_scanner_nonblocking_row_scan( INT32 args )
     free( rsp );
     Pike_error("Failed to get select fd for scanning device!\n");
   }
-  set_read_callback( fd, nonblocking_row_scan_callback, (void*)rsp );
+  set_read_callback( fd, (file_callback)nonblocking_row_scan_callback,
+		     (void*)rsp );
   push_int( 0 );
 }
 
