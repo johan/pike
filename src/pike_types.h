@@ -260,7 +260,7 @@ int type_may_overload(struct pike_type *type, int lfun);
 void yyexplain_nonmatching_types(struct pike_type *type_a,
 				 struct pike_type *type_b,
 				 int flags);
-struct pike_type *make_pike_type(char *t);
+struct pike_type *make_pike_type(const char *t);
 int pike_type_allow_premature_toss(struct pike_type *type);
 /* Prototypes end here */
 

@@ -3544,7 +3544,7 @@ void yyexplain_nonmatching_types(struct pike_type *type_a,
 }
 
 
-struct pike_type *make_pike_type(char *t)
+struct pike_type *make_pike_type(const char *t)
 {
   return make_shared_binary_string(t, type_length(t));
 }
