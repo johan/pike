@@ -608,7 +608,7 @@ void f_string_to_unicode(INT32 args)
   INT32 len;
   int i;
 
-  get_all_args("string_to_unicode", args, "%S", &in);
+  get_all_args("string_to_unicode", args, "%W", &in);
 
   switch(in->size_shift) {
   case 0:
@@ -715,10 +715,6 @@ void f_unicode_to_string(INT32 args)
   INT32 len;
 
   get_all_args("unicode_to_string", args, "%S", &in);
-
-  if (in->size_shift) {
-    error("unicode_to_string(): Argument in not an 8bit string.\n");
-  }
 
   if (in->len & 1) {
     error("unicode_to_string(): String length is odd.\n");
