@@ -159,6 +159,7 @@ int pike_types_le(struct pike_string *a,struct pike_string *b);
 struct pike_string *index_type(struct pike_string *type,
 			       struct pike_string *index_type,
 			       node *n);
+struct pike_string *array_value_type(struct pike_string *array_type);
 struct pike_string *key_type(struct pike_string *type, node *n);
 int check_indexing(struct pike_string *type,
 		   struct pike_string *index_type,
