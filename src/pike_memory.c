@@ -2083,6 +2083,8 @@ static void find_references_to(void *block, int indent, int depth, int flags)
      *
      * This entire loop seems strange. Why is it split into
      * two parts?
+     *
+     * Hmm... Could it be that describe_location() can do find_memhdr()?
      */
     for(m=memhdr_hash_table[h];m;m=m->next)
     {
