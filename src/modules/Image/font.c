@@ -20,16 +20,16 @@ extern unsigned char * image_default_font;
  *!
  *! Short technical documentation on a font file:
  *! This object adds the text-drawing and -creation
- *! capabilities of the <ref>Image</ref> module.
+ *! capabilities of the @[Image] module.
  *!
  *! For simple usage, see @[write] and @[load].
  *!
  *! @note
  *!   @pre{
- *!	       struct file_head 
+ *!	       struct file_head
  *!	       {
- *!		  unsigned INT32 cookie;   - 0x464f4e54 
- *!		  unsigned INT32 version;  - 1 
+ *!		  unsigned INT32 cookie;   - 0x464f4e54
+ *!		  unsigned INT32 version;  - 1
  *!		  unsigned INT32 chars;    - number of chars
  *!		  unsigned INT32 height;   - height of font
  *!		  unsigned INT32 baseline; - font baseline
