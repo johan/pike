@@ -22,6 +22,10 @@ int main(int argc, array(string) argv)
   foreach(argv[3..], string filename)
   {
     object src = Parser.XML.Tree.parse_file( filename )[0];
+    if (!src) {
+      werror("\rFailed to read %O\n", filename);
+      continue;
+    }
     werror("\rMerging with %s...\n", filename);
     if (mixed err = catch {
       Tools.AutoDoc.ProcessXML.mergeTrees(dest, src);
