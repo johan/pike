@@ -32,6 +32,7 @@ mapping _decode( string data, mixed|void tocolor )
     tocolor = 0;
   }
   // Use the low-level decode function to get the alpha channel.
+#if constant(Image.GIF) && constant(Image.GIF.RENDER)
   catch
   {
     array chunks = Image["GIF"]->_decode( data );
@@ -44,6 +45,7 @@ mapping _decode( string data, mixed|void tocolor )
         [i,a] = chunk[3..4];
     format = "GIF";
   };
+#endif
 
   if(!i)
     foreach( ({ "GIF", "JPEG", "XWD", "PNM", "RAS" }), string fmt )
