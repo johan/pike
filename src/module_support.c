@@ -268,7 +268,7 @@ int va_get_args(struct svalue *s,
 	    break;
 
 	default:
-	  return;
+	  return ret;
       }
       break;
 
