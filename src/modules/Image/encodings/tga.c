@@ -255,8 +255,8 @@ static int std_fputc( int c, struct buffer *fp )
 
 /* Decode a bufferful of file. */
 
-static size_t rle_fread (guchar *buf, size_t datasize, size_t nelems,
-			 struct buffer *fp)
+static ptrdiff_t rle_fread (guchar *buf, size_t datasize, size_t nelems,
+			    struct buffer *fp)
 {
   /* If we want to call this function more than once per image, change the
      variables below to be static..  */
