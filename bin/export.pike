@@ -293,7 +293,7 @@ int main(int argc, array(string) argv)
 constant documentation = #"
 Usage: export.pike <arguments> <except modules>
 
-Creates a pike distribution. Needs one tar and one gzip binary int the path.
+Creates a pike distribution. Needs one tar and one gzip binary in the path.
 Mandatory arguments:
 
  name       Name of export archive (%maj, %min, %bld, %Y, %M, %D, %h, %m, %s
