@@ -1134,12 +1134,12 @@ static int array_merge_fun(INT32 *a, INT32 *b)
     {
       return orderb[~*a] - orderb[~*b];
     }else{
-      return -1;
+      return 1;
     }
   }else{
     if(*b<0)
     {
-      return 1;
+      return -1;
     }else{
       return ordera[*a] - ordera[*b];
     }
@@ -1340,7 +1340,7 @@ struct array *and_arrays(struct array *a, struct array *b)
 
   if(a->type_field & b->type_field)
   {
-    return merge_array_without_order(a, b, PIKE_ARRAY_OP_AND);
+    return merge_array_with_order(a, b, PIKE_ARRAY_OP_AND_LEFT);
   }else{
     return allocate_array_no_init(0,0);
   }
