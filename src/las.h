@@ -165,7 +165,7 @@ void print_tree(node *n);
 struct used_vars;
 void fix_type_field(node *n);
 struct timer_oflo;
-ptrdiff_t eval_low(node *n);
+ptrdiff_t eval_low(node *n,int print_error);
 int dooptcode(struct pike_string *name,
 	      node *n,
 	      struct pike_type *type,

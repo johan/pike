@@ -3115,8 +3115,8 @@ node *optimize_replace(node *n)
 	  INT16 lfun;
 	  struct object *replace_obj;
 	  node *ret = NULL;
-	  INT32 args = eval_low(*arg1);	/* NOTE: Addition splitted to ensure */
-	  args += eval_low(*arg2);	/*       correct evaluation order.   */
+	  INT32 args = eval_low(*arg1,1);	/* NOTE: Addition splitted to ensure */
+	  args += eval_low(*arg2,1);		/*       correct evaluation order.   */
 
 	  replace_obj = clone_object(multi_string_replace_program, args);
 

@@ -546,7 +546,7 @@ constant_name: TOK_IDENTIFIER '=' safe_expr0
     } else {
       if(!Pike_compiler->num_parse_error)
       {
-	ptrdiff_t tmp=eval_low($3);
+	ptrdiff_t tmp=eval_low($3,1);
 	if(tmp < 1)
 	{
 	  yyerror("Error in constant definition.");
@@ -1725,7 +1725,7 @@ local_constant_name: TOK_IDENTIFIER '=' safe_expr0
       if(Pike_compiler->compiler_pass==2)
 	yyerror("Constant definition is not constant.");
     }else{
-      ptrdiff_t tmp=eval_low($3);
+      ptrdiff_t tmp=eval_low($3,1);
       if(tmp < 1)
       {
 	yyerror("Error in constant definition.");
@@ -2526,7 +2526,7 @@ enum_value: /* EMPTY */
     } else {
       if(!Pike_compiler->num_parse_error)
       {
-	ptrdiff_t tmp=eval_low($2);
+	ptrdiff_t tmp=eval_low($2,1);
 	if(tmp < 1)
 	{
 	  yyerror("Error in enum definition.");

@@ -1715,7 +1715,7 @@ static int do_docode2(node *n, INT16 flags)
 	  }
 
 	  if (!Pike_compiler->num_parse_error) {
-	    tmp1=eval_low(case_val);
+	    tmp1=eval_low(case_val,1);
 	    if(tmp1<1)
 	    {
 	      yyerror("Error in case label.");
