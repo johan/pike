@@ -96,6 +96,7 @@ struct svalue
 #define T_VOID       16	/* Can't return any value */
 #define T_MANY       17
 
+#define PIKE_T_RING 240
 #define PIKE_T_NAME 241		/* Only supported in USE_PIKE_TYPE-mode. */
 #define T_MAPPING_DATA 242
 #define PIKE_T_SCOPE 243	/* Not supported yet */
