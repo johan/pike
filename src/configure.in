@@ -806,7 +806,7 @@ string:
         exit 1
       fi
 
-      if test "x$with_path_gcc" = "xno"; then :; else
+      if test "x$with_patch_gcc" = "xno"; then :; else
         AC_MSG_WARN([Will attempt to patch gcc.])
 
         AC_MSG_CHECKING([for cc1])
