@@ -107,6 +107,11 @@ double sidereal (double gmt, double jd, int gyear)
   return lst;
 }
 
+/*! @module spider
+ */
+
+/*! @decl string stardate(int time)
+ */
 void f_stardate (INT32 args)
 {
   int jd, precis=0;
@@ -136,3 +141,6 @@ void f_stardate (INT32 args)
   pop_n_elems(args);
   push_string(make_shared_string(buf));
 }
+
+/*! @endmodule
+ */
