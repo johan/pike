@@ -1,5 +1,11 @@
 /* $Id$ */
 
+/*
+**! module Image
+**! note
+**!	$Id$<br>
+*/
+
 #define MAX_NUMCOL 32768
 
 #define QUANT_SELECT_CACHE 6

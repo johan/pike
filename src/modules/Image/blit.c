@@ -3,6 +3,8 @@
 
 /*
 **! module Image
+**! note
+**!	$Id$<br>
 **! class image
 */
 

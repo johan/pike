@@ -10,6 +10,8 @@ $Id$
 
 /*
 **! module Image
+**! note
+**!	$Id$<br>
 **! class image
 */
 
@@ -784,7 +786,7 @@ void image_gif_add_fs_nomap(INT32 args)
 **! arg int trans_g
 **! arg int trans_b
 **!	one color, that is to be transparent.
-**! see also: togif_begin, togif_add, togif_end, toppm, fromgif
+**! see also: gif_begin, gif_add, gif_end, toppm, fromgif
 */
 
 

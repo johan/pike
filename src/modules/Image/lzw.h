@@ -1,5 +1,11 @@
 /* $Id$ */
 
+/*
+**! module Image
+**! note
+**!	$Id$<br>
+*/
+
 #define GIF_LZW
 
 #ifdef GIF_LZW

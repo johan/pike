@@ -1,6 +1,13 @@
 /* $Id$ */
 /* included w/ defines in blit.c, image_add_layer() */
 
+/*
+**! module Image
+**! note
+**!	$Id$<br>
+**! class image
+*/
+
 
    i=(y2-y1+1);
    while (i--)

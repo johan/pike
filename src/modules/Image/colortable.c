@@ -4,6 +4,8 @@
 
 /*
 **! module Image
+**! note
+**!	$Id$<br>
 **! class colortable
 **!
 **!	This object keeps colortable information,

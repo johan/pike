@@ -1,13 +1,11 @@
 #include <config.h>
 /* $Id$ */
+/* (optimized) color quantization and following lookup */
 
 /*
-
-quant, used by image when making gif's (mainly)
-
-Pontus Hagland, law@infovav.se
-David Kågedal, kg@infovav.se
-
+**! module Image
+**! note
+**!	$Id$<br>
 */
 
 #ifdef HAVE_UNISTD_H

@@ -5,7 +5,8 @@
 **!
 **!     This module adds image-drawing and -manipulating
 **!	capabilities to pike. 
-**!
+**! note
+**!	$Id$<br>
 **! see also: Image.font, Image.image
 **!
 **! class image
@@ -79,6 +80,7 @@
 **!	<ref>gif_begin</ref>,
 **!	<ref>gif_end</ref>,
 **!	<ref>gif_netscape_loop</ref>,
+**!	<ref>gif_transparency</ref>,
 **!	<ref>to8bit</ref>,
 **!	<ref>to8bit_closest</ref>, 
 **!	<ref>to8bit_fs</ref>,
@@ -89,6 +91,10 @@
 **!	<ref>togif_fs</ref>, 
 **!	<ref>toppm</ref>,
 **!	<ref>tozbgr</ref>
+**!
+**!	special pattern drawing:
+**!	<ref>noise</ref>,
+**!	<ref>turbulence</ref>
 **!
 **! see also: Image, Image.font
 */
