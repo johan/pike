@@ -3257,7 +3257,7 @@ void Pike_f_fork(INT32 args)
 static void f_kill(INT32 args)
 {
   int signum;
-  int pid;
+  int pid = 0;
   int res;
 
 #ifdef PIKE_SECURITY

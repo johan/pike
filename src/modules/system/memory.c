@@ -285,9 +285,9 @@ static void memory__mmap(INT32 args,int complain,int private)
 
    mem=mmap(NULL,size,PROT_READ|PROT_WRITE,flags,fd,offset);
 #ifndef MAP_FAILED
-#define MAP_FAILED ((void*)-1)
+#define MAP_FAILED ((void*)(ptrdiff_t)-1)
 #endif
-   if (mem==MAP_FAILED && errno==EACCES) /* try without write */
+   if ((mem==MAP_FAILED) && (errno==EACCES)) /* try without write */
    {
       resflags&=~MEM_WRITE;
       mem=mmap(NULL,size,PROT_READ,flags,fd,offset);
@@ -694,13 +694,14 @@ static void memory_index(INT32 args)
    if (args==1)
    {
       INT_TYPE pos;
-      size_t rpos;
+      size_t rpos = 0;
       get_all_args("Memory.`[]",args,"%i",&pos);
-      if (pos<0) 
+      if (pos<0) {
 	 if ((off_t)-pos>=DO_NOT_WARN((off_t)THIS->size))
 	    Pike_error("Memory.`[]: Index is out of range\n");
 	 else
 	    rpos=(size_t)(DO_NOT_WARN((off_t)(THIS->size))+(off_t)pos);
+      }
       else 
       {
 	 rpos=(size_t)pos;
