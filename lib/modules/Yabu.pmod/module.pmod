@@ -194,6 +194,17 @@ class Chunk {
     return x;
   }
 
+  /* Perform consistency check. Returns 0 for failure, otherwise success. */
+  int consistency()
+  {
+    multiset k = mkmultiset(indices(keys));
+    foreach(indices(frees), int type)
+      foreach(frees[type], int offset)
+        if(k[encode_key(offset, type)])
+          return 0;
+    return 1;
+  }
+  
   array(string) list_keys()
   {
     return indices(keys);
@@ -219,7 +230,8 @@ class Chunk {
     
     mapping m = decode_chunk(file::read_at(offset, type));
     if(m->size == 0)
-      ERR("Cannot decode free chunk!");
+      ERR(sprintf("Cannot decode free chunk! [consistency status: %s]",
+                  consistency()?"#OK":"#FAILURE"));
     if(attributes)
       return m;
     return m->entry;
@@ -240,13 +252,15 @@ class Chunk {
 
   mapping state(array|void almost_free)
   {
-    mapping m = copy_value(frees);
+    mapping m_frees = copy_value(frees);
+    mapping m_keys = copy_value(keys);
     foreach(almost_free||({}), string key) {
       int offset, type;
       DECODE_KEY(key, offset, type);
-      m[type] = (m[type]||({})) | ({ offset });
+      m_frees[type] = (m_frees[type]||({})) | ({ offset });
+      m_delete(m_keys, key);
     }
-    return copy_value(([ "eof":eof, "keys":keys, "frees":m ]));
+    return copy_value(([ "eof":eof, "keys":m_keys, "frees":m_frees ]));
   }
 
   void purge()
