@@ -1213,6 +1213,7 @@ static int read_smeg_pereference(struct xmldata *data)
 	  data->input.pos=0;
 	  data->input.datap=MKPCHARP_STR(s);
 	  data->input.len=(s)->len;
+	  free_mapping(data->input.callbackinfo);
 	  data->input.callbackinfo=callbackinfo;
 	  copy_shared_string(data->input.to_free,s);
 	  if (external_entity_value || !full_name) {
