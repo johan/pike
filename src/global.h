@@ -19,6 +19,7 @@
 #if __STDC__ - 0 != 0
 #undef __STDC__
 #define __STDC__ 0
+#endif /* __STDC__ != 0 */
 #endif /* __TenDRA__ */
 
 #ifndef _LARGEFILE_SOURCE
