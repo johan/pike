@@ -277,7 +277,7 @@ PIKECLASS mpq
       mpzmod_reduce(res);
 #else
       free_object(res);
-      push_int(mpq_get_si(OBTOMPZ(res)));
+      push_int(mpz_get_si(OBTOMPZ(res)));
 #endif /* AUTO_BIGNUM */
     }
 

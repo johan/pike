@@ -192,7 +192,7 @@ PIKECLASS mpf
       mpzmod_reduce(ret);
 #else
       ret=clone_object(mpzmod_program, 1);
-      push_int(mpzmod_get_si(OBTOMPZ(o)));
+      push_int(mpz_get_si(OBTOMPZ(ret)));
       free_object(ret);
 #endif
     }
