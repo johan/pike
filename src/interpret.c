@@ -463,7 +463,7 @@ PMOD_EXPORT void find_external_context(struct external_variable_context *loc,
 				       int arg2)
 {
   struct program *p;
-  INT32 e,off;
+
   TRACE((4, "-find_external_context(%d, inherit=%ld)\n", arg2,
 	 DO_NOT_WARN((long)(loc->o->prog ? loc->inherit - loc->o->prog->inherits : 0))));
 
