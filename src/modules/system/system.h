@@ -1,6 +1,11 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 /*
- * $Id$
- *
  * Prototypes for the Pike system-module
  *
  * Henrik Grubbström 1997-01-28

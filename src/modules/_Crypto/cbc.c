@@ -1,6 +1,11 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 /*
- * $Id$
- *
  * CBC (Cipher Block Chaining Mode) crypto module for Pike.
  *
  * Henrik Grubbström 1996-11-10

@@ -1,3 +1,10 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 #ifndef MULTISET_H
 #define MULTISET_H
 
@@ -6,8 +13,6 @@
 /* Multisets using rbtree.
  *
  * Created by Martin Stjernholm 2001-05-07
- *
- * $Id$
  */
 
 /* #define TEST_MULTISET */
@@ -431,16 +436,6 @@ void exit_multiset (void);
 void test_multiset (void);
 
 #else  /* PIKE_NEW_MULTISETS */
-
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-\*/
-
-/*
- * $Id$
- */
 
 #include "las.h"
 

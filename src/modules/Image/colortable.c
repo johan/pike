@@ -1,11 +1,14 @@
-#include "global.h"
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
 
-/* $Id$ */
+#include "global.h"
 
 /*
 **! module Image
-**! note
-**!	$Id$
 **! class Colortable
 **!
 **!	This object keeps colortable information,

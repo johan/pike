@@ -1,6 +1,11 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 /*
- * $Id$
- *
  * Password handling for Pike.
  *
  * Henrik Grubbström 1997-01-28

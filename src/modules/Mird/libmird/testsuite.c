@@ -1,3 +1,10 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 /*
 ** libMird by Mirar <mirar@mirar.org>
 ** please submit bug reports and patches to the author
@@ -5,10 +12,8 @@
 ** also see http://www.mirar.org/mird/
 **
 ** for licence, read the LICENCE file
-**
-** $Id$
-**
-*/ 
+*/
+
 #include "mird.h"
 #include <stdio.h>
 #include <unistd.h>
@@ -21,10 +26,6 @@
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
-
-/*
- * $Id$
- */
 
 #ifdef DO_TRACE
 #define TRACE(X) fprintf(stderr,"\n%s   ",X);

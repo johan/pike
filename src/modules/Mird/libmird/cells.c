@@ -1,12 +1,16 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 /*
 ** libMird by Mirar <mirar@mirar.org>
 ** please submit bug reports and patches to the author
 **
 ** for licence, read the LICENCE file
-**
-** $Id$
-**
-*/ 
+*/
 
 /* handles cells
  * a cell is some amount of data of unregulated size

@@ -1,3 +1,10 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 /*
 ** libMird by Mirar <mirar@mirar.org>
 ** please submit bug reports and patches to the author
@@ -5,14 +12,11 @@
 ** also see http://www.mirar.org/mird/
 **
 ** for licence, read the LICENCE file
-**
-** $Id$
-**
-*/ 
+*/
+
 /* config.h */
 /* this is for win32 systems, that doesn't work that well */
 /* with configure/autoconf. Created by <paul@theV.net>.   */
-/* $Id$ */
 
 /* define if there is an inline keyword */
 /* #define HAS_INLINE 1 */

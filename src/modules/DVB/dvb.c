@@ -1,9 +1,14 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 /*
  * DVB module
  *
  * Creator: Honza Petrous <hop@unibase.cz>
- *
- * $Id$
  *
  * Credits:
  *  + Tuner zapping code inspired on 'szap' app from linux DVB driver

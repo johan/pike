@@ -2,13 +2,13 @@
 ||| This file is part of Pike. For copyright information see COPYRIGHT.
 ||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
 ||| for more information.
+||| $Id$
 \*/
-/**/
+
 #ifndef REGEXP_H
 #define REGEXP_H
+
 /*
- * $Id$
- *
  * Definitions etc. for regexp(3) routines.
  *
  * Caveat:  this is V8 regexp(3) [actually, a reimplementation thereof],

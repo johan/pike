@@ -1,3 +1,10 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 #include "global.h"
 #include "bignum.h"
 #include "object.h"
@@ -5,7 +12,6 @@
 
 #include <shuffler.h>
 
-/* $Id$ */
 
 /* Source: System.Memory
  * Argument: An initialized instance of the System.Memory class

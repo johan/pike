@@ -1,14 +1,16 @@
-/* $Id$ */
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 /* included w/ defines in colortable.c */
 
 /*
 **! module Image
-**! note
-**!	$Id$
 **! class colortable
 */
-
-
 
 void NCTLU_FLAT_CUBICLES_NAME(rgb_group *s,
 			      NCTLU_DESTINATION *d,

@@ -1,9 +1,9 @@
-/*
- * You may use, modify and redistribute it freely under the terms
- * of the GNU General Public License, version 2.
- * $Id$
- *
- */
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
 
 /* All this code is pretty useless if we don't have a msql library...*/
 #include "global.h"

@@ -1,8 +1,12 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 /*
- * Postgres95 and PostgreSQL support for pike/0.5 and up
- *
- * This code is provided AS IS, and may be distributed under the terms
- * of the GNU General Public License, version 2.
+ * Postgres95 and PostgreSQL support for Pike 0.5 and up.
  */
 
 #define NO_PIKE_SHORTHAND

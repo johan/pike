@@ -2,11 +2,9 @@
 ||| This file is part of Pike. For copyright information see COPYRIGHT.
 ||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
 ||| for more information.
+||| $Id$
 \*/
 
-/*
- * $Id$
- */
 #include <stdio.h>
 /*
 	alloca -- (mostly) portable public-domain implementation -- D A Gwyn

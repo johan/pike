@@ -1,9 +1,14 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 /* The lower level api for using rbtree. This is in a separate file
  * since it's quite macro heavy.
  *
  * Created 2001-04-27 by Martin Stjernholm
- *
- * $Id$
  */
 
 #ifndef RBTREE_LOW_H

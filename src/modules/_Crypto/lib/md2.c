@@ -1,7 +1,11 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
 
 /*
- * $Id$
- *
  *  md2.c : MD2 hash algorithm.
  *
  * Part of the Python Cryptography Toolkit, version 1.0.1

@@ -1,6 +1,11 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 /*
- * $Id$
- *
  *  md5.c :  Implementation of the MD5 hash function
  *
  * Part of the Python Cryptography Toolkit, version 1.0.1

@@ -1,11 +1,14 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
 
 /*
- * $Id$
- *
  *  Targa codec for pike. Based on the tga plugin for gimp.
  *
  *  The information below is from the original TGA module.
- *
  *
  *
  * Id: tga.c,v 1.6 1999/01/15 17:34:47 unammx Exp
@@ -23,8 +26,6 @@
  * Not even the RLE handling. ;)
  *
  */
-
-
 
 
 /*

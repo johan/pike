@@ -1,11 +1,15 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 /*
- * $Id$
- *
  * Win32 DLL handling for jvm.c
  *
  * This is not a stand alone compilation unit; it is included
  * from jvm.c and from the configure test
- *
  */
 
 #include <tchar.h>

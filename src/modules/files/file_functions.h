@@ -1,3 +1,9 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
   FILE_FUNC("open",file_open,"function(string,string,void|int:int)")
   FILE_FUNC("close",file_close,"function(string|void:int)")
   FILE_FUNC("read",file_read,"function(int|void,int|void:string)")

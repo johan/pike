@@ -1,3 +1,10 @@
+/*\
+||| This file is part of Pike. For copyright information see COPYRIGHT.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
+||| $Id$
+\*/
+
 #ifdef ERR_DECLARE
 #define DECLARE_ERROR(NAME, INHERIT, DECL) \
 PMOD_EXPORT struct program *PIKE_CONCAT(NAME,_error_program); \
