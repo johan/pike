@@ -34,14 +34,14 @@ int main(int argc, array(string) argv)
     {
       case "backup": overwrite = 0; break;
       case "verbose": verbosity++; break;
-      case "version": return 0, write(version + "\n");
+      case "version": write(version + "\n"); return 0;
       case "quiet": verbosity = 0; break;
-      case "help": return 0, usage();
+      case "help": usage(); return 0;
     }
   argv = Getopt.get_args(argv);
 
   if(4 > (argc = sizeof(argv)))
-    return 1, usage(werror);
+    return usage(werror), 1;
 
   string from = argv[1], to = argv[2], file;
   if(argc == 4 && argv[-1] == "-")
