@@ -845,17 +845,21 @@ static void image_ttf_faceinstance_ponder(INT32 args)
    if (sp[-args].type!=T_STRING)
       Pike_error("Image.TTF.FaceInstance->ponder(): illegal argument 1\n");
 
-   if(sp[-args].u.string->size_shift == 0)
-     ttf_please_translate_8bit(face_s->face,
-			       sp[-args].u.string,&sstr,&len,base,
-			       "Image.TTF.FaceInstance->ponder()");
-   else if(sp[-args].u.string->size_shift == 0)
-     ttf_please_translate_16bit(face_s->face,
-			       sp[-args].u.string,&sstr,&len,base,
-			       "Image.TTF.FaceInstance->ponder()");
-   else
+   switch( sp[-args].u.string->size_shift )
+   {
+    case 0:
+      ttf_please_translate_8bit(face_s->face,
+                                sp[-args].u.string,&sstr,&len,base,
+                                "Image.TTF.FaceInstance->ponder()");
+      break;
+    case 1:
+      ttf_please_translate_16bit(face_s->face,
+                                 sp[-args].u.string,&sstr,&len,base,
+                                 "Image.TTF.FaceInstance->ponder()");
+      break;
+    default:
      Pike_error("Too wide string for truetype\n");
-
+   }
    pop_n_elems(args);
 
    for (i=0; i<len; i++)
