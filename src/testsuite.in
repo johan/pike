@@ -9683,9 +9683,11 @@ test_do([[
   }
 ]])
 
+// string[]=
 test_any([[string s="foo"; s[2]='t'; s[0]--; return s;]],"eot")
 test_any([[string s="foo"; s[2]=0777; s[1]--; return s;]],"fn\777")
 test_any([[string s="foo"; s[2]=07777777; s[1]--; return s;]],"fn\7777777")
+test_any([[string s="foo"; s[2]='t'; catch (s[10]='x'); return s;]], "fot")
 
 cond([[all_constants()->_verify_internals]],
 [[
