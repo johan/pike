@@ -902,6 +902,27 @@ PIKECLASS string_iterator
       RETURN !(THIS->s && THIS->pos >= 0 && THIS->pos < THIS->s->len);
     }
 
+  PIKEFUN int _search(string|int needle, int|void start)
+    flags ID_STATIC;
+    {
+      if (!THIS->s)
+	Pike_error("No data to search.\n");
+      ref_push_string(THIS->s);
+      push_svalue(needle);
+      if (start) push_svalue(start);
+      else push_int(THIS->pos);
+      f_search(3);
+      stack_pop_n_elems_keep_top(args);
+      /* Advance to the found position. */
+      if (Pike_sp[-1].type == T_INT) {
+	if (Pike_sp[-1].u.integer >= 0) {
+	  THIS->pos = Pike_sp[-1].u.integer;
+	} else {
+	  THIS->pos = THIS->s->len;
+	}
+      }
+    }
+
   PIKEFUN void create(string s)
     {
       if(THIS->s)
