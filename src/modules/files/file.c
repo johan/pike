@@ -3658,6 +3658,9 @@ static void f_get_all_active_fd(INT32 args)
 
 #ifdef HAVE_NOTIFICATIONS
 
+/*! @class File
+ */
+
 /*! @decl void notify(void|int notification, function(void:void) callback)
  *! Receive notification when change occur within the fd.
  *! To use, create a Stdio.File object of a directory like
@@ -3712,6 +3715,9 @@ void file_set_notify(INT32 args) {
 
   pop_n_elems(args);
 }
+
+/*! @endclass
+ */
 
 #endif /* HAVE_NOTIFICATIONS */
 
