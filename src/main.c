@@ -773,6 +773,10 @@ int dbm_main(int argc, char **argv)
     a->type_field = BIT_STRING;
     push_array(a);
     
+#ifdef __amigaos__
+    /* FIXME... */
+    push_array(allocate_array_no_init(0,0));
+#else
     for(num=0;environ[num];num++);
     a=allocate_array_no_init(num,0);
     for(num=0;environ[num];num++)
@@ -782,6 +786,7 @@ int dbm_main(int argc, char **argv)
     }
     a->type_field = BIT_STRING;
     push_array(a);
+#endif
   
     apply(master(),"_main",2);
     pop_stack();
