@@ -14,6 +14,7 @@
 struct postgres_result_object_data {
   PGresult * result;
   int cursor;
+  struct pgres_object_data* pgod;
 };
 
 struct pgres_object_data {
@@ -21,6 +22,9 @@ struct pgres_object_data {
 	struct pike_string *last_error;
 	PGresult * last_result;
 	struct svalue * notify_callback;
+	int dofetch;
+	int docommit;
+	int lastcommit;
 #ifdef PQ_THREADSAFE
         PIKE_MUTEX_T mutex;
 #endif
@@ -28,5 +32,9 @@ struct pgres_object_data {
 
 /* The header name could be deceiving, but who cares? */
 extern struct program *postgres_program, *pgresult_program;
+
+#define FETCHSIZESTR	"64"
+#define CURSORNAME	"_pikecursor"
+#define FETCHCMD	"FETCH " FETCHSIZESTR " IN " CURSORNAME
 
 #endif
