@@ -1440,6 +1440,12 @@ static void file_errno(INT32 args)
   push_int(ERRNO);
 }
 
+static void file_mode(INT32 args)
+{
+  pop_n_elems(args);
+  push_int(THIS->open_mode);
+}
+
 static void file_set_nonblocking(INT32 args)
 {
   if(FD < 0) error("File not open.\n");
