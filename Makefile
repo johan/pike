@@ -111,10 +111,10 @@ compile: configure
 	  for target in $$metatarget; do \
 	    echo Making $$target in "$$builddir"; \
 	    rm -f remake; \
-	    $(MAKE) "MAKE=$(MAKE)" "MAKE_PARALLEL=$(MAKE_PARALLEL)" $$target || { \
+	    $(MAKE) "MAKE=$(MAKE)" "MAKE_PARALLEL=$(MAKE_PARALLEL)" "EXPORT_NAME=$(EXPORT_NAME)" $$target || { \
 	      res=$$?; \
 	      if test -f remake; then \
-		$(MAKE) "MAKE=$(MAKE)" "MAKE_PARALLEL=$(MAKE_PARALLEL)" $$target || \
+		$(MAKE) "MAKE=$(MAKE)" "MAKE_PARALLEL=$(MAKE_PARALLEL)" "EXPORT_NAME=$(EXPORT_NAME)" $$target || \
 		  exit $$?; \
 	      else \
 		exit $$res; \
