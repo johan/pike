@@ -1607,16 +1607,24 @@ void f_encode_value(INT32 args)
   data->delayed = allocate_array (0);
   data->counter.type=T_INT;
   data->counter.u.integer=COUNTER_START;
+
+#ifdef ENCODE_DEBUG
+  data->debug = args > 2 ? Pike_sp[2-args].u.integer : 0;
+  data->depth = -2;
+#endif
+
   if(args > 1 && Pike_sp[1-args].type == T_OBJECT)
   {
     data->codec=Pike_sp[1-args].u.object;
   }else{
     data->codec=get_master();
+    if (!data->codec) {
+      /* Use a dummy if there's no master around yet, to avoid checks. */
+      push_object (clone_object (null_program, 0));
+      args++;
+      data->codec = Pike_sp[-1].u.object;
+    }
   }
-#ifdef ENCODE_DEBUG
-  data->debug = args > 2 ? Pike_sp[2-args].u.integer : 0;
-  data->depth = -2;
-#endif
 
   SET_ONERROR(tmp, free_encode_data, data);
   addstr("\266ke0", 4);
@@ -1675,16 +1683,24 @@ void f_encode_value_canonic(INT32 args)
   data->delayed = allocate_array (0);
   data->counter.type=T_INT;
   data->counter.u.integer=COUNTER_START;
+  
+#ifdef ENCODE_DEBUG
+  data->debug = args > 2 ? Pike_sp[2-args].u.integer : 0;
+  data->depth = -2;
+#endif
+
   if(args > 1)
   {
     data->codec=Pike_sp[1-args].u.object;
   }else{
     data->codec=get_master();
+    if (!data->codec) {
+      /* Use a dummy if there's no master around yet, to avoid checks. */
+      push_object (clone_object (null_program, 0));
+      args++;
+      data->codec = Pike_sp[-1].u.object;
+    }
   }
-#ifdef ENCODE_DEBUG
-  data->debug = args > 2 ? Pike_sp[2-args].u.integer : 0;
-  data->depth = -2;
-#endif
 
   SET_ONERROR(tmp, free_encode_data, data);
   addstr("\266ke0", 4);
@@ -4359,6 +4375,12 @@ void f_decode_value(INT32 args)
       /* Fall through. */
     case 1:
       codec = get_master();
+      if (!codec) {
+	/* Use a dummy if there's no master around yet, to avoid checks. */
+	push_object (clone_object (null_program, 0));
+	args++;
+	codec = Pike_sp[-1].u.object;
+      }
   }
 
   if(!my_decode(s, codec
