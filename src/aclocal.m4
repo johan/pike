@@ -102,12 +102,10 @@ AC_DEFUN([PIKE_CHECK_GNU_STUBS_H],[
 
 define([ORIG_AC_CHECK_FUNC], defn([AC_CHECK_FUNC]))
 AC_DEFUN([AC_CHECK_FUNC],
-[
-AC_REQUIRE([PIKE_CHECK_GNU_STUBS_H])
+[AC_REQUIRE([PIKE_CHECK_GNU_STUBS_H])dnl
 AC_MSG_CHECKING([for $1])
 AC_CACHE_VAL(ac_cv_func_$1,
-[AC_TRY_LINK(
-[
+[AC_TRY_LINK([
 #ifdef HAVE_GNU_STUBS_H
 /* This file contains __stub_ defines for broken functions. */
 #include <gnu/stubs.h>
