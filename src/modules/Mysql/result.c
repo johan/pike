@@ -62,6 +62,7 @@
 #include "las.h"
 #include "threads.h"
 #include "multiset.h"
+#include "bignum.h"
 
 /* Local includes */
 #include "precompiled_mysql.h"

@@ -76,6 +76,7 @@
 #include "builtin_functions.h"
 #include "fd_control.h"
 #include "mapping.h"
+#include "bignum.h"
 
 /* System includes */
 #ifdef HAVE_STRING_H

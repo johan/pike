@@ -14,6 +14,7 @@
 #include "builtin_functions.h"
 #include "module_support.h"
 #include "operators.h"
+#include "bignum.h"
 
 #define sp Pike_sp
 

@@ -15,6 +15,7 @@
 #include "mapping.h"
 #include "object.h"
 #include "operators.h"
+#include "bignum.h"
 
 #define sp Pike_sp
 
