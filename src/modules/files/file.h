@@ -25,6 +25,8 @@
 #endif
 #endif
 
+#include "pike_netlib.h"
+
 struct my_file
 {
   short open_mode;
@@ -94,7 +96,7 @@ struct pike_sendfile
 extern struct program *file_program;
 extern struct program *file_ref_program;
 
-extern void get_inet_addr(struct sockaddr_in *addr,char *name,char *service, INT_TYPE port, int udp);
+extern int get_inet_addr(SOCKADDR *addr,char *name,char *service, INT_TYPE port, int udp);
 
 #define CBFUNCS(X) \
 static void PIKE_CONCAT(file_,X) (int fd, void *data);		\

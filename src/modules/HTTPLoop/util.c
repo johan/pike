@@ -29,6 +29,7 @@
 #include <arpa/inet.h>
 #endif
 
+#include "pike_netlib.h"
 #include "accept_and_parse.h"
 #include "util.h"
 

@@ -393,6 +393,9 @@
 /* Define if you have struct timeval */
 #undef HAVE_STRUCT_TIMEVAL
 
+/* Define if you have struct sockaddr_in6 */
+#undef HAVE_STRUCT_SOCKADDR_IN6
+
 /* Define this to the max value of an unsigned short unles <limits.h> does.. */
 #undef USHRT_MAX
 

@@ -103,7 +103,7 @@ struct args
 
   struct svalue cb;
   struct svalue args;
-  struct sockaddr_in from;
+  SOCKADDR from;
   struct cache *cache;
   struct filesystem *filesystem;
   struct log *log;
@@ -118,7 +118,7 @@ struct log_entry
   size_t received_bytes;
   struct pstring raw;
   struct pstring url;
-  struct sockaddr_in from;
+  SOCKADDR from;
   struct pstring method;
   struct pike_string *protocol;
 };
