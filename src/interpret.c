@@ -1652,10 +1652,12 @@ PMOD_EXPORT void safe_apply_handler(const char *fun,
       (i = find_identifier(fun, handler->prog)) != -1) {
     safe_apply_low(handler, i, args);
   } else if (compat &&
-      (i = find_identifier(fun, compat->prog)) != -1) {
+	     (i = find_identifier(fun, compat->prog)) != -1) {
     safe_apply_low(compat, i, args);
   } else {
-    SAFE_APPLY_MASTER(fun, args);
+    struct object *master_obj = master();
+    i = find_identifier(fun, master_obj->prog);
+    safe_apply_low(master_obj, i, args);
   }
 }
 
