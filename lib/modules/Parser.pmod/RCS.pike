@@ -44,11 +44,14 @@
 string head;		// num
 string branch;		// num
 array(string) access;	// ids
-mapping(string:string) locks;	 // id:num
 int strict_locks;
 string comment;
 string expand;
 string description;
+
+//! Maps from username to revision for users that have aquired locks
+//! on this file.
+mapping(string:string) locks;	 // id:num
 
 //! Maps tag names (indices) to tagged revision numbers (values).
 mapping(string:string) tags;
