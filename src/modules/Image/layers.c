@@ -107,8 +107,6 @@ LMFUNC(lm_bitwise_and);
 LMFUNC(lm_bitwise_or);
 LMFUNC(lm_bitwise_xor);
 
-LMFUNC(lm_dissolve);
-
 LMFUNC(lm_replace);
 LMFUNC(lm_red);
 LMFUNC(lm_green);
@@ -119,15 +117,11 @@ LMFUNC(lm_hue);
 LMFUNC(lm_saturation);
 LMFUNC(lm_value);
 LMFUNC(lm_color); 
-
-LMFUNC(lm_behind);
-LMFUNC(lm_difference);
 LMFUNC(lm_darken);
 LMFUNC(lm_lighten);
-LMFUNC(lm_hue);
-LMFUNC(lm_saturation);
-LMFUNC(lm_color);
-LMFUNC(lm_value);
+
+LMFUNC(lm_dissolve);
+LMFUNC(lm_behind);
 LMFUNC(lm_erase);
 
 struct layer_mode_desc
