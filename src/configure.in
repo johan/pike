@@ -980,6 +980,7 @@ AC_CHECK_FUNCS( \
  times \
  vfprintf \
  vsprintf \
+ vsnprintf \
  wait3 \
  wait4 \
  waitpid \
