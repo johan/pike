@@ -25,7 +25,7 @@
   } while(0)
 
 #define UPDATE_PC() do {						\
-    INT32 tmp = PC;							\
+    INT32 tmp = PIKE_PC;						\
     SET_REG(11, ((INT32)(&Pike_interpreter.frame_pointer)));		\
     /* lwz 11,0(11) */							\
     add_to_program(0x80000000|(11<<21)|(11<<16));			\
