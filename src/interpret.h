@@ -155,6 +155,7 @@ extern struct svalue **mark_sp;
 extern struct svalue *evaluator_stack;
 extern struct svalue **mark_stack;
 extern struct frame *fp; /* frame pointer */
+extern char *stack_top;
 extern int stack_size;
 extern int evaluator_stack_malloced, mark_stack_malloced;
 struct callback;
