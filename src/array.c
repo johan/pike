@@ -646,7 +646,7 @@ INT32 *get_order(struct array *v, cmpfun fun)
   return current_order;
 }
 
-static INLINE int set_svalue_cmpfun(struct svalue *a, struct svalue *b)
+INLINE int set_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
 {
   INT32 def,fun;
   if(a->type == b->type)
@@ -766,7 +766,7 @@ static INLINE int set_svalue_cmpfun(struct svalue *a, struct svalue *b)
   return def;
 }
 
-static int switch_svalue_cmpfun(struct svalue *a, struct svalue *b)
+static int switch_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
 {
   if(a->type == b->type)
   {
@@ -793,7 +793,7 @@ static int switch_svalue_cmpfun(struct svalue *a, struct svalue *b)
   }
 }
 
-static int alpha_svalue_cmpfun(struct svalue *a, struct svalue *b)
+static int alpha_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
 {
   if(a->type == b->type)
   {
