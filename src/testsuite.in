@@ -209,6 +209,21 @@ test_any([[
   return C()->bar;
 ]], 12)
 
+test_any([[
+  class A { int a = 1; };
+  class B { int b = 2; };
+  class C {
+    inherit A;
+    inherit B;
+    int c = 4;
+  };
+  class D {
+    inherit C;
+  };
+  object d = D();
+  return d->a + d->b + d->c;
+]], 7)
+
 test_eq([[object_program(master())]],[[(program)"/master"]])
 test_compile([[object("master") m = master();]])
 test_any([[int x; x++; if(x) return x; return -1;]],1)
