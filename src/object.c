@@ -990,7 +990,10 @@ PMOD_EXPORT void schedule_really_free_object(struct object *o)
   debug_malloc_touch(o);
   debug_malloc_touch(o->storage);
 
-  DOUBLEUNLINK(first_object,o);
+  if (o->next != o) {
+    /* Don't unlink fake objects... */
+    DOUBLEUNLINK(first_object,o);
+  }
 
   if(o->prog)
   {
