@@ -201,7 +201,6 @@ void create()
   add_constant("remove_module_path",remove_module_path);
   add_constant("add_program_path",add_program_path);
   add_constant("remove_program_path",remove_program_path);
-  add_constant("master",lambda() { return this_object(); });
   add_constant("describe_backtrace",describe_backtrace);
   add_constant("mkmultiset",lambda(mixed *a) { return aggregate_multiset(@a); });
   add_constant("strlen",sizeof);
