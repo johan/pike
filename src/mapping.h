@@ -60,6 +60,7 @@ extern struct mapping *gc_internal_mapping;
 #define m_ind_types(m) ((m)->data->ind_types)
 #define m_val_types(m) ((m)->data->val_types)
 #define mapping_get_flags(m) ((m)->data->flags)
+#define mapping_data_is_shared(m) ((m)->data->refs > 1)
 
 #define MD_KEYPAIRS(MD, HSIZE) \
    ( (struct keypair *)DO_ALIGN( (ptrdiff_t) (((struct mapping_data *)(MD))->hash + HSIZE), ALIGNOF(struct keypair)) )
