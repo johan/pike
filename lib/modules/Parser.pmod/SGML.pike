@@ -144,7 +144,7 @@ class SGML
    }
 
 
-   private static object p=HTML();
+   private static object p=.HTML();
 
    //! @decl void create()
    //! @decl void create(string filename)
