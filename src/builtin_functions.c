@@ -4245,9 +4245,9 @@ PMOD_EXPORT void f_permute( INT32 args )
   if( args != 2 )
     SIMPLE_TOO_FEW_ARGS_ERROR("permute", 2);
   if( Pike_sp[ -2 ].type != T_ARRAY )
-     SIMPLE_BAD_ARG_ERROR("diff", 1, "array");
+     SIMPLE_BAD_ARG_ERROR("permute", 1, "array");
   if (Pike_sp[ -1 ].type != T_INT)
-    SIMPLE_BAD_ARG_ERROR("diff", 2, "int");
+    SIMPLE_BAD_ARG_ERROR("permute", 2, "int");
 
   n  = Pike_sp[ -1 ].u.integer;
   a = copy_array( Pike_sp[ -2 ].u.array );
