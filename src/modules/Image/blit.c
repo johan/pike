@@ -564,7 +564,6 @@ void image_paste_alpha_color(INT32 args)
 
    if (args==6 || args==4 || args==2 || args==3) /* color at arg 2.. */
       arg=1+getrgb(THIS,1,args,3,"image->paste_alpha_color()\n");
-   fprintf(stderr,"%02x%02x%02x\n",THIS->rgb.r,THIS->rgb.g,THIS->rgb.b);
    if (args>arg+1) 
    {
       if (sp[arg-args].type!=T_INT
