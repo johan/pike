@@ -1365,7 +1365,7 @@ int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 	o=scope->current_object;
 	goto apply_low_with_scope;
       }
-    fun = (ptrdiff_t)arg2;
+    fun = ((char *)arg2) - (char *)0;
 
   apply_low:
 #undef SCOPE

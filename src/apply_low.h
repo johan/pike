@@ -160,7 +160,7 @@
 
 	init_buf();
 	sprintf(buf, "%lx->",
-		DO_NOT_WARN((long)o));
+		DO_NOT_WARN((long)(((char *)o)-((char *)0))));
 	my_strcat(buf);
 	my_strcat(function->name->str);
 	do_trace_call(args);
