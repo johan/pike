@@ -39,7 +39,9 @@ void die(int status)
 #endif
   }
   is_closed = 1;
-  socket->close();
+  if (socket) {
+    socket->close();
+  }
 }
 
 /* Return 0 if the connection is still alive,
