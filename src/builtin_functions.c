@@ -2438,7 +2438,7 @@ void f_replace_master(INT32 args)
 void f_master(INT32 args)
 {
   pop_n_elems(args);
-  ref_push_object(master_object);
+  ref_push_object(master());
 }
 
 #ifdef HAVE_GETHRVTIME
