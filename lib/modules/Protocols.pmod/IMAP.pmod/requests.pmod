@@ -183,7 +183,7 @@ class logout
 class create_mailbox
 {
   inherit request;
-  constant arg_info = ({ "string" });
+  constant arg_info = ({ ({ "string" }) });
 
   mapping easy_process(string mailbox_name)
   {
