@@ -29,8 +29,6 @@ extern void pike_cast_init(void);
 extern void pike_cast_exit(void);
 extern void pike_arcfour_init(void);
 extern void pike_arcfour_exit(void);
-extern void pike_invert_init(void);
-extern void pike_invert_exit(void);
 extern void pike_sha_init(void);
 extern void pike_sha_exit(void);
 extern void pike_cbc_init(void);

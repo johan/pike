@@ -653,7 +653,6 @@ PIKE_MODULE_INIT
   pike_crypto_init();
   pike_cbc_init();
   pike_pipe_init();
-  pike_invert_init();
   pike_nt_init();
 
   pike_idea_init();
@@ -672,7 +671,6 @@ PIKE_MODULE_EXIT
   pike_crypto_exit();
   pike_cbc_exit();
   pike_pipe_exit();
-  pike_invert_exit();
 
   pike_idea_exit();
   pike_des_exit();

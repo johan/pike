@@ -3,7 +3,7 @@
 VPATH=@srcdir@
 
 OBJS= idea.o des.o cast.o arcfour.o rijndael.o \
-  crypto.o invert.o sha.o md2.o md4.o md5.o pipe.o cbc.o nt.o
+  crypto.o sha.o md2.o md4.o md5.o pipe.o cbc.o nt.o
 
 MODULE_ARCHIVES=lib/algorithms.a
 MODULE_SUBDIRS=lib
