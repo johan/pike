@@ -140,9 +140,7 @@ Kerningtable types:
  */
 
 
-
-
-#include "fdlib.h"
+#include "image_machine.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -165,8 +163,6 @@ Kerningtable types:
 
 #include <errno.h>
 
-#include "image_machine.h"
-
 #include "stralloc.h"
 #include "pike_macros.h"
 #include "object.h"
@@ -183,6 +179,8 @@ Kerningtable types:
 #endif
 
 #include "dmalloc.h"
+
+#include "fdlib.h"
 
 extern struct program *font_program;
 extern struct program *image_program;
