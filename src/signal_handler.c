@@ -732,6 +732,7 @@ static void free_perishables(struct perishables *storage)
   
 #endif
 
+  exit_threads_disable();
 }
 
 #endif
@@ -767,7 +768,7 @@ void f_create_process(INT32 args)
   struct svalue *tmp;
   int e;
 
-  if(!args) return;
+  if(!args) return;	/* FIXME: Why? */
 
   check_all_args("create_process",args, BIT_ARRAY, BIT_MAPPING | BIT_VOID, 0);
 
@@ -970,6 +971,8 @@ void f_create_process(INT32 args)
     storage.wanted_gids=0;
     storage.wanted_gids_array=0;
 #endif
+
+    init_threads_disable();
 
     SET_ONERROR(err, free_perishables, &storage);
 
@@ -1222,7 +1225,9 @@ void f_create_process(INT32 args)
     if(pid)
     {
       UNSET_ONERROR(err);
+
       free_perishables(&storage);
+
       pop_n_elems(sp - stack_save);
 
       if(!signal_evaluator_callback)
