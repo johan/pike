@@ -124,6 +124,9 @@ struct hash_table;
 #endif
 
 extern struct instr instrs[];
+#ifdef PIKE_USE_MACHINE_CODE
+extern size_t instrs_checksum;
+#endif /* PIKE_USE_MACHINE_CODE */
 
 /* Opcode enum */
 

@@ -292,6 +292,9 @@ struct keyword instr_names[]=
 };
 
 struct instr instrs[F_MAX_INSTR - F_OFFSET];
+#ifdef PIKE_USE_MACHINE_CODE
+size_t instrs_checksum;
+#endif /* PIKE_USE_MACHINE_CODE */
 
 char *low_get_f_name(int n, struct program *p)
 {
@@ -396,6 +399,10 @@ void init_opcodes(void)
     instrs[instr_names[i].token - F_OFFSET].address=instr_names[i].address;
 #endif
   }
+
+#ifdef PIKE_USE_MACHINE_CODE
+  instrs_checksum = hash_mem(instrs, sizeof(instrs), sizeof(instrs));
+#endif /* PIKE_USE_MACHINE_CODE */
 
 #ifdef PIKE_DEBUG
   for(i=1; i<F_MAX_OPCODE-F_OFFSET;i++)
