@@ -55,6 +55,8 @@
       <insert-move entity="Array"/>
 <!--      <insert-move entity="Mapping"/> -->
 <!--      <insert-move entity="Multiset"/> -->
+<!--      <insert-move entity="Int"/> -->
+<!--      <insert-move entity="Float"/> -->
       <insert-move entity="Function"/>
       <insert-move entity="Program"/>
       <insert-move entity="ADT"/>
@@ -140,7 +142,7 @@
   </dir>
 
   <void>
-    <!-- The 7.0 module should perhaps be added to a
+    <!-- The 7.0 and 7.2 module should perhaps be added to a
          compatible chapter, but it needs a modifying
          wrapper first. -->
     <insert-move entity="7-0"/>
