@@ -296,7 +296,9 @@ void assemble(void)
         case TWOO(F_BRANCH, F_RETURN_0):
         case TWOO(F_BRANCH, F_RETURN_1):
         case TWOO(F_BRANCH, F_RETURN_LOCAL):
+	  if(c[e].file) free_string(c[e].file);
 	  c[e]=c[tmp];
+	  if(c[e].file) add_ref(c[e].file);
 	  break;
 	}
 	break;
