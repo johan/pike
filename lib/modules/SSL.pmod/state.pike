@@ -116,7 +116,7 @@ object decrypt_packet(object packet,int version)
       return Alert(ALERT_fatal, ALERT_unexpected_message,version);
     packet->fragment = msg;
   }
-  return packet->check_size(version) || packet;
+  return packet->check_size(0, version) || packet;
 }
 
 object encrypt_packet(object packet,int version)
