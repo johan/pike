@@ -246,7 +246,7 @@ void backend()
 	break;
 
       case EBADF:
-	fatal("Bad filedescriptor to select().\n");
+/*	fatal("Bad filedescriptor to select().\n");  Ignore */
 	break;
 
       }
