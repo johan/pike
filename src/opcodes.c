@@ -521,18 +521,18 @@ void o_cast(struct pike_type *type, INT32 run_time_type)
       case T_OBJECT:
 	switch(sp[-1].type)
 	{
-	  case T_STRING:
-	    if(Pike_fp->pc)
-	    {
-	      INT32 lineno;
-	      push_string(get_line(Pike_fp->pc,
-				   Pike_fp->context.prog,
-				   &lineno));
+	  case T_STRING: {
+	    struct pike_string *file;
+	    INT32 lineno;
+	    if(Pike_fp->pc &&
+	       (file = low_get_line(Pike_fp->pc, Pike_fp->context.prog, &lineno))) {
+	      push_string(file);
 	    }else{
 	      push_int(0);
 	    }
 	    APPLY_MASTER("cast_to_object",2);
 	    return;
+	  }
 	    
 	  case T_FUNCTION:
 	    if (Pike_sp[-1].subtype == FUNCTION_BUILTIN) {
@@ -550,16 +550,18 @@ void o_cast(struct pike_type *type, INT32 run_time_type)
       case T_PROGRAM:
       switch(sp[-1].type)
       {
-	case T_STRING:
-	  if(Pike_fp->pc)
-	  {
-	    INT32 lineno;
-	    push_string(get_line(Pike_fp->pc, Pike_fp->context.prog, &lineno));
+	case T_STRING: {
+	  struct pike_string *file;
+	  INT32 lineno;
+	  if(Pike_fp->pc &&
+	     (file = low_get_line(Pike_fp->pc, Pike_fp->context.prog, &lineno))) {
+	    push_string(file);
 	  }else{
 	    push_int(0);
 	  }
 	  APPLY_MASTER("cast_to_program",2);
 	  return;
+	}
 	  
 	case T_FUNCTION:
 	{

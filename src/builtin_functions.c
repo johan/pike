@@ -7492,8 +7492,8 @@ PMOD_EXPORT void f_inherit_list(INT32 args)
  *!   Returns a string with filename and linenumber where @[fun]
  *!   was defined.
  *!
- *!   Returns @tt{0@} (zero) for builtin functions and functions in
- *!   destructed objects.
+ *!   Returns @tt{0@} (zero) when no line can be found, e.g. for
+ *!   builtin functions and functions in destructed objects.
  */
 PMOD_EXPORT void f_function_defined(INT32 args)
 {
@@ -7520,7 +7520,7 @@ PMOD_EXPORT void f_function_defined(INT32 args)
       id->func.offset != -1)
     {
       INT32 line = 0;
-      struct pike_string *tmp = get_line(p->program + id->func.offset, p, &line);
+      struct pike_string *tmp = low_get_line(p->program + id->func.offset, p, &line);
       if (tmp)
       {
 	pop_n_elems(args);
