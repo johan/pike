@@ -750,9 +750,9 @@ static void mpzmod_next_prime(INT32 args)
   pop_n_elems(args);
   
   o = clone_object(mpzmod_program, 0);
-  PUSH_REDUCED(o);
-  
   mpz_next_prime(OBTOMPZ(o), THIS, count, limit);
+  
+  PUSH_REDUCED(o);
 }
 
 static void mpzmod_sgn(INT32 args)
