@@ -35,6 +35,9 @@
 
 #ifdef HAVE_ORACLE
 
+/* VERY VERY UGLY */
+#define MOTIF
+
 #include <oci.h>
 #include <math.h>
 
