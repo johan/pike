@@ -817,7 +817,7 @@ int dbm_main(int argc, char **argv)
     
 #ifdef __amigaos__
 #ifdef __amigaos4__
-    if(DOSBase->dl_lib.lib_Version >= 50) {
+    if(DOSBase->lib_Version >= 50) {
       struct svalue *mark = Pike_sp;
       IDOS->ScanVars(&scan_amigaos_environment_hook,
 		     GVF_BINARY_VAR|GVF_DONT_NULL_TERM,
