@@ -1483,7 +1483,7 @@ void f__memory_usage(INT32 args)
   count_memory_in_objects(&num, &size);
   push_text("num_objects");
   push_int(num);
-  push_text("object_bytees");
+  push_text("object_bytes");
   push_int(size);
 
   count_memory_in_callbacks(&num, &size);
