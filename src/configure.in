@@ -2484,7 +2484,7 @@ int main(int argc, char **argv)
 
         AC_PATH_PROG(PTHREAD_CONFIG,pthread-config,no)
         if test "x$PTHREAD_CONFIG" = xno ; then
-          CFLAGS="${CFLAGS} -pthread"
+          AC_SYS_COMPILER_FLAG(-pthread, pthread, CFLAGS, LIBS="$LIBS -lc_r")
           LD_FALLBACK_FLAGS="${LD_FALLBACK_FLAGS-} -lc_r"
 
           AC_MSG_CHECKING(Initial stack limit)
