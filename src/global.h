@@ -26,6 +26,11 @@
 #  define _PROTOTYPES
 #endif /* !_PROTOTYPES */
 
+/* And Linux wants this one... */
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE
+#endif /* !_GNU_SOURCE */
+
 /*
  * We want to use __builtin functions.
  */
