@@ -1867,7 +1867,7 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 	    }
 	    
 	    if (thrown.type != PIKE_T_UNKNOWN) {
-	      *Pike_sp = thrown;
+	      *(Pike_sp++) = thrown;
 	      thrown.type = PIKE_T_INT;
 	      low_safe_apply_handler("compile_exception", error_handler, compat_handler, 1);
 	      if (IS_ZERO(sp-1)) yy_describe_exception(&thrown);
