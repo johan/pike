@@ -1722,6 +1722,7 @@ low_idents: F_IDENTIFIER
 
     $$=reference_inherited_identifier($1->u.sval.u.string,
 				     $3->u.sval.u.string);
+
     if (!$$)
     {
       my_yyerror("Undefined identifier %s::%s", 
@@ -1760,12 +1761,14 @@ low_idents: F_IDENTIFIER
 	if(ISCONSTSTR($2->u.sval.u.string,"`->") ||
 	   ISCONSTSTR($2->u.sval.u.string,"`[]") )
 	{
-	  $$=mkapplynode(mkprgnode(magic_index_program),mkintnode(0));
+	  $$=mkapplynode(mkprgnode(magic_index_program),
+			 mknode(F_ARG_LIST,mkintnode(0),mkintnode(0)));
 	}
 	else if(ISCONSTSTR($2->u.sval.u.string,"`->=") ||
 		ISCONSTSTR($2->u.sval.u.string,"`[]=") )
 	{
-	  $$=mkapplynode(mkprgnode(magic_set_index_program),mkintnode(0));
+	  $$=mkapplynode(mkprgnode(magic_set_index_program),
+			 mknode(F_ARG_LIST,mkintnode(0),mkintnode(0)));
 	}
 	else
 	{

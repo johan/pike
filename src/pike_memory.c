@@ -894,6 +894,7 @@ static void add_location(struct memhdr *mh, int locnum)
   if(!ml)
   {
     ml=alloc_memloc();
+    ml->times=0;
     ml->locnum=locnum;
     ml->next=mh->locations;
     ml->mh=mh;
