@@ -6,6 +6,11 @@
  * Henrik Grubbström 1996-01-09
  */
 
+/* Needed for regexp() */
+#include <simulate.h>
+/* Needed for map() */
+#include <array.h>
+
 #define throw_error(X)	throw(({ (X), backtrace() }))
 
 class sql_result {
