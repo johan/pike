@@ -48,7 +48,7 @@ RCSID("$Id$");
 
 #ifdef __NT__
 #define JNI_CreateJavaVM createjavavm
-typedef jint JNICALL (*createjavavmtype)(JavaVM **, void **, void *);
+typedef jint (JNICALL *createjavavmtype)(JavaVM **, void **, void *);
 static createjavavmtype JNI_CreateJavaVM = NULL;
 static HINSTANCE jvmdll = NULL;
 #endif /* __NT___ */
