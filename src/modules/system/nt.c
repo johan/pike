@@ -2560,6 +2560,11 @@ void exit_nt_system_calls(void)
     free_program(token_program);
     token_program=0;
   }
+  if(sid_program)
+  {
+    free_program(sid_program);
+    sid_program=0;
+  }
   if(advapilib)
   {
     if(FreeLibrary(advapilib))
