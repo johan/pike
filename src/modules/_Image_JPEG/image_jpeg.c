@@ -476,7 +476,7 @@ static void image_jpeg_encode(INT32 args)
       if (parameter_int(sp+1-args,param_baseline,&p) || p!=-1)
       {
 	 if (q<0) q=0; else if (q>100) q=100;
-	 jpeg_set_quality(&cinfo,q,!!p);
+	 jpeg_set_quality(&cinfo, q, (boolean)(!!p));
       }
 
       if (parameter_int(sp+1-args,param_optimize,&p))

@@ -1597,7 +1597,7 @@ static char *low_match_types2(char *a,char *b, int flags)
 	  init_buf();
 	  for(e=0;e<indent;e++) my_strcat("  ");
 	  my_strcat("a_markers[");
-	  my_putchar(m+'0');
+	  my_putchar((char)(m+'0'));
 	  my_strcat("]=");
 	  low_describe_type(a_markers[m]->str);
 	  my_strcat("\n");
@@ -1681,7 +1681,7 @@ static char *low_match_types2(char *a,char *b, int flags)
 	  init_buf();
 	  for(e=0;e<indent;e++) my_strcat("  ");
 	  my_strcat("b_markers[");
-	  my_putchar(m+'0');
+	  my_putchar((char)(m+'0'));
 	  my_strcat("]=");
 	  low_describe_type(b_markers[m]->str);
 	  my_strcat("\n");
@@ -2111,7 +2111,7 @@ static int low_pike_types_le2(char *a, char *b,
 	init_buf();
 	for(e=0;e<indent;e++) my_strcat("  ");
 	my_strcat("a_markers[");
-	my_putchar(m+'0');
+	my_putchar((char)(m+'0'));
 	my_strcat("]=");
 	low_describe_type(a_markers[m]->str);
 	my_strcat("\n");
@@ -2186,7 +2186,7 @@ static int low_pike_types_le2(char *a, char *b,
 	init_buf();
 	for(e=0;e<indent;e++) my_strcat("  ");
 	my_strcat("b_markers[");
-	my_putchar(m+'0');
+	my_putchar((char)(m+'0'));
 	my_strcat("]=");
 	low_describe_type(b_markers[m]->str);
 	my_strcat("\n");

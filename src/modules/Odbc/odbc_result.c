@@ -150,7 +150,7 @@ static void odbc_fix_fields(void)
 				      DO_NOT_WARN((SQLSMALLINT)buf_size),
 				      &name_len,
 				      &sql_type, &precision, &scale, &nullable),
-		       0);
+		       (void(*)(void))0);
       if (name_len < (ptrdiff_t)buf_size) {
 	break;
       }

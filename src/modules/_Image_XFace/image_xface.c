@@ -355,7 +355,7 @@ static struct pike_string *encodeface(rgb_group *in)
   i = 0;
   while(mpz_cmp_ui(val, 0)) {
     n = mpz_fdiv_qr_ui(val, dum, val, 94);
-    low_my_putchar( n+'!', &buf );
+    low_my_putchar( (char)(n+'!'), &buf );
     i++;
   }
   if (i==0)
