@@ -763,7 +763,7 @@ node * make_node_from_mapping(struct mapping *m)
     struct array *ind, *val;
     node *n;
     ind=mapping_indices(m);
-    val=mapping_indices(m);
+    val=mapping_values(m);
     n=mkefuncallnode("mkmapping",
 		     mknode(F_ARG_LIST,
 			    make_node_from_array(ind),
