@@ -176,6 +176,11 @@ AC_DEFUN(AC_SYS_COMPILER_FLAG,
       # ***     The -O2 flag TRIGGERS KNOWN OPTIMIZER BUGS ON THIS PLATFORM
       # ***
       pike_cv_option_$2=no
+    elif grep -i 'not found' <conftezt.out.2 >/dev/null; then
+      # cc/AIX says the following regarding +O3:
+      #
+      # cc: 1501-228 input file +O3 not found
+      pike_cv_option_$2=no
     else :; fi
     rm conftezt.out.2
   ])
