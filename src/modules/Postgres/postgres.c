@@ -266,7 +266,7 @@ static void f_create (INT32 args)
 			    		Pike_sp[2-args].u.integer >= 0) {
 				if (Pike_sp[2-args].u.integer>0) {
 					port=xalloc(10*sizeof(char)); /*we only need 6, we just checked.*/
-					sprintf(port,"%d",Pike_sp[2-args].u.integer);
+					sprintf(port,"%"PRINTPIKEINT"d",Pike_sp[2-args].u.integer);
 				}
 			}
 		case 4:

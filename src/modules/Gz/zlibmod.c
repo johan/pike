@@ -28,6 +28,7 @@ RCSID("$Id$");
 #include "pike_types.h"
 #include "threads.h"
 #include "dynamic_buffer.h"
+#include "operators.h"
 
 #include <zlib.h>
 

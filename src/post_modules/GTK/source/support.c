@@ -70,7 +70,7 @@ void pgtk_index_stack( char *what )
 #endif
 }
 
-int get_color_from_pikecolor( struct object *o, int *r, int *g, int *b )
+int get_color_from_pikecolor( struct object *o, INT_TYPE *r, INT_TYPE *g, INT_TYPE *b )
 {
   struct color_struct *col;
   static struct program *pike_color_program;

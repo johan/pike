@@ -1161,7 +1161,7 @@ void debug_describe_svalue(struct svalue *s)
       break;
 
     case T_FLOAT:
-      fprintf(stderr,"    %f\n",s->u.float_number);
+      fprintf(stderr,"    %"PRINTPIKEFLOAT"f\n",s->u.float_number);
       break;
 
     case T_FUNCTION:

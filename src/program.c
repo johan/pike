@@ -4914,7 +4914,6 @@ int store_constant(struct svalue *foo,
 		   struct pike_string *constant_name)
 {
   struct program_constant tmp;
-  unsigned int e;
   JMP_BUF tmp2;
 
   if(SETJMP(tmp2))
@@ -4939,6 +4938,7 @@ int store_constant(struct svalue *foo,
     UNSETJMP(tmp2);
     return store_constant(&zero, equal, constant_name);
   }else{
+    unsigned int e;
     for(e=0;e<Pike_compiler->new_program->num_constants;e++)
     {
       JMP_BUF tmp1;

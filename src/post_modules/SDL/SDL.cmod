@@ -1854,7 +1854,7 @@ PIKECLASS Joystick {
   PIKEFUN void create(int device_index) {
     THIS->joystick = SDL_JoystickOpen(device_index);
     if(!THIS->joystick) {
-      Pike_error("Failed to open joystick %d: %s\n", device_index,
+      Pike_error("Failed to open joystick %"PRINTPIKEINT"d: %s\n", device_index,
 		 SDL_GetError());
     }
   }
@@ -2102,7 +2102,7 @@ PIKECLASS CD {
   PIKEFUN void create(int drive) {
     THIS->cd = SDL_CDOpen(drive);
     if(!THIS->cd) {
-      Pike_error("Failed to open CD %d: %s\n", drive, SDL_GetError());
+      Pike_error("Failed to open CD %"PRINTPIKEINT"d: %s\n", drive, SDL_GetError());
     }
   }
 

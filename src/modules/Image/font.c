@@ -319,7 +319,7 @@ void font_load(INT32 args)
    if (!args) 
    {
       THIS=(struct font *)xalloc(sizeof(struct font));
-      THIS->mem=image_default_font;
+      THIS->mem=(void *)image_default_font;
       size=IMAGE_DEFAULT_FONT_SIZE;
       goto loading_default;
    }

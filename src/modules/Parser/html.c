@@ -2438,7 +2438,7 @@ static newstate handle_result(struct parser_html_storage *this,
 	       pop_stack();
 	       return STATE_REPARSE;
 	 }
-	 Pike_error("Parser.HTML: illegal result from callback: %d, "
+	 Pike_error("Parser.HTML: illegal result from callback: %"PRINTPIKEINT"d, "
 		    "not 0 (skip) or 1 (reparse)\n",
 		    sp[-1].u.integer);
 

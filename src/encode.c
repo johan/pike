@@ -3274,7 +3274,8 @@ static void decode_value2(struct decode_data *data)
 		delayed_enc_val->u.program->flags != PROGRAM_VIRGIN) {
 	      decode_error (NULL, delayed_enc_val,
 			    "Didn't get program embryo "
-			    "for delay encoded program <%d>: ", entry_id.u.integer);
+			    "for delay encoded program <%"PRINTPIKEINT"d>: ",
+			    entry_id.u.integer);
 	    }
 	    /* No new ref here; low_start_new_program will add one for
 	     * Pike_compiler->new_program and we want ride on that one

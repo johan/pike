@@ -19,6 +19,10 @@
 
 #ifdef HAVE_MYSQL
 
+#ifdef HAVE_FCNTL_H
+#include <fcntl.h>
+#endif
+
 #include <stdio.h>
 
 typedef INT64 _ll_t;

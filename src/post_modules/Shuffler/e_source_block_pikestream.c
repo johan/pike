@@ -28,7 +28,7 @@ struct pf_source
   struct source s;
 
   struct object *obj;
-  size_t len, skip;
+  ptrdiff_t len, skip;
 };
 
 

@@ -357,9 +357,9 @@ static int parameter_qt(struct svalue *map,struct pike_string *what,
 	 if ((z=store_int_in_table(k->val.u.array,DCTSIZE2,table))!=
 	     DCTSIZE2)
 	    Pike_error("Image.JPEG.encode: illegal value of option quant_table;"
-		  " quant_table %d array is of illegal size (%d), "
-		  "expected %d integers\n",
-		  k->ind.u.integer,z,DCTSIZE2);
+		       " quant_table %"PRINTPIKEINT"d array is of illegal size (%d), "
+		       "expected %d integers\n",
+		       k->ind.u.integer,z,DCTSIZE2);
 
 	 jpeg_add_quant_table(cinfo,k->ind.u.integer,table,100,0);
       }
@@ -395,9 +395,9 @@ static int parameter_qt_d(struct svalue *map,struct pike_string *what,
 	 if ((z=store_int_in_table(k->val.u.array,DCTSIZE2,table))!=
 	     DCTSIZE2)
 	    Pike_error("Image.JPEG.encode: illegal value of option quant_table;"
-		  " quant_table %d array is of illegal size (%d), "
-		  "expected %d integers\n",
-		  k->ind.u.integer,z,DCTSIZE2);
+		       " quant_table %"PRINTPIKEINT"d array is of illegal size (%d), "
+		       "expected %d integers\n",
+		       k->ind.u.integer,z,DCTSIZE2);
 
 	 /* jpeg_add_quant_table(cinfo,k->ind.u.integer,table,100,0); */
 

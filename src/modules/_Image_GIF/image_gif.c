@@ -379,12 +379,12 @@ static void image_gif__gce_block(INT32 args)
 	   0x21, /* extension intruder */
 	   0xf9, /* gce extension */
 	   4, /* block size */
-	   (((sp[4-args].u.integer & 7)<<2) /* disposal */
-	    | ((!!sp[3-args].u.integer)<<1) /* user input */
-	    | (!!sp[-args].u.integer)), /* transparency */
-	   sp[2-args].u.integer & 255, /* delay, ls8 */
-	   (sp[2-args].u.integer>>8) & 255, /* delay, ms8 */
-	   sp[1-args].u.integer & 255, /* transparency index */
+	   ((((int) sp[4-args].u.integer & 7)<<2) /* disposal */
+	    | ((!!(int) sp[3-args].u.integer)<<1) /* user input */
+	    | (!!(int) sp[-args].u.integer)), /* transparency */
+	   (int) sp[2-args].u.integer & 255, /* delay, ls8 */
+	   ((int) sp[2-args].u.integer>>8) & 255, /* delay, ms8 */
+	   (int) sp[1-args].u.integer & 255, /* transparency index */
 	   0 /* end block */
 	   );
 	   
@@ -2368,7 +2368,7 @@ void image_gif__encode_extension(INT32 args)
        a->item[2].type!=T_STRING)
       Pike_error("Image.GIF._encode_extension: Illegal type in indices 1 or 2\n");
 
-   sprintf(buf,"%c%c",0x21,a->item[1].u.integer);
+   sprintf(buf,"%c%c",0x21,(int) a->item[1].u.integer);
    push_string(make_shared_binary_string(buf,2));
 
    n=1;

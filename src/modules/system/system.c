@@ -1044,7 +1044,8 @@ void f_dumpable(INT32 args)
     }
     if (prctl(PR_SET_DUMPABLE, val) == -1) {
       int err = errno;
-      Pike_error("Failed to set dumpable state to %d. errno:%d\n", val, err);
+      Pike_error("Failed to set dumpable state to %"PRINTPIKEINT"d. "
+		 "errno:%d\n", val, err);
     }
   }
   pop_n_elems(args);
@@ -2487,7 +2488,7 @@ void f_system_setitimer(INT32 args)
       switch (errno)
       {
 	 case EINVAL:
-	    Pike_error("setitimer: invalid timer %d\n",what);
+	    Pike_error("setitimer: invalid timer %"PRINTPIKEINT"d\n",what);
 	    break;
 	 default:
 	    Pike_error("setitimer: unknown error (errno=%d)\n",errno);
@@ -2523,7 +2524,7 @@ void f_system_getitimer(INT32 args)
       switch (errno)
       {
 	 case EINVAL:
-	    Pike_error("setitimer: invalid timer %d\n",what);
+	    Pike_error("setitimer: invalid timer %"PRINTPIKEINT"d\n",what);
 	    break;
 	 default:
 	    Pike_error("setitimer: unknown error (errno=%d)\n",errno);

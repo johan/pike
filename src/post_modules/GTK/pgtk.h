@@ -105,7 +105,7 @@ void pgtk_verify_not_inited();
 
 void push_Xpseudo32bitstring( void *f, int nelems );
 
-int get_color_from_pikecolor( struct object *o, int *r, int *g, int *b );
+int get_color_from_pikecolor( struct object *o, INT_TYPE *r, INT_TYPE *g, INT_TYPE *b );
 
 int pgtk_signal_func_wrapper(GtkObject *obj,struct signal_data *d,
                              int nparams, GtkArg *params);

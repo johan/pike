@@ -1597,8 +1597,9 @@ static void image_make_hsv_color(INT32 args)
 	 case 3: r = p;	 g = q;	 b = v;	 break;
 	 case 4: r = t;	 g = p;	 b = v;	 break;
 	 case 5: r = v;	 g = p;	 b = q;	 break;
-	 default: Pike_error("internal error (hue=%d <= hsv[%f,%f,%f])\n",
-			DOUBLE_TO_INT(i), h, s, v);
+	 default: Pike_error("internal error (hue=%d <= hsv[%"PRINTPIKEFLOAT"f,"
+			     "%"PRINTPIKEFLOAT"f,%"PRINTPIKEFLOAT"f])\n",
+			     DOUBLE_TO_INT(i), h, s, v);
       }
    }
 #undef i
