@@ -253,6 +253,8 @@ class String
 
 // FIXME: What is the DER-encoding of TRUE???
 // According to Jan Petrous, the LDAP spec says that 0xff is right.
+// No, every nonzero value is true according to the ASN1 spec,
+// but they use 0xff as example of a true value. /Nilsson
 
 //! boolean object
 class Boolean
@@ -1037,6 +1039,13 @@ class IA5String
   inherit String;
   constant tag = 22;
   constant type_name = "IA5STRING";
+}
+
+//!
+class VisibleString {
+  inherit String;
+  constant tag = 26;
+  constant type_name = "VisibleString";
 }
 
 //!
