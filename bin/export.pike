@@ -196,7 +196,7 @@ int main(int argc, array(string) argv)
 
   files=`+( ({ vpath+"/README.txt", vpath+"/ANNOUNCE",
 	       vpath+"/COPYING", vpath+"/COPYRIGHT",
-	       vpath+"/Makefile" }),
+	       vpath+"/Makefile", vpath+"/README-CVS.txt" }),
 	   get_files(vpath+"/src"),
 	   get_files(vpath+"/lib"),
 	   get_files(vpath+"/bin"),
