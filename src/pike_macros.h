@@ -20,7 +20,7 @@
 
 #define OFFSETOF(str_type, field) ((size_t)& (((struct str_type *)0)->field))
 #define BASEOF(ptr, str_type, field)  \
-((struct str_type *)((char*)ptr - (char*)& (((struct str_type *)0)->field)))
+((struct str_type *)((char*)ptr - (size_t)& (((struct str_type *)0)->field)))
 
 #define NELEM(a) (sizeof (a) / sizeof ((a)[0]))
 #define ALLOC_STRUCT(X) ( (struct X *)xalloc(sizeof(struct X)) )
