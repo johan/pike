@@ -2445,6 +2445,7 @@ static struct program * file_lock_key_program;
 struct file_lock_key_storage
 {
   struct my_file *f;
+  struct object *file;
 #ifdef _REENTRANT
   struct object *owner;
 #endif
