@@ -3723,6 +3723,12 @@ void f__locate_references(INT32 args)
     locate_references(sp[-args].u.refs);
   pop_n_elems(args-1);
 }
+
+void f__describe(INT32 args)
+{
+  debug_describe_svalue(sp-1);
+}
+
 #endif
 
 void f_map_array(INT32 args)
@@ -4043,6 +4049,7 @@ void init_builtin_efuns(void)
   
 /* function(1=mixed:1) */
   ADD_EFUN("_locate_references",f__locate_references,tFunc(tSetvar(1,tMix),tVar(1)),OPT_SIDE_EFFECT);
+  ADD_EFUN("_describe",f__describe,tFunc(tSetvar(1,tMix),tVar(1)),OPT_SIDE_EFFECT);
 #endif
 }
 
