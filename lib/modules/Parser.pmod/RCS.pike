@@ -382,10 +382,10 @@ class DeltatextIterator
 		   revisions && sizeof(revisions), (this_no ? ", now at "+this_rev : ""));
   }
 
-  //! drops the leading whitespace before next revision's deltatext
+  //! Drops the leading whitespace before next revision's deltatext
   //! entry and sets this_rev to the revision number we're about to read.
-  //! @note
-  //! this method requires that @[raw] starts with a valid deltatext entry
+  //  @note
+  //  this method requires that @[raw] starts with a valid deltatext entry
   static int(0..1) read_next()
   {
     raw = parse_deltatext_section(raw);
