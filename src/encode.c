@@ -2019,6 +2019,8 @@ static void decode_value2(struct decode_data *data)
 	  break;
 
         case 3:
+	  tmp=data->counter;
+	  data->counter.u.integer++;
 	  decode_value2(data);
 	  if ((Pike_sp[-1].type == T_INT) &&
 	      (Pike_sp[-1].u.integer < PROG_DYNAMIC_ID_START) &&
