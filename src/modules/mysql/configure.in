@@ -18,6 +18,7 @@
 
 
 AC_INIT(mysql.c)
+AC_CONFIG_HEADER(config.h)
 
 AC_PROG_CC
 AC_PROG_RANLIB
