@@ -2177,19 +2177,8 @@ PMOD_EXPORT void f_exit(INT32 args)
   in_exit=1;
 
   if(args>1 && Pike_sp[1-args].type==T_STRING) {
-    struct svalue *_sp_ = Pike_sp;
-    int i=1;
-    push_svalue(simple_mapping_string_lookup(get_builtin_constants(),
-					     "werror"));
-
-    /* Push top of stack below all werror args. */
-    for(; i<args; i++) {
-      struct svalue _=_sp_[-(i)];
-      _sp_[-(i)]=_sp_[-(i+1)];
-      _sp_[-(i+1)]=_;
-    }
-
-    f_call_function(args);
+    apply_svalue(simple_mapping_string_lookup(get_builtin_constants(),
+					      "werror"), args-1);
     pop_stack();
     args=1;
   }
