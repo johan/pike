@@ -4704,7 +4704,7 @@ else :; fi
 #############################################################################
 
 if test "$with_machine_code" = "yes" ; then
-  AC_DEFINE_UNQUOTED(PIKE_BYTECODE_METHOD, PIKE_BYTECODE_`echo $pike_cv_machine_code_arch | tr '[a-z]' '[A-Z]'`)
+  AC_DEFINE_UNQUOTED(PIKE_BYTECODE_METHOD, [[PIKE_BYTECODE_`echo $pike_cv_machine_code_arch | tr '[a-z]' '[A-Z]'`]])
   byte_code_format=$pike_cv_machine_code_arch
 elif test "x$pike_cv_gcc_computed_goto" = "xyes"; then
   AC_DEFINE(PIKE_BYTECODE_METHOD, PIKE_BYTECODE_GOTO)
