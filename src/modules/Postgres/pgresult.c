@@ -66,7 +66,7 @@
 RCSID("$Id$");
 
 #ifdef _REENTRANT
-MUTEX_T pike_postgres_result_mutex;
+MUTEX_T pike_postgres_result_mutex STATIC_MUTEX_INIT;
 #define PQ_LOCK() mt_lock(&pike_postgres_mutex)
 #define PQ_UNLOCK() mt_unlock(&pike_postgres_mutex)
 #else

@@ -656,4 +656,19 @@ extern int thread_storage_offset;
 #define MUTEX_T PIKE_MUTEX_T
 #endif
 
+
+/* Initializer macros for static mutex and condition variables */
+#ifdef PTHREAD_MUTEX_INITIALIZER
+#define STATIC_MUTEX_INIT  = PTHREAD_MUTEX_INITIALIZER
+#else
+#define STATIC_MUTEX_INIT
+#endif
+#ifdef PTHREAD_COND_INITIALIZER
+#define STATIC_COND_INIT   = PTHREAD_COND_INITIALIZER
+#else
+#define STATIC_COND_INIT
+#endif
+
+
+
 #endif /* THREADS_H */

@@ -1359,7 +1359,7 @@ static struct farmer {
   COND_T harvest_moon;
 } *farmers;
 
-static MUTEX_T rosie;
+static MUTEX_T rosie STATIC_MUTEX_INIT;
 
 static TH_RETURN_TYPE farm(void *_a)
 {

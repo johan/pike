@@ -22,7 +22,7 @@ RCSID("$Id$");
 #include <gdbm.h>
 
 #ifdef _REENTRANT
-static MUTEX_T gdbm_lock;
+static MUTEX_T gdbm_lock STATIC_MUTEX_INIT;
 #endif  
 
 struct gdbm_glue

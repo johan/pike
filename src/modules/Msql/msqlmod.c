@@ -39,7 +39,7 @@ RCSID("$Id$");
 #include "version.h"
 
 #ifdef _REENTRANT
-MUTEX_T pike_msql_mutex;
+MUTEX_T pike_msql_mutex STATIC_MUTEX_INIT;
 #define MSQL_LOCK() mt_lock(&pike_msql_mutex)
 #define MSQL_UNLOCK() mt_unlock(&pike_msql_mutex)
 #else

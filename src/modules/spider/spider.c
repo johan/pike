@@ -1146,7 +1146,7 @@ struct thread_args
   char buffer[BUFFER];
 };
 
-MUTEX_T done_lock;
+MUTEX_T done_lock STATIC_MUTEX_INIT;
 struct thread_args *done;
 
 /* WARNING! This function is running _without_ any stack etc. */
