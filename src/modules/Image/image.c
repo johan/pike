@@ -1716,8 +1716,6 @@ static void image_to8bit_fs(INT32 args)
       error("illegal argument to image->map_fs()\n");
 
 
-fprintf(stderr,"c\n");
-     
    res=(int*)xalloc(sizeof(int)*THIS->xsize);
    errb=(rgbl_group*)xalloc(sizeof(rgbl_group)*THIS->xsize);
       
