@@ -6,6 +6,8 @@
  *
  */
 
+#if constant(Postgres.postgres)
+
 #define ERROR(X) throw (({X,backtrace()}))
 
 inherit Postgres.postgres: mo;
@@ -122,3 +124,9 @@ mapping(string:array(mixed)) list_fields (string table, void|string wild) {
 	}
 	return ret;
 }
+#else /* !constant(Postgres.postgres) */
+void create()
+{
+  destruct();
+}
+#endif /* constant(Postgres.postgres) */
