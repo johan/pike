@@ -440,6 +440,9 @@ struct thread_state *thread_state_for_id(THREAD_T tid);
 struct object *thread_for_id(THREAD_T tid);
 void f_all_threads(INT32 args);
 
+void init_threads_disable(struct object *o);
+void exit_threads_disable(struct object *o);
+
 /* Prototypes end here */
 
 #else
@@ -461,6 +464,10 @@ void f_all_threads(INT32 args);
 #define th_self() ((void*)0)
 #define co_signal(X)
 #define co_broadcast(X)
+
+#define init_threads_disable(X)
+#define exit_threads_disable(X)
+
 #endif /* _REENTRANT */
 
 #ifdef __NT__
