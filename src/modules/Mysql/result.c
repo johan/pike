@@ -32,7 +32,9 @@
 #ifdef HAVE_MYSQL_MYSQL_H
 #include <mysql/mysql.h>
 #else
+#ifndef DISABLE_BINARY
 #error Need mysql.h header-file
+#endif
 #endif /* HAVE_MYSQL_MYSQL_H */
 #endif /* HAVE_MYSQL_H */
 #ifndef _mysql_h

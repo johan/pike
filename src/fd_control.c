@@ -98,7 +98,9 @@ PMOD_EXPORT int set_nonblocking(int fd,int which)
     ret=fcntl(fd, F_SETFL, which?FNDELAY:0);
 #else
 
+#ifndef DISABLE_BINARY
 #error Do not know how to set your filedescriptors nonblocking.
+#endif
 
 #endif
 #endif
