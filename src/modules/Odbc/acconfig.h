@@ -11,6 +11,12 @@
 
 @TOP@
 
+/* Define if you have SQLINTEGER */
+#undef HAVE_SQLINTEGER
+
+/* Define if you have SQLUINTEGER */
+#undef HAVE_SQLUINTEGER
+
 /* Define if you have SQLLEN */
 #undef HAVE_SQLLEN
 
