@@ -1585,6 +1585,8 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 	      continue;
 	    }
 #endif /* PIKE_PORTABLE_BYTECODE */
+
+	    EDB(4, fprintf(stderr, "Encoding constant #%d.\n", d));
 	    /* value */
 	    encode_value2(&p->constants[d].sval, data, 0);
 
@@ -4077,6 +4079,9 @@ static void decode_value2(struct decode_data *data)
 	      /* Already initialized. */
 	      continue;
 	    }
+
+	    EDB(4, fprintf(stderr, "Decoding constant #%d.\n", e));
+
 	    /* value */
 	    decode_value2(data);
 	    /* name */
