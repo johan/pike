@@ -246,6 +246,7 @@ void get_all_args(char *fname, INT32 args, char *format,  ... )
     case 'W': expected_type = "string"; break;
     case 'a': expected_type = "array"; break;
     case 'f': expected_type = "float"; break;
+    case 'F': expected_type = "float|int"; break;
     case 'm': expected_type = "mapping"; break;
     case 'M': expected_type = "multiset"; break;
     case 'o': expected_type = "object"; break;
