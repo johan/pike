@@ -91,7 +91,9 @@ void exit_lex(void)
 
 struct keyword instr_names[]=
 {
+#ifndef PIKE_PRECOMPILER
 #include "interpret_protos.h"
+#endif /* !PIKE_PRECOMPILER */
 { "!=",			F_NE,0 },	
 { "%=",			F_MOD_EQ,0 },	
 { "&=",			F_AND_EQ,0 },	
