@@ -1671,13 +1671,8 @@ void exit_image_png(void)
      free_program(gz_deflate);
 }
 
-struct object *init_image_png(void)
+void init_image_png(void)
 {
-   struct program *p;
-   struct object *o;
-
-   start_new_program();
-
    push_text("Gz");
    push_int(0);
    SAFE_APPLY_MASTER("resolv",2);
@@ -1709,7 +1704,6 @@ struct object *init_image_png(void)
    }
    pop_stack();
 
-
    if (gz_deflate && gz_inflate && gz_crc32.type!=T_INT)
    {
       add_function("_chunk",image_png__chunk,
@@ -1740,9 +1734,4 @@ struct object *init_image_png(void)
    param_bpp=make_shared_string("bpp");
    param_type=make_shared_string("type");
    param_background=make_shared_string("background");
-   
-   o = clone_object((p = end_program()),0);
-   free_program(p);
-
-   return o;
 }

@@ -990,12 +990,8 @@ void img_bmp_decode(INT32 args)
    f_index(2);
 }
 
-struct program *image_bmp_module_program=NULL;
-
 void init_image_bmp(void)
 {
-   start_new_program();
-   
    add_function("encode",img_bmp_encode,
 		"function(object,void|object|int|mapping:string)",0);
    add_function("_decode",img_bmp__decode,
@@ -1004,22 +1000,8 @@ void init_image_bmp(void)
 		"function(string,void|mapping:object)",0);
    add_function("decode_header",img_bmp_decode_header,
 		"function(string,void|mapping:mapping)",0);
-
-   image_bmp_module_program=end_program();
-   push_object(clone_object(image_bmp_module_program,0));
-   {
-     struct pike_string *s=make_shared_string("BMP");
-     add_constant(s,sp-1,0);
-     free_string(s);
-   }
-   pop_stack();
 }
 
 void exit_image_bmp(void)
 {
-  if(image_bmp_module_program)
-  {
-    free_program(image_bmp_module_program);
-    image_bmp_module_program=0;
-  }
 }

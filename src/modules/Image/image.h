@@ -78,6 +78,7 @@ struct color_struct
 };
 
 #define tColor tOr3(tArr(tInt),tString,tObj)
+#define tLayerMap tMap(tString,tOr4(tString,tColor,tFloat,tInt))
 
 /* COMPAT: encoding of a gif - from togif */
 

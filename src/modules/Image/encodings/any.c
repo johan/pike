@@ -174,27 +174,12 @@ void image_any_decode_alpha(INT32 args)
 
 void init_image_any(void)
 {
-   struct program *p;
-
-   start_new_program();
-   
    add_function("_decode",image_any__decode,
 		"function(string:mapping)",0);
    add_function("decode",image_any_decode,
 		"function(string:mapping)",0);
    add_function("decode_alpha",image_any_decode_alpha,
 		"function(string:mapping)",0);
-   /** done **/
-
-   p=end_program();
-   push_object(clone_object(p,0));
-   {
-     struct pike_string *s=make_shared_string("ANY");
-     add_constant(s,sp-1,0);
-     free_string(s);
-   }
-   free_program(p);
-   pop_stack();
 }
 
 void exit_image_any(void)

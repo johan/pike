@@ -545,9 +545,3 @@ void image_random(INT32 args)
 
    push_object(o);
 }
-
-
-void image_noise_init(void)
-{
-
-}
