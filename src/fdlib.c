@@ -219,6 +219,8 @@ int fd_pipe(int fds[2])
     return -1;
   }
   
+  FDDEBUG(fprintf(stderr,"ReadHANDLE=%d WriteHANDLE=%d\n",files[0],files[1]));
+  
   SetHandleInformation(files[0],HANDLE_FLAG_INHERIT|HANDLE_FLAG_PROTECT_FROM_CLOSE,0);
   SetHandleInformation(files[1],HANDLE_FLAG_INHERIT|HANDLE_FLAG_PROTECT_FROM_CLOSE,0);
   mt_lock(&fd_mutex);
@@ -659,6 +661,10 @@ FD fd_dup(FD from)
 {
   FD fd;
   HANDLE x,p=GetCurrentProcess();
+#ifdef DEBUG
+  if(fd_type[from]>=FD_NO_MORE_FREE)
+    fatal("fd_dup() on file which is not open!\n");
+#endif
   if(!DuplicateHandle(p,(HANDLE)da_handle[from],p,&x,NULL,0,DUPLICATE_SAME_ACCESS))
   {
     errno=GetLastError();
