@@ -13,7 +13,8 @@ if test x$with_ffmpeg = xyes ; then
   PIKE_FEATURE_NODEP(FFmpeg)
   AC_CHECK_HEADERS(avcodec.h)
   AC_CHECK_HEADERS(libffmpeg/avcodec.h)
-  AC_CHECK_LIB( ffmpeg, avcodec_init, PIKE_FEATURE_OK(FFmpeg) )
+  AC_CHECK_LIB( ffmpeg, avcodec_init )
+  PIKE_FEATURE(FFmpeg)
 fi
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
