@@ -1133,7 +1133,7 @@ INT32 set_lookup(struct array *a, struct svalue *s)
 #endif
 
   /* objects may have `< `> operators, evil stuff! */
-  if(s->type != T_OBJECT && !(a->flags & BIT_OBJECT))
+  if(s->type != T_OBJECT && !(a->type_field & BIT_OBJECT))
   {
     /* face it, it's not there */
     if( (((2 << s->type) -1) & a->type_field) == 0)
@@ -1154,7 +1154,7 @@ INT32 switch_lookup(struct array *a, struct svalue *s)
   if(d_flag > 1)  array_check_type_field(a);
 #endif
   /* objects may have `< `> operators, evil stuff! */
-  if(s->type != T_OBJECT && !(a->flags & BIT_OBJECT))
+  if(s->type != T_OBJECT && !(a->type_field & BIT_OBJECT))
   {
     if( (((2 << s->type) -1) & a->type_field) == 0)
       return -1;
@@ -1321,7 +1321,8 @@ INT32 * merge(struct array *a,struct array *b,INT32 opcode)
     array_check_type_field(b);
   }
 #endif
-  if(!(a->type_field & b->type_field))
+  if(!(a->type_field & b->type_field) &&
+     !((a->type_field | b->type_field) & BIT_OBJECT))
   {
     /* do smart optimizations */
     switch(opcode)
@@ -1747,7 +1748,8 @@ PMOD_EXPORT struct array *subtract_arrays(struct array *a, struct array *b)
 #endif
   check_array_for_destruct(a);
 
-  if(a->type_field & b->type_field)
+  if((a->type_field & b->type_field) ||
+     ((a->type_field | b->type_field) & BIT_OBJECT))
   {
     return merge_array_with_order(a, b, PIKE_ARRAY_OP_SUB);
   }else{
@@ -1771,7 +1773,8 @@ PMOD_EXPORT struct array *and_arrays(struct array *a, struct array *b)
 #endif
   check_array_for_destruct(a);
 
-  if(a->type_field & b->type_field)
+  if((a->type_field & b->type_field) ||
+     ((a->type_field | b->type_field) & BIT_OBJECT))
   {
     return merge_array_with_order(a, b, PIKE_ARRAY_OP_AND_LEFT);
   }else{
