@@ -270,7 +270,8 @@ class OutputController
     if(active_attributes && !term->tgetflag("ms"))
       low_disable_attributes();
     if(xpos+n<columns) {
-      outfd->write(term->put("RI", n) || (term->put("ri")||"")*n);
+      outfd->write(term->put("RI", n) ||
+		   (term->put("nd")||term->put("ri")||"")*n);
       xpos += n;
     } else {
       int l = (xpos+n)/columns;
