@@ -268,7 +268,7 @@ int parse_esc_seq (WCHAR *buf, int *chr, ptrdiff_t *len)
     case 'u':
     case 'U': {
       /* FIXME: Do we need compat goo to turn this off? */
-      int of = 0, stop, quoted = 0, longq;
+      int stop, quoted = 0, longq;
       l = 1;
       if (c == 'u') {
 	while (buf[l] == 'u') quoted = 1, l++;
@@ -1061,9 +1061,9 @@ static int low_yylex(YYSTYPE *yylval)
     default:
       {
 	if (c > 31) {
-	  my_yyerror("Illegal character (hex %02x) '%c'", c, c);
+	  my_yyerror("Illegal character '%c' (0x%x)", c, c);
 	} else {
-	  my_yyerror("Illegal character (hex %02x)", c);
+	  my_yyerror("Illegal character 0x%x", c);
 	}
 	return ' ';
       }
