@@ -25,7 +25,7 @@ struct nct_flat_entry /* flat colorentry */
 {
    rgb_group color;
    nct_weight_t weight;
-   signed long no;
+   ptrdiff_t no;
 };
 
 struct nct_scale
