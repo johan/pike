@@ -9,7 +9,7 @@
 #include "des.h"
 
 #include "RCSID.h"
-RCSID(desQuick_cRcs, "$Id$");
+RCSID2(desQuick_cRcs, "$Id$");
 
 extern unsigned INT32 des_keymap[];
 

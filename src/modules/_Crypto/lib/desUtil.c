@@ -7,7 +7,7 @@
 #include	"desCode.h"
 
 #include "RCSID.h"
-RCSID(desUtil_cRcs, "$Id$");
+RCSID2(desUtil_cRcs, "$Id$");
 
 /* various tables */
 
@@ -22,7 +22,7 @@ static char parity[] = {
 #include	"parity.h"
 };
 
-RCSID(ego, "\n\nFast DES Library Copyright (c) 1991 Dana L. How\n\n");
+RCSID2(ego, "\n\nFast DES Library Copyright (c) 1991 Dana L. How\n\n");
 
 
 /* set up the method list from the key */

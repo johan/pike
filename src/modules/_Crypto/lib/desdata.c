@@ -11,7 +11,7 @@
 #include	"desCode.h"
 
 #include "RCSID.h"
-RCSID(desdata_cRcs, "$Id$");
+RCSID2(desdata_cRcs, "$Id$");
 
 /* list of weak and semi-weak keys
 

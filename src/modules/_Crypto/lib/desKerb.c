@@ -7,7 +7,7 @@
 #include "des.h"
 
 #include "RCSID.h"
-RCSID(desKerb_cRcs, "$Id$");
+RCSID2(desKerb_cRcs, "$Id$");
 
 /* permit the default style of des functions to be changed */
 

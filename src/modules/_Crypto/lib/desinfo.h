@@ -8,7 +8,7 @@
  */
 
 #include "RCSID.h"
-RCSID(desinfo_hRcs, "$Id$");
+RCSID2(desinfo_hRcs, "$Id$");
 
 /* the initial permutation, E selection, and final permutation are hardwired */
 
