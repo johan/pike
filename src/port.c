@@ -14,17 +14,14 @@
 #define PORT_DO_WARN
 
 #include "global.h"
-#include "pike_macros.h"
 #include "time_stuff.h"
-#include "pike_error.h"
-#include "fdlib.h"
-#include "fd_control.h"
 
-#include <ctype.h>
-#include <math.h>
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif
+
+#include <ctype.h>
+#include <math.h>
 #include <errno.h>
 #include <float.h>
 #include <string.h>
