@@ -4324,6 +4324,36 @@ foo:
 ]], ({3, 1}));
 test_any_equal([[
   int a, b;
+foo: {
+    for (int i = 1; i <= 4; i++) {
+      a = i;
+      switch (1) {
+	case 1:
+	  if (i >= 3) break foo;
+      }
+      b = i;
+    }
+  }
+  return ({a, b});
+]], ({3, 2}));
+test_any_equal([[
+  array res = ({});
+  foreach (({1, 2, 3}), int x) {
+    res += ({-x});
+  foo:
+    foreach (({1, 2, 3, 4}), int i) {
+      res += ({i});
+      foreach (({1, 2}), int y) {
+	if (i >= 3) break foo;
+	if (i >= 2) continue foo;
+      }
+      res += ({i});
+    }
+  }
+  return res;
+]], ({-1, 1, 1, 2, 3, -2, 1, 1, 2, 3, -3, 1, 1, 2, 3}));
+test_any_equal([[
+  int a, b;
 foo:
   for (int i = 1; i <= 4; i++) {
     a = i;
