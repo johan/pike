@@ -261,9 +261,11 @@ void resolv_program(node *n);
 
 #define COPY_LINE_NUMBER_INFO(TO, FROM) do {				\
     node *to_ = (TO), *from_ = (FROM);					\
-    to_->line_number = from_->line_number;				\
-    free_string (to_->current_file);					\
-    copy_shared_string (to_->current_file, from_->current_file);	\
+    if (from_) {							\
+      to_->line_number = from_->line_number;				\
+      free_string (to_->current_file);					\
+      copy_shared_string (to_->current_file, from_->current_file);	\
+    }									\
   } while (0)
 
 
