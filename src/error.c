@@ -410,10 +410,24 @@ PMOD_EXPORT DECLSPEC(noreturn) void debug_fatal(const char *fmt, ...) ATTRIBUTE(
   if(Pike_sp && Pike_interpreter.evaluator_stack &&
      master_object && master_object->prog)
   {
-    push_error("Backtrace at time of fatal:\n");
-    APPLY_MASTER("describe_backtrace",1);
-    if(Pike_sp[-1].type==PIKE_T_STRING)
-      write_to_stderr(Pike_sp[-1].u.string->str, Pike_sp[-1].u.string->len);
+    JMP_BUF jmp;
+    struct callback_list saved_eval_cbs = evaluator_callbacks;
+    /* Don't want thread switches or any other evaluator stuff while
+     * we let the master describe the backtrace below. */
+    low_init_threads_disable();
+    MEMSET (&evaluator_callbacks, 0, sizeof (evaluator_callbacks));
+    if (SETJMP (jmp))
+      fprintf(stderr,"Got exception when trying to describe backtrace.\n");
+    else {
+      jmp.severity = THROW_EXIT; /* Don't want normal exit code to run here. */
+      push_error("Backtrace at time of fatal:\n");
+      APPLY_MASTER("describe_backtrace",1);
+      if(Pike_sp[-1].type==PIKE_T_STRING)
+	write_to_stderr(Pike_sp[-1].u.string->str, Pike_sp[-1].u.string->len);
+    }
+    UNSETJMP (jmp);
+    exit_threads_disable (NULL);
+    evaluator_callbacks = saved_eval_cbs;
   }else{
     fprintf(stderr,"No stack - no backtrace.\n");
   }
