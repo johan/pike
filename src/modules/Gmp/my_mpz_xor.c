@@ -62,4 +62,4 @@ void my_mpz_xor (mpz_ptr res, mpz_srcptr a, mpz_srcptr b)
 
 #endif	/* defined(USE_GMP) || defined(USE_GMP2) */
 
-#endif	/* HAVE_MPZ_XOR */
+#endif	/* !HAVE_MPZ_XOR */
