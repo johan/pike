@@ -1039,7 +1039,6 @@ void low_exit_main(void)
 	  while (x->refs > m->refs + is_static)				\
 	    PIKE_CONCAT(free_, TYPE) (x);				\
 	}								\
-      PIKE_CONCAT (zap_next_, TYPE):;					\
       }									\
     } while (0)
 
