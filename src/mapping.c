@@ -1937,8 +1937,7 @@ void gc_free_all_unreferenced_mappings(void)
 	debug_malloc_touch(m);
 	rehash(m, MAP_SLOTS(md->size));
       }
-      next=m->next;
-      free_mapping(m);
+      SET_NEXT_AND_FREE(m, free_mapping);
     }
     else
     {

@@ -3480,14 +3480,7 @@ void gc_free_all_unreferenced_programs(void)
 
       /* FIXME: Is there anything else that needs to be freed here? */
 
-      while((next=p->next) && p->refs == 1)
-      {
-	add_ref(next);
-	free_program(p);
-	p=next;
-      }
-
-      free_program(p);
+      SET_NEXT_AND_FREE(p, free_program);
     }else{
       next=p->next;
     }

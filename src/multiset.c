@@ -317,9 +317,8 @@ void gc_free_all_unreferenced_multisets(void)
       add_ref(l);
       free_svalues(ITEM(l->ind), l->ind->size, l->ind->type_field);
       l->ind->size=0;
-      next=l->next;
 
-      free_multiset(l);
+      SET_NEXT_AND_FREE(l, free_multiset);
     }else{
       next=l->next;
     }

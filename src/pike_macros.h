@@ -62,4 +62,14 @@
 #define DO_ALIGN(X,Y) (((long)(X)+((Y)-1)) & -(Y))
 #define CONSTANT_STRLEN(X) (sizeof(X) - sizeof(""))
 
+#define SET_NEXT_AND_FREE(p,free_program) do{	\
+      while((next=p->next) && p->refs == 1)	\
+      {						\
+	add_ref(next);				\
+	free_program(p);			\
+	p=next;					\
+      }						\
+      free_program(p);                          \
+    }while(0)
+
 #endif

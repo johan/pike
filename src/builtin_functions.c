@@ -612,6 +612,10 @@ void f_backtrace(INT32 args)
       assign_svalues_no_free(ITEM(i)+3, f->locals, args, BIT_MIXED);
       if(f->current_object->prog)
       {
+#ifdef PIKE_DEBUG
+	if(f->fun == FUNCTION_BUILTIN)
+	  fatal("Builtin function in an object?? (backtrace is confused)\n");
+#endif
 	ITEM(i)[2].type=T_FUNCTION;
 	ITEM(i)[2].subtype=f->fun;
 	ITEM(i)[2].u.object=f->current_object;
