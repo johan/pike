@@ -57,7 +57,7 @@ struct pike_frame
   long x_= ((char *)&x_) + STACK_DIRECTION * (X) - stack_top ;	\
   x_*=STACK_DIRECTION;							\
   if(x_>0)								\
-    error("C stack overflow.\n");					\
+    low_error("C stack overflow.\n");					\
   }while(0)
 
 
