@@ -256,7 +256,8 @@ static void *dlopen(const char *module_name, int how)
   }
   /* FIXME: image should be freed somewhere! */
   return NSLinkModule(image, module_name,
-		      how | NSLINKMODULE_OPTION_RETURN_ON_ERROR);
+		      how | NSLINKMODULE_OPTION_RETURN_ON_ERROR |
+		      NSLINKMODULE_OPTION_PRIVATE);
 }
 
 static char *dlerror(void)
