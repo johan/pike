@@ -206,9 +206,7 @@ static char *raw_lfun_types[] = {
   tFuncV(tNone,tVoid,tObj),	/* "_get_iterator", */
 };
 
-/*! @module lfun::
- *!
- *! @endmodule
+/*! @namespace lfun::
  */
 
 /*! @decl void lfun::__INIT()
@@ -750,6 +748,9 @@ static char *raw_lfun_types[] = {
  *!
  *! @seealso
  *!   @[Iterator], @[foreach()]
+ */
+
+/*! @endnamespace
  */
 
 /*! @class MasterObject

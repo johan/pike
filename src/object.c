@@ -1747,9 +1747,7 @@ void push_magic_index(struct program *type, int inherit_no, int parent_level)
   push_object(magic);
 }
 
-/*! @module ::
- *!
- *! @endmodule
+/*! @namespace ::
  */
 
 /* The type argument to the magic index functions is intentionally
@@ -2050,6 +2048,9 @@ static void f_magic_values (INT32 args)
     low_object_index_no_free (ITEM(res) + e, obj,
 			      prog->identifier_index[e] + inherit->identifier_level);
 }
+
+/*! @endnamespace
+ */
 
 void init_object(void)
 {
