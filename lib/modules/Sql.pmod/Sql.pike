@@ -104,6 +104,17 @@ function(int:string) encode_datetime;
 
 function(string:int) decode_datetime;
 
+static program find_dbm(string program_name) {
+  program p;
+  // we look in Sql.type and Sql.Provider.type.type for a valid sql class.
+  p = Sql[program_name];
+  if(!p) {
+    if(Sql->Provider && Sql->Provider[program_name])
+      p = Sql->Provider[program_name][program_name];
+  }
+  return p;
+}
+
 //! @decl void create(string host)
 //! @decl void create(string host, string db)
 //! @decl void create(string host, mapping(string:int|string) options)
@@ -247,16 +258,8 @@ void create(string|object host, void|string|mapping(string:int|string) db,
 
 
     program p;
-    mixed e;
 
-    // we look in Sql.type and Sql.Provider.type.type for a valid sql class.
-    if(Sql[program_name])
-      p = Sql[program_name];
-    else if(Sql->Provider && Sql->Provider[program_name] &&
-	    Sql->Provider[program_name][program_name])
-      p = Sql->Provider[program_name][program_name];
-
-    if (p) {
+    if (p = find_dbm(program_name)) {
       if (options) {
 	master_sql = p(host||"", db||"", user||"", password||"", options);
       } else if (password) {
