@@ -42,16 +42,15 @@ extern double gc_average_slowness;
 
 /* The above are used to calculate the threshold on the number of
  * allocations since the last gc round before another is scheduled.
- * Put a cap on that threshold to avoid very small and large
- * intervals. */
+ * Put a cap on that threshold to avoid very small intervals. */
 #define GC_MIN_ALLOC_THRESHOLD 1000
-#define GC_MAX_ALLOC_THRESHOLD 2000000000
+
+#define GC_MAX_ALLOC_THRESHOLD MAX_ULONGEST
 
 /* #define GC_MARK_DEBUG */
 
 extern INT32 num_objects;
-extern INT32 num_allocs;
-extern ptrdiff_t alloc_threshold;
+extern unsigned LONGEST num_allocs, alloc_threshold;
 PMOD_EXPORT extern int Pike_in_gc;
 extern int gc_generation;
 extern int gc_trace, gc_debug;
