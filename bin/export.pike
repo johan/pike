@@ -61,6 +61,15 @@ int main(int argc, string *argv)
   string *files;
   vpath=replace(version()," ","-");
 
+  mapping x=localtime(time());
+  string tag=replace(vpath,({"Pike-","."}),({"","_"}))+"-"+
+       sprintf("%02d%02d%02d-%02d%02d",
+		   x->year,
+		   x->mon+1,
+		   x->mday,
+		   x->hour,
+		   x->min);
+
   tmp=reverse(argv[0]/"/");
   except_modules=mklist(argv[1..]);
   e=search(tmp,"pike");
@@ -73,6 +82,9 @@ int main(int argc, string *argv)
   tmp=reverse(tmp[e+1..]);
   cd(tmp*"/");
   perror("Sourcedir = "+tmp*"/"+"/pike\n");
+  
+  perror("Creating tag "+tag+" in the background.\n");
+  system("cd pike ; cvs tag -R -F "+tag+"&");
 
   fix_configure("pike/src");
 
