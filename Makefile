@@ -74,8 +74,8 @@ configure: src/configure builddir
 compile: configure
 	@builddir="$(BUILDDIR)"; \
 	metatarget="$(METATARGET)"; \
-	test -f "$$builddir"/pike || metatarget="new_peep_engine pike $$metatarget"; \
-	cd "$$builddir" && for target in all $$metatarget; do \
+	test -x "$$builddir"/pike || metatarget="all $$metatarget"; \
+	cd "$$builddir" && for target in $$metatarget; do \
 	  echo Making $$target in "$$builddir"; \
 	  rm -f remake; \
 	  $(MAKE) "MAKE=$(MAKE)" "MAKE_PARALLEL=$(MAKE_PARALLEL)" $$target || { \
