@@ -7602,9 +7602,9 @@ static int low_is_compatible(struct program *a, struct program *b)
     }
 
     /* Note: Use weaker check for constant integers. */
-    if((ID_FROM_INT(a, i)->run_time_type != bid->run_time_type) ||
-       ((bid->run_time_type != PIKE_T_INT) &&
-	!match_types(ID_FROM_INT(a,i)->type, bid->type))) {
+    if(((bid->run_time_type != PIKE_T_INT) ||
+	(ID_FROM_INT(a, i)->run_time_type != PIKE_T_INT)) &&
+       !match_types(ID_FROM_INT(a,i)->type, bid->type)) {
 #if 0
       fprintf(stderr, "Identifier \"%s\" is incompatible.\n",
 	      bid->name->str);
@@ -7709,15 +7709,16 @@ int yyexplain_not_compatible(struct program *a, struct program *b, int flags)
     }
 
     /* Note: Use weaker check for constant integers. */
-    if((ID_FROM_INT(a, i)->run_time_type != bid->run_time_type) ||
-       ((bid->run_time_type != PIKE_T_INT) &&
-	!match_types(ID_FROM_INT(a,i)->type, bid->type))) {
+    if(((bid->run_time_type != PIKE_T_INT) ||
+	(ID_FROM_INT(a, i)->run_time_type != PIKE_T_INT)) &&
+       !match_types(ID_FROM_INT(a,i)->type, bid->type)) {
       if (flags & YYTE_IS_WARNING)
 	yywarning("Identifier \"%s\" is incompatible.",
 		  bid->name->str);
       else
 	my_yyerror("Identifier \"%s\" is incompatible.",
 		   bid->name->str);
+      yytype_error(NULL, ID_FROM_INT(a,i)->type, bid->type, flags);
       res = 0;
     }
   }
