@@ -4519,7 +4519,7 @@ PMOD_EXPORT void f_mktime (INT32 args)
     date.tm_isdst = -1;
   }
 
-  date.tm_zone = NULL;
+  /* date.tm_zone = NULL; */
 
 #ifdef HAVE_GMTIME
   if((args > 7) && (Pike_sp[7-args].subtype == NUMBER_NUMBER))
