@@ -174,7 +174,6 @@ struct keyword instr_names[]=
 { "mark & call",        F_MARK_APPLY, I_HASARG },
 { "mark, call & pop",   F_MARK_APPLY_POP, I_HASARG },
 { "apply and return",   F_APPLY_AND_RETURN, I_HASARG },
-{ "call lfun & return", F_CALL_LFUN_AND_RETURN, I_HASARG },
 { "call function",      F_CALL_FUNCTION, 0 },
 { "call function & return", F_CALL_FUNCTION_AND_RETURN, 0 },
 };

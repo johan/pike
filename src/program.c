@@ -3670,6 +3670,7 @@ void push_compiler_frame(int lexical_scope)
   f->current_number_of_locals=0;
   f->max_number_of_locals=0;
   f->previous=compiler_frame;
+  f->current_function_number=-2; /* no function */
   compiler_frame=f;
 }
 

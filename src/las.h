@@ -52,6 +52,7 @@ struct compiler_frame
   int current_number_of_locals;
   int max_number_of_locals;
   int lexical_scope;
+  int current_function_number;
   struct local_variable variable[MAX_LOCAL];
 };
 
