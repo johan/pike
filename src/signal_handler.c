@@ -974,7 +974,7 @@ void f_create_process(INT32 args)
 	fprintf(stderr, "Use setgroups\n");
 #endif /* PROC_DEBUG */
 #ifdef HAVE_SETGROUPS
-	if(tmp->type != T_ARRAY)
+	if(tmp->type == T_ARRAY)
 	{
 	  storage.wanted_gids_array=tmp->u.array;
 	  add_ref(storage.wanted_gids_array);
