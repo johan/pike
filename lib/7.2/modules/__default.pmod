@@ -14,7 +14,7 @@
 //!
 //! This implementation differs from @[predef::dirname()]
 //! in that it will return @expr{""@} for the input @expr{"/"@}
-//! while @[predef::dirname()] will return @["/"].
+//! while @[predef::dirname()] will return @expr{"/"@}.
 //!
 //! @seealso
 //!   @[predef::dirname()]
