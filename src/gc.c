@@ -541,6 +541,7 @@ INT32 real_gc_check(void *a)
     {
       fprintf(stderr,"Reference to object to free in referenced object!\n");
       describe(a);
+      locate_references(a);
       fatal("Reference to object to free in referenced object!\n");
       return 0;
     }
