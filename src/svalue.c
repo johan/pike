@@ -954,29 +954,34 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
 
   if (a->type != b->type)
   {
-    if(a->type == T_FLOAT && b->type==T_INT)
+    int a_is_obj_without_lt;
+
+    if(a->type == T_FLOAT && b->type==T_INT) {
 #ifdef HAVE_ISLESS
       return isless(a->u.float_number, (FLOAT_TYPE)b->u.integer);
 #else
       return a->u.float_number < (FLOAT_TYPE)b->u.integer;
 #endif
+    }
 
-    if(a->type == T_INT && b->type==T_FLOAT)
+    if(a->type == T_INT && b->type==T_FLOAT) {
 #ifdef HAVE_ISLESS
       return isless((FLOAT_TYPE)a->u.integer, b->u.float_number);
 #else
       return (FLOAT_TYPE)a->u.integer < b->u.float_number;
 #endif
+    }
 
-  if (((a->type == T_TYPE) ||
-       (a->type == T_FUNCTION) || (a->type == T_PROGRAM)) &&
-      ((b->type == T_FUNCTION) ||
-       (b->type == T_PROGRAM) || (b->type == T_TYPE)))
-    goto compare_types;
+    if (((a->type == T_TYPE) ||
+	 (a->type == T_FUNCTION) || (a->type == T_PROGRAM)) &&
+	((b->type == T_FUNCTION) ||
+	 (b->type == T_PROGRAM) || (b->type == T_TYPE)))
+      goto compare_types;
 
     if(a->type == T_OBJECT)
     {
     a_is_object:
+      a_is_obj_without_lt = 0;
       if(!a->u.object->prog)
 	Pike_error("Comparison on destructed object.\n");
       if(FIND_LFUN(a->u.object->prog,LFUN_LT) != -1)
@@ -997,14 +1002,24 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
 	  return 1;
 	}
       }
+      else
+	a_is_obj_without_lt = 1;
     }
+    else
+      a_is_obj_without_lt = 0;
 
     if(b->type == T_OBJECT)
     {
       if(!b->u.object->prog)
 	Pike_error("Comparison on destructed object.\n");
-      if(FIND_LFUN(b->u.object->prog,LFUN_GT) == -1)
-	Pike_error("Object lacks `>\n");
+      if(FIND_LFUN(b->u.object->prog,LFUN_GT) == -1) {
+	if (a_is_obj_without_lt)
+	  Pike_error ("Object a lacks `< and object b lacks `> "
+		      "in comparison on the form a < b.\n");
+	else
+	  Pike_error ("Object b lacks `> "
+		      "in comparison on the form a < b.\n");
+      }
       push_svalue(a);
       apply_lfun(b->u.object, LFUN_GT, 1);
       if(UNSAFE_IS_ZERO(sp-1))
@@ -1021,8 +1036,12 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
 	return 1;
       }
     }
-    
-    Pike_error("Cannot compare different types.\n");
+
+    if (a_is_obj_without_lt)
+      Pike_error ("Object a lacks `< "
+		  "in comparison on the form a < b.\n");
+    else
+      Pike_error ("Cannot compare different types.\n");
   }
   switch(a->type)
   {
