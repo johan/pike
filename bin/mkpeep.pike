@@ -277,7 +277,7 @@ class Switch(string test) {
 
   void make_fun() {
     made_fun = ++function_serial;
-    functions += "inline static void _asm_peep_"+made_fun+"(void)\n{\n";
+    functions += "INLINE static void _asm_peep_"+made_fun+"(void)\n{\n";
     functions += make_switch(2);
     functions += "}\n\n";
   }
