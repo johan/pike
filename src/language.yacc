@@ -2516,6 +2516,7 @@ class: modifiers TOK_CLASS line_number_info optional_identifier
     if(p) {
       free_program(p);
     } else {
+      /* Make sure code in this class is aware that something went wrong. */
       Pike_compiler->num_parse_error++;
     }
 
