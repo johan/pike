@@ -10,6 +10,13 @@
 
 #define PIKE_IMAGE_IMAGE_H
 
+/* Various X86 dialects. */
+#define IMAGE_MMX   1
+#define IMAGE_SSE   2
+#define IMAGE_3DNOW 4 
+#define IMAGE_EMMX  8 
+extern int image_cpuid;
+
 
 #define MAX_NUMCOL 32768
 
