@@ -124,7 +124,7 @@ void add_program_path(string tmp)
 {
   tmp=combine_path_with_cwd(tmp);
   pike_program_path-=({tmp});
-  pike_program_path=({tmp})+pike_module_path;
+  pike_program_path=({tmp})+pike_program_path;
 }
 
 
