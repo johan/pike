@@ -102,7 +102,7 @@ static rgba_group decode_color( struct buffer *s )
     push_int(0);
     SAFE_APPLY_MASTER( "resolv", 2 );
     if(IS_ZERO(sp-1)) error("Internal error: No Image module!\n");
-    push_text("color");
+    push_text("Color");
     f_index(2);
     if(IS_ZERO(sp-1)) error("Internal error: No Image[] function!\n");
     _parse_color = sp[-1];
