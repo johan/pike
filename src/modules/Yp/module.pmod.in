@@ -94,7 +94,7 @@ class Map {
   //!
   void map(function(string,string:void) fun)
   {
-    domain->map(ypmap, fn);
+    domain->map(ypmap, fun);
   }
 
   //! Return the server that provides this map.
