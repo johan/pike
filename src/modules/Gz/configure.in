@@ -15,6 +15,7 @@ LIBS="${LIBS-} -l$1"
 AC_TRY_RUN([
 #include "$srcdir/gz_test.c"
 ],pike_cv_working_$1=yes,pike_cv_working_$1=no)])
+LIBS="$OLDLIBS"
 
 if test "x$pike_cv_working_$1" = xyes; then
   AC_MSG_RESULT(yes)

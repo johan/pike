@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 }
 
 ],pike_cv_working_$1=yes,pike_cv_working_$1=no)])
-
+LIBS="$OLDLIBS"
 if test "x$pike_cv_working_$1" = xyes; then
   AC_MSG_RESULT(yes)
   AC_DEFINE(translit(HAVE_LIB$1,[a-z],[A-Z]))
