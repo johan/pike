@@ -311,16 +311,10 @@ AC_SUBST(CROSS)
 
 if test "x$enable_binary" = "xno"; then
   RUNPIKE="USE_PIKE"
-  RUNTPIKE="USE_PIKE"
-elif test "x$ac_cv_prog_cc_cross" = "xyes"; then
-  RUNPIKE="DEFAULT_RUNPIKE"
-  RUNTPIKE="USE_PIKE"
 else
   RUNPIKE="DEFAULT_RUNPIKE"
-  RUNTPIKE="USE_TPIKE"
 fi
 AC_SUBST(RUNPIKE)
-AC_SUBST(RUNTPIKE)
 ])
 
 
