@@ -1129,7 +1129,7 @@ static void low_pike_sprintf(struct format_stack *fs,
 
 	    /* This is done because octal numbers
 	       don't align very well...   /Noring */
-	    if(base == 8 && tmp < 0 && x[i] == '3')
+	    if(base == 8 && (tmp & m) < 0 && x[i] == '3')
 	      x[i] = '7';
 	  }
 	  else
