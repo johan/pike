@@ -1121,7 +1121,7 @@ static void decode_value2(struct decode_data *data)
 
     case TAG_FLOAT:
     {
-      double res; // = (double)num;
+      double res;
 
       EDB(fprintf(stderr, "Decoding float... numh:0x%08x, num:0x%08x\n",
 		  numh, num));
