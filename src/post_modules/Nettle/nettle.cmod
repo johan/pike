@@ -300,6 +300,7 @@ static struct object *make_cipher_object(INT32 args) {
 
 
 /*! @class CBC
+ *! @belongs Crypto
  *! Implementation of the cipher block chaining mode (CBC). Works as
  *! a wrapper for the cipher algorithm put in create.
  */
@@ -523,6 +524,7 @@ PIKECLASS CBC
  */
 
 /*! @class Buffer
+ *! @belongs Crypto
  *! Acts as a buffer so that data can be fed to a cipher in blocks
  *! that doesn't correspond to cipher block sizes.
  */
