@@ -32,6 +32,7 @@
 #include "builtin_functions.h"
 #include "opcodes.h"
 #include "pike_macros.h"
+#include "gc.h"
 
 #ifdef HAVE_ORACLE
 
@@ -147,8 +148,14 @@ DEFINE_MUTEX(oracle_serialization_mutex);
 #ifdef PIKE_DEBUG
 static struct object *do_check_prog(struct object *o, struct program *p, char *prog)
 {
-  if(get_storage(o,p) != o->storage)
+  if(get_storage(o,p) != o->storage) {
+    fprintf(stderr, "Wrong program, expected %s!\n", prog);
+    fprintf(stderr, "object:\n");
+    describe_something(o, PIKE_T_OBJECT, 2, 0, 0);
+    fprintf(stderr, "Expected program (%s):\n", prog);
+    describe_something(p, PIKE_T_PROGRAM, 2, 0, 0);
     fatal("Wrong program, expected %s!\n",prog);
+  }
   return o;
 }
 #define check_prog(X,Y) do_check_prog((X),Y,#Y)
