@@ -783,6 +783,7 @@ static int low_yylex(YYSTYPE *yylval)
 
 #undef LOOK
 #undef GETC
+#undef SKIP
 #undef GOBBLE
 #undef SKIPSPACE
 #undef SKIPWHITE
