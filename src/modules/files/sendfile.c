@@ -614,9 +614,9 @@ static void sf_create(INT32 args)
       fatal("sendfile: Stack out of sync(1).\n");
     }
 #endif /* PIKE_DEBUG */
-    sp[5-args].u.object = *ob;
-    free_object(sf.to_file);
     sf.to_file = *ob;
+    free_object(sp[5-arg].u.object);
+    sp[5-args].u.object = sf.to_file;
   }
   if ((sf.to->flags & FILE_LOCK_FD) ||
       (sf.to->fd < 0)) {
@@ -653,9 +653,9 @@ static void sf_create(INT32 args)
 	fatal("sendfile: Stack out of sync(2).\n");
       }
 #endif /* PIKE_DEBUG */
-      sp[1-args].u.object = *ob;
-      free_object(sf.from_file);
       sf.from_file = *ob;
+      free_object(sp[1-args].u.object);
+      sp[1-args].u.object = sf.from_file;
     }
     if ((sf.from->flags & FILE_LOCK_FD) ||
 	(sf.from->fd < 0)) {
