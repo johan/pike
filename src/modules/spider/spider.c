@@ -1046,7 +1046,7 @@ static void program_name(struct program *p)
   if(!p->linenumbers || !strlen(f))
     push_text("Unknown program");
 
-  push_string( get_line( p->program, p, &n ) );
+  push_string( get_program_line( p, &n ) );
   push_text( ":" );
   push_int( n );
   f_add( 3 );
