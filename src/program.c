@@ -1581,6 +1581,25 @@ void check_all_programs()
   struct program *p;
   for(p=first_program;p;p=p->next)
     check_program(p);
+
+#ifdef FIND_FUNCTION_HASHSIZE
+  {
+    unsigned long e;
+    for(e=0;e<FIND_FUNCTION_HASHSIZE;e++)
+    {
+      if(cache[e].name)
+      {
+	check_string(cache[e].name);
+	if(cache[e].id<0 || cache[e].id > current_program_id)
+	  fatal("Error in find_function_cache[%d].id\n",e);
+
+	if(fun < -1 || fun > 65536)
+	  fatal("Error in find_function_cache[%d].name\n",e);
+      }
+    }
+  }
+#endif
+
 }
 #endif
 
