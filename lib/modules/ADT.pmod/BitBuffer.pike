@@ -21,7 +21,7 @@ void create(void|string _data) {
 
 //! Adds full bytes to the buffer.
 this_program feed( string x ) {
-  if(.width(x)!=8) error("Only eight bits wide characters allowed.\n");
+  if(String.width(x)!=8) error("Only eight bits wide characters allowed.\n");
   if(bob)
     foreach(x; int p; int c)
       put(c,8);
@@ -38,7 +38,7 @@ string drain() {
   if(bib+bob==0)
     d = data;
   else {
-    .Buffer b = .Buffer(sizeof(data)+1);
+    String.Buffer b = String.Buffer(sizeof(data)+1);
     while(_sizeof()>8)
       b->putchar(get(8));
     d = b->get();
