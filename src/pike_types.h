@@ -274,4 +274,9 @@ int pike_type_allow_premature_toss(char *type);
 #define check_type_string(X)
 #endif
 
+/* Forward compatibility */
+#define free_type(T)		free_string(T)
+#define copy_pike_type(T1, T2)	copy_shared_string(T1, T2)
+#define pike_type		pike_string
+
 #endif

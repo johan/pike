@@ -366,6 +366,9 @@ static int low_yylex(YYSTYPE *yylval)
 	case TWO_CHAR('e','l'):
 	  if(ISWORD("else")) return TOK_ELSE;
 	  break;
+	case TWO_CHAR('e','n'):
+	  if(ISWORD("enum")) return TOK_ENUM;
+	  break;
 	case TWO_CHAR('e','x'):
 	  if(ISWORD("extern")) return TOK_EXTERN;
 	  break;
@@ -443,6 +446,7 @@ static int low_yylex(YYSTYPE *yylval)
 	  if(ISWORD("switch")) return TOK_SWITCH;
 	  break;
 	case TWO_CHAR('t','y'):
+	  if(ISWORD("typedef")) return TOK_TYPEDEF;
 	  if(ISWORD("typeof")) return TOK_TYPEOF;
 	  break;
 	case TWO_CHAR('v','a'):
