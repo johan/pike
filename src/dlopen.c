@@ -1693,6 +1693,12 @@ static int dl_load_coff_files(struct DLHandle *ret,
 		(((instr & 0xfe0000) >> 12)|((instr & 0x1fffc00000) >> 14));
 	      instr = (instr & 0x1e000301fff) |
 		((S & 0x3fff80)<<15)|((S & 0x7f)<<13);
+#ifdef DLDEBUG
+	      if ((S & ~0x3fffff) + ((S & 0x200000)<<1)) {
+		fprintf(stderr, "DL: gp relative offset > 22 bits: 0x%p\n",
+			(void *)S);
+	      }
+#endif /* DLDEBUG */
 	      break;
 
 	    case COFFReloc_IA64_ltoff22:
