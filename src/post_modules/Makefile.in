@@ -123,7 +123,7 @@ fdtestsuites:
 	@for a in $(MODULES) no ; do \
 	  if [ "$$a" = "no" ]; then :; else \
 	    echo $$a ; \
-	    $(TMP_BINDIR)/mktestsuite $(SRCDIR)/$$a/testsuite.in >$$a/testsuite -DSRCDIR=$(SRCDIR)/$$a || exit $$? ; \
+	    $(TMP_BINDIR)/mktestsuite $(SRCDIR)/$$a/testsuite.in >$$a/testsuite -DSRCDIR="`echo $(SRCDIR)/$$a|$(BUILD_BASE)/posix_to_native.sh`" || exit $$? ; \
 	  fi; \
 	done	
 

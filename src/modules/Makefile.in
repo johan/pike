@@ -100,7 +100,7 @@ verbose_verify:
 fdtestsuites:
 	@for a in $(MODULES) ; do \
 	  echo Making testsuite in $$a ; \
-	  $(TMP_BINDIR)/mktestsuite $(SRCDIR)/$$a/testsuite.in >$$a/testsuite -DSRCDIR=$(SRCDIR)/$$a || exit $$? ; \
+	  $(TMP_BINDIR)/mktestsuite $(SRCDIR)/$$a/testsuite.in >$$a/testsuite -DSRCDIR="`echo $(SRCDIR)/$$a|$(BUILD_BASE)/posix_to_native.sh`" || exit $$? ; \
 	done	
 
 testsuites:
