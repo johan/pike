@@ -4442,8 +4442,8 @@ void init_image_image(void)
 		tOr(tFunc(tOr(tVoid,tArr(tArr(tInt))),tObj),
 		    tFunc(tArr(tArr(tInt)) tInt tInt tInt,tObj)),0);
    ADD_FUNCTION("modify_by_intensity",image_modify_by_intensity,
-		tFuncV(tInt tInt tInt tOr(tInt,tRGB) tOr(tInt,tRGB),
-		       tOr(tInt,tRGB),tObj),0);
+		tFuncV(tInt tInt tInt tOr(tInt,tColor) tOr(tInt,tColor),
+		       tOr(tInt,tColor),tObj),0);
    ADD_FUNCTION("gamma",image_gamma,
 		tOr(tFunc(tOr(tFlt,tInt),tObj),
 		    tFunc(tOr(tFlt,tInt) tOr(tFlt,tInt) tOr(tFlt,tInt),tObj)),0);
