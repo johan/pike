@@ -36,7 +36,7 @@ RCSID("$Id$");
 /*! @class Fd
  */
 
-/* @decl mapping tcgetattr()
+/*! @decl mapping tcgetattr()
  *! @decl int tcsetattr(mapping attr)
  *! @decl int tcsetattr(mapping attr, string when)
  *!
