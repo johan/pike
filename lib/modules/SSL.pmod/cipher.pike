@@ -122,7 +122,7 @@ class mac_hmac_md5 {
 // Hashfn is either a Crypto.md5 or Crypto.sha 
 static string P_hash(object hashfn,int hlen,string secret,string seed,int len) {
    
-  Crypto.hmac hmac=Crypto.hmac(hashfn);
+  object /*Crypto.hmac*/ hmac = Crypto.hmac(hashfn);
   string temp=seed;
   string res="";
   
