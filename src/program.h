@@ -219,7 +219,7 @@ struct program_constant
 /*
  * All identifiers in this program
  * and all identifiers in inherited programs
- * needs to have a 'struct reference' in this
+ * need to have a 'struct reference' in this
  * program. When we overload a function, we simply
  * change the reference to point to the new 'struct identifier'.
  */
