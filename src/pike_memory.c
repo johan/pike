@@ -1653,7 +1653,8 @@ void debug_free(void *p, LOCATION location, int mustfind)
   mt_unlock(&debug_malloc_mutex);
 }
 
-void dmalloc_check_block_free(void *p, LOCATION location)
+void dmalloc_check_block_free(void *p, LOCATION location,
+			      char *struct_name, describe_block_fn *describer)
 {
   struct memhdr *mh;
   mt_lock(&debug_malloc_mutex);
@@ -1663,7 +1664,9 @@ void dmalloc_check_block_free(void *p, LOCATION location)
   {
     if(!(mh->flags & MEM_IGNORE_LEAK))
     {
-      fprintf(stderr,"Freeing storage for small block still in use %p at %s.\n",p,LOCATION_NAME(location));
+      fprintf(stderr, "Freeing %s still in use %p at %s.\n",
+	      struct_name ? struct_name : "small block", p, LOCATION_NAME(location));
+      if (describer) describer (p);
       debug_malloc_dump_references(p,0,2,0);
     }
     mh->flags |= MEM_FREE | MEM_IGNORE_LEAK;
