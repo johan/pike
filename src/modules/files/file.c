@@ -1223,6 +1223,27 @@ static void file_connect(INT32 args)
   }
 }
 
+static int isipnr(char *s)
+{
+  int e,i;
+  for(e=0;e<3;e++)
+  {
+    i=0;
+    while(*s==' ') s++;
+    while(*s>='0' && *s<='9') s++,i++;
+    if(!i) return 0;
+    if(*s!='.') return 0;
+    s++;
+  }
+  i=0;
+  while(*s==' ') s++;
+  while(*s>='0' && *s<='9') s++,i++;
+  if(!i) return 0;
+  while(*s==' ') s++;
+  if(*s) return 0;
+  return 1;
+}
+
 void get_inet_addr(struct sockaddr_in *addr,char *name)
 {
   MEMSET((char *)addr,0,sizeof(struct sockaddr_in));
@@ -1232,7 +1253,7 @@ void get_inet_addr(struct sockaddr_in *addr,char *name)
   {
     addr->sin_addr.s_addr=htonl(INADDR_ANY);
   }
-  else if(name[0]>='0' && name[0]<='9')
+  else if(isipnr(name))
   {
     if ((long)inet_addr(name) == (long)-1)
       error("Malformed ip number.\n");
