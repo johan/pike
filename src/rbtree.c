@@ -1319,8 +1319,8 @@ struct rb_node_hdr *rb_get_nth (struct rb_node_hdr *root, size_t n)
     }
     return root;
   }
-tree_too_small:
 #ifdef PIKE_DEBUG
+tree_too_small:
   Pike_fatal ("Tree too small for index %"PRINTSIZET"u.\n", index);
 #endif
   return (struct rb_node_hdr *) (ptrdiff_t) -1;
