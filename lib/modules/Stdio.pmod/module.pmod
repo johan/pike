@@ -694,6 +694,12 @@ class File
   //! the read, just the write or both read and write directions of the file
   //! respectively.
   //!
+  //! An exception is thrown if an I/O error occurs.
+  //!
+  //! @returns
+  //! Nonzero is returned if the file wasn't open in the specified
+  //! direction, zero otherwise.
+  //!
   //! @note
   //! This function will not call the @tt{close_callback@}.
   //!
@@ -716,8 +722,9 @@ class File
 #ifdef __STDIO_DEBUG
       __closed_backtrace=master()->describe_backtrace(backtrace());
 #endif
+      return 1;
     }
-    return 1;
+    return 0;
   }
 
   static private int peek_file_before_read_callback=0;
@@ -2572,7 +2579,7 @@ static class nb_sendfile
 //!
 //! @note
 //! The sending is performed asynchronously, and may complete
-//! before the function returns.
+//! before or after the function returns.
 //!
 //! For @[callback] to be called, the backend must be active (ie
 //! @[main()] must have returned @expr{-1@}, or @[Pike.DefaultBackend]
