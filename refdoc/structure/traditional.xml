@@ -83,7 +83,6 @@
       <insert-move entity="Image.Colortable"/>
 <!--      <insert-move entity="Image.colortable"/> -->
       <insert-move entity="Image.Color"/>
-      <insert-move entity="Image.Poly"/>
       <insert-move entity="Image.ANY"/>
       <insert-move entity="Image"/>
     </chapter>
