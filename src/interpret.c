@@ -1584,6 +1584,25 @@ PMOD_EXPORT void safe_apply(struct object *o, char *fun ,INT32 args)
   safe_apply_low(o, find_identifier(fun, o->prog), args);
 }
 
+PMOD_EXPORT void safe_apply_handler(const char *fun,
+				    struct object *handler,
+				    struct object *compat,
+				    INT32 args)
+{
+  int i;
+  if (handler && handler->prog &&
+      (i = find_identifier(fun, handler->prog)) != -1) {
+    safe_apply_low(handler, i, args);
+  } else if (compat && compat->prog &&
+	     (i = find_identifier(fun, compat->prog)) != -1) {
+    safe_apply_low(compat, i, args);
+  } else {
+    struct object *master_obj = master();
+    i = find_identifier(fun, master_obj->prog);
+    safe_apply_low(master_obj, i, args);
+  }
+}
+
 PMOD_EXPORT void apply_lfun(struct object *o, int fun, int args)
 {
 #ifdef PIKE_DEBUG
