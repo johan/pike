@@ -8,7 +8,7 @@
 
 PIKE=pike
 
-all: split
+all: tree-split html
 
 tree-split: join _tree-split
 
@@ -17,8 +17,9 @@ _tree-split:
 	@$(PIKE) presentation/tree-split-autodoc.pike \
 	  manual.xml tree-split-template.html manual-tree-split
 	@cp tree-split-style.css manual-tree-split/style.css
-	@mkdir manual-tree-split/images
+	@test -d manual-tree-split/images || mkdir manual-tree-split/images
 	@cp manual/images/* manual-tree-split/images
+	@cp src_images/next.gif src_images/prev.gif manual-tree-split/images
 
 html: split _html
 
