@@ -3039,6 +3039,8 @@ static void find_written_vars(node *n,
     if(n->tree_info & OPT_SIDE_EFFECT) {
       p->ext_flags = VAR_USED;
     }
+    find_written_vars(CAR(n), p, 0);
+    find_written_vars(CDR(n), p, 0);
     break;
 
   case F_AUTO_MAP_MARKER:
