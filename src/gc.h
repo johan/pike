@@ -14,7 +14,7 @@
 #include "threads.h"
 #include "interpret.h"
 
-#define GC_MARK_DEBUG
+/* #define GC_MARK_DEBUG */
 
 extern INT32 num_objects;
 extern INT32 num_allocs;
