@@ -39,7 +39,7 @@ RCSID("$Id$");
 #define ATTRIBUTE(X)
 
 
-/* #define COMPILER_DEBUG */
+#define COMPILER_DEBUG
 
 #ifdef COMPILER_DEBUG
 #define CDFPRINTF(X)	fprintf X
@@ -984,8 +984,9 @@ struct program *end_first_pass(int finish)
 
   exit_threads_disable(NULL);
 
-  CDFPRINTF((stderr, "th(%ld),end_first_pass(): compilation_depth:%d\n",
-	     (long)th_self(),compilation_depth));
+  CDFPRINTF((stderr,
+	     "th(%ld),end_first_pass(): compilation_depth:%d, compiler_pass:%d\n",
+	     (long)th_self(), compilation_depth, compiler_pass));
 
   free_all_nodes();
   if(!compiler_frame && compiler_pass==2 && resolve_cache)
@@ -2440,6 +2441,8 @@ struct program *compile(struct pike_string *prog)
   compiler_pass=1;
   lex.pos=prog->str;
 
+  CDFPRINTF((stderr, "compile(): First pass\n"));
+
   yyparse();  /* Parse da program */
 
   p=end_first_pass(0);
@@ -2458,6 +2461,9 @@ struct program *compile(struct pike_string *prog)
     p=0;
     compiler_pass=2;
     lex.pos=prog->str;
+
+    CDFPRINTF((stderr, "compile(): Second pass\n"));
+
     yyparse();  /* Parse da program again */
     p=end_program();
   }
