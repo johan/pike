@@ -132,7 +132,7 @@ void image_gif_netscape_loop(INT32 args);
 
 /* blit.c */
 
-void img_clear(rgb_group *dest,rgb_group rgb,INT32 size);
+void img_clear(rgb_group *dest, rgb_group rgb, ptrdiff_t size);
 void img_box_nocheck(INT32 x1,INT32 y1,INT32 x2,INT32 y2);
 void img_box(INT32 x1,INT32 y1,INT32 x2,INT32 y2);
 void img_blit(rgb_group *dest,rgb_group *src,INT32 width,
