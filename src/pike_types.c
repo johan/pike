@@ -157,6 +157,7 @@ char *get_name_of_type(int t)
     case T_STORAGE: return "object storage";
     case T_MAPPING_DATA: return "mapping_data";
     case T_PIKE_FRAME: return "pike_frame";
+    case T_MULTISET_DATA: return "multiset_data";
     default: return "unknown";
   }
 }
