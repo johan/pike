@@ -25,7 +25,7 @@ smartcopy() {
 
 echo "Copying source files..."
 for d in . include lib; do
-    for f in `cat $d/.exportable_files`; do
+    for f in `egrep -v '^#' $d/.exportable_files`; do
         echo $d/$f
 	smartcopy $d/$f ../_Lobotomized_Crypto/$d/$f
     done
