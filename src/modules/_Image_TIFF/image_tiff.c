@@ -203,10 +203,13 @@ void low_image_tiff_encode( struct buffer *buf,
   char *buffer;
   rgb_group *is, *as = NULL;
   tif = TIFFClientOpen( "memoryfile", "w", buf,
-                        (void*)read_buffer, (void*)write_buffer,
-                        (void*)seek_buffer, (void*)close_buffer,
-                        (void*)size_buffer, (void*)map_buffer,
-                        (void*)unmap_buffer );
+                        (TIFFReadWriteProc)read_buffer,
+			(TIFFReadWriteProc)write_buffer,
+                        (TIFFSeekProc)seek_buffer,
+			(TIFFCloseProc)close_buffer,
+                        (TIFFSizeProc)size_buffer,
+			(TIFFMapFileProc)map_buffer,
+                        (TIFFUnmapFileProc)unmap_buffer );
   if(!tif)
     error("\"open\" of TIF file failed!\n");
   
