@@ -385,6 +385,9 @@ PMOD_EXPORT char *STRTOK(char *s1,char *s2)
    character after the last one used in the number is put in *ENDPTR.  */
 PMOD_EXPORT double STRTOD(char * nptr, char **endptr)
 {
+#ifdef HAVE_STRTOD
+  return strtod(nptr, endptr);
+#else /* !HAVE_STRTOD */
   register unsigned char *s;
   short int sign;
 
@@ -524,6 +527,7 @@ PMOD_EXPORT double STRTOD(char * nptr, char **endptr)
   if (endptr != NULL)
     *endptr = (char *) nptr;
   return 0.0;
+#endif /* HAVE_STRTOD */
 }
 
 #ifndef HAVE_VSPRINTF
