@@ -2186,16 +2186,16 @@ void f__gc_status(INT32 args)
   push_int(num_allocs);
 
   push_constant_text("alloc_threshold");
-  push_int32(alloc_threshold);
+  push_int64(alloc_threshold);
 
   push_constant_text("objects_alloced");
-  push_int32(objects_alloced);
+  push_int64(objects_alloced);
 
   push_constant_text("objects_freed");
-  push_int32(objects_freed);
+  push_int64(objects_freed);
 
   push_constant_text("last_gc");
-  push_int32(last_gc);
+  push_int64(last_gc);
 
   push_constant_text("projected_garbage");
   push_float(objects_freed * (double) num_allocs / (double) alloc_threshold);
