@@ -3255,7 +3255,10 @@ static void decode_value2(struct decode_data *data)
 			    "Didn't get program embryo "
 			    "for delay encoded program <%d>: ", entry_id.u.integer);
 	    }
-	    add_ref (p = delayed_enc_val->u.program);
+	    /* No new ref here; low_start_new_program will add one for
+	     * Pike_compiler->new_program and we want ride on that one
+	     * just like when it's created there. */
+	    p = delayed_enc_val->u.program;
 	  }
 	  else
 	    p = NULL;
