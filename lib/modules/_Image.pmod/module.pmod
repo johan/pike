@@ -193,7 +193,7 @@ string read_file(string file)
 //! argument is given the data will be taken from stdin. If
 //! a file object is given, it will be read to the end of the
 //! file. If a string is given the function will first attempt
-//! to load a file wiht that name, then try to download data
+//! to load a file with that name, then try to download data
 //! with the string as URL. Zero will be returned upon failure.
 local string load_file( void|object|string file )
 {
