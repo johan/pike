@@ -59,7 +59,7 @@ struct neo_colortable
    {
       struct nct_flat
       {
-	 int numentries;
+	 ptrdiff_t numentries;
 	 struct nct_flat_entry *entries;
       } flat;
       struct nct_cube
@@ -68,7 +68,7 @@ struct neo_colortable
 	 int r,g,b; /* steps of sides */
 	 struct nct_scale *firstscale;
 	 INT32 disttrig; /* (sq) distance trigger */
-	 int numentries;
+	 ptrdiff_t numentries;
       } cube;
    } u;
 
