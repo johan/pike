@@ -8,6 +8,12 @@
 @TOP@
 @BOTTOM@
 
+/* Define this if you have a FreeBSD-style (7 args) sendfile(). */
+#undef HAVE_FREEBSD_SENDFILE
+
+/* Define this if you have a struct iovec */
+#undef HAVE_STRUCT_IOVEC
+
 /* Define if your statfs() call takes 4 arguments */
 #undef HAVE_SYSV_STATFS
 
