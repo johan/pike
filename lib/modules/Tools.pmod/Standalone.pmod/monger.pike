@@ -334,6 +334,8 @@ void do_install(string name, string|void version)
 
   foreach(jobs, string j)
   {
+    write("\nRunning %O in %O\n\n", run_pike+" "+pike_args*" "+" -x module "+j,
+	  getcwd());
     builder = Process.create_process(
       ({run_pike}) + pike_args + ({"-x", "module"}) + ({ j }));
     res = builder->wait();
