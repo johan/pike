@@ -578,7 +578,7 @@ string read_file(string filename,void|int start,void|int len)
   // Disallow devices and directories.
   array st;
   if (f->stat && (st = f->stat()) && (st[1] < 0)) {
-    throw(({ sprintf("Stdio.read_file(): File \"%s\" is not a regular file!\n",
+    throw(({ sprintf("Stdio.read_file(): File %O is not a regular file!\n",
 		     filename),
 	     backtrace()
     }));
