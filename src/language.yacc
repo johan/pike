@@ -207,17 +207,6 @@ static int varargs;
 static INT32  current_modifiers;
 static struct pike_string *last_identifier=0;
 
-void fix_comp_stack(int sp)
-{
-  if(comp_stackp>sp)
-  {
-    yyerror("Compiler stack fixed.");
-    comp_stackp=sp;
-  }else if(comp_stackp<sp){
-    fatal("Compiler stack frame underflow.");
-  }
-}
-
 
 /*
  * Kludge for Bison not using prototypes.
@@ -1038,7 +1027,6 @@ continue: F_CONTINUE { $$=mknode(F_CONTINUE,0,0); } ;
 lambda: F_LAMBDA
   {
     push_compiler_frame();
-    $<number>$=comp_stackp;
     
     if(compiler_frame->current_return_type)
       free_string(compiler_frame->current_return_type);
@@ -1051,9 +1039,6 @@ lambda: F_LAMBDA
     int f,e;
     struct pike_string *name;
     
-    fix_comp_stack($<number>2);
-    
-
     $4=mknode(F_ARG_LIST,$4,mknode(F_RETURN,mkintnode(0),0));
     type=find_return_type($4);
 
@@ -1093,7 +1078,6 @@ lambda: F_LAMBDA
     $$=mkidentifiernode(f);
     free_string(name);
     free_string(type);
-    comp_stackp=$<number>2;
     pop_compiler_frame();
   }
   ;
