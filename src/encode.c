@@ -2090,6 +2090,7 @@ static void decode_value2(struct decode_data *data)
 #ifdef DECODE_PROGRAM
 	  DECODE_PROGRAM(p);
 #endif /* DECODE_PROGRAM */
+	  make_program_executable(p);
 
 	  getdata2(p->linenumbers, p->num_linenumbers);
 
