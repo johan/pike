@@ -285,6 +285,8 @@ PIKECLASS Shuffle
 	  t->current_source->remove_callbacks( t->current_source );
 	free_source( t->current_source );
 	t->current_source = n;
+	if( n && n->setup_callbacks )
+	  n->setup_callbacks( n );
       }
 
       if( !t->current_source )
@@ -295,6 +297,7 @@ PIKECLASS Shuffle
       }
 
       t->leftovers = t->current_source->get_data( t->current_source, amount );
+
       if( t->leftovers.len == -2 )
       {
 	/* come back later (nonblocking source without more data to read) */
