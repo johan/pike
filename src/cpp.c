@@ -1407,7 +1407,7 @@ static void insert_current_line(struct cpp *this,
 				struct define_argument *args,
 				struct string_builder *tmp)
 {
-  string_builder_sprintf(tmp, "%ld", (long)this->current_line);
+  string_builder_sprintf(tmp, " %ld ", (long)this->current_line);
 }
 
 static void insert_current_file_as_string(struct cpp *this,
@@ -1453,7 +1453,7 @@ static void insert_current_version(struct cpp *this,
 				   struct define_argument *args,
 				   struct string_builder *tmp)
 {
-  string_builder_sprintf(tmp, "%d.%d", this->compat_major,
+  string_builder_sprintf(tmp, " %d.%d ", this->compat_major,
 			 this->compat_minor);
 }
 
@@ -1463,7 +1463,7 @@ static void insert_current_minor(struct cpp *this,
 				 struct define_argument *args,
 				 struct string_builder *tmp)
 {
-  string_builder_sprintf(tmp, "%d", this->compat_minor);
+  string_builder_sprintf(tmp, " %d ", this->compat_minor);
 }
 
 
@@ -1472,7 +1472,7 @@ static void insert_current_major(struct cpp *this,
 				 struct define_argument *args,
 				 struct string_builder *tmp)
 {
-  string_builder_sprintf(tmp, "%d", this->compat_major);
+  string_builder_sprintf(tmp, " %d ", this->compat_major);
 }
 
 
