@@ -728,14 +728,9 @@ PIKE_MODULE_INIT
   ADD_EFUN("atanh",f_atanh,tFunc(tFlt,tFlt),0);
  
 /* function(float:float)|function(int:int) */
-#ifdef AUTO_BIGNUM
   ADD_EFUN("sqrt",f_sqrt,tOr3(tFunc(tFlt,tFlt),
 			      tFunc(tInt,tInt),
 			      tFunc(tObj,tMix)),0);
-#else
-  ADD_EFUN("sqrt",f_sqrt,tOr(tFunc(tFlt,tFlt),
-			     tFunc(tInt,tInt)),0);
-#endif
 
 /* function(float:float) */
   ADD_EFUN("log",f_log,tFunc(tFlt,tFlt),0);
@@ -744,20 +739,12 @@ PIKE_MODULE_INIT
   ADD_EFUN("exp",f_exp,tFunc(tNUM,tFlt),0);
   
 /* function(float,float:float) */
-#ifdef AUTO_BIGNUM
   ADD_EFUN("pow",f_pow,
 	   tOr5(tFunc(tFlt tFlt,tFlt),
 		tFunc(tInt tFlt,tFlt),
 		tFunc(tFlt tInt,tFlt),
 		tFunc(tInt tInt,tInt),
 		tFunc(tObj tOr3(tInt,tObj,tFlt),tMix)),0);
-#else
-  ADD_EFUN("pow",f_pow,
-	   tOr4(tFunc(tFlt tFlt,tFlt),
-		tFunc(tInt tFlt,tFlt),
-		tFunc(tFlt tInt,tFlt),
-		tFunc(tInt tInt,tInt)),0);
-#endif
   
 /* function(float:float) */
   ADD_EFUN("floor",f_floor,tFunc(tFlt,tFlt),0);
