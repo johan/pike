@@ -80,6 +80,22 @@ constant SEARCH_LOWER_ATTRS = 1;
 //!   insensitive.
 //! @enddl
 
+constant SCOPE_BASE = 0;
+constant SCOPE_ONE = 1;
+constant SCOPE_SUB = 2;
+//! Constants for the search scope used with e.g.
+//! @[Protocols.LDAP.client.set_scope].
+//!
+//! @dl
+//! @item SCOPE_BASE
+//!   Return the object specified by the DN.
+//! @item SCOPE_ONE
+//!   Return the immediate subobjects of the object specified by the DN.
+//! @item SCOPE_SUB
+//!   Return the object specified by the DN and all objects below it
+//!   (on any level).
+//! @enddl
+
 constant MODIFY_ADD = 0;
 constant MODIFY_DELETE = 1;
 constant MODIFY_REPLACE = 2;
