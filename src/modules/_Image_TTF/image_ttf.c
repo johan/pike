@@ -266,6 +266,7 @@ static void image_ttf_faceinstance_exit()
    TT_Done_Instance(THISi->instance);
 }
 
+#ifdef TTF_DEBUG_INFO
 /*
 **! method mapping properties()
 **!     This gives back a structure of the face's properties.
@@ -430,6 +431,7 @@ static void image_ttf_face_properties(INT32 args)
 
    f_aggregate_mapping(9*2);
 }
+#endif /* TTF_DEBUG_INFO */
 
 /*
 **! method object flush()
@@ -1256,8 +1258,11 @@ void pike_module_init(void)
       start_new_program();
       ADD_STORAGE(struct image_ttf_face_struct);
 
+#ifdef TTF_DEBUG_INFO
       /* function(:mapping) */
   ADD_FUNCTION("properties",image_ttf_face_properties,tFunc(,tMapping),0);
+#endif /* TTF_DEBUG_INFO */
+
       /* function(:object) */
   ADD_FUNCTION("flush",image_ttf_face_flush,tFunc(,tObj),0);
       /* function(:mapping(string:string)) */
