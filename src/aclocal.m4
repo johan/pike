@@ -364,7 +364,7 @@ pushdef([AC_OUTPUT],
 ifdef([PIKE_INCLUDE_PATH],
 [
   dnl Is PIKE_INCLUDE_PATH really on the ../../... form, or is this broken?
-  make_variables_in=PIKE_INCLUDE_PATH/make_variables_in
+  make_variables_in=PIKE_INCLUDE_PATH/make_variables.in
 ],[
   AC_MSG_CHECKING([for the Pike base directory])
 
