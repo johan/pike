@@ -1336,11 +1336,11 @@ struct program *end_first_pass(int finish)
 
   exit_type_stack();
 
+  free_all_nodes();
+
   compilation_depth--;
 
   exit_threads_disable(NULL);
-
-  free_all_nodes();
 
   return prog;
 }
