@@ -30,6 +30,7 @@ if test x$with_ttflib = xyes ; then
 	pike_cv_tt_hh_reserved0=no
       ])
     ])
+    AC_MSG_RESULT($pike_cv_tt_hh_reserved0)
     if test "x$pike_cv_tt_hh_reserved0" = "xyes"; then
       AC_DEFINE(HAVE_TT_H_H_Reserved0)
     else :; fi
