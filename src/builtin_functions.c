@@ -2377,7 +2377,7 @@ PMOD_EXPORT void f_destruct(INT32 args)
     Pike_error("Destruct permission denied.\n");
 #endif
   debug_malloc_touch(o);
-  destruct(o);
+  destruct_object (o, DESTRUCT_EXPLICIT);
   pop_n_elems(args);
   destruct_objects_to_destruct();
 }
@@ -8697,4 +8697,9 @@ void init_builtin_efuns(void)
   ADD_INT_CONSTANT("__FLOAT_PRECISION_FLOAT__",1,0);
 #endif
 #endif
+
+  ADD_INT_CONSTANT ("DESTRUCT_EXPLICIT", DESTRUCT_EXPLICIT, 0);
+  ADD_INT_CONSTANT ("DESTRUCT_NO_REFS", DESTRUCT_NO_REFS, 0);
+  ADD_INT_CONSTANT ("DESTRUCT_GC", DESTRUCT_GC, 0);
+  ADD_INT_CONSTANT ("DESTRUCT_CLEANUP", DESTRUCT_CLEANUP, 0);
 }
