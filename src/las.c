@@ -906,13 +906,28 @@ node *debug_mknode(short token, node *a, node *b)
 	case 3:
 	  return mkefuncallnode("`[]",mknode(F_ARG_LIST,a,b));
       }
+      break;
+
+#ifdef PIKE_DEBUG
+    case F_CAST:
+    case F_SOFT_CAST:
+      fatal("Attempt to create a cast-node with mknode()!\n");
+    case F_CONSTANT:
+      fatal("Attempt to create an F_CONSTANT-node with mknode()!\n");
+    case F_LOCAL:
+      fatal("Attempt to create an F_LOCAL-node with mknode()!\n");
+    case F_IDENTIFIER:
+      fatal("Attempt to create an F_IDENTIFIER-node with mknode()!\n");
+    case F_TRAMPOLINE:
+      fatal("Attempt to create an F_TRAMPOLINE-node with mknode()!\n");
+    case F_EXTERNAL:
+      fatal("Attempt to create an F_EXTERNAL-node with mknode()!\n");
+#endif /* PIKE_DEBUG */
   }
 
 #if defined(PIKE_DEBUG) && !defined(SHARED_NODES)
   if(b && a==b)
     fatal("mknode: a and be are the same!\n");
-  if ((token == F_CAST) || (token == F_SOFT_CAST))
-    fatal("Attempt to create a cast-node with mknode()!\n");
 #endif    
 
   check_tree(a,0);
