@@ -1808,6 +1808,8 @@ static void decode_value2(struct decode_data *data)
 	      {
 		apply_lfun(o, LFUN___INIT, 0);
 		pop_stack();
+		/* FIXME: Should call LFUN_CREATE here in <= 7.2
+		 * compatibility mode. */
 	      }else{
 		struct unfinished_obj_link *ol=ALLOC_STRUCT(unfinished_obj_link);
 		ol->o=o;
@@ -2301,6 +2303,8 @@ static void decode_value2(struct decode_data *data)
 		  {
 		    apply_lfun(o, LFUN___INIT, 0);
 		    pop_stack();
+		    /* FIXME: Should call LFUN_CREATE here in <= 7.2
+		     * compatibility mode. */
 		  }else{
 		    ptr=&l->next;
 		    continue;
