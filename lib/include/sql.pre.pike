@@ -289,7 +289,7 @@ class sql {
     } else {
       res = query("show fields from \'" + table + "\'");
     }
-    res = map(res, lambda (mapping m) {
+    res = map(res, lambda (mapping m, string table) {
       foreach(indices(m), string str) {
 	/* Add the lower case variants */
 	string low_str = lower_case(str);
@@ -306,7 +306,7 @@ class sql {
 	m["table"] = table;
       }
       return(m);
-    } );
+    }, table);
     return(res);
   }
 }
