@@ -1040,7 +1040,7 @@ static int set_priority( int pid, char *to )
     /* Time to get tricky :-) */
     struct {
       id_t pc_cid;
-      pri_t rt_pri;
+      short rt_pri;
       ulong rt_tqsecs;
       long rt_tqnsecs;
       long padding[10];
