@@ -22,7 +22,7 @@ AC_MSG_CHECKING( [if nasm can be used] )
 if test "x$with_machine_code" = "xno" ; then
   AC_MSG_RESULT(no)
 else
-  if nasm -f elf -o assembly.o $srcdir/assembly.s ; then
+  if nasm -f elf -g -o assembly.o $srcdir/assembly.s ; then
     if test "`uname -m`" = "ia64"; then
       # nasm/ia64 can compile ia32 code...
       AC_MSG_RESULT([yes, but we are on an IA64 machine])
