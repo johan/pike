@@ -966,9 +966,12 @@ PMOD_EXPORT void schedule_really_free_object(struct object *o)
 #ifdef PIKE_DEBUG
   if (o->refs) {
 #ifdef DEBUG_MALLOC
-    describe_something(o, T_OBJECT, 0,2,0, NULL);
+    if (o->refs > 0) {
+      fprintf (stderr, "Object got %d references in schedule_really_free_object():\n", o->refs);
+      describe_something(o, T_OBJECT, 0,2,0, NULL);
+    }
 #endif
-    Pike_fatal("Object still got %d references in schedule_really_free_object().\n", o->refs);
+    Pike_fatal("Object got %d references in schedule_really_free_object().\n", o->refs);
   }
   if (Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_FREE && o->next != o)
     Pike_fatal("Freeing objects is not allowed inside the gc.\n");

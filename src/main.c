@@ -977,7 +977,7 @@ void low_exit_main(void)
   cleanup_pike_types();
 
   /* This zaps Pike_interpreter.thread_state among other things, so
-   * THREADS_ALLOW/DISALLOW don't work beyond this point. */
+   * THREADS_ALLOW/DISALLOW are NOPs beyond this point. */
   th_cleanup();
 
 #ifdef SHARED_NODES

@@ -37,6 +37,12 @@ extern size_t dmalloc_tracelogptr;
 extern int verbose_debug_exit;
 #endif
 
+#ifdef DO_PIKE_CLEANUP
+#  define DO_IF_PIKE_CLEANUP(X) X
+#else
+#  define DO_IF_PIKE_CLEANUP(X)
+#endif
+
 typedef void describe_block_fn (void *);
 
 #ifdef DEBUG_MALLOC
