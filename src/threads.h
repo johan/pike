@@ -10,6 +10,7 @@
 #include "interpret.h"
 #include "pike_threadlib.h"
 
+#ifdef PIKE_THREADS
 
 PMOD_EXPORT extern COND_T live_threads_change;		/* Used by _disable_threads */
 PMOD_EXPORT extern COND_T threads_disabled_change;		/* Used by _disable_threads */
@@ -65,7 +66,6 @@ struct thread_state {
 #endif /* PROFILING */
 };
 
-#ifdef PIKE_THREADS
 
 /* Prototypes begin here */
 int low_nt_create_thread(unsigned Pike_stack_size,

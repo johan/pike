@@ -813,6 +813,9 @@ void init_math_matrix(void)
 		"function(object:object)",0);
    add_function("``×",matrix_cross,
 		"function(object:object)",0);
+   Pike_compiler->new_program->flags |= 
+     PROGRAM_CONSTANT |
+     PROGRAM_NO_EXPLICIT_DESTRUCT ;
 }
 
 void exit_math_matrix(void)

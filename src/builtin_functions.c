@@ -2744,10 +2744,12 @@ PMOD_EXPORT void f_object_program(INT32 args)
     struct program *p;
     if((p=o->prog))
     {
-      if(o->parent && o->parent->prog)
+      if((p->flags & PROGRAM_USES_PARENT) && 
+	 PARENT_INFO(o)->parent &&
+	 PARENT_INFO(o)->parent->prog)
       {
-	INT32 id=o->parent_identifier;
-	o=o->parent;
+	INT32 id=PARENT_INFO(o)->parent_identifier;
+	o=PARENT_INFO(o)->parent;
 	add_ref(o);
 	pop_n_elems(args);
 	push_object(o);

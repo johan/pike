@@ -1646,7 +1646,10 @@ void pike_module_init(void)
     MPZ_DEFS();
 
     id=add_program_constant("bignum", bignum_program=end_program(), 0);
-    bignum_program->flags |= PROGRAM_NO_WEAK_FREE|PROGRAM_NO_EXPLICIT_DESTRUCT;
+    bignum_program->flags |= 
+      PROGRAM_NO_WEAK_FREE |
+      PROGRAM_NO_EXPLICIT_DESTRUCT |
+      PROGRAM_CONSTANT ;
     
 #if 0
     /* magic /Hubbe

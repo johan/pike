@@ -1737,6 +1737,9 @@ void init_image_colors(void)
    ADD_FUNCTION("`+",image_color_add,tFunc(tObj,tObj),0);
 
    image_color_program=end_program();
+   image_color_program->flags |= 
+     PROGRAM_CONSTANT |
+     PROGRAM_NO_EXPLICIT_DESTRUCT ;
 
    /* this is the Image.Color stuff */
    
