@@ -832,7 +832,7 @@ static void udp_get_type(INT32 args)
 
 void init_udp(void)
 {
-  start_new_program();
+  START_NEW_PROGRAM_ID (STDIO_UDP);
 
   ADD_STORAGE(struct udp_storage);
 
@@ -878,7 +878,7 @@ void init_udp(void)
 
   end_class("UDP",0);
 
-  start_new_program();
+  START_NEW_PROGRAM_ID (STDIO_SOCK);
 #ifdef SOCK_STREAM
   add_integer_constant("STREAM",SOCK_STREAM,0);
 #endif
@@ -902,7 +902,7 @@ void init_udp(void)
    simple_add_constant("SOCK",Pike_sp-1,0);
    pop_stack();
 
-   start_new_program();
+   START_NEW_PROGRAM_ID (STDIO_IPPROTO);
    add_integer_constant("IP",0,0);       /* Dummy protocol for TCP.  */
    add_integer_constant("HOPOPTS",0,0);  /* IPv6 Hop-by-Hop options.  */
    add_integer_constant("ICMP",1,0);     /* Internet Control Message Protocol.  */

@@ -1024,7 +1024,7 @@ static void sf_create(INT32 args)
 void init_sendfile(void)
 {
 #ifdef _REENTRANT
-  start_new_program();
+  START_NEW_PROGRAM_ID (STDIO_SENDFILE);
   ADD_STORAGE(struct pike_sendfile);
   map_variable("_args", "array(mixed)", 0, OFFSETOF(pike_sendfile, args),
 	       T_ARRAY);
