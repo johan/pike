@@ -23,6 +23,10 @@ struct gif_lzw
 
    int earlychange;
    int reversebits;
+
+#ifdef GIF_LZW_LZ
+   int skipone; /* lz marker for skip next code */
+#endif
    
    unsigned long codes;
    unsigned long bits; /* initial encoding bits */
