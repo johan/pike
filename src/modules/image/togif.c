@@ -221,19 +221,15 @@ CHRONO("image_encode_gif begin");
    if (transparent)
    {
       i=colortable_rgb(ct,*transparent);
-      if (ct->clut[i].r==transparent->r 
-	  && ct->clut[i].g==transparent->g 
-	  && ct->clut[i].b==transparent->b)
-      {
-	 low_my_putchar( '!', &buf );  /* extras */
-	 low_my_putchar( 0xf9, &buf ); /* transparency */
-	 low_my_putchar( 4, &buf );
-	 low_my_putchar( 1, &buf );
-	 low_my_putchar( 0, &buf );
-	 low_my_putchar( 0, &buf );
-	 low_my_putchar( i, &buf );
-	 low_my_putchar( 0, &buf );
-      }
+
+      low_my_putchar( '!', &buf );  /* extras */
+      low_my_putchar( 0xf9, &buf ); /* transparency */
+      low_my_putchar( 4, &buf );
+      low_my_putchar( 1, &buf );
+      low_my_putchar( 0, &buf );
+      low_my_putchar( 0, &buf );
+      low_my_putchar( i, &buf );
+      low_my_putchar( 0, &buf );
    }
 
 
