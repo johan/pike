@@ -1257,9 +1257,7 @@ void array_check_type_field(struct array *v)
     Pike_fatal("Type field out of order!\n");
   }
 }
-#endif
-
-PMOD_EXPORT struct array *compact_array(struct array *v) { return v; }
+#endif /* PIKE_DEBUG */
 
 /*
  * Get a pointer to the 'union anything' specified IF it is of the specified
@@ -1895,7 +1893,9 @@ void describe_array_low(struct array *a, struct processing *p, int indent)
   }
 }
 
-PMOD_EXPORT void simple_describe_array(struct array *a)
+
+#ifdef PIKE_DEBUG
+void simple_describe_array(struct array *a)
 {
   dynamic_buffer save_buf;
   char *s;
@@ -1913,6 +1913,7 @@ void describe_index(struct array *a,
 {
   describe_svalue(ITEM(a)+e, indent, p);
 }
+#endif
 
 
 void describe_array(struct array *a,struct processing *p,int indent)
