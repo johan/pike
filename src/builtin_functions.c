@@ -7139,10 +7139,6 @@ void init_builtin_efuns(void)
 {
   struct program *pike___master_program;
 
-  extern int init_builtin(void);
-
-  init_builtin();
-
   ADD_EFUN("gethrtime", f_gethrtime,
 	   tFunc(tOr(tInt,tVoid),tInt), OPT_EXTERNAL_DEPEND);
 
