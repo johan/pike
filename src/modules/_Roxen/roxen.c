@@ -494,7 +494,7 @@ void pike_module_init()
 
   start_new_program();
   ADD_STORAGE( struct header_buf  );
-  set_exit_callback( f_hp_init );
+  set_init_callback( f_hp_init );
   set_exit_callback( f_hp_exit );
   pike_add_function( "feed", f_hp_feed, "function(string:array(string|mapping))",0 );
   pike_add_function( "create", f_hp_create, "function(:void)", ID_STATIC );
