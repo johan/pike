@@ -1,5 +1,5 @@
 // Table.pmod by Fredrik Noring, 1998
-// $ Id: $
+// $Id$
 
 #define TABLE_ERR(msg) throw(({ "(Table) "+msg+"\n", backtrace() }))
 
@@ -110,7 +110,7 @@ class table {
     return this_object();
   }
 
-  mixed op_col(function f, int|string c, mixed ... args)
+  static private mixed op_col(function f, int|string c, mixed ... args)
   {
     c = remap(c);
     mixed x = table[0][c];
