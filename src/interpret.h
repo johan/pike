@@ -24,7 +24,6 @@ struct Pike_interpreter {
   int mark_stack_malloced;
   JMP_BUF *recoveries;
 #ifdef PIKE_THREADS
-  struct object *thread_obj;	/* Object containing the thread state. */
   struct thread_state *thread_state;
 #endif
   char *stack_top;

@@ -631,7 +631,7 @@ extern void dumpmem(char *desc, void *x, int size);
 #define DEBUG_CHECK_THREAD() do { } while (0)
 #endif
 
-#define THREADSTATE2OBJ(X) ((X)->state.thread_obj)
+#define THREADSTATE2OBJ(X) ((X)->thread_obj)
 
 PMOD_EXPORT extern int Pike_in_gc;
 #define THREADS_ALLOW() do { \

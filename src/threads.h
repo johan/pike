@@ -29,6 +29,7 @@ extern PIKE_MUTEX_T interleave_lock;
 
 struct thread_state {
   struct Pike_interpreter state;
+  struct object *thread_obj;	/* NOTE: Not ref-counted! */
   char swapped;
   char status;
   COND_T status_change;
