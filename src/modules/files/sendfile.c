@@ -647,7 +647,7 @@ static void sf_create(INT32 args)
 					       file_ref_program)) ||
 	!(*ob) ||
 	!(sf.from = (struct my_file *)get_storage(*ob, file_program))) {
-	SIMPLE_BAD_ARG_ERROR("sendfile", 6, "object(Stdio.File)");
+	SIMPLE_BAD_ARG_ERROR("sendfile", 2, "object(Stdio.File)");
       }
       add_ref(*ob);
 #ifdef PIKE_DEBUG
