@@ -75,9 +75,6 @@ array find_testsuites(string dir)
 
 #if constant(thread_create)
 #define WATCHDOG
-
-object watchdog;
-
 #define WATCHDOG_PIPE
 object watchdog_pipe;
 #else
@@ -89,6 +86,7 @@ object watchdog_pipe;
 
 
 #ifdef WATCHDOG
+object watchdog;
 int use_watchdog=1;
 #endif
 
