@@ -61,14 +61,14 @@ void convert_svalue_to_bignum(struct svalue *s);
 PMOD_EXPORT void (*push_int64)(INT64 i);
 PMOD_EXPORT int (*int64_from_bignum) (INT64 *i, struct object *bignum);
 #else
-#define push_int64(i) push_int((INT_TYPE)i)
+#define push_int64(i) push_int((INT_TYPE)(i))
 #define int64_from_bignum(I,BIGNUM)	0
 #endif /* INT64 */
 /* Prototypes end here */
 
 #else
 
-#define push_int64(i) push_int((INT_TYPE)i)
+#define push_int64(i) push_int((INT_TYPE)(i))
 #define int64_from_bignum(I,BIGNUM)	0
 
 #endif /* AUTO_BIGNUM */
