@@ -280,6 +280,15 @@ test_any([[{
                  Bar()->f(), typeof(c->m), typeof(d->m), typeof(d->b->m));
 }]], "mixed$mixed$string$mixed")
 
+// las.c:find_return_type() checks.
+test_eq([[
+  // Test case from Robert J. Budzynski <Robert.Budzynski@fuw.edu.pl>.
+  // When broken the return type will be mixed.
+  sprintf("%O", typeof(lambda(string s){
+    return Locale.Charset.decoder("utf-8")->feed(s)->drain();
+  }))
+]], [[ "function(string : string)" ]])
+
 // type checks
 
 define(test_type_error, [[
