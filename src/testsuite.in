@@ -79,14 +79,17 @@ cond([[all_efuns()->thread_create]],
   test_do(thread_create(lambda() { }))
 
 // /precompiled/mutex
-  test_true(clone(Mutex))
-  test_true(clone(Mutex)->lock())
-  test_true(clone(Mutex)->trylock())
+  test_true(Mutex())
+  test_do(add_constat("_tmp_mutex",Mutex()))
+  test_true(_tmp_mutex->lock())
+  test_true(_tmp_mutex->lock())
+  test_true(_tmp_mutex->trylock())
+  test_true(_tmp_mutex->trylock())
 
 // /precompiled/condition
-  test_true(clone(Condition))
-  test_do(clone(Condition)->signal())
-  test_do(clone(Condition)->broadcast())
+  test_true(Condition())
+  test_do(Condition()->signal())
+  test_do(Condition()->broadcast())
 
 // /precompiled/fifo
 test_any([[
