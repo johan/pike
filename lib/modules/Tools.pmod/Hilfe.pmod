@@ -948,10 +948,6 @@ class Evaluator {
     int scanf;
     for( ; p<sizeof(expr); p++) {
 
-      // Ignore whspc tokens
-      if(expr[p][0]==' ')
-	continue;
-
       if(expr[p]=="(") {
 	plevel++;
 	if(p && expr[p-1]=="sscanf") scanf=1;
