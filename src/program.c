@@ -2895,6 +2895,12 @@ PMOD_EXPORT void set_init_callback(void (*init)(struct object *))
 /*
  * set a callback used to de-initialize clones of this program
  * the exit function is called at destruct
+ *
+ * Note: If DO_PIKE_CLEANUP is defined (typically when compiling with
+ * --with-dmalloc) this callback can be called after the module has
+ * exited. In that case all it should do is free references in the
+ * object.
+ *
  * This function is obsolete, use pike_set_prog_event_callback instead.
  */
 PMOD_EXPORT void set_exit_callback(void (*exit)(struct object *))
