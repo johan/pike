@@ -178,6 +178,14 @@ INT32 count_args(node *n)
   case F_PUSH_ARRAY:
     return -1;
 
+  case F_APPLY:
+    if(CAR(n)->token == F_CONSTANT &&
+       CAR(n)->u.sval.type == T_FUNCTION &&
+       CAR(n)->u.sval.subtype == FUNCTION_BUILTIN &&
+       n->type == void_type_string)
+      return 0;
+    return 1;
+
   default:
     if(n->type == void_type_string) return 0;
     return 1;
