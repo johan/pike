@@ -460,7 +460,7 @@ static void image_ttf_face_properties(INT32 args)
 **!	Might be used to save memory - the face
 **!	information is read back from disk upon need.
 **!
-**! returns the called object
+**! returns the object being called
 */
 
 static void image_ttf_face_flush(INT32 args)

@@ -371,7 +371,7 @@ UNLOCK(this);
 **!	}
 **!	</pre>
 **!
-**! returns the called object
+**! returns the object being called
 */
 
 static void pmird_sync(INT32 args)
@@ -750,7 +750,7 @@ UNLOCK(this->parent);
 **!	Tries to resolve a transaction; 
 **!	casts an exception if there is a conflict.
 **!	May be called more then once.
-**! returns the called object
+**! returns the object being called
 */
 
 static void pmtr_resolve(INT32 args)
