@@ -138,7 +138,7 @@ struct svalue
 #define tProgram "\005"
 #define tStr "\006"
 #define tString "\006"
-#define tType "\007"
+#define tType(T) "\007" T
 #define tInt "\010\200\000\000\000\177\377\377\377"
 #define tInt0 "\010\000\000\000\000\000\000\000\000"
 #define tInt1 "\010\000\000\000\001\000\000\000\001"
