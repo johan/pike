@@ -236,8 +236,10 @@ int handle_alert(string s)
       return -1;
     }
   }
+#ifdef SSL3_DEBUG
   else
     werror("SSL.connection: Received warning alert %d\n", description);
+#endif
   return 0;
 }
 
