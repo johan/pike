@@ -49,7 +49,7 @@ static const struct static_module module_list[] = {
 void init_modules(void)
 {
   struct program *p = NULL;
-  unsigned int e;
+  volatile unsigned int e;
   struct lex save_lex;
 
   save_lex = lex;
@@ -104,7 +104,7 @@ void init_modules(void)
 void exit_modules(void)
 {
   JMP_BUF recovery;
-  int e;
+  volatile int e;
 
   exit_main();
 

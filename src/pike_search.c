@@ -175,9 +175,9 @@ PMOD_EXPORT SearchMojt compile_memsearcher(PCHARP needle,
     case 2:
       return compile_memsearcher2((p_wchar2*)needle.ptr, needlelen, max_haystacklen,hashkey);
   }
-#ifdef PIKE_DEBUG
+  // #ifdef PIKE_DEBUG
   Pike_fatal("Illegal shift\n");
-#endif
+  // #endif
   /* NOTREACHED */
 }
 

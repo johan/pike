@@ -82,7 +82,7 @@ PMOD_EXPORT struct array *real_allocate_array(ptrdiff_t size,
   }
 
   /* Limits size to (1<<29)-4 */
-  if( (size+extra_space-1) >
+  if( (size_t)(size+extra_space-1) >
       (LONG_MAX-sizeof(struct array))/sizeof(struct svalue) )
     Pike_error("Too large array (size %ld exceeds %ld).\n",
 	       (long)(size+extra_space-1),

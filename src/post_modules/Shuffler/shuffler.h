@@ -17,7 +17,7 @@ struct source
   int eof;
 
   /* Must be implemented by all sources */
-  struct data (*get_data)(struct source *s,int len);
+  struct data (*get_data)(struct source *s,off_t len);
   void (*free_source)(struct source *s);
 
   /* These can be defined in any source, however, they are mostly

@@ -672,7 +672,7 @@ PMOD_EXPORT struct program *get_program_for_object_being_destructed(struct objec
 
 static void call_destroy(struct object *o, int foo)
 {
-  int e;
+  volatile int e;
 
   debug_malloc_touch(o);
   if(!o || !o->prog) {

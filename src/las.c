@@ -1903,7 +1903,7 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 	pop_stack();
 	push_int(0);
       }else{
-	int exception = 0;
+	volatile int exception = 0;
 	SET_CYCLIC_RET(c+1);
 	ref_push_string(id);
 	{

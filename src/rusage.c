@@ -422,13 +422,13 @@ cpu_time_t get_real_time(void)
   struct timeval tv;
 
   if (GETTIMEOFDAY(&tv) < 0) return -1;
-  if (CPU_TIME_TICKS > 1000000) {
+#ifdef LONG_CPU_TIME
     return tv.tv_sec * CPU_TIME_TICKS +
       tv.tv_usec * (CPU_TIME_TICKS / 1000000);
-  } else {
+#else
     return tv.tv_sec * CPU_TIME_TICKS +
       tv.tv_usec / (1000000 / CPU_TIME_TICKS);
-  }
+#endif
 }
 #endif
 

@@ -641,7 +641,7 @@ void init_dynamic_load(void)
 void exit_dynamic_load(void)
 {
 #ifdef USE_DYNAMIC_MODULES
-  struct module_list *tmp;
+  struct module_list * volatile tmp;
   JMP_BUF recovery;
   for (tmp = dynamic_module_list; tmp; tmp = tmp->next)
   {

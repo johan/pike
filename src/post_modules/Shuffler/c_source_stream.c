@@ -60,7 +60,7 @@ static void remove_callbacks( struct source *_s )
 }
 
 
-static struct data get_data( struct source *_s, int len )
+static struct data get_data( struct source *_s, off_t len )
 {
   struct fd_source *s = (struct fd_source *)_s;
   struct data res;

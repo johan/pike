@@ -25,7 +25,7 @@ struct ps_source
   int offset, len;
 };
 
-static struct data get_data( struct source *_s, int len )
+static struct data get_data( struct source *_s, off_t len )
 {
   struct ps_source *s = (struct ps_source *)_s;
   struct data res;

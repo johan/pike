@@ -1600,7 +1600,7 @@ int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 {
   struct object *o = NULL;
   struct pike_frame *scope=0;
-  ptrdiff_t fun;
+  ptrdiff_t fun=0;
   struct svalue *save_sp=Pike_sp-args;
 
 #if defined(PIKE_DEBUG) && defined(_REENTRANT)
@@ -1828,7 +1828,7 @@ void low_return(void)
   struct svalue *save_sp = Pike_fp->save_sp;
   int trace_level = Pike_interpreter.trace_level;
   struct object *o;
-  int fun;
+  int fun = 0;
 
   if (trace_level > 1) {
     o = Pike_fp->current_object;
