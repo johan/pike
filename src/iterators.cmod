@@ -22,13 +22,13 @@ RCSID("$Id$");
 #include "gc.h"
 #include "stralloc.h"
 #include "security.h"
-#include "block_alloc.h"
 #include "opcodes.h"
 #include "pike_error.h"
 #include "program.h"
 #include "operators.h"
 #include "builtin_functions.h"
 #include "constants.h"
+#include "block_alloc.h"
 
 #define sp Pike_sp
 
