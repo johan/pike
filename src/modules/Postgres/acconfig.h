@@ -31,6 +31,9 @@
     defined(HAVE_LIBPQ_FE_H)
 #define HAVE_POSTGRES
 
+/* This is needed to avoid broken <openssl/kssl.h> headerfiles. */
+#define OPENSSL_NO_KRB5
+
 /* Time to include stuff. */
 
 /* postgres_fe.h should be used in preference to postgres.h in
