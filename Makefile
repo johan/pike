@@ -58,7 +58,7 @@ builddir:
 	  test x"$$dir" = x -o -d "$$dir" || mkdir "$$dir" || exit 1; \
 	  dir="$$dir/"; \
 	done; \
-	if [ $$NEWBUILD = YEP ]; then \
+	if [ x$$NEWBUILD = xYEP ]; then \
 	  cp refdoc/autodoc.xml "$$builddir" || true; \
 	fi; \
 	cd "$$builddir"
