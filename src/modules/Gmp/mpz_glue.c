@@ -663,8 +663,8 @@ static void mpzmod_compl(INT32 args)
   struct object *o;
   pop_n_elems(args);
   o=clone_object(mpzmod_program,0);
-  PUSH_REDUCED(o);
   mpz_com(OBTOMPZ(o), THIS);
+  PUSH_REDUCED(o);
 }
 
 
