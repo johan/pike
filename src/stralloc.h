@@ -42,10 +42,16 @@ struct string_builder
 
 /* Flags used by string_builder_append_integer() */
 #define APPEND_SIGNED		1	/* Value is signed */
-#define APPEND_POSITIVE		2	/* Sign positive values too. */
-#define APPEND_UPPER_CASE	4	/* Use upper case hex. */
-#define APPEND_ZERO_PAD		8	/* Zero pad. */
-#define APPEND_LEFT		16	/* Left align. */
+/* Note: The follwoing are NOT true flags. */
+#define APPEND_WIDTH_HALF	2	/* h-flag. */
+#define APPEND_WIDTH_LONG	4	/* l-flag. */
+#define APPEND_WIDTH_LONG_LONG	6	/* ll-flag. */
+#define APPEND_WIDTH_MASK	6	/* Corresponding mask. */
+/* More real flags here. */
+#define APPEND_POSITIVE		8	/* Sign positive values too. */
+#define APPEND_UPPER_CASE	16	/* Use upper case hex. */
+#define APPEND_ZERO_PAD		32	/* Zero pad. */
+#define APPEND_LEFT		64	/* Left align. */
 
 #ifdef PIKE_DEBUG
 PMOD_EXPORT struct pike_string *debug_findstring(const struct pike_string *foo);
@@ -292,6 +298,12 @@ PMOD_EXPORT void string_builder_append_integer(struct string_builder *s,
 					       int flags,
 					       size_t min_width,
 					       size_t precision);
+PMOD_EXPORT void string_builder_append_integerv(struct string_builder *s,
+						va_list args,
+						unsigned int base,
+						int flags,
+						size_t min_width,
+						size_t precision);
 PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 					 const char *fmt,
 					 va_list args);
