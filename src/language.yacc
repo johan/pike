@@ -4094,17 +4094,8 @@ static void safe_inc_enum(void)
   STACK_LEVEL_START(1);
 
   if (SETJMP_SP(recovery, 1)) {
-    struct svalue s;
-    assign_svalue_no_free(&s, &throw_value);
-
-    yyerror("Bad implicit enum value (failed to add 1).");
-
-    push_svalue(&s);
-    low_safe_apply_handler("compile_exception", error_handler, compat_handler, 1);
-    if (SAFE_IS_ZERO(Pike_sp-1)) yy_describe_exception(&s);
-    pop_stack();
+    handle_compile_exception ("Bad implicit enum value (failed to add 1).");
     push_int(0);
-    free_svalue(&s);
   } else {
     push_int(1);
     f_add(2);
@@ -4137,16 +4128,8 @@ static int call_handle_import(struct pike_string *s)
       else
 	yyerror("Couldn't find module to import");
     }
-  else {
-    struct svalue thrown = throw_value;
-    throw_value.type = T_INT;
-    my_yyerror("Error finding module to import");
-    push_svalue(&thrown);
-    low_safe_apply_handler("compile_exception", error_handler, compat_handler, 1);
-    if (SAFE_IS_ZERO(Pike_sp-1)) yy_describe_exception(&thrown);
-    pop_stack();
-    free_svalue(&thrown);
-  }
+  else
+    handle_compile_exception ("Error finding module to import");
 
   return 0;
 }
