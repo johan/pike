@@ -1359,8 +1359,6 @@ static void f_stream_info(INT32 args) {
 
 }
 
-/*!
- */
 static void f__sprintf(INT32 args) {
 
   unsigned int n = 0, x, ix, cnt;
