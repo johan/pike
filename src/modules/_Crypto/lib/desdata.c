@@ -55,12 +55,13 @@ int sorder[] = {
 	7, 5, 3, 1, 6, 4, 2, 0,
 };
 
+int printf(const char *, ...);
+
 int
 main(int argc, char **argv)
 {
 	unsigned INT32 d, i, j, k, l, m, n, s;
 	char b[256], ksr[56];
-	extern printf();
 
 	switch ( argv[1][0] ) {
 
