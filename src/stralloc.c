@@ -1770,6 +1770,14 @@ PMOD_EXPORT void init_string_builder(struct string_builder *s, int mag)
   s->known_shift=0;
 }
 
+PMOD_EXPORT void init_string_builder_alloc(struct string_builder *s, ptrdiff_t length, int mag)
+{
+  s->malloced=length;
+  s->s=begin_wide_shared_string(length,mag);
+  s->s->len=0;
+  s->known_shift=0;
+}
+
 static void string_build_mkspace(struct string_builder *s,
 				 ptrdiff_t chars, int mag)
 {
