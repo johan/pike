@@ -61,7 +61,7 @@ extern struct program *image_program;
 		   		   		   		\
    push_int(THIS->xsize);		   			\
    push_int(THIS->ysize);		   			\
-   o=clone(image_program,2);		   			\
+   o=clone_object(image_program,2);				\
    img=(struct image*)o->storage;		   		\
    if (!img->img) { free_object(o); error("out of memory\n"); }	\
 		   		   		   		\

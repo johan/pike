@@ -54,7 +54,7 @@ void image_dct(INT32 args)
       error("Out of memory\n");
    }
 
-   o=clone(image_program,0);
+   o=clone_object(image_program,0);
    img=(struct image*)(o->storage);
    *img=*THIS;
    

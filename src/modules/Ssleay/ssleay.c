@@ -203,7 +203,7 @@ static void ssleay_new(INT32 args)
   pop_n_elems(args);
   THISOBJ->refs++;
   push_object(THISOBJ);
-  push_object(clone(ssleay_connection_program, 1));
+  push_object(clone_object(ssleay_connection_program, 1));
 }
 
 

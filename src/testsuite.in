@@ -359,12 +359,12 @@ test_eq(signame(2),"SIGINT")
 
 // kill, signal, getpid
 test_true(intp(getpid()))
-test_do(signal(signum("SIGUSR1"),lambda() { add_constant("AFJLLAF",17); }))
-test_do(kill(getpid(),signum("SIGUSR1")))
+test_do(signal(signum("SIGFPE"),lambda() { add_constant("AFJLLAF",17); }))
+test_do(kill(getpid(),signum("SIGFPE")))
 test_eq(AFJLLAF,17)
 test_do(add_constant("AFJLLAF"))
-test_do(signal(signum("SIGUSR1",0)))
-test_do(signal(signum("SIGUSR1")))
+test_do(signal(signum("SIGFPE",0)))
+test_do(signal(signum("SIGFPE")))
 
 // typeof
 test_eq(typeof(1),"int")

@@ -367,7 +367,7 @@ void font_write(INT32 args)
      if (maxwidth>maxwidth2) maxwidth2=maxwidth;
    }
    
-   o = clone(image_program,0);
+   o = clone_object(image_program,0);
    img = ((struct image*)o->storage);
    img->xsize = maxwidth2;
    if(args>1)

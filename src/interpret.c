@@ -1551,7 +1551,7 @@ void strict_apply_svalue(struct svalue *s, INT32 args)
 
   case T_PROGRAM:
     {
-      struct object *o=clone(s->u.program,args);
+      struct object *o=clone_object(s->u.program,args);
       push_object(o);
     }
     break;

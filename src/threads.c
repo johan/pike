@@ -99,7 +99,7 @@ void f_thread_create(INT32 args)
   int tmp;
   arg=ALLOC_STRUCT(thread_starter);
   arg->args=aggregate_array(args);
-  arg->id=clone(thread_id_prog,0);
+  arg->id=clone_object(thread_id_prog,0);
 
   tmp=th_create(&dummy,new_thread_func,arg);
 
@@ -175,7 +175,7 @@ void f_mutex_lock(INT32 args)
 
   pop_n_elems(args);
   m=THIS_MUTEX;
-  o=clone(mutex_key,0);
+  o=clone_object(mutex_key,0);
   mt_lock(& mutex_kluge);
   THREADS_ALLOW();
   while(m->key) co_wait(& m->condition, & mutex_kluge);
@@ -193,7 +193,7 @@ void f_mutex_trylock(INT32 args)
   int i=0;
   pop_n_elems(args);
 
-  o=clone(mutex_key,0);
+  o=clone_object(mutex_key,0);
   m=THIS_MUTEX;
   mt_lock(& mutex_kluge);
   THREADS_ALLOW();
@@ -365,7 +365,7 @@ void th_init()
   if(!mutex_key)
     fatal("Failed to initialize thread program!\n");
 
-  thread_id=clone(thread_id_prog,0);
+  thread_id=clone_object(thread_id_prog,0);
 }
 
 void th_cleanup()

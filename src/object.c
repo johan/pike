@@ -111,7 +111,7 @@ static void init_object(struct object *o, int args)
   pop_stack();
 }
 
-struct object *clone(struct program *p, int args)
+struct object *clone_object(struct program *p, int args)
 {
   struct object *o=low_clone(p);
   init_object(o,args);
@@ -144,7 +144,7 @@ struct object *get_master()
     free_string(master_name);
     if(!master_program) return 0;
   }
-  master_object=clone(master_program,0);
+  master_object=clone_object(master_program,0);
 
   apply_lfun(master_object,LFUN___INIT,0);
   pop_stack();

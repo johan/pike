@@ -231,7 +231,7 @@ static void f_create(INT32 args)
     error("Bad argument 1 to crypto->create()\n");
   }
   if (sp[-args].type == T_PROGRAM) {
-    THIS->object = clone(sp[-args].u.program, args-1);
+    THIS->object = clone_object(sp[-args].u.program, args-1);
   } else {
     if (args != 1) {
       error("Too many arguments to crypto->create()\n");

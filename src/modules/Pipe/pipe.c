@@ -733,7 +733,7 @@ static void pipe_output(INT32 args)
   THISOBJ->refs++;		/* Weird */
 
   /* Allocate a new struct output */
-  obj=clone(output_program,0);
+  obj=clone_object(output_program,0);
   o=(struct output *)(obj->storage);
   o->next=THIS->firstoutput;
   THIS->firstoutput=obj;

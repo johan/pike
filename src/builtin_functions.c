@@ -395,7 +395,7 @@ static char *combine_path(char *cwd,char *file)
     fatal("No cwd in combine_path!\n");
 #endif
 
-  if(cwd[strlen(cwd)-1]=='/')
+  if(!*cwd || cwd[strlen(cwd)-1]=='/')
   {
     ret=(char *)xalloc(strlen(cwd)+strlen(file)+1);
     strcpy(ret,cwd);
@@ -622,6 +622,8 @@ void f_exit(INT32 args)
   if(sp[-args].type != T_INT)
     error("Bad argument 1 to exit.\n");
 
+  i=sp[-args].u.integer;
+
 #ifdef _REENTRANT
   if(num_threads) exit(i);
 #endif
@@ -631,7 +633,6 @@ void f_exit(INT32 args)
   call_callback(&exit_callbacks, (void *)0);
   free_callback(&exit_callbacks);
 
-  i=sp[-args].u.integer;
   exit_modules();
 
   UNSET_ONERROR(tmp);

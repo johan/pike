@@ -84,7 +84,7 @@ static void f_create(INT32 args)
       THIS->objects[args + i] = sp[i].u.object;
       THIS->objects[i]->refs++;
     } else if (sp[i].type == T_PROGRAM) {
-      THIS->objects[i] = clone(sp[i].u.program, 0);
+      THIS->objects[i] = clone_object(sp[i].u.program, 0);
     } else if (sp[i].type == T_ARRAY) {
       struct program *prog;
       INT32 n_args;
@@ -100,7 +100,7 @@ static void f_create(INT32 args)
       n_args = sp[i].u.array->size - 1;
 
       push_array_items(sp[i].u.array);	/* Pushes one arg too many */
-      THIS->objects[i] = clone(prog, n_args);
+      THIS->objects[i] = clone_object(prog, n_args);
 
       pop_stack();	/* Pop the program */
 
