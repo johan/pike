@@ -1042,6 +1042,7 @@ void destroy()
 void create(object|void infd, object|string|void interm,
 	    object|void outfd, object|string|void outterm)
 {
+  atexit(destroy);
   output_controller = OutputController(outfd || infd, outterm || interm);
   input_controller = InputController(infd, interm);
   DefaultEditKeys(this_object());
