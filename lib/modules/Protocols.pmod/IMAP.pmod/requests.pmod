@@ -708,7 +708,7 @@ class uid {
     }
     switch(lower_case(cmd->atom)) {
     case "fetch":
-      object local_set = server->uid_to_local(message_set);
+      object local_set = server->uid_to_local(session, message_set);
       return(fetch::easy_process(local_set, request));
       break;
     case "search":
