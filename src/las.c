@@ -1293,6 +1293,16 @@ int node_is_eq(node *a,node *b)
   }
 }
 
+node *debug_mktypenode(struct pike_string *t)
+{
+  node *res = mkemptynode();
+  res->token = F_CONSTANT;
+  copy_shared_string(res->u.sval.u.string, t);
+  res->u.sval.type = T_TYPE;
+  copy_shared_string(res->type, type_type_string);
+  return freeze_node(res);
+}
+
 node *debug_mkconstantsvaluenode(struct svalue *s)
 {
   node *res = mkemptynode();
