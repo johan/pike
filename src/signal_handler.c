@@ -2831,10 +2831,11 @@ void f_create_process(INT32 args)
 	  break;
 	case PROCE_DUP2:
 	  if (buf[1] == EINVAL) {
-	    Pike_error("Process.create_process(): dup2() failed with EINVAL.\n");
+	    Pike_error("Process.create_process(): dup2(x, %d) failed with EINVAL.\n",
+		       buf[2]);
 	  }
-	  Pike_error("Process.create_process(): dup2() failed. errno:%d\n",
-		buf[1]);
+	  Pike_error("Process.create_process(): dup2(x, %d) failed. errno:%d\n",
+		     buf[2], buf[1]);
 	  break;
 	case PROCE_SETGID:
 	  Pike_error("Process.create_process(): setgid(%d) failed. errno:%d\n",
