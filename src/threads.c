@@ -1161,10 +1161,10 @@ void f_thread_local_set(INT32 args)
   if(args>1)
     pop_n_elems(args-1);
   else if(args<1)
-    Pike_error("Too few arguments to thread_local->set()\n");
+    Pike_error("Too few arguments to Thread.Local.set()\n");
 
   if(Pike_interpreter.thread_id == NULL)
-    Pike_error("Trying to set thread_local without thread!\n");
+    Pike_error("Trying to set Thread.Local without thread!\n");
 
   if((m = OBJ2THREAD(Pike_interpreter.thread_id)->thread_local) == NULL)
     m = OBJ2THREAD(Pike_interpreter.thread_id)->thread_local =
