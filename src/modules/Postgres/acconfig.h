@@ -22,6 +22,12 @@
 #endif
 
 /* End of autoconfigurable section */
-#if defined (HAVE_LIBPQ) && (defined(HAVE_POSTGRES_H) || defined(HAVE_POSTGRES_FE_H) || defined(HAVE_PG72)) && defined (HAVE_LIBPQ_FE_H)
+#if defined(HAVE_LIBPQ) && \
+    (defined(HAVE_POSTGRES_H) || \
+     defined(HAVE_POSTGRES_FE_H) || \
+     defined(HAVE_SERVER_POSTGRES_H) || \
+     defined(HAVE_SERVER_POSTGRES_FE_H) || \
+     defined(HAVE_PG72)) && \
+    defined(HAVE_LIBPQ_FE_H)
 #define HAVE_POSTGRES
 #endif
