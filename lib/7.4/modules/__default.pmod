@@ -110,16 +110,16 @@ array(int) rusage() {
 	    m->stksize });
 }
 
-array _pipe_debug() {
-  return Pipe._pipe_debug();
-}
+static  all_constants_7_4;
 
 mapping(string:mixed) all_constants()
 {
-  mapping(string:mixed) ret=predef::all_constants()+([]);
+  mapping(string:mixed) ret = predef::all_constants()+([]);
   ret->rusage = rusage;
   ret->hash = hash_7_4;
-  ret->_pipe_debug = _pipe_debug;
+#if constant(Pipe._pipe_debug)
+  ret->_pipe_debug = Pipe._pipe_debug;
+#endif /* constant(Pipe._pipe_debug) */
   return ret;
 }
 
