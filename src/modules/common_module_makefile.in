@@ -248,3 +248,5 @@ module_modref.xml: plib/autodoc.xml $(SYSTEM_DOC_PATH)/src/structure/module_modr
 	  $(RUNPIKE) -x assemble_autodoc $(SYSTEM_DOC_PATH)/src/structure/module_modref.xml \
 	  plib/autodoc.xml >plib/module_modref.xml
 
+examine_module: $(MODULE_TARGET)
+	-nm $(MODULE_TARGET)
