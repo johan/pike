@@ -392,6 +392,7 @@ int dbm_main(int argc, char **argv)
   init_types();
   init_cpp();
   init_lex();
+  init_program();
 
   low_th_init();
 

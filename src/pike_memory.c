@@ -793,7 +793,7 @@ static inline unsigned long lhash(struct memhdr *m, int locnum)
     if(mlhash[l]==ml) mlhash[l]=0;			\
 							\
     X->locations=ml->next;				\
-    free_memloc(ml);					\
+    really_free_memloc(ml);					\
   }							\
 }while(0)
 
@@ -928,7 +928,7 @@ static int remove_memhdr(void *p, int already_gone)
 
       *prev=mh->next;
       low_add_marks_to_memhdr(&no_leak_memlocs, mh);
-      free_memhdr(mh);
+      really_free_memhdr(mh);
       
       return 1;
     }

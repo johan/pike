@@ -56,7 +56,7 @@ struct generic_mem_searcher
   } data;
 };
 
-#define BLOCK_ALLOC(X,Y)
+#include "block_alloc_h.h"
 #define MEMCHR0 MEMCHR
 
 /* Prototypes begin here */

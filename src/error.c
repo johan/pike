@@ -62,16 +62,14 @@ void pike_throw(void) ATTRIBUTE((noreturn))
 
   while(fp != recoveries->fp)
   {
+    struct pike_frame *tmp=fp;
 #ifdef PIKE_DEBUG
     if(!fp)
       fatal("Popped out of stack frames.\n");
 #endif
-    free_object(fp->current_object);
-    free_program(fp->context.prog);
-    if(fp->context.parent)
-      free_object(fp->context.parent);
-    
-    fp = fp->parent_frame;
+    fp = tmp->next;
+    tmp->next=0;
+    free_pike_frame(tmp);
   }
 
   pop_n_elems(sp - evaluator_stack - recoveries->sp);

@@ -159,7 +159,7 @@ void call_callback(struct callback_list *lst, void *arg)
       }
 
       *ptr=l->next;
-      free_callback(l);
+      really_free_callback(l);
 
 #ifdef PIKE_DEBUG
       l->free_func=(callback_func)remove_callback;
@@ -212,7 +212,7 @@ void free_callback_list(struct callback_list *lst)
     if(l->free_func)
       l->free_func(l, l->arg, 0);
     *ptr=l->next;
-    free_callback(l);
+    really_free_callback(l);
   }
 }
 

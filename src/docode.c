@@ -191,6 +191,13 @@ static INT32 count_cases(node *n)
   }
 }
 
+static inline struct compiler_frame *find_local_frame(INT32 depth)
+{
+  struct compiler_frame *f=compiler_frame;
+  while(--depth>=0) f=f->previous;
+  return f;
+}
+
 static int do_docode2(node *n,int flags)
 {
   INT32 tmp1,tmp2,tmp3;
@@ -393,12 +400,15 @@ static int do_docode2(node *n,int flags)
       switch(CDR(n)->token)
       {
       case F_LOCAL:
-	if(CDR(n)->u.number >= compiler_frame->max_number_of_locals)
+	if(CDR(n)->u.integer.a >= 
+	   find_local_frame(CDR(n)->u.integer.b)->max_number_of_locals)
 	  yyerror("Illegal to use local variable here.");
+
+	if(CDR(n)->u.integer.b) goto normal_assign;
 
 	code_expression(CAR(n), 0, "RHS");
 	emit(flags & DO_POP ? F_ASSIGN_LOCAL_AND_POP:F_ASSIGN_LOCAL,
-	     CDR(n)->u.number );
+	     CDR(n)->u.integer.a );
 	break;
 
       case F_IDENTIFIER:
@@ -413,6 +423,7 @@ static int do_docode2(node *n,int flags)
 	break;
 
       default:
+      normal_assign:
 	tmp1=do_docode(CDR(n),DO_LVALUE);
 	if(do_docode(CAR(n),0)!=1) yyerror("RHS is void!");
 	emit2(flags & DO_POP ? F_ASSIGN_AND_POP:F_ASSIGN);
@@ -1094,16 +1105,35 @@ static int do_docode2(node *n,int flags)
     }
 
   case F_LOCAL:
-    if(n->u.number >= compiler_frame->max_number_of_locals)
+    if(n->u.integer.a >= 
+       find_local_frame(n->u.integer.b)->max_number_of_locals)
       yyerror("Illegal to use local variable here.");
-    if(flags & WANT_LVALUE)
+
+    if(n->u.integer.b)
     {
-      emit(F_LOCAL_LVALUE,n->u.number);
-      return 2;
+      emit(F_LDA,n->u.integer.b);
+      if(flags & WANT_LVALUE)
+      {
+	emit(F_LEXICAL_LOCAL_LVALUE,n->u.number);
+	return 2;
+      }else{
+	emit(F_LEXICAL_LOCAL,n->u.number);
+	return 1;
+      }
     }else{
-      emit(F_LOCAL,n->u.number);
-      return 1;
+      if(flags & WANT_LVALUE)
+      {
+	emit(F_LOCAL_LVALUE,n->u.number);
+	return 2;
+      }else{
+	emit(F_LOCAL,n->u.number);
+	return 1;
+      }
     }
+
+    case F_TRAMPOLINE:
+      emit(F_TRAMPOLINE,n->u.number);
+      return 1;
 
   case F_IDENTIFIER:
     if(IDENTIFIER_IS_FUNCTION(ID_FROM_INT(new_program, n->u.number)->identifier_flags))

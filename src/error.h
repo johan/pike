@@ -26,7 +26,7 @@ typedef void (*error_call)(void *);
 
 #ifndef STRUCT_FRAME_DECLARED
 #define STRUCT_FRAME_DECLARED
-struct frame;
+struct pike_frame;
 #endif
 
 #define THROW_ERROR 10
@@ -60,7 +60,7 @@ typedef struct JMP_BUF
 #endif
   struct JMP_BUF *previous;
   jmp_buf recovery;
-  struct frame *fp;
+  struct pike_frame *fp;
   INT32 sp;
   INT32 mark_sp;
   INT32 severity;
