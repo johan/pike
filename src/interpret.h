@@ -158,6 +158,30 @@ PMOD_EXPORT extern const char Pike_check_c_stack_errmsg[];
   }while(0)
 
 
+#ifdef PIKE_DEBUG
+#define STACK_LEVEL_START(depth)	\
+  do { \
+    struct svalue *save_stack_level = Pike_sp - (depth);
+
+#define STACK_LEVEL_DONE(depth)		\
+    STACK_LEVEL_CHECK(depth);		\
+  } while(0)
+
+#define STACK_LEVEL_CHECK(depth)					\
+  do {									\
+    if (Pike_sp != save_stack_level + (depth)) {			\
+      Pike_fatal("Unexpected stack level! "				\
+		 "Actual: %d, expected: %d\n",				\
+		 DO_NOT_WARN((int)(Pike_sp - save_stack_level)),	\
+		 (depth));						\
+    }									\
+  } while(0)
+#else /* !PIKE_DEBUG */
+#define STACK_LEVEL_START(depth)	do {
+#define STACK_LEVEL_DONE(depth)		} while(0)
+#define STACK_LEVEL_CHECK(depth)
+#endif /* PIKE_DEBUG */
+
 #define pop_stack() do{ free_svalue(--Pike_sp); debug_check_stack(); }while(0)
 #define pop_2_elems() do { pop_stack(); pop_stack(); }while(0)
 
