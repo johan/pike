@@ -58,6 +58,7 @@ CFARGS=--without-rtldebug \
        --with-postgres \
        --with-postgres-include-dir=/usr/include/postgresql \
        --with-libpq-dir=/usr/lib \
+       --with-perl \
        --without-ffmpeg \
        --without-libpdf \
        --without-libpanda $(MACHINE_OPTS)
