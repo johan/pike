@@ -1248,29 +1248,29 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	if(s->u.object->prog)
 	{
 	  struct pike_string *name;
-	  struct program *prog = s->u.object->prog;
+	  struct object *obj = s->u.object;
 
-	  if (prog == pike_trampoline_program) {
+	  if (obj->prog == pike_trampoline_program) {
 	    /* Trampoline */
 	    struct pike_trampoline *tramp = (struct pike_trampoline *)
-	      get_storage(s->u.object, pike_trampoline_program);
+	      get_storage(obj, pike_trampoline_program);
 	    if (!tramp || !tramp->frame || !tramp->frame->current_object ||
 		!tramp->frame->current_object->prog) {
 	      /* Uninitialized trampoline, or
 	       * trampoline to destructed object. */
 	      name = NULL;
 	    } else {
-	      prog = tramp->frame->current_object->prog;
-	      name = ID_FROM_INT(prog, tramp->func)->name;
+	      obj = tramp->frame->current_object;
+	      name = ID_FROM_INT(obj->prog, tramp->func)->name;
 	    }
 	  } else {
-	    name=ID_FROM_INT(prog, s->subtype)->name;
+	    name=ID_FROM_INT(obj->prog, s->subtype)->name;
 	  }
 
-	  if(name && prog && (prog->flags & PROGRAM_FINISHED) &&
+	  if(name && obj->prog && (obj->prog->flags & PROGRAM_FINISHED) &&
 	     Pike_interpreter.evaluator_stack && !Pike_in_gc) {
 	    DECLARE_CYCLIC();
-	    debug_malloc_touch(s->u.object);
+	    debug_malloc_touch(obj);
 	    if (!BEGIN_CYCLIC(s->u.object, 0)) {
 	      /* We require some tricky coding to make this work
 	       * with tracing...
@@ -1281,9 +1281,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	      t_flag=0;
 	      SET_CYCLIC_RET(1);
 	    
-	      debug_malloc_touch(prog);
-	    
-	      ref_push_program(prog);
+	      ref_push_object(obj);
 	      SAFE_APPLY_MASTER("describe_module", 1);
 	    
 	      debug_malloc_touch(s->u.program);
