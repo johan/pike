@@ -809,7 +809,9 @@ static void do_da_lock(void)
 
 static void do_bi_do_da_lock(void)
 {
+#ifdef PROC_DEBUG
   fprintf(stderr, "wait thread: This is your wakeup call!\n");
+#endif
   co_signal(&start_wait_thread);
   mt_unlock(&wait_thread_mutex);
 }
