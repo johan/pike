@@ -898,6 +898,7 @@ CHRONO("done");
 **!	      img2->gif_add(0,0,100)+
 **!	      img1->gif_end());
 **!	// voila, a gif animation...
+**!     </pre>
 **!
 **! note
 **!	I (Mirar) recommend reading about the GIF file format before 
