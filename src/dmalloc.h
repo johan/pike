@@ -8,7 +8,7 @@ PMOD_EXPORT extern void *debug_xmalloc(size_t);
 PMOD_EXPORT extern void *debug_xcalloc(size_t,size_t);
 PMOD_EXPORT extern void *debug_xrealloc(void *,size_t);
 
-#define DMALLOC_LOCATION() ("S"  __FILE__ ":" DEFINETOSTR(__LINE__) )
+#define DMALLOC_LOCATION() (("NS"  __FILE__ ":" DEFINETOSTR(__LINE__) )+1)
 
 #ifdef DMALLOC_TRACE
 #define DMALLOC_TRACELOGSIZE 131072
