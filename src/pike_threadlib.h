@@ -50,11 +50,6 @@
 
 #ifdef _MIT_POSIX_THREADS
 #define POSIX_THREADS
-
-/* Makes gcc include more POSIX declarations, notably
- * pthread_mutexattr_settype. */
-#define _XOPEN_SOURCE 500
-
 #include <pthread.h>
 
 /* AIX is *STUPID* - Hubbe */
