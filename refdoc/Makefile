@@ -27,9 +27,9 @@ module_modref: $(BUILDDIR)/module_modref.xml structure/modref.css structure/modu
 	@$(MAKE) PIKE="$(PIKE)" BUILDDIR="$(BUILDDIR)" DESTDIR="$(DESTDIR)" low_module_modref
 
 low_module_modref:
-	rm -rf modref || /bin/true
-	@mkdir modref
-	@cp structure/modref.css modref/style.css
+	rm -rf $(DESTDIR)modref || /bin/true
+	@mkdir $(DESTDIR)modref
+	@cp structure/modref.css $(DESTDIR)modref/style.css
 	@$(PIKE) presentation/tree-split-autodoc.pike \
 	  $(BUILDDIR)/module_modref.xml structure/module_modref.html $(DESTDIR)modref predef
 	@mkdir $(DESTDIR)modref/images
