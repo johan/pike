@@ -6,14 +6,16 @@
 
 //! Filesystem which can be used to mount a Tar file.
 
-//! @decl void create(string filename, void|Filesystem.Base parent)
+//! @decl void create(string filename, void|Filesystem.Base parent, Stdio.File|Gz.File|Bz2.File f)
 //! @param filename
 //! The tar file to mount.
 //! @param parent
 //! The parent filesystem. If non is given, the normal system
 //! filesystem is assumed. This allows mounting a TAR-file within
 //! a tarfile.
-
+//! @param f
+//! If specified, this should be an open()ed file descriptor.
+//! This allows one to read a gzipped or bzip2ed file directly.
 class _Tar  // filesystem
 {
   object fd;
