@@ -1661,7 +1661,8 @@ MKAPPLY(OPCODE0,CALL_FUNCTION,"call function",APPLY_STACK, 0,0);
       fatal("Function popped too many arguments: %s\n",			 \
 	    s->u.efun->name->str);					 \
     if(Pike_sp>expected_stack+1)					 \
-      fatal("Function left droppings on stack: %s\n",			 \
+      fatal("Function left %d droppings on stack: %s\n",		 \
+           Pike_sp-(expected_stack+1),					 \
 	    s->u.efun->name->str);					 \
     if(Pike_sp == expected_stack && !s->u.efun->may_return_void)	 \
       fatal("Non-void function returned without return value "		 \
