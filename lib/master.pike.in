@@ -980,6 +980,7 @@ void create()
 #if "¤include_prefix¤"[0]!='¤'
   include_prefix = "¤include_prefix¤";
 #endif
+  system_module_path=pike_module_path;
 }
 
 
@@ -1723,9 +1724,17 @@ class CompatResolver
   //! Lookup from handler module to corresponding root_module.
   mapping(object:joinnode) handler_root_modules = ([]);
 
+  array(string) system_module_path=({});
+
+  //! The complete module search path
   array(string) pike_module_path=({});
+
+  //! The complete include search path
   array(string) pike_include_path=({});
+
+  //! The complete program search path
   array(string) pike_program_path=({});
+
   mapping(string:string) predefines = ([]);
   string ver;
 
@@ -2098,6 +2107,7 @@ void _main(array(string) orig_argv, array(string) env)
     werror(a, @b);
     exit(1);
   };
+
 
 #ifndef NOT_INSTALLED
   {

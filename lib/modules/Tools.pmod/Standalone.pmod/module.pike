@@ -20,6 +20,10 @@ string bin_path=combine_path(src_path,"../bin");
 #else
 string src_path=include_path;
 string bin_path=include_path;
+
+// we prefer the last element, because if there are more than one
+// master() puts the lib/modules path last.
+string system_module_path=master()->system_module_path[-1];
 #endif
 string run_pike;
 
@@ -331,7 +335,7 @@ Information options:
   --help        Prints this text
   --query=X     Shows the value of setting X. Possible settings are
                 include_path, configure_command, src_path, bin_path,
-                make and specs.
+                system_module_path, make and specs.
 
 Stage selection:
                 If none of these stages are selected, all of them will
