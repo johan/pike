@@ -16,7 +16,7 @@ extern unsigned INT32 des_keymap[];
 
 /* static information */
 
-static depth = 0;		/* keep track of the request depth */
+static int depth = 0;		/* keep track of the request depth */
 unsigned INT32 des_bigmap[0x4000];	/* big lookup table */
 
 /* fill in the 64k table used by the `quick' option */
