@@ -311,14 +311,14 @@ int main()
 {
   if(!port1::bind(0, accept_callback))
   {
-    werror("Bind failed.\n");
+    werror("Bind failed. (%d)\n",port1::errno());
     exit(1);
   }
   sscanf(port1::query_address(),"%*s %d",portno1);
 
   if(!port2::bind(0))
   {
-    werror("Bind failed.\n");
+    werror("Bind failed. (%d)\n",port2::errno());
     exit(1);
   }
 
