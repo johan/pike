@@ -3526,17 +3526,15 @@ static void file_lock(INT32 args)
 /* If (fd_LOCK_EX | fd_LOCK_NB) is used with lockf, the result will be
  * F_TEST, which only tests for the existance of a lock on the file.
  */
+static void file_trylock(INT32 args)
+{
+  low_file_lock(args,
 #ifdef HAVE_FD_FLOCK
-static void file_trylock(INT32 args)
-{
-  low_file_lock(args, fd_LOCK_EX | fd_LOCK_NB);
-}
-#else
-static void file_trylock(INT32 args)
-{
-  low_file_lock(args, fd_LOCK_NB);
-}
+		fd_LOCK_EX |
 #endif
+		fd_LOCK_NB
+		);
+}
 
 #define THIS_KEY ((struct file_lock_key_storage *)(Pike_fp->current_storage))
 static void init_file_lock_key(struct object *o)
@@ -4033,7 +4031,13 @@ PIKE_MODULE_INIT
 
   add_integer_constant("__HAVE_OOB__",1,0);
 #ifdef PIKE_OOB_WORKS
+#if (!defined(HAVE_POLL) || !defined(HAVE_AND_USE_POLL)) && \
+  defined(HAVE_SYS_EVENT_H) && defined(HAVE_KQUEUE)
+  /* FIXME: kqueue doesn't seem to support out of band data. */
+  add_integer_constant("__OOB__",0,0);
+#else
   add_integer_constant("__OOB__",PIKE_OOB_WORKS,0);
+#endif /* USE_KQUEUE */
 #else
   add_integer_constant("__OOB__",-1,0); /* unknown */
 #endif
