@@ -302,7 +302,7 @@ void udp_sendto(INT32 args)
       error("Not a socket!!!\n");
 #endif
      case EWOULDBLOCK:
-      return;
+      error("Message would block.\n");
     }
   }
   pop_n_elems(args);
