@@ -383,6 +383,7 @@ int main(int argc, array(string) argv)
 #if 1
   // Store the name of all constants so that we can see
   // if any constant has been leaked from the testsuite.
+  Pipe; /* Pipe module defines an efun, so load it before listing constants */
   array const_names = indices(all_constants());
 #endif
 
