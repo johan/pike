@@ -190,7 +190,7 @@ void image_colortable_get_index_line(struct neo_colortable *nct,
 				     int len,
 				     struct nct_dither *dith);
 
-int image_colortable_size(struct neo_colortable *nct);
+ptrdiff_t image_colortable_size(struct neo_colortable *nct);
 
 void image_colortable_write_rgb(struct neo_colortable *nct,
 				unsigned char *dest);
