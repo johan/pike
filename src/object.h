@@ -66,7 +66,6 @@ struct destroy_called_mark;
 PTR_HASH_ALLOC(destroy_called_mark,128)
 void low_destruct(struct object *o,int do_free);
 void destruct(struct object *o);
-void remove_objects_to_destruct_callback(void);
 void destruct_objects_to_destruct(void);
 void really_free_object(struct object *o);
 void low_object_index_no_free(struct svalue *to,

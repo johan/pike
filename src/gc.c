@@ -872,13 +872,14 @@ void do_gc(void)
   if(Pike_in_gc) return;
   Pike_in_gc=1;
 
+  /* Make sure there will be no callback to this while we're in the gc. */
+  destruct_objects_to_destruct();
+
   if(gc_evaluator_callback)
   {
     remove_callback(gc_evaluator_callback);
     gc_evaluator_callback=0;
   }
-
-  remove_objects_to_destruct_callback();
 
   tmp2=num_objects;
 
