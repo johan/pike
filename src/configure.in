@@ -1747,6 +1747,20 @@ fi
 
 #############################################################################
 
+AC_MSG_CHECKING(for isgraph)
+AC_CACHE_VAL(pike_cv_func_isgraph, [ AC_COMPILE([
+#include <ctype.h>
+], [
+return(!isgraph('A'));
+], pike_cv_func_isgraph=yes, pike_cv_func_isgraph=no)
+])
+AC_MSG_RESULT($pike_cv_func_isgraph)
+if test "x$pike_cv_func_isgraph" = "xyes" ; then
+  AC_DEFINE(HAVE_ISGRAPH)
+else :; fi
+
+#############################################################################
+
 AC_MSG_CHECKING(for gcc function attributes)
 AC_CACHE_VAL(pike_cv_gcc_attributes,
 [
