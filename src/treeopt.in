@@ -582,9 +582,9 @@ F_FOR(0 = F_APPLY(1 = F_CONSTANT
   tmp1 = *last;
 
   /* We're not interested in casts to void */
-  while(tmp1 && 
-	tmp1->token == F_CAST &&
-	tmp1->type == void_type_string)
+  while(tmp1 &&
+	( (tmp1->token == F_CAST && tmp1->type == void_type_string) ||
+	  tmp1->token == F_POP_VALUE))
   {
     last = &_CAR(tmp1);
     tmp1 = *last;
