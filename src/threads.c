@@ -208,17 +208,25 @@ void init_threads_disable(struct object *o)
   THREADS_FPRINTF(0, (stderr, "init_threads_disable(): threads_disabled:%d\n",
 		      threads_disabled));
 
-  if(live_threads)
-  {
-    SWAP_OUT_CURRENT_THREAD();
-    while (live_threads) {
-      THREADS_FPRINTF(0,
-		      (stderr,
-		       "_disable_threads(): Waiting for %d threads to finish\n",
-		       live_threads));
-      co_wait(&live_threads_change, &interpreter_lock);
+  if (o) {
+    /* The compiler desn't want to change thread, but doesn't mind
+     * other threads running in system calls etc.
+     *
+     * So we only wait here if we are called with non-NULL.
+     *
+     * /grubba 1998-07-17
+     */
+    if(live_threads) {
+      SWAP_OUT_CURRENT_THREAD();
+      while (live_threads) {
+	THREADS_FPRINTF(0,
+			(stderr,
+			 "_disable_threads(): Waiting for %d threads to finish\n",
+			 live_threads));
+	co_wait(&live_threads_change, &interpreter_lock);
+      }
+      SWAP_IN_CURRENT_THREAD();
     }
-    SWAP_IN_CURRENT_THREAD();
   }
 }
 
