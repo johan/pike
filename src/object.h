@@ -60,7 +60,7 @@ void call_prog_event(struct object *o, int event);
 void call_pike_initializers(struct object *o, int args);
 PMOD_EXPORT void do_free_object(struct object *o);
 PMOD_EXPORT struct object *debug_clone_object(struct program *p, int args);
-PMOD_EXPORT struct object *fast_clone_object(struct program *p, int args);
+PMOD_EXPORT struct object *fast_clone_object(struct program *p);
 PMOD_EXPORT struct object *parent_clone_object(struct program *p,
 					       struct object *parent,
 					       ptrdiff_t parent_identifier,

@@ -351,7 +351,11 @@ PMOD_EXPORT struct object *debug_clone_object(struct program *p, int args)
   return o;
 }
 
-PMOD_EXPORT struct object *fast_clone_object(struct program *p, int args)
+/* Clone and initialize an object, but do not call the pike initializers.
+ *
+ * WARNING: Only use this function if you know what you are doing...
+ */
+PMOD_EXPORT struct object *fast_clone_object(struct program *p)
 {
   ONERROR tmp;
   struct object *o=low_clone(p);

@@ -6348,7 +6348,7 @@ void init_program(void)
     add_function("`()",placeholder_index,"function(mixed...:object)",0);
     add_function("`[]",placeholder_index,"function(mixed:object)",0);
     placeholder_program=end_program();
-    placeholder_object=fast_clone_object(placeholder_program,0);
+    placeholder_object=fast_clone_object(placeholder_program);
 
     s.type=T_OBJECT;
     s.u.object=placeholder_object;
