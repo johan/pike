@@ -1939,7 +1939,7 @@ void unlink_previous_frame(void)
 
 #if defined(PROFILING) && defined(HAVE_GETHRTIME)
   current->children_base = Pike_interpreter.accounted_time;
-  current->start_time = gethrtime() - Pike_interpreter.unlocked_time;
+  current->start_time = gethrtime() - Pike_interpreter.time_base;
 #endif /* PROFILING && HAVE_GETHRTIME */
 
 #if 0
