@@ -14,6 +14,9 @@
 /* Define this if you have a HP/UX-style (6 args) sendfile(). */
 #undef HAVE_HPUX_SENDFILE
 
+/* Define this if you want to disable the use of sendfile(2). */
+#undef HAVE_BROKEN_SENDFILE
+
 /* Define this if you have a struct iovec */
 #undef HAVE_STRUCT_IOVEC
 
