@@ -295,7 +295,7 @@ void debug_fatal(const char *fmt, ...) ATTRIBUTE((noreturn,format (printf, 1, 2)
   (void)VFPRINTF(stderr, fmt, args);
 
   d_flag=t_flag=0;
-  if(!Pike_sp)
+  if(Pike_sp && evaluator_stack)
   {
     fprintf(stderr,"Attempting to dump backlog (may fail)...\n");
     push_error("Backtrace at time of fatal:\n");
