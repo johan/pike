@@ -121,6 +121,9 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 
     switch(run_time_type)
     {
+      default:
+	error("Cannot perform cast to that type.\n");
+
       case T_MIXED:
 	return;
 	
