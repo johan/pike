@@ -1198,22 +1198,22 @@ static int do_docode2(node *n, INT16 flags)
   {
     /* FIXME: Pike 7.0 compatibility? */
     INT32 break_save = current_break;
-    /* INT32 continue_save = current_continue; */
+    INT32 continue_save = current_continue;
     INT32 *prev_switch_jumptable = current_switch_jumptable;
 
     current_switch_jumptable=0;
     current_break=alloc_label();
-    /* current_continue=alloc_label(); */
+    current_continue=alloc_label();
 
     tmp1=do_jump(F_CATCH,-1);
     DO_CODE_BLOCK(CAR(n));
-    /* ins_label(current_continue); */
+    ins_label(current_continue);
     ins_label(current_break);
     emit0(F_THROW_ZERO);
     ins_label(DO_NOT_WARN((INT32)tmp1));
 
     current_break=break_save;
-    /* current_continue=continue_save; */
+    current_continue=continue_save;
     current_switch_jumptable = prev_switch_jumptable;
     return 1;
   }
