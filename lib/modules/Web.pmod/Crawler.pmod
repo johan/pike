@@ -525,7 +525,7 @@ class ComplexQueue(Stats stats, Policy policy)
 
     string do_md5(string in)
     {
-      return Crypto.md5()->update(in)->digest();
+      return Crypto.MD5->hash(in);
     }
 
     void push(mixed val)
