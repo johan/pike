@@ -607,6 +607,7 @@ static void f_error__sprintf(INT32 args)
     push_undefined();
     return;
   }
+  push_constant_text ("Error.");
   push_svalue(&PROG_FROM_INT(p, i)->constants[id->func.offset].sval);
   push_constant_text("(%O)");
   if(GENERIC_ERROR_THIS->error_message)
@@ -614,7 +615,7 @@ static void f_error__sprintf(INT32 args)
   else
     push_int(0);
   f_sprintf(2);
-  f_add(2);
+  f_add(3);
 }
 
 /*! @decl void create(string message)
@@ -782,13 +783,13 @@ PMOD_EXPORT DECLSPEC(noreturn) void bad_arg_error(
   struct svalue *got_value,
   const char *desc, ...)  ATTRIBUTE((noreturn,format (printf, 7, 8)))
 {
-  INIT_ERROR(bad_arg);
-  ERROR_COPY(bad_arg, which_argument);
+  INIT_ERROR(bad_argument);
+  ERROR_COPY(bad_argument, which_argument);
   if (expected_type)
-    ERROR_STRUCT(bad_arg,o)->expected_type=make_shared_string(expected_type);
+    ERROR_STRUCT(bad_argument,o)->expected_type=make_shared_string(expected_type);
   else
-    ERROR_STRUCT(bad_arg,o)->expected_type = NULL;
-  ERROR_COPY_SVALUE(bad_arg, got_value);
+    ERROR_STRUCT(bad_argument,o)->expected_type = NULL;
+  ERROR_COPY_SVALUE(bad_argument, got_value);
   DWERROR((stderr, "%s():Bad arg %d (expected %s)\n",
 	   func, which_arg, expected_type));
   ERROR_DONE(generic);

@@ -463,9 +463,9 @@ void f_load_module(INT32 args)
 
   if(!module)
   {
-    struct object *err_obj = low_clone (dlopen_error_program);
-#define DLERR_STRUCT(OBJ) \
-    ((struct dlopen_error_struct *) (err_obj->storage + dlopen_error_offset))
+    struct object *err_obj = low_clone (module_load_error_program);
+#define LOADERR_STRUCT(OBJ) \
+    ((struct module_load_error_struct *) (err_obj->storage + module_load_error_offset))
 
     const char *err = dlerror();
     if (err) {
@@ -477,8 +477,8 @@ void f_load_module(INT32 args)
     else
       push_constant_text ("Unknown reason");
 
-    add_ref (DLERR_STRUCT (err_obj)->path = Pike_sp[-args - 1].u.string);
-    add_ref (DLERR_STRUCT (err_obj)->dlerror = Pike_sp[-1].u.string);
+    add_ref (LOADERR_STRUCT (err_obj)->path = Pike_sp[-args - 1].u.string);
+    add_ref (LOADERR_STRUCT (err_obj)->reason = Pike_sp[-1].u.string);
 
     if (Pike_sp[-args].u.string->len < 1024) {
       throw_error_object (err_obj, "load_module", Pike_sp - args - 1, args,
