@@ -3986,7 +3986,7 @@ void gc_mark_all_multisets (void)
 
 void real_gc_cycle_check_multiset (struct multiset *l, int weak)
 {
-  GC_CYCLE_ENTER (l, T_MULTISET, weak) {
+  GC_CYCLE_ENTER (l, weak) {
     struct multiset_data *msd = l->msd;
 
     if (msd->root && ((msd->ind_types | msd->val_types) & BIT_COMPLEX)) {
@@ -5502,7 +5502,7 @@ void gc_mark_multiset_as_referenced(struct multiset *l)
 
 void real_gc_cycle_check_multiset(struct multiset *l, int weak)
 {
-  GC_CYCLE_ENTER(l, T_MULTISET, weak) {
+  GC_CYCLE_ENTER(l, weak) {
     gc_cycle_check_array(l->ind, 0);
   } GC_CYCLE_LEAVE;
 }
