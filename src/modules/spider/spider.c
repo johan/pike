@@ -1339,6 +1339,8 @@ void do_shuffle(void *_a)
     int nread, written=0;
     nread = fd_read(a->from_fd, a->buffer, MY_MIN(BUFFER,a->len));
     if(nread <= 0) {
+      if (!nread)
+	break;
       if(errno == EINTR)
 	continue;
       else
