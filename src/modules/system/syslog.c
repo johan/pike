@@ -136,6 +136,11 @@ void f_openlog(INT32 args)
   if(p_facility & (1<<17)) facility |= LOG_USER;
   if(p_facility & (1<<18)) facility |= LOG_UUCP;
 
+#ifdef LOG_NOWAIT
+  /* Don't let syslog wait for forked processes */
+  option |= LOG_NOWAIT;
+#endif /* LOG_NOWAIT */
+
   THREADS_ALLOW();
   
   openlog(ident, option, facility);
