@@ -3243,14 +3243,14 @@ PMOD_EXPORT char *get_line(unsigned char *pc,struct program *prog,INT32 *linep)
     return "Optimizer";
   }
 
-#if 0
   if(prog->id != pid || offset < off)
-#endif
   {
     cnt=prog->linenumbers;
     off=line=0;
     file="Line not found";
     pid=prog->id;
+  }else{
+    goto fromold;
   }
 
   if ((offset > (ptrdiff_t)prog->num_program) || (offset < 0))
@@ -3264,10 +3264,8 @@ PMOD_EXPORT char *get_line(unsigned char *pc,struct program *prog,INT32 *linep)
       cnt=file+strlen(file)+1;
     }
     off+=get_small_number(&cnt);
-    if(off > offset)
-    {
-      break;
-    }
+  fromold:
+    if(off > offset) break;
     line+=get_small_number(&cnt);
   }
   linep[0]=line;
