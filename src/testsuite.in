@@ -6030,6 +6030,7 @@ void test_dir(string dir, int|void base_size)
   {
     switch(s)
     {
+      case "db":	/* Protocols.pmod/X.pmod/db */
       case "frontbase.pike":
       case "msql.pike":
       case "mysql.pike":
