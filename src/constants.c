@@ -74,6 +74,8 @@ PMOD_EXPORT void add_global_program(char *name, struct program *p)
 }while(0)
 BLOCK_ALLOC(callable,128)
 
+int global_callable_flags=0;
+
 /* Eats one ref to 'type' and 'name' */
 PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
 				   struct pike_string *name,
@@ -90,6 +92,7 @@ PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
   f->flags=flags;
   f->docode=docode;
   f->optimize=optimize;
+  f->internal_flags = global_callable_flags;
 #ifdef PIKE_DEBUG
   {
     struct pike_type *z = check_call(function_type_string, type, 0);

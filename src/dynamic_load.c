@@ -7,6 +7,7 @@
 #  include "stralloc.h"
 #  include "pike_macros.h"
 #  include "main.h"
+#  include "constants.h"
 
 RCSID("$Id$");
 
@@ -341,6 +342,12 @@ void f_load_module(INT32 args)
   new_module->exit=exit;
 
   start_new_program();
+
+  {
+    extern int global_callable_flags;
+    global_callable_flags|=CALLABLE_DYNAMIC;
+  }
+
 #ifdef PIKE_DEBUG
   { struct svalue *save_sp=sp;
 #endif
