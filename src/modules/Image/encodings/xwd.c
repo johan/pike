@@ -82,7 +82,7 @@ static INLINE unsigned long int_from_16bit(unsigned char *data)
 
 #define CARD32n(S,N) int_from_32bit((unsigned char*)(S)->str+(N)*4)
 
-static void image_xwd__decode(INT32 args)
+void image_xwd__decode(INT32 args)
 {
    struct object *co=NULL;
 
