@@ -273,8 +273,10 @@ PMOD_EXPORT void simple_array_index_no_free(struct svalue *s,
 
     case T_STRING:
     {
-      s->type = T_ARRAY;
+      /* Set the type afterwards to avoid a clobbered svalue in case
+       * array_column throws. */
       s->u.array = array_column (a, ind);
+      s->type = T_ARRAY;
       break;
     }
 	
