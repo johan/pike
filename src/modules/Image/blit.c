@@ -778,7 +778,7 @@ void image_add_layers(INT32 args)
 	    free(layer);
 	    error("Illegal array contents, layer %d (argument %d) (illegal method) to image->add_layers()\n",layers-i,args-i+1);
 	 }
-	 layer[j].method=a->item[3].u.integer;
+	 layer[j].method=(enum layer_method)a->item[3].u.integer;
       }
       else
 	 layer[j].method=LAYER_NOP;
