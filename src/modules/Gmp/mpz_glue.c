@@ -1360,10 +1360,6 @@ static void mpzmod_lsh(INT32 args)
     if(mpz_cmp_si(mi, i)) 
     {
 too_large:
-       push_text("%O\n");
-       stack_swap();
-       f_sprintf(2);
-       
        if(mpz_sgn(THIS))
 	  Pike_error("Gmp.mpz->lsh: shift count too large.\n");
        else {
