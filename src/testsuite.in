@@ -72,6 +72,14 @@ test_any([[function(:string)|function(int:int) f; return typeof(f()); ]],
 test_any([[function(:string)|function(int:int) f; return typeof(f(1)); ]],
 	 "int")
 
+test_any([[function(:string)|function(mixed, mixed...:int) f;
+	  return typeof(f()); ]],
+	 "string")
+
+test_any([[function(:string)|function(mixed, mixed ...:int) f;
+	  return typeof(f(1)); ]],
+	 "int")
+
 test_any([[return class Z {
 string bonk() { return "oiff"; }
 
