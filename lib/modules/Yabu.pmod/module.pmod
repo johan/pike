@@ -8,8 +8,8 @@
 
 constant cvs_id = "$Id$";
 
-#define ERR(msg) throw(({ "(Yabu) "+msg+"\n", backtrace() }))
-#define IO_ERR(msg) throw(({ sprintf("(Yabu) %s, %s (%d)\n",msg,strerror(errno()),errno()),backtrace() }))
+#define ERR(msg) error( "(Yabu) "+msg+"\n" )
+#define IO_ERR(msg) error( "(Yabu) %s, %s (%d)\n",msg,strerror(errno()),errno() )
 #define WARN(msg) werror(msg)
 #define DEB(msg) /* werror(msg) */
 #if constant(hash_7_0)
