@@ -72,7 +72,7 @@ static void f_create(INT32 args)
   struct std_cs_stor *s = (struct std_cs_stor *)fp->current_storage;
 
   check_all_args("create()", args, BIT_STRING|BIT_VOID|BIT_INT,
-		 BIT_FUNCTION|BIT_VOID|BIT_INT);
+		 BIT_FUNCTION|BIT_VOID|BIT_INT, 0);
 
   if(args>0 && sp[-args].type == T_STRING) {
     if(s->replace != NULL)
