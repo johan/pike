@@ -177,6 +177,9 @@ documentation:
 
 doc: documentation
 
+doxygen:
+	doxygen refdoc/doxygen.cfg
+
 legal: bin/pike
 	bin/pike -e 'Stdio.write_file("COPYRIGHT", \
 	  Tools.Legal.Copyright.get_text());'
