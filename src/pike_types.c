@@ -938,7 +938,6 @@ static void internal_parse_typeA(const char **_s)
   
   while(ISSPACE(**s)) ++*s;
 
-  len=0;
   for(len=0;isidchar(EXTRACT_UCHAR(s[0]+len));len++)
   {
     if(len>=sizeof(buf)) {

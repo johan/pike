@@ -32,6 +32,7 @@ static void asm_opt(void);
 
 dynamic_buffer instrbuf;
 
+#ifdef PIKE_DEBUG
 static int hasarg(int opcode)
 {
   return instrs[opcode-F_OFFSET].flags & I_HASARG;
@@ -42,7 +43,6 @@ static int hasarg2(int opcode)
   return instrs[opcode-F_OFFSET].flags & I_HASARG2;
 }
 
-#ifdef PIKE_DEBUG
 static void dump_instr(p_instr *p)
 {
   if(!p) return;
@@ -288,7 +288,6 @@ void assemble(void)
   FLUSH_CODE_GENERATOR_STATE();
   for(e=0;e<length;e++)
   {
-    int linenumbers_stored=0;
 #ifdef PIKE_DEBUG
     if (c != (((p_instr *)instrbuf.s.str)+e)) {
       Pike_fatal("Instruction loop deviates. 0x%04x != 0x%04x\n",

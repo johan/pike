@@ -59,8 +59,7 @@ static void APPEND_PATH(struct string_builder *s,
 			size_t len)
 {
   size_t from=0;
-  int tmp;
-  int abs=0;
+  int tmp, abs;
 
   /* First, check if path is absolute, 
    * if so ignore anything already in 's'
