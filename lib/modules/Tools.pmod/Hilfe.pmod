@@ -1393,6 +1393,10 @@ class Evaluator {
   {
     safe_write(version()+
 	      " running Hilfe v3.5 (Incremental Pike Frontend)\n");
+    int major = master()->compat_major;
+    int minor = master()->compat_minor;
+    if( major!=-1 || minor!=-1 )
+      safe_write("(running in Pike %d.%d compat mode)\n", major, minor);
   }
 
   //! Clears the current state, history and removes all locally
