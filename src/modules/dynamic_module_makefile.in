@@ -42,7 +42,7 @@ $(MODULE_TARGET): module.so
 	  $(TMP_BINDIR)/install_module module.so $(MODULE_TARGET) ; \
 	fi
 
-module.so: $(OBJS)  $(MODULE_ARCHIVES)
+module.so: $(MODULE_ARCHIVES) $(OBJS)
 	@if test "x$(OBJS)" = "x" ; then \
 	  exit 0; \
 	fi; \
