@@ -96,8 +96,9 @@ RCSID("$Id$");
 /*! @module Mysql
  *!
  *! This module enables access to the Mysql database from within Pike.
+ *! Use @[Sql.sql] for general database access.
  *!
- *! Mysql is available from www.mysql.com.
+ *! Mysql is available from @url{http://www.mysql.com@}.
  *!
  *! @seealso
  *!  @[Mysql.mysql], @[Mysql.mysql_result], @[Sql.sql]
