@@ -255,7 +255,7 @@ struct pike_trampoline
 
 struct program
 {
-  ptrdiff_t refs;
+  INT32 refs;
 #ifdef PIKE_SECURITY
   struct object *prot;
 #endif

@@ -19,7 +19,7 @@
 #endif
 struct pike_string
 {
-  ptrdiff_t refs;
+  INT32 refs;
   INT32 size_shift; /* 30 bit waste, but good for alignment... */
   ptrdiff_t len;
   size_t hval;

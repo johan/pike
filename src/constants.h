@@ -20,7 +20,7 @@ typedef node *(*optimize_fun)(node *n);
 
 struct callable
 {
-  ptrdiff_t refs;
+  INT32 refs;
 #ifdef PIKE_SECURITY
   struct object *prot;
 #endif

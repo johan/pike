@@ -12,9 +12,32 @@
 
 #include "svalue.h"
 
+/* Also used in struct node_identifier */
+union node_data
+{
+  struct
+  {
+    int number;
+    struct program *prog;
+  } id;
+  struct svalue sval;
+  struct
+  {
+    struct node_s *a, *b;
+  } node;
+  struct
+  {
+    struct node_identifier *a, *b;
+  } node_id;
+  struct
+  {
+    int a, b;
+  } integer;
+};
+
 struct node_s
 {
-#ifdef SHARED_NODES
+#if defined(SHARED_NODES)
   unsigned INT32 refs;
   unsigned INT32 hash;
   struct node_s *next;
@@ -30,24 +53,21 @@ struct node_s
   unsigned INT16 tree_info;
   /* The stuff from this point on is hashed. */
   unsigned INT16 token;
-  union 
-  {
-    struct
-    {
-      int number;
-      struct program *prog;
-    } id;
-    struct svalue sval;
-    struct
-    {
-      struct node_s *a,*b;
-    } node;
-    struct
-    {
-      int a,b;
-    } integer;
-  } u;
+  union node_data u;
 };
+
+#ifdef SHARED_NODES_MK2
+
+struct node_identifier
+{
+  ptrdiff_t refs;
+  struct node_identifier *next;
+  unsigned INT32 hash;
+  INT16 token;
+  union node_data u;
+};
+
+#endif /* SHARED_NODES_MK2 */
 
 #ifndef STRUCT_NODE_S_DECLARED
 #define STRUCT_NODE_S_DECLARED
@@ -108,7 +128,7 @@ extern struct pike_string *weak_type_string;
 
 #define type_stack_mark() do {				\
   if(Pike_compiler->pike_type_mark_stackp >= pike_type_mark_stack + NELEM(pike_type_mark_stack))	\
-    yyerror("Type mark stack overflow.");		\
+    fatal("Type mark stack overflow.");		\
   else {						\
     *Pike_compiler->pike_type_mark_stackp=Pike_compiler->type_stackp;				\
     Pike_compiler->pike_type_mark_stackp++;					\

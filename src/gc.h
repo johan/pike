@@ -68,11 +68,11 @@ struct marker
   struct marker *next;
   struct gc_frame *frame;	/* Pointer into the cycle check stack. */
   void *data;
-  ptrdiff_t refs;		/* Internal references. */
-  ptrdiff_t weak_refs;		/* Weak (implying internal) references. */
+  INT32 refs;			/* Internal references. */
+  INT32 weak_refs;		/* Weak (implying internal) references. */
 #ifdef PIKE_DEBUG
-  ptrdiff_t xrefs;		/* Known external references. */
-  ptrdiff_t saved_refs;		/* Object refcount during check pass. */
+  INT32 xrefs;			/* Known external references. */
+  INT32 saved_refs;		/* Object refcount during check pass. */
 #endif
   unsigned INT16 flags;
 };
