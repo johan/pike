@@ -1594,8 +1594,9 @@ int override_identifier (struct reference *ref, struct pike_string *name)
     if (!new_is_variable &&
 	IDENTIFIER_IS_VARIABLE(ID_FROM_INT(Pike_compiler->new_program,
 					   cur_id)->identifier_flags)) {
-      // Overloading a variable with a constant or a function.
-      // This is generally a bad idea.
+      /* Overloading a variable with a constant or a function.
+       * This is generally a bad idea.
+       */
       Pike_compiler->new_program->identifier_references[cur_id].id_flags |=
 	ID_INLINE|ID_HIDDEN;
       yywarning("Attempt to override a non local variable %s%s%swith a non variable.",
