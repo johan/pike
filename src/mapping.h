@@ -12,6 +12,8 @@
 
 #include "las.h"
 
+#define MAPPING_FLAG_WEAK 1
+
 struct keypair
 {
   struct keypair *next;
@@ -25,6 +27,7 @@ struct mapping
   struct object *prot;
 #endif
   INT32 size, hashsize;
+  INT16 flags;
   TYPE_FIELD ind_types, val_types;
   struct mapping *next, *prev;
   struct keypair **hash;
