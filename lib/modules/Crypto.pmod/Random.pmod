@@ -26,24 +26,25 @@ class Source {
 class Source {
   static Stdio.File f;
   static string data = "";
+  static int factor = 2; // Assume 50% entropy
 
   static void create(int(0..1) no_block) {
     if(no_block) {
       if(file_stat("/dev/urandom"))
 	f = Stdio.File("/dev/urandom");
-      else if(file_stat("/dev/random"))
-	f = Stdio.File("/dev/random");
     }
     else {
-      if(file_stat("/dev/random"))
+      if(file_stat("/dev/random")) {
+	if(file_stat("/dev/urandom")) factor = 1;
 	f = Stdio.File("/dev/random");
+      }
       else if(file_stat("/dev/urandom"))
 	f = Stdio.File("/dev/urandom");
     }
   }
 
   string read(int bytes) {
-    bytes *= 2;
+    bytes *= factor;
     if(f) return f->read(bytes);
     bytes *= 4;
     while(sizeof(data)<bytes)
