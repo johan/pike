@@ -3414,6 +3414,37 @@ void port_setup_program(void);
 void init_sendfile(void);
 void init_udp(void);
 
+/*! @decl string _sprintf(int type, void|mapping flags)
+ */
+static void fd__sprintf(INT32 args)
+{
+  INT_TYPE type;
+
+  if(args < 1)
+    SIMPLE_TOO_FEW_ARGS_ERROR("_sprintf",2);
+  if(Pike_sp[-args].type!=PIKE_T_INT)
+    SIMPLE_BAD_ARG_ERROR("_sprintf",0,"integer");
+
+  type = Pike_sp[-args].u.integer;
+  pop_n_elems(args);
+  switch( type )
+  {
+    case 'O':
+    {
+      push_text("Fd()");
+      return;
+    }
+
+    case 't':
+    {
+      push_text("Fd");
+      return;
+    }
+  }
+  push_int( 0 );
+  Pike_sp[-1].subtype = 1;
+}
+
 PIKE_MODULE_INIT
 {
   struct object *o;
@@ -3435,6 +3466,9 @@ PIKE_MODULE_INIT
   map_variable("_write_oob_callback","mixed",0,OFFSETOF(my_file, write_oob_callback),PIKE_T_MIXED);
 #endif
 
+  /* function(int, void|mapping:string) */
+  ADD_FUNCTION("_sprintf",fd__sprintf,
+	       tFunc(tInt tOr(tVoid,tMapping),tString),0);
 
   init_file_locking();
   pike_set_prog_event_callback(file_handle_events);
