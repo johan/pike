@@ -706,7 +706,7 @@ static int do_docode2(node *n,int flags)
     return 1;
 
   case F_SOFT_CAST:
-#ifdef PIKE_DEBUG
+    /* FIXME: Should probably be some other flag */
     if (d_flag) {
       tmp1 = store_prog_string(n->type);
       emit(F_STRING, tmp1);
@@ -716,7 +716,6 @@ static int do_docode2(node *n,int flags)
       emit2(F_SOFT_CAST);
       return 1;
     }
-#endif /* PIKE_DEBUG */
     tmp1 = do_docode(CAR(n), flags);
     if (tmp1 > 1) do_pop(tmp1 - 1);
     return !!tmp1;
