@@ -282,7 +282,7 @@ int get_args(struct svalue *s,
   int ret;
   va_start(ptr, fmt);
   ret=va_get_args(s, num_args, fmt, ptr);
-  va_end(fmt);
+  va_end((void *)fmt);
   return ret;
 }
 
