@@ -2525,8 +2525,10 @@ INT32 define_function(struct pike_string *name,
     {
       if(func)
 	funp->func = *func;
+#if 0 /* prototypes does not override non-prototypes, ok? */
       else
 	funp->func.offset = -1;
+#endif
 
       funp->identifier_flags=function_flags;
 
