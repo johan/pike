@@ -1767,7 +1767,7 @@ void init_builtin_efuns(void)
 
   add_efun("_refs",f__refs,"function(function|string|array|mapping|multiset|object|program:int)",OPT_EXTERNAL_DEPEND);
   add_efun("replace_master",f_replace_master,"function(object:void)",OPT_SIDE_EFFECT);
-  add_efun("master",f_master,"function(:object)",OPT_TRY_OPTIMIZE);
+  add_efun("master",f_master,"function(:object)",OPT_EXTERNAL_DEPEND);
   add_efun("add_constant",f_add_constant,"function(string,void|mixed:void)",OPT_SIDE_EFFECT);
   add_efun("aggregate",f_aggregate,"function(mixed ...:mixed *)",OPT_TRY_OPTIMIZE);
   add_efun("aggregate_multiset",f_aggregate_multiset,"function(mixed ...:multiset)",OPT_TRY_OPTIMIZE);
