@@ -6462,8 +6462,6 @@ PMOD_EXPORT void f_object_variablep(INT32 args)
  *!   Elements are compared with @[`==]. They are also hashed (see
  *!   @[lfun::__hash] for further details if the array contains
  *!   objects).
- *! @seealso
- *!   @[group_by]
  */
 PMOD_EXPORT void f_uniq_array(INT32 args)
 {
