@@ -57,6 +57,10 @@ static struct pike_string *s_rotate;
 
 /* ---------------------------------------------------------------- */
 
+static void matrix_mult(INT32 args);
+
+/* ---------------------------------------------------------------- */
+
 static void init_matrix(struct object *o)
 {
    THIS->xsize=THIS->ysize=0;
