@@ -581,7 +581,18 @@ static void f_big_query(INT32 args)
 
     MYSQL_DISALLOW();
   }
-  if (!socket || (tmp < 0)) {
+  if (!socket
+#if defined(CR_SERVER_GONE) || defined(CR_UNKNOWN_ERROR)
+#ifdef CR_SERVER_GONE
+      || (tmp == CR_SERVER_GONE)
+#endif /* CR_SERVER_GONE */
+#ifdef CR_UNKNOWN_ERROR
+      || (tmp == CR_UNKNOWN_ERROR)
+#endif /* CR_UNKNOWN_ERROR */
+#else /* !CR_SERVER_GONE && !CR_UNKNOWN_ERROR */
+      || (tmp < 0)
+#endif /* CR_SERVER_GONE || CR_UNKNOWN_ERROR */
+      ) {
     /* The connection might have been closed. */
     pike_mysql_reconnect();
 
