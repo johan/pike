@@ -43,7 +43,7 @@ struct DATA *PIKE_CONCAT(alloc_,DATA)(void)							\
   return tmp;											\
 }												\
 												\
-inline void PIKE_CONCAT(free_,DATA)(struct DATA *d)						\
+void PIKE_CONCAT(free_,DATA)(struct DATA *d)						\
 {												\
   EXIT_BLOCK(d);										\
   d->next=PIKE_CONCAT3(free_,DATA,s);								\
