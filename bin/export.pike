@@ -22,7 +22,10 @@ string *get_files(string path)
 {
   string *files,tmp,*ret;
   files=get_dir(path);
-  files-=({"CVS","RCS",".cvsignore"});
+
+  if(!getenv("PIKE_EXPORT_CVS_DIRS"))
+    files-=({"CVS","RCS",".cvsignore"});
+
   ret=({});
   foreach(files,tmp)
   {
