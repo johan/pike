@@ -724,6 +724,9 @@ static RETSIGTYPE receive_signal(int signum)
 /* This function is intended to work like signal(), but better :) */
 void my_signal(int sig, sigfunctype fun)
 {
+#ifdef PROC_DEBUG
+  fprintf(stderr, "my_signal(%d, 0x%p)\n", sig, (void *)fun);
+#endif
 #ifdef HAVE_SIGACTION
   {
     struct sigaction action;
@@ -878,6 +881,10 @@ static void f_signal(int args)
 #ifdef PIKE_SECURITY
   if(!CHECK_SECURITY(SECURITY_BIT_SECURITY))
     Pike_error("signal: permission denied.\n");
+#endif
+
+#ifdef PROC_DEBUG
+  fprintf(stderr, "f_signal(%d)\n", args);
 #endif
 
   check_signals(0,0,0);
