@@ -4193,13 +4193,14 @@ static void optimize(node *n)
       tmp1 = freeze_node(n);
       if (tmp1 != n) {
 	/* n was a duplicate node. Use the original. */
+	/* Make sure the original isn't defrosted too. */
+	tmp1->node_info &= ~OPT_DEFROSTED;
 	goto use_tmp1;
       }
       /* Remove the extra ref from n */
       free_node(n);
-#else /* IN_TPIKE */
-      n->node_info &= ~OPT_DEFROSTED;
 #endif /* !IN_TPIKE */
+      n->node_info &= ~OPT_DEFROSTED;
       if (n->node_info & OPT_OPTIMIZED) {
 	/* No need to check this node any more. */
 	n = n->parent;
