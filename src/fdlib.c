@@ -452,7 +452,7 @@ PMOD_EXPORT int debug_fd_close(FD fd)
   return 0;
 }
 
-PMOD_EXPORT long debug_fd_write(FD fd, void *buf, long len)
+PMOD_EXPORT ptrdiff_t debug_fd_write(FD fd, void *buf, long len)
 {
   long ret;
   HANDLE handle;
