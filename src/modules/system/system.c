@@ -2560,11 +2560,11 @@ static void f_getrusage(INT32 args)
    pike_rusage_t rusage_values;
    int n=0;
 
-   pop_n_elems(args);
-   
    if (!pike_get_rusage(rusage_values))
       Pike_error("error in getrusage call\n");
 
+   pop_n_elems(args);
+   
    push_text("utime");      push_int(rusage_values[n++]);
    push_text("stime");      push_int(rusage_values[n++]);
    push_text("maxrss");     push_int(rusage_values[n++]);
