@@ -96,6 +96,7 @@ static int do_deflate(dynamic_buffer *buf,
 
   THREADS_ALLOW();
   mt_lock(& this->lock);
+  THREADS_DISALLOW();
   if(!this->gz.state)
   {
     fail=Z_STREAM_ERROR;
@@ -105,9 +106,11 @@ static int do_deflate(dynamic_buffer *buf,
       char *loc;
       int ret;
       loc=low_make_buf_space(BUF,buf);
+      THREADS_ALLOW();
       this->gz.next_out=(Bytef *)loc;
       this->gz.avail_out=BUF;
       ret=deflate(& this->gz, flush);
+      THREADS_DISALLOW();
       low_make_buf_space(-this->gz.avail_out,buf);
       if(ret != Z_OK)
       {
@@ -118,7 +121,6 @@ static int do_deflate(dynamic_buffer *buf,
   }
 
   mt_unlock(& this->lock);
-  THREADS_DISALLOW();
   return fail;
 }
 
