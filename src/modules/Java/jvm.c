@@ -48,7 +48,7 @@ RCSID("$Id$");
 
 #ifdef _REENTRANT
 #if defined(HAVE_SPARC_CPU) || defined(HAVE_X86_CPU) || defined(HAVE_PPC_CPU) \
-    defined(HAVE_ALPHA_CPU)
+ || defined(HAVE_ALPHA_CPU)
 #define SUPPORT_NATIVE_METHODS
 #endif /* HAVE_SPARC_CPU || HAVE_X86_CPU || HAVE_PPC_CPU || HAVE_ALPHA_CPU */
 #endif /* _REENTRANT */
