@@ -623,7 +623,7 @@ class fetch
       {
 	res->wanted = "bodystructure";
 	res->raw_wanted = "body";  // What to say in the response
-	res->no_extention_data = 1;
+	res->no_extension_data = 1;
 	return res;
       }
       /* Fall through */
