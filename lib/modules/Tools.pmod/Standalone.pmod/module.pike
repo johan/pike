@@ -2,6 +2,8 @@
 
 // $Id$
 
+#pike __REAL_VERSION__
+
 constant version = ("$Revision$"/" ")[1];
 constant description = "Pike module installer.";
 

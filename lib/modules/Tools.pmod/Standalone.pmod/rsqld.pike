@@ -1,6 +1,8 @@
 #! /usr/bin/env pike
 // $Id$
 
+#pike __REAL_VERSION__
+
 constant description = "Implements an rsql daemon.";
 
 #define RSQL_PORT 3994

@@ -7,6 +7,8 @@
  * Usage: pike -x join_autodoc --post-process dest.xml files_to_join.xml [...]
  */
 
+#pike __REAL_VERSION__
+
 constant description = "Joins AutoDoc extractions.";
 mapping sub_cache = ([]);
 
@@ -98,7 +100,7 @@ int(0..1) join_files(array(string) files, string save_to, int(0..1) post_process
   if(sizeof(files)==1) {
     if (verbosity > 1)
       werror("Only one content file present. Copy instead of merge.\n");
-    return(!Stdio.cp(files[0], save_to));
+    return !Stdio.cp(files[0], save_to);
   }
 
   if (verbosity > 0)

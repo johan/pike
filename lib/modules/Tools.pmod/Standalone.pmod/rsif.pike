@@ -1,6 +1,8 @@
 #! /usr/bin/env pike
 // -*- pike -*- $Id$
 
+#pike __REAL_VERSION__
+
 constant version = ("$Revision$"/" ")[1];
 constant description = "Replaces strings in files.";
 int(0..1) verbosity = 1; // more output

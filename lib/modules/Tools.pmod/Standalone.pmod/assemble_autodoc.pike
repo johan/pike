@@ -1,5 +1,7 @@
 // $Id$
 
+#pike __REAL_VERSION__
+
 constant description = "Assembles AutoDoc output file.";
 
 // AutoDoc mk II assembler

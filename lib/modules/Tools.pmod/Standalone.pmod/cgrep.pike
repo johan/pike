@@ -2,6 +2,8 @@
 // -*- Pike -*-
 // $Id$
 
+#pike __REAL_VERSION__
+
 constant description = "Context aware grep.";
 
 // Future expansions:
