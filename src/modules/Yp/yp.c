@@ -125,7 +125,7 @@ static void f_all(INT32 args)
   push_mapping( res_map );
 }
 
-void f_map(INT32 args)
+static void f_map(INT32 args)
 {
   int err;
   char *retval, *retkey;
