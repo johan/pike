@@ -593,6 +593,7 @@ void really_free_object(struct object *o)
     first_object=o->next;
 
   if(o->next) o->next->prev=o->prev;
+  if (Pike_in_gc) remove_marker(o);
 
   if(o->prog)
   {
