@@ -1522,6 +1522,12 @@ static node *optimize_sprintf(node *n)
 	  );
 	return ret;
 
+      case 'x':
+	ADD_NODE_REF2(*arg1,
+		      ret = mkefuncallnode("int2hex",*arg1);
+	  );
+	return ret;
+
       default: break;
     }
   }
