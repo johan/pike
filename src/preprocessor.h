@@ -1544,7 +1544,6 @@ static INT32 lower_cpp(struct cpp *this,
           SKIPSPACE();
           foo=pos;
           FIND_EOL();
-	  pos++;
 	  if(OUTP())
 	  {
 #if (SHIFT == 0)
