@@ -219,7 +219,6 @@ static void get_new_mpz(MP_INT *tmp, struct svalue *s)
 #undef SHIFT
 #undef FILTER
 #else
-#error HUU
     mpz_set_si(tmp, (signed long int) s->u.integer);
 #endif
     break;
