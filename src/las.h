@@ -29,6 +29,7 @@ void yytype_error(char *msg, struct pike_type *expected_t,
 void yyerror(char *s);
 int islocal(struct pike_string *str);
 int verify_declared(struct pike_string *str);
+void cleanup_compiler(void);
 
 
 extern int cumulative_parse_error;
