@@ -1359,7 +1359,7 @@ int th_num_idle_farmers(void)
 }
 
 static int _num_farmers;
-int th_num_farmers()
+int th_num_farmers(void)
 {
   return _num_farmers;
 }
