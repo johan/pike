@@ -487,12 +487,14 @@ PMOD_EXPORT extern int t_flag;
 #define SWAP_IN_TRACE(_tmp)
 #endif /* THREAD_TRACE */
 
-#define SWAP_OUT_THREAD(_tmp) do {				\
-       (_tmp)->state=Pike_interpreter;				\
-       (_tmp)->swapped=1;					\
-       SWAP_OUT_TRACE(_tmp);					\
-       DO_IF_PROFILING( (_tmp)->time_base += gethrtime() ; )	\
-      } while(0)
+#define SWAP_OUT_THREAD(_tmp) do {					\
+       (_tmp)->state=Pike_interpreter;					\
+       (_tmp)->swapped=1;						\
+       SWAP_OUT_TRACE(_tmp);						\
+       DO_IF_PROFILING( (_tmp)->time_base += gethrtime() ; )		\
+       /* Do this one always to catch nested THREADS_ALLOW(), etc. */	\
+       Pike_interpreter.thread_id = (struct object *) (ptrdiff_t) -1;	\
+     } while(0)
 
 #define SWAP_IN_THREAD(_tmp) do {					\
        (_tmp)->swapped=0;						\
