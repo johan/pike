@@ -716,12 +716,13 @@ class Crawler
     map(links,queue->put);
   }
 
-  void got_robot_excluder(RobotExcluder excl, Standards.URI _real_uri)
+  void got_robot_excluder(RobotExcluder excl, Standards.URI _real_uri, mapping _headers)
   {
-    get_next_uri(excl->base_uri, _real_uri);
+    get_next_uri(excl->base_uri, _real_uri, _headers);
   }
   
-  void get_next_uri(void|Standards.URI _uri, void|Standards.URI _real_uri)
+  void get_next_uri(void|Standards.URI _uri, void|Standards.URI _real_uri,
+		    void|mapping _headers)
   {
     object|int uri;
     mapping headers;
@@ -730,6 +731,7 @@ class Crawler
     if (_uri) {
       uri = _uri;
       real_uri = _real_uri;
+      headers = _headers;
     }
     else
     {
@@ -762,7 +764,7 @@ class Crawler
       {
 	_robot_excluders[site] = RobotExcluder(uri, got_robot_excluder,
 					       headers["user-agent"],
-					       real_uri);
+					       real_uri, headers);
 	return;
       }
 
