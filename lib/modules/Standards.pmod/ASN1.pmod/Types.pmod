@@ -464,14 +464,14 @@ class Identifier
   mixed _encode() { return id; }
   void _decode(array(int) data) { id=data; }
 
-  //! @fixme
-  //!   document me!
+  //! Returns a new @[Identifier] object with @[args] appended to the
+  //! ID path.
   this_program append(int ... args) {
     return this_program(@id, @args);
   }
 
   string der_encode() {
-    return build_der(sprintf("%c%@s", 40 * id[0] + id[1],
+    return build_der(sprintf("%s%@s", to_base_128(40 * id[0] + id[1]),
 			     map(id[2..], to_base_128)));
   }
 
