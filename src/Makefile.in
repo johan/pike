@@ -155,8 +155,7 @@ MODULE_REQUIREMENTS= \
   modules/dynamic_module_makefile \
   $(SRCDIR)/language.h \
   $(SRCDIR)/interpret_protos.h \
-  lib \
-  @EXTRA_MODULE_REQUIREMENTS@
+  lib @EXTRA_MODULE_REQUIREMENTS@
 
 
 DEPEND= \
