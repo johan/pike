@@ -257,7 +257,7 @@ extern int fd_type[MAX_OPEN_FILEDESCRIPTORS];
 #define direct _WIN32_FIND_DATAA
 #define dirent direct
 #define MAXPATHLEN MAX_PATH
-#define NAMELEN(dirent) strlen((dirent)->d_name)
+#define NAMLEN(dirent) strlen((dirent)->d_name)
 
 typedef struct DIR_s
 {
