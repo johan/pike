@@ -1399,7 +1399,7 @@ void f_destruct(INT32 args)
 	   
     o=fp->current_object;
   }
-  if (o->prog->flags & PROGRAM_NO_EXPLICIT_DESTRUCT)
+  if (o->prog && o->prog->flags & PROGRAM_NO_EXPLICIT_DESTRUCT)
     PIKE_ERROR("destruct", "Object can't be destructed explicitly.\n", sp, args);
 #ifdef PIKE_SECURITY
   if(!CHECK_DATA_SECURITY(o, SECURITY_BIT_DESTRUCT))
