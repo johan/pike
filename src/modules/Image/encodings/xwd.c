@@ -296,8 +296,6 @@ static void image_xwd__decode(INT32 args)
 	 s->str+(header.header_size+header.ncolors*12),
 	 s->len-(header.header_size+header.ncolors*12)));
 
-   fprintf(stderr,"f %d %d\n",header.visual_class,header.pixmap_format);
-
    switch (header.visual_class*100+header.pixmap_format)
    {
       /*
