@@ -225,9 +225,14 @@ OPCODE1(F_NUMBER, "push int", 0, {
   push_int(arg1);
 });
 
+/* always need to declare this opcode to make working dists */
 #if SIZEOF_INT_TYPE > 4
 OPCODE2(F_NUMBER64, "push 64-bit int", 0, {
   push_int((((INT_TYPE)arg1)<<32)|((unsigned INT32)arg2));
+});
+#else
+OPCODE2(F_NUMBER64, "push 64-bit int", 0, {
+  Pike_error("F_NUMBER64: this opcode should never be used in your system\n");
 });
 #endif
 
