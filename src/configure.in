@@ -1553,6 +1553,7 @@ prstatus_t prs;
       proc_fd = open(proc_name, O_RDONLY);
       ioctl(proc_fd, PIOCUSAGE, &pru);
       ioctl(proc_fd, PIOCSTATUS, &prs);
+      tmp=pru.pr_utime.tv_sec;
     ],
       pike_cv_getrusage_procfs=yes
     ,
