@@ -713,7 +713,7 @@ static void PIKE_CONCAT(file_,X) (int fd, void *data)		\
 static void PIKE_CONCAT(file_set_,X) (INT32 args)		\
 {								\
   if(!args)							\
-    error("Too few arguments to %s\n",#X);			\
+    error("Too few arguments to file_set_%s\n",#X);		\
   assign_svalue(& THIS->X, sp-args);				\
   if(IS_ZERO(sp-args))						\
   {								\
