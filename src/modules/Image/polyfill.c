@@ -390,10 +390,10 @@ static INLINE void polyfill_slant_add(double *buf,
 
 static int polyfill_event(double xmin,
 			  double xmax,
-			  struct line_list **pll,
-			  int tog,
 			  double yp,
-			  double *buf)
+			  double *buf,
+			  struct line_list **pll,
+			  int tog)
 {
    struct line_list *c;
    struct line_list *ll=*pll;
@@ -520,9 +520,9 @@ static void polyfill_some(struct image *img,
       double yp = y;
       struct line_list *c;
       double xmin, xmax;
+      rgb_group *d;
       int tog=0;
       int i;
-      rgb_group *d;
 
 #ifdef POLYDEBUG      
       fprintf(stderr,"\nline %d..%d\n",y,y+1);
@@ -624,7 +624,7 @@ static void polyfill_some(struct image *img,
 	 if (xmax==1e10) break; /* no more events */
 
 	 if (xmax>ixmax) xmax=ixmax;
-	 tog=polyfill_event(xmin,xmax,&ll,tog,yp,buf);
+	 tog=polyfill_event(xmin,xmax,yp,buf,&ll,tog);
 	 
 	 /* shift to get next event */
 	 xmin = xmax;
