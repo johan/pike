@@ -2199,6 +2199,12 @@ static void low_print_tree(node *foo,int needlval)
     fprintf(stderr, ")");
     return;
 
+  case F_NORMAL_STMT_LABEL:
+  case F_CUSTOM_STMT_LABEL:
+    fprintf(stderr, "%s:", _CAR(foo)->u.sval.u.string->str);
+    low_print_tree(_CDR(foo),0);
+    return;
+
   default:
     if(!car_is_node(foo) && !cdr_is_node(foo))
     {
