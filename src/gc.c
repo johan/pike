@@ -2096,14 +2096,14 @@ int do_gc(void)
      * doesn't occur very often; only when something have both
      * external weak refs and nonweak cyclic refs from internal
      * things. */
-    gc_zap_ext_weak_refs_in_arrays();
-    /* Multisets handled as arrays. */
+    gc_zap_ext_weak_refs_in_mappings();
     if (gc_ext_weak_refs) {
-      gc_zap_ext_weak_refs_in_mappings();
+      gc_zap_ext_weak_refs_in_arrays();
+      /* Multisets handled as arrays. */
       if (gc_ext_weak_refs) {
-	gc_zap_ext_weak_refs_in_programs();
+	gc_zap_ext_weak_refs_in_objects();
 	if (gc_ext_weak_refs)
-	  gc_zap_ext_weak_refs_in_objects();
+	  gc_zap_ext_weak_refs_in_programs();
       }
     }
     GC_VERBOSE_DO(
