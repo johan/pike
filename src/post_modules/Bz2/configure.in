@@ -9,7 +9,7 @@ PIKE_FEATURE_WITHOUT(libbzip2mod)
 
 if test x$with_libbzip2mod = xyes ; then
   AC_CHECK_LIB(bz2, bzCompressInit)
-  AC_CHECK_HEADERS(bzlib.h)
+  AC_CHECK_HEADERS(bzlib.h string.h strings.h)
   PIKE_FEATURE_NODEP(libbzip2mod)
 fi
 
