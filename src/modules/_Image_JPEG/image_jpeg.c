@@ -854,10 +854,13 @@ static void img_jpeg_decode(INT32 args,int mode)
 
    /* we can only handle RGB or GRAYSCALE */
 
-   if (mds.cinfo.jpeg_color_space==JCS_GRAYSCALE)
-      mds.cinfo.out_color_space=JCS_GRAYSCALE;
-   else
-      mds.cinfo.out_color_space=JCS_RGB;
+/* don't know about this code; the jpeg library handles 
+   RGB destination for GRAYSCALE / Mirar 2001-05-19 */
+/*     if (mds.cinfo.jpeg_color_space==JCS_GRAYSCALE) */
+/*        mds.cinfo.out_color_space=JCS_GRAYSCALE; */
+/*     else */
+
+   mds.cinfo.out_color_space=JCS_RGB; 
 
    /* check configuration */
 
