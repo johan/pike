@@ -301,8 +301,14 @@ PIKECLASS mpf
 	  push_undefined();
 	  return;
 
-	  /* Fixme: Support g/e/E */
 	case 'O':
+	  push_constant_text ("Gmp.mpf(");
+	  f_mpf_get_string(0);
+	  push_constant_text (")");
+	  f_add (3);
+	  return;
+
+	  /* Fixme: Support g/e/E */
 	case 'g':
 	case 'e':
 	case 'E':

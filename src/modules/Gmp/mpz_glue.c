@@ -610,8 +610,23 @@ static void mpzmod__sprintf(INT32 args)
       else
 	push_constant_text("object");
       return;
-#endif      
+#endif
+
   case 'O':
+#ifdef AUTO_BIGNUM
+    if (THIS_PROGRAM == mpzmod_program) {
+#endif
+      push_constant_text ("Gmp.mpz(");
+      push_string (low_get_mpz_digits (THIS, 10));
+      push_constant_text (")");
+      f_add (3);
+      s = (--sp)->u.string;
+      break;
+#ifdef AUTO_BIGNUM
+    }
+#endif
+    /* Fall through */
+
   case 'u': /* Note: 'u' is not really supported. */
   case 'd':
     s = low_get_mpz_digits(THIS, 10);

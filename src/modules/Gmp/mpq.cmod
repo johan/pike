@@ -382,7 +382,10 @@ PIKECLASS mpq
 	  return;
 
 	case 'O':
+	  push_constant_text ("Gmp.mpq(");
 	  f_mpq_get_string(0);
+	  push_constant_text (")");
+	  f_add (3);
 	  return;
 
 	  /* Fixme: Support g/e/E */
