@@ -312,6 +312,7 @@ object Separated = class {
   
   mixed encode(object t, void|mapping options)
   {
+    options = options || ([]);
     string rowsep = options->rowsep||"\n";
     string colsep = options->colsep||"\t";
     return Array.map(({ indices(t) }) + values(t),
