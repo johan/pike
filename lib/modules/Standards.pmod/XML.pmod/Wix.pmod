@@ -66,7 +66,7 @@ class RegistryEntry
   {
     RegistryEntry::root = root;
     RegistryEntry::key = key;
-    RegistryEntry::name = name;
+    RegistryEntry::name = name && sizeof(name) && name;
     RegistryEntry::value = value;
     RegistryEntry::id = id;
   }
@@ -78,10 +78,10 @@ class RegistryEntry
       "Action":"write",
       "Root":root,
       "Key":key,
-      "Name":name,
       "Type":"string",
       "Value":value,
     ]);
+    if (name) attrs->Name = name;
     return WixNode("Registry", attrs);
   }
 }
@@ -262,6 +262,21 @@ class Directory
     }
   }
 
+  class IniFile
+  {
+    string id;
+    string name;
+    mapping(string:mapping(string:string)) contents;
+
+    static void create(string name, string id,
+		       mapping(string:mapping(string:string)) contents)
+    {
+      IniFile::id = id;
+      IniFile::name = name;
+      IniFile::contents = contents;
+    }
+  }
+
   Directory low_add_path(array(string) path, string|void dir_id)
   {
     Directory d = this_object();
@@ -338,7 +353,7 @@ class Directory
 		      string name, string value, string id)
   {
     Directory d = low_add_path(path/"/");
-    d->other_entries[root+"\\"+key+"\\:"+name] =
+    d->other_entries[root+"\\"+key+"\\:"+(name||"")] =
       RegistryEntry(root, key, name, value, id);
   }
 
