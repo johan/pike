@@ -10,6 +10,10 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
+#if defined(__WINNT__) && !defined(__NT__)
+#define __NT__
+#endif
+
 /* The worlds most stringent C compiler? */
 #ifdef __TenDRA__
 /* We want to be able to use 64bit arithmetic */
