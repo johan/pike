@@ -118,6 +118,8 @@ PMOD_EXPORT void f__reset_dmalloc(INT32 args);
 PMOD_EXPORT void f__locate_references(INT32 args);
 PMOD_EXPORT void f_map_array(INT32 args);
 void init_builtin_efuns(void);
+void init_builtin(void);
+void exit_builtin(void);
 /* Prototypes end here */
 
 #endif

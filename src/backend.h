@@ -47,6 +47,7 @@ PMOD_EXPORT void *query_write_oob_callback_data(int fd);
 #endif /* WITH_OOB */
 void do_debug(void);
 void backend(void);
+void exit_backend(void);
 PMOD_EXPORT int write_to_stderr(char *a, size_t len);
 /* Prototypes end here */
 
