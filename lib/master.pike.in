@@ -2076,7 +2076,7 @@ class CompatResolver
   {
     if(local_include)
     {
-      if(IS_ABSOLUTE_PATH(f)) return combine_path("/",f);
+      if(IS_ABSOLUTE_PATH(f)) return combine_path(f);
       return combine_path_with_cwd(dirname(current_file), f);
     }
     else
