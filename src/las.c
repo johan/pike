@@ -372,6 +372,11 @@ int check_tailrecursion(void)
 #undef BLOCK_ALLOC_NEXT
 #define BLOCK_ALLOC_NEXT u.node.a
 
+#undef PRE_INIT_BLOCK
+#define PRE_INIT_BLOCK(NODE) do {					\
+    NODE->token = USHRT_MAX;						\
+  } while (0)
+
 BLOCK_ALLOC(node_s, NODES)
 
 #undef BLOCK_ALLOC_NEXT
@@ -575,11 +580,7 @@ void free_all_nodes(void)
 	{
 	  for(e=0;e<NODES;e++)
 	  {
-	    for(tmp=free_node_ss;tmp;tmp=_CAR(tmp))
-	      if(tmp==tmp2->x+e)
-		break;
-	    
-	    if(!tmp)
+	    if (tmp2->x[e].token != USHRT_MAX)
 	    {
 	      tmp=tmp2->x+e;
 #ifdef PIKE_DEBUG
