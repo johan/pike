@@ -61,9 +61,10 @@ void rbstack_shift (struct rbstack_ptr rbstack,
     {NULL,}								\
   };									\
   struct rbstack_ptr rbstack = {					\
-    &PIKE_CONCAT3 (_, rbstack, _top_),					\
+    NULL,								\
     0									\
-  }
+  };									\
+  rbstack.slice = &PIKE_CONCAT3 (_, rbstack, _top_)
 
 #define RBSTACK_PUSH(rbstack, node) do {				\
     if ((rbstack).ssp < STACK_SLICE_SIZE) {				\
