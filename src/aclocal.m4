@@ -345,23 +345,20 @@ pushdef([AC_OUTPUT],
   export BINDIR
   AC_SUBST(BUILDDIR)
   export BUILDDIR
-  AC_SUBST(TMP_LIBDIR)
-  export TMP_BUILDDIR
-  AC_SUBST(TMP_BUILDDIR)
-  export INSTALL
   AC_SUBST(INSTALL)
-  export AR
+  export INSTALL
   AC_SUBST(AR)
-  export CFLAGS
+  export AR
   AC_SUBST(CFLAGS)
-  export CPPFLAGS
+  export CFLAGS
   AC_SUBST(CPPFLAGS)
-  export OPTIMIZE
+  export CPPFLAGS
   AC_SUBST(OPTIMIZE)
-  export WARN
+  export OPTIMIZE
   AC_SUBST(WARN)
-  export CCSHARED
+  export WARN
   AC_SUBST(CCSHARED)
+  export CCSHARED
 
   PMOD_TARGETS=`echo $srcdir/*.cmod | sed -e "s/\.cmod/\.c/g" | sed -e "s|$srcdir/|\\$(SRCDIR)/|g"`
   test "$PMOD_TARGETS" = '$(SRCDIR)/*.c' && PMOD_TARGETS=
