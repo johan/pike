@@ -320,8 +320,7 @@ object big_query(object|string q, mapping(string|int:mixed)|void bindings)
     } else {
       pre_res = master_sql->big_query(q);
     }
-  }
-  if (bindings) {
+  } else if (bindings) {
     pre_res = master_sql->query(q, bindings);
   } else {
     pre_res = master_sql->query(q);
