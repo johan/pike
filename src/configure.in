@@ -4984,7 +4984,7 @@ AC_CACHE_VAL(pike_cv_sys_nonblock,
           pike_cv_sys_nonblock=$method
           break;
         ], [], [
-	  # Not meaningful.
+	  :; # Not meaningful.
   	])
       done
     else :; fi
