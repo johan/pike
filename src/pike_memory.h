@@ -60,6 +60,7 @@ struct generic_mem_searcher
 #define MEMCHR0 MEMCHR
 
 /* Prototypes begin here */
+int pcharp_memcmp(PCHARP a, PCHARP b, int sz);
 INLINE p_wchar1 *MEMCHR1(p_wchar1 *p,p_wchar1 c,INT32 e);
 INLINE p_wchar2 *MEMCHR2(p_wchar2 *p,p_wchar2 c,INT32 e);
 void swap(char *a, char *b, INT32 size);
