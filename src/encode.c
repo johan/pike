@@ -3472,6 +3472,10 @@ static void decode_value2(struct decode_data *data)
 	    Pike_error("Unsupported byte-code method: %d\n", bytecode_method);
 	  } else {
 
+#ifdef PIKE_PORTABLE_BYTECODE
+	    fprintf(stderr, "Warning: Decoding non-portable bytecode.\n");
+#endif /* PIKE_PORTABLE_BYTECODE */
+
 #ifdef PIKE_USE_MACHINE_CODE
 	    {
 	      size_t csum;
