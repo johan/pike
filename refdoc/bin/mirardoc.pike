@@ -8,8 +8,6 @@ string execute;
 mapping parse=([ " appendix":([]) ]);
 int illustration_counter;
 
-#define error(X) throw( ({ (X), backtrace()[0..sizeof(backtrace())-2] }) )
-
 /*
 
 module : mapping <- moduleM
