@@ -475,7 +475,7 @@ fprintf(stderr,"space: %d,%d,%d-%d,%d,%d  ",
 	 /* split tree */
 
 	 *rgb_node = (( (*rn_next)-ct->rgb_node ) |
-		      ( ((unsigned long)split_on) << 22 )
+		      ( ((unsigned long)split_on) << 22 ) |
 		      ( (dir+1)<<30 )) & 0xffffffff;
 	 rgb_node=*rn_next;
 	 (*rn_next)+=2;
