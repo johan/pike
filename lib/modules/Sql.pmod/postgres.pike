@@ -352,6 +352,4 @@ int|object big_query(object|string q, mapping(string|int:mixed)|void bindings)
   return ::big_query(.sql_util.emulate_bindings(q, bindings, this_object()));
 }
 
-#else /* !constant(Postgres.postgres) */
-#error "Postgres support not available.\n"
 #endif /* constant(Postgres.postgres) */

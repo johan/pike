@@ -196,6 +196,4 @@ int(0..1) is_keyword( string name )
   >)[ lower_case(name) ];
 }
 
-#else /* !constant(Mysql.mysql) */
-#error "Mysql support not available.\n"
 #endif /* constant(Mysql.mysql) */
