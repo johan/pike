@@ -93,9 +93,7 @@ class RandomSource {
 }
 
 // Compatibility
-class pike_random {
-  inherit RandomSource;
-}
+constant pike_random = RandomSource;
 
 #ifdef __NT__
 static class NTSource {
