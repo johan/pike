@@ -3501,13 +3501,17 @@ comma_expr_or_maxint: /* empty */ { $$=mkintnode(0x7fffffff); }
 
 gauge: TOK_GAUGE catch_arg
   {
-    $$=mkefuncallnode("abs",
-		  mkopernode("`/", 
-			     mkopernode("`-", mkefuncallnode("gethrvtime",0),
+    $$=mkopernode("`/",
+		  mkopernode("`-",
+			     mkopernode("`-",
+					mkefuncallnode("gethrvtime",
+						       mkintnode(1)),
 					mknode(F_COMMA_EXPR,
 					       mknode(F_POP_VALUE, $2, NULL),
-					       mkefuncallnode("gethrvtime",0))),
-			     mkfloatnode((FLOAT_TYPE)1000000.0)));
+					       mkefuncallnode("gethrvtime",
+							      mkintnode(1)))),
+			     NULL),
+		  mkfloatnode((FLOAT_TYPE)1e9));
   };
 
 typeof: TOK_TYPEOF '(' expr0 ')'
