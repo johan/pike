@@ -739,11 +739,13 @@ void pike_module_exit(void)
     remove_callback(mem_callback);
     mem_callback=0;
   }
+#ifdef PIKE_DEBUG
   if(verify_call_out_callback)
   {
     remove_callback(verify_call_out_callback);
     verify_call_out_callback=0;
   }
+#endif /* PIKE_DEBUG */
   if(call_out_backend_callback)
   {
     remove_callback(call_out_backend_callback);
