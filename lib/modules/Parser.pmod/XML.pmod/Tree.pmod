@@ -259,7 +259,7 @@ class AbstractNode {
     return (c);
   }
 
-  //! Removes all occurences of the provided node from the called nodes
+  //! Removes all occurrences of the provided node from the called nodes
   //! list of children. The removed nodes parent reference is set to null.
   void remove_child(AbstractNode c)
   {
@@ -283,7 +283,7 @@ class AbstractNode {
   }
 
 
-  //! Replaces the first occurence of the old node child with
+  //! Replaces the first occurrence of the old node child with
   //! the new node child. All parent references are updated.
   //! @returns
   //!   Returns the new child node.
