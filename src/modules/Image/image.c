@@ -4426,7 +4426,7 @@ static void image_blur( INT32 args )
   int ye = THIS->ysize;
   rgb_group *rgb = THIS->img;
   if( args != 1 )
-    SIMPLE_TOO_FEW_ARGS_ERROR("grey_blur",1);
+    SIMPLE_TOO_FEW_ARGS_ERROR("blur",1);
 
   if( !rgb )
     Pike_error("This object is not initialized\n");
