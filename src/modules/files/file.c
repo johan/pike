@@ -2030,10 +2030,15 @@ static void file_open_socket(INT32 args)
 static void file_set_keepalive(INT32 args)
 {
   int tmp, i;
-  check_all_args("file->set_keepalive",args, T_INT,0);
-  tmp=sp[-args].u.integer;
+  INT_TYPE t;
+
+  get_all_args("file->set_keepalive", args, "%i", &t);
+
+  /* In case int and INT_TYPE have different sizes */
+  tmp = t;
+
 #ifdef SO_KEEPALIVE
-  i=fd_setsockopt(FD,SOL_SOCKET, SO_KEEPALIVE, (char *)&tmp, sizeof(tmp));
+  i = fd_setsockopt(FD,SOL_SOCKET, SO_KEEPALIVE, (char *)&tmp, sizeof(tmp));
   if(i)
   {
     ERRNO=errno;
@@ -2042,7 +2047,7 @@ static void file_set_keepalive(INT32 args)
   }
 #else /* !SO_KEEPALIVE */
 #ifdef ENOTSUP
-  ERRNO=ENOTSUP;
+  ERRNO = ENOTSUP;
 #else /* !ENOTSUP */
 #ifdef ENOTTY
   ERRNO = ENOTTY;
