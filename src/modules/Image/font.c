@@ -388,7 +388,7 @@ void font_load(INT32 args)
 	 new_font->mem = 
 	    mmap(0,size,PROT_READ,MAP_SHARED,fd,0);
 #ifdef MAP_FAILED
-	 if (new_font->mem==MAP_FAILED)
+	 if ((char *)new_font->mem == (char *)MAP_FAILED)
 #else
 	 if (new_font->mem==(void*)-1)
 #endif
