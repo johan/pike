@@ -106,7 +106,7 @@ class simple
       _handle_command(line);
   }
 
-  object(ADT.queue) send_q = ADT.queue();
+  object(ADT.Queue) send_q = ADT.Queue();
 
   static string write_buffer = "";
   static void write_callback(mixed ignored)
