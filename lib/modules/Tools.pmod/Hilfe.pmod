@@ -527,6 +527,7 @@ private class CommandStartStop {
 // Backend subsystem
 //
 
+#if constant(thread_create)
 private class SubSysBackend {
   int(0..1) is_running;
   int(0..1) once;
@@ -571,6 +572,7 @@ private class SubSysBackend {
   }
 
 }
+#endif // constant(thread_create)
 
 private class SubSysLogger {
 
@@ -648,7 +650,9 @@ private class SubSystems {
   void create (){
     // Register the subsystems here.
     subsystems = ([
+#if constant(thread_create)
       "backend":SubSysBackend(),
+#endif
       "logging":SubSysLogger(),
     ]);
   }
@@ -1105,19 +1109,20 @@ class Evaluator {
   }
 
   //! An output method that shouldn't crash.
-  void safe_write(string in, mixed ... args) {
+  int safe_write(string in, mixed ... args) {
     if(!write) return 0;
     mixed err = catch {
-      write(sprintf(in, @args));
-      return;
+      string s = sprintf(in, @args);
+      write(s);
+      return sizeof(s);
     };
     catch {
       write("HilfeError: Error while outputting data.\n");
       write(describe_backtrace(err));
-      return;
+      return 0;
     };
     werror("HilfeError: Error while outputting data.\n");
-    return;
+    return 0;
   }
 
   static array input_hooks = ({});
