@@ -1,6 +1,11 @@
 /* $Id$ */
 #include "global.h"
 
+/*
+**! module Image
+**! class image
+*/
+
 #include <math.h>
 #include <ctype.h>
 

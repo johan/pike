@@ -697,9 +697,7 @@ static INLINE int try_autocrop_horisontal(INT32 y,INT32 x,INT32 x2,
 **!	which borders to scan and cut the image; 
 **!	a typical example is removing the top and bottom unneccesary
 **!	pixels:
-**! example
-**!	img=img->autocrop(0, 0,0,1,1);
-**! end example
+**!	<pre>img=img->autocrop(0, 0,0,1,1);</pre>
 **! see also: copy
 */
 
