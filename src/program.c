@@ -3466,8 +3466,10 @@ void gc_free_all_unreferenced_programs(void)
       int e;
       add_ref(p);
       for(e=0;e<p->num_constants;e++)
+      {
 	free_svalue(& p->constants[e].sval);
-      p->num_constants=0; /* evil */
+	p->constants[e].sval.type=T_INT;
+      }
 
       for(e=0;e<p->num_inherits;e++)
       {
@@ -3479,7 +3481,6 @@ void gc_free_all_unreferenced_programs(void)
       }
 
       /* FIXME: Is there anything else that needs to be freed here? */
-
       SET_NEXT_AND_FREE(p, free_program);
     }else{
       next=p->next;

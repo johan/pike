@@ -1634,6 +1634,7 @@ void cleanup_memhdrs(void)
 	  break;
 	}
 	
+	find_references_to(p);
 	dump_memhdr_locations(m, 0);
       }
     }

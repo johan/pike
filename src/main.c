@@ -676,15 +676,19 @@ void low_exit_main(void)
     {
       struct program *p;
       for(p=first_program;p;p=p->next)
-      {
 	describe_something(p, T_PROGRAM, 1);
-      }
     }
 
 
     count_memory_in_objects(&num, &size);
     if(num)
       fprintf(stderr,"Objects left: %d (%d bytes)\n",num,size);
+
+    {
+      struct object *o;
+      for(o=first_object;o;o=o->next)
+	describe_something(o, T_OBJECT, 1);
+    }
 
     cleanup_shared_string_table();
   }
