@@ -88,6 +88,7 @@ PMOD_EXPORT void check_recovery_context(void)
 
 PMOD_EXPORT void pike_gdb_breakpoint(INT32 args)
 {
+  pop_n_elems(args);
 }
 
 PMOD_EXPORT JMP_BUF *init_recovery(JMP_BUF *r, size_t stack_pop_levels DEBUG_LINE_ARGS)
