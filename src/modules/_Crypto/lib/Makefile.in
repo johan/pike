@@ -1,3 +1,5 @@
+# $Id$
+#
 # Makefile for low-level crypto library
 
 CC=@CC@

@@ -23,6 +23,8 @@
 #include <string.h>
 #include <stdio.h>
 
+RCSID("$Id$");
+
 struct disc_time
 {
   int season; /* 0-4 */

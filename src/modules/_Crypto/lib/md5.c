@@ -1,4 +1,6 @@
 /*
+ * $Id$
+ *
  *  md5.c :  Implementation of the MD5 hash function
  *
  * Part of the Python Cryptography Toolkit, version 1.0.1

@@ -1,3 +1,4 @@
+/* $Id$ */
 #ifndef STREAMED_PARSER_H
 #define STREAMED_PARSER_H
 

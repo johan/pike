@@ -1,3 +1,4 @@
+# $Id$
 AC_INIT(system.c)
 AC_CONFIG_HEADER(system_machine.h)
 

@@ -9,6 +9,8 @@
  * Adapted to pike and some cleanup by Niels Möller.
  */
 
+/* $Id$ */
+
 /* SHA: NIST's Secure Hash Algorithm */
 
 /* Based on SHA code originally posted to sci.crypt by Peter Gutmann

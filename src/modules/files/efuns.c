@@ -22,6 +22,8 @@
 #include "file_machine.h"
 #include "file.h"
 
+RCSID("$Id$");
+
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif

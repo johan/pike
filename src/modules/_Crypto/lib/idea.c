@@ -1,4 +1,6 @@
-/* The basic IDEA transformation
+/* $Id$
+ *
+ * The basic IDEA transformation
  *
  * This implementation is taken from pgp, see note below.
  *

@@ -13,6 +13,8 @@
 #include "error.h"
 #include "builtin_functions.h"
 
+RCSID("$Id$");
+
 #include <stdio.h>
 
 #ifdef HAVE_SYS_UIO_H

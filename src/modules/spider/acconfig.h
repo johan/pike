@@ -1,3 +1,4 @@
+/* $Id$ */
 
 /* Define this if you have an integer timezone. */
 #undef HAVE_INT_TIMEZONE

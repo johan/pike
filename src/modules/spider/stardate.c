@@ -12,6 +12,8 @@
 #include "builtin_functions.h"
 #include "error.h"
 
+RCSID("$Id$");
+
 #ifdef HAVE_SYS_TIME_H 
 #include <sys/time.h>
 #endif

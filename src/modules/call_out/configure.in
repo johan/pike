@@ -1,3 +1,4 @@
+# $Id$
 AC_INIT(call_out.c)
 
 sinclude(../module_configure.in)

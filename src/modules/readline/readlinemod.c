@@ -13,6 +13,8 @@
 #include "pike_macros.h"
 #include "threads.h"
 
+RCSID("$Id$");
+
 #include <errno.h>
 
 #ifndef HAVE_LIBTERMCAP
