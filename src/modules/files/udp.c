@@ -277,7 +277,7 @@ void udp_wait(INT32 args)
   FD_ZERO(&rset);
   FD_SET(fd, &rset);
   tv.tv_sec = (int)timeout;
-  tv.tv_usec = (int)(timeout * 1000000.0);
+  tv.tv_usec = (int)((timeout - ((int)timeout)) * 1000000.0);
   res = select(fd+1, &rset, NULL, NULL, &tv);
   e = errno;
 
