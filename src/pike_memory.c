@@ -1307,10 +1307,11 @@ void cleanup_memhdrs(void)
 	for(l=m->locations;l;l=l->next)
 	{
 	  struct fileloc *f=find_file_location(l->locnum);
-	  fprintf(stderr,"  *** %s:%d (%d times) %s\n",
+	  fprintf(stderr,"  *** %s:%d (%d times) %s%s\n",
 		  f->file,
 		  f->line,
 		  l->times,
+		  l->locnum<0 ? "-" : "",
 		  find_location(&no_leak_memlocs, l->locnum) ? "" : " *");
 	}
       }
