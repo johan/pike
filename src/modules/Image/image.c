@@ -3564,22 +3564,6 @@ void init_image_image(void)
 
    ADD_FUNCTION("cast",image_cast,
 		tFunc(tStr,tStr),0);
-   ADD_FUNCTION("to8bit",image_to8bit,
-		tFunc(tArr(tArr(tInt)),tStr),0);
-   ADD_FUNCTION("to8bit_closest",image_to8bit,
-		tFunc(tArr(tArr(tInt)),tStr),0);
-   ADD_FUNCTION("to8bit_fs",image_to8bit,
-		tFunc(,tStr),0);
-   ADD_FUNCTION("torgb",image_torgb,
-		tFunc(,tStr),0);
-   ADD_FUNCTION("tozbgr",image_tozbgr,
-		tFunc(tArr(tArr(tInt)),tStr),0);
-   ADD_FUNCTION("to8bit_rgbcube",image_to8bit_rgbcube,
-		tFunc(tInt tInt tInt tOr(tVoid,tStr),tStr),0);
-   ADD_FUNCTION("tobitmap",image_tobitmap,
-		tFunc(,tStr),0);
-   ADD_FUNCTION("to8bit_rgbcube_rdither",image_to8bit_rgbcube_rdither,
-		tFunc(tInt tInt tInt tOr(tVoid,tStr),tStr),0);
 
 
    ADD_FUNCTION("copy",image_copy,
