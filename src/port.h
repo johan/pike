@@ -9,6 +9,7 @@
 #define PORT_H
 
 #include "global.h"
+#include <math.h>
 
 #ifndef STRUCT_TIMEVAL_DECLARED
 #define STRUCT_TIMEVAL_DECLARED
@@ -299,10 +300,14 @@ long long gethrtime(void);
 /* C99 provides a portable way of generating NaN */
 #define MAKE_NAN() (nan(""))
 #else
+#ifdef NAN
+#define MAKE_NAN() (NAN)
+#else
 #ifdef PORT_DO_WARN
 #warning Don´t know how to create NaN on this system!
 #endif
 #define MAKE_NAN() (0.0)
+#endif /* NAN */
 #endif /* HAVE_NAN */
 #endif /* HAVE_INFNAN */
 
