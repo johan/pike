@@ -210,6 +210,7 @@ void bad_arg_error(
 void math_error(
   char *func,
   struct svalue *base_sp,  int args,
+  struct svalue *number,
   char *desc, ...) ATTRIBUTE((noreturn,format (printf, 4, 5)));
 void resource_error(
   char *func,

@@ -447,11 +447,11 @@ void math_error(
   INIT_ERROR(math);
   if(number)
   {
-    ERROR_COPY_SVALUE(bad_arg, number);
+    ERROR_COPY_SVALUE(math, number);
   }else{
-    ERROR_STRUCT(bad_arg,o)->number.type=T_INT;
-    ERROR_STRUCT(bad_arg,o)->number.subtype=NUMBER_UNDEFINED;
-    ERROR_STRUCT(bad_arg,o)->number.u.integer=0;
+    ERROR_STRUCT(math,o)->number.type=T_INT;
+    ERROR_STRUCT(math,o)->number.subtype=NUMBER_UNDEFINED;
+    ERROR_STRUCT(math,o)->number.u.integer=0;
   }
   ERROR_DONE(generic);
 }
