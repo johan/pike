@@ -963,19 +963,49 @@ char *low_describe_type(char *t)
       
     case T_NOT:
       my_strcat("!");
-      t=low_describe_type(t);
+      if (EXTRACT_UCHAR(t) > T_NOT) {
+	my_strcat("(");
+	t=low_describe_type(t);
+	my_strcat(")");
+      } else {
+	t=low_describe_type(t);
+      }
       break;
       
     case T_OR:
-      t=low_describe_type(t);
+      if (EXTRACT_UCHAR(t) > T_OR) {
+	my_strcat("(");
+	t=low_describe_type(t);
+	my_strcat(")");
+      } else {
+	t=low_describe_type(t);
+      }
       my_strcat(" | ");
-      t=low_describe_type(t);
+      if (EXTRACT_UCHAR(t) > T_OR) {
+	my_strcat("(");
+	t=low_describe_type(t);
+	my_strcat(")");
+      } else {
+	t=low_describe_type(t);
+      }
       break;
       
     case T_AND:
-      t=low_describe_type(t);
+      if (EXTRACT_UCHAR(t) > T_AND) {
+	my_strcat("(");
+	t=low_describe_type(t);
+	my_strcat(")");
+      } else {
+	t=low_describe_type(t);
+      }
       my_strcat(" & ");
-      t=low_describe_type(t);
+      if (EXTRACT_UCHAR(t) > T_AND) {
+	my_strcat("(");
+	t=low_describe_type(t);
+	my_strcat(")");
+      } else {
+	t=low_describe_type(t);
+      }
       break;
       
     case T_MAPPING:
