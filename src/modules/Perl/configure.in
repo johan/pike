@@ -5,7 +5,7 @@ AC_CONFIG_HEADER(perl_machine.h)
 AC_MODULE_INIT()
 
 AC_ARG_WITH(perl, [  --with-perl           enable the Perl module],[],
-	    [with_perl="yes"])
+	    [with_perl="no"])
 
 PIKE_FEATURE_WITHOUT(Perl)
 
