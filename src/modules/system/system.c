@@ -943,7 +943,7 @@ void f_RegGetValue(INT32 args)
 }
 #endif
 
-extern init_passwd(void);
+extern void init_passwd(void);
 
 /*
  * Module linkage
