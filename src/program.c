@@ -3263,6 +3263,9 @@ PMOD_EXPORT void set_exit_callback(void (*exit)(struct object *))
  * during a gc pass. The gc assumes that the references are enumerated
  * in the same order in that case.
  *
+ * The callback is called after any mapped variables on the object
+ * have been recursed (and possibly freed).
+ *
  * This function is obsolete, use pike_set_prog_event_callback instead.
  */
 PMOD_EXPORT void set_gc_recurse_callback(void (*m)(struct object *))
