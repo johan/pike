@@ -125,7 +125,7 @@ PIKECLASS mpf
     }
   
   /* FIXME: */
-  /*! @decl static void create(void|int|string|float|object x@
+  /*! @decl static void create(void|int|string|float|object x, @
    *!                          void|int(0..) precision)
    *! @decl static void create(string x, int(0..) precision, int(2..36) base)
    */
