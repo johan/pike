@@ -32,6 +32,10 @@
 #include <ieeefp.h>
 #endif
 
+#ifdef HAVE_FLOAT_H
+#include <float.h>
+#endif /* HAVE_FLOAT_H */
+
 /* isnan()...
  */
 #ifdef HAVE_ISNAN
