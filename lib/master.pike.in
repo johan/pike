@@ -2575,7 +2575,8 @@ void _main(array(string) orig_argv, array(string) env)
 	_error("Error: %s has no main().\n", argv[0]);
       ret=script->main(sizeof(argv),argv,env);
     };
-  predef::trace(trace);
+  // Disable traceing.
+  trace = predef::trace(trace);
   if (err) {
     handle_error (err);
     ret = 10;
@@ -2587,6 +2588,8 @@ void _main(array(string) orig_argv, array(string) env)
   if(ret >=0) exit([int]ret);
   _async=1;
 
+  // Reenable tracing.
+  trace = predef::trace(trace);
   while(1)
   {
     mixed err=catch 
