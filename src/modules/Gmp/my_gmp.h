@@ -42,6 +42,8 @@ void mpzmod_reduce(struct object *o);
 struct pike_string *low_get_mpz_digits(MP_INT *mpz, int base);
 
 extern struct program *mpzmod_program;
+extern struct program *mpq_program;
+extern struct program *mpf_program;
 #ifdef AUTO_BIGNUM
 extern struct program *bignum_program;
 #endif
@@ -53,12 +55,18 @@ extern struct program *bignum_program;
 #define get_mpz debug_get_mpz 
 #endif
 
+#define MP_FLT __mpf_struct
 
 #define OBTOMPZ(o) ((MP_INT *)(o->storage))
-
+#define OBTOMPQ(o) ((MP_RAT *)(o->storage))
+#define OBTOMPF(o) ((MP_FLT *)(o->storage))
 
 /* MPQ protos */
 void pike_init_mpq_module(void);
 void pike_exit_mpq_module(void);
+
+/* MPF protos */
+void pike_init_mpf_module(void);
+void pike_exit_mpf_module(void);
 
 #endif /* MY_GMP_H_INCLUDED */
