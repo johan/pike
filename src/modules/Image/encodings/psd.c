@@ -24,6 +24,7 @@ RCSID("$Id$");
 
 #include "image.h"
 #include "colortable.h"
+
 #ifdef HAVE_NETINET_IN_H
 #include <netinet/in.h>
 #endif

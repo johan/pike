@@ -798,8 +798,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	       }
 	       s+=2;
 	    }
-   done_rle8:
-	    ;
+   done_rle8: ;
 	 }
 	 else
 	 {
@@ -915,8 +914,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	       }
 	       s+=2;
 	    }
-	 done_rle4:
-	    ;
+   done_rle4: ;
 	 }
 	 else
 	 {
