@@ -169,7 +169,7 @@ class Compound
   constant constructed = 1;
 
   //! contents of compound object, elements are from @[Standards.ASN1.Types]
-  array(object) elements = ({ });
+  array(Object) elements = ({ });
 
   this_program init(array args) {
     WERROR(sprintf("asn1_compound[%s]->init(%O)\n", type_name, args));
