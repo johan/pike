@@ -1219,7 +1219,7 @@ void f_create_process(INT32 args)
     storage.argv=(char **)xalloc((1+cmd->size) * sizeof(char *));
 
 #if 1
-    init_threads_disable(thread_id);
+    init_threads_disable(NULL);
     storage.disabled = 1;
 #endif
 
