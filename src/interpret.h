@@ -174,11 +174,23 @@ enum apply_type
    APPLY_LOW    /* arg1 is the object pointer,(int)arg2 the function */
 };
 
+#ifdef __ECL
+static inline void apply_low(struct object *o, ptrdiff_t fun, INT32 args)
+{
+  mega_apply(APPLY_LOW, args, (void*)o, (void*)fun);
+}
+
+static inline void strict_apply_svalue(struct svalue *sval, INT32 args)
+{
+  mega_apply(APPLY_SVALUE, args, (void*)sval, 0);
+}
+#else /* !__ECL */
 #define apply_low(O,FUN,ARGS) \
   mega_apply(APPLY_LOW, (ARGS), (void*)(O),(void*)(FUN))
 
 #define strict_apply_svalue(SVAL,ARGS) \
   mega_apply(APPLY_SVALUE, (ARGS), (void*)(SVAL),0)
+#endif /* __ECL */
 
 #define APPLY_MASTER(FUN,ARGS) \
 do{ \
