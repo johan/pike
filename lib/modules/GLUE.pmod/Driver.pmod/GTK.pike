@@ -3,7 +3,7 @@
 
 #pike __REAL_VERSION__
 
-#if constant(GTK.Widget)
+#if constant(GTK.GLArea)
 
 inherit .Interface;
 import GLUE.Events;
@@ -203,4 +203,4 @@ void show_cursor() {
   // FIXME: What do we do.
 }
 
-#endif /* constant(GTK.Widget) */
+#endif /* constant(GTK.GLArea) */
