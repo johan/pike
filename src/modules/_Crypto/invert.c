@@ -24,9 +24,6 @@
 #include "stralloc.h"
 #include "builtin_functions.h"
 
-/* Module specific includes */
-#include "precompiled_crypto.h"
-
 /*
  * Globals
  */
@@ -125,7 +122,7 @@ static void f_crypt_block(INT32 args)
  * Module linkage
  */
 
-void MOD_INIT(invert)(void)
+void pike_invert_init(void)
 {
   /*
    * start_new_program();
@@ -157,10 +154,10 @@ void MOD_INIT(invert)(void)
   set_init_callback(init_pike_crypto_invert);
   set_exit_callback(exit_pike_crypto_invert);
 
-  end_class(MODULE_PREFIX "invert", 0);
+  end_class("invert", 0);
 }
 
-void MOD_EXIT(invert)(void)
+void pike_invert_exit(void)
 {
 }
 

@@ -25,8 +25,8 @@
 #include "builtin_functions.h"
 #include "operators.h"
 
-/* Module specific includes */
-#include "precompiled_crypto.h"
+/* Prototypes */
+#include "crypto.h"
 
 struct pike_crypto_pipe {
   struct object **objects;
@@ -285,7 +285,7 @@ static void f_crypt_block(INT32 args)
  * Module linkage
  */
 
-void MOD_INIT(pipe)(void)
+void pike_pipe_init(void)
 {
   /*
    * start_new_program();
@@ -321,9 +321,9 @@ void MOD_INIT(pipe)(void)
   set_init_callback(init_pike_crypto_pipe);
   set_exit_callback(exit_pike_crypto_pipe);
 
-  end_class(MODULE_PREFIX "pipe", 0);
+  end_class("pipe", 0);
 }
 
-void MOD_EXIT(pipe)(void)
+void pike_pipe_exit(void)
 {
 }

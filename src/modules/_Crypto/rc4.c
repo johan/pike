@@ -18,9 +18,6 @@
 
 RCSID("$Id$");
 
-/* Module specific includes */
-#include "precompiled_crypto.h"
-
 #define THIS ((struct rc4_ctx *)(fp->current_storage))
 
 struct program *pike_rc4_program;
@@ -95,12 +92,7 @@ static void f_crypt(INT32 args)
   push_string(end_shared_string(s));
 }
 
-void MOD_INIT2(rc4)(void)
-{
-  /* add_efun()s */
-}
-
-void MOD_INIT(rc4)(void)
+void pike_rc4_init(void)
 {
   start_new_program();
   add_storage(sizeof(struct rc4_ctx));
@@ -114,9 +106,9 @@ void MOD_INIT(rc4)(void)
   set_init_callback(init_pike_rc4);
   set_exit_callback(exit_pike_rc4);
 
-  end_class(MODULE_PREFIX "rc4", 0);
+  end_class("rc4", 0);
 }
 
-void MOD_EXIT(rc4)(void)
+void pike_rc4_exit(void)
 {
 }
