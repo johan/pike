@@ -102,7 +102,7 @@ module.pmod: Makefile
 	  if [ -f ./module.pmod.in ]; then \
 	   sed -e "s/@module@/__builtin_dirnode.$(MODNAME)/" <./module.pmod.in >module.pmod ;\
 	  else \
-	    echo >>module.pmod "#pike __REAL_VERSION__" ;\
+	    echo >module.pmod "#pike __REAL_VERSION__" ;\
 	    echo >>module.pmod "#if constant(_static_modules.$(MODNAME));" ;\
 	    echo >>module.pmod "inherit _static_modules.$(MODNAME);" ;\
 	    echo >>module.pmod "#endif" ;\
