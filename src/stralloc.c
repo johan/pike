@@ -1963,6 +1963,15 @@ PMOD_EXPORT void init_string_builder_alloc(struct string_builder *s, ptrdiff_t l
   s->known_shift=0;
 }
 
+PMOD_EXPORT void init_string_builder_copy(struct string_builder *to,
+					  struct string_builder *from)
+{
+  to->malloced = from->malloced;
+  to->s = begin_wide_shared_string (from->s->len, from->s->size_shift);
+  MEMCPY (to->s->str, from->s->str, from->s->len << from->s->size_shift);
+  to->known_shift = from->known_shift;
+}
+
 static void string_build_mkspace(struct string_builder *s,
 				 ptrdiff_t chars, int mag)
 {
