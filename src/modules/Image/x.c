@@ -77,7 +77,7 @@ void image_to8bit(INT32 args) /* compat function */
 
   free_object(o);
 
-  pop_n_elems(args);
+/*   pop_n_elems(args); */
   push_string(end_shared_string(res));
 }
 
