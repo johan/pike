@@ -1221,7 +1221,8 @@ OPCODE1(F_SWITCH, "switch", 0, {
   tmp=switch_lookup(Pike_fp->context.prog->
 		    constants[arg1].sval.u.array,Pike_sp-1);
   addr = DO_IF_ELSE_COMPUTED_GOTO(addr, (PIKE_OPCODE_T *)
-				  DO_ALIGN(addr,((ptrdiff_t)sizeof(INT32))));
+				  DO_ALIGN(((char *)addr)-(char *)0,
+					   ((ptrdiff_t)sizeof(INT32))));
   addr = (PIKE_OPCODE_T *)(((INT32 *)addr) + (tmp>=0 ? 1+tmp*2 : 2*~tmp));
   if(*(INT32*)addr < 0) fast_check_threads_etc(7);
   pop_stack();
