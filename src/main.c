@@ -105,7 +105,7 @@ static void get_master_key(long cat)
   DWORD len=sizeof(buffer)-1,type=REG_SZ;
   long ret;
   if(RegOpenKeyEx(cat,
-		  (LPCTSTR)"SOFTWARE\\Idonex\\Pike\\0.6",
+		  (LPCTSTR)"SOFTWARE\\Idonex\\Pike\\0.7",
 		  0,KEY_READ,&k)==ERROR_SUCCESS)
   {
     if(RegQueryValueEx(k,
