@@ -191,8 +191,6 @@
 
 #include "global.h"
 
-RCSID("$Id$");
-
 #include "image_machine.h"
 
 #include <math.h>
@@ -1243,7 +1241,7 @@ static void image_get_color(INT32 args)
 {
    struct svalue s;
    int n;
-   static char *callables[]={"light","dark","neon","dull","bright"};
+   static const char *callables[]={"light","dark","neon","dull","bright"};
 
    if (args!=1) 
       Pike_error("Image.Color[]: illegal number of args.\n");
