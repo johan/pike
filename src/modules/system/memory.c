@@ -629,9 +629,7 @@ static void copy_reverse_string1_to_2(unsigned char *d,
       make_reverse_order_string##N(unsigned char *s,size_t len)		\
    {									\
       struct pike_string *ps;						\
-      unsigned char *d;							\
       ps=begin_wide_shared_string(len,N);				\
-      d = (unsigned char *)ps->str;					\
       copy_reverse_string##N(ps->str, (unsigned char *)s, len);		\
       return end_shared_string(ps);					\
    }
