@@ -336,7 +336,8 @@ void f_upper_case(INT32 args)
 void f_random(INT32 args)
 {
   INT_TYPE i;
-  if(sp[-args].type == T_OBJECT)
+
+  if(args && (sp[-args].type == T_OBJECT))
   {
     pop_n_elems(args-1);
     apply(sp[-1].u.object,"_random",0);
