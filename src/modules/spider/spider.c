@@ -49,6 +49,7 @@
 #include "backend.h"
 #include "threads.h"
 #include "operators.h"
+#include "security.h"
 
 RCSID("$Id$");
 
@@ -1018,6 +1019,8 @@ void f_fd_info(INT32 args)
   int i;
   PIKE_STAT_T foo;
 
+  VALID_FILE_IO("spider.fd_info","status");
+
   if (args<1||
       sp[-args].type!=T_INT)
     Pike_error("Illegal argument to fd_info\n");
@@ -1073,6 +1076,9 @@ void f__dump_obj_table(INT32 args)
 {
   struct object *o;
   int n=0;
+
+  ASSERT_SECURITY_ROOT("spider._dump_obj_table");
+
   pop_n_elems(args);
   o=first_object;
   while(o)
