@@ -380,7 +380,7 @@ private void ssl_write_callback(mixed id)
     }
     res = queue_write();
   }
-  if (!strlen(write_buffer))
+  if (!strlen(write_buffer) && socket)
     socket->set_write_callback(0);
   if (res)
     die(res);
