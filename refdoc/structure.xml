@@ -10,7 +10,9 @@
     <chapter-ref file="not_extracted/control_structures.xml"/>
     <chapter-ref file="not_extracted/data_types.xml"/>
     <chapter-ref file="not_extracted/language_reference.xml"/>
+    <chapter-ref file="not_extracted/autodoc.xml"/>
     <appendix-ref name="Image.Color colors"/>
+    <appendix-ref name="Image.Layer modes"/>
     <appendix-ref file="not_extracted/appendix_bnf.xml"/>
   </file>
   </dir>
