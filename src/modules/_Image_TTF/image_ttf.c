@@ -260,7 +260,7 @@ static void image_ttf_make(INT32 args)
 **!	This represents instances of TTF Faces.
 */
 
-#define THISOBJ (fp->current_object)
+#define THISOBJ (Pike_fp->current_object)
 #define THISf ((struct image_ttf_face_struct*)get_storage(THISOBJ,image_ttf_face_program))
 #define THISi ((struct image_ttf_faceinstance_struct*)get_storage(THISOBJ,image_ttf_faceinstance_program))
 

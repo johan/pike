@@ -52,8 +52,8 @@ RCSID("$Id$");
 #ifdef THIS
 #undef THIS
 #endif
-#define THIS ((struct poly *)(fp->current_storage))
-#define THISOBJ (fp->current_object)
+#define THIS ((struct poly *)(Pike_fp->current_storage))
+#define THISOBJ (Pike_fp->current_object)
 
 struct poly
 {

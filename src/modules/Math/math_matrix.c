@@ -47,8 +47,8 @@ struct matrix_storage
 #undef THIS /* Needed for NT */
 #endif
 
-#define THIS ((struct matrix_storage*)(fp->current_storage))
-#define THISOBJ (fp->current_object)
+#define THIS ((struct matrix_storage*)(Pike_fp->current_storage))
+#define THISOBJ (Pike_fp->current_object)
 
 static struct pike_string *s_array;
 static struct pike_string *s__clr;

@@ -58,7 +58,7 @@ static const char *crypto_functions[] = {
 };
 
 #undef THIS
-#define THIS	((struct pike_crypto *)(fp->current_storage))
+#define THIS	((struct pike_crypto *)(Pike_fp->current_storage))
 
 static struct program *pike_crypto_program;
 

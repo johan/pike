@@ -189,8 +189,8 @@ extern struct program *font_program;
 extern struct program *image_program;
 
 #undef THIS
-#define THIS (*(struct font **)(fp->current_storage))
-#define THISOBJ (fp->current_object)
+#define THIS (*(struct font **)(Pike_fp->current_storage))
+#define THISOBJ (Pike_fp->current_object)
 
 struct font 
 {
@@ -560,7 +560,7 @@ void font_write(INT32 args)
    p_wchar2 *to_write2;
    int to_write_len;
    INT32 c;
-   struct font *this = (*(struct font **)(fp->current_storage));
+   struct font *this = (*(struct font **)(Pike_fp->current_storage));
    if (!this)
       error("font->write: no font loaded\n");
 

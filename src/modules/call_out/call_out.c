@@ -374,9 +374,9 @@ static struct array * new_call_out(int num_arg,struct svalue *argp)
 #endif
     my_add_timeval(& new->tv, &current_time);
 
-  if(fp && fp->current_object)
+  if(Pike_fp && Pike_fp->current_object)
   {
-    add_ref(new->caller=fp->current_object);
+    add_ref(new->caller=Pike_fp->current_object);
   }else{
     new->caller=0;
   }

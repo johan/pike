@@ -364,11 +364,13 @@ void low_image_tiff_decode( struct buffer *buf,
     free_object(res->alpha);
     res->alpha = sp[-1].u.object;
     sp--;
+    dmalloc_touch_svalue(sp);
   }
   apply( res->img, "mirrory", 0);
   free_object(res->img);
   res->img = sp[-1].u.object;
   sp--;
+  dmalloc_touch_svalue(sp);
   if(!image_only)
   {
 #ifdef HAVE_TIFFIOP_H
@@ -646,6 +648,7 @@ static void image_tiff__decode( INT32 args )
   {
     struct mapping *tmp = sp[-1].u.mapping;
     sp--;
+    dmalloc_touch_svalue(sp);
     pop_n_elems(args);
     push_mapping( tmp );
   }

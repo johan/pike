@@ -47,7 +47,7 @@ struct pike_rsa_data
 #define P_RSA_PRIVATE_KEY_NOT_SET	2
 #define P_RSA_KEY_NOT_SET	3
 
-#define THIS ((struct pike_rsa_data *)(fp->current_storage))
+#define THIS ((struct pike_rsa_data *)(Pike_fp->current_storage))
 
 static struct program *pike_rsa_program = NULL;
 
@@ -227,7 +227,7 @@ static void f_set_public_key(INT32 args)
   copy_shared_string(THIS->e, sp[-1].u.string);
 
   pop_n_elems(args + 1);
-  ref_push_object(fp->current_object);
+  ref_push_object(Pike_fp->current_object);
 }
 
 /* object set_private_key(bignum priv, array(bignum)|void extra) */
@@ -281,7 +281,7 @@ static void f_set_private_key(INT32 args)
   /* FIXME: extra is currently ignored */
 
   pop_n_elems(args + 1);
-  ref_push_object(fp->current_object);
+  ref_push_object(Pike_fp->current_object);
 }
 
 /* string cooked_get_n() */

@@ -36,7 +36,7 @@ struct pike_crypto_cbc {
 };
 
 #undef THIS
-#define THIS	((struct pike_crypto_cbc *)(fp->current_storage))
+#define THIS	((struct pike_crypto_cbc *)(Pike_fp->current_storage))
 /*
  * Globals
  */

@@ -314,8 +314,8 @@ static void make_colors(void)
 #ifdef THIS
 #undef THIS /* Needed for NT */
 #endif
-#define THIS ((struct color_struct*)(fp->current_storage))
-#define THISOBJ (fp->current_object)
+#define THIS ((struct color_struct*)(Pike_fp->current_storage))
+#define THISOBJ (Pike_fp->current_object)
 
 static void init_color_struct(struct object *dummy)
 {

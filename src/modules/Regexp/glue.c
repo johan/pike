@@ -44,7 +44,7 @@ struct regexp_glue
 #undef THIS
 #endif
 
-#define THIS ((struct regexp_glue *)(fp->current_storage))
+#define THIS ((struct regexp_glue *)(Pike_fp->current_storage))
 
 static void do_free(void)
 {
