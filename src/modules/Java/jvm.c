@@ -1737,13 +1737,11 @@ static void do_native_dispatch(struct native_method_context *ctx,
     memset(rc, 0, sizeof(*rc));
 
     if(*p != 'V') {
-      /* The Local Referens that may be created here will be
+      /* The Local Referens that is created here will be
          released automatically when we return to java */
       make_jargs(rc, -1, NULL, p, ctx->nat->jvm, env);
-      /*
       if((*p == 'L' || *p == '[') && rc->l != NULL)
-	rc->l = (*env)->NewGlobalRef(env, rc->l);
-      */
+	rc->l = (*env)->NewLocalRef(env, rc->l);
     }
   }
 
