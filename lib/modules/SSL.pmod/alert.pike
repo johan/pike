@@ -20,9 +20,9 @@ constant is_alert = 1;
 void create(int l, int d, int version, string|void m, mixed|void t)
 {
   if (! ALERT_levels[l])
-    error( "SSL.alert->create: Invalid level\n" );
+    error( "Invalid level\n" );
   if (! ALERT_descriptions[d])
-    error( "SSL.alert->create: Invalid description\n" );
+    error( "Invalid description\n" );
 
   level = l;
   description = d;
