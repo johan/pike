@@ -470,9 +470,12 @@ static void reduce(struct object *o)
   
   i = mpz_get_si(OBTOMPZ(o));
   if(mpz_cmp_si(OBTOMPZ(o), i) == 0)
+  {
+    free_object(o);
     push_int(i);
-  else
+  }else{
     push_object(o);
+  }
 }
 #define PUSH_REDUCED(o) reduce(o)
 #else
@@ -533,6 +536,7 @@ static void mpzmod_sub(INT32 args)
     mpz_neg(OBTOMPZ(res), OBTOMPZ(res));
   }
   pop_n_elems(args);
+  debug_malloc_touch(res);
   PUSH_REDUCED(res);
 }
 
