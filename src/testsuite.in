@@ -9139,6 +9139,9 @@ test_eq([[
 //       your Pike until you've got Calendar to compile again. /Mirar
 (int)(Calendar.Stardate.Tick("julian",2500000)->tic())]],-190335)
 
+// Regression test for recent Calendar bug:  /jhs
+test_eq(Calendar.ISO.Week(2002,1)->day()->format_ymd(),"2001-12-31")
+
 // - Filesystem
 
 test_true([[
