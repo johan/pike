@@ -1434,7 +1434,7 @@ string describe_backtrace(mixed trace, void|int linewidth)
      (objectp(trace) && trace->is_generic_error))
   {
     if (catch {
-      ret = trace[0];
+      ret = trace[0] || "No error message!\n";
       trace = trace[1];
     }) {
       return "Error indexing backtrace!\n";
@@ -1503,7 +1503,11 @@ string describe_backtrace(mixed trace, void|int linewidth)
 	}
 	else
 	{
-	  row="Destructed object";
+	  if (tmp) {
+	    row = sprintf("%O", tmp);
+	  } else {
+	    row = "Destructed object";
+	  }
 	}
       }) {
 	row += sprintf("Error indexing backtrace line %d (%O)!", e, err[1]);
