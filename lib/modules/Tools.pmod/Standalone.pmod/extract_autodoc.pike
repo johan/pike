@@ -45,6 +45,10 @@ int main(int n, array(string) args) {
       verbosity = 0;
       break;
     case "help":
+      werror("Usage:\n"
+	     "\tpike -x extract_autodoc [-q] --srcdir=<srcdir> \n"
+	     "\t     [--imgsrcdir=<imgsrcdir>] [--builddir=<builddir>]\n"
+	     "\t     [--imgdir=<imgdir>]\n");
       return 0;
     }
 
