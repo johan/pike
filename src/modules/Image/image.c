@@ -4588,7 +4588,7 @@ void init_image_image(void)
 		tFunc(tVoid,tObj),0);
 
    ADD_FUNCTION("select_from",image_select_from,
-		tFunc(tInt tInt,tObj),0);
+		tFunc(tInt tInt tOr(tInt, tVoid),tObj),0);
 
    ADD_FUNCTION("apply_matrix",image_apply_matrix,
 		tFuncV(tArr(tArr(tOr(tInt,tArr(tInt)))),tOr(tVoid,tInt),tObj),0);
