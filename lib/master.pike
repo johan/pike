@@ -712,9 +712,14 @@ string describe_backtrace(mixed *trace)
       else if(arrayp(tmp))
       {
 	row="";
-	if(sizeof(tmp)>=3 && functionp(tmp[2]))
+	if(sizeof(tmp)>=3)
 	{
-	  row=function_name(tmp[2])+"(";
+	  if(functionp(tmp[2]))
+	    row=function_name(tmp[2]);
+	  else
+	    row="unknown function";
+	    
+	  row+="(";
 	  for(int e=3;e<sizeof(tmp);e++)
 	  {
 	    row+=stupid_describe(tmp[e])+",";
