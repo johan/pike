@@ -467,6 +467,7 @@ void low_start_new_program(struct program *p,
 PMOD_EXPORT void debug_start_new_program(PROGRAM_LINE_ARGS);
 void dump_program_desc(struct program *p);
 int sizeof_variable(int run_time_type);
+void dump_program_tables (struct program *p, int indent);
 void check_program(struct program *p);
 struct program *end_first_pass(int finish);
 PMOD_EXPORT struct program *debug_end_program(void);

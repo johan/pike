@@ -3193,7 +3193,7 @@ idents2: idents
 	/* We need to generate a new reference. */
 	int d;
 	struct reference funp = Pike_compiler->new_program->identifier_references[i];
-	funp.id_flags |= ID_HIDDEN;
+	funp.id_flags = (funp.id_flags & ~ID_INHERITED) | ID_INLINE|ID_HIDDEN;
 	i = -1;
 	for(d = 0; d < (int)Pike_compiler->new_program->num_identifier_references; d++) {
 	  struct reference *refp;
