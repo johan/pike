@@ -44,7 +44,13 @@
 /* VERY VERY UGLY */
 #define MOTIF
 
+#ifdef HAVE_OCI_H
 #include <oci.h>
+#else /* !HAVE_OCI_H */
+#include <ocidfn.h>
+#include <ociapr.h>
+#endif /* HAVE_OCI_H */
+
 #include <math.h>
 
 RCSID("$Id$");
