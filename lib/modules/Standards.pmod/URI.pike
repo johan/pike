@@ -10,7 +10,8 @@
 //! Scheme component of URI
 string scheme;
 
-//! Authority component of URI (formerly called net_loc, from RFC 2396 known as authority)
+//! Authority component of URI (formerly called net_loc, from RFC 2396
+//! known as authority)
 string authority;
 
 //! Path component of URI. May be empty, but not undefined.
@@ -25,8 +26,8 @@ string fragment;
 //! Certain classes of URI (e.g. URL) may have these defined
 string host, user, password;
 
-//! If no port number is present in URI, but the scheme used has a default port number,
-//! this number is put here.
+//! If no port number is present in URI, but the scheme used has a
+//! default port number, this number is put here.
 int port;
 
 //! The base URI object, if present
