@@ -1002,7 +1002,7 @@ class Person
   }
 }
 
-//! Returns the person @[no].
+//! Returns the @[Person] @[no].
 Person person(int no)
 {
    return _person[no] || (_person[no]=Person(no));
@@ -1030,6 +1030,27 @@ class Conference
   {
     no=_no;
   }
+
+  //! @decl mixed prefetch_stat
+  //! @decl int no
+  //! @decl object error
+  //! @decl Text msg_of_day
+  //! @decl Conference supervisor
+  //! @decl Conference permitted_submitters
+  //! @decl Conference super_conf
+  //! @decl Person creator
+  //! @decl mixed aux_items
+  //! @decl mixed name
+  //! @decl mixed type
+  //! @decl mixed creation_time
+  //! @decl mixed last_written
+  //! @decl mixed nice
+  //! @decl mixed no_of_members
+  //! @decl mixed first_local_no
+  //! @decl mixed no_of_texts
+  //! @decl mixed presentation
+  //! @fixme
+  //!   Undocumented
 
   mixed `[](string what)
   {
