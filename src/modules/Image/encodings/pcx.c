@@ -38,7 +38,7 @@ extern struct program *image_program;
 
 struct buffer
 {
-  unsigned int len;
+  size_t len;
   char *str;
 };
 

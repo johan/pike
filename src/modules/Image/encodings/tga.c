@@ -159,7 +159,7 @@ struct tga_footer
 
 struct buffer
 {
-  unsigned int len;
+  size_t len;
   char *str;
 };
 

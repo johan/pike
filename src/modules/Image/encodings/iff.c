@@ -68,7 +68,7 @@ void parse_iff(char *id, unsigned char *data, INT32 len,
 
 static struct pike_string *low_make_iff(struct svalue *s)
 {
-  INT32 len;
+  ptrdiff_t len;
   unsigned char lenb[4];
 
   if(s->type != T_ARRAY || s->u.array->size != 2 ||

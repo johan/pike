@@ -499,12 +499,13 @@ void img_pvr_decode(INT32 args,int header_only)
    struct pike_string *str;
    unsigned char *s;
    int n = 0;
-   INT32 len, attr;
+   ptrdiff_t len;
+   INT32 attr;
    unsigned int h, w, x;
 
    get_all_args("Image.PVR._decode", args, "%S", &str);
-   s=(unsigned char *)str->str;
-   len=str->len;
+   s = (unsigned char *)str->str;
+   len = str->len;
    pop_n_elems(args-1);
 
    if(len >= 12 && !strncmp(s, "GBIX", 4)) {

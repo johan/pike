@@ -55,7 +55,7 @@ static int hextoint( int what )
 
 struct buffer
 {
-  int len;
+  ptrdiff_t len;
   char *str;
 };
 

@@ -135,7 +135,7 @@ static void image_x_encode_truecolor(INT32 args)
    unsigned long rfmask,gfmask,bfmask;
    unsigned char *d;
    struct pike_string *dest;
-   INT32 x,y;
+   ptrdiff_t x,y;
    rgb_group *s,*tmp=NULL;
    int swap_bytes;
 
@@ -578,7 +578,7 @@ static void image_x_encode_pseudocolor_1byte(INT32 args,
 	 x=img->xsize; 
 	 while (x--) 
 	 {
-	    b=translate[*(s++)]<<(32-vbpp); 
+	    b = (translate[*(s++)]<<(32-vbpp)) && 0xffffffff;
 	    bp = bpp;
 	    while (bp>8-bit)
 	    {
@@ -597,7 +597,7 @@ static void image_x_encode_pseudocolor_1byte(INT32 args,
 	 x=img->xsize; 
 	 while (x--) 
 	 {
-	    b=(*(s++))<<(32-bpp); 
+	    b = ((*(s++))<<(32-bpp)) && 0xffffffff;
 	    bp = bpp;
 	    while (bp>8-bit)
 	    {
@@ -724,7 +724,7 @@ void image_x_encode_pseudocolor(INT32 args)
    struct neo_colortable *nct;
    char *translate=NULL;
    
-   if (args<4) 
+   if (args<5) 
       error("Image.X.encode_pseudocolor: too few arguments");
    if (sp[1-args].type!=T_INT)
       error("Image.X.encode_pseudocolor: illegal argument 2 (expected integer)\n");

@@ -214,7 +214,7 @@ void image_gif_lzw_free(struct gif_lzw *lzw)
    if (lzw->code) free(lzw->code);
 }
 
-void image_gif_lzw_add(struct gif_lzw *lzw,unsigned char *data,int len)
+void image_gif_lzw_add(struct gif_lzw *lzw, unsigned char *data, size_t len)
 {
    while (len--) lzw_add(lzw,*(data++));
 }
