@@ -1266,6 +1266,9 @@ identifier_type: idents
 	    Pike_sp[-1].subtype=f;
 	    Pike_sp[-1].type=T_FUNCTION;
 	  }else{
+	    if (Pike_compiler->compiler_pass == 2) {
+	      yywarning("Using object as program identifier.");
+	    }
 	    f_object_program(1);
 	  }
 	}
