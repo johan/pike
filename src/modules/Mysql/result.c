@@ -287,7 +287,7 @@ static void f_num_rows(INT32 args)
  *! Number of fields in the result.
  *!
  *! @seealso
- *!   @[mun_rows()]
+ *!   @[num_rows()]
  */
 static void f_num_fields(INT32 args)
 {
