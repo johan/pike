@@ -378,7 +378,9 @@ static void add_node(node *n)
     if (probe == n) 
     {
       fprintf(stderr, "add_node(%p == %p): Node already added!\n", probe, n);
-      fprintf( stderr, "   %d <-> %d\n", hval, (n->hash % node_hash.size) );
+      fprintf( stderr, "   %ld <-> %ld\n",
+	       DO_NOT_WARN((long)hval),
+	       DO_NOT_WARN((long)(n->hash % node_hash.size)) );
       probe = node_hash.table[hval];
       while( probe )
       {
