@@ -21,22 +21,22 @@ extract: xml recurse
 
 .SUFFIXES: .c .pike .pmod .pmod.in .xml
 
-.c.xml: $(ROOT)/../bin/autodoc.pike
+.c.xml: $(ROOT)/../bin/autodoc.pike $(ROOT)/../bin/mkxml.pike
 	@rm -f "$@.new" 2>/dev/null || /bin/true
 	@$(PIKE) $(ROOT)/../bin/autodoc.pike "$<" >"$@.new" && \
 	  mv -f "$@.new" "$@"
 
-.pike.xml: $(ROOT)/../bin/autodoc.pike
+.pike.xml: $(ROOT)/../bin/autodoc.pike $(ROOT)/../bin/mkxml.pike
 	@rm -f "$@.new" 2>/dev/null || /bin/true
 	@$(PIKE) $(ROOT)/../bin/autodoc.pike "$<" >"$@.new" && \
 	  mv -f "$@.new" "$@"
 
-.pmod.xml: $(ROOT)/../bin/autodoc.pike
+.pmod.xml: $(ROOT)/../bin/autodoc.pike $(ROOT)/../bin/mkxml.pike
 	@rm -f "$@.new" 2>/dev/null || /bin/true
 	@$(PIKE) $(ROOT)/../bin/autodoc.pike "$<" >"$@.new" && \
 	  mv -f "$@.new" "$@"
 
-.pmod.in.xml: $(ROOT)/../bin/autodoc.pike
+.pmod.in.xml: $(ROOT)/../bin/autodoc.pike $(ROOT)/../bin/mkxml.pike
 	@rm -f "$@.new" 2>/dev/null || /bin/true
 	@$(PIKE) $(ROOT)/../bin/autodoc.pike "$<" >"$@.new" && \
 	  mv -f "$@.new" "$@"
