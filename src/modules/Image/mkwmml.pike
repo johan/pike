@@ -8,10 +8,8 @@ int illustration_counter;
 
 mapping manpage_suffix=
 ([
-   "Image":"I",
+   "Image":"i",
    "Image.image":"i",
-   "Image.colortable":"c",
-   "Image.font":"f",
 ]);
 
 
