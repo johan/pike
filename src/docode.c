@@ -1926,6 +1926,7 @@ INT32 do_code_block(node *n)
   ret=PC;
   emit1(F_BYTE,Pike_compiler->compiler_frame->max_number_of_locals);
   emit1(F_BYTE,Pike_compiler->compiler_frame->num_args);
+  emit0(F_ENTRY);
   emit0(F_START_FUNCTION);
   low_insert_label(0);
   if(Pike_compiler->new_program->identifier_references[Pike_compiler->compiler_frame->

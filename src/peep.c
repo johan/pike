@@ -296,6 +296,12 @@ void assemble(void)
       ins_data(c->arg);
       break;
 
+    case F_ENTRY:
+#ifdef INS_ENTRY
+      INS_ENTRY();
+#endif /* INS_ENTRY */
+      break;
+
     case F_LABEL:
       if(c->arg == -1) break;
 #ifdef PIKE_DEBUG

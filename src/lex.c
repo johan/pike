@@ -251,6 +251,7 @@ struct keyword instr_names[]=
 { "label",		F_LABEL,I_HASARG NULLADDR },
 { "align",		F_ALIGN, I_HASARG NULLADDR },
 { "nop",                F_NOP,0 NULLADDR },
+{ "entry",		F_ENTRY,0 NULLADDR },
 { "function start",     F_START_FUNCTION,0 NULLADDR },
 { "notreached!",        F_NOTREACHED, 0 NULLADDR },
 };

@@ -51,8 +51,11 @@ enum Pike_opcodes
  * These are the predefined functions that can be accessed from Pike.
  */
 
-
 #include "interpret_protos.h"
+
+  /* Used to mark an entry point from eval_instruction(). */
+  F_ENTRY,
+
 /*
  * These are token values that needn't have an associated code for the
  * compiled file

@@ -4962,10 +4962,15 @@ ptrdiff_t eval_low(node *n)
 
   num_strings=Pike_compiler->new_program->num_strings;
   num_constants=Pike_compiler->new_program->num_constants;
-  jump = DO_NOT_WARN((INT32)PC);
 #ifdef PIKE_USE_MACHINE_CODE
   num_relocations = Pike_compiler->new_program->num_relocations;
 #endif /* PIKE_USE_MACHINE_CODE */
+
+  jump = DO_NOT_WARN((INT32)PC);
+
+#ifdef INS_ENTRY
+  INS_ENTRY();
+#endif /* INS_ENTRY */
 
   store_linenumbers=0;
   docode(dmalloc_touch(node *, n));
