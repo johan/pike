@@ -556,7 +556,7 @@ int main()
       ])
       AC_MSG_RESULT($pike_cv_have_pthread_cond_init)
       if test x$pike_cv_have_pthread_cond_init = xyes ; then
-        AC_DEFINE(HAVE_PTHREAD_COND_INTI)
+        AC_DEFINE(HAVE_PTHREAD_COND_INIT)
       else
          :
       fi
