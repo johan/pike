@@ -274,8 +274,8 @@ class dh_parameters
 #endif
 	break;
       default:
-	throw( ({ "SSL.cipher.dh_parameters->create: "
-		  "Wrong number of arguments.\n", backtrace() }) );
+	error( "SSL.cipher.dh_parameters->create: "
+	       "Wrong number of arguments.\n" );
       }
     }
 }
@@ -341,7 +341,7 @@ array lookup(int suite,int version)
     res->sign = anon_sign;
     break;
   default:
-    throw( ({ "SSL.cipher.pike: Internal error.\n", backtrace() }) );
+    error( "SSL.cipher.pike: Internal error.\n" );
   }
 
   switch(algorithms[1])

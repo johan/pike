@@ -116,7 +116,7 @@ void send_packet(object packet, int|void priority)
   switch (priority)
   {
   default:
-    throw( ({"SSL.connection->send_packet: internal error\n", backtrace() }) );
+    error( "SSL.connection->send_packet: internal error\n" );
   case PRI_alert:
     alert::put(packet);
     break;

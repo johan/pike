@@ -171,8 +171,7 @@ string|int read(string|int ...args) {
 
   default:
 
-    throw( ({ "SSL.sslfile->read: Wrong number of arguments\n",
-		backtrace() }) );
+    error( "SSL.sslfile->read: Wrong number of arguments\n" );
   }
   
   string res="";
@@ -489,8 +488,7 @@ void set_nonblocking(function ...args)
     }
     break;
   default:
-    throw( ({ "SSL.sslfile->set_nonblocking: Wrong number of arguments\n",
-		backtrace() }) );
+    error( "SSL.sslfile->set_nonblocking: Wrong number of arguments\n" );
   }
   blocking = 0;
   if (!socket) return;

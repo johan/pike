@@ -60,8 +60,7 @@ void set_cipher_suite(int suite,int version)
 void set_compression_method(int compr)
 {
   if (compr != COMPRESSION_null)
-    throw( ({ "SSL.session->set_compression_method: Method not supported\n",
-		backtrace() }) );
+    error( "SSL.session->set_compression_method: Method not supported\n" );
   compression_algorithm = compr;
 }
 
