@@ -41,6 +41,8 @@ extern struct program *image_program;
  *!     @member string "direction"
  *!       Color cycling direction. Can be either @expr{"left"@}
  *!       or @expr{"right"@}.
+ *!     @member array(array(int(0..255))) "palette"
+ *!       The palette to be used for color cycling.
  *!   @endmapping
  */
 void image_neo_f__decode(INT32 args)
