@@ -759,20 +759,20 @@ int main()
       # Now we've sunk really low -- test for proprietary threads
 
       # SGI old-style shared group processes
-      AC_CHECK_FUNCS(sproc oserror)
-
-      AC_MSG_CHECKING(Fallback to sproc)
-
-      if test x$ac_cv_func_sproc$ac_cv_func_oserror = xyesyes; then
-        AC_MSG_RESULT(yes)
-        AC_DEFINE(_REENTRANT)
-	AC_DEFINE(_THREAD_SAFE)
-	AC_DEFINE(_SGI_SPROC_THREADS)
-	AC_DEFINE(_SGI_MP_SOURCE)
-      else
-        AC_MSG_RESULT(no)
-        :
-      fi
+      # AC_CHECK_FUNCS(sproc oserror)
+      # 
+      # AC_MSG_CHECKING(Fallback to sproc)
+      # 
+      # if test x$ac_cv_func_sproc$ac_cv_func_oserror = xyesyes; then
+      #   AC_MSG_RESULT(yes)
+      #   AC_DEFINE(_REENTRANT)
+      #   AC_DEFINE(_THREAD_SAFE)
+      #   AC_DEFINE(_SGI_SPROC_THREADS)
+      #   AC_DEFINE(_SGI_MP_SOURCE)
+      # else
+      #   AC_MSG_RESULT(no)
+      #   :
+      # fi
     fi
   fi
 else
