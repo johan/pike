@@ -1557,6 +1557,10 @@ static void init_gc(void)
 
 static void exit_gc(void)
 {
+  if (gc_evaluator_callback) {
+    remove_callback(gc_evaluator_callback);
+    gc_evaluator_callback = NULL;
+  }
 #ifdef DEBUG_MALLOC
   if (!gc_keep_markers)
 #endif
