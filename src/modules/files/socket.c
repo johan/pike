@@ -228,10 +228,10 @@ static void port_listen_fd(INT32 args)
 
 /*! @decl int bind(int|string port, void|function accept_callback, void|string ip)
  *!
- *! Bind opens a sockets and binds it to port number on the local machine.
+ *! Bind opens a socket and binds it to port number on the local machine.
  *! If the second argument is present, the socket is set to nonblocking
  *! and the callback funcition is called whenever something connects to
- *! the socket. The callback will receive the id for this port as argument.
+ *! it. The callback will receive the id for this port as argument.
  *! Bind returns 1 on success, and zero on failiure.
  *! 
  *! If the optional argument 'ip' is given, bind will try to bind to
