@@ -21,7 +21,7 @@
 **!	<ref>line</ref>,
 **!	<ref>setcolor</ref>,
 **!	<ref>setpixel</ref>, 
-**!	<ref>treshold</ref>,
+**!	<ref>threshold</ref>,
 **!	<ref>tuned_box</ref>,
 **!	<ref>polyfill</ref>
 **!
