@@ -1293,10 +1293,14 @@ class FILE
     return file::open(file,mode);
   }
 
-  int open_socket()
+  int open_socket(int|void port, string|void address)
   {
     bpos=0;  b="";
-    return file::open_socket();
+    if(zero_type(port))
+      return file::open_socket();
+    if(!address)
+      return file::open_socket(port);
+    return file::open_socket(port, address);
   }
 
   array(string) ngets(void|int(1..) n)
