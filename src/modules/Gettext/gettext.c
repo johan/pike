@@ -379,6 +379,7 @@ void f_setlocale(INT32 args)
 **!	               negative_sign  for a negative formatted monetary
 **!	               quantity. The value of n_sign_posn is interpreted
 **!	               according to the rules described under p_sign_posn.
+**! see also: bindtextdomain, textdomain, gettext, dgettext, dcgettext, setlocale
 void f_localeconv(INT32 args)
 {
   struct lconv *locale; /* Information about the current locale */
