@@ -610,7 +610,7 @@ AC_CACHE_VAL(pike_cv_ld_so_run_path_method, [
     ;;
   esac
 ])
-case "pike_cv_run_path_method" in
+case "$pike_cv_run_path_method" in
   rpath)
     AC_DEFINE(USE_RPATH)
     AC_MSG_RESULT([use -rpath])
