@@ -746,10 +746,8 @@ DECLSPEC(noreturn) void pike_do_exit(int num) ATTRIBUTE((noreturn))
   exit_modules();
 
 #ifdef DEBUG_MALLOC
-  {
-    extern void cleanup_memhdrs(void);
-    cleanup_memhdrs();
-  }
+  cleanup_memhdrs();
+  cleanup_debug_malloc();
 #endif
 
 

@@ -2597,4 +2597,23 @@ int dmalloc_is_invalid_memory_block(void *block)
   return 0; /* block is valid */
 }
 
+void cleanup_debug_malloc(void)
+{
+  size_t i;
+
+  free_all_memloc_blocks();
+  exit_memhdr_hash();
+  free_all_memory_map_blocks();
+  free_all_memory_map_entry_blocks();
+
+  for (i = 0; i < DSTRHSIZE; i++) {
+    struct dmalloc_string *str = dstrhash[i], *next;
+    while (str) {
+      next = str->next;
+      free(str);
+      str = next;
+    }
+  }
+}
+
 #endif
