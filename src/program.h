@@ -78,11 +78,6 @@ extern char *lfun_names[];
 
 extern struct pike_string *lfun_strings[];
 
-#ifndef STRUCT_SVALUE_DECLARED
-#define STRUCT_SVALUE_DECLARED
-struct svalue;
-#endif
-
 #ifndef STRUCT_NODE_S_DECLARED
 #define STRUCT_NODE_S_DECLARED
 struct node_s;
