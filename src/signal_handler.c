@@ -1917,7 +1917,7 @@ static BPTR get_amigados_handle(struct mapping *optional, char *name, int fd)
   struct svalue *tmp;
   BPTR b;
 
-  if((tmp=simple_mapping_string_lookup(optional, name)))
+  if(optional && (tmp=simple_mapping_string_lookup(optional, name)))
   {
     if(tmp->type == T_OBJECT)
     {
@@ -2882,7 +2882,7 @@ void f_create_process(INT32 args)
     }
     low_my_putchar('\0', &storage.cmd_buf);
 
-    if((tmp=simple_mapping_string_lookup(optional, "cwd")))
+    if(optional && (tmp=simple_mapping_string_lookup(optional, "cwd")))
       if(tmp->type == T_STRING)
         if((storage.cwd_lock=Lock((char *)STR0(tmp->u.string), ACCESS_READ))==0)
 	  Pike_error("Failed to lock cwd \"%s\".\n", STR0(tmp->u.string));
