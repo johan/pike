@@ -1303,7 +1303,7 @@ PIKECLASS Buffer
   void f_Buffer_add( INT32 args );
 
 
-  /*! @decl void create()
+  /*! @decl void create(int initial_size)
    *!
    *!   Initializes a new buffer.
    *!
