@@ -758,7 +758,6 @@ int download_one_more()
    if (!sizeof(from_peers)) 
    {
       werror("NO SOURCE!!\n");
-      exit(1);
       return 0; // no source
    }
 
@@ -1077,8 +1076,6 @@ class PieceDownload
 		this,downloads,handovers);
 
 	 werror("%s\n",master()->describe_backtrace(backtrace()));
-
-	 exit(1);
       }
 
       more_peers->cancel_requests(0);
