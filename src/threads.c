@@ -892,6 +892,7 @@ static struct farmer *new_farmer(void (*fun)(void *), void *args)
 #else
   th_create_small(&me->me, farm, me);
 #endif
+  return me;
 }
 
 void th_farm(void (*fun)(void *), void *here)
