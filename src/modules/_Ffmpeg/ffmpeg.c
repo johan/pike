@@ -130,7 +130,7 @@ static void f_create(INT32 args) {
       THIS->encoder = (u_short)Pike_sp[-1].u.integer;
       Pike_sp--;
 
-    //case 1:
+    /* case 1: */
       if(Pike_sp[-1].type != T_INT)
 	Pike_error("Invalid argument 1, expected int.\n");
       codec_id = (u_short)Pike_sp[-1].u.integer;
@@ -214,7 +214,7 @@ static void f_set_codec_param(INT32 args) {
   if(!strncmp(pname->str, "bit_rate", 8)) {
     if(Pike_sp[-1].type != T_INT)
       Pike_error("Invalid argument 2, expected integer.\n");
-    // FIXME: test correct value of bit rate argument
+    /* FIXME: test correct value of bit rate argument */
     THIS->c->bit_rate = Pike_sp[-1].u.integer;
     pop_n_elems(args);
     push_int(1);
@@ -225,7 +225,7 @@ static void f_set_codec_param(INT32 args) {
   if(!strncmp(pname->str, "sample_rate", 11)) {
     if(Pike_sp[-1].type != T_INT)
       Pike_error("Invalid argument 2, expected integer.\n");
-    // FIXME: test correct value of bit rate argument
+    /* FIXME: test correct value of bit rate argument */
     THIS->c->sample_rate = Pike_sp[-1].u.integer;
     pop_n_elems(args);
     push_int(1);
@@ -236,7 +236,7 @@ static void f_set_codec_param(INT32 args) {
   if(!strncmp(pname->str, "channels", 8)) {
     if(Pike_sp[-1].type != T_INT)
       Pike_error("Invalid argument 2, expected integer.\n");
-    // FIXME: test correct value of bit rate argument
+    /* FIXME: test correct value of bit rate argument */
     THIS->c->channels = (u_short)Pike_sp[-1].u.integer;
     pop_n_elems(args);
     push_int(1);
@@ -466,7 +466,7 @@ static void init_ffmpeg_data(struct object *obj) {
   THIS->encoder = 0;
 
   avcodec_init();
-  avcodec_register_all(); // FIXME: register only "interesting" codec ?
+  avcodec_register_all(); /* FIXME: register only "interesting" codec ? */
 }
 
 static void exit_ffmpeg_data(struct object *obj) {
