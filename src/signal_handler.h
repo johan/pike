@@ -27,10 +27,10 @@ struct perishables;
 void f_set_priority( INT32 args );
 void f_create_process(INT32 args);
 void f_fork(INT32 args);
-void f_kill(INT32 args);
 void f_atexit(INT32 args);
 void init_signals(void);
 void exit_signals(void);
 /* Prototypes end here */
+
 
 #endif

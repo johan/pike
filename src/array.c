@@ -1767,7 +1767,7 @@ void gc_free_all_unreferenced_arrays(void)
 	  else
 	    a->item[d++]=a->item[e];
 	}
-	a->size=e;
+	a->size=d;
       }else{
 	for(e=0;e<a->size;e++)
 	{
