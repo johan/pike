@@ -4981,7 +4981,6 @@ PMOD_EXPORT struct pike_string *get_program_line(struct program *prog,
   return res;
 }
 
-#ifdef PIKE_DEBUG
 /* Same as get_line but only used for debugging, returns a char* which
  * might be to a static buffer. This is important because this
  * function may be called in places where we can't handle shared
@@ -5074,7 +5073,6 @@ void gdb_line (PIKE_OPCODE_T *pc, struct program *prog)
   char *file = debug_get_line (pc, prog, &line);
   fprintf (stderr, "%s:%d\n", file, line);
 }
-#endif
 
 PMOD_EXPORT struct pike_string *low_get_line (PIKE_OPCODE_T *pc,
 					      struct program *prog, INT32 *linep)
