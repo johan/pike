@@ -309,6 +309,8 @@ class status
 
     if (res) {
       send("*", "STATUS", mailbox, imap_list(res));
+
+      // Stupid Outlook 5 looks at the second part...
       send(tag, "OK", "STATUS done");
     } else {
       send(tag, "NO", "STATUS failed");
