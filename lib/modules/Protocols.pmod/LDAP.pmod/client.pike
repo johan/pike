@@ -406,7 +406,7 @@ int _prof_gtim;
       THROW(({"Failed to connect to LDAP server.\n",backtrace()}));
     }
 
-#ifdef constant(SSL.sslfile)
+#if constant(SSL.sslfile)
     if(lauth->scheme == "ldaps") {
       context->random = Crypto.randomness.reasonably_random()->read;
       ::create(SSL.sslfile(::_fd, context, 1,1));
