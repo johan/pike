@@ -702,6 +702,8 @@ $(SRCDIR)/mapping_stuff.c: $(SRCDIR)/mapping_stuff.cmod precompile.sh-stamp $(TM
 # UnixWare make needs help to find the source file...
 builtin.o: $(SRCDIR)/builtin.c
 
+mapping_stuff.o: $(SRCDIR)/mapping_stuff.c
+
 # Internal testing target
 run_yacc: $(SRCDIR)/language.c
 
