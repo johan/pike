@@ -280,6 +280,50 @@ static void f_set_private_key(INT32 args)
   ref_push_object(fp->current_object);
 }
 
+/* string cooked_get_n() */
+static void f_cooked_get_n(INT32 args)
+{
+  A_RSA_KEY rsa_public_key;
+  int code;
+
+  if (!THIS->n) {
+    error("Public key has not been set.\n");
+  }
+
+  if ((code = B_GetKeyInfo((POINTER *)&rsa_public_key, THIS->public_key,
+			   KI_RSAPublic))) {
+    error("Crypto rsa.cooked_get_n(): "
+	  "Failed to get public key: %04x\n", code);
+  }
+
+  pop_n_elems(args);
+
+  push_string(make_shared_binary_string(rsa_public_key.modulus.data,
+					rsa_public_key.modulus.len));
+}
+
+/* string cooked_get_e() */
+static void f_cooked_get_e(INT32 args)
+{
+  A_RSA_KEY rsa_public_key;
+  int code;
+
+  if (!THIS->n) {
+    error("Public key has not been set.\n");
+  }
+
+  if ((code = B_GetKeyInfo((POINTER *)&rsa_public_key, THIS->public_key,
+			   KI_RSAPublic))) {
+    error("Crypto rsa.cooked_get_n(): "
+	  "Failed to get public key: %04x\n", code);
+  }
+
+  pop_n_elems(args);
+
+  push_string(make_shared_binary_string(rsa_public_key.exponent.data,
+					rsa_public_key.exponent.len));
+}
+
 /* int query_blocksize() */
 static void f_query_blocksize(INT32 args)
 {
@@ -810,6 +854,12 @@ void pike_rsa_init(void)
   
   ADD_FUNCTION("set_private_key", f_set_private_key,
 	       tFunc(tObj tOr(tArr(tObj),tVoid),tObj), 0);
+
+  ADD_FUNCTION("cooked_get_n", f_cooked_get_n,
+	       tFunc(tNone, tString), 0);
+
+  ADD_FUNCTION("cooked_get_e", f_cooked_get_e,
+	       tFunc(tNone, tString), 0);
 
   ADD_FUNCTION("query_blocksize", f_query_blocksize,
 	       tFunc(tNone, tInt), 0);
