@@ -9,6 +9,17 @@ RCSID("$Id$");
 
 #ifdef HAVE_GMP_H
 
+#ifndef __MPN
+#ifdef HAVE_ANSI_CONCAT
+#define __MPN(x) __mpn_##x
+#else
+#define __MPN(x) __mpn_/**/x
+#endif
+#endif
+
+#undef _PROTO
+#define _PROTO(x) x
+
 #include <gmp.h>
 
 #endif /* HAVE_GMP_H */
