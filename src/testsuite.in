@@ -8953,7 +8953,9 @@ lambda()
    return r->ngets(100);
 }()
 ]],({"hej","hopp","gazonk"}))
-   
+
+test_true(rm("testsuite.tmp"))
+
 // - trace
 test_do(trace(0))
 test_eq(trace(0),0)
