@@ -35,6 +35,7 @@ void add_marks_to_memhdr(struct memhdr *to,void *ptr);
 
 extern int verbose_debug_malloc;
 extern int verbose_debug_exit;
+extern void dmalloc_trace(void *);
 extern void dmalloc_register(void *, int, char *);
 extern int dmalloc_unregister(void *, int);
 extern void *debug_malloc(size_t,  char *);
@@ -136,6 +137,7 @@ int dmalloc_is_invalid_memory_block(void *block);
 
 #define dbm_main main
 #define DO_IF_DMALLOC(X)
+#define dmalloc_trace(X)
 #define dmalloc_register(X,Y,Z)
 #define dmalloc_unregister(X,Y)
 #define debug_free(X,Y,Z) free((X))
