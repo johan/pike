@@ -1,0 +1,8 @@
+// $Id$
+
+test_true([[objectp(Java)]])
+test_true([[objectp(Java.pkg)]])
+test_true([[objectp(Java.pkg.java.lang.String)]])
+test_eq([[(string)Java.pkg.java.lang.String()->concat("FOO")->toLowerCase()]],
+	"foo")
+test_eq([[(string)Java.pkg.java.lang.Character(4711)]],"\11147")
