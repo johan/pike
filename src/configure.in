@@ -1433,7 +1433,7 @@ then
 	;;
 	IRIX*) LDSHARED="ld -shared";;
 	SunOS*) LDSHARED="ld";;
-	Solaris) LDSHARED="ld -G";;
+	Solaris) LDSHARED="/usr/ccs/bin/ld -G";;
 	hp*|HP*) LDSHARED="ld -b";;
 	OSF*)
            LDSHARED="ld -expect_unresolved '*' -shared -msym -O3"
