@@ -1598,6 +1598,14 @@ PMOD_EXPORT void print_svalue (FILE *out, const struct svalue *s)
   free (str.str);
 }
 
+PMOD_EXPORT void print_short_svalue (FILE *out, const union anything *a, TYPE_T type)
+{
+  struct svalue sval;
+  sval.type = type;
+  sval.u = *a;
+  print_svalue (out, &sval);
+}
+
 PMOD_EXPORT void print_svalue_compact (FILE *out, const struct svalue *s)
 {
   switch (s->type) {
@@ -1623,6 +1631,14 @@ PMOD_EXPORT void print_svalue_compact (FILE *out, const struct svalue *s)
       print_svalue (out, s);
       break;
   }
+}
+
+PMOD_EXPORT void print_short_svalue_compact (FILE *out, const union anything *a, TYPE_T type)
+{
+  struct svalue sval;
+  sval.type = type;
+  sval.u = *a;
+  print_svalue_compact (out, &sval);
 }
 
 PMOD_EXPORT void copy_svalues_recursively_no_free(struct svalue *to,

@@ -810,8 +810,7 @@ again:
 	    if (inh->name) {
 	      fprintf (stderr, "%*s**%*s=== In inherit ",
 		       indent, "", inh->inherit_level + 1, "");
-	      push_string (inh->name);
-	      print_svalue (stderr, --Pike_sp);
+	      print_short_svalue (stderr, (union anything *) inh->name, T_STRING);
 	      fprintf (stderr, ", program %d:\n", inh->prog->id);
 	    }
 	    else
@@ -827,10 +826,8 @@ again:
 		     indent, "", inh->inherit_level + 1, "",
 		     get_name_of_type (id->run_time_type));
 
-	    if (id->name->size_shift) {
-	      push_string (id->name);
-	      print_svalue (stderr, --Pike_sp);
-	    }
+	    if (id->name->size_shift)
+	      print_short_svalue (stderr, (union anything *) id->name, T_STRING);
 	    else
 	      fprintf (stderr, "%-20s", id->name->str);
 
@@ -840,12 +837,10 @@ again:
 	    ptr = PIKE_OBJ_STORAGE ((struct object *) a) +
 	      inh->storage_offset + id->func.offset;
 	    if (id->run_time_type == T_MIXED)
-	      push_svalue ((struct svalue *) ptr);
+	      print_svalue_compact (stderr, (struct svalue *) ptr);
 	    else
-	      assign_from_short_svalue_no_free (
-		Pike_sp++, (union anything *) ptr, id->run_time_type);
-	    print_svalue_compact (stderr, Pike_sp - 1);
-	    pop_stack();
+	      print_short_svalue_compact (stderr, (union anything *) ptr,
+					  id->run_time_type);
 
 	    fputc ('\n', stderr);
 	    var_count++;
@@ -923,8 +918,7 @@ again:
 	    if (inh->name) {
 	      fprintf (stderr, "%*s**%*s=== In inherit ",
 		       indent, "", inh->inherit_level + 1, "");
-	      push_string (inh->name);
-	      print_svalue (stderr, --Pike_sp);
+	      print_short_svalue (stderr, (union anything *) inh->name, T_STRING);
 	      fprintf (stderr, ", program %d:\n", inh->prog->id);
 	    }
 	    else
@@ -937,8 +931,7 @@ again:
 	    if (inh->name) {
 	      fprintf (stderr, "%*s**%*s=== End of inherit ",
 		       indent, "", inh->inherit_level + 1, "");
-	      push_string (inh->name);
-	      print_svalue (stderr, --Pike_sp);
+	      print_short_svalue (stderr, (union anything *) inh->name, T_STRING);
 	      fputc ('\n', stderr);
 	    }
 	    else
@@ -984,10 +977,8 @@ again:
 	  fprintf (stderr, "%*s**%*s%-18s name: ",
 		   indent, "", id_inh->inherit_level + 1, "", descr);
 
-	  if (id->name->size_shift) {
-	    push_string (id->name);
-	    print_svalue (stderr, --Pike_sp);
-	  }
+	  if (id->name->size_shift)
+	    print_short_svalue (stderr, (union anything *) id->name, T_STRING);
 	  else
 	    fprintf (stderr, "%-20s", id->name->str);
 
