@@ -5494,6 +5494,15 @@ test_eval_error(return clone(class c{int i;void foo(){ destruct(this_object());i
 
 // Pike modules
 
+// Calendar
+// just check if it compiles for now
+test_true(Calendar)
+test_true(Calendar.II)
+test_true(Calendar.Day)
+test_true(Calendar.Day())
+test_true(Calendar.Events)
+test_true(Calendar.Stardate)
+
 // LR
 test_true(LR.parser)
 test_true(LR.Grammar_parser)
