@@ -217,8 +217,10 @@ void cleanup_gc(void);
 #define DMALLOC_TOUCH_MARKER(X, EXPR) (EXPR)
 #endif
 
+#ifdef PIKE_DEBUG
 #define gc_check(VP) \
   DMALLOC_TOUCH_MARKER(VP, real_gc_check(debug_malloc_pass(VP)))
+#endif /* PIKE_DEBUG */
 #define gc_check_weak(VP) \
   DMALLOC_TOUCH_MARKER(VP, real_gc_check_weak(debug_malloc_pass(VP)))
 #define debug_gc_check(X, T, DATA) \

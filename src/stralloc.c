@@ -1430,7 +1430,7 @@ PMOD_EXPORT struct pike_string *string_replace(struct pike_string *str,
   PCHARP r;
   int shift;
   SearchMojt mojt;
-  replace_searchfunc f;
+  replace_searchfunc f = (replace_searchfunc)0;
 
   if(!str->len)
   {

@@ -1582,7 +1582,7 @@ PMOD_EXPORT struct array *explode(struct pike_string *str,
     }
   }else{
     SearchMojt mojt;
-    explode_searchfunc f;
+    explode_searchfunc f = (explode_searchfunc)0;
     
     s=str->str;
     end=s+(str->len << str->size_shift);
