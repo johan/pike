@@ -2,7 +2,6 @@
 
 /* $Id$ */
 
-#include <simulate.h>
 import Stdio;
 
 multiset except_modules  =(<>);
@@ -150,7 +149,7 @@ int main(int argc, string *argv)
   if(!srcdir)
   {
     tmp=reverse(argv[0]/"/");
-    except_modules=mklist(argv[1..]);
+    except_modules=mkmultiset(argv[1..]);
     e=search(tmp,"pike");
     if(e==-1)
     {
@@ -198,10 +197,10 @@ int main(int argc, string *argv)
     symlink("pike",vpath);
 //    system("ln -s pike "+vpath);
 
-  files=sum(({ vpath+"/README", vpath+"/ANNOUNCE" }),
-	    get_files(vpath+"/src"),
-	    get_files(vpath+"/lib"),
-	    get_files(vpath+"/bin"));
+  files=`+(({ vpath+"/README", vpath+"/ANNOUNCE" }),
+	   get_files(vpath+"/src"),
+	   get_files(vpath+"/lib"),
+	   get_files(vpath+"/bin"));
 
   werror("Creating "+vpath+"-indigo.tar.gz:\n");
   object o=Stdio.File();
