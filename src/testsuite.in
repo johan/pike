@@ -1677,8 +1677,12 @@ cond([[ sizeof( cpp("__AUTO_BIGNUM__")/"__AUTO_BIGNUM__" ) == 1 ]],
   test_eq([[2147483648|17 ]], 2147483665)
   test_eq([[2147483648<<17]], 281474976710656)
   test_eq([[2147483648>>17]], 16384)
+
+  test_true([[ floatp((1<<99)/3.14) ]]);
+  test_true([[ floatp((1<<99)*3.14) ]]);
+  test_true([[ floatp((1<<99)-3.14) ]]);
+  test_true([[ floatp((1<<99)+3.14) ]]);
 ]])
-	
 
 cond([[all_constants()->_verify_internals]],
 [[
