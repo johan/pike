@@ -591,7 +591,7 @@ void do_debug(void)
   extern void check_all_objects(void);
   extern void verify_shared_strings_tables(void);
   extern void slow_check_stack(void);
-  extern void do_gc(void);
+  extern int do_gc(void);
 
   slow_check_stack();
   check_all_arrays();
