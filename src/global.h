@@ -109,6 +109,11 @@ char *alloca ();
 # endif
 #endif
 
+#ifdef __NT__
+/* We are running NT */
+#define FD_SETSIZE MAX_OPEN_FILEDESCRIPTORS
+#endif
+
 #include <stdio.h>
 
 #ifdef HAVE_STDLIB_H
