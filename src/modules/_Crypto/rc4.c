@@ -62,6 +62,8 @@ static void f_set_key(INT32 args)
   if (sp[-1].type != T_STRING) {
     error("Bad argument 1 to rc4->set_key()\n");
   }
+  if (!sp[-1].u.string->len)
+    error("Empty key to rc4_set_key()\n");
   rc4_set_key(THIS, (unsigned INT8 *) sp[-1].u.string->str, sp[-1].u.string->len);
 
   pop_n_elems(args);
