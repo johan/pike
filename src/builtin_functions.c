@@ -1889,7 +1889,7 @@ void f_compile(INT32 args)
   if ((args > 1) && (sp[1-args].type == T_OBJECT)) {
     p = compile(sp[-args].u.string, sp[1-args].u.object);
   } else {
-    p = compile(sp[-args].u.string, master_object);
+    p = compile(sp[-args].u.string, NULL);
   }
   pop_n_elems(args);
   push_program(p);
