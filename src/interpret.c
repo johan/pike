@@ -239,10 +239,10 @@ use_malloc:
   Pike_interpreter.accounted_time =0;
 #endif
 #endif
-#ifdef HAVE_COMPUTED_GOTO
-  /* Initialize the fcode_to_opcode table. */
+#if defined(HAVE_COMPUTED_GOTO) || defined(PIKE_USE_MACHINE_CODE)
+  /* Initialize the fcode_to_opcode table / jump labels. */
   eval_instruction(NULL);
-#endif /* HAVE_COMPUTED_GOTO */
+#endif /* HAVE_COMPUTED_GOTO || PIKE_USE_MACHINE_CODE */
 #if defined(PIKE_USE_MACHINE_CODE) && !defined(PIKE_DEBUG)
   /* Simple operator opcodes... */
 #define SET_INSTR_ADDRESS(X, Y)	(instrs[(X)-F_OFFSET].address = (void *)Y)
@@ -783,7 +783,7 @@ static int o_catch(PIKE_OPCODE_T *pc);
 
 /* Labels to jump to to cause eval_instruction to return */
 /* FIXME: Replace these with assembler lables */
-void *do_inter_return_label;
+void *do_inter_return_label = NULL;
 void *do_escape_catch_label;
 void *dummy_label;
 
@@ -852,8 +852,16 @@ DEF_PROG_COUNTER;
 
 static int eval_instruction(PIKE_OPCODE_T *pc)
 {
-  do_inter_return_label = && inter_return_label;
-  do_escape_catch_label = && inter_escape_catch_label;
+  if(pc == NULL) {
+
+    if(do_inter_return_label != NULL)
+      Pike_fatal("eval_instruction called with NULL (twice).\n");
+
+    do_inter_return_label = && inter_return_label;
+    do_escape_catch_label = && inter_escape_catch_label;
+
+    return 0;
+  }
 
 #ifdef PIKE_DEBUG
   if (t_flag) {
