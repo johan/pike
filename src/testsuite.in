@@ -2922,6 +2922,21 @@ ifefun(gc,
     if (all_constants()->my_little_error)
       error (all_constants()->my_little_error);
   }]]);
+
+  test_do([[{
+  object o = compile_string(#"
+      class Foo
+      {
+	int i;
+	class Bar
+	{
+	  int j = i++;		// Ensure parent pointer.
+	}
+	inherit Bar;
+      }")();
+    o = 0;
+    gc();
+  }]]);
 ]])
 
 ifefun(gc,
