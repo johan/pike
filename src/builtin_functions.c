@@ -5552,6 +5552,7 @@ static struct array *diff_dyn_longest_sequence(struct array *cmptbl, int blen)
   unsigned int i;
   unsigned int off1 = 0;
   unsigned int off2 = blen + 1;
+  ONERROR err;
 
   table = calloc(sizeof(struct diff_magic_link_head)*2, off2);
   if (!table) {
@@ -5668,19 +5669,9 @@ static struct array *diff_dyn_longest_sequence(struct array *cmptbl, int blen)
   fprintf(stderr, "Result array size:%d\n", sz);
 #endif /* DIFF_DEBUG */
 
+  if(dml_pool) SET_ONERROR(err, dml_free_pools, dml_pool);
   res = allocate_array(sz);
-  if (!res) {
-    /* FIXME: This is never called, so there should probably be
-     * SET_ONERROR stuff somewhere. I can't find where dml_pool is
-     * initialized, though. /mast */
-    int args = 0;
-    if (dml_pool) {
-      dml_free_pools(dml_pool);
-    }
-    SIMPLE_OUT_OF_MEMORY_ERROR("diff_dyn_longest_sequence",
-			       sizeof(struct array) +
-			       sz*sizeof(struct svalue));
-  }
+  if(dml_pool) UNSET_ONERROR(err);
 
   i = 0;
   while(dml) {
@@ -5839,41 +5830,34 @@ PMOD_EXPORT void f_diff(INT32 args)
    struct array *seq;
    struct array *cmptbl;
    struct array *diff;
+   struct array *a, *b;
    int uniq;
 
-   /* FIXME: Ought to use get_all_args() */
+   get_all_args("diff", args, "%a%a", &a, &b);
 
-   if (args<2)
-      SIMPLE_TOO_FEW_ARGS_ERROR("diff", 2);
-
-   if (Pike_sp[-args].type != T_ARRAY)
-     SIMPLE_BAD_ARG_ERROR("diff", 1, "array");
-   if (Pike_sp[1-args].type != T_ARRAY)
-     SIMPLE_BAD_ARG_ERROR("diff", 2, "array");
-
-   cmptbl = diff_compare_table(Pike_sp[-args].u.array, Pike_sp[1-args].u.array, &uniq);
+   cmptbl = diff_compare_table(a, b, &uniq);
 
    push_array(cmptbl);
 #ifdef ENABLE_DYN_DIFF
-   if (uniq * 100 > Pike_sp[1-args].u.array->size) {
+   if (uniq * 100 > cmptbl->size) {
 #endif /* ENABLE_DYN_DIFF */
 #ifdef DIFF_DEBUG
      fprintf(stderr, "diff: Using G-M algorithm, u:%d, s:%d\n",
-	     uniq, Pike_sp[1-args].u.array->size);
+	     uniq, cmptbl->size);
 #endif /* DIFF_DEBUG */
-     seq = diff_longest_sequence(cmptbl, Pike_sp[1-1-args].u.array->size);
+     seq = diff_longest_sequence(cmptbl, b->size);
 #ifdef ENABLE_DYN_DIFF
    } else {
 #ifdef DIFF_DEBUG
      fprintf(stderr, "diff: Using dyn algorithm, u:%d, s:%d\n",
-	     uniq, Pike_sp[1-args].u.array->size);
+	     uniq, cmptbl->size);
 #endif /* DIFF_DEBUG */
-     seq = diff_dyn_longest_sequence(cmptbl, Pike_sp[1-1-args].u.array->size);
+     seq = diff_dyn_longest_sequence(cmptbl, b->size);
    }     
 #endif /* ENABLE_DYN_DIFF */
    push_array(seq);
    
-   diff=diff_build(Pike_sp[-2-args].u.array,Pike_sp[1-2-args].u.array,seq);
+   diff=diff_build(a,b,seq);
 
    pop_n_elems(2+args);
    push_array(diff);
