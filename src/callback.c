@@ -126,7 +126,7 @@ static void check_callback_chain(struct callback_list *lst)
 /* Traverse a linked list of callbacks and call all the active callbacks
  * in the list. Deactivated callbacks are freed and placed in the free list.
  */
-void call_callback(struct callback_list *lst, void *arg)
+PMOD_EXPORT void call_callback(struct callback_list *lst, void *arg)
 {
   int this_call;
   struct callback *l,**ptr;
@@ -173,7 +173,7 @@ void call_callback(struct callback_list *lst, void *arg)
 }
 
 /* Add a callback to the linked list pointed to by ptr. */
-struct callback *debug_add_to_callback(struct callback_list *lst,
+PMOD_EXPORT struct callback *debug_add_to_callback(struct callback_list *lst,
 				       callback_func call,
 				       void *arg,
 				       callback_func free_func)
@@ -198,7 +198,7 @@ struct callback *debug_add_to_callback(struct callback_list *lst,
 /* This function deactivates a callback.
  * It is not actually freed until next time this callback is "called"
  */
-void *remove_callback(struct callback *l)
+PMOD_EXPORT void *remove_callback(struct callback *l)
 {
   dmalloc_unregister(l,1);
   l->call=0;

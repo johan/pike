@@ -9,6 +9,7 @@
 #include "global.h"
 #include "error.h"
 #include "fsort.h"
+#include "main.h"
 
 RCSID("$Id$");
 

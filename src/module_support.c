@@ -54,7 +54,7 @@ static int va_check_args(struct svalue *s,
  * -X if there were too few arguments
  * or 0 if all arguments were OK.
  */
-int check_args(int args, ...)
+PMOD_EXPORT int check_args(int args, ...)
 {
   va_list arglist;
   struct expect_result tmp;
@@ -70,7 +70,7 @@ int check_args(int args, ...)
 /* This function generates errors if any of the minargs first arguments
  * is not OK.
  */
-void check_all_args(const char *fnname, int args, ... )
+PMOD_EXPORT void check_all_args(const char *fnname, int args, ... )
 {
   va_list arglist;
   struct expect_result tmp;
@@ -290,7 +290,7 @@ int va_get_args(struct svalue *s,
   return ret;
 }
 
-int get_args(struct svalue *s,
+PMOD_EXPORT int get_args(struct svalue *s,
 	     INT32 num_args,
 	     char *fmt, ...)
 {
@@ -304,7 +304,7 @@ int get_args(struct svalue *s,
   return ret;
 }
 
-void get_all_args(char *fname, INT32 args, char *format,  ... )
+PMOD_EXPORT void get_all_args(char *fname, INT32 args, char *format,  ... )
 {
   va_list ptr;
   int ret;

@@ -183,6 +183,8 @@ pushdef([AC_OUTPUT],
   AC_SUBST(OPTIMIZE)
   export WARN
   AC_SUBST(WARN)
+  export CCSHARED
+  AC_SUBST(CCSHARED)
 
 ifdef([PIKE_INCLUDE_PATH],
 [

@@ -67,6 +67,15 @@ static void *dlopen(const char *foo, int how)
   tmp=convert_string(foo, strlen(foo));
   ret=LoadLibrary(tmp);
   free((char *)tmp);
+  if(ret)
+  {
+    void ** psym=(void **)GetProcAddress(ret, "PikeSymbol");
+    if(psym)
+    {
+      extern void *PikeSymbol[];
+      *psym = PikeSymbol;
+    }
+  }
   return (void *)ret;
 }
 
@@ -214,7 +223,7 @@ static void dlclose(void *module)
 
 #ifndef TESTING
 
-#if defined(HAVE_DLOPEN) || defined(USE_DLD) || defined(USE_HPUX_DL)
+#if defined(HAVE_DLOPEN) || defined(USE_DLD) || defined(USE_HPUX_DL) || defined(USE_LOADLIBRARY)
 
 struct module_list
 {
@@ -319,11 +328,12 @@ void f_load_module(INT32 args)
 
 void init_dynamic_load(void)
 {
-#if defined(HAVE_DLOPEN) || defined(USE_DLD) || defined(USE_HPUX_DL)
+#if defined(HAVE_DLOPEN) || defined(USE_DLD) || defined(USE_HPUX_DL) || defined(USE_LOADLIBRARY)
   dlinit();
 
   
 /* function(string:program) */
+
   ADD_EFUN("load_module",f_load_module,tFunc(tStr,tPrg),OPT_EXTERNAL_DEPEND);
 #endif
 }

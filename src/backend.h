@@ -18,6 +18,7 @@ extern struct timeval current_time;
 extern struct timeval next_timeout;
 typedef void (*file_callback)(int,void *);
 extern struct callback_list do_debug_callbacks;
+extern int fds_size;
 
 /* Prototypes begin here */
 struct selectors;

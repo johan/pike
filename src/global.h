@@ -281,6 +281,21 @@ typedef struct p_wchar_p
 #define INLINE
 #endif
 
+/* PMOD_EXPORT exports a function / variable vfsh. 
+ * Putting PMOD_PROTO in front of a prototype does nothing.
+ */
+#ifndef PMOD_EXPORT
+#define PMOD_EXPORT
+#endif
+
+
+/* PMOD_PROTO is essentially the same as PMOD_EXPORT, but
+ * it exports the identifier even if it only a prototype.
+ */
+#ifndef PMOD_PROTO
+#define PMOD_PROTO
+#endif
+
 #if defined(PURIFY) || defined(__CHECKER__) || defined(DEBUG_MALLOC)
 #define DO_PIKE_CLEANUP
 #endif

@@ -69,7 +69,7 @@ RCSID("$Id$");
 #endif
 
 
-int set_nonblocking(int fd,int which)
+PMOD_EXPORT int set_nonblocking(int fd,int which)
 {
   int ret;
 #ifdef PIKE_DEBUG
@@ -105,7 +105,7 @@ int set_nonblocking(int fd,int which)
   return ret;
 }
 
-int query_nonblocking(int fd)
+PMOD_EXPORT int query_nonblocking(int fd)
 {
   int ret;
 #ifdef PIKE_DEBUG
@@ -178,7 +178,7 @@ void cleanup_close_on_exec(void)
 }
 #endif /* HAVE_BROKEN_F_SETFD */
 
-int set_close_on_exec(int fd, int which)
+PMOD_EXPORT int set_close_on_exec(int fd, int which)
 {
 #ifndef HAVE_BROKEN_F_SETFD
   int ret;

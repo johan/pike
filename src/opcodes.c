@@ -616,7 +616,7 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 }
 
 
-void f_cast(void)
+PMOD_EXPORT void f_cast(void)
 {
 #ifdef PIKE_DEBUG
   struct svalue *save_sp=sp;
@@ -1682,7 +1682,7 @@ void o_sscanf(INT32 args)
   push_int(i);
 }
 
-void f_sscanf(INT32 args)
+PMOD_EXPORT void f_sscanf(INT32 args)
 {
 #ifdef PIKE_DEBUG
   extern int t_flag;

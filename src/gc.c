@@ -96,7 +96,7 @@ RCSID("$Id$");
 INT32 num_objects = 1;		/* Account for empty_array. */
 INT32 num_allocs =0;
 INT32 alloc_threshold = MIN_ALLOC_THRESHOLD;
-int Pike_in_gc = 0;
+PMOD_EXPORT int Pike_in_gc = 0;
 struct pike_queue gc_mark_queue;
 time_t last_gc;
 
@@ -771,7 +771,7 @@ void describe_something(void *a, int t, int indent, int depth, int flags)
   d_flag=tmp;
 }
 
-void describe(void *x)
+PMOD_EXPORT void describe(void *x)
 {
   describe_something(x, attempt_to_identify(x), 0, 2, 0);
 }

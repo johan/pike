@@ -75,6 +75,8 @@ extern struct mapping *gc_internal_mapping;
  /* FIXME: What about valrefs & hardlinks? */ \
 }while(0)
 
+PMOD_PROTO void really_free_mapping(struct mapping *md);
+
 /* Prototypes begin here */
 BLOCK_ALLOC(mapping, 511)
 
