@@ -786,7 +786,7 @@ void *dummy_label;
        */							\
       return ((int (*)(void))(pc))();				\
     }								\
-  while(0)
+  } while(0)
 #endif /* !CALL_MACHINE_CODE */
 
 #define OPCODE0(O,N,C) \
