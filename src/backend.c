@@ -120,7 +120,7 @@ void POLL_FD_CLR(int fd, short sub)
   return;
 }
 
-void switch_poll_set()
+void switch_poll_set(void)
 {
   struct pollfd *tmp = active_poll_fds;
   int sz = active_poll_fd_size;
