@@ -3026,6 +3026,10 @@ test_eq(sprintf("%.-2f",31415.9267),"31400")
 test_eq(sprintf("%.-2f",-31415.9267),"-31400")
 test_eq(sprintf("%.-10f",31415.9267),"0")
 test_eq(sprintf("%20.-3f", 31415.92670),"               31000")
+test_eq(sprintf("%t", ({"a"})), "array")
+test_any([[array(string) a = ({"a"}); return sprintf("%t", a);]], "array")
+test_eq(sprintf("%t", 0), "int")
+test_any([[array(string) a = 0; return sprintf("%t", a);]], "int")
 
 // - sizeof
 test_eq(sizeof("felbar"),6)
