@@ -184,6 +184,9 @@ int debug_interpreter_is_locked = 0;
 THREAD_T debug_locking_thread;
 THREAD_T threads_disabled_thread = 0;
 #endif
+#ifdef INTERNAL_PROFILING
+PMOD_EXPORT unsigned long thread_yields = 0;
+#endif
 PMOD_EXPORT MUTEX_T interpreter_lock;
 MUTEX_T thread_table_lock, interleave_lock;
 struct program *mutex_key = 0;
