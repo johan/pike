@@ -179,7 +179,7 @@ tinstall: bin/pike
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=tinstall"
 
 testsuites:
-	@$(MAKE) $(MAKE_FLAGS) "METATARGET=module_testsuites"
+	@$(MAKE) $(MAKE_FLAGS) "METATARGET=testsuites"
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=testsuite"
 
 just_verify:

@@ -91,12 +91,12 @@ verbose_verify:
 fdtestsuites:
 	@for a in $(MODULES) ; do \
 	  echo $$a ; \
-	  $(TMP_BINDIR)/mktestsuite $(SRCDIR)/$$a/testsuite.in >$$a/module_testsuite -DSRCDIR=$(SRCDIR)/$$a || exit $$? ; \
+	  $(TMP_BINDIR)/mktestsuite $(SRCDIR)/$$a/testsuite.in >$$a/testsuite -DSRCDIR=$(SRCDIR)/$$a || exit $$? ; \
 	done	
 
 testsuites:
 	@for a in $(MODULES) ; do \
-	  (cd $$a && $(MAKE) module_testsuite) ; \
+	  (cd $$a && $(MAKE) testsuite) ; \
 	done
 
 extra_tests:
