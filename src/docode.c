@@ -563,7 +563,7 @@ static int do_docode2(node *n,int flags)
 	a1[0]->type == int_type_string)
       {
 	tmp2=do_docode(CAR(arr),DO_NOT_COPY);
-	do_docode(&a1,DO_NOT_COPY);
+	do_docode(*a1,DO_NOT_COPY);
 	goto foreach_arg_pushed;
       }
     }
