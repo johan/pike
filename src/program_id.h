@@ -56,10 +56,13 @@
 #define     PROG_STRING_ITERATOR_ID				    022
 #define     PROG_FILE_LINE_ITERATOR_ID				    023
 #define     PROG_STRING_SPLIT_ITERATOR_ID			    024
+#define     PROG_ITERATOR_ID					    025
+#define tObjImpl_ITERATOR		      "\003\000\000\000\000\025"
+#define   tObjIs_ITERATOR		      "\003\001\000\000\000\025"
 
-#define     PROG_GMP_MPZ_ID                                         025
-#define tObjImpl_GMP_MPZ                      "\003\000\000\000\000\025"
-#define   tObjIs_GMP_MPZ                      "\003\001\000\000\000\025"
+#define     PROG_GMP_MPZ_ID                                         040
+#define tObjImpl_GMP_MPZ                      "\003\000\000\000\000\040"
+#define   tObjIs_GMP_MPZ                      "\003\001\000\000\000\040"
 
 #define     PROG_MODULE_MIME_ID					   0100
 #define     PROG_MODULE_FILES_ID				   0101
