@@ -129,5 +129,8 @@ int main(int num, array(string) args) {
   test("int n=0; foreach(({1,2,3}), int m){n+=m;}","Ok.\n");
   test("n;","5");
 
+  // Test for parse error on function invocation with array literal [bug 3024]
+  test("void nop(mixed m){};nop(({}));", "");
+
   werror("Did %d tests, %d failed.\n", tests, fails);
 }
