@@ -454,8 +454,12 @@ static void internal_parse_typeA(char **_s)
 	  ++*s;
 	  type_stack_reverse(); 
 	}else{
+	  push_type(T_VOID);
 	  push_type(T_MIXED);
+	  push_type(T_OR);
+	  push_type(T_VOID);
 	  push_type(T_MIXED);
+	  push_type(T_OR);
 	  push_type(T_MANY);
 	}
 	push_type(T_FUNCTION);
