@@ -7,6 +7,8 @@ OBJS = nettle.o hash.o cipher.o crypt_md5.o nt.o @IDEA_OBJ@
 MODULE_LDFLAGS = @LDFLAGS@ @LIBS@
 CONFIG_HEADERS=@CONFIG_HEADERS@
 
+DUMMY = examine_module
+
 @dynamic_module_makefile@
 
 nettle.o: $(SRCDIR)/nettle.c
