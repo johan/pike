@@ -2072,9 +2072,9 @@ local_function: TOK_IDENTIFIER push_compiler_frame1 func_args
       if(Pike_compiler->compiler_frame->lexical_scope & 
 	 (SCOPE_SCOPE_USED | SCOPE_SCOPED))
       {
-	$$ = mktrampolinenode($<number>3,Pike_compiler->compiler_frame);
+	$$ = mktrampolinenode($<number>4,Pike_compiler->compiler_frame);
       }else{
-	$$ = mkidentifiernode($<number>3);
+	$$ = mkidentifiernode($<number>4);
       }
     }
   }
