@@ -6,7 +6,6 @@
 
 VPATH=.
 MAKE=make
-MAKEFLAGS=
 OS=`uname -s -r -m|sed \"s/ /-/g\"|tr \"[A-Z]\" \"[a-z]\"|tr \"/\" \"_\"`
 BUILDDIR=build/$(OS)
 METATARGET=
@@ -106,6 +105,10 @@ compile: configure
 	    }; \
 	  done; \
 	}
+
+documentation:
+	@test -f "$(BUILDDIR)/pike" || $(MAKE) $(MAKE_FLAGS) compile
+	@cd "$(BUILDDIR)" && $(MAKE) $(MAKE_FLAGS) documentation
 
 bin/pike: force
 	@builddir='$(BUILDDIR)'; \
