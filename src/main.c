@@ -115,7 +115,7 @@ static void get_master_key(long cat)
 		       buffer,
 		       &len)==ERROR_SUCCESS)
     {
-      master_file=strdup(buffer);
+      dmalloc_accept_leak( master_file=strdup(buffer) );
     }
     RegCloseKey(k);
   }
