@@ -343,6 +343,18 @@ static void create (Stdio.File stream, SSL.context ctx,
   } LEAVE;
 }
 
+//!
+array get_client_certificates()
+{
+  return conn->session->client_certificate_chain;
+}
+
+//!
+array get_server_certificates()
+{
+  return conn->session->server_certificate_chain;
+}
+
 int close (void|string how, void|int clean_close)
 //! Close the connection. Both the read and write ends are always
 //! closed - the argument @[how] is only for @[Stdio.File]
