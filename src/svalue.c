@@ -1116,7 +1116,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	{
 	  if (s->u.object->prog == pike_trampoline_program) {
 	    /* Trampoline */
-	    struct pike_trampoline *tramp =
+	    struct pike_trampoline *tramp = (struct pike_trampoline *)
 	      get_storage(s->u.object, pike_trampoline_program);
 	    if (!tramp || !tramp->frame || !tramp->frame->current_object ||
 		!tramp->frame->current_object->prog) {
