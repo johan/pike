@@ -25,9 +25,24 @@ RCSID("$Id$");
 #include "image.h"
 #include "colortable.h"
 
+
+
+/* The sp macro conflicts with Solaris 2.5.1's <netinet/in.h>. */
+#ifdef sp
+#undef sp
+#define STACKPOINTER_WAS_DEFINED
+#endif /* sp */
+
 #ifdef HAVE_NETINET_IN_H
 #include <netinet/in.h>
 #endif
+
+/* Restore the sp macro */
+#ifdef STACKPOINTER_WAS_DEFINED
+#define sp Pike_sp
+#undef STACK_POINTER_WAS_DEFINED
+#endif /* STACKPOINTER_WAS_DEFINED */
+
 
 extern struct program *image_colortable_program;
 extern struct program *image_program;
