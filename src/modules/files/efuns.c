@@ -73,6 +73,7 @@ RCSID("$Id$");
 #endif
 
 /* #define DEBUG_FILE */
+/* #define READDIR_DEBUG */
 
 struct array *encode_stat(struct stat *s)
 {
@@ -484,9 +485,19 @@ void f_get_dir(INT32 args)
 	d = NULL;
 	errno = 0;
 	if ((err = readdir_r(dir, tmp, &d)) || !d) {
+#ifdef READDIR_DEBUG
+	  fprintf(stderr, "POSIX readdir_r(\"%s\") => err %d\n",
+		  path, err);
+	  fprintf(stderr, "POSIX readdir_r(), d= 0x%08x\n",
+		  (unsigned int)d);
+#endif /* READDIR_DEBUG */
 	  if (err == -1) {
 	    err = errno;
 	  }
+#ifdef READDIR_DEBUG
+	  fprintf(stderr, "POSIX readdir_r(\"%s\") => errno %d\n",
+		  path, err);
+#endif /* READDIR_DEBUG */
 	  /* Solaris readdir_r seems to set errno to ENOENT sometimes.
 	   */
 	  if (err == ENOENT) {
@@ -494,6 +505,10 @@ void f_get_dir(INT32 args)
 	  }
 	  break;
 	}
+#ifdef READDIR_DEBUG
+	fprintf(stderr, "POSIX readdir_r(\"%s\") => \"%s\"\n",
+		path, d->d_name);
+#endif /* READDIR_DEBUG */
 #else
 #error Unknown readdir_r variant
 #endif
