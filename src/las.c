@@ -393,6 +393,11 @@ node *mknode(short token,node *a,node *b)
   if(a) a->parent = res;
   if(b) b->parent = res;
 
+#ifdef DEBUG
+  if(d_flag > 3)
+    verify_shared_strings_tables();
+#endif
+
   if(!num_parse_error && compiler_pass==2)
   {
     check_tree(res,0);

@@ -671,7 +671,7 @@ static int do_docode2(node *n,int flags)
 	  if(n->type == void_type_string) return 0;
 	  return 1;
 	}else{
-	  if(CAR(n)->u.sval.u.object->next == fake_object)
+	  if(CAR(n)->u.sval.u.object == fake_object)
 	  {
 	    emit2(F_MARK);
 	    do_docode(CDR(n),0);
