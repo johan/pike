@@ -51,7 +51,6 @@ static struct static_module module_list[] = {
 #ifndef IN_TPIKE
 #include "post_modules/modlist.h"
 #endif
-  ,{ "Builtin2", init_main, exit_main }
 };
 
 void init_modules(void)
@@ -88,12 +87,17 @@ void init_modules(void)
   free_program(p);
   free_string(lex.current_file);
   lex = save_lex;
+
+  init_main();
 }
 
 void exit_modules(void)
 {
   JMP_BUF recovery;
   int e;
+
+  exit_main();
+
   for(e=NELEM(module_list)-1;e>=0;e--)
   {
     if(SETJMP(recovery))
