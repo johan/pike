@@ -2647,10 +2647,10 @@ void debug_dump_mapping(struct mapping *m)
   } else {
     fprintf(stderr, ", flags=0x%x, size=%d, hashsize=%d\n",
 	    m->data->flags, m->data->size, m->data->hashsize);
-    fprintf(stderr, "Indices type field = ");
+    fprintf(stderr, "Indices type field =");
     debug_dump_type_field(m->data->ind_types);
     fprintf(stderr, "\n");
-    fprintf(stderr, "Values type field = ");
+    fprintf(stderr, "Values type field =");
     debug_dump_type_field(m->data->val_types);
     fprintf(stderr, "\n");
     simple_describe_mapping(m);

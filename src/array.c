@@ -1900,11 +1900,15 @@ void simple_describe_array(struct array *a)
 {
   dynamic_buffer save_buf;
   char *s;
-  init_buf(&save_buf);
-  describe_array_low(a,0,0);
-  s=simple_free_buf(&save_buf);
-  fprintf(stderr,"({\n%s\n})\n",s);
-  free(s);
+  if (a->size) {
+    init_buf(&save_buf);
+    describe_array_low(a,0,0);
+    s=simple_free_buf(&save_buf);
+    fprintf(stderr,"({\n%s\n})\n",s);
+    free(s);
+  }
+  else
+    fputs ("({ })\n", stderr);
 }
 
 void describe_index(struct array *a,
@@ -2496,7 +2500,7 @@ void debug_dump_array(struct array *a)
 	  a == &weak_empty_array ? " (the weak_empty_array)" :
 	  a == &weak_shrink_empty_array ? " (the weak_shrink_empty_array)" :
 	  "");
-  fprintf(stderr,"Type field = ");
+  fprintf(stderr,"Type field =");
   debug_dump_type_field(a->type_field);
   fprintf(stderr,"\n");
   simple_describe_array(a);
