@@ -558,7 +558,7 @@ int asn1_teletex_valid (string s)
 
 class asn1_teletex_string
 {
-  // Avoid this one; it seems to be common that this type is used
+  // Avoid this one; it seems to be common that this type is used to
   // label strings encoded with the ISO 8859-1 character set (use
   // asn1_broken_teletex_string for that). From
   // http://www.mindspring.com/~asn1/nlsasn.htm:
