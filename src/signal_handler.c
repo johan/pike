@@ -412,7 +412,7 @@ struct sigdesc
   char *signame;
 };
 
-static struct sigdesc signal_desc []={
+static const struct sigdesc signal_desc []={
 #ifdef SIGHUP
   { SIGHUP, "SIGHUP" },
 #endif
