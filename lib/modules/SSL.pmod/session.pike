@@ -16,6 +16,8 @@ string master_secret; /* 48 byte secret shared between client and server */
 constant Struct = ADT.struct;
 constant State = SSL.state;
 
+string client_certificate;
+
 void set_cipher_suite(int suite)
 {
   array res = cipher::lookup(suite);
