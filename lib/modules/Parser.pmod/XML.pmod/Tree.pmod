@@ -581,12 +581,18 @@ string report_error_context(string data, int ofs)
   return "\nContext: " + pre + post + "\n";
 }
 
-Node parse_input(string data, void|int no_fallback, void|int force_lowercase)
+Node parse_input(string data, void|int no_fallback, void|int force_lowercase,
+		 void|mapping predefined_entities)
 {
   object xp = spider.XML();
   Node mRoot;
   
   xp->allow_rxml_entities(1);
+  
+  //  Init parser with predefined entities
+  if (predefined_entities)
+    foreach(indices(predefined_entities), string entity)
+      xp->define_entity_raw(entity, predefined_entities[entity]);
   
   //  Construct tree from string
   mixed err = catch
