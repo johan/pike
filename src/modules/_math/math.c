@@ -266,15 +266,8 @@ void f_acosh(INT32 args)
  */
 void f_tanh(INT32 args)
 {
-  double f;
   ARG_CHECK("tanh");
 
-  f = (sp[-1].u.float_number-M_PI/2) / M_PI;
-  if (f==floor(f+0.5))
-  {
-    Pike_error("Impossible tangent.\n");
-    return;
-  }
   sp[-1].u.float_number =
     DO_NOT_WARN((FLOAT_TYPE)tanh(sp[-1].u.float_number));
 }
