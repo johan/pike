@@ -17,6 +17,7 @@ int set_close_on_exec(int fd, int which);
 
 #ifdef HAVE_BROKEN_F_SETFD
 void do_close_on_exec(void);
+void cleanup_close_on_exec(void);
 #endif /* HAVE_BROKEN_F_SETFD */
 /* Prototypes end here */
 
