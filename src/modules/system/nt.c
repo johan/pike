@@ -183,7 +183,7 @@ static void low_encode_user_info_0(USER_INFO_0 *tmp)
 {
 #define SAFE_PUSH_WSTR(X) \ 
   if(X) \
-    push_string(make_shared_string2((INT16 *) X)); \
+    push_string(make_shared_string1((INT16 *) X)); \
   else \
     push_int(0)
 
