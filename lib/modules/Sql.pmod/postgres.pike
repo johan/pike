@@ -1,6 +1,5 @@
 /*
  * This is part of the Postgres module for Pike.
- * (C) 1997 Francesco Chemolli <kinkie@kame.usr.dsi.unimi.it>
  *
  * $Id$
  *

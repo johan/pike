@@ -1,7 +1,5 @@
 //! This module implements EXIF (Exchangeable image file format for Digital Still Cameras) 2.1
 //! parsing.
-//!
-//! Copyright (c) Roxen Internet Software 2001
 
 // $Id$
 //  Johan Schön <js@roxen.com>, July 2001.

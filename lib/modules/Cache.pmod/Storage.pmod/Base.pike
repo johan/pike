@@ -1,7 +1,6 @@
 /*
  * Storage Manager prototype.
  * by Francesco Chemolli <kinkie@roxen.com>
- * (C) 2000 Roxen IS
  *
  * $Id$
  *

@@ -33,7 +33,6 @@
 //! @enddl
 
 // Author:  Johan Schön.
-// Copyright (c) Roxen Internet Software 2001
 // $Id$
 
 #define CRAWLER_DEBUG

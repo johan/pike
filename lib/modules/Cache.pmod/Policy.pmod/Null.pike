@@ -1,7 +1,6 @@
 /*
  * Null policy-manager for the generic Caching system
  * by Francesco Chemolli <kinkie@roxen.com>
- * (C) 2000 Roxen IS
  *
  * $Id$
  *
