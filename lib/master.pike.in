@@ -609,6 +609,10 @@ class dirnode
 	  module=tmp;
       return !module;
     }
+
+    mixed `[](string index) { if(module) return module[index]; }
+    array(string) _indices() { if(module) return indices(module); }
+    array _values() { if(module) return values(module); }
   }
 
   static mixed ind(string index)
@@ -705,6 +709,12 @@ class dirnode
     fill_cache();
     return values(cache)-({0});
   }
+
+  string _sprintf(int as)
+    {
+      return sprintf("master()->dirnode(%O)",dirname);
+    }
+  
 };
 
 static class ZERO_TYPE {};
@@ -714,6 +724,11 @@ class joinnode
   constant is_resolv_joinnode = 1;
   array(object|mapping) joined_modules;
   mapping(string:mixed) cache=([]);
+
+  string _sprintf(int as)
+    {
+      return sprintf("master()->joinnode(%O)",joined_modules);
+    }
 
   void create(array(object|mapping) _joined_modules)
   {
