@@ -26,7 +26,7 @@ int(0..) main(int num, array(string) args)
    mapping(string:Tools.Shoot.Test) tests=([]);
    array results=({});
    
-   foreach (indices(Tools.Shoot);;string test)
+   foreach (indices(Tools.Shoot),string test)
    {
       program p;
       Tools.Shoot.Test t;
