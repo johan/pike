@@ -4675,8 +4675,8 @@ static struct pike_type *debug_low_make_pike_type(unsigned char *type_string,
 /* Make a pike-type from a serialized (old-style) type. */
 struct pike_type *debug_make_pike_type(const char *serialized_type)
 {
-  return low_make_pike_type((unsigned char *)serialized_type,
-			    (unsigned char **)&serialized_type);
+  unsigned char *dummy;
+  return low_make_pike_type((unsigned char *)serialized_type, &dummy);
 }
 
 int pike_type_allow_premature_toss(struct pike_type *type)
