@@ -260,6 +260,12 @@ install: build
 		dh_link -p$$f /usr/share/doc/$(PIKE)-core /usr/share/doc/$$f ; \
 	done
 
+	# move the specs file to where it should be
+	install -d -m 755 -o root -g root $(CURDIR)/debian/$(PIKE)-core/usr/lib/pike/$(VERSION)/include/pike
+	install -m 644 -o root -g root $(CURDIR)/debian/$(PIKE)-core/usr/include/pike/$(VERSION)/specs \
+	        $(CURDIR)/debian/$(PIKE)-core/usr/lib/pike/$(VERSION)/include/pike/specs
+	rm $(CURDIR)/debian/$(PIKE)-core/usr/include/pike/$(VERSION)/specs
+
 	dh_movefiles --sourcedir=debian/$(PIKE)-core
 
 # Build architecture-independent files here.
