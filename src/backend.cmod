@@ -1542,7 +1542,8 @@ PIKECLASS Backend
     (FD) < (ME)->fd_boxes_start + (ME)->fd_boxes_size ?			\
     GET_ACTIVE_BOX (ME, FD) : NULL)
 
-   static struct fd_callback_box *safe_get_box (struct Backend_struct *me, int fd)
+   PMOD_EXPORT struct fd_callback_box *
+    safe_get_box (struct Backend_struct *me, int fd)
    {
      if (fd < 0) {
        fd = ~fd;
