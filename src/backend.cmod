@@ -305,6 +305,7 @@ static void MY_FD_CLR(struct selectors *me,
   int e;
   IF_PD(fprintf(stderr, "BACKEND: POLL_FD_CLR(%d, 0x%04x)\n", fd, sub));
 
+  /* NOTE: POLLREMOVE must (unfortunately) be a separate request. */
   poll_state[0].fd = fd;
   poll_state[0].events = POLLREMOVE;
   poll_state[0].revents = 0;
