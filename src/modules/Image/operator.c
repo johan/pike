@@ -80,9 +80,6 @@ extern struct program *image_program;
    img=(struct image*)o->storage;		   		\
    if (!img->img) { free_object(o); error("out of memory\n"); }	\
 		   		   		   		\
-   pop_n_elems(args);		   		   		\
-   push_object(o);		   		   		\
-   		   		   		   		\
    s1=THIS->img;		   		   		\
    if (oper) s2=oper->img; else s2=NULL;   		   	\
    d=img->img;		   		   			\
@@ -129,6 +126,8 @@ STANDARD_OPERATOR_HEADER("`-")
       s1++; d++;
    }
    THREADS_DISALLOW();
+   pop_n_elems(args);		   		   		
+   push_object(o);		   		   		
 }
 
 /*
@@ -167,6 +166,8 @@ STANDARD_OPERATOR_HEADER("`+")
       s1++; d++;
    }
    THREADS_DISALLOW();
+   pop_n_elems(args);		   		   		
+   push_object(o);		   		   		
 }
 
 /*
@@ -213,6 +214,8 @@ STANDARD_OPERATOR_HEADER("`*")
       s1++; d++; 
    }
    THREADS_DISALLOW();
+   pop_n_elems(args);		   		   		
+   push_object(o);		   		   		
 }
 
 /*
@@ -253,6 +256,8 @@ STANDARD_OPERATOR_HEADER("`| 'maximum'")
       s1++; s2++; d++; 
    }
    THREADS_DISALLOW();
+   pop_n_elems(args);		   		   		
+   push_object(o);		   		   		
 }
 
 /*
@@ -293,6 +298,8 @@ STANDARD_OPERATOR_HEADER("`& 'minimum'")
       s1++; d++; 
    }
    THREADS_DISALLOW();
+   pop_n_elems(args);		   		   		
+   push_object(o);		   		   		
 }
 
 
