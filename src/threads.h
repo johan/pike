@@ -17,35 +17,6 @@ struct pike_frame;
 
 extern PIKE_MUTEX_T interleave_lock;
 
-struct interleave_mutex
-{
-  struct interleave_mutex *next;
-  struct interleave_mutex *prev;
-  PIKE_MUTEX_T lock;
-};
-
-#define IMUTEX_T struct interleave_mutex
-
-#define DEFINE_IMUTEX(name) IMUTEX_T name
-
-/* If threads are disabled, we already hold the lock. */
-#define LOCK_IMUTEX(im) do { \
-    if (!threads_disabled) { \
-      THREADS_FPRINTF(0, (stderr, "Locking IMutex 0x%p...\n", (im))); \
-      THREADS_ALLOW(); \
-      mt_lock(&((im)->lock)); \
-      THREADS_DISALLOW(); \
-    } \
-  } while(0)
-
-/* If threads are disabled, the lock will be released later. */
-#define UNLOCK_IMUTEX(im) do { \
-    if (!threads_disabled) { \
-      THREADS_FPRINTF(0, (stderr, "Unlocking IMutex 0x%p...\n", (im))); \
-      mt_unlock(&((im)->lock)); \
-    } \
-  } while(0)
-
 #define THREAD_NOT_STARTED -1
 #define THREAD_RUNNING 0
 #define THREAD_EXITED 1
