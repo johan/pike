@@ -1396,7 +1396,8 @@ static int isipnr(char *s)
 static void file_query_address(INT32 args)
 {
   struct sockaddr_in addr;
-  int i,len;
+  int i;
+  size_t len;
   char buffer[496],*q;
 
   if(FD <0)
