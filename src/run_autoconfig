@@ -31,7 +31,7 @@ else
   fi
 fi
 
-autoconf_version="`autoconf --version|head -1|sed -e 's/.* \([0-9]*\.[0-9]*\).*/\1/p' -ed`"
+autoconf_version="`autoconf --version|head -1|awk '{ print $NF }'`"
 
 if [ "`echo $autoconf_version|awk -F. '{ print $1 }'`" -ne "2" -o \
      "`echo $autoconf_version|awk -F. '{ print $2 }'`" -ge "50" ]; then
