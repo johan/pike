@@ -14,6 +14,9 @@
 
 #define FILE void
 #define size_t unsigned int
+
+#define XMD_H /* magic */
+
 #include <jpeglib.h>
 #undef size_t
 #undef FILE
