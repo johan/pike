@@ -868,12 +868,12 @@ static class nb_sendfile
 #endif /* SENDFILE_DEBUG */
 
     // Disable any reader.
-    if (from) {
+    if (from && from->set_nonblocking) {
       from->set_nonblocking(0,0,0);
     }
 
     // Disable any writer.
-    if (to) {
+    if (to && to->set_nonblocking) {
       to->set_nonblocking(0,0,0);
     }
 
