@@ -714,7 +714,9 @@ void pike_module_init(void)
 {
   
 /* function(function,float|int,mixed...:mixed) */
-  ADD_EFUN("call_out",f_call_out,tFuncV(tFunction tOr(tFlt,tInt),tMix,tMix),OPT_SIDE_EFFECT);
+  ADD_EFUN("call_out",f_call_out,
+	   tFuncV(tFunction tOr(tFlt,tInt),tMix,tOr(tMix,tVoid)),
+	   OPT_SIDE_EFFECT);
   
 /* function(:array*) */
   ADD_EFUN("call_out_info",f_call_out_info,tFunc(tNone,tArr(tArray)),OPT_EXTERNAL_DEPEND);
