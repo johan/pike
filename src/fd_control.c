@@ -162,7 +162,7 @@ void do_close_on_exec(void)
 {
   int i,ret;
   for(i=0; i < num_fds_to_close; i++) {
-    while( close(fds_to_close[i]) <0 && errno==EINTR) ;
+    while( fd_close(fds_to_close[i]) <0 && errno==EINTR) ;
   }
   num_fds_to_close = 0;
 }
