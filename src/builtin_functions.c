@@ -6449,6 +6449,9 @@ void f_everynth(INT32 args)
 }
 
 /*! @decl array(array) transpose(array(array) matrix)
+ *! Takes an array of equally sized arrays (essentially a matrix of size M*N)
+ *! and returns the transposed (N*M) version of it, where rows and columns
+ *! are exchanged for one another.
  */
 PMOD_EXPORT void f_transpose(INT32 args)
 {
