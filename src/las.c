@@ -1763,8 +1763,8 @@ node **last_cmd(node **a)
     if(CDR(*a)->token != F_CAST &&
        CDR(*a)->token != F_SOFT_CAST &&
        CDR(*a)->token != F_POP_VALUE &&
-       CAR(*a)->token != F_ARG_LIST &&	/* FIXME: typo? */
-       CAR(*a)->token != F_COMMA_EXPR)	/* FIXME: typo? */
+       CDR(*a)->token != F_ARG_LIST &&
+       CDR(*a)->token != F_COMMA_EXPR)
       return &_CDR(*a);
     if((n=last_cmd(&_CDR(*a))))
       return n;
