@@ -870,6 +870,9 @@ void init_udp(void)
 
   ADD_STORAGE(struct udp_storage);
 
+  PIKE_MAP_VARIABLE("_read_callback", OFFSETOF(udp_storage, read_callback),
+		    tFunc(tNone, tInt_10), T_MIXED, ID_STATIC|ID_PRIVATE);
+
   ADD_FUNCTION("set_type",udp_set_type,
 	       tFunc(tInt tOr(tVoid,tInt),tObj),0);
   ADD_FUNCTION("get_type",udp_get_type,
