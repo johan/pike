@@ -1826,6 +1826,8 @@ lambda: TOK_LAMBDA push_compiler_frame1
 	    Pike_compiler->compiler_pass, buf, (long)Pike_compiler->new_program->id, Pike_compiler->local_class_counter-1);
 #endif /* LAMBDA_DEBUG */
     
+    if(Pike_compiler->compiler_pass == 2)
+      Pike_compiler->compiler_frame->current_function_number=isidentifier(name);
     f=dooptcode(name,
 		$6,
 		type,
@@ -1901,6 +1903,7 @@ local_function: TOK_IDENTIFIER push_compiler_frame1 func_args
 		       IDENTIFIER_PIKE_FUNCTION,
 		       0,
 		       OPT_SIDE_EFFECT|OPT_EXTERNAL_DEPEND);
+    Pike_compiler->compiler_frame->current_function_number=id;
     n=0;
 #if 0
     if(Pike_compiler->compiler_pass > 1 &&
@@ -2023,6 +2026,7 @@ local_function2: optional_stars TOK_IDENTIFIER push_compiler_frame1 func_args
 		       IDENTIFIER_PIKE_FUNCTION,
 		       0,
 		       OPT_SIDE_EFFECT|OPT_EXTERNAL_DEPEND);
+    Pike_compiler->compiler_frame->current_function_number=id;
     n=0;
 #if 0
     if(Pike_compiler->compiler_pass > 1 &&
