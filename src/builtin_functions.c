@@ -705,7 +705,7 @@ static char *combine_path(char *cwd,char *file)
 
   my_cwd=0; 
 
-  if(tmp=IS_ABS(file))
+  if((tmp=IS_ABS(file)))
   {
     MEMCPY(cwdbuf,file,tmp);
     cwdbuf[tmp]=0;
