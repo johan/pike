@@ -8,6 +8,12 @@
 @TOP@
 @BOTTOM@
 
+/* Define if your statfs() call takes 4 arguments */
+#undef HAVE_SGI_STATFS
+
+/* Define if your statfs struct has the f_bavail member */
+#undef HAVE_STATFS_F_BAVAIL
+
 /* Define if your readdir_r is POSIX compatible. */
 #undef HAVE_POSIX_READDIR_R
 
