@@ -989,8 +989,8 @@ static void medium_or_pike_types(struct pike_string *a,
   low_or_pike_types( a ? a->str : 0 , b ? b->str : 0 );
 }
 
-static struct pike_string *or_pike_types(struct pike_string *a,
-					 struct pike_string *b)
+struct pike_string *or_pike_types(struct pike_string *a,
+				  struct pike_string *b)
 {
   type_stack_mark();
   medium_or_pike_types(a,b);
