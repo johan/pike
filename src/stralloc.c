@@ -887,7 +887,7 @@ PMOD_EXPORT void unlink_pike_string(struct pike_string *s)
   propagate_shared_string(s,h);
 #ifdef PIKE_DEBUG
   if (base_table[h] != s) {
-    fatal("propagate_shared_string() failed!\n");
+    fatal("propagate_shared_string() failed. Probably got bogus pike_string.\n");
   }
 #endif /* PIKE_DEBUG */
   base_table[h]=s->next;
