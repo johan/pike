@@ -2190,7 +2190,7 @@ PMOD_EXPORT void f_crypt(INT32 args)
  *!
  *!   Mark an object as destructed.
  *!
- *!   Calls @tt{o->destroy()@}, and then clears all varaibles in the object.
+ *!   Calls @tt{o->destroy()@}, and then clears all variables in the object.
  *!
  *!   All pointers and function pointers to this object will become zero.
  *!   The destructed object will be freed from memory as soon as possible.
