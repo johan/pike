@@ -23,7 +23,7 @@
 **!	Very advanced stuff:
 **!	<ref>_render_block</ref>, <ref>_gce_block</ref>
 **!
-**! see also: Image, Image.image, Image.colortable
+**! see also: Image, Image.Image, Image.Colortable
 */
 #include "global.h"
 
@@ -556,10 +556,10 @@ CHRONO("gif _render_block end");
 **!
 **!	Example:
 **!	<pre>
-**!	img1=<ref>Image.image</ref>([...]);
-**!	img2=<ref>Image.image</ref>([...]);
+**!	img1=<ref>Image.Image</ref>([...]);
+**!	img2=<ref>Image.Image</ref>([...]);
 **!	[...] // make your very-nice images
-**!	nct=<ref>Image.colortable</ref>([...]); // make a nice colortable
+**!	nct=<ref>Image.Colortable</ref>([...]); // make a nice colortable
 **!	write(<ref>Image.GIF.header_block</ref>(xsize,ysize,nct)); // write a GIF header
 **!	write(<ref>Image.GIF.render_block</ref>(img1,nct,0,0,0,10)); // write a render block
 **!	write(<ref>Image.GIF.render_block</ref>(img2,nct,0,0,0,10)); // write a render block
@@ -914,7 +914,7 @@ CHRONO("gif render_block end");
 **!
 **!	Example:
 **!	<pre>
-**!	img=<ref>Image.image</ref>([...]);
+**!	img=<ref>Image.Image</ref>([...]);
 **!	[...] // make your very-nice image
 **!	write(<ref>Image.GIF.encode</ref>(img)); // write it as GIF on stdout 
 **!	</pre>
@@ -932,7 +932,7 @@ CHRONO("gif render_block end");
 **!	color indicates transparency. GIF has only transparent
 **!	or nontransparent (no real alpha channel).
 **!	You can always dither a transparency channel:
-**!	<tt>Image.colortable(my_alpha, ({({0,0,0}),({255,255,255})}))<wbr>
+**!	<tt>Image.Colortable(my_alpha, ({({0,0,0}),({255,255,255})}))<wbr>
 **!	    ->full()<wbr>->floyd_steinberg()<wbr>->map(my_alpha)</tt>
 **! arg int tr_r
 **! arg int tr_g
@@ -1981,8 +1981,8 @@ void image_gif__decode(INT32 args)
 **! note
 **!	This function may throw errors upon illegal GIF data.
 **!	This function uses <ref>__decode</ref>, <ref>_decode</ref>,
-**!	<ref>Image.image->paste</ref> and 
-**!	<ref>Image.image->paste_alpha</ref> internally.
+**!	<ref>Image.Image->paste</ref> and 
+**!	<ref>Image.Image->paste_alpha</ref> internally.
 **!
 **! returns the decoded image as an image object
 */

@@ -14,7 +14,7 @@
 **!	Simple encoding:<br>
 **!	<ref>encode</ref>
 **!
-**! see also: Image, Image.image, Image.colortable
+**! see also: Image, Image.Image, Image.Colortable
 */
 #include "global.h"
 

@@ -87,7 +87,7 @@
 **!	<ref>tuned_box</ref>,
 **!	<ref>gradients</ref>
 **!
-**! see also: Image, Image.font, Image.colortable, Image.X
+**! see also: Image, Image.Font, Image.Colortable, Image.X
 */
 
 #include "global.h"
@@ -3230,12 +3230,12 @@ void image_gamma(INT32 args)
 **!	Old code:
 **!	<pre>img=map_fs(img->select_colors(200));</pre>
 **!	New code:
-**!	<pre>img=Image.colortable(img,200)->floyd_steinberg()->map(img);</pre>
+**!	<pre>img=Image.Colortable(img,200)->floyd_steinberg()->map(img);</pre>
 **!
 **!	Old code:
 **!	<pre>img=map_closest(img->select_colors(17)+({({255,255,255}),({0,0,0})}));</pre>
 **!	New code:
-**!	<pre>img=Image.colortable(img,19,({({255,255,255}),({0,0,0})}))->map(img);</pre>
+**!	<pre>img=Image.Colortable(img,19,({({255,255,255}),({0,0,0})}))->map(img);</pre>
 */
 
 void _image_map_compat(INT32 args,int fs) /* compat function */
@@ -3456,8 +3456,8 @@ void image_read_lsb_grey(INT32 args)
 **! method string cast(string type)
 **!	Cast the image to another datatype. Currently supported
 **!	are string ("rgbrgbrgb...") and array (double array 
-**!	of <ref>Image.color</ref> objects).
-**! see also: Image.color,Image.X
+**!	of <ref>Image.Color</ref> objects).
+**! see also: Image.Color,Image.X
 */
 
 void image_cast(INT32 args)

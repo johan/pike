@@ -12,7 +12,7 @@ old GIF API compat stuff
 **! module Image
 **! note
 **!	$Id$
-**! class image
+**! class Image
 */
 
 #include "global.h"
@@ -83,7 +83,7 @@ extern struct program *image_colortable_program;
 **!	<tr><td>gif_add_fs_nomap</td><td><ref>Image.GIF.render_block</ref>¹²</td></tr>
 **!	</table>
 **!
-**!	¹ Use <ref>Image.colortable</ref> to get whatever dithering
+**!	¹ Use <ref>Image.Colortable</ref> to get whatever dithering
 **!	you want.
 **!
 **!	² local map toggle is sent as an argument

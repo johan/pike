@@ -9,7 +9,7 @@
 **!	This submodule keep the ILBM encode/decode capabilities
 **!	of the <ref>Image</ref> module.
 **!
-**! see also: Image, Image.image, Image.colortable
+**! see also: Image, Image.Image, Image.Colortable
 */
 #include "global.h"
 

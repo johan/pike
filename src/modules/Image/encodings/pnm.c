@@ -41,7 +41,7 @@
 **!	<ref>encode_P5</ref>, <br>
 **!	<ref>encode_P6</ref>
 **!
-**! see also: Image, Image.image, Image.GIF
+**! see also: Image, Image.Image, Image.GIF
 */
 #include "global.h"
 
@@ -246,12 +246,12 @@ void img_pnm_decode(INT32 args)
 **!
 **!	<ref>encode_P1</ref>/<ref>encode_P4</ref> 
 **!	assumes the image is black and white. Use 
-**!	<ref>Image.image->threshold</ref>() or something like
-**!	<tt><ref>Image.colortable</ref>( ({({0,0,0}),({255,255,255})}) )<wbr>->floyd_steinberg()<wbr>->map(my_image)</tt> 
+**!	<ref>Image.Image->threshold</ref>() or something like
+**!	<tt><ref>Image.Colortable</ref>( ({({0,0,0}),({255,255,255})}) )<wbr>->floyd_steinberg()<wbr>->map(my_image)</tt> 
 **!	to get a black and white image.
 **!
 **!	<ref>encode_P2</ref>/<ref>encode_P5</ref> assumes the image is greyscale. Use
-**!	<ref>Image.image->grey</ref>() to get a greyscale image.
+**!	<ref>Image.Image->grey</ref>() to get a greyscale image.
 **!
 **! see also: decode
 **!

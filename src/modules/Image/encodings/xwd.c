@@ -17,7 +17,7 @@
 **!	Advanced decoding:<br>
 **!	<ref>_decode</ref>
 **!
-**! see also: Image, Image.image, Image.PNM, Image.X
+**! see also: Image, Image.Image, Image.PNM, Image.X
 */
 #include "global.h"
 

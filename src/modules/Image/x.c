@@ -2,7 +2,7 @@
 
 /*
 **! module Image
-**! class image
+**! class Image
 */
 
 #include "global.h"

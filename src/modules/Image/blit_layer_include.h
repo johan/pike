@@ -5,7 +5,7 @@
 **! module Image
 **! note
 **!	$Id$
-**! class image
+**! class Image
 */
 
 
