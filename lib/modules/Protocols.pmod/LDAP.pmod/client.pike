@@ -58,6 +58,7 @@
 //	RFC 2307   (LDAP as network information services; draft?)
 
 
+#if constant(.ldap_privates.ldap_der_decode)
 
 #include "ldap_globals.h"
 
@@ -931,3 +932,4 @@
   } // modify
 
 
+#endif

@@ -19,6 +19,8 @@
 //			 - added core for async operation
 //
 
+#if constant(Standards.ASN1.Types.asn1_integer)
+
 
 #include "ldap_globals.h"
 
@@ -468,3 +470,4 @@ DWRITE("protocol.async_timeout: ERROR: connection timeout.\n");
   }
 
 
+#endif

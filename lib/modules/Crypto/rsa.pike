@@ -3,6 +3,8 @@
  * Follow the PKCS#1 standard for padding and encryption.
  */
 
+#if constan(Gmp.mpz)
+
 #define bignum object(Gmp.mpz)
 #define BIGNUM (Gmp.mpz)
 
@@ -232,3 +234,5 @@ int public_key_equal (object rsa)
 {
   return n == rsa->n && e == rsa->e;
 }
+
+#endif

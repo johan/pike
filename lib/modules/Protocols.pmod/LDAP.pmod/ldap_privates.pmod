@@ -32,6 +32,8 @@
 // This is very poor defined own ASN.1 objects (not enough time to clean it!)
 //import Standards.ASN1.Encode;
 
+#if constant(Standards.ASN1.Types.asn1_integer)
+
 class asn1_enumerated
 {
   inherit Standards.ASN1.Types.asn1_integer;
@@ -254,6 +256,8 @@ object|mapping ldap_der_decode(string data)
 {
   return der_decode(ADT.struct(data), ldap_type_proc);
 }
+
+#endif
 
 // ------------- end of ASN.1 API hack -----------------------------
 
