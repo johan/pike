@@ -11,6 +11,9 @@ AC_C_CHAR_UNSIGNED
 
 if test x$with_fftw = xyes ; then
     dnl Checks for header files.
+
+    PIKE_FEATURE(Math.Transforms.FFT,[no (fftw.h not found)])
+
     AC_CHECK_HEADERS(fftw.h)
     AC_CHECK_HEADERS(rfftw.h)
 
