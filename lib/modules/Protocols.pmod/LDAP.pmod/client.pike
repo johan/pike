@@ -753,8 +753,12 @@ import SSL.Constants;
       res += pre;
       if (sscanf (val, "%2x%s", int chr, val) == 2)
 	res += sprintf ("%c", chr);
-      else {
+      else if (val != "" && (<'*', '(', ')'>)[val[0]]) {
 	res += val[..0];
+	val = val[1..];
+      }
+      else {
+	res += "\\" + val[..0];
 	val = val[1..];
       }
     }
