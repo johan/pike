@@ -6,6 +6,8 @@
  *	Generate tables used by desUtil.c and desCode.h.
  */
 
+#include <stdio.h>
+
 #include	"desinfo.h"
 
 #include	"desCode.h"
@@ -54,8 +56,6 @@ int korder[] = {
 int sorder[] = {
 	7, 5, 3, 1, 6, 4, 2, 0,
 };
-
-int printf(const char *, ...);
 
 int
 main(int argc, char **argv)
