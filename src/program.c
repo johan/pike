@@ -665,7 +665,7 @@ static int alignof_variable(int run_time_type)
 #ifdef HAVE_ALIGNOF
       return ALIGNOF(struct svalue);
 #else
-      return ALIGNOF(union u);
+      return ALIGNOF(union anything);
 #endif
     case T_INT: return ALIGNOF(INT_TYPE);
     case T_FLOAT: return ALIGNOF(FLOAT_TYPE);
