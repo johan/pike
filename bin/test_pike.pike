@@ -199,6 +199,9 @@ int main(int argc, string *argv)
 	  {
 	    werror("%6d\r",e+1);
 	  }else{
+	    /* Use + instead of . so that sendmail and
+	     * cron will not cut us off... :(
+	     */
 	    switch( (e-start) % 50)
 	    {
 	      case 0:
@@ -209,15 +212,15 @@ int main(int argc, string *argv)
 	      case 19:
 	      case 29:
 	      case 39:
-		werror(". ");
+		werror("+ ");
 		break;
 		
 	      default:
-		werror(".");
+		werror("+");
 		break;
 		
 	      case 49:
-		werror(".\n");
+		werror("+\n");
 	    }
 	  }
 	    
