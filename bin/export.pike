@@ -218,8 +218,6 @@ int main(int argc, string *argv)
 	      vpath+"/refdoc/syntax.txt",
 	      vpath+"/refdoc/tags.txt",
 	      vpath+"/refdoc/template.xsl",	      
-	      vpath+"/refdoc/tree-split-style.css",
-	      vpath+"/refdoc/tree-split-template.html",
 	      vpath+"/refdoc/xml.txt",
 	      vpath+"/refdoc/.cvsignore",
 	   }));
