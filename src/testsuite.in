@@ -9333,6 +9333,7 @@ void test_dir(string dir, int|void base_size)
   {
     switch(s)
     {
+      case "db":        // Protocols.pmod/X.pmod/db
       case "msql.pike":
       case "mysql.pike":
       case "mysql_result.pike":
