@@ -941,7 +941,7 @@ static int eval_instruction_low(PIKE_OPCODE_T *pc);
 static int eval_instruction(PIKE_OPCODE_T *pc)
 #ifdef PIKE_DEBUG
 {
-  if (t_flag && pc) {
+  if (t_flag > 5 && pc) {
     int i;
     fprintf(stderr, "Calling code at %p:\n", pc);
 #ifdef PIKE_OPCODE_ALIGN
