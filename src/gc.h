@@ -179,6 +179,7 @@ void f__gc_status(INT32 args);
 #define gc_is_referenced(X) debug_gc_is_referenced(debug_malloc_pass(X))
 #else
 #define gc_is_referenced(X) (get_marker(X)->refs < *(INT32 *)(X))
+#define gc_do_weak_free(X) (get_marker(X)->weak_refs >= *(INT32 *) (X))
 #endif
 
 #define gc_do_weak_free_svalue(S) \
