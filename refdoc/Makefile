@@ -8,24 +8,26 @@
 
 PIKE=pike
 
-XMLFILES=
-
 all: split
 
 tree-split: join _tree-split
 
 _tree-split:
 	rm -f manual-split/*.html
-	@$(PIKE) presentation/tree-split-autodoc.pike manual.xml structure.xml manual-tree-split
+	@$(PIKE) presentation/tree-split-autodoc.pike \
+	  manual.xml structure.xml manual-tree-split
 
-html: join _html
+html: split _html
 
-_html: html_manual
+_html: html_manual manual/Makefile
 	@cp manual/images/* html_manual/images/
-	@$(PIKE) presentation/make_html.pike --img=images/ manual.xml > html_manual/manual.html
+#	@$(PIKE) presentation/make_html.pike --img=images/ \
+#	  manual.xml > html_manual/manual.html
+	@(cd manual && $(MAKE) PIKE="$(PIKE)" html)
 
 split: join manual
 	@$(PIKE) ../bin/split-autodoc.pike manual.xml structure.xml manual
+	@rm manual/structure.xml
 
 join: recursive_join
 	@$(MAKE) PIKE="$(PIKE)" XMLFILES="`echo build/*/*.xml`" manual.xml
@@ -54,9 +56,9 @@ build/lib/Makefile: Makefile.in build/lib
 	@sed -e "s#@SRCDIR@#../../../lib#" -e "s#@ROOT@#../..#" \
 	  <Makefile.in >build/lib/Makefile
 
-manual/Makefile: Makefile.in manual
-	@sed -e "s#@SRCDIR@#../../manual#" -e "s#@ROOT@#../#" \
-	  <Makefile.in >manual/Makefile
+manual/Makefile: PostMakefile.in manual
+	@sed -e "s#@IMGDIR@#/images#" -e "s#@ROOT@#../#" \
+	  -e "s#@DEST@#../html_manual/#" <PostMakefile.in >manual/Makefile
 
 # Directories
 
