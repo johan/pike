@@ -4014,6 +4014,20 @@ void Pike_f_fork(INT32 args)
 /*  THREADS_DISALLOW_UID(); */
 
   if(pid) {
+#ifdef USE_WAIT_THREAD
+    if (!wait_thread_running) {
+      /* NOTE: This code is delayed to after the fork so as to allow for
+       *       detaching.
+       */
+      THREAD_T foo;
+      if (th_create_small(&foo, wait_thread, 0)) {
+	Pike_error("Failed to create wait thread!\n"
+		   "errno: %d\n", errno);
+      }
+      wait_thread_running = 1;
+    }
+    num_threads++;    /* We use the interpreter lock */
+#endif
     th_atfork_parent();
   } else {
     th_atfork_child();
