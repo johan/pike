@@ -1091,6 +1091,13 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
 PMOD_EXPORT int is_le(const struct svalue *a, const struct svalue *b)
 {
   /* Can't optimize this to !is_gt (a, b) since that'd assume total order. */
+  if (a->type == T_TYPE &&
+      b->type == T_TYPE) {
+    /* NOTE: Special case, since is_eq() below only does a pointer comparison.
+     */
+    return pike_types_le(a->u.type, b->u.type);
+  }
+  /* FIXME: Consider using is_equal()? */
   return is_lt (a, b) || is_eq (a, b);
 }
 
