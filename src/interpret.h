@@ -269,7 +269,7 @@ PMOD_EXPORT extern const char msg_pop_neg[];
 
 #define POP_PIKE_FRAME() do {						\
   struct pike_frame *tmp_=Pike_fp->next;					\
-  if(!--Pike_fp->refs)							\
+  if(!sub_ref(Pike_fp))							\
   {									\
     really_free_pike_frame(Pike_fp);						\
   }else{								\
