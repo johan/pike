@@ -89,6 +89,9 @@ static int floyd_steinberg_add(rgbl_group *errl,
 			       struct colortable *ct,
 			       int closest)
 {
+  /* NOTE:
+   *	This code MUST be MT-SAFE!
+   */
    rgb_group rgb2,rgb3;
    rgbl_group cerr;
    int c;
