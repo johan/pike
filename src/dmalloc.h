@@ -73,6 +73,7 @@ char *dmalloc_find_name(void *p);
 #define dmfree(x) debug_free((x),DMALLOC_LOCATION(),1)
 #define strdup(x) debug_strdup((x), DMALLOC_LOCATION())
 #define DO_IF_DMALLOC(X) X
+#define DO_IF_NOT_DMALLOC(X)
 #define debug_malloc_touch(X) debug_malloc_update_location((X),DMALLOC_LOCATION())
 #define debug_malloc_pass(X) debug_malloc_update_location((X),DMALLOC_LOCATION())
 #define dmalloc_touch_struct_ptr(TYPE,X,MEMBER) ((TYPE)debug_malloc_update_location_ptr((X), ((ptrdiff_t)& (((TYPE)0)->MEMBER)), DMALLOC_LOCATION()))
@@ -137,6 +138,7 @@ int dmalloc_is_invalid_memory_block(void *block);
 
 #define dbm_main main
 #define DO_IF_DMALLOC(X)
+#define DO_IF_NOT_DMALLOC(X) X
 #define dmalloc_trace(X)
 #define dmalloc_register(X,Y,Z)
 #define dmalloc_unregister(X,Y)

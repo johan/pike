@@ -676,6 +676,8 @@ int dmalloc_print_trace;
 
 #undef DO_IF_DMALLOC
 #define DO_IF_DMALLOC(X)
+#undef DO_IF_NOT_DMALLOC
+#define DO_IF_NOT_DMALLOC(X) X
 
 
 #include "threads.h"
@@ -1495,8 +1497,8 @@ static int add_location_cleanup(struct memhdr *mh,
 }
 #endif
 				 
-static inline void add_location(struct memhdr *mh,
-				LOCATION location)
+static void add_location(struct memhdr *mh,
+			 LOCATION location)
 {
   struct memloc *ml;
   unsigned long l;
@@ -1786,6 +1788,9 @@ static int low_dmalloc_mark_as_free(void *p, int already_gone)
   struct memhdr *mh=find_memhdr(p);
   if(mh)
   {
+    if (mh->flags & MEM_TRACE) {
+      fprintf(stderr, "Marking memhdr %p as free\n", mh);
+    }
     if(!(mh->flags & MEM_FREE))
     {
       mh->size=~mh->size;
