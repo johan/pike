@@ -266,7 +266,7 @@ void f_readlink(INT32 args)
 #endif /* HAVE_READLINK */
 
 #ifndef HAVE_RESOLVEPATH
-#ifdef(HAVE_READLINK)
+#ifdef HAVE_READLINK
 /* FIXME: Write code that simulates resolvepath() here
  */
 /* #define HAVE_RESOLVEPATH */
