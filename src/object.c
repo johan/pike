@@ -1766,9 +1766,12 @@ void push_magic_index(struct program *type, int inherit_no, int parent_level)
   if(!loc.o) Pike_error("Illegal magic index call.\n");
 
   loc.parent_identifier=Pike_fp->fun;
-  loc.inherit=INHERIT_FROM_INT(Pike_fp->current_object->prog, Pike_fp->fun);
-  
+  if (loc.o->prog)
+    loc.inherit=INHERIT_FROM_INT(loc.o->prog, loc.parent_identifier);
   find_external_context(&loc, parent_level);
+
+  if (!loc.o->prog)
+    Pike_error ("Cannot index in destructed parent object.\n");
 
   magic=low_clone(type);
   add_ref(MAGIC_O2S(magic)->o=loc.o);

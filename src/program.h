@@ -238,6 +238,9 @@ struct reference
   INT16 id_flags; /* static, private etc.. */
 };
 
+/* Magic value used as identifier reference integer to refer to this. */
+#define IDREF_MAGIC_THIS -1
+
 /*
  * Each program has an array of these,
  * the first entry points to itself, the
