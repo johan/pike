@@ -1214,7 +1214,7 @@ PIKECLASS CircularList
 	  iter->u.object->prog == CircularListIterator_program)
       {
 	struct CircularListIterator_struct *i = 
-	  OBJ2_CIRCULARLISTITERATOR(iter);
+	  OBJ2_CIRCULARLISTITERATOR(iter->u.object);
 	RETURN (THIS->pos < i->pos);
       }
       else
@@ -1239,7 +1239,7 @@ PIKECLASS CircularList
 	  iter->u.object->prog == CircularListIterator_program)
       {
 	struct CircularListIterator_struct *i = 
-	  OBJ2_CIRCULARLISTITERATOR(iter);
+	  OBJ2_CIRCULARLISTITERATOR(iter->u.object);
 	RETURN (THIS->pos > i->pos);
       }
       else
