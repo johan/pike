@@ -1126,14 +1126,14 @@ PMOD_EXPORT int is_le(const struct svalue *a, const struct svalue *b)
 	push_object_type(0, id);
 	b_type = pop_unfinished_type();
       } else {
-	free_pike_type(a_type);
+	free_type(a_type);
 	Pike_error("Bad argument to comparison.\n");
       }
     }
     
     res = pike_types_le(a_type, b_type);
-    free_pike_type(a_type);
-    free_pike_type(b_type);
+    free_type(a_type);
+    free_type(b_type);
     return res;
   }
   return is_lt (a, b) || is_eq (a, b);
