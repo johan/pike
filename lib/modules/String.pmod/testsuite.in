@@ -5,8 +5,11 @@ test_any([[
   String.Buffer s=String.Buffer();
   s->add("xxx");
   s->add("a", "b");
+  s->putchar(65);
+  s->add("B");
+  s->putchar(67);
   return (string)s;
-]], "xxxab")
+]], "xxxabABC")
 test_any([[
   String.Buffer s=String.Buffer(2);
   s->add("a");
