@@ -656,13 +656,13 @@ static int yylex2(YYSTYPE *yylval)
       if(GOBBLE('<')) return F_MULTISET_START;
       return '(';
 
+    case ']':
     case '?':
     case ',':
     case '~':
     case '@':
     case ')':
     case '[':
-    case ']':
     case '{':
     case ';':
     case '}': return c;
