@@ -453,7 +453,7 @@ PMOD_EXPORT struct object *get_master(void)
   {
     struct pike_string *s;
     char *tmp;
-    struct stat stat_buf;
+    PIKE_STAT_T stat_buf;
 
     if(!get_builtin_constants() ||
        !simple_mapping_string_lookup(get_builtin_constants(),

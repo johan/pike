@@ -38,7 +38,8 @@ struct file_ret *aap_find_file( char *s, int len,
                                 char *ho, int hlen, 
                                 struct filesystem *f )
 {
-  struct stat s;
+  /* FIXME: Clobbering between s above and s below?? */
+  PIKE_STAT_T s;
   char *fname = alloca( fs->base.len + len + hlen + 2);
   int res;
 

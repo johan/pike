@@ -459,7 +459,7 @@ void low_do_sendfile(struct pike_sendfile *this)
 #if 0 /* mmap is slower than read/write on most if not all systems */
 #if defined(HAVE_MMAP) && defined(HAVE_MUNMAP)
     {
-      struct stat st;
+      PIKE_STAT_T st;
 
       if (!fd_fstat(this->from_fd, &st) &&
 	  S_ISREG(st.st_mode)) {

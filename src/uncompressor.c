@@ -285,7 +285,6 @@ int main(int argc, char **argv)
     if(next!=pos)
     {
       char *ptr=tmp;
-      struct stat buf;
 
       memcpy(ptr=tmp,pos,next-pos);
       ptr+=next-pos;
