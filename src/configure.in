@@ -1037,7 +1037,7 @@ AC_TRY_LINK([
 ],[
   int _tz;
   _tz=timezone;
-  timezone=tz_;
+  timezone=_tz;
 ],pike_cv_has_external_timezone=yes,pike_cv_has_external_timezone=no)
 ])
 
