@@ -605,7 +605,7 @@ void th_init(void)
 #ifdef POSIX_THREADS
   pthread_attr_init(&pattr);
 #ifdef HAVE_PTHREAD_ATTR_SETSTACKSIZE
-  pthread_attr_setstacksize(&pattr, 2 * 1024 * 1204);
+  pthread_attr_setstacksize(&pattr, 1024 * 1204);
 #endif
   pthread_attr_setdetachstate(&pattr, PTHREAD_CREATE_DETACHED);
 
