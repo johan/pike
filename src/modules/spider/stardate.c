@@ -111,7 +111,7 @@ double sidereal (double gmt, double jd, int gyear)
 /*! @module spider
  */
 
-/*! @decl string stardate(int time)
+/*! @decl string stardate(int time, int precision)
  */
 void f_stardate (INT32 args)
 {
