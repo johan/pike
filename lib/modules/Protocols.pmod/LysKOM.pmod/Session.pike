@@ -1120,9 +1120,9 @@ object|void send_message(string textstring, mapping options)
   if(!options) options = ([]);
 
   if(!options->recpt)
-    res = con["broadcast"](textstring);
+    res = con["async_broadcast"](textstring);
   else
-    res = con["send_message"](options->recpt->no, textstring);
+    res = con["async_send_message"](options->recpt->no, textstring);
 
   if (objectp(res)) return res;
   return text(res);
