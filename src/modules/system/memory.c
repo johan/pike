@@ -42,10 +42,6 @@ RCSID("$Id$");
 #include <sys/fcntl.h>
 #endif
 
-#ifdef HAVE_SYS_USER_H
-#include <sys/user.h>
-#endif
-
 #ifdef HAVE_SYS_SHM_H
 #include <sys/ipc.h>
 #include <sys/shm.h>
