@@ -35,23 +35,6 @@ extern struct program *image_colortable_program;
 #define THIS ((struct image *)(fp->current_storage))
 #define THISOBJ (fp->current_object)
 
-/*
-**! method string cast(string type)
-**! returns the image data as a string ("rgbrgbrgb...")
-**! see also: Image.colortable
-**! bugs
-**!	always casts to string...
-*/
-
-void image_cast(INT32 args)
-{
-  /* CHECK TYPE TO CAST TO HERE! FIXME FIXME FIXME! */
-  pop_n_elems(args);
-  push_string(make_shared_binary_string((char *)THIS->img,
-					THIS->xsize*THIS->ysize
-					*sizeof(rgb_group)));
-}
-
 void image_to8bit(INT32 args) /* compat function */
 {
   struct neo_colortable *nct;
