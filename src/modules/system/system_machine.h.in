@@ -89,6 +89,12 @@
 /* Define if you have uname() */
 #undef HAVE_UNAME
 
+/* Define if you have solaris stype gethostbyname_r.  */
+#undef HAVE_SOLARIS_GETHOSTBYNAME_R
+
+/* Define if you have OSF1 stype gethostbyname_r.  */
+#undef HAVE_OSF1_GETHOSTBYNAME_R
+
 /* Define if you have gethostname() */
 #undef HAVE_GETHOSTNAME
 
