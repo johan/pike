@@ -894,7 +894,9 @@ void describe_svalue(struct svalue *s,int indent,struct processing *p)
 	  
 
 	  push_int('O');
-	  f_aggregate_mapping(0);					      
+	  push_constant_text("indent");
+	  push_int(indent);
+	  f_aggregate_mapping(2);					      
 	  safe_apply_low(s->u.object, fun ,2);
 
 	  if(!IS_ZERO(sp-1))
