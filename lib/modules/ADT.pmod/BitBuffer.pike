@@ -84,6 +84,9 @@ static int in_buffer, bob;
 
 //! Put @[bits] number of bits with the value @[value] into the
 //! buffer.
+//! @note
+//!   @[value] must not be larger than what can be stored with the
+//!   number of bits given in @[bits].
 this_program put( int value, int bits ) {
   //  werror("\n%O %O %O\n", bob, bib, bits);
   if(!bits) return this;
