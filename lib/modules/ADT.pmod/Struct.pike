@@ -111,7 +111,7 @@ static array _values() {
 //! The size of the struct object is the number of bytes
 //! allocated for the struct.
 static int _sizeof() {
-  return `+( 0, @items->size );
+  return `+( @sizeof(items[*]) );
 }
 
 //! The struct can be casted into a string, which is eqivivalent
@@ -143,6 +143,8 @@ class Item {
 
   void set(mixed in) { value=in; }
   mixed get() { return value; }
+
+  int _sizeof() { return size; }
 
   static string _sprintf(int t) {
     return t=='O' && sprintf("%O(%O)", this_program, value);
