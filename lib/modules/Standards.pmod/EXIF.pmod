@@ -147,9 +147,16 @@ mapping canon_d30_multi0(array(int) data)
 mapping canon_d30_multi1(array(int) data)
 {
   mapping res=([]);
-  res->CanonWhiteBalance =
-    ({ "Auto", "Sunny", "Cloudy",
-	 "Tungsten", "Flourescent", "Flash", "Custom"})[data[7]];
+
+  add_field(res, "CanonWhiteBalance",
+    ([ 0:"Auto",
+       1:"Sunny",
+       2:"Cloudy",
+       3:"Tungsten",
+       4:"Flourescent",
+       5:"Flash",
+       6:"Custom"]), data[7]);
+
   res->CanonBurstSequenceNumber=(string)data[9];
 //    res->CanonAutoFocusPoint=sprintf("%b",data[14]);
   mapping flashbias=
