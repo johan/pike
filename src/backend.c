@@ -261,6 +261,11 @@ void cleanup_backend(void)
     active_num_in_poll = 0;
   }
 #endif /* HAVE_POLL */
+  if (fds) {
+    free(fds);
+    fds = NULL;
+    fds_size = 0;
+  }
 }
 
 void set_read_callback(int fd,file_callback cb,void *data)
