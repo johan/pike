@@ -1373,7 +1373,11 @@ static void img_png_decode(INT32 args,int header_only)
 
 	 free(w1);
 	 w1=t1;
-	 if (wa1) { free(wa1); wa1=ta1; }
+	 if (wa1) {
+	   free(wa1); wa1=ta1;
+	 } else {
+	   free(ta1);
+	 }
 
 	 break;
       default:
