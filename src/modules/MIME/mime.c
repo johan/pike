@@ -95,7 +95,7 @@ void pike_module_init( void )
   rfc822ctype[']'] = CT_RBRACK;
   rfc822ctype['"'] = CT_QUOTE;
   rfc822ctype['='] = CT_EQUAL;
-  for(i=0; i<10; i++)
+  for(i=0; i<9; i++)
     rfc822ctype[(int)"<>@,;:\\/?"[i]] = CT_SPECIAL;
 
   /* Add global functions */
