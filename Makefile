@@ -330,7 +330,7 @@ delete_builddir:
 
 distclean: delete_builddir
 	$(MAKE) "OS=source" delete_builddir
-	-rm -rf bin/pike
+	-rm -f bin/pike
 
 srcclean:
 	for d in `find src -type d -print`; do \
@@ -340,6 +340,9 @@ srcclean:
 	done
 
 cvsclean: srcclean distclean
+	-rm -rf build
+	-rm -f export_result.txt
+	-rm -f Pike*.tar.gz
 
 depend: configure
 	-@cd "$(BUILDDIR)" && \
