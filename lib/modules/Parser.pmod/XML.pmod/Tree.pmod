@@ -895,9 +895,12 @@ class Node {
     // Then set the short namespaces for any attributes.
     foreach(indices(attrs), string attr_name) {
       if (!has_prefix(attr_name, "xmlns:")) {
-	int i = search(attr_name, ":");
-	int j = search(attr_name, "/");
-	if (j > i) {
+	int i = -1;
+	int j;
+	while ((j = search(attr_name, ":", i)) >= 0) {
+	  i = j;
+	}
+	while ((j = search(attr_name, "/", i)) >= 0) {
 	  i = j;
 	}
 	if (i >= 0) {
