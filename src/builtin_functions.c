@@ -4884,7 +4884,7 @@ static void f_interleave_array(INT32 args)
     ITEM(min)[i].u.integer = low;
   }
 
-  min->type_field = T_INT;
+  min->type_field = BIT_INT;
   ref_push_array(order);
   f_sort(2);	/* Sort the order array on the minimum index */
 
@@ -5057,7 +5057,7 @@ static struct array *longest_ordered_sequence(struct array *a)
     ITEM(res)[--top].u.integer = ltop;
     ltop = links[ltop];
   }
-  res->type_field = T_INT;
+  res->type_field = BIT_INT;
 
   UNSET_ONERROR(tmp2);
   UNSET_ONERROR(tmp);
