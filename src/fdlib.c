@@ -781,9 +781,9 @@ PMOD_EXPORT ptrdiff_t debug_fd_read(FD fd, void *to, ptrdiff_t len)
     case FD_FILE:
     case FD_PIPE:
       ret=0;
-      if(!ReadFile(handle, to,
-		   DO_NOT_WARN((DWORD)len),
-		   &ret,0) && ret<=0)
+      if(len && !ReadFile(handle, to,
+			  DO_NOT_WARN((DWORD)len),
+			  &ret,0) && ret<=0)
       {
 	errno=GetLastError();
 	switch(errno)
