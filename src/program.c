@@ -5393,7 +5393,7 @@ static char *make_plain_file (char *file, size_t len, INT32 shift, int malloced)
 
       if(chr > 255)
       {
-	sprintf(buffer+ptr,"\\0x%x",chr);
+	sprintf(buffer+ptr,"\\u%04X",chr);
 	ptr+=strlen(buffer+ptr);
       }else{
 	buffer[ptr++]=chr;
