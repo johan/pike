@@ -176,6 +176,8 @@ static int _perl_parse(struct perlmod_storage *ps,
 
     if (env_block_size)
       ps->env_block=xalloc(env_block_size);
+    else
+      ps->env_block = NULL;
     ps->env=(char **)xalloc(sizeof(char *)*(d+1));
 
     env_blockp = ps->env_block;
