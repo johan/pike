@@ -13,7 +13,7 @@
 /* Prototypes begin here */
 typedef INT32 pike_rusage_t[30];
 int pike_get_rusage(pike_rusage_t rusage_values);
-pike_rusage_t *low_rusage(void);
+INT32 *low_rusage(void);
 INT32 internal_rusage(void);
 #if defined(PIKE_DEBUG) || defined(INTERNAL_PROFILING)
 void debug_print_rusage(FILE *out);

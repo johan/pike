@@ -251,11 +251,11 @@ static long convert_time(long t,long tick)
 }
 #endif
 
-pike_rusage_t *low_rusage(void)
+INT32 *low_rusage(void)
 {
   static pike_rusage_t rusage_values;
   if (pike_get_rusage (rusage_values))
-    return &rusage_values;
+    return &rusage_values[0];
   else
     return NULL;
 }
