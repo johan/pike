@@ -22,6 +22,7 @@ typedef void (*c_fun)(INT32);
 void yytype_error(char *msg, struct pike_type *expected_t,
 		  struct pike_type *got_t, unsigned int flags);
 void yyerror(char *s);
+static void yyerror_reserved(char *keyword);
 int islocal(struct pike_string *str);
 int verify_declared(struct pike_string *str);
 void cleanup_compiler(void);
