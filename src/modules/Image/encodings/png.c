@@ -1794,29 +1794,28 @@ void init_image_png(void)
 
    if (gz_deflate && gz_inflate && gz_crc32.type!=T_INT)
    {
-      add_function("_chunk",image_png__chunk,
-		   "function(string,string:string)",
-		   OPT_TRY_OPTIMIZE);
-      add_function("__decode",image_png___decode,
-		   "function(string:array)",
+     ADD_FUNCTION2("_chunk",image_png__chunk,tFunc(tStr tStr,tStr),0,
+		  OPT_TRY_OPTIMIZE);
+     ADD_FUNCTION2("__decode",image_png___decode,tFunc(tStr,tArray),0,
 		   OPT_TRY_OPTIMIZE);
 
-      add_function("decode_header",image_png_decode_header,
-		   "function(string:mapping)",
-		   OPT_TRY_OPTIMIZE);
+     ADD_FUNCTION2("decode_header",image_png_decode_header,
+		   tFunc(tStr,tMapping),0,OPT_TRY_OPTIMIZE);
 
       if (gz_deflate)
       {
-	 add_function("_decode",image_png__decode,
-		      "function(array|string,void|mapping(string:mixed):mapping)",0);
-	 add_function("decode",image_png_decode,
-		      "function(string,void|mapping(string:mixed):object)",0);
-	 add_function("decode_alpha",image_png_decode_alpha,
-		      "function(string,void|mapping(string:mixed):object)",0);
+	ADD_FUNCTION("_decode",image_png__decode,
+		     tFunc(tOr(tArray,tStr) tOr(tVoid,tMap(tStr,tMix)),
+			   tMapping),0);
+
+	 ADD_FUNCTION("decode",image_png_decode,
+		      tFunc(tStr tOr(tVoid,tMap(tStr,tMix)), tObj),0);
+	 ADD_FUNCTION("decode_alpha",image_png_decode_alpha,
+		      tFunc(tStr tOr(tVoid,tMap(tStr,tMix)), tObj),0);
       }
-      add_function("encode",image_png_encode,
-		   "function(object,void|mapping(string:mixed):string)",
-		   OPT_TRY_OPTIMIZE);
+      ADD_FUNCTION2("encode",image_png_encode,
+		    tFunc(tObj tOr(tVoid,tMap(tStr,tMix)),tStr),0,
+		    OPT_TRY_OPTIMIZE);
    }
 
    param_palette=make_shared_string("palette");

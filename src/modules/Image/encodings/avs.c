@@ -142,9 +142,9 @@ void image_avs_f_encode(INT32 args )
 
 void init_image_avs()
 {
-  add_function( "decode",  image_avs_f_decode,  "function(string:object)", 0);
-  add_function( "_decode", image_avs_f__decode, "function(string:mapping)", 0);
-  add_function( "encode",  image_avs_f_encode,  "function(object:string)", 0);
+  ADD_FUNCTION( "decode",  image_avs_f_decode,  tFunc(tStr,tObj), 0);
+  ADD_FUNCTION( "_decode", image_avs_f__decode, tFunc(tStr,tMapping), 0);
+  ADD_FUNCTION( "encode",  image_avs_f_encode,  tFunc(tObj,tStr), 0);
 }
 
 void exit_image_avs()

@@ -972,12 +972,10 @@ void image_tga_encode( INT32 args )
 static struct program *image_encoding_tga_program=NULL;
 void init_image_tga( )
 {
-   pike_add_function( "_decode", image_tga__decode,
-                 "function(string:mapping(string:object))", 0);
-   pike_add_function( "decode", image_tga_decode,
-                 "function(string:object)", 0);
-   pike_add_function( "encode", image_tga_encode,
-                 "function(object,mapping|void:string)", 0);
+   ADD_FUNCTION( "_decode", image_tga__decode, tFunc(tStr,tMap(tStr,tObj)), 0);
+   ADD_FUNCTION( "decode", image_tga_decode, tFunc(tStr,tObj), 0);
+   ADD_FUNCTION( "encode", image_tga_encode,
+		 tFunc(tObj tOr(tVoid,tMapping),tStr), 0);
 
    param_alpha=make_shared_string("alpha");
    param_raw=make_shared_string("raw");

@@ -428,14 +428,14 @@ static void image_f_wbf_encode( int args )
 
 void init_image_wbf()
 {
-  add_function( "encode", image_f_wbf_encode, 
-                "function(object,void|mapping:string)", 0);
-  add_function( "_encode", image_f_wbf_encode, 
-                "function(object,void|mapping:string)", 0);
-  add_function( "decode", image_f_wbf_decode, "function(string:object)", 0);
-  add_function( "_decode", image_f_wbf__decode, "function(string:mapping)", 0);
-  add_function( "decode_header", image_f_wbf_decode_header, 
-                "function(string:mapping)", 0);
+  ADD_FUNCTION( "encode", image_f_wbf_encode,
+		tFunc(tObj tOr(tVoid,tMapping),tStr), 0);
+  ADD_FUNCTION( "_encode", image_f_wbf_encode,
+		tFunc(tObj tOr(tVoid,tMapping),tStr), 0);
+  ADD_FUNCTION( "decode", image_f_wbf_decode, tFunc(tStr,tObj), 0);
+  ADD_FUNCTION( "_decode", image_f_wbf__decode, tFunc(tStr,tMapping), 0);
+  ADD_FUNCTION( "decode_header", image_f_wbf_decode_header,
+		tFunc(tStr,tMapping), 0);
 }
 
 void exit_image_wbf()

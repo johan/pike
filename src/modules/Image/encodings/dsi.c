@@ -101,8 +101,8 @@ void f_decode( INT32 args )
 
 void init_image_dsi()
 {
-  add_function("_decode", f__decode, "function(string:mapping)", 0);
-  add_function("decode", f_decode, "function(string:object)", 0);
+  ADD_FUNCTION("_decode", f__decode, tFunc(tStr,tMapping), 0);
+  ADD_FUNCTION("decode", f_decode, tFunc(tStr,tObj), 0);
 }
 
 

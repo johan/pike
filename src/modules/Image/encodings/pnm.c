@@ -590,29 +590,19 @@ struct program *image_pnm_module_program=NULL;
 
 void init_image_pnm(void)
 {
-   add_function("encode",img_pnm_encode_binary,
-		"function(object:string)",0);
-   add_function("encode_binary",img_pnm_encode_binary,
-		"function(object:string)",0);
-   add_function("encode_ascii",img_pnm_encode_ascii,
-		"function(object:string)",0);
+   ADD_FUNCTION("encode",img_pnm_encode_binary,tFunc(tObj,tStr),0);
+   ADD_FUNCTION("encode_binary",img_pnm_encode_binary,tFunc(tObj,tStr),0);
+   ADD_FUNCTION("encode_ascii",img_pnm_encode_ascii,tFunc(tObj,tStr),0);
 
-   add_function("encode_P1",img_pnm_encode_P1,
-		"function(object:string)",0);
-   add_function("encode_P2",img_pnm_encode_P2,
-		"function(object:string)",0);
-   add_function("encode_P3",img_pnm_encode_P3,
-		"function(object:string)",0);
+   ADD_FUNCTION("encode_P1",img_pnm_encode_P1,tFunc(tObj,tStr),0);
+   ADD_FUNCTION("encode_P2",img_pnm_encode_P2,tFunc(tObj,tStr),0);
+   ADD_FUNCTION("encode_P3",img_pnm_encode_P3,tFunc(tObj,tStr),0);
 
-   add_function("encode_P4",img_pnm_encode_P4,
-		"function(object:string)",0);
-   add_function("encode_P5",img_pnm_encode_P5,
-		"function(object:string)",0);
-   add_function("encode_P6",img_pnm_encode_P6,
-		"function(object:string)",0);
+   ADD_FUNCTION("encode_P4",img_pnm_encode_P4,tFunc(tObj,tStr),0);
+   ADD_FUNCTION("encode_P5",img_pnm_encode_P5,tFunc(tObj,tStr),0);
+   ADD_FUNCTION("encode_P6",img_pnm_encode_P6,tFunc(tObj,tStr),0);
 
-   add_function("decode",img_pnm_decode,
-		"function(string:object)",0);
+   ADD_FUNCTION("decode",img_pnm_decode,tFunc(tStr,tObj),0);
 }
 
 void exit_image_pnm(void)

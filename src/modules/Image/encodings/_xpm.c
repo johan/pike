@@ -470,8 +470,10 @@ void f__xpm_trim_rows( INT32 args )
 
 void init_image__xpm( )
 {
-   add_function( "_xpm_write_rows", f__xpm_write_rows, "mixed", 0); 
-   add_function( "_xpm_trim_rows", f__xpm_trim_rows, "mixed", 0);
+   ADD_FUNCTION( "_xpm_write_rows", f__xpm_write_rows,
+		 tFunc(tObj tObj tInt tArr(tStr) tArr(tStr), tInt), 0);
+   ADD_FUNCTION( "_xpm_trim_rows", f__xpm_trim_rows,
+		 tFunc(tArr(tStr),tArr(tStr)), 0);
 }
 
 void exit_image__xpm(void)

@@ -402,14 +402,13 @@ struct program *image_xwd_module_program=NULL;
 
 void init_image_xwd(void)
 {
-   add_function("_decode",image_xwd__decode,
-		"function(string,void|int:mapping(string:int|array|object))",0);
-   add_function("decode",image_xwd_decode,
-		"function(string:object)",0);
+   ADD_FUNCTION("_decode",image_xwd__decode,
+		tFunc(tStr tOr(tInt,tVoid),
+		      tMap(tStr,tOr3(tInt,tArray,tObj))),0);
 
-   add_function("decode_header",image_xwd_decode_header,
-		"function(string:object)",0);
+   ADD_FUNCTION("decode",image_xwd_decode,tFunc(tStr,tObj),0);
 
+   ADD_FUNCTION("decode_header",image_xwd_decode_header,tFunc(tStr,tObj),0);
 }
 
 void exit_image_xwd(void)

@@ -315,15 +315,11 @@ void image_any_decode_alpha(INT32 args)
 
 void init_image_any(void)
 {
-   add_function("_decode",image_any__decode,
-		"function(string:mapping)",0);
-   add_function("decode_header",image_any_decode_header,
-		"function(string:mapping)",0);
+  ADD_FUNCTION("_decode",image_any__decode,tFunc(tStr,tMapping), 0);
+  ADD_FUNCTION("decode_header",image_any_decode_header,tFunc(tStr,tMapping),0);
 
-   add_function("decode",image_any_decode,
-		"function(string:object)",0);
-   add_function("decode_alpha",image_any_decode_alpha,
-		"function(string:object)",0);
+  ADD_FUNCTION("decode",image_any_decode,tFunc(tStr,tObj),0);
+  ADD_FUNCTION("decode_alpha",image_any_decode_alpha,tFunc(tStr,tObj),0);
 }
 
 void exit_image_any(void)

@@ -411,12 +411,11 @@ void image_xbm_encode( INT32 args )
 static struct program *image_encoding_xbm_program=NULL;
 void init_image_xbm(void)
 {
-  pike_add_function( "_decode", image_xbm__decode, 
-                "function(string,mapping|void:mapping(string:object))", 0);
-  pike_add_function( "decode", image_xbm_decode, 
-                "function(string:object)", 0);
-  pike_add_function( "encode", image_xbm_encode,  
-                "function(object,mapping|void:string)", 0); 
+  ADD_FUNCTION( "_decode", image_xbm__decode,
+		tFunc(tStr tOr(tVoid,tMapping),tMap(tStr,tObj)), 0);
+  ADD_FUNCTION( "decode", image_xbm_decode, tFunc(tStr,tObj), 0);
+  ADD_FUNCTION( "encode", image_xbm_encode,
+		tFunc(tObj tOr(tVoid,tMapping),tStr), 0);
   param_name=make_shared_string("name");
   param_fg=make_shared_string("fg");
   param_bg=make_shared_string("bg");
