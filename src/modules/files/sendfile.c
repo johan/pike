@@ -238,13 +238,11 @@ static void call_callback_and_free(struct callback *cb, void *this_, void *arg)
 
   remove_callback(cb);
 
-#ifdef _REENTRANT
   if (this->self) {
     /* Make sure we get freed in case of error */
     push_object(this->self);
     this->self = NULL;
   }
-#endif /* _REENTRANT */
 
   sf_call_callback(this);
 
@@ -866,7 +864,7 @@ static void sf_create(INT32 args)
   if ((sf.trailers) && (sf.trailers->refs > 1)) {
     struct array *a = copy_array(sf.trailers);
 #ifdef PIKE_DEBUG
-    if ((sp[4-args].type != T_ARRAY) || (sp[4-args].u.array != sf.headers)) {
+    if ((sp[4-args].type != T_ARRAY) || (sp[4-args].u.array != sf.trailers)) {
       fatal("sendfile: Stack out of sync(4).\n");
     }
 #endif /* PIKE_DEBUG */
