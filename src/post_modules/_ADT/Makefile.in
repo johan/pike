@@ -1,0 +1,15 @@
+# $Id$
+@make_variables@
+VPATH=@srcdir@:@srcdir@/../..:../..
+OBJS=adt.o array_adapter.o
+MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
+
+CONFIG_HEADERS=@CONFIG_HEADERS@
+
+@dynamic_module_makefile@
+
+# Compatibility with stupid makes..
+adt.o: $(SRCDIR)/adt.c
+array_adapter.o: $(SRCDIR)/array_adapter.c
+
+@dependencies@
