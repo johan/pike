@@ -240,6 +240,9 @@ extern const char *Pike_check_c_stack_errmsg;
 
 #define free_pike_frame(F) do{ struct pike_frame *f_=(F); debug_malloc_touch(f_); if(!--f_->refs) really_free_pike_frame(f_); }while(0)
 
+/* A scope is any frame which may have malloced locals */
+#define free_pike_scope(F) do{ struct pike_frame *f_=(F); debug_malloc_touch(f_); if(!--f_->refs) really_free_pike_scope(f_); }while(0)
+
 #define POP_PIKE_FRAME() do {						\
   struct pike_frame *tmp_=Pike_fp->next;					\
   if(!--Pike_fp->refs)							\

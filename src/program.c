@@ -4691,7 +4691,7 @@ static void exit_trampoline(struct object *o)
 {
   if(THIS->frame)
   {
-    free_pike_frame(THIS->frame);
+    free_pike_scope(THIS->frame);
     THIS->frame=0;
   }
 }
