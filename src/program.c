@@ -2409,6 +2409,11 @@ static void exit_program_struct(struct program *p)
 
   DOUBLEUNLINK(first_program, p);
 
+  if(p->facet_group)
+  {
+    free_object(p->facet_group);
+  }
+
   if(p->flags & PROGRAM_OPTIMIZED)
   {
     if(p->program) {
