@@ -731,6 +731,7 @@ PMOD_EXPORT int is_eq(const struct svalue *a, const struct svalue *b)
   {
   case T_OBJECT:
     if (a->u.object == b->u.object) return 1;
+    /* FIXME: What if both have lfun::`==(), and they disagree? */
     if(FIND_LFUN(a->u.object->prog,LFUN_EQ) != -1)
       goto a_is_obj;
 
