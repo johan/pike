@@ -312,7 +312,7 @@ sure: verify
 
 # verify / debug verbose
 verbose_verify: module_testsuites testsuite master.pike
-d	if test "$(TESTARGS)" = "" ; then args="-a" ; else args="$(TESTARGS)" ; fi; \
+	if test "$(TESTARGS)" = "" ; then args="-a" ; else args="$(TESTARGS)" ; fi; \
 	$(RUNPIKE) $(TMP_BINDIR)/test_pike.pike --verbose $$args
 
 # verify & debug VERBOSE
