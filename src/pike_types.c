@@ -2516,10 +2516,16 @@ static struct pike_type *low_match_types2(struct pike_type *a,
 	if(a->cdr != b->cdr) return 0;
       }else{
 	/* object(0 *) =? object(0 *) */
+#if 0
+	/* This is known to cause trouble in some cases when comparing
+	 * the same function prototype in the first and second passes
+	 * (got "Prototype doesn't match for function foo" even though
+	 * there was no other prototype for that function). /mast */
 	struct program *ap,*bp;
 	ap = id_to_program((ptrdiff_t)a->cdr);
 	bp = id_to_program((ptrdiff_t)b->cdr);
 	if (!is_compatible(ap, bp)) return 0;
+#endif
 	break;
       }
     }
