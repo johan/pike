@@ -465,7 +465,7 @@ int main(int argc, array(string) argv)
   array(Switch) a = [array(Switch)]make_switches(data);
   if(sizeof(a)!=1 || !a[0]->is_switch) error("Expected one top switch.\n");
 
-  a[0]->make_child_fun();
+  //  a[0]->make_child_fun();
   write( functions );
 
   write("inline static void low_asm_opt(void) {\n");
