@@ -25,7 +25,7 @@ class SGML
 //!	A string
 //!     @tt{"<gat>&nbsp;<gurka>&nbsp;</gurka>&nbsp;<banan>&nbsp;<kiwi>&nbsp;</gat>"@}
 //!     results in 
-//!	@pre{
+//!	@tt{
 //!	({
 //!	    tag "gat" object with data:
 //!	    ({
@@ -50,7 +50,7 @@ class SGML
 //!	container _with_ an end tag.
 //!
 //! 	The 'tag' is an object with the following variables:
-//!	@pre{
+//!	@tt{
 //!	 string name;           - name of tag
 //!	 mapping args;          - argument to tag
 //!	 int line,char,column;  - position of tag

@@ -1252,6 +1252,7 @@ class FILE
     }
     return ::write( what,@fmt );
   }
+
   //! This function does approximately the same as:
   //! @code{@[write](@[sprintf](@[format],@@@[data]))@}.
   //!
