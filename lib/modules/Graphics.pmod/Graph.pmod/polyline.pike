@@ -1,7 +1,5 @@
-#!NOMODULE
 /*
- * name = "BG: Create pies";
- * doc = "Business Graphics sub-module providing draw functions.";
+ * Graph sub-module providing draw functions.
  * $Id$
  */
 
