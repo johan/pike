@@ -28,6 +28,10 @@ RCSID("$Id$");
 #include "array.h"
 #include "multiset.h"
 #include "program.h"
+#include "array.h"
+#include "builtin_functions.h"
+#include "pike_memory.h"
+#include "module_support.h"
 
 #include "precompiled_odbc.h"
 
@@ -217,7 +221,7 @@ static void odbc_fix_fields(void)
 
     membuf_size += odbc_fields[i].size;
   }
-  f_aggregate_array(PIKE_ODBC_RES->num_fields);
+  f_aggregate(PIKE_ODBC_RES->num_fields);
 
   sp[-1].u.array->refs++;
   PIKE_ODBC_RES->fields = sp[-1].u.array;

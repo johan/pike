@@ -26,6 +26,7 @@ RCSID("$Id$");
 #include "array.h"
 #include "multiset.h"
 #include "program.h"
+#include "module_support.h"
 
 #ifdef HAVE_ODBC
 
@@ -247,7 +248,7 @@ static void f_big_query(INT32 args)
     push_object(fp->current_object);
     fp->current_object->refs++;
 
-    push_object(clone(odbc_result_program, 1));
+    push_object(clone_object(odbc_result_program, 1));
   } else {
     odbc_check_error("odbc->big_query", "Couldn't commit query",
 		     SQLTransact(PIKE_ODBC->henv, PIKE_ODBC->hdbc,

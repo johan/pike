@@ -47,8 +47,8 @@ struct precompiled_odbc {
   HENV henv;
   HDBC hdbc;
   HSTMT hstmt;
-  SDWORD num_fields;
-  SWORD affected_rows;
+  SWORD num_fields;
+  SDWORD affected_rows;
   struct pike_string *last_error;
 };
 
@@ -75,5 +75,8 @@ struct precompiled_odbc_result {
 volatile void odbc_error(const char *fun, const char *msg,
 			 struct precompiled_odbc *odbc, HSTMT hstmt,
 			 RETCODE code, void (*clean)(void));
+
+void init_odbc_res_programs(void);
+void exit_odbc_res(void);
 
 #endif /* PIKE_PRECOMPILED_ODBC_H */
