@@ -1020,7 +1020,8 @@ class Evaluator {
     // Identify the type of statement so that we can intercept
     // variable declarations and store them locally.
     string type = expr[0];
-    if(has_value(expr->first_complex(), ".")) type=".object";
+    if( has_value(expr->first_complex(), ".") &&
+	type!="(" ) type=".object";
     if(programs[expr[0]] && expr[1]!="(") type=".local";
 
     switch(type)
