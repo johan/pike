@@ -1470,7 +1470,17 @@ static void lm_add(rgb_group *s,rgb_group *l,rgb_group *d,
 	    dest+=8;
 	    num-=16;
 	  }
-	  emms();
+	  if (num > 8)
+	  {
+	    movq_m2r(*source, mm0);
+	    source+=8;
+	    paddusb_m2r(*sourcel, mm0);
+	    sourcel+=8;
+	    movq_r2m(mm0,*dest);
+	    dest+=8;
+	    num-=8;
+	  }
+          emms();
 	  while (num-->0)
 	  {
 	    *dest=L_TRUNC(L_OPER(*source,*sourcel));
