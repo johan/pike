@@ -2521,11 +2521,6 @@ static void file_pipe(INT32 args)
     {
       i=fd_pipe(&inout[0]);
       if (i >= 0) {
-	if (type & fd_REVERSE) {
-	  int tmp = inout[0];
-	  inout[0] = inout[1];
-	  inout[1] = tmp;
-	}
 	type=PIPE_CAPABILITIES;
 	break;
       }
