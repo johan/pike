@@ -676,7 +676,7 @@ static void eval_instruction(unsigned char *pc)
        * and then the low array/multiset/mapping manipulation routines can be
        * destructive if they like
        */
-      if( (1 << sp[-1].type) & ( BIT_ARRAY | BIT_MULTISET | BIT_MAPPING ))
+      if( (1 << sp[-1].type) & ( BIT_ARRAY | BIT_MULTISET | BIT_MAPPING | BIT_STRING ))
       {
 	struct svalue s;
 	s.type=T_INT;
@@ -1492,6 +1492,21 @@ void strict_apply_svalue(struct svalue *s, INT32 args)
       push_object(o);
     }
     break;
+
+  case T_OBJECT:
+  {
+    if(!s->u.object->prog)
+      error("Calling a destructed object.\n");
+    
+    if(s->u.object->prog->lfuns[LFUN_CALL] == -1)
+      error("Calling object without `() operator\n");
+
+    apply_lfun(s->u.object, LFUN_CALL, args);
+    free_svalue(sp-2);
+    sp[-2]=sp[-1];
+    sp--;
+    break;
+  }
 
   default:
     error("Call to non-function value.\n");
