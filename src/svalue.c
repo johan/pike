@@ -742,10 +742,12 @@ void describe_svalue(struct svalue *s,int indent,struct processing *p)
     case T_STRING:
       {
 	int i;
+#if 0
 	if (s->subtype) {
 	  sprintf(buf,"/* subtype:%ld */ ",(long)s->subtype);
 	  my_strcat(buf);
 	}
+#endif
         my_putchar('"');
 	for(i=0; i < s->u.string->len; i++)
         {
