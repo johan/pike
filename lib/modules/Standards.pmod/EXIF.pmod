@@ -853,7 +853,7 @@ static mapping parse_tag(Stdio.File file, mapping tags, mapping exif_info,
     else
       [tag_format,tag_map]=tag_map[""];
   }
-  
+
   [string tag_type_name, int tag_type_len] =
      TAG_TYPE_INFO[tag_type];
 
@@ -870,8 +870,12 @@ static mapping parse_tag(Stdio.File file, mapping tags, mapping exif_info,
     else if(tag_format == "TAGS")
     {
       int num_entries=short_value(file->read(2), order);
-      for(int i=0; i<num_entries; i++)
-	tags|=parse_tag(file, tags, tag_map, exif_offset, order);
+      for(int i=0; i<num_entries; i++) {
+	catch {
+	  // This catch hides a probable bug in the parser.
+	  tags|=parse_tag(file, tags, tag_map, exif_offset, order);
+	};
+      }
     }
     else
     {
