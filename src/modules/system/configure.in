@@ -309,7 +309,8 @@ int main()
    return 1;
 }
 ],pike_cv_itimer_type_is_02=yes,
-pike_cv_itimer_type_is_02="not certain")
+pike_cv_itimer_type_is_02="not certain",
+pike_cv_itimer_type_is_02="not certain",)
 ])
 
 AC_MSG_RESULT($pike_cv_itimer_type_is_02)
