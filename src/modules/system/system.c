@@ -1398,7 +1398,6 @@ void f_gethostbyname(INT32 args)
 }  
 #endif /* HAVE_GETHOSTBYNAME */
 
-
 #ifdef GETHOSTBYNAME_MUTEX_EXISTS
 static void cleanup_after_fork(struct callback *cb, void *arg0, void *arg1)
 {
@@ -1407,6 +1406,23 @@ static void cleanup_after_fork(struct callback *cb, void *arg0, void *arg1)
 #endif
 
 extern void init_passwd(void);
+
+
+#ifdef HAVE_SLEEP
+/* int sleep(int seconds) */
+
+static void f_system_sleep(INT32 args)
+{
+   INT_TYPE seconds;
+   get_all_args("setegid", args, "%i", &seconds);
+   if (seconds<0) seconds=0; /* sleep takes unsinged */
+   pop_n_elems(args);
+   THREADS_ALLOW();
+   seconds=(INT_TYPE)sleep( (unsigned int)seconds );
+   THREADS_DISALLOW();
+   push_int(seconds);
+}
+#endif /* HAVE_SLEEP */
 
 /*
  * Module linkage
@@ -1647,6 +1663,8 @@ void pike_module_init(void)
   ADD_EFUN("closelog", f_closelog,tFunc(tNone,tVoid), 0);
   ADD_FUNCTION("closelog", f_closelog,tFunc(tNone,tVoid), 0);
 #endif /* HAVE_SYSLOG */
+
+  ADD_FUNCTION("sleep",f_system_sleep,tFunc(tInt,tInt), 0);
 
   init_passwd();
 
