@@ -473,7 +473,7 @@ node *mkcastnode(struct pike_string *type,node *n)
 void resolv_constant(node *n)
 {
   struct identifier *i;
-  check_node(n);
+
   if(!n)
   {
     push_int(0);
