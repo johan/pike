@@ -201,7 +201,7 @@ void f_mutex_trylock(INT32 args)
   THREADS_ALLOW();
   if(!m->key)
   {
-    OB2KEY(o)->mut=THIS_MUTEX;
+    OB2KEY(o)->mut=m;
     m->key=o;
     i=1;
   }
