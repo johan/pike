@@ -346,6 +346,11 @@ static RETSIGTYPE receive_signal(int signum)
 {
   int tmp;
 
+#ifdef DEBUG
+  if(signum<0 || signum>=MAX_SIGNALS)
+    fatal("Received signal %u >= %u!!!\n", signum, MAX_SIGNALS);
+#endif
+
   tmp=firstsig+1;
   if(tmp == SIGNAL_BUFFER) tmp=0;
   if(tmp != lastsig)
