@@ -208,7 +208,7 @@ define(PIKE_FEATURE_RAW,[
 [$2]
 EOF])
 
-define([PAD_FEATURE],[substr([$1][................................],0,17) ])
+define([PAD_FEATURE],[substr([$1][................................],0,20) ])
 
 define(PIKE_FEATURE_3,[
   cat >pike_[$1].feature <<EOF
