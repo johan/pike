@@ -892,6 +892,7 @@ int low_quick_binary_strcmp(char *a,INT32 alen,
   }
 }
 
+
 /* does not take locale into account */
 int generic_quick_binary_strcmp(const char *a,INT32 alen, int asize,
 				const char *b,INT32 blen, int bsize)
@@ -921,6 +922,11 @@ int generic_quick_binary_strcmp(const char *a,INT32 alen, int asize,
     }
     return alen-blen;
   }
+}
+
+int c_compare_string(struct pike_string *s, char *foo, int len)
+{
+  return s->len == len && s->size_shift == 0 && !MEMCMP(s->str,foo,len);
 }
 
 #ifndef HAVE_STRCOLL

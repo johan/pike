@@ -1757,7 +1757,20 @@ low_idents: F_IDENTIFIER
     }
     if(!$$)
     {
-      $$=mkintnode(0);
+	if(ISCONSTSTR($2->u.sval.u.string,"`->") ||
+	   ISCONSTSTR($2->u.sval.u.string,"`[]") )
+	{
+	  $$=mkapplynode(mkprgnode(magic_index_program),mkintnode(0));
+	}
+	else if(ISCONSTSTR($2->u.sval.u.string,"`->=") ||
+		ISCONSTSTR($2->u.sval.u.string,"`[]=") )
+	{
+	  $$=mkapplynode(mkprgnode(magic_set_index_program),mkintnode(0));
+	}
+	else
+	{
+	  $$=mkintnode(0);
+	}
     }else{
       if($$->token==F_ARG_LIST) $$=mkefuncallnode("aggregate",$$);
     }

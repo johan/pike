@@ -475,6 +475,15 @@ node *mkfloatnode(FLOAT_TYPE foo)
   return res;
 }
 
+
+node *mkprgnode(struct program *p)
+{
+  struct svalue s;
+  s.u.program=p;
+  s.type=T_PROGRAM;
+  return mkconstantsvaluenode(&s);
+}
+
 node *mkapplynode(node *func,node *args)
 {
   return mknode(F_APPLY, func, args);

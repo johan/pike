@@ -76,6 +76,7 @@ node *mknode(short token,node *a,node *b);
 node *mkstrnode(struct pike_string *str);
 node *mkintnode(int nr);
 node *mkfloatnode(FLOAT_TYPE foo);
+node *mkprgnode(struct program *p);
 node *mkapplynode(node *func,node *args);
 node *mkefuncallnode(char *function, node *args);
 node *mkopernode(char *oper_id, node *arg1, node *arg2);

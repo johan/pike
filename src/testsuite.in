@@ -169,10 +169,32 @@ test_eq([[ "\007" & "\023"]],"\003")
 test_eq([[ "\007" | "\023"]],"\027")
 test_eq([[ "\007" ^ "\023"]],"\024")
 
+
+test_any([[
+return class { int i=17; }()["i"]
+]],17)
+
+test_any([[
+return class { int i=17; mixed `[](string foo) { return i; }}()[""]
+]],17)
+
+test_any([[
+return class { int i=17; mixed `[](string foo) { return ::`[]("i"); }}()[""]
+]],17)
+
+test_any([[
+return class { int i=17; mixed `[](string foo) { return ::`[]; }}()[""]("i")
+]],17)
+
+test_any([[
+return class { int i=17; mixed `[](string foo) { return ::`[]; }}()[""]("y")
+]],0)
+
 test_compile_any([[
   class X { void hej() {} }
   class Y { inherit X:banan; void hopp() { banan::hej(); } }
 ]])
+
 
 test_compile_any([[
   class X { static void hej() {} }

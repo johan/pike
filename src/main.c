@@ -395,6 +395,7 @@ int dbm_main(int argc, char **argv)
   init_cpp();
   init_lex();
   init_program();
+  init_object();
 
   low_th_init();
 
@@ -498,6 +499,7 @@ void low_exit_main(void)
   void cleanup_backend(void);
 
   th_cleanup();
+  exit_object();
   exit_dynamic_load();
   exit_signals();
   exit_lex();
