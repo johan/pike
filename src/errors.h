@@ -87,7 +87,7 @@ DECLARE_ERROR(generic, Generic, EMPTY ,
   ERR_FUNC("message", f_error_message, tFunc(tVoid,tString), 0)
   ERR_FUNC("backtrace",f_error_backtrace,tFunc(tVoid,tArr(tMixed)),0)
   ERR_FUNC("_sprintf",f_error__sprintf,tFunc(tNone,tString),0)
-  ERR_FUNC("create",f_error_create,tFunc(tStr,tVoid),ID_STATIC)
+  ERR_FUNC("create",f_error_create,tFunc(tStr tOr(tVoid,tArr(tMixed)),tVoid),ID_STATIC)
 )
 
 #define GENERIC_ERROR_THIS ((struct generic_error_struct *)CURRENT_STORAGE)
