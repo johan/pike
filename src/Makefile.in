@@ -477,7 +477,7 @@ TAGS:
 module_testsuites:
 	( cd modules && $(MAKE) $(MAKE_FLAGS) testsuites )
 	( cd post_modules && $(MAKE) $(MAKE_FLAGS) testsuites )
-	( $(LIBDIR_SRC)/mklibtests.sh --srcdir=$(LIBDIR_SRC) \
+	( $(TMP_BINDIR)/mklibtests.sh --srcdir=$(LIBDIR_SRC) \
 	  --destdir=$(TMP_BUILDDIR)/tlib --bindir=$(TMP_BINDIR) )
 
 just_verify: module_testsuites testsuite master-stamp
