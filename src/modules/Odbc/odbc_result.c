@@ -235,7 +235,6 @@ static void odbc_fix_fields(void)
       break;
     default:
       push_text("unknown");
-      odbc_field_types[i] = SQL_C_BINARY;
       break;
     }
     push_text("length"); push_int64(precision);
