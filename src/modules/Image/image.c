@@ -3417,15 +3417,35 @@ void pike_module_init(void)
 		"function(:object)",0);
 
    add_function("`-",image_operator_minus,
-		"function(object|array(int):object)",0);
+		"function(object|array(int)|int:object)",0);
    add_function("`+",image_operator_plus,
-		"function(object|array(int):object)",0);
+		"function(object|array(int)|int:object)",0);
    add_function("`*",image_operator_multiply,
-		"function(object|array(int):object)",0);
+		"function(object|array(int)|int:object)",0);
    add_function("`&",image_operator_minimum,
-		"function(object|array(int):object)",0);
+		"function(object|array(int)|int:object)",0);
    add_function("`|",image_operator_maximum,
-		"function(object|array(int):object)",0);
+		"function(object|array(int)|int:object)",0);
+
+   add_function("`==",image_operator_equal,
+		"function(object|array(int)|int:int)",0);
+   add_function("`<",image_operator_lesser,
+		"function(object|array(int)|int:int)",0);
+   add_function("`>",image_operator_greater,
+		"function(object|array(int)|int:int)",0);
+
+   add_function("min",image_min,"function(:array(int))",0);
+   add_function("max",image_max,"function(:array(int))",0);
+   add_function("sum",image_sum,"function(:array(int))",0);
+   add_function("sumf",image_sumf,"function(:array(int))",0);
+   add_function("average",image_average,"function(:array(int))",0);
+
+   add_function("find_min",image_find_min,
+		"function(:array(int))|"
+		"function(int,int,int:array(int))",0);
+   add_function("find_max",image_find_max,
+		"function(:array(int))|"
+		"function(int,int,int:array(int))",0);
 		
    add_function("read_lsb_rgb",image_read_lsb_rgb,
 		"function(:object)",0);

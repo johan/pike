@@ -128,7 +128,21 @@ void image_operator_plus(INT32 args);
 void image_operator_multiply(INT32 args);
 void image_operator_maximum(INT32 args);
 void image_operator_minimum(INT32 args);
+
+void image_operator_equal(INT32 args);
+void image_operator_lesser(INT32 args);
+void image_operator_greater(INT32 args);
+
 void image_cast(INT32 args);
+
+void image_min(INT32 args);
+void image_max(INT32 args);
+void image_sum(INT32 args);
+void image_sumf(INT32 args);
+void image_average(INT32 args);
+
+void image_find_max(INT32 args);
+void image_find_min(INT32 args);
 
 /* x.c */
 
