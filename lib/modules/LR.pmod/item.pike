@@ -6,23 +6,48 @@
  * Henrik Grubbström 1996-11-27
  */
 
+//.
+//. File:	item.pike
+//. RCSID:	$Id$
+//. Author:	Henrik Grubbström (grubba@infovav.se)
+//.
+//. Synopsis:	An LR(0) item
+//.
+//. +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//.
+//. A partially parsed rule.
+//.
+
 import LR;
 
 /* constant kernel = (program)"kernel"; */
 /* constant item = (program)"item"; */
 
-/* The rule */
+//. + r
+//.   The rule
 object(rule) r;
-/* How long into the rule the parsing has come */
+
+//. + offset
+//.   How long into the rule the parsing has come.
 int offset;
-/* The state we will get if we shift */
+
+//. + next_state
+//.   The state we will get if we shift according to this rule
 object /* (kernel) */ next_state;
-/* Item representing this one (used for shifts) */
+
+//. + master_item
+//.   Item representing this one (used for shifts).
 object /* (item) */ master_item = 0;
-/* Look-ahead set for this item */
+
+//. + direct_lookahead
+//.   Look-ahead set for this item.
 multiset(string) direct_lookahead = (<>);
+//. + error_lookahead
+//.   Look-ahead set used for detecting conflicts
 multiset(string) error_lookahead = (<>);
-/* Relation to other items (used when compiling) */
+//. + relation
+//.   Relation to other items (used when compiling).
 multiset(object /* (item) */ ) relation = (<>);
-/* Depth counter (used when compiling) */
+//. + counter
+//.   Depth counter (used when compiling).
 int counter = 0;
