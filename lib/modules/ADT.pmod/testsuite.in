@@ -104,6 +104,27 @@ test_equal(values(adth),[[ ({26,27}) ]])
 test_do(add_constant("adth"))
 
 
+dnl - ADT.Priority_queue
+
+test_eval_error( ADT.Priority_queue()->pop(); )
+test_any([[
+  object q=ADT.Priority_queue();
+  q->push(1,"a");
+  return q->pop();
+]], "a")
+test_any([[
+  object q=ADT.Priority_queue();
+  q->push(1,"a");
+  q->push(2,"b");
+  return q->pop();
+]], "a")
+test_any([[
+  object q=ADT.Priority_queue();
+  q->push(2,"a");
+  q->push(1,"b");
+  return q->pop();
+]], "b")
+
 
 dnl - ADT.Stack
 
