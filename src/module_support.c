@@ -7,6 +7,7 @@
 #include "pike_error.h"
 #include "mapping.h"
 #include "object.h"
+#include "opcodes.h"
 
 RCSID("$Id$");
 
@@ -145,7 +146,6 @@ int va_get_args(struct svalue *s,
 		va_list ap)
 {
   int ret=0;
-  extern void f_cast();
 
   while(*fmt)
   {
@@ -177,7 +177,7 @@ int va_get_args(struct svalue *s,
 	  DO_NOT_WARN((int)s->u.float_number);
       else 
       {
-        push_text( "int" );
+        ref_push_string(int_type_string);
         push_svalue( s );
         f_cast( );
 	if(sp[-1].type == T_INT)
@@ -197,7 +197,7 @@ int va_get_args(struct svalue *s,
         *va_arg(ap, INT_TYPE *) = DO_NOT_WARN((INT_TYPE)s->u.float_number);
       else 
       {
-        push_text( "int" );
+        ref_push_string(int_type_string);
         push_svalue( s );
         f_cast( );
 	if(sp[-1].type == T_INT)
@@ -247,7 +247,7 @@ int va_get_args(struct svalue *s,
 	 *va_arg(ap, FLOAT_TYPE *)=(float)s->u.integer;
       else 
       {
-        push_text( "float" );
+        ref_push_string(float_type_string);
         push_svalue( s );
         f_cast( );
         *va_arg(ap, FLOAT_TYPE *)=sp[-1].u.float_number;
