@@ -18,7 +18,7 @@
 
 RCSID("$Id$");
 
-static struct mapping *builtin_constants = 0;
+struct mapping *builtin_constants = 0;
 
 struct mapping *get_builtin_constants(void)
 {

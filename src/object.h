@@ -89,7 +89,6 @@ void object_set_index(struct object *o,
 union anything *object_get_item_ptr(struct object *o,
 				    struct svalue *index,
 				    TYPE_T type);
-void verify_all_objects(void);
 int object_equal_p(struct object *a, struct object *b, struct processing *p);
 void cleanup_objects(void);
 struct array *object_indices(struct object *o);

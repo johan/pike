@@ -552,9 +552,8 @@ void do_debug(void)
   check_all_arrays();
   check_all_mappings();
   check_all_programs();
-  verify_all_objects();
-  verify_shared_strings_tables();
   check_all_objects();
+  verify_shared_strings_tables();
 
   call_callback(& do_debug_callbacks, 0);
 
