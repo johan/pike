@@ -1314,9 +1314,9 @@ void apply_low(struct object *o, int fun, int args)
 #ifdef DEBUG
     if(num_locals < num_args)
       fatal("Wrong number of arguments or locals in function def.\n");
+#endif
     fp->num_locals=num_locals;
     fp->num_args=num_args;
-#endif
     eval_instruction(pc);
 #ifdef DEBUG
     if(sp<evaluator_stack)
