@@ -5,6 +5,12 @@
 || $Id$
 */
 
+/*
+ * This file defines things that may ought to already exist on the
+ * target system, but are missing in some ports. There are #ifdef's
+ * that will hopefully take care of everything.
+ */
+
 #define PORT_DO_WARN
 
 #include "global.h"
@@ -71,12 +77,6 @@ time_t TIME(time_t *t)
 #ifndef HUGE
 #define HUGE HUGE_VAL
 #endif /*!HUGE*/
-
-/*
- * This file defines things that may have to be changem when porting
- * LPmud to new environments. Hopefully, there are #ifdef's that will take
- * care of everything.
- */
 
 static unsigned long RandSeed1 = 0x5c2582a4;
 static unsigned long RandSeed2 = 0x64dff8ca;
@@ -337,12 +337,11 @@ PMOD_EXPORT int MEMCMP(const void *bb,const void *aa,size_t s)
     if(*b!=*a)
     {
       if(*b<*a) return -1;
-      if(*b>*a) return 1;
+      return 1;
     }
   }
   return 0;
 }
-
 #endif
 
 #ifndef HAVE_MEMCHR
