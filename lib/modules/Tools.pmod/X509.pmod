@@ -472,4 +472,53 @@ object verify_certificate(string s, mapping authorities)
     && tbs;
 }
 
+/* Decodes a certificate chain, checks the signatures. Returns a mapping
+ * with the following contents, depending on the verification of the
+ * certificate chain:
+ *
+ * ([ "self_signed" : non-zero if the certificate is self-signed,
+ *    "verified"    : non-zero if the certificate is verified,
+ *    "authority"   : DER-encoded name of the authority that verified the chain,
+ * ])
+ *
+ * authorities is a mapping from (DER-encoded) names to verifiers. */
+
+mapping verify_certificate_chain(array(string) cert_chain, mapping authorities)
+{
+  mapping m = ([ ]);
+
+  for(int i=0; i<sizeof(cert_chain); i++)
+  {
+    object cert = Standards.ASN1.Decode.simple_der_decode(cert_chain[i]);
+
+    object(TBSCertificate) tbs = decode_certificate(cert);
+    if (!tbs) return m;
+
+    object v;
+
+    if(i == sizeof(cert_chain)-1) // Last cert
+      v = authorities[tbs->issuer->get_der()];
+    if (!v && tbs->issuer->get_der() == tbs->subject->get_der())
+    {
+      /* A self signed certificate */
+      m->self_signed = 1;
+      X509_WERR("Self signed certificate\n");
+      v = tbs->public_key;
+    }
+    else
+      v = authorities[tbs->issuer->get_der()];
+
+    if (v && v->verify(cert->elements[1],
+		       cert->elements[0]->get_der(),
+		       cert->elements[2]->value)
+	&& tbs)
+    {
+      m->authority = tbs->issuer->get_der();
+      if(v == authorities[tbs->issuer->get_der()])
+	m->verified = 1;
+    }
+  }
+  return m;
+}
+
 #endif
