@@ -173,8 +173,6 @@ struct keyword instr_names[]=
 { "nop",                F_NOP,0 },
 { "function start",     F_START_FUNCTION,0 },
 { "apply and return",   F_APPLY_AND_RETURN, I_HASARG },
-{ "call function",      F_CALL_FUNCTION, 0 },
-{ "call function & return", F_CALL_FUNCTION_AND_RETURN, 0 },
 { "notreached!",        F_NOTREACHED, 0 },
 };
 

@@ -92,9 +92,6 @@ enum Pike_opcodes
   F_CATCH,
   F_FOREACH,
 
-  F_CALL_FUNCTION,
-  F_CALL_FUNCTION_AND_RETURN,
-
 #include "interpret_protos.h"
 /*
  * These are token values that needn't have an associated code for the
