@@ -250,7 +250,7 @@ void create(void|mixed _id, void|mapping|object _initial)
 {
   id = _id;
   if (objectp(_initial) && _initial->is_binary_relation)
-    val = _initial->filter(lambda (mixed left, mixed right) { return 1;})->val;
+    _initial->map(lambda (mixed left, mixed right) { add(left,right); });
   else if (mappingp(_initial))
     foreach(indices(_initial), mixed key)
       add(key, _initial[key]);
@@ -319,5 +319,14 @@ static class _get_iterator {
     else
       finished = 1;
     return !finished;
+  }
+}
+
+mixed cast(string to) {
+  switch(to) {
+  case "mapping":
+    return copy_value(val);
+  default:
+    error("Can not cast ADT.Relation.Binary to %O.\n", to);
   }
 }
