@@ -2112,7 +2112,7 @@ void pike_module_init(void)
   ADD_FUNCTION("syslog", f_syslog,tFunc(tInt tStr,tVoid), 0);
   
 /* function(:void) */
-  ADD_EFUN("closelog", f_closelog,tFunc(tNone,tVoid), 0);
+  ADD_EFUN("closelog", f_closelog,tFunc(tNone,tVoid), OPT_SIDE_EFFECT);
   ADD_FUNCTION("closelog", f_closelog,tFunc(tNone,tVoid), 0);
 #endif /* HAVE_SYSLOG */
 
