@@ -1102,6 +1102,10 @@ void o_range()
 
       if(from>to+1) from=to+1;
     }
+#ifdef DEBUG
+    if(from < 0 || (to-from+1) < 0)
+      fatal("Error in o_range.\n");
+#endif
 
     s=make_shared_binary_string(sp[-1].u.string->str+from,to-from+1);
     free_string(sp[-1].u.string);
