@@ -85,7 +85,7 @@ struct object *low_clone(struct program *p)
 
   GC_ALLOC();
 
-  o=(struct object *)xalloc( ((long)(((struct object *)0)->storage))+p->storage_needed+p->inherits[0].storage_offset);
+  o=(struct object *)xalloc( ((long)(((struct object *)0)->storage))+p->storage_needed);
 
   o->prog=p;
   add_ref(p);
