@@ -355,17 +355,17 @@ void f_getpgrp(INT32 args)
 
 #define get(X) void f_##X(INT32 args){ pop_n_elems(args); push_int((INT32)X()); }
 
-get(getuid);
-get(getgid);
+get(getuid)
+get(getgid)
  
 #ifdef HAVE_GETEUID
-get(geteuid);
-get(getegid);
+get(geteuid)
+get(getegid)
 #endif
-get(getpid);
+get(getpid)
 
 #ifdef HAVE_GETPPID
-get(getppid);
+get(getppid)
 #endif
  
 #undef get
