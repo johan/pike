@@ -194,8 +194,30 @@ int dbm_main(int argc, char **argv)
 	      exit(1);
 	    }
 	    p=argv[e];
+	  }else{
+	    p++;
+	    if(*p=='s')
+	    {
+	      if(!p[1])
+	      {
+		e++;
+		if(e >= argc)
+		{
+		  fprintf(stderr,"Missing argument to -ss\n");
+		  exit(1);
+		}
+		p=argv[e];
+	      }else{
+		p++;
+	      }
+#ifdef _REENTRANT
+	      thread_stack_size=STRTOL(p,&p,0);
+#endif
+	      p+=strlen(p);
+	      break;
+	    }
 	  }
-	  stack_size=STRTOL(p+1,&p,0);
+	  stack_size=STRTOL(p,&p,0);
 	  p+=strlen(p);
 
 	  if(stack_size < 256)
@@ -215,8 +237,10 @@ int dbm_main(int argc, char **argv)
 	      exit(1);
 	    }
 	    p=argv[e];
+	  }else{
+	    p++;
 	  }
-	  instructions_left=STRTOL(p+1,&p,0);
+	  instructions_left=STRTOL(p,&p,0);
 	  p+=strlen(p);
 	  add_to_callback(&evaluator_callbacks,
 			  time_to_exit,
@@ -297,6 +321,24 @@ int dbm_main(int argc, char **argv)
 
 #if !defined(RLIMIT_NOFILE) && defined(RLIMIT_OFILE)
 #define RLIMIT_NOFILE RLIMIT_OFILE
+#endif
+
+#if defined(HAVE_GETRLIMIT) && defined(RLIMIT_STACK)
+  {
+    struct rlimit lim;
+    if(!getrlimit(RLIMIT_STACK, &lim))
+    {
+#ifdef RLIM_INFINITY
+      if(lim.rlim_cur == RLIM_INFINITY)
+	lim.rlim_cur=1024*1024*128;
+#endif
+      stack_top= ((char *) &argv) + 
+	STACK_DIRECTION * (lim.rlim_cur - 8192 * sizeof(char *));
+    }
+  }
+#else
+  stack_top= ((char *) &argv) + 
+    STACK_DIRECTION * (1024*1024 * 128 - 8192 * sizeof(char *));
 #endif
 
 #if defined(HAVE_SETRLIMIT) && defined(RLIMIT_NOFILE)

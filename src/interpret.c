@@ -61,6 +61,7 @@ struct svalue *sp;     /* Current position */
 struct svalue *evaluator_stack; /* Start of stack */
 int stack_size = EVALUATOR_STACK_SIZE;
 int evaluator_stack_malloced = 0;
+char *stack_top;
 
 /* mark stack, used to store markers into the normal stack */
 struct svalue **mark_sp; /* Current position */
@@ -189,6 +190,14 @@ void check_stack(INT32 size)
 void check_mark_stack(INT32 size)
 {
   if(mark_sp - mark_stack + size >= stack_size)
+    error("Stack overflow.\n");
+}
+
+void check_c_stack(INT32 size)
+{
+  long x=((char *)&size) + STACK_DIRECTION * size - stack_top ;
+  x*=STACK_DIRECTION;
+  if(x>0)
     error("Stack overflow.\n");
 }
 
@@ -1893,14 +1902,11 @@ void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
       
       check_stack(256);
       check_mark_stack(256);
+      check_c_stack(8192);
 
 #ifdef DEBUG
       if(d_flag>2) do_debug();
 #endif
-
-      /* If we are really unlucky, o hasn't just been destructed, it has
-       * also been freed!
-       */
 
       p=o->prog;
       if(!p)
