@@ -1,14 +1,10 @@
-/* certificate.pmod
- *
- * Handle pkcs-6 and pkcs-10 certificates and certificate requests.
- *
- */
+// $Id$
 
 //! Handle PKCS-6 and PKCS-10 certificates and certificate requests.
 
-/* ASN.1 structures:
-
 #pike __REAL_VERSION__
+
+/* ASN.1 structures:
 
 CertificationRequestInfo ::= SEQUENCE {
   version Version,
