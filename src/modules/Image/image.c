@@ -2,13 +2,8 @@
 
 /*
 **! module Image
-**!
-**!     This module adds image-drawing and -manipulating
-**!	capabilities to pike. 
 **! note
-**!	$Id$<br>
-**! see also: Image.font, Image.image
-**!
+**!	$Id$
 **! class image
 **!
 **!	The main object of the <ref>Image</ref> module, this object

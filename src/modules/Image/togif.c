@@ -11,7 +11,7 @@ $Id$
 /*
 **! module Image
 **! note
-**!	$Id$<br>
+**!	$Id$
 **! class image
 */
 

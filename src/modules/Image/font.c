@@ -6,7 +6,7 @@
 /*
 **! module Image
 **! note
-**!	$Id$<br>
+**!	$Id$
 **! class font
 **!
 **! note

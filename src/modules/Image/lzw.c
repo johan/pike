@@ -15,7 +15,7 @@ the existanse of #define GIF_LZW is for that purpose. :-)
 /*
 **! module Image
 **! note
-**!	$Id$<br>
+**!	$Id$
 */
 
 #include "global.h"

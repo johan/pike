@@ -1,4 +1,8 @@
-/* $Id$ */
+/*
+**! module Image
+**! note
+**!	$Id$
+*/
 
 #include "gif_lzw.h"
 

@@ -3,7 +3,7 @@
 /*
 **! module Image
 **! note
-**!	$Id$<br>
+**!	$Id$
 */
 
 #define GIF_LZW

@@ -1,3 +1,8 @@
+/*
+**! module Image
+**! note
+**!	$Id$
+*/
 
 struct gif_lzw
 {

@@ -29,7 +29,7 @@ extern double floor(double);
 /*
 **! module Image
 **! note
-**!	$Id$<br>
+**!	$Id$
 **! class image
 */
 

@@ -5,7 +5,7 @@
 /*
 **! module Image
 **! note
-**!	$Id$<br>
+**!	$Id$
 */
 
 #ifdef HAVE_UNISTD_H

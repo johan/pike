@@ -3,7 +3,7 @@
 /*
 **! module Image
 **! note
-**!	$Id$<br>
+**!	$Id$
 */
 
 #define MAX_NUMCOL 32768
