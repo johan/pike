@@ -3034,7 +3034,7 @@ static INLINE struct layer *clone_this_layer()
    l->row_func=THIS->row_func;
    l->optimize_alpha=THIS->optimize_alpha;
    l->really_optimize_alpha=THIS->really_optimize_alpha;
-   l->misc = copy_mapping( THIS->misc );
+   if (THIS->misc) l->misc = copy_mapping( THIS->misc );
    return l;
 }
 
