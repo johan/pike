@@ -137,6 +137,12 @@ PMOD_EXPORT int query_nonblocking(int fd)
   return ret;
 }
 
+/* The following code doesn't link without help, and
+ * since it isn't needed by the nonblocking test, we
+ * can safely disable it.
+ */
+#ifndef TESTING
+
 #ifndef FD_CLOEXEC
 #define FD_CLOEXEC 1
 #endif /* FD_CLOEXEC */
@@ -212,6 +218,8 @@ PMOD_EXPORT int set_close_on_exec(int fd, int which)
   return 0;
 #endif /* !HAVE_BROKEN_F_SETFD */
 }
+
+#endif /* !TESTING */
 
 #ifdef TESTING
 
