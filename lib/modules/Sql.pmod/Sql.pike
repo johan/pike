@@ -101,6 +101,11 @@ function(string:int) decode_datetime;
 //!       on the specified host.
 //!       If the hostname is @expr{""@}, access through a UNIX-domain
 //!	  socket or similar, e g @expr{"mysql://root@@:/tmp/mysql.sock/"@}
+//!
+//!       There is a special dbtype 'mysqls' which works like the type
+//!       'mysql' but it sets the CLIENT_SSL option and loads the /etc/my.cnf
+//!       config file to find the SSL-parameters. The same function can
+//!       be achieved using the mysql dbtype.
 //!     @type int(0..0)
 //!       Access through a UNIX-domain socket or similar.
 //!   @endmixed
