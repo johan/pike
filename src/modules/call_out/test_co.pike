@@ -101,7 +101,7 @@ int main()
 
   verify();
 
-  mixed *tmp=allocate(100);
+  mixed *tmp=allocate(10000);
   for(int e=0;e<sizeof(tmp);e++) tmp[e]=co(f0,50.0);
 
   verify();
@@ -119,7 +119,7 @@ int main()
 
   verify();
 
-  mixed *tmp=allocate(100);
+  mixed *tmp=allocate(10000);
   for(int e=0;e<sizeof(tmp);e++) tmp[e]=co(f0,-50.0);
 
   verify();
