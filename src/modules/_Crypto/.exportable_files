@@ -10,3 +10,4 @@ invert.c
 md5.c
 pipe.c
 sha.c
+acconfig.h
