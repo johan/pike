@@ -7933,6 +7933,11 @@ test_any([[
   x[x] = 1;
   return equal (copy_value (x), x);
 ]], 1)
+test_any([[
+   array a=({0,0,0});
+   array b=copy_value(a); b[0]=17; b[1]=42; b[2]=128;
+   return equal( ({0,0,0}), a) && equal( ({17,42,128}), b);
+]], 1)
 
 // - crypt
 test_true(stringp(crypt("hej")))
