@@ -1039,6 +1039,7 @@ int main(int argc, array(string) argv) {
     werror("             --out=file      default: [project]_eng.xml\n");
     werror("             --nocopy        update infile instead of infile.new\n");
     werror("             --wipe          remove unused ids from xml\n");
+    werror("             --sync          synchronize all locale projects\n");
     werror("             --encoding=enc  default: ISO-8859-1\n");
     werror("             --verbose       more informative text in xml\n");
     werror("\n");
@@ -1057,7 +1058,7 @@ int main(int argc, array(string) argv) {
       update_pike_sourcefiles( ({ filename }) );
     else
       update_xml_sourcefiles( ({ filename }) );
-  
+
   // Save all strings to outfile xml
   if(!xml_name)
     if(args->project && args->project!="")
