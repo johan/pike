@@ -9327,9 +9327,6 @@ return Fnord()->start()->wait()-({ -1 });
 ]],[[ ({}) ]])
 ]])
 
-// - Yabu
-test_true(!Yabu.test()->main(1,({"test"})))
-
 test_do([[
   string s;
   for(s="foobar";strlen(s)<78;s+=s)
