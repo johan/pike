@@ -113,7 +113,7 @@ struct pike_frame
   {									\
     really_free_pike_frame(Pike_fp);						\
   }else{								\
-    DO_IF_DEBUG(if( Pike_fp->locals>Pike_sp || Pike_sp < Pike_fp->expendible) fatal("Stack failure in POP_PIKE_FRAME!\n"));                      \
+    DO_IF_DEBUG(if( Pike_fp->locals + Pike_fp->num_locals > Pike_sp || Pike_sp < Pike_fp->expendible) fatal("Stack failure in POP_PIKE_FRAME!\n"));                      \
     debug_malloc_touch(Pike_fp); \
     if(Pike_fp->num_locals)							\
     {									\
