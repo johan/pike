@@ -1203,6 +1203,8 @@ static void f_enc_clear(INT32 args)
     s->g[i].transl = NULL;
     s->g[i].mode = MODE_96;
     s->g[i].index = 0;
+    if(s->r[i].map)
+      free(s->r[i].map);
     s->r[i].map = NULL;
     s->r[i].lo = 0;
     s->r[i].hi = 0;
@@ -1312,6 +1314,12 @@ static void init_enc_stor(struct object *o)
 static void exit_enc_stor(struct object *o)
 {
   struct iso2022enc_stor *s = (struct iso2022enc_stor *)fp->current_storage;
+  int i;
+
+  for(i=0; i<2; i++) {
+    if(s->r[i].map)
+      free(s->r[i].map);
+  }
 
   if(s->replace != NULL) {
     free_string(s->replace);
