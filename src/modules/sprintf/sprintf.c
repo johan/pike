@@ -944,7 +944,7 @@ static string low_pike_sprintf(char *format,
 	switch(l) {
 	case 4:
 #ifdef FLOAT_IS_IEEE_BIG
-	  *((float*)fsp->b) = tf;
+	  MEMCPY(fsp->b, &tf, 4);
 #else
 #ifdef FLOAT_IS_IEEE_LITTLE
 	  fsp->b[0] = ((char *)&tf)[3];
@@ -958,7 +958,7 @@ static string low_pike_sprintf(char *format,
 	  break;
 	case 8:
 #ifdef DOUBLE_IS_IEEE_BIG
-	  *((double*)fsp->b) = (double)tf;
+	  MEMCPY(fsp->b, &tf, 8);
 #else
 #ifdef DOUBLE_IS_IEEE_LITTLE
 	  td = (double)tf;
