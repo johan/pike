@@ -352,16 +352,15 @@ pushdef([AC_OUTPUT],
 
 ifdef([PIKE_INCLUDE_PATH],
 [
+  dnl Is PIKE_INCLUDE_PATH really on the ../../... form, or is this broken?
   make_variables_in=PIKE_INCLUDE_PATH/make_variables_in
 ],[
   AC_MSG_CHECKING([for the Pike base directory])
 
-  make_variables_in=make_variables.in
-
   counter=.
 
   uplevels=
-  while test ! -f "$srcdir/$uplevels$make_variables_in"
+  while test ! -f "$srcdir/${uplevels}make_variables.in"
   do
     counter=.$counter
     if test $counter = .......... ; then
@@ -373,9 +372,11 @@ ifdef([PIKE_INCLUDE_PATH],
     uplevels=../$uplevels
   done
 
-  make_variables_in=$uplevels$make_variables_in
+  make_variables_in=${uplevels}make_variables.in
   AC_MSG_RESULT(${uplevels}.)
 ])
+
+  AC_SUBST(make_variables_in)
 
   AC_SUBST_FILE(make_variables)
   make_variables=make_variables

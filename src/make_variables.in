@@ -32,3 +32,4 @@ NOOPTFLAGS=@CFLAGS@ @CPPFLAGS@ $(OSFLAGS) $(WARN) $(PROFIL)
 AR=@AR@
 SRCDIR=@srcdir@
 PMOD_TARGETS=@PMOD_TARGETS@
+make_variables_in=@make_variables_in@
