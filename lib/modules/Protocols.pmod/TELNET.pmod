@@ -481,7 +481,7 @@ class protocol
   }
   
 
-  //! Indicates wether we are in synch-mode or not.
+  //! Indicates whether we are in synch-mode or not.
   static int synch = 0;
 
   static mixed call_callback(mixed what, mixed ... args)
