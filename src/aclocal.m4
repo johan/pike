@@ -262,13 +262,23 @@ AC_OUTPUT(make_variables:$make_variables_in $][1,$][2,$][3)
 dnl
 dnl
 dnl
+
 define(MY_CHECK_FUNCTION,[
-AC_MSG_CHECKING(for working $1)
-AC_CACHE_VAL(pike_cv_func_$1,[
-AC_TRY_RUN([$2],pike_cv_func_$1=yes,pike_cv_func_$1=no,pike_cv_func_$1=no)
+  AC_MSG_CHECKING(for working $1)
+  AC_CACHE_VAL(pike_cv_func_$1,[
+    AC_TRY_RUN([
+$2
+int main() {
+$3;
+return 0;
+}
+], pike_cv_func_$1=yes, pike_cv_func_$1=no, [
+      AC_TRY_LINK([$2], [$3], pike_cv_func_$1=yes, pike_cv_func_$1=no)
+    ])
+  ])
+  AC_MSG_RESULT([$]pike_cv_func_$1)
+  if test [$]pike_cv_func_$1 = yes; then
+    AC_DEFINE(translit(HAVE_$1,[a-z],[A-Z]))
+  else :; fi
 ])
-AC_MSG_RESULT([$]pike_cv_func_$1)
-if test [$]pike_cv_func_$1 = yes; then
-AC_DEFINE(translit(HAVE_$1,[a-z],[A-Z]))
-fi])
 
