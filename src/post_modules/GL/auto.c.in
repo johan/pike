@@ -612,9 +612,9 @@ static void my_glFrustum(INT32 args)
   m[5] = 2*close/(top-bottom);
   m[8] = (right+left)/(right-left);
   m[9] = (top+bottom)/(top-bottom);
-  m[10] = (away+close)/(away-close);
+  m[10] = -(away+close)/(away-close);
   m[11] = -1.0;
-  m[14] = 2*away*close/(away-close);
+  m[14] = -2*away*close/(away-close);
 
   glMultMatrixd( m );
   pop_n_elems(args);
