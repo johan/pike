@@ -3304,6 +3304,8 @@ string describe_backtrace(array|object trace, void|int linewidth)
 	return sprintf ("%s<Backtrace in error array is %t, expected array>\n",
 			ret, trace);
     }
+    else
+      ret = "";
   }
 
   else
