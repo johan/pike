@@ -10,11 +10,7 @@ RCSID("$Id$");
 #ifdef HAVE_GMP_H
 
 #ifndef __MPN
-#ifdef HAVE_ANSI_CONCAT
-#define __MPN(x) __mpn_##x
-#else
-#define __MPN(x) __mpn_/**/x
-#endif
+#define __MPN(x) PIKE_CONCAT(__mpn_,x)
 #endif
 
 #undef _PROTO
