@@ -33,6 +33,8 @@ void f_random(INT32 args);
 void f_random_seed(INT32 args);
 void f_query_num_arg(INT32 args);
 void f_search(INT32 args);
+void f_has_index(INT32 args);
+void f_has_value(INT32 args);
 void f_backtrace(INT32 args);
 void f_add_constant(INT32 args);
 void f_combine_path(INT32 args);
