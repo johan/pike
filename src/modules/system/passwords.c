@@ -118,9 +118,7 @@ void push_pwent(struct passwd *ent)
   {
     struct spwd *foo;
     THREADS_ALLOW_UID();
-    mt_lock(&password_protection_mutex);
     foo = getspnam(ent->pw_name);
-    mt_unlock(&password_protection_mutex);
     THREADS_DISALLOW_UID();
     if(foo)
       push_text(foo->sp_pwdp);
