@@ -278,7 +278,7 @@ fi
     PIKE_CHECK_MYSQL_FUNC(mysql_port)
     PIKE_CHECK_MYSQL_FUNC(mysql_unix_port)
 
-    if test "$ac_cv_func_mysql_fetch_lengths" = "yes"; then
+    if test "$pike_cv_mysql_mysql_fetch_lengths" = "yes"; then
       #
       # In 3.20.6b mysql_fetch_lengths() returns an uint *.
       # In 3.20.22 it returns an unsigned int *.
