@@ -2340,10 +2340,10 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 	case '4': case '5': case '6':
 	case '7': case '8': case '9':
 	  if (state = STATE_PRECISION) {
-	    precision *= 10 + fmt[-1] - '0';
+	    precision = precision * 10 + fmt[-1] - '0';
 	  } else {
 	    state = STATE_MIN_WIDTH;
-	    min_width *= 10 + fmt[-1] - '0';
+	    min_width = min_width * 10 + fmt[-1] - '0';
 	  }
 	  break;
 	case '.':
