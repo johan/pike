@@ -349,6 +349,16 @@ void assemble(void)
       ins_f_byte(F_RETURN);
       break;
 
+    case F_POINTER:
+#ifdef PIKE_DEBUG
+      if(c->arg > max_label || c->arg < 0)
+	Pike_fatal("Jump to unknown label?\n");
+#endif
+      tmp = DO_NOT_WARN((INT32)PIKE_PC);
+      ins_pointer(jumps[c->arg]);
+      jumps[c->arg]=tmp;
+      break;
+
     default:
       switch(instrs[c->opcode - F_OFFSET].flags & I_IS_MASK)
       {
@@ -365,19 +375,21 @@ void assemble(void)
 
 	ins_f_byte(c->opcode);
 
-      case I_ISPOINTER:
 #ifdef PIKE_DEBUG
-	if(c->arg > max_label || c->arg < 0) Pike_fatal("Jump to unknown label?\n");
+	if(c->arg > max_label || c->arg < 0)
+	  Pike_fatal("Jump to unknown label?\n");
 #endif
 	tmp = DO_NOT_WARN((INT32)PIKE_PC);
 	ins_pointer(jumps[c->arg]);
 	jumps[c->arg]=tmp;
 	break;
 
+      case I_ISJUMPARGS:
       case I_TWO_ARGS:
 	ins_f_byte_with_2_args(c->opcode, c->arg, c->arg2);
 	break;
-	  
+
+      case I_ISJUMPARG:
       case I_HASARG:
 	ins_f_byte_with_arg(c->opcode, c->arg);
 	break;
@@ -397,6 +409,17 @@ void assemble(void)
     if (instrs[c->opcode - F_OFFSET].flags & I_PC_AT_NEXT)
       ADJUST_PIKE_PC (PIKE_PC);
 #endif
+
+#ifdef PIKE_DEBUG
+    if (instrs[c->opcode - F_OFFSET].flags & I_HASPOINTER) {
+      if ((e+1 < length) || c[1].opcode != F_POINTER) {
+	Pike_fatal("Expected instruction %s to be followed by a pointer.\n"
+		   "Got %s\n.",
+		   instrs[c->opcode - F_OFFSET].name,
+		   (e+1 < length)?instrs[c[1]->opcode - F_OFFSET].name:"EOI");
+      }
+    }
+#endif /* PIKE_DEBUG */
 
 #ifdef ALIGN_PIKE_JUMPS
     if(e+1 < length)
