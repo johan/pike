@@ -348,6 +348,8 @@ void udp_set_multicast_ttl(INT32 args)
  *! If not provided the system will select an appropriate interface.
  *! See also the Unix man page for setsocketopt IPPROTO_IP
  *! ADD_MEMBERSHIP.
+ *! @seealso
+ *!   @[drop_membership]
  */
 void udp_add_membership(INT32 args)
 {
@@ -372,6 +374,37 @@ void udp_add_membership(INT32 args)
 
   pop_n_elems(args);
   push_int( fd_setsockopt(FD, IPPROTO_IP, IP_ADD_MEMBERSHIP,
+			  (char *)&sock, sizeof(sock)) );
+}
+
+/*! @decl int drop_membership(string group, void|string address)
+ *! Leave a multicast group.
+ *! @seealso
+ *!   @[add_membership]
+ */
+void udp_drop_membership(INT32 args)
+{
+  int face=0;
+  char *group;
+  char *address=0;
+  struct ip_mreq sock;
+
+  get_all_args("drop_membership", args, "%s.%s%d", &group, &address, &face);
+
+  if( !inet_aton( group, &sock.imr_multiaddr ) )
+    Pike_error("Failed to parse ip address %d.\n", 1);
+  if( !address )
+    sock.imr_interface.s_addr = htonl( INADDR_ANY );
+  else {
+    if( !inet_aton( address, &sock.imr_interface ) )
+      Pike_error("Failed to parse ip address %d.\n", 2);
+  }
+#if 0
+  sock.imr_ifindex = face;
+#endif
+
+  pop_n_elems(args);
+  push_int( fd_setsockopt(FD, IPPROTO_IP, IP_DROP_MEMBERSHIP,
 			  (char *)&sock, sizeof(sock)) );
 }
 
@@ -1028,6 +1061,9 @@ void init_udp(void)
 	       tFunc(tInt,tInt), 0);
 
   ADD_FUNCTION("add_membership", udp_add_membership,
+	       tFunc(tStr tOr(tVoid,tStr tOr(tVoid,tInt)),tInt), 0);
+
+  ADD_FUNCTION("drop_membership", udp_drop_membership,
 	       tFunc(tStr tOr(tVoid,tStr tOr(tVoid,tInt)),tInt), 0);
 
   ADD_FUNCTION("wait", udp_wait, tFunc(tOr(tInt, tFloat), tInt), 0);
