@@ -200,6 +200,8 @@ static void mpzmod_get_string(INT32 args)
 static void mpzmod_digits(INT32 args)
 {
   INT32 base;
+  struct pike_string *s;
+  
   if (!args)
   {
     base = 10;
@@ -210,9 +212,11 @@ static void mpzmod_digits(INT32 args)
       error("Bad argument 1 for Mpz->digits().\n");
     base = sp[-args].u.integer;
   }
+
+  s = low_get_digits(THIS, base);
   pop_n_elems(args);
 
-  push_string(low_get_digits(THIS, base));
+  push_string(s);
 }
 
 static void mpzmod_size(INT32 args)
