@@ -5,8 +5,6 @@
 || $Id$
 */
 
-/* $Id$ */
-
 #ifndef GMP_MACHINE_H
 #define GMP_MACHINE_H
 

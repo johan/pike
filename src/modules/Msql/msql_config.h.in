@@ -5,7 +5,6 @@
 || $Id$
 */
 
-/* $Id$ */
 #undef STDC_HEADERS
 
 #undef HAVE_MSQL_H
