@@ -13,9 +13,13 @@ all: split
 split: join manual
 	@$(PIKE) ../bin/split-autodoc.pike manual.xml structure.xml autodoc
 
-join: images
+join: recursive_join ../bin/join-autodoc.pike
 	@$(PIKE) ../bin/join-autodoc.pike manual.xml \
-	  `find build -name '*.xml' -print`
+	  `echo build/src/*.xml build/lib/*.xml`
+
+recursive_join: images
+	@(cd build/src && $(MAKE) PIKE="$(PIKE)" join)
+	@(cd build/lib && $(MAKE) PIKE="$(PIKE)" join)
 
 images: extract
 
