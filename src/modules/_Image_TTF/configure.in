@@ -12,6 +12,48 @@ PIKE_FEATURE_WITHOUT(Image.TTF)
 if test x$with_ttflib = xyes ; then
   PIKE_FEATURE_NODEP(Image.TTF)
 
+  # Try adding freetype1 to the include path.
+  real_include_dirs=''
+  for flag in $CPPFLAGS; do
+    case "$flag" in
+      -I*)
+	d="`echo q$flag|sed -e 's/^Q-I//'`/freetype1"
+        AC_MSG_CHECKING($d)
+	if test -d "$d/."; then
+	  REALDIR="`cd $d/. ; /bin/pwd`"
+          if test "x$REALDIR" = x ; then
+            REALDIR=UNKNOWN
+          else
+            :
+          fi
+
+          case " $CPPFLAGS $real_include_dirs " in
+            *\ -I$d\ * | *\ -I$REALDIR\ *)
+               AC_MSG_RESULT(already added)
+            ;;
+            *)
+	      OLD_CPPFLAGS="${CPPFLAGS}"
+              CPPFLAGS="${CPPFLAGS} -I$d"
+	      AC_TRY_CPP([include <stdio.h>], [
+                AC_MSG_RESULT(added)
+                if test "x$REALDIR" != xUNKNOWN; then
+                  real_include_dirs="${real_include_dirs} -I$REALDIR"
+                else
+                  :
+                fi
+	      ], [
+	        AC_MSG_RESULT(fails)
+		CPPFLAGS="${OLD_CPPFLAGS}"
+	      ])
+            ;;
+	  esac
+	else
+	  AC_MSG_RESULT(no)
+	fi
+      ;;
+    esac
+  done
+
   AC_CHECK_HEADERS(freetype.h ftxkern.h freetype/freetype.h freetype/ftxkern.h)
 
   parent="$ac_cv_header_ftxkern_h$ac_cv_header_freetype_h"
