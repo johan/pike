@@ -663,7 +663,7 @@ int main() {
       return !!strcmp("4711,17", buf);
     }
   }
-}], [pike_cv_printf_$1="${mod}"; found=yes])
+}], [pike_cv_printf_$1="${mod}"; found=yes], [:], [:])
 	test ${found} = yes && break
       done
       test ${found} = no && pike_cv_printf_$1=unknown
@@ -705,7 +705,7 @@ int main() {
   char buf[50];
   sprintf(buf, "%${mod}4.1f,%d",($1)17.0,17);
   return !!strcmp("17.0,17",buf);
-}], [pike_cv_printf_$1="${mod}"; found=yes])
+}], [pike_cv_printf_$1="${mod}"; found=yes], [:], [:])
 	test ${found} = yes && break
       done
       test ${found} = no && pike_cv_printf_$1=unknown
