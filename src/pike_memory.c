@@ -1278,7 +1278,7 @@ void cleanup_memhdrs(void)
       struct memhdr *m;
       for(m=memhdr_hash_table[h];m;m=m->next)
       {
-	int e;
+	unsigned int e;
 	struct memhdr *tmp;
 	void **p=m->data;
 
