@@ -64,6 +64,8 @@ char *lfun_names[] = {
   "`!",
   "`[]",
   "`[]=",
+  "`->",
+  "`->=",
 };
 
 struct program *first_program = 0;

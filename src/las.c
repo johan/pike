@@ -916,6 +916,7 @@ static void find_written_vars(node *n,
     break;
 
   case F_INDEX:
+  case F_ARROW:
     find_written_vars(CAR(n), p, lvalue);
     find_written_vars(CDR(n), p, 0);
     break;
@@ -1072,6 +1073,7 @@ void fix_type_field(node *n)
     break;
 
   case F_INDEX:
+  case F_ARROW:
     type_a=CAR(n)->type;
     type_b=CDR(n)->type;
     if(!check_indexing(type_a, type_b))

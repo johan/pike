@@ -1587,7 +1587,6 @@ static int do_lex2(int literal, YYSTYPE *yylval)
       switch(GETC())
       {
       case '+': tmp="`+"; break;
-      case '-': tmp="`-"; break;
       case '/': tmp="`/"; break;
       case '%': tmp="`%"; break;
       case '*': tmp="`*"; break;
@@ -1595,6 +1594,16 @@ static int do_lex2(int literal, YYSTYPE *yylval)
       case '|': tmp="`|"; break;
       case '^': tmp="`^"; break;
       case '~': tmp="`~"; break;
+      case '-':
+	if(GOBBLE('>'))
+	{
+	  tmp="`->";
+	  if(GOBBLE('=')) tmp="`->=";
+	}else{
+	  tmp="`-";
+	}
+	break;
+
       case '[':
 	if(GOBBLE(']'))
 	{
