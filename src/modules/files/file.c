@@ -658,6 +658,36 @@ static void file_read(INT32 args)
     push_int(0);
 }
 
+#ifdef HAVE_SYS_SELECT_H
+#include <sys/select.h>
+#endif
+
+#ifndef __NT__
+static void file_peek(INT32 args)
+{
+  int ret;
+  fd_set tmp;
+  struct timeval tv;
+  tv.tv_usec=0;
+  tv.tv_sec=0;
+  fd_FD_ZERO(&tmp);
+  fd_FD_SET(ret=THIS->fd, &tmp);
+  THREADS_ALLOW();
+  ret=select(ret+1,&tmp,0,0,&tv);
+  THREADS_DISALLOW();
+
+  pop_n_elems(args);
+
+  if(ret < 0)
+  {
+    ERRNO=errno;
+    push_int(-1);
+  }else{
+    push_int( ret>0 && fd_FD_ISSET(THIS->fd, &tmp));
+  }
+}
+#endif
+
 #ifdef WITH_OOB
 static void file_read_oob(INT32 args)
 {
