@@ -2044,13 +2044,13 @@ PMOD_EXPORT void f_next_object(INT32 args)
   struct object *o;
   if(args < 1)
   {
-    o=first_object;
+    o = first_object;
   }else{
     if(Pike_sp[-args].type != T_OBJECT)
       SIMPLE_BAD_ARG_ERROR("next_object", 1, "object");
-    o=Pike_sp[-args].u.object->next;
-    while(o && !o->prog) o=o->next;
+    o = Pike_sp[-args].u.object->next;
   }
+  while(o && !o->prog) o=o->next;
   pop_n_elems(args);
   if(!o)
   {
