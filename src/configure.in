@@ -2444,7 +2444,8 @@ AC_CHECK_HEADERS(sys/rusage.h time.h sys/time.h sys/types.h unistd.h stdlib.h \
 		 stddef.h mmx.h asm/mmx.h sys/termio.h sys/termios.h \
 		 ws2tcpip.h valgrind/memcheck.h memcheck.h valgrind.h \
 		 sys/prctl.h sys/ioctl.h mach/task_info.h mach/task.h \
-		 mach/mach_init.h sys/devpoll.h sys/epoll.h)
+		 mach/mach_init.h sys/devpoll.h sys/epoll.h syscall.h \
+		 sys/syscall.h)
 
 # some Linux systems have a broken resource.h that compiles anyway /Mirar
 AC_MSG_CHECKING([for sys/resource.h])
