@@ -38,6 +38,10 @@ void *read_callback_data[MAX_OPEN_FILEDESCRIPTORS];
 file_callback write_callback[MAX_OPEN_FILEDESCRIPTORS];
 void *write_callback_data[MAX_OPEN_FILEDESCRIPTORS];
 
+#ifndef HAVE_AND_USE_POLL
+#undef HAVE_POLL
+#endif
+
 #ifndef HAVE_POLL
 struct selectors
 {
