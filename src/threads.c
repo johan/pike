@@ -1002,12 +1002,6 @@ void f_thread_id_status(INT32 args)
   push_int(THIS_THREAD->status);
 }
 
-void f_thread_id_id(INT32 args)
-{
-  pop_n_elems(args);
-  push_int(THIS_THREAD->id);
-}
-
 void f_thread_id__sprintf (INT32 args)
 {
   pop_n_elems (args);
@@ -1252,7 +1246,6 @@ void th_init(void)
   ADD_FUNCTION("wait",f_thread_id_result,tFunc(tNone,tMix),0);
   /* function(:int) */
   ADD_FUNCTION("status",f_thread_id_status,tFunc(tNone,tInt),0);
-  ADD_FUNCTION("id",f_thread_id_id,tFunc(tNone,tInt),0);
   ADD_FUNCTION("_sprintf",f_thread_id__sprintf,tFunc(tNone,tStr),0);
   set_gc_mark_callback(thread_was_marked);
   set_gc_check_callback(thread_was_checked);
