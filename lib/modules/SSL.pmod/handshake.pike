@@ -689,7 +689,11 @@ int handle_handshake(int type, string data, string raw)
 		      backtrace()));
 	  return -1;
 	}
-	client_random = ("\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0" + challenge)[..31];
+
+	if (ch_len < 32)
+	  challenge = "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0" + challenge;
+	client_random = challenge[sizeof (challenge) - 32..];
+
 	{
 	  int err = reply_new_session(cipher_suites, ({ COMPRESSION_null }) );
 	  if (err)
