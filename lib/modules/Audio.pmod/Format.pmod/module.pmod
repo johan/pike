@@ -15,6 +15,7 @@
 
 //! Audio data format handling
 
+//!
 class ANY {
 
   object buffer;
@@ -98,8 +99,6 @@ class ANY {
 	"seek": -1
     ]);
   }
-
-
 }
 
 // Internal module for invisible file/string source support
