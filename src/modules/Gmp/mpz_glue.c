@@ -1315,7 +1315,7 @@ static void mpzmod_popcount(INT32 args)
     push_int(0);
     break;
   case -1:
-    push_int(-mpn_popcount(THIS->_mp_d, THIS->_mp_size));
+    push_int(-1);
     break;
   case 1:
     push_int(mpn_popcount(THIS->_mp_d, THIS->_mp_size));
