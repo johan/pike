@@ -61,6 +61,16 @@ extern double floor(double);
 **!	If any given curve is inside another, it
 **!	will make a hole.
 **!
+**! <pre>
+**! Image.Image(100,100)->setcolor(255,0,0,128)->
+**!   polyfill( ({ 20,20, 80,20, 80,80 }) );
+**! </pre>
+**! <illustration>
+**! return Image.Image(100,100)->setcolor(255,0,0,128)->
+**!   polyfill( ({ 20,20, 80,20, 80,80 }) );
+**! </illustration>
+**!
+**!
 **! note
 **!	Lines in the polygon may <i>not</i> be crossed without
 **!	the crossing coordinate specified in both lines.
