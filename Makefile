@@ -291,6 +291,8 @@ spotless:
 	  if test -f remake; then $(DO_MAKE) spotless; \
 	  else exit $$res; fi; \
 	} || exit $$?
+
+doc_spotless:
 	if test -f "refdoc/Makefile"; then \
 	  cd refdoc; $(DO_MAKE) spotless; \
 	else :; fi
@@ -309,7 +311,7 @@ srcclean:
 	  else :; fi; \
 	done
 
-cvsclean: srcclean distclean
+cvsclean: srcclean distclean doc_spotless
 	-rm -rf build
 	-rm -f export_result.txt
 	-rm -f Pike*.tar.gz
