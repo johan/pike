@@ -5004,7 +5004,7 @@ char *debug_get_line(PIKE_OPCODE_T *pc, struct program *prog, INT32 *linep)
     offset = pc - prog->program;
     if ((offset < (ptrdiff_t)prog->num_program) && (offset >= 0)) {
       char *base, *cnt = prog->linenumbers;
-      INT32 off,line,pid;
+      INT32 off = 0, line = 0;
 
       while(cnt < prog->linenumbers + prog->num_linenumbers)
       {
