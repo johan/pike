@@ -60,7 +60,7 @@ RCSID("$Id$");
 # endif
 #endif
 
-#ifndef NAMELEN
+#ifndef NAMLEN
 # if HAVE_DIRECT_H
 #  include <direct.h>
 #  define NAMLEN(dirent) strlen((dirent)->d_name)
