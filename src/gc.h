@@ -125,7 +125,10 @@ void f__gc_status(INT32 args);
 #define GC_REFERENCED 1
 #define GC_XREFERENCED 2
 #define GC_CHECKED 4
-
+#ifdef PIKE_DEBUG
+#define GC_DO_FREE_OBJ 8
+#define GC_OBJ_PASS_4 16
+#endif
 
 #ifdef PIKE_DEBUG
 #define gc_is_referenced(X) debug_gc_is_referenced(debug_malloc_pass(X))
