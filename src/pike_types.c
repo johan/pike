@@ -330,6 +330,13 @@ static inline struct pike_type *debug_mk_type(unsigned INT32 type,
   unsigned INT32 index = hash % pike_type_hash_size;
   struct pike_type *t;
 
+  /* PIKE_DEBUG code */
+  if (index >= pike_type_hash_size) {
+    Pike_fatal("Modulo operation failed for hash:%u, index:%u, size:%u.\n",
+	       hash, index, pike_type_hash_size);
+  }
+  /* End PIKE_DEBUG code */
+
   for(t = pike_type_hash[index]; t; t = t->next) {
     if ((t->hash == hash) && (t->type == type) &&
 	(t->car == car) && (t->cdr == cdr)) {
