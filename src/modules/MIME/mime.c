@@ -74,6 +74,8 @@ void pike_module_init( void )
 {
   int i;
 
+  Pike_compiler->new_program->id = PROG_MODULE_MIME_ID;
+
   /* Init reverse base64 mapping */
   memset( base64rtab, -1, sizeof(base64rtab) );
   for (i = 0; i < 64; i++)
