@@ -770,7 +770,7 @@ void describe_svalue(struct svalue *s,int indent,struct processing *p)
 
             default:
 	      if(is8bitalnum(((unsigned char *)s->u.string->str)[i]) ||
-		 isprint(((unsigned char *)s->u.string->str[i])))
+		 isprint(((unsigned char *)s->u.string->str)[i]))
 	      {
 		my_putchar(s->u.string->str[i]);
 		break;
