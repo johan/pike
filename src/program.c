@@ -762,7 +762,9 @@ void low_start_new_program(struct program *p,
   Pike_compiler->fake_object=ALLOC_STRUCT(object);
   Pike_compiler->fake_object->storage=0;
 #endif
-  GC_ALLOC(Pike_compiler->fake_object);
+  /* Can't use GC_ALLOC on fake objects, but still it's good to know
+   * that they never take over a stale gc marker. */
+  if (Pike_in_gc) remove_marker(Pike_compiler->fake_object);
 
   Pike_compiler->fake_object->next=Pike_compiler->fake_object;
   Pike_compiler->fake_object->prev=Pike_compiler->fake_object;
@@ -3680,11 +3682,6 @@ unsigned gc_touch_all_programs(void)
     if (p->next && p->next->prev != p)
       fatal("Error in program link list.\n");
   }
-  /* Count the fake objects. They're not part of the gc, but they're
-   * still counted by the gc. */
-  if (Pike_compiler->fake_object) n++;
-  for (ps = Pike_compiler->previous; ps; ps = ps->previous)
-    if (ps->fake_object) n++;
   return n;
 }
 #endif
