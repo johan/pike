@@ -57,12 +57,6 @@ PMOD_EXPORT const char msg_div_by_zero[] =
   "Division by zero.\n";
 
 /*
- * Attempt to inhibit throwing of errors if possible.
- * Used by exit_on_error() to avoid infinite sprintf() loops.
- */
-int Pike_inhibit_errors = 0;
-
-/*
  * Recoveries handling.
  */
 
@@ -305,29 +299,38 @@ PMOD_EXPORT DECLSPEC(noreturn) void new_error(const char *name, const char *text
   pike_throw();  /* Hope someone is catching, or we will be out of balls. */
 }
 
+static int inhibit_errors = 0;
+
 PMOD_EXPORT void exit_on_error(const void *msg)
 {
   ONERROR tmp;
   SET_ONERROR(tmp,fatal_on_error,"Fatal in exit_on_error!");
   d_flag=0;
+  Pike_interpreter.trace_level = 0;
 
-  /* Tell sprintf(), describe_svalue() et al not to throw errors
-   * if possible.
-   */
-  Pike_inhibit_errors = 1;
+  if (inhibit_errors)
+    fprintf (stderr, "Got recursive error in exit_on_error: %s\n", (char *) msg);
 
-#ifdef PIKE_DEBUG
-  if (d_flag) {
-    fprintf(stderr,"%s\n",(char *)msg);
-    dump_backlog();
-  }
-#endif
-  fprintf(stderr,"%s\n",(char *)msg);
-#ifdef PIKE_DEBUG
-  {
+  else {
     dynamic_buffer save_buf;
     char *s;
     struct svalue thrown;
+
+    inhibit_errors = 1;
+
+#ifdef PIKE_DEBUG
+    if (d_flag) {
+      fprintf(stderr,"%s\n",(char *)msg);
+      dump_backlog();
+    }
+#endif
+
+    fprintf(stderr,"%s\n",(char *)msg);
+
+    /* We've reserved LOW_SVALUE_STACK_MARGIN and LOW_C_STACK_MARGIN
+     * for this. */
+    Pike_interpreter.svalue_stack_margin = 0;
+    Pike_interpreter.c_stack_margin = 0;
     fprintf(stderr,"Attempting to dump raw error: (may fail)\n");
     init_buf(&save_buf);
     move_svalue (&thrown, &throw_value);
@@ -338,7 +341,7 @@ PMOD_EXPORT void exit_on_error(const void *msg)
     fprintf(stderr,"%s\n",s);
     free(s);
   }
-#endif
+
   exit(1);
 }
 
