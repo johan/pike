@@ -157,7 +157,7 @@ array(int|string|array(string)) split(string s)
   }
 
   /* Find the source/dest separator */
-  i=search(b, ":");
+  int i=search(b, ":");
   if(i==-1)
   {
     werror("Syntax error (%O).\n",b);
