@@ -140,7 +140,10 @@ void *alloca();
 #endif
 
 #ifdef HAVE_MALLOC_H
+#ifndef __FreeBSD__
+/* FreeBSD has <malloc.h>, but it just contains a warning... */
 #include <malloc.h>
+#endif /* !__FreeBSD__ */
 #undef HAVE_MALLOC_H
 #endif
 
