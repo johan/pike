@@ -804,7 +804,7 @@ PMOD_EXPORT void *malloc(size_t x)
   }else{
     ret=fake_malloc(x);
   }
-#ifdef REPORT_ENCAPSULATED_MALLOC
+#ifndef REPORT_ENCAPSULATED_MALLOC
   dmalloc_accept_leak(ret);
 #endif
   LOWDEBUG3("malloc --> ",ret);
@@ -866,7 +866,7 @@ PMOD_EXPORT void *realloc(void *x,size_t y)
   }else{
     ret=debug_realloc(x, y, DMALLOC_LOCATION());
   }
-#ifdef REPORT_ENCAPSULATED_MALLOC
+#ifndef REPORT_ENCAPSULATED_MALLOC
   dmalloc_accept_leak(ret);
 #endif
   LOWDEBUG3("realloc --> ",ret);
@@ -893,7 +893,7 @@ void *fake_realloc(void *x,size_t y)
   }else{
     ret=real_realloc(x,y);
   }
-#ifdef REPORT_ENCAPSULATED_MALLOC
+#ifndef REPORT_ENCAPSULATED_MALLOC
   dmalloc_accept_leak(ret);
 #endif
   LOWDEBUG3("fake_realloc --> ",ret);
@@ -907,7 +907,7 @@ void *calloc(size_t x, size_t y)
   LOWDEBUG3("calloc y",y);
   ret=malloc(x*y);
   if(ret) MEMSET(ret,0,x*y);
-#ifdef REPORT_ENCAPSULATED_MALLOC
+#ifndef REPORT_ENCAPSULATED_MALLOC
   dmalloc_accept_leak(ret);
 #endif
   LOWDEBUG3("calloc --> ",ret);
@@ -919,7 +919,7 @@ void *fake_calloc(size_t x, size_t y)
   void *ret;
   ret=fake_malloc(x*y);
   if(ret) MEMSET(ret,0,x*y);
-#ifdef REPORT_ENCAPSULATED_MALLOC
+#ifndef REPORT_ENCAPSULATED_MALLOC
   dmalloc_accept_leak(ret);
 #endif
   LOWDEBUG3("fake_calloc --> ",ret);

@@ -1089,7 +1089,7 @@ void locate_references(void *a)
 
 #ifdef PIKE_DEBUG
 
-void gc_add_extra_ref(void *a)
+void debug_gc_add_extra_ref(void *a)
 {
   struct marker *m = get_marker(a);
   if (m->flags & GC_GOT_EXTRA_REF)
@@ -1099,7 +1099,7 @@ void gc_add_extra_ref(void *a)
   ++*(INT32 *) a;
 }
 
-void gc_free_extra_ref(void *a)
+void debug_gc_free_extra_ref(void *a)
 {
   struct marker *m = get_marker(a);
   if (!(m->flags & GC_GOT_EXTRA_REF))
@@ -1107,6 +1107,7 @@ void gc_free_extra_ref(void *a)
   m->flags &= ~GC_GOT_EXTRA_REF;
   gc_extra_refs--;
 }
+
 
 int debug_gc_is_referenced(void *a)
 {
