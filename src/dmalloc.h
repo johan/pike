@@ -2,7 +2,7 @@
  * $Id$
  */
 
-PMOD_EXPORT extern char *debug_xalloc(size_t);
+PMOD_EXPORT extern void *debug_xalloc(size_t);
 PMOD_EXPORT extern void debug_xfree(void *);
 PMOD_EXPORT extern void *debug_xmalloc(size_t);
 PMOD_EXPORT extern void *debug_xcalloc(size_t,size_t);
