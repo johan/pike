@@ -1682,6 +1682,8 @@ void pike_module_init()
 		"function(array(array(int)):string)",0);
    add_function("to8bit_rgbcube",image_to8bit_rgbcube,
 		"function(int,int,int,void|string:string)",0);
+   add_function("to8bit_rgbcube_rdither",image_to8bit_rgbcube_rdither,
+		"function(int,int,int,void|string:string)",0);
 
 
    add_function("copy",image_copy,
