@@ -105,7 +105,7 @@ string number(int num)
    case 20: return "dwadzie¶cia";
    case 30: return "trzydzie¶ci";
    case 40: return "czterdzie¶ci";
-   case 60: case 70: case 80: case 90:
+   case 50: case 60: case 70: case 80: case 90:
      return number(num/10)+"dziesi±t";
    case 21..29: case 31..39:
    case 51..59: case 61..69: case 71..79:
