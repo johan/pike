@@ -847,7 +847,7 @@ static int signum(char *name)
   return -1;
 }
 
-/*! @decl void signal(int sig, function(int:void) callback)
+/*! @decl void signal(int sig, function(int|void:void) callback)
  *! @decl void signal(int sig)
  *!
  *! Trap signals.
@@ -4619,7 +4619,8 @@ void init_signals(void)
   ADD_EFUN("set_priority",f_set_priority,tFunc(tStr tOr(tInt,tVoid),tInt),
            OPT_SIDE_EFFECT);
   
-  ADD_EFUN("signal",f_signal,tFunc(tInt tOr(tVoid,tFunc(tInt,tVoid)),tMix),
+  ADD_EFUN("signal",f_signal,
+	   tFunc(tInt tOr(tVoid,tFunc(tOr(tVoid,tInt),tVoid)),tMix),
 	   OPT_SIDE_EFFECT);
 
 #ifdef HAVE_KILL
