@@ -24,7 +24,7 @@ low_modref:
 	@mkdir modref
 	@cp structure/modref.css modref/style.css
 	@$(PIKE) presentation/tree-split-autodoc.pike \
-	  $(BUILDDIR)/modref.xml structure/modref.html modref
+	  $(BUILDDIR)/modref.xml structure/modref.html modref predef
 	@mkdir modref/images
 	cp $(BUILDDIR)/doc_build/images/* modref/images
 	@for file in pike_logo.gif next.gif prev.gif unit.gif \
