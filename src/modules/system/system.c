@@ -725,7 +725,7 @@ void init_system_efuns(void)
  
   add_efun("getpid", f_getpid, "function(:int)", OPT_EXTERNAL_DEPEND);
 #ifdef HAVE_GETPPID
-  add_efun("getppid", f_getpid, "function(:int)", OPT_EXTERNAL_DEPEND);
+  add_efun("getppid", f_getppid, "function(:int)", OPT_EXTERNAL_DEPEND);
 #endif /* HAVE_GETPPID */
  
 #ifdef HAVE_GETPGRP
