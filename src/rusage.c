@@ -294,7 +294,7 @@ cpu_time_t get_cpu_time (void)
     return (cpu_time_t) -1;
 }
 
-#elif defined (HAVE_GETHRVTIME)
+#elif defined (HAVE_WORKING_GETHRVTIME)
 
 cpu_time_t get_cpu_time (void)
 {

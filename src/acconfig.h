@@ -248,6 +248,9 @@
 /* Define if gettimeofday takes to arguments */
 #undef GETTIMEOFDAY_TAKES_TWO_ARGS
 
+/* Define if gethrvtime works (i.e. even without ptime). */
+#undef HAVE_WORKING_GETHRVTIME
+
 /* Define if you have gethrtime */
 #undef HAVE_GETHRTIME
 
