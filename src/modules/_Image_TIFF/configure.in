@@ -15,6 +15,9 @@ if test x$with_tifflib = xyes ; then
   AC_CHECK_HEADERS(tiff.h tiffvers.h tiffio.h tiffiop.h)
   if test $ac_cv_header_tiff_h = yes ; then
     AC_CHECK_LIB(m, floor)
+    AC_CHECK_LIB(jpeg, jpeg_CreateCompress)
+    AC_CHECK_LIB(z, inflate)
+    AC_CHECK_LIB(gz, inflate)
     AC_CHECK_LIB(tiff, main)
 
     AC_MSG_CHECKING([if this tifflib is working])
