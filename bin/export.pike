@@ -115,7 +115,8 @@ array(string) build_file_list(string vpath, string list_file)
 	continue;
       werror("%O\n",line);
       string name=vpath+line;
-      if(file_stat(name)->isdir)
+      Stdio.Stat fs;
+      if((fs = file_stat(name)) && fs->isdir)
 	ret += get_files(name);
       else
 	ret += ({ name });

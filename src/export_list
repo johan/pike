@@ -13,7 +13,7 @@
 /bin
 /man
 /refdoc/bin
-/refdoc/not_extracted
+/refdoc/chapters
 /refdoc/presentation
 /refdoc/src_images
 /refdoc/structure
@@ -24,4 +24,3 @@
 /refdoc/tags.txt
 /refdoc/template.xsl
 /refdoc/xml.txt
-/refdoc/.cvsignore
