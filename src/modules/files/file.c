@@ -3194,6 +3194,8 @@ void pike_module_init(void)
   extern void init_udp(void);
   int e;
 
+  Pike_compiler->new_program->id = PROG_MODULE_FILES_ID;
+
   init_files_efuns();
   init_files_stat();
 
