@@ -1054,11 +1054,11 @@ statement: unused2 ';'
   | switch
   | case
   | default
-  | return ';'
+  | return expected_semicolon
   | block
   | foreach
-  | break ';'
-  | continue ';'
+  | break expected_semicolon
+  | continue expected_semicolon
   | error ';' { reset_type_stack(); $$=0; yyerrok; }
   | error F_LEX_EOF
   {
@@ -1146,7 +1146,7 @@ lambda: F_LAMBDA
   }
   ;
 
-failsafe_program: '{' program '}'
+failsafe_program: '{' program end_block
                 | error { yyerrok; }
                 ;
 
