@@ -194,3 +194,9 @@ gdb_verify: testsuite $(PIKE_EXTERNAL_MODULE)
 
 extract_autodoc: $(PIKE_EXTERNAL_MODULE) plib/refdoc
 	$(RUNPIKE) -x extract_autodoc --builddir=plib/refdoc --srcdir=plib/modules
+
+join_autodoc: extract_autodoc
+	$(RUNPIKE) -x join_autodoc --quiet --post-process  "plib/autodoc.xml" "$(CORE_AUTODOC_PATH)" "plib/refdoc"
+
+refdoc:	join_autodoc
+	cd $(SYSTEM_DOC_PATH)/src && $(MAKE) $(MAKE_FLAGS) DESTDIR="$(SYSTEM_DOC_PATH)" modref
