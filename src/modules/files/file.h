@@ -66,6 +66,7 @@ struct pike_sendfile
   struct object *from_file;
   struct object *to_file;
 
+  struct callback *backend_callback;
   struct svalue callback;
   struct array *args;
 
