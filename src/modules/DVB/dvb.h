@@ -33,11 +33,11 @@
 #define ISO13522_STREAM  0xF3
 #define PROG_STREAM_DIR  0xFF
 
-//pts_dts flags 
+/* pts_dts flags */
 #define PTS_ONLY         0x80
 #define PTS_DTS          0xC0
 
-//flags2
+/* flags2 */
 #define PTS_DTS_FLAGS    0xC0
 #define ESCR_FLAG        0x20
 #define ES_RATE_FLAG     0x10
