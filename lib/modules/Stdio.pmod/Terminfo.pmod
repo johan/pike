@@ -790,8 +790,12 @@ object(Termcap) getTerm(string|void term)
     if (!t)
     {
       string tc = [string]getenv("TERMCAP");
-      t = (tc && sizeof(tc) && tc[0]!='/'?
-	   Termcap(tc) : getTerm(getenv("TERM")||"dumb"));
+      if (mixed err = catch {
+	t = tc && sizeof(tc) && tc[0] != '/' && Termcap(tc);
+      })
+	werror("%s", describe_backtrace(err));
+      if (!t)
+	t = getTerm(getenv("TERM") || "dumb");
       LOCK;
       if (!defterm)
 	defterm = t;
