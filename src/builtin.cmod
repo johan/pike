@@ -743,9 +743,9 @@ PIKEFUN int(8 .. 8)|int(16 .. 16)|int(32 .. 32) string_width(string s)
 /*! @decl mixed m_delete(object|mapping map, mixed index)
  *!
  *! If @[map] is an object that implements @[lfun::_m_delete()],
- *! that function will be called with @[index] as the signle argument.
+ *! that function will be called with @[index] as its single argument.
  *!
- *! Other wise if @[map] is a mapping the entry with index @[index]
+ *! Otherwise if @[map] is a mapping the entry with index @[index]
  *! will be removed from @[map] destructively.
  *!
  *! If the mapping does not have an entry with index @[index], nothing is done.
