@@ -298,8 +298,17 @@ The name is assumed to begin with a capital letter.")
 	   (goto-char (match-end 2)))   ; non-nil
        (error t)))))
 
+;; XEmacs way.
+(put 'pike-mode 'font-lock-defaults 
+      '((pike-font-lock-keywords
+     pike-font-lock-keywords-1 pike-font-lock-keywords-2
+     pike-font-lock-keywords-3)
+        nil nil ((?_ . "w")) beginning-of-defun
+        (font-lock-mark-block-function . mark-defun)))
 
-(if (not (assq 'pike-mode font-lock-defaults-alist))
+;; GNU Emacs way.
+(if (and (boundp 'font-lock-defaults-alist)
+	 (not (assq 'pike-mode font-lock-defaults-alist)))
     (setq font-lock-defaults-alist
 	  (cons
 	   (cons 'pike-mode
