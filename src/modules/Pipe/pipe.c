@@ -24,6 +24,10 @@
 #endif
 #endif
 
+#ifdef HAVE_SYS_ID_H
+#include <sys/id.h>
+#endif /* HAVE_SYS_ID_H */
+
 #include <fcntl.h>
 
 RCSID("$Id$");
