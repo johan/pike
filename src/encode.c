@@ -266,6 +266,7 @@ one_more_type:
 	int i;
 	/* FIXME: I assume the type is saved in network byte order. Is it?
 	 *	/grubba 1999-03-07
+	 * Yes - Hubbe
 	 */
 	for(i = 0; i < (int)(2*sizeof(INT32)); i++) {
 	  addchar(EXTRACT_UCHAR(t++));
