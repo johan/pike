@@ -564,7 +564,7 @@ void do_export()
       add_child(WixNode("InstallExecuteSequence", ([]), "\n")->
 		add_child(WixNode("Custom", ([
 				    "Action":"FinalizePike",
-				    "After":"InstallFiles",
+				    "After":"WriteRegistryValues",
 				  ]), "REMOVE=\"\""))->
 		add_child(Standards.XML.Wix.line_feed)->
 		add_child(WixNode("Custom", ([
