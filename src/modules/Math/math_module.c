@@ -30,6 +30,8 @@ void pike_module_exit(void)
    for (i=0; i<(int)(sizeof(sub)/sizeof(sub[0])); i++)
       if (sub[i].pd && sub[i].pd[0])
 	 free_program(sub[i].pd[0]);
+
+   exit_math_matrix();
 }
 
 void pike_module_init(void)
