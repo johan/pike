@@ -694,7 +694,7 @@ size_t _chkstk() { return __chkstk(); }
 /* Number of measurements before we can trust the variance
  * calculation. */
 
-static volatile long long hrtime_rtsc_zero;
+static long long hrtime_rtsc_zero;
 static long long hrtime_rtsc_last;
 #ifdef PIKE_DEBUG
 static long long hrtime_max = 0;
@@ -786,7 +786,7 @@ void own_gethrtime_init()
 void own_gethrtime_update(struct timeval *ptr)
 {
    long long td,t;
-   volatile long long now;
+   long long now;
    long double conv;
    double var;
    static long long td_last = 0;
