@@ -96,7 +96,14 @@ class PikeFile {
   array(string) split(string data, mapping state) {
     // For some reason the Pike parser leaves parts of its
     // end sentinel in the output data.
-    array(string) ret = Parser.Pike.split(data, state);
+    array(string) ret;
+    array err = catch {
+      ret = Parser.Pike.split(data, state);
+    };
+    if(err) {
+      werror("%s (%s)\n", err[0][..sizeof(err[0])-2], fn);
+      return ({});
+    }
     if(state->in_token) return ret;
     if(ret[-1]=="\n") return ret[..sizeof(ret)-2];
     ret[-1] = ret[-1][..sizeof(ret[-1])-2];
