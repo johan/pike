@@ -46,6 +46,8 @@
 //			   [ Escaping untested, yet ]
 //	v1.13 2000-02-12 - fixed search NOT op bug (end revision normalized)
 //
+//	v1.14 2000-02-17 - added decoding of UTF8 strings for v3 protocol
+//
 // Specifications:
 //
 //	RFC 1558			  (search filter representations)
@@ -131,6 +133,12 @@
 	}
 	res += ({attrs});
       }
+
+      if(ldap_version == 3) {
+        // deUTF8
+        res = Array.map(res, utf8_to_string);
+      }
+
       return (res);
     } // _New_decode
 
