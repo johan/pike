@@ -12,7 +12,8 @@ all: modref traditional
 
 # These are the actual build targets for making manuals...
 
-modref: build/modref.xml structure/modref.css structure/modref.html presentation/make_html.pike presentation/tree-split-autodoc.pike
+modref: build/modref.xml structure/modref.css structure/modref.html \
+	  presentation/make_html.pike presentation/tree-split-autodoc.pike
 	@$(MAKE) PIKE="$(PIKE)" low_modref
 
 low_modref:
@@ -27,7 +28,8 @@ low_modref:
           pike_line_left.gif pike_line_middle.gif pike_line_right.gif ; do \
 	  cp src_images/$$file modref/images/ ; done
 
-wiki: build/modref.xml
+wiki: build/modref.xml structure/wiki.html presentation/wiki.pike \
+	  presentation/make_html.pike presentation/tree-split-autodoc.pike
 	@$(MAKE) PIKE="$(PIKE)" low_wiki
 
 low_wiki:
@@ -38,14 +40,14 @@ low_wiki:
 	@mkdir wiki/images
 	cp build/images/* wiki/images
 
-one_page: onepage build/onepage.xml
+one_page: onepage build/onepage.xml presentation/make_html.pike
 	@$(MAKE) PIKE="$(PIKE)" low_one_page
 
 low_one_page:
 	cp build/images/* onepage/
 	@$(PIKE) presentation/make_html.pike --img= build/onepage.xml
 
-traditional: traditional_manual build/traditional.xml
+traditional: traditional_manual build/traditional.xml presentation/make_html.pike
 	@$(MAKE) PIKE="$(PIKE)" low_traditional
 
 low_traditional:
