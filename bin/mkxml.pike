@@ -312,7 +312,7 @@ string fixdesc(string s,string prefix,string where)
 	  sscanf(t,"%s<illustration%s>%s</illustration>%s",t,q,u,v)==4)
       {
 	 s+=replace(t,"\n\n","\n\n<p>")+
-	    "<illustration "+where+" src=image_ill.pnm"+q+">\n"
+	    "<illustration "+where+" src='image_ill.pnm"+q+"'>\n"
 	    +replace(u,"lena()","src")+"</illustration>";
 	 t=v;
       }
@@ -830,6 +830,16 @@ void make_doc_files()
    html2xml->add_tag("p",lambda(mixed...) { return ({"</p><p>"}); });
    html2xml->add_tag("br",lambda(mixed...) { return ({"<br/>"}); });
    html2xml->add_tag("wbr",lambda(mixed...) { return ({"<wbr/>"}); });
+   html2xml->add_tag("dl",
+      lambda(Parser.HTML p, mapping args)
+      {
+	return ({ sprintf("<dl%{ %s='%s'%}>", (array)args) });
+      });
+   html2xml->add_tag("dt",
+      lambda(Parser.HTML p, mapping args)
+      {
+	return ({ sprintf("<dt%{ %s='%s'%}>", (array)args) });
+      });
    html2xml->add_container(
       "text",
       lambda(Parser.HTML p,mapping args,string cont)
