@@ -1319,9 +1319,7 @@ low_idents: F_IDENTIFIER
 	     }
 	   }
       } else {
-	push_int(0);
-	$$=mkconstantsvaluenode(sp-1);
-	pop_stack();
+	$$=mkintnode(0);
       }
     }
     free_node($1);
