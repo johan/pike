@@ -8,7 +8,7 @@
 
 PIKE=pike
 
-all: html traditional
+all: modref traditional
 
 modref: build/modref.xml
 	rm -rf modref || /bin/true
