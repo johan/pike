@@ -229,7 +229,7 @@ werror("job file:\n\n" + control  + "\n\n");
 //! Contains the hostname or ipaddress of the print host.
 //! if not provided, defaults to @i{localhost@}.
 //! @param portnum
-//! Cntains the port the print host is listening on.
+//! Contains the port the print host is listening on.
 //! if not provided, defaults to port @i{515@}, the RFC 1179 standard.
   void create(string|void hostname, int|void portnum)
   {
