@@ -106,6 +106,9 @@ RUNPIKE=$(@RUNPIKE@)
 RUNTPIKE=$(@RUNTPIKE@)
 PIKE_MODULE_RELOC=@PIKE_MODULE_RELOC@
 
+# Set to an appropriate invocation of valgrind (or similar)
+VALGRIND=@VALGRIND@
+
 MAKE_FLAGS=
 
 # Add alloca.o if you don't have alloca() on your machine.
@@ -516,7 +519,7 @@ verify: module_testsuites testsuite tinstall
 	if test "$(TESTARGS)" = "" ; then args="-a -v" ; else \
 	  args="$(TESTARGS)" ; fi; \
 	if test -f ./test-pike ; then \
-	  ./test-pike -DNOT_INSTALLED $(PIKEOPTS) $(TMP_BINDIR)/test_pike.pike $$args ; \
+	  $(VALGRIND) ./test-pike -DNOT_INSTALLED $(PIKEOPTS) $(TMP_BINDIR)/test_pike.pike $$args ; \
 	else \
 	  sprsh `pwd`/test-install/pike/*/bin/pike.exe -DNOT_INSTALLED $(PIKE_OPTS) $(TMP_BINDIR)/test_pike.pike $$args ; \
 	fi
