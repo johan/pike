@@ -425,7 +425,7 @@ static int do_docode2(node *n,int flags)
   case F_LOR:
     tmp1=alloc_label();
     do_cond_jump(CAR(n), tmp1, n->token == F_LOR, 0);
-    if(do_docode(CDR(n),0)!=1) fatal("Compiler logical error.\n");
+    code_expression(CDR(n), flags, n->token == F_LOR ? "||" : "&&");
     emit(F_LABEL,tmp1);
     return 1;
 
