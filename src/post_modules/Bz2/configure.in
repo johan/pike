@@ -31,6 +31,8 @@ if test x$with_bz2 = xyes ; then
       AC_MSG_CHECKING([if a bz_stream has the field total_out.])
       AC_CACHE_VAL([pike_cv_bz_stream_total_out],[
 	AC_TRY_COMPILE([
+/* bzlib.h needs stdio.h on some systems (for FILE) */
+#include <stdio.h>
 #include <bzlib.h>
 	],[
 	  extern bz_stream *s;
