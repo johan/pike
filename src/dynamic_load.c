@@ -510,12 +510,8 @@ void f_load_module(INT32 args)
     init = CAST_TO_FUN(dlsym(module, "_pike_module_init"));
     if (!init) {
       dlclose(module);
-      if (!module_name->size_shift && module_name->len < 1024) {
-	Pike_error("pike_module_init missing in dynamic module \"%s\".\n",
-		   module_name->str);
-      } else {
-	Pike_error("pike_module_init missing in dynamic module.\n");
-      }
+      Pike_error("pike_module_init missing in dynamic module \"%S\".\n",
+		 module_name);
     }
   }
 
@@ -524,12 +520,8 @@ void f_load_module(INT32 args)
     exit = CAST_TO_FUN(dlsym(module, "_pike_module_exit"));
     if (!exit) {
       dlclose(module);
-      if (!module_name->size_shift && module_name->len < 1024) {
-	Pike_error("pike_module_exit missing in dynamic module \"%s\".\n",
-		   module_name->str);
-      } else {
-	Pike_error("pike_module_exit missing in dynamic module.\n");
-      }
+      Pike_error("pike_module_exit missing in dynamic module \"%S\".\n",
+		 module_name);
     }
   }
 
@@ -611,12 +603,8 @@ void f_load_module(INT32 args)
       dlclose(module);
       dynamic_module_list = new_module->next;
       free(new_module);
-      if (strlen(module_name->str) < 1024) {
-	Pike_error("Failed to initialize dynamic module \"%s\".\n",
-		   module_name->str);
-      } else {
-	Pike_error("Failed to initialize dynamic module.\n");
-      }
+      Pike_error("Failed to initialize dynamic module \"%S\".\n",
+		 module_name);
     }
   }
 }

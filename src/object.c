@@ -1440,9 +1440,8 @@ PMOD_EXPORT void object_set_index2(struct object *o,
 
   if(f < 0)
   {
-    if (index->type == T_STRING && !index->u.string->size_shift &&
-	index->u.string->len < 1024)
-      Pike_error("No such variable (%s) in object.\n", index->u.string->str);
+    if (index->type == T_STRING && index->u.string->len < 1024)
+      Pike_error("No such variable (%S) in object.\n", index->u.string);
     else
       Pike_error("No such variable in object.\n");
   }else{
@@ -1576,9 +1575,8 @@ union anything *object_get_item_ptr(struct object *o,
 
   if(f < 0)
   {
-    if (index->type == T_STRING && !index->u.string->size_shift &&
-	index->u.string->len < 1024)
-      Pike_error("No such variable (%s) in object.\n", index->u.string->str);
+    if (index->type == T_STRING && index->u.string->len < 1024)
+      Pike_error("No such variable (%S) in object.\n", index->u.string);
     else
       Pike_error("No such variable in object.\n");
   }else{
@@ -2210,8 +2208,8 @@ static void f_magic_set_index(INT32 args)
 
   if(f<0)
   {
-    if (!s->size_shift && s->len < 1024)
-      Pike_error("No such variable (%s) in object.\n", s->str);
+    if (s->len < 1024)
+      Pike_error("No such variable (%S) in object.\n", s);
     else
       Pike_error("No such variable in object.\n");
   }else{

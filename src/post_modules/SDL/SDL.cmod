@@ -425,7 +425,7 @@ PIKECLASS Rect {
       return;
     }
 
-    Pike_error("Cannot cast to %s\n", type->str );
+    Pike_error("Cannot cast to %S\n", type);
   }
 }
 /*! @endclass Rect */
@@ -2287,8 +2287,8 @@ PIKECLASS Music {
     }
     THIS->music = Mix_LoadMUS(fname->str);
     if(THIS->music == NULL) {
-      Pike_error("Failed to load %s: %s\n",
-		 fname->str, SDL_GetError());
+      Pike_error("Failed to load %S: %s\n",
+		 fname, SDL_GetError());
     }
   }
 

@@ -303,7 +303,7 @@ static void close_fd_quietly(void)
 	    change_fd_for_box (&THIS->box, fd);
 	    push_int(e);
 	    f_strerror(1);
-	    Pike_error("Failed to close file: %s\n", Pike_sp[-1].u.string->str);
+	    Pike_error("Failed to close file: %S\n", Pike_sp[-1].u.string);
 	  }
 	  UNSETJMP (jmp);
 	  break;
@@ -354,7 +354,7 @@ static void close_fd(void)
 	  change_fd_for_box (&THIS->box, fd);
 	  push_int(e);
 	  f_strerror(1);
-	  Pike_error("Failed to close file: %s\n", Pike_sp[-1].u.string->str);
+	  Pike_error("Failed to close file: %S\n", Pike_sp[-1].u.string);
 	  break;
 
 	case EBADF:
@@ -2200,8 +2200,8 @@ static void file_set_nonblocking(INT32 args)
     ERRNO=errno;
     push_int (ERRNO);
     f_strerror (1);
-    Pike_error("Stdio.File->set_nonblocking() failed: %s\n",
-	       Pike_sp[-1].u.string->str);
+    Pike_error("Stdio.File->set_nonblocking() failed: %S\n",
+	       Pike_sp[-1].u.string);
   }
 
   THIS->open_mode |= FILE_NONBLOCKING;

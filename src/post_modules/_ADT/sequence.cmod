@@ -425,7 +425,7 @@ PIKECLASS Sequence
     }
     else
     {
-      Pike_error("Cannot cast to %s\n", type->str );
+      Pike_error("Cannot cast to %S\n", type);
     }
   }
 

@@ -953,7 +953,7 @@ void f_get_dir(INT32 args)
       THREADS_DISALLOW();
       if ((!d) && err) {
 	free(tmp);
-	Pike_error("get_dir(): readdir_r(\"%s\") failed: %d\n", str->str, err);
+	Pike_error("get_dir(): readdir_r(\"%S\") failed: %d\n", str, err);
       }
       for(e=0;e<num_files;e++)
       {

@@ -1123,8 +1123,8 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 	    code_number(p->identifiers[d].func.offset,data);
 	  } else {
 	    Pike_error("Cannot encode functions implemented in C "
-		       "(identifier='%s').\n",
-		       p->identifiers[d].name->str);
+		       "(identifier=\"%S\").\n",
+		       p->identifiers[d].name);
 	  }
 	}
 
@@ -1439,8 +1439,8 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 		case IDENTIFIER_C_FUNCTION:
 		  /* Not supported. */
 		  Pike_error("Cannot encode functions implemented in C "
-			     "(identifier='%s').\n",
-			     p->identifiers[d].name->str);
+			     "(identifier=\"%S\").\n",
+			     p->identifiers[d].name);
 		  break;
 
 		case IDENTIFIER_VARIABLE:

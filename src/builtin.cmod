@@ -1727,7 +1727,7 @@ PIKECLASS Buffer
       o_cast_to_int( );
       return;
     }
-    Pike_error("Cannot cast to %s\n", type->str );
+    Pike_error("Cannot cast to %S\n", type);
   }
   
   /*! @decl String.Buffer `+( string what )

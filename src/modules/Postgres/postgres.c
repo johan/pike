@@ -323,7 +323,8 @@ static void f_create (INT32 args)
 		PQfinish(conn);
 		PQ_UNLOCK();
 		THREADS_DISALLOW();
-		Pike_error("Could not connect to database. Reason: \"%s\".\n",THIS->last_error->str);
+		Pike_error("Could not connect to database. Reason: \"%S\".\n",
+			   THIS->last_error);
 	}
 	THIS->dblink=conn;
 	if (!THIS->dblink)

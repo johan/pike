@@ -432,8 +432,8 @@ PIKECLASS mpf
     }  
     free_string(s);
       
-    Pike_error("Gmp.mpf cast to \"%s\" is other type than int, string or float.\n",
-	       s->str);
+    Pike_error("Gmp.mpf cast to \"%S\" is other type than int, string or float.\n",
+	       s);
   }
 
 #ifdef DEBUG_MALLOC
