@@ -216,6 +216,36 @@ with the option --without-bignums instead.
   ])
   CHECK_GMP_FUNC(mpz_popcount, [mpz_t a; mpz_popcount(a)])
   CHECK_GMP_FUNC(mpz_xor, [mpz_t a, b, c; mpz_xor(a, b, c)])
+  CHECK_GMP_FUNC(mpz_getlimbn, [mpz_t a; mp_size_t b; mpz_getlimbn(a, b)])
+  CHECK_GMP_FUNC(mpz_import, [mpz_t a; mpz_import(a, 1, 1, 1, 0, 0, 0)])
+
+  AC_MSG_CHECKING([size of mp_limb_t])
+  AC_CACHE_VAL([pike_cv_sizeof_mp_limb_t], [
+    rm -f confdefs.out.2 2>/dev/null
+    AC_TRY_RUN([
+#ifdef HAVE_GMP2_GMP_H
+#include <gmp2/gmp.h>
+#elif defined (HAVE_GMP_H)
+#include <gmp.h>
+#endif
+
+#include <stdio.h>
+
+int main()
+{
+  FILE *f = fopen ("confdefs.out.2", "w");
+  if (!f) return 1;
+  fprintf (f, "%d", sizeof (mp_limb_t));
+  fclose (f);
+  return 0;
+}],
+      [pike_cv_sizeof_mp_limb_t=`cat confdefs.out.2`
+       rm -f confdefs.out.2 2>/dev/null],
+      [pike_cv_sizeof_mp_limb_t=0],
+      [pike_cv_sizeof_mp_limb_t=0])
+  ])
+  AC_MSG_RESULT([$pike_cv_sizeof_mp_limb_t])
+  AC_DEFINE_UNQUOTED(SIZEOF_MP_LIMB_T, $pike_cv_sizeof_mp_limb_t)
 fi
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )

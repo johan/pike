@@ -32,13 +32,19 @@
 /* Define this if you have mpz_xor */
 #undef HAVE_MPZ_XOR
 
-/* define this if INT_TYPE is bigger then signed long int */
-#undef BIG_PIKE_INT
+/* Define this if you have mpz_getlimbn */
+#undef HAVE_MPZ_GETLIMBN
+
+/* Define this if you have mpz_import */
+#undef HAVE_MPZ_IMPORT
 
 /* Define if your cpp supports the ANSI concatenation operator ## */
 #undef HAVE_ANSI_CONCAT
 
 /* Define if your cpp supports K&R-style concatenation */
 #undef HAVE_KR_CONCAT
+
+/* Define to the size of mp_limb_t */
+#undef SIZEOF_MP_LIMB_T
 
 #endif
