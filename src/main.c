@@ -836,6 +836,9 @@ void exit_main(void)
    * module exit callback. The downside is that the leak report below
    * will always report destructed objects. */
   cleanup_objects();
+
+  /* Unload dynamic modules before static ones. */
+  exit_dynamic_load();
 #endif
 }
 
@@ -848,14 +851,14 @@ void low_exit_main(void)
 #ifdef DO_PIKE_CLEANUP
   void exit_iterators(void);
 
+  /* Clear various global references. */
+
 #ifdef AUTO_BIGNUM
   exit_auto_bignum();
 #endif
-
   exit_pike_searching();
   th_cleanup();
   exit_object();
-  exit_dynamic_load();
   exit_signals();
   exit_builtin();
   exit_cpp();
@@ -870,6 +873,10 @@ void low_exit_main(void)
   exit_backend();
   cleanup_gc();
   cleanup_pike_types();
+
+  /* This zaps Pike_interpreter.thread_state among other things, so
+   * THREADS_ALLOW/DISALLOW don't work beyond this point. */
+  th_cleanup();
 
 #ifdef SHARED_NODES
   free(node_hash.table);
@@ -974,6 +981,8 @@ void low_exit_main(void)
 #endif
 
   destruct_objects_to_destruct_cb();
+
+  /* Now there are no arrays/objects/programs/anything left. */
 
   really_clean_up_interpret();
 
