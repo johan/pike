@@ -3,6 +3,8 @@
 
 #pike __REAL_VERSION__
 
+#if constant(SDL.Surface)
+
 inherit .Interface;
 import GLUE.Events;
 
@@ -281,3 +283,4 @@ void hide_cursor() {
   SDL.show_cursor( SDL.DISABLE );
 }
 
+#endif /* constant(SDL.Surface) */
