@@ -22,9 +22,9 @@
 #include <string.h>
 #endif
 
-//
-// $Id$
-
+/*
+ * $Id$
+ */
 
 #ifdef DO_TRACE
 #define TRACE(X) fprintf(stderr,"\n%s   ",X);
