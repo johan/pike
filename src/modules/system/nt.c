@@ -23,6 +23,7 @@
 #include "builtin_functions.h"
 #include "interpret.h"
 #include "operators.h"
+#include "stuff.h"
 
 #include <winsock.h>
 #include <windows.h>
