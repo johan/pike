@@ -345,7 +345,7 @@ install_interactive: pike hilfe pike-module aclocal
 
 # tidy up a bit
 tidy:
-	-rm -f *.o *.pp *.protos core y.output y.tab.c y.tab.h
+	-rm -f *.o *.obj *.pp *.protos core y.output y.tab.c y.tab.h
 	-rm -f $(TMP_BINDIR)/core *.o *.i *.i~ testsuite
 
 # make clean
