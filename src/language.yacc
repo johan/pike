@@ -205,6 +205,15 @@ void fix_comp_stack(int sp)
   }
 }
 
+/*
+ * Kludge for Bison not using prototypes.
+ */
+#ifndef __GNUC__
+#ifndef __cplusplus
+static void __yy_memcpy(char *to, char *from, int count)
+#endif /* !__cplusplus */
+#endif /* !__GNUC__ */
+
 %}
 
 %union
