@@ -84,6 +84,9 @@ void init_backend(void)
   set_nonblocking(wakeup_pipe[0],1);
   set_nonblocking(wakeup_pipe[1],1);
   set_read_callback(wakeup_pipe[0], wakeup_callback, 0); 
+  /* Don't keep these on exec! */
+  set_close_on_exec(wakeup_pipe[0], 1);
+  set_close_on_exec(wakeup_pipe[1], 1);
 }
 
 void set_read_callback(int fd,file_callback cb,void *data)
