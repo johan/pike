@@ -633,7 +633,7 @@ void o_subtract(void)
   {
     if(call_lfun(LFUN_SUBTRACT, LFUN_RSUBTRACT))
       return;
-    bad_arg_error("`-", sp-2, 2, 2, type_name[sp[-2].type],
+    bad_arg_error("`-", sp-2, 2, 2, get_name_of_type(sp[-2].type),
 		  sp-1, "Subtract on different types.\n");
   }
 
@@ -761,7 +761,7 @@ void o_and(void)
       return;
     {
       int args = 2;
-      SIMPLE_BAD_ARG_ERROR("`&", 2, type_name[sp[-2].type]);
+      SIMPLE_BAD_ARG_ERROR("`&", 2, get_name_of_type(sp[-2].type));
     }
   }
 
@@ -949,7 +949,7 @@ void o_or(void)
 
     {
       int args = 2;
-      SIMPLE_BAD_ARG_ERROR("`|", 2, type_name[sp[-2].type]);
+      SIMPLE_BAD_ARG_ERROR("`|", 2, get_name_of_type(sp[-2].type));
     }
   }
 
@@ -1042,7 +1042,7 @@ void o_xor(void)
       return;
     {
       int args = 2;
-      SIMPLE_BAD_ARG_ERROR("`^", 2, type_name[sp[-2].type]);
+      SIMPLE_BAD_ARG_ERROR("`^", 2, get_name_of_type(sp[-2].type));
     }
   }
 

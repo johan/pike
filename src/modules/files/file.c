@@ -892,7 +892,7 @@ static void file_write(INT32 args)
   if(args<1 || ((sp[-args].type != T_STRING) && (sp[-args].type != T_ARRAY)))
     error("Bad argument 1 to file->write().\n"
 	  "Type is %s. Expected string or array(string)\n",
-	  type_name[sp[-args].type]);
+	  get_name_of_type(sp[-args].type));
 
   if(FD < 0)
     error("File not open for write.\n");

@@ -28,16 +28,6 @@ RCSID("$Id$");
 struct svalue dest_ob_zero = { T_INT, 0 };
 
 /*
- * This one is useful for error-handling.
- */
-char *type_name[] = {
-  "array", "mapping", "multiset", "object",
-  "function", "program", "string", "float",
-  "int", 0, 0, 0, 0, 0, 0, 0,
-  "void", "many",
-};
-
-/*
  * This routine frees a short svalue given a pointer to it and
  * its type.
  */

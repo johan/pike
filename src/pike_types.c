@@ -1937,7 +1937,6 @@ struct pike_string *get_type_of_svalue(struct svalue *s)
   }
 }
 
-
 char *get_name_of_type(int t)
 {
   switch(t)
