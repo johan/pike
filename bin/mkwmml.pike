@@ -532,6 +532,7 @@ int main(int ac,string *files)
 	 }
 	 else 
 	 {
+	    sscanf(s[i+3..],"%*[ \t]!%s",s);
 //	    if (search(s,"$Id")!=-1) report("Id: "+s);
 	    if (!descM) descM=methodM;
 	    if (!descM)
