@@ -440,6 +440,7 @@ static inline int threads_disabled_wait(void)
 #define th_yield() thr_yield()
 #else
 #define th_yield()
+#define HAVE_NO_YIELD
 #endif
 #endif
 

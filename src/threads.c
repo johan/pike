@@ -610,6 +610,10 @@ PMOD_EXPORT int count_pike_threads(void)
 
 static void check_threads(struct callback *cb, void *arg, void * arg2)
 {
+#ifndef HAVE_NO_YIELD
+  /* If we have no yield we can't cut calls here since it's possible
+   * that a thread switch will take place only occasionally in the
+   * window below. */
 #ifdef HAVE_GETHRTIME
   static long long last_;
   if( gethrtime()-last_ < 50000000 ) /* 0.05s slice */
@@ -619,6 +623,7 @@ static void check_threads(struct callback *cb, void *arg, void * arg2)
   static int div_;
   if(div_++ & 255)
     return;
+#endif
 #endif
 
 #ifdef DEBUG
