@@ -1272,11 +1272,17 @@ low_idents: F_IDENTIFIER
 	
 	     if(throw_value.type == T_STRING)
 	     {
-	       my_yyerror("%s",throw_value.u.string->str);
+	       if(compiler_pass==2)
+		 my_yyerror("%s",throw_value.u.string->str);
+	       else
+		 $$=mknode(F_UNDEFINED,0,0);
 	     }
 	     else if(IS_ZERO(sp-1) && sp[-1].subtype==1)
 	     {
-	       my_yyerror("'%s' undefined.", $1->str);
+	       if(compiler_pass==2)
+		 my_yyerror("'%s' undefined.", $1->str);
+	       else
+		 $$=mknode(F_UNDEFINED,0,0);
 	     }else{
 	       $$=mkconstantsvaluenode(sp-1);
 	     }

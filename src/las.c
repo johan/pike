@@ -1285,8 +1285,28 @@ void fix_type_field(node *n)
 	break;
 	
       case F_CONSTANT:
+	switch(CAR(n)->u.sval.type)
+	{
+	  case T_FUNCTION:
+	    name=ID_FROM_INT(CAR(n)->u.sval.u.object->prog,
+			     CAR(n)->u.sval.subtype)->name->str;
+	    break;
+
+	  case T_ARRAY:
+	    name="array call";
+	    break;
+
+	  case T_PROGRAM:
+	    name="clone call";
+	    break;
+
+	  default:
+	    name="`() (function call)";
+	    break;
+	}
+
       default:
-	name="`() (function call)";
+	name="unknown function";
       }
 
       if(max_correct_args == count_arguments(s))
