@@ -310,8 +310,8 @@ PMOD_EXPORT extern const char msg_bad_arg[];
    bad_arg_error(FUNC, Pike_sp-args, args, ARG, EXPECT, Pike_sp+ARG-1-args,\
 		 msg_bad_arg, ARG, FUNC, EXPECT)
 
-/* This one should be used when there's some other problem with the
- * argument than a bogus type. PROBLEM is a full sentence without a
+/* This one should be used when there's some problem with the argument
+ * other than a bogus type. PROBLEM is a full sentence without a
  * trailing newline. */
 PMOD_EXPORT extern const char msg_bad_arg_2[];
 #define SIMPLE_ARG_ERROR(FUNC, ARG, PROBLEM) \
