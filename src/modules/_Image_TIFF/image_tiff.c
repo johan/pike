@@ -875,9 +875,6 @@ static void image_tiff_encode( INT32 args )
 }
 
 
-#define TIFF_ERROR_BUF_SIZE	4096
-static char last_tiff_error[TIFF_ERROR_BUF_SIZE];
-
 /* Complies with the TIFFErrorHandler API */
 void my_tiff_warning_handler(const char *module, const char *fmt, va_list x){}
 /* Complies with the TIFFErrorHandler API */
