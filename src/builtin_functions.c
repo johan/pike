@@ -2124,7 +2124,7 @@ PMOD_EXPORT void f_throw(INT32 args)
   pike_throw();
 }
 
-/*! @decl void exit(int returncode, void|stirng fmt, mixed ... extra)
+/*! @decl void exit(int returncode, void|string fmt, mixed ... extra)
  *!
  *!   Exit the whole Pike program with the given @[returncode].
  *!
