@@ -1040,7 +1040,7 @@ static INT32 PIKE_CONCAT4(very_low_sscanf_,INPUT_SHIFT,_,MATCH_SHIFT)(	 \
 	  long tmp;							 \
 	  for(e=cnt+1,tmp=1;tmp;e++)					 \
 	  {								 \
-	    if(!match[e])						 \
+	    if(e>=match_len)						 \
 	    {								 \
 	      error("Missing %%} in format string.\n");			 \
 	      break;		/* UNREACHED */				 \
