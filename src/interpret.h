@@ -100,6 +100,15 @@ struct external_variable_context
     low_error("C stack overflow.\n");					\
   }while(0)
 
+#define fatal_check_c_stack(X) do { 			\
+    ptrdiff_t x_= 					\
+      ((char *)&x_) + STACK_DIRECTION * (X) - Pike_interpreter.stack_top ; \
+    x_*=STACK_DIRECTION;						\
+    if(x_>0) {								\
+      fatal("C stack overflow.\n");					\
+    }									\
+  }while(0)
+
 
 #define pop_stack() do{ free_svalue(--Pike_sp); debug_check_stack(); }while(0)
 
