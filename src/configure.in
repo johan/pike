@@ -5824,8 +5824,8 @@ int main()
     return 4;
   }
   if (work_time < (CPU_TIME_TICKS / 10)) {
-    fprintf (res, "unknown (get_cpu_time doesn't work - loop took only %lld)",
-	     (long long) work_time);
+    fprintf (res, "unknown (get_cpu_time doesn't work - loop took only %ld ms)",
+	     (long) (work_time / (CPU_TIME_TICKS / 1000)));
     fclose (res);
     return 5;
   }
