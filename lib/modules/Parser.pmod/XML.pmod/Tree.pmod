@@ -1034,7 +1034,8 @@ Node parse_input(string data, void|int(0..1) no_fallback,
       extras->xmlns = XMLNSParser();
     }
     mRoot = Node(XML_ROOT, "", ([ ]), "");
-    foreach(xp->parse(xp->autoconvert(data), parse_xml_callback,
+    catch( data=xp->autoconvert(data) );
+    foreach(xp->parse(data, parse_xml_callback,
 		      sizeof(extras) && extras),
 	    Node child)
       mRoot->add_child(child);
