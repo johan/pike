@@ -596,6 +596,8 @@ struct pike_string * debug_make_shared_binary_pcharp(const PCHARP str,int len)
     default:
       fatal("Unknown string width!\n");
   }
+  /* NOT REACHED */
+  return NULL;	/* Keep the compiler happy */
 }
 
 struct pike_string * debug_make_shared_pcharp(const PCHARP str)
@@ -717,13 +719,18 @@ void really_free_string(struct pike_string *s)
 {
 #ifdef PIKE_DEBUG
   extern int d_flag;
-  if(d_flag > 2)
-  {
-    if(s->next == (struct pike_string *)-1)
-      fatal("Freeing shared string again!\n");
+  if (d_flag) {
+    if (s->refs) {
+      fatal("Freeing string with references!\n");
+    }
+    if(d_flag > 2)
+    {
+      if(s->next == (struct pike_string *)-1)
+	fatal("Freeing shared string again!\n");
 
-    if(((long)s->next) & 1)
-      fatal("Freeing shared string again, memory corrupt or other bug!\n");
+      if(((long)s->next) & 1)
+	fatal("Freeing shared string again, memory corrupt or other bug!\n");
+    }
   }
 #endif
   unlink_pike_string(s);
