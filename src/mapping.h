@@ -41,6 +41,9 @@ struct mapping
 #ifdef PIKE_SECURITY
   struct object *prot;
 #endif
+#ifdef PIKE_DEBUG
+  INT32 size;
+#endif
   INT16 flags;
   struct mapping_data *data;
   struct mapping *next, *prev;
