@@ -66,11 +66,13 @@ DO_IF_DEBUG(								\
 
 #define COUNT_OTHER() do{				\
   struct mapping *m;					\
+  double datasize = 0.0;				\
   for(m=first_mapping;m;m=m->next)			\
   {							\
-    num++;						\
-    size+=MAPPING_DATA_SIZE(m->data->hashsize, m->data->num_keypairs); \
+    datasize+=MAPPING_DATA_SIZE(m->data->hashsize, m->data->num_keypairs) / \
+      (double) m->data->refs;						\
   }							\
+  size += (INT32) datasize;				\
 }while(0)
 
 BLOCK_ALLOC(mapping, 511)

@@ -56,7 +56,6 @@ static size_t add_xstorage(size_t size,
   struct program *p;				\
   for(p=first_program;p;p=p->next)		\
   {						\
-    num++;					\
     size+=p->total_size;			\
   }						\
 }while(0)
