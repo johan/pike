@@ -964,8 +964,8 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 		SKIPWHITE();
 		if(data[pos]==')')
 		{
-		  if(d->varargs && arg + 1 == d->args)
-		  {
+ 		  if((d->varargs && arg + 1 == d->args) ||
+		     (!arg && (d->args == 1))) {
 		    arguments[arg].arg = MKPCHARP(data + pos, SHIFT);
 		    arguments[arg].len=0;
 		    continue;
