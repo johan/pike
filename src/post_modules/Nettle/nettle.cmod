@@ -54,6 +54,7 @@ PIKECLASS Yarrow
    *!   @[update]
    */
   PIKEFUN void create(void|int arg)
+    flags ID_STATIC;
   {
     INT32 num = 0;
 
@@ -814,7 +815,9 @@ PIKECLASS LFib
   /* @decl void create(int seed)
    * The Lfib generator must be seeded with a number.
    */
-  PIKEFUN void create(int seed) {
+  PIKEFUN void create(int seed)
+    flags ID_STATIC;
+  {
     knuth_lfib_init(THIS->ctx, seed);
   }
 
