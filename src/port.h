@@ -38,6 +38,10 @@ time_t TIME(time_t *);
 #  define TIME time
 #endif
 
+#ifndef HAVE_RINT
+#define rint(X) floor( (X) + 0.5 )
+#endif
+
 #if defined(HAVE_STRTOL) && defined(HAVE_WORKING_STRTOL)
 #  define STRTOL strtol
 #else

@@ -121,6 +121,9 @@
 /* Define if you have ldexp.  */
 #undef HAVE_LDEXP
 
+/* Define if you have rint.  */
+#undef HAVE_RINT
+
 /* Define if you have frexp.  */
 #undef HAVE_FREXP
 
