@@ -556,6 +556,16 @@ PIKECLASS Buffer
     return;
   }
 
+  PIKEFUN int _sizeof()
+  /*! @decl int _sizeof()
+   *!
+   *!   Returns the size of the buffer.
+   */
+  {
+    struct Buffer_struct *str = THIS;
+    RETURN str->str.s ? str->str.s->len : 0;
+  }
+
   INIT
     {
       struct Buffer_struct *str = THIS;
