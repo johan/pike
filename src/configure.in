@@ -1770,6 +1770,11 @@ then
 	BSD/OS*) LDSHARED="shlicc -r";;
 	SCO_SV*) LDSHARED="cc -G -KPIC -Wl,-Bexport";;
 	UNIX_SV) LDSHARED="ld -G";;
+	UnixWare*)
+	  if test "$GCC" != yes ; then
+	    LDSHARED="cc -G -KPIC -Wl,-Bexport"
+	  fi
+	;;
 	*) LDSHARED="ld";;
 	esac
 fi
@@ -1789,6 +1794,7 @@ if test -z "$CCSHARED" ; then
 	hp*|HP*) CCSHARED="+z"; ;;
 	FreeBSD*) CCSHARED="-fpic";;
 	SCO_SV*) CCSHARED="-KPIC -dy -Bdynamic";;
+	UnixWare*) CCSHARED="-KPIC -dy -Bdynamic";;
 	Solaris*) CCSHARED="-KPIC -Bdynamic";;
     esac
   fi
@@ -1810,6 +1816,7 @@ then
         GNU*) LINKFORSHARED="-rdynamic";;
 	next) LINKFORSHARED="-u libsys_s";;
 	SCO_SV*) LINKFORSHARED="-fpic -Wl,-Bexport";;
+	UnixWare*) LINKFORSHARED="-fpic -Wl,-Bexport";;
     esac
   else
     case $pike_cv_sys_os in
@@ -1819,6 +1826,7 @@ then
         GNU*) LINKFORSHARED="-rdynamic";;
 	next) LINKFORSHARED="-u libsys_s";;
 	SCO_SV*) LINKFORSHARED="-Bdynamic -dy -Wl,-Bexport";;
+	UnixWare*) LINKFORSHARED="-Bdynamic -dy -Wl,-Bexport";;
     esac
   fi
 fi
