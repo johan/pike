@@ -5996,9 +5996,9 @@ PMOD_EXPORT void f_gethrvtime(INT32 args)
   /* Don't subtract the gc time at all if we don't know whether it's
    * thread local or not, since if we do it wrong we might end up
    * returning a negative number. */
-#if CPU_TIME_IS_THREAD_LOCAL == YES
+#if defined(PIKE_THREADS) && (CPU_TIME_IS_THREAD_LOCAL == YES)
   time -= OBJ2THREAD(Pike_interpreter.thread_id)->auto_gc_time;
-#elif CPU_TIME_IS_THREAD_LOCAL == NO
+#elif !defined(PIKE_THREADS) || (CPU_TIME_IS_THREAD_LOCAL == NO)
   time -= auto_gc_time;
 #endif
 
