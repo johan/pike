@@ -157,7 +157,7 @@ void f_sqrt(INT32 args)
 #ifdef AUTO_BIGNUM
   else if(is_bignum_object_in_svalue(&sp[-args]))
   {
-    safe_apply(sp[-args].u.object, "sqrt", 1);
+    safe_apply(sp[-args].u.object, "_sqrt", 1);
   }
 #endif /* AUTO_BIGNUM */
   else
