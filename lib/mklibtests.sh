@@ -17,7 +17,7 @@ recurse () {
       if [ ! -d "$dest_dir$path$fn" ]; then
         if mkdir -p "$dest_dir$path$fn"; then :; else
 	  echo >&2 "Could not create $dest_dir$path$fn"
-	  continye
+	  continue
 	fi
       fi
       ( recurse "$path$fn"/ )
