@@ -785,7 +785,7 @@ PIKECLASS Inflate
       }
     }
 }
-/*! @end class
+/*! @endclass
 */
 
 /*! @class File
