@@ -1150,17 +1150,18 @@ static void img_png_decode(INT32 args,int header_only)
 		     push_int(ct->u.flat.entries[(int)b->item[1].u.string->str[0]].color.g);
 		     push_int(ct->u.flat.entries[(int)b->item[1].u.string->str[0]].color.b);
 		  }
-		  break;
+                  break;
 	       default:
-		  if (b->item[1].u.string->len!=6)
+		  if (b->item[1].u.string->len==6)
 		  {
 		     int j;
 		     for (j=0; j<3; j++)
 		     {
-			int z=_png_c16(b->item[1].u.string->str[j],ihdr.bpp);
+			int z=_png_c16(b->item[1].u.string->str[j*2],ihdr.bpp);
 			push_int(z);
 		     }
-		  }
+		  } else
+                    continue;
 		  break;
 	    }
 	    f_aggregate(3);
