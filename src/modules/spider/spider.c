@@ -40,7 +40,7 @@
 #include "threads.h"
 #include "operators.h"
 
-RCSID("$Id$);
+RCSID("$Id$");
 
 #ifdef HAVE_PWD_H
 #include <pwd.h>
