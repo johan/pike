@@ -131,13 +131,6 @@ RCSID("$Id$");
 
 #include "dmalloc.h"
 
-/* NOTE: Some versions of AIX seem to have a
- *         #define events reqevents
- *       in one of the poll headerfiles. This will break
- *       the fd_box event handling.
- */
-#undef events
-
 struct udp_storage {
   struct fd_callback_box box;	/* Must be first. */
   int my_errno;
