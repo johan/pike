@@ -147,6 +147,7 @@ void image_x_encode_pseudocolor(INT32 args);
 void image_noise(INT32 args);
 void image_turbulence(INT32 args);
 void image_random(INT32 args);
+void image_randomgrey(INT32 args);
 void image_noise_init(void);
 
 /* dct.c */
