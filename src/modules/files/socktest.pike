@@ -14,6 +14,8 @@ import String;
 //int idnum;
 //mapping in_cleanup=([]);
 
+int delayed_failure = 0;
+
 void fd_fail()
 {
 #if constant(Stdio.get_all_active_fd)
@@ -471,7 +473,7 @@ void finish()
 #endif /* constant(Stdio.__OOB__) */
 
     default:
-      exit(0);
+      exit(delayed_failure);
       break;
     }
   }
@@ -516,16 +518,20 @@ int main()
   werror("\nForking...");
   object pid;
   if (catch { pid = fork(); }) {
-    werror(" failed.");
+    werror(" failed.\n");
   } else if (pid) {
     int res = pid->wait();
     if (res) {
-      werror("\nChild failed with errcode %d\n", res);
-      exit(res);
+      if (res == -1) {
+	werror("\nChild died of signal %d\n", pid->last_signal());
+      } else {
+	werror("\nChild failed with errcode %d\n", res);
+      }
+      delayed_failure = 1;
     }
-    werror("\nRunning in parent...");
+    werror("\nRunning in parent...\n");
   } else {
-    werror(" ok.");
+    werror(" ok.\n");
   }
 #endif /* constant(fork) */
 
@@ -551,7 +557,7 @@ int main()
   return -1;
 #endif /* OOB_DEBUG */
 
-  werror("\nDoing simple tests. ");
+  werror("Doing simple tests. ");
   stdtest();
   return -1;
 }
