@@ -175,7 +175,7 @@ void create(void|string|object host, void|string db,
       // It's nicer now, since it's a thread-local variable,
       // but not by much.
       mixed old_inhib = master()->get_inhibit_compile_errors();
-      master()->set_inhibit_compiler_errors(lambda(){});
+      master()->set_inhibit_compile_errors(lambda(){});
       program_names = indices(Sql);
       // Restore compiler errors mode to whatever it was before.
       master()->set_inhibit_compile_errors(old_inhib);
