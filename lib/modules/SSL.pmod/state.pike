@@ -78,13 +78,13 @@ Alert|.packet decrypt_packet(.packet packet, int version)
     string msg = packet->fragment;
     if (! msg)
       return Alert(ALERT_fatal, ALERT_unexpected_message, version);
-    msg = crypt->crypt(msg);
 
     if (session->cipher_spec->cipher_type == CIPHER_block)
       if(version==0) {
 	if (catch { msg = crypt->unpad(msg); })
 	  return Alert(ALERT_fatal, ALERT_unexpected_message, version);
       } else {
+	msg = crypt->crypt(msg);
 	if (catch { msg = tls_unpad(msg); })
 	  return Alert(ALERT_fatal, ALERT_unexpected_message, version);
       }
