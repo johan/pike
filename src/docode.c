@@ -1897,7 +1897,8 @@ static int do_docode2(node *n, INT16 flags)
     in_catch--;
 
     ins_label(current_label->break_label);
-    emit0(F_THROW_ZERO);
+    /* emit0(F_THROW_ZERO); */
+    do_escape_catch();
     POP_STATEMENT_LABEL;
     current_switch.jumptable = prev_switch_jumptable;
 
