@@ -16,6 +16,7 @@
 #include "global.h"
 #include "file_machine.h"
 
+#include "fdlib.h"
 #include "fd_control.h"
 #include "object.h"
 #include "array.h"
@@ -193,7 +194,7 @@ static void exit_pike_sendfile(struct object *o)
 static int writev(int fd, struct iovec *iov, int n)
 {
   if (n) {
-    return write(fd, iov->iov_data, iov->iov_len);
+    return fd_write(fd, iov->iov_data, iov->iov_len);
   }
   return 0;
 }
@@ -385,7 +386,7 @@ void *worker(void *this_)
     {
       struct stat st;
 
-      if (!fstat(this->from_fd, &st) &&
+      if (!fd_fstat(this->from_fd, &st) &&
 	  S_ISREG(st.st_mode)) {
 	/* Regular file, try using mmap(). */
 
@@ -416,7 +417,7 @@ void *worker(void *this_)
 	  buf = mem;
 	  buflen = len;
 	  while (buflen) {
-	    int wrlen = write(this->to_fd, buf, buflen);
+	    int wrlen = fd_write(this->to_fd, buf, buflen);
 
 	    if ((wrlen < 0) && (errno == EINTR)) {
 	      continue;
@@ -441,19 +442,19 @@ void *worker(void *this_)
 
     SF_DFPRINTF((stderr, "sendfile: Using read() and write().\n"));
 
-    lseek(this->from_fd, this->offset, SEEK_SET);
+    fd_lseek(this->from_fd, this->offset, SEEK_SET);
     {
       int buflen;
       int len = this->len;
       if ((len > BUF_SIZE) || (len < 0)) {
 	len = BUF_SIZE;
       }
-      while ((buflen = read(this->from_fd, this->buffer, len)) > 0) {
+      while ((buflen = fd_read(this->from_fd, this->buffer, len)) > 0) {
 	char *buf = this->buffer;
 	this->len -= buflen;
 	this->offset += buflen;
 	while (buflen) {
-	  int wrlen = write(this->to_fd, buf, buflen);
+	  int wrlen = fd_write(this->to_fd, buf, buflen);
 	  if ((wrlen < 0) && (errno == EINTR)) {
 	    continue;
 	  } else if (wrlen <= 0) {
