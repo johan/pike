@@ -1193,8 +1193,12 @@ if test "$cflags_is_set" = "no"; then
   DO_IF_OS(AIX,
   [
     # Tell the linker to generate a large toc if needed
-    AC_SYS_COMPILER_FLAG(-bbigtoc,bbigtoc,LDFLAGS)
-    AC_SYS_COMPILER_FLAG([-Wl,-bbigtoc],Wlbbigtoc,LDFLAGS)
+    #
+    # This option is not needed on AIX 5L/ia64.
+    if test "x`uname -p`" = "xia64"; then :; else
+      AC_SYS_COMPILER_FLAG(-bbigtoc,bbigtoc,LDFLAGS)
+      AC_SYS_COMPILER_FLAG([-Wl,-bbigtoc],Wlbbigtoc,LDFLAGS)
+    fi
   ])
 
  else if test "x${TCC-}" = xyes ; then
