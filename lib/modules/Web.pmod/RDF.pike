@@ -103,6 +103,9 @@ RDFResource rdf_predicate = RDFResource("predicate");
 RDFResource rdf_subject   = RDFResource("subject");
 RDFResource rdf_object    = RDFResource("object");
 RDFResource rdf_type      = RDFResource("type");
+RDFResource rdf_first     = RDFResource("first");
+RDFResource rdf_rest      = RDFResource("rest");
+RDFResource rdf_nil       = RDFResource("nil");
 
 
 //! Resource identified by literal.
