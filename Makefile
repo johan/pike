@@ -98,7 +98,7 @@ bin/pike: force
 
 # This skips the modules.
 pike: force
-	@$(MAKE) "METATARGET=pike"
+	@$(MAKE) "METATARGET=pike master.pike"
 
 install:
 	@$(MAKE) "METATARGET=install"
