@@ -769,7 +769,7 @@ $(SRCDIR)/language.c $(SRCDIR)/language.h_src: $(SRCDIR)/language.yacc
 	( cd $(SRCDIR) && \
 	 $(YACC) $(YFLAGS) $(SRCDIR)/language.yacc && \
 	 sed -e 's/YY_COUNT_TYPE/@YY_COUNT_TYPE@/' \
-	     -e 's/YYFROM_CONST/@YY_FROM_CONST@/' <y.tab.c >language.c && \
+	     -e 's/YY_FROM_CONST/@YY_FROM_CONST@/' <y.tab.c >language.c && \
 	 mv y.tab.h language.h_src && rm y.tab.c)
 
 $(SRCDIR)/interpret_functions_fixed.h: $(SRCDIR)/interpret_functions.h precompile.sh-stamp
