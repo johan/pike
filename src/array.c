@@ -106,7 +106,7 @@ PMOD_EXPORT struct array *real_allocate_array(ptrdiff_t size,
   GC_ALLOC(v);
 
 
-  if (size)
+  if (size+extra_space)
     /* for now, we don't know what will go in here */
     v->type_field = BIT_MIXED | BIT_UNFINISHED;
   else
