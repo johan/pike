@@ -1920,7 +1920,7 @@ static void describe_hostent(struct hostent *hp)
  */
 void f_gethostbyaddr(INT32 args)
 {
-  u_long addr;
+  IN_ADDR_T addr;
   char *name;
   GETHOST_DECLARE;
 
