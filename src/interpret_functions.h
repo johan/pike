@@ -935,9 +935,9 @@ BREAK;
  */
 OPCODE0_JUMP(F_LOOP, "loop") /* loopcnt */
 {
-  /* Use ge and 1 to be able to reuse the 1 for the subtraction. */
+  /* Use >= and 1 to be able to reuse the 1 for the subtraction. */
   push_int(1);
-  if (is_ge(sp-2, sp-1)) {
+  if (!is_lt(sp-2, sp-1)) {
     o_subtract();
     DOJUMP();
   } else {
