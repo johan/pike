@@ -123,7 +123,7 @@ void push_pwent(struct passwd *ent)
   SAFE_PUSH_TEXT(ent->pw_name);
 
 #if defined(HAVE_GETSPNAM) || defined(HAVE_GETSPNAM_R)
-  if(!strcmp(ent->pw_passwd, "x") && !getuid())
+  if(!strcmp(ent->pw_passwd, "x"))
   {
     /* 64-bit Solaris 7 SIGSEGV's with an access to address 0xffffffff
      * if the user is not root:
@@ -148,9 +148,24 @@ void push_pwent(struct passwd *ent)
      *   /grubba 1999-05-26
      */
     static char buffer[2048];
+
     THREADS_ALLOW_UID();
+
+#ifdef HAVE_SOLARIS_GETSPNAM_R
     foo = getspnam_r(ent->pw_name, &bar, buffer, sizeof(buffer));
+#else /* !HAVE_SOLARIS_GETSPNAM_R */
+    /* Assume Linux-style getspnam_r().
+     * It would be nice if the function was documented...
+     *   /grubba 1999-05-27
+     */
+    foo = NULL;
+    if (getspnam_r(ent->pw_name, &bar, buffer, sizeof(buffer), &foo) < 0) {
+      foo = NULL;
+    }
+#endif /* HAVE_SOLARIS_GETSPNAM_R */
+
     THREADS_DISALLOW_UID();
+
 #else /* !HAVE_GETSPNAM_R */
     /* getspnam() is MT-unsafe!
      * /grubba 1999-05-26
