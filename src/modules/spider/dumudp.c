@@ -82,10 +82,11 @@ static void udp_bind(INT32 args)
   if(sp[-args].type != T_INT)
     error("Bad argument 1 to dumudp->bind()\n");
 
-  if(FD)
+  if(FD != -1)
   {
     set_read_callback( FD, 0, 0 );
-    close(FD);
+    close(FD);	/* Shouldn't this be some other taste of close()? */
+    FD = -1;
   }
 
   fd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -262,11 +263,12 @@ void udp_sendto(INT32 args)
 void zero_udp(struct object *ignored)
 {
   MEMSET(THIS, 0, sizeof(struct dumudp));
+  FD = -1;
 }
 
 void exit_udp(struct object *ignored)
 {
-  if(FD)
+  if(FD != -1)
   {
     set_read_callback( FD, 0, 0 );
     if (& THIS->read_callback)
