@@ -1,4 +1,4 @@
-#pike __REAL_VERSION__
+#pike 7.4
 
 /* $Id$
  *
