@@ -205,14 +205,14 @@ force :
 
 
 # install
-install: module_objects pike hilfe pike-module aclocal
+install: pike hilfe pike-module aclocal
 	@exec_prefix="$(exec_prefix)" lib_prefix="$(lib_prefix)" \
 	TMP_LIBDIR="$(TMP_LIBDIR)" LIBDIR_SRC="$(LIBDIR_SRC)" \
 	SRCDIR="$(SRCDIR)" prefix="$(prefix)" MANDIR_SRC="$(MANDIR_SRC)" \
 	man_prefix="$(man_prefix)" \
 	$(RUNPIKE) $(TMP_BINDIR)/install.pike
 
-old-install: module_objects pike hilfe pike-module aclocal
+old-install: pike hilfe pike-module aclocal
 	@echo
 	@echo Installing Pike...
 	@echo
@@ -583,6 +583,7 @@ modules/dynamic_module_makefile: $(SRCDIR)/@dmmsrc@ config.status
 
 Makefile: $(SRCDIR)/Makefile.in $(SRCDIR)/dependencies config.status
 	CONFIG_FILES=Makefile CONFIG_HEADERS="" ./config.status
+	touch remake
 	@echo "Run make again"
 	@exit 1
 
