@@ -32,7 +32,7 @@ void recurse(string path) {
     ds = file_stat(dest_dir+path+"testsuite");
     if(!ds || ds->mtime<ls->mtime) {
       object f;
-      if(catch(Stdio.File(dest_dir+path+"testsuite", "cwt"))) {
+      if(catch(f=Stdio.File(dest_dir+path+"testsuite", "cwt"))) {
 	werror("Could not create %s\n", dest_dir+path+"testsuite");
 	continue;
       }
