@@ -41,6 +41,7 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "bignum.h"
 #include "language.h"
+#include "peep.h"
 #include "docode.h"
 #include "lex.h"
 
