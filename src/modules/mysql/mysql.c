@@ -6,6 +6,8 @@
  * Henrik Grubbström 1996-12-21
  */
 
+#include "config.h"
+
 #ifdef HAVE_MYSQL
 
 /*
