@@ -4533,6 +4533,8 @@ static void run_atexit_functions(struct callback *cb, void *arg,void *arg2)
 	pop_stack();
       }
     }
+    free_array (atexit_functions);
+    atexit_functions = 0;
   }
 }
 
