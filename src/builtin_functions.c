@@ -5996,7 +5996,7 @@ PMOD_EXPORT void f_gethrvtime(INT32 args)
   time -= auto_gc_time;
 #endif
 
-  nsec = args && !UNSAFE_IS_ZERO(sp-args);
+  nsec = args && !UNSAFE_IS_ZERO(Pike_sp-args);
 
   pop_n_elems(args);
   if (nsec)
@@ -6022,7 +6022,7 @@ PMOD_EXPORT void f_gethrvtime(INT32 args)
 PMOD_EXPORT void f_gethrtime(INT32 args)
 {
   int nsec = 0;
-  nsec = args && !UNSAFE_IS_ZERO(sp-args);
+  nsec = args && !UNSAFE_IS_ZERO(Pike_sp-args);
 
   pop_n_elems(args);
   if(nsec)
@@ -6034,7 +6034,7 @@ PMOD_EXPORT void f_gethrtime(INT32 args)
 PMOD_EXPORT void f_gethrtime(INT32 args)
 {
   int nsec = 0;
-  nsec = args && !UNSAFE_IS_ZERO(sp-args);
+  nsec = args && !UNSAFE_IS_ZERO(Pike_sp-args);
 
   pop_n_elems(args);
   GETTIMEOFDAY(&current_time);
