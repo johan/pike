@@ -1104,6 +1104,7 @@ PIKEFUN float random(float f)
  */
 
 PIKEFUN mixed random(array a)
+     rawtype tFunc(tArr(tSetvar(0,tMix)),tVar(0));
 {
   if(!a->size)
     SIMPLE_BAD_ARG_ERROR("random", 1, "array with elements in it");
@@ -1113,6 +1114,7 @@ PIKEFUN mixed random(array a)
 }
 
 PIKEFUN mixed random(multiset m)
+     rawtype tFunc(tSet(tSetvar(1,tMix)),tVar(1));
 {
   if(multiset_is_empty (m))
     SIMPLE_BAD_ARG_ERROR("random", 1, "multiset with elements in it");
