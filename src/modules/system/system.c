@@ -764,7 +764,7 @@ void f_gethostbyname(INT32 args)
 
 
 #ifdef GETHOSTBYNAME_MUTEX_EXISTS
-static void cleanup_after_fork()
+static void cleanup_after_fork(struct callback *cb, void *arg0, void *arg1)
 {
   mt_init(&gethostbyname_mutex);
 }
