@@ -440,6 +440,9 @@
 /* Define if the compiler understand union initializations. */
 #undef HAVE_UNION_INIT
 
+/* Define when binary --disable-binary is used. */
+#undef DISABLE_BINARY
+
 @BOTTOM@
 
 /* NT stuff */
