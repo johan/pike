@@ -719,7 +719,7 @@ static Node add_xml_children(Node p, string rdfns, string base) {
 
   // Handle subnodes
   foreach(p->get_elements(), Node c) {
-    if(c->get_ns()==rdfns) {
+    if(c->get_ns()==rdf_ns) {
       string name = c->get_any_name();
       if(name=="type" || name=="first") {
 	string obj_uri = c->get_ns_attributes(rdfns)->resource;
