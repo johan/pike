@@ -9,8 +9,8 @@ AC_MODULE_INIT()
 
 if test x$with_tifflib = xyes ; then
   AC_CHECK_HEADERS(tiff.h tiffio.h tiffiop.h)
-  if test $ac_cv_header_tiffio_h = yes ; then
-    AC_CHECK_LIB(tiff, TIFFClientOpen, [
+  if test $ac_cv_header_tiff_h = yes ; then
+    AC_CHECK_LIB(tiff, main, [
       AC_DEFINE(HAVE_LIBTIFF) 
       LIBS="${LIBS-} -ltiff"
      ],[])
