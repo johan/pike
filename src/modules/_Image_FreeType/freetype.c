@@ -31,6 +31,11 @@ RCSID("$Id$");
 
 #ifdef HAVE_LIBFT2
 
+#if !defined(FT_ENC_TAG) && defined(FT_MAKE_TAG)
+#define FT_ENC_TAG( value, _x1, _x2, _x3, _x4) \
+	value = FT_MAKE_TAG( _x1, _x2, _x3, _x4 )
+#endif /* !defined(FT_ENC_TAG) && defined(FT_MAKE_TAG) */
+
 #define sp Pike_sp
 #define fp Pike_fp
 
