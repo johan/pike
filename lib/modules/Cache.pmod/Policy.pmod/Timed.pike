@@ -6,7 +6,7 @@
  * $Id$
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 //TODO: use the preciousness somehow.
 // idea: expire if (now-atime)*cost < ktime

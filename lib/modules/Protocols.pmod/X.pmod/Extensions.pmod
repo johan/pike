@@ -27,7 +27,7 @@
  * mailing list, pike@idonex.se, or to the athors (see AUTHORS for
  * email addresses. */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 static class extension
 {

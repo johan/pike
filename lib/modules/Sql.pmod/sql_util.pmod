@@ -7,7 +7,7 @@
  * Henrik Grubbström 1999-07-01
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 //.
 //. File:	sql_util.pmod

@@ -2,7 +2,7 @@
  *
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 inherit Crypto.pipe : pipe;
 

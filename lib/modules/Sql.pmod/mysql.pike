@@ -17,7 +17,7 @@
 //. SQL module.
 //.
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 #if constant(Mysql.mysql)
 

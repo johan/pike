@@ -8,7 +8,7 @@
  * Settings will be added later.
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 #define CLUTTERED 200
 

@@ -4,7 +4,7 @@
  * associated with a unique key.
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 constant cvs_id = "$Id$";
 

@@ -6,7 +6,7 @@
  * Henrik Grubbström 1998-05-27
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 class simple
 {

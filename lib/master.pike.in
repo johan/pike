@@ -9,7 +9,7 @@
 
 // Some configurable parameters useful for debugging
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 #define PIKE_AUTORELOAD
 
 // Used by describe_backtrace() et al.

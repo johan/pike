@@ -4,7 +4,7 @@
  * Glue for the ODBC-module
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 #if constant(Odbc.odbc)
 inherit Odbc.odbc;

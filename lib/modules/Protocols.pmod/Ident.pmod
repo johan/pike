@@ -2,7 +2,7 @@
 //
 // $Id$
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 // #define IDENT_DEBUG
 

@@ -7,7 +7,7 @@
  */
 
 
-
+#pike __REAL_VERSION__
 inherit @module@;
 
 string generate_boundary( )

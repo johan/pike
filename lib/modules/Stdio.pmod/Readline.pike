@@ -1,5 +1,5 @@
 // $Id$
-#pike __VERSION__
+#pike __REAL_VERSION__
 class OutputController
 {
   static private object outfd, term;

@@ -1,6 +1,6 @@
 #!NOMODULE
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 #include "graph.h"
 

@@ -17,7 +17,7 @@
  * 
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 #define MAX_KEY_SIZE "255"
 #define CREATION_QUERY "create table cache ( \

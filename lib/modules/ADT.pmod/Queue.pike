@@ -3,7 +3,7 @@
  * A simple FIFO queue. 
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 #define QUEUE_SIZE 100
 
 array l;

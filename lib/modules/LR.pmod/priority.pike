@@ -6,7 +6,7 @@
  * Henrik Grubbström 1996-12-05
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 //.
 //. File:	priority.pike

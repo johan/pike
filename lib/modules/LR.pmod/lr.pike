@@ -8,7 +8,7 @@
  * Henrik Grubbström 1996-11-23
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 import LR;
 

@@ -6,7 +6,7 @@
  * $Id$
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 inherit Cache.Policy.Base;
 private array(Cache.Policy.Base) my_policies;

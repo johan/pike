@@ -30,7 +30,7 @@
 //!	initialised <link to=Protocols.LysKOM.Request>request</link> object.
 //!
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 import ".";
 

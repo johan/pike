@@ -6,7 +6,7 @@
  * Henrik Grubbström 1996-11-24
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 //.
 //. File:	rule.pike

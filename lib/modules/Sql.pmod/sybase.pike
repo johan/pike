@@ -7,7 +7,7 @@
  *
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 #if constant(sybase.sybase)
 

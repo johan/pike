@@ -6,7 +6,7 @@
  * Henrik Grubbström 1996-01-09
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 //.
 //. File:	sql.pike

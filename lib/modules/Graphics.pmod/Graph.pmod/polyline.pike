@@ -5,7 +5,7 @@
  * $Id$
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 #define CAP_BUTT       0
 #define CAP_ROUND      1

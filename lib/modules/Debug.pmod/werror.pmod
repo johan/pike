@@ -5,7 +5,7 @@
  * (Aren't we lazy? :-) )
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 function(:int(0..0)) `[](string print_what)
 {

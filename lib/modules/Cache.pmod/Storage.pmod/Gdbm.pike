@@ -12,7 +12,7 @@
  * Settings will be added later.
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 //after this many deletion ops, the databases will be compacted.
 #define CLUTTERED 100

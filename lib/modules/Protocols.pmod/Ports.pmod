@@ -6,7 +6,7 @@
  * Henrik Grubbström 1998-06-23
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 // Contains all UDP ports assigned for private use as of RFC 1700
 constant private_udp = ([

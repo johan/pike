@@ -12,7 +12,7 @@
 // pike mkrules.pike ../data/{africa,antarctica,asia,australasia,backward,etcetera,europe,northamerica,pacificnew,southamerica,systemv}
 // $Id$
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 object cal=Calendar.ISO->set_timezone("UTC");
 function Year=cal->Year;

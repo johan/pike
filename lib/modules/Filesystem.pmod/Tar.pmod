@@ -2,7 +2,7 @@
  * $Id$
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 class _Tar  // filesystem
 {

@@ -4,7 +4,7 @@
  * Glue for the Mysql-module
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 #if constant(Mysql.mysql_result)
 inherit Mysql.mysql_result;

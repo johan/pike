@@ -8,7 +8,7 @@
  * All storage managers must provide these methods.
  */
 
-#pike __VERSION__
+#pike __REAL_VERSION__
 
 #define T() throw( ({"override this", backtrace()}))
 
