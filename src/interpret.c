@@ -625,7 +625,8 @@ break
 CASE(ID)							\
 {								\
   union anything *i=get_pointer_if_this_type(Pike_sp-2, T_INT);	\
-  if(i && !AUTO_BIGNUM_LOOP_TEST(i->integer,INC))		\
+  if(i && !AUTO_BIGNUM_LOOP_TEST(i->integer,INC) &&		\
+     Pike_sp[-3].type == T_INT)					\
   {								\
     i->integer += INC;						\
     if(i->integer OP2 Pike_sp[-3].u.integer)				\
@@ -636,11 +637,11 @@ CASE(ID)							\
       pc+=sizeof(INT32);					\
     }                                                           \
   }else{							\
-    lvalue_to_svalue_no_free(Pike_sp,Pike_sp-2); Pike_sp++;			\
+    lvalue_to_svalue_no_free(Pike_sp,Pike_sp-2); Pike_sp++;	\
     push_int(INC);						\
     f_add(2);							\
-    assign_lvalue(Pike_sp-3,Pike_sp-1);					\
-    if(OP4 ( Pike_sp-1, Pike_sp-4 ))					\
+    assign_lvalue(Pike_sp-3,Pike_sp-1);				\
+    if(OP4 ( Pike_sp-1, Pike_sp-4 ))				\
     {								\
       pc+=EXTRACT_INT(pc);					\
       fast_check_threads_etc(8);				\
