@@ -447,7 +447,7 @@ static void f_insert_id(INT32 args)
   push_int(id);
 }
 
-/*! @decl string Pike_error()
+/*! @decl string error()
  *!
  *! Returns a string describing the last error from the Mysql-server.
  *!
