@@ -1314,14 +1314,14 @@ static struct pike_string *filter_bom(struct pike_string *data)
     for(i = 0; i<len; i++) {
       if (ptr[i] == 0xfeff) {
 	if (i != j) {
-	  string_builder_append(&buf, MKPCHARP(ptr + j, 1), i - j);
+	  string_builder_binary_strcat1 (&buf, ptr + j, i - j);
 	  j = i+1;
 	}
       }
     }
     if ((j) && (i != j)) {
       /* Add the trailing string */
-      string_builder_append(&buf, MKPCHARP(ptr + j, 1), i - j);
+      string_builder_binary_strcat1 (&buf, ptr + j, i - j);
       free_string(data);
       data = finish_string_builder(&buf);
     } else {
@@ -1334,14 +1334,14 @@ static struct pike_string *filter_bom(struct pike_string *data)
     for(i = 0; i<len; i++) {
       if (ptr[i] == 0xfeff) {
 	if (i != j) {
-	  string_builder_append(&buf, MKPCHARP(ptr + j, 2), i - j);
+	  string_builder_binary_strcat2 (&buf, ptr + j, i - j);
 	  j = i+1;
 	}
       }
     }
     if ((j) && (i != j)) {
       /* Add the trailing string */
-      string_builder_append(&buf, MKPCHARP(ptr + j, 2), i - j);
+      string_builder_binary_strcat2 (&buf, ptr + j, i - j);
       free_string(data);
       data = finish_string_builder(&buf);
     } else {
