@@ -41,7 +41,7 @@ static class RND {
 #if constant(Crypto.NT)
     ctx = Crypto.NT.CryptContext(0, 0, Crypto.NT.PROV_RSA_FULL,
 				 Crypto.NT.CRYPT_VERIFYCONTEXT );
-    seed( ctx->CryptGenRandom(entropy_needed) );
+    seed( ctx->read(entropy_needed) );
 #else
     if (dev_random) {
       if(no_block)
@@ -118,7 +118,7 @@ static class RND {
       if(!bytes_left) {
 #if constant(Crypto.NT)
 	// CryptGenRandom claims to be cryptographically strong.
-	update( ctx->CryptGenRandom(32), 0, 256 );
+	update( ctx->read(32), 0, 256 );
 #else
 	// Only trust 50% randomness.
 	update( f->read(64), 0, 256 );
