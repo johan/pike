@@ -1034,7 +1034,7 @@ static void image_layer_alpha(INT32 args)
 
 /*
 **! method object set_alpha_value(float value)
-**! method double alpha_value()
+**! method float alpha_value()
 **!	Set/get the general alpha value of this layer.
 **!	This is a float value between 0 and 1,
 **!	and is multiplied with the alpha channel.
