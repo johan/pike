@@ -1140,8 +1140,8 @@ PMOD_EXPORT void object_index_no_free(struct svalue *to,
 
 
 PMOD_EXPORT void object_low_set_index(struct object *o,
-			  int f,
-			  struct svalue *from)
+				      int f,
+				      struct svalue *from)
 {
   struct identifier *i;
   struct program *p = NULL;
@@ -1219,8 +1219,8 @@ PMOD_EXPORT void object_low_set_index(struct object *o,
 }
 
 PMOD_EXPORT void object_set_index2(struct object *o,
-		      struct svalue *index,
-		      struct svalue *from)
+				   struct svalue *index,
+				   struct svalue *from)
 {
   struct program *p;
   int f = -1;
@@ -1265,11 +1265,10 @@ PMOD_EXPORT void object_set_index2(struct object *o,
 }
 
 PMOD_EXPORT void object_set_index(struct object *o,
-		       struct svalue *index,
-		       struct svalue *from)
+				  struct svalue *index,
+				  struct svalue *from)
 {
   struct program *p = NULL;
-  int lfun;
 
   if(!o || !(p=o->prog))
   {
@@ -1277,16 +1276,20 @@ PMOD_EXPORT void object_set_index(struct object *o,
     return; /* make gcc happy */
   }
 
-  lfun=ARROW_INDEX_P(index) ? LFUN_ASSIGN_ARROW : LFUN_ASSIGN_INDEX;
+  if (index->type != T_LVALUE) {
+    int lfun=ARROW_INDEX_P(index) ? LFUN_ASSIGN_ARROW : LFUN_ASSIGN_INDEX;
 
-  if(FIND_LFUN(p,lfun) != -1)
-  {
-    push_svalue(index);
-    push_svalue(from);
-    apply_lfun(o,lfun,2);
-    pop_stack();
+    if(FIND_LFUN(p, lfun) != -1)
+    {
+      push_svalue(index);
+      push_svalue(from);
+      apply_lfun(o, lfun, 2);
+      pop_stack();
+    } else {
+      object_set_index2(o, index, from);
+    }
   } else {
-    object_set_index2(o,index,from);
+    object_low_set_index(o, index->u.integer, from);
   }
 }
 
