@@ -30,6 +30,7 @@ RCSID("$Id$");
 #include "mapping.h"
 #include "constants.h"
 #include "encode.h"
+#include "pike_types.h"
 
 #include "block_alloc.h"
 

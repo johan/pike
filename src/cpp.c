@@ -24,6 +24,7 @@
 #include "time.h"
 #include "stuff.h"
 #include "version.h"
+#include "pike_types.h"
 
 #include <ctype.h>
 

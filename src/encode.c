@@ -28,6 +28,7 @@
 #include "version.h"
 #include "bignum.h"
 #include "pikecode.h"
+#include "pike_types.h"
 
 RCSID("$Id$");
 
