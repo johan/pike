@@ -3361,6 +3361,14 @@ PMOD_EXPORT int add_constant(struct pike_string *name,
   int n;
   struct identifier dummy;
   struct reference ref;
+  struct svalue zero;
+
+  if (!c) {
+    zero.type = T_INT;
+    zero.subtype = 0;
+    zero.u.integer = 0;
+    c = &zero;
+  }
 
 #ifdef PROGRAM_BUILD_DEBUG
   {
