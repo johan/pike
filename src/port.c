@@ -403,7 +403,7 @@ PMOD_EXPORT void *MEMCHR(const void *p,char c,size_t e)
 
 
 #if !defined(HAVE_INDEX) && !defined(HAVE_STRCHR)
-PMOD_EXPORT char *STRCHR(char *s,char c)
+PMOD_EXPORT char *STRCHR(char *s,int c)
 {
   for(;*s;s++) if(*s==c) return s;
   return NULL;
