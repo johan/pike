@@ -126,9 +126,8 @@ struct encode_data
 #endif
 };
 
-/* Convert to/from forward reference ID. Ugly because of the
- * hysterical historical COUNTER_START value. */
-#define CONVERT_ENTRY_ID(ID) (-((ID) + COUNTER_START) - (COUNTER_START + 1))
+/* Convert to/from forward reference ID. */
+#define CONVERT_ENTRY_ID(ID) (-((ID) - COUNTER_START) - (-COUNTER_START + 1))
 
 static void encode_value2(struct svalue *val, struct encode_data *data, int force_encode);
 
