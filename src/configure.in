@@ -61,7 +61,8 @@ if test -f conftest_VPATH; then :; else
   AC_CACHE_VAL(pike_cv_make_supports_VPATH, [
     cat > conftestmake <<EOF
 VPATH=.:$srcdir
-conftest_VPATH.out: conftest_VPATH.in
+.SUFFIXES: .in .out
+.in.out:
 	cat "\$<" >"\$@"
 EOF
     pike_cv_make_supports_VPATH=no
