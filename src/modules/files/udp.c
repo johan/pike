@@ -165,6 +165,9 @@ static void udp_bind(INT32 args)
     error("UDP.bind: failed to create socket\n");
   }
 
+  /* Make sure this fd gets closed on exec. */
+  set_close_on_exec(fd, 1);
+
   o=1;
   if(fd_setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char *)&o, sizeof(int)) < 0)
   {
