@@ -1036,7 +1036,7 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
       return a->u.integer < b->u.integer;
       
     case T_STRING:
-      return my_strcmp(a->u.string, b->u.string) < 0;
+      return my_quick_strcmp(a->u.string, b->u.string) < 0;
       
     case T_FLOAT:
 #ifdef HAVE_ISLESS
