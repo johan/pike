@@ -928,8 +928,10 @@ void enable_history(object(History)|int hist)
 
 void destroy()
 {
-  destruct(input_controller);
-  destruct(output_controller);
+  if(input_controller)
+    destruct(input_controller);
+  if(output_controller)
+    destruct(output_controller);
 }
 
 void create(object|void infd, object|string|void interm,
