@@ -91,7 +91,8 @@ int main(int argc, array(string) argv)
 
   array(string) table = allocate(sizeof(ci));
 
-  foreach(ci; int i; array(int) info) {
+  for (int i = 0; i < sizeof (ci); i++) {
+    array(int) info = ci[i];
     if ((info[2] <= -0x8000) || (info[2] > 0x7fff)) {
       error("Case information out of range for shorts: %d\n", info[2]);
     }
