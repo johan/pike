@@ -1084,6 +1084,7 @@ magic_identifiers3:
   | TOK_SSCANF     { $$ = "sscanf"; }
   | TOK_SWITCH     { $$ = "switch"; }
   | TOK_TYPEOF     { $$ = "typeof"; }
+  | TOK_GLOBAL     { $$ = "global"; }
   ;
 
 magic_identifiers: magic_identifiers1 | magic_identifiers2 | magic_identifiers3 ;
