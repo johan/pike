@@ -64,13 +64,6 @@
 #endif
 
 /*
- * We want to use __builtin functions.
- */
-#ifndef __BUILTIN_VA_ARG_INCR
-#define __BUILTIN_VA_ARG_INCR	1
-#endif /* !__BUILTIN_VA_ARG_INCR */
-
-/*
  * Some structure forward declarations are needed.
  */
 
