@@ -10,6 +10,4 @@ AC_SUBST(CROSS)
 
 AC_C_CONST
 
-AC_CONFIG_SUBDIRS(rijndael)
-
 AC_OUTPUT(Makefile)
