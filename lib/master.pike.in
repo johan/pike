@@ -50,7 +50,7 @@ constant bt_max_string_len = BT_MAX_STRING_LEN;
 #endif /* OUT_OF_DATE_WARNING */
 constant out_of_date_warning = OUT_OF_DATE_WARNING;
 
-#ifdef __NT__
+#if defined(__NT__) || defined(__amigaos__)
 #define PATH_SEPARATOR ";"
 #else
 #define PATH_SEPARATOR ":"
