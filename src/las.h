@@ -38,6 +38,8 @@ struct local_variable
   struct pike_string *name;
   struct pike_string *type;
   node *def;
+  struct pike_string *file;
+  int line;
 };
 
 struct compiler_frame
@@ -48,6 +50,7 @@ struct compiler_frame
   struct pike_string *current_return_type;
   int current_number_of_locals;
   int max_number_of_locals;
+  int last_block_level; /* used to detect variables declared in same block */
   int num_args;
   int lexical_scope;
   int current_function_number;
