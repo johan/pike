@@ -31,6 +31,10 @@
 
 #include <errno.h>
 
+#ifdef HAVE_SYS_PARAM_H
+#include <sys/param.h>
+#endif /* HAVE_SYS_PARAM_H */
+
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif /* HAVE_SYS_TYPES_H */
@@ -99,6 +103,17 @@
 
 #undef THIS
 #define THIS	((struct pike_sendfile *)(fp->current_storage))
+
+/*
+ * Kludge for broken FreeBSD 4.0.16
+ */
+#ifdef HAVE_FREEBSD_SENDFILE
+#ifdef __FreeBSD_version
+#if __FreeBSD_version <= 400016
+#undef HAVE_FREEBSD_SENDFILE
+#endif /* __FreeBSD_version <= 400016 */
+#endif /* __FreeBSD_version */
+#endif /* HAVE_FREEBSD_SENDFILE */
 
 /*
  * Globals
