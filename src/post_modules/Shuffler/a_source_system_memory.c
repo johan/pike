@@ -33,7 +33,7 @@ struct sm_source
 
 static struct data get_data( struct source *_s, int len )
 {
-  struct sm_source *s = (struct sm_source *)s;
+  struct sm_source *s = (struct sm_source *)_s;
   struct data res;
   
   res.do_free = 0;
