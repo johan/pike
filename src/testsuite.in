@@ -126,6 +126,16 @@ test_any([[
   return 0;
 ]], 0)
 
+test_compile_any([[
+  void foo() 
+  {
+    Stdio.File bar(int x, int y)
+    { 
+      return 0;
+    }; 
+  } 
+]])
+
 
 dnl FIXME: Add test that local and local:: in combination
 dnl        with recursion works correctly.
