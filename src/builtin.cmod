@@ -2483,7 +2483,7 @@ PIKECLASS bootstring
    *! @param skew
    *!   The skew term for the bias adapation.  Must be >= 1.
    *! @param damp
-   *!   The damping factor for the bias adaption.  Bust be >= 2.
+   *!   The damping factor for the bias adaption.  Must be >= 2.
    *! @param initial_bias
    *!   The initial bias for the variable-length integer thresholding.
    *!   initial_bias % base must be <= base - tmin.
