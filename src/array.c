@@ -382,8 +382,8 @@ PMOD_EXPORT struct array *array_insert(struct array *v,struct svalue *s,INT32 in
   }else{
     struct array *ret;
 
-    ret = array_set_flag(allocate_array_no_init(v->size+1, (v->size >> 3) + 1),
-			 v->flags);
+    ret = array_set_flags(allocate_array_no_init(v->size+1, (v->size >> 3) + 1),
+			  v->flags);
     ret->type_field = v->type_field;
 
     MEMCPY(ITEM(ret), ITEM(v), sizeof(struct svalue) * index);
@@ -2123,7 +2123,7 @@ PMOD_EXPORT struct array *copy_array_recursively(struct array *a,
 
   if (!a->size) {
     add_ref(&empty_array);
-    return array_set_flag(&empty_array, a->flags & ~ARRAY_LVALUE);
+    return array_set_flags(&empty_array, a->flags & ~ARRAY_LVALUE);
   }
 
   ret=allocate_array_no_init(a->size,0);
