@@ -1162,6 +1162,7 @@ fi
 ########################################################################
 
 if test x$with_threads = xyes ; then
+  AC_DEFINE(PIKE_THREADS)
   OLDLIBS="$LIBS"
   OLDCFLAGS="$CFLAGS"
 

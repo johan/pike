@@ -212,6 +212,7 @@
 #undef USHRT_MAX
 
 /* Define these if you are going to use threads */
+#undef PIKE_THREADS
 #undef _REENTRANT
 #undef _THREAD_SAFE
 

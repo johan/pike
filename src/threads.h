@@ -12,7 +12,7 @@
 /* Needed for pthread_t on OSF/1 */
 #include <sys/types.h>
 #endif /* HAVE_SYS_TYPES_H */
-#ifdef _REENTRANT
+#ifdef PIKE_THREADS
 
 /*
  * Decide which type of threads to use
@@ -603,7 +603,7 @@ void th_farm(void (*fun)(void *), void *here);
 #define init_threads_disable(X)
 #define exit_threads_disable(X)
 
-#endif /* _REENTRANT */
+#endif /* PIKE_THREADS */
 
 #ifdef __NT__
 #ifndef PIKE_DEBUG
