@@ -19,6 +19,8 @@ else
   localdir=`echo $0 | sed 's@[^/]*$@@g'`
   if test "x$localdir" = "x"; then
     localdir=`pwd`
+  else
+    localdir=`cd $localdir;pwd`
   fi
 fi
 
