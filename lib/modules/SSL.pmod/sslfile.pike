@@ -40,7 +40,9 @@ void die(int status)
   }
   is_closed = 1;
   if (socket) {
-    socket->close();
+    catch( socket->close() );
+    if(close_callback)
+      close_callback(socket->query_id());
   }
 }
 
