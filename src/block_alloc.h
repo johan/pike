@@ -519,10 +519,10 @@ void PIKE_CONCAT3(exit_,DATA,_hash)(void)				     \
 }
 
 #define PTR_HASH_ALLOC_FIXED(DATA,BSIZE)				     \
-struct DATA *PIKE_CONCAT3(make_,DATA,_unlocked)(void *ptr, size_t hval);     \
+struct DATA *PIKE_CONCAT3(make_,DATA,_unlocked)(void *ptr, PIKE_HASH_T hval);\
 LOW_PTR_HASH_ALLOC(DATA,BSIZE)                                               \
 									     \
-struct DATA *PIKE_CONCAT3(make_,DATA,_unlocked)(void *ptr, size_t hval)	     \
+struct DATA *PIKE_CONCAT3(make_,DATA,_unlocked)(void *ptr, PIKE_HASH_T hval) \
 {									     \
   struct DATA *p;							     \
 									     \
