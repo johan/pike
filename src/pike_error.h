@@ -195,13 +195,13 @@ PMOD_EXPORT void DECLSPEC(noreturn) generic_error(
   char *func,
   struct svalue *base_sp,  int args,
   char *desc, ...) ATTRIBUTE((noreturn,format (printf, 4, 5)));
-PMOD_EXPORT void DECLSPEC(noreturn) index_error(
+PMOD_EXPORT DECLSPEC(noreturn) void index_error(
   char *func,
   struct svalue *base_sp,  int args,
   struct svalue *val,
   struct svalue *ind,
   char *desc, ...) ATTRIBUTE((noreturn,format (printf, 6, 7)));
-PMOD_EXPORT void DECLSPEC(noreturn) bad_arg_error(
+PMOD_EXPORT DECLSPEC(noreturn) void bad_arg_error(
   char *func,
   struct svalue *base_sp,  int args,
   int which_arg,
