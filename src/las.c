@@ -719,7 +719,7 @@ node *mkidentifiernode(int i)
   res->tree_info=res->node_info;
 
 #ifdef __CHECKER__
-  CDR(res) = 0;
+  _CDR(res) = 0;
 #endif
   res->u.id.number = i;
 #ifdef SHARED_NODES
