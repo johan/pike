@@ -263,7 +263,7 @@ fi
 
         ], [
           void (*foo__)() = (void (*)())&$1;
-        ], [$AC_CV_NAME="yes"], [$AC_CV_NAME="no"])
+        ], [AC_CV_NAME="yes"], [AC_CV_NAME="no"])
       ])
       if test "$AC_CV_NAME" = "yes"; then
         AC_DEFINE(translit(HAVE_$1,[a-z],[A-Z]))
