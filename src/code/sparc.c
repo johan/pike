@@ -450,8 +450,13 @@ void sparc_escape_catch(void)
   SPARC_FLUSH_UNSTORED();
   /* rd %pc, %i0 */
   SPARC_RD(SPARC_REG_I0, SPARC_RD_REG_PC);
+#if 0
   /* add %i0, 20, %i0 */
   SPARC_ADD(SPARC_REG_I0, SPARC_REG_I0, 20, 1);
+#else /* !0 */
+  /* add %i0, 24, %i0 */
+  SPARC_ADD(SPARC_REG_I0, SPARC_REG_I0, 24, 1);
+#endif /* 0 */
   /* stw %i0, [ %pike_fp, %offset(pike_frame, pc) ] */
   SPARC_STW(SPARC_REG_I0, SPARC_REG_PIKE_FP,
 	    OFFSETOF(pike_frame, pc), 1);
