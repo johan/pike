@@ -725,6 +725,9 @@ int file_size(string s)
   return stat[1]; 
 }
 
+// Warning: This does not work on NT
+// (Consider paths like: k:/fnord)
+// -Hubbe
 string append_path(string p, string ... v)
 {
   return combine_path(p, @map(v, lambda(string s)
