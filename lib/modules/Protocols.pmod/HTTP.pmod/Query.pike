@@ -148,8 +148,8 @@ static void connect(string server,int port,int blocking)
 #ifdef HTTP_QUERY_DEBUG
      werror("<- (connect error)\n");
 #endif
-     catch (con->set_blocking()); // Only to remove callbacks to avoid cycles.
-     catch (con->close());
+     //con->set_blocking(); // Only to remove callbacks to avoid cycles.
+     con->close();
      //destruct(con);
      con = 0;
      ok = 0;
@@ -257,8 +257,8 @@ static void async_timeout()
    errno=110; // timeout
    if (con)
    {
-      catch (con->set_blocking()); // Only to remove callbacks to avoid cycles.
-      catch { con->close(); };
+      //con->set_blocking(); // Only to remove callbacks to avoid cycles.
+      con->close();
       //destruct(con);
    }
    con=0;
@@ -270,9 +270,11 @@ void async_got_host(string server,int port)
    if (!server)
    {
       async_failed();
-      catch (con->set_blocking()); // Only to remove callbacks to avoid cycles.
-      catch (con->close());	//  we may be destructed here
-      //catch { destruct(con); };
+      if (con) {
+	//con->set_blocking(); // Only to remove callbacks to avoid cycles.
+	con->close();	//  we may be destructed here
+	//catch { destruct(con); };
+      }
       return;
    }
 
@@ -331,10 +333,12 @@ void async_fetch_close()
 #ifdef HTTP_QUERY_DEBUG
    werror("-> close\n");
 #endif
-   con->set_blocking();
-   catch (con->close());
-   //destruct(con);
-   con=0;
+   if (con) {
+     //con->set_blocking();
+     con->close();
+     //destruct(con);
+     con=0;
+   }
    if (request_ok) (request_ok)(@extra_args);
 }
 
