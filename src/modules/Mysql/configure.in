@@ -365,7 +365,7 @@ $ret_type * STDCALL mysql_fetch_lengths(MYSQL_RES *mysql)
     AC_CHECK_FUNCS(ldiv open sopen close read fileno puts fgets)
 
   fi
-fi
+ fi
 else
   AC_DEFINE(HAVE_MYSQL)
   # MySQL 4.x or newer
