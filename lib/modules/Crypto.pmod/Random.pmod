@@ -4,7 +4,7 @@
 //! This module contains stuff to that tries to give you the
 //! best possible random generation.
 
-#if constant(Nettle)
+#if constant(Nettle.Yarrow)
 
 static class RND {
   inherit Nettle.Yarrow;
