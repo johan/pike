@@ -6,7 +6,7 @@
 
 #pike __REAL_VERSION__
 
-#if constant(@module@.parse_rc)
+#if constant(@module@.Widget)
 
 string unsillycaps(string what)
 {
