@@ -288,6 +288,12 @@ static void pike_mysql_reconnect(void)
 	  "%s\n",
 	  mysql_error(&PIKE_MYSQL->mysql));
   }
+
+  if (socket->net.fd >= 0) {
+    /* Make sure the fd gets closed on exec. */
+    set_close_on_exec(socket->net.fd, 1);
+  }
+
   if (database) {
     int tmp;
 
