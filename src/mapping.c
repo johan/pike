@@ -565,6 +565,27 @@ struct array *mapping_values(struct mapping *m)
   return a;
 }
 
+struct array *mapping_to_array(struct mapping *m)
+{
+  INT32 e;
+  struct keypair *k;
+  struct array *a;
+  struct svalue *s;
+  a=allocate_array(m->size);
+  s=ITEM(a);
+  LOOP(m)
+    {
+      struct array *b=allocate_array(2);
+      assign_svalue(b->item+0, & k->ind);
+      assign_svalue(b->item+1, & k->val);
+      s->u.array=b;
+      s->type=T_ARRAY;
+    }
+  a->type_field = BIT_ARRAY;
+
+  return a;
+}
+
 void mapping_replace(struct mapping *m,struct svalue *from, struct svalue *to)
 {
   INT32 e;

@@ -331,6 +331,13 @@ void do_exit(int num) ATTRIBUTE((noreturn))
 
   exit_modules();
 
+#ifdef DEBUG_MALLOC
+  {
+    extern cleanup_memhdrs(void);
+    cleanup_memhdrs();
+  }
+#endif
+
   exit(num);
 }
 
@@ -379,6 +386,7 @@ void low_exit_main(void)
   if(verbose_debug_exit)
   {
     INT32 num,size,recount=0;
+    fprintf(stderr,"Exited normally, counting bytes.\n");
 
     count_memory_in_arrays(&num, &size);
     if(num)
