@@ -711,6 +711,10 @@ F_FOREACH(F_VAL_LVAL(0, *), -):
   F_POP_VALUE($0, -);
 
 
+// forech(arr ; ; val) body; -> foreach(arr, val) body;
+F_FOREACH(F_VAL_LVAL(0[ $$->type == array_type_string ], ':'(-,1) ), 2):
+  F_FOREACH(F_VAL_LVAL($0, $1), $2);
+
 F_FOR(-, *):
   -;
 
