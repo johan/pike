@@ -1936,7 +1936,7 @@ AC_SUBST(EXTRA_OBJS)
 AC_SUBST(RANLIB)
 AC_SUBST(DEBUGDEF)
 
-if test x$ac_cv_func_dlopen$ac_cv_func_dld_link = xnono ; then
+if test x$pike_cv_func_dlopen$ac_cv_func_dld_link = xnono ; then
   with_dynamic_modules=no
 fi
 
