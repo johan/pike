@@ -972,7 +972,7 @@ static mixed _charset_mod;
  */
 string decode_charset(string data, string charset)
 {
-  werror(sprintf("decode_charset(%O, %O)\n", data, charset));
+  // werror(sprintf("decode_charset(%O, %O)\n", data, charset));
 
   if (!_charset_mod) {
     mixed mod = resolv("Locale");
