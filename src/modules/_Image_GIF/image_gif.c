@@ -2492,10 +2492,10 @@ static void image_gif_lzw_encode(INT32 args)
    image_gif_lzw_init(&lzw,8);
    if (lzw.broken) Pike_error("out of memory\n");
 
-   if (args>=2 && !IS_ZERO(sp+1-args))
+   if (args>=2 && !UNSAFE_IS_ZERO(sp+1-args))
       lzw.earlychange=1;
 
-   if (args>=3 && !IS_ZERO(sp+2-args))
+   if (args>=3 && !UNSAFE_IS_ZERO(sp+2-args))
       lzw.reversebits=1;
    
    image_gif_lzw_add(&lzw,
@@ -2530,9 +2530,9 @@ static void image_gif_lzw_decode(INT32 args)
    s=(unsigned char*)sp[-args].u.string->str;
    len = (ptrdiff_t)sp[-args].u.string->len;
 
-   if (args>=2 && !IS_ZERO(sp+1-args))
+   if (args>=2 && !UNSAFE_IS_ZERO(sp+1-args))
       earlychange=1;
-   if (args>=3 && !IS_ZERO(sp+2-args))
+   if (args>=3 && !UNSAFE_IS_ZERO(sp+2-args))
       reversebits=1;
 
    if (len<1)

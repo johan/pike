@@ -648,31 +648,31 @@ static void stat_index_set (INT32 args)
 
       case STAT_ISREG:
 	THIS_STAT->s.st_mode &= ~S_IFMT;
-	if (!IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFREG;
+	if (!UNSAFE_IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFREG;
 	break;
       case STAT_ISDIR:
 	THIS_STAT->s.st_mode &= ~S_IFMT;
-	if (!IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFDIR;
+	if (!UNSAFE_IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFDIR;
 	break;
       case STAT_ISLNK:
 	THIS_STAT->s.st_mode &= ~S_IFMT;
-	if (!IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFLNK;
+	if (!UNSAFE_IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFLNK;
 	break;
       case STAT_ISCHR:
 	THIS_STAT->s.st_mode &= ~S_IFMT;
-	if (!IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFCHR;
+	if (!UNSAFE_IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFCHR;
 	break;
       case STAT_ISBLK:
 	THIS_STAT->s.st_mode &= ~S_IFMT;
-	if (!IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFBLK;
+	if (!UNSAFE_IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFBLK;
 	break;
       case STAT_ISFIFO:
 	THIS_STAT->s.st_mode &= ~S_IFMT;
-	if (!IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFIFO;
+	if (!UNSAFE_IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFIFO;
 	break;
       case STAT_ISSOCK:
 	THIS_STAT->s.st_mode &= ~S_IFMT;
-	if (!IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFSOCK;
+	if (!UNSAFE_IS_ZERO (sp-1)) THIS_STAT->s.st_mode |= S_IFSOCK;
 	break;
 
       default:

@@ -258,7 +258,6 @@ PIKECLASS multiset_iterator
   CVAR struct multiset *l;
   CVAR int lock_index;
   CVAR int prestepped; /* Ugly special flag to work correctly in foreach_iterate. */
-
   CVAR ptrdiff_t nodepos;
 
   PIKEFUN int value()
@@ -1678,7 +1677,7 @@ int foreach_iterate(struct object *o)
 
   /* Generic iteration */
   apply_lfun(o,LFUN_NOT,0);
-  if(IS_ZERO(Pike_sp-1))
+  if(UNSAFE_IS_ZERO(Pike_sp-1))
   {
     if(Pike_sp[-4].type != T_INT)
     {

@@ -979,7 +979,7 @@ INLINE static int do_one(struct format_stack *fs,
                 GET_SVALUE(sv);                                               \
 		break;							      \
 	      }								      \
-              if(!IS_ZERO(sp-1))					      \
+	      if(!SAFE_IS_ZERO(sp-1))					      \
 	      {								      \
 		 sprintf_error(fs,"argument %d (object) returned "	      \
 			       "illegal value from _sprintf()\n",argument+1); \

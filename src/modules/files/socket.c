@@ -170,7 +170,7 @@ static void port_listen_fd(INT32 args)
   {
     assign_svalue(& THIS->accept_callback, Pike_sp+1-args);
     set_nonblocking(fd,1);
-    if(!IS_ZERO(& THIS->accept_callback))
+    if(!SAFE_IS_ZERO(& THIS->accept_callback))
     {
       add_ref(Pike_fp->current_object);
       THIS->xref++;
@@ -251,7 +251,7 @@ static void port_bind(INT32 args)
   if(args > 1)
   {
     assign_svalue(& THIS->accept_callback, Pike_sp+1-args);
-    if(!IS_ZERO(& THIS->accept_callback))
+    if(!SAFE_IS_ZERO(& THIS->accept_callback))
     {
       add_ref(Pike_fp->current_object);
       THIS->xref++;
@@ -291,7 +291,7 @@ static void port_create(INT32 args)
 	if(args > 1)
 	{
 	  assign_svalue(& THIS->accept_callback, Pike_sp+1-args);
-	  if(!IS_ZERO(& THIS->accept_callback))
+	  if(!SAFE_IS_ZERO(& THIS->accept_callback))
 	  {
 	    add_ref(Pike_fp->current_object);
 	    THIS->xref++;

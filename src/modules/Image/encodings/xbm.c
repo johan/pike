@@ -271,7 +271,7 @@ static void image_xbm__decode( INT32 args )
     push_svalue(Pike_sp+1-args);
     ref_push_string(param_fg); 
     f_index(2);
-    if(!IS_ZERO(Pike_sp-1))
+    if(!UNSAFE_IS_ZERO(Pike_sp-1))
     {
       if(Pike_sp[-1].type != PIKE_T_ARRAY || Pike_sp[-1].u.array->size != 3)
         Pike_error("Wrong type for foreground. Should be array(int(0..255))"
@@ -289,7 +289,7 @@ static void image_xbm__decode( INT32 args )
     push_svalue(Pike_sp+1-args);
     ref_push_string(param_bg);
     f_index(2);
-    if(!IS_ZERO(Pike_sp-1))
+    if(!UNSAFE_IS_ZERO(Pike_sp-1))
     {
       if(Pike_sp[-1].type != PIKE_T_ARRAY || Pike_sp[-1].u.array->size != 3)
         Pike_error("Wrong type for background. Should be array(int(0..255))"
@@ -307,7 +307,7 @@ static void image_xbm__decode( INT32 args )
     push_svalue(Pike_sp+1-args);
     ref_push_string(param_invert);
     f_index(2);
-    invert = !IS_ZERO(Pike_sp-1);
+    invert = !UNSAFE_IS_ZERO(Pike_sp-1);
     Pike_sp--;
   }
 

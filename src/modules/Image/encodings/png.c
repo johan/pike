@@ -1450,7 +1450,7 @@ static void image_png_encode(INT32 args)
       push_svalue(sp+1-args);
       ref_push_string(param_alpha);
       f_index(2);
-      if ( !IS_ZERO( sp - 1 ) )
+      if ( !UNSAFE_IS_ZERO( sp - 1 ) )
 	 if (sp[-1].type!=T_OBJECT ||
 	     !(alpha=(struct image*)
 	       get_storage(sp[-1].u.object,image_program)))

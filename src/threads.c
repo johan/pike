@@ -1241,7 +1241,7 @@ void f_cond_wait(INT32 args)
 
   c=THIS_COND;
 
-  if((args > 0) && !IS_ZERO(Pike_sp-1))
+  if((args > 0) && !UNSAFE_IS_ZERO(Pike_sp-1))
   {
     struct object *key;
     struct mutex_storage *mut;

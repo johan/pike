@@ -215,10 +215,10 @@ void f_file_stat(INT32 args)
   if(sp[-args].type != T_STRING)
     Pike_error("Bad argument 1 to file_stat()\n");
 
-  VALID_FILE_IO("file_stat","read");
-
   str = sp[-args].u.string;
-  l = (args>1 && !IS_ZERO(sp+1-args))?1:0;
+  l = (args>1 && !UNSAFE_IS_ZERO(sp+1-args))?1:0;
+
+  VALID_FILE_IO("file_stat","read");
 
   if (strlen(str->str) != (size_t)str->len) {
     /* Filenames with NUL are not supported. */

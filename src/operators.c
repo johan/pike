@@ -2860,7 +2860,7 @@ PMOD_EXPORT void o_not(void)
 
   case T_FUNCTION:
   case T_OBJECT:
-    if(IS_ZERO(sp-1))
+    if(UNSAFE_IS_ZERO(sp-1))
     {
       pop_stack();
       push_int(1);

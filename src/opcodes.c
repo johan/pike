@@ -169,7 +169,7 @@ void o_cast_to_int(void)
 	  MAKE_CONSTANT_SHARED_STRING(s, "int");
 	  push_string(s);
 	  apply_low(sp[-2].u.object, f, 1);
-	  f=!IS_ZERO(sp-1);
+	  f=!UNSAFE_IS_ZERO(sp-1);
 	  pop_stack();
 	  if(f) return;
 	}
@@ -279,7 +279,7 @@ void o_cast_to_string(void)
 	  MAKE_CONSTANT_SHARED_STRING(s, "string");
 	  push_string(s);
 	  apply_low(sp[-2].u.object, f, 1);
-	  f=!IS_ZERO(sp-1);
+	  f=!UNSAFE_IS_ZERO(sp-1);
 	  pop_stack();
 	  if(f) return;
 	}
@@ -588,7 +588,7 @@ void o_cast(struct pike_type *type, INT32 run_time_type)
       {
 	push_text(get_name_of_type(run_time_type));
 	apply_low(sp[-2].u.object, f, 1);
-	f=!IS_ZERO(sp-1);
+	f=!UNSAFE_IS_ZERO(sp-1);
 	pop_stack();
 	if(f) goto emulated_type_ok;
       }

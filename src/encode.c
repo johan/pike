@@ -2006,7 +2006,7 @@ static void decode_value2(struct decode_data *data)
 	  break;
 
 	case 1:
-	  if(IS_ZERO(Pike_sp-1))
+	  if(UNSAFE_IS_ZERO(Pike_sp-1))
 	  {
 	    EDB(1,fprintf(stderr, "%*sDecoded a failed object to <%d>: ",
 			data->depth, "", tmp.u.integer);

@@ -566,7 +566,7 @@ void exit_udp(struct object *ignored)
 
 static void udp_read_callback( int fd, void *data )
 {
-  if(IS_ZERO(&THIS_DATA->read_callback))
+  if(UNSAFE_IS_ZERO(&THIS_DATA->read_callback))
     set_read_callback(THIS_DATA->fd, 0, 0);
   else
     apply_svalue(& THIS_DATA->read_callback, 0);
@@ -582,12 +582,12 @@ static void udp_set_read_callback(INT32 args)
   if(args != 1)
     Pike_error("Wrong number of arguments to file->set_read_callback().\n");
   
-  if(IS_ZERO(& THIS->read_callback))
+  if(UNSAFE_IS_ZERO(& THIS->read_callback))
     assign_svalue(& THIS->read_callback, Pike_sp-1);
   else
     assign_svalue_no_free(& THIS->read_callback, Pike_sp-1);
 
-  if(IS_ZERO(& THIS->read_callback))
+  if(UNSAFE_IS_ZERO(& THIS->read_callback))
     set_read_callback(FD, 0, 0);
   else
     set_read_callback(FD, udp_read_callback, THIS);
