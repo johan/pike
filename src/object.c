@@ -470,15 +470,8 @@ void object_index_no_free2(struct svalue *to,
   {
   case T_STRING:
     f=find_shared_string_identifier(index->u.string, p);
-    free_string(index->u.string);
-    index->type=T_LVALUE;
-    index->u.integer=f;
     break;
-    
-  case T_LVALUE:
-    f=index->u.integer;
-    break;
-      
+
   default:
     error("Lookup on non-string value.\n");
   }
@@ -574,13 +567,6 @@ void object_set_index2(struct object *o,
     f=find_shared_string_identifier(index->u.string, p);
     if(f<0)
       error("No such variable (%s) in object.\n", index->u.string->str);
-    free_string(index->u.string);
-    index->type=T_LVALUE;
-    index->u.integer=f;
-    break;
-
-  case T_LVALUE:
-    f=index->u.integer;
     break;
 
   default:
@@ -676,13 +662,6 @@ union anything *object_get_item_ptr(struct object *o,
   {
   case T_STRING:
     f=find_shared_string_identifier(index->u.string, p);
-    free_string(index->u.string);
-    index->type=T_LVALUE;
-    index->u.integer=f;
-    break;
-
-  case T_LVALUE:
-    f=index->u.integer;
     break;
 
   default:
