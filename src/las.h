@@ -86,7 +86,7 @@ node *mkexternalnode(int level,
 node *mkcastnode(struct pike_string *type,node *n);
 void resolv_constant(node *n);
 void resolv_program(node *n);
-node *index_node(node *n, struct pike_string * id);
+node *index_node(node *n, char *node_name, struct pike_string * id);
 int node_is_eq(node *a,node *b);
 node *mkconstantsvaluenode(struct svalue *s);
 node *mkliteralsvaluenode(struct svalue *s);
