@@ -176,9 +176,9 @@ void img_pnm_decode(INT32 args)
 
    nx=x;
 
-   if (type=='6' && maxval==255) type='+';
-
-   while (n--)
+   if (type=='6' && maxval==255 && sizeof(rgb_group)==3)  /* optimize */
+      MEMCPY(d,s->str+pos,MINIMUM(n*3,s->len-pos));
+   else while (n--)
    {
       switch (type)
       {
@@ -214,11 +214,6 @@ void img_pnm_decode(INT32 args)
 	    d->r=(unsigned char)((((INT32)getnext(s,&pos))*255L)/maxval);
 	    d->g=(unsigned char)((((INT32)getnext(s,&pos))*255L)/maxval);
 	    d->b=(unsigned char)((((INT32)getnext(s,&pos))*255L)/maxval);
-	    break;
-	 case '+': /* optimized P6 */
-	    d->r=getnext(s,&pos);
-	    d->g=getnext(s,&pos);
-	    d->b=getnext(s,&pos);
 	    break;
       }
       d++;
