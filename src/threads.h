@@ -274,6 +274,7 @@ struct thread_state {
   COND_T status_change;
   THREAD_T id;
   struct thread_state *hashlink, **backlink;
+  struct mapping *thread_local;
 
   /* Swapped variables */
   struct svalue *sp,*evaluator_stack;
