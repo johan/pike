@@ -704,7 +704,23 @@ int dbm_main(int argc, char **argv)
     {
       num=throw_value.u.integer;
     }else{
-      if (get_master()) call_handle_error();
+      if (throw_value.type == T_OBJECT &&
+	  throw_value.u.object->prog == master_load_error_program &&
+	  !get_master()) {
+	/* Report this specific error in a nice way. Since there's no
+	 * master it'd be reported with a raw error dump otherwise. */
+	struct generic_error_struct *err;
+	*(Pike_sp++) = throw_value;
+	dmalloc_touch_svalue(Pike_sp-1);
+	throw_value.type=T_INT;
+	err = (struct generic_error_struct *)
+	  get_storage (Pike_sp[-1].u.object, generic_error_program);
+	push_string (err->desc);
+	f_werror (1);
+	pop_stack();
+      }
+      else
+	call_handle_error();
       num=10;
     }
   }else{

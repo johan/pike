@@ -124,6 +124,8 @@ DECLARE_ERROR(cpp, ERR_INHERIT(generic), EMPTY)
 
 DECLARE_ERROR(compilation, ERR_INHERIT(generic), EMPTY)
 
+DECLARE_ERROR(master_load, ERR_INHERIT (generic), EMPTY)
+
 #undef DECLARE_ERROR
 #undef ERR_INHERIT
 #undef ERR_VAR
