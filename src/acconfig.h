@@ -389,6 +389,9 @@
 /* Define if you have the <sys/resource.h> header file.  */
 #undef HAVE_SYS_RESOURCE_H
 
+/* Define if you want to enable use of the struct pike_type (EXPERIMENTAL) */
+#undef USE_PIKE_TYPE
+
 @BOTTOM@
 
 /* NT stuff */
