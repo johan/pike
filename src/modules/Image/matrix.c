@@ -333,6 +333,7 @@ void image_scale(INT32 args)
 
    if (args==1 && sp[-args].type==T_INT)
    {
+      free_object(o);
       image_bitscale( args );
       return;
    }
@@ -344,6 +345,7 @@ void image_scale(INT32 args)
       {
          if( floor( sp[-args].u.float_number ) == sp[-args].u.float_number)
          {
+	    free_object(o);
             image_bitscale( args );
             return;
          }
