@@ -19,8 +19,6 @@ PMOD_EXPORT struct callback *add_exit_callback(callback_func call,
 				   callback_func free_func);
 int main(int argc, char **argv);
 DECLSPEC(noreturn) void pike_do_exit(int num) ATTRIBUTE((noreturn));
-void exit_main(void);
-void init_main(void);
 /* Prototypes end here */
 
 #endif /* !MAIN_H */

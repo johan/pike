@@ -57,4 +57,7 @@ PMOD_EXPORT struct callback *add_exit_callback(callback_func call,
 					       callback_func free_func);
 DECLSPEC(noreturn) void pike_do_exit(int num) ATTRIBUTE((noreturn));
 
+void pike_push_argv(int argc, char **argv);
+void pike_push_env(void);
+
 #endif /* PIKE_EMBED_H */
