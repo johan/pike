@@ -21,6 +21,7 @@ struct frame
   unsigned char *pc;
   struct frame *parent_frame;
   struct svalue *locals;
+  struct svalue *expendible;
   INT32 args;
   struct object *current_object;
   struct inherit context;
