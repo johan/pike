@@ -51,10 +51,12 @@ PMOD_EXPORT size_t thread_stack_size=256 * 1204;
 #include "pike_threadlib.h"
 #endif	/* !CONFIGURE_TEST */
 
-PMOD_EXPORT void thread_low_error (int errcode, const char *fname, int lineno)
+PMOD_EXPORT void thread_low_error (int errcode, const char *cmd,
+				   const char *fname, int lineno)
 {
-  Pike_fatal ("%s:%d: Unexpected error from thread function: %d\n",
-	      fname, lineno, errcode);
+  Pike_fatal ("%s:%d: %s\n"
+	      "Unexpected error from thread function: %d\n",
+	      fname, lineno, cmd, errcode);
 }
 
 /* SCO magic... */
