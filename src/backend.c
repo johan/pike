@@ -27,8 +27,12 @@ RCSID("$Id$");
 
 #ifdef HAVE_SYS_SELECT_H
 #include <sys/select.h>
+#else
+/* BeOS socket (select etc) stuff */
+#ifdef HAVE_NET_SOCKET_H
+#include <net/socket.h>
 #endif
-
+#endif
 #include <sys/stat.h>
 
 #define SELECT_READ 1
