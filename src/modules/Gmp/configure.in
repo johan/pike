@@ -8,10 +8,7 @@ AC_MODULE_INIT()
 
 # Check if we're cross-compiling.
 
-CROSS=""
-if test "$ac_cv_prog_cc_cross" = "yes"; then
-  CROSS=".pike"
-else :; fi
+CROSS="$ac_cv_prog_cc_cross"
 AC_SUBST(CROSS)
 
 #############################################################################
