@@ -1034,7 +1034,7 @@ struct program *end_first_pass(int finish)
     id=low_reference_inherited_identifier(0, e, s, SEE_STATIC);
     if(id!=-1)
     {
-      init_node=mknode(F_ARG_LIST,
+      init_node=mknode(F_COMMA_EXPR,
 		       mkcastnode(void_type_string,
 				  mkapplynode(mkidentifiernode(id),0)),
 		       init_node);
@@ -1050,7 +1050,7 @@ struct program *end_first_pass(int finish)
   {
     union idptr tmp;
     e=dooptcode(s,
-		mknode(F_ARG_LIST,
+		mknode(F_COMMA_EXPR,
 		       init_node,mknode(F_RETURN,mkintnode(0),0)),
 		function_type_string,
 		ID_STATIC);
