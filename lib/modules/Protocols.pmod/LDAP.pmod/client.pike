@@ -556,8 +556,7 @@ static function(string:string) get_attr_encoder (string attr)
 
     if(lauth->scope)
       set_scope(lauth->scope);
-    if(lauth->basedn)
-      set_basedn(lauth->basedn);
+    set_basedn(lauth->basedn);
 
   } // create
 #endif
@@ -2029,6 +2028,8 @@ mapping(string:mixed) get_parsed_url() {return lauth;}
       case 2: if (sizeof(ar[1])) res->attributes =
 				   map (ar[1] / ",", _Roxen.http_decode_string);
       case 1: res->basedn = _Roxen.http_decode_string (ar[0]);
+	break;
+      default: res->basedn = "";
     }
 
     return res;
