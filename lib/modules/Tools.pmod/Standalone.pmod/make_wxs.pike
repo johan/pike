@@ -9,12 +9,13 @@
 
 int main(int argc, array(string) argv)
 {
-  string base_guid = Standards.UUID.new_string();
+  string base_guid = Standards.UUID.make_version(-1)->str();
   string version_str = "1.0";
   string id;
   string descr;
   string manufacturer;
   string comments;
+  string service;
 
   foreach(Getopt.find_all_options(argv, ({
     ({"--guid", Getopt.HAS_ARG, ({"-g", "--guid"})}),
@@ -23,6 +24,7 @@ int main(int argc, array(string) argv)
     ({"--description", Getopt.HAS_ARG, ({"-d", "--descr", "--description"})}),
     ({"--manufacturer", Getopt.HAS_ARG, ({"-m", "--manufacturer"})}),
     ({"--comments", Getopt.HAS_ARG, ({"-c", "--comment", "--comments"})}),
+    ({"--service", Getopt.HAS_ARG, ({"-s", "--service"})}),
   })), array(string) opt) {
     switch(opt[0]) {
     case "--guid":
@@ -48,6 +50,9 @@ int main(int argc, array(string) argv)
     case "--comments":
       comments = opt[1];
       break;
+    case "--service":
+      service = opt[1];
+      break;
     }
   }
 
@@ -65,8 +70,11 @@ int main(int argc, array(string) argv)
 				Standards.UUID.UUID(version_guid)->encode(),
 				"TARGETDIR");
 
+  string last_file;
+
   foreach(argv[1..], string src) {
     src = replace(src, "\\", "/");
+    src = replace(src, "\"", "");	// FIXME: Remove junk
     array(string) seg;
     string dest;
     if (sizeof(seg = (src/":")) > 1) {
@@ -83,6 +91,7 @@ int main(int argc, array(string) argv)
       root->recurse_install_directory(dest||".", src);
     } else {
       root->install_file(dest||((src/"/")[-1]), src);
+      last_file = dest;
     }
   }
 
