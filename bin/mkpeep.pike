@@ -283,6 +283,7 @@ void dump2(mixed *data,int ind)
       }
       write(sprintf("%*n{\n",ind));
       ind+=2;
+#if 0
 
       if(sizeof(d[1]))
       {
@@ -329,8 +330,25 @@ void dump2(mixed *data,int ind)
 	write(sprintf("%*ndebug();\n",ind));
       }
       write(sprintf("%*nfifo_len+=%d;\n",ind,q+JUMPBACK));
-      write(sprintf("%*ncontinue;\n",ind));
+#else
 
+      write("%*ndo_optimization(%d,\n",ind,d[2]);
+
+      for(i=0;i<sizeof(d[1]);i++)
+      {
+	if(i+1<sizeof(d[1]) && d[1][i+1][0]=='(')
+	{
+	  string tmp=d[1][i+1];
+	  write("%*n                2,%s,%s,\n",ind,d[1][i],treat(tmp[1..strlen(tmp)-2]));
+	  i++;
+	}else{
+	  write("%*n                1,%s,\n",ind,d[1][i]);
+	}
+      }
+      write("%*n                0);\n",ind);
+
+#endif
+      write(sprintf("%*ncontinue;\n",ind));
       ind-=2;
       write(sprintf("%*n}\n",ind,test));
     }
