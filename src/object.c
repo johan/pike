@@ -466,13 +466,17 @@ static struct pike_string *low_read_file(char *file)
     while(pos<len)
     {
       tmp = fd_read(f,s->str+pos,len-pos);
-      if(tmp<0)
+      if(tmp<=0)
       {
-	if(errno==EINTR) {
-	  check_threads_etc();
-	  continue;
+	if (tmp < 0) {
+	  if(errno==EINTR) {
+	    check_threads_etc();
+	    continue;
+	  }
+	  Pike_fatal("low_read_file(%s) failed, errno=%d\n",file,errno);
 	}
-	Pike_fatal("low_read_file(%s) failed, errno=%d\n",file,errno);
+	Pike_fatal("low_read_file(%s) failed, short read: %d < %d\n",
+		   file, pos, len);
       }
       pos+=tmp;
     }
