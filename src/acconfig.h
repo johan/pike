@@ -299,6 +299,9 @@
 /* What alignment do 32-bit integers need */
 #define PIKE_INT32_ALIGNMENT 4
 
+/* Assembler prefix for general purpose registers */
+#undef PIKE_CPU_REG_PREFIX
+
 /* Number of possible filedesriptors */
 #define MAX_OPEN_FILEDESCRIPTORS 1024
 
