@@ -479,9 +479,11 @@ int handle_handshake(int type, string data, string raw)
 	  return -1;
 	}
 	other_random = ("\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0" + challenge)[..31];
-	int err = reply_new_session(cipher_suites, ({ COMPRESSION_null }) );
-	if (err)
-	  return err;
+	{
+	  int err = reply_new_session(cipher_suites, ({ COMPRESSION_null }) );
+	  if (err)
+	    return err;
+	}
 	handshake_state = STATE_server_wait_for_client;
 	
 	break;
