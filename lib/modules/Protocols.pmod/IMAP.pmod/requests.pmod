@@ -386,7 +386,12 @@ class store
       message_set = server->uid_to_local(session, message_set);
     }
 
-    if (server->store(session, message_set, list, mode, silent_mode, state)) {
+    array(array(string|object)) res;
+
+    if (res = server->store(session, message_set, list, mode, silent_mode, state)) {
+      if (sizeof(res)) {
+	send("*", @res);
+      }
       send(tag, "OK");
     } else {
       send(tag, "NO");
