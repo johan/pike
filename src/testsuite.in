@@ -157,6 +157,11 @@ test_compile_any([[
 ]])
 
 test_compile_any([[
+  class { void a() {  constant c = 17; }
+	  void b() {  constant c = 17; }  }
+]])
+
+test_compile_any([[
   constant FOO = 0;
   mapping(int:string) foo = ([FOO: "foo"]);
 ]])
