@@ -222,8 +222,8 @@ ADT.struct rsa_sign(object context, string cookie, ADT.struct struct)
       
   object s = context->rsa->raw_sign(digest);
 #ifdef SSL3_DEBUG_CRYPT
-  werror("  Digest: '%O'\n"
-	 "  Signature: '%O'\n",
+  werror("  Digest: %O\n"
+	 "  Signature: %O\n",
 	 digest, s->digits(256));
 #endif
   
