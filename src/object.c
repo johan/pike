@@ -629,8 +629,10 @@ PMOD_EXPORT void destruct_objects_to_destruct(void)
   struct object *my_list=0;
   struct object *o, *next;
 
-  if (Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_DESTRUCT)
-    return;
+#ifdef PIKE_DEBUG
+  if (Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_KILL)
+    fatal("Can't meddle with the object link list in gc pass %d.\n", Pike_in_gc);
+#endif
 
   while((o=objects_to_destruct))
   {
