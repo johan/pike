@@ -217,8 +217,10 @@ class Queue
   }
 }
 
+//! Abstract rule class.
 class Rule
 {
+  //!
   int check(string|Standards.URI uri);
 }
 
