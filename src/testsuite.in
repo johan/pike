@@ -37,6 +37,11 @@ test_eq(16, 0b10000);
 test_eq(-16, -0b10000);
 
 test_any([[
+  int f (int i) {i = 0; return i;};
+  return f (1);
+]],0)
+
+test_any([[
 class X
 {
   int Ack(int M, int N) {
