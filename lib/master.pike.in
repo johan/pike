@@ -2154,9 +2154,9 @@ class CompatResolver
     return ret;
   }
 
-  //! This function is called whenever an #include directive is encountered
-  //! it receives the argument for #include and should return the file name
-  //! of the file to include
+  //! This function is called whenever an #include directive is
+  //! encountered. It receives the argument for #include and should
+  //! return the file name of the file to include
   string handle_include(string f,
 			string current_file,
 			int local_include)
