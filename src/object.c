@@ -604,9 +604,15 @@ void low_object_index_no_free(struct svalue *to,
 
   switch(i->identifier_flags & (IDENTIFIER_FUNCTION | IDENTIFIER_CONSTANT))
   {
+  case IDENTIFIER_PIKE_FUNCTION:
+    if (i->func.offset == -1) {	/* prototype */
+      to->type=T_INT;
+      to->subtype=NUMBER_UNDEFINED;
+      to->u.integer=0;
+      break;
+    }
   case IDENTIFIER_FUNCTION:
   case IDENTIFIER_C_FUNCTION:
-  case IDENTIFIER_PIKE_FUNCTION:
     to->type=T_FUNCTION;
     to->subtype=f;
     to->u.object=o;
