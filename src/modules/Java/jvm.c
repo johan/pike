@@ -1633,8 +1633,11 @@ static void do_native_dispatch(struct native_method_context *ctx,
 
   memset(rc, 0, sizeof(*rc));
 
-  if(*p != 'V')
+  if(*p != 'V') {
     make_jargs(rc, -1, p, ctx->nat->jvm, env);
+    if((*p == 'L' || *p == '[') && rc->l != NULL)
+      rc->l = (*env)->NewGlobalRef(env, rc->l);
+  }
 
   pop_n_elems(sp-osp);
   UNSETJMP(recovery);
