@@ -1685,18 +1685,9 @@ void describe_mapping(struct mapping *m,struct processing *p,int indent)
       else notfirst = 1;
       for(d = 0; d < indent; d++)
 	my_putchar(' ');
-#if 0
-      /* describe_svalue might do anything. */
       describe_svalue(&k->ind, indent+2, &doing);
-      my_putchar(':');
+      my_strcat (": ");
       describe_svalue(&k->val, indent+2, &doing);
-#else
-      sprintf (buf, "<%d>", k->ind.type);
-      my_strcat (buf);
-      my_putchar(':');
-      sprintf (buf, "<%d>", k->val.type);
-      my_strcat (buf);
-#endif
     }
 
     my_putchar('\n');
@@ -1741,8 +1732,8 @@ void describe_mapping(struct mapping *m,struct processing *p,int indent)
 	my_putchar(' ');
     
       describe_svalue(ITEM(a)+e, indent+2, &doing);
-      my_putchar(':');
-      
+      my_strcat (": ");
+
       {
 	int save_t_flag=Pike_interpreter.trace_level;
 	Pike_interpreter.trace_level=0;
