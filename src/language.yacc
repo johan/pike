@@ -1182,6 +1182,9 @@ low_idents: F_IDENTIFIER
     struct svalue tmp;
     node *tmp2;
     tmp.type=T_MAPPING;
+#ifdef __CHECKER__
+    tmp.subtype=0;
+#endif /* __CHECKER__ */
     tmp.u.mapping=get_builtin_constants();
     tmp2=mkconstantsvaluenode(&tmp);
     $$=index_node(tmp2, $3);

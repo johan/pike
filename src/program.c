@@ -258,6 +258,9 @@ void start_new_program()
   {
     struct svalue tmp;
     tmp.type=T_MAPPING;
+#ifdef __CHECKER__
+    tmp.subtype=0;
+#endif /* __CHECKER__ */
     tmp.u.mapping=get_builtin_constants();
     use_module(& tmp);
   }
