@@ -282,10 +282,9 @@ static INLINE int my_read(int from, void *t, int towrite)
 static INLINE long file_size(int fd)
 {
   struct stat tmp;
-  int res;
   if((!fd_fstat(fd, &tmp)) &&
      (tmp.st_mode & S_IFREG)) 
-     return res = tmp.st_size;
+     return (long)tmp.st_size;
   return -1;
 }
 
@@ -366,10 +365,10 @@ void font_load(INT32 args)
 
    if (fd >= 0)
    {
-      long size;
+      size_t size;
       struct font *new_font;
 
-      size = file_size(fd);
+      size = (size_t) file_size(fd);
       if (size > 0)
       {
 	 new_font=THIS=(struct font *)xalloc(sizeof(struct font));
