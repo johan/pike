@@ -3091,6 +3091,10 @@ node *optimize_replace(node *n)
     n->node_info |= OPT_SIDE_EFFECT;
     n->tree_info |= OPT_SIDE_EFFECT;
   }
+
+  free_type(array_zero);
+  free_type(mapping_zero);
+
   return NULL;
 }
 
