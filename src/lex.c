@@ -1860,8 +1860,8 @@ static void low_lex(void)
 	READBUF(isidchar(C));
 
 	push_text(buf);
-	if (sv = low_mapping_string_lookup(get_builtin_constants(),
-					   sp[-1].u.string)) {
+	if ((sv = low_mapping_string_lookup(get_builtin_constants(),
+					    sp[-1].u.string))) {
 	  pop_stack();
 	  push_svalue(sv);
 	  res = 1;
