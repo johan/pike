@@ -90,10 +90,10 @@ static unsigned int HASH_PREFIX=64;
 static unsigned int need_more_hash_prefix=0;
 #endif
 
-unsigned INT32 htable_size=0;
+static unsigned INT32 htable_size=0;
 static unsigned int hashprimes_entry=0;
 static struct pike_string **base_table=0;
-unsigned INT32 num_strings=0;
+static unsigned INT32 num_strings=0;
 PMOD_EXPORT struct pike_string *empty_pike_string = 0;
 
 /*** Main string hash function ***/
