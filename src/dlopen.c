@@ -1433,8 +1433,10 @@ static int dl_load_coff_files(struct DLHandle *ret,
 	char *loc=data->section_addresses[s] + RELOCS(r).location;
 	char *ptr;
 	ptrdiff_t sym=RELOCS(r).symbol;
+#ifdef DLDEBUG
 	char *name;
 	size_t len;
+#endif /* DLDEBUG */
 #ifdef _M_IA64
 	int flag = ((size_t)loc) & 0xf;
 #endif /* _M_IA64 */
@@ -1445,6 +1447,29 @@ static int dl_load_coff_files(struct DLHandle *ret,
 		sym,
 		RELOCS(r).location,
 		RELOCS(r).type);
+
+	if(!SYMBOLS(sym).name.ptr[0])
+	{
+	  name=data->stringtable + SYMBOLS(sym).name.ptr[1];
+	  len=strlen(name);
+	}else{
+	  name=SYMBOLS(sym).name.text;
+	  len=STRNLEN(name,8);
+	}
+	if(!name[len])
+	{
+	  fprintf(stderr,"DL: symbol name=%s\n",name);
+	}else{
+	  fprintf(stderr,"DL: symbol name=%c%c%c%c%c%c%c%c\n",
+		  name[0],
+		  name[1],
+		  name[2],
+		  name[3],
+		  name[4],
+		  name[5],
+		  name[6],
+		  name[7]);
+	}
 #endif
 
 	if(!(ptr=data->symbol_addresses[sym]))
@@ -1456,30 +1481,6 @@ static int dl_load_coff_files(struct DLHandle *ret,
 	    ptr=data->symbol_addresses[sym]=
 	      data->section_addresses[SYMBOLS(sym).secnum-1]+
 	      SYMBOLS(sym).value;
-#ifdef DLDEBUG
-	    if(!SYMBOLS(sym).name.ptr[0])
-	    {
-	      name=data->stringtable + SYMBOLS(sym).name.ptr[1];
-	      len=strlen(name);
-	    }else{
-	      name=SYMBOLS(sym).name.text;
-	      len=STRNLEN(name,8);
-	    }
-	    if(!name[len])
-	    {
-	      fprintf(stderr,"DL: reloc name=%s\n",name);
-	    }else{
-	      fprintf(stderr,"DL: reloc name=%c%c%c%c%c%c%c%c\n",
-		      name[0],
-		      name[1],
-		      name[2],
-		      name[3],
-		      name[4],
-		      name[5],
-		      name[6],
-		      name[7]);
-	    }
-#endif
 	  }
 	  else if(!SYMBOLS(sym).secnum /* && !SYMBOLS(sym).value */)
 	  {
