@@ -70,7 +70,7 @@ static INLINE INT32 call_gz_crc32(INT32 args)
    return z;
 }
 
-static INLINE void add_crc_string()
+static INLINE void add_crc_string(void)
 {
    push_svalue(sp-1);
    push_nbo_32bit(call_gz_crc32(1));
