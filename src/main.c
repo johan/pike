@@ -250,10 +250,12 @@ int main(int argc, char **argv)
   find_lib_dir(argc, argv);
 
 #ifdef LIBPIKE
+#ifdef HAVE_DLINIT
   if (!dlinit()) {
     fprintf(stderr, "dlinit failed.\n");
     exit(1);
   }
+#endif /* HAVE_DLINIT */
 
   if (!(libpike = dlopen(libpike_name, RTLD_NOW))) {
     const char *err = dlerror();
