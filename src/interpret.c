@@ -1627,6 +1627,7 @@ void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
       if(function->func.offset == -1)
 	error("Calling undefined function '%s'.\n",function->name->str);
       
+      tailrecurse=-1;
       switch(function->identifier_flags & (IDENTIFIER_FUNCTION | IDENTIFIER_CONSTANT))
       {
       case IDENTIFIER_C_FUNCTION:
