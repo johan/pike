@@ -477,6 +477,7 @@
 #undef HAVE_WINBASE_H
 #undef HAVE_WINSOCK_H
 #undef HAVE_WINSOCK2_H
+#undef HAVE_FD_FLOCK
 #endif /* HAVE_SYS_UNISTD_H && HAVE_WINDOWS_H */
 
 /* How to set a socket non-blocking */
