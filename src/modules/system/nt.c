@@ -19,6 +19,7 @@
 #include "module_support.h"
 #include "array.h"
 #include "constants.h"
+#include "builtin_functions.h"
 
 #include <winsock.h>
 #include <windows.h>
