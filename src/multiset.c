@@ -16,6 +16,7 @@
 #include "gc.h"
 #include "interpret.h"
 #include "multiset.h"
+#include "mapping.h"
 #include "object.h"
 #include "opcodes.h"
 #include "pike_error.h"
