@@ -25,6 +25,9 @@ if nasm -f elf -o assembly.o $srcdir/assembly.s ; then
   # nasm/ia64 can compile ia32 code...
   if test "`uname -m`" = "ia64"; then
     AC_MSG_RESULT([yes, but we are on an IA64 machine])
+  elif test "`uname -s`" = "OpenBSD"; then
+    #nasm on OpenBSD is braindamaged
+    AC_MSG_RESULT(no)
   else
     ASSEMBLY_OBJECTS=assembly.o
     AC_DEFINE(ASSEMBLY_OK)
