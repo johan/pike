@@ -35,7 +35,8 @@ struct program *image_program;
 **! method string cast(string type)
 **! returns the image data as a string ("rgbrgbrgb...")
 **! see also: toppm, togif, tozbgr, to8bit, to8bit_rgbcube
-**! known bugs: always casts to string...
+**! bugs
+**!	always casts to string...
 */
 
 void image_cast(INT32 args)

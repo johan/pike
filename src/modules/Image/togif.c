@@ -462,7 +462,8 @@ int image_decode_gif(struct image *dest,struct image *dest_alpha,
 **! arg string pnm
 **!	pnm data, as a string
 **! see also: togif, frompnm
-**! known bugs: yes, it does -- it may even do segment overrides...
+**! bugs
+**!	yes, it does -- it may even do segment overrides...
 */
 
 void image_fromgif(INT32 args)
