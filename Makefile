@@ -59,9 +59,10 @@ builddir:
 	  dir="$$dir/"; \
 	done; \
 	if [ x$$NEWBUILD = xYEP ]; then \
-	  cp refdoc/autodoc.xml "$$builddir" || true; \
-	  mkdir "$$builddir"/doc_build || true; \
-	  cp -R refdoc/images "$$builddir"/doc_build/images || true; \
+	  test -f refdoc/autodoc.xml && cp refdoc/autodoc.xml "$$builddir"; \
+	  mkdir "$$builddir"/doc_build; \
+	  test -d refdoc/images && \
+	    cp -R refdoc/images "$$builddir"/doc_build/images; \
 	fi; \
 	cd "$$builddir"
 
