@@ -1821,7 +1821,12 @@ char *get_storage(struct object *o, struct program *p)
   if(!o->prog) return 0;
   oid=o->prog->id;
   pid=p->id;
-  hval=(oid*9248339 + pid) % GET_STORAGE_CACHE_SIZE;
+  hval=oid*9248339 + pid;
+  hval %= GET_STORAGE_CACHE_SIZE;
+#ifdef DEBUG
+  if(hval>GET_STORAGE_CACHE_SIZE)
+    fatal("hval>GET_STORAGE_CACHE_SIZE");
+#endif
   if(get_storage_cache[hval].oid == oid &&
      get_storage_cache[hval].pid == pid)
   {
