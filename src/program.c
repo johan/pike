@@ -4635,7 +4635,8 @@ struct array *program_indices(struct program *p)
   struct array *res;
   for (e = p->num_identifier_references; e--; ) {
     struct identifier *id;
-    if (p->identifier_references[e].id_flags & ID_HIDDEN) {
+    if (p->identifier_references[e].id_flags &
+	(ID_HIDDEN|ID_STATIC|ID_PRIVATE)) {
       continue;
     }
     id = ID_FROM_INT(p, e);
@@ -4663,7 +4664,8 @@ struct array *program_values(struct program *p)
   struct array *res;
   for(e = p->num_identifier_references; e--; ) {
     struct identifier *id;
-    if (p->identifier_references[e].id_flags & ID_HIDDEN) {
+    if (p->identifier_references[e].id_flags &
+	(ID_HIDDEN|ID_STATIC|ID_PRIVATE)) {
       continue;
     }
     id = ID_FROM_INT(p, e);
