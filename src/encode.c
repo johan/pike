@@ -1503,6 +1503,8 @@ static void decode_value2(struct decode_data *data)
 	      {
 		apply_lfun(o, LFUN___INIT, 0);
 		pop_stack();
+		apply_lfun(o,LFUN_CREATE, 0);
+		pop_stack();
 	      }else{
 		struct unfinished_obj_link *ol=ALLOC_STRUCT(unfinished_obj_link);
 		ol->o=o;
