@@ -610,7 +610,7 @@ class protocol
 	      break;
 
 #if 0
-	    case "EL":	// Erase Line
+	    case EL:	// Erase Line
 	      for (j=0; j < i; j++) {
 		a[j] = "";
 	      }
@@ -726,7 +726,8 @@ class protocol
 	      break;
 	    }
 	  } else {
-	    a[i] = "\377";
+	    // IAC IAC => IAC
+	    a[i] = C(IAC);
 	    i++;
 	  }
 	}
@@ -835,8 +836,8 @@ class LineMode
     {
       DWRITE(sprintf("Line callback... %O\n",data));
       data=replace(data,
-		   ({"\r\n","\r\n","\r","\r\0"}),
-		   ({"\r",  "\r",  "\r","\r",}));
+		   ({"\r\n", "\n", "\r", "\r\0"}),
+		   ({"\r",   "\r", "\r", "\r",}));
       line_buffer+=data;
       string *tmp=line_buffer/"\r";
       line_buffer=tmp[-1];
