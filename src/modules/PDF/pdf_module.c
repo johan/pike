@@ -227,9 +227,10 @@ void pike_module_init(void)
       pop_stack();
    }
 
-   for (i=0; i<(int)NELEM(submagic); i++)
+   for (i=0; i<(int)NELEM(submagic); i++) {
       if(!submagic[i].name) continue;
       submagic[i].ps=make_shared_string(submagic[i].name);
+   }
 
 #undef PDF_FUNCTION
 #define PDF_FUNCTION(name,func,def0,def1) ADD_FUNCTION(name,func,def0,def1);
