@@ -903,6 +903,7 @@ static INT32 really_low_sscanf(char *input,
 	     }
 	  break;
 
+        case 'b':
         case 'o':
         case 'd':
         case 'x':
@@ -920,6 +921,7 @@ static INT32 really_low_sscanf(char *input,
 
 	  switch(match[cnt])
 	  {
+	  case 'b': base =  2; break;
 	  case 'o': base =  8; break;
 	  case 'd': base = 10; break;
 	  case 'x': base = 16; break;
