@@ -79,8 +79,8 @@ RCSID("$Id$");
  * will be freed. That's done before the live object destruct pass.
  */
 
-#define GC_VERBOSE
-#define GC_CYCLE_DEBUG
+/* #define GC_VERBOSE */
+/* #define GC_CYCLE_DEBUG */
 
 #if defined(GC_VERBOSE) && !defined(PIKE_DEBUG)
 #undef GC_VERBOSE
