@@ -1651,6 +1651,8 @@ class Evaluator {
       if( t=="{" )
 	error("HilfeError: Error in relocation parser (relocate:'}')");
 
+      if(t=="lambda") return p-1;
+
       if( !plevel && (t==safe_word || t==";") )
 	return p;
 
