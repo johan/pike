@@ -2528,6 +2528,8 @@ static void init_dlopen(void)
     EXPORT(strtol);
     EXPORT(rewind);
     EXPORT(fputs);
+    EXPORT(freopen);
+    EXPORT(memcmp);
   }
 #if 0
 #ifdef _M_IA64
