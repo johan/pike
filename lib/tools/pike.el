@@ -90,7 +90,7 @@ The name is assumed to begin with a capital letter.")
 
   (defconst pike-modifier-regexp
     (concat "\\<\\(public\\|inline\\|final\\|static\\|protected\\|"
-	    "local\\|private\\|nomask\\|\\)\\>"))
+	    "local\\|private\\|nomask\\|optional\\|variant\\|\\)\\>"))
   (defconst pike-operator-identifiers 
     (concat "``?\\(!=\\|->=?\\|<[<=]\\|==\\|>[=>]\\|\\[\\]=?\\|\(\)"
 	    "\\|[!%&+*/<>^|~-]\\)"))
@@ -261,6 +261,8 @@ The name is assumed to begin with a capital letter.")
 	   ("\\<local\\>" 0 font-lock-preprocessor-face)
 	   ("\\<private\\>"   0 font-lock-preprocessor-face)
 	   ("\\<nomask\\>" 0 font-lock-preprocessor-face))
+	   ("\\<optional\\>" 0 font-lock-preprocessor-face))
+	   ("\\<variant\\>" 0 font-lock-preprocessor-face))
 	 pike-font-lock-keywords-2
 	 )))
 
