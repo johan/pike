@@ -454,7 +454,7 @@ void worker(void *this_)
 	  }
 	  mem = mmap(NULL, len, PROT_READ, MAP_FILE|MAP_SHARED,
 		     this->from_fd, this->offset);
-	  if (mem == MAP_FAILED) {
+	  if (((long)mem) == ((long)MAP_FAILED)) {
 	    /* Try using read & write instead. */
 	    goto use_read_write;
 	  }
