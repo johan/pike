@@ -1688,7 +1688,11 @@ rm confdefs.out.2 >/dev/null 2>/dev/null || :
     ;;
 
     xAIX*)
-      LIBS="${OLDLIBS} -lpthreads -lc_r"
+      if test "`uname -v`" -gt 4 ; then
+        LIBS="${OLDLIBS} -lpthread"
+      else
+        LIBS="${OLDLIBS} -lpthreads -lc_r"
+      fi
     ;;
 
     xSolaris*)
