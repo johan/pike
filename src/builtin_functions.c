@@ -3112,6 +3112,8 @@ PMOD_EXPORT void f_compile(INT32 args)
 		 BIT_VOID | BIT_INT | BIT_OBJECT,
 		 0);
 
+  check_c_stack(65536);
+
   o=0;
   switch(args)
   {
