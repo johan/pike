@@ -1579,6 +1579,32 @@ PMOD_EXPORT struct array *merge_array_with_order(struct array *a,
   zipper=merge(tmpa,tmpb,op);
   SET_ONERROR(r3,free,zipper);
 
+#if 0
+  {
+    int i;
+
+    simple_describe_array (a);
+    simple_describe_array (b);
+
+    fprintf (stderr, "order a: ");
+    for (i = 0; i < a->size; i++)
+      fprintf (stderr, "%d ", ordera[i]);
+    fprintf (stderr, "\n");
+
+    fprintf (stderr, "order b: ");
+    for (i = 0; i < b->size; i++)
+      fprintf (stderr, "%d ", orderb[i]);
+    fprintf (stderr, "\n");
+
+    simple_describe_array (tmpa);
+    simple_describe_array (tmpb);
+
+    fprintf (stderr, "zipper: ");
+    for (i = 1; i < *zipper + 1; i++)
+      fprintf (stderr, "%d ", zipper[i]);
+    fprintf (stderr, "\n");
+  }
+#endif
 
   fsort_with_order( (zipper+1), zipper+*zipper, array_merge_fun,
 		    ordera, orderb );
