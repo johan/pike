@@ -111,9 +111,7 @@ module.pmod: Makefile $(MODULE_PMOD_IN)
 	  echo >module.pmod  '// Generated automatically by'; \
 	  echo >>module.pmod '// $$Id$$'; \
 	  echo >>module.pmod '#pike __REAL_VERSION__'; \
-	  echo >>module.pmod '#if constant($(MODULE_PROGRAM))'; \
 	  echo >>module.pmod 'inherit $(MODULE_PROGRAM);'; \
-	  echo >>module.pmod '#endif'; \
 	else \
 	  if [ -f "$(MODULE_PMOD_IN)" ]; then \
 	    sed -e "s/@module@/$(MODULE_PROGRAM)/" \
