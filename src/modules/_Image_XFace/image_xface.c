@@ -432,6 +432,48 @@ static void image_xface_encode(INT32 args)
   }
 }
 
+/*
+**! method object decode_header(string data)
+**! method object decode_header(string data, mapping options)
+**! 	Decodes an X-Face image header. 
+**!
+**!	<pre>
+**!	    "xsize":int
+**!	    "ysize":int
+**!		size of image
+**!	    "type":"image/x-xface"
+**!		file type information
+**!	</pre>
+**!
+**!     The <tt>options</tt> argument may be a mapping
+**!	containing zero options.
+**!
+**! note
+**!	There aint no such thing as a X-Face image header.
+**!	This stuff tells the characteristics of an X-Face image.
+**!
+*/
+
+static void image_xface_decode_header(INT32 args)
+{
+  if(args<1 || sp[-args].type!=T_STRING)
+    error("Image.XFace.decode: Illegal arguments\n");
+
+  pop_n_elems(args);
+
+  push_text("type"); 
+  push_text("image/x-xface");
+
+  push_text("xsize");
+  push_int(48);
+
+  push_text("ysize");
+  push_int(48);
+
+  f_aggregate_mapping(6);
+}
+
+
 #endif /* HAVE_GMP_H */
 
 /*** module init & exit & stuff *****************************************/
@@ -459,6 +501,8 @@ void pike_module_init(void)
    if (image_program)
    {
       add_function("decode",image_xface_decode,
+		   "function(string,void|mapping(string:int):object)",0);
+      add_function("decode_header",image_xface_decode_header,
 		   "function(string,void|mapping(string:int):object)",0);
       add_function("encode",image_xface_encode,
 		   "function(object,void|mapping(string:int):string)",0);
