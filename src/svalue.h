@@ -305,6 +305,8 @@ static inline union anything *dmalloc_check_union(union anything *u,int type, ch
 #define check_type(T)
 #define check_refs(S)
 #define check_refs2(S,T)
+#define dmalloc_check_svalue(S,L) (S)
+#define dmalloc_check_union(U,T,L) (U)
 #define add_ref(X) (X)->refs++
 
 #endif
