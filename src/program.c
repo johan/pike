@@ -4103,7 +4103,6 @@ int yyexplain_not_implements(struct program *a, struct program *b, int flags)
   return 1;
 }
 
-/* This will be moved to program.c - Hubbe */
 void *parent_storage(int depth)
 {
   struct inherit *inherit;

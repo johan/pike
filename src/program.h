@@ -475,6 +475,7 @@ struct implements_cache_s;
 int implements(struct program *a, struct program *b);
 int is_compatible(struct program *a, struct program *b);
 int yyexplain_not_implements(struct program *a, struct program *b, int flags);
+void *parent_storage(int depth);
 /* Prototypes end here */
 
 #define ADD_FUNCTION(NAME,FUNC,TYPE,FLAGS) \
