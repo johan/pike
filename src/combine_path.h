@@ -93,6 +93,8 @@ static void APPEND_PATH(struct string_builder *s,
   if(s->s->len && !IS_SEP(LAST_PUSHED()))
     PUSH('/');
 
+  if (!len) return;
+
   /* Remove initial "./" if any. */
   if(s->s->len==2)
   {
