@@ -18,7 +18,7 @@
 **!    begin_tag("tr");
 **!    write(mktag("td",(["align":"right","valign":"center"]),
 **!          mktag("b",0,desc)));
-**!    write(mktag("td",(["align":"right"]),illustration_jpeg(img)));
+**!    write(mktag("td",(["align":"right"]),illustration_jpeg(img,(["dpi":150.0]))));
 **!    write(end_tag());
 **! }
 **! 
@@ -2630,9 +2630,9 @@ void init_image_layers(void)
    ADD_FUNCTION("crop",image_layer_crop,
 		tFunc(tInt tInt tInt tInt,tObj),0);
    ADD_FUNCTION("autocrop",image_layer_autocrop,
-		tFuncV(,tOr(tVoid,tInt),tObj),0);
+		tFuncV(tNone,tOr(tVoid,tInt),tObj),0);
    ADD_FUNCTION("find_autocrop",image_layer_find_autocrop,
-		tFuncV(,tOr(tVoid,tInt),tObj),0);
+		tFuncV(tNone,tOr(tVoid,tInt),tObj),0);
 
    /*
    ADD_FUNCTION("rotate",image_layer_rotate,tFunc(tOr(tInt,tFloat),tObj),0);
