@@ -1633,7 +1633,7 @@ static void low_print_tree(node *foo,int needlval)
   {
     fprintf(stderr, "/*%x*/",foo->tree_info);
   }
-  switch(foo->token)
+  switch(l_flag > 99 ? -1 : foo->token)
   {
   case USHRT_MAX:
     fprintf(stderr, "FREED_NODE");
