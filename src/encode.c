@@ -3080,6 +3080,8 @@ static void decode_value2(struct decode_data *data)
 
 	  debug_malloc_touch(p);
 
+	  data->pickyness++;
+
 	  /* parent */
 	  decode_value2(data);
 	  if (Pike_sp[-1].type == T_PROGRAM) {
@@ -3536,6 +3538,8 @@ static void decode_value2(struct decode_data *data)
 	    constant->sval = Pike_sp[-2];
 	    Pike_sp -= 2;
 	  }
+
+	  data->pickyness--;
 
 	  /* The program should be consistent now. */
 	  p->flags &= ~PROGRAM_AVOID_CHECK;
