@@ -735,9 +735,15 @@ else
     [
       OLD_CC="${CC-cc}"
       OLD_CFLAGS="$CFLAGS"
-      if test "$CC" = "$BINDIR/smartlink cc" -a -x /usr/bin/cc ; then
-        CC="$SMARTLINK /usr/bin/cc"
-      fi
+      case "/$CC" in
+        */smartlink\ cc)
+           if test -x /usr/bin/cc; then
+             CC="$SMARTLINK /usr/bin/cc"
+           else
+             : ;
+           fi
+        ;;
+      esac
       CFLAGS="-Ae +Olibcalls $CFLAGS"
       AC_TRY_COMPILE([int foo(int bar);],[],[],[
         CC="$OLD_CC"
