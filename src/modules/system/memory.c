@@ -268,7 +268,7 @@ static void memory__mmap(INT32 args,int complain,int private)
 #ifdef PAGE_SIZE
    if (offset%PAGE_SIZE)
       Pike_error("Memory.mmap(): mapped offset not aligned to PAGE_SIZE "
-		 "(%d aka system.PAGE_SIZE)\n",offset);
+		 "(%d aka system.PAGE_SIZE)\n",(int)offset);
 #endif
 
    if (private) flags|=MAP_PRIVATE;
