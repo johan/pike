@@ -15,7 +15,7 @@ int verbosity = 2;
 
 int main(int n, array(string) args) {
 
-  string srcdir, builddir;
+  string srcdir, builddir = "./";
 
   foreach(Getopt.find_all_options(args, ({
     ({ "srcdir",     Getopt.HAS_ARG,      "--srcdir" }),
