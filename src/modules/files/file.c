@@ -285,6 +285,7 @@ static void close_fd_quietly(void)
   set_read_oob_callback(FD,0,0);
   set_write_oob_callback(FD,0,0);
 #endif /* WITH_OOB */
+  set_backend_for_fd(FD, NULL);
   check_internal_reference(THIS);
 
   FD=-1;
@@ -337,6 +338,7 @@ static void just_close_fd(void)
   set_read_oob_callback(FD,0,0);
   set_write_oob_callback(FD,0,0);
 #endif /* WITH_OOB */
+  set_backend_for_fd(FD, NULL);
   check_internal_reference(THIS);
 
   FD=-1;

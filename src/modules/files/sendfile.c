@@ -627,7 +627,10 @@ static void worker(void *this_)
       this->from->flags &= ~FILE_LOCK_FD;
     } else {
       /* Destructed. */
-      fd_close(this->from_fd);
+      if (this->from_fd >= 0) {
+	set_backend_for_fd(this->from_fd, NULL);
+	fd_close(this->from_fd);
+      }
       /* Paranoia */
       this->from->fd = -1;
     }
@@ -636,7 +639,10 @@ static void worker(void *this_)
     this->to->flags &= ~FILE_LOCK_FD;
   } else {
     /* Destructed */
-    fd_close(this->to_fd);
+    if (this->to_fd >= 0) {
+      set_backend_for_fd(this->to_fd, NULL);
+      fd_close(this->to_fd);
+    }
     /* Paranoia */
     this->to->fd = -1;
   }
