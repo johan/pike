@@ -94,10 +94,16 @@ struct pike_frame
 
 #define pop_stack() do{ free_svalue(--Pike_sp); debug_check_stack(); }while(0)
 
+#ifdef __ECL
+#define MAYBE_CAST_TO_LONG(X)	(X)
+#else /* !__ECL */
+#define MAYBE_CAST_TO_LONG(X)	((long)(X))
+#endif /* __ECL */
+
 #define pop_n_elems(X)							\
  do { ptrdiff_t x_=(X); if(x_) { 					\
    check__positive(x_, ("Popping negative number of args.... (%ld) \n",	\
-		   (long)x_));						\
+		   MAYBE_CAST_TO_LONG(x_)));				\
    Pike_sp -= x_; debug_check_stack();					\
    free_svalues(Pike_sp, x_, BIT_MIXED);				\
  } } while (0)
