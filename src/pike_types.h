@@ -14,19 +14,29 @@
 
 struct node_s
 {
-  unsigned INT16 token;
-  INT16 line_number;
-  INT16 node_info;
-  INT16 tree_info;
+#ifdef SHARED_NODES
+  unsigned INT32 refs;
+  unsigned INT32 hash;
+  struct node_s *next;
+#endif /* SHARED_NODES */
 #ifdef PIKE_DEBUG
   struct pike_string *current_file;
 #endif
   struct pike_string *type;
   struct pike_string *name;
   struct node_s *parent;
+  INT16 line_number;
+  INT16 node_info;
+  INT16 tree_info;
+  /* The stuff from this point on is hashed. */
+  unsigned INT16 token;
   union 
   {
-    int number;
+    struct
+    {
+      int number;
+      struct program *prog;
+    } id;
     struct svalue sval;
     struct
     {
