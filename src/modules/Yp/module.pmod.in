@@ -6,20 +6,20 @@
  * Per Hedbor & Henrik Grubbström 1996-1997
  */
 
-class YpDomain {
+class Domain {
   inherit @module@;
 };
 
-class YpMap {
-  object(YpDomain) domain;
+class Map {
+  object(Domain) domain;
   string ypmap;
 
   void create(string map,string|void d)
   {
     if (d) {
-      domain = YpDomain(d);
+      domain = Domain(d);
     } else {
-      domain = YpDomain();
+      domain = Domain();
     }
     ypmap = map;
     // Force an error if the map does not exist.
