@@ -1371,7 +1371,7 @@ PIKECLASS Buffer
     REF_RETURN fp->current_object;
   }
 
-  /*! @decl void add(string ... data)
+  /*! @decl int add(string ... data)
    *!
    *!   Adds @[data] to the buffer. Returns the size of the buffer.
    *!
