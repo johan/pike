@@ -193,6 +193,9 @@ dump_modules:
 force_dump_modules:
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=force_dump_modules"
 
+undump_modules:
+	@$(MAKE) $(MAKE_FLAGS) "METATARGET=undump_modules"
+
 run_hilfe:
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=run_hilfe"
 
