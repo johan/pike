@@ -289,6 +289,13 @@ void destruct_objects_to_destruct(void)
 
 void really_free_object(struct object *o)
 {
+  if(o->prog && (o->prog->flags & PROG_DESTRUCT_IMMEDIATE))
+  {
+    o->refs++;
+    destruct(o);
+    if(--o->refs > 0) return;
+  }
+
   if(o->prev)
     o->prev->next=o->next;
   else

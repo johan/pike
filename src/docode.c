@@ -804,7 +804,7 @@ static int do_docode2(node *n,int flags)
     {
       if(order[e] < cases-1)
       {
-	int o1=order[e]+1;
+	int o1=order[e]*2+1;
 	if(current_switch_jumptable[o1]==current_switch_jumptable[o1+1] &&
 	   current_switch_jumptable[o1]==current_switch_jumptable[o1+2])
 	{

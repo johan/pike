@@ -379,9 +379,7 @@ int main(int argc, string *argv)
   write("#ifdef DEBUG\n");
   write("    if(a_flag>5) {\n");
   write("      fprintf(stderr,\"#%d,%d:\",eye,fifo_len);\n");
-  write("      fprintf(stderr,\"%s(%d)\",  get_token_name(opcode(-2)),argument(-2));\n");
-  write("      fprintf(stderr,\" %s(%d)\",  get_token_name(opcode(-1)),argument(-1));\n");
-  write("      fprintf(stderr,\" . %s(%d)\",  get_token_name(opcode(0)),argument(0));\n");
+  write("      fprintf(stderr,\" %s(%d)\",  get_token_name(opcode(0)),argument(0));\n");
   write("      fprintf(stderr,\" %s(%d)\",  get_token_name(opcode(1)),argument(1));\n");
   write("      fprintf(stderr,\" %s(%d)\",  get_token_name(opcode(2)),argument(2));\n");
   write("      fprintf(stderr,\" %s(%d)\\n\",get_token_name(opcode(3)),argument(3));\n");
