@@ -533,11 +533,15 @@ import SSL.constants;
     return (1);
   }
 
+#if 0
   void destroy() {
 
     //send_unbind_op();
-    destruct(this_object());
+
+    // Hazard area: General confusion error. /mast
+    //destruct(this_object());
   }
+#endif
 
   //!
   //! Unbinds from the directory and close the connection.
