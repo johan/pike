@@ -614,11 +614,14 @@ extern int compilation_depth;
 
 #define COMPILER_IN_CATCH 1
 
+#ifdef __cplusplus
 #define ADD_STORAGE(X) do{				\
-	struct { char _x; X _z; } *___offset=NULL;		\
-	low_add_storage(sizeof(X), PTR_TO_INT(&___offset->_z),0);	\
-    }  while(0)
-
+ 	struct { char _x; X _z; } *___offset=NULL;		\
+ 	low_add_storage(sizeof(X), PTR_TO_INT(&___offset->_z),0);	\
+     }  while(0)
+#else
+#define ADD_STORAGE(X) low_add_storage(sizeof(X), ALIGNOF(X),0)
+#endif
 #define STORAGE_NEEDED(X) ((X)->storage_needed - (X)->inherits[0].storage_offset)
 
 #define FOO(NUMTYPE,TYPE,ARGTYPE,NAME) void PIKE_CONCAT(add_to_,NAME(ARGTYPE ARG));
