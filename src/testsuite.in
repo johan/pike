@@ -7583,7 +7583,7 @@ mixed a() {return functionp(X(Y));}
 ")()->a()]])
 
 test_do([[
-  Stdio.write_file("testsuite_test.pmod", "#error foo");
+  Stdio.write_file("testsuite_test.pmod", "syntax error");
   object orig_master = master();
   replace_master(object_program(orig_master)());
   mixed err = catch {
@@ -7600,7 +7600,7 @@ test_do([[
 ]]);
 
 test_do([[
-  Stdio.write_file("testsuite_test.pmod", "#error foo");
+  Stdio.write_file("testsuite_test.pmod", "syntax error");
   object orig_master = master();
   replace_master(object_program(orig_master)());
   mixed err = catch {
