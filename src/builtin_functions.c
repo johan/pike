@@ -5536,9 +5536,6 @@ void f_enumerate(INT32 args)
    }
 }
 
-/* FIXME: This is not accurate anymore! (crash risk!) 
- * The function of in->parent_offset has changed!
- */
 PMOD_EXPORT void f_inherit_list(INT32 args)
 {
   struct program *p;
