@@ -33,9 +33,6 @@ endif
 ifeq ($(DEB_BUILD_ARCH),sparc)
 DO_MACHINE_CODE=no
 endif
-ifeq ($(DEB_BUILD_ARCH),sparc64)
-DO_MACHINE_CODE=no
-endif
 
 ifeq ($(DO_MACHINE_CODE),yes)
 MACHINE_OPTS=--with-machine-code
