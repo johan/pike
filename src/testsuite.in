@@ -129,12 +129,8 @@ cond([[all_constants()->thread_create]],
   test_do(Builtin.condition()->broadcast())
 
 // /precompiled/fifo
-test_any([[
-#include <fifo.h>
-return 0;
-]],0)
-  test_true(objectp(clone(Fifo)))
-  test_true(objectp(clone(Queue)))
+  test_true(objectp(clone(Fifo.Fifo)))
+  test_true(objectp(clone(Fifo.Queue)))
 ]])
 
 
