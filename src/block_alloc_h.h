@@ -5,8 +5,6 @@
 || $Id$
 */
 
-/* $Id */
-
 #undef BLOCK_ALLOC
 #undef PTR_HASH_ALLOC
 #undef PTR_HASH_ALLOC_FIXED
