@@ -1283,10 +1283,16 @@ void f_thread_backtrace(INT32 args)
 
   pop_n_elems(args);
 
-  if(foo->state.stack_pointer)
+  if(foo->state.thread_id == Pike_interpreter.thread_id)
+  {
+    f_backtrace(0);
+  }
+  else if(foo->state.stack_pointer)
   {
     low_backtrace(& foo->state);
-  }else{
+  }
+  else
+  {
     push_int(0);
     f_allocate(1);
   }
