@@ -1,3 +1,5 @@
+#include <config.h>
+
 #include "global.h"
 RCSID("$Id$");
 #include "types.h"
