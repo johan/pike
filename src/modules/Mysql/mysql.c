@@ -61,6 +61,7 @@ typedef struct dynamic_buffer_s dynamic_buffer;
 #include "program.h"
 #include "operators.h"
 #include "builtin_functions.h"
+#include "fd_control.h"
 
 /* System includes */
 #ifdef HAVE_STRING_H

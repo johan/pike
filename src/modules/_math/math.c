@@ -13,6 +13,7 @@
 #include "module_support.h"
 #include "operators.h"
 #include "bignum.h"
+#include "opcodes.h"
 
 #ifdef PC
 #undef PC
