@@ -2393,8 +2393,7 @@ static newstate handle_result(struct parser_html_storage *this,
 	   return STATE_REREAD; /* please reread stack head */
 	 }
 	 else {
-	   DEBUG((stderr,"handle_result: not pushing empty string on feedstack\n",
-		  sp[-1].u.string->len));
+	   DEBUG((stderr,"handle_result: not pushing empty string on feedstack\n"));
 	   pop_stack();
 	   if (this->stack != st) /* got more feed recursively - reread */
 	     return STATE_REREAD;
