@@ -7597,11 +7597,11 @@ PMOD_EXPORT void f_inherit_list(INT32 args)
 	  }
 	  break;
 	  
-	  case -17:
+	  case INHERIT_PARENT:
 	    ref_push_function(in->parent, in->parent_identifier);
 	    break;
 	    
-	  case -18:
+	  case OBJECT_PARENT:
 	    if(par)
 	    {
 	      ref_push_function(par, parid);
