@@ -182,6 +182,9 @@ testsuites:
 just_verify:
 	@$(DO_MAKE) $(MAKE_FLAGS) "METATARGET=just_verify"
 
+valgrind_verify:
+	@$(DO_MAKE) $(MAKE_FLAGS) "METATARGET=valgrind_verify"
+
 verify:
 	@$(DO_MAKE) $(MAKE_FLAGS) "METATARGET=verify"
 
