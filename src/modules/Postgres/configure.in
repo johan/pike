@@ -5,6 +5,8 @@ AC_CONFIG_HEADER(pgres_config.h)
 
 AC_MODULE_INIT()
 
+PIKE_FEATURE_WITHOUT(Postgres)
+
 echo "Configuring Postgres module"
 
 AC_ARG_WITH(postgres,
@@ -41,6 +43,8 @@ fi
 
 dnl start actual work
 if test x$with_postgres = xyes; then
+  PIKE_FEATURE_NODEP(Postgres)
+
   OLD_CPPFLAGS=$CPPFLAGS
   OLD_LIBS=$LIBS
   OLD_LDFLAGS=$LDFLAGS
@@ -147,6 +151,7 @@ if test  x$ac_cv_lib_pq_PQclear != xyes; then
 else
   echo "Postgres found, module configured. Thank you for your collaboration."
   POSTGRES_SUPPORTED="yes"
+  PIKE_FEATURE_OK(Postgres)
 fi
 
 AC_SUBST(POSTGRES_SUPPORTED)
