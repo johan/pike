@@ -171,7 +171,9 @@ void udp_read(INT32 args)
      case EIO:
       error("I/O error\n");
      case ENOMEM:
+#ifdef ENOSR
      case ENOSR:
+#endif /* ENOSR */
       error("Out of memory\n");
      case ENOTSOCK:
       fatal("reading from non-socket fd!!!\n");
@@ -237,7 +239,9 @@ void udp_sendto(INT32 args)
      case EBADF:
       error("Socket closed\n");
      case ENOMEM:
+#ifdef ENOSR
      case ENOSR:
+#endif /* ENOSR */
       error("Out of memory\n");
      case EINVAL:
      case ENOTSOCK:

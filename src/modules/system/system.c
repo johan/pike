@@ -105,9 +105,11 @@ static volatile void report_error(const char *function_name)
   case ENOENT:
     error_msg = "File not found";
     break;
+#ifdef ENOLINK
   case ENOLINK:
     error_msg = "Link to remote machine nolonger active";
     break;
+#endif /* ENOLINK */
   case ENOSPC:
     error_msg = "Filesystem full";
     break;
