@@ -73,6 +73,15 @@ case $CC in
  ;;
 esac
 
+REALCC="`echo $CC| sed -e 's/.*smartlink //'`"
+AC_SUBST(REALCC)
+
+SMARTLINK="`echo $CC| sed -e 's/smartlink.*/smartlink/'`"
+AC_SUBST(SMARTLINK)
+export REALCC SMARTLINK
+
+
+
 #############################################################################
 
 
