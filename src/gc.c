@@ -2224,7 +2224,7 @@ int do_gc(void)
     n += gc_touch_all_mappings();
     n += gc_touch_all_programs();
     n += gc_touch_all_objects();
-    // gc_touch_all_strings();
+    /* gc_touch_all_strings(); */
     if (n != (unsigned) num_objects)
       fatal("Object count wrong after gc; expected %d, got %d.\n", num_objects, n);
     GC_VERBOSE_DO(fprintf(stderr, "| posttouch: %u things\n", n));
