@@ -438,10 +438,10 @@ static void post_init()
 
 static void my_glFrustum(INT32 args)
 {
-  float right,left,bottom,top,near,far;
+  float right,left,bottom,top,near,away;
 
   get_all_args("glFrustum", args, "%F%F%F%F%F%F",
-	       &right, &left, &bottom, &top, &near, &far);
+	       &right, &left, &bottom, &top, &near, &away);
   pop_n_elems(args);
 
   /* row 1 */
@@ -459,13 +459,13 @@ static void my_glFrustum(INT32 args)
   /* row 3 */
   push_float( (right+left)/(right-left) );
   push_float( (top+bottom)/(top-bottom) );
-  push_float( (far+near)/(far-near) );
+  push_float( (away+near)/(away-near) );
   push_int( -1 );
 
   /* row 4 */
   push_int( 0 );
   push_int( 0 );
-  push_int( 2*far*near/(far-near) );
+  push_int( 2*away*near/(away-near) );
   push_int( 0 );
 
   aggregate_array(16);
