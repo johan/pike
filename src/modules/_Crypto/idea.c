@@ -20,22 +20,6 @@
 #include "object.h"
 #include "error.h"
 #include "las.h"
-#if 0
-#include "constants.h" 
-#include "macros.h"
-#include "threads.h"
-#include "stralloc.h"
-#include "builtin_functions.h"
-
-/* System includes */
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <errno.h>
-#endif
 
 /* Backend includes */
 #include <idea.h>
@@ -144,8 +128,8 @@ static void f_crypt_block(INT32 args)
 
   s = begin_shared_string(len);
   for(i = 0; i < len; i += IDEA_BLOCKSIZE)
-    idea_crypt((unsigned INT8 *) s->str + i,
-	       THIS,
+    idea_crypt(THIS,
+	       (unsigned INT8 *) s->str + i,
 	       (unsigned INT8 *) sp[-1].u.string->str + i);
   
   pop_n_elems(args);
