@@ -29,9 +29,9 @@ string fakeroot(string s)
 object progress_bar;
 
 class GTKProgress {
-  object /* GTK.Window */ win;
-  object /* GTK.ProgressBar */ bar;
-  object /* GTK.Frame */ frame;
+#if constant(GTK.Window)
+  GTK.ProgressBar bar;
+#endif
   float progress;
   float scale;
 
@@ -41,18 +41,20 @@ class GTKProgress {
     if(bar) bar->update(progress);
   }
 
+#if constant(GTK.Window)
+  GTK.Window win;
+  GTK.Frame frame;
+
   void create() {
-#if constant(GTK)
-    if(!GTK->setup_gtk) return;
-    GTK->setup_gtk();
-    win = GTK->Window(GTK.WINDOW_TOPLEVEL)
+    GTK.setup_gtk();
+    win = GTK.Window(GTK.WINDOW_TOPLEVEL)
       ->set_title(version() + " Module Dumping")
-      ->add( frame=GTK->Frame("Dumping Pike modules...")->
-	     set_border_width(16)->
-	     add( bar=GTK->ProgressBar()->set_usize(150,20) ));
+      ->add(frame = GTK.Frame("Dumping Pike modules...")->
+	    set_border_width(16)->
+	    add(bar = GTK.ProgressBar()->set_usize(150,20)));
     win->show_all();
-#endif
   }
+#endif
 }
 
 Stdio.File logfile = Stdio.stderr;
