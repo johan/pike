@@ -7607,8 +7607,13 @@ test_eq([[compile_string(#"
 #define X(x) x()
 string a() {return X(Y);}
 ")()->a()]], "z")
-test_compile_error([[
+test_compile([[
 #define Y(y) y
+#define X(x) x()
+X(Y)
+]])
+test_compile_error([[
+#define Y(y,z) y
 #define X(x) x()
 X(Y)
 ]])
