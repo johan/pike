@@ -935,6 +935,8 @@ node *debug_mkexternalnode(struct program *parent_prog, int i)
   node *res = mkemptynode();
   struct identifier *id;
   res->token = F_EXTERNAL;
+
+  id = ID_FROM_INT(parent_prog, i);
 #ifdef PIKE_DEBUG
   if(d_flag)
   {
@@ -942,8 +944,6 @@ node *debug_mkexternalnode(struct program *parent_prog, int i)
     check_string(id->name);
   }
 #endif
-
-  id = ID_FROM_INT(parent_prog, i);
 
   copy_shared_string(res->type, id->type);
 
