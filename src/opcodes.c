@@ -406,7 +406,7 @@ void o_cast_to_string(void)
     return;
 	    
   case T_INT:
-    sprintf(buf, "%ld", (long)sp[-1].u.integer);
+    sprintf(buf, "%"PRINTPIKEINT"d", sp[-1].u.integer);
     break;
 	    
   case T_FLOAT:
