@@ -3487,8 +3487,12 @@ low_idents: TOK_IDENTIFIER
     {
       if (!($$ = program_magic_identifier (Pike_compiler, 0, -1,
 					   $2->u.sval.u.string, 1)))
-	/* FIXME: Shouldn't this be an error? /mast */
+      {
+	if (Pike_compiler->compiler_pass == 2) {
+	  my_yyerror("No such inherit ::%s.", $2->u.sval.u.string->str);
+	}
 	$$=mkintnode(0);
+      }
     }else{
       if($$->token==F_ARG_LIST) $$=mkefuncallnode("aggregate",$$);
     }
