@@ -206,13 +206,15 @@ export:
 
 snapshot_export:
 	@$(MAKE) "MAKE=$(MAKE)" "CONFIGUREARGS=--disable-binary $(CONFIGUREARGS)" \
-	  "OS=source" "LIMITED_TARGETS=yes" "METATARGET=snapshot_export" compile
+	  "OS=source" "LIMITED_TARGETS=yes" "METATARGET=snapshot_export" \
+	  "EXPORT_NAME=Pike-v%maj.%min-snapshot-%Y%M%D" compile
 
 snapshot: snapshot_export
 
 autobuild_export:
 	@$(MAKE) "MAKE=$(MAKE)" "CONFIGUREARGS=--disable-binary $(CONFIGUREARGS)" \
-	  "OS=source" "LIMITED_TARGETS=yes" "METATARGET=small_export" compile
+	  "OS=source" "LIMITED_TARGETS=yes" "METATARGET=snapshot_export" \
+	  "EXPORT_NAME=Pike-snapshot-%Y%M%D-%h%m%s" compile
 
 bin_export:
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=bin_export"
