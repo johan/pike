@@ -73,7 +73,10 @@ mapping _decode( string data, mixed|void tocolor )
     foreach( ({ "GIF", "JPEG", "XWD", "PNM", "RAS" }), string fmt )
     {
       catch {
-        i = Image[fmt]->decode( data );
+	if( mappingp( opts ) )
+	  i = Image[fmt]->decode( data, opts );
+	else
+	  i = Image[fmt]->decode( data );
         format = fmt;
       };
       if( i )
@@ -89,7 +92,11 @@ mapping _decode( string data, mixed|void tocolor )
     }), string fmt )
     {
       catch {
-        mixed q = Image[fmt]->_decode( data );
+	mixed q;
+	if( mappingp( opts ) )
+	  q = Image[fmt]->_decode( data, opts );
+	else
+	  q = Image[fmt]->_decode( data );
         format = fmt;
         i = q->image;
         a = q->alpha;
