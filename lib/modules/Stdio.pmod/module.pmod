@@ -1896,7 +1896,7 @@ string read_bytes(string filename, void|int start,void|int len)
     if (f->errno() == System.ENOENT)
       return 0;
     else
-      error ("Failed to open %O: %s", filename, strerror (f->errno()));
+      error ("Failed to open %O: %s\n", filename, strerror (f->errno()));
   }
 
   // Disallow devices and directories.
