@@ -298,6 +298,8 @@ int yylex(YYSTYPE *yylval);
 %type <number> modifier
 %type <number> modifier_list
 %type <number> modifiers
+%type <number> number_or_maxint
+%type <number> number_or_minint
 %type <number> optional_dot_dot_dot
 %type <number> optional_stars
 
@@ -839,9 +841,28 @@ type3: F_INT_ID  opt_int_range    { push_type(T_INT); }
   | F_FUNCTION_ID opt_function_type { push_type(T_FUNCTION); }
   ;
 
-opt_int_range:  { push_type_int(MAX_INT32); push_type_int(MIN_INT32);  }
-  | '(' F_NUMBER F_DOT_DOT F_NUMBER ')'
+number_or_maxint: /* Empty */
   {
+    $$ = MAX_INT32;
+  }
+  | F_NUMBER
+  ;
+
+number_or_minint: /* Empty */
+  {
+    $$ = MIN_INT32;
+  }
+  | F_NUMBER
+  ;
+
+opt_int_range: /* Empty */
+  {
+    push_type_int(MAX_INT32);
+    push_type_int(MIN_INT32);
+  }
+  | '(' number_or_minint F_DOT_DOT number_or_maxint ')'
+  {
+    /* FIXME: Check that $4 is >= $2. */
     push_type_int($4);
     push_type_int($2);
   }
