@@ -4,9 +4,8 @@ pushdef([AC_PROG_CC],
 
   AC_PROG_CC
 
-  case "$CC" in
-    *rntcc*) TCC="no" ;;
-    *tcc*) TCC="yes" ;;
+  case "`$CC -V 2>&1|head -1`" in
+    tcc*) TCC="yes" ;;
     *) TCC="no" ;;
   esac
 ])
