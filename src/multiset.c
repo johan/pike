@@ -3706,7 +3706,6 @@ PMOD_EXPORT ptrdiff_t multiset_get_nth (struct multiset *l, size_t n)
 #define GC_MSD_GOT_NODE_REFS GC_USER_1
 #define GC_MSD_VISITED GC_USER_2
 
-#ifdef PIKE_DEBUG
 unsigned gc_touch_all_multisets (void)
 {
   unsigned n = 0;
@@ -3721,7 +3720,6 @@ unsigned gc_touch_all_multisets (void)
   }
   return n;
 }
-#endif
 
 void gc_check_all_multisets (void)
 {
@@ -5629,7 +5627,6 @@ void real_gc_cycle_check_multiset(struct multiset *l, int weak)
   } GC_CYCLE_LEAVE;
 }
 
-#ifdef PIKE_DEBUG
 unsigned gc_touch_all_multisets(void)
 {
   unsigned n = 0;
@@ -5644,7 +5641,6 @@ unsigned gc_touch_all_multisets(void)
   }
   return n;
 }
-#endif
 
 void gc_check_all_multisets(void)
 {

@@ -6548,7 +6548,6 @@ static void gc_check_program(struct program *p)
 #endif
 }
 
-#ifdef PIKE_DEBUG
 unsigned gc_touch_all_programs(void)
 {
   unsigned n = 0;
@@ -6564,7 +6563,6 @@ unsigned gc_touch_all_programs(void)
   }
   return n;
 }
-#endif
 
 void gc_check_all_programs(void)
 {
