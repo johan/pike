@@ -976,12 +976,12 @@ static INLINE FLOAT_TYPE low_parse_IEEE_float(char *b, int sz)
 
 /* Avoid some warnings about loss of precision */
 #ifdef __ECL
-static inline int TO_INT32(ptrdiff_t x)
+static inline INT32 TO_INT32(ptrdiff_t x)
 {
-  return DO_NOT_WARN((int)x);
+  return DO_NOT_WARN((INT32)x);
 }
 #else /* !__ECL */
-#define TO_INT32(x)	((int)x)
+#define TO_INT32(x)	((INT32)x)
 #endif /* __ECL */
 
 #define MK_VERY_LOW_SSCANF(INPUT_SHIFT, MATCH_SHIFT)			 \
