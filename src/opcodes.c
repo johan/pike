@@ -518,7 +518,9 @@ void o_cast(struct pike_type *type, INT32 run_time_type)
 	    if(Pike_fp->pc)
 	    {
 	      INT32 lineno;
-	      push_text(get_line(Pike_fp->pc, Pike_fp->context.prog, &lineno));
+	      push_string(get_line(Pike_fp->pc,
+				   Pike_fp->context.prog,
+				   &lineno));
 	    }else{
 	      push_int(0);
 	    }
@@ -545,7 +547,7 @@ void o_cast(struct pike_type *type, INT32 run_time_type)
 	  if(Pike_fp->pc)
 	  {
 	    INT32 lineno;
-	    push_text(get_line(Pike_fp->pc, Pike_fp->context.prog, &lineno));
+	    push_string(get_line(Pike_fp->pc, Pike_fp->context.prog, &lineno));
 	  }else{
 	    push_int(0);
 	  }

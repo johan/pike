@@ -785,7 +785,7 @@ void low_describe_something(void *a,
 
     case T_PROGRAM:
     {
-      char *tmp;
+      struct pike_string *tmp;
       INT32 line;
       int foo=0;
 
@@ -797,13 +797,17 @@ void low_describe_something(void *a,
       {
 	fprintf(stderr,"%*s**The program was written in C.\n",indent,"");
       }
-      tmp=get_program_line(p, &line);
-      if(strcmp(tmp, "-"))
+
+      tmp = get_program_line(p, &line);
+      if(strcmp(tmp->str, "-"))
       {
-	fprintf(stderr,"%*s**Location: %s:%ld\n",indent,"",tmp,(long)line);
+	fprintf(stderr,"%*s**Location: %s:%ld\n",
+		indent, "", tmp->str, (long)line);
+	free_string(tmp);
 	foo=1;
 	break;
       }
+      free_string(tmp);
 #if 0
       if(!foo && p->num_linenumbers>1 && EXTRACT_UCHAR(p->linenumbers)=='\177')
       {
@@ -2600,8 +2604,9 @@ int do_gc(void)
       fprintf(stderr, "|   Killing %p with %d refs", o, o->refs);
       if (o->prog) {
 	INT32 line;
-	char *file = get_program_line (o->prog, &line);
-	fprintf(stderr, ", prog %s:%d\n", file, line);
+	struct pike_string *file = get_program_line (o->prog, &line);
+	fprintf(stderr, ", prog %s:%d\n", file->str, line);
+	free_string(file);
       }
       else fputs(", is destructed\n", stderr);
     );
