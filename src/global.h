@@ -193,7 +193,16 @@ char *alloca ();
 #define TYPE_T unsigned INT8
 #define TYPE_FIELD unsigned INT16
 
+#ifndef WITH_DOUBLE_PRECISION_SVALUE
 #define FLOAT_TYPE float
+#else
+#ifdef WITH_LONG_DOUBLE_PRECISION_SVALUE
+#define FLOAT_TYPE long double
+#else
+#define FLOAT_TYPE double
+#endif /* long double */
+#endif /* double */
+
 #define INT_TYPE INT32
 
 #define B1_T char
