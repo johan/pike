@@ -2166,6 +2166,7 @@ static void decode_value2(struct decode_data *data)
 	case 0:
 	{
 	  struct svalue *prog_code;
+	  struct program *p;
 
 	  tmp=data->counter;
 	  data->counter.u.integer++;
@@ -2181,7 +2182,10 @@ static void decode_value2(struct decode_data *data)
 	  }else{
 	    fallback_codec();
 	  }
-	  if(data->pickyness && !program_from_svalue(Pike_sp-1)) {
+
+	  p = program_from_svalue(Pike_sp-1);
+
+	  if(data->pickyness && !p) {
 	    if ((prog_code->type == T_STRING) &&
 		(prog_code->u.string->len < 128) &&
 		(!prog_code->u.string->size_shift)) {
@@ -2191,6 +2195,9 @@ static void decode_value2(struct decode_data *data)
 	    Pike_error("Failed to decode program.\n");
 	  }
 	  /* Remove the extra entry from the stack. */
+	  stack_swap();
+	  pop_stack();
+	  ref_push_program(p);
 	  stack_swap();
 	  pop_stack();
 	  break;
