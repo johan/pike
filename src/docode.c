@@ -900,7 +900,7 @@ static int do_docode2(node *n, INT16 flags)
       tmp2 = do_branch(-1);
       tmp3 = ins_label(-1);
       PUSH_STATEMENT_LABEL;
-      do_code(CDR(n));
+      do_pop(do_code(CDR(n)));
       POP_STATEMENT_LABEL;
       ins_label(tmp2);
       emit1(F_LOOP, tmp3);
