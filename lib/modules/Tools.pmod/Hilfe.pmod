@@ -215,7 +215,7 @@ dump wrapper
       case "history":
 	history(e);
 	return;
-      case 0:
+      case "":
 	dump(e);
 	return;
       }
