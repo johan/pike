@@ -2300,6 +2300,7 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 	Pike_fatal("string_builder_vsprintf(): Invalid formatting method: "
 		   "'%c' 0x%x.\n", *fmt, *fmt);
       }
+      fmt++;
     } else {
       const char *start = fmt;
       while (*fmt && (*fmt != '%'))
