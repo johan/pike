@@ -248,7 +248,7 @@ PMOD_EXPORT void call_c_initializers(struct object *o)
   POP_FRAME();
 }
 
-static void call_pike_initializers(struct object *o, int args)
+void call_pike_initializers(struct object *o, int args)
 {
   apply_lfun(o,LFUN___INIT,0);
   pop_stack();
