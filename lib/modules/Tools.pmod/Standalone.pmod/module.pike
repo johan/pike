@@ -258,7 +258,7 @@ int main(int argc, array(string) argv)
 	string data = Process.popen("autoconf --version");
 	data = (data/"\n")[0];
 	float v;
-	sscanf(data, "%*s %f", v);
+	sscanf(data, "%*s%f", v);
 
 	// If we fail to determine the autoconf version we assume
 	// yet another incompatble autoconf change.
