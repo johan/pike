@@ -1433,7 +1433,7 @@ static void do_trace_func_return (int got_retval, struct object *o, int fun)
 {
   dynamic_buffer save_buf;
   init_buf (&save_buf);
-  if (fun >= 0) {
+  if (o) {
     if (o->prog) {
       struct identifier *id = ID_FROM_INT (o->prog, fun);
       char buf[50];
@@ -1585,9 +1585,9 @@ void really_free_pike_scope(struct pike_frame *scope)
  */
 int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 {
-  struct object *o;
+  struct object *o = NULL;
   struct pike_frame *scope=0;
-  ptrdiff_t fun = -1;
+  ptrdiff_t fun;
   struct svalue *save_sp=Pike_sp-args;
 
 #if defined(PIKE_DEBUG) && defined(_REENTRANT)
