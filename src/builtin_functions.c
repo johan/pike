@@ -4377,12 +4377,35 @@ PMOD_EXPORT void f_localtime(INT32 args)
  */
 static time_t my_tm_diff(const struct tm *t1, const struct tm *t2)
 {
-  return (t1->tm_year - t2->tm_year) * 31557600 +
-    (t1->tm_mon - t2->tm_mon) * 2629800 +
+  time_t base = (t1->tm_year - t2->tm_year) * 31557600 +
     (t1->tm_mday - t2->tm_mday) * 86400 +
     (t1->tm_hour - t2->tm_hour) * 3600 +
     (t1->tm_min - t2->tm_min) * 60 +
     (t1->tm_sec - t2->tm_sec);
+  if (t1->tm_mon == t2->tm_mon) return base;
+
+  base += (t1->tm_mon - t2->tm_mon) * 30 * 86400;
+  if (t1->tm_mon < 8) {
+    base += (t1->tm_mon/2)*86400;
+  } else {
+    base += ((t1->tm_mon+1)/2)*86400;
+  }
+  if (t1->tm_mon > 2) {
+    /* Adjust for February. */
+    base -= 2*86400;
+    base += !(t1->tm_year&3)*86400;	/* Not year 2400 or 1600 safe. */
+  }
+  if (t2->tm_mon < 8) {
+    base -= (t2->tm_mon/2)*86400;
+  } else {
+    base -= ((t2->tm_mon+1)/2)*86400;
+  }
+  if (t2->tm_mon > 2) {
+    /* Adjust for February. */
+    base += 2*86400;
+    base -= !(t2->tm_year&3)*86400;	/* Not year 2400 or 1600 safe. */
+  }
+  return base;
 }
 
 /* Inverse operation of gmtime().
