@@ -104,6 +104,8 @@ void image_paste_alpha_color(INT32 args);
 /* matrix.c */
 
 void image_scale(INT32 args);
+void image_translate(INT32 args);
+void image_translate_expand(INT32 args);
 void image_skewx(INT32 args);
 void image_skewy(INT32 args);
 void image_skewx_expand(INT32 args);
