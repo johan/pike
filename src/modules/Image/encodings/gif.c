@@ -1059,7 +1059,7 @@ void _image_gif_encode(INT32 args,int fs)
 	   get_storage(alphaobj=sp[arg-args].u.object,image_program)))
       {
 	 alphaobj->refs++;
-	 if (args-arg>1)
+	 if (args-arg>1) {
 	    if (args-arg<4 ||
 		sp[1+arg-args].type!=T_INT ||
 		sp[2+arg-args].type!=T_INT ||
@@ -1072,6 +1072,7 @@ void _image_gif_encode(INT32 args,int fs)
 	       ac.b=sp[3+arg-args].u.integer;
 	       alphaentry=1;
 	    }
+	 }
 	 trans=1;
 	 if (!nct) tridx=255;
 	 else tridx=image_colortable_size(nct);

@@ -58,7 +58,7 @@ struct callback *add_post_master_callback(callback_func call,
 }
 
 
-void main(int argc, char **argv)
+int main(int argc, char **argv)
 {
   JMP_BUF back;
   int e, num;
@@ -287,6 +287,9 @@ void main(int argc, char **argv)
 
   push_int(0);
   f_exit(1);
+
+  /* NOT REACHED */
+  return(-1);	/* To avoid warnings. */
 }
 
 

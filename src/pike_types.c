@@ -378,7 +378,7 @@ static void internal_parse_typeA(char **_s)
 
 static void internal_parse_typeB(char **s)
 {
-  while(ISSPACE(**s)) ++*s;
+  while(ISSPACE(**((unsigned char **)s))) ++*s;
   switch(**s)
   {
   case '!':
@@ -390,7 +390,7 @@ static void internal_parse_typeB(char **s)
   case '(':
     ++*s;
     internal_parse_typeB(s);
-    while(ISSPACE(**s)) ++*s;
+    while(ISSPACE(**((unsigned char **)s))) ++*s;
     if(**s != ')') error("Expecting ')'.\n");
     break;
     
@@ -404,12 +404,12 @@ static void internal_parse_typeCC(char **s)
 {
   internal_parse_typeB(s);
 
-  while(ISSPACE(**s)) ++*s;
+  while(ISSPACE(**((unsigned char **)s))) ++*s;
   
   while(**s == '*')
   {
     ++*s;
-    while(ISSPACE(**s)) ++*s;
+    while(ISSPACE(**((unsigned char **)s))) ++*s;
     push_type(T_ARRAY);
   }
 }
@@ -422,7 +422,7 @@ static void internal_parse_typeC(char **s)
   internal_parse_typeCC(s);
   type_stack_reverse();
 
-  while(ISSPACE(**s)) ++*s;
+  while(ISSPACE(**((unsigned char **)s))) ++*s;
   
   if(**s == '&')
   {
@@ -441,7 +441,7 @@ static void internal_parse_type(char **s)
 {
   internal_parse_typeC(s);
 
-  while(ISSPACE(**s)) ++*s;
+  while(ISSPACE(**((unsigned char **)s))) ++*s;
   
   while(**s == '|')
   {

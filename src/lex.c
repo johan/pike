@@ -296,7 +296,7 @@ char *get_token_name(int n)
 
 struct lex lex;
 
-#define LOOK() (*(lex.pos))
+#define LOOK() (*((unsigned char *)lex.pos))
 #define GETC() (*(lex.pos++))
 #define GOBBLE(c) (LOOK()==c?(lex.pos++,1):0)
 #define SKIPSPACE() do { while(ISSPACE(LOOK()) && LOOK()!='\n') lex.pos++; }while(0)
