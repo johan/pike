@@ -1312,6 +1312,7 @@ void fix_type_field(node *n)
 
 static void zapp_try_optimize(node *n)
 {
+  if(!n) return;
   n->node_info &=~ OPT_TRY_OPTIMIZE;
   n->tree_info &=~ OPT_TRY_OPTIMIZE;
   if(car_is_node(n)) zapp_try_optimize(CAR(n));
