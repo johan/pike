@@ -101,6 +101,20 @@ static void colortable_free_lookup_stuff(struct neo_colortable *nct)
    }
 }
 
+static void colortable_free_dither_union(struct neo_colortable *nct)
+{
+  switch (nct->dither_type)
+  {
+    case NCTD_ORDERED:
+      free(nct->du.ordered.rdiff);
+      free(nct->du.ordered.gdiff);
+      free(nct->du.ordered.bdiff);
+      break;
+    default:
+      ;
+  }
+}
+
 static void free_colortable_struct(struct neo_colortable *nct)
 {
    struct nct_scale *s;
@@ -122,6 +136,8 @@ static void free_colortable_struct(struct neo_colortable *nct)
 	 nct->type=NCT_NONE;
          return; /* done */
    }
+
+   colortable_free_dither_union(nct);
 }
 
 static void colortable_init_stuff(struct neo_colortable *nct)
@@ -3810,6 +3826,7 @@ void image_colortable_ordered(INT32 args)
    int r,g,b;
    int xsize,ysize;
 
+   colortable_free_dither_union(THIS);
    THIS->dither_type=NCTD_NONE;
 
    if (args>=3) 
