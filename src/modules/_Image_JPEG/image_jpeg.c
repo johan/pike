@@ -843,6 +843,7 @@ static void img_jpeg_decode(INT32 args,int mode)
 	    }
 	 }
 	 f_aggregate_mapping(m*2);
+	 n++;
       }
 
       jpeg_finish_decompress(&cinfo);
