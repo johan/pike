@@ -2315,7 +2315,7 @@ static node *fix_overloaded_type(node *n, int lfun, const char *deftype, int def
     /* FIXME: Ought to handle or-nodes here. */
     if(t && (t->type == T_OBJECT))
     {
-      struct program *p = id_to_program((ptrdiff_t)t->cdr);
+      struct program *p = id_to_program(((char *)t->cdr)-(char *)0);
       if(p)
       {
 	int fun=FIND_LFUN(p, lfun);
