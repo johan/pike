@@ -21,6 +21,16 @@
 #include <netinet/in.h>
 #endif /* HAVE_NETINET_IN_H */
 
+#ifdef HAVE_WINSOCK2_H
+#include <WinSock2.h>
+#ifdef HAVE_WS2TCPIP_H
+/* Needed for IPv6 support. */
+#include <WS2tcpip.h>
+#endif
+#elif defined(HAVE_WINSOCK_H)
+#include <winsock.h>
+#endif
+
 typedef union {
   struct sockaddr sa;
   struct sockaddr_in ipv4;
