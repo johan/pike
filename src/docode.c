@@ -570,6 +570,7 @@ static int do_docode2(node *n,int flags)
     current_switch_jumptable = prev_switch_jumptable;
     current_break=break_save;
     current_continue=continue_save;
+    do_pop(4);
     return 0;
   }
 
@@ -599,6 +600,7 @@ static int do_docode2(node *n,int flags)
     current_switch_jumptable = prev_switch_jumptable;
     current_break=break_save;
     current_continue=continue_save;
+    do_pop(3);
     return 0;
   }
 

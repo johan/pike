@@ -379,7 +379,6 @@ CASE(ID) \
     check_threads_etc(); \
   }else{ \
     pc+=sizeof(INT32); \
-    pop_n_elems(3); \
   } \
   break; \
 }
@@ -874,7 +873,6 @@ static void eval_instruction(unsigned char *pc)
 	  sp[-1].u.integer++;
 	}else{
 	  pc+=sizeof(INT32);
-	  pop_n_elems(4);
 	}
 	break;
       }
