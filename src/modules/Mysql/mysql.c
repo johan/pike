@@ -233,7 +233,7 @@ static void pike_mysql_reconnect(void)
   if (!(PIKE_MYSQL->socket = socket)) {
     error("Mysql.mysql(): Couldn't reconnect to SQL-server\n"
 	  "%s\n",
-	  mysql_error(&PIKE_MYSQL->mysql);
+	  mysql_error(&PIKE_MYSQL->mysql));
   }
   if (database) {
     int tmp;
