@@ -153,8 +153,7 @@ PMOD_EXPORT const char msg_multiset_no_node_refs[] =
 
 #define NODE_AT(MSD, TYPE, POS) ((struct TYPE *) &(MSD)->nodes + (POS))
 #define NODE_OFFSET(TYPE, POS)						\
-  ((size_t)(((char *)NODE_AT ((struct multiset_data *) NULL, TYPE, POS))- \
-            (char *)0))
+  PTR_TO_INT (NODE_AT ((struct multiset_data *) NULL, TYPE, POS))
 
 #define SHIFT_PTR(PTR, FROM, TO) ((char *) (PTR) - (char *) (FROM) + (char *) (TO))
 #define SHIFT_NODEPTR(NODEPTR, FROM_MSD, TO_MSD)			\
@@ -4232,8 +4231,8 @@ static void check_low_msnode (struct multiset_data *msd,
     Pike_fatal ("Node outside storage for multiset.\n");
   if ((char *) node - (char *) msd->nodes !=
       (msd->flags & MULTISET_INDVAL ?
-       (&node->iv - &msd->nodes->iv) * (ptrdiff_t) ((struct msnode_indval *) NULL + 1) :
-       (&node->i - &msd->nodes->i) * (ptrdiff_t) ((struct msnode_ind *) NULL + 1)))
+       (&node->iv - &msd->nodes->iv) * sizeof (struct msnode_indval) :
+       (&node->i - &msd->nodes->i) * sizeof (struct msnode_ind)))
     Pike_fatal ("Unaligned node in storage for multiset.\n");
 
   switch (node->i.ind.type) {

@@ -40,11 +40,8 @@ static struct mapping *gc_mark_mapping_pos = 0;
  free_mapping_data(M);						\
 }while(0)
 
-
 #define MAPPING_DATA_SIZE(HSIZE, KEYPAIRS) \
-   (((char *)(MD_KEYPAIRS(0, HSIZE) + KEYPAIRS))-(char *)0)
-   
-   
+   PTR_TO_INT(MD_KEYPAIRS(0, HSIZE) + KEYPAIRS)
 
 #undef EXIT_BLOCK
 #define EXIT_BLOCK(m)	do{						\

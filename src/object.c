@@ -106,7 +106,7 @@ PMOD_EXPORT struct object *low_clone(struct program *p)
 #endif /* PROFILING */
 
   o=alloc_object();
-  o->storage=p->storage_needed ? (char *)xalloc(p->storage_needed) : (char *)0;
+  o->storage=p->storage_needed ? (char *)xalloc(p->storage_needed) : (char *)NULL;
 
   GC_ALLOC(o);
 

@@ -127,7 +127,7 @@ void check_all_objects(void);
 #endif
 
 #ifdef PIKE_DEBUG
-#define master() ( get_master() ? get_master() : ( Pike_fatal("Couldn't load master object at %s:%d.\n",__FILE__,__LINE__), (struct object *)0) )
+#define master() ( get_master() ? get_master() : ( Pike_fatal("Couldn't load master object at %s:%d.\n",__FILE__,__LINE__), (struct object *)NULL) )
 #else
 #define master() debug_master()
 #endif

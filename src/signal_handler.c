@@ -1871,7 +1871,7 @@ static void f_proc_reg_index(INT32 args)
   }
 
   if ((val = ptrace(PTRACE_PEEKUSER, proc->pid,
-		    ((long *)(((struct user *)0)->regs)) + regno, 0)) == -1) {
+		    ((long *)(((struct user *)NULL)->regs)) + regno, 0)) == -1) {
     int err = errno;
     /* FIXME: Better diagnostics. */
     if (errno) {

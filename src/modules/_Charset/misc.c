@@ -2077,5 +2077,5 @@ p_wchar1 const *misc_charset_lookup(char *name, int *rlo, int *rhi)
     else
       lo=mid+1;
   }
-  return (p_wchar1 *)0;
+  return (p_wchar1 *)NULL;
 }

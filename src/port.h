@@ -41,7 +41,7 @@ struct timeval;
 void GETTIMEOFDAY(struct timeval *t);
 #else
 #  ifdef GETTIMEOFDAY_TAKES_TWO_ARGS
-#    define GETTIMEOFDAY(X) gettimeofday((X),(void *)0)
+#    define GETTIMEOFDAY(X) gettimeofday((X),NULL)
 #  else
 #    define GETTIMEOFDAY gettimeofday
 #  endif

@@ -550,12 +550,10 @@ int dbm_main(int argc, char **argv)
    */
 #if STACK_DIRECTION < 0
   /* Equvivalent with |= 0xffff */
-  Pike_interpreter.stack_top += (~(((char *)Pike_interpreter.stack_top)-
-				   (char *)0)) & 0xffff;
+  Pike_interpreter.stack_top += ~(PTR_TO_INT(Pike_interpreter.stack_top)) & 0xffff;
 #else /* STACK_DIRECTION >= 0 */
   /* Equvivalent with &= ~0xffff */
-  Pike_interpreter.stack_top -= (((char *)Pike_interpreter.stack_top)-
-				  (char *)0) & 0xffff;
+  Pike_interpreter.stack_top -= PTR_TO_INT(Pike_interpreter.stack_top) & 0xffff;
 #endif /* STACK_DIRECTION < 0 */
 
 #ifdef PROFILING
@@ -774,7 +772,7 @@ int dbm_main(int argc, char **argv)
 
 DECLSPEC(noreturn) void pike_do_exit(int num) ATTRIBUTE((noreturn))
 {
-  call_callback(&exit_callbacks, (void *)0);
+  call_callback(&exit_callbacks, NULL);
   free_callback_list(&exit_callbacks);
 
   exit_modules();

@@ -826,7 +826,7 @@ PMOD_EXPORT extern int Pike_in_gc;
 #define low_th_init()
 #define th_cleanup()
 #define th_init_programs()
-#define th_self() ((void*)0)
+#define th_self() NULL
 #define co_wait(X,Y)
 #define co_signal(X)
 #define co_broadcast(X)

@@ -887,7 +887,7 @@ static void f_fetch_fields(INT32 args)
 	rc=OCIAttrGet((void *)column_parameter,
 		      OCI_DTYPE_PARAM,
 		      &type,
-		      (ub4*)0,
+		      (ub4*)NULL,
 		      OCI_ATTR_DATA_TYPE,
 		      dbcon->error_handle);
 	
@@ -896,7 +896,7 @@ static void f_fetch_fields(INT32 args)
 	rc=OCIAttrGet((void *)column_parameter,
 		      OCI_DTYPE_PARAM,
 		      &size,
-		      (ub4*)0,
+		      (ub4*)NULL,
 		      OCI_ATTR_DATA_SIZE,
 		      dbcon->error_handle);
 	
@@ -905,7 +905,7 @@ static void f_fetch_fields(INT32 args)
 	rc=OCIAttrGet((void *)column_parameter,
 		      OCI_DTYPE_PARAM,
 		      &scale,
-		      (ub4*)0,
+		      (ub4*)NULL,
 		      OCI_ATTR_SCALE,
 		      dbcon->error_handle);
 	
@@ -1004,7 +1004,7 @@ static void f_fetch_fields(INT32 args)
 				    (dvoid **) &info->data.lob, 
 				    (ub4)OCI_DTYPE_LOB, 
 				    (size_t) 0, 
-				    (dvoid **) 0)))
+				    (dvoid **) NULL)))
 	  {
 #ifdef ORACLE_DEBUG
 	    fprintf(stderr,"OCIDescriptorAlloc failed!\n");
@@ -1208,7 +1208,7 @@ static void push_inout_value(struct inout *inout,
 			       1, 
 			       (dvoid *) bufp,
 			       loblen, 
-			       (dvoid *)0, 
+			       (dvoid *)NULL,
 			       (sb4 (*)(dvoid *, CONST dvoid *, ub4, ub1)) 0,
 			       (ub2) 0, 
 			       (ub1) SQLCS_IMPLICIT)) != OCI_SUCCESS) 

@@ -1434,7 +1434,7 @@ void locate_references(void *a)
 #endif
   
   found_where=0;
-  call_callback(& gc_callbacks, (void *)0);
+  call_callback(& gc_callbacks, NULL);
   
   found_where=orig_found_where;
   check_for=orig_check_for;
@@ -2617,7 +2617,7 @@ size_t do_gc(void *ignored, int explicit_call)
   /* These callbacks are mainly for the check pass, but can also
    * do things that are normally associated with the mark pass
    */
-  call_callback(& gc_callbacks, (void *)0);
+  call_callback(& gc_callbacks, NULL);
 
   GC_VERBOSE_DO(fprintf(stderr, "| check: %u references in %d things, "
 			"counted %"PRINTSIZET"u weak refs\n",

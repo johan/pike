@@ -1603,7 +1603,7 @@ void fd_waitor_remove_customer(fd_waitor *x, FD customer)
 
   CloseHandle(x->customers[pos]);
   
-  fd_mapper_store(customer, x->fd_to_pos_key, (void *)0);
+  fd_mapper_store(customer, x->fd_to_pos_key, NULL);
   x->occupied--;
   if(x->occupied != pos)
   {

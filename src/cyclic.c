@@ -18,13 +18,13 @@ static void low_unlink_cyclic(CYCLIC *c)
 {
   size_t h;
   CYCLIC **p;
-  h=((char *)c->id)-(char *)0;
+  h=PTR_TO_INT(c->id);
   h*=33;
-  h|=((char *)c->a)-(char *)0;
+  h|=PTR_TO_INT(c->a);
   h*=33;
-  h|=((char *)c->b)-(char *)0;
+  h|=PTR_TO_INT(c->b);
   h*=33;
-  h|=((char *)c->th)-(char *)0;
+  h|=PTR_TO_INT(c->th);
   h*=33;
   h%=CYCLIC_HASH_SIZE;
 
@@ -58,13 +58,13 @@ void *begin_cyclic(CYCLIC *c,
   void *ret=0;
   CYCLIC *p;
 
-  h=((char *)id)-(char *)0;
+  h=PTR_TO_INT(id);
   h*=33;
-  h|=((char *)a)-(char *)0;
+  h|=PTR_TO_INT(a);
   h*=33;
-  h|=((char *)b)-(char *)0;
+  h|=PTR_TO_INT(b);
   h*=33;
-  h|=((char *)th)-(char *)0;
+  h|=PTR_TO_INT(th);
   h*=33;
   h%=CYCLIC_HASH_SIZE;
 

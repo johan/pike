@@ -33,7 +33,7 @@
 
 #define INC(X) X=STEP(X,1)
 #define DEC(X) X=STEP(X,-1)
-#define SIZE (((char *)STEP((PTYPE)0,1))-((char *)0))
+#define SIZE PTR_TO_INT(STEP((PTYPE)0,1))
 
 #define PARENT(X) (((X)-1)>>1)
 #define CHILD1(X) (((X)<<1)+1)

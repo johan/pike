@@ -45,13 +45,13 @@ long pcharp_strlen(PCHARP a)
 INLINE p_wchar1 *MEMCHR1(p_wchar1 *p, p_wchar2 c, ptrdiff_t e)
 {
   while(--e >= 0) if(*(p++) == (p_wchar1)c) return p-1;
-  return (p_wchar1 *)0;
+  return (p_wchar1 *)NULL;
 }
 
 INLINE p_wchar2 *MEMCHR2(p_wchar2 *p, p_wchar2 c, ptrdiff_t e)
 {
   while(--e >= 0) if(*(p++) == (p_wchar2)c) return p-1;
-  return (p_wchar2 *)0;
+  return (p_wchar2 *)NULL;
 }
 
 void swap(char *a, char *b, size_t size)

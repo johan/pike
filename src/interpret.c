@@ -1529,7 +1529,7 @@ int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 
   case APPLY_LOW:
     o = (struct object *)arg1;
-    fun = ((char *)arg2) - (char *)0;
+    fun = PTR_TO_INT(arg2);
     if(o->prog == pike_trampoline_program &&
        fun == QUICK_FIND_LFUN(pike_trampoline_program, LFUN_CALL))
     {

@@ -523,9 +523,9 @@ PMOD_EXPORT unsigned INT32 hash_svalue(const struct svalue *s)
     }
   default:
 #if SIZEOF_CHAR_P > 4
-    q=DO_NOT_WARN((unsigned INT32)((((char *)s->u.refs)-(char *)0) >> 2));
+    q=DO_NOT_WARN((unsigned INT32)(PTR_TO_INT(s->u.refs) >> 2));
 #else
-    q=DO_NOT_WARN((unsigned INT32)(((char *)s->u.refs)-(char *)0));
+    q=DO_NOT_WARN((unsigned INT32)(PTR_TO_INT(s->u.refs)));
 #endif
     break;
   case T_INT:   q=s->u.integer; break;
