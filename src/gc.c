@@ -98,7 +98,7 @@ static unsigned long hashsize=0;
 
 static struct marker *getmark(void *a)
 {
-  int hashval;
+  unsigned long hashval;
   struct marker *m;
 
   hashval=((unsigned long)a)%hashsize;
