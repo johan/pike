@@ -269,7 +269,7 @@ xenofarm:
 	  mkdir build/xenofarm/configlogs; \
 	  builddir="$(BUILDDIR)"; \
 	  for f in `cd "$$builddir" && find . -name config.log -print`; do \
-	    cp $$builddir/$$f build/xenofarm/configlogs/`echo $$f|tr '[/]' '[_]'`; \
+	    cp $$builddir/$$f build/xenofarm/configlogs/`echo $$f|tr '[/]' '[_]'`.txt; \
 	  done; \
 	else :; fi
 	-if test ! -f "build/xenofarm/exportlog.txt"; then \
