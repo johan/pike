@@ -20,7 +20,7 @@
 struct pike_string
 {
   ptrdiff_t refs;
-  size_t len;
+  ptrdiff_t len;
   size_t hval;
   struct pike_string *next; 
   size_t size_shift; /* 30/62 bit waste, but good for alignment... */
