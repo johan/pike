@@ -204,6 +204,11 @@ export:
 	@$(MAKE) "MAKE=$(MAKE)" "CONFIGUREARGS=--disable-binary $(CONFIGUREARGS)" \
 	  "OS=source" "LIMITED_TARGETS=yes" "METATARGET=export" compile
 
+snapshot_export:
+	@$(MAKE) "MAKE=$(MAKE)" "CONFIGUREARGS=--disable-binary $(CONFIGUREARGS)" \
+	  "OS=source" "LIMITED_TARGETS=yes" "METATARGET=snapshot_export" compile
+
+snapshot: snapshot_export
 
 autobuild_export:
 	@$(MAKE) "MAKE=$(MAKE)" "CONFIGUREARGS=--disable-binary $(CONFIGUREARGS)" \

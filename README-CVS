@@ -46,6 +46,7 @@ verify		    run the testsuite
 run_hilfe	    run hilfe without installing pike
 source		    prepare the source tree for compiliation without
 		    the need for a Pike.
+snapshot	    create a snapshot export tarball.
 export		    create a source dist and bump up the build number
 		    (if you have cvs write access). Please DO NOT
 		    check in the generated files.

@@ -576,6 +576,10 @@ full_export: source
 	chmod +x $(SRCDIR)/install-sh
 	$(RUNPIKE) $(TMP_BINDIR)/export.pike --srcdir="$(SRCDIR)" 
 
+snapshot_export: source
+	chmod +x $(SRCDIR)/install-sh
+	$(RUNPIKE) $(TMP_BINDIR)/export.pike --srcdir="$(SRCDIR)" --notag --snapshot
+
 export: full_export
 
 all_exports: full_export
