@@ -2025,7 +2025,9 @@ void fix_type_field(node *n)
     if (!CAR(n) || (CAR(n)->type == void_type_string)) {
       my_yyerror("Calling a void expression.");
       /* The optimizer converts this to an expression returning 0. */
-      copy_shared_string(n->type, mixed_type_string);
+      if (!n->type) {
+	copy_shared_string(n->type, mixed_type_string);
+      }
     } else {
     struct pike_string *s;
     struct pike_string *f;
