@@ -1954,8 +1954,10 @@ void pike_module_init(void)
 #endif /* HAVE_GETPGRP */
 
 #ifdef HAVE_SETPGRP
-  ADD_EFUN("setpgrp", f_setpgrp, tFunc(tNone, tInt), OPT_EXTERNAL_DEPEND);
-  ADD_FUNCTION2("setpgrp", f_setpgrp, tFunc(tNone, tInt), 0, OPT_EXTERNAL_DEPEND);
+  ADD_EFUN("setpgrp", f_setpgrp, tFunc(tNone, tInt),
+	   OPT_SIDE_EFFECT);
+  ADD_FUNCTION2("setpgrp", f_setpgrp, tFunc(tNone, tInt), 0,
+		OPT_SIDE_EFFECT);
 #endif
 
 #ifdef HAVE_GETSID
@@ -1966,8 +1968,10 @@ void pike_module_init(void)
 #endif
 
 #ifdef HAVE_SETSID
-  ADD_EFUN("setsid", f_setsid, tFunc(tNone, tInt),  OPT_EXTERNAL_DEPEND);
-  ADD_FUNCTION2("setsid", f_setsid, tFunc(tNone, tInt), 0, OPT_EXTERNAL_DEPEND);
+  ADD_EFUN("setsid", f_setsid, tFunc(tNone, tInt),
+	   OPT_SIDE_EFFECT);
+  ADD_FUNCTION2("setsid", f_setsid, tFunc(tNone, tInt), 0,
+		OPT_SIDE_EFFECT);
 #endif
 
 #ifdef HAVE_GETRLIMIT
@@ -1979,16 +1983,16 @@ void pike_module_init(void)
 #endif
 #ifdef HAVE_SETRLIMIT
   ADD_FUNCTION2("setrlimit", f_setrlimit, tFunc(tString tInt tInt, tInt01), 
-		0, OPT_EXTERNAL_DEPEND);
+		0, OPT_SIDE_EFFECT);
 #endif
 
 #ifdef HAVE_CHROOT 
   
 /* function(string|object:int) */
   ADD_EFUN("chroot", f_chroot,tFunc(tOr(tStr,tObj),tInt), 
-           OPT_EXTERNAL_DEPEND);
+           OPT_SIDE_EFFECT);
   ADD_FUNCTION2("chroot", f_chroot,tFunc(tOr(tStr,tObj),tInt), 0,
-           OPT_EXTERNAL_DEPEND);
+           OPT_SIDE_EFFECT);
 #endif /* HAVE_CHROOT */
  
 #if defined(HAVE_UNAME) || defined(HAVE_SYSINFO)
