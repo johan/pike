@@ -73,6 +73,7 @@ extern struct pike_string *program_type_string;
 extern struct pike_string *array_type_string;
 extern struct pike_string *list_type_string;
 extern struct pike_string *mapping_type_string;
+extern struct pike_string *type_type_string;
 extern struct pike_string *mixed_type_string;
 extern struct pike_string *void_type_string;
 extern struct pike_string *zero_type_string;
