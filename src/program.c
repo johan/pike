@@ -3609,6 +3609,14 @@ void yywarning(char *fmt, ...) ATTRIBUTE((format(printf,1,2)))
 {
   char buf[4711];
   va_list args;
+
+  /* If we have parse errors we might get erroneous warnings,
+   * so don't print them.
+   * This has the additional benefit of making it easier to
+   * visually locate the actual error message.
+   */
+  if (num_parse_error) return;
+
   va_start(args,fmt);
   VSPRINTF(buf, fmt, args);
   va_end(args);
