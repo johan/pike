@@ -210,7 +210,7 @@ class File
     return _fd && ::errno();
   }
 
-  static string debug_file;
+  static string|int debug_file;
   static string debug_mode;
   static int debug_bits;
 
