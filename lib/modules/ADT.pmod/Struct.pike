@@ -15,7 +15,7 @@
 //!     Item album = Chars(30);
 //!     Item year = Chars(4);
 //!     Item genre = Byte();
-//!     Item Comment = Chars(30);
+//!     Item comment = Chars(30);
 //!   }
 //!
 //!   Stdio.File f = Stdio.File("foo.mp3");
