@@ -213,6 +213,7 @@ PMOD_EXPORT struct array *array_column (struct array *data, struct svalue *index
       move_svalue (ITEM(data) + e, &sval);
     }
     data->type_field = types;
+    add_ref (data);
     return data;
   }
 
