@@ -1591,10 +1591,10 @@ void check_all_programs()
       {
 	check_string(cache[e].name);
 	if(cache[e].id<0 || cache[e].id > current_program_id)
-	  fatal("Error in find_function_cache[%d].id\n",e);
+	  fatal("Error in find_function_cache[%ld].id\n",(long)e);
 
 	if(cache[e].fun < -1 || cache[e].fun > 65536)
-	  fatal("Error in find_function_cache[%d].fun\n",e);
+	  fatal("Error in find_function_cache[%ld].fun\n",(long)e);
       }
     }
   }
