@@ -36,6 +36,14 @@ test_eq(-8, -0b1000);
 test_eq(16, 0b10000);
 test_eq(-16, -0b10000);
 
+test_do([[
+  int x;
+  if (time())
+    x = 1;
+  else
+    foo: break foo;
+]])
+
 test_any([[
   int f (int i) {i = 0; return i;};
   return f (1);
