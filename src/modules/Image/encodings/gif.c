@@ -821,7 +821,7 @@ CHRONO("gif render_block begin");
       /* write gce control block */
    {
       push_int(transparency);
-      push_int(alphaidx);
+      if (alphaidx!=-1) push_int(alphaidx); else push_int(0);
       push_int(delay);
       push_int(user_input);
       push_int(disposal);
