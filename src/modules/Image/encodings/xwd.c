@@ -341,6 +341,7 @@ struct program *image_xwd_module_program=NULL;
 
 void init_image_xwd(void)
 {
+  struct program *p;
    start_new_program();
    
    add_function("_decode",image_xwd__decode,
@@ -348,12 +349,9 @@ void init_image_xwd(void)
    add_function("decode",image_xwd_decode,
 		"function(string:object)",0);
 
-   push_object(clone_object(end_program(),0));
-   {
-     struct pike_string *s=make_shared_string("XWD");
-     add_constant(s,sp-1,0);
-     free_string(s);
-   }
+   push_object(clone_object(p=end_program(),0));
+   simple_add_constant("XWD",sp-1,0);
+   free_program(p);
    pop_stack();
 }
 
