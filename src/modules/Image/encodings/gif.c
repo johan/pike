@@ -1922,7 +1922,7 @@ static void image_gif__decode(INT32 args)
 		     gif_deinterlace(aimg->img,aimg->xsize,aimg->ysize);
 	       }
 
-	       if (lcto) { lcto->refs++; push_object(lcto); }
+	       if (lcto) push_object(lcto); 
 	       else push_int(0);
 	       
 	       push_int(interlace);
