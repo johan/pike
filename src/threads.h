@@ -350,6 +350,12 @@ struct thread_state {
 #define DO_IF_PROFILING(X)
 #endif
 
+#ifdef DEBUG
+#define DO_IF_DEBUG(X) X
+#else
+#define DO_IF_DEBUG(X)
+#endif
+
 #define SWAP_OUT_THREAD(_tmp) do { \
        (_tmp)->swapped=1; \
        (_tmp)->evaluator_stack=evaluator_stack;\
@@ -364,6 +370,8 @@ struct thread_state {
        (_tmp)->thread_id=thread_id;\
        DO_IF_PROFILING( (_tmp)->accounted_time=accounted_time; ) \
        DO_IF_PROFILING( (_tmp)->time_base = gethrtime() - time_base; ) \
+       DO_IF_DEBUG( DO_IF_PROFILING( if(accounted_time<0) fatal("Accounted time out of whack!\n");)) \
+       DO_IF_DEBUG( DO_IF_PROFILING( if((_tmp)->time_base<0) fatal("time base out of whack!\n");)) \
        SWAP_OUT_TRACE(_tmp); \
       } while(0)
 
@@ -381,6 +389,8 @@ struct thread_state {
        thread_id=(_tmp)->thread_id;\
        DO_IF_PROFILING( accounted_time=(_tmp)->accounted_time; ) \
        DO_IF_PROFILING(  time_base = (_tmp)->time_base + gethrtime(); ) \
+       DO_IF_DEBUG( DO_IF_PROFILING( if(accounted_time<0) fatal("Accounted time out of whack!\n");)) \
+       DO_IF_DEBUG( DO_IF_PROFILING( if(time_base<0) fatal("time base out of whack!\n");)) \
        SWAP_IN_TRACE(_tmp); \
      } while(0)
 
