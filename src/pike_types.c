@@ -3365,6 +3365,7 @@ static struct pike_string *low_object_type_to_program_type(char *obj_t)
     }
     return NULL;
   }
+  /* FIXME: obj_t + 1 should propagate to the return-type in sub. */
   if (res) {
     struct pike_string *tmp = or_pike_types(res, sub, 1);
     free_string(res);
@@ -3468,9 +3469,11 @@ void yyexplain_nonmatching_types(struct pike_string *type_a,
 
   match_types(type_a,type_b);
 
+#if 0
   if(!(implements_a && implements_b &&
        type_a->str[0]==T_OBJECT &&
        type_b->str[0]==T_OBJECT))
+#endif /* 0 */
   {
     struct pike_string *s1,*s2;
     s1=describe_type(type_a);
