@@ -25,10 +25,6 @@ RCSID("$Id$");
 #include "mapping.h"
 #include "cpp.h"
 
-#ifdef HAVE_WINSOCK_H
-#include "winsock.h"
-#endif
-
 #include <errno.h>
 
 #ifdef HAVE_LOCALE_H
@@ -75,16 +71,6 @@ void main(int argc, char **argv)
   ARGV=argv;
 
   fd_init();
-
-#ifdef HAVE_WINSOCK_H
-  {
-    WSADATA wsadata;
-    if(WSAStartup(MAKEWORD(2,0), &wsadata) != 0)
-    {
-      fatal("No winsock available.\n");
-    }
-  }
-#endif
 
 #ifdef HAVE_SETLOCALE
 #ifdef LC_NUMERIC

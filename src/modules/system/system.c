@@ -59,8 +59,8 @@ RCSID("$Id$");
 #include <sys/stat.h>
 #endif /* HAVE_SYS_STAT_H */
 
-#ifdef HAVE_WINSOCK_H
-#include <winsock.h>
+#ifdef HAVE_WINSOCK2_H
+#include <winsock2.h>
 #endif
 
 /*

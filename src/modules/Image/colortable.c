@@ -3094,7 +3094,7 @@ void image_colortable_index_16bit(INT32 args)
    ps=begin_shared_string(src->xsize*src->ysize);
 
    if (!image_colortable_index_16bit_image(THIS,src->img,
-					  (unsigned char *)ps->str,
+					  (unsigned short *)ps->str,
 					  src->xsize*src->ysize,src->xsize))
    {
       free_string(end_shared_string(ps));
