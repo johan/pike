@@ -982,7 +982,7 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	    for(e=0;e<d->num_parts;e++)
 	    {
 	      WCHAR *a;
-	      INT32 l;
+	      ptrdiff_t l;
 	      
 	      if((d->parts[e].argument & DEF_ARG_MASK) < 0 || 
 		 (d->parts[e].argument & DEF_ARG_MASK) >= arg)
