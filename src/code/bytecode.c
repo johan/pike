@@ -53,7 +53,7 @@ void ins_f_byte(unsigned int b)
   add_to_program((unsigned char)b);
 }
 
-static void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b)
+void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b)
 {
   switch(b >> 8)
   {
@@ -82,9 +82,9 @@ static void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b)
   add_to_program((PIKE_OPCODE_T)b);
 }
 
-static void ins_f_byte_with_2_args(unsigned int a,
-				   unsigned INT32 c,
-				   unsigned INT32 b)
+void ins_f_byte_with_2_args(unsigned int a,
+			    unsigned INT32 c,
+			    unsigned INT32 b)
 {
   switch(b >> 8)
   {
