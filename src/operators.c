@@ -1871,7 +1871,7 @@ void o_compl(void)
 
   case T_TYPE:
     type_stack_mark();
-    push_unfinished_type(sp[-1].u.string);
+    push_unfinished_type(sp[-1].u.string->str);
     push_type(T_NOT);
     pop_stack();
     push_string(pop_unfinished_type());
