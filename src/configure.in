@@ -2698,6 +2698,10 @@ AC_CHECK_HEADERS(sys/rusage.h time.h sys/time.h sys/types.h unistd.h stdlib.h \
 #include <windows.h>
 #undef HAVE_WINDOWS_H
 #endif
+/* Necessary to find sys/socket.h on MacOS X 10.3 */
+#if HAVE_SYS_TYPES_H
+# include <sys/types.h>
+#endif
 ])
 
 # Setjmp.
