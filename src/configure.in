@@ -33,6 +33,25 @@ If this does not work, please use an absolute path to the configure script.
     ;;
 esac
 
+# Check that we can write to the source directory.
+sleep 1
+if touch "$srcdir/configure~"; then
+  # Check that the system time is reasonably correct.
+  if test `cd "$srcdir" && ls -1t configure configure~ | head -1` = "configure"; then
+    AC_MSG_ERROR([
+$srcdir/configure has modification time in the future.
+Check and set your system time.
+Current system time is `date`.
+])
+  fi
+else
+  AC_MSG_ERROR([
+Failed to write in source directory.
+Fix your permissions.
+`ls -ld $srcdir`
+])
+fi
+
 # Attempt to use bash instead of /bin/sh to run configure
 # since bash is usually several orders of magnitude faster
 # on machines that have a real /bin/sh.
