@@ -310,6 +310,9 @@ void udp_read(INT32 args)
   struct sockaddr_in from;
   char buffer[UDP_BUFFSIZE];
   ACCEPT_SIZE_T fromlen = sizeof(struct sockaddr_in);
+
+  if(FD < 0)
+    error("UDP: not open\n");
   
   if(args)
   {
