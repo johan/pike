@@ -1460,7 +1460,7 @@ void pike_module_init()
   add_storage(sizeof(struct file_struct));
 
   add_function("open",file_open,"function(string,string:int)",0);
-  add_function("close",file_close,"function(string|void:void)",0);
+  add_function("close",file_close,"function(string|void:int)",0);
   add_function("read",file_read,"function(int,int|void:int|string)",0);
   add_function("write",file_write,"function(string:int)",0);
 
