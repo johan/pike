@@ -2892,7 +2892,6 @@ void image_layer_autocrop(INT32 args)
 
 static void image_layer__sprintf( INT32 args )
 {
-  extern void f_sprintf( INT32 args );
   int x;
   if (args != 2 )
     SIMPLE_TOO_FEW_ARGS_ERROR("_sprintf",2);
