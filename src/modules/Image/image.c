@@ -161,7 +161,7 @@ static void exit_image_struct(struct object *obj)
 /*
   fprintf(stderr,"exit %lx (%d) %dx%d=%.1fKb\n",obj,--obj_counter,
 	  THIS->xsize,THIS->ysize,
-	  (THIS->xsize*THIS->ysize*3+sizeof(struct image))/1024.0);
+	  (THIS->xsize*THIS->ysize*sizeof(rgb_group)+sizeof(struct image))/1024.0);
 	  */
 }
 
@@ -2654,7 +2654,7 @@ void image_read_lsb_rgb(INT32 args)
    char *d;
    struct pike_string *ps;
 
-   ps=begin_shared_string((THIS->xsize*THIS->ysize*3+7)>>3);
+   ps=begin_shared_string((THIS->xsize*THIS->ysize*sizeof(rgb_group)+7)>>3);
 
    d=ps->str;
 
@@ -2663,7 +2663,7 @@ void image_read_lsb_rgb(INT32 args)
 
    b=128;
 
-   MEMSET(d,0,(THIS->xsize*THIS->ysize*3+7)>>3);
+   MEMSET(d,0,(THIS->xsize*THIS->ysize*sizeof(rgb_group)+7)>>3);
 
    if (s)
    while (n--)
