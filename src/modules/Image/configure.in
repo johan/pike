@@ -10,6 +10,9 @@ AC_FUNC_MMAP
 
 AC_CHECK_HEADERS(sys/fcntl.h fcntl.h stdlib.h netinet/in.h winsock.h)
 
+AC_CHECK_LIB(m, abs, [], [])
+AC_CHECK_LIB(m, fabs, [], [])
+
 AC_SUBST(RANLIB)
 
 AC_CONFIG_SUBDIRS(encodings)
