@@ -32,6 +32,8 @@ extern PIKE_MUTEX_T interleave_lock;
 #define THREAD_FLAG_TERM	1	/* Pending termination. */
 #define THREAD_FLAG_INTR	2	/* Pending interrupt. */
 
+#define THREAD_FLAG_SIGNAL_MASK	3	/* All of the above. */
+
 /* Debug flags */
 #define THREAD_DEBUG_LOOSE  1	/* Thread is not bound to the interpreter. */
 
