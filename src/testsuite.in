@@ -7946,7 +7946,7 @@ test_false(crypt("hej","buf8/Z7taE6qst"))
 test_false(crypt("hej","buf8/Z7taE6q"))
 
 // - ctime
-test_eq(ctime(0)[0],'\n')
+test_eq(ctime(0)[-1],'\n')
 
 // - destruct
 test_do(add_constant("PROG",compile_string("int foo() { return 1; }")));
