@@ -37,7 +37,7 @@ OWLResource owl_equivalentClass = OWLResource("equivalentClass");
 OWLResource owl_disjointWith    = OWLResource("disjointWith");
 OWLResource owl_Restriction     = OWLResource("Restriction");
 
-constant parse_owl = parse_xml;
+function parse_owl = parse_xml;
 
 void add_Class(Resource c)
 {
