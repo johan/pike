@@ -494,7 +494,7 @@ class fetch
 	mixed f = process_fetch_attr(request);
 	if (!f)
 	{
-	  return bad("Invalid fetch");
+	  return bad(sprintf("Invalid fetch %O", request->atom));
 	}
 	fetch_attrs = ({ f });
       }
@@ -506,7 +506,7 @@ class fetch
       {
 	if (!(fetch_attrs[i] = process_fetch_attr(request->list[i])))
 	{
-	  return bad("Invalid fetch");
+	  return bad(sprintf("Invalid fetch %O", request->list[i]->atom));
 	}
       }
       break;
@@ -629,6 +629,7 @@ class fetch
 		"flags",
 		"internaldate",
 		// "rfc822.header", "rfc822.size", "rfc822.text",
+		"rfc822",
 		"bodystructure",
 		"uid" >)[wanted]
 	&& res;
