@@ -60,9 +60,6 @@ extern struct program *odbc_result_program;
  */
 
 struct field_info {
-  SDWORD len;
-  int size;		/* Size of buffer */
-  void *buf;
   SWORD type;
 };
 
