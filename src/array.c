@@ -57,12 +57,12 @@ struct array *low_allocate_array(INT32 size,INT32 extra_space)
     return &empty_array;
   }
 
-  GC_ALLOC();
-
   v=(struct array *)malloc(sizeof(struct array)+
 			   (size+extra_space-1)*sizeof(struct svalue));
   if(!v)
     error("Couldn't allocate array, out of memory.\n");
+
+  GC_ALLOC(v);
   
 
   /* for now, we don't know what will go in here */
@@ -104,7 +104,7 @@ static void array_free_no_free(struct array *v)
 
   free((char *)v);
 
-  GC_FREE(v);
+  GC_FREE();
 }
 
 /*
@@ -1816,6 +1816,20 @@ static void gc_check_array(struct array *a)
       a->type_field |= t;
   }
 }
+
+#ifdef PIKE_DEBUG
+INT32 gc_touch_all_arrays(void)
+{
+  INT32 n = 0;
+  struct array *a = &empty_array;
+  do {
+    debug_gc_touch(a);
+    n++;
+    a=a->next;
+  } while (a != &empty_array);
+  return n;
+}
+#endif
 
 void gc_check_all_arrays(void)
 {

@@ -148,6 +148,7 @@ void array_replace(struct array *a,
 void check_array(struct array *a);
 void check_all_arrays(void);
 void gc_mark_array_as_referenced(struct array *a);
+INT32 gc_touch_all_arrays(void);
 void gc_check_all_arrays(void);
 void gc_mark_all_arrays(void);
 void gc_free_all_unreferenced_arrays(void);

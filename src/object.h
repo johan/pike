@@ -94,6 +94,7 @@ void cleanup_objects(void);
 struct array *object_indices(struct object *o);
 struct array *object_values(struct object *o);
 void gc_mark_object_as_referenced(struct object *o);
+INT32 gc_touch_all_objects(void);
 void gc_check_all_objects(void);
 void gc_mark_all_objects(void);
 int gc_destroy_all_unreferenced_objects(void);

@@ -145,6 +145,7 @@ void mapping_search_no_free(struct svalue *to,
 void check_mapping(struct mapping *m);
 void check_all_mappings(void);
 void gc_mark_mapping_as_referenced(struct mapping *m);
+INT32 gc_touch_all_mappings(void);
 void gc_check_all_mappings(void);
 void gc_mark_all_mappings(void);
 void gc_free_all_unreferenced_mappings(void);

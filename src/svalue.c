@@ -1411,7 +1411,7 @@ void debug_gc_mark_svalues(struct svalue *s, int num)
       else
       {
 	describe(s->u.object);
-	fatal("Unfreed destructed object in GC pass 2??\n");
+	fatal("Unfreed destructed object in GC mark pass??\n");
       }
 #endif
       break;
@@ -1425,7 +1425,7 @@ void debug_gc_mark_short_svalue(union anything *u, TYPE_T type)
   {
 #ifdef PIKE_DEBUG
     case T_STRING:
-      if(d_flag) gc_mark(debug_malloc_pass(u->string));
+      if(d_flag && u->refs) gc_mark(debug_malloc_pass(u->string));
       break;
 #endif
 
@@ -1470,7 +1470,7 @@ void debug_gc_mark_short_svalue(union anything *u, TYPE_T type)
     else
     {
       describe(u->object);
-      fatal("Unfreed destructed object in GC pass 2??\n");
+      fatal("Unfreed destructed object in GC mark pass??\n");
     }
 #endif
     break;
