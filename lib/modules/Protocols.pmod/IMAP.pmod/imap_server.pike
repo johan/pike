@@ -50,7 +50,7 @@ mapping select_commands =
    "fetch" : .requests.fetch,
 //    "store" : .requests.store,
 //    "copy" : .requests.copy,
-//    "uid" : .requests.uid
+   "uid" : .requests.uid
 ]);
 
 class connection
@@ -135,7 +135,7 @@ class connection
       }
     }
   
-  void handle_request(object req)
+  void handle_request(object(.requests.request) req)
     {
       mapping action;
       
