@@ -1343,7 +1343,7 @@ lambda: F_LAMBDA
     f=dooptcode(name,
 		$4,
 		type,
-		ID_PRIVATE | ID_INLINE);
+		ID_STATIC | ID_PRIVATE | ID_INLINE);
 
     if(compiler_frame->lexical_scope == 2) {
       $$ = mktrampolinenode(f);
@@ -1407,7 +1407,7 @@ local_function: F_IDENTIFIER
     f=dooptcode(name,
 		$4,
 		type,
-		ID_PRIVATE | ID_INLINE);
+		ID_STATIC | ID_PRIVATE | ID_INLINE);
 
     if(compiler_frame->lexical_scope == 2) {
       $$ = mktrampolinenode(f);
@@ -1478,7 +1478,7 @@ local_function2: optional_stars F_IDENTIFIER
     f=dooptcode(name,
 		$5,
 		type,
-		ID_PRIVATE | ID_INLINE);
+		ID_STATIC | ID_PRIVATE | ID_INLINE);
 
     if(compiler_frame->lexical_scope == 2) {
       $$ = mktrampolinenode(f);
@@ -1515,7 +1515,7 @@ class: modifiers F_CLASS optional_identifier
       s=make_shared_string(buffer);
       $3=mkstrnode(s);
       free_string(s);
-      $1|=ID_PRIVATE | ID_INLINE;
+      $1|=ID_STATIC | ID_PRIVATE | ID_INLINE;
     }
     /* fprintf(stderr, "LANGUAGE.YACC: CLASS start\n"); */
     if(compiler_pass==1)
