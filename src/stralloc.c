@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 #include "stralloc.h"
 #include "pike_macros.h"
@@ -466,7 +467,7 @@ struct pike_string *end_shared_string(struct pike_string *s)
 	  break;
 
 	case 1:
-	  s2=begin_wide_shared_string(s->len,2);
+	  s2=begin_wide_shared_string(s->len,1);
 	  convert_2_to_1(STR1(s2),STR2(s),s->len);
 	  free((char *)s);
 	  s=s2;
