@@ -12,7 +12,8 @@
  * which leads to <gmp.h> using the wrong token concat method.
  */
 #if !defined(__STDC__) && defined(HAVE_ANSI_CONCAT) && defined(PIKE_MPN_PREFIX)
-#define PIKE_MPN_CONCAT(x,y)	x##y
+#define PIKE_LOW_MPN_CONCAT(x,y)	x##y
+#define PIKE_MPN_CONCAT(x,y)	PIKE_LOW_MPN_CONCAT(x,y)
 #define __MPN(x)	PIKE_MPN_CONCAT(PIKE_MPN_PREFIX,x)
 #endif /* !__STDC__ && HAVE_ANSI_CONCAT && PIKE_MPN_PREFIX */
 
