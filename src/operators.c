@@ -1553,7 +1553,8 @@ static int generate_sum(node *n)
     {
       emit0(F_ADD_FLOATS);
     }
-    else if(pike_types_le(first_arg[0]->type, int_type_string) &&
+    else if(first_arg[0]->type && second_arg[0]->type &&
+	    pike_types_le(first_arg[0]->type, int_type_string) &&
 	    pike_types_le(second_arg[0]->type, int_type_string))
     {
       emit0(F_ADD_INTS);
@@ -1581,13 +1582,15 @@ static int generate_sum(node *n)
 	return 1;
       }
     }
-    else if(pike_types_le(first_arg[0]->type, int_type_string) &&
+    else if(first_arg[0]->type && second_arg[0]->type &&
+	    pike_types_le(first_arg[0]->type, int_type_string) &&
 	    pike_types_le(second_arg[0]->type, int_type_string))
     {
       do_docode(*first_arg, 0);
       do_docode(*second_arg, 0);
       emit0(F_ADD_INTS);
-      if (pike_types_le(third_arg[0]->type, int_type_string)) {
+      if (third_arg[0]->type &&
+	  pike_types_le(third_arg[0]->type, int_type_string)) {
 	do_docode(*third_arg, 0);
 	emit0(F_ADD_INTS);
 	return 1;
