@@ -13,16 +13,16 @@
 #include "system_machine.h"
 #include "system.h"
 
-#include <global.h>
+#include "global.h"
 
 RCSID("$Id$");
 
-#include <module_support.h>
-#include <interpret.h>
-#include <stralloc.h>
-#include <threads.h>
-#include <svalue.h>
-#include <builtin_functions.h>
+#include "module_support.h"
+#include "interpret.h"
+#include "stralloc.h"
+#include "threads.h"
+#include "svalue.h"
+#include "builtin_functions.h"
 
 #ifdef HAVE_PASSWD_H
 # include <passwd.h>

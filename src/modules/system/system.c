@@ -13,17 +13,17 @@
 #include "system_machine.h"
 #include "system.h"
 
-#include <global.h>
+#include "global.h"
 RCSID("$Id$");
-#include <module_support.h>
-#include <las.h>
-#include <interpret.h>
-#include <stralloc.h>
-#include <threads.h>
-#include <svalue.h>
-#include <mapping.h>
-#include <builtin_functions.h>
-#include <constants.h>
+#include "module_support.h"
+#include "las.h"
+#include "interpret.h"
+#include "stralloc.h"
+#include "threads.h"
+#include "svalue.h"
+#include "mapping.h"
+#include "builtin_functions.h"
+#include "constants.h"
 
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>

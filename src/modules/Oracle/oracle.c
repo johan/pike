@@ -14,18 +14,18 @@
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
 
-#include <global.h>
-#include <svalue.h>
-#include <object.h>
-#include <array.h>
-#include <stralloc.h>
-#include <interpret.h>
-#include <pike_types.h>
-#include <pike_memory.h>
-#include <threads.h>
-#include <module_support.h>
-#include <mapping.h>
-#include <builtin_functions.h>
+#include "global.h"
+#include "svalue.h"
+#include "object.h"
+#include "array.h"
+#include "stralloc.h"
+#include "interpret.h"
+#include "pike_types.h"
+#include "pike_memory.h"
+#include "threads.h"
+#include "module_support.h"
+#include "mapping.h"
+#include "builtin_functions.h"
 
 #ifdef HAVE_ORACLE
 

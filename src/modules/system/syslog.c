@@ -13,18 +13,18 @@
 #include "system_machine.h"
 #include "system.h"
 
-#include <global.h>
+#include "global.h"
 
 #ifdef HAVE_SYSLOG
 
 RCSID("$Id$");
 
-#include <interpret.h>
-#include <svalue.h>
-#include <stralloc.h>
-#include <threads.h>
-#include <module_support.h>
-#include <builtin_functions.h>
+#include "interpret.h"
+#include "svalue.h"
+#include "stralloc.h"
+#include "threads.h"
+#include "module_support.h"
+#include "builtin_functions.h"
 
 #ifdef HAVE_SYSLOG_H
 #include <syslog.h>
