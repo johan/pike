@@ -203,6 +203,10 @@ int dumpit(string file, string outfile)
   next_file = file;
 
 do_dump: {
+
+    // Populate the resolver's cache
+    mkmodulename(0, file);
+
     if(Stdio.Stat s=file_stat(fakeroot(file)))
     {
       if (update) {
