@@ -997,7 +997,7 @@ int socketpair(int family, int type, int protocol, int sv[2])
     
     /* I wonder what is most common a loopback on ip# 127.0.0.1 or
      * a loopback with the name "localhost"?
-     * Let's hope those few people who doesn't have socketpair has
+     * Let's hope those few people who don't have socketpair have
      * a loopback on 127.0.0.1
      */
     my_addr.sin_addr.s_addr=htonl(INADDR_ANY);
