@@ -840,6 +840,11 @@ void make_doc_files()
       {
 	return ({ sprintf("<dt%{ %s='%s'%}>", (array)args) });
       });
+   html2xml->add_tag("tr",
+      lambda(Parser.HTML p, mapping args)
+      {
+	return ({ sprintf("<tr%{ %s='%s'%}>", (array)args) });
+      });
    html2xml->add_container(
       "text",
       lambda(Parser.HTML p,mapping args,string cont)
