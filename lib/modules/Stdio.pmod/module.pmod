@@ -112,10 +112,10 @@ class File
     int res;
     if (err = catch(res = connect(host, port))) {
       // Illegal format. -- Bad hostname?
-      call_out(_async_failed(), 0);
+      call_out(_async_failed, 0);
     } else if (!res) {
       // Connect failed.
-      call_out(_async_failed(), 0);
+      call_out(_async_failed, 0);
     }
     return(1);	// OK so far. (Or rather the callback will be used).
   }
