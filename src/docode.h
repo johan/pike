@@ -17,8 +17,6 @@
 
 #define WANT_LVALUE (DO_LVALUE | DO_INDIRECT)
 
-extern int store_linenumbers;
-
 #define emit0(X)     insert_opcode0((X),lex.current_line, lex.current_file)
 #define emit1(X,Y)   insert_opcode1((X),(Y),lex.current_line, lex.current_file)
 #define emit2(X,Y,Z) insert_opcode2((X),(Y),(Z),lex.current_line, lex.current_file)

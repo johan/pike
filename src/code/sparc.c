@@ -537,11 +537,6 @@ static void low_ins_f_byte(unsigned int b, int delay_ok)
 {
   void *addr;
 
-#ifdef PIKE_DEBUG
-  if(store_linenumbers && b<F_MAX_OPCODE)
-    ADD_COMPILED(b);
-#endif /* PIKE_DEBUG */
-
   b-=F_OFFSET;
 #ifdef PIKE_DEBUG
   if(b>255)
