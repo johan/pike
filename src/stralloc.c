@@ -305,6 +305,11 @@ static void locate_problem(int (*isproblem)(struct pike_string *))
   DM(dump_memhdr_locations(yes,no,0));
 }
 
+static int bad_pointer(struct pike_string *s)
+{
+  return (((ptrdiff_t)s)&(sizeof(pike_string *)-1));
+}
+
 static int has_zero_refs(struct pike_string *s)
 {
   return s->refs<=0;
@@ -327,7 +332,7 @@ static int improper_zero_termination(struct pike_string *s)
 static INLINE struct pike_string *internal_findstring(const char *s,
 						      ptrdiff_t len,
 						      int size_shift,
-						      ptrdiff_t hval)
+						      size_t hval)
 {
   struct pike_string *curr,**prev, **base;
 #ifndef HASH_PREFIX
@@ -880,6 +885,11 @@ PMOD_EXPORT void unlink_pike_string(struct pike_string *s)
   LOCK_BUCKET(s->hval);
   h= s->hval % htable_size;
   propagate_shared_string(s,h);
+#ifdef PIKE_DEBUG
+  if (base_table[h] != s) {
+    fatal("propagate_shared_string() failed!\n");
+  }
+#endif /* PIKE_DEBUG */
   base_table[h]=s->next;
 #ifdef PIKE_DEBUG
   s->next=(struct pike_string *)(ptrdiff_t)-1;
@@ -1029,6 +1039,11 @@ PMOD_EXPORT void verify_shared_strings_tables(void)
     {
       num++;
       h++;
+
+      if (bad_pointer(s)) {
+	fatal("Odd string pointer in string table!\n");
+      }
+
       if(s->len < 0)
 	fatal("Shared string shorter than zero bytes.\n");
 
