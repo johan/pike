@@ -4135,10 +4135,10 @@ PMOD_EXPORT void f_mktime (INT32 args)
 #if STRUCT_TM_HAS_GMTOFF
   if((args > 7) && (Pike_sp[7-args].subtype == NUMBER_NUMBER))
   {
-    date.tm_gmtoff=Pike_sp[7-args].u.intger;
+    date.tm_gmtoff=Pike_sp[7-args].u.integer;
   }else{
     time_t tmp = 0;
-    data.tm_gmtoff=localtime(&tmp).tm_gmtoff;
+    data.tm_gmtoff=localtime(&tmp)->tm_gmtoff;
   }
   retval=mktime(&date);
 #else
