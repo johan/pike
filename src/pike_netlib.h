@@ -35,7 +35,7 @@ typedef union {
 #define SOCKADDR_IN_ADDR(X) (SOCKADDR_FAMILY(X)==AF_INET? \
   &(X).ipv4.sin_addr : (struct in_addr *)&(X).ipv6.sin6_addr)
 #else
-#define SOCKADDR_IN_ADDR(X) (&(X).ipv4)
+#define SOCKADDR_IN_ADDR(X) (&(X).ipv4.sin_addr)
 #endif
 
 #endif /* PIKE_NETLIB_H */
