@@ -1066,6 +1066,12 @@ void f_thread_id__sprintf (INT32 args)
   f_add (3);
 }
 
+void f_thread_id_id_number(INT32 args)
+{
+  pop_n_elems(args);
+  push_int64((ptrdiff_t)THIS_THREAD->id);
+}
+
 static void f_thread_id_result(INT32 args)
 {
   struct thread_state *th=THIS_THREAD;
@@ -1445,6 +1451,7 @@ void th_init(void)
   /* function(:int) */
   ADD_FUNCTION("status",f_thread_id_status,tFunc(tNone,tInt),0);
   ADD_FUNCTION("_sprintf",f_thread_id__sprintf,tFunc(tNone,tStr),0);
+  ADD_FUNCTION("id_number",f_thread_id_id_number,tFunc(tNone,tInt),0);
   set_gc_recurse_callback(thread_was_recursed);
   set_gc_check_callback(thread_was_checked);
   set_init_callback(init_thread_obj);
