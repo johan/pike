@@ -4,13 +4,16 @@
 AC_INIT(ffmpeg.c)
 AC_CONFIG_HEADER(config.h)
 
-AC_ARG_WITH(ffmpeg,     [  --with(out)-ffmpeg       Support FFMpeg],[],[with_ffmpeg=yes])
+PIKE_FEATURE_WITHOUT(FFmpeg)
+
+AC_ARG_WITH(ffmpeg,     [  --without-ffmpeg      no support for FFmpeg],[],[with_ffmpeg=yes])
 
 AC_MODULE_INIT()
 if test x$with_ffmpeg = xyes ; then
+  PIKE_FEATURE_NODEP(FFmpeg)
   AC_CHECK_HEADERS(avcodec.h)
   AC_CHECK_HEADERS(libffmpeg/avcodec.h)
+  AC_CHECK_LIB( ffmpeg, avcodec_init, PIKE_FEATURE_OK(FFmpeg) )
 fi
-AC_CHECK_LIB( ffmpeg, avcodec_init )
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
