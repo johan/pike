@@ -609,7 +609,8 @@ new_arg_name: type optional_dot_dot_dot optional_identifier
       free_string(s);
     }
 
-    if(islocal($3->u.sval.u.string) >= 0)
+    if($3->u.sval.u.string->len &&
+	islocal($3->u.sval.u.string) >= 0)
       my_yyerror("Variable '%s' appears twice in argument list.",
 		 $3->u.sval.u.string->str);
     
