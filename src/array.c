@@ -1217,7 +1217,8 @@ PMOD_EXPORT void array_fix_type_field(struct array *v)
   if(t & ~(v->type_field))
   {
     describe(v);
-    Pike_fatal("Type field out of order!\n");
+    Pike_fatal("Type field out of order (old:0x%04x new:0x%04x)!\n",
+	       v->type_field, t);
   }
 #endif
   v->type_field = t;
