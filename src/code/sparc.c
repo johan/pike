@@ -174,6 +174,7 @@ void sparc_ins_entry(void)
   /* save	%sp, -112, %sp */
   add_to_program(0x81e02000|(SPARC_REG_SP<<25)|
 		 (SPARC_REG_SP<<14)|((-112)&0x1fff));
+  FLUSH_CODE_GENERATOR_STATE();
 }
 
 /* Update Pike_fp->pc */
