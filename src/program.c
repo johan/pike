@@ -5160,7 +5160,7 @@ static char *make_plain_file (char *file, size_t len, INT32 shift, int malloced)
     int chr;
     size_t ptr=0;
 
-    for (; chr = EXTRACT_PCHARP(from); INC_PCHARP(from, 1))
+    for (; (chr = EXTRACT_PCHARP(from)); INC_PCHARP(from, 1))
     {
       size_t space = chr > 255 ? 20 : 1;
 
