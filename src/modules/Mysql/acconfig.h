@@ -24,4 +24,10 @@
 /* Define if you have mysql_real_query(). */
 #undef HAVE_MYSQL_REAL_QUERY
 
+/* Define if you have the mysql_port variable. */
+#undef HAVE_MYSQL_PORT
+
+/* Define if you have the mysql_unix_port variable. */
+#undef HAVE_MYSQL_UNIX_PORT
+
 #endif /* PIKE_MYSQL_CONFIG_H */
