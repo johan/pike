@@ -155,17 +155,32 @@ static void MKNAME(_do_sort)(register PTYPE bas,
 	}
 #endif
       }
+
       DEC(a);
-      SWAP(a,bas);
-      DEC(a);
+      if( a != bas ) {
+	SWAP(a,bas);
+	DEC(a);
       
-      if(  (char *)a - (char *)bas < (char *)last - (char *)b )
+	if(  (char *)a - (char *)bas < (char *)last - (char *)b )
+        {
+	  MKNAME(_do_sort)(bas,a,max_recursion XARGS);
+	  bas=b;
+	} else {
+	  MKNAME(_do_sort)(b,last,max_recursion XARGS);
+	  last=a;
+	}
+      }
+      else
       {
-	MKNAME(_do_sort)(bas,a,max_recursion XARGS);
-	bas=b;
-      } else {
-	MKNAME(_do_sort)(b,last,max_recursion XARGS);
-	last=a;
+	DEC(a);
+	if( -1 < (char *)last - (char *)b )
+	{
+	  MKNAME(_do_sort)(bas,a,max_recursion XARGS);
+	  bas=b;
+	} else {
+	  MKNAME(_do_sort)(b,last,max_recursion XARGS);
+	  last=a;
+	}
       }
     }
   }
