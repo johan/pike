@@ -77,6 +77,13 @@ RCSID("$Id$");
 
 /*
 **! module Mysql
+**!
+**!	This module enables access to the Mysql database from within Pike.
+**!
+**!	Mysql is available from www.tcx.se.
+**!
+**! see also: Mysql.mysql, Mysql.result, Sql.sql
+**!
 **! note
 **!	$Id$
 **! class mysql
