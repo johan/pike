@@ -31,6 +31,10 @@ test_eq([[Regexp("^(a|bb)+$")->match("bbaabba")]],1)
 test_eq([[Regexp("^a|b$")->match("a")]],1)
 test_eq([[Regexp("^a|b$")->match("b")]],1)
 
+test_equal([[Regexp("x")->match(({ "a", "b", "c" }))]],({}))
+test_equal([[Regexp("a")->match(({ "a", "b", "c" }))]],({ "a" }))
+test_equal([[Regexp("c|a")->match(({ "a", "b", "c" }))]],({ "a", "c" }))
+
 // Regexp->split
 test_equal([[Regexp("^(a*)[^a]*$")->split("aaabbb")]],({"aaa"}))
 
