@@ -907,6 +907,7 @@ node *debug_mknode(short token, node *a, node *b)
       } else {
 	res->node_info |= opt_flags;
       }
+      res->node_info |= OPT_APPLY;
       if(b) res->tree_info |= b->tree_info;
     }
     break;

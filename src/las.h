@@ -100,6 +100,7 @@ extern struct node_hash_table node_hash;
 #define OPT_RETURN          0x200  /* contains return(s) */
 #define OPT_TYPE_NOT_FIXED  0x400  /* type-field might be wrong */
 #define OPT_WEAK_TYPE	    0x800  /* don't warn even if strict types */
+#define OPT_APPLY           0x1000 /* contains apply */
 
 #define OPT_DEFROSTED	    0x4000 /* Node may be a duplicate */
 #define OPT_NOT_SHARED	    0x8000 /* Node is not to be shared */
