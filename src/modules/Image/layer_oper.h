@@ -36,9 +36,9 @@ static void LM_FUNC(rgb_group *s,rgb_group *l,rgb_group *d,
 	if(try_use_mmx)
 	{
 	  int num=sizeof(rgb_group) * len;
-	  unsigned char *source=(char *)s;
-	  unsigned char *dest=(char *)d;
-	  unsigned char *sourcel=(char *)l;
+	  unsigned char *source=(unsigned char *)s;
+	  unsigned char *dest=(unsigned char *)d;
+	  unsigned char *sourcel=(unsigned char *)l;
 	  
 	  while (num-->0 && (7&(int)dest))
 	  {
