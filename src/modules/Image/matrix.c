@@ -270,8 +270,8 @@ void img_scale2(struct image *dest, struct image *source)
    dest->img=new;
    dest->xsize=newx;
    dest->ysize=newy;
-   for (y = 0; y < newy; y++)
-      for (x = 0; x < newx; x++) 
+   for (y = 0; y < newy-1; y++)
+      for (x = 0; x < newx-1; x++)
       {
 	 pixel(dest,x,y).r = (COLORTYPE)
 	    (((INT32) pixel(source,2*x+0,2*y+0).r+
@@ -289,6 +289,10 @@ void img_scale2(struct image *dest, struct image *source)
 	      (INT32) pixel(source,2*x+0,2*y+1).b+
 	      (INT32) pixel(source,2*x+1,2*y+1).b) >> 2);
       }
+   for (y = 0; y < newy; y++)
+     pixel(dest,newx-1,y) = pixel(source,2*(newx-1),2*y);
+   for (x = 0; x < newx; x++)
+     pixel(dest,x,newy-1) = pixel(source,2*x,2*(newy-1));
    THREADS_DISALLOW();
 }
 
