@@ -22,6 +22,7 @@ RCSID("$Id$");
 #include "security.h"
 #include "block_alloc.h"
 #include "opcodes.h"
+#include "stuff.h"
 
 #define AVG_LINK_LENGTH 4
 #define MIN_LINK_LENGTH 1
