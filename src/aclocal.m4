@@ -1,3 +1,10 @@
+dnl $Id$
+
+dnl Some compatibility with Autoconf 2.50+. Not complete.
+dnl newer autoconf call substr m4_substr
+ifdef([substr], ,m4_copy(m4_substr,substr))
+
+
 pushdef([AC_PROG_CC_WORKS],
 [
   popdef([AC_PROG_CC_WORKS])
@@ -51,6 +58,9 @@ define([MY_AC_ARG_WITH], [
     fi
   ], [$5])
 ])
+
+dnl flag, descr
+define([MY_DESCR],[  substr([$1][                                  ],0,33) $2])
 
 define([MY_AC_PROG_CC],
 [
@@ -189,9 +199,6 @@ define(PIKE_FEATURE_RAW,[
   cat >pike_[$1].feature <<EOF
 [$2]
 EOF])
-
-dnl newer autoconf call substr m4_substr
-ifdef([substr], ,m4_copy(m4_substr,substr))
 
 define([PAD_FEATURE],[substr([$1][................................],0,17) ])
 
