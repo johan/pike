@@ -110,11 +110,6 @@ int low_nt_create_thread(unsigned Pike_stack_size,
   }
 }
 
-
-#ifdef PIKE_DEBUG
-PMOD_EXPORT HANDLE CheckValidHandle(HANDLE h);
-#endif
-
 #endif
 
 #ifdef SIMULATE_COND_WITH_EVENT
