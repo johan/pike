@@ -1517,6 +1517,7 @@ static void f_thread_id_result(INT32 args)
 void init_thread_obj(struct object *o)
 {
   MEMSET(&THIS_THREAD->state, 0, sizeof(struct Pike_interpreter));
+  THIS_THREAD->state.thread_obj = Pike_fp->current_object;
   THIS_THREAD->swapped = 0;
   THIS_THREAD->status=THREAD_NOT_STARTED;
   THIS_THREAD->result.type = T_INT;
