@@ -604,4 +604,9 @@
 #define TOSTR(X)	#X
 #define DEFINETOSTR(X)	TOSTR(X)
 
+/* Some identifiers used as flags in the defines above. */
+#define YES	1
+#define NO	2
+#define UNKNOWN	3
+
 #endif /* MACHINE_H */
