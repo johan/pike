@@ -215,8 +215,8 @@ PMOD_EXPORT int string_search(struct pike_string *haystack,
 		  struct pike_string *needle,
 		  int start);
 PMOD_EXPORT struct pike_string *string_slice(struct pike_string *s,
-				 INT32 start,
-				 INT32 len);
+					     ptrdiff_t start,
+					     ptrdiff_t len);
 PMOD_EXPORT struct pike_string *string_replace(struct pike_string *str,
 				   struct pike_string *del,
 				   struct pike_string *to);

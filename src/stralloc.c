@@ -1366,8 +1366,8 @@ PMOD_EXPORT int string_search(struct pike_string *haystack,
 }
 
 PMOD_EXPORT struct pike_string *string_slice(struct pike_string *s,
-				 INT32 start,
-				 INT32 len)
+					     ptrdiff_t start,
+					     ptrdiff_t len)
 {
 #ifdef PIKE_DEBUG
   if(start < 0 || len<0 || start+len>s->len )
