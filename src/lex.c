@@ -13,7 +13,6 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "dynamic_buffer.h"
 #include "constants.h"
-#include "hashtable.h"
 #include "stuff.h"
 #include "pike_memory.h"
 #include "interpret.h"
