@@ -679,7 +679,7 @@ case "$LIBOBJS" in
       AC_TRY_LINK([
       #include <unistd.h>
       ],[
-      int main() { ualarm(0,0); }
+      ualarm(0,0);
       ],pike_cv_ualarm_takes_two_args=yes,pike_cv_ualarm_takes_two_args=no)
 
     ])
