@@ -2238,6 +2238,7 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	goto unknown_preprocessor_directive;
       }
     default:
+      if(!OUTP()) break;
     unknown_preprocessor_directive:
       {
 	WCHAR buffer[180];
