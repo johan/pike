@@ -324,7 +324,7 @@ class store
 {
   inherit request;
 
-  constant arg_info ({ ({ "set" }), ({ "string" }), ({ "list" }) });
+  constant arg_info = ({ ({ "set" }), ({ "string" }), ({ "list" }) });
 
   mapping easy_process(object message_set, string data_item, mixed list)
   {
