@@ -107,7 +107,11 @@ class File
     }
     _async_cb = callback;
     _async_args = args;
+#if constant(files.__HAVE_OOB__)
+    set_nonblocking(0, _async_connected, _async_failed, _async_connect, 0);
+#else /* !constant(files.__HAVE_OOB__) */
     set_nonblocking(0, _async_connected, _async_failed);
+#endif /* constant(files.__HAVE_OOB__) */
     mixed err;
     if (err = catch(connect(host, port))) {
       // Illegal format. -- Bad hostname?
