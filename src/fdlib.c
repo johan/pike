@@ -206,7 +206,7 @@ PMOD_EXPORT FD debug_fd_open(const char *file, int open_mode, int create_mode)
       break;
   }
 
-  if(create_mode & 4)
+  if(create_mode & 0222)
   {
     amode=FILE_ATTRIBUTE_NORMAL;
   }else{
