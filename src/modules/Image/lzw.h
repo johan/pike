@@ -32,6 +32,7 @@ struct lzw
 void lzw_add(struct lzw *lzw,int c);
 void lzw_quit(struct lzw *lzw);
 void lzw_init(struct lzw *lzw,int bits);
+void lzw_write_last(struct lzw *lzw);
 unsigned long lzw_unpack(unsigned char *dest,unsigned long destlen,
 			 unsigned char *src,unsigned long srclen,
 			 int bits);
