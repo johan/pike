@@ -175,6 +175,14 @@ void ins_f_byte(unsigned int b)
       update_arg1(2);
       addr=(void *)f_add;
       break;
+
+    case F_MAKE_ITERATOR - F_OFFSET:
+      {
+	extern void f_Iterator(INT32);
+	update_arg1(1);
+	addr = (void *)f_Iterator;
+      }
+      break;
   }
 #endif
   CALL_RELATIVE(addr);
