@@ -866,8 +866,8 @@ int PIKE_CONCAT(test_opcode_,O)(INT32 arg1, INT32 arg2) { \
     return branch_taken; \
   }
 
-#define DO_BRANCH	(branch_taken = -1)
-#define DONT_BRANCH	(branch_taken = 0)
+#define DO_BRANCH()	(branch_taken = -1)
+#define DONT_BRANCH()	(branch_taken = 0)
 #else /* !OPCODE_INLINE_BRANCH */
 #define TEST_OPCODE0	OPCODE0
 #define TEST_OPCODE1	OPCODE1
