@@ -6,6 +6,14 @@ AC_ARG_WITH(bignums, [  --with(out)-bignums    Support automatic bignum conversi
 
 AC_MODULE_INIT()
 
+# Check if we're cross-compiling.
+
+CROSS=""
+if test "$ac_cv_prog_cc_cross" = "yes"; then
+  CROSS=".pike"
+else :; fi
+AC_SUBST(CROSS)
+
 #############################################################################
 # Copied from ../../configure.in
 
