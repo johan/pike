@@ -56,8 +56,12 @@ string emulate_bindings(string query, mapping(string|int:mixed)|void bindings,
   if (!bindings)
     return query;
   v=Array.map(values(bindings),
-              lambda(mixed m) {return 
-                                 my_quote(stringp(m)?m:(string)m);});
-  k=Array.map(indices(bindings),lambda(string s){return ":"+s;});
+              lambda(mixed m) {
+		if(multisetp(m)) m = indices(m)[0];
+		return (stringp(m)? "'"+my_quote(m)+"'" : (string)m);
+	      });
+  k=Array.map(indices(bindings),lambda(string s){
+				  return (stringp(s)? s : ":"+s);
+				});
   return replace(query,k,v);
 }
