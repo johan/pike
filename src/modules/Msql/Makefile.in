@@ -9,7 +9,4 @@ CONFIG_HEADERS=@CONFIG_HEADERS@
 
 @dynamic_module_makefile@
 
-spotless: clean
-	-rm config.*
-
 @dependencies@
