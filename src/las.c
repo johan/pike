@@ -4057,19 +4057,19 @@ void fix_type_field(node *n)
   case F_MAGIC_INDEX:
     /* FIXME: Could have a stricter type for ::`->(). */
     /* FIXME: */
-    MAKE_CONSTANT_TYPE(n->type, tFunc(tMix,tMix));
+    MAKE_CONSTANT_TYPE(n->type, tFunc(tMix tOr(tVoid,tInt),tMix));
     break;
   case F_MAGIC_SET_INDEX:
     /* FIXME: Could have a stricter type for ::`->=(). */
     /* FIXME: */
-    MAKE_CONSTANT_TYPE(n->type, tFunc(tMix tSetvar(0,tMix), tVar(0)));
+    MAKE_CONSTANT_TYPE(n->type, tFunc(tMix tSetvar(0,tMix) tOr(tVoid,tInt), tVar(0)));
     break;
   case F_MAGIC_INDICES:
-    MAKE_CONSTANT_TYPE(n->type, tFunc(tNone, tArr(tString)));
+    MAKE_CONSTANT_TYPE(n->type, tFunc(tOr(tVoid,tInt), tArr(tString)));
     break;
   case F_MAGIC_VALUES:
     /* FIXME: Could have a stricter type for ::_values. */
-    MAKE_CONSTANT_TYPE(n->type, tFunc(tNone, tArray));
+    MAKE_CONSTANT_TYPE(n->type, tFunc(tOr(tVoid,tInt), tArray));
     break;
 
   case F_CATCH:
