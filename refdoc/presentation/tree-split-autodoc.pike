@@ -588,6 +588,7 @@ class Node
 	"$style$": style,
 	"$dotdot$": sizeof(extra_prefix)?extra_prefix:".",
 	"$imagedir$":image_prefix(),
+	"$filename$": _Roxen.html_encode_string(make_filename()),
       ]));
 
     Stdio.mkdirhier(combine_path(path+"/"+make_filename(), "../"));
