@@ -499,6 +499,10 @@ $(SRCDIR)/peep_engine.c: $(SRCDIR)/peep.in $(TMP_BINDIR)/mkpeep.pike
 
 peep.o: $(SRCDIR)/peep_engine.c
 
+$(SRCDIR)/case_info.h: $(SRCDIR)/UnicodeData.txt $(TMP_BINDIR)/make_ci.pike
+	@if $(RUNPIKE) $(TMP_BINDIR)/make_ci.pike <$(SRCDIR)/UnicodeData.txt; \
+	then :; else echo '#include "dummy_ci.h"'; fi >$(SRCDIR)/case_info.h
+
 # make dependencies
 depend: $(SRCDIR)/language.c
 	gcc -MM $(PREFLAGS) $(SRCDIR)/*.c | $(TMP_BINDIR)/fixdepends.sh $(SRCDIR)
