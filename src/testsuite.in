@@ -251,6 +251,35 @@ Bar();
 
 ]])
 
+test_any([[
+  object f = class {
+      array recursive(mixed func, array data, mixed ... args)
+      {
+	array ret=({});
+
+	foreach(data, mixed foo)
+	{
+	  if(arrayp(foo))
+	  {
+	    ret+=({ recursive(func, foo, @args) });
+	  }else{
+	    ret+=({ foo });
+	  }
+	}
+  
+	return func(ret, @args);
+      };
+    }();
+
+  mixed x = ({ "A", ({}) });
+  x = f->recursive(replace, x, "B", ({}));
+
+  for(int i = 0; i < sizeof(x); i++) {
+    if (!stringp(x[i]) && !arrayp(x[i])) return 0;
+  }
+  return 1;
+]], 1);
+
 test_false([[object_variablep(class X { int y; int z() { return 1; }}(),"foo")]])
 test_false([[object_variablep(class X { int y; int z() { return 1; }}(),"z")]])
 test_true([[object_variablep(class X { int y; int z() { return 1; }}(),"y")]])
@@ -1961,6 +1990,18 @@ ifefun(gc,
     m[o] = 0;
     gc();
     return !sizeof (m);
+  ]])
+
+  test_do([[
+    class Foo
+    {
+      object foo;
+      static void create(object o) {foo = o;}
+    };
+    Foo foo;
+    for(int i=0; i < 1000000; i++)
+      foo = Foo(foo);
+    gc();
   ]])
 
   test_any([[
