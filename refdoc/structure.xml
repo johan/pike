@@ -71,12 +71,17 @@
   <file name="Gz.xml">
     <target module="Gz"/>
   </file>
+  <file name="Image.xml">
+    <target module="Image"/>
+    <target module="_Image"/>
+  </file>
   <file name="MIME.xml">
     <target module="MIME"/>
   </file>
-  <file name="Sql.xml">
+  <file name="Database.xml">
     <target module="Sql"/>
     <target module="Mysql"/>
+    <target module="Mird"/>
   </file>
   <file name="index.xml">
     <!-- Import all remaining crawled data to this file: -->
