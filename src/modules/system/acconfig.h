@@ -21,4 +21,7 @@
 /* Define if you have h_addr_list in the hostent struct */
 #undef HAVE_H_ADDR_LIST
 
+/* Define if you have pw_gecos in the passwd struct */
+#undef HAVE_PW_GECOS
+
 #endif /* SYSTEM_MACHINE_H */
