@@ -1356,7 +1356,7 @@ PMOD_EXPORT void o_and(void)
   STRING_BITOP(&,"AND")
 
   default:
-    PIKE_ERROR("`&", "Bitwise and on illegal type.\n", sp, 2);
+    PIKE_ERROR("`&", "Bitwise AND on illegal type.\n", sp, 2);
   }
 }
 
@@ -1634,7 +1634,7 @@ PMOD_EXPORT void o_or(void)
   STRING_BITOP(|,"OR")
 
   default:
-    PIKE_ERROR("`|", "Bitwise or on illegal type.\n", sp, 2);
+    PIKE_ERROR("`|", "Bitwise OR on illegal type.\n", sp, 2);
   }
 }
 
