@@ -99,7 +99,7 @@ double gc_average_slowness = 0.9;
 #define GC_VERBOSE_DO(X)
 #endif
 
-int num_objects = 3;		/* Account for *_empty_array. */
+int num_objects = 2;		/* Account for *_empty_array. */
 ALLOC_COUNT_TYPE num_allocs =0;
 ALLOC_COUNT_TYPE alloc_threshold = GC_MIN_ALLOC_THRESHOLD;
 PMOD_EXPORT int Pike_in_gc = 0;

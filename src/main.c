@@ -1023,7 +1023,7 @@ void low_exit_main(void)
     gc_keep_markers = 1;
     do_gc (NULL, 1);
 
-#define STATIC_ARRAYS {&empty_array, &weak_empty_array, &weak_shrink_empty_array}
+#define STATIC_ARRAYS {&empty_array, &weak_empty_array}
 
 #define REPORT_LINKED_LIST_LEAKS(TYPE, START, STATICS, T_TYPE, NAME) do { \
       size_t num = 0;							\
