@@ -10,7 +10,7 @@ PIKE_FEATURE_OK(Image)
 
 AC_FUNC_MMAP
 
-AC_CHECK_HEADERS(math.h sys/fcntl.h fcntl.h stdlib.h netinet/in.h winsock.h)
+AC_CHECK_HEADERS(math.h sys/fcntl.h fcntl.h stdlib.h netinet/in.h winsock.h winsock2.h)
 
 AC_CHECK_LIB(m, abs, [], [])
 
