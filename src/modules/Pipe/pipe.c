@@ -1302,8 +1302,6 @@ PIKE_MODULE_INIT
    start_new_program();
    ADD_STORAGE(struct pipe);
    
-   /* function(:array) */
-  ADD_FUNCTION("_pipe_debug", f__pipe_debug,tFunc(tNone,tArray), 0);
    /* function(object:void) */
   ADD_FUNCTION("input",pipe_input,tFunc(tObj,tVoid),0);
    /* function(object,void|int:void) */
@@ -1358,6 +1356,9 @@ PIKE_MODULE_INIT
    set_exit_callback(exit_output_struct);
    output_program=end_program();
    add_program_constant("__output",output_program, 0);
+
+   /* function(:array) */
+  ADD_FUNCTION("_pipe_debug", f__pipe_debug,tFunc(tNone,tArray), 0);
 }
 
 PIKE_MODULE_EXIT
