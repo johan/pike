@@ -24,7 +24,7 @@ PIKEBIN=pike${PIKE}
 
 cleanmods()
 {
-    PIKEVER=`/usr/bin/$PIKEBIN -e 'string v; int rel;sscanf(version(), "Pike v%s release %d", v, rel); write(v+"."+rel);'` || ""
+    PIKEVER=`/usr/bin/$PIKEBIN -e 'write("%d.%d.%d", __REAL_MAJOR__, __REAL_MINOR__, __BUILD__);'` || ""
     if [ -d /usr/lib/pike7.3/$PIKEVER/ ]; then
         rm -rf `find /usr/lib/pike7.3/$PIKEVER/ -name "*.o" -type f -print` 2> /dev/null
     fi
