@@ -1,3 +1,4 @@
+#include "global.h"
 #include "config.h"
 #include "machine.h"
 
@@ -21,7 +22,6 @@
 
 #include <fcntl.h>
 
-#include "global.h"
 RCSID("$Id$");
 
 #include "threads.h"

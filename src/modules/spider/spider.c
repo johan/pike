@@ -1,3 +1,4 @@
+#include "global.h"
 #include "config.h"
 
 
@@ -27,7 +28,6 @@
 #endif
 
 #include "stralloc.h"
-#include "global.h"
 #include "pike_macros.h"
 #include "machine.h"
 #include "object.h"
