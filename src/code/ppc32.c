@@ -165,7 +165,11 @@ void ppc32_push_constant(INT32 arg)
   INT32 offs;
   struct svalue *sval = &Pike_compiler->new_program->constants[arg].sval;
 
-  if(sval->type > MAX_REF_TYPE) {
+  /*
+   * Note: The constants table may contain UNDEFINED in case of being
+   *       called through decode_value() in PORTABLE_BYTECODE mode.
+   */
+  if((sval->type > MAX_REF_TYPE) && !sval->subtype) {
     int e;
     INT32 last=0;
 
