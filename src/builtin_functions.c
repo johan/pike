@@ -1720,7 +1720,7 @@ void f_set_weak_flag(INT32 args)
 {
   int ret;
   struct mapping *m;
-  get_all_args("make_weak",args,"%m%i",&m,&ret);
+  get_all_args("set_weak_flag",args,"%m%i",&m,&ret);
   if(ret)
   {
     ret=m->flags & MAPPING_FLAG_WEAK;
