@@ -810,7 +810,7 @@ again:
 	    if (inh->name) {
 	      fprintf (stderr, "%*s**%*s=== In inherit ",
 		       indent, "", inh->inherit_level + 1, "");
-	      print_short_svalue (stderr, (union anything *) inh->name, T_STRING);
+	      print_short_svalue (stderr, (union anything *) &inh->name, T_STRING);
 	      fprintf (stderr, ", program %d:\n", inh->prog->id);
 	    }
 	    else
@@ -827,7 +827,7 @@ again:
 		     get_name_of_type (id->run_time_type));
 
 	    if (id->name->size_shift)
-	      print_short_svalue (stderr, (union anything *) id->name, T_STRING);
+	      print_short_svalue (stderr, (union anything *) &id->name, T_STRING);
 	    else
 	      fprintf (stderr, "%-20s", id->name->str);
 
@@ -918,7 +918,7 @@ again:
 	    if (inh->name) {
 	      fprintf (stderr, "%*s**%*s=== In inherit ",
 		       indent, "", inh->inherit_level + 1, "");
-	      print_short_svalue (stderr, (union anything *) inh->name, T_STRING);
+	      print_short_svalue (stderr, (union anything *) &inh->name, T_STRING);
 	      fprintf (stderr, ", program %d:\n", inh->prog->id);
 	    }
 	    else
@@ -931,7 +931,7 @@ again:
 	    if (inh->name) {
 	      fprintf (stderr, "%*s**%*s=== End of inherit ",
 		       indent, "", inh->inherit_level + 1, "");
-	      print_short_svalue (stderr, (union anything *) inh->name, T_STRING);
+	      print_short_svalue (stderr, (union anything *) &inh->name, T_STRING);
 	      fputc ('\n', stderr);
 	    }
 	    else
@@ -978,7 +978,7 @@ again:
 		   indent, "", id_inh->inherit_level + 1, "", descr);
 
 	  if (id->name->size_shift)
-	    print_short_svalue (stderr, (union anything *) id->name, T_STRING);
+	    print_short_svalue (stderr, (union anything *) &id->name, T_STRING);
 	  else
 	    fprintf (stderr, "%-20s", id->name->str);
 
@@ -1128,7 +1128,10 @@ void describe_something(void *a, int t, int indent, int depth, int flags,
 {
   int tmp;
   struct program *p=(struct program *)a;
-  if(!a) return;
+  if(!a) {
+    fprintf (stderr, "%*s**NULL pointer\n", indent, "");
+    return;
+  }
 
   if(t==-1)
   {
