@@ -3258,6 +3258,13 @@ idents: low_idents
     copy_shared_string(Pike_compiler->last_identifier, $2->u.sval.u.string);
     free_node($2);
   }
+  | TOK_GLOBAL '.' TOK_IDENTIFIER
+  {
+    $$ = resolve_identifier ($3->u.sval.u.string);
+    if(Pike_compiler->last_identifier) free_string(Pike_compiler->last_identifier);
+    copy_shared_string(Pike_compiler->last_identifier, $3->u.sval.u.string);
+    free_node ($3);
+  }
   | idents '.' bad_identifier {}
   | idents '.' error {}
   ;
