@@ -38,6 +38,7 @@ RCSID("$Id$");
 #ifdef HAVE_JAVA
 
 #include <stdarg.h>
+#include <locale.h>
 
 #ifdef HAVE_JNI_H
 #include <jni.h>
@@ -3126,6 +3127,9 @@ static void f_create(INT32 args)
    * pointer in env */
   if(JNI_CreateJavaVM(&j->jvm, (void**)&j->env, &j->vm_args))
     Pike_error( "Failed to create virtual machine\n" );
+
+  /* Java tries to be a wiseguy with the locale... */
+  setlocale(LC_NUMERIC, "");
 
   cls = (*j->env)->FindClass(j->env, "java/lang/Object");
   j->class_object = (*j->env)->NewGlobalRef(j->env, cls);
