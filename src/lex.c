@@ -23,7 +23,7 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "main.h"
 
-#include "macros.h"
+#include "pike_macros.h"
 #include <sys/param.h>
 #include <ctype.h>
 #include <math.h>

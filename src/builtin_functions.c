@@ -7,7 +7,7 @@
 RCSID("$Id$");
 #include "interpret.h"
 #include "svalue.h"
-#include "macros.h"
+#include "pike_macros.h"
 #include "object.h"
 #include "program.h"
 #include "array.h"
@@ -311,7 +311,7 @@ void f_backtrace(INT32 args)
 
       ITEM(a)[frames].u.array=i=allocate_array_no_init(3+args,0);
       ITEM(a)[frames].type=T_ARRAY;
-      assign_svalues_no_free(ITEM(i)+3, fp->locals, args, BIT_MIXED);
+      assign_svalues_no_free(ITEM(i)+3, f->locals, args, BIT_MIXED);
       ITEM(i)[2].type=T_FUNCTION;
       ITEM(i)[2].subtype=f->fun;
       ITEM(i)[2].u.object=f->current_object;

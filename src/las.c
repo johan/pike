@@ -24,7 +24,7 @@ RCSID("$Id$");
 #include "memory.h"
 #include "operators.h"
 #include "callback.h"
-#include "macros.h"
+#include "pike_macros.h"
 
 #define LASDEBUG
 

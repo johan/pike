@@ -16,7 +16,7 @@ RCSID("$Id$");
 #include "object.h"
 #include "multiset.h"
 #include "mapping.h"
-#include "macros.h"
+#include "pike_macros.h"
 #include "error.h"
 #include "las.h"
 #include "language.h"

@@ -11,7 +11,7 @@ RCSID("$Id$");
 #include "mapping.h"
 #include "svalue.h"
 #include "array.h"
-#include "macros.h"
+#include "pike_macros.h"
 #include "language.h"
 #include "error.h"
 #include "memory.h"

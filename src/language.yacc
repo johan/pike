@@ -173,7 +173,7 @@ RCSID("$Id$");
 #include "program.h"
 #include "pike_types.h"
 #include "constants.h"
-#include "macros.h"
+#include "pike_macros.h"
 #include "error.h"
 #include "docode.h"
 

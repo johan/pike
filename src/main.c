@@ -16,7 +16,7 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "interpret.h"
 #include "error.h"
-#include "macros.h"
+#include "pike_macros.h"
 #include "callback.h"
 #include "signal_handler.h"
 #include "threads.h"

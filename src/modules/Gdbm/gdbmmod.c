@@ -18,7 +18,7 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "array.h"
 #include "object.h"
-#include "macros.h"
+#include "pike_macros.h"
 
 #include <gdbm.h>
 

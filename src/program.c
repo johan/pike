@@ -13,7 +13,7 @@ RCSID("$Id$");
 #include "las.h"
 #include "language.h"
 #include "lex.h"
-#include "macros.h"
+#include "pike_macros.h"
 #include "fsort.h"
 #include "error.h"
 #include "docode.h"

@@ -8,7 +8,7 @@ int threads_disabled = 0;
 #include "threads.h"
 #include "array.h"
 #include "object.h"
-#include "macros.h"
+#include "pike_macros.h"
 #include "callback.h"
 
 
