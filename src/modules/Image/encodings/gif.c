@@ -46,6 +46,7 @@ RCSID("$Id$");
 #include "colortable.h"
 #include "builtin_functions.h"
 
+#include "gif.h"
 #include "gif_lzw.h"
 
 extern struct program *image_colortable_program;
