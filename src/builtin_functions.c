@@ -3576,7 +3576,7 @@ void f_transpose(INT32 args)
   out=allocate_array(sizeininner);
 
   for(i=0; i<sizein; i++)
-    type|=in->item->u.array->type_field;
+    type|=in->item[i].u.array->type_field;
   
   for(j=0; j<sizeininner; j++)
   {
