@@ -236,7 +236,7 @@ void assemble(void)
   for(e=0;e<length;e++)
   {
 #ifdef PIKE_DEBUG
-    if(a_flag > 2 && store_linenumbers)
+    if((a_flag > 2 && store_linenumbers) || a_flag > 3)
     {
       if(hasarg(c->opcode))
 	fprintf(stderr,"===%3d %4x %s(%d)\n",c->line,PC,get_token_name(c->opcode),c->arg);

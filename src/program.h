@@ -64,8 +64,9 @@
 #define LFUN_ADD_EQ 38
 #define LFUN__IS_TYPE 39
 #define LFUN__SPRINTF 40
+#define LFUN__EQUAL 41
 
-#define NUM_LFUNS 41
+#define NUM_LFUNS 42
 
 extern char *lfun_names[];
 
