@@ -345,6 +345,7 @@ void assemble(void)
       {
       case I_ISJUMP:
 	ins_f_byte(c->opcode);
+
       case I_ISPOINTER:
 #ifdef PIKE_DEBUG
 	if(c->arg > max_label || c->arg < 0) fatal("Jump to unknown label?\n");

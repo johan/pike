@@ -417,6 +417,8 @@ static char trace_buffer[200];
 #define DOJUMP() \
  do { int tmp; tmp=EXTRACT_INT(pc); pc+=tmp; if(tmp < 0) fast_check_threads_etc(6); }while(0)
 
+#define SKIPJUMP() pc+=sizeof(INT32)
+
 #define COMPARISMENT(ID,EXPR) \
 CASE(ID); \
 instr=EXPR; \
@@ -522,7 +524,6 @@ void dump_backlog(void)
 }
 
 #endif
-
 static int o_catch(unsigned char *pc);
 
 #ifdef PIKE_DEBUG
