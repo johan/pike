@@ -588,11 +588,11 @@ void pike_module_exit(void)
   if(oracle_program)
   {
     free_program(oracle_program);
-    oracle_program=0;
+    oracle_program = NULL;
   }
   if (oracle_result_program) {
     free_program(oracle_result_program);
-    oracle_program = NULL;
+    oracle_result_program = NULL;
   }
 #endif
 }
