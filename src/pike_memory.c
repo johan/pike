@@ -37,14 +37,12 @@ int pcharp_memcmp(PCHARP a, PCHARP b, int sz)
 
 INLINE p_wchar1 *MEMCHR1(p_wchar1 *p,p_wchar1 c,INT32 e)
 {
-  e++;
   while(--e >= 0) if(*(p++)==c) return p-1;
   return (p_wchar1 *)0;
 }
 
 INLINE p_wchar2 *MEMCHR2(p_wchar2 *p,p_wchar2 c,INT32 e)
 {
-  e++;
   while(--e >= 0) if(*(p++)==c) return p-1;
   return (p_wchar2 *)0;
 }
