@@ -834,11 +834,14 @@ test_any([[ int a,b; [ [a],b]=({ ({ 1 }) ,2}); return b]],2)
 test_any([[ int a; catch { [a]=({1,2}); }; return 1]],1)
 test_any([[ int a,b; catch { [a,b]=({1}); }; return 1]],1)
 test_any([[ mapping m=([]); m[m]=m; return stringp(sprintf("%O",m)); ]],1)
-test_any([[ 
-// don't know if this /should/ be valid  /Mirar
-// remove if it shouldn't
-array a=({});
-[]=a; return 1; ]],1)
+dnl test_any([[ 
+dnl // don't know if this /should/ be valid  /Mirar
+dnl // remove if it shouldn't
+dnl
+dnl // I see no reason this should be allowed - Hubbe
+dnl
+dnl array a=({});
+dnl []=a; return 1; ]],1)
 
 test_any([[
   int q() { throw(1); };
