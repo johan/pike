@@ -1,10 +1,11 @@
-//!	time unit: TNGDate
+// $Id$
 
-//!	Implements ST:TNG stardates.
-//!	Can be used as create argument to Day.
+//!	time unit: TNGDate
 
 #pike 7.0
 
+//!	Implements ST:TNG stardates.
+//!	Can be used as create argument to Day.
 class TNGDate
 {
    inherit Calendar._TimeUnit;
