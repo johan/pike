@@ -76,7 +76,7 @@ struct pike_string *mixed_type_string;
 struct pike_string *void_type_string;
 struct pike_string *zero_type_string;
 struct pike_string *any_type_string;
-struct pike_string *weak_type_string;	/* array|mapping|multiset */
+struct pike_string *weak_type_string;	/* array|mapping|multiset|function */
 
 static struct pike_string *a_markers[10],*b_markers[10];
 
@@ -127,7 +127,7 @@ void init_types(void)
   void_type_string=CONSTTYPE(tVoid);
   zero_type_string=CONSTTYPE(tZero);
   any_type_string=CONSTTYPE(tOr(tVoid,tMix));
-  weak_type_string=CONSTTYPE(tOr3(tArray,tMultiset,tMapping));
+  weak_type_string=CONSTTYPE(tOr4(tArray,tMultiset,tMapping,tFunction));
 }
 
 static int type_length(char *t)
