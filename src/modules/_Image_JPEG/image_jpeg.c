@@ -166,7 +166,7 @@ struct my_decompress_struct
       struct my_marker *next;
       INT32 id;
       INT32 len;
-      char data[1];
+      unsigned char data[1];
    } *first_marker;
 };
 
@@ -448,7 +448,7 @@ static int parameter_marker(struct svalue *map,struct pike_string *what,
 	    Pike_error("Image.JPEG.encode: illegal value of option "
 		       "marker; expected mapping(int:8 bit string)\n");
 	 jpeg_write_marker(cinfo, k->ind.u.integer, 
-			   k->val.u.string->str, 
+			   (const unsigned char *)k->val.u.string->str,
 			   k->val.u.string->len); 
       }
 
@@ -468,7 +468,7 @@ static int parameter_comment(struct svalue *map,struct pike_string *what,
 		 " expected 8 bit string\n");
 
    jpeg_write_marker(cinfo, JPEG_COM, 
-		     v->u.string->str,
+		     (const unsigned char *)v->u.string->str,
 		     v->u.string->len); 
 
    return 1;
