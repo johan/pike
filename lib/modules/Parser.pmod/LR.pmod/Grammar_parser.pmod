@@ -255,7 +255,7 @@ void create()
 {
   _parser->set_symbol_to_string(internal_symbol_to_string);
 
-  _parser->verbose = 0;
+  _parser->set_error_handler(ErrorHandler(0)->report);
 
   _parser->add_rule(Rule(0, ({ 1, "" }), 0));		/* translation_unit */
   _parser->add_rule(Rule(1, ({ 2 }), 0));		/* directives */
@@ -330,12 +330,19 @@ Parser make_parser(string str, object|void m)
 
   nonterminal_lookup = ([]);
 
+  ErrorHandler eh = ErrorHandler(
 #ifdef DEBUG
-  _parser->verbose = 1;
-  g->verbose = 1;
-#else
-  g->verbose = 0;
+				 1
+#else /* !DEBUG */
+				 0
 #endif /* DEBUG */
+				 );
+
+#ifdef DEBUG
+  _parser->set_error_handler(eh->report);
+#endif /* DEBUG */
+
+  g->set_error_handler(eh->report);
 
   /* Default rule -- Will never be reduced */
   id_stack->push("Translation Unit");	/* Nonterminal #0 -- Start symbol */

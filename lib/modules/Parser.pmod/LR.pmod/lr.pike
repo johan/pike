@@ -195,7 +195,7 @@ int main(int argc, array(string) argv)
 
   werror("Compiling...\n");
 
-  g->verbose = 0;
+  g->set_error_handler(ErrorHandler(0)->report);
 
   g->compile();
 
