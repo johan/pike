@@ -3134,6 +3134,21 @@ ifefun(gc,
     return !sizeof (a);
   }]], 1);
 
+  test_any_equal([[{
+    array a = set_weak_flag (({1, "foo", 3.14}), 1);
+    gc();
+    return a;
+  }]], ({1, "foo", 3.14}));
+  test_any_equal([[{
+    multiset a = set_weak_flag ((<1, "foo", 3.14>), 1);
+    gc();
+    return a;
+  }]], (<1, "foo", 3.14>));
+  test_any_equal([[{
+    mapping a = set_weak_flag (([1: 1, "foo": "foo", 3.14: 3.14]), 1);
+    gc();
+    return a;
+  }]], ([1: 1, "foo": "foo", 3.14: 3.14]));
 ]])
 
 ifefun(gc,
