@@ -53,7 +53,7 @@ extern struct program *image_program;
       rgb.b=sp[-args].u.integer;				\
       oper=NULL;						\
    }								\
-   if (args && sp[-args].type==T_FLOAT)				\
+   else if (args && sp[-args].type==T_FLOAT)			\
    {								\
       rgb.r=(long)(255*sp[-args].u.float_number);		\
       rgb.g=(long)(255*sp[-args].u.float_number);		\
