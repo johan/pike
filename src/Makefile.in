@@ -497,7 +497,7 @@ full_export: new_peep_engine $(SRCDIR)/language.c $(SRCDIR)/language.h depend
 all_exports: full_export
 	( cd .. ; $(TMP_BINDIR)/makedists )
 
-bin_export:
+bin_export: aclocal
 	@$(RUNPIKE) $(TMP_BINDIR)/install.pike --export \
 	exec_prefix="$(exec_prefix)" lib_prefix="$(lib_prefix)" \
 	TMP_LIBDIR="$(TMP_LIBDIR)" LIBDIR_SRC="$(LIBDIR_SRC)" \
