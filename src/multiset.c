@@ -1158,7 +1158,7 @@ PMOD_EXPORT struct multiset *mkmultiset_2 (struct array *indices,
   if (!indices->size)
     fix_free_list (new.msd, 0);
   else {
-    int pos;
+    int pos, size = indices->size;
     ONERROR uwp;
 
     new.list = NULL;
@@ -1166,7 +1166,7 @@ PMOD_EXPORT struct multiset *mkmultiset_2 (struct array *indices,
     new.msd->ind_types = indices->type_field;
     if (values) new.msd->val_types = values->type_field;
 
-    for (pos = indices->size; --pos >= 0;) {
+    for (pos = 0; pos < size; pos++) {
       new.node = values ?
 	IVNODE (NODE_AT (new.msd, msnode_indval, pos)) :
 	INODE (NODE_AT (new.msd, msnode_ind, pos));
