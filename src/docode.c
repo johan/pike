@@ -1887,6 +1887,9 @@ static int do_docode2(node *n, INT16 flags)
     tmp1=do_jump(F_CATCH,-1);
     PUSH_CLEANUP_FRAME(do_escape_catch, 0);
 
+    /* Entry point called by eval_instruction() via o_catch(). */
+    emit0(F_ENTRY);
+
     PUSH_STATEMENT_LABEL;
     current_switch.jumptable=0;
     current_label->break_label=alloc_label();
