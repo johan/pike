@@ -29,9 +29,6 @@ void create(string host,
   if (!opts->mysql_config_file)
     opts->mysql_config_file = "/etc/my.cnf";
 
-  werror("Calling ::create('%s','%s','%s',PASSWORD,%O);",
-	 host, db, user, opts);
-
   ::create(host||"", db||"", user||"", password||"", opts);
 }
 #endif
