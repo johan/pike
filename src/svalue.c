@@ -721,7 +721,7 @@ int low_short_is_equal(const union anything *a,
     sa.u.integer=0;
   }
 
-  if((sb.u.refs=a->refs))
+  if((sb.u.refs=b->refs))
   {
     sb.type=type;
   }else{
