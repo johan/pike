@@ -32,6 +32,7 @@ RCSID("$Id$");
 
 #include <limits.h>
 
+#undef THIS
 #define THIS ((MP_INT *)(fp->current_storage))
 #define OBTOMPZ(o) ((MP_INT *)(o->storage))
 

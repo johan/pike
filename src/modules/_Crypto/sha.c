@@ -20,6 +20,7 @@ RCSID("$Id$");
 
 #include <sha.h>
 
+#undef THIS
 #define THIS ((struct sha_ctx *)(fp->current_storage))
 #define OBTOCTX(o) ((struct sha_ctx *)(o->storage))
 

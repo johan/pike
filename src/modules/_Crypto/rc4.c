@@ -18,6 +18,7 @@
 
 RCSID("$Id$");
 
+#undef THIS
 #define THIS ((struct rc4_ctx *)(fp->current_storage))
 
 struct program *pike_rc4_program;

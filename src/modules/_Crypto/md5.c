@@ -24,6 +24,7 @@
 
 #include <md5.h>
 
+#undef THIS
 #define THIS ((struct md5_ctx *)(fp->current_storage))
 #define OBTOCTX(o) ((struct md5_ctx *)(o->storage))
 

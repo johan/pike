@@ -24,6 +24,7 @@
 /* Backend includes */
 #include <idea.h>
 
+#undef THIS
 #define THIS ((unsigned INT16 *)(fp->current_storage))
 #define OBTOCTX(o) ((unsigned INT16 *)(o->storage))
 
