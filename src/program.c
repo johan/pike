@@ -5017,10 +5017,9 @@ int low_find_lfun(struct program *p, ptrdiff_t lfun)
 					     SEE_STATIC);
   if (i < 0) return i;
   id = ID_FROM_INT(p, i);
-  if (!IDENTIFIER_IS_FUNCTION(id->identifier_flags) ||
-      (IDENTIFIER_IS_PIKE_FUNCTION(id->identifier_flags) &&
-       id->func.offset == -1)) {
-    /* Non function or prototype. */
+  if (IDENTIFIER_IS_PIKE_FUNCTION(id->identifier_flags) &&
+      (id->func.offset == -1)) {
+    /* Function prototype. */
     return -1;
   }
   return i;
