@@ -11,12 +11,20 @@
       struct pike_frame *new_frame;
       struct identifier *function;
       
+#if 0
+      /* This kind of fault tolerance is braindamaged. /mast */
       if(fun<0)
       {
 	pop_n_elems(Pike_sp-save_sp);
 	push_undefined();
 	return 0;
       }
+#else
+#ifdef PIKE_DEBUG
+      if (fun < 0)
+	Pike_fatal ("Invalid function offset.\n");
+#endif
+#endif
 
       check_stack(256);
       check_mark_stack(256);
