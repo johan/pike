@@ -194,7 +194,7 @@ void cleanup_gc(void);
   fprintf(stderr, "%s:%d: GC fatal:\n", __FILE__, __LINE__), debug_gc_fatal
 
 #ifdef PIKE_DEBUG
-#define gc_checked_as_weak(X) (find_marker(X)->flags |= GC_CHECKED_AS_WEAK)
+#define gc_checked_as_weak(X) (get_marker(X)->flags |= GC_CHECKED_AS_WEAK)
 #define gc_assert_checked_as_weak(X) do {				\
   if (!(find_marker(X)->flags & GC_CHECKED_AS_WEAK))			\
     fatal("A thing was checked as weak but "				\
