@@ -3987,7 +3987,7 @@ void push_compiler_frame(int lexical_scope)
 
   f->current_number_of_locals=0;
   f->max_number_of_locals=0;
-  f->last_block_level=0;
+  f->last_block_level=-1;
 
   f->current_function_number=-2; /* no function */
   f->recur_label=-1;
