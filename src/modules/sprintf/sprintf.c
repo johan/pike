@@ -614,7 +614,7 @@ INLINE static int do_one(struct string_builder *r,
     }
     if(f->column_entries>0)
     {
-      for(rest=f->b;COMPARE_PCHARP(rest,>=,end) &&
+      for(rest=f->b;COMPARE_PCHARP(rest,<,end) &&
 	    EXTRACT_PCHARP(rest)!='\n';INC_PCHARP(rest,1));
       if(COMPARE_PCHARP(rest,<,end)) INC_PCHARP(rest,1);
     }else{
