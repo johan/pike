@@ -204,8 +204,11 @@ OPCODE2(F_EXTERNAL_LVALUE,"& external")
   o=Pike_fp->current_object;
   
   if(!o)
-    error("Current object is destructed\n");
-  
+    error("Parent was lost during cloning.\n");
+    
+  if(!(o->prog))
+    error("Attempting to access variable in destructed object\n");
+    
   while(1)
   {
     if(inherit->parent_offset)
