@@ -78,7 +78,7 @@ extern struct array *gc_internal_array;
 #define PIKE_ARRAY_OP_SUB PIKE_MINTERM(PIKE_ARRAY_OP_TAKE_A,PIKE_ARRAY_OP_SKIP_A ,PIKE_ARRAY_OP_SKIP_B)
 
 
-#define free_array(V) do{ struct array *v_=(V); debug_malloc_touch(v_); if(!--v_->refs) really_free_array(v_); }while(0)
+#define free_array(V) do{ struct array *v_=(V); debug_malloc_touch(v_); if(!sub_ref(v_)) really_free_array(v_); }while(0)
 
 #define allocate_array(X) low_allocate_array((X),0)
 #define allocate_array_no_init(X,Y) low_allocate_array((X),(Y))

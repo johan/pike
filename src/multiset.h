@@ -25,7 +25,7 @@ struct multiset
 extern struct multiset *first_multiset;
 extern struct multiset *gc_internal_multiset;
 
-#define free_multiset(L) do{ struct multiset *l_=(L); debug_malloc_touch(l_); if(!--l_->refs) really_free_multiset(l_); }while(0)
+#define free_multiset(L) do{ struct multiset *l_=(L); debug_malloc_touch(l_); if(!sub_ref(l_)) really_free_multiset(l_); }while(0)
 
 #define l_sizeof(L) ((L)->ind->size)
 

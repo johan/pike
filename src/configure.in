@@ -878,6 +878,8 @@ AC_ARG_WITH(security,    [  --with-security        enable internal pike security
 AC_ARG_WITH(bignums,     [  --without-bignums      disable internal conversion to bignums],[],[with_bignums=yes])
 AC_ARG_WITH(shared-nodes,[  --without-shared-nodes disable the SHARED_NODES mode of the optimizer],[],[with_shared_nodes=yes])
 
+AC_ARG_WITH(shared-nodes,[  --without-lock         Enable experimental code for multicpu machines.],[ AC_DEFINE(PIKE_RUN_UNLOCKED) ],[])
+
 # This makes configure default to --without-Perl
 # Remove this when the Perl module stops crashing and hanging. -Hubbe
 AC_ARG_WITH(perl,        [  --with-perl            enable the embedded Perl module (EXPERIMENTAL)],[],

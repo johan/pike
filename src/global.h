@@ -377,7 +377,7 @@ static inline long PTRDIFF_T_TO_LONG(ptrdiff_t x)
 
 #include "port.h"
 #include "dmalloc.h"
-
+#include "pike_cpulib.h"
 
 #ifdef BUFSIZ
 #define PROT_STDIO(x) PROT(x)
