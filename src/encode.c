@@ -1625,6 +1625,7 @@ void f_encode_value(INT32 args)
   UNSET_ONERROR(tmp);
 
   free_mapping(data->encoded);
+  free_array (data->delayed);
 
   pop_n_elems(args);
   push_string(low_free_buf(&data->buf));
@@ -1703,6 +1704,7 @@ void f_encode_value_canonic(INT32 args)
   UNSET_ONERROR(tmp);
 
   free_mapping(data->encoded);
+  free_array (data->delayed);
 
   pop_n_elems(args);
   push_string(low_free_buf(&data->buf));
