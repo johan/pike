@@ -1621,12 +1621,12 @@ PMOD_EXPORT struct pike_string *modify_shared_string(struct pike_string *a,
   {
     /* One ref - destructive mode */
 
+    unlink_pike_string(a);
+    low_set_index(a, index, c);
     if((((unsigned int)index) >= HASH_PREFIX) && (index < a->len-8))
     {
       struct pike_string *old;
       /* Doesn't change hash value - sneak it in there */
-      low_set_index(a,index,c);
-      unlink_pike_string(a);
       old = internal_findstring(a->str, a->len, a->size_shift, a->hval);
       if (old) {
 	/* The new string is equal to some old string. */
@@ -1635,12 +1635,10 @@ PMOD_EXPORT struct pike_string *modify_shared_string(struct pike_string *a,
       } else {
 	link_pike_string(a, a->hval);
       }
-      return a;
     }else{
-      unlink_pike_string(a);
-      low_set_index(a,index,c);
-      return end_shared_string(a);
+      a = end_shared_string(a);
     }
+    return a;
   }else{
     struct pike_string *r;
     r=begin_wide_shared_string(a->len,a->size_shift);
