@@ -44,6 +44,9 @@
 /* Define this if you want checkpoints */
 #undef DMALLOC_TRACE
 
+/* Define this if you want dmalloc to keep track of freed memory. */
+#undef DMALLOC_TRACK_FREE
+
 /* With this, dmalloc will trace malloc(3) calls */
 #undef ENCAPSULATE_MALLOC
 
