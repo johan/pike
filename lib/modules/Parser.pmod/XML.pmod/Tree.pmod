@@ -426,10 +426,12 @@ class AbstractNode {
   //! Returns the parent node.
   AbstractNode get_parent()          { return (mParent); }
 
+#if 0
   static void create()
   {
     error("Creating a plain AbstractNode.\n");
   }
+#endif /* 0 */
 
   //! Returns an initialized copy of the node.
   //! @note
