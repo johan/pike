@@ -101,7 +101,7 @@ dnl check whether we have Postgres 7.2 or newer
   fi
   
   echo "Have Postgres 7.2? $HAVE_PG72"
-  if test "x$ac_cv_header_libpq_fe_h" = xno -o
+  if test "x$ac_cv_header_libpq_fe_h" = xno -o \
 	  "x$HAVE_PG72$ac_cv_header_postgres_h$ac_cv_header_postgres_fe_h$ac_cv_header_server_postgres_h$ac_cv_header_server_postgres_fe_h" = xnonononono ; then
     ac_pike_postgres_skip=yes
   fi
