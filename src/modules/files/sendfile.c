@@ -105,15 +105,6 @@
 #define MAP_FILE	0
 #endif /* !MAP_FILE */
 
-#ifndef S_ISREG
-#ifdef S_IFREG
-#define S_ISREG(mode)   (((mode) & (S_IFMT)) == (S_IFREG))
-#else /* !S_IFREG */
-#define S_ISREG(mode)   (((mode) & (_S_IFMT)) == (_S_IFREG))
-#endif /* S_IFREG */
-#endif /* !S_ISREG */
-
-
 /*
  * Only support for threaded operation right now.
  */
