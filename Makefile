@@ -222,11 +222,14 @@ testsuites:
 just_verify:
 	@$(DO_MAKE) "METATARGET=just_verify" _make_in_builddir
 
-valgrind_verify:
-	@$(DO_MAKE) "METATARGET=valgrind_verify" _make_in_builddir
+valgrind_just_verify:
+	@$(DO_MAKE) "METATARGET=valgrind_just_verify" _make_in_builddir
 
 verify:
 	@$(DO_MAKE) "METATARGET=verify" _make_in_builddir
+
+valgrind_verify:
+	@$(DO_MAKE) "METATARGET=valgrind_verify" _make_in_builddir
 
 verify_installed:
 	@$(DO_MAKE) "METATARGET=verify_installed" _make_in_builddir
