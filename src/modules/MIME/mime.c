@@ -267,7 +267,7 @@ static void f_encode_base64( INT32 args )
     }
 
     /* Return the result */
-    pop_n_elems( 1 );
+    pop_n_elems( args );
     push_string( end_shared_string( str ) );
   }
 }
@@ -370,7 +370,7 @@ static void f_encode_qp( INT32 args )
     }
     
     /* Return the result */
-    pop_n_elems( 1 );
+    pop_n_elems( args );
     push_string( low_free_buf( &buf ) );
   }
 }
