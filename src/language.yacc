@@ -2365,7 +2365,8 @@ expected_colon: ':'
 
 return: TOK_RETURN
   {
-    if(!match_types(Pike_compiler->compiler_frame->current_return_type,
+    if(!TEST_COMPAT(0,6) &&
+       !match_types(Pike_compiler->compiler_frame->current_return_type,
 		    void_type_string))
     {
       yyerror("Must return a value for a non-void function.");

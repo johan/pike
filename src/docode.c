@@ -1028,7 +1028,7 @@ static int do_docode2(node *n, INT16 flags)
       if(!is_const(lower))
 	yyerror("Case label isn't constant.");
 
-      if (lower && lower->type) {
+      if (lower && lower->type && !TEST_COMPAT(0,6)) {
 	if (!pike_types_le(lower->type, current_switch_type)) {
 	  if (!match_types(lower->type, current_switch_type)) {
 	    yytype_error("Type mismatch in case.",
