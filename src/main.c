@@ -659,7 +659,6 @@ int dbm_main(int argc, char **argv)
   init_shared_string_table();
   init_interpreter();
   init_types();
-  init_cpp();
   init_lex();
   init_program();
   init_object();
@@ -763,6 +762,7 @@ void low_init_main(void)
 {
   void init_iterators(void);
 
+  init_cpp();
   init_backend();
   init_iterators();
   init_pike_searching();
