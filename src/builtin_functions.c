@@ -3834,12 +3834,12 @@ void f_gethrtime(INT32 args)
   if(args)
     push_int64((((INT64)tv.tv_sec * 1000000) + tv.tv_usec)*1000);
   else
-    push_int64(((INT64)tv.tv_sec * 1000000) + tv.tv_usec));
+    push_int64(((INT64)tv.tv_sec * 1000000) + tv.tv_usec);
 #else /* !INT64 */
   if(args)
     push_int64(((tv.tv_sec * 1000000) + tv.tv_usec)*1000);
   else
-    push_int64((tv.tv_sec * 1000000) + tv.tv_usec));
+    push_int64((tv.tv_sec * 1000000) + tv.tv_usec);
 #endif /* INT64 */
 }
 #endif /* HAVE_GETHRVTIME */
