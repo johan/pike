@@ -178,7 +178,7 @@ static char *raw_lfun_types[] = {
   tFuncV(tInt tOr(tMap(tStr,tInt),tVoid),tVoid,tStr),	/* "_sprintf", */
   tFuncV(tMix,tVoid,tInt),	/* "_equal", */
   tFuncV(tMix,tVoid,tMix),	/* "_m_delete", */
-  tFuncV(tNone,tVoid,tObject),	/* "_get_iterator", */
+  tFuncV(tNone,tVoid,tObj),	/* "_get_iterator", */
 };
 
 /*! @decl void lfun::__INIT()
