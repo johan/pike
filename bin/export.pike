@@ -29,6 +29,7 @@ string *get_files(string path)
   ret=({});
   foreach(files,tmp)
   {
+    if(tmp=="core") continue;
     if(tmp[-1]=='~') continue;
     if(tmp[0]=='#' && tmp[-1]=='#') continue;
     if(tmp[0]=='.' && tmp[1]=='#') continue;
@@ -193,8 +194,9 @@ int main(int argc, string *argv)
     if(file_size(pike_base_name+"/src/modules/"+tmp) == -2)
       fix_configure("modules/"+tmp);
 
-    werror("vpath = %s\n",vpath);
-  system("ln -s pike "+vpath);
+    werror("vpath = %s  pwd = %s\n",vpath,getcwd());
+    symlink("pike",vpath);
+//    system("ln -s pike "+vpath);
 
   files=sum(({ vpath+"/README", vpath+"/ANNOUNCE" }),
 	    get_files(vpath+"/src"),
