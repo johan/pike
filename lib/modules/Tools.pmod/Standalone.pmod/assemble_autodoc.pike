@@ -6,7 +6,7 @@ constant description = "Assembles AutoDoc output file.";
 
 // AutoDoc mk II assembler
 
-#define Node Parser.XML.Tree.SimpleNode
+#define Node Parser.XML.Tree.Node
 #define XML_ELEMENT Parser.XML.Tree.XML_ELEMENT
 #define XML_TEXT Parser.XML.Tree.XML_TEXT
 
@@ -226,7 +226,7 @@ void enqueue_move(Node target, Node parent) {
 Node parse_file(string fn) {
   Node n;
   mixed err = catch {
-    n = Parser.XML.Tree.simple_parse_file(fn);
+    n = Parser.XML.Tree.parse_file(fn);
   };
   if(stringp(err)) error(err);
   if(err) throw(err);
