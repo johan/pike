@@ -20,6 +20,11 @@ CONFIG_HEADERS=@CONFIG_HEADERS@
 
 @dynamic_module_makefile@
 
+# GCC dumps core on image.c @ OSF1
+# This kluge should work around that.
+image.o: $(SRCDIR)/image.c
+	$(CC) $(CFLAGS) -c $(SRCDIR)/image.c -o image.o || NO_ULIMIT=yes $(CC) $(PREFLAGS) $(NOOPTFLAGS) -c $(SRCDIR)/image.c -o image.o 
+
 pike: all
 	cd ../..; $(MAKE) "AR=$(AR)"
 
