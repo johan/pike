@@ -2913,7 +2913,7 @@ size_t do_gc(void *ignored, int explicit_call)
     fprintf (stderr, "Lost track of %d extra refs to things in gc.\n"
 	     "Searching for marker(s) with extra refs:\n", gc_extra_refs);
     for (e = 0; e < marker_hash_table_size; e++)
-      while ((m = marker_hash_table[e]))
+      for (m = marker_hash_table[e]; m; m = m->next)
 	if (m->flags & GC_GOT_EXTRA_REF) {
 	  fprintf (stderr, "========================================\n"
 		   "Found marker with extra ref: ");
