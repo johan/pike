@@ -246,7 +246,7 @@ int main(int argc, array(string) argv)
 
   if(run->depend)
   {
-    if(run->depend == ALWAYS || !max_time_of_files("$src/dependencies"))
+    if(!max_time_of_files("$src/dependencies") || run->depend == ALWAYS)
     {
       // Create an empty file first..
       Stdio.write_file(srcdir+"/dependencies","");
