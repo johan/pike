@@ -1751,7 +1751,7 @@ PMOD_EXPORT struct pike_string *finish_string_builder(struct string_builder *s)
   return end_shared_string(s->s);
 }
 
-PMOD_EXPORT PCHARP MEMCHR_PCHARP(PCHARP ptr, int chr, int len)
+PMOD_EXPORT PCHARP MEMCHR_PCHARP(PCHARP ptr, int chr, ptrdiff_t len)
 {
   switch(ptr.shift)
   {
