@@ -108,7 +108,7 @@ PMOD_EXPORT void memfill(char *to,
 	     char *from,
 	     INT32 fromlen,
 	     INT32 offset);
-PMOD_EXPORT char *debug_xalloc(size_t size);
+PMOD_EXPORT void *debug_xalloc(size_t size);
 PMOD_EXPORT void *debug_xmalloc(size_t s);
 PMOD_EXPORT void debug_xfree(void *mem);
 PMOD_EXPORT void *debug_xrealloc(void *m, size_t s);
