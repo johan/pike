@@ -12,7 +12,7 @@
 //! An LR(0) item, a partially parsed rule.
 //!
 
-import LR;
+import Parser.LR;
 
 /* constant kernel = (program)"kernel"; */
 /* constant item = (program)"item"; */
