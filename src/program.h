@@ -343,6 +343,8 @@ int find_shared_string_identifier(struct pike_string *name,
 int find_identifier(char *name,struct program *prog);
 int store_prog_string(struct pike_string *str);
 int store_constant(struct svalue *foo, int equal);
+struct array *program_indices(struct program *p);
+struct array *program_values(struct program *p);
 void start_line_numbering(void);
 void store_linenumber(INT32 current_line, struct pike_string *current_file);
 char *get_line(unsigned char *pc,struct program *prog,INT32 *linep);
