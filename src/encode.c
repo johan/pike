@@ -422,6 +422,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
 	pop_stack();
 	code_number(p->flags,data);
 	code_number(p->storage_needed,data);
+	code_number(p->alignment_needed,data);
 	code_number(p->timestamp.tv_sec,data);
 	code_number(p->timestamp.tv_usec,data);
 
@@ -951,6 +952,7 @@ static void decode_value2(struct decode_data *data)
 	  decode_number(p->flags,data);
 	  p->flags &= ~(PROGRAM_FINISHED | PROGRAM_OPTIMIZED);
 	  decode_number(p->storage_needed,data);
+	  decode_number(p->alignment_needed,data);
 	  decode_number(p->timestamp.tv_sec,data);
 	  decode_number(p->timestamp.tv_usec,data);
 

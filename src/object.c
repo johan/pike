@@ -1417,6 +1417,7 @@ void check_object_context(struct object *o,
 {
   int q;
   if(o == fake_object) return;
+  if( ! o->prog ) return; /* Variables are already freed */
 
   for(q=0;q<(int)context_prog->num_variable_index;q++)
   {

@@ -209,8 +209,8 @@ struct program
   struct object *prot;
 #endif
   INT32 id;             /* used to identify program in caches */
-  INT32 flags;          /* PROGRAM_* */
   INT32 storage_needed; /* storage needed in the object struct */
+  INT16 flags;          /* PROGRAM_* */
   unsigned INT8 alignment_needed;
   struct timeval timestamp;
 
