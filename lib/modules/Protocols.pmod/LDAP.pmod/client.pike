@@ -817,12 +817,14 @@ static function(string:string) get_attr_encoder (string attr)
   //!
   //! @returns
   //!  Returns @expr{1@} if at least one of the values for the
-  //!  attribute in the directory is equal to @[value], @expr{0@}
-  //!  otherwise.
+  //!  attribute in the directory is equal to @[value], @expr{0@} if
+  //!  it didn't match or there was some error (use @[error_number] to
+  //!  find out).
   //!
   //! @note
-  //!   The API change: the returning code was changed in Pike 7.3+
-  //!	to follow his logic better.
+  //!   This function has changed arguments since version 7.6. From
+  //!   7.3 to 7.6 it was effectively useless since it always returned
+  //!   true.
   //!
   //! @note
   //!   The equality matching rule for the attribute governs the
