@@ -1246,7 +1246,8 @@ int my_socketpair(int family, int type, int protocol, int sv[2])
   static int fd=-1;
   static struct sockaddr_in my_addr;
   struct sockaddr_in addr,addr2;
-  int len,retries=0;
+  int retries=0;
+  size_t len;
 
   MEMSET((char *)&addr,0,sizeof(struct sockaddr_in));
 
@@ -1784,7 +1785,7 @@ static void file_query_address(INT32 args)
 {
   struct sockaddr_in addr;
   int i;
-  int len;
+  size_t len;
   char buffer[496],*q;
 
   if(FD <0)
