@@ -601,14 +601,14 @@ void exit_udp(struct object *ignored)
 
 #define THIS_DATA ((struct udp_storage *)data)
 
-static void udp_read_callback( int fd, void *data )
+static int udp_read_callback( int fd, void *data )
 {
   if(UNSAFE_IS_ZERO(&THIS_DATA->read_callback))
     set_read_callback(THIS_DATA->fd, 0, 0);
   else
     apply_svalue(& THIS_DATA->read_callback, 0);
   pop_stack(); 
-  return;
+  return 0;
 }
 
 static void udp_set_read_callback(INT32 args)

@@ -80,7 +80,7 @@ struct port
 
 #undef THIS
 #define THIS ((struct port *)(Pike_fp->current_storage))
-static void port_accept_callback(int fd,void *data);
+static int port_accept_callback(int fd,void *data);
 
 static void do_close(struct port *p, struct object *o)
 {
@@ -148,7 +148,7 @@ static void port_errno(INT32 args)
 }
 
 
-static void port_accept_callback(int fd,void *data)
+static int port_accept_callback(int fd,void *data)
 {
   struct port *f;
   f=(struct port *)data;
@@ -162,7 +162,7 @@ static void port_accept_callback(int fd,void *data)
   assign_svalue_no_free(Pike_sp++, &f->id);
   apply_svalue(& f->accept_callback, 1);
   pop_stack();
-  return;
+  return 0;
 }
 
 /*! @decl int listen_fd(int fd, void|function accept_callback)
