@@ -368,10 +368,10 @@ static void image_png___decode(INT32 args)
 **! note
 **!	Please read about the PNG file format.
 **!	This function ignores any checksum errors in the file.
-**!	A PNG of higher color resolution then the Image module
+**!	A PNG of higher color resolution than the Image module
 **!	supports (8 bit) will have a lose that information in 
 **!     the conversion.
-**!	It throws if the image data is erranous.
+**!	It throws an error if the image data is erroneous.
 */
 
 static struct pike_string *_png_unfilter(unsigned char *data,
