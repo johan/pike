@@ -1059,7 +1059,7 @@ static struct farmer *new_farmer(void (*fun)(void *), void *args)
   me->harvest = fun;
   co_init( &me->harvest_moon );
 #ifdef UNIX_THREADS
-  thr_create(NULL,8192,farm,(void *)me,THR_DAEMON|THR_DETACHED|THR_BOUND,0);
+  thr_create(NULL,65536,farm,(void *)me,THR_DAEMON|THR_DETACHED,0);
 #else
   th_create_small(&me->me, farm, me);
 #endif
