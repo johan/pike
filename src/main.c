@@ -399,14 +399,14 @@ int dbm_main(int argc, char **argv)
 #endif
   
   GETTIMEOFDAY(&current_time);
+
+  low_th_init();
   
   init_shared_string_table();
   init_interpreter();
   init_types();
   init_cpp();
   init_lex();
-
-  low_th_init();
 
   init_modules();
   master();
