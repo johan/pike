@@ -55,7 +55,10 @@ builddir:
 	dir=`echo "$$builddir" | sed -e 's|[^/].*||'`; \
 	for d in $$builddir; do \
 	  dir="$$dir$$d"; \
-	  test x"$$dir" = x -o -d "$$dir" || mkdir "$$dir" || exit 1; \
+	  if test x"$$dir" = x -o -d "$$dir"; then :; else \
+	    echo "Creating $$dir..." \
+	    mkdir "$$dir" || exit 1; \
+	  fi; \
 	  dir="$$dir/"; \
 	done; \
 	if [ x$$NEWBUILD = xYEP ]; then \
