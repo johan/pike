@@ -1383,13 +1383,13 @@ char proc_name[20];
       pike_cv_getrusage_procfs=no
     )
   ])
-fi
 
-if test "$pike_cv_getrusage_procfs" = yes; then
-  AC_MSG_RESULT(yes)
-  AC_DEFINE(GETRUSAGE_THROUGH_PROCFS)
-else
-  AC_MSG_RESULT(no)
+  if test "$pike_cv_getrusage_procfs" = yes; then
+    AC_MSG_RESULT(yes)
+    AC_DEFINE(GETRUSAGE_THROUGH_PROCFS)
+  else
+    AC_MSG_RESULT(no)
+  fi
 fi
 
 #############################################################################
