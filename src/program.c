@@ -1558,7 +1558,22 @@ void gc_check_all_programs()
 {
   struct program *p;
   for(p=first_program;p;p=p->next)
+  {
     gc_check_svalues(p->constants, p->num_constants);
+
+    if(d_flag)
+    {
+      int e;
+      for(e=0;e<(int)p->num_strings;e++)
+	gc_check(p->strings[e]);
+
+      for(e=0;e<(int)p->num_identifiers;e++)
+      {
+	gc_check(p->identifiers[e].name);
+	gc_check(p->identifiers[e].type);
+      }
+    }
+  }
 }
 
 void gc_mark_all_programs()
