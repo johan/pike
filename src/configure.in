@@ -1316,7 +1316,7 @@ then
 	SunOS*) LDSHARED="ld";;
 	Solaris) LDSHARED="ld -G";;
 	hp*|HP*) LDSHARED="ld -b";;
-	OSF*) LDSHARED="ld -shared -expect_unresolved \"*\"";;
+	OSF*) LDSHARED="ld -shared -expect_unresolved '*'";;
 	DYNIX/ptx*) LDSHARED="ld -G";;
 	next) LDSHARED='$(CC) $(CFLAGS) -nostdlib -r';;
 	Linux*) LDSHARED="gcc -shared";;
