@@ -123,4 +123,11 @@ test_eq([[Standards.IDNA.Punycode.decode("b1abfaaepdrnnbgefbaDotcwatmq2g4l")]],
           "\x43D\x435\x433\x43E\x432\x43E\x440\x44F\x442\x43F\x43E"
           "\x440\x443\x441\x441\x43A\x438"]]) // I
 
+// UUID
+
+test_eq(Standards.UUID.make_dns("www.widgets.com")->str(),
+        "e902893a-9d22-3c7e-a7b8-d6e313b71d9f")
+test_eq(Standards.UUID.make_null()->str(),
+        "00000000-0000-0000-0000-000000000000");
+
 END_MARKER
