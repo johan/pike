@@ -501,9 +501,13 @@ void f_has_index(INT32 args)
       break;
       
     case T_OBJECT:
-      /* FIXME: If the object behaves like an array, it will
-	 throw an error for non-valid indices. Maybe this is
-	 the way to go (faster)?
+      /* FIXME: If the object behaves like an array, it will throw an
+	 error for non-valid indices. Therefore it's not a good idea
+	 to use the index operator.
+
+	 Maybe we should use object->_has_index(index) provided that
+	 the object implements it.
+	 
 	 /Noring */
 
       /* Fall-through. */
@@ -545,6 +549,10 @@ void f_has_value(INT32 args)
 	 with `values' in case of objects. The problem is that we cannot
 	 use `search' directly since it's undefined weather it returns
 	 -1 (array) or 0 (mapping) during e.g. some data type emulation.
+	 
+	 Maybe we should use object->_has_value(value) provided that
+	 the object implements it.
+	 
 	 /Noring */
 
       /* Fall-through. */
