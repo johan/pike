@@ -83,6 +83,17 @@ log_start response_assembly
     gdb --batch --nx --command=bin/xenofarm_gdb_cmd "$BUILDDIR/pike" {} >> \
       build/xenofarm/_core.txt ";"
   cp "$BUILDDIR/dumpmodule.log" build/xenofarm/dumplog.txt || /bin/true
+  (
+    cd "$BUILDDIR"
+    test -f config.log && cat config.log
+    for f in `find modules post_modules -name config.log -type f`; do
+      echo
+      echo '###################################################'
+      echo '##' `dirname "$f"`
+      echo
+      cat "$f"
+    done
+  ) > build/xenofarm/configlogs.txt
 log_end $?
 
 log "END"
