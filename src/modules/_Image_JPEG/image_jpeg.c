@@ -35,6 +35,7 @@ RCSID("$Id$");
 #include "mapping.h"
 #include "error.h"
 #include "stralloc.h"
+#include "threads.h"
 
 #ifdef HAVE_JPEGLIB_H
 
@@ -372,6 +373,7 @@ static void image_jpeg_encode(INT32 args)
    y=img->ysize;
    s=img->img;
 
+   THREADS_ALLOW();
    while (y)
    {
       int n,i,y2=y;
@@ -393,6 +395,7 @@ static void image_jpeg_encode(INT32 args)
       
       y-=y2;
    }
+   THREADS_DISALLOW();
 
    free(tmp);
 
@@ -541,6 +544,7 @@ static void image_jpeg_decode(INT32 args)
    y=img->ysize;
    d=img->img;
 
+   THREADS_ALLOW();
    while (y)
    {
       int n,m;
@@ -571,6 +575,7 @@ static void image_jpeg_decode(INT32 args)
 	    d->r=d->g=d->b=*(s++),d++;
       y-=n;
    }
+   THREADS_DISALLOW();
 
    free(tmp);
 
