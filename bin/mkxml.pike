@@ -833,9 +833,8 @@ void process_line(string s, string currentfile, int line)
       {
 	stderr->write("mkwmml: "+
 		      currentfile+"file='"+currentfile+"' line="+line);
-	return 1;
+	exit(1);
       }
-      inpre=0;
     }
     else if (s[i+3..]!="")
     {
@@ -848,7 +847,7 @@ void process_line(string s, string currentfile, int line)
 	stderr->write("mkwmml: "+
 		      currentfile+" line "+line+
 		      ": illegal description position\n");
-	return 1;
+	exit(1);
       }
       if (!descM->desc) descM->desc="";
       else descM->desc+="\n";
@@ -886,8 +885,6 @@ int main(int ac,string *files)
    for (;;)
    {
       int i;
-      int inpre=0;
-
       if (!f) 
       {
 	 if (!sizeof(files)) break;
