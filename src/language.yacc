@@ -966,8 +966,8 @@ new_local_name: optional_stars F_IDENTIFIER
     $$=mknode(F_ASSIGN,mkintnode(0),mklocalnode(islocal($2->u.sval.u.string)));
     free_node($2);
   }
-  | optional_stars bad_identifier {}
-  | optional_stars F_IDENTIFIER '=' expr0
+  | optional_stars bad_identifier { $$=0; }
+  | optional_stars F_IDENTIFIER '=' expr0 
   {
     push_finished_type($<n>0->u.sval.u.string);
     while($1--) push_type(T_ARRAY);
@@ -978,11 +978,13 @@ new_local_name: optional_stars F_IDENTIFIER
   | optional_stars bad_identifier '=' expr0
   {
     free_node($4);
+    $$=0;
   }
   | optional_stars F_IDENTIFIER '=' error
   {
     free_node($2);
     /* No yyerok here since we aren't done yet. */
+    $$=0;
   }
   ;
 
