@@ -211,12 +211,7 @@ void DECLSPEC(noreturn) va_error(const char *fmt, va_list args) ATTRIBUTE((noret
   }
 
   in_error=buf;
-
-#ifdef HAVE_VSNPRINTF
-  vsnprintf(buf, 4090, fmt, args);
-#else /* !HAVE_VSNPRINTF */
-  VSPRINTF(buf, fmt, args);
-#endif /* HAVE_VSNPRINTF */
+  VSNPRINTF (buf, sizeof (buf), fmt, args);
 
   if(!Pike_interpreter.recoveries)
   {
@@ -231,9 +226,6 @@ void DECLSPEC(noreturn) va_error(const char *fmt, va_list args) ATTRIBUTE((noret
     exit(99);
   }
 
-  if((size_t)strlen(buf) >= (size_t)sizeof(buf))
-    Pike_fatal("Buffer overflow in error()\n");
-  
   low_error(buf);
 }
 
@@ -666,17 +658,7 @@ DECLSPEC(noreturn) void generic_error_va(struct object *o,
   char buf[8192];
   int i;
 
-#ifdef HAVE_VSNPRINTF
-  vsnprintf(buf, sizeof(buf)-1, fmt, foo);
-#else /* !HAVE_VSNPRINTF */
-  /* Sentinel that will be overwritten on buffer overflow. */
-  buf[sizeof(buf)-1] = '\0';
-
-  VSPRINTF(buf, fmt, foo);
-
-  if(buf[sizeof(buf)-1])
-    Pike_fatal("Buffer overflow in error()\n");
-#endif /* HAVE_VSNPRINTF */
+  VSNPRINTF(buf, sizeof(buf), fmt, foo);
 
   if(in_error)
   {

@@ -141,15 +141,8 @@ void cpp_error_sprintf(struct cpp *this, char *fmt, ...)  ATTRIBUTE((format(prin
   char buf[8192];
 
   va_start(args,fmt);
-#ifdef HAVE_VSNPRINTF
-  vsnprintf(buf, 8190, fmt, args);
-#else /* !HAVE_VSNPRINTF */
-  VSPRINTF(buf, fmt, args);
-#endif /* HAVE_VSNPRINTF */
+  VSNPRINTF (buf, sizeof (buf), fmt, args);
   va_end(args);
-
-  if((size_t)strlen(buf) >= (size_t)sizeof(buf))
-    Pike_fatal("Buffer overflow in cpp_error.\n");
 
   cpp_error(this, buf);
 }
