@@ -2,6 +2,7 @@
 
 // $Id$
 
+constant version = ("$Revision$"/" ")[1];
 constant description = "Pike module installer.";
 
 // Source directory
@@ -194,7 +195,7 @@ int main(int argc, array(string) argv)
 	    write("Unknown variable %s.\n", opt[1]);
 	  exit(0);
         case "help":
-	  write(help);
+	  write(help, version);
 	  exit(0);
 
         case "config_args": config_args=opt[1]; break;
@@ -324,7 +325,7 @@ int main(int argc, array(string) argv)
   }
 }
 
-constant help=#"Pike module installer $Version$
+constant help=#"Pike module installer %s.
 module <options> <arguments passed to make>
 
 Information options:
