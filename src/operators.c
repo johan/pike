@@ -1219,7 +1219,7 @@ void o_range(void)
 
   if(sp[-3].type==T_OBJECT)
   {
-    CALL_OPERATOR(LFUN_INDEX, 2);
+    CALL_OPERATOR(LFUN_INDEX, 3);
     return;
   }
 
