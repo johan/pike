@@ -109,6 +109,7 @@ void throw_error(mixed ...args)
 	error(sprintf(@args));
 }
 
+//! Namespace aware parser.
 class XMLNSParser {
   ADT.Stack namespace_stack = ADT.Stack();
 
