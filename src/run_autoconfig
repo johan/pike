@@ -31,7 +31,8 @@ else
   fi
 fi
 
-find . -type d -print|egrep -v '/(CVS)|(RCS)$'| while read dir; do
+IFS=''
+find . -follow -type d -print|egrep -v '/(CVS)|(RCS)$'| while read dir; do
 
   if [ -f $dir/Makefile.am -a -f $dir/configure.in ]; then
     # aclocal needs to be run before autoconf
