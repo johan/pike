@@ -1818,6 +1818,8 @@ retryloop:
 	 {
 	    if (next_character(*destp,*d_p)=='-')
 	    {
+	       static p_wchar2 minus='-';
+
 	       if (what == SCAN_ARG_PUSH) 
 		  push_feed_range(feed,c,*destp,*d_p),n++;
 
@@ -1825,7 +1827,6 @@ retryloop:
 
 	       DEBUG_MARK_SPOT("scan_forward_arg: "
 			       "found --",*destp,*d_p);
-	       static p_wchar2 minus='-';
 	       FORWARD_CHAR (*destp, *d_p, *destp, *d_p); 
 	       for (;;)
 	       {
