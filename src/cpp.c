@@ -66,7 +66,7 @@ struct define_part
 
 struct define_argument {
   PCHARP arg;
-  INT32 len;
+  ptrdiff_t len;
 };
 
 
