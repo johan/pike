@@ -1138,6 +1138,9 @@ void f_cpp(INT32 args)
     simple_add_define(&this, "__MINOR__", buffer);
     sprintf(buffer, " %d ", PIKE_BUILD_VERSION);
     simple_add_define(&this, "__BUILD__", buffer);
+#ifdef AUTO_BIGNUM
+    simple_add_define(&this, "__AUTO_BIGNUM__", " 1 ");
+#endif
 #ifdef __NT__
     simple_add_define(&this, "__NT__", " 1 ");
 #endif
