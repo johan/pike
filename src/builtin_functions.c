@@ -922,7 +922,15 @@ PMOD_EXPORT void f_has_prefix(INT32 args)
 {
   struct pike_string *a, *b;
 
-  get_all_args("has_prefix", args, "%W%W", &a, &b);
+  if(args<2)
+    SIMPLE_TOO_FEW_ARGS_ERROR("has_prefix", 2);
+  if(Pike_sp[-args].type!=T_STRING)
+    SIMPLE_ARG_TYPE_ERROR("has_prefix", 1, "string");
+  if(Pike_sp[1-args].type!=T_STRING)
+    SIMPLE_ARG_TYPE_ERROR("has_prefix", 2, "string");
+
+  a = Pike_sp[-args].u.string;
+  b = Pike_sp[1-args].u.string;
 
   /* First handle some common special cases. */
   if ((b->len > a->len) || (b->size_shift > a->size_shift)) {
@@ -983,7 +991,15 @@ PMOD_EXPORT void f_has_suffix(INT32 args)
 {
   struct pike_string *a, *b;
 
-  get_all_args("has_suffix", args, "%W%W", &a, &b);
+  if(args<2)
+    SIMPLE_TOO_FEW_ARGS_ERROR("has_suffix", 2);
+  if(Pike_sp[-args].type!=T_STRING)
+    SIMPLE_ARG_TYPE_ERROR("has_suffix", 1, "string");
+  if(Pike_sp[1-args].type!=T_STRING)
+    SIMPLE_ARG_TYPE_ERROR("has_suffix", 2, "string");
+
+  a = Pike_sp[-args].u.string;
+  b = Pike_sp[1-args].u.string;
 
   /* First handle some common special cases. */
   if ((b->len > a->len) || (b->size_shift > a->size_shift)) {
