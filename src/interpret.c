@@ -785,6 +785,8 @@ static void eval_instruction(unsigned char *pc)
 	  error("Cannot access global variables in destructed object.\n");
 
 	i=ID_FROM_INT(fp->current_object->prog, tmp);
+	if(!IDENTIFIER_IS_VARIABLE(i->flags))
+	  error("Cannot assign functions or constants.\n");
 	if(i->run_time_type == T_MIXED)
 	{
 	  assign_svalue((struct svalue *)GLOBAL_FROM_INT(tmp), sp-1);
@@ -804,6 +806,9 @@ static void eval_instruction(unsigned char *pc)
 	  error("Cannot access global variables in destructed object.\n");
 
 	i=ID_FROM_INT(fp->current_object->prog, tmp);
+	if(!IDENTIFIER_IS_VARIABLE(i->flags))
+	  error("Cannot assign functions or constants.\n");
+
 	if(i->run_time_type == T_MIXED)
 	{
 	  struct svalue *s=(struct svalue *)GLOBAL_FROM_INT(tmp);
