@@ -2254,6 +2254,7 @@ static void start_new(void)
   free_all_defines();
 
   simple_add_define("__PIKE__", "1",0);
+  simple_add_define("__VERSION__", "0.5", 0);
   
   for (tmpf=pike_predefs; tmpf; tmpf=tmpf->next)
     simple_add_define(tmpf->name, tmpf->value,0);
