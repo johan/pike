@@ -478,6 +478,9 @@ void describe_location(void *real_memblock,
   }
 
 #ifdef DEBUG_MALLOC
+  /* FIXME: Is the following call correct?
+   * Shouldn't the second argument be an offset?
+   */
   dmalloc_describe_location(memblock, location, indent);
 #endif
 }
