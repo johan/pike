@@ -32,6 +32,7 @@ RCSID("$Id$");
 #include "security.h"
 #include "block_alloc.h"
 #include "bignum.h"
+#include "pike_types.h"
 
 #include <fcntl.h>
 #include <errno.h>
