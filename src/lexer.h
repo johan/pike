@@ -599,8 +599,9 @@ static int low_yylex(YYSTYPE *yylval)
 	  }
 	  break;
 	}
-	
-      badhash:
+	/* FALL_THROUGH */
+
+      default:
 	/* FIXME: This doesn't look all that safe...
 	 * buf isn't NUL-terminated, and it won't work on wide strings.
 	 * /grubba 1999-02-20
