@@ -2426,7 +2426,7 @@ PMOD_EXPORT int add_function_constant(char *name, void (*cfun)(INT32), char * ty
 }
 
 
-PMOD_EXPORT int debug_end_class(char *name, int namelen, INT32 flags)
+PMOD_EXPORT int debug_end_class(char *name, ptrdiff_t namelen, INT32 flags)
 {
   INT32 ret;
   struct svalue tmp;

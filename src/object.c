@@ -302,7 +302,7 @@ PMOD_EXPORT struct object *parent_clone_object(struct program *p,
   debug_malloc_touch(o);
   o->parent=parent;
   add_ref(parent);
-  o->parent_identifier=parent_identifier;
+  o->parent_identifier = DO_NOT_WARN((INT32)parent_identifier);
   call_c_initializers(o);
   call_pike_initializers(o,args);
   UNSET_ONERROR(tmp);

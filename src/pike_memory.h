@@ -34,7 +34,7 @@ struct mem_searcher
   enum methods method;
   char *needle;
   size_t needlelen;
-  unsigned INT32 hsize, max;
+  size_t hsize, max;
   struct link links[MEMSEARCH_LINKS];
   struct link *set[MEMSEARCH_LINKS];
 };
