@@ -120,7 +120,7 @@ static void matrix_create(INT32 args)
       SIMPLE_TOO_FEW_ARGS_ERROR("matrix",1);
 
    if (THIS->m)
-      bad_arg_error("Matrix", sp-args, args, 1, "", sp-args,\
+      bad_arg_error("Matrix", sp-args, args, 1, "", sp-args,
 		    "Has already been called.\n");
    
    if (sp[-args].type==T_ARRAY)
