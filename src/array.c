@@ -1312,6 +1312,10 @@ struct array *explode(struct pike_string *str,
   struct array *ret;
   char *s, *end, *tmp;
 
+  if(!str->len)
+  {
+    return allocate_array_no_init(0,0);
+  }
   if(!del->len)
   {
     ret=allocate_array_no_init(str->len,0);
@@ -1661,8 +1665,10 @@ struct array *explode_array(struct array *a, struct array *b)
   struct array *tmp;
 
   q=start=0;
-  push_array(a); /* Save us from destructive slice_arrays */
-  add_ref(a);
+  if(!a->size)
+  {
+    return allocate_array_no_init(0,0);
+  }
   if(b->size)
   {
     for(e=0;e<=a->size - b->size;e++)
@@ -1675,23 +1681,22 @@ struct array *explode_array(struct array *a, struct array *b)
       if(d==b->size)
       {
 	check_stack(1);
-	push_array(slice_array(a, start, e));
+	push_array(friendly_slice_array(a, start, e));
 	q++;
 	e+=b->size-1;
 	start=e+1;
       }
     }
     check_stack(1);
-    push_array(slice_array(a, start, a->size));
+    push_array(friendly_slice_array(a, start, a->size));
     q++;
   }else{
     check_stack(a->size);
-    for(e=0;e<a->size;e++) push_array(slice_array(a, e, e+1));
+    for(e=0;e<a->size;e++) push_array(friendly_slice_array(a, e, e+1));
     q=a->size;
   }
   tmp=aggregate_array(q);
   if(tmp->size) tmp->type_field=BIT_ARRAY;
-  pop_stack();
   return tmp;
 }
 
