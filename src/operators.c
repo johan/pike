@@ -1731,8 +1731,8 @@ PMOD_EXPORT void o_xor(void)
     /* a ^ b  ==  (a&~b)|(~a&b) */
     struct pike_type *a;
     struct pike_type *b;
-    copy_type(a, sp[-2].u.type);
-    copy_type(b, sp[-1].u.type);
+    copy_pike_type(a, sp[-2].u.type);
+    copy_pike_type(b, sp[-1].u.type);
     o_compl();		/* ~b */
     o_and();		/* a&~b */
     push_type_value(a);
