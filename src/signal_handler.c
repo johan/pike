@@ -1204,6 +1204,7 @@ static void f_pid_status_wait(INT32 args)
   while(THIS->state == PROCESS_RUNNING)
   {
     SWAP_OUT_CURRENT_THREAD();
+    /* FIXME: What about threads disable? */
     co_wait_interpreter( & process_status_change);
     SWAP_IN_CURRENT_THREAD();
   }
