@@ -300,6 +300,9 @@ void assign_lvalue(struct svalue *lval,struct svalue *from)
       if(from->u.array->size < (lval[1].u.array->size>>1))
 	error("Not enough values for multiple assign.\n");
 
+      if(from->u.array->size > (lval[1].u.array->size>>1))
+	error("Too many values for multiple assign.\n");
+
       for(e=0;e<from->u.array->size;e++)
 	assign_lvalue(lval[1].u.array->item+(e<<1),from->u.array->item+e);
     }
