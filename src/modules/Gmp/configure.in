@@ -165,7 +165,7 @@ int main()
    FILE *ver=fopen("config.gmpversion","w+");
    fprintf(ver,"%s\n",gmp_version);
    return 0;
-}],[],[],[])
+}],[],[],[:])
       if test -f config.gmpversion; then
          AC_MSG_RESULT(`cat config.gmpversion`)
          PIKE_FEATURE([Gmp (bignums)],[yes (version `cat config.gmpversion`, using lib$1)])
