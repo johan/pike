@@ -183,6 +183,8 @@ if test x$with_oracle = xyes; then
       fi
     fi
 
+    AC_CHECK_HEADERS(oci.h ocidfn.h ociapr.h)
+
     OLDLIBS=LIBS
     LIBS="$ORACLE_LIBS $LIBS"
 
