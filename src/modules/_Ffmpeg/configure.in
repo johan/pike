@@ -68,7 +68,7 @@ dnl my libavcodec needs libmp3lame that needs libm /Mirar
     PIKE_FEATURE(FFmpeg,[yes (using libffmpeg)])
     ])
 
-  if test x"$got_lib" == x"yes"; then
+  if test x"$got_lib" = x"yes"; then
     AC_MSG_CHECKING([if library is really working])
     AC_CACHE_VAL(pike_cv_ffmpeg_working, [
       AC_TRY_COMPILE([
