@@ -128,6 +128,7 @@ void check_all_args(const char *fnname, int args, ... )
  *   %W: struct pike_string *		Allow wide strings
  *   %a: struct array *
  *   %f: float
+ *   %F: float or int -> float
  *   %m: struct mapping *
  *   %M: struct multiset *
  *   %o: struct object *
@@ -179,6 +180,14 @@ int va_get_args(struct svalue *s,
     case 'f':
       if(s->type != T_FLOAT) return ret;
       *va_arg(ap, float *)=s->u.float_number;
+      break;
+    case 'F':
+      if(s->type == T_FLOAT)
+	 *va_arg(ap, float *)=s->u.float_number;
+      else if(s->type == T_INT)
+	 *va_arg(ap, float *)=(float)s->u.integer;
+      else 
+	 return ret;
       break;
     case 'm':
       if(s->type != T_MAPPING) return ret;
