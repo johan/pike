@@ -374,7 +374,7 @@ void generic_error_va(struct object *o,
     push_int(0);
     push_text(func);
 
-    for (i=-args; i; i++)
+    for (i=0;i<args;i++)
       push_svalue(base_sp + i);
     f_aggregate(args + 3);
     f_aggregate(1);
