@@ -1949,6 +1949,8 @@ static void find_written_vars(node *n,
   case F_APPLY:
     if(n->tree_info & OPT_SIDE_EFFECT)
       MEMSET(p->globals, VAR_USED, MAX_GLOBAL);
+    find_written_vars(CAR(n), p, 0);
+    find_written_vars(CDR(n), p, 0);
     break;
 
   case F_INDEX:
