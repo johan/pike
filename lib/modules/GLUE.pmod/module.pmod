@@ -1,6 +1,8 @@
 //
 // $Id$
 
+#pike __REAL_VERSION__
+
 //! GL Universal Environment
 
 import GL;

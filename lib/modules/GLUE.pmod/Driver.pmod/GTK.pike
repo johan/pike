@@ -1,3 +1,8 @@
+//
+// $Id$
+
+#pike __REAL_VERSION__
+
 inherit .Interface;
 import GLUE.Events;
 

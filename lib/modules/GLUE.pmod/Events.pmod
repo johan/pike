@@ -2,6 +2,8 @@
 // $Id$
 //
 
+#pike __REAL_VERSION__
+
 //! GLUE Event abstraction.
 
 constant _SHFT = 1; //! Integer constant representing shift.
