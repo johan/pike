@@ -416,8 +416,8 @@ static ptrdiff_t calcC(struct cpp *this, WCHAR *data, ptrdiff_t len,
 
   case '\'':
   {
-    int tmp;
-    READCHAR(tmp);
+    int tmp = data[++pos];
+    if (tmp == '\\') READCHAR(tmp);
     pos++;
     if(!GOBBLE('\''))
       cpp_error(this, "Missing end quote in character constant.");
