@@ -1567,8 +1567,8 @@ static void warn_bad_cycles()
     unsigned cycle = 0;
     ONERROR err;
     struct array *obj_arr = allocate_array(0);
-
     SET_ONERROR(err, do_free_array, obj_arr);
+
     for (p = kill_list; p;) {
       if ((cycle = p->cycle)) {
 	push_object((struct object *) p->data);
@@ -1580,6 +1580,7 @@ static void warn_bad_cycles()
 	  push_constant_text("gc");
 	  push_constant_text("bad_cycle");
 	  push_array(obj_arr);
+	  obj_arr = 0;
 	  SAFE_APPLY_MASTER("runtime_warning", 3);
 	  pop_stack();
 	  obj_arr = allocate_array(0);
@@ -1588,6 +1589,7 @@ static void warn_bad_cycles()
       }
       if (!p) break;
     }
+
     CALL_AND_UNSET_ONERROR(err);
   }
   UNSETJMP(uwp);
