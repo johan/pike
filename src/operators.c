@@ -589,6 +589,38 @@ PMOD_EXPORT void f_add(INT32 args)
     break;
   }
 
+  case BIT_MULTISET|BIT_INT:
+  {
+    if(IS_UNDEFINED(sp-args))
+    {
+      int e;
+      struct multiset *a;
+
+      for(e=1;e<args;e++)
+	if(sp[e-args].type != T_MULTISET)
+	  SIMPLE_BAD_ARG_ERROR("`+", e+1, "multiset");
+
+      a=add_multisets(sp-args+1,args-1);
+      pop_n_elems(args);
+      push_multiset(a);
+      return;
+    }
+    if (sp[-args].type == T_INT) {
+      int e;
+      for(e=1;e<args;e++)
+	if (sp[e-args].type != T_INT)
+	  SIMPLE_BAD_ARG_ERROR("`+", e+1, "int");
+    } else {
+      int e;
+      for(e=0;e<args;e++)
+	if (sp[e-args].type != T_MULTISET)
+	  SIMPLE_BAD_ARG_ERROR("`+", e+1, "multiset");
+    }
+    /* Probably not reached, but... */
+    bad_arg_error("`+", sp-args, args, 1, "multiset", sp-args,
+		  "Trying to add integers and multisets.\n");
+  }
+
   case BIT_MULTISET:
   {
     struct multiset *l;
