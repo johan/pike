@@ -210,7 +210,8 @@ class kernel {
 	  new_state->add_item(new_item);
 
 	  if ((offset != sizeof(r->symbols)) &&
-	      intp(lookahead = r->symbols[offset])) {
+	      intp(lookahead = r->symbols[offset]) &&
+	      !new_state->closure_set[lookahead]) {
 	    new_state->closure(lookahead);
 	  }
 	}
@@ -282,8 +283,9 @@ class state_queue {
   }
 }
 
-/* The grammar itself */
-static private mapping(int|string : array(object(rule))) grammar = ([]);
+//. + grammar
+//.   The grammar itself.
+mapping(int|string : array(object(rule))) grammar = ([]);
 
 /* Priority table for terminal symbols */
 static private mapping(string : object(priority)) operator_priority = ([]);
