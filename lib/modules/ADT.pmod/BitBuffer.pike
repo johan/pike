@@ -94,9 +94,12 @@ int get( int bits ) {
 
 //! Reads @[bytes] (or less) bytes from the buffer and returns as
 //! string.
-string read( int bytes )
+string read( void|int bytes )
 {
-  bytes = min(bytes, _sizeof()/8);
+  if( zero_type(bytes) )
+    bytes = _sizeof()/8;
+  else
+    bytes = min(bytes, _sizeof()/8);
   String.Buffer buf = String.Buffer(bytes);
   while(bytes--)
     buf->putchar( get(8) );
