@@ -66,7 +66,7 @@ int compat_minor=-1;
 
 //! @appears error
 //! Throws an error. A more readable version of the code
-//! @tt{throw( ({ sprintf(f, @args), backtrace() }) )@}.
+//! @tt{throw( ({ sprintf(f, @@args), backtrace() }) )@}.
 void error(string f, mixed ... args) {
   array(array) b = backtrace();
   if (sizeof(args)) f = sprintf(f, @args);
