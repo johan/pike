@@ -14,6 +14,8 @@ mapping sub_cache = ([]);
 
 int verbosity = 2;
 
+static constant Node = Parser.XML.Tree.SimpleNode;
+
 int main(int n, array(string) args) {
 
   int post_process = has_value(args, "--post-process");
@@ -84,9 +86,9 @@ void recurse(array(string) sources, string save_to, int post_process) {
   if(res) exit(res);
 }
 
-object load_tree(string fn) {
+Node load_tree(string fn) {
   if(sub_cache[fn]) return m_delete(sub_cache, fn);
-  return Parser.XML.Tree.parse_file(fn)[0];
+  return Parser.XML.Tree.simple_parse_file(fn)[0];
 }
 
 int(0..1) join_files(array(string) files, string save_to, int(0..1) post_process) {
@@ -109,13 +111,13 @@ int(0..1) join_files(array(string) files, string save_to, int(0..1) post_process
 
   if (verbosity > 1)
     werror("Reading %s...\n", files[0]);
-  object dest = load_tree(files[0]);
+  Node dest = load_tree(files[0]);
 
   int fail;
 
   foreach(files[1..], string filename)
   {    
-    object src;
+    Node src;
     if (mixed err = catch {
       src = load_tree( filename );
     }) {
