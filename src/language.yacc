@@ -1605,6 +1605,7 @@ lambda: F_LAMBDA push_compiler_frame1
   | F_LAMBDA push_compiler_frame1 error
   {
     pop_compiler_frame();
+    $$ = mkintnode(0);
   }
   ;
 
