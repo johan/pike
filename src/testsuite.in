@@ -524,6 +524,15 @@ test_eq([[lambda(int x) { return lambda() { return x; };}(4)()]],4)
 test_eq([[lambda(int x) { return lambda() { return x; };}(17)()]],17)
 test_eq([[lambda(int x) { return lambda() { return lambda() { return x; };};}(17)()()]],17)
 
+test_eq([[function f;
+	for(int i = 0; i < 2; i++)
+	  { {int _i = i; f = lambda(int j) { return _i+j; }; } }
+	return f(17);]],
+	[[function f;
+	for(int i = 0; i < 2; i++)
+	  { {int _i = i; f = lambda(int j) { return _i+j; }; } int FEL; }
+	return f(17);]]);
+
 test_true([[lambda(function f) {return 1;}(object_program(this_object()));]])
 test_eq([[class c { int `()(){ return 4711; } }()(); ]],4711)
 teste_eval_error(mixed foo=({}); sort(@foo); )
