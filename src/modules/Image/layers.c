@@ -804,13 +804,13 @@ static INLINE void rgb_to_hls(rgb_group color,
 
    if (r > g)
    {
-      max = MAX (r, b);
-      min = MIN (g, b);
+      max = MAXIMUM(r, b);
+      min = MINIMUM(g, b);
    }
    else
    {
-      max = MAX (g, b);
-      min = MIN (r, b);
+      max = MAXIMUM(g, b);
+      min = MINIMUM(r, b);
    }
 
    l = (max + min) / 2.0;
