@@ -680,7 +680,7 @@ int is_lt(struct svalue *a,struct svalue *b)
       if(!a->u.object->prog)
 	error("Comparison on destructed object.\n");
       if(FIND_LFUN(a->u.object->prog,LFUN_LT) == -1)
-	error("Object lacks '<\n");
+	error("Object lacks `<\n");
       assign_svalue_no_free(sp, b);
       sp++;
       apply_lfun(a->u.object, LFUN_LT, 1);
@@ -699,7 +699,7 @@ int is_lt(struct svalue *a,struct svalue *b)
       if(!b->u.object->prog)
 	error("Comparison on destructed object.\n");
       if(FIND_LFUN(b->u.object->prog,LFUN_GT) == -1)
-	error("Object lacks '>\n");
+	error("Object lacks `>\n");
       assign_svalue_no_free(sp, a);
       sp++;
       apply_lfun(b->u.object, LFUN_GT, 1);
