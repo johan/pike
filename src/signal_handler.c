@@ -143,6 +143,27 @@ RCSID("$Id$");
 #define WUNTRACED	0
 #endif /* !WUNTRACED */
 
+#ifdef HAVE_PTRACE
+/* BSDs have different names for these constants...
+ */
+#ifndef PTRACE_CONT
+#ifdef PT_CONTINUE
+#define PTRACE_CONT	PT_CONTINUE
+#else
+#define PTRACE_CONT	7
+#endif
+#endif
+
+#ifndef PTRACE_TRACEME
+#ifdef PT_TRACE_ME
+#define PTRACE_TRACEME	PT_TRACE_ME
+#else
+#define PTRACE_TRACEME	0
+#endif
+#endif
+
+#endif /* HAVE_PTRACE */
+
 /* Number of EBADF's before the set_close_on_exec() loop terminates. */
 #ifndef PIKE_BADF_LIMIT
 #define PIKE_BADF_LIMIT	1024
