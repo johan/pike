@@ -17,6 +17,7 @@
  *   Support Pike 7.2, 7.0? 0.6???
  *   Allow it to run without X
  *   Allow it to run on Win32
+ *   Trap errors and exceptions
  *   (Add your own wishes here)
  */
 
