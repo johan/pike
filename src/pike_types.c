@@ -1137,6 +1137,16 @@ struct pike_string *get_type_of_svalue(struct svalue *s)
     push_type(T_OBJECT);
     return pop_type();
 
+  case T_INT:
+    if(s->u.integer)
+    {
+      ret=int_type_string;
+    }else{
+      ret=mixed_type_string;
+    }
+    reference_shared_string(ret);
+    return ret;
+
   default:
     push_type(s->type);
     return pop_type();

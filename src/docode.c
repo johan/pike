@@ -959,7 +959,9 @@ static int do_docode2(node *n,int flags)
       tmp1=do_docode(CAR(n), 0);
       if(do_docode(CDR(n),0) != 1)
 	fatal("Internal compiler error, please report this (1).");
-      if(CDR(n)->token != F_CONSTANT) emit2(F_CLEAR_STRING_SUBTYPE);
+      if(CDR(n)->token != F_CONSTANT &&
+	match_types(CDR(n)->type, string_type_string))
+	emit2(F_CLEAR_STRING_SUBTYPE);
       return 2;
     }else{
       tmp1=do_docode(CAR(n), DO_NOT_COPY);
