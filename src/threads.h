@@ -8,6 +8,12 @@
 #include "interpret.h"
 #include "object.h"
 #include "error.h"
+
+/* Needed for the sigset_t typedef, which is needed for
+ * the pthread_sigsetmask() prototype on Solaris 2.x.
+ */
+#include <signal.h>
+
 #ifdef HAVE_SYS_TYPES_H
 /* Needed for pthread_t on OSF/1 */
 #include <sys/types.h>
