@@ -739,6 +739,8 @@ void image_circle(INT32 args)
 	       y+circle_cos_mul(i,ry),
 	       x+circle_sin_mul(i+1,rx),
 	       y+circle_cos_mul(i+1,ry));
+   
+   pop_n_elems(args);
    THISOBJ->refs++;
    push_object(THISOBJ);
 }
