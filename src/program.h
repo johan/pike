@@ -76,6 +76,11 @@ extern struct pike_string *this_program_string;
 
 #define NUM_LFUNS 44
 
+/* NOTE: After this point there are only fake lfuns.
+ *       ie use low_find_lfun(), and NOT FIND_LFUN()!
+ */
+#define LFUN__SEARCH 44
+
 extern char *lfun_names[];
 
 extern struct pike_string *lfun_strings[];
