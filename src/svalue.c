@@ -66,6 +66,12 @@ static int pike_isnan(double x)
 #endif /* HAVE__ISNAN */
 #endif /* HAVE_ISNAN */
 
+#ifdef HAVE_ISUNORDERED
+#define PIKE_ISUNORDERED(X,Y) isunordered(X,Y)
+#else
+#define PIKE_ISUNORDERED(X,Y) (PIKE_ISNAN(X)||PIKE_ISNAN(Y))
+#endif /* HAVE_ISUNORDERED */
+
 RCSID("$Id$");
 
 struct svalue dest_ob_zero = {
@@ -818,7 +824,7 @@ PMOD_EXPORT int is_eq(const struct svalue *a, const struct svalue *b)
     return 0;
       
   case T_FLOAT:
-    if (PIKE_ISNAN(a->u.float_number) != PIKE_ISNAN(b->u.float_number)) {
+    if (PIKE_ISUNORDERED(a->u.float_number, b->u.float_number)) {
       return 0;
     }
     return a->u.float_number == b->u.float_number;
@@ -1048,7 +1054,7 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
 #ifdef HAVE_ISLESS
       return isless(a->u.float_number, b->u.float_number);
 #else
-      if (PIKE_ISNAN(a->u.float_number) || PIKE_ISNAN(b->u.float_number)) {
+      if (PIKE_ISUNORDERED(a->u.float_number, b->u.float_number)) {
 	return 0;
       }
       return a->u.float_number < b->u.float_number;
