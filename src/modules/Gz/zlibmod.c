@@ -34,8 +34,8 @@ RCSID("$Id$");
 
 struct zipper
 {
-  char level;
-  char state;
+  int  level;
+  int  state;
   struct z_stream_s gz;
 #ifdef _REENTRANT
   DEFINE_MUTEX(lock);
