@@ -115,7 +115,7 @@ PMOD_EXPORT struct pike_string *debug_findstring(const struct pike_string *foo);
 
 
 
-static INLINE PCHARP MKPCHARP(void *ptr, int shift)
+static INLINE PCHARP MKPCHARP(const void *ptr, int shift)
 {
   PCHARP tmp;
   tmp.ptr=(p_wchar0 *)ptr;
