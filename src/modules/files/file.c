@@ -1377,9 +1377,9 @@ retry_connect:
       int tmp2;
       for(tmp2=0;tmp2<20;tmp2++)
       {
-	int tmp;
-	len=sizeof(addr);
-	tmp=fd_accept(fd,(struct sockaddr *)&addr,&len);
+	int tmp, len2;
+	len2=sizeof(addr);
+	tmp=fd_accept(fd,(struct sockaddr *)&addr,&len2);
 	
 	if(tmp!=-1)
 	  fd_close(tmp);
@@ -1401,9 +1401,10 @@ retry_connect:
    */
   do
   {
-    len=sizeof(addr);
+    int len3;
+    len3=sizeof(addr);
   retry_accept:
-    sv[0]=fd_accept(fd,(struct sockaddr *)&addr,&len);
+    sv[0]=fd_accept(fd,(struct sockaddr *)&addr,&len3);
 
     set_nonblocking(sv[0],0);
 

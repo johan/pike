@@ -400,7 +400,8 @@ static void udp_set_blocking(INT32 args)
 static void udp_query_address(INT32 args)
 {
   struct sockaddr_in addr;
-  int i,len;
+  int i;
+  size_t len;
   char buffer[496],*q;
 
   if(THIS->fd <0)
