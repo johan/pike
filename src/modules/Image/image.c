@@ -3480,7 +3480,8 @@ extern void exit_image_png(void);
 static struct pike_string 
    *magic_JPEG, 
    *magic_XFace, 
-   *magic_PNG;
+   *magic_PNG,
+   *magic_TTF;
 
 static struct object *png_object=NULL;
 
@@ -3514,7 +3515,16 @@ static void image_index_magic(INT32 args)
 	 png_object=init_image_png();
       ref_push_object(png_object);
       return;
+   }   
+   else if (sp[-1].u.string==magic_TTF)
+   {
+      pop_stack();
+      push_string(make_shared_string("_Image_TTF"));
+      push_int(0);
+      SAFE_APPLY_MASTER("resolv",2);
+      return;
    }
+
    ref_push_object(THISOBJ);
    tmp=sp[-1], sp[-1]=sp[-2], sp[-2]=tmp;
    f_arrow(2);
@@ -3525,6 +3535,7 @@ void pike_module_init(void)
    int i;
 
    magic_JPEG=make_shared_string("JPEG");
+   magic_TTF=make_shared_string("TTF");
    magic_PNG=make_shared_string("PNG");
    magic_XFace=make_shared_string("XFace");
 
