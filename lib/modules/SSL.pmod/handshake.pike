@@ -90,9 +90,14 @@ object server_key_exchange_packet()
   switch (session->ke_method)
   {
   case KE_rsa:
+#ifdef WEAK_CRYPTO_40BIT
+    temp_key = context->short_rsa;
+#endif /* WEAK_CRYPTO_40BIT (magic comment) */
+#ifndef WEAK_CRYPTO_40BIT
     temp_key = (session->cipher_spec->is_exportable
 		? context->short_rsa
 		: context->long_rsa);
+#endif /* !WEAK_CRYPTO_40BIT (magic comment) */
     if (temp_key)
     {
       /* Send a ServerKeyExchange message. */
