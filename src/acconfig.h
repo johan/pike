@@ -236,10 +236,13 @@
 /* Define if your signals are one-shot */
 #undef SIGNAL_ONESHOT
 
+/* Define if you have gcc-style computed goto, and want to use them. */
+#undef HAVE_COMPUTED_GOTO
+
 /* You have gcc-type function attributes? */
 #undef HAVE_FUNCTION_ATTRIBUTES
 
-/* You have lc-type __declspec? */
+/* You have cl-type __declspec? */
 #undef HAVE_DECLSPEC
 
 /* Do your compiler grock 'volatile' */
