@@ -991,7 +991,6 @@ int object_equal_p(struct object *a, struct object *b, struct processing *p)
       return 1;
 
   /* NOTE: At this point a->prog and b->prog are equal (see test 2 above). */
-  /* FIXME: The code past this point can only return 0! */
   if(a->prog)
   {
     int e;
@@ -1022,7 +1021,7 @@ int object_equal_p(struct object *a, struct object *b, struct processing *p)
     }
   }
 
-  return 0;
+  return 1;
 }
 
 void cleanup_objects(void)
