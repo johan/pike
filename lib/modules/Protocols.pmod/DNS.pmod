@@ -791,7 +791,7 @@ class client
   	    m = udp->read();
   	    if ((m->port == 53) &&
   		(m->data[0..1] == s[0..1]) &&
-  		(search(nameservers, m->ip) != -1)) {
+  		has_value(nameservers, m->ip)) {
   	      // Success.
   	      return decode_res(m->data);
   	    }
@@ -1134,7 +1134,7 @@ class async_client
   {
     mixed err;
     if (err = catch {
-      if(m->port != 53 || search(nameservers, m->ip) == -1) return;
+      if(m->port != 53 || !has_value(nameservers, m->ip)) return;
       sscanf(m->data,"%2c",int id);
       object r=requests[id];
       if(!r) return;

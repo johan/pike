@@ -211,7 +211,7 @@ class Termcap {
 	
 	data=replace(data,"\\^","\\*");
 	
-	if (search(data,"^")!=-1)
+	if (has_value(data, "^"))
 	  data=replace(data,ctrlcharsfrom,ctrlcharsto);
 	
 	data = replace(data,

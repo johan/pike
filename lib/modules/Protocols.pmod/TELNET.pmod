@@ -579,7 +579,7 @@ class protocol
       synch = 0;
     }
 
-      if (search(line, C(IAC)) != -1) {
+      if (has_value(line, C(IAC))) {
 	array a = line / C(IAC);
 
 	string parsed_line = a[0];
