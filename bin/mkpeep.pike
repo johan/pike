@@ -1,5 +1,7 @@
 #!/usr/local/bin/pike
 
+#pragma strict_types
+
 /* $Id$ */
 
 #define JUMPBACK 3
@@ -41,7 +43,7 @@ int find_end(string s)
 
 
 /* Splitline into components */
-mixed split(string s)
+array(int|string|array(string)) split(string s)
 {
   string *a,*b,tmp;
   int i,e,opcodes;
@@ -198,9 +200,10 @@ string treat(string expr)
 void dump2(mixed *data,int ind)
 {
   int e,i,max,maxe;
-  mixed a,b,d,tmp;
+  mixed a,b,tmp;
   string test;
-  mapping foo;
+  mapping(string:array(string)) d;
+  mapping(string:mapping(string:array(string))) foo;
   mixed cons, var;
 
   foo=([]);
