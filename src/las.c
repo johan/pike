@@ -3931,13 +3931,15 @@ static void optimize(node *n)
     if(n->tree_info & (OPT_NOT_CONST|
 		       OPT_SIDE_EFFECT|
 		       OPT_EXTERNAL_DEPEND|
-		       OPT_ASSIGNMENT))
+		       OPT_ASSIGNMENT|
+		       OPT_RETURN))
     {
       if(car_is_node(n) &&
 	 !(CAR(n)->tree_info & (OPT_NOT_CONST|
 				OPT_SIDE_EFFECT|
 				OPT_EXTERNAL_DEPEND|
-				OPT_ASSIGNMENT)) &&
+				OPT_ASSIGNMENT|
+				OPT_RETURN)) &&
 	 (CAR(n)->tree_info & OPT_TRY_OPTIMIZE) &&
 	 CAR(n)->token != ':')
       {
@@ -3958,7 +3960,8 @@ static void optimize(node *n)
 	 !(CDR(n)->tree_info & (OPT_NOT_CONST|
 				OPT_SIDE_EFFECT|
 				OPT_EXTERNAL_DEPEND|
-				OPT_ASSIGNMENT)) &&
+				OPT_ASSIGNMENT|
+				OPT_RETURN)) &&
 	 (CDR(n)->tree_info & OPT_TRY_OPTIMIZE) &&
 	 CDR(n)->token != ':')
       {
