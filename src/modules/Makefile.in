@@ -47,6 +47,7 @@ install:
 
 clean:
 	for a in $(MODULES) ; do ( cd $$a ; ${MAKE} $(MAKE_FLAGS) MODNAME=$$a clean ) ; done
+	-rm -f linker_options modlist.h modlist_headers.h
 
 verify:
 	for a in $(MODULES) ; do ( cd $$a ; echo verifying $$a ; ${MAKE} $(MAKE_FLAGS) MODNAME=$$a verify ) || exit $$? ; done
