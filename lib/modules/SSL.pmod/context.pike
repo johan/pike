@@ -166,11 +166,3 @@ void create()
   /* Backwards compatibility */
   rsa_mode();
 }
-
-string _sprintf(int t) {
-  switch(t) {
-  case 't': return "SSL.context";
-  case 'O': return "SSL.context()";
-  }
-  error("Can not output SSL.context as %c.\n", t);
-}
