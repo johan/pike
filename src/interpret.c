@@ -611,7 +611,8 @@ break
 CASE(ID)							\
 {								\
   union anything *i=get_pointer_if_this_type(sp-2, T_INT);	\
-  if(i && !AUTO_BIGNUM_LOOP_TEST(i->integer,INC))		\
+  if(i && !AUTO_BIGNUM_LOOP_TEST(i->integer,INC) &&		\
+     sp[-3].type == T_INT)					\
   {								\
     i->integer += INC;						\
     if(i->integer OP2 sp[-3].u.integer)				\
