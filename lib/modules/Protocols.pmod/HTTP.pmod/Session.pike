@@ -591,7 +591,7 @@ int maximum_connections_per_server=10;
 int maximum_total_connections=50;
 
 //!	Maximum times a connection is reused. 
-//!	Defaults to 1000000. &lt;2 means no reuse at all.
+//!	Defaults to 1000000. <2 means no reuse at all.
 int maximum_connection_reuse=1000000;
 
 // internal (but readable for debug purposes)
