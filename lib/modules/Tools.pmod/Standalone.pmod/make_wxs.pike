@@ -24,7 +24,7 @@ int main(int argc, array(string) argv)
     ({"--description", Getopt.HAS_ARG, ({"-d", "--descr", "--description"})}),
     ({"--manufacturer", Getopt.HAS_ARG, ({"-m", "--manufacturer"})}),
     ({"--comments", Getopt.HAS_ARG, ({"-c", "--comment", "--comments"})}),
-				  })), array(string) opt) {
+  })), array(string) opt) {
     switch(opt[0]) {
     case "--guid":
       base_guid = Standards.UUID.UUID(opt[1])->str();
