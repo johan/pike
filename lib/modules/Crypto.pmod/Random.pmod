@@ -29,10 +29,15 @@ static class RND {
 				 Crypto.NT.CRYPT_VERIFYCONTEXT );
     seed( ctx->CryptGenRandom(min_seed_size()*2) );
 #else
-    if(no_block)
-      f = Stdio.File("/dev/urandom", "r");
-    else
+    if(no_block) {
+      if(file_stat("/dev/urandom"))
+	f = Stdio.File("/dev/urandom", "r");
+      if(!f && file_stat("/dev/random"))
+	f = Stdio.File("/dev/random", "r");
+    }
+    else {
       f = Stdio.File("/dev/random", "r");
+    }
     if(!f)
       error("No entropy source found.\n");
     seed( f->read(min_seed_size()*2) );
