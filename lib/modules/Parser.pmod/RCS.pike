@@ -206,6 +206,9 @@ void create(string|void file_name, string|int(0..0)|void file_contents)
 //!   Does not handle rcsfile(5) newphrase skipping.
 string parse_admin_section(string raw)
 {
+  string broken_regexp_kludge = ""; // these lines are here because Regexp
+  sscanf(raw, "%[^\0]%s", raw, broken_regexp_kludge); // truncates at "\0"
+
   array got = admin->split(raw);
   head = got[0];
   branch = got[3];
@@ -230,7 +233,7 @@ string parse_admin_section(string raw)
   if(got[25])
     expand = replace(got[25], "@@", "@");
   // FIXME: If this stops working, introduce newphrase skipping here
-  return got[-1];
+  return got[-1] + broken_regexp_kludge;
 }
 
 //! Lower-level API function for parsing only the delta sections (the
