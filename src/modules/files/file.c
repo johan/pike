@@ -105,8 +105,8 @@ RCSID("$Id$");
 
 #define READ_BUFFER 8192
 
-static struct program *file_program;
-static struct program *file_ref_program;
+struct program *file_program;
+struct program *file_ref_program;
 
 static void file_read_callback(int fd, void *data);
 static void file_write_callback(int fd, void *data);
