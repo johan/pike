@@ -45,6 +45,6 @@ struct gif_lzw
 /* returns number of strings written on stack */
 
 void image_gif_lzw_init(struct gif_lzw *lzw,int bits);
-void image_gif_lzw_add(struct gif_lzw *lzw,unsigned char *data,int len);
+void image_gif_lzw_add(struct gif_lzw *lzw, unsigned char *data, unsigned long len);
 void image_gif_lzw_finish(struct gif_lzw *lzw);
 void image_gif_lzw_free(struct gif_lzw *lzw);
