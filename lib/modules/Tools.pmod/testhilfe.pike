@@ -148,5 +148,10 @@ int main(int num, array(string) args) {
   test("_==__[-1];", "1");
   test("__[1]+__[2]+__[-1];", "7");
 
+  // Test odd hang bug.
+  test("filter(indices(Calendar.Language),"
+	      "lambda(string s){ return sizeof(s) < 0; });",
+       "({ })");
+
   write("Did %d tests, %d failed.\n", tests, fails);
 }
