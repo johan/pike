@@ -1111,7 +1111,7 @@ static void file_open(INT32 args)
     if(!CHECK_SECURITY(SECURITY_BIT_CONDITIONAL_IO))
       error("Permission denied.\n");
 
-    if(flags && (FILE_APPEND | FILE_TRUNC | FILE_CREATE | FILE_WRITE))
+    if(flags & (FILE_APPEND | FILE_TRUNC | FILE_CREATE | FILE_WRITE))
     {
       push_text("write");
     }else{
