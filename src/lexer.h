@@ -483,6 +483,9 @@ static int low_yylex(YYSTYPE *yylval)
     {
     case 0:
       lex.pos -= (1<<SHIFT);
+      if(lex.end != lex.pos)
+	my_yyerror("Illegal character (NUL)");
+
 #ifdef TOK_LEX_EOF
       return TOK_LEX_EOF;
 #else /* !TOK_LEX_EOF */
