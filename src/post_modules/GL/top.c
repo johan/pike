@@ -11,6 +11,16 @@
 
 #ifdef HAVE_GL
 
+/* INT64, INT32, INT16 and INT8 conflict with some GL headerfiles.
+ * eg on AIX 4.2.
+ */
+#ifdef INT64
+#undef INT64
+#endif
+#undef INT32
+#undef INT16
+#undef INT8
+
 #ifdef HAVE_WINDEF_H
 #include <windows.h>
 #endif /* HAVE_WINDEF_H */
@@ -20,6 +30,9 @@
 #ifdef HAVE_GL_GLX_H
 #include <GL/glx.h>
 #endif /* HAVE_GL_GLX_H */
+
+/* Restore INT64, INT32, INT16 and INT8. */
+#include "pike_int_types.h"
 
 #endif /* HAVE_GL */
 
