@@ -376,7 +376,7 @@ class protocol
 	m->a=sprintf("%{.%d%}",values(s[next[0]..next[0]+m->len-1]))[1..];
 	break;
       case T_AAAA:
-	m->a=sprintf("%{:%d%}",values(s[next[0]..next[0]+m->len-1]))[1..];
+	m->a=sprintf("%{:%X%}",values(s[next[0]..next[0]+m->len-1]))[1..];
 	break;
       case T_SOA:
 	m->mname=decode_domain(s,next);
