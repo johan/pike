@@ -57,6 +57,21 @@
 /* Define to 'short' if <sys/types.h> doesn't */
 #undef pri_t
 
+/* Define to 'int' if <sys/types.h> doesn't */
+#undef uid_t
+
+/* Define to 'int' if <sys/types.h> doesn't */
+#undef gid_t
+
+/* Define to 'int' if <sys/types.h> doesn't */
+#undef pid_t
+
+/* Define to 'long' if <sys/types.h> doesn't */
+#undef size_t
+
+/* Define to 'long' if <sys/types.h> doesn't */
+#undef off_t
+
 /* Define to 'int' if <signal.h> doesn't */
 #undef sig_atomic_t
 

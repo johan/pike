@@ -113,6 +113,11 @@ char *alloca ();
 #undef HAVE_STDLIB_H
 #endif
 
+#ifdef HAVE_STDLIB_H
+#include <stddef.h>
+#undef HAVE_STDLIB_H
+#endif
+
 #ifdef HAVE_MALLOC_H
 #include <malloc.h>
 #undef HAVE_MALLOC_H
