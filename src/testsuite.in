@@ -2604,6 +2604,16 @@ test_any([[
  return sizeof( Program.all_inherits(D) - ({A,B,C}) );
 ]],0)
 
+test_any_equal([[
+  class A {
+    class C {}
+  };
+  class B {
+    class C {}
+  };
+  return ({A <= B, A >= B});
+]], ({1, 1}))
+
 test_tests([[
 
 int errors;
