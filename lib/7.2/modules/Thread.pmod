@@ -8,6 +8,8 @@
 
 inherit Thread;
 
+#if constant(thread_create)
+
 class Condition
 {
   inherit Thread::Condition;
@@ -22,3 +24,5 @@ class Condition
     ::wait(m);
   }
 }
+
+#endif /* !constant(thread_create) */
