@@ -524,6 +524,7 @@ void low_image_tiff_decode( struct buffer *buf,
     if (TIFFFieldSet(tif,FIELD_COLORMAP)) 
     {
       int l,n = 1L<<td->td_bitspersample;
+      push_text("colormap");
       for (l = 0; l < n; l++)
       {
         push_int( td->td_colormap[0][l] );
