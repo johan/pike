@@ -10,6 +10,9 @@ CONFIG_HEADERS=@CONFIG_HEADERS@
 
 @dynamic_module_makefile@
 
+# UnixWare make needs help to find the source file...
+mpq.o: $(SRCDIR)/mpq.c
+
 next_prime.o: prime_table.out
 
 prime_table.out: prime_table_@CROSS@
