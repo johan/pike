@@ -26,7 +26,7 @@ constant bt_max_string_len = BT_MAX_STRING_LEN;
 constant out_of_date_warning = OUT_OF_DATE_WARNING;
 
 #ifndef PIKE_WARNINGS
-#define PIKE_WARNINGS 1
+#define PIKE_WARNINGS 0
 #endif /* PIKE_WARNINGS */
 
 /*
