@@ -19,7 +19,6 @@ PMOD_EXPORT extern struct timeval current_time;
 PMOD_EXPORT extern struct timeval next_timeout;
 PMOD_EXPORT extern struct Backend_struct *default_backend;
 extern struct callback_list do_debug_callbacks;
-PMOD_EXPORT extern int fds_size;
 PMOD_EXPORT extern struct program *Backend_program;
 
 PMOD_EXPORT void debug_check_fd_not_in_use (int fd);
