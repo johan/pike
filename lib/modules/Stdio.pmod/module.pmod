@@ -763,12 +763,11 @@ class File
     return ::write (s[..0]);
   }
 
-  int write_oob (string|array(string) s, mixed... args)
+  int write_oob (string s, mixed... args)
   {
     if (!(::mode() & PROP_IS_NONBLOCKING))
       return ::write_oob (s, @args);
 
-    if (arrayp (s)) s *= "";
     if (sizeof (args)) s = sprintf (s, @args);
     return ::write_oob (s[..0]);
   }
