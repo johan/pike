@@ -1103,6 +1103,13 @@ void o_negate()
 void o_range()
 {
   INT32 from,to;
+
+  if(sp[-3].type==T_OBJECT)
+  {
+    CALL_OPERATOR(LFUN_INDEX, 2);
+    return;
+  }
+
   if(sp[-2].type != T_INT)
     error("Bad argument 1 to [ .. ]\n");
 
@@ -1117,10 +1124,6 @@ void o_range()
 
   switch(sp[-1].type)
   {
-  case T_OBJECT:
-    CALL_OPERATOR(LFUN_INDEX, 2);
-    break;
-
   case T_STRING:
   {
     struct pike_string *s;
