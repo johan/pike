@@ -1047,7 +1047,7 @@ class dirnode
   {
     // werror("indices(%O) called\n", dirname);
     fill_cache();
-    return indices(filter(cache, lambda(mixed x) {return cache[x] != ZERO_TYPE;}));
+    return indices(filter(cache, lambda(mixed x) {return x != ZERO_TYPE;}));
   }
   array(mixed) _values()
   {
@@ -1159,7 +1159,7 @@ class joinnode
   array(string) _indices()
   {
     fill_cache();
-    return indices(filter(cache, lambda(mixed x){ return cache[x] != ZERO_TYPE; }));
+    return indices(filter(cache, lambda(mixed x){ return x != ZERO_TYPE; }));
   }
   array(mixed) _values()
   {
