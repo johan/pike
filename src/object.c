@@ -92,7 +92,7 @@ static struct object *gc_mark_object_pos = 0;
     if(o->prog)					\
       size+=o->prog->storage_needed;		\
 }while(0)
-BLOCK_ALLOC(object, 511)
+BLOCK_ALLOC_FILL_PAGES(object, 2)
 
 PMOD_EXPORT struct object *low_clone(struct program *p)
 {

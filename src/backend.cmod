@@ -152,7 +152,7 @@ struct call_out_s
   if(X->next_fun) X->next_fun->prev_fun=X->prev_fun; \
   MESS_UP_BLOCK(X); \
   } while(0)
-BLOCK_ALLOC(call_out_s, 1022)
+BLOCK_ALLOC_FILL_PAGES(call_out_s, 2)
 
 typedef struct call_out_s call_out;
 

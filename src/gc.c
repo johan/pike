@@ -42,8 +42,7 @@ RCSID("$Id$");
 #define MIN_ALLOC_THRESHOLD 1000
 #define MAX_ALLOC_THRESHOLD 10000000
 #define MULTIPLIER 0.9
-#define MARKER_CHUNK_SIZE 1023
-#define GC_LINK_CHUNK_SIZE 63
+#define GC_LINK_CHUNK_SIZE 64
 
 /* The gc will free all things with no external references that isn't
  * referenced by undestructed objects with destroy() lfuns (known as
@@ -227,7 +226,7 @@ static void gc_cycle_pop(void *a);
 #define find_marker debug_find_marker
 #endif
 
-PTR_HASH_ALLOC_FIXED(marker,MARKER_CHUNK_SIZE)
+PTR_HASH_ALLOC_FIXED_FILL_PAGES(marker,2)
 
 #ifdef PIKE_DEBUG
 

@@ -1158,7 +1158,7 @@ static void do_trace_call(INT32 args)
  )									\
 }while(0)
 
-BLOCK_ALLOC(pike_frame,128)
+BLOCK_ALLOC_FILL_PAGES(pike_frame, 4)
 
 
 void really_free_pike_scope(struct pike_frame *scope)

@@ -54,7 +54,7 @@ extern struct program *magic_values_program;
 
 #include "block_alloc_h.h"
 /* Prototypes begin here */
-BLOCK_ALLOC(object, 511)
+BLOCK_ALLOC_FILL_PAGES(object, 2)
 PMOD_EXPORT struct object *low_clone(struct program *p);
 PMOD_EXPORT void call_c_initializers(struct object *o);
 void call_prog_event(struct object *o, int event);

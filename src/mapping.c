@@ -76,7 +76,7 @@ DO_IF_DEBUG(								\
   size += (INT32) datasize;				\
 }while(0)
 
-BLOCK_ALLOC(mapping, 511)
+BLOCK_ALLOC_FILL_PAGES(mapping, 2)
 
 #ifndef PIKE_MAPPING_KEYPAIR_LOOP
 #define FREE_KEYPAIR(md, k) do {	\

@@ -270,7 +270,7 @@ void free_multiset_data (struct multiset_data *msd);
     size += (int) datasize;						\
   } while (0)
 
-BLOCK_ALLOC (multiset, (4 * 1024 - 3 * sizeof (void *)) / sizeof (struct multiset))
+BLOCK_ALLOC_FILL_PAGES (multiset, 2)
 
 /* Note: The returned block has no refs. */
 static struct multiset_data *low_alloc_multiset_data (int allocsize, INT16 flags)

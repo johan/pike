@@ -67,7 +67,7 @@ PMOD_EXPORT void add_global_program(const char *name, struct program *p)
   X->name=0;				\
   EXIT_PIKE_MEMOBJ(X);                  \
 }while(0)
-BLOCK_ALLOC(callable,128)
+BLOCK_ALLOC_FILL_PAGES(callable,2)
 
 int global_callable_flags=0;
 

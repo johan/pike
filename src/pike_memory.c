@@ -982,9 +982,9 @@ static struct memhdr *my_find_memhdr(void *, int);
 
 #include "block_alloc_h.h"
 
-BLOCK_ALLOC(memloc, n/a)
-BLOCK_ALLOC(memory_map, n/a)
-BLOCK_ALLOC(memory_map_entry, n/a)
+BLOCK_ALLOC_FILL_PAGES(memloc, n/a)
+BLOCK_ALLOC_FILL_PAGES(memory_map, n/a)
+BLOCK_ALLOC_FILL_PAGES(memory_map_entry, n/a)
 
 #include "block_alloc.h"
 
@@ -1030,7 +1030,7 @@ struct memloc
 #define MEM_FREE 16
 #define MEM_LOCS_ADDED_TO_NO_LEAKS 32
 
-BLOCK_ALLOC(memloc, 16382)
+BLOCK_ALLOC_FILL_PAGES(memloc, 64)
 
 struct memhdr
 {
@@ -1219,7 +1219,7 @@ static inline unsigned long lhash(struct memhdr *m, LOCATION location)
 
 #undef BLOCK_ALLOC_HSIZE_SHIFT
 #define BLOCK_ALLOC_HSIZE_SHIFT 1
-PTR_HASH_ALLOC(memhdr,16382)
+PTR_HASH_ALLOC_FILL_PAGES(memhdr, 128)
 
 #undef INIT_BLOCK
 #undef EXIT_BLOCK
@@ -2451,8 +2451,8 @@ struct memory_map_entry
   struct memory_map *recur;
 };
 
-BLOCK_ALLOC(memory_map, 255)
-BLOCK_ALLOC(memory_map_entry, 511)
+BLOCK_ALLOC_FILL_PAGES(memory_map, 8)
+BLOCK_ALLOC_FILL_PAGES(memory_map_entry, 16)
 
 void dmalloc_set_mmap(void *ptr, struct memory_map *m)
 {
