@@ -5299,7 +5299,7 @@ int dooptcode(struct pike_string *name,
 		      type,
 		      (unsigned INT8)modifiers,
 		      (unsigned INT8)(IDENTIFIER_PIKE_FUNCTION | vargs),
-		      &tmp,
+		      Pike_compiler->num_parse_error?NULL:&tmp,
 		      (unsigned INT16)
 		      (Pike_compiler->compiler_frame->opt_flags));
 
