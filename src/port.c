@@ -4,6 +4,8 @@
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
 /**/
+#define PORT_DO_WARN
+
 #include "global.h"
 #include "pike_macros.h"
 #include "time_stuff.h"
