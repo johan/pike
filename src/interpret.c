@@ -1670,7 +1670,7 @@ PMOD_EXPORT int safe_apply_handler(const char *fun,
 				   TYPE_FIELD rettypes)
 {
   JMP_BUF recovery;
-  int i, ret;
+  int ret;
 #if 0
   fprintf(stderr, "safe_apply_handler(\"%s\", 0x%08p, 0x%08p, %d)\n",
 	  fun, handler, compat, args);

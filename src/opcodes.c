@@ -1755,7 +1755,7 @@ void o_sscanf(INT32 args)
 #ifdef PIKE_DEBUG
   extern int t_flag;
 #endif
-  INT32 e, i=0;
+  INT32 i=0;
   int x;
   ptrdiff_t matched_chars;
   struct svalue *save_sp=sp;
@@ -1891,7 +1891,7 @@ PMOD_EXPORT void f_sscanf(INT32 args)
 #ifdef PIKE_DEBUG
   extern int t_flag;
 #endif
-  INT32 e,i;
+  INT32 i;
   int x;
   ptrdiff_t matched_chars;
   struct svalue *save_sp=sp;

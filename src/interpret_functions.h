@@ -209,7 +209,6 @@ OPCODE1(F_CONSTANT, "constant", 0, {
  * swaps the arg1 top values with the arg2 values beneath
  */
 OPCODE2(F_REARRANGE,"rearrange",0,{
-  int e;
   check_stack(arg2);
   MEMCPY(Pike_sp,Pike_sp-arg1-arg2,sizeof(struct svalue)*arg2);
   MEMMOVE(Pike_sp-arg1-arg2,Pike_sp-arg1,sizeof(struct svalue)*arg1);

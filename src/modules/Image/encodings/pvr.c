@@ -134,7 +134,6 @@ struct gla_state
 static inline INT32 d(V_t *x, V_t *y, int k)
 {
   INT32 sum=0;
-  int i;
   while(k--) {
     int n = (*x++)-(*y++);
     sum += n*n;

@@ -1674,7 +1674,6 @@ void describe_mapping(struct mapping *m,struct processing *p,int indent)
 
     /* no mapping locking required (I hope) */
     NEW_MAPPING_LOOP(m->data) {
-      struct svalue *tmp;
       if (notfirst) my_strcat(",\n");
       else notfirst = 1;
       for(d = 0; d < indent; d++)

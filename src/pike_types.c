@@ -3572,8 +3572,6 @@ static struct pike_type *debug_low_range_type(struct pike_type *t,
   case T_STRING:
     /* Check that the index types are compatible with int. */
     {
-      struct pike_type *a;
-
       if (!low_match_types(int_type_string, index1_type, 0)) {
 	struct pike_string *s = describe_type(t);
 	yywarning("Bad argument 1 to range operator on %s.",

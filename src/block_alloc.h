@@ -267,7 +267,6 @@ void PIKE_CONCAT3(count_memory_in_,DATA,s)(INT32 *num_, INT32 *size_)	\
 {									\
   INT32 num=0, size=0;							\
   struct PIKE_CONCAT(DATA,_block) *tmp;					\
-  struct DATA *tmp2;							\
   DO_IF_RUN_UNLOCKED(mt_lock(&PIKE_CONCAT(DATA,_mutex)));               \
   for(tmp=PIKE_CONCAT(DATA,_blocks);tmp;tmp=tmp->next)			\
   {									\

@@ -1987,7 +1987,7 @@ static void f_magic_values (INT32 args)
   struct program *prog;
   struct inherit *inherit;
   struct array *res;
-  int type = 0, e, f, i;
+  int type = 0, e, i;
 
   if (args >= 1) {
     if (sp[-args].type != T_INT) SIMPLE_BAD_ARG_ERROR ("::_indices", 1, "void|int");
