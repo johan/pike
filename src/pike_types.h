@@ -120,6 +120,7 @@ INT32 get_max_args(struct pike_string *type);
 struct pike_string *get_type_of_svalue(struct svalue *s);
 char *get_name_of_type(int t);
 void cleanup_pike_types(void);
+int type_may_overload(char *type, int lfun);
 /* Prototypes end here */
 
 #ifdef DEBUG_MALLOC
