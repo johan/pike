@@ -289,6 +289,7 @@ void yyexplain_nonmatching_types(struct pike_type *type_a,
 				 struct pike_type *type_b,
 				 int flags);
 struct pike_type *make_pike_type(const char *t);
+struct pike_string *type_to_string(struct pike_type *t);
 int pike_type_allow_premature_toss(struct pike_type *type);
 /* Prototypes end here */
 
