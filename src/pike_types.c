@@ -27,7 +27,7 @@ RCSID("$Id$");
 #include "main.h"
 #include "opcodes.h"
 
-#define PIKE_TYPE_DEBUG
+/* #define PIKE_TYPE_DEBUG */
 
 int max_correct_args;
 
