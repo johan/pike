@@ -165,18 +165,6 @@ PMOD_EXPORT struct array *array_set_flags(struct array *a, int flags)
   return a;
 }
 
-/*
- * Extract an svalue from an array
- */
-PMOD_EXPORT void array_index_no_free(struct svalue *s,struct array *v,INT32 index)
-{
-#ifdef PIKE_DEBUG
-  if(index<0 || index>=v->size)
-    fatal("Illegal index in low level index routine.\n");
-#endif
-
-  assign_svalue_no_free(s, ITEM(v) + index);
-}
 
 /*
  * Extract an svalue from an array
@@ -248,24 +236,6 @@ PMOD_EXPORT void array_free_index(struct array *v,INT32 index)
 #endif
 
   free_svalue(ITEM(v) + index);
-}
-
-/*
- * Set an index in an array
- */
-PMOD_EXPORT void array_set_index(struct array *v,INT32 index, struct svalue *s)
-{
-#ifdef PIKE_DEBUG
-  if(index<0 || index>v->size)
-    fatal("Illegal index in low level array set routine.\n");
-#endif
-
-  add_ref(v);
-  check_destructed(s);
-
-  v->type_field = (v->type_field & ~BIT_UNFINISHED) | (1 << s->type);
-  assign_svalue( ITEM(v) + index, s);
-  free_array(v);
 }
 
 
