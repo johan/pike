@@ -406,7 +406,6 @@ OPCODE2_TAIL(F_MARK_AND_EXTERNAL, "mark & external", I_UPDATE_SP|I_UPDATE_M_SP, 
   });
 });
 
-
 OPCODE2(F_EXTERNAL_LVALUE, "& external", I_UPDATE_SP, {
   LOCAL_VAR(struct external_variable_context loc);
 
@@ -2477,6 +2476,29 @@ OPCODE0(F_SWAP,"swap",0,{
 
 OPCODE0(F_DUP,"dup",I_UPDATE_SP,{
   stack_dup();
+});
+
+OPCODE2(F_THIS, "this", I_UPDATE_SP, {
+    LOCAL_VAR(struct external_variable_context loc);
+
+    loc.o = Pike_fp->current_object;
+    loc.parent_identifier = Pike_fp->fun;
+    if (loc.o->prog)
+      loc.inherit = INHERIT_FROM_INT(loc.o->prog, loc.parent_identifier);
+    find_external_context(&loc, arg1);
+
+    DO_IF_DEBUG({
+      TRACE((5,"-   Identifier=%d Offset=%d\n",
+	     arg1,
+	     loc.inherit->identifier_level));
+    });
+    if (loc.o->prog) {
+      ref_push_object_inherit(loc.o,
+			      (loc.inherit - loc.o->prog->inherits) + arg2);
+    } else {
+      ref_push_object(loc.o);
+    }
+    print_return_value();
 });
 
 /*
