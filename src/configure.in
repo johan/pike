@@ -6215,6 +6215,8 @@ valgrind........ yes, using $VALGRIND $VALGRINDARGS
 EOF
 fi
 
+cat >>config.info <<EOF
+
 features:
 PAD_FEATURE([dynamic loading])$pike_cv_sys_dynamic_loading
 PAD_FEATURE([threads])$using_threads
