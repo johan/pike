@@ -6311,13 +6311,19 @@ PMOD_EXPORT void f_replace_master(INT32 args)
  *!
  *!   Return the current master object.
  *!
+ *! @note
+ *!   May return @[UNDEFINED] if no master has been loaded yet.
+ *!
  *! @seealso
  *!   @[replace_master()]
  */
 PMOD_EXPORT void f_master(INT32 args)
 {
+  struct object *o;
   pop_n_elems(args);
-  ref_push_object(master());
+  o = get_master();
+  if (o) ref_push_object(o);
+  else push_undefined();
 }
 
 #ifdef HAVE_SYS_TIME_H
