@@ -473,6 +473,9 @@ int yyexplain_not_implements(struct program *a, struct program *b);
 #define ADD_FUNCTION(NAME,FUNC,TYPE,FLAGS) \
   quick_add_function(NAME,CONSTANT_STRLEN(NAME),FUNC,TYPE,CONSTANT_STRLEN(TYPE),FLAGS,0)
 
+#define ADD_PROTOTYPE(NAME,TYPE,FLAGS) \
+  quick_add_function(NAME,CONSTANT_STRLEN(NAME),0,TYPE,CONSTANT_STRLEN(TYPE),FLAGS,0)
+
 #define ADD_INT_CONSTANT(NAME,CONST,FLAGS) \
   quick_add_integer_constant(NAME,CONSTANT_STRLEN(NAME),CONST,FLAGS)
 
