@@ -1914,8 +1914,13 @@ void f_create_process(INT32 args)
       buf[0] = 0;
       while (((e = write(control_pipe[0], buf, 1)) < 0) && (errno == EINTR))
 	;
-      if(e!=1)
-	error("Child process died prematurely. (e=%d errno=%d)\n",e,errno);
+      if(e!=1) {
+	/* Paranoia in case close() sets errno. */
+	int olderrno = errno;
+	close(control_pipe[0]);
+	error("Child process died prematurely. (e=%d errno=%d)\n",
+	      e, olderrno);
+      }
 
       /* Wait for exec or error */
       while (((e = read(control_pipe[0], buf, 3)) < 0) && (errno == EINTR))
