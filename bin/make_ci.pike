@@ -34,13 +34,13 @@ int main(int argc, array(string) argv)
       exit(1);
     }
     int char;
-    sscanf(info[0], "%04x", char);
+    sscanf(info[0], "%x", char);
     int mode = CIM_NONE;
     int d;
     if (sizeof(info[13])) {
       // Upper-case char
       mode = CIM_UPPERDELTA;
-      sscanf(info[13], "%04x", d);
+      sscanf(info[13], "%x", d);
       int delta = d - char;
       if (!(delta & (delta - 1)) && (delta > 0)) {
 	if (d & delta) {
@@ -53,7 +53,7 @@ int main(int argc, array(string) argv)
     } else if (sizeof(info[14])) {
       // Lower-case char
       mode = CIM_LOWERDELTA;
-      sscanf(info[14], "%04x", d);
+      sscanf(info[14], "%x", d);
       int delta = char - d;
       if (!(delta & (delta - 1)) && (delta > 0)) {
 	if (char & delta) {
@@ -83,7 +83,10 @@ int main(int argc, array(string) argv)
 		" */\n\n", ctime(time())));
 
   foreach(ci, array(int) info) {
-    write(sprintf("{ 0x%04x, %s, %s0x%04x, },\n",
+    if ((info[2] <= -0x8000) || (info[2] > 0x7fff)) {
+      error("Case information out of range for shorts: %d\n", info[2]);
+    }
+    write(sprintf("{ 0x%06x, %s, %s0x%04x, },\n",
 		  info[0],
 		  ({ "CIM_NONE", "CIM_UPPERDELTA", "CIM_LOWERDELTA",
 		     "CIM_CASEBIT", "CIM_CASEBITOFF" })[info[1]],
