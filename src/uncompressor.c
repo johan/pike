@@ -141,7 +141,7 @@ void my_uncompress(char *file,int argc, char **argv)
 	putenv(buffer);
 	break;
 	
-      case 's': /* execute */
+      case 's': /* system */
 	/* We ignore error so that we can continue with
 	 * file deletion
 	 */
