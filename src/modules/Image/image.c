@@ -3979,9 +3979,9 @@ void init_image_image(void)
 		tOr(tFunc(tOr(tInt,tVoid) tOr(tInt,tVoid) tRGB,tVoid),
 		    tFuncV(tInt tInt tString,tMixed,tVoid)),0);
    ADD_FUNCTION("clone",image_clone,
-		tFunc(tInt tInt tRGB,tObj),0);
+		tFunc(tOr(tInt,tVoid) tOr(tInt,tVoid) tRGB,tObj),0);
    ADD_FUNCTION("new",image_clone, /* alias */
-		tFunc(tInt tInt tRGB,tObj),0);
+		tFunc(tOr(tInt,tVoid) tOr(tInt,tVoid) tRGB,tObj),0);
    ADD_FUNCTION("clear",image_clear,
 		tFunc(tRGB,tObj),0);
 
