@@ -100,7 +100,7 @@ static void set_key(INT32 args)
     error("Invalid key length to cast->set_key()\n");
 
   cast_setkey(&(THIS->key), (unsigned char *)sp[-1].u.string->str,
-	      sp[-1].u.string->len);
+	      DO_NOT_WARN(sp[-1].u.string->len));
   
   pop_n_elems(args);
   push_object(this_object());
@@ -123,7 +123,7 @@ static void f_set_decrypt_key(INT32 args)
 /* string crypt_block(string) */
 static void f_crypt_block(INT32 args)
 {
-  int len;
+  ptrdiff_t len;
   struct pike_string *s;
   INT32 i;
   

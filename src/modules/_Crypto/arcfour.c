@@ -65,7 +65,8 @@ static void f_set_key(INT32 args)
   }
   if (!sp[-1].u.string->len)
     error("Empty key to arcfour_set_key()\n");
-  arcfour_set_key(THIS, (unsigned INT8 *) sp[-1].u.string->str, sp[-1].u.string->len);
+  arcfour_set_key(THIS, (unsigned INT8 *) sp[-1].u.string->str,
+		  DO_NOT_WARN(sp[-1].u.string->len));
 
   pop_n_elems(args);
   push_object(this_object());
@@ -74,7 +75,7 @@ static void f_set_key(INT32 args)
 /* string crypt(string) */
 static void f_arcfour_crypt(INT32 args)
 {
-  int len;
+  ptrdiff_t len;
   struct pike_string *s;
   
   if (args != 1) {
@@ -88,9 +89,9 @@ static void f_arcfour_crypt(INT32 args)
 
   s = begin_shared_string(len);
   arcfour_crypt(THIS,
-	    (unsigned INT8 *) s->str,
-	    (unsigned INT8 *) sp[-1].u.string->str,
-	    len);
+		(unsigned INT8 *) s->str,
+		(unsigned INT8 *) sp[-1].u.string->str,
+		DO_NOT_WARN(len));
   
   pop_n_elems(args);
   push_string(end_shared_string(s));
