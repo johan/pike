@@ -326,15 +326,10 @@ PIKE_MODULE_INIT
   if( !FT_Init_FreeType( &library ) )
   {
 #ifdef DYNAMIC_MODULE
-    push_string(make_shared_string("Image"));
-    push_int(0);
-    SAFE_APPLY_MASTER("resolv",2);
-    if (sp[-1].type==T_OBJECT)
-    {
-      push_string(make_shared_string("Image"));
-      f_index(2);
+    push_text("Image.Image");
+    SAFE_APPLY_MASTER("resolv",1);
+    if (sp[-1].type==T_PROGRAM)
       image_program=program_from_svalue(sp-1);
-    }
     pop_n_elems(1);
 #endif /* DYNAMIC_MODULE */
 

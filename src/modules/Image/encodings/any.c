@@ -110,39 +110,24 @@ void image_any__decode(INT32 args)
 
       case CHAR2(255,216):
 	 /* JFIF */
-	 push_text("Image");
-	 push_int(0);
-	 SAFE_APPLY_MASTER("resolv",2);
-	 push_text("JPEG");
-	 f_index(2);
-	 push_text("_decode");
-	 f_index(2);
+	 push_text("Image.JPEG._decode");
+	 SAFE_APPLY_MASTER("resolv_or_error",1);
 	 stack_swap();
 	 f_call_function(2);
 	 return;
 
       case CHAR2('g','i'):
 	 /* XCF */
-	 push_text("Image");
-	 push_int(0);
-	 SAFE_APPLY_MASTER("resolv",2);
-	 push_text("XCF");
-	 f_index(2);
-	 push_text("_decode");
-	 f_index(2);
+	 push_text("Image.XCF._decode");
+	 SAFE_APPLY_MASTER("resolv_or_error",1);
 	 stack_swap();
 	 f_call_function(2);
 	 return;
 
       case CHAR2(137,'P'):
 	 /* PNG */
-	 push_text("Image");
-	 push_int(0);
-	 SAFE_APPLY_MASTER("resolv",2);
-	 push_text("PNG");
-	 f_index(2);
-	 push_text("_decode");
-	 f_index(2);
+	 push_text("Image.PNG._decode");
+	 SAFE_APPLY_MASTER("resolv_or_error",1);
 	 stack_swap();
 	 f_call_function(2);
 	 fix_png_mapping();
@@ -150,13 +135,8 @@ void image_any__decode(INT32 args)
 
       case CHAR2('G','I'):
 	 /* GIF */
-	 push_text("Image");
-	 push_int(0);
-	 SAFE_APPLY_MASTER("resolv", 2);
-	 push_text("GIF");
-	 f_index(2);
-	 push_text("decode_map");
-	 f_index(2);
+	 push_text("Image.GIF.decode_map");
+	 SAFE_APPLY_MASTER("resolv_or_error", 1);
 	 stack_swap();
 	 f_call_function(2);
 	 return;
@@ -245,26 +225,16 @@ void image_any_decode_header(INT32 args)
 
       case CHAR2(255,216):
 	 /* JFIF */
-	 push_text("Image");
-	 push_int(0);
-	 SAFE_APPLY_MASTER("resolv",2);
-	 push_text("JPEG");
-	 f_index(2);
-	 push_text("decode_header");
-	 f_index(2);
+	 push_text("Image.JPEG.decode_header");
+	 SAFE_APPLY_MASTER("resolv_or_error",1);
 	 stack_swap();
 	 f_call_function(2);
 	 return;
 
       case CHAR2(137,'P'):
 	 /* PNG */
-	 push_text("Image");
-	 push_int(0);
-	 SAFE_APPLY_MASTER("resolv",2);
-	 push_text("PNG");
-	 f_index(2);
-	 push_text("decode_header");
-	 f_index(2);
+	 push_text("Image.PNG.decode_header");
+	 SAFE_APPLY_MASTER("resolv_or_error",1);
 	 stack_swap();
 	 f_call_function(2);
 	 fix_png_mapping();
@@ -272,26 +242,16 @@ void image_any_decode_header(INT32 args)
 
       case CHAR2('g','i'):
 	 /* XCF */
-	 push_text("Image");
-	 push_int(0);
-	 SAFE_APPLY_MASTER("resolv",2);
-	 push_text("XCF");
-	 f_index(2);
-	 push_text("_decode"); /* just try it ... */
-	 f_index(2);
+	 push_text("Image.XCF._decode");
+	 SAFE_APPLY_MASTER("resolv_or_error",1);
 	 stack_swap();
 	 f_call_function(2);
 	 return;
 
       case CHAR2('G','I'):
 	 /* GIF */
-	 push_text("Image");
-	 push_int(0);
-	 SAFE_APPLY_MASTER("resolv", 2);
-	 push_text("GIF");
-	 f_index(2);
-	 push_text("decode_map");
-	 f_index(2);
+	 push_text("Image.GIF.decode_map");
+	 SAFE_APPLY_MASTER("resolv_or_error", 1);
 	 stack_swap();
 	 f_call_function(2);
 	 return;

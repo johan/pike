@@ -705,25 +705,16 @@ void i_img_bmp__decode(INT32 args,int header_only)
       if (olen-i<0)
 	 Pike_error("Image.BMP.decode: unexpected EOF in JFIF data\n");
 
-      push_text("Image");
-      push_int(0);
-      SAFE_APPLY_MASTER("resolv",2);
-      push_text("JPEG");
-      f_index(2);
-      push_text("decode");
-      f_index(2);
+      push_text("Image.JPEG.decode");
+      SAFE_APPLY_MASTER("resolv_or_error",1);
 
       push_string(make_shared_binary_string((char *)os+i,olen-i));
 
       push_text("quant_tables");
 
-      push_text("Image");
-      push_int(0);
-      SAFE_APPLY_MASTER("resolv",2);
-      push_text("JPEG");
-      f_index(2);
-      push_text("quant_tables");
-      f_index(2);
+      push_text("Image.JPEG.quant_tables");
+      SAFE_APPLY_MASTER("resolv_or_error",1);
+
       push_int(quality);
       f_call_function(2);
 
