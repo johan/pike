@@ -600,8 +600,7 @@ PMOD_EXPORT struct pike_string *low_get_program_line(struct program *prog,
 						     INT32 *linep);
 PMOD_EXPORT struct pike_string *get_program_line(struct program *prog,
 						 INT32 *linep);
-char *debug_get_program_line(struct program *prog,
-		       INT32 *linep);
+char *debug_get_line(PIKE_OPCODE_T *pc, struct program *prog, INT32 *linep);
 PMOD_EXPORT struct pike_string *low_get_line(PIKE_OPCODE_T *pc,
 					     struct program *prog, INT32 *linep);
 PMOD_EXPORT struct pike_string *get_line(PIKE_OPCODE_T *pc,
