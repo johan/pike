@@ -31,7 +31,7 @@ class YpMap {
   }
   string `[](string key)
   {
-    return(match(key));
+    return(domain->match(ypmap, key));
   }
   mapping all()
   {
@@ -63,6 +63,16 @@ class YpMap {
   }
   array(string) values()
   {
-    return(values(domain->all(ypmap));
+    return(values(domain->all(ypmap)));
+  }
+  mixed cast(string type)
+  {
+    switch(type) {
+    case "mapping":
+      return(cast_to_mapping());
+    default:
+      throw(({ "Yp.YpDomain: Cast to " + type + " not supported.\n",
+		 backtrace() }));
+    }
   }
 };
