@@ -266,6 +266,16 @@ PMOD_EXPORT void Pike_vsnprintf(char *str, size_t size,
 	}
 	break;
 
+      case 'x':
+	{
+	  char buf[12];
+	  int pos=0;
+	  sprintf(buf, "%x", va_arg(args, int));
+	  while( --size>0 && buf[pos]!=0 )
+	    str++[0]=buf[pos++];
+	}
+	break;
+
       case '%':
 	str++[0]='%';
 	size--;
