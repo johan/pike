@@ -13,12 +13,13 @@ RCSID("$Id$");
 
 void rc4_set_key(struct rc4_ctx *ctx, const unsigned INT8 *key, INT32 len)
 {
-  register unsigned INT8 i, j; /* Depends on the eight-bitness of these variables. */
+  register unsigned INT8 j; /* Depends on the eight-bitness of these variables. */
+  unsigned i;
   INT32 k;
 
   /* Initialize context */
   i = 0;
-  do ctx->S[i] = i; while (++i);
+  do ctx->S[i] = i; while (++i < 256);
 
   /* Expand key */
   i = j = k = 0;
@@ -26,7 +27,7 @@ void rc4_set_key(struct rc4_ctx *ctx, const unsigned INT8 *key, INT32 len)
     j += ctx->S[i] + key[k];
     SWAP(ctx->S[i], ctx->S[j]);
     k = (k+1) % len; /* Repeat key if needed */
-  } while(++i);
+  } while(++i < 256);
   
   ctx->i = ctx->j = 0;
 }
