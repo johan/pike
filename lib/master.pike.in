@@ -844,7 +844,7 @@ static program low_findprog(string pname,
 	  // from dlerror(3) doesn't allow us to tell those from other
 	  // errors.
 	  call_compile_warning (handler, fname,
-				"Failed to load library: %s\n", err->__dlerror);
+				"Failed to load library: %s\n", err->dlerror);
 	else
 	  compile_cb_rethrow (err);
       }
@@ -855,10 +855,16 @@ static program low_findprog(string pname,
 
     AUTORELOAD_FINISH(ret,programs,fname);
 
-    resolv_debug("low_findprog %s: returning %O\n", fname, ret);
-
-    return programs[fname]=ret;
+    if (ret && ret->this_program_does_not_exist) {
+      resolv_debug ("low_findprog %s: program says it doesn't exist\n", fname);
+      return programs[fname] = 0;
+    }
+    else {
+      resolv_debug("low_findprog %s: returning %O\n", fname, ret);
+      return programs[fname]=ret;
+    }
   }
+
   resolv_debug ("low_findprog %s: file not found\n", fname);
   return 0;
 }
