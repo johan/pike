@@ -343,16 +343,16 @@ static void create (Stdio.File stream, SSL.context ctx,
   } LEAVE;
 }
 
-//! returns the client certificate chain, if any.
-array get_client_certificates()
+//! returns peer certificate information, if any.
+mapping get_peer_certificate_info()
 {
-  return conn->session->client_certificate_chain;
+  return conn->session->cert_data;
 }
 
-//! returns the server certificate chain, if any.
-array get_server_certificates()
+//! returns the peer certificate chain, if any.
+array get_peer_certificates()
 {
-  return conn->session->server_certificate_chain;
+  return conn->session->peer_certificate_chain;
 }
 
 int close (void|string how, void|int clean_close)
