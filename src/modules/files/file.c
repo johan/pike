@@ -3949,6 +3949,21 @@ static void fd__sprintf(INT32 args)
   Pike_sp[-1].subtype = 1;
 }
 
+
+/*! @decl mapping(string:mapping) gethostip()
+ *!
+ *! Returns the IP addresses of the host.
+ *!
+ *! @returns
+ *!   Returns a mapping that maps interface name to a mapping with
+ *!   more information about that interface. That information mapping
+ *!   looks as follows.
+ *!   @mapping
+ *!     @member array(string) "ips"
+ *!       A list of all IP addresses bound to this interface.
+ *!   @endmapping
+ */
+
 #define INTERFACES 256
 
 static void f_gethostip(INT32 args) {
