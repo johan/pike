@@ -92,7 +92,7 @@ static void udp_bind(INT32 args)
     return;
   }
 
-//set_close_on_exec(fd,1);
+  /* set_close_on_exec(fd,1); */
 
   MEMSET((char *)&addr,0,sizeof(struct sockaddr_in));
 
