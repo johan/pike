@@ -20,6 +20,11 @@ class c1 { inherit p1; inherit p2; int foo() { return p1::foo()+p2::foo(); }};
 class c2 { inherit c1; }; return c2()->foo();]],4)
 
 test_any([[
+class A { constant a=0; int foo() { return a; } };
+class B { inherit A; constant a=1; };
+return B()->foo(); ]], 1)
+
+test_any([[
 class p1 { int foo() { return 1; } };
 class p2 { int foo() { return 2; } };
 class c1 { inherit p1; inherit p2; };
