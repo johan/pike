@@ -344,16 +344,16 @@ PIKEFUN int trace(int t, void|int all_threads)
   optflags OPT_SIDE_EFFECT;
 {
   pop_n_elems(args);
-  push_int(t_flag);
+  push_int(Pike_interpreter.trace_level);
 #ifdef PIKE_THREADS
   if (!all_threads || UNSAFE_IS_ZERO (all_threads))
-    t_flag=t;
+    Pike_interpreter.trace_level=t;
   else {
     struct thread_state *s;
     FOR_EACH_THREAD(s, s->state.trace_level = t);
   }
 #else
-  t_flag=t;
+  Pike_interpreter.trace_level=t;
 #endif
 }
 

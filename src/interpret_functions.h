@@ -106,10 +106,11 @@
 
 #ifdef PIKE_DEBUG
 
-#define GET_JUMP() (backlog[backlogp].arg=(\
-  (t_flag>3 ? sprintf(trace_buffer, "-    Target = %+ld\n", \
-                      (long)LOW_GET_JUMP()), \
-              write_to_stderr(trace_buffer,strlen(trace_buffer)) : 0), \
+#define GET_JUMP() (backlog[backlogp].arg=(			\
+  (Pike_interpreter.trace_level>3 ?				\
+     sprintf(trace_buffer, "-    Target = %+ld\n",		\
+             (long)LOW_GET_JUMP()),				\
+     write_to_stderr(trace_buffer,strlen(trace_buffer)) : 0),	\
   LOW_GET_JUMP()))
 
 #define SKIPJUMP() (GET_JUMP(), LOW_SKIPJUMP())
@@ -156,12 +157,12 @@
      else						\
        low_return();					\
 							\
-    DO_IF_DEBUG(if (t_flag)				\
+    DO_IF_DEBUG(if (Pike_interpreter.trace_level)	\
       fprintf(stderr, "Returning to 0x%p\n",		\
 	      Pike_fp->pc));				\
     DO_JUMP_TO(Pike_fp->pc);				\
   }							\
-  DO_IF_DEBUG(if (t_flag)				\
+  DO_IF_DEBUG(if (Pike_interpreter.trace_level)		\
     fprintf(stderr, "Inter return\n"));			\
   INTER_RETURN;						\
 }
@@ -2015,7 +2016,7 @@ OPCODE1(F_CALL_OTHER_AND_RETURN,"call other & return", 0, {
   int args=(ARGS);							 \
   struct svalue *expected_stack=Pike_sp-args;				 \
     struct svalue *s=&Pike_fp->context.prog->constants[arg1].sval;	 \
-  if(t_flag>1)								 \
+  if(Pike_interpreter.trace_level>1)					 \
   {									 \
     init_buf();								 \
     describe_svalue(s, 0,0);						 \
@@ -2026,21 +2027,22 @@ OPCODE1(F_CALL_OTHER_AND_RETURN,"call other & return", 0, {
   if(Pike_sp != expected_stack + !s->u.efun->may_return_void)		 \
   {									 \
     if(Pike_sp < expected_stack)					 \
-      Pike_fatal("Function popped too many arguments: %s\n",			 \
+      Pike_fatal("Function popped too many arguments: %s\n",		 \
 	    s->u.efun->name->str);					 \
     if(Pike_sp>expected_stack+1)					 \
       Pike_fatal("Function left %d droppings on stack: %s\n",		 \
            Pike_sp-(expected_stack+1),					 \
 	    s->u.efun->name->str);					 \
     if(Pike_sp == expected_stack && !s->u.efun->may_return_void)	 \
-      Pike_fatal("Non-void function returned without return value "		 \
+      Pike_fatal("Non-void function returned without return value "	 \
 	    "on stack: %s %d\n",					 \
 	    s->u.efun->name->str,s->u.efun->may_return_void);		 \
     if(Pike_sp==expected_stack+1 && s->u.efun->may_return_void)		 \
       Pike_fatal("Void function returned with a value on the stack: %s %d\n", \
 	    s->u.efun->name->str, s->u.efun->may_return_void);		 \
   }									 \
-  if(t_flag>1 && Pike_sp>expected_stack) trace_return_value();		 \
+  if(Pike_interpreter.trace_level>1 && Pike_sp>expected_stack)		 \
+    trace_return_value();						 \
 }while(0)
 #else
 #define DO_CALL_BUILTIN(ARGS) \
@@ -2117,7 +2119,7 @@ OPCODE1(F_CALL_BUILTIN1_AND_POP, "call builtin1 & pop", 0, {
   push_zeroes(new_frame->num_locals - args);				   \
                                                                            \
   DO_IF_DEBUG({								   \
-    if(t_flag > 3)							   \
+    if(Pike_interpreter.trace_level > 3)				   \
       fprintf(stderr,"-    Allocating %d extra locals.\n",		   \
 	      new_frame->num_locals - new_frame->num_args);		   \
   });									   \

@@ -479,10 +479,10 @@ int dbm_main(int argc, char **argv)
 
 	case 't':
 	  if(p[1]>='0' && p[1]<='9')
-	    t_flag+=STRTOL(p+1,&p,10);
+	    Pike_interpreter.trace_level+=STRTOL(p+1,&p,10);
 	  else
-	    t_flag++,p++;
-	  default_t_flag = t_flag;
+	    Pike_interpreter.trace_level++,p++;
+	  default_t_flag = Pike_interpreter.trace_level;
 	  break;
 
 	case 'p':

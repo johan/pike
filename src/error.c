@@ -389,7 +389,7 @@ PMOD_EXPORT DECLSPEC(noreturn) void debug_fatal(const char *fmt, ...) ATTRIBUTE(
 
   (void)VFPRINTF(stderr, fmt, args);
 
-  d_flag=t_flag=0;
+  d_flag=Pike_interpreter.trace_level=0;
   if(Pike_sp && Pike_interpreter.evaluator_stack &&
      master_object && master_object->prog)
   {

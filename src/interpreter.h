@@ -55,22 +55,22 @@
 
 #ifdef PIKE_DEBUG
 
-#define GET_ARG() (backlog[backlogp].arg=(\
-  instr=prefix,\
-  prefix=0,\
-  instr += LOW_GET_ARG(),\
-  (t_flag>3 ? sprintf(trace_buffer, "-    Arg = %ld\n", \
-                     (long)instr), \
-              write_to_stderr(trace_buffer,strlen(trace_buffer)) : 0),\
+#define GET_ARG() (backlog[backlogp].arg=(			\
+  instr=prefix,							\
+  prefix=0,							\
+  instr += LOW_GET_ARG(),					\
+  (Pike_interpreter.trace_level>3 ?				\
+     sprintf(trace_buffer, "-    Arg = %ld\n", (long)instr),	\
+     write_to_stderr(trace_buffer,strlen(trace_buffer)) : 0),	\
   instr))
 
-#define GET_ARG2() (backlog[backlogp].arg2=(\
-  instr=prefix2,\
-  prefix2=0,\
-  instr += LOW_GET_ARG(),\
-  (t_flag>3 ? sprintf(trace_buffer, "-    Arg2 = %ld\n", \
-                      (long)instr), \
-              write_to_stderr(trace_buffer,strlen(trace_buffer)) : 0),\
+#define GET_ARG2() (backlog[backlogp].arg2=(			\
+  instr=prefix2,						\
+  prefix2=0,							\
+  instr += LOW_GET_ARG(),					\
+  (Pike_interpreter.trace_level>3 ?				\
+     sprintf(trace_buffer, "-    Arg2 = %ld\n",	(long)instr),	\
+     write_to_stderr(trace_buffer,strlen(trace_buffer)) : 0),	\
   instr))
 
 #else /* !PIKE_DEBUG */
@@ -111,7 +111,7 @@ static int eval_instruction(PIKE_OPCODE_T *pc)
     
 #ifdef PIKE_DEBUG
 
-    if(t_flag > 2)
+    if(Pike_interpreter.trace_level > 2)
     {
       char *file, *f;
       struct pike_string *filep;

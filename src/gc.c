@@ -2466,7 +2466,7 @@ int do_gc(void)
   last_cycle = 0;
 
 #ifdef PIKE_DEBUG
-  if(GC_VERBOSE_DO(1 ||) t_flag) {
+  if(GC_VERBOSE_DO(1 ||) Pike_interpreter.trace_level) {
     fprintf(stderr,"Garbage collecting ... ");
     GC_VERBOSE_DO(fprintf(stderr, "\n"));
 #ifdef HAVE_GETHRTIME
@@ -2843,7 +2843,7 @@ int do_gc(void)
 
 #ifdef PIKE_DEBUG
   UNSET_ONERROR (uwp);
-  if(GC_VERBOSE_DO(1 ||) t_flag)
+  if(GC_VERBOSE_DO(1 ||) Pike_interpreter.trace_level)
   {
 #ifdef HAVE_GETHRTIME
     fprintf(stderr,

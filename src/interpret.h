@@ -43,8 +43,6 @@ struct Pike_interpreter {
   int trace_level;
 };
 
-#define t_flag (Pike_interpreter.trace_level)
-
 #ifndef STRUCT_FRAME_DECLARED
 #define STRUCT_FRAME_DECLARED
 #endif

@@ -721,7 +721,7 @@ TH_RETURN_TYPE new_thread_func(void * data)
     }
 #endif
 
-  t_flag = default_t_flag;
+  Pike_interpreter.trace_level = default_t_flag;
 
   THREADS_FPRINTF(0, (stderr,"THREAD %08x INITED\n",(unsigned int)Pike_interpreter.thread_id));
 

@@ -93,7 +93,7 @@ PMOD_EXPORT const char msg_multiset_no_node_refs[] =
     struct svalue *_cmp_a_ = (A);					\
     struct svalue *_cmp_b_ = (B);					\
     int _cmp_res_;							\
-    if (t_flag) {							\
+    if (Pike_interpreter.trace_level) {					\
       fputs ("internal cmp ", stderr);					\
       print_svalue (stderr, _cmp_a_);					\
       fputs (" <=> ", stderr);						\
@@ -101,12 +101,12 @@ PMOD_EXPORT const char msg_multiset_no_node_refs[] =
       fputs (": ", stderr);						\
     }									\
     _cmp_res_ = (CMP_RES) = set_svalue_cmpfun (_cmp_a_, _cmp_b_);	\
-    if (t_flag)								\
+    if (Pike_interpreter.trace_level)					\
       fprintf (stderr, "%d\n", _cmp_res_);				\
   } while (0)
 
 #define EXTERNAL_CMP(CMP_LESS) do {					\
-    if (t_flag) {							\
+    if (Pike_interpreter.trace_level) {					\
       fputs ("external cmp ", stderr);					\
       print_svalue (stderr, sp - 2);					\
       fputs (" <=> ", stderr);						\
@@ -114,7 +114,7 @@ PMOD_EXPORT const char msg_multiset_no_node_refs[] =
       fputs (": ", stderr);						\
     }									\
     apply_svalue (CMP_LESS, 2);						\
-    if (t_flag) {							\
+    if (Pike_interpreter.trace_level) {					\
       print_svalue (stderr, sp - 1);					\
       fputc ('\n', stderr);						\
     }									\

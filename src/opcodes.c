@@ -1907,7 +1907,7 @@ void o_sscanf(INT32 args)
   pop_n_elems(sp-save_sp +args);
 
 #ifdef PIKE_DEBUG
-  if(t_flag >2)
+  if(Pike_interpreter.trace_level >2)
   {
     int nonblock;
     if((nonblock=query_nonblocking(2)))
