@@ -10,4 +10,7 @@
 /* Define if <math.h> defines FP_RZ */
 #undef HAVE_FP_RZ
 
+/* Define if fpsetmask actually works. */
+#undef HAVE_WORKING_FPSETMASK
+
 @BOTTOM@

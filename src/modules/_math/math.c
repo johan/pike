@@ -506,7 +506,9 @@ void f_sgn(INT32 args)
 PIKE_MODULE_INIT
 {
 #ifdef HAVE_FPSETMASK
+#ifdef HAVE_WORKING_FPSETMASK
   fpsetmask(0);
+#endif
 #endif
 #ifdef HAVE_FPSETROUND
 #ifndef HAVE_FP_RZ
