@@ -192,6 +192,16 @@ void *alloca();
 #define MAX_INT32 2147483647
 #define MIN_INT32 (-2147483647-1)
 
+#if SIZEOF_INT_TYPE == 4
+#define MAX_INT_TYPE MAX_INT32
+#define MIN_INT_TYPE MIN_INT32
+#else
+#if SIZEOF_INT_TYPE == 8
+#define MAX_INT_TYPE 9223372036854775807LL
+#define MIN_INT_TYPE (-9223372036854775807LL-1)
+#endif
+#endif
+
 #define INT16 short
 #define INT8 char
 
