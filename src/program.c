@@ -1968,7 +1968,7 @@ int really_low_find_shared_string_identifier(struct pike_string *name,
 #ifdef PIKE_DEBUG
   if (!prog) {
     fatal("really_low_find_shared_string_identifier(\"%s\", NULL, %d)\n"
-	  "prog is NULL!\n", name-str, see_static);
+	  "prog is NULL!\n", name->str, see_static);
   }
 #endif /* PIKE_DEBUG */
 
