@@ -252,7 +252,7 @@ string _sprintf(int type, mapping|void flags)
     case 't': return "Sql";
     case 'O':
       if(master_sql->_sprintf)
-	return sprintf("Sql(%O)", master_sql);
+	return sprintf("Sql.%O", master_sql);
       return "Sql()";
   }
 }
@@ -394,19 +394,19 @@ array(mapping(string:mixed)) query(object|string q,
 //! as a Sql.sql_result object. This allows for having results larger than
 //! the available memory, and returning some more info about the result.
 //! Returns 0 if the query didn't return any result (e.g. INSERT or similar).
-//! For the other arguments, they are the same as the query() function.
+//! For the other arguments, they are the same as for the @[query()] function.
 int|object big_query(object|string q, mixed ... extraargs)
 {
   object|array(mapping) pre_res;
   mapping(string|int:mixed) bindings=0;
-  
+
   if (extraargs && sizeof(extraargs)) {
     if (mappingp(extraargs[0])) {
       bindings=extraargs[0];
     } else {
       [q,bindings]=handle_extraargs(q,extraargs);
     }
-  }  
+  }
 
   if (functionp(master_sql->big_query)) {
     if (bindings) {
