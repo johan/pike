@@ -138,17 +138,21 @@ if "$SMARTLINK" -v >/dev/null 2>&5; then
 else
   AC_MSG_RESULT(no)
 
-  rm -f "$SMARTLINK"
-
-  AC_MSG_CHECKING(whether smartlink compiles)
-
-  link_cmd='${REALCC-cc} -o smartlink${ac_exeext} $CFLAGS -I. $CPPFLAGS $LDFLAGS $srcdir/smartlink.$ac_ext $LIBS 2>&5'
-  if { (eval echo Compiling smartlink: \"$link_cmd\") 1>&5; (eval $link_cmd) 2>&5; } && "$BUILDDIR/smartlink" -v >/dev/null 2>&5; then
-    AC_MSG_RESULT(yes)
-  else
-    AC_MSG_RESULT(no - use the sh script)
-
+  if echo foo "$CC" | grep rntcc >/dev/null; then
     SMARTLINK="$BINDIR/smartlink"
+  else
+    rm -f "$SMARTLINK"
+
+    AC_MSG_CHECKING(whether smartlink compiles)
+
+    link_cmd='${REALCC-cc} -o smartlink${ac_exeext} $CFLAGS -I. $CPPFLAGS $LDFLAGS $srcdir/smartlink.$ac_ext $LIBS 2>&5'
+    if { (eval echo Compiling smartlink: \"$link_cmd\") 1>&5; (eval $link_cmd) 2>&5; } && "$BUILDDIR/smartlink" -v >/dev/null 2>&5; then
+      AC_MSG_RESULT(yes)
+    else
+      AC_MSG_RESULT(no - use the sh script)
+
+      SMARTLINK="$BINDIR/smartlink"
+    fi
   fi
 fi
 
