@@ -23,7 +23,8 @@
 #define FILE_STAT_CACHE
 
 // This define is searched and replaced by bin/install.pike.
-#undef PIKE_MODULE_RELOC
+// The PIKE_MODULE_RELOC stuff is curently broken.
+//#undef PIKE_MODULE_RELOC
 
 #ifndef PIKE_WARNINGS
 #define PIKE_WARNINGS 1
