@@ -1336,8 +1336,7 @@ static void file_create(INT32 args)
   }
   else
   {
-    file_open(args);
-    /*error("file->create() not called with stdin, stdout or stderr as argument.\n");*/
+    file_open(args); /* Try opening the file instead. */
   }
 }
 
