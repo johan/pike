@@ -36,7 +36,7 @@ struct pike_frame
 
 #ifdef PIKE_DEBUG
 #define debug_check_stack() do{if(Pike_sp<Pike_evaluator_stack)fatal("Stack error.\n");}while(0)
-#define check__positive(X,Y) if((X)<0) fatal(Y)
+#define check__positive(X,Y) if((X)<0) fatal Y
 #include "error.h"
 #else
 #define check__positive(X,Y)
@@ -67,7 +67,7 @@ struct pike_frame
 
 #define pop_n_elems(X)						\
  do { int x_=(X); if(x_) { 					\
-   check__positive(x_,"Popping negative number of args....\n");	\
+   check__positive(x_,("Popping negative number of args.... (%d) \n",x_)); \
    Pike_sp-=x_; debug_check_stack();					\
   free_svalues(Pike_sp,x_,BIT_MIXED);				\
  } } while (0)
@@ -243,4 +243,5 @@ extern long long time_base;
 #endif /* !NO_PIKE_SHORTHAND */
 
 #endif
+
 
