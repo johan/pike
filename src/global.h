@@ -143,6 +143,9 @@ char *alloca ();
 #endif
 #endif
 
+#define MAX_INT32 2147483647
+#define MIN_INT32 -2147483648
+
 #define INT16 short
 #define INT8 char
 

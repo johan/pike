@@ -584,5 +584,6 @@ void low_exit_main(void)
   cleanup_shared_string_table();
 #endif
   cleanup_callbacks();
+  really_clean_up_interpret();
 }
 

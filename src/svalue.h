@@ -119,7 +119,7 @@ struct svalue
 #define tString "\006"
 #define tFlt "\007"
 #define tFloat "\007"
-#define tInt "\010"
+#define tInt "\010\200\000\000\000\177\377\377\377"
 
 #define tVoid "\020"
 #define tVar(X) #X

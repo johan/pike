@@ -1940,9 +1940,9 @@ void init_operators(void)
   /* function(mixed...:int) */
   ADD_EFUN2("`!=",f_ne,tFuncV(,tMix,tInt),OPT_TRY_OPTIMIZE,0,generate_comparison);
   /* function(mixed:int) */
-  ADD_EFUN2("`!",f_not,tFunc(tMix,tInt),OPT_TRY_OPTIMIZE,optimize_not,generate_not);
+  add_efun2("`!",f_not,"!function(int(0..0):mixed)&function(mixed:int(0..0))|function(int(0..0):int(1..1))",OPT_TRY_OPTIMIZE,optimize_not,generate_not);
 
-#define CMP_TYPE "!function(!object...:mixed)&function(mixed...:int)|function(int|float...:int)|function(string...:int)"
+#define CMP_TYPE "!function(!object...:mixed)&function(mixed...:int(0..1))|function(int|float...:int(0..1))|function(string...:int(0..1))"
   add_efun2("`<", f_lt,CMP_TYPE,OPT_TRY_OPTIMIZE,0,generate_comparison);
   add_efun2("`<=",f_le,CMP_TYPE,OPT_TRY_OPTIMIZE,0,generate_comparison);
   add_efun2("`>", f_gt,CMP_TYPE,OPT_TRY_OPTIMIZE,0,generate_comparison);

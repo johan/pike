@@ -1323,3 +1323,8 @@ void cleanup_interpret(void)
   mark_stack_malloced=0;
   evaluator_stack_malloced=0;
 }
+
+void really_clean_up_interpret(void)
+{
+  free_all_pike_frame_blocks();
+}

@@ -38,7 +38,7 @@ struct string_builder
 struct pike_string *debug_findstring(const struct pike_string *foo);
 #endif
 
-#define free_string(s) do{ struct pike_string *_=(s); if(--_->refs<=0) really_free_string(_); }while(0)
+#define free_string(s) do{ struct pike_string *_=(s); debug_malloc_touch(_); if(--_->refs<=0) really_free_string(_); }while(0)
 
 #define my_hash_string(X) ((unsigned long)(X))
 #define my_order_strcmp(X,Y) ((char *)(X)-(char *)(Y))

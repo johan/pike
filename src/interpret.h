@@ -194,6 +194,7 @@ void apply(struct object *o, char *fun, int args);
 void apply_svalue(struct svalue *s, INT32 args);
 void slow_check_stack(void);
 void cleanup_interpret(void);
+void really_clean_up_interpret(void);
 /* Prototypes end here */
 
 extern struct svalue *sp;

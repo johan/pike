@@ -158,6 +158,7 @@ void cleanup_added_efuns(void)
     free_mapping(builtin_constants);
     builtin_constants=0;
   }
+  free_all_callable_blocks();
 }
 void count_memory_in_callables(INT32 *num_, INT32 *size_)
 {

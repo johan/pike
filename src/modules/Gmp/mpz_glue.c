@@ -305,7 +305,7 @@ static void mpzmod_cast(INT32 args)
   switch(s->str[0])
   {
   case 'i':
-    if(!strcmp(s->str, "int"))
+    if(!strncmp(s->str, "int", 3))
     {
       free_string(s);
       mpzmod_get_int(0);
