@@ -107,7 +107,7 @@ mapping(string:mixed) create_pie(mapping(string:mixed) diagram_data)
   if (diagram_data["3Ddepth"]>diagram_data["ysize"]/5)
     diagram_data["3Ddepth"]=diagram_data["ysize"]/5;
   
-  GETFONT(xnamesfont);
+  notext=GETFONT(xnamesfont);
   if (names)
     if (notext)
       for(int i=0; i<sizeof(names); i++)

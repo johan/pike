@@ -211,7 +211,7 @@ mapping(string:mixed) create_bars(mapping(string:mixed) diagram_data)
     else
       label=diagram_data["labels"][0];
 
-    GETFONT(xaxisfont);
+    object notext=GETFONT(xaxisfont);
     if ((label!="")&&(label!=0))
       labelimg=notext
 	->write(UNICODE(label,diagram_data["encoding"]))
@@ -782,7 +782,7 @@ mapping(string:mixed) create_bars(mapping(string:mixed) diagram_data)
       label=diagram_data["labels"][1]+" ["+diagram_data["labels"][3]+"]"; //Yquantity
     else
       label=diagram_data["labels"][1];
-    GETFONT(yaxisfont);
+    object notext=GETFONT(yaxisfont);
     if ((label!="")&&(label!=0))
       labelimg=notext
 	->write(label)->scale(0,diagram_data["labelsize"]);
