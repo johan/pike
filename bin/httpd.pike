@@ -98,7 +98,7 @@ void accept_callback()
   object tmp_output;
   tmp_output=accept();
   if(!tmp_output) return;
-  clone(output_class, tmp_output);
+  output_class(tmp_output);
   destruct(tmp_output);
 }
 
