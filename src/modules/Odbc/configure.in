@@ -92,11 +92,11 @@ if test x$with_odbc = xyes; then
 
   # Header file
 
-  AC_CHECK_HEADERS(qeodbc.h sql.h sqlext.h)
+  AC_CHECK_HEADERS(windows.h qeodbc.h sql.h sqlext.h)
 
   pike_cv_odbc=no;
 
-  if test "$ac_cv_header_qeodbc_h$ac_cv_header_sql_h$ac_cv_header_sqlext_h" = "yesyesyes"; then
+  if test "$ac_cv_header_sql_h$ac_cv_header_sqlext_h" = "yesyes"; then
 
     # System libs which might be needed
 
