@@ -3,6 +3,8 @@
 
 #pike __REAL_VERSION__
 
+#if constant(GTK.Widget)
+
 inherit .Interface;
 import GLUE.Events;
 
@@ -196,3 +198,5 @@ void hide_cursor() {
 void show_cursor() {
   // FIXME: What do we do.
 }
+
+#endif /* constant(GTK.Widget) */
