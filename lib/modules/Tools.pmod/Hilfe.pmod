@@ -221,7 +221,6 @@ private class CommandHelp {
     line = words[1..]*" ";
     function write = e->write;
 
-    write("%O\n", line);
     if(line == "me more") {
       write( documentation_help_me_more );
       return;
