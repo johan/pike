@@ -22,6 +22,10 @@ RCSID("$Id$");
 
 struct mapping *builtin_constants = 0;
 
+#ifdef PIKE_DEBUG
+struct callable *first_callable = NULL;
+#endif
+
 PMOD_EXPORT struct mapping *get_builtin_constants(void)
 {
   return builtin_constants;
@@ -60,13 +64,20 @@ PMOD_EXPORT void add_global_program(const char *name, struct program *p)
   low_add_constant(name, &s);
 }
 
+#undef INIT_BLOCK
+#define INIT_BLOCK(X) do {						\
+    DO_IF_DEBUG (DOUBLELINK (first_callable, X));			\
+  } while (0)
+
 #undef EXIT_BLOCK
 #define EXIT_BLOCK(X) do {		\
+  DO_IF_DEBUG (DOUBLEUNLINK (first_callable, X)); \
   free_type(X->type);			\
   free_string(X->name);			\
   X->name=0;				\
   EXIT_PIKE_MEMOBJ(X);                  \
 }while(0)
+
 BLOCK_ALLOC_FILL_PAGES(callable,2)
 
 int global_callable_flags=0;

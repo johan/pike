@@ -31,11 +31,18 @@ struct callable
   INT8 may_return_void;
   long compiles;
   long runs;
+  struct callable *prev;
 #endif
   optimize_fun optimize;
   docode_fun docode;
   struct callable *next;
 };
+
+#ifdef PIKE_DEBUG
+/* We have a double-linked list in debug mode for identification
+ * purposes. */
+extern struct callable *first_callable;
+#endif
 
 /* Prototypes begin here */
 PMOD_EXPORT struct mapping *get_builtin_constants(void);
