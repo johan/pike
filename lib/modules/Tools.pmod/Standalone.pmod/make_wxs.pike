@@ -9,7 +9,7 @@
 
 int main(int argc, array(string) argv)
 {
-  string base_guid = Standards.UUID.make_version(-1)->str();
+  string base_guid = Standards.UUID.make_version1(-1)->str();
   string version_str = "1.0";
   string id;
   string descr;
