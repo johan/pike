@@ -204,6 +204,16 @@ Everything on the commandline after the script is passed as arguments
 to the script.
 .LP
 If no script is specified, pike will start in interactive- (Hilfe) mode.
+.SH REGISTRY KEYS
+On NT, Pike is affected by the following keys in the registry:
+
+.B HKEY_CURRENT_USER\eSoftware\ePike\e\n(mj.\n(mn\ePIKE_MASTER
+.B HKEY_LOCAL_MACHINE\eSoftware\ePike\e\n(mj.\n(mn\ePIKE_MASTER
+.RS
+Specifies the name of the master program (overridden by
+.BI \-m master_program
+).
+.RE
 .SH ENVIRONMENT
 Pike is affected by the following environment variables:
 .TP
