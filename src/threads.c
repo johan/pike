@@ -18,6 +18,8 @@ int threads_disabled = 0;
 #include "main.h"
 #include "module_support.h"
 
+#include <errno.h>
+
 int live_threads = 0;
 COND_T live_threads_change;
 COND_T threads_disabled_change;
