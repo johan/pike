@@ -1025,9 +1025,13 @@ static void low_and_pike_types(char *t1, char *t2)
   {
     push_unfinished_type(t1);
   }
-  else if(EXTRACT_UCHAR(t1)==T_MIXED || EXTRACT_UCHAR(t2)==T_MIXED)
+  else if(EXTRACT_UCHAR(t1)==T_MIXED)
   {
-    push_type(T_MIXED);
+    push_unfinished_type(t2);
+  }
+  else if(EXTRACT_UCHAR(t2)==T_MIXED)
+  {
+    push_unfinished_type(t1);
   }
   else if(EXTRACT_UCHAR(t1)==T_INT && EXTRACT_UCHAR(t2)==T_INT)
   {
