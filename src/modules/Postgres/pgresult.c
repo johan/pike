@@ -357,7 +357,7 @@ badresult:
 		   *        and BYTEAOID are usually not available
 		   *        to Postgres frontends.
 		   */
-#ifdef CUT_TRAILING_SPACES
+#if defined(CUT_TRAILING_SPACES) && defined(BPCHAROID)
 		case BPCHAROID:
 		  for(;k>0 && value[k]==' ';k--);
 		  break;
