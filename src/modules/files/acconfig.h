@@ -80,4 +80,8 @@
 /* Filesystem notifications */
 #undef HAVE_NOTIFICATIONS
 
+/* Defined to path of pt_chmod to use pt_chmod directly rather than
+   calling grantpt (needed on Solaris) */
+#undef USE_PT_CHMOD
+
 #endif
