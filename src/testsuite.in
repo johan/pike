@@ -341,7 +341,7 @@ test_any([[
     {
       return !foo;
     }
-  }
+  };
   return Foo()->f();
 ]], 1)
 
@@ -349,7 +349,7 @@ test_any([[
   class Foo
   {
     int foo();
-  }
+  };
   return !Foo()->foo;
 ]], 1)
 
