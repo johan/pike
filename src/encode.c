@@ -650,6 +650,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
 	  encode_type(p->identifiers[d].type->str, data);
 	  code_number(p->identifiers[d].identifier_flags,data);
 	  code_number(p->identifiers[d].run_time_type,data);
+	  code_number(p->identifiers[d].opt_flags,data);
 	  code_number(p->identifiers[d].func.offset,data);
 	}
 
@@ -1502,6 +1503,7 @@ static void decode_value2(struct decode_data *data)
 	    decode_type(p->identifiers[d].type,data);
 	    decode_number(p->identifiers[d].identifier_flags,data);
 	    decode_number(p->identifiers[d].run_time_type,data);
+	    decode_number(p->identifiers[d].opt_flags,data);
 	    decode_number(p->identifiers[d].func.offset,data);
 	  }
 
