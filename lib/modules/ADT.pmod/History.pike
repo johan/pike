@@ -22,6 +22,7 @@ private int maxsize;
 // the history stack.
 private int latest_entry_num;
 
+//! @decl void create(int max_size)
 //! @[max_size] is the maximum number of entries that can reside in the
 //! history at the same time.
 void create(int _maxsize) {
@@ -45,7 +46,8 @@ void push(mixed value) {
 }
 
 //! A @[sizeof] operation on this object returns the number
-//! of elements currently in the history, e.g. <= @[maxsize].
+//! of elements currently in the history, e.g. <= the current
+//! max size.
 int _sizeof() { return size; }
 
 //! Returns the maximum number of values in the history
