@@ -289,8 +289,9 @@ void backend(void)
     THREADS_DISALLOW();
     may_need_wakeup=0;
 
-    if(i>=0)
-    {
+    if (!i) {
+      /* Timeout */
+    } else if(i>0) {
       for(i=0; i<max_fd+1; i++)
       {
 	if(FD_ISSET(i, &sets.read) && read_callback[i])
