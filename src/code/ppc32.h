@@ -47,6 +47,8 @@
     }									  \
   } while(0)
 
+#define PPC_REG_RET 0
+
 #define PPC_REG_ARG1 3
 #define PPC_REG_ARG2 4
 #define PPC_REG_ARG3 5
