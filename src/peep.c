@@ -54,7 +54,7 @@ static void dump_instr(p_instr *p)
 
 void init_bytecode(void)
 {
-  low_reinit_buf(&instrbuf);
+  initialize_buf(&instrbuf);
 }
 
 void exit_bytecode(void)
