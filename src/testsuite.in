@@ -9202,7 +9202,7 @@ test_true([[
 test_any([[object p=Process.create_process(Process.split_quoted_string(RUNPIKE)+({"-e","exit(2)"})); sleep(10); return p->wait()]],2)
 test_eq([[
 #ifdef __NT__
-  Process.popen(RUNPIKE+" -e write(\"test\");")
+  Process.popen(RUNPIKE+" -e \"write(\\\"test\\\");\"")
 #else /* !__NT__ */
   Process.popen(RUNPIKE+" -e 'write(\"test\");'")
 #endif /* __NT__ */
