@@ -30,7 +30,7 @@ int timeout=120; // seconds
 
 // internal
 #if constant(SSL.sslfile) 
- import SSL.constants;
+ import SSL.Constants;
  SSL.sslfile ssl;
 #endif
 int(0..1) https = 0;

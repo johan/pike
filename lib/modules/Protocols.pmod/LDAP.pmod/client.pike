@@ -75,7 +75,7 @@
 #include "ldap_errors.h"
 
 #if constant(SSL.sslfile)
-import SSL.constants;
+import SSL.Constants;
 #endif
 
 #ifdef LDAP_PROTOCOL_PROFILE
