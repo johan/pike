@@ -422,7 +422,7 @@ unsigned INT32 hash_svalue(struct svalue *s)
       break;
     }
 
-  default:      q=(unsigned INT32)((long)s->u.refs >> 2);
+  default:      q=(unsigned INT32)((long)s->u.refs >> 2); break;
   case T_INT:   q=s->u.integer; break;
   case T_FLOAT: q=(unsigned INT32)(s->u.float_number * 16843009.731757771173); break;
   }
