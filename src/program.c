@@ -2946,7 +2946,7 @@ struct program *compile(struct pike_string *prog, struct object *handler)
 
   p=end_first_pass(0);
   
-  if(p && !num_parse_error)
+  if(p)
   {
 #ifdef PIKE_DEBUG
     if (compilation_depth != -1) {
