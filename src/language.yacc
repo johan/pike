@@ -881,7 +881,7 @@ lambda: F_LAMBDA
   }
   ;
 
-class: F_CLASS optional_identifier '{'
+class: modifiers F_CLASS optional_identifier '{'
   {
     start_new_program();
   }
@@ -898,10 +898,10 @@ class: F_CLASS optional_identifier '{'
       s.type=T_PROGRAM;
       s.subtype=0;
     }
-    if($2)
+    if($3)
     { 
-      add_constant($2, &s, 0);
-      free_string($2);
+      add_constant($3, &s, $1);
+      free_string($3);
     }
     $$=mksvaluenode(&s);
     free_svalue(&s);
