@@ -7,9 +7,13 @@ AC_MODULE_INIT()
 AC_CHECK_HEADERS(mird.h)
 AC_CHECK_LIB(mird,mird_sync)
 
+PIKE_FEATURE_NODEP(Mird)
+
 if test "x$ac_cv_header_mird_h" != "xyes" -o "x$ac_cv_lib_mird_mird_sync" != "xyes"; then
     echo '*** Mird module failed to find libmird' >&2
     echo '*** If you want Mird support, install libmird (http://www.mirar.org/mird)' >&2
+else
+    PIKE_FEATURE_OK(Mird)
 fi
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
