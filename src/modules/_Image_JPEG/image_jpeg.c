@@ -22,7 +22,7 @@
 #undef HAVE_STDLIB_H
 #endif
 #include "global.h"
-RCSID("$id: $");
+RCSID("$Id$");
 
 #include "pike_macros.h"
 #include "object.h"
