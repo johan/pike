@@ -364,6 +364,7 @@ void cleanup_gc(void);
 #define GC_PASS_POSTTOUCH	510
 
 #define GC_PASS_LOCATE -1
+#define GC_PASS_DISABLED -2
 
 #ifdef PIKE_DEBUG
 extern int gc_in_cycle_check;
