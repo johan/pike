@@ -619,30 +619,11 @@ void pike_module_init(void)
       add_function("encode",image_jpeg_encode,
 		   "function(object,void|mapping(string:int):string)",0);
 
-      push_constant_text("IFAST");
-      push_int(JDCT_IFAST);
-      add_constant(sp[-2].u.string,sp-1,0);
-      pop_n_elems(2);
-
-      push_constant_text("FLOAT");
-      push_int(JDCT_FLOAT);
-      add_constant(sp[-2].u.string,sp-1,0);
-      pop_n_elems(2);
-
-      push_constant_text("DEFAULT");
-      push_int(JDCT_DEFAULT);
-      add_constant(sp[-2].u.string,sp-1,0);
-      pop_n_elems(2);
-
-      push_constant_text("ISLOW");
-      push_int(JDCT_ISLOW);
-      add_constant(sp[-2].u.string,sp-1,0);
-      pop_n_elems(2);
-
-      push_constant_text("FASTEST");
-      push_int(JDCT_FASTEST);
-      add_constant(sp[-2].u.string,sp-1,0);
-      pop_n_elems(2);
+      add_integer_constant("IFAST", JDCT_IFAST, 0);
+      add_integer_constant("FLOAT", JDCT_FLOAT, 0);
+      add_integer_constant("DEFAULT", JDCT_DEFAULT, 0);
+      add_integer_constant("ISLOW", JDCT_ISLOW, 0);
+      add_integer_constant("FASTEST", JDCT_FASTEST, 0);
    }
 
 #endif /* HAVE_JPEGLIB_H */
