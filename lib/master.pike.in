@@ -1110,6 +1110,11 @@ static void create()
   add_constant("strlen", sizeof);
   add_constant("write", write);
   add_constant("werror", werror);
+  // To make it possible to overload get_dir and file_stat later on.
+  // It's not possible to replace efuns with normal functions in .o-files
+
+  add_constant("get_dir", master_get_dir );
+  add_constant("file_stat", lambda( string f, int|void d ) { return file_stat(f,d);} );
 
 #define CO(X)  add_constant(#X,Builtin.__backend->X)
   CO(call_out);
