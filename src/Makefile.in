@@ -309,12 +309,12 @@ tools: hilfe rsif
 
 hilfe: $(TMP_BINDIR)/hilfe Makefile
 	@echo "Creating hilfe..."; \
-	( sed -e 's!/usr/bin/env pike!$(exec_prefix)!' <$(TMP_BINDIR)/hilfe \
-	  >./hilfe && chmod 755 ./hilfe) || exit 1 ;
+	( sed -e 's!/usr/bin/env pike!$(exec_prefix)/pike!' \
+	  <$(TMP_BINDIR)/hilfe >./hilfe && chmod 755 ./hilfe) || exit 1 ;
 
 rsif: $(TMP_BINDIR)/rsif Makefile
 	@echo "Creating rsif..."; \
-	( sed -e 's!/usr/bin/env pike!$(exec_prefix)!' <$(TMP_BINDIR)/rsif \
+	( sed -e 's!pike!$(exec_prefix)/pike!' <$(TMP_BINDIR)/rsif \
 	  >./rsif && chmod 755 ./rsif) || exit 1 ;
 
 dump_modules: pike master-stamp $(SRCDIR)/dumpmodule.pike
