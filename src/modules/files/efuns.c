@@ -482,6 +482,7 @@ void f_get_dir(INT32 args)
 	 * at end of dir it sets the third arg to NULL.
 	 */
 	d = NULL;
+	errno = 0;
 	if ((err = readdir_r(dir, tmp, &d)) || !d) {
 	  if (err == -1) {
 	    err = errno;
