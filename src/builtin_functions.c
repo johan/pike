@@ -1234,12 +1234,16 @@ void f_throw(INT32 args)
 
 void f_exit(INT32 args)
 {
+  static int in_exit=0;
   CHECK_SECURITY_OR_ERROR(SECURITY_BIT_SECURITY, ("exit: permission denied.\n"));
   if(args < 1)
     SIMPLE_TOO_FEW_ARGS_ERROR("exit", 1);
 
   if(sp[-args].type != T_INT)
     SIMPLE_BAD_ARG_ERROR("exit", 1, "int");
+
+  if(in_exit) error("exit already called!\n");
+  in_exit=1;
 
   assign_svalue(&throw_value, sp-args);
   throw_severity=THROW_EXIT;
