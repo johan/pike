@@ -52,7 +52,7 @@ string tls_unpad(string data ) {
 
 /* Destructively decrypt a packet. Returns an Alert object if
  * there was an error, otherwise 0. */
-object decrypt_packet(object packet)
+object decrypt_packet(object packet,int version)
 {
 #ifdef SSL3_DEBUG_CRYPT
   werror(sprintf("SSL.state->decrypt_packet: data = %O\n", packet->fragment));
@@ -68,7 +68,6 @@ object decrypt_packet(object packet)
     if (! msg)
       return Alert(ALERT_fatal, ALERT_unexpected_message);
     if (session->cipher_spec->cipher_type == CIPHER_block)
-
       if(version==0) {
 	if (catch { msg = crypt->unpad(msg); })
 	  return Alert(ALERT_fatal, ALERT_unexpected_message);
@@ -76,7 +75,6 @@ object decrypt_packet(object packet)
 	if (catch { msg = tls_unpad(msg); })
 	  return Alert(ALERT_fatal, ALERT_unexpected_message);
       }
-    
     packet->fragment = msg;
   }
 
