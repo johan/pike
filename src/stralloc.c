@@ -665,7 +665,7 @@ struct pike_string *debug_make_shared_string2(const p_wchar2 *str)
 
 void unlink_pike_string(struct pike_string *s)
 {
-  int h=s->hval % htable_size;
+  unsigned int h=s->hval % htable_size;
   propagate_shared_string(s,h);
   base_table[h]=s->next;
 #ifdef PIKE_DEBUG
