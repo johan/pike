@@ -774,9 +774,8 @@ void low_describe_something(void *a,
       {
 	if(m->data == (struct mapping_data *)a)
 	{
-	  fprintf(stderr,"%*s**Describing mapping:\n",indent,"");
+	  fprintf(stderr,"%*s**Describing mapping for this data block:\n",indent,"");
 	  debug_dump_mapping((struct mapping *)m);
-	  describe_something( m, T_MAPPING, indent+2,depth-1,flags);
 	}
       }
       break;
@@ -1059,8 +1058,12 @@ void locate_references(void *a)
 {
   int tmp, orig_in_gc = Pike_in_gc;
   void *orig_check_for=check_for;
-  if(!Pike_in_gc)
+  int i=0;
+  if(!marker_blocks)
+  {
+    i=1;
     init_gc();
+  }
   Pike_in_gc = GC_PASS_LOCATE;
 
   /* Disable debug, this may help reduce recursion bugs */
@@ -1117,8 +1120,7 @@ void locate_references(void *a)
 #endif
 
   Pike_in_gc = orig_in_gc;
-  if(!Pike_in_gc)
-    exit_gc();
+  if(i) exit_gc();
   d_flag=tmp;
 }
 #endif
@@ -2185,6 +2187,7 @@ int do_gc(void)
     if (n != (unsigned) num_objects)
       fatal("Object count wrong in gc; expected %d, got %d.\n", num_objects, n);
     get_marker(rec_list.data)->flags |= GC_MIDDLETOUCHED;
+#if 0 /* Temporarily disabled - Hubbe */
 #ifdef DEBUG_MALLOC
     PTR_HASH_LOOP(marker, i, m)
       if (!(m->flags & (GC_MIDDLETOUCHED|GC_WEAK_FREED)) &&
@@ -2199,6 +2202,7 @@ int do_gc(void)
 	Pike_in_gc = GC_PASS_MIDDLETOUCH;
 	fatal("Fatal in garbage collector.\n");
       }
+#endif
 #endif
     GC_VERBOSE_DO(fprintf(stderr, "| middletouch\n"));
   }
