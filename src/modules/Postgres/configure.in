@@ -183,7 +183,7 @@ if test  x$ac_cv_lib_pq_PQclear != xyes; then
   LIBS=$OLD_LIBS
   echo "Postgres not found. We won't support it."
 else
-  echo "Postgres found, module configured. Thank you for your collaboration."
+  echo "Postgres found, module configured. Thank you for your cooperation."
   POSTGRES_SUPPORTED="yes"
   PIKE_FEATURE_OK(Postgres)
 fi
