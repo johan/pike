@@ -77,7 +77,7 @@ struct program *bignum_program;
 #define PIKE_MPZ_SET_SI(MPZ_VAL, VALUE)	do {		\
     long val_ = (VALUE);				\
     if (val_ < 0) {					\
-      mpz_set_ui((MPZ_VAL), (unsigned long) val_);	\
+      mpz_set_ui((MPZ_VAL), (unsigned long) -val_);	\
       mpz_neg((MPZ_VAL), (MPZ_VAL));			\
     } else {						\
       mpz_set_ui((MPZ_VAL), (unsigned long) val_);	\
