@@ -65,6 +65,4 @@ DECLSPEC(noreturn) void pike_do_exit(int num) ATTRIBUTE((noreturn));
 void pike_push_argv(int argc, char **argv);
 void pike_push_env(void);
 
-extern char libpike_name[];
-
 #endif /* PIKE_EMBED_H */
