@@ -5,6 +5,7 @@
 
 inherit "constants";
 
+
 constant SUPPORT_V2 = 1;
 
 int content_type;
@@ -27,7 +28,6 @@ void create(void|int extra)
   marginal_size = extra;
   buffer = "";
   needed_chars = HEADER_SIZE;
-  protocol_version = ({ 3, 0 });
 }
 
 object check_size(int|void extra)
