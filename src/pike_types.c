@@ -1429,7 +1429,7 @@ static int low_check_indexing(char *type, char *index_type, node *n)
     return !!low_match_types(type,index_type,0);
 
   case T_PROGRAM:
-    // FIXME: Should check that the index is a string.
+    /* FIXME: Should check that the index is a string. */
     return 1;
 
   case T_MIXED:
