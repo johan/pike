@@ -335,6 +335,9 @@
 /* Define if you have the pthread_yield function.  */
 #undef HAVE_PTHREAD_YIELD
 
+/* Define if you have the pthread_yield_np function.  */
+#undef HAVE_PTHREAD_YIELD_NP
+
 /* Hack for stupid glibc linuxthreads */
 #undef HAVE_PTHREAD_INITIAL_THREAD_BOS
 
