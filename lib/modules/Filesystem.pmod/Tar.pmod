@@ -217,7 +217,7 @@ class _TarFS
     parent = _parent;
   }
 
-  Filesystem.Stat stat(string file)
+  Filesystem.Stat stat(string file, int|void lstat)
   {
     file = combine_path(wd, file);
     return tar->filename_to_entry[root+file];
