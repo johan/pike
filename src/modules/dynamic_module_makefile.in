@@ -38,7 +38,9 @@ $(MODULE_TARGET): module.so
 	@if test "x$(OBJS)" = "x" ; then \
 	  exit 0; \
 	fi; \
-	$(TMP_BINDIR)/install_module module.so $(MODULE_TARGET)
+	if test "x$(PIKE_EXTERNAL_MODULE)" = "x" ; then \
+	  $(TMP_BINDIR)/install_module module.so $(MODULE_TARGET) ; \
+	fi
 
 module.so: $(OBJS)  $(MODULE_ARCHIVES)
 	@if test "x$(OBJS)" = "x" ; then \
