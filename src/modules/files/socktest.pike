@@ -550,6 +550,11 @@ int main()
       has_value(testargs/" ", "-quiet") ) )
     quiet=1;
 
+  werror("\nSocket test");
+#ifdef IPV6
+  werror(" IPv6 mode");
+#endif /* IPV6 */
+
 #if constant(System.getrlimit)
   array(int) file_limit = System.getrlimit("nofile");
   if (file_limit && (file_limit[0] > 0)) {
