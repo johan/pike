@@ -8,7 +8,7 @@
 
 class support {
 
-  inherit "MIME";
+  inherit @module@;
 
   string generate_boundary( )
   {
