@@ -7,6 +7,7 @@
 
 import .Constants;
 
+//! @ignore
 class CipherAlgorithm {
   this_program set_encrypt_key(string);
   this_program set_decrypt_key(string);
@@ -19,6 +20,7 @@ class CipherAlgorithm {
 class MACAlgorithm {
   string hash(object, Gmp.mpz);
 }
+//! @endignore
 
 class CipherSpec {
   program(CipherAlgorithm) bulk_cipher_algorithm;
