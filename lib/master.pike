@@ -7,7 +7,7 @@ int is_absolute_path(string p)
 {
 #ifdef __NT__
   p=replace(p,"\\","/");
-  if(sscanf(p,"%[a-zA-Z]:",string s) && strlen(s)==1)
+  if(sscanf(p,"%[a-zA-Z]:",string s) && sizeof(s)==1)
     return 1;
 #endif
   return p[0]=='/';
