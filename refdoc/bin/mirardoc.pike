@@ -445,7 +445,7 @@ void docdecl(string enttype,
 	     t = doctype(t[..sizeof(t)-2]);
 	     break;
 	   }
-	   if(br==-1 || in[i]==',') {
+	   if(br==-1 || (in[i]==',' && !br)) {
 	     if(String.trim_all_whites(t)==")")
 	       return res;
 	     if(String.trim_all_whites(t[..sizeof(t)-2])=="void" && res=="")
