@@ -3231,7 +3231,7 @@ void fix_type_field(node *n)
   case F_MOD_EQ:
   case F_DIV_EQ:
     if (CAR(n)) {
-      struct pike_string *op_string;
+      struct pike_string *op_string = NULL;
       struct pike_type *call_type;
       node *op_node;
 
