@@ -7,7 +7,7 @@
 VPATH=.
 MAKE=make
 MAKEFLAGS=
-OS=`uname -s -r -m|sed -e 's/ /-/g'|tr '[A-Z]' '[a-z]'|tr '/' '_'`
+OS=`uname -s -r -m|sed -e s/\ /-/g|tr [A-Z] [a-z]|tr / _`
 BUILDDIR=build/$(OS)
 METATARGET=
 
@@ -98,11 +98,13 @@ compile: configure
 	done
 
 bin/pike: force
-	sed -e "s|\"BASEDIR\"|\"`pwd`\"|" < bin/pike.in > bin/pike
-	chmod a+x bin/pike
+	@builddir='$(BUILDDIR)'; \
+	case $$builddir in /*) ;; *) builddir="`pwd`/$$builddir";; esac; \
+	sed -e "s@\"BUILDDIR\"@$$builddir@" < bin/pike.in > bin/pike
+	@chmod a+x bin/pike
 
 # This skips the modules.
-pike:
+pike: bin/pike
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=pike"
 
 install:
