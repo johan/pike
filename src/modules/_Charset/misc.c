@@ -2036,6 +2036,7 @@ static const struct {
   { "maccyr", map_macintosh_cyr, 128, 255 },                          /* :: mac-cyr */
   { "macintosh", map_macintosh, 128, 255 },                           /* :: macintosh */
   { "macintoshcyr", map_macintosh_cyr, 128, 255 },                    /* :: macintosh-cyr */
+  { "macroman", map_macintosh, 128, 255 },                            /* :: macroman */
   { "msansi", map_windows_1252, 128, 255 },                           /* :: ms-ansi */
   { "naplps", map_ANSI_X3_110_1983, 33, 255 },                        /* :: naplps */
   { "ncnc001081", map_NC_NC00_10_81, 36, 127 },                       /* :: nc_nc00-10:81 */
