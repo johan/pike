@@ -593,7 +593,13 @@ void f_load_module(INT32 args)
     compilation_depth = save.compilation_depth;
     lex = save.lex;
     if (p) {
-      if (p->num_identifier_references) {
+      if (
+#if 0
+	  p->num_identifier_references
+#else /* !0 */
+	  1
+#endif /* 0 */
+	  ) {
 	push_program(p);
 	add_ref(new_module->module_prog = Pike_sp[-1].u.program);
       } else {
