@@ -840,7 +840,7 @@ void simple_describe_type(struct pike_type *s)
 }
 #endif
 
-char *low_describe_type(char *t)
+static char *low_describe_type(char *t)
 {
   switch(EXTRACT_UCHAR(t++))
   {
@@ -1061,12 +1061,17 @@ char *low_describe_type(char *t)
   return t;
 }
 
+void my_describe_type(struct pike_type *type)
+{
+  low_describe_type(type->str);
+}
+
 struct pike_string *describe_type(struct pike_type *type)
 {
   check_type_string(type);
   if(!type) return make_shared_string("mixed");
   init_buf();
-  low_describe_type(type->str);
+  my_describe_type(type->str);
   return free_buf();
 }
 
