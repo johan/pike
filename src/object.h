@@ -84,21 +84,21 @@ PMOD_EXPORT void low_object_index_no_free(struct svalue *to,
 					  ptrdiff_t f);
 PMOD_EXPORT void object_index_no_free2(struct svalue *to,
 			  struct object *o,
-			  struct svalue *index);
+			  struct svalue *key);
 PMOD_EXPORT void object_index_no_free(struct svalue *to,
 			   struct object *o,
-			   struct svalue *index);
+			   struct svalue *key);
 PMOD_EXPORT void object_low_set_index(struct object *o,
 			  int f,
 			  struct svalue *from);
 PMOD_EXPORT void object_set_index2(struct object *o,
-		      struct svalue *index,
+		      struct svalue *key,
 		      struct svalue *from);
 PMOD_EXPORT void object_set_index(struct object *o,
-		       struct svalue *index,
+		       struct svalue *key,
 		       struct svalue *from);
 union anything *object_get_item_ptr(struct object *o,
-				    struct svalue *index,
+				    struct svalue *key,
 				    TYPE_T type);
 PMOD_EXPORT int object_equal_p(struct object *a, struct object *b, struct processing *p);
 void cleanup_objects(void);

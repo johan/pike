@@ -227,7 +227,7 @@ PMOD_EXPORT struct pike_string *realloc_shared_string(struct pike_string *a,
 						      ptrdiff_t size);
 PMOD_EXPORT struct pike_string *new_realloc_shared_string(struct pike_string *a, INT32 size, int shift);
 PMOD_EXPORT struct pike_string *modify_shared_string(struct pike_string *a,
-					 INT32 index,
+					 INT32 position,
 					 INT32 c);
 PMOD_EXPORT struct pike_string *add_shared_strings(struct pike_string *a,
 					 struct pike_string *b);

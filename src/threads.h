@@ -40,7 +40,7 @@ struct thread_state {
 
 
 /* Prototypes begin here */
-int low_nt_create_thread(unsigned Pike_stack_size,
+int low_nt_create_thread(unsigned stack_size,
 			 unsigned (TH_STDCALL *func)(void *),
 			 void *arg,
 			 unsigned *id);
