@@ -95,7 +95,7 @@ class table {
   //! This method returns the contents of a given column as an array.
   array col(int|string column)
   {
-    return copy_value(local::column(table, remap(column)));
+    return copy_value(predef::column(table, remap(column)));
   }
 
   //! This method returns the contents of a given row as an array.
