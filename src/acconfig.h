@@ -222,6 +222,9 @@
 /* Define if your compiler has a symbol __FUNCTION__ */
 #undef HAVE_WORKING___FUNCTION__
 
+/* The last argument to accept() is an ACCEPT_SIZE_T * */
+#define ACCEPT_SIZE_T	int
+
 @BOTTOM@
 
 /* NT stuff */
