@@ -1229,6 +1229,9 @@ void f_create_process(INT32 args)
     }
     if(pid)
     {
+      exit_threads_disable(NULL);
+      storage.disabled = 0;
+
       UNSET_ONERROR(err);
 
       free_perishables(&storage);
