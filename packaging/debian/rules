@@ -31,11 +31,13 @@ ifeq ($(DEB_BUILD_ARCH),powerpc)
 DO_MACHINE_CODE=yes
 endif
 ifeq ($(DEB_BUILD_ARCH),sparc)
-DO_MACHINE_CODE=yes
+DO_MACHINE_CODE=no
 endif
 
 ifeq ($(DO_MACHINE_CODE),yes)
 MACHINE_OPTS=--with-machine-code
+else
+MACHINE_OPTS=--without-machine-code
 endif
 
 VERSION=$(shell dpkg-parsechangelog | grep ^Version | sed -e 's/Version: //;s/-[0-9]*$$//')
