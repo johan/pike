@@ -861,7 +861,7 @@ static void memory_index_write(INT32 args)
    if (args==2)
    {
       INT_TYPE pos,ch;
-      size_t rpos;
+      size_t rpos = 0;
       get_all_args("Memory.`[]=",args,"%i%i",&pos,&ch);
       if (pos<0) 
 	 if ((off_t)-pos>=DO_NOT_WARN((off_t)THIS->size))
