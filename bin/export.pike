@@ -207,7 +207,9 @@ int main(int argc, string *argv)
   symlink(".",vpath);
   //  system("ln -s pike "+vpath);
 
-  files=`+(({ vpath+"/README", vpath+"/ANNOUNCE", vpath+"/Makefile" }),
+  files=`+( ({ vpath+"/README.txt", vpath+"/ANNOUNCE",
+	       vpath+"/COPYING", vpath+"/COPYRIGHT",
+	       vpath+"/Makefile" }),
 	   get_files(vpath+"/src"),
 	   get_files(vpath+"/lib"),
 	   get_files(vpath+"/bin"),
