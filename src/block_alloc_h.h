@@ -16,6 +16,10 @@
 #define PIKE_HASH_T	size_t
 #endif /* !PIKE_HASH_T */
 
+#ifdef BLOCK_ALLOC_USED
+#error "block_alloc.h must be included after all uses of block_alloc_h.h"
+#endif /* BLOCK_ALLOC_USED */
+
 #define BLOCK_ALLOC(DATA,SIZE)						\
 struct DATA *PIKE_CONCAT(alloc_,DATA)(void);				\
 void PIKE_CONCAT3(really_free_,DATA,_unlocked)(struct DATA *d);		\
