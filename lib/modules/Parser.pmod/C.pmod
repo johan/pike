@@ -20,19 +20,27 @@ array(string) split(string data, void|mapping state)
   int line=1;
   array(string) ret=({});
   int pos;
+  if(data=="") return ({"\n"});
   data += "\n\0";	/* End sentinel. */
 
   if(state && state->in_token) {
     switch(state->remains[0..1]) {
 
     case "/*":
+      if(sizeof(state->remains)>2 && state->remains[-1]=='*'
+	 && data[0]=='/') {
+	ret += ({ state->remains + "/" });
+	pos++;
+	m_delete(state, "remains");
+	break;
+      }
       pos = search(data, "*/");
       if(pos==-1) {
 	state->in_token = 1;
 	state->remains += data[..sizeof(data)-2];
 	return ret;
       }
-      ret += ({ state->remains + data[..pos] });
+      ret += ({ state->remains + data[..pos+1] });
       m_delete(state, "remains");
       pos+=2;
       break;
@@ -161,7 +169,7 @@ array(string) split(string data, void|mapping state)
 	    pos=search(data,"*/",pos);
 	    if(pos==-1) {
 	      if(state) {
-		state->remains = data[start..sizeof(data)-2];
+		state->remains = data[start..sizeof(data)-3];
 		state->in_token = 1;
 		return ret;
 	      }

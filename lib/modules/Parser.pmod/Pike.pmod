@@ -43,12 +43,20 @@ array(string) split(string data, void|mapping state)
   int line=1;
   array(string) ret=({});
   int pos;
+  if(data=="") return ({"\n"});
   data += "\n\0"; // End sentinel.
 
   if(state && state->in_token) {
     switch(state->remains[0..1]) {
 
     case "/*":
+      if(sizeof(state->remains)>2 && state->remains[-1]=='*'
+	 && data[0]=='/') {
+	ret += ({ state->remains + "/" });
+	pos++;
+	m_delete(state, "remains");
+	break;
+      }
       pos = search(data, "*/");
       if(pos==-1) {
 	state->in_token = 1;
@@ -70,7 +78,7 @@ array(string) split(string data, void|mapping state)
 	if( q==-1 ||
 	    (s==sizeof(data)-2 && s<q) ) {
 	  state->in_token = 1;
-	  state->remains += data[..sizeof(data)-2];
+	  state->remains += data[..sizeof(data)-3];
 	  return ret;
 	}
 
@@ -111,7 +119,7 @@ array(string) split(string data, void|mapping state)
 		(s==sizeof(data)-2 && s<q) ) {
 	      if(state) {
 		state->in_token = 1;
-		state->remains = data[pos-1..sizeof(data)-2];
+		state->remains = data[pos-1..sizeof(data)-3];
 		return ret;
 	      }
 	      error("Failed to find end of multiline string.\n");
@@ -272,7 +280,7 @@ array(string) split(string data, void|mapping state)
 	    pos=search(data,"*/",pos);
 	    if(pos==-1) {
 	      if(state) {
-		state->remains = data[start..sizeof(data)-2];
+		state->remains = data[start..sizeof(data)-3];
 		state->in_token = 1;
 		return ret;
 	      }
