@@ -832,7 +832,10 @@ CHRONO("gif render_block begin");
       /* write gce control block */
    {
       push_int(transparency);
-      if (alphaidx!=-1) push_int(alphaidx); else push_int(0);
+      if (alphaidx!=-1)
+	push_int64(alphaidx);
+      else
+	push_int(0);
       push_int(delay);
       push_int(user_input);
       push_int(disposal);
@@ -854,7 +857,7 @@ CHRONO("render_block index end");
       while (n2--)
       {
 	 if (!(a->r||a->g||a->b))
-	    *d=(unsigned char)alphaidx;
+	    *d = DO_NOT_WARN((unsigned char)alphaidx);
 	 d++;
 	 a++;
       }

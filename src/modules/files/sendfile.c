@@ -425,7 +425,7 @@ void low_do_sendfile(struct pike_sendfile *this)
 
 	while (this->len) {
 	  void *mem;
-	  int len = st.st_size - this->offset; /* To end of file */
+	  ptrdiff_t len = st.st_size - this->offset; /* To end of file */
 	  char *buf;
 	  int buflen;
 	  if ((len > this->len) && (this->len >= 0)) {
@@ -484,8 +484,8 @@ void low_do_sendfile(struct pike_sendfile *this)
 
     fd_lseek(this->from_fd, this->offset, SEEK_SET);
     {
-      int buflen;
-      int len = this->len;
+      ptrdiff_t buflen;
+      ptrdiff_t len = this->len;
       if ((len > this->buf_size) || (len < 0)) {
 	len = this->buf_size;
       }
@@ -494,7 +494,7 @@ void low_do_sendfile(struct pike_sendfile *this)
 	this->len -= buflen;
 	this->offset += buflen;
 	while (buflen) {
-	  int wrlen = fd_write(this->to_fd, buf, buflen);
+	  ptrdiff_t wrlen = fd_write(this->to_fd, buf, buflen);
 	  if ((wrlen < 0) && (errno == EINTR)) {
 	    continue;
 	  } else if (wrlen < 0) {

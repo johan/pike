@@ -268,7 +268,7 @@ static INLINE int char_width(struct font *this, INT32 c)
 }  
 
 #ifndef HAVE_MMAP
-static INLINE int my_read(int from, void *t, size_t towrite)
+static INLINE ptrdiff_t my_read(int from, void *t, size_t towrite)
 {
   ptrdiff_t res;
   while((res = fd_read(from, t, towrite)) < 0)

@@ -10,6 +10,7 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "module_support.h"
 #include "error.h"
+#include "bignum.h"
 
 #include "threads.h"
 #include <stdio.h>
@@ -95,7 +96,8 @@ static void f_read_clf( INT32 args )
   FD f = -1;
   int cls, c, my_fd=1, state=0, tzs=0;
   char *char_pointer;
-  INT32 v=0, yy=0, mm=0, dd=0, h=0, m=0, s=0, tz=0, offs0=0, len=0;
+  INT32 v=0, yy=0, mm=0, dd=0, h=0, m=0, s=0, tz=0;
+  ptrdiff_t offs0=0, len=0;
   struct svalue *old_sp;
   /* #define DYNAMIC_BUF */
 #ifdef DYNAMIC_BUF
@@ -187,7 +189,7 @@ static void f_read_clf( INT32 args )
 	if(sp != old_sp) {
 	  if(sp == old_sp+15) {
 	    f_aggregate(15);
-	    push_int(offs0);
+	    push_int64(offs0);
 	    apply_svalue(logfun, 2);
 	    pop_stack();
 	  } else
@@ -703,7 +705,7 @@ static void f_read_clf( INT32 args )
   }
   if(sp == old_sp + 15) {
     f_aggregate(15);
-    push_int(offs0);
+    push_int64(offs0);
     apply_svalue(logfun, 2);
     pop_stack();
   }
@@ -717,7 +719,7 @@ static void f_read_clf( INT32 args )
      */
     fd_close(f);
   pop_n_elems(sp-old_sp+args);  
-  push_int(offs0);
+  push_int64(offs0);
 }
 
 

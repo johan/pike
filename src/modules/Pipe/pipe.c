@@ -167,7 +167,7 @@ struct pipe
   int fd;			/* buffer fd or -1 */
 
   unsigned long bytes_in_buffer;
-  unsigned long pos; 
+  size_t pos; 
   /* fd: size of buffer file */
   /* current position of first element (buffer or mmap) */
   struct buffer *firstbuffer,*lastbuffer;
