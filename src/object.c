@@ -857,6 +857,7 @@ PMOD_EXPORT void schedule_really_free_object(struct object *o)
   {
     o->next = objects_to_destruct;
     DO_IF_DMALLOC(o->prev = (void *) -1);
+    PIKE_MEM_WO(o->prev);
     objects_to_destruct = o;
 
 #ifdef GC_VERBOSE

@@ -224,6 +224,7 @@ PMOD_EXPORT void debug_free_svalues(struct svalue *s, size_t num, INT32 type_hin
     DO_IF_DMALLOC(debug_malloc_update_location(s->u.Z, dmalloc_location));	\
     Y(s->u.Z);								\
     DO_IF_DMALLOC(s->u.Z=(void *)-1);					\
+    PIKE_MEM_WO(s->u.Z);						\
     s++;								\
    }return
 
@@ -280,6 +281,7 @@ PMOD_EXPORT void debug_free_svalues(struct svalue *s, size_t num, INT32 type_hin
       {
 	really_free_svalue(s);
 	DO_IF_DMALLOC(s->u.refs=0);
+	PIKE_MEM_WO(*s);
       }
       s++;
     }
@@ -298,6 +300,7 @@ PMOD_EXPORT void debug_free_svalues(struct svalue *s, size_t num, INT32 type_hin
 	else
 	  schedule_really_free_object(s->u.object);
 	DO_IF_DMALLOC(s->u.refs=0);
+	PIKE_MEM_WO(*s);
       }
       s++;
     }

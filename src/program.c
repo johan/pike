@@ -6372,7 +6372,6 @@ void gc_free_all_unreferenced_programs(void)
       {
 	free_svalue(& p->constants[e].sval);
 	p->constants[e].sval.type=T_INT;
-	DO_IF_DMALLOC(p->constants[e].sval.u.refs=(void *)-1);
       }
 
       for(e=0;e<p->num_inherits;e++)
