@@ -11105,6 +11105,8 @@ const struct charset_def charset_map[] = {
   { "sen850200b", map_SEN_850200_B, MODE_94 },                        /* :: sen_850200_b */
   { "sen850200c", map_SEN_850200_C, MODE_94 },                        /* :: sen_850200_c */
   { "serbian", map_JUS_I_B1_003_serb, MODE_94 },                      /* :: serbian */
+  { "sisd47", map_SEN_850200_B, MODE_94 },                            /* :: sis d47 */
+  { "sise47", map_SEN_850200_C, MODE_94 },                            /* :: sis e47 */
   { "stsev35888", map_GOST_19768_74, MODE_96 },                       /* :: st_sev_358-88 */
   { "t617bit", map_T_61_7bit, MODE_94 },                              /* :: t.61-7bit */
   { "uk", map_BS_4730, MODE_94 },                                     /* :: uk */
