@@ -58,7 +58,8 @@ int set_nonblocking(int fd,int which)
 {
 #ifdef DEBUG
   if(fd<0 || fd >MAX_OPEN_FILEDESCRIPTORS)
-    fatal("Filedescriptor out of range.\n");
+    fatal("Filedescriptor %d out of range [0,%d).\n",
+	  fd, MAX_OPEN_FILEDESCRIPTORS);
 #endif
 
 #if defined(USE_IOCTL_FIONBIO) || defined(__NT__)
