@@ -1747,7 +1747,10 @@ void check_program(struct program *p)
 
     if(p->identifier_references[e].identifier_offset >
        p->inherits[p->identifier_references[e].inherit_offset].prog->num_identifiers)
-      fatal("Identifier offset is wrong!\n");
+      fatal("Identifier offset %d is wrong! %d > %d\n",
+	    e,
+	    p->identifier_references[e].identifier_offset,
+	    p->inherits[p->identifier_references[e].inherit_offset].prog->num_identifiers);
 
     i=ID_FROM_INT(p, e);
 
