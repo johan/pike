@@ -3255,7 +3255,7 @@ low_idents: TOK_IDENTIFIER
 	else
 	{
 	  if (Pike_compiler->compiler_pass == 2) {
-	    my_yyerror("No such inherit ::%s.", $2->u.sval.u.string->str);
+	    yywarning("No such inherit ::%s.", $2->u.sval.u.string->str);
 	  }
 	  $$=mkintnode(0);
 	}
