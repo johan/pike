@@ -18,8 +18,10 @@ class _Tar  // filesystem
       if(p<0)
 	if((p += len)<0)
 	  p = 0;
-      if(p>=len)
+      if(p>=len) {
 	p = len-1;
+	if (!len) p = 0;
+      }
       return ::seek((pos = p)+start);
     }
 
