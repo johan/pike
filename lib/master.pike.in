@@ -745,7 +745,7 @@ string stupid_describe(mixed m)
     return (string)m;
 
   case "string":
-    if(sizeof(m) < 60 && sscanf(m,"%*[-a-zAZ0-9.~`!@#$%^&*()_]%n",int i) && i==sizeof(m))
+    if(sizeof(m) < 60 && sscanf(m,"%*[^\0-\037\177-\237\\\"]%n",int i) && i==sizeof(m))
     {
       return "\""+m+"\"";
     }
