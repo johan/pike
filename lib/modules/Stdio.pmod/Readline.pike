@@ -408,7 +408,7 @@ class OutputController
   void create(.File|void _outfd,
 	      .Terminfo.Termcap|string|void _term)
   {
-    outfd = _outfd || .stdout;
+    outfd = _outfd || Stdio.File( "stdout", "w" );
     term = objectp(_term)? _term : .Terminfo.getTerm(_term);
     catch { oldattrs = outfd->tcgetattr(); };
     check_columns();
@@ -503,7 +503,8 @@ class InputController
 	string oldprefix = prefix;
 	prefix = "";
 	prefix = process_input(oldprefix);
-	infd->set_nonblocking(read_cb, 0, close_cb);
+	infd->set_read_callback( read_cb );
+	infd->set_close_callback( close_cb );
       }
       else
 	infd->set_blocking();
@@ -749,7 +750,7 @@ class InputController
   //!
   void create(object|void _infd, object|string|void _term)
   {
-    infd = _infd || .stdin;
+    infd = _infd || Stdio.File( "stdin", "r" );
     term = objectp(_term)? _term : .Terminfo.getTerm(_term);
     disable();
     if(search(term->aliases, "dumb")>=0) {
