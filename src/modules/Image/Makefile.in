@@ -4,7 +4,7 @@ VPATH=@srcdir@:@srcdir@/../..:../..
 OBJS = image_module.o \
 	image.o font.o matrix.o blit.o pattern.o dct.o \
         operator.o colortable.o polyfill.o \
-	orient.o colors.o search.o layers.o
+	orient.o colors.o search.o layers.o \
 	default_font.o @ASSEMBLY_OBJECTS@
 MODNAME=image
 MODULE_SUBDIRS=encodings
