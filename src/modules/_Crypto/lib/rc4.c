@@ -5,6 +5,8 @@
 #include "crypto_types.h"
 #include <rc4.h>
 
+RCSID("$Id$");
+
 #define SWAP(a,b) do { int _t = a; a = b; b = _t; } while(0)
 
 void rc4_set_key(struct rc4_ctx *ctx, const unsigned INT8 *key, INT32 len)

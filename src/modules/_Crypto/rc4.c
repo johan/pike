@@ -3,7 +3,6 @@
  * Written by Niels Möller
  */
 
-
 #include "global.h"
 #include "svalue.h"
 #include "string.h"
@@ -16,6 +15,8 @@
 #include "las.h"
 
 #include "rc4.h"
+
+RCSID("$Id$");
 
 /* Module specific includes */
 #include "precompiled_crypto.h"
