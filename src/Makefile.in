@@ -267,6 +267,12 @@ install: pike hilfe pike-module aclocal
 	SRCDIR="$(SRCDIR)" prefix="$(prefix)" MANDIR_SRC="$(MANDIR_SRC)" \
 	man_prefix="$(man_prefix)" pike_name=$(pike_name)
 
+install_interactive: pike hilfe pike-module aclocal
+	@$(RUNPIKE) $(TMP_BINDIR)/install.pike --interactive \
+	exec_prefix="$(exec_prefix)"  \
+	TMP_LIBDIR="$(TMP_LIBDIR)" LIBDIR_SRC="$(LIBDIR_SRC)" \
+	SRCDIR="$(SRCDIR)" MANDIR_SRC="$(MANDIR_SRC)"
+
 # tidy up a bit
 tidy:
 	-rm -f *.o core y.output y.tab.c y.tab.h
