@@ -54,8 +54,7 @@ string decode( string data, string encoding )
   case "binary":
     return data;
   default:
-    throw(({ "unknown transfer encoding "+encoding+"\n",
-	     backtrace() }));
+    error("Unknown transfer encoding %s.\n", encoding);
   }
 }
 
@@ -98,8 +97,7 @@ string encode( string data, string encoding, void|string filename,
   case "binary":
     return data;
   default:
-    throw(({ "unknown transfer encoding "+encoding+"\n",
-	     backtrace() }));
+    error("Unknown transfer encoding %s.\n", encoding);
   }
 }
 
@@ -129,7 +127,7 @@ array(string) decode_word( string word )
       encoding = "quoted-printable";
       break;
     default:
-      throw (({ "invalid rfc1522 encoding "+encoding+"\n", backtrace() }));
+      error( "Invalid rfc1522 encoding %s.\n", encoding );
     }
     return ({ decode( replace( encoded_text, "_", " " ), encoding ),
 	      lower_case( charset ) });
@@ -166,7 +164,7 @@ string encode_word( string|array(string) word, string encoding )
     encoding = "quoted-printable";
     break;
   default:
-    throw (({ "invalid rfc1522 encoding "+encoding+"\n", backtrace() }));
+    error( "Invalid rfc1522 encoding %s.\n", encoding);
   }
   string enc = encode( word[0], encoding, 0, 1 );
   if (encoding == "quoted-printable")
@@ -741,7 +739,7 @@ class Message {
     object body_part;
     
     if (dest_type != "string")
-      throw(({ "can't cast Message to "+dest_type+"\n", backtrace() }));
+      error( "Can't cast Message to %s.\n", dest_type);
     
     data = getencoded( );
     
