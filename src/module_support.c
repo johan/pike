@@ -85,9 +85,9 @@ void check_all_args(const char *fnname, int args, ... )
   {
   case ERR_NONE: return;
   case ERR_TOO_FEW:
-    new_error(fnname, "Too few arguments to %s()\n", sp, args, NULL, 0);
+    new_error(fnname, "Too few arguments.\n", sp, args, NULL, 0);
   case ERR_TOO_MANY:
-    new_error(fnname, "Too many arguments to %s()\n", sp, args, NULL, 0);
+    new_error(fnname, "Too many arguments.\n", sp, args, NULL, 0);
 
   case ERR_BAD_ARG:
   {
