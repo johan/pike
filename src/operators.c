@@ -199,7 +199,7 @@ COMPARISON(f_ge,"`>=",!is_lt)
  *!   	      @[arg1] will be converted to string, and the result the
  *!   	      strings concatenated.
  *!   	    @type int|float
- *!   	      The result will be @code{@[arg1] + @[arg2]@}, and will
+ *!   	      The result will be @expr{@[arg1] + @[arg2]@}, and will
  *!   	      be a float if either @[arg1] or @[arg2] is a float.
  *!   	  @endmixed
  *!   	@type array
@@ -211,7 +211,7 @@ COMPARISON(f_ge,"`>=",!is_lt)
  *!   @endmixed
  *!
  *!   Otherwise if there are more than 2 arguments the result will be:
- *!     @code{`+(`+(@[arg1], @[arg2]), @@@[extras])@}
+ *!     @expr{`+(`+(@[arg1], @[arg2]), @@@[extras])@}
  *!
  *! @note
  *!   In Pike 7.0 and earlier the addition order was unspecified.
