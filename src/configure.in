@@ -2809,7 +2809,7 @@ case "x$pike_cv_sys_os" in
     AC_DEFINE(USE_WAIT_THREAD)
   ;;
 
-  Windows_NT)
+  xWindows_NT)
     :
   ;;
 
