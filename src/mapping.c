@@ -521,6 +521,7 @@ struct svalue *mapping_mapping_lookup(struct mapping *m,
   struct svalue tmp;
   struct mapping *m2;
   struct svalue *s=low_mapping_lookup(m, key1);
+  debug_malloc_touch(m);
 
   if(!s || !s->type==T_MAPPING)
   {
@@ -528,10 +529,14 @@ struct svalue *mapping_mapping_lookup(struct mapping *m,
     tmp.u.mapping=allocate_mapping(5);
     tmp.type=T_MAPPING;
     mapping_insert(m, key1, &tmp);
+    debug_malloc_touch(m);
+    debug_malloc_touch(tmp.u.mapping);
+    free_mapping(tmp.u.mapping); /* There is one ref in 'm' */
     s=&tmp;
   }
 
   m2=s->u.mapping;
+  debug_malloc_touch(m2);
   s=low_mapping_lookup(m2, key2);
   if(s) return s;
   if(!create) return 0;
@@ -541,6 +546,7 @@ struct svalue *mapping_mapping_lookup(struct mapping *m,
   tmp.u.integer=0;
 
   mapping_insert(m2, key2, &tmp);
+  debug_malloc_touch(m2);
 
   return low_mapping_lookup(m2, key2);
 }
