@@ -2556,6 +2556,9 @@ cond([[all_constants()->thread_create]],
 [[
   // _disable_threads
   test_any([[
+#ifndef __NT__
+// Using a named pipe here to make open() block. That doesn't exist on NT.
+
 object t = class {
 void log (function f, string msg)
 {
@@ -2654,6 +2657,8 @@ void test()
     t->log (0, "------------\n");
   }
   rm (t->fifo);
+
+#endif
   return 1;
 ]], 1);
 ]])
