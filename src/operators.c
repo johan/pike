@@ -2749,9 +2749,11 @@ multiset & mapping -> mapping
   start_new_program();
   ADD_STORAGE(struct string_assignment_storage);
   /* function(int:int) */
-  ADD_FUNCTION("`[]",f_string_assignment_index,tFunc(tInt,tInt),0);
+  ADD_FUNCTION2("`[]", f_string_assignment_index, tFunc(tInt,tInt), 0,
+		OPT_EXTERNAL_DEPEND);
   /* function(int,int:int) */
-  ADD_FUNCTION("`[]=",f_string_assignment_assign_index,tFunc(tInt tInt,tInt),0);
+  ADD_FUNCTION2("`[]=", f_string_assignment_assign_index,
+		tFunc(tInt tInt,tInt), 0, OPT_SIDE_EFFECT);
   set_init_callback(init_string_assignment_storage);
   set_exit_callback(exit_string_assignment_storage);
   string_assignment_program=end_program();
