@@ -2241,6 +2241,7 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 
 	  for (shift = 0; val >> shift; shift += delta)
 	    ;
+	  shift -= delta;
 	  while(shift >= 0) {
 	    string_builder_putchar(s, numbers[(val>>shift) & mask]);
 	    shift -= delta;
