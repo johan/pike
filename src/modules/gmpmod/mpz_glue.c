@@ -124,6 +124,7 @@ static void mpzmod_create(INT32 args)
     error("Too many arguments to Mpz->create()\n");
 
   case 0:
+    break;	/* Needed by AIX cc */
   }
   pop_n_elems(args);
 }
