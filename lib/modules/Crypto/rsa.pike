@@ -285,7 +285,7 @@ string cooked_get_q()
 object set_private_key(bignum priv, array(bignum)|void extra)
 {
   if (extra) {
-    [p, q] = extra;
+    [p, q] = extra[..1];
   }
   return ::set_private_key(priv);
 }
