@@ -129,6 +129,8 @@ if test x$with_oracle = xyes; then
 
   AC_MSG_RESULT($oracle_include_dir/rdbms/demo/)
 
+  AC_CHECK_HEADERS(oci.h ocidfn.h ociapr.h)
+
   AC_MSG_CHECKING(for sysliblist)
 
   AC_CACHE_VAL(pike_cv_oracle_sysliblist, [
