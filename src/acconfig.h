@@ -372,8 +372,8 @@
 /* The byteorder your machine use, most use 4321, PC use 1234 */
 #define PIKE_BYTEORDER 0
 
-/* What alignment do 32-bit integers need */
-#define PIKE_INT32_ALIGNMENT 4
+/* What alignment do pointers need */
+#define PIKE_POINTER_ALIGNMENT 4
 
 /* Assembler prefix for general purpose registers */
 #undef PIKE_CPU_REG_PREFIX

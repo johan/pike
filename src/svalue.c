@@ -1759,7 +1759,7 @@ static void low_check_short_svalue(const union anything *u, TYPE_T type)
 void check_short_svalue(const union anything *u, TYPE_T type)
 {
   if(type<=MAX_REF_TYPE &&
-     ((PIKE_INT32_ALIGNMENT-1) & (ptrdiff_t)(u->refs)))
+     ((PIKE_POINTER_ALIGNMENT-1) & (ptrdiff_t)(u->refs)))
     Pike_fatal("Odd pointer! type=%d u->refs=%p\n",type,u->refs);
 
   check_refs2(u,type);
@@ -1770,7 +1770,7 @@ void debug_check_svalue(const struct svalue *s)
 {
   check_type(s->type);
   if(s->type<=MAX_REF_TYPE &&
-     ((PIKE_INT32_ALIGNMENT-1) & (ptrdiff_t)(s->u.refs)))
+     ((PIKE_POINTER_ALIGNMENT-1) & (ptrdiff_t)(s->u.refs)))
     Pike_fatal("Odd pointer! type=%d u->refs=%p\n",s->type,s->u.refs);
 
   check_refs(s);
