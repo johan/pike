@@ -24,6 +24,7 @@ RCSID("$Id$");
 
 #include "image.h"
 #include "colortable.h"
+#include "bignum.h"
 
 /* MUST BE INCLUDED LAST */
 #include "module_magic.h"
