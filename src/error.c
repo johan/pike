@@ -273,10 +273,19 @@ void debug_fatal(const char *fmt, ...) ATTRIBUTE((noreturn,format (printf, 1, 2)
     (void)VFPRINTF(stderr, fmt, args);
     abort();
   }
+
   in_fatal = 1;
 #ifdef PIKE_DEBUG
   dump_backlog();
 #endif
+
+  {
+    extern int Pike_in_gc;
+    if(Pike_in_gc)
+    {
+      fprintf(stderr,"Pike was in GC stage %d when this fatal occured:\n",Pike_in_gc);
+      Pike_in_gc=0;
+    }
 
   (void)VFPRINTF(stderr, fmt, args);
 
