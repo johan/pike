@@ -548,6 +548,7 @@ struct colortable *colortable_from_array(struct array *arr,char *from)
      if (s2.type!=T_INT) tbl->tbl[i].rgb.g=0; else tbl->tbl[i].rgb.g=s2.u.integer;
      array_index(&s2,s.u.array,2);
      if (s2.type!=T_INT) tbl->tbl[i].rgb.b=0; else tbl->tbl[i].rgb.b=s2.u.integer;
+     tbl->tbl[i].count=1;
   }
   free_svalue(&s);
   free_svalue(&s2);

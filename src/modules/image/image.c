@@ -40,17 +40,25 @@ static INT32 circle_sin_table[CIRCLE_STEPS];
 
 /***************** init & exit *********************************/
 
-static void init_image_struct(struct object *o)
+static int obj_counter=0;
+
+static void init_image_struct(struct object *obj)
 {
   THIS->img=NULL;
   THIS->rgb.r=0;
   THIS->rgb.g=0;
   THIS->rgb.b=0;
+/*  fprintf(stderr,"init %lx (%d)\n",obj,++obj_counter);*/
 }
 
 static void exit_image_struct(struct object *obj)
 {
   if (THIS->img) { free(THIS->img); THIS->img=NULL; }
+/*
+  fprintf(stderr,"exit %lx (%d) %dx%d=%.1fKb\n",obj,--obj_counter,
+	  THIS->xsize,THIS->ysize,
+	  (THIS->xsize*THIS->ysize*3+sizeof(struct image))/1024.0);
+	  */
 }
 
 /***************** internals ***********************************/
