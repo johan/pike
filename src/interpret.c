@@ -1148,6 +1148,10 @@ int PIKE_CONCAT(test_opcode_,O)(INT32 arg1, INT32 arg2) { \
 
 #undef HAVE_COMPUTED_GOTO
 
+#ifdef GLOBAL_DEF_PROG_COUNTER
+GLOBAL_DEF_PROG_COUNTER;
+#endif
+
 #ifdef PIKE_DEBUG
 /* Note: The debug code is extracted, to keep the frame size constant. */
 static int eval_instruction_low(PIKE_OPCODE_T *pc);
