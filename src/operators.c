@@ -948,6 +948,11 @@ PMOD_EXPORT void o_and(void)
 	      push_mapping(m);
 	      return;
 	   }
+	   default:
+	   {
+	      int args = 2;
+	      SIMPLE_BAD_ARG_ERROR("`&", 2, "mapping");
+	   }
 	}
      else 
      {
