@@ -31,6 +31,7 @@ PMOD_EXPORT size_t thread_stack_size=1024 * 1204;
 
 #ifndef HAVE_PTHREAD_ATFORK
 #include "callback.h"
+#define PIKE_USE_OWN_ATFORK
 
 static struct callback_list atfork_prepare_callback;
 static struct callback_list atfork_parent_callback;
@@ -1554,6 +1555,12 @@ void th_cleanup(void)
     free_program(thread_id_prog);
     thread_id_prog=0;
   }
+
+#ifdef PIKE_USE_OWN_ATFORK
+  free_callback_list(&atfork_prepare_callback);
+  free_callback_list(&atfork_parent_callback);
+  free_callback_list(&atfork_child_callback);
+#endif
 }
 
 #endif
