@@ -1589,6 +1589,13 @@ struct node_s *program_magic_identifier (struct program_state *state,
       n->tree_info &= ~OPT_NOT_CONST;
       return n;
     }
+  } else if (inherit_num > 0) {
+    /* Handle this_program */
+    if (ident == this_program_string) {
+      /* Not very useful, but... */
+      node *n = mkprgnode(state->new_program->inherits[inherit_num].prog);
+      return n;
+    }
   }
 
   if (colon_colon_ref) {
