@@ -14,6 +14,7 @@ inherit Odbc.odbc;
 void create(string|void host, string|void db, string|void user,
 	    string|void password, mapping(string:int|string)|void options)
 {
+  // FIXME: Quoting?
   string connectstring="";
   if(user)
     connectstring+="uid="+user+";";
