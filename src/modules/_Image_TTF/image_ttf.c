@@ -9,8 +9,17 @@
 RCSID("$Id$");
 
 #ifdef HAVE_LIBTTF
+#if defined(HAVE_FREETYPE_FREETYPE_H) && defined(HAVE_FREETYPE_FTXKERN_H)
+
+#include <freetype/freetype.h>
+#include <freetype/ftxkern.h>
+
+#else /* !HAVE_FREETYPE_FREETYPE_H || !HAVE_FREETYPE_FTXKERN_H */
+
 #include <freetype.h>
 #include <ftxkern.h>
+
+#endif /* HAVE_FREETYPE_FREETYPE_H && HAVE_FREETYPE_FTXKERN_H */
 #endif /* HAVE_LIBTTF */
 
 #include "pike_macros.h"
