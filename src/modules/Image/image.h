@@ -15,18 +15,19 @@
 
 #define QUANT_SELECT_CACHE 6
 
-#define COLOURTYPE unsigned char
+#define COLORTYPE unsigned char
 
 #define FS_SCALE 1024
 
 typedef struct 
 {
-   COLOURTYPE r,g,b;
+   COLORTYPE r,g,b;
+   COLORTYPE __padding_dont_use__;
 } rgb_group;
 
 typedef struct 
 {
-   unsigned char r,g,b,alpha;
+   COLORTYPE r,g,b,alpha;
 } rgba_group;
 
 typedef struct

@@ -46,8 +46,11 @@ extern double floor(double);
 **!	will make a hole.
 **!
 **! note
-**!	Lines in the polygon may not be crossed without
-**!	midpoints.
+**!	Lines in the polygon may <i>not</i> be crossed without
+**!	the crossing coordinate specified in both lines.
+**!
+**! bugs
+**!	Inverted lines reported on Intel and Alpha processors.
 **!
 **! see also: setcolor
 */
