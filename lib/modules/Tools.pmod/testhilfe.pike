@@ -140,6 +140,9 @@ int main(int num, array(string) args) {
   test("void foo(mixed x){ x?werror(\"\"):werror(\"\");};","");
   test("foo(1);", "0");
 
+  test("array a = ({1});", "");
+  test("({2})+a;", "({ /* 2 elements */\n    2,\n    1\n})");
+
   // Clear history...
   testhilfe=TestHilfe();
   test(".", version() + " running Hilfe v3.4 (Incremental Pike Frontend)\n");
