@@ -167,7 +167,7 @@ CHRONO("image_blit begin");
 
    THREADS_ALLOW();
    if(!moddest && !modsrc)
-     MEMCPY(dest,src,sizeof(rgb_group*width*lines));
+     MEMCPY(dest,src,sizeof(rgb_group)*width*lines);
    else
      while (lines--)
      {
