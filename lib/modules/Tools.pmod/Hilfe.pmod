@@ -28,6 +28,16 @@ constant hilfe_todo = #"List of known Hilfe bugs/room for improvements:
 - Tab completion of variable and module names.
 ";
 
+// The Big To Do:
+// The parser part of Hilfe should really be redesigned once again.
+// The user input is first run through Parser.Pike.split and outputted
+// as a token stream. This stream is fed into a streming parser with
+// an the relocates the variables and outputs expression objects with
+// evaluation destinations already assigned. Note that the streaming
+// parser can not start on the next expression before the last
+// expression has been evaulated, bacuse the variable table might not
+// be up to date.
+
 //! Abstract class for Hilfe commands.
 class Command {
 
