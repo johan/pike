@@ -4720,14 +4720,6 @@ MY_CHECK_FUNCTION(isunordered,
   exit(0);
 ])
 ########################################################################
-MY_CHECK_FUNCTION(dlinit,
-[
-#include <dlfcn.h>
-], [
-  dlinit();
-  exit(0);
-})
-########################################################################
 MY_CHECK_FUNCTION(dlopen,
 [
 #include <dlfcn.h>
