@@ -63,7 +63,7 @@ DO_IF_DEBUG(								\
 									\
   if(m->next) m->next->prev = m->prev;					\
 									\
-  GC_FREE();
+  GC_FREE(m);
 
 
 #undef COUNT_OTHER
