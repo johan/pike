@@ -634,6 +634,8 @@ void debug_gc_fatal(void *a, int flags, const char *fmt, ...)
   fprintf(stderr, "**");
   (void) VFPRINTF(stderr, fmt, args);
 
+  va_end(args);
+
   if (a) {
     /* Temporarily jumping out of gc to avoid being catched in debug
      * checks in describe(). */
