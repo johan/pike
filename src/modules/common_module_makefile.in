@@ -215,7 +215,7 @@ gdb_verify: testsuite $(PIKE_EXTERNAL_MODULE)
 
 extract_autodoc: $(PIKE_EXTERNAL_MODULE) plib/refdoc plib/doc_build/images
 	$(RUNPIKE) -x extract_autodoc --builddir=plib/refdoc --srcdir=plib/modules
-	if test "X$(AUTODOC_SRC_IN)" -ne "X"; then \
+	if test "X$(AUTODOC_SRC_IN)" != "X"; then \
 	$(RUNPIKE) -x extract_autodoc --builddir=plib/refdoc $(AUTODOC_SRC_IN); \
 	fi
 
