@@ -691,7 +691,8 @@ void low_describe_something(void *a,
       if(flags & DESCRIBE_MEM)
       {
 #define FOO(NUMTYPE,TYPE,NAME) \
-      fprintf(stderr,"%*s* " #NAME " %p[%d]\n",indent,"",p->NAME,p->PIKE_CONCAT(num_,NAME));
+      fprintf(stderr, "%*s* " #NAME " %p[%ld]\n", \
+              indent, "", p->NAME, (long)p->PIKE_CONCAT(num_,NAME));
 #include "program_areas.h"
       }
 
