@@ -2964,6 +2964,7 @@ LIBOBJS="${OLD_LIBOBJS}"
 AC_FUNC_MMAP
 
 AC_CHECK_FUNCS( \
+ _alldiv \
  _crypt \
  poll \
  bcopy \
