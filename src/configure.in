@@ -663,7 +663,7 @@ AC_CHECK_LIB(m, floor)
 AC_CHECK_LIB(socket, socket)
 
 if test x$pike_cv_sys_os = xWindows_NT ; then
-  LIBS="-lkernel32 -lws2_32  $LIBS"
+  LIBS="-lkernel32  $LIBS"
 fi
 
 AC_CHECK_LIB(nsl, gethostbyname)
