@@ -37,6 +37,10 @@ PMOD_EXPORT int threads_disabled = 0;
 #include <sys/prctl.h>
 #endif /* HAVE_SYS_PRCTL_H */
 
+#ifdef HAVE_SYS_TIME_H
+#include <sys/time.h>
+#endif
+
 #ifndef PIKE_THREAD_C_STACK_SIZE
 #define PIKE_THREAD_C_STACK_SIZE (256 * 1024)
 #endif
@@ -651,6 +655,26 @@ static void check_threads(struct callback *cb, void *arg, void * arg2)
     if( now-last_ < 50000000 ) /* 0.05s slice */
       return;
     last_ = now;
+  }
+#elif defined(HAVE_MACH_TASK_INFO_H) && defined(TASK_THREAD_TIMES_INFO)
+  {
+    static struct timeval         last_check = { 0, 0 };
+    task_thread_times_info_data_t info;
+    mach_msg_type_number_t        info_size = TASK_THREAD_TIMES_INFO_COUNT;
+    
+    /* Get user time and test if 50usec has passed since last check. */
+    if (task_info(mach_task_self(), TASK_THREAD_TIMES_INFO,
+		  (task_info_t) &info, &info_size) == 0) {
+      /* Compute difference by converting kernel time_info_t to timeval. */
+      struct timeval now;
+      struct timeval diff;
+      now.tv_sec = info.user_time.seconds;
+      now.tv_usec = info.user_time.microseconds;
+      timersub(&now, &last_check, &diff);
+      if (diff.tv_usec < 50000 && diff.tv_sec == 0)
+	return;
+      last_check = now;
+    }
   }
 #elif defined (USE_CLOCK_FOR_SLICES)
   if (clock() - thread_start_clock < (clock_t) (CLOCKS_PER_SEC / 20))
