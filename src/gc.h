@@ -89,6 +89,7 @@ void f__gc_status(INT32 args);
 
 #define GC_REFERENCED 1
 #define GC_XREFERENCED 2
+#define GC_CHECKED 4
 
 
 #ifdef PIKE_DEBUG
