@@ -351,7 +351,7 @@ PMOD_EXPORT void get_all_args(const char *fname, INT32 args,
   va_start(ptr, format);
   ret=va_get_args(sp-args, args, format, ptr);
   va_end(ptr);
-  if((ptrdiff_t)ret*2 != (ptrdiff_t)strlen(format)) {
+  if((ptrdiff_t)ret*2 < (ptrdiff_t)strlen(format)) {
     char *expected_type;
     switch(format[ret*2+1]) {
     case 'd': case 'i': case 'l': expected_type = "int"; break;
@@ -370,22 +370,22 @@ PMOD_EXPORT void get_all_args(const char *fname, INT32 args,
     case '*': expected_type = "mixed"; break;
     default: expected_type = "Unknown"; break;
     }
-    if (ret <= args) {
+    if (ret < args) {
       bad_arg_error(
 	fname, sp-args, args,
 	ret+1,
 	expected_type,
 	sp+ret-args,
-	"Bad argument %d to %s(). Expected %s\n",
+	"Bad argument %d to %s(). Expected %s.\n",
 	ret+1, fname, expected_type);
-    } else if ((ptrdiff_t)(args*2) < (ptrdiff_t)strlen(format)) {
+    } else {
       bad_arg_error(
 	fname, sp-args, args,
 	ret+1,
 	expected_type,
 	0,
 	"Too few arguments to %s(). Expected %ld arguments, got %d.\n"
-	"The type of the next argument is expected to be %s\n",
+	"The type of the next argument is expected to be %s.\n",
 	fname, PTRDIFF_T_TO_LONG(strlen(format)/2), args, expected_type);
     }
   }
