@@ -131,7 +131,7 @@ static private class FileIO {
 
   static private int mask = 0;
 
-  array(int) fractionalise(int i)
+  static private array(int) fractionalise(int i)
   {
     if(!mask)
     {
