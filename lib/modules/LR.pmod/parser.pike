@@ -31,7 +31,7 @@
  * Includes
  */
 
-#include <array.h>
+import Array;
 
 /*
  * Defines
