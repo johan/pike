@@ -845,6 +845,10 @@ PMOD_EXPORT void really_free_string(struct pike_string *s)
 	fatal("Freeing shared string again, memory corrupt or other bug!\n");
     }
   }
+  if ((s->size_shift < 0) || (s->size_shift > 2)) {
+    fatal("Freeing string with bad shift (0x%08x); could it be a type?\n",
+	  s->size_shift);
+  }
 #endif
   unlink_pike_string(s);
   really_free_pike_string(s);
