@@ -975,7 +975,7 @@ class find
       
     if (mailboxes) {
       foreach(mailboxes, array a)
-	send("*", "MAILBOX", imap_string(a[-1]));
+	send("*", "MAILBOX", a[-1]);
       
       send(tag, "OK FIND done");
     } else {
