@@ -109,7 +109,7 @@ void PIKE_CONCAT3(really_free_,DATA,_unlocked)(struct DATA *d)		\
 {									\
   EXIT_BLOCK(d);							\
   DO_IF_DMALLOC( PIKE_CONCAT(check_free_,DATA)(d);                      \
-                 dmalloc_unregister(d, 1);  )				\
+                 dmalloc_mark_as_free(d, 1);  )				\
   d->BLOCK_ALLOC_NEXT = (void *)PIKE_CONCAT3(free_,DATA,s);		\
   PRE_INIT_BLOCK(d);							\
   PIKE_CONCAT3(free_,DATA,s)=d;						\
@@ -120,7 +120,7 @@ void PIKE_CONCAT(really_free_,DATA)(struct DATA *d)			\
   EXIT_BLOCK(d);							\
   DO_IF_RUN_UNLOCKED(mt_lock(&PIKE_CONCAT(DATA,_mutex)));               \
   DO_IF_DMALLOC( PIKE_CONCAT(check_free_,DATA)(d);                      \
-                 dmalloc_unregister(d, 1);  )				\
+                 dmalloc_mark_as_free(d, 1);  )				\
   d->BLOCK_ALLOC_NEXT = (void *)PIKE_CONCAT3(free_,DATA,s);		\
   PRE_INIT_BLOCK(d);							\
   PIKE_CONCAT3(free_,DATA,s)=d;						\

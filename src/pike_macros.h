@@ -101,6 +101,7 @@
 } while (0)
 
 #define DOUBLELINK(first_object, o) do {	\
+  debug_malloc_touch(o);                        \
   o->next=first_object;				\
   o->prev=0;					\
   if(first_object) first_object->prev=o;	\
@@ -108,12 +109,15 @@
 }while(0)
 
 #define DOUBLEUNLINK(first_object,o) do{	\
+  debug_malloc_touch(o);                        \
   if(o->prev) {					\
     o->prev->next=o->next;			\
   }else {					\
     DO_IF_DEBUG(				\
-      if(first_object != o)			\
+      if(first_object != o) {			\
+        describe(o);                            \
         fatal("Linked in wrong list!\n");	\
+      }                                         \
     )						\
     first_object=o->next;			\
   }						\
