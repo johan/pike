@@ -1,3 +1,11 @@
+/*
+ * $Id$
+ *
+ * GTK glue code.
+ */
+
+#if constant(@module@.parse_rc)
+
 string unsillycaps(string what)
 {
   string res=upper_case(what[0..0]);
@@ -8,9 +16,6 @@ string unsillycaps(string what)
       res += "_"+lower_case(q);
   return res;
 }
-
-
-#if constant(@module@.parse_rc)
 
 inherit @module@;
 
