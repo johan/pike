@@ -1664,7 +1664,9 @@ void pike_module_init(void)
   ADD_FUNCTION("closelog", f_closelog,tFunc(tNone,tVoid), 0);
 #endif /* HAVE_SYSLOG */
 
+#ifdef HAVE_SLEEP
   ADD_FUNCTION("sleep",f_system_sleep,tFunc(tInt,tInt), 0);
+#endif /* HAVE_SLEEP */
 
   init_passwd();
 
