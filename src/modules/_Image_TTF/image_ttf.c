@@ -604,7 +604,7 @@ static void image_ttf_face_names(INT32 args)
 **!     This instantiates the face for normal usage -
 **!	to convert font data to images.
 **! 
-**! returns a <ref>FaceInstance</ref> object.
+**! returns a <ref>Image.TTF.FaceInstance</ref> object.
 */
 
 static void image_ttf_face_make(INT32 args)
