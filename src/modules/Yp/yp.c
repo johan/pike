@@ -31,6 +31,8 @@
 /* must be included last */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 RCSID("$Id$");
 
 #ifdef HAVE_YPERR_STRING
@@ -47,7 +49,7 @@ struct my_yp_domain
   int last_size; /* Optimize some allocations */
 };
 
-#define this ((struct my_yp_domain *)fp->current_storage)
+#define this ((struct my_yp_domain *)Pike_fp->current_storage)
 
 /*! @module Yp
  *!

@@ -20,6 +20,8 @@ RCSID("$Id$");
 
 #include "file.h"
 
+#define sp Pike_sp
+
 /* Friendly BeOS fix */
 #if defined(CS5) && defined(CS6) && CS6 == CS5
 #undef CS5
@@ -73,7 +75,7 @@ RCSID("$Id$");
 */
 
 #undef THIS
-#define THIS ((struct my_file *)(fp->current_storage))
+#define THIS ((struct my_file *)(Pike_fp->current_storage))
 #define FD (THIS->fd)
 #define ERRNO (THIS->my_errno)
 

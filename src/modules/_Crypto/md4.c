@@ -21,8 +21,10 @@
 /* THIS MUST BE INCLUDED LAST */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 #undef THIS
-#define THIS ((struct md4_ctx *)(fp->current_storage))
+#define THIS ((struct md4_ctx *)(Pike_fp->current_storage))
 #define OBTOCTX(o) ((struct md4_ctx *)(o->storage))
 
 static struct program *md4mod_program;

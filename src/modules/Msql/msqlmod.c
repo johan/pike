@@ -51,6 +51,8 @@ MUTEX_T pike_msql_mutex STATIC_MUTEX_INIT;
 
 #include <msql.h>
 
+#define sp Pike_sp
+
 /*! @module Msql
  *! This is an interface to the mSQL database server.
  *! This module may or may not be availible on your Pike, depending
@@ -125,7 +127,7 @@ struct msql_my_data
 #endif
 };
 
-#define THIS ((struct msql_my_data *) fp->current_storage)
+#define THIS ((struct msql_my_data *) Pike_fp->current_storage)
 
 static void msql_object_created (struct object *o)
 {

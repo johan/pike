@@ -27,8 +27,10 @@
 /* THIS MUST BE INCLUDED LAST */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 #undef THIS
-#define THIS ((unsigned INT16 *)(fp->current_storage))
+#define THIS ((unsigned INT16 *)(Pike_fp->current_storage))
 #define OBTOCTX(o) ((unsigned INT16 *)(o->storage))
 
 /*

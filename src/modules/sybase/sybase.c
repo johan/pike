@@ -46,6 +46,8 @@ RCSID("$Id$");
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 /* define this to enable debugging */
 /* #define SYBDEBUG */
 
@@ -104,7 +106,7 @@ static MUTEX_T mainlock;
 #define FAILED(status) (status!=CS_SUCCEED)
 #define OK(status) (status==CS_SUCCEED)
 
-#define THIS ((pike_sybase_connection *) (fp->current_storage))
+#define THIS ((pike_sybase_connection *) (Pike_fp->current_storage))
 
 
 
@@ -535,7 +537,7 @@ static void f_create (INT32 args) {
   
   /* if connected, disconnect */
   if (this->context)
-    sybase_destroy(fp->current_object);
+    sybase_destroy(Pike_fp->current_object);
 
   THREADS_ALLOW();
   SYB_LOCK(mainlock);
@@ -896,7 +898,7 @@ static void f_big_query(INT32 args) {
     push_int(0);
     break;
   case PS_RESULT_THIS:
-    ref_push_object(fp->current_object);
+    ref_push_object(Pike_fp->current_object);
     break;
   case PS_RESULT_STATUS:
     this->busy--;

@@ -39,6 +39,8 @@
 #include "operators.h"
 #include "stuff.h"
 
+#define sp Pike_sp
+
 /*! @module System
  */
 
@@ -464,7 +466,7 @@ void f_RegGetValues(INT32 args)
 
 static struct program *token_program;
 
-#define THIS_TOKEN (*(HANDLE *)(fp->current_storage))
+#define THIS_TOKEN (*(HANDLE *)(Pike_fp->current_storage))
 
 typedef BOOL (WINAPI *logonusertype)(LPSTR,LPSTR,LPSTR,DWORD,DWORD,PHANDLE);
 typedef DWORD (WINAPI *getlengthsidtype)(PSID);
@@ -493,7 +495,7 @@ LINKFUNC(BOOL,addauditaccessace, (PACL,DWORD,DWORD,PSID,BOOL,BOOL) );
 
 HINSTANCE advapilib;
 
-#define THIS_PSID (*(PSID *)fp->current_storage)
+#define THIS_PSID (*(PSID *)Pike_fp->current_storage)
 static struct program *sid_program;
 static void init_sid(struct object *o)
 {

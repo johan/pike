@@ -25,6 +25,7 @@
 /* THIS MUST BE INCLUDED LAST */
 #include "module_magic.h"
 
+#define sp Pike_sp
 
 struct pike_crypto_cast {
   struct cast_key key;
@@ -33,7 +34,7 @@ struct pike_crypto_cast {
 };
 
 #undef THIS
-#define THIS ((struct pike_crypto_cast *)(fp->current_storage))
+#define THIS ((struct pike_crypto_cast *)(Pike_fp->current_storage))
 #define OBTOCTX(o) ((struct pike_crypto_cast *)(o->storage))
 
 /*
