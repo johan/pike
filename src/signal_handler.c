@@ -4619,8 +4619,8 @@ void init_signals(void)
   ADD_EFUN("set_priority",f_set_priority,tFunc(tStr tOr(tInt,tVoid),tInt),
            OPT_SIDE_EFFECT);
   
-/* function(int,mixed|void:void) */
-  ADD_EFUN("signal",f_signal,tFunc(tInt tOr(tMix,tVoid),tMix),OPT_SIDE_EFFECT);
+  ADD_EFUN("signal",f_signal,tFunc(tInt tOr(tVoid,tFunc(tInt,tVoid)),tMix),
+	   OPT_SIDE_EFFECT);
 
 #ifdef HAVE_KILL
 /* function(int|object,int:int) */
