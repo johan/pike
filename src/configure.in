@@ -2927,6 +2927,7 @@ EOF
     else
       pike_cv_float_type=not_ieee
     fi
+    rm -rf conftest*
   ])
 ])
 if test "$pike_cv_float_type" = ieee_big; then
@@ -2978,6 +2979,7 @@ EOF
     else
       pike_cv_float_type=not_ieee
     fi
+    rm -rf conftest*
   ])
 ])
 if test "$pike_cv_double_type" = ieee_big; then
