@@ -527,7 +527,7 @@ PMOD_EXPORT struct array *slice_array(struct array *v, ptrdiff_t start,
       free_svalues(ITEM(v) + end, v->size - end, v->type_field);
       free_svalues(ITEM(v), start, v->type_field);
       v->item+=start;
-      v->malloced_size+=start;
+      v->malloced_size-=start;
       v->size=end-start;
 #ifdef PIKE_DEBUG
       if(d_flag>1)
