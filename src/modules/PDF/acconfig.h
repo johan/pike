@@ -11,4 +11,7 @@
 /* Define this if you have -lpdf */
 #undef HAVE_LIBPDF
 
+/* Define this if you have -lpanda */
+#undef HAVE_LIBPANDA
+
 #endif

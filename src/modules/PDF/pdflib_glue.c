@@ -1049,14 +1049,15 @@ static void pdf_set_border_dash(INT32 args)
 #endif /* HAVE_PDFLIB_H */
 /*** module init & exit & stuff *****************************************/
 
-void pike_module_exit(void)
+void exit_pdf_pdflib(void)
 {
 #if 0
+/* this is documented, but not in library */
    PDF_shutdown(); /* stop pdflib */
 #endif
 }
 
-void pike_module_init(void)
+void init_pdf_pdflib(void)
 {
 #ifdef HAVE_PDFLIB_H
    PDF_boot(); /* start pdflib */

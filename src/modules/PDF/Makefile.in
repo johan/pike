@@ -1,7 +1,7 @@
 # $Id$
 @make_variables@
 VPATH=@srcdir@:@srcdir@/../..:../..
-OBJS=pdflib_glue.o
+OBJS=pdf_module.o pdflib_glue.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 
 CONFIG_HEADERS=@CONFIG_HEADERS@
