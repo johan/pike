@@ -720,7 +720,7 @@ int is_lt(struct svalue *a,struct svalue *b)
 
 void describe_svalue(struct svalue *s,int indent,struct processing *p)
 {
-  char buf[40];
+  char buf[50];
 
   check_type(s->type);
   check_refs(s);
@@ -740,6 +740,10 @@ void describe_svalue(struct svalue *s,int indent,struct processing *p)
     case T_STRING:
       {
 	int i;
+	if (s->subtype) {
+	  sprintf(buf,"/* subtype:%ld */ ",(long)s->subtype);
+	  my_strcat(buf);
+	}
         my_putchar('"');
 	for(i=0; i < s->u.string->len; i++)
         {
