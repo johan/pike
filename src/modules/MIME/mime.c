@@ -51,9 +51,9 @@ static void f_quote_labled( INT32 args );
 
 /** Global tables **/
 
-static char base64tab[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+static const char base64tab[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 static SIGNED char base64rtab[(1<<(CHAR_BIT-1))-' '];
-static char qptab[16] = "0123456789ABCDEF";
+static const char qptab[16] = "0123456789ABCDEF";
 static SIGNED char qprtab[(1<<(CHAR_BIT-1))-'0'];
 
 #define CT_CTL     0

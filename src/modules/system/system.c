@@ -1295,7 +1295,7 @@ void f_chroot(INT32 args)
 
 #ifdef USE_SYSINFO
 
-static struct {
+static const struct {
   char *name;
   int command;
 } si_fields[] = {
