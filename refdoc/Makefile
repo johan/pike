@@ -12,6 +12,8 @@ all: modref traditional
 
 pike.ida.liu.se: modref pelix_modref traditional
 
+caudium.net: modref caudium_modref traditional
+
 # These are the actual build targets for making manuals...
 
 modref: build/modref.xml structure/modref.css structure/modref.html \
@@ -41,6 +43,18 @@ low_pelix_modref:
 	  build/modref.xml structure/pelix_modref.html pelix_modref
 	@mkdir pelix_modref/images
 	cp build/images/* pelix_modref/images
+
+caudium_modref: build/modref.xml structure/caudium_modref.html \
+		presentation/make_html.pike presentation/tree-split-autodoc.pike
+	@$(MAKE) PIKE="$(PIKE)" low_caudium_modref
+
+low_caudium_modref:
+	rm -rf caudium_modref || /bin/true
+	@mkdir caudium_modref
+	@$(PIKE) presentation/tree-split-autodoc.pike \
+	  build/modref.xml structure/caudium_modref.html caudium_modref
+	@mkdir caudium_modref/images
+	cp build/images/* caudium_modref/images
 
 one_page: onepage build/onepage.xml presentation/make_html.pike
 	@$(MAKE) PIKE="$(PIKE)" low_one_page
