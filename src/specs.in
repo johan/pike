@@ -1,0 +1,7 @@
+# $Id$
+CC=@CC@
+CFLAGS=@CFLAGS@
+LDFLAGS=@LDFLAGS@
+CPPFLAGS=@CPPFLAGS@
+CPP=@CPP@
+configure_args=@ac_configure_args@
