@@ -15,12 +15,13 @@
 #include "program.h"
 #include "opcodes.h"
 #include "docode.h"
-#include "interpret.h"
 #include "language.h"
 #include "lex.h"
 #include "main.h"
 
 #include "pikecode.h"
+
+#include "interpret.h"
 
 #if PIKE_BYTECODE_METHOD == PIKE_BYTECODE_IA32
 #include "code/ia32.c"

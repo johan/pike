@@ -977,6 +977,16 @@ void *dummy_label = NULL;
   } while(0)
 #endif /* !CALL_MACHINE_CODE */
 
+#if defined(OPCODE_INLINE_BRANCH) || defined(INS_F_JUMP) || \
+    defined(INS_F_JUMP_WITH_ARG) || defined(INS_F_JUMP_WITH_TWO_ARGS)
+/* Intended to be called from machine code on backward branch jumps,
+ * to ensure thread switching. */
+void branch_check_threads_etc()
+{
+  fast_check_threads_etc (6);
+}
+#endif
+
 #ifdef PIKE_DEBUG
 
 static void debug_instr_prologue (PIKE_INSTR_T instr)

@@ -243,7 +243,7 @@ void ppc32_decode_program(struct program *p);
 			  "r10", "r11", "r12")
 
 #define OPCODE_INLINE_BRANCH
-#define OPCODE_RETURN_JUMPADDR
+/* #define OPCODE_RETURN_JUMPADDR */
 
 #ifdef OPCODE_RETURN_JUMPADDR
 

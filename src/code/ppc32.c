@@ -15,6 +15,8 @@
 #include "constants.h"
 #include "object.h"
 #include "builtin_functions.h"
+#include "pikecode.h"
+#include "interpret.h"
 
 #if PIKE_BYTEORDER == 1234
 #define MAKE_TYPE_WORD(t,st) ((t)|((st)<<16))
