@@ -1168,7 +1168,14 @@ identifier_type: idents
 	  yyerror("Destructed object used as program identifier.");
 	}else{
 	  extern void f_object_program(INT32);
-	  f_object_program(1);
+	  int f=FIND_LFUN(Pike_sp[-1].u.object->prog,LFUN_CALL);
+	  if(f!=-1)
+	  {
+	    Pike_sp[-1].subtype=f;
+	    Pike_sp[-1].type=T_FUNCTION;
+	  }else{
+	    f_object_program(1);
+	  }
 	}
       }
 
