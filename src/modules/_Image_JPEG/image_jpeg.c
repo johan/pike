@@ -1238,7 +1238,8 @@ void pike_module_init(void)
 
       ADD_FUNCTION("decode",image_jpeg_decode,tFunc(tStr tOr(tVoid,tOptions),tObj),0);
       ADD_FUNCTION("_decode",image_jpeg__decode,tFunc(tStr tOr(tVoid,tOptions),tMap(tStr,tMixed)),0);
-      ADD_FUNCTION("decode_header",image_jpeg_decode_header,tFunc(tStr tOr(tVoid,tOptions),tObj),0);
+      ADD_FUNCTION("decode_header",image_jpeg_decode_header,
+		   tFunc(tStr tOr(tVoid,tOptions),tMap(tStr,tOr4(tStr,tInt,tFlt,tMap(tInt,tStr)))),0);
       ADD_FUNCTION("encode",image_jpeg_encode,tFunc(tObj tOr(tVoid,tOptions),tStr),0);
    }
 
