@@ -410,7 +410,7 @@ static INLINE struct pike_string *internal_findstring(const char *s,
       return curr;		/* pointer to string */
     }
 #ifndef HASH_PREFIX
-    if (curr->len > HASH_PREFIX)
+    if (curr->len > (ptrdiff_t)HASH_PREFIX)
       depth++;
 #endif
   }
