@@ -17,6 +17,9 @@
 #ifdef HAVE_FP_CLASS_H
 #include <fp_class.h>
 #endif
+#ifdef HAVE_FLOAT_H
+#include <float.h>
+#endif
 
 /* isnan()...
  */
