@@ -928,7 +928,7 @@ static struct pike_string *debug_low_index_type(char *t, node *n)
   case T_OBJECT:
   {
     struct program *p=id_to_program(EXTRACT_INT(t));
-    if(p)
+    if(p && n)
     {
       if(n->token == F_ARROW)
       {
@@ -993,7 +993,7 @@ static struct pike_string *debug_low_index_type(char *t, node *n)
     return make_shared_binary_string(t, type_length(t));
 
   case T_ARRAY:
-    if(low_match_types(string_type_string->str,CDR(n)->type->str,0))
+    if(n && low_match_types(string_type_string->str,CDR(n)->type->str,0))
     {
       struct pike_string *a=low_index_type(t,n);
       if(!a)
