@@ -79,3 +79,6 @@ constant LONG_DOUBLE_PRECISION = __builtin.__LONG_DOUBLE_PRECISION_FLOAT__;
 //! configure flags @expr{--with-double-precision@} and
 //! @expr{--with-long-double-precision@}. The default is to use the
 //! longest available float type that fits inside a pointer.
+
+//! Returns true if @[x] is nan.
+int(0..1) isnan(float x) { return x!=x && floatp(x); }
