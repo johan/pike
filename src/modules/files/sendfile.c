@@ -305,7 +305,7 @@ int send_iov(int fd, struct iovec *iov, int iovcnt)
   return sent;
 }
 
-void *worker(void *this_)
+TH_RETURN_TYPE worker(void *this_)
 {
   struct pike_sendfile *this = this_;
 

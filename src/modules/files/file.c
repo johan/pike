@@ -2231,7 +2231,7 @@ struct new_thread_data
   INT32 from, to;
 };
 
-static void *proxy_thread(void * data)
+static TH_RETURN_TYPE proxy_thread(void * data)
 {
   char buffer[READ_BUFFER];
   struct new_thread_data *p=(struct new_thread_data *)data;
