@@ -15,15 +15,10 @@
 #define __PIKE_SYBASE_CONFIG_H
 
 @TOP@
+
+/* Define to enable the sybase module. */
+#undef HAVE_SYBASE 
+
 @BOTTOM@
-
-/* End of automatic session. Doing stuff now */
-
-#undef PIKE_HAVE_LIBCOMN
-#undef PIKE_HAVE_LIBCS
-#undef PIKE_HAVE_LIBCT
-#undef PIKE_HAVE_LIBINTL
-#undef PIKE_HAVE_LIBSYBTCL
-#undef HAVE_SYBASE
 
 #endif /* __PIKE_SYBASE_CONFIG_H */
