@@ -784,8 +784,7 @@ PMOD_EXPORT int is_eq(const struct svalue *a, const struct svalue *b)
     return is_same_string(a->u.string,b->u.string);
 
   case T_TYPE:
-    return pike_types_le(a->u.type, b->u.type) &&
-      pike_types_le(b->u.type, a->u.type);
+    return a->u.type == b->u.type;
 
   case T_FUNCTION:
     if (a->subtype != b->subtype) return 0;
@@ -873,7 +872,6 @@ PMOD_EXPORT int low_is_equal(const struct svalue *a,
       return 0;
 
     case T_TYPE:
-      if (a->u.type == b->u.type) return 1;
       return pike_types_le(a->u.type, b->u.type) &&
 	pike_types_le(b->u.type, a->u.type);
 
