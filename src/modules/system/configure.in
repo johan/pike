@@ -136,7 +136,7 @@ AC_TRY_COMPILE([
 #endif /* HAVE_SHADOW_H */
 ], [
   struct passwd ent;
-  ent->pw_gecos = "FOO";
+  ent.pw_gecos = "FOO";
 ], pike_cv_struct_has_pw_gecos=yes, pike_cv_struct_has_pw_gecos=no)
 ])
 
