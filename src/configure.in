@@ -1183,7 +1183,7 @@ MY_AC_ARG_WITH(static_linking, MY_DESCR([--with-static-linking],
 AC_ARG_WITH(bundles,
 	    MY_DESCR([--without-bundles],
 		     [do not enable bundled libraries]),
-	       [with_bundles=yes])
+	    [], [with_bundles=yes])
 pike_bundle_dir=""
 if test "$with_bundles" = "no"; then :; else
   if test -d "$with_bundles/."; then
