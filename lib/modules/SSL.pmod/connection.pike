@@ -2,6 +2,7 @@
 // $Id$
 
 #pike __REAL_VERSION__
+//#pragma strict_types
 
 //! SSL packet layer.
 //! SSL.connection inherits SSL.handshake, and in addition to the state in
@@ -70,7 +71,7 @@ static object recv_packet(string data)
 
   if (stringp(res))
   { /* Finished a packet */
-    left_over = res;
+    left_over = [string]res;
     if (current_read_state) {
 #ifdef SSL3_DEBUG
       werror("Decrypting packet.. version[1]="+version[1]+"\n");
