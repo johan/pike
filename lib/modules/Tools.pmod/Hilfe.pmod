@@ -1890,7 +1890,7 @@ class Evaluator {
     }
 
     object o;
-    if(hilfe_error( catch(o=clone(p)) ))
+    if(hilfe_error( catch(o=p()) ))
       return o;
 
     return 0;
