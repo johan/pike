@@ -22,6 +22,11 @@ typedef p_wchar1 UNICHAR;
 #define MODE_9696 3
 #define MODE_BIG5 4
 
+#define VARIANT_JP  1
+#define VARIANT_CN  2
+#define VARIANT_KR  3
+#define VARIANT_JP2 4
+
 struct charset_def {
   char const *name;
   UNICHAR const *table;
