@@ -186,7 +186,7 @@ struct marker
 #endif
 
 #include "block_alloc_h.h"
-PTR_HASH_ALLOC(marker,MARKER_CHUNK_SIZE)
+PTR_HASH_ALLOC_FIXED_FILL_PAGES(marker, n/a)
 
 #ifdef PIKE_DEBUG
 #undef get_marker
