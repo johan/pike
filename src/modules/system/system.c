@@ -1699,6 +1699,7 @@ static void cleanup_after_fork(struct callback *cb, void *arg0, void *arg1)
 #endif
 
 extern void init_passwd(void);
+extern void init_system_memory(void);
 
 
 #ifdef HAVE_SLEEP

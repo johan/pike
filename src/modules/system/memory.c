@@ -776,7 +776,7 @@ static void memory_index_write(INT32 args)
 	     ps->len != pos2-pos1+1)
 	    Pike_error("Memory.`[]=: source and destination "
 		       "not equally long (%d v/s %d; can't resize memory)\n",
-		       ps->len,(int)pos2-(int)pos1);
+		       (int)ps->len,(int)pos2-(int)pos1);
 	 else
 	    MEMCPY(THIS->p+pos1,ps->str,ps->len);
 
