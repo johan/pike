@@ -24,6 +24,7 @@ struct callable
   c_fun function;
   struct pike_type *type;
   struct pike_string *name;
+  struct program *prog;
   INT16 flags; /* OPT_* */
   INT16 internal_flags;
 #ifdef PIKE_DEBUG

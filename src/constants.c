@@ -84,6 +84,7 @@ PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
   f->function=fun;
   f->name=name;
   f->type=type;
+  f->prog=Pike_compiler->new_program;
   f->flags=flags;
   f->docode=docode;
   f->optimize=optimize;
