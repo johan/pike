@@ -689,7 +689,7 @@ long long gethrtime()
 /* 2 seconds between updates */
    if (now-hrtime_rtsc_last > 2000000000) 
    {
-      fprintf(stderr,"update: %.8llg\n",1e-9*(now-hrtime_rtsc_last));
+/*      fprintf(stderr,"update: %.8llg\n",1e-9*(now-hrtime_rtsc_last)); */
       own_gethrtime_update(&dummy);
       return gethrtime();
    }
