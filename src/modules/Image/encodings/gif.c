@@ -241,7 +241,7 @@ int image_gif_add_line(struct neo_colortable *nct,
    int n;
    unsigned char *bd;
    
-   image_colortable_get_index_line(nct,s,buf,len,dith);
+/*   image_colortable_get_index_line(nct,s,buf,len,dith);*/
 
    if (m)
    {
