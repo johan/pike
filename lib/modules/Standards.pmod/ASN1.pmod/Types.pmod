@@ -262,7 +262,7 @@ class asn1_integer
       
       if (value < 0)
       {
-	object n = value + Gmp.pow(256, (- value)->size(256));
+	object n = value + pow(256, (- value)->size(256));
 	s = n->digits(256);
 	if (!(s[0] & 0x80))
 	  s = "\377" + s;
@@ -279,7 +279,7 @@ class asn1_integer
       record_der_contents(contents);
       value = Gmp.mpz(contents, 256);
       if (contents[0] & 0x80)  /* Negative */
-	value -= Gmp.pow(256, strlen(contents));
+	value -= pow(256, strlen(contents));
       return this_object();
     }
   
