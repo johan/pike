@@ -825,7 +825,7 @@ void my_tiff_error_handler(const char *module, const char *fmt, va_list x)
   /* Sentinel that will be overwritten on buffer overflow. */
   last_tiff_error[TIFF_ERROR_BUF_SIZE-1] = '\0';
 
-  VSPRINTF(buf, fmt, x);
+  VSPRINTF(last_tiff_error, fmt, x);
 
   if(last_tiff_error[TIFF_ERROR_BUF_SIZE-1])
     Pike_fatal("Buffer overflow in my_tiff_error_handler()\n");
