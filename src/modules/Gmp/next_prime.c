@@ -23,8 +23,6 @@ RCSID("$Id$");
 
 #if defined(USE_GMP) || defined(USE_GMP2)
 
-#if defined(USE_GMP) || defined(USE_GMP2)
-
 #include <limits.h>
 
 #ifdef USE_GMP2
