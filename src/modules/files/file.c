@@ -280,12 +280,14 @@ static void close_fd_quietly(void)
   int fd=FD;
   if(fd<0) return;
 
-  set_read_callback(FD,0,0);
-  set_write_callback(FD,0,0);
+  set_read_callback(fd,0,0);
+  set_write_callback(fd,0,0);
 #ifdef WITH_OOB
-  set_read_oob_callback(FD,0,0);
-  set_write_oob_callback(FD,0,0);
+  set_read_oob_callback(fd,0,0);
+  set_write_oob_callback(fd,0,0);
 #endif /* WITH_OOB */
+  set_backend_for_fd(fd, NULL);
+
   check_internal_reference(THIS);
 
   FD=-1;
@@ -332,12 +334,14 @@ static void just_close_fd(void)
   int fd=FD;
   if(fd<0) return;
 
-  set_read_callback(FD,0,0);
-  set_write_callback(FD,0,0);
+  set_read_callback(fd,0,0);
+  set_write_callback(fd,0,0);
 #ifdef WITH_OOB
-  set_read_oob_callback(FD,0,0);
-  set_write_oob_callback(FD,0,0);
+  set_read_oob_callback(fd,0,0);
+  set_write_oob_callback(fd,0,0);
 #endif /* WITH_OOB */
+  set_backend_for_fd(fd, NULL);
+
   check_internal_reference(THIS);
 
   FD=-1;
