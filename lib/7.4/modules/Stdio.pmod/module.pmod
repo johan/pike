@@ -77,9 +77,4 @@ class File
     }
     return 0;
   }
-   
-  static void destroy()
-  {
-    register_close_file (open_file_id);
-  }
 }
