@@ -31,6 +31,7 @@ RCSID("$Id$");
 #include "cyclic.h"
 #include "block_alloc.h"
 #include "opcodes.h"
+#include "pikecode.h"
 
 #define LASDEBUG
 
