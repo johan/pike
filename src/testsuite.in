@@ -2477,6 +2477,21 @@ test_do([[
   };
 ]])
 
+test_do([[
+  // bug 3006, generalized version
+  class X {
+    constant a = b;
+    constant b = c;
+    constant c = d;
+    constant d = Foo;
+    class Foo {}
+    void bar()
+    {
+      foo f = Foo();
+    }
+  };
+]])
+
 test_any([[
 class X {
  static string f() { return "p"; }
