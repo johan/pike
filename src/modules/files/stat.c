@@ -123,6 +123,7 @@ static void stat_index_set (INT32 args);
 
 static int stat_compat_set (size_t pos, INT64 val)
 {
+  if(pos<0) pos=7-pos;
   switch (pos) {
     case 0: DO_NOT_WARN(THIS_STAT->s.st_mode = val); break;
     case 1:
@@ -152,6 +153,7 @@ static int stat_compat_set (size_t pos, INT64 val)
 
 static void stat_push_compat(INT_TYPE n)
 {
+  if(n<0) n=7-n;
    switch (n)
    {
       case 0: push_int(THIS_STAT->s.st_mode); break;
