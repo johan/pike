@@ -1112,7 +1112,7 @@ static int find_absolute(char *s)
   if(IS_SEP(s[0]) && IS_SEP(s[1]))
   {
     int l;
-    for(l=2;isalpha(s[l]);l++);
+    for(l=2;s[l] && !IS_SEP(s[l]);l++);
     return l;
   }
 
