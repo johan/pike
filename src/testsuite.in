@@ -447,6 +447,12 @@ test_any([[
 ]], 1);
 
 test_any( [[
+// bug [2845] ------------------------------------------------------------
+// http://community/crunch/show_bug.cgi?id=2845
+return !catch{ String.Buffer()->add("x",0); };
+]], 0)
+
+test_any( [[
 // bug [2830] ------------------------------------------------------------
 // http://community/crunch/show_bug.cgi?id=2830
 class User{};
