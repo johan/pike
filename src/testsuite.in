@@ -130,15 +130,15 @@ test_compile_any([[
   mapping(int:string) foo = ([FOO: "foo"]);
 ]])
 
-test_compile_any([[
+test_compile_error([[
   function(...:int) foo;
 ]]);
 
-test_compile_any([[
+test_compile_error([[
   function(,...:int) foo;
 ]]);
 
-test_compile_any([[
+test_compile_error([[
   function(string,...:int) foo;
 ]]);
 
