@@ -472,7 +472,7 @@ char *getenv PROT((char *));
 #endif
 
 #ifdef USE_CRYPT_C
-char *crypt(char *, char *);
+char *crypt(const char *, const char *);
 #endif /* USE_CRYPT_C */
 
 /* If this define is present, error() has been renamed to Pike_error() and
