@@ -39,6 +39,10 @@ test_do(_debug(_debug(0)))
 test_do(_static_modules())
 test_compile_any([[import Stdio; class x { string y() { read_file("foo"); } }]])
 test_compile([[Stdio.File foo=Stdio.File();]])
+test_compile([[  string|multiset(string) foo;
+  array(string) gazonk;
+  array(string) bar = indices(foo)-gazonk;
+]])
 test_compile([[class { Stdio.File foo=Stdio.File(); }]])
 test_compile_any([[void foo(Stdio.FILE f) {}]])
 test_compile_any([[void foo(array(Stdio.FILE) f) {}]])
