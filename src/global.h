@@ -120,6 +120,7 @@ void *alloca();
 
 #ifdef __NT__
 /* We are running NT */
+#undef FD_SETSIZE
 #define FD_SETSIZE MAX_OPEN_FILEDESCRIPTORS
 #endif
 
