@@ -189,10 +189,7 @@ PMOD_EXPORT DECLSPEC(noreturn) void low_error(const char *buf) ATTRIBUTE((noretu
 {
   push_error(buf);
   free_svalue(& throw_value);
-  dmalloc_touch_svalue(Pike_sp-1);
-  throw_value = *--Pike_sp;
-  dmalloc_touch_svalue(&throw_value);
-
+  move_svalue (&throw_value, --Pike_sp);
   throw_severity = THROW_ERROR;
   in_error=0;
   pike_throw();  /* Hope someone is catching, or we will be out of balls. */
@@ -299,9 +296,7 @@ PMOD_EXPORT DECLSPEC(noreturn) void new_error(const char *name, const char *text
 
   f_aggregate(2);
 
-  free_svalue(& throw_value);
-  dmalloc_touch_svalue(Pike_sp-1);
-  throw_value = *--Pike_sp;
+  move_svalue (&throw_value, --Pike_sp);
   throw_severity=THROW_ERROR;
 
   in_error=0;
