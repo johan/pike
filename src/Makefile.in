@@ -680,7 +680,7 @@ feature_list:
 	$(RUNPIKE) $(TMP_BINDIR)/feature_list
 
 run_bench:
-	$(RUNPIKE) $(ARGS) -x benchmark
+	$(RUNPIKE) $(ARGS) -x benchmark $(BENCHARGS)
 
 lib: Makefile
 	@for d in lib lib/modules lib/include; do \
