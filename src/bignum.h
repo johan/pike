@@ -1,9 +1,9 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
 #include "global.h"
 
@@ -83,4 +83,3 @@ int int64_from_bignum(INT64 *i, struct object *bignum);
 #endif /* AUTO_BIGNUM */
 
 #endif /* BIGNUM_H */
-

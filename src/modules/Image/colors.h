@@ -1,11 +1,11 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
-   COLOR("red"                 ,255,0,0)
+COLOR("red"                 ,255,0,0)
    COLOR("black"               ,0,0,0)
    COLOR("blue"                ,0,0,255)
    COLOR("cyan"                ,0,255,255)

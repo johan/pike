@@ -1,9 +1,9 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
 /* Hohum. Here we go. This is try number four for a more optimized
  *  Roxen.
@@ -875,4 +875,3 @@ void pike_module_exit(void)
   free_program(accept_loop_program);
 #endif /* _REENTRANT */
 }
-

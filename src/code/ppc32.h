@@ -1,9 +1,9 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
 #define PPC_INSTR_B_FORM(OPCD,BO,BI,BD,AA,LK)			\
       add_to_program(((OPCD)<<26)|((BO)<<21)|((BI)<<16)|	\
@@ -231,4 +231,3 @@ void ppc32_decode_program(struct program *p);
 			: "ctr", "lr", "cc", "memory", "r31", "r0",	    \
 			  "r3", "r4", "r5", "r6", "r7", "r8", "r9",	    \
 			  "r10", "r11", "r12")
-

@@ -1,10 +1,9 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
-/**/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
 #include "global.h"
 #include "dynamic_buffer.h"
@@ -141,4 +140,3 @@ PMOD_EXPORT char *debug_return_buf(void)
   return buff.s.str;
 }
 /* int my_get_buf_size() {  return buff->s.len; } */
-

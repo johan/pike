@@ -1,9 +1,9 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
 /*
  * Machine code generator for sparc.
@@ -70,4 +70,3 @@ void ins_f_byte_with_2_args(unsigned int a,
   ins_f_byte_with_arg(a,c);
   add_to_program((PIKE_OPCODE_T)b);
 }
-

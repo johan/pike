@@ -1,9 +1,9 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
 /*
 ** libMird by Mirar <mirar@mirar.org>
@@ -329,5 +329,3 @@ void mird_perror(char *s,MIRD_RES error)
    mird_describe_error(error,&err);
    fprintf(stderr,"%s: %s\n",s,err);
 }
-
-

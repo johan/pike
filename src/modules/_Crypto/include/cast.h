@@ -1,9 +1,9 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
 /*
  *	CAST-128 in C
@@ -38,4 +38,3 @@ void cast_decrypt(struct cast_key *key, unsigned INT8 *inblock,
 		  unsigned INT8* outblock);
 
 #endif /* ifndef _CAST_H_INCLUDED */
-

@@ -1,9 +1,9 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
 #include "global.h"
 #include "stralloc.h"
@@ -122,4 +122,3 @@ void uc_buffer_insert( struct buffer *b, unsigned int pos, int c )
     b->data[pos] = c;
   }
 }
-

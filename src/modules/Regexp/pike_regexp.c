@@ -1,9 +1,9 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
 /*
  * regexp.c - regular expression matching
@@ -1350,4 +1350,3 @@ char *pike_regsub(regexp *prog, char *source, char *dest, int n)
     *dst = '\0';
     return dst;
 }
-

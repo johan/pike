@@ -1,9 +1,9 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
 #ifndef PIKE_THREADLIB_H
 #define PIKE_THREADLIB_H
@@ -757,4 +757,3 @@ PMOD_EXPORT HANDLE CheckValidHandle(HANDLE h);
 
 
 #endif /* PIKE_THREADLIB_H */
-

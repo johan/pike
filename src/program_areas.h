@@ -1,9 +1,9 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
 /* Who needs templates anyway? / Hubbe */
 
@@ -19,4 +19,3 @@ FOO(unsigned INT16,struct inherit,inherits)
 FOO(unsigned INT16,struct identifier,identifiers)
 FOO(unsigned INT16,struct program_constant, constants)
 #undef FOO
-

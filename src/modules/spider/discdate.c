@@ -1,9 +1,10 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
+
 /* DiscDate.C .. converts boring normal dates to fun Discordian Date -><-
    written  the 65th day of The Aftermath in the Year of Our Lady of 
    Discord 3157 by Druel the Chaotic aka Jeremy Johnson aka

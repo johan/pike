@@ -1,9 +1,9 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
 struct buffer
 {
@@ -22,8 +22,3 @@ struct pike_string *uc_buffer_to_pikestring( struct buffer *d );
 void uc_buffer_insert( struct buffer *b, unsigned int pos, int c );
 struct buffer *uc_buffer_from_pikestring( struct pike_string *s );
 struct buffer *uc_buffer_new_size( int s );
-
-
-
-
-

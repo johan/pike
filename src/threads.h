@@ -1,9 +1,9 @@
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
 
 #ifndef THREADS_H
 #define THREADS_H
@@ -102,4 +102,3 @@ PMOD_EXPORT void th_farm(void (*fun)(void *), void *here);
 #include "interpret.h"
 
 #endif /* THREADS_H */
-
