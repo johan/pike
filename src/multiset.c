@@ -1,3 +1,10 @@
+/*
+|| This file is part of Pike. For copyright information see COPYRIGHT.
+|| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+|| for more information.
+|| $Id$
+*/
+
 #include "global.h"
 
 #ifdef PIKE_NEW_MULTISETS
@@ -5219,13 +5226,6 @@ void test_multiset (void)
 #endif /* PIKE_DEBUG || TEST_MULTISET */
 
 #else  /* PIKE_NEW_MULTISETS */
-
-/*\
-||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
-||| for more information.
-||| $Id$
-\*/
 
 #include "global.h"
 #include "array.h"
