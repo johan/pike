@@ -697,7 +697,7 @@ class search
 class uid {
   inherit fetch;
 
-  constant arg_info = ({ ({ "atom" }), ({ "set" }), ({ "any", 3 }) });
+  constant arg_info = ({ ({ "string" }), ({ "set" }), ({ "any", 3 }) });
 
   mapping easy_process(mapping cmd, object message_set, mapping request)
   {
