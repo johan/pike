@@ -3700,14 +3700,16 @@ static node *eval(node *n)
       pop_stack();
       return n;
     }
-    if (n->token != F_SOFT_CAST) {
-      new = mksvaluenode(sp-1);
-    } else {
+    if (n->token == F_SOFT_CAST) {
       new = mksoftcastnode(n->type, mksvaluenode(sp-1));
-    }
-    if (n->type && (!new->type || pike_types_le(n->type,new->type))) {
-      if (new->type) free_string(new->type);
-      copy_shared_string(new->type,n->type);
+    } else {
+      new = mksvaluenode(sp-1);
+      if (n->type && (!new->type || ((n->type != new->type) &&
+				     pike_types_le(n->type,new->type)))) {
+	if (new->type)
+	  free_string(new->type);
+	copy_shared_string(new->type,n->type);
+      }
     }
     free_node(n);
     n = new;
