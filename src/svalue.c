@@ -981,7 +981,6 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
     if(a->type == T_OBJECT)
     {
     a_is_object:
-      a_is_obj_without_lt = 0;
       if(!a->u.object->prog)
 	Pike_error("Comparison on destructed object.\n");
       if(FIND_LFUN(a->u.object->prog,LFUN_LT) != -1)
@@ -1001,6 +1000,7 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
 	  pop_stack();
 	  return 1;
 	}
+	a_is_obj_without_lt = 0;
       }
       else
 	a_is_obj_without_lt = 1;
