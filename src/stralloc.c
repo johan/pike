@@ -1377,7 +1377,8 @@ PMOD_EXPORT ptrdiff_t string_search(struct pike_string *haystack,
 
   if(!r) return -1;
 #ifdef PIKE_DEBUG
-  if(r < haystack || (r-haystack->str)>>haystack->size_shift > haystack->len)
+  if((r < haystack->str) ||
+     (r - haystack->str)>>haystack->size_shift > haystack->len)
     fatal("string_search did a bobo!\n");
 #endif
   return (r-haystack->str)>>haystack->size_shift;
