@@ -743,7 +743,7 @@ PMOD_EXPORT void schedule_really_free_object(struct object *o)
       /* It's a fake object which isn't counted by the gc, so
        * counteract the num_objects-- done by GC_FREE. */
       num_objects++;
-    GC_FREE();
+    GC_FREE(o);
 
     FREE_PROT(o);
 

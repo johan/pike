@@ -68,7 +68,7 @@ PMOD_EXPORT void really_free_multiset(struct multiset *l)
   DOUBLEUNLINK(first_multiset, l);
 
   free((char *)l);
-  GC_FREE();
+  GC_FREE(l);
 }
 
 PMOD_EXPORT void do_free_multiset(struct multiset *l)

@@ -970,7 +970,7 @@ PMOD_EXPORT void really_free_program(struct program *p)
   FREE_PROT(p);
   dmfree((char *)p);
 
-  GC_FREE();
+  GC_FREE(p);
 }
 
 #ifdef PIKE_DEBUG

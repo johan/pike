@@ -103,7 +103,7 @@ static void array_free_no_free(struct array *v)
 
   free((char *)v);
 
-  GC_FREE();
+  GC_FREE(v);
 }
 
 /*

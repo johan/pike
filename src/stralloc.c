@@ -742,6 +742,7 @@ PMOD_EXPORT void really_free_string(struct pike_string *s)
 #endif
   unlink_pike_string(s);
   debug_free((char *)s,DMALLOC_LOCATION(),1);
+  GC_FREE_BLOCK(s);
 }
 
 PMOD_EXPORT void debug_free_string(struct pike_string *s)
