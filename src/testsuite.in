@@ -455,6 +455,25 @@ test_type_error(object,array,({1,2,3}))
 test_type_error(object,mapping,([1:2,3:4]))
 test_type_error(object,multiset,(<1,2,3>))
 
+test_any([[
+  /* Detect bug in modify_shared_string().
+   *
+   * Note: For proper operation this test depends on HASH_PREFIX being
+   *       <= 128, and the initial string in test having a single ref.
+   */
+  string prefix = "A"*128;
+  string suffix = "B"*128;
+
+  string test = prefix + "C" + suffix;
+  string match = prefix + "D" + suffix;
+
+  if (test == match) return("Early match!");
+
+  test[128] = 'D';
+
+  if (test != match) return("Late mismatch!");
+]], 0)
+
 test_compile_error([[ string a="abcb"; a=a/"b"; ]])
 test_compile_error([[ string a="abcb"; a/="b"; ]])
 test_compile_error([[ string a="abcb"; string b="b"; a=a/b; ]])
