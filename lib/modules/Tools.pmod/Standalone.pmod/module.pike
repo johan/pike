@@ -6,7 +6,7 @@ constant description = "Pike module installer.";
 
 // Source directory
 string srcdir;
-string make="make";
+string make=getenv("MAKE")||"make";
 string make_flags="";
 string include_path=master()->include_prefix;
 string configure_command="configure";
