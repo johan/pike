@@ -812,7 +812,8 @@ static void low_decode_type(struct decode_data *data)
   SET_ONERROR(err2, restore_type_mark, pike_type_mark_stackp);
 
 one_more_type:
-  push_type(tmp=GETC());
+  tmp = GETC();
+  push_type(tmp);
   switch(tmp)
   {
     default:
