@@ -29,6 +29,8 @@
 #include <jpeglib.h>
 #undef size_t
 #undef FILE
+#undef _SIZE_T_DEFINED
+#undef _FILE_DEFINED
 
 #endif /* HAVE_JPEGLIB_H */
 
