@@ -257,7 +257,10 @@ void img_scale2(struct image *dest, struct image *source)
    newy = source->ysize >> 1;
 
    if (dest->img) { free(dest->img); dest->img=NULL; }
-   if (!THIS->img || newx<=0 || newy<=0) return; /* no way */
+   if (!THIS->img || newx<0 || newy<0) return; /* no way */
+
+   if (!newx) newx = 1;
+   if (!newy) newy = 1;
 
    new=malloc(newx*newy*sizeof(rgb_group) +1);
    if (!new) resource_error(NULL,0,0,"memory",0,"Out of memory.\n");
