@@ -608,6 +608,7 @@ static int eval_instruction(unsigned char *pc)
       sp->subtype=GET_ARG()+fp->context.identifier_level;
       sp->type=T_FUNCTION;
       sp++;
+      print_return_value();
       break;
 
       /* The not so basic 'push value' instructions */

@@ -475,7 +475,7 @@ test_equal("abcd"/"" - indices("abcd"),({"a","b","c","d"}))
 test_equal("abcd"/"" & indices("abcd"),({}))
 test_eq(sizeof("abcd"/"" & "de"/""),1)
 test_equal( ({0,0,0,0,0}), ({0,0,0,0,0}))
-test_equal( ({0,0,0,0,0}), allocate(5,"object"))
+test_equal( ({"object","object","object","object","object"}), allocate(5,"object"))
 test_equal(mkmapping("abcd"/"","jklm"/"") | mkmapping("jclm"/"","alcd"/""),
 	mkmapping("abcdjlm"/"","jklmacd"/""))
 test_program(int foo() { return 17;} mixed a() { return foo() == 17; })

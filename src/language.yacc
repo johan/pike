@@ -918,22 +918,18 @@ lambda: F_LAMBDA
     
     type=pop_type();
 
-    if(new_program->flags | PROGRAM_PASS_1_DONE)
-    {
-      sprintf(buf,"__lambda_%ld",
-	      (long)new_program->num_identifier_references);
-      name=make_shared_string(buf);
-      
-      f=dooptcode(name,
-		  $4,
-		  type,
-		  ID_PRIVATE);
-    }
+    sprintf(buf,"__lambda_%ld",local_class_counter++);
+    name=make_shared_string(buf);
+    
+    f=dooptcode(name,
+		$4,
+		type,
+		ID_PRIVATE);
+    $$=mkidentifiernode(f);
     free_string(name);
     free_string(type);
     comp_stackp=$<number>2;
     pop_compiler_frame();
-    $$=mkidentifiernode(f);
   }
   ;
 

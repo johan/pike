@@ -207,6 +207,7 @@ struct keyword instr_names[]=
 { "call lfun & return", F_CALL_LFUN_AND_RETURN, I_HASARG },
 { "call function",      F_CALL_FUNCTION, 0 },
 { "call function & return", F_CALL_FUNCTION_AND_RETURN, 0 },
+{ "+= and pop",         F_ADD_TO_AND_POP, 0 },
 };
 
 struct instr instrs[F_MAX_INSTR - F_OFFSET];
