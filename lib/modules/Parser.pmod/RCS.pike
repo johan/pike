@@ -422,11 +422,7 @@ class Revision
   //!   If supplied, substitutes keywords for that text instead, using values
   //!   that would apply for this revision. Otherwise, this revision is used.
   //! @note
-  //!   Does not expand the $Log$
-  //!   Does not expand the Revision 1.5  2002/02/23 18:24:10  jhs
-  //!   Does not expand the Added keyword expansion (minus Log expansion, which IMO is broken by
-  //!   Does not expand the design).
-  //!   Does not expand the keyword (which lacks sane quoting rules)
+  //!   Does not expand the Log keyword (which lacks sane quoting rules)
   string expand_keywords(string|void text)
   {
     if(!text)
