@@ -1467,6 +1467,10 @@ test_eq([[combine_path("/","/foo//bar/gazonk/../..")]],"/foo")
 test_eq([[combine_path("/","/foo/bar/./gazonk/../../..")]],"/")
 test_eq([[combine_path("/","/foo/../bar//./gazonk/../..")]],"/")
 test_eq([[combine_path("/","/foo/././/bar/gazonk/../../../..")]],"/")
+test_eq([[combine_path("/","..")]],"/")
+test_eq([[combine_path("./","..")]],"..")
+test_eq([[combine_path("./.","..")]],"..")
+test_eq([[combine_path("./foobar/.","..")]],".")
 
 // - compile_file
 // FIXME: add tests for compile_file
