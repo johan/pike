@@ -180,7 +180,7 @@ if test x$ac_cv_func_readdir_r = xyes ; then
 #endif /* !__STDC_EXT__ */
 
 /* For _REENTRANT */
-#include "machine.h"
+#include "../../machine.h"
 #ifndef POSIX_SOURCE
 #define POSIX_SOURCE
 #endif
@@ -231,7 +231,7 @@ if test x$pike_cv_func_posix_readdir_r = xyes ; then
 #endif /* !__STDC_EXT__ */
 
 /* For _REENTRANT */
-#include "machine.h"
+#include "../../machine.h"
 #ifndef POSIX_SOURCE
 #define POSIX_SOURCE
 #endif
@@ -315,7 +315,7 @@ else
 #endif /* !__STDC_EXT__ */
 
 /* For _REENTRANT */
-#include "machine.h"
+#include "../../machine.h"
 #ifndef POSIX_SOURCE
 #define POSIX_SOURCE
 #endif
