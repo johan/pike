@@ -61,7 +61,7 @@ struct face
 
 #undef __FTERRORS_H__
 #define FT_ERROR_START_LIST				\
-  struct image_ft_error_lookup {			\
+  static const struct image_ft_error_lookup {		\
     const char *sym;					\
     FT_Error code;					\
     const char *msg;					\
@@ -80,7 +80,7 @@ static void image_ft_error(const char *msg, FT_Error errcode)
 {
   const char *errmsg = NULL;
   if (errcode) {
-    struct image_ft_error_lookup *entry;
+    const struct image_ft_error_lookup *entry;
     for (entry = image_ft_error_lookup; entry->sym; entry++) {
       if (entry->code == errcode) {
 	errmsg = entry->msg;

@@ -121,7 +121,7 @@ static struct disc_time convert(int nday, int nyear)
   return this;
 }
 
-static char *days[5] = 
+static const char *days[5] =
 { 
   "Sweetmorn",
   "Boomtime",
@@ -130,7 +130,7 @@ static char *days[5] =
   "Setting Orange"
   };
 
-static char *seasons[5] = 
+static const char *seasons[5] =
 { 
   "Chaos",
   "Discord",
@@ -139,7 +139,7 @@ static char *seasons[5] =
   "The Aftermath"
   };
 
-static char *holidays[5][2] = 
+static const char *holidays[5][2] =
 { 
   { "Mungday", "Chaoflux" },
   { "Mojoday", "Discoflux" },
