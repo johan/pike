@@ -17,16 +17,20 @@ PMOD_EXPORT extern struct timeval next_timeout;
 typedef void (*file_callback)(int,void *);
 extern struct callback_list do_debug_callbacks;
 PMOD_EXPORT extern int fds_size;
+PMOD_EXPORT extern struct program *Backend_program;
 
 /* Prototypes begin here */
+struct Backend_struct;
 struct selectors;
 PMOD_EXPORT struct callback *debug_add_backend_callback(callback_func call,
 				      void *arg,
 				      callback_func free_func);
 PMOD_EXPORT void wake_up_backend(void);
 void init_backend(void);
-void set_read_callback(int fd,file_callback cb,void *data);
-void set_write_callback(int fd,file_callback cb,void *data);
+PMOD_EXPORT struct object *get_backend_obj_for_fd (int fd);
+PMOD_EXPORT void set_backend_for_fd (int fd, struct Backend_struct *new);
+PMOD_EXPORT void set_read_callback(int fd,file_callback cb,void *data);
+PMOD_EXPORT void set_write_callback(int fd,file_callback cb,void *data);
 PMOD_EXPORT void set_read_oob_callback(int fd,file_callback cb,void *data);
 PMOD_EXPORT void set_write_oob_callback(int fd,file_callback cb,void *data);
 PMOD_EXPORT file_callback query_read_callback(int fd);
