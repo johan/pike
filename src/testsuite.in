@@ -4157,6 +4157,7 @@ int ok=1;
 
 void test_dir(string dir)
 {
+  // werror("Testing directory %O...\n", dir);
   foreach(get_dir(dir), string s)
   {
     switch(s)
@@ -4175,6 +4176,7 @@ void test_dir(string dir)
     {
       test_dir(file);
     }else if(stat[1]>=0){
+      // werror("Testing file %O\n", file);
       if(!glob("*/my_struct.pmod",file))
       {
         if(glob("*.pike",file) || glob("*.pmod",file))
