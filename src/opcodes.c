@@ -1808,10 +1808,10 @@ void o_sscanf(INT32 args)
   struct svalue *save_sp=sp;
 
   if(sp[-args].type != T_STRING)
-    Pike_error("Bad argument 1 to sscanf().\n");
+    SIMPLE_BAD_ARG_ERROR("sscanf", 1, "string");
 
   if(sp[1-args].type != T_STRING)
-    Pike_error("Bad argument 1 to sscanf().\n");
+    SIMPLE_BAD_ARG_ERROR("sscanf", 2, "string");
 
   switch(sp[-args].u.string->size_shift*3 + sp[1-args].u.string->size_shift) {
     /* input_shift : match_shift */

@@ -897,8 +897,10 @@ void f_thread_create(INT32 args)
 void f_thread_set_concurrency(INT32 args)
 {
   int c=1;
-  if(args) c=Pike_sp[-args].u.integer;
-  else Pike_error("No argument to thread_set_concurrency(int concurrency);\n");
+  if(args)
+    c=Pike_sp[-args].u.integer;
+  else
+    SIMPLE_TOO_FEW_ARGS_ERROR("thread_set_concurrency", 1);
   pop_n_elems(args);
   num_lwps=c;
   th_setconcurrency(c);
@@ -1601,7 +1603,7 @@ void f_thread_local_set(INT32 args)
   if(args>1)
     pop_n_elems(args-1);
   else if(args<1)
-    Pike_error("Too few arguments to Thread.Local.set()\n");
+    SIMPLE_TOO_FEW_ARGS_ERROR("Thread.Local.set", 1);
 
   if(Pike_interpreter.thread_id == NULL)
     Pike_error("Trying to set Thread.Local without thread!\n");
