@@ -176,21 +176,6 @@ static void parse_bmhd(struct BMHD *bmhd, unsigned char *s, INT32 len)
   bmhd->pageHeight = (EXTRACT_CHAR(s+18)<<8)|s[19];
 }
 
-static void br1unpack(unsigned char *src, unsigned char *dst, int size)
-{
-  unsigned char d, *end=dst+size;
-  signed char c;
-
-  while(dst<end)
-    if((c=*src++)>=0)
-      do { *dst++ = *src++; } while(c--);
-    else if(c!=-128) {
-      d = *src++;
-      do { *dst++ = d; } while(c++);
-    }
-}
-
-
 static INT32 unpackByteRun1(unsigned char *src, INT32 srclen,
 			    unsigned char *dest, int destlen, int depth)
 {
@@ -297,9 +282,9 @@ static void parse_body(struct BMHD *bmhd, unsigned char *body, INT32 blen,
     } else
       for(x=0; x<bmhd->w; x++) {
 	/* ILBM-24 */
-	dest->r = ((*cptr)&0xff0000)>>16;
+	dest->b = ((*cptr)&0xff0000)>>16;
 	dest->g = ((*cptr)&0x00ff00)>>8;
-	dest->b = ((*cptr)&0x0000ff);
+	dest->r = ((*cptr)&0x0000ff);
 	cptr++;
 	dest++;
       }
