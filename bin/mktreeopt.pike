@@ -917,8 +917,7 @@ string generate_match(array(object(node)) rule_set, string indent)
 
   // Group the nodes by their class:
 
-  array(array(object(node))) node_classes =
-    allocate(11, allocate)(0);
+  array(array(object(node))) node_classes = allocate(11, ({}));
 
   foreach(rule_set, object(node) n) {
     int car_kind = ANY;
