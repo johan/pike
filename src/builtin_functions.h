@@ -14,6 +14,12 @@
 
 #include "callback.h"
 
+/* Weak flags for arrays, multisets and mappings. 1 is avoided for
+ * compatibility reasons. */
+#define PIKE_WEAK_INDICES 2
+#define PIKE_WEAK_VALUES 4
+#define PIKE_WEAK_BOTH 6
+
 /* Prototypes begin here */
 PMOD_EXPORT void debug_f_aggregate(INT32 args);
 #ifdef DEBUG_MALLOC
