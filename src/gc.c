@@ -663,7 +663,12 @@ void low_describe_something(void *a,
       }
       if (p) {
 	fprintf(stderr,"%*s**Attempting to describe program object was instantiated from:\n",indent,"");
-	low_describe_something(p, T_PROGRAM, indent, depth, flags);
+#ifdef DEBUG_MALLOC
+	if ((int) p == 0x55555555)
+	  fprintf(stderr, "%*%s**Zapped program pointer\n", indent, "");
+	else
+#endif
+	  low_describe_something(p, T_PROGRAM, indent, depth, flags);
       }
 
       if( ((struct object *)a)->parent)
