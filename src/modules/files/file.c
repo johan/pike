@@ -877,7 +877,8 @@ static void file_peek(INT32 args)
   tv.tv_usec=1;
   tv.tv_sec=0;
   fd_FD_ZERO(&tmp);
-  fd_FD_SET(ret=THIS->fd, &tmp);
+  fd_FD_SET(THIS->fd, &tmp);
+  ret = THIS->fd;
 
   if (args)
   {
@@ -2688,6 +2689,14 @@ static void file_set_keepalive(INT32 args)
 
 #ifdef HAVE_SYS_UN_H
 #include <sys/un.h>
+
+#ifndef PATH_MAX
+#ifdef _POSIX_PATH_MAX
+#define PATH_MAX	_POSIX_PATH_MAX
+#else /* !_POSIX_PATH_MAX */
+#define PATH_MAX	255	/* Minimum according to POSIX. */
+#endif /* _POSIX_PATH_MAX */
+#endif /* !PATH_MAX */
 
 /*! @decl int(0..1) connect_unix( string filename )
  *!
