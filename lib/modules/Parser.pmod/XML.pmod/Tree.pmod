@@ -590,8 +590,8 @@ Node parse_input(string data, void|int no_fallback, void|int force_lowercase)
     {
       if (sscanf(err, "%s [Offset: %d]", err, int ofs) == 2)
 	err += report_error_context(data, ofs);
-      throw(err);
     }
+    throw(err);
   }
   else
     return mRoot;
