@@ -48,6 +48,7 @@ struct precompiled_mysql {
 };
 
 struct precompiled_mysql_result {
+  struct object *connection;
   MYSQL_RES	*result;
 };
 

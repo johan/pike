@@ -97,6 +97,10 @@ static void exit_res_struct(struct object *o)
     mysql_free_result(PIKE_MYSQL_RES->result);
     PIKE_MYSQL_RES->result = NULL;
   }
+  if (PIKE_MYSQL_RES->connection) {
+    free_object(PIKE_MYSQL_RES->connection);
+    PIKE_MYSQL_RES->connection = NULL;
+  }
 }
 
 /*
@@ -222,6 +226,8 @@ static void f_create(INT32 args)
     error("Bad argument 1 to mysql_result()\n");
   }
 
+  PIKE_MYSQL_RES->connection = sp[-args].u.object;
+  PIKE_MYSQL_RES->connection->refs++;
   PIKE_MYSQL_RES->result = mysql->last_result;
   mysql->last_result = NULL;
   
