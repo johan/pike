@@ -560,30 +560,39 @@ void font_write(INT32 args)
 	 to_write0 = STR0(sp[j-args].u.string);
 	 for (i = 0; i < to_write_len; i++)
 	 {
-	   if (xsize+char_width(this,to_write0[i]) > max)
-	     max=xsize+char_width(this,to_write0[i]);
-	   xsize += char_space(this,to_write0[i]);
-	   if (xsize > max) max=xsize;
+	   if (to_write0[i] < (INT32)this->chars)
+	   {
+	     if (xsize+char_width(this,to_write0[i]) > max)
+	       max=xsize+char_width(this,to_write0[i]);
+	     xsize += char_space(this,to_write0[i]);
+	     if (xsize > max) max=xsize;
+	   }
 	 }
 	 break;
        case 1:
 	 to_write1 = STR1(sp[j-args].u.string);
 	 for (i = 0; i < to_write_len; i++)
 	 {
-	   if (xsize+char_width(this,to_write1[i]) > max)
-	     max=xsize+char_width(this,to_write1[i]);
-	   xsize += char_space(this,to_write1[i]);
-	   if (xsize > max) max=xsize;
+	   if (to_write1[i] < (INT32)this->chars)
+	   {
+	     if (xsize+char_width(this,to_write1[i]) > max)
+	       max=xsize+char_width(this,to_write1[i]);
+	     xsize += char_space(this,to_write1[i]);
+	     if (xsize > max) max=xsize;
+	   }
 	 }
 	 break;
        case 2:
 	 to_write2 = STR2(sp[j-args].u.string);
 	 for (i = 0; i < to_write_len; i++)
 	 {
-	   if (xsize+char_width(this,to_write2[i]) > max)
-	     max=xsize+char_width(this,to_write2[i]);
-	   xsize += char_space(this,to_write2[i]);
-	   if (xsize > max) max=xsize;
+	   if (to_write2[i] < (unsigned INT32)this->chars)
+	   {
+	     if (xsize+char_width(this,to_write2[i]) > max)
+	       max=xsize+char_width(this,to_write2[i]);
+	     xsize += char_space(this,to_write2[i]);
+	     if (xsize > max) max=xsize;
+	   }
 	 }
 	 break;
        default:
