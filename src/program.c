@@ -609,6 +609,7 @@ void low_start_new_program(struct program *p,
   num_parse_error=0;
 
   push_compiler_frame(0);
+  add_ref(compiler_frame->current_return_type=void_type_string);
 
 #ifdef PIKE_DEBUG
   if(lex.current_file)
