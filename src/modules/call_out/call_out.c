@@ -184,6 +184,7 @@ static struct array * new_call_out(int num_arg,struct svalue *argp)
   int e,c;
   call_out *new,**p,**pos;
 
+  PROTECT_CALL_OUTS();
   if(num_pending_calls==call_buffer_size)
   {
     /* here we need to allocate space for more pointers */
@@ -246,6 +247,7 @@ static struct array * new_call_out(int num_arg,struct svalue *argp)
   wake_up_backend();
 #endif
 
+  UNPROTECT_CALL_OUTS();
   return new->args;
 }
 
