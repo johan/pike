@@ -165,7 +165,7 @@ static void get_master_key(HKEY cat)
   DWORD len=sizeof(buffer)-1,type=REG_SZ;
 
   if(RegOpenKeyEx(cat,
-		  (LPCTSTR)("SOFTWARE\\Idonex\\Pike\\"
+		  (LPCTSTR)("SOFTWARE\\Pike\\"
 			    DEFINETOSTR(PIKE_MAJOR_VERSION)
 			    "."
 			    DEFINETOSTR(PIKE_MINOR_VERSION)),
