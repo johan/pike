@@ -156,6 +156,7 @@ struct svalue
 #define tStringIndicable tOr5(tMapping,tObj,tFunction,tProgram,tMultiset)
 #define tRef tOr(tString,tComplex)
 #define tIfnot(X,Y) tAnd(tNot(X),Y)
+#define tAny tOr(tVoid,tMix)
 
 #define BIT_ARRAY (1<<PIKE_T_ARRAY)
 #define BIT_MAPPING (1<<PIKE_T_MAPPING)
