@@ -20,13 +20,6 @@ CONFIG_HEADERS=@CONFIG_HEADERS@
 
 @dynamic_module_makefile@
 
-.SUFFIXES: .c .o
-
-# GCC dumps core on some files @ OSF1
-# This kluge should work around that...
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $@ || NO_ULIMIT=yes $(CC) $(PREFLAGS) $(NOOPTFLAGS) -c $< -o $@
-
 pike: all
 	cd ../..; $(MAKE) "AR=$(AR)"
 

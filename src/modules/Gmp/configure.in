@@ -32,7 +32,7 @@ int main(int argc, char **argv)
   exit( mpz_sizeinbase(tmp,10) !=  9*4+1 );
 }
 
-],pike_cv_working_gmp=yes,pike_cv_working_gmp=no)])
+],pike_cv_working_$1=yes,pike_cv_working_$1=no)])
 
 if test "x$pike_cv_working_$1" = xyes; then
   AC_MSG_RESULT(yes)
