@@ -360,14 +360,17 @@ static void f_jobj_cast(INT32 args)
 
   pop_n_elems(args);
   if((env=jvm_procure_env(jo->jvm))) {
-    jsize l;
-    const jchar *wstr;
-
     jstr = (*env)->CallObjectMethod(env, jo->jobj, j->method_tostring);
-    wstr = (*env)->GetStringChars(env, jstr, NULL);
-    l = (*env)->GetStringLength(env, jstr);
-    push_string(make_shared_binary_string1((p_wchar1 *)wstr, l));
-    (*env)->ReleaseStringChars(env, jstr, wstr);
+    if(jstr) {
+      jsize l;
+      const jchar *wstr;
+
+      wstr = (*env)->GetStringChars(env, jstr, NULL);
+      l = (*env)->GetStringLength(env, jstr);
+      push_string(make_shared_binary_string1((p_wchar1 *)wstr, l));
+      (*env)->ReleaseStringChars(env, jstr, wstr);
+    } else
+      push_int(0);
     jvm_vacate_env(jo->jvm, env);
   } else
     push_int(0);
