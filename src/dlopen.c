@@ -1927,6 +1927,7 @@ static void init_dlopen(void)
     EXPORT(fopen);
     EXPORT(fseek);
     EXPORT(fread);
+    EXPORT(strtol);
   }
 
 #define EXPORT_AS(X,Y) \
