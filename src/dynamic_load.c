@@ -459,7 +459,7 @@ void f_load_module(INT32 args)
   UNSET_ONERROR(err);
 #ifdef PIKE_DEBUG
   if(Pike_sp != save_sp)
-    fatal("load_module(%s) left %ld droppings on stack!\n",
+    Pike_fatal("load_module(%s) left %ld droppings on stack!\n",
 	  module_name,
 	  PTRDIFF_T_TO_LONG(Pike_sp - save_sp));
   }

@@ -78,7 +78,7 @@ static void init_hashes()
   unsigned int i;
 
 #ifdef PIKE_DEBUG
-  if (hashes_inited) fatal ("init_hashes called twice\n");
+  if (hashes_inited) Pike_fatal ("init_hashes called twice\n");
   hashes_inited = 1;
 #endif
 

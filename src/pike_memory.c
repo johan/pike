@@ -309,7 +309,7 @@ char *memory_search(struct mem_searcher *s,
   switch(s->method)
   {
     default:
-      fatal("Don't know how to search like that!\n");
+      Pike_fatal("Don't know how to search like that!\n");
   case no_search:
     return haystack;
 
@@ -449,7 +449,7 @@ void *generic_memory_search(struct generic_mem_searcher *s,
 			 haystacklen);
 
 	default:
-	  fatal("Shift size out of range!\n");
+	  Pike_fatal("Shift size out of range!\n");
       }
 
     case memchr_and_memcmp:
@@ -495,7 +495,7 @@ void *generic_memory_search(struct generic_mem_searcher *s,
       }
 
     default:
-     fatal("Wacko method!\n");
+     Pike_fatal("Wacko method!\n");
   }
   /* NOT REACHED */
   return NULL;	/* Keep the compiler happy. */
@@ -628,7 +628,7 @@ char *debug_qalloc(size_t size)
   }
 #endif
 
-  fatal("Completely out of memory!\n");
+  Pike_fatal("Completely out of memory!\n");
   /* NOT_REACHED */
   return NULL;	/* Keep the compiler happy. */
 }
@@ -1440,7 +1440,7 @@ static void remove_location(struct memhdr *mh, LOCATION location)
 
 #if !defined(__NT__) && defined(PIKE_THREADS)
   if(!mt_trylock(& debug_malloc_mutex))
-    fatal("remove_location running unlocked!\n");
+    Pike_fatal("remove_location running unlocked!\n");
 #endif
   
 #if DEBUG_MALLOC - 0 < 2
@@ -1588,7 +1588,7 @@ void *debug_malloc(size_t s, LOCATION location)
 
   /* Complain on attempts to allocate more than 128MB memory */
   if (s > (size_t)0x08000000) {
-    fatal("malloc(0x%08lx) -- Huge malloc!\n", (unsigned long)s);
+    Pike_fatal("malloc(0x%08lx) -- Huge malloc!\n", (unsigned long)s);
   }
 
   mt_lock(&debug_malloc_mutex);

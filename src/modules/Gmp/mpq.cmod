@@ -842,8 +842,8 @@ PIKECLASS mpq
   INIT
     {
 #ifdef PIKE_DEBUG
-      if(!fp) fatal("ZERO FP\n");
-      if(!THISMPQ) fatal("ZERO THISMPQ\n");
+      if(!fp) Pike_fatal("ZERO FP\n");
+      if(!THISMPQ) Pike_fatal("ZERO THISMPQ\n");
 #endif
       mpq_init(THISMPQ);
     }
@@ -851,8 +851,8 @@ PIKECLASS mpq
   EXIT
     {
 #ifdef PIKE_DEBUG
-      if(!fp) fatal("ZERO FP\n");
-      if(!THISMPQ) fatal("ZERO THISMPQ\n");
+      if(!fp) Pike_fatal("ZERO FP\n");
+      if(!THISMPQ) Pike_fatal("ZERO THISMPQ\n");
 #endif
       mpq_clear(THISMPQ);
     }

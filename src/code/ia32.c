@@ -532,7 +532,7 @@ void ia32_encode_program(struct program *p, struct dynamic_buffer_s *buf)
     INT32 opcode;
 #ifdef PIKE_DEBUG
     if (off < prev) {
-      fatal("Relocations in bad order!\n");
+      Pike_fatal("Relocations in bad order!\n");
     }
 #endif /* PIKE_DEBUG */
     adddata2(p->program + prev, off - prev);

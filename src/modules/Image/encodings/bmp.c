@@ -447,7 +447,7 @@ void img_bmp_encode(INT32 args)
 	    break;
 
 	 default:
-	    fatal("reached unknown RLE level\n");
+	    Pike_fatal("reached unknown RLE level\n");
       }
    }
    else

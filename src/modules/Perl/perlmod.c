@@ -192,7 +192,7 @@ static int _perl_parse(struct perlmod_storage *ps,
 
 #ifdef PIKE_DEBUG
     if(env_blockp - ps->env_block > env_block_size)
-      fatal("Arglebargle glop-glyf.\n");
+      Pike_fatal("Arglebargle glop-glyf.\n");
 #endif
 
     ps->env[d]=0;

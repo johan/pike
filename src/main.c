@@ -251,7 +251,7 @@ int dbm_main(int argc, char **argv)
   
   node_hash.table = malloc(sizeof(node *)*32831);
   if (!node_hash.table) {
-    fatal("Out of memory!\n");
+    Pike_fatal("Out of memory!\n");
   }
   MEMSET(node_hash.table, 0, sizeof(node *)*32831);
   node_hash.size = 32831;

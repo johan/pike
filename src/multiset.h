@@ -170,7 +170,7 @@ union msnode *low_multiset_find_eq (struct multiset *l, struct svalue *key);
     *_ms_index_to_ = msnode_check (NODE)->i.ind;			\
     DO_IF_DEBUG (							\
       if (!(_ms_index_to_->type & MULTISET_FLAG_MARKER))		\
-	fatal (msg_no_multiset_flag_marker);				\
+	Pike_fatal (msg_no_multiset_flag_marker);				\
     );									\
     _ms_index_to_->type &= ~MULTISET_FLAG_MASK;				\
     add_ref_svalue (_ms_index_to_);					\
@@ -185,7 +185,7 @@ union msnode *low_multiset_find_eq (struct multiset *l, struct svalue *key);
 #define low_use_multiset_index(NODE, VAR)				\
   ((VAR) = msnode_check (NODE)->i.ind,					\
    DO_IF_DEBUG ((VAR).type & MULTISET_FLAG_MARKER ? 0 :			\
-		fatal (msg_no_multiset_flag_marker) COMMA)		\
+		Pike_fatal (msg_no_multiset_flag_marker) COMMA)		\
    (VAR).type &= ~MULTISET_FLAG_MASK,					\
    &(VAR))
 
@@ -306,7 +306,7 @@ PMOD_EXPORT extern const char msg_multiset_no_node_refs[];
 #define sub_msnode_ref(L) do {						\
     struct multiset *_ms_ = (L);					\
     DO_IF_DEBUG (							\
-      if (!_ms_->node_refs) fatal (msg_multiset_no_node_refs);		\
+      if (!_ms_->node_refs) Pike_fatal (msg_multiset_no_node_refs);		\
     );									\
     if (!--_ms_->node_refs && _ms_->msd->refs == 1)			\
       multiset_clear_node_refs (_ms_);					\

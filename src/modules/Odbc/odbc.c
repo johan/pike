@@ -315,7 +315,7 @@ static void f_big_query(INT32 args)
   }
 #ifdef PIKE_DEBUG
   if (sp != save_sp) {
-    fatal("Stack error in odbc->big_query().\n");
+    Pike_fatal("Stack error in odbc->big_query().\n");
   }
 #endif /* PIKE_DEBUG */
 }
@@ -375,7 +375,7 @@ static void f_list_tables(INT32 args)
   }
 #ifdef PIKE_DEBUG
   if (sp != save_sp) {
-    fatal("Stack error in odbc->list_tables().\n");
+    Pike_fatal("Stack error in odbc->list_tables().\n");
   }
 #endif /* PIKE_DEBUG */
 }

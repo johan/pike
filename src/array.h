@@ -236,7 +236,7 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
   struct array *v_=(A);						\
   DO_IF_DEBUG(							\
     if(ind_<0 || ind_>=v_->size)				\
-    fatal("Illegal index in low level index routine.\n");	\
+    Pike_fatal("Illegal index in low level index routine.\n");	\
     )								\
 								\
   assign_svalue_no_free((S), ITEM(v_) + ind_);			\
@@ -254,7 +254,7 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
 									 \
   DO_IF_DEBUG(								 \
   if(index_<0 || index_>v_->size)					 \
-    fatal("Illegal index in low level array set routine.\n");		 \
+    Pike_fatal("Illegal index in low level array set routine.\n");		 \
     )									 \
 									 \
   check_destructed(s_);							 \

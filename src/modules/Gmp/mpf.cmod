@@ -741,8 +741,8 @@ PIKECLASS mpf
   INIT
     {
 #ifdef PIKE_DEBUG
-      if(!fp) fatal("ZERO FP\n");
-      if(!THISMPF) fatal("ZERO THISMPF\n");
+      if(!fp) Pike_fatal("ZERO FP\n");
+      if(!THISMPF) Pike_fatal("ZERO THISMPF\n");
 #endif
       mpf_init(THISMPF);
     }
@@ -750,8 +750,8 @@ PIKECLASS mpf
   EXIT
     {
 #ifdef PIKE_DEBUG
-      if(!fp) fatal("ZERO FP\n");
-      if(!THISMPF) fatal("ZERO THISMPF\n");
+      if(!fp) Pike_fatal("ZERO FP\n");
+      if(!THISMPF) Pike_fatal("ZERO THISMPF\n");
 #endif
       mpf_clear(THISMPF);
     }

@@ -90,7 +90,7 @@
       DO_IF_DEBUG(						\
         if ((op_[p_->relocations[rel_]] & 0xc0000000) !=	\
 	    0x40000000) {					\
-          fatal("Bad relocation: %d, off:%d, opcode: 0x%08x\n",	\
+          Pike_fatal("Bad relocation: %d, off:%d, opcode: 0x%08x\n",	\
 		rel_, p_->relocations[rel_],			\
 		op_[p_->relocations[rel_]]);			\
 	}							\

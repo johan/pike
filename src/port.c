@@ -585,7 +585,7 @@ PMOD_EXPORT int VSPRINTF(char *buf,char *fmt,va_list args)
       goto unknown_character;
 
     case 0:
-      fatal("Error in vsprintf format.\n");
+      Pike_fatal("Error in vsprintf format.\n");
       return 0;
 
     case '%':
@@ -634,7 +634,7 @@ PMOD_EXPORT int VFPRINTF(FILE *f,char *s,va_list args)
   VSPRINTF(buffer,s,args);
   i=strlen(buffer);
   if(i+1>sizeof(buffer))
-    fatal("Buffer overflow.\n");
+    Pike_fatal("Buffer overflow.\n");
   return fwrite(buffer,i,1,f);
 }
 #endif
@@ -934,7 +934,7 @@ long long gethrtime()
 
 #ifdef PIKE_DEBUG
    if (now<hrtime_max)
-     fatal("Time calculation went backwards with %lld.\n", hrtime_max - now);
+     Pike_fatal("Time calculation went backwards with %lld.\n", hrtime_max - now);
    hrtime_max = now;
 #endif
    return now;

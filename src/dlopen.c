@@ -1808,7 +1808,7 @@ static void init_dlopen(void)
 
 #ifdef PIKE_DEBUG
     if(!data->coff->num_symbols)
-      fatal("No COFF symbols found in pike binary.\n");
+      Pike_fatal("No COFF symbols found in pike binary.\n");
 #endif      
     global_dlhandle.htable=alloc_htable(data->coff->num_symbols);
     
@@ -1961,7 +1961,7 @@ static void init_dlopen(void)
 
 #ifdef PIKE_DEBUG
   if(global_imagebase != (INT32)data->buffer)
-    fatal("LoadLibrary(ARGV[0]) didn't return instantiated program.\n");
+    Pike_fatal("LoadLibrary(ARGV[0]) didn't return instantiated program.\n");
 #endif 
 
 #ifdef DLDEBUG

@@ -86,7 +86,7 @@ static struct
 #ifdef PIKE_DEBUG
 #define PARSER_CHECK_STACK(X)	do { \
     if (save_sp != sp) { \
-      fatal("%s:%d: %ld droppings on stack! previous init: %s\n", \
+      Pike_fatal("%s:%d: %ld droppings on stack! previous init: %s\n", \
             __FILE__, __LINE__, \
             PTRDIFF_T_TO_LONG(sp - save_sp), X); \
     } \

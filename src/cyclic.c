@@ -29,7 +29,7 @@ static void low_unlink_cyclic(CYCLIC *c)
       return;
     }
   }
-  fatal("Unlink cyclic on lost cyclic struct.\n");
+  Pike_fatal("Unlink cyclic on lost cyclic struct.\n");
 }
 
 void unlink_cyclic(CYCLIC *c)

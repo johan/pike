@@ -276,7 +276,7 @@ static struct pike_string *readstring(void)
       
     default:
 #ifdef PIKE_DEBUG
-      fatal("Default case in readstring() reached. c:%d\n", c);
+      Pike_fatal("Default case in readstring() reached. c:%d\n", c);
 #endif /* PIKE_DEBUG */
       break;
     }

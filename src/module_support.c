@@ -151,7 +151,7 @@ int va_get_args(struct svalue *s,
   while(*fmt)
   {
     if(*fmt != '%')
-      fatal("Error in format for get_args.\n");
+      Pike_fatal("Error in format for get_args.\n");
 
     if(ret == num_args) return ret;
 
@@ -297,7 +297,7 @@ int va_get_args(struct svalue *s,
       break;
       
     default:
-      fatal("Unknown format character in get_args.\n");
+      Pike_fatal("Unknown format character in get_args.\n");
     }
     ret++;
     s++;

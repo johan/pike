@@ -97,7 +97,7 @@ static inline long TO_LONG(ptrdiff_t x)
 #ifdef PIKE_DEBUG
 #define PDF_CHECK_STACK(X)	do { \
     if (save_sp != sp) { \
-      fatal("%s:%d: %ld droppings on stack! previous init: %s\n", \
+      Pike_fatal("%s:%d: %ld droppings on stack! previous init: %s\n", \
             __FILE__, __LINE__, TO_LONG(sp - save_sp), X); \
     } \
   } while(0)

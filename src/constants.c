@@ -91,7 +91,7 @@ PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
   {
     struct pike_type *z = check_call(function_type_string, type, 0);
     f->may_return_void = (z == void_type_string);
-    if(!z) fatal("Gnapp!\n");
+    if(!z) Pike_fatal("Gnapp!\n");
     free_type(z);
   }
   f->runs=0;

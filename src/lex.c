@@ -328,7 +328,7 @@ void init_lex()
     }
   }
   if(fatal_later)
-    fatal("Found %d errors in instrs.\n",fatal_later);
+    Pike_fatal("Found %d errors in instrs.\n",fatal_later);
 
 #endif
 

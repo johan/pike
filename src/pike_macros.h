@@ -116,7 +116,7 @@
     DO_IF_DEBUG(				\
       if(first_object != o) {			\
         describe(o);                            \
-        fatal("Linked in wrong list!\n");	\
+        Pike_fatal("Linked in wrong list!\n");	\
       }                                         \
     )						\
     first_object=o->next;			\

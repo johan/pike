@@ -378,7 +378,7 @@ static int read_some_data(void)
   struct input * i = this->firstinput;
 
   if (!i || i->type != I_BLOCKING_OBJ) {
-    fatal("PIPE: read_some_data(): Bad input type!\n");
+    Pike_fatal("PIPE: read_some_data(): Bad input type!\n");
     return -1;
   }
   push_int(8192);

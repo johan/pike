@@ -561,7 +561,7 @@ void (*NCTLU_SELECT_FUNCTION(struct neo_colortable *nct))
 	       return NCTLU_FLAT_CUBICLES_NAME;
 	 }
       default:
-	 fatal("lookup select (%s:%d) couldn't find the lookup mode\n",
+	 Pike_fatal("lookup select (%s:%d) couldn't find the lookup mode\n",
 	       __FILE__,__LINE__);
    }
    /* NOT_REACHED */

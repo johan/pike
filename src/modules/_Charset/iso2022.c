@@ -638,7 +638,7 @@ static void eat_enc_string(struct pike_string *str, struct iso2022enc_stor *s,
     }
     break;
   default:
-    fatal("Illegal shift size!\n");
+    Pike_fatal("Illegal shift size!\n");
   }
 }
 

@@ -354,7 +354,7 @@ void o_cast_to_string(void)
 	break;
       default:
 	free_string(end_shared_string(s));
-	fatal("cast: Bad shift: %d.\n", shift);
+	Pike_fatal("cast: Bad shift: %d.\n", shift);
 	break;
       }
       s = end_shared_string(s);
@@ -640,7 +640,7 @@ void o_cast(struct pike_type *type, INT32 run_time_type)
 	  }
 #ifdef PIKE_DEBUG
 	  if(save_sp!=sp)
-	    fatal("o_cast left stack droppings.\n");
+	    Pike_fatal("o_cast left stack droppings.\n");
 #endif
 	}
 	END_CYCLIC();
@@ -718,7 +718,7 @@ void o_cast(struct pike_type *type, INT32 run_time_type)
 
 #ifdef PIKE_DEBUG
 	  if(save_sp!=sp)
-	    fatal("o_cast left stack droppings.\n");
+	    Pike_fatal("o_cast left stack droppings.\n");
 #endif
 	}
 	END_CYCLIC();
@@ -772,7 +772,7 @@ void o_cast(struct pike_type *type, INT32 run_time_type)
 	  }
 #ifdef PIKE_DEBUG
 	  if(save_sp!=sp)
-	    fatal("o_cast left stack droppings.\n");
+	    Pike_fatal("o_cast left stack droppings.\n");
 #endif
 	}
 	END_CYCLIC();
@@ -790,14 +790,14 @@ PMOD_EXPORT void f_cast(void)
 #ifdef PIKE_DEBUG
   struct svalue *save_sp=sp;
   if(sp[-2].type != T_TYPE)
-    fatal("Cast expression destroyed stack or left droppings! (Type:%d)\n",
+    Pike_fatal("Cast expression destroyed stack or left droppings! (Type:%d)\n",
 	  sp[-2].type);
 #endif
   o_cast(sp[-2].u.type,
 	 compile_type_to_runtime_type(sp[-2].u.type));
 #ifdef PIKE_DEBUG
   if(save_sp != sp)
-    fatal("Internal error: o_cast() left droppings on stack.\n");
+    Pike_fatal("Internal error: o_cast() left droppings on stack.\n");
 #endif
   free_svalue(sp-2);
   sp[-2]=sp[-1];
@@ -1196,7 +1196,7 @@ static INT32 PIKE_CONCAT4(very_low_sscanf_,INPUT_SHIFT,_,MATCH_SHIFT)(	 \
     DO_IF_DEBUG(							 \
     if(match[cnt]!='%' || match[cnt+1]=='%')				 \
     {									 \
-      fatal("Error in sscanf.\n");					 \
+      Pike_fatal("Error in sscanf.\n");					 \
     }									 \
     );									 \
 									 \

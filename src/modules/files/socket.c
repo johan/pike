@@ -158,7 +158,7 @@ static void port_accept_callback(int fd,void *data)
 #ifndef __NT__
 #ifdef PIKE_DEBUG
   if(!query_nonblocking(f->fd))
-    fatal("Port is in blocking mode in port accept callback!!!\n");
+    Pike_fatal("Port is in blocking mode in port accept callback!!!\n");
 #endif
 #endif
 

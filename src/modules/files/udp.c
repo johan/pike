@@ -452,7 +452,7 @@ void udp_read(INT32 args)
 	  Pike_error("Out of memory\n");
 #ifdef ENOTSOCK
        case ENOTSOCK:
-	  fatal("reading from non-socket fd!!!\n");
+	  Pike_fatal("reading from non-socket fd!!!\n");
 #endif
        case EWOULDBLOCK:
 	  push_int( 0 );

@@ -398,9 +398,9 @@ void low_do_sendfile(struct pike_sendfile *this)
       case EFAULT:
 	/* Bad arguments */
 #ifdef HAVE_FREEBSD_SENDFILE
-	fatal("FreeBSD style sendfile(): EFAULT\n");
+	Pike_fatal("FreeBSD style sendfile(): EFAULT\n");
 #else /* !HAVE_FREEBSD_SENDFILE */
-	fatal("HP/UX style sendfile(): EFAULT\n");
+	Pike_fatal("HP/UX style sendfile(): EFAULT\n");
 #endif /* HAVE_FREEBSD_SENDFILE */
 	break;
       case EBADF:
@@ -718,7 +718,7 @@ static void sf_create(INT32 args)
 #ifdef PIKE_DEBUG
     if ((sp[5-args].type != T_OBJECT) ||
 	(sp[5-args].u.object != sf.to_file)) {
-      fatal("sendfile: Stack out of sync(1).\n");
+      Pike_fatal("sendfile: Stack out of sync(1).\n");
     }
 #endif /* PIKE_DEBUG */
     sf.to_file = *ob;
@@ -757,7 +757,7 @@ static void sf_create(INT32 args)
 #ifdef PIKE_DEBUG
       if ((sp[1-args].type != T_OBJECT) ||
 	  (sp[1-args].u.object != sf.from_file)) {
-	fatal("sendfile: Stack out of sync(2).\n");
+	Pike_fatal("sendfile: Stack out of sync(2).\n");
       }
 #endif /* PIKE_DEBUG */
       sf.from_file = *ob;
@@ -887,7 +887,7 @@ static void sf_create(INT32 args)
     struct array *a = copy_array(sf.headers);
 #ifdef PIKE_DEBUG
     if ((sp[-args].type != T_ARRAY) || (sp[-args].u.array != sf.headers)) {
-      fatal("sendfile: Stack out of sync(3).\n");
+      Pike_fatal("sendfile: Stack out of sync(3).\n");
     }
 #endif /* PIKE_DEBUG */
     free_array(sf.headers);
@@ -898,7 +898,7 @@ static void sf_create(INT32 args)
     struct array *a = copy_array(sf.trailers);
 #ifdef PIKE_DEBUG
     if ((sp[4-args].type != T_ARRAY) || (sp[4-args].u.array != sf.trailers)) {
-      fatal("sendfile: Stack out of sync(4).\n");
+      Pike_fatal("sendfile: Stack out of sync(4).\n");
     }
 #endif /* PIKE_DEBUG */
     free_array(sf.trailers);
