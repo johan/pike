@@ -1962,6 +1962,8 @@ static void decode_value2(struct decode_data *data)
 		  {
 		    apply_lfun(o, LFUN___INIT, 0);
 		    pop_stack();
+		    apply_lfun(o,LFUN_CREATE, 0);
+		    pop_stack();
 		  }else{
 		    ptr=&l->next;
 		    continue;
