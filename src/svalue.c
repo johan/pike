@@ -1512,7 +1512,7 @@ void gc_check_weak_short_svalue(const union anything *u, TYPE_T type)
       }
 
 #define GC_DO_MARK(U, TN)						\
-      gc_mark_enqueue(							\
+      enqueue(&gc_mark_queue,						\
 	(queue_call) PIKE_CONCAT3(gc_mark_, TN, _as_referenced),	\
 	U.TN)
 
