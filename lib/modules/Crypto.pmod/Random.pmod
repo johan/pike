@@ -133,9 +133,9 @@ static class RND {
       buf->add( ::random_string(pass) );
       bytes_left -= pass;
       len -= pass;
-      if(!bytes_left) {
+      if(bytes_left - pass <= 0) {
 	update( s->read(32), 0, 256 );
-	bytes_left = 32;
+	bytes_left += 32;
       }
     }
     return (string)buf;
