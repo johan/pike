@@ -372,7 +372,7 @@ PIKECLASS Shuffle
   PIKEFUN void set_request_arg( mixed arg )
    /*! @decl void set_request_arg( mixed arg )
     *!
-    *! Sets the extra argument sent to @[Thottler()->request()] and
+    *! Sets the extra argument sent to @[Throttler()->request()] and
     *! @[Throttler()->give_back].
     *! 
     */
@@ -829,7 +829,7 @@ PIKECLASS Shuffler
 /*! @endclass
  */
 
-/*! @decl constant INTIIAL;
+/*! @decl constant INITIAL;
  *! @decl constant RUNNING;
  *! @decl constant PAUSED;
  *! @decl constant DONE;

@@ -666,22 +666,22 @@ static void udp_set_blocking(INT32 args)
 
 /*! @decl int(0..1) connect(string address, int port)
  *!
- *! Connect a socket to something.
+ *!   Establish an UDP connection.
  *!
- *! This function connects a socket previously created with @[open_socket()]
- *! to a remote socket. The argument is the IP name or number for the remote
- *! machine. 
+ *!   This function connects an UDP socket previously created with
+ *!   @[Stdio.UDP()] to a remote socket. The @[address] is the IP name or
+ *!   number for the remote machine. 
  *!
  *! @returns
- *! Returns @tt{1@} on success, @tt{0@} (zero) otherwise.
+ *!   Returns @tt{1@} on success, @tt{0@} (zero) otherwise.
  *!
  *! @note
- *! If the socket is in nonblocking mode, you have to wait
- *! for a write or close callback before you know if the connection
- *! failed or not.
+ *!   If the socket is in nonblocking mode, you have to wait
+ *!   for a write or close callback before you know if the connection
+ *!   failed or not.
  *!
  *! @seealso
- *!  @[query_address()]
+ *!   @[bind()], @[query_address()]
  */
 static void udp_connect(INT32 args)
 {
