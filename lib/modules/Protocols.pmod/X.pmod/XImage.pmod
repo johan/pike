@@ -385,7 +385,6 @@ object MakeShapeMask(object in, object alpha)
 object spcm;
 object SimplePixmapImage(object in, object color, int|void ocol)
 {
-  object bgpm;
   int width = color->xsize();
   int height = color->ysize();
   if(!ocol) 
@@ -401,7 +400,6 @@ object SimplePixmapImage(object in, object color, int|void ocol)
 void ShapedWindowImage(object in, object color, object|void alpha, 
 		       int|void contour)
 {
-  object bgpm;
   int width = color->xsize();
   int height = color->ysize();
 
