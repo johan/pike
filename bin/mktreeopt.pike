@@ -813,7 +813,7 @@ string generate_match(array(object(node)) rule_set, string indent)
     }
     res += indent + "}";
     last_was_if = 1;
-  } else
+  }
 
   if (sizeof(node_classes[NULL_CDR]) ||
       sizeof(node_classes[MATCH_CDR]) ||
