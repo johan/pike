@@ -733,7 +733,7 @@ void do_html_parse(struct pike_string *ss,
   pop_stack();					\
 } while(0)
 
-struct svalue empty_string;
+static struct svalue empty_string;
 void do_html_parse_lines(struct pike_string *ss,
 			 struct mapping *cont,struct mapping *single,
 			 int *strings,int recurse_left,
