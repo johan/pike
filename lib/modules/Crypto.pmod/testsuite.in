@@ -235,12 +235,14 @@ cond([[ Crypto["$1"] ]],[[
 ]])]])
 
 test_cipher(AES,aes)
-test_cipher(ARCFOUR,arcfour)
-test_cipher(BLOWFISH,blowfish)
+test_cipher(Arcfour,arcfour)
+test_cipher(Blowfish,blowfish)
 test_cipher(CAST,cast128)
 test_cipher(DES,des)
 test_cipher(DES3,des3)
 test_cipher(IDEA,idea)
+test_cipher(Serpent,serpent)
+test_cipher(Twofish,twofish)
 
 
 dnl Crypto.rsa
