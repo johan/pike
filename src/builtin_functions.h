@@ -123,6 +123,9 @@ PMOD_EXPORT void f_backtrace(INT32 args);
 void init_builtin(void);
 void exit_builtin(void);
 
+/* From modules/files */
+void f_werror (INT32 args);
+
 /* Prototypes end here */
 
 #endif
