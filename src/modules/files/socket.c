@@ -373,7 +373,7 @@ static void port_create(INT32 args)
 
 extern struct program *file_program;
 
-/*! @decl Stdio.File port_accept()
+/*! @decl Stdio.File accept()
  */
 
 static void port_accept(INT32 args)
