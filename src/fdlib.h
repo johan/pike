@@ -82,8 +82,6 @@ SOCKFUN3(send,void *,int,int)
 SOCKFUN5(sendto,void *,int,int,struct sockaddr *,int*)
 SOCKFUN1(shutdown, int)
 SOCKFUN1(listen, int)
-int fd_getsockname(FD fd, struct sockaddr *a, size_t *b);
-int fd_getpeername(FD fd, struct sockaddr *a, size_t *b);
 int fd_close(FD fd);
 long fd_write(FD fd, void *buf, long len);
 long fd_read(FD fd, void *to, long len);
