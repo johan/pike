@@ -1189,6 +1189,11 @@ PMOD_EXPORT void o_and(void)
 	      push_mapping(m);
 	      return;
 	   }
+	   default:
+	   {
+	      int args = 2;
+	      SIMPLE_BAD_ARG_ERROR("`&", 2, "mapping");
+	   }
 	}
      else 
      {
@@ -3387,7 +3392,7 @@ static node *optimize_sizeof(node *n)
 	(CDDDR(n)->u.sval.type == T_STRING) &&
 	(CDDDR(n)->u.sval.u.string->len == 1)) {
       p_wchar2 split = index_shared_string(CDDDR(n)->u.sval.u.string, 0);
-					   
+
       /* sizeof(`/(str, "x")) */
       ADD_NODE_REF2(CADDR(n),
         return mkefuncallnode("sizeof",
