@@ -171,13 +171,19 @@ class Queue
     if(link->fragment)
       link->fragment=0;
 
+    /*  a  d  check_link
+        -  -  ----------
+        0  0           0
+	0  1           0
+	1  1           0
+	1  0           1
+    */
+
     int a = 1, d = 0;
-//     if( link->query )
-//       link->query = normalize_query( link->query );
 
     if( allow ) a = allow->check(link);
     if( deny )  d = deny->check(link);
-    return a || !d;
+    return a && !d;
   }
 }
 
