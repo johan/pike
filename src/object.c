@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 RCSID("$Id$");
 #include "object.h"
@@ -25,9 +26,15 @@ RCSID("$Id$");
 #include "security.h"
 #include "module_support.h"
 
+#ifdef HAVE_SYS_TYPES_H
+#include <sys/types.h>
+#endif /* HAVE_SYS_TYPES_H */
+
 #ifdef HAVE_SYS_FILE_H
 #include <sys/file.h>
 #endif /* HAVE_SYS_FILE_H */
+
+#include <sys/stat.h>
 
 #include "dmalloc.h"
 
@@ -254,9 +261,24 @@ struct object *get_master(void)
     extern struct timeval TM;
     struct pike_string *s,*s2;
     char *tmp=xalloc(strlen(master_file)+3);
+    struct stat stat_buf;
+
     MEMCPY(tmp, master_file, strlen(master_file)+1);
     strcat(tmp,".o");
-    s=low_read_file(tmp);
+
+    s = NULL;
+    if (!stat(tmp, &stat_buf)) {
+      long ts1 = stat_buf.st_mtime;
+      long ts2 = 0;		/* FIXME: Should really be MIN_INT, but... */
+
+      if (!stat(master_file, &stat_buf)) {
+	ts2 = stat_buf.st_mtime;
+      }
+
+      if (ts1 > ts2) {
+	s=low_read_file(tmp);
+      }
+    }
     free(tmp);
     if(s)
     {
@@ -1188,7 +1210,7 @@ void push_magic_index(struct program *type, int inherit_no, int parent_level)
   o=fp->current_object;
   if(!o) error("Illegal magic index call.\n");
   
-  inherit=INHERIT_FROM_INT(o->prog, fp->fun);
+  inherit=INHERIT_FROM_INT(fp->context.prog, fp->fun);
 
   while(parent_level--)
   {
