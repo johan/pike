@@ -47,8 +47,4 @@ void ins_f_byte_with_2_args(unsigned int a,
 #define CHECK_RELOC(REL, PROG_SIZE)
 #endif /* !CHECK_RELOC */
 
-#ifndef EXIT_MACHINE_CODE
-#define EXIT_MACHINE_CODE()
-#endif
-
 #endif /* CODE_PIKECODE_H */

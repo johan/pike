@@ -953,7 +953,7 @@ void *dummy_label = NULL;
 #endif /* !CALL_MACHINE_CODE */
 
 #ifndef EXIT_MACHINE_CODE
-#define EXIT_MACHINE_CODE
+#define EXIT_MACHINE_CODE()
 #endif
 
 #ifdef PIKE_DEBUG
