@@ -1050,13 +1050,18 @@ test_program([[
 	return ({global::this_program,
 		 A::this_program, // Works, but not really useful.
 		 B::this_program, // Ditto.
-		 ::this_program, // Should perhaps be an error? /mast
 		 this_program});
       }
     }
   }
   int a() {
-    return equal (A()->B()->f(), ({object_program (this_object()), A, A.B, 0, A.B}));
+    return equal (A()->B()->f(), ({object_program (this_object()), A, A.B, A.B}));
+  }
+]])
+
+test_compile_error([[
+  mixed x() {
+    return ::x;
   }
 ]])
 
