@@ -259,7 +259,7 @@ static void just_close_fd(void)
 	case EBADF:
           error("Internal error: Closing a non-active file descriptor %d.\n",fd);
 #ifdef SOLARIS
-       // it's actually OK. This is a bug in Solaris 8.
+	  /* it's actually OK. This is a bug in Solaris 8. */
        case EAGAIN:
          break;
 #endif
