@@ -2600,6 +2600,11 @@ test_eq(String.capitalize("fubar"),"Fubar")
 test_eq(String.capitalize("FooBar"),"FooBar")
 test_eq(String.capitalize("-"),"-")
 
+// - common_prefix
+test_eq(String.common_prefix(({ "muzzle", "muzzy" })), "muzz")
+test_eq(String.common_prefix(({ "labyrinth", "diatom" })), "")
+test_eq(String.common_prefix(({})), "")
+
 // - clone
 // clone is already tested a lot by this script
 test_true(objectp(clone(compile_string("int foo() { return 17; }"))))
