@@ -314,13 +314,13 @@ void f_setegid(INT32 args)
 void f_getpgrp(INT32 args)
 {
   int pid = 0;
-  int pgid = 0
+  int pgid = 0;
 
   if (args) {
     if (sp[-args].type != T_INT) {
       error("Bad argument 1 to getpgrp()\n");
     }
-    id = sp[-args].u.integer;
+    pid = sp[-args].u.integer;
   }
   pop_n_elems(args);
 #ifdef HAVE_GETPGID
