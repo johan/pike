@@ -37,8 +37,7 @@ struct mapping_data
 };
 
 #undef MAPPING_SIZE_DEBUG
-/* This debug doesn't work with stealth_check_mapping_for_destruct and
- * gc_recurse_weak_mapping. */
+/* This debug doesn't work with weak mappings in the gc. */
 
 struct mapping
 {
