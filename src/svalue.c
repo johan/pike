@@ -1603,6 +1603,33 @@ PMOD_EXPORT void print_svalue (FILE *out, const struct svalue *s)
   free (str.str);
 }
 
+PMOD_EXPORT void print_svalue_compact (FILE *out, const struct svalue *s)
+{
+  switch (s->type) {
+    case T_ARRAY:
+      fprintf (out, "array of size %d", s->u.array->size);
+      break;
+    case T_MAPPING:
+      fprintf (out, "mapping of size %d", m_sizeof (s->u.mapping));
+      break;
+    case T_MULTISET:
+      fprintf (out, "multiset of size %d", multiset_sizeof (s->u.multiset));
+      break;
+    case T_STRING:
+      if (s->u.string->len > 80) {
+	push_string (string_slice (s->u.string, 0, 80));
+	print_svalue (out, Pike_sp - 1);
+	pop_stack();
+	fprintf (out, "... (%d chars more)", s->u.string->len - 80);
+	break;
+      }
+      /* Fall through. */
+    default:
+      print_svalue (out, s);
+      break;
+  }
+}
+
 PMOD_EXPORT void copy_svalues_recursively_no_free(struct svalue *to,
 				      const struct svalue *from,
 				      size_t num,
