@@ -183,9 +183,6 @@ void gc_cycle_run_queue();
 #define gc_is_referenced(X) debug_gc_is_referenced(debug_malloc_pass(X))
 #else
 #define gc_is_referenced(X) !(get_marker(X)->flags & GC_NOT_REFERENCED)
-#define gc_do_weak_free(X) (Pike_in_gc != GC_PASS_ZAP_WEAK ?		\
-			    get_marker(X)->weak_refs == -1 :		\
-			    !(get_marker(X)->flags & GC_MARKED))
 #endif
 
 #define gc_external_mark2(X,Y,Z) gc_external_mark3( debug_malloc_pass(X),(Y),(Z))
