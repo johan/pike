@@ -178,9 +178,9 @@ int _prof_gtim;
       int lastel = sizeof(rawres) - 1;
 
       if (lastel < 0) {
-        ::seterr (LDAP_LOCAL_ERROR);
+	seterr (LDAP_LOCAL_ERROR);
         THROW(({"LDAP: Internal error.\n",backtrace()}));
-        return(-::ldap_errno);
+	return(-ldap_errno);
       }
       DWRITE(sprintf("result.create: rawres=%O\n",rawres[lastel]));
 
