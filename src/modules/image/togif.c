@@ -1,9 +1,10 @@
-/* $Id$ */
 /*
 
 togif 
 
 Pontus Hagland, law@infovav.se
+
+$Id$ 
 
 */
 
@@ -254,6 +255,7 @@ CHRONO("image_encode_gif begin");
 
 CHRONO("image_encode_gif header done");
 
+THREADS_ALLOW();
    lzw_init(&lzw,bpp);
    if (!fs)
       while (i--) lzw_add(&lzw,colortable_rgb(ct,*(rgb++)));
@@ -304,6 +306,7 @@ CHRONO("image_encode_gif wrote ok");
    low_my_putchar( ';', &buf ); /* end gif file */
 
 CHRONO("image_encode_gif done");
+THREADS_DISALLOW();
 
    return low_free_buf(&buf);
 }
@@ -340,6 +343,7 @@ int image_decode_gif(struct image *dest,struct image *dest_alpha,
 
    bpp=(src[10]&7)+1;
 
+   THREADS_ALLOW();
    if (src[10]&128)
    {
       global_palette=(rgb_group*)(src+13);
@@ -434,6 +438,7 @@ int image_decode_gif(struct image *dest,struct image *dest_alpha,
       }
    }
    while (0);
+   THREADS_DISALLOW();
 
    if (arena) free(arena);
    return 1; /* ok */
@@ -700,6 +705,7 @@ CHRONO("gif add init");
 
 CHRONO("begin pack");
 
+   THREADS_ALLOW();
    lzw_init(&lzw,bpp);
    if (!fs)
       while (i--) lzw_add(&lzw,colortable_rgb(ct,*(rgb++)));
@@ -746,6 +752,7 @@ CHRONO("end pack");
    lzw_quit(&lzw);
 
    colortable_free(ct);
+   THREADS_DISALLOW();
 
 CHRONO("done");
 
