@@ -222,7 +222,7 @@ int handle_alert(string s)
     werror("SSL.connection: No certificate  alert %d\n", description);
 #endif
 
-    if ((certificate_state == CERT_requested) && (auth_level == AUTHLEVEL_ask))
+    if ((certificate_state == CERT_requested) && (context->auth_level == AUTHLEVEL_ask))
     {
       certificate_state = CERT_no_certificate;
       return 0;
