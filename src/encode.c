@@ -4,7 +4,6 @@
 || for more information.
 || $Id$
 */
-#include <stdio.h> //srb
 
 #include "global.h"
 #include "stralloc.h"
@@ -3611,7 +3610,8 @@ static void decode_value2(struct decode_data *data)
 	    decode_value2(data);
 	    switch(entry_type) {
 	    case ID_ENTRY_EFUN_CONSTANT:
-	      if (Pike_sp[-1].type != T_FUNCTION) {
+	      if ((Pike_sp[-1].type != T_FUNCTION) ||
+		  (Pike_sp[-1].subtype != FUNCTION_BUILTIN)) {
 		ref_push_program (p);
 		decode_error(Pike_sp - 1, Pike_sp - 2,
 			     "Expected efun constant: ");
