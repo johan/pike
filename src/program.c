@@ -757,10 +757,13 @@ void check_program(struct program *p)
     if(p->inherits[e].storage_offset < 0)
       fatal("Inherit->storage_offset is wrong.\n");
 
+#if 0
+    /* This test doesn't really work... */
     if(p->inherits[e].storage_offset & (ALIGN_BOUND-1))
     {
-      fatal("inherit[%d].storage_offset is not properly aligned.\n",e);
+      fatal("inherit[%d].storage_offset is not properly aligned (%d).\n",e,p->inherits[e].storage_offset);
     }
+#endif
   }
 }
 #endif

@@ -741,7 +741,7 @@ identifier_type: idents
        resolv_program($1);
        if((p=program_from_svalue(sp-1)))
        {
-         push_type_int(sp[-1].u.program->id);
+         push_type_int(p->id);
        }else{
          push_type_int(0);
        }
