@@ -1856,14 +1856,24 @@ static void *read_pdb_blocks(unsigned char *buf, size_t len,
 			     struct pdb_header *header)
 {
   unsigned char *ret, *p;
+
+#ifdef DLDEBUG
+  fprintf(stderr, "read_pdb_blocks(0x%p, %ld, 0x%p, %ld, X)...\n",
+	  buf, len, blocklist, nbytes);
+#endif /* DLDEBUG */
+
   if(len<1 || !(ret = p = malloc(nbytes))) return NULL;
-  while(len>0) {
-    size_t chunk = (len>header->blocksize? header->blocksize : len);
-    size_t offs = header->blocksize**blocklist++;
+  while(nbytes>0) {
+    size_t chunk = (nbytes>header->blocksize? header->blocksize : nbytes);
+    size_t offs = header->blocksize**(blocklist++);
     if(offs + chunk > len) { free(ret); return NULL; }
     memcpy(p, buf+offs, chunk);
     p += chunk;
+    nbytes -= chunk;
   }
+#ifdef DLDEBUG
+  fprintf(stderr, "OK, data at 0x%p\n", ret);
+#endif /* DLDEBUG */
   return ret;
 }
 
@@ -1963,6 +1973,14 @@ static unsigned char *find_pdb_symtab(unsigned char *buf, size_t *plen)
   idlen += 5;
   if(idlen&3) idlen+=4-(idlen&3);
   header = (void*)(buf+idlen);
+#ifdef DLDEBUG
+  fprintf(stderr, "header at:0x%p (offset:%d)\n", header, idlen);
+  fprintf(stderr,
+	  "blocksize:  %d\nfreelist:   %d\ntotalalloc: %d\n"
+	  "toc_size:   %d\nunknown:    %d\ntoc_loc:    %d\n",
+	  header->blocksize, header->freelist, header->total_alloc,
+	  header->toc_size, header->unknown, header->toc_loc);
+#endif /* DLDEBUG */
   if(idlen+sizeof(*header)>len || header->blocksize==0 ||
      header->toc_size < 20) return NULL;
   toc = read_pdb_blocks(buf, len,
