@@ -236,8 +236,11 @@ class select
 
     if (info)
     {
-      foreach(info, array a)
-	send("*", @a);
+      foreach(info, array a) {
+	if (a) {
+	  send("*", @a);
+	}
+      }
       send(tag, "OK", imap_prefix( ({ "READ-WRITE" }) ) );
 	return ([ "action" : "selected_state" ]);
     } else {
