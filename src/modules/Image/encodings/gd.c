@@ -108,15 +108,15 @@ static void image_gd_f__decode(INT32 args)
    img_gd_decode(args,0);
 }
 
-void init_image_avs()
+void init_image_gd()
 {
-  add_function( "decode",  image_gd_f_decode,  tFunc(tStr,tObj), 0);
-  add_function( "decode_alpha",  image_gd_f_decode_alpha,  tFunc(tStr,tObj), 0);
-  add_function( "_decode", image_gd_f__decode, tFunc(tStr,tMapping), 0);
-  add_function( "encode",  image_gd_f_encode,  tFunc(tStr,tObj), 0);
-  add_function( "decode_header", image_gd_f_decode_header, tFunc(tStr,tMapping), 0);
+  ADD_FUNCTION( "decode",  image_gd_f_decode,  tFunc(tStr,tObj), 0);
+  ADD_FUNCTION( "decode_alpha",  image_gd_f_decode_alpha,  tFunc(tStr,tObj), 0);
+  ADD_FUNCTION( "_decode", image_gd_f__decode, tFunc(tStr,tMapping), 0);
+  ADD_FUNCTION( "encode",  image_gd_f_encode,  tFunc(tStr,tObj), 0);
+  ADD_FUNCTION( "decode_header", image_gd_f_decode_header, tFunc(tStr,tMapping), 0);
 }
 
-void exit_image_avs()
+void exit_image_gd()
 {
 }
