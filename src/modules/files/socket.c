@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #define NO_PIKE_SHORTHAND
 
 #include "global.h"
@@ -378,7 +379,7 @@ static void exit_port_struct(struct object *o)
   THIS->accept_callback.type=PIKE_T_INT;
 }
 
-struct program *port_program;
+struct program *port_program = NULL;
 
 void port_exit_program(void)
 {
