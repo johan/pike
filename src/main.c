@@ -273,8 +273,8 @@ void exit_main()
   void cleanup_program();
 
   th_cleanup();
-  exit_dynamic_load();
   cleanup_objects();
+  exit_dynamic_load();
   exit_signals();
   exit_lex();
   cleanup_interpret();
