@@ -1438,7 +1438,7 @@ PIKECLASS Backend
     if (sleep_time && sleep_time->type == PIKE_T_FLOAT) {
       timeout.tv_sec = (long) floor (sleep_time->u.float_number);
       timeout.tv_usec =
-	(long) ((sleep_time->u.float_number - next_timeout.tv_sec) * 1e6);
+	(long) ((sleep_time->u.float_number - timeout.tv_sec) * 1e6);
     }
     else
       timeout.tv_sec = -1;
