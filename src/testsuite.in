@@ -9187,6 +9187,8 @@ test_any([[
       return e;
   return -1;
 ]],-1)
+test_equal(sort (({(<2>), (<1>)})), ({(<1>), (<2>)}))
+
 dnl missing tests for objects, arrays, multisets and mappings
 
 // - sprintf
