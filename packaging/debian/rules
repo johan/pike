@@ -44,6 +44,7 @@ BUILDDIR=build/$(OS)
 CFARGS=--without-rtldebug \
        --without-cdebug \
        --without-ssleay \
+       --with-security \
        --with-bignums \
        --with-gmp \
        --with-poll \
