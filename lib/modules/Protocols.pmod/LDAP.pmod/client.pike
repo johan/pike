@@ -937,7 +937,9 @@ import SSL.Constants;
 		})) ;
   }
 
-IF_ELSE_PAGED_SEARCH(static multiset(string) supported_controls;,)
+#ifdef ENABLE_PAGED_SEARCH
+  static multiset(string) supported_controls;
+#endif
 
   //! Search LDAP directory.
   //!
