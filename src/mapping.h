@@ -12,6 +12,12 @@
 
 #include "las.h"
 
+struct keypair
+{
+  struct keypair *next;
+  struct svalue ind, val;
+};
+
 struct mapping
 {
   INT32 refs, size, hashsize;
@@ -26,11 +32,11 @@ extern struct mapping *first_mapping;
 #define m_sizeof(m) ((m)->size)
 #define m_ind_types(m) ((m)->ind_types)
 #define m_val_types(m) ((m)->val_types)
+#define MAPPING_LOOP(m) for(e=0;e<m->hashsize;e++) for(k=m->hash[e];k;k=k->next)
 
 #define free_mapping(M) do{ struct mapping *m_=(M); debug_malloc_touch(m_); if(!--m_->refs) really_free_mapping(m_); }while(0)
 
 /* Prototypes begin here */
-struct keypair;
 struct mapping *allocate_mapping(int size);
 void really_free_mapping(struct mapping *m);
 void mapping_fix_type_field(struct mapping *m);
