@@ -3288,7 +3288,16 @@ struct pike_string *get_type_of_svalue(struct svalue *s)
   {
     char *a;
     struct pike_string *tmp;
-    int id=FIND_LFUN(s->u.program,LFUN_CREATE);
+    int id;
+
+    if(!s->u.program->identifiers)
+    {
+      a=function_type_string->str;
+      if((tmp=zzap_function_return(a, s->u.program->id)))
+	return tmp;
+    }
+
+    id=FIND_LFUN(s->u.program,LFUN_CREATE);
     if(id>=0)
     {
       a=ID_FROM_INT(s->u.program, id)->type->str;

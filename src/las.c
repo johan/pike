@@ -1327,11 +1327,7 @@ node *debug_mkconstantsvaluenode(struct svalue *s)
   if(s->type == T_OBJECT ||
      (s->type==T_FUNCTION && s->subtype!=FUNCTION_BUILTIN))
   {
-    /* Is it in a fake object? */
-    if( s->u.object->next == s->u.object)
-    {
-      res->node_info|=OPT_EXTERNAL_DEPEND;
-    }
+    res->node_info|=OPT_EXTERNAL_DEPEND;
   }
   res->type = get_type_of_svalue(s);
   return freeze_node(res);
