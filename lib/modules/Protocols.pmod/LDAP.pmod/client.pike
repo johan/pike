@@ -332,6 +332,7 @@ int _prof_gtim;
     return(0);
   }
 
+  //! Several information about code itself and about active connection too
   mapping info;
 
   //! @decl void create()
@@ -354,7 +355,7 @@ int _prof_gtim;
   void create(string|void url, object|void context)
   {
 
-    info = ([]);
+    info = ([ "code_revision" : ("$Revision$"/" ")[1] ]);
 
     if(!url || !sizeof(url))
       url = LDAP_DEFAULT_URL;
