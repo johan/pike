@@ -3073,6 +3073,8 @@ struct program *end_first_pass(int finish)
 
   exit_type_stack();
 
+  free_all_nodes();
+
   CDFPRINTF((stderr,
 	     "th(%ld) %p end_first_pass(%d): "
 	     "threads_disabled:%d, compilation_depth:%d\n",
@@ -3082,8 +3084,6 @@ struct program *end_first_pass(int finish)
   compilation_depth--;
 
   exit_threads_disable(NULL);
-
-  free_all_nodes();
 
   return prog;
 }
