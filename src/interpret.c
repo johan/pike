@@ -2166,6 +2166,7 @@ int apply_low_safe_and_stupid(struct object *o, INT32 offset)
   free_object(new_frame.current_object);
   free_program(new_frame.context.prog);
 
+  fp=new_frame.parent_frame;
   return ret;
 }
 
