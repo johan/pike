@@ -172,7 +172,7 @@ static void mpzmod_get_float(INT32 args)
 
 static struct pike_string *low_get_digits(MP_INT *mpz, int base)
 {
-  struct pike_string *s;
+  struct pike_string *s = 0;   /* Make gcc happy. */
   INT32 len;
   
   if ( (base >= 2) && (base <= 36))
