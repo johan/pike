@@ -49,6 +49,7 @@
     VALGRIND_DISCARD(VALGRIND_MAKE_READABLE(addr, bytes));		\
   } while (0)
 
+/* Return true if a memchecker is in use. */
 #define PIKE_MEM_CHECKER() RUNNING_ON_VALGRIND
 
 #else
