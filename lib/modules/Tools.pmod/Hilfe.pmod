@@ -867,7 +867,8 @@ class Evaluator {
   private int(0..1) hilfe_error(mixed err) {
     if(!err) return 1;
     mixed err2 = catch {
-      if(arrayp(err) && sizeof(err)==2 && stringp(err[0])) {
+      if( (arrayp(err) && sizeof(err)==2 && stringp(err[0])) ||
+	  (objectp(err) && err->backtrace) ) {
 	array files = map(reverse(err[1]), lambda(mixed in) {
 					  if(in) return in[0];
 					  return 0;
