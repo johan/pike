@@ -473,9 +473,6 @@ PMOD_EXPORT extern struct Pike_interpreter Pike_interpreter;
 #define Pike_sp Pike_interpreter.stack_pointer
 #define Pike_fp Pike_interpreter.frame_pointer
 #define Pike_mark_sp Pike_interpreter.mark_stack_pointer
-#ifdef PIKE_THREADS
-#define Pike_thread_id Pike_interpreter.thread_id
-#endif
 
 
 #define CURRENT_STORAGE (dmalloc_touch(struct pike_frame *,Pike_fp)->current_storage)
