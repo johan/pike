@@ -203,6 +203,7 @@
 	{
 	  struct object *tmp;
 	  check_threads_etc();
+	  Pike_fp->num_args=args;
 	  tmp=parent_clone_object(s->u.program,
 				  o,
 				  fun,
