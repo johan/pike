@@ -1470,7 +1470,13 @@ node *debug_mkcastnode(struct pike_type *type, node *n)
 
   if (type == void_type_string) return mknode(F_POP_VALUE, n, 0);
 
+#if 0
+  /* It's not always safe to ignore the cast in this case. E.g. if n
+   * has type program, the value can contain a function style program
+   * pointer which the cast will turn into a real program
+   * reference. */
   if(type==n->type) return n;
+#endif
 
   res = mkemptynode();
   res->token = F_CAST;
