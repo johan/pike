@@ -123,7 +123,7 @@ char *lfun_names[] = {
   "_is_type",
   "_sprintf",
   "_equal",
-  "_m_delte",
+  "_m_delete",
 };
 
 /* mapping(string:type) */
