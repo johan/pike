@@ -822,7 +822,7 @@ static void f_select_db(INT32 args)
   pop_n_elems(args);
 }
 
-/*! @decl object(Mysql.mysql_result) big_query(string query)
+/*! @decl Mysql.mysql_result big_query(string query)
  *!
  *! Make an SQL query.
  *!
@@ -865,7 +865,7 @@ static void f_big_query(INT32 args)
 #endif /* HAVE_MYSQL_REAL_QUERY */
 
     if (tmp >= 0) {
-      result = mysql_store_result(socket);
+      result = mysql_use_result(socket);
     }
 
     MYSQL_DISALLOW();
@@ -897,7 +897,7 @@ static void f_big_query(INT32 args)
 #endif /* HAVE_MYSQL_REAL_QUERY */
 
     if (tmp >= 0) {
-      result = mysql_store_result(socket);
+      result = mysql_use_result(socket);
     }
 
     MYSQL_DISALLOW();
@@ -961,6 +961,7 @@ static void f_big_query(INT32 args)
     res->result = result;
   }
 }
+
 /*! @decl void create_db(string database)
  *!
  *! Create a new database
@@ -1281,8 +1282,8 @@ static void f_protocol_info(INT32 args)
   push_int(prot);
 }
 
-/*! @decl object(Mysql.mysql_result) list_dbs()
- *! @decl object(Mysql.mysql_result) list_dbs(string wild)
+/*! @decl Mysql.mysql_result list_dbs()
+ *! @decl Mysql.mysql_result list_dbs(string wild)
  *!
  *! List databases
  *!
@@ -1367,8 +1368,8 @@ static void f_list_dbs(INT32 args)
   }
 }
 
-/*! @decl object(Mysql.mysql_result) list_tables()
- *! @decl object(Mysql.mysql_result) list_tables(string wild)
+/*! @decl Mysql.mysql_result list_tables()
+ *! @decl Mysql.mysql_result list_tables(string wild)
  *!
  *! List tables in the current database
  *!
@@ -1594,7 +1595,7 @@ static void f_list_fields(INT32 args)
   f_aggregate(i);
 }
 
-/*! @decl object(Mysql.mysql_result) list_processes()
+/*! @decl Mysql.mysql_result list_processes()
  *!
  *! List all processes in the Mysql-server
  *!
