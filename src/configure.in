@@ -1657,7 +1657,7 @@ if test -z "$CCSHARED" ; then
 	hp*|HP*) CCSHARED="+z"; ;;
 	FreeBSD*) CCSHARED="-fpic";;
 	SCO_SV*) CCSHARED="-KPIC -dy -Bdynamic";;
-	Solaris*) CCHARED="-KPIC -Bdynamic";;
+	Solaris*) CCSHARED="-KPIC -Bdynamic";;
     esac
   fi
 fi
