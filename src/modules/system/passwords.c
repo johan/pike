@@ -106,7 +106,11 @@ struct group *getgrnam(char *name)
 #endif
 
 
-#define SAFE_PUSH_TEXT(X) do { char *text_ = (X); if(text_) push_text(text_); else push_constant_text(""); }while(0);
+#define SAFE_PUSH_TEXT(X) do {						\
+    char *text_ = (X);							\
+    if(text_) push_text(text_);						\
+    else push_constant_text("");					\
+  } while(0)
 
 /*
  * Functions
