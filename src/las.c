@@ -4975,6 +4975,8 @@ ptrdiff_t eval_low(node *n)
     foo.counter=10000;
     foo.yes=0;
 
+    make_program_executable(Pike_compiler->new_program);
+
     tmp_callback=add_to_callback(&evaluator_callbacks,
 				 check_evaluation_time,
 				 (void *)&foo,0);

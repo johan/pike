@@ -17,6 +17,9 @@ struct keyword
   char *word;
   int token;
   int flags;
+#ifdef PIKE_USE_MACHINE_CODE
+  void *address;
+#endif
 };
 
 #define I_HASARG 1
@@ -40,6 +43,9 @@ struct instr
 #endif
   int flags;
   char *name;
+#ifdef PIKE_USE_MACHINE_CODE
+  void *address;
+#endif
 };
 
 #ifdef PIKE_DEBUG
