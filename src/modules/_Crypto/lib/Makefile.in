@@ -37,7 +37,8 @@ O=		$(SO) $(GO)
 SRC_TARGETS=$(GH)
 MODULE_CLEAN_EXTRA=*.i *.x desTest $(GC)
 
-OBJS = idea.o arcfour.o cast.o rijndael.o sha.o md2.o md4.o md5.o crypt_md5.o
+OBJS = idea.o arcfour.o cast.o rijndael.o $(O) \
+  sha.o md2.o md4.o md5.o crypt_md5.o
 
 @dynamic_module_makefile@
 
