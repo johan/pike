@@ -4053,3 +4053,20 @@ int yyexplain_not_implements(struct program *a, struct program *b, int flags)
   }
   return 1;
 }
+
+void *parent_storage(int depth)
+{
+  struct external_variable_context loc;
+
+  loc.o=Pike_fp->current_object;
+  if(!loc.o->prog)
+    error("Cannot access parent of destructed object.\n");
+
+  loc.parent_identifier=Pike_fp->fun;
+  loc.inherit=INHERIT_FROM_INT(loc.o->prog, Pike_fp->fun);
+  
+  find_external_context(&loc, depth);
+
+  return loc.o->storage + loc.inherit->storage_offset;
+}
+
