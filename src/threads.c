@@ -1676,7 +1676,7 @@ void f_thread_id_id_number(INT32 args)
   push_int64(PTR_TO_INT(THREAD_T_TO_PTR(THIS_THREAD->id)));
 }
 
-/*! @decl mixed result()
+/*! @decl mixed wait()
  *!
  *! Waits for the thread to complete, and then returns
  *! the value returned from the thread function.
@@ -1690,7 +1690,7 @@ static void f_thread_id_result(INT32 args)
   }
 
   THREADS_FPRINTF(0, (stderr,
-		      "Thread->result(): Waiting for thread %p (state:%d).\n",
+		      "Thread->wait(): Waiting for thread %p (state:%d).\n",
 		      th, th->status));
   while(th->status != THREAD_EXITED) {
     SWAP_OUT_CURRENT_THREAD();
@@ -1699,7 +1699,7 @@ static void f_thread_id_result(INT32 args)
     check_threads_etc();
     THREADS_FPRINTF(0,
 		    (stderr,
-		     "Thread->result(): Waiting for thread %p (state:%d).\n",
+		     "Thread->wait(): Waiting for thread %p (state:%d).\n",
 		     th, th->status));
   }
 
