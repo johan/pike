@@ -445,7 +445,7 @@ struct mapping_data *copy_mapping_data(struct mapping_data *md)
     DO_IF_DEBUG( if(d_flag > 1) check_mapping_type_fields(m); ) \
     if(md->ind_types & (1 << key->type))			\
     {								\
-      k2=omd->hash[h2 % md->hashsize];			        \
+      k2=omd->hash[h2 % omd->hashsize];			        \
       prev= md->hash + h;					\
       for(;(k=*prev) && k2;(prev=&k->next),(k2=k2->next))	\
         if(!(h2 == k->hval && is_identical(&k2->ind, &k->ind)))	\
