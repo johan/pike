@@ -90,15 +90,23 @@ void f_add(INT32 args)
     }else{
       if(types & BIT_OBJECT)
       {
-	if(sp[-args].type == T_OBJECT &&
-	  sp[-args].u.object->prog &&
-	   FIND_LFUN(sp[-args].u.object->prog,LFUN_ADD) != -1)
+	if(sp[-args].type == T_OBJECT && sp[-args].u.object->prog)
 	{
-	  apply_lfun(sp[-args].u.object, LFUN_ADD, args-1);
-	  free_svalue(sp-2);
-	  sp[-2]=sp[-1];
-	  sp--;
-	  return;
+	  if(sp[-args].u.object->refs==1 &&
+	     FIND_LFUN(sp[-args].u.object->prog,LFUN_ADD_EQ) != -1)
+	  {
+	    apply_lfun(sp[-args].u.object, LFUN_ADD_EQ, args-1);
+	    pop_stack();
+	    return;
+	  }
+	  if(FIND_LFUN(sp[-args].u.object->prog,LFUN_ADD) != -1)
+	  {
+	    apply_lfun(sp[-args].u.object, LFUN_ADD, args-1);
+	    free_svalue(sp-2);
+	    sp[-2]=sp[-1];
+	    sp--;
+	    return;
+	  }
 	}
 	for(e=1;e<args;e++)
 	{
@@ -282,6 +290,25 @@ void f_add(INT32 args)
     break;
   }
 
+  case BIT_ARRAY|BIT_INT:
+  {
+    if(IS_UNDEFINED(sp-args))
+    {
+      int e;
+      struct array *a;
+
+      for(e=1;e<args;e++)
+	if(sp[e-args].type != T_ARRAY)
+	  error("`+: trying to add integers and arrays.\n");
+
+      a=add_arrays(sp-args+1,args-1);
+      pop_n_elems(args);
+      push_array(a);
+      return;
+    }
+    error("`+: trying to add integers and arrays.\n");
+  }
+      
   case BIT_ARRAY:
   {
     struct array *a;

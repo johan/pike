@@ -438,6 +438,19 @@ BINFUN(mpzmod_add,mpz_add)
 BINFUN(mpzmod_mul,mpz_mul)
 BINFUN(mpzmod_gcd,mpz_gcd)
 
+
+static void mpzmod_add_eq(INT32 args)
+{
+  INT32 e;
+  struct object *res;
+  for(e=0; e<args; e++)
+    get_mpz(sp+e-args, 1);
+  for(e=0;e<args;e++)
+    mpz_add(THIS, THIS, OBTOMPZ(sp[e-args].u.object));
+  pop_n_elems(args);
+  ref_push_object(fp->current_object);
+}
+
 static void mpzmod_sub(INT32 args)
 {
   INT32 e;
@@ -930,6 +943,7 @@ void pike_module_init(void)
 #define MPZ_BINOP_TYPE ("function(" MPZ_ARG_TYPE "...:object)")
 
   add_function("`+",mpzmod_add,MPZ_BINOP_TYPE,0);
+  add_function("`+=",mpzmod_add_eq,MPZ_BINOP_TYPE,0);
   add_function("``+",mpzmod_add,MPZ_BINOP_TYPE,0);
   add_function("`-",mpzmod_sub,MPZ_BINOP_TYPE,0);
   add_function("``-",mpzmod_rsub,MPZ_BINOP_TYPE,0);

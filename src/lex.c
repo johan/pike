@@ -722,7 +722,6 @@ static int yylex2(YYSTYPE *yylval)
       
       switch(GETC())
       {
-      case '+': tmp="```+"; break;
       case '/': tmp="```/"; break;
       case '%': tmp="```%"; break;
       case '*': tmp="```*"; break;
@@ -730,6 +729,10 @@ static int yylex2(YYSTYPE *yylval)
       case '|': tmp="```|"; break;
       case '^': tmp="```^"; break;
       case '~': tmp="```~"; break;
+      case '+':
+	if(GOBBLE('=')) { tmp="```+="; break; }
+	tmp="```+";
+	break;
       case '<':
 	if(GOBBLE('<')) { tmp="```<<"; break; }
 	if(GOBBLE('=')) { tmp="```<="; break; }

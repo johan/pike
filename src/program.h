@@ -55,8 +55,9 @@
 #define LFUN_RMULTIPLY 35
 #define LFUN_RDIVIDE 36
 #define LFUN_RMOD 37
+#define LFUN_ADD_EQ 38
 
-#define NUM_LFUNS 38
+#define NUM_LFUNS 39
 
 extern char *lfun_names[];
 
