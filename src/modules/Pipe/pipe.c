@@ -461,6 +461,9 @@ static INLINE struct pike_string* gimme_some_data(unsigned long pos)
 	  }
 	}
       } while(len < 0);
+      /*
+       * FIXME: What if len is 0?
+       */
       return make_shared_binary_string(buffer,len);
    }
 
