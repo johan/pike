@@ -109,13 +109,14 @@ struct group *getgrnam(char *name)
 #endif
 
 
+#define SAFE_PUSH_TEXT(X) do { char *text_ = (X); if(text_) push_text(text_); else push_constant_text(""); }while(0);
+
 /*
  * Functions
  */
 
 #if defined(HAVE_GETPWNAM) || defined(HAVE_GETPWUID) || defined(HAVE_GETPWENT)
 
-#define SAFE_PUSH_TEXT(X) do { char *text_ = (X); if(text_) push_text(text_); else push_constant_text(""); }while(0);
 void push_pwent(struct passwd *ent)
 {
   /* NOTE: password_protection_mutex is always locked
