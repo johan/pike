@@ -140,14 +140,15 @@ void do_make(array(string) cmd)
   else full_srcdir=getcwd() + "/";
 
   // we should try to find the core autodoc file
-  if(file_stat(combine_path(system_module_path, "../../doc/src/core_autodoc.xml")))
-  {
+  if(file_stat(combine_path(system_module_path,
+			    "../../doc/src/core_autodoc.xml")))
     system_doc_path=combine_path(system_module_path, "../../doc");
-  }
-  else if(file_stat(combine_path(system_module_path, "../../../doc/pike/src/core_autodoc.xml")))
-  {
+  else if(file_stat(combine_path(system_module_path,
+				 "../../../doc/pike/src/core_autodoc.xml")))
     system_doc_path=combine_path(system_module_path, "../../../doc/pike");
-  }
+  else
+    system_doc_path = combine_path(system_module_path, "../../doc");
+    // No autodoc file, but we set this path as doc path anyway.
 
   array(string) makecmd=(
     ({make})+
