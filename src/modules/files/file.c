@@ -2368,7 +2368,7 @@ void pike_module_init(void)
   add_integer_constant("PROP_SHUTDOWN",fd_CAN_SHUTDOWN,0);
   add_integer_constant("PROP_BUFFERED",fd_BUFFERED,0);
   add_integer_constant("PROP_BIDIRECTIONAL",fd_BIDIRECTIONAL,0);
-#ifdef HAVE_OOB
+#ifdef WITH_OOB
   add_integer_constant("__HAVE_OOB__",1,0);
 #endif
 #ifdef DEBUG
