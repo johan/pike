@@ -791,11 +791,11 @@ void i_img_bmp__decode(INT32 args,int header_only)
 
 	 j=len;
 	 y=img->ysize;
-	 while (j && y--)
+	 while (j>2 && y--)
 	 {
 	    d = img->img+img->xsize*y;
 	    i = img->xsize;
-	    if (i>j) i=j;
+	    if (i*3>j) i=j/3;
 	    j -= i*3;
 	    while (i--)
 	    {
@@ -804,7 +804,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	       d->r=*(s++);
 	       d++;
 	    }
-	    if (j >= skip) { j -= skip; s += skip; }
+	    if (j >= skip) { j -= skip; s += skip; } else { j = 0; }
 	 }
 	 break;
       case 16:
@@ -815,11 +815,11 @@ void i_img_bmp__decode(INT32 args,int header_only)
 
 	 j=len;
 	 y=img->ysize;
-	 while (j && y--)
+	 while (j>1 && y--)
 	 {
 	    d = img->img+img->xsize*y;
 	    i = img->xsize;
-	    if (i>j) i=j; 
+	    if (i*2>j) i=j/2; 
 	    j-=i*2;
 	    while (i--)
 	    {
@@ -830,7 +830,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	       d->b=((dat&0x001f)<<3)|((dat&0x001c)>>2);
 	       d++;
 	    }
-	    if (j>=skip) { j-=skip; s+=skip; }
+	    if (j>=skip) { j-=skip; s+=skip; } else { j = 0; }
 	 }
 	 break;
       case 8:
@@ -905,7 +905,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	    skip=(4-(img->xsize&3))&3;
 	    j=len;
 	    y=img->ysize;
-	    while (j && y--)
+	    while (j>0 && y--)
 	    {
 	       d = img->img+img->xsize*y;
 	       i = img->xsize;
@@ -913,7 +913,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	       j-=i;
 	       while (i--)
 		  *(d++)=nct->u.flat.entries[*(s++)].color;
-	       if (j>=skip) { j-=skip; s+=skip; }
+	       if (j>=skip) { j-=skip; s+=skip; } else { j = 0; }
 	    }
 	 }
 	 break;
@@ -1022,7 +1022,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	    skip=(4-(((img->xsize+1)/2)&3))&3;
 	    j=len;
 	    y=img->ysize;
-	    while (j && y--)
+	    while (j>0 && y--)
 	    {
 	       d=img->img+img->xsize*y;
 	       i=img->xsize;
@@ -1032,7 +1032,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 		  if (i) *(d++)=nct->u.flat.entries[s[0]&15].color,i--;
 		  s++;
 	       }
-	       if (j>=skip) { j-=skip; s+=skip; }
+	       if (j>=skip) { j-=skip; s+=skip; } else { j = 0; }
 	    }
 	 }
 	 break;
@@ -1043,7 +1043,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	 skip=(4-(((img->xsize+7)/8)&3))&3;
 	 j=len;
 	 y=img->ysize;
-	 while (j && y--)
+	 while (j>0 && y--)
 	 {
 	    d=img->img+img->xsize*y;
 	    i=img->xsize;
@@ -1059,7 +1059,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	       if (i) *(d++)=nct->u.flat.entries[s[0]&1].color,i--;
 	       s++;
 	    }
-	    if (j>=skip) { j-=skip; s+=skip; }
+	    if (j>=skip) { j-=skip; s+=skip; } else { j = 0; }
 	 }
 	 break;
       default:
