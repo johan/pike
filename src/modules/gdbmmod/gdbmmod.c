@@ -342,7 +342,9 @@ void init_gdbmmod_programs(void)
 
   add_function("close",gdbmmod_close,"function(:void)",0);
   add_function("store",gdbmmod_store,"function(string,string:int)",0);
+  add_function("`[]=",gdbmmod_store,"function(string,string:int)",0);
   add_function("fetch",gdbmmod_fetch,"function(string:string)",0);
+  add_function("`[]",gdbmmod_fetch,"function(string:string)",0);
   add_function("delete",gdbmmod_delete,"function(string:int)",0);
   add_function("firstkey",gdbmmod_firstkey,"function(:string)",0);
   add_function("nextkey",gdbmmod_nextkey,"function(string:string)",0);
