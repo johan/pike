@@ -272,6 +272,8 @@ struct keyword instr_names[]=
 { "apply and pop",      F_APPLY_AND_POP, 1 },
 { "2 locals",           F_2_LOCALS, 1 },
 { "byte",               F_BYTE, 1 },
+{ "nop",                F_NOP },
+{ "==||",               F_EQ_OR, 1 },
 };
 
 struct instr instrs[F_MAX_INSTR - F_OFFSET];

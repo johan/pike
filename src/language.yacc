@@ -56,6 +56,7 @@
 %token F_AND F_OR F_XOR
 %token F_LSH F_RSH
 %token F_LAND F_LOR
+%token F_EQ_OR
 
 %token F_SWITCH F_SSCANF F_CATCH
 %token F_CAST
