@@ -1698,6 +1698,8 @@ PMOD_EXPORT struct array *copy_array_recursively(struct array *a,struct processi
   ret=allocate_array_no_init(a->size,0);
   doing.pointer_b=(void *)ret;
 
+  ret->flags = a->flags & ~ARRAY_LVALUE;
+
   copy_svalues_recursively_no_free(ITEM(ret),ITEM(a),a->size,&doing);
 
   ret->type_field=a->type_field;
