@@ -26,6 +26,11 @@ typedef struct
    signed long r,g,b;
 } rgbl_group;
 
+typedef struct
+{
+   float r,g,b;
+} rgbd_group; /* use float, it gets so big otherwise... */
+
 struct image
 {
    rgb_group *img;
@@ -128,3 +133,7 @@ void image_frompnm(INT32 args);
 void image_noise(INT32 args);
 void image_turbulence(INT32 args);
 void image_noise_init(void);
+
+/* dct.c */
+
+void image_dct(INT32 args);
