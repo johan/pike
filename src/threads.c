@@ -181,7 +181,6 @@ void f_mutex_lock(INT32 args)
   struct mutex_storage  *m;
   struct object *o;
 
-  pop_n_elems(args);
   m=THIS_MUTEX;
   /* Needs to be cloned here, since create()
    * might use threads.
@@ -216,6 +215,7 @@ void f_mutex_lock(INT32 args)
 		   (unsigned int)m,
 		   (unsigned int)OB2KEY(m->key)->mut,
 		   (unsigned int)thread_id));
+  pop_n_elems(args);
   push_object(o);
 }
 
@@ -224,7 +224,6 @@ void f_mutex_trylock(INT32 args)
   struct mutex_storage  *m;
   struct object *o;
   int i=0;
-  pop_n_elems(args);
 
   o=clone_object(mutex_key,0);
   m=THIS_MUTEX;
@@ -248,6 +247,7 @@ void f_mutex_trylock(INT32 args)
     i=1;
   }
   
+  pop_n_elems(args);
   if(i)
   {
     push_object(o);
