@@ -144,6 +144,7 @@ struct pike_sendfile
   char *buffer;
 };
 
+#undef THIS
 #define THIS	((struct pike_sendfile *)(fp->current_storage))
 
 /*
@@ -203,7 +204,7 @@ static void exit_pike_sendfile(struct object *o)
 static int writev(int fd, struct iovec *iov, int n)
 {
   if (n) {
-    return fd_write(fd, iov->iov_data, iov->iov_len);
+    return fd_write(fd, iov->iov_base, iov->iov_len);
   }
   return 0;
 }
