@@ -125,6 +125,7 @@ constant MOUSE_UP = -10;
 constant MOUSE_DOWN = -11;
 constant MOUSE_LEFT = -12;
 constant MOUSE_RIGHT = -13;
+constant MOUSE_ABS = -14;
 
 //! Numeric constant representing a modifier key.
 constant LSHIFT    = 100000000;
