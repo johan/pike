@@ -15,6 +15,20 @@ CFLAGS=$(PREFLAGS) $(OTHERFLAGS) $(MODULE_CFLAGS) @CCSHARED@
 
 all: encodings.a
 
+.SUFFIXES: .c .o
+
+# GCC dumps core on some files @ OSF1
+# This kluge should work around that...
+# FIXME: Make this a configure option
+.c.o:
+	@echo "Compiling $<" ;\
+	if $(CC) $(CFLAGS) -c $< -o $@ ; then : ;\
+	else \
+	  echo "WARNING: Compiler failure! Trying without optimization!" >&2;\
+	  echo "echo $(CC) $(PREFLAGS) $(NOOPTFLAGS) -c $< -o $@" >&2;\
+	  NO_ULIMIT=yes $(CC) $(PREFLAGS) $(NOOPTFLAGS) -c $< -o $@ ;\
+	fi
+
 encodings.a : $(OBJS)
 	rm -f encodings.a
 	$(AR) cq encodings.a $(OBJS)
