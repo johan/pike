@@ -1572,6 +1572,13 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 	  /* constants */
 	  for(d=0;d<p->num_constants;d++)
 	  {
+#ifdef PIKE_PORTABLE_BYTECODE
+	    if ((p->constants[d].sval.type == T_FUNCTION) &&
+		(p->constants[d].sval.subtype == FUNCTION_BUILTIN)) {
+	      /* Already encoded above. */
+	      continue;
+	    }
+#endif /* PIKE_PORTABLE_BYTECODE */
 	    /* value */
 	    encode_value2(&p->constants[d].sval, data, 0);
 
@@ -4005,8 +4012,9 @@ static void decode_value2(struct decode_data *data)
 #endif
 
 	  if (bytecode_method == PIKE_BYTECODE_PORTABLE) {
-	    /* We've regenerated p->program, so this may be off. */
+	    /* We've regenerated p->program, so these may be off. */
 	    local_num_program = p->num_program;
+	    local_num_linenumbers = p->num_linenumbers;
 	  }
 
 	  /* Verify... */
