@@ -98,7 +98,6 @@ union anything *object_get_item_ptr(struct object *o,
 				    struct svalue *key,
 				    TYPE_T type);
 PMOD_EXPORT int object_equal_p(struct object *a, struct object *b, struct processing *p);
-void cleanup_objects(void);
 PMOD_EXPORT struct array *object_indices(struct object *o);
 PMOD_EXPORT struct array *object_values(struct object *o);
 PMOD_EXPORT void gc_mark_object_as_referenced(struct object *o);

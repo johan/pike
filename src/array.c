@@ -2350,7 +2350,8 @@ void real_gc_cycle_check_array(struct array *a, int weak)
 {
   GC_CYCLE_ENTER(a, T_ARRAY, weak) {
 #ifdef PIKE_DEBUG
-    if (a == &empty_array || a == &weak_empty_array || a == &weak_shrink_empty_array)
+    if (!gc_destruct_everything &&
+	(a == &empty_array || a == &weak_empty_array || a == &weak_shrink_empty_array))
       Pike_fatal("Trying to gc cycle check some *_empty_array.\n");
 #endif
 
