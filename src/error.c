@@ -110,7 +110,7 @@ struct svalue throw_value = { T_INT };
 int throw_severity;
 static const char *in_error;
 
-void low_error(char *buf)
+void low_error(char *buf) ATTRIBUTE((noreturn))
 {
   push_error(buf);
   free_svalue(& throw_value);
