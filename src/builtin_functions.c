@@ -4690,10 +4690,18 @@ static INLINE void dml_free_pools(struct diff_magic_link_pool *pools)
 static INLINE void dml_delete(struct diff_magic_link_pool *pools,
 			      struct diff_magic_link *dml)
 {
-   if (dml->prev && !--dml->prev->refs) dml_delete(pools,dml->prev);
-   dmls--;
-   dml->prev=pools->firstfree;
-   pools->firstfree=dml;
+  struct diff_magic_link *prev;
+  while(1)
+  {
+    prev=dml->prev;
+    dmls--;
+    dml->prev=pools->firstfree;
+    pools->firstfree=dml;
+    if (prev && !--prev->refs)
+      dml=prev;
+    else
+      break;
+  }
 }
 
 static INLINE int diff_ponder_stack(int x,
