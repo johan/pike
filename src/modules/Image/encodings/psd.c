@@ -38,12 +38,6 @@ RCSID("$Id$");
 extern struct program *image_colortable_program;
 extern struct program *image_program;
 
-/*
-**! module Image
-**! submodule PSD
-**!
-*/
-
 #define STRING(X) static struct pike_string *PIKE_CONCAT(s_, X)
 #include "psd_constant_strings.h"
 #undef STRING
