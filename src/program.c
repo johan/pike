@@ -984,26 +984,22 @@ struct node_s *find_module_identifier(struct pike_string *ident,
   struct svalue *modules=(struct svalue *)
     (used_modules.s.str + used_modules.s.len);
 
-  if((ret=index_modules(ident,
-			&Pike_compiler->module_index_cache,
-			Pike_compiler->num_used_modules,
-			modules))) return ret;
-  modules-=Pike_compiler->num_used_modules;
-
   {
-    struct program_state *p=Pike_compiler->previous;
+    struct program_state *p=Pike_compiler;
     int n;
-    for(n=0;n<compilation_depth;n++,p=p->previous)
+    for(n=0;n<=compilation_depth;n++,p=p->previous)
     {
       int i;
       if(see_inherit)
       {
 	i=really_low_find_shared_string_identifier(ident,
 						   p->new_program,
-						   SEE_STATIC);
+						   SEE_STATIC|SEE_PRIVATE);
 	if(i!=-1)
 	{
-	  return mkexternalnode(p->new_program, i);
+	  return p == Pike_compiler ?
+	    mkidentifiernode(i) :
+	    mkexternalnode(p->new_program, i);
 	}
       }
       
@@ -3091,6 +3087,8 @@ void low_inherit(struct program *p,
 		break;
 
 	      case -18:
+		/* Ponder: Can we be sure that PROGRAM_USES_PARENT
+		 * doesn't get set later? /mast */
 		if(par->prog->flags & PROGRAM_USES_PARENT)
 		{
 		  pid = PARENT_INFO(par)->parent_identifier;

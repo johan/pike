@@ -3358,8 +3358,6 @@ low_idents: TOK_IDENTIFIER
     if(($$=lexical_islocal(Pike_compiler->last_identifier)))
     {
       /* done, nothing to do here */
-    }else if((i=isidentifier(Pike_compiler->last_identifier))>=0){
-      $$=mkidentifiernode(i);
     }else if(!($$=find_module_identifier(Pike_compiler->last_identifier,1)) &&
 	     !($$ = program_magic_identifier (Pike_compiler, 0, 0,
 					      Pike_compiler->last_identifier, 0))) {
