@@ -86,7 +86,7 @@ char *dmalloc_find_name(void *p);
 void debug_malloc_dump_references(void *x, int indent, int depth, int flags);
 #define dmalloc_touch(TYPE,X) ((TYPE)debug_malloc_update_location((void *)(X),DMALLOC_LOCATION()))
 void debug_malloc_dump_fd(int fd);
-#define dmalloc_touch_svalue(X) do { struct svalue *_tmp = (X); if ((X)->type <= MAX_REF_TYPE) { debug_malloc_touch(_tmp->u.refs); } } while(0)
+#define dmalloc_touch_svalue(X) do { struct svalue *_tmp = (X); if (_tmp->type <= MAX_REF_TYPE) { debug_malloc_touch(_tmp->u.refs); } } while(0)
 
 #define DMALLOC_LINE_ARGS ,char * dmalloc_location
 #define DMALLOC_POS ,DMALLOC_LOCATION()
