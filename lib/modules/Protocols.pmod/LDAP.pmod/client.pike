@@ -406,20 +406,16 @@ int _prof_gtim;
       THROW(({"Failed to connect to LDAP server.\n",backtrace()}));
     }
 
-#if constant(SSL.sslfile)
     if(lauth->scheme == "ldaps") {
+#if constant(SSL.sslfile)
       context->random = Crypto.randomness.reasonably_random()->read;
-      ::create(SSL.sslfile(::_fd, context, 1,1));
+      ::create(SSL.sslfile(this, context, 1,1));
       info->tls_version = ldapfd->version;
+#else
+      error("LDAP: LDAPS is not available without SSL support.\n");
+#endif
     } else
       ::create(::_fd);
-#else
-    if(lauth->scheme == "ldaps") {
-	THROW(({"LDAP: LDAPS is not available without SSL support.\n",backtrace()}));
-    }
-    else
-      ::create(::_fd);
-#endif
 
     DWRITE("client.create: connected!\n");
 
