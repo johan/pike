@@ -130,7 +130,7 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	    break;
 
 	  default:
-	    error("Cannot cast to array.\n");
+	    error("Cannot cast %s to array.\n",get_name_of_type(sp[-1].type));
 	      
 	}
 	break;
@@ -148,7 +148,7 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	    break;
 	    
 	  default:
-	    error("Cannot cast to int.\n");
+	    error("Cannot cast %s to int.\n",get_name_of_type(sp[-1].type));
 	}
 	
 	sp[-1].type=T_INT;
@@ -170,7 +170,7 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	    break;
 	    
 	  default:
-	    error("Cannot cast to float.\n");
+	    error("Cannot cast %s to float.\n",get_name_of_type(sp[-1].type));
 	    f=0.0;
 	}
 	
@@ -221,7 +221,7 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	    break;
 	    
 	  default:
-	    error("Cannot cast to string.\n");
+	    error("Cannot cast %s to string.\n",get_name_of_type(sp[-1].type));
 	}
 	
 	sp[-1].type=T_STRING;
@@ -248,7 +248,7 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	    break;
 
 	  default:
-	    error("Cannot cast to object.\n");
+	    error("Cannot cast %s to object.\n",get_name_of_type(sp[-1].type));
 	}
 	break;
 	
@@ -282,7 +282,7 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	return;
 
 	default:
-	  error("Cannot cast that to a program.\n");
+	  error("Cannot cast %s to a program.\n",get_name_of_type(sp[-1].type));
       }
     }
   }
