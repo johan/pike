@@ -617,9 +617,8 @@ void f_throw(INT32 args)
 {
   if(args < 1)
     error("Too few arguments to throw()\n");
-  pop_n_elems(args-1);
-  throw_value=sp[-1];
-  sp--;
+  assign_svalue(&throw_value,sp-args);
+  pop_n_elems(args);
   pike_throw();
 }
 

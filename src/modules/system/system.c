@@ -873,7 +873,6 @@ static void f_cp(INT32 args)
 }
 #endif
 
-
 /*
  * Module linkage
  */
