@@ -9,4 +9,9 @@ CONFIG_HEADERS=@CONFIG_HEADERS@
 @dynamic_module_makefile@
 kerberos.o: $(SRCDIR)/kerberos.c
 
+.SUFFIXES: .c .o .cmod
+
+.cmod.c:
+	../../precompile.sh precompile.pike >"$@" "$<" || { rm "$@"; exit 1; }
+
 @dependencies@
