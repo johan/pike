@@ -75,6 +75,7 @@ RCSID("$Id$");
 
 struct object *master_object = 0;
 struct program *master_program =0;
+static int master_is_cleaned_up = 0;
 PMOD_EXPORT struct object *first_object;
 
 struct object *gc_internal_object = 0;
@@ -93,6 +94,9 @@ static struct object *gc_mark_object_pos = 0;
       size+=o->prog->storage_needed;		\
 }while(0)
 BLOCK_ALLOC_FILL_PAGES(object, 2)
+
+#undef COUNT_OTHER
+#define COUNT_OTHER()
 
 PMOD_EXPORT struct object *low_clone(struct program *p)
 {
@@ -486,7 +490,7 @@ PMOD_EXPORT struct object *get_master(void)
   if(master_object && master_object->prog)
     return master_object;
 
-  if(inside) return 0;
+  if(inside || master_is_cleaned_up) return 0;
 
   if(master_object)
   {
@@ -1557,7 +1561,8 @@ void cleanup_objects(void)
   for(o=first_object;o;o=next)
   {
     add_ref(o);
-    if(o->prog)
+    if(o != master_object &&	/* Wait with the master till last. */
+       o->prog)
     {
       debug_malloc_touch(o);
       debug_malloc_touch(o->storage);
@@ -2343,7 +2348,10 @@ void exit_object(void)
     destruct_object_evaluator_callback = NULL;
   }
 
+  master_is_cleaned_up = 1;
   if (master_object) {
+    call_destroy (master_object, 1);
+    destruct (master_object);
     free_object(master_object);
     master_object=0;
   }
