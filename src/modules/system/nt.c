@@ -1980,8 +1980,10 @@ static void f_normalize_path(INT32 args)
   ret = str->len;    /* Guess that the result will have the same length... */
   do{
     string_builder_allocate(&res, ret, 0);
-    ret = GetLongPathName(str->str, res.s->str, res.malloced);
-    fprintf(stderr, "ret: %d; malloced: %d\n", ret, res.malloced);
+    /* NOTE: Use the emulated GetLongPathName(), since it normalizes all
+     * components of the path.
+     */
+    ret = Emulate_GetLongPathName(str->str, res.s->str, res.malloced);
     if (!ret) {
       free_string_builder(&res);
       throw_nt_error("normalize_path", errno = GetLastError());
