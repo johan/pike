@@ -47,6 +47,7 @@ int main(int argc, char **argv, char **env)
   perl_run(my_perl);
   perl_destruct(my_perl);
   perl_free(my_perl);
+  return 0;
 }
 ],pike_cv_perlmod_have_perl=yes)
 
