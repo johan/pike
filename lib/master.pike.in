@@ -560,6 +560,11 @@ void unregister(program p)
 {
   if(string fname=search(programs,p))
     m_delete(programs, fname);
+  if (zero_type(objects[p]) != 1)
+    m_delete(objects, p);
+  foreach (fc; string name; mixed mod)
+    if (objectp(mod) && object_program(mod) == p)
+      m_delete(fc, name);
 }
 
 static program findprog(string pname,
