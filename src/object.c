@@ -1255,6 +1255,7 @@ PMOD_EXPORT void object_index_no_free(struct svalue *to,
 	struct svalue tmp;
 	fprintf(stderr,"Placeholder deployed for %p when indexing ", p);
 	tmp.type = T_OBJECT;
+	tmp.subtype = 0;
 	tmp.u.object = o;
 	print_svalue (stderr, &tmp);
 	fputs (" with ", stderr);
@@ -1263,6 +1264,7 @@ PMOD_EXPORT void object_index_no_free(struct svalue *to,
 #endif
 	add_ref(to->u.object=placeholder_object);
 	to->type=T_OBJECT;
+	to->subtype = 0;
 	return;
       }
     }
