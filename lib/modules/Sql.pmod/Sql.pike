@@ -90,7 +90,7 @@ function(string:int) decode_datetime;
 //!            If the hostname is "", access through a UNIX-domain socket or
 //!            similar.
 //!   zero   - Access through a UNIX-domain socket or similar.
-//! > database
+//! > db
 //!   Select this database.
 //! > user
 //!   User name to access the database as.
