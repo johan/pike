@@ -148,7 +148,7 @@ PIKECLASS mpf
       case 2:
 	if(sp[1-args].type == T_INT)
 	{
-	  if(sp[1-args].u.integer<1) {
+	  if(sp[1-args].u.integer<0) {
 	    Pike_error("Bad argument 2 to Gmp.mpf, must be positive.\n");
 	  } else if (sp[1-args].u.integer > 0x10000) {
 	    Pike_error("Bad argument 2 to Gmp.mpf, must be <= 0x10000.\n");
