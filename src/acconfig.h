@@ -45,6 +45,9 @@
 /* Define this to use the new keypair loop. */
 #undef PIKE_MAPPING_KEYPAIR_LOOP
 
+/* Define this to use the new multiset implementation. */
+#undef PIKE_NEW_MULTISETS
+
 /* The following USE_* are used by smartlink */
 /* Define this if your ld sets the run path with -rpath */
 #undef USE_RPATH

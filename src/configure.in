@@ -1087,6 +1087,11 @@ MY_AC_ARG_WITH(lock,
 	  [enable experimental code for multicpu machines (EXPERIMENTAL).]),
 		[],[AC_DEFINE(PIKE_RUN_UNLOCKED)])
 
+MY_AC_ARG_WITH(new-multisets,
+	       MY_DESCR([--with-new-multisets],
+			[enable new multiset implementation (EXPERIMENTAL).]),
+	       [AC_DEFINE(PIKE_NEW_MULTISETS)],[])
+
 # This makes configure default to --without-Perl
 # Remove this when the Perl module stops crashing and hanging. -Hubbe
 AC_ARG_WITH(perl, MY_DESCR([--with-perl],

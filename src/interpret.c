@@ -1990,7 +1990,7 @@ void gdb_backtrace (
 	    break;
 
 	  case T_MULTISET:
-	    fprintf (stderr, "multiset[%ld]", (long) arg->u.multiset->ind->size);
+	    fprintf (stderr, "multiset[%ld]", (long) multiset_sizeof (arg->u.multiset));
 	    break;
 
 	  case T_MAPPING:
