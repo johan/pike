@@ -576,3 +576,4 @@ testsuite: $(SRCDIR)/testsuite.in
 	$(TMP_BINDIR)/mktestsuite $(SRCDIR)/testsuite.in >testsuite -DSRCDIR="$(SRCDIR)"
 
 @dependencies@
+
