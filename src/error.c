@@ -526,7 +526,14 @@ static void f_error__sprintf(INT32 args)
   struct program *p = Pike_fp->current_object->prog;
   int i = find_identifier("error_type", p);
   struct identifier *id = ID_FROM_INT(p, i);
+  int mode = 0;
+  if(args>0 && Pike_sp[-args].type == PIKE_T_INT)
+    mode = Pike_sp[-args].u.integer;
   pop_n_elems(args);
+  if(mode != 'O') {
+    push_undefined();
+    return;
+  }
   push_svalue(&PROG_FROM_INT(p, i)->constants[id->func.offset].sval);
   push_constant_text("(%O)");
   if(GENERIC_ERROR_THIS->desc)

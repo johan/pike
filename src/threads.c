@@ -1403,7 +1403,14 @@ void f_thread_id_status(INT32 args)
  */
 void f_thread_id__sprintf (INT32 args)
 {
+  int c = 0;
+  if(args>0 && Pike_sp[-args].type == PIKE_T_INT)
+    c = Pike_sp[-args].u.integer;
   pop_n_elems (args);
+  if(c != 'O') {
+    push_undefined();
+    return;
+  }
   push_constant_text ("Thread.Thread(");
   push_int64((ptrdiff_t)THIS_THREAD->id);
   push_constant_text (")");

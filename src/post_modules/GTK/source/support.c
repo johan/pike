@@ -826,7 +826,14 @@ void pgtk_free_str( gchar *s )
 
 void pgtk_default__sprintf( int args, int offset, int len )
 {
+  int mode = 0;
+  if(args>0 && Pike_sp[-args].type == PIKE_T_INT)
+    mode = Pike_sp[-args].u.integer;
   my_pop_n_elems( args );
+  if(mode != 'O') {
+    push_undefined();
+    return;
+  }
   push_string( make_shared_binary_string( __pgtk_string_data+offset, len ) );
 }
 

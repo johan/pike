@@ -2090,6 +2090,14 @@ static void dbdate_sprintf(INT32 args)
   char buffer[100];
   sword rc;
   sb4 bsize=100;
+  int mode = 0;
+  if(args>0 && Pike_sp[-args].type == PIKE_T_INT)
+    mode = Pike_sp[-args].u.integer;
+  if(mode != 'O' && mode != 's') {
+    pop_n_elems(args);
+    push_undefined();
+    return;
+  }
   rc=OCIDateToText(get_global_error_handle(),
 		   &THIS_DBDATE->date,
 		   0,
@@ -2145,6 +2153,14 @@ static void dbnull_create(INT32 args)
 
 static void dbnull_sprintf(INT32 args)
 {
+  int mode = 0;
+  if(args>0 && Pike_sp[-args].type == PIKE_T_INT)
+    mode = Pike_sp[-args].u.integer;
+  pop_n_elems(args);
+  if(mode != 'O') {
+    push_undefined();
+    return;
+  }
   switch(THIS_DBNULL->type.type)
   {
     case T_INT: push_text("Oracle.NULLint"); break;

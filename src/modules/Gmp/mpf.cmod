@@ -277,7 +277,8 @@ PIKECLASS mpf
       switch(c)
       {
 	default:
-	  Pike_error("Gmp.Mpf->_sprintf, bad format character.\n");
+	  push_undefined();
+	  return;
 
 	  /* Fixme: Support g/e/E */
 	case 'O':
