@@ -29,6 +29,8 @@ else
     elif test "`uname -s`" = "OpenBSD"; then
       #nasm on OpenBSD is braindamaged
       AC_MSG_RESULT(no)
+    elif test x"${with_valgrind:-no}" != xno; then
+      AC_MSG_RESULT([no - valgrind is used])
     else
       ASSEMBLY_OBJECTS=assembly.o
       AC_DEFINE(ASSEMBLY_OK)
