@@ -1380,11 +1380,19 @@ static void mpzmod_random(INT32 args)
   
 static void init_mpz_glue(struct object *o)
 {
+#ifdef PIKE_DEBUG
+  if(!fp) fatal("ZERO FP\n");
+  if(!THIS) fatal("ZERO THIS\n");
+#endif
   mpz_init(THIS);
 }
 
 static void exit_mpz_glue(struct object *o)
 {
+#ifdef PIKE_DEBUG
+  if(!fp) fatal("ZERO FP\n");
+  if(!THIS) fatal("ZERO THIS\n");
+#endif
   mpz_clear(THIS);
 }
 #endif
