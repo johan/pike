@@ -313,6 +313,12 @@ static void exit_gz_deflate(struct object *o)
  */
 
 /*! @decl void create(int|void magic)
+ *! @param magic
+ *! The magic value is passed down to inflateInit2 in zlib. Specifically,
+ *! if you want to uncompress PKZIP-compressed data, you have to specify
+ *! -15 as the argument. What negative arguments does is undocumented as
+ *! far as we know. Positive arguments set the maximum dictionary size
+ *! though.
  */
 static void gz_inflate_create(INT32 args)
 {
@@ -334,9 +340,10 @@ static void gz_inflate_create(INT32 args)
   }
   else
   {
-    pop_n_elems(args);
     tmp=inflateInit( &THIS->gz );
   }
+  pop_n_elems(args);
+
 /*    mt_lock(& THIS->lock);  */
 /*    mt_unlock(& THIS->lock); */
   switch(tmp)
