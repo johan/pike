@@ -4132,7 +4132,7 @@ PMOD_EXPORT void f_localtime(INT32 args)
  *!   	  Year since 1900.
  *!   	@member int(0..1) "isdst"
  *!   	  Is daylight savings time.
- *!   	@member int(-12..12) "timezone"
+ *!   	@member int "timezone"
  *!   	  The timezone offset from UTC in seconds. If left out, the time
  *!       will be calculated in the local timezone.
  *!   @endmapping
