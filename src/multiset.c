@@ -1664,7 +1664,9 @@ PMOD_EXPORT ptrdiff_t multiset_last (struct multiset *l)
 /* Returns -1 if there's no predecessor. If the node is deleted, the
  * predecessor of the closest following nondeleted node is returned.
  * If there is no following nondeleted node, the last node is
- * returned. */
+ * returned. Note that this function never alters the noderefs; it has
+ * no opinion whether you "walk" to the previous node or only "peek"
+ * at it. */
 PMOD_EXPORT ptrdiff_t multiset_prev (struct multiset *l, ptrdiff_t nodepos)
 {
   struct multiset_data *msd = l->msd;
@@ -1706,8 +1708,10 @@ PMOD_EXPORT ptrdiff_t multiset_prev (struct multiset *l, ptrdiff_t nodepos)
 
 /* Returns -1 if there's no successor. If the node is deleted, the
  * successor of the closest preceding nondeleted node is returned. If
- * there is no preceding nondeleted node, the first node is
- * returned. */
+ * there is no preceding nondeleted node, the first node is returned.
+ * Note that this function never alters the noderefs; it has no
+ * opinion whether you "walk" to the next node or only "peek" at
+ * it. */
 PMOD_EXPORT ptrdiff_t multiset_next (struct multiset *l, ptrdiff_t nodepos)
 {
   struct multiset_data *msd = l->msd;
