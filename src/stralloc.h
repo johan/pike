@@ -163,11 +163,11 @@ INLINE INT32 PIKE_CONCAT4(compare_,FROM,_to_,TO)(const PIKE_CONCAT(p_wchar,TO) *
 PMOD_EXPORT extern struct pike_string *empty_pike_string;
 
 /* Prototypes begin here */
-PMOD_EXPORT INLINE unsigned INT32 index_shared_string(struct pike_string *s,
-						      ptrdiff_t pos);
-PMOD_EXPORT INLINE void low_set_index(struct pike_string *s, ptrdiff_t pos,
-				      int value);
-PMOD_EXPORT INLINE struct pike_string *debug_check_size_shift(struct pike_string *a,int shift);
+PMOD_EXPORT unsigned INT32 index_shared_string(struct pike_string *s,
+					       ptrdiff_t pos);
+PMOD_EXPORT void low_set_index(struct pike_string *s, ptrdiff_t pos,
+			       int value);
+PMOD_EXPORT struct pike_string *debug_check_size_shift(struct pike_string *a,int shift);
 CONVERT(0,1)
 CONVERT(0,2)
 CONVERT(1,0)

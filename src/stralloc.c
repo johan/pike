@@ -161,8 +161,8 @@ static INLINE unsigned INT32 generic_extract (const void *str, int size, ptrdiff
   return 0;
 }
 
-PMOD_EXPORT INLINE unsigned INT32 index_shared_string(struct pike_string *s,
-						      ptrdiff_t pos)
+PMOD_EXPORT unsigned INT32 index_shared_string(struct pike_string *s,
+					       ptrdiff_t pos)
 {
 #ifdef PIKE_DEBUG
   if(pos > s->len || pos<0) {
@@ -179,8 +179,8 @@ PMOD_EXPORT INLINE unsigned INT32 index_shared_string(struct pike_string *s,
   return generic_extract(s->str,s->size_shift,pos);
 }
 
-PMOD_EXPORT INLINE void low_set_index(struct pike_string *s, ptrdiff_t pos,
-				      int value)
+PMOD_EXPORT void low_set_index(struct pike_string *s, ptrdiff_t pos,
+			       int value)
 {
 #ifdef PIKE_DEBUG
   if(pos > s->len || pos<0) {
@@ -208,7 +208,8 @@ PMOD_EXPORT INLINE void low_set_index(struct pike_string *s, ptrdiff_t pos,
 }
 
 #ifdef PIKE_DEBUG
-PMOD_EXPORT INLINE struct pike_string *debug_check_size_shift(struct pike_string *a,int shift)
+PMOD_EXPORT struct pike_string *debug_check_size_shift(struct pike_string *a,
+						       int shift)
 {
   if(a->size_shift != shift)
     Pike_fatal("Wrong STRX macro used!\n");
