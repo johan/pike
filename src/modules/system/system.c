@@ -634,7 +634,7 @@ static MUTEX_T gethostbyname_mutex;
 #define CALL_GETHOSTBYADDR(X,Y,Z) ret=gethostbyaddr((X),(Y),(Z))
 #endif
 
-#endif /* REENTRANT */
+#endif /* _REENTRANT */
 
 /* this is used from modules/file/file.c ! */
 void get_inet_addr(struct sockaddr_in *addr,char *name)
