@@ -519,12 +519,12 @@ void i_img_bmp__decode(INT32 args,int header_only)
 
 void img_bmp__decode(INT32 args)
 {
-   return i_img_bmp__decode(args,0);
+   i_img_bmp__decode(args,0);
 }
 
 void img_bmp_decode_header(INT32 args)
 {
-   return i_img_bmp__decode(args,1);
+   i_img_bmp__decode(args,1);
 }
 
 void f_index(INT32);
