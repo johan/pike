@@ -1,6 +1,8 @@
 //
 // snmp_globals.h
 //
+// $Id$
+//
 
 #define SNMP_DEFAULT_PORT       161
 #define SNMP_DEFAULT_TRAPPORT   162
