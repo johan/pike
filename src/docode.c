@@ -762,7 +762,7 @@ static int do_docode2(node *n,int flags)
     emit(F_ALIGN,sizeof(INT32));
 
     current_switch_values_on_stack=0;
-    current_switch_case=0;
+    current_switch_case=1;
     current_switch_default=-1;
     current_switch_jumptable=(INT32 *)xalloc(sizeof(INT32)*(cases*2+2));
     jumptable=(INT32 *)xalloc(sizeof(INT32)*(cases*2+2));
