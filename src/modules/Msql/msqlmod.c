@@ -521,7 +521,9 @@ static void do_error (INT32 args)
 	check_all_args("Msql->error",args,0);
 	pop_n_elems(args);
 	if (THIS->error_msg)
-		push_string(THIS->error_msg);
+		ref_push_string(THIS->error_msg);
+	else
+	        push_int(0);
 	return;
 }
 
