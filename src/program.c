@@ -6922,6 +6922,7 @@ void init_program(void)
     lfun_strings[i] = make_shared_string(lfun_names[i]);
 
     id.type = T_INT;
+    id.subtype = NUMBER_NUMBER;
     id.u.integer = i;
     key.type = T_STRING;
     key.u.string = lfun_strings[i];

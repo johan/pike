@@ -1676,6 +1676,7 @@ void f_encode_value(INT32 args)
   data->encoded=allocate_mapping(128);
   data->delayed = allocate_array (0);
   data->counter.type=T_INT;
+  data->counter.subtype=NUMBER_NUMBER;
   data->counter.u.integer=COUNTER_START;
 
 #ifdef ENCODE_DEBUG
@@ -2331,7 +2332,7 @@ static void decode_value2(struct decode_data *data)
       EDB (2, fprintf(stderr, "%*sDecoding delay encoded from <%d>\n",
 		      data->depth, "", num););
       entry_id.type = T_INT;
-      entry_id.subtype = 0;
+      entry_id.subtype = NUMBER_NUMBER;
       entry_id.u.integer = num;
       if (!(delayed_enc_val = low_mapping_lookup (data->decoded, &entry_id)))
 	Pike_error ("Failed to find previous record of delay encoded entry <%d>.\n",
@@ -2343,7 +2344,7 @@ static void decode_value2(struct decode_data *data)
       EDB (1, fprintf(stderr, "%*sDecoding TAG_AGAIN from <%d>\n",
 		      data->depth, "", num););
       entry_id.type=T_INT;
-      entry_id.subtype=0;
+      entry_id.subtype=NUMBER_NUMBER;
       entry_id.u.integer=num;
       if((tmp2=low_mapping_lookup(data->decoded, &entry_id)))
       {
@@ -4278,6 +4279,7 @@ static INT32 my_decode(struct pike_string *tmp,
 
   data=ALLOC_STRUCT(decode_data);
   data->counter.type=T_INT;
+  data->counter.subtype=NUMBER_NUMBER;
   data->counter.u.integer=COUNTER_START;
   data->data=(unsigned char *)tmp->str;
   data->len=tmp->len;
