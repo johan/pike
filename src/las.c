@@ -1195,7 +1195,7 @@ node *debug_mkstrnode(struct pike_string *str)
   return freeze_node(res);
 }
 
-node *debug_mkintnode(int nr)
+node *debug_mkintnode(INT_TYPE nr)
 {
   node *res = mkemptynode();
   res->token = F_CONSTANT;
@@ -1208,7 +1208,7 @@ node *debug_mkintnode(int nr)
   return freeze_node(res);
 }
 
-node *debug_mknewintnode(int nr)
+node *debug_mknewintnode(INT_TYPE nr)
 {
   node *res = mkemptynode();
   res->token = F_CONSTANT;

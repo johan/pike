@@ -4500,7 +4500,7 @@ static void f_interleave_array(INT32 args)
       if (low > k->ind.u.integer) {
 	low = k->ind.u.integer;
 	if (low < 0) {
-	  Pike_error("interleave_array(): Index %d in mapping %d is negative!\n",
+	  Pike_error("interleave_array(): Index %"PRINTPIKEINT"d in mapping %d is negative!\n",
 		low, i);
 	}
       }

@@ -1001,7 +1001,7 @@ void f_mutex_lock(INT32 args)
   {
     default:
       bad_arg_error("mutex->lock", Pike_sp-args, args, 2, "int(0..2)", Pike_sp+1-args,
-		  "Unknown mutex locking style: %d\n",type);
+		  "Unknown mutex locking style: %"PRINTPIKEINT"d\n",type);
       
 
     case 0:
@@ -1103,7 +1103,7 @@ void f_mutex_trylock(INT32 args)
   {
     default:
       bad_arg_error("mutex->trylock", Pike_sp-args, args, 2, "int(0..2)", Pike_sp+1-args,
-		  "Unknown mutex locking style: %d\n",type);
+		  "Unknown mutex locking style: %"PRINTPIKEINT"d\n",type);
 
     case 0:
       if(m->key && OB2KEY(m->key)->owner == Pike_interpreter.thread_id)

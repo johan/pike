@@ -225,7 +225,7 @@ void debug_pop_type_stack(unsigned INT16 expected);
 void type_stack_pop_to_mark(void);
 void type_stack_reverse(void);
 struct pike_type *debug_peek_type_stack(void);
-void debug_push_int_type(INT32 min, INT32 max);
+void debug_push_int_type(INT_TYPE min, INT_TYPE max);
 void debug_push_object_type(int flag, INT32 id);
 void debug_push_object_type_backwards(int flag, INT32 id);
 void debug_push_type_name(struct pike_string *name);

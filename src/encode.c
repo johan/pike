@@ -2985,7 +2985,7 @@ static void decode_value2(struct decode_data *data)
 	      (Pike_sp[-1].u.integer > 0)) {
 	    struct program *p = id_to_program(Pike_sp[-1].u.integer);
 	    if (!p) {
-	      Pike_error("Failed to decode program %d\n",
+	      Pike_error("Failed to decode program %"PRINTPIKEINT"d\n",
 			 Pike_sp[-1].u.integer);
 	    }
 	    pop_stack();

@@ -516,7 +516,7 @@ struct pike_type *debug_peek_type_stack(void)
   return *(Pike_compiler->type_stackp);
 }
 
-void debug_push_int_type(INT32 min, INT32 max)
+void debug_push_int_type(INT_TYPE min, INT_TYPE max)
 {
   *(++Pike_compiler->type_stackp) = mk_type(T_INT,
 					    (void *)(ptrdiff_t)min,
