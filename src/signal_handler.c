@@ -3299,7 +3299,7 @@ void init_signals(void)
   pid_mapping=allocate_mapping(2);
 
 #ifndef USE_WAIT_THREAD
-  pid_mapping->flags|=MAPPING_FLAG_WEAK;
+  mapping_set_flags(pid_mapping, MAPPING_FLAG_WEAK);
 #endif
 #endif
 
