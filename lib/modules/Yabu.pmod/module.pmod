@@ -666,7 +666,7 @@ class Table {
     foreach(almost_free - working, string k)
       db->free(k);
 
-    dirty = sizeof(working);
+    dirty = 0;
     UNLOCK();
   }
 
@@ -923,7 +923,6 @@ class Table {
     sync();
     destruct(index);
     destruct(db);
-    destruct(lock_file);
     remove_call_out(sync_schedule);
   }
 
