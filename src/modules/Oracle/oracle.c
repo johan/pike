@@ -1062,8 +1062,8 @@ static void f_fetch_fields(INT32 args)
 			dbcon->error_handle,
 			i+1,
 			info->data.lob ? 
-			& info->data.lob :
-			& info->data.u,
+			(void *)(&info->data.lob):
+			(void *)(&info->data.u),
 #ifdef STATIC_BUFFERS
 			data_size<0? STATIC_BUFFERS :data_size,
 #else
