@@ -794,6 +794,8 @@ constant master_efuns = ({
 #endif
 });
 
+string include_prefix;
+
 /* Note that create is called before add_precompiled_program
  */
 void create()
@@ -829,6 +831,10 @@ void create()
   // add path for architecture-dependant files
   add_include_path("¤lib_prefix¤/include");
   add_module_path("¤lib_prefix¤/modules");
+#endif
+
+#if "¤include_prefix¤"[0]!='¤'
+  include_prefix = "¤include_prefix¤";
 #endif
 }
 
