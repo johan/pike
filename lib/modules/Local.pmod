@@ -11,7 +11,7 @@
 //! determined by examining the environment variable HOME, and
 //! if that fails the environment variable USERPROFILE.
 //! @seealso
-//!   @[Local.add_local_path()], @[Local.remove_local_path()]
+//!   @[Local.add_path()], @[Local.remove_path()]
 //!
 
 static array(string) local_path;
