@@ -82,7 +82,7 @@ int main(int n, array(string) args) {
       else
 	foreach( ({ "pike", "pike.in", "pmod", "pmod.in" }), string ext)
 	  sscanf(name, "%s."+ext, name);
-      if(name == "module") {
+      if(name == "module" && !rootless) {
 	if(!sizeof(parents))
 	  error("Unknown module parent name.\n");
 	name = parents[-1];
