@@ -37,6 +37,10 @@ extern struct program *magic_index_program;
 extern struct program *magic_set_index_program;
 extern struct program *magic_indices_program;
 extern struct program *magic_values_program;
+#ifdef DO_PIKE_CLEANUP
+extern int gc_external_refs_zapped;
+void gc_check_zapped (void *a, TYPE_T type, const char *file, int line);
+#endif
 
 #define free_object(O) do{						\
     struct object *o_=(O);						\

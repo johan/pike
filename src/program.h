@@ -565,6 +565,11 @@ static inline int CHECK_IDREF_RANGE (int x, const struct program *p)
 #define FIND_LFUN(P,N) ( dmalloc_touch(struct program *,(P))->flags & PROGRAM_FIXED?((P)->lfuns[(N)]):low_find_lfun((P), (N)) )
 #define QUICK_FIND_LFUN(P,N) (dmalloc_touch(struct program *,(P))->lfuns[N])
 
+#ifdef DO_PIKE_CLEANUP
+extern int gc_external_refs_zapped;
+void gc_check_zapped (void *a, TYPE_T type, const char *file, int line);
+#endif
+
 #define free_program(p) do{						\
     struct program *_=(p);						\
     debug_malloc_touch(_);						\
