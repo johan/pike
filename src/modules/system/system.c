@@ -1766,7 +1766,7 @@ int get_inet_addr(PIKE_SOCKADDR *addr,char *name,char *service, INT_TYPE port, i
     for(p=res; p; p=p->ai_next)
       if(p->ai_addrlen > 0 && p->ai_addrlen <= sizeof(*addr))
 	break;
-    if(p)
+    if(p && p->ai_addr)
       MEMCPY((char *)addr, (char *)p->ai_addr, addr_len = p->ai_addrlen);
     freeaddrinfo(res);
     if(addr_len)
