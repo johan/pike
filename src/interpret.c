@@ -1072,7 +1072,7 @@ static void eval_instruction(unsigned char *pc)
 
       CASE(F_INDEX);
     do_index:
-      f_index();
+      o_index();
       print_return_value();
       break;
 

@@ -1832,7 +1832,7 @@ static void calcC()
   {
     low_lex();
     calc1();
-    f_index();
+    f_index(2);
     if(lookahead!=']')
       error("Missing ']'\n");
     else
