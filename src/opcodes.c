@@ -48,6 +48,10 @@ void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind)
     to->u.integer=i;
     break;
 
+  case T_PROGRAM:
+    program_index_no_free(to, what->u.program, ind);
+    break;
+
   case T_STRING:
     if(ind->type==T_INT)
     {
