@@ -538,6 +538,8 @@ interpret_protos.h: $(SRCDIR)/interpret_functions.h
 
 lex.o: $(SRCDIR)/lex.c interpret_protos.h
 
+lex_t.o: $(SRCDIR)/lex_t.c interpret_protos.h
+
 language.o: $(SRCDIR)/language.c $(SRCDIR)/object.h $(SRCDIR)/interpret.h $(SRCDIR)/program.h
 
 $(SRCDIR)/language.h: $(SRCDIR)/language.yacc
