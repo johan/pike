@@ -2521,7 +2521,6 @@ static void decode_value2(struct decode_data *data)
 	  }
 	  if(p->parent) {
 	    add_ref(p->parent);
-	    p->parent_program_id = p->parent->id;
 	  }
 	  pop_stack();
 

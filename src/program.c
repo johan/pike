@@ -1778,7 +1778,6 @@ void low_start_new_program(struct program *p,
     i.parent_identifier=-1;
     i.parent_offset=-18;
     i.name=0;
-    Pike_compiler->new_program->parent_program_id=compilation_depth>0 && Pike_compiler->previous->new_program ? Pike_compiler->previous->new_program->id : -1;
     add_to_inherits(i);
   }
 
