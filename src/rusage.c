@@ -135,14 +135,16 @@ INT32 *low_rusage(void)
   utime = rus.ru_utime.tv_sec * 1000 + rus.ru_utime.tv_usec / 1000;
   stime = rus.ru_stime.tv_sec * 1000 + rus.ru_stime.tv_usec / 1000;
 
+#ifndef GETRUSAGE_RESTRICTED
   maxrss = rus.ru_maxrss;
 #ifdef sun
   maxrss *= getpagesize() / 1024;
 #endif
+#endif
   rusage_values[0] = utime;
   rusage_values[1] = stime;
-  rusage_values[2] = maxrss;
 #ifndef GETRUSAGE_RESTRICTED
+  rusage_values[2] = maxrss;
   rusage_values[3] = rus.ru_ixrss;
   rusage_values[4] = rus.ru_idrss;
   rusage_values[5] = rus.ru_isrss;
