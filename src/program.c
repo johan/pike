@@ -393,23 +393,6 @@ void fixate_program(void)
 }
 
 /*
- * Error handler.
- *
- * This function should not normally be called,
- * but is here for safety reasons.
- */
-void restore_threads_disabled(void *arg)
-{
-  fprintf(stderr, "restore_threads_disabled(): threads_disabled:%d, saved_threads_disabled:%d compilation_depth:%d\n", threads_disabled, (int)arg, compilation_depth);
-#ifdef DEBUG
-  fatal("restore_threads_disabled() called\n");
-#endif /* DEBUG */
-
-  threads_disabled = (int)arg;
-  co_signal(&threads_disabled_change);
-}
-
-/*
  * Start building a new program
  */
 void low_start_new_program(struct program *p,
@@ -2068,7 +2051,7 @@ struct program *compile(struct pike_string *prog)
   }
 
 #ifdef DEBUG
-  if (threads_disabled != saved_threads_disabled+1) {
+  if (threads_disabled < saved_threads_disabled) {
     fatal("compile(): threads_disabled:%d saved_threads_disabled:%d\n",
 	  threads_disabled, saved_threads_disabled);
   }
