@@ -325,6 +325,11 @@ AC_SUBST(RUNTPIKE)
 
 define([AC_MODULE_INIT],
 [
+echo
+echo '###################################################'
+echo '##' `basename "$PWD"`
+echo
+
 AC_LOW_MODULE_INIT()
 PIKE_FEATURE_CLEAR()
 
@@ -577,4 +582,13 @@ int main() {
     AC_MSG_RESULT([$5])
   fi
   AC_DEFINE_UNQUOTED($4, "${res}")
+])
+
+dnl PIKE_MSG_WARN(message) 
+dnl == AC_MSG_WARN but adds to config.info
+define(PIKE_MSG_WARN, [
+  AC_MSG_WARN($1)
+  cat >>config.warnings <<EOF
+$1
+EOF
 ])
