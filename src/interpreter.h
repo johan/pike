@@ -60,14 +60,14 @@
   prefix=0,\
   instr += LOW_GET_ARG(),\
   DEBUG_LOG_ARG (instr),\
-  instr))
+  instr)
 
 #define GET_ARG2() (\
   instr=prefix2,\
   prefix2=0,\
   instr += LOW_GET_ARG(),\
   DEBUG_LOG_ARG2 (instr),\
-  instr))
+  instr)
 
 #else /* !PIKE_DEBUG */
 
