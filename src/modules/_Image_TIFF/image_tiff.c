@@ -14,7 +14,7 @@
 **!
 */
 
-#ifdef HAVE_LIBTIFF
+#ifdef HAVE_WORKING_LIBTIFF
 RCSID("$Id$");
 
 #include "global.h"
@@ -901,11 +901,11 @@ void my_tiff_error_handler(const char *module, const char *fmt, va_list x)
 #endif /* HAVE_VSNPRINTF */
 }
 
-#endif /* HAVE_LIBTIFF */
+#endif /* HAVE_WORKING_LIBTIFF */
 
 PIKE_MODULE_INIT
 {
-#ifdef HAVE_LIBTIFF
+#ifdef HAVE_WORKING_LIBTIFF
 #ifdef DYNAMIC_MODULE
    push_string(make_shared_string("Image")); push_int(0);
    SAFE_APPLY_MASTER("resolv",2);
@@ -967,12 +967,12 @@ PIKE_MODULE_INIT
    opt_dpy = make_shared_string( "dpy" );
    opt_xdpy = make_shared_string( "xdpy" );
    opt_ydpy = make_shared_string( "ydpy" );
-#endif /* HAVE_LIBTIFF */
+#endif /* HAVE_WORKING_LIBTIFF */
 }
 
 PIKE_MODULE_EXIT
 {
-#ifdef HAVE_LIBTIFF
+#ifdef HAVE_WORKING_LIBTIFF
   free_string(opt_compression);
   free_string(opt_name);
   free_string(opt_comment);
