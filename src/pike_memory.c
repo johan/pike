@@ -609,7 +609,7 @@ static long softlim_should_be=0;
 #endif
 
 
-PMOD_EXPORT char *debug_xalloc(long size)
+PMOD_EXPORT char *debug_xalloc(size_t size)
 {
   char *ret;
   if(!size) 
@@ -630,7 +630,7 @@ PMOD_EXPORT char *debug_xalloc(long size)
   return 0;
 }
 
-char *debug_qalloc(long size)
+char *debug_qalloc(size_t size)
 {
   char *ret;
   if(!size) return 0;

@@ -96,7 +96,7 @@ PMOD_EXPORT void memfill(char *to,
 	     char *from,
 	     INT32 fromlen,
 	     INT32 offset);
-PMOD_EXPORT char *debug_xalloc(long size);
+PMOD_EXPORT char *debug_xalloc(size_t size);
 
 #undef BLOCK_ALLOC
 
