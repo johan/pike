@@ -1635,7 +1635,7 @@ void zap_all_arrays(void)
     if(!(next=a->next))
       fatal("Null pointer in array list.\n");
     
-    /* free_array(a); */
+    free_array(a);
     a=next;
   } while (a != & empty_array);
 }
