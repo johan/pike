@@ -13,8 +13,6 @@
 #include <signal.h>
 #include <fdlib.h>
 
-#define AAP_DEBUG
-
 #ifdef _REENTRANT
 #include <stdlib.h>
 #include <errno.h>
