@@ -113,7 +113,7 @@ void ia32_flush_code_generator(void);
 #define FLUSH_CODE_GENERATOR_STATE ia32_flush_code_generator
 
 
-#ifdef _M_IX86
+#if defined(_M_IX86) && !defined(__GNUC__)
 
 #define CALL_MACHINE_CODE(pc)                                   \
   /* This code does not clobber %eax, %ebx, %ecx & %edx, but    \
@@ -128,7 +128,7 @@ void ia32_flush_code_generator(void);
 #define EXIT_MACHINE_CODE()                                     \
   __asm { __asm add esp,12 }
 
-#else  /* _M_IX86 */
+#else  /* _M_IX86 && !__GNUC__ */
 
 #define CALL_MACHINE_CODE(pc)						\
   /* This code does not clobber %eax, %ebx, %ecx & %edx, but		\
@@ -143,4 +143,4 @@ void ia32_flush_code_generator(void);
 #define EXIT_MACHINE_CODE()						\
   __asm__ __volatile__( "add $12,%%esp\n" : : )
 
-#endif /* _M_IX86 */
+#endif /* _M_IX86 && !__GNUC__ */
