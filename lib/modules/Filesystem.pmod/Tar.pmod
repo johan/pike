@@ -15,13 +15,21 @@ class _Tar  // filesystem
 
     static private int start, pos, len;
 
+    static string _sprintf()
+    {
+      return sprintf("Filesystems.Tar.ReadFile(%d, %d /* pos = %d */)",
+		     start, len, pos);
+    }
+
     int seek(int p)
     {
       if(p<0)
 	if((p += len)<0)
 	  p = 0;
-      if(p>=len)
+      if(p>=len) {
 	p = len-1;
+	if (!len) p = 0;
+      }
       return ::seek((pos = p)+start);
     }
 
