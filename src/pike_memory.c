@@ -1291,7 +1291,7 @@ void debug_free(void *p, LOCATION location, int mustfind)
 
   mh=my_find_memhdr(p,0);
 
-  if(verbose_debug_malloc || (mh->flags & MEM_WARN_ON_FREE))
+  if(verbose_debug_malloc || (mh && (mh->flags & MEM_WARN_ON_FREE)))
     fprintf(stderr, "free(%p) (%s)\n", p, LOCATION_NAME(location));
 
   if(!mh && mustfind && p)
