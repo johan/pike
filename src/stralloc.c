@@ -1449,7 +1449,7 @@ PMOD_EXPORT struct pike_string *add_shared_strings(struct pike_string *a,
   pike_string_cpy(tmp,a);
   INC_PCHARP(tmp,a->len);
   pike_string_cpy(tmp,b);
-  return end_shared_string(ret);
+  return low_end_shared_string(ret);
 }
 
 PMOD_EXPORT struct pike_string *add_and_free_shared_strings(struct pike_string *a,
