@@ -7,6 +7,12 @@
 
 constant rdf_ns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 
+constant default_ns = ([
+  "http://www.w3.org/2002/07/owl#" : "owl",
+  "http://www.w3.org/2000/01/rdf-schema#" : "rdfs",
+  "http://www.w3.org/2001/XMLSchema#" : "xsd",
+]);
+
 static int(1..) node_counter = 1;
 static mapping(string:Resource) uris = ([]);
 
@@ -621,6 +627,7 @@ static int dirty_namespaces = 1;
 static mapping(string:string) namespaces = ([]); // url-prefix:name
 static string common_ns = ""; // The most common namespace
 
+// W3C must die!
 static Node add_xml_children(Node p, string rdfns) {
   mapping rdf_m = p->get_ns_attributes(rdf_ns);
   if(rdf_m->about && rdf_m->ID)
@@ -756,7 +763,7 @@ static void fix_namespaces() {
     else {
       string ns;
       do {
-	ns = Locale.Language.nld.number(i++);
+	ns = default_ns[uri] || Locale.Language.nld.number(i++);
       }
       while( has_value(new, ns) || has_value(namespaces, ns) );
       new[uri] = ns;
@@ -783,7 +790,7 @@ static void add_xml_Description(String.Buffer buf,
       if(right->is_literal_resource)
 	buf->add(">", right->get_xml(), "</", left->get_qname(), ">");
       else
-	buf->add(" rdf:resource=\"", right->get_qname(), "\"/>");
+	buf->add(" rdf:resource=\"", right->get_uri(), "\"/>");
       if(sizeof(rel)>1) buf->add("\n");
     }
   }
