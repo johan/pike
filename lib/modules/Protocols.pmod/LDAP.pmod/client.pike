@@ -754,7 +754,7 @@
     }
     if(intp(raw = send_search_op(ldap_basedn, ldap_scope, ldap_deref,
 			ldap_sizelimit, ldap_timelimit, attrsonly, filter,
-			attrs))) {
+			attrs||lauth->attributes))) {
       THROW(({error_string()+"\n",backtrace()}));
       return(-ldap_errno);
     }
