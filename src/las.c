@@ -1735,8 +1735,8 @@ node *recursive_add_call_arg(node *n, node *arg)
   node *tmp;
 
   if (!n) {
-    /* Earlier parse error. */
-    return NULL;
+    /* Earlier parse error, or empty argument list. */
+    return arg;
   }
 
   switch(n->token)
