@@ -150,9 +150,9 @@ object rsa_sign(object context, string cookie, object struct)
 
 object dsa_sign(object context, string cookie, object struct)
 {
+  /* NOTE: The details are not described in the SSL 3 spec. */
   string s = context->dsa->sign_ssl(cookie + struct->contents());
-  struct->put_var_string(s, 1);
-
+  struct->put_var_string(s, 2); 
   return struct;
 }
 
@@ -189,6 +189,28 @@ class dh_parameters
       order = (p-1) / 2;
       
       g = Gmp.mpz(2);
+
+      return this_object();
+    }
+
+  void create(object ... args)
+    {
+      switch (sizeof(args))
+      {
+      case 0:
+	orm96();
+	break;
+      case 3:
+#if 0
+	[p, g, order] = args;
+#else
+	p = args[0]; g = args[1]; order = args[2];
+#endif
+	break;
+      default:
+	throw( ({ "SSL.cipher.dh_parameters->create: "
+		  "Wrong number of arguments.\n", backtrace() }) );
+      }
     }
 }
 
