@@ -433,7 +433,6 @@ void low_exit_main(void)
   free_svalue(& throw_value);
   throw_value.type=T_INT;
 
-  cleanup_callbacks();
 #if defined(DEBUG) && defined(DEBUG_MALLOC)
   if(verbose_debug_exit)
   {
@@ -502,6 +501,7 @@ void low_exit_main(void)
   zap_all_mappings();
 
   cleanup_shared_string_table();
+  cleanup_callbacks();
 #endif
 }
 
