@@ -327,7 +327,8 @@ void move_appendices(Node n) {
     }
   }
   if(sizeof(appendix_queue))
-    werror("Failed to find appendi%s %s.\n", (sizeof(appendix_queue)==1?"x":"ces"),
+    werror("Failed to find appendi%s %s.\n",
+	   (sizeof(appendix_queue)==1?"x":"ces"),
 	   String.implode_nicely(map(indices(appendix_queue),
 				     lambda(string in) {
 				       return "\""+in+"\"";
