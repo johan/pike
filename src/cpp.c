@@ -871,6 +871,7 @@ static INT32 low_cpp(struct cpp *this,
     case 'l':
       if(WGOBBLE("line"))
 	{
+	  /* FIXME: Why not use SKIPSPACE()? */
 	  while(data[pos]==' ' || data[pos]=='\t') pos++;
 	}else{
 	  goto unknown_preprocessor_directive;
