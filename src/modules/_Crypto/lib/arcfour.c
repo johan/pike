@@ -1,9 +1,9 @@
-/* rc4.c
+/* arcfour.c
  *
  */
 
 #include "crypto_types.h"
-#include <rc4.h>
+#include <arcfour.h>
 
 #ifdef RCSID
 RCSID("$Id$");
@@ -11,7 +11,7 @@ RCSID("$Id$");
 
 #define SWAP(a,b) do { int _t = a; a = b; b = _t; } while(0)
 
-void rc4_set_key(struct rc4_ctx *ctx, const unsigned INT8 *key, INT32 len)
+void arcfour_set_key(struct arcfour_ctx *ctx, const unsigned INT8 *key, INT32 len)
 {
   register unsigned INT8 j; /* Depends on the eight-bitness of these variables. */
   unsigned i;
@@ -32,7 +32,7 @@ void rc4_set_key(struct rc4_ctx *ctx, const unsigned INT8 *key, INT32 len)
   ctx->i = ctx->j = 0;
 }
 
-void rc4_crypt(struct rc4_ctx *ctx, unsigned INT8 *dest, const unsigned INT8 *src, INT32 len)
+void arcfour_crypt(struct arcfour_ctx *ctx, unsigned INT8 *dest, const unsigned INT8 *src, INT32 len)
 {
   register unsigned INT8 i, j; /* Depends on the eight-bitness of these variables */
 
