@@ -1434,12 +1434,12 @@ void fix_type_field(node *n)
     f=CAR(n)->type?CAR(n)->type:mixed_type_string;
     n->type=check_call(s,f);
     args=count_arguments(s);
-    max_args=get_max_args(f);
+    max_args=count_arguments(f);
+    if(max_args<0) max_args=0x7fffffff;
 
     if(!n->type)
     {
       char *name;
-      int args;
       switch(CAR(n)->token)
       {
       case F_IDENTIFIER:
@@ -1479,7 +1479,7 @@ void fix_type_field(node *n)
 
       if(max_args < args)
       {
-	my_yyerror("To many arguments to %s.\n",name);
+	my_yyerror("Too many arguments to %s. (%d %d)\n",name,max_args,args);
       }
       else if(max_correct_args == args)
       {
