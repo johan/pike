@@ -233,7 +233,7 @@ void f__xpm_write_rows( INT32 args )
   rgb_group *dst, *adst;
   INT_TYPE y,x,  bpc;
 
-  get_all_args("_xpm_write_rows",args,"%o%o%d%a%a",
+  get_all_args("_xpm_write_rows",args,"%o%o%i%a%a",
                &img,&alpha,&bpc,&colors,&pixels);
 
   iimg = (struct image *)get_storage( img, image_program );
