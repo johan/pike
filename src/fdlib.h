@@ -7,6 +7,13 @@
 #include "global.h"
 #include "pike_macros.h"
 
+
+/* The sp macro conflicts with Solaris 2.5.1's <sys/file.h>. */
+#ifdef sp
+#undef sp
+#define STACKPOINTER_WAS_DEFINED
+#endif /* sp */
+
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
 #endif
@@ -31,6 +38,11 @@
 #include <socket.h>
 #endif /* HAVE_SOCKET_H */
 
+/* Restore the sp macro */
+#ifdef STACKPOINTER_WAS_DEFINED
+#define sp Pike_sp
+#undef STACK_POINTER_WAS_DEFINED
+#endif /* STACKPOINTER_WAS_DEFINED */
 
 #define fd_INTERPROCESSABLE   1
 #define fd_CAN_NONBLOCK       2
