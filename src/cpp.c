@@ -480,7 +480,7 @@ while(1)					\
   SKIPSPACE();					\
   if(data[pos]=='/')				\
   {						\
-    INT32 tmp;					\
+    ptrdiff_t tmp;				\
     switch(data[pos+1])				\
     {						\
     case '/':					\
