@@ -360,7 +360,9 @@ void assemble(void)
     case F_START_FUNCTION:
       break;
     case F_ALIGN:
+#ifndef HAVE_COMPUTED_GOTO
       while(PC % c->arg) add_to_program(0);
+#endif /* HAVE_COMPUTED_GOTO */
       break;
 
     case F_BYTE:
@@ -447,9 +449,16 @@ void assemble(void)
 	fatal("Hyperspace error: unknown jump point %ld at %d (pc=%x).\n",
 	      PTRDIFF_T_TO_LONG(e), labels[e], jumps[e]);
 #endif
+#ifdef HAVE_COMPUTED_GOTO
+      tmp = (int)(ptrdiff_t)(Pike_compiler->new_program->program[jumps[e]]);
+      Pike_compiler->new_program->program[jumps[e]] =
+	(PIKE_OPCODE_T)(ptrdiff_t)(tmp2 - jumps[e]);
+      jumps[e] = tmp;
+#else /* !HAVE_COMPUTED_GOTO */
       tmp=read_int(jumps[e]);
       upd_int(jumps[e], tmp2 - jumps[e]);
       jumps[e]=tmp;
+#endif /* HAVE_COMPUTED_GOTO */
     }
   }
 

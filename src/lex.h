@@ -90,6 +90,11 @@ struct reserved;
 void init_lex(void);
 char *low_get_f_name(int n,struct program *p);
 char *get_f_name(int n);
+#ifdef HAVE_COMPUTED_GOTO
+char *get_opcode_name(PIKE_OPCODE_T n);
+#else /* !HAVE_COMPUTED_GOTO */
+#define get_opcode_name(n)	get_f_name(n)
+#endif /* HAVE_COMPUTED_GOTO */
 char *get_token_name(int n);
 
 int yylex0(YYSTYPE *);
