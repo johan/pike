@@ -1656,6 +1656,9 @@ test_equal(Array.diff("qadfgoksdfäojerjgöohjgdgkm"/"",
               ({ ({ "x" }), "adfgok"/"", ({}), ({ "ä" }), ({ "l" }),
                  "oje"/"", ({ "o" }), "rjgöo"/"", ({ "y" }), "jgdgkm"/"",
                  "zzz"/"" }) }))
+test_equal(Array.diff("123.org"/"","http://123.org/"/""),
+	   ({ ({ ({}), "123.org"/"", ({}) }),
+	      ({ "http://"/"", "123.org"/"", ({ "/" }) }) }))
 
 
 // - equal
