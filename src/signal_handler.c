@@ -1593,7 +1593,6 @@ extern int pike_make_pipe(int *);
 #endif /* !__NT__ && !__amigaos__ */
 
 #ifdef HAVE___PRIOCNTL
-#undef PC
 # include <sys/priocntl.h>
 # include <sys/rtpriocntl.h>
 # include <sys/tspriocntl.h>
