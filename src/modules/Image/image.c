@@ -88,6 +88,7 @@
 **!	<ref>tozbgr</ref>
 **!
 **! see also: Image, Image.font
+*/
 
 #include "global.h"
 
