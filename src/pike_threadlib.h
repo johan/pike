@@ -736,8 +736,12 @@ PMOD_EXPORT extern int Pike_in_gc;
 
 #define SWAP_IN_THREAD_IF_REQUIRED() do { 			\
   struct thread_state *_tmp=thread_state_for_id(th_self());	\
-  HIDE_GLOBAL_VARIABLES();					\
-  THREADS_DISALLOW()
+  if (_tmp) {							\
+    do {	/* Undone by THREADS_DISALLOW(). */		\
+      HIDE_GLOBAL_VARIABLES();					\
+      THREADS_DISALLOW();					\
+    }								\
+  } while(0)
 
 #ifdef PIKE_DEBUG
 #define ASSERT_THREAD_SWAPPED_IN() do {				\
