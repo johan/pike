@@ -56,7 +56,7 @@ void f_index(INT32 args);
 void f_arrow(INT32 args);
 void f_sizeof(INT32 args);
 void init_operators(void);
-void exit_operators();
+void exit_operators(void);
 /* Prototypes end here */
 
 #undef COMPARISON

@@ -1958,7 +1958,7 @@ void init_operators(void)
 }
 
 
-void exit_operators()
+void exit_operators(void)
 {
   if(string_assignment_program)
   {
