@@ -2234,6 +2234,10 @@ else
   AC_MSG_RESULT(no)
 fi
 
+if test "$ac_cv_func___priocntl" = yes; then
+  AC_TYPE_CHECK(pri_t, short)
+fi
+
 ########################################################################
 
 AC_MSG_CHECKING(available file descriptors)
