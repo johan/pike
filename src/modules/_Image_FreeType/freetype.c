@@ -31,8 +31,8 @@ struct face
 {
   FT_Face face;
 };
-#define FACE(X) ((struct face*)get_storage(X,face_program))->face
-#define TFACE   FACE(fp->current_object)
+
+#define TFACE   ((struct face*)Pike_fp->current_storage)->face
 
 
 static void image_ft_face_free( struct object *o )
