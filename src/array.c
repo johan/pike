@@ -2025,7 +2025,7 @@ void describe_array(struct array *a,struct processing *p,int indent)
 /**
  * Pops a number of arguments off of the stack an puts them in an array.
  * The 'top' of the stack will be the last element in the array.
- * @argument args The number of arguments to aggregate.
+ * @param args The number of arguments to aggregate.
  */
 PMOD_EXPORT struct array *aggregate_array(INT32 args)
 {
