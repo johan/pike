@@ -1,5 +1,8 @@
 dnl $Id$
 
+dnl Tell autoconf wrapper script to use 2.13.
+define([AC_PREREQ],[2.13])
+
 dnl Some compatibility with Autoconf 2.50+. Not complete.
 dnl newer Autoconf calls substr m4_substr
 ifdef([substr], ,[m4_copy([m4_substr],[substr])])
