@@ -1,2 +1,2 @@
 # $Id$
-configure.in md2.c md5.c sha.c
+configure.in md2.c md5.c sha.c crypt_md5.c
