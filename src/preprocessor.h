@@ -783,11 +783,30 @@ static INT32 lower_cpp(struct cpp *this,
       PUTNL();
       goto do_skipwhite;
 
+    case 0x1b: case 0x9b:	/* ESC or CSI */
+      /* Assume ANSI/DEC escape sequence.
+       * Format supported:
+       * 	<ESC>[\040-\077]+[\100-\177]
+       * or
+       * 	<CSI>[\040-\077]*[\100-\177]
+       */
+      while ((tmp = data[pos]) && (tmp == ((tmp & 0x1f)|0x20))) {
+	pos++
+      }
+      if (tmp == ((tmp & 0x3f)|0x40)) {
+	pos++
+      } else {
+	/* FIXME: Warning here? */
+      }
+
+      PUTC(' ');
+      break;
+
     case '\t':
     case ' ':
     case '\r':
       PUTC(' ');
-      
+
     do_skipwhite:
       while(data[pos]==' ' || data[pos]=='\r' || data[pos]=='\t')
 	pos++;
