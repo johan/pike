@@ -2,7 +2,7 @@
 SRCDIR=@srcdir@
 VPATH=@srcdir@:@srcdir@/../..:../..
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@ @PERL_LDFLAGS@
-OBJS=perlmod.o perlxsi.o
+OBJS=perlmod.o @extra_objs@
 PERL=@perl@
 MODULE_CFLAGS=@PERL_CCFLAGS@
 
