@@ -7566,7 +7566,8 @@ test_equal([[
     feed("#charset ebcdic-us\n"
 	 "constant val = \"abc\";\n")->drain())()->val;
 ]], "abc")
-// The following two tests are in triplicate to force testing in all shifts.
+
+// The following three tests are in triplicate to force testing in all shifts.
 test_do([[
 #define FOO(X) X
 string s = FOO (#"a
@@ -7584,6 +7585,24 @@ test_do([[
 string s = FOO (#"a
 b
 c");
+]]);
+test_do([[
+#define FOO(X) X
+string s = FOO (#"
+
+");
+]]);
+test_do([[
+#define FOO(X) X
+string s = FOO (#"
+
+");
+]]);
+test_do([[
+#define FOO(X) X
+string s = FOO (#"
+
+");
 ]]);
 test_any([[
 #define FOO(X) X
