@@ -5558,12 +5558,20 @@ void init_builtin_efuns(void)
   
   /* FIXME: Is the third arg a good idea when the first is a mapping? */
   ADD_EFUN("search",f_search,
-	   tOr3(tFunc(tStr tStr tOr(tVoid,tInt),
+	   tOr4(tFunc(tStr tStr tOr(tVoid,tInt),
 		      tInt),
 		tFunc(tArr(tSetvar(0,tMix)) tVar(0) tOr(tVoid,tInt),
 		      tInt),
 		tFunc(tMap(tSetvar(1,tMix),tSetvar(2,tMix)) tVar(2) tOr(tVoid,tVar(1)),
-		      tVar(1))),
+		      tVar(1)),
+
+		tIfnot(
+		  tFunc(tArr(tSetvar(0,tMix)) tVar(0) tOr(tVoid,tInt),
+			tInt),
+		  tIfnot(
+		    tFunc(tMap(tSetvar(1,tMix),tSetvar(2,tMix)) tVar(2) tOr(tVoid,tVar(1)),
+			  tVar(1)),
+		    tFunc( tOr(tMapping,tArray) tMix tOr(tVoid,tMix), tZero)))),
 	   0);
   
 /* function(float|int,int|void:void) */
