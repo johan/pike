@@ -1786,6 +1786,14 @@ void push_magic_index(struct program *type, int inherit_no, int parent_level)
 }
 
 /*! @namespace ::
+ *!
+ *! Symbols implicitly inherited from the virtual base class.
+ *!
+ *! These symbols exist mainly to simplify implementation of
+ *! the corresponding lfuns.
+ *!
+ *! @seealso
+ *!   @[lfun::]
  */
 
 /* The type argument to the magic index functions is intentionally
