@@ -6,6 +6,8 @@
 #include "global.h"
 #include "pike_macros.h"
 #include "time_stuff.h"
+#include "error.h"
+
 #include <ctype.h>
 #include <math.h>
 #ifdef HAVE_SYS_TYPES_H
