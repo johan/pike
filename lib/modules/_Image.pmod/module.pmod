@@ -157,7 +157,7 @@ array(Image.Layer) decode_layers( string data, mapping|void opt )
 //! @belongs Image
 //! Reads the file @[file] and, if the file is compressed
 //! with gzip or bzip, attempts to decompress it by calling
-//! @tt{gzip@} and @tt{bzip2@} in a @tt{Process.create_process@}
+//! @tt{gzip@} and @tt{bzip2@} in a @[Process.create_process]
 //! call.
 string read_file(string file)
 {
