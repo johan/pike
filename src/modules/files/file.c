@@ -2685,9 +2685,11 @@ void exit_files_stat(void);
 
 void pike_module_exit(void)
 {
+  extern void exit_files_efuns(void);
   extern void exit_sendfile(void);
   extern void port_exit_program(void);
 
+  exit_files_efuns();
   exit_files_stat();
 
   exit_sendfile();
@@ -2731,7 +2733,7 @@ void PIKE_CONCAT(Y,_ref) (INT32 args) {				\
      extern int d_flag;                                         \
      if(d_flag)							\
      {								\
-       fprintf(stderr,"Possible gc() failiure detected\n");	\
+       fprintf(stderr,"Possible gc() failure detected\n");	\
        describe(Pike_fp->current_object);				\
        if(o) describe(o);					\
      }								\
