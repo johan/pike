@@ -1786,7 +1786,7 @@ PMOD_EXPORT struct pike_string *string_replace(struct pike_string *str,
   {
 #ifdef PIKE_DEBUG
     if(tmp + (del->len << str->size_shift) > end)
-      Pike_fatal("generic_memory_search found a match beyond end of string!!!\n");
+      Pike_fatal("SearchMojt found a match beyond end of string!!!\n");
 #endif
     generic_memcpy(r,MKPCHARP(s,str->size_shift),(tmp-s)>>str->size_shift);
     INC_PCHARP(r,(tmp-s)>>str->size_shift);
