@@ -71,6 +71,15 @@ struct svalue dest_ob_zero = {
 #endif
 };
 
+#ifdef PIKE_DEBUG
+PMOD_EXPORT const char msg_type_error[] =
+  "Type error: %d\n";
+PMOD_EXPORT const char msg_sval_obj_wo_refs[] =
+  "Svalue to object without references.\n";
+PMOD_EXPORT const char msg_ssval_obj_wo_refs[] =
+  "(short) Svalue to object without references.\n";
+#endif
+
 /*
  * This routine frees a short svalue given a pointer to it and
  * its type.
