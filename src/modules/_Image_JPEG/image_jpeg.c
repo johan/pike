@@ -23,6 +23,9 @@
 #undef INT32
 #endif
 #endif /* 0 */
+
+#define XMD_H /* Avoid INT16 / INT32 being redefined */
+
 #include <jpeglib.h>
 #undef size_t
 #undef FILE
