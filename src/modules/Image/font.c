@@ -498,7 +498,7 @@ void font_write(INT32 args)
 
    for (j=0; j<args; j++)
    {
-     to_write = sp[j-args].u.string->str;
+     to_write = (unsigned char *)sp[j-args].u.string->str;
      to_write_len = sp[j-args].u.string->len;
      switch(this->justification)
      {
