@@ -30,7 +30,8 @@ low_modref:
           pike_line_left.gif pike_line_middle.gif pike_line_right.gif ; do \
 	  cp src_images/$$file modref/images/ ; done
 
-pelix_modref: modref structure/pelix_modref.html
+pelix_modref: build/modref.xml structure/pelix_modref.html \
+	        presentation/make_html.pike presentation/tree-split-autodoc.pike
 	@$(MAKE) PIKE="$(PIKE)" low_pelix_modref
 
 low_pelix_modref:
