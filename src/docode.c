@@ -383,6 +383,7 @@ static int do_docode2(node *n,int flags)
 
     if(match_types(CAR(n)->type,array_type_string) ||
        match_types(CAR(n)->type,string_type_string) ||
+       match_types(CAR(n)->type,mapping_type_string) ||
        match_types(CAR(n)->type,object_type_string))
     {
       code_expression(CDR(n), 0, "assignment");

@@ -1211,7 +1211,7 @@ OPCODE0(F_PUSH_ARRAY, "@")
   push_array_items(Pike_sp->u.array);
 BREAK;
 
-OPCODE2(F_LOCAL_LOCAL_INDEX, "local local index")
+OPCODE2(F_LOCAL_LOCAL_INDEX, "local[local]")
 {
   struct svalue *s=Pike_fp->locals+arg1;
   if(s->type == PIKE_T_STRING) s->subtype=0;

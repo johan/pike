@@ -1363,8 +1363,15 @@ struct mapping *add_mappings(struct svalue *argp, INT32 args)
 #endif
 
   /* FIXME: need locking! */
-  ret=allocate_mapping(MAP_SLOTS(e));
-  for(d=0;d<args;d++)
+  if(argp[0].u.mapping->refs == 1)
+  {
+    ret=argp[0].u.mapping;
+    d=1;
+  }else{
+    ret=allocate_mapping(MAP_SLOTS(e));
+    d=0;
+  }
+  for(;d<args;d++)
     MAPPING_LOOP(argp[d].u.mapping)
       mapping_insert(ret, &k->ind, &k->val);
   return ret;
