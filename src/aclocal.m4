@@ -398,8 +398,8 @@ define([AC_MODULE_INIT],
 
   echo
   echo '###################################################'
-  echo '## Configuring module: ' "$MODULE_PATH$MODULE_NAME"
-  echo '## Installation dir:   ' "$MODULE_DIR"
+  echo '## Configuring module:' "$MODULE_PATH$MODULE_NAME"
+  echo '## Installation dir:  ' "$MODULE_DIR"
   echo
 
   AC_LOW_MODULE_INIT()
