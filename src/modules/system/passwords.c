@@ -274,6 +274,7 @@ void f_getpwent(INT32 args)
   THREADS_DISALLOW_UID();
   if(!foo)
   {
+    mt_unlock(&password_protection_mutex);
     push_int(0);
     return;
   }
