@@ -448,6 +448,6 @@ stamp-h: $(SRCDIR)/machine.h.in config.status
 	CONFIG_FILES="" CONFIG_HEADERS=machine.h ./config.status
 
 testsuite: $(SRCDIR)/testsuite.in
-	$(TMP_BINDIR)/mktestsuite $(SRCDIR)/testsuite.in >testsuite
+	$(TMP_BINDIR)/mktestsuite $(SRCDIR)/testsuite.in >testsuite -DSRCDIR="$(SRCDIR)" -DRUNPIKE="$(RUNPIKE)"
 
 @dependencies@
