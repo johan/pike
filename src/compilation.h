@@ -148,6 +148,7 @@
   ZMEMBER(INT32,parent_identifier,0)
   IMEMBER(int, compat_major, PIKE_MAJOR_VERSION)
   IMEMBER(int, compat_minor, PIKE_MINOR_VERSION)
+  IMEMBER(int, check_final, 0)
   SEND
 
 #undef PCODE
