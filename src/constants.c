@@ -53,6 +53,15 @@ void low_add_constant(const char *name, struct svalue *fun)
   free_string(p);
 }
 
+void add_pike_string_constant(const char *name, const char *str, int len)
+{
+  struct pike_string *key = make_shared_string(name);
+  struct pike_string *val = make_shared_binary_string(str, len);
+  mapping_string_insert_string(builtin_constants, key, val);
+  free_string(val);
+  free_string(key);
+}
+
 PMOD_EXPORT void add_global_program(const char *name, struct program *p)
 {
   struct svalue s;

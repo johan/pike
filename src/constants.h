@@ -48,6 +48,7 @@ extern struct callable *first_callable;
 PMOD_EXPORT struct mapping *get_builtin_constants(void);
 void low_add_efun(struct pike_string *name, struct svalue *fun);
 void low_add_constant(const char *name, struct svalue *fun);
+void add_pike_string_constant(const char *name, const char *str, int len);
 PMOD_EXPORT void add_global_program(const char *name, struct program *p);
 BLOCK_ALLOC_FILL_PAGES(callable,2)
 PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
