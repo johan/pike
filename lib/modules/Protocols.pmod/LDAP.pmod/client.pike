@@ -74,7 +74,7 @@
 
 #include "ldap_errors.h"
 
-#if constant(SSL.sslfile)
+#if constant(SSL.Cipher.CipherAlgorithm)
 import SSL.Constants;
 #endif
 
@@ -369,7 +369,7 @@ int _prof_gtim;
 
     if(!stringp(lauth->scheme) ||
        ((lauth->scheme != "ldap")
-#if constant(SSL.sslfile)
+#if constant(SSL.Cipher.CipherAlgorithm)
 	&& (lauth->scheme != "ldaps")
 #endif
 	)) {
@@ -381,7 +381,7 @@ int _prof_gtim;
     if(!lauth->port)
       lauth += ([ "port" : lauth->scheme == "ldap" ? LDAP_DEFAULT_PORT : LDAPS_DEFAULT_PORT ]);
 
-#if constant(SSL.sslfile)
+#if constant(SSL.Cipher.CipherAlgorithm)
     if(lauth->scheme == "ldaps" && !context) {
       context = SSL.context();
       // Allow only strong crypto
@@ -406,7 +406,7 @@ int _prof_gtim;
       THROW(({"Failed to connect to LDAP server.\n",backtrace()}));
     }
 
-#if constant(SSL.sslfile)
+#if constant(SSL.Cipher.CipherAlgorithm)
     if(lauth->scheme == "ldaps") {
       context->random = Crypto.Random.random_string;
       ::create(SSL.sslfile(::_fd, context, 1,1));
