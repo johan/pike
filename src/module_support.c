@@ -230,12 +230,12 @@ int va_get_args(struct svalue *s,
 	*va_arg(ap, LONGEST *)=s->u.integer;
 	break;
 #ifdef AUTO_BIGNUM
-      } else if (!is_bignum_object_in_svalue(s) ||
-		 !int64_from_bignum(va_arg(ap, LONGEST *), s->u.object)) {
-	return ret;
+      } else if (is_bignum_object_in_svalue(s) &&
+		 int64_from_bignum(va_arg(ap, LONGEST *), s->u.object) == 1) {
+        break;
 #endif
       }
-      break;
+      return ret;
     case 's':
       if(s->type != T_STRING) return ret;
       if(s->u.string->size_shift) return ret;
