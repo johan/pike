@@ -446,7 +446,6 @@ struct object *decode_value_clone_object(struct svalue *prog)
   return o;
 }
 
-/* FIXME: use open/read/close instead */
 static struct pike_string *low_read_file(char *file)
 {
   struct pike_string *s;
