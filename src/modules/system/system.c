@@ -11,6 +11,7 @@
  */
 
 #include "system_machine.h"
+#include "system.h"
 
 #include <global.h>
 RCSID("$Id$");
@@ -757,6 +758,22 @@ void init_system_efuns(void)
   add_efun("syslog", f_syslog, "function(int,string:void)", 0);
   add_efun("closelog", f_closelog, "function(:void)", 0);
 #endif /* HAVE_SYSLOG */
+
+  /*
+   * From passwords.c
+   */
+#ifdef HAVE_GETPWNAM
+  add_efun("getpwnam", f_getpwnam, "function(string:array)", 
+	   OPT_EXTERNAL_DEPEND);
+  add_efun("getpwuid", f_getpwuid, "function(int:array)", OPT_EXTERNAL_DEPEND);
+#endif
+#ifdef HAVE_SETPWENT
+  add_efun("getpwent", f_getpwent, "function(void:int|array)",
+           OPT_EXTERNAL_DEPEND);
+  add_efun("setpwent", f_setpwent, "function(void:int)", OPT_EXTERNAL_DEPEND);
+  add_efun("endpwent", f_endpwent, "function(void:int)", OPT_EXTERNAL_DEPEND);
+#endif
+
 }
 
 void init_system_programs(void)

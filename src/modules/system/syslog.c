@@ -11,12 +11,18 @@
  */
 
 #include "system_machine.h"
+#include "system.h"
 
 #include <global.h>
 
 #ifdef HAVE_SYSLOG
 
 RCSID("$Id$");
+
+#include <interpret.h>
+#include <svalue.h>
+#include <stralloc.h>
+#include <threads.h>
 
 #ifdef HAVE_SYSLOG_H
 #include <syslog.h>
