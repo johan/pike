@@ -1467,7 +1467,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	      restore_buffer (&save_buf);
 	      Pike_interpreter.trace_level=save_t_flag;
 	      pop_stack();
-	      if (!obj->prog) prog = NULL
+	      if (!obj->prog) prog = NULL;
 	    }
 	    END_CYCLIC();
 	  }
@@ -1511,7 +1511,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	    restore_buffer (&save_buf);
 	    Pike_interpreter.trace_level=save_t_flag;
 	    pop_stack();
-	    if (!obj->prog) prog = NULL
+	    if (!obj->prog) prog = NULL;
 	  }
 	  END_CYCLIC();
 	}
