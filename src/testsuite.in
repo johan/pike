@@ -8526,6 +8526,18 @@ test_eq([[combine_path("/","/foo/bar/ga\11111zonk/../../")]],"/foo/")
 test_eq([[combine_path("/","/fo\1111/bar/ga\11111zonk/../../")]],"/fo\1111/")
 test_eq([[combine_path("/","/fo\1111/bar/gazonk/../../")]],"/fo\1111/")
 
+test_eq([[combine_path("foo", "../bar")]],"bar")
+test_eq([[combine_path("foo/", "../bar")]],"bar")
+test_eq([[combine_path("foo/", "../bar/")]],"bar/")
+test_eq([[combine_path("foo/.", "../bar")]],"bar")
+test_eq([[combine_path("foo", "..")]],".")
+test_eq([[combine_path("foo/", "..")]],".")
+test_eq([[combine_path("foo/.", "..")]],".")
+test_eq([[combine_path(".", "bar")]],"bar")
+test_eq([[combine_path("./", "bar")]],"bar")
+test_eq([[combine_path(".", "../bar")]],"../bar")
+test_eq([[combine_path("./", "../bar")]],"../bar")
+
 // - combine_path_nt
 test_eq([[combine_path_nt("/","/fo\1111/bar/gazonk/../../")]],"/fo\1111/")
 test_eq([[combine_path_nt("a:/","/fo\1111/bar/gazonk/../../")]],"a:/fo\1111/")
