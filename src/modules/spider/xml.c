@@ -65,7 +65,7 @@ struct xmlobj
   struct mapping *entities;
   struct mapping *attributes;
   struct mapping *is_cdata;
-  int rxml_mode;
+  INT_TYPE rxml_mode;
 };
 
 
