@@ -578,8 +578,7 @@ static void exit_mpz_glue(struct object *o)
 }
 #endif
 
-void init_gmpmod_efuns(void) {}
-void exit_gmpmod(void)
+void pike_module_exit(void)
 {
 #ifdef HAVE_GMP_H
   if(temporary) free_object(temporary);
@@ -587,7 +586,7 @@ void exit_gmpmod(void)
 #endif
 }
 
-void init_gmpmod_programs(void)
+void pike_module_init(void)
 {
 #ifdef HAVE_GMP_H
   start_new_program();
@@ -660,8 +659,8 @@ void init_gmpmod_programs(void)
   set_init_callback(init_mpz_glue);
   set_exit_callback(exit_mpz_glue);
 
-  mpzmod_program=end_c_program("/precompiled/mpz");
-  mpzmod_program->refs++;
+  mpzmod_program=end_program();
+  add_program_constant("mpz",mpzmod_program,0);
 #endif
 }
 

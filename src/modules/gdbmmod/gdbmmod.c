@@ -329,10 +329,9 @@ static void exit_gdbm_glue(struct object *o)
 
 #endif
 
-void init_gdbmmod_efuns(void) {}
-void exit_gdbmmod(void) {}
+void pike_module_exit(void) {}
 
-void init_gdbmmod_programs(void)
+void pike_module_init(void)
 {
 #if defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM)
   start_new_program();
@@ -353,8 +352,7 @@ void init_gdbmmod_programs(void)
 
   set_init_callback(init_gdbm_glue);
   set_exit_callback(exit_gdbm_glue);
-
-  end_c_program("/precompiled/gdbm");
+  end_class("gdbm");
 #endif
 }
 

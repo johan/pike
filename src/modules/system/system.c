@@ -691,7 +691,7 @@ void f_gethostbyname(INT32 args)
  * Module linkage
  */
 
-void init_system_efuns(void)
+void pike_module_init(void)
 {
   /*
    * From this file:
@@ -776,10 +776,6 @@ void init_system_efuns(void)
 
 }
 
-void init_system_programs(void)
-{
-}
-
-void exit_system(void)
+void pike_module_exit(void)
 {
 }
