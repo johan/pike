@@ -173,9 +173,9 @@ void img_box_nocheck(INT32 x1,INT32 y1,INT32 x2,INT32 y2)
 	   break;	/* Break to the while(0). */
 	 for(x=0; x<length; x++)  *(foo+x) = rgb;
 	 while(--y)  MEMCPY((foo+=xs), from, length*sizeof(rgb_group)); 
-       }
-     } while(0);
-     THREADS_DISALLOW();
+       } while(0);
+       THREADS_DISALLOW();
+     }
    } 
    else 
    {
