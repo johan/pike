@@ -71,7 +71,7 @@ mapping _decode( string data, mixed|void tocolor )
 #endif
 
   if(!i)
-    foreach( ({ "GIF", "JPEG", "XWD", "PNM", "RAS" }), string fmt )
+    foreach( ({ "JPEG", "XWD", "PNM", "RAS" }), string fmt )
     {
       catch {
 	if( mappingp( opts ) )
@@ -118,12 +118,21 @@ array(Image.Layer) decode_layers( string data, mixed|void tocolor )
   if(!data)
     return 0;
 
-  foreach( ({ "GIF", "JPEG", "XWD", "PNM",
-              "XCF", "PSD", "PNG",  "BMP",  "TGA", "PCX",
-              "XBM", "XPM", "TIFF", "ILBM", "PS",
-  }), string fmt )
-    if( (f=Image[fmt]["decode_layers"]) && !catch(i = f( data,tocolor )) && i )
-      break;
+#if constant(Image.GIF) && constant(Image.GIF.RENDER)
+  catch
+  {
+    i = Image["GIF"]->decode_layers( data, tocolor );
+  };
+#endif
+
+  if(!i)
+    foreach( ({ "JPEG", "XWD", "PNM",
+		"XCF", "PSD", "PNG",  "BMP",  "TGA", "PCX",
+		"XBM", "XPM", "TIFF", "ILBM", "PS",
+    }), string fmt )
+      if( (f=Image[fmt]["decode_layers"]) &&
+	  !catch(i = f( data,tocolor )) && i )
+	break;
 
   if(!i) // No image could be decoded at all.
     catch
