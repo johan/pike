@@ -1776,8 +1776,6 @@ bad_expr_ident:
   { yyerror("lambda is a reserved word."); }
   | F_SSCANF
   { yyerror("sscanf is a reserved word."); }
-  | F_SIZEOF
-  { yyerror("sizeof is a reserved word."); }
   | F_SWITCH
   { yyerror("switch is a reserved word."); }
   | F_TYPEOF
