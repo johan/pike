@@ -119,7 +119,7 @@ static void do_close(struct port *p, struct object *o)
 static void port_set_id(INT32 args)
 {
   if(args < 1)
-    Pike_error("Too few arguments to port->set_id()\n");
+    SIMPLE_TOO_FEW_ARGS_ERROR("Port->set_id", 1);
 
   assign_svalue(& THIS->id, Pike_sp-args);
   pop_n_elems(args-1);
@@ -188,10 +188,10 @@ static void port_listen_fd(INT32 args)
   do_close(THIS,Pike_fp->current_object);
 
   if(args < 1)
-    Pike_error("Too few arguments to port->bind_fd()\n");
+    SIMPLE_TOO_FEW_ARGS_ERROR("Port->bind_fd", 1);
 
   if(Pike_sp[-args].type != PIKE_T_INT)
-    Pike_error("Bad argument 1 to port->bind_fd()\n");
+    SIMPLE_BAD_ARG_ERROR("Port->bind_fd", 1, "int");
 
   fd=Pike_sp[-args].u.integer;
 
@@ -251,10 +251,10 @@ static void port_bind(INT32 args)
   do_close(THIS,Pike_fp->current_object);
 
   if(args < 1)
-    Pike_error("Too few arguments to port->bind()\n");
+    SIMPLE_TOO_FEW_ARGS_ERROR("Port->bind", 1);
 
   if(Pike_sp[-args].type != PIKE_T_INT)
-    Pike_error("Bad argument 1 to port->bind()\n");
+    SIMPLE_BAD_ARG_ERROR("Port->bind", 1, "int");
 
   fd=fd_socket(AF_INET, SOCK_STREAM, 0);
 
@@ -273,6 +273,7 @@ static void port_bind(INT32 args)
     {
       THIS->my_errno=errno;
       close(fd);
+      pop_n_elems(args);
       push_int(0);
       return;
     }
@@ -339,11 +340,11 @@ static void port_create(INT32 args)
   {
     if(Pike_sp[-args].type == PIKE_T_INT)
     {
-      port_bind(args);
+      port_bind(args); /* pops stack */
       return;
     }else{
       if(Pike_sp[-args].type != PIKE_T_STRING)
-	Pike_error("Bad argument 1 to port->create()\n");
+	SIMPLE_TOO_FEW_ARGS_ERROR("Port->create", 1);
 
       if(strcmp("stdin",Pike_sp[-args].u.string->str))
 	Pike_error("port->create() called with string other than 'stdin'\n");
@@ -373,6 +374,9 @@ static void port_create(INT32 args)
 }
 
 extern struct program *file_program;
+
+/*! @decl Stdio.File port_accept()
+ */
 
 static void port_accept(INT32 args)
 {
@@ -505,7 +509,6 @@ void port_setup_program(void)
 
   port_program = end_program();
   add_program_constant( "_port", port_program, 0 );
-/*   end_class("_port",0); */
 }
 
 int fd_from_portobject( struct object *p )
