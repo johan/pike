@@ -111,14 +111,17 @@ void close()
   write_callback = 0;
   close_callback = 0;
 
-  if (sizeof (write_buffer) && !blocking) {
-     ssl_write_callback(socket->query_id());
-   }
-  if(sizeof(write_buffer) && blocking) {
-    write_blocking();
-  }
+  if (socket) {
+    if (sizeof (write_buffer) && !blocking) {
+      ssl_write_callback(socket->query_id());
+    }
+    if(sizeof(write_buffer) && blocking) {
+      write_blocking();
+    }
 
-  socket->close();
+    socket->close();
+  }
+  socket = 0;
 }
 
 
