@@ -928,7 +928,7 @@ static void f_signame(int args)
 #define MY_WAIT_ANY(STATUS,OPT) wait3((STATUS),(OPT),0 )
 #else
 #ifdef HAVE_WAIT4
-#define MY_WAIT_ANY(STATUS,OPT) wait4(-1,(STATUS),(OPT),0 )
+#define MY_WAIT_ANY(STATUS,OPT) wait4(0,(STATUS),(OPT),0 )
 #else
 #define MY_WAIT_ANY(STATUS,OPT) ((errno=ENOTSUP),-1)
 #endif
