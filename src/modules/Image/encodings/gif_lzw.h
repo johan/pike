@@ -12,7 +12,7 @@ struct lzwc
    unsigned short prev;
    unsigned short len;
    unsigned short c;
-} *c;
+};
 
 struct gif_lzw
 {
