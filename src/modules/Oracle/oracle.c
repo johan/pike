@@ -1227,7 +1227,7 @@ static void push_inout_value(struct inout *inout,
       fprintf(stderr,"LOB length: %d\n",loblen);
 #endif
       if(ret == OCI_SUCCESS)
-	push_string(make_shared_binary_string(loblen ? bufp : "",loblen));
+	push_string(make_shared_binary_string(bufp, loblen));
       else
 	ora_error_handler(dbcon->error_handle, ret, errfunc);
       
