@@ -14,8 +14,8 @@
 #ifdef HAVE_RPC_CLNT_H
 #include <rpc/clnt.h>
 #endif /* HAVE_RPC_CLNT_H */
-#include <rpcsvc/ypclnt.h>
 #include <rpcsvc/yp_prot.h>
+#include <rpcsvc/ypclnt.h>
 
 #include "stralloc.h"
 #include "error.h"
@@ -157,7 +157,7 @@ void f_map(INT32 args)
 static void f_order(INT32 args)
 {
   int err;
-  unsigned long ret;
+  YP_ORDER_TYPE ret;
 
   check_all_args("yp->order", args, BIT_STRING, 0);
   
