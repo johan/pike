@@ -86,6 +86,12 @@ PMOD_EXPORT struct Pike_interpreter Pike_interpreter;
 PMOD_EXPORT int Pike_stack_size = EVALUATOR_STACK_SIZE;
 
 
+void gdb_stop_here(void)
+{
+  ;
+}
+
+
 /* mark stack, used to store markers into the normal stack */
 int mark_stack_malloced = 0;
 
@@ -1449,12 +1455,6 @@ void unlink_previous_frame(void)
   }
 #endif
 }
-
-void gdb_stop_here(void)
-{
-  ;
-}
-
 
 
 #ifdef PIKE_SECURITY
