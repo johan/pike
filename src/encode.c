@@ -2404,21 +2404,23 @@ static void decode_value2(struct decode_data *data)
 
 	  p = program_from_svalue(Pike_sp-1);
 
-	  if(data->pickyness && !p) {
-	    if ((prog_code->type == T_STRING) &&
-		(prog_code->u.string->len < 128) &&
-		(!prog_code->u.string->size_shift)) {
-	      Pike_error("Failed to decode program \"%s\".\n",
-		    prog_code->u.string->str);
+	  if (!p) {
+	    if(data->pickyness) {
+	      if ((prog_code->type == T_STRING) &&
+		  (prog_code->u.string->len < 128) &&
+		  (!prog_code->u.string->size_shift)) {
+		Pike_error("Failed to decode program \"%s\".\n",
+			   prog_code->u.string->str);
+	      }
+	      Pike_error("Failed to decode program.\n");
 	    }
-	    Pike_error("Failed to decode program.\n");
+	    pop_n_elems(2);
+	    push_undefined();
+	    break;
 	  }
 	  /* Remove the extra entry from the stack. */
-	  stack_swap();
-	  pop_stack();
 	  ref_push_program(p);
-	  stack_swap();
-	  pop_stack();
+	  stack_pop_n_elems_keep_top(2);
 	  break;
 	}
 
