@@ -61,6 +61,7 @@ void image_neo_f__decode(INT32 args)
     Pike_error("This is not a NEO file (invalid resolution).\n");
 
   /* Checks done... */
+  add_ref(s);
   pop_n_elems(args);
 
   if(res==0)
@@ -81,7 +82,7 @@ void image_neo_f__decode(INT32 args)
   push_object(img);
   size += 2;
 
-  fn = make_shared_binary_string(q+36, 12);
+  fn = make_shared_binary_string((const char *)q+36, 12);
 
   push_constant_text("filename");
   push_string(fn);
@@ -102,6 +103,7 @@ void image_neo_f__decode(INT32 args)
     size += 8;
   }
 
+  free_string(s);
   f_aggregate_mapping(size);
 }
 
