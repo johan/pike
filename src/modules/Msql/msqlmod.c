@@ -31,6 +31,8 @@
 #include <mapping.h>
 #include <stralloc.h>
 #include <builtin_functions.h>
+#include "operators.h"
+#include "multiset.h"
 #include <module_support.h>
 
 RCSID("$Id$");
@@ -261,7 +263,7 @@ static void do_list_dbs (INT32 args)
 		f_aggregate(0); /*empty array if no databases*/
 		return;
 	}
-	while (row=msqlFetchRow(result)) /*it's fast, we're in RAM*/
+	while ((row=msqlFetchRow(result))) /*it's fast, we're in RAM*/
 	{
 		numrows++;
 		push_text(row[0]);
@@ -306,7 +308,7 @@ static void do_list_tables (INT32 args)
 		f_aggregate(0); /*empty array if no databases*/
 		return;
 	}
-	while (row=msqlFetchRow(result))
+	while ((row=msqlFetchRow(result)))
 	{
 		numrows++;
 		push_text(row[0]);
