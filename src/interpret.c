@@ -2123,8 +2123,8 @@ void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 		(long)(time_passed/1000),
 		(long)(time_in_children/1000),
 		(long)(children_base/1000),
-		(long)(accounted_time/1000)
-		(long)(time_base/1000)
+		(long)(accounted_time/1000),
+		(long)(time_base/1000),
 		(long)(start_time/1000)
 		);
 #endif
