@@ -3,6 +3,7 @@
 /* $Id$ */
 
 #include <simulate.h>
+import Stdio;
 
 #if !efun(_verify_internals)
 #define _verify_internals()
@@ -90,7 +91,7 @@ int main(int argc, string *argv)
       for(e=start;e<sizeof(tests);e++)
       {
 	string test,condition;
-	int type;
+	string|int type;
 	object o;
 	mixed a,b;
 	
