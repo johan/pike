@@ -535,8 +535,18 @@ static int low_yylex(YYSTYPE *yylval)
 	  free_string(lex.current_file);
 	  lex.current_file=tmp;
 	}
+	if (Pike_compiler->compiler_pass == 1 &&
+	    !Pike_compiler->new_program->num_linenumbers) {
+	  /* A nested program will always get an entry right away in
+	   * language.yacc. */
+	  store_linenumber(0, lex.current_file);
+#ifdef DEBUG_MALLOC
+	  if(strcmp(lex.current_file->str,"-"))
+	    debug_malloc_name(Pike_compiler->new_program, lex.current_file->str, 0);
+#endif
+	}
 	break;
-	
+
       case 'e':
 	if(ISWORD("error"))
 	{

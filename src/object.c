@@ -109,22 +109,11 @@ PMOD_EXPORT struct object *low_clone(struct program *p)
 #ifdef DEBUG_MALLOC
   if(!debug_malloc_copy_names(o, p)) 
   {
-    /* Didn't find a given name, revert to ad-hoc method */
     char *tmp;
-    INT32 line,pos;
+    INT32 line;
 
-    for(pos=0;pos<100;pos++)
-    {
-      tmp=get_line(p->program+pos, p, &line);
-      if(tmp && line)
-      {
-	debug_malloc_name(o, tmp, line);
-	break;
-      }
-      if(pos+1>=(long)p->num_program)
-	break;
-    }
-    
+    tmp=get_program_line(p, &line);
+    debug_malloc_name(o, tmp, line);
   }
   dmalloc_set_mmap_from_template(o,p);
 #endif
