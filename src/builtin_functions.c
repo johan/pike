@@ -1767,7 +1767,7 @@ static void f_get_prof_info(INT32 args)
 
   push_int(prog->num_clones);
 
-  for(num_functions=i=0; i<prog->num_identifiers; i++) {
+  for(num_functions=i=0; i<(int)prog->num_identifiers; i++) {
     if (IDENTIFIER_IS_FUNCTION(prog->identifiers[i].identifier_flags)) {
       num_functions++;
       prog->identifiers[i].name->refs++;
