@@ -1507,10 +1507,10 @@ void low_start_new_program(struct program *p,
   if(idp) *idp=id;
 
   CDFPRINTF((stderr, "th(%ld) %p low_start_new_program() %s "
-	     "pass=%d: threads_disabled:%d, compilation_depth:%d %d\n",
+	     "pass=%d: threads_disabled:%d, compilation_depth:%d\n",
 	     (long)th_self(), p, name ? name->str : "-",
 	     Pike_compiler->compiler_pass,
-	     threads_disabled, compilation_depth, id));
+	     threads_disabled, compilation_depth));
 
   init_type_stack();
 
