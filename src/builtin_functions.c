@@ -4444,6 +4444,13 @@ static int my_time_inverse (struct tm *target_tm, time_t *result, time_fn timefn
       break;
     }
 
+    if (INT_TYPE_ADD_OVERFLOW (current_ts, diff_ts)) {
+#ifdef DEBUG_MY_TIME_INVERSE
+      fprintf (stderr, "got overflow adding %ld and %ld\n",
+	       (long) current_ts, (long) diff_ts);
+#endif
+      return 0;
+    }
     current_ts += diff_ts;
   }
 
