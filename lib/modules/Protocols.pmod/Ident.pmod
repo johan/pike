@@ -100,6 +100,14 @@ class lookup_async
     do_callback(({ "ERROR", "TIMEOUT" }));
   }
 
+  void connected()
+  {
+#ifdef IDENT_DEBUG
+    werror(sprintf("Protocols.Ident: Connection OK, query:%O\n", query));
+#endif /* IDENT_DEBUG */
+    con->set_nonblocking(read_cb, write_cb, close_cb);
+  }
+
   void create(object fd, function(array(string), mixed ...:void) cb,
 	      mixed ... args)
   {
@@ -121,21 +129,19 @@ class lookup_async
       destruct(con);
       error("Protocols.Ident: open_socket() failed.");
     }
-    mixed err;
-    if (err = catch(con->connect(raddr[0], 113))) {
-      destruct(con);
-      throw(err);
-    }
-
-#ifdef IDENT_DEBUG
-    werror(sprintf("Protocols.Ident: Connection OK, query:%O\n", query));
-#endif /* IDENT_DEBUG */
 
     callback = cb;
     cb_args = args;
-    con->set_nonblocking(read_cb, write_cb, close_cb);
 
     call_out(timeout, 60);
+
+    mixed err;
+    if (err = catch(con->async_connect(raddr[0], 113, connected, close_cb))) {
+      callback = 0;
+      cb_args = 0;
+      destruct(con);
+      throw(err);
+    }
   }
 }
 
