@@ -1073,14 +1073,15 @@ CHAROPT2(								 \
 	      break;							 \
 	    } else if(!contains_percent_percent)			 \
 	    {								 \
-	      struct generic_mem_searcher searcher;			 \
+	      struct pike_mem_searcher searcher;			 \
 	      PIKE_CONCAT(p_wchar, INPUT_SHIFT) *s2;			 \
-	      init_generic_memsearcher(&searcher, end_str_start,	 \
+	      pike_init_memsearch(&searcher,				 \
+				  MKPCHARP(end_str_start, MATCH_SHIFT),	 \
 				       end_str_end - end_str_start,	 \
-				       MATCH_SHIFT, input_len - eye,	 \
-				       INPUT_SHIFT);			 \
-	      s2 = generic_memory_search(&searcher, input+eye,		 \
-					 input_len - eye, INPUT_SHIFT);	 \
+				       input_len - eye);		 \
+              s2 = (void*)( searcher.mojt.vtab->funcN(searcher.mojt.data, \
+				       MKPCHARP(input+eye, INPUT_SHIFT), \
+				       input_len-eye) ).ptr;		 \
 	      if(!s2)							 \
 	      {								 \
 		chars_matched[0]=eye;					 \
