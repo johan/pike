@@ -118,7 +118,7 @@ string extract(string filename, string imgdest, int(0..1) rootless,
   string result;
   mixed err = catch {
     if( suffix == "c" )
-      result = Tools.AutoDoc.ProcessXML.extractXML(filename);
+      result = Tools.AutoDoc.ProcessXML.extractXML(filename,0,0,0,root);
     else {
       string type = ([ "pike":"class", "pmod":"module", ])[suffix];
       string name = (name_sans_suffix/"/")[-1];
