@@ -372,7 +372,7 @@ SOCKFUN2(getsockname,struct sockaddr *,int *)
 SOCKFUN2(getpeername,struct sockaddr *,int *)
 SOCKFUN5(recvfrom,void *,int,int,struct sockaddr *,int*)
 SOCKFUN3(send,void *,int,int)
-SOCKFUN5(sendto,void *,int,int,struct sockaddr *,int*)
+SOCKFUN5(sendto,void *,int,int,struct sockaddr *,unsigned int)
 SOCKFUN1(shutdown, int)
 SOCKFUN1(listen, int)
 
