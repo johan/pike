@@ -3,7 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
-
+/**/
 #include "global.h"
 
 struct callback *gc_evaluator_callback=0;
@@ -21,11 +21,12 @@ struct callback *gc_evaluator_callback=0;
 #include "pike_types.h"
 #include "time_stuff.h"
 #include "constants.h"
-#include "block_alloc.h"
 
 #include "gc.h"
 #include "main.h"
 #include <math.h>
+
+#include "block_alloc.h"
 
 RCSID("$Id$");
 
