@@ -9,6 +9,7 @@ AC_MODULE_INIT()
 AC_CHECK_LIB(bind, __inet_ntoa)
 AC_CHECK_LIB(socket, socket)
 AC_CHECK_LIB(nsl, gethostbyname)
+AC_CHECK_LIB(net, __get_socket_descriptor)
 
 AC_CHECK_FUNCS(poll gmtime_r gmtime sendfile signal inet_ntoa inet_ntop)
 
