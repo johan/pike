@@ -2324,12 +2324,13 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 	case '%':
 	  string_builder_putchar(s, '%');
 	  break;
+
 	case '+':
 	  flags |= APPEND_POSITIVE;
-	  break;
+	  continue;
 	case '-':
 	  flags |= APPEND_LEFT;
-	  break;
+	  continue;
 
 	case '0':
 	  if (!state) {
@@ -2345,10 +2346,10 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 	    state = STATE_MIN_WIDTH;
 	    min_width = min_width * 10 + fmt[-1] - '0';
 	  }
-	  break;
+	  continue;
 	case '.':
 	  state = STATE_PRECISION;
-	  break;
+	  continue;
 	  
 	case 'O':
 	  {
