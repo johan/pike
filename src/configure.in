@@ -639,13 +639,6 @@ Use --with-threads to force threads support.
            with_threads=no
         fi
      ;;
-     xIRIX*)
-           AC_MSG_WARN([
-IRIX detected, disabling threads.
-Use --with-threads to force threads support.
-])
-           with_threads=no
-     ;;
    esac
 
    if test "x${with_threads-}" = x; then
