@@ -145,6 +145,7 @@ class Object
     record_der(build_der(s));
   }
 
+
   //! Get the DER encoded version of this object.
   //!
   //! @returns
@@ -502,6 +503,11 @@ class Identifier
     return "IDENTIFIER " + (array(string)) id * ".";
   }
 #endif
+
+  int __hash()
+  {
+    return hash(get_der());
+  }
 
   int `==(mixed other) {
     return (objectp(other) &&

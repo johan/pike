@@ -109,6 +109,16 @@ Identifier dh_id = Identifier(1, 2, 840, 10046, 2, 1);
 
 Identifier at_id = Identifier(2, 5, 4);
 
+mapping(Identifier:string) short_name_ids = 
+([
+  at_id->append(3) : "CN",       /* printable string */
+  at_id->append(6) : "C",       /* printable string */
+  at_id->append(7) : "L",      /* printable string */
+  at_id->append(8) : "ST", /* printable string */
+  at_id->append(10) : "O", /* printable string */
+  at_id->append(11) : "OU"  /* printable string */
+]);
+
 mapping(string:Identifier) name_ids =
 ([  
   /* layman.asc says "commonUnitName". Typo? */
