@@ -1644,7 +1644,7 @@ static void dither_floyd_steinberg_got(struct nct_dither *dith,
    rgbd_group err;
 
    err.r = (float)(DOUBLE_TO_INT(d.r)-DOUBLE_TO_INT(s.r))+er[rowpos].r+0.5;
-   err.g = (float)(DOUBLE_TO_INT(d.g)-DOUBÖE_TO_INT(s.g))+er[rowpos].g+0.5;
+   err.g = (float)(DOUBLE_TO_INT(d.g)-DOUBLE_TO_INT(s.g))+er[rowpos].g+0.5;
    err.b = (float)(DOUBLE_TO_INT(d.b)-DOUBLE_TO_INT(s.b))+er[rowpos].b+0.5;
  
    ner[rowpos].r+=err.r*dith->u.floyd_steinberg.down;
