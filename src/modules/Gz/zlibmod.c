@@ -616,7 +616,7 @@ void gz_file_close(INT32 args)
  */
 void gz_file_read(INT32 args)
 {
-  char *buf;
+  struct pike_string *buf;
   int len;
   int res;
 
@@ -635,22 +635,24 @@ void gz_file_read(INT32 args)
 
   len = sp[-args].u.integer;
 
-  buf = malloc(sizeof(char) * (len+1));
+  buf = begin_shared_string(len);
 
   pop_n_elems(args);
 
-  res = gzread(THIS->gzfile, buf, len);
+  res = gzread(THIS->gzfile, STR0(buf), len);
 
+  /* Check to make sure read went well */
   if (res<0) {
     push_int(0);
-    free(buf);
+    free_string(end_shared_string(buf));
     return;
   }
 
-  buf[res] = '\0';
+  /* Make sure the returned string is the same lenght as
+   * the data read.
+   */
+  push_string(end_and_resize_shared_string(buf, res));
 
-  push_string(make_shared_string(buf));
-  free(buf);
 }
 
 /*! @decl int write(string data)
