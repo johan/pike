@@ -392,10 +392,13 @@ static void f_decrypt(INT32 args)
   get_all_args("decrypt", args, "%S", &s);
   
   if (THIS->flags & P_RSA_PRIVATE_KEY_NOT_SET) {
-    A_RSA_KEY rsa_private_key = {
-      { THIS->n->str, THIS->n->len },
-      { THIS->d->str, THIS->d->len },
-    };
+    A_RSA_KEY rsa_private_key;
+
+    rsa_private_key.modulus.data = THIS->n->str;
+    rsa_private_key.modulus.len = THIS->n->len;
+    rsa_private_key.modulus.data = THIS->d->str;
+    rsa_private_key.modulus.len = THIS->d->len;
+
     if ((err = B_SetKeyInfo(THIS->private_key, KI_RSAPublic,
 			    (POINTER)&rsa_private_key))) {
       error("Failed to set private key: %04x\n", err);
