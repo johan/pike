@@ -89,7 +89,7 @@ extern struct program *image_program;
 		   		   		   		\
    i=img->xsize*img->ysize;			   		\
    THREADS_ALLOW();                                             \
-   if (oper)
+   if (s2)
 
 
 /*
