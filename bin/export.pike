@@ -4,7 +4,7 @@
 
 import Stdio;
 
-multiset except_modules = (< "SSL.pmod" >);
+multiset except_modules = (< >);
 string vpath;
 
 
