@@ -1626,7 +1626,7 @@ cond([[all_constants()->_debug]],
 [[
   test_do(_debug(_debug(0)))
 ]])
-test_do(_static_modules())
+test_do(indices(_static_modules))
 test_compile_any([[import Stdio; class x { string y() { read_file("foo"); } }]])
 
 dnl ----------------------------------------------------------------
