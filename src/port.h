@@ -38,10 +38,10 @@ time_t TIME(time_t *);
 #  define TIME time
 #endif
 
-#ifndef HAVE_STRTOL
-long STRTOL(char *str,char **ptr,int base);
-#else
+#if defined(HAVE_STRTOL) && defined(HAVE_WORKING_STRTOL)
 #  define STRTOL strtol
+#else
+long STRTOL(char *str,char **ptr,int base);
 #endif
 
 #ifndef HAVE_STRTOD
