@@ -7227,7 +7227,8 @@ static node *fix_map_node_info(node *n)
 {
   int argno;
   node **cb_;
-  int node_info = OPT_SIDE_EFFECT;	/* Assume worst case. */
+  /* Assume worst case. */
+  int node_info = OPT_SIDE_EFFECT | OPT_EXTERNAL_DEPEND;
 
   /* Note: argument 2 has argno 1. */
   for (argno = 1; (cb_ = my_get_arg(&_CDR(n), argno)); argno++) {
@@ -7240,7 +7241,7 @@ static node *fix_map_node_info(node *n)
 	/* map(), map_array() or filter(). */
 	continue;
       }
-      node_info = cb->u.sval.u.efun->flags & OPT_SIDE_EFFECT;
+      node_info &= cb->u.sval.u.efun->flags;
     }
     /* FIXME: Type-checking? */
     break;
