@@ -261,8 +261,7 @@ static struct pike_string *low_get_digits(MP_INT *mpz, int base)
     len-=4;
     if (len < 0) len = 0;
     while(s->str[len]) len++;
-    s->len=len;
-    s=end_shared_string(s);
+    s=end_and_resize_shared_string(s, len);
   }
   else if (base == 256)
   {
