@@ -261,6 +261,9 @@ void cleanup_backend(void)
     active_num_in_poll = 0;
   }
 #endif /* HAVE_POLL */
+#ifdef HAVE_BROKEN_F_SETFD
+  cleanup_close_on_exec();
+#endif /* HAVE_BROKEN_F_SETFD */
   if (fds) {
     free(fds);
     fds = NULL;
