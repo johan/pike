@@ -104,6 +104,12 @@
 #undef EXTRACT_CHAR_BY_CAST
 #undef EXTRACT_UCHAR_BY_CAST
 
+/* Do you have IEEE floats and/or doubles (either big or little endian) ? */
+#undef FLOAT_IS_IEEE_BIG
+#undef FLOAT_IS_IEEE_LITTLE
+#undef DOUBLE_IS_IEEE_BIG
+#undef DOUBLE_IS_IEEE_LITTLE
+
 /* The rest of this file is just to eliminate warnings */
 
 /* define if declaration of strchr is missing */
