@@ -87,6 +87,8 @@ struct object *low_clone(struct program *p)
 
   o=(struct object *)xalloc( ((long)(((struct object *)0)->storage))+p->storage_needed);
 
+  debug_malloc_copy_names(o, p);
+
   o->prog=p;
   add_ref(p);
   o->parent=0;
