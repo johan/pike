@@ -521,6 +521,9 @@ static void eval_instruction(unsigned char *pc)
       if(fp->fun>=0 && fp->current_object->prog &&
 	 fp->locals+fp->num_locals > sp)
 	fatal("Stack error (stupid!).\n");
+
+      if(recoveries && sp-evaluator_stack < recoveries->sp)
+	fatal("Stack error (underflow)\n");
       
       if(d_flag > 9) do_debug();
 

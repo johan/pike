@@ -2038,6 +2038,11 @@ int dooptcode(struct pike_string *name,
   struct svalue *foo;
 
 #ifdef DEBUG
+  if(recoveries && sp-evaluator_stack < recoveries->sp)
+    fatal("Stack error before dooptcode (underflow)\n");
+#endif
+
+#ifdef DEBUG
   if(a_flag > 1)
     fprintf(stderr,"Doing function '%s' at %x\n",name->str,PC);
 #endif
@@ -2084,6 +2089,11 @@ int dooptcode(struct pike_string *name,
     do_code_block(n);
   }
   
+#ifdef DEBUG
+  if(recoveries && sp-evaluator_stack < recoveries->sp)
+    fatal("Stack error after do_code_block (underflow)\n");
+#endif
+
   ret=define_function(name,
 		      type,
 		      modifiers,

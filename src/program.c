@@ -113,7 +113,12 @@ int find_module_identifier(struct pike_string *ident)
 {
   JMP_BUF tmp;
 
-  if(SETJMP(tmp))
+#ifdef DEBUG
+  if(recoveries && sp-evaluator_stack < recoveries->sp)
+    fatal("Stack error in compiation (underflow)\n");
+#endif
+
+ if(SETJMP(tmp))
   {
     ONERROR tmp;
     SET_ONERROR(tmp,exit_on_error,"Error in handle_error in master object!");
@@ -1518,6 +1523,10 @@ void compile()
   init_node=0;
 
   yyparse();  /* Parse da program */
+#ifdef DEBUG
+  if(recoveries && sp-evaluator_stack < recoveries->sp)
+    fatal("Stack error in compilation (underflow after yyparse)\n");
+#endif
   free_all_local_names();
 }
 
