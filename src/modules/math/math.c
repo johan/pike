@@ -113,6 +113,16 @@ void f_atan(INT32 args)
   sp[-args].u.float_number=atan(sp[-args].u.float_number);
 }
 
+void f_atan2(INT32 args)
+{
+  if(args<2) error("Too few arguments to atan2()\n");
+  if(sp[-args].type!=T_FLOAT) error("Bad argument 1 to atan2()\n");
+  if(sp[-args+1].type!=T_FLOAT) error("Bad argument 2 to atan2()\n");
+  sp[-args].u.float_number=
+    atan2(sp[-args].u.float_number,sp[-args+1].u.float_number);
+  pop_stack();
+}
+
 void f_sqrt(INT32 args)
 {
   if(args<1) error("Too few arguments to sqrt()\n");
@@ -256,6 +266,7 @@ void pike_module_init(void)
   add_efun("acos",f_acos,"function(float:float)",0);
   add_efun("tan",f_tan,"function(float:float)",0);
   add_efun("atan",f_atan,"function(float:float)",0);
+  add_efun("atan2",f_atan2,"function(float,float:float)",0);
   add_efun("sqrt",f_sqrt,"function(float:float)|function(int:int)",0);
   add_efun("log",f_log,"function(float:float)",0);
   add_efun("exp",f_exp,"function(float:float)",0);
