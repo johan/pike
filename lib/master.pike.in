@@ -581,7 +581,8 @@ class dirnode
       if(mixed tmp=o->_module_value) o=tmp;
       return o;
     }
-    return cast_to_program( index, 0 ) || UNDEFINED;
+    if (program p=cast_to_program( index, 0 )) return p;
+    return UNDEFINED;
   }
 
   object|program `[](string index)
