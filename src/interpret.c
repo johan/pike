@@ -786,7 +786,7 @@ static void restore_light_frame_info(struct light_frame_info *info)
 
 #ifdef PIKE_DEBUG
 #define eval_instruction eval_instruction_with_debug
-#include "interpreter.h"
+#include "interpreter_debug.h"
 
 #undef eval_instruction
 #define eval_instruction eval_instruction_without_debug

@@ -1859,3 +1859,8 @@ PMOD_EXPORT void f_sscanf(INT32 args)
   push_array(a);
 }
 
+
+void o_breakpoint(void)
+{
+  /* Does nothing */
+}

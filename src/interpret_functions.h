@@ -1723,3 +1723,11 @@ OPCODE0_JUMP(F_TAIL_RECUR,"tail recursion")
   pc=addr;
 }
 BREAK
+
+OPCODE0(F_BREAKPOINT,"breakpoint")
+{
+  extern void o_breakpoint(void);
+  o_breakpoint();
+  pc--;
+}
+BREAK;
