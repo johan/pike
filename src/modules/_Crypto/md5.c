@@ -82,7 +82,7 @@ void MOD_INIT(md5)(void)
 {
   start_new_program();
   add_storage(sizeof(struct md5_ctx));
-  add_function("name", f_name, "function(void:string)", OPT_TRY_OPTIMIZE);
+  add_function("name", f_name, "function(void:string)", 0);
   add_function("create", f_create, "function(void|object:void)", 0);
   add_function("update", f_update, "function(string:void)", 0);
   add_function("digest", f_digest, "function(void:string)", 0);
