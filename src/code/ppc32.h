@@ -173,9 +173,9 @@ void ppc32_flush_code_generator_state(void);
 #define ins_byte(VAL)	  add_to_program((INT32)(VAL))
 #define ins_data(VAL)	  add_to_program((INT32)(VAL))
 
-INT32 ppc32_ins_f_jump(unsigned int a);
-INT32 ppc32_ins_f_jump_with_arg(unsigned int a, unsigned INT32 b);
-INT32 ppc32_ins_f_jump_with_2_args(unsigned int a, unsigned INT32 b, unsigned INT32 c);
+INT32 ppc32_ins_f_jump(unsigned int a, int backward_jump);
+INT32 ppc32_ins_f_jump_with_arg(unsigned int a, unsigned INT32 b, int backward_jump);
+INT32 ppc32_ins_f_jump_with_2_args(unsigned int a, unsigned INT32 b, unsigned INT32 c, int backward_jump);
 void ppc32_update_f_jump(INT32 offset, INT32 to_offset);
 INT32 ppc32_read_f_jump(INT32 offset);
 #define INS_F_JUMP ppc32_ins_f_jump
