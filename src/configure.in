@@ -6638,6 +6638,11 @@ AC_MSG_RESULT($LINKFORSHARED)
 
 if test $ac_cv_prog_gcc = yes; then
   AC_MSG_CHECKING(for libgcc file name)
+  if test -f "$pike_cv_libgcc_filename"; then :; else
+    # libgcc has gone away probably due to gcc having been upgraded.
+    # Invalidate the entry.
+    unset pike_cv_libgcc_filename
+  fi
   AC_CACHE_VAL(pike_cv_libgcc_filename,
   [
     pike_cv_libgcc_filename="`${CC-cc} $CCSHARED -print-libgcc-file-name`"
