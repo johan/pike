@@ -15,6 +15,12 @@
 PIKEV=7.3
 PIKE=pike$(PIKEV)
 
+ifdef CCVER
+CC=gcc-$(CCVER)
+else
+CC=gcc
+endif
+
 VERSION=$(shell dpkg-parsechangelog | grep ^Version | sed -e 's/Version: //;s/-[0-9]*$$//')
 OS=$(shell uname -srm|sed -e 's/ /-/g'|tr '[A-Z]' '[a-z]'|tr '/' '_')
 BUILDDIR=build/$(OS)
@@ -54,7 +60,7 @@ ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
 	INSTALL_PROGRAM += -s
 endif
 
-export CFLAGS
+export CFLAGS CC
 
 configure: configure-stamp
 configure-stamp:
