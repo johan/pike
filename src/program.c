@@ -1849,6 +1849,7 @@ INT32 define_function(struct pike_string *name,
     }
 
     /* We modify the old definition if it is in this program */
+
     if(ref.inherit_offset==0)
     {
       if(func)
@@ -1858,8 +1859,10 @@ INT32 define_function(struct pike_string *name,
       
       funp->identifier_flags=function_flags;
     }else{
-      if(compiler_pass==1  || (ref.id_flags & ID_INLINE))
+      if(ref.id_flags & ID_INLINE)
+      {
 	goto make_a_new_def;
+      }
       
       /* Otherwise we make a new definition */
       copy_shared_string(fun.name, name);
@@ -1886,6 +1889,7 @@ INT32 define_function(struct pike_string *name,
     return i;
   }
 make_a_new_def:
+
 
 #ifdef PIKE_DEBUG
   if(compiler_pass==2)
