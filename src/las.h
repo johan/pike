@@ -121,6 +121,14 @@ void resolv_program(node *n);
 #define CADR(n) CAR(CDR(n))
 #define CDAR(n) CDR(CAR(n))
 #define CDDR(n) CDR(CDR(n))
+#define CAAAR(n) CAR(CAR(CAR(n)))
+#define CAADR(n) CAR(CAR(CDR(n)))
+#define CADAR(n) CAR(CDR(CAR(n)))
+#define CADDR(n) CAR(CDR(CDR(n)))
+#define CDAAR(n) CDR(CAR(CAR(n)))
+#define CDADR(n) CDR(CAR(CDR(n)))
+#define CDDAR(n) CDR(CDR(CAR(n)))
+#define CDDDR(n) CDR(CDR(CDR(n)))
 
 #define GAUGE_RUSAGE_INDEX 0
 
