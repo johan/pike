@@ -76,8 +76,9 @@ configure: src/configure builddir
 	      echo "$$configureargs" > .configureargs; \
 	    if test "x$$oldconfigureargs" = "x$$configureargs"; then :; \
 	    else \
-	      echo Configure arguments have changed - doing make clean; \
+	      echo Configure arguments have changed - doing make clean and depend; \
 	      $(MAKE) "MAKE=$(MAKE)" clean; \
+	      $(MAKE) "MAKE=$(MAKE)" depend; \
 	    fi; \
 	  fi; \
 	}
