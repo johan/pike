@@ -3698,8 +3698,12 @@ void pike_module_init(void)
    ADD_FUNCTION("paste_mask",image_paste_mask,
 		tFunc(tObj tObj tOr(tInt,tVoid) tOr(tInt,tVoid),tObj),0);
    ADD_FUNCTION("paste_alpha_color",image_paste_alpha_color,
-		tFunc(tObj tOr(tVoid,tInt) tOr(tVoid,tInt) 
-		      tOr(tVoid,tInt) tOr(tInt,tVoid) tOr(tInt,tVoid),tObj),0);
+		tOr6(tFunc(tObj tInt tInt,tObj),
+		     tFunc(tObj tInt tInt tInt,tObj),
+		     tFunc(tObj tInt tInt tInt tInt tInt,tObj),
+		     tFunc(tObj tColor tInt tInt,tObj),
+		     tFunc(tObj tColor,tObj),
+		     tFunc(tObj,tObj)),0);
 
    ADD_FUNCTION("setcolor",image_setcolor,
 		tFunc(tInt tInt tInt,tObj),0);
