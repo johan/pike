@@ -15,7 +15,8 @@ for a in "$@"
 do
   case "$a" in
     --version)
-      echo "Fake NT uname version 1.2 by Fredrik Hubinette and others"
+      ver=`echo "$Rev$" |sed -e 's/.* \(.*\) .*/\1/'`
+      echo "Fake NT uname version $ver by Fredrik Hubinette and others"
       exit 0
     ;;
 
