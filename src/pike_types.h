@@ -56,7 +56,7 @@ extern struct pike_type **pike_type_mark_stack[PIKE_TYPE_STACK_SIZE/4];
 #define free_type debug_free_type
 #ifdef PIKE_DEBUG
 #define check_type_string debug_check_type_string
-#ebdif /* PIKE_DEBUG */
+#endif /* PIKE_DEBUG */
 #endif /* DEBUG_MALLOC */
 
 #else /* !USE_PIKE_TYPE */
