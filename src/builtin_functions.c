@@ -5037,7 +5037,7 @@ void f_map(INT32 args)
 	       (* fun)(1+splice);
 	       if(sp>spbase)
 	       {
-		 dmalloc_touch_svalue(sp);
+		 dmalloc_touch_svalue(sp-1);
 		 d->item[i]=*--sp;
 		 pop_n_elems(sp-spbase);
 	       }
@@ -5049,7 +5049,7 @@ void f_map(INT32 args)
 	       (* fun)(1);
 	       if(sp>spbase)
 	       {
-		 dmalloc_touch_svalue(sp);
+		 dmalloc_touch_svalue(sp-1);
 		 d->item[i]=*--sp;
 		 pop_n_elems(sp-spbase);
 	       }
@@ -5069,7 +5069,7 @@ void f_map(INT32 args)
 	     {
 	       apply_svalue(mysp-2,1);
 	     }
-	     dmalloc_touch_svalue(sp);
+	     dmalloc_touch_svalue(sp-1);
 	     d->item[i]=*--sp;
 	   }
 	 }
