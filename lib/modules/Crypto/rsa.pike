@@ -272,12 +272,12 @@ bignum get_q()
   return q;
 }
 
-bignum cooked_get_p()
+string cooked_get_p()
 {
   return p->digits(256);
 }
 
-bignum get_q()
+string cooked_get_q()
 {
   return q->digits(256);
 }
