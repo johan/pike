@@ -37,7 +37,7 @@ extract: xml recurse
 	  mv -f "$@.new" "$@"
 
 xml:
-	$(MAKE) PIKE="$(PIKE)" `(cd $(SRCDIR) && ls *.c *.pike *.pmod.in 2>/dev/null)|sed -e 's/\.c$$/\.xml/' -e 's/\.pike$$/\.xml/' -e 's/\.pond\.in$$/\.xml/' ` xml_dummy
+	$(MAKE) PIKE="$(PIKE)" `(cd $(SRCDIR) && ls *.c *.pike *.pmod *.pmod.in 2>/dev/null)|sed -e 's/\.c$$/\.xml/' -e 's/\.pike$$/\.xml/' -e 's/\.pmod\.in$$/\.xml/' -e 's/\.pmod$$/\.xml/' ` xml_dummy
 
 xml_dummy:
 
