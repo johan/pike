@@ -4,7 +4,6 @@
 
 @make_variables@
 VPATH=@srcdir@
-MODULE_CPPFLAGS=@DEFS@
 OBJS=mysql.o result.o
 MODULE_LDFLAGS=@LDFLAGS@ @MYSQL_LIBS@
 

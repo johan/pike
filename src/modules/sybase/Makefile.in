@@ -4,7 +4,6 @@
 @make_variables@
 
 VPATH=@srcdir@
-MODULE_CPPFLAGS=@DEFS@
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 OBJS=sybase.o
 

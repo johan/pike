@@ -4,7 +4,6 @@
 
 @make_variables@
 VPATH=@srcdir@
-MODULE_CPPFLAGS=@DEFS@
 OBJS=odbc.o odbc_result.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 
