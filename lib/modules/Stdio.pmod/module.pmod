@@ -1181,7 +1181,7 @@ static class nb_sendfile
 #ifdef SENDFILE_DEBUG
       werror("Stdio.sendfile(): NOOP!\n");
 #endif /* SENDFILE_DEBUG */
-      call_out(cb, 0, 0, @args);
+      call_out(cb, 0, 0, @a);
       return;
     }
 
