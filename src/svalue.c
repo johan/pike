@@ -1601,7 +1601,7 @@ PMOD_EXPORT void print_svalue (FILE *out, const struct svalue *s)
 PMOD_EXPORT void print_short_svalue (FILE *out, const union anything *a, TYPE_T type)
 {
   if (type <= MAX_REF_TYPE && !a->dummy)
-    fputs ("0", out);
+    fputc ('0', out);
   else {
     struct svalue sval;
     sval.type = type;
