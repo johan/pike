@@ -207,7 +207,7 @@ install: pike hilfe
 	    chmod u+w "$(lib_prefix)/$$d/."; \
 	  fi; \
 	done
-	@for d in `cd "$(LIBDIR_SRC)"; find . ! -name CVS -type d -print`; do \
+	@for d in `cd "$(LIBDIR_SRC)"; find . ! -name CVS ! -name '.#*' ! -name '#*#' ! -name '*~' -type d -print`; do \
 	  if [ -d "$(share_prefix)/$$d/." ]; then : ; else \
 	    echo "$(share_prefix)/$$d"; \
 	    mkdir "$(share_prefix)/$$d" || exit 1; \
