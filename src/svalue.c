@@ -1262,7 +1262,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	if(!prog)
 	  my_strcat("0");
 	else {
-	  struct pike_string *name;
+	  struct pike_string *name = NULL;
 	  struct identifier *id;
 
 	  if (prog == pike_trampoline_program) {
