@@ -1,3 +1,4 @@
+
 /*\
 ||| This file a part of Pike, and is copyright by Fredrik Hubinette
 ||| Pike is distributed as GPL (General Public License)
@@ -571,6 +572,12 @@ PMOD_EXPORT struct array *friendly_slice_array(struct array *v,
 PMOD_EXPORT struct array *copy_array(struct array *v)
 {
   struct array *a;
+
+  if (!v->size) {
+    /* Empty array. */
+    add_ref(&empty_array);
+    return &empty_array;
+  }
 
   a=allocate_array_no_init(v->size, 0);
   a->type_field = v->type_field;
