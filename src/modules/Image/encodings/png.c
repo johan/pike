@@ -72,10 +72,10 @@ static INLINE COLORTYPE _png_c16(unsigned long z,int bpp)
 {
    switch (bpp)
    {
-      case 16: return z>>8; break;
-      case 4:  return z*17; break;
-      case 2:  return z*0x55; break;
-      case 1:  return z*255; break;
+      case 16: return z>>8;
+      case 4:  return z*17;
+      case 2:  return z*0x55;
+      case 1:  return z*255;
       default: return z;
    }
 
