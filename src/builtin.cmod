@@ -747,6 +747,9 @@ PIKEFUN mapping random(mapping m)
  * Backtrace handling.
  */
 
+/*! @module Pike
+ */
+
 /*! @class BacktraceFrame
  */
 
@@ -1030,7 +1033,12 @@ PIKECLASS backtrace_frame
 /*! @endclass
  */
 
-/*! @decl array(array) backtrace()
+/*! @endmodule
+ */
+
+/*! @decl array(Pike.BacktraceFrame) backtrace()
+ *!
+ *!   FIXME: This documentation is not up to date!
  *!
  *!   Get a description of the current call stack.
  *!
