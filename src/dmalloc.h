@@ -2,7 +2,7 @@
  * $Id$
  */
 
-extern char *debug_xalloc(long);
+extern char *debug_xalloc(size_t);
 
 #define DMALLOC_LOCATION() ("S"  __FILE__ ":" DEFINETOSTR(__LINE__) )
 
