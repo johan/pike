@@ -1905,6 +1905,10 @@ PIKECLASS Event {
     RETURN SDL_PollEvent(&THIS->event);
   }
   
+  PIKEFUN int wait() {
+    RETURN SDL_WaitEvent(&THIS->event);
+  }
+
   PIKEFUN int poll() {
     RETURN SDL_PollEvent(NULL);
   }
