@@ -611,6 +611,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
 	    return;
 	  }
 	}
+	Pike_error("Failed to encode function.\n");
       }
 
       code_entry(type_to_tag(val->type), 0,data);
