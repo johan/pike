@@ -415,7 +415,7 @@ struct object *decode_value_clone_object(struct svalue *prog)
   ONERROR tmp;
   INT32 parent_identifier;
   struct program *p=program_from_svalue(prog);
-  if(!p) Pike_error("Failed to decode program!\n");
+  if(!p) return NULL;
 
   o=low_clone(p);
   SET_ONERROR(tmp, do_free_object, o);
