@@ -362,7 +362,7 @@ PMOD_EXPORT void get_all_args(const char *fname, INT32 args,
     case '*': expected_type = "mixed"; break;
     default: expected_type = "Unknown"; break;
     }
-    if (ret <= args) {
+    if (ret < args) {
       bad_arg_error(
 	fname, sp-args, args,
 	ret+1,
