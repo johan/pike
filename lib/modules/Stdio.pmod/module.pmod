@@ -1714,7 +1714,7 @@ string simplify_path(string path)
 //! exist, for instance because one of its links pointed to a
 //! nonexistent file or if there was a symlink loop. The returned path
 //! is also canonicized/simplified, removing "//", "/./" and the like.
-string|int(0..0) chase_links(string path)
+string|int(0..0) expand_symlinks(string path)
 {
   string unwound, root = has_prefix(path, "/") ? "/" : "";
   mapping(string:Stat) seen = ([]);
