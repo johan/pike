@@ -3833,7 +3833,7 @@ void fix_type_field(node *n)
 	    if (state) {
 	      struct identifier *id = ID_FROM_INT(state->new_program, id_no);
 	      if (id && id->name) {
-		name = id->name->str;
+		name = id->name;
 #if 0
 #ifdef PIKE_DEBUG
 		/* FIXME: This test crashes on valid code because the type of the
