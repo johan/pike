@@ -1255,6 +1255,10 @@ void apply_low(struct object *o, int fun, int args)
   check_stack(256);
   check_mark_stack(256);
 
+#ifdef DEBUG
+  if(d_flag>2) do_debug();
+#endif
+
   p=o->prog;
   if(!p)
     error("Cannot call functions in destructed objects.\n");
@@ -1337,9 +1341,6 @@ void apply_low(struct object *o, int fun, int args)
 
   if(function->flags & IDENTIFIER_C_FUNCTION)
   {
-#ifdef DEBUG
-    if(d_flag) check_threads_etc();
-#endif
     fp->num_args=args;
     new_frame.num_locals=args;
     (*function->func.c_fun)(args);
