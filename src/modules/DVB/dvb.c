@@ -447,12 +447,12 @@ static void f_zap(INT32 args) {
 }
 
 
-/*! @decl mapping|int get_codec_info()
+/*! @decl mapping|int get_pids()
  *!
- *! Returns mapping with info of used codec.
+ *! Returns mapping with info of currently tuned program's pids.
  *!
  *! @seealso
- *!   @[list_codecs()]
+ *!   @[tune()]
  */
 static void f_get_pids(INT32 args) {
 
