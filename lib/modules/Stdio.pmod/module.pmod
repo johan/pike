@@ -2635,8 +2635,7 @@ class UDP
   this_program set_read_callback(function f,mixed ...ext)
   {
     extra=ext;
-    callback=f;
-    _set_read_callback(_read_callback);
+    _set_read_callback((callback = f) && _read_callback);
     return this;
   }
    
