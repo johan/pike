@@ -518,7 +518,6 @@ static void image_gif__render_block(INT32 args)
 
 /*
 **! method string render_block(object img,object colortable,int x,int y,int localpalette);
-**! method string render_block(object img,object colortable,int x,int y,int localpalette,int transp_index);
 **! method string render_block(object img,object colortable,int x,int y,int localpalette,object alpha);
 **! method string render_block(object img,object colortable,int x,int y,int localpalette,object alpha,int r,int g,int b);
 **! method string render_block(object img,object colortable,int x,int y,int localpalette,int delay,int transp_index,int interlace,int user_input,int disposal);
