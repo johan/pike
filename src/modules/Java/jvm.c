@@ -2794,6 +2794,7 @@ static void f_create(INT32 args)
   char *classpath = NULL;
   jclass cls;
 
+  /* FIXME: This doesn't loop... */
   while(j->jvm) {
     JavaVM *jvm = j->jvm;
     JNIEnv *env;
