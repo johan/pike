@@ -87,7 +87,7 @@ extern pthread_attr_t small_pattr;
 #define COND_T pthread_cond_t
 
 #ifdef HAVE_PTHREAD_CONDATTR_DEFAULT
-#define co_init(X) pthread_cond_init((X), pthread_condattr_default)
+#define co_init(X) pthread_cond_init((X), &pthread_condattr_default)
 #else
 #define co_init(X) pthread_cond_init((X), 0)
 #endif /* HAVE_PTHREAD_CONDATTR_DEFAULT */
