@@ -187,7 +187,8 @@ PIKECLASS Yarrow
 
 char *crypt_md5(int pl, const char *pw, int sl, const char *salt);
 
-/*! Does the crypt_md5 abrakadabra (MD5 + snakeoil).
+/*! @decl string crypt_md5(string password, string salt)
+ *! Does the crypt_md5 abrakadabra (MD5 + snakeoil).
  *! It is assumed that @[salt] does not contain "$".
  */
 PIKEFUN string crypt_md5(string pw, string salt)
