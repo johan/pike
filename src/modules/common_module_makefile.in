@@ -58,7 +58,7 @@ $(MODULE_ARCHIVES) ThisIsAPhonyTargetBlaBlaBla: force
 .c.o:
 	@echo "Compiling $<" ;\
 	rm -f $@.fail >/dev/null 2>&1; \
-	if $(CC) $(CFLAGS) -c $< -o $@ ; then : ; else \
+	if $(CC) $(PREFLAGS) $(CFLAGS) -c $< -o $@ ; then : ; else \
 	  status=$$?; \
 	  if test x"@noopt_retry@" = xyes ; then \
 	    echo "WARNING: Compiler failure! Trying without optimization!" >&2;\
