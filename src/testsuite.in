@@ -206,7 +206,7 @@ test_any([[
 
     void create() { bar = baz + A::foo + B::foo; }
   };
-  return B()->bar;
+  return C()->bar;
 ]], 12)
 
 test_eq([[object_program(master())]],[[(program)"/master"]])
