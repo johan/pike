@@ -3825,6 +3825,7 @@ void pike_module_exit(void)
   free_string(magic_PNG);
   free_string(magic_JPEG);
   free_string(magic_XFace);
+  free_string(magic_TTF);
 }
 
 
