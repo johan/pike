@@ -9087,10 +9087,10 @@ test_do([[
     proc->kill(signum("KILL"));
     return sprintf("Unexpected signal:%d (expected %d)", sig, signum("TERM"));
   }
-  proc->cont();
+  proc->cont();		// Ignore it...
 
   // Check that we can make harmless signals deadly.
-  proc->kill(signum("CONT"));	// SIGCONT
+  proc->kill(signum("CONT"));
   code = proc->wait();
   if (code != -2) {
     proc->kill(signum("KILL"));
@@ -9098,10 +9098,10 @@ test_do([[
   }
   sig = proc->last_signal();
   if (sig != signum("CONT")) {
-    proc->kill(9);
+    proc->kill(signum("KILL"));
     return sprintf("Unexpected signal:%d (expected %d)", sig, signum("CONT"));
   }
-  proc->cont(9);	// Make it a SIGKILL
+  proc->cont(signum("KILL"));	// Make it a SIGKILL
 
   code = proc->wait();
   if (code != -1) {
