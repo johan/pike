@@ -647,31 +647,28 @@ static void mpzmod__sprintf(INT32 args)
     
   case 'c':
   {
-    INT_TYPE length, neg = 0;
+    INT_TYPE neg = mpz_sgn (THIS) < 0;
     unsigned char *dst;
-    size_t pos;
+    size_t pos, length = mpz_size (THIS);
     mpz_t tmp;
     MP_INT *n;
     INT_TYPE i;
 
-    length = mpz_size (THIS);
-
     if(width_undecided)
     {
       p_wchar2 ch = mpz_get_ui(THIS);
-      if(length<0)
+      if(neg)
 	ch = (~ch)+1;
       s = make_shared_binary_string2(&ch, 1);
       break;
     }
     
-    if(length < 0)
+    if (neg)
     {
       mpz_init_set(tmp, THIS);
       mpz_add_ui(tmp, tmp, 1);
-      length = -mpz_size (tmp);
+      length = mpz_size (tmp);
       n = tmp;
-      neg = 1;
     }
     else
       n = THIS;
