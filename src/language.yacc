@@ -1239,13 +1239,18 @@ opt_function_type: '('
   {
     if ($4)
     {
-      if (!$3) {
-	/* FIXME: Should this be a syntax error or not? */
-	push_type(T_MIXED);
+      if ($3) {
+	push_type(T_MANY);
+	type_stack_reverse();
+      } else {
+	/* function_type_list ends with a comma, or is empty.
+	 * FIXME: Should this be a syntax error or not?
+	 */
 	yywarning("Implicit mixed type.");
+	type_stack_reverse();
+	push_type(T_MANY);
+	push_type(T_MIXED);
       }
-      push_type(T_MANY);
-      type_stack_reverse();
     }else{
       type_stack_reverse();
       push_type(T_MANY);
