@@ -242,7 +242,10 @@ int dbm_main(int argc, char **argv)
     init_pike_frame_blocks();
     init_node_s_blocks();
     init_object_blocks();
+#ifndef DEBUG_MALLOC
+    /* This has already been done by initialize_dmalloc(). */
     init_callback_blocks();
+#endif /* !DEBUG_MALLOC */
 #ifdef PIKE_NEW_MULTISETS
     init_multiset();
 #endif
