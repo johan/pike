@@ -64,7 +64,7 @@ else
        [ pike_cv_lib_glut=yes ], [ pike_cv_lib_glut=no ])
     LIBS="$oldLIBS"
   ])
-  if test x"$pike_cv_lib_glut" = "xyesyes"; then
+  if test x"$pike_cv_lib_glut" = "xyes"; then
     AC_MSG_RESULT(yes)
   else
     AC_MSG_RESULT(no)
@@ -83,7 +83,7 @@ else
        [ pike_cv_framework_GLUT=yes ], [ pike_cv_framework_GLUT=no ])
     LIBS="$oldLIBS"
   ])
-  if test x"$pike_cv_framework_GLUT" = "xyesyes"; then
+  if test x"$pike_cv_framework_GLUT" = "xyes"; then
     AC_MSG_RESULT(yes)
   else
     AC_MSG_RESULT(no)
