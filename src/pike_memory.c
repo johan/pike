@@ -1684,6 +1684,8 @@ void dmalloc_check_block_free(void *p, char *location)
   {
     fprintf(stderr,"Freeing storage for small block still in use %p at %s.\n",p,LOCATION_NAME(location));
     debug_malloc_dump_references(p,0,2,0);
+    mh->flags |= MEM_FREE | MEM_IGNORE_LEAK;
+    mh->size = ~mh->size;
   }
 
   mt_unlock(&debug_malloc_mutex);
