@@ -2305,11 +2305,12 @@ PMOD_EXPORT void f_crypt(INT32 args)
   }
 }
 
-/*! @decl void destruct(object o)
+/*! @decl void destruct(void|object o)
  *!
  *!   Mark an object as destructed.
  *!
- *!   Calls @expr{o->destroy()@}, and then clears all variables in the object.
+ *!   Calls @expr{o->destroy()@}, and then clears all variables in the
+ *!   object. If no argument is given, the current object is destructed.
  *!
  *!   All pointers and function pointers to this object will become zero.
  *!   The destructed object will be freed from memory as soon as possible.
