@@ -1509,6 +1509,9 @@ struct rb_node_hdr *rb_make_tree (struct rb_node_hdr *list, size_t length)
       list = next;
     }
 
+    /* FIXME: What if root is still NULL here? */
+    assert(root);
+
     next_src->next = NULL;
     root->flags &= ~RB_RED;
     if (stack_malloced) xfree (stack);
