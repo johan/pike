@@ -133,7 +133,7 @@ constant header =
 " */\n"
 "\n";
 
-mapping(string: mixed) rules = ([]);
+mapping(string: array(object(node))) rules = ([]);
 
 void fail(string msg, mixed ... args)
 {
@@ -333,7 +333,7 @@ class node
 
 string fix_extras(string s)
 {
-  array a = s/"$";
+  array(string) a = s/"$";
 
   for(int i=1; i < sizeof(a); i++) {
     string pos;
@@ -752,7 +752,7 @@ void parse_data()
 
 string do_indent(string code, string indent)
 {
-  array a = code/"\n";
+  array(string) a = code/"\n";
   for(int i = 0; i < sizeof(a); i++) {
     if (sizeof(a[i]) && (a[i][0] != '#')) {
       a[i] = indent + a[i];
@@ -873,12 +873,13 @@ string generate_match(array(object(node)) rule_set, string indent)
     res += indent + sprintf("if (!CA%sR(n)) {\n", tpos);
 
     if (sizeof(node_classes[NULL_CAR])) {
-      zap_car(node_classes[NULL_CAR]);
+      zap_car([array(object(node))]node_classes[NULL_CAR]);
 
 #if 0
       if (sizeof(node_classes[ANY_CAR]) < sizeof(node_classes[ANY_CDR])) {
 #endif /* 0 */
-	res += generate_match(node_classes[NULL_CAR] +
+	res += generate_match([array(object(node))]
+			      node_classes[NULL_CAR] +
 			      node_classes[ANY_CAR], indent + "  ");
 #if 0
       } else {
@@ -990,7 +991,7 @@ string generate_match(array(object(node)) rule_set, string indent)
       res += indent + "{\n";
     }
     if (sizeof(node_classes[MATCH_CAR])) {
-      mapping(string:array(object)) token_groups = ([]);
+      mapping(string:array(object(node))) token_groups = ([]);
       foreach(node_classes[MATCH_CAR], object(node) n) {
 	token_groups[n->car->token] += ({ n->car });
       }
@@ -1010,7 +1011,7 @@ string generate_match(array(object(node)) rule_set, string indent)
       res += "\n";
     }
     if (sizeof(node_classes[MATCH_CDR])) {
-      mapping(string:array(object)) token_groups = ([]);
+      mapping(string:array(object(node))) token_groups = ([]);
       foreach(node_classes[MATCH_CDR], object(node) n) {
 	token_groups[n->cdr->token] += ({ n->cdr });
       }
@@ -1141,10 +1142,10 @@ void generate_parent(object(node) n, object(node) parent, string tpos)
   n->tpos = tpos;
   n->parent = parent;
   if (objectp(n->car)) {
-    generate_parent(n->car, n, "A"+tpos);
+    generate_parent([object(node)]n->car, n, "A"+tpos);
   }
   if (objectp(n->cdr)) {
-    generate_parent(n->cdr, n, "D"+tpos);
+    generate_parent([object(node)]n->cdr, n, "D"+tpos);
   }
 }
 
@@ -1172,7 +1173,7 @@ int main(int argc, array(string) argv)
 
   string result = sprintf(header, fname) + generate_code();
 
-  object dest = Stdio.File();
+  object(Stdio.File) dest = Stdio.File();
 
   fname = fname[..sizeof(fname)-4] + ".h";
 
