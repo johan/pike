@@ -358,7 +358,6 @@ private void ssl_write_callback(mixed id)
 #ifdef SSL3_DEBUG
     werror("SSL.sslport->ssl_write_callback: Calling write_callback\n");
 #endif
-    werror("Calling HLP write_callback now!!!, which is: %O \n",write_callback);
     write_callback(id);
     if (!this_object()) {
       // We've been destructed.
