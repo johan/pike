@@ -3927,6 +3927,8 @@ static void html_read(INT32 args)
 	 f_aggregate(m);
 	 if (got_arr) f_add(2);
       }
+      else
+	ref_push_array(&empty_array);
    }
    else
    {
