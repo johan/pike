@@ -164,3 +164,5 @@ PIKE_MODULE_EXIT
   EXIT;
 }
 
+/*! @endmodule
+ */
