@@ -266,10 +266,9 @@ xenofarm:
 	-cp "$(BUILDDIR)/config.info" build/xenofarm/configinfo.txt
 	-if test ! -f "build/xenofarm/verifylog.txt"; then \
 	  cp "$(BUILDDIR)/config.cache" build/xenofarm/configcache.txt; \
-	  mkdir build/xenofarm/configlogs; \
 	  builddir="$(BUILDDIR)"; \
 	  for f in `cd "$$builddir" && find . -name config.log -print`; do \
-	    cp $$builddir/$$f build/xenofarm/configlogs/`echo $$f|tr '[/]' '[_]'`.txt; \
+	    cp $$builddir/$$f build/xenofarm/configlog`echo $$f|tr '[/]' '[_]'`.txt; \
 	  done; \
 	else :; fi
 	-if test ! -f "build/xenofarm/exportlog.txt"; then \
