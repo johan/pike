@@ -370,8 +370,13 @@ private void ssl_read_callback(mixed id, string s)
   }
 }
 
+private Thread.Mutex write_mutex = Thread.Mutex();
+
 private void ssl_write_callback(mixed id)
 {
+  Thread.MutexKey mutex_key = write_mutex->lock(2);
+  if (!socket) return;
+  
 #ifdef SSL3_DEBUG
   werror("SSL.sslfile->ssl_write_callback: handshake_finished = %d\n"
 	 "blocking = %d, write_callback = %O\n",
