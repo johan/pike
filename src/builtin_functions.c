@@ -799,7 +799,7 @@ void f_string_to_utf8(INT32 args)
     }
   }
   if (len == in->len) {
-    // 7bit string -- already valid utf8.
+    /* 7bit string -- already valid utf8. */
     pop_n_elems(args - 1);
     return;
   }
