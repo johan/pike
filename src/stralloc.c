@@ -1611,7 +1611,7 @@ static void string_build_mkspace(struct string_builder *s, int chars, int mag)
   }
 }
 
-static void *string_builder_allocate(struct string_builder *s, int chars, int mag)
+void *string_builder_allocate(struct string_builder *s, int chars, int mag)
 {
   void *ret;
   string_build_mkspace(s,chars,mag);

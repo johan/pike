@@ -221,6 +221,7 @@ void cleanup_shared_string_table(void);
 void count_memory_in_strings(INT32 *num, INT32 *size);
 void gc_mark_all_strings(void);
 void init_string_builder(struct string_builder *s, int mag);
+void *string_builder_allocate(struct string_builder *s, int chars, int mag);
 void string_builder_putchar(struct string_builder *s, int ch);
 void string_builder_binary_strcat(struct string_builder *s, char *str, INT32 len);
 void string_builder_append(struct string_builder *s,
