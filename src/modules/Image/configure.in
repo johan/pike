@@ -70,6 +70,6 @@ fi
 
 AC_SUBST(RANLIB)
 
-AC_OUTPUT(Makefile,echo FOO >stamp-h )
-
 AC_CONFIG_SUBDIRS(encodings)
+
+AC_OUTPUT(Makefile,echo FOO >stamp-h )
