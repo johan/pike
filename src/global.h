@@ -10,6 +10,17 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
+/* The worlds most stringent C compiler? */
+#ifdef __TenDRA__
+/* We want to be able to use 64bit arithmetic */
+#pragma TenDRA longlong type allow
+#pragma TenDRA set longlong type : long long
+/* Decrease the ANSI C stringency. */
+#if __STDC__ - 0 != 0
+#undef __STDC__
+#define __STDC__ 0
+#endif /* __TenDRA__ */
+
 #ifndef _LARGEFILE_SOURCE
 #  define _FILE_OFFSET_BITS 64
 #  define _LARGEFILE_SOURCE
