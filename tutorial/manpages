@@ -304,3 +304,12 @@ void output(string base, WMML data)
    mandesc->close();
 }
 
+Sgml.Tag|string illustration(object o, mapping|void options)
+{
+  return "";
+}
+
+Sgml.Tag|string illustration_jpeg(object o, mapping|void options)
+{
+  return "";
+}
