@@ -557,6 +557,9 @@ void *worker(void *this_)
 
   /* Wake up the backend */
   wake_up_backend();
+
+  /* We're gone... */
+  num_threads--;
     
   mt_unlock(&interpreter_lock);
 
@@ -807,7 +810,17 @@ static void sf_create(INT32 args)
     }
 
     /* The worker will have a ref. */
-    th_create_small(&th_id, worker, THIS);
+    if (th_create_small(&th_id, worker, THIS)) {
+      /* Failure */
+      sf.to->flags &= ~FILE_LOCK_FD;
+      if (sf.from) {
+	sf.from->flags &= ~FILE_LOCK_FD;
+      }
+      free_object(THIS->self);
+      resource_error("Stdio.sendfile", sp, 0, "threads", 1,
+		     "Failed to create thread.\n");
+    }
+    num_threads++;
   }
   return;
 }
