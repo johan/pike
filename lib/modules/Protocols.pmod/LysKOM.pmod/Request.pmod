@@ -261,9 +261,9 @@ class Create_person_old
                H(passwd)});
    }
 
-   string reply(array what)
+   int reply(array what)
    {
-      return what[0]; /* HOLLERITH */
+      return (int)what[0]; /* Pers-no */
    }
 
    void failure(object error)
