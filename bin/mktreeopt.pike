@@ -96,19 +96,21 @@ class node
       s += "[" + e + "]";
     }
     if (!(< "*", "-" >)[token]) {
-      s += "(";
-      if (car) {
-	s += car->_sprintf();
-      } else {
-	s += "-";
+      if (car || cdr) {
+	s += "(";
+	if (car) {
+	  s += car->_sprintf();
+	} else {
+	  s += "*";
+	}
+	s += ", ";
+	if (cdr) {
+	  s += cdr->_sprintf();
+	} else {
+	  s += "*";
+	}
+	s += ")";
       }
-      s += ", ";
-      if (cdr) {
-	s += cdr->_sprintf();
-      } else {
-	s += "-";
-      }
-      s += ")";
     }
     return s;
   }
