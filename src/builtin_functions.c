@@ -3131,6 +3131,7 @@ node *optimize_replace(node *n)
 	    );
 
 	    UNSETJMP(tmp);
+	    pop_n_elems(Pike_sp - save_sp);
 
 	    free_type(array_zero);
 	    free_type(mapping_zero);
@@ -3139,6 +3140,7 @@ node *optimize_replace(node *n)
 	  }
 	}
 	UNSETJMP(tmp);
+	pop_n_elems(Pike_sp - save_sp);
       }
     }
   }
