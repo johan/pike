@@ -16,7 +16,7 @@
 #ifndef _LARGEFILE_SOURCE
 #  define _FILE_OFFSET_BITS 64
 #  define _LARGEFILE_SOURCE
-#  define _LARGEFILE64_SOURCE 1
+/* #  define _LARGEFILE64_SOURCE 1 */	/* This one is for explicit 64bit. */
 #endif
 
 /* HPUX needs these too... */
@@ -45,16 +45,16 @@
 #define WIN32	100	/* WinNT 1.0 */
 #endif
 
-/* Mingw32 needs this to define stuff correctly. */
-#ifdef _WIN32_WINDOWS
+/* We want WinNT 5.0 API's if available. */
+#if !defined(_WIN32_WINDOWS) || (_WIN32_WINDOWS < 0x500)
 #undef _WIN32_WINDOWS
-#endif
-#ifdef _WIN32_WINNT
-#undef _WIN32_WINNT
+#define _WIN32_WINDOWS 0x0500
 #endif
 
-#define _WIN32_WINDOWS 0x0500
+#if !defined(_WIN32_WINNT) || (_WIN32_WINNT < 0x500)
+#undef _WIN32_WINNT
 #define _WIN32_WINNT 0x0500
+#endif
 
 #endif /* __NT__ */
 
