@@ -203,6 +203,11 @@ void DECLSPEC(noreturn) generic_error_va(struct object *o,
 		      char *fmt,
 		      va_list foo)
   ATTRIBUTE((noreturn));
+PMOD_EXPORT DECLSPEC(noreturn) void throw_error_object(
+  struct object *o,
+  char *func,
+  struct svalue *base_sp,  int args,
+  char *desc, ...) ATTRIBUTE((noreturn,format (printf, 5, 6)));
 PMOD_EXPORT void DECLSPEC(noreturn) generic_error(
   char *func,
   struct svalue *base_sp,  int args,

@@ -556,6 +556,20 @@ DECLSPEC(noreturn) void generic_error_va(struct object *o,
   pike_throw();  /* Hope someone is catching, or we will be out of balls. */
 }
 
+
+PMOD_EXPORT DECLSPEC(noreturn) void throw_error_object(
+  struct object *o,
+  char *func,
+  struct svalue *base_sp,  int args,
+  char *desc, ...) ATTRIBUTE((noreturn,format (printf, 5, 6)))
+{
+  va_list foo;
+  va_start(foo,desc);
+  ASSERT_THREAD_SWAPPED_IN();
+  DWERROR((stderr, "%s(): Throwing an error object\n", func));
+  ERROR_DONE(generic);
+}
+
 PMOD_EXPORT DECLSPEC(noreturn) void generic_error(
   char *func,
   struct svalue *base_sp,  int args,
