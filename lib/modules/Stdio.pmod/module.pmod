@@ -497,7 +497,14 @@ class FILE {
       while((p=search(b, "\n", bpos+tmp)) == -1)
       {
 	tmp=strlen(b)-bpos;
-	if(!get_data()) return 0;
+	if(!get_data()) 
+	{
+	  if(bpos==sizeof(b))
+	     return 0;
+	  else
+	    return extract(sizeof(b)-bpos,0);
+	}
+
       }
       return extract(p-bpos, 1);
     }
