@@ -33,7 +33,11 @@
 #include "module_support.h"
 #include "operators.h"
 
+#ifdef HAVE_POSTGRES_FE_H
+#include <postgres_fe.h>
+#else /* !HAVE_POSTGRES_FE_H */
 #include <postgres.h>
+#endif /* HAVE_POSTGRES_FE_H */
 #include <libpq-fe.h>
 
 #include "pgresult.h"
