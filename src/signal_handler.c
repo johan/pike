@@ -137,7 +137,7 @@ RCSID("$Id$");
 
 #define BEGIN_FIFO_PUSH(pre,TYPE) do { \
   int PIKE_CONCAT(pre,_tmp_)=PIKE_CONCAT(pre,_first) + 1; \
-  if(PIKE_CONCAT(pre,_tmp_) > SIGNAL_BUFFER) PIKE_CONCAT(pre,_tmp_)=0
+  if(PIKE_CONCAT(pre,_tmp_) >= SIGNAL_BUFFER) PIKE_CONCAT(pre,_tmp_)=0
 
 #define FIFO_DATA(pre,TYPE) ( PIKE_CONCAT(pre,buf)[PIKE_CONCAT(pre,_tmp_)] )
 
