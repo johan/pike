@@ -30,6 +30,7 @@ struct DATA *PIKE_CONCAT3(make_,DATA,_unlocked)(void *ptr, size_t hval); \
 struct DATA *PIKE_CONCAT(make_,DATA)(void *ptr);		\
 struct DATA *PIKE_CONCAT(get_,DATA)(void *ptr);			\
 int PIKE_CONCAT3(check_,DATA,_semafore)(void *ptr);		\
+void PIKE_CONCAT(move_,DATA)(struct DATA *block, void *new_ptr); \
 int PIKE_CONCAT(remove_,DATA)(void *ptr);			\
 void PIKE_CONCAT3(low_init_,DATA,_hash)(size_t);		\
 void PIKE_CONCAT3(init_,DATA,_hash)(void);			\
