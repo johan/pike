@@ -26,7 +26,6 @@ RCSID("$Id$");
 #include "image.h"
 #include "builtin_functions.h"
 
-struct program *image_program;
 #define THIS ((struct image *)(fp->current_storage))
 #define THISOBJ (fp->current_object)
 
