@@ -1,5 +1,4 @@
 #include "global.h"
-#include <config.h>
 
 /* $Id$ */
 
@@ -25,7 +24,7 @@ RCSID("$Id$");
 
 #include <math.h> /* fabs() */
 
-#include "config.h"
+#include "image_machine.h"
 
 #include "stralloc.h"
 #include "pike_macros.h"

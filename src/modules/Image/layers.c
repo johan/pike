@@ -6,13 +6,12 @@
 */
 
 #include "global.h"
-#include <config.h>
 
 #include <math.h> /* floor */
 
 RCSID("$Id$");
 
-#include "config.h"
+#include "image_machine.h"
 
 #include "stralloc.h"
 #include "pike_macros.h"

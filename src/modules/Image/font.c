@@ -1,6 +1,5 @@
 /* $Id$ */
 #include "global.h"
-#include <config.h>
 
 #define SPACE_CHAR 'i'
 
@@ -166,7 +165,7 @@ Kerningtable types:
 
 #include <errno.h>
 
-#include "config.h"
+#include "image_machine.h"
 
 #include "stralloc.h"
 #include "pike_macros.h"

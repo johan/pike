@@ -1,5 +1,5 @@
 #include "global.h"
-#include "config.h"
+#include "image_machine.h"
 #include <math.h>
 #include <ctype.h>
 

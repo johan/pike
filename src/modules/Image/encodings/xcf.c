@@ -1,7 +1,7 @@
 #include "global.h"
 RCSID("$Id$");
 
-#include "config.h"
+#include "image_machine.h"
 
 #include "pike_macros.h"
 #include "object.h"

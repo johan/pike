@@ -95,11 +95,10 @@
 */
 
 #include "global.h"
-#include <config.h>
 
 RCSID("$Id$");
 
-#include "config.h"
+#include "image_machine.h"
 
 #include <math.h>
 

@@ -7,7 +7,7 @@ extern double floor(double);
 #include <unistd.h>
 #include <math.h>
 
-#include "config.h"
+#include "image_machine.h"
 
 #include "stralloc.h"
 #include "pike_macros.h"
