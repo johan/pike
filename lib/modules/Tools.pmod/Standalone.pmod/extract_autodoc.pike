@@ -102,6 +102,11 @@ void recurse(string srcdir, string builddir, int root_ts, array(string) root)
     root_ts = st->mtime;
   }
 
+  if(!file_stat(srcdir)) {
+    werror("Could not find directory %O.\n", srcdir);
+    return;
+  }
+
   foreach(get_dir(srcdir), string fn) {
     if(fn=="CVS") continue;
     if(fn[0]=='.') continue;
