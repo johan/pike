@@ -15,6 +15,8 @@
 #define ins_byte(VAL)		add_to_program((VAL))
 #define ins_data(VAL)		add_relocated_int_to_program((VAL))
 
+#define PROG_COUNTER pc
+
 #define READ_INCR_BYTE(PC)	EXTRACT_UCHAR((PC)++)
 
 #define CHECK_RELOC(REL, PROG_SIZE)		\

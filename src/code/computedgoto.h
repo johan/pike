@@ -4,4 +4,6 @@
 
 #define UPDATE_PC()
 
+#define PROG_COUNTER pc
+
 #define READ_INCR_BYTE(PC)	((INT32)(ptrdiff_t)((PC)++)[0])
