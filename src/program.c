@@ -4122,7 +4122,6 @@ PMOD_EXPORT int add_constant(struct pike_string *name,
 	id->type = get_type_of_svalue(c);
 	id->run_time_type = c->type;
 	id->func.offset = store_constant(c, 0, 0);
-	fprintf (stderr, "b\n");
       }
 #ifdef PROGRAM_BUILD_DEBUG
       fprintf (stderr, "%.*sstored constant #%d at %d\n",
