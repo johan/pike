@@ -637,7 +637,7 @@ char *debug_qalloc(size_t size)
 /* #define DMALLOC_TRACE */
 /* #define DMALLOC_TRACELOGSIZE	256*1024 */
 
-/* #define DMALLOC_TRACE_MEMHDR ((struct memhdr *)0x4012b7d8) */
+/* #define DMALLOC_TRACE_MEMHDR ((struct memhdr *)0x40157218) */
 /* #define DMALLOC_TRACE_MEMLOC ((struct memloc *)0x405500d8) */
 #ifdef DMALLOC_TRACE_MEMLOC
 #define DO_IF_TRACE_MEMLOC(X)	do { X; } while(0)
@@ -1230,7 +1230,11 @@ static inline unsigned long lhash(struct memhdr *m, LOCATION location)
 #undef INIT_BLOCK
 #undef EXIT_BLOCK
 
-#define INIT_BLOCK(X) X->locations=0; X->flags=0;
+#define INIT_BLOCK(X) do {				\
+    X->locations = NULL;				\
+    X->flags=0;						\
+    X->times = 0;					\
+  } while(0)
 #define EXIT_BLOCK(X) do {				\
   struct memloc *ml = X->locations;			\
   int times = 0;					\
@@ -1295,9 +1299,13 @@ static struct memhdr *my_find_memhdr(void *p, int already_gone)
   }
 #endif
 
-  if((mh=find_memhdr(p)))
+  if((mh=find_memhdr(p))) {
+    if (mh->data != p) {
+      Pike_fatal("find_memhdr() returned memhdr for different block\n");
+    }
     if(!already_gone)
       check_pad(mh,0);
+  }
 
   return mh;
 }
@@ -1615,20 +1623,24 @@ LOCATION dmalloc_default_location=0;
 
 static struct memhdr *low_make_memhdr(void *p, int s, LOCATION location)
 {
-  struct memhdr *mh=make_memhdr(p, ((size_t)p)%memhdr_hash_table_size);
-  struct memloc *ml=alloc_memloc();
-  unsigned long l=lhash(mh,location);
+  struct memhdr *mh = get_memhdr(p);
+  struct memloc *ml = alloc_memloc();
+  unsigned long l = lhash(mh,location);
+
+  if (mh->data != p) {
+    Pike_fatal("get_memhdr() returned memhdr for different pointer!\n");
+  }
 
   mh->size=s;
   mh->flags=0;
-  mh->times=1;
+  mh->times++;
 #ifdef DMALLOC_AD_HOC
   mh->misses=0;
 #endif
-  mh->locations=ml;
+  ml->next = mh->locations;
+  mh->locations = ml;
   mh->gc_generation=gc_generation * 1000 + Pike_in_gc;
   ml->location=location;
-  ml->next = NULL;
   ml->times=1;
   ml->mh=mh;
   mlhash[l]=ml;
