@@ -2402,6 +2402,28 @@ test_compile_error_any([[
 
 ]])
 
+test_program([[
+class A
+{
+  constant x = 1.0;
+}
+
+class B
+{
+  inherit A;
+  class C
+  {
+    constant y = x+2.0;
+  }
+}
+
+mixed a()
+{
+  return 3.0 == B()->C()->y;
+}
+]])
+
+
 dnl Come back when we decide that this should be possible
 dnl test_do([[
 dnl  class A {
