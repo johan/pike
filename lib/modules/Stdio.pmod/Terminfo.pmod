@@ -193,7 +193,7 @@ class Termcap {
       else if (data[0]=='=') // string
       {
 	data=data[1..];
-	while (sizeof(data) && data[-1]=="\\")
+	while (sizeof(data) && data[-1]=='\\')
 	{
 	  string add;
 	  if (sscanf(en,"%s"+br+"%s",add,en)<2) break;
