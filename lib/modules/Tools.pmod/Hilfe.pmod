@@ -384,7 +384,7 @@ class CommandDump {
 		   lambda(string in) {
 		     return sprintf("%03d: %s", ++i, in);
 		   })*"\n";
-    write(replace(w, "%", "%%")+"\n");
+    write(w+"\n");
   }
 
   private string print_mapping(array(string) ind, array val) {
@@ -1117,9 +1117,10 @@ class Evaluator {
   int safe_write(string in, mixed ... args) {
     if(!write) return 0;
     mixed err = catch {
-      string s = sprintf(in, @args);
-      write(s);
-      return sizeof(s);
+      if(sizeof(args))
+	in = sprintf(in, @args);
+      write(in);
+      return sizeof(in);
     };
     catch {
       write("HilfeError: Error while outputting data.\n");
