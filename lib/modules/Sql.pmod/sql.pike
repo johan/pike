@@ -125,7 +125,7 @@ void create(void|string|object host, void|string db,
   foreach(program_names || get_dir(Sql->dirname), string program_name) {
     if ((sizeof(program_name / "_result") == 1) &&
 	(sizeof(program_name / ".pike") > 1) &&
-	(program_name != "sql.pike")) {
+	(program_name[..7] != "sql.pike")) {
       /* Don't call ourselves... */
       array(mixed) err;
       
