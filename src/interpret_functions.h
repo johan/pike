@@ -452,7 +452,7 @@ OPCODE0(F_LTOSVAL3, "ltosval3")
   Pike_sp++;
   lvalue_to_svalue_no_free(Pike_sp-3, Pike_sp-5);
 
-  /* this is so that foo+=bar (and similar things) will be faster, this
+  /* this is so that foo=foo[x..y] (and similar things) will be faster, this
    * is done by freeing the old reference to foo after it has been pushed
    * on the stack. That way foo can have only 1 reference if we are lucky,
    * and then the low array/multiset/mapping manipulation routines can be
