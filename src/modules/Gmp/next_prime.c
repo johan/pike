@@ -24,13 +24,6 @@ RCSID("$Id$");
 #if defined(USE_GMP) || defined(USE_GMP2)
 
 #include <limits.h>
-
-#ifdef USE_GMP2
-#include <gmp2/gmp.h>
-#else /* !USE_GMP2 */
-#include <gmp.h>
-#endif /* USE_GMP2 */
-
 #include "my_gmp.h"
 
 /* Define NUMBER_OF_PRIMES and primes[] */
