@@ -283,7 +283,7 @@ class lsub
 	foreach(mailboxes, array a)
 	  send("*", "LSUB", @a);
       
-      send(tag, "OK");
+      send(tag, "OK", "LSUB done");
       return ([ "action" : "finished" ]);
     }
 }
