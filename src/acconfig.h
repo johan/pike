@@ -180,10 +180,7 @@
 /* force this type upon ints */
 #undef WITH_LONG_INT
 #undef WITH_LONG_LONG_INT
-#undef WITH_SHORT_INT
 #undef WITH_INT_INT
-#undef WITH_UNSIGNED_LONG_INT
-#undef WITH_UNSIGNED_LONG_LONG_INT
 
 /* define to the type of pike primitive ints */
 #undef INT_TYPE
