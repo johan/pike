@@ -141,6 +141,8 @@
   STACKMEMBER(unsigned char *,type_stackp,type_stack)
   STACKMEMBER(unsigned char **,pike_type_mark_stackp,pike_type_mark_stack)
   ZMEMBER(INT32,parent_identifier,0)
+  IMEMBER(int, compat_major, PIKE_MAJOR_VERSION)
+  IMEMBER(int, compat_minor, PIKE_MINOR_VERSION)
   SEND
 
 #undef PCODE
