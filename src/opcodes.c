@@ -843,8 +843,8 @@ static INT32 really_low_sscanf(char *input,
 	     int pos=0;
 	     while(--field_length >= 0)
 	     {
+		sval.u.integer|=(EXTRACT_UCHAR(input+eye))<<pos;
 		pos+=8;
-		sval.u.integer|=EXTRACT_UCHAR(input+eye)<<pos;
 		eye++;
 	     }
 	  }
