@@ -112,6 +112,7 @@ PMOD_EXPORT INT32 array_find_destructed_object(struct array *v);
 INT32 *get_order(struct array *v, cmpfun fun);
 INLINE int set_svalue_cmpfun(const struct svalue *a, const struct svalue *b);
 PMOD_EXPORT void sort_array_destructively(struct array *v);
+PMOD_EXPORT INT32 *stable_sort_array_destructively(struct array *v);
 PMOD_EXPORT INT32 *get_set_order(struct array *a);
 PMOD_EXPORT INT32 *get_switch_order(struct array *a);
 PMOD_EXPORT INT32 *get_alpha_order(struct array *a);
