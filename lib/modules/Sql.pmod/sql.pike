@@ -76,11 +76,11 @@ void create(void|string|object host, void|string db,
 	  // Ignore compiler errors for the various sql-modules,
 	  // since we might not have some.
 	  // This is NOT a nice way to do it, but...
-	  mixed old_inhib = master()->inhibit_compiler_errors;
-	  master()->inhibit_compiler_errors = lambda(){};
+	  mixed old_inhib = master()->inhibit_compile_errors;
+	  master()->inhibit_compile_errors = lambda(){};
 	  err = catch {p = Sql[program_name];};
 	  // Restore compiler errors mode to whatever it was before.
-	  master()->inhibit_compiler_errors = old_inhib;
+	  master()->inhibit_compile_errors = old_inhib;
 #endif /* PIKE_SQL_DEBUG */
 	  if (err) {
 	    throw(err);
