@@ -110,7 +110,7 @@ AC_CACHE_VAL(ac_cv_func_$1,
 /* This file contains __stub_ defines for broken functions. */
 #include <gnu/stubs.h>
 #endif
-extern int $1();
+char $1();
 ], [
 #if defined (__stub_$1) || defined (__stub___$1)
 #error stupidity are us...
