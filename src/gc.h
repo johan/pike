@@ -64,14 +64,15 @@ extern void *gc_svalue_location;
 
 #ifdef DO_PIKE_CLEANUP
 extern int gc_destruct_everything;
-#ifdef PIKE_DEBUG
+#else
+#define gc_destruct_everything 0
+#endif
+
+#if defined (PIKE_DEBUG) && defined (DO_PIKE_CLEANUP)
 extern int gc_keep_markers;
 extern int gc_external_refs_zapped;
 #else
 #define gc_keep_markers 0
-#endif
-#else
-#define gc_destruct_everything 0
 #endif
 
 #define ADD_GC_CALLBACK() do { if(!gc_evaluator_callback)  gc_evaluator_callback=add_to_callback(&evaluator_callbacks,(callback_func)do_gc,0,0); }while(0)
