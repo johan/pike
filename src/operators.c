@@ -1071,10 +1071,12 @@ void o_divide(void)
       error("Division by zero\n");
     sp--;
 
-    tmp=sp[-1].u.integer / sp[0].u.integer;
-    if(tmp<0)
-      if(tmp * sp[0].u.integer > sp[-1].u.integer)
+    tmp=sp[-1].u.integer/sp[0].u.integer;
+
+    if((sp[-1].u.integer<0) != (sp[0].u.integer<0))
+      if(tmp*sp[0].u.integer!=sp[-1].u.integer)
 	tmp--;
+
     sp[-1].u.integer=tmp;
     return;
   }
