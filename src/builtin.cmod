@@ -2370,7 +2370,7 @@ PIKECLASS single_string_replace
 /*! @class Bootstring
  *!
  *! This class implements the "Bootstring" string transcoder described in
- *! @url{http://www.ietf.org/internet-drafts/draft-ietf-idn-punycode-03.txt@}.
+ *! @url{ftp://ftp.rfc-editor.org/in-notes/rfc3492.txt@}.
  */
 PIKECLASS bootstring
 {
