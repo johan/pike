@@ -1197,6 +1197,9 @@ my_libdir=`echo $prefix | sed "s@^NONE@$ac_default_prefix@g"`
 default_master=$my_libdir/lib/pike/master.pike
 AC_DEFINE_UNQUOTED(DEFAULT_MASTER,"$default_master")
 
+AC_SUBST_FILE(dependencies)
+dependencies=$srcdir/dependencies
+
 AC_SUBST(YACC)
 AC_SUBST(INSTALL)
 AC_SUBST(WARN)

@@ -1,22 +1,27 @@
+#
+# $Id$
+#
+
 SRCDIR=@srcdir@
 VPATH=@srcdir@:@srcdir@/../..:../..
 PREFLAGS=$(DEFINES) @DEFS@ -I. -I$(SRCDIR) -I$(SRCDIR)/../.. -I../.. @CPPFLAGS@
 
 CFLAGS=$(PREFLAGS) $(OTHERFLAGS)
 
-OBJS=ssleay.o
+OBJS=mysql.o result.o
 
-ssleay.a: $(OBJS)
-	-rm -f ssleay.a
-	ar cq ssleay.a $(OBJS)
-	-@RANLIB@ ssleay.a
-	echo >linker_options "@LDFLAGS@ @LIBS@"
+all: mysql.a linker_options
+
+mysql.a: $(OBJS)
+	-rm -f mysql.a
+	ar cq mysql.a $(OBJS)
+	-@RANLIB@ mysql.a
 
 linker_options: Makefile
 	echo >linker_options "@LDFLAGS@ @LIBS@"
 
 verify:
-	@echo No tests for the ssleay-module.
+	@echo No tests for the mysql-module.
 
 verbose_verify: verify
 
@@ -25,3 +30,5 @@ clean:
 
 depend:
 	gcc -MM $(PREFLAGS) $(SRCDIR)/*.c | $(TMP_BINDIR)/fixdepends.sh $(SRCDIR)
+
+@dependencies@

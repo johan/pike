@@ -22,6 +22,8 @@ AC_INIT(mysql.c)
 AC_PROG_CC
 AC_PROG_RANLIB
 AC_SUBST(RANLIB)
+AC_SUBST_FILE(dependencies)
+dependencies=$srcdir/dependencies
 
 AC_ARG_WITH(mysql,  [  --without-mysql       no support for the Mysql database],[],[with_mysql=yes])
 
