@@ -188,8 +188,7 @@ use_malloc:
 #endif
 #ifdef PROFILING
 #ifdef HAVE_GETHRTIME
-  accounted_time =0;
-  time_base =0;
+  time_base = accounted_time =gethrtime();
 #endif
 #endif
 }
