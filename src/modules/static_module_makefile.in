@@ -69,7 +69,7 @@ module.pmod: Makefile
 	   sed -e "s/@module@/_static_modules.$(MODNAME)/" <./module.pmod.in >module.pmod ;\
 	  else \
 	    echo >module.pmod "inherit _static_modules.$(MODNAME);" ;\
-	  fi \
+	  fi ;\
 	fi
 
 module.a: $(OBJS)
