@@ -53,7 +53,7 @@ depend:
 
 #verify / debug
 module_testsuite: $(SRCDIR)/testsuite.in
-	$(TMP_BINDIR)/mktestsuite $(SRCDIR)/testsuite.in >module_testsuite -DSRCDIR=$(SRCDIR) 
+	if test -f $(SRCDIR)/module_testsuite.in; then cp $(SRCDIR)/module_testsuite.in module_testsuite; else $(TMP_BINDIR)/mktestsuite $(SRCDIR)/testsuite.in >module_testsuite -DSRCDIR=$(SRCDIR); fi
 
 extra_tests: $(MODULE_TESTS)
 
