@@ -3083,7 +3083,7 @@ static void image_layer_crop(INT32 args)
    int zot=0;
    struct image *img = NULL;
 
-   get_all_args("Image.Layer->crop",args,"%d%d%d%d",&x,&y,&xz,&yz);
+   get_all_args("Image.Layer->crop",args,"%i%i%i%i",&x,&y,&xz,&yz);
 
    l=clone_this_layer();
    if (x<=l->xoffs) x=l->xoffs; else zot++;
