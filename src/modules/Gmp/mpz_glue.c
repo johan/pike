@@ -7,11 +7,15 @@
 RCSID("$Id$");
 #include "gmp_machine.h"
 
-#if !defined(HAVE_LIBGMP)
-#undef HAVE_GMP_H
-#endif
+#if defined(HAVE_GMP2_GMP_H) && defined(HAVE_LIBGMP2)
+#define USE_GMP2
+#else /* !HAVE_GMP2_GMP_H || !HAVE_LIBGMP2 */
+#if defined(HAVE_GMP_H) && defined(HAVE_LIBGMP)
+#define USE_GMP
+#endif /* HAVE_GMP_H && HAVE_LIBGMP */
+#endif /* HAVE_GMP2_GMP_H && HAVE_LIBGMP2 */
 
-#ifdef HAVE_GMP_H
+#if defined(USE_GMP) || defined(USE_GMP2)
 
 #include "interpret.h"
 #include "svalue.h"
@@ -27,7 +31,12 @@ RCSID("$Id$");
 #include "opcodes.h"
 #include "module_support.h"
 
+#ifdef USE_GMP2
+#include <gmp2/gmp.h>
+#else /* !USE_GMP2 */
 #include <gmp.h>
+#endif /* USE_GMP2 */
+
 #include "my_gmp.h"
 
 #include <limits.h>
@@ -878,14 +887,14 @@ static void exit_mpz_glue(struct object *o)
 
 void pike_module_exit(void)
 {
-#ifdef HAVE_GMP_H
+#if defined(USE_GMP) || defined(USE_GMP2)
   free_program(mpzmod_program);
 #endif
 }
 
 void pike_module_init(void)
 {
-#ifdef HAVE_GMP_H
+#if defined(USE_GMP) || defined(USE_GMP2)
   start_new_program();
   add_storage(sizeof(MP_INT));
   
