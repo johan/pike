@@ -48,8 +48,7 @@ string attribute_quote(string data) {
 void throw_error(mixed ...args)
 {
   //  Put message in debug log and throw exception
-  array rep_args = args;
-  rep_args[0] = "Parser.XML.Tree: " + rep_args[0];
+  args[0] = "Parser.XML.Tree: " + args[0];
   if (sizeof(args) == 1)
 	throw(args[0]);
   else
