@@ -590,9 +590,9 @@ void f_round(INT32 args)
 }
 
 
-/*! @decl int|float|object limit(int|float|object x, int|float|object minval, int|float|object maxval)
+/*! @decl int|float|object limit(int|float|object minval, int|float|object x, int|float|object maxval)
  *!
- *! Limits the value given so that it's between minval and maxval.
+ *! Limits the value @[x] so that it's between @[minval] and @[maxval].
  *! If @[x] is an object, it must implement the @[lfun::`<] method.
  *!
  *! @seealso
