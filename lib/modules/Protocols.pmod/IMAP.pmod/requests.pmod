@@ -971,7 +971,7 @@ class find
     if (lower_case(glob) == "inbox")
       glob = "INBOX";
       
-    array mailboxes = server->list(session, reference, glob);
+    array mailboxes = server->list(session, "", glob);
       
     if (mailboxes) {
       foreach(mailboxes, array a)

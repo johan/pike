@@ -53,7 +53,7 @@ constant select_commands =
    "fetch" : .requests.fetch,
    "store" : .requests.store,
    "copy" : .requests.copy,
-   "uid" : .requests.uid
+   "uid" : .requests.uid,
 
    /* IMAP2 compatibility for Pine */
    "find" : .requests.find,
