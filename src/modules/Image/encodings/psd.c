@@ -539,7 +539,6 @@ void init_image_psd()
   image_encoding_psd_program=end_program();
   
   push_object(clone_object(image_encoding_psd_program,0));
-
   {
     struct pike_string *s=make_shared_string("_PSD");
     add_constant(s,sp-1,0);
