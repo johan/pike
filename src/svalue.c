@@ -1489,9 +1489,9 @@ void gc_check_weak_short_svalue(union anything *u, TYPE_T type)
       }
 
 #define GC_DO_MARK(U, TN)						\
-      gc_mark_enqueue(							\
-	(queue_call) PIKE_CONCAT3(gc_mark_, TN, _as_referenced),	\
-	U.TN)
+      enqueue(&gc_mark_queue,						\
+	      (queue_call) PIKE_CONCAT3(gc_mark_, TN, _as_referenced),	\
+	      U.TN)
 
 #define GC_DONT_MARK(U, TN) do {} while (0)
 
