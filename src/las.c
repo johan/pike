@@ -2532,7 +2532,7 @@ void fix_type_field(node *n)
 			     value_type, CDAR(n)->type, 0);
 	      } else if (lex.pragmas & ID_STRICT_TYPES) {
 		yytype_error("Variable type mismatch in foreach().",
-			     value_type, CDAR(n)->type, 0);
+			     value_type, CDAR(n)->type, YYTE_IS_WARNING);
 	      }
 	    }
 	    free_string(value_type);
