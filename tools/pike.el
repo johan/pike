@@ -468,9 +468,9 @@ This does fairly subdued highlighting.")
 
 	    pike-font-lock-more-lastly))
   "For consideration as a value of `pike-font-lock-keywords'.
-This adds as much highlighting as possible that still not very complex
-to calculate. Among other things it means that only simple types are
-recognized.")
+This adds as much highlighting as possible without making it too
+expensive to calculate. Among other things that means that only simple
+types are recognized.")
 
 (defconst pike-font-lock-keywords-3
   (append `(;; Autodoc comments.
@@ -511,7 +511,7 @@ recognized.")
 	  pike-font-lock-more-lastly)
   "For consideration as a value of `pike-font-lock-keywords'.
 This adds highlighting that can be quite computationally intensive but
-provides almost correct highlighting of e.g. types.")
+provides almost entirely correct highlighting of e.g. types.")
 
 (defvar pike-font-lock-keywords pike-font-lock-keywords-1
   "Additional expressions to highlight in Pike mode.")
