@@ -42,7 +42,7 @@ extern struct program *math_lmatrix_program;
 #endif /* INT64 */
 
 #define FTYPE double
-#define PTYPE "float"
+#define PTYPE tFloat
 #define matrixX(X) PIKE_CONCAT(matrix,X)
 #define Xmatrix(X) PIKE_CONCAT(X,matrix)
 #define XmatrixY(X,Y) PIKE_CONCAT3(X,matrix,Y)
@@ -56,7 +56,7 @@ extern struct program *math_lmatrix_program;
 #undef PTYPE
 
 #define FTYPE int
-#define PTYPE "int"
+#define PTYPE tInt
 #define matrixX(X) PIKE_CONCAT(imatrix,X)
 #define Xmatrix(X) PIKE_CONCAT(X,imatrix)
 #define XmatrixY(X,Y) PIKE_CONCAT3(X,imatrix,Y)
@@ -71,7 +71,7 @@ extern struct program *math_lmatrix_program;
 
 #ifdef INT64
 #define FTYPE INT64
-#define PTYPE "int"
+#define PTYPE tInt
 #define matrixX(X) PIKE_CONCAT(lmatrix,X)
 #define Xmatrix(X) PIKE_CONCAT(X,lmatrix)
 #define XmatrixY(X,Y) PIKE_CONCAT3(X,lmatrix,Y)
@@ -86,7 +86,7 @@ extern struct program *math_lmatrix_program;
 #endif /* INT64 */
 
 #define FTYPE float
-#define PTYPE "float"
+#define PTYPE tFloat
 #define matrixX(X) PIKE_CONCAT(fmatrix,X)
 #define Xmatrix(X) PIKE_CONCAT(X,fmatrix)
 #define XmatrixY(X,Y) PIKE_CONCAT3(X,fmatrix,Y)
@@ -100,7 +100,7 @@ extern struct program *math_lmatrix_program;
 #undef PTYPE
 
 #define FTYPE short
-#define PTYPE "int"
+#define PTYPE tInt
 #define matrixX(X) PIKE_CONCAT(smatrix,X)
 #define Xmatrix(X) PIKE_CONCAT(X,smatrix)
 #define XmatrixY(X,Y) PIKE_CONCAT3(X,smatrix,Y)

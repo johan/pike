@@ -6,7 +6,7 @@
 */
 
 /*
- * Pike  interface to ODBC compliant databases
+ * Pike interface to ODBC compliant databases
  *
  * Henrik Grubbström
  */
@@ -492,23 +492,6 @@ static void f_seek(INT32 args)
  
 void init_odbc_res_programs(void)
 {
-  /*
-   * start_new_program();
-   *
-   * add_storage();
-   *
-   * add_function();
-   * add_function();
-   * ...
-   *
-   * set_init_callback();
-   * set_exit_callback();
-   *
-   * program = end_c_program();
-   * program->refs++;
-   *
-   */
- 
   start_new_program();
   ADD_STORAGE(struct precompiled_odbc_result);
 

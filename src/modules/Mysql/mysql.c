@@ -1709,23 +1709,6 @@ static void f_binary_data(INT32 args)
 PIKE_MODULE_INIT
 {
 #ifdef HAVE_MYSQL
-  /*
-   * start_new_program();
-   *
-   * add_storage();
-   *
-   * add_function();
-   * add_function();
-   * ...
-   *
-   * set_init_callback();
-   * set_exit_callback();
-   *
-   * program = end_c_program();
-   * program->refs++;
-   *
-   */
- 
   start_new_program();
   ADD_STORAGE(struct precompiled_mysql);
 
