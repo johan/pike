@@ -957,7 +957,8 @@ static void perlmod_array_size(INT32 args)
  *! @param name
  *!   Name of the array variable, as an 8-bit string.
  *!
- *! @seealso @[array_size_limit()]
+ *! @seealso
+ *!   @[array_size_limit()]
  */
 static void perlmod_get_whole_array(INT32 args)
 {
@@ -1000,7 +1001,8 @@ static void perlmod_get_whole_array(INT32 args)
  *! @param name
  *!   Name of the hash variable, as an 8-bit string.
  *!
- *! @seealso @[array_size_limit()]
+ *! @seealso
+ *!   @[array_size_limit()]
  */
 static void perlmod_get_hash_keys(INT32 args)
 {
