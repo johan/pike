@@ -197,7 +197,7 @@ void create(void|mixed _id, void|mapping|object _initial)
 
 //! An iterator which makes all the left/right entities in the relation
 //! available as index/value pairs.
-class Iterator {
+static class _get_iterator {
 
   static int(0..) ipos;
   static int(0..) vpos;
