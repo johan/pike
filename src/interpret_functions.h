@@ -344,7 +344,7 @@ OPCODE1(F_LFUN, "local function", I_UPDATE_SP, {
 
 OPCODE2(F_TRAMPOLINE, "trampoline", I_UPDATE_SP, {
   struct pike_frame *f=Pike_fp;
-  DO_IF_DEBUG(INT32 arg2_ = arg2);
+  DO_IF_DEBUG(INT32 arg2_ = arg2;)
   LOCAL_VAR(struct object *o);
   o = low_clone(pike_trampoline_program);
 
