@@ -1562,6 +1562,13 @@ PIKECLASS Backend
      return NULL;
    }
 
+/* NOTE: Some versions of AIX seem to have a
+ *         #define events reqevents
+ *       in one of the poll headerfiles. This will break
+ *       the fd_box event handling.
+ */
+#undef events
+
    /* Make sure the WANT_EVENT() macro is useable... */
 #undef READ
 #undef WRITE
