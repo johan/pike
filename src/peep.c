@@ -406,7 +406,7 @@ void assemble(void)
 	if(c->arg > max_label || c->arg < 0) fatal("Jump to unknown label?\n");
 #endif
 	tmp = DO_NOT_WARN((INT32)PC);
-#fidef HAVE_COMPUTED_GOTO
+#ifdef HAVE_COMPUTED_GOTO
 	add_to_program(jumps[c->arg]);
 #else /* !HAVE_COMPUTED_GOTO */
 	ins_int(jumps[c->arg], (void(*)(char))add_to_program);
