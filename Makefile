@@ -115,3 +115,6 @@ distclean:
 
 cvsclean: distclean
 	for d in `find src -type d -print`; do if test -f "$$d/.cvsignore"; then (cd "$$d" && rm -f `cat ".cvsignore"`); else :; fi; done
+
+depend:
+	-cd "$(BUILDDIR)" && $(MAKE) depend
