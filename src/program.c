@@ -3079,15 +3079,7 @@ int isidentifier(struct pike_string *s)
   INT32 e;
   return really_low_find_shared_string_identifier(s,
 						  Pike_compiler->new_program,
-						  SEE_STATIC);
-  for(e=Pike_compiler->new_program->num_identifier_references-1;e>=0;e--)
-  {
-    if(Pike_compiler->new_program->identifier_references[e].id_flags & ID_HIDDEN) continue;
-
-    if(ID_FROM_INT(Pike_compiler->new_program, e)->name == s)
-      return e;
-  }
-  return -1;
+						  SEE_STATIC|SEE_PRIVATE);
 }
 
 /* argument must be a shared string */
@@ -3924,7 +3916,7 @@ int really_low_find_shared_string_identifier(struct pike_string *name,
     if(funp->id_flags & ID_INHERITED)
     {
       struct inherit *inh = INHERIT_FROM_PTR(prog, funp);
-      if(funp->id_flags & ID_PRIVATE) continue;
+      if ((funp->id_flags & ID_PRIVATE) && !(flags & SEE_PRIVATE)) continue;
       if (!depth || (depth > inh->inherit_level)) {
 	depth = inh->inherit_level;
 	id = i;
