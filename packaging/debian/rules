@@ -31,7 +31,7 @@ ifeq ($(DEB_BUILD_ARCH),powerpc)
 DO_MACHINE_CODE=yes
 endif
 ifeq ($(DEB_BUILD_ARCH),sparc)
-DO_MACHINE_CODE=yes
+DO_MACHINE_CODE=no
 endif
 
 ifeq ($(DO_MACHINE_CODE),yes)
