@@ -407,6 +407,38 @@ PMOD_EXPORT DECLSPEC(noreturn) void debug_fatal(const char *fmt, ...) ATTRIBUTE(
 
 #if 1
 
+/*! @class MasterObject
+ */
+
+/*! @decl string describe_backtrace(mixed exception)
+ *!
+ *!   Called by various routines to format a readable
+ *!   description of an exception.
+ *!
+ *! @param exception
+ *!   Something that was thrown. Usually an @[Error] object, or
+ *!   an array with the following content:
+ *!   @array
+ *!     @elem string msg
+ *!       Error message.
+ *!     @elem array(backtrace_frame|array(mixed)) backtrace
+ *!       Backtrace to the point where the exception occurred.
+ *!   @endarray
+ *!
+ *! @returns
+ *!   Returns a string describing the exeception.
+ *!
+ *! @note
+ *!   Usually added by the initialization code the global name space
+ *!   with @[add_constant()].
+ *!
+ *! @seealso
+ *!   @[predef::describe_backtrace()]
+ */
+
+/*! @endclass
+ */
+
 /*! @class Error
  */
 
