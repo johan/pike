@@ -15,11 +15,11 @@
 
 #ifdef HAVE_MEMCHECK_H
 #include <memcheck.h>
-#endif
-
-#ifdef HAVE_VALGRIND_H
+#elif defined(HAVE_VALGRIND_MEMCHECK_H)
+#include <valgrind/memcheck.h>
+#elif defined(HAVE_VALGRIND_H)
 #include <valgrind.h>
-#endif /* HAVE_VALGRIND_H */
+#endif
 
 /* No Access */
 #define PIKE_MEM_NA(lvalue) do {					\
