@@ -1885,7 +1885,7 @@ PIKE_CONCAT(OP,_RETURN)(PIKE_CONCAT3(F_,OPCODE,_AND_RETURN),		   \
   }else{								   \
     DO_DUMB_RETURN;							   \
   }									   \
-});									   \
+})
 
 
 #define MKAPPLY2(OP,OPCODE,NAME,TYPE,  ARG2, ARG3)			   \
