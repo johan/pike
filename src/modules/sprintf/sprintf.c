@@ -1044,7 +1044,7 @@ static void low_pike_sprintf(struct format_stack *fs,
 
       case 'c':
       {
-        INT32 l,tmp;
+        INT32 l,tmp,n;
 	char *x;
         DO_OP();
 	CHECK_OBJECT_SPRINTF()
@@ -1057,7 +1057,24 @@ static void low_pike_sprintf(struct format_stack *fs,
 	  else  fs->fsp->b=MKPCHARP(x,2);
 	  SET_INDEX_PCHARP(fs->fsp->b,0,tmp);
 	  fs->fsp->len=1;
-	}else{
+	}
+	else if ( (fs->fsp->flags&FIELD_LEFT) )
+	{
+	  l=1;
+	  if(fs->fsp->width > 0) l=fs->fsp->width;
+	  x=(char *)alloca(l);
+	  fs->fsp->b=MKPCHARP(x,0);
+	  fs->fsp->len=l;
+	  GET_INT(tmp);
+	  n=0;
+	  while(n<l)
+	  {
+	    x[n++]=tmp & 0xff;
+	    tmp>>=8;
+	  }
+	}
+	else 
+	{
 	  l=1;
 	  if(fs->fsp->width > 0) l=fs->fsp->width;
 	  x=(char *)alloca(l);
