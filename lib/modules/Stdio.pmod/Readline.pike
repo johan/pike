@@ -517,8 +517,12 @@ class InputController
 	string oldprefix = prefix;
 	prefix = "";
 	prefix = process_input(oldprefix);
-	infd->set_read_callback( read_cb );
-	infd->set_close_callback( close_cb );
+	if ((!infd->set_read_callback || !infd->set_close_callback) && infd->set_nonblocking)
+	  infd->set_nonblocking( read_cb, 0, close_cb );
+	else {
+	  infd->set_read_callback( read_cb );
+	  infd->set_close_callback( close_cb );
+	}
       }
       else
 	infd->set_blocking();
