@@ -3549,7 +3549,7 @@ static void exit_file_lock_key(struct object *o)
 static void init_file_locking(void)
 {
   ptrdiff_t off;
-  start_new_program();
+  START_NEW_PROGRAM_ID (STDIO_FILE_LOCK_KEY);
   off = ADD_STORAGE(struct file_lock_key_storage);
 #ifdef _REENTRANT
   map_variable("_owner","object",0,
@@ -3869,7 +3869,8 @@ PIKE_MODULE_INIT
   START_NEW_PROGRAM_ID(STDIO_FD);
   ADD_STORAGE(struct my_file);
 
-#define FILE_FUNC(X,Y,Z) PIKE_CONCAT(Y,_function_number)=pike_add_function(X,Y,Z,0);
+#define FILE_FUNC(X,Y,Z) PIKE_CONCAT(Y,_function_number)=ADD_FUNCTION(X,Y,Z,0)
+#define FILE_OBJ tObjImpl_STDIO_FD
 #include "file_functions.h"
   map_variable("_read_callback","mixed",0,OFFSETOF(my_file, read_callback),PIKE_T_MIXED);
   map_variable("_write_callback","mixed",0,OFFSETOF(my_file, write_callback),PIKE_T_MIXED);
@@ -3901,11 +3902,12 @@ PIKE_MODULE_INIT
   add_object_constant("_stderr",o,0);
   free_object(o);
 
-  start_new_program();
+  START_NEW_PROGRAM_ID (STDIO_FD_REF);
   ADD_STORAGE(struct object *);
   map_variable("_fd","object",0,0,PIKE_T_OBJECT);
 
-#define FILE_FUNC(X,Y,Z) pike_add_function(X,PIKE_CONCAT(Y,_ref),Z,0);
+#define FILE_FUNC(X,Y,Z) ADD_FUNCTION(X,PIKE_CONCAT(Y,_ref),Z,0)
+#define FILE_OBJ tObjImpl_STDIO_FD_REF
 #include "file_functions.h"
 
   file_ref_program=end_program();
