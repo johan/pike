@@ -107,7 +107,7 @@ static int eval_instruction(PIKE_OPCODE_T *pc)
 
 #ifdef PIKE_DEBUG
     if (d_flag || Pike_interpreter.trace_level > 2)
-      low_debug_instr_prologue (Pike_fp->pc, instr);
+      low_debug_instr_prologue (instr);
 #endif
 
 #ifdef HAVE_COMPUTED_GOTO
