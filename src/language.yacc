@@ -474,13 +474,14 @@ import: TOK_IMPORT idents ';'
 
 constant_name: TOK_IDENTIFIER '=' safe_expr0
   {
-    ptrdiff_t tmp;
     /* This can be made more lenient in the future */
 
     /* Ugly hack to make sure that $3 is optimized */
-    tmp=Pike_compiler->compiler_pass;
-    $3=mknode(F_COMMA_EXPR,$3,0);
-    Pike_compiler->compiler_pass=tmp;
+    {
+      int tmp=Pike_compiler->compiler_pass;
+      $3=mknode(F_COMMA_EXPR,$3,0);
+      Pike_compiler->compiler_pass=tmp;
+    }
 
     if ((Pike_compiler->current_modifiers & ID_EXTERN) &&
 	(Pike_compiler->compiler_pass == 1)) {
@@ -497,7 +498,7 @@ constant_name: TOK_IDENTIFIER '=' safe_expr0
     } else {
       if(!Pike_compiler->num_parse_error)
       {
-	tmp=eval_low($3);
+	ptrdiff_t tmp=eval_low($3);
 	if(tmp < 1)
 	{
 	  yyerror("Error in constant definition.");
