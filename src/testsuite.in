@@ -1265,7 +1265,7 @@ test_eq([[(string)1]],[["1"]])
 test_equal([[(array)(["1":1])]],[[ ({ ({"1", 1}) }) ]])
 test_equal([[(array(int)) ({"1","4711",2.0,4})]],[[({1,4711,2,4})]])
 test_equal([[(array(array))({({})})]],[[({({})})]])
-test_equal([[(array(array(int))) ({({"1","4711",2.0,4})})]],[[({({1,4711,2,4})]})])
+test_equal([[ (array(array(int)))) ({ ({"1","4711",2.0,4}) }) ]],[[ ({ ({1,4711,2,4}) }) ]])
 
 test_equal([[(array)"foo"]],[[ values("foo") ]])
 test_equal([[(array)(<1,2,3>)]],[[ indices( (<1,2,3>) )]])
