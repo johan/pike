@@ -821,7 +821,13 @@ void low_exit_main(void)
   exit_pike_security();
   free_svalue(& throw_value);
   throw_value.type=T_INT;
-  do_gc();
+  {
+    while(1)
+      int tmp=num_objects;
+      do_gc();
+      if(num_objects >= tmp) break;
+    }
+  }
 
   cleanup_gc();
 
