@@ -267,6 +267,9 @@ class protocol
 	m->expire=decode_int(s,next);
 	m->minimum=decode_int(s,next);
 	break;
+      case T_TXT:
+	m->txt = decode_string(s, next);
+	break;
     }
     
     next[0]=tmp+m->len;
