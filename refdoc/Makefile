@@ -59,14 +59,14 @@ autodoc.xml: $(XMLFILES) bin/join.pike
 	@$(PIKE) bin/join.pike --post-process build/autodoc.xml $(XMLFILES)
 
 build/src/Makefile: Makefile.in build/src
-	@sed -e "s#@SRCDIR@#../../../src#" \
-	     -e "s#@ROOT@#../..#" \
+	@sed -e "s#@SRCDIR@#`pwd`/../src#" \
+	     -e "s#@ROOT@#`pwd`#" \
 	     -e "s#@BUILDROOT@#..#" \
 	  <Makefile.in >build/src/Makefile
 
 build/lib/Makefile: Makefile.in build/lib
-	@sed -e "s#@SRCDIR@#../../../lib#" \
-	     -e "s#@ROOT@#../..#" \
+	@sed -e "s#@SRCDIR@#`pwd`/../lib#" \
+	     -e "s#@ROOT@#`pwd`#" \
 	     -e "s#@BUILDROOT@#..#" \
 	  <Makefile.in >build/lib/Makefile
 

@@ -87,8 +87,8 @@ subdirectories:
 	      mkdir "$$d" || exit 1; \
 	    fi; \
 	    if test -f "$$d/Makefile"; then :; else \
-	      sed -e "s#@""SRCDIR@#../$(SRCDIR)/$$d#" \
-	          -e "s#@""ROOT@#../$(ROOT)#" \
+	      sed -e "s#@""SRCDIR@#$(SRCDIR)/$$d#" \
+	          -e "s#@""ROOT@#$(ROOT)#" \
 	          -e "s#@""BUILDROOT@#../$(BUILDROOT)#" \
 	        <$(ROOT)/Makefile.in >"$$d/Makefile" || exit 1; \
 	    fi; \
