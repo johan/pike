@@ -26,10 +26,12 @@ mapping(string:int) cond_cache=([]);
 
 void print_code(string test)
 {
-  array lines = test/"\n";
+  array lines = Locale.Charset.encoder("iso-8859-1", 0,
+				       lambda(string s) {
+					 return sprintf("\%o", s[0]);
+				       })->feed(test)->drain()/"\n";
   foreach(lines; int r; string line) {
-    line = sprintf("%O",line);
-    werror("%3d: %s\n", r+1, line[1..sizeof(line)-2]);
+    werror("%3d: %s\n", r+1, line);
   }
   werror("\n");
   return;
