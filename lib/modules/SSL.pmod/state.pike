@@ -1,5 +1,5 @@
 #pike __REAL_VERSION__
-// #pragma strict_types
+#pragma strict_types
 
 // $Id$
 
@@ -10,14 +10,14 @@
 
 import .Constants;
 
-void create(object s)
+void create(.session s)
 {
   session = s;
   seq_num = Gmp.mpz(0);
 }
 
 //! Information about the used algorithms.
-object session;
+.session session;
 
 //! Message Authentication Code
 .Cipher.MACAlgorithm mac;
@@ -30,7 +30,7 @@ object compress;
 //! 64-bit sequence number.
 Gmp.mpz seq_num;    /* Bignum, values 0, .. 2^64-1 are valid */
 
-constant Alert = SSL.alert;
+constant Alert = .alert;
 
 
 string tls_pad(string data, int blocksize) {
