@@ -343,7 +343,7 @@ PIKECLASS ArrayAdapter
  *! @param value
  *!   The value to find
  *!
- *! @param int start
+ *! @param start
  *!   If a start value is supplied it will start searching at the index 
  *!   @[start].
  *!
@@ -842,7 +842,7 @@ PIKECLASS ArrayAdapter
     }
 	
     
-    /*! @decl int(0..1) '<(mixed iter)
+    /*! @decl int(0..1) `<(mixed iter)
      *!    Less then operator
      *!
      *! @returns
@@ -867,7 +867,7 @@ PIKECLASS ArrayAdapter
     }
 	
 
-    /*! @decl int(0..1) '<(mixed iter)
+    /*! @decl int(0..1) `<(mixed iter)
      *!    Greater then operator
      *!
      *! @returns
@@ -893,7 +893,7 @@ PIKECLASS ArrayAdapter
     }
 
     
-    /*! @decl ArrayAdapter get_collection(
+    /*! @decl ArrayAdapter get_collection()
      *!
      *! @returns
      *!    Returns the ArrayAdapter this iterator currently iterates over.
