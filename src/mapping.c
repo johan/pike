@@ -1101,10 +1101,10 @@ void gc_mark_mapping_as_referenced(struct mapping *m)
 	if (m->flags & MAPPING_FLAG_WEAK)
 	{
 	  if (k->ind.type == T_OBJECT &&
-	      k->ind.u.object->prog->flags & PROGRAM_NO_WEAK_DESTRUCT)
+	      k->ind.u.object->prog->flags & PROGRAM_NO_WEAK_FREE)
 	    gc_mark_svalues(&k->ind, 1);
 	  if (k->val.type == T_OBJECT && k->val.u.object->prog &&
-	      k->val.u.object->prog->flags & PROGRAM_NO_WEAK_DESTRUCT)
+	      k->val.u.object->prog->flags & PROGRAM_NO_WEAK_FREE)
 	    gc_mark_svalues(&k->val, 1);
 	}
 	else {
@@ -1202,11 +1202,11 @@ void gc_free_all_unreferenced_mappings(void)
 	{
 	  if((k->val.type <= MAX_COMPLEX &&
 	      !(k->val.type == T_OBJECT &&
-		k->val.u.object->prog->flags & PROGRAM_NO_WEAK_DESTRUCT) &&
+		k->val.u.object->prog->flags & PROGRAM_NO_WEAK_FREE) &&
 	      gc_do_free(k->val.u.refs)) ||
 	     (k->ind.type <= MAX_COMPLEX &&
 	      !(k->ind.type == T_OBJECT &&
-		k->ind.u.object->prog->flags & PROGRAM_NO_WEAK_DESTRUCT) &&
+		k->ind.u.object->prog->flags & PROGRAM_NO_WEAK_FREE) &&
 	      gc_do_free(k->ind.u.refs)))
 	  {
 	    *prev=k->next;
