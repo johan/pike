@@ -23,6 +23,11 @@
     <chapter-ref file="not_extracted/data_types.xml"/>
   </file>
   <file>
+    <chapter title="LFUN">
+      <insert-move entity="lfun::"/>
+    </chapter>
+  </file>
+  <file>
     <chapter title="I/O">
       <insert-move entity="Stdio.File"/>
       <insert-move entity="Stdio.FILE"/>
