@@ -16,18 +16,14 @@
 
 #include "pikecode.h"
 
-#ifdef PIKE_USE_MACHINE_CODE
-#if defined(__i386__) || defined(__i386)
+#if PIKE_BYTECODE_METHOD == PIKE_BYTECODE_IA32
 #include "code/ia32.c"
-#elif defined(sparc) || defined(__sparc__) || defined(__sparc)
+#elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_SPARC
 #include "code/sparc.c"
-#elif defined(__ppc__) || defined(_POWER)
+#elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_PPC32
 #include "code/ppc32.c"
-#else /* Unsupported cpu */
-#error Unknown CPU
-#endif /* CPU type */
-#elif defined(HAVE_COMPUTED_GOTO)
+#elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_GOTO
 #include "code/computedgoto.c"
-#else /* Default */
+#else
 #include "code/bytecode.c"
-#endif /* Interpreter type. */
+#endif
