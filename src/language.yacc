@@ -1246,7 +1246,9 @@ opt_function_type: '('
 	/* function_type_list ends with a comma, or is empty.
 	 * FIXME: Should this be a syntax error or not?
 	 */
-	yywarning("Implicit mixed type.");
+	if (compiler_pass == 1) {
+	  yywarning("Implicit mixed type.");
+	}
 	type_stack_reverse();
 	push_type(T_MANY);
 	push_type(T_MIXED);
