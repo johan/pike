@@ -494,7 +494,7 @@ struct mapping_data *copy_mapping_data(struct mapping_data *md)
 
 /* Assumes md is locked */
 #define COPYMAP() do {			        \
-  long off;					\
+  ptrdiff_t off;				\
   m->data=copy_mapping_data(m->data);		\
   debug_malloc_touch(m->data);                  \
   off=((char *)m->data)-((char *)md);		\
