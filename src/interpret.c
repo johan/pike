@@ -396,7 +396,7 @@ void print_return_value(void)
       s[TRACE_LEN]=0;
       s[TRACE_LEN-1]='.';
       s[TRACE_LEN-2]='.';
-      s[TRACE_LEN-2]='.';
+      s[TRACE_LEN-3]='.';
     }
     fprintf(stderr,"-    value: %s\n",s);
     free(s);
