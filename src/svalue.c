@@ -1334,7 +1334,7 @@ void real_gc_check_short_svalue(union anything *u, TYPE_T type)
 #endif
 }
 
-void gc_mark_svalues(struct svalue *s, int num)
+void debug_gc_mark_svalues(struct svalue *s, int num)
 {
   INT32 e;
   for(e=0;e<num;e++,s++)
@@ -1381,7 +1381,7 @@ void gc_mark_svalues(struct svalue *s, int num)
   }
 }
 
-void gc_mark_short_svalue(union anything *u, TYPE_T type)
+void debug_gc_mark_short_svalue(union anything *u, TYPE_T type)
 {
   switch(type)
   {

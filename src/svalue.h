@@ -338,10 +338,13 @@ void check_svalue(struct svalue *s);
 TYPE_FIELD real_gc_check_svalues(struct svalue *s, int num);
 void real_gc_xmark_svalues(struct svalue *s, int num);
 void real_gc_check_short_svalue(union anything *u, TYPE_T type);
-void gc_mark_svalues(struct svalue *s, int num);
-void gc_mark_short_svalue(union anything *u, TYPE_T type);
+void debug_gc_mark_svalues(struct svalue *s, int num);
+void debug_gc_mark_short_svalue(union anything *u, TYPE_T type);
 INT32 pike_sizeof(struct svalue *s);
 /* Prototypes end here */
+
+#define gc_mark_svalues(S,N)	debug_gc_mark_svalues(debug_malloc_pass(S),N)
+#define gc_mark_short_svalue(U,N)	debug_gc_mark_short_svalue(debug_malloc_pass(U),N)
 
 #ifndef NO_PIKE_SHORTHAND
 
