@@ -3,7 +3,6 @@
 VPATH=@srcdir@:@srcdir@/../..:../..
 OBJS=spider.o discdate.o stardate.o xml.o
 MODULE_LDFLAGS=@LDFLAGS@
-#  streamed_parser.o
 
 CONFIG_HEADERS=@CONFIG_HEADERS@
 
