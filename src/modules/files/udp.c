@@ -276,7 +276,7 @@ void udp_enable_broadcast(INT32 args)
 
 /*! @decl int wait(int|float timeout)
  *!
- *! Check for data and wait max. @[timeout].
+ *! Check for data and wait max. @[timeout] seconds.
  */
 void udp_wait(INT32 args)
 {
