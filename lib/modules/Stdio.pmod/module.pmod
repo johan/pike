@@ -195,6 +195,7 @@ class File
     }
   }
 
+  //  @decl int open(int fd, string mode)
   //! @decl int open(string filename, string mode)
   //! @decl int open(string filename, string mode, int mask)
   //!
