@@ -42,10 +42,7 @@
   } while (0)
 
 #ifndef PIKE_HASH_T
-/* Used to be size_t, but that led to performance problems
- * on 64-bit architectures without % on 64bit unsigned.
- */
-#define PIKE_HASH_T	unsigned INT32
+#define PIKE_HASH_T	size_t
 #endif /* !PIKE_HASH_T */
 
 #ifdef PIKE_RUN_UNLOCKED
