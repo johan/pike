@@ -140,6 +140,7 @@ OBJ= \
  operators.o \
  port.o \
  program.o \
+ rbtree.o \
  rusage.o \
  stralloc.o \
  stuff.o \
@@ -870,7 +871,8 @@ HFILES=						\
   error.protos					\
   opcodes.protos					\
   version.protos                                    \
-  builtin.protos
+  builtin.protos					\
+  rbtree.protos
 
 $(HFILES): precompile.sh-stamp
 
