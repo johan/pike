@@ -191,7 +191,7 @@
 #endif
 #endif
 
-      switch(function->identifier_flags & (IDENTIFIER_FUNCTION | IDENTIFIER_CONSTANT))
+      switch(function->identifier_flags & IDENTIFIER_TYPE_MASK)
       {
       case IDENTIFIER_C_FUNCTION:
 	debug_malloc_touch(Pike_fp);
@@ -221,8 +221,8 @@
 	}
 	/* Fall through */
       }
-      
-      case 0:	/* Variable */
+
+      case IDENTIFIER_VARIABLE:
       {
 	/* FIXME:
 	 * Use new-style tail-recursion instead
@@ -332,6 +332,11 @@
 	  ;
 	return 1;
       }
+
+      default:
+#ifdef PIKE_DEBUG
+	Pike_fatal("Unknown identifier type.\n");
+#endif
       }
 #ifdef PROFILING
 #ifdef HAVE_GETHRTIME
