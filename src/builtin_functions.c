@@ -5143,7 +5143,7 @@ void init_builtin_efuns(void)
   ADD_EFUN("gethrtime", f_gethrtime,tFunc(tOr(tInt,tVoid),tInt), OPT_EXTERNAL_DEPEND);
 
 #ifdef HAVE_GETHRVTIME
-  ADD_EFUN("gethrvtime",f_gethrvtime,tFunc(tVoid,tInt),OPT_EXTERNAL_DEPEND);
+  ADD_EFUN("gethrvtime",f_gethrvtime,tFunc(tNone,tInt),OPT_EXTERNAL_DEPEND);
 #endif
   
 #ifdef PROFILING
@@ -5170,10 +5170,13 @@ void init_builtin_efuns(void)
 #endif
   
 /* function(0=mixed ...:multiset(0)) */
-  ADD_EFUN("aggregate_multiset",f_aggregate_multiset,tFuncV(tNone,tSetvar(0,tMix),tSet(tVar(0))),OPT_TRY_OPTIMIZE);
+  ADD_EFUN("aggregate_multiset",f_aggregate_multiset,
+	   tFuncV(tNone,tSetvar(0,tMix),tSet(tVar(0))),OPT_TRY_OPTIMIZE);
   
 /* function(0=mixed ...:mapping(0:0)) */
-  ADD_EFUN("aggregate_mapping",f_aggregate_mapping,tFuncV(tNone,tSetvar(0,tMix),tMap(tVar(0),tVar(0))),OPT_TRY_OPTIMIZE);
+  ADD_EFUN("aggregate_mapping",f_aggregate_mapping,
+	   tFuncV(tNone,tSetvar(0,tMix),tMap(tVar(0),tVar(0))),
+	   OPT_TRY_OPTIMIZE);
   
 /* function(:mapping(string:mixed)) */
   ADD_EFUN("all_constants",f_all_constants,tFunc(tNone,tMap(tStr,tMix)),OPT_EXTERNAL_DEPEND);
