@@ -17,6 +17,8 @@ HANDLE da_handle[MAX_OPEN_FILEDESCRIPTORS];
 int fd_type[MAX_OPEN_FILEDESCRIPTORS];
 int first_free_handle;
 
+#define FD_DEBUG
+
 #ifdef FD_DEBUG
 #define FDDEBUG(X) X
 #else
@@ -291,7 +293,8 @@ PMOD_EXPORT int debug_fd_pipe(int fds[2] DMALLOC_LINE_ARGS)
   return 0;
 }
 
-PMOD_EXPORT FD debug_fd_accept(FD fd, struct sockaddr *addr, ACCEPT_SIZE_T *addrlen)
+PMOD_EXPORT FD debug_fd_accept(FD fd, struct sockaddr *addr,
+			       ACCEPT_SIZE_T *addrlen)
 {
   FD new_fd;
   SOCKET s;
@@ -312,7 +315,6 @@ PMOD_EXPORT FD debug_fd_accept(FD fd, struct sockaddr *addr, ACCEPT_SIZE_T *addr
   }
   s=(SOCKET)da_handle[fd];
   mt_unlock(&fd_mutex);
-  *addrlen = 0;		/* Just in case it's a larger type than it should be */
   s=accept(s, addr, addrlen);
   if(s==INVALID_SOCKET)
   {
