@@ -47,5 +47,8 @@
 #endif /* HAVE_POSTGRES_FE_H */
 #include <libpq-fe.h>
 
+/* Some versions of Postgres define this, and it conflicts with pike_error.h */
+#undef JMP_BUF
+
 #endif
 
