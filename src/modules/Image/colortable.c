@@ -2228,7 +2228,7 @@ static void image_colortable_add(INT32 args)
 
 		  push_object(o);
 		  image_colortable_add(1);
-		  pop_n_elems(1);
+		  pop_stack();
 		  /* we will keep flat... */
 		  args=2;
 
@@ -2312,7 +2312,9 @@ static void image_colortable_add(INT32 args)
 void image_colortable_create(INT32 args)
 {
    if (args)  /* optimize */
-      image_colortable_add(args); 
+      image_colortable_add(args);
+   else
+      push_undefined();
 }
 
 /*
