@@ -149,7 +149,7 @@ class Display
   // FIXME! Should use some sort of (global) db.
   mapping compose_patterns;
   
-  program Struct = my_struct.struct;
+  program Struct = ADT.struct;
   
   constant STATE_WAIT_CONNECT = 0;
   constant STATE_WAIT_CONNECT_DATA = 1;
