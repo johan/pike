@@ -363,6 +363,12 @@ void really_free_object(struct object *o)
     if(--o->refs > 0) return;
   }
 
+  if(o->parent)
+  {
+    free_object(o->parent);
+    o->parent=0;
+  }
+
   if(o->prev)
     o->prev->next=o->next;
   else
