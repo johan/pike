@@ -30,6 +30,9 @@ void f_getpwuid(INT32 args);
 void f_setpwent(INT32 args);
 void f_endpwent(INT32 args);
 void f_getpwent(INT32 args);
+void f_setgrent(INT32 args);
+void f_endgrent(INT32 args);
+void f_getgrent(INT32 args);
 
 /*
  * syslog.c
