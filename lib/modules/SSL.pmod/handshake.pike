@@ -1012,14 +1012,12 @@ int handle_handshake(int type, string data, string raw)
 
     case HANDSHAKE_certificate_request:
       {
-      werror("Certificate request not yet implemented.\n");
-      array(int) cert_types = input->get_var_uint_array(1, 1);
+	werror("Certificate request not yet implemented.\n");
+	array(int) cert_types = input->get_var_uint_array(1, 1);
 //       int num_distinguished_names = input->get_uint(2);
 //       array(string) distinguished_names =
-      send_packet(Alert(ALERT_fatal, ALERT_unexpected_message,version[1],
-			"SSL.session->handle_handshake: unexpected message\n",
-			backtrace()));
-      return -1;
+	send_packet(Alert(ALERT_warning, ALERT_no_certificate, version[1],
+			  "", backtrace()));
       }
       break;
 
