@@ -341,7 +341,7 @@ void font_create(INT32 args)
 
 void font_load(INT32 args)
 {
-   int fd;
+   int fd = -1;
    size_t size;
 
    if (THIS)
@@ -367,6 +367,8 @@ void font_load(INT32 args)
      fprintf(stderr,"FONT open '%s'\n",sp[-args].u.string->str);
 #endif
      fd = fd_open(sp[-args].u.string->str,fd_RDONLY,0);
+     /* FIXME: check_threads_etc(); ?
+      */
    } while(fd < 0 && errno == EINTR);
 
    if (fd >= 0)
@@ -473,6 +475,9 @@ loading_default:
 #endif
 			free_font_struct(new_font);
 			THIS=NULL;
+			if (fd >= 0) {
+			  fd_close(fd);
+			}
 			pop_n_elems(args);
 			push_int(0);
 			return;
