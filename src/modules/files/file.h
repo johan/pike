@@ -89,6 +89,7 @@ struct pike_sendfile
 
   struct iovec *iovs;
   char *buffer;
+  int buf_size;
 };
 
 #endif /* _REENTRANT */
@@ -104,7 +105,9 @@ static void PIKE_CONCAT(file_set_,X) (INT32 args);		\
 static void PIKE_CONCAT(file_query_,X) (INT32 args);		\
 
 
+#ifdef _REENTRANT
 void low_do_sendfile(struct pike_sendfile *);
+#endif /* _REENTRANT */
 
 /* Prototypes begin here */
 void my_set_close_on_exec(int fd, int to);

@@ -2711,6 +2711,7 @@ static void image_layer_crop(INT32 args)
       free_object(l->image);
       l->image=sp[-1].u.object;
       sp--;
+      dmalloc_touch_svalue(sp);
       l->img=img;
    }
 
@@ -2737,6 +2738,7 @@ static void image_layer_crop(INT32 args)
       free_object(l->alpha);
       l->alpha=sp[-1].u.object;
       sp--;
+      dmalloc_touch_svalue(sp);
       l->alp=img;
    }
 
@@ -2819,6 +2821,7 @@ void image_layer_autocrop(INT32 args)
 {
    image_layer_find_autocrop(args);
    sp--;
+   dmalloc_touch_svalue(sp);
    push_array_items(sp->u.array); /* frees */
    image_layer_crop(4);
 }

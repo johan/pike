@@ -743,7 +743,7 @@ static struct buffer save_tga(struct image *img, struct image *alpha,
     free(obuf.str);
     error("Internal error: Out of space in buffer.\n");
   }
-  if (std_fwrite (SAVE_ID_STRING, hdr.idLength, 1, fp) != 1)
+  if (std_fwrite ((void *)SAVE_ID_STRING, hdr.idLength, 1, fp) != 1)
   {
     free(obuf.str);
     error("Internal error: Out of space in buffer.\n");
@@ -793,7 +793,8 @@ static struct buffer save_tga(struct image *img, struct image *alpha,
           *(p++) = (is++)->r;
         }
     }
-    if ((*myfwrite) (data, pixsize,datalen/pixsize, fp) != datalen/pixsize)
+    if ((*myfwrite)((void *)data, pixsize,datalen/pixsize, fp) !=
+	datalen/pixsize)
     {
       free(data);
       free(obuf.str);

@@ -826,7 +826,7 @@ static void insert_current_time_as_string(struct cpp *this,
   time(&tmp2);
   buf=ctime(&tmp2);
 
-  PUSH_STRING0(buf+11, 8, tmp);
+  PUSH_STRING0((p_wchar0 *)buf+11, 8, tmp);
 }
 
 static void insert_current_date_as_string(struct cpp *this,
@@ -840,8 +840,8 @@ static void insert_current_date_as_string(struct cpp *this,
   time(&tmp2);
   buf=ctime(&tmp2);
 
-  PUSH_STRING0(buf+19, 5, tmp);
-  PUSH_STRING0(buf+4, 6, tmp);
+  PUSH_STRING0((p_wchar0 *)buf+19, 5, tmp);
+  PUSH_STRING0((p_wchar0 *)buf+4, 6, tmp);
 }
 
 static void check_defined(struct cpp *this,
@@ -852,7 +852,7 @@ static void check_defined(struct cpp *this,
   struct pike_string *s;
   switch(args[0].arg.shift) {
   case 0:
-    s=binary_findstring((p_wchar0 *)args[0].arg.ptr, args[0].len);
+    s=binary_findstring((char *)args[0].arg.ptr, args[0].len);
     break;
   case 1:
     s=binary_findstring1((p_wchar1 *)args[0].arg.ptr, args[0].len);
@@ -882,7 +882,7 @@ static void dumpdef(struct cpp *this,
 
   switch(args[0].arg.shift) {
   case 0:
-    s=binary_findstring((p_wchar0 *)args[0].arg.ptr, args[0].len);
+    s=binary_findstring((char *)args[0].arg.ptr, args[0].len);
     break;
   case 1:
     s=binary_findstring1((p_wchar1 *)args[0].arg.ptr, args[0].len);

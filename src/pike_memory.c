@@ -29,8 +29,8 @@ char *strdup(const char *str)
 
 int pcharp_memcmp(PCHARP a, PCHARP b, int sz)
 {
-  return generic_quick_binary_strcmp(a.ptr, sz, a.shift,
-				     b.ptr, sz, b.shift);
+  return generic_quick_binary_strcmp((char *)a.ptr, sz, a.shift,
+				     (char *)b.ptr, sz, b.shift);
 }
 
 long pcharp_strlen(PCHARP a)
@@ -520,7 +520,7 @@ void *generic_memory_search(struct generic_mem_searcher *s,
 	  end=hay + haystacklen - needlelen+1;				  \
 	  needle++;							  \
 	  needlelen--;							  \
-	  while((hay=PIKE_CONCAT(MEMCHR,X)(hay,				  \
+	  while((hay=(PIKE_CONCAT(p_wchar,X)*)PIKE_CONCAT(MEMCHR,X)(hay,  \
 					   s->data.other.first_char,	  \
 					   end-hay)))			  \
 	    if(!PIKE_CONCAT4(compare_,Y,_to_,X)(++hay,needle,needlelen)) \

@@ -60,7 +60,7 @@ static TCHAR *convert_string(char *str, int len)
   return ret;
 }
 
-static void *dlopen(char *foo, int how)
+static void *dlopen(const char *foo, int how)
 {
   TCHAR *tmp;
   HINSTANCE ret;
@@ -95,7 +95,7 @@ static void dlclose(void *module)
 
 #ifdef USE_DLD
 #include <dld.h>
-static void *dlopen(char *module_name, int how)
+static void *dlopen(const char *module_name, int how)
 {
   dld_create_reference("pike_module_init");
   if(dld_link(module_name))
@@ -148,7 +148,7 @@ static void dlinit(void)
 
 extern int errno;
 
-static void *dlopen(char *libname, int how)
+static void *dlopen(const char *libname, int how)
 {
   shl_t lib;
 

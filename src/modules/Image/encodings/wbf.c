@@ -203,7 +203,7 @@ static void low_image_f_wbf_decode( int args, int mode )
   get_all_args( "decode", args, "%S", &s );
 
   buff.len = s->len;
-  buff.str = s->str;
+  buff.str = (unsigned char *)s->str;
   sp--; /* Evil me */
 
   wh = decode_header( &buff );
@@ -343,7 +343,8 @@ static void push_wap_type0_image_data( struct image *i )
     }
     printf("\n");
   }
-  push_string( make_shared_binary_string( data, i->ysize * (i->xsize+7)/8 ) );
+  push_string( make_shared_binary_string( (char *)data,
+					  i->ysize * (i->xsize+7)/8 ) );
 }
 
 static void image_f_wbf_encode( int args )

@@ -408,7 +408,7 @@ static void internal_parse_typeA(char **_s)
 	  INT32 min,max;
 	  ++*s;
 	  while(ISSPACE(**s)) ++*s;
-	  min=STRTOL(*s,(char **)s,0);
+	  min=STRTOL((char *)*s,(char **)s,0);
 	  while(ISSPACE(**s)) ++*s;
 	  if(s[0][0]=='.' && s[0][1]=='.')
 	    s[0]+=2;
@@ -416,7 +416,7 @@ static void internal_parse_typeA(char **_s)
 	    error("Missing .. in integer type.\n");
 	  
 	  while(ISSPACE(**s)) ++*s;
-	  max=STRTOL(*s,(char **)s,0);
+	  max=STRTOL((char *)*s,(char **)s,0);
 	  while(ISSPACE(**s)) ++*s;
 
 	  if(**s != ')') error("Missing ')' in integer range.\n");

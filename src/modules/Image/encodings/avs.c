@@ -54,7 +54,7 @@ void image_avs_f__decode(INT32 args)
   unsigned char *q;
   get_all_args( "decode", args, "%S", &s);
   
-  q = s->str;
+  q = (unsigned char *)s->str;
   w = q[0]<<24 | q[1]<<16 | q[2]<<8 | q[3];
   h = q[4]<<24 | q[5]<<16 | q[6]<<8 | q[7];
 

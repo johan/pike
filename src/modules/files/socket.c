@@ -433,7 +433,7 @@ void port_setup_program(void)
 
 int fd_from_portobject( struct object *p )
 {
-  struct port *po = get_storage( p, port_program );
+  struct port *po = (struct port *)get_storage( p, port_program );
   if(!po) return -1;
   return po->fd;
 }

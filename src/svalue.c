@@ -1003,7 +1003,7 @@ void describe_svalue(struct svalue *s,int indent,struct processing *p)
 	    switch(str->size_shift)
 	    {
 	      case 0:
-		my_binary_strcat(STR0(str), str->len);
+		my_binary_strcat((char *)STR0(str), str->len);
 		break;
 
 	      case 1:

@@ -254,11 +254,13 @@ void f_add(INT32 args)
 	    break;
 
 	  case 1:
-	    convert_0_to_1((p_wchar1 *)buf.ptr,buffer,strlen(buffer));
+	    convert_0_to_1((p_wchar1 *)buf.ptr,(p_wchar0 *)buffer,
+			   strlen(buffer));
 	    break;
 
 	  case 2:
-	    convert_0_to_2((p_wchar2 *)buf.ptr,buffer,strlen(buffer));
+	    convert_0_to_2((p_wchar2 *)buf.ptr,(p_wchar0 *)buffer,
+			   strlen(buffer));
 	    break;
 
 	}
