@@ -445,6 +445,11 @@ static inline void strict_apply_svalue(struct svalue *sval, INT32 args)
   mega_apply(APPLY_SVALUE, (ARGS), (void*)(SVAL),0)
 #endif /* __ECL */
 
+#define apply_current(FUN, ARGS)			\
+  apply_low(Pike_fp->current_object,			\
+	    (FUN) + Pike_fp->context.identifier_level,	\
+	    (ARGS))
+
 PMOD_EXPORT extern int d_flag; /* really in main.c */
 
 PMOD_EXPORT extern int Pike_stack_size;
