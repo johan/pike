@@ -67,7 +67,7 @@ string roxen_text_quote(string data) {
   string out = "";
   int pos, opos;
   while ((pos = search(data, "&", pos)) >= 0) {
-    if ((sscanf(data[pos..], "&%[^ <>;&];", string entity) == 1) &&
+    if ((sscanf(data[pos..], "&%[^\n\r\t <>;&];%*s", string entity) == 2) &&
 	search(entity, ".") >= 0) {
       out += text_quote(data[opos..pos - 1]) + "&" + entity + ";";
       pos += sizeof(entity) + 2;
