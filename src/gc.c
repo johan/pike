@@ -1009,7 +1009,7 @@ again:
 	    INT32 line;
 	    struct pike_string *file;
 	    if (IDENTIFIER_IS_PIKE_FUNCTION(id->identifier_flags) &&
-		id->func.offset &&
+		id->func.offset >= 0 &&
 		(file = get_line(p->program + id->func.offset, p, &line))) {
 	      fprintf(stderr, "%*s**Function %s at %s:%ld\n",
 		      indent, "", id->name->str, file->str, (long) line);
