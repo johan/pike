@@ -15,6 +15,10 @@
 #include "mird.h"
 #include "config.h"
 
+#ifdef MIRD_WONT_WORK
+#error configure failed to find settings that would work on this system
+#endif
+
 /* what's UINT32? */
 
 #define UINT32 unsigned INT32
