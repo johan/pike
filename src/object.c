@@ -1552,7 +1552,23 @@ PMOD_EXPORT int object_equal_p(struct object *a, struct object *b, struct proces
 
 void cleanup_objects(void)
 {
-  destruct_objects_to_destruct_cb();
+  struct object *o, *next;
+
+  for(o=first_object;o;o=next)
+  {
+    add_ref(o);
+    if(o->prog)
+    {
+      debug_malloc_touch(o);
+      debug_malloc_touch(o->storage);
+      call_destroy(o,1);
+      destruct(o);
+    } else {
+      debug_malloc_touch(o);
+    }
+    SET_NEXT_AND_FREE(o,free_object);
+  }
+  destruct_objects_to_destruct();
 }
 
 PMOD_EXPORT struct array *object_indices(struct object *o)
