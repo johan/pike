@@ -179,7 +179,7 @@ install: build
 
 	# Some cleaning
 	-for f in `cat $(CURDIR)/debian/toremove.txt`; do \
-	    rm -f $(CURDIR)/debian/$(PIKE)-core/usr/lib/$$f ; \
+	    rm -f $(CURDIR)/debian/$(PIKE)-core/usr/lib/$(PIKE)/$(VERSION)/$$f ; \
 	done
 
 	# an eye-candy
