@@ -727,7 +727,7 @@ void verify_shared_strings_tables(void)
 	fatal("Shared string had too few references.\n");
       }
 
-      if(s->str[s->len])
+      if(index_shared_string(s,s->len))
       {
 	locate_problem(improper_zero_termination);
 	fatal("Shared string didn't end with a zero.\n");
