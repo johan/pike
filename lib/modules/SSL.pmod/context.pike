@@ -121,7 +121,7 @@ void record_session(object s)
 void purge_session(object s)
 {
 #ifdef SSL3_DEBUG
-  werror(sprintf("SSL.context->purge_session: %O\n", s->identity || ""));
+  werror(sprintf("SSL.context->purge_session: '%s'\n", s->identity || ""));
 #endif
   if (s->identity)
     session_cache[s->identity] = 0;
