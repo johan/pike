@@ -311,6 +311,13 @@ cvsclean: srcclean distclean
 	-rm -f export_result.txt
 	-rm -f Pike*.tar.gz
 
+docclean:
+	-rm -rf "$(BUILDDIR)/doc_build"
+	-rm -f "$(BUILDDIR)/autodoc.xml"
+	-rm -f "$(BUILDDIR)/modref.xml"
+	-rm -f "$(BUILDDIR)/onepage.xml"
+	-rm -f "$(BUILDDIR)/traditional.xml"
+
 depend: configure
 	-@cd "$(BUILDDIR)" && \
 	$(DO_MAKE) "MAKE_PARALLEL=$(MAKE_PARALLEL)" depend || { \
