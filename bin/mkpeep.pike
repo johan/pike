@@ -444,7 +444,7 @@ int main(int argc, string *argv)
   write("        fprintf(stderr,\" \");\n");
   write("        dump_instr(instr(e));\n");
   write("      }\n");
-  write("      fprintf(stderr,\"\n\");\n");
+  write("      fprintf(stderr,\"\\\n\");\n");
   write("    }\n");
   write("#endif\n\n");
 
