@@ -1908,9 +1908,15 @@ static int o_catch(PIKE_OPCODE_T *pc)
   }
 }
 
-/*! @decl mixed call_function(function fun, mixed ... args)
+/*! @decl mixed `()(function fun, mixed ... args)
+ *! @decl mixed call_function(function fun, mixed ... args)
  *!
  *! Call a function.
+ *!
+ *! Calls the function @[fun] with the arguments specified by @[args].
+ *!
+ *! @seealso
+ *!   @[lfun::`()()]
  */
 PMOD_EXPORT void f_call_function(INT32 args)
 {
