@@ -1735,7 +1735,7 @@ class CompatResolver
 	}
       if (sizeof(tmp)) {
 	if (sizeof(tmp) == 1) {
-	  return(tmp[0]);
+	  return tmp[0];
 	}
 	return joinnode(tmp);
       }
