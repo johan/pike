@@ -127,6 +127,9 @@ install:
 install_interactive:
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=install_interactive"
 
+tinstall:
+	@$(MAKE) $(MAKE_FLAGS) "METATARGET=tinstall"
+
 just_verify:
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=just_verify"
 
