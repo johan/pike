@@ -163,14 +163,14 @@ void img_bmp_encode(INT32 args)
 	 struct svalue *v;
 	 struct pike_string *qs;
 
-	 MAKE_CONSTANT_SHARED_STRING(qs,"rle");
+	 MAKE_CONSTANT_SHARED_STRING(qs,"rle");	/* LEAK */
 	 if (parameter_int(sp+1-args,qs,&rle))
 	    rle=!!rle;
 
-	 MAKE_CONSTANT_SHARED_STRING(qs,"bpp");
+	 MAKE_CONSTANT_SHARED_STRING(qs,"bpp");	/* LEAK */
 	 parameter_int(sp+1-args,qs,&bpp);
 
-	 MAKE_CONSTANT_SHARED_STRING(qs,"colortable");
+	 MAKE_CONSTANT_SHARED_STRING(qs,"colortable");	/* LEAK */
 	 if (parameter(sp+1-args,qs,&v))
 	 {
 	    if (v->type!=T_OBJECT  ||
@@ -219,6 +219,8 @@ void img_bmp_encode(INT32 args)
       default:
 	 bad_arg_error("Image.BMP.encode",sp-args,args,2,"mapping",sp+2-1-args,"illegal bits per pixel: %d (1, 4, 8 and 24 are valid)\n",bpp);
    }
+
+   /* FIXME: According to DMALLOC, oc leaks 1 ref in the testsuite */
 
    if (oc) oc->refs++;
    o->refs++;
