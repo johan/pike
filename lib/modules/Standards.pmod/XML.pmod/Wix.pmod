@@ -9,7 +9,7 @@
 
 constant wix_ns = "http://schemas.microsoft.com/wix/2003/01/wi";
 
-static Parser.XML.Tree.SimpleTextNode line_feed =
+Parser.XML.Tree.SimpleTextNode line_feed =
   Parser.XML.Tree.SimpleTextNode("\n");
 
 // FIXME: Generate deterministic output!
