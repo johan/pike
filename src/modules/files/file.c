@@ -1124,8 +1124,8 @@ static void file_open(INT32 args)
     ref_push_string(flag_str);
     push_int(access);
 
-    safe_apply_low(OBJ2CREDS(current_creds)->user,"valid_open",5);
-    switch(sp[-1].tupe)
+    safe_apply(OBJ2CREDS(current_creds)->user,"valid_open",5);
+    switch(sp[-1].type)
     {
       case T_INT:
 	switch(sp[-1].u.integer)
