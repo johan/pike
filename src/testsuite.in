@@ -8098,6 +8098,12 @@ return 1;
 #endif
 ]],1)
 
+test_compile_error([[
+#if constant()
+constant foo=1;
+#endif
+]])
+
 // #ifdef
 test_any([[
 #ifdef FOOl
