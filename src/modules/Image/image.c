@@ -1339,6 +1339,7 @@ void image_setcolor(INT32 args)
 
 /*
 **! method object setpixel(int x,int y)
+**! method object setpixel(int x,int y,Image.Color c)
 **! method object setpixel(int x,int y,int r,int g,int b)
 **! method object setpixel(int x,int y,int r,int g,int b,int alpha)
 **!    
