@@ -4008,17 +4008,23 @@ PMOD_EXPORT void f_localtime(INT32 args)
   pop_n_elems(args);
   encode_struct_tm(tm);
 
-#ifdef HAVE_EXTERNAL_TIMEZONE
-  push_string(make_shared_string("timezone"));
-  push_int(timezone);
-  f_aggregate_mapping(20);
-#else
 #ifdef STRUCT_TM_HAS_GMTOFF
   push_string(make_shared_string("timezone"));
   push_int(-tm->tm_gmtoff);
   f_aggregate_mapping(20);
 #else
+#ifdef STRUCT_TM_HAS___TM_GMTOFF
+  push_string(make_shared_string("timezone"));
+  push_int(-tm->__tm_gmtoff);
+  f_aggregate_mapping(20);
+#else
+#ifdef HAVE_EXTERNAL_TIMEZONE
+  push_string(make_shared_string("timezone"));
+  push_int(timezone);
+  f_aggregate_mapping(20);
+#else
   f_aggregate_mapping(18);
+#endif
 #endif
 #endif
 }
