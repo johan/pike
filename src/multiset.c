@@ -209,7 +209,9 @@ void describe_multiset(struct multiset *l,struct processing *p,int indent)
     }
   }
   
-  sprintf(buf,"(< /* %ld elements */\n",(long)l->ind->size);
+  sprintf(buf, l->ind->size == 1 ? "(< /* %ld element */\n" :
+	                           "(< /* %ld elements */\n",
+	  (long)l->ind->size);
   my_strcat(buf);
   describe_array_low(l->ind,&doing,indent);
   my_putchar('\n');

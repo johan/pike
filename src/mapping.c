@@ -764,7 +764,9 @@ void describe_mapping(struct mapping *m,struct processing *p,int indent)
     }
   }
   
-  sprintf(buf,"([ /* %ld elements */\n",(long) m->size);
+  sprintf(buf, m->size == 1 ? "([ /* %ld element */\n" :
+	                      "([ /* %ld elements */\n",
+	  (long)m->size);
   my_strcat(buf);
 
   q=0;
