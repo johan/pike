@@ -207,7 +207,6 @@ void cpp_describe_exception(struct cpp *this, struct svalue *thrown)
   }
 
   if (s && !s->size_shift) {
-    extern void f_string_trim_all_whites(INT32 args);
     ref_push_string(s);
     f_string_trim_all_whites(1);
     push_constant_text("\n");

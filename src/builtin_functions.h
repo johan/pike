@@ -121,4 +121,8 @@ void exit_builtin(void);
 void f_werror (INT32 args);
 /* Prototypes end here */
 
+/* Prototypes from builtin.cmod. */
+void f_string_trim_all_whites(INT32 args);
+/* End prototypes from builtin.cmod. */
+
 #endif
