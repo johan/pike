@@ -46,7 +46,6 @@ constant list_open_fds = _list_open_fds;
 constant locate_references = _locate_references;
 #endif
 
-#if constant(_memory_usage)
 constant memory_usage = _memory_usage;
 
 //! Returns a pretty printed version of the
@@ -62,7 +61,6 @@ string pp_memory_usage() {
   }
   return ret;
 }
-#endif
 
 #if constant(_optimizer_debug)
 constant optimizer_debug = _optimizer_debug;
