@@ -3283,7 +3283,7 @@ void init_xml(void)
   ADD_FUNCTION("define_entity",define_entity,tFuncV(tStr tStr tMix,tMix,tVoid),0);
   ADD_FUNCTION("allow_rxml_entities", allow_rxml_entities,
 	       tFunc(tInt, tVoid), 0);
-  ADD_FUNCTION("compat_allow_errors", compat_allow_errors, tFunc(tInt, tVoid), 0);
+  ADD_FUNCTION("compat_allow_errors", compat_allow_errors, tFunc(tStr, tVoid), 0);
   end_class("XML",0);
 
   ADD_FUNCTION("isbasechar",f_isBaseChar,tFunc(tInt,tInt),0);
