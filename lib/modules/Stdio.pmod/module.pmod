@@ -121,8 +121,7 @@ class BlockFile
 
 //! This is the basic I/O object, it provides socket communication as well
 //! as file access. It does not buffer reads and writes or provide line-by-line
-//! reading, that is done with @[Stdio.FILE] object. All functions available
-//! in @[Fd] are available here as well.
+//! reading, that is done with @[Stdio.FILE] object.
 class File
 {
   optional inherit Fd_ref;

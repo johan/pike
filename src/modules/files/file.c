@@ -144,6 +144,19 @@ struct program *file_ref_program;
  *! Low level I/O operations. Use @[File] instead.
  */
 
+/*! @endclass
+ */
+
+/* The class below is not accurate, but it's the lowest exposed API
+ * interface, which make the functions appear where users actually
+ * look for them. One could perhaps put them in Fd_ref and fix the doc
+ * generator to show inherited functions in a better way, but if they
+ * only are documented in Fd then the doc has to be duplicated in at
+ * least Fd_ref. /mast */
+
+/*! @class File
+ */
+
 static void file_read_callback(int fd, void *data);
 static void file_write_callback(int fd, void *data);
 

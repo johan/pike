@@ -40,7 +40,11 @@ RCSID("$Id$");
 /*! @module Stdio
  */
 
-/*! @class Fd
+/* The class below is not accurate, but it's the lowest exposed API
+ * interface, which make the functions appear where users actually
+ * look for them. /mast */
+
+/*! @class File
  */
 
 /*! @decl mapping tcgetattr()
