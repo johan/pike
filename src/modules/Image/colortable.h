@@ -19,13 +19,13 @@
 
 #define COLORLOOKUPCACHEHASHSIZE 207
 
-typedef size_t nct_weight_t;
+typedef unsigned INT32 nct_weight_t;
 
 struct nct_flat_entry /* flat colorentry */
 {
    rgb_group color;
    nct_weight_t weight;
-   ptrdiff_t no;
+   INT32 no;
 };
 
 struct nct_scale
