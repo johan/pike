@@ -74,7 +74,9 @@ configure: src/configure builddir
 compile: configure
 	@builddir="$(BUILDDIR)"; \
 	metatarget="$(METATARGET)"; \
-	test -x "$$builddir"/pike || metatarget="all $$metatarget"; \
+	test -f "$$builddir"/master.pike -a -x "$$builddir"/pike || \
+          metatarget="all $$metatarget"; \
+	test "x$$metatarget" = x && metatarget=all; \
 	cd "$$builddir" && for target in $$metatarget; do \
 	  echo Making $$target in "$$builddir"; \
 	  rm -f remake; \
