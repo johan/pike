@@ -14,9 +14,14 @@
  */
 
 /* From the mysql-dist */
-#ifndef MYSQL_MYSQL_H
-#define MYSQL_MYSQL_H
+/* Workaround for versions prior to 3.20.0 not beeing protected for
+ * multiple inclusion.
+ */
+#ifndef _mysql_h
 #include <mysql.h>
+#ifndef _mysql_h
+#define _mysql_h
+#endif
 #endif
 
 /* From the Pike-dist */
