@@ -5162,8 +5162,8 @@ AC_CACHE_VAL(pike_cv_have_union_init, [
     struct bar {int c[2];};
     union anything
     {
-      struct foo *foo;
-      struct bar *bar;
+      struct foo foo;
+      struct bar bar;
     };
     struct svalue
     {
