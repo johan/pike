@@ -15,12 +15,14 @@
 #define FILE void
 #define size_t unsigned int
 /* NOTE: INT32 and INT16 are redefined by <jmorecfg.h>. */
+#if 0
 #ifdef INT16
 #undef INT16
 #endif /* INT16 */
 #ifdef INT32
 #undef INT32
 #endif
+#endif /* 0 */
 #include <jpeglib.h>
 #undef size_t
 #undef FILE
