@@ -2494,6 +2494,7 @@ static void _image_outline(INT32 args,int mask)
    push_int(THIS->ysize);
    o=clone_object(image_program,2);
    img=(struct image*)(o->storage);
+   img->rgb=THIS->rgb;
 
    tmp=malloc((THIS->xsize+width)*(THIS->ysize+height));
    if (!tmp) { free_object(o); error("out of memory\n"); }
@@ -3174,7 +3175,9 @@ void pike_module_init(void)
    add_function("outline",image_outline,
                 "function(void|array(array(int)):object)"
                 "|function(array(array(int)),int,int,int,void|int:object)"
-                "|function(array(array(int)),int,int,int,int,int,int,void|int:object)",0);
+                "|function(array(array(int)),int,int,int,int,int,int,void|int:object)"
+                "|function(int,int,int,void|int:object)"
+                "|function(int,int,int,int,int,int,void|int:object)",0);
    add_function("outline_mask",image_outline_mask,
                 "function(void|array(array(int)):object)"
                 "|function(array(array(int)),int,int,int:object)",0);
