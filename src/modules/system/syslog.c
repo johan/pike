@@ -135,8 +135,12 @@ void f_openlog(INT32 args)
   if(p_facility & (1<<16)) facility |= LOG_SYSLOG;
   if(p_facility & (1<<17)) facility |= LOG_USER;
   if(p_facility & (1<<18)) facility |= LOG_UUCP;
+
+  THREADS_ALLOW();
   
   openlog(ident, option, facility);
+
+  THREADS_DISALLOW();
 
   pop_n_elems(args);
 }

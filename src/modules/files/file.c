@@ -882,11 +882,11 @@ static void file_open(INT32 args)
   if(!( flags &  (FILE_READ | FILE_WRITE)))
     error("Must open file for at least one of read and write.\n");
 
-  THREADS_ALLOW();
+  THREADS_ALLOW_UID();
   do {
     fd=fd_open(str->str,map(flags), access);
   } while(fd < 0 && errno == EINTR);
-  THREADS_DISALLOW();
+  THREADS_DISALLOW_UID();
 
   if(!fp->current_object->prog)
     error("Object destructed in file->open()\n");

@@ -837,6 +837,7 @@ struct program *end_first_pass(int finish)
 
   compilation_depth--;
   threads_disabled--;
+  co_signal(&threads_disabled_change);
   free_all_nodes();
   return prog;
 }
