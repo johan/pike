@@ -39,7 +39,7 @@ _ll_t mysql_dummy_dum_dum(_ull_t a, _ull_t b, _ll_t c, _ll_t d) {
   read(0, 0, 0);
 #endif
 #ifdef HAVE_FILENO
-  fileno(0);
+  fileno((FILE*)0);
 #endif
 #ifdef HAVE_PUTS
   puts(0);
