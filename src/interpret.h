@@ -320,7 +320,14 @@ PMOD_EXPORT extern const char msg_pop_neg[];
     _sp_->type=PIKE_T_FLOAT;						\
   }while(0)
 
-#define push_text(T) push_string(make_shared_string((T)))
+#define push_text(T) do {						\
+    const char *_ = (T);						\
+    struct svalue *_sp_ = Pike_sp++;					\
+    _sp_->subtype=0;							\
+    _sp_->u.string=make_shared_binary_string(_,strlen(_));		\
+    debug_malloc_touch(_sp_->u.string);					\
+    _sp_->type=PIKE_T_STRING;						\
+  }while(0)
 
 #define push_constant_text(T) do{					\
     struct svalue *_sp_ = Pike_sp++;					\
