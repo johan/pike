@@ -9875,6 +9875,6 @@ test_any_equal([[
       if(a) return test(0);
       return b;
     }
-  }
+  };
   return X()->test(1,2);
 ]],[[ ({}) ]])
