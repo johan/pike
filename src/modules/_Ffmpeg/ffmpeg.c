@@ -27,11 +27,15 @@
 #include <string.h>
 #include <math.h>
 
+#ifdef HAVE_LIBAVCODEC_AVCODEC_H
+#include <libavcodec/avcodec.h>
+#else
 #ifdef HAVE_LIBFFMPEG_AVCODEC_H
 #include <libffmpeg/avcodec.h>
 #else
 #ifdef HAVE_AVCODEC_H
 #include <avcodec.h>
+#endif
 #endif
 #endif
 
