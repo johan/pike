@@ -1878,7 +1878,9 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 	  {
 	    pop_stack();
 #if 0
-	    fprintf(stderr, "Placeholder deployed for %p\n", p);
+	    fprintf(stderr, "Placeholder deployed for %p when indexing ", p);
+	    print_tree(n);
+	    fprintf(stderr, "with %s\n", id->str);
 #endif
 	    ref_push_object(placeholder_object);
 	    break;
