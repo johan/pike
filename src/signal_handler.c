@@ -525,6 +525,8 @@ static void report_child(int pid,
 	}
       }
       map_delete(pid_mapping, &key);
+    }else{
+      fprintf(stderr,"report_child on unknown child: %d,%d\n",pid,status);
     }
   }
 }
