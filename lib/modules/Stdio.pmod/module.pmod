@@ -1102,7 +1102,12 @@ class FILE
   array(string) ngets(void|int(1..) n)
   {
     cached_lines = ({}); lp=0;
-    if (!n) return read()/"\n";
+    if (!n) 
+    {
+       array v=read()/"\n";
+       if (v[-1]=="") return v[..sizeof(v)-2];
+       return v;
+    }
 
     array res=b[bpos..]/"\n";
     bpos=strlen(b)-strlen(res[-1]);
