@@ -389,6 +389,8 @@ static void f_fetch_row(INT32 args)
       } else {
 	/* NULL? */
 	push_int(0);
+	if(i+1<num_fields)
+	  mysql_field_seek(PIKE_MYSQL_RES->result, i+1);
       }
     }
     f_aggregate(num_fields);
