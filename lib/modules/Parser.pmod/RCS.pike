@@ -379,7 +379,7 @@ class DeltatextIterator
     if(type == 't')
       return name;
     return sprintf("%s(/* processed %d/%d revisions%s */)", name, this_no,
-		   sizeof(revisions), (this_no ? ", now at "+this_rev : ""));
+		   revisions && sizeof(revisions), (this_no ? ", now at "+this_rev : ""));
   }
 
   //! drops the leading whitespace before next revision's deltatext
