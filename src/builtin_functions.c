@@ -1508,7 +1508,9 @@ static node *fix_overloaded_type(node *n, int lfun, const char *deftype, int def
 	/* FIXME: function type string should really be compiled from
 	 * the arguments so that or:ed types are handled correctly
 	 */
-	if(fun!=-1 && (t2=check_call(function_type_string , ID_FROM_INT(p, fun)->type)))
+	if(fun!=-1 &&
+	   (t2=check_call(function_type_string , ID_FROM_INT(p, fun)->type,
+			  0)))
 	{
 	  free_string(n->type);
 	  n->type=t2;
