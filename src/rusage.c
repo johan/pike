@@ -33,6 +33,8 @@ static INT32 rusage_values[30];
 
 #ifdef GETRUSAGE_THROUGH_PROCFS
 #include <sys/procfs.h>
+#include "fdlib.h"
+
 static INLINE int get_time_int(timestruc_t * val) 
 {
   return val->tv_sec * 1000 + val->tv_nsec / 1000000;
