@@ -1762,6 +1762,9 @@ static void mpzmod_not(INT32 args)
 }
 
 /*! @decl int popcount()
+ *! For values >= 0, returns the population count (the number of set bits).
+ *! For negative values (who have an infinite number of leading ones in a
+ *! binary representation), -1 is returned.
  */
 static void mpzmod_popcount(INT32 args)
 {
@@ -1827,6 +1830,7 @@ static void mpzmod_random(INT32 args)
  */
 
 /*! @decl Gmp.mpz fac(int x)
+ *! Returns the factorial of @[x] (@[x]!).
  */
 static void gmp_fac(INT32 args)
 {
