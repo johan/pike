@@ -18,6 +18,19 @@ OLD_CPPFLAGS=$CPPFLAGS
 AC_ARG_WITH(odbc,  [  --without-odbc       no support for ODBC databases],[],[with_odbc=yes])
 
 if test x$with_odbc = xyes; then
+ if test "x$pike_cv_sys_os" = "xWindows_NT" ; then
+   AC_DEFINE(HAVE_WINDOWS_H)
+   AC_DEFINE(HAVE_SQL_H)
+   AC_DEFINE(HAVE_SQLEXT_H)
+   AC_DEFINE(HAVE_ODBC)
+   LIBS="-lodbc32 $LIBS"
+   pike_cv_odbc=yes
+    cat <<EOF
+
+ODBC support enabled.
+
+EOF
+ else
 
   AC_MSG_CHECKING(for ODBC library-directory)
 
@@ -152,6 +165,7 @@ so that libodbc.so finds the appropriate files.
 EOF
 
   fi
+ fi
 else
   :
 fi

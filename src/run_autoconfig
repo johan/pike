@@ -6,6 +6,13 @@
 
 need_to_make_depend=no
 
+case :$PATH: in
+   */NT/tools:*)
+      echo Stripping NT/tools from path temporarily...
+      PATH=`echo :$PATH | sed 's@:[^:]*/NT/tools:@@g' | sed 's@^:@@'`
+   ;;
+esac
+
 if test "x$1" = "x" ; then
   base=`echo $0 | sed 's@[^/]*$@@g'`
   if test "x$base" != "x" ; then
