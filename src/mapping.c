@@ -1363,9 +1363,10 @@ struct mapping *add_mappings(struct svalue *argp, INT32 args)
 #endif
 
   /* FIXME: need locking! */
-  if(argp[0].u.mapping->refs == 1)
+  if(argp[0].u.mapping->refs == 1 &&
+     !argp[0].u.mapping->data->hardlinks)
   {
-    ret=argp[0].u.mapping;
+    add_ref( ret=argp[0].u.mapping );
     d=1;
   }else{
     ret=allocate_mapping(MAP_SLOTS(e));
