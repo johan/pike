@@ -12,6 +12,7 @@ RCSID("$Id$");
 
 #define IMAGE_INITER
 
+/*#define DEBUG*/
 
 #define IMAGE_CLASS(name,init,exit,prog) \
     void init(void); void exit(void); struct program *prog;
@@ -141,9 +142,6 @@ void pike_module_init(void)
 {
    char type_of_index[]=
       tFunc(tStr,tOr3(tObj,tPrg,""))
-/*       "\004" tStr "\021" tVoid  */
-/*       "\373" tObj "\373" tPrg */
-
 #undef IMAGE_FUNCTION
 #undef IMAGE_SUBMODMAG
 #define IMAGE_SUBMODMAG(name,init,exit) 
@@ -159,6 +157,12 @@ void pike_module_init(void)
    for (i=0; i<(int)NELEM(initclass); i++)
    {
       start_new_program();
+
+#ifdef DEBUG
+      fprintf(stderr,"Image: initiating class \"Image.%s\"...\n",
+	      initclass[i].name);
+#endif
+
       (initclass[i].init)();
       IMAGE_CHECK_STACK(initclass[i].name);
       initclass[i].dest[0]=end_program();
@@ -169,6 +173,11 @@ void pike_module_init(void)
    {
       struct program *p;
       struct pike_string *s;
+
+#ifdef DEBUG
+      fprintf(stderr,"Image: initiating submodule \"Image.%s\"...\n",
+	      initsubmodule[i].name);
+#endif
       
       start_new_program();
       (initsubmodule[i].init)();

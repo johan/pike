@@ -895,6 +895,13 @@ static struct nct_flat _img_get_flat_from_array(struct array *arr)
 		       0,0, 1, "array of colors or 0", 0,
 		       "Colortable(): bad element %d of colorlist\n",i);
 
+#if DEBUG
+      fprintf(stderr,"got %d: %02x%02x%02x\n",n,
+	      flat.entries[n].color.r,
+	      flat.entries[n].color.g,
+	      flat.entries[n].color.b);
+#endif
+
       flat.entries[n].weight=1;
       flat.entries[n].no=i;
       n++;
