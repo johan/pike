@@ -939,8 +939,8 @@ static int gobble(struct xmldata *data, char *s)
 	  debug_malloc_touch(s);					 \
 	  sp--;								 \
 	  IF_XMLDEBUG(fprintf(stderr,"Entity expands to: %s\n",s->str)); \
-	  SET_ONERROR(tmp2, free_xmldata, &my_tmp);			 \
 	  check_stack(10);						 \
+	  SET_ONERROR(tmp2, free_xmldata, &my_tmp);			 \
 	  my_tmp.input.to_free=s;					 \
 	  my_tmp.input.datap=MKPCHARP_STR(s);				 \
 	  my_tmp.input.len=s->len;					 \
@@ -950,8 +950,7 @@ static int gobble(struct xmldata *data, char *s)
 	  PARSE_RECURSIVELY;						 \
 	  if(THIS->entities)						 \
 	    mapping_string_insert_string(THIS->entities, name, s);	 \
-          sub_ref(callbackinfo);                                         \
-	  UNSET_ONERROR(tmp2);						 \
+	  CALL_AND_UNSET_ONERROR(tmp2);					 \
 	  free_string(s);						 \
 	}								 \
       }while(0);							 \
