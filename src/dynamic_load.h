@@ -9,6 +9,7 @@ struct module_list;
 void f_load_module(INT32 args);
 void init_dynamic_load(void);
 void exit_dynamic_load(void);
+void free_dynamic_load(void);
 /* Prototypes end here */
 
 #endif
