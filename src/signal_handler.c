@@ -2409,6 +2409,39 @@ void f_create_process(INT32 args)
 
       /* Wake up the child. */
       buf[0] = 0;
+
+
+      /*
+       * This code works, but seems to slow down process creation
+       * rathern than speed it up. Only tested on Linux.
+       * /Hubbe
+       */
+#if 0
+      {
+	int gnapp=0;
+      while (((e = write(control_pipe[0], buf, 1)) < 0) && (errno == EINTR))
+	;
+      THREADS_ALLOW();
+      if(e!=1) {
+	/* Paranoia in case close() sets errno. */
+	olderrno = errno;
+	while(close(control_pipe[0]) < 0 && errno==EINTR);
+	gnapp=1;
+      } else {
+        /* Wait for exec or error */
+        while (((e = read(control_pipe[0], buf, 3)) < 0) && (errno == EINTR))
+	;
+        /* Paranoia in case close() sets errno. */
+        olderrno = errno;
+
+        while(close(control_pipe[0]) < 0 && errno==EINTR);
+      }
+      THREADS_DISALLOW();
+      if(gnapp)
+	error("Child process died prematurely. (e=%d errno=%d)\n",
+	      e ,olderrno);
+      }
+#else
       while (((e = write(control_pipe[0], buf, 1)) < 0) && (errno == EINTR))
 	;
       if(e!=1) {
@@ -2426,6 +2459,8 @@ void f_create_process(INT32 args)
       olderrno = errno;
 
       while(close(control_pipe[0]) < 0 && errno==EINTR);
+#endif
+
 
       if (!e) {
 	/* OK! */
