@@ -405,9 +405,12 @@ void describe_location(void *real_memblock,
       {
 	e = ((char *)ptr - (char *)(p->identifiers)) /
 	  sizeof(struct identifier);
+
 	fprintf(stderr,"%*s  **In p->identifiers[%ld] (%s)\n",indent,"",
 		DO_NOT_WARN((long)e),
-		p->identifiers[e].name ? p->identifiers[e].name->str : "no name");
+		p->identifiers[e].name ?
+		(strlen(p->identifiers[e].name->str)<100 ? p->identifiers[e].name->str : "Name too long or already freed.."  )
+		: "no name");
 	break;
       }
 
