@@ -173,7 +173,7 @@ static void report_error(const char *function_name)
     error_msg = "No such process";
     break;
   }
-  error("%s(): Failed:%s\n", function_name, error_msg);
+  error("%s(): Failed: %s\n", function_name, error_msg);
 }
 
 
