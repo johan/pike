@@ -93,10 +93,7 @@ mapping _decode( string data, mixed|void tocolor )
     {
       catch {
 	mixed q;
-	if( mappingp( opts ) )
-	  q = Image[fmt]->_decode( data, opts );
-	else
-	  q = Image[fmt]->_decode( data );
+	q = Image[fmt]->_decode( data );
         format = fmt;
         i = q->image;
         a = q->alpha;
