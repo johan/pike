@@ -163,7 +163,7 @@ static void f_set_decrypt_key(INT32 args)
   THIS->crypt_fun = DesSmallFipsDecrypt;
 }
 
-/*! @decl string encrypt(string data)
+/*! @decl string crypt_block(string data)
  *!
  *! En/decrypt @[data] with DES using the current key.
  */
