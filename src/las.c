@@ -610,7 +610,7 @@ void resolv_constant(node *n)
     
     if(IDENTIFIER_IS_CONSTANT(i->identifier_flags))
     {
-      push_svalue(PROG_FROM_INT(new_program, numid)->constants +
+      push_svalue(PROG_FROM_INT(p, numid)->constants +
 		  i->func.offset);
     }else{
       yyerror("Identifier is not a constant");
