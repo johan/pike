@@ -97,6 +97,7 @@ void init_object(void);
 void exit_object(void);
 void check_object(struct object *o);
 void check_all_objects(void);
+void check_context(struct object *o, struct program *p, char *storage);
 /* Prototypes end here */
 
 #ifdef MALLOC_DEBUG
