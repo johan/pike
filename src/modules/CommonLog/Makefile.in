@@ -6,7 +6,7 @@
 
 @make_variables@
 VPATH=@srcdir@:@srcdir@/../..:../..
-MODULE_CPPFLAGS=@DEFS@ @CPPFLAGS@
+MODULE_CPPFLAGS=@DEFS@
 OBJS=clf.o
 MODULE_LDFLAGS=@LDFLAGS@
 
