@@ -167,7 +167,7 @@ fi
 if test "x$enable_make_conf" = x"yes" -a -f /etc/make.conf; then
   set >conftest.tmp
   echo Using settings from /etc/make.conf...
-  source /etc/make.conf
+  . /etc/make.conf
   set | diff -u conftest.tmp -  | grep '^+C'
   PIKE_MSG_WARN([Using settings from /etc/make.conf.])
 fi
