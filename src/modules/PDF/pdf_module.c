@@ -227,7 +227,8 @@ void pike_module_init(void)
       pop_stack();
    }
 
-   for (i=0; i<(int)NELEM(submagic); i++) {
+   for (i=0; i<(int)NELEM(submagic); i++) 
+   {
       if(!submagic[i].name) continue;
       submagic[i].ps=make_shared_string(submagic[i].name);
    }
