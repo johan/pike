@@ -37,7 +37,6 @@ DOCFILES = doc-header            \
 	pattern.c				\
 	polyfill.c				\
 	search.c				\
-	x.c					\
 	blit_layer_include.h			\
 	colortable.h				\
 	colortable_lookup.h			\
