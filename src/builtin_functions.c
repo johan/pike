@@ -1983,7 +1983,7 @@ PMOD_EXPORT void f_all_constants(INT32 args)
  */
 PMOD_EXPORT void f_allocate(INT32 args)
 {
-  INT32 size;
+  INT_TYPE size;
   struct array *a;
   struct svalue *init;
 
