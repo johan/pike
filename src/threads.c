@@ -378,7 +378,12 @@ void thread_table_insert(struct object *o)
   if(h>=THREAD_TABLE_SIZE)
     fatal("thread_table_hash failed miserably!\n");
   if(thread_state_for_id(s->id))
-    fatal("Registring thread twice!\n");
+  {
+    if(thread_state_for_id(s->id) == s)
+      fatal("Registring thread twice!\n");
+    else
+      fatal("Forgot to unregister thread!\n");
+  }
 /*  dumpmem("thread_table_insert",&s->id, sizeof(THREAD_T)); */
 #endif
   mt_lock( & thread_table_lock );
