@@ -166,3 +166,8 @@ void image_tozbgr(INT32 args);
 void image_to8bit_rgbcube(INT32 args);
 void image_to8bit_rgbcube_rdither(INT32 args);
 void image_tobitmap(INT32 args);
+
+/* polyfill.c */
+
+void image_polygone(INT32 args);
+
