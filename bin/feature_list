@@ -1,8 +1,0 @@
-#!/usr/local/bin/pike
-
-// $Id$
-
-int main(int argc, string *argv)
-{
-  write("Features: "+Tools.Install.features()*" "+"\n");
-}
