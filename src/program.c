@@ -4001,7 +4001,6 @@ INT32 define_function(struct pike_string *name,
       fatal("New function overloading algorithm failed!\n");
 #endif
     }
-#endif
     return i;
   }
 make_a_new_def:
