@@ -262,12 +262,12 @@ void udp_sendto(INT32 args)
 }
 
 
-void zero_udp()
+void zero_udp(struct object *o)
 {
   MEMSET(THIS, 0, sizeof(struct dumudp));
 }
 
-void exit_udp()
+void exit_udp(struct object *o)
 {
   if(THIS->fd) close(THIS->fd);
 }
