@@ -4427,25 +4427,22 @@ void real_gc_cycle_check_program(struct program *p, int weak)
   GC_CYCLE_ENTER(p, weak) {
     int e;
 
-    if (p->flags & PROGRAM_AVOID_CHECK)
-      /* Program is in an inconsistent state.
-       * don't look closer at it.
-       */
-      return;
-
-    if(p->parent)
-      gc_cycle_check_program(p->parent, 0);
-      
-    for(e=0;e<p->num_constants;e++)
-      gc_cycle_check_svalues(& p->constants[e].sval, 1);
-
-    for(e=0;e<p->num_inherits;e++)
+    if (!(p->flags & PROGRAM_AVOID_CHECK))
     {
-      if(p->inherits[e].parent)
-	gc_cycle_check_object(p->inherits[e].parent, 0);
-
-      if(e && p->inherits[e].prog)
-	gc_cycle_check_program(p->inherits[e].prog, 0);
+      if(p->parent)
+	gc_cycle_check_program(p->parent, 0);
+      
+      for(e=0;e<p->num_constants;e++)
+	gc_cycle_check_svalues(& p->constants[e].sval, 1);
+      
+      for(e=0;e<p->num_inherits;e++)
+      {
+	if(p->inherits[e].parent)
+	  gc_cycle_check_object(p->inherits[e].parent, 0);
+	
+	if(e && p->inherits[e].prog)
+	  gc_cycle_check_program(p->inherits[e].prog, 0);
+      }
     }
   } GC_CYCLE_LEAVE;
 }
