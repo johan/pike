@@ -417,6 +417,16 @@ int dbm_main(int argc, char **argv)
 	      p++;
 	      goto more_d_flags;
 
+	    case 'g':
+	      debug_options|=GC_RESET_DMALLOC;
+	      p++;
+	      goto more_d_flags;
+
+	    case 'p':
+	      debug_options|=NO_PEEP_OPTIMIZING;
+	      p++;
+	      goto more_d_flags;
+
 	    default:
 	      d_flag += (p[0] == 'd');
 	      p++;

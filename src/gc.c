@@ -2055,6 +2055,10 @@ int do_gc(void)
 #endif
 
   if(Pike_in_gc) return 0;
+#ifdef DEBUG_MALLOC
+  if(debug_options & GC_RESET_DMALLOC)
+    reset_debug_malloc();
+#endif
   init_gc();
   gc_generation++;
   Pike_in_gc=GC_PASS_PREPARE;

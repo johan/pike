@@ -215,7 +215,7 @@ void assemble(void)
   INT32 *labels, *jumps, *uses;
   ptrdiff_t e, length;
   p_instr *c;
-  int reoptimize=1;
+  int reoptimize=!(debug_options & NO_PEEP_OPTIMIZING);
 #ifdef PIKE_DEBUG
   int synch_depth;
 #endif
