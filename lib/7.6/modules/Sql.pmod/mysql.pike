@@ -27,11 +27,3 @@ int|object big_query(mixed ... args) {
   return res;
 }
 
-array query( mixed ... args ) 
-{
-    LOCK();
-    mixed res= ::query(@args);
-    UNLOCK(); // Avoid any possible tail-recursion optimizations by not returning directly above.
-
-    return res;
-}
