@@ -93,6 +93,35 @@ cond([[all_constants()->_debug]],
 ]])
 test_do(_static_modules())
 test_compile_any([[import Stdio; class x { string y() { read_file("foo"); } }]])
+test_compile_any([[
+class Bar
+{
+  int f() {return 17;}
+
+  class Foo {
+    int g() {return f();}
+  }
+
+  inherit Foo;
+}
+]])
+tes_compile_any([[
+class Bar
+{
+  int f() {return 17;}
+
+  class Foo {
+    int g() {return f();}
+  }
+}
+
+class Gnu
+{
+  inherit Bar;
+  inherit Foo;
+}
+
+]])
 test_compile([[Stdio.File foo=Stdio.File();]])
 test_compile([[  string|multiset(string) foo;
   array(string) gazonk;
