@@ -1979,7 +1979,7 @@ static void f_normalize_path(INT32 args)
     /* NOTE: Use the emulated GetLongPathName(), since it normalizes all
      * components of the path.
      */
-    ret = Emulated_GetLongPathName(str->str, res.s->str, res.malloced);
+    ret = Emulate_GetLongPathName(str->str, res.s->str, res.malloced);
     if (!ret) {
       free_string_builder(&res);
       throw_nt_error("normalize_path", errno = GetLastError());
