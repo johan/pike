@@ -45,6 +45,11 @@
 #endif
 #endif /* __NT__ */
 
+#ifdef __amigaos__
+/* Avoid getting definitions of struct in_addr from <unistd.h>... */
+#define __USE_NETINET_IN_H
+#endif
+
 /*
  * We want to use __builtin functions.
  */
