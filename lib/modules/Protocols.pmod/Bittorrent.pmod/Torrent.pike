@@ -137,8 +137,17 @@ void load_metainfo(string filename)
    if (!s)
       error("Failed to read metainfo file %O: %s\n",
 	    filename,strerror(errno()));
+   mixed err=catch {
+     decode_metainfo(s);
+   };
+   if (!err) return;
 
+   err[0]=sprintf("Failed to read metainfo file %O:\n",filename)+err[0];
+   throw(err);
+}
 
+void decode_metainfo(string s)
+{
    mixed err=catch {
       metainfo=decode(s);
       if (!mappingp(metainfo))
@@ -170,7 +179,7 @@ void load_metainfo(string filename)
    };
    if (!err) return;
 
-   err[0]=sprintf("Failed to read metainfo file %O:\n",filename)+err[0];
+   err[0]=sprintf("Failed to decode metainfo\n")+err[0];
    throw(err);
 }
 
