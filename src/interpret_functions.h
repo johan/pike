@@ -998,7 +998,7 @@ OPCODE0_TAIL(F_CLEANUP_SYNCH_MARK, "cleanup synch mark", 0, {
   OPCODE0(F_POP_SYNCH_MARK, "pop synch mark", 0, {
     if (d_flag) {
       if (Pike_mark_sp <= Pike_interpreter.mark_stack) {
-	Pike_fatal("Mark stack out of synch - 0x%08x <= 0x%08x.\n",
+	Pike_fatal("Mark stack out of synch - 0x%08lx <= 0x%08lx.\n",
 	      DO_NOT_WARN((unsigned long)Pike_mark_sp),
 	      DO_NOT_WARN((unsigned long)Pike_interpreter.mark_stack));
       } else if (*--Pike_mark_sp != Pike_sp) {
