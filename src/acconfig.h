@@ -215,6 +215,18 @@
 /* Use poll() instead of select() ? */
 #undef HAVE_AND_USE_POLL
 
+/* This works on Solaris or any UNIX where
+ * waitpid can report ECHILD when running more than one at once
+ * (or any UNIX where waitpid actually works)
+ */
+#undef USE_WAIT_THREAD
+
+/* This works on Linux or any UNIX where
+ * waitpid works or where threads and signals bugs in
+ * less annoying ways than Solaris.
+ */
+#undef USE_SIGCHILD
+
 /* Enable code to handle Out-Of-Band data */
 #undef WITH_OOB
 
