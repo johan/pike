@@ -6,6 +6,7 @@ MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 CONFIG_HEADERS=@CONFIG_HEADERS@
 SRC_TARGETS=$(SRCDIR)/wordbits.h \
 	$(SRCDIR)/decompositions.h $(SRCDIR)/canonicals.h
+DUMMY=examine_module
 @dynamic_module_makefile@
 
 UNICODEDATA=../../UnicodeData.txt
