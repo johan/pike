@@ -49,6 +49,7 @@ RCSID("$Id$");
 
 #include "las.h"
 
+#include <unistd.h>
 #include <errno.h>
 
 #ifdef HAVE_LOCALE_H
@@ -200,6 +201,8 @@ int dbm_main(int argc, char **argv)
 #endif
 
   TRACE((stderr, "dbm_main()\n"));
+
+  init_rusage();
 
   /* Attempt to make sure stderr is unbuffered. */
 #ifdef HAVE_SETVBUF

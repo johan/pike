@@ -8,6 +8,13 @@
 #ifndef PIKE_RUSAGE_H
 #define PIKE_RUSAGE_H
 
+#ifdef HAVE_TIMES
+extern long pike_clk_tck;
+#define init_rusage() (pike_clk_tck = sysconf (_SC_CLK_TCK))
+#else
+#define init_rusage()
+#endif
+
 /* Prototypes begin here */
 typedef long pike_rusage_t[29];
 int pike_get_rusage(pike_rusage_t rusage_values);
