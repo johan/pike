@@ -521,6 +521,7 @@ char *low_describe_type(char *t)
   case T_PROGRAM: my_strcat("program"); break;
   case T_OBJECT:
     my_strcat("object");
+    t+=4;
     /* Prog id */
     break;
   case T_STRING: my_strcat("string"); break;
