@@ -18,7 +18,7 @@ AC_CHECK_LIB(socket, socket)
 
 AC_HAVE_FUNCS(getwd perror readdir_r statvfs statfs ustat lseek64 lstat fsync \
  grantpt unlockpt ptsname socketpair writev sendfile munmap madvise poll \
- setsockopt getprotobyname)
+ setsockopt getprotobyname truncate64 ftruncate64)
 
 AC_FUNC_MMAP
 
