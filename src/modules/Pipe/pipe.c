@@ -697,6 +697,9 @@ static void pipe_output(INT32 args)
 	&& S_ISREG(s.st_mode)
 	&& (THIS->fd=dup(fd))!=-1 )
     {
+      /* keep the file pointer of the duped fd */
+      THIS->pos=lseek(fd, 0L, SEEK_CUR);
+      
 #if 0
       /* This won't work if the spider-module is dynamically linked. */
       push_int(THIS->fd);
@@ -720,7 +723,8 @@ static void pipe_output(INT32 args)
       }
       THIS->lastbuffer=NULL;
 
-      THIS->pos=0;
+      /* keep the file pointer of the duped fd
+	 THIS->pos=0; */
       push_int(0);
       apply(sp[-args-2].u.object,"set_id", 1);
       pop_n_elems(args+2);	/* ... and from apply x 2  */
@@ -758,7 +762,9 @@ static void pipe_output(INT32 args)
   }
 
   o->mode=O_RUN;
-  o->pos=0;
+  /* keep the file pointer of the duped fd
+     o->pos=0; */
+  o->pos=THIS->pos;
 
   push_object(obj);
   obj->refs++;
