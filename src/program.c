@@ -734,6 +734,14 @@ if((char *)(p->X) < (char *)p || (char *)(p->X)> ((char *)p)+size) fatal("Progra
 
     if(p->identifiers[e].run_time_type!=T_MIXED)
       check_type(p->identifiers[e].run_time_type);
+
+    if(IDENTIFIER_IS_VARIABLE(p->identifiers[e].identifier_flags))
+    {
+      if(p->identifiers[e].offset & (sizeof(char *)-1))
+      {
+	fatal("Variable offset is not properly aligned (%s).\n",p->identifers[e].name->str);
+      }
+    }
   }
 
   for(e=0;e<(int)p->num_identifier_references;e++)
