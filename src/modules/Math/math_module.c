@@ -7,7 +7,7 @@
 
 #include "program.h"
 
-#include "math.h"
+#include "math_module.h"
 
 /*** module init & exit & stuff *****************************************/
 
