@@ -536,9 +536,9 @@ PIKECLASS string_split_iterator
       ssi->offset = end+1;
       ssi->current = Pike_sp[-1].u.string;
       Pike_sp--;
-      if ((!THIS->flags) && (ssi->offset > ssi->buffer->len)) {
-	free_string(THIS->buffer);
-	THIS->buffer = 0;
+      if (ssi->offset > ssi->buffer->len) {
+	free_string(ssi->buffer);
+	ssi->buffer = 0;
       }
     }
   
