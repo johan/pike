@@ -230,7 +230,7 @@ int va_get_args(struct svalue *s,
 	*va_arg(ap, LONGEST *)=s->u.integer;
 	break;
       } else if (!is_bignum_object_in_svalue(s) ||
-		 !int64_from_bignum(*va_arg(ap, LONGEST *), s->u.object)) {
+		 !int64_from_bignum(va_arg(ap, LONGEST *), s->u.object)) {
 	return ret;
       }
       break;
