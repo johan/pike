@@ -27,7 +27,6 @@ _html: html_manual manual/Makefile
 
 split: join manual
 	@$(PIKE) ../bin/split-autodoc.pike manual.xml structure.xml .
-	@rm manual/structure.xml
 
 join: recursive_join
 	@$(MAKE) PIKE="$(PIKE)" XMLFILES="`echo build/*/*.xml`" manual.xml
