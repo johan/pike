@@ -23,6 +23,9 @@
 #define _ALL_SOURCE
 #endif
 
+/* Building as a library? */
+#undef LIBPIKE
+
 /* Where's the master.pike file installed? */
 #define DEFAULT_MASTER "@prefix@/lib/pike/master.pike"
 
