@@ -78,6 +78,11 @@ int query_fd()
   return -1;
 }
 
+int is_open()
+{
+  return !is_closed && socket && socket->is_open();
+}
+
 private void ssl_write_callback(mixed id);
 
 #define CALLBACK_MODE							\
