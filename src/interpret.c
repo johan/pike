@@ -29,6 +29,7 @@ RCSID("$Id$");
 #include "callback.h"
 
 #include <fcntl.h>
+#include <errno.h>
 
 #ifdef HAVE_MMAP
 #ifdef HAVE_SYS_TYPES_H

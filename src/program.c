@@ -22,7 +22,8 @@ RCSID("$Id$");
 #include "main.h"
 #include "gc.h"
 #include "threads.h"
-#include <stdio.h>
+
+#include <errno.h>
 #include <fcntl.h>
 
 #define FILE_STATE
