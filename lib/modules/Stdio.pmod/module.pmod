@@ -673,9 +673,6 @@ class File
 ** 
 */
 
-    if (!(::mode() & 0x400))
-      error ("Read callback called on blocking socket!\n");
-
 #if !defined(__NT__)
     if (peek_file_before_read_callback)
        if (!::peek()) 
