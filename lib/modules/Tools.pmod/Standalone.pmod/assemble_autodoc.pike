@@ -96,7 +96,7 @@ string visualize(Node n, int depth) {
     return "";
 
   string name = n->get_tag_name();
-  if(name!="module" && name!="class")
+  if(!(<"autodoc","namespace","module","class">)[name])
     return "";
 
   string data = "<" + name;
@@ -355,7 +355,7 @@ void move_items(Node n, mapping jobs, void|Node wrapper) {
   }
   if(!sizeof(jobs)) return;
 
-  foreach( ({ "module", "class", "docgroup" }), string type)
+  foreach( ({ "namespace", "module", "class", "docgroup" }), string type)
     foreach(n->get_elements(type), Node c) {
       mapping m = c->get_attributes();
       string name = m->name || m["homogen-name"];
@@ -436,7 +436,7 @@ int(0..1) main(int num, array(string) args) {
 
   werror("Parsing autodoc file %O.\n", args[2]);
   Node m = parse_file(args[2]);
-  m = m->get_first_element("module");
+  m = m->get_first_element("autodoc");
 
   werror("Moving appendices.\n");
   move_appendices(m);
