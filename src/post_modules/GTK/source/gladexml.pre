@@ -312,6 +312,3 @@ void signal_autoconnect(mapping(string:function) callbacks, mixed data)
   glade_xml_signal_autoconnect_full(xml, pgtk__signal_connect, &args);
   RETURN_THIS();
 }
-
-//! <p align="right"><font size="2"><i>$Id$</i></font></p>
-
