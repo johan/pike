@@ -50,8 +50,8 @@ $(WMMLDOCPLACE): $(DOCFILES) mkwmml.pike Makefile
 
 wmml:	$(WMMLDOCPLACE)
 
-testsuite.in: testsuite.in.in mktests.pike
-	pike mktests.pike -t testsuite.in.in >testsuite.in
+module_testsuite.in: testsuite.in.in mktests.pike
+	pike mktests.pike -t testsuite.in.in >module_testsuite.in
 
 tests.pike: testsuite.in.in mktests.pike
 	pike mktests.pike testsuite.in.in >tests.pike
