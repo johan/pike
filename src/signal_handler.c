@@ -1724,12 +1724,26 @@ static void f_trace_process_cont(INT32 args)
 
   THIS->state = PROCESS_RUNNING;
 
-  /* The addr argument must be 1 for this request. */
-  if (ptrace(PTRACE_CONT, THIS->pid, CAST_TO_PTRACE_ADDR(1), cont_signal) == -1) {
-    int err = errno;
-    THIS->state = PROCESS_STOPPED;
-    /* FIXME: Better diagnostics. */
-    Pike_error("Failed to release process. errno:%d\n", err);
+  if (cont_signal == 9) {
+    /* FREEBSD doesn't kill the process with cont(9),
+     * even though the man-page says the two are
+     * equvivalent.
+     */
+    if (ptrace(PTRACE_KILL, THIS->pid, NULL, 0) == -1) {
+      int err = errno;
+      THIS->state = PROCESS_STOPPED;
+      /* FIXME: Better diagnostics. */
+      Pike_error("Failed to exit process. errno:%d\n", err);
+    }
+  } else {
+    /* The addr argument must be 1 for this request. */
+    if (ptrace(PTRACE_CONT, THIS->pid,
+	       CAST_TO_PTRACE_ADDR(1), cont_signal) == -1) {
+      int err = errno;
+      THIS->state = PROCESS_STOPPED;
+      /* FIXME: Better diagnostics. */
+      Pike_error("Failed to release process. errno:%d\n", err);
+    }
   }
   pop_n_elems(args);
   push_int(0);
