@@ -285,6 +285,7 @@ extern struct program *pike_trampoline_program;
 #define COMPILER_IN_CATCH 1
 
 #define ADD_STORAGE(X) low_add_storage(sizeof(X), ALIGNOF(X),0)
+#define STORAGE_NEEDED(X) ((X)->storage_needed - (X)->inherits[0].storage_offset)
 
 #define FOO(NUMTYPE,TYPE,NAME) void PIKE_CONCAT(add_to_,NAME(TYPE ARG));
 #include "program_areas.h"
