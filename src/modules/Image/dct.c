@@ -51,6 +51,10 @@ static const double pi=3.14159265358979323846;
 **!
 **!	This functionality is actually added as an
 **!	true experiment, but works...
+**!
+**! note
+**!	Do NOT use this function if you don't know what 
+**!     you're dealing with! Read some signal theory first...
 **! returns the new image object
 **! arg int newx
 **! arg int newy
