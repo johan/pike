@@ -34,7 +34,7 @@ INT32 pop_address(void);
 int alloc_label(void);
 int do_jump(int token,INT32 lbl);
 void do_pop(int x);
-int do_docode(node *n,INT16 flags);
+int do_docode(node *n, INT16 flags);
 void do_cond_jump(node *n, int label, int iftrue, int flags);
 void do_code_block(node *n);
 int docode(node *n);
