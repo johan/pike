@@ -647,7 +647,12 @@ class Text
 
 object text(int no)
 {
-   return _text[no] || (_text[no]=Text(no));
+  if(_text[no])
+    return _text[no];
+  if(sizeof(_text)>1000)
+    _text = ([]);
+  
+  return (_text[no]=Text(no));
 }
 
 class Membership
