@@ -158,7 +158,7 @@ void f_lower_case(INT32 args)
   INT32 i;
   struct pike_string *orig;
   struct pike_string *ret;
-  get_all_args("lower_case",args,"%s",&orig);
+  get_all_args("lower_case", args, "%S", &orig);
 
   ret = begin_shared_string(orig->len);
   MEMCPY(ret->str, orig->str, orig->len);
@@ -177,7 +177,7 @@ void f_upper_case(INT32 args)
   INT32 i;
   struct pike_string *orig;
   struct pike_string *ret;
-  get_all_args("upper_case",args,"%s",&orig);
+  get_all_args("upper_case",args,"%S",&orig);
 
   ret=begin_shared_string(orig->len);
   MEMCPY(ret->str, orig->str, orig->len);
