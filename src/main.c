@@ -168,8 +168,7 @@ void main(int argc, char **argv, char **env)
 	  break;
 
 	default:
-	  fprintf(stderr,"Unknown flag '%c'\n",*p);
-	  exit(1);
+	  p+=strlen(p);
 	}
       }
     }else{
@@ -206,12 +205,12 @@ void main(int argc, char **argv, char **env)
   free_callback(& post_master_callbacks);
   init_modules_programs();
 
-  a=allocate_array_no_init(argc-e,0);
-  for(num=0;e<argc;e++)
+  
+  a=allocate_array_no_init(argc,0);
+  for(num=0;num<argc;num++)
   {
-    ITEM(a)[num].u.string=make_shared_string(argv[e]);
+    ITEM(a)[num].u.string=make_shared_string(argv[num]);
     ITEM(a)[num].type=T_STRING;
-    num++;
   }
   push_array(a);
 
