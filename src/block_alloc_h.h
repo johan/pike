@@ -13,7 +13,7 @@
 #undef PTR_HASH_ALLOC_FIXED_FILL_PAGES
 
 #ifndef PIKE_HASH_T
-#define PIKE_HASH_T	unsigned INT32
+#define PIKE_HASH_T	size_t
 #endif /* !PIKE_HASH_T */
 
 #define BLOCK_ALLOC(DATA,SIZE)						\
