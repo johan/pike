@@ -65,7 +65,7 @@ PMOD_EXPORT int fds_size = 0;
 
 #define ASSURE_FDS_SIZE(X) do{while(fds_size-1 < X) grow_fds();}while(0)
 
-void grow_fds( )
+void grow_fds(void)
 {
   if( !fds_size )
     fds_size = 16;
