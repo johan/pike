@@ -1175,9 +1175,9 @@ class FILE
   //!
   void ungets(string s)
   {
-    cached_lines = ({});
-    b=s+b[bpos..];
-    bpos=0;
+     cached_lines = ({s})+cached_lines[lp..]; lp=0;
+     b=s+"\n"+b[bpos..];
+     bpos=0;
   }
 
   //! This function returns one character from the input stream.
