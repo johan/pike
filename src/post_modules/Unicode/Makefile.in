@@ -27,5 +27,8 @@ unicode_module.o: $(SRCDIR)/unicode_module.c $(SRCDIR)/wordbits.h         \
 		  $(SRCDIR)/canonicals.h     			\
 		  $(SRCDIR)/decompositions.h
 
+split.o: $(SRCDIR)/wordbits.h
+
+normalize.o: $(SRCDIR)/canonicals.h $(SRCDIR)/decompositions.h
 
 @dependencies@
