@@ -1669,6 +1669,11 @@ static void native_dispatch(struct native_method_context *ctx,
     } else {
       /* Nope, let's get it... */
       mt_lock(&interpreter_lock);
+      while (threads_disabled) {
+	THREADS_FPRINTF(1, (stderr,
+			   "jvm/native_dispatch(): Threads disabled\n"));
+	co_wait(&threads_disabled_change, &interpreter_lock);
+      }
       SWAP_IN_THREAD(state);
 
       do_native_dispatch(ctx, env, cls, args, rc);
@@ -1680,6 +1685,11 @@ static void native_dispatch(struct native_method_context *ctx,
   } else {
     /* Not a pike thread.  Create a temporary thread_id... */
     mt_lock(&interpreter_lock);
+    while (threads_disabled) {
+      THREADS_FPRINTF(1, (stderr,
+			  "jvm/native_dispatch(): Threads disabled\n"));
+      co_wait(&threads_disabled_change, &interpreter_lock);
+    }
     init_interpreter();
     Pike_stack_top=((char *)&state)+ (thread_stack_size-16384) * STACK_DIRECTION;
     recoveries = NULL;

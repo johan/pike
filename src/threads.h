@@ -623,6 +623,7 @@ void th_farm(void (*fun)(void *), void *here);
 #define th_cleanup()
 #define th_init_programs()
 #define th_self() ((void*)0)
+#define co_wait(X,Y)
 #define co_signal(X)
 #define co_broadcast(X)
 
