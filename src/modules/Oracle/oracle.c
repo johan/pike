@@ -46,7 +46,7 @@ RCSID("$Id$");
 
 #define BLOB_FETCH_CHUNK 16384
 
-#define ORACLE_DEBUG
+/* #define ORACLE_DEBUG */
 #define ORACLE_USE_THREADS
 #define SERIALIZE_CONNECT
 
