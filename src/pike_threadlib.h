@@ -593,7 +593,7 @@ PMOD_EXPORT extern THREAD_T threads_disabled_thread;
     struct thread_state *_th_state = (_tmp);				\
     _th_state->state=Pike_interpreter;					\
     _th_state->swapped=1;						\
-    DO_IF_PROFILING( _th_state->time_base += gethrtime() );		\
+    DO_IF_PROFILING( _th_state->time_base -= gethrtime() );		\
     DO_IF_DEBUG (							\
       /* Yo! Yo run now, yo DIE! Hear! */				\
       Pike_sp = (struct svalue *) (ptrdiff_t) -1;			\
@@ -618,7 +618,7 @@ PMOD_EXPORT extern const char msg_thr_swapped_over[];
     _th_state->swapped=0;						\
     Pike_interpreter=_th_state->state;					\
     DO_IF_USE_CLOCK_FOR_SLICES (thread_start_clock = 0);		\
-    DO_IF_PROFILING(  Pike_interpreter.time_base -=  gethrtime());	\
+    DO_IF_PROFILING(  Pike_interpreter.time_base += gethrtime());	\
   } while(0)
 
 #define SWAP_OUT_CURRENT_THREAD() \
