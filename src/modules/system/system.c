@@ -761,6 +761,7 @@ void f_setpgrp(INT32 args)
 #else /* !HAVE_SETPGRP_BSD */
   pid = setpgrp();
 #endif /* HAVE_SETPGRP_BSD */
+#endif /* HAVE_SETPGID */
   if (pid < 0)
     report_error("setpgrp");
 
