@@ -104,8 +104,25 @@ static INLINE void getrgb(struct image *img,
 
 void img_clear(rgb_group *dest,rgb_group rgb,INT32 size)
 {
+  int ok = 0;
    THREADS_ALLOW();
-   while (size--) *(dest++)=rgb;
+   if(sizeof(rgb.r) == 1)
+   {
+     if(rgb.r == rgb.b && rgb.b == rgb.g)
+       (ok = 1),MEMSET(dest, rgb.r, size*sizeof(rgb_group));
+   } else {
+     if(!rgb.r && !rgb.b && !rgb.g)
+       (ok = 1),MEMSET(dest, 0, size*sizeof(rgb_group));
+   }
+   if(!ok)
+   {
+       int increment = 1;
+       rgb_group *from = dest;
+       *(dest++)=rgb;
+       for (; size > increment; size-=increment,dest+=increment,increment*=2) 
+	 MEMCPY(dest,from,increment*sizeof(rgb_group));
+       MEMCPY(dest,from,size*sizeof(rgb_group));
+   }
    THREADS_DISALLOW();
 }
 

@@ -39,6 +39,11 @@ typedef struct
    float r,g,b;
 } rgbd_group; /* use float, it gets so big otherwise... */
 
+typedef struct
+{
+   float r,g,b,alpha;
+} rgbda_group; /* use float, it gets so big otherwise... */
+
 struct image
 {
    rgb_group *img;
