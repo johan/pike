@@ -757,7 +757,7 @@ int dbm_main(int argc, char **argv)
   }
   UNSETJMP(back);
 
-  TRACE((stderr, "Exit %s...\n", num));
+  TRACE((stderr, "Exit %d...\n", num));
   
   pike_do_exit(num);
   return num; /* avoid warning */
