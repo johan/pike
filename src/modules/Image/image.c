@@ -3555,7 +3555,7 @@ CHRONO("apply_matrix, end");
 
 static void _image_outline(INT32 args,int mask)
 {
-   static unsigned char defaultmatrix[9]={0,1,0,1,1,1,0,1,0};
+   static const unsigned char defaultmatrix[9]={0,1,0,1,1,1,0,1,0};
    unsigned char *matrix=defaultmatrix;
    int height=3;
    int width=3;
@@ -3697,8 +3697,8 @@ static void _image_outline(INT32 args,int mask)
       if (mask)
 	 while (x--)
 	 {
-	    static rgb_group white={255,255,255};
-	    static rgb_group black={0,0,0};
+	    static const rgb_group white={255,255,255};
+	    static const rgb_group black={0,0,0};
 	    if (*d && s->r==bkgl.r && s->g==bkgl.g && s->b==bkgl.b)
 	       *di=white;
 	    else

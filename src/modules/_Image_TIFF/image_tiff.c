@@ -243,7 +243,7 @@ struct options
 };
 
 static int default_tiff_compression = 0;	/* Undefined value */
-static int default_tiff_compressions[] = {
+static const int default_tiff_compressions[] = {
 #ifdef COMPRESSION_LZW
   COMPRESSION_LZW,
 #endif

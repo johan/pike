@@ -27,7 +27,7 @@ struct program *math_lmatrix_program;
 #endif /* INT64 */
 struct program *math_transforms_program;
 
-static struct math_class
+static const struct math_class
 {
    char *name;
    void (*func)(void);

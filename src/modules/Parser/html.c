@@ -81,7 +81,7 @@ struct location
    int linestart;  /* byte current line started at */
 };
 
-static struct location init_pos = {0, 1, 0};
+static const struct location init_pos = {0, 1, 0};
 
 struct piece
 {
@@ -1903,7 +1903,7 @@ retryloop:
 	 {
 	    if (next_character(*destp,*d_p)=='-')
 	    {
-	       static p_wchar2 minus='-';
+	       static const p_wchar2 minus='-';
 
 	       if (what == SCAN_ARG_PUSH) 
 		  push_feed_range(feed,c,*destp,*d_p),n++;

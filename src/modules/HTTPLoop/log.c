@@ -145,7 +145,7 @@ void f_aap_log_as_commonlog_to_file(INT32 args)
   struct object *f;
   struct tm tm;
   FILE *foo;
-  static char *month[] = {
+  static const char *month[] = {
     "Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Oct", "Sep", "Nov", "Dec",
   };
