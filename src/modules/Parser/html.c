@@ -3001,7 +3001,7 @@ static newstate do_try_feed(struct parser_html_storage *this,
       }
       /* at end, entity or tag */
 
-      if (!*feed)
+      if (!*feed || cdst == dst->s->len)
       {
 	 DEBUG((stderr,"%*d do_try_feed end\n",
 		this->stack_count,this->stack_count));
