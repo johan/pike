@@ -94,6 +94,12 @@ cond([[all_constants()->_debug]],
 ]])
 test_do(_static_modules())
 test_compile_any([[import Stdio; class x { string y() { read_file("foo"); } }]])
+
+dnl
+dnl Undocumented but important behaviour...
+dnl
+test_eq([[Stdio._stdin]],[[Stdio.stdin->_fd]])
+
 test_compile_any([[
 class Bar
 {
