@@ -1205,7 +1205,7 @@ void PIKE_CONCAT(low_add_to_,NAME) (struct program_state *state,	\
   if(m == state->new_program->PIKE_CONCAT(num_,NAME)) {			\
     TYPE *tmp;								\
     if(m==MAXVARS(NUMTYPE)) {						\
-      yyerror("Too many " #NAME ".\n");					\
+      yyerror("Too many " #NAME ".");					\
       return;								\
     }									\
     m = MINIMUM(m*2+1,MAXVARS(NUMTYPE));				\
