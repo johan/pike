@@ -759,6 +759,8 @@ string get_xml() {
     buf->add("</Description>\n");
   }
 
+  if(sizeof(delayed)) error("Meesa think somoethink wrong.\n");
+
   String.Buffer ret = String.Buffer();
   ret->add("<?xml version=\"1.0\"?>\n"
 	   "<RDF\nxmlns=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
