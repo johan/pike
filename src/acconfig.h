@@ -133,9 +133,6 @@
 /* Number of possible filedesriptors */
 #define MAX_OPEN_FILEDESCRIPTORS 1024
 
-/* Value of first constant defined by byacc/bison/yacc or whatever you use. */
-#define F_OFFSET 257
-
 /* define this if #include <time.h> provides an external int timezone */
 #undef HAVE_EXTERNAL_TIMEZONE
 

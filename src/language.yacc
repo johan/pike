@@ -8,6 +8,7 @@
  * These values are used by the stack machine, and can not be directly
  * called from Pike.
  */
+%token F_OFFSET
 %token F_PREFIX_256 F_PREFIX_512 F_PREFIX_768 F_PREFIX_1024
 %token F_PREFIX_CHARX256 F_PREFIX_WORDX256 F_PREFIX_24BITX256
 %token F_POP_VALUE F_POP_N_ELEMS F_MARK F_MARK2 F_MARK_X F_LDA
