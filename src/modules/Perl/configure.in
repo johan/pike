@@ -61,6 +61,8 @@ if test "x$pike_cv_perlmod_have_perl" = xyes ; then
   AC_DEFINE(HAVE_PERL)
   AC_MSG_RESULT(yes)
 else
+  PERL_LDFLAGS=''
+  PERL_CCFLAGS=''
   AC_MSG_RESULT(no)
 fi
 
