@@ -102,19 +102,19 @@
 		  switch (lr->method)
 		  {
 		     case LAYER_MAX:
-		        res.r=max(lr->s->r,rgb.r);
-		        res.g=max(lr->s->g,rgb.g);
-		        res.b=max(lr->s->b,rgb.b);
+		        res.r=MAXIMUM(lr->s->r,rgb.r);
+		        res.g=MAXIMUM(lr->s->g,rgb.g);
+		        res.b=MAXIMUM(lr->s->b,rgb.b);
 			break;
 		     case LAYER_MIN:
-		        res.r=min(lr->s->r,rgb.r);
-		        res.g=min(lr->s->g,rgb.g);
-		        res.b=min(lr->s->b,rgb.b);
+		        res.r=MINIMUM(lr->s->r,rgb.r);
+		        res.g=MINIMUM(lr->s->g,rgb.g);
+		        res.b=MINIMUM(lr->s->b,rgb.b);
 			break;
 		     case LAYER_ADD:
-		        res.r=(unsigned char)max(255,(lr->s->r+rgb.r));
-		        res.g=(unsigned char)max(255,(lr->s->g+rgb.g));
-		        res.b=(unsigned char)max(255,(lr->s->b+rgb.b));
+		        res.r=(unsigned char)MAXIMUM(255,(lr->s->r+rgb.r));
+		        res.g=(unsigned char)MAXIMUM(255,(lr->s->g+rgb.g));
+		        res.b=(unsigned char)MAXIMUM(255,(lr->s->b+rgb.b));
 			break;
 		     case LAYER_MULT:
 		        res.r=(unsigned char)((lr->s->r*rgb.r)*q);

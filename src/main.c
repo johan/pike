@@ -65,12 +65,14 @@ void main(int argc, char **argv, char **env)
 
   ARGV=argv;
 
+#ifndef __NT__
   /* Close extra fds (if any) */
   for (e=3; e < MAX_OPEN_FILEDESCRIPTORS; e++) {
     do {
       num = close(e);
     } while ((num < 0) && (errno == EINTR));
   }
+#endif
 
 #ifdef HAVE_SETLOCALE
 #ifdef LC_NUMERIC

@@ -110,6 +110,10 @@ Kerningtable types:
 #include <netinet/in.h>
 #endif
 
+#ifdef HAVE_WINSOCK_H
+#include <winsock.h>
+#endif
+
 #include <errno.h>
 
 #include "config.h"
@@ -133,6 +137,7 @@ Kerningtable types:
 static struct program *font_program;
 extern struct program *image_program;
 
+#undef THIS
 #define THIS (*(struct font **)(fp->current_storage))
 #define THISOBJ (fp->current_object)
 
