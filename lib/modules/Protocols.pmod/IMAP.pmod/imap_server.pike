@@ -3,7 +3,7 @@
  * $Id$
  */
 
-mapping unauth_commands =
+constant unauth_commands =
 ([ "noop" : .requests.noop,
    "capability" : .requests.capability,
    "logout" : .requests.logout,
@@ -11,7 +11,7 @@ mapping unauth_commands =
    "authenticate" : .requests.authenticate
 ]);
 
-mapping auth_commands =
+constant auth_commands =
 ([ "noop" : .requests.noop,
    "logout" : .requests.logout,
    "capability" : .requests.capability,
@@ -28,7 +28,7 @@ mapping auth_commands =
    "append" : .requests.append
 ]);
 
-mapping select_commands =
+constant select_commands =
 ([ "noop" : .requests.noop,
    "logout" : .requests.logout,
    "capability" : .requests.capability,
@@ -52,6 +52,8 @@ mapping select_commands =
    "copy" : .requests.copy,
    "uid" : .requests.uid
 ]);
+
+constant all_commands = unauth_commands | auth_commands | select_commands;
 
 class connection
 {
