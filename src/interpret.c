@@ -801,7 +801,7 @@ static int eval_instruction(unsigned char *pc)
       CASE(F_ARRAY_LVALUE);
       f_aggregate(GET_ARG()*2);
       sp[-1].u.array->flags |= ARRAY_LVALUE;
-      sp[-1].u.array->type_field |= BIT_UNFINISHED;
+      sp[-1].u.array->type_field |= BIT_UNFINISHED | BIT_ANY;
       sp[0]=sp[-1];
       sp[-1].type=T_ARRAY_LVALUE;
       sp++;
