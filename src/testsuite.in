@@ -7168,6 +7168,10 @@ test_true(intp(__BUILD__))
 test_true(intp(__REAL_BUILD__))
 test_eq(__PIKE__,1)
 
+test_eq( compile_string("string a=#\"a\nb\";")()->a, "a\nb" )
+test_eq( compile_string("string a=#\"a\r\nb\";")()->a, "a\nb" )
+test_eq( compile_string("string a=#\"a\n\rb\";")()->a, "a\nb" )
+
 // #define
 test_any([[
 #define FOOa 1
