@@ -84,7 +84,7 @@ extern int throw_severity;
               "Last SET_ONERROR is from %s:%d\n", \
               recoveries->onerror->file, recoveries->onerror->line ); \
       } else { \
-        fatal("UNSET_ONERROR out of sync.\n"); \
+        fatal("UNSET_ONERROR out of sync. No recoveries left.\n"); \
       } \
     } \
     recoveries->onerror=(X).previous; \
