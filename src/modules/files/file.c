@@ -14,6 +14,7 @@ RCSID("$Id$");
 #include "svalue.h"
 #include "stralloc.h"
 #include "array.h"
+#include "mapping.h"
 #include "object.h"
 #include "pike_macros.h"
 #include "backend.h"
