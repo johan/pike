@@ -85,6 +85,8 @@ module.a: $(OBJS)
 	-@RANLIB@ module.a
 	if test -f linker_options ; then touch linker_options ; else :; fi
 
+$(OBJS) : $(MODULE_BASE)/dynamic_module_makefile
+
 clean:
 	-rm -f *.o *.a *.so module.so module.pmod linker_options modlist_headers modlist_segment module_testsuite
 	for a in '' $(MODULE_SUBDIRS) ; do if test "x$$a" = "x"; then :; else echo cleaning $$a ; ( cd $$a ; $(MAKE) $(MAKE_FLAGS) clean ) ; fi ; done

@@ -63,6 +63,8 @@ module.so: $(OBJS)  $(MODULE_ARCHIVES)
 	$(TMP_BINDIR)/smartlink "@LDSHARED@" $(LDFLAGS) -o module.@SO@ $(OBJS) $(MODULE_ARCHIVES) $(MODULE_LDFLAGS) $(LIBGCC) -lc $(LIBGCC)
 	if test @SO@ != so ; then mv module.@SO@ module.so ; else :; fi
 
+$(OBJS) : $(MODULE_BASE)/dynamic_module_makefile
+
 clean:
 	-rm -f *.o *.a *.so module.so linker_options modlist_headers modlist_segment module_testsuite
 	for a in '' $(MODULE_SUBDIRS) ; do if test "x$$a" = "x"; then :; else echo cleaning $$a ; ( cd $$a ; $(MAKE) $(MAKE_FLAGS) clean ) ; fi ; done
