@@ -212,7 +212,7 @@ extern int fd_type[MAX_OPEN_FILEDESCRIPTORS];
 #define S_IFSOCK 0140000
 #endif
 
-#else // HAVE_WINSOCK
+#else /* HAVE_WINSOCK */
 
 
 typedef int FD;
@@ -321,6 +321,6 @@ typedef struct my_fd_set_s my_fd_set;
 #define SEEK_END 2
 #endif
 
-#endif // Don't HAVE_WINSOCK
+#endif /* Don't HAVE_WINSOCK */
 
-#endif // FDLIB_H
+#endif /* FDLIB_H */
