@@ -510,6 +510,7 @@ constant syntax_decode_fns = ([
   SYNTAX_LDAP_SYNTAX_DESCR:		utf8_to_string,
   SYNTAX_DIT_STRUCTURE_RULE_DESCR:	utf8_to_string,
 ]);
+
 //! @decl constant mapping(string:function(string:string)) syntax_decode_fns;
 //!
 //! Mapping containing functions to decode charsets in syntaxes where
@@ -521,6 +522,7 @@ constant syntax_decode_fns = ([
 //! @[Protocols.LDAP.client.result] functions.
 
 constant syntax_encode_fns = ([]); // Filled in from syntax_decode_fns by create().
+
 //! @decl constant mapping(string:function(string:string)) syntax_encode_fns;
 //!
 //! Mapping containing the reverse functions from @[syntax_decode_fns].
