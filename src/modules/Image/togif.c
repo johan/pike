@@ -35,6 +35,7 @@ old GIF API compat stuff
 
 #include "image.h"
 #include "colortable.h"
+#include "encodings/gif.h"
 
 #define THIS ((struct image *)(fp->current_storage))
 #define THISOBJ (fp->current_object)
@@ -187,7 +188,7 @@ static void img_gif_add(INT32 args,int fs,int lm,
    }
 
    if (fs) image_colortable_internal_floyd_steinberg(
-                     get_storage(ncto,image_colortable_program));
+         (struct neo_colortable *)get_storage(ncto,image_colortable_program));
 
    pop_n_elems(args);
 
@@ -203,7 +204,8 @@ static void img_gif_add(INT32 args,int fs,int lm,
    {
       unsigned char trd;
       
-      image_colortable_index_8bit_image(get_storage(ncto,
+      image_colortable_index_8bit_image((struct neo_colortable *)
+					get_storage(ncto,
 						    image_colortable_program),
 					transparent,&trd,1,1);
       
