@@ -2301,7 +2301,7 @@ PMOD_EXPORT int string_to_svalue_inumber(struct svalue *r,
 
 PMOD_EXPORT int wide_string_to_svalue_inumber(struct svalue *r,
 					      void * str,
-					      void **ptr,
+					      void *ptr,
 					      int base,
 					      ptrdiff_t maxlength,
 					      int shift)
@@ -2312,7 +2312,7 @@ PMOD_EXPORT int wide_string_to_svalue_inumber(struct svalue *r,
 				   &tmp,
 				   base,
 				   maxlength);
-  if(ptr) *ptr=(char *)tmp.ptr;
+  if(ptr) *(p_wchar0 **)ptr=tmp.ptr;
   return ret;
 }
 

@@ -287,7 +287,7 @@ PMOD_EXPORT int string_to_svalue_inumber(struct svalue *r,
 			     int maxlength);
 PMOD_EXPORT int wide_string_to_svalue_inumber(struct svalue *r,
 					      void * str,
-					      void **ptr,
+					      void *ptr,
 					      int base,
 					      ptrdiff_t maxlength,
 					      int shift);
