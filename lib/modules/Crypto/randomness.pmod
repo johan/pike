@@ -30,7 +30,7 @@ static RandomSource global_arcfour;
 static int(0..1) goodseed;
 
 #ifdef __NT__
-static nt_random_string(int len) {
+static string nt_random_string(int len) {
   object ctx = Crypto.nt.CryptAcquireContext(0, 0, Crypto.nt.PROV_RSA_FULL,
 					     Crypto.nt.CRYPT_VERIFYCONTEXT
 					     /*|Crypto.nt.CRYPT_SILENT*/);
