@@ -1482,7 +1482,7 @@ void fix_type_field(node *n)
       }
       else if(max_correct_args == args)
       {
-	my_yyerror("To few arguments to %s.\n",name);
+	my_yyerror("Too few arguments to %s.\n",name);
       }else{
 	my_yyerror("Bad argument %d to %s.",
 		   max_correct_args+1, name);
