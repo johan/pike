@@ -2,6 +2,11 @@
  *
  */
 
+//! IDEA CBC.
+//!
+//! @seealso
+//!   @[cbc], @[idea]
+
 #pike __REAL_VERSION__
 
 inherit Crypto.cbc : cbc;
