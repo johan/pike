@@ -1183,7 +1183,7 @@ opt_int_range: /* Empty */
   | '(' number_or_minint F_DOT_DOT number_or_maxint ')'
   {
     /* FIXME: Check that $4 is >= $2. */
-    if($2->token == F_CONSTANT && $2->u.sval.type == T_INT)
+    if($4->token == F_CONSTANT && $4->u.sval.type == T_INT)
     {
       push_type_int($4->u.sval.u.integer);
     }else{
