@@ -8,7 +8,7 @@
 
 array(string) find_root(string path) {
   if(file_stat(path+"/.autodoc")) {
-    // Note .autodoc files are space-separated to allow for mudulenames like
+    // Note .autodoc files are space-separated to allow for modulenames like
     //      "7.0".
     return (Stdio.read_file(path+"/.autodoc")/"\n")[0]/" " - ({""});
   }
