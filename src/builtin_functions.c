@@ -2539,7 +2539,7 @@ void f_splice(INT32 args)
 
   for(i=0;i<args;i++)
     if (sp[i-args].type!=T_ARRAY) 
-      error("Illegal argument to splice.\n");
+      error("Illegal argument %d to splice.\n", (i+1));
     else
       if (sp[i-args].u.array->size < size)
 	size=sp[i-args].u.array->size;
