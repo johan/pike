@@ -66,6 +66,21 @@ struct svalue **mark_sp; /* Current position */
 struct svalue **mark_stack; /* Start of stack */
 int mark_stack_malloced = 0;
 
+void push_sp_mark()
+{
+  if(mark_sp == mark_stack + stack_size)
+    error("No more mark stack!\n");
+  *mark_sp++=sp;
+}
+int pop_sp_mark()
+{
+#ifdef DEBUG
+  if(mark_sp < mark_stack)
+    fatal("Mark stack underflow!\n");
+#endif
+  return sp - *--mark_sp;
+}
+
 struct frame *fp; /* frame pointer */
 
 void init_interpreter()

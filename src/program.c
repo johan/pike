@@ -236,6 +236,8 @@ void start_new_program()
     previous_program_state->fake_program.inherits[0].prog=
       &previous_program_state->fake_program;
 
+  init_type_stack();
+
   for(e=0; e<NUM_AREAS; e++) low_reinit_buf(areas + e);
   low_reinit_buf(& inherit_names);
   low_reinit_buf(& used_modules);
@@ -563,6 +565,8 @@ struct program *end_program()
     free_string(s);
     init_node=0;
   }
+
+  exit_type_stack();
 
   if (num_parse_error > 0)
   {
