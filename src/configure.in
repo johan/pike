@@ -1325,7 +1325,8 @@ else
 
   case "x$pike_cv_sys_os" in
     xOSF1*)
-      LIBS="${OLDLIBS} -lpthread -lmach -lexc -lc"
+#      LIBS="${OLDLIBS} -lpthread -lmach -lexc -lc"
+      LIBS="${OLDLIBS} -lpthread -lmach -lexc"
     ;;
  
     xBSD/OS*)
