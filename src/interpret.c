@@ -638,7 +638,6 @@ static void eval_instruction(unsigned char *pc)
       fp->locals[instr].u.integer=0;
       break;
 
-
       CASE(F_INC_LOCAL);
       instr=GET_ARG();
       if(fp->locals[instr].type != T_INT) error("Bad argument to ++\n");
