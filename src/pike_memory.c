@@ -21,9 +21,7 @@ char *strdup(const char *str)
     int len = strlen(str)+1;
 
     res = xalloc(len);
-    if (res) {
-      MEMCPY(res, str, len);
-    }
+    MEMCPY(res, str, len);
   }
   return(res);
 }
@@ -596,7 +594,8 @@ void memfill(char *to,
 char *debug_xalloc(long size)
 {
   char *ret;
-  if(!size) return 0;
+  if(!size) 
+     error("Allocating zero bytes.\n");
 
   ret=(char *)malloc(size);
   if(ret) return ret;
