@@ -20,9 +20,13 @@
 extern unsigned INT32 sparc_codegen_state;
 extern int sparc_last_pc;
 
-#define SPARC_CODEGEN_FP_IS_SET	1
-#define SPARC_CODEGEN_SP_IS_SET	2
-#define SPARC_CODEGEN_PC_IS_SET	32
+#define SPARC_CODEGEN_FP_IS_SET			1
+#define SPARC_CODEGEN_SP_IS_SET			2
+#define SPARC_CODEGEN_IP_IS_SET 		4
+#define SPARC_CODEGEN_PC_IS_SET			8
+#define SPARC_CODEGEN_MARK_SP_IS_SET		16
+#define SPARC_CODEGEN_SP_NEEDS_STORE		32
+#define SPARC_CODEGEN_MARK_SP_NEEDS_STORE	64
 
 #define FLUSH_CODE_GENERATOR_STATE()	do {	\
     sparc_codegen_state = 0;			\
