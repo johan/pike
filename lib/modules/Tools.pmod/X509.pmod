@@ -198,13 +198,17 @@ string make_selfsigned_rsa_certificate(object rsa, int ttl, array name,
   Sequence tbs = make_tbs(dn, rsa_sha1_algorithm,
 			  dn, keyinfo,
 			  serial, ttl, extensions);
-  
+
   return Sequence(
     ({ tbs,
        rsa_sha1_algorithm,
        BitString(rsa_sign_digest(rsa, Identifiers.sha1_id,
-				 Crypto.sha()->update(tbs->get_der())
-				 ->digest())) }) )->get_der();
+#if constant(Crypto.SHA)
+				 Crypto.SHA.hash(tbs->get_der())
+#else
+				 Crypto.sha()->update(tbs->get_der())->digest()
+#endif
+				 )) }) )->get_der();
 }
 
 //!
@@ -226,15 +230,27 @@ class rsa_verifier
   {
     if (algorithm->get_der() == rsa_md5_algorithm->get_der())
       return rsa_verify_digest(rsa, Identifiers.md5_id,
+#if constant(Crypto.MD5)
+			       Crypto.MD5.hash(msg),
+#else
 			       Crypto.md5()->update(msg)->digest(),
+#endif
 			       signature);
     if (algorithm->get_der() == rsa_sha1_algorithm->get_der())
       return rsa_verify_digest(rsa, Identifiers.sha1_id,
+#if constant(Crypto.SHA)
+			       Crypto.SHA.hash(msg),
+#else
 			       Crypto.sha()->update(msg)->digest(),
+#endif
 			       signature);
     if (algorithm->get_der() == rsa_md2_algorithm->get_der())
       return rsa_verify_digest(rsa, Identifiers.md2_id,
+#if constant(Crypto.MD2)
+			       Crypto.MD2.hash(msg),
+#else
 			       Crypto.md2()->update(msg)->digest(),
+#endif
 			       signature);
     return 0;
   }
