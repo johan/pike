@@ -89,8 +89,11 @@ configure: src/configure builddir
 	  else \
 	    echo Running $$srcdir/configure $$configureargs in $$builddir; \
 	    if [ -f /bin/bash  ] ; then CONFIG_SHELL=/bin/bash ;  fi ;\
-	    CONFIG_SITE=x $${CONFIG_SHELL-/bin/sh} \
-	      "$$srcdir"/configure $$configureargs || exit $$?; \
+	    runconfigure () { \
+	      CONFIG_SITE=x $${CONFIG_SHELL-/bin/sh} \
+		"$$srcdir"/configure "$$@" || exit $$?; \
+	    }; \
+	    eval runconfigure $$configureargs; \
 	    echo "$$configureargs" > .configureargs; \
 	    if test "x$$oldconfigureargs" = "x$$configureargs"; then :; \
 	    else \
