@@ -1,3 +1,4 @@
+/* $Id$ */
 
 #define MAX_NUMCOL 32768
 #define QUANT_MAP_BITS 4

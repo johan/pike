@@ -1,3 +1,5 @@
+/* $Id$ */
+
 /*
 
 quant, used by image when making gif's (mainly)

@@ -1,3 +1,5 @@
+/* $Id$ */
+
 /*
 
 lzw, used by togif

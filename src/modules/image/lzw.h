@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #define GIF_LZW
 
 #ifdef GIF_LZW
