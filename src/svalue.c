@@ -847,19 +847,26 @@ void describe_svalue(struct svalue *s,int indent,struct processing *p)
       if(sp[-1].type == T_FUNCTION || sp[-1].type == T_OBJECT)
       {
 	push_int('O');
-	apply_svalue(sp-2, 1);   /* FIXME: lfun optimisation? */
+	f_aggregate_mapping(0);					      
+	apply_svalue(sp-3, 2);   /* FIXME: lfun optimisation? */
 
-	if(sp[-1].type == T_STRING)
+	if(!IS_ZERO(sp-1))
 	{
-	  struct pike_string *str = sp[-1].u.string;
-	  int i;
+	   struct pike_string *str;
+	   int i;
+	   if(sp[-1].type != T_STRING)
+	   {
+	      pop_stack();
+	      push_text("(object returned illegal value from _sprintf)");
+	   }
+	   str=sp[-1].u.string;
 
-	  /* FIXME: Is this the way to copy a string? /Noring */
-	  for(i = 0; i < str->len; i++)
-	    my_putchar(INDEX_CHARP(str->str, i, str->size_shift));
+	   /* FIXME: Is this the way to copy a string? /Noring */
+	   for(i = 0; i < str->len; i++)
+	      my_putchar(INDEX_CHARP(str->str, i, str->size_shift));
 
-	  pop_n_elems(2); 
-	  break;
+	   pop_n_elems(2); 
+	   break;
 	}
 
 	pop_stack();
