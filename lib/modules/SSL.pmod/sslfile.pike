@@ -207,7 +207,9 @@ private void ssl_close_callback(mixed id)
 #endif
   if (close_callback)
     close_callback(socket::query_id());
-  die(closing ? 1 : -1);
+  if (this_object()) {
+    die(closing ? 1 : -1);
+  }
 }
 
 void set_accept_callback(function(mixed:void) a)
