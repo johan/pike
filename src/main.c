@@ -257,6 +257,10 @@ int dbm_main(int argc, char **argv)
   node_hash.size = 32831;
 #endif /* SHARED_NODES */
 
+#ifdef HAVE_TZSET
+  tzset();
+#endif /* HAVE_TZSET */
+
 #ifdef HAVE_SETLOCALE
 #ifdef LC_NUMERIC
   setlocale(LC_NUMERIC, "C");
