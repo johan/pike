@@ -16,7 +16,7 @@ PMOD_EXPORT extern int default_t_flag;
 
 #ifdef TRY_USE_MMX
 extern int try_use_mmx;
-#endif
+#endif /* TRY_USE_MMX */
 
 /* Debug options */
 #define DEBUG_SIGNALS 1
@@ -44,4 +44,4 @@ void init_main(void);
 void low_exit_main(void);
 /* Prototypes end here */
 
-#endif
+#endif /* !MAIN_H */
