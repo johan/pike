@@ -312,8 +312,8 @@ void assemble(void)
 	fatal("Duplicate label!\n");
 #endif
       labels[c->arg] = DO_NOT_WARN((INT32)PIKE_PC);
-      UPDATE_PC();
       FLUSH_CODE_GENERATOR_STATE();
+      UPDATE_PC();
       break;
 
     case F_VOLATILE_RETURN:
