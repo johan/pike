@@ -45,10 +45,10 @@ void gluLookAt(float|object eye,float|object center,float|object up,
 			     @(z->vect()), 0.0,
 			     0.0, 0.0, 0.0, 1.0 })/4)*({}); 
   
-//   glMultMatrix( m );
+  glMultMatrix( m );
   
   /* Translate Eye to Origin */
-//   glTranslate( ((array)(-1*eye))[0] );
+  glTranslate( ((array)(-1*eye))[0] );
 }  
 
 void gluOrtho2D(float left, float right,
