@@ -78,8 +78,11 @@ void close()
 #endif
 
   if (is_closed) return;
-
   is_closed = 1;
+
+  if (sizeof (write_buffer))
+    ssl_write_callback(socket->query_id());
+
   send_close();
   queue_write();
   read_callback = 0;
