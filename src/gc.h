@@ -45,7 +45,7 @@ extern double gc_average_slowness;
  * Put a cap on that threshold to avoid very small and large
  * intervals. */
 #define GC_MIN_ALLOC_THRESHOLD 1000
-#define GC_MAX_ALLOC_THRESHOLD 10000000
+#define GC_MAX_ALLOC_THRESHOLD 2000000000
 
 extern struct pike_queue gc_mark_queue;
 extern INT32 num_objects;
