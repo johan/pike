@@ -1950,6 +1950,14 @@ PIKECLASS multi_string_replace
       Pike_error("Replace must have equal-sized from and to arrays.\n");
     }
 
+    if (!from->size) {
+      /* Enter no-op mode. */
+      THIS->sz = 0;
+      pop_n_elems(args);
+      push_int(0);
+      return;
+    }
+
     if( (from->type_field & ~BIT_STRING) &&
 	(array_fix_type_field(from) & ~BIT_STRING) )
       SIMPLE_BAD_ARG_ERROR("Replace", 1, "array(string)");
