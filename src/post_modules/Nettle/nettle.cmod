@@ -381,6 +381,12 @@ PIKECLASS CBC
     MEMSET(THIS->iv, 0, THIS->block_size);
   }
 
+  /*! @decl string name()
+   */
+  PIKEFUN string name() {
+    push_constant_text("CBC");
+  }
+
   /*! @decl int block_size()
    */
   PIKEFUN int block_size() {
@@ -500,6 +506,12 @@ PIKECLASS Proxy {
     THIS->backlog = (unsigned char *)xalloc(THIS->block_size);
     THIS->backlog_len = 0;
     MEMSET(THIS->backlog, 0, THIS->block_size);
+  }
+
+  /*! @decl string name()
+   */
+  PIKEFUN string name() {
+    push_constant_text("Proxy");
   }
 
   /*! @decl int block_size()
