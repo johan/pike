@@ -7547,8 +7547,18 @@ PMOD_EXPORT void change_compiler_compatibility(int major, int minor)
 
 void make_program_executable(struct program *p)
 {
+#ifdef _WIN32
+  DWORD old_prot;
+  VirtualProtect((void *)p->program, p->num_program*sizeof(p->program[0]),
+                 PAGE_EXECUTE_READWRITE, &old_prot);
+
+#else  /* _WIN32 */
+
   mprotect((void *)p->program, p->num_program*sizeof(p->program[0]),
 	   PROT_EXEC | PROT_READ | PROT_WRITE);
+
+#endif /* _WIN32 */
+
 #ifdef FLUSH_INSTRUCTION_CACHE
   FLUSH_INSTRUCTION_CACHE(p->program,
 			  p->num_program*sizeof(p->program[0]));

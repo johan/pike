@@ -14,6 +14,11 @@
 #include "object.h"
 #include "builtin_functions.h"
 
+/* This is defined on windows */
+#ifdef REG_NONE
+#undef REG_NONE
+#endif
+
 enum ia32_reg {REG_EAX = 0, REG_EBX = 3, REG_ECX = 1, REG_EDX = 2, REG_NONE = 4};
 
 #define REG_BITMASK ((1 << REG_NONE) - 1)
