@@ -1310,7 +1310,7 @@ static void remove_location(struct memhdr *mh, LOCATION location)
   struct memloc *ml,**prev;
   unsigned long l;
 
-#ifndef __NT__
+#if !defined(__NT__) && defined(PIKE_THREADS)
   if(!mt_trylock(& debug_malloc_mutex))
     fatal("remove_location running unlocked!\n");
 #endif
