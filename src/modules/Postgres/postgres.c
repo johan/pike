@@ -149,6 +149,7 @@ static void f_create (INT32 args)
 			if(sp[-args].type==T_STRING && sp[-args].u.string->len)
 				host=sp[-args].u.string->str;
 		case 0:
+			;
 	}
 #if 0
 	/* Old arguments-checking code */
