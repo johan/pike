@@ -273,11 +273,11 @@ xenofarm:
 	    cp $$builddir/$$f build/xenofarm/configlog`echo $$f|tr '[/]' '[_]'`.txt; \
 	  done; \
 	else :; fi
-	-if test -f "build/xenofarm/exportlog.txt"; then \
-	  if test -f "$(BUILDDIR)/Pike-v"*; then \
-	    cp "$(BUILDDIR)/Pike-v"* build/xenofarm/; \
-	  else :; fi; \
-	else \
+	-if test ! -f "build/xenofarm/exportlog.txt"; then \
+#	  if test -f "$(BUILDDIR)/Pike-v"*; then \
+#	    cp "$(BUILDDIR)/Pike-v"* build/xenofarm/; \
+#	  else :; fi; \
+#	else \
 	  cp "$(BUILDDIR)/testsuite" build/xenofarm/testsuite.txt; \
 	fi
 	-find . -name "core" -exec \
