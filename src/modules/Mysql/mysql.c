@@ -99,12 +99,12 @@ RCSID("$Id$");
 /*! @module Mysql
  *!
  *! This module enables access to the Mysql database from within Pike.
- *! Use @[Sql.sql] for general database access.
+ *! Use @[Sql.Sql] for general database access.
  *!
  *! Mysql is available from @url{http://www.mysql.com@}.
  *!
  *! @seealso
- *!  @[Mysql.mysql], @[Mysql.mysql_result], @[Sql.sql]
+ *!  @[Mysql.mysql], @[Mysql.mysql_result], @[Sql.Sql]
  */
 
 /*! @class mysql
@@ -116,7 +116,7 @@ RCSID("$Id$");
  *! Mysql is available from @url{http://www.mysql.com@}.
  *!
  *! @seealso
- *!   @[Mysql.result], @[Sql.sql]
+ *!   @[Mysql.result], @[Sql.Sql]
  */
 
 struct program *mysql_program = NULL;
