@@ -122,11 +122,12 @@ void signal_watchdog()
 }
 #endif
 
-int main(int argc, string *argv)
+int main(int argc, array(string) argv)
 {
   int e, verbose, successes, errors, t, check;
   int skipped;
-  string *tests,tmp;
+  array(string) tests;
+  string tmp;
   program testprogram;
   int start, fail, mem;
   int loop=1;
@@ -144,7 +145,7 @@ int main(int argc, string *argv)
   }
 #endif
 
-  string *args=backtrace()[0][3];
+  array(string) args=backtrace()[0][3];
   array(string) testsuites=({});
   args=args[..sizeof(args)-1-argc];
   add_constant("RUNPIKE",Array.map(args,Process.sh_quote)*" ");

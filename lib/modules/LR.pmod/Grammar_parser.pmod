@@ -387,7 +387,7 @@ int|object(parser) make_parser_from_file(string fname, object|void m)
 /*
  * Syntax-checks and compiles the grammar files
  */
-int main(int argc, string *argv)
+int main(int argc, array(string) argv)
 {
   if (argc == 1) {
     werror(sprintf("Usage:\n\t%s <files>\n", argv[0]));

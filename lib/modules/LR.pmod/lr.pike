@@ -181,7 +181,7 @@ class scan {
 
 object(scan) scanner = scan();
 
-int main(int argc, string *argv)
+int main(int argc, array(string) argv)
 {
   mixed result;
 
