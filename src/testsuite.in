@@ -2673,9 +2673,16 @@ test_any([[
 test_any([[
    int x=1;
    void for10(function f) { for(int e=0;e<10;e++) f(); };
-   for10() { x++; }
+   for10() { x++; };
    return x;
 ]], 11)
+
+test_compile_error([[
+   int x=1;
+   void for10(function f) { for(int e=0;e<10;e++) f(); };
+   for10() { x++; }
+   return x;
+]])
 
 test_any([[
   int x;

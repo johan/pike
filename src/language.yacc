@@ -2982,7 +2982,7 @@ optional_block: ';' /* EMPTY */ { $$=0; }
     $<number>1=Pike_compiler->num_used_modules;
     $<number>$=Pike_compiler->compiler_frame->current_number_of_locals;
   }
-  statements end_block
+  statements end_block expected_semicolon
   {
     struct pike_type *type;
     char buf[40];
