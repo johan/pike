@@ -1431,7 +1431,6 @@ CHAROPT2(								 \
 		  MEMSET(set.c, 1, sizeof(set.c));			 \
 		  for(e='0';e<='9';e++) set.c[e]=0;			 \
 		  set.c['-']=0;						 \
-		  set.c['x']=0;						 \
 		  goto match_set;					 \
 									 \
 		case 'f':						 \
