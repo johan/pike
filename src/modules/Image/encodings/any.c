@@ -43,7 +43,7 @@ void image_pnm_decode(INT32 args);
 void image_xwd__decode(INT32 args);
 void image_ilbm_decode(INT32 args);
 void image_ras_decode(INT32 args);
-void img_pvr_f_decode_header(INT32 args);
+void image_pvr_f_decode_header(INT32 args);
 
 /*
 **! method mapping _decode(string data)
@@ -151,7 +151,7 @@ void image_any__decode(INT32 args)
       case CHAR2('P','V'):
       case CHAR2('G','B'):
 	 /* PVR */
-	 img_pvr_f__decode(1);
+	 image_pvr_f__decode(1);
 	 return;
 
       case CHAR2(0,0):
@@ -261,7 +261,7 @@ void image_any_decode_header(INT32 args)
       case CHAR2('P','V'):
       case CHAR2('G','B'):
 	 /* PVR */
-	 img_pvr_f_decode_header(1);
+	 image_pvr_f_decode_header(1);
 	 return;
 
       case CHAR2(0,0):
