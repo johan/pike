@@ -481,6 +481,13 @@ return mktime(0,0,0,1,0,70,0,0);
 ]], 0)
 
 test_any( [[
+// bug [3270] ------------------------------------------------------------
+// http://community/crunch/show_bug.cgi?id=3270
+// Tue, 15 Oct 2002 09:38:32 GMT
+return mktime(32, 38, 9, 15, 9, 102, 0, 0);
+]], 1034674712)
+
+test_any( [[
 // bug [2830] ------------------------------------------------------------
 // http://community/crunch/show_bug.cgi?id=2830
 class User{};
