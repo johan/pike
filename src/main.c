@@ -31,6 +31,8 @@ RCSID("$Id$");
 #include <sys/resource.h>
 #endif
 
+#define VERSION		"Pike v0.4pl2"
+
 char *master_file;
 
 int d_flag=0;
@@ -246,6 +248,12 @@ void main(int argc, char **argv, char **env)
   f_exit(1);
 }
 
+/* string __version() */
+static void f___version(INT32 args)
+{
+  pop_n_elems(args);
+  push_text(VERSION);
+}
 
 void init_main_efuns()
 {
@@ -257,6 +265,7 @@ void init_main_efuns()
   init_signals();
   th_init();
   init_dynamic_load();
+  add_efun("__version", f___version, "function(:string)", 0);
 }
 
 void init_main_programs()
