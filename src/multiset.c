@@ -14,8 +14,6 @@
  * Created by Martin Stjernholm 2001-05-07
  */
 
-RCSID("$Id$");
-
 #include "builtin_functions.h"
 #include "gc.h"
 #include "interpret.h"
@@ -26,8 +24,13 @@ RCSID("$Id$");
 #include "rbtree_low.h"
 #include "security.h"
 #include "svalue.h"
-
 #include "block_alloc.h"
+
+RCSID("$Id$");
+
+/* FIXME: Optimize finds and searches on type fields? (But not when
+ * objects are involved!) Well.. Although cheap I suspect it pays off
+ * so extremely seldom that it isn't worth it. /mast */
 
 #include <assert.h>
 
