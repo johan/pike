@@ -337,7 +337,7 @@ void dump2(array(array(array(string))) data,int ind)
     mapping(string:array(array(array(string)))) d = values(foo)[maxe];
     array(string) a = indices(d);
     array(array(array(array(string)))) b = values(d);
-
+    sort(a,b);
 
     /* foo: variable
      * a[x] : condition
