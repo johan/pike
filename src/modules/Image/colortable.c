@@ -3505,21 +3505,23 @@ void image_colortable_index_32bit(INT32 args)
    if (!src->img) 
       SIMPLE_BAD_ARG_ERROR("Colortable.index",1,"non-empty image object");
 
-   ps=begin_shared_string(src->xsize*src->ysize*4);
-   ps->size_shift=2;
-   ps->len/=4;
+   if (sizeof(unsigned INT32)!=4)
+      fatal("INT32 isn't 32 bits (sizeof is %d)\n",sizeof(unsigned INT32));
+
+   ps=begin_wide_shared_string(src->xsize*src->ysize,2);
 
    if (!image_colortable_index_32bit_image(THIS,src->img,
-					   (unsigned short *)ps->str,
+					   (unsigned INT32 *)ps->str,
 					   src->xsize*src->ysize,src->xsize))
    {
       free_string(end_shared_string(ps));
       SIMPLE_BAD_ARG_ERROR("Colortable.index",1,"non-empty image object");
+      return;
    }
 
    pop_n_elems(args);
 
-   push_string(ps);
+   push_string(end_shared_string(ps));
 }
 
 /*
