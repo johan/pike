@@ -92,11 +92,8 @@ class _file {
 			    else
 			      return 1;
 			  });
-      if(write_mode) {
-	if(!has_value(mode, 'a'))
-	  mode += "t";
-	mode += "c";
-      }
+      if(write_mode)
+	mode += "c"+(has_value(mode, 'a')? "w":"t");
     }
     file_pos = 0;
     crc = crc32("");
