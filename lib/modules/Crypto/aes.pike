@@ -8,5 +8,11 @@
 
 #pike __REAL_VERSION__
 
-/* aka rijndael */
+//! Previously known as @[Crypto.rijndael].
 inherit Crypto.rijndael;
+
+//! Returns the string @tt{"AES"@}.
+string name()
+{
+  return "AES";
+}
