@@ -2552,9 +2552,10 @@ static void f_gettimeofday(INT32 args)
 
 static void f_getrusage(INT32 args)
 {
-   pop_n_elems(args);
    pike_rusage_t rusage_values;
    int n=0;
+
+   pop_n_elems(args);
    
    if (!pike_get_rusage(rusage_values))
       error("error in getrusage call\n");
