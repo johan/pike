@@ -23,6 +23,12 @@
 /* Define if you have OSF1 style gethostbyname_r. */
 #undef HAVE_OSF1_GETHOSTBYNAME_R
 
+/* Define if you have solaris style getservbyname_r. */
+#undef HAVE_SOLARIS_GETSERVBYNAME_R
+ 
+/* Define if you have OSF1 style getservbyname_r. */
+#undef HAVE_OSF1_GETSERVBYNAME_R
+
 /* Define if you have solaris style getspnam_r. */
 #undef HAVE_SOLARIS_GETSPNAM_R
  

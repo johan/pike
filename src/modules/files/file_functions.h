@@ -53,8 +53,8 @@ FILE_FUNC("open",file_open,"function(string,string,void|int:int)")
   FILE_FUNC("pipe",file_pipe,"function(void|int:object)")
 
   FILE_FUNC("set_buffer",file_set_buffer,"function(int,string|void:void)")
-  FILE_FUNC("open_socket",file_open_socket,"function(int|void,string|void:int)")
-  FILE_FUNC("connect",file_connect,"function(string,int:int)|function(string,int,string,int:int)")
+  FILE_FUNC("open_socket",file_open_socket,"function(int|string|void,string|void:int)")
+  FILE_FUNC("connect",file_connect,"function(string,int|string:int)|function(string,int|string,string,int|string:int)")
 #ifdef HAVE_SYS_UN_H
   FILE_FUNC("connect_unix",file_connect_unix,"function(string:int)")
 #endif /* HAVE_SYS_UN_H */
