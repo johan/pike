@@ -150,12 +150,6 @@ int main(int argc, char **argv)
   fi
 ])
 
-if test $done = no; then
-  $3
-  :
-fi
-
-])
 
 if test x$with_gmp = xyes ; then
   AC_CHECK_GMP(gmp2,gmp2/gmp.h,[
