@@ -88,9 +88,6 @@ void dhe_dss_mode()
 array(int) preferred_compressors =
 ({ COMPRESSION_null });
 
-constant Session = SSL.session;
-constant Queue = ADT.Queue;
-
 //! Non-zero to enable cahing of sessions
 int use_cache = 1;
 
@@ -132,7 +129,7 @@ object lookup_session(string id)
 //! Create a new session.
 object new_session()
 {
-  object s = Session();
+  object s = SSL.session();
   s->identity = (use_cache) ? sprintf("%4cPikeSSL3%4c",
 				      time(), session_number++) : "";
   return s;
@@ -164,8 +161,16 @@ void create()
 #ifdef SSL3_DEBUG
   werror("SSL.context->create\n");
 #endif
-  active_sessions = Queue();
+  active_sessions = ADT.Queue();
   session_cache = ([ ]);
   /* Backwards compatibility */
   rsa_mode();
+}
+
+string _sprintf(int t) {
+  switch(t) {
+  case 't': return "SSL.context";
+  case 'O': return "SSL.context()";
+  }
+  error("Can not output SSL.context as %c.\n", t);
 }
