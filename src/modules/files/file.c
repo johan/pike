@@ -2786,6 +2786,11 @@ static void low_dup(struct object *toob,
 			      FILE_LOCK_FD |
 			      FILE_NOT_OPENED);
 
+  /* Enforce that stdin, stdout and stderr aren't closed during
+   * normal operation.
+   */
+  if (to->box.fd <= 2) to->flags |= FILE_NO_CLOSE_ON_DESTRUCT;
+
   /* Note: This previously enabled all events for which there were
    * callbacks instead of copying the event settings from the source
    * file. */
