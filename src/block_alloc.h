@@ -539,7 +539,8 @@ struct DATA *PIKE_CONCAT3(make_,DATA,_unlocked)(void *ptr, size_t hval)	     \
 
 
 #define PTR_HASH_ALLOC(DATA,BSIZE)					     \
-struct DATA *PIKE_CONCAT3(make_,DATA,_unlocked)(void *ptr, size_t hval);     \
+struct DATA *PIKE_CONCAT3(make_,DATA,_unlocked)(void *ptr,		     \
+						PIKE_HASH_T hval);	     \
 LOW_PTR_HASH_ALLOC(DATA,BSIZE)                                               \
                                                                              \
 static void PIKE_CONCAT(DATA,_rehash)()					     \
