@@ -124,6 +124,15 @@ int _prof_gtim;
     private array(mapping(string:array(string))) entry = ({});
     array(string) referrals;
 
+    private string utf2s(string in) {
+    // catched variant of utf8_to_string needed for tagged octed string data
+
+      string out = "";
+      catch( out = utf8_to_string(in) );
+      return out;
+
+    }
+
     private array _get_attr_values(int ver, object x) {
 
       array res = ({});
@@ -134,7 +143,7 @@ int _prof_gtim;
 	res += ({ val1->value });
       if(ver == 3) {
         // deUTF8
-        res = Array.map(res, utf8_to_string);
+        res = Array.map(res, utf2s);
       }
       return(res);
     }
