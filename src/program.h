@@ -23,6 +23,8 @@
 #define PROGRAM_LINE_ARGS void
 #endif
 
+extern struct pike_string *this_program_string;
+
 #define LFUN___INIT 0
 #define LFUN_CREATE 1
 #define LFUN_DESTROY 2

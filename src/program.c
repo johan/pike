@@ -62,6 +62,8 @@ RCSID("$Id$");
 #include "compilation.h"
 
 
+struct pike_string *this_program_string=0;
+
 char *lfun_names[] = {
   "__INIT",
   "create",
@@ -3221,6 +3223,9 @@ void init_program(void)
   int i;
   struct svalue key;
   struct svalue val;
+
+  MAKE_CONSTANT_SHARED_STRING(this_program_string,"this_program");
+
   lfun_types = allocate_mapping(NUM_LFUNS);
   key.type = T_STRING;
   val.type = T_TYPE;
@@ -3244,6 +3249,8 @@ void init_program(void)
 void cleanup_program(void)
 {
   int e;
+
+  free_string(this_program_string);
 
   free_mapping(lfun_types);
 #ifdef FIND_FUNCTION_HASHSIZE
