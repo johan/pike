@@ -4925,6 +4925,7 @@ then
       SCO_SV*) LINKFORSHARED="-Bdynamic -dy -Wl,-Bexport";;
       # What about UNIX_SV?
       UnixWare*|OpenUNIX*) LINKFORSHARED="-Bdynamic -dy -Wl,-Bexport";;
+      Windows_NT*|NT*) LINKFORSHARED="-rdynamic";;
     esac
   fi
 fi
