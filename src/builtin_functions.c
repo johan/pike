@@ -2864,8 +2864,8 @@ void f_everynth(INT32 args)
   for(k=0; start<size; start+=n)
     assign_svalue_no_free(a->item+(k++), ina->item+start);
 
-  pop_n_elems(args);
   a->type_field=ina->type_field;
+  pop_n_elems(args);
   push_array(a);
   return;
 }
