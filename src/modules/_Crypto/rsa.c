@@ -396,8 +396,8 @@ static void f_decrypt(INT32 args)
 
     rsa_private_key.modulus.data = THIS->n->str;
     rsa_private_key.modulus.len = THIS->n->len;
-    rsa_private_key.modulus.data = THIS->d->str;
-    rsa_private_key.modulus.len = THIS->d->len;
+    rsa_private_key.exponent.data = THIS->d->str;
+    rsa_private_key.exponent.len = THIS->d->len;
 
     if ((err = B_SetKeyInfo(THIS->private_key, KI_RSAPublic,
 			    (POINTER)&rsa_private_key))) {
