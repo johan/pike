@@ -492,7 +492,11 @@ PIKECLASS Backend
    * FDS handling
    */
 #define FDS_ISSET(fd,X) (me->fds_size>(fd) &&  me->fds[(fd)].X!=0)
-#define ASSURE_FDS_SIZE(ME,X) grow_fds(ME,X)
+#define ASSURE_FDS_SIZE(ME,X)  do{ 		\
+  struct Backend_struct *me_=(ME);		\
+  int fd_=(X);					\
+  if(fd_ >= me_->fds_size)  grow_fds(ME,X);	\
+}while(0)
   
   void grow_fds(struct Backend_struct *me,
 		int wanted_size)
