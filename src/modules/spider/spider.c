@@ -522,7 +522,7 @@ int push_parsed_tag(char *s,int len)
   int is_SSI_tag;
 
   /* NOTE: At entry sp[-1] is the tagname */
-  is_SSI_tag == (sp[-1].type == T_STRING) &&
+  is_SSI_tag = (sp[-1].type == T_STRING) &&
     (!strncmp(sp[-1].u.string->str, "!--", 3));
 
   /* Find X=Y pairs. */
