@@ -123,10 +123,10 @@ static void code_entry(int type, INT32 num, struct encode_data *data)
 
   switch(t)
   {
-  case 3: addchar(num >> 24);
-  case 2: addchar(num >> 16);
-  case 1: addchar(num >> 8);
-  case 0: addchar(num);
+  case 3: addchar((num >> 24)&0xff);
+  case 2: addchar((num >> 16)&0xff);
+  case 1: addchar((num >> 8)&0xff);
+  case 0: addchar(num&0xff);
   }
 }
 
