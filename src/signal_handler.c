@@ -2567,17 +2567,15 @@ void f_create_process(INT32 args)
       if(cmd->size < 1)
 	Pike_error("Too few elements in argument array.\n");
       
-      for(e=0;e<cmd->size;e++) {
-	if(ITEM(cmd)[e].type!=T_STRING)
-	  Pike_error("Argument is not a string.\n");
-	if(ITEM(cmd)[e].u.string->size_shift)
-	  Pike_error("Argument is not an 8-bit string.\n");	
+      if(cmd->type_field & ~BIT_STRING) {
+	array_fix_type_field(cmd);
+	if(cmd->type_field & ~BIT_STRING)
+	  Pike_error("Bad argument 1 to Process().\n");
       }
 
-      array_fix_type_field(cmd);
-
-      if(cmd->type_field & ~BIT_STRING)
-	Pike_error("Bad argument 1 to Process().\n");
+      for(e=0;e<cmd->size;e++)
+	if(ITEM(cmd)[e].u.string->size_shift)
+	  Pike_error("Argument is not an 8-bit string.\n");	
   }
 
 
