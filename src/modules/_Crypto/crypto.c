@@ -508,6 +508,8 @@ void pike_module_init(void)
   pike_rc4_init();
 
   /* END NATIONAL SECURITY */
+
+  pike_nt_init();
 }  
 
 void pike_module_exit(void)
@@ -527,5 +529,7 @@ void pike_module_exit(void)
   pike_rc4_exit();
 
   /* END NATIONAL SECURITY */
+
+  pike_nt_exit();
 }
 

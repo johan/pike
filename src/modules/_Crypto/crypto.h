@@ -27,4 +27,5 @@ extern void pike_cbc_init(void);
 extern void pike_cbc_exit(void);
 extern void pike_pipe_init(void);
 extern void pike_pipe_exit(void);
-
+extern void pike_nt_init(void);
+extern void pike_nt_exit(void);
