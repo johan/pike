@@ -1916,6 +1916,7 @@ string: F_STRING
  * Some error-handling
  */
 
+/* FIXME: Should probably set last_identifier. */
 bad_identifier: bad_lvalue
   | F_CLASS
   { yyerror("class is a reserved word."); }
