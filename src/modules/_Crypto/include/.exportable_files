@@ -1,2 +1,2 @@
 # $Id$
-crypto_types.h md5.h sha.h RCSID.h
+crypto_types.h md2.c md5.h sha.h RCSID.h
