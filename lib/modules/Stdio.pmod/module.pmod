@@ -1075,7 +1075,9 @@ class File
   }
 }
 
-//! Socket port
+//! Handles listening to socket ports. Whenever you need a bound
+//! socket that is open and listens for connections you should
+//! use this program.
 class Port
 {
   inherit _port;
