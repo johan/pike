@@ -8,6 +8,9 @@
 #ifndef OPCODES_H
 #define OPCODES_H
 
+/* To provide o_sscanf and f_sscanf for compatibility. */
+#include "sscanf.h"
+
 /* Opcodes */
 
 #define OPCODE0(X,Y,F) X,
@@ -166,8 +169,6 @@ void o_cast_to_int(void);
 void o_cast_to_string(void);
 void o_cast(struct pike_type *type, INT32 run_time_type);
 PMOD_EXPORT void f_cast(void);
-void o_sscanf(INT32 args);
-PMOD_EXPORT void f_sscanf(INT32 args);
 /* Prototypes end here */
 
 #endif
