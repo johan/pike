@@ -5183,6 +5183,8 @@ echo "PAD_FEATURE([debug])$with_debug" >>config.info
 echo "PAD_FEATURE([dmalloc])$with_dmalloc" >>config.info
 echo "PAD_FEATURE([rtldebug])$with_rtldebug" >>config.info
 
+touch confdefs.h 2>/dev/null
+
 AC_TRY_RUN([
 #include "global.h"
 #include "svalue.h"
