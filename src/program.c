@@ -2499,6 +2499,7 @@ int store_constant(struct svalue *foo,
     zero.subtype = NUMBER_NUMBER;
     zero.u.integer=0;
 
+    UNSETJMP(tmp2);
     return store_constant(&zero, equal, constant_name);
   }else{
     for(e=0;e<new_program->num_constants;e++)
