@@ -374,7 +374,7 @@ CHRONO("apply_matrix, one");
 
    for (y=by; y<img->ysize-ey; y++)
    {
-      dp=d+y*img->xsize+by;
+      dp=d+y*img->xsize+bx;
       for (x=bx; x<img->xsize-ex; x++)
       {
 	 r=g=b=0;
