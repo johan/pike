@@ -467,7 +467,7 @@ THREADS_DISALLOW();
 **! 	default alpha channel value
 **! see also: copy, clone, Image.image
 **! bugs
-**!	SIGSEGS can be caused if the size is too big, due
+**!	SIGSEGVS can be caused if the size is too big, due
 **!	to unchecked overflow - 
 **!	(xsize*ysize)&MAXINT is small enough to allocate.
 */
