@@ -444,7 +444,7 @@ static void ins_debug_instr_prologue (PIKE_INSTR_T instr, INT32 arg1, INT32 arg2
     ia32_call_c_function (simple_debug_instr_prologue_0);
 }
 #else  /* !PIKE_DEBUG */
-#define ins_debug_instr_prologue(instr, arg1, arg2) 0
+#define ins_debug_instr_prologue(instr, arg1, arg2)
 #endif
 
 void ins_f_byte(unsigned int b)
