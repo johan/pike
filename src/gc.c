@@ -1577,23 +1577,25 @@ void locate_references(void *a)
   
   check_for=a;
 
-  gc_check_all_arrays();
-  gc_check_all_multisets();
-  gc_check_all_mappings();
-  gc_check_all_programs();
-  gc_check_all_objects();
+  GC_ENTER (NULL, PIKE_T_UNKNOWN) {
+    gc_check_all_arrays();
+    gc_check_all_multisets();
+    gc_check_all_mappings();
+    gc_check_all_programs();
+    gc_check_all_objects();
 
 #ifdef PIKE_DEBUG
-  if(master_object)
-    gc_mark_external (master_object, " as master_object");
-  {
-    extern struct mapping *builtin_constants;
-    if(builtin_constants)
-      gc_mark_external (builtin_constants, " as builtin_constants");
-  }
+    if(master_object)
+      gc_mark_external (master_object, " as master_object");
+    {
+      extern struct mapping *builtin_constants;
+      if(builtin_constants)
+	gc_mark_external (builtin_constants, " as builtin_constants");
+    }
 #endif
   
-  call_callback(& gc_callbacks, NULL);
+    call_callback(& gc_callbacks, NULL);
+  } GC_LEAVE;
 
 #ifdef DEBUG_MALLOC
   {
