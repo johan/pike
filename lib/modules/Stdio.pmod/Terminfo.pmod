@@ -718,7 +718,7 @@ object defaultTermcapDB()
 {
   object tcdb;
   LOCK;
-  tcdb = deftermcap || (deftermcap = TermcapDB());
+  catch { tcdb = deftermcap || (deftermcap = TermcapDB()); };
   UNLOCK;
   return tcdb;
 }
@@ -727,7 +727,7 @@ object defaultTerminfoDB()
 {
   object tidb;
   LOCK;
-  tidb = defterminfo || (defterminfo = TerminfoDB());
+  catch { tidb = defterminfo || (defterminfo = TerminfoDB()); };
   UNLOCK;
   return tidb;
 }
