@@ -99,7 +99,6 @@ static int do_deflate(dynamic_buffer *buf,
 		      int flush)
 {
    int ret=0;
-   int loop=0;
 
    THREADS_ALLOW();
    mt_lock(& this->lock);
