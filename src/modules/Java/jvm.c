@@ -16,7 +16,6 @@
  */
 
 #define NO_PIKE_SHORTHAND
-#define JW 0
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
@@ -856,9 +855,6 @@ static void f_call_static(INT32 args)
     jjf = (*env)->CallStaticDoubleMethodA(env, class, m->method, jargs);
     THREADS_DISALLOW();
     pop_n_elems(args);
-#if JW
-    fprintf(stderr, "pushing float (double) value [1]: %f\n", jjf);
-#endif
     push_float(jjf);
     break;
   case 'L':
@@ -970,9 +966,6 @@ static void f_call_virtual(INT32 args)
     jjf = (*env)->CallDoubleMethodA(env, jo->jobj, m->method, jargs);
     THREADS_DISALLOW();
     pop_n_elems(args);
-#if JW
-    fprintf(stderr, "pushing float (double) value [2]: %f\n", jjf);
-#endif
     push_float(jjf);
     break;
   case 'L':
@@ -1084,9 +1077,6 @@ static void f_call_nonvirtual(INT32 args)
     jjf = (*env)->CallNonvirtualDoubleMethodA(env, jo->jobj, class, m->method, jargs);
     THREADS_DISALLOW();
     pop_n_elems(args);
-#if JW
-    fprintf(stderr, "pushing float (double) value [3]: %f\n", jjf);
-#endif
     push_float(jjf);
     break;
   case 'L':
@@ -1957,15 +1947,7 @@ static void do_native_dispatch(struct native_method_context *ctx,
 	break;
       
       case 'D':
-#if JW
-	{
-	  FLOAT_TYPE junk = GET_NATIVE_ARG(jdouble);
-	  push_float(junk);
-	  fprintf(stderr, "pushing float (double) value [4]: %f\n", junk);
-	}
-#else
 	push_float(GET_NATIVE_ARG(jdouble));
-#endif
 	break;
       
       case 'L':
