@@ -98,7 +98,10 @@ extern int yydebug;
 #endif /* YYDEBUG || PIKE_DEBUG */
 static long instructions_left;
 
-#define MASTER_COOKIE "(#*&)@(*&$Master Cookie:"
+#define MASTER_COOKIE1 "(#*&)@(*&$"
+#define MASTER_COOKIE2 "Master Cookie:"
+
+#define MASTER_COOKIE MASTER_COOKIE1 MASTER_COOKIE2
 
 #ifndef MAXPATHLEN
 #define MAXPATHLEN 32768
@@ -801,7 +804,10 @@ int dbm_main(int argc, char **argv)
 
     TRACE((stderr, "Init master cookie...\n"));
 
-    push_constant_text(MASTER_COOKIE);
+    /* Avoid duplicate entries... */
+    push_constant_text(MASTER_COOKIE1);
+    push_constant_text(MASTER_COOKIE2);
+    f_add(2);
     low_add_constant("__master_cookie", Pike_sp-1);
     pop_stack();
 
