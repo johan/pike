@@ -125,7 +125,7 @@ RCSID("$Id$");
 #include "pike_types.h"
 #include "constants.h"
 #include "pike_macros.h"
-#include "error.h"
+#include "pike_error.h"
 #include "docode.h"
 #include "machine.h"
 #include "main.h"
