@@ -15,3 +15,5 @@ constant BacktraceFrame = __builtin.backtrace_frame;
 // --with-security.
 constant Security = __builtin.security;
 #endif /* constant(__builtin.security) */
+
+constant Backend = __builtin.__backend;
