@@ -238,7 +238,7 @@ class Token
 	case 's':
 	  return text;
 	case 'O':
-	  return sprintf("Token(%O,%O,%d)",text,file,line);
+	  return sprintf("%O(%O,%O,%d)",this_program,text,file,line);
       }
     }
 

@@ -117,10 +117,7 @@ class decoder {
   }
 
   static mixed _sprintf(int|void type) {
-    if(type == 't')
-      return "Audio.Codec";
-
-    return sprintf("Audio.Codec /* %O */", codec);
+    return type=='O' && sprintf("Audio.Codec(/* %O */)", codec);
   }
 
 }

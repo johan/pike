@@ -131,7 +131,5 @@ this_program `+(this_program s) {
 }
 
 string _sprintf(int t) {
-  if(t=='t') return "ADT.Stack";
-  if(t=='O') return sprintf("ADT.Stack%O", _values());
-  error("Can't display ADT.Stack as %c.", t);
+  return t=='O' && sprintf("%O%O", this_program, _values());
 }

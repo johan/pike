@@ -25,9 +25,9 @@ class _Tar  // filesystem
 
     static private int start, pos, len;
 
-    static string _sprintf()
+    static string _sprintf(int t)
     {
-      return sprintf("Filesystems.Tar.ReadFile(%d, %d /* pos = %d */)",
+      return t=='O' && sprintf("Filesystem.Tar.ReadFile(%d, %d /* pos = %d */)",
 		     start, len, pos);
     }
 
@@ -249,9 +249,9 @@ class _Tar  // filesystem
     filenames = indices(filename_to_entry);
   }
 
-  string _sprintf()
+  string _sprintf(int t)
   {
-    return sprintf("_Tar(/* filename=%O */)", filename);
+    return t=='O' && sprintf("_Tar(/* filename=%O */)", filename);
   }
 };
 
@@ -280,9 +280,9 @@ class _TarFS
     parent = _parent;
   }
 
-  string _sprintf()
+  string _sprintf(int t)
   {
-    return  sprintf("_TarFS(/* root=%O, wd=%O */)", root, wd);
+    return  t=='O' && sprintf("_TarFS(/* root=%O, wd=%O */)", root, wd);
   }
 
   Filesystem.Stat stat(string file, void|int lstat)
@@ -355,10 +355,11 @@ class `()
     _TarFS::create(tar, "/", "", parent);
   }
 
-  string _sprintf()
+  string _sprintf(int t)
   {
-    return sprintf("Filesystem.Tar(/* tar->filename=%O, root=%O, wd=%O */)",
-		   tar && tar->filename, root, wd);
+    return t=='O' &&
+      sprintf("Filesystem.Tar(/* tar->filename=%O, root=%O, wd=%O */)",
+	      tar && tar->filename, root, wd);
   }
 }
 

@@ -90,7 +90,8 @@ class ANY {
   }
 
   string _sprintf(int|void ctype) {
-      sprintf("Audio.Format.Any(\"%O\",%O)", buffer->fd, nochk);
+      return ctype=='O' &&
+	sprintf("%O(\"%O\",%O)", this_program, buffer->fd, nochk);
   }
 
   //!

@@ -231,10 +231,7 @@ array find_shortest_path(mixed from, mixed to, void|multiset avoiding)
 
 string _sprintf(int mode)
 {
-  if (mode == 'O')
-    return sprintf("ADT.Relation.Binary(%O)", id);
-  else
-    return "ADT.Relation.Binary";
+  return mode=='O' && sprintf("%O(%O)", this_program, id);
 }
 
 //! Return the ID value which was given as first argument to create().

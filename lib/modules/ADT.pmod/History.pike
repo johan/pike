@@ -171,7 +171,5 @@ array _values() {
 }
 
 string _sprintf(int t) {
-  if(t=='O') return "ADT.History("+size+"/"+maxsize+")";
-  if(t=='t') return "ADT.History";
-  error("Can't print History object as '%c'.\n", t);
+  return t=='O' && sprintf("%O(%d/%d)", this_program, size, maxsize);
 }

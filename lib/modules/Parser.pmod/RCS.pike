@@ -75,10 +75,8 @@ mapping(string:string) branches;
 
 string _sprintf(int type)
 {
-  if(type=='t')
-    return "RCS";
-  return sprintf("RCS(/* %d revisions */)",
-		 revisions && sizeof(revisions));
+  return type=='O' && sprintf("%O(/* %d revisions */)", this_program,
+			      revisions && sizeof(revisions));
 }
 
 //! Data for all revisions of the file. The indices of the mapping are
