@@ -22,7 +22,10 @@ recursive_join: images
 	@(cd build/src && $(MAKE) PIKE="$(PIKE)" join)
 	@(cd build/lib && $(MAKE) PIKE="$(PIKE)" join)
 
-images: extract
+images: extract manual/images
+	@cp ../src/post_modules/GTK/refdoc/images/*.png \
+	  build/src/post_modules/GTK/refdoc/images
+	@$(PIKE) ../bin/autodoc_images.pike build/
 
 extract: build/src/Makefile build/lib/Makefile
 	@(cd build/src && $(MAKE) PIKE="$(PIKE)" extract)
@@ -50,6 +53,9 @@ build:
 
 manual:
 	@test -d manual || mkdir manual
+
+manual/images: manual
+	@test -d manual/images || mkdir manual/images
 
 clean:
 	@rm -rf build || /bin/true
