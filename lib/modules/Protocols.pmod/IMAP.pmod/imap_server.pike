@@ -1,5 +1,6 @@
 /* imap_server.pike
  *
+ * $Id$
  */
 
 mapping unauth_commands =
@@ -45,8 +46,8 @@ mapping select_commands =
 //    "check" : .requests.check,
 //    "close" : .requests.close,
 //    "expunge" : .requests.expunge,
-//    "search" : .requests.search,
-//    "fetch" : .requests.fetch,
+   "search" : .requests.search,
+   "fetch" : .requests.fetch,
 //    "store" : .requests.store,
 //    "copy" : .requests.copy,
 //    "uid" : .requests.uid
