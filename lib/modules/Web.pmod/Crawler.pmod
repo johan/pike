@@ -286,7 +286,8 @@ class MySQLQueue
     if( sizeof( possible ) <= p_c )
     {
       p_c = 0;
-      possible = db->query( "select uri from "+table+" where done=0" )->uri;
+      possible=db->query("select uri from "+table+" where done=0 limit 20")
+	->uri;
     }
 
     if( sizeof( possible ) > p_c )
