@@ -134,8 +134,10 @@ static mapping decode_compressed(string s) {
   case 2:
     // ZLIB
     error("Don't know how to decompress ZLIB.\n");
+#if 0
     // Perhaps like this?
     return decode( Gz.inflate()->inflate(s) );
+#endif
   default:
     return ([ "type":type, "data":s ]);
   }
