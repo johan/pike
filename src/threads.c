@@ -1413,7 +1413,7 @@ void th_init(void)
   START_NEW_PROGRAM_ID(THREAD_LOCAL);
   ADD_STORAGE(struct thread_local);
   ADD_FUNCTION("get",f_thread_local_get,tFunc(tNone,tMix),0);
-  ADD_FUNCTION("set",f_thread_local_set,tFunc(tSetVar(1,tMix),tVar(1)),0);
+  ADD_FUNCTION("set",f_thread_local_set,tFunc(tSetvar(1,tMix),tVar(1)),0);
   thread_local_prog=Pike_compiler->new_program;
   add_ref(thread_local_prog);
   end_class("thread_local", 0);
