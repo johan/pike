@@ -769,7 +769,7 @@ struct program *end_first_pass(int finish)
 
 
   /* Collect references to inherited __INIT functions */
-  for(e=new_program->num_inherits-1;e>1;e--)
+  for(e=new_program->num_inherits-1;e;e--)
   {
     int id;
     if(new_program->inherits[e].inherit_level!=1) continue;
