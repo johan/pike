@@ -261,7 +261,7 @@ xenofarm:
 	test -d build || mkdir build
 	-rm -rf build/xenofarm
 	mkdir build/xenofarm
-	-CCACHE_DIR="`pwd`/build/xenofarm/ccache.log.txt" \
+	-CCACHE_LOGFILE="`pwd`/build/xenofarm/ccache.log.txt" \
 	  $(MAKE) $(MAKE_FLAGS) xenofarm_low
 	echo Begin response assembly | tee -a build/xenofarm/xenofarmlog.txt
 	date >> build/xenofarm/xenofarmlog.txt
