@@ -34,7 +34,7 @@ Sequence build_csr(Crypto.RSA rsa, object name,
 }
 
 #if 0
-object build_csr_dsa(object dsa, object name)
+object build_csr_dsa(Crypto.DSA dsa, object name)
 {
   Sequence info = Sequence( ({ Integer }) );
 }

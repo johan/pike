@@ -155,7 +155,7 @@ Sequence make_tbs(object issuer, object algorithm,
 }
 
 //!
-string make_selfsigned_dsa_certificate(Crypto.dsa dsa, int ttl, array name,
+string make_selfsigned_dsa_certificate(Crypto.DSA dsa, int ttl, array name,
 				       array|void extensions)
 {
   Integer serial = Integer(1); /* Hard coded serial number */

@@ -99,7 +99,7 @@ Crypto.RSA long_rsa;
 Crypto.RSA short_rsa;
 
 //! Servers dsa key.
-Crypto.dsa dsa;
+Crypto.DSA dsa;
 
 //! Parameters for dh keyexchange.
 .Cipher.DHParameters dh_params;
