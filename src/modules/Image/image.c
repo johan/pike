@@ -4431,7 +4431,7 @@ static void image_blur( INT32 args )
   if( !rgb )
     Pike_error("This object is not initialized\n");
     
-  if (sp[-args].type!=T_INT)  SIMPLE_BAD_ARG_ERROR("grey_blur",0,"integer");
+  if (sp[-args].type!=T_INT)  SIMPLE_BAD_ARG_ERROR("blur",0,"integer");
 
   t = sp[-args].u.integer;  /* times */
 
