@@ -828,7 +828,12 @@ void f_setgid(INT32 args)
 #if defined(HAVE_SETEUID) || defined(HAVE_SETRESUID)
 /*! @decl int seteuid(int euid)
  *!
- *! Set the effective user ID to @[euid].
+ *! Set the effective user ID to @[euid]. If @[euid] is
+ *! @expr{-1@} the uid for "nobody" will be used.
+ *!
+ *! @throws
+ *! Throws an error if seteuid fails, or if there is no
+ *! "nobody" user when @[euid] is @expr{-1@}.
  */
 void f_seteuid(INT32 args)
 {
@@ -843,6 +848,8 @@ void f_seteuid(INT32 args)
  
   if(id == -1) {
     struct passwd *pw = getpwnam("nobody");
+    if(pw==0)
+      Pike_error("No \"nobody\" user on this system.\n");
     id = pw->pw_uid;
   } else {
     id = sp[-args].u.integer;
@@ -854,6 +861,8 @@ void f_seteuid(INT32 args)
 #else
   err = setresuid(-1, id, -1);
 #endif /* HAVE_SETEUID */
+  if(err!=0)
+    Pike_error("seteuid failed.\n");
 
   pop_n_elems(args);
   push_int(err);
