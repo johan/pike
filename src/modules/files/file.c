@@ -202,7 +202,7 @@ static void free_fd_stuff(void)
   check_internal_reference(THIS);
 }
 
-static void just_close_fd()
+static void just_close_fd(void)
 {
   int fd=FD;
   if(fd<0) return;
