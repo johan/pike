@@ -589,9 +589,12 @@ PMOD_EXPORT void f_search(INT32 args)
 		    "Start must not be greater than the "
 		    "length of the string.\n");
 
-    start=string_search(Pike_sp[-args].u.string,
-			Pike_sp[1-args].u.string,
-			start);
+    /* Handle searching for the empty string. */
+    if (Pike_sp[1-args].u.string->len) {
+      start=string_search(Pike_sp[-args].u.string,
+			  Pike_sp[1-args].u.string,
+			  start);
+    }
 
     pop_n_elems(args);
     push_int64(start);
