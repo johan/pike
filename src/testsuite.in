@@ -1533,7 +1533,7 @@ test_do([[
   mkdir ("testsuite_test_dir.pmod");
 
   Stdio.write_file ("testsuite_test_dir.pmod/module.pmod", #"\
-    .B b();
+    .B.B b();
     class X {}");
   Stdio.write_file ("testsuite_test_dir.pmod/A.pike", #"\
     int f() {return 0;}");
