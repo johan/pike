@@ -755,12 +755,14 @@ define(PIKE_ENABLE_BUNDLE, [
     echo "Bundles not available."
     ifelse([$3], , :, [ AC_MSG_ERROR([$3]) ])
   else
-    for f in "$pike_bundle_dir/[$1]"*.tar.gz no; do
-      if test -f "$f"; then
+    # Note: OSF/1 /bin/sh does not support glob expansion of
+    #       expressions like "$pike_bundle_dir/[$1]"*.tar.gz.
+    for f in `cd "$pike_bundle_dir" && echo [$1]*.tar.gz` no; do
+      if test -f "$pike_bundle_dir/$f"; then
         # Notify toplevel that we want the bundle.
 	# Note that invalidation of the cache variables can't be done
 	# until the bundle actually has been built.
-	PIKE_MSG_WARN([Enabling bundle $1 from $f.])
+	PIKE_MSG_WARN([Enabling bundle $1 from $pike_bundle_dir/$f.])
         echo "[$2]" >"[$1].bundle"
 	break
       fi
