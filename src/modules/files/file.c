@@ -1521,7 +1521,7 @@ void pike_module_init()
   add_function("query_close_callback",file_query_close_callback,"function(:mixed)",0);
 
   add_function("dup",file_dup,"function(:object)",0);
-  add_function("dup2",file_dup2,"function(object:object)",0);
+  add_function("dup2",file_dup2,"function(object:int)",0);
   add_function("assign",file_assign,"function(object:int)",0);
   add_function("pipe",file_pipe,"function(:object)",0);
 
