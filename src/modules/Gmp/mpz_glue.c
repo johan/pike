@@ -196,7 +196,7 @@ void get_new_mpz(MP_INT *tmp, struct svalue *s)
   switch(s->type)
   {
   case T_INT:
-#if BIG_PIKE_INT
+#ifdef BIG_PIKE_INT
 /*  INT_TYPE is bigger then long int  */
   {
      INT_TYPE x=s->u.integer;
