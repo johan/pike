@@ -503,12 +503,16 @@ TH_RETURN_TYPE new_thread_func(void * data)
 #if defined(PIKE_DEBUG)
   if(d_flag)
     {
-      if( thread_id && !th_equal( OBJ2THREAD(thread_id)->id, th_self()) )
-	fatal("Current thread is wrong. %x %x\n",OBJ2THREAD(thread_id)->id,th_self());
+      THREAD_T self = th_self();
+
+      if( thread_id && !th_equal( OBJ2THREAD(thread_id)->id, self) )
+	fatal("Current thread is wrong. %x %x\n",
+	      OBJ2THREAD(thread_id)->id, self);
 	
       if(thread_for_id(th_self()) != thread_id)
-	fatal("thread_for_id() (or thread_id) failed in new_thread_func! %p != %p\n",thread_for_id(th_self()),thread_id);
-      }
+	fatal("thread_for_id() (or thread_id) failed in new_thread_func! "
+	      "%p != %p\n", thread_for_id(self), thread_id);
+    }
 #endif
 
 #ifdef THREAD_TRACE
