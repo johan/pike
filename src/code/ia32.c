@@ -892,6 +892,9 @@ static INT32 do_ins_jump (unsigned int op, int backward_jump)
 
   if(op == F_BRANCH) {
     ins_debug_instr_prologue (op, 0, 0);
+    if (backward_jump) {
+      ia32_call_c_function(branch_check_threads_etc);
+    }
     add_to_program(0xe9);
     ret=DO_NOT_WARN( (INT32) PIKE_PC );
     PUSH_INT(0);
