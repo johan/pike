@@ -4,6 +4,8 @@
 ||| for more information.
 ||| $Id$
 \*/
+/**/
+
 #include "global.h"
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>

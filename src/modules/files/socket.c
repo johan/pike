@@ -4,6 +4,8 @@
 ||| for more information.
 ||| $Id$
 \*/
+/**/
+
 #define NO_PIKE_SHORTHAND
 
 #include "global.h"

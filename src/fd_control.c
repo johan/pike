@@ -4,6 +4,7 @@
 ||| for more information.
 ||| $Id$
 \*/
+/**/
 
 #ifndef TESTING
 #include "global.h"

@@ -4,6 +4,8 @@
 ||| for more information.
 ||| $Id$
 \*/
+/**/
+
 #include "global.h"
 #include "pike_memory.h"
 #include "pike_error.h"

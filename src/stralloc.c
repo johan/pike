@@ -4,6 +4,8 @@
 ||| for more information.
 ||| $Id$
 \*/
+/**/
+
 #include "global.h"
 #include "stralloc.h"
 #include "pike_macros.h"

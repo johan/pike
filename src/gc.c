@@ -4,6 +4,8 @@
 ||| for more information.
 ||| $Id$
 \*/
+/**/
+
 #include "global.h"
 
 struct callback *gc_evaluator_callback=0;

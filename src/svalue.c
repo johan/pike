@@ -4,6 +4,8 @@
 ||| for more information.
 ||| $Id$
 \*/
+/**/
+
 #include "global.h"
 #include "main.h"
 #include "svalue.h"

@@ -4,6 +4,8 @@
 ||| for more information.
 ||| $Id$
 \*/
+/**/
+
 #include "global.h"
 #include "dynamic_buffer.h"
 #include "stralloc.h"

@@ -5,6 +5,7 @@
 ||| for more information.
 ||| $Id$
 \*/
+/**/
 
 %pure_parser
 

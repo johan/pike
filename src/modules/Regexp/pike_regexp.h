@@ -4,6 +4,7 @@
 ||| for more information.
 ||| $Id$
 \*/
+/**/
 
 #ifndef REGEXP_H
 #define REGEXP_H

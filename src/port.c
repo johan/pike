@@ -4,6 +4,8 @@
 ||| for more information.
 ||| $Id$
 \*/
+/**/
+
 #define PORT_DO_WARN
 
 #include "global.h"
