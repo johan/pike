@@ -8172,20 +8172,20 @@ void init_builtin_efuns(void)
 	    OPT_TRY_OPTIMIZE, 0, 0);
 
   ADD_EFUN("has_index",f_has_index,
-	   tOr5(tFunc(tStr tIntPos, tInt),
-		tFunc(tArray tIntPos, tInt),
-		tFunc(tSet(tSetvar(0,tMix)) tVar(0), tInt),
-		tFunc(tMap(tSetvar(1,tMix),tMix) tVar(1), tInt),
-		tFunc(tObj tMix, tInt)),
-	   0);
+	   tOr5(tFunc(tStr tIntPos, tInt01),
+		tFunc(tArray tIntPos, tInt01),
+		tFunc(tSet(tSetvar(0,tMix)) tVar(0), tInt01),
+		tFunc(tMap(tSetvar(1,tMix),tMix) tVar(1), tInt01),
+		tFunc(tObj tMix, tInt01)),
+	   OPT_TRY_OPTIMIZE);
 
   ADD_EFUN("has_value",f_has_value,
-	   tOr5(tFunc(tStr tOr(tStr, tInt), tInt),
-		tFunc(tArr(tSetvar(0,tMix)) tVar(0), tInt),
-		tFunc(tMultiset tInt, tInt),
-		tFunc(tMap(tMix,tSetvar(1,tMix)) tVar(1), tInt),
-		tFunc(tObj tMix, tInt)),
-	   0);
+	   tOr5(tFunc(tStr tOr(tStr, tInt), tInt01),
+		tFunc(tArr(tSetvar(0,tMix)) tVar(0), tInt01),
+		tFunc(tMultiset tInt, tInt01),
+		tFunc(tMap(tMix,tSetvar(1,tMix)) tVar(1), tInt01),
+		tFunc(tObj tMix, tInt01)),
+	   OPT_TRY_OPTIMIZE);
 
 /* function(float|int,int|void:void) */
   ADD_EFUN("sleep", f_sleep,
@@ -8276,7 +8276,7 @@ void init_builtin_efuns(void)
 #ifdef HAVE_GMTIME
   
 /* function(int:mapping(string:int)) */
-  ADD_EFUN("gmtime",f_gmtime,tFunc(tInt,tMap(tStr,tInt)),OPT_EXTERNAL_DEPEND);
+  ADD_EFUN("gmtime",f_gmtime,tFunc(tInt,tMap(tStr,tInt)),OPT_TRY_OPTIMIZE);
 #endif
 
 #ifdef HAVE_MKTIME
