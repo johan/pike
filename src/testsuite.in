@@ -470,6 +470,26 @@ add_constant("test_c",compile_string(
 return res;
 	]],1);
 
+test_any( [[
+// bug [1858] ------------------------------------------------------------
+// http://community/crunch/show_bug.cgi?id=1858
+string s=#"
+   constant foo=({this_object()});
+   int|string test()
+   {
+      if (!foo[0]) return sprintf(\"foo is %O\\n\",foo)-\"\\n\";
+      if (foo[0]==this_object()) return 1;
+      return sprintf(\"foo is %O\\n\",foo)-\"\\n\";
+   }
+";
+class handler { void compile_error(string file, int line, string err) { }};
+catch {
+  program p=compile_string(s,"test",handler());
+  return p()->test();
+};
+return 1; // compile error is ok
+	]],1);
+
 // -----------------------------------------------------------------------
 
 
