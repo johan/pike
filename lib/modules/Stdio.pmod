@@ -394,7 +394,10 @@ class FILE {
       string s;
       s=b[bpos..bpos+bytes-1];
       bpos += bytes+skip;
-      return s;
+      if(sizeof(s) && s[-1]=='\r')
+	return s[..sizeof(s)-2];
+      else
+	return s;
     }
 
 
