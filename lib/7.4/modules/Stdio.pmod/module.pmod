@@ -1,10 +1,10 @@
 // $Id$
 #pike 7.5
 
-// Emulate the old life length of the Fd instance. In newer versions
-// it's always the same as for the File instance. That can
-// theoretically cause incompatibilities in code that uses File.dup
-// and File.assign, which are deprecated and very rarely used.
+//! The life length of the Fd instance has changed. In newer versions
+//! it's always the same as for the File instance. That can
+//! theoretically cause incompatibilities in code that uses File.dup
+//! and File.assign, which are deprecated and very rarely used.
 class File
 {
   inherit Stdio.File;
