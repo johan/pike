@@ -175,7 +175,7 @@ case 'k':
 			/* rotate right (alg keeps everything rotated by 1) */
 			ROR(m, 1, 31);
 			/* print it out */
-			(void)printf(" 0x%08lx,", m);
+			(void)printf(" 0x%08lx,", (long) m);
 			if ( ( d & 3 ) == 3 )
 				(void)printf("\n");
 		}
