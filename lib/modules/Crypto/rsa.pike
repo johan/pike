@@ -3,7 +3,7 @@
  * Follow the PKCS#1 standard for padding and encryption.
  */
 
-#if constan(Gmp.mpz)
+#if constant(Gmp.mpz)
 
 #define bignum object(Gmp.mpz)
 #define BIGNUM (Gmp.mpz)
