@@ -664,7 +664,8 @@ static struct image_alpha ReadImage(struct buffer *fp, struct tga_header *hdr)
              (id++)->r = cmap[cmapind++];
              if(pelbytes>3)
              {
-               ad->r = ad->g = (ad++)->b = cmap[cmapind];
+               ad->r = ad->g = ad->b = cmap[cmapind];
+	       ad++;
              }
              sd++;
            }
@@ -673,10 +674,12 @@ static struct image_alpha ReadImage(struct buffer *fp, struct tga_header *hdr)
          for(y = 0; y<height; y++)
            for(x = 0; x<width; x++)
            {
-             id->r =  id->g = (id++)->b = *(sd++);
+             id->r =  id->g = id->b = *(sd++);
+	     id++;
              if(abpp)
              {
-               ad->r = ad->g = (ad++)->b = *(sd++);
+               ad->r = ad->g = ad->b = *(sd++);
+	       ad++;
              }
            }
          break;
@@ -690,7 +693,10 @@ static struct image_alpha ReadImage(struct buffer *fp, struct tga_header *hdr)
              if(abpp)
              {
                if( !really_no_alpha )
-                 ad->r = ad->g = (ad++)->b = *sd;
+	       {
+                 ad->r = ad->g = ad->b = *sd;
+		 add++;
+	       }
                sd++;
              }
            }
@@ -828,7 +834,8 @@ static struct buffer save_tga(struct image *img, struct image *alpha,
           *(p++) = is->b;
           *(p++) = is->g;
           *(p++) = (is++)->r;
-          *(p++) = ((int)as->r+(int)as->g*2+(as++)->b)/4;
+          *(p++) = ((int)as->r+(int)as->g*2+as->b)/4;
+	  as++;
         }
     } else {
       p = data = malloc( width*height*3 );

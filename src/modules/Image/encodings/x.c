@@ -349,8 +349,8 @@ static void image_x_encode_truecolor(INT32 args)
 	    }
 	    break;
          case 1:
-	    while (x--) *(d++)=swap_bits[*d];
-	    break;
+	   while (x--) { *d=swap_bits[*d]; d++; } /* Hope this is correct - Hubbe */
+	   break;
       }
    }
 

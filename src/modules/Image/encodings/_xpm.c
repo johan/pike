@@ -256,7 +256,8 @@ void f__xpm_write_rows( INT32 args )
           adst++;
         } else {
           dst++;
-          adst->r = adst->g = (adst++)->b = color.alpha;
+          adst->r = adst->g = adst->b = color.alpha;
+	  adst++;
         }
       }
     }
