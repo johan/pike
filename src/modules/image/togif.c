@@ -533,8 +533,15 @@ void image_gif_begin(INT32 args)
    buf.s.str=NULL;
    initialize_buf(&buf);
 
-   colors=4; bpp=2;
-   while (colors<ct->numcol) { colors<<=1; bpp++; }
+   if (ct)
+   {
+      colors=4; bpp=2;
+      while (colors<ct->numcol) { colors<<=1; bpp++; }
+   }
+   else 
+   {
+      colors=256; bpp=8;
+   }
 
    low_my_binary_strcat("GIF89a",6,&buf);
    buf_word((unsigned short)THIS->xsize,&buf);
