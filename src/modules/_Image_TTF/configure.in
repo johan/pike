@@ -17,7 +17,7 @@ if test x$with_ttflib = xyes ; then
   for flag in $CPPFLAGS; do
     case "$flag" in
       -I*)
-	d="`echo q$flag|sed -e 's/^Q-I//'`/freetype1"
+	d="`echo Q$flag|sed -e 's/^Q-I//'`/freetype1"
         AC_MSG_CHECKING($d)
 	if test -d "$d/."; then
 	  REALDIR="`cd $d/. ; /bin/pwd`"
