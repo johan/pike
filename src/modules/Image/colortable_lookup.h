@@ -22,7 +22,7 @@ void NCTLU_FLAT_CUBICLES_NAME(rgb_group *s,
    struct nctlu_cubicles *cubs;
    struct nctlu_cubicle *cub;
    int red,green,blue;
-   int hred,hgreen,hblue;
+   int redm,greenm,bluem;
    int redgreen;
    struct nct_flat_entry *fe=nct->u.flat.entries;
    int mindist;
@@ -54,9 +54,9 @@ CHRONO("init flat/cubicles");
 
 CHRONO("begin flat/cubicles");
 
-   red=cubs->r;   hred=red/2;
-   green=cubs->g; hgreen=green/2;
-   blue=cubs->b;  hblue=blue/2;
+   red=cubs->r;   redm=red-1;
+   green=cubs->g; greenm=green-1;
+   blue=cubs->b;  bluem=blue-1;
    redgreen=red*green;
 
    if (dith->firstline)
@@ -93,9 +93,9 @@ CHRONO("begin flat/cubicles");
 
       lc->src=*s;
       
-      r=((val.r*red+hred)>>8);
-      g=((val.g*green+hgreen)>>8);
-      b=((val.b*blue+hblue)>>8);
+      r=((val.r*red+redm)>>8);
+      g=((val.g*green+greenm)>>8);
+      b=((val.b*blue+bluem)>>8);
 
       cub=cubs->cubicles+r+g*red+b*redgreen;
       
