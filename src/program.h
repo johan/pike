@@ -366,6 +366,7 @@ PMOD_EXPORT void set_init_callback(void (*init)(struct object *));
 PMOD_EXPORT void set_exit_callback(void (*exit)(struct object *));
 PMOD_EXPORT void set_gc_recurse_callback(void (*m)(struct object *));
 PMOD_EXPORT void set_gc_check_callback(void (*m)(struct object *));
+void pike_set_prog_event_callback(void (*cb)(enum pike_program_event));
 int low_reference_inherited_identifier(struct program_state *q,
 				       int e,
 				       struct pike_string *name,
