@@ -228,7 +228,7 @@ static void init_cpuidflags( )
 void pike_module_init(void)
 {
    char type_of_index[]=
-      tFunc(tStr,tOr3(tObj,tPrg,""))
+      tFunc(tStr,tOr3(tObj,tPrg(tObj),""))
 
 #undef IMAGE_FUNCTION
 #undef IMAGE_SUBMODMAG

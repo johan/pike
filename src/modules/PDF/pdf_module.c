@@ -173,7 +173,7 @@ static void pdf_magic_index(INT32 args)
 void pike_module_init(void)
 {
    char type_of_index[]=
-      tFunc(tStr,tOr3(tObj,tPrg,""))
+      tFunc(tStr,tOr3(tObj,tPrg(tObj),""))
 
 #undef PDF_FUNCTION
 #undef PDF_SUBMODMAG

@@ -1199,7 +1199,7 @@ type2: type2 '|' type3 { push_type(T_OR); }
 
 type3: TOK_INT_ID  opt_int_range    {}
   | TOK_FLOAT_ID    { push_type(T_FLOAT); }
-  | TOK_PROGRAM_ID  { push_type(T_PROGRAM); }
+  | TOK_PROGRAM_ID  { push_object_type(0, 0); push_type(T_PROGRAM); }
   | TOK_VOID_ID     { push_type(T_VOID); }
   | TOK_MIXED_ID    { push_type(T_MIXED); }
   | TOK_STRING_ID { push_type(T_STRING); }

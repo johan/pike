@@ -852,7 +852,7 @@ void init_files_stat()
    ADD_STORAGE(struct stat_storage);
 
    ADD_FUNCTION ("create", stat_create,
-		 tFunc(tOr5(tVoid,tObjImpl_STDIO_STAT,tProgram,tMapping,tArr(tInt)),
+		 tFunc(tOr5(tVoid,tObjImpl_STDIO_STAT,tPrg(tObj),tMapping,tArr(tInt)),
 		       tVoid), ID_STATIC);
 
    ADD_FUNCTION("`[]",stat_index,

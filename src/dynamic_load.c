@@ -368,7 +368,7 @@ void init_dynamic_load(void)
   
 /* function(string:program) */
 
-  ADD_EFUN("load_module",f_load_module,tFunc(tStr,tPrg),OPT_EXTERNAL_DEPEND);
+  ADD_EFUN("load_module",f_load_module,tFunc(tStr,tPrg(tObj)),OPT_EXTERNAL_DEPEND);
 #endif
 }
 
