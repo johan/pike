@@ -2243,6 +2243,7 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 #undef PUSH_STRING
 #undef STRCAT
 #undef WC_STRCAT
+#undef MAKE_BINARY_STRING
 
 #undef lower_cpp
 #undef find_end_parenthesis
