@@ -60,6 +60,8 @@ builddir:
 	done; \
 	if [ x$$NEWBUILD = xYEP ]; then \
 	  cp refdoc/autodoc.xml "$$builddir" || true; \
+	  mkdir "$$builddir"/doc_build || true; \
+	  cp -R refdoc/images "$$builddir"/doc_build/images || true; \
 	fi; \
 	cd "$$builddir"
 
