@@ -261,7 +261,7 @@ static void encode_type(struct pike_type *t, struct encode_data *data)
   if (t->type == T_MANY) {
     addchar(T_FUNCTION);
     addchar(T_MANY);
-  } else if (t->type != PIKE_T_NAME) {
+  } else {
     addchar(t->type);
   }
   switch(t->type) {
@@ -272,7 +272,14 @@ static void encode_type(struct pike_type *t, struct encode_data *data)
       break;
 
     case PIKE_T_NAME:
-      /* Strip the name. */
+      {
+	struct svalue sval;
+	sval.type = PIKE_T_STRING;
+	sval.subtype = 0;
+	sval.u.string = (void *)t->car;
+
+	encode_value2(&sval, encode_data);
+      }
       t=t->cdr;
       goto one_more_type;
     
@@ -1884,6 +1891,18 @@ static void low_decode_type(struct decode_data *data)
     case T_VOID:
     case PIKE_T_UNKNOWN:
       push_type(tmp);
+      break;
+
+    case PIKE_T_NAME:
+      decode_value2(data);
+
+      if (Pike_sp[-1].type != PIKE_T_STRING) {
+	Pike_error("decode_value(): Type name is not a string (%s)\n",
+		   get_name_of_type(Pike_sp[-1].type));
+      }
+      low_decode_type(data);
+      push_type_name(Pike_sp[-1].u.string);
+      pop_stack();
       break;
 
     case T_OBJECT:
