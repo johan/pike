@@ -313,13 +313,15 @@ int main(int argc, array(string) argv)
 			 uname()->machine);
   build = "build/"+replace(lower_case(build), ({ " ", "/", "(", ")" }),
 			   ({ "-", "_", "_", "_" }));
-  if(file_stat(build+"/autodoc.xml")) {
+  if(file_stat(build+"/autodoc.xml") && file_stat(build+"/doc_build/images")) {
     mkdir(vpath);
     mkdir(vpath+"/refdoc");
     Stdio.cp(build+"/autodoc.xml", vpath+"/refdoc/autodoc.xml");
+    Process.create_process( ({ "cp", "-R", build+"/doc_build/images",
+			       vpath+"/refdoc/images" }) )->wait();
     if(Process.create_process
        ( ({"tar", "rvf", pike_base_name+"/"+filename+".tar",
-	   vpath+"/refdoc/autodoc.xml" }) )->wait())
+	   vpath+"/refdoc/autodoc.xml", vpath+"/refdoc/images" }) )->wait())
       {
 	werror("Tar file creation failed!\n");
 	if(cvs) cvs->wait();
