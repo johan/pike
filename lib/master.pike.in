@@ -823,7 +823,9 @@ string describe_backtrace(mixed *trace)
 	{
 	  if(functionp(tmp[2]))
 	    row=function_name(tmp[2]);
-	  else
+	  else if (stringp(tmp[2])) {
+	    row = tmp[2];
+	  } else
 	    row="unknown function";
 	    
 	  row+="(";
