@@ -16938,4 +16938,4 @@ const struct charset_def charset_map[] = {
   { "x0212", map_JIS_X0212_1990, MODE_9494 },                         /* :: x0212 */
   { "yu", map_JUS_I_B1_002, MODE_94 },                                /* :: yu */
 };
-int num_charset_def = sizeof(charset_map)/sizeof(charset_map[0]);
+const int num_charset_def = sizeof(charset_map)/sizeof(charset_map[0]);
