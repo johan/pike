@@ -571,8 +571,7 @@ void free_all_nodes(void)
     {
 #endif
       
-      for(tmp2=node_s_blocks;tmp2;tmp2=tmp2->next) e+=NODES;
-      for(tmp=free_node_ss;tmp;tmp=_CAR(tmp)) e--;
+      for(tmp2=node_s_blocks;tmp2;tmp2=tmp2->next) e+=tmp2->used;
       if(e)
       {
 	int e2=e;
