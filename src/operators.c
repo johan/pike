@@ -2664,9 +2664,10 @@ PMOD_EXPORT void o_divide(void)
  *!   	  result will be a float.
  *!   @endmixed
  *! @note
- *!   Unlike in some languages, the function f(x) = x/n behaves in a
- *!   well-defined, sane way. When you increase x, f(x) will jump one step
- *!   for each n:th increment. For all x, (x + n) / n = x/n + 1; crossing
+ *!   Unlike in some languages, the function f(x) = x/n (x and n integers)
+ *!   behaves in a well-defined way and is always rounded down. When you
+ *!   increase x, f(x) will increase with one for each n:th increment. For
+ *!   all x, (x + n) / n = x/n + 1; crossing
  *!   zero is not special. This also means that / and % are compatible, so
  *!   that a = b*(a/b) + a%b for all a and b.
  *! @seealso
