@@ -1589,6 +1589,21 @@ void count_memory_in_strings(INT32 *num, INT32 *size)
   size[0]=size_;
 }
 
+#ifdef PIKE_DEBUG
+unsigned gc_touch_all_strings(void)
+{
+  unsigned INT32 e;
+  unsigned n = 0;
+  if (!base_table) return 0;
+  for(e=0;e<htable_size;e++)
+  {
+    struct pike_string *p;
+    for(p=base_table[e];p;p=p->next) debug_gc_touch(p), n++;
+  }
+  return n;
+}
+#endif
+
 void gc_mark_all_strings(void)
 {
   unsigned INT32 e;
