@@ -42,7 +42,7 @@ static void image_ft_face_free( struct object *o )
 
 static void image_ft_face_write_char( INT32 args )
 {
-  FT_GlyphSlot  slot = TFACE->glyph; // optimize.
+  FT_GlyphSlot  slot = TFACE->glyph; /* optimize. */
   int c, x, y;
   struct image *i;
   struct object *o;
