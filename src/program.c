@@ -606,7 +606,7 @@ static char *raw_lfun_types[] = {
  */
 
 struct program *first_program = 0;
-static int current_program_id=0x10000;
+static int current_program_id = PROG_DYNAMIC_ID_START;
 
 struct program *null_program=0;
 
