@@ -488,7 +488,7 @@ class File
   //! @decl void create(int fd, string mode)
   //!
   //! There are four basic ways to create a Stdio.File object.
-  //! The first is calling it without any arguments, in which case the you
+  //! The first is calling it without any arguments, in which case the you'd
   //! have to call @[open()], @[connect()] or some other method which connects
   //! the File object with a stream.
   //!
