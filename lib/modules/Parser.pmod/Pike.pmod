@@ -136,8 +136,8 @@ array(string) split(string data, void|mapping state)
 	}
 
 	if(data[pos..pos+5]=="string") {
-	  pos=search(data,"\"",pos);
-	  pos=search(data,"\"",pos);
+	  pos=((search(data,"\"",pos)+1) || pos);
+	  pos=((search(data,"\"",pos)+1) || pos);
 	  break;
 	}
 
