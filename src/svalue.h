@@ -129,7 +129,7 @@ struct svalue
  */
 #define MagictFuncV(RET,REST,ARGS) "\004" ARGS "\021" REST RET
 #define MagictFunc(RET,ARGS) tFuncV(ARGS "", tVoid, RET)
-#define tFunction tFuncV("" ,tOr(tMix,tVoid),tOr(tMix,tVoid))
+#define tFunction tFuncV("" ,tOr(tZero,tVoid),tOr(tMix,tVoid))
 #define tNone ""
 #define tPrg "\005"
 #define tProgram "\005"
