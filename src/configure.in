@@ -516,13 +516,10 @@ int main()
 #endif /* HAVE_PTHREAD_H */
 void foo(pthread_cond_t *bar)
 {
-  pthread_cond_init(bar, pthread_condattr_default)
+  pthread_cond_init(bar, pthread_condattr_default);
 }
-
-int main(int argc, char **argv)
-{
-  exit(0);
-}
+        ],[
+          exit(0);
         ],[
 	  pike_cv_have_pthread_condattr_default=yes
 	],[
