@@ -503,7 +503,7 @@ class FILE {
 	return file::write(sprintf(fmt,@data));
     }
     
-    string read(int|void bytes)
+    string read(int|void bytes,void|int(0..1) now)
     {
       if (!query_num_arg()) {
 	bytes = 0x7fffffff;
@@ -516,6 +516,7 @@ class FILE {
 	  bpos = 0;
 	  return res;
 	}
+	else if (now) break;
 
       return extract(bytes);
     }
