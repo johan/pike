@@ -4896,7 +4896,8 @@ static void optimize(node *n)
 				OPT_ASSIGNMENT|
 				OPT_RETURN)) &&
 	 (CAR(n)->tree_info & OPT_TRY_OPTIMIZE) &&
-	 CAR(n)->token != ':')
+	 CAR(n)->token != ':' &&
+	 CAR(n)->token != F_VAL_LVAL)
       {
 #ifdef SHARED_NODES
 	sub_node(n);
