@@ -26,6 +26,9 @@ class simple
   {
     if (con) {
       catch {
+	con->set_nonblocking(0,0,0);	// Make sure all callbacks are cleared.
+      };
+      catch {
 	con->close();
       };
       catch {
@@ -167,6 +170,7 @@ class simple
     if (handle_data || sizeof(read_buffer) || sizeof(multi_line_buffer)) {
       werror("close_callback(): Unexpected close!\n");
     }
+    con->set_nonblocking(0,0,0);	// Make sure all callbacks are cleared.
     con->close();
     con = 0;
   }
