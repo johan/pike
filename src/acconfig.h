@@ -54,6 +54,9 @@
 /* Define to 'int' if <sys/time.h> doesn't */
 #undef time_t
 
+/* Define to 'short' if <sys/types.h> doesn't */
+#undef pri_t
+
 /* Define to 'int' if <signal.h> doesn't */
 #undef sig_atomic_t
 
