@@ -35,7 +35,9 @@ PMOD_EXPORT size_t thread_stack_size=1024 * 1204;
  
 PMOD_EXPORT void thread_low_error (int errcode)
 {
-  fatal ("Unexpected error from thread function: %d\n", errcode);
+  fatal ("%s:%d: %s\n"
+	 "Unexpected error from thread function: %d\n",
+	 fname, lineno, cmd, errcode);
 }
 
 #ifdef USE_CLOCK_FOR_SLICES

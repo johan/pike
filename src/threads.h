@@ -85,11 +85,14 @@ PMOD_EXPORT extern int live_threads;
 struct object;
 PMOD_EXPORT extern size_t thread_stack_size;
 
-PMOD_EXPORT void thread_low_error (int errcode);
+PMOD_EXPORT void thread_low_error (int errcode, const char *cmd,
+                                   const char *fname, int lineno);
 
 #define LOW_THREAD_CHECK_NONZERO_ERROR(CALL) do {			\
     int thread_errcode_ = (CALL);					\
-    if (thread_errcode_) thread_low_error (thread_errcode_);		\
+    if (thread_errcode_)                                                \
+      thread_low_error(thread_errcode_, TOSTR(CALL),                    \
+                       __FILE__, __LINE__);                             \
   } while (0)
 
 #define DEFINE_MUTEX(X) PIKE_MUTEX_T X
