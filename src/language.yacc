@@ -691,7 +691,8 @@ def: modifiers type_or_error optional_stars F_IDENTIFIER
 	  my_yyerror("Missing name for argument %d.",e);
 	} else {
 	  /* FIXME: Should probably use some other flag. */
-	  if (d_flag && (compiler_pass == 2) &&
+	  if ((runtime_options & RUNTIME_CHECK_TYPES) &&
+	      (compiler_pass == 2) &&
 	      (compiler_frame->variable[e].type != mixed_type_string)) {
 	    node *local_node;
 

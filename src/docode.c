@@ -706,8 +706,7 @@ static int do_docode2(node *n,int flags)
     return 1;
 
   case F_SOFT_CAST:
-    /* FIXME: Should probably be some other flag */
-    if (d_flag) {
+    if (runtime_options & RUNTIME_CHECK_TYPES) {
       tmp1 = store_prog_string(n->type);
       emit(F_STRING, tmp1);
       tmp1 = do_docode(CAR(n), 0);
