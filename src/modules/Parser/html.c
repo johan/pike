@@ -863,7 +863,7 @@ static void html__set_entity_callback(INT32 args)
  *!   This argument can be any of the following.
  *!
  *!   @mixed
-' *!	@type function
+ *!	@type function
  *!       The function will be called as a callback function. It will
  *!       get the following arguments, depending on the type of
  *!       callback.
