@@ -697,6 +697,8 @@ HFILES=						\
   version.protos                                    \
   builtin.protos
 
+$(HFILES): precompile.sh
+
 import-stamp: $(HFILES) precompile.sh
 	@./precompile.sh fake_dynamic_load.pike import_functions.tmp $(HFILES)
 	@cmp import_functions.tmp import_functions.h >/dev/null || mv import_functions.tmp import_functions.h
