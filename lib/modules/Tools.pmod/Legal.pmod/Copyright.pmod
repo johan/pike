@@ -13,8 +13,8 @@ static mapping(string:array(string)) copyrights = ([
     "Copyright © 1996-1997 Informationsvävarna AB",
     "Copyright © 1997-2000 Idonex AB",
     "Copyright © 2000-2002 Roxen Internet Software AB",
-    "Copyright © 2002 Department of Computer and Information Science,\n"
-    "                 Linköping University",
+    "Copyright © 2002-2003 Department of Computer and Information Science,\n"
+    "                      Linköping University",
   }),
 
   "Unicode Character Database":
@@ -25,6 +25,9 @@ static mapping(string:array(string)) copyrights = ([
 
   "DES encryption and decryption code":
   ({ "Copyright © 1992 Dana L. How" }),
+
+  "Emacs font lock definitions":
+  ({ "Copyright © 2002 Martin Stjernholm" }),
 
   "Rijndael encryption and decryption code":
   ({ "Copyright © 2000 Joan Daemen" }),
