@@ -486,7 +486,7 @@ int main() {
     }
     else
     {
-      sprintf(buf, "%${mod}d,%d", ($1) 4711, ($1)-4711, 17);
+      sprintf(buf, "%${mod}d,%d", ($1) 4711, 17);
       return !!strcmp("4711,17", buf);
     }
   }
