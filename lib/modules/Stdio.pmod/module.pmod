@@ -601,6 +601,19 @@ int write_file(string filename,string what)
   return ret;
 }
 
+int append_file(string filename,string what)
+{
+  int ret;
+  object(File) f = File();
+
+  if(!f->open(filename,"awc"))
+    error("Couldn't open file "+filename+".\n");
+  
+  ret=f->write(what);
+  f->close();
+  return ret;
+}
+
 int file_size(string s)
 {
   int *stat;
