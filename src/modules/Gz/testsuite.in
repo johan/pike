@@ -13,6 +13,7 @@ define(dotest,[[
   test_true([[Gz.inflate()->inflate(Gz.deflate(1)->deflate(____gz_tmp_constant))==____gz_tmp_constant]])
   test_true([[Gz.inflate()->inflate(Gz.deflate(9)->deflate(____gz_tmp_constant))==____gz_tmp_constant]])
   test_true([[object o=Gz.deflate(); Gz.inflate()->inflate(o->deflate(____gz_tmp_constant,o->PARTIAL_FLUSH) + o->deflate(____gz_tmp_constant,o->FINISH)) == (____gz_tmp_constant)+(____gz_tmp_constant)]])
+  test_do([[add_constant("____gz_tmp_constant");]])
 ]])
 
   dotest("")
