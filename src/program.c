@@ -1526,6 +1526,22 @@ int low_reference_inherited_identifier(struct program_state *q,
   return np->num_identifier_references -1;
 }
 
+int find_inherit(struct program *p, int num_inherits,
+		 struct pike_string *name, int level)
+{
+  int e;
+
+  if (num_inherits <= 1) return 0;
+
+  /* This depends deeply on the inherit structure. */
+  for(e = num_inherits-1; e>0; e--) {
+    if (p->inherits[e].inherit_level > level) continue;
+    if (p->inherits[e].inherit_level < level) return 0;
+    if (name == p->inherits[e].name) return e;
+  }
+  return 0;
+}
+
 node *reference_inherited_identifier(struct pike_string *super_name,
 				   struct pike_string *function_name)
 {
@@ -2667,15 +2683,11 @@ int low_find_lfun(struct program *p, int lfun)
   struct pike_string *lfun_name = findstring(lfun_names[lfun]);
   unsigned int flags = 0;
   if (!lfun_name) return -1;
-  if ((1 <= lfun) && (lfun < 3)) {
-    /* create() and destroy() are used even if they are static. */
-    flags = SEE_STATIC;
-  }
   return
     really_low_find_shared_string_identifier(lfun_name,
 					     dmalloc_touch(struct program *,
 							   p),
-					     flags);
+					     SEE_STATIC);
 }
 
 /*
