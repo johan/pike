@@ -1082,6 +1082,24 @@ static int eval_instruction(unsigned char *pc)
       }
       break;
 
+#ifdef F_ASSIGN_ARRAY
+      CASE(F_ASSIGN_ARRAY);
+      {
+	struct svalue *base=*--mark_sp;
+	INT32 e,args=(sp-base)>>1
+	if(sp[-1].type != T_ARRAY)
+	  error("Bad argument to multiple assign, not an array.\n");
+	if(sp[-1].u.array->size < args)
+	  error("Not enough elements in array for multiple assign.\n");
+
+	for(e=0;e<args;e++)
+	  assign_lvalue(base+e*2,sp[-1].u.array->item+e);
+
+	pop_n_elems(sp-base);
+	break;
+      }
+#endif
+
       /* Stack machine stuff */
       CASE(F_POP_VALUE); pop_stack(); break;
       CASE(F_POP_N_ELEMS); pop_n_elems(GET_ARG()); break;
