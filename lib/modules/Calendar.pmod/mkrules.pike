@@ -847,7 +847,7 @@ class TZRules
    { 
       offset_to_utc=offset; 
       name=_name;
-      if (search(name,\"/\")!=-1)
+      if (has_value(name, \"/\"))
       {
 	 names=name/\"/\";
 	 tzformat=lambda(string s)
