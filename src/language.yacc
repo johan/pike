@@ -2436,7 +2436,7 @@ class: modifiers TOK_CLASS line_number_info optional_identifier
       i=isidentifier($4->u.sval.u.string);
       if(i<0)
       {
-	// Seriously broken...
+	/* Seriously broken... */
 	yyerror("Pass 2: program not defined!");
 	low_start_new_program(0, 2, 0,
 			      $1,
