@@ -7,7 +7,7 @@
 
 @TOP@
 
-/* Define if your <jerror.h> defines JERR_BAD_CROP_ERR */
+/* Define if your <jerror.h> defines JERR_BAD_CROP_SPEC */
 #undef HAVE_JERR_BAD_CROP_SPEC
 
 @BOTTOM@
