@@ -275,5 +275,5 @@ dnl MISSING TEST: String.HTML.Obox
 test_eq( String.int2text(1),    "one" )
 test_eq( String.int2text(100),  "onehundred" )
 test_eq( String.int2text(1000), "one thousand" )
-test_eq( String.int2text(4242), "four thousand twohundredfortytwo" )
+test_eq( String.int2text(4242), "four thousand twohundredfourtytwo" )
 test_eq( String.int2text(-1),   "minus one" )
