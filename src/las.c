@@ -1896,7 +1896,7 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
     {
       ptrdiff_t c;
       DECLARE_CYCLIC();
-      c = (ptrdiff_t)BEGIN_CYCLIC(Pike_sp[-1].u.refs, id);
+      c = ((char *)BEGIN_CYCLIC(Pike_sp[-1].u.refs, id))-(char *)0;
       if(c>1)
       {
 	my_yyerror("Recursive module dependency in '%s'.",id->str);
