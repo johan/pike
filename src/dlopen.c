@@ -1947,6 +1947,11 @@ static void init_dlopen(void)
   }
 #endif
 
+#ifdef PIKE_DEBUG
+  if(global_imagebase != (INT32)data->buffer)
+    fatal("LoadLibrary(ARGV[0]) didn't return instantiated program.\n");
+#endif 
+
 #ifdef DLDEBUG
   fprintf(stderr,"DL: init done\n");
 #endif
