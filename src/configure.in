@@ -1109,15 +1109,6 @@ MY_AC_ARG_WITH(new-multisets,
 			[enable new multiset implementation (EXPERIMENTAL).]),
 	       [AC_DEFINE(PIKE_NEW_MULTISETS)],[])
 
-# This makes configure default to --without-Perl
-# Remove this when the Perl module stops crashing and hanging. -Hubbe
-AC_ARG_WITH(perl, MY_DESCR([--with-perl],
-			   [enable the embedded Perl module (EXPERIMENTAL)]),
-	    [],
-[ac_configure_args="$ac_configure_args --without-perl"
- with_perl="no"
-])
-
 AC_ARG_WITH(pike-type, MY_DESCR([--without-pike-type],
 				[disable struct pike_type.]))
 
