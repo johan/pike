@@ -37,12 +37,6 @@ RCSID("$Id$");
 #include "security.h"
 #include "bignum.h"
 
-/* The sp macro conflicts with Solaris 2.5.1's <sys/conf.h>. */
-#ifdef sp
-#undef sp
-#define STACKPOINTER_WAS_DEFINED
-#endif /* sp */
-
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif /* HAVE_SYS_TYPES_H */
@@ -109,13 +103,9 @@ RCSID("$Id$");
 #include <netinfo/ni.h>
 #endif
 
-/* Restore the sp macro */
-#ifdef STACKPOINTER_WAS_DEFINED
-#define sp Pike_sp
-#undef STACK_POINTER_WAS_DEFINED
-#endif /* STACKPOINTER_WAS_DEFINED */
-
 #include "dmalloc.h"
+
+#define sp Pike_sp
 
 #ifndef NGROUPS_MAX
 #ifdef NGROUPS
