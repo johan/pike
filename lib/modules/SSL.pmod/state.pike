@@ -155,7 +155,7 @@ Alert|.packet encrypt_packet(.packet packet, int version)
 	  packet->fragment += crypt->pad();
 	} else {
 	  packet->fragment = tls_pad(packet->fragment+digest,
-				     crypt->query_block_size());
+				     crypt->block_size());
 	  packet->fragment = crypt->crypt(packet->fragment);
 	}
       } else {

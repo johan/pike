@@ -347,7 +347,7 @@ class PFX
       elements[1] = safes;
       if (passwd)
       {	/* Password-integrity mode */
-	salt = Crypto.randomness.reasonably_random()->read(SALT_SIZE);
+	salt = Crypto.Random.random_string(SALT_SIZE);
 
 	elements[2] = Sequence(
 	  ({ Sequence(

@@ -179,7 +179,7 @@ static void connect(string server,int port,int blocking)
 #endif /* 0 */
      });
      string ref;
-     context->random = Crypto.randomness.reasonably_random()->read;
+     context->random = Crypto.Random.random_string;
      
      object read_callback=con->query_read_callback();
      object write_callback=con->query_write_callback();
@@ -296,8 +296,7 @@ void async_got_host(string server,int port)
 			      SSL_rsa_with_3des_ede_cbc_sha,
 			    });
 			    string ref;
-			    context->random =
-			      Crypto.randomness.reasonably_random()->read;
+			    context->random = Crypto.Random.random_string;
 		 
 			    ssl = SSL.sslfile(con, context, 1,0);
 			    ssl->set_nonblocking(0,async_connected,async_failed);

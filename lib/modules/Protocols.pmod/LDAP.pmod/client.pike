@@ -408,7 +408,7 @@ int _prof_gtim;
 
 #if constant(SSL.sslfile)
     if(lauth->scheme == "ldaps") {
-      context->random = Crypto.randomness.reasonably_random()->read;
+      context->random = Crypto.Random.random_string;
       ::create(SSL.sslfile(::_fd, context, 1,1));
       info->tls_version = ldapfd->version;
     } else
