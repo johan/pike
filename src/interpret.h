@@ -721,6 +721,7 @@ PMOD_EXPORT void slow_check_stack(void);
 PMOD_EXPORT void custom_check_stack(ptrdiff_t amount, const char *fmt, ...)
   ATTRIBUTE((format (printf, 2, 3)));
 PMOD_EXPORT void cleanup_interpret(void);
+PMOD_EXPORT void low_cleanup_interpret(struct Pike_interpreter *interpreter);
 void really_clean_up_interpret(void);
 /* Prototypes end here */
 
