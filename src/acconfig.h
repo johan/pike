@@ -509,6 +509,10 @@
 /* Define to the page size (handled efficiently by malloc). */
 #undef PIKE_MALLOC_PAGE_SIZE
 
+/* YES if the number reported by get_cpu_time (rusage.c) is thread
+ * local, NO if it isn't, UNKNOWN if it couldn't be established. */
+#undef CPU_TIME_IS_THREAD_LOCAL
+
 @BOTTOM@
 
 /* NT stuff */
