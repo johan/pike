@@ -136,7 +136,7 @@ struct pike_type *debug_compiler_pop_type(void)
   }
 }
 
-char *get_name_of_type(int t)
+char *get_name_of_type(TYPE_T t)
 {
   switch(t)
   {
