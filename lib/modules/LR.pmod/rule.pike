@@ -60,6 +60,10 @@ multiset(string) prefix_tokens = (<>);
 //.   Also used to identify the rule.
 int number = 0;
 
+//. + pri
+//.   Priority and associativity of this rule.
+object /* (priority) */ pri;
+
 /*
  * Functions
  */
