@@ -1116,11 +1116,16 @@ static INT32 lower_cpp(struct cpp *this,
     case '0': case '1': case '2': case '3': case '4':
     case '5': case '6': case '7': case '8': case '9':
     {
+      INT32 tmp;
       PCHARP foo = MKPCHARP(data+pos, SHIFT);
-      this->current_line=STRTOL_PCHARP(foo, &foo, 10)-1;
-      string_builder_putchar(&this->buf, '#');
-      string_builder_append(&this->buf, MKPCHARP(data+pos, SHIFT),
-			    ((WCHAR *)foo.ptr) - (data+pos));
+      tmp=STRTOL_PCHARP(foo, &foo, 10)-1;
+      if(OUTP())
+      {
+	this->current_line=tmp;
+	string_builder_putchar(&this->buf, '#');
+	string_builder_append(&this->buf, MKPCHARP(data+pos, SHIFT),
+			      ((WCHAR *)foo.ptr) - (data+pos));
+      }
       pos = ((WCHAR *)foo.ptr) - data;
       SKIPSPACE();
       
@@ -1131,27 +1136,32 @@ static INT32 lower_cpp(struct cpp *this,
 	
 	READSTRING(nf);
 
-	free_string(this->current_file);
-	this->current_file = finish_string_builder(&nf);
+	if(OUTP())
+	{
+	  free_string(this->current_file);
+	  this->current_file = finish_string_builder(&nf);
 
-	string_builder_putchar(&this->buf, ' ');
-	switch (this->current_file->size_shift) {
-	case 0:
-	  PUSH_STRING0((p_wchar0 *)this->current_file->str,
-		       this->current_file->len,&this->buf);
-	  break;
-	case 1:
-	  PUSH_STRING1((p_wchar1 *)this->current_file->str,
-		       this->current_file->len,&this->buf);
-	  break;
-	case 2:
-	  PUSH_STRING2((p_wchar2 *)this->current_file->str,
-		       this->current_file->len,&this->buf);
-	  break;
-	default:
-	  fatal("cpp(): Filename has bad shift %d\n",
-		this->current_file->size_shift);
-	  break;
+	  string_builder_putchar(&this->buf, ' ');
+	  switch (this->current_file->size_shift) {
+	    case 0:
+	      PUSH_STRING0((p_wchar0 *)this->current_file->str,
+			   this->current_file->len,&this->buf);
+	      break;
+	    case 1:
+	      PUSH_STRING1((p_wchar1 *)this->current_file->str,
+			   this->current_file->len,&this->buf);
+	      break;
+	    case 2:
+	      PUSH_STRING2((p_wchar2 *)this->current_file->str,
+			   this->current_file->len,&this->buf);
+	      break;
+	    default:
+	      fatal("cpp(): Filename has bad shift %d\n",
+		    this->current_file->size_shift);
+	      break;
+	  }
+	}else{
+	  free_string_builder(&nf);
 	}
       }
       
