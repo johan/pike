@@ -258,7 +258,7 @@ void *parent_storage(int depth)
 #ifdef PIKE_DEBUG
 void *check_storage(void *storage, unsigned long magic, char *prog)
 {
-  if( magic != *((unsigned long *)storage))
+  if( storage && magic != *((unsigned long *)storage))
   {
     fprintf(stderr, "Wrong magic number! expected a %s\n",prog);
     fprintf(stderr, "Expected %lx, got %lx\n",magic,*((unsigned long *)storage));
