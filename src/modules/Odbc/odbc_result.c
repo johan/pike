@@ -40,7 +40,7 @@ RCSID("$Id$");
 /* #define ODBC_DEBUG */
 
 /*
- * Contants
+ * Constants
  */
 
 /* Buffer size used when retrieving BLOBs
