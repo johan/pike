@@ -1596,6 +1596,17 @@ static void init_dlopen(void)
     EXPORT(abs);
     EXPORT(putchar);
     EXPORT(putenv);
+    EXPORT(strncat);
+    EXPORT(fdopen);
+    EXPORT(fstat);
+    EXPORT(_assert);
+    EXPORT(qsort);
+    EXPORT(exp);
+    EXPORT(log);
+    EXPORT(sqrt);
+    EXPORT(fopen);
+    EXPORT(fseek);
+    EXPORT(fread);
   }
 
 #ifdef DLDEBUG
