@@ -1402,13 +1402,10 @@ static void f_pid_status_wait(INT32 args)
 	  Pike_error("Lost track of a child (pid %d, errno from wait %d).\n",pid,err);
       }
       else {
-	do {
-	  err = 0;
-	  THREADS_ALLOW();
-	  pid = WAITPID(pid, &status, 0|WUNTRACED);
-	  if (pid < 0) err = errno;
-	  THREADS_DISALLOW();
-	} while (err == EINTR);
+	THREADS_ALLOW();
+	pid = WAITPID(pid, &status, 0|WUNTRACED);
+	if (pid < 0) err = errno;
+	THREADS_DISALLOW();
       }
 
       if(pid > 0)
@@ -1421,7 +1418,9 @@ static void f_pid_status_wait(INT32 args)
 	{
 	  switch(err)
 	  {
-	    case EINTR: break;
+	    case EINTR: 
+	      err = 0;
+	      break;
 	      
 #ifdef _REENTRANT
 	    case ECHILD:
