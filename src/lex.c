@@ -76,7 +76,7 @@ struct instr_counter *init_instr_storage_pointers(int depth)
   return d;
 }
 
-void add_runned(PIKE_OPCODE_T instr)
+void add_runned(PIKE_INSTR_T instr)
 {
   int e;
   struct instr_counter **tmp=&instr_counter_storage;
@@ -432,7 +432,7 @@ char *get_f_name(int n)
 }
 
 #ifdef HAVE_COMPUTED_GOTO
-char *get_opcode_name(PIKE_OPCODE_T n)
+char *get_opcode_name(PIKE_INSTR_T n)
 {
   int fcode;
   int low = 0;
