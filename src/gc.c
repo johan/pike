@@ -25,6 +25,7 @@ struct callback *gc_evaluator_callback=0;
 #include "constants.h"
 #include "interpret.h"
 #include "bignum.h"
+#include "pike_threadlib.h"
 
 #include "gc.h"
 #include "main.h"
