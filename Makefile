@@ -245,6 +245,9 @@ clean:
 	  if test -f remake; then $(MAKE) "MAKE=$(MAKE)" clean; \
 	  else exit $$res; fi; \
 	} || exit $$?
+	if test -f "refdoc/Makefile"; then \
+	  cd refdoc; $(MAKE) "MAKE=$(MAKE)" clean; \
+	else :; fi
 
 spotless:
 	-cd "$(BUILDDIR)" && test -f Makefile && $(MAKE) "MAKE=$(MAKE)" spotless || { \
@@ -252,6 +255,9 @@ spotless:
 	  if test -f remake; then $(MAKE) "MAKE=$(MAKE)" spotless; \
 	  else exit $$res; fi; \
 	} || exit $$?
+	if test -f "refdoc/Makefile"; then \
+	  cd refdoc; $(MAKE) "MAKE=$(MAKE)" spotless; \
+	else :; fi
 
 delete_builddir:
 	-rm -rf "$(BUILDDIR)"
