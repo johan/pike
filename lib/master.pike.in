@@ -343,12 +343,14 @@ void putenv(string varname, string value)
 }
 
 //! @appears normalize_path
-string normalize_path( string X )
+//! Replaces "\" with "/" if runing on MS Windows. It is
+//! adviced to use @[system.normalize_path] instead.
+string normalize_path( string path )
 {
 #ifndef __NT__
-  return X;
+  return path;
 #else
-  return replace(X,"\\","/");
+  return replace(path,"\\","/");
 #endif
 }
 

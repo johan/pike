@@ -39,6 +39,9 @@
 #include "operators.h"
 #include "stuff.h"
 
+/*! @module system
+ */
+
 static void throw_nt_error(char *funcname, int err)
 /*
  *  Give string equivalents to some of the more common NT error codes.
@@ -1946,7 +1949,7 @@ static void f_NetWkstaUserEnum(INT32 args)
  *!   Normalize an NT filesystem path.
  *!
  *!   The following transformations are currently done:
- *!   @dl
+ *!   @ul
  *!     @item
  *!       Trailing slashes are removed.
  *!     @item
@@ -1962,7 +1965,7 @@ static void f_NetWkstaUserEnum(INT32 args)
  *!       Relative paths are expanded to absolute paths.
  *!     @item
  *!       Case-information is restored.
- *!   @enddl
+ *!   @endul
  *!
  *! @returns
  *!   A normalized absolute path without trailing slashes.
@@ -2907,3 +2910,5 @@ void exit_nt_system_calls(void)
 
 #endif
 
+/*! @endmodule
+ */
