@@ -251,7 +251,7 @@ static INT32 feed_utf7(const p_wchar0 *p, INT32 l, struct std_cs_stor *s)
   if(l<=0)
     return l;
 
-  if(shift==2)
+  if(shift==2) {
     if(*p=='-') {
       string_builder_putchar(&s->strbuild, '+');
       if(--l==0) {
@@ -262,6 +262,7 @@ static INT32 feed_utf7(const p_wchar0 *p, INT32 l, struct std_cs_stor *s)
       shift=0;
     } else
       shift=1;
+  }
 
   for(;;)
     if(shift) {
