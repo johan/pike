@@ -517,8 +517,8 @@ void init_image_psd()
                 "function(string:mapping)", 0);
   add_function( "___decode_image_channel", f_decode_image_channel, 
                 "mixed", 0);
-  add_function( "___decode_image_data", f_decode_image_data, 
-                "mixed", 0);
+/*   add_function( "___decode_image_data", f_decode_image_data,  */
+/*                 "mixed", 0); */
 
   add_integer_constant("Bitmap" , Bitmap, 0 );
   add_integer_constant("Greyscale" , Greyscale, 0 );
