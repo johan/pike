@@ -50,20 +50,8 @@ constant locate_references = _locate_references;
 constant memory_usage = _memory_usage;
 #endif
 
-#if constant(_next)
-constant next = _next;
-#endif
-
 #if constant(_optimizer_debug)
 constant optimizer_debug = _optimizer_debug;
-#endif
-
-#if constant(_prev)
-constant prev = _prev;
-#endif
-
-#if constant(_refs)
-constant refs = _refs;
 #endif
 
 #if constant(_reset_dmalloc)
