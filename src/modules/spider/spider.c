@@ -757,7 +757,7 @@ void do_html_parse(struct pike_string *ss,
 	  free_svalue(&sval1);
 	  free_svalue(&sval2);
 	  push_text("");
-	  f_multiply(1);
+	  f_multiply(2);
 	  copy_shared_string(ss2,sp[-1].u.string);
 	  pop_stack();
 
