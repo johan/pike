@@ -47,7 +47,7 @@
 #define fd_REVERSE	     32
 
 
-#ifdef HAVE_WINSOCK_H
+#if defined(HAVE_WINSOCK_H) && !defined(__GNUC__)
 
 #define HAVE_FD_FLOCK
 
@@ -285,7 +285,7 @@ PMOD_EXPORT void closedir(DIR *dir);
 
 
 
-#else /* HAVE_WINSOCK */
+#else /* HAVE_WINSOCK && !__GNUC__ */
 
 
 typedef int FD;
