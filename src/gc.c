@@ -1342,7 +1342,7 @@ void locate_references(void *a)
   tmp=d_flag;
   d_flag=0;
 
-  fprintf(stderr,"**Looking for references:\n");
+  fprintf(stderr,"**Looking for references to %p:\n", a);
   
   check_for=a;
 
@@ -1386,6 +1386,8 @@ void locate_references(void *a)
 #endif
   }
 #endif
+
+  fprintf(stderr,"**Done looking for references to %p.\n", a);
 
   Pike_in_gc = orig_in_gc;
   if(i) exit_gc();
