@@ -2115,6 +2115,12 @@ static void decode_value2(struct decode_data *data)
 	  SET_ONERROR(err3, zap_unfinished_program, p);
 	  
 	  debug_malloc_touch(p);
+	  if(data->codec)
+	  {
+	    ref_push_program(p);
+	    apply(data->codec, "__register_new_program", 1);
+	    pop_stack();
+	  }
 	  tmp.type=T_PROGRAM;
 	  tmp.u.program=p;
 	  EDB(2,fprintf(stderr, "%*sDecoding a program to <%d>: ",
@@ -2390,6 +2396,13 @@ static void decode_value2(struct decode_data *data)
 	  debug_malloc_touch(dat);
 	  debug_malloc_touch(p);
 	  p->flags |= PROGRAM_PASS_1_DONE | PROGRAM_FIXED;
+	  if(data->codec)
+	  {
+	    ref_push_program(p);
+	    apply(data->codec, "__register_new_object", 1);
+	    pop_stack();
+	  }
+	  
 	  for(d=0;d<p->num_constants;d++)
 	  {
 	    decode_value2(data);

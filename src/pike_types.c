@@ -29,7 +29,7 @@ RCSID("$Id$");
 #include "block_alloc.h"
 
 #ifdef PIKE_DEBUG
-#define PIKE_TYPE_DEBUG
+/* #define PIKE_TYPE_DEBUG */
 #endif /* PIKE_DEBUG */
 
 /*

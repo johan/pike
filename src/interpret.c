@@ -1456,6 +1456,7 @@ PMOD_EXPORT void f_call_function(INT32 args)
 
 PMOD_EXPORT void call_handle_error(void)
 {
+  dmalloc_touch_svalue(&throw_value);
   if (Pike_interpreter.svalue_stack_margin) {
     ONERROR tmp;
     int old_t_flag = t_flag;

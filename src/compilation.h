@@ -149,6 +149,8 @@
   IMEMBER(int, compat_major, PIKE_MAJOR_VERSION)
   IMEMBER(int, compat_minor, PIKE_MINOR_VERSION)
   ZMEMBER(int, check_final, 0)
+  ZMEMBER(struct program_state *,depends_on,0)
+  ZMEMBER(struct compilation *,compiler,0)
   SEND
 
 #undef PCODE

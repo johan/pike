@@ -2210,8 +2210,15 @@ OPCODE0(F_THIS_OBJECT, "this_object", {
 OPCODE0(F_ZERO_TYPE, "zero_type", {
   if(Pike_sp[-1].type != T_INT)
   {
-    pop_stack();
-    push_int(0);
+    if((Pike_sp[-1].type==T_OBJECT || Pike_sp[-1].type==T_FUNCTION)
+       && !Pike_sp[-1].u.object->prog)
+    {
+      pop_stack();
+      push_int(NUMBER_DESTRUCTED);
+    }else{
+      pop_stack();
+      push_int(0);
+    }
   }else{
     Pike_sp[-1].u.integer=Pike_sp[-1].subtype;
     Pike_sp[-1].subtype=NUMBER_NUMBER;
