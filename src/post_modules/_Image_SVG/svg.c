@@ -27,13 +27,13 @@ RCSID("$Id$");
 
 #include <librsvg/rsvg.h>
 
-/*
-*! @module Image
-*/
+/*! @module Image
+ */
 
-/*
-*! @module SVG
-*/
+/*! @module SVG
+ *! This is a glue against the librsvg-2.0 library,
+ *! providing Scalable Vector Graphics (SVG) for Pike.
+ */
 
 
 static void _do_free_mapping( void *opts )
