@@ -227,3 +227,8 @@ string crypt_block(string s)
 }
 
 int rsa_size() { return n->size(); }
+
+int public_key_equal (object rsa)
+{
+  return n == rsa->n && e == rsa->e;
+}
