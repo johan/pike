@@ -182,6 +182,16 @@ all: module_objects hilfe
 	$(MAKE) $(MAKE_FLAGS) $(MAKE_PARALLEL) post_modules
 	$(MAKE) $(MAKE_FLAGS) $(MAKE_PARALLEL) pike
 
+documentation: just-tinstall
+	@if [ -f "$(SRCDIR)/../autodoc/Makefile" ]; then \
+	  PIKE="`pwd`/test-pike"; \
+	  export PIKE; \
+	  (cd $(SRCDIR)/../autodoc && $(MAKE) PIKE="$$PIKE") || exit 1; \
+	else \
+	  echo "Autodoc directory not found."; \
+	  exit 1; \
+	fi
+
 post_modules: pike
 	@( cd post_modules ; rm remake >/dev/null 2>&1 || : ; \
 	   $(MAKE) $(MAKE_PARALLEL) $(MAKE_FLAGS) || \
