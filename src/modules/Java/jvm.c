@@ -1870,6 +1870,11 @@ static void build_native_entry(JNIEnv *env, jclass cls,
   int statc, args=0;
   char *p = sig->str;
 
+  con->name = name;
+  con->sig = sig;
+  name->refs++;
+  sig->refs++;
+
   if((*env)->GetMethodID(env, cls, name->str, sig->str))
     statc = 0;
   else {
@@ -1882,10 +1887,6 @@ static void build_native_entry(JNIEnv *env, jclass cls,
     }
   }
 
-  con->name = name;
-  con->sig = sig;
-  name->refs++;
-  sig->refs++;
   jnm->name = name->str;
   jnm->signature = sig->str;
   jnm->fnPtr = (void*)&con->cpu;
