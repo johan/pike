@@ -4100,13 +4100,18 @@ int store_constant(struct svalue *foo,
   }else{
     for(e=0;e<Pike_compiler->new_program->num_constants;e++)
     {
-      struct program_constant *c= Pike_compiler->new_program->constants+e;
-      if((equal ? is_equal(& c->sval,foo) : is_eq(& c->sval,foo)) &&
-	 c->name == constant_name)
-      {
-	UNSETJMP(tmp2);
-	return e;
+      JMP_BUF tmp1;
+      if (!SETJMP(tmp1)) {
+	struct program_constant *c= Pike_compiler->new_program->constants+e;
+	if((equal ? is_equal(& c->sval,foo) : is_eq(& c->sval,foo)) &&
+	   c->name == constant_name)
+	{
+	  UNSETJMP(tmp1);
+	  UNSETJMP(tmp2);
+	  return e;
+	}
       }
+      UNSETJMP(tmp1);
     }
     assign_svalue_no_free(&tmp.sval,foo);
     if((tmp.name=constant_name)) add_ref(constant_name);
