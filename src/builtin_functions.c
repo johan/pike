@@ -775,11 +775,11 @@ PMOD_EXPORT void f_search(INT32 args)
     return;
 
   case T_OBJECT:
-    if (Pike_sp[-args].u.object->program) {
+    if (Pike_sp[-args].u.object->prog) {
       struct object *o = Pike_sp[-args].u.object;
-      struct program *p = o->program;
+      struct program *p = o->prog;
       /* NOTE: Fake lfun! */
-      int id = low_find_lfun(p, LFUN__STATIC);
+      int id = low_find_lfun(p, LFUN__SEARCH);
       int next, ind;
 
       /* First try lfun::_search(). */
@@ -790,9 +790,9 @@ PMOD_EXPORT void f_search(INT32 args)
       }
 
       /* Check if we have an iterator. */
-      if (((id = find_identifier(p, "value")) >= 0) &&
-	  ((next = find_identifier(p, "next")) >= 0) &&
-	  ((ind = find_identifier(p, "index")) >= 0)) {
+      if (((id = find_identifier("value", p)) >= 0) &&
+	  ((next = find_identifier("next", p)) >= 0) &&
+	  ((ind = find_identifier("index", p)) >= 0)) {
 	/* We have an iterator. */
 
 	/* Set the start position if needed. */
