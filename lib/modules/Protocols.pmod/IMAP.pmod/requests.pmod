@@ -302,6 +302,7 @@ class fetch
 	{
 	  return bad("Invalid fetch");
 	}
+	werror("fetch_attrs[%d] = %O\n", i, fetch_attrs[i]);
       }
       break;
     default:
