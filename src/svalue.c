@@ -32,6 +32,10 @@
 #include <ieeefp.h>
 #endif
 
+#ifdef HAVE_FLOAT_H
+#include <float.h>
+#endif /* HAVE_FLOAT_H */
+
 RCSID("$Id$");
 
 struct svalue dest_ob_zero = { T_INT, 0 };
@@ -646,6 +650,12 @@ PMOD_EXPORT int is_eq(const struct svalue *a, const struct svalue *b)
     return (a->subtype == b->subtype && a->u.object == b->u.object);
       
   case T_FLOAT:
+#ifdef HAVE__ISNAN
+    /* Kludge for Win32... */
+    if (_isnan(a->u.float_number) != _isnan(b->u.float_number)) {
+      return 0;
+    }
+#endif /* HAVE__ISNAN */
     return a->u.float_number == b->u.float_number;
 
   default:
@@ -900,6 +910,11 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
     return my_strcmp(a->u.string, b->u.string) < 0;
 
   case T_FLOAT:
+#ifdef HAVE__ISNAN
+    if (_isnan(a->u.float_number) || _isnan(b->u.float_number)) {
+      return 0;
+    }
+#endif  /* HAVE__ISNAN */
 #ifdef HAVE_ISLESS
     return isless(a->u.float_number, b->u.float_number);
 #else
