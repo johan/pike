@@ -469,7 +469,7 @@ static struct pike_string *_png_unfilter(unsigned char *data,
 	       a=(a+b)>>1;
 
 	       *d=*s+a;
-       
+
 	       d++;
 	       s++;
 	    }
@@ -874,7 +874,7 @@ static int _png_write_rgb(rgb_group *w1,
 	 switch (bpp)
 	 {
 	    case 8:
-	       if (n>len/3) n=len/3;
+	       if (n>len/2) n=len/2;
 	       while (n)
 	       {
 		  d1->r=d1->g=d1->b=*(s++);
@@ -885,7 +885,7 @@ static int _png_write_rgb(rgb_group *w1,
 	       }
 	       break;
 	    case 16:
-	       if (n>len/6) n=len/6;
+	       if (n>len/4) n=len/4;
 	       while (n)
 	       {
 		  d1->r=d1->g=d1->b=*(s++);
@@ -1223,7 +1223,7 @@ static void img_png_decode(INT32 args,int header_only)
    {
       Pike_error("Image.PNG._decode: missing palette (PLTE chunk)\n");
    }
-   
+
    if (ihdr.compression==0)
    {
       png_decompress(ihdr.compression);
@@ -1234,7 +1234,7 @@ static void img_png_decode(INT32 args,int header_only)
       Pike_error("Image.PNG._decode: illegal compression type 0x%02x\n",
 	    ihdr.compression);
 
-   fs=sp[-1].u.string; 
+   fs=sp[-1].u.string;
    push_int(-1);
    mapping_insert(m,sp-1,sp-2);
 
