@@ -713,7 +713,7 @@ static int hrtime_is_calibrated = 0;
 			   :"=a" (l),					\
 			   "=d" (h))
 
-long long rtsc()
+static INLINE long long rtsc()
 {
    long long now;
    unsigned long nl,nh;
