@@ -8,7 +8,7 @@
 #define _verify_internals()
 #endif
 
-#define SHIFT_MAX 0 /* 3 */
+#define SHIFT_MAX 0 /* 2 */
 
 int foo(string opt)
 {
