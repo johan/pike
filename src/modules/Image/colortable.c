@@ -185,7 +185,7 @@ static void exit_colortable_struct(struct object *obj)
 
 /***************** internal stuff ******************************/
 
-#if 1
+#if 0
 #include <sys/resource.h>
 #define CHRONO(X) chrono(X);
 
