@@ -162,7 +162,8 @@ union idptr
    *
    * For pike functions: Offset to the start of the function in
    * program.program in the program pointed to by prog in the struct
-   * inherit that corresponds to the identifier. */
+   * inherit that corresponds to the identifier. Or -1 if a prototype.
+   */
   ptrdiff_t offset;
 };
 
