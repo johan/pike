@@ -104,6 +104,9 @@ struct source *source_normal_file_make( struct svalue *s,
   if (!get_storage( s->u.object, Fd_ref_program ) )
     return 0;
 
+  if (find_identifier("query_fd", s->u.object->prog) < 0)
+    return 0;
+
   res = malloc( sizeof( struct fd_source ) );
   MEMSET( res, 0, sizeof( struct fd_source ) );
 
