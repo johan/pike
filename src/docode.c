@@ -413,8 +413,8 @@ int do_lfun_call(int id,node *args)
     else
       emit1(F_CALL_LFUN, id);
   }
-#endif
   else
+#endif
     emit1(F_CALL_LFUN, id);
   POP_AND_DONT_CLEANUP;
   return 1;
