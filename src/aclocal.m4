@@ -362,10 +362,17 @@ pushdef([AC_OUTPUT],
   test "$PMOD_TARGETS" = '$(SRCDIR)/*.c' && PMOD_TARGETS=
   AC_SUBST(PMOD_TARGETS)
 
+  AC_MSG_CHECKING([for the Pike base directory])
   if test "x$PIKE_SRC_DIR" != "x" -a -f "${PIKE_SRC_DIR}/make_variables.in"; then
     make_variables_in="${PIKE_SRC_DIR}/make_variables.in"
+    AC_MSG_RESULT(${PIKE_SRC_DIR})
+
+    if test "0`echo 'if(AC_ACVERSION >= 2.50)1'|bc`" = "01"; then :; else
+      # Kludge for autoconf 2.13 and earlier prefixing all substitution
+      # source files with $ac_given_source_dir/ (aka $srcdir/).
+      make_variables_in="`echo $srcdir|sed -e 's@[[^/]]*@@g;s@/@../@g'`$make_variables_in"
+    fi
   else
-    AC_MSG_CHECKING([for the Pike base directory])
 
     counter=.
 
