@@ -5496,10 +5496,10 @@ PMOD_EXPORT void f_aggregate_multiset(INT32 args)
 {
   struct multiset *l;
   f_aggregate(args);
-  l=allocate_multiset(sp[-1].u.array);
+  l=allocate_multiset(Pike_sp[-1].u.array);
   order_multiset(l);
-  sp[-1].type=T_MULTISET;
-  sp[-1].u.multiset=l;
+  Pike_sp[-1].type=T_MULTISET;
+  Pike_sp[-1].u.multiset=l;
 }
 
 

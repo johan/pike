@@ -2369,7 +2369,7 @@ static void warn_bad_cycles()
     for (p = kill_list; p;) {
       if ((cycle = CYCLE(p))) {
 	push_object((struct object *) p->data);
-	*obj_arr_ = append_array(*obj_arr_, --sp);
+	*obj_arr_ = append_array(*obj_arr_, --Pike_sp);
       }
       p = NEXT(p);
       if (p ? ((unsigned)(CYCLE(p) != cycle)) : cycle) {

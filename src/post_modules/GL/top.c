@@ -47,7 +47,7 @@ static void f_glGet(INT32 args)
 
   check_all_args("glGet", args, BIT_INT, 0);
 
-  arg1=sp[0-args].u.integer;
+  arg1=Pike_sp[0-args].u.integer;
 
   pop_n_elems(args);
 
