@@ -32,7 +32,7 @@ pushdef([AC_PROG_CC],
     if echo "$CC $CFLAGS $CPPFLAGS" | grep " -Y" >/dev/null; then :; else
       # We want to use the system API's...
       CPPFLAGS="-Ysystem $CPPFLAGS"
-    else :; fi
+    fi
   else
     AC_MSG_RESULT(no)
     TCC=no
