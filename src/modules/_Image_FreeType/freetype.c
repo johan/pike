@@ -82,7 +82,7 @@ static void image_ft_face_write_char( INT32 args )
   push_text( "img" ); push_object( o );
   push_text( "x" )  ; push_int( slot->bitmap_left );
   push_text( "y" )  ; push_int( slot->bitmap_top );
-  push_text( "advance" )  ; push_int( slot->advance.x >> 6 );
+  push_text( "advance" )  ; push_int( (slot->advance.x+62) >> 6 );
   push_text( "descender" ); push_int( TFACE->size->metrics.descender>>6 );
   push_text( "ascender" ); push_int( TFACE->size->metrics.ascender>>6 );
   push_text( "height" ); push_int( TFACE->size->metrics.height>>6 );
