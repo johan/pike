@@ -105,7 +105,7 @@
  *!       Use same argument again.
  *!     @value '^'
  *!       Repeat this on every line produced.
- *!     @value '@@'
+ *!     @value '@'
  *!       Repeat this format for each element in the argument array.
  *!     @value '>'
  *!       Put the string at the bottom end of column instead of top.
