@@ -94,6 +94,11 @@ RETURN_0 ? DeadCodeEndCond($2o) : RETURN_0
 RETURN_1 ? DeadCodeEndCond($2o) : RETURN_1
 RETURN_LOCAL ? DeadCodeEndCond($2o) : RETURN_LOCAL($1a)
 
+// Get rid of extra catch-levels.
+// Note that the corresponding exit catch is killed
+// by dead code elimination.
+CATCH ESCAPE_CATCH:
+
 LOCAL_LVALUE INC : INC_LOCAL ($1a)
 LOCAL_LVALUE POST_INC : POST_INC_LOCAL ($1a)
 LOCAL_LVALUE INC_AND_POP : INC_LOCAL_AND_POP ($1a)
