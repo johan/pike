@@ -6,6 +6,7 @@ RCSID("$Id$");
 #include "svalue.h"
 #include "stralloc.h"
 #include "array.h"
+#include "mapping.h"
 #include "object.h"
 #include "backend.h"
 #include "fd_control.h"
