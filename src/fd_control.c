@@ -37,7 +37,7 @@ RCSID("$Id$");
 #endif
 
 #ifdef HAVE_SYS_ERRNO_H
-#include <sys/socket.h>
+#include <sys/errno.h>
 #endif
 
 #ifdef HAVE_WINSOCK_H
