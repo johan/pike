@@ -35,7 +35,7 @@ else
     oldLIBS="$LIBS"
     AC_MSG_CHECKING(for glOrtho in -lOpenGL)
     AC_CACHE_VAL(pike_cv_lib_OpenGL, [
-      LIBS="$oldLIBS -lOpenGL32"
+      LIBS="$oldLIBS -lOpenGL"
       AC_TRY_LINK([
 #ifdef HAVE_WINDEF_H
 #include <windef.h>
