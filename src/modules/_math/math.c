@@ -5,6 +5,7 @@
 \*/
 /**/
 #include "global.h"
+#include "config.h"
 #include <math.h>
 #include "interpret.h"
 #include "constants.h"
