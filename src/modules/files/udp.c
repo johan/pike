@@ -300,13 +300,6 @@ void udp_enable_broadcast(INT32 args)
 #endif /* SO_BROADCAST */
 }
 
-/* NOTE: Some versions of AIX seem to have a
- *         #define events reqevents
- *       in one of the poll headerfiles. This will break
- *       the fd_box event handling.
- */
-#undef events
-
 /*! @decl int(0..1) wait(int|float timeout)
  *!
  *! Check for data and wait max. @[timeout] seconds.
@@ -392,6 +385,13 @@ void udp_wait(INT32 args)
 
   push_int(res);
 }
+
+/* NOTE: Some versions of AIX seem to have a
+ *         #define events reqevents
+ *       in one of the poll headerfiles. This will break
+ *       the fd_box event handling.
+ */
+#undef events
 
 #define UDP_BUFFSIZE 65536
 
