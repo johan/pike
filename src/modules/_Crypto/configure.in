@@ -1,5 +1,6 @@
 # $Id$
 AC_INIT(crypto.c)
+AC_CONFIG_HEADER(config.h)
 
 AC_SET_MAKE
 
