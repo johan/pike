@@ -641,13 +641,13 @@ static int do_docode2(node *n,int flags)
       DO_CODE_BLOCK(CAR(n));
       return 0;
     }
+    tmp1=store_prog_string(n->type);
+    emit(F_STRING,tmp1);
 
     tmp1=do_docode(CAR(n),0);
     if(!tmp1) { emit2(F_CONST0); tmp1=1; }
     if(tmp1>1) do_pop(tmp1-1);
 
-    tmp1=store_prog_string(n->type);
-    emit(F_STRING,tmp1);
     emit2(F_CAST);
     return 1;
 
