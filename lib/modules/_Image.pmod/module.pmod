@@ -24,7 +24,7 @@ mapping _load(void|object|string file)
    if (!file) file=Stdio.stdin;
    else if (stringp(file))
    {
-      object f=Stdio.stdin();
+      object f=Stdio.File();
       if (!f->open(file,"r"))
 	 error("Image._load: Can't open %O for input.\n",file);
       file=f;
