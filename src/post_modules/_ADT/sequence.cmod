@@ -37,8 +37,7 @@ PIKECLASS Sequence
 
   CVAR int pos;
   CVAR struct array *a;
-  CVAR struct array **aptr;
-
+ 
   
   //if there is more than one reference to this array copy it.
 
@@ -512,7 +511,6 @@ PIKECLASS Sequence
 
   PIKEFUN void create(array a) {
     add_ref(THIS->a=a);
-    THIS->aptr = &a;
   }
 
 
@@ -742,7 +740,7 @@ PIKECLASS Sequence
      *!    This iterator positioned @[steps] steps forward.
      */    
 
-    PIKEFUN object aa(int steps) //shall be `-=
+    PIKEFUN object  `-=(int steps) //shall be `-=
     {
       THIS->pos-=steps;
       if (THIS->pos < 0) 
