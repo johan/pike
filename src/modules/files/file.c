@@ -1267,6 +1267,10 @@ static void file_open(INT32 args)
   {
      str=Pike_sp[-args].u.string;
 
+     if (strlen(str->str) != str->len) {
+       error("Filenames with NUL are not supported.\n");
+     }
+
 #ifdef PIKE_SECURITY
      if(!CHECK_SECURITY(SECURITY_BIT_SECURITY))
      {
