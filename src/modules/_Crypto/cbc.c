@@ -297,11 +297,6 @@ static void f_crypt_block(INT32 args)
  * Module linkage
  */
 
-void MOD_INIT2(cbc)(void)
-{
-  /* add_efun()s */
-}
-
 void MOD_INIT(cbc)(void)
 {
   /*
@@ -339,13 +334,10 @@ void MOD_INIT(cbc)(void)
   set_init_callback(init_pike_crypto_cbc);
   set_exit_callback(exit_pike_crypto_cbc);
 
-  pike_crypto_cbc_program = end_c_program(MODULE_PREFIX "cbc");
-  pike_crypto_cbc_program->refs++;
+  end_class(MODULE_PREFIX "cbc", 0);
 }
 
 void MOD_EXIT(cbc)(void)
 {
-  /* free_program()s */
-  free_program(pike_crypto_cbc_program);
 }
 
