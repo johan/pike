@@ -73,6 +73,10 @@ if test x$with_mysql = xyes; then
     CPPFLAGS="-I$pike_cv_mysql_include_dir ${CPPFLAGS}"
   fi
 
+  # Header file
+
+  AC_CHECK_HEADERS(mysql.h mysql/mysql.h)
+
   # Mysql libs
 
   pike_cv_mysql="no"

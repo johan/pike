@@ -20,7 +20,15 @@
  * multiple inclusion.
  */
 #ifndef _mysql_h
+#ifdef HAVE_MYSQL_H
 #include <mysql.h>
+#else
+#ifdef HAVE_MYSQL_MYSQL_H
+#include <mysql/mysql.h>
+#else
+#error Need mysql.h header-file
+#endif /* HAVE_MYSQL_MYSQL_H */
+#endif /* HAVE_MYSQL_H */
 #ifndef _mysql_h
 #define _mysql_h
 #endif
