@@ -838,6 +838,31 @@ static int check_atom_chars( unsigned char *str, INT32 len )
   return 1;
 }
 
+/*  This one check is a sequence of charactes is actually an encoded word.
+ */
+static int check_encword( unsigned char *str, INT32 len )
+{
+  int q = 0;
+
+  /* An encoded word begins with =?, ends with ?= and contains 2 internal ? */
+  if (len < 6 || str[0] != '=' || str[1] != '?' ||
+      str[len-2] != '?' || str[len-1] != '=')
+    return 0;
+
+  /* Remove =? and ?= */
+  len -= 4;
+  str += 2;
+
+  /* Count number of internal ? */
+  while (len--)
+    if (*str++ == '?')
+      if(++q > 2)
+	return 0;
+
+  /* If we found exactly 2, this is an encoded word. */
+  return q == 2;
+}
+
 /* MIME.quote() */
 
 static void f_quote( INT32 args )
@@ -883,7 +908,9 @@ static void f_quote( INT32 args )
       if (prev_atom)
 	low_my_putchar( ' ', &buf );
 
-      if (check_atom_chars((unsigned char *)str->str, str->len)) {
+      if ((str->len>5 && str->str[0]=='=' && str->str[1]=='?' &&
+	   check_encword((unsigned char *)str->str, str->len)) ||
+	  check_atom_chars((unsigned char *)str->str, str->len)) {
 
 	/* Valid atom without quotes... */
 	low_my_binary_strcat( str->str, str->len, &buf );
