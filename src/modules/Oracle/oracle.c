@@ -21,6 +21,7 @@
 #include <stralloc.h>
 #include <interpret.h>
 #include <pike_types.h>
+#include <pike_memory.h>
 #include <threads.h>
 #include <module_support.h>
 #include <mapping.h>
