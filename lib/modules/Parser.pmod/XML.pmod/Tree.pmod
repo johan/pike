@@ -734,6 +734,14 @@ static class VirtualNode {
     return (mTagName);
   }
 
+  //! Change the tag name destructively. Can only be used on element and
+  //! processing-instruction nodes.
+  void set_tag_name(string name)
+  {
+    if (mNodeType & (XML_ELEMENT | XML_PI))
+      mTagName = name;
+  }
+
   //! Return fully qualified name of the element node.
   string get_full_name()
   {
