@@ -91,7 +91,7 @@ static INLINE unsigned INT32 generic_extract (const void *str, int size, int pos
 INLINE unsigned INT32 index_shared_string(struct pike_string *s, int pos)
 {
 #ifdef DEBUG
-  if(pos >= s->len || pos<0) {
+  if(pos > s->len || pos<0) {
     if (s->len) {
       fatal("String index %d is out of range [0 - %d]!\n", pos, s->len-1);
     } else {
