@@ -2219,7 +2219,7 @@ void image_gif_decode_layer(INT32 args)
 }
 
 /*
-**! method mapping decode_map(INT32 args)
+**! method mapping decode_map(string|array layers)
 **!	Returns a mapping similar to other decoders
 **!	<tt>_decode</tt> function.
 **!
