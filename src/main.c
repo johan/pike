@@ -567,7 +567,7 @@ int dbm_main(int argc, char **argv)
 #undef ATTRIBUTE
 #define ATTRIBUTE(X)
 
-void do_exit(int num) ATTRIBUTE((noreturn))
+DECLSPEC(noreturn) void do_exit(int num) ATTRIBUTE((noreturn))
 {
   call_callback(&exit_callbacks, (void *)0);
   free_callback_list(&exit_callbacks);
