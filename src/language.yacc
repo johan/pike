@@ -1260,6 +1260,7 @@ safe_lvalue: lvalue
   ;
 
 safe_expr0: expr0
+  | F_LEX_EOF { yyerror("Unexpected end of file."); $$=mkintnode(0); }
   | error { $$=mkintnode(0); }
   ;
 
@@ -1267,7 +1268,7 @@ foreach: F_FOREACH
   {
     $<number>$=compiler_frame->current_number_of_locals;
   }
-  '(' safe_expr0 ',' safe_lvalue end_cond statement
+  '(' expr0 ',' safe_lvalue end_cond statement
   {
     if ($6) {
       $$=mknode(F_FOREACH, mknode(F_VAL_LVAL,$4,$6),$8);
