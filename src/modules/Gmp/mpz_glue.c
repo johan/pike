@@ -395,6 +395,7 @@ MP_INT *debug_get_mpz(struct svalue *s,
   }
   else {
     UNSET_ONERROR (uwp);
+    free_object (o);
     return NULL;
   }
 }

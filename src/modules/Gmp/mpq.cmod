@@ -247,6 +247,7 @@ PIKECLASS mpq
     }
     else {
       UNSET_ONERROR (uwp);
+      free_object (o);
       return NULL;
     }
   }
