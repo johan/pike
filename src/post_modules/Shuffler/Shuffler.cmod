@@ -21,6 +21,7 @@ RCSID("$Id$");
 #include "module_support.h"
 #include "array.h"
 #include "builtin_functions.h"
+#include "bignum.h"
 
 #include "shuffler.h"
 #include "sources.h"
@@ -67,8 +68,8 @@ extern struct program *Shuffler_program;
  *! This function will be called by the @[Shuffle] object to report
  *! that some data assigned to it by this throttler was unusued, and
  *! can be given to another @[Shuffle] object instead.
- *!
- *! @endclass
+ */
+/*! @endclass
  */
 
 /*! @class Shuffle
