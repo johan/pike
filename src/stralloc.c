@@ -810,10 +810,11 @@ struct pike_string *debug_findstring(const struct pike_string *foo)
 void debug_dump_pike_string(struct pike_string *s, INT32 max)
 {
   INT32 e;
-  fprintf(stderr,"0x%p: %ld refs, len=%ld, hval=%lux (%lx)\n",
+  fprintf(stderr,"0x%p: %ld refs, len=%ld, size_shift=%d, hval=%lux (%lx)\n",
 	  s,
 	  (long)s->refs,
 	  (long)s->len,
+	  s->size_shift,
 	  (unsigned long)s->hval,
 	  (unsigned long)StrHash(s->str, s->len));
   fprintf(stderr," \"");
