@@ -2581,14 +2581,23 @@ static void init_dlopen(void)
 #endif
 }
 
-#ifdef HAVE__ALLDIV
 /* Strap to load symbols that might be needed from modules. */
+#ifdef HAVE__ALLDIV
 void _alldiv(void);
+#endif
+#ifdef HAVE__AULLSHR
+void _aullshr(void);
+#endif
 void dl_dummy(void)
 {
+#ifdef HAVE__ALLDIV
   _alldiv();
-}
 #endif
+
+#ifdef HAVE__AULLSHR
+  _aullshr();
+#endif
+}
 
 /****************************************************************/
 
