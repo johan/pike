@@ -185,7 +185,7 @@ void add_local_name(struct pike_string *,struct pike_string *);
 /*
  * The names and types of arguments and auto variables.
  */
-struct locals *local_variables;
+struct locals *local_variables = 0;
 
 static int varargs;
 static INT32  current_modifiers;
@@ -425,6 +425,7 @@ constant_name: F_IDENTIFIER '=' expr0
       add_constant($1,&tmp, current_modifiers);
     } else {
       tmp=eval_low($3);
+      free_node($3);
       if(tmp < 1)
       {
 	yyerror("Error in constant definition.");
