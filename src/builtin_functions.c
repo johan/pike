@@ -3010,7 +3010,7 @@ void f_mktime (INT32 args)
     date.tm_gmtoff=sp[7-args].u.integer;
   }else{
     time_t tmp = 0;
-    data.tm_gmtoff=localtime(&tmp)->tm_gmtoff;
+    date.tm_gmtoff=localtime(&tmp)->tm_gmtoff;
   }
   retval=mktime(&date);
 #else
