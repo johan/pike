@@ -1860,6 +1860,8 @@ class Evaluator {
     string prog;
     if(strict_types)
       prog = "#pragma strict_types\n";
+    else
+      prog = "";
 
     prog +=
       map(inherits, lambda(string f) { return "inherit "+f+";\n"; }) * "" +
