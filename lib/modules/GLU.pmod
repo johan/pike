@@ -104,8 +104,6 @@ void gluPickMatrix(float x, float y,
   glMultMatrix( m );
 }
 
-//! @fixme
-//!   Document this function.
 static void transform_point(array(float) out, array(float)m,
 			    array(float) in)
 {
