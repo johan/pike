@@ -49,6 +49,7 @@ if test x$ac_cv_func_readdir_r = xyes ; then
 #ifndef POSIX_SOURCE
 #define POSIX_SOURCE
 #endif
+#include <sys/types.h>
 #ifdef HAVE_DIRENT_H
 #include <dirent.h>
 #else
