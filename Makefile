@@ -15,7 +15,7 @@ CONFIGUREARGS=
 
 # Set to a flag for parallelizing make, e.g. -j2. It's given to make
 # at the level where it's most effective.
-MAKE_PARALLEL=-j4
+MAKE_PARALLEL=
 
 # Used to avoid make compatibility problems.
 BIN_TRUE=":"
