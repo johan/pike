@@ -180,3 +180,18 @@ void image_polyfill(INT32 args);
 
 void image_orient(INT32 args);
 void image_orient4(INT32 args);
+
+/* search.c */
+
+void image_match_phase(INT32 args);
+void image_match_norm(INT32 args);
+void image_match_norm_corr(INT32 args);
+void image_match(INT32 args);
+
+void image_phaseh(INT32 args);
+void image_phasev(INT32 args);
+void image_phasehv(INT32 args);
+void image_phasevh(INT32 args);
+void image_apply_max(INT32 args);
+
+void image_make_ascii(INT32 args);
