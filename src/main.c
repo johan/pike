@@ -434,10 +434,12 @@ int dbm_main(int argc, char **argv)
 	      p++;
 	      goto more_d_flags;
 
+#ifdef DEBUG_MALLOC
 	    case 'g':
 	      debug_options|=GC_RESET_DMALLOC;
 	      p++;
 	      goto more_d_flags;
+#endif
 
 	    case 'p':
 	      debug_options|=NO_PEEP_OPTIMIZING;
