@@ -953,26 +953,37 @@ static void check_constant(struct cpp *this,
     if(!isidchar(INDEX_PCHARP(data, dlen)))
       break;
 
-  s = begin_wide_shared_string(dlen, data.shift);
-  MEMCPY(s->str, data.ptr, dlen<<data.shift);
-  push_string(end_shared_string(s));
-#ifdef PIKE_DEBUG
-  s = NULL;
-#endif /* PIKE_DEBUG */
-  if((sv=low_mapping_string_lookup(get_builtin_constants(),
-				   sp[-1].u.string)))
+  if(dlen)
   {
-    pop_stack();
-    push_svalue(sv);
-    res=1;
-  }else if(get_master()) {
+    s = begin_wide_shared_string(dlen, data.shift);
+    MEMCPY(s->str, data.ptr, dlen<<data.shift);
+    push_string(end_shared_string(s));
+#ifdef PIKE_DEBUG
+    s = NULL;
+#endif /* PIKE_DEBUG */
+    if((sv=low_mapping_string_lookup(get_builtin_constants(),
+				     sp[-1].u.string)))
+    {
+      pop_stack();
+      push_svalue(sv);
+      res=1;
+    }else if(get_master()) {
+      ref_push_string(this->current_file);
+      SAFE_APPLY_MASTER("resolv",2);
+      
+      res=(throw_value.type!=T_STRING) &&
+	(!(IS_ZERO(sp-1) && sp[-1].subtype == NUMBER_UNDEFINED));
+    }else{
+      res=0;
+    }
+  }else{
+    /* Handle contant(.foo) */
+    push_text(".");
     ref_push_string(this->current_file);
-    SAFE_APPLY_MASTER("resolv",2);
-
+    SAFE_APPLY_MASTER("handle_import",2);
+    
     res=(throw_value.type!=T_STRING) &&
       (!(IS_ZERO(sp-1) && sp[-1].subtype == NUMBER_UNDEFINED));
-  }else{
-    res=0;
   }
 
   while(1)
