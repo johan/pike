@@ -268,6 +268,7 @@ int parse_esc_seq (WCHAR *buf, int *chr, ptrdiff_t *len)
     case 'u':
     case 'U': {
       /* FIXME: Do we need compat goo to turn this off? */
+      /* Note: Code dup in gobble_identifier in preprocessor.h. */
       int stop, quoted = 0, longq;
       l = 1;
       if (c == 'u') {
