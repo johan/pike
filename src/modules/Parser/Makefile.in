@@ -3,7 +3,6 @@
 VPATH=@srcdir@
 OBJS=parser.o html.o rcs.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
-INSTALL_NAME=Parser.pmod/_parser
 
 CONFIG_HEADERS=@CONFIG_HEADERS@
 
