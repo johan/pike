@@ -1,5 +1,5 @@
 dnl $Id$
-dnl (C) 1997 Francesco Chemolli <kinkie@comedia.it>
+dnl (C) 1997 Francesco Chemolli <kinkie@kame.usr.dsi.unimi.it>
 
 AC_INIT(msqlmod.c)
 AC_CONFIG_HEADER(msql_config.h)
@@ -7,7 +7,7 @@ AC_CONFIG_HEADER(msql_config.h)
 AC_ARG_WITH(msql,    [  --with(out)-msql      mSQL Database engine support ],[]
 ,[with_msql=yes])
 
-echo "Configuring msql module, (C) 1996,1997 Francesco Chemolli <kinkie@comedia.it>"
+echo "Configuring msql module, (C) 1996,1997 Francesco Chemolli <kinkie@kame.usr.dsi.unimi.it>"
 
 sinclude(../module_configure.in)
 
