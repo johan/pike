@@ -207,7 +207,9 @@ THREADS_ALLOW();
 	 while (y--)
 	 {
 	    x=img->xsize;
-	    while (x--) d+=4,d[rpos]=s->r,d[gpos]=s->g,d[bpos]=s->b,d[zpos]=0; 
+	    while (x--) 
+	       d+=4,d[rpos]=s->r,d[gpos]=s->g,d[bpos]=s->b,
+	       d[zpos]=0,s++; 
 	 }
       }
       else if (!linemod && Bpp==3 && rpos!=gpos && gpos!=bpos) 
@@ -215,7 +217,9 @@ THREADS_ALLOW();
 	 while (y--)
 	 {
 	    x=img->xsize;
-	    while (x--) d+=3,d[rpos]=s->r,d[gpos]=s->g,d[bpos]=s->b; 
+	    while (x--) 
+	       d+=3,d[rpos]=s->r,d[gpos]=s->g,d[bpos]=s->b,
+	       s++; 
 	 }
       }
       else
@@ -225,7 +229,9 @@ THREADS_ALLOW();
 	 while (y--)
 	 {
 	    x=img->xsize;
-	    while (x--) d+=Bpp,d[rpos]=s->r,d[gpos]=s->g,d[bpos]=s->b; 
+	    while (x--) 
+	       d+=Bpp,d[rpos]=s->r,d[gpos]=s->g,d[bpos]=s->b,
+	       s++; 
 	    d+=linemod;
 	 }
       }
