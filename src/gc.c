@@ -226,7 +226,7 @@ static void gc_cycle_pop(void *a);
 #define find_marker debug_find_marker
 #endif
 
-PTR_HASH_ALLOC(marker,MARKER_CHUNK_SIZE)
+PTR_HASH_ALLOC_FIXED(marker,MARKER_CHUNK_SIZE)
 
 #ifdef PIKE_DEBUG
 
@@ -1232,7 +1232,7 @@ static void init_gc(void)
 #ifdef PIKE_DEBUG
   if (!gc_is_watching) {
 #endif
-    init_marker_hash();
+    low_init_marker_hash(num_objects);
     get_marker(rec_list.data);	/* Used to simplify fencepost conditions. */
 #ifdef PIKE_DEBUG
   }
