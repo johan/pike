@@ -83,7 +83,7 @@ int pike_get_rusage(pike_rusage_t rusage_values)
 #ifdef GETRUSAGE_THROUGH_PROCFS
 #include <sys/procfs.h>
 #ifndef CONFIGURE_TEST
-#include "fdlib.h"
+#include "fd_control.h"
 #endif
 
 static INLINE long get_time_int(timestruc_t * val)
