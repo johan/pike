@@ -64,7 +64,7 @@ void image_x_decode_pseudocolor(INT32 args);
 **!		PseudoColor / ZPixmap
 **!
 **!	If someone sends me files of other formats, these formats
-**!	may be implemented. <tt>:)</tt> /<tt>mirar@roxen.com</tt>
+**!	may be implemented. <tt>:)</tt> /<tt>mirar+pike@mirar.org</tt>
 **!
 **! see also: decode
 **!
