@@ -874,10 +874,9 @@ static void file_write(INT32 args)
   if(FD < 0)
     error("File not open for write.\n");
   
-  written=0;
   str=sp[-args].u.string;
 
-  while(written < str->len)
+  for(written=0;written < str->len;check_signals(0,0,0))
   {
     int fd=FD;
     THREADS_ALLOW();
