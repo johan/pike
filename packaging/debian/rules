@@ -37,7 +37,7 @@ CFARGS=--without-rtldebug \
        --with-ttflib \
        --without-libpdf \
        --without-libpanda \
-       --with-sybase \
+       --without-sybase \
        --with-odbc \
        --with-sane \
        --with-postgres \
