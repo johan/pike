@@ -800,7 +800,8 @@ int node_is_eq(node *a,node *b)
   switch(a->token)
   {
   case F_LOCAL:
-    return a->u.integer.a == b->u.integer.b;
+    return a->u.integer.a == b->u.integer.a &&
+      a->u.integer.b == b->u.integer.b;
       
   case F_IDENTIFIER:
   case F_TRAMPOLINE: /* FIXME, the context has to be the same! */
