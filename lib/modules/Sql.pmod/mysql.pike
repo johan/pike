@@ -149,8 +149,9 @@ int|object big_query(string q, mapping(string|int:mixed)|void bindings)
 {
   if (!bindings)
     return ::big_query(q);
-  return ::big_query(.sql_util.emulate_bindings(q,bindings,this_object()));
+  return ::big_query(.sql_util.emulate_bindings(q,bindings,this));
 }
+
 
 int(0..1) is_keyword( string name )
 //! Return 1 if the argument @[name] is a mysql keyword.

@@ -376,7 +376,7 @@ int|object big_query(object|string q, mapping(string|int:mixed)|void bindings)
 {  
   if (!bindings)
     return ::big_query(q);
-  return ::big_query(.sql_util.emulate_bindings(q, bindings, this_object()));
+  return ::big_query(.sql_util.emulate_bindings(q, bindings, this));
 }
 
 #endif /* constant(Postgres.postgres) */
