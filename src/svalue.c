@@ -473,7 +473,10 @@ PMOD_EXPORT unsigned INT32 hash_svalue(const struct svalue *s)
 
     if(FIND_LFUN(s->u.object->prog,LFUN___HASH) != -1)
     {
-      safe_apply_low2(s->u.object, FIND_LFUN(s->u.object->prog,LFUN___HASH), 0, 1);
+      STACK_LEVEL_START(0);
+      safe_apply_low2(s->u.object, FIND_LFUN(s->u.object->prog, LFUN___HASH),
+		      0, 1);
+      STACK_LEVEL_CHECK(1);
       if(sp[-1].type == T_INT)
       {
 	q=sp[-1].u.integer;
@@ -481,6 +484,7 @@ PMOD_EXPORT unsigned INT32 hash_svalue(const struct svalue *s)
 	q=0;
       }
       pop_stack();
+      STACK_LEVEL_DONE(0);
       break;
     }
     /* FALL THROUGH */
