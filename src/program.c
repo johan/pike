@@ -1566,7 +1566,7 @@ struct node_s *program_magic_identifier (struct program_state *state,
 	   state_depth, inherit_num, ident->str, colon_colon_ref);
 #endif
 
-  if (inherit_num >= 0) {
+  if (!inherit_num || (!TEST_COMPAT(7,6) && (inherit_num > 0))) {
     if (ident == this_string) {
       /* Handle this. */
       return mkthisnode(state->new_program, inherit_num);
