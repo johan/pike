@@ -1294,6 +1294,7 @@ int node_is_eq(node *a,node *b)
 
   switch(a->token)
   {
+  case F_EXTERNAL:
   case F_LOCAL:
     return a->u.integer.a == b->u.integer.a &&
       a->u.integer.b == b->u.integer.b;
