@@ -509,10 +509,6 @@ void f_abs(INT32 args)
  */
 void f_sgn(INT32 args)
 {
-  struct svalue zero;
-  zero.type=T_INT;
-  zero.u.integer=0;
-
   TRIM_STACK(2);
   check_all_args("sgn",args,BIT_MIXED,BIT_VOID|BIT_MIXED,0);
   if(args<2)
