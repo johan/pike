@@ -154,7 +154,9 @@ char *get_name_of_type(int t)
     case T_TYPE: return "type";
     case T_ZERO: return "zero";
     case T_VOID: return "void";
+    case T_STORAGE: return "object storage";
     case T_MAPPING_DATA: return "mapping_data";
+    case T_PIKE_FRAME: return "pike_frame";
     default: return "unknown";
   }
 }
