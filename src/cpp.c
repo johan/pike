@@ -545,14 +545,30 @@ static void simple_add_define(struct cpp *this,
   } while(0)
 
 #define SKIPWHITE() do {					\
-    if(!WC_ISSPACE(data[pos])) break;				\
+    if(!WC_ISSPACE(data[pos])) {				\
+      if (data[pos] == '\\' && data[pos+1] == '\n') {		\
+	pos += 2;						\
+	PUTNL();						\
+	this->current_line++;					\
+	continue;						\
+      }								\
+      break;							\
+    }								\
     if(data[pos]=='\n') { PUTNL(); this->current_line++; }	\
     pos++;							\
   } while(1)
 
-#define SKIPSPACE() \
-  do { while(WC_ISSPACE(data[pos]) && data[pos]!='\n') pos++; \
-  } while (0)
+#define SKIPSPACE()						\
+  do {								\
+    while (WC_ISSPACE(data[pos]) && data[pos]!='\n') {		\
+      pos++;							\
+    }								\
+    if (data[pos] != '\\' || data[pos+1] != '\n') {		\
+      break;							\
+    }								\
+    pos+=2;							\
+    this->current_line++;					\
+  } while (1)
 
 #define SKIPCOMMENT()	do{				\
   	pos++;						\
