@@ -80,11 +80,12 @@ cond([[all_efuns()->thread_create]],
 
 // /precompiled/mutex
   test_true(Mutex())
-  test_do(add_constat("_tmp_mutex",Mutex()))
+  test_do(add_constant("_tmp_mutex",Mutex()))
   test_true(_tmp_mutex->lock())
   test_true(_tmp_mutex->lock())
   test_true(_tmp_mutex->trylock())
   test_true(_tmp_mutex->trylock())
+  test_do(add_constant("_tmp_mutex"))
 
 // /precompiled/condition
   test_true(Condition())
