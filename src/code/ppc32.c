@@ -338,6 +338,15 @@ void ppc32_mark(void)
   INCR_MARK_SP_REG(sizeof(struct svalue *));
 }
 
+static void ppc32_escape_catch(void)
+{
+  extern void *do_escape_catch_label;
+  void *pc;
+  __asm__("\tmflr %0" : "=r" (pc));
+  Pike_fp->pc = pc;
+  goto *do_escape_catch_label;
+}
+
 void ins_f_byte(unsigned int b)
 {
   void *addr;
@@ -399,6 +408,10 @@ void ins_f_byte(unsigned int b)
   case F_ADD - F_OFFSET:
     SET_REG(PPC_REG_ARG1, 2);
     addr = (void *)f_add;
+    break;
+
+  case F_ESCAPE_CATCH - F_OFFSET:
+    addr = (void *)ppc32_escape_catch;
     break;
   }
 #endif
