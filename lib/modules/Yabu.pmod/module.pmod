@@ -1273,7 +1273,8 @@ class db {
     foreach(values(tables), object o)
       if(o)
 	destruct(o);
-    destruct(lock_file);
+    if(lock_file)
+      destruct(lock_file);
   }
 
   void close()
