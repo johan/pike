@@ -446,6 +446,17 @@ test_compile_error_low([[
 
 ]])
 
+test_do([[
+  class A {
+    int i = 17;
+  };
+  class B {
+    inherit A;
+    constant i = 5;
+  };
+  B();
+]])
+
 
 test_any([[
  class A {};
