@@ -610,7 +610,7 @@ TH_RETURN_TYPE new_thread_func(void * data)
     if(throw_severity == THROW_EXIT)
     {
       free((char *) data);
-      do_exit(throw_value.u.integer);
+      pike_do_exit(throw_value.u.integer);
     }
   } else {
     INT32 args=arg.args->size;
