@@ -112,6 +112,7 @@ int dooptcode(struct pike_string *name,
 	      node *n,
 	      struct pike_string *type,
 	      int modifiers);
+void resolv_program(node *n);
 /* Prototypes end here */
 
 #define CAR(n) ((n)->u.node.a)
