@@ -1036,7 +1036,7 @@ void exit_mutex_key_obj(struct object *o)
     co_signal(& mut->condition);
 
     if (owner) {
-      free_object(mut->owner);
+      free_object(owner);
     }
   }
   if (THIS_KEY->mutex_obj) {
