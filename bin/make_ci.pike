@@ -1,3 +1,5 @@
+#! /usr/bin/env pike
+
 /*
  * $Id$
  *
@@ -20,11 +22,11 @@ int main(int argc, array(string) argv)
   array(array(int)) ci = ({({ 0, CIM_NONE, 0 })});
   int prevchar = 0;
 
-  if (argc < 2) {
-    werror("Missing argument.\n"
+  if (argc < 2 || argv[1]=="--help" ) {
+    werror("Creates case info file by reading the unicode database from\n"
+	   "stdin and outputs it to a file.\n"
 	   "\n"
-	   "Usage:\n"
-	   "\t%s case_info.h\n", argv[0]);
+	   "Usage: make_ci.pike output_file.h\n");
     exit(1);
   }
 
