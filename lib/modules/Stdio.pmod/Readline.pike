@@ -121,11 +121,10 @@ class OutputController
 	  l=strlen(line)-spos;
 	  outfd->write(line[..l-2]);
 	}
-//	while(l<strlen(s) && s[l]==' ') l++;
 	s=s[l..];
 	n-=l;
-//	if(l!=columns || !term->tgetflag("am"))
-	if(n)
+	xpos+=l;
+	if(xpos<columns || !term->tgetflag("am"))
 	  outfd->write((term->put("cr")||"")+(term->put("do")||"\n"));
 	xpos = 0;
       }
