@@ -2263,12 +2263,18 @@ static void file_set_close_on_exec(INT32 args)
  *! Returns true if the file is open.
  *!
  *! @note
+ *! If the file is a socket that has been closed from the remote side,
+ *! this function might still return true.
+ *!
+ *! @note
  *! Most methods can't be called for a file descriptor that isn't
  *! open. Notable exceptions @[errno], @[mode], and the set and query
  *! functions for callbacks and backend.
  */
 static void file_is_open (INT32 args)
 {
+  /* Note: Even though we'd like to, we can't accurately tell whether
+   * a socket has been closed from the remote end or not. */
   pop_n_elems (args);
   push_int (FD >= 0);
 }
