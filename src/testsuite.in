@@ -10640,7 +10640,7 @@ test_do(add_constant("call_out_cb"))
 test_do(_do_call_outs())
 test_any([[
   object pid = Process.create_process(RUNPIKE_ARRAY +
-				      ({ "SRCDIR/test_co.pike" }));
+				      ({ "]]SRCDIR[[/test_co.pike" }));
   int i;
   for (i=0; i < 60; i++) {
     if (pid->status()>0) break;
