@@ -509,7 +509,7 @@ static void call_destroy(struct object *o, int foo)
     )
   {
 #ifdef PIKE_DEBUG
-    if(Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_KILL)
+    if(Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_FREE)
       fatal("Calling destroy() inside gc.\n");
 #endif
     if(check_destroy_called_mark_semafore(o))
@@ -660,7 +660,7 @@ PMOD_EXPORT void destruct_objects_to_destruct(void)
   struct object *o, *next;
 
 #ifdef PIKE_DEBUG
-  if (Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_KILL)
+  if (Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_FREE)
     fatal("Can't meddle with the object link list in gc pass %d.\n", Pike_in_gc);
 #endif
 
