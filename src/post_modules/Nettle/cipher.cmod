@@ -666,7 +666,7 @@ void f_DES3_Info_fix_parity(INT32);
 
 static void
 pike_des3_set_key(void *c,
-		  ptrdiff_t length, char *key,
+		  ptrdiff_t length, const char *key,
 		  int force)
 {
   struct des3_ctx *ctx = (struct des3_ctx *) c;
