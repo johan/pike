@@ -31,6 +31,9 @@ PMOD_EXPORT struct array empty_array=
 #ifdef PIKE_SECURITY
   0,
 #endif
+#ifdef USE_LOCAL_MUTEX
+  PTHREAD_MUTEX_INITIALIZER,
+#endif
   &empty_array,          /* Next */
   &empty_array,          /* previous (circular) */
   0,                     /* Size = 0 */
@@ -73,10 +76,8 @@ PMOD_EXPORT struct array *low_allocate_array(ptrdiff_t size, ptrdiff_t extra_spa
 
   v->malloced_size = DO_NOT_WARN((INT32)(size + extra_space));
   v->size = DO_NOT_WARN((INT32)size);
-  v->refs=1;
+  INIT_PIKE_MEMOBJ(v);
   LINK_ARRAY(v);
-
-  INITIALIZE_PROT(v);
 
   for(e=0;e<v->size;e++)
   {
@@ -115,7 +116,7 @@ PMOD_EXPORT void really_free_array(struct array *v)
 #endif
 
   add_ref(v);
-  FREE_PROT(v);
+  EXIT_PIKE_MEMOBJ(v);
   free_svalues(ITEM(v), v->size, v->type_field);
   v->refs--;
   array_free_no_free(v);

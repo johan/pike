@@ -20,10 +20,7 @@
 #endif
 struct object
 {
-  INT32 refs;                    /* Reference count, must be first. */
-#ifdef PIKE_SECURITY
-  struct object *prot;
-#endif
+  PIKE_MEMORY_OBJECT_MEMBERS; /* Must be first */
   struct program *prog;
   struct object *parent;
   INT16 parent_identifier;

@@ -269,10 +269,8 @@ enum pike_program_event
 
 struct program
 {
-  INT32 refs;
-#ifdef PIKE_SECURITY
-  struct object *prot;
-#endif
+  PIKE_MEMORY_OBJECT_MEMBERS; /* Must be first */
+
   INT32 id;             /* used to identify program in caches */
   INT32 parent_program_id;
   /* storage_needed - storage needed in object struct

@@ -135,13 +135,12 @@ PMOD_EXPORT struct object *low_clone(struct program *p)
   o->parent_identifier=0;
 
   DOUBLELINK(first_object,o);
-  o->refs=1;
+  INIT_PIKE_MEMOBJ(o);
 
 #ifdef PIKE_DEBUG
   o->program_id=p->id;
 #endif
 
-  INITIALIZE_PROT(o);
   return o;
 }
 
@@ -769,7 +768,7 @@ PMOD_EXPORT void schedule_really_free_object(struct object *o)
       /* As far as the gc is concerned, the fake objects doesn't exist. */
       GC_FREE(o);
 
-    FREE_PROT(o);
+    EXIT_PIKE_MEMOBJ(o);
 
     if(o->storage)
     {

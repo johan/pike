@@ -14,10 +14,8 @@
 
 struct multiset
 {
-  INT32 refs;
-#ifdef PIKE_SECURITY
-  struct object *prot;
-#endif
+  PIKE_MEMORY_OBJECT_MEMBERS;  /* Must be first */
+
   struct multiset *next,*prev;
   struct array *ind;
 };

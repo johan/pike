@@ -20,10 +20,7 @@ typedef node *(*optimize_fun)(node *n);
 
 struct callable
 {
-  INT32 refs;
-#ifdef PIKE_SECURITY
-  struct object *prot;
-#endif
+  PIKE_MEMORY_OBJECT_MEMBERS;
   c_fun function;
   struct pike_type *type;
   struct pike_string *name;

@@ -41,11 +41,9 @@ PMOD_EXPORT struct multiset *allocate_multiset(struct array *ind)
   struct multiset *l;
   l=ALLOC_STRUCT(multiset);
   GC_ALLOC(l);
-  l->refs = 1;
+  INIT_PIKE_MEMOBJ(l);
   l->ind=ind;
   DOUBLELINK(first_multiset, l);
-
-  INITIALIZE_PROT(l);
 
   return l;
 }
@@ -61,7 +59,7 @@ PMOD_EXPORT void really_free_multiset(struct multiset *l)
 #endif
 
   free_array(l->ind);
-  FREE_PROT(l);
+  EXIT_PIKE_MEMOBJ(l);
 
   DOUBLEUNLINK(first_multiset, l);
 

@@ -14,10 +14,8 @@
 
 struct array
 {
-  INT32 refs;		/* Reference count */
-#ifdef PIKE_SECURITY
-  struct object *prot;
-#endif
+  PIKE_MEMORY_OBJECT_MEMBERS;
+
   struct array *next;	/* we need to keep track of all arrays */
   struct array *prev;	/* Another pointer, so we don't have to search
 			 * when freeing arrays */

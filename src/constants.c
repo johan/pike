@@ -68,6 +68,7 @@ PMOD_EXPORT void add_global_program(char *name, struct program *p)
 #define EXIT_BLOCK(X) do {		\
   free_type(X->type);			\
   free_string(X->name);			\
+  EXIT_PIKE_MEMOBJ(X);                  \
 }while(0)
 BLOCK_ALLOC(callable,128)
 
@@ -80,7 +81,7 @@ PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
 				   docode_fun docode)
 {
   struct callable *f=alloc_callable();
-  f->refs=1;
+  INIT_PIKE_MEMOBJ(f);
   f->function=fun;
   f->name=name;
   f->type=type;
