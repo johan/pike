@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 #include "main.h"
 #include "svalue.h"
@@ -787,7 +788,7 @@ void describe_svalue(struct svalue *s,int indent,struct processing *p)
 	      break;
 
             default:
-	      if(j>=0 && j<256 && isprint(j))
+	      if(j>0 && j<256 && isprint(j))
 	      {
 		my_putchar(j);
 		break;
