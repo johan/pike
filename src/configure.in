@@ -295,6 +295,39 @@ AC_SET_MAKE
 
 #############################################################################
 
+# installbsd seems to be broken on some versions of AIX
+#
+# /grubba 1997-08-16
+
+case "$ac_cv_path_install" in
+  *installbsd*)
+    AC_MSG_CHECKING(if $ac_cv_path_install works)
+    AC_CACHE_VAL(pike_cv_install_works,
+[
+    if $ac_cv_path_install "$srcdir/configure.in" ./conftest >/dev/null 2>&1
+    then
+      if cmp "$srcdir/configure.in" ./conftest >/dev/null 2>&1; then
+        pike_cv_install_works=yes;
+      else
+        pike_cv_install_works=no;
+      fi
+    else
+      pike_cv_install_works=no;
+    fi
+    if test -f ./conftest; then
+      rm -f ./conftest
+    fi
+])
+    AC_MSG_RESULT($pike_cv_install_works)
+    if test "$pike_cv_install_works" = "no"; then
+      echo "Warning: Falling back to $ac_install_sh"
+      INSTALL="$ac_install_sh"
+    fi
+  ;;
+esac
+
+#############################################################################
+
 AC_MSG_CHECKING(for yacc clone that handles %pure_parser)
 AC_CACHE_VAL(pike_cv_prog_working_yacc,
 [
