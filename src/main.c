@@ -746,9 +746,10 @@ void low_exit_main(void)
   exit_destroy_called_mark_hash();
 
   free_dynamic_load();
-  free_all_mapping_blocks();
-  free_all_object_blocks();
   first_mapping=0;
+  free_all_mapping_blocks();
+  first_object=0;
+  free_all_object_blocks();
 #endif
 }
 
