@@ -78,8 +78,11 @@
 /* Define to 'int' if <sys/types.h> doesn't */
 #undef pid_t
 
-/* Define to 'long' if <sys/types.h> doesn't */
+/* Define to 'unsigned long' if <sys/types.h> or <stddef.h> doesn't */
 #undef size_t
+
+/* Define to 'long' if <sys/types.h> of <stddef.h> doesn't */
+#undef ptrdiff_t
 
 /* Define to 'long' if <sys/types.h> doesn't */
 #undef off_t
