@@ -32,7 +32,7 @@
 
 RCSID("$Id$");
 
-struct svalue dest_ob_zero = {
+const struct svalue dest_ob_zero = {
   T_INT, 0,
 #ifdef HAVE_UNION_INIT
   {0}, /* Only to avoid warnings. */

@@ -504,7 +504,7 @@ static INLINE union anything *dmalloc_check_union(union anything *u,int type, ch
     PIKE_MEM_WO(*_from);						\
   } while (0)
 
-extern struct svalue dest_ob_zero;
+extern const struct svalue dest_ob_zero;
 
 #define free_mixed_svalues(X,Y) do {		\
   struct svalue *s_=(X);			\
