@@ -288,6 +288,7 @@ void exit_main()
 
   cleanup_callbacks();
   zap_all_arrays();
+  zap_all_mappings();
 
   cleanup_shared_string_table();
 }

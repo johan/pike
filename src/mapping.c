@@ -1044,7 +1044,7 @@ void zap_all_mappings()
     
     next=m->next;
     
-    free_mapping(m);
+    /* free_mapping(m); */
   }
 }
 
