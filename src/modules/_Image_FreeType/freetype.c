@@ -52,7 +52,7 @@ struct face
 /*! @module Image */
 
 /*! @module FreeType
- *! Pike glue for the FreeType2 module, http://www.freetype.org/
+ *! Pike glue for the FreeType2 library, http://www.freetype.org/
  */
 
 /*! @class Face
