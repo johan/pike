@@ -320,6 +320,10 @@ void gc_free_all_unreferenced_multisets(void)
 
       SET_NEXT_AND_FREE(l, free_multiset);
     }else{
+#ifdef PIKE_DEBUG
+      extern int d_flag;
+      if(d_flag) gc_check(l->ind);
+#endif
       next=l->next;
     }
   }

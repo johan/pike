@@ -18,6 +18,7 @@
 #include "operators.h"
 #include "module_support.h"
 #include "threads.h"
+#include "gc.h"
 
 RCSID("$Id$");
 
@@ -532,10 +533,21 @@ void permission_error(
   ERROR_DONE(generic);
 }
 
+#ifdef PIKE_DEBUG
+static void gc_check_throw_value(struct callback *foo, void *bar, void *gazonk)
+{
+  debug_gc_xmark_svalues(&throw_value,1," in the throw value");
+}
+#endif
+
 void init_error(void)
 {
 #define ERR_SETUP
 #include "errors.h"
+
+#ifdef PIKE_DEBUG
+  dmalloc_accept_leak(add_gc_callback(gc_check_throw_value,0,0));
+#endif
 }
 
 void cleanup_error(void)
