@@ -4,6 +4,8 @@ VPATH=@srcdir@:@srcdir@/../..:../..:.
 OBJS=system.o syslog.o passwords.o nt.o
 MODULE_LDFLAGS=@LIBS@
 
+CONFIG_HEADERS=@CONFIG_HEADERS@
+
 @static_module_makefile@
 
 $(SRCDIR)/add-errnos.h : $(SRCDIR)/errnos.list $(SRCDIR)/mkerrnos.sed

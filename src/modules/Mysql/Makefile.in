@@ -11,5 +11,7 @@ MODULE_LDFLAGS=@LDFLAGS@ @MYSQL_LIBS@
 DUMMY=dummy.o
 LINKER_OPTIONS=modules/Mysql/dummy.o
 
+CONFIG_HEADERS=@CONFIG_HEADERS@
+
 @dynamic_module_makefile@
 @dependencies@

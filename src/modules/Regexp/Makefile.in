@@ -4,5 +4,7 @@ VPATH=@srcdir@:@srcdir@/../..:../..
 OBJS=glue.o @REGEXP_OBJS@ 
 MODULE_LDFLAGS=@LDFLAGS@
 
+CONFIG_HEADERS=@CONFIG_HEADERS@
+
 @dynamic_module_makefile@
 @dependencies@

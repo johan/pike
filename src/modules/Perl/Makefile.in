@@ -6,6 +6,8 @@ OBJS=perlmod.o @extra_objs@
 PERL=@perl@
 MODULE_CFLAGS=@PERL_CCFLAGS@
 
+CONFIG_HEADERS=@CONFIG_HEADERS@
+
 @dynamic_module_makefile@
 
 perlxsi.c:

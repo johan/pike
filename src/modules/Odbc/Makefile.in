@@ -8,5 +8,7 @@ MODULE_CPPFLAGS=@DEFS@ @CPPFLAGS@
 OBJS=odbc.o odbc_result.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 
+CONFIG_HEADERS=@CONFIG_HEADERS@
+
 @dynamic_module_makefile@
 @dependencies@

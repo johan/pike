@@ -4,5 +4,7 @@ VPATH=@srcdir@:@srcdir@/../..:../..
 MODULE_LDFLAGS=@LIBS@
 OBJS=math.o
 
+CONFIG_HEADERS=@CONFIG_HEADERS@
+
 @static_module_makefile@
 @dependencies@

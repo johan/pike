@@ -11,6 +11,8 @@ LINKER_OPTIONS=@LINKER_OPTIONS@
 
 DUMMY=module.pmod.in
 
+CONFIG_HEADERS=@CONFIG_HEADERS@
+
 @dynamic_module_makefile@
 
 module.pmod.in: $(SRCDIR)/module.pmod.in.in config.status
