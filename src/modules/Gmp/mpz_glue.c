@@ -1602,11 +1602,11 @@ PIKE_MODULE_EXIT
 
 
 #define tMpz_arg tOr3(tInt,tFloat,tObj)
-#define tMpz_ret tObj
+#define tMpz_ret tObjIs_GMP_MPZ
 #define tMpz_int tInt
 #define tMpz_shift_type tFunc(tMpz_arg,tMpz_ret)
 #define tMpz_binop_type tFuncV(tNone, tMpz_arg, tMpz_ret)
-#define tMpz_cmpop_type tFunc(tMixed, tInt)
+#define tMpz_cmpop_type tFunc(tMixed, tInt01)
 
 #define MPZ_DEFS()							\
   ADD_STORAGE(MP_INT);							\
