@@ -364,8 +364,9 @@ PIKECLASS _pcre
 
 #endif /* HAVE_LIBPCRE */
 
-/*!
- *! convenience function: 
+/*! @decl array(string) split_subject(string subject, @
+ *!                        array(int) previous_result)
+ *! Convenience function that
  *! splits a subject string on the result from _pcre->exec()
  *! 
  *! equal to
