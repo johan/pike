@@ -285,6 +285,13 @@ typedef struct p_wchar_p
 #define DO_PIKE_CLEANUP
 #endif
 
+#ifdef PIKE_SECURITY
+#define DO_IF_SECURITY(X) X
+#else
+#define DO_IF_SECURITY(X)
+#endif
+
+
 #include "port.h"
 #include "dmalloc.h"
 
