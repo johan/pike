@@ -482,7 +482,11 @@ static int yylex2(YYSTYPE *yylval)
     {
     case 0:
       lex.pos--;
+#ifdef F_LEX_EOF
+      return F_LEX_EOF;
+#else /* !F_LEX_EOF */
       return 0;
+#endif /* F_LEX_EOF */
 
     case '\n':
       lex.current_line++;
