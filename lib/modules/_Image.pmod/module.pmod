@@ -204,7 +204,7 @@ local string load_file( void|object|string file )
   else
   {
     if( catch( data = read_file( file ) ) || !data || !strlen(data) )
-      catch( data = Protocols.HTTP.get_url_nice( file )[ 1 ] );
+      catch( data = Protocols["HTTP"]->get_url_nice( file )[ 1 ] );
   }
   return data;
 }
