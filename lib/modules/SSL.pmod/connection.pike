@@ -67,6 +67,9 @@ static object recv_packet(string data)
   { /* Finished a packet */
     left_over = res;
     if (current_read_state) {
+#ifdef SSL3_DEBUG
+      werror("Decrypting packet.. version[1]="+version[1]+"\n");
+#endif /* SSL3_DEBUG */
       return current_read_state->decrypt_packet(packet,version[1]);
     } else {
 #ifdef SSL3_DEBUG
