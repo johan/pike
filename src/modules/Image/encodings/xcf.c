@@ -83,7 +83,7 @@ static void f_substring_index( INT32 args )
 
   if( i < 0 ) i = s->len + i;
   if( i >= s->len ) {
-    Pike_error("Index out of bounds, %d > %ld\n", i,
+    Pike_error("Index out of bounds, %ld > %ld\n", i,
 	  DO_NOT_WARN((long)s->len-1) );
   }
   push_int( ((unsigned char *)s->s->str)[s->offset+i] );

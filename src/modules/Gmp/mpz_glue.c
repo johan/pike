@@ -1980,7 +1980,7 @@ static void mpzmod_random(INT32 args)
   push_int(mpz_size(THIS)*sizeof(mp_limb_t) + 4);
   f_random_string(1);
   if (sp[-1].type != T_STRING) {
-    Pike_error("random_string(%d) returned non string.\n",
+    Pike_error("random_string(%ld) returned non string.\n",
 	       mpz_size(THIS)*sizeof(mp_limb_t) + 4);
   }
   get_mpz_from_digits(OBTOMPZ(res), sp[-1].u.string, 256);
