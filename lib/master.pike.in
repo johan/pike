@@ -1753,6 +1753,23 @@ void compile_warning(string file,int line,string err)
 }
 
 
+//! This function is called when an exception is catched during
+//! compilation. Its message is also reported to @[compile_error] if
+//! this function returns zero.
+int compile_exception (array|object trace)
+{
+  if (mixed val = get_inhibit_compile_errors()) {
+    if (objectp (val) && val->compile_exception)
+      return val->compile_exception (trace);
+  }
+  else {
+    handle_error (trace);
+    return 1;
+  }
+  return 0;
+}
+
+
 //! Called for every runtime warning. The first argument identifies
 //! where the warning comes from, the second identifies the specific
 //! message, and the rest depends on that. See code below for currently
