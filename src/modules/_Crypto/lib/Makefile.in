@@ -138,5 +138,3 @@ algorithms.a: $(OBJS)
 	rm -f algorithms.a
 	$(AR) cru algorithms.a $(OBJS)
 	$(RANLIB) algorithms.a
-
-@dependencies@
