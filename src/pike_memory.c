@@ -1396,6 +1396,10 @@ void *debug_malloc(size_t s, LOCATION location)
 
   mt_lock(&debug_malloc_mutex);
 
+  if (s & 0xff000000) {
+    fatal("malloc(0x%08lx) -- Huge malloc!\n", (unsigned long)s);
+  }
+
   m=(char *)malloc(s + DEBUG_MALLOC_PAD*2);
   if(m)
   {
