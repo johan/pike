@@ -16,6 +16,8 @@ int|object big_query(object|string q, mapping(string|int:mixed)|void bindings)
   return ::big_query(.sql_util.emulate_bindings(q,bindings));
 }
 
+constant list_dbs = Odbc.list_dbs;
+
 #else /* !constant(Odbc.odbc) */
 #error "ODBC support not available.\n"
 #endif /* constant(Odbc.odbc) */
