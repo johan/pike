@@ -34,6 +34,16 @@
 #undef FAR
 #endif
 
+#ifdef HAVE_WINDOWS_H
+#include <windows.h>
+#ifdef HAVE_WTYPES_H
+/* jconfig.h has probably been compiled without WIN32_LEAN_AND_MEAN...
+ * So we need this one to get the boolean typedef.
+ */
+#include <wtypes.h>
+#endif
+#endif
+
 #include <jpeglib.h>
 #include "transupp.h" /* Support routines for jpeg transformations */
 

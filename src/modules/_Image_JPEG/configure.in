@@ -11,7 +11,7 @@ PIKE_FEATURE_WITHOUT(Image.JPEG)
 
 if test x$with_jpeglib = xyes ; then
   PIKE_FEATURE_NODEP(Image.JPEG)
-  AC_CHECK_HEADERS(jpeglib.h)
+  AC_CHECK_HEADERS(windows.h wtypes.h jpeglib.h)
   if test $ac_cv_header_jpeglib_h = yes ; then
     AC_CHECK_LIB(jpeg, jpeg_CreateCompress, [
       AC_DEFINE(HAVE_LIBJPEG) 
