@@ -22,6 +22,7 @@ RCSID("$Id$");
 #include "interpret.h"
 #include "hashtable.h"
 #include "main.h"
+#include "pike_memory.h"
 #include "gc.h"
 #include "threads.h"
 #include "constants.h"
@@ -1888,8 +1889,15 @@ static void exit_program_struct(struct program *p)
 
   if(p->flags & PROGRAM_OPTIMIZED)
   {
-    if(p->program)
+    if(p->program) {
+#ifdef PIKE_USE_MACHINE_CODE
+#ifdef VALGRIND_DISCARD_TRANSLATIONS
+      VALGRIND_DISCARD_TRANSLATIONS(p->program,
+				    p->num_program*sizeof(p->program[0]));
+#endif /* VALGRIND_DISCARD_TRANSLATIONS */
+#endif /* PIKE_USE_MACHINE_CODE */
       dmfree(p->program);
+    }
 #define FOO(NUMTYPE,TYPE,NAME) p->NAME=0;
 #include "program_areas.h"
   }else{
