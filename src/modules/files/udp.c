@@ -22,6 +22,7 @@ RCSID("$Id$");
 #include "signal_handler.h"
 #include "pike_types.h"
 #include "threads.h"
+#include "bignum.h"
 
 #include "module_support.h"
 
@@ -277,8 +278,8 @@ void udp_wait(INT32 args)
 
   FD_ZERO(&rset);
   FD_SET(fd, &rset);
-  tv.tv_sec = (int)timeout;
-  tv.tv_usec = (int)(timeout * 1000000.0);
+  tv.tv_sec = DO_NOT_WARN((int)timeout);
+  tv.tv_usec = DO_NOT_WARN((int)(timeout * 1000000.0));
   res = select(fd+1, &rset, NULL, NULL, &tv);
   e = errno;
 
@@ -469,7 +470,7 @@ void udp_sendto(INT32 args)
     }
   }
   pop_n_elems(args);
-  push_int(DO_NOT_WARN(res));
+  push_int64(res);
 }
 
 

@@ -26,6 +26,7 @@
 #include "callback.h"
 #include "backend.h"
 #include "module_support.h"
+#include "bignum.h"
 
 #include "file.h"
 
