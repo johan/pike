@@ -1322,15 +1322,18 @@ static TH_RETURN_TYPE wait_thread(void *data)
 	 *
 	 * Ignore them for now.
 	 */
+#ifdef !defined(_W_SLWTED) && !defined(_W_SEWTED) && !defined(_W_SFWTED)
 #ifdef PROC_DEBUG
-#ifdef SIGPROF
 	fprintf(stderr, "wait thread: Got SIGPROF from pid %d\n",pid);
-#else /* !SIGPROF */
-	fprintf(stderr, "wait thread: Got L/E/F status (0x%08x) from pid %d\n",
-		status, pid);
-#endif /* SIGPROF */
 #endif /* PROC_DEBUG */
 	ptrace(PTRACE_CONT, pid, CAST_TO_PTRACE_ADDR(1), SIGPROF);
+#else /* defined(_W_SLWTED) || defined(_W_SEWTED) || defined(_W_SFWTED) */
+#ifdef PROC_DEBUG
+	fprintf(stderr, "wait thread: Got L/E/F status (0x%08x) from pid %d\n",
+		status, pid);
+#endif /* PROC_DEBUG */
+	ptrace(PTRACE_CONT, pid, CAST_TO_PTRACE_ADDR(1), 0);
+#endif /* !defined(_W_SLWTED) && !defined(_W_SEWTED) && !defined(_W_SFWTED) */
 	continue;
       }
 #endif /* HAVE_PTRACE && (SIGPROF || _W_SLWTED || _W_SEWTED || _W_SFWTED) */
