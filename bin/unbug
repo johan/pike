@@ -1438,18 +1438,20 @@ class Debug
 	/* FIXME: truncating ! */
 	if(!odesc)
 	{
+	  string new;
 	  odesc="([";
 	  int done;
 	  foreach(cache, KeyPair k)
 	    {
-	      if(sizeof(odesc)>300)
+	      if(sizeof(odesc)>2) odesc+=",";
+	      done++;
+	      new = sprintf("%O:%O",k->get_ind(), k->get_val());
+	      if(sizeof(odesc+new)>300)
 	      {
 		odesc+="...."+(_sizeof()-done);
 		break;
 	      }
-	      if(sizeof(odesc)>2) odesc+=",";
-	      done++;
-	      odesc+=sprintf("%O:%O",k->get_ind(), k->get_val());
+	      odesc += new;
 	    }
 	  odesc+="])";
 	}

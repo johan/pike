@@ -48,6 +48,11 @@ int main(int argc, array(string) argv)
     }
     int char;
     sscanf(info[0], "%x", char);
+#if 1
+    // Hardcoded in builtin_functions.c
+    if(char && char<='z')
+      continue;
+#endif
     int mode = CIM_NONE;
     int d;
     if (sizeof(info[13])) {
