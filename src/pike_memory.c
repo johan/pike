@@ -1369,17 +1369,13 @@ void debug_malloc_copy_names(void *p, void *p2)
     struct memhdr *mh,*from;
     mt_lock(&debug_malloc_mutex);
 
-    if((from=my_find_memhdr(p2,0)))
+    if((from=my_find_memhdr(p2,0)) && (mh=my_find_memhdr(p,0)))
     {
       struct memloc *l;
       for(l=from->locations;l;l=l->next)
       {
-	struct fileloc *f;
 	if(l->locnum < 0)
-	{
-	  if((mh=my_find_memhdr(p,0)))
-	    add_location(mh, l->locnum);
-	}
+	  add_location(mh, l->locnum);
       }
     }
 
