@@ -32,7 +32,9 @@ RCSID("$Id$");
 struct zipper
 {
   struct z_stream_s gz;
+#ifdef _REENTRANT
   DEFINE_MUTEX(lock);
+#endif /* _REENTRANT */
 };
 
 #define BUF 16384
