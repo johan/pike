@@ -44,8 +44,8 @@ RCSID("$Id$");
 
 #if defined (WITH_LONG_DOUBLE_PRECISION_SVALUE)
 
-/* Assume that if one l-suffixed function exists, they all do. */
-# ifdef HAVE_EXPL
+/* Assume that if these two l-suffixed functions exist, they all do. */
+# if defined (HAVE_EXPL) && defined (HAVE_FLOORL)
 #  define FL1(FN, ARG1) PIKE_CONCAT(FN,l) (ARG1)
 #  define FL2(FN, ARG1, ARG2) PIKE_CONCAT(FN,l) (ARG1, ARG2)
 # else
@@ -62,8 +62,8 @@ RCSID("$Id$");
 
 #else
 
-/* Assume that if one f-suffixed function exists, they all do. */
-# ifdef HAVE_EXPF
+/* Assume that if these two f-suffixed functions exist, they all do. */
+# if defined (HAVE_EXPF) && defined (HAVE_FLOORF)
 #  define FL1(FN, ARG1) PIKE_CONCAT(FN,f) (ARG1)
 #  define FL2(FN, ARG1, ARG2) PIKE_CONCAT(FN,f) (ARG1, ARG2)
 # else
