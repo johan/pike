@@ -12,7 +12,7 @@ mixed trace;
 
 constant is_alert = 1;
 
-object create(int l, int d, string|void m, mixed|void t)
+object create(int l, int d, int version, string|void m, mixed|void t)
 {
   if (! ALERT_levels[l])
     throw( ({ "SSL.alert->create: Invalid level\n", backtrace() }));
@@ -33,7 +33,7 @@ object create(int l, int d, string|void m, mixed|void t)
 
   packet::create();
   packet::content_type = PACKET_alert;
-  packet::protocol_version = ({ 3, 0 });
+  packet::protocol_version = ({ 3, version });
   packet::fragment = sprintf("%c%c", level, description);
 }
     
