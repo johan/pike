@@ -649,6 +649,17 @@ void mega_apply2(enum apply_type type, INT32 args, void *arg1, void *arg2)
 #endif
 #endif
 
+#if defined(PIKE_DEBUG) && defined(_REENTRANT)
+  if(d_flag)
+    {
+      if( thread_id && !th_equal( OBJ2THREAD(thread_id)->id, th_self()) )
+	fatal("Current thread is wrong.\n");
+	
+      if(thread_for_id(th_self()) != thread_id)
+	fatal("thread_for_id() (or thread_id) failed in mega_apply! %p != %p\n",thread_for_id(th_self()),thread_id);
+      }
+#endif
+
   switch(type)
   {
   case APPLY_STACK:
