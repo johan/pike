@@ -882,13 +882,25 @@ static void eval_instruction(unsigned char *pc)
       break;
 
       CASE(F_EQ_OR);
-      if(is_eq(sp-2,sp-1))
+      if(!is_eq(sp-2,sp-1))
       {
 	pop_n_elems(2);
 	pc+=sizeof(INT32);
       }else{
 	pop_n_elems(2);
 	push_int(1);
+	DOJUMP();
+      }
+      break;
+
+      CASE(F_EQ_AND);
+      if(is_eq(sp-2,sp-1))
+      {
+	pop_n_elems(2);
+	pc+=sizeof(INT32);
+      }else{
+	pop_n_elems(2);
+	push_int(0);
 	DOJUMP();
       }
       break;
