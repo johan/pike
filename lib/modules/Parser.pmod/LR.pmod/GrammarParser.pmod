@@ -310,7 +310,7 @@ void create()
 //! left as is.
 //!
 //! @bugs
-//! Returns error-code in both Grammar_parser.error and
+//! Returns error-code in both GrammarParser.error and
 //! return_value->lr_error.
 Parser make_parser(string str, object|void m)
 {
