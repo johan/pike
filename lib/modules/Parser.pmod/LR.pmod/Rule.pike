@@ -49,7 +49,7 @@ multiset(string) prefix_tokens = (<>);
 int number = 0;
 
 //! Priority and associativity of this rule.
-object /* (priority) */ pri;
+object /* Priority */ pri;
 
 /*
  * Functions
