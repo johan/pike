@@ -875,6 +875,8 @@ void backend(void)
 	  }
 #endif /* PIKE_DEBUG */
 	  IF_PD(fprintf(stderr, "BACKEND: POLLHUP | POLLERR\n"));
+	  /* We don't want to keep this fd anymore. */
+	  POLL_FD_CLR(fd, ~0);
 	  if (fds[fd].read.callback) {
 	    IF_PD(fprintf(stderr, "BACKEND: read_callback(%d, %p)\n",
 			  fd, fds[fd].read.data));
@@ -884,8 +886,6 @@ void backend(void)
 			  fd, fds[fd].write.data));
 	    (*(fds[fd].write.callback))(fd, fds[fd].write.data);
 	  }
-	  /* We don't want to keep this fd anymore. */
-	  POLL_FD_CLR(fd, ~0);
 #ifdef PIKE_DEBUG
 	  handled = 1;
 #endif /* PIKE_DEBUG */
