@@ -8,9 +8,6 @@
 //  Based on Exiftool by Robert F. Tobler <rft@cg.tuwien.ac.at>.
 //
 // Some URLs:
-// http://www.ba.wakwak.com/~tsuruzoh/Computer/Digicams/exif-e.html
-// http://www.pima.net/standards/it10/PIMA15740/exif.htm
-// http://tsc.jeita.or.jp/WTO-01.htm
 // http://www.exif.org/
 // http://www.dicasoft.de/casiomn.htm
 // http://www.dalibor.cz/minolta/
