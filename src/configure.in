@@ -2330,7 +2330,6 @@ AC_SUBST(YY_FROM_CONST)
 #############################################################################
 
 AC_C_CONST
-AC_C_CHAR_UNSIGNED
 
 # The above doesn't find IBM C's buggy const.
 
@@ -2355,6 +2354,8 @@ const int foo(int bar) { return bar; }
     :
   fi
 fi
+
+AC_C_CHAR_UNSIGNED
 
 AC_MSG_CHECKING(if we can cast void * to a function pointer)
 AC_CACHE_VAL(pike_cv_function_cast, [
