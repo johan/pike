@@ -567,6 +567,7 @@ static void f_error_backtrace(INT32 args)
 static void f_error__sprintf(INT32 args)
 {
   struct program *p = Pike_fp->current_object->prog;
+  /* FIXME: What about obscure overloadings? */
   int i = find_identifier("error_type", p);
   struct identifier *id = ID_FROM_INT(p, i);
   int mode = 0;
