@@ -573,7 +573,7 @@ fi
 
 # FIXME: Add proper tests
 case "$UNAME" in
-  OSF1\ V4.*)
+  OSF1\ V4.*|OSF1\ V5.*|OSF1\ V6.*)
     AC_DEFINE(USE_RPATH)
     ;;
   HPUX\ 11.*)
