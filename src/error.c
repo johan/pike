@@ -109,7 +109,7 @@ void va_error(const char *fmt, va_list args) ATTRIBUTE((noreturn))
   in_error=buf;
 
 #ifdef HAVE_VSNPRINTF
-  vsnprintf(bug, 4090, fmt, args);
+  vsnprintf(buf, 4090, fmt, args);
 #else /* !HAVE_VSNPRINTF */
   VSPRINTF(buf, fmt, args);
 #endif /* HAVE_VSNPRINTF */
