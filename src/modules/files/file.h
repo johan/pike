@@ -33,7 +33,7 @@ struct my_file
   struct fd_callback_box box;	/* Must be first. */
   /* The box is hooked in whenever box.backend is set. */
 
-  struct svalue event_cbs[PIKE_FD_NUM_EVENTS];
+  struct svalue event_cbs[4];
   /* Callbacks can be set without having the corresponding bits in
    * box.events, but not the other way around. */
 
