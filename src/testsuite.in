@@ -2601,8 +2601,10 @@ test_eq(String.capitalize("FooBar"),"FooBar")
 test_eq(String.capitalize("-"),"-")
 
 // - common_prefix
+test_eq(String.common_prefix(({ "soliloquise" })), "soliloquise")
 test_eq(String.common_prefix(({ "muzzle", "muzzy" })), "muzz")
 test_eq(String.common_prefix(({ "labyrinth", "diatom" })), "")
+test_eq(String.common_prefix(({ "abc", "abc", "abc" })), "abc")
 test_eq(String.common_prefix(({})), "")
 
 // - clone
