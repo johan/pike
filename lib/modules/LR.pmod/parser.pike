@@ -886,10 +886,11 @@ static private int repair(object(kernel) state, multiset(int|string) conflicts)
 
       foreach (state->items, object(item) i) {
 	if (i->offset == sizeof(i->r->symbols)) {
+	  /* Reduce */
 	  if (i->direct_lookahead[symbol]) {
 	    object(priority) new_pri;
 	    if ((new_pri = i->r->pri)->value < pri->value) {
-	      if (verbose) {
+	      if (1 || verbose) {
 		werror(sprintf("Ignoring reduction of item\n%s\n"
 			       "on lookahead %s (Priority %d < %d)\n",
 			       item_to_string(i),
@@ -901,8 +902,8 @@ static private int repair(object(kernel) state, multiset(int|string) conflicts)
 		i->direct_lookahead = (<>);
 	      }
 	    } else if ((pri->assoc >= 0) &&
-			    (shift_pri->value == pri->value)) {
-	      if (verbose) {
+		       (shift_pri->value == pri->value)) {
+	      if (1 || verbose) {
 		werror(sprintf("Ignoring reduction of item\n%s\n"
 			       "on lookahead %s (Right associative)\n",
 			       item_to_string(i),
@@ -913,7 +914,7 @@ static private int repair(object(kernel) state, multiset(int|string) conflicts)
 		i->direct_lookahead = (<>);
 	      }
 	    } else {
-	      if (verbose) {
+	      if (1 || verbose) {
 		werror(sprintf("Kept item\n%s\n"
 			       "on lookahead %s\n",
 			       item_to_string(i),
@@ -921,35 +922,35 @@ static private int repair(object(kernel) state, multiset(int|string) conflicts)
 	      }
 	      reduce_rest++;
 	    }
-	  } else if (i->r->symbols[i->offset] == symbol) {
-	    /* Shift */
-	    if (shift_pri->value < pri->value) {
-	      if (verbose) {
-		werror(sprintf("Ignoring shift on item\n%s\n"
-			       "on lookahead %s (Priority %d < %d)\n",
-			       item_to_string(i),
-			       symbol_to_string(symbol),
-			       i->r->pri->value, pri->value));
-	      }
-	      i->direct_lookahead = (<>);
-	    } else if ((pri->assoc <= 0) &&
-		       (reduce_pri->value == pri->value)) {
-	      if (verbose) {
-		werror(sprintf("Ignoring shift on item\n%s\n"
-			       "on lookahead %s (Left associative)\n",
-			       item_to_string(i),
-			       symbol_to_string(symbol)));
-	      }
-	      i->direct_lookahead = (<>);
-	    } else {
-	      if (verbose) {
-		werror(sprintf("Kept item\n%s\n"
-			       "on lookahead %s\n",
-			       item_to_string(i),
-			       symbol_to_string(symbol)));
-	      }
-	      shift_rest++;
+	  }
+	} else if (i->r->symbols[i->offset] == symbol) {
+	  /* Shift */
+	  if (shift_pri->value < pri->value) {
+	    if (1 || verbose) {
+	      werror(sprintf("Ignoring shift on item\n%s\n"
+			     "on lookahead %s (Priority %d < %d)\n",
+			     item_to_string(i),
+			     symbol_to_string(symbol),
+			     i->r->pri->value, pri->value));
 	    }
+	    i->direct_lookahead = (<>);
+	  } else if ((pri->assoc <= 0) &&
+		     (reduce_pri->value == pri->value)) {
+	    if (1 || verbose) {
+	      werror(sprintf("Ignoring shift on item\n%s\n"
+			     "on lookahead %s (Left associative)\n",
+			     item_to_string(i),
+			     symbol_to_string(symbol)));
+	    }
+	    i->direct_lookahead = (<>);
+	  } else {
+	    if (1 || verbose) {
+	      werror(sprintf("Kept item\n%s\n"
+			     "on lookahead %s\n",
+			     item_to_string(i),
+			     symbol_to_string(symbol)));
+	    }
+	    shift_rest++;
 	  }
 	}
       }
