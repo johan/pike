@@ -48,13 +48,6 @@ struct thread_state {
   struct mapping *thread_local;
   struct thread_state *hashlink, **backlink;
   struct svalue result;
-#ifdef PROFILING
-#if SIZEOF_LONG_LONG - 0 != 0
-  long long time_base;
-#else
-  long time_base;
-#endif
-#endif /* PROFILING */
 #if CPU_TIME_IS_THREAD_LOCAL == PIKE_YES
   cpu_time_t auto_gc_time;
 #endif

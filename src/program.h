@@ -15,6 +15,7 @@
 #include "svalue.h"
 #include "time_stuff.h"
 #include "program_id.h"
+#include "pike_rusage.h"
 #include "block_alloc_h.h"
 
 /* Needed to support dynamic loading on NT */
@@ -231,9 +232,9 @@ struct identifier
   unsigned INT8 run_time_type;		/* PIKE_T_??? */
   unsigned INT16 opt_flags;		/* OPT_??? */
 #ifdef PROFILING
-  unsigned INT32 num_calls;
-  unsigned INT32 total_time;
-  unsigned INT32 self_time;
+  unsigned INT32 num_calls;		/* Total number of calls. */
+  cpu_time_t total_time;		/* Total time with children. */
+  cpu_time_t self_time;			/* Total time excluding children. */
 #endif /* PROFILING */
   union idptr func;
 };

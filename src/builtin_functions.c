@@ -6472,7 +6472,7 @@ static void f_get_prof_info(INT32 args)
   }
   prog = program_from_svalue(Pike_sp-args);
   if(!prog)
-    SIMPLE_BAD_ARG_ERROR("get_profiling_info", 1, "program|function|object");
+    SIMPLE_BAD_ARG_ERROR("get_profiling_info", 1, "program");
 
   /* ({ num_clones, ([ "fun_name":({ num_calls, total_time, self_time }) ]) })
    */
@@ -6489,8 +6489,13 @@ static void f_get_prof_info(INT32 args)
       ref_push_string(prog->identifiers[i].name);
 
       push_int(prog->identifiers[i].num_calls);
-      push_int(prog->identifiers[i].total_time);
-      push_int(prog->identifiers[i].self_time);
+      if (CPU_TIME_TICKS == 1000) {
+	push_int64(prog->identifiers[i].total_time);
+	push_int64(prog->identifiers[i].self_time);
+      } else {
+	push_int64(prog->identifiers[i].total_time/1000000);
+	push_int64(prog->identifiers[i].self_time/1000000);
+      }
       f_aggregate(3);
     }
   }

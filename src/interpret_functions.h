@@ -2250,6 +2250,21 @@ OPCODE1(F_CALL_BUILTIN1_AND_POP, "call builtin1 & pop", I_UPDATE_ALL, {
   add_ref(new_frame->context.prog);					   \
   if(new_frame->context.parent)						   \
     add_ref(new_frame->context.parent);					   \
+									   \
+  DO_IF_PROFILING({							   \
+      new_frame->start_time =						   \
+	get_cpu_time() - Pike_interpreter.unlocked_time;		   \
+      new_frame->ident = Pike_fp->ident;				   \
+      new_frame->children_base = Pike_interpreter.accounted_time;	   \
+      new_frame->context.prog->identifiers[new_frame->ident].num_calls++;  \
+      DO_IF_PROFILING_DEBUG({						   \
+	  fprintf(stderr, "%p{: Push at %" PRINT_CPU_TIME		   \
+		  " %" PRINT_CPU_TIME "\n",				   \
+		  Pike_interpreter.thread_state, new_frame->start_time,	   \
+		  new_frame->children_base);				   \
+	});								   \
+    });									   \
+									   \
   Pike_fp=new_frame;							   \
   new_frame->flags=PIKE_FRAME_RETURN_INTERNAL | XFLAGS;			   \
 									   \

@@ -507,11 +507,19 @@ char *crypt(const char *, const char *);
 
 /* Used in more than one place, better put it here */
 
-#if defined(PROFILING) && defined(HAVE_GETHRTIME)
+#if defined(PROFILING)
 #define DO_IF_PROFILING(X) X
 #else
 #define DO_IF_PROFILING(X)
 #endif
+
+/* #define PROFILING_DEBUG */
+
+#ifdef PROFILING_DEBUG
+#define DO_IF_PROFILING_DEBUG(X)	X
+#else /* !PROFILING_DEBUG */
+#define DO_IF_PROFILING_DEBUG(X)
+#endif /* PROFILING_DEBUG */
 
 
 
