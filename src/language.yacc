@@ -399,13 +399,13 @@ all: program { YYACCEPT; }
 /*  | error F_LEX_EOF { YYABORT; } */
   ;
 
-program: program def optional_semi_colon
+program: program def optional_semi_colons
 /*  | error { yyerrok; } */
   |  /* empty */
   ;
 
-optional_semi_colon: /* empty */
-  | ';' 
+optional_semi_colons: /* empty */
+  | optional_semi_colons ';'
   ;
 
 string_constant: string
