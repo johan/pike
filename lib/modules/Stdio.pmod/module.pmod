@@ -2025,9 +2025,13 @@ int mkdirhier (string pathname, void|int mode)
 {
   if (zero_type (mode)) mode = 0777; // &'ed with umask anyway.
   if (!sizeof(pathname)) return 0;
-  string path;
-  if (pathname[0] == '/') pathname = pathname[1..], path = "/";
-  else path = "";
+  string path = "";
+#ifdef __NT__
+  pathname = replace(pathname, "\\", "/");
+  if (pathname[1..2] == ":/" && `<=("A", upper_case(pathname[..0]), "Z"))
+    path = pathname[..2], pathname = pathname[3..];
+#endif
+  while (pathname[..0] == "/") pathname = pathname[1..], path += "/";
   foreach (pathname / "/", string name) {
     path += name;
     if (!file_stat(path)) {
