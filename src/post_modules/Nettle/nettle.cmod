@@ -100,6 +100,18 @@ PIKECLASS Yarrow
     yarrow256_force_reseed(THIS->ctx);
   }
 
+  PIKEFUN int(0..1) update(string data, int source, int entropy)
+  {
+    NO_WIDE_STRING(data);
+    if( !THIS->ctx->nsources )
+      Pike_error("This random generator has no sources.\n");
+    if( source<0 || source>=THIS->ctx->nsources )
+      Pike_error("Invalid random source.\n");
+    if( entropy<0 )
+      Pike_error("Entropy must be positive.\n");
+    RETURN yarrow256_update(THIS->ctx, source, entropy, data->len, data->str);
+  }
+
   PIKEFUN int(0..) needed_sources()
   {
     RETURN yarrow256_needed_sources(THIS->ctx);
