@@ -133,7 +133,7 @@ extern struct program *image_colortable_program;
 #define THIS ((struct image *)(Pike_fp->current_storage))
 #define THISOBJ (Pike_fp->current_object)
 
-#define testrange(x) ((COLORTYPE)MAXIMUM(MINIMUM(((int)x),255),0))
+#define testrange(x) ((COLORTYPE)MAXIMUM(MINIMUM(DOUBLE_TO_INT(x),255),0))
 
 #define sq(x) ((x)*(x))
 
