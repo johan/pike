@@ -2,6 +2,13 @@ dnl $Id$
 
 dnl Nettle.Yarrow
 
+cond_resolv( Nettle.CBC, [[
+  test_true( programp(Crypto.CBC) )
+  test_true( programp(Crypto.Proxy) )
+  test_true( programp(Crypto.CipherState) )
+  test_true( programp(Crypto.HashState) )
+]])
+
 cond_resolv( Nettle.Yarrow, [[
   test_eq( Nettle.Yarrow()->min_seed_size(), 32)
   test_eval_error( Nettle.Yarrow()->get_seed() )
