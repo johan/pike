@@ -47,9 +47,8 @@
  */
 
 struct precompiled_mysql {
-#ifdef MUTEX_T
-  MUTEX_T	lock;
-#endif /* MUTEX_T */
+  DEFINE_MUTEX(lock);
+
   MYSQL		mysql, *socket;
   MYSQL_RES	*last_result;	/* UGLY way to pass arguments to create() */
   struct pike_string	*host, *database, *user, *password;	/* Reconnect */
