@@ -19,8 +19,9 @@ int main(int argc, array(string) argv)
 
   string data = Stdio.stdin.read();
 
-  foreach(data/"\r\n", string line) {
+  foreach(data/"\n", string line) {
     lineno++;
+    line -= "\r";
     array(string) info = line/";";
 
     if (!sizeof(line)) continue;
