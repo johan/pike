@@ -319,7 +319,7 @@ class OutputController
     if(active_attributes && !term->tgetflag("ms"))
       low_disable_attributes();
     if(xpos-n>=0) {
-      outfd->write(term->put("LE", n) || (term->put("le")||"")*n);
+      outfd->write(term->put("LE", n) || (term->put("le")||term-put("kb")||"\8")*n);
       xpos -= n;
     } else {
       int l = 1+(n-xpos-1)/columns;
