@@ -25,6 +25,7 @@ RCSID("$Id$");
 #include "multiset.h"
 #include "mapping.h"
 #include "cpp.h"
+#include "main.h"
 
 #include <errno.h>
 
