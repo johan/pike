@@ -814,26 +814,14 @@ static char *raw_lfun_types[] = {
  *!   @[predef::m_delete()]
  */
 
-/*! @decl object lfun::_get_iterator()
+/*! @decl Iterator lfun::_get_iterator()
  *!
- *!   Iterator creation callback.
- *!
- *! @returns
- *!   Should return an object that implements the iterator API:
- *!   @dl
- *!   	@item
- *!   	  @[lfun::`!()] should return @expr{0@} (zero) when not at end of stream,
- *!   	  and @expr{1@} at end of stream.
- *!   	@item
- *!   	  @[lfun::`+=()] should advance the specified number of steps.
- *!   	@item
- *!   	  @[index()] should return the current index.
- *!   	@item
- *!   	  @[value()] should return the current value.
- *!   @enddl
+ *!   Iterator creation callback. The returned @[Iterator] instance
+ *!   works as a cursor that references a specific item contained (in
+ *!   some arbitrary sense) in this one.
  *!
  *! @seealso
- *!   @[predef::Iterator], @[predef::foreach()]
+ *!   @[Iterator], @[get_iterator], @[predef::foreach()]
  */
 
 /*! @endnamespace
