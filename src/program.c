@@ -5553,6 +5553,11 @@ int report_compiler_dependency(struct program *p)
 {
   int ret=0;
   struct Supporter *c,*cc;
+
+  if (p == Pike_compiler->new_program) {
+    /* Depends on self... */
+    return 0;
+  }
   verify_supporters();
   if (force_resolve)
     return 0;
