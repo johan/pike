@@ -831,6 +831,7 @@ static mapping ext2type = ([
 //! @belongs MIME
 //! Returns the MIME media type for the provided filename extension @[ext].
 //! Zero will be returned on unknown file extensions.
+
 string `()(string ext) {
   return small_ext2type[ext] || ext2type[ext];
 }
