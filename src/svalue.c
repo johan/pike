@@ -1515,8 +1515,8 @@ int gc_mark_weak_short_svalue(union anything *u, TYPE_T type)
 
 #define DO_CYCLE_CHECK_STRING(U)
 
-#define GC_DO_CYCLE_CHECK(U, TN) PIKE_CONCAT(gc_cycle_check_, TN)(U.TN)
-#define GC_DO_CYCLE_CHECK_WEAK(U, TN) PIKE_CONCAT3(gc_cycle_check_, TN, _weak)(U.TN)
+#define GC_DO_CYCLE_CHECK(U, TN) PIKE_CONCAT(gc_cycle_check_, TN)(U.TN, 0)
+#define GC_DO_CYCLE_CHECK_WEAK(U, TN) PIKE_CONCAT(gc_cycle_check_, TN)(U.TN, 1)
 
 TYPE_FIELD real_gc_cycle_check_svalues(struct svalue *s, size_t num)
 {

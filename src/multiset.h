@@ -56,16 +56,13 @@ void gc_mark_multiset_as_referenced(struct multiset *l);
 unsigned gc_touch_all_multisets(void);
 void gc_check_all_multisets(void);
 void gc_mark_all_multisets(void);
-void real_gc_cycle_check_multiset(struct multiset *l);
-void real_gc_cycle_check_multiset_weak(struct multiset *l);
+void real_gc_cycle_check_multiset(struct multiset *l, int weak);
 void gc_cycle_check_all_multisets(void);
 void gc_free_all_unreferenced_multisets(void);
 void count_memory_in_multisets(INT32 *num_, INT32 *size_);
 /* Prototypes end here */
 
-#define gc_cycle_check_multiset(X) \
-  enqueue_lifo(&gc_mark_queue, (queue_call) real_gc_cycle_check_multiset, (X))
-#define gc_cycle_check_multiset_weak(X) \
-  enqueue_lifo(&gc_mark_queue, (queue_call) real_gc_cycle_check_multiset_weak, (X))
+#define gc_cycle_check_multiset(X, WEAK) \
+  gc_cycle_enqueue((gc_cycle_check_cb *) real_gc_cycle_check_multiset, (X), (WEAK))
 
 #endif /* MULTISET_H */
