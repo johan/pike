@@ -913,7 +913,7 @@ static void low_pike_sprintf(struct string_builder *r,
 	    s=sp;
 	    if(q)
 	    {
-	      q->array->refs++;
+	      add_ref(q->array);
 	      push_array_items(q->array);
 	    }else{
 	      array_index_no_free(sp,w,tmp);
