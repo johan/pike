@@ -25,11 +25,8 @@ int main(int argc, array(string) argv)
 		"const unsigned long primes[NUMBER_OF_PRIMES] = {",
 		"$Id$",
 		argv, count));
-#if __MAJOR__ < 7
-  Gmp.bignum prime = Gmp.bignum (1);
-#else
-  int prime = 1;
-#endif
+
+  Gmp.mpz prime = Gmp.mpz(1);
   for (int i=0; i < count; i++) {
     prime = (prime+1)->next_prime();
     if (!(i%10)) {
