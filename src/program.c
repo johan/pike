@@ -3652,6 +3652,7 @@ void check_for_facet_inherit(struct program *p)
 				      p->facet_group->prog),
 		      3,
 		      "Unable to add product class");
+      pop_stack();
     }
   }
   /* The inherited class is not a facet class */
