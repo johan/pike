@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 //: SNMP protocol implementation for Pike
 //:
 //: Honza Petrous, 2000-10-07 (on the 'coding party' after user conference :)

@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 /* $Id$
  *
  * Keeps track of global data for an SSL server,

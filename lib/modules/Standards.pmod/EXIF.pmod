@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 //! This module implements EXIF (Exchangeable image file format for Digital Still Cameras) 2.1
 //! parsing.
 

@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 #charset iso-8859-2
 
 //! Polish language locale by Piotr Klaban.

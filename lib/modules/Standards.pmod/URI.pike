@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 //! This class implements URI parsing and resolving of relative references to
 //! absolute form, as defined in RFC 2396
 

@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 // $Id$
 
 //! This class implements a simple stack. Instead of adding and removing

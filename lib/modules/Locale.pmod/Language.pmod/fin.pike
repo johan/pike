@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 
 //! Finnish language locale created by Janne Edelman, Turku Unix Users Group ry, Turku, Finland
 

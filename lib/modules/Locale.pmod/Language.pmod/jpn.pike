@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 #charset iso-2022
 
 //! Japanese language locale.

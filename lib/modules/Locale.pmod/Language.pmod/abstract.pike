@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 //! Abstract language locale class, inherited by all the language locale classes.
 
 // $Id$

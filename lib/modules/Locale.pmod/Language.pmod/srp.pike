@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 
 //! Serbian language locale by Goran Opacic 1996/12/11
 

@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 #charset iso-8859-5
 
 //! Russian language locale

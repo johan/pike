@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 #charset iso-8859-2
 
 //! Czech language locale by Jan Petrous 16.10.1997,

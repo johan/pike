@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 
 //! Croatian language locale by  Klara Makovac 1997/07/02
 

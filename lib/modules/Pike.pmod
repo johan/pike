@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 // Pike core things that don't belong anywhere else.
 //
 // $Id$
