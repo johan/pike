@@ -635,7 +635,7 @@ void really_free_object(struct object *o)
 
     free((char *)o);
 
-    GC_FREE();
+    GC_FREE(o);
   }
 }
 
@@ -1212,7 +1212,16 @@ INT32 gc_touch_all_objects(void)
   INT32 n = 0;
   struct object *o;
   for (o = first_object; o; o = o->next) {
-    debug_gc_touch(o);
+    /* We need this if statement (or something like it)
+     * because a objects may become without all references in
+     * GC_PASS_DESTROY and thus hide in 'objects_to_destruct'
+     * until destruct_objects_to_destruct is called. If this
+     * happens the object has already been destructed, but
+     * not by free_all_unrefenced_objects
+     * -Hubbe
+     */
+    if(o->prog || Pike_in_gc != GC_PASS_POSTTOUCH)
+      debug_gc_touch(o);
     n++;
   }
   if (objects_to_destruct)

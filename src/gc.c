@@ -218,7 +218,7 @@ void describe_location(void *real_memblock,
 	fprintf(stderr,"%*s  **In p->inherits[%ld] (%s)\n",indent,"",
 		e,
 		p->inherits[e].name ? p->inherits[e].name->str : "no name");
-	return;
+	break;
       }
 
       if(p->constants &&
@@ -229,7 +229,7 @@ void describe_location(void *real_memblock,
 	fprintf(stderr,"%*s  **In p->constants[%ld] (%s)\n",indent,"",
 		e,
 		p->constants[e].name ? p->constants[e].name->str : "no name");
-	return;
+	break;
       }
 
 
@@ -241,7 +241,7 @@ void describe_location(void *real_memblock,
 	fprintf(stderr,"%*s  **In p->identifiers[%ld] (%s)\n",indent,"",
 		e,
 		p->identifiers[e].name ? p->identifiers[e].name->str : "no name");
-	return;
+	break;
       }
 
 #define FOO(NTYP,TYP,NAME) \
@@ -250,7 +250,7 @@ void describe_location(void *real_memblock,
       fprintf(stderr,"%*s  **In p->" #NAME "[%ld]\n",indent,"",((long)ptr - (long)(p->NAME)) / sizeof(TYP));
 #include "program_areas.h"
       
-      return;
+      break;
     }
     
     case T_OBJECT:
@@ -302,7 +302,7 @@ void describe_location(void *real_memblock,
 	     
 	}
       }
-      return;
+      break;
     }
 
     case T_ARRAY:
@@ -310,9 +310,11 @@ void describe_location(void *real_memblock,
       struct array *a=(struct array *)memblock;
       struct svalue *s=(struct svalue *)location;
       fprintf(stderr,"%*s  **In index %ld\n",indent,"",(long)(s-ITEM(a)));
-      return;
+      break;
     }
   }
+
+  dmalloc_describe_location(memblock, location, indent);
 }
 
 static void gdb_gc_stop_here(void *a)

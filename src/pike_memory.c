@@ -1480,7 +1480,7 @@ static void find_references_to(void *block, int indent, int depth, int flags)
 /*	      fprintf(stderr,"  <from %p word %d>\n",p,e); */
 	      describe_location(p,T_UNKNOWN,p+e, indent,depth,flags);
 
-	      low_dmalloc_describe_location(m, e * sizeof(void *), indent);
+/*	      low_dmalloc_describe_location(m, e * sizeof(void *), indent); */
 
 	      m->flags |= MEM_WARN_ON_FREE;
 	    }
@@ -2039,9 +2039,12 @@ void dmalloc_describe_location(void *p, int offset, int indent)
   if(p)
   {
     struct memhdr *mh;
-    mt_lock(&debug_malloc_mutex);
-    if((mh=my_find_memhdr(p,0))) low_dmalloc_describe_location(mh, offset, indent);
-    mt_unlock(&debug_malloc_mutex);
+    int lock=mt_trylock(&debug_malloc_mutex) != EBUSY;
+
+    if((mh=my_find_memhdr(p,0)))
+      low_dmalloc_describe_location(mh, offset, indent);
+
+    if(lock) mt_unlock(&debug_malloc_mutex);
   }
 }
 
