@@ -2710,7 +2710,8 @@ node *fix_object_program_type(node *n)
  *!   Reverses a string, array or int.
  *!
  *!   This function reverses a string, char by char, an array, value
- *!   by value or an int, bit by bit and returns the result.
+ *!   by value or an int, bit by bit and returns the result. It's not
+ *!   destructive on the input value.
  *!
  *!   Reversing strings can be particularly useful for parsing difficult
  *!   syntaxes which require scanning backwards.
