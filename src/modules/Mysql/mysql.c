@@ -866,7 +866,7 @@ static void f_big_query(INT32 args)
 #endif /* HAVE_MYSQL_REAL_QUERY */
 
     if (!tmp) {
-      result = mysql_store_result(socket);
+      result = mysql_use_result(socket);
     }
 
     MYSQL_DISALLOW();
@@ -898,7 +898,7 @@ static void f_big_query(INT32 args)
 #endif /* HAVE_MYSQL_REAL_QUERY */
 
     if (!tmp) {
-      result = mysql_store_result(socket);
+      result = mysql_use_result(socket);
     }
 
     MYSQL_DISALLOW();
