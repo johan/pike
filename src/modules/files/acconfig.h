@@ -38,6 +38,9 @@
 /* Do we have socketpair() ? */
 #undef HAVE_SOCKETPAIR
 
+/* Does select() work together with shutdown() on UNIX sockets? */
+#undef UNIX_SOCKETS_WORKS_WITH_SHUTDOWN
+
 /* Buffer size to use on open sockets */
 #undef SOCKET_BUFFER_MAX 
 
