@@ -345,8 +345,8 @@ static void socket_query_address(INT32 args)
 {
   struct sockaddr_in addr;
   int i;
-  size_t len;
   char buffer[496],*q;
+  PIKE_ACCEPT_TYPE len;
 
   if(THIS->fd <0)
     error("socket->query_address(): Socket not bound yet.\n");
