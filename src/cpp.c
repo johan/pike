@@ -1144,9 +1144,61 @@ static void check_constant(struct cpp *this,
 	len--;
       }
 
-      for(dlen=0; dlen<len; dlen++)
-	if(!isidchar(INDEX_PCHARP(data, dlen)))
-	  break;
+      if (INDEX_PCHARP(data, 0) == '`') {
+	/* LFUN */
+	for(dlen=0; dlen<len; dlen++) {
+	  int c;
+	  if ((c = INDEX_PCHARP(data, dlen)) != '`') {
+	    switch(c) {
+	    case '/': case '%': case '*': case '&':
+	    case '|': case '^': case '~':
+	      dlen++;
+	      break;
+	    case '+':
+	      if ((++dlen < len) && INDEX_PCHARP(data, dlen) == '=')
+		dlen++;
+	      break;
+	    case '-':
+	      if ((++dlen < len) && INDEX_PCHARP(data, dlen) == '>') {
+		dlen++;
+	      }
+	      break;
+	    case '>': case '<': case '!': case '=':
+	      {
+		/* We get a false match for the operator `!!, but that's ok. */
+		int c2;
+		if ((++dlen < len) &&
+		    (((c2 = INDEX_PCHARP(data, dlen)) == c) || (c2 == '='))) {
+		  dlen++;
+		}
+	      }
+	      break;
+	    case '(':
+	      if ((++dlen < len) && INDEX_PHARP(data, dlen) == ')') {
+		dlen++;
+	      } else {
+		cpp_error(this, "Expected `().\n");
+	      }
+	      break;
+	    case '[':
+	      if ((++dlen < len) && INDEX_PHARP(data, ++dlen) == ']') {
+		dlen++;
+	      } else {
+		cpp_error(this, "Expected `[].\n");
+	      }
+	      break;
+	    default:
+	      cpp_error(this, "Unrecognized ` identifier.\n");
+	      break;
+	    }
+	    break;
+	  }
+	}
+      } else {
+  	for(dlen=0; dlen<len; dlen++)
+  	  if(!isidchar(INDEX_PCHARP(data, dlen)))
+  	    break;
+      }
 
       if(res)
       {
