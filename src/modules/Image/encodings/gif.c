@@ -1755,7 +1755,7 @@ fprintf(stderr,"_gif_decode_lzw(%lx,%lu,%d,%lx,%lx,%lx,%lu,%d)\n",
 	 last=n;
 
 	 m++;
-	 if (m>=maxcode) 
+	 if (m>=maxcode) {
 	    if (m==MAX_GIF_CODE)
 	    {
 #ifdef GIF_DEBUG
@@ -1777,6 +1777,7 @@ fprintf(stderr,"_gif_decode_lzw(%lx,%lu,%d,%lx,%lx,%lx,%lu,%d)\n",
 		  break; /* error! too much codes */
 	       }
 	    }
+	 }
       }
 
 
