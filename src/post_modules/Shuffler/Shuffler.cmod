@@ -276,7 +276,7 @@ PIKECLASS Shuffle
   static void __send_more_callback( struct Shuffle_struct *t, int amount )
   {
     int sent;
-    while( !t->leftovers.len )
+    while( t->leftovers.len < 1 )
     {
       while( t->current_source && t->current_source->eof )
       {
@@ -295,12 +295,12 @@ PIKECLASS Shuffle
       }
 
       t->leftovers = t->current_source->get_data( t->current_source, amount );
-
       if( t->leftovers.len == -2 )
       {
 	/* come back later (nonblocking source without more data to read) */
-	_remove_callbacks( t );
-	t->current_source->set_callback( (void *)_set_callbacks, t );
+	__remove_callbacks( t );
+	t->current_source->set_callback( t->current_source,
+					 (void *)_set_callbacks, t );
 	_give_back( t, amount );
 	return;
       }
