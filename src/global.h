@@ -31,12 +31,19 @@
 #define _GNU_SOURCE
 #endif /* !_GNU_SOURCE */
 
+#ifdef __NT__
 /* To get <windows.h> to stop including the entire OS,
  * we need to define this one.
  */
 #ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
 #endif
+
+/* We also need to ensure that we get the WIN32 APIs. */
+#ifndef WIN32
+#define WIN32	100	/* WinNT 1.0 */
+#endif
+#endif /* __NT__ */
 
 /*
  * We want to use __builtin functions.
