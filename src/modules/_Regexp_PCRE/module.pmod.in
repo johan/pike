@@ -333,13 +333,10 @@ class StudiedWidestring
    }
 }
 
-#endif // buildconfig_UTF8
-
-#if constant(UTF8_SUPPORTED)
 #define GOOD StudiedWidestring
 #else
 #define GOOD Studied
-#endif
+#endif // buildconfig_UTF8
 
 GOOD `()(string pattern,void|int options,void|object table)
 //! Convenience function to create a suitable PCRE Regexp object;
