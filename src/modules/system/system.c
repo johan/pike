@@ -2423,8 +2423,7 @@ static void f_get_netinfo_property(INT32 args)
   
   get_all_args("get_netinfo_property", args, "%s%s%s",
 	       &domain_str, &path_str, &prop_str);
-  pop_n_elems(args);
-  
+
   /* open domain */
   num_replies = 0;
   res = ni_open(NULL, domain_str, &dom);
@@ -2451,6 +2450,7 @@ static void f_get_netinfo_property(INT32 args)
     f_aggregate(num_replies);
   else
     push_int(0);
+  stack_pop_n_elems_keep_top (args);
 }
 #endif
 
