@@ -189,7 +189,7 @@ void f_load_module(INT32 args)
   {
     dlclose(module);
 
-    if (sizeof(module_name) < 1024) {
+    if (strlen(module_name) < 1024) {
       error("Failed to initialize dynamic module \"%s\".\n", module_name);
     } else {
       error("Failed to initialize dynamic module.\n");
