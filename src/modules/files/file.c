@@ -961,8 +961,8 @@ static void file_set_buffer(INT32 args)
  * No AF_UNIX sockets ?
  * No hope ?
  *
- * Don't dispair, socketpair_ultra is here!
- * Tests done in an independant institute in europe shows
+ * Don't despair, socketpair_ultra is here!
+ * Tests done by an independant institute in Europe show that
  * socketpair_ultra is 50% more portable than other leading
  * brands of socketpair.
  *                                                   /Hubbe
