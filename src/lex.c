@@ -1865,7 +1865,7 @@ static void low_lex(void)
 	  pop_stack();
 	  push_svalue(sv);
 	  res = 1;
-	} else if (get_master) {
+	} else if (get_master()) {
 	  current_file->refs++;
 	  push_string(current_file);
 
