@@ -421,7 +421,7 @@ static char *reg(int paren,int *flagp)
     }
 
     /* Make a closing node, and hook it on the end. */
-    ender = regnode((paren) ? (char)(CLOSE + parno) : END);
+    ender = regnode((char)((paren) ? (CLOSE + parno) : END));
     regtail(ret, ender);
 
     /* Hook the tails of the branches to the closing node. */

@@ -63,7 +63,7 @@ struct generic_mem_searcher
 /* Note to self: Prototypes must be updated manually /Hubbe */
 PMOD_EXPORT ptrdiff_t pcharp_memcmp(PCHARP a, PCHARP b, int sz);
 PMOD_EXPORT long pcharp_strlen(PCHARP a);
-PMOD_EXPORT INLINE p_wchar1 *MEMCHR1(p_wchar1 *p, p_wchar1 c, ptrdiff_t e);
+PMOD_EXPORT INLINE p_wchar1 *MEMCHR1(p_wchar1 *p, p_wchar2 c, ptrdiff_t e);
 PMOD_EXPORT INLINE p_wchar2 *MEMCHR2(p_wchar2 *p, p_wchar2 c, ptrdiff_t e);
 PMOD_EXPORT void swap(char *a, char *b, size_t size);
 PMOD_EXPORT void reverse(char *memory, size_t nitems, size_t size);

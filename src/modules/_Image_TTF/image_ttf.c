@@ -730,7 +730,7 @@ static void ttf_translate_8bit(TT_CharMap charMap,
 
    THREADS_ALLOW();
    for (i=0; i<len; i++)
-      dest[0][i]=TT_Char_Index(charMap, (TT_UShort)what[i]+base);
+      dest[0][i]=TT_Char_Index(charMap, (TT_UShort)(what[i]+base));
    THREADS_DISALLOW();
 }
 
