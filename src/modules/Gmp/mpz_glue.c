@@ -665,8 +665,9 @@ static MP_INT *debug_get_mpz(struct svalue *s, int throw_error)
       )
     {
       if (s->u.object->prog) {
-	Pike_error("Wrong type of object (id:%d), cannot convert to mpz.\n",
-		   s->u.object->prog->id);
+	if(throw_error)
+	  Pike_error("Wrong type of object (id:%d), cannot convert to mpz.\n",
+		     s->u.object->prog->id);
       } else {
 	/* Destructed object. Use as zero. */
 	goto use_as_int;
