@@ -2070,7 +2070,7 @@ void image_gif_decode(INT32 args)
 }
 
 /*
-**! method _encode(array data)
+**! method string _encode(array data)
 **!	Encodes GIF data; reverses _decode.
 **!
 **! arg array data
