@@ -72,6 +72,8 @@ struct perlmod_storage
 
 /* since both Perl and Pike likes to use "sp" as a stack pointer,
  * let's define some Pike macros as functions...
+ *
+ * Hubbe: Not true anymore, we should really define NO_PIKE_SHORTHAND
  */
 static void _push_int(INT32 i) { push_int(i);}
 static void _push_float(float f) { push_float(f);}
