@@ -596,24 +596,24 @@ static void image_x_encode_pseudocolor_1byte(INT32 args,
 	    bp = bpp;
 	    while (bp>8-bit)
 	    {
-#ifdef DEBUG
+#ifdef BITDEBUG
 	       fprintf(stderr,"   b=%08x *d=%02x bp=%d bit=%d\n",b,*d,bp,bit);
 #endif
 	       *d|=(unsigned char)(b>>(24+bit));
 	       b<<=8-bit;
 	       bp-=8-bit;
-#ifdef DEBUG
+#ifdef BITDEBUG
 	       fprintf(stderr,">  b=%08x *d=%02x bp=%d bit=%d\n",b,*d,bp,bit);
 #endif
 	       *(++d)=0; bit=0;
 	    }
-#ifdef DEBUG
+#ifdef BITDEBUG
 	    fprintf(stderr," - b=%08x *d=%02x bp=%d bit=%d\n",b,*d,bp,bit);
 #endif
 	    *d|=(unsigned char)(b>>(24+bit));
 	    bit+=bp;
 	    if (bit==8) *(++d)=0,bit=0;
-#ifdef DEBUG
+#ifdef BITDEBUG
 	    fprintf(stderr,"^- b=%08x *d=%02x bp=%d bit=%d\n",b,*d,bp,bit);
 #endif
 	 }
