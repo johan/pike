@@ -125,15 +125,16 @@ PIKECLASS HashState
   PIKEFUN object update(string data)
     optflags OPT_SIDE_EFFECT;
     {
+      const void *ctx = THIS->ctx;
       const struct nettle_hash *meta =
 	GET_META(Pike_fp->current_object);
 
-      if (!THIS->ctx || !meta)
+      if (!ctx || !meta)
 	Pike_error("HashState not properly initialized.\n");
 
       NO_WIDE_STRING(data);
       THREADS_ALLOW();
-      meta->update(THIS->ctx, data->len, data->str);
+      meta->update(ctx, data->len, data->str);
       THREADS_DISALLOW();
 
       push_object(this_object());
