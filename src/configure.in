@@ -2442,9 +2442,11 @@ AC_CHECK_FUNCS( \
  mktime \
  perror \
  rindex \
+ setbuf \
  setlocale \
  setrlimit \
  setresuid \
+ setvbuf \
  sigaction \
  sigblock \
  sigprocmask \

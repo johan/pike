@@ -148,6 +148,15 @@ int dbm_main(int argc, char **argv)
   extern char **environ;
 #endif
 
+  /* Attempt to make sure stderr is unbuffered. */
+#ifdef HAVE_SETVBUF
+  setvbuf(stderr, NULL, _IONBF, 0);
+#else /* !HAVE_SETVBUF */
+#ifdef HAVE_SETBUF
+  setbuf(stderr, NULL);
+#endif /* HAVE_SETBUF */
+#endif /* HAVE_SETVBUF */
+
 #ifdef TRY_USE_MMX
   try_use_mmx=mmx_ok();
 #endif
