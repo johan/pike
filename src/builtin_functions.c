@@ -262,7 +262,7 @@ void f_search(INT32 args)
     return;
 
   default:
-    error("Bad argument 2 to search()\n");
+    error("Bad argument 1 to search()\n");
   }
 }
 
@@ -2387,7 +2387,7 @@ void init_builtin_efuns(void)
   add_efun("aggregate_multiset",f_aggregate_multiset,"function(0=mixed ...:multiset(0))",OPT_TRY_OPTIMIZE);
   add_efun("aggregate_mapping",f_aggregate_mapping,"function(0=mixed ...:mapping(0:0))",OPT_TRY_OPTIMIZE);
   add_efun("all_constants",f_all_constants,"function(:mapping(string:mixed))",OPT_EXTERNAL_DEPEND);
-  add_efun("allocate", f_allocate, "function(int,void|mixed:array)", 0);
+  add_efun("allocate", f_allocate, "function(int,void|0=mixed:array(0))", 0);
   add_efun("arrayp",  f_arrayp,  "function(mixed:int)",0);
   add_efun("backtrace",f_backtrace,"function(:array(array(function|int|string)))",OPT_EXTERNAL_DEPEND);
 
