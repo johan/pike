@@ -97,7 +97,9 @@ module.pmod: Makefile
 	  if [ -f ./module.pmod.in ]; then \
 	   sed -e "s/@module@/_static_modules.$(MODNAME)/" <./module.pmod.in >module.pmod ;\
 	  else \
-	    echo >module.pmod "inherit _static_modules.$(MODNAME);" ;\
+	    echo >module.pmod "#if constant(_static_modules.$(MODNAME));" ;\
+	    echo >>module.pmod "inherit _static_modules.$(MODNAME);" ;\
+	    echo >>module.pmod "#endif" ;\
 	  fi ;\
 	fi
 
