@@ -2486,9 +2486,9 @@ static void _image_outline(INT32 args,int mask)
    o=clone_object(image_program,2);
    img=(struct image*)(o->storage);
 
-   tmp=malloc((THIS->xsize+width-1)*(THIS->ysize+height));
+   tmp=malloc((THIS->xsize+width)*(THIS->ysize+height));
    if (!tmp) { free_object(o); error("out of memory\n"); }
-   MEMSET(tmp,0,(THIS->xsize+width-1)*(THIS->ysize+height-1));
+   MEMSET(tmp,0,(THIS->xsize+width)*(THIS->ysize+height));
  
    s=THIS->img;
 
