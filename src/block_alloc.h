@@ -160,7 +160,7 @@ struct DATA **PIKE_CONCAT(DATA,_hash_table)=0;				     \
 size_t PIKE_CONCAT(DATA,_hash_table_size)=0;				     \
 static size_t PIKE_CONCAT(num_,DATA)=0;				     \
 									     \
-inline struct DATA *							     \
+static inline struct DATA *						     \
  PIKE_CONCAT3(really_low_find_,DATA,_unlocked)(void *ptr, size_t hval)    \
 {									     \
   struct DATA *p,**pp;							     \
