@@ -394,11 +394,9 @@ static function(string:string) get_attr_encoder (string attr)
     //! @seealso
     //!  @[LDAP.client.result.next]
     int next() {
-      if (actnum < (num_entries()-1)) {
+      if (actnum < sizeof (entry))
 	actnum++;
-	return count_entries();
-      }
-      return 0;
+      return count_entries();
     }
 
     array(mapping(string:array(string))) fetch_all()
