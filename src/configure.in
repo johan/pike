@@ -4840,7 +4840,7 @@ if test -z "$LDSHARED" ; then
     UNIX_SV*) LDSHARED="ld -G";;
     UnixWare*)
       if test "$GCC" = yes ; then
-        LDSHARED="$CC -G"
+        LDSHARED="$CC -G -fPIC"
       else
         LDSHARED="$CC -G -KPIC -Wl,-Bexport"
       fi
