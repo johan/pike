@@ -55,8 +55,9 @@ static void gz_deflate_create(INT32 args)
   {
     if(sp[-args].type != T_INT)
       error("Bad argument 1 to gz->create()\n");
-    if(sp[-args].u.integer < Z_NO_COMPRESSION ||
-       sp[-args].u.integer > Z_BEST_COMPRESSION)
+    level=sp[-args].u.integer;
+    if(level < Z_NO_COMPRESSION ||
+       level > Z_BEST_COMPRESSION)
     {
       error("Compression level out of range for gz_deflate->create()\n");
     }
