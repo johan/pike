@@ -1,5 +1,5 @@
 #pike __REAL_VERSION__
-#pragma strict_types
+// #pragma strict_types
 
 // $Id$
 
@@ -10,14 +10,14 @@
 
 import .Constants;
 
-void create(.session s)
+void create(object/*(.session)*/ s)
 {
   session = s;
   seq_num = Gmp.mpz(0);
 }
 
 //! Information about the used algorithms.
-.session session;
+object/*(.session)*/ session;
 
 //! Message Authentication Code
 .Cipher.MACAlgorithm mac;
