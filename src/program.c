@@ -437,6 +437,14 @@ struct node_s *find_module_identifier(struct pike_string *ident)
     if(ret) return ret;
   }
 
+  /* Handle this_program */
+  if (ident == this_program_string) {
+    struct svalue s;
+    s.type=T_PROGRAM;
+    s.u.program=new_program;
+    return mkconstantsvaluenode(&s);
+  }
+
   return 0;
 }
 
