@@ -198,11 +198,11 @@ INLINE static void fix_field(char *b,
   {
     e=len;
     if(pos_pad && b[0]!='-') e++;
-    for(e=(width-e)/2;e-->0;d++)
+    e=(width-e)/2;
+    if(e>0)
     {
-      if(d==pad_length) d=0;
-      my_putchar(pad_string[d]);
-      width--;
+      memfill(make_buf_space(e), e, pad_string, pad_length, 0);
+      width-=e;
     }
     flags|=FIELD_LEFT;
   }
@@ -217,23 +217,26 @@ INLINE static void fix_field(char *b,
       len--;
       width--;
     }
-    for(d%=pad_length;width;d++,width--)
+
+    if(width>0)
     {
-      if(d>=pad_length) d=0;
-      my_putchar(pad_string[d]);
+      d%=pad_length;
+      memfill(make_buf_space(width), width, pad_string, pad_length, d);
     }
+    
     return;
   }
 
   /* Right-justification */
 
   if(pos_pad && b[0]!='-') len++;
-  for(;width>len;d++)
+  e=width-len;
+  if(e>0)
   {
-    if(d>=pad_length) d=0;
-    my_putchar(pad_string[d]);
-    width--;
+    memfill(make_buf_space(e), e, pad_string, pad_length, 0);
+    width-=e;
   }
+
   if(pos_pad && b[0]!='-' && len==width)
   {
     my_putchar(pos_pad);
