@@ -816,7 +816,8 @@ INLINE static int do_one(struct format_stack *fs,
      fs->fsp->pad_string=MKPCHARP(" ",0);				\
      fs->fsp->pad_length=1;						\
      fs->fsp->column_width=0;						\
-     fs->fsp->pos_pad=fs->fsp->flags=0;					\
+     fs->fsp->pos_pad=0;						\
+     fs->fsp->flags=0;							\
      fs->fsp->width=fs->fsp->precision=SPRINTF_UNDECIDED;		\
      UNSET_ONERROR(_e);							\
      break;                                                             \
@@ -920,7 +921,8 @@ static void low_pike_sprintf(struct format_stack *fs,
     fs->fsp->fi_free_string=0;
     fs->fsp->to_free_string=0;
     fs->fsp->column_width=0;
-    fs->fsp->pos_pad=fs->fsp->flags=0;
+    fs->fsp->pos_pad = 0;
+    fs->fsp->flags = 0;
     fs->fsp->width=fs->fsp->precision=SPRINTF_UNDECIDED;
 
     if(EXTRACT_PCHARP(a)!='%')

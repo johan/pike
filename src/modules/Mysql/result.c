@@ -276,7 +276,7 @@ static void f_num_rows(INT32 args)
 {
   pop_n_elems(args);
   if (PIKE_MYSQL_RES->result) {
-    push_int(mysql_num_rows(PIKE_MYSQL_RES->result));
+    push_int64(mysql_num_rows(PIKE_MYSQL_RES->result));
   } else {
     push_int(0);
   }

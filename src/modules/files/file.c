@@ -3200,7 +3200,6 @@ void pike_module_init(void)
   extern void port_setup_program(void);
   extern void init_sendfile(void);
   extern void init_udp(void);
-  int e;
 
   Pike_compiler->new_program->id = PROG_MODULE_FILES_ID;
 

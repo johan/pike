@@ -187,7 +187,6 @@ static void port_listen_fd(INT32 args)
 static void port_bind(INT32 args)
 {
   struct sockaddr_in addr;
-  int o;
   int fd,tmp;
 
   do_close(THIS,Pike_fp->current_object);
@@ -310,7 +309,7 @@ static void port_accept(INT32 args)
 {
   struct sockaddr_in addr;
   struct port *this=THIS;
-  int fd,tmp;
+  int fd;
   struct object *o;
   ACCEPT_SIZE_T len=0;
 

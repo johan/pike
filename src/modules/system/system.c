@@ -1581,28 +1581,30 @@ void get_inet_addr(struct sockaddr_in *addr,char *name)
 
 static void describe_hostent(struct hostent *hp)
 {
-  char **p;
-  INT32 nelem;
-
   push_text(hp->h_name);
   
 #ifdef HAVE_H_ADDR_LIST
-  nelem=0;
-  for (p = hp->h_addr_list; *p != 0; p++) {
-    struct in_addr in;
+  {
+    char **p;
+    INT32 nelem = 0;
+
+    for (p = hp->h_addr_list; *p != 0; p++) {
+      struct in_addr in;
  
-    MEMCPY(&in.s_addr, *p, sizeof (in.s_addr));
-    push_text(inet_ntoa(in));
-    nelem++;
-  }
-  f_aggregate(nelem);
+      MEMCPY(&in.s_addr, *p, sizeof (in.s_addr));
+      push_text(inet_ntoa(in));
+      nelem++;
+    }
+
+    f_aggregate(nelem);
  
-  nelem=0;
-  for (p = hp->h_aliases; *p != 0; p++) {
-    push_text(*p);
-    nelem++;
+    nelem=0;
+    for (p = hp->h_aliases; *p != 0; p++) {
+      push_text(*p);
+      nelem++;
+    }
+    f_aggregate(nelem);
   }
-  f_aggregate(nelem);
 #else
   {
     struct in_addr in;

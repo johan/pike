@@ -921,9 +921,9 @@ static void img_jpeg_decode(INT32 args,int mode)
 	    push_float( mds.cinfo.Y_density );
 	    break;
 	 case 2:
-	    push_float( mds.cinfo.X_density/2.54 );
+	    push_float( DO_NOT_WARN((FLOAT_TYPE)(mds.cinfo.X_density/2.54)) );
 	    stack_swap();
-	    push_float( mds.cinfo.Y_density/2.54 );
+	    push_float( DO_NOT_WARN((FLOAT_TYPE)(mds.cinfo.Y_density/2.54)) );
 	    break;
       }
 

@@ -95,7 +95,7 @@ static void f_update(INT32 args)
  *
  * 0x2a86 4886 f70d 0202
  */
-static char md2_id[] = {
+static unsigned char md2_id[] = {
   0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x02, 0x02,
 };
 
@@ -106,7 +106,7 @@ static char md2_id[] = {
 static void f_identifier(INT32 args)
 {
   pop_n_elems(args);
-  push_string(make_shared_binary_string(md2_id, 8));
+  push_string(make_shared_binary_string((char *)md2_id, 8));
 }
 
 /*! @decl string digest()

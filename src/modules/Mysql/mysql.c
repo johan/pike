@@ -403,7 +403,7 @@ static void f_create(INT32 args)
 static void f_affected_rows(INT32 args)
 {
   MYSQL *socket;
-  int count;
+  INT64 count;
 
   if (!PIKE_MYSQL->socket) {
     pike_mysql_reconnect();
@@ -415,7 +415,7 @@ static void f_affected_rows(INT32 args)
   count = mysql_affected_rows(socket);
   MYSQL_DISALLOW();
 
-  push_int(count);
+  push_int64(count);
 }
 
 /*! @decl int insert_id()
@@ -426,7 +426,7 @@ static void f_affected_rows(INT32 args)
 static void f_insert_id(INT32 args)
 {
   MYSQL *socket;
-  int id;
+  INT64 id;
 
   if (!PIKE_MYSQL->socket) {
     pike_mysql_reconnect();
@@ -439,7 +439,7 @@ static void f_insert_id(INT32 args)
   id = mysql_insert_id(socket);
   MYSQL_DISALLOW();
 
-  push_int(id);
+  push_int64(id);
 }
 
 /*! @decl string error()

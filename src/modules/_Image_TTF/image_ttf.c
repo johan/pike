@@ -912,7 +912,7 @@ static void image_ttf_faceinstance_ponder(INT32 args)
 
 static int find_kerning( TT_Kerning kerning, int c1, int c2 )
 {
-  int i,j;
+  int j;
 /*   fprintf(stderr, "kern: %d %d\n", c1, c2); */
   for(j=0; j<kerning.nTables; j++)
   {
@@ -1119,7 +1119,6 @@ static void image_ttf_faceinstance_write(INT32 args)
       TT_Raster_Map rastermap;
       struct object *o;
       struct image *img;
-      unsigned char *s;
       rgb_group *d;
 
 
