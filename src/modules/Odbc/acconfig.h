@@ -11,6 +11,12 @@
 
 @TOP@
 
+/* Define if you have SQLSMALLINT */
+#undef HAVE_SQLSMALLINT
+
+/* Define if you have SQLUSMALLINT */
+#undef HAVE_SQLUSMALLINT
+
 /* Define if you have SQLINTEGER */
 #undef HAVE_SQLINTEGER
 
