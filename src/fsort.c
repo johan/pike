@@ -11,7 +11,7 @@
 #include "global.h"
 #include "pike_error.h"
 #include "fsort.h"
-#include "main.h"
+#include "pike_embed.h"
 #include "pike_macros.h"
 
 #define CMP(X,Y) ( (*cmpfun)((void *)(X),(void *)(Y)) )

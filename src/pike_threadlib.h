@@ -17,7 +17,7 @@
 
 #ifndef CONFIGURE_TEST
 #include "machine.h"
-#include "main.h"
+#include "pike_embed.h"
 #include "pike_rusage.h"
 #endif
 

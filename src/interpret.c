@@ -20,7 +20,7 @@
 #include "backend.h"
 #include "operators.h"
 #include "opcodes.h"
-#include "main.h"
+#include "pike_embed.h"
 #include "lex.h"
 #include "builtin_functions.h"
 #include "signal_handler.h"

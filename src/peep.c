@@ -11,7 +11,7 @@
 #include "program.h"
 #include "las.h"
 #include "docode.h"
-#include "main.h"
+#include "pike_embed.h"
 #include "pike_error.h"
 #include "lex.h"
 #include "pike_memory.h"

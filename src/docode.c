@@ -17,7 +17,7 @@
 #include "pike_error.h"
 #include "pike_memory.h"
 #include "svalue.h"
-#include "main.h"
+#include "pike_embed.h"
 #include "builtin_functions.h"
 #include "peep.h"
 #include "docode.h"

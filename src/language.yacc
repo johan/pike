@@ -132,7 +132,7 @@
 #include "pike_error.h"
 #include "docode.h"
 #include "machine.h"
-#include "main.h"
+#include "pike_embed.h"
 #include "opcodes.h"
 #include "operators.h"
 #include "bignum.h"

@@ -9,7 +9,7 @@
 #include "constants.h"
 #include "interpret.h"
 #include "opcodes.h"
-#include "main.h"
+#include "pike_embed.h"
 
 #ifdef INSTR_PROFILING
 
