@@ -90,8 +90,8 @@ struct source *source_normal_file_make( struct svalue *s,
 
   if (!Fd_ref_program)
   {
-    push_text("files.Fd_ref"); push_int(0);
-    SAFE_APPLY_MASTER("resolv",2);
+    push_text("files.Fd_ref");
+    SAFE_APPLY_MASTER("resolv",1);
     Fd_ref_program = program_from_svalue(Pike_sp-1);
     if (!Fd_ref_program) {
       pop_stack();
