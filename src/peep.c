@@ -415,7 +415,7 @@ INT32 assemble(int store_linenumbers)
     ins_data(store_prog_string(tripples));
     free_string(tripples);
   } else {
-    ins_data(NULL);
+    ins_data(0);
   }
 #endif /* PIKE_PORTABLE_BYTECODE */
 
