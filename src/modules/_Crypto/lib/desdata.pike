@@ -157,13 +157,13 @@ int main(int argc, array(string) argv)
 	int d, i, j, k, l, m, n, s;
 	array(int) b = allocate(256), ksr = allocate(56);
 
-	switch ( argv[1][0] ) {
+
+	if (has_suffix (argv[1], "parity.h")) {
 
 	/*
 	 * <<< make the key parity table >>>
 	 */
 
-case 'p':
 	write(
 "/* automagically produced - do not fuss with this information */\n\n");
 
@@ -191,14 +191,13 @@ case 'p':
 			write("\n");
 	}
 
-	break;
-
+	}
+	else if (has_suffix (argv[1], "rotors.h")) {
 
 	/*
 	 * <<< make the key usage table >>>
 	 */
 
-case 'r':
 	write("/* automagically made - do not fuss with this */\n\n");
 
 	/* KL specifies the initial key bit positions */
@@ -230,14 +229,13 @@ case 'r':
 		write("\n");
 	}
 
-	break;
-
+	}
+	else if (has_suffix (argv[1], "keymap.h")) {
 
 	/*
 	 * <<< make the keymap table >>>
 	 */
 
-case 'k':
 	write("/* automagically made - do not fuss with this */\n\n");
 
 	for ( i = 0; i <= 7 ; i++ ) {
@@ -277,8 +275,10 @@ case 'k':
 		write("\n");
 	}
 
-	break;
-
+	}
+	else {
+	  werror ("Don't know how to make %O\n", argv[1]);
+	  return 1;
 	}
 
 	return 0;
