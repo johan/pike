@@ -2072,6 +2072,11 @@ node *debug_mksvaluenode(struct svalue *s)
     return make_node_from_mapping(s->u.mapping);
 
   case T_OBJECT:
+#ifdef PIKE_DEBUG
+    if (s->u.object->prog == placeholder_program &&
+	Pike_compiler->compiler_pass == 2)
+      Pike_fatal("Got placeholder object in second pass.\n");
+#endif
     if(s->u.object == Pike_compiler->fake_object)
     {
       return mkefuncallnode("this_object", 0);
