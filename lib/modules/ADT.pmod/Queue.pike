@@ -83,15 +83,11 @@ void flush()
 mixed cast(string to) {
   switch(to) {
   case "object": return this_object();
-  case "array":  return l[tail..head];
+  case "array": return l[tail..head-1];
   }
   error("Can not cast ADT.Queue to %s.\n", to);
 }
 
 string _sprintf(int t) {
-  switch(t) {
-  case 't': return "ADT.Queue";
-  case 'O': return sprintf("ADT.Queue(%O)", cast("array"));
-  }
-  error("Can not print ADT.Queue as %c.\n", t);
+  return t=='O' && sprintf("%O%O", this_program, cast("array"));
 }
