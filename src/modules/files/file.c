@@ -423,6 +423,8 @@ static void file_read(INT32 args)
     if(sp[-args].type != T_INT)
       error("Bad argument 1 to file->read().\n");
     len=sp[-args].u.integer;
+    if(len<0)
+      error("Cannot read negative number of args.\n");
   }
 
   if(args > 1 && !IS_ZERO(sp+1-args))
