@@ -51,4 +51,7 @@
 /* Define if ITIMER_REAL, ITIMER_VIRTUAL and ITIMER_PROF is in tInt02 */
 #undef ITIMER_TYPE_IS_02
 
+/* Define if you have the RDTSC instruction */
+#undef HAVE_RDTSC
+
 #endif /* SYSTEM_MACHINE_H */

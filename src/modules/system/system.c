@@ -2330,6 +2330,34 @@ static void f_get_netinfo_property(INT32 args)
 }
 #endif
 
+#ifdef HAVE_RDTSC
+
+/*! @decl int rdtsc()
+ *! executes the rdtsc (clock pulse counter) instruction
+ *! and returns the result
+ */
+
+#define RDTSC(l,h)							\
+   __asm__ __volatile__ (  "rdtsc"					\
+			   :"=a" (l),					\
+			   "=d" (h))
+
+static INLINE long long rdtsc()
+{
+   long long now;
+   unsigned long nl,nh;
+   RDTSC(nl,nh);
+   return (((long long)nh)<<32)|nl;
+}
+
+static void f_rdtsc(INT32 args)
+{
+   pop_n_elems(args);
+   push_int64(rdtsc());
+}
+
+#endif
+
 /*! @endmodule
  */
 
@@ -2624,6 +2652,11 @@ void pike_module_init(void)
 #endif
 #endif
 
+#ifdef HAVE_RDTSC
+  ADD_FUNCTION("rdtsc",f_rdtsc,
+	       tFunc(tNone,tInt),0);
+#endif
+
 #ifdef HAVE_NETINFO_NI_H
   /* array(string) get_netinfo_property(string domain, string path,
                                         string property) */
@@ -2638,6 +2671,7 @@ void pike_module_init(void)
   dmalloc_accept_leak(add_to_callback(& fork_child_callback,
 				      cleanup_after_fork, 0, 0));
 #endif
+
 
 #ifdef __NT__
   {
