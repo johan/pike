@@ -844,7 +844,7 @@ void low_exit_main(void)
   exit_builtin();
   exit_cpp();
   cleanup_interpret();
-  cleanup_added_efuns();
+  exit_builtin_constants();
   cleanup_module_support();
   exit_operators();
   exit_iterators();

@@ -185,10 +185,10 @@ void present_constant_profiling(void)
 
 void init_builtin_constants(void)
 {
-  builtin_constants = allocate_mapping(250);
+  builtin_constants = allocate_mapping(256);
 }
 
-void cleanup_added_efuns(void)
+void exit_builtin_constants(void)
 {
 #ifdef DO_PIKE_CLEANUP
   if(builtin_constants)
