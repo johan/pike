@@ -126,7 +126,9 @@ PMOD_EXPORT void really_free_svalue(struct svalue *s)
     
   case T_TYPE:
 #ifdef USE_PIKE_TYPE
-    really_free_pike_type(s->u.type);
+    /* Add back the reference, and call the normal free_type(). */
+    add_ref(s->u.type);
+    free_type(s->u.type);
 #ifdef PIKE_DEBUG
     s->type = 99;
 #endif /* PIKE_DEBUG */
