@@ -85,6 +85,11 @@ RCSID("$Id$");
 
 #include <winbase.h>
 
+/* Old versions of the headerfiles don't have this constant... */
+#ifndef INVALID_SET_FILE_POINTER
+#define INVALID_SET_FILE_POINTER ((DWORD)-1)
+#endif
+
 /* Dynamic load of functions that doesn't exist in all Windows versions. */
 
 static HINSTANCE kernel32lib;
