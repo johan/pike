@@ -10649,7 +10649,7 @@ test_any([
   }
   if (pid->status() <= 0) {
     pid->kill(9);
-    return "Killed".
+    return "Killed";
   }
   return pid->wait();
 ], 0)
