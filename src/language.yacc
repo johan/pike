@@ -921,7 +921,7 @@ lambda: F_LAMBDA
       f=dooptcode(name,
 		  mknode(F_ARG_LIST,$4,mknode(F_RETURN,mkintnode(0),0)),
 		  type,
-		  0);
+		  ID_PRIVATE);
     }
     free_string(name);
     free_string(type);
@@ -935,8 +935,15 @@ failsafe_program: '{' program '}'
                 | error { yyerrok; }
                 ;
 
-class: modifiers F_CLASS F_IDENTIFIER
+class: modifiers F_CLASS optional_identifier
   {
+    if(!$3)
+    {
+      char buffer[42];
+      sprintf(buffer,"__class_%ld",local_class_counter++);
+      $3=make_shared_string(buffer);
+      $1|=ID_PRIVATE;
+    }
     if(compiler_pass==1)
     {
       low_start_new_program(0, $3, $1);
