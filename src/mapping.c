@@ -40,13 +40,18 @@ struct mapping *first_mapping;
 #undef EXIT_BLOCK
 #define EXIT_BLOCK(m)							\
   INT32 e;								\
-DO_IF_DEBUG(							        \
+DO_IF_DEBUG(								\
   if(m->refs)								\
     fatal("really free mapping on mapping with nonzero refs.\n");	\
 )									\
 									\
   FREE_PROT(m);								\
 									\
+  if(m->data->hardlinks)						\
+  {									\
+    m->data->hardlinks--;						\
+    m->data->valrefs--;							\
+  }									\
   free_mapping_data(m->data);						\
 									\
   if(m->prev)								\
