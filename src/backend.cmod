@@ -1583,7 +1583,7 @@ PIKECLASS Backend
     set_close_on_exec(me->set, 1);
 
     /* Restore the poll-state for all the fds. */
-    for (fd = 0; fd < me->num_fdboxes; fd++)
+    for (fd = 0; fd < me->num_fd_boxes; fd++)
       if (GET_BOX(me, fd)) UPDATE_BLACK_BOX(me, fd);
   }
 #endif /* CHILD_NEEDS_TO_REOPEN */
