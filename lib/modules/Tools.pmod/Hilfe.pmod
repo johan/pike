@@ -998,7 +998,7 @@ class Evaluator {
 	else
 	  symbols[expr[p]] = 0;
 
-	// FIXME: comma-seperated list of variables.
+	// FIXME [bug 2941]: comma-seperated list of variables.
       }
 
       // Handle scopes
