@@ -359,6 +359,7 @@ static RETSIGTYPE receive_signal(int signum)
   {
     pid_t pid;
     int status;
+  try_reap_again:
     /* We carefully reap what we saw */
 #ifdef HAVE_WAITPID
     pid=waitpid(-1,& status,WNOHANG);
@@ -383,6 +384,7 @@ static RETSIGTYPE receive_signal(int signum)
 	wait_buf[tmp2].pid=pid;
 	wait_buf[tmp2].status=status;
 	firstwait=tmp2;
+	goto try_reap_again;
       }
     }
   }
