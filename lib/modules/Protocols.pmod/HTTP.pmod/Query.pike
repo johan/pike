@@ -839,10 +839,10 @@ void async_fetch(function callback,mixed ... extra)
    con->set_nonblocking(async_fetch_read,0,async_fetch_close);
 }
 
-static string _sprintf()
+static string _sprintf(int t)
 {
-  return status ? sprintf("Query(%d %s)", status, status_desc)
-		: "Query()";
+  return t=='O' && status && sprintf("%O(%d %s)", this_program,
+				     status, status_desc);
 }
 
 /************************ example *****************************/

@@ -33,13 +33,9 @@ void create(object|array res)
 
 string _sprintf(int type, mapping|void flags)
 {
-  switch(type)
-  {
-    case 't': return "sql_result";
-    case 'O':
-      return sprintf("sql_result(/* row %d/%d, %d fields */)",
-		     index, num_rows(), num_fields());
-  }
+  return type=='O' && sprintf("%O(/* row %d/%d, %d fields */)",
+			      this_program, index, num_rows(),
+			      num_fields());
 }
 
 //! Returns the number of rows in the result.

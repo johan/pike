@@ -146,12 +146,8 @@ int(0..1) truncate(int length) {
 }
 
 string _sprintf(int t) {
-  switch(t) {
-  case 't': return "Stdio.FakeFile";
-  case 'O': return "Stdio.FakeFile(" + sizeof(data) + ", \"" +
-	      make_type_str() + "\")";
-  }
-  error("Could not format Stdio.FakeFile as '%c'.\n", t);
+  return t=='O' && sprintf("%O(%d,%O)", this_program, sizeof(data),
+			   make_type_str());
 }
 
 //! @ignore
