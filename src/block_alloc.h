@@ -94,7 +94,7 @@ BA_STATIC BA_INLINE struct DATA *BA_UL(PIKE_CONCAT(alloc_,DATA))(void)	\
   }									\
   DO_IF_DEBUG(								\
     else if (PIKE_CONCAT(DATA,_free_blocks) == (void *)-1)		\
-      Pike_fatal("Block alloc not initialized.\n");			\
+      Pike_fatal("Block alloc " #DATA " not initialized.\n");		\
   )									\
   else if(!blk->used++)							\
     --PIKE_CONCAT3(num_empty_,DATA,_blocks);				\
