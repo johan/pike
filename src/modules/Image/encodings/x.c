@@ -50,6 +50,8 @@ RCSID("$Id$");
 #include "module_magic.h"
 
 
+/* #define BITDEBUG */
+
 extern struct program *image_colortable_program;
 extern struct program *image_program;
 
@@ -570,6 +572,12 @@ static void image_x_encode_pseudocolor_1byte(INT32 args,
    bit=0;
    *d=0;
 
+#ifdef BITDEBUG
+   fprintf(stderr, "image_x_encode_pseudo_color(%d, [%d,%d], X, %d, %d, %d, X)\n",
+	   args, img->xsize, img->ysize,
+	   bpp, vbpp, alignbits);
+#endif /* BITDEBUG */
+
    y=img->ysize;
    while (y--)
    {
@@ -597,7 +605,7 @@ static void image_x_encode_pseudocolor_1byte(INT32 args,
 	 x=img->xsize; 
 	 while (x--) 
 	 {
-	    b = ((*(s++))<<(32-bpp)) && 0xffffffff;
+	    b = ((*(s++))<<(32-bpp)) & 0xffffffff;
 	    bp = bpp;
 	    while (bp>8-bit)
 	    {
