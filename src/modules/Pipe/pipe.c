@@ -703,7 +703,7 @@ static void pipe_input(INT32 args)
 	 i->type=I_MMAP;
 	 i->len=s.st_size;
 	 i->u.mmap=m;
-#ifdef HAVE_MADVISE
+#if defined(HAVE_MADVISE) && defined(MADV_SEQUENTIAL)
 	 /* Mark the pages as sequential read only access... */
 
 	 /* NOTE:
