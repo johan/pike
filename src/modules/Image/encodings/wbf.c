@@ -17,6 +17,7 @@ RCSID("$Id$");
 #include "array.h"
 #include "error.h"
 #include "builtin_functions.h"
+#include "program.h"
 
 
 #include "image.h"

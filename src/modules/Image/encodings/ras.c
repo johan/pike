@@ -27,6 +27,7 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "module_support.h"
 #include "operators.h"
+#include "program.h"
 
 #include "image.h"
 #include "colortable.h"
