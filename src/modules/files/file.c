@@ -1195,17 +1195,21 @@ static void file_set_buffer(INT32 args)
   if(bufsize>SOCKET_BUFFER_MAX) bufsize=SOCKET_BUFFER_MAX;
 #endif
   flags &= THIS->open_mode;
+#ifdef SO_RCVBUF
   if(flags & FILE_READ)
   {
     int tmp=bufsize;
     fd_setsockopt(FD,SOL_SOCKET, SO_RCVBUF, (char *)&tmp, sizeof(tmp));
   }
+#endif /* SO_RCVBUF */
 
+#ifdef SO_SNDBUF
   if(flags & FILE_WRITE)
   {
     int tmp=bufsize;
     fd_setsockopt(FD,SOL_SOCKET, SO_SNDBUF, (char *)&tmp, sizeof(tmp));
   }
+#endif /* SO_SNDBUF */
 #endif
 }
 
