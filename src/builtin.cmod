@@ -420,7 +420,6 @@ PIKEFUN int trace(int level, void|string facility, void|int all_threads)
   }
   else {
     old_level = Pike_interpreter.trace_level;
-    gc_trace = level;
 #ifdef PIKE_THREADS
     if (!all_threads || UNSAFE_IS_ZERO (all_threads))
       Pike_interpreter.trace_level = level;
