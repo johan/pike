@@ -788,9 +788,7 @@ PIKECLASS Shuffler
   {
     if( THIS->throttler )
       free_object( THIS->throttler );
-    THIS->throttler = NULL;
-    if( t->type == PIKE_T_OBJECT )
-      THIS->throttler = t->u.object;
+    THIS->throttler = t;
     debug_malloc_touch( THIS->throttler );
     Pike_sp--;
     push_int(0);
