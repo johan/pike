@@ -478,7 +478,8 @@ PIKE_MODULE_INIT
 
 /* function(void:string) */
 
-  ADD_FUNCTION("gettext", f_gettext, tFunc(tStr,tStr),
+  ADD_FUNCTION("gettext", f_gettext,
+	       tFunc(tStr tOr(tStr,tVoid) tOr(tInt,tVoid),tStr),
 	       OPT_EXTERNAL_DEPEND);
   ADD_FUNCTION("setlocale", f_setlocale, tFunc(tInt tStr,tInt),
 	       OPT_EXTERNAL_DEPEND);
