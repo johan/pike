@@ -698,7 +698,7 @@ if test $cflags_is_set = no; then
   # Yikes! We're using the TenDRA compiler!
 
   # Make sure we can use the system headerfiles...
-  AC_SYS_COMPILER_FLAG(-Ysystem, ysystem, CFLAGS)
+  AC_SYS_COMPILER_FLAG(-Ysystem, ysystem, CPPFLAGS)
 
   # Use lenient ANSI compliance...
   AC_SYS_COMPILER_FLAG(-Xa, xa, CFLAGS)
