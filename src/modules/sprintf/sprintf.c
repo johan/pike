@@ -743,23 +743,23 @@ INLINE static int do_one(struct format_stack *fs,
 	  if(sv->type == T_OBJECT && sv->u.object->prog)		      \
 	  {                                                                   \
             int fun=FIND_LFUN(sv->u.object->prog, LFUN__SPRINTF);	      \
-	    if(fun != -1)                                                     \
+	    if (fun != -1)                                                    \
             {                                                                 \
               int n=0;							      \
 	      push_int(EXTRACT_PCHARP(a));				      \
-	      if(fs->fsp->precision!=SPRINTF_UNDECIDED)			      \
+	      if (fs->fsp->precision!=SPRINTF_UNDECIDED)		      \
 	      {								      \
 		 push_constant_text("precision");			      \
 		 push_int(fs->fsp->precision);				      \
                  n+=2;							      \
 	      }								      \
-	      if(fs->fsp->width!=SPRINTF_UNDECIDED)			      \
+	      if (fs->fsp->width!=SPRINTF_UNDECIDED)			      \
 	      {								      \
 		 push_constant_text("width");	           		      \
 		 push_int(fs->fsp->width);				      \
                  n+=2;							      \
 	      }								      \
-	      if((fs->fsp->flags&FIELD_LEFT))
+	      if ((fs->fsp->flags&FIELD_LEFT))				      \
 	      {								      \
 		 push_constant_text("flag_left");	       		      \
 		 push_int(1);						      \
