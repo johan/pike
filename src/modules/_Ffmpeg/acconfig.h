@@ -23,6 +23,12 @@
 /* Define if you have the ffmpeg library (-lffmpeg).  */
 #undef HAVE_LIBFFMPEG
 
+/* Define if you have the avformat library (-lavformat).  */
+#undef HAVE_LIBAVFORMAT
+
+/* Define if you have the libmp3lame library (-lmp3lame).  */
+#undef HAVE_LIBMP3LAME
+
 /* Define if you have a working ffmpeg library */
 #undef HAVE_WORKING_LIBFFMPEG
 
