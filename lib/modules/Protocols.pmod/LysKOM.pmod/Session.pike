@@ -895,3 +895,26 @@ object|void _create_text(string textstring,
    return text(res);
 }
 
+//! method object send_message(string message, mapping options)
+//! 	Sends a message.
+//!
+//!	options is a mapping that may contain:
+//!	<data_description type=mapping>
+//!	<elem name=recpt type="Conference">recipient conference</elem>
+//!	</data_description>
+
+object|void send_message(string textstring, mapping options)
+{
+  int|object res;
+  string call;
+  
+  if(!options) options = ([]);
+  
+  if(!options->recpt)
+    res = con["broadcast"](textstring);
+  else
+    res = con["send_message"](options->recpt->no, textstring);
+  
+  if (objectp(res)) return res;
+  return text(res);
+}
