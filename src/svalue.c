@@ -1107,7 +1107,6 @@ PMOD_EXPORT int is_le(const struct svalue *a, const struct svalue *b)
       struct program *p = program_from_svalue(a);
       if (p) {
 	int id = p->id;
-	free_program(p);
 	type_stack_mark();
 	push_object_type(0, id);
 	a_type = pop_unfinished_type();
@@ -1121,7 +1120,6 @@ PMOD_EXPORT int is_le(const struct svalue *a, const struct svalue *b)
       struct program *p = program_from_svalue(b);
       if (p) {
 	int id = p->id;
-	free_program(p);
 	type_stack_mark();
 	push_object_type(0, id);
 	b_type = pop_unfinished_type();
