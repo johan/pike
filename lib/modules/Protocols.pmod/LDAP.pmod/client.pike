@@ -181,7 +181,8 @@ static function(string:string) get_attr_encoder (string attr)
 	foreach (rawres, string rawent) {				\
 	  object derent = .ldap_privates.ldap_der_decode (rawent)->elements[1]; \
 	  if (array(object) derattribs = ASN1_GET_ATTR_ARRAY (derent)) { \
-	    mapping(string:array) attrs = (["dn": ({SET_DN})]);		\
+	    string dn = (SET_DN);					\
+	    mapping(string:array) attrs = (["dn": ({dn})]);		\
 	    foreach (derattribs, object derattr)			\
 	      {SET_ATTR;}						\
 	    res += ({attrs});						\
@@ -211,7 +212,13 @@ static function(string:string) get_attr_encoder (string attr)
 	if (flags & SEARCH_LOWER_ATTRS)
 	  DECODE_ENTRIES (utf8_to_string (ASN1_GET_DN (derent)), {
 	      string attr = lower_case (ASN1_GET_ATTR_NAME (derattr));
-	      if (function(string:string) decoder = get_attr_decoder (attr))
+	      if (function(string:string) decoder =
+		  // Microsoft AD has several attributes in its root DSE
+		  // that they have not bothered to include in their
+		  // schema. So if this is the root being fetched then
+		  // send the nowarn flag to get_attr_encoder to avoid
+		  // complaints about that.
+		  get_attr_decoder (attr, DO_IF_DEBUG (dn == "")))
 		attrs[attr] = map (ASN1_GET_ATTR_VALUES (derattr), decoder);
 	      else
 		attrs[attr] = ASN1_GET_ATTR_VALUES (derattr);
@@ -219,7 +226,8 @@ static function(string:string) get_attr_encoder (string attr)
 	else
 	  DECODE_ENTRIES (utf8_to_string (ASN1_GET_DN (derent)), {
 	      string attr = ASN1_GET_ATTR_NAME (derattr);
-	      if (function(string:string) decoder = get_attr_decoder (attr))
+	      if (function(string:string) decoder =
+		  get_attr_decoder (attr, DO_IF_DEBUG (dn == "")))
 		attrs[attr] = map (ASN1_GET_ATTR_VALUES (derattr), decoder);
 	      else
 		attrs[attr] = ASN1_GET_ATTR_VALUES (derattr);
