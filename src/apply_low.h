@@ -10,7 +10,7 @@
       struct reference *ref;
       struct pike_frame *new_frame;
       struct identifier *function;
-      
+
 #if 0
       /* This kind of fault tolerance is braindamaged. /mast */
       if(fun<0)
@@ -171,7 +171,10 @@
 	init_buf(&save_buf);
 	sprintf(buf, "%lx->", DO_NOT_WARN((long) PTR_TO_INT (o)));
 	my_strcat(buf);
-	my_strcat(function->name->str);
+	if (function->name->size_shift)
+	  my_strcat ("[widestring function name]");
+	else
+	  my_strcat(function->name->str);
 	do_trace_call(args, &save_buf);
       }
 
