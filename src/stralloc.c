@@ -1287,7 +1287,7 @@ PMOD_EXPORT int c_compare_string(struct pike_string *s, char *foo, int len)
   return s->len == len && s->size_shift == 0 && !MEMCMP(s->str,foo,len);
 }
 
-#if !defined(HAVE_STRCOLL) && defined(DONT_USE_SYSTEM_LOCALE)
+#if !defined(HAVE_STRCOLL) || defined(DONT_USE_SYSTEM_LOCALE)
 /* No locale function available */
 static int low_binary_strcmp(char *a, ptrdiff_t alen,
 			     char *b, ptrdiff_t blen)
