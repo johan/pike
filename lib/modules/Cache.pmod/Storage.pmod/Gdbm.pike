@@ -127,7 +127,7 @@ int(0..0)|Cache.Data get(string key,void|int notouch) {
   string metadata=metadb[key];
   Data rv;
   if (!metadata) return 0;      // no such key in cache.
-  rv=(Data(key,db,metadb,metadata);
+  rv = Data(key,db,metadb,metadata);
   if (!notouch) {
     rv->touch();
   }
