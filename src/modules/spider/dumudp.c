@@ -401,8 +401,8 @@ static void udp_query_address(INT32 args)
 {
   struct sockaddr_in addr;
   int i;
-  size_t len;
   char buffer[496],*q;
+  ACCEPT_SIZE_T len;
 
   if(THIS->fd <0)
     error("socket->query_address(): Port not bound yet.\n");
