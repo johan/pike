@@ -735,26 +735,46 @@ void f_create_process(INT32 args)
     void *env=NULL;
 
     /* Quote command to allow all characters (if possible) */
+    /* Damn! NT doesn't have quoting! The below code attempts to
+     * fake it
+     */
     {
       int e,d;
       dynamic_buffer buf;
       initialize_buf(&buf);
       for(e=0;e<cmd->size;e++)
       {
-	if(e) low_my_putchar(' ', &buf);
-	low_my_putchar('"', &buf);
-	for(d=0;d<ITEM(cmd)[e].u.string->len;d++)
+	int quote;
+	if(e)
 	{
-	  switch(ITEM(cmd)[e].u.string->str[d])
-	  {
-	    case '"':
-	    case '\\':
-	      low_my_putchar('\\', &buf);
-	    default:
-	      low_my_putchar(ITEM(cmd)[e].u.string->str[d], &buf);
-	  }
+	  low_my_putchar(' ', &buf);
+	  quote=STRCHR(ITEM(cmd)[e].u.string->str,'"') ||
+	    STRCHR(ITEM(cmd)[e].u.string->str,' ');
+	}else{
+	  quote=0;
 	}
-	low_my_putchar('"', &buf);
+
+	if(quote)
+	{
+	  low_my_putchar('"', &buf);
+
+	  for(d=0;d<ITEM(cmd)[e].u.string->len;d++)
+	  {
+	    switch(ITEM(cmd)[e].u.string->str[d])
+	    {
+	      case '"':
+	      case '\\':
+		low_my_putchar('\\', &buf);
+	      default:
+		low_my_putchar(ITEM(cmd)[e].u.string->str[d], &buf);
+	    }
+	  }
+	  low_my_putchar('"', &buf);
+	}else{
+	  low_my_binary_strcat(ITEM(cmd)[e].u.string->str,
+			       ITEM(cmd)[e].u.string->len,
+			       &buf);
+	}
       }
       low_my_putchar(0, &buf);
       command_line=(TCHAR *)buf.s.str;

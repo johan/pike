@@ -157,6 +157,9 @@ FD fd_open(char *file, int open_mode, int create_mode)
 
   mt_unlock(&fd_mutex);
 
+  if(open_mode & fd_APPEND)
+    fd_lseek(fd,0,SEEK_END);
+
   FDDEBUG(fprintf(stderr,"Opened %s file as %d (%d)\n",file,fd,x));
 
   return fd;
