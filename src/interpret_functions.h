@@ -1137,7 +1137,7 @@ BREAK;
 
 OPCODE1(F_LOCAL_INDEX, "local index")
 {
-  struct svalue tmp,*s=Pike_fp->locals+arg1();
+  struct svalue tmp,*s=Pike_fp->locals+arg1;
   if(s->type == PIKE_T_STRING) s->subtype=0;
   index_no_free(&tmp,Pike_sp-1,s);
   free_svalue(Pike_sp-1);
