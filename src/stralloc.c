@@ -307,7 +307,7 @@ static void locate_problem(int (*isproblem)(struct pike_string *))
 
 static int bad_pointer(struct pike_string *s)
 {
-  return (((ptrdiff_t)s)&(sizeof(pike_string *)-1));
+  return (((ptrdiff_t)s)&(sizeof(struct pike_string *)-1));
 }
 
 static int has_zero_refs(struct pike_string *s)
