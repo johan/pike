@@ -119,7 +119,7 @@ build-indep-stamp:
 	# It's ok not to do anything here, if you don't need to build
 	#  anything for this package.
 	#/usr/bin/docbook-to-man debian/$(PIKE).sgml > $(PIKE).1
-	$(MAKE) -C$(CURDIR)/refdoc PIKE="$(RUNPIKE)"
+	$(MAKE) PIKE="$(RUNPIKE)" doc
 
 	touch build-indep-stamp
 
