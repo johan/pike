@@ -83,8 +83,12 @@
 /* Define to path of pseudo terminal master device if available */
 #undef PTY_MASTER_PATHNAME
 
-/* Define to path of pt_chmod/chgpt to use pt_chmod directly rather than
-   calling grantpt (needed on SysV) */
+/* Define to path of chgpt to use chgpt directly rather than
+   calling grantpt (needed on SysV's like HPUX & OSF/1) */
+#undef USE_CHGPT
+
+/* Define to path of pt_chmod to use pt_chmod directly rather than
+   calling grantpt (needed on SysV's like Solaris) */
 #undef USE_PT_CHMOD
 
 #endif
