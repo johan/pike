@@ -3161,6 +3161,8 @@ echo
 #############################################################################
 
 export LDFLAGS CFLAGS CPPFLAGS LIBS
+export prefix exec_prefix OTHERFLAGS
+export TMP_BINDIR DEFINES INSTALL
 
 AC_CONFIG_SUBDIRS(modules)
 
