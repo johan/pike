@@ -1556,6 +1556,18 @@ static void low_print_tree(node *foo,int needlval)
   }
 
   case F_COMMA_EXPR:
+    low_print_tree(_CAR(foo),0);
+    if(_CAR(foo) && _CDR(foo))
+    {
+      if(_CAR(foo)->type == void_type_string &&
+	 _CDR(foo)->type == void_type_string)
+	fprintf(stderr, ";\n");
+      else
+	fprintf(stderr, ",\n");
+    }
+    low_print_tree(_CDR(foo),needlval);
+    return;
+
   case F_ARG_LIST:
     low_print_tree(_CAR(foo),0);
     if(_CAR(foo) && _CDR(foo))
@@ -2175,7 +2187,20 @@ void fix_type_field(node *n)
 
   case F_RETURN:
     if (!CAR(n) || (CAR(n)->type == void_type_string)) {
-      yyerror("Returning a void expression.");
+      yywarning("Returning a void expression.");
+      if (!CAR(n)) {
+#ifdef SHARED_NODES
+	sub_node(n);
+#endif /* SHARED_NODES */
+	_CAR(n) = mkintnode(0);
+	copy_shared_string(n->type, CAR(n)->type);
+#ifdef SHARED_NODES
+	n->hash = hash_node(n);
+	n->node_info |= OPT_DEFROSTED;
+	add_node(n);
+#endif /* SHARED_NODES */
+	break;
+      }
     } else if(compiler_frame &&
 	      compiler_frame->current_return_type &&
 	      !match_types(compiler_frame->current_return_type,CAR(n)->type) &&
