@@ -487,8 +487,12 @@ static void f_big_query(INT32 args)
     err = mysql_error(socket);
     MYSQL_DISALLOW();
 
-    error("mysql->big_query(): Query \"%s\" failed (%s)\n",
-	  sp[-args].u.string->str, err);
+    if (sp[-args].u.string->len <= 512) {
+      error("mysql->big_query(): Query \"%s\" failed (%s)\n",
+	    sp[-args].u.string->str, err);
+    } else {
+      error("mysql->big_query(): Query failed (%s)\n", err);
+    }
   }
 
   MYSQL_ALLOW();
