@@ -1967,11 +1967,15 @@ void th_init(void)
   if(!mutex_key)
     Pike_fatal("Failed to initialize thread program!\n");
 
-  Pike_interpreter.thread_id=clone_object(thread_id_prog,0);
-  SWAP_OUT_THREAD(OBJ2THREAD(Pike_interpreter.thread_id)); /* Init struct */
-  OBJ2THREAD(Pike_interpreter.thread_id)->id=th_self();
-  OBJ2THREAD(Pike_interpreter.thread_id)->swapped=0;
-  thread_table_insert(Pike_interpreter.thread_id);
+  {
+    struct object *o = Pike_interpreter.thread_id =
+      clone_object(thread_id_prog,0);
+    SWAP_OUT_THREAD(OBJ2THREAD(Pike_interpreter.thread_id)); /* Init struct */
+    Pike_interpreter.thread_id = o;
+    OBJ2THREAD(Pike_interpreter.thread_id)->id=th_self();
+    OBJ2THREAD(Pike_interpreter.thread_id)->swapped=0;
+    thread_table_insert(Pike_interpreter.thread_id);
+  }
 }
 
 void th_cleanup(void)
