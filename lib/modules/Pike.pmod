@@ -9,3 +9,9 @@ constant WEAK = WEAK_INDICES|WEAK_VALUES;
 //! See @[set_weak_flag] for details.
 
 constant BacktraceFrame = __builtin.backtrace_frame;
+
+#if constant(__builtin.security)
+// This only exists if the run-time has been compiled with
+// --with-security.
+constant Security = __builtin.security;
+#endif /* constant(__builtin.security) */
