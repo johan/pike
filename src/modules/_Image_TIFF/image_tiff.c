@@ -68,7 +68,7 @@ struct imagealpha
 
 #define INITIAL_WRITE_BUFFER_SIZE 8192
 
-#if 1
+#if 0
 # define TRACE(X,Y,Z,Q) fprintf(stderr, X,Y,Z,Q)
 #else
 # define TRACE(X,Y,Z,Q)
