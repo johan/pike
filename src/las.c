@@ -3583,6 +3583,22 @@ void fix_type_field(node *n)
     }
     break;
 
+  case F_PUSH_ARRAY:
+    if (CAR(n)) {
+      struct pike_type *array_type;
+      MAKE_CONSTANT_TYPE(array_type, tArr(tZero));
+      if (!pike_types_le(array_type, CAR(n)->type)) {
+	yytype_error("Bad argument to splice operator.",
+		     array_type, CAR(n)->type, 0);
+      }
+    }
+    /* FIXME: The type field of the splice operator is not yet utilized.
+     *
+     * It probably ought to be something similar to MANY(..., VOID).
+     */
+    copy_pike_type(n->type, mixed_type_string);
+    break;
+
   case F_AUTO_MAP_MARKER:
     if (!CAR(n) || (CAR(n)->type == void_type_string)) {
       yyerror("Indexing a void expression.");
