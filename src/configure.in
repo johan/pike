@@ -957,6 +957,11 @@ int main(int argc, char **argv)
       LIBS="${OLDLIBS} -lpthreads -lc_r"
     ;;
 
+    xSolaris*)
+      # Some versions of Solaris 2.5.1 require linking with -lthread too.
+      LIBS="${OLDLIBS} -lpthread -lthread"
+    ;;
+
     *)
       LIBS="${OLDLIBS} -lpthread"
     ;;
