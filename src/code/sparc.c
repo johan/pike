@@ -134,6 +134,10 @@
 #define SPARC_BNE(DISP22, A) \
     add_to_program(0x12800000|((A)<<29)|(((DISP22)>>2)&0x1fffff))
 
+#define SPARC_CALL(DISP30) \
+    add_to_program(0x40000000 | (((DISP30) >> 2) & 0x3fffffff))
+
+
 #define SET_REG(REG, X) do {						\
     INT32 val_ = X;							\
     INT32 reg_ = REG;							\
