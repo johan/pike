@@ -615,7 +615,7 @@ static void sf_create(INT32 args)
     }
 #endif /* PIKE_DEBUG */
     sf.to_file = *ob;
-    free_object(sp[5-arg].u.object);
+    free_object(sp[5-args].u.object);
     sp[5-args].u.object = sf.to_file;
   }
   if ((sf.to->flags & FILE_LOCK_FD) ||
