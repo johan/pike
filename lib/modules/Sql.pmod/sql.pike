@@ -59,7 +59,7 @@ void create(void|string|object host, void|string db,
 	  (program_name != "sql.pike")) {
 	/* Don't call ourselves... */
 	array(mixed) err;
-	werror("Trying "+program_name+"...\n");
+
 	err = catch {
 	  program p = Sql[program_name];
 
@@ -76,7 +76,6 @@ void create(void|string|object host, void|string db,
 	  }
 	  return;
 	};
-	werror(describe_backtrace(err)+"\n");
       }
     }
   }
