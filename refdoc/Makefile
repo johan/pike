@@ -39,7 +39,7 @@ low_pelix_modref:
 	rm -rf pelix_modref || /bin/true
 	@mkdir pelix_modref
 	@$(PIKE) presentation/tree-split-autodoc.pike \
-	  $(BUILDDIR)/modref.xml structure/pelix_modref.html pelix_modref
+	  $(BUILDDIR)/modref.xml structure/pelix_modref.html pelix_modref predef
 	@mkdir pelix_modref/images
 	cp $(BUILDDIR)/doc_build/images/* pelix_modref/images
 
