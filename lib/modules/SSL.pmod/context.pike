@@ -10,6 +10,11 @@ int auth_level;
 
 object rsa;  /* Servers private key */
 
+/* These temporary keys, of non-zero, are used for the
+ * ServerKeyExchange message */
+object long_rsa;
+object short_rsa;
+
 function(int:string) random; /* Random number generator */
 
 /* Chain of X509.v3 certificates
