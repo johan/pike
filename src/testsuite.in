@@ -8813,7 +8813,7 @@ test_program([[
 ]])
 
 // - throw
-test_eq(20,catch(int q=1; throw(a())))
+test_eq(20,catch(throw(a())))
 
 // - catch compile-errors
 test_any([[ master()->set_inhibit_compile_errors(lambda(){});mixed res = catch{compile_string("dfasfqw123");};master()->set_inhibit_compile_errors(0); return arrayp(res)||objectp(res); ]], 1)
