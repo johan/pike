@@ -9,6 +9,11 @@ string dirname(string x)
   return tmp[..sizeof(tmp)-2]*"/";
 }
 
+void sleep(float|int t, void|int abort)
+{
+  delay(t, abort);
+}
+
 mapping(string:mixed) all_constants()
 {
   mapping(string:mixed) ret=predef::all_constants()+([]);
