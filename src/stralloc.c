@@ -139,12 +139,6 @@ CONVERT(1,2)
 CONVERT(2,0)
 CONVERT(2,1)
 
-#ifdef DEBUG
-#ifdef DEBUG_MALLOC
-#define DM(X) X
-#else
-#define DM(X)
-#endif
 
 int generic_compare_strings(const void *a,int alen, int asize,
 			    const void *b,int blen, int bsize)
@@ -207,6 +201,14 @@ INLINE void pike_string_cpy(PCHARP to,
 {
   generic_memcpy(to,MKPCHARP_STR(from),from->len);
 }
+
+
+#ifdef DEBUG
+#ifdef DEBUG_MALLOC
+#define DM(X) X
+#else
+#define DM(X)
+#endif
 
 static void locate_problem(int (*isproblem)(struct pike_string *))
 {
