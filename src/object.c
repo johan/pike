@@ -27,6 +27,7 @@ RCSID("$Id$");
 #include "module_support.h"
 #include "block_alloc.h"
 #include "fdlib.h"
+#include "mapping.h"
 
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
