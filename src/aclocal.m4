@@ -388,10 +388,9 @@ define([AC_MODULE_INIT],
     MODULE_PATH=""
     MODULE_DIR=""
   ], [
-dnl These string operations ought to be done with m4.
-    MODULE_NAME="`echo '$1'|sed -e 's/.*\.//'`"
-    MODULE_PATH="`echo '$1'|sed -e 's/[[^\.]]*$//'`"
-    MODULE_DIR="`echo '$1'|sed -e 's/[[^\.]]*$//' -e 's@\.@.pmod/@g'`"
+    MODULE_NAME="regexp([$1], [\([^\.]*\)$], [\1])"
+    MODULE_PATH="regexp([$1], [\(.*\.\)*], [\&])"
+    MODULE_DIR="patsubst(regexp([$1], [\(.*\.\)*], [\&]), [\.], [\.pmod/])"
   ])
   AC_SUBST(MODULE_NAME)dnl
   AC_SUBST(MODULE_PATH)dnl
