@@ -384,7 +384,7 @@ class table {
   //! @[ADT.Table.ASCII.encode()]
   //!
   void create(array(array) table, array(string) column_names,
-	      array(mapping(string:string)|void column_types)
+	      array(mapping(string:string))|void column_types)
   {
     if(!arrayp(table))
       TABLE_ERR("Table not array");
