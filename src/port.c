@@ -610,7 +610,7 @@ PMOD_EXPORT int VSPRINTF(char *buf,char *fmt,va_list args)
     case 'E':
     case 'g':
       *fmt2p=0;
-      sprintf(buf,fmt2,va_arg(args,FLOAT_TYPE));
+      sprintf(buf,fmt2,va_arg(args,double));
       buf+=strlen(buf);
       break;
     }
