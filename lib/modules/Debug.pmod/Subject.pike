@@ -89,15 +89,10 @@ int(0..1) PROXY(_is_type, 0);
 int PROXY(_equal, 0);
 mixed PROXY(_m_delete, 0);
 
-array _indices(mixed ... args) { 
-   ENTER(_indices);
-   return ::_indices(); 
-}
- 
-array _values(mixed ... args) { 
-   ENTER(_values);
-   return ::_values(); 
-}
+//! @ignore
+array PROXY(_indices, ::_indices());
+array PROXY(_values, ::_values());
+//! @endignore
 
 object _get_iterator(mixed ... args)
 {
