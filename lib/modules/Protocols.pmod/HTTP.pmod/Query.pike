@@ -346,7 +346,7 @@ void dns_lookup_callback(string name,string ip,function callback,
 void dns_lookup_async(string hostname,function callback,mixed ...extra)
 {
    string id;
-   if (hostname=="")
+   if (!hostname || hostname=="")
    {
       call_out(callback,0,0,@extra); // can't lookup that...
       return;
