@@ -100,6 +100,10 @@ class kernel {
   //.   The symbols that closure has been called on.
   multiset closure_set = (<>);
 
+  //. + error
+  //.   Error code
+  int error=0;
+
   /*
    * Functions
    */
