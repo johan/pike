@@ -597,9 +597,12 @@ PMOD_EXPORT void f_search(INT32 args)
 		    "length of the string.\n");
 
     if(Pike_sp[1-args].type == T_STRING) {
-      start = string_search(haystack,
-			    Pike_sp[1-args].u.string,
-			    start);
+      /* Handle searching for the empty string. */
+      if (Pike_sp[1-args].u.string->len) {
+	start = string_search(haystack,
+			      Pike_sp[1-args].u.string,
+			      start);
+      }
     } else if (Pike_sp[1-args].type == T_INT) {
       INT_TYPE val = Pike_sp[1-args].u.integer;
       
