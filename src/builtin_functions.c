@@ -3237,7 +3237,8 @@ static void f_get_prof_info(INT32 args)
 
       push_int(prog->identifiers[i].num_calls);
       push_int(prog->identifiers[i].total_time);
-      f_aggregate(2);
+      push_int(prog->identifiers[i].self_time);
+      f_aggregate(3);
     }
   }
   f_aggregate_mapping(num_functions * 2);
