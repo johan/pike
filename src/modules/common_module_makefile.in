@@ -132,8 +132,12 @@ module.pmod: Makefile $(MODULE_PMOD_IN)
 
 
 clean:	
-	-rm -f *.o *.fail *.obj *.a *.so stamp-h linker_options modlist_headers modlist_segment testsuite $(MODULE_CLEAN_EXTRA); rm -rf module.pmod plib
+	-rm -f *.o *.fail *.obj *.a *.so stamp-h linker_options modlist_headers modlist_segment testsuite make_variables dependencies $(MODULE_CLEAN_EXTRA); rm -rf module.pmod plib
 	@for a in '' $(MODULE_SUBDIRS) ; do if test "x$$a" = "x"; then :; else echo cleaning $$a ; ( cd $$a ; $(MAKE) $(MAKE_FLAGS) clean ) ; fi ; done
+
+spotless: clean
+	-rm -f config.cache config.log config.status Makefile
+
 
 
 depend: $(SRC_TARGETS) $(PMOD_TARGETS) Makefile
