@@ -756,7 +756,7 @@ void f_or(INT32 args)
 {
   switch(args)
   {
-  case 0: ERRROR("`|", "Too few arguments.\n", sp, 0);
+  case 0: ERROR("`|", "Too few arguments.\n", sp, 0);
   case 1: return;
   case 2: o_or(); return;
   default:
