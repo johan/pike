@@ -13,7 +13,7 @@ int main(int n, array(string) args) {
   args -= ({ "--post-process" });
   if(post_process) {
     int mtime;
-    mtime = min( @map(args[2..], `[], 3) );
+    mtime = min( @map(args[2..], lambda(string f) { return file_stat(f)->mtime; } ) );
     Stdio.Stat stat = file_stat(args[1]);
     if(stat && stat->mtime > mtime) return 0;
     return join_files(args[2..], args[1], post_process);
