@@ -5433,10 +5433,10 @@ void init_builtin_efuns(void)
   ADD_FUNCTION("string_count",f_string_count,tFunc(tString tString,tInt),OPT_TRY_OPTIMIZE);
 
 #define tMapStuff(IN,SUB,OUTFUN,OUTSET,OUTPROG,OUTMIX,OUTARR,OUTMAP) \
-  tOr7( tFuncV(IN tFuncV(SUB,tMix,tSetvar(2,tMix)),tMix,OUTFUN), \
+  tOr7( tFuncV(IN tFuncV(SUB,tMix,tSetvar(2,tAny)),tMix,OUTFUN), \
         tIfnot(tFuncV(IN tFunction,tMix,tMix), \
 	       tOr(tFuncV(IN tProgram, tMix, OUTPROG), \
-	       tFuncV(IN tObj, tMix, OUTMIX))), \
+		   tFuncV(IN tObj, tMix, OUTMIX))), \
 	tFuncV(IN tSet(tMix),tMix,OUTSET), \
 	tFuncV(IN tMap(tMix, tSetvar(2,tMix)), tMix, OUTMAP), \
         tFuncV(IN tArray, tMix, OUTARR), \
