@@ -9,10 +9,30 @@
 #define PIKE_RUSAGE_H
 
 /* Prototypes begin here */
-typedef INT32 pike_rusage_t[30];
+typedef long pike_rusage_t[29];
 int pike_get_rusage(pike_rusage_t rusage_values);
-INT32 *low_rusage(void);
-INT32 internal_rusage(void);
+long *low_rusage(void);
+
+/* get_cpu_time returns the consumed cpu time (both in kernel and user
+ * space, if applicable), or zero if it couldn't be read. */
+#ifdef INT64
+/* The time is returned in nanoseconds. (There's no guarantee that the
+ * returned value has nanosecond resolution.) */
+typedef unsigned INT64 cpu_time_t;
+#define LONG_CPU_TIME
+#define CPU_TIME_TICKS /* per second */ ((cpu_time_t) 1000000000)
+#define CPU_TIME_UNIT "ns"
+#else
+/* The time is returned in milliseconds. (Note that the value will
+ * wrap after about 49 days.) */
+typedef unsigned long cpu_time_t;
+#define CPU_TIME_TICKS /* per second */ ((cpu_time_t) 1000)
+#define CPU_TIME_UNIT "ms"
+#endif
+cpu_time_t get_cpu_time (void);
+
+INT32 internal_rusage(void);	/* For compatibility. */
+
 #if defined(PIKE_DEBUG) || defined(INTERNAL_PROFILING)
 void debug_print_rusage(FILE *out);
 #endif

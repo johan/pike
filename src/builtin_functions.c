@@ -1752,7 +1752,8 @@ PMOD_EXPORT void f_allocate(INT32 args)
 
 /*! @decl array(int) rusage()
  *!
- *!   Return resource usage.
+ *!   Return resource usage. An error is thrown if it isn't supported
+ *!   or if the system fails to return any information.
  *!
  *! @returns
  *!   Returns an array of ints describing how much resources the interpreter
@@ -1784,7 +1785,7 @@ PMOD_EXPORT void f_allocate(INT32 args)
  *!   	@elem int major_page_faults
  *!   	  Major page faults, i.e. paging with disk I/O required.
  *!   	@elem int swaps
- *!   	  Number of times the process was swapped out entirely.
+ *!   	  Number of times the process has been swapped out entirely.
  *!   	@elem int block_input_op
  *!   	  Number of block input operations.
  *!   	@elem int block_output_op
@@ -1841,15 +1842,16 @@ PMOD_EXPORT void f_allocate(INT32 args)
  */
 void f_rusage(INT32 args)
 {
-  INT32 *rus,e;
+  pike_rusage_t rus;
+  size_t e;
   struct array *v;
-  pop_n_elems(args);
-  rus=low_rusage();
-  if(!rus)
-    PIKE_ERROR("rusage", "System rusage information not available.\n", Pike_sp, args);
-  v=allocate_array_no_init(29,0);
 
-  for(e=0;e<29;e++)
+  pop_n_elems(args);
+  if(!pike_get_rusage (rus))
+    PIKE_ERROR("rusage", "System usage information not available.\n", Pike_sp, args);
+  v=allocate_array_no_init(NELEM(rus),0);
+
+  for(e=0;e<NELEM(rus);e++)
   {
     ITEM(v)[e].type=T_INT;
     ITEM(v)[e].subtype=NUMBER_NUMBER;
@@ -2075,7 +2077,8 @@ void f__exit(INT32 args)
  *!   of this function varies from system to system.
  *!
  *! @seealso
- *!   @[ctime()], @[localtime()], @[mktime()], @[gmtime()]
+ *!   @[ctime()], @[localtime()], @[mktime()], @[gmtime()],
+ *!   @[System.gettimeofday]
  */
 PMOD_EXPORT void f_time(INT32 args)
 {
