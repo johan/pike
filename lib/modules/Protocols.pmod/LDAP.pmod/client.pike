@@ -736,7 +736,7 @@
   //	filter:		search filter
   //	attrsonly:	flag
   //	attrsy:		attribute(s) name
-  object|int search (string filter, int|void attrsonly, array(string)|void attrs) {
+  object|int search (string|void filter, int|void attrsonly, array(string)|void attrs) {
 
     int id;
     mixed raw;
