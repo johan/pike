@@ -601,10 +601,14 @@ void low_start_new_program(struct program *p,
   fake_object->parent=0;
   fake_object->parent_identifier=0;
   fake_object->prog=p;
+  add_ref(p);
+#ifdef DEBUG_MALLOC
+  fake_object->dead_prog=p;
+  add_ref(p);
+#endif /* DEBUG_MALLOC */
 #ifdef PIKE_SECURITY
   fake_object->prot=0;
 #endif
-  add_ref(p);
 
   if(name)
   {
@@ -2923,7 +2927,7 @@ void gc_check_all_programs(void)
   {
     int e;
 
-    dmalloc_touch(p);
+    debug_malloc_touch(p);
 
     for(e=0;e<p->num_constants;e++)
       debug_gc_check_svalues(& p->constants[e].sval, 1, T_PROGRAM, p);
