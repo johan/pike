@@ -289,8 +289,6 @@ extern THREAD_T debug_locking_thread;
 #define mt_unlock_interpreter() (mt_unlock(&interpreter_lock))
 #define co_wait_interpreter(COND) do {co_wait((COND), &interpreter_lock);} while (0)
 
-#define CHECK_INTERPRETER_LOCK() do {} while (0)
-
 #endif
 
 extern COND_T live_threads_change;		/* Used by _disable_threads */
@@ -676,6 +674,10 @@ void th_farm(void (*fun)(void *), void *here);
 #define exit_threads_disable(X)
 
 #endif /* PIKE_THREADS */
+
+#ifndef CHECK_INTERPRETER_LOCK
+#define CHECK_INTERPRETER_LOCK() do {} while (0)
+#endif
 
 #ifdef __NT__
 #ifndef PIKE_DEBUG
