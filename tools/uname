@@ -100,6 +100,11 @@ fi
 if [ X$R = Xyes -o X$V = Xyes ]; then
   # Release number or Version number.
   OUTPUT="$OUTPUT `echo $RAW_VERSION|sed -e's/[^0-9.]*//g'`"
+  # If there are more than one processor, apply "-smp"
+  NUMPROCS="`getntenv NUMBER_OF_PROCESSORS`"
+  if [ X"$NUMPROCS" != X -a $NUMPROCS -gt 1 ]; then
+    OUTPUT="$OUTPUT-smp"
+  fi
 fi
 
 if [ "$M$P" = "" ]; then :; else
