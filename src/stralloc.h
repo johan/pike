@@ -88,7 +88,7 @@ PMOD_EXPORT struct pike_string *debug_findstring(const struct pike_string *foo);
 static INLINE PCHARP MKPCHARP(void *ptr, int shift)
 {
   PCHARP tmp;
-  tmp.ptr=ptr;
+  tmp.ptr=(p_wchar0 *)ptr;
   tmp.shift=shift;
   return tmp;
 }
