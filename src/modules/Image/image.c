@@ -501,11 +501,16 @@ int image_too_big(INT_TYPE xsize,INT_TYPE ysize)
 
    if (xsize<0 || ysize<0) return 1;
 
+   if (xsize<0x20000000) xsize*=sizeof(rgb_group);
+   else if (ysize<0x20000000) ysize*=sizeof(rgb_group);
+   else return 1;
+
    a=(xsize>>16);
    b=xsize&0xffff;
    c=(ysize>>16);
    d=ysize&0xffff;
 
+   /* check for overflow */
    if ((a&&c) || ((b*d>>16)&0xffff) + (a*d) + (b*c) > 0x7fff) return 1;
 
    return 0;
