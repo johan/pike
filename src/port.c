@@ -15,6 +15,8 @@
 #include <float.h>
 #include <string.h>
 
+RCSID("$Id$");
+
 #ifdef sun
 time_t time PROT((time_t *));
 #endif

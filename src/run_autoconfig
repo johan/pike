@@ -1,5 +1,7 @@
 #!/bin/sh
-
+#
+# $Id$
+#
 # Bootstrap script
 
 need_to_make_depend=no

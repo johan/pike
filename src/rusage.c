@@ -13,6 +13,8 @@
 #include <errno.h>
 #include "rusage.h"
 
+RCSID("$Id$");
+
 #ifdef HAVE_SYS_TIMES_H
 #include <sys/times.h>
 #endif

@@ -1,3 +1,4 @@
+// $Id$
 cond([[ master()->resolv("_Image_PNG")->encode ]],
 [[
 ]])

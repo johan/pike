@@ -1,3 +1,5 @@
+// $Id$
+
 // - Here we try the Regexp module
 test_true([[programp(Regexp)]])
 test_any([[object o; o=clone(Regexp); destruct(o); return 1]],1)

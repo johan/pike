@@ -1,3 +1,6 @@
+/*
+ * $Id$
+ */
 #ifndef CYCLIC_H
 #define CYCLIC_H
 

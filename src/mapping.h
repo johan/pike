@@ -3,6 +3,10 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+
+/*
+ * $Id$
+ */
 #ifndef MAPPING_H
 #define MAPPING_H
 

@@ -15,6 +15,8 @@
 
 #include <ctype.h>
 
+RCSID("$Id$");
+
 #define BEGIN_HASH_SIZE 997
 #define MAX_AVG_LINK_LENGTH 3
 #define HASH_PREFIX 64

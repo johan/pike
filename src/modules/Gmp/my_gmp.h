@@ -1,4 +1,4 @@
-/* my_gmp.h
+/* $Id$
  *
  * These functions or something similar will hopefully be included
  * with Gmp-2.1 .

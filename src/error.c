@@ -14,6 +14,8 @@
 #include "main.h"
 #include "builtin_functions.h"
 
+RCSID("$Id$");
+
 #undef ATTRIBUTE
 #define ATTRIBUTE(X)
 

@@ -1,3 +1,4 @@
+# $Id$
 AC_INIT(ssleay.c)
 
 AC_CONFIG_HEADER(config.h)

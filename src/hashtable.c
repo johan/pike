@@ -9,6 +9,8 @@
 #include "stuff.h"
 #include "error.h"
 
+RCSID("$Id$");
+
 static unsigned INT32 gobble(struct pike_string *s)
 {
   unsigned INT32 i;

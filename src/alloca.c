@@ -3,6 +3,10 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+
+/*
+ * $Id$
+ */
 #include <stdio.h>
 /*
 	alloca -- (mostly) portable public-domain implementation -- D A Gwyn

@@ -1,3 +1,4 @@
+# $Id$
 AC_INIT(dynamic_module_makefile.in)
 
 AC_SET_MAKE

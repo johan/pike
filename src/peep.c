@@ -12,6 +12,8 @@
 #include "peep.h"
 #include "dmalloc.h"
 
+RCSID("$Id$");
+
 struct p_instr_s
 {
   short opcode;

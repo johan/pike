@@ -1,3 +1,6 @@
+/*
+ * $Id$
+ */
 #ifndef FDLIB_H
 #define FDLIB_H
 

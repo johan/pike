@@ -3,6 +3,10 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+
+/*
+ * $Id$
+ */
 #ifndef OBJECT_H
 #define OBJECT_H
 

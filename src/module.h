@@ -3,6 +3,10 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+
+/*
+ * $Id$
+ */
 #ifndef MODULE_H
 #define MODULE_H
 

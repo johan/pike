@@ -3,6 +3,10 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+
+/*
+ * $Id$
+ */
 #include "stuff.h"
 
 /* Not all of these are primes, but they should be adequate */

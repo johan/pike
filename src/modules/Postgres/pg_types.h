@@ -1,3 +1,4 @@
+/* $Id$ */
 #ifndef _PG_TYPES_H_
 #define _PG_TYPES_H_
 

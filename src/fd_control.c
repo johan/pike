@@ -8,6 +8,9 @@
 #include "global.h"
 #include "error.h"
 #include "fdlib.h"
+
+RCSID("$Id$");
+
 #else
 #define _FILE_OFFSET_BITS 64
 #define _LARGEFILE_SOURCE 1

@@ -21,6 +21,8 @@
 #include "cyclic.h"
 #include "builtin_functions.h"
 
+RCSID("$Id$");
+
 void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind)
 {
   INT32 i;

@@ -4,6 +4,8 @@
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
 
+/* $Id$ */
+
 /* Prototypes begin here */
 void f_version(INT32 args);
 /* Prototypes end here */

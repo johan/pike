@@ -1,4 +1,6 @@
 /*
+ * $Id$
+ *
  * Glue needed on Solaris if libgcc.a isn't compiled with -fpic.
  *
  * Henrik Grubbström 1997-03-06

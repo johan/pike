@@ -1,3 +1,5 @@
+// $Id$
+
 cond([[ master()->resolv("Image")->image ]],
 [[
   test_true(programp(Image.image))

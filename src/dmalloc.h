@@ -1,3 +1,6 @@
+/*
+ * $Id$
+ */
 #ifdef DEBUG_MALLOC
 
 struct memhdr;

@@ -1,3 +1,4 @@
+# $Id$
 AC_INIT(image_png.c)
 AC_CONFIG_HEADER(config.h)
 AC_ARG_WITH(zlib,     [  --with(out)-zlib       Support gzip compression],[],[with_zlib=yes])

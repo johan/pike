@@ -1,5 +1,8 @@
-/*      From Andy Tanenbaum's book "Computer Networks",
-        rewritten in C
+/*
+ * $Id$
+ *
+ *      From Andy Tanenbaum's book "Computer Networks",
+ *      rewritten in C
 */
 
 struct block {

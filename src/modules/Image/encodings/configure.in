@@ -1,3 +1,4 @@
+# $Id$
 AC_INIT(gif.c)
 
 AC_SET_MAKE

@@ -3,6 +3,10 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+
+/*
+ * $Id$
+ */
 void enter_program_hash PROT((struct program *));
 void remove_program_hash PROT((struct program *));
 struct program *lookup_program_hash PROT((char *));

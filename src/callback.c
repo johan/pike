@@ -9,6 +9,8 @@
 #include "error.h"
 #include "block_alloc.h"
 
+RCSID("$Id$");
+
 struct callback_list fork_child_callback;
 
 /*

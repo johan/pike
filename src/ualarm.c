@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/* $Id$ */
 /*
  * Copyright (c) 1985 Regents of the University of California.
  * All rights reserved.

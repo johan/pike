@@ -15,6 +15,8 @@
 #include "builtin_functions.h"
 #include "gc.h"
 
+RCSID("$Id$");
+
 struct multiset *first_multiset;
 
 int multiset_member(struct multiset *l, struct svalue *ind)

@@ -18,6 +18,8 @@
 #include "interpret.h"
 #include "gc.h"
 
+RCSID("$Id$");
+
 struct svalue dest_ob_zero = { T_INT, 0 };
 
 

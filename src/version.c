@@ -9,6 +9,8 @@
 #include "interpret.h"
 #include "stralloc.h"
 
+RCSID("$Id$");
+
 void f_version(INT32 args)
 {
   pop_n_elems(args);

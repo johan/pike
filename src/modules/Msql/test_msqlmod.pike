@@ -1,6 +1,8 @@
 #!../../pike
 #include <msql.h>
 
+/* $Id$ */
+
 int main()
 {
 	array result;

@@ -6,6 +6,8 @@
 #include "pike_types.h"
 #include "error.h"
 
+RCSID("$Id$");
+
 /* Checks that args_to_check arguments are OK.
  * Returns 1 if everything worked ok, zero otherwise.
  * If something went wrong, 'exepect_result' tells you what went wrong.

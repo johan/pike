@@ -6,6 +6,8 @@
 #ifndef REGEXP_H
 #define REGEXP_H
 /*
+ * $Id$
+ *
  * Definitions etc. for regexp(3) routines.
  *
  * Caveat:  this is V8 regexp(3) [actually, a reimplementation thereof],

@@ -3,6 +3,9 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/*
+ * $Id$
+ */
 #ifndef TIME_STUFF_H
 #define TIME_STUFF_H
 

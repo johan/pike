@@ -6,6 +6,9 @@
 #  include "module.h"
 #  include "stralloc.h"
 #  include "pike_macros.h"
+
+RCSID("$Id$");
+
 #endif
 
 #if !defined(HAVE_DLOPEN)

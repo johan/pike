@@ -19,6 +19,8 @@
 #include "gc.h"
 #include "main.h"
 
+RCSID("$Id$");
+
 struct array empty_array=
 {
   1,                     /* Never free */

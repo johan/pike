@@ -4,6 +4,9 @@
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
 
+/*
+ * $Id$
+ */
 #ifndef MODULE_SUPPORT_H
 #include <stdarg.h>
 

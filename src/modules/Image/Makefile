@@ -1,3 +1,4 @@
+# $Id$
 
 DOCFILES = doc-header \
    blit.c blit_layer_include.h colortable.c colortable.h dct.c font.c \

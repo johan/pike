@@ -1,3 +1,6 @@
+/*
+ * $Id$
+ */
 #ifndef CPP_H
 #define CPP_H
 

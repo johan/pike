@@ -1,3 +1,4 @@
+# $Id$
 PREFLAGS=$(DEFINES) -I. -I$(SRCDIR) -I$(SRCDIR)/../.. -I../.. -I.
 CFLAGS=$(PREFLAGS) $(OTHERFLAGS)
 

@@ -1,4 +1,6 @@
 /*
+ * $Id$
+ *
  * Compilator state push / pop operator construction file
  *
  * (Can you tell I like macros?)

@@ -1,3 +1,7 @@
+/*
+ * $Id$
+ */
+
 #define INC(X) X=STEP(X,1)
 #define DEC(X) X=STEP(X,-1)
 #define SIZE ((long)(char *)STEP((TYPE *)0,1))

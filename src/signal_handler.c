@@ -22,6 +22,8 @@
 #include "builtin_functions.h"
 #include <signal.h>
 
+RCSID("$Id$");
+
 #ifdef HAVE_PASSWD_H
 # include <passwd.h>
 #endif

@@ -1,5 +1,7 @@
 #!/bin/sh
 #
+# $Id$
+#
 # Create a modlist.h from a list of dirs with modules
 #
 

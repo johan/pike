@@ -18,6 +18,8 @@
 #include "threads.h"
 #include "module_support.h"
 
+RCSID("$Id$");
+
 #ifdef USE_SYSTEM_REGEXP
 #include <regexp.h>
 

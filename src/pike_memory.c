@@ -8,6 +8,7 @@
 #include "error.h"
 #include "pike_macros.h"
 
+RCSID("$Id$");
 
 /* strdup() is used by several modules, so let's provide it */
 #ifndef HAVE_STRDUP
