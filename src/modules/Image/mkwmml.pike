@@ -315,8 +315,8 @@ void document(string enttype,
    {
       string rarg="";
       f->write("<man_arguments>\n");
-      
-      foreach (huh->args,mapping arg)
+      mapping arg;
+      foreach (huh->args, arg)
       {
 	 if (arg->desc)
 	 {
