@@ -229,6 +229,9 @@
 /* define if declaration of getenv is missing */
 #undef GETENV_DECL_MISSING
 
+/* define if you are using crypt.c. */
+#undef USE_CRYPT_C
+
 /* Define if we can declare 'extern char **environ' */
 #undef DECLARE_ENVIRON
 
