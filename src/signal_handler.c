@@ -1920,6 +1920,9 @@ void f_create_process(INT32 args)
     /* Damn! NT doesn't have quoting! The below code attempts to
      * fake it
      */
+    /* Note: On NT the following characters are illegal in filenames:
+     *	\ / : * ? " < > |
+     */
     {
       int e,d;
       dynamic_buffer buf;
@@ -1944,10 +1947,10 @@ void f_create_process(INT32 args)
 	    {
 	      /* Hopefully this should work better -Hubbe */
 	      case '\\':
-		low_my_putchar('"', &buf);
+		/*low_my_putchar('"', &buf);*/
 		low_my_putchar('\\', &buf);
 		low_my_putchar('\\', &buf);
-		low_my_putchar('"', &buf);
+		/*low_my_putchar('"', &buf);*/
 		break;
 	      case '"':
 		low_my_putchar('\\', &buf);
@@ -1965,6 +1968,10 @@ void f_create_process(INT32 args)
       low_my_putchar(0, &buf);
       
 /*      fprintf(stderr,"COM: %s\n",buf.s.str); */
+
+      /* NOTE: buf isn't finalized, since CreateProcess performs destructive
+       *       operations on it.
+       */
 
       command_line=(TCHAR *)buf.s.str;
     }
