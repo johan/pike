@@ -309,6 +309,7 @@ mapping parse_xml_file(string filename, string language) {
 		    str_parser->feed( c )->finish();
 		    if(current->id) {
 		      ids[current->id] = current;
+		      if(!current->original) current->original = "";
 		      if(String.trim_whites(current->original)!="")
 			r_ids[current->original] = current->id;
 		    }
