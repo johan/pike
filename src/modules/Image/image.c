@@ -1055,13 +1055,13 @@ static INLINE void
 **!	rectangle corners
 **! arg array(array(int)) corner_color
 **!     colors of the corners:
-**!
+**!	<pre>
 **!	({x1y1,x2y1,x1y2,x2y2})
-**!
+**!	</pre>
 **!	each of these is an array of integeres:
-**!
+**!	<pre>
 **!	({r,g,b}) or ({r,g,b,alpha})
-**!
+**!	</pre>
 **!	Default alpha channel value is 0 (opaque).
 */
 

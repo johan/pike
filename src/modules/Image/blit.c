@@ -225,10 +225,10 @@ void img_clone(struct image *newimg,struct image *img)
 **!
 **! returns the object called
 **!
-**! object image
+**! arg object image
 **!	image to paste
-**! int x
-**! int y
+**! arg int x
+**! arg int y
 **!	where to paste the image; default is 0,0
 **!
 **! see also: paste_mask, paste_alpha, paste_alpha_color
@@ -289,12 +289,12 @@ void image_paste(INT32 args)
 **!
 **! returns the object called
 **!
-**! object image
+**! arg object image
 **!	image to paste
-**! int alpha
+**! arg int alpha
 **!	alpha channel value
-**! int x
-**! int y
+**! arg int x
+**! arg int y
 **!	where to paste the image; default is 0,0
 **!
 **! see also: paste_mask, paste, paste_alpha_color
@@ -354,12 +354,12 @@ void image_paste_alpha(INT32 args)
 **!
 **! returns the object called
 **!
-**! object image
+**! arg object image
 **!	image to paste
-**! object mask
+**! arg object mask
 **!	mask image
-**! int x
-**! int y
+**! arg int x
+**! arg int y
 **!	where to paste the image; default is 0,0
 **!
 **! see also: paste, paste_alpha, paste_alpha_color
@@ -458,14 +458,14 @@ CHRONO("image_paste_mask end");
 **!
 **! returns the object called
 **!
-**! object mask
+**! arg object mask
 **!     mask image
-**! int r
-**! int g
-**! int b
+**! arg int r
+**! arg int g
+**! arg int b
 **!     what color to paint with; default is current
-**! int x
-**! int y
+**! arg int x
+**! arg int y
 **!     where to paste the image; default is 0,0
 **!
 **! see also: paste_mask, paste_alpha, paste_alpha_color
