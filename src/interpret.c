@@ -64,6 +64,15 @@ RCSID("$Id$");
 #define C_STACK_MARGIN 8000	/* Tested in 7.1: 3000 was enough, 2600 wasn't. */
 
 
+PMOD_EXPORT const char *Pike_check_stack_errmsg =
+  "Svalue stack overflow. "
+  "(%ld of %ld entries on stack, needed %ld more entries)\n";
+PMOD_EXPORT const char *Pike_check_mark_stack_errmsg =
+  "Mark stack overflow.\n";
+PMOD_EXPORT const char *Pike_check_c_stack_errmsg =
+  "C stack overflow.\n";
+
+
 #ifdef PIKE_DEBUG
 static char trace_buffer[2000];
 #endif
@@ -1642,6 +1651,15 @@ void slow_check_stack(void)
   }
 }
 #endif
+
+PMOD_EXPORT void custom_check_stack(size_t amount, const char *fmt, ...)
+{
+  if (low_stack_check(amount)) {
+    va_list args;
+    va_start(args, fmt);
+    va_error(fmt, args);
+  }
+}
 
 PMOD_EXPORT void cleanup_interpret(void)
 {
