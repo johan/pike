@@ -1014,6 +1014,8 @@ void check_program(struct program *p)
   unsigned INT32 checksum, e;
   int variable_positions[1024];
 
+  if(p->flags & PROGRAM_AVOID_CHECK) return;
+
   for(e=0;e<NELEM(variable_positions);e++)
     variable_positions[e]=-1;
 

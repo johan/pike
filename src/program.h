@@ -236,6 +236,10 @@ struct pike_trampoline
 /* Objects should not be destructed by f_destruct(). */
 #define PROGRAM_NO_EXPLICIT_DESTRUCT 512
 
+/* Program is in an inconsistant state */
+#define PROGRAM_AVOID_CHECK 512
+
+
 struct program
 {
   INT32 refs;
