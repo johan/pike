@@ -72,6 +72,7 @@ FILE_FUNC("_disable_callbacks",file__disable_callbacks, tFunc(tNone,tVoid));
 /* function(:void) */
 FILE_FUNC("set_blocking",file_set_blocking, tFunc(tNone,tVoid));
 
+FILE_FUNC ("is_open", file_is_open, tFunc(tNone,tInt));
 /* function(:int) */
 FILE_FUNC("query_fd",file_query_fd, tFunc(tNone,tInt));
 
