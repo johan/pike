@@ -680,9 +680,11 @@ DECLSPEC(noreturn) void generic_error_va(struct object *o,
   }
   in_error=buf;
 
+#if 0
   if (!master_program) {
     fprintf(stderr, "ERROR: %s\n", buf);
   }
+#endif
 
   ERROR_STRUCT(generic,o)->desc=make_shared_string(buf);
   f_backtrace(0);
