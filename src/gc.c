@@ -47,6 +47,8 @@ INT32 num_allocs =0;
 INT32 alloc_threshold = MIN_ALLOC_THRESHOLD;
 static int in_gc = 0;
 struct pike_queue gc_mark_queue;
+time_t last_gc;
+
 
 static double objects_alloced = 0.0;
 static double objects_freed = 0.0;
@@ -71,8 +73,6 @@ struct callback *debug_add_gc_callback(callback_func call,
 PTR_HASH_ALLOC(marker,MARKER_CHUNK_SIZE)
 
 #ifdef PIKE_DEBUG
-
-time_t last_gc;
 
 void dump_gc_info(void)
 {
@@ -612,9 +612,10 @@ void do_gc(void)
   if(num_objects < 0)
     fatal("Panic, less than zero objects!\n");
 
-  last_gc=TIME(0);
 
 #endif
+
+  last_gc=TIME(0);
 
   multiplier=pow(MULTIPLIER, (double) num_allocs / (double) alloc_threshold);
   objects_alloced*=multiplier;
