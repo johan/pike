@@ -590,9 +590,6 @@ snapshot_export: source
 
 export: full_export
 
-all_exports: full_export
-	( cd .. && $(TMP_BINDIR)/makedists )
-
 bin_export: aclocal
 	@rm -f *.burk
 	@$(RUNPIKE) $(TMP_BINDIR)/install.pike --export \
