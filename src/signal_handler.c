@@ -4526,7 +4526,7 @@ static void run_atexit_functions(struct callback *cb, void *arg,void *arg2)
   if(atexit_functions)
   {
     int i;
-    for (i = atexit_functions->size - 1; i; i--) {
+    for (i = atexit_functions->size; i--;) {
       struct svalue *s = ITEM (atexit_functions) + i;
       if (!IS_DESTRUCTED (s)) {
 	safe_apply_svalue (s, 0, 1);
