@@ -197,7 +197,7 @@ static double objects_alloced = 0.0;
 static double objects_freed = 0.0;
 static double gc_time = 0.0, non_gc_time = 0.0;
 static cpu_time_t last_gc_end_time = 0;
-#if CPU_TIME_IS_THREAD_LOCAL == NO
+#if !defined(PIKE_THREADS) || (CPU_TIME_IS_THREAD_LOCAL == NO)
 cpu_time_t auto_gc_time = 0;
 #endif
 
