@@ -414,6 +414,10 @@ class DeltatextIterator
     return finished;
   }
 
+  //! Advance @[nsteps] sections.
+  //!
+  //! @returns
+  //!   Returns the iterator object.
   this_program `+=(int nsteps)
   {
     while(nsteps--)
