@@ -429,6 +429,7 @@ PMOD_EXPORT extern clock_t thread_start_clock;
 #ifndef VERBOSE_THREADS_DEBUG
 #define THREADS_FPRINTF(L,X)
 #else
+#include <errno.h>
 #define THREADS_FPRINTF(L,X)	do { \
     if ((VERBOSE_THREADS_DEBUG + 0) >= (L)) {				\
       /* E.g. THREADS_DISALLOW is used in numerous places where the */	\
@@ -578,7 +579,7 @@ extern void dumpmem(char *desc, void *x, int size);
 
 #define SWAP_IN_CURRENT_THREAD()					      \
    THREADS_FPRINTF(1, (stderr, "SWAP_IN_CURRENT_THREAD() %s:%d ... t:%08x\n", \
-		       __FILE__, __LINE__, (unsigned int)_tmp->thread_id));   \
+		       __FILE__, __LINE__, (unsigned int)_tmp->id));	\
    DO_IF_DEBUG(								      \
    {									      \
      THREAD_T self=th_self();						      \
