@@ -69,9 +69,10 @@ static void f_query_key_length(INT32 args)
   push_int(1);
 }
 
-/*! @decl void set_key(string key)
+/*! @decl void set_encrypt_key(string key)
+ *! @decl void set_decrypt_key(string key)
  *!
- *! Set the encryption key to @[key].
+ *! Set the encryption/decryption key to @[key].
  */
 static void f_set_key(INT32 args)
 {
