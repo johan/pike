@@ -540,6 +540,7 @@ if test $cflags_is_set = no; then
   [
     # Tell the linker to generate a large toc if needed
     AC_SYS_COMPILER_FLAG(-bbigtoc,bbigtoc,LDFLAGS)
+    AC_SYS_COMPILER_FLAG([-Wl,-bbigtoc],Wlbbigtoc,LDFLAGS)
   ])
 
  else if test "x${TCC-}" = xyes ; then
