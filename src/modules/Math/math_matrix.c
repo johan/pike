@@ -239,17 +239,17 @@ extern struct program *math_lmatrix_program;
 **!	Matrix multiplication.
 */
 /*
+**! method Matrix cross(object with)
 **! method Matrix `×(object with)
 **! method Matrix ``×(object with)
-**! method Matrix cross(object with)
 **!	Matrix cross-multiplication.
 */
 
 
 /*
+**! method float dot_product(object with)
 **! method float `·(object with)
 **! method float ``·(object with)
-**! method float dot(object with)
 **!	Matrix dot product.
 */
 
