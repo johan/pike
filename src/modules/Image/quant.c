@@ -552,7 +552,6 @@ struct colortable *colortable_quant(struct image *img,int numcol)
    INT32 entries=0;
    unsigned long *next_free_rgb_node;
 
-   THREADS_ALLOW();
 #ifdef QUANT_DEBUG
    fprintf(stderr,"img_quant called\n");
 #endif
@@ -568,6 +567,7 @@ struct colortable *colortable_quant(struct image *img,int numcol)
    fprintf(stderr,"Moving colors into hashtable\n");
 #endif
 
+   THREADS_ALLOW();
    for (;;)
    {
       int strip=0;
@@ -695,7 +695,6 @@ struct colortable *colortable_from_array(struct array *arr,char *from)
    struct svalue s,s2;
    unsigned long *next_free_rgb_node;
 
-   THREADS_ALLOW();
 #ifdef QUANT_DEBUG
    fprintf(stderr,"ctfa called\n");
 #endif
@@ -729,6 +728,7 @@ struct colortable *colortable_from_array(struct array *arr,char *from)
 
    ct = colortable_allocate(arr->size);
 
+   THREADS_ALLOW();
    CHRONO("sort");
    next_free_rgb_node=ct->rgb_node+1;
    sort_tbl(tbl, 0, arr->size, 0, 0, arr->size, -1, ct, black, white,
