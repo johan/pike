@@ -123,6 +123,7 @@ char *lfun_names[] = {
   "_is_type",
   "_sprintf",
   "_equal",
+  "_m_delte",
 };
 
 /* mapping(string:type) */
@@ -171,6 +172,7 @@ static char *raw_lfun_types[] = {
   tFuncV(tStr,tVoid,tInt),	/* "_is_type", */
   tFuncV(tInt tOr(tMap(tStr,tInt),tVoid),tVoid,tStr),	/* "_sprintf", */
   tFuncV(tMix,tVoid,tInt),	/* "_equal", */
+  tFuncV(tMix,tVoid,tMix),	/* "_m_delete", */
 };
 
 struct program *first_program = 0;
