@@ -1073,7 +1073,7 @@ void f_mutex_lock(INT32 args)
   /* Needs to be cloned here, since create()
    * might use threads.
    */
-  o=fast_clone_object(mutex_key,0);
+  o=fast_clone_object(mutex_key);
 
   DO_IF_DEBUG(
     if(thread_for_id(th_self()) != Pike_interpreter.thread_id) {
