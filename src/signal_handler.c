@@ -3069,6 +3069,24 @@ void f_create_process(INT32 args)
 }
 
 #ifdef HAVE_FORK
+/*! @decl int fork()
+ *!
+ *! Fork the process in two.
+ *!
+ *! Fork splits the process in two, and for the parent it returns the
+ *! pid of the child. Refer to your Unix manual for further details.
+ *!
+ *! @note
+ *!   This function can cause endless bugs if used without proper care.
+ *!
+ *!   This function is disabled when using threads.
+ *!
+ *!   The most common use for fork is to start sub programs, which is
+ *!   better done with @[Process.create_process()].
+ *!
+ *! @seealso
+ *!   @[Process.create_process()]
+ */
 void Pike_f_fork(INT32 args)
 {
   struct object *o;
