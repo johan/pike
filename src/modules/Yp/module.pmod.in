@@ -8,6 +8,8 @@
 
 inherit @module@;
 
+#if constant(@module@.Domain)
+
 // Usual nicknames
 constant nicknames = ([
   "passwd":"passwd.byname",
@@ -93,3 +95,5 @@ class Map {
     }
   }
 };
+
+#endif
