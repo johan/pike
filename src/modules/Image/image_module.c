@@ -132,15 +132,21 @@ static void image_magic_index(INT32 args)
       push_int(0);
       SAFE_APPLY_MASTER("resolv",2);
    }
-   if (sp[-1].type==T_INT)
+   if ( sp[-1].type==T_INT )
    {
       pop_stack();
-      stack_dup();
-      push_text("_Image");
-      push_int(0);
-      SAFE_APPLY_MASTER("resolv",2);
-      stack_swap();
-      f_index(2);
+      push_constant_text( "GIF" );
+      if( sp[-1].u.string != sp[-2].u.string )
+      {
+	pop_stack();
+	stack_dup();
+	push_text("_Image");
+	push_int(0);
+	SAFE_APPLY_MASTER("resolv",2);
+	stack_swap();
+	f_index(2);
+      } else
+	pop_stack();
    }
    stack_swap();
    pop_stack();
