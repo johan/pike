@@ -2241,6 +2241,12 @@ static void file_connect(INT32 args)
 #ifdef EINPROGRESS
      && !(errno==EINPROGRESS && (THIS->open_mode & FILE_NONBLOCKING))
 #endif
+#ifdef WSAEWOULDBLOCK
+     && !(errno==WSAEWOULDBLOCK && (THIS->open_mode & FILE_NONBLOCKING))
+#endif
+#ifdef EWOULDBLOCK
+     && !(errno==EWOULDBLOCK && (THIS->open_mode & FILE_NONBLOCKING))
+#endif
     )
   {
     /* something went wrong */
