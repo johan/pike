@@ -1181,6 +1181,16 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	    my_putchar('f');
 	    break;
 
+	  case '\a':
+	    my_putchar('\\');
+	    my_putchar('a');
+	    break;
+
+	  case '\v':
+	    my_putchar('\\');
+	    my_putchar('v');
+	    break;
+
             case '"':
             case '\\':
               my_putchar('\\');
