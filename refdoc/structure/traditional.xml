@@ -62,7 +62,6 @@
       <insert-move entity="Parser.XML"/>
       <insert-move entity="Parser.HTML"/>
       <insert-move entity="Parser"/>
-      <insert-move entity="LR"/>
     </chapter>
   </file>
   <file>
