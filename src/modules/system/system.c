@@ -649,7 +649,7 @@ void f_setgroups(INT32 args)
 
   get_all_args("setgroups", args, "%a", &arr);
   if ((size = arr->size)) {
-    gids = (gid_t *)xalloc(arr->size * sizeof(gid_t));
+    gids = (gid_t *)alloca(arr->size * sizeof(gid_t));
   } else {
     gids = safeguard;
   }
@@ -659,7 +659,6 @@ void f_setgroups(INT32 args)
       /* Only reached if arr->size > 0
        * so we always have an allocated gids here.
        */
-      free(gids);
       Pike_error("setgroups(): Bad element %d in array (expected int)\n", i);
     }
     gids[i] = arr->item[i].u.integer;
@@ -669,9 +668,6 @@ void f_setgroups(INT32 args)
 
   err = setgroups(size, gids);
   if (err < 0) {
-    if (size) {
-      free(gids);
-    }
     report_error("setgroups");
   }
 }
