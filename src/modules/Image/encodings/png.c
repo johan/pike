@@ -684,7 +684,7 @@ static int _png_write_rgb(rgb_group *w1,
 	 }
 	 return 0; /* no alpha channel */
 
-      case 3: /* 1,2,4,8 bit palette index */
+      case 3: /* 1,2,4,8 bit palette index. Alpha might be in palette */
 	 if (!ct)
 	 {
 	    free(w1);
@@ -811,7 +811,7 @@ static int _png_write_rgb(rgb_group *w1,
 		  while (n)
 		  {
 		     int i;
-		     for (i=8; i>4;)
+		     for (i=8; i>=4;)
 		     {
 			i-=4;
 			if (x) 
