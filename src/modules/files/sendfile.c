@@ -204,7 +204,7 @@ static void sf_call_callback(struct pike_sendfile *this)
   if (this->callback.type != T_INT) {
     int sz = this->args->size;
 
-    push_int(this->sent);
+    push_int64(this->sent);
     push_array_items(this->args);
     this->args = NULL;
 
