@@ -130,8 +130,6 @@ struct keyword instr_names[]=
 { "global",		F_GLOBAL, I_HASARG },
 { "index",              F_INDEX },
 { "->x",                F_ARROW, I_HASARG },
-{ "object(const)->func",      F_STRICT_ARROW, I_HASARG },
-{ "object(const)->var",      F_STRICT_ARROW_VARIABLE, I_HASARG },
 { "clear string subtype", F_CLEAR_STRING_SUBTYPE },
 { "arrow string",       F_ARROW_STRING, I_HASARG },
 { "indirect",		F_INDIRECT },
