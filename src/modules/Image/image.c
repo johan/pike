@@ -1077,7 +1077,7 @@ void image_distancesq(INT32 args)
 
    if (!THIS->img) error("no image\n");
 
-   getrgb(THIS,0,args,"image->threshold()");
+   getrgb(THIS,0,args,"image->distancesq()");
 
    o=clone_object(image_program,0);
    img=(struct image*)o->storage;
@@ -1682,6 +1682,8 @@ void pike_module_init()
 		"function(array(array(int)):string)",0);
    add_function("to8bit_rgbcube",image_to8bit_rgbcube,
 		"function(int,int,int,void|string:string)",0);
+   add_function("tobitmap",image_tobitmap,
+		"function(:string)",0);
    add_function("to8bit_rgbcube_rdither",image_to8bit_rgbcube_rdither,
 		"function(int,int,int,void|string:string)",0);
 
