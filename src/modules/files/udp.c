@@ -178,6 +178,7 @@ void udp_enable_broadcast(INT32 args)
   pop_n_elems(args);
   o = 1;
   push_int(fd_setsockopt(FD, SOL_SOCKET, SO_BROADCAST, (char *)&o, sizeof(int)));
+  THIS->my_errno=errno;
 #else /* SO_BROADCAST */
   pop_n_elems(args);
   push_int(0);
@@ -216,6 +217,8 @@ void udp_read(INT32 args)
 			 (struct sockaddr *)&from, &fromlen))==-1)
 	&&(errno==EINTR));
   THREADS_DISALLOW();
+
+  THIS->my_errno=errno;
 
   if(res<0)
   {
@@ -438,6 +441,11 @@ static void udp_query_address(INT32 args)
   push_string(make_shared_string(buffer));
 }
 
+static void udp_errno(INT32 args)
+{
+   pop_n_elems(args);
+   push_int(THIS->my_errno);
+}
 
 void init_udp(void)
 {
@@ -464,6 +472,8 @@ void init_udp(void)
 
   ADD_FUNCTION("set_blocking",udp_set_blocking,tFunc(tVoid,tObj), 0 );
   ADD_FUNCTION("query_address",udp_query_address,tFunc(tNone,tStr),0);
+
+  ADD_FUNCTION("errno",udp_errno,tFunc(tNone,tInt),0);
 
   set_init_callback(zero_udp);
   set_exit_callback(exit_udp);
