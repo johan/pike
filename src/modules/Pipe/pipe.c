@@ -62,7 +62,7 @@ RCSID("$Id$");
 #endif /* SEEK_SET */
 #ifndef SEEK_CUR
 #ifdef L_INCR
-#define SEEK_SET	L_INCR
+#define SEEK_CUR	L_INCR
 #else /* !L_INCR */
 #define SEEK_CUR	1
 #endif /* L_INCR */
