@@ -48,6 +48,7 @@ string create_reference(string from, string to, string text) {
     // Get rid of trailing "".
     a = a[0..0];
   }
+  a[0] += "::";
   return "<font face='courier'><a href='" +
     "../"*max(sizeof(from/"/") - 2, 0) + map(a, cquote)*"/" + ".html'>" +
     text +
