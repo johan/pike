@@ -55,7 +55,11 @@
 #define FD_SETSIZE MAX_OPEN_FILEDESCRIPTORS
 #endif
 
+#ifdef HAVE_WINSOCK2_H
+#include <winsock2.h>
+#else
 #include <winsock.h>
+#endif
 #include <winbase.h>
 
 typedef int FD;
