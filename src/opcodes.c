@@ -5,6 +5,7 @@
 \*/
 /**/
 #include "global.h"
+#include <errno.h>
 #include <math.h>
 #include <ctype.h>
 #include "interpret.h"
@@ -852,12 +853,21 @@ static INLINE float low_parse_IEEE_float(char *b, int sz)
   if(e>=9999)
     if(f||extra_f) {
       /* NAN */
-      
-      /* Hmm...  No idea how to generate NaN in a portable way. */
-      /* Let's turn it into a 0 for now... */
+#ifdef HAVE_INFNAN
+      return (float)infnan(EDOM);
+#else
+#ifdef HAVE_NAN
+      /* C99 provides a portable way of generating NaN */
+      return (float)nan("");
+#else
       return (float)0.0;
+#endif /* HAVE_NAN */
+#endif /* HAVE_INFNAN */
     } else {
       /* +/- Infinity */
+#ifdef HAVE_INFNAN
+      return (float)infnan(s? -ERANGE:ERANGE);
+#else
 #ifdef HUGE_VAL
       return (float)(s? -HUGE_VAL:HUGE_VAL);
 #else
@@ -865,7 +875,8 @@ static INLINE float low_parse_IEEE_float(char *b, int sz)
       e = 1024;
       f = 1;
       extra_f = 0;
-#endif
+#endif /* HUGE_VAL */
+#endif /* HAVE_INFNAN */
     }
 
   r = (double)f;
