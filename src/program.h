@@ -322,7 +322,7 @@ void ins_int(INT32 i, void (*func)(char tmp));
 void ins_short(INT16 i, void (*func)(char tmp));
 void use_module(struct svalue *s);
 void unuse_modules(INT32 howmany);
-struct node_s *find_module_identifier(struct pike_string *ident);
+struct node_s *find_module_identifier(struct pike_string *ident, int see_inherit);
 struct program *parent_compilation(int level);
 struct program *id_to_program(INT32 id);
 void optimize_program(struct program *p);

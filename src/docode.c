@@ -781,7 +781,7 @@ static int do_docode2(node *n,int flags)
 
       tmp=findstring("call_function");
       if(!tmp) yyerror("No call_function efun.");
-      foo=find_module_identifier(tmp);
+      foo=find_module_identifier(tmp,0);
       if(!foo || !foo->token==F_CONSTANT)
       {
 	yyerror("No call_function efun.");

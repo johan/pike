@@ -2357,7 +2357,7 @@ low_idents: F_IDENTIFIER
       /* done, nothing to do here */
     }else if((i=isidentifier(last_identifier))>=0){
       $$=mkidentifiernode(i);
-    }else if(!($$=find_module_identifier(last_identifier))){
+    }else if(!($$=find_module_identifier(last_identifier,1))){
       if(!num_parse_error)
       {
 	if(compiler_pass==2)

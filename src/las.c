@@ -774,7 +774,7 @@ node *debug_mkefuncallnode(char *function, node *args)
   struct pike_string *name;
   node *n;
   name = findstring(function);
-  if(!name || !(n=find_module_identifier(name)))
+  if(!name || !(n=find_module_identifier(name,0)))
   {
     my_yyerror("Internally used efun undefined: %s",function);
     return mkintnode(0);

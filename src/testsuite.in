@@ -300,6 +300,22 @@ test_compile_any([[void foo(Stdio.FILE f) {}]])
 test_compile_any([[void foo(array(Stdio.FILE) f) {}]])
 test_compile_any([[void foo(array(Stdio.FILE) f) {}]])
 test_compile_any([[Stdio.File foo(array(Stdio.FILE) f) { return f[0]; }]])
+test_compile_any([[
+class a {
+  int `== (mixed x) {
+    return 0;
+  }
+}
+
+class b {
+  inherit a;
+  class c {
+    int d (string x, string y) {
+      return x==y;
+     }
+  }
+}
+]])
 test_compile([[Stdio.File foo=Stdio.FILE();]])
 
 dnl this should really work...
