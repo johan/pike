@@ -294,7 +294,7 @@ void really_free_object(struct object *o)
 
   if(o->prog)
   {
-    if(!objects_to_destruct)
+    if(!destruct_object_evaluator_callback)
     {
       destruct_object_evaluator_callback=
 	add_to_callback(&evaluator_callbacks,
