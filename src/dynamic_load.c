@@ -243,48 +243,85 @@ static void dlclose(void *module)
 
 #define dlinit()	_dyld_present()
 
+struct pike_dl_handle
+{
+  NSObjectFileImage image;
+  NSModule module;
+};
+
+static void *dlclose(void *handle_)
+{
+  struct pike_dl_handle *handle = handle_;
+  if (handle) {
+    if (handle->module)
+      NSUnLinkModule(handle->module, NSUNLINKMODULE_OPTION_NONE);
+    handle->module = NULL;
+    if (handle->image)
+      NSDestroyObjectFileImage(handle->image);
+    handle->image = NULL;
+    free(handle);
+  }
+  return NULL;
+}
+
+static char *pike_dl_error = NULL;
+
 static void *dlopen(const char *module_name, int how)
 {
+  struct pike_dl_handle *handle = malloc(sizeof(struct pike_dl_handle));
   NSObjectFileImageReturnCode code = 0;
-  NSObjectFileImage image = NULL;
 
-  /* FIXME: Should be fixed to detect if the module already is loaded. */
-  if ((code = NSCreateObjectFileImageFromFile(module_name, &image)) !=
-      NSObjectFileImageSuccess) {
-    fprintf(stderr, "NSCreateObjectFileImageFromFile(\"%s\") failed with %d\n",
-	    module_name, code);
+  pike_dl_error = NULL;
+  if (!handle) {
+    pike_dl_error = "Out of memory.";
     return NULL;
   }
-  /* FIXME: image should be freed somewhere! */
 
-  fprintf(stderr, "dlopen(\"%s\") ==> image:%p\n",
-	  module_name, image);
+  handle->image = NULL;
+  handle->module = NULL;
 
-  return NSLinkModule(image, module_name,
-		      how | NSLINKMODULE_OPTION_RETURN_ON_ERROR |
-		      NSLINKMODULE_OPTION_PRIVATE);
+  /* FIXME: Should be fixed to detect if the module already is loaded. */
+  if ((code = NSCreateObjectFileImageFromFile(module_name,
+					      &handle->image)) !=
+      NSObjectFileImageSuccess) {
+#ifdef PIKE_DEBUG
+    fprintf(stderr, "NSCreateObjectFileImageFromFile(\"%s\") failed with %d\n",
+	    module_name, code);
+#endif /* PIKE_DEBUG */
+    pike_dl_error = "NSCreateObjectFileImageFromFile() failed.";
+    dlclose(handle);
+    return NULL;
+  }
+
+  handle->module = NSLinkModule(handle->image, module_name,
+				how | NSLINKMODULE_OPTION_RETURN_ON_ERROR |
+				NSLINKMODULE_OPTION_PRIVATE);
+  if (!handle->module) {
+    dlclose(handle);
+    return NULL;
+  }
+  return handle;
 }
 
-static char *dlerror(void)
+static void *dlsym(void *handle, char *function)
 {
-  NSLinkEditErrors class = 0;
-  int error_number = 0;
-  char *file_name = NULL;
-  char *error_string = NULL;
-  NSLinkEditError(&class, &error_number, &file_name, &error_string);
-  return error_string;
-}
-
-static void *dlsym(void *module, char *function)
-{
-  NSSymbol symbol = NSLookupSymbolInModule(module, function);
+  NSSymbol symbol =
+    NSLookupSymbolInModule(((struct pike_dl_handle *)handle)->module,
+			   function);
   return symbol?NSAddressOfSymbol(symbol):NULL;
 }
 
-static void *dlclose(void *module)
+static const char *dlerror(void)
 {
-  NSUnLinkModule(module, NSUNLINKMODULE_OPTION_NONE);
-  return NULL;
+  NSLinkEditErrors class = 0;
+  int error_number = 0;
+  const char *file_name = NULL;
+  const char *error_string = NULL;
+
+  if (pike_dl_error) return pike_dl_error;
+
+  NSLinkEditError(&class, &error_number, &file_name, &error_string);
+  return error_string;
 }
 
 #endif /* USE_DYLD */
