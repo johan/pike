@@ -74,6 +74,7 @@ extern struct node_hash_table node_hash;
 #define OPT_CONTINUE        0x80   /* contains continue(s) */
 #define OPT_BREAK           0x100  /* contains break(s) */
 #define OPT_RETURN          0x200  /* contains return(s) */
+#define OPT_TYPE_NOT_FIXED  0x400  /* type-field might be wrong */
 
 #define OPT_DEFROSTED	    0x4000 /* Node may be a duplicate */
 #define OPT_NOT_SHARED	    0x8000 /* Node is not to be shared */
