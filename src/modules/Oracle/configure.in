@@ -175,6 +175,7 @@ if test x$with_oracle = xyes; then
     OLDLIBS=LIBS
     LIBS="$LIBS $ORACLE_LIBS"
     AC_CHECK_LIB(client, oopen, [
+      LDFLAGS="-Bsymbolic -znodefs $LDFLAGS"
       AC_DEFINE(HAVE_ORACLE)
     ], [
       ORACLE_LIBS=""
