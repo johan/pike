@@ -253,7 +253,7 @@ xenofarm:
 	-@cp export.stamp build/xenofarm/exportstamp.txt
 	-@uname -s -r -m > build/xenofarm/machineid.txt
 	-@uname -n >> build/xenofarm/machineid.txt
-	@cd build/xenofarm && tar -c *.txt > ../../xenofarm_result.tar
+	@cd build/xenofarm && tar cf - *.txt > ../../xenofarm_result.tar
 	@gzip -f9 xenofarm_result.tar
 
 xenofarm_low:
