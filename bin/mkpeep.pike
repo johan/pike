@@ -1,5 +1,7 @@
 #!/usr/local/bin/pike
 
+/* $Id$ */
+
 import Simulate;
 
 #define JUMPBACK 3

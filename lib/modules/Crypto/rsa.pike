@@ -1,4 +1,4 @@
-/* rsa.pike
+/* $Id$
  *
  * Follow the PKCS#1 standard for padding and encryption.
  * However, PKCS#1 style signing (involving ISO Object Identifiers) is

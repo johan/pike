@@ -1,4 +1,4 @@
-/* idea_cbc.pike
+/* $Id$
  *
  */
 

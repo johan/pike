@@ -1,4 +1,4 @@
-/* alert.pike
+/* $Id$
  *
  */
 

@@ -1,4 +1,4 @@
-/* Crypto.pike
+/* $Id$
  *
  * Cryptography module
  */

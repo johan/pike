@@ -1,5 +1,7 @@
 #!/usr/local/bin/pike
 
+/* $Id$ */
+
 #include <simulate.h>
 
 multiset except_modules  =(<>);

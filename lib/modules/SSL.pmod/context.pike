@@ -1,4 +1,4 @@
-/* context.pike
+/* $Id$
  *
  * Keeps track of global data for an SSL server,
  * such as preferred encryption algorithms and session cache.

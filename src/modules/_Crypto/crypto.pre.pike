@@ -1,3 +1,5 @@
+/* $Id$ */
+
 void create()
 {
   string module, name;

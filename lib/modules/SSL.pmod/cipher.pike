@@ -1,4 +1,4 @@
-/* cipher.pike
+/* $Id$
  *
  */
 

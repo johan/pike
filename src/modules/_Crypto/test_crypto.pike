@@ -1,6 +1,6 @@
-#! /home/nisse/work/roxen/pike/src/pike
+#! /usr/local/bin/pike
 
-/* test_crypto.pike */
+/* $Id$ */
 
 import Crypto;
 

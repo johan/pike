@@ -1,4 +1,4 @@
-/* handshake.pike
+/* $Id$
  *
  */
 

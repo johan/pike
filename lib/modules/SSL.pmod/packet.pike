@@ -1,6 +1,7 @@
-/* packet.pike
+/* $Id$
  *
- * SSL Record Layer */
+ * SSL Record Layer
+ */
 
 inherit "constants";
 

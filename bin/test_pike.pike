@@ -1,5 +1,7 @@
 #!/usr/local/bin/pike
 
+/* $Id$ */
+
 #include <simulate.h>
 
 #if !efun(_verify_internals)

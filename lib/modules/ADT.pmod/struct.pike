@@ -1,4 +1,4 @@
-/* struct.pike
+/* $Id$
  *
  * Read and write structures from strings.
  */

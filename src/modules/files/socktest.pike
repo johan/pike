@@ -1,5 +1,7 @@
 #!/usr/local/bin/pike
 
+/* $Id$ */
+
 import Stdio;
 import String;
 

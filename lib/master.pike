@@ -1,3 +1,8 @@
+/* $Id$
+ *
+ * Master-file for Pike.
+ */
+
 #define UNDEFINED (([])[0])
 #define error(X) throw( ({ (X), backtrace()[0..sizeof(backtrace())-2] }) )
 

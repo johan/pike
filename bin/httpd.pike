@@ -1,5 +1,7 @@
 #!/usr/local/bin/pike
 
+/* $Id$ */
+
 /* A very small httpd capable of fetching files only.
  * Written by Fredrik Hübinette as a demonstration of Pike
  */

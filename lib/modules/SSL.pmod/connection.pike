@@ -1,4 +1,4 @@
-/* connection.pike
+/* $Id$
  *
  * SSL packet layer
  */

@@ -1,4 +1,4 @@
-/* queue.pike
+/* $Id$
  *
  * A simple FIFO queue. 
  */

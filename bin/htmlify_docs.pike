@@ -1,5 +1,7 @@
 #!/usr/local/bin/pike
 
+/* $Id$ */
+
 // Parse BMML (Black Magic Markup Language) to HTML
 // Written by Fredrik Hubinette, dark sourceror and inventor of BMML
 
