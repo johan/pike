@@ -1449,6 +1449,7 @@ AC_MSG_CHECKING([for union wait (old BSD convention)])
 AC_CACHE_VAL(pike_cv_union_wait, [ AC_TRY_COMPILE([
 #ifdef HAVE_SYS_WAIT_H
 #include <sys/wait.h>
+#endif /* AHVE_SYS_WAIT_H */
 ], [
   union wait status;
   exit(0);
