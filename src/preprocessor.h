@@ -431,13 +431,14 @@ static ptrdiff_t calcC(struct cpp *this, WCHAR *data, ptrdiff_t len,
   }
   
   default:
-    fprintf(stderr, "Bad char %c (%d)\n", data[pos], data[pos]);
+    /* fprintf(stderr, "Bad char %c (%d)\n", data[pos], data[pos]); */
 #ifdef PIKE_DEBUG
     if(WC_ISIDCHAR(data[pos]))
       cpp_error(this, "Syntax error in #if (should not happen).");
 #endif
 
-    cpp_error(this, "Syntax error in #if.");
+    cpp_error_sprintf(this, "Syntax error in #if bad character %c (%d).",
+		      data[pos], data[pos]);
   }
   
 
@@ -944,7 +945,7 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	  if(d->args>=0)
 	  {
 	    SKIPWHITE();
-	    
+
 	    if(!GOBBLE('('))
 	    {
 	      if (s) {
