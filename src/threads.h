@@ -137,7 +137,7 @@ extern pthread_attr_t small_pattr;
 #define TH_KEY_T pthread_key_t
 #define th_key_create pthread_key_create
 #define th_setspecific pthread_setspecific
-#define th_getpecific pthread_getspecific
+#define th_getspecific pthread_getspecific
 
 
 #ifdef HAVE_PTHREAD_KILL
