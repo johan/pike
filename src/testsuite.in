@@ -9843,6 +9843,19 @@ test_any(class A {int f(){return 1;}}; class B {inherit A; nomask int f(){return
 test_any(class A {int f(){return 1;}}; class B {inherit A; local int f(){return 2;}}; return B()->f(), 2)
 test_any(class A {int f(){return 1;}}; class B {inherit A; inline int f(){return 2;}}; return B()->f(), 2)
 
+// - modifiers, misc checks
+
+test_program([[
+  class A {int i = 17;}
+  class B {
+    private inherit A;
+    class C {
+      int f() {return i;}
+    }
+  }
+  int a() {return B()->C()->f() == 17;}
+]])
+
 test_any([[
 class Fnord
 {
