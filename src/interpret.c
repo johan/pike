@@ -1678,7 +1678,7 @@ void slow_check_stack(void)
 }
 #endif
 
-PMOD_EXPORT void custom_check_stack(size_t amount, const char *fmt, ...)
+PMOD_EXPORT void custom_check_stack(ptrdiff_t amount, const char *fmt, ...)
 {
   if (low_stack_check(amount)) {
     va_list args;

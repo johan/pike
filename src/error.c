@@ -305,7 +305,7 @@ PMOD_EXPORT DECLSPEC(noreturn) void pike_throw(void) ATTRIBUTE((noreturn))
   longjmp(Pike_interpreter.recoveries->recovery,1);
 }
 
-PMOD_EXPORT void push_error(char *description)
+PMOD_EXPORT void push_error(const char *description)
 {
   push_text(description);
   f_backtrace(0);
