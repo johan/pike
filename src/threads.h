@@ -39,11 +39,9 @@
 #endif /* _UNIX_THREADS */
 
 #ifdef _MIT_POSIX_THREADS
-#ifdef HAVE_PTHREAD_H
 #define POSIX_THREADS
 #include <pthread.h>
 #undef HAVE_PTHREAD_H
-#endif
 #endif /* _MIT_POSIX_THREADS */
 
 #ifdef _SGI_SPROC_THREADS
