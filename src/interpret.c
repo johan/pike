@@ -135,6 +135,8 @@ static void gc_check_stack_callback(struct callback *foo, void *bar, void *gazon
 }
 #endif
 
+static int eval_instruction(unsigned char *pc);
+
 PMOD_EXPORT void init_interpreter(void)
 {
 #ifdef USE_MMAP_FOR_STACK
@@ -227,9 +229,6 @@ use_malloc:
   eval_instruction(NULL);
 #endif /* HAVE_COMPUTED_GOTO */
 }
-
-
-static int eval_instruction(unsigned char *pc);
 
 
 /*
