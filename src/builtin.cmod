@@ -1099,7 +1099,7 @@ PIKEFUN float random(float f)
 		   
 }
 
-/*! @decl mixed random(array|multiset xa)
+/*! @decl mixed random(array|multiset x)
  *!   Returns a random element from @[x].
  */
 
