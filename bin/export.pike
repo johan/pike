@@ -110,7 +110,7 @@ int main(int argc, string *argv)
 
     werror("Creating tag "+tag+" in the background.\n");
     cvs=Process.create_process(({"cvs","tag","-R","-F",tag}),
-			   (["cwd":"pike/src"]));
+			   (["cwd":"pike"]));
   }else{
     vpath=replace(replace(getversion()," ","-"),"-release-",".");
   }
