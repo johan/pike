@@ -1088,6 +1088,12 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
   }
 }
 
+PMOD_EXPORT int is_le(const struct svalue *a, const struct svalue *b)
+{
+  /* Can't optimize this to !is_gt (a, b) since that'd assume total order. */
+  return is_lt (a, b) || is_eq (a, b);
+}
+
 static void dsv_add_string_to_buf (struct pike_string *str)
 {
   int i, backslashes = 0;

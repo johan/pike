@@ -270,6 +270,7 @@ struct svalue
 #define FUNCTION_BUILTIN USHRT_MAX
 
 #define is_gt(a,b) is_lt(b,a)
+#define is_ge(a,b) is_le(b,a)
 
 /* SAFE_IS_ZERO is compatible with the old IS_ZERO, but you should
  * consider using UNSAFE_IS_ZERO instead, since exceptions thrown from
@@ -599,6 +600,7 @@ PMOD_EXPORT int low_short_is_equal(const union anything *a,
 		       struct processing *p);
 PMOD_EXPORT int is_equal(const struct svalue *a, const struct svalue *b);
 PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b);
+PMOD_EXPORT int is_le(const struct svalue *a, const struct svalue *b);
 PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct processing *p);
 PMOD_EXPORT void print_svalue (FILE *out, const struct svalue *s);
 PMOD_EXPORT void print_short_svalue (FILE *out, const union anything *a, TYPE_T type);

@@ -44,9 +44,9 @@ PMOD_EXPORT void f_cast(void);
 PMOD_EXPORT void f_ne(INT32 args);
 COMPARISON(f_eq,"`==", is_eq)
 COMPARISON(f_lt,"`<" , is_lt)
-COMPARISON(f_le,"`<=",!is_gt)
+COMPARISON(f_le,"`<=", is_le)
 COMPARISON(f_gt,"`>" , is_gt)
-COMPARISON(f_ge,"`>=",!is_lt)
+COMPARISON(f_ge,"`>=", is_ge)
 
 PMOD_EXPORT void f_add(INT32 args);
 PMOD_EXPORT void o_subtract(void);
