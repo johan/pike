@@ -1438,9 +1438,12 @@ struct rb_node_hdr *rb_make_tree (struct rb_node_hdr *list, size_t length)
       unsigned l = 0, h = sizeof (length) * CHAR_BIT;
       do {
 	depth = (l + h) >> 1;
-	if (1u << depth <= length) l = depth + 1; else h = depth;
+	if ((size_t) 1 << depth <= length)
+	  l = depth + 1;
+	else
+	  h = depth;
       } while (l < h);
-      if (1u << depth <= length) depth++;
+      if ((size_t) 1 << depth <= length) depth++;
     }
 
     deep_end = (length - (1 << (depth - 1))) << 1;
