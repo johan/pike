@@ -2,7 +2,7 @@
 // $Id$
 
 #pike __REAL_VERSION__
-#define TABLE_ERR(msg) throw(({ "(Table) "+msg+"\n", backtrace() }))
+#define TABLE_ERR(msg) error("(Table) "+msg+"\n")
 
 //! ADT.Table is a generic module for manipulating tables.
 //!
@@ -518,19 +518,3 @@ object SQL = class {
     return queries;
   }
 }();
-
-// Huh? Experimental help..
-string help()
-{
-  return ("This is the experimental help system for Table.pmod.\n"
-	  "Table.pmod contains the following classes and objects:\n"
-	  "\n"
-	  "  Table.table(array(array) table, array(string) fields, "
-	  "array(mapping) types)\n"
-	  "  Table.ASCII.encode\n"
-	  "  Table.ASCII.decode\n"
-	  "  Table.Separated.decode\n"
-	  "  Table.Separated.encode\n"
-	  "  Table.SQL.decode\n"
-	  "  Table.SQL.encode\n");
-}
