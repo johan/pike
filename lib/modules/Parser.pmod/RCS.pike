@@ -131,13 +131,13 @@ loop:
       switch( raw[i][0] )
       {
 	  case "head":
-	      head = raw[i][1];
+	      head = raw[i][1..1]*"";
 	      break;
 	  case "access":
 	      access = raw[i][1..];
 	      break;
 	  case "branch":
-	      branch = raw[i][1];
+	      branch = raw[i][1..1]*"";
 	      break;
 	  case "symbols":
 	      tags = parse_mapping( raw[i][1..] );
@@ -228,7 +228,7 @@ loop:
 	      break loop;
 
 	  default:
-	      if( raw[i][1] == "date" )
+	      if( sizeof(raw[i])>2 && raw[i][1] == "date" )
 	      {
 		  R = Revision();
 		  R->revision = revision = raw[i][0];
@@ -431,10 +431,21 @@ class DeltatextIterator
 	      callback(this_rev);
 
       Revision current = revisions[this_rev];
+
       if( raw[1] != "log" )  return 0;
-      if( raw[3] != "text" ) return 0;
+      if( sizeof(raw)<3 )
+      {
+        werror("Truncated CVS-file!\n");
+        return 0;
+      }
+
+
       current->log = parse_string(raw[2]);
-      current->rcs_text = parse_string(raw[4]);
+      if( sizeof(raw) > 4 && raw[3] == "text" )
+	current->rcs_text = parse_string(raw[4]);
+      else
+        current->rcs_text = "";
+
       if(this_rev == head)
       {
 	  current->lines = String.count(current->rcs_text,"\n");
@@ -476,7 +487,10 @@ class DeltatextIterator
 	      current->added = added;
 	  }
       }
-      return raw[5..];
+      if( sizeof(raw) > 4 && raw[3] == "text" )
+	return raw[5..];
+      else
+	return raw[3..];
   }
 }
 
