@@ -85,6 +85,16 @@
  *   // Code for ANY-ANY
  */
 
+constant header =
+"/* Tree transformation code.\n"
+" *\n"
+" * This file was generated from %O by\n"
+" * $Id$\n"
+" *\n"
+" * Do NOT edit!\n"
+" */\n"
+"\n";
+
 mapping(string: mixed) rules = ([]);
 
 void fail(string msg, mixed ... args)
@@ -903,7 +913,7 @@ int main(int argc, array(string) argv)
     }
   }
 
-  string result = generate_code();
+  string result = sprintf(header, fname) + generate_code();
 
   object dest = Stdio.File();
 
