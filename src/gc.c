@@ -110,8 +110,6 @@ time_t last_gc;
 int gc_trace = 0, gc_debug = 0;
 #ifdef DO_PIKE_CLEANUP
 int gc_destruct_everything = 0;
-#else
-#define gc_destruct_everything 0
 #endif
 
 struct gc_frame

@@ -57,6 +57,8 @@ extern int gc_generation;
 extern int gc_trace, gc_debug;
 #ifdef DO_PIKE_CLEANUP
 extern int gc_destruct_everything;
+#else
+#define gc_destruct_everything 0
 #endif
 extern cpu_time_t auto_gc_time;
 
