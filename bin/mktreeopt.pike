@@ -1095,6 +1095,7 @@ string generate_match(array(object(node)) rule_set, string indent)
       } else {
 	res += indent;
       }
+      res+=
       sprintf("if ((CD%sR(n) == %s)\n"
 	      "#ifdef SHARED_NODES_MK2\n" + indent +
 	      "  || (CD%sR(n) && %s &&\n" + indent +
