@@ -181,7 +181,11 @@ install: build
 	-for f in `cat $(CURDIR)/debian/toremove.txt`; do \
 	    rm -f $(CURDIR)/debian/$(PIKE)-core/usr/lib/$f ; \
 	done
-	
+
+	# an eye-candy
+	install -d -m 755 -o root -g root $(CURDIR)/debian/$(PIKE)-core/usr/share/pixmaps/$(PIKE)
+	uudecode -o $(CURDIR)/debian/$(PIKE)-core/usr/share/pixmaps/$(PIKE)/pike.png $(CURDIR)/debian/pike.png.uu
+
 	# install the docs
 	install -d -m 755 -o root -g root $(CURDIR)/debian/$(PIKE)-manual/usr/share/doc/$(PIKE)-doc/html/manual
 	install -d -m 755 -o root -g root $(CURDIR)/debian/$(PIKE)-reference/usr/share/doc/$(PIKE)-doc/html/reference
