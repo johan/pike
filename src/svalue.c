@@ -1205,7 +1205,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
       break;
 
     case T_OBJECT:
-      if(s->u.object->prog)
+      if(s->u.object->prog && (s->u.object->prog->flags & PROGRAM_FINISHED))
       {
 	int fun=FIND_LFUN(s->u.object->prog, LFUN__SPRINTF);
 	debug_malloc_touch(s->u.object->prog);
