@@ -25,7 +25,16 @@ extern void *gc_svalue_location;
 #ifdef ALWAYS_GC
 #define GC_ALLOC() do{ num_objects++; num_allocs++;  if(!gc_evaluator_callback) ADD_GC_CALLBACK(); } while(0)
 #else
-#define GC_ALLOC() do{ num_objects++; num_allocs++;  if(num_allocs == alloc_threshold && !gc_evaluator_callback) ADD_GC_CALLBACK(); } while(0)
+#define GC_ALLOC()  do{						\
+ num_objects++;							\
+ num_allocs++;							\
+ DO_IF_DEBUG(							\
+   if(Pike_in_gc >0 && Pike_in_gc<4)				\
+   fatal("Allocating new objects within gc is not allowed!\n");	\
+ )                                                              \
+ if(num_allocs == alloc_threshold && !gc_evaluator_callback)	\
+   ADD_GC_CALLBACK();						\
+ } while(0)
 #endif
 
 struct marker
