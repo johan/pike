@@ -401,4 +401,4 @@ struct DATA *PIKE_CONCAT3(make_,DATA,_unlocked)(void *ptr, size_t hval)   \
   p->BLOCK_ALLOC_NEXT=PIKE_CONCAT(DATA,_hash_table)[hval];		     \
   PIKE_CONCAT(DATA,_hash_table)[hval]=p;				     \
   return p;								     \
-}									     \
+}
