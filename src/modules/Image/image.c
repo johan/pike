@@ -4284,6 +4284,13 @@ static void image__sprintf( INT32 args )
   }
 }
 
+/*
+**! method object grey_blur(int no_pass)
+**!	Works like blur, but only operates on the r color channel.
+**!     A faster alternative to blur for grey scale images.
+**! see also: blur
+*/
+
 static void image_grey_blur( INT32 args )
 {
   /* Basically a exactly like blur, but only uses the r color channel. */
@@ -4338,7 +4345,12 @@ static void image_grey_blur( INT32 args )
   ref_push_object( THISOBJ );
 }
 
-
+/*
+**! method string blur(int no_pass)
+**!	A special case of apply_matrix that creates a blur effect.
+**!     About four times faster than the generic apply_matrix.
+**! see also: apply_matrix, grey_blur
+*/
 
 static void image_blur( INT32 args )
 /* about four times faster than the generic apply matrix for this
