@@ -614,6 +614,10 @@ void f_exit(INT32 args)
   if(sp[-args].type != T_INT)
     error("Bad argument 1 to exit.\n");
 
+#ifdef _REENTRANT
+  if(num_threads) exit(i);
+#endif
+
   SET_ONERROR(tmp,exit_on_error,"Error in handle_error in master object!");
 
   call_callback(&exit_callbacks, (void *)0);
