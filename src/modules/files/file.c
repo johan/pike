@@ -1213,6 +1213,10 @@ static void file_set_buffer(INT32 args)
 #endif
 }
 
+#ifndef AF_UNIX
+#define AF_UNIX	4711
+#endif /* AF_UNIX */
+
 
 /* No socketpair() ?
  * No AF_UNIX sockets ?
