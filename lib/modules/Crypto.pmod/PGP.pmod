@@ -3,7 +3,7 @@
 
 #pike __REAL_VERSION__
 
-#if constant(Crypto.SHA)
+#if constant(Crypto.HashState)
 
 //! Decodes a PGP public key.
 //! @returns
