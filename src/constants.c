@@ -75,7 +75,7 @@ int global_callable_flags=0;
 PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
 				   struct pike_string *name,
 				   struct pike_type *type,
-				   INT16 flags,
+				   int flags,
 				   optimize_fun optimize,
 				   docode_fun docode)
 {
@@ -104,7 +104,7 @@ PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
 PMOD_EXPORT struct callable *make_callable(c_fun fun,
 			       const char *name,
 			       const char *type,
-			       INT16 flags,
+			       int flags,
 			       optimize_fun optimize,
 			       docode_fun docode)
 {
@@ -115,7 +115,7 @@ PMOD_EXPORT struct callable *make_callable(c_fun fun,
 PMOD_EXPORT struct callable *add_efun2(const char *name,
 			    c_fun fun,
 			    const char *type,
-			    INT16 flags,
+			    int flags,
 			    optimize_fun optimize,
 			    docode_fun docode)
 {
@@ -133,7 +133,7 @@ PMOD_EXPORT struct callable *add_efun2(const char *name,
   return ret;
 }
 
-PMOD_EXPORT struct callable *add_efun(const char *name, c_fun fun, const char *type, INT16 flags)
+PMOD_EXPORT struct callable *add_efun(const char *name, c_fun fun, const char *type, int flags)
 {
   return add_efun2(name,fun,type,flags,0,0);
 }
@@ -141,7 +141,7 @@ PMOD_EXPORT struct callable *add_efun(const char *name, c_fun fun, const char *t
 PMOD_EXPORT struct callable *quick_add_efun(const char *name, ptrdiff_t name_length,
 					    c_fun fun,
 					    const char *type, ptrdiff_t type_length,
-					    INT16 flags,
+					    int flags,
 					    optimize_fun optimize,
 					    docode_fun docode)
 {

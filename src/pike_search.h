@@ -99,13 +99,13 @@ PMOD_EXPORT char *my_memmem(char *needle,
 PMOD_EXPORT void init_generic_memsearcher(struct generic_mem_searcher *s,
 			      void *needle,
 			      size_t needlelen,
-			      char needle_shift,
+			      int needle_shift,
 			      size_t estimated_haystack,
-			      char haystack_shift);
+			      int haystack_shift);
 PMOD_EXPORT void *generic_memory_search(struct generic_mem_searcher *s,
 			    void *haystack,
 			    size_t haystacklen,
-			    char haystack_shift);
+			    int haystack_shift);
 void init_pike_searching(void);
 void exit_pike_searching(void);
 /* Prototypes end here */

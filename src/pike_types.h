@@ -190,8 +190,8 @@ extern struct pike_type_location *all_pike_type_locations;
 #define exit_type_stack pop_stack_mark
 #endif
 
-void debug_push_type(unsigned INT16 type);
-void debug_push_reverse_type(unsigned INT16 type);
+void debug_push_type(unsigned int type);
+void debug_push_reverse_type(unsigned int type);
 #ifdef DEBUG_MALLOC
 #define push_type(T) do { debug_push_type(T); debug_malloc_pass(debug_peek_type_stack()); } while(0)
 #define push_reverse_type(T) do { debug_push_reverse_type(T); debug_malloc_pass(debug_peek_type_stack()); } while(0)
@@ -219,7 +219,7 @@ void debug_push_reverse_type(unsigned INT16 type);
 void debug_check_type_string(struct pike_type *s);
 void init_types(void);
 ptrdiff_t pop_stack_mark(void);
-void debug_pop_type_stack(unsigned INT16 expected);
+void debug_pop_type_stack(unsigned int expected);
 void type_stack_pop_to_mark(void);
 void type_stack_reverse(void);
 struct pike_type *debug_peek_type_stack(void);

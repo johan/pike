@@ -265,9 +265,9 @@ static void f_pike_search(INT32 args)
 PMOD_EXPORT void init_generic_memsearcher(struct generic_mem_searcher *s,
 			      void *needle,
 			      size_t needlelen,
-			      char needle_shift,
+			      int needle_shift,
 			      size_t estimated_haystack,
-			      char haystack_shift)
+			      int haystack_shift)
 {
   pike_init_memsearch(s,
 		      MKPCHARP(needle, needle_shift),
@@ -278,7 +278,7 @@ PMOD_EXPORT void init_generic_memsearcher(struct generic_mem_searcher *s,
 void *generic_memory_search(struct generic_mem_searcher *s,
 			    void *haystack,
 			    size_t haystacklen,
-			    char haystack_shift)
+			    int haystack_shift)
 {
   return ( s->mojt.vtab->funcN(s->mojt.data,
 			       MKPCHARP(haystack, haystack_shift),

@@ -68,7 +68,7 @@ struct rb_node_hdr
  */
 
 #define keep_flags(node, code) do {					\
-    INT16 kept_flags_ = (node)->flags;					\
+    int kept_flags_ = (node)->flags;					\
     {code;}								\
     (node)->flags =							\
       ((node)->flags & ~RB_FLAG_MASK) | (kept_flags_ & RB_FLAG_MASK);	\

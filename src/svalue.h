@@ -655,7 +655,7 @@ static inline void free_svalue(struct svalue *s)
 #endif
 
 #ifndef free_short_svalue
-static inline void free_short_svalue(union anything *s, INT16 t)
+static inline void free_short_svalue(union anything *s, int t)
 {
   if(t <= MAX_REF_TYPE)
   {

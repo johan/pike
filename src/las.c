@@ -886,7 +886,7 @@ static int is_automap_arg_list(node *n)
 }
 
 
-node *debug_mknode(short token, node *a, node *b)
+node *debug_mknode(int token, node *a, node *b)
 {
   node *res;
 

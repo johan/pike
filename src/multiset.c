@@ -277,7 +277,7 @@ void free_multiset_data (struct multiset_data *msd);
 BLOCK_ALLOC_FILL_PAGES (multiset, 2)
 
 /* Note: The returned block has no refs. */
-static struct multiset_data *low_alloc_multiset_data (int allocsize, INT16 flags)
+static struct multiset_data *low_alloc_multiset_data (int allocsize, int flags)
 {
   struct multiset_data *msd;
 
@@ -598,8 +598,8 @@ static struct multiset_data *resize_multiset_data (struct multiset_data *old,
   new->refs = old->refs;
   new->noval_refs = old->noval_refs;
 
-  /* No longer contains any references to account for, thus a simple
-   * free. */
+  /* All references have moved to the new block, so this one has thus
+   * become a simple block from the gc's perspective. */
   GC_FREE_SIMPLE_BLOCK (old);
   xfree (old);
 

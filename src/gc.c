@@ -446,11 +446,11 @@ void describe_location(void *real_memblock,
 	break;
       }
 
-#define FOO(NTYP,TYP,NAME) \
+#define FOO(NUMTYPE,TYPE,ARGTYPE,NAME) \
     if(location == (void *)&p->NAME) fprintf(stderr,"%*s  **In p->" #NAME "\n",indent,""); \
     if(ptr >= (char *)p->NAME  && ptr<(char*)(p->NAME+p->PIKE_CONCAT(num_,NAME))) \
       fprintf(stderr,"%*s  **In p->" #NAME "[%"PRINTPTRDIFFT"d]\n",indent,"", \
-              ((char *)ptr - (char *)(p->NAME)) / sizeof(TYP));
+	      ((char *)ptr - (char *)(p->NAME)) / sizeof(TYPE));
 #include "program_areas.h"
       
       break;
@@ -916,7 +916,7 @@ again:
 
       if(flags & DESCRIBE_MEM)
       {
-#define FOO(NUMTYPE,TYPE,NAME) \
+#define FOO(NUMTYPE,TYPE,ARGTYPE,NAME) \
       fprintf(stderr, "%*s* " #NAME " %p[%"PRINTSIZET"u]\n", \
               indent, "", p->NAME, p->PIKE_CONCAT(num_,NAME));
 #include "program_areas.h"

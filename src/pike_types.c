@@ -607,7 +607,7 @@ void debug_push_finished_type(struct pike_type *t)
   TYPE_STACK_DEBUG("push_finished_type");
 }
 
-void debug_push_type(unsigned INT16 type)
+void debug_push_type(unsigned int type)
 {
   /* fprintf(stderr, "push_type(%d)\n", type); */
 
@@ -677,7 +677,7 @@ void debug_push_type(unsigned INT16 type)
 }
 
 /* Pop one level of types. This is the inverse of push_type() */
-void debug_pop_type_stack(unsigned INT16 expected)
+void debug_pop_type_stack(unsigned int expected)
 { 
   struct pike_type *top;
   if(Pike_compiler->type_stackp<type_stack)
@@ -754,7 +754,7 @@ void debug_pop_type_stack(unsigned INT16 expected)
   TYPE_STACK_DEBUG("pop_type_stack");
 }
 
-void debug_push_reverse_type(unsigned INT16 type)
+void debug_push_reverse_type(unsigned int type)
 {
   /* fprintf(stderr, "push_reverse_type(%d)\n", type); */
 

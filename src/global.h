@@ -280,7 +280,7 @@ void *alloca();
 
 #define SIZE_T unsigned INT32
 
-#define TYPE_T unsigned INT8
+#define TYPE_T unsigned int
 #define TYPE_FIELD unsigned INT16
 
 #define B1_T char
