@@ -362,7 +362,30 @@ class store
 		       array(string) list)
   {
     werror(sprintf("store->easy_process(X, %O, %O)\n", data_item, list));
-    throw(({ "Not implemented yet.\n", backtrace() }));
+
+    if (!sizeof(data_item)) {
+      return bad("Message data item name is empty!");
+    }
+
+    data_item = lower_case(data_item);
+
+    int mode = ([ '+':1, '-':-1 ])[data_item[0]];
+
+    if (mode) {
+      data_item = data_item[1..];
+    }
+
+    if (!(< "flags", "flags.silent" >)[data_item]) {
+      return bad(sprintf("Unknown data item %O!", data_item));
+    }
+
+    int silent_mode = (data_item == "flags.silent");
+
+    if (server->store(session, message_set, list, mode, silent_mode)) {
+      send(tag, "OK");
+    } else {
+      send(tag, "NO");
+    }
   }
 }
 
