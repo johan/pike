@@ -2,7 +2,7 @@
 @make_variables@
 VPATH=@srcdir@:@srcdir@/../..:../..
 
-OBJS = nettle.o hash.o
+OBJS = nettle.o hash.o cipher.o
 
 MODULE_LDFLAGS = @LDFLAGS@ @LIBS@
 CONFIG_HEADERS=@CONFIG_HEADERS@
