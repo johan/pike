@@ -1696,7 +1696,7 @@ PMOD_EXPORT void safe_apply_low(struct object *o,int fun,int args)
   safe_apply_low2(o, fun, args, 1);
 }
 
-PMOD_EXPORT void safe_apply(struct object *o, char *fun ,INT32 args)
+PMOD_EXPORT void safe_apply(struct object *o, const char *fun ,INT32 args)
 {
 #ifdef PIKE_DEBUG
   if(!o->prog) Pike_fatal("Apply safe on destructed object.\n");
@@ -1831,7 +1831,7 @@ PMOD_EXPORT void apply_shared(struct object *o,
   apply_low(o, find_shared_string_identifier(fun, o->prog), args);
 }
 
-PMOD_EXPORT void apply(struct object *o, char *fun, int args)
+PMOD_EXPORT void apply(struct object *o, const char *fun, int args)
 {
   apply_low(o, find_identifier(fun, o->prog), args);
 }
