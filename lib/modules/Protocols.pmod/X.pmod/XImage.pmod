@@ -404,7 +404,7 @@ void ShapedWindowImage(object in, object color, object|void alpha,
   object bgpm = in->CreatePixmap(width, height, in->depth);
   PixmapImage( bgpm )->set_image( color );
   in->ChangeAttributes( (["BackPixmap":bgpm ]) );
-  if(shape)
+  if(alpha)
   {
     mapping f;
     object shape = in->CreatePixmap(alpha->xsize(),alpha->ysize(),1);
