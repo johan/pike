@@ -419,7 +419,7 @@ PIKECLASS Shuffle
     {
       push_string( make_shared_binary_string(
 		     t->leftovers.data+t->leftovers.off,
-		     t->leftovers.len ) );
+		    MINIMUM(amount,t->leftovers.len) ) );
       apply( t->file_obj, "write", 1 );
       if( Pike_sp[-1].type == PIKE_T_INT )
 	sent = Pike_sp[-1].u.integer;
