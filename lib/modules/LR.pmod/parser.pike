@@ -73,6 +73,10 @@ class state_queue {
   //. The queue/set itself.
   array(object(LR.kernel)) arr=allocate(64);
 
+  //. + members
+  //.   Hashes of the states that are members.
+  mapping(string:int) members = ([]);
+
   //. - memberp
   //.   Returns the index of the state in arr if present.
   //.   Returns -1 on failure.
@@ -80,14 +84,13 @@ class state_queue {
   //.   State to search for.
   int|object(LR.kernel) memberp(object(LR.kernel) state)
   {
-    int j;
-
-    for (j = 0; j<tail; j++) {
-      if (state->equalp(arr[j])) {
-	return(j);
-      }
+    if (!state->kernel_hash) {
+      state->make_kernel_hash();
     }
-    return(-1);
+    if (zero_type(members[state->kernel_hash])) {
+      return(-1);
+    }
+    return(members[state->kernel_hash]);
   }
 
   //. - push_if_new
@@ -104,6 +107,7 @@ class state_queue {
       if (tail == sizeof(arr)) {
 	arr += allocate(tail);
       }
+      members[state->kernel_hash] = tail;
       arr[tail++] = state;
 
       return(state);
