@@ -341,7 +341,30 @@ static char *raw_lfun_types[] = {
  *!   Left associative addition operator callback.
  *!
  *! @seealso
- *!   @[lfun::``+()], @[predef::`+()]
+ *!   @[lfun::``+()], @[lfun::`+=()], @[predef::`+()]
+ */
+
+/*! @decl this_program lfun::`+=(zero ... args)
+ *!
+ *!   Left associative addition operator callback that destructively
+ *!   assigns the result of the addition to this object. It should
+ *!   always return this object.
+ *!
+ *! @note
+ *!   This function should only be implemented if @[lfun::`+()] also
+ *!   is. It should only work as a more optimized alternative to that
+ *!   one, for the case when it's safe to change the object
+ *!   destructively.
+ *!
+ *! @note
+ *!   This function is not an lfun for the @expr{+=@} operator. It's
+ *!   only the safety to do a destructive change that decides whether
+ *!   this function or @[lfun::`+()] will be called; both the
+ *!   @expr{+@} operator and the @expr{+=@} operator can call either
+ *!   one.
+ *!
+ *! @seealso
+ *!   @[lfun::`+()], @[predef::`+()]
  */
 
 /*! @decl mixed lfun::`-(zero ... args)
