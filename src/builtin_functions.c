@@ -1673,6 +1673,7 @@ PMOD_EXPORT void f_destruct(INT32 args)
 #endif
   destruct(o);
   pop_n_elems(args);
+  destruct_objects_to_destruct();
 }
 
 PMOD_EXPORT void f_indices(INT32 args)
