@@ -33,7 +33,7 @@
 
 #ifdef HAVE_POSTGRES_FE_H
 #include <postgres_fe.h>
-#else /* !HAVE_POSTGRES_FE_H */
+#elif defined(HAVE_POSTGRES_H) /* !HAVE_POSTGRES_FE_H */
 #include <postgres.h>
 #endif /* HAVE_POSTGRES_FE_H */
 #include <libpq-fe.h>

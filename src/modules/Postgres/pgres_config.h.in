@@ -13,6 +13,8 @@
 #undef HAVE_PQSETDBLOGIN
 /* Define if you have the PGsetnonblocking function.  */
 #undef HAVE_PQSETNONBLOCKING
+/* Define if we are running PostgreSQL 7.2 or newer */
+#undef HAVE_PG72
 
 /* If the PQsetnonblocking function is available, it means we're using
  * PostgreSQL 7.x or newer. This, in turn, means that the interface is
@@ -23,6 +25,6 @@
 #endif
 
 /* End of autoconfigurable section */
-#if defined (HAVE_LIBPQ) && (defined(HAVE_POSTGRES_H) || defined(HAVE_POSTGRES_FE_H)) && defined (HAVE_LIBPQ_FE_H)
+#if defined (HAVE_LIBPQ) && (defined(HAVE_POSTGRES_H) || defined(HAVE_POSTGRES_FE_H) || defined(HAVE_PG72)) && defined (HAVE_LIBPQ_FE_H)
 #define HAVE_POSTGRES
 #endif
