@@ -824,9 +824,9 @@ void image_average(INT32 args)
    }
    THREADS_DISALLOW();
 
-   push_float(sumy.r/(float)THIS->ysize);
-   push_float(sumy.g/(float)THIS->ysize);
-   push_float(sumy.b/(float)THIS->ysize);
+   push_float(DO_NOT_WARN((FLOAT_TYPE)(sumy.r/(float)THIS->ysize)));
+   push_float(DO_NOT_WARN((FLOAT_TYPE)(sumy.g/(float)THIS->ysize)));
+   push_float(DO_NOT_WARN((FLOAT_TYPE)(sumy.b/(float)THIS->ysize)));
 
    f_aggregate(3);
 }
@@ -863,9 +863,9 @@ void image_sumf(INT32 args)
    }
    THREADS_DISALLOW();
 
-   push_float(sumy.r);
-   push_float(sumy.g);
-   push_float(sumy.b);
+   push_float(DO_NOT_WARN((FLOAT_TYPE)sumy.r));
+   push_float(DO_NOT_WARN((FLOAT_TYPE)sumy.g));
+   push_float(DO_NOT_WARN((FLOAT_TYPE)sumy.b));
 
    f_aggregate(3);
 }
