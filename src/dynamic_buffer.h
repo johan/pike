@@ -54,13 +54,13 @@ char *debug_return_buf(void);
   do { dynamic_buffer *b_=(X); debug_initialize_buf(b_); \
    debug_malloc_touch(b_->s.str); } while(0)
 #define low_free_buf(X) \
-  ((struct pike_string *)debug_malloc_touch(debug_low_free_buf(X)))
+  ((struct pike_string *)debug_malloc_pass(debug_low_free_buf(X)))
 
 #define free_buf() \
-  ((struct pike_string *)debug_malloc_touch(debug_free_buf()))
+  ((struct pike_string *)debug_malloc_pass(debug_free_buf()))
 
 #define return_buf() \
-  ((char *)debug_malloc_touch(debug_return_buf()))
+  ((char *)debug_malloc_pass(debug_return_buf()))
 
 #else
 #define initialize_buf debug_initialize_buf

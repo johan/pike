@@ -109,7 +109,7 @@ void check_all_objects(void);
 /* Prototypes end here */
 
 #ifdef DEBUG_MALLOC
-#define clone_object(X,Y) ((struct object *)debug_malloc_touch(debug_clone_object((X),(Y))))
+#define clone_object(X,Y) ((struct object *)debug_malloc_pass(debug_clone_object((X),(Y))))
 #else
 #define clone_object debug_clone_object
 #endif

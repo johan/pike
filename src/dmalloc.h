@@ -51,7 +51,7 @@ void debug_malloc_copy_names(void *p, void *p2);
 #define DO_IF_DMALLOC(X) X
 #define debug_malloc_touch(X) debug_malloc_update_location((X),DMALLOC_LOCATION())
 #define debug_malloc_pass(X) debug_malloc_update_location((X),DMALLOC_LOCATION())
-#define xalloc(X) ((char *)debug_malloc_touch(debug_xalloc(X)))
+#define xalloc(X) ((char *)debug_malloc_pass(debug_xalloc(X)))
 void debug_malloc_dump_references(void *x);
 #define dmalloc_touch(TYPE,X) ((TYPE)debug_malloc_update_location((X),DMALLOC_LOCATION()))
 #define dmalloc_touch_svalue(X) do { struct svalue *_tmp = (X); if ((X)->type <= MAX_REF_TYPE) { debug_malloc_touch(_tmp->u.refs); } } while(0)
