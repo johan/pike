@@ -4,6 +4,15 @@
 
 #define PIKE_OPCODE_T	unsigned INT32
 
+#define PIKE_OPCODE_ALIGN	4
+
+#define LOW_GET_JUMP()	(PROG_COUNTER[0])
+#define LOW_SKIPJUMP()	(SET_PROG_COUNTER(PROG_COUNTER + 1))
+#define DEF_PROG_COUNTER	register unsigned INT32 *reg_pc __asm__ ("%i7")
+#define PROG_COUNTER		(reg_pc + 2)
+#define SET_PROG_COUNTER(X)	(reg_pc = ((unsigned INT32 *)(X))-2)
+
+
 #define SPARC_REG_O0	8
 #define SPARC_REG_O1	9
 #define SPARC_REG_O2	10
