@@ -803,7 +803,8 @@ void low_rb_link_at_next (struct rb_node_hdr **root, struct rbstack_ptr rbstack,
   *root = rebalance_after_add (new, rbstack);
 }
 
-#define DO_SIMPLE_UNLINK(UNLINK, PARENT, NODE) do {			\
+#define DO_SIMPLE_UNLINK(UNLINK, PARENT, NODE)				\
+  do {									\
     PARENT = RBSTACK_PEEK (rbstack);					\
 									\
     if (UNLINK->flags & RB_THREAD_PREV) {				\
@@ -815,7 +816,7 @@ void low_rb_link_at_next (struct rb_node_hdr **root, struct rbstack_ptr rbstack,
 	    (PARENT->flags |= RB_THREAD_NEXT, NODE = UNLINK->next));	\
 	else								\
 	  NODE = NULL;							\
-	goto simple_unlink_done;					\
+	break; /* We're done. */					\
       }									\
 									\
       else {			/* prev is null. */			\
@@ -843,7 +844,6 @@ void low_rb_link_at_next (struct rb_node_hdr **root, struct rbstack_ptr rbstack,
     }									\
 									\
     if (PARENT) SET_PTR_TO_CHILD (PARENT, UNLINK, NODE, NODE);		\
-  simple_unlink_done:;							\
   } while (0)
 
 #define ADJUST_STACK_TO_NEXT(RBSTACK, NEXT) do {			\
