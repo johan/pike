@@ -4480,6 +4480,16 @@ cond([[ sizeof( cpp("__AUTO_BIGNUM__")/"__AUTO_BIGNUM__" ) == 1 ]],
 	    array a=({k+17,k+16,k+13,k+14,k+12,k,k+9});
             return sort(a)[0]==k && sort(a)[-1]==k+17]],1)
 
+  test_do([[
+     // This is a memleak test
+     rm("testsuite_test.pike");
+     Stdio.write_file("testsuite_test.pike",
+	"constant Q=10000000000000000;\n"
+	"int main() {}\n");
+     Process.system(RUNPIKE +" testsuite_test.pike");
+     rm("testsuite_test.pike");
+  ]])
+
 // test the corresponding integer operations first
   test_any([[int k=100; int j=k+1;
 	    array a=({k+17,k+16,k+13,k+14,k+12,k,k+9});
