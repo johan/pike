@@ -596,6 +596,11 @@ void really_free_object(struct object *o)
 
   if(o->prog)
   {
+    extern int Pike_in_gc;
+    o->next=objects_to_destruct;
+    o->prev=0;
+    objects_to_destruct=o;
+    if (Pike_in_gc) return;	/* Done last in gc(). */
     if(!destruct_object_evaluator_callback)
     {
       destruct_object_evaluator_callback=
@@ -603,9 +608,6 @@ void really_free_object(struct object *o)
 			(callback_func)destruct_objects_to_destruct,
 			0,0);
     }
-    o->next=objects_to_destruct;
-    o->prev=0;
-    objects_to_destruct=o;
   } else {
     if(o->parent)
     {
