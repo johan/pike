@@ -1798,8 +1798,8 @@ string|int(0..0) expand_symlinks(string path)
       else
 	unwound = basename(path);
       path = dirname(path);
-      if(path=="")
-	return root + unwound;
+      if(path=="/")
+	return unwound;
     }
   }
   return 0;
