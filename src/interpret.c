@@ -222,6 +222,10 @@ use_malloc:
   Pike_interpreter.accounted_time =0;
 #endif
 #endif
+#ifdef HAVE_COMPUTED_GOTO
+  /* Initialize the fcode_to_opcode table. */
+  eval_instruction(NULL);
+#endif /* HAVE_COMPUTED_GOTO */
 }
 
 
