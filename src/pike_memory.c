@@ -575,7 +575,7 @@ char *debug_xalloc(long size)
   if(!size) return 0;
 
   ret=(char *)malloc(size);
-  if(ret) return ret;
+  if(ret || !size) return ret;
 
   error("Out of memory.\n");
   return 0;
