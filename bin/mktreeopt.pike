@@ -1031,7 +1031,7 @@ string generate_match(array(object(node)) rule_set, string indent)
 		"      ((CA%sR(n)->master?CA%sR(n)->master:CA%sR(n))==\n" +
 		indent + "       (%s->master?%s->master:%s)))\n"
 		"#endif /* SHARED_NODES_MK2 */\n" +
-		indent + ") {\n",
+		indent + "  ) {\n",
 		tpos, expr,
 		tpos, expr,
 		tpos, tpos, tpos,
@@ -1095,7 +1095,17 @@ string generate_match(array(object(node)) rule_set, string indent)
       } else {
 	res += indent;
       }
-      res += sprintf("if (CD%sR(n) == %s) {\n", tpos, expr);
+      sprintf("if ((CD%sR(n) == %s)\n"
+	      "#ifdef SHARED_NODES_MK2\n" + indent +
+	      "  || (CD%sR(n) && %s &&\n" + indent +
+	      "      ((CD%sR(n)->master?CD%sR(n)->master:CD%sR(n))==\n" +
+	      indent + "       (%s->master?%s->master:%s)))\n"
+	      "#endif /* SHARED_NODES_MK2 */\n" +
+	      indent + "  ) {\n",
+	      tpos, expr,
+	      tpos, expr,
+	      tpos, tpos, tpos,
+	      expr, expr, expr);
       res += generate_match(exacts[expr], indent + "  ");
       res += indent + "}";
     }
