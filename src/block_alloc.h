@@ -129,7 +129,7 @@ void PIKE_CONCAT3(new_,DATA,_context)(void)				\
   ctx->free_blocks = PIKE_CONCAT(DATA,_free_blocks);			\
   ctx->num_empty_blocks = PIKE_CONCAT3(num_empty_,DATA,_blocks);	\
   PIKE_CONCAT(DATA,_blocks) = 0;					\
-  PIKE_CONCAT(DATA,_free_blocks) = (void *)-1;				\
+  PIKE_CONCAT(DATA,_free_blocks) = 0;					\
   PIKE_CONCAT3(num_empty_,DATA,_blocks) = 0;				\
 }									\
 									\
