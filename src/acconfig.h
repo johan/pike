@@ -256,6 +256,9 @@
 /* What byteorder does your machie use most machines use 4321, PC use 1234 */
 #define PIKE_BYTEORDER 0
 
+/* What alignment do 32-bit integers need */
+#define PIKE_INT32_ALIGNMENT 4
+
 /* Number of possible filedesriptors */
 #define MAX_OPEN_FILEDESCRIPTORS 1024
 
