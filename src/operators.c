@@ -1294,7 +1294,7 @@ void o_xor(void)
       SIMPLE_BAD_ARG_ERROR("`^", 2, "type");
     }
     type_stack_mark();
-    push_type_int(sp[-1].u.program->id);
+    push_type_int(p->id);
     push_type(0);
     push_type(T_OBJECT);
     pop_stack();
@@ -1310,7 +1310,7 @@ void o_xor(void)
       SIMPLE_BAD_ARG_ERROR("`^", 1, "type");
     }
     type_stack_mark();
-    push_type_int(sp[-1].u.program->id);
+    push_type_int(p->id);
     push_type(0);
     push_type(T_OBJECT);
     pop_stack();
