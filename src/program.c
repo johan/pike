@@ -3885,13 +3885,6 @@ INT32 define_function(struct pike_string *name,
 #endif
 
 	Pike_compiler->new_program->identifier_references[z]=ref;
-
-	/* Return the last of the overloaded references. This since
-	 * isidentifier searches backward now and will find the last
-	 * of the references we overload here, and thus would cause
-	 * this function to return another reference when it's called
-	 * a second time. /mast */
-	i = z;
       }
 
 #ifdef PIKE_DEBUG
