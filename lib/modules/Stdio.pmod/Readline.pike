@@ -1562,3 +1562,5 @@ void create(object|void infd, object|string|void interm,
   DefaultEditKeys(this_object());
 }
 
+// compatibility
+void destroy() {}
