@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 #include "pike_macros.h"
 #include "time_stuff.h"
@@ -36,8 +37,8 @@ void GETTIMEOFDAY(struct timeval *t)
   t2=tmp.dwHighDateTime * pow(2.0,32.0) + (double)tmp.dwLowDateTime;
   t2/=10000000.0;
   t2-=11644473600.0;
-  t->tv_sec=floor(t2);
-  t->tv_usec=(t2 - t->tv_sec)*1000000.0;
+  t->tv_sec = DO_NOT_WARN(floor(t2));
+  t->tv_usec = DO_NOT_WARN((t2 - t->tv_sec)*1000000.0);
 }
 
 #else
