@@ -26,7 +26,6 @@
 //!    o->async_request("pike.ida.liu.se", 80, "HEAD / HTTP/1.0");
 //!    return -1;
 //! }
-//! @endexample
 
 /****** variables **************************************************/
 
