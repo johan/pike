@@ -153,7 +153,7 @@ union idptr
 #define IDENTIFIER_C_FUNCTION 2
 #define IDENTIFIER_FUNCTION 3
 #define IDENTIFIER_CONSTANT 4
-#define IDENTIFIER_VARARGS 8
+#define IDENTIFIER_VARARGS 8	/* Used for functions only. */
 #define IDENTIFIER_PROTOTYPED 16
 #define IDENTIFIER_SCOPED 32   /* This is used for local functions only */
 #define IDENTIFIER_SCOPE_USED 64 /* contains scoped local functions */
@@ -169,7 +169,7 @@ union idptr
 
 /*
  * Every constant, class, function and variable
- * get's exactly one of these.
+ * gets exactly one of these.
  */
 struct identifier
 {
@@ -455,6 +455,10 @@ void unuse_modules(INT32 howmany);
 struct node_s *find_module_identifier(struct pike_string *ident,
 				      int see_inherit);
 struct node_s *resolve_identifier(struct pike_string *ident);
+struct node_s *program_magic_identifier (struct program_state *state,
+					 int state_depth, int inherit_num,
+					 struct pike_string *ident,
+					 int colon_colon_ref);
 struct program *parent_compilation(int level);
 struct program *id_to_program(INT32 id);
 void optimize_program(struct program *p);
