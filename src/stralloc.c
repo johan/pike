@@ -602,6 +602,11 @@ struct pike_string * debug_make_shared_pcharp(const PCHARP str)
   return debug_make_shared_binary_pcharp(str, pcharp_strlen(str));
 }
 
+struct pike_string * debug_make_shared_binary_string0(const p_wchar0 *str,int len)
+{
+  return debug_make_shared_binary_string((char *)str, len);
+}
+
 struct pike_string * debug_make_shared_binary_string1(const p_wchar1 *str,int len)
 {
   struct pike_string *s;
@@ -668,6 +673,11 @@ struct pike_string * debug_make_shared_binary_string2(const p_wchar2 *str,int le
 struct pike_string *debug_make_shared_string(const char *str)
 {
   return make_shared_binary_string(str, strlen(str));
+}
+
+struct pike_string *debug_make_shared_string0(const p_wchar0 *str)
+{
+  return debug_make_shared_string((char *)str);
 }
 
 struct pike_string *debug_make_shared_string1(const p_wchar1 *str)
