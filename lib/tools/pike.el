@@ -301,12 +301,14 @@ The name is assumed to begin with a capital letter.")
 	  '("\\<private\\>"   0 font-lock-preprocessor-face)
 	  '("\\<nomask\\>"    0 font-lock-preprocessor-face)
 
-	  '("^.*\\(//\\)\\([.!|]\\)\\([^\n\r]*\\)"
-	    (1 pike-font-lock-refdoc-init2-face prepend)
-	    (2 pike-font-lock-refdoc-init-face prepend)
-	    (3 pike-font-lock-refdoc-face prepend)
+	  `(,(concat "^\\([^/]\\|/[^/]\\)*"
+		     "\\(//[^.!|][^\n\r]*\\|\\(//\\)\\([.!|]\\)\\([^\n\r]*\\)\\)")
+	    (3 pike-font-lock-refdoc-init2-face prepend t)
+	    (4 pike-font-lock-refdoc-init-face prepend t)
+	    (5 pike-font-lock-refdoc-face prepend t)
 	    ("\\(@\\(\\w+{?\\|\\[[^\]]*\\]\\|[@}]\\|$\\)\\)\\|\\(@.\\)"
-	     (goto-char (match-end 2)) nil
+	     (if (match-end 4) (goto-char (match-end 4)) (end-of-line))
+	     nil
 	     (1 font-lock-reference-face t t)
 	     (1 pike-font-lock-refdoc-keyword-face prepend t)
 	     (3 pike-font-lock-refdoc-error-face t t))
@@ -316,7 +318,8 @@ The name is assumed to begin with a capital letter.")
 		     (put-text-property (match-end 0) limit 'face nil)
 		     (goto-char limit)
 		     t)))
-	     (goto-char (match-end 2)) nil)
+	     (if (match-end 4) (goto-char (match-end 4)) (end-of-line))
+	     nil)
 	    )
 	  )
 	 pike-font-lock-keywords-2
