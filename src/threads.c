@@ -187,7 +187,7 @@ void f_mutex_lock(INT32 args)
    * might use threads.
    */
   o=clone_object(mutex_key,0);
-  if(!args && IS_ZERO(sp-args))
+  if(!args || IS_ZERO(sp-args))
   {
     if(m->key && OB2KEY(m->key)->owner == thread_id)
     {
