@@ -333,7 +333,7 @@ class InputController
     return set_enabled(0);
   }
 
-  void run_blocking()
+  int run_blocking()
   {
     disable();
     string data = prefix;
@@ -343,12 +343,12 @@ class InputController
     {
       prefix = process_input(data);
       if (!enabled)
-	return;
+	return 0;
       data = prefix+infd->read(1024, 1);
       prefix = "";
       if(!data || !sizeof(data)) {
 	disable();
-	return;
+	return -1;
       }
     }
   }
@@ -956,9 +956,9 @@ string read()
   newline_func = read_newline;
   readtext = "";
   output_controller->enable();
-  input_controller->run_blocking();
+  int res = input_controller->run_blocking();
   set_nonblocking(oldnl);
-  return readtext;
+  return (res>=0 || sizeof(readtext)) && readtext;
 }
 
 void enable_history(object(History)|int hist)
