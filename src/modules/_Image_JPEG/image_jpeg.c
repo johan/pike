@@ -552,8 +552,6 @@ static void init_src(struct pike_string *raw_img,
 		     struct my_source_mgr *srcmgr,
                      struct my_decompress_struct *mds)
 {
-   int n=0,m;
-
    mds->first_marker=NULL;
 
    jpeg_std_error(errmgr);
