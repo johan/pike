@@ -1890,7 +1890,10 @@ static void native_dispatch(struct native_method_context *ctx,
 					      thread_storage_offset));
     num_threads++;
     thread_table_insert(Pike_interpreter.thread_state);
+
     do_native_dispatch(ctx, env, cls, args, rc);
+
+    cleanup_interpret();	/* Must be done before EXIT_THREAD_STATE */
     Pike_interpreter.thread_state->status=THREAD_EXITED;
     co_signal(&Pike_interpreter.thread_state->status_change);
     thread_table_delete(Pike_interpreter.thread_state);
@@ -1898,7 +1901,6 @@ static void native_dispatch(struct native_method_context *ctx,
     Pike_interpreter.thread_state=NULL;
     free_object(thread_obj);
     thread_obj = NULL;
-    cleanup_interpret();
     num_threads--;
     mt_unlock_interpreter();
   }
