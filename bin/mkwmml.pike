@@ -524,6 +524,7 @@ void document(string enttype,
       {
 	 werror("%O\n",m);
 	 sscanf(m->decl,"%s %s",string type,string name);
+	 if (!name) name=m->decl,type="mixed";
 	 sscanf(name,"%s=%s",name,string value);
 	 document("variable",m,prefix+name,prefix+name+".",f);
       }
