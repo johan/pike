@@ -528,8 +528,8 @@ static void gz_crc32(INT32 args)
    push_int((INT32)crc);
 }
 
-/*! @class gzip_file
- *! Read-support for GZip files
+/*! @class _file
+ *! Low-level implementation of read/write support for GZip files
  */
 
 /*! @decl int open(string|int file, void|string mode)
