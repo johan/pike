@@ -784,6 +784,8 @@ void f_setuid(INT32 args)
  
   if(id == -1) {
     struct passwd *pw = getpwnam("nobody");
+    if(pw==0)
+      Pike_error("No \"nobody\" user on this system.\n");
     id = pw->pw_uid;
   } else {
     id = sp[-args].u.integer;
