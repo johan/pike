@@ -586,8 +586,16 @@ PMOD_EXPORT int count_pike_threads(void)
 
 static void check_threads(struct callback *cb, void *arg, void * arg2)
 {
+#ifdef HAVE_GETHRTIME
+  static long long last_;
+  if( gethrtime()-last_ < 50000000 ) /* 0.05s slice */
+    return;
+  last_ = gethrtime();
+#else
   static int div_;
-  if(div_++ & 255) return;
+  if(div_++ & 255)
+    return;
+#endif
 
 #ifdef DEBUG
   if(thread_for_id(th_self()) != Pike_interpreter.thread_id)
@@ -599,6 +607,9 @@ static void check_threads(struct callback *cb, void *arg, void * arg2)
 
   THREADS_ALLOW();
   /* Allow other threads to run */
+#ifdef HAVE_THR_YIELD
+  thr_yield();
+#endif
   THREADS_DISALLOW();
 
 #ifdef DEBUG

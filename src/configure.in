@@ -2588,6 +2588,7 @@ AC_CHECK_FUNCS( \
  setpriority \
  usleep \
  nanosleep \
+ thr_yield \
 )
 
 AC_MSG_CHECKING(for the type of the last argument to accept)
