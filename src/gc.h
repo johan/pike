@@ -166,7 +166,7 @@ struct marker
    * references. Set to 0 during mark pass if a nonweak reference is
    * found. Decreased during zap weak pass as gc_do_weak_free() is
    * called. */
-#if defined(DO_PIKE_CLEANUP) || defined(PIKE_DEBUG)
+#ifdef PIKE_DEBUG
   INT32 xrefs;
   /* Known external references. Increased by gc_mark_external(). */
   INT32 saved_refs;
@@ -237,8 +237,6 @@ struct marker
 /* The thing has been visited by gc_checked_as_weak(). */
 #define GC_WATCHED		0x01000000
 /* The thing has been set under watch by gc_watch(). */
-#endif
-#ifdef DO_PIKE_CLEANUP
 #define GC_CLEANUP_FREED	0x02000000
 /* The thing was freed by the cleanup code under the assumption that
  * references were lost. */
