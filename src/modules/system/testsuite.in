@@ -145,3 +145,8 @@ cond([[ all_constants()->getpwuid && all_constants()->getpwnam ]], [[
 // closelog		HAVE_SYSLOG
 // openlog		HAVE_SYSLOG
 // syslog		HAVE_SYSLOG
+
+cond([[ system->NetSessionEnum ]],
+[[
+  test_true( system.NetSessionEnum(0,0,0,0) )
+]])
