@@ -1396,7 +1396,7 @@ struct program *id_to_program(INT32 id)
       module = "Parser._parser";
       break;
     case PROG_GMP_MPZ_ID:
-      module = "Gmp";
+      module = "Gmp.mpz";
       break;
     case PROG_MODULE_MIME_ID:
       module = "___MIME";
