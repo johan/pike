@@ -899,6 +899,9 @@ void count_memory_in_programs(INT32*,INT32*);
   quick_map_variable(NAME, CONSTANT_STRLEN(NAME), OFFSET, \
                      TYPE, CONSTANT_STRLEN(TYPE), RTTYPE, FLAGS)
 
+#define MAP_VARIABLE(NAME, TYPE, FLAGS, OFFSET, RTYPE) \
+  PIKE_MAP_VARIABLE(NAME, OFFSET, TYPE, RTYPE, FLAGS)
+
 #define ADD_FUNCTION_DTYPE(NAME,FUN,DTYPE,FLAGS) do {		\
   DTYPE_START;							\
   {DTYPE}							\
