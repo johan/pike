@@ -4765,7 +4765,7 @@ test_any([[
   int ret;
   foreach( "foobar" ; int a;) ret+=a;
   return ret;
-]],21)
+]],15)
 
 test_any([[
   int ret;
