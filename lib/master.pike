@@ -539,7 +539,7 @@ void _main(string *argv, string *env)
       if(master_file_stat("/usr/local/bin/hilfe"))
 	argv[0]="/usr/local/bin/hilfe";
       else if(master_file_stat("../bin/hilfe"))
-	argv[0]="/usr/local/bin/hilfe";
+	argv[0]="../bin/hilfe";
       else
       {
 	werror("Couldn't find hilfe.\n");
