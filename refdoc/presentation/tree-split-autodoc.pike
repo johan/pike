@@ -20,6 +20,25 @@ mapping profiling = ([]);
 #define ENDPROFILE(X) profiling[(X)] += gethrtime()-profilet;
 
 
+string cquote(string n)
+{
+  string ret="";
+  n = replace(n, ([ "&gt;":">", "&lt;":"<", "&amp;":"&" ]));
+  while(sscanf((string)n,"%[_a-zA-Z0-9]%c%s",string safe, int c, n)==3) {
+    switch(c) {
+    default:  ret += sprintf("%s_%02X",safe,c); break;
+    case '+': ret += sprintf("%s_add",safe); break;
+    case '`': ret += sprintf("%s_backtick",safe);  break;
+    case '=': ret += sprintf("%s_eq",safe); break;
+    }
+  }
+  ret += n;
+  return ret;
+}
+
+multiset missing = (< "foreach", "catch", "throw", "sscanf", "gauge", "typeof" >);
+
+
 class Node
 {
   string type;
@@ -199,25 +218,6 @@ class Node
       return s;
   }
 
-  string cquote(string n)
-  {
-    string ret="";
-    n = replace(n, ([ "&gt;":">", "&lt;":"<", "&amp;":"&" ]));
-    while(sscanf((string)n,"%[a-zA-Z0-9]%c%s",string safe, int c, n)==3)
-    {
-      switch(c)
-      {
-        default:  ret+=sprintf("%s_%02X",safe,c); break;
-        case '+': ret+=sprintf("%s_add",safe); break;
-        case '`': ret+=sprintf("%s_backtick",safe);  break;
-        case '_': ret+=sprintf("%s_",safe); break;
-        case '=': ret+=sprintf("%s_eq",safe); break;
-      }
-    }
-    ret+=n;
-    return ret;
-  }
-
   string _make_filename_low;
   string make_filename_low()
   {
@@ -262,8 +262,9 @@ class Node
     if(vars->resolved && consts[vars->resolved])
       return "<font face='courier'>" + _reference + "</font>";
 
-    werror("Missed reference %O (%O) in %s\n", _reference, vars->resolved,
-	   make_class_path());
+    if(!missing[vars->resolved] && !has_prefix(_reference, "lfun::") && make_class_path()!="GL")
+      werror("Missed reference %O (%O) in %s\n", _reference, vars->resolved,
+	     make_class_path());
     unresolved++;
     return "<font face='courier'>" + _reference + "</font>";
   }
