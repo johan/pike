@@ -3918,6 +3918,24 @@ ifefun(gc,
     return sizeof (m);
   ]], 1)
 
+  test_do([[
+    mapping m = set_weak_flag (([]), Pike.WEAK_INDICES);
+    object o = class {object o;}();
+    m[o] = ({1});
+    o->o = o;
+    o = 0;
+    gc();
+  ]])
+
+  test_do([[
+    mapping m = set_weak_flag (([]), Pike.WEAK_INDICES);
+    object o = class {object o;}();
+    m[o] = ({1});
+    array a = set_weak_flag (({class (object o) {} (o)}), 1);
+    o = 0;
+    gc();
+  ]])
+
   test_any([[
     return class {
       mapping x;
