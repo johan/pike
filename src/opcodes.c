@@ -498,7 +498,7 @@ static int read_set(unsigned char *match,int cnt,char *set,int match_len)
 extern double LDEXP(double x, int exp); /* defined in encode.c */
 #endif
 
-INLINE static float low_parse_IEEE_float(char *b, int sz)
+static INLINE float low_parse_IEEE_float(char *b, int sz)
 {
   unsigned INT32 f, extra_f;
   int s, e;

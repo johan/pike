@@ -70,7 +70,7 @@ void f_aggregate(INT32 args)
 {
   struct array *a;
 #ifdef PIKE_DEBUG
-  if(args < 0) fatal("Negative args to f_aggregate()\n");
+  if(args < 0) fatal("Negative args to f_aggregate() (%d)\n",args);
 #endif
 
   a=aggregate_array(args);

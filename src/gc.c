@@ -390,6 +390,22 @@ void describe(void *x)
   describe_something(x, attempt_to_identify(x),1);
 }
 
+void debug_describe_svalue(struct svalue *s)
+{
+  fprintf(stderr,"Svalue at %p is:\n",s);
+  switch(s->type)
+  {
+    case T_INT:
+      fprintf(stderr,"    %ld\n",(long)s->u.integer);
+      break;
+
+    case T_FLOAT:
+      fprintf(stderr,"    %f\n",s->u.float_number);
+      break;
+  }
+  describe_something(s->u.refs,s->type,1);
+}
+
 #endif
 
 INT32 gc_check(void *a)
