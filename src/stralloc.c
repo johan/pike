@@ -2239,7 +2239,7 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 	  }
 	  mask = (1<<delta)-1;
 
-	  for (shift = 0; val >> shift; shift += delta)
+	  for (shift = delta; val >> shift; shift += delta)
 	    ;
 	  shift -= delta;
 	  while(shift >= 0) {
