@@ -158,7 +158,7 @@ array(mapping) languagefiles(string searchpath, void|string skiplang) {
   // Based on the searchpath, returns list of files - skiplang-file
   string pattern = replace(searchpath, "%%", "%");
   string dirbase = (pattern/"%L")[0];
-  if(dirbase[-1]!='/') {
+  if(dirbase!="" && dirbase[-1]!='/') {
     array split = dirbase/"/";
     dirbase = split[..sizeof(split)-2]*"/"+"/";
   }
