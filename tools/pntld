@@ -46,6 +46,8 @@ class Symbol
   string demangle()
     {
       string ret=name;
+      if(name[..6]=="__real@")
+	return name;
       if(sscanf(ret,"%s@%s",ret,string tmp))
 	if(search(tmp,"@")!=-1)
 	  return name;
