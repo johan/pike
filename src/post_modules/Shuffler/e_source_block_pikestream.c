@@ -28,7 +28,7 @@ struct pf_source
   struct source s;
 
   struct object *obj;
-  ptrdiff_t len, skip;
+  INT64 len, skip;
 };
 
 
@@ -41,58 +41,38 @@ static struct data get_data( struct source *_s, int len )
   res.off  = 0;
   res.do_free = 0;
 
-  while( s->len && !s->s.eof )
-  {
-    int len = 65536;
+  if( s->len>0 && len > s->len ) {
+    len = s->len;
+    s->s.eof = 1;
+  }
+    
+  do {
     struct pike_string *st;
 
-    if( len > (ptrdiff_t)s->len )
-    {
-      len = (ptrdiff_t)s->len;
-      s->s.eof = 1;
-    }
-    
     push_int( len );
     apply( s->obj, "read", 1 );
 
-    if( Pike_sp[-1].type != PIKE_T_STRING )
-    {
-      s->s.eof = 1;
-      return res;
+    if(Pike_sp[-1].type != PIKE_T_STRING
+     || !(st = Pike_sp[-1].u.string)->len) {
+      pop_stack();
+      break;
     }
-    else
-      st = Pike_sp[-1].u.string;
 
     if( st->len < s->skip )
-    {
       s->skip -= st->len;
-      pop_stack();
-    }
-    else if( s->skip )
-    {
-      len -= s->skip;
-      res.data = malloc( len );
-      res.len  = len;
+    else {
+      res.data = malloc(st->len -= s->skip);
+      memcpy(res.data, st->str+s->skip, res.len = st->len);
       res.do_free = 1;
-      memcpy( res.data, st->str+s->skip, len );
       s->skip = 0;
-      pop_stack();
-      return res;
     }
-    else
-    {
-      res.data = malloc( len );
-      res.len  = len;
-      res.do_free = 1;
-      memcpy( res.data, st->str, len );
-      s->skip = 0;
-      pop_stack();
-      return res;
-    }
+    pop_stack();
   }
-  if( res.len < len )
+  while(s->skip || !res.len);
+  if(res.len < len)
     s->s.eof = 1;
-  s->len -= res.len;
+  if(s->len > 0)
+    s->len -= res.len;
   return res;
 }
 
