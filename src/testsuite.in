@@ -1846,6 +1846,13 @@ ifefun(gc,
   }]], 1)
 
   test_do([[{
+    object o = class {}();
+    array a = ({o});
+    destruct (o);
+    gc();
+  }]]);
+
+  test_do([[{
     int got_error = 0;
     array(string) destruct_order;
     add_constant ("destructing", lambda (string id) {destruct_order += ({id});});
