@@ -2442,11 +2442,10 @@ typeof: TOK_TYPEOF '(' expr0 ')'
 
     /* FIXME: Why build the node at all? */
 
-    tmp=mknode(F_COMMA_EXPR,$3,0);
+    tmp=mknode(F_COMMA_EXPR, $3, 0);
 
-    s=describe_type( tmp && CAR(tmp) && CAR(tmp)->type ? CAR(tmp)->type : mixed_type_string);
-    $$=mkstrnode(s);
-    free_string(s);
+    s=(tmp && CAR(tmp) && CAR(tmp)->type ? CAR(tmp)->type : mixed_type_string);
+    $$ = mktypenode(s);
     free_node(tmp);
   } 
   | TOK_TYPEOF '(' error ')' { $$=0; yyerrok; }
