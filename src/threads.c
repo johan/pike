@@ -324,6 +324,9 @@ void f_cond_wait(INT32 args)
     
     mt_lock(&mutex_kluge);
     mut=OB2KEY(key)->mut;
+    if(!mut)
+      error("Bad argument 1 to condition->wait()\n");
+
     THREADS_ALLOW();
 
     /* Unlock mutex */
