@@ -7920,6 +7920,47 @@ return 1;
 #endif
 ]],1)
 
+// #if constant
+test_any([[
+#if constant(Foo.Bar)
+return 0;
+#else
+return 1;
+#endif
+]],1)
+
+test_any([[
+#if constant(Foo) && constant(Bar)
+return 0;
+#else
+return 1;
+#endif
+]],1)
+
+test_any([[
+#if constant(String.Buffer)
+return 1;
+#else
+return 0;
+#endif
+]],1)
+
+test_any([[
+#if constant(String.Bar)
+return 0;
+#else
+return 1;
+#endif
+]],1)
+
+test_any([[
+#if constant(String) && constant(String.Bar)
+return 0;
+#else
+return 1;
+#endif
+]],1)
+
 // #ifdef
 test_any([[
 #ifdef FOOl
