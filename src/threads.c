@@ -205,7 +205,7 @@ void f_mutex_lock(INT32 args)
 
   if(m->key)
   {
-    check_objects_to_destruct();
+    destruct_objects_to_destruct();
     if(m->key)
     {
       SWAP_OUT_CURRENT_THREAD();
@@ -250,6 +250,9 @@ void f_mutex_trylock(INT32 args)
       error("Recursive mutex locks!\n");
     }
   }
+  if(m->key)
+    destruct_objects_to_destruct();
+
   if(!m->key)
   {
     OB2KEY(o)->mut=m;
