@@ -340,7 +340,7 @@ void set_write_callback(int fd,file_callback cb,void *data)
 #endif /* WITH_POLL */
     }
 #else
-#if POLLWRBAND == POLLOUT
+#if defined(WITH_OOB) && (POLLWRBAND == POLLOUT)
     if (was_set && !fds[fd].write_oob.callback)
       POLL_FD_CLR(fd, POLLOUT);
 #else /* POLLWRBAND != POLLOUT */
