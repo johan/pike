@@ -1,7 +1,7 @@
 #
 # $Id$
 #
-AC_INIT(pcre_glue.c)
+AC_INIT(pcre_glue.cmod)
 AC_CONFIG_HEADER(pcre_machine.h)
 AC_ARG_WITH(libpcre,     [  --with(out)-libpcre       Support JPEG (Image.JPEG)],[],[with_libpcre=yes])
 
