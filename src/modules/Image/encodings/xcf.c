@@ -1323,6 +1323,7 @@ void image_xcf_f__decode_tiles( INT32 args )
     else
       span = 1;
 
+    switch(bpp)
     {
      case 1: /* indexed or grey */
        if(colortable)
