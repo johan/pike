@@ -127,6 +127,9 @@ gdb_verify:
 run_hilfe:
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=run_hilfe"
 
+bin_export:
+	@$(MAKE) $(MAKE_FLAGS) "METATARGET=bin_export"
+
 feature_list:
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=feature_list"
 
