@@ -2284,7 +2284,7 @@ void gc_check_all_mappings(void)
 #ifdef DEBUG_MALLOC
     if (((int)m->data) == 0x55555555) {
       fprintf(stderr, "** Zapped mapping in list of active mappings!\n");
-      describe_something(m, T_MAPPING, 0,2,0);
+      describe_something(m, T_MAPPING, 0,2,0, NULL);
       fatal("Zapped mapping in list of active mappings!\n");
     }
 #endif /* DEBUG_MALLOC */
