@@ -61,9 +61,11 @@ configure: src/configure builddir
 	  else \
 	    configureargs="$(CONFIGUREARGS)"; \
 	  fi; \
-	  echo; \
 	  MAKE=$(MAKE) ; export MAKE ;\
+	  echo; \
 	  echo Configure arguments: $$configureargs; \
+	  echo 'Use `make CONFIGUREARGS="..."' "...'" 'to change them.'; \
+	  echo 'They will be retained in the build directory.'; \
 	  echo; \
 	  if test -f Makefile -a -f config.status -a -f .configureargs -a \
 		  "x$$oldconfigureargs" = "x$$configureargs"; then :; \
