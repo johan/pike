@@ -3454,6 +3454,9 @@ struct program *compile(struct pike_string *prog,
   used_modules = used_modules_save;
   Pike_compiler->num_used_modules = num_used_modules_save ;
   error_handler = saved_handler;
+  if (compat_handler) {
+    free_object(compat_handler);
+  }
   compat_handler = saved_compat_handler;
 #ifdef PIKE_DEBUG
   if (resolve_cache) fatal("resolve_cache not freed at end of compilation.\n");
@@ -4455,7 +4458,7 @@ PMOD_EXPORT void change_compiler_compatibility(int major, int minor)
   
   if(sp[-1].type == T_OBJECT)
   {
-    compat_handler=sp[-1].u.object;
+    compat_handler = dmalloc_touch(struct object *, sp[-1].u.object);
     sp--;
   
     apply(compat_handler,"get_default_module",0);
@@ -4476,6 +4479,7 @@ PMOD_EXPORT void change_compiler_compatibility(int major, int minor)
     free_svalue( (struct svalue *)used_modules.s.str );
     ((struct svalue *)used_modules.s.str)[0]=sp[-1];
     sp--;
+    dmalloc_touch_svalue(sp);
     if(Pike_compiler->module_index_cache)
     {
       free_mapping(Pike_compiler->module_index_cache);
