@@ -258,7 +258,7 @@ int va_get_args(struct svalue *s,
       if(s->type == T_FLOAT)
 	 *va_arg(ap, FLOAT_TYPE *)=s->u.float_number;
       else if(s->type == T_INT)
-	 *va_arg(ap, FLOAT_TYPE *)=(float)s->u.integer;
+	 *va_arg(ap, FLOAT_TYPE *)=(FLOAT_TYPE)s->u.integer;
       else 
       {
         ref_push_type_value(float_type_string);
