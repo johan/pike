@@ -405,6 +405,13 @@ define([AC_MODULE_INIT],
   AC_LOW_MODULE_INIT()
   PIKE_FEATURE_CLEAR()
 
+  if test -f "$srcdir/module.pmod.in"; then
+    MODULE_PMOD_IN="$srcdir/module.pmod.in"
+  else
+    MODULE_PMOD_IN=""
+  fi
+  AC_SUBST(MODULE_PMOD_IN)
+
   if test -d $BUILD_BASE/modules/. ; then
     dynamic_module_makefile=$BUILD_BASE/modules/dynamic_module_makefile
     static_module_makefile=$BUILD_BASE/modules/static_module_makefile
