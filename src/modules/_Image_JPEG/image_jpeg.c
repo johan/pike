@@ -871,7 +871,7 @@ static void image_jpeg_encode(INT32 args)
 	      p==JDCT_FASTEST))
 	 cinfo.dct_method=p;
       
-      if (parameter_int(sp+1-args,param_progressive,&p))
+      if (parameter_int(sp+1-args,param_progressive,&p) && p)
 	 jpeg_simple_progression(&cinfo);
 
       parameter_qt(sp+1-args,param_quant_tables,&cinfo);
