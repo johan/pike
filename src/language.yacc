@@ -455,13 +455,15 @@ facet: TOK_FACET TOK_IDENTIFIER ':' idents ';'
 	  }
 	  else
 	    yyerror("Could not add facet class to system.");
-	  pop_n_elems(2);
+	  pop_stack();
 	}
 	else
 	  yyerror("Illegal facet group specifier.");
-	free_node($4);
+	pop_stack();
       }
     }
+    free_node($2);
+    free_node($4);
   }
   ;
 
