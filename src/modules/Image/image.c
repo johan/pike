@@ -1221,7 +1221,7 @@ void image_tuned_box(INT32 args)
    this=THIS;
    THREADS_ALLOW();
 
-   for (x=max(0,-x1); x<=xw && x+x1<THIS->xsize; x++)
+   for (x=max(0,-x1); x<=xw && x+x1<this->xsize; x++)
    {
 #define tune_factor(a,aw) (1.0-((float)(a)*(aw)))
       INT32 ymax;
