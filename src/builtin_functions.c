@@ -4370,7 +4370,7 @@ PMOD_EXPORT void f_mktime (INT32 args)
       retval += 3600 * (Pike_sp[6-args].u.integer - date.tm_isdst);
     }
 #endif /* STRUCT_TM_HAS_GMTOFF || STRUCT_TM_HAS___TM_GMTOFF */
-#ifdef HAVE_GMTIME */
+#ifdef HAVE_GMTIME
   }
 #endif /* HAVE_GMTIME */
 
