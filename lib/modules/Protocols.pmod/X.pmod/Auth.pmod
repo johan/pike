@@ -69,6 +69,8 @@ class auth_file
   
   mapping lookup_ip(string ip, int display)
   {
+    if(ip == "127.0.0.1")
+      return lookup_local(gethostname(), display);
     return auth[0] && auth[0][make_key(ip2string(ip), display)];
   }
 }
