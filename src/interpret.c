@@ -1796,8 +1796,8 @@ PMOD_EXPORT void call_handle_error(void)
       UNSET_ONERROR(tmp);
     }
     else {
-      fprintf (stderr, "There's no master to handle the error. Dumping it raw:\n");
       char *s;
+      fprintf (stderr, "There's no master to handle the error. Dumping it raw:\n");
       init_buf();
       describe_svalue (Pike_sp - 1, 0, 0);
       s=simple_free_buf();
