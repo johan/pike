@@ -822,7 +822,8 @@ TH_RETURN_TYPE new_thread_func(void *data)
   /* Free ourselves.
    * NB: This really ought to run in some other thread...
    */
-  /* free_object(thread_obj); */
+
+  free_object(thread_obj);
   thread_obj = NULL;
 
   num_threads--;
