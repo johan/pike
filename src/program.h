@@ -485,7 +485,7 @@ void count_memory_in_programs(INT32 *num_, INT32 *size_);
 void push_compiler_frame(int lexical_scope);
 void pop_local_variables(int level);
 void pop_compiler_frame(void);
-int low_get_storage(struct program *o, struct program *p);
+ptrdiff_t low_get_storage(struct program *o, struct program *p);
 char *get_storage(struct object *o, struct program *p);
 struct program *low_program_from_function(struct program *p,
 					  INT32 i);

@@ -217,7 +217,7 @@ void resource_error(
   char *func,
   struct svalue *base_sp,  int args,
   char *resource_type,
-  long howmuch,
+  size_t howmuch,
   char *desc, ...) ATTRIBUTE((noreturn,format (printf, 6, 7)));
 void permission_error(
   char *func,

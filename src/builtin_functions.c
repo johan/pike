@@ -1700,7 +1700,7 @@ PMOD_EXPORT void f_indices(INT32 args)
     {
       ITEM(a)[size].type=T_INT;
       ITEM(a)[size].subtype=NUMBER_NUMBER;
-      ITEM(a)[size].u.integer=size;
+      ITEM(a)[size].u.integer = DO_NOT_WARN((INT_TYPE)size);
     }
     break;
 
