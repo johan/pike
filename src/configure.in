@@ -1542,7 +1542,7 @@ if test "x$with_valgrind" = "xno"; then
 else
   VALGRIND="$with_valgrind"
   # Make valgrind a bit silent by default.
-  VALGRINDARGS=-q
+  VALGRINDARGS="-q --tool=memcheck"
   AC_DEFINE(USE_VALGRIND)
 
   if test "x$with_copt" != "xno"; then
