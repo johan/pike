@@ -1356,6 +1356,7 @@ static void file_open(INT32 args)
      if(!fp->current_object->prog)
      {
 #ifdef DEBUG_MALLOC
+       extern int d_flag;
        /* This is a temporary kluge */
        if(d_flag)
        {
@@ -2650,6 +2651,7 @@ void PIKE_CONCAT(Y,_ref) (INT32 args) {				\
   if(!o || !o->prog) { 						\
    /* This is a temporary kluge */                              \
    DO_IF_DMALLOC(						\
+     extern int d_flag;                                         \
      if(d_flag)							\
      {								\
        if(o)							\
