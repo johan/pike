@@ -774,6 +774,25 @@ string data(int|void max_length)
    return buf[datapos..datapos+len];
 }
 
+static Locale.Charset.Decoder charset_decoder;
+
+//! Gives back data, but decoded according to the content-type
+//! character set.
+//! @seealso
+//!   @[data]
+string unicode_data() {
+  if(!charset_decoder) {
+    string charset;
+    if(headers["content-type"])
+      sscanf(headers["content-type"], "%*scharset=%s", charset);
+    if(!charset)
+      charset_decoder = Locale.Charset.decoder("ascii");
+    else
+      charset_decoder = Locale.Charset.decoder(charset);
+  }
+  return charset_decoder->feed(data())->drain();
+}
+
 void discard_bytes(int n)
 {
   if(n > sizeof(buf) - datapos)
