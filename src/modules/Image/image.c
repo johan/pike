@@ -1650,6 +1650,7 @@ void image_hsv_to_rgb(INT32 args)
    rgb_group *s,*d;
    struct object *o;
    struct image *img;
+   char *err = NULL;
    if (!THIS->img) error("no image\n");
 
    o=clone_object(image_program,0);
@@ -1694,7 +1695,8 @@ void image_hsv_to_rgb(INT32 args)
 	case 4:	 r = t;	 g = p;	 b = v;	 break;
 	case 5:	 r = v;	 g = p;	 b = q;	 break;
 	default:
-	 error("Nope. Not possible");
+	  err = "Nope. Not possible";
+	  goto exit_loop;
        }
      }
 #undef i
@@ -1708,7 +1710,12 @@ void image_hsv_to_rgb(INT32 args)
      d->b = FIX(b);
      s++; d++;
    }
+exit_loop:
    THREADS_DISALLOW();
+
+   if (err) {
+     error(err);
+   }
 
    pop_n_elems(args);
    push_object(o);
