@@ -187,7 +187,7 @@ static void pgres_destroy (struct object * o)
  *! Refer to the Postgres documentation for further details.
  *!
  *! @seealso
- *!   Sql.Sql, Sql.postgres, Sql.postgres_result
+ *!   @[Sql.Sql], @[Sql.postgres], @[Sql.postgres_result]
  */
 
 /*! @decl string version
@@ -225,7 +225,7 @@ static void pgres_destroy (struct object * o)
  *! object is destroyed.
  *!
  *! @seealso
- *!  	Sql.postgres, Sql.Sql, select_db
+ *!  	@[Sql.postgres], @[Sql.Sql], @[select_db]
  */
 
 /* create (host,database,username,password,port) */
@@ -407,9 +407,9 @@ static void f_select_db (INT32 args)
  *!
  *! This is the only provided interface which allows you to query the
  *! database. If you wish to use the simpler "query" function, you need to
- *! use the Sql.sql generic sql-object.
+ *! use the @[Sql.Sql] generic sql-object.
  *!
- *! It returns a postgres_result object (which conforms to the Sql.sql_result
+ *! It returns a postgres_result object (which conforms to the @[Sql.sql_result]
  *! standard interface for accessing data). I recommend using query() for
  *! simpler queries (because it is easier to handle, but stores all the result
  *! in memory), and big_query for queries you expect to return huge amounts
@@ -422,7 +422,7 @@ static void f_select_db (INT32 args)
  *! the same as @[Postgres.postgres_result].
  *!
  *! @seealso
- *!  Sql.Sql, Sql.sql_result
+ *!  @[Sql.Sql], @[Sql.sql_result]
  */
 
 static void f_big_query(INT32 args)
