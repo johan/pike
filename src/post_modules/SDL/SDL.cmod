@@ -1827,6 +1827,8 @@ PIKEFUN int grab_input(int mode) {
 
 /* Joystick related functionality */
 
+#ifdef HAVE_LIBSDL_JOYSTICK
+
 /*! @class Joystick
  */
 
@@ -2026,6 +2028,7 @@ PIKEFUN void joystick_update() {
 PIKEFUN int joystick_event_state(int state) {
   RETURN SDL_JoystickEventState(state);
 }
+#endif
 
 /* CD Related methods */
 

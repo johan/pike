@@ -11,6 +11,9 @@
 @TOP@
 @BOTTOM@
 
+/* Define if your SDL has joystick support */
+#undef HAVE_LIBSDL_JOYSTICK
+
 #undef HAVE_SDL
 
 # if defined(HAVE_LIBSDL_MIXER) && (defined(HAVE_SDL_MIXER_H) || defined(HAVE_SDL_SDL_MIXER_H))
