@@ -4490,7 +4490,7 @@ test_any([[mapping m=([]);int e;
   {
     m[reverse(e-50)]=e-50;
     a[e]=reverse(e-50);
-    b[e]=reverse(e-50);
+    b[e]=e-50;
   }
   add_constant("mtest_m2",m);
   add_constant("mtest_i2",a);
@@ -4509,6 +4509,15 @@ test_equal(sort(indices(mtest_m2|mtest_m)),sort(mtest_i2|mtest_i))
 test_equal(sort(indices(mtest_m2&mtest_m)),sort(mtest_i2&mtest_i))
 test_equal(sort(indices(mtest_m2-mtest_m)),sort(mtest_i2-mtest_i))
 test_equal(sort(indices(mtest_m2^mtest_m)),sort(mtest_i2^mtest_i))
+
+test_equal(sort(values(mtest_m|mtest_m2)),sort(map(mtest_i|mtest_i2,mtest_m|mtest_m2)))
+test_equal(sort(values(mtest_m&mtest_m2)),sort(map(mtest_i&mtest_i2,mtest_m|mtest_m2)))
+test_equal(sort(values(mtest_m-mtest_m2)),sort(map(mtest_i-mtest_i2,mtest_m|mtest_m2)))
+test_equal(sort(values(mtest_m^mtest_m2)),sort(map(mtest_i^mtest_i2,mtest_m|mtest_m2)))
+test_equal(sort(values(mtest_m2|mtest_m)),sort(map(mtest_i2|mtest_i,mtest_m|mtest_m2)))
+test_equal(sort(values(mtest_m2&mtest_m)),sort(map(mtest_i2&mtest_i,mtest_m|mtest_m2)))
+test_equal(sort(values(mtest_m2-mtest_m)),sort(map(mtest_i2-mtest_i,mtest_m|mtest_m2)))
+test_equal(sort(values(mtest_m2^mtest_m)),sort(map(mtest_i2^mtest_i,mtest_m|mtest_m2)))
 
 test_do(add_constant("mtest_m"); add_constant("mtest_i"); add_constant("mtest_v");)
 test_do(add_constant("mtest_m2"); add_constant("mtest_i2"); add_constant("mtest_v2");)
