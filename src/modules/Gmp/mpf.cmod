@@ -660,11 +660,11 @@ PIKECLASS mpf
 	  MP_FLT *a=get_mpf(sp+e-args, 1, prec);
 	  tmp=mpf_get_prec(a);
 	  if(!mpf_sgn(a))
-	    Pike_error("Division by zero.\n");
+	    SIMPLE_DIVISION_BY_ZERO_ERROR ("Gmp.mpf->`/");
 	}else{
 	  tmp=sizeof(sp[e-args].u.integer)*CHAR_BITS;
 	  if(!sp[e-args].u.integer)
-	    Pike_error("Division by zero.\n");
+	    SIMPLE_DIVISION_BY_ZERO_ERROR ("Gmp.mpf->`/");
 	}
 	if(tmp>prec) prec=tmp;
       }
@@ -691,7 +691,7 @@ PIKECLASS mpf
       MP_FLT *a;
       struct object *res = NULL;
       if(!mpf_sgn(THISMPF))
-	Pike_error("Division by zero.\n");
+	SIMPLE_DIVISION_BY_ZERO_ERROR ("Gmp.mpf->``/");
       
       a=get_mpf(sv,1,0);
 
