@@ -17,14 +17,14 @@ Function FinalizePike()
 
   Set fso = CreateObject("Scripting.FileSystemObject")
 
-  Set source = fso.OpenTextFile(targetdir & "lib\master.pike.in", ForReading)
+  Set source = fso.OpenTextFile(targetdir & "lib\master.pike.in", 1, False, 0)
 
   Set dest = fso.CreateTextFile(targetdir & "lib\master.pike", True)
 
   source = source.ReadAll
 
   Set re = New RegExp
-  re.Flobal = True
+  re.Global = True
 
   re.Pattern = "¤lib_prefix¤"
   source = re.Replace(source, target & "lib")
