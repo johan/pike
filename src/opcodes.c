@@ -281,7 +281,8 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	    break;
 	    
 	  case T_STRING:
-	    f=STRTOD(sp[-1].u.string->str,0);
+	    f=STRTOD_PCHARP(MKPCHARP(sp[-1].u.string->str,
+				     sp[-1].u.string->size_shift),0);
 	    free_string(sp[-1].u.string);
 	    break;
 	    
