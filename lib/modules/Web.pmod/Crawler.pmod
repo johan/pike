@@ -189,14 +189,14 @@ class Queue
 
 class Rule
 {
-  int check(Standards.URI uri);
+  int check(string|Standards.URI uri);
 }
 
 class GlobRule(string pattern)
 {
   inherit Rule;
 
-  int check(Standards.URI uri)
+  int check(string|Standards.URI uri)
   {
     return glob(pattern, (string)uri);
   }
@@ -213,7 +213,7 @@ class RegexpRule
     regexp=Regexp(re);
   }
 
-  int check(Standards.URI uri)
+  int check(string|Standards.URI uri)
   {
     return regexp->match((string)uri);
   }
@@ -233,7 +233,7 @@ class RuleSet
     rules[rule]=0;
   }
 
-  int check(Standards.URI uri)
+  int check(string|Standards.URI uri)
   {
     foreach(indices(rules), Rule rule)
       if(rule->check(uri))
