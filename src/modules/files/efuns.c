@@ -772,9 +772,11 @@ void f_mkdir(INT32 args)
 	do {
 	  i = chmod(str->str, mode) != -1;
 	  if (i || errno != EINTR) break;
-	  THREADS_DISALLOW_UID();
-	  check_threads_etc();
-	  THREADS_ALLOW_UID();
+	  do {
+	    THREADS_DISALLOW_UID();
+	    check_threads_etc();
+	    THREADS_ALLOW_UID();
+	  } while (0);
 	} while (1);
       }
       if (i) {
