@@ -69,8 +69,8 @@ PMOD_EXPORT void dont_accept_unfinished_type_fields (void *orig)
  * NOTE: the new array has zero references
  */
 
-PMOD_EXPORT struct array *low_allocate_array(ptrdiff_t size,
-					     ptrdiff_t extra_space)
+PMOD_EXPORT struct array *real_allocate_array(ptrdiff_t size,
+					      ptrdiff_t extra_space)
 {
   struct array *v;
   ptrdiff_t e;

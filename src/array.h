@@ -87,8 +87,12 @@ typedef int (*short_cmpfun)(union anything *, union anything *);
 typedef short_cmpfun (*cmpfun_getter)(TYPE_T);
 
 
+#define low_allocate_array(size, extra_space)				\
+  dmalloc_touch (struct array *,					\
+		 real_allocate_array ((size), (extra_space)))
+
 /* Prototypes begin here */
-PMOD_EXPORT struct array *low_allocate_array(ptrdiff_t size, ptrdiff_t extra_space);
+PMOD_EXPORT struct array *real_allocate_array(ptrdiff_t size, ptrdiff_t extra_space);
 PMOD_EXPORT void really_free_array(struct array *v);
 PMOD_EXPORT void do_free_array(struct array *a);
 PMOD_EXPORT struct array *array_set_flags(struct array *a, int flags);

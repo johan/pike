@@ -839,9 +839,9 @@ PMOD_EXPORT INT32 multiset_sizeof (struct multiset *l)
   return size;
 }
 
-PMOD_EXPORT struct multiset *allocate_multiset (int allocsize,
-						int flags,
-						struct svalue *cmp_less)
+PMOD_EXPORT struct multiset *real_allocate_multiset (int allocsize,
+						     int flags,
+						     struct svalue *cmp_less)
 {
   struct multiset *l = alloc_multiset();
 
