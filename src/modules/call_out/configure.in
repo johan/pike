@@ -1,5 +1,6 @@
 # $Id$
 AC_INIT(call_out.c)
+AC_CONFIG_HEADER(config.h)
 
 AC_MODULE_INIT()
 
