@@ -1,5 +1,7 @@
 // $Id$
 
+#pike __REAL_VERSION__
+
 static constant small_ext2type = ([
   "html" : "text/html",
   "txt"  : "text/plain",
