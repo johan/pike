@@ -41,6 +41,11 @@ xenofarm_post_build() {
   $MAKE $MAKE_FLAGS bin_export > xenofarm_result/exportlog.txt 2>&1
   log_end $?
   [ $LASTERR = 0 ] || return 1
+
+  log_start benchmark
+  $MAKE $MAKE_FLAGS benchmark > xenofarm_result/benchmark.txt 2>&1
+  log_end $?
+  [ $LASTERR = 0 ] || return 1
 }
 
 
