@@ -355,9 +355,20 @@ void describe_something(void *a, int t, int dm)
     return;
   }
 
-  fprintf(stderr,"**Location: %p  Type: %s  Refs: %d\n",a,
-	  get_name_of_type(t),
-	  *(INT32 *)a);
+#ifdef DEBUG_MALLOC
+  if (((int)a) == 0x55555555) {
+    fprintf(stderr,"**Location: %p  Type: %s  Zapped pointer\n",a,
+	    get_name_of_type(t));
+  } else
+#endif /* DEBUG_MALLOC */
+  if (((int)a) & 3) {
+    fprintf(stderr,"**Location: %p  Type: %s  Missaligned address\n",a,
+	    get_name_of_type(t));
+  } else {
+    fprintf(stderr,"**Location: %p  Type: %s  Refs: %d\n",a,
+	    get_name_of_type(t),
+	    *(INT32 *)a);
+  }
 
   low_describe_something(a,t,dm);
 
