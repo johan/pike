@@ -1648,10 +1648,10 @@ PMOD_EXPORT void safe_apply_handler(const char *fun,
 				    INT32 args)
 {
   int i;
-  if (handler &&
+  if (handler && handler->prog &&
       (i = find_identifier(fun, handler->prog)) != -1) {
     safe_apply_low(handler, i, args);
-  } else if (compat &&
+  } else if (compat && compat->prog &&
 	     (i = find_identifier(fun, compat->prog)) != -1) {
     safe_apply_low(compat, i, args);
   } else {
