@@ -245,6 +245,7 @@ overflow:
  *! can be used to explicitly type integers that are to big to be
  *! INT_TYPE. Best is however to not use this program unless you
  *! really know what you are doing.
+ *! @endclass
  */
 
 /*! @class mpz
