@@ -473,17 +473,25 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
   switch(val->type)
   {
     case T_INT:
-      /* FIXME: Doesn't encode NUMBER_UNDEFINED et al. */
+      /* NOTE: Doesn't encode NUMBER_UNDEFINED et al. */
+      /* But that's a feature; NUMBER_UNDEFINED is an inherently
+       * transient value. It would lose its usefulness otherwise.
+       * /mast */
 
 #if SIZEOF_INT_TYPE > 4
     {
       INT_TYPE i=val->u.integer;
       if (i != (INT32)i)
       {
+#ifdef AUTO_BIGNUM
 	 push_int(i);
 	 convert_stack_top_to_bignum();
 	 encode_value2(Pike_sp-1,data);
 	 pop_stack();
+#else
+	 Pike_error ("Cannot encode integers with more than 32 bits "
+		     "without bignum support.\n");
+#endif
 	 return;
       }
       else
