@@ -1,13 +1,8 @@
-/* $Id$
- *
- */
 
 #pike __REAL_VERSION__
 
-//! Triple-DES CBC.
-//!
-//! @seealso
-//!   @[cbc], @[des]
+//! Use @expr{Crypto.CBC(Crypto.DES3)@} instead.
+//! @deprecated
 
 inherit Nettle.CBC;
 void create() { ::create(Crypto.DES3()); }
