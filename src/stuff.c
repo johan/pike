@@ -10,7 +10,7 @@
 #include "stralloc.h"
 
 /* Not all of these are primes, but they should be adequate */
-PMOD_EXPORT INT32 hashprimes[32] =
+PMOD_EXPORT const INT32 hashprimes[32] =
 {
   31,        /* ~ 2^0  = 1 */
   31,        /* ~ 2^1  = 2 */
@@ -51,7 +51,7 @@ PMOD_EXPORT INT32 hashprimes[32] =
 
 PMOD_EXPORT int my_log2(size_t x)
 {
-  static signed char bit[256] =
+  static const signed char bit[256] =
   {
     -1, 0, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3,
      4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
@@ -99,7 +99,7 @@ PMOD_EXPORT int count_bits(unsigned INT32 x)
              X+1,X+2,X+2,X+3,\
              X+1,X+2,X+2,X+3,\
              X+2,X+3,X+3,X+4
-  static char bits[256] =
+  static const char bits[256] =
   {
     B(0), B(1), B(1), B(2),
     B(1), B(2), B(2), B(3),

@@ -19,6 +19,6 @@ PMOD_EXPORT unsigned INT32 my_sqrt(unsigned INT32 n) ATTRIBUTE((const));
 unsigned long find_good_hash_size(unsigned long x) ATTRIBUTE((const));
 /* Prototypes end here */
 
-PMOD_EXPORT extern INT32 hashprimes[32];
+PMOD_EXPORT extern const INT32 hashprimes[32];
 
 #endif
