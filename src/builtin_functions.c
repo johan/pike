@@ -2829,6 +2829,7 @@ PMOD_EXPORT void f_object_program(INT32 args)
 
     if(p)
     {
+      p = p->inherits[Pike_sp[-args].subtype].prog;
       if((p->flags & PROGRAM_USES_PARENT) && 
 	 PARENT_INFO(o)->parent &&
 	 PARENT_INFO(o)->parent->prog)
@@ -3295,7 +3296,7 @@ node *optimize_replace(node *n)
   } else {
     /* First argument is not an array or mapping,
      *
-     * It thus must be a string.
+     * It must thus be a string.
      */
     node **arg1 = my_get_arg(&_CDR(n), 1);
     node **arg2 = my_get_arg(&_CDR(n), 2);
