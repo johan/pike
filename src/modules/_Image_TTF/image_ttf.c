@@ -271,14 +271,17 @@ static void image_ttf_make(INT32 args)
 
 static void image_ttf_face_exit(struct object *o)
 {
-   TT_Close_Face(THISf->face);
+  if(THISf)
+    TT_Close_Face(THISf->face);
 }
 
 static void image_ttf_faceinstance_exit(struct object *o)
 {
-   if (THISi->faceobj->prog)
+  if (THISi) {
+    if(THISi->faceobj->prog)
       TT_Done_Instance(THISi->instance);
-   free_object(THISi->faceobj);
+    free_object(THISi->faceobj);
+  }
 }
 
 #ifdef TTF_DEBUG_INFO
