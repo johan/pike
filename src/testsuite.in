@@ -1087,6 +1087,37 @@ test_program([[
   }
 ]])
 
+test_program([[// [bug 3060]
+  void x (mixed val)
+  {
+  }
+
+  class X
+  {
+    void create() {error ("foo\n");} // Line 8
+  }
+
+  object rx = class {}();
+
+  int y()
+  {
+    x (rx->x);
+    rx = X(); // Line 16
+  }
+
+  int a()
+  {
+    mixed bt = catch (y())[1];
+    int ok = 0;
+    foreach (reverse (bt), object ent)
+      switch (functionp (ent[2]) && function_name (ent[2])) {
+	case "create": if (ent[1] == 8) ok++; break;
+	case "y": if (ent[1] == 16) ok++; break;
+      }
+    return ok == 2;
+  }
+]])
+
 dnl ----------------------------------------------------------------
 dnl scopes and stuff
 dnl ----------------------------------------------------------------
