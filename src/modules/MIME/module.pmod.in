@@ -1,11 +1,9 @@
-/*
- * $Id$
- *
- * RFC1521 functionality for Pike
- *
- * Marcus Comstedt 1996-1999
- */
-
+// -*- Pike -*-
+//
+// RFC1521 functionality for Pike
+//
+// Marcus Comstedt 1996-1999
+// $Id$
 
 #pike __REAL_VERSION__
 inherit @module@;
