@@ -1648,7 +1648,14 @@ then
            LDSHARED="ld"
          fi
 	;;
-	IRIX*) LDSHARED="ld -shared";;
+	IRIX*)
+	  if test "$GCC" = yes ; then
+	    # egcs defaults to building -n32 objects
+	    LDSHARED="ld -shared -n32"
+	  else
+            LDSHARED="ld -shared"
+	  fi
+	;;
 	SunOS*) LDSHARED="ld";;
 	Solaris) LDSHARED="/usr/ccs/bin/ld -G";;
 	hp*|HP*) LDSHARED="ld -b";;
