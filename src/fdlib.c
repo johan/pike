@@ -288,7 +288,7 @@ int debug_fd_pipe(int fds[2] DMALLOC_LINE_ARGS)
   return 0;
 }
 
-FD debug_fd_accept(FD fd, struct sockaddr *addr, int *addrlen)
+FD debug_fd_accept(FD fd, struct sockaddr *addr, ACCEPT_SIZE_T *addrlen)
 {
   FD new_fd;
   SOCKET s;
