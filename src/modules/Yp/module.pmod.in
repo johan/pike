@@ -10,13 +10,13 @@ inherit @module@;
 
 // Usual nicknames
 constant nicknames = ([
-  "passwd":"passwd.byname"
-  "group":"group.byname"
-  "networks":"networks.byaddr"
-  "hosts":"hosts.byname"
-  "protocols":"protocols.bynumber"
-  "services":"services.byname"
-  "aliases":"mail.aliases"
+  "passwd":"passwd.byname",
+  "group":"group.byname",
+  "networks":"networks.byaddr",
+  "hosts":"hosts.byname",
+  "protocols":"protocols.bynumber",
+  "services":"services.byname",
+  "aliases":"mail.aliases",
   "ethers":"ethers.byname"
 ]);
 
