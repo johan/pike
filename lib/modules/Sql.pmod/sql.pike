@@ -29,7 +29,7 @@ void create(void|string|object host, void|string db,
   } else {
     foreach(get_dir(Sql->dirname), string program_name) {
       if (sizeof(program_name / "_result") == 1 &&
-	  (program_name != "Sql.pike")) {
+	  (program_name != "sql.pike")) {
 	/* Don't call ourselves... */
 	array(mixed) err;
 	
@@ -101,9 +101,9 @@ array(mapping(string:mixed)) query(string s)
 object big_query(string q)
 {
   if (functionp(master_sql->big_query)) {
-    return(Sql.Sql_result(master_sql->big_query(q)));
+    return(Sql.sql_result(master_sql->big_query(q)));
   }
-  return(Sql.Sql_result(master_sql->query(q)));
+  return(Sql.sql_result(master_sql->query(q)));
 }
 
 void create_db(string db)
