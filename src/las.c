@@ -1749,6 +1749,7 @@ int node_may_overload(node *n, int lfun)
   return type_may_overload(n->type->str, lfun);
 }
 
+/* FIXME: Ought to use parent pointer to avoid recursion. */
 node **last_cmd(node **a)
 {
   node **n;
