@@ -187,11 +187,11 @@ static struct pike_string *save_xbm( struct image *i, struct pike_string *name )
 
   initialize_buf(&buf);
   ccat( "#define ");  cname();  ccat( "_width " );
-  sprintf( size, "%d\n", i->xsize );
+  sprintf( size, "%"PRINTPIKEINT"d\n", i->xsize );
   low_my_binary_strcat( size, strlen(size), &buf );
 
   ccat( "#define ");  cname();  ccat( "_height " );
-  sprintf( size, "%d\n", i->ysize );
+  sprintf( size, "%"PRINTPIKEINT"d\n", i->ysize );
   low_my_binary_strcat( size, strlen(size), &buf );
 
   ccat( "static char " );  cname();  ccat( "_bits[] = {\n" );
