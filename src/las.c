@@ -1075,6 +1075,20 @@ static void find_written_vars(node *n,
     find_written_vars(CDR(n), p, 1);
     break;
 
+    case F_AND_EQ:
+    case F_OR_EQ:
+    case F_XOR_EQ:
+    case F_LSH_EQ:
+    case F_RSH_EQ:
+    case F_ADD_EQ:
+    case F_SUB_EQ:
+    case F_MULT_EQ:
+    case F_MOD_EQ:
+    case F_DIV_EQ:
+      find_written_vars(CAR(n), p, 1);
+      find_written_vars(CDR(n), p, 0);
+      break;
+
   case F_SSCANF:
     find_written_vars(CAR(n), p, 0);
     find_written_vars(CDR(n), p, 1);
