@@ -833,7 +833,7 @@ void actually_send(struct send_args *a)
 #endif
   if(data)
   {
-    MEMCPY(foo, data+MY_MIN((data_len-4),9), 4);
+    MEMCPY(foo, data+MINIMUM((data_len-4),9), 4);
     first=1;
 #ifdef TCP_CORK
 #ifdef AAP_DEBUG
@@ -909,7 +909,7 @@ void actually_send(struct send_args *a)
   while(a->len)
   {
     ptrdiff_t nread, written=0;
-    nread = fd_read(a->from_fd, a->buffer, MY_MIN(BUFFER,a->len));
+    nread = fd_read(a->from_fd, a->buffer, MINIMUM(BUFFER,a->len));
 #ifdef AAP_DEBUG
   fprintf(stderr, "writing %d bytes... \n", nread);
 #endif
