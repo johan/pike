@@ -130,9 +130,11 @@ static int close_fd(int fd)
 
 	  /* Try waiting it out in blocking mode */
 	  set_nonblocking(fd,0);
-	  if(close(fd) >= 0 || errno==EBADF)
-	    break; /* It was actually closed, good! */
-
+	  THREADS_ALLOW();
+	  i=close(fd);
+	  THREADS_DISALLOW();
+	  if(i>= 0 || errno==EBADF)  break; /* It was actually closed, good! */
+	  
 	  /* Failed, give up, crash, burn, die */
 	  error("Failed to close file.\n");
 
@@ -1324,7 +1326,8 @@ static void file_create(INT32 args)
   }
   else
   {
-    error("file->create() not called with stdin, stdout or stderr as argument.\n");
+    file_open(args);
+    /*error("file->create() not called with stdin, stdout or stderr as argument.\n");*/
   }
 }
 
