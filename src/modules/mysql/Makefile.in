@@ -18,7 +18,7 @@ mysql.a: $(OBJS)
 	-@RANLIB@ mysql.a
 
 linker_options: Makefile
-	echo >linker_options "@LDFLAGS@ @LIBS@"
+	echo >linker_options "@LDFLAGS@ @MYSQL_LIBS@"
 
 verify:
 	@echo No tests for the mysql-module.
