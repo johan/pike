@@ -110,6 +110,26 @@ class asn1_application_octet_string
   }
 }
 
+class asn1_context_boolean
+{
+  inherit Standards.ASN1.Types.asn1_boolean;
+  constant cls = 2;
+  constant type_name = "CONTEXT BOOLEAN";
+  int tagx;
+
+  int get_tag() {return tagx;}
+
+  void init(int tagid, int arg) {
+    ::init(arg);
+    tagx = tagid;
+  }
+
+  static string _sprintf(mixed ... args)
+  {
+    return sprintf("[%d]%s", tagx, ::_sprintf(@args));
+  }
+}
+
 class asn1_context_integer
 {
   inherit Standards.ASN1.Types.asn1_integer;
