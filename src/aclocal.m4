@@ -5,6 +5,13 @@ AC_PROG_CC
 undefine([ac_cv_prog_CC])
 ])
 
+pushdef([AC_CONFIG_HEADER],
+[
+  CONFIG_HEADERS="$1"
+  popdef([AC_CONFIG_HEADER])
+  AC_CONFIG_HEADER($1)
+])
+
 define([AC_LOW_MODULE_INIT],
 [
 # $Id$
