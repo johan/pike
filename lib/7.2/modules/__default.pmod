@@ -49,7 +49,7 @@ void sleep(float|int t, void|int abort)
 //! @deprecated Yp.default_domain
 //!
 //! @seealso
-//!   @[YP.default_domain()]
+//!   @[Yp.default_domain()]
 string default_yp_domain() {
   return Yp.default_domain();
 }
