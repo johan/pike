@@ -233,7 +233,7 @@ array(string) split(string data, void|mapping state)
 	int bqstart = pos;
         while(data[pos]=='`')
           ++pos;
-        if (pos - bqstart > 3) // max. three ``` {
+        if (pos - bqstart > 3) { // max. three ``` {
 	  pos = bqstart;
           UNKNOWN_TOKEN;
 	}
