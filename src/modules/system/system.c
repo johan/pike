@@ -1634,7 +1634,7 @@ static MUTEX_T gethostbyname_mutex;
 #define GETSERV_DECLARE \
     struct servent *ret; \
     struct servent result; \
-    struct setvent_data data
+    struct servent_data data
 
 #define CALL_GETSERVBYNAME(X,Y) \
     THREADS_ALLOW(); \
