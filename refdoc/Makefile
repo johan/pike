@@ -134,6 +134,4 @@ clean:
 	@rm -rf build || /bin/true
 
 spotless: clean
-	@rm -rf onepage || /bin/true
-	@rm -rf modref || /bin/true
-	@rm -rf traditional_manual || /bin/true
+	-test -f .cvsignore && rm -rf `cat .cvsignore`
