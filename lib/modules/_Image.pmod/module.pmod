@@ -53,7 +53,7 @@ mapping _decode( string data )
 #if constant(Image.GIF) && constant(Image.GIF.RENDER)
   catch
   {
-    array chunks = Image["GIF"]->_decode( data );
+    array chunks = Image.GIF->_decode( data );
 
     // If there is more than one render chunk, the image is probably
     // an animation. Handling animations is left as an exercise for
@@ -83,9 +83,16 @@ mapping _decode( string data )
     };
   }
 
+  if(!i && data[0..3]=="%!PS") {
+    catch {
+      i = Image.PS.decode(data);
+      format = "PS";
+    };
+  }
+
   if(!i)
     foreach( ({ "PSD", "TGA", "XBM", "XPM",
-		"TIFF", "PS", "SVG",
+		"TIFF", "SVG",
        /* Image formats low on headers below this mark */
                 "DSI", "HRZ", "AVS", "WBF",
        /* "XFace" Always succeds*/
