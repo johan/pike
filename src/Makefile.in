@@ -673,11 +673,6 @@ depend: $(SRC_TARGETS)
 	  }); \
 	done
 
-# Lobotomization...
-
-lobotomize_crypto:
-	(cd $(SRCDIR)/../ && ./.build_lobotomized_crypto)
-
 #
 # Pike internal targets
 #
