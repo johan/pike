@@ -2065,7 +2065,7 @@ void program_index_no_free(struct svalue *to, struct program *p,
     }
     if (IDENTIFIER_IS_CONSTANT(id->identifier_flags)) {
       struct program *p2 = PROG_FROM_INT(p, e);
-      *to = *(p2->constants + id->func.offset);
+      assign_svalue_no_free(to, (p2->constants + id->func.offset));
       return;
     } else {
       if (s->len < 1024) {
