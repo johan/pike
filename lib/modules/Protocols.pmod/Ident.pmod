@@ -3,7 +3,7 @@
 // $Id$
 
 
-#define IDENT_DEBUG
+// #define IDENT_DEBUG
 
 class lookup_async
 {
