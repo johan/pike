@@ -432,7 +432,7 @@ int main(int argc, string *argv)
 			    1:"\nint \x30c6\x30b9\x30c8=0;\n",
 			    2:"\nint \x10001=0;\n" ])[shift%3];
 
-	  widener += "#pragma strict_types\n";
+	  // widener += "#pragma strict_types\n";
 
 	  if(test[-1]!='\n') test+="\n";
 
