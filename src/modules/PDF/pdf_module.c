@@ -28,7 +28,7 @@ RCSID("$Id$");
     void func(INT32 args);
 #include "initstuff.h"
 
-static struct program *pdf_sentinel = NULL
+static struct program *pdf_sentinel = NULL;
 
 static struct 
 {
