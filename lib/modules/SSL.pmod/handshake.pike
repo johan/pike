@@ -540,19 +540,6 @@ string describe_type(int i)
 #endif
 
 
-#ifdef SSL3_DEBUG
- void  printHex(string buf) {
-  int i;
-  string res="";
-  for(i=0; i< sizeof(buf) ; i++) {
-    int data=buf[i];
-    res+=sprintf("%02x ",data&0xff);
-  } 
-  res+="\n";
-  werror(res);
-}
-#endif
-
 // verify that a certificate chain is acceptable
 //
 int verify_certificate_chain(array(string) certs)
