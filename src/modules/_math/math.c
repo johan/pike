@@ -496,7 +496,7 @@ void f_pow(INT32 args)
 	    square *= square;
 	  }
 	}
-	pop_n_elems(args);
+	pop_n_elems(2);
 	push_int(res);
 	return;
       }
