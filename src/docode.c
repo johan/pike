@@ -247,7 +247,8 @@ static int do_docode2(node *n,int flags)
       default:
 	yyerror("Illegal lvalue.");
 	emit(F_NUMBER,0);
-	return 1;
+	emit(F_NUMBER,0);
+	return 2;
 
       case F_ARRAY_LVALUE:
       case F_LVALUE_LIST:
