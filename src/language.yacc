@@ -3281,7 +3281,13 @@ expr4: string
   | expr4 open_bracket_with_line_info error ')'
     {$$=$1; yyerror("Missing ']'."); free_node ($2);}
   | open_paren_with_line_info comma_expr2 ')'
-    {$$=$2; COPY_LINE_NUMBER_INFO($$, $1); free_node ($1);}
+    {
+      $$=$2;
+      if ($$) {
+	COPY_LINE_NUMBER_INFO($$, $1);
+      }
+      free_node ($1);
+    }
   | open_paren_with_line_info '{' expr_list close_brace_or_missing ')'
     {
       $$=mkefuncallnode("aggregate",$3);
