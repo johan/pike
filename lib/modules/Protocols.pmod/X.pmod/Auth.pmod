@@ -91,7 +91,11 @@ class lock_key
 
   int my_hardlink(string from, string to)
   {
+#if constant(hardlink)
     return !catch(hardlink(from, to));
+#else
+    return 0; // Failed, hubbe
+#endif
   }
 
 
