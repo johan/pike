@@ -345,7 +345,8 @@ static void f_fetch_row(INT32 args)
   int num_fields = mysql_num_fields(PIKE_MYSQL_RES->result);
   MYSQL_ROW row = mysql_fetch_row(PIKE_MYSQL_RES->result);
 #ifdef HAVE_MYSQL_FETCH_LENGTHS
-  int *row_lengths = mysql_fetch_lengths(PIKE_MYSQL_RES->result);
+  FETCH_LENGTHS_TYPE *row_lengths =
+    mysql_fetch_lengths(PIKE_MYSQL_RES->result);
 #endif /* HAVE_MYSQL_FETCH_LENGTHS */
 
   pop_n_elems(args);
