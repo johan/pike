@@ -249,12 +249,12 @@ unsigned short extract_short( unsigned char *b )
  *!   Raw picture information.
  *!
  *!   @array pixels
- *!     @item 0
+ *!     @elem string 0
  *!       Size information on the format
  *!         (@expr{sprintf("%d %d %d %d", h, w, ncolors, bpn)@}).
- *!     @item 1..ncolors
+ *!     @elem string 1..ncolors
  *!       Same as @[colors].
- *!     @item ncolors+1..ncolors+h
+ *!     @elem string ncolors_plus_one..ncolors_plus_h
  *!       Line information. Strings of length @[bpn]*w with encoded
  *!       pixels for each line.
  *!   @endarray
