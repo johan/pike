@@ -442,7 +442,7 @@ static void pvr_decode_alpha_rect(INT32 attr, unsigned char *src,
    case MODE_ARGB1555:
      while(cnt--) {
        if(src[1]&0x80)
-	 dst->r = dst->g = dst->b = ~0;
+	 dst->r = dst->g = dst->b = 0xff;
        else
 	 dst->r = dst->g = dst->b = 0;
        src+=2;
@@ -472,7 +472,7 @@ static void pvr_decode_alpha_twiddled(INT32 attr, unsigned char *s,
      for(y=0; y<sz; y++) {
        for(x=0; x<sz; x++) {
 	 if(s[(((twiddletab[x]<<1)|twiddletab[y])<<1)+1]&0x80)
-	   dst->r = dst->g = dst->b = ~0;
+	   dst->r = dst->g = dst->b = 0xff;
 	 else
 	   dst->r = dst->g = dst->b = 0;
 	 dst++;
