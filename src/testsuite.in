@@ -3382,6 +3382,12 @@ test_compile_error_low([[void a(int i){} void b(function(:void) f){} void c(){b(
 test_compile_any([[void a(){} function(int:void) b = a;]]);
 test_compile_error_low([[void a(int i){} function(:void) b = a;]]);
 
+// Duplicate local variable
+test_compile_error([[void f() {int i; int i;}]]);
+test_compile_error([[void f() {int i; mapping i;}]]);
+test_compile_error([[void f() {int i; void i() {};}]]);
+test_compile_error([[void f (int i) {string i;}]]);
+
 // Not yet cataloged
 test_any(int i=10; { int i; } return i, 10)
 test_program(void foo(int a ,int b); function(int,int:void) a() { return foo; })
