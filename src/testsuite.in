@@ -2823,6 +2823,18 @@ test_compile_error([[
 FOO
 ]])
 
+test_any([[
+#define FOOa(X) (X)
+return FOOa(2);
+]],2)
+
+test_any([[
+#define FOOa(X) \
+(X)
+return FOOa(2);
+]],2)
+
+
 // /* */
 test_any([[
 /* return 99; * /  /* */
