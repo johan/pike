@@ -372,6 +372,8 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
     fatal("Internal error: Cast failed (run_time_type = %d, sp[-1].type = %d.)\n",run_time_type,sp[-1].type);
 #endif
 
+  if (!type) return;
+
   switch(run_time_type)
   {
     case T_ARRAY:
