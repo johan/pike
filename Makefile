@@ -266,13 +266,12 @@ xenofarm_feature:
 	  xenofarm
 
 xenofarm:
-	test -d build || mkdir build
-	-rm -rf build/xenofarm
-	mkdir build/xenofarm
-	-CCACHE_LOGFILE="`pwd`/build/xenofarm/ccache.log.txt" \
+	-rm -rf xenofarm_result
+	mkdir xenofarm_result
+	-CCACHE_LOGFILE="`pwd`/xenofarm_result/ccache.log.txt" \
 	  MAKE="$(MAKE_CMD)" CONFIGUREARGS="$(CONFIGUREARGS)" \
 	  BUILDDIR="$(BUILDDIR)" /bin/sh bin/xenofarm.sh
-	cd build/xenofarm && tar cf - . > ../../xenofarm_result.tar
+	cd xenofarm_result && tar cf - . > ../xenofarm_result.tar
 	gzip -f9 xenofarm_result.tar
 
 benchmark:
