@@ -1404,7 +1404,7 @@ static void low_pike_sprintf(struct format_stack *fs,
 	/* Special casing for infinity and not a number,
 	 * since many libc's forget about them...
 	 */
-	if (tf != tf) {
+	if (!(tf == tf)) {
 	  /* NaN */
 	  fs->fsp->b = MKPCHARP("nan", 0);
 	  fs->fsp->len = 3;
