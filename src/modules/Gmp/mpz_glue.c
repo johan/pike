@@ -740,8 +740,8 @@ void pike_module_init(void)
 
   add_program_constant("mpz", mpzmod_program=end_program(), 0);
 
-  add_function("mpz_pow", gmp_pow, "function(int, int:object)", 0);
-  add_function("mpz_fac", gmp_fac, "function(int:object)", 0);
+  add_function("pow", gmp_pow, "function(int, int:object)", 0);
+  add_function("fac", gmp_fac, "function(int:object)", 0);
 
 #endif
 }
