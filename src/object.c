@@ -237,12 +237,6 @@ void destruct(struct object *o)
 
   o->refs++;
 
-  if(o->parent)
-  {
-    free_object(o->parent);
-    o->parent=0;
-  }
-
   e=FIND_LFUN(o->prog,LFUN_DESTROY);
   if(e != -1)
   {
@@ -258,6 +252,12 @@ void destruct(struct object *o)
   }
 
   o->prog=0;
+
+  if(o->parent)
+  {
+    free_object(o->parent);
+    o->parent=0;
+  }
 
   frame.parent_frame=fp;
   frame.current_object=o;  /* refs already updated */
