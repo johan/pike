@@ -209,9 +209,9 @@ PMOD_EXPORT void Pike_vsnprintf(char *str, size_t size,
 	  dynamic_buffer buf;
 	  dynbuf_string s;
 	  char *ostr;
-	  struct svalue *t = va_arg(args, struct svalue *);
+	  struct svalue t = va_arg(args, struct svalue);
 	  init_buf(&buf);
-	  describe_svalue(t,0,0);
+	  describe_svalue(&t,0,0);
 	  s=complex_free_buf(&buf);
 	  ostr=s.str;
 
