@@ -2269,7 +2269,7 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 	    {
 	      p_wchar0 *p = string_builder_allocate(s, len, 0);
 	      do {
-		*(p++) = '0' + val%10;
+		p[--len] = '0' + val%10;
 		val /= 10;
 	      } while (val);
 	    }
@@ -2278,7 +2278,7 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 	    {
 	      p_wchar1 *p = string_builder_allocate(s, len, 0);
 	      do {
-		*(p++) = '0' + val%10;
+		p[--len] = '0' + val%10;
 		val /= 10;
 	      } while (val);
 	    }
@@ -2287,7 +2287,7 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 	    {
 	      p_wchar2 *p = string_builder_allocate(s, len, 0);
 	      do {
-		*(p++) = '0' + val%10;
+		p[--len] = '0' + val%10;
 		val /= 10;
 	      } while (val);
 	    }
