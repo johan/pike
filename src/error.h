@@ -102,7 +102,7 @@ extern int throw_severity;
   do{ \
      check_recovery_context(); \
      OED_FPRINTF((stderr, "SET_ONERROR(%p, %p, %p) %s:%d\n", \
-                  &(X), (Y), (Z), __FILE__, __LINE__)); \
+                  &(X), (Y), (void *)(Z), __FILE__, __LINE__)); \
      X.func=(error_call)(Y); \
      X.arg=(void *)(Z); \
      if(!recoveries) break; \
