@@ -410,6 +410,13 @@ void th_init(void)
 #endif /* SGI_SPROC_THREADS */
 
   THREADS_FPRINTF((stderr, "THREADS_DISALLOW() Initializing threads.\n"));
+
+#ifdef POSIX_THREADS
+#ifdef HAVE_PTHREAD_INIT
+  pthread_init();
+#endif /* HAVE_PTHREAD_INIT */
+#endif /* POSIX_THREADS */
+
   mt_init( & interpreter_lock);
   mt_lock( & interpreter_lock);
 #ifdef POSIX_THREADS
