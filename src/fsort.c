@@ -7,6 +7,7 @@
 /* Optimized for minimum amount of compares */
 
 #include "global.h"
+#include "error.h"
 #include "fsort.h"
 
 RCSID("$Id$");
