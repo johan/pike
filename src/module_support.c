@@ -133,6 +133,10 @@ PMOD_EXPORT void check_all_args(const char *fnname, int args, ... )
  * usage: get_args(sp-args, args, "%i",&an_int)
  * format specifiers:
  *   %i: INT_TYPE
+ *   %I: int of float -> INT_TYPE 
+ *   %d: int (the c type "int" which may vary from INT_TYPE)
+ *   %D: int of float -> int
+ *   %+: positive int -> INT_TYPE
  *   %s: char *				Only 8bit strings
  *   %S: struct pike_string *		Only 8bit strings
  *   %W: struct pike_string *		Allow wide strings
