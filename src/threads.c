@@ -722,6 +722,7 @@ TH_RETURN_TYPE new_thread_func(void * data)
   Pike_interpreter.stack_top=((char *)&data)+ (thread_stack_size-16384) * STACK_DIRECTION;
   Pike_interpreter.recoveries = NULL;
   SWAP_OUT_THREAD(OBJ2THREAD(Pike_interpreter.thread_id)); /* Init struct */
+  Pike_interpreter.thread_id=arg.id;
   OBJ2THREAD(Pike_interpreter.thread_id)->swapped=0;
 
 #if defined(PIKE_DEBUG)
