@@ -370,7 +370,7 @@ void exif_seek(Stdio.File file, int offset, int exif_offset)
 
 string format_bytes(string str)
 {
-  return (array(string))((array(int))str)*" ";
+  return str;
 }
 
 mapping parse_tag(Stdio.File file, mapping tags, mapping exif_info,
@@ -405,6 +405,8 @@ mapping parse_tag(Stdio.File file, mapping tags, mapping exif_info,
   int pos=file->tell();
   if(tag_len>4)
     exif_seek(file, long_value(file->read(4), order), exif_offset);
+
+  werror("%s %d\n", tag_name, tag_type);
 
   if(tag_type==1 || tag_type==6 || tag_type==7)
   {
