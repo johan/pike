@@ -3908,12 +3908,13 @@ void f_create_process(INT32 args)
 }
 
 #ifdef HAVE_FORK
-/*! @decl int fork()
+/*! @decl object fork()
  *!
  *! Fork the process in two.
  *!
- *! Fork splits the process in two, and for the parent it returns the
- *! pid of the child. Refer to your Unix manual for further details.
+ *! Fork splits the process in two, and for the parent it returns a
+ *! pid object for the child. Refer to your Unix manual for further
+ *! details.
  *!
  *! @note
  *!   This function can cause endless bugs if used without proper care.
