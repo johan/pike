@@ -173,22 +173,13 @@ void f_syslog(INT32 args)
   if(i & (1<<6)) pri |= LOG_INFO;
   if(i & (1<<6)) pri |= LOG_DEBUG;
   
-  reference_shared_string(s);
-  push_string(s);
-  push_string(make_shared_string("%"));
-  push_string(make_shared_string("%%"));
-  f_replace(3);
-
-  message = sp[-1].u.string->str;
-
   THREADS_ALLOW();
  
-  syslog(pri, message,
-	 "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s");
+  syslog(pri, "%s", s->str);
 
   THREADS_DISALLOW();
 
-  pop_n_elems(args + 1);
+  pop_n_elems(args);
 }
  
 void f_closelog(INT32 args)
