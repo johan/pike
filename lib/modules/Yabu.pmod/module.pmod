@@ -1213,6 +1213,9 @@ class db {
   void destroy()
   {
     sync();
+    foreach(values(tables), object o)
+      if(o)
+	destruct(o);
   }
   
   int reorganize(float|void ratio)
