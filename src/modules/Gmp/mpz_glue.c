@@ -901,6 +901,7 @@ static void name(INT32 args)				\
 
 BINFUN(mpzmod_and,mpz_and)
 BINFUN(mpzmod_or,mpz_ior)
+BINFUN(mpzmod_xor,my_mpz_xor)
 
 static void mpzmod_compl(INT32 args)
 {
@@ -1263,6 +1264,8 @@ void pike_module_exit(void)
   ADD_FUNCTION("``&",mpzmod_and,tMpz_binop_type,0);			\
   ADD_FUNCTION("`|",mpzmod_or,tMpz_binop_type,0);			\
   ADD_FUNCTION("``|",mpzmod_or,tMpz_binop_type,0);			\
+  ADD_FUNCTION("`^",mpzmod_xor,tMpz_binop_type,0);			\
+  ADD_FUNCTION("``^",mpzmod_xor,tMpz_binop_type,0);			\
   ADD_FUNCTION("`~",mpzmod_compl,tFunc(tNone,tObj),0);			\
 									\
   add_function("`<<",mpzmod_lsh,MPZ_SHIFT_TYPE,0);			\

@@ -23,5 +23,6 @@
 unsigned long mpz_small_factor(mpz_t n, int limit);
 
 void mpz_next_prime(mpz_t p, mpz_t n, int count, int prime_limit);
+void my_mpz_xor _PROTO ((mpz_ptr, mpz_srcptr, mpz_srcptr));
 
 #endif /* MY_GMP_H_INCLUDED */
