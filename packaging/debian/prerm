@@ -8,6 +8,9 @@
 
 set -e
 
+PIKE=7.3
+PIKEBIN=pike${PIKE}
+
 # summary of how this script can be called:
 #        * <prerm> `remove'
 #        * <old-prerm> `upgrade' <new-version>
@@ -19,10 +22,18 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
+cleanmods()
+{
+    PIKEVER=`/usr/bin/$PIKEBIN -e 'string v; int rel;sscanf(version(), "Pike v%s release %d", v, rel); write(v+"."+rel);'` || ""
+    if [ -d /usr/lib/pike7.3/$PIKEVER/ ]; then
+        rm -rf `find /usr/lib/pike7.3/$PIKEVER/ -name "*.o" -type f -print` 2> /dev/null
+    fi
+}
 
 case "$1" in
     remove|upgrade|deconfigure)
-	update-alternatives --remove pike /usr/bin/pike7.2
+        update-alternatives --remove pike /usr/bin/${PIKEBIN}
+        cleanmods 
         ;;
     failed-upgrade)
         ;;
