@@ -40,8 +40,7 @@ extern struct program *Shuffler_program;
  *!  This is an interface that all @[Throttler]s must implement.
  *!  It's not an actual class in this module.
  *!
- *! @decl void request( Shuffle shuffle, int amount, @
- *!                     function(int:void) callback )
+ *! @decl void request( Shuffle shuffle, int amount, function(int:void) callback )
  *! This function is called when the @[Shuffle] wants to send some
  *! data to a client.
  *!
