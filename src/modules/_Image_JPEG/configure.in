@@ -35,9 +35,7 @@ int main(int argc, char **argv)
       else
         AC_MSG_RESULT(no)
       fi
-      AC_CHECK_LIB(jpeg, jcopy_sample_rows)
-      AC_CHECK_LIB(jpeg, jcopy_block_row)
-      AC_CHECK_LIB(jpeg, jzero_far)
+      AC_CHECK_FUNCS(jcopy_sample_rows jcopy_block_row jzero_far)
     ])
   fi
 fi
