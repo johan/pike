@@ -3411,7 +3411,11 @@ PMOD_EXPORT void f_sleep(INT32 args)
 #ifdef __NT__
        Sleep(DO_NOT_WARN((int)(left*1000)));
 #elif defined(HAVE_POLL)
-       poll(NULL,0,(int)(left*1000));
+       {
+	 /* MacOS X is stupid, and requires a non-NULL pollfd pointer. */
+	 struct pollfd sentinel;
+	 poll(&sentinel, 0, (int)(left*1000));
+       }
 #else
        {
 	 struct timeval t3;
@@ -3519,7 +3523,11 @@ PMOD_EXPORT void f_delay(INT32 args)
 #ifdef __NT__
 	 Sleep(DO_NOT_WARN((int)(left*1000)));
 #elif defined(HAVE_POLL)
-	 poll(NULL,0,(int)(left*1000));
+	 {
+	   /* MacOS X is stupid, and requires a non-NULL pollfd pointer. */
+	   struct pollfd sentinel;
+	   poll(&sentinel, 0, (int)(left*1000));
+	 }
 #else
 	 {
 	   struct timeval t3;
@@ -4282,7 +4290,7 @@ static ptrdiff_t low_parse_format(p_wchar0 *s, ptrdiff_t slen)
 	case '\'':
 	case '+':
 	case '~':
-	  break;
+	  continue;
 	  /* Attributes */
 	case '.':
 	case ':':
