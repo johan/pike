@@ -46,6 +46,7 @@ FILE_FUNC("open",file_open,"function(string,string,void|int:int)")
 
   FILE_FUNC("set_blocking",file_set_blocking,"function(:void)")
 
+  FILE_FUNC ("is_open", file_is_open, "function(:int)");
   FILE_FUNC("query_fd",file_query_fd,"function(:int)")
 
   FILE_FUNC("dup2",file_dup2,"function(object:int)")

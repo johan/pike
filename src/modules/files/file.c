@@ -2146,6 +2146,21 @@ static void file_set_close_on_exec(INT32 args)
   pop_n_elems(args-1);
 }
 
+/*! @decl int is_open()
+ *!
+ *! Returns true if the file is open.
+ *!
+ *! @note
+ *! Most methods can't be called for a file descriptor that isn't
+ *! open. Notable exceptions @[errno], @[mode], and the set and query
+ *! functions for callbacks and backend.
+ */
+static void file_is_open (INT32 args)
+{
+  pop_n_elems (args);
+  push_int (FD >= 0);
+}
+
 /*! @decl int query_fd()
  *!
  *! Returns the file descriptor number associated with this object.
