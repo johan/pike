@@ -591,6 +591,9 @@ INT32 real_gc_check(void *a)
     return 0;
   }
 
+  if(m->saved_refs != -1)
+    if(m->saved_refs != *(INT32 *)a)
+      fatal("Refs changed in gc()\n");
   m->saved_refs = *(INT32 *)a;
 #endif
 
