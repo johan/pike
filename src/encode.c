@@ -15,6 +15,8 @@
 #include "mapping.h"
 #include "array.h"
 #include "multiset.h"
+#include "language.h"
+#include "lex.h"
 #include "dynamic_buffer.h"
 #include "pike_error.h"
 #include "operators.h"
@@ -2122,6 +2124,11 @@ static void cleanup_new_program_decode (int *orig_compilation_depth)
   compilation_depth = *orig_compilation_depth;
 }
 
+static void set_lex_pragmas(INT32 old_pragmas)
+{
+  lex.pragmas = old_pragmas;
+}
+
 static DECLSPEC(noreturn) void decode_error (struct svalue *decoding,
 					     struct svalue *other,
 					     char *msg, ...)
@@ -3216,12 +3223,14 @@ static void decode_value2(struct decode_data *data)
 	{
 	  struct program *p;
 	  ONERROR err;
+	  ONERROR err2;
 	  int orig_compilation_depth;
 	  int byteorder;
 	  int bytecode_method;
 	  int entry_type;
 	  INT16 id_flags;
 	  INT16 p_flags;
+	  INT32 old_pragmas = lex.pragmas;
 #define FOO(NUMTYPE,Y,ARGTYPE,NAME) \
           NUMTYPE PIKE_CONCAT(local_num_, NAME) = 0;
 #include "program_areas.h"
@@ -3274,6 +3283,12 @@ static void decode_value2(struct decode_data *data)
 	  }
 	  else
 	    p = NULL;
+
+	  /* We don't want to be affected by #pragma save_parent or
+	   * __pragma_save_parent__.
+	   */
+	  lex.pragmas = (old_pragmas & ~ID_SAVE_PARENT)|ID_DONT_SAVE_PARENT;
+	  SET_ONERROR(err2, set_lex_pragmas, old_pragmas);
 
 	  /* Start the new program. */
 	  orig_compilation_depth = compilation_depth;
@@ -3797,6 +3812,9 @@ static void decode_value2(struct decode_data *data)
 	  pop_stack();
 	  compilation_depth = orig_compilation_depth;
 	  push_program(p);
+
+	  /* Restore lex.pragmas. */
+	  CALL_AND_UNSET_ONERROR(err2);
 
 	  EDB(5, dump_program_tables(p, data->depth));
 #ifdef PIKE_DEBUG
