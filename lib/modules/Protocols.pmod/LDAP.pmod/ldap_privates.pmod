@@ -35,6 +35,9 @@
 //import Standards.ASN1.Encode;
 
 #if constant(Standards.ASN1.Types)
+
+#include "ldap_globals.h"
+
 class asn1_enumerated
 {
   inherit Standards.ASN1.Types.asn1_integer;
