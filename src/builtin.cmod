@@ -980,6 +980,7 @@ PIKEFUN object function_object(function|program func)
 	return;
       }
       func->type=T_OBJECT;
+      func->subtype = 0;
       return;
 
 
