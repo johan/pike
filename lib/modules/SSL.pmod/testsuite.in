@@ -5,6 +5,7 @@ test_any([[
 return SSL.constants && 1;
 ]], 1)
 
+cond_resolv(Crypto.Hash, [[
 test_any([[
 #pike 7.4
 return SSL.cipher && 1;
@@ -71,6 +72,7 @@ int a() {
   object s = Server();
   return 1;
 }
+]])
 ]])
 
 dnl   test_do([[
