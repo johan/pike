@@ -313,7 +313,7 @@ void img_bmp_encode(INT32 args)
 		  if (m>1) 
 		  {
 		     b=s[1];
-		     for (i=2; i<m; i++)
+		     for (i=1; i<m && i<255; i++)
 			if (s[i]!=((i&1)?a:b)) break;
 		  }
 		  else
@@ -344,7 +344,7 @@ void img_bmp_encode(INT32 args)
 	       while (m)
 	       {
 		  a=s[0];
-		  for (i=1; i<m; i++)
+		  for (i=1; i<m && i<255; i++)
 		     if (s[i]!=a) break;
 
 		  if (i>l) i=l;
