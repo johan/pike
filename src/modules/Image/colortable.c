@@ -2233,7 +2233,7 @@ void image_colortable_reduce(INT32 args)
 void image_colortable_operator_plus(INT32 args)
 {
    struct object *o,*tmpo=NULL;
-   struct neo_colortable *dest,*src;
+   struct neo_colortable *dest,*src=NULL;
 
    int i;
 
@@ -2285,7 +2285,7 @@ void image_colortable_operator_plus(INT32 args)
 void image_colortable_operator_minus(INT32 args)
 {
    struct object *o;
-   struct neo_colortable *dest,*src;
+   struct neo_colortable *dest,*src=NULL;
 
    int i;
 

@@ -39,7 +39,7 @@ extern struct program *image_program;
 
 #define STANDARD_OPERATOR_HEADER(what) \
    struct object *o;			   			\
-   struct image *img,*oper;		   			\
+   struct image *img,*oper=NULL;	   			\
    rgb_group *s1,*s2,*d;		   			\
    rgbl_group rgb;                                              \
    INT32 i;				   			\
