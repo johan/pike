@@ -88,6 +88,7 @@ constant udp = ([
   "vettcp":            78,	//    vettcp
   "finger":            79,	//    Finger
   "www-http":          80,	//    World Wide Web HTTP
+  "http":              80,	//    World Wide Web HTTP
   "hosts2-ns":         81,	//    HOSTS2 Name Server
   "xfer":              82,	//    XFER Utility
   "mit-ml-dev":        83,	//    MIT ML Device
