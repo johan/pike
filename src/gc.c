@@ -1188,7 +1188,8 @@ void debug_describe_svalue(struct svalue *s)
   switch(s->type)
   {
     case T_INT:
-      fprintf(stderr,"    %"PRINTPIKEINT"d\n",s->u.integer);
+      fprintf(stderr,"    %"PRINTPIKEINT"d (subtype %d)\n",s->u.integer,
+	      s->subtype);
       break;
 
     case T_FLOAT:
