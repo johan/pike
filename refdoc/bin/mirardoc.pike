@@ -512,6 +512,7 @@ void document(string enttype,
 	      mapping huh,string name,string prefix,
 	      object f)
 {
+  int(0..1) has_doc;
    array(string) names;
 
    if (huh->names)
@@ -684,6 +685,7 @@ void document(string enttype,
 
    if (res!="")
    {
+     has_doc = 1;
       f->write("<doc>\n"+res+"\n</doc>\n");
    }
 
@@ -770,6 +772,7 @@ void document(string enttype,
 	 f->write("</"+enttype+">\n\n");
 	 break;
       default:
+	if(!has_doc) f->write("<doc/>");
 	 f->write("</docgroup>\n\n");
 	 break;
    }
