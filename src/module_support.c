@@ -45,7 +45,7 @@ static int va_check_args(struct svalue *s,
     res->expected = va_arg(arglist, unsigned int);
 
   if(!res->expected ||
-     (res->expected & (BIT_MIXED|BIT_VOID))) return 1;
+     (res->expected & BIT_VOID)) return 1;
   res->error_type = ERR_TOO_FEW;
   return 0;
 }
