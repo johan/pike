@@ -244,13 +244,13 @@ void img_bmp_encode(INT32 args)
 }
 
 /*
+**! method object decode(string data)
 **! method mapping _decode(string data)
 **! method mapping decode_header(string data)
-**! method object decode(string data)
+**! method object decode(string data,mapping options)
 **! method mapping _decode(string data,mapping options)
 **! method mapping decode_header(string data,mapping options)
-**! method object decode(string data,mapping options)
-**!	Decode a BMP. Not all modes are supported.
+**!	Decode a BMP. 
 **!
 **!	<ref>decode</ref> gives an image object,
 **!	<ref>_decode</ref> gives a mapping in the format
