@@ -154,7 +154,7 @@ static void grow_fds_to_close( )
   if(!fds_to_close)
     fatal("Out of memory in fd_control::grow_fds_to_close()\n"
           "Tried to allocate %d fd_datum structs\n", fds_to_close_size);
-  MEMSET( fds+(fds_size/2), 0, fds_to_close_size*sizeof(int)/2 );
+  MEMSET( fds+(fds_to_close_size/2), 0, fds_to_close_size*sizeof(int)/2 );
 }
 
 void do_close_on_exec(void)
@@ -164,6 +164,16 @@ void do_close_on_exec(void)
     while( close(fds_to_close[i]) <0 && errno==EINTR) ;
   }
   num_fds_to_close = 0;
+}
+
+void cleanup_close_on_exec(void)
+{
+  if (fds_to_close) {
+    free(fds_to_close);
+    fds_to_close = 0;
+    fds_to_close_size = 0;
+    num_fds_to_close = 0;
+  }
 }
 #endif /* HAVE_BROKEN_F_SETFD */
 
