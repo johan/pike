@@ -362,7 +362,7 @@ badresult:
 		  for(;k>0 && value[k]==' ';k--);
 		  break;
 #endif
-#ifdef HAVE_PQUNESCAPEBYTEA
+#if defined(HAVE_PQUNESCAPEBYTEA) && defined(BYTEAOID)
 		case BYTEAOID:
 		  if(binbuf=PQunescapeBytea(value,&binlen))
 		    value=binbuf,k=binlen;
