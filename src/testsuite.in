@@ -2961,6 +2961,15 @@ test_search4("kapit\3333l>")
 test_search4("kapit\3333333l>")
 
 
+// - sprintf
+test_eq(sprintf("%.1f",31415.9267),"31415.9")
+test_eq(sprintf("%.0f",31415.9267),"31416")
+test_eq(sprintf("%.-1f",31415.9267),"31420")
+test_eq(sprintf("%.-2f",31415.9267),"31400")
+test_eq(sprintf("%.-2f",-31415.9267),"-31400")
+test_eq(sprintf("%.-10f",31415.9267),"0")
+test_eq(sprintf("%20.-3f", 31415.92670),"               31000")
+
 // - sizeof
 test_eq(sizeof("felbar"),6)
 test_eq(sizeof(({"fulbar","gazonk",7})),3)
