@@ -92,12 +92,15 @@ else
     AC_DEFINE_UNQUOTED(HAVE_LIBGLUT)
     LIBS="-lglut $LIBS"
     AUTO=auto.o
+    PIKE_FEATURE(GLUT,[yes (libglut)])
   elif test x"$ac_cv_header_GLUT_glut_h$pike_cv_framework_GLUT" = "xyesyes"; then
     AC_DEFINE_UNQUOTED(HAVE_LIBGLUT)
     LIBS="-framework GLUT -lobjc $LIBS"
     AUTO=auto.o
+    PIKE_FEATURE(GLUT,[yes (framework GLUT)])
   else
     AUTO=""
+    PIKE_FEATURE_NODEP(GLUT)
   fi
 
   # Check for availability of some functions that aren't present in
