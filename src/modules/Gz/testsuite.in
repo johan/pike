@@ -28,5 +28,5 @@ cond([[  master()->resolv("Gz")->deflate && master()->resolv("Crypto") && master
   dotest(Crypto.randomness.pike_random()->read(32768))
 
     dotest(Crypto.randomness.pike_random()->read(524288))
-    dotest(Crypto.randomness.pike_random()->read(8388608))
+    dotest(Crypto.randomness.pike_random()->read(8388500))
 ]])
