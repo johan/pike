@@ -224,7 +224,7 @@ int low_add_local_name(struct compiler_frame *,
 static node *lexical_islocal(struct pike_string *);
 
 static int varargs;
-static INT32  current_modifiers;
+INT32  current_modifiers;
 static struct pike_string *last_identifier=0;
 
 

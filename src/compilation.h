@@ -116,6 +116,7 @@
   IMEMBER(int,compiler_pass)
   ZMEMBER(int,local_class_counter)
   ZMEMBER(int,catch_level)
+  ZMEMBER(INT32,current_modifiers)
   ZMEMBER(struct mapping *,module_index_cache)
   STACKMEMBER(unsigned char *,type_stackp)
   STACKMEMBER(unsigned char **,pike_type_mark_stackp)

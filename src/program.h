@@ -301,6 +301,7 @@ extern struct program *first_program;
 extern int compiler_pass;
 extern long local_class_counter;
 extern int catch_level;
+extern INT32 current_modifiers;
 extern INT32 num_used_modules;
 extern struct program *pike_trampoline_program;
 
