@@ -1,3 +1,10 @@
+/*
+ * $Id$
+ *
+ * RFC1521 functionality for Pike
+ *
+ * Marcus Comstedt 1996-1997
+ */
 
 class support {
 
