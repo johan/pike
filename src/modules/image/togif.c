@@ -506,7 +506,7 @@ void image_togif_fs(INT32 args)
    struct colortable *ct=NULL;
 
    if (args>0 && sp[-args].type==T_ARRAY)
-      ct=colortable_from_array(sp[-args].u.array,"image->togif()\n");
+      ct=colortable_from_array(sp[-args].u.array,"image->togif_fs()\n");
    else if (args>0 && args!=3 && sp[-args].type==T_INT)
       ct=colortable_quant(THIS,min(256,max(2,sp[-args].u.integer)));
 
