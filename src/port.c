@@ -704,6 +704,9 @@ PMOD_EXPORT int VSPRINTF(char *buf,const char *fmt,va_list args)
 PMOD_EXPORT int VSNPRINTF(char *buf, size_t size, const char *fmt, va_list args)
 {
   int res;
+  if (!size) {
+    buf = alloca(size=1000);
+  }
   buf[size - 1] = 0;
   res = VSPRINTF (buf, fmt, args);
   if (buf[size - 1]) Pike_fatal ("Buffer overflow in VSPRINTF.\n");
