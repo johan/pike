@@ -646,14 +646,18 @@ def: modifiers type_or_error optional_stars TOK_IDENTIFIER push_compiler_frame0
 	    if (id) {
 	      struct pike_string *new_type;
 	      fprintf(stderr, "Defined, type:\n");
+#ifdef PIKE_DEBUG
 	      simple_describe_type(id->type);
+#endif
 
 	      new_type = or_pike_types(s, id->type, 1);
 	      free_string(s);
 	      s = new_type;
 
 	      fprintf(stderr, "Resulting type:\n");
+#ifdef PIKE_DEBUG
 	      simple_describe_type(s);
+#endif
 	    } else {
 	      my_yyerror("Lost identifier %s (%d).",
 			 $4->u.sval.u.string->str, i);
@@ -662,7 +666,9 @@ def: modifiers type_or_error optional_stars TOK_IDENTIFIER push_compiler_frame0
 	    fprintf(stderr, "Not defined.\n");
 	  }
 	  fprintf(stderr, "New type:\n");
+#ifdef PIKE_DEBUG
 	  simple_describe_type(s);
+#endif
 	}
       } else {
 	/* FIXME: Second pass reuses the type from the end of
@@ -679,7 +685,9 @@ def: modifiers type_or_error optional_stars TOK_IDENTIFIER push_compiler_frame0
 	    copy_shared_string(s, id->type);
 
 	    fprintf(stderr, "Resulting type:\n");
+#ifdef PIKE_DEBUG
 	    simple_describe_type(s);
+#endif
 	  }
 	} else {
 	  my_yyerror("Identifier %s lost after first pass.",
