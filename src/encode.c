@@ -1463,7 +1463,6 @@ static void decode_value2(struct decode_data *data)
 		break;
 
 	      case T_PROGRAM:
-		p->inherits[d].parent_identifier=0;
 		p->inherits[d].prog=sp[-1].u.program;
 		sp--;
 		dmalloc_touch_svalue(sp);
