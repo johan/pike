@@ -188,6 +188,7 @@ RCSID("$Id$");
 #include "error.h"
 #include "docode.h"
 #include "machine.h"
+#include "cyclic.h"
 
 #define YYMAXDEPTH	1000
 
@@ -1289,29 +1290,36 @@ low_idents: F_IDENTIFIER
       if(!num_parse_error)
       {
 	if(get_master())
-	   {
-	     reference_shared_string(last_identifier);
-	     push_string(last_identifier);
-	     ref_push_string(lex.current_file);
-	     SAFE_APPLY_MASTER("resolv", 2);
-	
-	     if(throw_value.type == T_STRING)
+	   {	
+	     DECLARE_CYCLIC();
+	     if(BEGIN_CYCLIC(last_identifier, lex.current_file))
 	     {
-	       if(compiler_pass==2)
-		 my_yyerror("%s",throw_value.u.string->str);
-	       else
-		 $$=mknode(F_UNDEFINED,0,0);
-	     }
-	     else if(IS_ZERO(sp-1) && sp[-1].subtype==1)
-	     {
-	       if(compiler_pass==2)
-		 my_yyerror("'%s' undefined.", last_identifier->str);
-	       else
-		 $$=mknode(F_UNDEFINED,0,0);
+	       my_yyerror("Recursive module dependency in %s",last_identifier->str);
 	     }else{
-	       $$=mkconstantsvaluenode(sp-1);
+	       SET_CYCLIC_RET(1);
+	       ref_push_string(last_identifier);
+	       ref_push_string(lex.current_file);
+	       SAFE_APPLY_MASTER("resolv", 2);
+	       
+	       if(throw_value.type == T_STRING)
+	       {
+		 if(compiler_pass==2)
+		   my_yyerror("%s",throw_value.u.string->str);
+		 else
+		   $$=mknode(F_UNDEFINED,0,0);
+	       }
+	       else if(IS_ZERO(sp-1) && sp[-1].subtype==1)
+	       {
+		 if(compiler_pass==2)
+		   my_yyerror("'%s' undefined.", last_identifier->str);
+		 else
+		   $$=mknode(F_UNDEFINED,0,0);
+	       }else{
+		 $$=mkconstantsvaluenode(sp-1);
+	       }
+	       pop_stack();
+	       END_CYCLIC();
 	     }
-	     pop_stack();
 	   }else{
 	     if(compiler_pass==2)
 	     {
