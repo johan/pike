@@ -12,7 +12,7 @@ RCSID("$Id$");
 
 #define CYCLIC_HASH_SIZE 4711
 
-CYCLIC *cyclic_hash[CYCLIC_HASH_SIZE];
+static CYCLIC *cyclic_hash[CYCLIC_HASH_SIZE];
 
 static void low_unlink_cyclic(CYCLIC *c)
 {
