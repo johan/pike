@@ -120,7 +120,10 @@ void exit_lex(void)
 #ifdef PIKE_DEBUG
   if(p_flag)
   {
+    extern void present_constant_profiling(void);
     int e;
+    present_constant_profiling();
+
     fprintf(stderr,"Opcode compiles: (opcode, compiled)\n");
     for(e=0;e<F_MAX_OPCODE-F_OFFSET;e++)
     {

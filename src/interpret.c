@@ -982,6 +982,7 @@ int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 	(*(s->u.efun->function))(args);
 
 #ifdef PIKE_DEBUG
+	s->u.efun->runs++;
 	if(Pike_sp != expected_stack + !s->u.efun->may_return_void)
 	{
 	  if(Pike_sp < expected_stack)
