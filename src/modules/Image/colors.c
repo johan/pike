@@ -945,7 +945,7 @@ static void image_color_index(INT32 args)
 static void image_color_equal(INT32 args)
 {
    if (args!=1) 
-      Pike_error("Image.Color.Color->`==: illegal number of arguments");
+      Pike_error("Image.Color.Color->`==: illegal number of arguments\n");
 
    if (sp[-1].type==T_OBJECT)
    {
@@ -1248,7 +1248,7 @@ static void image_get_color(INT32 args)
    static char *callables[]={"light","dark","neon","dull","bright"};
 
    if (args!=1) 
-      Pike_error("Image.Color[]: illegal number of args");
+      Pike_error("Image.Color[]: illegal number of args.\n");
    
    if (!colors)
       make_colors();

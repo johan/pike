@@ -494,7 +494,7 @@ static void image_x_encode_pseudocolor_1byte_exact(INT32 args,
 					  img->xsize*img->ysize,img->xsize))
    {
       free_string(end_shared_string(dest));
-      Pike_error("Image.x.encode_pseudocolor: colortable not initialised");
+      Pike_error("Image.x.encode_pseudocolor: colortable not initialised.\n");
    }
 
    if (!translate && !linemod)
@@ -566,7 +566,7 @@ static void image_x_encode_pseudocolor_1byte(INT32 args,
 					  img->xsize*img->ysize,img->xsize))
    {
       free_string(end_shared_string(dest));
-      Pike_error("Image.x.encode_pseudocolor: colortable not initialised");
+      Pike_error("Image.x.encode_pseudocolor: colortable not initialised.\n");
    }
 
    dest2=begin_shared_string(((img->xsize*bpp+blinemod)*img->ysize+7)/8);
@@ -667,7 +667,7 @@ static void image_x_encode_pseudocolor_2byte(INT32 args,
 					  img->xsize*img->ysize,img->xsize))
    {
       free_string(end_shared_string(dest));
-      Pike_error("Image.x.encode_pseudocolor: colortable not initialised");
+      Pike_error("Image.x.encode_pseudocolor: colortable not initialised.\n");
    }
 
    dest2=begin_shared_string(((img->xsize*bpp+blinemod)*img->ysize+7)/8);

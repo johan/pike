@@ -3276,7 +3276,7 @@ void build_rigid(struct neo_colortable *nct)
    int rc,gc,bc;
    int di,hdi,hhdi;
 
-   if (nct->lu.rigid.index) Pike_fatal("rigid is initialized twice");
+   if (nct->lu.rigid.index) Pike_fatal("rigid is initialized twice.\n");
 
    index=malloc(sizeof(int)*r*g*b);
    dist=malloc(sizeof(int)*r*g*b);

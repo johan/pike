@@ -339,7 +339,7 @@ static void f_decode_packbits_encoded(INT32 args)
   int compression = 0;
   struct buffer b, ob, d;
   if(sp[-args].type != T_STRING)
-    Pike_error("Internal argument error");
+    Pike_error("Internal argument error.\n");
 
 
   if(args == 5)

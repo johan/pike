@@ -53,7 +53,7 @@ extern struct program *image_program;
    rgb_group trgb;                                                      \
    INT32 i;								\
 									\
-   if (!THIS->img) Pike_error("no image\n");					\
+   if (!THIS->img) Pike_error("no image\n");				\
 									\
    if (args && sp[-args].type==T_INT)					\
    {									\
@@ -82,20 +82,20 @@ extern struct program *image_program;
       if (args<1 || sp[-args].type!=T_OBJECT				\
        || !sp[-args].u.object						\
        || sp[-args].u.object->prog!=image_program)			\
-      Pike_error("illegal arguments to image->"what"()\n");			\
+      Pike_error("illegal arguments to image->"what"()\n");		\
 									\
       oper=(struct image*)sp[-args].u.object->storage;			\
-      if (!oper->img) Pike_error("no image (operand)\n");			\
+      if (!oper->img) Pike_error("no image (operand)\n");		\
       if (oper->xsize!=THIS->xsize					\
           || oper->ysize!=THIS->ysize)					\
-         Pike_error("operands differ in size (image->"what")");		\
+         Pike_error("operands differ in size (image->"what")\n");	\
    }									\
 									\
    push_int(THIS->xsize);						\
    push_int(THIS->ysize);						\
    o=clone_object(image_program,2);					\
    img=(struct image*)o->storage;					\
-   if (!img->img) { free_object(o); Pike_error("out of memory\n"); }		\
+   if (!img->img) { free_object(o); Pike_error("out of memory\n"); }	\
 									\
    s1=THIS->img;							\
    if (oper) s2=oper->img; else s2=NULL;				\

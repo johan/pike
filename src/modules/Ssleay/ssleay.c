@@ -178,7 +178,7 @@ static void ssleay_create(INT32 args)
 static void ssleay_use_certificate_file(INT32 args)
 {
   if (sp[-args].type != T_STRING)
-    Pike_error("ssleay->use_certificate_file: wrong type");
+    Pike_error("ssleay->use_certificate_file: wrong type\n");
   if (SSL_CTX_use_certificate_file(CTX, sp[-args].u.string->str, SSL_FILETYPE_PEM) <= 0)
     {
       ERR_print_errors_fp(stderr);

@@ -1129,7 +1129,7 @@ static void file_write(INT32 args)
 
 #ifdef PIKE_DEBUG
       if (Pike_sp[-args].type != PIKE_T_STRING) {
-	Pike_error("Bad return value from string multiplication.");
+	Pike_error("Bad return value from string multiplication.\n");
       }
 #endif /* PIKE_DEBUG */
 #ifdef HAVE_WRITEV

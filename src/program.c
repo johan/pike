@@ -7409,7 +7409,7 @@ ptrdiff_t low_get_storage(struct program *o, struct program *p)
   hval%=GET_STORAGE_CACHE_SIZE;
 #ifdef PIKE_DEBUG
   if(hval>GET_STORAGE_CACHE_SIZE)
-    Pike_fatal("hval>GET_STORAGE_CACHE_SIZE");
+    Pike_fatal("hval>GET_STORAGE_CACHE_SIZE\n");
 #endif
   if(get_storage_cache[hval].oid == oid &&
      get_storage_cache[hval].pid == pid)

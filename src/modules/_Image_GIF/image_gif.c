@@ -2417,7 +2417,7 @@ void image_gif__encode(INT32 args)
 
    if (args<1 ||
        sp[-args].type!=T_ARRAY)
-      Pike_error("Image.GIF._encode: Illegal argument (expected array)");
+      Pike_error("Image.GIF._encode: Illegal argument (expected array)\n");
 
    add_ref(a=sp[-args].u.array);
    pos=0;
