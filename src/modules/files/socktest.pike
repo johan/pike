@@ -176,7 +176,9 @@ object *spair(int type)
       exit(1);
     }
   }else{
-    sock2=sock1->pipe();
+    sock2=sock1->pipe(Stdio.PROP_BIDIRECTIONAL |
+		      Stdio.PROP_NONBLOCK |
+		      Stdio.PROP_SHUTDOWN);
     if(!sock2)
     {
       werror("File->pipe() failed 0\n");

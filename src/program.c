@@ -914,6 +914,12 @@ void low_inherit(struct program *p,
     return;
   }
 
+  if(!(p->flags & (PROGRAM_FINISHED | PROGRAM_PASS_1_DONE)))
+  {
+    yyerror("Cannot inherit program which is not fully compiled yet.");
+    return;
+  }
+
   inherit_offset = new_program->num_inherits;
 
   storage_offset=new_program->storage_needed;
@@ -2154,6 +2160,16 @@ struct program *program_from_svalue(struct svalue *s)
 {
   switch(s->type)
   {
+    case T_OBJECT:
+    {
+      struct program *p;
+      push_svalue(s);
+      f_object_program(1);
+      p=program_from_svalue(sp-1);
+      pop_stack();
+      return p; /* We trust that there is a reference somewhere... */
+    }
+
   case T_FUNCTION:
     return program_from_function(s);
   case T_PROGRAM:

@@ -375,7 +375,7 @@ object(parser) make_parser(string str, object|void m)
 //. SEE ALSO: Grammar_parser.make_parser
 int|object(parser) make_parser_from_file(string fname, object|void m)
 {
-  object(files.file) f = files.file();
+  object(Stdio.File) f = Stdio.File();
   int|object(parser) g = 0;
   if (f->open(fname, "r")) {
     g = make_parser(f->read(0x7fffffff), m);

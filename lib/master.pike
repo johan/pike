@@ -57,7 +57,7 @@ program compile_string(string data, void|string name)
 
 program compile_file(string file)
 {
-  return compile(cpp(_static_modules.files()->file(file,"r")->read(),file));
+  return compile(cpp(_static_modules.files()->File(file,"r")->read(),file));
 }
 
 
@@ -488,7 +488,7 @@ void _main(string *argv, string *env)
   add_constant("getenv",getenv);
   add_constant("putenv",putenv);
 
-  add_constant("write",_static_modules.files()->file("stdout")->write);
+  add_constant("write",_static_modules.files()->File("stdout")->write);
 
   _master_file_name=backtrace()[-1][0];
   q=explode_path(_master_file_name);
@@ -727,7 +727,7 @@ string handle_include(string f,
 
 string read_include(string f)
 {
-  return _static_modules->files()->file(f,"r")->read();
+  return _static_modules->files()->File(f,"r")->read();
 }
 
 // FIXME
