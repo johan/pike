@@ -592,18 +592,18 @@ void f_rm(INT32 args)
      * remove files we don't have write access to. Thus we chmod it
      * and try again, to make rm() more unix-like. */
     if (!i && errno == EACCES && !(st.st_mode & _S_IWRITE)) {
-      if (chmod(s, st.st_mode | _S_IWRITE) == -1)
+      if (chmod(str->str, st.st_mode | _S_IWRITE) == -1)
 	errno = EACCES;
       else {
 	if(S_IFDIR == (S_IFMT & st.st_mode))
 	{
-	  i=rmdir(s) != -1;
+	  i=rmdir(str->str) != -1;
 	}else{
-	  i=unlink(s) != -1;
+	  i=unlink(str->str) != -1;
 	}
 	if (!i) {		/* Failed anyway; try to restore the old mode. */
 	  int olderrno = errno;
-	  chmod(s, st.st_mode);
+	  chmod(str->str, st.st_mode);
 	  errno = olderrno;
 	}
       }
