@@ -30,9 +30,9 @@ int main(int n, array(string) args) {
     exit(1);
   }
 
-  string srcdir = args[1];
-  string builddir = args[2];
-  imgdir = args[3];
+  string srcdir = combine_path(getcwd(), args[1]);
+  string builddir = combine_path(getcwd(), args[2]);
+  imgdir = combine_path(getcwd(), args[3]);
   if(srcdir[-1]!='/') srcdir += "/";
   if(builddir[-1]!='/') builddir += "/";
   if(imgdir[-1]!='/') imgdir += "/";
