@@ -355,8 +355,8 @@ dump wrapper
 
     void|string `()(int|Evaluator e, void|string line, void|array(string) tokens) {
       if(!e) return "Dump variables and other info.";
-      write = e->write;
       if(e==1) return help();
+      write = e->write;
 
       line = tokens[2..sizeof(tokens)-2]*"";
       switch( line ) {
