@@ -305,7 +305,7 @@ PMOD_EXPORT void f_add(INT32 args)
     }
     r->len=SUBTRACT_PCHARP(buf,MKPCHARP_STR(r));
     low_set_index(r,r->len,0);
-    r=end_shared_string(r);
+    r=low_end_shared_string(r);
     pop_n_elems(args);
     push_string(r);
     break;
