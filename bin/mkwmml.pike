@@ -174,11 +174,16 @@ object(File) make_file(string filename)
    return f;
 }
 
-string synopsis_to_html(string s)
+string synopsis_to_html(string s,mapping huh)
 {
    string type,name,arg;
    if (sscanf(s,"%s%*[ \t]%s(%s",type,name,arg)!=4)
+   {
       sscanf(s,"%s(%s",name,arg),type="";
+      werror(huh->_line+": suspicios method %O\n",(s/"(")[0]);
+   }
+
+   if (!arg) arg="";
 
    return 
       type+" <b>"+name+"</b>("+
@@ -304,7 +309,7 @@ void document(string enttype,
    {
       f->write("<man_syntax>\n");
 
-      f->write(replace(htmlify(map(huh->decl,synopsis_to_html)*
+      f->write(replace(htmlify(map(huh->decl,synopsis_to_html,huh)*
 			       "<br>\n"),"\n","\n\t")+"\n");
 
       f->write("</man_syntax>\n\n");
