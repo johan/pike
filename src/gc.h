@@ -87,7 +87,6 @@ extern int gc_destruct_everything;
 
 #if defined (PIKE_DEBUG) && defined (DO_PIKE_CLEANUP)
 extern int gc_keep_markers;
-extern int gc_external_refs_zapped;
 #else
 #define gc_keep_markers 0
 #endif
@@ -242,6 +241,9 @@ struct marker
 /* The thing has been visited by gc_checked_as_weak(). */
 #define GC_WATCHED		0x01000000
 /* The thing has been set under watch by gc_watch(). */
+#define GC_CLEANUP_FREED	0x02000000
+/* The thing was freed by the cleanup code under the assumption that
+ * references were lost. */
 #endif
 
 #ifdef PIKE_DEBUG
@@ -290,6 +292,7 @@ void gc_watch(void *a);
 void debug_gc_touch(void *a);
 PMOD_EXPORT int real_gc_check(void *a);
 int real_gc_check_weak(void *a);
+void exit_gc(void);
 void locate_references(void *a);
 void debug_gc_add_extra_ref(void *a);
 void debug_gc_free_extra_ref(void *a);

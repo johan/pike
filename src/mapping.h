@@ -82,7 +82,16 @@ extern struct mapping *gc_internal_mapping;
   for(((k = MD_KEYPAIRS((m)->data, (m)->data->hashsize)), e=0) DO_IF_DMALLOC( ?0:(debug_malloc_touch(m),debug_malloc_touch((m)->data)) ) ; e<(m)->data->size; e++,k++)
 #endif /* PIKE_MAPPING_KEYPAIR_LOOP */
 
-#define free_mapping(M) do{ struct mapping *m_=(M); debug_malloc_touch(m_); if(!sub_ref(m_)) really_free_mapping(m_); }while(0)
+#define free_mapping(M) do{						\
+    struct mapping *m_=(M);						\
+    debug_malloc_touch(m_);						\
+    DO_IF_PIKE_CLEANUP (						\
+      if (gc_external_refs_zapped)					\
+	gc_check_zapped (m_, PIKE_T_MAPPING, __FILE__, __LINE__);	\
+    );									\
+    if(!sub_ref(m_))							\
+      really_free_mapping(m_);						\
+  }while(0)
 
 #define free_mapping_data(M) do{ \
  struct mapping_data *md_=(M); \

@@ -1066,8 +1066,10 @@ void low_exit_main(void)
 	  for (i = 0; i < (ptrdiff_t) NELEM (statics); i++)		\
 	    if (x == statics[i])					\
 	      is_static = 1;						\
-	  while (x->refs > m->refs + is_static)				\
+	  while (x->refs > m->refs + is_static) {			\
+	    m->flags |= GC_CLEANUP_FREED;				\
 	    PIKE_CONCAT(free_, TYPE) (x);				\
+	  }								\
 	}								\
       }									\
     } while (0)
@@ -1084,8 +1086,10 @@ void low_exit_main(void)
      * above we should try to handle it gracefully. */
     gc_external_refs_zapped = 1;
 
-    gc_keep_markers = 0;
     do_gc (NULL, 1);
+
+    gc_keep_markers = 0;
+    exit_gc();
 
 #ifdef DEBUG_MALLOC
     {

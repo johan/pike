@@ -35,6 +35,8 @@ extern size_t dmalloc_tracelogptr;
 
 #if defined (PIKE_DEBUG) && defined (DO_PIKE_CLEANUP)
 extern int verbose_debug_exit;
+extern int gc_external_refs_zapped;
+void gc_check_zapped (void *a, TYPE_T type, const char *file, int line);
 #endif
 
 #ifdef DO_PIKE_CLEANUP

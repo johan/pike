@@ -2340,6 +2340,7 @@ static void exit_program_struct(struct program *p)
 #ifdef PIKE_DEBUG
   if (p->refs) {
 #ifdef DEBUG_MALLOC
+    fprintf (stderr, "Program to be freed still got %d references:\n", p->refs);
     describe_something(p, T_PROGRAM, 0,2,0, NULL);
 #endif
     Pike_fatal("Program to be freed still got %d references.\n", p->refs);
