@@ -674,7 +674,7 @@ void process_done(pid_t pid)
 #endif
 
 
-#ifndef USE_SIGCHILD
+#ifdef USE_SIGCHILD
 
 struct wait_data {
   pid_t pid;
