@@ -28,7 +28,7 @@ void push(mixed val)
 mixed top()
 {
   if (ptr) {
-    return(arr[ptr-1]);
+    return arr[ptr-1];
   }
   error("Stack underflow\n");
 }
@@ -57,7 +57,7 @@ void quick_pop(void|int val)
 //! the stack.
 mixed pop(void|int val)
 {
-  mixed foo;
+  mixed ret;
 
   if (val) {
     if (ptr <= 0) {
@@ -68,7 +68,7 @@ mixed pop(void|int val)
       val = ptr;
     }
     ptr -= val;
-    foo = arr[ptr..ptr + val - 1];
+    ret = arr[ptr..ptr + val - 1];
 
     for (int i=0; i < val; i++) {
       arr[ptr + i] = 0;       /* Don't waste references */
@@ -77,10 +77,10 @@ mixed pop(void|int val)
     if(--ptr < 0)
 	error("Stack underflow\n");
   
-    foo=arr[ptr];
+    ret = arr[ptr];
     arr[ptr]=0; /* Don't waste references */
   }
-  return foo;
+  return ret;
 }
 
 //! Empties the stack, resets the stack pointer
