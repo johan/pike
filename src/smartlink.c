@@ -263,7 +263,7 @@ int main(int argc, char **argv)
       *p = ':';		/* Make sure PATH isn't modified */
       strcat(buffer, "/");
       strcat(buffer, argv[1]);
-      fprintf(stderr, "Trying %s...\n", buffer);
+      /* fprintf(stderr, "Trying %s...\n", buffer); */
       if (!stat(buffer, &stat_buf)) {
 	/* Found. */
 	argv[1] = buffer;
@@ -275,7 +275,7 @@ int main(int argc, char **argv)
       strcpy(buffer, path);
       strcat(buffer, "/");
       strcat(buffer, argv[1]);
-      fprintf(stderr, "Trying %s...\n", buffer);
+      /* fprintf(stderr, "Trying %s...\n", buffer); */
       if (!stat(buffer, &stat_buf)) {
 	/* Found */
 	argv[1] = buffer;
