@@ -78,6 +78,15 @@ RCSID("$Id$");
 #include <sys/socketvar.h>
 #endif
 
+/* Fix warning on OSF/1
+ *
+ * NOERROR is defined by both sys/stream.h (-1), and arpa/nameser.h (0),
+ * the latter is included by netdb.h.
+ */
+#ifdef NOERROR
+#undef NOERROR
+#endif /* NOERROR */
+
 #ifdef HAVE_NETDB_H
 #include <netdb.h>
 #endif
@@ -179,8 +188,8 @@ void udp_read(INT32 args)
 {
   int flags = 0, res=0, fd;
   struct sockaddr_in from;
-  int  fromlen = sizeof(struct sockaddr_in);
   char buffer[UDP_BUFFSIZE];
+  ACCEPT_SIZE_T fromlen = sizeof(struct sockaddr_in);
   
   if(args)
   {
