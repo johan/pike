@@ -5399,10 +5399,17 @@ ptrdiff_t eval_low(node *n,int print_error)
     }
   }
 
-  Pike_compiler->new_program->num_program=jump;
 #ifdef PIKE_USE_MACHINE_CODE
   Pike_compiler->new_program->num_relocations = num_relocations;
+
+#ifdef VALGRIND_DISCARD_TRANSLATIONS
+  /* We won't use this machine code any more... */
+  VALGRIND_DISCARD_TRANSLATIONS(jump,
+				(p->num_program - jump)*sizeof(p->program[0]));
+#endif /* VALGRIND_DISCARD_TRANSLATIONS */
 #endif /* PIKE_USE_MACHINE_CODE */
+
+  Pike_compiler->new_program->num_program=jump;
 
   return ret;
 }
@@ -5599,6 +5606,11 @@ int dooptcode(struct pike_string *name,
 
   if(Pike_compiler->compiler_frame->lexical_scope & SCOPE_SCOPE_USED)
     vargs|=IDENTIFIER_SCOPE_USED;
+
+#ifdef PIKE_DEBUG
+  if(a_flag > 5)
+    fprintf(stderr, "Extra identifier flags:0x%02x\n", vargs);
+#endif
 
   if(Pike_compiler->compiler_pass==1)
   {

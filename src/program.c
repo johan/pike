@@ -7017,9 +7017,5 @@ void make_program_executable(struct program *p)
   FLUSH_INSTRUCTION_CACHE(p->program,
 			  p->num_program*sizeof(p->program[0]));
 #endif /* FLUSH_INSTRUCTION_CACHE */
-#ifdef VALGRIND_DISCARD_TRANSLATIONS
-  VALGRIND_DISCARD_TRANSLATIONS(p->program,
-				p->num_program*sizeof(p->program[0]));
-#endif /* VALGRIND_DISCARD_TRANSLATIONS */
 }
 #endif
