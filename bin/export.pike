@@ -213,7 +213,7 @@ int main(int argc, array(string) argv)
 
 	case "snapshot":
 	  snapshot=1;
-	  break,
+	  break;
       }
     }
 
