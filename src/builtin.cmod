@@ -1694,6 +1694,12 @@ PIKECLASS Buffer
     RETURN res;
   }
 
+  PIKEFUN object `+=( string what )
+  {
+    f_Buffer_add( 1 );
+    REF_RETURN Pike_fp->current_object;
+  }
+
   /*! @decl int add(string ... data)
    *!
    *!   Adds @[data] to the buffer. Returns the size of the buffer.
