@@ -1,0 +1,41 @@
+<title>Pike documentation: module Image</title>
+<h2>module Image</h2>
+
+
+<blockquote>
+This module adds image-drawing and -manipulating
+     capabilities to pike.
+</blockquote>
+
+
+<h4>NOTE</h4>
+<blockquote>
+$Id$<br>
+     $Id$<br>
+     $Id$<br>
+     $Id$<br>
+     $Id$<br>
+     $Id$<br>
+
+<p>     $Id$<br>
+     $Id$<br>
+     $Id$<br>
+     $Id$<br>
+     $Id$<br>
+     $Id$<br>
+     $Id$<br>
+     $Id$<br>
+     $Id$<br>
+     $Id$<br>
+</blockquote>
+
+
+<h4>SEE ALSO</h4>
+<blockquote>     <tt><a href=Image.font.html>Image.font</a></tt>,
+     <tt><a href=Image.image.html>Image.image</a></tt>
+</blockquote>
+<h3>More documentation:</h3>
+ <i><tt><a href=Image.colortable.html>Image.colortable</a></tt></tt></i><br>
+ <i><tt><tt><a href=Image.font.html>Image.font</a></tt></tt></i><br>
+ <i><tt><tt><a href=Image.image.html>Image.image</a></tt></i>
+
