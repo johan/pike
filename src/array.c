@@ -1966,16 +1966,8 @@ void zap_all_arrays(void)
     
     if(!(next=a->next))
       fatal("Null pointer in array list.\n");
-    
-    while((next=a->next) != &empty_array && a->refs == 1)
-    {
-      add_ref(next);
-      free_program(a);
-      a=next;
-    }
-    
-    free_array(a);
-    a=next;
+
+    SET_NEXT_AND_FREE(a,free_array);
   } while (a != & empty_array);
 }
 

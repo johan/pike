@@ -166,8 +166,11 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	switch(sp[-1].type)
 	{
 	  case T_ARRAY:
+	  {
+	    extern void f_mkmultiset(INT32);
 	    f_mkmultiset(1);
 	    break;
+	  }
 
 	  default:
 	    error("Cannot cast %s to multiset.\n",get_name_of_type(sp[-1].type));

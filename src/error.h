@@ -229,7 +229,7 @@ void cleanup_error(void);
 /* Prototypes end here */
 
 #define fatal \
- fprintf(stderr,"Fatal error at %s:%d\n",__FILE__,__LINE__),debug_fatal
+ fprintf(stderr,"%s:%d: Fatal error:\n",__FILE__,__LINE__),debug_fatal
 
 /* Some useful error macros. */
 
