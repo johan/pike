@@ -19,6 +19,12 @@
 #include "program_id.h"
 #include "lex.h"
 #include "pike_security.h"
+#include "cpp.h"
+#include "backend.h"
+#include "threads.h"
+#include "operators.h"
+#include "signal_handler.h"
+#include "dynamic_load.h"
 
 #include "modules/modlist_headers.h"
 #include "post_modules/modlist_headers.h"
