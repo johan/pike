@@ -1,3 +1,15 @@
+pushdef([AC_PROG_CC_WORKS],
+[
+  popdef([AC_PROG_CC_WORKS])
+  if test "${ac_prog_cc_works_this_run-}" != "yes" ; then
+    AC_PROG_CC_WORKS
+    ac_prog_cc_works_this_run="${ac_cv_prog_cc_works-no}"
+    export ac_prog_cc_works_this_run
+  else
+    AC_MSG_RESULT([whether the C compiler ($CC $CFLAGS $LDFLAGS) works... yes])
+  fi
+])
+
 pushdef([AC_PROG_CC],
 [
   popdef([AC_PROG_CC])
