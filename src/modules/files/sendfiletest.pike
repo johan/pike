@@ -192,6 +192,7 @@ void test7()
 
 int main(int argc, array(string) argv)
 {
+  werror("\n");
   loopback->bind(0);
   loopbackport = (int)((loopback->query_address()/" ")[1]);
   call_out(next, 0);

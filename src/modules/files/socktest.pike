@@ -445,7 +445,7 @@ int main()
 
   sscanf(port2::query_address(),"%*s %d",portno2);
 
-  werror("Doing simple tests. ");
+  werror("\nDoing simple tests. ");
   stdtest();
   return -1;
 }

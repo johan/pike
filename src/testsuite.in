@@ -1366,7 +1366,7 @@ void low_generate(int depth,
 
 int a()
 {
-  werror("Testing vtables and scope access.\n");
+  werror("\nTesting vtables and scope access.\n");
 
   string testargs=getenv()->TESTARGS;
   if(testargs &&

@@ -46,7 +46,7 @@ int check_ecb_e_m()
     }
     if (!v->I) return;
 
-    write("Rijndael ECB Encryption (%s): %s\r", keysize, v->I);
+    write("\nRijndael ECB Encryption (%s): %s\r", keysize, v->I);
 
     string pt = Crypto.hex_to_string(v->PT);
     string ct = Crypto.hex_to_string(v->CT);
