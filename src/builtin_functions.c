@@ -8181,10 +8181,6 @@ void init_builtin_efuns(void)
   /* function(array:array(int)) */
   ADD_FUNCTION2("longest_ordered_sequence", f_longest_ordered_sequence,
 		tFunc(tArray,tArr(tInt)), 0, OPT_TRY_OPTIMIZE);
-  /* function(array(0=mixed),array(mixed)...:array(0)) */
-  ADD_FUNCTION2("sort", f_sort,
-		tFuncV(tArr(tSetvar(0, tMix)), tArr(tMix), tArr(tVar(0))),
-		0, OPT_SIDE_EFFECT);
 
 #define tMapStuff(IN,SUB,OUTFUN,OUTSET,OUTPROG,OUTMIX,OUTARR,OUTMAP) \
   tOr7( tFuncV(IN tFuncV(SUB,tMix,tSetvar(2,tAny)),tMix,OUTFUN), \
