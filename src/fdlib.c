@@ -889,6 +889,7 @@ PMOD_EXPORT int debug_fd_fstat(FD fd, struct stat *s)
   DWORD x;
 
   FILETIME c,a,m;
+  mt_lock(&fd_mutex);
   FDDEBUG(fprintf(stderr, "fstat on %d (%ld)\n",
 		  fd, PTRDIFF_T_TO_LONG((ptrdiff_t)da_handle[fd])));
   if(fd_type[fd]!=FD_FILE)
@@ -922,6 +923,7 @@ PMOD_EXPORT int debug_fd_fstat(FD fd, struct stat *s)
 	  if(!GetFileTime(da_handle[fd], &c, &a, &m))
 	  {
 	    errno=GetLastError();
+            mt_unlock(&fd_mutex);
 	    return -1;
 	  }
 	  s->st_ctime=convert_filetime_to_time_t(c);
@@ -933,6 +935,7 @@ PMOD_EXPORT int debug_fd_fstat(FD fd, struct stat *s)
       }
   }
   s->st_mode |= 0666;
+  mt_unlock(&fd_mutex);
   return 0;
 }
 
