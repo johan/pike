@@ -3311,6 +3311,10 @@ struct pike_string *get_type_of_svalue(struct svalue *s)
 	/* yywarning("Failed to zzap function return for type: %s.", tmp->str);*/
 	free_string(tmp);
       }
+    } else {
+      a=function_type_string->str;
+      if((tmp=zzap_function_return(a, s->u.program->id)))
+	return tmp;
     }
 
     a=tFunc( tNone ,tObj);
