@@ -1688,8 +1688,7 @@ rm confdefs.out.2 >/dev/null 2>/dev/null || :
     ;;
   esac
 
-  AC_CHECK_FUNCS(pthread_init)
-  AC_CHECK_FUNCS(pthread_mutexattr_init)
+  AC_CHECK_FUNCS(pthread_init pthread_mutexattr_init pthread_kill)
 
   AC_MSG_CHECKING(posix threads)
 
