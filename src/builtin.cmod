@@ -3083,6 +3083,16 @@ PIKECLASS List
    *   tail_pred					  prev
    */
 
+  /* Suggestions for future functionality:
+   *
+   *   o Join
+   *   o Copy segment
+   *   o Detach segment (requires new iterator implementation)
+   *   o Iterator copy
+   *   o Support for reverse(), filter() and map().
+   *   o Initialization from array.
+   */
+
   INIT
   {
     THIS->tail = NULL;
