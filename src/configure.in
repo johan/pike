@@ -3020,6 +3020,10 @@ PIKE_CHECK_CONSTANTS(recursive mutex flag,
 # NOTE: The following test is hardcoded to fail when crosscompiling
 # It also clobbers $LIBOBJS.
 
+ifdef([m4_pattern_allow], [
+  # Handle the latest autoconf incompatibility...
+  m4_pattern_allow(LIBOBJS)
+])
 OLD_LIBOBJS="${LIBOBJS}"
 
 AC_FUNC_MEMCMP

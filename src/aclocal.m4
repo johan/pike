@@ -172,7 +172,7 @@ define([ORIG_CHECK_HEADERS], defn([AC_CHECK_HEADERS]))
 pushdef([AC_CHECK_HEADERS],
 [
   if test "x$enable_binary" != "xno"; then
-    ORIG_CHECK_HEADERS($1,$2,$3)
+    ORIG_CHECK_HEADERS($1,$2,$3,$4)
   else
     for ac_hdr in $1
     do
