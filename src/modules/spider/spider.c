@@ -701,7 +701,7 @@ void do_html_parse(struct pike_string *ss,
 	  push_string(ss2);
 	  (*strings)++;
 
-	  free_svalue(&sval1);
+	  free_svalue(&sval1);	/* FIXME: Double free? */
 	  continue;
 	}
 	pop_stack();
