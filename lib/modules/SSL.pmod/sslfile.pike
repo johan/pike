@@ -391,7 +391,7 @@ private void ssl_close_callback(mixed id)
 #ifdef SSL3_DEBUG
   werror("SSL.sslport: ssl_close_callback\n");
 #endif
-  if (close_callback)
+  if (close_callback && socket)
     close_callback(socket->query_id());
   if (this_object()) {
     die(closing ? 1 : -1);
@@ -414,6 +414,9 @@ void set_read_callback(function(mixed,string:void) r)
   werror("SSL.sslport: set_read_callback\n");
 #endif
   read_callback = r;
+  if (strlen(read_buffer)&& socket)
+    ssl_read_callback(socket->query_id(), "");
+
 }
 
 function query_read_callback() { return read_callback; }
