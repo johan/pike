@@ -461,13 +461,8 @@ fi
 
 if test "$pike_cv_sys_os" = "Solaris" ; then
   AC_DEFINE(SOLARIS)
-  AC_DEFINE(USE_WAIT_THREAD)
 else
-  if test "$pike_cv_sys_os" = "Windows_NT" ; then
-    :
-  else
-    AC_DEFINE(USE_SIGCHILD)
-  fi
+  :
 fi
 
 if test ! -d modules/. ; then
@@ -2805,6 +2800,21 @@ case "x$LD" in
   ;;
   *)
     LD="${LD} ${LD_FALLBACK_FLAGS-}"
+  ;;
+esac
+
+
+case "x$pike_cv_sys_os" in
+  xSolaris | xAIX)
+    AC_DEFINE(USE_WAIT_THREAD)
+  ;;
+
+  Windows_NT)
+    :
+  ;;
+
+  *)
+    AC_DEFINE(USE_SIGCHILD)
   ;;
 esac
 
