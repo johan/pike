@@ -805,9 +805,10 @@ string describe_program(program p)
     return s;
   }
 
-  if(mixed tmp=function_object(p))
-    if(s=describe_program(object_program(tmp)))
-      return s+"."+function_name(p);
+  if(functionp(p))
+    if(mixed tmp=function_object(p))
+      if(s=describe_program(object_program(tmp)))
+	return s+"."+function_name(p);
   return 0;
 }
 
