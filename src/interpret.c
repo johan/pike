@@ -506,7 +506,7 @@ static void eval_instruction(unsigned char *pc)
 	 fp->locals+fp->num_locals > sp)
 	fatal("Stack error (stupid!).\n");
       
-      if(d_flag > 9) check_threads_etc();
+      if(d_flag > 9) do_debug();
 
       backlogp++;
       if(backlogp >= BACKLOG) backlogp=0;
