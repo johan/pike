@@ -92,8 +92,6 @@ array(string) split(string data, void|mapping state)
   {
     int start=pos;
 
-    //    werror("::::%c\n",data[pos]);
-
     switch(data[pos])
     {
       case '\0':
