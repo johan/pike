@@ -108,6 +108,10 @@ RCSID("$Id$");
 #include "pike_memory.h"
 #include "pike_macros.h"
 
+#ifdef PC
+#undef PC
+#endif /* PC */
+
 #include <math.h>
 #ifdef HAVE_IEEEFP_H
 #include <ieeefp.h>
