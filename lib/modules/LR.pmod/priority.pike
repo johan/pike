@@ -8,36 +8,31 @@
 
 #pike __REAL_VERSION__
 
-//.
-//. File:	priority.pike
-//. RCSID:	$Id$
-//. Author:	Henrik Grubbström (grubba@infovav.se)
-//.
-//. Synopsis:	Rule priority specification.
-//.
-//. +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//.
-//. Specifies the priority and associativity of a rule.
-//.
+//!
+//! Specifies the priority and associativity of a rule.
+//!
 
-//. + value
-//.   Priority value
+//!   Priority value
 int value;
 
-//. + assoc
-//.   Associativity
-//.
-//.   -1 - left
-//.    0 - none
-//.   +1 - right
+//! Associativity
+//!
+//! @int
+//!   @value -1
+//!    Left
+//!   @value 0
+//!    None
+//!   @value 1
+//!    Right
+//! @endint
 int assoc;
 
-//. - create
-//.   Create a new priority object.
-//. > p
-//.   Priority.
-//. > a
-//.   Associativity.
+//! Create a new priority object.
+//!
+//! @param p
+//!  Priority.
+//! @param  a
+//!  Associativity.
 void create(int p, int a)
 {
   value = p;
