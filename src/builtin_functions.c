@@ -2238,6 +2238,8 @@ void f_sleep(INT32 args)
 
    pop_n_elems(args);
 
+   THREADS_ALLOW();
+
    if (delay>POLL_SLEEP_LIMIT)
       for (;;)
       {
@@ -2262,6 +2264,8 @@ void f_sleep(INT32 args)
    if (do_microsleep)
       while (delay>TIME_ELAPSED) 
 	 GET_TIME_ELAPSED;
+
+   THREADS_DISALLOW();
 }
 
 void f_gc(INT32 args)
