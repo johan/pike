@@ -10,7 +10,7 @@
 #pike __REAL_VERSION__
 // #pragma strict_types
 
-#if constant(Gmp.mpz)
+#if constant(Crypto.DSA) && constant(Standards.ASN1.Types)
 
 import Standards.ASN1.Types;
 
@@ -58,4 +58,6 @@ Crypto.DSA parse_private_key(string key)
   return dsa;
 }
 
+#else
+constant this_program_does_not_exist=1;
 #endif

@@ -17,7 +17,7 @@
 //after this many deletion ops, the databases will be compacted.
 #define CLUTTERED 1000
 
-#if constant(Gdbm.gdbm)
+#if constant(Gdbm)
 Gdbm.gdbm db, metadb;
 int deletion_ops=0; //every 1000 deletion ops, we'll reorganize.
 int have_dependants=0;
@@ -178,7 +178,9 @@ void create(string path) {
   metadb=Gdbm.gdbm(path+"_meta.db","rwcf");
 }
 
-#endif // constant(Gdbm.gdbm)
+#else
+constant this_program_does_not_exist=1;
+#endif // constant(Gdbm)
 
 /**************** thoughts and miscellanea ******************/
 //maybe we should split the database into two databases, one for the data

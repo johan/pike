@@ -50,7 +50,7 @@
 
 #pike __REAL_VERSION__
 
-#if constant(Postgres.postgres)
+#if constant(Postgres)
 
 #define ERROR(X) throw (({X,backtrace()}))
 
@@ -379,4 +379,6 @@ int|object big_query(object|string q, mapping(string|int:mixed)|void bindings)
   return ::big_query(.sql_util.emulate_bindings(q, bindings, this));
 }
 
-#endif /* constant(Postgres.postgres) */
+#else
+constant this_program_does_not_exist=1;
+#endif /* constant(Postgres) */

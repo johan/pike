@@ -124,7 +124,7 @@ Version ::= INTEGER
 
 */
 
-#if constant(Standards.ASN1.Types.Sequence)
+#if constant(Standards.ASN1.Types)
 
 import Standards.ASN1.Types;
 import .Identifiers;
@@ -279,4 +279,6 @@ class Attributes
   }
 }
 
+#else
+constant this_program_does_not_exist=1;
 #endif

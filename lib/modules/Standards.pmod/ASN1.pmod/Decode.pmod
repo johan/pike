@@ -214,4 +214,6 @@ Object simple_der_decode(string data)
   return der_decode(ADT.struct(data), universal_types);
 }
 
+#else
+constant this_program_does_not_exist=1;
 #endif

@@ -68,7 +68,7 @@
 //	RFC 2307   (LDAP as network information services; draft?)
 
 
-#if constant(.ldap_privates.ldap_der_decode)
+#if constant(.ldap_privates)
 
 #include "ldap_globals.h"
 
@@ -1360,4 +1360,6 @@ int _prof_gtim;
 
   } //parse_uri
 
+#else
+constant this_program_does_not_exist=1;
 #endif

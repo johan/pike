@@ -9,7 +9,7 @@
 
 #pike __REAL_VERSION__
 
-#if constant(Mysql.mysql)
+#if constant(Mysql)
 
 inherit Mysql.mysql;
 
@@ -197,4 +197,6 @@ int(0..1) is_keyword( string name )
   >)[ lower_case(name) ];
 }
 
+#else
+constant this_program_does_not_exist=1;
 #endif /* constant(Mysql.mysql) */

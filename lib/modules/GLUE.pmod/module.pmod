@@ -2,7 +2,7 @@
 // $Id$
 
 #pike __REAL_VERSION__
-#if constant(GL.GL_FLOAT)
+#if constant(GL)
 
 //! GL Universal Environment
 
@@ -2099,4 +2099,6 @@ mapping(string:mixed) debug_stuff() {
   ]);
 }
 
+#else
+constant this_program_does_not_exist=1;
 #endif

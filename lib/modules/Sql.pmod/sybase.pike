@@ -8,7 +8,7 @@
 
 #pike __REAL_VERSION__
 
-#if constant(sybase.sybase)
+#if constant(sybase)
 
 inherit sybase.sybase:mo;
 #define THROW(X) throw(({X+"\n",backtrace()}))
@@ -104,4 +104,6 @@ int|object big_query(string q, mapping(string|int:mixed)|void bindings) {
   return ::big_query(.sql_util.emulate_bindings(q,bindings,this));
 }
 
+#else
+constant this_program_does_not_exist=1;
 #endif

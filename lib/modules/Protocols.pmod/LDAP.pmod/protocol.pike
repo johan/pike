@@ -21,8 +21,7 @@
 //			 - added core for async operation
 //
 
-#if constant(Standards.ASN1.Types.asn1_integer)
-
+#if constant(Standards.ASN1.Types)
 
 #include "ldap_globals.h"
 
@@ -311,5 +310,6 @@
     return msgnum;
   }
 
-
+#else
+constant this_program_does_not_exist=1;
 #endif

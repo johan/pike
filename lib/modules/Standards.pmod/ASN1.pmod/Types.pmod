@@ -9,7 +9,7 @@
 #pragma strict_types
 #define COMPATIBILITY
 
-#if constant(Gmp.mpz)
+#if constant(Gmp) && constant(Gmp.mpz)
 
 #if 0
 #define WERROR werror
@@ -1227,4 +1227,6 @@ constant asn1_universal_string = UniversalString;
 constant asn1_bmp_string = BMPString;
 #endif
 
+#else
+constant this_program_does_not_exist=1;
 #endif /* Gmp.mpz */
