@@ -1260,19 +1260,19 @@ node *debug_mkefuncallnode(char *function, node *args)
    * first place to look up these efuns in the module being compiled.
    * Wouldn't it be better if this function consulted
    * compiler_handler->get_default_module? /mast */
-  int orig_force_resolve = force_resolve;
-  force_resolve = 1;
+  int orig_flags = Pike_compiler->flags;
+  Pike_compiler->flags |= COMPILATION_FORCE_RESOLVE;
   name = make_shared_string(function);
   if(!name || !(n=find_module_identifier(name,0)))
   {
     free_string(name);
     my_yyerror("Internally used efun undefined: %s",function);
-    force_resolve = orig_force_resolve;
+    Pike_compiler->flags = orig_flags;
     return mkintnode(0);
   }
   free_string(name);
   n = mkapplynode(n, args);
-  force_resolve = orig_force_resolve;
+  Pike_compiler->flags = orig_flags;
   return n;
 }
 
@@ -1946,7 +1946,7 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 		my_yyerror("Index '%s' not present in module.", id->str);
 	      }
 	    }
-	  }else if (!force_resolve) {
+	  }else if (!(Pike_compiler->flags & COMPILATION_FORCE_RESOLVE)) {
 	    /* Hope it's there in pass 2 */
 	    pop_stack();
 #if 0
@@ -5401,7 +5401,9 @@ ptrdiff_t eval_low(node *n,int print_error)
   }
 #endif
 
-  if(Pike_compiler->num_parse_error) return -1; 
+  if(Pike_compiler->num_parse_error) {
+    return -1;
+  }
 
   num_strings = prog->num_strings;
   num_constants = prog->num_constants;

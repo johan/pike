@@ -1946,7 +1946,7 @@ void fixate_program(void)
     p->lfuns[i] = low_find_lfun(p, i);
   }
 
-  if(Pike_compiler->check_final)
+  if(Pike_compiler->flags & COMPILATION_CHECK_FINAL)
   {
     for(i=0;i<(int)p->num_identifier_references;i++)
     {
@@ -3812,7 +3812,7 @@ void low_inherit(struct program *p,
 
     if (fun.id_flags & ID_NOMASK)
     {
-      Pike_compiler->check_final++;
+      Pike_compiler->flags |= COMPILATION_CHECK_FINAL;
     }
     
     if(fun.id_flags & ID_PRIVATE) fun.id_flags|=ID_HIDDEN;
@@ -5923,7 +5923,6 @@ extern void yyparse(void);
 #endif
 
 struct Supporter *current_supporter=0;
-int force_resolve = 0;
 
 
 #ifdef PIKE_DEBUG
@@ -6133,7 +6132,7 @@ int report_compiler_dependency(struct program *p)
     return 0;
   }
   verify_supporters();
-  if (force_resolve)
+  if (Pike_compiler->flags & COMPILATION_FORCE_RESOLVE)
     return 0;
   for(cc=current_supporter;cc;cc=cc->previous)
   {

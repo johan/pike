@@ -20,6 +20,12 @@
 /* Needed to support dynamic loading on NT */
 PMOD_PROTO extern struct program_state * Pike_compiler;
 
+/* Compilation flags */
+#define COMPILATION_CHECK_FINAL         0x01
+        /* This flag is set when resolve functions should force the lookup so
+         * that we don't get a placeholder back. Used for inherits. */
+#define COMPILATION_FORCE_RESOLVE       0x02
+
 extern struct pike_string *this_program_string;
 
 #define LFUN___INIT 0
@@ -564,10 +570,6 @@ extern int compilation_depth;
 
 #define FOO(NUMTYPE,TYPE,ARGTYPE,NAME) void PIKE_CONCAT(add_to_,NAME(ARGTYPE ARG));
 #include "program_areas.h"
-
-/* This flag is set when resolve functions should force the lookup so
- * that we don't get a placeholder back. Used for inherits. */
-extern int force_resolve;
 
 typedef int supporter_callback (void *, int);
 struct Supporter
