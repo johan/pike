@@ -1095,6 +1095,9 @@ class DefaultEditKeys
     ({ "^[\\!kD", kill_word }),
     ({ "^[\\!kb", backward_kill_word }),
     ({ "\\!kh", beginning_of_line }),
+    ({ "\\!@7", end_of_line }),
+    ({ "\\!@8", newline }),
+    ({ "\\!ho", beginning_of_line }),
     // Terminfo-style
     ({ "\\!kcuu1", up_history }),
     ({ "\\!kcud1", down_history }),
@@ -1107,6 +1110,7 @@ class DefaultEditKeys
     ({ "\\!khome", beginning_of_line }),
     ({ "\\!kend", end_of_line }),
     ({ "\\!kent", newline }),
+    ({ "\\!home", beginning_of_line }),
   });
 
   //!
