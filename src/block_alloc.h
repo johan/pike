@@ -4,10 +4,14 @@
 #undef EXIT_BLOCK
 #undef BLOCK_ALLOC
 #undef PTR_HASH_ALLOC
+#undef COUNT_BLOCK
+#undef COUNT_OTHER
 
 #define PRE_INIT_BLOCK(X)
 #define INIT_BLOCK(X)
 #define EXIT_BLOCK(X)
+#define COUNT_BLOCK(X)
+#define COUNT_OTHER()
 
 #define BLOCK_ALLOC(DATA,BSIZE)						\
 									\
@@ -83,9 +87,11 @@ void PIKE_CONCAT3(count_memory_in_,DATA,s)(INT32 *num_, INT32 *size_)	\
   {									\
     num+=BSIZE;								\
     size+=sizeof(struct PIKE_CONCAT(DATA,_block));			\
+    COUNT_BLOCK(tmp);                                                   \
   }									\
   for(tmp2=PIKE_CONCAT3(free_,DATA,s);tmp2;				\
           tmp2=tmp2->BLOCK_ALLOC_NEXT) num--;				\
+  COUNT_OTHER();                                                        \
   *num_=num;								\
   *size_=size;								\
 }
