@@ -1078,8 +1078,11 @@ static int low_and_push_complex_pike_type(char *type)
     type++;
     new_complex = low_and_push_complex_pike_type(type);
     if (new_complex) {
-      push_type(T_OR);
-      is_complex = 1;
+      if (is_complex) {
+	push_type(T_OR);
+      } else {
+	is_complex = 1;
+      }
     }
     type += type_length(type);
   }
