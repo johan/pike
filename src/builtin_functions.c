@@ -7625,7 +7625,7 @@ void f_enumerate(INT32 args)
    INT_TYPE n;
 
    if (args<1)
-      SIMPLE_TOO_FEW_ARGS_ERROR("enumarate", 1);
+      SIMPLE_TOO_FEW_ARGS_ERROR("enumerate", 1);
    if (args<2) 
    {
       push_int(1);
