@@ -47,6 +47,11 @@ MUTEX_T pike_msql_mutex;
 #define MSQL_UNLOCK() /**/
 #endif
 
+/* Avoid a redefinition */
+#ifdef INT_TYPE
+#undef INT_TYPE
+#endif /* INT_TYPE */
+
 #include <msql.h>
 
 static char * decode_msql_type (int msql_type)
