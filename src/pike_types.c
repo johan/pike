@@ -687,12 +687,18 @@ void debug_push_type(unsigned int type)
   /* fprintf(stderr, "push_type(%d)\n", type); */
 
   switch(type) {
+  case T_OR:
+  case T_AND:
+    /* Special case: Check if the two top elements are equal. */
+    if (Pike_compiler->type_stackp[-1] == Pike_compiler->type_stackp[0]) {
+      free_type(*(Pike_compiler->type_stackp--));
+      return;
+    }
+    /* FALL_THROUGH */
   case T_FUNCTION:
   case T_MANY:
   case T_TUPLE:
   case T_MAPPING:
-  case T_OR:
-  case T_AND:
   case PIKE_T_RING:
     /* Make a new type of the top two types. */
     --Pike_compiler->type_stackp;
