@@ -2034,7 +2034,7 @@ PMOD_EXPORT void o_rsh(void)
  *!   If @[arg2] is an object that implements @[lfun::``>>()], that
  *!   function will be called with @[arg1] as the single argument.
  *!
- *!   Otherwise @[arg1] will be shifted @[arg2] bits left.
+ *!   Otherwise @[arg1] will be shifted @[arg2] bits right.
  *!
  *! @seealso
  *!   @[`<<()]
