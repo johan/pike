@@ -542,7 +542,7 @@ void do_export()
 			  //       bugs in light.
 			  //	/grubba 2004-11-08
 			  "Directory":"KLUDGE_TARGETDIR",
-			  "Execute":"commit",
+			  "Execute":"deferred",//"commit",
 			  "ExeCommand":"[KLUDGE_TARGETDIR]\\bin\\pike "
 			  "-mlib\\master.pike bin\\install.pike "
 			  "--finalize BASEDIR=. TMP_BUILDDIR=bin",
@@ -555,7 +555,7 @@ void do_export()
 			  //       bugs in light.
 			  //	/grubba 2004-11-08
 			  "Directory":"KLUDGE_TARGETDIR",
-			  "Execute":"commit",
+			  "Execute":"deferred",//"commit",
 			  "ExeCommand":"[KLUDGE_TARGETDIR]\\bin\\pike "
 			  "-mlib\\master.pike bin\\install.pike "
 			  "--install-master BASEDIR=.",
