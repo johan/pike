@@ -720,11 +720,25 @@ void parse_data()
 			 post_fix_refs);
 	break;
       }
+      action = sprintf("#ifdef PIKE_DEBUG\n"
+		       "  if (l_flag > 4) {\n"
+		       "    fprintf(stderr, \"=> \"%O\"\\n\");\n"
+		       "  }\n"
+		       "#endif /* PIKE_DEBUG */\n", sprintf("%s", n2)) +
+	action;
     } else {
       // Null action.
       // Used to force code generation for eg NULL-detection.
+      // Obsolete.
       action = "";
     }
+
+    action = sprintf("#ifdef PIKE_DEBUG\n"
+		     "  if (l_flag > 4) {\n"
+		     "    fprintf(stderr, \"Match: \"%O\"\\n\");\n"
+		     "  }\n"
+		     "#endif /* PIKE_DEBUG */\n", sprintf("%s", n)) +
+      action;
 
     n->action = action;
 
