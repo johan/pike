@@ -190,6 +190,11 @@ typedef unsigned char p_wchar0;
 typedef unsigned INT16 p_wchar1;
 typedef unsigned INT32 p_wchar2;
 
+typedef struct p_wchar_p
+{
+  p_wchar0 *ptr;
+  int shift;
+} PCHARP;
 
 #if __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 7)
 #define RCSID(X) \
