@@ -1741,7 +1741,7 @@ void low_return_pop(void)
   }
 
 #if defined (PIKE_USE_MACHINE_CODE) && defined (OPCODE_RETURN_JUMPADDR)
-  sub_ref (o);
+  free_object (o);
 #endif
 }
 
