@@ -210,7 +210,7 @@ PIKECLASS Iterator
    *! to the first item.
    *!
    *! @returns
-   *!   Returns zero it there are no items at all in
+   *!   Returns zero if there are no items at all in
    *!   the data set, one otherwise.
    *!
    *! @note
