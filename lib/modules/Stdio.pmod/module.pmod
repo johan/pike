@@ -625,7 +625,7 @@ class FILE
     }
     if( !get_data() )
     {
-      if( sizeof( cached_lines ) > lp )
+      if( sizeof( cached_lines ) > lp && cached_lines[lp] != "" )
 	return cached_lines[lp++];
       cached_lines = ({});
       lp = 0;
