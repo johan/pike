@@ -116,6 +116,7 @@ PIKEFUN string basetype(mixed x)
 
 
 /*! @decl string int2char(int x)
+ *! @appears String.int2char
  *!
  *! Same as sprintf("%c",x);
  *!
@@ -164,6 +165,7 @@ PIKEFUN string int2char(int|object x)
 }
 
 /*! @decl string int2hex(int x)
+ *! @appears String.int2hex
  *!
  *! Same as sprintf("%x",x);
  *!
