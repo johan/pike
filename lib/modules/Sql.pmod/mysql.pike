@@ -6,7 +6,7 @@
 
 inherit Mysql.mysql;
 
-string sqlquote(string s)
+string quote(string s)
 {
   return(replace(s,
 		 ({ "\\", "\"", "\0", "\'", "\n", "\r" }),
