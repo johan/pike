@@ -1088,6 +1088,8 @@ int end_class(char *name, INT32 flags)
   tmp.type=T_PROGRAM;
   tmp.subtype=0;
   tmp.u.program=end_program();
+  if(!tmp.u.program)
+    fatal("Failed to initialize class '%s'\n",name);
   ret=simple_add_constant(name, &tmp, flags);
   free_svalue(&tmp);
   return ret;
