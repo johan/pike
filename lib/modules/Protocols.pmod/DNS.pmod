@@ -520,13 +520,13 @@ class client
 	      system->get_netinfo_property(".",
 					   "/locations/resolver",
 					   "nameserver")) {
-	    nameservers = sizeof(nameservers) && map(nameservers, `-, "\n");
+	    nameservers = map(nameservers, `-, "\n");
 	  }
 	  
 	  if (domains = system->get_netinfo_property(".",
 						    "/locations/resolver",
 						    "domain")) {
-	    domains = sizeof(domains) && map(domains, `-, "\n");
+	    domains = map(domains, `-, "\n");
 	  }
 	} else {
 	  /* FIXME: Is this a good idea?
