@@ -1148,7 +1148,7 @@ PIKECLASS Backend
      }
 
    /* Assumes current_time is correct on entry. */
-   int backend_do_call_outs(struct Backend_struct *me)
+   static int backend_do_call_outs(struct Backend_struct *me)
      {
        int call_count = 0;
        int args;
