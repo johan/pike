@@ -125,17 +125,25 @@ static void image_magic_index(INT32 args)
    if (sp[-1].type==T_INT)
    {
       pop_stack();
+      stack_dup();
       push_text("_Image_");
       stack_swap();
       f_add(2);
       push_int(0);
       SAFE_APPLY_MASTER("resolv",2);
    }
-   else
+   if (sp[-1].type==T_INT)
    {
-      stack_swap();
       pop_stack();
+      stack_dup();
+      push_text("_Image");
+      push_int(0);
+      SAFE_APPLY_MASTER("resolv",2);
+      stack_swap();
+      f_index(2);
    }
+   stack_swap();
+   pop_stack();
 }
 
 void pike_module_init(void)
