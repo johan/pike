@@ -141,6 +141,7 @@ array(string) split(string data, void|mapping state)
 		  master()->decode_charset(data[pos+1..sizeof(data)-3], 
 					   charset)
 		  +"\n\0");  // New end sentinel.
+	pos++;
 	break;
 
       case 'a'..'z':
