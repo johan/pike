@@ -191,6 +191,8 @@ void udp_sendto(INT32 args)
 {
   int flags = 0, res=0, i, fd;
   struct sockaddr_in to;
+  char *str;
+  INT32 len;
   
   if(args>3)
   {
@@ -216,11 +218,11 @@ void udp_sendto(INT32 args)
   to.sin_port = htons( ((u_short)sp[1-args].u.integer) );
 
   fd = THIS->fd;
+  str = sp[2-args].u.string->str;
+  len = sp[2-args].u.string->len;
   THREADS_ALLOW();
-  while(((res = sendto( fd, sp[2-args].u.string->str, sp[2-args].u.string->len, flags,
-		       (struct sockaddr *)&to,
-		       sizeof( struct sockaddr_in )))==-1)
-	&& errno==EINTR);
+  while(((res = sendto( fd, str, len, flags, (struct sockaddr *)&to,
+		       sizeof( struct sockaddr_in ))) == -1) && errno==EINTR);
   THREADS_DISALLOW();
   
   if(res<0)
