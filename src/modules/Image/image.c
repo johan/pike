@@ -33,7 +33,7 @@
 **!	<ref>`-</ref>,
 **!	<ref>`==</ref>,
 **!	<ref>`></ref>,
-**!	<ref>`&gt;</ref>,
+**!	<ref>`&lt;</ref>,
 **!	<ref>`|</ref>
 **!
 **!	pasting images, layers: <br>
