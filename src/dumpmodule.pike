@@ -390,6 +390,7 @@ int main(int argc, array(string) argv)
   // inserting another value into the function_names mapping here.
   function_names[Image.Color]="resolv:Image.Color";
   function_names[Image.Color.white]="resolv:Image.Color.white";
+  function_names[Image.BMP]="resolv:Image.BMP";
   function_names[Image.PNM]="resolv:Image.PNM";
   function_names[Image.X]="resolv:Image.X";
   function_names[Stdio.stdin]="resolv:Stdio.stdin";
