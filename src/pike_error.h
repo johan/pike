@@ -11,6 +11,7 @@
 #ifdef CONFIGURE_TEST
 
 #include <stdio.h>
+#include <stdarg.h>
 
 static inline void Pike_fatal (const char *fmt, ...)
 {
@@ -30,8 +31,6 @@ static inline void Pike_fatal (const char *fmt, ...)
 #include <setjmp.h>
 #undef HAVE_SETJMP_H
 #endif
-
-#include <stdarg.h>
 
 #if 1
 PMOD_EXPORT extern const char msg_fatal_error[];

@@ -47,14 +47,14 @@ PMOD_EXPORT COND_T live_threads_change;
 PMOD_EXPORT COND_T threads_disabled_change;
 PMOD_EXPORT size_t thread_stack_size=256 * 1204;
 
+#else
+#include "pike_threadlib.h"
+#endif	/* !CONFIGURE_TEST */
+
 PMOD_EXPORT void thread_low_error (int errcode)
 {
   Pike_fatal ("Unexpected error from thread function: %d\n", errcode);
 }
-
-#else
-#include "pike_threadlib.h"
-#endif	/* !CONFIGURE_TEST */
 
 /* SCO magic... */
 int  __thread_sys_behavior = 1;
