@@ -1420,20 +1420,19 @@ static void low_pike_sprintf(struct format_stack *fs,
 	/* Special casing for infinity and not a number,
 	 * since many libc's forget about them...
 	 */
-	if (tf && ((tf*2.0 == tf) || (tf != tf))) {
-	  /* Infinity or NaN. */
+	if (tf != tf) {
+	  /* NaN */
+	  fs->fsp->b = MKPCHARP("nan", 0);
 	  fs->fsp->len = 3;
+	  break;
+	} else if (tf && (tf+tf == tf)) {
+	  /* Infinity. */
 	  if (tf > 0.0) {
-	    if (tf < 0.0) {
-	      fs->fsp->b = MKPCHARP("nan", 0);
-	    } else {
-	      fs->fsp->b = MKPCHARP("inf", 0);
-	    }
-	  } else if (tf < 0.0) {
+	    fs->fsp->b = MKPCHARP("inf", 0);
+	    fs->fsp->len = 3;
+	  } else {
 	    fs->fsp->b = MKPCHARP("-inf", 0);
 	    fs->fsp->len = 4;
-	  } else {
-	    fs->fsp->b = MKPCHARP("nan", 0);
 	  }
 	  break;
 	}

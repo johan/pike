@@ -1574,17 +1574,13 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
     case T_FLOAT:
       {
 	double d = s->u.float_number;
-	if (d && ((d == d*2.0) || (d != d))) {
+	if (d != d) {
+	  my_strcat("nan");
+	} else if (d && (d+d == d)) {
 	  if (d > 0.0) {
-	    if (d < 0.0) {
-	      my_strcat("nan");
-	    } else {
-	      my_strcat("inf");
-	    }
-	  } else if (d < 0.0) {
-	    my_strcat("-inf");
+	    my_strcat("inf");
 	  } else {
-	    my_strcat("nan");
+	    my_strcat("-inf");
 	  }
 	} else {
 	  sprintf(buf, "%f", d);
