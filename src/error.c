@@ -160,7 +160,7 @@ PMOD_EXPORT DECLSPEC(noreturn) void pike_throw(void) ATTRIBUTE((noreturn))
   accept_unfinished_type_fields--;
 #endif
 
-  longjmp(Pike_interpreter.recoveries->recovery,1);
+  LOW_LONGJMP(Pike_interpreter.recoveries->recovery,1);
 }
 
 PMOD_EXPORT void push_error(const char *description)
