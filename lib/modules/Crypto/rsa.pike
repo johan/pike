@@ -125,7 +125,7 @@ object generate_key(int bits, function|void r)
   {
     bignum p = get_prime(bits, r);
     bignum q = get_prime(bits, r);
-    bignum phi = (p-1)*(q-1);
+    bignum phi = Gmp.mpz(p-1)*Gmp.mpz(q-1);
 
     array gs; /* gcd(pub, phi), and pub^-1 mod phi */
     bignum pub = Gmp.mpz(random(1 << 30) | 0x10001);
