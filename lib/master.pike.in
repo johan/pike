@@ -2648,28 +2648,6 @@ class Describer
 }
 
 
-string module_path_to_name (string path)
-//! Converts a module path on the form @expr{"Foo.pmod/Bar.pmod"@} to
-//! a module identifier on the form @expr{"Foo.Bar"@}.
-{
-  string modname = replace(path, ".pmod/", ".");
-  if(search(modname, "/")<0) path=modname;
-  if (has_suffix(path, ".module.pmod")) {
-    return path[..sizeof(path)-13];
-  }
-  if (has_suffix(path, ".pmod")) {
-    return path[..sizeof(path)-6];
-  }
-  if (has_suffix(path, ".so")) {
-    return path[..sizeof(path)-4];
-  }
-  if (has_suffix(path, ".pike")) {
-    return path[..sizeof(path)-6];
-  }
-  return path;
-}
-
-
 static string get_clean_program_path ( program p, string pref1,
 				       string suff1, string suff2 )
 {
