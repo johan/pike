@@ -24,4 +24,7 @@
 /* Define if you have pw_gecos in the passwd struct */
 #undef HAVE_PW_GECOS
 
+/* Define if <netinet/in.h> defines the in_addr_t type. */
+#undef HAVE_IN_ADDR_T
+
 #endif /* SYSTEM_MACHINE_H */
