@@ -534,6 +534,14 @@ if test $cflags_is_set = no; then
     ])
    ;;
   esac
+
+  # AIX
+  DO_IF_OS(AIX,
+  [
+    # Tell the linker to generate a large toc if needed
+    AC_SYS_COMPILER_FLAG(-bbigtoc,bbigtoc,LDFLAGS)
+  ])
+
  else if test "x${TCC-}" = xyes ; then
 
   # Yikes! We're using the TenDRA compiler!
@@ -611,6 +619,8 @@ if test $cflags_is_set = no; then
     # which is needed for several configure-scripts.
     AC_SYS_COMPILER_FLAG(-qhalt=e,qhalt_e,CFLAGS)
     AC_SYS_COMPILER_FLAG(-qro,qro,OPTIMIZE)
+    # Tell the linker to generate a large toc if needed
+    AC_SYS_COMPILER_FLAG(-bbigtoc,bbigtoc,LDFLAGS)
   ])
 
   # HP-UX
