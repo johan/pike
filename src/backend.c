@@ -98,6 +98,7 @@ void set_read_callback(int fd,file_callback cb,void *data)
   {
     FD_SET(fd, &selectors.read);
     if(max_fd < fd) max_fd = fd;
+    wake_up_backend();
   }else{
     if(fd <= max_fd)
     {
@@ -127,6 +128,7 @@ void set_write_callback(int fd,file_callback cb,void *data)
   {
     FD_SET(fd, &selectors.write);
     if(max_fd < fd) max_fd = fd;
+    wake_up_backend();
   }else{
     if(fd <= max_fd)
     {
