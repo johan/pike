@@ -656,10 +656,9 @@ PIKEFUN string function_name(program|function func)
   switch(func->type)
   {
     default:
-      if(!func->u.object->prog)
-	bad_arg_error("function_name", Pike_sp-args, args, 1,
-		      "function|program", Pike_sp-args,
-		      "Bad argument.\n");
+      bad_arg_error("function_name", Pike_sp-args, args, 1,
+		    "function|program", Pike_sp-args,
+		    "Bad argument.\n");
       return; /* NOTREACHED */
 	
     case PIKE_T_PROGRAM:
