@@ -96,6 +96,22 @@ pushdef([AC_CONFIG_HEADER],
   AC_CONFIG_HEADER($1)
 ])
 
+define([ORIG_AC_CHECK_FUNC], defn([AC_CHECK_FUNC]))
+pushdef([AC_CHECK_FUNC],
+[
+  # The original is vulnerable to prototypes included through assert.h.
+  # Try to correct that stupidity.
+  ORIG_FUNC_CPPFLAGS="$CPPFLAGS"
+  CPPFLAGS="-DFIXINC_BROKEN_ASSERT_STDLIB_CHECK -DFIXINC_BROKEN_ASSERT_STDIO_CHECK $CPPFLAGS"
+  ORIG_AC_CHECK_FUNC([$1],[
+    CPPFLAGS="$ORIG_FUNC_CPPFLAGS"
+    $2
+  ],[
+    CPPFLAGS="$ORIG_FUNC_CPPFLAGS"
+    $3
+  ])
+])
+
 define([ORIG_AC_CHECK_SIZEOF], defn([AC_CHECK_SIZEOF]))
 pushdef([AC_CHECK_SIZEOF],
 [
