@@ -632,7 +632,7 @@ class fetch
 	part_number += ({ n });
       }
 
-      res->raw_options = atom->options;
+      res->raw_options = atom->options->atom;
       res->section = path[i..];
       res->part = part_number;
       res->options = atom->options[1..];
