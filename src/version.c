@@ -13,7 +13,6 @@
 
 RCSID("$Id$");
 
-#define STR(X) #X
 /*! @decl string version()
  *!
  *! Report the version of Pike.
