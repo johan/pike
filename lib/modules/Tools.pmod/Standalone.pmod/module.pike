@@ -21,9 +21,6 @@ string bin_path=include_path;
 #endif
 string run_pike;
 
-int(0..1) verbose;
-#define VERB(X ...) if(verbose) werror(X)
-
 #define NOT 0
 #define AUTO 1
 #define ALWAYS 2
