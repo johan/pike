@@ -1,7 +1,7 @@
 # $Id$
 SRCDIR=@srcdir@
 VPATH=@srcdir@:@srcdir@/../..:../..:.
-OBJS=system.o syslog.o passwords.o
+OBJS=system.o syslog.o passwords.o nt.o
 MODULE_LDFLAGS=@LIBS@
 
 @static_module_makefile@
