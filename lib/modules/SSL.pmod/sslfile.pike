@@ -356,6 +356,8 @@ static void create (Stdio.File stream, SSL.context ctx,
     stream->set_close_callback (0);
     stream->set_id (1);
 
+    if(!ctx->random)
+      ctx->random = Crypto.Random.random_string;
     conn = SSL.connection (!is_client, ctx);
 
     if(is_blocking) {
