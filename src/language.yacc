@@ -1303,9 +1303,10 @@ lambda: F_LAMBDA
     $4=mknode(F_COMMA_EXPR,$4,mknode(F_RETURN,mkintnode(0),0));
     type=find_return_type($4);
 
-    if(type)
+    if(type) {
       push_finished_type(type);
-    else
+      free_string(type);
+    } else
       push_type(T_MIXED);
     
     e=$3-1;
