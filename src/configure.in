@@ -2212,6 +2212,7 @@ esac
 case "$posix_name" in
 EOF
     mount | sed -e 's/\(.*\) on \(.*\) type user.*/\2 \1/p' -ed | sort -r | \
+      sed -e 's/\\/\//g' | \
       sed -e 's/\(.*\) \(.*\)/  \1|\1\/*)\
     posix_prefix="\1"\
     native_prefix="\2"\
