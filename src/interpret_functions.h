@@ -198,6 +198,13 @@ OPCODE1(F_CONSTANT, "constant", {
   print_return_value();
 });
 
+OPCODE0(F_SWAP,"swap",{
+  struct svalue tmp;
+  tmp=Pike_sp[-2];
+  Pike_sp[-2]=Pike_sp[-1];
+  Pike_sp[-1]=tmp;
+});
+
 /* The rest of the basic 'push value' instructions */	
 
 OPCODE1_TAIL(F_MARK_AND_STRING, "mark & string", {

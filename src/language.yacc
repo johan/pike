@@ -3050,6 +3050,7 @@ expr4: string
   }
   | expr4 '(' error ';' { yyerror("Missing ')'."); $$=mkapplynode($1, NULL); }
   | expr4 '(' error '}' { yyerror("Missing ')'."); $$=mkapplynode($1, NULL); }
+  | expr4 '[' '*' ']'   { $$=mknode(F_AUTO_MAP_MARKER, $1, 0); }
   | expr4 '[' expr0 ']' { $$=mknode(F_INDEX,$1,$3); }
   | expr4 '['  comma_expr_or_zero expected_dot_dot comma_expr_or_maxint ']'
   {
