@@ -1126,7 +1126,7 @@ static TH_RETURN_TYPE wait_thread(void *data)
       fprintf(stderr, "wait thread: locking interpreter, pid=%d\n",pid);
 #endif
 
-      mt_lock_interpreter();
+      low_mt_lock_interpreter(); /* Can run even if threads_disabled. */
 
 #ifdef PROC_DEBUG
       fprintf(stderr, "wait thread: reporting the event!\n");

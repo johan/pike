@@ -286,7 +286,7 @@ void init_threads_disable(struct object *o)
 		      (stderr,
 		       "_disable_threads(): Waiting for %d threads to finish\n",
 		       live_threads));
-      co_wait_interpreter(&live_threads_change);
+      low_co_wait_interpreter(&live_threads_change);
     }
     SWAP_IN_CURRENT_THREAD();
   }
@@ -1659,7 +1659,7 @@ void low_th_init(void)
 #endif /* POSIX_THREADS */
 
   mt_init( & interpreter_lock);
-  mt_lock_interpreter();
+  low_mt_lock_interpreter();
   mt_init( & thread_table_lock);
   mt_init( & interleave_lock);
   mt_init( & rosie);
