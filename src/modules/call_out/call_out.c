@@ -163,7 +163,7 @@ static void verify_call_outs(void)
   }
 
   for(d=0;d<10 && e<call_buffer_size;d++,e++)
-    CALL(e)=(call_out *)-1;
+    CALL(e)=(call_out *)(ptrdiff_t)-1;
 
   for(e=0;e<(int)hash_size;e++)
   {
@@ -591,7 +591,7 @@ static int find_call_out(struct svalue *fun)
 static void f_do_call_outs(INT32 args)
 {
   GETTIMEOFDAY(&current_time);
-  do_call_outs(0, 0, (void *)1);
+  do_call_outs(0, 0, (void *)(ptrdiff_t)1);
   do_call_outs(0, 0, (void *)0);
   pop_n_elems(args);
 }
