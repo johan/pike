@@ -1467,6 +1467,13 @@ cond([[ sizeof( cpp("__AUTO_BIGNUM__")/"__AUTO_BIGNUM__" ) == 1 ]],
   test_eq([[ sprintf("%08x", @array_sscanf("\8\7\6\5\1\2\3\4", "%8c")) ]], "3807060501020304")
   test_eq([[ sprintf("%08x", @array_sscanf("\010\7\6\5\1\2\3\4", "%8c")) ]], "807060501020304")
 
+  test_eq([[ sprintf("%4c",16909060) ]],"\1\2\3\4")
+  test_eq([[ sprintf("%-4c",16909060) ]],"\4\3\2\1")
+  test_eq([[ array_sscanf(sprintf("%4c",16909060),"%4c")[0] ]],16909060)
+  test_eq([[ array_sscanf(sprintf("%-4c",16909060),"%-4c")[0] ]],16909060)
+  test_eq([[ sprintf("%2c",16909060) ]],"\3\4")
+  test_eq([[ sprintf("%-2c",16909060) ]],"\4\3")
+
   test_equal([[ ({ 0, 118 }) ]], [[ array_sscanf("0x76", "%xx%x") ]])
   test_equal([[ ({ 0, 557239244978618154304871 }) ]],
              [[ array_sscanf("0x76000000000001234567", "%xx%x") ]])
