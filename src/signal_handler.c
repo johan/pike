@@ -989,6 +989,7 @@ extern int pike_make_pipe(int *);
 #define PROCE_INITGROUPS	6
 #define PROCE_SETUID		7
 #define PROCE_EXEC		8
+#define PROCE_CLOEXEC		9
 
 #define PROCERROR(err, id)	do { int _l, _i; \
     buf[0] = err; buf[1] = errno; buf[2] = id; \
@@ -1912,8 +1913,8 @@ void f_create_process(INT32 args)
        * fork() failed
        */
 
-      close(control_pipe[0]);
-      close(control_pipe[1]);
+      while(close(control_pipe[0]) < 0 && errno==EINTR);
+      while(close(control_pipe[1]) < 0 && errno==EINTR);
 
       free_perishables(&storage);
 
@@ -1925,7 +1926,7 @@ void f_create_process(INT32 args)
       int olderrno;
 
       /* Close our child's end of the pipe. */
-      close(control_pipe[1]);
+      while(close(control_pipe[1]) < 0 && errno==EINTR);
 
       free_perishables(&storage);
 
@@ -1954,7 +1955,7 @@ void f_create_process(INT32 args)
       if(e!=1) {
 	/* Paranoia in case close() sets errno. */
 	olderrno = errno;
-	close(control_pipe[0]);
+	while(close(control_pipe[0]) < 0 && errno==EINTR);
 	error("Child process died prematurely. (e=%d errno=%d)\n",
 	      e, olderrno);
       }
@@ -1964,7 +1965,9 @@ void f_create_process(INT32 args)
 	;
       /* Paranoia in case close() sets errno. */
       olderrno = errno;
-      close(control_pipe[0]);
+
+      while(close(control_pipe[0]) < 0 && errno==EINTR);
+
       if (!e) {
 	/* OK! */
 	pop_n_elems(args);
@@ -2005,6 +2008,10 @@ void f_create_process(INT32 args)
 	  error("Process.create_process(): exec() failed. errno:%d\n"
 		"File not found?\n", buf[1]);
 	  break;
+	case PROCE_CLOEXEC:
+	  error("Process.create_process(): set_close_on_exec() failed. errno:%d\n",
+		buf[1]);
+	  break;
 	case 0:
 	  /* read() probably failed. */
 	default:
@@ -2027,9 +2034,11 @@ void f_create_process(INT32 args)
       extern void do_set_close_on_exec(void);
 
       /* Close our parent's end of the pipe. */
-      close(control_pipe[0]);
+      while(close(control_pipe[0]) < 0 && errno==EINTR);
+
       /* Ensure that the pipe will be closed when the child starts. */
-      set_close_on_exec(control_pipe[1], 1);
+      if(set_close_on_exec(control_pipe[1], 1) < 0)
+          PROCERROR(PROCE_CLOEXEC, 0);
 
       SET_ONERROR(oe, exit_on_error, "Error in create_process() child.");
 
