@@ -96,7 +96,7 @@ struct pike_frame
 
 #define pop_n_elems(X)						\
  do { ptrdiff_t x_=(X); if(x_) { 					\
-   check__positive(x_,("Popping negative number of args.... (%d) \n",x_)); \
+   check__positive(x_,("Popping negative number of args.... (%ld) \n",(long)x_)); \
    Pike_sp-=x_; debug_check_stack();					\
   free_svalues(Pike_sp,x_,BIT_MIXED);				\
  } } while (0)
