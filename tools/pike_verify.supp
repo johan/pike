@@ -33,3 +33,33 @@
    fun:gdbm_reorganize
    fun:gdbmmod_reorganize
 }
+
+
+# libc-2.3.2 suppressions
+
+{
+   <insert a suppression name here>
+   Memcheck:Cond
+   obj:/lib/ld-2.3.2.so
+   fun:_dl_relocate_object
+   obj:/lib/i686/libc-2.3.2.so
+   fun:_dl_catch_error
+}
+
+{
+   <insert a suppression name here>
+   Memcheck:Cond
+   fun:_dl_relocate_object
+   obj:/lib/i686/libc-2.3.2.so
+   fun:_dl_catch_error
+   fun:_dl_open
+}
+
+{
+   <insert a suppression name here>
+   Memcheck:Value4
+   fun:_IO_vfprintf
+   obj:/lib/i686/libc-2.3.2.so
+   fun:_IO_vfprintf
+   fun:debug_fatal
+}
