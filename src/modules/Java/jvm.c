@@ -3129,7 +3129,23 @@ static void f_create(INT32 args)
     Pike_error( "Failed to create virtual machine\n" );
 
   /* Java tries to be a wiseguy with the locale... */
-  setlocale(LC_NUMERIC, "");
+#ifdef HAVE_SETLOCALE
+#ifdef LC_NUMERIC
+  setlocale(LC_NUMERIC, "C");
+#endif
+#ifdef LC_CTYPE
+  setlocale(LC_CTYPE, "");
+#endif
+#ifdef LC_TIME
+  setlocale(LC_TIME, "C");
+#endif
+#ifdef LC_COLLATE
+  setlocale(LC_COLLATE, "");
+#endif
+#ifdef LC_MESSAGES
+  setlocale(LC_MESSAGES, "");
+#endif
+#endif
 
   cls = (*j->env)->FindClass(j->env, "java/lang/Object");
   j->class_object = (*j->env)->NewGlobalRef(j->env, cls);
