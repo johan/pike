@@ -129,30 +129,37 @@ static void gmp_push_int64 (INT64 i)
   else
   {
     MP_INT *mpz;
-    int neg = i < 0;
-    if (neg) i = -i;
 
     push_object (fast_clone_object (bignum_program));
     mpz = OBTOMPZ (sp[-1].u.object);
 
-#ifdef HAVE_MPZ_IMPORT
-    mpz_import (mpz, 1, 1, SIZEOF_INT64, 0, 0, &i);
+#if SIZEOF_LONG >= SIZEOF_INT64
+    mpz_set_si (mpz, i);
 #else
     {
-      size_t n =
-	((SIZEOF_INT64 + SIZEOF_LONG - 1) / SIZEOF_LONG - 1)
-	/* The above is the position of the top unsigned long in the INT64. */
-	* ULONG_BITS;
-      mpz_set_ui (mpz, (unsigned long) (i >> n));
-      while (n) {
-	n -= ULONG_BITS;
-	mpz_mul_2exp (mpz, mpz, ULONG_BITS);
-	mpz_add_ui (mpz, mpz, (unsigned long) (i >> n));
-      }
-    }
-#endif
+      int neg = i < 0;
+      if (neg) i = -i;
 
-    if (neg) mpz_neg (mpz, mpz);
+#ifdef HAVE_MPZ_IMPORT
+      mpz_import (mpz, 1, 1, SIZEOF_INT64, 0, 0, &i);
+#else
+      {
+	size_t n =
+	  ((SIZEOF_INT64 + SIZEOF_LONG - 1) / SIZEOF_LONG - 1)
+	  /* The above is the position of the top unsigned long in the INT64. */
+	  * ULONG_BITS;
+	mpz_set_ui (mpz, (unsigned long) (i >> n));
+	while (n) {
+	  n -= ULONG_BITS;
+	  mpz_mul_2exp (mpz, mpz, ULONG_BITS);
+	  mpz_add_ui (mpz, mpz, (unsigned long) (i >> n));
+	}
+      }
+#endif	/* !HAVE_MPZ_IMPORT */
+
+      if (neg) mpz_neg (mpz, mpz);
+#endif	/* SIZEOF_LONG < SIZEOF_INT64 */
+    }
   }
 }
 
