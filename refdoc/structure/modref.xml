@@ -10,11 +10,6 @@
     <chapter title="ignored">
       <insert-move entity=""/>
     </chapter>
-<!--
-    <appendix-ref name="Image.Color colors"/>
-    <appendix-ref name="Image.Layer modes"/>
-    <appendix-ref file="not_extracted/appendix_bnf.xml"/>
--->
   </file>
   </dir>
 
