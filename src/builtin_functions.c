@@ -3791,7 +3791,7 @@ PMOD_EXPORT void f__verify_internals(INT32 args)
 #ifdef PIKE_DEBUG
   do_debug();			/* Calls do_gc() since d_flag > 3. */
 #else
-  do_gc();
+  do_gc(NULL, 1);
 #endif
   d_flag=tmp;
   pop_n_elems(args);
