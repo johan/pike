@@ -504,7 +504,14 @@ static INT32 low_sscanf(INT32 num_arg)
 	char * t;
 
 	if(eye>=input_len) return matches;
-	sval.u.integer=STRTOL(input+eye,&t,10);
+	if(field_length != -1 && eye+field_length < input_len)
+	{
+	  char save=input[eye+field_length+1];
+	  sval.u.integer=STRTOL(input+eye,&t,10);
+	  input[eye+field_length+1]=save;
+	}else
+	  sval.u.integer=STRTOL(input+eye,&t,10);
+
 	if(input + eye == t) return matches;
 	eye=t-input;
 	sval.type=T_INT;
@@ -517,7 +524,13 @@ static INT32 low_sscanf(INT32 num_arg)
 	char * t;
 
 	if(eye>=input_len) return matches;
-	sval.u.integer=STRTOL(input+eye,&t,16);
+	if(field_length != -1 && eye+field_length < input_len)
+	{
+	  char save=input[eye+field_length+1];
+	  sval.u.integer=STRTOL(input+eye,&t,16);
+	  input[eye+field_length+1]=save;
+	}else
+	  sval.u.integer=STRTOL(input+eye,&t,16);
 	if(input + eye == t) return matches;
 	eye=t-input;
 	sval.type=T_INT;
@@ -530,7 +543,13 @@ static INT32 low_sscanf(INT32 num_arg)
 	char * t;
 
 	if(eye>=input_len) return matches;
-	sval.u.integer=STRTOL(input+eye,&t,8);
+	if(field_length != -1 && eye+field_length < input_len)
+	{
+	  char save=input[eye+field_length+1];
+	  sval.u.integer=STRTOL(input+eye,&t,8);
+	  input[eye+field_length+1]=save;
+	}else
+	  sval.u.integer=STRTOL(input+eye,&t,8);
 	if(input + eye == t) return matches;
 	eye=t-input;
 	sval.type=T_INT;
@@ -544,7 +563,13 @@ static INT32 low_sscanf(INT32 num_arg)
 	char * t;
 
 	if(eye>=input_len) return matches;
-	sval.u.integer=STRTOL(input+eye,&t,0);
+	if(field_length != -1 && eye+field_length < input_len)
+	{
+	  char save=input[eye+field_length+1];
+	  sval.u.integer=STRTOL(input+eye,&t,0);
+	  input[eye+field_length+1]=save;
+	}else
+	  sval.u.integer=STRTOL(input+eye,&t,0);
 	if(input + eye == t) return matches;
 	eye=t-input;
 	sval.type=T_INT;
