@@ -80,7 +80,7 @@ PMOD_EXPORT void f_equal(INT32 args)
 {
   int i;
   if(args != 2)
-    PIKE_ERROR("equal", "Bad number of arguments.\n", Pike_sp, args);
+    SIMPLE_TOO_FEW_ARGS_ERROR("equal", 2);
 
   i=is_equal(Pike_sp-2,Pike_sp-1);
   pop_n_elems(args);
@@ -133,9 +133,9 @@ void f_compat_hash( INT32 args )
   struct pike_string *s = Pike_sp[-args].u.string;
   unsigned int i;
   if(!args)
-    SIMPLE_TOO_FEW_ARGS_ERROR("hash",1);
+    SIMPLE_TOO_FEW_ARGS_ERROR("hash_7_0",1);
   if(Pike_sp[-args].type != T_STRING)
-    SIMPLE_BAD_ARG_ERROR("hash", 1, "string");
+    SIMPLE_BAD_ARG_ERROR("hash_7_0", 1, "string");
 
   if( s->size_shift )
   {
@@ -148,10 +148,10 @@ void f_compat_hash( INT32 args )
   if(args > 1)
   {
     if(Pike_sp[1-args].type != T_INT)
-      SIMPLE_BAD_ARG_ERROR("hash",2,"int");
+      SIMPLE_BAD_ARG_ERROR("hash_7_0",2,"int");
     
     if(!Pike_sp[1-args].u.integer)
-      PIKE_ERROR("hash", "Modulo by zero.\n", Pike_sp, args);
+      PIKE_ERROR("hash_7_0", "Modulo by zero.\n", Pike_sp, args);
 
     i%=(unsigned INT32)Pike_sp[1-args].u.integer;
   }
