@@ -268,7 +268,7 @@ PMOD_EXPORT struct object *debug_clone_object(struct program *p, int args)
 {
   ONERROR tmp;
   struct object *o;
-  if(p->flags & PROGRAM_USES_PARENT)
+  if(p->flags & PROGRAM_NEEDS_PARENT)
     Pike_error("Parent lost, cannot clone program.\n");
 
   o=low_clone(p);

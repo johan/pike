@@ -2358,7 +2358,7 @@ void low_inherit(struct program *p,
     return;
   }
 
-  if(p->flags & PROGRAM_USES_PARENT)
+  if(p->flags & PROGRAM_NEEDS_PARENT)
   {
     struct program_state *state=Pike_compiler;
 

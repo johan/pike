@@ -259,6 +259,9 @@ struct pike_trampoline
 /* Program has not yet been used for compilation */
 #define PROGRAM_VIRGIN 0x800
 
+/* */
+#define PROGRAM_NEEDS_PARENT 0x1000
+
 enum pike_program_event
 {
   PROG_EVENT_INIT =0,

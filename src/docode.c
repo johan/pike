@@ -1754,7 +1754,8 @@ static int do_docode2(node *n, INT16 flags)
 	    x++;
 #endif
 	  emit2(F_EXTERNAL, n->u.sval.subtype, x);
-	  Pike_compiler->new_program->flags |= PROGRAM_USES_PARENT;
+	  Pike_compiler->new_program->flags |=
+	    PROGRAM_USES_PARENT | PROGRAM_NEEDS_PARENT;
 	  return 1;
 	}
       }
