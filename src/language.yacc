@@ -1175,6 +1175,12 @@ identifier_type: idents
 
       push_object_type(0, p?(p->id):0);
     }
+#ifdef USE_PIKE_TYPE
+    /* Attempt to name the type. */
+    if (Pike_compiler->last_identifier) {
+      push_type_name(Pike_compiler->last_identifier);
+    }
+#endif /* USE_PIKE_TYPE */
     pop_stack();
     free_node($1);
   }
@@ -1292,6 +1298,12 @@ opt_object_type:  /* Empty */ { push_object_type(0, 0); }
       }
     }
     push_object_type(0, p?(p->id):0);
+#ifdef USE_PIKE_TYPE
+    /* Attempt to name the type. */
+    if (Pike_sp[-2].type == T_STRING) {
+      push_type_name(Pike_sp[-2].u.string);
+    }
+#endif /* USE_PIKE_TYPE */
     pop_n_elems(2);
   }
   ;

@@ -241,6 +241,7 @@ void type_stack_reverse(void);
 void push_int_type(INT32 min, INT32 max);
 void push_object_type(int flag, INT32 id);
 void push_object_type_backwards(int flag, INT32 id);
+void push_type_name(struct pike_string *name);
 INT32 extract_type_int(char *p);
 void push_unfinished_type(char *s);
 void push_assign_type(int marker);
