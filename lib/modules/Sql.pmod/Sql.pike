@@ -540,8 +540,11 @@ array(mapping(string:mixed)) list_fields(string table, string|void wild)
       res = res_obj_to_array(res);
     }
     if (wild) {
-      res = filter(res, 
-		   Regexp(replace(wild, ({"%", "_"}), ({".*", "."})))->match);
+      res = filter(res, lambda(mapping row){
+			  return Regexp(replace(wild, ({"%", "_"}),
+						({".*", "."})))
+			    ->match(row->name);
+			});
     }
     return(res);
   }
