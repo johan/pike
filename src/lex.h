@@ -64,6 +64,8 @@ struct keyword
 #define I_ISBRANCHARGS	(I_TWO_ARGS | I_HASPOINTER | I_JUMP | I_BRANCH)
 #define I_IS_MASK	(I_TWO_ARGS | I_POINTER | I_HASPOINTER | I_JUMP)
 
+#define I_UPDATE_ALL	(I_UPDATE_SP | I_UPDATE_FP | I_UPDATE_M_SP)
+
 /* Valid masked flags:
  *
  * 0			Generic instruction without immediate arguments.
