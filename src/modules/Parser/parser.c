@@ -34,7 +34,6 @@ void pike_module_init(void)
       struct program *p;
 
       start_new_program();
-      fprintf(stderr,"%d %x\n",i,sub[i].func);
       sub[i].func();
       p=end_program();
       add_program_constant(sub[i].name,p,0);
