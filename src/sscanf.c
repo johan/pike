@@ -1265,7 +1265,7 @@ MK_VERY_LOW_SSCANF(1,2)
 MK_VERY_LOW_SSCANF(2,2)
 
 /* Simplified interface to very_low_sscanf_{0,1,2}_{0,1,2}(). */
-static INT32 low_sscanf(struct pike_string *data, struct pike_string *format)
+INT32 low_sscanf(struct pike_string *data, struct pike_string *format)
 {
   ptrdiff_t matched_chars;
   int x;
