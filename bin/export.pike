@@ -145,9 +145,11 @@ int main(int argc, string *argv)
 
 	case "rebuild":
 	  rebuild=1;
+	  break;
 
         case "notag":
 	  notag=1;
+	  break;
       }
     }
       
