@@ -200,7 +200,11 @@ void do_free_object(struct object *o)
 struct object *debug_clone_object(struct program *p, int args)
 {
   ONERROR tmp;
-  struct object *o=low_clone(p);
+  struct object *o;
+  if(p->flags & PROGRAM_USES_PARENT)
+    error("Parent lost, cannot clone program.\n");
+
+  o=low_clone(p);
   SET_ONERROR(tmp, do_free_object, o);
   debug_malloc_touch(o);
   call_c_initializers(o);

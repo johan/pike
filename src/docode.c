@@ -1183,6 +1183,7 @@ static int do_docode2(node *n,int flags)
 	    x++;
 	  emit(F_LDA, x);
 	  emit(F_EXTERNAL, n->u.sval.subtype);
+	  new_program->flags |= PROGRAM_USES_PARENT;
 	  return 1;
 	}
       }
