@@ -1475,7 +1475,7 @@ mixed handle_import(string what, string|void current_file, object|void handler)
     return fc[path];
   }
   resolv_debug ("handle_import(%O, %O) => new dirnode\n", what, current_file);
-  return fc[path] = dirnode(path);
+  return fc[path] = dirnode(path, handler);
 }
 
 
