@@ -1450,7 +1450,11 @@ static void f_compile_query_create(INT32 args)
     for(t = 0; t < timeout_limit && dbcon->resultobject_busy; ++t)
     {
       THREADS_ALLOW();
+#ifdef __NT__
+      Sleep(1000);
+#else
       sleep(1);
+#endif
       THREADS_DISALLOW();
     }
     if (dbcon->resultobject_busy)
