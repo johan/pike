@@ -9333,7 +9333,6 @@ void test_dir(string dir, int|void base_size)
   {
     switch(s)
     {
-      case "db":	// Protocols.pmod/X.pmod/db
       case "msql.pike":
       case "mysql.pike":
       case "mysql_result.pike":
@@ -9347,6 +9346,7 @@ void test_dir(string dir, int|void base_size)
       case "GTKSupport.pmod":
       case "PV.pike":
 #endif
+      case "GZipFile.pike":
         continue; // These modules cannot be tested properly by this test
     }
     string file=combine_path(dir,s);
