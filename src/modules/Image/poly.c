@@ -698,8 +698,8 @@ static void image_poly_cast(INT32 args)
 	       down=1;
 	       for (;;)
 	       {
-		  push_float(v->x);
-		  push_float(v->y);
+		  push_float(DO_NOT_WARN((FLOAT_TYPE)(v->x)));
+		  push_float(DO_NOT_WARN((FLOAT_TYPE)(v->y)));
 		  n++;
 		  ni++;
 		  mark[l-THIS->line]=1;

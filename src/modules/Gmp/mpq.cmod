@@ -55,7 +55,6 @@ PIKECLASS mpq
 				  struct pike_string *digits,
 				  int base)
     {
-      int exp;
       char *str;
   
       if(digits->size_shift)
@@ -324,7 +323,6 @@ PIKECLASS mpq
       INT_TYPE precision, width, base = 0, mask_shift = 0;
       struct pike_string *s = 0;
       INT_TYPE flag_left;
-      struct svalue *sv;
 
       precision=lookup("Gmp.Mpq->_sprintf",flags,"precision",7);
       width=lookup("Gmp.Mpq->_sprintf",flags,"width",-1);

@@ -1843,7 +1843,7 @@ static void image_tuned_box(INT32 args)
 					     (tfy=tune_factor(yw-y,dyw))*tfx1);
 		add_to_rgbda_sum_with_factor(&sum, bottomright, tfy*tfx2);
 
-		sum.alpha*=(1.0/255.0);
+		sum.alpha *= DO_NOT_WARN((float)(1.0/255.0));
 
 		rgb.r = DO_NOT_WARN((float)(sum.r*(1.0-sum.alpha)+img->r*sum.alpha));
 		rgb.g = DO_NOT_WARN((float)(sum.g*(1.0-sum.alpha)+img->g*sum.alpha));
@@ -4271,7 +4271,8 @@ static void image__sprintf( INT32 args )
      push_constant_text( "Image.Image( %d x %d /* %.1fKb */)" );
      push_int( THIS->xsize );
      push_int( THIS->ysize );
-     push_float( (THIS->xsize * THIS->ysize) / 1024.0 * 3.0 ); 
+     push_float( DO_NOT_WARN((FLOAT_TYPE)((THIS->xsize * THIS->ysize) /
+					  1024.0 * 3.0)) ); 
      f_sprintf( 4 );
      return;
    default:
