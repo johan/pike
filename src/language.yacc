@@ -1627,7 +1627,8 @@ local_function: TOK_IDENTIFIER push_compiler_frame1 func_args
     {
       $$=copy_node(Pike_compiler->compiler_frame->variable[localid].def);
     }else{
-      if(Pike_compiler->compiler_frame->lexical_scope & SCOPE_SCOPE_USED)
+      if(Pike_compiler->compiler_frame->lexical_scope & 
+	 (SCOPE_SCOPE_USED | SCOPE_SCOPED))
       {
 	$$ = mknode(F_ASSIGN, mktrampolinenode($<number>3),
 		    mklocalnode(localid,0));
@@ -1746,7 +1747,8 @@ local_function2: optional_stars TOK_IDENTIFIER push_compiler_frame1 func_args
     {
       $$=copy_node(Pike_compiler->compiler_frame->variable[localid].def);
     }else{
-      if(Pike_compiler->compiler_frame->lexical_scope & SCOPE_SCOPE_USED)
+      if(Pike_compiler->compiler_frame->lexical_scope & 
+	 (SCOPE_SCOPE_USED | SCOPE_SCOPED))
       {
         $$ = mknode(F_ASSIGN, mktrampolinenode($<number>5),
 	  mklocalnode(localid,0));
