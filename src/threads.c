@@ -571,7 +571,9 @@ PMOD_EXPORT void f_all_threads(INT32 args)
   for(x=0; x<THREAD_TABLE_SIZE; x++)
     for(s=thread_table_chains[x]; s; s=s->hashlink) {
       struct object *o = THREADSTATE2OBJ(s);
-      ref_push_object(o);
+      if (o) {
+	ref_push_object(o);
+      }
     }
   mt_unlock( & thread_table_lock );
   f_aggregate(DO_NOT_WARN(Pike_sp - oldsp));
