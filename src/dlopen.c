@@ -2524,6 +2524,7 @@ static void init_dlopen(void)
     EXPORT(fread);
     EXPORT(strtol);
     EXPORT(rewind);
+    EXPORT(fputs);
   }
 #if 0
 #ifdef _M_IA64
