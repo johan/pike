@@ -41,8 +41,8 @@ RCSID("$Id$");
 
 #include "precompiled_odbc.h"
 
-
-#define sp Pike_sp
+/* must be included last */
+#include "module_magic.h"
 
 #ifdef HAVE_ODBC
 
@@ -458,7 +458,12 @@ static void f_fetch_row(INT32 args)
 	      push_string(make_shared_binary_string(blob_buf, len));
 	      break;
 	    } else {
-	      push_string(make_shared_binary_string(blob_buf, BLOB_BUFSIZ));
+	      if (PIKE_ODBC_RES->field_info[i].type == SQL_C_BINARY) {
+		push_string(make_shared_binary_string(blob_buf, BLOB_BUFSIZ));
+	      } else {
+		/* SQL_C_CHAR's are NUL-terminated... */
+		push_string(make_shared_binary_string(blob_buf, BLOB_BUFSIZ - 1));
+	      }
 	    }
 	  }
 	}
