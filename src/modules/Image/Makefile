@@ -30,6 +30,7 @@ DOCFILES = doc-header \
    polyfill.c \
    togif.c \
    x.c \
+   colors.c \
    doc-footer
 
 WMMLDOCPLACE = ../../../tutorial/Image.wmml
