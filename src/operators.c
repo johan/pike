@@ -1061,12 +1061,12 @@ void o_mod(void)
       {
 	sp[-1].u.integer %= sp[0].u.integer;
       }else{
-	sp[-1].u.integer=sp[0].u.integer+(sp[-1].u.integer % -sp[0].u.integer);
+	sp[-1].u.integer=((sp[-1].u.integer+~sp[0].u.integer)%-sp[0].u.integer)-~sp[0].u.integer;
       }
     }else{
       if(sp[0].u.integer>=0)
       {
-	sp[-1].u.integer=sp[0].u.integer-(-sp[-1].u.integer % sp[0].u.integer);
+	sp[-1].u.integer=sp[0].u.integer+~((~sp[-1].u.integer) % sp[0].u.integer);
       }else{
 	sp[-1].u.integer=-(-sp[-1].u.integer % -sp[0].u.integer);
       }
