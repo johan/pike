@@ -149,6 +149,30 @@ class support {
 		     });
   }
 
+  array(array(string|int)) decode_words_tokenized_labled( string phrase )
+  {
+    return Array.map( tokenize_labled( phrase ),
+		      lambda(array(string|int) item) {
+			switch(item[0]) {
+			case "encoded-word":
+			  return ({ "word", @decode_word(item[1]) });
+			case "word":
+			  return item + ({ 0 });
+			default:
+			  return item;
+			}
+		      });
+  }
+
+  array(array(string|int)) decode_words_tokenized_labled_remapped(string phrase)
+  {
+    return Array.map(decode_words_tokenized_labled(phrase),
+		     lambda(array(string|int) item) {
+		       return(item[0]=="word"? ({ "word", remap(item[1..]) }) :
+			      item);
+		     });
+  }
+
   string guess_subtype( string typ )
   {
     switch (typ) {
