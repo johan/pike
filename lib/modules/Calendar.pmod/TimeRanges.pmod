@@ -498,7 +498,7 @@ class TimeRange
 //!      |-------A-------|    A preceeds B,  A succeeds B,
 //!          |---B---|        A overlaps B, A contains B, A touches B
 //!
-//!         |----A----|       A overlaps B, A touches B
+//!         |----A----|       A overlaps B, A touches B, A contains B
 //!         |----B----|       A equals B, A starts with B, A ends with B
 //!
 //!      |-------A-------|    A succeeds B, A starts with B
