@@ -448,10 +448,13 @@ define([AC_MODULE_INIT],
 
   if test -f "$srcdir/module.pmod.in"; then
     MODULE_PMOD_IN="$srcdir/module.pmod.in"
+    MODULE_WRAPPER_PREFIX="___"
   else
     MODULE_PMOD_IN=""
+    MODULE_WRAPPER_PREFIX=""
   fi
   AC_SUBST(MODULE_PMOD_IN)
+  AC_SUBST(MODULE_WRAPPER_PREFIX)
 
   if test -d $BUILD_BASE/modules/. ; then
     dynamic_module_makefile=$BUILD_BASE/modules/dynamic_module_makefile

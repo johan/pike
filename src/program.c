@@ -1657,17 +1657,17 @@ struct program *id_to_program(INT32 id)
 
     switch(id) {
     case PROG_PARSER_HTML_ID:
-      module = "Parser.____parser";
+      module = "Parser._parser";
       break;
     case PROG_GMP_MPZ_ID:
-      module = "___Gmp";
+      module = "Gmp";
       break;
     case PROG_MODULE_MIME_ID:
-      module = "______MIME";
+      module = "___MIME";
       break;
     default:
       if ((id >= 100) && (id <= 300)) {
-	module = "___Image";
+	module = "Image";
       } else if ((id >= 1000) && (id <= 2000)) {
 	module = "___GTK";
       }
