@@ -179,7 +179,8 @@ PMOD_EXPORT char *debug_xalloc(size_t size);
     ,							\
       for(mlen >>= 3; mlen--;)				\
       {							\
-  	register size_t t1,t2;				\
+  	register size_t t1;				\
+  	register size_t t2;				\
   	t1= a[0];					\
   	t2= a[1];					\
   	t1=(t1<<5) + a[2];				\
