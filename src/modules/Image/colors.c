@@ -147,7 +147,7 @@
 **!    }
 **! 
 **!    write(illustration(i,(["alpha":a])));
-**!    write(mktag("br"));
+**!    write(mktag("br")+"\n");
 **! }
 **! 
 **! void main()
