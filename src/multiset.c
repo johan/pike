@@ -4114,7 +4114,7 @@ void gc_zap_ext_weak_refs_in_multisets (void)
     gc_mark_multiset_pos = l->next;
     gc_mark_multiset_as_referenced (l);
   }
-  discard_queue (&gc_mark_queue);
+  gc_mark_discard_queue();
 }
 
 void gc_free_all_unreferenced_multisets (void)
