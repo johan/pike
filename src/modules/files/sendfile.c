@@ -202,6 +202,8 @@ static size_t writev(int fd, struct iovec *iov, int n)
 
 static void sf_call_callback(struct pike_sendfile *this)
 {
+  debug_malloc_touch(this->args);
+
   if (this->callback.type != T_INT) {
     int sz = this->args->size;
 
