@@ -87,6 +87,7 @@ PMOD_EXPORT int set_nonblocking(int fd,int which)
 #if defined(USE_IOCTL_FIONBIO) || defined(__NT__)
     ret=fd_ioctl(fd, FIONBIO, &which);
 #else
+
 #ifdef USE_FCNTL_O_NDELAY
 #define FCNTL_NBFLAG	O_NDELAY
 #elif defined(USE_FCNTL_O_NONBLOCK)
@@ -94,6 +95,7 @@ PMOD_EXPORT int set_nonblocking(int fd,int which)
 #elif defined(USE_FCNTL_FNDELAY)
 #define FCNTL_NBFLAG	FNDELAY
 #endif
+
 #ifdef FCNTL_NBFLAG
     int flags = fcntl(fd, F_GETFL, 0);
 
@@ -103,9 +105,7 @@ PMOD_EXPORT int set_nonblocking(int fd,int which)
       flags &= ~FCNTL_NBFLAG;
     }
     ret = fcntl(fd, F_SETFL, flags);
-#else
-
-#ifndef DISABLE_BINARY
+#elif !defined(DISABLE_BINARY)
 #error Do not know how to set your filedescriptors nonblocking.
 #endif
 
