@@ -12,6 +12,7 @@
 #include "peep.h"
 #include "dmalloc.h"
 #include "stuff.h"
+#include "bignum.h"
 
 RCSID("$Id$");
 
