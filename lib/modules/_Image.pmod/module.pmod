@@ -117,9 +117,16 @@ array(Image.Layer) decode_layers( string data, mixed|void tocolor )
   function f;
   if(!data)
     return 0;
-  foreach( ({ "GIF", "XCF", "PSD","ILBM" }), string fmt )
-    if( (f=Image[fmt]["decode_layers"]) && !catch(i = f( data,tocolor )) && i )
-      break;
+
+#if constant(Image.GIF) && constant(Image.GIF.RENDER)
+  i = Image["GIF"]->decode_layers( data, tocolor );
+#endif
+
+  if(!i)
+    foreach( ({ "XCF", "PSD","ILBM" }), string fmt )
+      if( (f=Image[fmt]["decode_layers"]) &&
+	  !catch(i = f( data,tocolor )) && i )
+	break;
 
   if(!i) // No image could be decoded at all.
     catch
