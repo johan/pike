@@ -832,20 +832,20 @@ union anything *object_get_item_ptr(struct object *o,
     return 0; /* make gcc happy */
   }
 
-  f=ARROW_INDEX_P(index) ? LFUN_ASSIGN_ARROW : LFUN_ASSIGN_INDEX;
-
-  if(FIND_LFUN(p,f) != -1)
-  {
-    return 0;
-
-    /* error("Cannot do incremental operations on overloaded index (yet).\n");
-     */
-  }
-    
 
   switch(index->type)
   {
   case T_STRING:
+    f=ARROW_INDEX_P(index) ? LFUN_ASSIGN_ARROW : LFUN_ASSIGN_INDEX;
+
+    if(FIND_LFUN(p,f) != -1)
+    {
+      return 0;
+      
+      /* error("Cannot do incremental operations on overloaded index (yet).\n");
+       */
+    }
+    
     f=find_shared_string_identifier(index->u.string, p);
     break;
 
@@ -854,7 +854,7 @@ union anything *object_get_item_ptr(struct object *o,
     break;
 
   default:
-    error("Lookup on non-string value.\n");
+/*    error("Lookup on non-string value.\n"); */
     return 0;
   }
 
