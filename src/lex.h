@@ -33,6 +33,10 @@ extern struct lex lex;
 
 /* Prototypes begin here */
 
+int parse_esc_seq0 (p_wchar0 *buf, int *chr, ptrdiff_t *len);
+int parse_esc_seq1 (p_wchar1 *buf, int *chr, ptrdiff_t *len);
+int parse_esc_seq2 (p_wchar2 *buf, int *chr, ptrdiff_t *len);
+
 int yylex0(YYSTYPE *);
 int yylex1(YYSTYPE *);
 int yylex2(YYSTYPE *);
