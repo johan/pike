@@ -21,7 +21,7 @@ AC_CHECK_LIB(net, __get_socket_descriptor)
 AC_HAVE_FUNCS(getwd perror readdir_r statvfs statfs ustat lseek64 lstat fsync \
  grantpt unlockpt ptsname posix_openpt socketpair writev sendfile munmap \
  madvise poll setsockopt getprotobyname truncate64 ftruncate64 inet_ntoa \
- inet_ntop)
+ inet_ntop execve)
 
 AC_FUNC_MMAP
 
