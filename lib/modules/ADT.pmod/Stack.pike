@@ -23,6 +23,8 @@ void push(mixed val)
 
 //! Returns the top element from the stack, without
 //! popping it.
+//! @throws
+//!   Throws an error if called on an empty stack.
 mixed top()
 {
   if (ptr) {
@@ -98,4 +100,9 @@ void reset(int|void initial_size)
 void create(int|void initial_size)
 {
   arr = allocate(initial_size || 32);
+}
+
+//!
+int _sizeof() {
+  return ptr;
 }
