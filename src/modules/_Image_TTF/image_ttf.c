@@ -839,7 +839,7 @@ static void image_ttf_faceinstance_ponder(INT32 args)
      ttf_please_translate_8bit(face_s->face,
 			       sp[-args].u.string,&sstr,&len,base,
 			       "Image.TTF.FaceInstance->ponder()");
-   else if(sp[-args].u.string->size_shift == 0)
+   else if(sp[-args].u.string->size_shift == 1)
      ttf_please_translate_16bit(face_s->face,
 			       sp[-args].u.string,&sstr,&len,base,
 			       "Image.TTF.FaceInstance->ponder()");
