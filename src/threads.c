@@ -1055,7 +1055,7 @@ void f_thread_id__sprintf (INT32 args)
 {
   pop_n_elems (args);
   push_constant_text ("Thread.Thread(");
-  push_int (THIS_THREAD->id);
+  push_int64((ptrdiff_t)THIS_THREAD->id);
   push_constant_text (")");
   f_add (3);
 }

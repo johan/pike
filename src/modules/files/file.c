@@ -989,7 +989,7 @@ static void file_write(INT32 args)
 	    break;
 
 	  while(i) {
-	    if (iov->iov_len <= i) {
+	    if ((ptrdiff_t)iov->iov_len <= i) {
 	      i -= iov->iov_len;
 	      iov++;
 	      iovcnt--;
