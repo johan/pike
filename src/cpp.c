@@ -1199,8 +1199,9 @@ void add_predefine(char *s)
   pike_predefs=tmp;
 }
 
-void exit_cpp()
+void exit_cpp(void)
 {
+#ifdef DO_PIKE_CLEANUP
   struct pike_predef_s *tmp;
   while((tmp=pike_predefs))
   {
@@ -1214,4 +1215,5 @@ void exit_cpp()
 
   free_string(constant_macro->link.s);
   free((char *)constant_macro);
+#endif
 }

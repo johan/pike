@@ -358,12 +358,6 @@ struct thread_state {
 #define DO_IF_PROFILING(X)
 #endif
 
-#ifdef PIKE_DEBUG
-#define DO_IF_DEBUG(X) X
-#else
-#define DO_IF_DEBUG(X)
-#endif
-
 #define SWAP_OUT_THREAD(_tmp) do { \
        (_tmp)->swapped=1; \
        (_tmp)->evaluator_stack=evaluator_stack;\

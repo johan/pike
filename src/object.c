@@ -359,7 +359,7 @@ struct destroy_called_mark
 
 PTR_HASH_ALLOC(destroy_called_mark,128)
 
-static void call_destroy(struct object *o)
+static void call_destroy(struct object *o, int foo)
 {
   int e;
   if(!o || !o->prog) return; /* Object already destructed */
@@ -370,7 +370,8 @@ static void call_destroy(struct object *o)
     if(check_destroy_called_mark_semafore(o))
     {
       /* fprintf(stderr, "destruct(): Calling destroy().\n"); */
-      safe_apply_low(o, e, 0);
+      if(foo) push_int(1);
+      safe_apply_low(o, e, foo?1:0);
       pop_stack();
     }
   }
@@ -387,7 +388,7 @@ void destruct(struct object *o)
 
   add_ref(o);
 
-  call_destroy(o);
+  call_destroy(o,0);
   remove_destroy_called_mark(o);
 
   /* destructed in destroy() */
@@ -972,11 +973,12 @@ void cleanup_objects(void)
   for(o=first_object;o;o=next)
   {
     add_ref(o);
-    call_destroy(o);
+    call_destroy(o,1);
     next=o->next;
     free_object(o);
   }
 
+#ifdef DO_PIKE_CLEANUP
   for(o=first_object;o;o=next)
   {
     add_ref(o);
@@ -989,6 +991,7 @@ void cleanup_objects(void)
   free_program(master_program);
   master_program=0;
   destruct_objects_to_destruct();
+#endif
 }
 
 struct array *object_indices(struct object *o)
@@ -1176,7 +1179,7 @@ void gc_free_all_unreferenced_objects(void)
     if(gc_do_free(o))
     {
       add_ref(o);
-      call_destroy(o);
+      call_destroy(o,0);
       next=o->next;
       free_object(o);
     }else{
