@@ -989,6 +989,15 @@ void *dummy_label = NULL;
 #define EXIT_MACHINE_CODE()
 #endif
 
+#ifdef OPCODE_INLINE_BRANCH
+/* Intended to be called from machine code on backward branch jumps,
+ * to ensure thread switching. */
+void branch_check_threads_etc()
+{
+  fast_check_threads_etc (6);
+}
+#endif
+
 #ifdef PIKE_DEBUG
 
 static void debug_instr_prologue (PIKE_INSTR_T instr)
