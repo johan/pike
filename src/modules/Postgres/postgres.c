@@ -474,10 +474,6 @@ void pike_module_init (void)
 	pgresult_init(); 
 }
 
-#else /* HAVE_POSTGRES */
-void pike_module_init(void) {}
-#endif /* HAVE_POSTGRES */
-
 void pike_module_exit(void)
 {
   extern struct program * pgresult_program;
@@ -494,3 +490,9 @@ void pike_module_exit(void)
     pgresult_program=0;
   }
 }
+
+#else /* HAVE_POSTGRES */
+void pike_module_init(void) {}
+void pike_module_exit(void) {}
+#endif /* HAVE_POSTGRES */
+
