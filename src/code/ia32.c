@@ -90,7 +90,7 @@ void ins_f_byte(unsigned int b)
   return;
 }
 
-static void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b)
+void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b)
 {
   add_to_program(0xc7);  /* movl $xxxx, (%esp) */
   add_to_program(0x04); 
@@ -100,9 +100,9 @@ static void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b)
   return;
 }
 
-static void ins_f_byte_with_2_args(unsigned int a,
-				   unsigned INT32 c,
-				   unsigned INT32 b)
+void ins_f_byte_with_2_args(unsigned int a,
+			    unsigned INT32 c,
+			    unsigned INT32 b)
 {
   add_to_program(0xc7);  /* movl $xxxx, (%esp) */
   add_to_program(0x04); 
