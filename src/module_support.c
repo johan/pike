@@ -5,6 +5,8 @@
 #include "stralloc.h"
 #include "pike_types.h"
 #include "pike_error.h"
+#include "mapping.h"
+#include "object.h"
 
 RCSID("$Id$");
 
@@ -362,4 +364,62 @@ PMOD_EXPORT void get_all_args(char *fname, INT32 args, char *format,  ... )
 	fname, PTRDIFF_T_TO_LONG(strlen(format)/2), args, expected_type);
     }
   }
+}
+
+/* NOTA BENE:
+ * The code below assumes that dynamic modules are not
+ * unloaded from memory...
+ */
+   
+static struct mapping *exported_symbols;
+static struct program *function_encapsulation_program;
+
+PMOD_EXPORT void pike_module_export_symbol(char *name,
+					   int len,
+					   void *ptr)
+{
+  struct pike_string *str=make_shared_binary_string(name,len);
+  struct svalue s;
+  if(!exported_symbols) exported_symbols=allocate_mapping(10);
+  s.u.refs=(INT32 *)ptr;
+  s.type=T_INT;
+  s.subtype=4711;
+  mapping_string_insert(exported_symbols, str, &s);
+}
+
+PMOD_EXPORT void *pike_module_import_symbol(char *name,
+					    int len,
+					    char *module,
+					    int module_len)
+{
+  struct svalue *s;
+  struct pike_string *str=make_shared_binary_string(name,len);
+  if(exported_symbols)
+  {
+    s=low_mapping_string_lookup(exported_symbols, str);
+    if(s && s->type == T_INT && s->subtype == 4711)
+    {
+      free_string(str);
+      return s->u.refs;
+    }
+  }
+
+  /* Load the module */
+  push_string(make_shared_binary_string(module,module_len));
+  SAFE_APPLY_MASTER("resolv",1);
+  pop_stack();
+
+  if(exported_symbols)
+  {
+    s=low_mapping_string_lookup(exported_symbols, str);
+
+    if(s && s->type == T_INT && s->subtype == 4711)
+    {
+      free_string(str);
+      return s->u.refs;
+    }
+  }
+
+  free_string(str);
+  return 0;
 }
