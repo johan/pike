@@ -136,6 +136,41 @@ class C
 }
 }()->C()->D()->bonk_me()]],"oiff")
 
+
+test_do([[
+class Foo
+{
+  inherit Stdio.File;
+
+  void create() {  }
+};
+
+class Bar
+{
+  int y;
+
+
+  class Gazonk
+  {
+    inherit Foo;
+    
+
+    void create(Stdio.File f)
+      {
+	assign(f);
+      }
+  }
+
+  void create()
+    {
+      Gazonk(Stdio.stdin);
+    }
+};
+
+Bar();
+
+]])
+
 test_false([[object_variablep(class X { int y; int z() { return 1; }}(),"foo")]])
 test_false([[object_variablep(class X { int y; int z() { return 1; }}(),"z")]])
 test_true([[object_variablep(class X { int y; int z() { return 1; }}(),"y")]])
