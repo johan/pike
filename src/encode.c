@@ -4011,6 +4011,7 @@ static void decode_value2(struct decode_data *data)
 	  if (bytecode_method == PIKE_BYTECODE_PORTABLE) {
 	    /* We've regenerated p->program, so these may be off. */
 	    local_num_program = p->num_program;
+	    local_num_relocations = p->num_relocations;
 	    local_num_linenumbers = p->num_linenumbers;
 	  }
 
