@@ -1,5 +1,6 @@
-#!/usr/local/bin/pike
+// $Id$
 
+constant description = "Implements an rsql daemon.";
 
 #define RSQL_PORT 3994
 #define RSQL_VERSION 1
