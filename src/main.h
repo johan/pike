@@ -21,6 +21,7 @@ extern int try_use_mmx;
 
 #define DEBUG_SIGNALS 1
 #define NO_TAILRECURSION 2
+#define DEBUG_TYPES 4
 
 /* Prototypes begin here */
 struct callback *add_post_master_callback(callback_func call,
