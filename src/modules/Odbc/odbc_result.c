@@ -41,9 +41,6 @@ RCSID("$Id$");
 
 #include "precompiled_odbc.h"
 
-/* must be included last */
-#include "module_magic.h"
-
 #ifdef HAVE_ODBC
 
 /* #define ODBC_DEBUG */
