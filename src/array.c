@@ -170,7 +170,7 @@ PMOD_EXPORT struct array *array_set_flags(struct array *a, int flags)
     a->flags = flags;
   else {
     free_array(a);
-    switch (flags) {
+    switch (flags & (ARRAY_WEAK_FLAG|ARRAY_WEAK_SHRINK)) {
       case 0:
 	add_ref(a = &empty_array); break;
       case ARRAY_WEAK_FLAG:
