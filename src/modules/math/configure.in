@@ -11,7 +11,6 @@ if test "${ac_cv_lib_m}" = "no" -a "${pike_cv_sys_os}" = "Linux"; then
 fi
 
 AC_CHECK_HEADERS(ieeefp.h fp_class.h floatingpoint.h)
-AC_CHECK_FUNCS(fpsetmask)
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
 
