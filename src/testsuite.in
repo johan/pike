@@ -3399,6 +3399,15 @@ void test_dir(string dir)
 {
   foreach(get_dir(dir), string s)
   {
+    switch(s)
+    {
+      case "msql.pike":
+      case "mysql.pike":
+      case "odbc.pike":
+      case "oracle.pike":
+      case "postgres.pike":
+        continue; // These modules cannot be tested properly by this test
+    }
     string file=combine_path(dir,s);
     mixed stat=file_stat(file);
     if(!stat) continue;
