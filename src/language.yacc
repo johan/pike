@@ -310,7 +310,6 @@ int yylex(YYSTYPE *yylval);
 %type <n> expr2
 %type <n> expr3 expr0
 %type <n> expr4
-%type <n> expr5
 %type <n> expr_list
 %type <n> expr_list2
 %type <n> for
@@ -1249,9 +1248,9 @@ expr4: string
   }
   | '(' comma_expr2 ')' { $$=$2; }
   | '(' '{' expr_list '}' ')'
-    { $$=mkefuncallnode("aggregate",$2); }
+    { $$=mkefuncallnode("aggregate",$3); }
   | '(' '[' m_expr_list ']' ')'
-    { $$=mkefuncallnode("aggregate_mapping",$2); };
+    { $$=mkefuncallnode("aggregate_mapping",$3); };
   | F_MULTISET_START expr_list F_MULTISET_END
     { $$=mkefuncallnode("aggregate_multiset",$2); }
   | expr4 F_ARROW F_IDENTIFIER
