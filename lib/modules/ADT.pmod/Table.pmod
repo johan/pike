@@ -460,7 +460,7 @@ object ASCII = class {
     options = options || ([]);
     mapping sizes = ([]);
     array fields = indices(t);
-    string indent = String.strmult(" ", options->indent);
+    string indent = " " * options->indent;
     
     t = t->copy(({ fields }) + values(t));
     for(int field = 0; field < sizeof(fields); field++)
@@ -481,7 +481,7 @@ object ASCII = class {
     string l = (indent+"-"+
 		Array.map(values(sizes),
 			  lambda(int n)
-			  { return String.strmult("-", n); })*"---"+"-");
+			  { return "-" * n; })*"---"+"-");
     array table = values(t);
     return (indent+" "+table[0]*"   "+"\n"+l+"\n"+
 	    Array.map(table[1..], lambda(array row, string indent)
