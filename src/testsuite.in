@@ -93,7 +93,7 @@ test_any([[mapping(object:string)|mapping(string:int) f;
 	  return sort((typeof(f[0]) - " ")/"|")*"|"; ]],
 	 "int|string")
 
-test_any([[class Foo { string `[](mixed) {return "";} };
+test_any([[class Foo { string `[](mixed y) {return "";} };
 	  object(Foo) foo;
 	  return typeof(foo[0]); ]],
 	 "string")
