@@ -35,13 +35,14 @@ int main(int argc, array(string) argv)
   	  werror(sprintf("Unknown filetype %O\n", path));
   	  exit(1);
   	}
+	write(sprintf("%s\n", info));
       } else {
   	werror(sprintf("%O is not a plain file or directory.\n", path));
   	exit(1);
       }
     };
     if (err && intp(err[1])) {
-      werror(sprintf("%s:%d: %s\n", path, err[1], err[0]));
+      werror(sprintf("%s:%d: %s\n", path, err[1], (string)err[0]));
     }
   }
 }
