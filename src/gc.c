@@ -1916,7 +1916,6 @@ int do_gc(void)
 #ifdef PIKE_DEBUG
   gc_debug = d_flag;
 #endif
-  gc_debug = 1;
 
   destruct_objects_to_destruct();
 
