@@ -13,9 +13,6 @@
 /* Define this to enable gif support */
 #undef WITH_GIF
 
-/* Define if you want lzw code to generate only rle packing */
-#undef GIF_LZW_RLE
-
 @BOTTOM@
 
 #endif /* !IMAGE_GIF_CONFIG_H */
