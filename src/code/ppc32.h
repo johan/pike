@@ -32,8 +32,10 @@
 #define LOW_GET_JUMP()	(PROG_COUNTER[0])
 #define LOW_SKIPJUMP()	(SET_PROG_COUNTER(PROG_COUNTER + 1))
 #ifdef __linux
+/* SVR4 ABI */
 #define PROG_COUNTER (((INT32 **)__builtin_frame_address(1))[1])
 #else
+/* PowerOpen ABI */
 #define PROG_COUNTER (((INT32 **)__builtin_frame_address(1))[2])
 #endif
 
