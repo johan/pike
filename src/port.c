@@ -800,10 +800,13 @@ void own_gethrtime_update(struct timeval *ptr)
       * between measurements. */
      if (now - hrtime_rtsc_last < 1000000000) return;
 
+   t=now-hrtime_rtsc_zero;
+   if (t <= 0 || td <= 0)
+     /* Ouch, someone must have backed the clock(s). This situation
+      * could be handled better. */
+     return;
    td_last = td;
    hrtime_rtsc_last=now;
-   t=now-hrtime_rtsc_zero;
-   if (!t) return;
    conv=((long double)td)/t;
 
 /* fixme: add time deviation detection;
