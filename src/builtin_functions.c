@@ -5568,7 +5568,7 @@ void init_builtin_efuns(void)
    * Used to prototype the master object.
    */
   start_new_program();
-  ADD_PROTOTYPE("_main", tFunc(tInt tArr(tStr) tArr(tStr),tVoid), 0);
+  ADD_PROTOTYPE("_main", tFunc(tArr(tStr) tArr(tStr),tVoid), 0);
 
   ADD_PROTOTYPE("cast_to_object", tFunc(tString tString, tObj), 0);
   ADD_PROTOTYPE("cast_to_program", tFunc(tStr tStr tOr(tVoid, tObj), tPrg), 0);
@@ -5586,9 +5586,12 @@ void init_builtin_efuns(void)
    * They are called by encode.c:rec_restore_value
    *	/grubba 2000-03-13
    */
+
+#if 0 /* they are not required - Hubbe */
   ADD_PROTOTYPE("functionof", tFunc(tStr, tFunction), ID_OPTIONAL);
   ADD_PROTOTYPE("objectof", tFunc(tStr, tObj), ID_OPTIONAL);
   ADD_PROTOTYPE("programof", tFunc(tStr, tPrg), ID_OPTIONAL);
+#endif
 
   ADD_PROTOTYPE("read_include", tFunc(tStr, tStr), 0);
   ADD_PROTOTYPE("resolv", tFunc(tStr tOr(tStr, tVoid), tMix), 0);

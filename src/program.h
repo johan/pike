@@ -435,7 +435,8 @@ void start_line_numbering(void);
 void store_linenumber(INT32 current_line, struct pike_string *current_file);
 char *get_line(unsigned char *pc,struct program *prog,INT32 *linep);
 void my_yyerror(char *fmt,...)  ATTRIBUTE((format(printf,1,2)));
-struct program *compile(struct pike_string *prog, struct object *handler);
+struct program *compile(struct pike_string *prog,
+			struct object *handler);
 int pike_add_function(char *name,void (*cfun)(INT32),char *type,INT16 flags);
 int quick_add_function(char *name,
 		       int name_length,
@@ -467,7 +468,7 @@ void yywarning(char *fmt, ...) ATTRIBUTE((format(printf,1,2)));
 struct implements_cache_s;
 int implements(struct program *a, struct program *b);
 int is_compatible(struct program *a, struct program *b);
-int yyexplain_not_implements(struct program *a, struct program *b);
+int yyexplain_not_implements(struct program *a, struct program *b, int flags);
 /* Prototypes end here */
 
 #define ADD_FUNCTION(NAME,FUNC,TYPE,FLAGS) \
