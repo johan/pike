@@ -813,6 +813,8 @@ static void *low_dlsym(struct DLHandle *handle,
   if(!ptr)
   {
     fprintf(stderr,"Failed to find identifier %s\n",tmp);
+  } else {
+    fprintf(stderr, "Found identifier %s at 0x%p\n", tmp, ptr);
   }
 #endif
   return ptr;
