@@ -35,6 +35,9 @@
 /* Define if your statvfs struct has the f_fstr member */
 #undef HAVE_STATVFS_F_FSTR
 
+/* Define if your statfs struct has the f_fsid member */
+#undef HAVE_STATFS_F_FSID
+
 /* Define if your statvfs struct has the member f_basetype */
 #undef HAVE_STATVFS_F_BASETYPE
 
