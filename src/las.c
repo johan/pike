@@ -1047,6 +1047,8 @@ static int depend_p2(node *a,node *b)
   int e;
 
   if(!a || !b || is_const(a)) return 0;
+  aa.err=0;
+  bb.err=0;
   for(e=0;e<MAX_LOCAL;e++) aa.locals[e]=bb.locals[e]=VAR_UNUSED;
   for(e=0;e<MAX_GLOBAL;e++) aa.globals[e]=bb.globals[e]=VAR_UNUSED;
 
