@@ -1231,7 +1231,7 @@ void pike_module_init (void) {
   add_function("affected_rows",f_affected_rows,"function(void:int)",0);
   add_function("fetch_fields",f_fetch_fields,
                "function(void:array(int|mapping(string:mixed)))",
-               0);q
+               0);
 #endif
 
   /* TODO */
