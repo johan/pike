@@ -1503,6 +1503,8 @@ cond([[ sizeof( cpp("__AUTO_BIGNUM__")/"__AUTO_BIGNUM__" ) == 1 ]],
   test_true([[ random(0x7ffffffff)+1 ]])
   test_true([[   sqrt(0x7fffffff)+1 ]])
   test_true([[   sqrt(0x7ffffffff)+1 ]])
+
+  test_true([[ catch { destruct((mixed)0x4783647824687234628462); } ]])
 ]])
 
 cond([[all_constants()->_verify_internals]],
