@@ -562,6 +562,7 @@ class File
   this_program set_peek_file_before_read_callback(int(0..1) to)
   {      
      peek_file_before_read_callback=to;
+     return this_object();
   }
 
   // FIXME: No way to specify the maximum to read.
