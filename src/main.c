@@ -737,7 +737,7 @@ int dbm_main(int argc, char **argv)
 	throw_value.type=T_INT;
 	err = (struct generic_error_struct *)
 	  get_storage (Pike_sp[-1].u.object, generic_error_program);
-	ref_push_string (err->desc);
+	ref_push_string (err->error_message);
 	f_werror (1);
 	pop_stack();
       }
