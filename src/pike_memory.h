@@ -128,7 +128,8 @@ PMOD_EXPORT char *debug_xalloc(size_t size);
 #endif /* sizeof(char *) == 8 */
 #endif /* sizeof(char *) == 4 */
 
-#define DO_HASHMEM(A, LEN, MLEN)			\
+/* NB: RET should be an lvalue of type size_t. */
+#define DO_HASHMEM(RET, A, LEN, MLEN)			\
   do {							\
     const unsigned char *a = A;				\
     size_t len = LEN;					\
@@ -192,7 +193,7 @@ PMOD_EXPORT char *debug_xalloc(size_t size);
       }							\
     )							\
   							\
-    return ret;						\
+    RET = ret;						\
   } while(0)
 
 #endif
