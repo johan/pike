@@ -107,8 +107,11 @@ PMOD_EXPORT void f_transpose(INT32 args);
 PMOD_EXPORT void f__reset_dmalloc(INT32 args);
 PMOD_EXPORT void f__locate_references(INT32 args);
 PMOD_EXPORT void f_map_array(INT32 args);
-PMOD_EXPORT void f_get_iterator(INT32 args);
 void init_builtin_efuns(void);
+
+/* From iterators.cmod. */
+PMOD_EXPORT void f_get_iterator(INT32 args);
+int foreach_iterate(struct object *o, int do_step);
 
 /* From builtin.cmod. */
 PMOD_EXPORT void f_column(INT32 args);
