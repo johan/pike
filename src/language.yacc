@@ -177,11 +177,6 @@ RCSID("$Id$");
 
 #define YYMAXDEPTH	600
 
-#ifndef DEBUG
-#define DEBUG 1
-#endif
-#define YYERROR_VERBOSE
-
 #ifdef DEBUG
 #define YYDEBUG 1
 #endif
