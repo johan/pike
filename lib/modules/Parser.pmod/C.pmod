@@ -61,7 +61,8 @@ array(string) split(string data, void|mapping state)
 	if(pos==-1)
 	  error("Failed to find end of preprocessor statement.\n");
 
-	while(data[pos-1]=='\\') pos=search(data,"\n",pos+1);
+	while(data[pos-1]=='\\' || (data[pos-1]=='\r' && data[pos-2]=='\\'))
+	  pos=search(data,"\n",pos+1);
 	break;
 
       case 'a'..'z':
