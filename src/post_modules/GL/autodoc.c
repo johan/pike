@@ -5,7 +5,7 @@
 || $Id$
 */
 
-/* AutoDoc generated from OpenGL man pages
+/* AutoDoc generated from OpenGL man pages */
 
 /*!@module GL
  *!
