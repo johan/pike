@@ -2463,6 +2463,9 @@ int socketpair_ultra(int family, int type, int protocol, int sv[2])
 
     switch(errno)
     {
+#if defined(WSAEWOULDBLOCK) && (WSAEWOULDBLOCK != EAGAIN)
+      case WSAEWOULDBLOCK:
+#endif /* WSAEWOULDBLOCK */
       case EAGAIN: break;
 
       case EADDRINUSE:
