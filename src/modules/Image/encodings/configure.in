@@ -1,5 +1,5 @@
 # $Id$
-AC_INIT(gif.c)
+AC_INIT(pnm.c)
 
 AC_SET_MAKE
 

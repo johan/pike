@@ -5,7 +5,11 @@
 */
 
 #include "global.h"
-#include "image_machine.h"
+#include "config.h"
+
+#ifdef WITH_GIF
+
+#include "../Image/image_machine.h"
 #include "gif_lzw.h"
 
 /* MUST BE INCLUDED LAST */
@@ -218,3 +222,5 @@ void image_gif_lzw_add(struct gif_lzw *lzw, unsigned char *data, size_t len)
 {
    while (len--) lzw_add(lzw,*(data++));
 }
+
+#endif /* WITH_GIF */

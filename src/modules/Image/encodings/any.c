@@ -126,7 +126,15 @@ void image_any__decode(INT32 args)
 
       case CHAR2('G','I'):
 	 /* GIF */
-	 image_gif_decode_map(1);
+	 push_text("Image");
+	 push_int(0);
+	 SAFE_APPLY_MASTER("resolv", 2);
+	 push_text("GIF");
+	 f_index(2);
+	 push_text("decode_map");
+	 f_index(2);
+	 stack_swap();
+	 f_call_function(2);
 	 return;
 
       case CHAR2('F','O'):
@@ -246,7 +254,15 @@ void image_any_decode_header(INT32 args)
 
       case CHAR2('G','I'):
 	 /* GIF */
-	 image_gif_decode_map(1);
+	 push_text("Image");
+	 push_int(0);
+	 SAFE_APPLY_MASTER("resolv", 2);
+	 push_text("GIF");
+	 f_index(2);
+	 push_text("decode_map");
+	 f_index(2);
+	 stack_swap();
+	 f_call_function(2);
 	 return;
 
       case CHAR2('F','O'):
