@@ -291,10 +291,6 @@ void cleanup_error(void);
         } \
         while(0)
 
-#ifndef NO_PIKE_SHORTHAND
-#define error Pike_error
-#endif
-
 /* Generic Pike_error stuff */
 #define ERR_EXT_DECLARE
 #include "errors.h"
