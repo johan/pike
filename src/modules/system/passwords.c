@@ -390,6 +390,8 @@ void f_getgrent(INT32 args)
   THREADS_DISALLOW_UID();
   if(!foo)
   {
+    UNLOCK_IMUTEX(&password_protection_mutex);
+
     push_int(0);
     return;
   }
