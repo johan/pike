@@ -33,7 +33,11 @@ struct array
 
 extern struct array empty_array;
 
+#if defined(DEBUG_MALLOC) && defined(DEBUG)
+#define ITEM(X) (((struct array *)(debug_malloc_pass((X))))->item)
+#else
 #define ITEM(X) ((X)->item)
+#endif
 
 /* These are arguments for the function 'merge' which merges two sorted
  * set stored in arrays in the way you specify
