@@ -1,3 +1,4 @@
+/* $Id$ */
 #ifndef RCSID_H_INCLUDED
 #define RCSID_H_INCLUDED
 

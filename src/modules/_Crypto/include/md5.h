@@ -1,5 +1,5 @@
-/* md5.h
- *
+/*
+ * $Id$
  */
 
 #include "crypto_types.h"

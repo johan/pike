@@ -1,3 +1,4 @@
+# $Id$
 AC_INIT(crypto.c)
 
 AC_SET_MAKE

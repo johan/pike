@@ -1,4 +1,6 @@
-/* idea.h */
+/*
+ * $Id$
+ */
 
 #ifndef IDEA_H_INCLUDED
 #define IDEA_H_INCLUDED

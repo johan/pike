@@ -1,4 +1,4 @@
-/* sha.c
+/* $Id$
  *
  * Written by Niels Möller
  */
@@ -15,6 +15,8 @@
 #include "error.h"
 #include "module_support.h"
 #include "las.h"
+
+RCSID("$Id$");
 
 #include <sha.h>
 

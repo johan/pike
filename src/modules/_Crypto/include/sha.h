@@ -1,5 +1,5 @@
-/* sha.h
- *
+/* 
+ * $Id$
  */
 
 #include "crypto_types.h"

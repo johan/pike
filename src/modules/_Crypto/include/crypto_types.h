@@ -1,4 +1,4 @@
-/* crypto_types.h
+/* $Id$
  *
  * Defines the types INT32 and INT8 */
 

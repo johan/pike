@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# .build_lobotomized_crypto
+# $Id$
 
 if [ ! -f cbc.c ]; then
     echo ".build_lobotomized_crypto should be run in pike/src/modules/_Crypto"

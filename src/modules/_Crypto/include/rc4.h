@@ -1,4 +1,6 @@
-/* rc4.h */
+/*
+ * $Id$
+ */
 
 #ifndef RC4_H_INCLUDED
 #define RC4_H_INCLUDED
