@@ -3183,6 +3183,7 @@ int main(int argc, char **argv)
   ], [ pike_cv_realloc_null_works=yes
   ], [ pike_cv_realloc_null_works=no
   ], [ pike_cv_realloc_null_works=no
+  ])
 ])
 if test "x$pike_cv_realloc_null_works" = "xyes"; then
   AC_MSG_RESULT(yes)
