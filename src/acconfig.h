@@ -165,6 +165,9 @@
 /* define this if igonoring SIGFPE helps with core dumps */
 #undef IGNORE_SIGFPE
 
+/* define this to disable use of setlocale(3). */
+#undef DONT_USE_SYSTEM_LOCALE
+
 /* define if you want to use double precision floats instead of single */
 #undef WITH_DOUBLE_PRECISION_SVALUE
 
