@@ -22,6 +22,7 @@ RCSID("$Id$");
 #include "las.h"
 #include "language.h"
 #include "pike_memory.h"
+#include "bignum.h"
 
 int max_correct_args;
 
