@@ -1,3 +1,8 @@
+/*
+ * $Id$
+ *
+ * Opcode definitions for the interpreter.
+ */
 
 OPCODE0(F_UNDEFINED,"push UNDEFINED")
   push_int(0);
