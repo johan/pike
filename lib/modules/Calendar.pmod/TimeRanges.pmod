@@ -1153,7 +1153,7 @@ class cSuperTimeRange
       return ::_sprintf(t,m);
    }
 
-   TimeRange set_timezone(string|Timezone tz)
+   TimeRange set_timezone(string|Ruleset.Timezone tz)
    {
 // fixme?
       return `|(@map(parts,"set_timezone",tz));
