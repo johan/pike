@@ -438,6 +438,15 @@ fi
 
 #############################################################################
 
+# The AC_PROG_INSTALL test is broken if $INSTALL is specified by hand.
+# The FreeBSD ports system does this...
+# Workaround:
+
+if test "x$INSTALL" = "x"; then :; else
+  # $INSTALL overrides ac_cv_path_install anyway...
+  ac_cv_path_install="$INSTALL"
+fi
+
 AC_PROG_INSTALL
 AC_PROG_CPP
 AC_PROG_RANLIB
