@@ -746,7 +746,7 @@ EOF
 
 dnl PIKE_ENABLE_BUNDLE(bundle_name, invalidate_set, opt_error_msg)
 dnl Checks if bundle_name is available, and if it is enables it and
-dnl invalidates the cache variable specified in invalidate_set.
+dnl invalidates the cache variables specified in invalidate_set.
 dnl Otherwise if opt_error_msg has been specified performs an error exit.
 define(PIKE_ENABLE_BUNDLE, [
   test -f [$1].bundle && rm -f [$1].bundle
