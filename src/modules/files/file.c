@@ -2472,7 +2472,13 @@ static void low_file_lock(INT32 args, int flags)
 #endif
       )
     {
-      error("Recursive file locks!\n");
+      if (flags & fd_LOCK_NB) {
+	pop_n_elems(args);
+	push_int(0);
+	return;
+      } else {
+	error("Recursive file locks!\n");
+      }
     }
   }
 
