@@ -805,7 +805,7 @@ TH_RETURN_TYPE new_thread_func(void *data)
     remove_callback(threads_evaluator_callback);
     threads_evaluator_callback=0;
   }
-  free_object(arg.thread_state);
+  free_object(arg.thread_obj);
 
 #ifdef INTERNAL_PROFILING
   fprintf (stderr, "Thread usage summary:\n");
