@@ -1814,7 +1814,7 @@ void check_all_mappings(void)
 
 
 static void gc_recurse_weak_mapping(struct mapping *m,
-				    TYPE_FIELD (*recurse_fn)(struct svalue *, int))
+				    TYPE_FIELD (*recurse_fn)(struct svalue *, size_t))
 {
   INT32 e;
   struct keypair *k,**prev;

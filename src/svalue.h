@@ -374,7 +374,7 @@ void copy_svalues_recursively_no_free(struct svalue *to,
 				      struct processing *p);
 void check_short_svalue(union anything *u, TYPE_T type);
 void debug_check_svalue(struct svalue *s);
-void real_gc_xmark_svalues(struct svalue *s, size_t num);
+void real_gc_xmark_svalues(struct svalue *s, ptrdiff_t num);
 TYPE_FIELD real_gc_check_svalues(struct svalue *s, size_t num);
 void real_gc_check_short_svalue(union anything *u, TYPE_T type);
 TYPE_FIELD gc_check_weak_svalues(struct svalue *s, size_t num);

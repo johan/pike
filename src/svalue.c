@@ -1225,9 +1225,10 @@ void debug_check_svalue(struct svalue *s)
 #endif
 
 #ifdef PIKE_DEBUG
-void real_gc_xmark_svalues(struct svalue *s, size_t num)
+/* NOTE: Must handle num being negative. */
+void real_gc_xmark_svalues(struct svalue *s, ptrdiff_t num)
 {
-  size_t e;
+  ptrdiff_t e;
 
   if (!s) {
     return;
