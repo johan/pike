@@ -34,6 +34,7 @@ struct local_variable
 {
   struct pike_string *name;
   struct pike_string *type;
+  node *def;
 };
 
 struct compiler_frame
