@@ -919,7 +919,7 @@ PMOD_EXPORT void describe_svalue(struct svalue *s,int indent,struct processing *
       break;
 
     case T_TYPE:
-      low_describe_type(s->u.string->str);
+      low_describe_type(s->u.type->str);
       break;
 
     case T_STRING:

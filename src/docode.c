@@ -660,10 +660,10 @@ static int do_docode2(node *n, INT16 flags)
       return 0;
     }
 
-    if(match_types(CAR(n)->type,array_type_string) ||
-       match_types(CAR(n)->type,string_type_string) ||
-       match_types(CAR(n)->type,mapping_type_string) ||
-       match_types(CAR(n)->type,object_type_string))
+    if(match_types(CAR(n)->type, array_type_string) ||
+       match_types(CAR(n)->type, string_type_string) ||
+       match_types(CAR(n)->type, mapping_type_string) ||
+       match_types(CAR(n)->type, object_type_string))
     {
       code_expression(CDR(n), 0, "assignment");
       emit0(F_LTOSVAL2);
@@ -725,8 +725,8 @@ static int do_docode2(node *n, INT16 flags)
       if(node_is_eq(CDR(n),CAAR(n)))
       {
 	tmp1=do_docode(CDR(n),DO_LVALUE);
-	if(match_types(CDR(n)->type,array_type_string) ||
-	   match_types(CDR(n)->type,string_type_string))
+	if(match_types(CDR(n)->type, array_type_string) ||
+	   match_types(CDR(n)->type, string_type_string))
 	{
 	  code_expression(CDAR(n), 0, "binary operand");
 	  emit0(F_LTOSVAL2);
