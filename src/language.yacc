@@ -2409,6 +2409,7 @@ enum_def: /* EMPTY */
       free_type(new);
       type_stack_mark();
       push_finished_type(res);
+      free_type(res);
     }
   }
   ;
