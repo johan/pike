@@ -10144,10 +10144,10 @@ array a()
   int err = pid->wait();
   int ok;
   int failed;
-  if ((sscanf(s, "%*sok:%d", ok) != 2) +
-      (sscanf(s, "%*sfailed:%d", failed) != 2)) {
+  if (((sscanf(results, "%*sok:%d", ok) != 2) +
+       (sscanf(results, "%*sfailed:%d", failed) != 2)) == 2) {
     // No "ok", and no "failed".
-    return ({ err, s });
+    return ({ err, results });
   }
   return ({ ok, failed });
 }
