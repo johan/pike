@@ -525,6 +525,8 @@ program low_cast_to_program(string pname,
   }
   if(IS_ABSOLUTE_PATH(pname))
   {
+    if (programs[pname])
+      return programs[pname];
     pname=combine_path("/",pname);
     return findprog(pname,ext,handler,mkobj);
   }else{
