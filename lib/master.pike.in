@@ -1452,7 +1452,6 @@ void _main(array(string) orig_argv, array(string) env)
 	w("Software......Pike\n"
 	  "Version......."+version()+"\n"
 	  "WWW...........http://pike.idonex.se/\n"
-	  "Main author...Fredrik Hübinette\n"
 	  "\n");
 
 	w("pike binary..."+_pike_file_name+"\n");
