@@ -117,9 +117,6 @@ int dbm_main(int argc, char **argv)
 #endif  
   init_backend();
   master_file = 0;
-#ifdef HAVE_GETENV
-  master_file = getenv("PIKE_MASTER");
-#endif
 #if __NT__
   if(!master_file)
   {
@@ -146,6 +143,9 @@ int dbm_main(int argc, char **argv)
       RegCloseKey(k);
     }
   }
+#endif
+#ifdef HAVE_GETENV
+  master_file = getenv("PIKE_MASTER");
 #endif
 
   if(!master_file) master_file = DEFAULT_MASTER;
