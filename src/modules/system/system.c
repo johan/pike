@@ -85,6 +85,10 @@ RCSID("$Id$");
 #include <sys/utsname.h>
 #endif
 
+#ifdef HAVE_SYS_ID_H
+#include <sys/id.h>
+#endif /* HAVE_SYS_ID_H */
+
 #ifdef HAVE_UTIME_H
 #include <utime.h>
 #endif
