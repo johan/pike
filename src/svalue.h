@@ -487,7 +487,7 @@ extern struct svalue dest_ob_zero;
     dmalloc_touch_svalue(s_);			\
     free_svalue(s_++);				\
   }						\
-}while(0);
+}while(0)
 
 #ifdef DEBUG_MALLOC
 #define free_svalues(X,Y,Z) debug_free_svalues((X),(Y),(Z), DMALLOC_NAMED_LOCATION(" free_svalues"));
