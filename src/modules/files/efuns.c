@@ -432,7 +432,7 @@ void f_mkdir(INT32 args)
   if(sp[-args].type != T_STRING)
     error("Bad argument 1 to mkdir().\n");
 
-  mode = 0770;
+  mode = 0777;			/* umask is &'ed with this anyway. */
 
   if(args > 1)
   {
