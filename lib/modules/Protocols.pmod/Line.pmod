@@ -12,6 +12,8 @@
 class simple
 {
   static object con;
+
+  //! The sequence separating lines from eachother. "\r\n" by default.
   static constant line_separator = "\r\n";
 
   //! If this variable has been set, multiple lines will be accumulated,
