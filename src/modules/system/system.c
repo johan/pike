@@ -558,7 +558,7 @@ int my_isipnr(char *s)
 #ifdef _REENTRANT
 #ifdef HAVE_SOLARIS_GETHOSTBYNAME_R
 
-#define GETHOST_DECLARE() \
+#define GETHOST_DECLARE \
     struct hostent *ret; \
     struct hostent result; \
     char data[2048]; \
@@ -577,7 +577,7 @@ int my_isipnr(char *s)
 #else /* HAVE_SOLARIS_GETHOSTBYNAME_R */
 #ifdef HAVE_OSF1_GETHOSTBYNAME_R
 
-#define GETHOST_DECLARE() \
+#define GETHOST_DECLARE \
     struct hostent *ret; \
     struct hostent result; \
     struct hostent_data data
@@ -605,7 +605,7 @@ int my_isipnr(char *s)
 #else /* HAVE_OSF1_GETHOSTBYNAME_R */
 static MUTEX_T gethostbyname_mutex;
 
-#define GETHOST_DECLARE() struct hostent *ret
+#define GETHOST_DECLARE struct hostent *ret
 
 #define CALL_GETHOSTBYNAME(X) \
     THREADS_ALLOW(); \
@@ -628,7 +628,7 @@ static MUTEX_T gethostbyname_mutex;
 
 #ifdef HAVE_GETHOSTBYNAME
 
-#define GETHOST_DECLARE() struct hostent *ret; 
+#define GETHOST_DECLARE struct hostent *ret
 #define CALL_GETHOSTBYNAME(X) ret=gethostbyname(X)
 #define CALL_GETHOSTBYADDR(X,Y,Z) ret=gethostbyaddr((X),(Y),(Z))
 #endif
@@ -655,7 +655,7 @@ void get_inet_addr(struct sockaddr_in *addr,char *name)
   else
   {
 #ifdef GETHOST_DECLARE
-    GETHOST_DECLARE();
+    GETHOST_DECLARE;
     CALL_GETHOSTBYNAME(name);
 
     if(!ret)
@@ -721,7 +721,7 @@ void f_gethostbyaddr(INT32 args)
 {
   u_long addr;
   char *name;
-  GETHOST_DECLARE();
+  GETHOST_DECLARE;
 
   get_all_args("gethostbyaddr", args, "%s", &name);
 
@@ -745,7 +745,7 @@ void f_gethostbyaddr(INT32 args)
 void f_gethostbyname(INT32 args)
 {
   char *name;
-  GETHOST_DECLARE();
+  GETHOST_DECLARE;
 
   get_all_args("gethostbyname", args, "%s", &name);
 
