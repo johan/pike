@@ -1797,6 +1797,7 @@ static void native_dispatch(struct native_method_context *ctx,
 	low_clone(thread_id_prog);
       call_c_initializers(Pike_interpreter.thread_id);
       SWAP_OUT_THREAD(OBJ2THREAD(Pike_interpreter.thread_id));
+      Pike_interpreter.thread_id = o;
       OBJ2THREAD(Pike_interpreter.thread_id)->swapped=0;
       OBJ2THREAD(Pike_interpreter.thread_id)->id=th_self();
       num_threads++;
