@@ -68,6 +68,14 @@ RCSID("$Id$");
 #define SIGNAL_BUFFER 16384
 #define WAIT_BUFFER 4096
 
+#ifndef WEXITSTATUS
+#ifdef HAVE_UNION_WAIT
+#define WEXITSTATUS(x) ((x).w_retcode)
+#else /* !HAVE_UNION_WAIT */
+#define WEXITSTATUS(x)	(((x)>>8)&0xff)
+#endif /* HAVE_UNION_WAIT */
+#endif /* !WEXITSTATUS */
+
 /* #define PROC_DEBUG */
 
 /* Added so we are able to patch older versions of Pike. */
@@ -483,10 +491,11 @@ static void report_child(int pid,
 					       pid_status_program)))
 	{
 	  p->state = PROCESS_EXITED;
-	  if(WIFEXITED(status))
+	  if(WIFEXITED(status)) {
 	    p->result = WEXITSTATUS(status);
-	  else
+	  } else {
 	    p->result=-1;
+	  }
 	}
       }
       map_delete(pid_mapping, &key);
