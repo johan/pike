@@ -18,9 +18,6 @@
 /* Return type of mysql_fetch_lengths(). Usually unsigned long. */
 #undef FETCH_LENGTHS_TYPE
 
-/* Define if you have mysql_real_connect(). */
-#undef HAVE_MYSQL_REAL_CONNECT
-
 /* Define if you have mysql_fetch_lengths(). */
 #undef HAVE_MYSQL_FETCH_LENGTHS
 
