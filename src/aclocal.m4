@@ -36,6 +36,28 @@ pushdef([AC_PROG_CC],
 
   AC_PROG_CC
 
+  if test "$ac_cv_prog_cc_g" = no; then
+    # The -g test is broken for some compilers (eg ecc), since
+    # they always have output (they echo the name of the source file).
+    AC_MSG_CHECKING(if -g might not be ok after all)
+    AC_CACHE_VAL(pike_cv_prog_cc_g, [
+      echo 'void f(){}' > conftest.c
+      if test "`${CC-cc} -g -c conftest.c 2>&1`" = \
+	      "`${CC-cc} -c conftest.c 2>&1`"; then
+	pike_cv_prog_cc_g=yes
+      else
+	pike_cv_prog_cc_g=no
+      fi
+      rm -f conftest*
+    ])
+    if test "$pike_cv_prog_cc_g" = "yes"; then
+      AC_MSG_RESULT(yes)
+      ac_cv_prog_cc_g=yes
+    else
+      AC_MSG_RESULT(no)
+    fi
+  fi
+
   if test "$ac_test_CFLAGS" = set; then :; else
     if test "$GCC" = yes; then
       # Remove -O2, and use a real test to restore it.
@@ -192,7 +214,7 @@ EOF
     ])    
     AC_MSG_RESULT($AC_CV_NAME)
   elif test "x$enable_binary" = "xno"; then
-    AC_CV_NAME=$2
+    AC_CV_NAME=ifelse([$2], , 0, [$2])
   fi
   undefine([AC_CV_NAME])dnl
   ORIG_AC_CHECK_SIZEOF($1,$2)
