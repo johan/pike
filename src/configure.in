@@ -1043,6 +1043,14 @@ AC_ARG_WITH(cdebug, MY_DESCR([--without-cdebug],[disable -g]),[],[
 and gcc is not being used.])
       with_cdebug=no
     ;;
+    HP-UX:no|HPUX:no)
+      # HP-UX/cc has problems with combining optimizations and debuginfo.
+      #
+      # cc: internal panic 7815: Malloc: underflow detected in free(). (7815)
+      AC_MSG_WARN([Defaulting to --without-cdebug since the OS is HP-UX,
+and gcc is not being used.])
+      with_cdebug=no
+    ;;
     *)
       with_cdebug=
     ;;
