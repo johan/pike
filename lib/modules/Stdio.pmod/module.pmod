@@ -845,9 +845,9 @@ int mkdirhier (string dir, void|int mode)
 int recursive_rm (string path)
 {
   int res = 1;
-  if (array(string) sub = get_dir (path))
-    foreach( sub, string name )
-      if( file_stat( path+"/"+name, 1 )[1] == -2 )
+  if ( file_stat( path+"/"+name, 1 )[1] == -2 )
+    if (array(string) sub = get_dir (path))
+      foreach( sub, string name )
         if (!recursive_rm (path + "/" + name)) 
           res = 0;
   return res && rm (path);
