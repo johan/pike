@@ -2421,6 +2421,9 @@ static void internal_add_limit( struct perishables *storage,
  *!  given is a relative path, it will be relative to this directory
  *!  rather than the current directory of this process.
  *!
+ *! @member string "chroot"
+ *!   Chroot to this directory before executing the command.
+ *!
  *! @member Stdio.File "stdin"
  *! @member Stdio.File "stdout"
  *! @member Stdio.File "stderr"
@@ -2924,6 +2927,7 @@ void f_create_process(INT32 args)
     int stds[3]; /* stdin, out and err */
     int cterm; /* controlling terminal */
     char *tmp_cwd; /* to CD to */
+    char *mchroot;
     char *priority = NULL;
     int *fds;
     int num_fds = 3;
@@ -2934,6 +2938,7 @@ void f_create_process(INT32 args)
     fds = stds;
     nice_val = 0;
     tmp_cwd = NULL;
+    mchroot = NULL;
 
     storage.env=0;
     storage.argv=0;
@@ -3000,7 +3005,11 @@ void f_create_process(INT32 args)
 	    Pike_error("Invalid argument for gid.\n");
 	}
       }
-      
+
+      if((tmp = simple_mapping_string_lookup( optional, "chroot" )) &&
+         tmp->type == T_STRING && !tmp->u.string->size_shift)
+        mchroot = tmp->u.string->str;
+
       if((tmp = simple_mapping_string_lookup( optional, "cwd" )) &&
          tmp->type == T_STRING && !tmp->u.string->size_shift)
         tmp_cwd = tmp->u.string->str;
@@ -3718,6 +3727,18 @@ void f_create_process(INT32 args)
           signal(i, SIG_DFL);
 #endif /* _sys_nsig */
 #endif /* HAVE_SIGNAL */
+      }
+
+      if(mchroot)
+      {
+	if( chroot( mchroot ) )
+        {
+#ifdef PROC_DEBUG
+	  fprintf(stderr, "[%d] child: chroot(\"%s\") failed, errno=%d\n",
+		  getpid(), chroot, errno);
+#endif /* PROC_DEBUG */
+          PROCERROR(PROCE_CHDIR, 0);
+        }
       }
 
       if(tmp_cwd)
