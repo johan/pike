@@ -7979,6 +7979,8 @@ return 0;
 test_if_true(1)
 test_if_false(0)
 
+test_if_true('n' == 110)
+
 // #if ==
 test_if_true(1==1)
 test_if_false(1==2)
