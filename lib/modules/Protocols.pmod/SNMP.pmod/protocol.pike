@@ -660,6 +660,8 @@ int trap(mapping varlist, string oid, int type, int spectype, int ticks,
 //				  " ticks: %O, locip: %O, remaddr: %O, remport: %O\n",
 //		 varlist, oid, type, spectype, ticks, locip, remaddr, remport));
   locip = locip || "0.0.0.0";
+  if (has_value(locip,":")) // FIXME: Can't handle IPv6
+    locip = "0.0.0.0";
   if (sizeof(locip/".") != 4)
     locip = "0.0.0.0"; //FIXME: what for hell I want to do with such ugly value?
   //sscanf(locip, "%d.%d.%d.%d", @lip);
