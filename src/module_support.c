@@ -307,16 +307,14 @@ int va_get_args(struct svalue *s,
 }
 
 PMOD_EXPORT int get_args(struct svalue *s,
-	     INT32 num_args,
-	     char *fmt, ...)
+			 INT32 num_args,
+			 char *fmt, ...)
 {
   va_list ptr;
   int ret;
   va_start(ptr, fmt);
   ret=va_get_args(s, num_args, fmt, ptr);
-#ifndef __TenDRA__
-  va_end(fmt);
-#endif /* !__TenDRA */
+  va_end(ptr);
   return ret;
 }
 
