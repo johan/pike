@@ -278,7 +278,8 @@ STANDARD_OPERATOR_HEADER("`*")
             (rgb.b < 256) )
    {
 #ifdef ASSEMBLY_OK
-     if( image_cpuid & IMAGE_MMX )
+     /* there is some overhead in setting this up */
+     if( (image_cpuid & IMAGE_MMX) && (i>40) )
      {
        image_mult_buffer_mmx_x86asm( d,s1,i/4,RGB2ASMCOL(rgb) );
        d += i;  s1 += i;
