@@ -97,6 +97,12 @@ void image_any__decode(INT32 args)
 	 error("can't handle gif's yet\n");
 	 return;
 
+      case CHAR2('F','O'):
+	 /* ILBM (probably) */
+	 img_ilbm_decode(1);
+	 push_text("image/x-ilbm");
+	 goto simple_image;
+
       case CHAR2(0,0):
 	 switch (CHAR2(sp[-args].u.string->str[2],sp[-args].u.string->str[3]))
 	 {

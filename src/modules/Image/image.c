@@ -3486,6 +3486,8 @@ extern void init_image__xpm(void);
 extern void exit_image__xpm(void);
 extern void exit_image_xbm(void);
 extern void init_image_xbm(void);
+extern void exit_image_ilbm(void);
+extern void init_image_ilbm(void);
 
 /* dynamic encoders (dependent on other modules, loaded dynamically) */
 
@@ -3859,6 +3861,7 @@ void pike_module_init(void)
    init_image_pcx();
    init_image_xbm();
    init_image__xpm();
+   init_image_ilbm();
    init_image_x();
 }
 
@@ -3882,6 +3885,7 @@ void pike_module_exit(void)
    exit_image_pcx();
    exit_image__xpm();
    exit_image_xbm();
+   exit_image_ilbm();
    if (png_object) 
    {
       free_object(png_object);
