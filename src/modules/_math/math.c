@@ -321,7 +321,7 @@ void f_tanh(INT32 args)
  *! Returns the hyperbolic arcus tangent value for @[f].
  *!
  *! @seealso
- *!   @[tanh()], @[asinh()], @[acosh()], @[atan2h()]
+ *!   @[tanh()], @[asinh()], @[acosh()]
  */ 
 void f_atanh(INT32 args)
 {
