@@ -2253,11 +2253,11 @@ if test "x$ac_cv_header_mmx_h" = xyes ; then
   ])
 
   AC_MSG_RESULT($pike_cv_sys_has_working_mmx)
-else :; fi
 
-if test "x$pike_cv_sys_has_working_mmx" = xyes ; then
-  AC_DEFINE(TRY_USE_MMX)
-fi
+  if test "x$pike_cv_sys_has_working_mmx" = xyes ; then
+    AC_DEFINE(TRY_USE_MMX)
+  else :; fi
+else :; fi
 
 #############################################################################
 
