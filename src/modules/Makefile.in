@@ -21,7 +21,7 @@ $(MODULES): Makefile force
 	      ( test -f remake && $(MAKE) $(MAKE_FLAGS) MODNAME=$@ ) ) \
 	  ) || exit $$?;
 
-modules: $(MODULES)
+modules: Makefile $(MODULES)
 
 modlist.h: $(MODULE_SEGMENTS)
 	( for a in $(MODULES) ; do cat $$a/modlist_segment ; done ; ) >modlist.h
