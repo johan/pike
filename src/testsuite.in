@@ -3891,6 +3891,14 @@ test_do([[
   search(m, 4711);
 ]])
 
+test_any_equal([[
+  mapping m = (["foo": "bar", "bar": "gnu", "gnu": "bar"]);
+  array a = ({});
+  a += ({search (m, "bar")});
+  a += ({search (m, "bar", a[-1])});
+  a += ({search (m, "bar", a[-1])});
+  return sort (a);
+]], ({0, "foo", "gnu"}))
 
 // test large searches (find string, size, pattern)
 define(test_search,[[
