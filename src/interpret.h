@@ -76,6 +76,7 @@ struct pike_frame
   struct svalue **mark_sp_base;
   struct object *current_object;
 
+  DO_IF_SECURITY(struct object *current_creds;)
 #if defined(PROFILING) && defined(HAVE_GETHRTIME)
   long long children_base;
   long long start_time;
