@@ -4353,6 +4353,9 @@ static ptrdiff_t extract_int(char **v, ptrdiff_t *l)
  *!   old-style @[encode_value()]'ed data.
  */
 
+/*! @endclass
+ */
+
 /*! @class Codec
  *!
  *!   Codec objects are used by @[encode_value()] and @[decode_value()]
@@ -4457,9 +4460,6 @@ static ptrdiff_t extract_int(char **v, ptrdiff_t *l)
  *!   object must be a clone of @[__null_program]. When the program is
  *!   finished, the placeholder object will be converted to a clone of
  *!   it. This is used for pike module objects.
- */
-
-/*! @endclass
  */
 
 /*! @endclass
