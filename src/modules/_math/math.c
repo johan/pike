@@ -22,6 +22,10 @@
 #include <ieeefp.h>
 #endif
 
+#ifdef HAVE_FP_CLASS_H
+#include <fp_class.h>
+#endif
+
 #ifdef HAVE_FLOATINGPOINT_H
 #include <floatingpoint.h>
 #endif
