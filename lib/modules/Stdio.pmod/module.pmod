@@ -125,7 +125,7 @@ class BlockFile
 //! in @[Fd] are available here as well.
 class File
 {
-  inherit Fd_ref;
+  optional inherit Fd_ref;
   
 #ifdef TRACK_OPEN_FILES
   static int open_file_id = next_open_file_id++;
