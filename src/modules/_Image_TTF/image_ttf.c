@@ -793,6 +793,9 @@ static void ttf_get_nice_charmap(TT_Face face,
 	 case 202: /* ISO: iso-8859-1 */
 	    ihas=20;
 	    break;
+       default:
+            ihas = 1;
+	    break;
       }
       
       if (ihas>got) 
