@@ -193,6 +193,10 @@ static void rehash(void)
 struct pike_string *debug_begin_shared_string(int len)
 {
   struct pike_string *t;
+#ifdef DEBUG
+  if(d_flag>10)
+    verify_shared_strings_tables();
+#endif
   t=(struct pike_string *)xalloc(len + sizeof(struct pike_string));
   t->str[len]=0;
   t->len=len;
@@ -278,6 +282,9 @@ void really_free_string(struct pike_string *s)
   {
     if(s->next == (struct pike_string *)-1)
       fatal("Freeing shared string again!\n");
+
+    if(((long)s->next) & 1)
+      fatal("Freeing shared string again, memory corrupt or other bug!\n");
       
     unlink_pike_string(s);
     s->next=(struct pike_string *)-1;
