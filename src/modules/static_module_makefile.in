@@ -24,7 +24,18 @@ dummy:	linker_options modlist_headers modlist_segment module.pmod module.a
 
 linker_options: Makefile $(MODULE_ARCHIVES)
 	echo >linker_options modules/$(MODNAME)/module.a $(MODULE_LDFLAGS)
-	for a in '' $(MODULE_ARCHIVES) ; do if test "x$$a" = "x"; then :; else echo modules/$(MODNAME)/$$a >>linker_options ; fi ; done
+	for a in '' $(MODULE_ARCHIVES) ; do \
+	  if test "x$$a" = "x"; then :; else \
+	    case "$$a" in \
+	      /*) \
+		echo $$a \
+	      ;; \
+	      *) \
+		echo modules/$(MODNAME)/$$a \
+	      ;; \
+            esac >>linker_options; \
+	  fi; \
+	done
 
 modlist_headers: Makefile
 	echo >modlist_headers "void pike_module_$(MODNAME)_init(void), pike_module_$(MODNAME)_exit(void);"
