@@ -2,15 +2,10 @@
  * $Id$
  */
 
+#include "global.h"
+
 #ifdef __NT__
 
-/* We need to do this before including global.h /Hubbe */
-/* (because global.h includes windows.h which includes wincrypt.h ) */
-#ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0400
-#endif
-
-#include "global.h"
 #include "interpret.h"
 #include "svalue.h"
 #include "object.h"
