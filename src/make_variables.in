@@ -7,6 +7,7 @@
 prefix=@prefix@
 exec_prefix=$(prefix)/bin
 CC=@CC@
+CPP=@CPP@
 TMP_BUILDDIR=@BUILDDIR@
 TMP_BINDIR=@BINDIR@
 DEFINES=@CPPFLAGS@
