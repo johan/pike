@@ -281,12 +281,12 @@ void exit_main()
   cleanup_added_efuns();
   cleanup_pike_types();
   cleanup_program();
-  cleanup_callbacks();
 
 #ifdef GC2
   do_gc();
 #endif
 
+  cleanup_callbacks();
   zap_all_arrays();
 
   cleanup_shared_string_table();
