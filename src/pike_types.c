@@ -2755,6 +2755,7 @@ static struct pike_string *debug_low_index_type(char *t,
 	  type_stack_mark();
 	  push_finished_type(a);
 	  free_string(a);
+	  push_type(T_ARRAY);
 	  push_unfinished_type(t);
 	  push_type(T_OR);
 	  return pop_unfinished_type();
