@@ -140,11 +140,14 @@ fi
 #
 # If no cppflags or ldflags where given we try to guess some..
 #
-if test $cppflags_is_set$ldflags_is_set = nono ; then
+if test $cppflags_is_set$ldflags_is_set = nono -a \
+   x${C_INCLUDE_PATH-} = x -a \
+   x${LD_LIBRARY_PATH} = x -a ; then
+
   for d in /usr/gnu /opt/gnu /usr/local
   do
     if test -d $d/lib ; then
-      LDFLAGS="${LDFLAGS} -L$d/lib"
+      LDFLAGS="${LDFLAGS} -L$d/lib -R$d/lib"
     fi
 
     if test -d $d/include ; then
