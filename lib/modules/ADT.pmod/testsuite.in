@@ -19,10 +19,10 @@ test_eq( B->feed("foo"), B )
 test_eq( sizeof(B), 3*8+1 )
 test_eq( B->drain(), "\xb3""7\xb7" )
 test_eq( sizeof(B), 1 )
+test_eq( B->get(1), 1 )
 
-test_eq( B->feed("\d255\d0"), B )
-test_eq( B->get(4), 15 )
-test_eq( B->get(3), 7 )
+test_eq( B->feed("\xff\0"), B )
+test_eq( B->get(7), 127 )
 test_eq( B->get(4), 8 )
 test_eq( B->get(5), 0 )
 
