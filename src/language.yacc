@@ -3991,8 +3991,8 @@ static node *lexical_islocal(struct pike_string *str)
 
 static void safe_inc_enum(void)
 {
-  STACK_LEVEL_START(1);
   JMP_BUF recovery;
+  STACK_LEVEL_START(1);
 
   if (SETJMP_SP(recovery, 1)) {
     struct svalue s;
