@@ -71,6 +71,8 @@ class MyMaster
     ::create();
     foreach (indices (old_master), string var)
       catch {this[var] = old_master[var];};
+    programs["/master"] = this_program;
+    objects[this_program] = this;
   }
 }
 
