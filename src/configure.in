@@ -171,7 +171,11 @@ case "$UNAME" in
     AC_DEFINE(USE_Wl)
     ;;
   UnixWare\ 7.*)
-    AC_DEFINE(USE_YP_)
+    if test "$ac_cv_prog_gcc" = "yes"; then
+      AC_DEFINE(USE_XLINKER_YP_)
+    else
+      AC_DEFINE(USE_YP_)
+    fi
     ;;
   *)
     AC_DEFINE(USE_LD_LIBRARY_PATH)
