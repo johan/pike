@@ -11,7 +11,7 @@
 
 //! Encryption and MAC algorithms used in SSL.
 
-inherit "constants";
+inherit .Constants;
 
 class CipherSpec {
   program bulk_cipher_algorithm;
