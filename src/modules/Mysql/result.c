@@ -217,7 +217,8 @@ static void f_create(INT32 args)
     error("Too few arguments to mysql_result()\n");
   }
   if ((sp[-args].type != T_OBJECT) ||
-      (!(mysql = get_storage(sp[-args].u.object, mysql_program)))) {
+      (!(mysql = (struct precompiled_mysql *)get_storage(sp[-args].u.object,
+							 mysql_program)))) {
     error("Bad argument 1 to mysql_result()\n");
   }
 
