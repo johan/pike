@@ -94,12 +94,13 @@ config.status: $(SRCDIR)/configure
 #
 
 module.so: $(OBJS)  $(MODULE_ARCHIVES)
-	@echo "linking $(MODNAME)" ;\
+	@echo "Linking $(MODNAME)" ;\
 	if $(TMP_BINDIR)/smartlink "@LDSHARED@" $(LDFLAGS) -o module.@SO@ $(OBJS) $(MODULE_ARCHIVES) $(MODULE_LDFLAGS) $(LIBGCC) -lc $(LIBGCC) ; then \
 	  if test @SO@ != so ; then mv module.@SO@ module.so ; else :; fi ;\
 	else \
 	  echo "Linking failed:" >&2; \
 	  echo $(TMP_BINDIR)/smartlink "@LDSHARED@" $(LDFLAGS) -o module.@SO@ $(OBJS) $(MODULE_ARCHIVES) $(MODULE_LDFLAGS) $(LIBGCC) -lc $(LIBGCC) >&2 ;\
+	  exit 1; \
 	fi
 
 $(OBJS) : $(MODULE_BASE)/dynamic_module_makefile
