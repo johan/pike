@@ -71,25 +71,30 @@ static struct data get_data( struct source *_s, int len )
   struct pf_source *s = (struct pf_source *)_s;
   struct data res;
   char *buffer = NULL;
-  
+
   if( s->str )
   {
     len = s->str->len;
     if( s->skip )
     {
-      if( s->skip >= s->str->len )
+      if( s->skip >= (size_t)s->str->len )
       {
-	s->skip -= s->str->len;
-	return;
+	s->skip -= (size_t)s->str->len;
+	res.do_free = 0;
+	res.data = 0;
+	res.len = -2;
+	res.off = 0;
+	return res;
       }
-      buffer = malloc( len = s->str->len - s->skip );
+      len -= s->skip;
+      buffer = malloc( len );
       MEMCPY( buffer, s->str->str+s->skip, len);
     }
     else
     {
       if( s->len > 0 )
       {
-	if( s->len < len )
+	if( s->len < (size_t)len )
 	  len = s->len;
 	s->len -= len;
 	if( !s->len )
