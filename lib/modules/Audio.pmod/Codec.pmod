@@ -46,7 +46,7 @@ class decoder {
   //!
   //! @seealso
   //!  @[_Ffmpeg.ffmpeg], @[_Ffmpeg.CODEC_ID_MP2]
-  void create(string|void codecname) {
+  static void create(string|void codecname, object|void _codec) {
     if(stringp(codecname))
       init(codecname);
   }
@@ -116,7 +116,7 @@ class decoder {
     return codec && codec->get_codec_status();
   }
 
-  mixed _sprintf(int|void type) {
+  static mixed _sprintf(int|void type) {
     if(type == 't')
       return "Audio.Codec";
 
