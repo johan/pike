@@ -297,12 +297,13 @@ struct object *get_master(void)
 	push_string(s);
 	push_int(0);
 	f_decode_value(2);
+	UNSETJMP(tmp);
 
 	if(sp[-1].type == T_PROGRAM)
 	  goto compiled;
 
 	pop_stack();
-	  
+
       }
 #ifdef DEBUG
       if(d_flag)
