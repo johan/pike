@@ -3743,6 +3743,7 @@ void init_signals(void)
   for(e=0;e<MAX_SIGNALS;e++)
     signal_callbacks[e].type=T_INT;
 
+#if 0
   if(!signal_evaluator_callback)
   {
     signal_evaluator_callback=add_to_callback(&evaluator_callbacks,
@@ -3750,6 +3751,7 @@ void init_signals(void)
 					      0,0);
     dmalloc_accept_leak(signal_evaluator_callback);
   }
+#endif
 
 #ifdef USE_PID_MAPPING
   pid_mapping=allocate_mapping(2);
