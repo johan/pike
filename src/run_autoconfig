@@ -11,11 +11,16 @@ if test "x$1" = "x" ; then
   if test "x$base" != "x" ; then
     cd "$base"
   fi
+
+  localdir=`pwd`
 else
   cd "$1"
-fi
 
-localdir=`pwd`
+  localdir=`echo $0 | sed 's@[^/]*$@@g'`
+  if test "x$localdir" = "x"; then
+    localdir=`pwd`
+  fi
+fi
 
 find . -type d -print|egrep -v '/(CVS)|(RCS)$'| while read dir; do
 
