@@ -718,7 +718,9 @@ void _main(string *orig_argv, string *env)
 	  a="="+a;
 	}
 	environment[a]=b;
-      }
+      }else{
+	werror("Broken environment var %s\n",a);
+      }		
     }
 
 
