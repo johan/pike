@@ -4,6 +4,7 @@
 #include "interpret.h"
 
 #include "shuffler.h"
+/* $Id$ */
 
 struct ps_source
 {
@@ -46,9 +47,9 @@ struct source *source_pikestring_make( struct svalue *s,
 {
   struct ps_source *res;
 
-  if( s->type != PIKE_T_STRING )
-    return 0;
-
+  if( s->type != PIKE_T_STRING )   return 0;
+  if( s->u.string->size_shift )    return 0;
+  
   res = malloc( sizeof( struct ps_source ) );
   MEMSET( res, 0, sizeof( struct ps_source ) );
 
