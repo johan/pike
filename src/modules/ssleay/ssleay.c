@@ -147,7 +147,7 @@ static void ssleay_use_private_key_file(INT32 args)
 {
   if (sp[-args].type != T_STRING)
     error("ssleay->use_private_key_file: wrong type");
-  if (SSL_CTX_use_private_key_file(CTX, sp[-args].u.string->str, SSL_FILETYPE_PEM))
+  if (SSL_CTX_use_PrivateKey_file(CTX, sp[-args].u.string->str, SSL_FILETYPE_PEM))
     {
       ERR_print_errors_fp(stderr);
       error("ssleay->use_private_key_file: unable to use private_key");
