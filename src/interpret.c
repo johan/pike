@@ -2386,19 +2386,18 @@ void gdb_backtrace (
   for (of = 0; f; f = (of = f)->next)
     if (f->refs) {
       int args, i;
-      struct pike_string *file = NULL;
+      char *file = NULL;
       INT32 line;
 
       if (f->context.prog) {
 	if (f->pc)
-	  file = get_line (f->pc, f->context.prog, &line);
+	  file = low_get_line_plain (f->pc, f->context.prog, &line, 0);
 	else
-	  file = get_program_line (f->context.prog, &line);
+	  file = low_get_program_line_plain (f->context.prog, &line, 0);
       }
-      if (file) {
-	fprintf (stderr, "%s:%d: ", file->str, line);
-	free_string(file);
-      } else
+      if (file)
+	fprintf (stderr, "%s:%d: ", file, line);
+      else
 	fputs ("unknown program: ", stderr);
 
       if (f->current_object && f->current_object->prog) {
@@ -2507,9 +2506,8 @@ void gdb_backtrace (
 	  case T_OBJECT: {
 	    struct program *p = arg->u.object->prog;
 	    if (p && p->num_linenumbers) {
-	      file = get_program_line (p, &line);
-	      fprintf (stderr, "object(%s:%d)", file->str, line);
-	      free_string(file);
+	      file = low_get_program_line_plain (p, &line, 0);
+	      fprintf (stderr, "object(%s:%d)", file, line);
 	    }
 	    else
 	      fputs ("object", stderr);
@@ -2519,9 +2517,8 @@ void gdb_backtrace (
 	  case T_PROGRAM: {
 	    struct program *p = arg->u.program;
 	    if (p->num_linenumbers) {
-	      file = get_program_line (p, &line);
+	      file = low_get_program_line_plain (p, &line, 0);
 	      fprintf (stderr, "program(%s:%d)", file->str, line);
-	      free_string(file);
 	    }
 	    else
 	      fputs ("program", stderr);
