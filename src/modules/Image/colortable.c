@@ -1591,10 +1591,10 @@ static void dither_floyd_steinberg_got(struct nct_dither *dith,
    rgbd_group *er=dith->u.floyd_steinberg.errors;
    rgbd_group err;
 
-   err.r=(float)((int)d.r-(int)s.r)+dith->u.floyd_steinberg.errors[rowpos].r+0.5;
-   err.g=(float)((int)d.g-(int)s.g)+dith->u.floyd_steinberg.errors[rowpos].g+0.5;
-   err.b=(float)((int)d.b-(int)s.b)+dith->u.floyd_steinberg.errors[rowpos].b+0.5;
-
+   err.r=(float)((int)d.r-(int)s.r)+er[rowpos].r+0.5;
+   err.g=(float)((int)d.g-(int)s.g)+er[rowpos].g+0.5;
+   err.b=(float)((int)d.b-(int)s.b)+er[rowpos].b+0.5;
+ 
    ner[rowpos].r+=err.r*dith->u.floyd_steinberg.down;
    ner[rowpos].g+=err.g*dith->u.floyd_steinberg.down;
    ner[rowpos].b+=err.b*dith->u.floyd_steinberg.down;
