@@ -105,22 +105,27 @@ void mpzmod_reduce(struct object *o)
      *       We subtract 1 from INT_TYPE_BITS to make sure there's
      *       place left over for the sign.
      */
-#if (INT_TYPE_BITS-1) == GMP_NUMB_BITS
-    res = mpz_getlimbn (mpz, 0) & GMP_NUMB_MASK;
-#elif (INT_TYPE_BITS-1) < GMP_NUMB_BITS
+    /* NOTE: In gmp 2.0 -0x80000000 is encoded as -0x00000000. */
+#if INT_TYPE_BITS <= GMP_NUMB_BITS
     mp_limb_t val = mpz_getlimbn (mpz, 0) & GMP_NUMB_MASK;
-    if (val >= (mp_limb_t) 1 << (INT_TYPE_BITS-1)) goto overflow;
-    res = val;
+    /* Potential overflow if the MSB is set. */
+    if (val & ~((1<<(INT_TYPE_BITS - 1)) - 1)) goto overflow;
+    if (neg) {
+      res = ~((val - 1) & ((1<<(INT_TYPE_BITS - 1))-1));
+    } else {
+      res = val & ((1<<(INT_TYPE_BITS - 1))-1);
+    }
 #else
+    /* FIXME: May need to account for encoding of -0x80000000 here too. */
     for (;; pos--) {
       res |= mpz_getlimbn (mpz, pos) & GMP_NUMB_MASK;
       if (pos == 0) break;
       if (res >= (INT_TYPE) 1 << (INT_TYPE_BITS - (GMP_NUMB_BITS+1))) goto overflow;
       res <<= GMP_NUMB_BITS;
     }
+    if (neg) res = -res;
 #endif
 
-    if (neg) res = -res;
     free_object (o);
     push_int (res);
     return;
