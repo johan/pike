@@ -9625,6 +9625,8 @@ test_any([[
   }
   proc->cont();
 
+  sleep(5);	// Give it some time to settle down after initialization.
+
   // Check that we can block deadly signals.
   proc->kill(signum("TERM"));
   code = proc->wait();
