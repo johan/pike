@@ -122,6 +122,8 @@ RCSID("$Id$");
 #include "opcodes.h"
 #include <ctype.h>
 
+#include "config.h"
+
 #ifdef PC
 #undef PC
 #endif /* PC */
@@ -1201,9 +1203,9 @@ static void low_pike_sprintf(struct format_stack *fs,
 	  }
 	}
 	else if(mode == 'u')
-	  sprintf(x, "%u", val);
+	  sprintf(x, "%"PRINTINT"u", (unsigned INT_TYPE) val);
 	else
-	  sprintf(x, "%d", val);
+	  sprintf(x, "%"PRINTINT"d", val);
 
 	fs->fsp->len=strlen(x);
 	break;

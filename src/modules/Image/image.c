@@ -1203,7 +1203,7 @@ static INLINE int try_autocrop_horisontal(struct image *this,
 }
 
 void img_find_autocrop(struct image *this,
-		       int *px1,int *py1,int *px2,int *py2,
+		       INT32 *px1,INT32 *py1,INT32 *px2,INT32 *py2,
 		       int border,
 		       int left,int right,
 		       int top,int bottom,

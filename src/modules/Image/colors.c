@@ -653,8 +653,8 @@ static void image_color_hex(INT32 args)
 
       sh=4*(sizeof(COLORTYPE)*2-i);
       if (sh>0)
-	 sprintf(buf,"#%0*x%0*x%0*x",i,THIS->rgb.r>>sh,
-		 i,THIS->rgb.g>>sh,i,THIS->rgb.b>>sh); 
+	 sprintf(buf,"#%0*x%0*x%0*x",i,(unsigned)(THIS->rgb.r>>sh),
+		 i,(unsigned)(THIS->rgb.g>>sh),i,(unsigned)(THIS->rgb.b>>sh)); 
       else
       {
 	 unsigned INT32 r=THIS->rgbl.r;
@@ -669,7 +669,7 @@ static void image_color_hex(INT32 args)
 	    sh=0;
 	 }
 	 sprintf(buf,"#%0*x%0*x%0*x",
-		 i,r>>sh,i,g>>sh,i,b>>sh);
+		 i,(unsigned)(r>>sh),i,(unsigned)(g>>sh),i,(unsigned)(b>>sh));
       }
    }
    else

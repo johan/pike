@@ -112,6 +112,12 @@
 /* define if you want to use long double precision floats */
 #undef WITH_LONG_DOUBLE_PRECISION_SVALUE
 
+/* force this type upon ints */
+#undef WITH_LONG_INT
+#undef WITH_LONG_LONG_INT
+#undef WITH_SHORT_INT
+#undef WITH_INT_INT
+
 /* If using the C implementation of alloca, define if you know the
  * direction of stack growth for your system; otherwise it will be
  * automatically deduced at run-time.
