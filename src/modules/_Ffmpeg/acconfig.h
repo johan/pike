@@ -32,4 +32,10 @@
 /* Define if you have a working ffmpeg library */
 #undef HAVE_WORKING_LIBFFMPEG
 
+/* Define if libavcodec.h or so (re)defines UINT8 */
+#undef FFMPEG_REDEFINES_UINT8
+
+/* Define if libavcodec.h or so defines uint8_t */
+#undef HAVE_UINT8_T
+
 #endif
