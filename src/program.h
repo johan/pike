@@ -24,6 +24,8 @@
 #define EXTERN
 #include "compilation.h"
 
+struct program_state;
+
 /* Needed to support dynamic loading on NT */
 PMOD_PROTO extern struct program_state * Pike_compiler;
 
@@ -97,8 +99,6 @@ struct node_s;
 #define STRUCT_OBJECT_DECLARED
 struct object;
 #endif
-
-struct program_state;
 
 /* I need:
  * a) one type that can point to a callable function.
