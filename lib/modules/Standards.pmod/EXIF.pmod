@@ -18,7 +18,7 @@ static void add_field(mapping m, string field,
 		      mapping|array alts,
 		      array(int) from, int index)
 {
-  if(index>sizeof(from))
+  if(index>=sizeof(from))
     return;
   index = from[index];
   if(mappingp(alts)) {
@@ -172,8 +172,11 @@ static mapping canon_multi0(array(int) data)
   else
     res->CanonFlashDetails="No flash";
 
-  add_field(res, "CanonFocusMode",
-	    ({ "Single", "Continuous" }), data, 32);
+  if (sizeof(data)>32)
+  {
+     add_field(res, "CanonFocusMode",
+	       ({ "Single", "Continuous" }), data, 32);
+  }
 
   return res;
 }
