@@ -760,15 +760,11 @@ static int low_yylex(YYSTYPE *yylval)
 #endif /* 0 */
       }else{
 	char buff[100];
-#if (SHIFT == 0)
-	sprintf(buff, "Illegal character (hex %02x) '%c'", c, c);
-#else
-	if ((c > 0) && (c < 256)) {
+	if ((c > 31) && (c < 256)) {
 	  sprintf(buff, "Illegal character (hex %02x) '%c'", c, c);
 	} else {
 	  sprintf(buff, "Illegal character (hex %02x)", c);
 	}
-#endif
 	yyerror(buff);
 	return ' ';
       }
