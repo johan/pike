@@ -1487,7 +1487,7 @@ idents: low_idents
   {
     node *tmp;
     push_text(".");
-    ref_push_string(lex.current_line);
+    ref_push_string(lex.current_file);
     SAFE_APPLY_MASTER("handle_import",2);
     tmp=mkconstantsvaluenode(sp-1);
     pop_stack();
