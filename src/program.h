@@ -104,7 +104,7 @@ extern struct pike_string *this_program_string;
  */
 #define LFUN__SEARCH 44
 
-extern char *lfun_names[];
+extern const char *const lfun_names[];
 
 extern struct pike_string *lfun_strings[];
 

@@ -101,10 +101,10 @@ BLOCK_ALLOC_FILL_PAGES(program, 4)
 #define DECLARE
 #include "compilation.h"
 
-struct pike_string *this_program_string = NULL, *this_string = NULL;
-static struct pike_string *UNDEFINED_string=0;
+struct pike_string *this_program_string, *this_string;
+static struct pike_string *UNDEFINED_string;
 
-char *lfun_names[] = {
+const char *const lfun_names[]  = {
   "__INIT",
   "create",
   "destroy",
