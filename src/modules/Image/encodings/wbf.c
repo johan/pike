@@ -371,7 +371,6 @@ static void push_wap_type0_image_data( struct image *i )
         p[x/8] |= 128 >> (x%8);
       is++;
     }
-    printf("\n");
   }
   push_string( make_shared_binary_string( (char *)data,
 					  i->ysize * (i->xsize+7)/8 ) );
