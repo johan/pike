@@ -48,6 +48,20 @@ constant locate_references = _locate_references;
 
 #if constant(_memory_usage)
 constant memory_usage = _memory_usage;
+
+//! Returns a pretty printed version of the
+//! output from @[memory_usage].
+string pp_memory_usage() {
+  string ret="             Num   Bytes\n";
+  mapping mu = memory_usage();
+  foreach( ({ "array", "callable", "callback", "frame", "mapping",
+              "multiset", "object", "program", "string" }),
+           string what) {
+    ret += sprintf("%-8s  %6d  %6d (%s)\n", what, mu["num_"+what+"s"],
+                   mu[what+"_bytes"], String.int2size(mu[what+"_bytes"]));
+  }
+  return ret;
+}
 #endif
 
 #if constant(_optimizer_debug)
