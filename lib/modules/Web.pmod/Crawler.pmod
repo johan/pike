@@ -772,7 +772,7 @@ class Crawler
       {
 	queue->stats->close_callback(real_uri);
 	error_cb(real_uri, 1000, headers, @args); // robots.txt said no!
-	queue->done(real_uri);
+	queue->set_stage(real_uri, 6);
 	call_out(get_next_uri,0);
 	return;
       }
@@ -786,13 +786,13 @@ class Crawler
         default:
 	  queue->stats->close_callback(real_uri);
 	  error_cb(real_uri, 1001, headers, @args); // Unknown scheme
-	  queue->done(real_uri);
+	  queue->set_stage(real_uri, 6);
       }
     }
     else
     {
       queue->stats->close_callback(real_uri);
-      queue->done(real_uri);
+      queue->set_stage(real_uri, 5);
     }
   
     call_out(get_next_uri,0);
