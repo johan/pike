@@ -20,7 +20,7 @@ typedef struct
 
 typedef struct
 {
-   signed long r,g,b;
+   INT32 r,g,b;
 } rgbl_group;
 
 typedef struct

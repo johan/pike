@@ -647,8 +647,6 @@ CHRONO("gif add init");
       else 
 	 error("Illegal argument %d to image->gif_add()\n",3+!!ct);
 
-fprintf(stderr,"delay: %d\n",delay);
-
       low_my_putchar( '!', &buf ); /* extension block */
       low_my_putchar( 0xf9, &buf ); /* graphics control */
       low_my_putchar( 4, &buf ); /* block size */

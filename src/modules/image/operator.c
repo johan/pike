@@ -86,6 +86,15 @@ STANDARD_OPERATOR_HEADER("'+")
 
 void image_operator_multiply(INT32 args)
 {
+   double q=1/255.0;
+STANDARD_OPERATOR_HEADER("'+")
+   while (i--)
+   {
+      d->r=floor(s1->r*s2->r*q+0.5);
+      d->g=floor(s1->g*s2->g*q+0.5);
+      d->b=floor(s1->b*s2->b*q+0.5);
+      s1++; s2++; d++; 
+   }
 }
 
 void image_operator_maximum(INT32 args)
