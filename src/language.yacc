@@ -454,7 +454,7 @@ constant_list: constant_name
   | constant_list ',' constant_name
   ;
 
-constant: modifiers F_CONSTANT constant_list ';'
+constant: modifiers F_CONSTANT constant_list ';' {}
   ;
 
 block_or_semi: block
