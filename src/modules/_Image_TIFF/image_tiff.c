@@ -269,7 +269,7 @@ void low_image_tiff_encode( struct buffer *buf,
                             struct imagealpha *img,
                             struct options *opts)
 {
-  struct image *i, *a;
+  struct image *i, *a=0;
   int spp = 3;
   char *buffer;
   int n;
