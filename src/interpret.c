@@ -2362,8 +2362,8 @@ void gdb_backtraces()
   INT32 i = 0;
   struct thread_state *ts = 0;
   while ((i = gdb_next_thread_state (i, &ts)), ts) {
-    fprintf (stderr, "\nTHREAD_ID %ld (swapped %s):\n",
-	     (long) ts->id, ts->swapped ? "out" : "in");
+    fprintf (stderr, "\nTHREAD_ID %p (swapped %s):\n",
+	     (void *)ts->id, ts->swapped ? "out" : "in");
     gdb_backtrace (ts->id);
   }
 #else
