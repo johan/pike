@@ -14,7 +14,7 @@
   </dir>
 
   <void>
-    <insert-move entity="__builtin"/>
+    <!-- insert-move entity="__builtin"/ -->
     <insert-move entity="_Roxen"/>
   </void>
 </manual>
