@@ -353,6 +353,9 @@ string headers_encode(mapping(string:array(string)|string) h)
 		 value, "\r\n" );
      else if(!value)
        continue;
+     else if (intp(value))
+       buf->add( String.capitalize(replace(name,"_","-")), ": ",
+		 (string)value, "\r\n" );
      else if (arrayp(value)) {
        foreach(value, string value)
 	 buf->add( String.capitalize(replace(name,"_","-")), ": ",
