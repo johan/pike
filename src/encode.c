@@ -29,7 +29,7 @@
 
 RCSID("$Id$");
 
-#define ENCODE_DEBUG
+/* #define ENCODE_DEBUG */
 
 /* Use the old encoding method for programs. */
 /* #define OLD_PIKE_ENCODE_PROGRAM */
@@ -38,6 +38,9 @@ RCSID("$Id$");
 /* Pass a nonzero integer as the third arg to encode_value,
  * encode_value_canonic and decode_value to activate this debug. */
 #define EDB(N,X) do { debug_malloc_touch(data); if (data->debug>=N) {X;} } while (0)
+#ifndef PIKE_DEBUG
+#error ENCODE_DEBUG requires PIKE_DEBUG
+#endif
 #else
 #define EDB(N,X) do { debug_malloc_touch(data); } while (0)
 #endif
