@@ -1353,6 +1353,10 @@ void f_destruct(INT32 args)
 	   
     o=fp->current_object;
   }
+#ifdef PIKE_SECURITY
+  if(!CHECK_DATA_SECURITY(o, SECURITY_BIT_DESTRUCT))
+    error("Destruct permission denied.\n");
+#endif
   destruct(o);
   pop_n_elems(args);
 }
