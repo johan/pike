@@ -510,8 +510,8 @@ void _main(string *orig_argv, string *env)
   q=explode_path(_master_file_name);
 
   // add path for architecture-shared files
-  add_include_path("¤data_prefix¤/pike/include");
-  add_module_path("¤data_prefix¤/pike/modules");
+  add_include_path("¤data_prefix¤/include");
+  add_module_path("¤data_prefix¤/modules");
 
   // add path for architecture-dependant files
   add_include_path("¤lib_prefix¤/include");
