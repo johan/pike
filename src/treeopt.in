@@ -1,4 +1,4 @@
-// -*- c-mode -*-
+// -*- c -*-
 //
 // $Id$
 //
@@ -56,16 +56,16 @@ F_CAST[$$->type == void_type_string]
 // FCAST[0 = type](1 = *[0], *): 1;
 
 F_RANGE(*, F_ARG_LIST(*, F_CONSTANT[$$->u.sval.type == T_INT]
-                                   [$$->u.sval.u.integer <= 0])):
+                                   [$$->u.sval.u.integer < 0])):
 {
-  yywarning("Range end is not positive.");
+  yywarning("Range end is negative.");
 }
 ;
 
 F_RANGE(*, F_ARG_LIST(*, F_CONSTANT[$$->u.sval.type == T_FLOAT]
-				   [$$->u.sval.u.float_number <= 0.0])):
+				   [$$->u.sval.u.float_number < 0.0])):
 {
-  yywarning("Range end is not positive.");
+  yywarning("Range end is negative.");
 }
 ;
 
