@@ -1552,6 +1552,8 @@ class CompatResolver
 		    object|void current_handler)
     {
 //      werror("Resolv_base(%O)\n",identifier);
+      if (identifier == "_static_modules") return _static_modules;
+
       array(mixed) tmp = ({});
       string dir=current_file ? dirname(current_file) : "/";
 
