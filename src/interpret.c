@@ -1577,6 +1577,36 @@ PMOD_EXPORT void safe_apply(struct object *o, char *fun ,INT32 args)
   safe_apply_low2(o, find_identifier(fun, o->prog), args, 1);
 }
 
+/* Returns nonzero if the function was called in some handler. */
+PMOD_EXPORT int low_unsafe_apply_handler(const char *fun,
+					 struct object *handler,
+					 struct object *compat,
+					 INT32 args)
+{
+  int i;
+#if 0
+  fprintf(stderr, "low_unsafe_apply_handler(\"%s\", 0x%08p, 0x%08p, %d)\n",
+	  fun, handler, compat, args);
+#endif /* 0 */
+  if (handler && handler->prog &&
+      (i = find_identifier(fun, handler->prog)) != -1) {
+    apply_low(handler, i, args);
+  } else if (compat && compat->prog &&
+	     (i = find_identifier(fun, compat->prog)) != -1) {
+    apply_low(compat, i, args);
+  } else {
+    struct object *master_obj = master();
+    if ((i = find_identifier(fun, master_obj->prog)) != -1)
+      apply_low(master_obj, i, args);
+    else {
+      pop_n_elems(args);
+      push_undefined();
+      return 0;
+    }
+  }
+  return 1;
+}
+
 PMOD_EXPORT void low_safe_apply_handler(const char *fun,
 					struct object *handler,
 					struct object *compat,
@@ -1626,24 +1656,8 @@ PMOD_EXPORT int safe_apply_handler(const char *fun,
   else {
     Pike_sp += args;
 
-    if (handler && handler->prog &&
-	(i = find_identifier(fun, handler->prog)) != -1) {
-      apply_low(handler, i, args);
-    } else if (compat && compat->prog &&
-	       (i = find_identifier(fun, compat->prog)) != -1) {
-      apply_low(compat, i, args);
-    } else {
-      struct object *master_obj = master();
-      if ((i = find_identifier(fun, master_obj->prog)) != -1)
-	apply_low(master_obj, i, args);
-      else {
-	pop_n_elems(args);
-	push_undefined();
-	goto dont_check_ret_type;
-      }
-    }
-
-    if (rettypes &&
+    if (low_unsafe_apply_handler (fun, handler, compat, args) &&
+	rettypes &&
 	!(((1 << Pike_sp[-1].type) & rettypes) ||
 	  ((rettypes & BIT_ZERO) &&
 	   Pike_sp[-1].type == T_INT &&
@@ -1658,7 +1672,6 @@ PMOD_EXPORT int safe_apply_handler(const char *fun,
 	Pike_error("Invalid return value from %s\n", fun);
     }
 
-  dont_check_ret_type:
     ret = 1;
   }
 
