@@ -746,7 +746,7 @@ int main()
       ;;
 
       xAIX*)
-        LIBS="${OLDLIBS} -lpthreads"
+        LIBS="${OLDLIBS} -lpthreads -lc_r"
       ;;
 
       *)
