@@ -225,11 +225,14 @@ struct pike_string *find_return_type(node *n)
 
   if(a)
   {
-    if(b && a!=b) {
-      struct pike_string *res = or_pike_types(a, b, 1);
-      free_string(a);
+    if(b) {
+      if (a != b) {
+	struct pike_string *res = or_pike_types(a, b, 1);
+	free_string(a);
+	free_string(b);
+	return res;
+      }
       free_string(b);
-      return res;
     }
     return a;
   }
