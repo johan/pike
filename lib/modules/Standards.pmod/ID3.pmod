@@ -831,8 +831,6 @@ class FrameDatav1 {
   }
 
   string get_string() {
-    if(id == "track" || id == "genre")
-      return (string)frame_data[0];
     return frame_data;
   }
 
