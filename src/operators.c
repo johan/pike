@@ -2981,7 +2981,7 @@ PMOD_EXPORT void o_compl(void)
  *!   	@type program
  *!   	  The type inverse of @[arg] will be returned.
  *!   	@type string
- *!   	  If @[arg1] only contains characters in the range 0 - 255 (8-bit),
+ *!   	  If @[arg] only contains characters in the range 0 - 255 (8-bit),
  *!   	  a string containing the corresponding 8-bit inverses will be
  *!   	  returned.
  *!   @endmixed
