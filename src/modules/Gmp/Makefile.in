@@ -17,6 +17,7 @@ prime_table.out: prime_table
 
 prime_table: prime_table.@CROSS@
 	test -f ./prime_table || ln -s prime_table.@CROSS@ ./prime_table || cp prime_table.@CROSS@ ./prime_table
+	-@chmod a+x ./prime_table
 
 # Not cross-compiling
 prime_table.no: $(SRCDIR)/prime_table.c
