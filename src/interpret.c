@@ -1204,6 +1204,16 @@ static int eval_instruction_low(PIKE_OPCODE_T *pc)
 #error Machine code not supported with this compiler.
 #endif
 
+    /* Paranoia.
+     *
+     * This can happen on systems with delay slots if the labels aren't
+     * used explicitly.
+     */
+    if (do_inter_return_label == do_escape_catch_label) {
+      Pike_fatal("Inter return and escape catch labels are equal: %p\n",
+		 do_inter_return_label);
+    }
+
     /* Trick optimizer */
     if(!dummy_label)
       return 0;
