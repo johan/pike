@@ -22,8 +22,8 @@
 struct static_module;
 void init_modules(void);
 void exit_modules(void);
-void pike_module_init(void);
-void pike_module_exit(void);
+PIKE_MODULE_INIT;
+PIKE_MODULE_EXIT;
 /* Prototypes end here */
 
 #endif
