@@ -10,6 +10,8 @@ PIKE=pike
 
 all: modref traditional
 
+pike.ida.liu.se: modref pelix_modref traditional
+
 # These are the actual build targets for making manuals...
 
 modref: build/modref.xml structure/modref.css structure/modref.html \
@@ -28,17 +30,16 @@ low_modref:
           pike_line_left.gif pike_line_middle.gif pike_line_right.gif ; do \
 	  cp src_images/$$file modref/images/ ; done
 
-wiki: build/modref.xml structure/wiki.html presentation/wiki.pike \
-	  presentation/make_html.pike presentation/tree-split-autodoc.pike
-	@$(MAKE) PIKE="$(PIKE)" low_wiki
+pelix_modref: modref structure/pelix_modref.html
+	@$(MAKE) PIKE="$(PIKE)" low_pelix_modref
 
-low_wiki:
-	rm -rf wiki || /bin/true
-	@mkdir wiki
-	@$(PIKE) presentation/wiki.pike \
-	  build/modref.xml structure/wiki.html wiki
-	@mkdir wiki/images
-	cp build/images/* wiki/images
+low_pelix_modref:
+	rm -rf pelix_modref || /bin/true
+	@mkdir pelix_modref
+	@$(PIKE) presentation/tree-split-autodoc.pike \
+	  build/modref.xml structure/pelix_modref.html pelix_modref
+	@mkdir pelix_modref/images
+	cp build/images/* pelix_modref/images
 
 one_page: onepage build/onepage.xml presentation/make_html.pike
 	@$(MAKE) PIKE="$(PIKE)" low_one_page
