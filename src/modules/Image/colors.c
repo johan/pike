@@ -678,7 +678,8 @@ static void image_color_cast(INT32 args)
 {
    if (args!=1 ||
        sp[-1].type!=T_STRING)
-      error("Image.Color.Color->cast(): Illegal argument(s)\n");
+      bad_arg_error("Image.Color.Color->cast",sp-args,args,0,"",sp-args,
+		"Bad arguments to Image.Color.Color->cast()\n");
    
    if (sp[-1].u.string==str_array)
    {
@@ -1238,7 +1239,8 @@ static void image_guess_color(INT32 args)
    struct svalue s;
 
    if (args!=1 && sp[-args].type!=T_STRING) 
-      error("Image.Color->guess(): illegal argument(s)\n");
+      bad_arg_error("Image.Color->guess",sp-args,args,0,"",sp-args,
+		"Bad arguments to Image.Color->guess()\n");
    
    f_lower_case(1);
    push_text(" ");
@@ -1460,7 +1462,8 @@ static void image_make_html_color(INT32 args)
    if (args!=1 ||
        sp[-1].type!=T_STRING) 
    {
-      error("Image.Color.html(): illegal arguments\n");
+      bad_arg_error("Image.Color.html",sp-args,args,0,"",sp-args,
+		"Bad arguments to Image.Color.html()\n");
       return;
    }
    
