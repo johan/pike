@@ -453,8 +453,9 @@ static INLINE struct pike_string* gimme_some_data(unsigned long pos)
 	  if (sp[-1].type == T_STRING) {
 	    append_buffer(sp[-1].u.string);
 	  } else {
-	    this->sleeping = 0;
-	    /* We're not sleeping -- we're dead... */
+	    /* FIXME: Should probably check the return value. */
+	    /* EOF */
+	    input_finish();
 	  }
 	  pop_stack();
 	} else {
