@@ -788,7 +788,7 @@ void f_m_delete(INT32 args)
   if(args < 2)
     error("Too few arguments to m_delete.\n");
   if(sp[-args].type != T_MAPPING)
-    error("Bad argument to to m_delete.\n");
+    error("Bad argument 1 to m_delete.\n");
 
   map_delete(sp[-args].u.mapping,sp+1-args);
   pop_n_elems(args-1);
