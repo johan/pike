@@ -1383,6 +1383,9 @@ static struct farmer {
   void (*harvest)(void *);
   THREAD_T me;
   COND_T harvest_moon;
+#ifdef HAVE_BROKEN_LINUX_THREAD_EUID
+  int euid, egid;
+#endif /* HAVE_BROKEN_LINUX_THREAD_EUID */
 } *farmers;
 
 static MUTEX_T rosie STATIC_MUTEX_INIT;
@@ -1393,6 +1396,17 @@ static int _num_farmers, _num_idle_farmers;
 static TH_RETURN_TYPE farm(void *_a)
 {
   struct farmer *me = (struct farmer *)_a;
+
+#ifdef HAVE_BROKEN_LINUX_THREAD_EUID
+  /* Work-around for Linux's pthreads not propagating the
+   * effective uid & gid.
+   */
+  if (!geteuid()) {
+    setegid(me->egid);
+    seteuid(me->euid);
+  }
+#endif /* HAVE_BROKEN_LINUX_THREAD_EUID */
+
   do
   {
 /*     if(farmers == me) fatal("Ouch!\n"); */
@@ -1449,6 +1463,12 @@ static struct farmer *new_farmer(void (*fun)(void *), void *args)
   me->field = args;
   me->harvest = fun;
   co_init( &me->harvest_moon );
+
+#ifdef HAVE_BROKEN_LINUX_THREAD_EUID
+  me->euid = geteuid();
+  me->egid = getegid();
+#endif /* HAVE_BROKEN_LINUX_THREAD_EUID */
+
   th_create_small(&me->me, farm, me);
   return me;
 }
