@@ -432,7 +432,7 @@ mixed cast(string type)
   if (type == "string") {
     return(cast_to_string());
   }
-  error(sprintf("Cast to %s not supported\n", type));
+  throw(({ sprintf("Cast to %s not supported\n", type), backtrace() }));
 }
 
 /* Here come the functions that actually do some work */
