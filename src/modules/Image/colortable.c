@@ -1486,11 +1486,15 @@ static rgbl_group dither_floyd_steinberg_encode(struct nct_dither *dith,
 {
    rgbl_group rgb;
    int i;
-   i=(int)((int)s.r-dith->u.floyd_steinberg.errors[rowpos].r+0.5); 
+   rgbd_group *err=dith->u.floyd_steinberg.errors+rowpos;
+   if (err->r>255) err->r=255; else if (err->r<-255) err->r=-255;
+   if (err->g>255) err->g=255; else if (err->g<-255) err->g=-255;
+   if (err->b>255) err->b=255; else if (err->b<-255) err->b=-255;
+   i=(int)((int)s.r-err->r+0.5); 
    rgb.r=i<0?0:(i>255?255:i);
-   i=(int)((int)s.g-dith->u.floyd_steinberg.errors[rowpos].g+0.5); 
+   i=(int)((int)s.g-err->g+0.5); 
    rgb.g=i<0?0:(i>255?255:i);
-   i=(int)((int)s.b-dith->u.floyd_steinberg.errors[rowpos].b+0.5); 
+   i=(int)((int)s.b-err->b+0.5); 
    rgb.b=i<0?0:(i>255?255:i);
    return rgb;
 }
