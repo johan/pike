@@ -122,7 +122,7 @@ INLINE void low_set_index(struct pike_string *s, int pos, int value)
 }
 
 #ifdef PIKE_DEBUG
-struct INLINE pike_string *debug_check_size_shift(struct pike_string *a,int shift)
+INLINE struct pike_string *debug_check_size_shift(struct pike_string *a,int shift)
 {
   if(a->size_shift != shift)
     fatal("Wrong STRX macro used!\n");
