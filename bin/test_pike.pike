@@ -27,7 +27,7 @@ int main(int argc, string *argv)
 
   string *args=backtrace()[0][3];
   args=args[..sizeof(args)-1-argc];
-  add_constant("RUNPIKE",args*" ");
+  add_constant("RUNPIKE",Array.map(args,Process.sh_quote)*" ");
 
   foreach(Getopt.find_all_options(argv,aggregate(
     ({"help",Getopt.NO_ARG,({"-h","--help"})}),
