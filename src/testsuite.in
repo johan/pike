@@ -1708,10 +1708,28 @@ test_program([[
 test_compile_error_any([[
   class A {}
   class B {
-    inherit A;
+    inherit A:C;
     mixed f() {return A::this_program;}
   }
 ]])
+
+test_compile_error_any([[
+#pike 7.6
+  class A {}
+  class B {
+    inherit A:C;
+    mixed f() {return C::this_program;}
+  }
+]])
+
+test_any([[
+  class A {};
+  class B {
+    inherit A:C;
+    mixed f() {return C::this_program;}
+  };
+  return B()->f() == A;
+]], 1)
 
 dnl test_compile_error(0())
 test_compile_error(1())
