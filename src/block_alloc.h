@@ -353,7 +353,6 @@ static inline struct DATA *						     \
   p=PIKE_CONCAT(DATA,_hash_table)[hval];                                     \
   if(!p || p->PTR_HASH_ALLOC_DATA == ptr)				     \
   {                                                                          \
-    DO_IF_RUN_UNLOCKED(mt_unlock(&PIKE_CONCAT(DATA,_mutex)));                \
     return p;                                                                \
   }                                                                          \
   while((p=*(pp=&p->BLOCK_ALLOC_NEXT)))                                      \
@@ -391,7 +390,6 @@ static inline struct DATA *						     \
   p=PIKE_CONCAT(DATA,_hash_table)[hval];                                     \
   if(!p || p->PTR_HASH_ALLOC_DATA == ptr)				     \
   {                                                                          \
-    DO_IF_RUN_UNLOCKED(mt_unlock(&PIKE_CONCAT(DATA,_mutex)));                \
     return p;                                                                \
   }                                                                          \
   while((p=p->BLOCK_ALLOC_NEXT)) 	                                     \
