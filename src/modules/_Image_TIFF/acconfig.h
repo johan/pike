@@ -11,7 +11,7 @@
 @TOP@
 @BOTTOM@
 
-/* Define this if you have -ltiff */
-#undef HAVE_LIBTIFF
+/* Define this if you have a working -ltiff */
+#undef HAVE_WORKING_LIBTIFF
 
 #endif
