@@ -36,6 +36,15 @@ test_eq(-16, -0b10000);
 
 test_eval_error([[mixed x; return mkmapping(x,x)]]);
 
+test_any([[
+  array tmp=({});
+  tmp=({([])})+tmp;
+  tmp->foo=7;
+  tmp=({([])})+tmp;
+  return sizeof(tmp[0]);
+]], 0)
+
+
 test_any([[int a=0xffffffff; return a+17]], 0x100000010);
 test_any([[int a=0xffffffff; return a-17]], 0xffffffee);
 test_any([[int a=0xffffffff; return a*17]], 0x10ffffffef);

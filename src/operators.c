@@ -434,7 +434,7 @@ static int generate_sum(node *n)
     return 1;
 
   case 2:
-    do_docode(CDR(n),DO_NOT_COPY);
+    do_docode(CDR(n),DO_NOT_COPY_TOPLEVEL);
     emit2(F_ADD);
     return 1;
 
@@ -771,7 +771,7 @@ static int generate_minus(node *n)
     return 1;
 
   case 2:
-    do_docode(CDR(n),DO_NOT_COPY);
+    do_docode(CDR(n),DO_NOT_COPY_TOPLEVEL);
     emit2(F_SUBTRACT);
     return 1;
   }
@@ -1434,7 +1434,7 @@ static int generate_lsh(node *n)
 {
   if(count_args(CDR(n))==2)
   {
-    do_docode(CDR(n),DO_NOT_COPY);
+    do_docode(CDR(n),DO_NOT_COPY_TOPLEVEL);
     emit2(F_LSH);
     return 1;
   }
@@ -1907,7 +1907,7 @@ static int generate_divide(node *n)
 {
   if(count_args(CDR(n))==2)
   {
-    do_docode(CDR(n),DO_NOT_COPY);
+    do_docode(CDR(n),DO_NOT_COPY_TOPLEVEL);
     emit2(F_DIVIDE);
     return 1;
   }
@@ -2030,7 +2030,7 @@ static int generate_mod(node *n)
 {
   if(count_args(CDR(n))==2)
   {
-    do_docode(CDR(n),DO_NOT_COPY);
+    do_docode(CDR(n),DO_NOT_COPY_TOPLEVEL);
     emit2(F_MOD);
     return 1;
   }
