@@ -2118,12 +2118,14 @@ void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 	accounted_time+=self_time;
 #ifdef DEBUG
 	if(self_time < 0)
-	  fatal("Self time is negative\n  self_time=%ld\n  time_passed=%ld\n  time_in_children=%ld\n  children_base=%ld\n  accounted_time=%ld!\n",
+	  fatal("Self time is negative\n  self_time=%ld\n  time_passed=%ld\n  time_in_children=%ld\n  children_base=%ld\n  accounted_time=%ld!\n  time_base=%ld\n  start_time=%ld\n",
 		(long)(self_time/1000),
 		(long)(time_passed/1000),
 		(long)(time_in_children/1000),
 		(long)(children_base/1000),
 		(long)(accounted_time/1000)
+		(long)(time_base/1000)
+		(long)(start_time/1000)
 		);
 #endif
 	function->total_time=self_time_base + (INT32)(time_passed /1000);
