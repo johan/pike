@@ -2106,6 +2106,7 @@ void slow_check_stack(void)
     }
   }
 }
+#endif
 
 static const char *safe_idname_from_int(struct program *prog, int func)
 {
@@ -2365,8 +2366,6 @@ void gdb_backtraces()
   gdb_backtrace();
 #endif
 }
-
-#endif
 
 PMOD_EXPORT void custom_check_stack(ptrdiff_t amount, const char *fmt, ...)
 {
