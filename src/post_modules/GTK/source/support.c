@@ -100,7 +100,7 @@ GdkImage *gdkimage_from_pikeimage( struct object *img, int fast, GdkImage *i )
   /* 1a: create the actual image... */
   TIMER_INIT("Getting extents");
   apply(img, "xsize", 0); apply(img, "ysize", 0);
-  get_all_args("internal", 2, "%d%d", &x, &y);
+  get_all_args("internal", 2, "%i%i", &x, &y);
   pop_n_elems( 2 );
 
 
