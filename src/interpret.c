@@ -307,7 +307,7 @@ void pop_n_elems(INT32 x)
 }
 
 
-struct callback *evaluator_callbacks =0;
+struct callback_list evaluator_callbacks;
 
 /* This function is called 'every now and then'. (1-10000 / sec or so)
  * It should do anything that needs to be done fairly often.

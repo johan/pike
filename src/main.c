@@ -40,7 +40,7 @@ int a_flag=0;
 int l_flag=0;
 int p_flag=0;
 
-static struct callback *post_master_callbacks =0;
+static struct callback_list post_master_callbacks;
 
 struct callback *add_post_master_callback(callback_func call,
 					  void *arg,

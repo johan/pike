@@ -595,7 +595,7 @@ void f_throw(INT32 args)
   throw();
 }
 
-static struct callback *exit_callbacks=0;
+static struct callback_list exit_callbacks;
 
 struct callback *add_exit_callback(callback_func call,
 				   void *arg,

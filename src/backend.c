@@ -45,7 +45,7 @@ static int max_fd;
 struct timeval current_time;
 struct timeval next_timeout;
 
-static struct callback *backend_callbacks = 0;
+static struct callback_list backend_callbacks;
 
 struct callback *add_backend_callback(callback_func call,
 				      void *arg,
