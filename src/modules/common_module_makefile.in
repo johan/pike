@@ -132,7 +132,8 @@ module.pmod: Makefile $(MODULE_PMOD_IN)
 
 
 clean_here:
-	-rm -f *.o *.fail *.obj *.a *.so stamp-h linker_options modlist_headers modlist_segment testsuite $(MODULE_CLEAN_EXTRA) module.pmod plib refdoc doc
+	-rm -f *.o *.fail *.obj *.a *.so stamp-h linker_options modlist_headers modlist_segment testsuite $(MODULE_CLEAN_EXTRA) doc
+	-rm -rf plib refdoc module.pmod doc
 
 clean: clean_here
 	@for a in '' $(MODULE_SUBDIRS) ; do \
