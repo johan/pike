@@ -269,8 +269,6 @@ test_equal(Array.diff3(({"a","c","b","a"}),({"a","c"}),({"b","a","c"})),
 	     ({({   }),({"a","c"}),({       })}),
 	     ({({"b"}),({"a","c"}),({       })})}))
 
-dnl Array.diff3_old
-
 define(test_sort,[[
   test_eq(Array.$1($2,$3), -1)
   test_eq(Array.$1($3,$2), 1)
