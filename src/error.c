@@ -83,11 +83,11 @@ PMOD_EXPORT void check_recovery_context(void)
 
   /* Add more stuff here when required */
 }
+#endif
 
 PMOD_EXPORT void pike_gdb_breakpoint(void) 
 {
 }
-#endif
 
 PMOD_EXPORT JMP_BUF *init_recovery(JMP_BUF *r DEBUG_LINE_ARGS)
 {
@@ -363,8 +363,10 @@ PMOD_EXPORT DECLSPEC(noreturn) void debug_fatal(const char *fmt, ...) ATTRIBUTE(
   }
 
   in_fatal = 1;
+#if 0
 #ifdef PIKE_DEBUG
   dump_backlog();
+#endif
 #endif
 
   if(Pike_in_gc)

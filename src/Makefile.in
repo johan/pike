@@ -536,6 +536,7 @@ gdb_verify: module_testsuites testsuite master-stamp
 	  echo >>.gdbinit handle SIG32 nostop noprint pass ;\
 	else :; fi
 	@echo >>.gdbinit break debug_fatal
+	@echo >>.gdbinit break pike_gdb_breakpoint
 	@if test "$(TESTARGS)" = "" ; then args="-a -v -v" ; else \
 	  args="$(TESTARGS)" ; fi;  \
 	echo >>.gdbinit set args -m$(TMP_BUILDDIR)/master.pike $(PIKEOPTS) $(TMP_BINDIR)/test_pike.pike --no-watchdog $$args
