@@ -57,7 +57,7 @@ private int queue_write()
   if (stringp(data))
     write_buffer += data;
 #ifdef SSL3_DEBUG
-  werror(sprintf("SSL.sslfile->queue_write: buffer = '%s'\n", write_buffer));
+  werror(sprintf("SSL.sslfile->queue_write: buffer = '%O'\n", write_buffer));
 #endif
 
   if (catch {
@@ -127,7 +127,7 @@ private void ssl_read_callback(mixed id, string s)
   if (stringp(data))
   {
 #ifdef SSL3_DEBUG
-    werror(sprintf("SSL.sslfile->ssl_read_callback: application_data: '%s'\n", data));
+    werror(sprintf("SSL.sslfile->ssl_read_callback: application_data: '%O'\n", data));
 #endif
     if (!connected && handshake_finished)
     {
