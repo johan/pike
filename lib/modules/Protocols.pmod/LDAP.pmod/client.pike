@@ -241,9 +241,6 @@ int _prof_gtim;
     //!  @[LDAP.client.result.first], @[LDAP.client.result.next]
     int count_entries() { return(entrycnt - actnum); }
 
-    //! @decl mapping(string:array(string)) fetch()
-    //! @decl mapping(string:array(string)) fetch(int index)
-    //!
     //! Returns a mapping with an entry for each attribute.
     //! Each entry is an array of values of the attribute.
     //!
