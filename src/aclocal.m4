@@ -507,7 +507,7 @@ define(MY_AC_CHECK_PRINTF_INT_TYPE, [
 #include <stdio.h>
 #include "confdefs.h"
 int main() {
-  char buf[32];
+  char buf[50];
   if ((($1)4711) > (($1)-4711)) {
     /* Signed type. */
     if (sizeof($1)>4)
@@ -561,7 +561,7 @@ define(MY_AC_CHECK_PRINTF_FLOAT_TYPE, [
 #include <stdio.h>
 #include "confdefs.h"
 int main() {
-  char buf[32];
+  char buf[50];
   sprintf(buf, "%${mod}4.1f,%d",($1)17.0,17);
   return !!strcmp("17.0,17",buf);
 }], [pike_cv_printf_$1="${mod}"; found=yes])
