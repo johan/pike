@@ -17,6 +17,7 @@
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
 
+#ifdef HAVE_ODBC
 #ifdef HAVE_ISQL_H
 #include <isql.h>
 #else /* !HAVE_ISQL_H */
@@ -26,12 +27,11 @@
 #ifdef HAVE_QEODBC_H
 #include <qeodbc.h>
 #else
-#ifdef HAVE_ODBC
 #undef HAVE_ODBC
-#endif /* HAVE_ODBC */
 #endif /* HAVE_QEODBC_H */
 #endif /* HAVE_WINDOWS_H */
 #endif /* HAVE_ISQL_H */
+#endif /* HAVE_ODBC */
 
 #ifdef HAVE_ODBC
 
