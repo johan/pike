@@ -3373,6 +3373,11 @@ cond([[all_constants()->thread_create]],
       data[2]->wait(key);
     return data[0];
   ]],1)
+  test_any([[
+    object lock = Thread.Mutex()->lock();
+    gc();
+    return objectp (lock);
+  ]], 1)
 
 // /precompiled/condition
   test_true(Thread.Condition())
