@@ -212,7 +212,8 @@ all: module_objects tools
 	fi
 
 documentation: onepage.xml traditional.xml modref.xml
-	cd $(DOCDIR) && $(MAKE) $(MAKE_FLAGS) PIKE="$(RUNPIKE)" $(DOCTARGET)
+	cd $(DOCDIR) && $(MAKE) $(MAKE_FLAGS) PIKE="$(RUNPIKE)" \
+	  BUILDDIR="$(TMP_BUILDDIR)" $(DOCTARGET)
 
 # Backward compat.
 post_modules: post_module_objects
