@@ -573,12 +573,12 @@ class dirnode
   array(string) _indices()
   {
     fill_cache();
-    return indices(cache);
+    return indices(filter(cache, lambda(mixed x){ return x; }));
   }
   array(mixed) _values()
   {
     fill_cache();
-    return values(cache);
+    return values(cache)-({0});
   }
 };
 
