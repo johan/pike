@@ -841,6 +841,13 @@ static void file_peek(INT32 args)
   push_int(ret);
 }
 
+/* NOTE: Some versions of AIX seem to have a
+ *         #define events reqevents
+ *       in one of the poll headerfiles. This will break
+ *       the fd_box event handling.
+ */
+#undef events
+
 #endif
 
 /*! @decl string read_oob()
