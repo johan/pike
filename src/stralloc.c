@@ -194,6 +194,7 @@ struct pike_string *debug_begin_shared_string(int len)
 {
   struct pike_string *t;
 #ifdef DEBUG
+  extern int d_flag;
   if(d_flag>10)
     verify_shared_strings_tables();
 #endif
