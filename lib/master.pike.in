@@ -65,7 +65,8 @@ int compat_minor=-1;
 #define capitalize(X) (upper_case((X)[..0])+(X)[1..])
 
 //! @appears error
-//! Identical to @tt{throw( ({ sprintf(f, @args), backtrace() }) )@}.
+//! Throws an error. A more readable version of the code
+//! @tt{throw( ({ sprintf(f, @args), backtrace()[..sizeof(backtrace())-2] }) )@}.
 void error(string f, mixed ... args) {
   array(array) b = backtrace();
   if (sizeof(args)) f = sprintf(f, @args);
