@@ -107,12 +107,7 @@ int count_bits(unsigned INT32 x)
 /* Return true for integers with more than one bit set */
 int is_more_than_one_bit(unsigned INT32 x)
 {
-  return ((x & 0xaaaaaaaaUL) && (x & 0x55555555UL)) ||
-         ((x & 0xccccccccUL) && (x & 0x33333333UL)) ||
-         ((x & 0xf0f0f0f0UL) && (x & 0x0f0f0f0fUL)) ||
-         ((x & 0xff00ff00UL) && (x & 0x00ff00ffUL)) ||
-         ((x & 0xff00ff00UL) && (x & 0x00ff00ffUL)) ||
-         ((x & 0xffff0000UL) && (x & 0x0000ffffUL));
+  return !!(x & (x-1));
 }
 
 double my_strtod(char *nptr, char **endptr)
