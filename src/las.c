@@ -1313,7 +1313,7 @@ node *debug_mkcastnode(struct pike_string *type,node *n)
   copy_shared_string(res->type,type);
 
   if(match_types(object_type_string, type) ||
-     match_types(object_type_string, type))
+     match_types(program_type_string, type))
     res->node_info |= OPT_SIDE_EFFECT;
 
   res->tree_info |= n->tree_info;
