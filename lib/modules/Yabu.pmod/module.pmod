@@ -7,6 +7,7 @@
 constant cvs_id = "$Id$";
 
 #define ERR(msg) throw(({ "(Yabu) "+msg+"\n", backtrace() }))
+#define IO_ERR(msg) throw(({ sprintf("(Yabu) %s, %s (%d)\n",msg,strerror(errno()),errno()),backtrace() }))
 #define WARN(msg) werror(msg)
 #define DEB(msg) /* werror(msg) */
 #define CHECKSUM(s) (hash(s) & 0xffffffff)
@@ -454,7 +455,7 @@ class Chunk {
     if(!write)
       ERR("Cannot move in read mode");
     if(!mv(filename, new_filename))
-      ERR("Move failed");
+      IO_ERR("Move failed");
     filename = new_filename;
     UNLOCK();
   }
