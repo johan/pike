@@ -63,8 +63,8 @@ struct precompiled_mysql_result {
  * Defines
  */
 
-#define PIKE_MYSQL	((struct precompiled_mysql *)(fp->current_storage))
-#define PIKE_MYSQL_RES	((struct precompiled_mysql_result *)(fp->current_storage))
+#define PIKE_MYSQL	((struct precompiled_mysql *)(Pike_fp->current_storage))
+#define PIKE_MYSQL_RES	((struct precompiled_mysql_result *)(Pike_fp->current_storage))
 
 /*
  * Globals
