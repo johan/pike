@@ -37,21 +37,44 @@
  *
  * in the table above. ie:
  *
- *      X        X                    X      X                       	 X
- *     / \  ->  / \                  / \    / \                      	/ \
- *    -   -    -   -                -   *  *   -                       *   *
- *			            
- *      X             	X             X                        	  X      X
- *     / \  ->         / \           / \                       	 / \    / \
- *    -   X           -   X         -   *                      	*   X  *   *
- *	              
- *      X                      X             X             X           	 X
- *     / \  ->                / \           / \           / \          	/ \
- *    X   -                  X   -         *   -         X   *         *   *
- *	                     
- *      X                                           X      X      X      X
- *     / \  ->                                     / \    / \    / \    / \
- *    X   X                                       X   X  X   *  *   X  *   *
+ *      X        X                           X      X                    X
+ *     / \  ->  / \                         / \    / \                  / \
+ *    -   -    -   -                       -   *  *   -                *   *
+ *
+ *      X             	X                    X             X             X
+ *     / \  ->         / \                  / \           / \           / \
+ *    -   X           -   X                -   *         *   X         *   *
+ *
+ *      X                      X          	    X             X      X
+ *     / \  ->                / \         	   / \           / \    / \
+ *    X   -                  X   -        	  *   -         X   *  *   *
+ *
+ *      X                             X                    X      X      X
+ *     / \  ->                       / \                  / \    / \    / \
+ *    X   X                         X   X                *   X  X   *  *   *
+ *
+ * Note: It might be better to let * not match -.
+ *       The result would then be:
+ *
+ *      X        X
+ *     / \  ->  / \
+ *    -   -    -   -
+ *
+ *      X             	X                    X
+ *     / \  ->         / \                  / \
+ *    -   X           -   X                -   *
+ *
+ *      X                      X          	    X
+ *     / \  ->                / \         	   / \
+ *    X   -                  X   -        	  *   -
+ *
+ *      X                             X                    X      X      X
+ *     / \  ->                       / \                  / \    / \    / \
+ *    X   X                         X   X                *   X  X   *  *   *
+ *
+ * Which would be much easier to generate code for, since every match node
+ * occurrs exactly once, and no goto's would be needed.
+ *
  *
  * Pseudocode: (Real code needs fixing...)
  *
