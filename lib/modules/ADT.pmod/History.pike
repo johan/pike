@@ -39,6 +39,7 @@ void create(int _maxsize) {
 
 //! Push a new value into the history.
 void push(mixed value) {
+  if(!maxsize) return;
   stack[top++] = value;
   if(top==maxsize)
     top = 0;
@@ -109,6 +110,7 @@ void set_maxsize(int _maxsize) {
     size = _maxsize;
   }
   top = 0;
+  maxsize = _maxsize;
 }
 
 //! Empties the history. All entries in the history are
