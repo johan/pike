@@ -1584,7 +1584,7 @@ int write_file(string filename, string str, int|void access)
 //! @seealso
 //! @[write_file()], @[read_bytes()]
 //!
-int append_file(string filename, string what, int|void access)
+int append_file(string filename, string str, int|void access)
 {
   int ret;
   File f = File();
@@ -1596,7 +1596,7 @@ int append_file(string filename, string what, int|void access)
   if(!f->open(filename, "awc", access))
     error("Couldn't open file "+filename+": " + strerror(f->errno()) + "\n");
 
-  ret=f->write(what);
+  ret=f->write(str);
   f->close();
   return ret;
 }
