@@ -519,6 +519,7 @@ void pike_module_init(void)
   pike_des_init();
   pike_cast_init();
   pike_rc4_init();
+  pike_rsa_init();
 
   /* END NATIONAL SECURITY */
 }  
@@ -538,6 +539,7 @@ void pike_module_exit(void)
   pike_des_exit();
   pike_cast_exit();
   pike_rc4_exit();
+  pike_rsa_exit();
 
   /* END NATIONAL SECURITY */
 }
