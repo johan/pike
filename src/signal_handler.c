@@ -1211,7 +1211,7 @@ void f_create_process(INT32 args)
 #endif
     if(pid==-1) {
       error("Failed to start process.\n"
-	    "errno:%d\n", errno());
+	    "errno:%d\n", errno);
     }
     if(pid)
     {
@@ -1446,7 +1446,7 @@ void f_fork(INT32 args)
 
   if(pid==-1) {
     error("Fork failed\n"
-	  "errno: %d\n", errno());
+	  "errno: %d\n", errno);
   }
 
   if(pid)
