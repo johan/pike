@@ -142,7 +142,7 @@ class Linker
 		    0, /* virtual address */
 		    virtual_data_size(s->data),
 		    stringp(s->data) ? (base + strlen(sectiondata)) : 0,
-		    s->relocs && (base + strlen(sectiondata) + file_data_sizes->data),
+		    s->relocs && (base + strlen(sectiondata) + file_data_size(s->data)),
 		    0, /* no linenums yet */
 		    s->relocs && sizeof(s->relocs),
 		    0,
