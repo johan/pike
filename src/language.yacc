@@ -648,7 +648,7 @@ opt_object_type:  /* Empty */ { push_type_int(0); }
     {
       push_type_int(sp[-1].u.program->id);
     }else{
-      yyerror("Not a valid program specifyer");
+      yyerror("Not a valid program specifier");
       push_type_int(0);
     }
     pop_n_elems(2);
