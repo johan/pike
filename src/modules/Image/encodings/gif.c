@@ -2052,7 +2052,7 @@ void image_gif_decode(INT32 args)
 	    push_svalue(b->item+4);
 	    push_svalue(b->item+1);
 	    push_svalue(b->item+2);
-	    apply(o,"paste_alpha",4);
+	    apply(o,"paste_mask",4);
 	    pop_n_elems(1);
 	 }
 	 else
