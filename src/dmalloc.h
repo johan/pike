@@ -67,7 +67,7 @@ void dmalloc_accept_leak(void *);
 #define debug_malloc_touch(X)
 #define debug_malloc_pass(X) (X)
 #define dmalloc_touch(TYPE,X) (X)
-#define dmalloc_register(X,Y,Z)
+#define dmalloc_register(X,Y,Z,W)
 #define dmalloc_unregister(X,Y)
 #define debug_free(X,Y,Z,Q) free((X))
 #endif
