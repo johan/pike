@@ -3,6 +3,9 @@ AC_PROG_CC
 
 AC_DEFINE(POSIX_SOURCE)
 
+# Assume there's only one
+AC_SUBST(CONFIG_HEADERS)
+
 AC_SUBST_FILE(dependencies)
 dependencies=$srcdir/dependencies
 AC_SUBST_FILE(dynamic_module_makefile)
