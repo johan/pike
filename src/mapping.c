@@ -928,9 +928,6 @@ void check_mapping(struct mapping *m)
   if(m->size > (m->hashsize + 3) * AVG_LINK_LENGTH)
     fatal("Pretty mean hashtable there buster!.\n");
   
-  if(m->size < (m->hashsize - 3) * MIN_LINK_LENGTH)
-    fatal("Hashsize is too small for mapping.\n");
-  
   if(m->size > 0 && (!m->ind_types || !m->val_types))
     fatal("Mapping type fields are... wrong.\n");
 
