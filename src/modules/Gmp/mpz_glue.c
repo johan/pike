@@ -190,12 +190,14 @@ static struct pike_string *low_get_digits(MP_INT *mpz, int base)
 
     /* lets optimize this /Mirar & Per */
 
-    len = mpz->_mp_size*sizeof(mp_limb_t);
+    /* len = mpz->_mp_size*sizeof(mp_limb_t); */
+    /* This function should not return any leading zeros. /Nisse */
+    len = (mpz_sizeinbase(mpz, 2) + 7) / 8;
     s = begin_shared_string(len);
 
     src=mpz->_mp_d;
     dst=s->str+s->len;
-    while (len)
+    while (len > 0)
     {
        mp_limb_t x=*(src++);
        for (i=0; i<sizeof(mp_limb_t); i++)
