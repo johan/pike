@@ -3428,7 +3428,7 @@ PMOD_EXPORT void f_sleep(INT32 args)
  *!
  *!   Only signal handlers can interrupt the sleep. Other callbacks are
  *!   not called during sleep. Beware that this function uses busy-waiting
- *!   to achive the highest possible accuracy.
+ *!   to achieve the highest possible accuracy.
  *!   
  *! @seealso
  *!   @[signal()], @[sleep()]
