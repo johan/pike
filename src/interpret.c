@@ -1021,9 +1021,17 @@ static void eval_instruction(unsigned char *pc)
       goto do_index;
 
       CASE(F_ARROW);
+      copy_shared_string(sp->u.string,fp->context.prog->strings[GET_ARG()]);
+      sp->type=T_STRING;
+      sp->subtype=1;
+      sp++;
+      print_return_value();
+      goto do_index;
+
       CASE(F_STRING_INDEX);
       copy_shared_string(sp->u.string,fp->context.prog->strings[GET_ARG()]);
       sp->type=T_STRING;
+      sp->subtype=0;
       sp++;
       print_return_value();
       /* Fall through */
