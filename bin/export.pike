@@ -59,13 +59,18 @@ void fix_configure(string dir)
 
 string getversion()
 {
-  string s=Stdio.read_file("pike/src/version.c");
-  if(!sscanf(s,"%*spush_text(\"%s\")",s))
-  {
+  string s=Stdio.read_file("pike/src/version.h");
+
+  int maj, min, build;
+
+  if ((!sscanf(s, "%*sPIKE_MAJOR_VERSION %d", maj)) ||
+      (!sscanf(s, "%*sPIKE_MINOR_VERSION %d", min)) ||
+      (!sscanf(s, "%*sPIKE_BUILD_VERSION %d", build))) {
+
     werror("Failed to get Pike version.\n");
     exit(1);
   }
-  return s;
+  return sprintf("Pike v%d.%d release %d", maj, min, build);
 }
 
 void bump_version()
