@@ -2919,14 +2919,17 @@ void gc_mark_program_as_referenced(struct program *p)
 void gc_check_all_programs(void)
 {
   struct program *p;
-  for(p=first_program;p;p=p->next)
+  struct program *next;
+  for(p=first_program;p;p=next)
   {
     int e;
 
-    debug_malloc_touch(p);
+    /* We don't want p to be freed under our feet... */
+    add_ref(p);
 
-    for(e=0;e<p->num_constants;e++)
+    for(e=0;e<p->num_constants;e++) {
       debug_gc_check_svalues(& p->constants[e].sval, 1, T_PROGRAM, p);
+    }
 
     for(e=0;e<p->num_inherits;e++)
     {
@@ -2963,6 +2966,9 @@ void gc_check_all_programs(void)
       }
     }
 #endif
+
+    next = p->next;
+    free_program(p);
   }
 }
 
