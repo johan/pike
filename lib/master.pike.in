@@ -1634,6 +1634,10 @@ joinnode handle_import(string path, string|void current_file,
 			object|void current_handler)
 {
   array(string) tmp;
+#ifdef __amigaos__
+  if(path == ".")
+    path = "";
+#endif
   if(current_file)
   {
     tmp=EXPLODE_PATH(current_file);
