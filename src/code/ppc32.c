@@ -205,7 +205,7 @@ void ppc32_push_constant(INT32 arg)
       offs -= 65536;
   }
 
-  ppc32_push_svalue(PPC_REG_ARG1, offs, 1);
+  ppc32_push_svalue(PPC_REG_ARG1, offs, (sval->type <= MAX_REF_TYPE));
 }
 
 void ppc32_push_local(INT32 arg)
