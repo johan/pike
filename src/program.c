@@ -2115,6 +2115,34 @@ void dump_program_tables (struct program *p, int indent)
 	    d, c->sval.type,
 	    c->name?"\"":"",c->name?c->name->str:"NULL",c->name?"\"":"");
   }
+
+  fprintf(stderr, "\n"
+	  "%*sLinenumber table:\n",
+	  indent, "");
+  {
+    INT32 off = 0, line = 0;
+    char *cnt = p->line_numbers;
+
+    while (cnt < p->line_numbers + p->num_linenumbers) {
+      if (*cnt == 127) {
+	int len;
+	char *file;
+	cnt++;
+	len = get_small_number(&cnt);
+	shift = *cnt;
+	file = ++cnt;
+	cnt += len << shift;
+	if (!shift) {
+	  fprintf(stderr, "%*s  Filename: \"%s\"\n", indent, "", file);
+	} else {
+	  fprintf(stderr, "%*s  Filename: len:%d, shift:%d\n", indent, "", len, shift);
+	}
+      }
+      off += get_small_number(&cnt);
+      line += get_small_number(&cnt);
+      fprintf(stderr, "%*s    %8d:%8d\n", indent, "", off, line);
+    }
+  }
   fprintf(stderr, "\n");
 }
 
