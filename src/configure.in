@@ -651,7 +651,6 @@ AC_CHECK_FUNCS(
  fchmod \
  gethrtime \
  gethrvtime \
- frexp \
  getenv \
  getrlimit \
  getrusage \
