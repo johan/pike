@@ -1435,6 +1435,10 @@ OPCODE0(F_CAST_TO_INT, "cast_to_int")
   o_cast_to_int();
 BREAK;
 
+OPCODE0(F_CAST_TO_STRING, "cast_to_string")
+  o_cast_to_string();
+BREAK;
+
 OPCODE0(F_SOFT_CAST, "soft cast")
   /* Stack: type_string, value */
 #ifdef PIKE_DEBUG
