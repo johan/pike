@@ -503,6 +503,7 @@ PMOD_EXPORT struct pike_string *get_line(PIKE_OPCODE_T *pc,
 					 struct program *prog,
 					 INT32 *linep);
 void my_yyerror(char *fmt,...)  ATTRIBUTE((format(printf,1,2)));
+void yy_describe_exception(struct svalue *thrown);
 struct program *compile(struct pike_string *prog,
 			struct object *handler,
 			int major,
