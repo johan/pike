@@ -403,6 +403,7 @@ int main(int argc, array(string) argv)
       werror("Doing tests in %s (%d tests)\n", testsuite, sizeof(tests));
       int qmade, qskipped, qmadep, qskipp;
 
+      int testno, testline;
       for(e=start;e<sizeof(tests);e++)
       {
 	signal_watchdog();
@@ -437,8 +438,9 @@ int main(int argc, array(string) argv)
 	    };
 
 	    if(err) {
-	      werror( "\nConditional %d failed:\n"
-		      "%s\n", e+1, describe_backtrace(err) );
+	      werror( "\nConditional %d %s failed:\n"
+		      "%s\n", e+1, testline?"(line "+testline+")":"",
+		      describe_backtrace(err) );
 	      errors++;
 	      tmp = -1;
 	    }
@@ -460,7 +462,6 @@ int main(int argc, array(string) argv)
 	string|int type;
 	sscanf(test, "%s\n%s", type, test);
 
-	int testno, testline;
 	string testfile;
 	sscanf(type, "%s: test %d, expected result: %s", testfile, testno, type);
 
