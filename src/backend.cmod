@@ -2104,7 +2104,7 @@ PIKECLASS Backend
  *!   @[Pike.DefaultBackend].
  *!
  *! @seealso
-/*!   @[Pike.Backend()->call_out()], @[Pike.Backend()->_do_call_outs()],
+ *!   @[Pike.Backend()->call_out()], @[Pike.Backend()->_do_call_outs()],
  *!   @[Pike.Backend()->find_call_out()], @[Pike.Backend()->remove_call_out()],
  *!   @[Pike.Backend()->call_out_info()]
  */
