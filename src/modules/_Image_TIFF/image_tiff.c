@@ -167,7 +167,7 @@ static toff_t seek_buffer(thandle_t bh, toff_t seek, int seek_type )
 }
 
 /* Complies with the TIFFCloseProc API. */
-static int close_buffer(thandle_t buffer_handle)
+static int close_buffer(thandle_t bh)
 {
   struct buffer *buffer_handle = (struct buffer *)bh;
 
