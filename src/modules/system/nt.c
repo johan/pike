@@ -1949,6 +1949,10 @@ static void f_NetWkstaUserEnum(INT32 args)
  *!       Short filenames are expanded to their corresponding long
  *!       variants.
  *!     @item
+ *!       Forward slashes ('/') are converted to backward slashes ('\').
+ *!     @item
+ *!       Current- and parent-directory paths are removed ("." and "..").
+ *!     @item
  *!       Case-information is restored.
  *!   @enddl
  *!
