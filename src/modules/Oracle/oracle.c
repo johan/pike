@@ -2139,7 +2139,9 @@ static void dbdate_cast(INT32 args)
   }
   if(!strcmp(s,"string"))
   {
-    dbdate_sprintf(args);
+    pop_n_elems(args);
+    push_int('s');
+    dbdate_sprintf(1);
     return;
   }
   Pike_error("Cannot cast Oracle.Date to %s\n",s);
