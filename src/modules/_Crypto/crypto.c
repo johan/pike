@@ -512,6 +512,7 @@ void pike_module_init(void)
   pike_cbc_init();
   pike_pipe_init();
   pike_invert_init();
+  pike_nt_init();
 
   /* BEGIN NATIONAL SECURITY */  
 
