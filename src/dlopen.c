@@ -865,7 +865,7 @@ static parse_link_info(struct DLHandle *ret,
     FLUSH();
 #endif
 
-    if(info[x] == '-')
+    if((info[x] == '-') || (info[x] == '/'))
     {
       x++;
       if(info[x]=='?') x++;
