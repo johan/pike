@@ -1088,6 +1088,16 @@ number_or_maxint: /* Empty */
     $$ = mkintnode(MAX_INT32);
   }
   | F_NUMBER
+  | '-' F_NUMBER
+  {
+#ifdef PIKE_DEBUG
+    if (($2->token != F_CONSTANT) || ($2->u.sval.type != T_INT)) {
+      fatal("Unexpected number in negative int-range.\n");
+    }
+#endif /* PIKE_DEBUG */
+    $$ = mkintnode(-($2->u.sval.u.integer));
+    free_node($2);
+  }
   ;
 
 number_or_minint: /* Empty */
@@ -1095,6 +1105,16 @@ number_or_minint: /* Empty */
     $$ = mkintnode(MIN_INT32);
   }
   | F_NUMBER
+  | '-' F_NUMBER
+  {
+#ifdef PIKE_DEBUG
+    if (($2->token != F_CONSTANT) || ($2->u.sval.type != T_INT)) {
+      fatal("Unexpected number in negative int-range.\n");
+    }
+#endif /* PIKE_DEBUG */
+    $$ = mkintnode(-($2->u.sval.u.integer));
+    free_node($2);
+  }
   ;
 
 opt_int_range: /* Empty */
