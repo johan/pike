@@ -2913,9 +2913,8 @@ size_t do_gc(void *ignored, int explicit_call)
 #endif
     Pike_in_gc = GC_PASS_ZAP_WEAK;
     /* Zap weak references from external to internal things. That
-     * doesn't occur very often; only when something have both
-     * external weak refs and nonweak cyclic refs from internal
-     * things. */
+     * occurs when something has both external weak refs and nonweak
+     * cyclic refs from internal things. */
     gc_zap_ext_weak_refs_in_mappings();
     gc_zap_ext_weak_refs_in_arrays();
     gc_zap_ext_weak_refs_in_multisets();
