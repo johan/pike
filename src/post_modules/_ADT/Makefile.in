@@ -1,7 +1,7 @@
 # $Id$
 @make_variables@
 VPATH=@srcdir@:@srcdir@/../..:../..
-OBJS=adt.o array_adapter.o
+OBJS=adt.o sequence.o 
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 
 CONFIG_HEADERS=@CONFIG_HEADERS@
@@ -10,6 +10,6 @@ CONFIG_HEADERS=@CONFIG_HEADERS@
 
 # Compatibility with stupid makes..
 adt.o: $(SRCDIR)/adt.c
-array_adapter.o: $(SRCDIR)/array_adapter.c
+sequence.o: $(SRCDIR)/sequence.c
 
 @dependencies@
