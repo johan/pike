@@ -84,7 +84,12 @@ array find_testsuites(string dir)
 }
 
 // 20 minutes should be enough..
+#if !constant(_reset_dmalloc)
 #define WATCHDOG_TIMEOUT 60*20
+#else
+// ... unless we're running dmalloc
+#define WATCHDOG_TIMEOUT 60*80
+#endif
 
 #if constant(thread_create)
 #define WATCHDOG
