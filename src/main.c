@@ -267,6 +267,7 @@ int dbm_main(int argc, char **argv)
   tzset();
 #endif /* HAVE_TZSET */
 
+#ifndef DONT_USE_SYSTEM_LOCALE
 #ifdef HAVE_SETLOCALE
 #ifdef LC_NUMERIC
   setlocale(LC_NUMERIC, "C");
@@ -284,6 +285,7 @@ int dbm_main(int argc, char **argv)
   setlocale(LC_MESSAGES, "");
 #endif
 #endif  
+#endif /* !DONT_USE_SYSTEM_LOCALE */
 
   TRACE((stderr, "Init master...\n"));
   
