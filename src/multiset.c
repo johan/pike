@@ -4231,8 +4231,10 @@ static void check_low_msnode (struct multiset_data *msd,
     Pike_fatal ("Node outside storage for multiset.\n");
   if ((char *) node - (char *) msd->nodes !=
       (msd->flags & MULTISET_INDVAL ?
-       (&node->iv - &msd->nodes->iv) * sizeof (struct msnode_indval) :
-       (&node->i - &msd->nodes->i) * sizeof (struct msnode_ind)))
+       (&node->iv - &msd->nodes->iv) *
+       (ptrdiff_t) sizeof (struct msnode_indval) :
+       (&node->i - &msd->nodes->i) *
+       (ptrdiff_t) sizeof (struct msnode_ind)))
     Pike_fatal ("Unaligned node in storage for multiset.\n");
 
   switch (node->i.ind.type) {
