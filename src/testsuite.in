@@ -10638,7 +10638,7 @@ test_true(!sizeof(call_out_info()) || function_name(call_out_info()[-1][2])!="ca
 test_do(remove_call_out(call_out_info()[-1][2]))
 test_do(add_constant("call_out_cb"))
 test_do(_do_call_outs())
-test_any([
+test_any([[
   object pid = Process.create_process(RUNPIKE_ARRAY +
 				      ({ "SRCDIR/test_co.pike" }));
   int i;
@@ -10652,7 +10652,7 @@ test_any([
     return "Killed";
   }
   return pid->wait();
-], 0)
+]], 0)
 test_do_([[ catch { _do_call_outs(); }]])
 
 // - varargs
