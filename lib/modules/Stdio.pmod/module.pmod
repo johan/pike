@@ -681,6 +681,12 @@ int file_size(string s)
   return stat[1]; 
 }
 
+string append_path(string p, string ... v)
+{
+  return combine_path(p, @map(v, lambda(string s)
+				 { return combine_path("/", s)[1..]; }));
+}
+
 void perror(string s)
 {
 #if efun(strerror)
