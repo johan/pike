@@ -191,7 +191,7 @@ static void parse_bmhd(struct BMHD *bmhd, unsigned char *s, ptrdiff_t len)
 #endif
 }
 
-static ptrdiff_t unpackByteRun1(unsigned char *src, INT32 srclen,
+static ptrdiff_t unpackByteRun1(unsigned char *src, ptrdiff_t srclen,
 				unsigned char *dest, int destlen, int depth)
 {
   unsigned char d, *src0 = src;
@@ -520,7 +520,7 @@ static void image_ilbm__decode(INT32 args)
       }
       ncol <<= 1;
     }
-    f_aggregate(ncol);
+    f_aggregate(DO_NOT_WARN(ncol));
     push_object(clone_object(image_colortable_program,1));
     ctable=(struct neo_colortable*)get_storage(sp[-1].u.object,
 					       image_colortable_program);

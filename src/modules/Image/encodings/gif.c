@@ -673,7 +673,7 @@ void image_gif_render_block(INT32 args)
    struct neo_colortable *nct=NULL;
    ptrdiff_t numcolors;
    int localpalette,xpos,ypos;
-   int alphaidx=-1;
+   ptrdiff_t alphaidx=-1;
    rgb_group alphacolor;
    int alphaentry=0;
    int transparency;
@@ -1116,7 +1116,7 @@ void _image_gif_encode(INT32 args,int fs)
       image_gif_header_block(3);
    else if (trans==1)
    {
-      push_int(tridx); 
+      push_int64(tridx); 
       push_int(0);
       push_int(0);
       push_int(0);
@@ -1127,7 +1127,7 @@ void _image_gif_encode(INT32 args,int fs)
    }
    else
    {
-      push_int(tridx); 
+      push_int64(tridx); 
       image_gif_header_block(4);
    }
 
@@ -1152,7 +1152,7 @@ void _image_gif_encode(INT32 args,int fs)
       else
       {
 	 push_int(0);
-	 push_int(tridx);
+	 push_int64(tridx);
 	 image_gif_render_block(7);
       }
 

@@ -291,7 +291,7 @@ static void image_x_encode_truecolor(INT32 args)
 
       while (y--)
       {
-	 INT32 bp;
+	 ptrdiff_t bp;
 
 	 x=img->xsize;
 	 while (x--) /* write bits from this line */
