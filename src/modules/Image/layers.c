@@ -2420,13 +2420,10 @@ static void image_layer_crop(INT32 args)
    if (l->xsize+l->xoffs<=x+xz) xz=l->xsize-(x-l->xoffs); else zot++;
    if (l->ysize+l->yoffs<=y+yz) yz=l->ysize-(y-l->yoffs); else zot++;
 
-   fprintf(stderr,"old %d,%d + %d,%d\n",l->xoffs,l->yoffs,l->xsize,l->ysize);
-   fprintf(stderr,"new %d,%d + %d,%d zot=%d\n",x,y,xz,yz,zot);
    xi=x-l->xoffs;
    yi=y-l->yoffs;
    l->xoffs=x;
    l->yoffs=y;
-   fprintf(stderr,"crop %d,%d + %d,%d zot=%d\n",xi,yi,xz,yz,zot);
 
    if (zot && l->image)
    {
