@@ -30,7 +30,7 @@ RCSID("$Id$");
 
 /* Experimental dynamic hash length */
 #ifndef HASH_PREFIX
-static unsigned int HASH_PREFIX=32;
+static unsigned int HASH_PREFIX=64;
 static unsigned int need_more_hash_prefix=0;
 #endif
 
