@@ -166,9 +166,9 @@ void lzw_write_last(struct lzw *lzw)
 
 void lzw_add(struct lzw *lzw,int c)
 {
-  HIDE_GLOBAL_VARIABLES();
    lzwcode_t lno,lno2;
    struct lzwc *l;
+   HIDE_GLOBAL_VARIABLES();
 
    if (lzw->current==LZWCNULL) /* no current, load */
    {

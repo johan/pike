@@ -163,9 +163,9 @@ void image_floyd_steinberg(rgb_group *rgb,int xsize,
 			   struct colortable *ct,
 			   int closest)
 {
-  HIDE_GLOBAL_VARIABLES();
    rgbl_group err;
    int x;
+  HIDE_GLOBAL_VARIABLES();
 
    if (way)
    {

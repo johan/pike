@@ -300,14 +300,15 @@ static INLINE rgb_group _pixel_apply_matrix(struct image *img,
 					    rgb_group default_rgb,
 					    double div)
 {
-  /* NOTE:
-   *	This code MUST be MT-SAFE!
-   */
-  HIDE_GLOBAL_VARIABLES();
    rgb_group res;
    int i,j,bx,by,xp,yp;
    int sumr,sumg,sumb,r,g,b;
    float qdiv=1.0/div;
+
+  /* NOTE:
+   *	This code MUST be MT-SAFE!
+   */
+  HIDE_GLOBAL_VARIABLES();
 
    sumr=sumg=sumb=0;
    r=g=b=0;
