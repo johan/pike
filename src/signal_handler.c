@@ -449,9 +449,27 @@ void check_signals(struct callback *foo, void *bar, void *gazonk)
       }
 #endif
 
-      push_int(sigbuf[lastsig]);
-      apply_svalue(signal_callbacks + sigbuf[lastsig], 1);
-      pop_stack();
+      if(IS_ZERO(signal_callbacks + sigbuf[lastsig]))
+      {
+	switch(sigbuf[lastsig])
+	{
+#ifdef SIGINT
+	  case SIGINT:
+#endif
+#ifdef SIGHUP
+	  case SIGHUP:
+#endif
+#ifdef SIGQUIT
+	  case SIGQUIT:
+#endif
+	    push_int(1);
+	    f_exit(1);
+	}
+      }else{
+	push_int(sigbuf[lastsig]);
+	apply_svalue(signal_callbacks + sigbuf[lastsig], 1);
+	pop_stack();
+      }
     }
 
     UNSET_ONERROR(ebuf);
@@ -537,6 +555,18 @@ static void f_signal(int args)
       func=(sigfunctype) SIG_IGN;
       break;
 #endif
+
+#ifdef SIGHUP
+      case SIGHUP:
+#endif
+#ifdef SIGINT
+      case SIGINT:
+#endif
+#ifdef SIGQUIT
+      case SIGQUIT:
+#endif
+	func=receive_signal;
+	break;
 
     default:
       func=(sigfunctype) SIG_DFL;
@@ -2691,6 +2721,18 @@ void init_signals(void)
 
 #ifdef IGNORE_SIGFPE
   my_signal(SIGFPE, SIG_IGN);
+#endif
+
+#ifdef SIGINT
+  my_signal(SIGINT, receive_signal);
+#endif
+
+#ifdef SIGHUP
+  my_signal(SIGHUP, receive_signal);
+#endif
+
+#ifdef SIGQUIT
+  my_signal(SIGQUIT, receive_signal);
 #endif
 
   for(e=0;e<MAX_SIGNALS;e++)
