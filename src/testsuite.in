@@ -1118,6 +1118,13 @@ test_program([[// [bug 3060]
   }
 ]])
 
+dnl Note: This line number error tend to go away with more debug.
+test_program([[
+  int x = 0;
+  int y = [int] backtrace()[-1][1];
+  int a() {return y == 3;}
+]])
+
 dnl ----------------------------------------------------------------
 dnl scopes and stuff
 dnl ----------------------------------------------------------------
