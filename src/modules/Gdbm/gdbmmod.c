@@ -15,9 +15,6 @@ RCSID("$Id$");
 #include "interpret.h"
 #include "svalue.h"
 #include "stralloc.h"
-#include "array.h"
-#include "object.h"
-#include "pike_macros.h"
 #include "module.h"
 
 #if defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM)

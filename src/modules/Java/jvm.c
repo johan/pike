@@ -27,7 +27,6 @@ RCSID("$Id$");
 #include "interpret.h"
 #include "stralloc.h"
 #include "object.h"
-#include "mapping.h"
 #include "builtin_functions.h"
 #include "pike_error.h"
 #include "module_support.h"

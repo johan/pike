@@ -8,8 +8,6 @@
 #include "global.h"
 #include "config.h"
 	  
-#include "array.h"
-#include "backend.h"
 #include "machine.h"
 #include "mapping.h"
 #include "module_support.h"
@@ -17,7 +15,6 @@
 #include "object.h"
 #include "operators.h"
 #include "pike_memory.h"
-#include "program.h"
 #include "constants.h"
 #include "stralloc.h"
 #include "svalue.h"

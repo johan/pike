@@ -9,7 +9,6 @@
 #include <global.h>
 #include <threads.h>
 #include <stralloc.h>
-#include <fdlib.h>
 
 #ifdef _REENTRANT
 #include <stdlib.h>

@@ -10,20 +10,13 @@
 
 #include <math.h>
 
-#include "pike_macros.h"
 #include "pike_error.h"
-#include "object.h"
-#include "constants.h"
 #include "interpret.h"
 #include "svalue.h"
-#include "threads.h"
-#include "array.h"
 #include "operators.h"
 #include "builtin_functions.h"
-#include "mapping.h"
 #include "module_support.h"
 
-#include "pike_macros.h"
 #include "math_module.h"
 
 #include "bignum.h"

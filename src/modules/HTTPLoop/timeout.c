@@ -9,9 +9,7 @@
 #ifndef __NT__
 #include <global.h>
 #include <threads.h>
-#include <stralloc.h>
 #include <signal.h>
-#include <fdlib.h>
 
 #ifdef _REENTRANT
 #include <stdlib.h>

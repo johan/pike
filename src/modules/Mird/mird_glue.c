@@ -13,7 +13,6 @@
 #include "interpret.h"
 #include "stralloc.h"
 #include "mapping.h"
-#include "array.h"
 #include "builtin_functions.h"
 #include "operators.h"
 #include "object.h"

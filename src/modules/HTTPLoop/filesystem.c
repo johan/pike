@@ -7,8 +7,6 @@
 
 #include "config.h"
 #include <global.h>
-#include <threads.h>
-#include <stralloc.h>
 #include <fdlib.h>
 
 #ifdef _REENTRANT

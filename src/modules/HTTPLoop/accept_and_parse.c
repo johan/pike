@@ -16,16 +16,13 @@
 
 #include "global.h"
 	  
-#include "array.h"
 #include "bignum.h"
 #include "backend.h"
 #include "machine.h"
 #include "mapping.h"
 #include "module_support.h"
-#include "multiset.h"
 #include "object.h"
 #include "operators.h"
-#include "pike_memory.h"
 #include "pike_macros.h"
 #include "fdlib.h"
 #include "program.h"
