@@ -197,6 +197,13 @@ array(string) split(string data, void|mapping state)
 	    pos++;
 	    while(data[pos]>='0' && data[pos]<='9') pos++;
 	  }
+	  break;
+	}
+	if( (data[pos]=='e' || data[pos]=='E') &&
+	    data[pos+1]>='0' && data[pos+1]<='9' )
+	{
+	  pos++;
+	  while(data[pos]>='0' && data[pos]<='9') pos++;
 	}
 	break;
 

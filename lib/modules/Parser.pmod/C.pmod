@@ -97,11 +97,17 @@ array(string) split(string data)
 	    pos++;
 	    while(data[pos]>='0' && data[pos]<='9') pos++;
 	  }
+	  break;
+	}
+	if(data[pos]=='e' || data[pos]=='E')
+	{
+	  pos++;
+	  while(data[pos]>='0' && data[pos]<='9') pos++;
 	}
 	break;
 
       default:
-	throw( ({sprintf("Unknown token %O\n",data[pos..pos+20]) }) );
+	error("Unknown token %O\n",data[pos..pos+20]);
 
       case  '`':
 	while(data[pos]=='`') data[pos]++;
