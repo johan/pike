@@ -15,3 +15,5 @@ test_do(Calendar.dwim_time("Tue Nov 19 07:04:03 CET 2002"))
 test_do(Calendar.dwim_time("Tue Nov 19 07:04:03  2002"))
 test_do(Calendar.dwim_time("Tue Nov 19 07:04:03 NFT 2002"))
 test_do(Calendar.dwim_time("Tue Nov 19 07:04:03 DFT 2002"))
+
+test_eq(arrayp(Calendar.TZnames.zonenames()), 1)
