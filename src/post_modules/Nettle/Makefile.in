@@ -9,6 +9,6 @@ CONFIG_HEADERS=@CONFIG_HEADERS@
 
 @dynamic_module_makefile@
 
-# What does this mean?
-depend: 
-	@:
+nettle.o: $(SRCDIR)/nettle.c
+
+@dependencies@
