@@ -7,6 +7,6 @@ MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 CONFIG_HEADERS=@CONFIG_HEADERS@
 
 @dynamic_module_makefile@
-transform.o: $(SRCDIR)/transform.c
+transforms.o: $(SRCDIR)/transforms.c
 
 @dependencies@
