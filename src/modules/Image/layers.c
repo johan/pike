@@ -2907,6 +2907,7 @@ void image_lay(INT32 args)
    struct layer *dest;
    struct array *a;
    INT_TYPE xoffset=0,yoffset=0,xsize=0,ysize=0;
+   ONERROR err;
 
    if (!args)
       SIMPLE_TOO_FEW_ARGS_ERROR("Image.lay",1);
@@ -2936,6 +2937,8 @@ void image_lay(INT32 args)
 
    l=(struct layer**)xalloc(sizeof(struct layer)*layers);
 
+   ONERROR(err, free, l);
+
    for (i=j=0; i<layers; i++)
    {
       if (a->item[i].type==T_OBJECT)
@@ -2962,7 +2965,7 @@ void image_lay(INT32 args)
 
    if (!(layers = j))	/* dummy return empty layer */
    {
-      free(l);
+      CALL_AND_UNSET_ONERROR(err);
       pop_n_elems(args);
       push_object(clone_object(image_layer_program,0));
       return;
@@ -3014,7 +3017,7 @@ void image_lay(INT32 args)
    /* ok, do it! */
    img_lay(l,layers,dest);
 
-   free(l);
+   CALL_AND_UNSET_ONERROR(err);
 
    Pike_sp--;
    pop_n_elems(args);
