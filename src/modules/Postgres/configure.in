@@ -135,6 +135,7 @@ dnl last check, just to be sure
   if test x$ac_cv_func_PQsetdbLogin = xno; then
     AC_MSG_WARN(No Login-related functions, username and password will be silently ignored)
   fi
+  AC_CHECK_FUNCS(PQsetnonblocking)
 fi
 
 if test  x$ac_cv_lib_pq_PQclear != xyes; then
