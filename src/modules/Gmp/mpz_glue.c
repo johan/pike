@@ -1550,10 +1550,11 @@ static void mpzmod_lsh(INT32 args)
     mpz_mul_2exp(OBTOMPZ(res), THIS, sp[-1].u.integer);
   } else {
     mi = get_mpz(sp-1, 1, "Gmp.mpz->`<<", 1, 1);
-    if(!mpz_fits_ulong_p (mi))
+    if(mpz_sgn(mi)<0)
+      SIMPLE_ARG_ERROR ("Gmp.mpz->`<<", 1, "Got negative shift count.");
+    /* Cut off at 1MB ie 0x800000 bits. */
+    if(!mpz_fits_ulong_p(mi) || (mpz_get_ui(THIS) > 0x800000))
     {
-       if(mpz_sgn(mi)<0)
-	 SIMPLE_ARG_ERROR ("Gmp.mpz->`<<", 1, "Got negative shift count.");
        if(mpz_sgn(THIS))
 	 SIMPLE_ARG_ERROR ("Gmp.mpz->`<<", 1, "Shift count too large.");
        else {
@@ -1625,11 +1626,13 @@ static void mpzmod_rlsh(INT32 args)
 
   if (args != 1)
     SIMPLE_WRONG_NUM_ARGS_ERROR ("Gmp.mpz->``<<", 1);
+  if(mpz_sgn(THIS) < 0)
+    Pike_error ("Gmp.mpz->``<<(): Got negative shift count.\n");
+
   mi = get_mpz(sp-1, 1, "Gmp.mpz->``<<", 1, 1);
 
-  if(!mpz_fits_ulong_p (THIS)) {
-    if(mpz_sgn(THIS) < 0)
-      Pike_error ("Gmp.mpz->``<<(): Got negative shift count.\n");
+  /* Cut off at 1MB ie 0x800000 bits. */
+  if(!mpz_fits_ulong_p(THIS) || (mpz_get_ui(THIS) > 0x800000)) {
     if(mpz_sgn(mi))
       Pike_error ("Gmp.mpz->``<<(): Shift count too large.\n");
     else {
