@@ -16,6 +16,8 @@
 
 #ifdef PIKE_THREADS
 
+#include "pike_rusage.h"
+
 struct svalue;
 struct pike_frame;
 
@@ -40,6 +42,9 @@ struct thread_state {
   long time_base;
 #endif
 #endif /* PROFILING */
+#if CPU_TIME_IS_THREAD_LOCAL == YES
+  cpu_time_t auto_gc_time;
+#endif
 };
 
 

@@ -53,6 +53,7 @@ extern ptrdiff_t alloc_threshold;
 PMOD_EXPORT extern int Pike_in_gc;
 extern int gc_generation;
 extern int gc_trace, gc_debug;
+extern cpu_time_t auto_gc_time;
 
 extern struct callback *gc_evaluator_callback;
 #ifdef PIKE_DEBUG

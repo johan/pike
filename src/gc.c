@@ -196,6 +196,9 @@ static double objects_alloced = 0.0;
 static double objects_freed = 0.0;
 static double gc_time = 0.0, non_gc_time = 0.0;
 static cpu_time_t last_gc_end_time = 0;
+#if CPU_TIME_IS_THREAD_LOCAL == NO
+cpu_time_t auto_gc_time = 0;
+#endif
 
 /* These are only collected for the sake of gc_status. */
 static double last_garbage_ratio = 0.0;
@@ -2903,6 +2906,14 @@ size_t do_gc(void *ignored, int explicit_call)
       new_threshold = (double) GC_MAX_ALLOC_THRESHOLD;
 
     alloc_threshold = (ptrdiff_t)new_threshold;
+
+    if (!explicit_call) {
+#if CPU_TIME_IS_THREAD_LOCAL == YES
+      OBJ2THREAD(Pike_interpreter.thread_id)->auto_gc_time += last_gc_time;
+#elif CPU_TIME_IS_THREAD_LOCAL == NO
+      auto_gc_time += last_gc_time;
+#endif
+    }
 
     if(GC_VERBOSE_DO(1 ||) gc_trace)
     {

@@ -1500,6 +1500,9 @@ void init_thread_obj(struct object *o)
   THIS_THREAD->status=THREAD_NOT_STARTED;
   co_init(& THIS_THREAD->status_change);
   THIS_THREAD->thread_local=NULL;
+#if CPU_TIME_IS_THREAD_LOCAL == YES
+  THIS_THREAD->auto_gc_time = 0;
+#endif
 }
 
 
