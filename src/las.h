@@ -196,6 +196,13 @@ void resolv_program(node *n);
 #define mkliteralsvaluenode(s) dmalloc_touch(node *, debug_mkliteralsvaluenode(dmalloc_touch(struct svalue *, s)))
 #define mksvaluenode(s)     dmalloc_touch(node *, debug_mksvaluenode(dmalloc_touch(struct svalue *, s)))
 
+#define COPY_LINE_NUMBER_INFO(TO, FROM) do {				\
+    node *to_ = (TO), *from_ = (FROM);					\
+    to_->line_number = from_->line_number;				\
+    free_string (to_->current_file);					\
+    copy_shared_string (to_->current_file, from_->current_file);	\
+  } while (0)
+
 
 #if defined(PIKE_DEBUG) && (defined(SHARED_NODES) || defined(SHARED_NODES_MK2))
 #define check_node_hash(X)	debug_check_node_hash(X)
