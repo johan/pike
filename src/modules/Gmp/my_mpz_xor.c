@@ -15,6 +15,8 @@ RCSID("$Id$");
 
 #include "gmp_machine.h"
 
+#ifndef HAVE_MPZ_XOR
+
 #if defined(HAVE_GMP2_GMP_H) && defined(HAVE_LIBGMP2)
 #define USE_GMP2
 #else /* !HAVE_GMP2_GMP_H || !HAVE_LIBGMP2 */
@@ -58,4 +60,6 @@ void my_mpz_xor (mpz_ptr res, mpz_srcptr a, mpz_srcptr b)
 }
 
 
-#endif
+#endif	/* defined(USE_GMP) || defined(USE_GMP2) */
+
+#endif	/* HAVE_MPZ_XOR */

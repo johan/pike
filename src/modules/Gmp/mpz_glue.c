@@ -1207,7 +1207,7 @@ static void name(INT32 args)				\
 
 BINFUN(mpzmod_and,mpz_and)
 BINFUN(mpzmod_or,mpz_ior)
-BINFUN(mpzmod_xor,my_mpz_xor)
+BINFUN(mpzmod_xor,mpz_xor)
 
 static void mpzmod_compl(INT32 args)
 {

@@ -51,6 +51,10 @@ MP_INT *debug_get_mpz(struct svalue *s, int throw_error);
 void mpzmod_reduce(struct object *o);
 struct pike_string *low_get_mpz_digits(MP_INT *mpz, int base);
 
+#ifndef HAVE_MPZ_XOR
+#define mpz_xor my_mpz_xor
+#endif
+
 extern struct program *mpzmod_program;
 extern struct program *mpq_program;
 extern struct program *mpf_program;
