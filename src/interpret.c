@@ -2518,7 +2518,7 @@ void gdb_backtrace (
 	    struct program *p = arg->u.program;
 	    if (p->num_linenumbers) {
 	      file = low_get_program_line_plain (p, &line, 0);
-	      fprintf (stderr, "program(%s:%d)", file->str, line);
+	      fprintf (stderr, "program(%s:%d)", file, line);
 	    }
 	    else
 	      fputs ("program", stderr);
