@@ -455,7 +455,7 @@ PIKECLASS Shuffle
       }
       pop_stack();
     }
-    SHUFFLE_DEBUG2("__send_more_callback(): sending(%d): sent %d\n", t,
+    SHUFFLE_DEBUG3("__send_more_callback(): sending(%d): sent %d\n", t,
 		  MINIMUM(t->leftovers.len,amount),sent );
 
     if( sent < 0 )
