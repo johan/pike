@@ -315,6 +315,17 @@ PMOD_EXPORT extern const char msg_pop_neg[];
     debug_malloc_touch(_);						\
     _sp_->u.object=_;							\
     _sp_->type=PIKE_T_OBJECT;						\
+    _sp_->subtype = 0;							\
+  }while(0)
+
+#define push_object_inherit(O, INH_NUM) do {				\
+    struct object *_ = (O);						\
+    struct svalue *_sp_ = Pike_sp++;					\
+    int _inh_ = (INH_NUM);						\
+    debug_malloc_touch(_);						\
+    _sp_->u.object = _;							\
+    _sp_->type = PIKE_T_OBJECT;						\
+    _sp_->subtype = _inh_;						\
   }while(0)
 
 #define push_float(F) do{						\
@@ -408,6 +419,17 @@ PMOD_EXPORT extern const char msg_pop_neg[];
     add_ref(_);								\
     _sp_->u.object=_;							\
     _sp_->type=PIKE_T_OBJECT;						\
+    _sp_->subtype = 0;							\
+  }while(0)
+
+#define ref_push_object_inherit(O, INH_NUM) do{				\
+    struct object  *_ = (O);						\
+    struct svalue *_sp_ = Pike_sp++;					\
+    int _inh_ = (INH_NUM);						\
+    add_ref(_);								\
+    _sp_->u.object = _;							\
+    _sp_->type = PIKE_T_OBJECT;						\
+    _sp_->subtype = _inh_;						\
   }while(0)
 
 #define ref_push_function(OBJ, FUN) do {				\
