@@ -561,7 +561,7 @@ char *find_program_name(struct program *p, INT32 *line)
 	
   for(pos=0;pos<100;pos++)
   {
-    tmp=get_line(p->program+pos, p, line);
+    char *tmp=get_line(p->program+pos, p, line);
     if(tmp && *line) return tmp;
     if(pos+1>=(long)p->num_program) break;
   }
