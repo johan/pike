@@ -1664,7 +1664,7 @@ PIKEFUN int show_cursor( int show )
   RETURN SDL_ShowCursor( show );
 }
 
-/*! @decl void warp_moude(int xpos, int ypos)
+/*! @decl void warp_mouse(int xpos, int ypos)
  *!
  *! @fixme
  *!   Document this function
@@ -1816,7 +1816,7 @@ PIKEFUN int toggle_fullscreen(void|object screen) {
   RETURN SDL_WM_ToggleFullScreen(vs);
 }
 
-/*! @int grab_input(int mode)
+/*! @decl int grab_input(int mode)
  *!
  *! @fixme
  *!   Document this function
