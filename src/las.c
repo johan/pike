@@ -1867,7 +1867,7 @@ static void check_evaluation_time(struct callback *cb,void *tmp,void *ignored)
   if(foo->counter-- < 0)
   {
     foo->yes=1;
-    throw();
+    pike_throw();
   }
 }
 

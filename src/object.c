@@ -177,24 +177,29 @@ struct object *get_master(void)
 
 
     FILE *f=fopen(master_file,"r");
-    fseek(f,0,SEEK_END);
-    len=ftell(f);
-    fseek(f,0,SEEK_SET);
-    s=begin_shared_string(len);
-    fread(s->str,1,len,f);
-    fclose(f);
-    push_string(end_shared_string(s));
-    push_text(master_file);
-    f_cpp(2);
-    f_compile(1);
-
-    if(sp[-1].type != T_PROGRAM)
+    if(f)
     {
-      pop_stack();
-      return 0;
+      fseek(f,0,SEEK_END);
+      len=ftell(f);
+      fseek(f,0,SEEK_SET);
+      s=begin_shared_string(len);
+      fread(s->str,1,len,f);
+      fclose(f);
+      push_string(end_shared_string(s));
+      push_text(master_file);
+      f_cpp(2);
+      f_compile(1);
+      
+      if(sp[-1].type != T_PROGRAM)
+      {
+	pop_stack();
+	return 0;
+      }
+      master_program=sp[-1].u.program;
+      sp--;
+    }else{
+      error("Couldn't load master program. (%s)\n",master_file);
     }
-    master_program=sp[-1].u.program;
-    sp--;
   }
   master_object=clone_object(master_program,0);
 

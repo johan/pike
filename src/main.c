@@ -95,6 +95,7 @@ void main(int argc, char **argv)
   master_file = getenv("PIKE_MASTER");
 #endif
 #if __NT__
+  if(!master_file)
   {
     char buffer[4096];
     DWORD len=sizeof(buffer)-1,type=REG_SZ;
@@ -105,7 +106,7 @@ void main(int argc, char **argv)
 		       &type,
 		       buffer,
 		       &len)==ERROR_SUCCESS ||
-       RegQueryValueEx(HKEY_CURRENT_USER,
+       RegQueryValueEx(HKEY_LOCAL_MACHINE,
 		       "SOFTWARE\\Idonex\\Pike\\0.6\\PIKE_MASTER",
 		       0,
 		       &type,
@@ -116,6 +117,7 @@ void main(int argc, char **argv)
     }
   }
 #endif
+
   if(!master_file) master_file = DEFAULT_MASTER;
 
   for(e=1; e<argc; e++)
