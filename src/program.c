@@ -1195,7 +1195,7 @@ void PIKE_CONCAT(low_add_to_,NAME) (struct program_state *state,	\
     TYPE *tmp;								\
     if(m==(1<<(sizeof(NUMTYPE)*8))-2)					\
       Pike_error("Too many " #NAME ".\n");				\
-    m = MIN(m*2+1,(1<<(sizeof(NUMTYPE)*8))-2);				\
+    m = MINIMUM(m*2+1,(1<<(sizeof(NUMTYPE)*8))-2);			\
     tmp = realloc((void *)state->new_program->NAME,			\
 		  sizeof(TYPE) * m);					\
     if(!tmp) Pike_fatal("Out of memory.\n");				\
