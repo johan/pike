@@ -38,7 +38,8 @@ string cquote(string n)
 string create_reference(string from, string to, string text) {
   return "<font face='courier'><a href='" +
     "../"*max(sizeof(from/"/") - 2, 0) +
-    map(replace(to, "::", "::.")/".", cquote)*"/" + ".html'>" + text +
+    map(replace(to, "::", "::.")/"." - ({ "" }), cquote)*"/" + ".html'>" +
+    text +
     "</a></font>";
 }
 
