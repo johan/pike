@@ -1057,8 +1057,8 @@ void check_program(struct program *p)
   {
     if(!p->inherits[e].prog) 
     {
-      /* This inherit is not yet initialized, ignore it */
-      continue;
+      /* This inherit is not yet initialized, ignore rest of tests.. */
+      return;
     }
 
     if(p->inherits[e].storage_offset < 0)
