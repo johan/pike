@@ -2729,7 +2729,10 @@ static void decode_value2(struct decode_data *data)
 	  getdata2(p->relocations, p->num_relocations);
 
 #ifdef DECODE_PROGRAM
-	  DECODE_PROGRAM(p);
+	  {
+	    int byteorder = PIKE_BYTEORDER;	/* FIXME: Used by bytecode.h */
+	    DECODE_PROGRAM(p);
+	  }
 #endif /* DECODE_PROGRAM */
 	  make_program_executable(p);
 
