@@ -1658,6 +1658,36 @@ void describe_mapping(struct mapping *m,struct processing *p,int indent)
     }
   }
 
+  if (Pike_in_gc) {
+    /* Have to do without any temporary allocations. */
+    struct keypair *k;
+    int notfirst = 0;
+
+    if (m->data->size == 1) {
+      my_strcat("([ /* 1 element */\n");
+    } else {
+      sprintf(buf, "([ /* %ld elements */\n", (long)m->data->size);
+      my_strcat(buf);
+    }
+
+    /* no mapping locking required (I hope) */
+    NEW_MAPPING_LOOP(m->data) {
+      struct svalue *tmp;
+      if (notfirst) my_strcat(",\n");
+      else notfirst = 1;
+      for(d = 0; d < indent; d++)
+	my_putchar(' ');
+      describe_svalue(&k->ind, indent+2, &doing);
+      my_putchar(':');
+      describe_svalue(&k->val, indent+2, &doing);
+    }
+
+    my_putchar('\n');
+    for(e=2; e<indent; e++) my_putchar(' ');
+    my_strcat("])");
+    return;
+  }
+
   a = mapping_indices(m);
   SET_ONERROR(err, do_free_array, a);
 
