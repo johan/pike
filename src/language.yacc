@@ -3296,8 +3296,15 @@ inherit_specifier: TOK_IDENTIFIER TOK_COLON_COLON
     if (e == -1) {
       if (TEST_COMPAT (7, 2))
 	my_yyerror("No such inherit %s.", $1->u.sval.u.string->str);
-      else
-	my_yyerror("No inherit or surrounding class %s.", $1->u.sval.u.string->str);
+      else {
+	if ($1->u.sval.u.string == this_program_string) {
+	  inherit_state = Pike_compiler;
+	  inherit_depth = 0;
+	  e = 0;
+	}
+	else
+	  my_yyerror("No inherit or surrounding class %s.", $1->u.sval.u.string->str);
+      }
     }
     free_node($1);
     $$ = e;
