@@ -4072,6 +4072,9 @@ void *parent_storage(int depth)
     }
   }
 
+  if(Pike_fp->fun == -1)
+    error("Cannot access parent storage!\n");
+
   loc.parent_identifier=Pike_fp->fun;
   loc.inherit=INHERIT_FROM_INT(p, Pike_fp->fun);
   
