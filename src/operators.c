@@ -1698,7 +1698,18 @@ PMOD_EXPORT void f_multiply(INT32 args)
     {
       CALL_OPERATOR(LFUN_MULTIPLY, args);
     } else {
-      while(--args > 0) o_multiply(); 
+      INT32 i = -args, j = -1;
+      /* Reverse the arguments */
+      while(i < j) {
+	struct svalue tmp = sp[i];
+	sp[i++] = sp[j];
+	sp[j--] = tmp;
+      }
+      while(--args > 0) {
+	/* Restore the order, and multiply */
+	stack_swap();
+	o_multiply();
+      }
     }
   }
 }
