@@ -813,7 +813,7 @@ int num_lwps = 1;
 /*! @class Thread
  */
 
-/* @decl void create(function(mixed...:void) f, mixed ... args)
+/*! @decl void create(function(mixed...:void) f, mixed ... args)
  *!
  *! This function creates a new thread which will run simultaneously
  *! to the rest of the program. The new thread will call the function
