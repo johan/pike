@@ -242,8 +242,11 @@ int main(int argc, string *argv)
 		if(check > 1) _verify_internals();
 	      }) {
 		werror(fname + " failed.\n");
-		werror(test + "\n");
+		bzot(test);
 		if (arrayp(err) && sizeof(err) && stringp(err[0])) {
+		  werror("Error: " + err[0]);
+		}
+		if (objectp(err)) {
 		  werror("Error: " + err[0]);
 		}
 		errors++;
