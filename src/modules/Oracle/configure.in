@@ -97,7 +97,7 @@ if test x$with_oracle = xyes; then
     fi
   fi
 
-  oracle_lib_dir="`cat oracle_lib_dir`"
+  oracle_lib_dir="`cat conftest`"
 
   AC_MSG_RESULT($oracle_lib_dir)
 
