@@ -228,6 +228,8 @@ static void check_img_arg(struct svalue *a, struct zimage *img,
 	else
 	  Pike_error("Need mem_type for memory texture\n");
 	img->pixels = stor_mem->p;
+	if( (v=simple_mapping_string_lookup(a->u.mapping, "mem_offset" )) )
+	  img->pixels += v->u.integer;
 	if(!img_inited)
 	  img_init();
 	return;
