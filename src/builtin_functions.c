@@ -2168,6 +2168,9 @@ static struct array *diff_longest_sequence(struct array *cmptbl, int blen)
  *
  * This makes it faster than the G-M algorithm on binary data,
  * but slower on ascii data.
+ *
+ * NOT true! The G-M algorithm seems to be faster on most data anyway.
+ *	/grubba 1998-05-19
  */
 static struct array *diff_dyn_longest_sequence(struct array *cmptbl, int blen)
 {
