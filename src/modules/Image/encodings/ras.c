@@ -115,6 +115,22 @@ static ptrdiff_t unpack_rle(unsigned char *src, ptrdiff_t srclen,
   return dst-dst0;
 }
 
+void img_ras__decode(INT32 args)
+{
+  /* Double check args to give the correct function name in the error
+     messages. */
+  if(args<1)
+    SIMPLE_TOO_FEW_ARGS_ERROR("Image.RAS._decode", 1);
+  if(Pike_sp[-1].type!=T_STRING)
+    SIMPLE_BAD_ARG_ERROR("Image.RAS._decode", 1, "string");
+  img_ras_decode(args);
+  push_constant_text("image");
+  stack_swap();
+  push_constant_text("format");
+  push_constant_text("image/x-sun-raster");
+  f_aggregate_mapping(4);
+}
+
 void img_ras_decode(INT32 args)
 {
    struct pike_string *str;
@@ -405,7 +421,7 @@ static ptrdiff_t pack_rle(unsigned char *src, ptrdiff_t srclen,
   return dst-dst0;
 }
 
-static void image_ras_encode(INT32 args)
+static void img_ras_encode(INT32 args)
 {
   struct object *imgo;
   struct mapping *optm = NULL;
@@ -584,7 +600,9 @@ void init_image_ras(void)
 {
    add_function("decode",img_ras_decode,
 		"function(string:object)",0);
-   add_function("encode",image_ras_encode,
+   add_function("_decode",img_ras__decode,
+		"function(string:mapping)",0);
+   add_function("encode",img_ras_encode,
 		"function(object,void|mapping(string:mixed):string)",0);
 }
 
