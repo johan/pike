@@ -10,10 +10,7 @@ AC_MODULE_INIT()
 
 AC_ARG_WITH(rsaref,     [  --with-rsaref[=path]      Support for RSAREF],[],[])
 
-PIKE_FEATURE(Crypto,[yes (lobotomized)])
-# BEGIN NATIONAL SECURITY 
 PIKE_FEATURE_OK(Crypto)
-# END NATIONAL SECURITY
 
 if test x$with_rsaref = x ; then
   :
