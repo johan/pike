@@ -153,6 +153,18 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
       case T_MIXED:
 	return;
 
+      case T_MULTISET:
+	switch(sp[-1].type)
+	{
+	  case T_ARRAY:
+	    f_mkmultiset(1);
+	    break;
+
+	  default:
+	    error("Cannot cast %s to multiset.\n",get_name_of_type(sp[-1].type));
+	}
+	break;
+	
       case T_MAPPING:
 	switch(sp[-1].type)
 	{
@@ -563,7 +575,7 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 #ifdef PIKE_DEBUG
 	  struct svalue *save_sp=sp+1;
 #endif
-	  push_mapping(m=allocate_mapping(tmp->size));
+	  push_mapping(m=allocate_mapping(m_sizeof(tmp)));
 	  
 	  SET_CYCLIC_RET(m);
 	  
