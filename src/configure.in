@@ -1537,6 +1537,11 @@ if test "$ac_cv_header_sys_procfs_h" = "yes"; then
   AC_MSG_CHECKING(getrusage() through procfs)
   AC_CACHE_VAL(pike_cv_getrusage_procfs, [
     AC_TRY_COMPILE([
+#ifndef _LARGEFILE_SOURCE
+#  define _FILE_OFFSET_BITS 64
+#  define _LARGEFILE_SOURCE
+#  define _LARGEFILE64_SOURCE 1
+#endif
 #include <sys/procfs.h>
 #include <sys/fcntl.h>
 int proc_fd;
