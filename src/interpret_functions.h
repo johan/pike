@@ -1116,24 +1116,24 @@ OPCODE0_BRANCH(F_LOR, "||", 0, {
 OPCODE0_BRANCH(F_EQ_OR, "==||", 0, {
   if(!is_eq(Pike_sp-2,Pike_sp-1))
   {
-    pop_2_elems();
     DONT_BRANCH();
+    pop_2_elems();
   }else{
+    DO_BRANCH();
     pop_2_elems();
     push_int(1);
-    DO_BRANCH();
   }
 });
 
 OPCODE0_BRANCH(F_EQ_AND, "==&&", 0, {
   if(is_eq(Pike_sp-2,Pike_sp-1))
   {
-    pop_2_elems();
     DONT_BRANCH();
+    pop_2_elems();
   }else{
+    DO_BRANCH();
     pop_2_elems();
     push_int(0);
-    DO_BRANCH();
   }
 });
 
@@ -1273,8 +1273,8 @@ OPCODE0_BRANCH(F_LOOP, "loop", 0, { /* loopcnt */
     o_subtract();
     DO_BRANCH();
   } else {
-    pop_2_elems();
     DONT_BRANCH();
+    pop_2_elems();
   }
 });
 
