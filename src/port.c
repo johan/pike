@@ -216,7 +216,7 @@ void *MEMSET(void *s,int c,size_t n)
 }
 #endif
 
-#if defined(TRY_USE_MMX) || !defined(HAVE_MEMCPY) && !defined(HAVE_BCOPY)
+#if (0 && defined(TRY_USE_MMX)) || !defined(HAVE_MEMCPY) && !defined(HAVE_BCOPY)
 #ifdef TRY_USE_MMX
 #include <mmx.h>
 #endif
