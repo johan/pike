@@ -95,7 +95,7 @@ RCSID("$Id$");
 #define GC_VERBOSE_DO(X)
 #endif
 
-INT32 num_objects = 1;		/* Account for empty_array. */
+INT32 num_objects = 3;		/* Account for *_empty_array. */
 INT32 num_allocs =0;
 ptrdiff_t alloc_threshold = MIN_ALLOC_THRESHOLD;
 PMOD_EXPORT int Pike_in_gc = 0;
