@@ -932,6 +932,7 @@ static unsigned char read_char( struct buffer *from )
 
 /*
 **! method array(object) decode_layers( string data )
+**! method array(object) decode_layers( string data, mapping options )
 **!     Decodes a XCF image to an array of Image.Layer objects
 **!
 **!     The layer object have the following extra variables (to be queried
@@ -939,6 +940,9 @@ static unsigned char read_char( struct buffer *from )
 **!
 **!      image_xres, image_yres, image_colormap, image_guides, image_parasites,
 **!      name, parasites, visible, active
+**!
+**!	Takes the same argument mapping as <ref>_decode</ref>,
+**!	note especially "draw_all_layers":1.
 */
 
 /*
