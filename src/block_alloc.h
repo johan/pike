@@ -38,6 +38,11 @@
 #define BA_INLINE
 #endif
 
+/* Size of the members in the block struct below that doesn't contain
+ * the payload data (i.e. that aren't x). This can be used in
+ * BSIZE to make the block fit within a page. */
+#define BLOCK_HEADER_SIZE (3 * sizeof (void *) + sizeof (INT32))
+
 #define BLOCK_ALLOC(DATA,BSIZE)						\
 									\
 struct PIKE_CONCAT(DATA,_block)						\
@@ -251,7 +256,7 @@ static void PIKE_CONCAT3(free_all_,DATA,_blocks_unlocked)(void)		\
   DO_IF_DMALLOC(                                                        \
    for(tmp=PIKE_CONCAT(DATA,_blocks);tmp;tmp=tmp->next)                 \
    {                                                                    \
-     int tmp2;                                                          \
+     size_t tmp2;							\
      extern void dmalloc_check_block_free(void *p, char *loc);          \
      for(tmp2=0;tmp2<(BSIZE);tmp2++)					\
      {                                                                  \
