@@ -453,7 +453,7 @@ struct pike_string *end_shared_string(struct pike_string *s)
   switch(s->size_shift)
   {
     default:
-      fatal("ARGHEL!\n");
+      fatal("ARGHEL! size_shift:%d\n", s->size_shift);
 
     case 2:
       switch(find_magnitude2(STR2(s),s->len))
