@@ -892,6 +892,14 @@ int main()
         LIBS="${OLDLIBS}"
       ;;
 
+      xUnixWare)
+        if test "$GCC" = yes ; then
+          LIBS="${LIBS} -lthread"
+        else
+          LIBS="${LIBS} -Kthread"
+        fi
+      ;;
+
       xFreeBSD*)      
 	# Threads on FreeBSD earlier than 1998-06-07 are broken.
         LIBS="${OLDLIBS}"
@@ -2591,6 +2599,8 @@ then
         GNU*) LINKFORSHARED="-rdynamic";;
 	next) LINKFORSHARED="-u libsys_s";;
 	SCO_SV*) LINKFORSHARED="-Bdynamic -dy -Wl,-Bexport";;
+	# What about UNIX_SV?
+        UnixWare) LINKFORSHARED="-Bdynamic -dy -Wl,-Bexport";;
     esac
   fi
 fi
