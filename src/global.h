@@ -215,25 +215,55 @@ void *alloca();
 #define MAX_INT32 2147483647
 #define MIN_INT32 (-2147483647-1)
 
-#if SIZEOF_INT_TYPE == 4
-#define MAX_INT_TYPE MAX_INT32
-#define MIN_INT_TYPE MIN_INT32
+#if defined (WITH_SHORT_INT)
+
+#define MAX_INT_TYPE	SHRT_MAX
+#define MIN_INT_TYPE	SHRT_MIN
+#define PRINTPIKEINT	"h"
+
+#elif defined (WITH_INT_INT)
+
+#define MAX_INT_TYPE	INT_MAX
+#define MIN_INT_TYPE	INT_MIN
+#define PRINTPIKEINT	""
+
+#elif defined (WITH_LONG_INT)
+
+#define MAX_INT_TYPE	LONG_MAX
+#define MIN_INT_TYPE	LONG_MIN
+#define PRINTPIKEINT	"l"
+
+#elif defined (WITH_LONG_LONG_INT)
+
+#ifdef LLONG_MAX
+#define MAX_INT_TYPE	LLONG_MAX
+#define MIN_INT_TYPE	LLONG_MIN
 #else
-#if SIZEOF_INT_TYPE == 8
-#ifdef INT64
-#define MAX_INT_TYPE MAX_INT64
-#define MIN_INT_TYPE MIN_INT64
-#else
-#define MAX_INT_TYPE 9223372036854775807LL
-#define MIN_INT_TYPE (-9223372036854775807LL-1)
+#define MAX_INT_TYPE	LONG_LONG_MAX
+#define MIN_INT_TYPE	LONG_LONG_MIN
 #endif
-#else
-#error Unsupported INT_TYPE size
+#define PRINTPIKEINT	"ll"
+
 #endif
+
+#if SIZEOF_INT_TYPE - 0 == 0
+#error Unsupported type chosen for native pike integers.
 #endif
 
 #if SIZEOF_INT_TYPE != 4
 #define INT_TYPE_INT32_CONVERSION
+#endif
+
+#if defined (WITH_LONG_DOUBLE_PRECISION_SVALUE)
+#define PRINTPIKEFLOAT	"L"
+#elif defined (WITH_DOUBLE_PRECISION_SVALUE)
+#define PRINTPIKEFLOAT	""
+#else
+#define PRINTPIKEFLOAT	""
+#endif
+
+#if SIZEOF_FLOAT_TYPE - 0 == 0
+#error Unsupported type chosen for pike floats.
 #endif
 
 #define INT16 short

@@ -507,12 +507,6 @@
 /* set this to the modifier type string to print INT64 if that type exists */
 #undef PRINTINT64
 
-/* set this to the modifier type string to print INT_TYPE, like "" or "ll" */
-#undef PRINTPIKEINT
-
-/* set this to the modifier type string to print FLOAT_TYPE, like "L" or "" */
-#undef PRINTPIKEFLOAT
-
 /* Define if the compiler understand union initializations. */
 #undef HAVE_UNION_INIT
 
