@@ -3659,11 +3659,7 @@ void yyerror(char *str)
     }
     push_int(lex.current_line);
     push_text(str);
-    if (error_handler && error_handler->prog) {
-      safe_apply(error_handler, "compile_error", 3);
-    } else {
-      SAFE_APPLY_MASTER("compile_error", 3);
-    }
+    safe_apply_handler("compile_error", error_handler, compat_handler, 3);
     pop_stack();
   }else{
     if (lex.current_file) {
