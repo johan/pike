@@ -2378,7 +2378,42 @@ INT32 define_function(struct pike_string *name,
     
     ref.inherit_offset = 0;
     ref.id_flags = flags;
+#if 0
     new_program->identifier_references[i]=ref;
+#else
+    {
+      int z;
+      /* This loop could possibly be optimized by looping over
+       * each inherit and looking up 'name' in each inherit
+       * and then see if should be overwritten
+       * /Hubbe
+       */
+
+      for(z=0;z<new_program->num_identifier_references;z++)
+      {
+	/* Do zapp hidden identifiers */
+	if(new_program->identifier_references[z].id_flags & ID_HIDDEN)
+	  continue;
+
+	/* Do not zapp inline ('local') identifiers */
+	if(new_program->identifier_references[z].inherit_offset &&
+	   (new_program->identifier_references[z].id_flags & ID_INLINE))
+          continue;
+
+	/* Do not zapp functions with the wrong name... */
+	if(ID_FROM_INT(new_program, z)->name != name)
+	  continue;
+
+	new_program->identifier_references[z]=ref;
+      }
+
+#ifdef PIKE_DEBUG
+      if(MEMCMP(new_program->identifier_references+i, &ref,sizeof(ref)))
+	fatal("New function overloading algorithm failed!\n");
+#endif
+
+    }
+#endif
     return i;
   }
 make_a_new_def:
