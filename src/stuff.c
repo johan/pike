@@ -123,3 +123,33 @@ double my_strtod(char *nptr, char **endptr)
   }
   return tmp;
 }
+
+double strtod_pcharp(PCHARP ptr, PCHARP *endptr)
+{
+  /* NOTE: Cuts at 63 digits */
+
+  char buff[64];
+  int i;
+  double res;
+  char *end_;
+
+  endptr->shift = ptr.shift;
+
+  if (!ptr.shift) {
+    return my_strtod(ptr.ptr, &endptr->ptr);
+  }
+
+  for (i=0; i < 63; i++) {
+    unsigned int c = INDEX_PCHARP(ptr, i);
+    if (!c || (c >= 256)) {
+      break;
+    }
+    buff[i] = c;
+  }
+  buff[i] = 0;
+
+  res = my_strtod(buff, &end_);
+
+  endptr->ptr = ptr.ptr + ((end_ - buff)<<SHIFT);
+  return res;
+}
