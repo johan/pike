@@ -135,15 +135,18 @@ static void bootstrap_push_int64 (INT64 i)
 
 PMOD_EXPORT void (*push_int64) (INT64) = bootstrap_push_int64;
 PMOD_EXPORT int (*int64_from_bignum) (INT64 *, struct object *) = NULL;
+PMOD_EXPORT void (*reduce_stack_top_bignum) (void) = NULL;
 
 PMOD_EXPORT void hook_in_int64_funcs (
   void (*push_int64_val)(INT64),
-  int (*int64_from_bignum_val) (INT64 *, struct object *))
+  int (*int64_from_bignum_val) (INT64 *, struct object *),
+  void (*reduce_stack_top_bignum_val) (void))
 {
   /* Assigning the pointers above directly from the Gmp module doesn't
    * work in some cases, e.g. NT. */
   push_int64 = push_int64_val ? push_int64_val : bootstrap_push_int64;
   int64_from_bignum = int64_from_bignum_val;
+  reduce_stack_top_bignum = reduce_stack_top_bignum_val;
 }
 #endif
 

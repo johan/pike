@@ -60,9 +60,11 @@ void convert_svalue_to_bignum(struct svalue *s);
 #ifdef INT64
 PMOD_EXPORT extern void (*push_int64)(INT64 i);
 PMOD_EXPORT extern int (*int64_from_bignum) (INT64 *i, struct object *bignum);
+PMOD_EXPORT extern void (*reduce_stack_top_bignum) (void);
 PMOD_EXPORT void hook_in_int64_funcs (
   void (*push_int64_val)(INT64),
-  int (*int64_from_bignum_val) (INT64 *, struct object *));
+  int (*int64_from_bignum_val) (INT64 *, struct object *),
+  void (*reduce_stack_top_bignum_val) (void));
 #else
 #define push_int64(i) push_int((INT_TYPE)(i))
 #define int64_from_bignum(I,BIGNUM)	0
