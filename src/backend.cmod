@@ -1083,8 +1083,8 @@ PIKECLASS Backend
 		      &me->active_set.rset,
 		      &me->active_set.wset, 
 		      &me->active_set.eset,
-		      /* select_timeout.tv_sec >= 100000000 ?
-			 NULL : */ &select_timeout);
+		      select_timeout.tv_sec >= 100000000 ?
+		      NULL : &select_timeout);
 #endif	/* HAVE_POLL */
 
 	THREADS_DISALLOW();
