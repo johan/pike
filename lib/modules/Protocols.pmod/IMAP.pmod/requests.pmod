@@ -100,6 +100,16 @@ class request
     }
 }
 
+class unimplemented
+{
+  inherit request;
+
+  mapping easy_process()
+  {
+    return(bad("Not implemented"));
+  }
+}
+
 class noop
 {
   inherit request;
@@ -746,3 +756,13 @@ class uid {
     }
   }
 }
+
+constant authenticate = unimplemented;
+constant examine = unimplemented;
+constant create_mailbox = unimplemented;
+constant delete = unimplemented;
+constant rename = unimplemented;
+constant subscribe = unimplemented;
+constant unsubscribe = unimplemented;
+constant status = unimplemented;
+constant append = unimplemented;
