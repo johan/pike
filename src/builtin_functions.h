@@ -114,10 +114,27 @@ PMOD_EXPORT void f_get_iterator(INT32 args);
 int foreach_iterate(struct object *o, int do_step);
 
 /* From builtin.cmod. */
+PMOD_EXPORT void f_cq__describe_program(INT32 args);
+PMOD_EXPORT void f_basetype(INT32 args);
+PMOD_EXPORT void f_int2char(INT32 args);
+PMOD_EXPORT void f_int2hex(INT32 args);
+PMOD_EXPORT void f_string2hex(INT32 args);
+PMOD_EXPORT void f_hex2string(INT32 args);
 PMOD_EXPORT void f_column(INT32 args);
+PMOD_EXPORT void f_mkmultiset(INT32 args);
 PMOD_EXPORT void f_trace(INT32 args);
+PMOD_EXPORT void f_gc_parameters(INT32 args);
 PMOD_EXPORT void f_ctime(INT32 args);
 PMOD_EXPORT void f_mkmapping(INT32 args);
+PMOD_EXPORT void f_string_count(INT32 args);
+PMOD_EXPORT void f_string_trim_whites(INT32 args);
+PMOD_EXPORT void f_string_trim_all_whites(INT32 args);
+PMOD_EXPORT void f_program_implements(INT32 args);
+PMOD_EXPORT void f_program_inherits(INT32 args);
+PMOD_EXPORT void f_program_defined(INT32 args);
+PMOD_EXPORT void f_string_width(INT32 args);
+PMOD_EXPORT void f_m_delete(INT32 args);
+PMOD_EXPORT void f_get_weak_flag(INT32 args);
 PMOD_EXPORT void f_function_name(INT32 args);
 PMOD_EXPORT void f_function_object(INT32 args);
 PMOD_EXPORT void f_function_program(INT32 args);
