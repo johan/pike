@@ -37,6 +37,10 @@ RCSID("$Id$");
 #include "opcodes.h"
 #include "cyclic.h"
 
+#ifdef HAVE_POLL
+#include <poll.h>
+#endif /* HAVE_POLL */
+
 #ifdef HAVE_CRYPT_H
 #include <crypt.h>
 #endif
