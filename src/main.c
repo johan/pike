@@ -176,7 +176,9 @@ static void get_master_key(HKEY cat)
 		  (LPCTSTR)("SOFTWARE\\Pike\\"
 			    DEFINETOSTR(PIKE_MAJOR_VERSION)
 			    "."
-			    DEFINETOSTR(PIKE_MINOR_VERSION)),
+			    DEFINETOSTR(PIKE_MINOR_VERSION)
+			    "."
+			    DEFINETOSTR(PIKE_BUILD_VERSION)),
 		  0,KEY_READ,&k)==ERROR_SUCCESS)
   {
     if(RegQueryValueEx(k,
