@@ -51,7 +51,9 @@ struct face
 
 /*! @module Image */
 
-/*! @module FreeType */
+/*! @module FreeType
+ *! Pike glue for the FreeType2 module, http://www.freetype.org/
+ */
 
 /*! @class Face
  *! A FreeType font face. We recommend using the more generic font handling
