@@ -268,7 +268,7 @@ static void f_big_query(INT32 args)
   pop_n_elems(args);
 
   if (!(PIKE_MYSQL->last_result = result)) {
-    if (mysql_num_fields(socket)) {
+    if (mysql_num_fields(socket) && mysql_error(socket)[0]) {
       error("mysql->big_query(): Couldn't create result for query\n");
     }
     /* query was INSERT or similar - return 0 */
@@ -446,7 +446,7 @@ static void f_list_dbs(INT32 args)
 {
   MYSQL *socket = PIKE_MYSQL->socket;
   MYSQL_RES *result;
-  char *wild = "*";
+  char *wild = NULL;
 
   if (args) {
     if (sp[-args].type != T_STRING) {
@@ -483,7 +483,7 @@ static void f_list_tables(INT32 args)
 {
   MYSQL *socket = PIKE_MYSQL->socket;
   MYSQL_RES *result;
-  char *wild = "*";
+  char *wild = NULL;
 
   if (args) {
     if (sp[-args].type != T_STRING) {
@@ -521,7 +521,7 @@ static void f_list_fields(INT32 args)
   MYSQL *socket = PIKE_MYSQL->socket;
   MYSQL_RES *result;
   char *table;
-  char *wild = "*";
+  char *wild = NULL;
 
   if (!args) {
     error("Too few arguments to mysql->list_fields()\n");
