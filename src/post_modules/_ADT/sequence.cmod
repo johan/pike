@@ -839,15 +839,15 @@ PIKECLASS Sequence
 	SIMPLE_BAD_ARG_ERROR("`<",1,"ADT.Sequence.SequenceIterator");
       }
     }
-	
 
-    /*! @decl int(0..1) `<(mixed iter)
+
+    /*! @decl int(0..1) `>(mixed iter)
      *!    Greater then operator
      *!
      *! @returns
      *!    Returns @tt{true@} if this iterator has a higher index
      *!    then @[iter].
-     */  
+     */
 
 
     PIKEFUN int(0..1) `>(mixed iter)
@@ -862,7 +862,7 @@ PIKECLASS Sequence
       }
       else
       {
-	SIMPLE_BAD_ARG_ERROR("`<",1,"ADT.Sequence.SequenceIterator");
+	SIMPLE_BAD_ARG_ERROR("`>",1,"ADT.Sequence.SequenceIterator");
       }
     }
 
