@@ -72,7 +72,7 @@ class ber_decode {
     case 6: /* Object id */
     {
       tag = "Identifier";
-      if (value[0] <= 2)
+      if (contents[0] < 120)
 	value = ({ contents[0] / 40, contents[0] % 40 });
       else
 	value = ({ 2, contents[0] - 80 });
