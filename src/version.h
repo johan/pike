@@ -8,7 +8,7 @@
 
 #define PIKE_MAJOR_VERSION 7
 #define PIKE_MINOR_VERSION 3
-#define PIKE_BUILD_VERSION 33
+#define PIKE_BUILD_VERSION 34
 
 /* Prototypes begin here */
 void f_version(INT32 args);
