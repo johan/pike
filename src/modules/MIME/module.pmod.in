@@ -173,7 +173,7 @@ class support {
     decode_words_tokenized_labled_remapped(string phrase)
   {
     return Array.map(decode_words_tokenized_labled(phrase),
-		     lambda(array(string|int) item) {
+		     lambda(array(string|int|array(array(string|int))) item) {
 		       switch(item[0]) {
 		       case "word":
 			 return ({ "word", remap(item[1..]) });
