@@ -1812,8 +1812,8 @@ OPCODE0(F_INDIRECT, "indirect", I_UPDATE_SP, {
     move_svalue (Pike_sp, &tmp);
     Pike_sp++;
   }else{
-    LOCAL_VAR(struct object *o);
     struct string_assignment_storage *s;
+    LOCAL_VAR(struct object *o);
     o=low_clone(string_assignment_program);
     s = (struct string_assignment_storage *)o->storage;
     move_svalue (s->lval, Pike_sp - 2);
