@@ -1834,6 +1834,15 @@ static void exit_program_struct(struct program *p)
 {
   unsigned INT16 e;
 
+#ifdef PIKE_DEBUG
+  if (p->refs) {
+#ifdef DEBUG_MALLOC
+    describe_something(p, T_PROGRAM, 0,2,0, NULL);
+#endif
+    Pike_fatal("Program to be freed still got %d references.\n", p->refs);
+  }
+#endif
+
   if(p->parent)
   {
     /* Make sure to break the circularity... */

@@ -402,7 +402,7 @@ PIKECLASS multiset_iterator
 	THIS->l->msd->noval_refs--;
 	sub_ref (THIS->l->msd);
 #ifdef PIKE_DEBUG
-	if (!THIS->l->msd->refs) Pike_fatal ("msd ran out of refs unexpectedly.\n");
+	if (THIS->l->msd->refs <= 0) Pike_fatal ("msd ran out of refs unexpectedly.\n");
 #endif
 	THIS->lock_index = 0;
       }
@@ -435,7 +435,7 @@ PIKECLASS multiset_iterator
 	  THIS->l->msd->noval_refs--;
 	  sub_ref (THIS->l->msd);
 #ifdef PIKE_DEBUG
-	  if (!THIS->l->msd->refs) Pike_fatal ("msd ran out of refs unexpectedly.\n");
+	  if (THIS->l->msd->refs <= 0) Pike_fatal ("msd ran out of refs unexpectedly.\n");
 #endif
 	}
 	free_multiset (THIS->l);

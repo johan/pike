@@ -934,18 +934,19 @@ PMOD_EXPORT void really_free_string(struct pike_string *s)
 {
 #ifdef PIKE_DEBUG
   extern int d_flag;
-  if (d_flag) {
-    if (s->refs) {
-      Pike_fatal("Freeing string with references!\n");
-    }
-    if(d_flag > 2)
-    {
-      if(s->next == (struct pike_string *)(ptrdiff_t)-1)
-	Pike_fatal("Freeing shared string again!\n");
+  if (s->refs) {
+#ifdef DEBUG_MALLOC
+    describe_something(s, T_STRING, 0,2,0, NULL);
+#endif
+    Pike_fatal("Freeing string with %d references.\n", s->refs);
+  }
+  if(d_flag > 2)
+  {
+    if(s->next == (struct pike_string *)(ptrdiff_t)-1)
+      Pike_fatal("Freeing shared string again!\n");
 
-      if(((ptrdiff_t)s->next) & 1)
-	Pike_fatal("Freeing shared string again, memory corrupt or other bug!\n");
-    }
+    if(((ptrdiff_t)s->next) & 1)
+      Pike_fatal("Freeing shared string again, memory corrupt or other bug!\n");
   }
   if ((s->size_shift < 0) || (s->size_shift > 2)) {
     Pike_fatal("Freeing string with bad shift (0x%08x); could it be a type?\n",

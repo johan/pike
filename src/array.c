@@ -128,8 +128,12 @@ PMOD_EXPORT void really_free_array(struct array *v)
 #ifdef PIKE_DEBUG
   if(v == & empty_array || v == &weak_empty_array || v == &weak_shrink_empty_array)
     Pike_fatal("Tried to free some *_empty_array.\n");
-  if (v->refs)
+  if (v->refs) {
+#ifdef DEBUG_MALLOC
+    describe_something(v, T_ARRAY, 0,2,0, NULL);
+#endif
     Pike_fatal("Freeing array with %d refs.\n", v->refs);
+  }
 #endif
 
 #ifdef PIKE_DEBUG

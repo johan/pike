@@ -49,8 +49,10 @@ static struct mapping *gc_mark_mapping_pos = 0;
 #undef EXIT_BLOCK
 #define EXIT_BLOCK(m)	do{						\
 DO_IF_DEBUG(								\
-  if(m->refs)								\
-    Pike_fatal("really free mapping on mapping with nonzero refs.\n");	\
+  if(m->refs) {								\
+    DO_IF_DMALLOC(describe_something(m, T_MAPPING, 0,2,0, NULL));	\
+    Pike_fatal("really free mapping on mapping with %d refs.\n", m->refs); \
+  }									\
 )									\
 									\
   FREE_PROT(m);								\
