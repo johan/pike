@@ -32,6 +32,32 @@
 #include <string.h>
 #include <math.h>
 
+/* ffmpeg includes typedef's these */
+#ifdef INT64
+#undef INT64
+#endif
+#ifdef INT32
+#undef INT32
+#endif
+#ifdef INT16
+#undef INT16
+#endif
+#ifdef INT8
+#undef INT8
+#endif
+#ifdef UINT64
+#undef UINT64
+#endif
+#ifdef UINT32
+#undef UINT32
+#endif
+#ifdef UINT16
+#undef UINT16
+#endif
+#ifdef UINT8
+#undef UINT8
+#endif
+
 #ifdef HAVE_FFMPEG_AVCODEC_H
 #include <ffmpeg/avcodec.h>
 #else
