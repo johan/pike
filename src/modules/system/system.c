@@ -1019,7 +1019,7 @@ int my_isipv6nr(char *s)
     }
   }
   if (((has_value) || (compressed && (s[i-2] == ':'))) &&
-      (compressed || (fields == 7))) {
+      ((compressed && (field < 7)) || (field == 7))) {
     return 1;
   }
   return 0;
