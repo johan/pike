@@ -45,6 +45,22 @@ RCSID("$Id$");
 #define DEFL_BUF_SIZE 500000
 #define INFL_BUF_SIZE 500000
 
+/* Why use double prefixes? */
+#ifdef HAVE_BZ2_BZCOMPRESSINIT
+#define bzCompressInit		BZ2_bzCompressInit
+#define bzCompress		BZ2_bzCompress
+#define bzCompressEnd		BZ2_bzCompressEnd
+#define bzDecompressInit	BZ2_bzDecompressInit
+#define bzDecompress		BZ2_bzDecompress
+#define bzDecompressEnd		BZ2_bzDecompressEnd
+#define bzReadOpen		BZ2_bzReadOpen
+#define bzReadClose		BZ2_bzReadClose
+#define bzRead			BZ2_bzRead
+#define bzWriteOpen		BZ2_bzWriteOpen
+#define bzWrite			BZ2_bzWrite
+#define bzWriteClose		BZ2_bzWriteClose
+#endif /* HAVE_BZ2_BZCOMPRESSINIT */
+
 /*! @module Bz2
  *!
  *! The Bz2 module contains functions to compress and uncompress strings using
