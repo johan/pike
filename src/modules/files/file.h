@@ -96,7 +96,7 @@ struct pike_sendfile
 extern struct program *file_program;
 extern struct program *file_ref_program;
 
-extern int get_inet_addr(SOCKADDR *addr,char *name,char *service, INT_TYPE port, int udp);
+extern int get_inet_addr(PIKE_SOCKADDR *addr,char *name,char *service, INT_TYPE port, int udp);
 
 #define CBFUNCS(X) \
 static void PIKE_CONCAT(file_,X) (int fd, void *data);		\

@@ -2652,7 +2652,7 @@ static void file_open_socket(INT32 args)
   }
 
   if (args) {
-    SOCKADDR addr;
+    PIKE_SOCKADDR addr;
     int addr_len;
     char *name;
     int o;
@@ -2844,7 +2844,7 @@ static void file_connect_unix( INT32 args )
  */
 static void file_connect(INT32 args)
 {
-  SOCKADDR addr;
+  PIKE_SOCKADDR addr;
   int addr_len;
   struct pike_string *dest_addr = NULL;
   struct pike_string *src_addr = NULL;
@@ -2963,7 +2963,7 @@ static int isipnr(char *s)
  */
 static void file_query_address(INT32 args)
 {
-  SOCKADDR addr;
+  PIKE_SOCKADDR addr;
   int i;
   char buffer[496],*q;
   /* XOPEN GROUP thinks this variable should be a size_t.

@@ -1680,14 +1680,14 @@ static MUTEX_T getservbyname_mutex;
 #endif /* REENTRANT */
 
 /* this is used from modules/file, and modules/spider! */
-int get_inet_addr(SOCKADDR *addr,char *name,char *service, INT_TYPE port, int udp)
+int get_inet_addr(PIKE_SOCKADDR *addr,char *name,char *service, INT_TYPE port, int udp)
 {
 #ifdef HAVE_GETADDRINFO
   struct addrinfo hints = { 0, PF_UNSPEC, 0, 0, 0, NULL, NULL, NULL, }, *res;
   char servnum_buf[200];
 #endif /* HAVE_GETADDRINFO */
 
-  MEMSET((char *)addr,0,sizeof(SOCKADDR));
+  MEMSET((char *)addr,0,sizeof(PIKE_SOCKADDR));
   if(name && !strcmp(name,"*"))
     name = NULL;
 

@@ -245,7 +245,7 @@ static void port_listen_fd(INT32 args)
  */
 static void port_bind(INT32 args)
 {
-  SOCKADDR addr;
+  PIKE_SOCKADDR addr;
   int addr_len,fd,tmp;
 
   do_close(THIS,Pike_fp->current_object);
@@ -380,7 +380,7 @@ extern struct program *file_program;
 
 static void port_accept(INT32 args)
 {
-  SOCKADDR addr;
+  PIKE_SOCKADDR addr;
   struct port *this=THIS;
   int fd;
   struct object *o;
@@ -416,7 +416,7 @@ static void port_accept(INT32 args)
  */
 static void socket_query_address(INT32 args)
 {
-  SOCKADDR addr;
+  PIKE_SOCKADDR addr;
   int i;
   char buffer[496],*q;
   ACCEPT_SIZE_T len;

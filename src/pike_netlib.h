@@ -27,7 +27,7 @@ typedef union {
 #ifdef HAVE_STRUCT_SOCKADDR_IN6
   struct sockaddr_in6 ipv6;
 #endif
-} SOCKADDR;
+} PIKE_SOCKADDR;
 
 #define SOCKADDR_FAMILY(X) ((X).sa.sa_family)
 
