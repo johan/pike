@@ -131,33 +131,10 @@ static private class FileIO {
 
   static private int mask = 0;
 
-  static private array(int) fractionalise(int i)
-  {
-    if(!mask)
-    {
-      int size = 0;
-      for(mask = 1; mask; size++)
-	mask <<= 1;
-      mask = ~(0xff << (size-8));
-    }
-    
-    return ({ (i>>8) & mask, i & 0xff });
-  }
-  
   static private void seek(int offset)
   {
-    if(offset < 0)
-    {
-      int fraction;
-
-      [offset, fraction] = fractionalise(offset);
-      if(file::seek(offset, 0x100) == -1 ||
-	 (fraction && sizeof(file::read(fraction)) != fraction))
-	ERR("seek failed");
-    }
-    else
-      if(file::seek(offset) == -1)
-	ERR("seek failed");
+    if(offset < 0 || file::seek(offset) == -1)
+      ERR("seek failed");
   }
 
   string read_at(int offset, int|void size)
