@@ -2565,8 +2565,8 @@ static void exit_file_lock_key(struct object *o)
 #endif
     THIS_KEY->f->key = 0;
     THIS_KEY->f = 0;
-    free_object(THIS->file);
-    THIS->file = NULL;
+    free_object(THIS_KEY->file);
+    THIS_KEY->file = NULL;
   }
 }
 
