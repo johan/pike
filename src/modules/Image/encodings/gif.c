@@ -46,7 +46,6 @@ RCSID("$Id$");
 #include "colortable.h"
 #include "builtin_functions.h"
 
-#include "gif.h"
 #include "gif_lzw.h"
 
 extern struct program *image_colortable_program;
@@ -576,6 +575,48 @@ CHRONO("gif _render_block end");
 **!	// voila! A GIF animation on stdout.
 **!	</pre>
 **!
+**!	<illustration type=image/gif>
+**!	object nct=colortable(lena(),32,({({0,0,0})}));
+**!	string s=GIF.header_block(lena()->xsize(),lena()->ysize(),nct);
+**!	foreach ( ({lena()->xsize(),
+**!		    (int)(lena()->xsize()*0.75),
+**!		    (int)(lena()->xsize()*0.5),
+**!		    (int)(lena()->xsize()*0.25),
+**!		    (int)(1),
+**!		    (int)(lena()->xsize()*0.25),
+**!		    (int)(lena()->xsize()*0.5),
+**!		    (int)(lena()->xsize()*0.75)}),int xsize)
+**!	{
+**!	   object o=lena()->scale(xsize,lena()->ysize());
+**!	   object p=lena()->clear(0,0,0);
+**!	   p->paste(o,(lena()->xsize()-o->xsize())/2,0);
+**!	   s+=GIF.render_block(p,nct,0,0,0,25);
+**!	}
+**!	s+=GIF.netscape_loop_block(200);
+**!	s+=GIF.end_block();
+**!	return s;
+**!	</illustration>The above animation is thus created:
+**!	<pre>
+**!	object nct=colortable(lena,32,({({0,0,0})}));
+**!	string s=GIF.header_block(lena->xsize(),lena->ysize(),nct);
+**!	foreach ( ({lena->xsize(),
+**!		    (int)(lena->xsize()*0.75),
+**!		    (int)(lena->xsize()*0.5),
+**!		    (int)(lena->xsize()*0.25),
+**!		    (int)(1),
+**!		    (int)(lena->xsize()*0.25),
+**!		    (int)(lena->xsize()*0.5),
+**!		    (int)(lena->xsize()*0.75)}),int xsize)
+**!	{
+**!	   object o=lena->scale(xsize,lena->ysize());
+**!	   object p=lena->clear(0,0,0);
+**!	   p->paste(o,(lena->xsize()-o->xsize())/2,0);
+**!	   s+=GIF.render_block(p,nct,0,0,0,25);
+**!	}
+**!	s+=GIF.netscape_loop_block(200);
+**!	s+=GIF.end_block();
+**!	write(s);
+**!	</pre>
 **!
 **! arg object img
 **!	The image.
