@@ -1614,6 +1614,7 @@ void mapping_search_no_free(struct svalue *to,
 	to->u.integer=0;
 	return;
       }
+      k=k->next;
     }
     
     
