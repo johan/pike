@@ -66,6 +66,10 @@ RCSID("$Id$");
 #include <fcntl.h>
 #endif
 
+#ifdef HAVE_ERRNO_H
+#include <errno.h>
+#endif
+
 #ifdef __amigaos__
 #define timeval amigaos_timeval
 #include <exec/types.h>
