@@ -3666,7 +3666,7 @@ void image_colortable_index_32bit(INT32 args)
 void image_colortable_spacefactors(INT32 args)
 {
    if (args<3)
-      error("To few arguments to colortable->spacefactors()\n");
+      error("Too few arguments to colortable->spacefactors()\n");
 
    if (sp[0-args].type!=T_INT ||
        sp[1-args].type!=T_INT ||
