@@ -206,7 +206,8 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
 #define BEGIN_AGGREGATE_ARRAY(estimated_size) do {			\
   struct svalue *base__;						\
   push_array(allocate_array_no_init(0, (estimated_size)));		\
-  base__ = Pike_sp;
+  base__ = Pike_sp;							\
+  base__[-1].u.array->type_field = (BIT_MIXED | BIT_UNFINISHED)
 
 #define DO_AGGREGATE_ARRAY(max_keep_on_stack)				\
   do {									\
