@@ -1275,7 +1275,6 @@ static struct pike_string *recode_string(struct cpp *this, struct pike_string *d
 			     2, BIT_STRING)) {
       cpp_handle_exception (this, "Error decoding with charset %S", new_str);
       free_string (new_str);
-      pop_stack();
       return data;
     }
     free_string (new_str);
