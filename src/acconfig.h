@@ -244,8 +244,11 @@
 /* Define if you have ualarm. */
 #undef HAVE_UALARM
 
-/* Define if your ualarm takes two args.. */
+/* Define if your ualarm takes two args. */
 #undef UALARM_TAKES_TWO_ARGS
+
+/* Define if your ptrace takes four args. */
+#undef PTRACE_TAKES_FOUR_ARGS
 
 /* Define if gettimeofday takes to arguments */
 #undef GETTIMEOFDAY_TAKES_TWO_ARGS
