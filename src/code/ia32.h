@@ -10,13 +10,13 @@
 #define OPCODE_INLINE_BRANCH
 #define OPCODE_RETURN_JUMPADDR
 
-#ifdef _M_IX86
+#if defined(_M_IX86) && !defined(__GNUC__)
 
 #define DEF_PROG_COUNTER void *ia32_pc; \
                          _asm { _asm mov ia32_pc,ebp }
 #define PROG_COUNTER  (((unsigned char **)ia32_pc)[1])
 
-#else  /* _M_IX86 */
+#else  /* _M_IX86 && !__GNUC__ */
 
 #ifdef OPCODE_RETURN_JUMPADDR
 /* Don't need an lvalue in this case. */
