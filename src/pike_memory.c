@@ -561,7 +561,7 @@ void memfill(char *to,
       while(tolen>0)
       {
 	tmp=MINIMUM(tolen, fromlen);
-	MEMCPY(to, from, MINIMUM(tolen, fromlen));
+	MEMCPY(to, from, tmp);
 	fromlen+=tmp;
 	tolen-=tmp;
 	to+=tmp;
