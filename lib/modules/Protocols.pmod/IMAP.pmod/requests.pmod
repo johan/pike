@@ -250,11 +250,14 @@ class list
       
     array mailboxes = server->list(session, reference, glob);
       
-    if (mailboxes)
+    if (mailboxes) {
       foreach(mailboxes, array a)
 	send("*", "LIST", @a);
       
-    send(tag, "OK");
+      send(tag, "OK LIST done");
+    } else {
+      send(tag, "NO LIST failed");
+    }
     return ([ "action" : "finished" ]);
   }
 }
