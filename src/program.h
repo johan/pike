@@ -95,6 +95,7 @@ struct object;
 #endif
 
 /* Byte-code method identification. */
+#define PIKE_BYTECODE_PORTABLE	-1	/* Only used by the codec. */
 #define PIKE_BYTECODE_DEFAULT	0
 #define PIKE_BYTECODE_GOTO	1
 #define PIKE_BYTECODE_SPARC	2
@@ -149,10 +150,13 @@ union idptr
   ptrdiff_t offset;
 };
 
+#define IDENTIFIER_VARIABLE 0
 #define IDENTIFIER_PIKE_FUNCTION 1
 #define IDENTIFIER_C_FUNCTION 2
 #define IDENTIFIER_FUNCTION 3
 #define IDENTIFIER_CONSTANT 4
+#define IDENTIFIER_TYPE_MASK 7
+
 #define IDENTIFIER_VARARGS 8	/* Used for functions only. */
 #define IDENTIFIER_HAS_BODY 16	/* Function has a body (set already in pass 1). */
 #define IDENTIFIER_SCOPED 32   /* This is used for local functions only */
@@ -161,6 +165,7 @@ union idptr
 
 #define IDENTIFIER_IS_FUNCTION(X) ((X) & IDENTIFIER_FUNCTION)
 #define IDENTIFIER_IS_PIKE_FUNCTION(X) ((X) & IDENTIFIER_PIKE_FUNCTION)
+#define IDENTIFIER_IS_C_FUNCTION(X) ((X) & IDENTIFIER_C_FUNCTION)
 #define IDENTIFIER_IS_CONSTANT(X) ((X) & IDENTIFIER_CONSTANT)
 #define IDENTIFIER_IS_VARIABLE(X) (!((X) & (IDENTIFIER_FUNCTION | IDENTIFIER_CONSTANT)))
 #define IDENTIFIER_IS_ALIAS(X)	((X) & IDENTIFIER_ALIAS)
