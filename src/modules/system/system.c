@@ -726,7 +726,7 @@ static MUTEX_T gethostbyname_mutex;
 
 #endif /* REENTRANT */
 
-/* this is used from modules/file/ *.c, and modules/spider/ *.c! */
+/* this is used from modules/file, and modules/spider! */
 void get_inet_addr(struct sockaddr_in *addr,char *name)
 {
   MEMSET((char *)addr,0,sizeof(struct sockaddr_in));
