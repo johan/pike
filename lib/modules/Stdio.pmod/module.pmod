@@ -1856,7 +1856,14 @@ int is_link(string path)
 //!
 int exist(string path)
 {
-   return !!file_stat(path);
+  // NOTE: file_stat() may fail with eg EFBIG if the file exists,
+  //       but the filesystem, doesn't support the file size.
+  return !!file_stat(path) || !(<
+#ifdef __NT__
+    System.WSAENOTSUPP,
+#endif /* __NT__ */
+    System.ENOENT,
+  >)[errno()];
 }
 
 mixed `[](string index)
