@@ -189,7 +189,7 @@ void o_cast_to_int(void)
   case T_OBJECT:
     {
       struct pike_string *s;
-      MAKE_CONSTANT_SHARED_STRING(s, "int");
+      REF_MAKE_CONST_STRING(s, "int");
       push_string(s);
       if(!sp[-2].u.object->prog)
 	Pike_error("Cast called on destructed object.\n");
@@ -209,7 +209,7 @@ void o_cast_to_int(void)
 	if( f != -1)
 	{
 	  struct pike_string *s;
-	  MAKE_CONSTANT_SHARED_STRING(s, "int");
+	  REF_MAKE_CONST_STRING(s, "int");
 	  push_string(s);
 	  apply_low(sp[-2].u.object, f, 1);
 	  f=!UNSAFE_IS_ZERO(sp-1);
@@ -300,7 +300,7 @@ void o_cast_to_string(void)
   case T_OBJECT:
     {
       struct pike_string *s;
-      MAKE_CONSTANT_SHARED_STRING(s, "string");
+      REF_MAKE_CONST_STRING(s, "string");
       push_string(s);
       if(!sp[-2].u.object->prog)
 	Pike_error("Cast called on destructed object.\n");
@@ -320,7 +320,7 @@ void o_cast_to_string(void)
 	if( f != -1)
 	{
 	  struct pike_string *s;
-	  MAKE_CONSTANT_SHARED_STRING(s, "string");
+	  REF_MAKE_CONST_STRING(s, "string");
 	  push_string(s);
 	  apply_low(sp[-2].u.object, f, 1);
 	  f=!UNSAFE_IS_ZERO(sp-1);
