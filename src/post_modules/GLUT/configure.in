@@ -93,7 +93,6 @@ else
     LIBS="-lglut $LIBS"
     AUTO=auto.o
   elif test x"$ac_cv_header_GLUT_glut_h$pike_cv_framework_glut" = "xyesyes"; then
-    AC_MSG_RESULT(yes)
     AC_DEFINE_UNQUOTED(HAVE_LIBGLUT)
     LIBS="-framework GLUT -lobjc $LIBS"
     AUTO=auto.o
