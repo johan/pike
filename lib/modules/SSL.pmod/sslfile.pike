@@ -83,7 +83,7 @@ void close()
   close_callback = 0;
 }
 
-int write(string|array(atring) s)
+int write(string|array(string) s)
 {
 #ifdef SSL3_DEBUG
   werror("SSL.sslfile->write\n");
