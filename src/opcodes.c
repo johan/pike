@@ -84,7 +84,7 @@ void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind)
   case T_MULTISET: {
     int i=multiset_member(what->u.multiset, ind);
     to->type=T_INT;
-    to->subtype=i ? NUMBER_UNDEFINED : 0;
+    to->subtype=i ? 0 : NUMBER_UNDEFINED;
     to->u.integer=i;
     break;
   }
