@@ -372,7 +372,11 @@ static RETSIGTYPE receive_signal(int signum)
      * SIGCHLD is the safest signal to substitute.
      *	/grubba 1998-05-19
      */
+#ifdef SIGCHLD
     signum = SIGCHLD;
+#else
+    signum = 0;
+#endif
   }
 
   tmp=firstsig+1;
