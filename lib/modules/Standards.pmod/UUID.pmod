@@ -59,7 +59,7 @@
     distance(Calendar.ISO.Second("unix",0))->how_many(Calendar.Second)
     * 10000000;
 #else
-  constant clk_offset = 12219297132 * 10000000;
+  constant clk_offset = 0x01b21dd213814000 * 10000000;
 #endif
 
 
