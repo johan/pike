@@ -55,6 +55,8 @@ depend:
 module_testsuite: $(SRCDIR)/testsuite.in
 	$(TMP_BINDIR)/mktestsuite $(SRCDIR)/testsuite.in >module_testsuite -DSRCDIR=$(SRCDIR) 
 
+extra_tests: $(MODULE_TESTS)
+
 verify: module_testsuite  $(MODULE_TESTS)
 	$(RUNPIKE) $(TMP_BINDIR)/test_pike.pike module_testsuite
 

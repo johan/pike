@@ -98,6 +98,7 @@ struct program *malloc_size_program=0;
 int compiler_pass;
 int compilation_depth;
 long local_class_counter;
+int catch_level;
 struct compiler_frame *compiler_frame=0;
 static INT32 last_line = 0;
 static INT32 last_pc = 0;

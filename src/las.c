@@ -1405,18 +1405,12 @@ void fix_type_field(node *n)
     break;
 
   case F_INDEX:
-    type_a=CAR(n)->type;
-    type_b=CDR(n)->type;
-    if(!check_indexing(type_a, type_b, n))
-      my_yyerror("Indexing on illegal type.");
-    n->type=index_type(type_a,n);
-    break;
-
   case F_ARROW:
     type_a=CAR(n)->type;
     type_b=CDR(n)->type;
     if(!check_indexing(type_a, type_b, n))
-      my_yyerror("Indexing on illegal type.");
+      if(!catch_level)
+        my_yyerror("Indexing on illegal type.");
     n->type=index_type(type_a,n);
     break;
 
@@ -1479,7 +1473,7 @@ void fix_type_field(node *n)
 
       if(max_args < args)
       {
-	my_yyerror("Too many arguments to %s. (%d %d)\n",name,max_args,args);
+	my_yyerror("Too many arguments to %s.\n",name);
       }
       else if(max_correct_args == args)
       {
@@ -2107,18 +2101,21 @@ int eval_low(node *n)
     if(apply_low_safe_and_stupid(fake_object, jump))
     {
       /* Generate error message */
-      if(throw_value.type == T_ARRAY && throw_value.u.array->size)
+      if(!catch_level)
       {
-	union anything *a;
-	a=low_array_get_item_ptr(throw_value.u.array, 0, T_STRING);
-	if(a)
-	{
-	  yyerror(a->string->str);
+        if(throw_value.type == T_ARRAY && throw_value.u.array->size)
+        {
+	  union anything *a;
+	  a=low_array_get_item_ptr(throw_value.u.array, 0, T_STRING);
+	  if(a)
+	  {
+	    yyerror(a->string->str);
+	  }else{
+	    yyerror("Nonstandard error format.");
+	  }
 	}else{
 	  yyerror("Nonstandard error format.");
 	}
-      }else{
-	yyerror("Nonstandard error format.");
       }
     }else{
       if(foo.yes)
@@ -2162,11 +2159,17 @@ static node *eval(node *n)
     break;
 
   case 0:
+    if(catch_level) return n;
     free_node(n);
     n=0;
     break;
 
   case 1:
+    if(catch_level && IS_ZERO(sp-1))
+    {
+      pop_stack();
+      return n;
+    }
     free_node(n);
     n=mksvaluenode(sp-1);
     pop_stack();

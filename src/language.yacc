@@ -1421,7 +1421,15 @@ catch_arg: '(' comma_expr ')'  { $$=$2; }
   | block
   ; 
 
-catch: F_CATCH catch_arg { $$=mknode(F_CATCH,$2,NULL); } ;
+catch: F_CATCH
+     {
+       catch_level++;
+     }
+     catch_arg
+     {
+       $$=mknode(F_CATCH,$3,NULL);
+       catch_level--;
+      } ;
 
 sscanf: F_SSCANF '(' expr0 ',' expr0 lvalue_list ')'
   {

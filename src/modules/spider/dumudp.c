@@ -105,7 +105,7 @@ static void udp_bind(INT32 args)
   if(FD != -1)
   {
     set_read_callback( FD, 0, 0 );
-    fd_close(FD);	/* Shouldn't this be some other taste of close()? */
+    fd_close(FD);	/* Shouldn't this be some other taste of close()? No - Hubbe */
     FD = -1;
   }
 
@@ -120,7 +120,7 @@ static void udp_bind(INT32 args)
   o=1;
   if(fd_setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char *)&o, sizeof(int)) < 0)
   {
-    close(fd);
+    fd_close(fd);
     error("setsockopt failed\n");
     return;
   }
@@ -140,7 +140,7 @@ static void udp_bind(INT32 args)
 
   if(tmp)
   {
-    close(fd);
+    fd_close(fd);
     pop_n_elems(args);
     push_int(0);
     return;
