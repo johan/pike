@@ -510,9 +510,6 @@ depend: $(SRCDIR)/language.c
 docs:
 	mkdir docs
 
-html_docs: docs
-	$(RUNPIKE) $(TMP_BINDIR)/htmlify_docs docs $(TMP_DOCDIR) `echo $(SRCDIR)/modules/*/doc`
-
 wmml: force
 	@test -d wmml/. || mkdir wmml
 	@modules="`cd $(SRCDIR)/modules; ls -d */. | sed -e '/^_.*/d' -e 's/\/\.$$//'`"; \
