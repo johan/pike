@@ -169,7 +169,9 @@ CHRONO("scale begin");
 
    if (dest->img) { free(dest->img); dest->img=NULL; }
 
-   if (!THIS->img || newx<=0 || newy<=0) return; /* no way */
+   if (!THIS->img) return; /* no way */
+   if (newx<1) newx=1;
+   if (newy<1) newy=1;
 
    new=malloc(newx*newy*sizeof(rgbd_group) +1);
    if (!new) error("Out of memory!\n");
@@ -293,6 +295,8 @@ void img_scale2(struct image *dest, struct image *source)
 **! arg int newysize
 **!	new image size in pixels
 **!
+**! note
+**!     resulting image will be 1x1 pixels, at least
 */
 
 void image_scale(INT32 args)
