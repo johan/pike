@@ -488,11 +488,21 @@ int main(int argc, array(string) argv)
 
 	  string to_compile = test + linetester + widener;
 
+	  if((shift/6)&1)
+	  {
+	    fname+=" (save parent)";
+	    to_compile=
+	      "#pragma save_parent\n"
+	      "# 1\n"
+	      +to_compile;
+	  }
+
 	  if((shift/3)&1)
 	  {
 	    fname+=" (CRNL)";
 	    to_compile=replace(to_compile,"\n","\r\n");
 	  }
+
 
 	  // _optimizer_debug(5);
 	   
