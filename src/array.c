@@ -1201,13 +1201,10 @@ PMOD_EXPORT TYPE_FIELD array_fix_type_field(struct array *v)
   int e;
   TYPE_FIELD t;
 
-  t=0;
-
   if(v->flags & ARRAY_LVALUE)
-  {
-    v->type_field=BIT_MIXED|BIT_UNFINISHED;
-    return;
-  }
+    return v->type_field=BIT_MIXED|BIT_UNFINISHED;
+
+  t=0;
 
   for(e=0; e<v->size; e++) {
     check_svalue (ITEM(v) + e);
