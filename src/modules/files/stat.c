@@ -11,14 +11,12 @@ RCSID("$Id$");
 #include "mapping.h"
 #include "object.h"
 #include "builtin_functions.h"
+#include "operators.h"
 
 #include <sys/stat.h>
 #ifdef HAVE_SYS_PARAM_H
 #include <sys/param.h>
 #endif /* HAVE_SYS_PARAM_H */
-
-void f_index(INT32 args);
-void f_add(INT32 args);
 
 struct program *stat_program=NULL;
 
@@ -307,9 +305,6 @@ static void stat_index(INT32 args)
 		  push_constant_text("-");
 		  
 	       f_add(10);
-
-	       push_int(THIS->s.st_mode);
-	       f_add(2);
 
 	       break;
 	       
