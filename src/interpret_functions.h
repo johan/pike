@@ -1571,6 +1571,7 @@ OPCODE1_JUMP(F_COND_RECUR,"recur if not overloaded")
     apply_low(Pike_fp->current_object,
 	      arg1+Pike_fp->context.identifier_level,
 	      Pike_sp - *--Pike_mark_sp);
+    pc+=sizeof(INT32);
   }else{
     fast_check_threads_etc(6);
     check_c_stack(8192);
