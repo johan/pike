@@ -105,13 +105,6 @@ else
     if test x"$tmp_gl_fail" = xno; then
       AC_DEFINE(HAVE_GL)
       AUTO_OBJS="auto.o"
-
-      if test "x$pike_cv_make_supports_VPATH" = "xno"; then
-        if test -L auto.c.in; then
-          AC_MSG_WARN([Enabling VPATH symlink kludge])
-          test -L auto.c || ln -s $(srcdir)/auto.c auto.c
-        else :; fi
-      else :; fi
     fi
   fi
 
