@@ -126,6 +126,8 @@ AC_TRY_COMPILE([
 #include <stddef.h>
 #endif
 
+$3
+
 ],[
 $1 tmp;
 ],ac_cv_type_$1=yes,ac_cv_type_$1=no)
