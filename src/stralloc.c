@@ -2407,7 +2407,7 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 	  
 	case 'O':
 	  {
-	    /* FIXME: Doesn't care about field widths yet. */
+	    /* FIXME: Doesn't care about field or integer widths yet. */
 	    dynamic_buffer old_buf;
 	    init_buf(&old_buf);
 	    describe_svalue(va_arg(args, struct svalue *), 0, NULL);
@@ -2458,7 +2458,7 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 	  }
 	  break;
 	case 'c':
-	  /* FIXME: Doesn't case about field widths yet. */
+	  /* FIXME: Doesn't care about field or integer widths yet. */
 	  string_builder_putchar(s, va_arg(args, int));
 	  break;
 	case 'b':
