@@ -1,3 +1,7 @@
+// $Id$
+
+#pike __REAL_VERSION__
+
 // neccesary translation (in order)
 array(array(string|array(string))) elite_short =
 ({
