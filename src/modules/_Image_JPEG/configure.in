@@ -10,7 +10,7 @@ AC_MODULE_INIT()
 if test x$with_jpeglib = xyes ; then
   AC_CHECK_HEADERS(jpeglib.h)
   if test $ac_cv_header_jpeglib_h = yes ; then
-    AC_CHECK_LIB(jpeg, jpeg_create_compress, [
+    AC_CHECK_LIB(jpeg, jpeg_CreateCompress, [
       AC_DEFINE(HAVE_LIBJPEG) 
       LIBS="${LIBS-} -ljpeg"
       ])
