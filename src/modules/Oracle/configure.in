@@ -254,7 +254,7 @@ if test x$with_oracle = xyes; then
 
     AC_MSG_CHECKING(for working Oracle libs)
     AC_CACHE_VAL(pike_cv_working_oracle,[
-      AC_TRY_COMPILE([
+      AC_TRY_LINK([
 #ifdef HAVE_OCI_H
 #include <oci.h>
 #else /* !HAVE_OCI_H */
