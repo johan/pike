@@ -11,6 +11,8 @@
 #include "global.h"
 #include "pike_macros.h"
 
+#include "pike_netlib.h"
+
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
 #endif
@@ -55,11 +57,6 @@
 #define FD_SETSIZE MAX_OPEN_FILEDESCRIPTORS
 #endif
 
-#ifdef HAVE_WINSOCK2_H
-#include <winsock2.h>
-#else
-#include <winsock.h>
-#endif
 #include <winbase.h>
 
 typedef int FD;
