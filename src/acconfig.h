@@ -239,7 +239,7 @@
 #undef HAVE_ISLESS
 
 /* Define if you have isunordered */
-#undef HAVE_ISUNORDERD
+#undef HAVE_ISUNORDERED
 
 /* Define if you have crypt.  */
 #undef HAVE_CRYPT
