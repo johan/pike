@@ -1515,8 +1515,12 @@ static int do_docode2(node *n, INT16 flags)
       emit1(F_ARROW_STRING, store_prog_string(CDR(n)->u.sval.u.string));
       return 2;
     }else{
-      tmp1=do_docode(CAR(n), DO_NOT_COPY);
-      emit1(F_ARROW, store_prog_string(CDR(n)->u.sval.u.string));
+      tmp1 = do_docode(CAR(n), DO_NOT_COPY);
+      if ((tmp2 = lfun_lookup_id(CDR(n)->u.sval.u.string)) != -1) {
+	emit1(F_LOOKUP_LFUN, tmp2);
+      } else {
+	emit1(F_ARROW, store_prog_string(CDR(n)->u.sval.u.string));
+      }
       if(!(flags & DO_NOT_COPY))
       {
 	while(n && (n->token==F_INDEX || n->token==F_ARROW)) n=CAR(n);

@@ -84,6 +84,8 @@ extern struct pike_string *this_program_string;
 
 extern char *lfun_names[];
 
+extern struct pike_string *lfun_strings[];
+
 #ifndef STRUCT_SVALUE_DECLARED
 #define STRUCT_SVALUE_DECLARED
 struct svalue;
@@ -442,6 +444,7 @@ int really_low_find_shared_string_identifier(struct pike_string *name,
 					     struct program *prog,
 					     int flags);
 int low_find_lfun(struct program *p, ptrdiff_t lfun);
+int lfun_lookup_id(struct pike_string *lfun_name);
 int low_find_shared_string_identifier(struct pike_string *name,
 				      struct program *prog);
 struct ff_hash;
