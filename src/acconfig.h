@@ -29,6 +29,9 @@
 /* Define this if you want run time self tests */
 #undef PIKE_DEBUG
 
+/* Define to make Pike do a full cleanup at exit to detect leaks. */
+#undef DO_PIKE_CLEANUP
+
 /* Define this if you want pike to interact with valgrind. */
 #undef USE_VALGRIND
 
