@@ -230,7 +230,7 @@ typedef struct my_fd_set_s my_fd_set;
    }									\
 }while(0)
 
-extern long da_handle[MAX_OPEN_FILEDESCRIPTORS];
+extern HANDLE da_handle[MAX_OPEN_FILEDESCRIPTORS];
 extern int fd_type[MAX_OPEN_FILEDESCRIPTORS];
 
 #define fd_FD_CLR(X,Y) FD_CLR((SOCKET)da_handle[X],Y)
