@@ -32,6 +32,9 @@ struct pike_type
   struct pike_type *cdr;
 };
 
+#define CAR_TO_INT(TYPE) ((char *) (TYPE)->car - (char *) 0)
+#define CDR_TO_INT(TYPE) ((char *) (TYPE)->cdr - (char *) 0)
+
 #include "block_alloc_h.h"
 BLOCK_ALLOC(pike_type, n/a)
 
