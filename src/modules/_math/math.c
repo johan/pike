@@ -12,6 +12,7 @@
 #include "error.h"
 #include "module_support.h"
 #include "operators.h"
+#include "bignum.h"
 
 #ifdef PC
 #undef PC
@@ -152,7 +153,15 @@ void f_sqrt(INT32 args)
       return;
     }
     sp[-args].u.float_number=sqrt(sp[-args].u.float_number);
-  }else{
+  }
+#ifdef AUTO_BIGNUM
+  else if(is_bignum_object_in_svalue(&sp[-args]))
+  {
+    safe_apply(sp[-args].u.object, "sqrt", 1);
+  }
+#endif /* AUTO_BIGNUM */
+  else
+  {
     error("Bad argument 1 to sqrt().\n");
   }
 }

@@ -21,6 +21,7 @@
 #include "pike_macros.h"
 #include <ctype.h>
 #include "queue.h"
+#include "bignum.h"
 
 RCSID("$Id$");
 
@@ -839,8 +840,24 @@ void describe_svalue(struct svalue *s,int indent,struct processing *p)
       break;
 
     case T_OBJECT:
+#ifdef AUTO_BIGNUM
+      if(is_bignum_object(s->u.object))
+      {
+	struct pike_string *str;
+	int i;
+	
+	str = string_from_bignum(s->u.object, 10);
+	for(i = 0; i < str->len; i++)
+	  my_putchar(str->str[i]);
+	free_string(str);
+      }
+      else
+	my_strcat("object");
+      break;
+#else
       my_strcat("object");
       break;
+#endif /* AUTO_BIGNUM */
 
     case T_PROGRAM:
       my_strcat("program");
