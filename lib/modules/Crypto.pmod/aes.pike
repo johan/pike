@@ -1,17 +1,6 @@
-/*
- * $Id$
- *
- */
 
-// Advanced Encryption Standard (AES), previously known as
-// @[Crypto.rijndael].
+#pike 7.4
 
-#pike __REAL_VERSION__
+#warning Crypto.aes is deprecated. Use Crypto.AES instead.
 
-inherit Nettle.AES_State;
-
-string name() { return "AES"; }
-
-int query_key_length() { return 32; }
-int query_block_size() { return block_size(); }
-string crypt_block(string p) { return crypt(p); }
+inherit Crypto.aes;
