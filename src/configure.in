@@ -77,16 +77,12 @@ EOF
   ])
   AC_MSG_RESULT($pike_cv_make_supports_VPATH)
   if test "x$pike_cv_make_supports_VPATH" = "xno"; then
-    AC_MSG_WARN([Enabling VPATH symlink kludge])
+    AC_ERROR([
+Building in a separate directory is not supported without VPATH.
 
-    # First duplicate the directory structure...
-    for d in `cd "$srcdir" && find . -type d -print`; do
-      test -d "$d/." || mkdir "$d"
-    done
-    # Then symlink all the files...
-    for f in `cd "$srcdir" && find . -type f -print`; do
-      test -f "$f" || ln -s "$srcdir/$f" "$f"
-    done
+Build in the source directory, or try another make (eg gnumake).
+])
+    exit 1
   else :; fi
 fi
 rm "$srcdir/conftest_VPATH.in" 2>/dev/null
