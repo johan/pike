@@ -426,6 +426,13 @@ class AbstractNode {
   //! Returns the parent node.
   AbstractNode get_parent()          { return (mParent); }
 
+#if 0
+  static void create()
+  {
+    error("Creating a plain AbstractNode.\n");
+  }
+#endif /* 0 */
+
   //! Returns an initialized copy of the node.
   //! @note
   //!   The returned node has no children, and no parent.
@@ -1089,6 +1096,12 @@ class SimpleNode
 {
   inherit AbstractSimpleNode;
   inherit VirtualNode;
+
+  // Needed for cross-overloading
+  void low_clone()
+  {
+    VirtualNode::low_clone();
+  }
 }
 
 // Convenience stuff for creation of @[SimpleNode]s.
@@ -1177,6 +1190,12 @@ class Node
 {
   inherit AbstractNode;
   inherit VirtualNode;
+
+  // Needed for cross-overloading
+  void low_clone()
+  {
+    VirtualNode::low_clone();
+  }
 
 //   int get_tag_code()
 //   {
