@@ -348,7 +348,7 @@ void f_chmod(INT32 args)
   int mode;
   int err;
 
-  VALID_FILE_IO("chmod","write");
+  VALID_FILE_IO("chmod","chmod");
 
   get_all_args("chmod", args, "%s%i", &path, &mode);
   THREADS_ALLOW_UID();
@@ -370,7 +370,10 @@ void f_chown(INT32 args)
   int gid;
   int err;
 
-  VALID_FILE_IO("chown","write");
+#ifdef PIKE_SECURITY
+  if(!CHECK_SECURITY(SECURITY_BIT_SECURITY))
+    error("chown: permission denied.\n");
+#endif
 
   get_all_args("chown", args, "%s%i%i", &path, &uid, &gid);
   THREADS_ALLOW_UID();
