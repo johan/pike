@@ -739,15 +739,29 @@ PIKECLASS Proxy {
 /*! @endmodule
  */
 
+
+
 #endif /* HAVE_LIBNETTLE */
 
 PIKE_MODULE_INIT
 {
+#ifdef __NT__
+  struct program *nt_program = NULL;
+  struct object *nt_object = NULL;
+#endif /* __NT__ */
   INIT;
 #ifdef HAVE_LIBNETTLE
   hash_init();
   cipher_init();
 #endif /* HAVE_LIBNETTLE */
+#ifdef __NT__
+  start_new_program();
+  nt_init();
+  nt_program = end_program();
+  add_object_constant("NT", nt_object=clone_object(nt_program,0), 0);
+  free_object(nt_object);
+  free_program(nt_program);
+#endif /* __NT__ */
 }
 
 PIKE_MODULE_EXIT
@@ -756,5 +770,8 @@ PIKE_MODULE_EXIT
   cipher_exit();
   hash_exit();
 #endif /* HAVE_LIBNETTLE */
+#ifdef __NT__
+  nt_exit();
+#endif /* __NT__ */
   EXIT;
 }
