@@ -578,9 +578,15 @@ object async_request(string server,int port,string query,
 
    request=query+"\r\n"+headers+"\r\n"+data;
 
-   dns_lookup_async(server,async_got_host,port);
-
-   return this_object();
+   if (!con)
+   {
+      dns_lookup_async(server,async_got_host,port);
+      return this_object();
+   }
+   else
+   {
+      async_connected();
+   }
 }
 
 #if constant(thread_create)
@@ -606,7 +612,8 @@ string data(int|void max_length)
 #endif
    int len=(int)headers["content-length"];
    int l;
-   if(zero_type( len ))
+// test if len is zero to get around zero_type bug (??!?) /Mirar
+   if(!len && zero_type( len ))
       l=0x7fffffff;
    else {
       len -= discarded_bytes;
@@ -623,7 +630,9 @@ string data(int|void max_length)
 	 datapos += 2; // And, as if that wasn't enough! *mumble*
      }
      else
-       buf += con->read(l);
+     {
+	buf += con->read(l);
+     }
    }
    if(zero_type( len ))
      len = sizeof( buf ) - datapos - 1;
