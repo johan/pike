@@ -411,6 +411,8 @@ else
   :
 fi
 
+CPPFLAGS="${CPPFLAGS} -I$srcdir"
+
 echo Searching for library directories...
 if test $ldflags_is_set = no ; then
   for d in `echo ${with_lib_path} | sed 's/:/ /g'` \
