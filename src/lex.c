@@ -1404,7 +1404,7 @@ static int do_lex2(int literal, YYSTYPE *yylval)
 	  return 0;
 
 	case '\n':
-	  yyerror("Newline in string.\n");
+	  yyerror("Newline in string.");
 	  free(simple_free_buf());
 	  return 0;
 
