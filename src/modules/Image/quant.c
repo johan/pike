@@ -756,6 +756,9 @@ struct colortable *colortable_from_array(struct array *arr,char *from)
 
 int colortable_rgb(struct colortable *ct,rgb_group rgb)
 {
+  /* NOTE:
+   *	This code MUST be MT-SAFE!
+   */
    int i,best;
 
    if (ct->cache->index.r==rgb.r &&
@@ -858,6 +861,9 @@ int colortable_rgb(struct colortable *ct,rgb_group rgb)
 
 int colortable_rgb_nearest(struct colortable *ct,rgb_group rgb)
 {
+  /* NOTE:
+   *	This code MUST be MT-SAFE!
+   */
    int i,best=0,di,di2;
    rgb_group *prgb;
 
