@@ -45,6 +45,12 @@ struct pike_string;
 struct callable;
 #endif
 
+#ifndef STRUCT_NODE_S_DECLARED
+#define STRUCT_NODE_S_DECLARED
+struct node_s;
+typedef struct node_s node;
+#endif
+
 struct processing
 {
   struct processing *next;

@@ -9,7 +9,6 @@
 #define PIKE_TYPES_H
 
 #include "svalue.h"
-#include "las.h"
 
 #define PIKE_TYPE_STACK_SIZE 100000
 

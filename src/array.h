@@ -8,7 +8,7 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
-#include "las.h"
+#include "svalue.h"
 
 /* This debug tool writes out messages whenever arrays with unfinished
  * type fields are encountered. */

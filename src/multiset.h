@@ -437,7 +437,7 @@ void test_multiset (void);
 
 #else  /* PIKE_NEW_MULTISETS */
 
-#include "las.h"
+#include "svalue.h"
 
 struct multiset
 {

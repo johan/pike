@@ -8,7 +8,7 @@
 #ifndef MAPPING_H
 #define MAPPING_H
 
-#include "las.h"
+#include "svalue.h"
 #include "block_alloc_h.h"
 
 /* Compatible with PIKE_WEAK_INDICES and PIKE_WEAK_VALUES. */
