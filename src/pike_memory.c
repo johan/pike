@@ -1394,7 +1394,8 @@ void *debug_malloc(size_t s, LOCATION location)
 {
   char *m;
 
-  if (s & 0xff000000) {
+  /* Complain on attempts to allocate more than 16MB memory */
+  if (s > (size_t)0x01000000) {
     fatal("malloc(0x%08lx) -- Huge malloc!\n", (unsigned long)s);
   }
 
