@@ -1988,6 +1988,8 @@ PMOD_EXPORT void f_allocate(INT32 args)
   struct svalue *init;
 
   get_all_args("allocate", args, "%+.%*", &size, &init);
+  if (size > MAX_INT32)
+    SIMPLE_ARG_ERROR ("allocate", 1, "Integer too large to use as array size.");
 
   a=allocate_array(size);
   if(args>1)
