@@ -971,5 +971,21 @@ void * debug_malloc_update_location(void *p,const char *fn, int line)
   return p;
 }
 
+void reset_debug_malloc(void)
+{
+  INT32 h;
+  for(h=0;h<HSIZE;h++)
+  {
+    struct memhdr *m;
+    for(m=hash[h];m;m=m->next)
+    {
+      struct memloc *l;
+      for(l=m->locations;l;l=l->next)
+      {
+	l->times=0;
+      }
+    }
+  }
+}
 
 #endif

@@ -21,6 +21,7 @@ extern void *debug_calloc(size_t, size_t, const char *, int);
 extern void *debug_realloc(void *, size_t, const char *, int);
 extern void debug_free(void *, const char *, int);
 extern char *debug_strdup(const char *, const char *, int);
+extern void reset_debug_malloc(void);
 void *debug_malloc_update_location(void *,const char *, int);
 #define malloc(x) debug_malloc((x), __FILE__, __LINE__)
 #define calloc(x, y) debug_calloc((x), (y), __FILE__, __LINE__)
