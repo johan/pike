@@ -123,6 +123,7 @@ array(string) split(string data, void|mapping state)
 	  if(data[pos]=='e' || data[pos]=='E')
 	  {
 	    pos++;
+	    if(data[pos]=='-') pos++;
 	    while(data[pos]>='0' && data[pos]<='9') pos++;
 	  }
 	  break;
