@@ -350,6 +350,11 @@ static function(string:string) get_attr_encoder (string attr)
     //! @note
     //!  Don't be destructive on the returned mapping.
     //!
+    //! @note
+    //!  In Pike 7.6 and earlier, the special @expr{"dn"@} entry was
+    //!  incorrectly returned in UTF-8 encoded form for LDAPv3
+    //!  connections.
+    //!
     //! @seealso
     //!   @[fetch_all]
     int|mapping(string:array(string)) fetch(int|void idx) {
@@ -366,7 +371,11 @@ static function(string:string) get_attr_encoder (string attr)
     //!
     //! Returns distinguished name (DN) of the current entry
     //! in the result list. Notice that this is the same
-    //! as fetch()->dn[0].
+    //! as @expr{fetch()->dn[0]@}.
+    //!
+    //! @note
+    //!  In Pike 7.6 and earlier, this field was incorrectly returned
+    //!  in UTF-8 encoded form for LDAPv3 connections.
     string get_dn() { return fetch()["dn"][0]; }
 
     //!
