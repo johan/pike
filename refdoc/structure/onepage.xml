@@ -11,9 +11,6 @@
     <chapter-ref file="chapters/data_types.xml"/>
     <chapter-ref file="chapters/language_reference.xml"/>
     <chapter-ref file="chapters/autodoc.xml"/>
-    <appendix-ref name="Image.Color colors"/>
-    <appendix-ref name="Image.Layer modes"/>
-    <appendix-ref file="chapters/appendix_bnf.xml"/>
   </file>
   </dir>
 </manual>

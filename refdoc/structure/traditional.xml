@@ -136,13 +136,7 @@
     <chapter-ref file="chapters/autodoc.xml"/>
   </file>
   <file>
-    <appendix-ref name="Image.Color colors"/>
-  </file>
-  <file>
-    <appendix-ref name="Image.Layer modes"/>
-  </file>
-  <file>
-    <appendix-ref file="chapters/appendix_bnf.xml"/>
+    <chapter-ref file="chapters/pike_bnf.xml"/>
   </file>
   </dir>
 
