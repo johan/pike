@@ -99,7 +99,7 @@ static private class scan {
 	  } else {
 	    pos = sizeof(str);
 	  }
-	  if (str != pos-2) {
+	  if (start != pos-2) {
 	    return ({ "string", str[start+1..pos-2] });
 	  }
 	  /* Throw away empty strings (EOF) */
