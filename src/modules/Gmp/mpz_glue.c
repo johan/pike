@@ -1264,7 +1264,7 @@ static void gmp_pow(INT32 args)
   if ( (sp[-2].type != T_INT) || (sp[-2].u.integer < 0)
        || (sp[-1].type != T_INT) || (sp[-1].u.integer < 0))
     error("Gmp.pow: Negative arguments");
-  res = fast_clone_object(THIS_PROGRAM, 0);
+  res = fast_clone_object(mpzmod_program, 0);
   mpz_ui_pow_ui(OBTOMPZ(res), sp[-2].u.integer, sp[-1].u.integer);
   pop_n_elems(args);
   PUSH_REDUCED(res);
@@ -1279,7 +1279,7 @@ static void gmp_fac(INT32 args)
     error("Gmp.fac: Non int argument.\n");
   if (sp[-1].u.integer < 0)
     error("Gmp.mpz->pow: Negative exponent.\n");
-  res = fast_clone_object(THIS_PROGRAM, 0);
+  res = fast_clone_object(mpzmod_program, 0);
   mpz_fac_ui(OBTOMPZ(res), sp[-1].u.integer);
   pop_n_elems(args);
   PUSH_REDUCED(res);
