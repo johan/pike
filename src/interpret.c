@@ -166,7 +166,8 @@ void gc_mark_stack_external (struct pike_frame *f,
 
 static void gc_check_stack_callback(struct callback *foo, void *bar, void *gazonk)
 {
-  gc_mark_stack_external (Pike_fp, Pike_sp, Pike_interpreter.evaluator_stack);
+  if (Pike_interpreter.evaluator_stack)
+    gc_mark_stack_external (Pike_fp, Pike_sp, Pike_interpreter.evaluator_stack);
 }
 #endif
 
