@@ -509,6 +509,7 @@ void pike_module_init(void)
   /* function(string:string) */
   ADD_FUNCTION("des_parity", f_des_parity,tFunc(tStr,tStr), 0);
 
+  pike_md2_init();
   pike_md5_init();
   pike_sha_init();
   pike_crypto_init();
@@ -530,6 +531,7 @@ void pike_module_init(void)
 
 void pike_module_exit(void)
 {
+  pike_md2_exit();
   pike_md5_exit();
   pike_sha_exit();
   pike_crypto_exit();
