@@ -1247,12 +1247,13 @@ static void image_find_autocrop(INT32 args)
    rgb_group rgb={0,0,0};
    int left=1,right=1,top=1,bottom=1;
 
-   if (args) 
+   if (args) {
       if (sp[-args].type!=T_INT)
          bad_arg_error("find_autocrop",sp-args,args,0,"",sp-args,
 		"Bad arguments to find_autocrop()\n");
       else
          border=sp[-args].u.integer; 
+   }
 
    if (args>=5)
    {

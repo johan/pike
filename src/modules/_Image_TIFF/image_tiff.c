@@ -23,6 +23,7 @@ RCSID("$Id$");
 #include "module_support.h"
 #include "error.h"
 #include "stralloc.h"
+#include "operators.h"
 #include "../Image/image.h"
 
 #ifdef INLINE

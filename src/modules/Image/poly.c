@@ -370,11 +370,12 @@ static struct vertex *vertex_find_or_insert(struct poly *p,
       j=(a+b)/2;
       if (y<p->vertex[j].y) b=j-1;
       else if (y>p->vertex[j].y) a=j+1;
-      else if (y==p->vertex[j].y) 
+      else if (y==p->vertex[j].y) {
 	 if (x<p->vertex[j].x) b=j-1;
 	 else if (x>p->vertex[j].x) a=j+1;
 	 else
 	    return p->vertex+j;
+      }
    }
    
    if (p->nallocatedvertex==p->nvertex)

@@ -22,6 +22,7 @@ struct callback *gc_evaluator_callback=0;
 #include "time_stuff.h"
 #include "constants.h"
 #include "interpret.h"
+#include "bignum.h"
 
 #include "gc.h"
 #include "main.h"

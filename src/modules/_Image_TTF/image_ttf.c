@@ -33,6 +33,7 @@ RCSID("$Id$");
 #include "error.h"
 #include "stralloc.h"
 #include "builtin_functions.h"
+#include "operators.h"
 
 #ifdef HAVE_LIBTTF
 #include "../Image/image.h"
@@ -1260,7 +1261,8 @@ void pike_module_init(void)
    /* First check that we actually can initialize the FreeType library. */
    if ((errcode = TT_Init_FreeType(&engine))) {
 #ifdef PIKE_DEBUG
-     fprintf(stderr, "TT_Init_FreeType() failed with code 0x%03x!\n", errcode);
+     fprintf(stderr, "TT_Init_FreeType() failed with code 0x%03lx!\n",
+	     (unsigned long)errcode);
 #endif /* PIKE_DEBUG */
      return;
    }

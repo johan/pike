@@ -40,6 +40,7 @@ RCSID("$Id$");
 #include "module_support.h"
 #include "operators.h"
 #include "dmalloc.h"
+#include "bignum.h"
 
 #include "image.h"
 #include "colortable.h"

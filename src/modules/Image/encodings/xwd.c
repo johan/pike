@@ -34,7 +34,7 @@ RCSID("$Id$");
 #include "threads.h"
 #include "array.h"
 #include "error.h"
-
+#include "mapping.h"
 
 #include "image.h"
 #include "builtin_functions.h"

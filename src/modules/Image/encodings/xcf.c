@@ -168,7 +168,8 @@ static char *read_data( struct buffer * from, size_t len )
 {
   char *res;
   if( from->len < len )
-    error("Not enough space for %lu bytes\n", len);
+    error("Not enough space for %lu bytes\n",
+	  DO_NOT_WARN((unsigned long)len));
   res = (char *)from->str;
   from->str += len;
   from->len -= len;
