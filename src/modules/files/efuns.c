@@ -669,10 +669,10 @@ void f_mkdir(INT32 args)
      implementations (e.g. Mac OS X) */
   s = str->str;
   s_dup = 0;
-  if (s[strlen(s) - 1] == '/') {
-    if (s_dup = strdup(s)) {
+  if (str->len && s[str->len - 1] == '/') {
+    if ((s_dup = strdup(s))) {
       s = s_dup;
-      s[strlen(s) - 1] = '\0';
+      s[str->len - 1] = '\0';
     }
   }
   
