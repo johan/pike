@@ -2022,9 +2022,7 @@ class StdinHilfe
     catch{
       if(string home=getenv("HOME")||getenv("USERPROFILE"))
       {
-	if(Stdio.File f=Stdio.File(home+"/.hilfe_history","r"))
-	{
-	  string s=f->read()||"";
+	if(string s=Stdio.read_file(home+"/.hilfe_history")) {
 	  hist=s/"\n";
 	  readline->enable_history(hist);
 	}
