@@ -270,7 +270,7 @@ static void f_select_db(INT32 args)
 {
   MYSQL *socket = PIKE_MYSQL->socket;
   char *database;
-  int tmp;
+  int tmp = -1;
 
   if (!args) {
     error("Too few arguments to mysql->select_db()\n");
@@ -321,7 +321,7 @@ static void f_big_query(INT32 args)
   MYSQL_RES *result;
   char *query;
   int qlen;
-  int tmp;
+  int tmp = -1;
 
   if (!args) {
     error("Too few arguments to mysql->big_query()\n");
@@ -398,7 +398,7 @@ static void f_create_db(INT32 args)
 {
   MYSQL *socket = PIKE_MYSQL->socket;
   char *database;
-  int tmp;
+  int tmp = -1;
 
   if (!args) {
     error("Too few arguments to mysql->create_db()\n");
@@ -445,7 +445,7 @@ static void f_drop_db(INT32 args)
 {
   MYSQL *socket = PIKE_MYSQL->socket;
   char *database;
-  int tmp;
+  int tmp = -1;
 
   if (!args) {
     error("Too few arguments to mysql->drop_db()\n");
@@ -491,7 +491,7 @@ static void f_drop_db(INT32 args)
 static void f_shutdown(INT32 args)
 {
   MYSQL *socket = PIKE_MYSQL->socket;
-  int tmp;
+  int tmp = -1;
 
   if (socket) {
     THREADS_ALLOW();
@@ -524,7 +524,7 @@ static void f_shutdown(INT32 args)
 static void f_reload(INT32 args)
 {
   MYSQL *socket = PIKE_MYSQL->socket;
-  int tmp;
+  int tmp = -1;
 
   if (socket) {
     THREADS_ALLOW();
