@@ -257,7 +257,7 @@ int verify_signature(string text, string sig, string pubkey)
 
 string sha_sign(string text, mixed key) {
   string hash=Crypto.SHA1.hash(text);
-  if(key->dsa_hash) {
+  if(key->name()=="DSA") {
     int r,s;
     [ r, s ] = key->raw_sign( Gmp.mpz(hash,256) );
 
