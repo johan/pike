@@ -103,9 +103,9 @@ struct out_piece
 };
 
 #undef INIT_BLOCK
-#define INIT_BLOCK(p) p->next = NULL;
+#define INIT_BLOCK(p) p->next = NULL
 #undef EXIT_BLOCK
-#define EXIT_BLOCK(p) free_svalue (&p->v);
+#define EXIT_BLOCK(p) free_svalue (&p->v)
 
 BLOCK_ALLOC (out_piece, 211);
 
