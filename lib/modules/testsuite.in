@@ -1,5 +1,7 @@
 dnl $Id$
 
+START_MARKER
+
 dnl - Array
 
 test_equal(Array.diff(({ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }),
@@ -30,7 +32,10 @@ dnl Array.diff_compare_table
 test_equal(Array.longest_ordered_sequence("dfgaokäpojghadjjioijrgxcvb"/""),
 	   ({ 0, 1, 2, 10, 11, 16, 18, 19, 20, 22 }));
 
-dnl Array.interleave_array
+test_equal([[ Array.interleave_array( ({
+  ([ 2:2, 6:3]), ([ 2:4, 5:5 ]), ([]), ([2:6,3:7,6:8]) })) ]],[[
+({ 0, 2, -1, 6 }) ]])
+
 dnl Array.sort
 
 test_equal([[ Array.diff(enumerate(4),enumerate(4,1,2)) ]],
@@ -951,3 +956,5 @@ test_do([[
     }
   }
 ]])
+
+END_MARKER
