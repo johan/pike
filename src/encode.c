@@ -755,6 +755,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
 #include "program_areas.h"
 
         adddata2(p->program, p->num_program);
+	adddata2(p->relocations, p->num_relocations);
         adddata2(p->linenumbers, p->num_linenumbers);
 
         for(d=0;d<p->num_identifier_index;d++)
@@ -2082,6 +2083,7 @@ static void decode_value2(struct decode_data *data)
 	  p->flags |= PROGRAM_OPTIMIZED;
 
 	  getdata2(p->program, p->num_program);
+	  getdata2(p->relocations, p->num_relocations);
 	  getdata2(p->linenumbers, p->num_linenumbers);
 
 #ifdef DEBUG_MALLOC
