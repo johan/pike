@@ -1969,6 +1969,7 @@ AC_CHECK_FUNCS( \
  setgid getgid setegid getegid \
  getpwent getpwnam getpwuid \
  getgrent getgrnam \
+ setsid setpgrp getpgrp setpgid getpgid \
  initgroups setgroups \
  socketpair \
  fpclass \
