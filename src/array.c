@@ -2323,6 +2323,12 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b)
 {
   INT32 e,size;
   struct array *ret;
+
+  if (!a->size) {
+    add_ref(a);
+    return a;
+  }
+
   size=0;
   for(e=0;e<a->size;e++)
   {
