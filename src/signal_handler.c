@@ -4547,7 +4547,8 @@ static void do_signal_exit(INT32 sig)
 /*! @decl void atexit(function callback)
  *!
  *! This function puts the @[callback] in a queue of callbacks to
- *! call when pike exits.
+ *! call when pike exits. The call order is reversed, i.e. callbacks
+ *! that have been added earlier are called after @[callback].
  *!
  *! @note
  *!   Please note that @[atexit] callbacks are not called if Pike
