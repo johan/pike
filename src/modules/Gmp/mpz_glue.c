@@ -541,7 +541,7 @@ static void mpzmod_invert(INT32 args)
   res = clone_object(mpzmod_program, 0);
   if (mpz_invert(OBTOMPZ(res), THIS, modulo) == 0)
   {
-    really_free_object(res);
+    free_object(res);
     error("Gmp.mpz->invert: not invertible");
   }
   pop_n_elems(args);
