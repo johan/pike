@@ -8,3 +8,6 @@
 #undef HAVE_LIBFT2
 @TOP@
 @BOTTOM@
+
+/* Define if you have a declaration of ft_encoding_latin_1 */
+#undef HAVE_DECL_FT_ENCODING_LATIN_1
