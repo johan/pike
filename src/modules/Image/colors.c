@@ -199,6 +199,7 @@ RCSID("$Id$");
 #include "operators.h"
 #include "module_support.h"
 #include "opcodes.h"
+#include "program_id.h"
 
 #include "image.h"
 #include "colortable.h"
@@ -1757,6 +1758,8 @@ void init_image_colors(void)
    ADD_FUNCTION("_indices",image_colors_indices,tFunc(tNone,tArr(tStr)),0);
    ADD_FUNCTION("_values",image_colors_values,tFunc(tNone,tArr(tObj)),0);
 
+   image_color_program->id = PROG_IMAGE_COLOR_COLOR_ID;
+   
    add_program_constant("Color",image_color_program,0);
 }
 

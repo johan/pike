@@ -16,7 +16,7 @@
 #include "pike_macros.h"
 #include "svalue.h"
 #include "time_stuff.h"
-
+#include "program_id.h"
 
 #define STRUCT
 #include "compilation.h"
