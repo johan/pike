@@ -4470,6 +4470,12 @@ define([[MTEST]])
 test_equal([[lambda(multiset x){return ({x[17]++,x[17]++,x[17]++});}((<>))]],
 		[[({0,1,1})]])
 
+test_do([[
+  multiset a = copy_value ((<(<1,2,3>), ({5,4}), ([1:2]), 1, ({}), (<1,2>), "foo">));
+  foreach (a; mixed i;)
+    if (!a[i]) error ("Can't find multiset member in itself: %O\n", i);
+]])
+
 // mapping tests
 
 test_any([[mapping m=([]);int e;
