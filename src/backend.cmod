@@ -2907,10 +2907,12 @@ PIKECLASS Backend
     }
 
     {FOR_EACH_ACTIVE_FD_BOX (me, box) {
-	gc_recurse_short_svalue ((union anything *) &box->ref_obj, T_OBJECT);
+	if (box->ref_obj && box->events)
+	  gc_recurse_short_svalue ((union anything *) &box->ref_obj, T_OBJECT);
       }}
     {FOR_EACH_INACTIVE_FD_BOX (me, box) {
-	gc_recurse_short_svalue ((union anything *) &box->ref_obj, T_OBJECT);
+	if (box->ref_obj && box->events)
+	  gc_recurse_short_svalue ((union anything *) &box->ref_obj, T_OBJECT);
       }}
   }
 
