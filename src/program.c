@@ -3443,7 +3443,7 @@ void store_linenumber(INT32 current_line, struct pike_string *current_file)
  */
 PMOD_EXPORT char *get_line(unsigned char *pc,struct program *prog,INT32 *linep)
 {
-  static char *file, *cnt;
+  static char *base, *file, *cnt;
   static INT32 off,line,pid;
   ptrdiff_t offset;
 
@@ -3456,9 +3456,9 @@ PMOD_EXPORT char *get_line(unsigned char *pc,struct program *prog,INT32 *linep)
     return "Optimizer";
   }
 
-  if(prog->id != pid || offset < off)
+  if(base != prog->linenumbers || prog->id != pid || offset < off)
   {
-    cnt=prog->linenumbers;
+    base = cnt = prog->linenumbers;
     off=line=0;
     file="Line not found";
     pid=prog->id;
