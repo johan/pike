@@ -292,6 +292,12 @@ void async_fetch_read(mixed dummy,string data)
    werror("-> %d bytes of data\n",sizeof(data));
 #endif
    buf+=data;
+
+   if (sizeof(buf)-datapos>=(int)headers["content-length"])
+   {
+      con->set_nonblocking(0,0,0);
+      request_ok(@extra_args);
+   }
 }
 
 void async_fetch_close()
@@ -830,6 +836,12 @@ static void destroy()
 //!	Fetch all data in background.
 void async_fetch(function callback,mixed ... extra)
 {
+   if (sizeof(buf)-datapos>=(int)headers["content-length"])
+   {
+      callback(@extra);
+      return;
+   }
+
    if (!con)
    {
       callback(@extra); // nothing to do, stupid...
