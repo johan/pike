@@ -24,6 +24,7 @@ RCSID("$Id$");
 #include "port.h"
 
 #include "image.h"
+#include "colortable.h"
 #include "builtin_functions.h"
 
 extern struct program *image_colortable_program;
@@ -52,7 +53,8 @@ void image_to8bit(INT32 args) /* compat function */
 {
   struct neo_colortable *nct;
   struct object *o;
-  struct pike_string *res = begin_shared_string((THIS->xsize*THIS->ysize));
+  struct image *this = THIS;
+  struct pike_string *res = begin_shared_string((this->xsize*this->ysize));
   unsigned long i;
   rgb_group *s;
   unsigned char *d;
@@ -62,14 +64,14 @@ void image_to8bit(INT32 args) /* compat function */
   o=clone_object(image_colortable_program,args);
   nct=get_storage(o,image_colortable_program);
 
-  i=THIS->xsize*THIS->ysize;
-  s=THIS->img;
+  i=this->xsize*this->ysize;
+  s=this->img;
   d=(unsigned char *)res->str;
 
   THREADS_ALLOW();
 
-  image_colortable_index_8bit_image(nct,THIS->img,
-				    THIS->xsize*THIS->ysize,THIS->xsize);
+  image_colortable_index_8bit_image(nct,this->img,d,
+				    this->xsize*this->ysize,this->xsize);
 
   THREADS_DISALLOW();
 
