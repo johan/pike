@@ -1369,8 +1369,10 @@ static void exit_program_struct(struct program *p)
 
   if(p->parent)
   {
-    free_program(p->parent);
-    p->parent=0;
+    /* Make sure to break the circularity... */
+    struct program *parent = p->parent;
+    p->parent = NULL;
+    free_program(parent);
   }
 
 
