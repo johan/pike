@@ -39,6 +39,7 @@ struct zipper
 #define BUF 32768
 #define MAX_BUF	(64*BUF)
 
+#undef THIS
 #define THIS ((struct zipper *)(fp->current_storage))
 
 static void gz_deflate_create(INT32 args)
