@@ -8,6 +8,7 @@
 
  */
 
+#if constant(_Ffmpeg)
 class decoder {
 
   private object codec;
@@ -67,3 +68,4 @@ class decoder {
   }
 
 }
+#endif
