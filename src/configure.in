@@ -3087,6 +3087,22 @@ MY_CHECK_FUNCTION(fork,
 ])
 
 ########################################################################
+MY_CHECK_FUNCTION(PTHREAD_MUTEX_ERRORCHECK,
+[
+#include <pthread.h>
+], [
+  PTHREAD_MUTEX_ERRORCHECK;
+  exit(0);
+])
+########################################################################
+MY_CHECK_FUNCTION(PTHREAD_MUTEX_ERRORCHECK_NP,
+[
+#include <pthread.h>
+], [
+  PTHREAD_MUTEX_ERRORCHECK_NP;
+  exit(0);
+])
+########################################################################
 MY_CHECK_FUNCTION(PTHREAD_MUTEX_RECURSIVE,
 [
 #include <pthread.h>

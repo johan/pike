@@ -23,6 +23,7 @@ extern int try_use_mmx;
 /* Debug options */
 #define DEBUG_SIGNALS 1
 #define NO_TAILRECURSION 2
+#define ERRORCHECK_MUTEXES 4
 
 /* Runtime options */
 #define RUNTIME_CHECK_TYPES  1
