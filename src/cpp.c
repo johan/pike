@@ -774,6 +774,8 @@ static INT32 low_cpp(struct cpp *this, void *data, INT32 len, int shift,
   default:
     fatal("low_cpp(): Bad shift: %d\n", shift);
   }
+  /* NOT_REACHED */
+  return 0;
 }
 
 void free_one_define(struct hash_entry *h)
