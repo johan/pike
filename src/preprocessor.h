@@ -923,9 +923,13 @@ static INT32 lower_cpp(struct cpp *this,
 		default: continue;
 		  
 		case '"':
-		  FIND_END_OF_STRING();
+		  if(data[pos-2]!='#') {
+		    FIND_END_OF_STRING();
+		  }else{
+		    FIND_END_OF_STRING2();  /* Newlines allowed */
+		  }
 		  continue;
-		  
+
 		case '\'':
 		  FIND_END_OF_CHAR();
 		  continue;
