@@ -84,7 +84,7 @@ struct hash_table *hash_rehash(struct hash_table *h,int size)
 
 #ifdef PIKE_DEBUG
   if( 1 << my_log2(size) != size)
-    fatal("Size is not a exponent of two!\n");
+    fatal("Size is not a power of two!\n");
 #endif
 
   new=(struct hash_table *)calloc(1,sizeof(struct hash_table)+

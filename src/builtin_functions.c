@@ -114,7 +114,7 @@ void f_hash(INT32 args)
       break;
 
     default:
-      fatal("Foo!\n");
+      fatal("hash(): Bad string shift:%d\n", sp[-args].u.string->size_shift);
   }
   
   if(args > 1)
