@@ -8,11 +8,18 @@
 #include "svalue.h"
 #include "interpret.h"
 #include "stralloc.h"
+#include "version.h"
 
 RCSID("$Id$");
 
+#define STR(X) #X
 void f_version(INT32 args)
 {
+  char buffer[128];
+  sprintf(buffer,"Pike v%d.%d release %d",
+	  PIKE_MAJOR_VERSION,
+	  PIKE_MINOR_VERSION,
+	  PIKE_BUILD_VERSION);
   pop_n_elems(args);
-  push_text("Pike v0.7 release 0");
+  push_text(buffer);
 }
