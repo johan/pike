@@ -717,8 +717,8 @@ static void image_color_equal(INT32 args)
 	  sp[-1].u.array->item[1].type==T_INT &&
 	  sp[-1].u.array->item[2].type==T_INT &&
 	  sp[-1].u.array->item[0].u.integer == THIS->rgb.r &&
-	  sp[-1].u.array->item[0].u.integer == THIS->rgb.g &&
-	  sp[-1].u.array->item[0].u.integer == THIS->rgb.b)
+	  sp[-1].u.array->item[1].u.integer == THIS->rgb.g &&
+	  sp[-1].u.array->item[2].u.integer == THIS->rgb.b)
       {
 	 pop_stack();
 	 push_int(1);
