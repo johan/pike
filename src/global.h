@@ -45,6 +45,11 @@ struct object;
 struct array;
 struct svalue;
 
+#ifndef STRUCT_TIMEVAL_DECLARED
+#define STRUCT_TIMEVAL_DECLARED
+struct timeval;
+#endif
+
 #include "machine.h"
 
 /*
