@@ -1224,8 +1224,8 @@ class Port
   int bind(int|string port, void|function accept_callback, void|string ip) {
     // Needed to fix _sprintf().
     debug_ip = (ip||"ANY");
-    debug_port = p;
-    ::bind(port, accept_callback, ip);
+    debug_port = port;
+    return ::bind(port, accept_callback, ip);
   }
 
   //! This function completes a connection made from a remote machine to
