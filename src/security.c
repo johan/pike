@@ -51,7 +51,6 @@
 
 static struct program *creds_program;
 
-struct object *current_creds=0;
 #undef THIS
 #define THIS ((struct pike_creds *)(CURRENT_STORAGE))
 
@@ -160,8 +159,8 @@ static void f_call_with_creds(INT32 args)
 static void f_get_current_creds(INT32 args)
 {
   pop_n_elems(args);
-  if(current_creds)
-    ref_push_object(current_creds);
+  if(CURRENT_CREDS)
+    ref_push_object(CURRENT_CREDS);
   else
     push_int(0);
 }
@@ -294,7 +293,7 @@ static void creds_apply(INT32 args)
 
   if( CHECK_SECURITY(SECURITY_BIT_SECURITY) ||
       (Pike_sp[-args].u.array->prot &&
-       (OBJ2CREDS(current_creds)->user == THIS->user) &&
+       (OBJ2CREDS(CURRENT_CREDS)->user == THIS->user) &&
        (OBJ2CREDS(Pike_sp[-args].u.array->prot)->user == THIS->user)))
   {
     if(Pike_sp[-args].u.array->prot)
@@ -452,6 +451,7 @@ void init_pike_security(void)
   CONST(SECURITY);
   CONST(NOT_SETUID);
   CONST(CONDITIONAL_IO);
+  CONST(DESTRUCT);
 
   tmpp=end_program();
   add_object_constant("security",tmpo=clone_object(tmpp,0),0);
