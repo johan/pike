@@ -507,9 +507,6 @@ int main()
       AC_DEFINE(_THREAD_SAFE)
       AC_DEFINE(_MIT_POSIX_THREADS,1)
 
-      # We have to include this file!
-      echo >>confdefs.h "#include <pthread.h>"
-
       AC_MSG_CHECKING(for pthread_attr_setstacksize)
       AC_CACHE_VAL(pike_cv_have_pthread_attr_setstacksize,[
         AC_TRY_COMPILE([
