@@ -627,9 +627,7 @@ void f_exit(INT32 args)
   free_callback(&exit_callbacks);
 
   i=sp[-args].u.integer;
-#ifdef DEBUG
   exit_modules();
-#endif
 
   UNSET_ONERROR(tmp);
   exit(i);
