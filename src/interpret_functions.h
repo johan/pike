@@ -1408,7 +1408,7 @@ OPCODE0(F_SOFT_CAST, "soft cast")
        * check for them.
        */
       if (!pike_types_le(sval_type, weak_type_string) ||
-	  !match_types(sval_type, Pike_sp[-2].u.string)) {
+	  !match_types(sval_type, Pike_sp[-2].u.type)) {
 	struct pike_string *t1;
 	struct pike_string *t2;
 	char *fname = "__soft-cast";
@@ -1424,7 +1424,7 @@ OPCODE0(F_SOFT_CAST, "soft cast")
 	    fname = name->str;
 	}
 
-	t1 = describe_type(Pike_sp[-2].u.string);
+	t1 = describe_type(Pike_sp[-2].u.type);
 	SET_ONERROR(tmp1, do_free_string, t1);
 	  
 	t2 = describe_type(sval_type);
