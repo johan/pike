@@ -674,7 +674,7 @@ CHRONO("gif render_block begin");
    if (numcolors==0)
       error("Image.GIF.render_block(): no colors in colortable\n");
    else if (numcolors>256)
-      error("Image.GIF.render_block(): too many colors in colortable (256 is max)\n");
+      error("Image.GIF.render_block(): too many colors in given colortable: %d (256 is max)\n",numcolors);
 
    if (args>=5)
    {
@@ -915,7 +915,7 @@ CHRONO("gif render_block end");
 **!	and is actually implemented that way.
 */
 
-static void _image_gif_encode(INT32 args,int fs)
+void _image_gif_encode(INT32 args,int fs)
 {
    struct image *img=NULL;
    struct object *imgobj=NULL;

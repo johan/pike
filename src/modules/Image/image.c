@@ -2454,8 +2454,8 @@ void image_map_compat(INT32 args) /* compat function */
 
   THREADS_DISALLOW();
 
-  free_object(o);
-  push_object(co);
+  free_object(co);
+  push_object(o);
 }
 
 void image_select_colors(INT32 args)
