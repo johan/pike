@@ -1071,6 +1071,9 @@ constant master_efuns = ({
   "describe_error",
   "get_backtrace",
   "normalize_path",
+  "bool",
+  "true",
+  "false",
   "getenv",
   "putenv",
 
@@ -1079,6 +1082,8 @@ constant master_efuns = ({
   "getcwd",
 #endif
 });
+
+enum bool { false=0, true=1 };
 
 string include_prefix;
 
@@ -1103,7 +1108,7 @@ string include_prefix;
 static void create()
 {
   foreach(master_efuns, string e)
-    if (this[e])
+    if (!zero_type(this[e]))
       add_constant(e, this[e]);
     else
       error("Function %O is missing from master.pike.\n", e);
