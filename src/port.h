@@ -39,7 +39,9 @@ time_t TIME(time_t *);
 #endif
 
 #ifndef HAVE_RINT
-#define rint(X) floor( (X) + 0.5 )
+#define RINT rint
+#else
+#define RINT(X) floor( (X) + 0.5 )
 #endif
 
 #if defined(HAVE_STRTOL) && defined(HAVE_WORKING_STRTOL)

@@ -221,7 +221,7 @@ void f_round(INT32 args)
 {
   if(args<1) error("Too few arguments to round()\n");
   if(sp[-args].type!=T_FLOAT) error("Bad argument 1 to round()\n");
-  sp[-args].u.float_number=rint(sp[-args].u.float_number);
+  sp[-args].u.float_number=RINT(sp[-args].u.float_number);
 }
 
 void f_min(INT32 args)

@@ -1195,7 +1195,7 @@ static void low_pike_sprintf(struct format_stack *fs,
 
 	if(fs->fsp->precision<0) {
 	  double m=pow(10.0, (double)fs->fsp->precision);
-	  tf=rint(tf*m)/m;
+	  tf=RINT(tf*m)/m;
 	}
 	
 	sprintf(x,buffer,1,fs->fsp->precision<0?0:fs->fsp->precision,tf);
