@@ -3464,7 +3464,8 @@ PMOD_EXPORT char *get_line(unsigned char *pc,struct program *prog,INT32 *linep)
     file="Line not found";
     pid=prog->id;
   }else{
-    goto fromold;
+    if (cnt < prog->linenumbers + prog->num_linenumbers)
+      goto fromold;
   }
 
   if ((offset > (ptrdiff_t)prog->num_program) || (offset < 0))
