@@ -36,6 +36,13 @@ string cquote(string n)
   return ret;
 }
 
+string create_reference(string from, string to) {
+      return "<font face='courier'><a href='" +
+	"../"*max(sizeof(from/"/") - 2, 0) +
+	map(to/".", cquote)*"/" + ".html'>" + to +
+	"</a></font>";
+}
+
 multiset missing = (< "foreach", "catch", "throw", "sscanf", "gauge", "typeof" >);
 
 
@@ -254,10 +261,7 @@ class Node
       return "<font face='courier'>" + _reference + "</font>";
 
     if(vars->resolved && refs[vars->resolved])
-      return "<font face='courier'><a href='" +
-	"../"*max(sizeof(make_filename()/"/") - 2, 0) +
-	map(vars->resolved/".", cquote)*"/" + ".html'>" + vars->resolved +
-	"</a></font>";
+      return create_reference(make_filename(), vars->resolved);
 
     if(vars->resolved && consts[vars->resolved])
       return "<font face='courier'>" + _reference + "</font>";
