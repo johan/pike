@@ -179,3 +179,9 @@ int image_colortable_initiate_dither(struct neo_colortable *nct,
 				     int rowlen);
 
 void image_colortable_free_dither(struct nct_dither *dith);
+
+int image_colortable_index_8bit_image(struct neo_colortable *nct,
+				      rgb_group *s,
+				      unsigned char *d,
+				      int len,
+				      int rowlen);

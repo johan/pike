@@ -154,7 +154,7 @@ static void exit_colortable_struct(struct object *obj)
 
 /***************** internal stuff ******************************/
 
-#if 1
+#if 0
 #include <sys/resource.h>
 #define CHRONO(X) chrono(X);
 
@@ -2336,6 +2336,14 @@ void image_colortable_full(INT32 args)
 **!	repeatedly, since the calculation takes much
 **!	more time then usage.
 **!
+**!	recommended values:
+**!
+**!     <pre>	
+**!	image size  setup
+**!	100×100	    cubicles(4,5,4) (default)
+**!	1000×1000   cubicles(12,12,12) (factor 2 faster than default)
+**!     </pre>	
+**!
 **!	In some cases, the <ref>full</ref> method is faster.
 **!
 **!	<table><tr valign=center>
@@ -2870,21 +2878,21 @@ int image_colortable_index_8bit_image(struct neo_colortable *nct,
 				      int rowlen)
 {
    struct nct_dither dith;
-   image_colortable_initiate_dither(THIS,&dith,rowlen);
+   image_colortable_initiate_dither(nct,&dith,rowlen);
 
-   switch (THIS->type)
+   switch (nct->type)
    {
       case NCT_CUBE:
-	 _img_nct_index_8bit_cube(s,d,len,THIS,&dith,rowlen);
+	 _img_nct_index_8bit_cube(s,d,len,nct,&dith,rowlen);
 	 break;
       case NCT_FLAT:
-         switch (THIS->lookup_mode)
+         switch (nct->lookup_mode)
 	 {
 	    case NCT_FULL:
-  	       _img_nct_index_8bit_flat_full(s,d,len,THIS,&dith,rowlen);
+  	       _img_nct_index_8bit_flat_full(s,d,len,nct,&dith,rowlen);
 	       break;
 	    case NCT_CUBICLES:
-  	       _img_nct_index_8bit_flat_cubicles(s,d,len,THIS,&dith,rowlen);
+  	       _img_nct_index_8bit_flat_cubicles(s,d,len,nct,&dith,rowlen);
 	       break;
 	 }
 	 break;
@@ -2903,21 +2911,21 @@ int image_colortable_map_image(struct neo_colortable *nct,
 			       int rowlen)
 {
    struct nct_dither dith;
-   image_colortable_initiate_dither(THIS,&dith,rowlen);
+   image_colortable_initiate_dither(nct,&dith,rowlen);
 
-   switch (THIS->type)
+   switch (nct->type)
    {
       case NCT_CUBE:
-	 _img_nct_map_to_cube(s,d,len,THIS,&dith,rowlen);
+	 _img_nct_map_to_cube(s,d,len,nct,&dith,rowlen);
 	 break;
       case NCT_FLAT:
-         switch (THIS->lookup_mode)
+         switch (nct->lookup_mode)
 	 {
 	    case NCT_FULL:
-  	       _img_nct_map_to_flat_full(s,d,len,THIS,&dith,rowlen);
+  	       _img_nct_map_to_flat_full(s,d,len,nct,&dith,rowlen);
 	       break;
 	    case NCT_CUBICLES:
-  	       _img_nct_map_to_flat_cubicles(s,d,len,THIS,&dith,rowlen);
+  	       _img_nct_map_to_flat_cubicles(s,d,len,nct,&dith,rowlen);
 	       break;
 	 }
 	 break;
