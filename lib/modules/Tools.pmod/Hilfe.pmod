@@ -2021,6 +2021,7 @@ class StdinHilfe
 	if(Stdio.File f=Stdio.File(home+"/.hilfe_history","r"))
 	{
 	  string s=f->read()||"";
+	  f->close();
 	  hist=s/"\n";
 	  readline->enable_history(hist);
 	}
