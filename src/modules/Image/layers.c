@@ -2853,7 +2853,7 @@ void init_image_layers(void)
 
 
    ADD_FUNCTION("clone",image_layer_clone,
-		tFunc(,tObj),0);
+		tFunc(tNone,tObj),0);
 
    /* set */
 
