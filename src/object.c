@@ -1244,9 +1244,6 @@ static void low_gc_cycle_check_object(struct object *o)
     if (!o2) fatal("Object not on gc_internal_object list.\n");
 #endif
 
-    if(o->parent)
-      gc_cycle_check_object_strong(o->parent);
-
     LOW_PUSH_FRAME(o);
 
     for(e=p->num_inherits-1; e>=0; e--)
@@ -1284,6 +1281,10 @@ static void low_gc_cycle_check_object(struct object *o)
     }
     
     LOW_POP_FRAME();
+
+    /* This must be last. */
+    if(o->parent)
+      gc_cycle_check_object_strong(o->parent);
   }
 }
 
