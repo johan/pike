@@ -20,7 +20,7 @@
 #include "builtin_functions.h"
 
 
-#ifdef HAVE_LIBFFMPEG
+#ifdef HAVE_WORKING_LIBFFMPEG
 
 #include <stdlib.h>
 #include <stdio.h>

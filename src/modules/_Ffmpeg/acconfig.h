@@ -18,4 +18,7 @@
 /* Define if you have the ffmpeg library (-lffmpeg).  */
 #undef HAVE_LIBFFMPEG
 
+/* Define if you have a working ffmpeg library */
+#undef HAVE_WORKING_LIBFFMPEG
+
 #endif
