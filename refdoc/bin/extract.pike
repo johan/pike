@@ -112,11 +112,10 @@ string extract(string filename, string imgdest, int(0..1) rootless, string build
 	parents = ({});
 
       string type = ([ "pike":"class", "pmod":"module", ])[suffix];
-
       string name = (name_sans_suffix/"/")[-1];
       if(name == "master.pike")
 	name = "/master";
-      if(name == "module" && !rootless) {
+      if(name == "module" && (filename/"/")[-1] != "module.pike" && !rootless) {
 	if(!sizeof(parents))
 	  error("Unknown module parent name.\n");
 	name = parents[-1];
