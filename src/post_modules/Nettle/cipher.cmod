@@ -111,6 +111,8 @@ PIKECLASS CipherInfo
       THIS->check_key = NULL;
     }
 }
+/*! @endclass
+ */
 
 #define GET_INFO(o) \
 ((struct CipherInfo_struct *) get_storage((o), CipherInfo_program))
