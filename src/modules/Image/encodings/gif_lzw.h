@@ -7,13 +7,23 @@
 typedef unsigned short lzwcode_t; /* no more than 12 bits used */
 #define LZWCNULL ((lzwcode_t)(~0))
 
+struct lzwc
+{
+   unsigned short prev;
+   unsigned short len;
+   unsigned short c;
+} *c;
+
 struct gif_lzw
 {
    int broken; /* lzw failed, out of memory */
 
-   unsigned char *out,lastout;
-   unsigned long outlen;
+   unsigned char *out;
+   unsigned long outlen,lastout;
 
+   int earlychange;
+   int reversebits;
+   
    unsigned long codes;
    unsigned long bits; /* initial encoding bits */
    unsigned long codebits; /* current encoding bits */
