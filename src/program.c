@@ -2528,6 +2528,22 @@ int really_low_find_shared_string_identifier(struct pike_string *name,
   return -1;
 }
 
+int low_find_lfun(struct program *p, int lfun)
+{
+  struct pike_string *tmp = find_string(lfun_names[lfun]);
+  unsigned int flags = 0;
+  if (!tmp) return -1;
+  if ((1 <= lfun) && (lfun < 3)) {
+    /* create() and destroy() are used even if they are static. */
+    flags = SEE_STATIC;
+  }
+  return
+    really_low_find_shared_string_identifier(lfun_name,
+					     dmalloc_touch(struct program *,
+							   p),
+					     flags);
+}
+
 /*
  * lookup the number of a function in a program given the name in
  * a shared_string
