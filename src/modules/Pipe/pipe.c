@@ -934,7 +934,7 @@ static void pipe_output(INT32 args)
   else
     o->pos=THIS->pos;
 
-  ref_push_object(obj);
+  push_object(obj); /* Ok, David, this is probably correct, but I dare you to explain why :) */
   apply(o->obj,"set_id",1);
   pop_stack();
 
