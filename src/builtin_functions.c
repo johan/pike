@@ -632,7 +632,7 @@ PMOD_EXPORT void f_random_string(INT32 args)
 {
   struct pike_string *ret;
   INT_TYPE len, e;
-  get_all_args("random_string",args,"%i",&len);
+  get_all_args("random_string",args,"%+",&len);
   ret = begin_shared_string(len);
   for(e=0;e<len;e++) ret->str[e] = DO_NOT_WARN((char)my_rand());
   pop_n_elems(args);
