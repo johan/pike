@@ -297,18 +297,12 @@ RCSID("$Id$");
 #include "opcodes.h"
 #include "cyclic.h"
 #include "module.h"
+#include "pike_float.h"
 #include <ctype.h>
 
 #include "config.h"
 
 #include <math.h>
-#ifdef HAVE_IEEEFP_H
-#include <ieeefp.h>
-#endif
-#ifdef HAVE_FP_CLASS_H
-#include <fp_class.h>
-#endif
-
 
 #define sp Pike_sp
 
@@ -458,11 +452,9 @@ INLINE static void low_write_IEEE_float(char *b, double d, int sz)
     e = maxexp;
   else
 #endif
-#ifdef HAVE_ISNAN
-  if(isnan(d)) {
+  if(PIKE_ISNAN(d)) {
     e = maxexp; f = maxf;
   } else
-#endif
 #ifdef HAVE_ISZERO
   if(iszero(d))
     e = 0;
