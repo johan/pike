@@ -257,12 +257,12 @@ PMOD_EXPORT DECLSPEC(noreturn) void new_error(const char *name, const char *text
   {
 #ifdef PIKE_DEBUG
     if (d_flag) {
-      fprintf(stderr,"No error recovery context!\n%s():%s",name,text);
+      fprintf(stderr,"No error recovery context!\n%s():%s",name || "<unknown>",text);
       dump_backlog();
     }
 #endif
 
-    fprintf(stderr,"No error recovery context!\n%s():%s",name,text);
+    fprintf(stderr,"No error recovery context!\n%s():%s",name || "<unknown>",text);
     if(file)
       fprintf(stderr,"at %s:%d\n",file,line);
     exit(99);
@@ -279,7 +279,11 @@ PMOD_EXPORT DECLSPEC(noreturn) void new_error(const char *name, const char *text
     push_int(0);
     push_int(0);
   }
-  push_text(name);
+
+  if (name)
+    push_text(name);
+  else
+    push_int(0);
 
   for (i=-args; i; i++) {
     push_svalue(oldsp + i);
