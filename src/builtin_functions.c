@@ -2314,6 +2314,19 @@ void f__debug(INT32 args)
   d_flag = d;
 }
 
+void f__optimizer_debug(INT32 args)
+{
+  INT_TYPE l;
+
+  CHECK_SECURITY_OR_ERROR(SECURITY_BIT_SECURITY,
+			  ("_optimizer_debug: permission denied.\n"));
+
+  get_all_args("_optimizer_debug", args, "%i", &l);
+  pop_n_elems(args);
+  push_int(l_flag);
+  l_flag = l;
+}
+
 #ifdef YYDEBUG
 
 void f__compiler_trace(INT32 args)
@@ -5370,6 +5383,9 @@ void init_builtin_efuns(void)
   
 /* function(int:int) */
   ADD_EFUN("_debug",f__debug,tFunc(tInt,tInt),OPT_SIDE_EFFECT|OPT_EXTERNAL_DEPEND);
+
+/* function(int:int) */
+  ADD_EFUN("_optimizer_debug",f__optimizer_debug,tFunc(tInt,tInt),OPT_SIDE_EFFECT|OPT_EXTERNAL_DEPEND);
 #ifdef YYDEBUG
   
 /* function(int:int) */
