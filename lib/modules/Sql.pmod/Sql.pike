@@ -251,7 +251,7 @@ string _sprintf(int type, mapping|void flags)
   {
     case 't': return "Sql";
     case 'O':
-      if(master_sql->_sprintf)
+      if(master_sql && master_sql->_sprintf)
 	return sprintf("Sql.%O", master_sql);
       return "Sql()";
   }
