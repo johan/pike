@@ -62,7 +62,7 @@ RCSID("$Id$");
 #define bzWriteClose		BZ2_bzWriteClose
 
 /* use 64 bit counting struct */
-#define TOTAL_OUT (s->total_out_lo_32 + (s->total_out_hi_32 << 32))
+#define TOTAL_OUT (s->total_out_lo32 + (s->total_out_hi32 << 32))
 #endif /* HAVE_BZ2_BZCOMPRESSINIT */
 
 #ifndef HAVE_BZ2_BZCOMPRESSINIT
