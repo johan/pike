@@ -9,6 +9,12 @@
 
 #pike __REAL_VERSION__
 
+#if defined(CACHE_DEBUG)||defined(CACHE_POLICY_DEBUG)||defined(CACHE_POLICY_TIMED_DEBUG)
+#define CACHE_WERR(X...) werror("Cache.Policy.Timed: "+X)
+#else
+#define CACHE_WERR(X...)
+#endif /* CACHE_DEBUG || CACHE_POLICY_DEBUG || CACHE_POLICY_TIMED_DEBUG */
+
 //TODO: use the preciousness somehow.
 // idea: expire if (now-atime)*cost < ktime
 
@@ -18,7 +24,7 @@ private int ktime;
 inherit Cache.Policy.Base;
 
 void expire(Cache.Storage.Base storage) {
-  werror("Expiring cache\n");
+  CACHE_WERR("Expiring cache\n");
   int now=time(1);
   int limit=now-ktime;
   string key=storage->first();
@@ -32,9 +38,9 @@ void expire(Cache.Storage.Base storage) {
     }
     if (got->atime < limit ||
         (got->etime && got->etime < now) ) {
-      werror("deleting %s (age: %d, now: %d, etime: %d)\n",
-             key, now - got->atime, 
-             now, got->etime);
+      CACHE_WERR("deleting %s (age: %d, now: %d, etime: %d)\n",
+		 key, now - got->atime, 
+		 now, got->etime);
       storage->delete(key);
     }
     key=storage->next();

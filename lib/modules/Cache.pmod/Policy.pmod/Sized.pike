@@ -7,6 +7,12 @@
 
 #pike __REAL_VERSION__
 
+#if defined(CACHE_DEBUG)||defined(CACHE_POLICY_DEBUG)||defined(CACHE_POLICY_SIZED_DEBUG)
+#define CACHE_WERR(X...) werror("Cache.Policy.Sized: "+X)
+#else
+#define CACHE_WERR(X...)
+#endif /* CACHE_DEBUG || CACHE_POLICY_DEBUG || CACHE_POLICY_SIZED_DEBUG */
+
 inherit Cache.Policy.Base;
 //watermarks
 int max_size=0; //in bytes
@@ -23,14 +29,14 @@ void expire (Cache.Storage.Base storage) {
   int now=time(1);
   int current_size=0; //in bytes. Should I use kb maybe?
 
-  werror("expiring cache\n");
+  CACHE_WERR("expiring cache\n");
   string key=storage->first();
   while (key) {
     got=storage->get(key,1);
-    werror("examining: %s (age: %d, size: %d). Current size is %d\n",
-           key,now-(got->atime), got->size(), current_size);
+    CACHE_WERR("examining: %s (age: %d, size: %d). Current size is %d\n",
+	       key,now-(got->atime), got->size(), current_size);
     if (tmp=(got->etime) && tmp < now) { //explicit expiration
-      werror("expired\n");
+      CACHE_WERR("expired\n");
       storage->delete(key);
       key=storage->next();
       continue;
@@ -41,7 +47,7 @@ void expire (Cache.Storage.Base storage) {
       array candidate;
       while (current_size > min_size) {
         candidate=removables->pop();
-        werror("deleting %s (size: %d)\n",candidate[KEY],candidate[SIZE]);
+        CACHE_WERR("deleting %s (size: %d)\n",candidate[KEY],candidate[SIZE]);
         storage->delete(candidate[KEY]);
         current_size-=candidate[SIZE];
       }
