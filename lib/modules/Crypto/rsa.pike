@@ -445,8 +445,8 @@ object generate_key(int bits, function|void r)
   if (!r)
     r = Crypto.randomness.really_random()->read;
   if (bits < 128)
-    throw( ({ "Crypto.rsa->generate_key: ridicously small key\n",
-		backtrace() }) );
+    error( "Crypto.rsa->generate_key: ridicously small key.\n" );
+
   int s1 = bits / 2; /* Size of the first prime */
   int s2 = bits - s1;
   

@@ -187,8 +187,7 @@ void create(Cache.Storage.Base storage_mgr,
             Cache.Policy.Base policy_mgr,
             void|int cleanup_cycle_delay) {
   if (!storage_mgr || !policy_mgr)
-    throw ( ({ "I need a storage manager and a policy manager",
-               backtrace() }) );
+    error ( "I need a storage manager and a policy manager\n" );
   storage=storage_mgr;
   policy=policy_mgr;
   if (cleanup_cycle_delay) cleanup_cycle=cleanup_cycle_delay;

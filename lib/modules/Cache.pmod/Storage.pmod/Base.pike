@@ -9,7 +9,7 @@
 
 #pike __REAL_VERSION__
 
-#define T() throw( ({"override this", backtrace()}))
+#define T() error( "Override this\n" );
 
 // The next two functions are an iterator over the cache. There is an
 // internal cursor, which is reset by each call to first(). Subsequent

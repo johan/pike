@@ -128,7 +128,7 @@ class _Tar  // filesystem
     object open(string mode)
     {
       if(mode!="r")
-	throw(({"Can only read right now.\n", backtrace()}));
+	error("Can only read right now.\n");
       return ReadFile(pos, size);
     }
   };

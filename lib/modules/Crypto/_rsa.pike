@@ -76,8 +76,7 @@ object set_public_key(bignum modulo, bignum pub)
   e = pub;
   size = n->size(256);
   if (size < 12)
-    throw( ({ "Crypto.rsa->set_public_key: Too small modulo.\n",
-		backtrace() }) );
+    error( "Crypto.rsa->set_public_key: Too small modulo.\n" );
   return this_object();
 }
 
@@ -102,8 +101,7 @@ bignum rsa_pad(string message, int type, mixed|void random)
   len = size - 3 - strlen(message);
   /*  write(sprintf("%d, %d, %d, %s", len, size, strlen(message), message)); */
   if (len < 8)
-    throw( ({ "Crypto.rsa->rsa_pad: Too large block.\n",
-		backtrace() }) );
+    error( "Crypto.rsa->rsa_pad: Too large block.\n" );
 
   switch(type)
   {
@@ -120,9 +118,8 @@ bignum rsa_pad(string message, int type, mixed|void random)
 					} ));
     break;
   default:
-    throw( ({ "Crypto.rsa->rsa_pad: Unknown type.\n",
-		backtrace() }) );
-  }    
+    error( "Crypto.rsa->rsa_pad: Unknown type.\n" );
+  }
   return BIGNUM(sprintf("%c", type) + cookie + "\0" + message, 256);
 }
 
