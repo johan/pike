@@ -487,8 +487,8 @@ void MOD_EXIT(crypto)(void) {}
 
 void pike_module_init(void)
 {
-  add_efun("string_to_hex", f_string_to_hex, "function(string:string)", OPT_TRY_OPTIMIZE);
-  add_efun("hex_to_string", f_hex_to_string, "function(string:string)", OPT_TRY_OPTIMIZE);
+  add_function("string_to_hex", f_string_to_hex, "function(string:string)", OPT_TRY_OPTIMIZE);
+  add_function("hex_to_string", f_hex_to_string, "function(string:string)", OPT_TRY_OPTIMIZE);
 #if 0
   MOD_INIT(md2)();
   MOD_INIT(md5)();
