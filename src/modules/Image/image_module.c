@@ -21,6 +21,7 @@ RCSID("$Id$");
 #include "assembly.h"
 #include "image_machine.h"
 
+#include "encodings/encodings.h"
 
 #define sp Pike_sp
 #define fp Pike_fp
