@@ -879,6 +879,16 @@ void clear_svalues(struct svalue *s, INT32 num)
   while(--num >= 0) *(s++)=dum;
 }
 
+void clear_svalues_undefined(struct svalue *s, INT32 num)
+{
+  struct svalue dum;
+  dum.type=T_INT;
+  dum.subtype=NUMBER_UNDEFINED;
+  dum.u.refs=0;
+  dum.u.integer=0;
+  while(--num >= 0) *(s++)=dum;
+}
+
 void copy_svalues_recursively_no_free(struct svalue *to,
 				      struct svalue *from,
 				      INT32 num,

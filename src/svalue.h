@@ -294,6 +294,7 @@ int is_equal(struct svalue *a,struct svalue *b);
 int is_lt(struct svalue *a,struct svalue *b);
 void describe_svalue(struct svalue *s,int indent,struct processing *p);
 void clear_svalues(struct svalue *s, INT32 num);
+void clear_svalues_undefined(struct svalue *s, INT32 num);
 void copy_svalues_recursively_no_free(struct svalue *to,
 				      struct svalue *from,
 				      INT32 num,

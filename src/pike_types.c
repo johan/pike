@@ -1696,6 +1696,52 @@ int count_arguments(struct pike_string *s)
   return low_count_arguments(s->str);
 }
 
+
+static int low_minimum_arguments(char *q)
+{
+  int num;
+
+  switch(EXTRACT_UCHAR(q++))
+  {
+    case T_OR:
+    case T_AND:
+      return MAXIMUM(low_count_arguments(q),
+		     low_count_arguments(q+type_length(q)));
+
+    default: return 0;
+
+    case T_FUNCTION:
+      num=0;
+      while(EXTRACT_UCHAR(q)!=T_MANY)
+      {
+	if(low_match_types(void_type_string->str, q, B_EXACT))
+	  return num;
+
+	num++;
+	q+=type_length(q);
+      }
+      return num;
+  }
+}
+
+/* Count the minimum number of arguments for a funciton type.
+ */
+int minimum_arguments(struct pike_string *s)
+{
+  int ret;
+  check_type_string(s);
+
+  ret=low_minimum_arguments(s->str);
+
+#if 0
+  fprintf(stderr,"minimum_arguments(");
+  simple_describe_type(s);
+  fprintf(stderr," ) -> %d\n",ret);
+#endif
+
+  return ret;
+}
+
 struct pike_string *check_call(struct pike_string *args,
 			       struct pike_string *type)
 {

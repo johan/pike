@@ -993,7 +993,7 @@ void mega_apply2(enum apply_type type, INT32 args, void *arg1, void *arg2)
 	/* adjust arguments on stack */
 	if(args < num_args) /* push zeros */
 	{
-	  clear_svalues(sp, num_args-args);
+	  clear_svalues_undefined(sp, num_args-args);
 	  sp += num_args-args;
 	  args += num_args-args;
 	}

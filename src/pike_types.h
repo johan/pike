@@ -125,6 +125,7 @@ int check_indexing(struct pike_string *type,
 		   struct pike_string *index_type,
 		   node *n);
 int count_arguments(struct pike_string *s);
+int minimum_arguments(struct pike_string *s);
 struct pike_string *check_call(struct pike_string *args,
 			       struct pike_string *type);
 INT32 get_max_args(struct pike_string *type);
