@@ -179,22 +179,31 @@ array(string) split(string data, void|mapping state)
         break;
 
       case '0'..'9':
-	if(data[pos]=='0' && (data[pos+1]=='x' || data[pos+1]=='X'))
-	{
-	  pos+=2;
-	  while(1)
-	  {
-	    switch(data[pos])
+	if(data[pos]=='0') {
+	  if(data[pos+1]=='x' || data[pos+1]=='X') {
+	    pos+=2;
+	    while(1)
 	    {
+	      switch(data[pos])
+	      {
 	      case '0'..'9':
 	      case 'a'..'f':
 	      case 'A'..'F':
 		pos++;
 		continue;
+	      }
+	      break;
 	    }
 	    break;
 	  }
-	  break;
+	  else if(data[pos+1]=='b' || data[pos+1]=='B') {
+	    pos+=2;
+	    while(1) {
+	      if(data[pos]!='0' && data[pos]!='1')
+		break;
+	      pos++;
+	    }
+	  }
 	}
 	while(data[pos]>='0' && data[pos]<='9') pos++;
         if(data[pos]=='.' && data[pos+1]>='0' && data[pos+1]<='9')
