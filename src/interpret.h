@@ -56,6 +56,7 @@ struct pike_frame
   INT16 num_locals;
   INT16 num_args;
   unsigned INT16 flags;
+  INT16 ident;
   struct pike_frame *next;
   struct pike_frame *scope;
   unsigned char *pc;
