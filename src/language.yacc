@@ -442,7 +442,9 @@ inheritance: modifiers TOK_INHERIT force_resolve
 #ifdef FORCE_RESOLVE_DEBUG
     fprintf(stderr, "force_resolve restored to %d\n", force_resolve);
 #endif
-    free_node($4); yyerrok;
+    free_node($4);
+    pop_stack();
+    yyerrok;
   }
   | modifiers TOK_INHERIT force_resolve low_program_ref error TOK_LEX_EOF
   {
@@ -451,6 +453,7 @@ inheritance: modifiers TOK_INHERIT force_resolve
     fprintf(stderr, "force_resolve restored to %d\n", force_resolve);
 #endif
     free_node($4);
+    pop_stack();
     yyerror("Missing ';'.");
     yyerror("Unexpected end of file.");
   }
@@ -460,7 +463,9 @@ inheritance: modifiers TOK_INHERIT force_resolve
 #ifdef FORCE_RESOLVE_DEBUG
     fprintf(stderr, "force_resolve restored to %d\n", force_resolve);
 #endif
-    free_node($4); yyerror("Missing ';'.");
+    free_node($4);
+    pop_stack();
+    yyerror("Missing ';'.");
   }
   | modifiers TOK_INHERIT error ';' { yyerrok; }
   | modifiers TOK_INHERIT error TOK_LEX_EOF
