@@ -1234,6 +1234,8 @@ failsafe_program: '{' program end_block
 
 class: modifiers F_CLASS optional_identifier
   {
+    extern int num_parse_error;
+    int num_errors=num_parse_error;
     if(!$3)
     {
       struct pike_string *s;
@@ -1277,6 +1279,7 @@ class: modifiers F_CLASS optional_identifier
 	}
       }
     }
+    num_parse_error=num_errors; /* Kluge to prevent gazillion error messages */
   }
   failsafe_program
   {
