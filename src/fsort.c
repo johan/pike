@@ -108,7 +108,15 @@ void fsort(void *base,
   case 16: fsort_16((B16_T *)base,(elms-1)+(B16_T *)base, cmpfunc); break;
 #endif
   default:
-    fsort_n((char *)base,((char *)base) + elmSize * (elms - 1), cmpfunc, elmSize, (char *)alloca(elmSize));
+    {
+      /* NOTE: We need to put the alloca'd value in a variable,
+       *       otherwise cc/HPUX will generate broken code.
+       */
+      char *buf = alloca(elmSize);
+
+      fsort_n((char *)base,((char *)base) + elmSize * (elms - 1),
+	      cmpfunc, elmSize, buf);
+    }
   }
 
 }
