@@ -1398,8 +1398,6 @@ void th_init(void)
 
 void th_cleanup(void)
 {
-  th_running = 0;
-
   if(thread_id)
   {
     thread_table_delete(thread_id);
