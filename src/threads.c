@@ -1266,7 +1266,6 @@ void exit_cond_obj(struct object *o) { co_destroy(THIS_COND); }
 /*! @class Thread
  */
 
-/* FIXME:  -Hubbe */
 /*! @decl array(mixed) backtrace()
  *!
  *! Returns the current call stack for the thread.
@@ -1279,22 +1278,15 @@ void exit_cond_obj(struct object *o) { co_destroy(THIS_COND); }
  */
 void f_thread_backtrace(INT32 args)
 {
+  void low_backtrace(struct Pike_interpreter *);
   struct thread_state *foo = THIS_THREAD;
-  struct thread_state *bar = OBJ2THREAD( Pike_interpreter.thread_id );
-  struct svalue *osp = Pike_sp;
+
   pop_n_elems(args);
+
   if(foo->state.stack_pointer)
   {
-    SWAP_OUT_THREAD(bar);
-    SWAP_IN_THREAD(foo);
-    Pike_sp=osp;
-    f_backtrace(0);
-    osp=Pike_sp;
-    Pike_sp=foo->state.stack_pointer;
-    SWAP_OUT_THREAD(foo);
-    SWAP_IN_THREAD(bar);
-    Pike_sp=osp;
-  } else {
+    low_backtrace(& foo->state);
+  }else{
     push_int(0);
     f_allocate(1);
   }
