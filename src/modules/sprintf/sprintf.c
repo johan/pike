@@ -964,17 +964,28 @@ static void low_pike_sprintf(struct string_builder *r,
         INT32 l,tmp;
 	char *x;
         DO_OP();
-        l=1;
-        if(fsp->width > 0) l=fsp->width;
-	x=(char *)alloca(l);
-	fsp->b=MKPCHARP(x,0);
-	fsp->len=l;
-	GET_INT(tmp);
-        while(--l>=0)
-        {
-          x[l]=tmp & 0xff;
-          tmp>>=8;
-        }
+	if(fsp->width == SPRINTF_UNDECIDED)
+	{
+	  GET_INT(tmp);
+	  x=(char *)alloca(4);
+	  if(tmp<256) fsp->b=MKPCHARP(x,0);
+	  else if(tmp<65536) fsp->b=MKPCHARP(x,1);
+	  else  fsp->b=MKPCHARP(x,2);
+	  SET_INDEX_PCHARP(fsp->b,0,tmp);
+	  fsp->len=1;
+	}else{
+	  l=1;
+	  if(fsp->width > 0) l=fsp->width;
+	  x=(char *)alloca(l);
+	  fsp->b=MKPCHARP(x,0);
+	  fsp->len=l;
+	  GET_INT(tmp);
+	  while(--l>=0)
+	  {
+	    x[l]=tmp & 0xff;
+	    tmp>>=8;
+	  }
+	}
 	break;
       }
 
