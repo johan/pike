@@ -150,6 +150,12 @@ void really_free_mapping(struct mapping *m)
   GC_FREE();
 }
 
+void do_free_mapping(struct mapping *m)
+{
+  if (m)
+    free_mapping(m);
+}
+
 /* This function is used to rehash a mapping without loosing the internal
  * order in each hash chain. This is to prevent mappings from becoming
  * very inefficient just after being rehashed.

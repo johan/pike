@@ -39,6 +39,7 @@ extern struct mapping *first_mapping;
 /* Prototypes begin here */
 struct mapping *allocate_mapping(int size);
 void really_free_mapping(struct mapping *m);
+void do_free_mapping(struct mapping *m);
 void mapping_fix_type_field(struct mapping *m);
 void mapping_insert(struct mapping *m,
 		    struct svalue *key,
