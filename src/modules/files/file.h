@@ -96,5 +96,6 @@ int fd_from_object(struct object *o);
 #define FILE_HAS_INTERNAL_REF   0x0001
 #define FILE_NO_CLOSE_ON_DESTRUCT 0x0002
 #define FILE_LOCK_FD		0x0004
+#define FILE_NOT_OPENED         0x0010
 
 #endif
