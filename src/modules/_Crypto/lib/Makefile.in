@@ -159,10 +159,12 @@ desQuickCore.c:
 ### End of rules for desCore
 
 # BEGIN NATIONAL SECURITY
-MASS_DESTRUCTION_OBJS = idea.o arcfour.o cast.o $(O)
+MASS_DESTRUCTION_OBJS = idea.o arcfour.o cast.o rijndael.o $(O)
 # END NATIONAL SECURITY
 
 OBJS = $(MASS_DESTRUCTION_OBJS) sha.o md2.o md5.o
+
+rijndael.o: $(SRCDIR)/../include/rijndael.h rijndael-boxes.dat
 
 algorithms.a: $(OBJS)
 	rm -f algorithms.a

@@ -3,7 +3,7 @@
 VPATH=@srcdir@:@srcdir@/../..:../..
 
 # BEGIN NATIONAL SECURITY
-MASS_DESTRUCTION_OBJS = idea.o des.o cast.o arcfour.o rsa.o
+MASS_DESTRUCTION_OBJS = idea.o des.o cast.o arcfour.o rsa.o rijndael.o
 # END NATIONAL SECURITY
 
 OBJS= $(MASS_DESTRUCTION_OBJS) crypto.o invert.o sha.o md2.o md5.o pipe.o cbc.o nt.o
