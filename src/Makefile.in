@@ -758,6 +758,7 @@ HFILES=						\
   lex.protos						\
   security.protos					\
   signal_handler.protos				\
+  pike_search.protos				\
   docode.protos					\
   main.protos					\
   stralloc.protos					\
