@@ -154,6 +154,12 @@ else
     MYSQL_LIBS="-lmysys ${MYSQL_LIBS}"
   ], [])
 
+  # mysql 3.23.x libmysqlclient requires zlib...
+  AC_CHECK_LIB(z, compress, [
+    LIBS="-lz $LIBS"
+    MYSQL_LIBS="-lz ${MYSQL_LIBS}"
+  ], [])
+
   # Try a couple of mysqlclient libs
   # in order of age, newest first.
 
