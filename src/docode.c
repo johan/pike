@@ -1206,16 +1206,12 @@ static int do_docode2(node *n, INT16 flags)
       
       return 1;
     }
-    else if(CAR(n)->token == F_IDENTIFIER &&
-	    IDENTIFIER_IS_FUNCTION(ID_FROM_INT(Pike_compiler->new_program,
-					       CAR(n)->u.id.number)->identifier_flags))
+    else if(CAR(n)->token == F_IDENTIFIER)
     {
       return do_lfun_call(CAR(n)->u.id.number,CDR(n));
     }
     else if(CAR(n)->token == F_EXTERNAL &&
-	    CAR(n)->u.integer.a == Pike_compiler->new_program->id &&
-	    IDENTIFIER_IS_FUNCTION(ID_FROM_INT(Pike_compiler->new_program,
-					       CAR(n)->u.integer.b)->identifier_flags))
+	    CAR(n)->u.integer.a == Pike_compiler->new_program->id)
     {
       return do_lfun_call(CAR(n)->u.integer.b,CDR(n));
     }
