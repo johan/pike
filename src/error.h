@@ -168,6 +168,9 @@ void debug_fatal(const char *fmt, ...) ATTRIBUTE((noreturn,format (printf, 1, 2)
 #define fatal \
  fprintf(stderr,"Fatal error at %s:%d\n",__FILE__,__LINE__),debug_fatal
 
+/* Forward compatibility */
+#define Pike_error error
+
 #endif
 
 
