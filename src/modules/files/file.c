@@ -1502,8 +1502,16 @@ static void file_pipe(INT32 args)
     error("Cannot create a pipe matching those parameters.\n");
   }while(0);
     
-  if(i<0)
+  if ((i<0) || (inout[0] < 0) || (inout[1] < 0))
   {
+    if (i >= 0) {
+      if (inout[0] >= 0) {
+	close(inout[0]);
+      }
+      if (inout[1] >= 0) {
+	close(inout[1]);
+      }
+    }
     ERRNO=errno;
     push_int(0);
   }
