@@ -6,8 +6,6 @@
 
 inherit "constants";
 
-int auth_level;
-
 object rsa;  /* Servers private key */
 
 /* These temporary keys, of non-zero, are used for the
@@ -23,9 +21,6 @@ function(int:string) random; /* Random number generator */
 /* Chain of X509.v3 certificates
  * Senders certificate first, root certificate last .*/
 array(string) certificates; 
-
-/* For client authentication */
-array(string) authorities; /* List of authorities distinguished names */
 
 array(int) preferred_auth_methods =
 ({ AUTH_rsa_sign });

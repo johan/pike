@@ -16,8 +16,8 @@ string master_secret; /* 48 byte secret shared between client and server */
 constant Struct = ADT.struct;
 constant State = SSL.state;
 
-string client_certificate;
-string server_certificate;
+array(string) client_certificate_chain;
+array(string) server_certificate_chain;
 
 void set_cipher_suite(int suite)
 {
