@@ -390,7 +390,9 @@ class store
 
     if (res = server->store(session, message_set, list, mode, silent_mode, state)) {
       if (sizeof(res)) {
-	send("*", @res);
+	foreach(res, array row) {
+	  send("*", @row);
+	}
       }
       send(tag, "OK");
     } else {
