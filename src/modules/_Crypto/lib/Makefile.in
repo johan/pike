@@ -14,7 +14,7 @@ VPATH=@srcdir@:@srcdir@/../include
 CRYPTO_INCLUDES=$(SRCDIR)/../include
 
 # Additional C preprocessor flags
-PREFLAGS=$(EXTRA_CPP_FLAGS) -I$(CRYPTO_INCLUDES) -I. -I$(SRCDIR) $(DEFINES)
+PREFLAGS=-I$(CRYPTO_INCLUDES) -I. -I$(SRCDIR) $(EXTRA_CPP_FLAGS) $(DEFINES)
 
 # The flags to generate a shared library
 CFLAGS=$(PREFLAGS) $(OTHERFLAGS) $(EXTRA_CFLAGS)
