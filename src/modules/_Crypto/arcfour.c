@@ -97,7 +97,7 @@ static void f_set_key(INT32 args)
  *! encryption key.
  *!
  *! @seealso
- *!   @[set_key()]
+ *!   @[set_encrypt_key()]
  */
 static void f_arcfour_crypt(INT32 args)
 {
