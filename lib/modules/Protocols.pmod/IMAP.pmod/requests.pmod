@@ -288,6 +288,35 @@ class lsub
     }
 }
 
+class status
+{
+  inherit request;
+  constant arg_info ({ ({ "string" }), ({ "list" }) });
+
+  mapping easy_process(string mailbox, array(string) list)
+  {
+    werror(sprintf("status->easy_process(%O, %O)\n", mailbox, list));
+
+    if (mailbox == "") {
+      return bad("No mailbox specified!");
+    }
+
+    if (lower_case(mailbox) == "inbox") {
+      mailbox = "INBOX";
+    }
+
+    array(string) res = server->status(session, mailbox, list);
+
+    if (res) {
+      send("*", "STATUS", imap_string(mailbox), imap_list(res));
+      send(tag, "OK");
+    } else {
+      send(tag, "NO");
+    }
+    return([ "action" : "finished" ]);
+  }
+}
+
 class select
 {
   inherit request;
