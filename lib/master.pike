@@ -452,7 +452,7 @@ void _main(string *argv, string *env)
 
   add_constant("write",_static_modules.files()->file("stdout")->write);
 
-  _master_file_name=backtrace()[-1][0];
+  _master_file_name=replace(backtrace()[-1][0],"\\","/");
   q=_master_file_name/"/";
   pike_library_path = combine_path_with_cwd(q[0..sizeof(q)-2] * "/");
 
