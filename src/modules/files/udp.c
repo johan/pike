@@ -479,12 +479,14 @@ void zero_udp(struct object *ignored)
 
 void exit_udp(struct object *ignored)
 {
-  if(FD != -1)
+  int fd = FD;
+
+  if(fd != -1)
   {
-    set_read_callback( FD, 0, 0 );
+    set_read_callback( fd, 0, 0 );
 
     THREADS_ALLOW();
-    fd_close(FD);
+    fd_close(fd);
     THREADS_DISALLOW();
   }
   free_svalue(& THIS->read_callback );
