@@ -77,8 +77,7 @@ INT32 read_int(int offset)
 int store_linenumbers=1;
 
 /*
- * A mechanism to remember addresses on a stack. The size of the stack is
- * defined in config.h.
+ * A mechanism to remember addresses on a stack.
  */
 int comp_stackp;
 INT32 comp_stack[COMPILER_STACK_SIZE];
