@@ -31,7 +31,11 @@ struct thread_state {
   struct Pike_interpreter state;
   struct object *thread_obj;	/* NOTE: Not ref-counted! */
   char swapped;
+#ifdef __CHAR_UNSIGNED__
+  signed char status;
+#else
   char status;
+#endif
   COND_T status_change;
   THREAD_T id;
   struct mapping *thread_local;

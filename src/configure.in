@@ -2330,6 +2330,7 @@ AC_SUBST(YY_FROM_CONST)
 #############################################################################
 
 AC_C_CONST
+AC_C_CHAR_UNSIGNED
 
 # The above doesn't find IBM C's buggy const.
 

@@ -869,7 +869,8 @@ void f_thread_create(INT32 args)
   int tmp;
 
   if (thread_state->status != THREAD_NOT_STARTED) {
-    Pike_error("Threads can not be restarted.\n");
+    Pike_error("Threads can not be restarted (status:%d).\n",
+	       thread_state->status);
   }
 
   arg.args = aggregate_array(args);
