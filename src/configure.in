@@ -145,7 +145,7 @@ else
   fi
 fi
 
-AC_MSG_CHECKING(ld accepts setting te run-path with -R)
+AC_MSG_CHECKING(ld accepts setting the run-path with -R)
 AC_CACHE_VAL(pike_cv_ld_accepts_r,
 [
   OLD_CFLAGS="$CFLAGS"
