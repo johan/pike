@@ -835,7 +835,7 @@ void _main(string *orig_argv, string *env)
 	       "               " + "\n"
 	       "Program path : " + pike_program_path*"\n"
 	       "               " + "\n"
-	       "Master file  : " + _master_file_name + "\n");
+	       "Master file  : " + (_master_file_name || __FILE__) + "\n");
 	exit(0);
 	
       case "execute":
