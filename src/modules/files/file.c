@@ -2311,6 +2311,15 @@ void check_static_file_data(struct callback *a, void *b, void *c)
 }
 #endif
 
+#if defined(WITH_TERMIOS) && defined(HAVE_TERMIOS_H)
+void file_tcgetattr(INT32 args);
+void file_tcsetattr(INT32 args);
+void file_tcsendbreak(INT32 args);
+void file_tcdrain(INT32 args);
+void file_tcflow(INT32 args);
+void file_tcgetpgrp(INT32 args);
+void file_tcsetpgrp(INT32 args);
+#endif
 
 void pike_module_init(void)
 {

@@ -53,5 +53,8 @@
 /* Number of args to mkdir() */
 #define MKDIR_ARGS 2
 
+/* With termios */
+#undef WITH_TERMIOS 
+
 #endif
 
