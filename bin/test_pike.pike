@@ -40,12 +40,13 @@ int main(int argc, string *argv)
     ({"trace",Getopt.MAY_HAVE_ARG,({"-t","--trace"})}),
     ({"check",Getopt.MAY_HAVE_ARG,({"-c","--check"})}),
     ({"mem",Getopt.MAY_HAVE_ARG,({"-m","--mem","--memory"})}),
+    ({"compiler",Getopt.NO_ARG,({"-dc","--debug-compiler"})}),
     )),array opt)
     {
       switch(opt[0])
       {
 	case "help":
-	  werror("Usage: "+argv[e]+" [-v | --verbose] [-h | --help] [-t <testno>] <testfile>\n");
+	  werror("Usage: "+argv[e]+" [-v | --verbose] [-h | --help] [-t <testno>] [-dc | --debug-compiler] <testfile>\n");
 	  return 0;
 
 	case "verbose": verbose+=foo(opt[1]); break;
@@ -56,6 +57,9 @@ int main(int argc, string *argv)
 	case "trace": t+=foo(opt[1]); break;
 	case "check": check+=foo(opt[1]); break;
 	case "mem": mem+=foo(opt[1]); break;
+#if constant(_compiler_trace)
+        case "compiler": _compiler_trace(1); break;
+#endif /* constant(_compiler_trace) */
       }
     }
 
