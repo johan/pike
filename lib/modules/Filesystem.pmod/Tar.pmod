@@ -16,7 +16,7 @@
 
 class _Tar  // filesystem
 {
-  Stdio.File fd;
+  object fd;
   string filename;
 
   class ReadFile
@@ -204,7 +204,7 @@ class _Tar  // filesystem
     filename_to_entry[what] = r;
   }
 
-  void create(Stdio.File fd, string filename, object parent)
+  void create(object fd, string filename, object parent)
   {
     this_program::filename = filename;
     // read all entries
@@ -352,11 +352,18 @@ class `()
 {
   inherit _TarFS;
 
-  void create(string filename, void|Filesystem.Base parent)
+  void create(string filename, void|Filesystem.Base parent, 
+    Stdio.File|Gz.File|Bz2.File f)
   {
     if(!parent) parent = Filesystem.System();
 
-    Stdio.File fd = parent->open(filename, "r");
+    object fd;
+
+    if(f)   
+      fd = f;
+    else 
+      fd = parent->open(filename, "r");
+
     if(!fd)
       error("Not a Tar file\n");
 
