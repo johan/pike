@@ -347,7 +347,7 @@ struct selectors
 struct active_selectors
 {
   fd_set rset, wset;
-#ifdef WITH_OOB;
+#ifdef WITH_OOB
   fd_set eset;
 #endif
   int max_fd;
