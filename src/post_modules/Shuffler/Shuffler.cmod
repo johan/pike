@@ -125,8 +125,9 @@ PIKECLASS Shuffle
       safe_apply( t->file_obj, "set_write_callback", 1 );
       pop_stack();
     }
-    else
+    else {
       SHUFFLE_DEBUG1("EEP: No destination! Cannot set callbacks\n",t);
+    }
   }
   
   static void __remove_callbacks( struct Shuffle_struct *t )
@@ -140,8 +141,9 @@ PIKECLASS Shuffle
       safe_apply( t->file_obj, "set_write_callback", 1 );
       pop_stack();
     }
-    else
+    else {
       SHUFFLE_DEBUG1("EEP: No destination! Cannot remove callbacks\n",t);
+    }
   }
 
   static int got_shuffler_event(struct fd_callback_box*box, int event) {
