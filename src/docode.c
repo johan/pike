@@ -279,7 +279,8 @@ static int do_docode2(node *n,int flags)
     default:
       yyerror("Illegal lvalue.");
       emit(F_NUMBER,0);
-      return 1;
+      emit(F_NUMBER,0);
+      return 2;
 
     case F_LVALUE_LIST:
     case F_LOCAL:
@@ -509,7 +510,7 @@ static int do_docode2(node *n,int flags)
     tmp1=do_docode(CAR(n),DO_LVALUE);
 #ifdef DEBUG
     if(tmp1 != 2)
-      fatal("HELP! FATAL INTERNAL COMPILER ERROR\n");
+      fatal("HELP! FATAL INTERNAL COMPILER ERROR (again)\n");
 #endif
 
     if(flags & DO_POP)
@@ -526,7 +527,7 @@ static int do_docode2(node *n,int flags)
     tmp1=do_docode(CAR(n),DO_LVALUE);
 #ifdef DEBUG
     if(tmp1 != 2)
-      fatal("HELP! FATAL INTERNAL COMPILER ERROR\n");
+      fatal("HELP! FATAL INTERNAL COMPILER ERROR (yet again)\n");
 #endif
     if(flags & DO_POP)
     {
