@@ -25,7 +25,7 @@ log_end() {
 
 xenofarm_build() {
   log_start compile
-  $MAKE $MAKE_FLAGS > xenofarm_result/compilelog.txt 2>&1
+  $MAKE > xenofarm_result/compilelog.txt 2>&1
   log_end $?
   [ $LASTERR = 0 ] || return 1
 }
@@ -33,18 +33,18 @@ xenofarm_build() {
 xenofarm_post_build() {
   POST_RESULT=0
   log_start benchmark
-  $MAKE $MAKE_FLAGS benchmark > xenofarm_result/benchmark.txt 2>&1
+  $MAKE benchmark > xenofarm_result/benchmark.txt 2>&1
   log_end $?
   POST_RESULT=$LASTERR
 
   log_start verify
-  $MAKE $MAKE_FLAGS METATARGET=verify TESTARGS="-a -T" > \
+  $MAKE METATARGET=verify TESTARGS="-a -T" > \
     xenofarm_result/verifylog.txt 2>&1
   log_end $?
   [ $LASTERR = 0 ] || return 1
   
   log_start export
-  $MAKE $MAKE_FLAGS bin_export > xenofarm_result/exportlog.txt 2>&1
+  $MAKE bin_export > xenofarm_result/exportlog.txt 2>&1
   log_end $?
   [ $LASTERR = 0 ] || return 1
   return $POST_RESULT
