@@ -243,7 +243,10 @@ void count_memory_in_strings(INT32 *num, INT32 *size);
 unsigned gc_touch_all_strings(void);
 void gc_mark_all_strings(void);
 PMOD_EXPORT void init_string_builder(struct string_builder *s, int mag);
-PMOD_EXPORT void *string_builder_allocate(struct string_builder *s, ptrdiff_t chars, int mag);
+PMOD_EXPORT void init_string_builder_alloc(struct string_builder *s,
+					   ptrdiff_t length, int mag);
+PMOD_EXPORT void *string_builder_allocate(struct string_builder *s,
+					  ptrdiff_t chars, int mag);
 PMOD_EXPORT void string_builder_putchar(struct string_builder *s, int ch);
 PMOD_EXPORT void string_builder_binary_strcat(struct string_builder *s, char *str, ptrdiff_t len);
 PMOD_EXPORT void string_builder_append(struct string_builder *s,
