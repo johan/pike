@@ -1509,7 +1509,7 @@ static void file_grantpt( INT32 args )
   apply(Pike_sp[-1].u.object, "wait", 0);
   if(!UNSAFE_IS_ZERO(Pike_sp-1)) {
     Pike_error(
-#ifdef USE_PY_CHMOD
+#ifdef USE_PT_CHMOD
 	       USE_PT_CHMOD
 #else /* USE_CHGPT */
 	       USE_CHGPT
