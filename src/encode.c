@@ -790,6 +790,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
 	    Pike_error("Cannot encode programs with event handlers.\n");
 	  Pike_error("Cannot encode C programs.\n");
 	}
+	/*FIXME: save p->parent!! */
 	code_entry(type_to_tag(val->type), 1,data);
 	f_version(0);
 	encode_value2(Pike_sp-1,data);
