@@ -403,6 +403,7 @@ void low_exit_main(void)
   void cleanup_pike_types(void);
   void cleanup_program(void);
   void cleanup_compiler(void);
+  void cleanup_backend(void);
 
   th_cleanup();
   exit_dynamic_load();
@@ -414,6 +415,7 @@ void low_exit_main(void)
   cleanup_pike_types();
   cleanup_program();
   cleanup_compiler();
+  cleanup_backend();
 
   do_gc();
   free_svalue(& throw_value);
