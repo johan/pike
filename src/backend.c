@@ -271,7 +271,13 @@ void backend()
 	break;
 
       case EBADF:
-/*	fatal("Bad filedescriptor to select().\n");  Ignore */
+	sets=selectors;
+	next_timeout.tv_usec=0;
+	next_timeout.tv_sec=0;
+	if(select(max_fd+1, &sets.read, &sets.write, 0, &next_timeout) < 0 && errno == EBADF)
+	{
+	  fatal("Bad filedescriptor to select().\n");
+	}
 	break;
 
       }
