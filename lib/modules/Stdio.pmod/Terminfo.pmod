@@ -650,8 +650,8 @@ class TerminfoDB {
       foreach (({"/usr/share/lib/terminfo", "/usr/share/termcap",
 		 "/usr/lib/terminfo", "/usr/share/misc/terminfo"}), string dn)
       {
-	array(int) s = file_stat(dn);
-	if (arrayp(s) && sizeof(s)>1 && s[1]==-2)
+	.Stat s = file_stat(dn);
+	if (s && s->type=="dir")
 	{
 	  dirname = dn;
 	  break;

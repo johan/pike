@@ -132,6 +132,7 @@ void pike_module_init(void);
 int pike_make_pipe(int *fds);
 int fd_from_object(struct object *o);
 void f_strerror(INT32 args);
+void push_stat(struct stat *s);
 /* Prototypes end here */
 
 #define FILE_READ               0x1000

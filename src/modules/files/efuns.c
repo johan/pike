@@ -147,7 +147,7 @@ void f_file_stat(INT32 args)
   {
     push_int(0);
   }else{
-    push_array(encode_stat(&st));
+    push_stat(&st);
   }
 }
 
@@ -1046,7 +1046,7 @@ void init_files_efuns(void)
 
   
 /* function(string,int|void:int *) */
-  ADD_EFUN("file_stat",f_file_stat,tFunc(tStr tOr(tInt,tVoid),tArr(tInt)), OPT_EXTERNAL_DEPEND);
+  ADD_EFUN("file_stat",f_file_stat,tFunc(tStr tOr(tInt,tVoid),tObj), OPT_EXTERNAL_DEPEND);
 
   ADD_EFUN("file_truncate",f_file_truncate,tFunc(tStr tInt,tInt),0);
 
