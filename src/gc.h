@@ -170,7 +170,7 @@ struct marker
    * references. Set to 0 during mark pass if a nonweak reference is
    * found. Decreased during zap weak pass as gc_do_weak_free() is
    * called. */
-#ifdef DO_PIKE_CLEANUP
+#if defined(DO_PIKE_CLEANUP) || defined(PIKE_DEBUG)
   INT32 xrefs;
   /* Known external references. Increased by gc_mark_external(). */
   INT32 saved_refs;
