@@ -2272,17 +2272,15 @@ void image_color(INT32 args)
    x=THIS->xsize*THIS->ysize;
 
    THREADS_ALLOW();
-   {
+#if 0
 #ifdef ASSEMBLY_OK
-     if( image_cpuid & IMAGE_MMX )
-     {
-       image_mult_buffer_mmx_x86asm( d,s,x/4, RGB2ASMCOL( rgb )  ); 
-       s += x;
-       x = x%4;
-       s -= x;
-     }
-#endif
+   if( (image_cpuid & IMAGE_MMX) && x>>2 )
+   {
+     image_mult_buffer_mmx_x86asm( d,s,x>>2, RGB2ASMCOL( rgb ) ); 
+     s += x; x = x%4; s -= x;
    }
+#endif
+#endif
    while (x--)
    {
       d->r=( (((long)rgb.r*s->r)/255) );
