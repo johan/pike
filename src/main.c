@@ -799,6 +799,12 @@ int dbm_main(int argc, char **argv)
   }else{
     back.severity=THROW_EXIT;
 
+    TRACE((stderr, "Init master cookie...\n"));
+
+    push_constant_text(MASTER_COOKIE);
+    low_add_constant("__master_cookie", Pike_sp-1);
+    pop_stack();
+
     TRACE((stderr, "Init modules...\n"));
 
     init_modules();
