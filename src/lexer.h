@@ -269,15 +269,23 @@ int parse_esc_seq (WCHAR *buf, int *chr, ptrdiff_t *len)
     case 'U': {
       /* FIXME: Do we need compat goo to turn this off? */
       /* Note: Code dup in gobble_identifier in preprocessor.h. */
-      int stop, quoted = 0, longq;
+      int stop, longq;
       l = 1;
+      if (buf[1] == c) {
+	/* A double-u quoted escape. Convert the "\u" or "\U" to "\",
+	 * thereby shaving off a "u" or "U" from the escape
+	 * sequence. */
+	/* Don't check that there's a valid number of hex digits in
+	 * this case, since the encoding code that can produce them
+	 * doesn't check that. */
+	c = '\\';
+	break;
+      }
       if (c == 'u') {
-	while (buf[l] == 'u') quoted = 1, l++;
 	stop = l + 4;
 	longq = 0;
       }
       else {
-	while (buf[l] == 'U') quoted = 1, l++;
 	stop = l + 8;
 	longq = 1;
       }
@@ -298,13 +306,6 @@ int parse_esc_seq (WCHAR *buf, int *chr, ptrdiff_t *len)
 	    *len = l;
 	    return longq ? 8 : 7;
 	}
-      if (quoted) {
-	/* Convert the "\u" or "\U" to "\", thereby shaving off a "u"
-	 * or "U" from the escape sequence. */
-	l = 1;
-	c = '\\';
-      }
-      break;
     }
   }
 
