@@ -1,5 +1,5 @@
 #! /bin/sh
-# postinst script for pike7.3
+# postinst script for pike7.5
 #
 # see: dh_installdeb(1)
 # 
@@ -8,7 +8,7 @@
 
 set -e
 
-PIKE=7.3
+PIKE=7.5
 PIKEBIN=pike${PIKE}
 
 # summary of how this script can be called:
