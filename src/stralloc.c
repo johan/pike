@@ -1612,7 +1612,6 @@ PMOD_EXPORT ptrdiff_t string_search(struct pike_string *haystack,
 				    ptrdiff_t start)
 {
   SearchMojt mojt;
-  struct generic_mem_searcher s;
   char *r;
 
   if(needle->size_shift > haystack->size_shift ||
@@ -2086,7 +2085,6 @@ PMOD_EXPORT void string_builder_fill(struct string_builder *s,
   howmany-=tmp;
   if(howmany > 0)
   {
-    void *new_from;
     PCHARP to;
     tmp=MINIMUM(howmany, len);
     to=MKPCHARP_STR_OFF(s->s,s->s->len);

@@ -523,7 +523,6 @@ PIKECLASS file_line_iterator
   PIKEFUN object `+(int steps)
     {
       struct object *o=low_clone(file_line_iterator_program);
-      int i;
       struct file_line_iterator_struct *ssi;
       (ssi = OBJ2_FILE_LINE_ITERATOR(o))[0]=*THIS;
       if (THIS->buffer) {

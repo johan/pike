@@ -142,7 +142,7 @@ void update_arg(int instr,INT32 arg)
 
 void assemble(void)
 {
-  INT32 d,max_label,tmp;
+  INT32 max_label,tmp;
   INT32 *labels, *jumps, *uses;
   ptrdiff_t e, length;
   p_instr *c;
@@ -185,7 +185,7 @@ void assemble(void)
       {
 	while(1)
 	{
-	  int tmp,tmp2;
+	  int tmp;
 	  tmp=labels[c[e].arg];
 	  
 	  while(tmp<length &&

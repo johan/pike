@@ -532,7 +532,6 @@ PMOD_EXPORT unsigned INT32 hash_svalue(const struct svalue *s)
 
 PMOD_EXPORT int svalue_is_true(const struct svalue *s)
 {
-  unsigned INT32 q;
   check_type(s->type);
   check_refs(s);
 
@@ -1231,10 +1230,10 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	  pop_stack();
 	}
 	else {
+#if 0
 	  struct pike_string *file;
 	  INT32 line;
-#if 0
-	  /* This provides useful info sometimes, but there are code
+	  /* This provides useful info sometimes, but there is code
 	   * that looks for the plain "object" string to resort to
 	   * other fallbacks. */
 	  if ((file = get_program_line(s->u.object->prog, &line))) {
@@ -1257,10 +1256,10 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
       break;
 
     case T_PROGRAM: {
+#if 0
       struct pike_string *file;
       INT32 line;
-#if 0
-      /* This provides useful info sometimes, but there are code that
+      /* This provides useful info sometimes, but there is code that
        * looks for the plain "program" string to resort to other
        * fallbacks. */
       if ((file = get_program_line(s->u.program, &line))) {
