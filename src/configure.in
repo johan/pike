@@ -2422,6 +2422,7 @@ echo "WARN:          $WARN"
 echo "OPTIMIZE:      $OPTIMIZE"
 echo "LDFLAGS:       $LDFLAGS"
 echo "LIBS:          $LIBS"
+echo "prefix:        $prefix"
 echo
 
 #############################################################################
