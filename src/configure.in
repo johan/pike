@@ -1196,6 +1196,7 @@ int main()
       :
     fi
 
+
     #
     # FreeBSD doesn't like the &, while AIX requires it...
     #
@@ -1218,6 +1219,28 @@ int main()
     else
       :
     fi
+
+
+    AC_MSG_CHECKING(for __pthread_initial_thread_bos)
+    AC_CACHE_VAL(pike_cv_have_pthread_initial_thread_bos,[
+      AC_TRY_LINK([#include <pthread.h>
+        char *foo(void) { extern char *__pthread_initial_thread_bos; 
+           return __pthread_initial_thread_bos; }
+      ],[],[
+        pike_cv_have_pthread_initial_thread_bos=yes
+      ],[
+        pike_cv_have_pthread_initial_thread_bos=no
+      ])
+    ])
+
+    AC_MSG_RESULT($pike_cv_have_pthread_initial_thread_bos)
+
+    if test x$pike_cv_have_pthread_initial_thread_bos = xyes ; then
+      AC_DEFINE(HAVE_PTHREAD_INITIAL_THREAD_BOS)
+    else
+      :
+    fi
+
 
   else
     AC_MSG_RESULT(no)
