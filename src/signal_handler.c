@@ -1835,6 +1835,9 @@ static void internal_add_limit( struct perishables *storage,
  *!  string containing the name of the group. (See @[setuid]
  *!  and @[getgrgid] for more info.)
  *!
+ *! @mamber int(0..1) "setsid"
+ *!  Set this to @tt{1@} to create a new session group.
+ *!
  *! @member array(int|string) "setgroups"
  *!  This parameter allows you to the set the list of groups that the
  *!  new process belongs to. It is recommended that if you use this
@@ -2959,7 +2962,7 @@ void f_create_process(INT32 args)
       if (setsid_request)
 	 if (setsid()==-1)
 	    PROCERROR(PROCE_SETSID,0);
-/* fixme: else... what? error or ignore? */
+/* FIXME: else... what? error or ignore? */
 #endif
 
 #ifdef HAVE_SETGID
