@@ -732,18 +732,13 @@ static string low_pike_sprintf(char *format,
 	struct svalue *t;
 	DO_OP();
 	GET_SVALUE(t);
-	if(t->type!=T_STRING)
-	{
-	  init_buf();
-	  describe_svalue(t,0,0);
-	  s=complex_free_buf();
-	  fsp->b=s.str;
-	  fsp->len=s.len;
-	  fsp->fi_free_string=fsp->b;
-	  break;
-	}else{
-	  arg=t;
-	}
+	init_buf();
+	describe_svalue(t,0,0);
+	s=complex_free_buf();
+	fsp->b=s.str;
+	fsp->len=s.len;
+	fsp->fi_free_string=fsp->b;
+	break;
       }
 
       case 's':
