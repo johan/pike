@@ -3315,42 +3315,6 @@ static int depend2_p(node *n, node *lval)
   return ret;
 }
 
-#if 0
-/* Not used anywhere. */
-/* FIXME: Ought to use parent pointer to avoid recursion. */
-static int cntargs(node *n)
-{
-  if(!n) return 0;
-  switch(n->token)
-  {
-  case F_CAST:
-  case F_SOFT_CAST:
-  case F_APPLY:
-    return n->type != void_type_string;
-
-  case F_POP_VALUE:
-  case F_FOREACH:
-  case F_LOOP:
-  case F_INC_NEQ_LOOP:
-  case F_DEC_NEQ_LOOP:
-  case F_INC_LOOP:
-  case F_DEC_LOOP:  return 0;
-
-  case F_COMMA_EXPR:
-  case F_VAL_LVAL:
-  case F_LVALUE_LIST:
-  case F_ARG_LIST:
-
-    fatal_check_c_stack(16384);
-
-    return cntargs(CAR(n))+cntargs(CDR(n));
-
-    /* this might not be true, but it doesn't matter very much */
-  default: return 1;
-  }
-}
-#endif
-
 static int function_type_max=0;
 
 /* FIXME: Ought to use parent pointer to avoid recursion. */
