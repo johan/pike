@@ -8,7 +8,7 @@
  *
  */
 
-#if constant(Standards.ASN1.Types.Sequence)
+#if constant(Standards.ASN1.Types.Sequence) && constant(Crypto.Hash)
 
 import Standards.ASN1.Types;
 import Standards.PKCS;
