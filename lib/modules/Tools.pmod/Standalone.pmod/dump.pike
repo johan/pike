@@ -38,7 +38,9 @@ class GTKProgress {
   void update(int num) {
     progress += scale*num;
     progress = min(progress, 1.0);
-    if(bar) bar->update(progress);
+#if constant(GTK.Window)
+    bar->update(progress);
+#endif
   }
 
 #if constant(GTK.Window)
