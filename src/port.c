@@ -183,10 +183,10 @@ int STRCASECMP(const char *a,const char *b)
 #endif
 
 #ifndef HAVE_MEMSET
-char *MEMSET(char *s,int c,size_t n)
+void *MEMSET(void *s,int c,size_t n)
 {
   char *t;
-  for(t=s;n;n--) *(s++)=c;
+  for(t=s;n;n--) *(t++)=c;
   return s;
 }
 #endif
@@ -313,9 +313,10 @@ int MEMCMP(const void *bb,const void *aa,size_t s)
 #endif
 
 #ifndef HAVE_MEMCHR
-char *MEMCHR(char *p,char c,size_t e)
+void *MEMCHR(const void *p,char c,size_t e)
 {
-  while(e--) if(*(p++)==c) return p-1;
+  const char *t = p;
+  while(e--) if(*(t++)==c) return t-1;
   return (char *)0;
 }
 #endif
