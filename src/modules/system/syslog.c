@@ -236,15 +236,8 @@ void f_syslog(INT32 args)
 {
   struct pike_string *s;
   INT_TYPE pri=0, i;
-  char *message;
 
   get_all_args("syslog", args, "%i%S", &i, &s);
- 
-  if(args < 2)
-    Pike_error("Wrong number of arguments to syslog(int, string)\n");
-  if(Pike_sp[-args].type != T_INT ||
-     Pike_sp[-args+1].type != T_STRING)
-    Pike_error("Wrong type of arguments to syslog(int, string)\n");
  
   if(i & (1<<0)) pri |= LOG_EMERG;
   if(i & (1<<1)) pri |= LOG_ALERT;
