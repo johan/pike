@@ -154,7 +154,7 @@ struct udp_storage {
 extern void get_inet_addr(struct sockaddr_in *addr,char *name);
 
 /*! @decl object bind(int port)
-/*! @decl object bind(int port, string address)
+ *! @decl object bind(int port, string address)
  *!
  *! Binds a port for recieving or transmitting UDP.
  */
@@ -373,7 +373,7 @@ void udp_wait(INT32 args)
 #define UDP_BUFFSIZE 65536
 
 /*! @decl mapping(string:int|string) read()
-/*! @decl mapping(string:int|string) read(int flag)
+ *! @decl mapping(string:int|string) read(int flag)
  *!
  *! Read from the UDP socket.
  *!
@@ -477,7 +477,7 @@ void udp_read(INT32 args)
 }
 
 /*! @decl int send(string to, int port, string message)
-/*! @decl int send(string to, int port, string message, int flags)
+ *! @decl int send(string to, int port, string message, int flags)
  *!
  *! Send data to a UDP socket. The recepient address will be @[to]
  *! and port will be @[port].
@@ -770,7 +770,7 @@ static void udp_errno(INT32 args)
 }
 
 /*! @decl object set_type(int sock_type)
-/*! @decl object set_type(int sock_type, int family)
+ *! @decl object set_type(int sock_type, int family)
  *!
  *! Sets socket type and protocol family.
  */
