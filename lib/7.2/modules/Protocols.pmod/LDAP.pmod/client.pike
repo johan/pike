@@ -25,26 +25,26 @@ object|int search (string|void filter, int|void attrsonly,
 int modify (string dn, mapping(string:array(mixed)) attropval) {
 
   ::modify(dn, attropval);
-  return ::last_rv->error_number();
+  return ldap_errno;
 }
 
 int delete (string dn) {
 
   ::delete(dn);
-  return ::last_rv->error_number();
+  return ldap_errno;
 }
 
 int compare (string dn, array(string) aval) {
 
   ::compare(dn, aval);
-  return ::last_rv->error_number();
+  return ldap_errno;
 }
 
 
 int add (string dn, mapping(string:array(string)) attrs) {
 
   ::add(dn, attrs);
-  return ::last_rv->error_number();
+  return ldap_errno;
 }
 
 
@@ -52,5 +52,5 @@ int modifydn (string dn, string newrdn, int deleteoldrdn,
               string|void newsuperior) {
 
   ::modifydn(dn, newrdn, deleteoldrdn, newsuperior);
-  return ::last_rv->error_number();
+  return ldap_errno;
 }
