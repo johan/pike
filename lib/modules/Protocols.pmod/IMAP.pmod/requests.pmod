@@ -72,7 +72,7 @@ class request
       if (argc == sizeof(args))
 	return easy_process(@args);	
 
-      switch(arg_info[argc][0])
+      switch(((array(array(string)))arg_info)[argc][0])
       {
       case "number":
 	return parser->get_number(append_number);
