@@ -845,7 +845,7 @@ void o_and(void)
     t = and_pike_types(sp[-2].u.string, sp[-1].u.string);
     pop_n_elems(2);
     push_string(t);
-    sp[-1].type = T_STRING;
+    sp[-1].type = T_TYPE;
     return;
   }
 
