@@ -865,6 +865,7 @@ void f_exece(INT32 args)
       f_add(3);
       env[e]=sp[-1].u.string->str;
       sp--;
+      dmalloc_touch_svalue(sp);
     }
       
     free_array(i);
