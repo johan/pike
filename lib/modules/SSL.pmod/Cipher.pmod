@@ -37,8 +37,8 @@ class CipherSpec {
   int key_material;
   int iv_size;
   int key_bits;
-  function sign;
-  function verify;
+  function(object,string,ADT.struct:ADT.struct) sign;
+  function(object,string,ADT.struct,Gmp.mpz:int(0..1)) verify;
 }
 
 #if 0
@@ -238,7 +238,7 @@ ADT.struct rsa_sign(object context, string cookie, ADT.struct struct)
 }
 
 //!
-int rsa_verify(object context, string cookie, ADT.struct struct,
+int(0..1) rsa_verify(object context, string cookie, ADT.struct struct,
 	       Gmp.mpz signature)
 {
   /* Exactly how is the signature process defined? */
