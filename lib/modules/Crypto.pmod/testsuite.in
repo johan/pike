@@ -574,7 +574,8 @@ cond([[ Nettle["crypt_md5"] ]],[[
 ]])
 
 // pipe
-cond_resolv(Crypto.IDEA.name, [[
+cond([[ master()->resolv("Crypto.IDEA.name") && master()->resolv("Gmp.mpz") ]],
+[[
 test_eq(
  Crypto.Pipe( Crypto.DES, Crypto.AES, Crypto.IDEA,
   Crypto.CAST, Crypto.Arcfour )->name(),
