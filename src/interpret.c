@@ -1318,8 +1318,8 @@ void apply_low(struct object *o, int fun, int args)
 #ifdef DEBUG
     if(d_flag) check_threads_etc();
 #endif
-    fp->num_args=num_args;
-    new_frame.num_locals=num_args;
+    fp->num_args=args;
+    new_frame.num_locals=args;
     (*function->func.c_fun)(args);
   }else{
     int num_args;
