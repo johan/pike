@@ -1864,7 +1864,7 @@ static char *low_match_types2(char *a,char *b, int flags)
 
       if(!ap || !bp) break;
 
-#if 1
+#if 0
       /* FIXME: Temporary kludge.
        * match_types() currently seems to need to be symetric.
        */
