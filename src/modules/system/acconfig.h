@@ -42,10 +42,10 @@
 /* Define if the get/setrlimit syntax is unknown */
 #undef SETRLIMIT_SYNTAX_UNKNOWN
 
-/* Define if you have the <sys/resource.h> header file.  */
+/* Define if you have a working <sys/resource.h> header file.  */
 #undef HAVE_SYS_RESOURCE_H
 
-/* Define if you have the <sys/user.h> header file.  */
+/* Define if you have a working <sys/user.h> header file.  */
 #undef HAVE_SYS_USER_H
 
 /* Define if ITIMER_REAL, ITIMER_VIRTUAL and ITIMER_PROF is in tInt02 */
