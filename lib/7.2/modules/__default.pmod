@@ -39,9 +39,11 @@ void sleep(float|int t, void|int abort)
 //!
 //! @seealso
 //!   @[YP.default_domain()]
+#if constant(Yp.default_domain)
 string default_yp_domain() {
   return Yp.default_domain();
 }
+#endif
 
 //!   Instantiate a program (Pike 7.2 compatibility).
 //!
@@ -109,7 +111,9 @@ mapping(string:mixed) all_constants()
 
   ADD(all_constants);
   ADD(dirname);
+#if constant(Yp.default_domain)
   ADD(default_yp_domain);
+#endif
   ADD(new);
   ADD(clone);
   ADD(_low_program_name);
