@@ -82,7 +82,8 @@ int errno() { return 0; }
 Stdio.Stat stat() {
   Stdio.Stat st = Stdio.Stat();
   st->size = sizeof(data);
-  st->mtime=st->atime=st->ctime=mtime;
+  st->mtime=st->ctime=mtime;
+  st->atime=time();
   return st;
 }
 
