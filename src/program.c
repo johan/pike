@@ -31,7 +31,7 @@ RCSID("$Id$");
 #include "stuff.h"
 #include "mapping.h"
 #include "cyclic.h"
-#include "security.h"
+#include "pike_security.h"
 #include "pike_types.h"
 #include "opcodes.h"
 #include "version.h"

@@ -16,7 +16,7 @@ RCSID("$Id$");
 #include "module_support.h"
 #include "pike_error.h"
 #include "bignum.h"
-#include "security.h"
+#include "pike_security.h"
 
 #include "threads.h"
 #include <stdio.h>

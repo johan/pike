@@ -49,7 +49,7 @@
 #include "backend.h"
 #include "threads.h"
 #include "operators.h"
-#include "security.h"
+#include "pike_security.h"
 
 RCSID("$Id$");
 

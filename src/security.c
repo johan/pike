@@ -45,7 +45,7 @@
 #include "mapping.h"
 #include "multiset.h"
 #include "gc.h"
-#include "security.h"
+#include "pike_security.h"
 #include "module_support.h"
 #include "constants.h"
 

@@ -17,7 +17,7 @@
 #include "threads.h"
 #include "mapping.h"
 #include "perl_machine.h"
-#include "security.h"
+#include "pike_security.h"
 
 
 #ifdef HAVE_PERL

@@ -22,7 +22,7 @@
 #include "module_support.h"
 #include "operators.h"
 #include "builtin_functions.h"
-#include "security.h"
+#include "pike_security.h"
 #include "main.h"
 #include <signal.h>
 

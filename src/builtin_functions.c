@@ -38,7 +38,7 @@ RCSID("$Id$");
 #include "opcodes.h"
 #include "cyclic.h"
 #include "signal_handler.h"
-#include "security.h"
+#include "pike_security.h"
 #include "builtin_functions.h"
 #include "bignum.h"
 #include "peep.h"

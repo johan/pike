@@ -15,7 +15,7 @@
 #include "interpret.h"
 #include "mapping.h"
 #include "pike_error.h"
-#include "security.h"
+#include "pike_security.h"
 #include "block_alloc.h"
 
 RCSID("$Id$");

@@ -22,7 +22,7 @@
 #include "opcodes.h"
 #include "pike_error.h"
 #include "rbtree_low.h"
-#include "security.h"
+#include "pike_security.h"
 #include "svalue.h"
 #include "block_alloc.h"
 
@@ -5316,7 +5316,7 @@ void test_multiset (void)
 #include "interpret.h"
 #include "builtin_functions.h"
 #include "gc.h"
-#include "security.h"
+#include "pike_security.h"
 
 RCSID("$Id$");
 

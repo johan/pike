@@ -29,7 +29,7 @@ RCSID("$Id$");
 #include "threads.h"
 #include "callback.h"
 #include "fd_control.h"
-#include "security.h"
+#include "pike_security.h"
 #include "bignum.h"
 #include "pike_types.h"
 #include "pikecode.h"

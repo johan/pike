@@ -20,7 +20,7 @@
 #include "backend.h"
 #include "operators.h"
 #include "builtin_functions.h"
-#include "security.h"
+#include "pike_security.h"
 #include "bignum.h"
 
 #include "file_machine.h"

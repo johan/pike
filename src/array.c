@@ -20,7 +20,7 @@
 #include "pike_memory.h"
 #include "gc.h"
 #include "main.h"
-#include "security.h"
+#include "pike_security.h"
 #include "stuff.h"
 #include "bignum.h"
 #include "cyclic.h"

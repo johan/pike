@@ -56,7 +56,7 @@
 #include "interpret.h"
 #include "operators.h"
 #include "stuff.h"
-#include "security.h"
+#include "pike_security.h"
 
 #define sp Pike_sp
 

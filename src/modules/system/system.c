@@ -36,7 +36,7 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "constants.h"
 #include "pike_memory.h"
-#include "security.h"
+#include "pike_security.h"
 #include "bignum.h"
 #include "pike_rusage.h"
 #include "pike_netlib.h"

@@ -30,7 +30,7 @@ RCSID("$Id$");
 #include "threads.h"
 #include "module_support.h"
 #include "builtin_functions.h"
-#include "security.h"
+#include "pike_security.h"
 
 #ifdef HAVE_SYSLOG_H
 #include <syslog.h>

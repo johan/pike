@@ -31,7 +31,7 @@ RCSID("$Id$");
 #include "bignum.h"
 #include "builtin_functions.h"
 #include "cyclic.h"
-#include "security.h"
+#include "pike_security.h"
 
 #define sp Pike_sp
 

@@ -21,7 +21,7 @@ RCSID("$Id$");
 #include "las.h"
 #include "gc.h"
 #include "stralloc.h"
-#include "security.h"
+#include "pike_security.h"
 #include "opcodes.h"
 #include "pike_error.h"
 #include "program.h"

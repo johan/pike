@@ -21,7 +21,7 @@ RCSID("$Id$");
 #include "fd_control.h"
 #include "module_support.h"
 #include "operators.h"
-#include "security.h"
+#include "pike_security.h"
 #include "bignum.h"
 #include "builtin_functions.h"
 #include "gc.h"

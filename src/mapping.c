@@ -20,7 +20,7 @@ RCSID("$Id$");
 #include "las.h"
 #include "gc.h"
 #include "stralloc.h"
-#include "security.h"
+#include "pike_security.h"
 #include "block_alloc.h"
 #include "opcodes.h"
 #include "stuff.h"

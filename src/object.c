@@ -24,7 +24,7 @@ RCSID("$Id$");
 #include "cpp.h"
 #include "builtin_functions.h"
 #include "cyclic.h"
-#include "security.h"
+#include "pike_security.h"
 #include "module_support.h"
 #include "fdlib.h"
 #include "mapping.h"
