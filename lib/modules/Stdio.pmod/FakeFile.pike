@@ -124,7 +124,7 @@ string read(void|int(0..) len, void|int(0..1) not_all) {
 
 //! @seealso
 //!   @[Stdio.File()->seek()]
-int seek(int pos, int mult, int add) {
+int seek(int pos, void|int mult, void|int add) {
   if(mult)
     pos = pos*mult+add;
   if(pos<0)
