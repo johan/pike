@@ -46,7 +46,7 @@ linker_options: $(MODULE_LINKOPTS)
 	      cat $$a/linker_options; \
 	    fi; \
 	  done \
-	) >linker_options
+	) | sed -e 's/^modules\//post_modules\//' >linker_options
 
 Makefile: $(SRCDIR)/Makefile.in $(SRCDIR)/dependencies ./config.status
 	CONFIG_FILES=Makefile CONFIG_HEADERS="" ./config.status
