@@ -85,7 +85,7 @@ export REALCC SMARTLINK
 
 
 AC_ARG_WITH(dynamic_modules,   [  --without-dynamic-modules        link modules statically],[],[with_dynamic_modules=yes])
-AC_ARG_WITH(include-path,[  --with-include-path    A list of paths to search for inculude files.])
+AC_ARG_WITH(include-path,[  --with-include-path    A list of paths to search for include files.])
 AC_ARG_WITH(lib-path,    [  --with-lib-path        A list of paths to search for libraries.])
 AC_ARG_WITH(gdbm,        [  --without-gdbm         no GNU database manager support ])
 AC_ARG_WITH(gmp,         [  --without-gmp          no Support bignums])
