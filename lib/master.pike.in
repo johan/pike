@@ -712,9 +712,12 @@ void _main(string *orig_argv, string *env)
   add_include_path(tmppath+"/include");
   add_module_path(tmppath+"/modules");
 #else
-  // add path for architecture-shared files
+
+#if "¤share_prefix¤"[0]!='¤'
+  // add path for architecture-dependant files
   add_include_path("¤share_prefix¤/include");
   add_module_path("¤share_prefix¤/modules");
+#endif
 
   // add path for architecture-dependant files
   add_include_path("¤lib_prefix¤/include");
