@@ -429,7 +429,7 @@ private static inline string generate_peer_id()
    int day=Calendar.Day(@v[2..4])->julian_day()-2452991;
    string s=sprintf("Pi%c%c%2c%s",
 		    v[0],v[1],day,
-		    Crypto.randomness.pike_random()->read(14));
+		    random_string(14));
    return s;
 };
 
