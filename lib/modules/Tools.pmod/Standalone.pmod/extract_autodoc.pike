@@ -60,6 +60,8 @@ void recurse(string srcdir, string builddir, int root_ts, array(string) root)
 
     Stdio.Stat stat = file_stat(srcdir+fn, 1);
 
+    if (!stat) continue;
+
     if(stat->isdir) {
       if(!file_stat(builddir+fn)) mkdir(builddir+fn);
       string mod_name = fn;
