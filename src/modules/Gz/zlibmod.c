@@ -370,6 +370,12 @@ void pike_module_init(void)
   set_exit_callback(exit_gz_inflate);
 
   end_class("inflate",0);
+
+  add_integer_constant("NO_FLUSH",Z_NO_FLUSH,0);
+  add_integer_constant("PARTIAL_FLUSH",Z_PARTIAL_FLUSH,0);
+  add_integer_constant("SYNC_FLUSH",Z_SYNC_FLUSH,0);
+  add_integer_constant("FINISH",Z_FINISH,0);
+
 #endif
 }
 
