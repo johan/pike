@@ -785,7 +785,7 @@ void do_html_parse(struct pike_string *ss,
 	    push_string(make_shared_binary_string(s+last,i-last-1)); 
 	    (*strings)++; 
 	  }
-	  i=last=j+k;
+	  i=last=j=m;
 	  push_string(ss2);
 	  (*strings)++;
 	  continue;
