@@ -1836,7 +1836,7 @@ statements: { $$=0; }
   }
   ;
 
-statement_with_semicolon: unused2 ';' ;
+statement_with_semicolon: unused2 expected_semicolon ;
 
 normal_label_statement: statement_with_semicolon
   | import { $$=0; }
