@@ -1274,7 +1274,7 @@ static void find_written_vars(node *n,
     if(lvalue) p->locals[n->u.number]=VAR_USED;
     break;
 
-  case F_GLOBAL:
+  case F_IDENTIFIER:
      if(lvalue)
      {
        if(n->u.number>=MAX_GLOBAL)
