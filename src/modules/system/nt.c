@@ -972,6 +972,10 @@ void exit_nt_system_calls(void)
       netapilib=0;
       netusergetinfo=0;
       netuserenum=0;
+      netusergetgroups=0;
+      netusergetlocalgroups=0;
+      netgroupenum=0;
+      netlocalgroupenum=0;
       netapibufferfree=0;
     }
   }
