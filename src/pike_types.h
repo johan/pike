@@ -100,9 +100,7 @@ struct node_s
   size_t hash;
   struct node_s *next;
 #endif /* SHARED_NODES */
-#ifdef PIKE_DEBUG
   struct pike_string *current_file;
-#endif
   struct pike_type *type;
   struct pike_string *name;
   struct node_s *parent;
