@@ -193,6 +193,13 @@ void set_backend_for_fd(int fd, struct Backend_struct *b)
 #ifdef PIKE_DEBUG
   if(fd<0) Pike_fatal("set_backend_for(%d)\n",fd);
 #endif
+  if (!b) {
+    /* Unregister the fd. */
+    if (fd < fd_map_size) {
+      fd_map[fd] = NULL;
+    }
+    return;
+  }
   if(fd >= fd_map_size)
   {
     int old=fd_map_size;
@@ -2032,6 +2039,11 @@ PIKECLASS Backend
       struct Backend_struct *me=THIS;
       int e;
 
+      /* Make sure we aren't referenced any more. */
+      for (e = 0; e < fd_map_size; e++) {
+	if (fd_map[e] == me) fd_map[e] = NULL;
+      }
+
       free_callback_list(& THIS->backend_callbacks);
 
       fd_close(THIS->wakeup_pipe[0]);
@@ -2069,7 +2081,6 @@ PIKECLASS Backend
       if(me->call_hash) free((char*)me->call_hash);
       me->num_pending_calls=0;
       me->call_buffer=NULL;
-
     }
 }
 
