@@ -378,3 +378,11 @@ void pike_module_init(void)
 #endif
 }
 
+#ifdef HAVE___VTBL__9TYPE_INFO
+/* Super-special kluge for IRIX 6.3 */
+extern void __vtbl__9type_info();
+void zlibmod_strap_kluge()
+{
+  __vtbl__9type_info();
+}
+#endif /* HAVE___VTBL__9TYPE_INFO */
