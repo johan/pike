@@ -170,6 +170,10 @@ install: build
 	# re-dump modules (some of them fail to be dumped correctly for the first time)
 	$(MAKE) -C$(BUILDDIR)/ dump_modules
 
+	# temporary hack
+	-rm -f $(CURDIR)/debian/$(PIKE)-core/usr/lib/$(PIKE)/$(VERSION)/modules/Standards.pmod/PKCS.pmod/*.o
+	-$(CURDIR)/src/dumpmodule.pike $(CURDIR)/debian/$(PIKE)-core/usr/lib/$(PIKE)/$(VERSION)/modules/Standards.pmod/PKCS.pmod/*
+	
 	# install the docs
 	install -d -m 755 -o root -g root $(CURDIR)/debian/$(PIKE)-manual/usr/share/doc/$(PIKE)-doc/html/manual
 	install -d -m 755 -o root -g root $(CURDIR)/debian/$(PIKE)-reference/usr/share/doc/$(PIKE)-doc/html/reference
