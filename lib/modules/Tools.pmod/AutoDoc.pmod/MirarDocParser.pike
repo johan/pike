@@ -565,6 +565,9 @@ void document(string enttype,
 	      sscanf(prot, "%*s %s(", n)==2 ||
 		sscanf(prot, "%*s %s ", n)==2 ||
 		sscanf(prot+"\n", "%*s %s\n", n);
+	      if (n == "`" && has_value(prot, "`()")) {
+		n = "`()";
+	      }
 	      if(!m) { m=n; continue; }
 	      if(n!=m) return;
 	    }
