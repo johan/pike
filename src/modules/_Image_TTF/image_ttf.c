@@ -262,8 +262,9 @@ static void image_ttf_face_exit()
 
 static void image_ttf_faceinstance_exit()
 {
+   if (THISi->faceobj->prog)
+      TT_Done_Instance(THISi->instance);
    free_object(THISi->faceobj);
-   TT_Done_Instance(THISi->instance);
 }
 
 #ifdef TTF_DEBUG_INFO
