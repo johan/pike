@@ -99,6 +99,7 @@ int write(string|array(string) s)
     s = s*"";
   }
 
+  int call_write = !sizeof (write_buffer);
   int len = strlen(s);
   object packet;
   int res;
@@ -110,6 +111,10 @@ int write(string|array(string) s)
     send_packet(packet);
     s = s[PACKET_MAX_SIZE..];
   }
+
+  if (call_write)
+    ssl_write_callback(socket->query_id());
+
 #if 0
   if (queue_write() == -1)
   {
@@ -120,11 +125,6 @@ int write(string|array(string) s)
   return len;
 }
 
-string read(mixed ...args)
-{
-  throw( ({ "SSL->sslfile: read() is not supported.\n", backtrace() }) );
-}
-  
 private void ssl_read_callback(mixed id, string s)
 {
 #ifdef SSL3_DEBUG
