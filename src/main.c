@@ -335,7 +335,7 @@ int dbm_main(int argc, char **argv)
   if(master_location[CONSTANT_STRLEN(MASTER_COOKIE)])
     master_file=master_location + CONSTANT_STRLEN(MASTER_COOKIE);
 
-#if __NT__
+#if defined(__NT__)
   if(!master_file) get_master_key(HKEY_CURRENT_USER);
   if(!master_file) get_master_key(HKEY_LOCAL_MACHINE);
 #endif

@@ -12,6 +12,10 @@
  * Henrik Grubbström 1999-03-04
  */
 
+#ifdef __MINGW32__
+#error Smartlink binary does not support Mingw32.
+#endif
+
 /* NOTE: Use confdefs.h and not machine.h, since we are compiled by configure
  */
 #include "confdefs.h"

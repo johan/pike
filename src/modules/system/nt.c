@@ -15,9 +15,9 @@
 
 #include "system_machine.h"
 #include "system.h"
+#include "port.h"
 
 #ifdef __NT__
-
 #ifdef HAVE_WINSOCK2_H
 #include <winsock2.h>
 #else
@@ -28,7 +28,11 @@
 #include <lm.h>
 #define SECURITY_WIN32
 #define SEC_SUCCESS(Status) ((Status) >= 0)
+#ifndef __MINGW32__
 #include <sspi.h>
+#else
+#include <security.h>
+#endif
 
 /* These are defined by winerror.h in recent SDKs. */
 #ifndef SEC_E_INSUFFICIENT_MEMORY
@@ -43,7 +47,9 @@
 #define COMPILE_NEWAPIS_STUBS
 /* We want GetLongPathName()... */
 #define WANT_GETLONGPATHNAME_WRAPPER
+#ifndef __MINGW32__
 #include <NewAPIs.h>
+#endif
 
 #include "program.h"
 #include "stralloc.h"

@@ -254,7 +254,7 @@ extern int fd_type[MAX_OPEN_FILEDESCRIPTORS];
 
 
 /* This may be inaccurate! /Hubbe */
-#ifdef __NT__
+#if defined(__NT__) && !defined(__MINGW32__)
 #define EMULATE_DIRECT
 #endif
 

@@ -8,7 +8,8 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-#if defined(__WINNT__) && !defined(__NT__)
+/* Mingw32 workarounds */
+#if (defined(__WINNT__) || defined(__WIN32__)) && !defined(__NT__)
 #define __NT__
 #endif
 
@@ -43,6 +44,18 @@
 #ifndef WIN32
 #define WIN32	100	/* WinNT 1.0 */
 #endif
+
+/* Mingw32 needs this to define stuff correctly. */
+#ifdef _WIN32_WINDOWS
+#undef _WIN32_WINDOWS
+#endif
+#ifdef _WIN32_WINNT
+#undef _WIN32_WINNT
+#endif
+
+#define _WIN32_WINDOWS 0x0500
+#define _WIN32_WINNT 0x0500
+
 #endif /* __NT__ */
 
 /*
