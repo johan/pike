@@ -1661,13 +1661,11 @@ static struct memhdr *low_make_memhdr(void *p, int s, LOCATION location)
   struct memloc *ml = alloc_memloc();
   unsigned long l;
 
-#ifdef DMALLOC_VERIFY_INTERNALS
   if (mh->locations) {
     dump_memhdr_locations(mh, NULL, 0);
     Pike_fatal("New block at %p already has locations.\n"
 	       "location: %s\n", p, location);
   }
-#endif
 
   l = lhash(mh,location);
   mh->size=s;
