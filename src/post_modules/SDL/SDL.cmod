@@ -935,6 +935,7 @@ PIKECLASS Surface {
     case 3: return &fast_set_pixel3; 
     case 4: return &fast_set_pixel4; 
     }
+    return NULL;
   }
   /*! @decl int get_pixel(int x, int y)
    *! Get the value of the specified pixel. The surface needs to be
@@ -1072,8 +1073,8 @@ PIKECLASS Surface {
    *!  @[unlock()], @[set_pixel()], @[get_pixel()]
    */
   PIKEFUN int lock() {
-    CHECK_INIT();
     int locked = 1;
+    CHECK_INIT();
     if ( SDL_MUSTLOCK(THIS->_s) ) {
       locked = SDL_LockSurface(THIS->_s) != -1;
     }
