@@ -33,8 +33,9 @@ force:
 	@:;
 
 dummy:	Makefile $(DUMMY) linker_options modlist_headers modlist_segment $(MODULE_TARGET) module.pmod
-	@$(TMP_BINDIR)/install_module module.pmod \
-	  $(TMP_MODULE_BASE)/$(MODDIR)$(MODNAME).pmod
+	@if [ x"$(PIKE_EXTERNAL_MODULE)" = x ]; then \
+	  $(TMP_BINDIR)/install_module module.pmod $(TMP_MODULE_BASE)/$(MODDIR)$(MODNAME).pmod ; \
+	fi
 
 $(MODULE_ARCHIVES) ThisIsAPhonyTargetBlaBlaBla: force
 	@a=`echo $@ | sed -e 's@/[^/]*$$@@'` ; \
@@ -131,7 +132,7 @@ module.pmod: Makefile $(MODULE_PMOD_IN)
 
 
 clean:	
-	-rm -f *.o *.fail *.obj *.a *.so linker_options modlist_headers modlist_segment testsuite $(MODULE_CLEAN_EXTRA); rm -rf module.pmod
+	-rm -f *.o *.fail *.obj *.a *.so linker_options modlist_headers modlist_segment testsuite $(MODULE_CLEAN_EXTRA); rm -rf module.pmod plib
 	@for a in '' $(MODULE_SUBDIRS) ; do if test "x$$a" = "x"; then :; else echo cleaning $$a ; ( cd $$a ; $(MAKE) $(MAKE_FLAGS) clean ) ; fi ; done
 
 
