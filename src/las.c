@@ -514,6 +514,13 @@ node *index_node(node *n, struct pike_string * id)
       push_string(id);
       reference_shared_string(id);
       f_index(2);
+
+      if(sp[-1].type == T_INT &&
+	 !sp[-1].u.number &&
+	 sp[-1].subtype)
+      {
+	yyerror("Index not present in module.");
+      }
     }
   }
   UNSETJMP(tmp);
