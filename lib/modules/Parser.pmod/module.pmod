@@ -579,7 +579,7 @@ string encode_html_entities(string raw)
   while (sizeof(raw)) {
     string tmp;
     int c;
-    if (sscanf(raw, "%[!#-%(-;=?-~]%c%s", tmp, c, raw) > 1) {
+    if (sscanf(raw, "%[!#-%(-;=?-~\241-\377]%c%s", tmp, c, raw) > 1) {
       string enc;
       if (!(enc = rev_html_entities[c])) {
 	enc = sprintf("&#%d;", c);
