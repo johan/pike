@@ -2319,7 +2319,6 @@ static void gc_check_mapping(struct mapping *m)
   }
 }
 
-#ifdef PIKE_DEBUG
 unsigned gc_touch_all_mappings(void)
 {
   unsigned n = 0;
@@ -2334,7 +2333,6 @@ unsigned gc_touch_all_mappings(void)
   }
   return n;
 }
-#endif
 
 void gc_check_all_mappings(void)
 {

@@ -2176,7 +2176,6 @@ void real_gc_cycle_check_array(struct array *a, int weak)
   } GC_CYCLE_LEAVE;
 }
 
-#ifdef PIKE_DEBUG
 unsigned gc_touch_all_arrays(void)
 {
   unsigned n = 0;
@@ -2190,7 +2189,6 @@ unsigned gc_touch_all_arrays(void)
   } while (a != &empty_array);
   return n;
 }
-#endif
 
 void gc_check_all_arrays(void)
 {

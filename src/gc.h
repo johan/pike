@@ -20,7 +20,7 @@ extern INT32 num_allocs;
 extern ptrdiff_t alloc_threshold;
 PMOD_EXPORT extern int Pike_in_gc;
 extern int gc_generation;
-extern int gc_debug;
+extern int gc_trace, gc_debug;
 
 extern struct callback *gc_evaluator_callback;
 #ifdef PIKE_DEBUG
@@ -157,11 +157,12 @@ struct marker
 /* Flags free for use in the gc callbacks for the specific data types.
  * E.g. multisets use these flags on the multiset_data blocks. */
 
-#ifdef PIKE_DEBUG
-#define GC_PRETOUCHED		0x00010000
+#define GC_PRETOUCHED		0x4000
 /* The thing has been visited by debug_gc_touch() in the pretouch pass. */
-#define GC_MIDDLETOUCHED	0x00020000
+#define GC_MIDDLETOUCHED	0x8000
 /* The thing has been visited by debug_gc_touch() in the middletouch pass. */
+
+#ifdef PIKE_DEBUG
 #define GC_IS_REFERENCED	0x00040000
 /* The thing has been visited by gc_is_referenced() in the mark pass. */
 #define GC_XREFERENCED		0x00080000

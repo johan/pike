@@ -1618,7 +1618,6 @@ static inline void gc_check_object(struct object *o)
   }
 }
 
-#ifdef PIKE_DEBUG
 unsigned gc_touch_all_objects(void)
 {
   unsigned n = 0;
@@ -1634,7 +1633,6 @@ unsigned gc_touch_all_objects(void)
   for (o = objects_to_destruct; o; o = o->next) n++;
   return n;
 }
-#endif
 
 void gc_check_all_objects(void)
 {
