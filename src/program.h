@@ -124,13 +124,14 @@ union idptr
 #define IDENTIFIER_VARARGS 8
 #define IDENTIFIER_PROTOTYPED 16
 #define IDENTIFIER_SCOPED 32   /* This is used for local functions only */
+#define IDENTIFIER_SCOPE_USED 64 /* contains scoped local functions */
 
 #define IDENTIFIER_IS_FUNCTION(X) ((X) & IDENTIFIER_FUNCTION)
 #define IDENTIFIER_IS_PIKE_FUNCTION(X) ((X) & IDENTIFIER_PIKE_FUNCTION)
 #define IDENTIFIER_IS_CONSTANT(X) ((X) & IDENTIFIER_CONSTANT)
 #define IDENTIFIER_IS_VARIABLE(X) (!((X) & (IDENTIFIER_FUNCTION | IDENTIFIER_CONSTANT)))
 
-#define IDENTIFIER_MASK 63
+#define IDENTIFIER_MASK 127
 
 struct identifier
 {

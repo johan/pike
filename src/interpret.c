@@ -1055,7 +1055,7 @@ void mega_apply2(enum apply_type type, INT32 args, void *arg1, void *arg2)
 	num_locals=EXTRACT_UCHAR(pc++);
 	num_args=EXTRACT_UCHAR(pc++);
 
-	if(function->identifier_flags & IDENTIFIER_SCOPED)
+	if(function->identifier_flags & IDENTIFIER_SCOPE_USED)
 	  new_frame->expendible+=num_locals;
 	
 	/* adjust arguments on stack */

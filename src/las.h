@@ -91,6 +91,10 @@ extern struct node_hash_table node_hash;
 #define OPT_DEFROSTED	    0x4000 /* Node may be a duplicate */
 #define OPT_NOT_SHARED	    0x8000 /* Node is not to be shared */
 
+#define SCOPE_LOCAL 1
+#define SCOPE_SCOPED 2
+#define SCOPE_SCOPE_USED 4
+
 /* Prototypes begin here */
 int car_is_node(node *n);
 int cdr_is_node(node *n);
