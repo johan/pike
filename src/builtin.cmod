@@ -643,12 +643,12 @@ PIKEFUN mapping random(mapping m)
 
 PIKECLASS backtrace_frame
 {
-  CVAR struct svalue fun;
+  PIKEVAR function fun;
+  PIKEVAR array args;
   CVAR struct program *prog;
   CVAR unsigned char *pc;
-  CVAR INT_TYPE lineno;
-  CVAR struct array *args;
   CVAR struct pike_string *filename;
+  CVAR INT_TYPE lineno;
 
   INIT
   {
