@@ -1003,7 +1003,7 @@ void create(string IMAGE_DIR) {
     });
 
   // Normalize IMAGE_DIR.
-  IMAGE_DIR = compile_path(getcwd(), IMAGE_DIR);
+  IMAGE_DIR = combine_path(getcwd(), IMAGE_DIR);
   if (!sizeof(IMAGE_DIR)) IMAGE_DIR="./";
   else if (IMAGE_DIR[-1] != '/') IMAGE_DIR += "/";
 
