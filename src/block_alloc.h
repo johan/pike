@@ -1,3 +1,4 @@
+/* $Id$ */
 #define PRE_INIT_BLOCK(X)
 #define INIT_BLOCK(X)
 #define EXIT_BLOCK(X)

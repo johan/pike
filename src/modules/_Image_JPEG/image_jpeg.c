@@ -1,3 +1,7 @@
+/*
+ * $Id$
+ */
+
 #include "config.h"
 
 #if !defined(HAVE_LIBJPEG)

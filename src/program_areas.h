@@ -1,3 +1,4 @@
+/* $Id$ */
 /* Who needs templates anyway? / Hubbe */
 
 /* Program *must* be first! */
