@@ -37,8 +37,7 @@ void create(object s)
 
 
 string tls_pad(string data,int blocksize  ) {
-
-  werror("Blocksize:"+blocksize+"\n");
+//    werror("Blocksize:"+blocksize+"\n");
   int plen=(blocksize-(strlen(data)+1)%blocksize)%blocksize;
   string res=data + sprintf("%c",plen)*plen+sprintf("%c",plen);
   return res;
