@@ -160,6 +160,12 @@ test_any([[
   return i;
 ]], 17)
 
+test_any([[
+  // Another over-optimization test.
+  string x(string i) { return i; };
+  return x("")+1+1;
+]], "11")
+
 test_compile_any([[
   void foo() 
   {
