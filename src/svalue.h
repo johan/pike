@@ -126,6 +126,7 @@ extern char *type_name[];
 #define tInt0 "\010\000\000\000\000\000\000\000\000"
 #define tInt1 "\010\000\000\000\001\000\000\000\001"
 #define tInt01 "\010\000\000\000\000\000\000\000\001"
+#define tIntPos "\010\000\000\000\000\177\377\377\377"
 #define tByte "\010\000\000\000\000\000\000\000\377"
 
 #define tVoid "\020"
@@ -139,9 +140,11 @@ extern char *type_name[];
 #define tOr5(X,Y,Z,A,B) tOr(X,tOr(Y,tOr(Z,tOr(A,B))))
 #define tOr6(X,Y,Z,A,B,C) tOr(X,tOr(Y,tOr(Z,tOr(A,tOr(B,C)))))
 #define tOr7(X,Y,Z,A,B,C,D) tOr(X,tOr(Y,tOr(Z,tOr(A,tOr(B,tOr(C,D))))))
+#define tOr8(A,B,C,D,E,F,G,H) tOr(A,tOr7(B,C,D,E,F,G,H))
 #define tMix "\377"
 #define tMixed "\377"
 #define tComplex tOr6(tArray,tMapping,tMultiset,tObj,tFunction,tProgram)
+#define tStringIndicable tOr5(tMapping,tObj,tFunction,tProgram,tMultiset)
 #define tRef tOr(tString,tComplex)
 #define tIfnot(X,Y) tAnd(tNot(X),Y)
 
