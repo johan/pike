@@ -1275,7 +1275,7 @@ F_LOOP(0 = +[ !depend_p($$, $$)]
 			    OPT_CASE|OPT_CONTINUE|
 			    OPT_BREAK|OPT_RETURN)) ],
        F_ADD_EQ(1 = +[ !depend_p($$, $$) ],
-		2 = +[ !depend_p($$, $1) ]
+		2 = +[ !depend_p($$, $1) ] [ !depend_p($$, $$) ]
 		[ !($$->tree_info & OPT_SIDE_EFFECT) ]
 		[ ((($$->type == int_type_string) &&
 		    ($1->type == int_type_string)) ||
