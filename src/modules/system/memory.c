@@ -41,6 +41,16 @@ RCSID("$Id$");
 #include <sys/user.h>
 #endif
 
+
+/* something on AIX defines these */
+#ifdef T_INT
+#undef T_INT
+#endif
+#ifdef T_FLOAT
+#undef T_FLOAT
+#endif
+
+/* some systems call it PAGESIZE, some PAGE_SIZE */
 #ifndef PAGE_SIZE
 #ifdef PAGESIZE
 #define PAGE_SIZE PAGESIZE
