@@ -3460,6 +3460,8 @@ extern void init_font_programs(void);
 extern void exit_font(void);
 extern void init_colortable_programs(void);
 extern void exit_colortable(void);
+extern void init_image_colors(void);
+extern void exit_image_colors(void);
 
 /* encoders */
 
@@ -3785,6 +3787,7 @@ void pike_module_init(void)
 
    init_font_programs();
    init_colortable_programs();
+   init_image_colors();
 
    add_function("`[]",image_index_magic,
 		"function(string:object)",0);
@@ -3804,6 +3807,7 @@ void pike_module_exit(void)
   }
   exit_font();
   exit_colortable();
+  exit_image_colors();
 
   exit_image_gif();
   exit_image_pnm();
