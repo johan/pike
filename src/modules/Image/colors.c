@@ -554,6 +554,61 @@ static void image_color_grey(INT32 args)
 }
 
 /*
+**! method int bits( int rbits, int gbits, int bbits, int rshift, int gshift, int bshift )
+**!   Returns the color as an integer
+*/
+static void image_color_bits( INT32 args )
+{
+  INT_TYPE rb, gb, bb, rs, gs, bs;
+  get_all_args( "bits", args, "%d%d%d%d%d%d", &rb,&gb,&bb, &rs, &gs, &bs );
+  pop_n_elems( args );
+
+
+  /* Do it on the stack to support bignums (it's possible to get 2M
+   * bits for each channel this way. Not that that's really useful,
+   * but... 
+   */
+
+#define push_int_bits( i, b, s )                \
+  if( b <= 31 )                                 \
+  {                                             \
+    push_int( i );                              \
+    push_int( 31-b );                           \
+    f_rsh( 2 );                                 \
+    push_int( s );                              \
+    f_lsh( 2 );                                 \
+  }                                             \
+  else                                          \
+  {                                             \
+    int _b = b;                                 \
+    int _i = i;                                 \
+    push_int( 0 );                              \
+    while( _b > -31 )                           \
+    {                                           \
+      push_int( _i );                           \
+      if( _b > 0 )                              \
+      {                                         \
+        push_int( _b );                         \
+        f_lsh( 2 );                             \
+      } else {                                  \
+        push_int( -_b );                        \
+        f_rsh( 2 );                             \
+      }                                         \
+      f_or( 2 );                                \
+      _b -= 31;                                 \
+    }                                           \
+    push_int( s );                              \
+    f_lsh( 2 );                                 \
+  }
+
+  push_int_bits( THIS->rgbl.r, rb, rs );
+  push_int_bits( THIS->rgbl.g, gb, gs );
+  push_int_bits( THIS->rgbl.b, bb, bs );
+  f_or( 2 );
+  f_or( 2 );
+}
+
+/*
 **! method string hex()
 **! method string hex(int n)
 **! method string name()
@@ -1649,6 +1704,7 @@ void init_image_colors(void)
    ADD_FUNCTION("hex",image_color_hex,tFunc(tNone,tStr),0);
    ADD_FUNCTION("html",image_color_html,tFunc(tNone,tStr),0);
 
+   ADD_FUNCTION("bits",image_color_bits,tFunc(tInt tInt tInt tInt tInt tInt,tInt),0);
    ADD_FUNCTION("rgb",image_color_rgb,tFunc(tNone,tArr(tInt)),0);
    ADD_FUNCTION("rgbf",image_color_rgbf,tFunc(tNone,tArr(tFlt)),0);
    ADD_FUNCTION("hsv",image_color_hsv,tFunc(tNone,tArr(tInt)),0);

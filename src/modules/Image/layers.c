@@ -2890,6 +2890,38 @@ void image_layer_autocrop(INT32 args)
 }
 
 
+static void image_layer__sprintf( INT32 args )
+{
+  extern void f_sprintf( INT32 args );
+  int x;
+  if (args != 2 )
+    SIMPLE_TOO_FEW_ARGS_ERROR("_sprintf",2);
+  if (sp[-args].type!=T_INT)
+    SIMPLE_BAD_ARG_ERROR("_sprintf",0,"integer");
+  if (sp[1-args].type!=T_MAPPING)
+    SIMPLE_BAD_ARG_ERROR("_sprintf",1,"mapping");
+
+  x = sp[-2].u.integer;
+
+  pop_n_elems( 2 );
+  switch( x )
+  {
+   case 't':
+     push_constant_text("Image.Layer");
+     return;
+   case 'O':
+     push_constant_text( "Image.Layer(%O i=%O a=%O)" );
+     image_layer_mode(0);
+     if( THIS->image ) ref_push_object( THIS->image ); else push_int( 0 );
+     if( THIS->alpha ) ref_push_object( THIS->alpha ); else push_int( 0 );
+     f_sprintf( 4 );
+     return;
+   default:
+     push_int(0);
+     return;
+  }
+}
+
 /******************************************************/
 
 void init_image_layers(void)
@@ -2915,6 +2947,9 @@ void init_image_layers(void)
 		     tFunc(tInt tInt
 			   tOr(tColor,tVoid) tOr(tColor,tVoid),tVoid)),0);
 
+
+   ADD_FUNCTION("_sprintf",image_layer__sprintf,
+                tFunc(tInt tMapping,tString),0);
    ADD_FUNCTION("cast",image_layer_cast,
 		tFunc(tString,tMapping),0);
 
