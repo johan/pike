@@ -29,8 +29,12 @@ RCSID("$Id$");
 
 #include <zlib.h>
 
+#endif /* HAVE_ZLIB_H */
+
 /* This must be included last! */
 #include "module_magic.h"
+
+#ifdef HAVE_ZLIB_H
 
 struct zipper
 {
