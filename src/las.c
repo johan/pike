@@ -2460,14 +2460,32 @@ void fix_type_field(node *n)
 	}
       }
     }
+    copy_shared_string(n->type,void_type_string);
+    break;
 
-    /* Fall through */
-
+  case F_CASE:
+    if (CDR(n) && CAR(n)) {
+      /* case 1 .. 2: */
+      if (!match_types(CAR(n)->type, CDR(n)->type)) {
+	yytype_error("Type mismatch in case range.",
+		     CAR(n)->type, CDR(n)->type, 0);
+      } else if ((lex.pragmas & ID_STRICT_TYPES) &&
+		 (CAR(n)->type != CDR(n)->type)) {
+	/* The type should be the same for both CAR & CDR. */
+	if (!pike_types_le(CDR(n)->type, CAR(n)->type)) {
+	  yytype_error("Type mismatch in case range.",
+		       CAR(n)->type, CDR(n)->type, YYTE_IS_WARNING);
+	} else if (!pike_types_le(CAR(n)->type, CDR(n)->type)) {
+	  yytype_error("Type mismatch in case range.",
+		       CDR(n)->type, CAR(n)->type, YYTE_IS_WARNING);
+	}
+      }
+    }
+    /* FALL_THROUGH */
   case F_INC_LOOP:
   case F_DEC_LOOP:
   case F_DEC_NEQ_LOOP:
   case F_INC_NEQ_LOOP:
-  case F_CASE:
   case F_CONTINUE:
   case F_BREAK:
   case F_DEFAULT:
