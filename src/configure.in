@@ -5954,14 +5954,17 @@ int main()
 Test failed to compile.
 Problems in port.c, rusage.c or threads.c with CONFIGURE_TEST is defined?
 ])
-        pike_cv_thread_local_cpu_time="unknown (compilation failed)"
+        # Don't set pike_cv_thread_local_cpu_time here so that the
+        # failure doesn't get cached.
+        result="unknown (compilation failed)"
       fi
     ], [
       pike_cv_thread_local_cpu_time="unknown (cross compilation)"
     ])
   rm -f confdefs.out.2 2>/dev/null
 ])
-AC_MSG_RESULT($pike_cv_thread_local_cpu_time)
+test x"$pike_cv_thread_local_cpu_time" != x && result="$pike_cv_thread_local_cpu_time"
+AC_MSG_RESULT($result)
 if test "$pike_cv_thread_local_cpu_time" = yes; then
   AC_DEFINE(CPU_TIME_IS_THREAD_LOCAL, PIKE_YES)
 elif test "$pike_cv_thread_local_cpu_time" = no; then
