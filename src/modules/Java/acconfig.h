@@ -27,4 +27,7 @@
 /* Define if you have an x86 CPU */
 #undef HAVE_X86_CPU
 
+/* Define if you have a PowerPC CPU */
+#undef HAVE_PPC_CPU
+
 #endif /* PIKE_JAVA_CONFIG_H */
