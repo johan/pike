@@ -1661,6 +1661,7 @@ PMOD_EXPORT void o_multiply(void)
 	ret = allocate_array(asize);
 	pos = ret->item;
 	if (asize >= delta) {
+	  ret->type_field = src->type_field;
 	  assign_svalues_no_free(pos,
 				 src->item,
 				 delta,
@@ -1681,6 +1682,7 @@ PMOD_EXPORT void o_multiply(void)
 				 src->item,
 				 asize,
 				 src->type_field);
+	  array_fix_type_field(ret);
 	}
 	pop_n_elems(2);
 	push_array(ret);
