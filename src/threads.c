@@ -463,7 +463,9 @@ void *new_thread_func(void * data)
   thread_id=arg.id;
   SWAP_OUT_THREAD(OBJ2THREAD(thread_id)); /* Init struct */
   OBJ2THREAD(thread_id)->swapped=0;
-  stack_top=((char *)&data)+ (thread_stack_size-16384) * STACK_DIRECTION 
+  stack_top=((char *)&data)+ (thread_stack_size-16384) * STACK_DIRECTION;
+  recoveries = NULL;
+
 #ifdef THREAD_TRACE
   {
     t_flag = default_t_flag;
