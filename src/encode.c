@@ -514,7 +514,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
   switch(val->type)
   {
     case T_INT:
-      /* FIXME: Doesn't encode NUMBER_UNDEFINED et al. */
+      /* NOTE: Doesn't encode NUMBER_UNDEFINED et al. */
       /* But that's a feature; NUMBER_UNDEFINED is an inherently
        * transient value. It would lose its usefulness otherwise.
        * /mast */
