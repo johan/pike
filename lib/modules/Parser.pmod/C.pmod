@@ -316,12 +316,9 @@ array(Token) group(array(string|Token) tokens, void|mapping groupings)
 	if (!sizeof(ret) || !stack->ptr ||
 	    (groupings[(string)ret[0]] != (string)token)) {
 	  // Mismatch
-	  werror("**** Grouping mismatch token=%O\n"
-		 "**** tokens: ({ %{%O, %}})\n"
-		 "**** ret: ({ %{%O, %}})\n"
-		 "**** stackdepth: %d\n",
-		 token->text, tokens->text,
-		 ret->text, stack->ptr);
+	  werror ("%s:%d: Expected %O, got %O\n",
+		  token->file, token->line,
+		  groupings[(string)ret[0]], (string) token);
 	  return ret;
 	}
 	ret=stack->pop()+({ ret + ({token}) });
