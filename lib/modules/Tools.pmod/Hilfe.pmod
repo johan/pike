@@ -502,7 +502,8 @@ private class SubSysBackend {
       if(err)
 	write_err(describe_backtrace(err));
      }while(!once && err);
-    write_err("Backend done.\n");
+    if(once && err)
+      write_err("Backend done.\r\n");
     is_running=0;
   }
 
