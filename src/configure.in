@@ -1553,6 +1553,7 @@ if test "$ac_cv_header_sys_procfs_h" = "yes"; then
 #include <sys/procfs.h>
 #include <sys/fcntl.h>
 int proc_fd;
+long tmp;
 char proc_name[20];
 prusage_t  pru;
 prstatus_t prs;
