@@ -111,6 +111,7 @@
 #ifdef __FreeBSD_version
 #if __FreeBSD_version <= 400016
 #undef HAVE_FREEBSD_SENDFILE
+#undef HAVE_SENDFILE
 #endif /* __FreeBSD_version <= 400016 */
 #endif /* __FreeBSD_version */
 #endif /* HAVE_FREEBSD_SENDFILE */
