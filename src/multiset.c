@@ -2638,7 +2638,6 @@ struct array *multiset_range_indices (struct multiset *l,
   }
   else add_ref (indices = &empty_array);
 
-  array_check_type_field (indices);
   return indices;
 }
 
