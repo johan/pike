@@ -132,7 +132,7 @@ PMOD_EXPORT void mapping_string_insert_string(struct mapping *m,
 				  struct pike_string *p,
 				  struct pike_string *val);
 PMOD_EXPORT struct svalue *simple_mapping_string_lookup(struct mapping *m,
-					    char *p);
+							const char *p);
 PMOD_EXPORT struct svalue *mapping_mapping_lookup(struct mapping *m,
 				      struct svalue *key1,
 				      struct svalue *key2,

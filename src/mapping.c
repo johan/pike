@@ -1093,7 +1093,7 @@ PMOD_EXPORT void mapping_string_insert_string(struct mapping *m,
 }
 
 PMOD_EXPORT struct svalue *simple_mapping_string_lookup(struct mapping *m,
-					    char *p)
+							const char *p)
 {
   struct pike_string *tmp;
   if((tmp=findstring(p)))
