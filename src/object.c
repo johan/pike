@@ -867,7 +867,7 @@ PMOD_EXPORT void object_index_no_free(struct svalue *to,
 			   struct object *o,
 			   struct svalue *index)
 {
-  struct program *p;
+  struct program *p = NULL;
   int lfun;
 
   if(!o || !(p=o->prog))
@@ -895,7 +895,7 @@ PMOD_EXPORT void object_low_set_index(struct object *o,
 			  struct svalue *from)
 {
   struct identifier *i;
-  struct program *p;
+  struct program *p = NULL;
 
   if(!o || !(p=o->prog))
   {
@@ -976,7 +976,7 @@ PMOD_EXPORT void object_set_index(struct object *o,
 		       struct svalue *index,
 		       struct svalue *from)
 {
-  struct program *p;
+  struct program *p = NULL;
   int lfun;
 
   if(!o || !(p=o->prog))

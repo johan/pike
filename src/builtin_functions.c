@@ -83,7 +83,7 @@ PMOD_EXPORT void debug_f_aggregate(INT32 args)
 
 void f_hash(INT32 args)
 {
-  size_t i;
+  size_t i = 0;
 
   if(!args)
     SIMPLE_TOO_FEW_ARGS_ERROR("hash",1);
@@ -1684,7 +1684,7 @@ PMOD_EXPORT void f_destruct(INT32 args)
 PMOD_EXPORT void f_indices(INT32 args)
 {
   ptrdiff_t size;
-  struct array *a;
+  struct array *a = NULL;
 
   if(args < 1)
     SIMPLE_TOO_FEW_ARGS_ERROR("indices", 1);
@@ -1951,7 +1951,7 @@ static node *fix_aggregate_mapping_type(node *n)
 PMOD_EXPORT void f_values(INT32 args)
 {
   ptrdiff_t size;
-  struct array *a;
+  struct array *a = NULL;
   if(args < 1)
     SIMPLE_TOO_FEW_ARGS_ERROR("values", 1);
 
