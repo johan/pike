@@ -13,6 +13,7 @@ int threads_disabled = 0;
 #include "builtin_functions.h"
 #include "constants.h"
 #include "program.h"
+#include "gc.h"
 
 struct object *thread_id;
 static struct callback *threads_evaluator_callback=0;
