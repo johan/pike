@@ -774,7 +774,25 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
       }else{
 	SET_CYCLIC_RET(1);
 	ref_push_string(id);
-	f_index(2);
+	{
+	  struct svalue *save_sp = sp-2;
+	  JMP_BUF recovery;
+	  if (SETJMP(recovery)) {
+	    /* f_index() threw an error!
+	     *
+	     * FIXME: Report the error thrown.
+	     */
+	    if (sp > save_sp) {
+	      pop_n_elems(sp - save_sp);
+	    } else if (sp != save_sp) {
+	      fatal("f_index() munged stack!\n");
+	    }
+	    push_int(0);
+	    sp[-1].subtype = NUMBER_UNDEFINED;
+	  } else {
+	    f_index(2);
+	  }
+	}
       
 	if(sp[-1].type == T_INT &&
 	   !sp[-1].u.integer &&
