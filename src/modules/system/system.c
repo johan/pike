@@ -889,11 +889,16 @@ void f_setegid(INT32 args)
 /*! @decl int getpgrp(int|void pid)
  *!
  *! Get the process group id for the process @[pid].
+ *! With no argguments or with 'pid' equal to zero,
+ *! returns the process group ID of this process.
  *!
  *! @note
  *!   Not all platforms support getting the process group for other processes.
  *!
  *!   Not supported on all platforms.
+ *!
+ *! @seealso
+ *!   @[getpid], @[getppid]
  */
 void f_getpgrp(INT32 args)
 {
@@ -952,9 +957,11 @@ void f_setpgrp(INT32 args)
 
 #if defined(HAVE_GETSID)
 /*! @decl int getsid(int|void pid)
- *!
- *! @fixme
- *!   Document this function.
+ *!   Get the process session ID for the given process. If pid is
+ *!   not specified, the session ID for the current process will
+ *!   be returned.
+ *! @seealso
+ *!   @[getpid], @[getpgrp], @[setsid]
  */
 void f_getsid(INT32 args)
 {
@@ -973,9 +980,9 @@ void f_getsid(INT32 args)
 
 #if defined(HAVE_SETSID)
 /*! @decl int setsid()
- *!
- *! @fixme
- *!   Document this function.
+ *!   Set a new process session ID for the current process, and return it.
+ *! @seealso
+ *!   @[getpid], @[setpgrp], @[getsid]
  */
 void f_setsid(INT32 args)
 {
@@ -1043,50 +1050,54 @@ void f_setresgid(INT32 args)
 
 #ifdef HAVE_GETUID
 /*! @decl int getuid()
- *!
- *! @fixme
- *!   Document this function.
+ *!   Get the real user ID.
+ *! @seealso
+ *!   @[setuid], @[setgid], @[getgid], @[seteuid],
+ *!   @[geteuid], @[setegid], @[getegid]
  */
 f_get(f_getuid, getuid)
 #endif
 
 #ifdef HAVE_GETGID
 /*! @decl int getgid()
- *!
- *! @fixme
- *!   Document this function.
+ *!   Get the real group ID.
+ *! @seealso
+ *!   @[setuid], @[getuid], @[setgid],
+ *!   @[seteuid], @[geteuid], @[getegid], @[setegid]
  */
 f_get(f_getgid, getgid)
 #endif
  
 #ifdef HAVE_GETEUID
 /*! @decl int geteuid()
- *!
- *! @fixme
- *!   Document this function.
+ *!   Get the effective user ID.
+ *! @seealso
+ *!   @[setuid], @[getuid], @[setgid], @[getgid],
+ *!   @[seteuid], @[getegid], @[setegid]
  */
 f_get(f_geteuid, geteuid)
 
 /*! @decl int getegid()
- *!
- *! @fixme
- *!   Document this function.
+ *!   Get the effective group ID.
+ *! @seealso
+ *!   @[setuid], @[getuid], @[setgid], @[getgid],
+ *!   @[seteuid], @[geteuid], @[setegid]
  */
 f_get(f_getegid, getegid)
 #endif
 
 /*! @decl int getpid()
- *!
- *! @fixme
- *!   Document this function.
+ *!   Returns the process ID of this process.
+ *! @seealso
+ *!   @[getppid], @[getpgrp]
  */
 f_get(f_getpid, getpid)
 
 #ifdef HAVE_GETPPID
 /*! @decl int getppid()
- *!
- *! @fixme
- *!   Document this function.
+ *!  Returns the process ID of the parent process.
+ *! @seealso
+ *!   @[getpid], @[getpgrp]
  */
 f_get(f_getppid, getppid)
 #endif
