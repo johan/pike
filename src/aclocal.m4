@@ -303,7 +303,7 @@ define([AC_LOW_MODULE_INIT],
 
 MY_AC_PROG_CC
 
-AC_DEFINE(POSIX_SOURCE)
+AC_DEFINE([POSIX_SOURCE], [], [This should always be defined.])
 
 AC_SUBST(CONFIG_HEADERS)
 
