@@ -1476,6 +1476,14 @@ PIKECLASS Backend
       push_float ((float) timeout.tv_sec + (float) timeout.tv_usec / 1e6);
   }
 
+#ifndef tObjImpl_THREAD
+  /* Kludge for precompile.pike; it resolves object(Thread.Thread)
+   * to tObjImpl_THREAD, while "program_id.h" only knows about
+   * tObjImpl_THREAD_ID.
+   */
+#define tObjImpl_THREAD	tObjImpl_THREAD_ID
+#endif /* !tObjImpl_THREAD */
+
   /*! @decl Thread.Thread executing_thread()
    *! @decl int executing_thread()
    *!
