@@ -355,7 +355,7 @@ static void ia32_mark(void)
   PUSH_ADDR( & Pike_interpreter.mark_stack_pointer );
 }
 
-INT32 ins_f_jump(unsigned int b)
+INT32 ins_f_jump(unsigned int b, int backward_jump)
 {
   INT32 ret;
   if(b != F_BRANCH) return -1;

@@ -112,7 +112,7 @@ void ia32_decode_program(struct program *p);
 #define ENCODE_PROGRAM(P, BUF)	ia32_encode_program(P, BUF)
 #define DECODE_PROGRAM(P)	ia32_decode_program(p)
 
-INT32 ins_f_jump(unsigned int b);
+INT32 ins_f_jump(unsigned int b, int backward_jump);
 void update_f_jump(INT32 offset, INT32 to_offset);
 INT32 read_f_jump(INT32 offset);
 
