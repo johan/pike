@@ -4753,7 +4753,7 @@ void f__describe(INT32 args)
 
   CHECK_SECURITY_OR_ERROR(SECURITY_BIT_SECURITY,
 			  ("_optimizer_debug: permission denied.\n"));
-  get_all_args("_describe", args, "%O", &s);
+  get_all_args("_describe", args, "%*", &s);
   debug_describe_svalue(debug_malloc_pass(s));
   pop_n_elems(args-1);
 }
