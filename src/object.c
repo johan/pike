@@ -734,8 +734,7 @@ void schedule_really_free_object(struct object *o)
       /* It's a fake object which isn't counted by the gc, so
        * counteract the num_objects-- done by GC_FREE. */
       num_objects++;
-    /* This is the only free allowed in the gc check pass. */
-    LOW_GC_FREE();
+    GC_FREE();
 
     FREE_PROT(o);
 
