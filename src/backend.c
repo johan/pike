@@ -72,11 +72,13 @@ void wake_up_backend(void)
     write(wakeup_pipe[1], &foo ,1);
 }
 
+extern int pike_make_pipe(int *);
+
 void init_backend()
 {
   FD_ZERO(&selectors.read);
   FD_ZERO(&selectors.write);
-  if(pipe(wakeup_pipe) < 0)
+  if(pike_make_pipe(wakeup_pipe) < 0)
     fatal("Couldn't create backend wakup pipe, errno=%d.\n",errno);
   set_nonblocking(wakeup_pipe[0],1);
   set_nonblocking(wakeup_pipe[1],1);
