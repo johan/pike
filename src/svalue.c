@@ -776,8 +776,8 @@ PMOD_EXPORT int is_eq(const struct svalue *a, const struct svalue *b)
     }
     return a->u.float_number == b->u.float_number;
 
-#ifdef PIKE_DEBUG
   default:
+#ifdef PIKE_DEBUG
     Pike_fatal("Unknown type %x\n",a->type);
 #endif
     return 0; /* make gcc happy */
