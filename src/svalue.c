@@ -801,15 +801,17 @@ void describe_svalue(struct svalue *s,int indent,struct processing *p)
       my_strcat(buf);
       break;
 
+    case T_TYPE:
+      {
+	struct pike_string *t = describe_type(s->u.string);
+	my_strcat(t->str);
+	free_string(t);
+      }
+      break;
+
     case T_STRING:
       {
 	int i,j=0;
-#if 0
-	if (s->subtype) {
-	  sprintf(buf,"/* subtype:%ld */ ",(long)s->subtype);
-	  my_strcat(buf);
-	}
-#endif
         my_putchar('"');
 	for(i=0; i < s->u.string->len; i++)
         {
