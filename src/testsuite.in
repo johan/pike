@@ -9216,6 +9216,12 @@ test_any([[
   }
   proc->cont(signum("KILL"));	// Make it a SIGKILL
 
+  sleep(5);	// Give it some time to die and get reaped.
+
+  if (proc->kill(signum("KILL"))) {
+    return sprintf("Process didn't die of cont(%d).", signum("KILL"));
+  }
+
   code = proc->wait();
   if (code != -1) {
     proc->kill(signum("KILL"));
