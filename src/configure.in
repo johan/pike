@@ -2437,6 +2437,8 @@ AC_MY_CHECK_TYPE(gid_t,int)
 AC_MY_CHECK_TYPE(time_t,INT32)
 AC_MY_CHECK_TYPE(pri_t, short)
 
+AC_CHECK_SIZEOF(off_t, 4)
+
 if test "x$with_long_double_precision" = x -a \
 	"x$with_double_precision" = x ; then
   # Choose the longest available float that fits in a pointer.
