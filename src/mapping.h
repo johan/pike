@@ -42,7 +42,7 @@ struct mapping
   struct object *prot;
 #endif
 #ifdef PIKE_DEBUG
-  INT32 size;
+  INT32 debug_size;
 #endif
   INT16 flags;
   struct mapping_data *data;
