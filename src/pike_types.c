@@ -1929,7 +1929,7 @@ static int low_pike_types_le(char *a,char *b)
      *  The reason for the weak index type test, is that it's not an error
      *  to index a mapping with a nonexistant key.
      */
-    if(!low_pike_types_le(++b,++a) && !low_pike_types_le(b, a)) return 0;
+    if(!low_pike_types_le(++b,++a) && !low_pike_types_le(a, b)) return 0;
     return low_pike_types_le(a+type_length(a),b+type_length(b));
 
   case T_OBJECT:
@@ -2225,8 +2225,8 @@ static struct pike_string *debug_low_index_type(char *t, node *n)
   case T_ARRAY:
     if(n &&
        (CDR(n)->token == F_CONSTANT ?
-       CDR(n)->u.sval.type == T_STRING :
-       low_match_types(string_type_string->str,CDR(n)->type->str,0)))
+	(CDR(n)->u.sval.type == T_STRING) :
+	!!low_match_types(string_type_string->str,CDR(n)->type->str,0)))
     {
       struct pike_string *a=low_index_type(t,n);
       if(!a)
