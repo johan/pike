@@ -27,6 +27,14 @@ import Simulate;
 //.   Object to use for the actual SQL-queries.
 object master_sql;
 
+//. + case_convert
+//.   Convert all field names in mappings to lower_case.
+//.   Only relevant to databases which only implement big_query(),
+//.   and use upper/mixed-case fieldnames (eg Oracle).
+//.   0 - No (default)
+//.   1 - Yes
+int case_convert;
+
 //. - create
 //.   Create a new generic SQL object.
 //. > host
@@ -112,7 +120,11 @@ static private array(mapping(string:mixed)) res_obj_to_array(object res_obj)
       
     fieldnames = map(res_obj->fetch_fields(),
 		     lambda (mapping(string:mixed) m) {
-      return(m->name);	/* Hope this is unique */
+      if (case_convert) {
+	return(lower_case(m->name));	/* Hope this is even more unique */
+      } else {
+	return(m->name);		/* Hope this is unique */
+      }
     } );
 
     while (row = res_obj->fetch_row()) {
@@ -172,7 +184,7 @@ array(mapping(string:mixed)) query(object|string q)
 //. - big_query
 //.   Send an SQL query to the underlying SQL-server. The result is returned
 //.   as a Sql.sql_result object. This allows for having results larger than
-//.   the available memory, and returning some more info on the result.
+//.   the available memory, and returning some more info about the result.
 //.   Returns 0 if the query didn't return any result (e.g. INSERT or similar).
 //. > q
 //.   Query to send to the SQL-server. This can either be a string with the
