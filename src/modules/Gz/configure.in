@@ -68,9 +68,6 @@ int foo = (int)(Z_NO_COMPRESSION | Z_VERSION_ERROR);
 
       AC_CHECK_GZ(z,[AC_CHECK_GZ(gz,[ ac_cv_lib_z_main=no ] ) ])
 
-      if test "x$done" = "xyes"; then
-        AC_HAVE_FUNCS(gzseek gztell gzeof gzsetparams)
-      fi
     fi
   fi
 fi
