@@ -430,7 +430,7 @@ AC_CHECK_FUNCS(
 )
 
 if test $ac_cv_func_crypt$ac_cv_func__crypt = nono ; then
-  AC_CHECK_LIB(crypt,crypt,[LIBS="${LIBS} -lcrypt" ; AC_DEFINE(HAVE_CRYPT);])
+  AC_CHECK_LIB(crypt,crypt,[LIBS="${LIBS} -lcrypt" ; AC_DEFINE(HAVE_CRYPT)])
 fi
 
 
