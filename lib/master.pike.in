@@ -3005,6 +3005,8 @@ class Describer
     switch(res)
     {
     case "int":
+      if (!m && zero_type (m) == 1)
+	return "UNDEFINED";
     case "float":
       return (string)m;
     case "string":
