@@ -322,7 +322,7 @@ static void gdbmmod_nextkey(INT32 args)
 }
 
 /*! @decl int store(string key, string data)
- *! @decl int `[]= (string key, stirng data)
+ *! @decl int `[]= (string key, string data)
  *!
  *! Associate the contents of 'data' with the key 'key'. If the key 'key'
  *! already exists in the database the data for that key will be replaced.
