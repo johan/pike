@@ -490,6 +490,12 @@ static int check_1unlimited_args(char *func, INT32 args, int ty, int rty,
   return tt|(arr?ZT_ARRAY:0);
 }
 
+inline static void my_push_text(char * str) {
+  if(!str)
+    push_int(0);
+  else
+    push_text(str);
+}
 
 #define glClearColor3v(f) glClearColor((f)[0], (f)[1], (f)[2], 0.0)
 #define glClearColor4v(f) glClearColor((f)[0], (f)[1], (f)[2], (f)[3])
