@@ -9,8 +9,8 @@
  */
 #include "global.h"
 #include "dynamic_buffer.h"
-#include "lex.h"
 #include "language.h"
+#include "lex.h"
 #include "stralloc.h"
 #include "module_support.h"
 #include "interpret.h"
