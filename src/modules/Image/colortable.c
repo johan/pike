@@ -4401,16 +4401,16 @@ void init_image_colortable(void)
    set_exit_callback(exit_colortable_struct);
 
    /* function(void:void)|"
-		"function(array(array(int)):void)|"
-		"function(object,int,mixed ...:void)|"
+		"function(array(array(int)|string|object):void)|"
+		"function(object,void|int,mixed ...:void)|"
 		"function(int,int,int,void|int ...:void) */
-   ADD_FUNCTION("create",image_colortable_create,tOr4(tFunc(tVoid,tVoid),tFunc(tArr(tArr(tInt)),tVoid),tFuncV(tObj tInt,tMix,tVoid),tFuncV(tInt tInt tInt,tOr(tVoid,tInt),tVoid)),0);
+   ADD_FUNCTION("create",image_colortable_create,tOr4(tFunc(tVoid,tVoid),tFunc(tArr(tColor),tVoid),tFuncV(tObj tOr(tVoid,tInt),tMix,tVoid),tFuncV(tInt tInt tInt,tOr(tVoid,tInt),tVoid)),0);
 
    /* function(void:void)|"
-		"function(array(array(int)):void)|"
-		"function(object,int,mixed ...:void)|"
+		"function(array(array(int)|string|object):void)|"
+		"function(object,void|int,mixed ...:void)|"
 		"function(int,int,int,void|int ...:void) */
-   ADD_FUNCTION("add",image_colortable_create,tOr4(tFunc(tVoid,tVoid),tFunc(tArr(tArr(tInt)),tVoid),tFuncV(tObj tInt,tMix,tVoid),tFuncV(tInt tInt tInt,tOr(tVoid,tInt),tVoid)),0);
+   ADD_FUNCTION("add",image_colortable_create,tOr4(tFunc(tVoid,tVoid),tFunc(tArr(tColor),tVoid),tFuncV(tObj tOr(tVoid,tInt),tMix,tVoid),tFuncV(tInt tInt tInt,tOr(tVoid,tInt),tVoid)),0);
 
    /* function(int:object) */
    ADD_FUNCTION("reduce",image_colortable_reduce,tFunc(tInt,tObj),0);
@@ -4427,8 +4427,8 @@ void init_image_colortable(void)
    ADD_FUNCTION("_sizeof",image_colortable__sizeof,tFunc(tNone,tInt),0);
 
    /* lookup modes */
-   ADD_FUNCTION("cubicles",image_colortable_cubicles,tFunc(tNone,tObj),0);
-   ADD_FUNCTION("rigid",image_colortable_rigid,tFunc(tNone,tObj),0);
+   ADD_FUNCTION("cubicles",image_colortable_cubicles,tOr(tFunc(tNone,tObj),tFunc(tInt tInt tInt tOr(tVoid,tInt),tObj)),0);
+   ADD_FUNCTION("rigid",image_colortable_rigid,tOr(tFunc(tNone,tObj),tFunc(tInt tInt tInt,tObj)),0);
    ADD_FUNCTION("full",image_colortable_full,tFunc(tNone,tObj),0);
 
    /* map image */
