@@ -523,7 +523,7 @@ void f_has_prefix(INT32 args)
     CASE_SHIFT(2,0);
     CASE_SHIFT(2,1);
   default:
-    error("has_index(): Unexpected string shift combination: a:%d, b:%d!\n",
+    error("has_prefix(): Unexpected string shift combination: a:%d, b:%d!\n",
 	  a->size_shift, b->size_shift);
     break;
   }
