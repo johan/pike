@@ -1127,17 +1127,10 @@ struct node_s *program_magic_identifier (struct program_state *state,
       return mkefuncallnode ("this_object", mknewintnode (state_depth));
 
     /* Handle this_program */
-    if (ident == this_program_string) {
-      if (compilation_depth > state_depth)
-	return mkexternalnode(state->previous->new_program,
-			      state->previous->parent_identifier);
-      else {
-	struct svalue s;
-	s.type=T_PROGRAM;
-	s.u.program=state->new_program;
-	return mkconstantsvaluenode(&s);
-      }
-    }
+    if (ident == this_program_string)
+      return mkefuncallnode ("object_program",
+			     mkefuncallnode ("this_object",
+					     mknewintnode (state_depth)));
   }
 
   if (colon_colon_ref) {

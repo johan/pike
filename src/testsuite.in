@@ -1014,9 +1014,7 @@ test_program([[
 test_program([[
   class A {this_program clone() {return this_program();}}
   class B {inherit A;}
-  // It would perhaps be nice if this_program possessed the magic
-  // to refer to B in the inherit from A, but that would be magic indeed.
-  int a() {return object_program (B()->clone()) == A;}
+  int a() {return object_program (B()->clone()) == B;}
 ]])
 
 test_program([[
