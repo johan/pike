@@ -183,14 +183,14 @@ static void f(int i, struct block *key, struct block *a, struct block *x)
         transpose(x, &ptr, 32);
 }
 
-void definekey(char *k)
+static inline void definekey(char *k)
 {
 
         key = *((struct block *) k);
         transpose(&key, &KeyTr1, 56);
 }
 
-void encrypt(char *blck, int edflag)
+static void encrypt(char *blck, int edflag)
 {
         register struct block *p = (struct block *) blck;
         register int i;
