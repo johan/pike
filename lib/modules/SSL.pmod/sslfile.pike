@@ -154,7 +154,8 @@ private void ssl_read_callback(mixed id, string s)
     if (data > 0)
     {
       if (close_callback)
-	close_callback();
+
+	close_callback(socket->query_id());
     }
     else
       if (data < 0)
