@@ -223,7 +223,7 @@ static void ssleay_locking_callback(int mode, int type, char *file, int line)
 
 static unsigned long ssleay_thread_id(void)
 {
-  return th_self();
+  return (unsigned long)th_self();
 }
       
 static void ssleay_init_threads()
