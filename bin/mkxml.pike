@@ -822,6 +822,7 @@ void make_doc_files()
    html2xml=Parser.HTML();
    html2xml->add_tag("p",lambda(mixed...) { return ({"</p><p>"}); });
    html2xml->add_tag("br",lambda(mixed...) { return ({"<br/>"}); });
+   html2xml->add_tag("wbr",lambda(mixed...) { return ({"<wbr/>"}); });
    html2xml->add_container(
       "text",
       lambda(Parser.HTML p,mapping args,string cont)
