@@ -551,7 +551,7 @@ int errno()
 {
   // FIXME: The errno returned here might not be among the expected
   // types if we emulate blocking.
-  return socket ? socket->errno() : system.EBADF;
+  return socket ? socket->errno() : System.EBADF;
 }
 
 void create(object f, object c, int|void is_client, int|void is_blocking)
