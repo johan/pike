@@ -657,10 +657,10 @@ private class Expression {
     return tokens*"";
   }
 
-  //! Returns at which position the type declaration that
-  //! begins at position @[position] ends. A return value of
-  //! -1 means that the token or tokens from @[position]
-  //! can not be a type declaration.
+  // Returns at which position the type declaration that
+  // begins at position @[position] ends. A return value of
+  // -1 means that the token or tokens from @[position]
+  // can not be a type declaration.
   int(-1..) endoftype(int(-1..) position) {
     if( (< "int", "float", "string",
            "array", "mapping", "multiset",
