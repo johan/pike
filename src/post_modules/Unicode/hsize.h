@@ -5,4 +5,4 @@
 || $Id$
 */
 
-#define HSIZE 157
+#define HSIZE 10007

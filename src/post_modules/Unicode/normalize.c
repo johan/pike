@@ -189,9 +189,8 @@ int get_compose_pair( int c1, int c2 )
 
 static void rec_get_decomposition( int canonical, int c, struct buffer *tmp )
 {
-  const struct decomp *decomp = get_decomposition( c );
-  
-  if( decomp && !(canonical && decomp->compat) )
+  const struct decomp *decomp;
+  if( (decomp = get_decomposition( c )) && !(canonical && decomp->compat) )
   {
     if( decomp->data[0] )
       rec_get_decomposition( canonical, decomp->data[0], tmp );
@@ -200,7 +199,6 @@ static void rec_get_decomposition( int canonical, int c, struct buffer *tmp )
   }
   else
   {
-
     if( (c >= SBase) && c < (SBase+SCount) )
       /* Hangul */
     {
@@ -228,21 +226,28 @@ struct buffer *unicode_decompose_buffer( struct buffer *source,	int how )
 
   for( i = 0; i<source->size; i++ )
   {
-    tmp->size = 0;
-    rec_get_decomposition( canonical, source->data[i], tmp );
-    for( j = 0; j<tmp->size; j++ )
+    if( source->data[i] < 160 )
     {
-      int c = tmp->data[j];
-      int cl = get_canonical_class( c );
-      int k = res->size;
-      /* Sort combining marks */
-      if( cl != 0 )
+      uc_buffer_write( res, source->data[i] );
+    }
+    else
+    {
+      tmp->size = 0;
+      rec_get_decomposition( canonical, source->data[i], tmp );
+      for( j = 0; j<tmp->size; j++ )
       {
-	for( ; k > 0; k-- )
-	  if( get_canonical_class( res->data[k-1] ) <= cl )
-	    break;
+	int c = tmp->data[j];
+	int cl = get_canonical_class( c );
+	int k = res->size;
+	/* Sort combining marks */
+	if( cl != 0 )
+	{
+	  for( ; k > 0; k-- )
+	    if( get_canonical_class( res->data[k-1] ) <= cl )
+	      break;
+	}
+	uc_buffer_insert( res, k, c );
       }
-      uc_buffer_insert( res, k, c );
     }
   }
   uc_buffer_free( tmp );
