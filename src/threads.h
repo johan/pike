@@ -9,8 +9,6 @@
 #include "error.h"
 #include "interpret.h"
 
-struct Pike_interpreter;
-
 /* Needed for the sigset_t typedef, which is needed for
  * the pthread_sigsetmask() prototype on Solaris 2.x.
  */
@@ -21,6 +19,12 @@ struct Pike_interpreter;
 #include <sys/types.h>
 #endif /* HAVE_SYS_TYPES_H */
 #ifdef PIKE_THREADS
+
+/* The fp macro conflicts with Solaris's <pthread.h>. */
+#ifdef fp
+#undef fp
+#define FRAMEPOINTER_WAS_DEFINED
+#endif /* fp */
 
 /*
  * Decide which type of threads to use
@@ -341,6 +345,9 @@ struct thread_state {
   THREAD_T id;
   struct mapping *thread_local;
   struct thread_state *hashlink, **backlink;
+#ifdef PROFILING
+  long long time_base;
+#endif /* PROFILING */
 };
 
 
@@ -449,7 +456,9 @@ struct thread_state {
      DO_IF_DEBUG({ \
        extern int Pike_in_gc; \
        if(thread_for_id(th_self()) != Pike_interpreter.thread_id) \
-	 fatal("thread_for_id() (or Pike_interpreter.thread_id) failed! %p != %p\n",thread_for_id(th_self()),Pike_interpreter.thread_id); \
+	 fatal("thread_for_id() (or Pike_interpreter.thread_id) failed!" \
+               " %p != %p\n", \
+               thread_for_id(th_self()), Pike_interpreter.thread_id); \
        if (Pike_in_gc > 50 && Pike_in_gc < 300) \
 	 fatal("Threads allowed during garbage collection.\n"); \
      }) \
@@ -620,6 +629,14 @@ void th_farm(void (*fun)(void *), void *here);
 #define low_init_threads_disable()
 #define init_threads_disable(X)
 #define exit_threads_disable(X)
+
+
+/* Restore the fp macro. */
+#ifdef FRAMEPOINTER_WAS_DEFINED
+#define fp Pike_fp
+#undef FRAMEPOINTER_WAS_DEFINED
+#endif /* FRAMEPOINTER_WAS_DEFINED */
+
 
 #endif /* PIKE_THREADS */
 
