@@ -14,7 +14,7 @@
  */
 
 #include "global.h"
-#include "config.h"
+#include "file_machine.h"
 
 #include "fd_control.h"
 #include "object.h"
@@ -746,7 +746,7 @@ static void sf_create(INT32 args)
 /*
  * Module init code
  */
-void pike_module_init(void)
+void init_sendfile(void)
 {
 #ifdef _REENTRANT
   start_new_program();
@@ -769,7 +769,7 @@ void pike_module_init(void)
 #endif /* _REENTRANT */
 }
 
-void pike_module_exit(void)
+void exit_sendfile(void)
 {
 #ifdef _REENTRANT
   if (pike_sendfile_prog) {
