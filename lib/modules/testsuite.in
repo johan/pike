@@ -802,6 +802,30 @@ test_do([[
 ]], ({}))
 ]])
 
+cond([[all_constants()->thread_create]],
+[[
+  test_any([[
+    int num_ok = 0;
+
+    Thread.Mutex m = Thread.Mutex();
+    Thread.MutexKey l = m->lock();
+
+    void thread_fn ()
+    {
+      m->lock();
+      num_ok++;
+    };
+
+    array(Thread.Thread) t = (({Thread.thread_create}) * 5) (thread_fn);
+
+    sleep (0.5); // Make sure they are waiting for the lock.
+    destruct (m);
+    sleep (0.5); // Wait for them to finish.
+
+    return num_ok;
+  ]], 5)
+]])
+
 dnl - This test is disabled for now.
 cond([[ 0 && __builtin->TraceProcess && (cpp("__NT__")/"\n")[1]=="__NT__" ]],
 [[
