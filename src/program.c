@@ -203,6 +203,11 @@ static char *raw_lfun_types[] = {
   tFuncV(tNone,tVoid,tObj),	/* "_get_iterator", */
 };
 
+/*! @module lfun::
+ *!
+ *! @endmodule
+ */
+
 /*! @decl void lfun::__INIT()
  *!
  *!   Global variable initialization.
