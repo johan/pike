@@ -3233,7 +3233,7 @@ struct pike_string *get_type_of_svalue(struct svalue *s)
 
   case T_MAPPING:
     type_stack_mark();
-    if (s->u.mapping->size) {
+    if (m_sizeof(s->u.mapping)) {
       push_type(T_MIXED);
       push_type(T_MIXED);
     }
