@@ -70,10 +70,10 @@ class Data {
   }
   
   //FIXME
-  void create(string key, Gdbm.gdbm data_db, Gdbm.gdbm metadata_db) {
+  void create(string key, Yabu.Table data_db, Yabu.Table metadata_db) {
     _key=key;
-     db=data_db;
-     metadb=metadata_db;
+    db=data_db;
+    metadb=metadata_db;
   }
   
 }
