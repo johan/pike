@@ -698,9 +698,16 @@ PIKECLASS file_line_iterator
 	  start_off = 0;
 	  goto again;
 	}
+	// Wide string.
       }
-      else
+      else {
+	// End of stream.
 	pop_stack();
+	if (start != ptr) {
+	  ssi->current = make_shared_binary_string(start, ptr-start);
+	  ssi->index++;
+	}
+      }
       free_string( ssi->buffer );
       ssi->buffer = NULL;
       return;
