@@ -19,6 +19,8 @@
 
 #ifdef HAVE_MYSQL
 
+#include <stdio.h>
+
 typedef INT64 _ll_t;
 typedef unsigned INT64 _ull_t;
 
@@ -39,7 +41,8 @@ _ll_t mysql_dummy_dum_dum(_ull_t a, _ull_t b, _ll_t c, _ll_t d) {
   read(0, 0, 0);
 #endif
 #ifdef HAVE_FILENO
-  fileno(0);
+  /* This is a macro on AIX 4.3, so we need a proper argument. */
+  fileno(stderr);
 #endif
 #ifdef HAVE_PUTS
   puts(0);
