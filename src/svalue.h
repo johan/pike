@@ -113,8 +113,9 @@ extern char *type_name[];
 #define tMultiset tSet(tMix)
 #define tObj "\003\000\000\000\000\000"
 #define tFuncV(ARGS,REST,RET) "\004" ARGS "\021" REST RET
-#define tFunc(ARGS,RET) tFuncV(ARGS,tVoid,RET)
-#define tFunction tFuncV(,tMix,tMix)
+#define tFunc(ARGS,RET) tFuncV(ARGS "", tVoid, RET)
+#define tFunction tFuncV("" ,tMix,tMix)
+#define tNone ""
 #define tPrg "\005"
 #define tProgram "\005"
 #define tStr "\006"

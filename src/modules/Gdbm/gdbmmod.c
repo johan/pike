@@ -340,7 +340,7 @@ void pike_module_init(void)
   ADD_FUNCTION("create",gdbmmod_create,tFunc(tOr(tVoid,tStr) tOr(tVoid,tStr),tVoid),0);
 
   /* function(:void) */
-  ADD_FUNCTION("close",gdbmmod_close,tFunc(,tVoid),0);
+  ADD_FUNCTION("close",gdbmmod_close,tFunc(tNone,tVoid),0);
   /* function(string,string:int) */
   ADD_FUNCTION("store",gdbmmod_store,tFunc(tStr tStr,tInt),0);
   /* function(string,string:int) */
@@ -352,13 +352,13 @@ void pike_module_init(void)
   /* function(string:int) */
   ADD_FUNCTION("delete",gdbmmod_delete,tFunc(tStr,tInt),0);
   /* function(:string) */
-  ADD_FUNCTION("firstkey",gdbmmod_firstkey,tFunc(,tStr),0);
+  ADD_FUNCTION("firstkey",gdbmmod_firstkey,tFunc(tNone,tStr),0);
   /* function(string:string) */
   ADD_FUNCTION("nextkey",gdbmmod_nextkey,tFunc(tStr,tStr),0);
   /* function(:int) */
-  ADD_FUNCTION("reorganize",gdbmmod_reorganize,tFunc(,tInt),0);
+  ADD_FUNCTION("reorganize",gdbmmod_reorganize,tFunc(tNone,tInt),0);
   /* function(:void) */
-  ADD_FUNCTION("sync",gdbmmod_sync,tFunc(,tVoid),0);
+  ADD_FUNCTION("sync",gdbmmod_sync,tFunc(tNone,tVoid),0);
 
   set_init_callback(init_gdbm_glue);
   set_exit_callback(exit_gdbm_glue);
