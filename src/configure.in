@@ -1371,7 +1371,7 @@ AC_ARG_WITH(machine-code,
 	  # Currently only supported with gcc.
 	  #
 	  # Further tests later on.
-	  with_machine_code="yes"
+	  with_machine_code="$GCC"
 	])
 
 MY_AC_ARG_WITH(keypair-loop,
