@@ -1786,7 +1786,7 @@ PMOD_EXPORT void f_sscanf(INT32 args)
     break;
   }
 
-  a=aggregate_array(sp-save_sp);
+  a = aggregate_array(DO_NOT_WARN(sp - save_sp));
   pop_n_elems(args);
   push_array(a);
 }
