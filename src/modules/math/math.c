@@ -16,7 +16,7 @@
 #include <ieeefp.h>
 #endif
 
-#ifdef HAVE_FLOATINPOINT_H
+#ifdef HAVE_FLOATINGPOINT_H
 #include <floatingpoint.h>
 #endif
 
