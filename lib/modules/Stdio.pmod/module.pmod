@@ -158,7 +158,7 @@ class File
 		   this_program,
 		   debug_file, debug_mode,
 		   debug_bits||0777,
-		   is_open() ? query_fd() : -1 );
+		   _fd && is_open() ? query_fd() : -1 );
   }
 
   //  @decl int open(int fd, string mode)
