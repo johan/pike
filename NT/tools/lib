@@ -38,6 +38,6 @@ silent_do_cmd() {
 }
 
 do_cmd() {
-  echo "DOING $*"
+  echo "DOING $*" >&2
   silent_do_cmd "$@"
 }
