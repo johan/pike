@@ -2740,6 +2740,13 @@ void init_signals(void)
 
   firstsig=lastsig=0;
 
+  if(!signal_evaluator_callback)
+  {
+    signal_evaluator_callback=add_to_callback(&evaluator_callbacks,
+					      check_signals,
+					      0,0);
+  }
+
 #ifdef USE_PID_MAPPING
   pid_mapping=allocate_mapping(2);
 
