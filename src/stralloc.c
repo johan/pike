@@ -606,6 +606,11 @@ void unlink_pike_string(struct pike_string *s)
   num_strings--;
 }
 
+void do_free_string(struct pike_string *s)
+{
+  free_string(s);
+}
+
 void really_free_string(struct pike_string *s)
 {
 #ifdef PIKE_DEBUG
