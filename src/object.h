@@ -53,6 +53,7 @@ extern struct program *magic_set_index_program;
 
 #include "block_alloc_h.h"
 /* Prototypes begin here */
+BLOCK_ALLOC(object, 511)
 struct object *low_clone(struct program *p);
 void call_c_initializers(struct object *o);
 void do_free_object(struct object *o);

@@ -1456,7 +1456,7 @@ node *fix_this_object_type(node *n)
 {
   free_string(n->type);
   type_stack_mark();
-  push_type_int(new_program->id);
+  push_type_int(Pike_compiler->new_program->id);
   /*  push_type(1);   We are rather sure that we contain ourselves... */
   push_type(0);		/* But it did not work yet, so... */
   push_type(T_OBJECT);

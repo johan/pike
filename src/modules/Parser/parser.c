@@ -165,7 +165,7 @@ void pike_module_init(void)
    for (i=0; i<(int)NELEM(initclass); i++)
    {
       start_new_program();
-      if (initclass[i].id) new_program->id = initclass[i].id;
+      if (initclass[i].id) Pike_compiler->new_program->id = initclass[i].id;
 
 #ifdef DEBUG
       fprintf(stderr,"Parser: initiating class \"Parser.%s\"...\n",

@@ -31,10 +31,7 @@ int islocal(struct pike_string *str);
 int verify_declared(struct pike_string *str);
 
 
-extern node *init_node;
-extern int num_parse_error;
 extern int cumulative_parse_error;
-extern struct compiler_frame *compiler_frame;
 
 struct local_variable
 {
@@ -249,9 +246,9 @@ void resolv_program(node *n);
 #define GAUGE_RUSAGE_INDEX 0
 
 #define add_to_mem_block(N,Data,Size) low_my_binary_strcat(Data,Size,areas+N)
-#define IDENTIFIERP(i) (new_program->identifier_references+(i))
-#define INHERIT(i) (new_program->inherits+(i))
-#define PC (new_program->num_program)
+#define IDENTIFIERP(i) (Pike_compiler->new_program->identifier_references+(i))
+#define INHERIT(i) (Pike_compiler->new_program->inherits+(i))
+#define PC (Pike_compiler->new_program->num_program)
 
 #ifndef PIKE_DEBUG
 #define check_tree(X,Y)

@@ -1551,8 +1551,8 @@ void pike_module_init(void)
     /* magic /Hubbe
      * This seems to break more than it fixes though... /Hubbe
      */
-    free_string(ID_FROM_INT(new_program, id)->type);
-    ID_FROM_INT(new_program, id)->type=CONSTTYPE(tOr(tFunc(tOr5(tVoid,tStr,tInt,tFlt,tObj),tInt),tFunc(tStr tInt,tInt)));
+    free_string(ID_FROM_INT(Pike_compiler->new_program, id)->type);
+    ID_FROM_INT(Pike_compiler->new_program, id)->type=CONSTTYPE(tOr(tFunc(tOr5(tVoid,tStr,tInt,tFlt,tObj),tInt),tFunc(tStr tInt,tInt)));
 #endif
   }
 #endif
