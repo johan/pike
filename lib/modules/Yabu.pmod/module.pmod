@@ -21,7 +21,7 @@ constant cvs_id = "$Id$";
 #undef  THREAD_SAFE
 #define LOCK() do {
 #define UNLOCK() } while(0)
-#undef  INHERIT_MUTEX
+#define INHERIT_MUTEX
 #endif
 
 
