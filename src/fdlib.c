@@ -2,11 +2,11 @@
 #include "fdlib.h"
 #include "pike_error.h"
 #include <math.h>
-#include <tchar.h>
 
 RCSID("$Id$");
 
 #ifdef HAVE_WINSOCK_H
+#include <tchar.h>
 
 #ifdef _REENTRANT
 #include "threads.h"
