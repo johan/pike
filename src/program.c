@@ -1441,7 +1441,13 @@ struct program *compile_file(struct pike_string *file_name)
     fd=open(file_name->str,O_RDONLY);
     if(fd >= 0) break;
     if(errno != EINTR)
-      error("Couldn't open file '%s'.\n",file_name->str);
+    {
+#ifdef HAVE_STRERROR
+      error("Couldn't open file '%s'. (%s)\n",file_name->str,strerror(errno));
+#else
+      error("Couldn't open file '%s'. (ERRNO=%d)\n",file_name->str,errno);
+#endif
+    }
   }
 
 #define FILE_STATE

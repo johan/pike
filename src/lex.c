@@ -1032,7 +1032,11 @@ static void handle_include(char *name, int local_include)
   {
     if(errno == EINTR) goto retry;
 
-    my_yyerror("Couldn't open file to include '%s'.",sp[-1].u.string->str);
+#ifdef HAVE_STRERROR    
+    my_yyerror("Couldn't open file to include '%s'. (%s)",sp[-1].u.string->str,strerror(errno));
+#else
+    my_yyerror("Couldn't open file to include '%s'. (ERRNO=%d)",sp[-1].u.string->str,errno);
+#endif
     return;
   }
 
