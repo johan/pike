@@ -38,7 +38,7 @@ xenofarm_post_build() {
   POST_RESULT=$LASTERR
 
   log_start verify
-  $MAKE METATARGET=verify TESTARGS="-a -T" > \
+  $MAKE METATARGET=verify TESTARGS="-a -T -F" > \
     xenofarm_result/verifylog.txt 2>&1
   log_end $?
   [ $LASTERR = 0 ] || return 1
