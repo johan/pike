@@ -79,6 +79,7 @@ BLOCK_ALLOC(mapping, 511)
 
 struct mapping *debug_allocate_mapping(int size);
 void really_free_mapping_data(struct mapping_data *md);
+void do_free_mapping(struct mapping *m);
 struct mapping_data *copy_mapping_data(struct mapping_data *md);
 void mapping_fix_type_field(struct mapping *m);
 void low_mapping_insert(struct mapping *m,
