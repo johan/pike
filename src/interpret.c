@@ -706,7 +706,7 @@ static void eval_instruction(unsigned char *pc)
       instr=GET_ARG();
       assign_svalue_no_free(sp++,fp->locals+instr);
       goto dec_local_and_pop;
-      fp->locals[instr].u.integer--;
+      /* fp->locals[instr].u.integer--; */
       break;
 
       CASE(F_DEC_LOCAL_AND_POP);
