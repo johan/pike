@@ -1614,6 +1614,11 @@ OPCODE0_JUMP(F_TAIL_RECUR,"tail recursion")
 
   if(Pike_sp-args != Pike_fp->locals)
   {
+#ifdef PIKE_DEBUG
+    if (Pike_sp < Pike_fp->locals + args)
+      fatal("Pike_sp (%p) < Pike_fp->locals (%p) + args (%d)\n",
+	    Pike_sp, Pike_fp->locals, args);
+#endif
     assign_svalues(Pike_fp->locals, Pike_sp-args, args, BIT_MIXED);
     pop_n_elems(Pike_sp - (Pike_fp->locals + args));
   }
