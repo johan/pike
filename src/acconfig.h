@@ -152,6 +152,15 @@
 /* Define if gettimeofday takes to arguments */
 #undef GETTIMEOFDAY_TAKES_TWO_ARGS
 
+/* Define if you have gethrtime */
+#undef HAVE_GETHRTIME
+
+/* Can we make our own gethrtime? */
+#undef OWN_GETHRTIME
+
+/* ... by using the RDTSC instruction? */
+#undef OWN_GETHRTIME_RDTSC
+
 /* Define if you have a working, 8-bit-clean memcmp */
 #undef HAVE_MEMCMP
 

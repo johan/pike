@@ -723,7 +723,13 @@ void backend(void)
     if(d_flag > 1) do_debug();
 #endif
 
+#ifndef OWN_GETHRTIME
     GETTIMEOFDAY(&current_time);
+#else
+    /* good place to run the gethrtime-conversion update
+       since we have to run gettimeofday anyway /Mirar */
+    own_gethrtime_update(&current_time);
+#endif
 
     if(my_timercmp(&next_timeout, > , &current_time))
     {

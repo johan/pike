@@ -152,6 +152,10 @@ int dbm_main(int argc, char **argv)
 #ifdef TRY_USE_MMX
   try_use_mmx=mmx_ok();
 #endif
+#ifdef OWN_GETHRTIME
+/* initialize our own gethrtime conversion /Mirar */
+  own_gethrtime_init();
+#endif
 
   ARGV=argv;
 

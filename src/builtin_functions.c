@@ -4486,15 +4486,20 @@ PMOD_EXPORT void f_master(INT32 args)
   ref_push_object(master());
 }
 
-#ifdef HAVE_GETHRVTIME
+#ifdef HAVE_SYS_TIME_H
 #include <sys/time.h>
+#endif
+
+#ifdef HAVE_GETHRVTIME
 
 PMOD_EXPORT void f_gethrvtime(INT32 args)
 {
   pop_n_elems(args);
   push_int64(gethrvtime()/1000);
 }
+#endif
 
+#ifdef HAVE_GETHRTIME
 PMOD_EXPORT void f_gethrtime(INT32 args)
 {
   pop_n_elems(args);
@@ -4521,7 +4526,7 @@ PMOD_EXPORT void f_gethrtime(INT32 args)
     push_int64((tv.tv_sec * 1000000) + tv.tv_usec);
 #endif /* INT64 */
 }
-#endif /* HAVE_GETHRVTIME */
+#endif /* HAVE_GETHRTIME */
 
 #ifdef PROFILING
 static void f_get_prof_info(INT32 args)

@@ -221,4 +221,12 @@ static INLINE INT32 EXTRACT_INT_(unsigned char *p)
 unsigned long my_rand(void);
 void my_srand(long seed);
 
+#ifdef OWN_GETHRTIME
+void own_gethrtime_init();
+void own_gethrtime_update(struct timeval *ptr);
+long long gethrtime();
+
+#define hrtime_t long long
+#endif
+
 #endif
