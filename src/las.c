@@ -2064,6 +2064,8 @@ void fix_type_field(node *n)
       max_args = count_arguments(f);
       if(max_args<0) max_args = 0x7fffffff;
 
+      free_string(s);
+
       if (n->type) {
 	/* Type/argument-check OK. */
 	break;
@@ -2120,7 +2122,6 @@ void fix_type_field(node *n)
 	my_yyerror("Bad argument %d to %s.",
 		   max_correct_args+1, name);
       }
-      free_string(s);
     }
     copy_shared_string(n->type, mixed_type_string);
     break;
