@@ -3924,10 +3924,10 @@ void gc_free_all_unreferenced_programs(void)
 #endif
     }else{
       next=p->next;
-    }
 #ifdef PIKE_DEBUG
-    first = 0;
+      first = 0;
 #endif
+    }
   }
 
 #ifdef PIKE_DEBUG
