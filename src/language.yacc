@@ -1474,15 +1474,9 @@ void yyerror(char *str)
 
   if ( get_master() )
   {
-    sp->type = T_STRING;
-    copy_shared_string(sp->u.string, lex.current_file);
-    sp++;
-    sp->type = T_INT;
-    sp->u.integer = lex.current_line;
-    sp++;
-    sp->type = T_STRING;
-    sp->u.string = make_shared_string(str);
-    sp++;
+    ref_push_string(lex.current_file);
+    push_int(lex.current_line);
+    push_text(str);
     SAFE_APPLY_MASTER("compile_error",3);
     pop_stack();
   }else{
