@@ -42,4 +42,7 @@
 /* Define if the get/setrlimit syntax is unknown */
 #undef SETRLIMIT_SYNTAX_UNKNOWN
 
+/* Define if you have the <sys/resource.h> header file.  */
+#undef HAVE_SYS_RESOURCE_H
+
 #endif /* SYSTEM_MACHINE_H */
