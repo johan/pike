@@ -11,6 +11,7 @@
 #include "global.h"
 #include "svalue.h"
 #include "dynamic_buffer.h"
+#include "block_alloc_h.h"
 
 #define MAX_GLOBAL_VARIABLES 1000
 typedef void (*c_fun)(INT32);
@@ -179,6 +180,8 @@ extern struct node_hash_table node_hash;
 #define SCOPE_LOCAL 1
 #define SCOPE_SCOPED 2
 #define SCOPE_SCOPE_USED 4
+
+BLOCK_ALLOC_FILL_PAGES(node_s, 2)
 
 /* Prototypes begin here */
 int car_is_node(node *n);
