@@ -2406,6 +2406,16 @@ node *reference_inherited_identifier(struct pike_string *super_name,
     {
       return mknode(F_MAGIC_SET_INDEX,mknewintnode(e),mknewintnode(0));
     }
+
+    if(ISCONSTSTR(function_name,"_indices"))
+    {
+      return mknode(F_MAGIC_INDICES,mknewintnode(e),mknewintnode(0));
+    }
+
+    if(ISCONSTSTR(function_name,"_values"))
+    {
+      return mknode(F_MAGIC_VALUES,mknewintnode(e),mknewintnode(0));
+    }
   }
 
 
@@ -2438,6 +2448,18 @@ node *reference_inherited_identifier(struct pike_string *super_name,
 	 ISCONSTSTR(function_name,"`[]="))
       {
 	return mknode(F_MAGIC_SET_INDEX,
+		      mknewintnode(e),mknewintnode(n+1));
+      }
+
+      if(ISCONSTSTR(function_name,"_indices"))
+      {
+	return mknode(F_MAGIC_INDICES,
+		      mknewintnode(e),mknewintnode(n+1));
+      }
+
+      if(ISCONSTSTR(function_name,"_values"))
+      {
+	return mknode(F_MAGIC_VALUES,
 		      mknewintnode(e),mknewintnode(n+1));
       }
     }

@@ -1616,6 +1616,14 @@ OPCODE2(F_MAGIC_SET_INDEX, "::`[]=", {
   push_magic_index(magic_set_index_program, arg2, arg1);
 });
 
+OPCODE2(F_MAGIC_INDICES, "::_indices", {
+  push_magic_index(magic_indices_program, arg2, arg1);
+});
+
+OPCODE2(F_MAGIC_VALUES, "::_values", {
+  push_magic_index(magic_values_program, arg2, arg1);
+});
+
 OPCODE0(F_CAST, "cast", {
   f_cast();
 });
