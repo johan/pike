@@ -19,7 +19,7 @@ all: extract
 
 extract: xml recurse
 
-.SUFFIXES: .c .pike .pmod.in .xml
+.SUFFIXES: .c .pike .pmod .pmod.in .xml
 
 .c.xml: $(ROOT)/../bin/autodoc.pike
 	@rm -f "$@.new" 2>/dev/null || /bin/true
