@@ -73,7 +73,7 @@ void create(string server,void|mapping options)
       software_version=vi->software_version;
    };
    if (err)
-      if (err->no==2)
+      if (objectp(err) && err->no==2)
       {
 	 protocol_level=0;
 	 session_software=software_version="unknown";
