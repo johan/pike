@@ -1998,6 +1998,7 @@ static struct used_vars *copy_vars(struct used_vars *a)
       return NULL;	/* Make sure that the optimizer knows we exit here. */
     }
     MEMCPY(*dst, src, sizeof(struct scope_info));
+    src = src->next;
     dst = &((*dst)->next);
     *dst = NULL;
   }
@@ -2024,6 +2025,7 @@ static struct used_vars *copy_vars(struct used_vars *a)
       return NULL;	/* Make sure that the optimizer knows we exit here. */
     }
     MEMCPY(*dst, src, sizeof(struct scope_info));
+    src = src->next;
     dst = &((*dst)->next);
     *dst = NULL;
   }
