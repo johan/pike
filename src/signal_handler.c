@@ -2986,7 +2986,7 @@ void f_create_process(INT32 args)
 
       /* Perform fd remapping */
       {
-        int fd, max_fds;
+        int fd;
 	/* Note: This is O(n²), but that ought to be ok. */
 	for (fd=0; fd<num_fds; fd++) {
 	  int fd2;
