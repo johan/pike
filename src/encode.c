@@ -2024,7 +2024,7 @@ static void decode_value2(struct decode_data *data)
 			 Pike_sp[-1].u.integer);
 	    }
 	    pop_stack();
-	    push_program(p);
+	    ref_push_program(p);
 	  } else {
 	    Pike_error("Failed to decode program.\n");
 	  }
