@@ -44,7 +44,11 @@ static char *dlerr=0;
  *  Separate RWX, RW and R memory sections.
  */
 
-/* #define DLDEBUG 1*/
+/* Enable debug output if compiled on win64. */
+#ifdef _WIN64
+#define DLDEBUG 1
+#endif /* _WIN64 */
+
 #define DL_VERBOSE 1
 
 /*
