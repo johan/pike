@@ -4,7 +4,6 @@
 inherit @module@;
 
 
-
 //! Allows the user to open a Gzip archive and read and write
 //! it's contents in an uncompressed form, emulating the @[Stdio.File]
 //! interface.
@@ -15,7 +14,7 @@ inherit @module@;
 //! after a write, you must close the file before calling open or
 //! strange effects might be the result.
 class File {
-  inherit @module@._file;
+  inherit _file;
 
   private int is_open = 0;
 
