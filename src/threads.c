@@ -656,6 +656,8 @@ TH_RETURN_TYPE new_thread_func(void * data)
     arg.args=0;
     f_call_function(args);
 
+    /* FIXME: Check threads_disable. */
+
     /* copy return value to the Pike_interpreter.thread_id here */
     object_low_set_index(Pike_interpreter.thread_id,
 			 thread_id_result_variable,
@@ -691,6 +693,7 @@ TH_RETURN_TYPE new_thread_func(void * data)
     remove_callback(threads_evaluator_callback);
     threads_evaluator_callback=0;
   }
+  /* FIXME: What about threads_disable? */
   mt_unlock_interpreter();
   th_exit(0);
   /* NOT_REACHED, but removes a warning */
@@ -1104,6 +1107,10 @@ void f_thread_id_id_number(INT32 args)
 static void f_thread_id_result(INT32 args)
 {
   struct thread_state *th=THIS_THREAD;
+
+  if (threads_disabled) {
+    Pike_error("Cannot wait for threads when threads are disabled!\n");
+  }
 
   SWAP_OUT_CURRENT_THREAD();
 
