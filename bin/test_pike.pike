@@ -439,7 +439,7 @@ int main(int argc, array(string) argv)
 
 	  int computed_line=sizeof(test/"\n");
 	  array gnapp= test/"#";
-	  for(int e=0;e<sizeof(gnapp);e++)
+	  for(int e=1;e<sizeof(gnapp);e++)
 	  {
 	    if(sscanf(gnapp[e],"%*d"))
 	    {
