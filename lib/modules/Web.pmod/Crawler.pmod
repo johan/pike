@@ -703,6 +703,7 @@ class Crawler
       hostname_cache=_hostname_cache;
       set_callbacks(request_ok, request_fail);
 
+      https= (uri->scheme=="https")? 1 : 0;
       async_request(uri->host, uri->port,
 		    sprintf("GET %s HTTP/1.0", uri->get_path_query()),
 		    headers );
