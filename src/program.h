@@ -336,6 +336,7 @@ struct program
 
 
 extern struct object *error_handler;
+extern struct object *compat_handler;
 
 extern struct program *first_program;
 extern struct program *pike_trampoline_program;
