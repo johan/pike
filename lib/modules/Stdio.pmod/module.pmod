@@ -621,7 +621,7 @@ mixed `[](string index)
   if(x) return x;
   switch(index)
   {
-  case "readline": return master()->resolv("readline");
+  case "readline": return master()->resolv("Stdio")["Readline"]->readline;
   default: return ([])[0];
   }
 }
