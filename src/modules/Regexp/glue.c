@@ -51,7 +51,7 @@ struct regexp_glue
 
 #define THIS ((struct regexp_glue *)(Pike_fp->current_storage))
 
-/*! @modeule Regexp
+/*! @module Regexp
  */
 
 static void do_free(void)
