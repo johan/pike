@@ -31,6 +31,10 @@
 #include <gmp.h>
 #endif /* USE_GMP2 */
 
+#ifndef mpz_odd_p
+#define mpz_odd_p(z)   ((int) ((z)->_mp_size != 0) & (int) (z)->_mp_d[0])
+#endif
+
 struct pike_string;
 
 /* MPZ protos */
