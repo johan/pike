@@ -1,0 +1,17 @@
+/* pdf_machine.h.in.  Generated automatically from configure.in by autoheader.  */
+/*
+ * $Id$
+ */
+
+#ifndef PDF_MACHINE_H
+#define PDF_MACHINE_H
+
+
+
+/* Define if you have the <pdflib.h> header file. */
+#undef HAVE_PDFLIB_H
+
+/* Define this if you have -lpdf */
+#undef HAVE_LIBPDF
+
+#endif
