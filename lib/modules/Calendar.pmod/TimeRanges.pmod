@@ -1,5 +1,7 @@
 //! module Calendar
 
+// $Id$
+
 #pike __REAL_VERSION__
 
 #define zero int(0..0)
