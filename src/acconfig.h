@@ -373,6 +373,9 @@
 /* Can we compile in MMX support? */
 #undef TRY_USE_MMX
 
+/* Define if you have the <sys/resource.h> header file.  */
+#undef HAVE_SYS_RESOURCE_H
+
 @BOTTOM@
 
 /* NT stuff */
