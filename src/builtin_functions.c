@@ -7719,13 +7719,13 @@ void init_builtin_efuns(void)
   ADD_EFUN("version", f_version,tFunc(tNone,tStr), OPT_TRY_OPTIMIZE);
 
   
-/* function(mixed,void|object:string) */
+/* function(mixed,void|object,void|int:string) */
   ADD_EFUN("encode_value", f_encode_value,
-	   tFunc(tMix tOr(tVoid,tObj),tStr), OPT_TRY_OPTIMIZE);
+	   tFunc(tMix tOr(tVoid,tObj) tOr(tVoid,tInt),tStr), OPT_TRY_OPTIMIZE);
 
-  /* function(mixed,void|object:string) */
+  /* function(mixed,void|object,void|int:string) */
   ADD_EFUN("encode_value_canonic", f_encode_value_canonic,
-	   tFunc(tMix tOr(tVoid,tObj),tStr), OPT_TRY_OPTIMIZE);
+	   tFunc(tMix tOr(tVoid,tObj) tOr(tVoid,tInt),tStr), OPT_TRY_OPTIMIZE);
 
 /* function(string,void|object:mixed) */
   ADD_EFUN("decode_value", f_decode_value,
