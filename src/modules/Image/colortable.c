@@ -911,6 +911,9 @@ static struct nct_flat _img_get_flat_from_string(struct pike_string *str)
    int i;
 
    flat.numentries=str->len/3;
+   if (flat.numentries<1) 
+      error("Can't make a colortable with less then one (1) color.\n");
+
    flat.entries=(struct nct_flat_entry*)
       xalloc(flat.numentries*sizeof(struct nct_flat_entry));
 
@@ -2386,6 +2389,62 @@ void image_colortable_write_rgb(struct neo_colortable *nct,
       *(dest++)=flat.entries[i].color.r;
       *(dest++)=flat.entries[i].color.g;
       *(dest++)=flat.entries[i].color.b;
+   }
+
+   if (nct->type==NCT_CUBE)
+      free(flat.entries);
+}
+
+void image_colortable_write_rgba(struct neo_colortable *nct,
+				 unsigned char *dest)
+{
+   struct nct_flat flat;
+   int i;
+   
+   if (nct->type==NCT_NONE)
+      return;
+
+   if (nct->type==NCT_CUBE)
+      flat=_img_nct_cube_to_flat(nct->u.cube);
+   else
+      flat=nct->u.flat;
+
+   /* sort in number order? */
+
+   for (i=0; i<flat.numentries; i++)
+   {
+      *(dest++)=flat.entries[i].color.r;
+      *(dest++)=flat.entries[i].color.g;
+      *(dest++)=flat.entries[i].color.b;
+      *(dest++)=0;
+   }
+
+   if (nct->type==NCT_CUBE)
+      free(flat.entries);
+}
+
+void image_colortable_write_bgra(struct neo_colortable *nct,
+				 unsigned char *dest)
+{
+   struct nct_flat flat;
+   int i;
+   
+   if (nct->type==NCT_NONE)
+      return;
+
+   if (nct->type==NCT_CUBE)
+      flat=_img_nct_cube_to_flat(nct->u.cube);
+   else
+      flat=nct->u.flat;
+
+   /* sort in number order? */
+
+   for (i=0; i<flat.numentries; i++)
+   {
+      *(dest++)=flat.entries[i].color.b;
+      *(dest++)=flat.entries[i].color.g;
+      *(dest++)=flat.entries[i].color.r;
+      *(dest++)=0;
    }
 
    if (nct->type==NCT_CUBE)
