@@ -308,7 +308,7 @@ rsif: $(TMP_BINDIR)/rsif Makefile
 dump_modules: pike master-stamp $(SRCDIR)/dumpmodule.pike
 	args="$(DUMPARGS)"; \
 	$(RUNPIKE) $(SRCDIR)/dumpmodule.pike \
-	$${args:- --log-file --update-only=dumpversion --report-failed} \
+	$${args:-" --log-file --update-only=dumpversion --report-failed"} \
 	--recursive --target-dir=lib "$(LIBDIR_SRC)/modules"
 
 force_dump_modules:
