@@ -640,8 +640,9 @@ PIKECLASS CircularList
 
   PIKEFUN void clear()
   {
+    int oldsize;
     should_copy();
-    int oldsize = THIS->a->size;
+    oldsize = THIS->a->size;
     THIS->a = resize_array(THIS->a, 0);
     THIS->a = resize_array(THIS->a, oldsize);
     THIS->size =0;
