@@ -1937,7 +1937,8 @@ PMOD_EXPORT void o_lsh(void)
     return;
   }
 #ifdef AUTO_BIGNUM
-  if(INT_TYPE_LSH_OVERFLOW(sp[-2].u.integer, sp[-1].u.integer))
+  if ((sp[-1].type == T_INT) && (sp[-2].type == T_INT) &&
+      INT_TYPE_LSH_OVERFLOW(sp[-2].u.integer, sp[-1].u.integer))
     convert_stack_top_to_bignum();
 #endif /* AUTO_BIGNUM */
   
