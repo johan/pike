@@ -1919,6 +1919,13 @@ static struct array* diff_longest_sequence(struct array *cmptbl, int blen)
 #ifdef DIFF_DEBUG
 	 fprintf(stderr, "DIFF:  j=%d, x=%d\n", j, x);
 #endif /* DIFF_DEBUG */
+#ifdef DEBUG
+	 if (x >= blen) {
+	   fatal("diff_longest_sequence(): x:%d >= blen:%d\n", x, blen);
+	 } else if (x < 0) {
+	   fatal("diff_longest_sequence(): x:%d < 0\n", x);
+	 }
+#endif /* DEBUG */
 	 if (!marks[x]) {
 	   int pos;
 
@@ -1955,6 +1962,13 @@ static struct array* diff_longest_sequence(struct array *cmptbl, int blen)
 #ifdef DIFF_DEBUG
 	   fprintf(stderr, "DIFF: New j=%d, x=%d\n", j, x);
 #endif /* DIFF_DEBUG */
+#ifdef DEBUG
+	   if (x >= blen) {
+	     fatal("diff_longest_sequence(): x:%d >= blen:%d\n", x, blen);
+	   } else if (x < 0) {
+	     fatal("diff_longest_sequence(): x:%d < 0\n", x);
+	   }
+#endif /* DEBUG */
 
 	   /* Put x on the stack. */
 	   marks[x] = 1;
