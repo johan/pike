@@ -426,11 +426,14 @@ constant_name: F_IDENTIFIER '=' expr0
     } else {
       tmp=eval_low($3);
       if(tmp < 1)
+      {
 	yyerror("Error in constant definition.");
-      pop_n_elems(tmp-1);
-      add_constant($1,sp-1,current_modifiers);
+      }else{
+	pop_n_elems(tmp-1);
+	add_constant($1,sp-1,current_modifiers);
+	pop_stack();
+      }
       free_string($1);
-      pop_stack();
     }
   }
   ;
