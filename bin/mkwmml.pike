@@ -180,7 +180,7 @@ string synopsis_to_html(string s,mapping huh)
    if (sscanf(s,"%s%*[ \t]%s(%s",type,name,arg)!=4)
    {
       sscanf(s,"%s(%s",name,arg),type="";
-      werror(huh->_line+": suspicios method %O\n",(s/"(")[0]);
+      werror(sprintf(huh->_line+": suspicios method %O\n",(s/"(")[0]));
    }
    if (arg[..1]==")(") name+="()",arg=arg[2..];
 
