@@ -144,7 +144,7 @@ class Connection
   static void cmd_selectdb(string url)
   {
     sqlobj = 0;
-    sqlobj = Sql.sql(url);
+    sqlobj = Sql.Sql(url);
   }
 
   static int|string cmd_error()
