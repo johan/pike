@@ -1628,7 +1628,7 @@ local_function: F_IDENTIFIER push_compiler_frame1
     else
     {
       id=define_function(name,
-			 check_node_hash($<n>0)->u.sval.u.string,
+			 function_type_string,
 			 0,
 			 IDENTIFIER_PIKE_FUNCTION,
 			 0);
@@ -1742,7 +1742,7 @@ local_function2: optional_stars F_IDENTIFIER push_compiler_frame1
     else
     {
       id=define_function(name,
-			 check_node_hash($<n>0)->u.sval.u.string,
+			 function_type_string,
 			 0,
 			 IDENTIFIER_PIKE_FUNCTION,
 			 0);
