@@ -29,7 +29,7 @@ PMOD_EXPORT int threads_disabled = 0;
 #include "operators.h"
 #include "bignum.h"
 #include "signal_handler.h"
-#include "rusage.h"
+#include "pike_rusage.h"
 
 #include <errno.h>
 

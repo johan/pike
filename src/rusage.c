@@ -16,7 +16,7 @@
 #include "time_stuff.h"
 #include <fcntl.h>
 #include <errno.h>
-#include "rusage.h"
+#include "pike_rusage.h"
 
 RCSID("$Id$");
 

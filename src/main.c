@@ -35,7 +35,7 @@ RCSID("$Id$");
 #include "constants.h"
 #include "version.h"
 #include "program.h"
-#include "rusage.h"
+#include "pike_rusage.h"
 #include "module_support.h"
 
 #ifdef AUTO_BIGNUM
