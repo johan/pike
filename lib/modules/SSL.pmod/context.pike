@@ -61,7 +61,7 @@ void set_trusted_issuers(array(array)  i)
 }
 
 //! Get the list of trusted issuers. See @[set_trusted_issuers]. 
-array(string) get_trusted_issuers()
+array(array) get_trusted_issuers()
 {
   return trusted_issuers;
 }
