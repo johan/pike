@@ -412,7 +412,7 @@ node *mkidentifiernode(int i)
   copy_shared_string(res->type, ID_FROM_INT(&fake_program, i)->type);
 
   /* FIXME */
-  if(IDENTIFIER_IS_CONSTANT(ID_FROM_INT(&fake_program, i)->flags))
+  if(IDENTIFIER_IS_CONSTANT(ID_FROM_INT(&fake_program, i)->identifier_flags))
   {
     res->node_info = OPT_EXTERNAL_DEPEND;
   }else{
@@ -465,7 +465,7 @@ void resolv_constant(node *n)
       setup_fake_program();
       i=ID_FROM_INT(& fake_program, n->u.number);
 	
-      if(IDENTIFIER_IS_CONSTANT(i->flags))
+      if(IDENTIFIER_IS_CONSTANT(i->identifier_flags))
       {
 	push_svalue(PROG_FROM_INT(&fake_program, n->u.number)->constants +
 		    i->func.offset);
@@ -1566,7 +1566,7 @@ static void optimize(node *n)
 	{
 	  struct identifier *id;
 	  id=ID_FROM_INT(CAR(n)->u.sval.u.object->prog, i);
-	  if(IDENTIFIER_IS_VARIABLE(id->flags)) break;
+	  if(IDENTIFIER_IS_VARIABLE(id->identifier_flags)) break;
 	}
 	ref_push_object(CAR(n)->u.sval.u.object);
 	ref_push_string(CDR(n)->u.sval.u.string);

@@ -748,7 +748,7 @@ static void eval_instruction(unsigned char *pc)
 
 	i=ID_FROM_INT(fp->current_object->prog, tmp);
 
-	if(!IDENTIFIER_IS_VARIABLE(i->flags))
+	if(!IDENTIFIER_IS_VARIABLE(i->identifier_flags))
 	  error("Cannot re-assign functions or constants.\n");
 
 	if(i->run_time_type == T_MIXED)
@@ -804,7 +804,7 @@ static void eval_instruction(unsigned char *pc)
 	  error("Cannot access global variables in destructed object.\n");
 
 	i=ID_FROM_INT(fp->current_object->prog, tmp);
-	if(!IDENTIFIER_IS_VARIABLE(i->flags))
+	if(!IDENTIFIER_IS_VARIABLE(i->identifier_flags))
 	  error("Cannot assign functions or constants.\n");
 	if(i->run_time_type == T_MIXED)
 	{
@@ -825,7 +825,7 @@ static void eval_instruction(unsigned char *pc)
 	  error("Cannot access global variables in destructed object.\n");
 
 	i=ID_FROM_INT(fp->current_object->prog, tmp);
-	if(!IDENTIFIER_IS_VARIABLE(i->flags))
+	if(!IDENTIFIER_IS_VARIABLE(i->identifier_flags))
 	  error("Cannot assign functions or constants.\n");
 
 	if(i->run_time_type == T_MIXED)
@@ -1362,7 +1362,7 @@ void apply_low(struct object *o, int fun, int args)
   if(function->func.offset == -1)
     error("Calling undefined function '%s'.\n",function->name->str);
 
-  if(function->flags & IDENTIFIER_C_FUNCTION)
+  if(function->identifier_flags & IDENTIFIER_C_FUNCTION)
   {
     fp->num_args=args;
     new_frame.num_locals=args;
@@ -1384,7 +1384,7 @@ void apply_low(struct object *o, int fun, int args)
       args += num_args-args;
     }
 
-    if(function->flags & IDENTIFIER_VARARGS)
+    if(function->identifier_flags & IDENTIFIER_VARARGS)
     {
       f_aggregate(args - num_args); /* make array */
       args = num_args+1;

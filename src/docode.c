@@ -450,7 +450,7 @@ static int do_docode2(node *n,int flags)
 	break;
 
       case F_IDENTIFIER:
-	if(!IDENTIFIER_IS_VARIABLE( ID_FROM_INT(& fake_program, CDR(n)->u.number)->flags))
+	if(!IDENTIFIER_IS_VARIABLE( ID_FROM_INT(& fake_program, CDR(n)->u.number)->identifier_flags))
 	{
 	  yyerror("Cannot assign functions or constants.\n");
 	}else{
@@ -703,7 +703,7 @@ static int do_docode2(node *n,int flags)
       return 1;
     }
     else if(CAR(n)->token == F_IDENTIFIER &&
-	    IDENTIFIER_IS_FUNCTION(ID_FROM_INT(& fake_program, CAR(n)->u.number)->flags))
+	    IDENTIFIER_IS_FUNCTION(ID_FROM_INT(& fake_program, CAR(n)->u.number)->identifier_flags))
     {
       emit2(F_MARK);
       do_docode(CDR(n),0);
@@ -1060,7 +1060,7 @@ static int do_docode2(node *n,int flags)
     }
 
   case F_IDENTIFIER:
-    if(IDENTIFIER_IS_FUNCTION(ID_FROM_INT(& fake_program, n->u.number)->flags))
+    if(IDENTIFIER_IS_FUNCTION(ID_FROM_INT(& fake_program, n->u.number)->identifier_flags))
     {
       if(flags & DO_LVALUE)
       {
