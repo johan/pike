@@ -89,10 +89,17 @@ PMOD_EXPORT extern size_t thread_stack_size;
 #define th_atfork_parent()
 #define th_atfork_child()
 #else
+#ifdef __NT__
+#define th_atfork(X,Y,Z)
+#define th_atfork_prepare()
+#define th_atfork_parent()
+#define th_atfork_child()
+#else
 int th_atfork(void (*)(void),void (*)(void),void (*)(void));
 void th_atfork_prepare(void);
 void th_atfork_parent(void);
 void th_atfork_child(void);
+#endif
 #endif
 
 #define THREAD_T pthread_t
@@ -363,6 +370,7 @@ extern THREAD_T debug_locking_thread;
 #ifndef th_hash
 #define th_hash(X) hashmem((unsigned char *)&(X),sizeof(THREAD_T), 16)
 #endif
+
 
 /* Define to get a debug-trace of some of the threads operations. */
 /* #define VERBOSE_THREADS_DEBUG	0 */ /* Some debug */
