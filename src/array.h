@@ -91,6 +91,7 @@ PMOD_EXPORT void really_free_array(struct array *v);
 PMOD_EXPORT void do_free_array(struct array *a);
 PMOD_EXPORT struct array *array_set_flags(struct array *a, int flags);
 PMOD_EXPORT void array_index(struct svalue *s,struct array *v,INT32 ind);
+PMOD_EXPORT struct array *array_column (struct array *data, struct svalue *index);
 PMOD_EXPORT void simple_array_index_no_free(struct svalue *s,
 				struct array *a,struct svalue *ind);
 PMOD_EXPORT void array_free_index(struct array *v,INT32 ind);
