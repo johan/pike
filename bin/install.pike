@@ -2335,6 +2335,14 @@ void do_install()
 #endif
     install_file(combine_path(vars->TMP_BUILDDIR,"pike.syms"),
 		 pike+".syms");
+    
+    // Support installation in LIBPIKE mode.
+    if (file_stat("pike.so")) {
+      if (export == 1) {
+	low_install_file("pike.so", combine_path(prefix, "build/pike.so"));
+      }
+      low_install_file("pike.so", combine_path(vars->TMP_LIBDIR, "pike.so"));
+    }
 
     string master_src=combine_path(vars->LIBDIR_SRC,"master.pike.in");
 
