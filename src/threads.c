@@ -775,8 +775,10 @@ void th_init(void)
   set_exit_callback(exit_mutex_key_obj);
   mutex_key=end_program();
   mutex_key->flags|=PROGRAM_DESTRUCT_IMMEDIATE;
+#ifdef DEBUG
   if(!mutex_key)
     fatal("Failed to initialize mutex_key program!\n");
+#endif
 
   start_new_program();
   add_storage(sizeof(COND_T));
