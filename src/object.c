@@ -684,14 +684,11 @@ int object_equal_p(struct object *a, struct object *b, struct processing *p)
 void cleanup_objects()
 {
   struct object *o, *next;
-  o=first_object;
-  while(o->next) o=o->next;
-  
-  for(;o;o=next)
+  for(o=first_object;o;o=next)
   {
     o->refs++;
     destruct(o);
-    next=o->prev;
+    next=o->next;
     free_object(o);
   }
   destruct_objects_to_destruct();
