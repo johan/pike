@@ -13,6 +13,10 @@
 
 #include "global.h"
 #include "pgres_config.h"
+
+/* Some versions of Postgres define this, and it conflicts with pike_error.h */
+#undef JMP_BUF
+
 #ifdef HAVE_POSTGRES
 
 #include "version.h"
