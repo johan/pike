@@ -2302,7 +2302,7 @@ PMOD_EXPORT void o_multiply(void)
  *!   In Pike 7.0 and earlier the multiplication order was unspecified.
  *!
  *! @seealso
- *!   @[`+()], @[`-()], [`/()], @[lfun::`*()], @[lfun::``*()]
+ *!   @[`+()], @[`-()], @[`/()], @[lfun::`*()], @[lfun::``*()]
  */
 PMOD_EXPORT void f_multiply(INT32 args)
 {
