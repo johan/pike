@@ -119,14 +119,14 @@ static void tim_decode_rect(INT32 attr, unsigned char *src, rgb_group *dst,
   }
 }
 
-#define ALPHA(a) if(!a)               /* Transparent */            \
+#define ALPHA(a) if(!a)               /* Transparent */           \
 	           dst->b = dst->g = dst->r = 0;                  \
                  else if(!(a&0x80))  /* Not transparent */        \
-	           dst->b = dst->g = dst->r = ~0;                 \
+	           dst->b = dst->g = dst->r = 0xff;               \
                  else if(!(a&0x7f))  /* Non-transparent black */  \
-	           dst->b = dst->g = dst->r = ~0;                 \
+	           dst->b = dst->g = dst->r = 0xff;               \
                  else                /* Semi transparent */       \
-	           dst->b = dst->g = dst->r = 127
+	           dst->b = dst->g = dst->r = 0x7f
 
 
 static void tim_decode_alpha_rect(INT32 attr, unsigned char *src,
