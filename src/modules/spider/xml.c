@@ -2398,7 +2398,6 @@ static struct pike_string *very_low_parse_xml(struct xmldata *data,
 	switch(PEEK(1))
 	{
 	  case '?': /* Ends with ?> */
-	    CHECK_TOPLEVEL_EPILOG;
 	    if(PEEK(2)=='x' &&
 	       PEEK(3)=='m' &&
 	       PEEK(4)=='l' &&
