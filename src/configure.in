@@ -164,13 +164,13 @@ else
   ldflags_is_set=yes
 fi
 
-if test "x$enable_make_conf" = x"yes" -a -f /etc/make.conf; then
-  set >conftest.tmp
-  echo Using settings from /etc/make.conf...
-  . /etc/make.conf
-  set | diff -u conftest.tmp -  | grep '^+C'
-  PIKE_MSG_WARN([Using settings from /etc/make.conf.])
-fi
+# if test "x$enable_make_conf" = x"yes" -a -f /etc/make.conf; then
+#   set >conftest.tmp
+#   echo Using settings from /etc/make.conf...
+#   . /etc/make.conf
+#   set | diff -u conftest.tmp -  | grep '^+C'
+#   PIKE_MSG_WARN([Using settings from /etc/make.conf.])
+# fi
 
 AC_ARG_WITH(cflags, MY_DESCR([--with-cflags=cflags],
 			     [specify extra c compiler flags]),
