@@ -353,7 +353,7 @@ void pike_module_init(void)
   
   /* function(void|string,void|string:void) */
   ADD_FUNCTION("create", gdbmmod_create,
-	       tFunc(tOr(tVoid,tStr) tOr(tVoid,tStr), tVoid), ID_STATIC);
+	       tFunc(tOr(tVoid,tStr) tOr(tVoid,tStr), tVoid), 0 /*ID_STATIC*/);
 
   /* function(:void) */
   ADD_FUNCTION("close",gdbmmod_close,tFunc(tNone,tVoid),0);
