@@ -11,7 +11,7 @@
 #include <math.h>
 #include <ctype.h>
 
-#if defined(HAVE_WINSOCK_H) && !defined(__GNUC__)
+#if defined(HAVE_WINSOCK_H)
 
 /* Old versions of the headerfiles don't have this constant... */
 #ifndef INVALID_SET_FILE_POINTER
@@ -39,6 +39,7 @@ int first_free_handle;
 #ifdef PIKE_DEBUG
 static int IsValidHandle(HANDLE h)
 {
+#ifndef __GNUC__
   __try {
     HANDLE ret;
     if(DuplicateHandle(GetCurrentProcess(),
@@ -56,6 +57,7 @@ static int IsValidHandle(HANDLE h)
   __except (1) {
     return 0;
   }
+#endif /* !__GNUC__ */
 
   return 1;
 }

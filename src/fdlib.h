@@ -47,7 +47,7 @@
 #define fd_REVERSE	     32
 
 
-#if defined(HAVE_WINSOCK_H) && !defined(__GNUC__)
+#if defined(HAVE_WINSOCK_H)
 
 #define HAVE_FD_FLOCK
 
