@@ -1254,12 +1254,17 @@ int gc_cycle_push(void *x, struct marker *m, int weak)
 	  if (cycle == gc_rec_last->cycle)
 	    CYCLE_DEBUG_MSG(m, "gc_cycle_push, old cycle");
 	  else {
+	    unsigned replace_cycle = gc_rec_last->cycle;
 	    CYCLE_DEBUG_MSG(m, "gc_cycle_push, cycle");
-	    for (p = m;; p = p->link) {
+	    for (p = m; p != gc_rec_last; p = p->link) {
 	      p->cycle = cycle;
 	      CYCLE_DEBUG_MSG(p, "gc_cycle_push, mark cycle");
-	      if (p == gc_rec_last) break;
-	    }}}}		/* Mmm.. lisp ;) */
+	    }
+	    if (replace_cycle != cycle)
+	      for (; p && p->cycle == replace_cycle; p = p->link) {
+		p->cycle = cycle;
+		CYCLE_DEBUG_MSG(p, "gc_cycle_push, re-mark cycle");
+	      }}}}		/* Mmm.. lisp ;) */
 
       else			/* A forward reference. */
 	if (m->flags & GC_ON_STACK) {
