@@ -878,12 +878,12 @@ again:
 	fprintf(stderr,"%*s**The program was written in C.\n",indent,"");
       }
 
-      tmp = debug_get_program_line(p, &line);
-      if(strcmp(tmp, "-"))
-      {
+      tmp = low_get_program_line_plain(p, &line, 1);
+      if (tmp) {
 	fprintf(stderr,"%*s**Location: %s:%ld\n",
 		indent, "", tmp, (long)line);
 	foo=1;
+	free (tmp);
 	break;
       }
 #if 0
@@ -1051,12 +1051,12 @@ void describe_something(void *a, int t, int indent, int depth, int flags,
 	      get_name_of_type(t),
 	      *(INT32 *)a);
 
+      low_describe_something(a,t,indent,depth,flags,inblock);
+
 #ifdef DEBUG_MALLOC
       if(!(flags & DESCRIBE_NO_DMALLOC))
 	debug_malloc_dump_references(a,indent+2,depth-1,flags);
 #endif
-
-      low_describe_something(a,t,indent,depth,flags,inblock);
     }
 
   fprintf(stderr,"%*s*******************\n",indent,"");
