@@ -902,7 +902,7 @@ void gc_mark_object_as_referenced(struct object *o)
     o->refs++;
 
     if(o->parent)
-      gc_mark_object_as_referenced(o);
+      gc_mark_object_as_referenced(o->parent);
 
     frame.parent_frame=fp;
     frame.current_object=o;  /* refs already updated */
