@@ -58,6 +58,10 @@ RCSID("$Id$");
 #include <netinet/in.h>
 #endif
 
+#ifdef HAVE_SYS_SOCKET_H
+#include <sys/socket.h>
+#endif
+
 #ifdef HAVE_IEEEFP_H
 #include <ieeefp.h>
 #endif /* HAVE_IEEEFP_H */
