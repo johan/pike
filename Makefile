@@ -50,7 +50,11 @@ force_autoconfig:
 	cd src && ./run_autoconfig . 2>&1 | grep -v warning
 
 force_configure:
-	-rm -f "$(BUILDDIR)/Makefile"
+	-builddir="$(BUILDDIR)"; rm -f "$$builddir/Makefile"
+	@$(DO_MAKE) configure
+
+reconfigure:
+	-builddir="$(BUILDDIR)"; rm -f "$$builddir/Makefile" "$$builddir/config.cache"
 	@$(DO_MAKE) configure
 
 configure_help: src/configure
