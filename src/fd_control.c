@@ -274,7 +274,7 @@ int main()
   res = read(tmp[0],foo,999);
   e = errno;
   alarm(0);
-  if ((res >= 0) || (e != AGAIN)) {
+  if ((res >= 0) || (e != EAGAIN)) {
     fprintf(stderr,
 	    "Unexpected behaviour of nonblocking read() res:%d, errno:%d\n",
 	    res, e);
