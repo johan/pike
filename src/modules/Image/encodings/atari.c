@@ -5,6 +5,10 @@
 || $Id$
 */
 
+#include "global.h"
+#include "interpret.h"
+#include "object.h"
+
 #include "atari.h"
 
 extern struct program *image_program;
