@@ -1907,8 +1907,9 @@ static int do_docode2(node *n, INT16 flags)
   }
 }
 
-void do_code_block(node *n)
+INT32 do_code_block(node *n)
 {
+  INT32 ret;
 #ifdef PIKE_DEBUG
   if (current_stack_depth != -4711) fatal("Reentrance in do_code_block().\n");
   current_stack_depth = 0;
@@ -1917,6 +1918,12 @@ void do_code_block(node *n)
   init_bytecode();
   label_no=1;
 
+#ifdef ALIGN_PIKE_FUNCTION_BEGINNINGS
+  while( ( (((INT32) PC)+2) & (ALIGN_PIKE_JUMPS-1)))
+    ins_byte(0);
+#endif
+
+  ret=PC;
   emit1(F_BYTE,Pike_compiler->compiler_frame->max_number_of_locals);
   emit1(F_BYTE,Pike_compiler->compiler_frame->num_args);
   emit0(F_START_FUNCTION);
@@ -1955,6 +1962,7 @@ void do_code_block(node *n)
 #ifdef PIKE_DEBUG
   current_stack_depth = -4711;
 #endif
+  return ret;
 }
 
 int docode(node *n)

@@ -5318,7 +5318,7 @@ int dooptcode(struct pike_string *name,
       extern int remove_clear_locals;
       remove_clear_locals=args;
       if(vargs) remove_clear_locals++;
-      do_code_block(check_node_hash(n));
+      tmp.offset=do_code_block(check_node_hash(n));
       remove_clear_locals=0x7fffffff;
     }
   }
