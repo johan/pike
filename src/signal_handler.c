@@ -2288,6 +2288,7 @@ void f_create_process(INT32 args)
       {
 	storage.wanted_gids_array=sp[-1].u.array;
 	sp--;
+	dmalloc_touch_svalue(sp);
       } else {
 	pop_stack();
       }
