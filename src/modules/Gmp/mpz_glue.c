@@ -370,6 +370,15 @@ static void mpzmod__sprintf(INT32 args)
 
   switch(sp[-args].u.integer)
   {
+#ifdef AUTO_BIGNUM
+    case 't':
+      pop_n_elems(args);
+      if(THIS_PROGRAM == bignum_program)
+	push_constant_text("int");
+      else
+	push_constant_text("object");
+      return;
+#endif      
   case 'O':
   case 'u': /* Note: 'u' is not really supported. */
   case 'd':

@@ -1962,7 +1962,11 @@ void f_objectp(INT32 args)
 {
   if(args<1)
     SIMPLE_TOO_FEW_ARGS_ERROR("objectp", 1);
-  if(sp[-args].type != T_OBJECT || !sp[-args].u.object->prog)
+  if(sp[-args].type != T_OBJECT || !sp[-args].u.object->prog
+#ifdef AUTO_BIGNUM
+     || is_bignum_object(sp[-args].u.object)
+#endif
+     )
   {
     pop_n_elems(args);
     push_int(0);
