@@ -290,8 +290,12 @@ void describe_something(void *a, int t, int dm)
 {
   struct program *p=(struct program *)a;
   if(!a) return;
+
+#ifdef DEBUG_MALLOC
   if(dm)
     debug_malloc_dump_references(a);
+#endif
+
   if(t==-1)
   {
     fprintf(stderr,"**Location description: %s\n",(char *)a);
