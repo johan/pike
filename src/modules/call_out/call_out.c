@@ -174,7 +174,7 @@ static void count_memory_in_call_outs(struct callback *foo,
 {
   push_text("num_call_outs");
   push_int(num_pending_calls);
-  push_text("call_out_memory");
+  push_text("call_out_bytes");
   push_int(call_buffer_size * sizeof(call_out **)+
 	   num_pending_calls * sizeof(call_out));
 }
