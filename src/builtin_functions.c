@@ -851,7 +851,8 @@ void f_combine_path(INT32 args)
   if(args<1)
     SIMPLE_TOO_FEW_ARGS_ERROR("combine_path", 1);
 
-  if(sp[-args].type != T_STRING)
+  if((sp[-args].type != T_STRING) ||
+     (sp[-args].u.string->size_shift))
     SIMPLE_BAD_ARG_ERROR("combine_path", 1, "string");
 
   path=sp[-args].u.string->str;
@@ -859,7 +860,8 @@ void f_combine_path(INT32 args)
   for(e=1;e<args;e++)
   {
     char *newpath;
-    if(sp[e-args].type != T_STRING)
+    if((sp[e-args].type != T_STRING) ||
+       (sp[e-args].u.string->size_shift))
     {
       if(dofree) free(path);
       SIMPLE_BAD_ARG_ERROR("combine_path", e+1, "string");
