@@ -736,6 +736,7 @@ PMOD_EXPORT int is_eq(const struct svalue *a, const struct svalue *b)
 
     if(FIND_LFUN(b->u.object->prog,LFUN_EQ) != -1)
       goto b_is_obj;
+    return 0;
 
   case T_MULTISET:
   case T_PROGRAM:
