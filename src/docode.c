@@ -1240,6 +1240,7 @@ static int do_docode2(node *n, INT16 flags)
 	yyerror("Continue outside loop.");
 	return 0;
       continue_label_found:
+	;
       }
 
     for (p = current_label; p != label; p = p->prev)
