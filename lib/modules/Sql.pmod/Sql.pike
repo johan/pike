@@ -552,7 +552,10 @@ array(mapping(string:mixed)) list_fields(string table, string|void wild)
       res = res_obj_to_array(res);
     }
     if (wild) {
-      res = filter(res, 
+      res = filter(res,
+		   lambda(mapping row, function(string:int) match) {
+		     return match(row->name);
+		   },
 		   Regexp(replace(wild, ({"%", "_"}), ({".*", "."})))->match);
     }
     return(res);
