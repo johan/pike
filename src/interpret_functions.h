@@ -714,6 +714,10 @@ OPCODE0(F_POP_MARK, "pop mark")
   --Pike_mark_sp;
 BREAK;
 
+OPCODE0(F_POP_TO_MARK, "pop to mark")
+  pop_n_elems(Pike_sp - *--Pike_mark_sp);
+BREAK;
+
 OPCODE0(F_CLEAR_STRING_SUBTYPE, "clear string subtype")
   if(Pike_sp[-1].type==PIKE_T_STRING) Pike_sp[-1].subtype=0;
 BREAK;
