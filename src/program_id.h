@@ -79,7 +79,6 @@
 #define PROG_IMAGE_COLORTABLE_ID        101
 #define PROG_IMAGE_LAYER_ID             102
 #define PROG_IMAGE_FONT_ID              103
-#define PROG_IMAGE_POLY_ID              104
 
 /* 120 - 159: Submodules */
 #define PROG_IMAGE_SUBMODULE_START      120
