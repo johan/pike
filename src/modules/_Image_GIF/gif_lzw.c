@@ -117,10 +117,10 @@ static INLINE void lzw_add(struct gif_lzw *lzw,int c)
 	    }
 	    lno=lzw->code[lno].next;
 	 }
-#ifdef GIF_LZW_RLE
+#ifdef GIF_LZW_LZ
       }
 #endif
-#ifdef GIF_LZW_LZ
+#ifdef GIF_LZW_RLE
    }
 #endif
 
