@@ -1418,6 +1418,10 @@ void f_create_process(INT32 args)
       set_close_on_exec(1,0);
       set_close_on_exec(2,0);
       
+#ifdef HAVE_BROKEN_F_SETFD
+      do_close_on_exec();
+#endif /* HAVE_BROKEN_F_SETFD */
+
       execvp(storage.argv[0],storage.argv);
       exit(69);
     }

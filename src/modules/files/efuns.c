@@ -680,6 +680,11 @@ void f_exece(INT32 args)
 #else
 #define DOCAST(X) (X)
 #endif
+
+#ifdef HAVE_BROKEN_F_SETFD
+  do_close_on_exec();
+#endif /* HAVE_BROKEN_F_SETFD */
+
   execve(argv[0],DOCAST(argv),DOCAST(env));
 
   free((char *)argv);
