@@ -418,11 +418,17 @@ while(1)					\
       pos++;					\
       continue;					\
     }						\
+    if(data[pos+1]=='\r' && data[pos+2]=='\n')	\
+    {						\
+      pos+=2;					\
+      continue;					\
+    }						\
     READCHAR(tmp);				\
     string_builder_putchar(&nf, tmp);		\
     continue;					\
   }						\
 						\
+  case '\r':  continue; /* ignored */	        \
   case '\n':					\
     PUTNL();					\
     this->current_line++;			\
