@@ -98,9 +98,8 @@ class File {
       return ::read(length);
 
     String.Buffer buf = String.Buffer();
+    string data;
     do {
-      string data;
-
       if (!(data = ::read(1024*64))) break;
       buf->add(data);
     } while (sizeof(data));
