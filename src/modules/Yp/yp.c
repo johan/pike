@@ -221,7 +221,7 @@ void pike_module_init(void)
 
   start_new_program();
 
-  add_storage(sizeof(struct my_yp_domain));
+  ADD_STORAGE(struct my_yp_domain);
   
   set_init_callback( init_yp_struct );
   set_exit_callback( exit_yp_struct );

@@ -395,7 +395,7 @@ void port_setup_program(void)
 {
   INT32 offset;
   start_new_program();
-  offset=add_storage(sizeof(struct port));
+  offset=ADD_STORAGE(struct port);
   map_variable("_accept_callback","mixed",0,offset+OFFSETOF(port,accept_callback),T_MIXED);
   map_variable("_id","mixed",0,offset+OFFSETOF(port,id),T_MIXED);
   add_function("bind",port_bind,"function(int,void|mixed,void|string:int)",0);

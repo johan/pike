@@ -1369,7 +1369,7 @@ void pike_module_init(void)
    */
  
   start_new_program();
-  add_storage(sizeof(struct precompiled_mysql));
+  ADD_STORAGE(struct precompiled_mysql);
 
   add_function("error", f_error, "function(void:int|string)", ID_PUBLIC);
   add_function("create", f_create, "function(string|void, string|void, string|void, string|void:void)", ID_PUBLIC);

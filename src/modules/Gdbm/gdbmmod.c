@@ -334,7 +334,7 @@ void pike_module_init(void)
 {
 #if defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM)
   start_new_program();
-  add_storage(sizeof(struct gdbm_glue));
+  ADD_STORAGE(struct gdbm_glue);
   
   add_function("create",gdbmmod_create,"function(void|string,void|string:void)",0);
 

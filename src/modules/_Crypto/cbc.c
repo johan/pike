@@ -331,7 +331,7 @@ void pike_cbc_init(void)
    */
 
   start_new_program();
-  add_storage(sizeof(struct pike_crypto_cbc));
+  ADD_STORAGE(struct pike_crypto_cbc);
 
   add_function("create", f_create, "function(program|object:void)", 0);
 

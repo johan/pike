@@ -3546,7 +3546,7 @@ void pike_module_init(void)
    image_noise_init();
 
    start_new_program();
-   add_storage(sizeof(struct image));
+   ADD_STORAGE(struct image);
 
    add_function("create",image_create,
 		"function(int|void,int|void,"RGB_TYPE":void)",0);

@@ -216,7 +216,7 @@ struct program * pgresult_program;
 void pgresult_init (void)
 {
 	start_new_program();
-	add_storage(sizeof(struct postgres_result_object_data));
+	ADD_STORAGE(struct postgres_result_object_data);
 	set_init_callback(result_create);
 	set_exit_callback(result_destroy);
 

@@ -658,9 +658,9 @@ struct pike_string *add_string_status(int verbose)
       for(p=base_table[e];p;p=p->next)
       {
 	num_distinct_strings++;
-	bytes_distinct_strings+=MY_ALIGN(p->len);
+	bytes_distinct_strings+=DO_ALIGN(p->len,sizeof(void *));
 	allocd_strings+=p->refs;
-	allocd_bytes+=p->refs*MY_ALIGN(p->len+3);
+	allocd_bytes+=p->refs*DO_ALIGN(p->len+3,sizeof(void *));
       }
 
     }

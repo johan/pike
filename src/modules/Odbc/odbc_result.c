@@ -491,7 +491,7 @@ void init_odbc_res_programs(void)
    */
  
   start_new_program();
-  add_storage(sizeof(struct precompiled_odbc_result));
+  ADD_STORAGE(struct precompiled_odbc_result);
 
   map_variable("_odbc", "object", 0,
 	       OFFSETOF(precompiled_odbc_result, obj), T_OBJECT);

@@ -172,7 +172,7 @@ void pike_cast_init(void)
    */
 
   start_new_program();
-  add_storage(sizeof(struct pike_crypto_cast));
+  ADD_STORAGE(struct pike_crypto_cast);
 
   add_function("name", f_name, "function(void:string)", 0);
   add_function("query_block_size", f_query_block_size, "function(void:int)", 0);

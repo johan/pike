@@ -96,7 +96,7 @@ static void f_crypt(INT32 args)
 void pike_rc4_init(void)
 {
   start_new_program();
-  add_storage(sizeof(struct rc4_ctx));
+  ADD_STORAGE(struct rc4_ctx);
 
   add_function("name", f_name, "function(void:string)", 0);
   add_function("query_key_length", f_query_key_length, "function(void:int)", 0);

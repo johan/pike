@@ -702,7 +702,7 @@ void pike_module_init(void)
   /*  opinit(OCI_EV_TSF); */
 
   start_new_program();
-  add_storage(sizeof(struct dbcon));
+  ADD_STORAGE(struct dbcon);
 
   add_function("create", f_create, "function(string|void, string|void, string|void, string|void:void)", ID_PUBLIC);
   add_function("big_query", f_big_query, "function(string,mapping(int|string:int|float|string|multiset(string))|void:object)", ID_PUBLIC);
@@ -715,7 +715,7 @@ void pike_module_init(void)
   add_program_constant("oracle", oracle_program, 0);
 
   start_new_program();
-  add_storage(sizeof(struct dbresult));
+  ADD_STORAGE(struct dbresult);
 
   add_function("create", f_result_create, "function(object, array(string|int):void)", ID_PUBLIC);
   add_function("num_fields", f_num_fields, "function(:int)", ID_PUBLIC);

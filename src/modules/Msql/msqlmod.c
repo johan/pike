@@ -706,7 +706,7 @@ static void do_list_index (INT32 args)
 void pike_module_init(void)
 {
 	start_new_program();
-	add_storage(sizeof(struct msql_my_data));
+	ADD_STORAGE(struct msql_my_data);
 
 	set_init_callback (msql_object_created);
 	set_exit_callback (msql_object_destroyed);

@@ -98,7 +98,7 @@ void pike_sha_exit(void)
 void pike_sha_init(void)
 {
   start_new_program();
-  add_storage(sizeof(struct sha_ctx));
+  ADD_STORAGE(struct sha_ctx);
   add_function("name", f_name, "function(void:string)", OPT_TRY_OPTIMIZE);
   add_function("create", f_create, "function(void|object:void)", 0);
   add_function("update", f_update, "function(string:object)", 0);

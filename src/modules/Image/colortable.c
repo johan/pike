@@ -3911,7 +3911,7 @@ void image_colortable_image(INT32 args)
 void init_colortable_programs(void)
 {
    start_new_program();
-   add_storage(sizeof(struct neo_colortable));
+   ADD_STORAGE(struct neo_colortable);
 
    set_init_callback(init_colortable_struct);
 

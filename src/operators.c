@@ -1992,7 +1992,7 @@ void init_operators(void)
 
 
   start_new_program();
-  add_storage(sizeof(struct string_assignment_storage));
+  ADD_STORAGE(struct string_assignment_storage);
   add_function("`[]",f_string_assignment_index,"function(int:int)",0);
   add_function("`[]=",f_string_assignment_assign_index,"function(int,int:int)",0);
   set_init_callback(init_string_assignment_storage);

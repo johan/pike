@@ -920,7 +920,7 @@ void pike_module_init(void)
 {
 #if defined(USE_GMP) || defined(USE_GMP2)
   start_new_program();
-  add_storage(sizeof(MP_INT));
+  ADD_STORAGE(MP_INT);
   
   add_function("create", mpzmod_create,
   "function(void|string|int|float|object:void)"

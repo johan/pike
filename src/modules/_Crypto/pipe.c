@@ -304,7 +304,7 @@ void pike_pipe_init(void)
 
   /* /precompiled/crypto/pipe */
   start_new_program();
-  add_storage(sizeof(struct pike_crypto_pipe));
+  ADD_STORAGE(struct pike_crypto_pipe);
 
   add_function("create", f_create,
 	       "function(program|object|array(program|mixed) ...:void)", 0);

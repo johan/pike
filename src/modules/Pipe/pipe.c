@@ -1241,7 +1241,7 @@ void f__pipe_debug(INT32 args)
 void pike_module_init(void)
 {
    start_new_program();
-   add_storage(sizeof(struct pipe));
+   ADD_STORAGE(struct pipe);
    add_efun("_pipe_debug", f__pipe_debug, "function(:array)", 0);
    add_function("input",pipe_input,"function(object:void)",0);
    add_function("output",pipe_output,"function(object:void)",0);
@@ -1285,7 +1285,7 @@ void pike_module_init(void)
 
 
    start_new_program();
-   add_storage(sizeof(struct output));
+   ADD_STORAGE(struct output);
    set_init_callback(init_output_struct);
    set_exit_callback(exit_output_struct);
    output_program=end_program();

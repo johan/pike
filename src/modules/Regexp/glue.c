@@ -204,7 +204,7 @@ void pike_module_exit(void) {}
 void pike_module_init(void)
 {
   start_new_program();
-  add_storage(sizeof(struct regexp_glue));
+  ADD_STORAGE(struct regexp_glue);
   
   add_function("create",regexp_create,"function(void|string:void)",0);
   add_function("match",regexp_match,"function(string:int)",0);

@@ -155,7 +155,7 @@ void init_md2_programs(void)
 
   /* /precompiled/crypto/md2 */
   start_new_program();
-  add_storage(sizeof(struct pike_md2));
+  ADD_STORAGE(struct pike_md2);
 
   add_function("push", f_push, "function(string:void)", 0);
   add_function("cast", f_cast, "function(string:mixed)", 0);

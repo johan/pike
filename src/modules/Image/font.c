@@ -881,7 +881,7 @@ int baseline();             // font baseline
 void init_font_programs(void)
 {
    start_new_program();
-   add_storage(sizeof(struct font*));
+   ADD_STORAGE(struct font*);
 
    add_function("load",font_load,
                 "function(string:object|int)",0);

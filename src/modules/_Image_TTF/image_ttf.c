@@ -1278,7 +1278,7 @@ void pike_module_init(void)
       /* make face program */
 
       start_new_program();
-      add_storage(sizeof(struct image_ttf_face_struct));
+      ADD_STORAGE(struct image_ttf_face_struct);
 
       add_function("properties",image_ttf_face_properties,
 		   "function(:mapping)",0);
@@ -1298,7 +1298,7 @@ void pike_module_init(void)
       /* make face instance program */
 
       start_new_program();
-      add_storage(sizeof(struct image_ttf_faceinstance_struct));
+      ADD_STORAGE(struct image_ttf_faceinstance_struct);
       
       add_function("create",image_ttf_faceinstance_create,
 		   "function(object:void)",0);

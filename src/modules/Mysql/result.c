@@ -436,7 +436,7 @@ void init_mysql_res_programs(void)
    */
  
   start_new_program();
-  add_storage(sizeof(struct precompiled_mysql_result));
+  ADD_STORAGE(struct precompiled_mysql_result);
 
   add_function("create", f_create, "function(object:void)", ID_PUBLIC);
   add_function("num_rows", f_num_rows, "function(void:int)", ID_PUBLIC);

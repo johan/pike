@@ -540,7 +540,7 @@ static void free_file_head(struct object *o)
 void init_accessdb_program(void)
 {
    start_new_program();
-   add_storage(sizeof(struct file_head));
+   ADD_STORAGE(struct file_head);
    add_function("create", f_create, "function(string:void)", ID_PUBLIC);
    add_function("add", f_add, "function(string,int ...:mapping(string:int))",
 		ID_PUBLIC);

@@ -377,7 +377,7 @@ void pike_module_init(void)
 {
 #ifdef HAVE_ZLIB_H
   start_new_program();
-  add_storage(sizeof(struct zipper));
+  ADD_STORAGE(struct zipper);
   
   add_function("create",gz_deflate_create,"function(int|void:void)",0);
   add_function("deflate",gz_deflate,"function(string,int|void:string)",0);
@@ -393,7 +393,7 @@ void pike_module_init(void)
   end_class("deflate",0);
 
   start_new_program();
-  add_storage(sizeof(struct zipper));
+  ADD_STORAGE(struct zipper);
   
   add_function("create",gz_inflate_create,"function(int|void:void)",0);
   add_function("inflate",gz_inflate,"function(string:string)",0);

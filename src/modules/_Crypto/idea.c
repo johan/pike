@@ -158,7 +158,7 @@ void pike_idea_init(void)
    */
 
   start_new_program();
-  add_storage(sizeof(INT16[IDEA_KEYLEN]));
+  low_add_storage(sizeof(INT16[IDEA_KEYLEN]),ALIGNOF(INT16),0);
 
   add_function("name", f_name, "function(void:string)", 0);
   add_function("query_block_size", f_query_block_size, "function(void:int)", 0);

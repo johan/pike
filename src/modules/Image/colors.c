@@ -1392,7 +1392,7 @@ void init_image_colors(void)
 
    start_new_program();
 
-   add_storage(sizeof(struct color_struct));
+   ADD_STORAGE(struct color_struct);
    set_init_callback(init_color_struct);
    set_exit_callback(exit_color_struct);
 

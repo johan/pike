@@ -438,7 +438,7 @@ void init_udp(void)
 {
   start_new_program();
 
-  add_storage(sizeof(struct dumudp));
+  ADD_STORAGE(struct dumudp);
   add_function("bind",udp_bind,"function(int,void|function,void|string:int)",0);
   add_function("enable_broadcast", udp_enable_broadcast, "function(:void)", 0);
   add_function("read",udp_read,"function(int|void:mapping(string:int|string))",0);

@@ -178,7 +178,7 @@ void pike_des_init(void)
 
   /* /precompiled/crypto/des */
   start_new_program();
-  add_storage(sizeof(struct pike_crypto_des));
+  ADD_STORAGE(struct pike_crypto_des);
 
   add_function("query_block_size", f_query_block_size, "function(void:int)", 0);
   add_function("query_key_length", f_query_key_length, "function(void:int)", 0);

@@ -529,7 +529,7 @@ void init_nt_system_calls(void)
       SIMPCONST(LOGON32_PROVIDER_DEFAULT);
       
       start_new_program();
-      add_storage(sizeof(HANDLE));
+      ADD_STORAGE(HANDLE);
       set_init_callback(init_token);
       set_exit_callback(exit_token);
       token_program=end_program();

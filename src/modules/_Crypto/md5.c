@@ -100,7 +100,7 @@ void pike_md5_exit(void)
 void pike_md5_init(void)
 {
   start_new_program();
-  add_storage(sizeof(struct md5_ctx));
+  ADD_STORAGE(struct md5_ctx);
   add_function("name", f_name, "function(void:string)", 0);
   add_function("create", f_create, "function(void|object:void)", 0);
   add_function("update", f_update, "function(string:object)", 0);
