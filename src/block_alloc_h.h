@@ -27,7 +27,7 @@ extern struct DATA **PIKE_CONCAT(DATA,_hash_table);		\
 extern size_t PIKE_CONCAT(DATA,_hash_table_size);		\
 struct DATA *PIKE_CONCAT(find_,DATA)(void *ptr);		\
 struct DATA *PIKE_CONCAT3(make_,DATA,_unlocked)(void *ptr, size_t hval); \
-struct DATA *PIKE_CONCAT(make_,DATA)(void *ptr, size_t hval);	\
+struct DATA *PIKE_CONCAT(make_,DATA)(void *ptr);		\
 struct DATA *PIKE_CONCAT(get_,DATA)(void *ptr);			\
 int PIKE_CONCAT3(check_,DATA,_semafore)(void *ptr);		\
 int PIKE_CONCAT(remove_,DATA)(void *ptr);			\

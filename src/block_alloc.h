@@ -383,10 +383,12 @@ struct DATA *PIKE_CONCAT(find_,DATA)(void *ptr)				     \
 									     \
 									     \
 									     \
-struct DATA *PIKE_CONCAT(make_,DATA)(void *ptr, size_t hval)		     \
+struct DATA *PIKE_CONCAT(make_,DATA)(void *ptr)				     \
 {									     \
   struct DATA *p;							     \
+  size_t hval=(size_t)ptr;						     \
   DO_IF_RUN_UNLOCKED(mt_lock(&PIKE_CONCAT(DATA,_mutex)));                    \
+  hval%=PIKE_CONCAT(DATA,_hash_table_size);				     \
   p=PIKE_CONCAT3(make_,DATA,_unlocked)(ptr,hval);                            \
   DO_IF_RUN_UNLOCKED(mt_unlock(&PIKE_CONCAT(DATA,_mutex)));                  \
   return p;								     \
