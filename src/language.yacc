@@ -3520,7 +3520,6 @@ comma_expr_or_maxint: /* empty */ { $$=mkintnode(0x7fffffff); }
 
 gauge: TOK_GAUGE catch_arg
   {
-#ifdef HAVE_GETHRVTIME
     $$=mkefuncallnode("abs",
 		  mkopernode("`/", 
 			     mkopernode("`-", mkefuncallnode("gethrvtime",0),
@@ -3528,17 +3527,6 @@ gauge: TOK_GAUGE catch_arg
 					       mknode(F_POP_VALUE, $2, NULL),
 					       mkefuncallnode("gethrvtime",0))),
 			     mkfloatnode((FLOAT_TYPE)1000000.0)));
-#else
-  $$=mkefuncallnode("abs",
-	mkopernode("`/", 
-		mkopernode("`-",
-			 mknode(F_INDEX,mkefuncallnode("rusage",0),
-				mkintnode(GAUGE_RUSAGE_INDEX)),
-			   mknode(F_COMMA_EXPR, mknode(F_POP_VALUE, $2, NULL),
-				mknode(F_INDEX,mkefuncallnode("rusage",0),
-				       mkintnode(GAUGE_RUSAGE_INDEX)))),
-		mkfloatnode((FLOAT_TYPE)1000.0)));
-#endif
   };
 
 typeof: TOK_TYPEOF '(' expr0 ')'
