@@ -52,7 +52,7 @@ class _Request
 
    private mixed res;
 
-#if constant(thread_create)
+#if constant(thread_create) && !LYSKOM_UNTHREADED
    private object wait_lock;
    private object wait_mutex;
 #endif
@@ -66,7 +66,7 @@ class _Request
    
    mixed _sync(int call,mixed ... data)
    {
-#if constant(thread_create)
+#if constant(thread_create) && !LYSKOM_UNTHREADED
       _async(call,@data);
       return `()();
 #else
@@ -87,7 +87,7 @@ class _Request
 	 ok=1;
 	 res=reply(what);
       }
-#if constant(thread_create)
+#if constant(thread_create) && !LYSKOM_UNTHREADED
       if (wait_lock)
 	 destruct(wait_lock);
 #endif
@@ -100,7 +100,7 @@ class _Request
    void failure(object err); // virtual
    array indata(mixed ...); // virtual
 
-#if constant(thread_create)
+#if constant(thread_create) && !LYSKOM_UNTHREADED
    mixed `()() // wait
    {
       if (ok || error) return res;
