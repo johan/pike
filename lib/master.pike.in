@@ -942,6 +942,8 @@ class dirnode
       werror("%*ndirnode(%O)->module_checker()->`!()\n",
 	     sizeof(backtrace()),dirname);
 #endif
+      // Pretend not to exist for now...
+      module=0;
       if(module=findmodule(dirname+"/module", handler))
       {
 	if(mixed tmp=module->_module_value)
