@@ -3506,3 +3506,4 @@ void pike_module_exit(void)
 #endif /* HAVE_JAVA */
 }
 
+
