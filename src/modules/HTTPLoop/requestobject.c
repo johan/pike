@@ -51,6 +51,11 @@
 /* Used when fatal() can't be. */
 #define DWERROR(X)	write(2, X, sizeof(X) - sizeof(""))
 
+/* All current OS's have a broken sendfile(2). */
+#ifndef HAVE_BROKEN_SENDFILE
+#define HAVE_BROKEN_SENDFILE
+#endif /* !HAVE_BROKEN_SENDFILE */
+
 #ifdef HAVE_BROKEN_SENDFILE
 #ifdef HAVE_SENDFILE
 #undef HAVE_SENDFILE
