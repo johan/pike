@@ -2009,6 +2009,8 @@ PIKECLASS multi_string_replace
     INT32 c,match=-1;
     ptrdiff_t tmp;
 
+    check_c_stack(2048);
+
     while(a<b)
     {
       c=(a+b)/2;
@@ -2076,6 +2078,7 @@ PIKECLASS multi_string_replace
     int *set_end = THIS->set_end;
     struct tupel *v = THIS->v;
     int num = THIS->sz;
+    ONERROR uwp;
 
     if (!num) {
       add_ref(str);
@@ -2083,6 +2086,7 @@ PIKECLASS multi_string_replace
     }
 
     init_string_builder(&ret,str->size_shift);
+    SET_ONERROR(uwp, free_string_builder, &ret);
 
     for(s=0;length > 0;)
     {
@@ -2122,6 +2126,8 @@ PIKECLASS multi_string_replace
       s++;
       length--;
     }
+
+    UNSET_ONERROR(uwp);
 
     RETURN finish_string_builder(&ret);
   }
