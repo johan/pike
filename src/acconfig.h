@@ -58,6 +58,9 @@
 /* Solaris has rusage as an ioctl on procfs */
 #undef GETRUSAGE_THROUGH_PROCFS
 
+/* Define if you have fork */
+#undef HAVE_FORK
+
 /* Define if you have isspace */
 #undef HAVE_ISSPACE
 
