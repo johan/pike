@@ -86,7 +86,7 @@
     INT32 reg_ = REG;							\
     if ((-4096 <= val_) && (val_ <= 4095)) {				\
       /* or %g0, val_, reg */						\
-      SPARC_OR(SPARC_REG_G0, reg_, val_, 1);				\
+      SPARC_OR(reg_, SPARC_REG_G0, val_, 1);				\
     } else {								\
       /* sethi %hi(val_), reg */					\
       SPARC_SETHI(reg_, val_);						\
