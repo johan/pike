@@ -1074,7 +1074,7 @@ void cleanup_objects(void)
   for(o=first_object;o;o=next)
   {
     add_ref(o);
-    if(!(o->prog->flags & PROGRAM_NO_EXPLICIT_DESTRUCT))
+    if(o->prog && !(o->prog->flags & PROGRAM_NO_EXPLICIT_DESTRUCT))
       low_destruct(o,1);
     SET_NEXT_AND_FREE(o,free_object);
   }
