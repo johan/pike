@@ -611,18 +611,21 @@ class dirnode
     if( !files )
       files = get_dir(dirname);
     foreach(files, string fname) {
-      catch {
+      mixed err = catch {
 	if (((< ".pike", ".pmod" >)[fname[sizeof(fname)-5..]]) &&
 	    !zero_type(`[](fname[..sizeof(fname)-6]))) {
 	  continue;
-	}
-      };
-      catch {
-	if ((fname[sizeof(fname)-3..] == ".so") &&
+	} else if ((fname[sizeof(fname)-3..] == ".so") &&
 	    !zero_type(`[](fname[..sizeof(fname)-4]))) {
 	  continue;
 	}
       };
+      if (err) {
+	compile_warning(dirname+"."+fname, 0,
+			sprintf("Compilation failed:\n"
+				"%s\n",
+				describe_backtrace(err)));
+      }
     }
     _cache_full = 1;
   }
