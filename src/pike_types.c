@@ -1668,3 +1668,41 @@ void cleanup_pike_types(void)
   free_string(void_type_string);
   free_string(any_type_string);
 }
+
+
+int type_may_overload(char *type, int lfun)
+{
+  switch(EXTRACT_UCHAR(type++))
+  {
+    case T_ASSIGN:
+      return type_may_overload(type+1,lfun);
+      
+    case T_FUNCTION:
+    case T_ARRAY:
+      /* might want to check for `() */
+      
+    default:
+      return 0;
+
+    case T_OR:
+      return type_may_overload(type,lfun) ||
+	type_may_overload(type+type_length(type),lfun);
+      
+    case T_AND:
+      return type_may_overload(type,lfun) &&
+	type_may_overload(type+type_length(type),lfun);
+      
+    case T_NOT:
+      return !type_may_overload(type,lfun);
+
+    case T_MIXED:
+      return 1;
+      
+    case T_OBJECT:
+    {
+      struct program *p=id_to_program(EXTRACT_INT(type+1));
+      if(!p) return 1;
+      return FIND_LFUN(p, lfun)!=-1;
+    }
+  }
+}
