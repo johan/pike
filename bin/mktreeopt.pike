@@ -726,7 +726,8 @@ string generate_extras_match(array(object(node)) rule_set, string indent)
   foreach(rule_set, object(node) n) {
     string t = 0;
     if (n->extras && sizeof(n->extras)) {
-      t = n->extras * ") && (";
+      t = n->extras * (") &&\n" +
+		       indent + "    (");
     }
     if (!extra_set[t]) {
       extra_set[t] = ({ n });
