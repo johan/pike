@@ -804,6 +804,7 @@ void th_init(void)
     tmp = end_program();
     tmp->flags|=PROGRAM_DESTRUCT_IMMEDIATE;
     add_global_program("_disable_threads", tmp);
+    free_program(tmp);
   }
 
   start_new_program();
