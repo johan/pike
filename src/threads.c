@@ -1451,7 +1451,8 @@ static void f_thread_id_result(INT32 args)
 
 void init_thread_obj(struct object *o)
 {
-  MEMSET(THIS_THREAD, 0, sizeof(struct Pike_interpreter));
+  MEMSET(&THIS_THREAD->state, 0, sizeof(struct Pike_interpreter));
+  THIS_THREAD->swapped = 0;
   THIS_THREAD->status=THREAD_NOT_STARTED;
   co_init(& THIS_THREAD->status_change);
   THIS_THREAD->thread_local=NULL;
