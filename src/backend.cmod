@@ -1960,7 +1960,7 @@ PIKECLASS Backend
     {
       THIS->may_need_wakeup=0;
 
-      THIS-id = unused_id++;
+      THIS->id = unused_id++;
 
       IF_PD (fprintf (stderr, "BACKEND[%d]: init\n", me->id));
 
