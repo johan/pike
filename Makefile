@@ -135,6 +135,9 @@ gdb_verify:
 run_hilfe:
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=run_hilfe"
 
+export:
+	@$(MAKE) $(MAKE_FLAGS) "METATARGET=export"
+
 bin_export:
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=bin_export"
 
