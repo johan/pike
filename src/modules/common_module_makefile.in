@@ -152,6 +152,15 @@ depend: $(SRC_TARGETS) $(PMOD_TARGETS) Makefile
 	  fi; \
 	done
 
+pike_external_module: plib/modules
+	@$(MAKE) $(MAKE_FLAGS) LOCAL_MODULE_PATH="./plib/modules" local_install
+
+plib/modules: plib
+	@test -d plib/modules || mkdir plib/modules
+
+plib:
+	@test -d plib || mkdir plib
+
 #verify / debug
 testsuite: $(SRCDIR)/testsuite.in $(REAL_TESTSUITE) $(TMP_BINDIR)/mktestsuite
 	@if test "x$(REAL_TESTSUITE)" != x ; then \
@@ -168,33 +177,14 @@ testsuite: $(SRCDIR)/testsuite.in $(REAL_TESTSUITE) $(TMP_BINDIR)/mktestsuite
 
 extra_tests: $(MODULE_TESTS)
 
-verify: testsuite  $(MODULE_TESTS)
-	if [ "x$(PIKE_EXTERNAL_MODULE)" != "x" ]; then \
-	  mkdir -p ./plib/modules ; \
-	  $(MAKE) -e local_install LOCAL_MODULE_PATH="./plib/modules"; \
-	  $(RUNPIKE) -M./plib/modules $(TMP_BINDIR)/test_pike.pike testsuite ; \
-	else \
-	$(RUNPIKE) $(TMP_BINDIR)/test_pike.pike testsuite ; \
-	fi;
+verify: testsuite $(MODULE_TESTS) $(PIKE_EXTERNAL_MODULE)
+	$(RUNPIKE) -Mplib/modules $(TMP_BINDIR)/test_pike.pike testsuite
 
+verbose_verify: testsuite $(MODULE_TESTS) $(PIKE_EXTERNAL_MODULE)
+	@$(RUNPIKE) -Mplib/modules $(TMP_BINDIR)/test_pike.pike testsuite --verbose
 
-verbose_verify: testsuite  $(MODULE_TESTS)
-	if [ "x$(PIKE_EXTERNAL_MODULE)" != "x" ]; then \
-	  mkdir -p ./plib/modules ; \
-	  $(MAKE) -e local_install LOCAL_MODULE_PATH="./plib/modules"; \
-	  $(RUNPIKE) -M./plib/modules $(TMP_BINDIR)/test_pike.pike testsuite --verbose ; \
-	else \
-	$(RUNPIKE) $(TMP_BINDIR)/test_pike.pike testsuite --verbose ; \
-	fi;
-
-gdb_verify: testsuite
-	@if [ "x$(PIKE_EXTERNAL_MODULE)" != "x" ]; then \
-	  mkdir -p ./plib/modules ; \
-	  $(MAKE) -e local_install LOCAL_MODULE_PATH="./plib/modules"; \
-	  echo >>.gdbinit run -DNOT_INSTALLED -m $(TMP_BUILDDIR)/master.pike -M.plib/modules $(PIKEOPTS) $(TMP_BINDIR)/test_pike.pike testsuite -v -v -f ; \
-	fi
+gdb_verify: testsuite $(PIKE_EXTERNAL_MODULE)
 	@echo >.gdbinit handle SIGUSR1 nostop noprint pass
-	@echo >>.gdbinit run -DNOT_INSTALLED -m $(TMP_BUILDDIR)/master.pike $(PIKEOPTS) $(TMP_BINDIR)/test_pike.pike testsuite -v -v -f
+	@echo >>.gdbinit run -DNOT_INSTALLED -m $(TMP_BUILDDIR)/master.pike $(PIKEOPTS) -Mplib/modules $(TMP_BINDIR)/test_pike.pike testsuite -v -v -f
 	gdb $(TMP_BUILDDIR)/pike
 	@rm .gdbinit
-
