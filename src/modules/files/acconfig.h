@@ -11,8 +11,14 @@
 /* Define if your statfs() call takes 4 arguments */
 #undef HAVE_SYSV_STATFS
 
+/* Define if you have the struct statfs */
+#undef HAVE_STRUCT_STATFS
+
 /* Define if your statfs struct has the f_bavail member */
 #undef HAVE_STATFS_F_BAVAIL
+
+/* Define if you have the struct fs_data */
+#undef HAVE_STRUCT_FS_DATA
 
 /* Define if your readdir_r is POSIX compatible. */
 #undef HAVE_POSIX_READDIR_R
