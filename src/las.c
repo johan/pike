@@ -3930,8 +3930,7 @@ int dooptcode(struct pike_string *name,
     }
 
     tmp.offset=PC;
-    add_to_program(compiler_frame->max_number_of_locals);
-    add_to_program(args);
+    compiler_frame->num_args=args;
   
 #ifdef PIKE_DEBUG
     if(a_flag > 2)

@@ -51,8 +51,11 @@ struct compiler_frame
   struct pike_string *current_return_type;
   int current_number_of_locals;
   int max_number_of_locals;
+  int num_args;
   int lexical_scope;
   int current_function_number;
+  int recur_label;
+  int is_inline;
   struct local_variable variable[MAX_LOCAL];
 };
 
