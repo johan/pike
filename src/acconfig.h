@@ -187,8 +187,11 @@
 /* Define if your signals are one-shot */
 #undef SIGNAL_ONESHOT
 
-/* You have gcc stype function attributes? */
+/* You have gcc-type function attributes? */
 #undef HAVE_FUNCTION_ATTRIBUTES
+
+/* You have lc-type __declspec? */
+#undef HAVE_DECLSPEC
 
 /* Do your compiler grock 'volatile' */
 #define VOLATILE volatile
@@ -376,6 +379,12 @@
 #else
 #define ATTRIBUTE(X)
 #endif
+
+#ifdef HAVE_DECLSPEC
+#define DECLSPEC(X) __declspec(X)
+#else /* !HAVE_DECLSPEC */
+#define DECLSPEC(X)
+#endif /* HAVE_DECLSPEC */
 
 #ifndef HAVE_WORKING___FUNC__
 #ifdef HAVE_WORKING___FUNCTION__
