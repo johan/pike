@@ -6030,11 +6030,13 @@ void test_dir(string dir, int|void base_size)
   {
     switch(s)
     {
+      case "frontbase.pike":
       case "msql.pike":
       case "mysql.pike":
       case "odbc.pike":
       case "oracle.pike":
       case "postgres.pike":
+      case "sybase.pike":
         continue; // These modules cannot be tested properly by this test
     }
     string file=combine_path(dir,s);
