@@ -8,7 +8,7 @@
 
  */
 
-#if constant(_Ffmpeg)
+#if constant(_Ffmpeg.ffmpeg)
 //! Decoder object.
 class decoder {
 
