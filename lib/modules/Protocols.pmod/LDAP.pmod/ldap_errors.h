@@ -31,7 +31,7 @@
 #define LDAP_PROTOCOL_ERROR             0x02    /* 2 */
 #define LDAP_PROTOCOL_ERROR_STR		"Protocol error"
 #define LDAP_TIMELIMIT_EXCEEDED         0x03    /* 3 */
-#define LDAP_TIMELIMIT_EXCEEDED_STR	"Timilimit exceeded"
+#define LDAP_TIMELIMIT_EXCEEDED_STR	"Timelimit exceeded"
 #define LDAP_SIZELIMIT_EXCEEDED         0x04    /* 4 */
 #define LDAP_SIZELIMIT_EXCEEDED_STR	"Sizelimit exceeded"
 #define LDAP_COMPARE_FALSE              0x05    /* 5 */
