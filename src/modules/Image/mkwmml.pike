@@ -186,8 +186,12 @@ string make_nice_reference(string what,string prefix)
    string q;
    if (search(what,".")==-1 &&
        search(what,"->")==-1 &&
-       !parse[what])
+       !parse[what] &&
+       what!=prefix[strlen(prefix)-strlen(what)-2..strlen(prefix)-3] &&
+       what!=prefix[strlen(prefix)-strlen(what)-1..strlen(prefix)-2])
+   {
       q=prefix+what;
+   }
    else 
       q=what;
 
