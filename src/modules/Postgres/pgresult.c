@@ -57,12 +57,6 @@
 #define CUT_TRAILING_SPACES
 
 #include <stdio.h>
-#include <libpq-fe.h>
-#ifdef HAVE_SERVER_POSTGRES_H
-/* FIXME: Clients should probably not touch these files... */
-#include <server/postgres.h>
-#include <server/catalog/pg_type.h>
-#endif /* HAVE_SERVER_POSTGRES_H
 
 /* Pike includes */
 #include "stralloc.h"
@@ -347,18 +341,14 @@ badresult:
 		   *        to Postgres frontends.
 		   */
 #ifdef CUT_TRAILING_SPACES
-#ifdef BPCHAROID
 		case BPCHAROID:
 		  for(;k>0 && value[k]==' ';k--);
 		  break;
 #endif
-#endif
-#ifdef BYTEAOID
 		case BYTEAOID:
 		  if(binbuf=PQunescapeBytea(value,&binlen))
 		    value=binbuf,k=binlen;
 		  break;
-#endif
 		}
 		push_string(make_shared_binary_string(value,k));
 		if(binbuf)

@@ -30,4 +30,27 @@
      defined(HAVE_PG72)) && \
     defined(HAVE_LIBPQ_FE_H)
 #define HAVE_POSTGRES
+
+/* Time to include stuff. */
+
+/* postgres_fe.h should be used in preference to postgres.h in
+ * client code.
+ */
+#ifdef HAVE_SERVER_POSTGRES_FE_H
+#include <server/postgres_fe.h>
+#elif defined(HAVE_POSTGRES_FE_H)
+#include <postgres_fe.h>
+#elif defined(HAVE_SERVER_POSTGRES_H)
+#include <server/postgres.h>
+#elif defined(HAVE_POSTGRES_H)
+#include <postgres.h>
+#endif /* HAVE_POSTGRES_FE_H */
+#include <libpq-fe.h>
+#ifdef HAVE_SERVER_CATALOG_PG_TYPE_H
+#include <server/catalog/pg_type.h>
+#elif defined(HAVE_CATALOG_PG_TYPE_H)
+#include <catalog/pg_type.h>
 #endif
+
+#endif
+

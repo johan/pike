@@ -35,17 +35,6 @@
 #include "module_support.h"
 #include "operators.h"
 
-#ifdef HAVE_SERVER_POSTGRES_FE_H
-#include <server/postgres_fe.h>
-#elif defined(HAVE_POSTGRES_FE_H)
-#include <postgres_fe.h>
-#elif defined(HAVE_SERVER_POSTGRES_H)
-#include <server/postgres.h>
-#elif defined(HAVE_POSTGRES_H)
-#include <postgres.h>
-#endif /* HAVE_POSTGRES_FE_H */
-#include <libpq-fe.h>
-
 #include "pgresult.h"
 
 #define THIS ((struct pgres_object_data *) (Pike_fp->current_storage))
