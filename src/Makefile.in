@@ -121,6 +121,7 @@ OBJ= \
  stuff.o \
  threads.o \
  version.o \
+ queue.o \
  svalue.o @EXTRA_OBJS@
 
 #
