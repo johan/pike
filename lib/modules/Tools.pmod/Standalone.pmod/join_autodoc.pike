@@ -3,8 +3,8 @@
  *
  * AutoDoc mk II join script.
  *
- * Usage: pike join.pike --post-process destination.xml files_to_join.xml [...]
- * Usage: pike join.pike destination.xml builddir
+ * Usage: pike -x join_autodoc destination.xml builddir
+ * Usage: pike -x join_autodoc --post-process dest.xml files_to_join.xml [...]
  */
 
 mapping sub_cache = ([]);
@@ -15,7 +15,9 @@ int main(int n, array(string) args) {
   args -= ({ "--post-process" });
 
   if(n<3) {
-    write("%s <destination.xml> <builddir>\n", args[0]);
+    write("pike -x %s <destination.xml> <builddir>\n", args[0]);
+    write("pike -x %s --post-process <dest.xml> files_to_join.xml [...]\n",
+	  args[0]);
     return 1;
   }
 
