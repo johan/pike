@@ -389,7 +389,11 @@ object generate_key(int bits, function|void r)
     bignum phi = Gmp.mpz(p-1)*Gmp.mpz(q-1);
 
     array gs; /* gcd(pub, phi), and pub^-1 mod phi */
-    bignum pub = Gmp.mpz(random(1 << 30) | 0x10001);
+    bignum pub = Gmp.mpz(
+#ifdef SSL3_32BIT_PUBLIC_EXPONENT
+			 random(1 << 30) |
+#endif /* SSL3_32BIT_PUBLIC_EXPONENT */
+			 0x10001);
 
     while ((gs = pub->gcdext2(phi))[0] != 1)
       pub += 1;
