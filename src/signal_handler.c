@@ -1515,7 +1515,7 @@ void f_create_process(INT32 args)
       }
       
       if((tmp = simple_mapping_string_lookup( optional, "cwd" )) &&
-         tmp->type == T_STRING && tmp->u.string->size_shift == 1)
+         tmp->type == T_STRING && !tmp->u.string->size_shift)
         tmp_cwd = tmp->u.string->str;
 
       if((tmp = simple_mapping_string_lookup( optional, "stdin" )) &&
