@@ -72,7 +72,11 @@ char *MEMSET (char *s,int c,int n);
 #  define MEMSET memset
 #endif
 
-#ifndef HAVE_MEMCPY
+#ifdef TRY_USE_MMX
+void MEMCPY(void *b,const void *a,int s);
+# define __builtin_memcpy MEMCPY
+#else
+# ifndef HAVE_MEMCPY
 #  ifdef HAVE_BCOPY
 #    define MEMCPY(X,Y,Z) bcopy(Y,X,Z)
 #    define __builtin_memcpy(X,Y,Z) bcopy(Y,X,Z)
@@ -80,8 +84,9 @@ char *MEMSET (char *s,int c,int n);
 void MEMCPY(void *b,const void *a,int s);
 #    define __builtin_memcpy MEMCPY
 #  endif
-#else
+# else
 #  define MEMCPY(X,Y,Z) memcpy((char*)(X),(char*)(Y),(Z))
+# endif
 #endif
 
 #ifndef HAVE_MEMMOVE
