@@ -560,7 +560,7 @@ void parse_data()
       }
 
       action = fix_action(data[start..pos-1]);
-    } else {
+    } else if (data[pos] != ';') {
       object(node) n2 = read_node2();
       // werror(sprintf("\t%s;\n\n", n2));
       array(string) t = Array.uniq(n2->used_nodes());
@@ -572,6 +572,10 @@ void parse_data()
 		       "}",
 		       n2->generate_code(),
 		       sizeof(t)?("  " + (t * " = ") + " = 0;\n"):"");
+    } else {
+      // Null action.
+      // Used to force code generation for eg NULL-detection.
+      action = "";
     }
 
     while(n->cdr && (n->cdr->token != "-")) {
