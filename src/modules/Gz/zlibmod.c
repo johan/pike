@@ -121,6 +121,7 @@ static int do_deflate(dynamic_buffer *buf,
 	this->gz.avail_out += BUF;
       } 
       low_make_buf_space(-this->gz.avail_out,buf);
+      if(ret == Z_BUF_ERROR) ret=Z_OK;
       if(ret != Z_OK)
       {
 	fail=ret;
