@@ -2008,7 +2008,7 @@ static class nb_sendfile
   {
     SF_WERR("Blocking writer.");
 
-    int bytes = to->write(to_write);
+    int bytes = sizeof(to_write) && to->write(to_write);
 
     if (bytes >= 0) {
       sent += bytes;
@@ -2028,7 +2028,7 @@ static class nb_sendfile
 	  }
 	}
       }
-      // Not reached, but...
+
       return 1;
     } else {
       SF_WERR("Blocking writer got EOF.");
