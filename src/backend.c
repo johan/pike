@@ -677,6 +677,7 @@ void backend(void)
   if(SETJMP(back))
   {
     ONERROR tmp;
+    t_flag=0;
     SET_ONERROR(tmp,exit_on_error,"Error in handle_error in master object!");
     *(sp++)=throw_value;
     throw_value.type=T_INT;

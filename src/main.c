@@ -525,6 +525,7 @@ int dbm_main(int argc, char **argv)
       num=throw_value.u.integer;
     }else{
       ONERROR tmp;
+      t_flag=0;
       SET_ONERROR(tmp,exit_on_error,"Error in handle_error in master object!");
       push_svalue(& throw_value);
       APPLY_MASTER("handle_error", 1);

@@ -623,6 +623,7 @@ TH_RETURN_TYPE new_thread_func(void * data)
     if(throw_severity < THROW_EXIT)
     {
       ONERROR tmp;
+      t_flag=0;
       SET_ONERROR(tmp,exit_on_error,"Error in handle_error in master object!");
       assign_svalue_no_free(Pike_sp++, & throw_value);
       APPLY_MASTER("handle_error", 1);

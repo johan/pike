@@ -63,6 +63,13 @@ struct pike_frame
   char *current_storage;
 };
 
+struct external_variable_context
+{
+  struct object *o;
+  struct inherit *inherit;
+  int parent_identifier;
+};
+
 #ifdef PIKE_DEBUG
 #define debug_check_stack() do{if(Pike_sp<Pike_interpreter.evaluator_stack)fatal("Stack error.\n");}while(0)
 #define check__positive(X,Y) if((X)<0) fatal Y
@@ -226,6 +233,8 @@ struct backlog;
 void dump_backlog(void);
 BLOCK_ALLOC(pike_frame,128)
 
+PMOD_EXPORT void find_external_context(struct external_variable_context *loc,
+				       int arg2);
 PMOD_EXPORT void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2);
 PMOD_EXPORT void f_call_function(INT32 args);
 PMOD_EXPORT int apply_low_safe_and_stupid(struct object *o, INT32 offset);
