@@ -103,7 +103,7 @@ void done(int sent, int expected)
     werror(sprintf("Test %d failed: %d != %d\n", testno, sent, expected));
     exit(1);
   }
-  next();
+  call_out(next, 0);
 }
 
 /*
@@ -164,8 +164,6 @@ void test4()
     werror("Stdio.sendfile() failed!\n");
     exit(1);
   }
-
-  next();
 }
 
 void test5()
