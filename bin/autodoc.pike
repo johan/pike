@@ -125,10 +125,7 @@ int main(int argc, array(string) argv)
 	      }
 	    }
 	  }
-	  write(info?sprintf("%s\n",info->xml()):
-		"<module name=''><modifiers/></module>\n");
-	} else {
-	  write("<module name=''><modifiers/></module>\n");
+	  if(info) write(sprintf("%s\n",info->xml()));
 	}
       } else {
         werror("%O is not a plain file or directory.\n", path);
