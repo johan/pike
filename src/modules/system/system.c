@@ -62,7 +62,7 @@ RCSID("$Id$");
 
 /* Helper functions */
 
-static volatile void report_error(const char *function_name)
+static void report_error(const char *function_name)
 {
   char *error_msg = "Unknown reason";
 
