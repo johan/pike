@@ -759,10 +759,20 @@ static int low_yylex(YYSTYPE *yylval)
 		(char *)lex.pos, f, yylval->fnum);
 #endif /* 0 */
 	lex.pos=p1;
+	if (lex_isidchar (LOOK())) {
+	  my_yyerror ("Invalid char '%c' in constant.",
+		      INDEX_CHARP (lex.pos, l, SHIFT));
+	  do SKIP(); while (lex_isidchar (LOOK()));
+	}
 	return TOK_FLOAT;
       }else{
 	debug_malloc_touch(yylval->n);
 	lex.pos=p2;
+	if (lex_isidchar (LOOK())) {
+	  my_yyerror ("Invalid char '%c' in constant.",
+		      INDEX_CHARP (lex.pos, l, SHIFT));
+	  do SKIP(); while (lex_isidchar (LOOK()));
+	}
 	return TOK_NUMBER;
       }
     }
