@@ -154,7 +154,7 @@ int main(int argc, array(string) argv)
     ({"no-watchdog",Getopt.NO_ARG,({"--no-watchdog"})}),
     ({"watchdog",Getopt.HAS_ARG,({"--watchdog"})}),
     ({"help",Getopt.NO_ARG,({"-h","--help"})}),
-    ({"verbose",Getopt.NO_ARG,({"-v","--verbose"})}),
+    ({"verbose",Getopt.MAY_HAVE_ARG,({"-v","--verbose"})}),
     ({"start",Getopt.HAS_ARG,({"-s","--start-test"})}),
     ({"end",Getopt.HAS_ARG,({"--end-after"})}),
     ({"fail",Getopt.MAY_HAVE_ARG,({"-f","--fail"})}),
@@ -456,7 +456,8 @@ int main(int argc, array(string) argv)
 	    fname+=" (CRNL)";
 	    to_compile=replace(to_compile,"\n","\r\n");
 	  }
-	    
+	   
+	  if(verbose>9) bzot(to_compile);
 	  switch(type)
 	  {
 	    case "COMPILE":
