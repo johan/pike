@@ -1184,6 +1184,17 @@ int get_small_number(char **q);
 #define RELOCATE_constants(ORIG,NEW)
 #define RELOCATE_relocations(ORIG,NEW)
 
+#if SIZEOF_LONG_LONG == 8
+/* we have 8 byte ints, hopefully this constant works on all these systems */
+#define MAXVARS(NUMTYPE)						\
+   (NUMTYPE)(sizeof(NUMTYPE)==1?254:					\
+    (sizeof(NUMTYPE)==2?65534:						\
+     (sizeof(NUMTYPE)==4?4294967294U:18446744073709551614ULL)))
+#else
+#define MAXVARS(NUMTYPE) \
+   (NUMTYPE)(sizeof(NUMTYPE)==1?254: (sizeof(NUMTYPE)==2?65534:4294967294U))
+#endif
+
 /* Funny guys use the uppermost value for nonexistant variables and
    the like. Hence -2 and not -1. Y2K. */
 #define FOO(NUMTYPE,TYPE,ARGTYPE,NAME)					\
@@ -1193,9 +1204,9 @@ void PIKE_CONCAT(low_add_to_,NAME) (struct program_state *state,	\
   CHECK_FOO(NUMTYPE,TYPE,NAME);						\
   if(m == state->new_program->PIKE_CONCAT(num_,NAME)) {			\
     TYPE *tmp;								\
-    if(m==(1<<(sizeof(NUMTYPE)*8))-2)					\
+    if(m==MAXVARS(NUMTYPE))					\
       Pike_error("Too many " #NAME ".\n");				\
-    m = MINIMUM(m*2+1,(1<<(sizeof(NUMTYPE)*8))-2);			\
+    m = MINIMUM(m*2+1,MAXVARS(NUMTYPE));			\
     tmp = realloc((void *)state->new_program->NAME,			\
 		  sizeof(TYPE) * m);					\
     if(!tmp) Pike_fatal("Out of memory.\n");				\
