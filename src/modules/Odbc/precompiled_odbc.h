@@ -112,8 +112,8 @@ struct precompiled_odbc_result {
  * Defines
  */
 
-#define PIKE_ODBC	((struct precompiled_odbc *)(fp->current_storage))
-#define PIKE_ODBC_RES	((struct precompiled_odbc_result *)(fp->current_storage))
+#define PIKE_ODBC	((struct precompiled_odbc *)(Pike_fp->current_storage))
+#define PIKE_ODBC_RES	((struct precompiled_odbc_result *)(Pike_fp->current_storage))
 
 /* Flags */
 #define PIKE_ODBC_CONNECTED	1
