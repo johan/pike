@@ -581,6 +581,12 @@ PMOD_EXPORT struct array *copy_array(struct array *v)
 {
   struct array *a;
 
+  if (!v->size) {
+    /* Empty array. */
+    add_ref(&empty_array);
+    return &empty_array;
+  }
+
   a=allocate_array_no_init(v->size, 0);
   a->type_field = v->type_field;
 
