@@ -25,9 +25,9 @@ void ins_f_byte_with_2_args(unsigned int a,
 			    unsigned INT32 b);
 
 #ifdef PIKE_USE_MACHINE_CODE
-#ifdef __i386__
+#if defined(__i386__) || defined(__i386)
 #include "code/ia32.h"
-#elif defined(sparc) || defined(__sparc__)
+#elif defined(sparc) || defined(__sparc__) || defined(__sparc)
 #include "code/sparc.h"
 #else /* Unsupported cpu */
 #error Unknown CPU
