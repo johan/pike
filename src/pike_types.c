@@ -1928,16 +1928,20 @@ static struct pike_string *debug_low_index_type(char *t, node *n)
 	  reference_shared_string(mixed_type_string);
 	  return mixed_type_string;
 	}else{
+#if 0
 	  if(EXTRACT_UCHAR(t) ||
 	     (p->identifier_references[i].id_flags & ID_NOMASK) ||
 	    (ID_FROM_INT(p, i)->identifier_flags & IDENTIFIER_PROTOTYPED))
 	  {
+#endif
 	    reference_shared_string(ID_FROM_INT(p, i)->type);
 	    return ID_FROM_INT(p, i)->type;
+#if 0
 	  }else{
 	    reference_shared_string(mixed_type_string);
 	    return mixed_type_string;
 	  }
+#endif
 	}	   
       }
     }
