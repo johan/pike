@@ -8,6 +8,7 @@
 #include "callback.h"
 #include "queue.h"
 #include "threads.h"
+#include "interpret.h"
 
 extern struct pike_queue gc_mark_queue;
 extern INT32 num_objects;
@@ -17,7 +18,6 @@ PMOD_EXPORT extern int Pike_in_gc;
 extern int gc_debug;
 
 extern struct callback *gc_evaluator_callback;
-extern struct callback_list evaluator_callbacks;
 #ifdef PIKE_DEBUG
 extern void *gc_svalue_location;
 #endif
