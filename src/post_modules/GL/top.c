@@ -27,6 +27,9 @@
 #ifdef HAVE_GL_GL_H
 #include <GL/gl.h>
 #endif /* HAVE_GL_GL_H */
+#ifdef HAVE_OPENGL_GL_H
+#include <OpenGL/gl.h>
+#endif /* HAVE_OPENGL_GL_H */
 #ifdef HAVE_GL_GLX_H
 #include <GL/glx.h>
 #endif /* HAVE_GL_GLX_H */
