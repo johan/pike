@@ -217,6 +217,22 @@ class delete
   }
 }
 
+class rename
+{
+  inherit request;
+  constant arg_info = ({ ({ "string" }), ({ "string" }) });
+
+  mapping easy_process(string old_mailbox_name, string new_mailbox_name)
+  {
+    if (server->rename(session, old_mailbox_name, new_mailbox_name)) {
+      send(tag, "OK");
+    } else {
+      send(tag, "NO");
+    }
+    return ([ "action" : "finished" ]);
+  }
+}
+
 class list
 {
   inherit request;
@@ -827,7 +843,6 @@ class search
 
 constant authenticate = unimplemented;
 constant examine = unimplemented;
-constant rename = unimplemented;
 constant subscribe = unimplemented;
 constant unsubscribe = unimplemented;
 constant status = unimplemented;
