@@ -382,6 +382,18 @@ static INT32 count_cases(node *n)
   }
 }
 
+
+int generate_call_function(node *n)
+{
+  node **arg;
+  emit0(F_MARK);
+  PUSH_CLEANUP_FRAME(do_pop_mark, 0);
+  do_docode(CDR(n),DO_NOT_COPY);
+  emit0(F_CALL_FUNCTION);
+  POP_AND_DONT_CLEANUP;
+  return 1;
+}
+
 static inline struct compiler_frame *find_local_frame(INT32 depth)
 {
   struct compiler_frame *f=Pike_compiler->compiler_frame;

@@ -2599,15 +2599,7 @@ static int generate_sizeof(node *n)
   return 1;
 }
 
-static int generate_call_function(node *n)
-{
-  node **arg;
-  emit0(F_MARK);
-  do_docode(CDR(n),DO_NOT_COPY);
-  emit0(F_CALL_FUNCTION);
-  return 1;
-}
-
+extern int generate_call_function(node *n);
 struct program *string_assignment_program;
 
 #undef THIS
