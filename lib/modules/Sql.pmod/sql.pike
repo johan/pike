@@ -164,8 +164,8 @@ void create(void|string|object host, void|string db,
 	  };
 #ifdef PIKE_SQL_DEBUG
 	  if (err) {
-	    Stdio.stderr->write(sprintf("Sql.sql(): Failed to connect using module Sql.%s\n",
-					program_name));
+	    Stdio.stderr->write(sprintf("Sql.sql(): Failed to connect using module Sql.%s (%s)\n",
+					program_name, err[0]));
 	  }
 	} else {
 	  Stdio.stderr->write(sprintf("Sql.sql(): Failed to index module Sql.%s\n",
@@ -175,8 +175,8 @@ void create(void|string|object host, void|string db,
       };
 #ifdef PIKE_SQL_DEBUG
       if (err) {
-	Stdio.stderr->write(sprintf("Sql.sql(): Failed to compile module Sql.%s\n",
-				    program_name));
+	Stdio.stderr->write(sprintf("Sql.sql(): Failed to compile module Sql.%s (%s)\n",
+				    program_name, err[0]));
       }
 #endif /* PIKE_SQL_DEBUG */
     }
