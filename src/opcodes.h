@@ -130,6 +130,10 @@ enum Pike_opcodes
   F_START_FUNCTION,
   F_BYTE,
   F_NOTREACHED,
+
+  /* Alias for F_RETURN, but cannot be optimized into a tail recursion call */
+  F_VOLATILE_RETURN,
+
   F_MAX_INSTR
 };
 

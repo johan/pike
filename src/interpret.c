@@ -1430,8 +1430,23 @@ void unlink_previous_frame(void)
   struct pike_frame *current, *prev;
   struct svalue *target, **smsp;
   int freespace;
+
   current=Pike_interpreter.frame_pointer;
-  prev=Pike_interpreter.frame_pointer=current->next;
+  prev=current->next;
+#ifdef PIKE_DEBUG
+  {
+    JMP_BUF *rec;
+    
+    if((rec=Pike_interpreter.recoveries))
+    {
+      while(rec->frame_pointer == current) rec=rec->previous;
+      if(rec->frame_pointer == current->next)
+	fatal("You can't touch this!\n");
+    }
+  }
+#endif
+
+  Pike_interpreter.frame_pointer=prev;
 
   target=prev->save_sp;
   smsp=prev->save_mark_sp;
@@ -1444,7 +1459,6 @@ void unlink_previous_frame(void)
   current->save_sp=target;
   current->save_mark_sp=smsp;
 
-#if 1
   /* Move svalues down */
   freespace=fp->locals - target;
   if(freespace > ((Pike_sp - fp->locals)<<2) + 32)
@@ -1469,7 +1483,6 @@ void unlink_previous_frame(void)
     fp->mark_sp_base-=freespace;
     Pike_mark_sp-=freespace;
   }
-#endif
 }
 
 

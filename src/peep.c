@@ -374,6 +374,10 @@ void assemble(void)
       labels[c->arg] = DO_NOT_WARN((INT32)PC);
       break;
 
+    case F_VOLATILE_RETURN:
+      ins_f_byte(F_RETURN);
+      break;
+
     default:
       switch(instrs[c->opcode - F_OFFSET].flags)
       {
