@@ -3614,10 +3614,13 @@ void fix_type_field(node *n)
       fix_type_field(CAR(n));
       fix_type_field(CDR(n));
       if (!pike_types_le(CAR(n)->type, CDR(n)->type)) {
-	/* a["b"]=c and a->b=c can be valid when a is an array */
-	if (((CDR(n)->token != F_INDEX &&
-	      CDR(n)->token != F_ARROW) ||
-	     !match_types(array_type_string, CDR(n)->type)) &&
+	/* a["b"]=c and a->b=c can be valid when a is an array.
+	 *
+	 * FIXME: Exactly what case is the problem?
+	 *	/grubba 2005-02-15
+	 */
+	if (((CDR(n)->token != F_INDEX && CDR(n)->token != F_ARROW) ||
+	     !match_types(array_type_string, CADR(n)->type)) &&
 	    !match_types(CDR(n)->type,CAR(n)->type)) {
 	  yytype_error("Bad type in assignment.",
 		       CDR(n)->type, CAR(n)->type, 0);
