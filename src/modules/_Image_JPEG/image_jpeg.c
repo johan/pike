@@ -978,7 +978,7 @@ static void img_jpeg_decode(INT32 args,int mode)
 	 f_index(2);
 	 if (sp[-1].type==T_STRING) 
 	 {
-	    ref_push_string(param_comment);
+	    ref_push_string(param_comment); n++;
 	    stack_swap();
 	 }
 	 else
