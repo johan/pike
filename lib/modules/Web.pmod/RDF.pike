@@ -833,7 +833,6 @@ static class XML {
 	  buf->add(" rdf:resource='", right->get_uri(), "'/>\n");
 	else {
 	  buf->add(">\n");
-	  werror("%O\n", left);
 	  ind++;
 	  add_Description(right, m_delete(subjects, right)||([]));
 	  ind--;
