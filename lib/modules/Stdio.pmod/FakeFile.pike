@@ -16,9 +16,13 @@ static int(0..1) w;
 //! @seealso
 //!   @[Stdio.File()->close()]
 int close(void|string direction) {
-  direction = lower_case(direction);
-  int cr = has_value(direction, "r");
-  int cw = has_value(direction, "w");
+  int cr = 1;
+  int cw = 1;
+  if(direction) {
+    direction = lower_case(direction);
+    cr = has_value(direction, "r");
+    cw = has_value(direction, "w");
+  }
 
   if(cr) {
     if(!r) error("not open");
