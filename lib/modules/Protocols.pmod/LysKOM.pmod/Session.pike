@@ -801,8 +801,8 @@ class Membership
 	ProtocolTypes.TextList textlist=block->dense;
 	int j=textmapping->range_begin;
 
-	foreach(textlist->texts, int global)
-	  local_to_global[j++]=global;
+	foreach(textlist->texts, int global_text)
+	  local_to_global[j++]=global_text;
       }
       else                         /* Use array(TextNumberPair) */
       {
