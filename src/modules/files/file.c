@@ -376,7 +376,15 @@ static struct pike_string *do_read(int fd,
   {
     struct pike_string *str;
 
-    str=begin_shared_string(r);
+
+/* WORKAROUND! FIXME! FIXME!
+   short string threshold is 16 
+   /Mirar */
+
+    if (r>16)
+       str=begin_shared_string(r);
+    else
+       str=begin_shared_string(17);
 
     SET_ONERROR(ebuf, call_free, str);
 
