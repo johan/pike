@@ -653,7 +653,7 @@ class Node {
 	       n->mChildren);
       }
 
-      if (n->count_children)
+      if (n->count_children())
 	if (strlen(n->get_tag_name()))
 	  data->add("</", n->get_tag_name(), ">");
     }
