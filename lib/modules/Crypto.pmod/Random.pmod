@@ -102,6 +102,13 @@ string random_string(int len) {
   return rnd_func(len);
 }
 
+//! Returns a @[Gmp.mpz] object with a random value between @expr{0@}
+//! and @[top]. Uses @[random_string].
+Gmp.mpz random(int top) {
+  return Gmp.mpz(rnd_func( (int)ceil( log((float)top)/log(2.0) ) ),
+		 256) % top;
+}
+
 //! Works as @[random_string], but may block in order to gather
 //! enough entropy to make a truely random output.
 string blocking_random_string(int len) {
