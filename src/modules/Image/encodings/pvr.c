@@ -96,7 +96,7 @@ extern struct program *image_program;
 static INT32 twiddletab[1024];
 static int twiddleinited=0;
 
-static void init_twiddletab()
+static void init_twiddletab(void)
 {
   int x;
   for(x=0; x<1024; x++)
@@ -688,7 +688,7 @@ void image_pvr_f__decode(INT32 args)
    img_pvr_decode(args,0);
 }
 
-void init_image_pvr()
+void init_image_pvr(void)
 {
   ADD_FUNCTION( "decode",  image_pvr_f_decode,  tFunc(tStr,tObj), 0);
   ADD_FUNCTION( "decode_alpha",  image_pvr_f_decode_alpha,  tFunc(tStr,tObj), 0);
@@ -697,6 +697,6 @@ void init_image_pvr()
   ADD_FUNCTION( "decode_header", image_pvr_f_decode_header, tFunc(tStr,tMapping), 0);
 }
 
-void exit_image_pvr()
+void exit_image_pvr(void)
 {
 }
