@@ -237,14 +237,14 @@ struct pike_string *pop_type()
 
 static void internal_parse_typeA(char **_s)
 {
-  unsigned char buf[80];
+  char buf[80];
   unsigned int len;
   unsigned char **s = (unsigned char **)_s;
   
   while(ISSPACE(**s)) ++*s;
 
   len=0;
-  for(len=0;isidchar(s[0][len]);len++)
+  for(len=0;isidchar(EXTRACT_UCHAR(s[0]+len));len++)
   {
     if(len>=sizeof(buf)) error("Buffer overflow in parse_type\n");
     buf[len] = s[0][len];
