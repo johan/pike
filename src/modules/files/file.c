@@ -254,7 +254,9 @@ static void just_close_fd(void)
 	default:
 	  ERRNO=errno;
 	  FD=fd;
-	  error("Failed to close file.\n");
+	  push_int(errno);
+	  f_strerror(1);
+	  error("Failed to close file: %s\n", Pike_sp[-1].u.string->str);
 
 	case EBADF:
 	  error("Internal error: Closing a non-active file descriptor %d.\n",fd);
