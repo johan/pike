@@ -144,7 +144,7 @@ void do_make(array(string) cmd)
       "TMP_BINDIR="+bin_path,
       "SRCDIR="+fix("$src"),
       "TMP_MODULE_BASE=.",
-      "PIKE_EXTERNAL_MODULE=1",
+      "PIKE_EXTERNAL_MODULE=pike_external_module",
       "SYSTEM_MODULE_PATH=" + system_module_path,
       "LOCAL_MODULE_PATH=" + lmp,
       "RUNPIKE="+run_pike,
