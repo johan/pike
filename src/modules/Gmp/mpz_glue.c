@@ -984,6 +984,20 @@ static void gmp_fac(INT32 args)
   pop_n_elems(args);
   PUSH_REDUCED(res);
 }
+
+static void mpzmod_random(INT32 args)
+{
+  struct object *res;
+  pop_n_elems(args);
+  if(mpz_sgn(THIS) <= 0)
+    error("random on negative number.\n");
+
+  res=clone_object(mpzmod_program,0);
+  /* We add two to assure reasonably uniform randomness */
+  mpz_random(OBTOMPZ(res), mpz_size(OBTOMPZ(res)) + 2);
+  mpz_fdiv_r(OBTOMPZ(res), OBTOMPZ(res), THIS); /* modulo */
+  PUSH_REDUCED(res);
+}
   
 static void init_mpz_glue(struct object *o)
 {
@@ -1102,6 +1116,8 @@ void pike_module_init(void)
 
   /* function(void:int) */
   ADD_FUNCTION("popcount", mpzmod_popcount,tFunc(tVoid,tInt), 0);
+
+  ADD_FUNCTION("_random",mpzmod_random,tFunc(tNone,tObj),0);
   
 #if 0
   /* These are not implemented yet */
@@ -1114,13 +1130,13 @@ void pike_module_init(void)
   set_init_callback(init_mpz_glue);
   set_exit_callback(exit_mpz_glue);
 
+
   id=add_program_constant("mpz", mpzmod_program=end_program(), 0);
 
   /* function(int, int:object) */
   ADD_FUNCTION("pow", gmp_pow,tFunc(tInt tInt,tObj), 0);
   /* function(int:object) */
   ADD_FUNCTION("fac", gmp_fac,tFunc(tInt,tObj), 0);
-
 
 #ifdef AUTO_BIGNUM
   {
