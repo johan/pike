@@ -966,7 +966,7 @@ fi
 
 
 WARN=""
-OPTIMIZE=""
+OPTIMIZE="${OPTFLAGS-}"
 
 if test "$cflags_is_set" = "no"; then
   if test "x$with_cdebug" = "xno" ; then
