@@ -12,6 +12,10 @@ XMLFILES=
 
 all: split
 
+tree-split:
+	rm -f manual-split/*.html
+	@$(PIKE) presentation/tree-split-autodoc.pike manual.xml structure.xml manual-tree-split
+
 split: join manual
 	@$(PIKE) ../bin/split-autodoc.pike manual.xml structure.xml manual
 
