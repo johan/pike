@@ -218,6 +218,9 @@ string server_derive_master_secret(string data)
     throw( ({ "SSL.handshake: internal error\n", backtrace() }) );
   case 0:
     return 0;
+  case KE_dhe_dss:
+    throw( ({ "Not implemented.\n", backtrace() }) );
+    
   case KE_rsa:
    {
      /* Decrypt the pre_master_secret */
