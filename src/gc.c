@@ -2154,6 +2154,7 @@ int do_gc(void)
     if (n != (unsigned) num_objects)
       fatal("Object count wrong in gc; expected %d, got %d.\n", num_objects, n);
     get_marker(rec_list.data)->flags |= GC_MIDDLETOUCHED;
+#if 0
 #ifdef DEBUG_MALLOC
     PTR_HASH_LOOP(marker, i, m)
       if (!(m->flags & (GC_MIDDLETOUCHED|GC_WEAK_FREED)) &&
@@ -2166,6 +2167,7 @@ int do_gc(void)
 	describe(m->data);
 	fatal("Fatal in garbage collector.\n");
       }
+#endif
 #endif
     GC_VERBOSE_DO(fprintf(stderr, "| middletouch\n"));
   }
