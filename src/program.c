@@ -2125,7 +2125,7 @@ void dump_program_tables (struct program *p, int indent)
 
     while (cnt < p->line_numbers + p->num_linenumbers) {
       if (*cnt == 127) {
-	int len;
+	int len, shift;
 	char *file;
 	cnt++;
 	len = get_small_number(&cnt);
