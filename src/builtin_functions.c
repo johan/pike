@@ -664,6 +664,7 @@ void f_throw(INT32 args)
     error("Too few arguments to throw()\n");
   assign_svalue(&throw_value,sp-args);
   pop_n_elems(args);
+  throw_severity=0;
   pike_throw();
 }
 
