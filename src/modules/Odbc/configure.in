@@ -18,6 +18,13 @@ OLD_LDFLAGS=$LDFLAGS
 OLD_CPPFLAGS=$CPPFLAGS
 
 AC_ARG_WITH(odbc,  [  --without-odbc       no support for ODBC databases],[],[with_odbc=yes])
+AC_ARG_WITH(odbc_implicit_commit,
+		   [  --with-odbc-implicit-commit    implicitly commit statements (discouraged)])
+
+if test "x$with_odbc_implicit_commit" = xyes; then
+  AC_MSG_WARN([Enabling implicit commit])
+  AC_DEFINE(ENABLE_IMPLICIT_COMMIT)
+fi
 
 if test x$with_odbc = xyes; then
   if test "x$pike_cv_sys_os" = "xWindows_NT" ; then

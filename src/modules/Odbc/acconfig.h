@@ -32,6 +32,9 @@
 /* Define if you have ODBC */
 #undef HAVE_ODBC
 
+/* Define if you want to enable implicit commit (discouraged). */
+#undef ENABLE_IMPLICIT_COMMIT
+
 @BOTTOM@
 
 #endif /* PIKE_ODBC_CONFIG_H */
