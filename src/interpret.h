@@ -80,7 +80,7 @@ struct pike_frame
   }while(0)
 
 #define check_mark_stack(X) do {		\
-  if(Pike_interpreter.mark_sp - Pike_interpreter.mark_stack + (X) >= Pike_stack_size)	\
+  if(Pike_mark_sp - Pike_interpreter.mark_stack + (X) >= Pike_stack_size)	\
     error("Mark stack overflow.\n");		\
   }while(0)
 
