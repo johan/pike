@@ -209,6 +209,7 @@ static void exit_gz_deflate(struct object *o)
 /*   mt_lock(& THIS->lock); */
   deflateEnd(&THIS->gz);
 /*   mt_unlock(& THIS->lock); */
+  mt_destroy( & THIS->lock );
 }
 
 /*******************************************************************/
@@ -342,6 +343,7 @@ static void exit_gz_inflate(struct object *o)
 /*   mt_lock(& THIS->lock); */
   inflateEnd(& THIS->gz);
 /*   mt_unlock(& THIS->lock); */
+  mt_destroy( & THIS->lock );
 }
 
 
