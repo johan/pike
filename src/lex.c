@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 RCSID("$Id$");
 #include "language.h"
@@ -36,7 +37,9 @@ RCSID("$Id$");
 #include <errno.h>
 #include "time_stuff.h"
 
+#ifndef LEXDEBUG
 #define LEXDEBUG 0
+#endif /* !LEXDEBUG */
 
 #ifdef INSTR_PROFILING
 int last_instruction=0;
@@ -487,11 +490,11 @@ static int yylex2(YYSTYPE *yylval)
     {
     case 0:
       lex.pos--;
-#ifdef F_LEX_EOF
+#if defined(F_LEX_EOF) && !defined(YYPICC)
       return F_LEX_EOF;
-#else /* !F_LEX_EOF */
-      return 0;
-#endif /* F_LEX_EOF */
+#else /* !F_LEX_EOF || YYPICC */
+      return -1;
+#endif /* F_LEX_EOF && !YYPICC */
 
     case '\n':
       lex.current_line++;
