@@ -8,14 +8,15 @@
 
 PIKE=pike
 
+XMLFILES=
+
 all: split
 
 split: join manual
-	@$(PIKE) ../bin/split-autodoc.pike manual.xml structure.xml autodoc
+	@$(PIKE) ../bin/split-autodoc.pike manual.xml structure.xml manual
 
-join: recursive_join ../bin/join-autodoc.pike
-	@$(PIKE) ../bin/join-autodoc.pike manual.xml \
-	  `echo build/src/*.xml build/lib/*.xml`
+join: recursive_join
+	$(MAKE) PIKE="$(PIKE)" XMLFILES="`echo build/*/*.xml`" manual.xml
 
 recursive_join: images
 	@(cd build/src && $(MAKE) PIKE="$(PIKE)" join)
@@ -26,6 +27,9 @@ images: extract
 extract: build/src/Makefile build/lib/Makefile
 	@(cd build/src && $(MAKE) PIKE="$(PIKE)" extract)
 	@(cd build/lib && $(MAKE) PIKE="$(PIKE)" extract)
+
+manual.xml: $(XMLFILES) ../bin/join-autodoc.pike
+	@$(PIKE) ../bin/join-autodoc.pike manual.xml $(XMLFILES)
 
 build/src/Makefile: Makefile.in build/src
 	@sed -e "s#@SRCDIR@#../../../src#" -e "s#@ROOT@#../..#" \
