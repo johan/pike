@@ -1066,6 +1066,21 @@ int add_program_constant(char *name,
   return ret;
 }
 
+int add_function_constant(char *name, void (*cfun)(INT32), char * type, INT16 flags)
+{
+  struct svalue s;
+  struct pike_string *n;
+  INT32 ret;
+
+  s.type=T_FUNCTION;
+  s.subtype=FUNCTION_BUILTIN;
+  s.u.efun=make_callable(cfun, name, type, flags, 0, 0);
+  ret=simple_add_constant(name, &s, 0);
+  free_svalue(&s);
+  return ret;
+}
+
+
 int end_class(char *name, INT32 flags)
 {
   INT32 ret;
