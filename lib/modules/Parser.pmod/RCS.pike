@@ -291,12 +291,15 @@ string parse_delta_sections(string raw)
 //! @param progress_callback
 //!   This optional callback is invoked with the revision of the
 //!   deltatext about to be parsed (useful for progress indicators).
+//! @param args
+//!   Optional extra trailing arguments to be sent to @[progress_callback]
 //! @seealso
 //!   @[parse_admin_section], @[parse_delta_sections], @[parse], @[create]
 //! @fixme
 //!   Does not handle rcsfile(5) newphrase skipping.
 void parse_deltatext_sections(string raw,
-			      void|function(string:void) progress_callback)
+			      void|function(string:void) progress_callback,
+			      array|void callback_args)
 {
   int is_on_trunk;
   string this_rev, lmsg, diff;
@@ -305,7 +308,10 @@ void parse_deltatext_sections(string raw,
 	sizeof(this_rev))
   {
     if(progress_callback)
-      progress_callback(this_rev);
+      if(callback_args)
+	progress_callback(this_rev, @callback_args);
+      else
+	progress_callback(this_rev);
     Revision this = revisions[this_rev];
     if(is_on_trunk = sizeof(this_rev/".") == 2)
       trunk += ({ this });
