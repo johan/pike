@@ -950,7 +950,7 @@ void o_or(void)
   {
     struct array *a;
     a=merge_array_with_order(sp[-2].u.array, sp[-1].u.array, PIKE_ARRAY_OP_OR);
-    sp-=2; /* Refs are eaten by function above */
+    pop_n_elems(2);
     push_array(a);
     return;
   }
@@ -1043,7 +1043,7 @@ void o_xor(void)
   {
     struct array *a;
     a=merge_array_with_order(sp[-2].u.array, sp[-1].u.array, PIKE_ARRAY_OP_XOR);
-    sp-=2; /* Refs are eaten by function above */
+    pop_n_elems(2);
     push_array(a);
     return;
   }
