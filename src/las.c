@@ -3591,6 +3591,7 @@ void fix_type_field(node *n)
 	yytype_error("Bad argument to splice operator.",
 		     array_type, CAR(n)->type, 0);
       }
+      free_type(array_type);
     }
     /* FIXME: The type field of the splice operator is not yet utilized.
      *
