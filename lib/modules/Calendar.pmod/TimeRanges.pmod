@@ -1148,7 +1148,8 @@ class cSuperTimeRange
 //!	is non-zero. <tt>`!</tt> on this timerange is true.
 
 
-static class NullTimeRange
+program NullTimeRange=cNullTimeRange;
+static class cNullTimeRange
 {
    inherit TimeRange;
 
@@ -1244,7 +1245,7 @@ static class NullTimeRange
    }
 }
 
-NullTimeRange nulltimerange=NullTimeRange();
+cNullTimeRange nulltimerange=NullTimeRange();
 
 // helper functions
 
