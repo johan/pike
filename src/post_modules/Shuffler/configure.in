@@ -1,0 +1,6 @@
+# $Id$
+AC_INIT(Shuffler.cmod)
+
+AC_MODULE_INIT()
+
+AC_OUTPUT(Makefile,echo FOO >stamp-h )
