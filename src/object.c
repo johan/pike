@@ -133,7 +133,7 @@ struct object *low_clone(struct program *p)
 #define LOW_PUSH_FRAME(O)	do{		\
   struct pike_frame *pike_frame=alloc_pike_frame();		\
   pike_frame->next=fp;				\
-  pike_frame->current_object=o;			\
+  pike_frame->current_object=O;			\
   pike_frame->locals=0;				\
   pike_frame->num_locals=0;				\
   pike_frame->fun=-1;				\
