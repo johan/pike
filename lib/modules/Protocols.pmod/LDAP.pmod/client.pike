@@ -539,11 +539,15 @@ import SSL.Constants;
     return 1;
   }
 
+#if 0
   void destroy() {
 
     //send_unbind_op();
-    destruct(this);
+
+    // Hazard area: General confusion error. /mast
+    //destruct(this);
   }
+#endif
 
   //!
   //! Unbinds from the directory and close the connection.
