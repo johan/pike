@@ -68,7 +68,7 @@
 **! 
 **! import Image;
 **! 
-**! constant modifiers=({"neon","light","dark","bright","dull"});
+**! array modifiers=({"neon","light","dark","bright","dull"});
 **! 
 **! object F=Font();
 **!
