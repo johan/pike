@@ -90,7 +90,6 @@ extern int throw_severity;
 #define DEBUG_LINE_ARGS ,int line, char *file
 #define SETJMP(X) setjmp((init_recovery(&X,__LINE__,__FILE__)->recovery))
 #else
-#define check_recovery_context() ((void)0)
 #define DEBUG_LINE_ARGS 
 #define SETJMP(X) setjmp((init_recovery(&X)->recovery))
 #define UNSETJMP(X) recoveries=X.previous
@@ -242,4 +241,8 @@ void cleanup_error(void);
 #define SIMPLE_DIVISION_BY_ZERO_ERROR(FUNC) \
      math_error(FUNC, sp-args, args, 0, "Division by zero.\n")
 
+#endif
+
+#ifndef PIKE_DEBUG
+#define check_recovery_context() ((void)0)
 #endif
