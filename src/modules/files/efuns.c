@@ -593,6 +593,7 @@ void f_werror(INT32 args)
     args=1;
   }
 
+  /* FIXME: Wide string handling. */
   if(sp[-args].u.string->size_shift!=0)
     Pike_error("Wide strings can not be written to stderr.\n");
   write_to_stderr(sp[-args].u.string->str, sp[-args].u.string->len);
