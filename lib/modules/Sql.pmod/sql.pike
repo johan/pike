@@ -328,9 +328,22 @@ string|object compile_query(string q)
 //. - handle_extraargs
 //.   Handle sprintf-based quoted arguments
 private string handle_extraargs(string query, array(mixed) extraargs) {
-  return sprintf(query,@Array.map(extraargs,
-				  lambda(mixed s)
-				  {return intp(s)||floatp(s)?s:quote(s);}));
+  array(mixed) args=allocate(sizeof(extraargs));
+  mixed s;
+  int j;
+  for (j=0;j<sizeof(extraargs);j++) {
+    s=extraargs[j];
+    if (intp(s) || floatp(s)) {
+      args[j]=s;
+      continue;
+    }
+    if (stringp(s)) {
+      args[j]=quote(s);
+      continue;
+    }
+    throw_error("Wrong type to query argument #"+(j+1)+"\n");
+  }
+  return sprintf(query,@args);
 }
 
 //. - query
