@@ -30,7 +30,7 @@
 
    A short 'people' function (without sort)
 
-   sprintf("%{%-14s %2d %-30s %s\n%}\n",map_array(users(),lambda(object x)
+   sprintf("%{%-14s %2d %-30s %s\n%}\n",map(users(),lambda(object x)
        {
            return ({x->query_real_name(),
 		x->query_level(),
