@@ -12,6 +12,8 @@
 
 #include "svalue.h"
 
+#define PIKE_TYPE_STACK_SIZE 100000
+
 #ifdef USE_PIKE_TYPE
 /*
  * The new type type.
@@ -40,8 +42,8 @@ void TYPE_STACK_DEBUG(const char *fun);
 #define TYPE_STACK_DEBUG(X)
 #endif /* PIKE_DEBUG */
 
-extern struct pike_type *type_stack[];
-extern struct pike_type **pike_type_mark_stack[];
+extern struct pike_type *type_stack[PIKE_TYPE_STACK_SIZE];
+extern struct pike_type **pike_type_mark_stack[PIKE_TYPE_STACK_SIZE/4];
 
 #else /* !USE_PIKE_TYPE */
 
@@ -56,8 +58,8 @@ extern struct pike_type **pike_type_mark_stack[];
 
 #define CONSTTYPE(X) make_shared_binary_string(X,CONSTANT_STRLEN(X))
 
-extern unsigned char type_stack[];
-extern unsigned char *pike_type_mark_stack[];
+extern unsigned char type_stack[PIKE_TYPE_STACK_SIZE];
+extern unsigned char *pike_type_mark_stack[PIKE_TYPE_STACK_SIZE/4];
 
 #endif /* USE_PIKE_TYPE */
 
@@ -124,8 +126,6 @@ struct node_identifier
 
 
 typedef struct node_s node;
-
-#define PIKE_TYPE_STACK_SIZE 100000
 
 extern int max_correct_args;
 PMOD_EXPORT extern struct pike_type *string_type_string;
