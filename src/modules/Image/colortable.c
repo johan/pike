@@ -67,9 +67,9 @@ extern struct program *image_program;
 #define SPACEFACTOR_G 4
 #define SPACEFACTOR_B 1
 
-#define CUBICLE_DEFAULT_R 4
-#define CUBICLE_DEFAULT_G 5
-#define CUBICLE_DEFAULT_B 4
+#define CUBICLE_DEFAULT_R 10
+#define CUBICLE_DEFAULT_G 10
+#define CUBICLE_DEFAULT_B 10
 #define CUBICLE_DEFAULT_ACCUR 16
 
 #ifndef MAX
