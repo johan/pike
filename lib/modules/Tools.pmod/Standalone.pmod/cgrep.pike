@@ -183,7 +183,7 @@ int handle_file(string path, string fn) {
   // in pike and emacs -*- things with c or pike in them.
 
   if(!f) {
-    msg("No tokanizer found for %O\n", path);
+    msg("No tokenizer found for %O\n", path);
     return 0;
   }
 
