@@ -1043,7 +1043,7 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
       int res;
       aa.u.program = program_from_svalue(a);
       if (!aa.u.program) {
-	Pike_error("Bad argument to comparison.");
+	Pike_error("Bad argument to comparison.\n");
       }
       type_stack_mark();
       push_object_type(0, aa.u.program->id);
@@ -1059,7 +1059,7 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
       int res;
       bb.u.program = program_from_svalue(b);
       if (!bb.u.program) {
-	Pike_error("Bad argument to comparison.");
+	Pike_error("Bad argument to comparison.\n");
       }
       type_stack_mark();
       push_object_type(0, bb.u.program->id);
