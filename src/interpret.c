@@ -1164,27 +1164,8 @@ static void eval_instruction(unsigned char *pc)
       }
       break;
 
-      CASE(F_LSH);
-      if(sp[-2].type != T_INT)
-      {
-	o_lsh();
-      }else{
-	if(sp[-1].type != T_INT) error("Bad argument 2 to <<\n");
-	sp--;
-	sp[-1].u.integer = sp[-1].u.integer << sp->u.integer;
-      }
-      break;
-
-      CASE(F_RSH);
-      if(sp[-2].type != T_INT)
-      {
-	o_rsh();
-      }else{
-	if(sp[-1].type != T_INT) error("Bad argument 2 to >>\n");
-	sp--;
-	sp[-1].u.integer = sp[-1].u.integer >> sp->u.integer;
-      }
-      break;
+      CASE(F_LSH); o_lsh(); break;
+      CASE(F_RSH); o_rsh(); break;
 
       COMPARISMENT(F_EQ, is_eq(sp-2,sp-1));
       COMPARISMENT(F_NE,!is_eq(sp-2,sp-1));

@@ -78,6 +78,16 @@ char *lfun_names[] = {
   "_indices",
   "_values",
   "`()",
+  "``+",
+  "``-",
+  "``&",
+  "``|",
+  "``^",
+  "``<<",
+  "``>>",
+  "``*",
+  "``/",
+  "``%",
 };
 
 struct program *first_program = 0;
