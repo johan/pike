@@ -31,10 +31,11 @@ RCSID("$Id$");
 #include "callback.h"
 #include "fd_control.h"
 #include "security.h"
-#include "block_alloc.h"
 #include "bignum.h"
 #include "pike_types.h"
 #include "pikecode.h"
+
+#include "block_alloc.h"
 
 #include <fcntl.h>
 #include <errno.h>
