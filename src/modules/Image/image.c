@@ -2865,6 +2865,8 @@ void init_colortable_programs(void);
 void exit_colortable(void);
 void init_image_gif(void);
 void exit_image_gif(void);
+void init_image_pnm(void);
+void exit_image_pnm(void);
 
 void pike_module_init(void)
 {
@@ -3072,6 +3074,7 @@ void pike_module_init(void)
    init_colortable_programs();
 
    init_image_gif();
+   init_image_pnm();
 }
 
 void pike_module_exit(void) 
@@ -3085,6 +3088,7 @@ void pike_module_exit(void)
   exit_colortable();
 
   exit_image_gif();
+  exit_image_pnm();
 }
 
 
