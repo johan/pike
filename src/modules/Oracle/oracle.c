@@ -518,6 +518,16 @@ static void f_big_query(INT32 args)
 void pike_module_init(void)
 {
 #ifdef HAVE_ORACLE
+
+#ifdef ORACLE_HOME
+  if(getenv("ORACLE_HOME")==NULL)
+    putenv("ORACLE_HOME="ORACLE_HOME);
+#endif
+#ifdef ORACLE_SID
+  if(getenv("ORACLE_SID")==NULL)
+    putenv("ORACLE_SID="ORACLE_SID);
+#endif
+
   /*  opinit(OCI_EV_TSF); */
 
   start_new_program();
