@@ -51,7 +51,7 @@ void *debug_malloc_update_location_ptr(void *, ptrdiff_t, char *);
 void search_all_memheaders_for_references(void);
 
 /* Beware! names of named memory regions are never ever freed!! /Hubbe */
-void *debug_malloc_name(void *p, char *fn, int line);
+void *debug_malloc_name(void *p, const char *fn, int line);
 int debug_malloc_copy_names(void *p, void *p2);
 char *dmalloc_find_name(void *p);
 

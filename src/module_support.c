@@ -143,7 +143,7 @@ PMOD_EXPORT void check_all_args(const char *fnname, int args, ... )
 
 int va_get_args(struct svalue *s,
 		INT32 num_args,
-		char *fmt,
+		const char *fmt,
 		va_list ap)
 {
   int ret=0;
@@ -308,7 +308,7 @@ int va_get_args(struct svalue *s,
 
 PMOD_EXPORT int get_args(struct svalue *s,
 			 INT32 num_args,
-			 char *fmt, ...)
+			 const char *fmt, ...)
 {
   va_list ptr;
   int ret;
@@ -318,7 +318,8 @@ PMOD_EXPORT int get_args(struct svalue *s,
   return ret;
 }
 
-PMOD_EXPORT void get_all_args(char *fname, INT32 args, char *format,  ... )
+PMOD_EXPORT void get_all_args(const char *fname, INT32 args,
+			      const char *format,  ... )
 {
   va_list ptr;
   int ret;
@@ -372,7 +373,7 @@ PMOD_EXPORT void get_all_args(char *fname, INT32 args, char *format,  ... )
    
 static struct mapping *exported_symbols;
 
-PMOD_EXPORT void pike_module_export_symbol(char *name,
+PMOD_EXPORT void pike_module_export_symbol(const char *name,
 					   int len,
 					   void *ptr)
 {
@@ -386,9 +387,9 @@ PMOD_EXPORT void pike_module_export_symbol(char *name,
   free_string(str);
 }
 
-PMOD_EXPORT void *pike_module_import_symbol(char *name,
+PMOD_EXPORT void *pike_module_import_symbol(const char *name,
 					    int len,
-					    char *module,
+					    const char *module,
 					    int module_len)
 {
   struct svalue *s;

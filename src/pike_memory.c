@@ -2255,7 +2255,7 @@ struct dmalloc_string
 
 static struct dmalloc_string *dstrhash[DSTRHSIZE];
 
-static LOCATION low_dynamic_location(char type, char *file, int line)
+static LOCATION low_dynamic_location(char type, const char *file, int line)
 {
   struct dmalloc_string **prev, *str;
   int len=strlen(file);
@@ -2293,13 +2293,13 @@ static LOCATION low_dynamic_location(char type, char *file, int line)
   return str->str;
 }
 
-LOCATION dynamic_location(char *file, int line)
+LOCATION dynamic_location(const char *file, int line)
 {
   return low_dynamic_location('D',file,line);
 }
 
 
-void * debug_malloc_name(void *p,char *file, int line)
+void * debug_malloc_name(void *p,const char *file, int line)
 {
   if(p)
   {

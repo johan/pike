@@ -41,8 +41,8 @@ struct callable
 /* Prototypes begin here */
 PMOD_EXPORT struct mapping *get_builtin_constants(void);
 void low_add_efun(struct pike_string *name, struct svalue *fun);
-void low_add_constant(char *name, struct svalue *fun);
-PMOD_EXPORT void add_global_program(char *name, struct program *p);
+void low_add_constant(const char *name, struct svalue *fun);
+PMOD_EXPORT void add_global_program(const char *name, struct program *p);
 BLOCK_ALLOC(callable,128)
 PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
 				   struct pike_string *name,
@@ -51,21 +51,21 @@ PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
 				   optimize_fun optimize,
 				   docode_fun docode);
 PMOD_EXPORT struct callable *make_callable(c_fun fun,
-			       char *name,
-			       char *type,
+			       const char *name,
+			       const char *type,
 			       INT16 flags,
 			       optimize_fun optimize,
 			       docode_fun docode);
-PMOD_EXPORT struct callable *add_efun2(char *name,
+PMOD_EXPORT struct callable *add_efun2(const char *name,
 			    c_fun fun,
-			    char *type,
+			    const char *type,
 			    INT16 flags,
 			    optimize_fun optimize,
 			    docode_fun docode);
-PMOD_EXPORT struct callable *add_efun(char *name, c_fun fun, char *type, INT16 flags);
-PMOD_EXPORT struct callable *quick_add_efun(char *name, ptrdiff_t name_length,
+PMOD_EXPORT struct callable *add_efun(const char *name, c_fun fun, const char *type, INT16 flags);
+PMOD_EXPORT struct callable *quick_add_efun(const char *name, ptrdiff_t name_length,
 					    c_fun fun,
-					    char *type, ptrdiff_t type_length,
+					    const char *type, ptrdiff_t type_length,
 					    INT16 flags,
 					    optimize_fun optimize,
 					    docode_fun docode);
