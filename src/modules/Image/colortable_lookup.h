@@ -357,9 +357,9 @@ void NCTLU_CUBE_NAME(rgb_group *s,
    green=cube->g;	hgreen=green/2;  greenm=green-1;
    blue=cube->b; 	hblue=blue/2;    bluem=blue-1;
 
-   redf=255.0/redm;
-   greenf=255.0/greenm;
-   bluef=255.0/bluem;
+   redf = DO_NOT_WARN(255.0/redm);
+   greenf = DO_NOT_WARN(255.0/greenm);
+   bluef = DO_NOT_WARN(255.0/bluem);
 
    CHRONO("begin cube map");
 
