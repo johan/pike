@@ -141,6 +141,11 @@ mapping(string:mixed) all_constants()
 #if constant(System.getgrent)
   ret->setgrent = System.getgrent;
 #endif
+#if constant(__builtin.security)
+  ret->call_with_creds = Pike.Security.call_with_creds;
+  ret->get_current_creds = Pike.Security.get_current_creds;
+  ret->get_object_creds = Pike.Security.get_object_creds;
+#endif
 #ifdef __NT__
   ret->explode_path=lambda(string x) { return replace(x,"\\","/")/"/"; };
 #else
