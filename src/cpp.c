@@ -732,9 +732,9 @@ static struct pike_string *filter_bom(struct pike_string *data)
    * * Character 0xfeff (ZERO WIDTH NO-BREAK SPACE = BYTE ORDER MARK = BOM)
    *   needs to be filtered away before processing continues.
    */
-  int i;
-  int j = 0;
-  int len = data->len;
+  ptrdiff_t i;
+  ptrdiff_t j = 0;
+  ptrdiff_t len = data->len;
   struct string_builder buf;
 
   /* Add an extra reference to data here, since we may return it as is. */
