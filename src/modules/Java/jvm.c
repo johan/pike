@@ -2832,7 +2832,7 @@ void pike_module_exit(void)
   }
   if(jclass_program) {
     free_program(jclass_program);
-    jobj_program=NULL;
+    jclass_program=NULL;
   }
   if(jobj_program) {
     free_program(jobj_program);
