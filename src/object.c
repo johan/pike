@@ -1237,9 +1237,8 @@ void gc_free_all_unreferenced_objects(void)
 
   Pike_in_gc=4;  /* Allow thread switches, god help us */
 
-  for(o=first_object;o;o=next)
+  for(o=first_object;o;o=o->next)
   {
-    next=o->next;
     if(gc_do_free(o))
     {
       add_ref(o);
