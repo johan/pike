@@ -4045,6 +4045,23 @@ void f__reset_dmalloc(INT32 args)
   reset_debug_malloc();
 }
 
+void f__dmalloc_set_name(INT32 args)
+{
+  char *s;
+  INT_TYPE i;
+  extern int dynamic_location_number(const char *file, int line);
+  extern int dmalloc_default_location;
+
+  if(args)
+  {
+    get_all_args("_dmalloc_set_name", args, "%s%i", &s, &i);
+    dmalloc_default_location = dynamic_location_number(s, i);
+  }else{
+    dmalloc_default_location=0;
+  }
+  pop_n_elems(args);
+}
+
 void f__list_open_fds(INT32 args)
 {
   extern void list_open_fds(void);
@@ -5296,6 +5313,7 @@ void init_builtin_efuns(void)
   
 /* function(void:void) */
   ADD_EFUN("_reset_dmalloc",f__reset_dmalloc,tFunc(tVoid,tVoid),OPT_SIDE_EFFECT);
+  ADD_EFUN("_dmalloc_set_name",f__dmalloc_set_name,tOr(tFunc(tStr tInt,tVoid), tFunc(tVoid,tVoid)),OPT_SIDE_EFFECT);
   ADD_EFUN("_list_open_fds",f__list_open_fds,tFunc(tVoid,tVoid),OPT_SIDE_EFFECT);
 #endif
 #ifdef PIKE_DEBUG

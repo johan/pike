@@ -205,6 +205,7 @@ struct object *debug_clone_object(struct program *p, int args)
   call_c_initializers(o);
   debug_malloc_touch(o);
   call_pike_initializers(o,args);
+  debug_malloc_touch(o);
   UNSET_ONERROR(tmp);
   return o;
 }

@@ -779,7 +779,7 @@ void check_pad(struct memhdr *mh, int freeok)
 #define check_pad(M,X)
 #endif
 
-static int location_number(const char *file, int line)
+int location_number(const char *file, int line)
 {
   struct fileloc *f,**prev;
   unsigned long h=(long)file;
@@ -806,7 +806,7 @@ static int location_number(const char *file, int line)
   return f->number;
 }
 
-static int dynamic_location_number(const char *file, int line)
+int dynamic_location_number(const char *file, int line)
 {
   struct fileloc *f,**prev;
   unsigned long h=hashstr(file, 4711);
@@ -986,6 +986,7 @@ static void add_location(struct memhdr *mh, int locnum)
   mlhash[l]=ml;
 }
 
+int dmalloc_default_location=0;
 
 static struct memhdr *low_make_memhdr(void *p, int s, int locnum)
 {
@@ -1000,6 +1001,8 @@ static struct memhdr *low_make_memhdr(void *p, int s, int locnum)
   ml->times=1;
   mlhash[l]=ml;
 
+  if(dmalloc_default_location)
+    add_location(mh, dmalloc_default_location);
   return mh;
 }
 
