@@ -88,6 +88,8 @@ void *new_thread_func(void * data)
 /*  fprintf(stderr,"Done[%d]\n",dbt--);*/
   mt_unlock(& interpreter_lock);
   th_exit(0);
+  /* NOT_REACHED, but removes a warning */
+  return(NULL);
 }
 
 #ifdef UNIX_THREADS
