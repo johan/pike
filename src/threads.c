@@ -801,10 +801,12 @@ TH_RETURN_TYPE new_thread_func(void * data)
 		      (unsigned int)Pike_interpreter.thread_id));
 
   cleanup_interpret();
-  DO_IF_DMALLOC(
+  DO_IF_DMALLOC({
+    struct object *o = Pike_interpreter.thread_id;
     SWAP_OUT_THREAD(OBJ2THREAD(Pike_interpreter.thread_id)); /* de-Init struct */
+    Pike_interpreter.thread_id = o;
     OBJ2THREAD(Pike_interpreter.thread_id)->swapped=0;
-    )
+  })
   thread_table_delete(Pike_interpreter.thread_id);
   free_object(Pike_interpreter.thread_id);
   Pike_interpreter.thread_id=0;
