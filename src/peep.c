@@ -13,6 +13,7 @@
 #include "dmalloc.h"
 #include "stuff.h"
 #include "bignum.h"
+#include "opcodes.h"
 
 RCSID("$Id$");
 

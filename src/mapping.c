@@ -12,7 +12,6 @@ RCSID("$Id$");
 #include "svalue.h"
 #include "array.h"
 #include "pike_macros.h"
-#include "language.h"
 #include "error.h"
 #include "pike_memory.h"
 #include "dynamic_buffer.h"
@@ -22,6 +21,7 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "security.h"
 #include "block_alloc.h"
+#include "opcodes.h"
 
 #define AVG_LINK_LENGTH 4
 #define MIN_LINK_LENGTH 1

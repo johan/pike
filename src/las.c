@@ -30,6 +30,7 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "cyclic.h"
 #include "block_alloc.h"
+#include "opcodes.h"
 
 #define LASDEBUG
 
@@ -484,7 +485,7 @@ node *debug_check_node_hash(node *n)
     fprintf(stderr,"Bad node hash at %p, (%s:%d) (token=%d).\n",
 	    n, n->current_file->str, n->line_number,
 	    n->token);
-    debug_malloc_dump_references(n);
+    debug_malloc_dump_references(n,0,0,0);
     print_tree(n);
     fatal("Bad node hash!\n");
   }

@@ -11,7 +11,7 @@
 #include "las.h"
 #include "stralloc.h"
 #include "interpret.h"
-#include "language.h"
+#include "opcodes.h"
 #include "error.h"
 #include "pike_types.h"
 #include "fsort.h"

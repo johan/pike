@@ -8,8 +8,6 @@
  * $Id$
  */
 #include "global.h"
-#include "language.h"
-#include "lex.h"
 #include "stralloc.h"
 #include "module_support.h"
 #include "interpret.h"

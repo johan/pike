@@ -31,6 +31,7 @@ RCSID("$Id$");
 #include "cyclic.h"
 #include "security.h"
 #include "pike_types.h"
+#include "opcodes.h"
 
 #include <errno.h>
 #include <fcntl.h>

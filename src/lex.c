@@ -162,7 +162,6 @@ struct keyword instr_names[]=
 { "return 1",		F_RETURN_1,0 },
 { "return local",	F_RETURN_LOCAL, I_HASARG },
 { "return if true",	F_RETURN_IF_TRUE, 0 },
-{ "while",		F_WHILE,0 },	
 { "label",		F_LABEL,I_HASARG },
 { "align",		F_ALIGN, I_HASARG },
 { "call",		F_APPLY, I_HASARG },

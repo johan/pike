@@ -40,7 +40,6 @@ RCSID("$Id$");
 #include "security.h"
 #include "builtin_functions.h"
 #include "bignum.h"
-#include "language.h"
 
 #ifdef HAVE_POLL
 #ifdef HAVE_POLL_H
