@@ -1916,6 +1916,10 @@ static void f_get_netinfo_property(INT32 args)
 
 void pike_module_init(void)
 {
+#ifdef GETHOSTBYNAME_MUTEX_EXISTS
+  mt_init(&gethostbyname_mutex);
+#endif
+
   /*
    * From this file:
    */
@@ -2206,5 +2210,9 @@ void pike_module_exit(void)
     extern void exit_nt_system_calls(void);
     exit_nt_system_calls();
   }
+#endif
+
+#ifdef GETHOSTBYNAME_MUTEX_EXISTS
+  mt_destroy(&gethostbyname_mutex);
 #endif
 }
