@@ -302,7 +302,7 @@ The name is assumed to begin with a capital letter.")
 	  '("\\<nomask\\>"    0 font-lock-preprocessor-face)
 
 	  `(,(concat "^\\([^/]\\|/[^/]\\)*"
-		     "\\(//[^.!|][^\n\r]*\\|\\(//\\)\\([.!|]\\)\\([^\n\r]*\\)\\)")
+		     "\\(//[^.!|\n\r]\\|\\(//\\)\\([.!|]\\)\\([^\n\r]*\\)\\)")
 	    (3 pike-font-lock-refdoc-init2-face prepend t)
 	    (4 pike-font-lock-refdoc-init-face prepend t)
 	    (5 pike-font-lock-refdoc-face prepend t)
