@@ -2302,6 +2302,9 @@ test_eq(20,catch(throw(a())))
 // - catch compile-errors
 test_any([[ master()->set_inhibit_compile_errors(lambda(){});mixed res = catch{compile_string("dfasfqw123");};master()->set_inhibit_compile_errors(0); return arrayp(res); ]], 1)
 
+// catch
+test_false([[class X { string test(string foo) { catch { return lower_case(foo); }; return foo; }}()->test(0); ]])
+
 // - time
 test_true(intp(time()))
 test_true(intp(time(1)))
