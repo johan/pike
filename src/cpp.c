@@ -1174,14 +1174,14 @@ static void check_constant(struct cpp *this,
 	      }
 	      break;
 	    case '(':
-	      if ((++dlen < len) && INDEX_PHARP(data, dlen) == ')') {
+	      if ((++dlen < len) && INDEX_PCHARP(data, dlen) == ')') {
 		dlen++;
 	      } else {
 		cpp_error(this, "Expected `().\n");
 	      }
 	      break;
 	    case '[':
-	      if ((++dlen < len) && INDEX_PHARP(data, ++dlen) == ']') {
+	      if ((++dlen < len) && INDEX_PCHARP(data, ++dlen) == ']') {
 		dlen++;
 	      } else {
 		cpp_error(this, "Expected `[].\n");
