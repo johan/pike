@@ -55,7 +55,7 @@
  * #define ALIGNOF(X) (sizeof(X)>ALIGN_BOUND?ALIGN_BOUND:( 1<<my_log2(sizeof(X))))
  */
 
-#define ALIGNOF(X) ((size_t)&(((struct { char ignored_ ; X fooo_; } *)0)->fooo_))
+#define ALIGNOF(X) ((size_t)(((char *)&(((struct { char ignored_ ; X fooo_; } *)0)->fooo_))-((char *)0)))
 
 #define DO_ALIGN(X,Y) (((size_t)(X)+((Y)-1)) & -(Y))
 #define CONSTANT_STRLEN(X) (sizeof(X) - sizeof(""))
