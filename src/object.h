@@ -153,4 +153,9 @@ void check_all_objects(void);
 #define PIKE_OBJ_INITED(o) (o->prog && (o->prog->flags & PROGRAM_PASS_1_DONE) && !((o->prog->flags & PROGRAM_AVOID_CHECK)))
 #define destruct_objects_to_destruct() do{ if(objects_to_destruct) low_destruct_objects_to_destruct(); }while(0)
 
+#define low_index_current_object_no_free(TO, FUN)			\
+  low_object_index_no_free((TO), Pike_fp->current_object,		\
+			   Pike_fp->context.identifier_level + (FUN))
+
+
 #endif /* OBJECT_H */
