@@ -975,7 +975,6 @@ static long convert_filetime_to_time_t(FILETIME tmp)
 
 PMOD_EXPORT int debug_fd_fstat(FD fd, PIKE_STAT_T *s)
 {
-  DWORD x;
   FILETIME c,a,m;
 
   mt_lock(&fd_mutex);
