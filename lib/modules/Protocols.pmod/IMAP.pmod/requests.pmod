@@ -87,7 +87,7 @@ class request
 	return parser->get_set(append_arg);
 
       case "list":
-	return parser->get_list(append_arg);
+	return parser->get_flag_list(append_arg);
 
       case "any":
 	/* A single atom or string or a list of atoms (with
