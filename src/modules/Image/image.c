@@ -2865,9 +2865,11 @@ void image_read_lsb_grey(INT32 args)
 #define RGB_TYPE "int|void,int|void,int|void,int|void"
 
 void init_font_programs(void);
-void init_colortable_programs(void);
 void exit_font(void);
+void init_colortable_programs(void);
 void exit_colortable(void);
+void init_image_gif(void);
+void exit_image_gif(void);
 
 void pike_module_init(void)
 {
@@ -3073,6 +3075,8 @@ void pike_module_init(void)
 
    init_font_programs();
    init_colortable_programs();
+
+   init_image_gif();
 }
 
 void pike_module_exit(void) 
@@ -3084,6 +3088,8 @@ void pike_module_exit(void)
   }
   exit_font();
   exit_colortable();
+
+  exit_image_gif();
 }
 
 
