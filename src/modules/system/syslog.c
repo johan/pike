@@ -102,7 +102,7 @@ RCSID("$Id$");
 #define LOG_PERROR 0
 #endif
 
-/*! @module system
+/*! @module System
  */
 
 /*! @decl void openlog(string ident, int options, facility)

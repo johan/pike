@@ -39,7 +39,7 @@
 #include "operators.h"
 #include "stuff.h"
 
-/*! @module system
+/*! @module System
  */
 
 static void throw_nt_error(char *funcname, int err)

@@ -2,7 +2,7 @@
  * $Id$
  */
 
-/*! @module system
+/*! @module System
  */
 
 /*! @class Memory

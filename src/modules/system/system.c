@@ -224,7 +224,7 @@ static void report_error(const char *function_name)
  * efuns
  */
 
-/*! @module system
+/*! @module System
  *!
  *! This module embodies common operating system calls, making them
  *! available to the Pike programmer.
