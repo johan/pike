@@ -1,7 +1,5 @@
 //! module Calendar
 
-//! submodule TimeRanges
-
 // $Id$
 
 #pike __REAL_VERSION__
@@ -962,7 +960,6 @@ class TimeRange
 
 //!
 //! module Calendar
-//! submodule TimeRanges
 //! class SuperTimeRange
 //!     This class handles the cases where you have a time
 //!	period with holes. These can be created by the
@@ -1161,7 +1158,6 @@ class cSuperTimeRange
 }
 
 //! module Calendar
-//! submodule TimeRanges
 //! constant TimeRange nulltimerange
 //!	This represents the null time range, 
 //!	which, to differ from the zero time range
