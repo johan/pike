@@ -32,7 +32,7 @@ struct object
 #if PIKE_DEBUG
   long program_id;
 #endif
-  char storage[1];
+  char *storage;
 };
 
 extern struct object *first_object;
@@ -43,7 +43,7 @@ extern struct program *master_program;
 extern struct program *magic_index_program;
 extern struct program *magic_set_index_program;
 
-#define free_object(O) do{ struct object *o_=(O); debug_malloc_touch(o_); if(!--o_->refs) really_free_object(o_); }while(0)
+#define free_object(O) do{ struct object *o_=(O); debug_malloc_touch(o_); debug_malloc_touch(o_->storage); if(!--o_->refs) schedule_really_free_object(o_); }while(0)
 
 #define LOW_GET_GLOBAL(O,I,ID) ((O)->storage+INHERIT_FROM_INT((O)->prog, (I))->storage_offset+(ID)->func.offset)
 #define GET_GLOBAL(O,I) LOW_GET_GLOBAL(O,I,ID_FROM_INT((O)->prog,I))
@@ -69,7 +69,7 @@ PTR_HASH_ALLOC(destroy_called_mark,128)
 void low_destruct(struct object *o,int do_free);
 void destruct(struct object *o);
 void destruct_objects_to_destruct(void);
-void really_free_object(struct object *o);
+void schedule_really_free_object(struct object *o);
 void low_object_index_no_free(struct svalue *to,
 			      struct object *o,
 			      INT32 f);

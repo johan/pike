@@ -494,7 +494,7 @@ struct thread_state {
 #define	OBJ2THREAD(X) \
   ((struct thread_state *)((X)->storage+thread_storage_offset))
 
-#define THREADSTATE2OBJ(X) BASEOF((X),object,storage[thread_storage_offset])
+#define THREADSTATE2OBJ(X) ((X)->thread_id)
 
 #define THREADS_ALLOW() do { \
      struct thread_state *_tmp=OBJ2THREAD(thread_id); \

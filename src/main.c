@@ -587,6 +587,7 @@ void low_exit_main(void)
   void cleanup_compiler(void);
   void cleanup_backend(void);
   void free_all_mapping_blocks(void);
+  void free_all_object_blocks(void);
 
 #ifdef AUTO_BIGNUM
   void exit_auto_bignum(void);
@@ -709,6 +710,7 @@ void low_exit_main(void)
   exit_destroy_called_mark_hash();
 
   free_all_mapping_blocks();
+  free_all_object_blocks();
   first_mapping=0;
 #endif
 }
