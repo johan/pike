@@ -12,6 +12,10 @@ constant cvs_id = "$Id$";
 #define IO_ERR(msg) throw(({ sprintf("(Yabu) %s, %s (%d)\n",msg,strerror(errno()),errno()),backtrace() }))
 #define WARN(msg) werror(msg)
 #define DEB(msg) /* werror(msg) */
+#if constant(hash_7_0)
+#define hash hash_7_0
+#endif
+
 #define CHECKSUM(s) (hash(s) & 0xffffffff)
 
 #if constant(thread_create)
