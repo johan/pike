@@ -450,7 +450,7 @@ Pike_actions.wxs: $(SRCDIR)/../packaging/windows/actions.wxs
 Pike_ui.wxs: $(SRCDIR)/../packaging/windows/wix_ui.wxs
 	@cp $(SRCDIR)/../packaging/windows/wix_ui.wxs Pike_ui.wxs
 
-Pike_module.wxs:
+Pike_module.wxs: force
 	@no_autodoc="--no-autodoc"; \
 	if [ -f autodoc.xml ]; then no_autodoc=""; fi; \
 	$(RUNPIKE) $(TMP_BINDIR)/install.pike --wix $$no_autodoc \
