@@ -1624,9 +1624,11 @@ PMOD_EXPORT void print_svalue_compact (FILE *out, const struct svalue *s)
       break;
     case T_STRING:
       if (s->u.string->len > 80) {
-	push_string (string_slice (s->u.string, 0, 80));
-	print_svalue (out, Pike_sp - 1);
-	pop_stack();
+	struct svalue sval;
+	sval.type = T_STRING;
+	sval.u.string = string_slice (s->u.string, 0, 80);
+	print_svalue (out, &sval);
+	free_string (sval.u.string);
 	fprintf (out, "... (%d chars more)", s->u.string->len - 80);
 	break;
       }
