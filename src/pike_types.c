@@ -2750,17 +2750,17 @@ static struct pike_string *debug_low_index_type(char *t,
       if(low_pike_types_le(tString, index_type, 0, 0) &&
 	 (a = low_index_type(t, tString, n))) {
 	/* Possible to index the array with a string. */
+	type_stack_mark();
+	push_finished_type(a);
+	free_string(a);
+	push_type(T_ARRAY);
+
 	if (low_match_types(tInt, index_type, 0)) {
 	  /* Also possible to index the array with an int. */
-	  type_stack_mark();
-	  push_finished_type(a);
-	  free_string(a);
-	  push_type(T_ARRAY);
 	  push_unfinished_type(t);
 	  push_type(T_OR);
-	  return pop_unfinished_type();
 	}
-	return a;
+	return pop_unfinished_type();
       }
       if (low_match_types(tInt, index_type, 0)) {
 	/* Possible to index the array with an int. */
