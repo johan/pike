@@ -182,6 +182,42 @@ static class rsa_wrapper
     return res1;
   }
 
+  object get_d()
+  {
+    object res1 = _rsa_pike->get_d();
+    object res2 = BIGNUM(_rsa_c->cooked_get_d(), 256);
+
+    if (res1 != res2) {
+      werror("RSA: get_e() failed!\n");
+      error(sprintf("res1:%O != res2:%O\n", res1, res2));
+    }
+    return res1;
+  }
+
+  object get_p()
+  {
+    object res1 = _rsa_pike->get_p();
+    object res2 = BIGNUM(_rsa_c->cooked_get_p(), 256);
+
+    if (res1 != res2) {
+      werror("RSA: get_p() failed!\n");
+      error(sprintf("res1:%O != res2:%O\n", res1, res2));
+    }
+    return res1;
+  }
+
+  object get_q()
+  {
+    object res1 = _rsa_pike->get_q();
+    object res2 = BIGNUM(_rsa_c->cooked_get_q(), 256);
+
+    if (res1 != res2) {
+      werror("RSA: get_q() failed!\n");
+      error(sprintf("res1:%O != res2:%O\n", res1, res2));
+    }
+    return res1;
+  }
+
   static void create()
   {
     werror("RSA: Using rsa_wrapper\n");
@@ -213,6 +249,21 @@ bignum get_n()
 bignum get_e()
 {
   return BIGNUM(cooked_get_e(), 256);
+}
+
+bignum get_d()
+{
+  return BIGNUM(cooked_get_d(), 256);
+}
+
+bignum get_p()
+{
+  return BIGNUM(cooked_get_p(), 256);
+}
+
+bignum get_q()
+{
+  return BIGNUM(cooked_get_q(), 256);
 }
 #endif /* !USE_PIKE_RSA && !USE_RSA_WRAPPER && constant(_Crypto._rsa) */
 
