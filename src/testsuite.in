@@ -6561,6 +6561,24 @@ test_eval_error(return utf8_to_string("\367\207\270a"));
 test_eval_error(return utf8_to_string("\347\270a"));
 test_eval_error(return utf8_to_string("\303a"));
 
+// - String.trim_whites, String.trim_all_whites
+test_eq(String.trim_whites (" \t\0 \t"), "\0")
+test_eq(String.trim_whites (" \t\400 \t"), "\400")
+test_eq(String.trim_whites (" \t\200000 \t"), "\200000")
+test_eq(String.trim_whites ("\0"), "\0")
+test_eq(String.trim_whites ("\400"), "\400")
+test_eq(String.trim_whites ("\200000"), "\200000")
+test_eq(String.trim_whites (" \t "), "")
+test_eq(String.trim_whites (""), "")
+test_eq(String.trim_all_whites (" \t\n\r\0 \t\n\r"), "\0")
+test_eq(String.trim_all_whites (" \t\n\r\400 \t\n\r"), "\400")
+test_eq(String.trim_all_whites (" \t\n\r\200000 \t\n\r"), "\200000")
+test_eq(String.trim_all_whites ("\0"), "\0")
+test_eq(String.trim_all_whites ("\400"), "\400")
+test_eq(String.trim_all_whites ("\200000"), "\200000")
+test_eq(String.trim_all_whites (" \t\n\r "), "")
+test_eq(String.trim_all_whites (""), "")
+
 // - sum
 test_eq(`+(1,1),2)
 test_eq(`+(1,-2),-1)
