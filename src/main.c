@@ -342,7 +342,7 @@ void do_exit(int num) ATTRIBUTE((noreturn))
 
 #ifdef DEBUG_MALLOC
   {
-    extern cleanup_memhdrs(void);
+    extern void cleanup_memhdrs(void);
     cleanup_memhdrs();
   }
 #endif
