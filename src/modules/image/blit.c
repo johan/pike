@@ -18,7 +18,7 @@
 
 #include "image.h"
 
-struct program *image_program;
+extern struct program *image_program;
 #define THIS ((struct image *)(fp->current_storage))
 #define THISOBJ (fp->current_object)
 
