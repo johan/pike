@@ -1323,7 +1323,8 @@ __int64 foo;
 fi
 AC_CHECK_SIZEOF(__int64,0)
 
-AC_MY_CHECK_TYPE(size_t,long)
+AC_MY_CHECK_TYPE(size_t,unsigned long)
+AC_MY_CHECK_TYPE(ptrdiff_t,long)
 AC_MY_CHECK_TYPE(off_t,long)
 AC_MY_CHECK_TYPE(pid_t,int)
 AC_MY_CHECK_TYPE(uid_t,int)
