@@ -2837,7 +2837,7 @@ void f_create_process(INT32 args)
 }
 
 #ifdef HAVE_FORK
-void f_fork(INT32 args)
+void Pike_f_fork(INT32 args)
 {
   struct object *o;
   pid_t pid;
@@ -3320,7 +3320,7 @@ void init_signals(void)
 #ifdef HAVE_FORK
   
 /* function(void:object) */
-  ADD_EFUN("fork",f_fork,tFunc(tVoid,tObj),OPT_SIDE_EFFECT);
+  ADD_EFUN("fork",Pike_f_fork,tFunc(tVoid,tObj),OPT_SIDE_EFFECT);
 #endif
 
   
