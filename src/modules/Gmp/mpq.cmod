@@ -353,10 +353,10 @@ PIKECLASS mpq
 	{
 	  return sv->u.integer;
 	}else{
-	  bad_arg_error_2 (name, Pike_sp - args, args, arg, Pike_sp + arg - 1 - args,
-			   "Bad argument %d to %s(). "
-			   "The field \"%s\" doesn't hold an integer.\n",
-			   arg, name, ind);
+	  bad_arg_error (name, Pike_sp - args, args, arg, NULL, Pike_sp + arg - 1 - args,
+			 "Bad argument %d to %s(). "
+			 "The field \"%s\" doesn't hold an integer.\n",
+			 arg, name, ind);
 	}
       }
       return def;
