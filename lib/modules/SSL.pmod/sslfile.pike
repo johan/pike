@@ -156,9 +156,11 @@ private void ssl_read_callback(mixed id, string s)
 	return;
       }
   }
-  int res = queue_write();
-  if (res)
-    die(res);
+  if (this_object()) {
+    int res = queue_write();
+    if (res)
+      die(res);
+  }
 }
   
 private void ssl_write_callback(mixed id)
