@@ -454,6 +454,15 @@ void ins_f_byte(unsigned int b)
 
   FLUSH_CODE_GENERATOR_STATE();
   ADD_CALL(addr);
+#ifdef OPCODE_RETURN_JUMPADDR
+  if (instrs[b].flags & I_JUMP) {
+    /* This is the code that JUMP_EPILOGUE_SIZE compensates for. */
+    /* mtlr r3 */
+    MTSPR(PPC_REG_RET, PPC_SPREG_LR);
+    /* blr */
+    BCLR(20, 0);
+  }
+#endif
 }
 
 void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b)

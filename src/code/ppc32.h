@@ -44,13 +44,6 @@
 
 #define LOW_GET_JUMP()	(PROG_COUNTER[0])
 #define LOW_SKIPJUMP()	(SET_PROG_COUNTER(PROG_COUNTER + 1))
-#ifdef __linux
-/* SVR4 ABI */
-#define PROG_COUNTER (((INT32 **)__builtin_frame_address(1))[1])
-#else
-/* PowerOpen ABI */
-#define PROG_COUNTER (((INT32 **)__builtin_frame_address(1))[2])
-#endif
 
 #define SET_REG(REG, X) do {						  \
     INT32 val_ = X;							  \
@@ -249,6 +242,31 @@ void ppc32_decode_program(struct program *p);
 			  "r10", "r11", "r12")
 
 #define OPCODE_INLINE_BRANCH
+#define OPCODE_RETURN_JUMPADDR
+
+#ifdef OPCODE_RETURN_JUMPADDR
+
+/* Don't need an lvalue in this case. */
+#define PROG_COUNTER ((INT32 *)__builtin_return_address(0))
+
+#define JUMP_EPILOGUE_SIZE 2
+#define JUMP_SET_TO_PC_AT_NEXT(PC) \
+  ((PC) = PROG_COUNTER + JUMP_EPILOGUE_SIZE)
+
+#else /* !OPCODE_RETURN_JUMPADDR */
+
+#ifdef __linux
+/* SVR4 ABI */
+#define PROG_COUNTER (((INT32 **)__builtin_frame_address(1))[1])
+#else
+/* PowerOpen ABI */
+#define PROG_COUNTER (((INT32 **)__builtin_frame_address(1))[2])
+#endif
+
+#define JUMP_EPILOGUE_SIZE 0
+
+#endif /* !OPCODE_RETURN_JUMPADDR */
+
 
 #ifdef PIKE_DEBUG
 void ppc32_disassemble_code(void *addr, size_t bytes);
