@@ -15,6 +15,10 @@
 
 #include "global.h"
 RCSID("$Id$");
+#ifdef HAVE_WINSOCK2_H
+#include <winsock2.h>
+#endif
+
 #include "module_support.h"
 #include "las.h"
 #include "interpret.h"
@@ -59,10 +63,6 @@ RCSID("$Id$");
 #ifdef HAVE_SYS_STAT_H
 #include <sys/stat.h>
 #endif /* HAVE_SYS_STAT_H */
-
-#ifdef HAVE_WINSOCK2_H
-#include <winsock2.h>
-#endif
 
 /*
  * Functions
@@ -778,7 +778,7 @@ static void describe_hostent(struct hostent *hp)
   for (p = hp->h_addr_list; *p != 0; p++) {
     struct in_addr in;
  
-    memcpy(&in.s_addr, *p, sizeof (in.s_addr));
+    MEMCPY(&in.s_addr, *p, sizeof (in.s_addr));
     push_text(inet_ntoa(in));
     nelem++;
   }
@@ -793,7 +793,7 @@ static void describe_hostent(struct hostent *hp)
 #else
   {
     struct in_addr in;
-    memcpy(&in.s_addr, ret->h_addr, sizeof (in.s_addr));
+    MEMCPY(&in.s_addr, hp->h_addr, sizeof (in.s_addr));
     push_text(inet_ntoa(in));
   }
 

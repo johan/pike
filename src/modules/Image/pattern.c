@@ -25,6 +25,10 @@
 #include "image.h"
 
 extern struct program *image_program;
+#ifdef THIS
+#undef THIS
+#endif
+
 #define THIS ((struct image *)(fp->current_storage))
 #define THISOBJ (fp->current_object)
 

@@ -43,6 +43,7 @@ struct pike_crypto_des {
 		    unsigned INT32 *method, unsigned INT8 *src);
 };
 
+#undef THIS
 #define THIS ((struct pike_crypto_des *) fp->current_storage)
 
 /*

@@ -100,6 +100,10 @@ RCSID("$Id$");
 struct program *image_program;
 extern struct program *image_colortable_program;
 
+#ifdef THIS
+#undef THIS /* Needed for NT */
+#endif
+
 #define THIS ((struct image *)(fp->current_storage))
 #define THISOBJ (fp->current_object)
 

@@ -238,7 +238,7 @@ void finish()
       case 5..26:
 	tests=(_tests-2)*2;
 	werror("Testing "+(tests*2)+" sockets. ");
-	for(e=0;e<tests;e++) stdtest();
+	for(int e=0;e<tests;e++) stdtest();
 	break;
 
       case 27..48:

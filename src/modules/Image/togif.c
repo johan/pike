@@ -36,6 +36,10 @@ old GIF API compat stuff
 #include "image.h"
 #include "colortable.h"
 
+#ifdef THIS
+#undef THIS /* Needed for NT */
+#endif
+
 #define THIS ((struct image *)(fp->current_storage))
 #define THISOBJ (fp->current_object)
 

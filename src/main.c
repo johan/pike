@@ -94,6 +94,28 @@ void main(int argc, char **argv)
 #ifdef HAVE_GETENV
   master_file = getenv("PIKE_MASTER");
 #endif
+#if __NT__
+  {
+    char buffer[4096];
+    DWORD len=sizeof(buffer)-1,type=REG_SZ;
+    
+    if(RegQueryValueEx(HKEY_CURRENT_USER,
+		       "SOFTWARE\\Idonex\\Pike\\0.6\\PIKE_MASTER",
+		       0,
+		       &type,
+		       buffer,
+		       &len)==ERROR_SUCCESS ||
+       RegQueryValueEx(HKEY_CURRENT_USER,
+		       "SOFTWARE\\Idonex\\Pike\\0.6\\PIKE_MASTER",
+		       0,
+		       &type,
+		       buffer,
+		       &len)==ERROR_SUCCESS)
+    {
+      master_file=strdup(buffer);
+    }
+  }
+#endif
   if(!master_file) master_file = DEFAULT_MASTER;
 
   for(e=1; e<argc; e++)

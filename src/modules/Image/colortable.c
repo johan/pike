@@ -78,6 +78,9 @@ extern struct program *image_program;
 #define SQ(x) ((x)*(x))
 static INLINE int sq(int x) { return x*x; }
 
+#ifdef THIS
+#undef THIS /* Needed for NT */
+#endif
 #define THIS ((struct neo_colortable *)(fp->current_storage))
 #define THISOBJ (fp->current_object)
 

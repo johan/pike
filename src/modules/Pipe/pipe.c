@@ -71,6 +71,9 @@ RCSID("$Id$");
 
 static struct program *pipe_program, *output_program;
 
+#ifdef THIS
+#undef THIS
+#endif
 #define THIS ((struct pipe *)(fp->current_storage))
 #define THISOBJ (fp->current_object)
 

@@ -35,6 +35,7 @@ struct pike_crypto_pipe {
   INT32 mode;
 };
 
+#undef THIS
 #define THIS	((struct pike_crypto_pipe *)(fp->current_storage))
 /*
  * Globals
