@@ -180,6 +180,22 @@ class logout
     }
 }
 
+class create_mailbox
+{
+  inherit request;
+  constant arg_info = ({ "string" });
+
+  mapping easy_process(string mailbox_name)
+  {
+    if (server->create_mailbox(session, mailbox_name)) {
+      send(tag, "OK");
+    } else {
+      send(tag, "NO");
+    }
+    return ([ "action" : "finished" ]);
+  }
+}
+
 class list
 {
   inherit request;
