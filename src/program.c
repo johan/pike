@@ -4289,6 +4289,10 @@ INT32 define_function(struct pike_string *name,
 
     /* We modify the old definition if it is in this program */
 
+    if (funp->identifier_flags & IDENTIFIER_HAS_BODY)
+      /* Keep this flag. */
+      function_flags |= IDENTIFIER_HAS_BODY;
+
     if(!(ref.id_flags & ID_INHERITED))
     {
       if(func)

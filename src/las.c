@@ -5703,7 +5703,9 @@ int dooptcode(struct pike_string *name,
 	  ret=define_function(name,
 			      type,
 			      (unsigned INT16)modifiers,
-			      (unsigned INT8)(IDENTIFIER_C_FUNCTION | vargs),
+			      (unsigned INT8)(IDENTIFIER_C_FUNCTION |
+					      IDENTIFIER_HAS_BODY |
+					      vargs),
 			      &tmp,
 			      foo->u.efun->flags);
 	  free_node(n);
@@ -5735,7 +5737,9 @@ int dooptcode(struct pike_string *name,
   ret=define_function(name,
 		      type,
 		      (unsigned INT16)modifiers,
-		      (unsigned INT8)(IDENTIFIER_PIKE_FUNCTION | vargs),
+		      (unsigned INT8)(IDENTIFIER_PIKE_FUNCTION |
+				      IDENTIFIER_HAS_BODY |
+				      vargs),
 		      Pike_compiler->num_parse_error?NULL:&tmp,
 		      (unsigned INT16)
 		      (Pike_compiler->compiler_frame->opt_flags));
