@@ -5042,7 +5042,7 @@ CFLAGS="$NEW_CFLAGS"
 ##########################################################################
 
 case "x$pike_cv_sys_os" in
-  xSolaris | xAIX)
+  xSolaris | xAIX | xDarwin)
    if grep _REENTRANT confdefs.h >/dev/null 2>&1; then
      AC_DEFINE(USE_WAIT_THREAD)
    else
