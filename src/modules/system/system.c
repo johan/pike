@@ -511,6 +511,7 @@ void f_getgroups(INT32 args)
 #ifdef HAVE_SETUID 
 void f_setuid(INT32 args)
 {
+  int err;
   INT32 id;
 
 #ifdef PIKE_SECURITY
@@ -527,9 +528,9 @@ void f_setuid(INT32 args)
     id = sp[-args].u.integer;
   }
 
-  /* FIXME: Check return-code */
-  setuid(id);
-  pop_n_elems(args-1);
+  err = setuid(id);
+  pop_n_elems(args);
+  push_int(err);
 }
 #endif
 
@@ -1083,7 +1084,7 @@ void pike_module_init(void)
 #ifdef HAVE_SETUID
   
 /* function(int:void) */
-  ADD_EFUN("setuid", f_setuid,tFunc(tInt,tVoid), OPT_SIDE_EFFECT);
+  ADD_EFUN("setuid", f_setuid,tFunc(tInt,tInt), OPT_SIDE_EFFECT);
 #endif
 #ifdef HAVE_SETGID
   
