@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 #include <math.h>
 #include <ctype.h>
@@ -669,7 +670,7 @@ static INT32 really_low_sscanf(char *input,
 	  sval.u.array=allocate_array(0);
 	  SET_ONERROR(err, do_free_array, sval.u.array);
 
-	  while(1)
+	  while(input_len - eye)
 	  {
 	    int yes;
 	    struct svalue *save_sp=sp;
