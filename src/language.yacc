@@ -2551,10 +2551,11 @@ cond: TOK_IF
   }
   '(' safe_comma_expr end_cond statement optional_else_part
   {
+    int i=lex.current_line;
+    lex.current_line=$1;
     $$=mknode('?',$5,mknode(':',$7,$8));
-    $$->line_number=$1;
     $$=mkcastnode(void_type_string, $$);
-    $$->line_number=$1;
+    lex.current_line = i;
     pop_local_variables($<number>2);
     Pike_compiler->compiler_frame->last_block_level=$<number>3;
   }
