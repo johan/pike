@@ -178,7 +178,7 @@ PIKECLASS HashState
   EXIT
     {
       werror("HashState->EXIT\n");
-      if (THIS->ctx)
+      if (THIS->ctx && Pike_fp->current_object->prog)
       {
 	const struct nettle_hash *meta =
 	  GET_META(Pike_fp->current_object);
