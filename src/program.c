@@ -324,7 +324,7 @@ static char *raw_lfun_types[] = {
  *!
  *!   Object destruction callback.
  *!   
- *!   This function is called by @[destruct()] right before
+ *!   This function is called by @[predef::destruct()] right before
  *!   it will zero all the object variables, and destroy the object.
  *!
  *! @note
