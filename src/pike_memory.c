@@ -1216,6 +1216,7 @@ static inline unsigned long lhash(struct memhdr *m, LOCATION location)
   }							\
 }while(0)
 
+#undef BLOCK_ALLOC_HSIZE_SHIFT
 #define BLOCK_ALLOC_HSIZE_SHIFT 1
 PTR_HASH_ALLOC(memhdr,16382)
 
