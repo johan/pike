@@ -39,20 +39,6 @@ case "$1" in
             install -d -m 755 -o root -g root /usr/local/$d
         fi
     done
-    
-    PIKEVER=`/usr/bin/$PIKEBIN -e 'write("%d.%d.%d", __REAL_MAJOR__, __REAL_MINOR__, __BUILD__);'` || ""
-    if [ -x /usr/lib/pike${PIKE}/${PIKEVER}/dumpmodule.pike ]; then
-        CURDIR=`pwd`
-        cd /usr/lib/pike${PIKE}/${PIKEVER}/
-        echo Precompiling modules...
-        /usr/bin/${PIKEBIN} ./dumpmodule.pike --report-failed \
-                                              --recursive \
-                                              --progress-bar \
-                                              /usr/lib/pike${PIKE}/${PIKEVER}/modules \
-                                              /usr/lib/pike${PIKE}/${PIKEVER}/0.6 \
-                                              /usr/lib/pike${PIKE}/${PIKEVER}/7.0 \
-                                              /usr/lib/pike${PIKE}/${PIKEVER}/7.2
-                                              
     fi
     ;;
 

@@ -167,8 +167,8 @@ install: build
 		lib_prefix=/usr/lib/$(PIKE)/$(VERSION) \
 		INSTALLARGS=--traditional install
 
-	# we dump the modules ourselves
-	-rm -f `find $(CURDIR)/debian/$(PIKE)-core/usr/lib/$(PIKE)/$(VERSION)/ -name "*.o" -type f -print`
+	# re-dump modules (some of them fail to be dumped correctly for the first time)
+	$(MAKE) -C$(BUILDDIR)/ dump_modules
 
 	# install the docs
 	install -d -m 755 -o root -g root $(CURDIR)/debian/$(PIKE)-manual/usr/share/doc/$(PIKE)-doc/html/manual
