@@ -197,12 +197,11 @@ static void dlclose(void *module)
 #endif  /* !EMULATE_DLOPEN */
 
 
+#endif /* HAVE_SOME_DLOPEN */
+
 #ifndef RTLD_NOW
 #define RTLD_NOW 0
 #endif
-
-#endif
-
 
 #ifndef TESTING
 
