@@ -871,6 +871,19 @@ static ptrdiff_t lower_cpp(struct cpp *this,
       PUTC(' ');
       break;
 
+    case '\\':
+      if(data[pos]=='\n')
+	pos++;
+      else if ((data[pos] == '\r') && (data[pos+1] == '\n'))
+	pos += 2;
+      else {
+	PUTC ('\\');
+	break;
+      }
+      this->current_line++;
+      PUTNL();
+      goto do_skipwhite;
+
     case '\t':
     case ' ':
     case '\r':
