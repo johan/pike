@@ -14,6 +14,9 @@
 #endif
 
 //! Audio data format handling
+//!
+//! @note
+//!    API remains marked "unstable".
 
 //!
 class ANY {
