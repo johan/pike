@@ -575,7 +575,20 @@ static void f_pid_status_wait(INT32 args)
       pid=THIS->pid;
 
       if(err)
-	error("Pike lost track of a child, pid=%d, errno=%d.\n",pid,err);
+      {
+
+#define BUGGY_WAITPID
+
+#ifdef BUGGY_WAITPID
+	struct svalue key,*s;
+	key.type=T_INT;
+	key.u.integer=pid;
+	s=low_mapping_lookup(pid_mapping, &key);
+	if(!s || s->type != T_OBJECT || s->u.object != fp->current_object)
+#endif
+	  error("Pike lost track of a child, pid=%d, errno=%d.\n",pid,err);
+
+      }
 
       THREADS_ALLOW();
 #ifdef HAVE_WAITPID
@@ -585,6 +598,7 @@ static void f_pid_status_wait(INT32 args)
       pid=wait4(pid,&status,0,0);
 #else
       pid=-1;
+      errno=ENOTSUP;
 #endif
 #endif
       THREADS_DISALLOW();
