@@ -1533,10 +1533,16 @@ static int do_safe_index_call(struct cpp *this, struct pike_string *s)
   if(!s) return 0;
 
   if (SETJMP_SP(recovery, 1)) {
-    if (!s->size_shift)
-      cpp_handle_exception (this, "Error indexing module with \"%s\".", s->str);
-    else
-      cpp_handle_exception (this, "Error indexing module in '.' operator.");
+    if (TEST_COMPAT (7, 4)) {
+      free_string (&throw_value);
+      throw_value.type = T_INT;
+    }
+    else {
+      if (!s->size_shift)
+	cpp_handle_exception (this, "Error indexing module with \"%s\".", s->str);
+      else
+	cpp_handle_exception (this, "Error indexing module in '.' operator.");
+    }
     res = 0;
     push_undefined();
   } else {
