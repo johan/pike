@@ -102,7 +102,7 @@ OPCODE1(F_GLOBAL,"global")
 BREAK;
 
 
-OPCODE2(F_EXTERNAL,"external")
+OPCODE2ACK(F_EXTERNAL,"external")
 {
   struct inherit *inherit;
   struct program *p;
