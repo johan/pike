@@ -2139,6 +2139,7 @@ void dump_program_tables (struct program *p, int indent)
       if (!file->size_shift)
 	fprintf (stderr, "%*s                                  %s:%d\n",
 		 indent, "", file->str, line);
+      free_string (file);
     }
   }
   fprintf(stderr, "\n"
