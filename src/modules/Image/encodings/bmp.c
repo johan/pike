@@ -491,7 +491,8 @@ void i_img_bmp__decode(INT32 args,int header_only)
    struct neo_colortable *nct=NULL;
    struct object *o;
    rgb_group *d;
-   int n=0,j=0,i,y,skip;
+   int n=0,i,y,skip;
+   ptrdiff_t j=0;
    int windows=0;
    int quality=50; /* for JPEG decoding */
 

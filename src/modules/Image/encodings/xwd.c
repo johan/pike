@@ -145,7 +145,7 @@ void img_xwd__decode(INT32 args,int header_only,int skipcmap)
       error("Image.XWD._decode: header to small\n");
    header.header_size=CARD32n(s,0);
 
-   if ((unsigned long)s->len<header.header_size || s->len<100)
+   if ((size_t)s->len < header.header_size || s->len<100)
       error("Image.XWD._decode: header to small\n");
 
    header.file_version=CARD32n(s,1);     

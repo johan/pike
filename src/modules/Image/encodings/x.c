@@ -779,7 +779,7 @@ static void image_x_decode_truecolor(INT32 args)
 {
    struct pike_string *ps;
    unsigned char *s;
-   unsigned long len;
+   size_t len;
    INT32 width,height,bpp,alignbits,swapbytes;
    INT32 rbits,rshift,gbits,gshift,bbits,bshift;
    int i;
@@ -796,7 +796,7 @@ static void image_x_decode_truecolor(INT32 args)
 
    ps=sp[-args].u.string;
    s=(unsigned char*)ps->str;
-   len=ps->len;
+   len = ps->len;
    width=sp[1-args].u.integer;
    height=sp[2-args].u.integer;
    bpp=sp[3-args].u.integer;
@@ -1017,7 +1017,7 @@ void image_x_decode_pseudocolor(INT32 args)
 {
    struct pike_string *ps;
    unsigned char *s;
-   unsigned long len;
+   size_t len;
    INT32 width,height,bpp,alignbits,swapbytes;
    int i;
    INT32 n, m;
@@ -1042,7 +1042,7 @@ void image_x_decode_pseudocolor(INT32 args)
 
    add_ref(ps=sp[-args].u.string);
    s=(unsigned char*)ps->str;
-   len=ps->len;
+   len = ps->len;
    width=sp[1-args].u.integer;
    height=sp[2-args].u.integer;
    bpp=sp[3-args].u.integer;
