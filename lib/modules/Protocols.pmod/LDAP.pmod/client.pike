@@ -50,8 +50,6 @@
 //
 //	newer versions - see CVS at roxen.com (hop)
 //
-//			 - corrected deUTF8 values in result
-//			 -
 //
 // Specifications:
 //
