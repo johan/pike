@@ -1134,6 +1134,10 @@ static void dsv_add_string_to_buf (struct pike_string *str)
     }
 }
 
+
+/* FIXME: Ought to be rewritten to use string_builder.
+ * FIXME: Ought not to have global state.
+ */
 PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct processing *p)
 {
   char buf[50];
