@@ -992,7 +992,7 @@ void do_html_parse_lines(struct pike_string *ss,
 void f_get_all_active_fd(INT32 args)
 {
   int i,fds,ne;
-  struct stat foo;
+  PIKE_STAT_T foo;
 
   ne = MAX_OPEN_FILEDESCRIPTORS;
 
@@ -1018,7 +1018,7 @@ void f_fd_info(INT32 args)
 {
   static char buf[256];
   int i;
-  struct stat foo;
+  PIKE_STAT_T foo;
 
   if (args<1||
       sp[-args].type!=T_INT)

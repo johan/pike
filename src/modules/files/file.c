@@ -1893,7 +1893,7 @@ static void file_truncate(INT32 args)
 static void file_stat(INT32 args)
 {
   int fd;
-  struct stat s;
+  PIKE_STAT_T s;
   int tmp;
 
   if(FD < 0)
@@ -3323,7 +3323,7 @@ static void exit_file_locking(void)
 static void f_get_all_active_fd(INT32 args)
 {
   int i,fds,ne;
-  struct stat foo;
+  PIKE_STAT_T foo;
 
   ne = MAX_OPEN_FILEDESCRIPTORS;
 

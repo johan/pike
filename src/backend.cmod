@@ -848,7 +848,7 @@ PIKECLASS Backend
   static void backend_do_debug(struct Backend_struct *me)
     {
       int e;
-      struct stat tmp;
+      PIKE_STAT_T tmp;
       extern void check_all_arrays(void);
       extern void check_all_mappings(void);
       extern void check_all_programs(void);

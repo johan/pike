@@ -84,7 +84,7 @@ struct source *source_normal_file_make( struct svalue *s,
 					INT64 start, INT64 len )
 {
   struct fd_source *res;
-  struct stat st;
+  PIKE_STAT_T st;
   if(s->type != PIKE_T_OBJECT)
     return 0;
 
