@@ -3887,6 +3887,9 @@ int dooptcode(struct pike_string *name,
   }else{
     vargs=0;
   }
+  if(compiler_frame->lexical_scope>1)
+    vargs|=IDENTIFIER_SCOPED;
+
   if(compiler_pass==1)
   {
     tmp.offset=-1;

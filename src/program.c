@@ -1071,7 +1071,7 @@ void check_program(struct program *p)
     check_string(p->identifiers[e].name);
     check_string(p->identifiers[e].type);
 
-    if(p->identifiers[e].identifier_flags & ~15)
+    if(p->identifiers[e].identifier_flags & ~IDENTIFIER_MASK)
       fatal("Unknown flags in identifier flag field.\n");
 
     if(p->identifiers[e].run_time_type!=T_MIXED)
