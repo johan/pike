@@ -92,7 +92,7 @@ void fd_exit()
   mt_destroy(&fd_mutex);
 }
 
-int debug_fd_stat(char *file, struct stat *buf)
+int debug_fd_stat(const char *file, struct stat *buf)
 {
   ptrdiff_t l = strlen(file);
   char fname[MAX_PATH];
@@ -114,7 +114,7 @@ int debug_fd_stat(char *file, struct stat *buf)
   return stat(file, buf);
 }
 
-PMOD_EXPORT FD debug_fd_open(char *file, int open_mode, int create_mode)
+PMOD_EXPORT FD debug_fd_open(const char *file, int open_mode, int create_mode)
 {
   HANDLE x;
   FD fd;
