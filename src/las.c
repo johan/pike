@@ -2135,10 +2135,8 @@ static void low_build_function_type(node *n)
   }
 }
 
-#define YYTE_IS_WARNING	1
-
-static void yytype_error(char *msg, struct pike_string *expected_t,
-			 struct pike_string *got_t, unsigned int flags)
+void yytype_error(char *msg, struct pike_string *expected_t,
+		  struct pike_string *got_t, unsigned int flags)
 {
   struct pike_string *expected = describe_type(expected_t);
   struct pike_string *got = describe_type(got_t);
