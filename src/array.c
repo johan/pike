@@ -242,8 +242,6 @@ void simple_set_index(struct array *a,struct svalue *ind,struct svalue *s)
   INT32 i;
   switch (ind->type) {
     case T_INT:
-      if(ind->type != T_INT)
-	error("Index is not an integer.\n");
       i=ind->u.integer;
       if(i<0) i+=a->size;
       if(i<0 || i>=a->size) {
