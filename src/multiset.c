@@ -852,7 +852,11 @@ PMOD_EXPORT struct multiset *allocate_multiset (int allocsize,
    * multisets with allocsize, since prepare_for_add shrinks them. */
 
 #ifdef PIKE_DEBUG
-  if (cmp_less) check_svalue (cmp_less);
+  if (cmp_less) {
+    if(cmp_less->type == T_INT)
+      cmp_less->subtype = NUMBER_NUMBER;
+    check_svalue (cmp_less);
+  }
 #endif
 
   if (allocsize || cmp_less || (flags & ~MULTISET_INDVAL)) {
@@ -1045,7 +1049,11 @@ PMOD_EXPORT void multiset_set_cmp_less (struct multiset *l,
 #ifdef PIKE_DEBUG
   debug_malloc_touch (l);
   debug_malloc_touch (old);
-  if (cmp_less) check_svalue (cmp_less);
+  if (cmp_less) {
+    if(cmp_less->type == T_INT)
+      cmp_less->subtype = NUMBER_NUMBER;
+    check_svalue (cmp_less);
+  }
 #endif
 
 again:
@@ -1145,7 +1153,11 @@ PMOD_EXPORT struct multiset *mkmultiset_2 (struct array *indices,
   if (values && values->size != indices->size)
     Pike_fatal ("Indices and values not of same size (%d vs %d).\n",
 	   indices->size, values->size);
-  if (cmp_less) check_svalue (cmp_less);
+  if (cmp_less) {
+    if(cmp_less->type == T_INT)
+      cmp_less->subtype = NUMBER_NUMBER;
+    check_svalue (cmp_less);
+  }
 #endif
 
   new.l = NULL, new.msd2 = NULL;
