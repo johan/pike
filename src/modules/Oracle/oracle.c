@@ -1,3 +1,19 @@
+/*
+ * $Id$
+ *
+ * Pike interface to Oracle databases.
+ *
+ * Marcus Comstedt
+ */
+
+/*
+ * Includes
+ */
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif /* HAVE_CONFIG_H */
+
 #include <global.h>
 #include <svalue.h>
 #include <object.h>
@@ -16,8 +32,6 @@
 #include <ociapr.h>
 
 #endif
-
-#include "config.h"
 
 RCSID("$Id$");
 
