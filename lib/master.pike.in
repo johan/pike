@@ -629,8 +629,7 @@ void unregister(program p)
       if (n->is_resolv_dirnode || n->is_resolv_joinnode)
 	n->delete_value (p);
   }
-  if (objectp (objects[p]))
-    m_delete(objects, p);
+  m_delete(objects, p);
   foreach (fc; string name; mixed mod)
     if (objectp(mod) && object_program(mod) == p)
       m_delete(fc, name);
