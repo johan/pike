@@ -17,7 +17,7 @@ HANDLE da_handle[MAX_OPEN_FILEDESCRIPTORS];
 int fd_type[MAX_OPEN_FILEDESCRIPTORS];
 int first_free_handle;
 
-#define FD_DEBUG
+/* #define FD_DEBUG */
 
 #ifdef FD_DEBUG
 #define FDDEBUG(X) X
