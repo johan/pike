@@ -153,7 +153,7 @@ class table {
     return select(@remap(fields) - remap(cs, 1));
   }
 
-  object where(function f, array(int|string)|int|string cs, mixed ... args)
+  object where(array(int|string)|int|string cs, function f, mixed ... args)
   {
     array t = ({});
     cs = remap(arrayp(cs)?cs:({ cs }));
