@@ -370,12 +370,12 @@ static INLINE rgb_group _pixel_apply_matrix(struct image *img,
 }
 
 
-void img_apply_matrix(struct image *dest,
-		      struct image *img,
-		      int width,int height,
-		      rgbd_group *matrix,
-		      rgb_group default_rgb,
-		      double div)
+static void img_apply_matrix(struct image *dest,
+			     struct image *img,
+			     int width,int height,
+			     rgbd_group *matrix,
+			     double div,
+			     rgb_group default_rgb)
 {
    rgb_group *d,*ip,*dp;
    rgbd_group *mp;
@@ -3239,7 +3239,7 @@ CHRONO("apply_matrix, begin");
 
    if (THIS->img)
       img_apply_matrix((struct image*)o->storage,THIS,
-		       width,height,matrix,default_rgb,div);
+		       width,height,matrix,div,default_rgb);
 
 CHRONO("apply_matrix, end");
 
