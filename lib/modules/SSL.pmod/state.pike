@@ -43,7 +43,7 @@ string tls_pad(string data, int blocksize) {
 string tls_unpad(string data) {
   int(0..255) plen=[int(0..255)]data[-1];
 
-#ifdef DEBUG
+#ifdef SSL3_DEBUG
   string padding=reverse(data)[..plen];
 
   /* Checks that the padding is correctly done */
