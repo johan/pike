@@ -227,6 +227,12 @@ static void mpzmod_get_int(INT32 args)
 #endif /* AUTO_BIGNUM */
 }
 
+static void mpzmod___hash(INT32 args)
+{
+  pop_n_elems(args);
+  push_int(mpz_get_si(THIS));
+}
+
 static void mpzmod_get_float(INT32 args)
 {
   pop_n_elems(args);
@@ -1381,7 +1387,7 @@ void pike_module_exit(void)
 									\
   ADD_FUNCTION("`!",mpzmod_not,tFunc(tNone,tInt),0);			\
 									\
-  ADD_FUNCTION("__hash",mpzmod_get_int,tFunc(tNone,tInt),0);		\
+  ADD_FUNCTION("__hash",mpzmod___hash,tFunc(tNone,tInt),0);		\
   ADD_FUNCTION("cast",mpzmod_cast,tFunc(tStr,tMix),0);			\
 									\
   ADD_FUNCTION("_is_type", mpzmod__is_type, tFunc(tStr,tInt), 0);	\
