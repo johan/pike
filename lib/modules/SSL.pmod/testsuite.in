@@ -1,0 +1,11 @@
+dnl $Id$
+
+test_any([[
+#pike 7.4
+return SSL.constants && 1;
+]], 1)
+
+test_any([[
+#pike 7.4
+return SSL.cipher && 1;
+]], 1)
