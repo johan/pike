@@ -775,7 +775,6 @@ class uid {
 
 constant authenticate = unimplemented;
 constant examine = unimplemented;
-constant create_mailbox = unimplemented;
 constant delete = unimplemented;
 constant rename = unimplemented;
 constant subscribe = unimplemented;
