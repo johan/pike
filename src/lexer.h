@@ -342,6 +342,7 @@ static int low_yylex(YYSTYPE *yylval)
 	goto badhash;
 
       case 'p':
+	/* FIXME: Support #pike */
 	if(ISWORD("pragma"))
 	{
 	  SKIPSPACE();
