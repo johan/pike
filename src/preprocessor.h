@@ -455,7 +455,8 @@ static ptrdiff_t calcC(struct cpp *this, WCHAR *data, ptrdiff_t len,
 
 	if(!GOBBLE('('))
 	{
-	  push_int(0);
+	  if(OUTP())
+	    push_int(0);
 	  break;
 	}
 
