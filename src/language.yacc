@@ -3364,7 +3364,7 @@ low_idents: TOK_IDENTIFIER
       {
 	if(Pike_compiler->compiler_pass==2)
 	{
-	  my_yyerror("Undefined identifier %s.", Pike_compiler->last_identifier->str);
+	  my_yyerror("Undefined identifier \"%s\".", Pike_compiler->last_identifier->str);
 	  $$=0;
 	}else{
 	  $$=mknode(F_UNDEFINED,0,0);
@@ -3425,11 +3425,11 @@ low_idents: TOK_IDENTIFIER
       else {
 	if (Pike_compiler->compiler_pass == 2) {
 	  if (inherit_state->new_program->inherits[$1].name) {
-	    my_yyerror("Undefined identifier %s::%s.",
+	    my_yyerror("Undefined identifier \"%s::%s\".",
 		       inherit_state->new_program->inherits[$1].name->str,
 		       Pike_compiler->last_identifier->str);
 	  } else {
-	    my_yyerror("Undefined identifier %s.", Pike_compiler->last_identifier->str);
+	    my_yyerror("Undefined identifier \"%s\".", Pike_compiler->last_identifier->str);
 	  }
 	  $$=0;
 	}
@@ -3471,9 +3471,11 @@ low_idents: TOK_IDENTIFIER
       {
 	if (Pike_compiler->compiler_pass == 2) {
 	  if (TEST_COMPAT(7,2)) {
-	    yywarning("Undefined identifier ::%s.", $2->u.sval.u.string->str);
+	    yywarning("Undefined identifier \"::%s.\"",
+		      $2->u.sval.u.string->str);
 	  } else {
-	    my_yyerror("Undefined identifier ::%s.", $2->u.sval.u.string->str);
+	    my_yyerror("Undefined identifier \"::%s\".",
+		       $2->u.sval.u.string->str);
 	  }
 	}
 	$$=mkintnode(0);
