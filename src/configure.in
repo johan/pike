@@ -1136,6 +1136,7 @@ AC_CHECK_FUNCS( \
  rindex \
  setlocale \
  setrlimit \
+ setresuid \
  sigaction \
  sigblock \
  sigprocmask \
