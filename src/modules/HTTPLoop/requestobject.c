@@ -20,6 +20,7 @@
 #include "svalue.h"
 #include "threads.h"
 #include "fdlib.h"
+#include "builtin_functions.h"
 
 #include <stdlib.h>
 #include <errno.h>
@@ -46,8 +47,6 @@
 #include "util.h"
 #include "cache.h"
 #include "requestobject.h"
-
-extern void f_aggregate(INT32 args); /* no prototype? */
 
 /* Used when fatal() can't be. */
 #define DWERROR(X)	write(2, X, sizeof(X) - sizeof(""))
