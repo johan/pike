@@ -616,10 +616,8 @@ def: modifiers type_or_error optional_stars F_IDENTIFIER
   }
   | error '}'
   {
-    YYSTYPE foo;
-    foo.number = 0;
     reset_type_stack();
-    YYBACKUP('}', foo);
+    yychar = '}';	/* Put the '}' back on the input stream */
   }
   ;
 
@@ -1004,11 +1002,9 @@ statement: unused2 ';' { $$=$1; }
   | error ';' { reset_type_stack(); $$=0; yyerrok; }
   | error '}'
   {
-    YYSTYPE foo;
-    foo.number = 0;
     reset_type_stack();
     yyerror("Missing ';'.");
-    YYBACKUP('}', foo);
+    yychar = '}';	/* Put the '}' back on the input stream. */
   }
   | ';' { $$=0; } 
   ;
