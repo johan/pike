@@ -385,6 +385,7 @@ PMOD_EXPORT void pike_module_export_symbol(char *name,
   s.type=T_INT;
   s.subtype=4711;
   mapping_string_insert(exported_symbols, str, &s);
+  free_string(str);
 }
 
 PMOD_EXPORT void *pike_module_import_symbol(char *name,
