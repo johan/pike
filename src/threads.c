@@ -887,8 +887,8 @@ static void *farm(void *_a)
     mt_unlock( &rosie );
 /*     fprintf(stderr, "farm_endwait %p\n", me); */
   } while(1);
-  // NOT_REACHED
-  return NULL;	// Keep the compiler happy.
+  /* NOT_REACHED */
+  return NULL;	/* Keep the compiler happy. */
 }
 
 int th_num_idle_farmers(void)
