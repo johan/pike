@@ -6,6 +6,15 @@ ifdef([substr], ,[m4_copy([m4_substr],[substr])])
 dnl Autoconf 2.53+ hides their version numbers in m4_PACKAGE_VERSION.
 ifdef([AC_ACVERSION], ,[m4_copy([m4_PACKAGE_VERSION],[AC_ACVERSION])])
 
+define([if_autoconf],
+[ifelse(ifelse(index(AC_ACVERSION,.),-1,0,[m4_eval(
+  substr(AC_ACVERSION, 0, index(AC_ACVERSION,.))-0 >= $1 &&
+  (
+   substr(AC_ACVERSION, 0, index(AC_ACVERSION,.))-0 > $1 ||
+   substr(AC_ACVERSION, index(+AC_ACVERSION,.))-0 >= $2
+  )
+)]),1,$3,$4)])
+
 pushdef([AC_PROG_CC_WORKS],
 [
   popdef([AC_PROG_CC_WORKS])
@@ -467,11 +476,11 @@ pushdef([AC_OUTPUT],
     make_variables_in="${PIKE_SRC_DIR}/make_variables.in"
     AC_MSG_RESULT(${PIKE_SRC_DIR})
 
-    if test "0`echo 'if(AC_ACVERSION >= 2.50)1'|bc`" = "01"; then :; else
+    if_autoconf(2,50,,[
       # Kludge for autoconf 2.13 and earlier prefixing all substitution
       # source files with $ac_given_source_dir/ (aka $srcdir/).
       make_variables_in="`cd $srcdir;pwd|sed -e 's@[[^/]]*@@g;s@/@../@g'`$make_variables_in"
-    fi
+    ])
   else
 
     counter=.
@@ -499,7 +508,7 @@ pushdef([AC_OUTPUT],
   make_variables=make_variables
 
   # Autoconf 2.50 and later stupidity...
-  if test "0`echo 'if(AC_ACVERSION >= 2.50)1'|bc`" = "01"; then
+  if_autoconf(2,50,[
     dnl AC_MSG_WARN(cleaning the environment from autoconf 2.5x pollution)
   
     unset ac_cv_env_build_alias_set
@@ -518,7 +527,7 @@ pushdef([AC_OUTPUT],
     unset ac_cv_env_CPPFLAGS_value
     unset ac_cv_env_CPP_set
     unset ac_cv_env_CPP_value
-  fi
+  ])
 
   popdef([AC_OUTPUT])
   AC_OUTPUT(make_variables:$make_variables_in $][1,$][2,$][3)
