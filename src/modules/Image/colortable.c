@@ -3567,7 +3567,7 @@ void image_colortable_map(INT32 args)
 	    
 	    while (n--)
 	    {
-	       if (*s<nct->u.flat.numentries)
+	       if (*s < nct->u.flat.numentries)
 		  *(d++)=nct->u.flat.entries[*s].color;
 	       else 
 		  d++; /* it's black already, and this is illegal */
@@ -3577,11 +3577,11 @@ void image_colortable_map(INT32 args)
 	 }
 	 case 2:
 	 {
-	    p_wchar2 *s=(p_wchar2*)ps->str;
+	    p_wchar2 *s = (p_wchar2*)ps->str;
 	    
 	    while (n--)
 	    {
-	       if (*s<(p_wchar2)nct->u.flat.numentries)
+	       if (*s < nct->u.flat.numentries)
 		  *(d++)=nct->u.flat.entries[*s].color;
 	       else 
 		  d++; /* it's black already, and this is illegal */
