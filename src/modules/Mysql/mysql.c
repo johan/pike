@@ -1726,7 +1726,7 @@ PIKE_MODULE_INIT
   /* function(void:int|string) */
   ADD_FUNCTION("error", f_error,tFunc(tVoid,tOr(tInt,tStr)), ID_PUBLIC);
   /* function(string|void, string|void, string|void, string|void:void) */
-  ADD_FUNCTION("create", f_create,tFunc(tOr(tStr,tVoid) tOr(tStr,tVoid) tOr(tStr,tVoid) tOr(tStr,tVoid),tVoid), ID_PUBLIC);
+  ADD_FUNCTION("create", f_create,tFunc(tOr(tStr,tVoid) tOr(tStr,tVoid) tOr(tStr,tVoid) tOr(tStr,tVoid) tOr(tMapping, tVoid),tVoid), ID_PUBLIC);
   /* function(int, void|mapping:string) */
   ADD_FUNCTION("_sprintf",mysql__sprintf,
 	       tFunc(tInt tOr(tVoid,tMapping),tString),0);
