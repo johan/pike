@@ -957,7 +957,7 @@ PMOD_EXPORT void wrong_number_of_args_error(const char *name, int args, int expe
   {
     bad_arg_error (name, Pike_sp-args, args, expected, NULL, NULL,
 		   "Too few arguments to %s(). Expected at least %d (got %d).\n",
-		   name, args, expected, args);
+		   name, expected, args);
   }else {
     bad_arg_error (name, Pike_sp-args, args, expected, NULL, NULL,
 		   "Too many arguments to %s(). Expected at most %d (got %d).\n",
