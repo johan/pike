@@ -1456,7 +1456,7 @@ static void file_query_address(INT32 args)
 {
   struct sockaddr_in addr;
   int i;
-  size_t len;
+  int len;
   char buffer[496],*q;
 
   if(FD <0)

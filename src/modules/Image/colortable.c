@@ -2342,7 +2342,7 @@ void image_colortable_cast_to_string(struct neo_colortable *nct)
 {
    struct pike_string *str;
    str=begin_shared_string(image_colortable_size(nct)*3);
-   image_colortable_write_rgb(nct,str->str);
+   image_colortable_write_rgb(nct,(unsigned char *)str->str);
    push_string(end_shared_string(str));
 }
 
