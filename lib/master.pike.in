@@ -1600,7 +1600,7 @@ void _main(array(string) orig_argv, array(string) env)
       }		
     }
 
-  void _error(string a, mixed ... args) {
+  void _error(string a, void|mixed ... b) {
     werror(a, @b);
     exit(1);
   };
@@ -1875,7 +1875,7 @@ void _main(array(string) orig_argv, array(string) env)
 #endif
 
   if(!script->main)
-    _error("Error: "+argv[0]+" has no main().\n");
+    _error("Error: %s has no main().\n", argv[0]);
 
   if(trace) predef::trace(trace);
   i=script->main(sizeof(argv),argv,env);
