@@ -135,6 +135,12 @@ array(string) split(string data, void|mapping state)
 	  break;
 	}
 
+	if(data[pos..pos+5]=="string") {
+	  pos=search(data,"\"",pos);
+	  pos=search(data,"\"",pos);
+	  break;
+	}
+
 	pos=search(data,"\n",pos);
 	if(pos==-1)
 	  error("Failed to find end of preprocessor statement.\n");
