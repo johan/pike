@@ -705,10 +705,6 @@ int dbm_main(int argc, char **argv)
     call_callback(& post_master_callbacks, 0);
     free_callback_list(& post_master_callbacks);
 
-#ifdef AUTO_BIGNUM
-    init_auto_bignum();
-#endif
-
     TRACE((stderr, "Call master->_main()...\n"));
 
     a=allocate_array_no_init(argc,0);
