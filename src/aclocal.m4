@@ -74,15 +74,13 @@ pushdef([AC_PROG_CC],
     else :; fi
   fi
 
-  AC_MSG_CHECKING([if we are using TCC])
+  AC_MSG_CHECKING([if we are using TCC (TenDRA C Compiler)])
   AC_CACHE_VAL(pike_cv_prog_tcc, [
-    case "`$CC -V 2>&1|head -n 1`" in
-dnl test is broken, catches tinycc too, which doesn't like -Ysystem
-dnl      tcc*)
-dnl        pike_cv_prog_tcc="yes"
-dnl      ;;
-      *) pike_cv_prog_tcc="no" ;;
-    esac
+    if $CC -V 2>&1 | grep -i TenDRA >/dev/null; then
+      pike_cv_prog_tcc="yes"
+    else
+      pike_cv_prog_tcc="no"
+    fi
   ])
   if test "x$pike_cv_prog_tcc" = "xyes"; then
     AC_MSG_RESULT(yes)
