@@ -38,6 +38,7 @@ RCSID("$Id$");
 #ifndef CONFIGURE_TEST
 #include "time_stuff.h"
 #include "fd_control.h"
+#include "pike_error.h"
 #endif
 
 /*
@@ -339,8 +340,8 @@ cpu_time_t get_cpu_time (void)
 cpu_time_t get_cpu_time (void)
 {
   struct tms tms;
-#ifdef PIKE_DEBUG
-  if (!pike_clk_tck) error ("Called before dbm_main.\n");
+#if defined (PIKE_DEBUG) && !defined (CONFIGURE_TEST)
+  if (!pike_clk_tck) Pike_error ("Called before dbm_main.\n");
 #endif
   if (times (&tms) == (clock_t) -1)
     return (cpu_time_t) -1;
