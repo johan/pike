@@ -203,7 +203,7 @@ static void exit_mysql_struct(struct object *o)
     mysql_close(socket);
   }
   if (mysql) {
-    mysql_close(mysql);
+    free(mysql);
   }
 
   MYSQL_DISALLOW();
