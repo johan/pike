@@ -68,7 +68,4 @@
 /* Define if your mysql.h defines MYSQL_OPT_LOCAL_INFILE */
 #undef HAVE_MYSQL_OPT_LOCAL_INFILE
 
-/* Define if you have the `CreateSemaphoreA' function. */
-#undef HAVE_CREATESEMAPHOREA
-
 #endif /* PIKE_MYSQL_CONFIG_H */
