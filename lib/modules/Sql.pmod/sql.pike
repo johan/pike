@@ -297,7 +297,9 @@ static private array(mapping(string:mixed)) res_obj_to_array(object res_obj)
 //.   Return last error message.  
 int|string error()
 {
-  return(master_sql->error());
+  if (functionp (master_sql->error))
+    return master_sql->error();
+  return "Unknown error";
 }
 
 //. - select_db
