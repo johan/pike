@@ -1958,9 +1958,12 @@ void f_create_process(INT32 args)
       if(cmd->size < 1)
 	Pike_error("Too few elements in argument array.\n");
       
-      for(e=0;e<cmd->size;e++)
+      for(e=0;e<cmd->size;e++) {
 	if(ITEM(cmd)[e].type!=T_STRING)
 	  Pike_error("Argument is not a string.\n");
+	if(ITEM(cmd)[e].u.string->size_shift)
+	  Pike_error("Argument is not an 8-bit string.\n");	
+      }
 
       array_fix_type_field(cmd);
 
@@ -1983,6 +1986,9 @@ void f_create_process(INT32 args)
     /* Quote command to allow all characters (if possible) */
     /* Damn! NT doesn't have quoting! The below code attempts to
      * fake it
+     */
+    /* Note: On NT the following characters are illegal in filenames:
+     *	\ / : * ? " < > |
      */
     {
       int e,d;
@@ -2008,10 +2014,10 @@ void f_create_process(INT32 args)
 	    {
 	      /* Hopefully this should work better -Hubbe */
 	      case '\\':
-		low_my_putchar('"', &buf);
+		/* low_my_putchar('"', &buf); */
 		low_my_putchar('\\', &buf);
 		low_my_putchar('\\', &buf);
-		low_my_putchar('"', &buf);
+		/* low_my_putchar('"', &buf); */
 		break;
 	      case '"':
 		low_my_putchar('\\', &buf);
@@ -2030,9 +2036,15 @@ void f_create_process(INT32 args)
       
 /*      fprintf(stderr,"COM: %s\n",buf.s.str); */
 
+      /* NOTE: buf isn't finalized, since CreateProcess performs destructive
+       *       operations on it.
+       */
+
       command_line=(TCHAR *)buf.s.str;
     }
 
+    /* FIXME: Ought to set filename properly.
+     */
 
     MEMSET(&info,0,sizeof(info));
     info.cb=sizeof(info);
