@@ -1607,7 +1607,8 @@ void fix_type_field(node *n)
     break;
 
   case F_ASSIGN:
-    if(CAR(n) && CDR(n) && 
+    if(CAR(n) && CDR(n) &&
+       CDR(n)->token != F_ARROW && /* a->b=c can be valid when a is an array */
        !match_types(CDR(n)->type,CAR(n)->type))
       my_yyerror("Bad type in assignment.");
     copy_shared_string(n->type, CAR(n)->type);
