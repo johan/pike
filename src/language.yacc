@@ -3611,9 +3611,9 @@ comma_expr_or_zero: /* empty */ { $$=mkintnode(0); }
   | TOK_LEX_EOF { yyerror("Unexpected end of file."); $$=0; }
   ;
 
-comma_expr_or_maxint: /* empty */ { $$=mkintnode(0x7fffffff); }
+comma_expr_or_maxint: /* empty */ { $$=mkintnode(MAX_INT_TYPE); }
   | comma_expr
-  | TOK_LEX_EOF { yyerror("Unexpected end of file."); $$=mkintnode(0x7fffffff); }
+  | TOK_LEX_EOF { yyerror("Unexpected end of file."); $$=mkintnode(MAX_INT_TYPE); }
   ;
 
 gauge: TOK_GAUGE catch_arg
