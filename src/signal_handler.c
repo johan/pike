@@ -2102,14 +2102,14 @@ static int set_priority( int pid, char *to )
   {
     HANDLE process;
     DWORD how;
-    if( pid == getpid() || !pid ) // pid == 0 == this process.
+    if( pid == getpid() || !pid ) /* pid == 0 == this process. */
       process = GetCurrentProcess();
     else
       process = OpenProcess( PROCESS_SET_INFORMATION, FALSE, pid );
 
     if( !process )
     {
-      // Permission denied, or no such process.
+      /* Permission denied, or no such process. */
       return 0;
     }
     
