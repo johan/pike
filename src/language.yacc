@@ -928,7 +928,7 @@ new_arg_name: type7 optional_dot_dot_dot optional_identifier
     }
 
     if($3->u.sval.u.string->len &&
-	islocal($3->u.sval.u.string) >= 0)
+       islocal($3->u.sval.u.string) >= 0)
       my_yyerror("Variable '%s' appears twice in argument list.",
 		 $3->u.sval.u.string->str);
     
@@ -3315,14 +3315,19 @@ int low_add_local_name(struct compiler_frame *frame,
 			struct pike_string *type,
 			node *def)
 {
-  int tmp=islocal(str);
-  if(tmp >= frame->last_block_level)
-  {
-    if(str->size_shift)
-      my_yyerror("Duplicate local variable, previous declaration on line %d\n",
-		 frame->variable[tmp].line);
-    else
-      my_yyerror("Duplicate local variable '%s', previous declaration on line %d\n",STR0(str),frame->variable[tmp].line);
+  if (str->len) {
+    int tmp=islocal(str);
+    if(tmp >= frame->last_block_level)
+    {
+      if(str->size_shift)
+	my_yyerror("Duplicate local variable, "
+		   "previous declaration on line %d\n",
+		   frame->variable[tmp].line);
+      else
+	my_yyerror("Duplicate local variable '%s', "
+		   "previous declaration on line %d\n",
+		   STR0(str), frame->variable[tmp].line);
+    }
   }
 
   debug_malloc_touch(def);
