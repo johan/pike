@@ -2708,7 +2708,7 @@ struct array *multiset_range_values (struct multiset *l,
 {
   struct multiset_data *msd;
   struct array *values;
-  union msnode *beg, *end;
+  union msnode *end;
   int msd_size, range_size;
 
 #ifdef PIKE_DEBUG
