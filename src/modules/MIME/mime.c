@@ -403,12 +403,13 @@ static void f_decode_uue( INT32 args )
     for (;;) {
       int l, g;
 
-      /* If we run out of input, or the line starts with `, we are done */
-      if (cnt<=0 || (l=(*src++)-' ')>=64)
+      /* If we run out of input, or the line starts with "end", we are done */
+      if (cnt<=0 || *src=='e')
 	break;
 
-      /* Move past the length byte, calculate the number of groups, and
+      /* Get the length byte, calculate the number of groups, and
 	 check that we have sufficient data */
+      l=(*src++-' ')&63;
       --cnt;
       g = (l+2)/3;
       l -= g*3;
@@ -470,10 +471,10 @@ static void do_uue_encode( INT32 groups, unsigned char **srcp, char **destp,
       d = (*src++|d)<<8;
       d |= *src++;
       /* Output it in encoded form */
-      *dest++ = ' '+(d>>18);
-      *dest++ = ' '+((d>>12)&63);
-      *dest++ = ' '+((d>>6)&63);
-      *dest++ = ' '+(d&63);
+      if((*dest++ = ' '+(d>>18)) == ' ') dest[-1]='`';
+      if((*dest++ = ' '+((d>>12)&63)) == ' ') dest[-1]='`';
+      if((*dest++ = ' '+((d>>6)&63)) == ' ') dest[-1]='`';
+      if((*dest++ = ' '+(d&63)) == ' ') dest[-1]='`';
     }
 
     if(groups || last) {
