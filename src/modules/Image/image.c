@@ -3573,8 +3573,6 @@ void init_image_image(void)
    ADD_FUNCTION("clear",image_clear,
 		tFunc(tRGB,tObj),0);
 
-   ADD_FUNCTION("toppm",image_toppm,tFunc(,tStr),0);
-
    ADD_FUNCTION("cast",image_cast,
 		tFunc(tStr,tStr),0);
    ADD_FUNCTION("tobitmap",image_tobitmap,tFunc(,tStr),0);
