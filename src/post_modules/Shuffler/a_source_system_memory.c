@@ -5,9 +5,9 @@
 
 #include <shuffler.h>
 
+/* $Id$ */
+
 static struct program *shm_program;
-
-
 
 struct sm_source
 {
