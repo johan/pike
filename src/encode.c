@@ -792,8 +792,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
             Pike_sp[-1].subtype=p->inherits[d].parent_identifier;
             Pike_sp[-1].type=T_FUNCTION;
             EDB(3,fprintf(stderr,"INHERIT%x coded as func { %p, %d }\n",
-                        p->id, p->inherits[d].parent, p->inherits[d].parent_iden
-tifier););
+                        p->id, p->inherits[d].parent, p->inherits[d].parent_identifier););
           }else if(p->inherits[d].prog){
             ref_push_program(p->inherits[d].prog);
           }else{
@@ -1155,17 +1154,17 @@ tifier););
 	    encode_value2(&str_sval, data);
 
 	    /* prog */
-	    if (inh->prog) {
-	      ref_push_program(inh->prog);
-	    } else {
-	      push_int(0);
-	      Pike_sp[-1].subtype = NUMBER_UNDEFINED;
-	    }
+	    ref_push_program(inh->prog);
 	    encode_value2(Pike_sp-1, data);
 	    pop_stack();
 
 	    /* parent */
-	    ref_push_object(inh->parent);
+	    if (inh->prog) {
+	      ref_push_object(inh->parent);
+	    } else {
+	      push_int(0);
+	      Pike_sp[-1].subtype = NUMBER_UNDEFINED;
+	    }
 	    encode_value2(Pike_sp-1, data);
 	    pop_stack();
 
