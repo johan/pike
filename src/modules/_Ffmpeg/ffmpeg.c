@@ -606,7 +606,6 @@ PIKE_MODULE_EXIT {
 
 PIKE_MODULE_INIT {
 
-  add_integer_constant("libffmpeg/libavcodec IS MISSING", 0, 0);
 }
 
 PIKE_MODULE_EXIT {
