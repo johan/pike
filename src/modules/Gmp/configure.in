@@ -183,7 +183,7 @@ define(CHECK_GMP_FUNC,
 [
   AC_MSG_CHECKING([for $1])
   AC_CACHE_VAL([pike_cv_have_gmp_$1], [
-    AC_TRY_COMPILE([
+    AC_TRY_LINK([
 #ifdef HAVE_GMP2_GMP_H
 #include <gmp2/gmp.h>
 #elif defined (HAVE_GMP_H)
