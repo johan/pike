@@ -812,7 +812,7 @@ int main()
   pthread_mutexattr_init(&attr);
 #else
   memset(&attr, 0, sizeof(attr));
-#endif /* HAVE_PTHREAD_MUTEXATTR_INIT
+#endif /* HAVE_PTHREAD_MUTEXATTR_INIT */
   pthread_mutex_init(&tmp, &attr);
   pthread_mutex_lock(&tmp);
   pthread_create(&gazonk,0,foo,0);
