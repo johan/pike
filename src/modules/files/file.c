@@ -302,7 +302,7 @@ static void file_read(INT32 args)
     dynamic_buffer b;
 
     b.s.str=0;
-    low_init_buf(&b);
+    initialize_buf(&b);
     SET_ONERROR(ebuf, free_dynamic_buffer, &b);
     do{
       int fd=FD;
