@@ -1,7 +1,7 @@
 // $Id$
 
 // - Here we try the Regexp module
-test_true([[programp(Regexp)]])
+test_true([[objectp(Regexp("foo"))]])
 test_any([[object o; o=clone(Regexp); destruct(o); return 1]],1)
 
 // Regexp->create
@@ -34,3 +34,8 @@ test_eq([[Regexp("^a|b$")->match("b")]],1)
 // Regexp->split
 test_equal([[Regexp("^(a*)[^a]*$")->split("aaabbb")]],({"aaa"}))
 
+// Regexp->replace
+test_equal([[ Regexp("k|br")->replace("abrakadabra", "·") ]], "a·a·ada·a")
+test_equal([[ Regexp("k|br")->replace("abrakadabra",
+              lambda(string s) { return "["+upper_case(s)+"]"; }) ]],
+                                                      "a[BR]a[K]ada[BR]a")
