@@ -495,6 +495,7 @@ void f_get_dir(INT32 args)
 		  (unsigned int)d);
 #endif /* READDIR_DEBUG */
 	  if (err == -1) {
+	    /* Solaris readdir_r returns -1, and sets errno. */
 	    err = errno;
 	  }
 #ifdef READDIR_DEBUG
@@ -502,8 +503,10 @@ void f_get_dir(INT32 args)
 		  path, err);
 #endif /* READDIR_DEBUG */
 	  /* Solaris readdir_r seems to set errno to ENOENT sometimes.
+	   *
+	   * AIX readdir_r seems to set errno to EBADF at end of dir.
 	   */
-	  if (err == ENOENT) {
+	  if ((err == ENOENT) || (err == EBADF)) {
 	    err = 0;
 	  }
 	  break;
