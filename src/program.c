@@ -1452,7 +1452,6 @@ int map_variable(char *name,
   struct pike_string *n,*t;
   n=make_shared_string(name);
   t=parse_type(type);
-  run_time_type=compile_type_to_runtime_type(t);
   ret=low_define_variable(n,t,flags,offset,run_time_type);
   free_string(n);
   free_string(t);
