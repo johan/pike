@@ -202,8 +202,9 @@ void pike_module_init(void)
 		      type_of_index,CONSTANT_STRLEN(type_of_index),0,0);
 
    /* compat stuff */
+   add_program_constant("font",image_font_program,0); 
    add_program_constant("image",image_program,0); 
-   add_program_constant("colortable",image_program,0);
+   add_program_constant("colortable",image_colortable_program,0);
 }
 
 void pike_module_exit(void) 
