@@ -3108,7 +3108,7 @@ static void f_nt_uname(INT32 args)
 
     case VER_PLATFORM_WIN32_WINDOWS:
       push_text("Win32");
-      switch(osversion.dwMajorVersion)
+      switch(osversion.dwMinorVersion)
       {
       case 0:
 	version = "95";
