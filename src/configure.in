@@ -118,10 +118,18 @@ AC_MSG_RESULT($pike_cv_sys_os)
 
 case "$pike_cv_sys_os" in
   SCO*)
-     case "$CC" in
+     case "$CFLAGS" in
        *-belf*) ;;
        *)
-          CC="$CC -belf"
+	  echo "Adding -belf option."
+          CFLAGS="$CFLAGS -belf"
+       ;;
+     esac
+     case "$LDFLAGS" in
+       *-belf*) ;;
+       *)
+	  echo "Adding -belf option."
+          LDFLAGS="$LDFLAGS -belf"
        ;;
      esac
   ;;
