@@ -410,7 +410,7 @@ static int char_const(void)
 	  break;
 	  
 	case 'A': case 'B': case 'C': case 'D': case 'E': case 'F':
-	  c=c*16+GETC()-'a'+10;
+	  c=c*16+GETC()-'A'+10;
 	  break;
       }
       return c;
