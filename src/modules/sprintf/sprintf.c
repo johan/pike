@@ -759,7 +759,7 @@ INLINE static int do_one(struct format_stack *fs,
 	      if (fs->fsp->width!=SPRINTF_UNDECIDED)			      \
 	      {								      \
 		 push_constant_text("width");	           		      \
-		 push_int(fs->fsp->width);				      \
+		 push_int64(fs->fsp->width);				      \
                  n+=2;							      \
 	      }								      \
 	      if ((fs->fsp->flags&FIELD_LEFT))				      \
