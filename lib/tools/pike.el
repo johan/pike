@@ -194,7 +194,10 @@ The name is assumed to begin with a capital letter.")
 	   1 font-lock-reference-face)
 	 ;; Labels:
 	 `(,(concat pike-font-lock-identifier-regexp ":")
-	   0 font-lock-reference-face)))
+	   0 font-lock-reference-face)
+	 `(,(concat "\\<\\(break\\|continue\\)\\>\\s *\\("
+		    pike-font-lock-identifier-regexp "\\)")
+	   2 font-lock-reference-face)))
 
     ;; Types and declared variable names:
     (setq pike-font-lock-keywords-2
