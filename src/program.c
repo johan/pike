@@ -90,6 +90,8 @@ static struct pike_string *last_file = 0;
 dynamic_buffer inherit_names;
 dynamic_buffer used_modules;
 
+void free_all_local_names(void);
+
 void use_module(struct svalue *s)
 {
   if( (1<<s->type) & (BIT_MAPPING | BIT_OBJECT))
@@ -1464,7 +1466,6 @@ void my_yyerror(char *fmt,...)
  */
 void compile()
 {
-  void free_all_local_names();
   int yyparse();
 
   start_line_numbering();
