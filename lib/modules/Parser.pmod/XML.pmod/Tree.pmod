@@ -1610,6 +1610,7 @@ string report_error_context(string data, int ofs)
   return "\nContext: " + pre + post + "\n";
 }
 
+//! @ignore
 //! Flags used together with @[simple_parse_input()] and
 //! @[simple_parse_file()].
 enum ParseFlags {
@@ -1620,6 +1621,7 @@ enum ParseFlags {
   PARSE_ENABLE_NAMESPACES = 4,
 #define PARSE_ENABLE_NAMESPACES		4
 }
+//! @endignore
 
 //! Takes an XML string and produces a @[SimpleNode] tree.
 SimpleNode simple_parse_input(string data,
