@@ -258,7 +258,14 @@ static void port_bind(INT32 args)
       Pike_sp[-args].u.string->size_shift))
     SIMPLE_BAD_ARG_ERROR("Port->bind", 1, "int|string (8bit)");
 
-  fd=fd_socket(AF_INET, SOCK_STREAM, 0);
+  addr_len = get_inet_addr(&addr, (args > 2 && Pike_sp[2-args].type==PIKE_T_STRING?
+				   Pike_sp[2-args].u.string->str : NULL),
+			   (Pike_sp[-args].type == PIKE_T_STRING?
+			    Pike_sp[-args].u.string->str : NULL),
+			   (Pike_sp[-args].type == PIKE_T_INT?
+			    Pike_sp[-args].u.integer : -1), 0);
+
+  fd=fd_socket(SOCKADDR_FAMILY(addr), SOCK_STREAM, 0);
 
   if(fd < 0)
   {
@@ -283,13 +290,6 @@ static void port_bind(INT32 args)
 #endif
 
   my_set_close_on_exec(fd,1);
-
-  addr_len = get_inet_addr(&addr, (args > 2 && Pike_sp[2-args].type==PIKE_T_STRING?
-				   Pike_sp[2-args].u.string->str : NULL),
-			   (Pike_sp[-args].type == PIKE_T_STRING?
-			    Pike_sp[-args].u.string->str : NULL),
-			   (Pike_sp[-args].type == PIKE_T_INT?
-			    Pike_sp[-args].u.integer : -1), 0);
 
   THREADS_ALLOW_UID();
   tmp=fd_bind(fd, (struct sockaddr *)&addr, addr_len) < 0 || fd_listen(fd, 16384) < 0;
