@@ -4302,7 +4302,7 @@ int main()
 
 #ifdef HAVE_SIGACTION
   {
-    struct sigaction action;
+    static struct sigaction action;
     action.sa_handler= func;
     sigfillset(&action.sa_mask);
 #ifdef SA_INTERRUPT
@@ -4313,7 +4313,7 @@ int main()
 #else
 #ifdef HAVE_SIGVEC
   {
-    struct sigvec action;
+    static struct sigvec action;
     action.sv_handler= func;
     action.sv_mask=-1;
 #ifdef SV_INTERRUPT
