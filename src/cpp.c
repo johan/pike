@@ -535,7 +535,7 @@ void cpp_func_constant(struct cpp *this, INT32 args)
 	    if(this->warn_if_constant_throws)
 	      cpp_warning (this, "Got placeholder %s (resolver problem) "
 			   "when resolving '%s'.",
-			   get_name_of_type (Pike_sp[-1].type), str);
+			   get_name_of_type (Pike_sp[-1].type), str->str);
 	  }
 	  else if(this->warn_if_constant_throws)
 	    cpp_warning (this, "Got placeholder %s (resolver problem).",
