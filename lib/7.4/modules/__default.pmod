@@ -8,7 +8,7 @@
 //! The symbols in this namespace will appear in
 //! programs that use @tt{#pike 7.4@} or lower.
 
-//! @decl inherit predef::
+//! @decl inherit 7.6::
 
 //!   Return resource usage. An error is thrown if it isn't supported
 //!   or if the system fails to return any information.
