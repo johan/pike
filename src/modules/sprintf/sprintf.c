@@ -821,10 +821,11 @@ string pike_sprintf(char *format,struct svalue *argp,int num_arg)
 /* The efun */
 static void f_sprintf(INT32 num_arg)
 {
+  struct pike_string *ret;
   struct svalue *argp;
-  string s,prefix;
-  prefix.str=0;
-  prefix.len=0;
+  string s;
+  s.str=0;
+  s.len=0;
 
   argp=sp-num_arg;
   free_sprintf_strings();
@@ -837,13 +838,15 @@ static void f_sprintf(INT32 num_arg)
 		     argp->u.string->len,
 		     argp+1,
 		     num_arg-1,
-		     prefix,
+		     s,
 		     0);
+  ret=make_shared_binary_string(s.str, s.len);
+  free(s.str);
+
   free_svalue(&temp_svalue);
   temp_svalue.type=T_INT;
   pop_n_elems(num_arg);
-  push_string(make_shared_binary_string(s.str, s.len));
-  free(s.str);
+  push_string(ret);
 }
 
 void init_sprintf_efuns(void)
