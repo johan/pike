@@ -343,30 +343,21 @@ void async_fetch_close()
 
 /****** utilities **************************************************/
 
-string headers_encode(mapping h)
+string headers_encode(mapping(string:array(string)|string) h)
 {
    if (!h || !sizeof(h)) return "";
-   return (Array.map( 
-	      indices(h),
-	      lambda(string hname,mapping headers)
-	      {
-		 if (stringp(headers[hname]) ||
-		     intp(headers[hname]))
-		    return String.capitalize(replace(hname,"_","-")) +
-		       ": " + headers[hname];
-		 if (arrayp(headers[hname]))
-		 {
-		    return map(headers[hname],
-			       lambda(string b,string hname)
-			       {
-				  return String.capitalize(
-				     replace(hname,"_","-")) +
-				     ": " + b;
-			       },hname)*"\r\n";
-		 }
-		 error("bad type in headers: %O=%O\n",
-		       hname,headers[hname]);
-	      }, h )-({""}))*"\r\n" + "\r\n";
+   String.Buffer buf = String.Buffer();
+   foreach(h; string name; array(string)|string value)
+     if(stringp(value))
+       buf->add( String.capitalize(replace(name,"_","-")), ": ",
+		 value, "\r\n" );
+     else if(!value)
+       continue;
+     else
+       foreach(value, string value)
+	 buf->add( String.capitalize(replace(name,"_","-")), ": ",
+		   value, "\r\n" );
+   return (string)buf;
 }
 
 /****** helper methods *********************************************/
