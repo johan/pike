@@ -470,6 +470,9 @@ static struct sigdesc signal_desc []={
 #ifdef SIGTHAW
   { SIGTHAW, "SIGTHAW" },
 #endif
+#ifdef SIGBREAK
+  { SIGBREAK, "SIGBREAK" },
+#endif
 
   { -1, "END" } /* Notused */
 };
@@ -3389,6 +3392,9 @@ void f_atexit(INT32 args)
 #endif
 #ifdef SIGINT
     set_default_signal_handler(SIGINT, do_signal_exit);
+#endif
+#ifdef SIGBREAK
+    set_default_signal_handler(SIGBREAK, do_signal_exit);
 #endif
 #ifdef SIGQUIT
     set_default_signal_handler(SIGQUIT, do_signal_exit);
