@@ -126,9 +126,7 @@ node *debug_mkopernode(char *oper_id, node *arg1, node *arg2);
 node *debug_mklocalnode(int var, int depth);
 node *debug_mkidentifiernode(int i);
 node *debug_mktrampolinenode(int i);
-node *debug_mkexternalnode(int level,
-			   int i,
-			   struct identifier *id);
+node *debug_mkexternalnode(struct program *prog, int i);
 node *debug_mkcastnode(struct pike_string *type,node *n);
 node *debug_mksoftcastnode(struct pike_string *type,node *n);
 void resolv_constant(node *n);
@@ -176,7 +174,7 @@ void resolv_program(node *n);
 #define mklocalnode(var, depth) dmalloc_touch(node *, debug_mklocalnode(var, depth))
 #define mkidentifiernode(i) dmalloc_touch(node *, debug_mkidentifiernode(i))
 #define mktrampolinenode(i) dmalloc_touch(node *, debug_mktrampolinenode(i))
-#define mkexternalnode(level, i, id) dmalloc_touch(node *, debug_mkexternalnode(level, i, id))
+#define mkexternalnode(parent_prog, i) dmalloc_touch(node *, debug_mkexternalnode(parent_prog, i))
 #define mkcastnode(type, n) dmalloc_touch(node *, debug_mkcastnode(type, dmalloc_touch(node *, n)))
 #define mksoftcastnode(type, n) dmalloc_touch(node *, debug_mksoftcastnode(type, dmalloc_touch(node *, n)))
 #define mktypenode(t)       dmalloc_touch(node *, debug_mktypenode(t))
