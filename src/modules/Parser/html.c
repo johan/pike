@@ -4725,6 +4725,7 @@ static void html_clone(INT32 args)
       p->extra_args=NULL;
 
    p->flags=THIS->flags;
+   if(THIS->out_max_shift==-1) p->out_max_shift=THIS->out_max_shift;
    p->max_stack_depth=THIS->max_stack_depth;
    p->top.parse_tags = THIS->flags & FLAG_PARSE_TAGS;
 
