@@ -1794,7 +1794,7 @@ typeof: F_TYPEOF '(' expr0 ')'
     node *tmp;
     tmp=mknode(F_ARG_LIST,$3,0);
 
-    s=describe_type( $3 && $3->type ? $3->type : mixed_type_string);
+    s=describe_type( tmp && CAR(tmp) && CAR(tmp)->type ? CAR(tmp)->type : mixed_type_string);
     $$=mkstrnode(s);
     free_string(s);
     free_node(tmp);
