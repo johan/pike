@@ -45,7 +45,7 @@ int main(int argc, char **argv)
   JDIMENSION block_test;
   jpeg_component_info *compptr;
 
-  block_test = compptr->heigh_in_blocks;
+  block_test = compptr->height_in_blocks;
       ],[
         pike_cv_jpeg_height_in_blocks=yes
       ],[
