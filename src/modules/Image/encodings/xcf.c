@@ -1380,7 +1380,7 @@ void image_xcf_f__decode_tiles( INT32 args )
     }
     x += TILE_WIDTH;
 
-    if( x >= rxs )
+    if( (int)x >= (int)rxs )
     {
       x = 0;
       y += TILE_HEIGHT;
