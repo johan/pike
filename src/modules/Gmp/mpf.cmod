@@ -133,13 +133,16 @@ PIKECLASS mpf
 	if(base<2 || base>36)
 	  Pike_error("Bad argument 3 to Mpq.mpf, must be 2 <= base <= 36, not %d\n",base);
 	if(sp[-args].type != T_STRING)
-	  Pike_error("First argument to Mpq.mpf must be a string when specifying base.\n");
+	  Pike_error("First argument to Mpq.mpf must be a string when specifying a base.\n");
 
       case 2:
 	if(sp[1-args].u.integer)
 	{
-	  if(sp[2-args].u.integer<0)
-	    Pike_error("Bad argument 2 to Mpq.mpf, must be >= 0\n");
+	  if(sp[2-args].u.integer<1) {
+	    Pike_error("Bad argument 2 to Mpq.mpf, must be > 0.\n");
+	  } else if (sp[2-args].u.integer > 0x10000) {
+	    Pike_error("Bad argument 2 to Mpq.mpf, must be <= 0x10000.\n");
+	  }
 	  mpf_set_prec(THISMPF, sp[2-args].u.integer);
 	}
 
@@ -504,8 +507,11 @@ PIKECLASS mpf
 
   PIKEFUN object set_precision(int(1..) prec)
     {
-      if(prec<1)
+      if(prec<1) {
 	Pike_error("Precision must be greater than zero.\n");
+      } else if (prec > 0x10000) {
+	Pike_error("Precision must be less than or equal to 0x10000.\n");
+      }
       mpf_set_prec(THISMPF, prec);
       REF_RETURN fp->current_object;
     }
