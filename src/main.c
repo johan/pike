@@ -453,6 +453,7 @@ int dbm_main(int argc, char **argv)
 #endif /* STACK_DEBUG */
 #endif /* HAVE_GETRLIMIT && RLIMIT_STACK */
 
+#if 0
 #if defined(HAVE_SETRLIMIT) && defined(RLIMIT_NOFILE)
   {
     struct rlimit lim;
@@ -468,6 +469,7 @@ int dbm_main(int argc, char **argv)
       setrlimit(RLIMIT_NOFILE, &lim);
     }
   }
+#endif
 #endif
   
   GETTIMEOFDAY(&current_time);
