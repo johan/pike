@@ -2558,7 +2558,7 @@ static void f_getrusage(INT32 args)
    pop_n_elems(args);
    
    if (!pike_get_rusage(rusage_values))
-      error("error in getrusage call\n");
+      Pike_error("error in getrusage call\n");
 
    push_text("utime");      push_int(rusage_values[n++]);
    push_text("stime");      push_int(rusage_values[n++]);
