@@ -1217,6 +1217,8 @@ void low_inherit(struct program *p,
 	inherit.parent=par;
 	inherit.parent_identifier=pid;
 	inherit.parent_offset=0;
+      }else{
+	inherit.parent_offset+=parent_offset;
       }
     }
     if(inherit.parent) add_ref(inherit.parent);

@@ -25,6 +25,23 @@ bar"]],[["foo\nbar"]])
 test_true([[stringp(#string "Makefile")]])
 test_any([[class Bar { array(int) foo = ({}); }; class Foo { inherit Bar; array(int) foo = ({1}); }; return sizeof(Foo()->foo);]],1)
 
+test_any([[return class Z {
+string bonk() { return "oiff"; }
+
+class A
+{
+  string bonk_me() { return bonk(); }
+}
+
+class B { inherit A; }
+
+class C
+{
+  string oiff() { return "bonk"; }
+  class D { inherit B; }
+}
+}()->C()->D()->bonk_me()]],"oiff")
+
 test_false([[object_variablep(class X { int y; int z() { return 1; }}(),"foo")]])
 test_false([[object_variablep(class X { int y; int z() { return 1; }}(),"z")]])
 test_true([[object_variablep(class X { int y; int z() { return 1; }}(),"y")]])
