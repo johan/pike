@@ -2,7 +2,7 @@
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
 
-#include "../../global.h"
+#include "global.h"
 RCSID("$Id$");
 #include "program.h"
 #include "interpret.h"
