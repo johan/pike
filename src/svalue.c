@@ -1299,6 +1299,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	    t_flag=save_t_flag;
 	    pop_stack();
 	  } else {
+	    /* Cyclic _sprintf() detected. */
 	    my_strcat("object");
 	  }
 	  END_CYCLIC();
