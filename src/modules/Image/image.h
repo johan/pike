@@ -229,3 +229,7 @@ void img_find_autocrop(struct image *this,
 		       int top,int bottom,
 		       int rgb_set,
 		       rgb_group rgb);
+
+/* layers.c */
+
+void image_lay(INT32 args);
