@@ -326,7 +326,7 @@ class smtp_style
   //! @seealso
   //! @[errorcodes]
   //!
-  void send(int(100,999) code, array(string)|string|void lines)
+  void send(int(100 .. 999) code, array(string)|string|void lines)
   {
     lines = lines || errorcodes[code] || "Error";
 
