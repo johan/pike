@@ -4192,6 +4192,18 @@ PMOD_EXPORT void f_mktime (INT32 args)
   date.tm_mon=mon;
   date.tm_year=year;
 
+  if (args > 6) {
+    if (Pike_sp[6-args].type != T_INT) {
+      PIKE_ERROR("mktime", "Bad argument 6 (expected int).\n", Pike_sp, args);
+    }
+    if (args > 7) {
+      if (Pike_sp[7-args].type != T_INT) {
+	PIKE_ERROR("mktime", "Bad argument 7 (expected int).\n",
+		   Pike_sp, args);
+      }
+    }
+  }
+
   if ((args > 6) && (Pike_sp[6-args].subtype == NUMBER_NUMBER))
   {
     date.tm_isdst = Pike_sp[6-args].u.integer;
