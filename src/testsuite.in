@@ -4333,6 +4333,25 @@ test_do(add_constant("kablutt");)
 test_do(add_constant("blatinka");)
 
   test_any([[{
+#if constant (_debug)
+    // Temporarily disable debug so we don't get references to p in
+    // the intepreter backlog.
+    int old_debug = _debug (0);
+#endif
+    object o = class {program p; object o;}();
+    class Resolver (mixed x) {mixed resolv (string id) {return x;}};
+    program p = compile ("constant o = foo;", Resolver (o));
+    o->p = p;
+    o->o = p();
+    gc();
+    o = p = 0;
+#if constant (_debug)
+    _debug (old_debug);
+#endif
+    return gc() > 0;
+  }]], 1)
+
+  test_any([[{
     class Dead {object o;};
     object o = Dead(); o->o = Dead();
     array a = set_weak_flag(({o}), 1);

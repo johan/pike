@@ -1659,6 +1659,8 @@ PMOD_EXPORT void gc_mark_object_as_referenced(struct object *o)
 
     debug_malloc_touch(p);
 
+    gc_mark_program_as_referenced (p);
+
     if(o->prog->flags & PROGRAM_USES_PARENT)
       if(PARENT_INFO(o)->parent)
 	gc_mark_object_as_referenced(PARENT_INFO(o)->parent);
@@ -1768,10 +1770,11 @@ PMOD_EXPORT void real_gc_cycle_check_object(struct object *o, int weak)
     
       LOW_POP_FRAME();
 
-      /* Strong ref follows. It must be last. */
+      /* Strong refs follows. They must be last. */
       if(o->prog->flags & PROGRAM_USES_PARENT)
 	if(PARENT_INFO(o)->parent)
 	  gc_cycle_check_object(PARENT_INFO(o)->parent, -1);
+      gc_cycle_check_program (p, -1);
     }
   } GC_CYCLE_LEAVE;
 }
@@ -1781,16 +1784,14 @@ static inline void gc_check_object(struct object *o)
   int e;
   struct program *p;
 
-  if(o->prog && o->prog->flags & PROGRAM_USES_PARENT)
-  {
-    if(PARENT_INFO(o)->parent)
-      debug_gc_check2(PARENT_INFO(o)->parent, T_OBJECT, o,
-		      " as parent of an object");
-  }
-
   if((p=o->prog) && PIKE_OBJ_INITED(o))
   {
     debug_malloc_touch(p);
+    debug_gc_check2 (p, T_OBJECT, o, " as the program of an object");
+
+    if(p->flags & PROGRAM_USES_PARENT && PARENT_INFO(o)->parent)
+      debug_gc_check2(PARENT_INFO(o)->parent, T_OBJECT, o,
+		      " as parent of an object");
 
     LOW_PUSH_FRAME(o);
     
