@@ -1866,8 +1866,6 @@ static void f_GetNamedSecurityInfo(INT32 args)
 
 void init_nt_system_calls(void)
 {
-  add_function("cp",f_cp,"function(string,string:int)", 0);
-
   add_function("GetFileAttributes",f_GetFileAttributes,"function(string:int)", 0);
   add_function("SetFileAttributes",f_SetFileAttributes,"function(string,int:int)", 0);
   
