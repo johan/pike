@@ -2551,10 +2551,7 @@ AC_CHECK_HEADERS(sys/rusage.h time.h sys/time.h sys/types.h unistd.h stdlib.h \
 if test "x$with_devpoll" = "xno"; then :; else
   AC_CHECK_HEADERS(sys/devpoll.h sys/event.h sys/epoll.h)
 
-  if :; then :; else
-    # The kqueue support isn't working yet.
-    AC_CHECK_FUNCS(kqueue)
-  fi
+  AC_CHECK_FUNCS(kqueue)
 
   AC_MSG_CHECKING(for poll device)
   AC_CACHE_VAL(pike_cv_device_devpoll, [
