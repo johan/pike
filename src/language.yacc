@@ -1258,7 +1258,7 @@ identifier_type: idents
 	    Pike_sp[-1].type=T_FUNCTION;
 	  }else{
 	    extern void f_object_program(INT32);
-	    if (Pike_compiler->compiler_pass == 2) {
+	    if (Pike_compiler->compiler_pass == 2 && !TEST_COMPAT (7, 4)) {
 	      yywarning("Using object as program identifier.");
 	    }
 	    f_object_program(1);
