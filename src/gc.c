@@ -42,7 +42,7 @@ INT32 num_objects =0;
 INT32 num_allocs =0;
 INT32 alloc_threshold = MIN_ALLOC_THRESHOLD;
 static int in_gc = 0;
-struct queue gc_mark_queue;
+struct pike_queue gc_mark_queue;
 
 static double objects_alloced = 0.0;
 static double objects_freed = 0.0;
