@@ -1903,6 +1903,12 @@ void print_tree(node *n)
  * /grubba 2000-08-27
  */
 
+/*
+ * Known bugs:
+ *  * Aliasing is not handled.
+ *  * Called functions are assumed not to use lexical scoping.
+ */
+
 #if MAX_LOCAL > MAX_GLOBAL
 #define MAX_VAR	MAX_LOCAL
 #else /* MAX_LOCAL <= MAX_GLOBAL */
