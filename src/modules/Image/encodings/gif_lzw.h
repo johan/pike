@@ -6,6 +6,7 @@
 
 struct gif_lzw
 {
+  int very_dummy;
 };
 
 /* returns number of strings written on stack */
