@@ -759,6 +759,7 @@ static void image_tiff_encode( INT32 args )
   low_image_tiff_encode( &b, &a, &c );
   UNSET_ONERROR( onerr );
   push_string( make_shared_binary_string( b.str, b.real_len ) );
+  free( (char *) b.str );
 }
 
 
