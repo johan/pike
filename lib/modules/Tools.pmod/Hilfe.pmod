@@ -890,8 +890,12 @@ private class ParserState {
       if(sizeof(token)>1 && (token[0..1]=="//" || token[0..1]=="/*")) continue; // comments
 
       // If we start a block at the uppermost level, what kind of block is it?
-      if(token=="{" && !pstack->ptr && !block)
-	block = last;
+      if(token=="{" && !pstack->ptr) {
+	if(!block)
+	  block = last;
+	else if(block=="class" && last=="class")
+	  block = "class stop";
+      }
       if(token=="lambda" && !pstack->ptr)
 	block = token;
       if(token=="class" && !pstack->ptr) {
@@ -923,6 +927,7 @@ private class ParserState {
       if(token==";" && !pstack->ptr) {
 	ready += ({ Expression(pipeline) });
 	pipeline = ({});
+	block = 0;
       }
 
       // If we end a block at the uppermost level, and it doesn't need a ";",
@@ -1596,8 +1601,11 @@ class Evaluator {
       }
 
       case "class":
-	// FIXME: Unnamed create
-	add_hilfe_entity("class", expr[1..], expr[1], programs);
+
+	if(expr[1]=="{")
+	  evaluate("return " + expr->code(), 1); // Unnamed class ("class {}();").
+	else
+	  add_hilfe_entity("class", expr[1..], expr[1], programs);
 	return 0;
     }
 
