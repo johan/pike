@@ -3455,7 +3455,6 @@ static void f_kill(INT32 args)
 
   case T_OBJECT:
   {
-    INT32 pid;
     struct pid_status *p;
     if((p=(struct pid_status *)get_storage(sp[-args].u.object,
 					  pid_status_program)))

@@ -326,7 +326,6 @@ static int low_yylex(YYSTYPE *yylval)
 
     if((c>'9') && lex_isidchar(c))
     {
-      struct pike_string *s;
       lex.pos -= (1<<SHIFT);
       READBUF(lex_isidchar(C));
 
@@ -517,8 +516,6 @@ static int low_yylex(YYSTYPE *yylval)
 
       switch(len>0?INDEX_CHARP(buf, 0, SHIFT):0)
       {
-	char *p;
-	
       case 'l':
 	if(!ISWORD("line")) goto badhash;
 	SKIPSPACE();

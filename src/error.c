@@ -314,6 +314,8 @@ PMOD_EXPORT DECLSPEC(noreturn) void debug_fatal(const char *fmt, ...) ATTRIBUTE(
   va_list args;
   static int in_fatal = 0;
 
+  /* fprintf(stderr, "Raw error: %s\n", fmt); */
+
   va_start(args,fmt);
   /* Prevent double fatal. */
   if (in_fatal)
@@ -519,8 +521,6 @@ DECLSPEC(noreturn) void generic_error_va(struct object *o,
      ATTRIBUTE((noreturn))
 {
   char buf[8192];
-  struct pike_string *desc;
-  struct array *backtrace;
   int i;
 
 #ifdef HAVE_VSNPRINTF

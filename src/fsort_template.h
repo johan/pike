@@ -33,7 +33,7 @@ static void MKNAME(_do_sort)(register TYPE *bas,
 #endif
   )
 {
-  register TYPE *a,*b, tmp;
+  register TYPE *a,*b;
 
   while(bas < last)
   {

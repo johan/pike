@@ -185,12 +185,14 @@ PMOD_EXPORT void init_interpreter(void)
   Pike_interpreter.mark_stack=MMALLOC(Pike_stack_size, struct svalue *);
   if((char *)MAP_FAILED == (char *)Pike_interpreter.evaluator_stack) Pike_interpreter.evaluator_stack=0;
   if((char *)MAP_FAILED == (char *)Pike_interpreter.mark_stack) Pike_interpreter.mark_stack=0;
+
+use_malloc:
+
 #else
   Pike_interpreter.evaluator_stack=0;
   Pike_interpreter.mark_stack=0;
 #endif
 
-use_malloc:
   if(!Pike_interpreter.evaluator_stack)
   {
     Pike_interpreter.evaluator_stack=(struct svalue *)xalloc(Pike_stack_size*sizeof(struct svalue));

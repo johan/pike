@@ -639,7 +639,6 @@ PMOD_EXPORT ptrdiff_t debug_fd_lseek(FD fd, ptrdiff_t pos, int where)
 
 PMOD_EXPORT int debug_fd_ftruncate(FD fd, ptrdiff_t len)
 {
-  ptrdiff_t ret;
   HANDLE h;
   LONG oldfp_lo, oldfp_hi;
 

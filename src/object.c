@@ -94,7 +94,6 @@ BLOCK_ALLOC(object, 511)
 
 PMOD_EXPORT struct object *low_clone(struct program *p)
 {
-  int e;
   struct object *o;
 
   if(!(p->flags & PROGRAM_PASS_1_DONE))
@@ -253,7 +252,6 @@ void call_prog_event(struct object *o, int event)
   /* clear globals and call C initializers */
   for(e=p->num_inherits-1; e>=0; e--)
   {
-    int q;
     SET_FRAME_CONTEXT(p->inherits[e]);
 
     if(pike_frame->context.prog->event_handler)
@@ -417,7 +415,6 @@ static struct pike_string *low_read_file(char *file)
 PMOD_EXPORT struct object *get_master(void)
 {
   extern char *master_file;
-  struct pike_string *master_name;
   static int inside=0;
 
   if(master_object && master_object->prog)

@@ -224,7 +224,7 @@ OPCODE1(F_ARROW_STRING, "->string", {
 OPCODE1(F_LOOKUP_LFUN, "->lfun", {
   struct svalue tmp;
   struct object *o;
-  int id;
+
   if ((sp[-1].type == T_OBJECT) && ((o = Pike_sp[-1].u.object)->prog) &&
       (FIND_LFUN(o->prog, LFUN_ARROW) == -1)) {
     int id = FIND_LFUN(o->prog, arg1);
@@ -2139,7 +2139,6 @@ OPCODE0_JUMP(F_RECUR_AND_POP, "recur & pop", {
 /* Assume that the number of arguments is correct */
 /* FIXME: adjust Pike_mark_sp */
 OPCODE0_JUMP(F_TAIL_RECUR, "tail recursion", {
-  int x;
   INT32 num_locals;
   PIKE_OPCODE_T *addr;
   INT32 args;

@@ -351,7 +351,7 @@ static ptrdiff_t calcC(struct cpp *this, WCHAR *data, ptrdiff_t len,
     l = STRTOL_PCHARP(p, &p2, 0);
     if(COMPARE_PCHARP(p1,>,p2))
     {
-      push_float(f);
+      push_float(DO_NOT_WARN((FLOAT_TYPE)f));
       pos = ((WCHAR *)p1.ptr) - data;
     }else{
       push_int(l);

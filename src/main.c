@@ -155,7 +155,7 @@ static void get_master_key(HKEY cat)
   HKEY k;
   char buffer[4096];
   DWORD len=sizeof(buffer)-1,type=REG_SZ;
-  long ret;
+
   if(RegOpenKeyEx(cat,
 		  (LPCTSTR)("SOFTWARE\\Idonex\\Pike\\"
 			    DEFINETOSTR(PIKE_MAJOR_VERSION)
@@ -180,7 +180,7 @@ static void get_master_key(HKEY cat)
 int dbm_main(int argc, char **argv)
 {
   JMP_BUF back;
-  int e, num, do_backend;
+  int e, num;
   char *p;
   struct array *a;
 #ifdef DECLARE_ENVIRON

@@ -408,7 +408,6 @@ static INT32 count_cases(node *n)
 
 int generate_call_function(node *n)
 {
-  node **arg;
   emit0(F_MARK);
   PUSH_CLEANUP_FRAME(do_pop_mark, 0);
   do_docode(CDR(n),DO_NOT_COPY);
@@ -1228,7 +1227,6 @@ static int do_docode2(node *n, INT16 flags)
     else
     {
       struct pike_string *tmp;
-      struct efun *fun;
       node *foo;
 
       emit0(F_MARK);

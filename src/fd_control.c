@@ -169,7 +169,7 @@ static void grow_fds_to_close(void)
 
 void do_close_on_exec(void)
 {
-  int i,ret;
+  int i;
   for(i=0; i < num_fds_to_close; i++) {
     while( fd_close(fds_to_close[i]) <0 && errno==EINTR) ;
   }
