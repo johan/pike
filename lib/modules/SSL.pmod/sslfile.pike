@@ -11,7 +11,7 @@ inherit "connection" : connection;
 #else /*! SSL3_DEBUG */
 #define SSL3_DEBUG_MSG
 #endif /* SSL3_DEBUG */
-static object(Stdio.File) socket;
+object(Stdio.File) socket;
 
 static object context;
 
