@@ -238,6 +238,7 @@ fi
 #error Need mysql.h headerfile!
 #endif
 #endif
+	  ], [
 $ret_type *mysql_fetch_lengths(MYSQL_RES *mysql)
 {
   return 0;
