@@ -1177,6 +1177,11 @@ AC_CACHE_VAL(pike_cv_accept_size_t, [
 #include <sys/socket.h>
 #endif
 
+/* NT */
+#ifdef HAVE_WINSOCK_H
+#include <winsock.h>
+#endif
+
 /* Here's the actual test: */
 int accept(int, struct sockaddr *, size_t *);
   ], [
