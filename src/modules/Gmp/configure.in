@@ -148,7 +148,7 @@ int main(int argc, char **argv)
 
       AC_MSG_CHECKING([gmp version...])
 dnl figure out version; not necessary, but pretty
-      rm config.gmpversion
+      rm config.gmpversion 2>/dev/null
       AC_TRY_RUN([
 #include <gmp.h>
 #include <stdio.h>
