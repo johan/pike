@@ -26,14 +26,6 @@ if test x$with_readline = xyes ; then
     else
       :
     fi
-    if test -d $pike_cv_gnu_dir/lib/. ; then
-      echo Adding $pike_cv_gnu_dir/lib to the runtime link path
-      echo $pike_cv_gnu_dir/lib >lib_dirs
-    elif test -f lib_dirs ; then
-      rm lib_dirs
-    else
-      :
-    fi
   else
     :
   fi
