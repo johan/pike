@@ -130,6 +130,7 @@ void f_thread_create(INT32 args)
   }
 }
 
+#ifdef UNIX_THREADS
 void f_thread_set_concurrency(INT32 args)
 {
   int c=1;
@@ -139,6 +140,7 @@ void f_thread_set_concurrency(INT32 args)
   num_lwps=c;
   th_setconcurrency(c);
 }
+#endif
 
 void f_this_thread(INT32 args)
 {
