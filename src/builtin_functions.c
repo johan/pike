@@ -1019,13 +1019,13 @@ void f_values(INT32 args)
   switch(sp[-args].type)
   {
   case T_STRING:
-    size=sp[-args].u.string->len;
-    a=allocate_array_no_init(size,0);
-    while(--size>=0)
+    size = sp[-args].u.string->len;
+    a = allocate_array_no_init(size,0);
+    while(--size >= 0)
     {
-      ITEM(a)[size].type=T_INT;
-      ITEM(a)[size].subtype=NUMBER_NUMBER;
-      ITEM(a)[size].u.integer=EXTRACT_UCHAR(sp[-args].u.string->str+size);
+      ITEM(a)[size].type = T_INT;
+      ITEM(a)[size].subtype = NUMBER_NUMBER;
+      ITEM(a)[size].u.integer = index_shared_string(sp[-args].u.string, size);
     }
     break;
 
