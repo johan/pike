@@ -1,4 +1,4 @@
-
+// $Id$
 
 class _Tar  // filesystem
 {
@@ -224,7 +224,7 @@ class _TarFS
 
    array(string) get_dir(void|string directory,void|string|array globz)
    {
-      directory=directory?combine_path(wd,directory):wd;
+      directory=combine_path(wd,(directory||""),"");
 
       array f=glob(root+directory+"?*",tar->filenames);
       f-=glob(root+directory+"*/*",f); // stay here
