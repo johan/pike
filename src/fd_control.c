@@ -121,7 +121,7 @@ int query_nonblocking(int fd)
 #else
 
 #ifdef USE_FCNTL_O_NONBLOCK
-    ret=return fcntl(fd, F_GETFL, 0) & O_NONBLOCK;
+    ret=fcntl(fd, F_GETFL, 0) & O_NONBLOCK;
 #else
 
 #ifdef USE_FCNTL_FNDELAY
