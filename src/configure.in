@@ -273,18 +273,15 @@ AC_ARG_WITH(poll,        [  --with-poll            use poll instead of select],[
       with_poll=yes
     ;;
     AIX)
+      # poll(2) is broken on AIX 4.1 and earlier.
       if test "`uname -r`" -ge 2 -a "`uname -v`" -ge 4 ; then
-        AC_MSG_WARN([Defaulting to --with-poll since the OS is AIX >= 4.2])
         with_poll=yes
-
-      else
-        if test "`uname -v`" -gt 4 ; then
-          AC_MSG_WARN([Defaulting to --with-poll since the OS is AIX >= 4.2])
-          with_poll=yes
-        else
-          :
-        fi
-      fi
+      else if test "`uname -v`" -gt 4 ; then
+        with_poll=yes
+      else :; fi
+      if test "$with_poll" = "yes" ; then
+        AC_MSG_WARN([Defaulting to --with-poll since the OS AIX 4.2 or later.])
+      else :; fi
     ;;
   esac
 ])
