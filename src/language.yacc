@@ -143,6 +143,9 @@ RCSID("$Id$");
 #endif /* YYDEBUG */
 #endif
 
+/* Get verbose parse error reporting. */
+#define YYERROR_VERBOSE	1
+
 /* #define LAMBDA_DEBUG	1 */
 
 int add_local_name(struct pike_string *, struct pike_type *, node *);
