@@ -1663,6 +1663,8 @@ test_eq(clone(clone(class c { program foo=class c { int i=20; }; })->foo)->i,20)
 // type checks
 test_compile_error([[} int foo() { return]]);
 test_compile_error([[} void foo() { return 1]]);
+test_compile([[mapping a; int b; a = b = 0;]]);
+test_compile_error([[mapping a; int b; a = b = 1;]]);
 
 // Not yet cataloged
 test_any(int i=10; { int i; } return i, 10)
