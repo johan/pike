@@ -19,7 +19,6 @@ David Kågedal, kg@infovav.se
 #include <stdlib.h>
 #endif
 
-#include "types.h"
 #include "error.h"
 #include "global.h"
 #include "array.h"

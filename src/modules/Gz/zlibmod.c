@@ -7,7 +7,6 @@
 RCSID("$Id$");
 
 #include "zlib_machine.h"
-#include "types.h"
 
 #if !defined(HAVE_LIBZ) && !defined(HAVE_LIBGZ)
 #undef HAVE_ZLIB_H

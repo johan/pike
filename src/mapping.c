@@ -6,7 +6,6 @@
 #include "global.h"
 RCSID("$Id$");
 #include "main.h"
-#include "types.h"
 #include "object.h"
 #include "mapping.h"
 #include "svalue.h"

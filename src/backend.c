@@ -14,7 +14,6 @@ RCSID("$Id$");
 #include <string.h>
 #include "interpret.h"
 #include "object.h"
-#include "types.h"
 #include "error.h"
 #include "fd_control.h"
 #include "main.h"

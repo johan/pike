@@ -23,7 +23,6 @@
 RCSID("$Id$");
 
 #include "stralloc.h"
-#include "types.h"
 #include "pike_macros.h"
 #include "object.h"
 #include "constants.h"

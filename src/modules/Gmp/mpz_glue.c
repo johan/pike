@@ -6,7 +6,6 @@
 #include "global.h"
 RCSID("$Id$");
 #include "gmp_machine.h"
-#include "types.h"
 
 #if !defined(HAVE_LIBGMP)
 #undef HAVE_GMP_H

@@ -11,7 +11,6 @@
 #include "global.h"
 RCSID("$Id$");
 #include "stralloc.h"
-#include "types.h"
 #include "pike_macros.h"
 #include "object.h"
 #include "program.h"

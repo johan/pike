@@ -2,7 +2,6 @@
 
 #include "global.h"
 RCSID("$Id$");
-#include "types.h"
 #include "interpret.h"
 #include "svalue.h"
 #include "stralloc.h"

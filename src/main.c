@@ -5,7 +5,6 @@
 \*/
 #include "global.h"
 RCSID("$Id$");
-#include "types.h"
 #include "backend.h"
 #include "module.h"
 #include "object.h"

@@ -6,7 +6,6 @@
 #include "global.h"
 RCSID("$Id$");
 #include "gdbm_machine.h"
-#include "types.h"
 #include "threads.h"
 
 /* Todo: make sure only one thread accesses the same gdbmmod */
