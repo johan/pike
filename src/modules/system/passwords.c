@@ -854,31 +854,34 @@ void init_passwd(void)
 #endif
 #ifdef HAVE_GETPWENT
 
-/* function(void:array(int|string)) */
-  ADD_EFUN("getpwent", f_getpwent,tFunc(tVoid,tArr(tOr(tInt,tStr))),
-           OPT_SIDE_EFFECT |OPT_EXTERNAL_DEPEND);
+  /* function(void:array(int|string)) */
+  ADD_FUNCTION("getpwent", f_getpwent,tFunc(tVoid,tArr(tOr(tInt,tStr))),
+	       OPT_SIDE_EFFECT |OPT_EXTERNAL_DEPEND);
 
-/* function(void:array(array(int|string))) */
+  /* function(void:array(array(int|string))) */
   ADD_EFUN("get_all_users", f_get_all_users,tFunc(tVoid,tArr(tArr(tOr(tInt,tStr)))),
            OPT_SIDE_EFFECT | OPT_EXTERNAL_DEPEND);
 #endif
 #ifdef HAVE_ENDPWENT
 
-/* function(void:int) */
-  ADD_EFUN("endpwent", f_endpwent,tFunc(tVoid,tInt), OPT_SIDE_EFFECT | OPT_EXTERNAL_DEPEND);
+  /* function(void:int) */
+  ADD_FUNCTION("endpwent", f_endpwent,tFunc(tVoid,tInt),
+	       OPT_SIDE_EFFECT | OPT_EXTERNAL_DEPEND);
 #endif
 #ifdef HAVE_SETPWENT
 
-/* function(void:int) */
-  ADD_EFUN("setpwent", f_setpwent,tFunc(tVoid,tInt), OPT_SIDE_EFFECT | OPT_EXTERNAL_DEPEND);
+  /* function(void:int) */
+  ADD_FUNCTION("setpwent", f_setpwent,tFunc(tVoid,tInt),
+	       OPT_SIDE_EFFECT | OPT_EXTERNAL_DEPEND);
 #endif
 #ifdef HAVE_GETGRENT
 
-/* function(void:array(int|string|array(string))) */
-  ADD_EFUN("getgrent", f_getgrent,tFunc(tVoid,tArr(tOr3(tInt,tStr,tArr(tStr)))),
-           OPT_SIDE_EFFECT | OPT_EXTERNAL_DEPEND);
+  /* function(void:array(int|string|array(string))) */
+  ADD_FUNCTION("getgrent", f_getgrent,
+	       tFunc(tVoid,tArr(tOr3(tInt,tStr,tArr(tStr)))),
+	       OPT_SIDE_EFFECT | OPT_EXTERNAL_DEPEND);
 
-/* function(void:array(array(int|string|array(string)))) */
+  /* function(void:array(array(int|string|array(string)))) */
   ADD_EFUN("get_all_groups", f_get_all_groups,tFunc(tVoid,tArr(tArr(tOr3(tInt,tStr,tArr(tStr))))),
            OPT_SIDE_EFFECT | OPT_EXTERNAL_DEPEND);
 
@@ -891,12 +894,14 @@ void init_passwd(void)
 #endif
 #ifdef HAVE_ENDGRENT
 
-/* function(void:int) */
-  ADD_EFUN("endgrent", f_endgrent,tFunc(tVoid,tInt), OPT_SIDE_EFFECT | OPT_EXTERNAL_DEPEND);
+  /* function(void:int) */
+  ADD_FUNCTION("endgrent", f_endgrent,tFunc(tVoid,tInt),
+	       OPT_SIDE_EFFECT | OPT_EXTERNAL_DEPEND);
 #endif
 #ifdef HAVE_SETGRENT
 
-/* function(void:int) */
-  ADD_EFUN("setgrent", f_setgrent,tFunc(tVoid,tInt), OPT_SIDE_EFFECT |OPT_EXTERNAL_DEPEND);
+  /* function(void:int) */
+  ADD_FUNCTION("setgrent", f_setgrent,tFunc(tVoid,tInt),
+	       OPT_SIDE_EFFECT |OPT_EXTERNAL_DEPEND);
 #endif
 }
