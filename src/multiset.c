@@ -24,6 +24,8 @@ RCSID("$Id$");
 
 #include <assert.h>
 
+#define sp Pike_sp
+
 /* The following defines the allocation policy. It's almost the same
  * as for mappings. */
 #define ALLOC_SIZE(size) ((size) ? (size) + 4 : 0)
