@@ -2077,6 +2077,7 @@ static void dbdate_create(INT32 args)
     case T_INT:
       t=Pike_sp[-1].u.integer;
       tm=localtime(&t);
+      if (!tm) Pike_error ("localtime() failed to convert %ld\n", (long) t);
       OCIDateSetDate(&THIS_DBDATE->date, tm->tm_year, tm->tm_mon, tm->tm_mday);
       OCIDateSetTime(&THIS_DBDATE->date, tm->tm_hour, tm->tm_min, tm->tm_sec);
       break;

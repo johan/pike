@@ -58,6 +58,7 @@ void f_discdate(INT32 argc)
     struct tm *eris;
     t=Pike_sp[-argc].u.integer;
     eris=localtime(&t);
+    if (!eris) Pike_error ("localtime() failed to convert %ld\n", (long) t);
     bob=eris->tm_yday;		/* days since Jan 1. */
     raw=eris->tm_year;		/* years since 1980 */
     hastur=convert(bob,raw);
