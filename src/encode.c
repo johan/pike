@@ -2211,7 +2211,7 @@ static DECLSPEC(noreturn) void decode_error (struct svalue *decoding,
 #ifdef HAVE_VSNPRINTF
   vsnprintf (buf, sizeof (buf), msg, args);
 #else /* !HAVE_VSNPRINTF */
-  VSPRINTF(buf, fmt, args);
+  VSPRINTF(buf, msg, args);
 #endif /* HAVE_VSNPRINTF */
   va_end (args);
 
