@@ -18,9 +18,19 @@ string default_yp_domain() {
   return Yp.default_domain();
 }
 
-object clone(string|program prog, mixed ... args) {
-  return new(prog, @args);
+object new(string|program prog, mixed ... args)
+{
+  if(stringp(prog))
+  {
+    if(program p=(program)(prog, backtrace()[-2][0]))
+      return p(@args);
+    else
+      error("Failed to find program %s.\n", prog);
+  }
+  return prog(@args);
 }
+
+function(string|program, mixed ... : object) clone = new;
 
 mapping(string:mixed) all_constants()
 {
@@ -28,6 +38,7 @@ mapping(string:mixed) all_constants()
   ret->all_constants=all_constants;
   ret->dirname=dirname;
   ret->default_yp_domain=default_yp_domain;
+  ret->new=new;
   ret->clone=clone;
   return ret;
 }
