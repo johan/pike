@@ -82,7 +82,7 @@ else
 
   # Header file
 
-  AC_CHECK_HEADERS(winsock.h mysql.h mysql/mysql.h)
+  AC_CHECK_HEADERS(winsock.h mysql.h mysql/mysql.h errmsg.h mysql/errmsg.h)
 
   # Mysql libs
 
