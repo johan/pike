@@ -219,6 +219,11 @@ static void report_error(const char *function_name)
  * efuns
  */
 
+/*! @module system
+ *! This module embodies common operating system calls, making them
+ *! available to the Pike programmer.
+ */
+
 #ifdef HAVE_LINK
 /* void hardlink(string from, string to) */
 void f_hardlink(INT32 args)
