@@ -941,8 +941,8 @@ void f_get_dir(INT32 args)
     {
       if(d->d_name[0]=='.')
       {
-	if(!d->d_name[1]) continue;
-	if(d->d_name[1]=='.' && !d->d_name[2]) continue;
+	if(NAMLEN(d)==1) continue;
+	if(d->d_name[1]=='.' && NAMLEN(d)==2) continue;
       }
       push_string(make_shared_binary_string(d->d_name, NAMLEN(d)));
     }
