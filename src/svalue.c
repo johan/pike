@@ -119,6 +119,10 @@ PMOD_EXPORT void really_free_short_svalue_ptr(void **s, TYPE_T type)
       really_free_string(tmp.string);
       break;
       
+    case T_TYPE:
+      really_free_pike_type(tmp.type);
+      break;
+      
 #ifdef PIKE_DEBUG
     default:
 	fatal("Bad type in free_short_svalue.\n");
