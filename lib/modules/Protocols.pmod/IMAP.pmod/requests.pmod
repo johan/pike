@@ -582,7 +582,7 @@ class fetch
       }
       atom->options = ({ ([ "type":"atom", "atom":section ]) });
 
-      res->raw_wanted = atom->atom;
+      res->raw_wanted = upper_case(atom->atom);
       res->wanted = wanted;
 
       werror("Options specified. "
