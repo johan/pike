@@ -393,7 +393,7 @@ void img_pnm_encode_P4(INT32 args) /* binary PBM */
 {
    char buf[80];
    struct pike_string *a,*b;
-   struct image *img;
+   struct image *img=NULL;
    unsigned char *c;
    int y,x,bit;
    rgb_group *s;
@@ -439,7 +439,7 @@ void img_pnm_encode_P5(INT32 args) /* binary PGM */
 {
    char buf[80];
    struct pike_string *a,*b;
-   struct image *img;
+   struct image *img=NULL;
    unsigned char *c;
    int n;
    rgb_group *s;
@@ -474,7 +474,7 @@ void img_pnm_encode_P6(INT32 args)
 {
    char buf[80];
    struct pike_string *a,*b;
-   struct image *img;
+   struct image *img=NULL;
 
    if (args<1 ||
        sp[-args].type!=T_OBJECT ||
@@ -512,7 +512,7 @@ void img_pnm_encode_P6(INT32 args)
 
 void img_pnm_encode_ascii(INT32 args)
 {
-   struct image *img;
+   struct image *img=NULL;
    rgb_group *s;
    int n;
    void (*func)(INT32);
@@ -546,7 +546,7 @@ void img_pnm_encode_ascii(INT32 args)
 
 void img_pnm_encode_binary(INT32 args)
 {
-   struct image *img;
+   struct image *img=NULL;
    rgb_group *s;
    int n;
    void (*func)(INT32);

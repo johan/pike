@@ -36,6 +36,10 @@ RCSID("$Id$");
 #include "error.h"
 #include "threads.h"
 
+void image_gif__decode(INT32 args);
+void image_pnm_decode(INT32 args);
+void image_xwd__decode(INT32 args);
+
 void image_any__decode(INT32 args)
 {
    if (args!=1 || sp[-args].type!=T_STRING)
