@@ -485,7 +485,10 @@ void free_dynamic_load(void)
 int main()
 {
   void *module,*fun;
-  dlinit();
+  if (!dlinit()) {
+    fprintf(stderr, "dlinit() failed.\n");
+    exit(1);
+  }
   module=dlopen("./myconftest.so",RTLD_NOW);
   if(!module)
   {
