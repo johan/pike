@@ -1307,8 +1307,11 @@ void history(int n)
   }
 }
 
-//! @fixme
-//!   Document this function
+//! Changes the line to a line from the history @[d] steps from the
+//! current entry (0 being the current line, negative values older,
+//! and positive values newer).
+//! @note
+//!   Only effective if you have a history object.
 void delta_history(int d)
 {
   if(historyobj)
