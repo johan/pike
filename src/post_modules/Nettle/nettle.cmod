@@ -185,6 +185,19 @@ PIKECLASS Yarrow
 /*! @endclass
  */
 
+char *crypt_md5(int pl, const char *pw, int sl, const char *salt);
+
+/*! Does the crypt_md5 abrakadabra (MD5 + snakeoil).
+ *! It is assumed that @[salt] does not contain "$".
+ */
+PIKEFUN string crypt_md5(string pw, string salt)
+{
+  NO_WIDE_STRING(pw);
+  NO_WIDE_STRING(salt);
+  RETURN make_shared_string(crypt_md5(pw->len, pw->str,
+				      salt->len, salt->str));
+}
+
 /*! @endmodule
  */
 
