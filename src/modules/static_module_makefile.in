@@ -7,6 +7,8 @@ CC=@CC@
 CPP=@CPP@
 AR=@AR@
 PIKE_SRC_DIR=$(SRCDIR)/../..
+BUILD_BASE=../..
+MODULE_BASE=..
 
 PREFLAGS=-I. -I$(SRCDIR) -I$(SRCDIR)/../.. -I../.. -I. -Dpike_module_init=pike_module_$(MODNAME)_init -Dpike_module_exit=pike_module_$(MODNAME)_exit $(MODULE_CPPFLAGS) $(DEFINES) 
 CFLAGS=$(PREFLAGS) $(OTHERFLAGS) $(MODULE_CFLAGS)
