@@ -751,16 +751,26 @@ static struct pike_string *do_read_oob(int fd,
  *! @decl string read(int len)
  *! @decl string read(int len, int(0..1) not_all)
  *!
- *! Read data from a file or a string.
+ *! Read data from a file or a socket.
  *!
  *! Attempts to read @[len] bytes from the file, and return it as a
- *! string. If something goes wrong, zero is returned.
+ *! string. Less than @[len] bytes can be returned if end-of-file is
+ *! encountered or, in the case it's a socket or pipe, it was closed
+ *! from the other end.
  *!
- *! If a one is given as the second argument to @[read()], it will not try
- *! its best to read as many bytes as you have asked for, but will
- *! merely try to read as many bytes as the system read function will
- *! return. This mainly useful with stream devices which can return
- *! exactly one row or packet at a time.
+ *! If @[not_all] is nonzero, @[read()] will not try its best to read
+ *! as many bytes as you have asked for, but will merely return as
+ *! much as the system read function will return. This mainly useful
+ *! with stream devices which can return exactly one row or packet at
+ *! a time.
+ *!
+ *! If something goes wrong and @[not_all] is set, zero will be
+ *! returned. If something goes wrong and @[not_all] is not set, then
+ *! either zero or a string shorter than @[len] is returned.
+ *!
+ *! If everything went fine, a call to @[errno()] directly afterwards
+ *! will return zero. That includes an end due to end-of-file or
+ *! remote close.
  *!
  *! If no arguments are given, @[read()] will read to the
  *! end of the file/stream.
@@ -1542,6 +1552,12 @@ static void file_grantpt( INT32 args )
  *!
  *! If direction is not specified, both the read and the write direction
  *! will be closed. Otherwise only the directions specified will be closed.
+ *!
+ *! An exception is thrown if an I/O error occurs.
+ *!
+ *! @returns
+ *! Nonzero is returned if the file or stream wasn't open in the
+ *! specified direction, zero otherwise.
  *!
  *! @seealso
  *!   @[open()], @[open_socket()]
