@@ -4,6 +4,8 @@
  * GTK glue code.
  */
 
+#pike __REAL_VERSION__
+
 #if constant(@module@.parse_rc)
 
 string unsillycaps(string what)

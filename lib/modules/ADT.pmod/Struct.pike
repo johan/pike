@@ -4,6 +4,8 @@
 // $Id$
 //
 
+#pike __REAL_VERSION__
+
 //! Implements a struct which can be used for serialization and
 //! deserialization of data.
 //! @example

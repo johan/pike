@@ -1,5 +1,7 @@
 /* $Id$ */
 
+#pike __REAL_VERSION__
+
 /* MirarDoc documentation extractor.
  */
 

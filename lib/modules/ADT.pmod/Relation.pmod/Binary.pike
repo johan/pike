@@ -1,6 +1,8 @@
 // $Id$
 // An abstract data type for binary relations.
 
+#pike __REAL_VERSION__
+
 private mapping val   = ([]);
 private mixed   id;
 private int     items = 0;

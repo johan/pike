@@ -1,5 +1,7 @@
 // $Id$
 
+#pike __REAL_VERSION__
+
 //! Quote from Koremutake home page @url{http://shorl.com/koremutake@}:
 //!
 //! In an attempt to temporarily solve the fact that human beings seem
