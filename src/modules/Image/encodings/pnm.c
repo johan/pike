@@ -191,9 +191,9 @@ void img_pnm_decode(INT32 args)
 	       (unsigned char)((c*255L)/maxval);
 	    break;
 	 case '6':
-	    d->r=(unsigned char)((getnext(s,&pos)*255L)/maxval);
-	    d->g=(unsigned char)((getnext(s,&pos)*255L)/maxval);
-	    d->b=(unsigned char)((getnext(s,&pos)*255L)/maxval);
+	    d->r=(unsigned char)((((INT32)getnext(s,&pos))*255L)/maxval);
+	    d->g=(unsigned char)((((INT32)getnext(s,&pos))*255L)/maxval);
+	    d->b=(unsigned char)((((INT32)getnext(s,&pos))*255L)/maxval);
 	    break;
       }
       d++;

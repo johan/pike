@@ -65,13 +65,13 @@ static char * decode_msql_type (int msql_type)
 #endif
 		default: return "unknown";
 	}
-};
+}
 
 struct msql_my_data
 {
 	int socket; /* the communication socket between us and the database engine. */
-	int db_selected:1; /*flag: if we selected a database*/
-	int connected:1; /*flag: we connected to a server*/
+	unsigned int db_selected:1; /*flag: if we selected a database*/
+	unsigned int connected:1; /*flag: we connected to a server*/
 	struct pike_string *error_msg;
 #ifdef MSQL_VERSION_2
 	int affected;
@@ -266,7 +266,7 @@ static void do_list_dbs (INT32 args)
 	while ((row=msqlFetchRow(result))) /*it's fast, we're in RAM*/
 	{
 		numrows++;
-		push_text(row[0]);
+		push_text((char *)row[0]);
 	}
 	f_aggregate(numrows);
 	msqlFreeResult(result);
@@ -311,7 +311,7 @@ static void do_list_tables (INT32 args)
 	while ((row=msqlFetchRow(result)))
 	{
 		numrows++;
-		push_text(row[0]);
+		push_text((char *)row[0]);
 	}
 	f_aggregate(numrows);
 	msqlFreeResult(result);
@@ -449,9 +449,9 @@ static void do_query (INT32 args)
 				case UINT_TYPE: /*this may lose the MSB and overflow.
 													Is htere a better way?*/
 #endif
-				case INT_TYPE: push_int(atoi(row[k])); break;
-				case REAL_TYPE: push_float(atof(row[k])); break;
-				default: push_text(row[k]); break;
+				case INT_TYPE: push_int(atoi((char *)row[k])); break;
+				case REAL_TYPE: push_float(atof((char *)row[k])); break;
+				default: push_text((char *)row[k]); break;
 			}
 		}
 		this_row=aggregate_array(num_fields);

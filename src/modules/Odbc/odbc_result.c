@@ -109,7 +109,7 @@ static void odbc_fix_fields(void)
     int size;
   } *odbc_fields = alloca(sizeof(struct odbc_field_info)*PIKE_ODBC_RES->num_fields);
   size_t buf_size = 1024;
-  char *buf = alloca(buf_size);
+  unsigned char *buf = alloca(buf_size);
   int membuf_size = 0;
   char *membuf = NULL;
 
@@ -147,7 +147,8 @@ static void odbc_fix_fields(void)
     odbc_fields[i].type = T_STRING;
     odbc_fields[i].size = precision+1;
     /* Create the mapping */
-    push_text("name"); push_string(make_shared_binary_string(buf, name_len));
+    push_text("name");
+    push_string(make_shared_binary_string((char *)buf, name_len));
     push_text("type");
     switch(sql_type) {
     case SQL_CHAR:

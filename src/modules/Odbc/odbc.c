@@ -63,8 +63,8 @@ volatile void odbc_error(const char *fun, const char *msg,
 			 RETCODE code, void (*clean)(void))
 {
   RETCODE _code;
-  char errcode[256];
-  char errmsg[SQL_MAX_MESSAGE_LENGTH];
+  unsigned char errcode[256];
+  unsigned char errmsg[SQL_MAX_MESSAGE_LENGTH];
   SWORD errmsg_len = 0;
   SDWORD native_error;
 
@@ -76,7 +76,7 @@ volatile void odbc_error(const char *fun, const char *msg,
     if (odbc->last_error) {
       free_string(odbc->last_error);
     }
-    odbc->last_error = make_shared_binary_string(errmsg, errmsg_len);
+    odbc->last_error = make_shared_binary_string((char *)errmsg, errmsg_len);
   }
 
   if (clean) {
@@ -211,8 +211,10 @@ static void f_create(INT32 args)
     server = make_shared_string("");
   }
   odbc_check_error("odbc->create", "Connect failed",
-		   SQLConnect(PIKE_ODBC->hdbc, server->str, server->len,
-			      user->str, user->len, pwd->str, pwd->len), NULL);
+		   SQLConnect(PIKE_ODBC->hdbc, (unsigned char *)server->str,
+			      server->len, (unsigned char *)user->str,
+			      user->len, (unsigned char *)pwd->str,
+			      pwd->len), NULL);
   pop_n_elems(args);
 }
 
@@ -243,7 +245,8 @@ static void f_big_query(INT32 args)
 		   SQLAllocStmt(PIKE_ODBC->hdbc, &hstmt), NULL);
   PIKE_ODBC->hstmt = hstmt;
   odbc_check_error("odbc->big_query", "Query failed",
-		   SQLExecDirect(hstmt, q->str, q->len), NULL);
+		   SQLExecDirect(hstmt, (unsigned char *)q->str,
+				 q->len), NULL);
   pop_n_elems(args);
 
   odbc_check_error("odbc->big_query", "Couldn't get the number of fields",

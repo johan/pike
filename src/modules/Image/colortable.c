@@ -2953,7 +2953,8 @@ void image_colortable_index_8bit(INT32 args)
 
    ps=begin_shared_string(src->xsize*src->ysize);
 
-   if (!image_colortable_index_8bit_image(THIS,src->img,ps->str,
+   if (!image_colortable_index_8bit_image(THIS,src->img,
+					  (unsigned char *)ps->str,
 					  src->xsize*src->ysize,src->xsize))
    {
       error("colortable->index_8bit(): called colortable is not initiated\n");
