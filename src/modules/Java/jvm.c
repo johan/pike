@@ -1693,18 +1693,21 @@ static void native_dispatch(struct native_method_context *ctx,
     init_interpreter();
     Pike_stack_top=((char *)&state)+ (thread_stack_size-16384) * STACK_DIRECTION;
     recoveries = NULL;
-    thread_id = low_clone(thread_id_prog);
-    call_c_initializers(thread_id);
-    SWAP_OUT_THREAD(OBJ2THREAD(thread_id));
-    OBJ2THREAD(thread_id)->swapped=0;
-    OBJ2THREAD(thread_id)->id=th_self();
-    num_threads++;
-    thread_table_insert(thread_id);
-    do_native_dispatch(ctx, env, cls, args, rc);
-    OBJ2THREAD(thread_id)->status=THREAD_EXITED;
-    co_signal(& OBJ2THREAD(thread_id)->status_change);
-    thread_table_delete(thread_id);
-    free_object(thread_id);
+    {
+      struct object *o = thread_id = low_clone(thread_id_prog);
+      call_c_initializers(thread_id);
+      SWAP_OUT_THREAD(OBJ2THREAD(thread_id));
+      thread_id = o;
+      OBJ2THREAD(thread_id)->swapped=0;
+      OBJ2THREAD(thread_id)->id=th_self();
+      num_threads++;
+      thread_table_insert(thread_id);
+      do_native_dispatch(ctx, env, cls, args, rc);
+      OBJ2THREAD(thread_id)->status=THREAD_EXITED;
+      co_signal(& OBJ2THREAD(thread_id)->status_change);
+      thread_table_delete(thread_id);
+      free_object(thread_id);
+    }
     thread_id=NULL;
     cleanup_interpret();
     num_threads--;
