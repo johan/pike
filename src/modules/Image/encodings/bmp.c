@@ -873,12 +873,12 @@ void i_img_bmp__decode(INT32 args,int header_only)
 			   Pike_error("Image.BMP.decode: advanced RLE "
 				 "decompression (cursor movement) "
 				 "is unimplemented (please send this "
-				 "image to mirar@idonex.se)\n");
+				 "image to mirar@roxen.com)\n");
 			default: /* literal run */
 			   Pike_error("Image.BMP.decode: advanced RLE "
 				 "decompression (literal run) "
 				 "is unimplemented (please send this "
-				 "image to mirar@idonex.se)\n");
+				 "image to mirar@roxen.com)\n");
 		     }
 		     break;
 		  default:
@@ -960,7 +960,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 			   Pike_error("Image.BMP.decode: advanced RLE "
 				 "decompression (cursor movement) "
 				 "is unimplemented (please send this "
-				 "image to mirar@idonex.se)\n");
+				 "image to mirar@roxen.com)\n");
 #ifdef RLE_DEBUG
 			   if (j<2) break;
 			   fprintf(stderr,"cursor       "
@@ -973,7 +973,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 			   Pike_error("Image.BMP.decode: advanced RLE "
 				 "decompression (non-rle data) "
 				 "is unimplemented (please send this "
-				 "image to mirar@idonex.se)\n");
+				 "image to mirar@roxen.com)\n");
 #ifdef RLE_DEBUG
 			   fprintf(stderr,"data         %5d %02x %02x [ ",
 				   j,s[0],s[1]);

@@ -19,7 +19,7 @@ constant cvs_version = "$Id$";
  */
 
 /*
-These functions were written by Henrik "Hedda" Wallin (hedda@idonex.se)
+These functions were written by Henrik "Hedda" Wallin (hedda@roxen.com)
 Create_bars can draw normal bars, sumbars and normalized sumbars.
 */ 
 

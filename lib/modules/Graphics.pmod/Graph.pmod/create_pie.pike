@@ -20,7 +20,7 @@ constant cvs_version = "$Id$";
  */
 
 /*
-These functions were written by Henrik "Hedda" Wallin (hedda@idonex.se)
+These functions were written by Henrik "Hedda" Wallin (hedda@roxen.com)
 Create_pie can draw pie charts in different forms.
 
 The data is taken from the diagram_data-mapping which is described in 
