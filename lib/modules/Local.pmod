@@ -26,7 +26,7 @@ mixed `[](string name) {
     return remove_path;
   }
 
-  // FIXME: Should .pike och .pmod files have priority?
+  // FIXME: Should .pike or .pmod files have priority?
   //        currently .pike files has it here, but .pmod in the
   //        resolver. // mikael
   
@@ -73,12 +73,12 @@ static void create() {
   add_path("/opt/share/pike_modules");
   add_path("/usr/local/share/pike_modules");
 
-  if( (tmp=getenv("HOME")) || (tmp=getenv("USERPROFILE")) ) {
+  if( (tmp=[string]getenv("HOME")) || (tmp=[string]getenv("USERPROFILE")) ) {
     tmp = (tmp[-1]=='/'?tmp:tmp+"/")+"pike_modules/";
     add_path(tmp);
   }
 
-  if(tmp = getenv("PIKE_LOCAL_PATH") ) {
+  if(tmp = [string]getenv("PIKE_LOCAL_PATH") ) {
     array to_add=reverse(tmp/":"); // preserve order
     add_path( to_add[*] ); 
   }
