@@ -238,6 +238,13 @@ void push_type_int(INT32 i)
     push_type( (i>>(e*8)) & 0xff );
 }
 
+void push_type_int_backwards(INT32 i)
+{
+  int e;
+  for(e=(int)sizeof(i);e-->0;)
+    push_type( (i>>(e*8)) & 0xff );
+}
+
 INT32 extract_type_int(char *p)
 {
   int e;

@@ -465,6 +465,17 @@ int implements(struct program *a, struct program *b);
 #define ADD_INT_CONSTANT(NAME,CONST,FLAGS) \
   quick_add_integer_constant(NAME,CONSTANT_STRLEN(NAME),CONST,FLAGS)
 
+#define ADD_FUNCTION_DTYPE(NAME,FUN,DTYPE,FLAGS) do {				\
+  DTYPE_START;									\
+  {DTYPE}									\
+  {										\
+    struct pike_string *_t;							\
+    DTYPE_END(_t);								\
+    quick_add_function(NAME,CONSTANT_STRLEN(NAME),FUN,_t->str,_t->len,FLAGS,0);	\
+    free_string(_t);								\
+  }										\
+} while (0)
+
 #ifndef NO_PIKE_SHORTHAND
 #define add_function pike_add_function
 #endif
