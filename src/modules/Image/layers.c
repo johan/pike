@@ -2257,6 +2257,8 @@ static INLINE void img_lay_stroke(struct layer *ly,
 				  rgb_group *da,
 				  int len)
 {
+   if (len<0) Pike_error("internal error: stroke len < 0\n");
+
    if (ly->row_func==(lm_row_func*)lm_spec_burn_alpha)
    {
       lm_spec_burn_alpha(ly,l,la,s,sa,d,da,len);
