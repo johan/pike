@@ -28,6 +28,8 @@ RCSID("$Id$");
     void func(INT32 args);
 #include "initstuff.h"
 
+static struct program *pdf_sentinel = NULL
+
 static struct 
 {
    char *name;
@@ -45,7 +47,7 @@ static struct
 #define PDF_CLASS(name,init,exit,prog) { name,init,exit,&prog },
 #define PDF_SUBMODULE(a,b,c)
 #include "initstuff.h"
-  PDF_CLASS(NULL,NULL,NULL,NULL),
+  PDF_CLASS(NULL,NULL,NULL,pdf_sentinel),
 };
 
 static struct 
