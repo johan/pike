@@ -9,7 +9,7 @@
 // - Report in which function the match was made.
 // - Support grep contexts (-A -B -C). Rewrite lines to an object.
 // - Mimic -d behaviour.
-// - Implement -L, -l, --count and -b.
+// - Implement -L, -l, --count, -Z and -b.
 // - Make something smart with macro definitions. Right now they are
 //   ignored.
 // - Implement support for grepping for the definition of a symbol,
@@ -146,7 +146,8 @@ void handle_file(string path, string fn) {
     msg("%O is a directory.\n", path);
     return;
   }
-  Stdio.File in = Stdio.File(path, "r");
+  Stdio.File in;
+  catch { in = Stdio.File(path, "r"); };
   if(!in) {
     msg("File %O could not be read.\n", path);
     return;
@@ -170,6 +171,12 @@ void handle_file(string path, string fn) {
   while(sizeof(data=in->read(4096)))
     f->feed(data);
   f->close();
+}
+
+void usage() {
+  werror("Usage: tgrep [OPTION]... TEXT FILE...\n"
+	 "Try `grep --help' for more information.\n");
+  exit(1);
 }
 
 int main(int num, array(string) args) {
@@ -204,17 +211,13 @@ int main(int num, array(string) args) {
       write(doc);
       return 0;
     case "version":
-      write(version);
+      write( replace(version, ([ "$":"", "Revision: ":"" ])) );
       return 0;
     }
   }
   args = Getopt.get_args(args)[1..];
 
-  if(!sizeof(args)) {
-    werror("Usage: tgrep [OPTION]... TEXT FILE...\n"
-	   "Try `grep --help' for more information.\n");
-    return 1;
-  }
+  if(!sizeof(args)) usage();
 
   target = args[0];
   if(case_insensitive) target = lower_case(target);
@@ -225,6 +228,7 @@ int main(int num, array(string) args) {
     show_fn = 1;
   }
   if(sizeof(files)>1) show_fn = 1;
+  if(!sizeof(files)) usage();
 
   foreach(files, string fn)
     if(recurse)
