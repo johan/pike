@@ -2091,7 +2091,7 @@ void init_image_layers(void)
    set_exit_callback(exit_layer);
 
    ADD_FUNCTION("create",image_layer_create,
-		tOr4(tFunc(,tVoid),
+		tOr4(tFunc(tNone,tVoid),
 		     tFunc(tObj tOr(tObj,tVoid) tOr(tString,tVoid),tVoid),
 		     tFunc(tLayerMap,tVoid),
 		     tFunc(tInt tInt 
@@ -2113,24 +2113,28 @@ void init_image_layers(void)
 
    /* query */
 
-   ADD_FUNCTION("image",image_layer_image,tFunc(,tObj),0);
-   ADD_FUNCTION("alpha",image_layer_alpha,tFunc(,tObj),0);
-   ADD_FUNCTION("mode",image_layer_mode,tFunc(,tStr),0);
+   ADD_FUNCTION("image",image_layer_image,tFunc(tNone,tObj),0);
+   ADD_FUNCTION("alpha",image_layer_alpha,tFunc(tNone,tObj),0);
+   ADD_FUNCTION("mode",image_layer_mode,tFunc(tNone,tStr),0);
 
    ADD_FUNCTION("available_modes",image_layer_available_modes,
-		tFunc(,tArr(tStr)),0);
+		tFunc(tNone,tArr(tStr)),0);
 
-   ADD_FUNCTION("xsize",image_layer_xsize,tFunc(,tInt),0);
-   ADD_FUNCTION("ysize",image_layer_ysize,tFunc(,tInt),0);
+   ADD_FUNCTION("xsize",image_layer_xsize,tFunc(tNone,tInt),0);
+   ADD_FUNCTION("ysize",image_layer_ysize,tFunc(tNone,tInt),0);
 
-   ADD_FUNCTION("xoffset",image_layer_xoffset,tFunc(,tInt),0);
-   ADD_FUNCTION("yoffset",image_layer_yoffset,tFunc(,tInt),0);
+   ADD_FUNCTION("xoffset",image_layer_xoffset,tFunc(tNone,tInt),0);
+   ADD_FUNCTION("yoffset",image_layer_yoffset,tFunc(tNone,tInt),0);
 
-   ADD_FUNCTION("alpha_value",image_layer_alpha_value,tFunc(,tFloat),0);
-   ADD_FUNCTION("fill",image_layer_fill,tFunc(,tObj),0);
-   ADD_FUNCTION("fill_alpha",image_layer_fill_alpha,tFunc(,tObj),0);
+   ADD_FUNCTION("alpha_value",image_layer_alpha_value,tFunc(tNone,tFloat),0);
+   ADD_FUNCTION("fill",image_layer_fill,tFunc(tNone,tObj),0);
+   ADD_FUNCTION("fill_alpha",image_layer_fill_alpha,tFunc(tNone,tObj),0);
 
-   ADD_FUNCTION("tiled",image_layer_tiled,tFunc(,tInt01),0);
+   ADD_FUNCTION("alpha_value",image_layer_alpha_value,tFunc(tNone,tFloat),0);
+   ADD_FUNCTION("fill",image_layer_fill,tFunc(tNone,tObj),0);
+   ADD_FUNCTION("fill_alpha",image_layer_fill_alpha,tFunc(tNone,tObj),0);
+
+   ADD_FUNCTION("tiled",image_layer_tiled,tFunc(tNone,tInt01),0);
 
    /* image-object operations */
 

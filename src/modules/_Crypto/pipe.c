@@ -307,7 +307,7 @@ void pike_pipe_init(void)
   ADD_STORAGE(struct pike_crypto_pipe);
 
   /* function(program|object|array(program|mixed) ...:void) */
-  ADD_FUNCTION("create", f_create,tFuncV(,tOr3(tPrg,tObj,tArr(tOr(tPrg,tMix))),tVoid), 0);
+  ADD_FUNCTION("create", f_create,tFuncV(tNone,tOr3(tPrg,tObj,tArr(tOr(tPrg,tMix))),tVoid), 0);
 
   /* function(void:string) */
   ADD_FUNCTION("name", f_name,tFunc(tVoid,tStr), 0);

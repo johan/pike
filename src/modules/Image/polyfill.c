@@ -4,7 +4,12 @@ RCSID("$Id$");
 /* Prototypes are needed for these */
 extern double floor(double);
 
+#include "global.h"
+
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
+
 #include <math.h>
 
 #include "image_machine.h"

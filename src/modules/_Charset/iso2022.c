@@ -689,9 +689,9 @@ void iso2022_init(void)
   /* function(string:object) */
   ADD_FUNCTION("feed", f_feed,tFunc(tStr,tObj), 0);
   /* function(:string) */
-  ADD_FUNCTION("drain", f_drain,tFunc(,tStr), 0);
+  ADD_FUNCTION("drain", f_drain,tFunc(tNone,tStr), 0);
   /* function(:object) */
-  ADD_FUNCTION("clear", f_clear,tFunc(,tObj), 0);
+  ADD_FUNCTION("clear", f_clear,tFunc(tNone,tObj), 0);
   set_init_callback(init_stor);
   set_exit_callback(exit_stor);
   add_program_constant("ISO2022Dec", iso2022dec_program = end_program(),
@@ -702,9 +702,9 @@ void iso2022_init(void)
   /* function(string:object) */
   ADD_FUNCTION("feed", f_enc_feed,tFunc(tStr,tObj), 0);
   /* function(:string) */
-  ADD_FUNCTION("drain", f_enc_drain,tFunc(,tStr), 0);
+  ADD_FUNCTION("drain", f_enc_drain,tFunc(tNone,tStr), 0);
   /* function(:object) */
-  ADD_FUNCTION("clear", f_enc_clear,tFunc(,tObj), 0);
+  ADD_FUNCTION("clear", f_enc_clear,tFunc(tNone,tObj), 0);
   /* function(string|void,function(string:string)|void:void) */
   ADD_FUNCTION("create", f_create,tFunc(tOr(tStr,tVoid) tOr(tFunc(tStr,tStr),tVoid),tVoid), 0);
   /* function(function(string:string):void) */
