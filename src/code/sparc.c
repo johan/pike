@@ -166,7 +166,7 @@ unsigned INT32 sparc_codegen_state = 0;
 int sparc_last_pc = 0;
 
 #define LOAD_PIKE_FP() do {					\
-    if (1 || !(sparc_codegen_state & SPARC_CODEGEN_FP_IS_SET)) {	\
+    if (!(sparc_codegen_state & SPARC_CODEGEN_FP_IS_SET)) {	\
       SET_REG(SPARC_REG_PIKE_FP,				\
 	      ((INT32)(&Pike_interpreter.frame_pointer)));	\
       /* lduw [ %i0 ], %i0 */					\
@@ -175,6 +175,8 @@ int sparc_last_pc = 0;
       sparc_codegen_state |= SPARC_CODEGEN_FP_IS_SET;		\
     }								\
   } while(0)
+
+#define UNLOAD_PIKE_FP() (sparc_codegen_state &= ~SPARC_CODEGEN_FP_IS_SET)
 
 /*
  * Allocate a stack frame.
@@ -265,6 +267,9 @@ static void low_ins_f_byte(unsigned int b, int delay_ok)
   }
 
   ADD_CALL(addr, delay_ok);
+
+  /* This is probably only needed for some instructions, but... */
+  UNLOAD_PIKE_FP();
 }
 
 void ins_f_byte(unsigned int opcode)
