@@ -158,6 +158,7 @@ char *get_name_of_type(int t)
     case T_MAPPING_DATA: return "mapping_data";
     case T_PIKE_FRAME: return "pike_frame";
     case T_MULTISET_DATA: return "multiset_data";
+    case T_STRUCT_CALLABLE: return "callable";
     default: return "unknown";
   }
 }
@@ -214,8 +215,8 @@ static void internal_parse_type(const char **s);
 #define PIKE_TYPE_CHUNK	128
 BLOCK_ALLOC(pike_type, PIKE_TYPE_CHUNK)
 
-static struct pike_type **pike_type_hash = NULL;
-static size_t pike_type_hash_size = 0;
+struct pike_type **pike_type_hash = NULL;
+size_t pike_type_hash_size = 0;
 
 void debug_free_type(struct pike_type *t)
 {

@@ -32,6 +32,9 @@ struct pike_type
   struct pike_type *cdr;
 };
 
+extern struct pike_type **pike_type_hash;
+extern size_t pike_type_hash_size;
+
 #define CAR_TO_INT(TYPE) ((char *) (TYPE)->car - (char *) 0)
 #define CDR_TO_INT(TYPE) ((char *) (TYPE)->cdr - (char *) 0)
 
