@@ -2154,6 +2154,10 @@ void f_compile(INT32 args)
   } else {
     p = compile(sp[-args].u.string, NULL);
   }
+#ifdef PIKE_DEBUG
+  if(!(p->flags & PROGRAM_FINISHED))
+    fatal("Got unfinished program from internal compile().\n");
+#endif
   pop_n_elems(args);
   push_program(p);
 }
