@@ -2109,7 +2109,8 @@ void f_diff_longest_sequence(INT32 args)
 
    cmptbl=diff_compare_table(sp[-args].u.array,sp[1-args].u.array);
    push_array(cmptbl);
-   seq=diff_longest_sequence(cmptbl, sp[1-args].u.array->size);
+   /* Note that the stack is one element off here. */
+   seq=diff_longest_sequence(cmptbl, sp[-args].u.array->size);
    pop_n_elems(args+1);
    push_array(seq); 
 }
