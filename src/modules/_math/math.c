@@ -17,10 +17,6 @@
 
 #include <math.h>
 
-#ifdef PC
-#undef PC
-#endif /* PC */
-
 #ifdef HAVE_IEEEFP_H
 #include <ieeefp.h>
 #endif

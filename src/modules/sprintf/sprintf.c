@@ -303,10 +303,6 @@ RCSID("$Id$");
 
 #include "config.h"
 
-#ifdef PC
-#undef PC
-#endif /* PC */
-
 #include <math.h>
 #ifdef HAVE_IEEEFP_H
 #include <ieeefp.h>
