@@ -23,7 +23,7 @@ static function close_cb;
 //! @seealso
 //!   @[Stdio.File()->close()]
 int close(void|string direction) {
-  direction = lower_case(direction);
+  direction = lower_case(direction||"rw");
   int cr = has_value(direction, "r");
   int cw = has_value(direction, "w");
 
