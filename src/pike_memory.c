@@ -213,7 +213,7 @@ size_t hashmem(const unsigned char *a, size_t len, size_t mlen)
 	mlen /= 2*sizeof(size_t);
 #endif /* sizeof(char *) == 8 */
 #endif /* sizeof(char *) == 4 */
-	--mlen >= 0;)
+	mlen--;)
     {
       ret^=(ret<<7)+*(b++);
       ret^=(ret>>6)+*(b++);
