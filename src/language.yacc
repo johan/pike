@@ -2893,6 +2893,9 @@ static node *lexical_islocal(struct pike_string *str)
 	  q->lexical_scope=2;
 	  q=q->previous;
 	}
+	if(q->min_number_of_locals < e+1)
+	  q->min_number_of_locals = e+1;
+
 	return mklocalnode(e,depth);
       }
     }

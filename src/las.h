@@ -50,6 +50,7 @@ struct compiler_frame
   struct pike_string *current_return_type;
   int current_number_of_locals;
   int max_number_of_locals;
+  int min_number_of_locals;
   int lexical_scope;
   struct local_variable variable[MAX_LOCAL];
 };
