@@ -407,6 +407,7 @@ static struct case_info *find_ci_shift0(INT32 c)
 #define DO_LOWER_CASE(C) do {\
     INT32 c = C; \
     struct case_info *ci = find_ci(c); \
+    if(c<128){if(c >= 'A' && c <= 'Z' ) C=c+0x20;}else {\
     if (ci) { \
       switch(ci->mode) { \
       case CIM_NONE: case CIM_LOWERDELTA: break; \
@@ -415,11 +416,12 @@ static struct case_info *find_ci_shift0(INT32 c)
       case CIM_CASEBITOFF: C = ((c - ci->data) | ci->data) + ci->data; break; \
       default: Pike_fatal("lower_case(): Unknown case_info mode: %d\n", ci->mode); \
     } \
-   } \
+   }} \
   } while(0)
 
 #define DO_LOWER_CASE_SHIFT0(C) do {\
     INT32 c = C; \
+    if(c<128){if(c >= 'A' && c <= 'Z' ) C=c+0x20;}else {\
     struct case_info *ci = find_ci_shift0(c); \
     if (ci) { \
       switch(ci->mode) { \
@@ -429,11 +431,12 @@ static struct case_info *find_ci_shift0(INT32 c)
       case CIM_CASEBITOFF: C = ((c - ci->data) | ci->data) + ci->data; break; \
       default: Pike_fatal("lower_case(): Unknown case_info mode: %d\n", ci->mode); \
     } \
-   } \
+   }} \
   } while(0)
 
 #define DO_UPPER_CASE(C) do {\
     INT32 c = C; \
+    if(c<128){if(c >= 'a' && c <= 'z' ) C=c-0x20;}else {\
     struct case_info *ci = find_ci(c); \
     if (ci) { \
       switch(ci->mode) { \
@@ -443,11 +446,12 @@ static struct case_info *find_ci_shift0(INT32 c)
       case CIM_CASEBITOFF: C = ((c - ci->data)& ~ci->data) + ci->data; break; \
       default: Pike_fatal("upper_case(): Unknown case_info mode: %d\n", ci->mode); \
     } \
-   } \
+   }} \
   } while(0)
 
 #define DO_UPPER_CASE_SHIFT0(C) do {\
     INT32 c = C; \
+    if(c<128){if(c >= 'a' && c <= 'z' ) C=c-0x20;}else {\
     struct case_info *ci = find_ci_shift0(c); \
     if (ci) { \
       switch(ci->mode) { \
@@ -457,7 +461,7 @@ static struct case_info *find_ci_shift0(INT32 c)
       case CIM_CASEBITOFF: C = ((c - ci->data)& ~ci->data) + ci->data; break; \
       default: Pike_fatal("lower_case(): Unknown case_info mode: %d\n", ci->mode); \
     } \
-   } \
+   }} \
   } while(0)
 
 /*! @decl string lower_case(string s)
