@@ -1766,8 +1766,7 @@ void exit_image_png(void)
 void init_image_png(void)
 {
    push_constant_text("Gz");
-   push_int(0);
-   SAFE_APPLY_MASTER("resolv",2);
+   SAFE_APPLY_MASTER("resolv",1);
    if (sp[-1].type==T_OBJECT) 
    {
      stack_dup();
