@@ -19,6 +19,12 @@ RCSID("$Id$");
 #include "operators.h"
 #include "../Image/image.h"
 
+#endif /* HAVE_LIBFT2 */
+
+#include "module_magic.h"
+
+#ifdef HAVE_LIBFT2
+
 static FT_Library library;
 static struct program *face_program;
 #ifdef DYNAMIC_MODULE
