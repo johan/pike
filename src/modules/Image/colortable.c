@@ -3147,6 +3147,17 @@ void image_colortable_floyd_steinberg(INT32 args)
    push_object(THISOBJ); THISOBJ->refs++;
 }
 
+/* called by GIF encoder */
+void image_colortable_internal_floyd_steinberg(struct neo_colortable *nct)
+{
+   nct->du.floyd_steinberg.forward=0.95*(7.0/16);
+   nct->du.floyd_steinberg.downforward=0.95*(1.0/16);
+   nct->du.floyd_steinberg.down=0.95*(5.0/16);
+   nct->du.floyd_steinberg.downback=0.95*(3.0/16);
+
+   nct->dither_type=NCTD_FLOYD_STEINBERG;
+}
+
 /*
 **! method object nodither()
 **!	Set no dithering (default).
