@@ -624,8 +624,14 @@ static int low_yylex(YYSTYPE *yylval)
 	yyerror("Unexpected end of file\n");
 	break;
 
-	case '\\':
-	  c = char_const();
+      case '\\':
+	c = char_const();
+	break;
+
+      case '\'':
+	yyerror("Zero-length character constant.");
+	debug_malloc_pass( yylval->n=mkintnode(0) );
+	return TOK_NUMBER;
       }
       if(!GOBBLE('\''))
 	yyerror("Unterminated character constant.");
