@@ -122,7 +122,7 @@ void img_ras_decode(INT32 args)
    unsigned char *src, *tmpdata=NULL;
    ptrdiff_t len;
    INT32 x, y;
-   unsigned int numcolors = 0;
+   size_t numcolors = 0;
    struct nct_flat_entry *entries = NULL;
 
    get_all_args("Image.RAS.decode", args, "%S", &str);
