@@ -440,6 +440,19 @@ void f_load_module(INT32 args)
       Pike_error("Failed to initialize dynamic module.\n");
     }
   }
+#if defined(__NT__) && defined(_M_IA64)
+  else
+  {
+    fprintf(stderr, "pike_module_init: 0x%p\n"
+	    "  func: 0x%p\n"
+	    "  gp:   0x%p\n",
+	    init, ((void **)init)[0], ((void **)init)[1]);
+    fprintf(stderr, "pike_module_exit: 0x%p\n"
+	    "  func: 0x%p\n"
+	    "  gp:   0x%p\n",
+	    exit, ((void **)exit)[0], ((void **)exit)[1]);
+  }
+#endif /* __NT__ && _M_IA64 */
 
   new_module=ALLOC_STRUCT(module_list);
   new_module->next=dynamic_module_list;
@@ -462,7 +475,13 @@ void f_load_module(INT32 args)
   { struct svalue *save_sp=Pike_sp;
 #endif
   SET_ONERROR(err, cleanup_compilation, &save);
+#if defined(__NT__) && defined(_M_IA64)
+  fprintf(stderr, "Calling pike_module_init()...\n");
+#endif /* __NT__ && _M_IA64 */
   (*(modfun)init)();
+#if defined(__NT__) && defined(_M_IA64)
+  fprintf(stderr, "pike_module_init() done.\n");
+#endif /* __NT__ && _M_IA64 */
   UNSET_ONERROR(err);
 #ifdef PIKE_DEBUG
   if(Pike_sp != save_sp)
