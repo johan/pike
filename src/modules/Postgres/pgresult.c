@@ -290,9 +290,8 @@ static void f_seek (INT32 args)
  *! You can typecast them in Pike to get the numeric value.
  *!
  *! @seealso
- *!   seek
+ *!   @[seek()]
  */
-
 static void f_fetch_row (INT32 args)
 {
 	int j,k,numfields;
@@ -340,15 +339,23 @@ badresult:
 		value=PQgetvalue(THIS->result,THIS->cursor,j);
 		k=PQgetlength(THIS->result,THIS->cursor,j);
 		switch(PQftype(THIS->result,j)) {
+		  /* FIXME: This code is questionable, and BPCHAROID
+		   *        and BYTEAOID are usually not available
+		   *        to Postgres frontends.
+		   */
 #ifdef CUT_TRAILING_SPACES
+#ifdef BPCHAROID
 		case BPCHAROID:
 		  for(;k>0 && value[k]==' ';k--);
 		  break;
 #endif
+#endif
+#ifdef BYTEAOID
 		case BYTEAOID:
 		  if(binbuf=PQunescapeBytea(value,&binlen))
 		    value=binbuf,k=binlen;
 		  break;
+#endif
 		}
 		push_string(make_shared_binary_string(value,k));
 		if(binbuf)
