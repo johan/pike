@@ -1637,7 +1637,11 @@ int mkdirhier (string pathname, void|int mode)
   else path = "";
   foreach (pathname / "/", string name) {
     path += name;
-    mkdir(path, mode);
+    if (!file_stat(path)) {
+      if (!mkdir(path, mode)) {
+	return 0;
+      }
+    }
     path += "/";
   }
   return is_dir (path);
