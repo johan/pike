@@ -714,8 +714,6 @@ static char *combine_path(char *cwd,char *file)
   int tmp;
   ONERROR err;
 
-  SET_ONERROR(err, free_nonull, cwdbuf);
-  
   if((tmp=IS_ABS(file)))
   {
     cwdbuf = (char *)xalloc(tmp+1);
@@ -746,6 +744,8 @@ static char *combine_path(char *cwd,char *file)
   }
 #endif
 
+  SET_ONERROR(err, free_nonull, cwdbuf);
+  
 #ifdef PIKE_DEBUG    
   if(!cwd)
     fatal("No cwd in combine_path!\n");
