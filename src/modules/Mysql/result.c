@@ -187,6 +187,21 @@ void mysqlmod_parse_field(MYSQL_FIELD *field, int support_default)
     case FIELD_TYPE_STRING:
       push_text("string");
       break;
+    case FIELD_TYPE_DATE:
+      push_text("date");
+      break;
+    case FIELD_TYPE_DATETIME:
+      push_text("datetime");
+      break;
+    case FIELD_TYPE_TIMESTAMP:
+      push_text("timestamp");
+      break;
+    case FIELD_TYPE_YEAR:
+      push_text("year");
+      break;
+    case FIELD_TYPE_NEWDATE:
+      push_text("newdate");
+      break;
     default:
       push_text("unknown");
       break;
