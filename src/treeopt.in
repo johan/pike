@@ -551,11 +551,15 @@ F_COMMA_EXPR(F_ASSIGN(0, 1 = F_LOCAL),
   }
   ;
 
+// Canonicalize the argument list.
 F_ARG_LIST(-, 0):
   $0;
 
 F_ARG_LIST(0, -):
   $0;
+
+F_ARG_LIST(0, F_ARG_LIST(1, 2)):
+  F_ARG_LIST(F_ARG_LIST($0, $1), $2);
 
 // Dead-code elimination.
 // FIXME: Should it be a warning here?
