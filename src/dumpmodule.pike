@@ -64,6 +64,14 @@ class MyMaster
   {
     logmsg_long (describe_backtrace (trace));
   }
+
+  static void create()
+  {
+    object old_master = master();
+    ::create();
+    foreach (indices (old_master), string var)
+      catch {this[var] = old_master[var];};
+  }
 }
 
 class Handler
