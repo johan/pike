@@ -2994,6 +2994,8 @@ extern void init_image_gif(void);
 extern void exit_image_gif(void);
 extern void init_image_pnm(void);
 extern void exit_image_pnm(void);
+extern void init_image_xwd(void);
+extern void exit_image_xwd(void);
 extern void init_image_x(void);
 extern void exit_image_x(void);
 
@@ -3271,6 +3273,7 @@ void pike_module_init(void)
 
    init_image_gif();
    init_image_pnm();
+   init_image_xwd();
    init_image_x();
 }
 
@@ -3286,6 +3289,7 @@ void pike_module_exit(void)
 
   exit_image_gif();
   exit_image_pnm();
+  exit_image_xwd();
   exit_image_x();
 
   free_string(magic_PNG);
