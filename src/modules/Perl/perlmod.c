@@ -1082,6 +1082,12 @@ static void perlmod_array_size_limit(INT32 args)
   push_int(_THIS->array_size_limit);
 }
 
+/*! @endclass
+ */
+
+/*! @endmodule
+ */
+
 PIKE_MODULE_INIT
 {
 #ifdef PIKE_PERLDEBUG
