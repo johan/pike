@@ -2555,7 +2555,7 @@ void f_create_process(INT32 args)
 	case PROCE_SETUID:
 	  if (buf[1] == EINVAL) {
 	    error("Process.create_process(): Invalid uid: %d.\n",
-		  wanted_uid);
+		  (int)wanted_uid);
 	  }
 	  error("Process.create_process(): setuid(%d) failed. errno:%d\n",
 		buf[2], buf[1]);
@@ -2564,7 +2564,7 @@ void f_create_process(INT32 args)
 	  if (buf[1] == ENOENT) {
 	    error("Process.create_process(): Executable file not found.\n");
 	  }
-	  if (buf[1] == EACCESS) {
+	  if (buf[1] == EACCES) {
 	    error("Process.create_process(): Access denied.\n");
 	  }
 	  error("Process.create_process(): exec() failed. errno:%d\n"
