@@ -717,7 +717,6 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
       }
       break;
 
-    case T_PROGRAM:
     case T_FLOAT:
     case T_STRING:
     case T_ARRAY:
