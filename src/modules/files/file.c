@@ -422,7 +422,11 @@ static struct pike_string *do_read(int fd,
     }
 
   }else{
-#define CHUNK 65536
+    /* For some reason, 8k seems to work faster than 64k.
+     * (4k seems to be about 2% faster than 8k when using linux though)
+     * /Hubbe (Per pointed it out to me..)
+     */
+#define CHUNK ( 1024 * 8 )
     INT32 try_read;
     dynamic_buffer b;
 
@@ -486,8 +490,8 @@ static struct pike_string *do_read(int fd,
       SET_INTERNAL_REFERENCE(THIS);
     }
 
-
     return low_free_buf(&b);
+#undef CHUNK
   }
 }
 
@@ -629,6 +633,7 @@ static struct pike_string *do_read_oob(int fd,
       SET_INTERNAL_REFERENCE(THIS);
     }
     return low_free_buf(&b);
+#undef CHUNK
   }
 }
 #endif /* WITH_OOB */
@@ -1267,7 +1272,7 @@ static void file_open(INT32 args)
   {
      str=Pike_sp[-args].u.string;
 
-     if (strlen(str->str) != str->len) {
+     if (strlen(str->str) != (size_t)str->len) {
        error("Filenames with NUL are not supported.\n");
      }
 
