@@ -121,7 +121,7 @@ mixed *master_file_stat(string x)
 mapping (string:string) environment=([]);
 
 
-varargs mixed getenv(string s)
+mixed getenv(string|void s)
 {
   if(!s) return environment;
   return environment[s];
@@ -433,7 +433,7 @@ object findmodule(string fullname)
   return fc[fullname]=UNDEFINED;
 }
 
-varargs mixed resolv(string identifier, string current_file)
+mixed resolv(string identifier, string|void current_file)
 {
   mixed ret;
   string *tmp,path;
