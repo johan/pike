@@ -112,14 +112,12 @@ string read(void|int(0..) len, void|int(0..1) not_all) {
   int start = ptr;
   int end;
 
+  if(len>sizeof(data)) len=sizeof(data);
   if(zero_type(len))
     end = sizeof(data)-1;
   else
     end = start+len-1;
   ptr = end+1;
-
-  if(!not_all && (end >= sizeof(data)))
-    return 0;
 
   return data[start..end];
 }
