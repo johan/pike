@@ -1486,13 +1486,14 @@ string read_bytes(string filename, void|int start,void|int len)
   return ret;
 }
 
-//! Append the string @[str] onto the file @[filename].
+//! Write the string @[str] onto the file @[filename]. Any existing
+//! data in the file is overwritten.
 //!
 //! @returns
 //! Returns number of bytes written.
 //!
 //! @seealso
-//! @[read_bytes()]
+//! @[append_file()], @[read_bytes()]
 //!
 int write_file(string filename, string str, int|void access)
 {
@@ -1511,6 +1512,14 @@ int write_file(string filename, string str, int|void access)
   return ret;
 }
 
+//! Append the string @[str] onto the file @[filename].
+//!
+//! @returns
+//! Returns number of bytes written.
+//!
+//! @seealso
+//! @[write_file()], @[read_bytes()]
+//!
 int append_file(string filename, string what, int|void access)
 {
   int ret;
