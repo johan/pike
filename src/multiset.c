@@ -135,7 +135,8 @@ PMOD_EXPORT const char msg_multiset_no_node_refs[] =
 #define SAME_CMP_LESS(MSD_A, MSD_B)					\
   ((MSD_A)->cmp_less.type == T_INT ?					\
    (MSD_B)->cmp_less.type == T_INT :					\
-   is_identical (&(MSD_A)->cmp_less, &(MSD_B)->cmp_less))
+   ((MSD_B)->cmp_less.type != T_INT &&					\
+    is_identical (&(MSD_A)->cmp_less, &(MSD_B)->cmp_less)))
 
 #define HDR(NODE) ((struct rb_node_hdr *) msnode_check (NODE))
 #define PHDR(NODEPTR) ((struct rb_node_hdr **) msnode_ptr_check (NODEPTR))
@@ -1043,7 +1044,8 @@ PMOD_EXPORT void multiset_set_cmp_less (struct multiset *l,
 
 again:
   if (cmp_less ?
-      is_identical (cmp_less, &old->cmp_less) : old->cmp_less.type == T_INT)
+      old->cmp_less.type != T_INT && is_identical (cmp_less, &old->cmp_less) :
+      old->cmp_less.type == T_INT)
     {}
 
   else if (!old->root) {
@@ -3323,7 +3325,8 @@ PMOD_EXPORT struct multiset *add_multisets (struct svalue *vect, int count)
   }
 
   if (indval == !!(l->msd->flags & MULTISET_INDVAL) &&
-      (cmp_less ? is_identical (cmp_less, &l->msd->cmp_less) :
+      (cmp_less ?
+       l->msd->cmp_less.type != T_INT && is_identical (cmp_less, &l->msd->cmp_less) :
        l->msd->cmp_less.type == T_INT)) {
     res = copy_multiset (l);
     multiset_set_flags (res, indval && MULTISET_INDVAL);
