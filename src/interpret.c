@@ -540,16 +540,12 @@ static void eval_instruction(unsigned char *pc)
       prefix+=EXTRACT_UCHAR(pc++)<<8;
       break;
       /* Push number */
-      CASE(F_CONST0); sp->type=T_INT; sp->u.integer=0;  sp++; break;
-      CASE(F_CONST1); sp->type=T_INT; sp->u.integer=1;  sp++; break;
-      CASE(F_CONST_1);sp->type=T_INT; sp->u.integer=-1; sp++; break;
-      CASE(F_BIGNUM); sp->type=T_INT; sp->u.integer=0x7fffffff; sp++; break;
-      CASE(F_NUMBER); sp->type=T_INT; sp->u.integer=GET_ARG(); sp++; break;
-      CASE(F_NEG_NUMBER);
-      sp->type=T_INT;
-      sp->u.integer=-GET_ARG();
-      sp++;
-      break;
+      CASE(F_CONST0); push_int(0); break;
+      CASE(F_CONST1); push_int(1); break;
+      CASE(F_CONST_1); push_int(-1); break;
+      CASE(F_BIGNUM); push_int(0x7fffffff); break;
+      CASE(F_NUMBER); push_int(GET_ARG()); break;
+      CASE(F_NEG_NUMBER); push_int(-GET_ARG()); break;
 
       /* The rest of the basic 'push value' instructions */	
       CASE(F_STRING);
