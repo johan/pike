@@ -6,5 +6,8 @@ MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 
 CONFIG_HEADERS=@CONFIG_HEADERS@
 
+# Some make's need help to find the source files...
+pcre_glue.o: $(SRCDIR)/pcre_glue.c
+
 @dynamic_module_makefile@
 @dependencies@
