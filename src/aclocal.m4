@@ -1,3 +1,15 @@
+pushdef([AC_PROG_CC],
+[
+  popdef([AC_PROG_CC])
+
+  AC_PROG_CC
+
+  case "$CC" in
+    *tcc*) TCC="yes" ;;
+    *) TCC="no" ;;
+  esac
+])
+
 define([MY_AC_PROG_CC],
 [
 define(ac_cv_prog_CC,pike_cv_prog_CC)
