@@ -600,6 +600,22 @@ void describe_location(void *real_memblock,
 	}
       break;
     }
+
+    case T_PIKE_FRAME: {
+      struct pike_frame *f = (struct pike_frame *) descblock;
+      if (f->locals) {		/* Paranoia. */
+	ptrdiff_t pos = (struct svalue *) location - f->locals;
+	if (pos >= 0) {
+	  if (pos < f->num_args)
+	    fprintf (stderr, "%*s  **In argument %"PRINTPTRDIFFT"d\n",
+		     indent, "", pos);
+	  else
+	    fprintf (stderr, "%*s  **At position %"PRINTPTRDIFFT"d among locals\n",
+		     indent, "", pos - f->num_args);
+	}
+      }
+      break;
+    }
   }
 
   if(memblock && depth>0)
