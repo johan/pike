@@ -16,6 +16,7 @@ class Connection {
   // recipient and one outcode to display to the client per recipient
   // (that is LMTP specific)
   void message(string content) {
+    content = replace(content, "\r\n", "\n");
     MIME.Message message = low_message(content);
     if(!message) return;
 
