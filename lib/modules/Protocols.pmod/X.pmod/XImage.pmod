@@ -44,7 +44,7 @@ class Image_wrapper
     function f;
     object parent;
     
-    void `()( mixed ... args )
+    mixed `()( mixed ... args )
     {
       mixed q = f( @args );
       if(objectp(q)) parent->set_image( q );
