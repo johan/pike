@@ -130,6 +130,9 @@
 /* Do your compiler grock 'volatile' */
 #define VOLATILE volatile
 
+/* Define this if your compiler doesn't allow cast of void * to function pointer */
+#undef NO_CAST_TO_FUN
+
 /* How to extract a char and an unsigned char from a char * */
 #undef EXTRACT_CHAR_BY_CAST
 #undef EXTRACT_UCHAR_BY_CAST
