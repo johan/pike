@@ -785,9 +785,6 @@ PIKE_MODULE_EXIT
    * pike level.
    */
   mt_lock( &queue_mutex );
-#ifdef HAVE_TIMEOUTS
-  mt_lock( &aap_timeout_mutex );
-#endif
   /* Now, in theory, if all threads are stopped, we can free all the data.
    * BUT: There is no way to know _when_ all threads are stopped, they may
    * be in read() or something similar. Also, the locking of aap_timeout_mutex
