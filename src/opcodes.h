@@ -91,6 +91,7 @@ enum Pike_opcodes
 
   F_CATCH,
   F_FOREACH,
+  F_NEW_FOREACH,
 
 #include "interpret_protos.h"
 /*

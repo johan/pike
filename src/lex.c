@@ -154,6 +154,7 @@ struct keyword instr_names[]=
 { "==&&",               F_EQ_AND, I_ISJUMP },
 { "catch",		F_CATCH, I_ISJUMP },
 { "foreach",		F_FOREACH, I_ISJUMP },
+{ "foreach++",		F_NEW_FOREACH, I_ISJUMP },
 { "pointer",		F_POINTER, I_ISPOINTER },
 { "data",		F_DATA, I_DATA },
 { "byte",		F_BYTE, I_DATA },
