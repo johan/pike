@@ -4,6 +4,13 @@
 **!	$Id$
 */
 
+#ifndef PIKE_IMAGE_COLORTABLE_H
+#define PIKE_IMAGE_COLORTABLE_H
+
+#ifndef PIKE_IMAGE_IMAGE_H
+#include "image.h"
+#endif /* !PIKE_IMAGE_IMAGE_H */
+
 #define COLORLOOKUPCACHEHASHSIZE 207
 
 typedef unsigned long nct_weight_t;
@@ -193,3 +200,5 @@ int image_colortable_map_image(struct neo_colortable *nct,
 			       rgb_group *d,
 			       int len,
 			       int rowlen);
+
+#endif /* PIKE_IMAGE_COLORTABLE_H */

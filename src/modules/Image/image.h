@@ -1,5 +1,8 @@
 /* $Id$ */
 
+#ifndef PIKE_IMAGE_IMAGE_H
+#define PIKE_IMAGE_IMAGE_H
+
 /*
 **! module Image
 **! note
@@ -134,3 +137,4 @@ void image_tobitmap(INT32 args);
 
 void image_polygone(INT32 args);
 
+#endif /* PIKE_IMAGE_IMAGE_H */
