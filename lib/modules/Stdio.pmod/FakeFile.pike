@@ -28,12 +28,10 @@ int close(void|string direction) {
   int cw = has_value(direction, "w");
 
   if(cr) {
-    if(!r) error("not open");
     r = 0;
   }
 
   if(cw) {
-    if(!w) error("not open");
     w = 0;
   }
 
