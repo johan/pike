@@ -35,6 +35,17 @@ object master_sql;
 //.   1 - Yes
 int case_convert;
 
+//. - quote
+//.   Quote a string so that it can safely be pu in a query.
+//. > s - String to qoute.
+string quote(string s)
+{
+  if (master_sql && master_sql->quote) {
+    return(master_sql->quote(s));
+  }
+  return(replace(s, "\'", "\'\'"));
+}
+
 //. - create
 //.   Create a new generic SQL object.
 //. > host
