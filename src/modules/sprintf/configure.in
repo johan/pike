@@ -1,7 +1,7 @@
 # $Id$
 AC_INIT(sprintf.c)
 
-sinclude(../module_configure.in)
+AC_MODULE_INIT()
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
 

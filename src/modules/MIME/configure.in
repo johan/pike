@@ -2,7 +2,7 @@
 AC_INIT(mime.c)
 AC_CONFIG_HEADER(config.h)
 
-sinclude(../module_configure.in)
+AC_MODULE_INIT()
 
 AC_C_CHAR_UNSIGNED
 

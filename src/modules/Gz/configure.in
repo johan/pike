@@ -3,7 +3,7 @@ AC_INIT(zlibmod.c)
 AC_CONFIG_HEADER(zlib_machine.h)
 AC_ARG_WITH(zlib,     [  --with(out)-zlib       Support gzip compression],[],[with_zlib=yes])
 
-sinclude(../module_configure.in)
+AC_MODULE_INIT()
 
 if test x$with_zlib = xyes ; then
   AC_CHECK_HEADERS(zlib.h)

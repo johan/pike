@@ -7,7 +7,7 @@
 AC_INIT(oracle.c)
 AC_CONFIG_HEADER(config.h)
 
-sinclude(../module_configure.in)
+AC_MODULE_INIT()
 
 ORACLE_LIBS=""
 
