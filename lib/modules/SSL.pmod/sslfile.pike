@@ -60,7 +60,11 @@ private int queue_write()
   werror(sprintf("SSL.sslfile->queue_write: buffer = '%s'\n", write_buffer));
 #endif
 
-  socket::set_write_callback(ssl_write_callback);
+  if (catch {
+    socket::set_write_callback(ssl_write_callback);
+  }) {
+    return(0);
+  }
   
 #ifdef SSL3_DEBUG
   werror("SSL.sslfile->queue_write: end\n");
