@@ -137,7 +137,7 @@ void f_dcgettext(INT32 args)
   struct pike_string *domain, *msg;
   INT_TYPE category;
 
-  get_all_args("Locale.Gettext.dcgettext", args, "%S%S%d",
+  get_all_args("Locale.Gettext.dcgettext", args, "%S%S%i",
 	       &domain, &msg, &category);
 
   push_text(dcgettext(domain->str, msg->str, category));
@@ -264,7 +264,7 @@ void f_setlocale(INT32 args)
   char *returnstring;
   struct pike_string *locale;
   INT_TYPE category;
-  get_all_args("Gettext.setlocale", args, "%d%S", &category, &locale);
+  get_all_args("Gettext.setlocale", args, "%i%S", &category, &locale);
 
   returnstring = setlocale(category, locale->str);
   pop_n_elems(args);

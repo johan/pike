@@ -298,7 +298,7 @@ void f_RegGetValue(INT32 args)
   DWORD len,type;
   char buffer[8192];
   len=sizeof(buffer)-1;
-  get_all_args("RegQueryValue", args, "%d%s%s",
+  get_all_args("RegQueryValue", args, "%i%s%s",
 	       &hkey_num, &key, &ind);
 
   if ((hkey_num < 0) || (hkey_num >= NELEM(hkeys))) {
@@ -368,7 +368,7 @@ void f_RegGetKeyNames(INT32 args)
   int i,ret;
   HKEY new_key;
   ONERROR tmp;
-  get_all_args("RegGetKeyNames", args, "%d%s",
+  get_all_args("RegGetKeyNames", args, "%i%s",
 	       &hkey_num, &key);
 
   if ((hkey_num < 0) || (hkey_num >= NELEM(hkeys))) {
@@ -451,7 +451,7 @@ void f_RegGetValues(INT32 args)
   HKEY new_key;
   ONERROR tmp;
 
-  get_all_args("RegGetValues", args, "%d%s",
+  get_all_args("RegGetValues", args, "%i%s",
 	       &hkey_num, &key);
 
   if ((hkey_num < 0) || (hkey_num >= NELEM(hkeys))) {
@@ -2590,7 +2590,7 @@ static void f_SetFileAttributes(INT32 args)
   INT_TYPE attr, ret;
   DWORD tmp;
   VALID_FILE_IO("SetFileAttributes","write");
-  get_all_args("SetFileAttributes", args, "%s%d", &file, &attr);
+  get_all_args("SetFileAttributes", args, "%s%i", &file, &attr);
   tmp=attr;
   ret=SetFileAttributes( (LPCTSTR) file, tmp);
   pop_stack();

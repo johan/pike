@@ -1190,14 +1190,14 @@ void image_xcf_f__decode_tiles( INT32 args )
   struct array *tiles;
   struct image *i=NULL, *a=NULL;
   struct neo_colortable *cmap = NULL;
-  int rxs, rys;
+  INT32 rxs, rys;
   rgb_group *colortable=NULL;
   rgb_group pix = {0,0,0};
   rgb_group apix= {255,255,255}; /* avoid may use uninitialized warnings */
 
   INT_TYPE rle, bpp, span, shrink;
   unsigned int l, x=0, y=0, cx, cy;
-  get_all_args( "_decode_tiles", args, "%o%O%a%i%i%O%d%d%d",
+  get_all_args( "_decode_tiles", args, "%o%O%a%i%i%O%i%d%d",
                 &io, &ao, &tiles, &rle, &bpp, &cmapo, &shrink, &rxs, &rys);
 
 

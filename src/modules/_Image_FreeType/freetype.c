@@ -129,7 +129,7 @@ static void image_ft_face_get_kerning( INT32 args )
 {
   INT_TYPE l, r;
   FT_Vector kern;
-  get_all_args( "get_kerning", args, "%d%d", &l, &r );
+  get_all_args( "get_kerning", args, "%i%i", &l, &r );
   l = FT_Get_Char_Index( TFACE, l );
   r = FT_Get_Char_Index( TFACE, r );
   if( FT_Get_Kerning( TFACE, l, r, ft_kerning_default, &kern ) )

@@ -3192,7 +3192,7 @@ static void image_layer_find_autocrop(INT32 args)
    INT_TYPE l=1,r=1,t=1,b=1;
 
    if (args>3)
-      get_all_args("find_autocrop",args,"%d%d%d%d",&l,&r,&t,&b);
+      get_all_args("find_autocrop",args,"%i%i%i%i",&l,&r,&t,&b);
 
    if (!THIS->tiled) {
       if (THIS->alpha)

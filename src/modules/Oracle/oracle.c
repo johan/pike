@@ -1508,13 +1508,13 @@ static void f_oracle_create(INT32 args)
 static void f_dbcon_timeout_limit(INT32 args)
 {
   struct dbcon *dbcon=THIS_DBCON;
-  int           new_timeout;
   /* No arguments: get timeout. One argument: set timeout. */
 #ifdef ORACLE_DEBUG
   fprintf(stderr, "%s, dbcon=%p, args=%d\n", __FUNCTION__, dbcon, args);
 #endif
   if (args)
   {
+    INT_TYPE new_timeout;
     get_all_args("Oracle->timeout", args, "%i", &new_timeout);
     if (new_timeout < 0)
       Pike_error("Negative timeout specified.\n");

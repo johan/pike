@@ -1511,8 +1511,8 @@ void image_box(INT32 args)
 	   sp[1-args].u.integer,
 	   sp[2-args].u.integer,
 	   sp[3-args].u.integer);
-   pop_n_elems(args);
    ref_push_object(THISOBJ);
+   stack_pop_n_elems_keep_top(args);
 }
 
 /*

@@ -394,7 +394,7 @@ void file_tcsendbreak(INT32 args)
 {
   INT_TYPE len=0;
 
-  get_all_args("tcsendbreak", args, "%d", &len);
+  get_all_args("tcsendbreak", args, "%i", &len);
   pop_stack();
   push_int(!tcsendbreak(FD, len));
 }

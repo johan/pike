@@ -67,7 +67,7 @@ PIKECLASS _pcre
 		       void|int options,
 		       void|object table)
       {
-	 int options=0;
+	 INT32 options=0;
 	 struct object *table=NULL;
 	 const char *errptr;
 	 int erroffset;
@@ -312,7 +312,7 @@ PIKECLASS _pcre
 
 	 int rc;
 	 int ovector[OVECTOR_SIZE];
-	 int off=0;
+	 INT32 off=0;
 	 char *dummy_s;
 	 int opts=0;
 

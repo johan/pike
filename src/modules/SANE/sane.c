@@ -334,7 +334,7 @@ static void f_scanner_set_option( INT32 args )
      case SANE_TYPE_BOOL:
      case SANE_TYPE_INT:
      case SANE_TYPE_BUTTON:
-       sp++;get_all_args( "set_option", args, "%D", &int_value );sp--;
+       sp++;get_all_args( "set_option", args, "%I", &int_value );sp--;
        sane_control_option( THIS->h, no, SANE_ACTION_SET_VALUE,
                             &int_value, &tmp );
        break;

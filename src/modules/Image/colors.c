@@ -585,7 +585,7 @@ static void image_color_grey(INT32 args)
 static void image_color_bits( INT32 args )
 {
   INT_TYPE rb, gb, bb, rs, gs, bs;
-  get_all_args( "bits", args, "%d%d%d%d%d%d", &rb,&gb,&bb, &rs, &gs, &bs );
+  get_all_args( "bits", args, "%i%i%i%i%i%i", &rb,&gb,&bb, &rs, &gs, &bs );
   pop_n_elems( args );
 
 

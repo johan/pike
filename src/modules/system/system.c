@@ -428,7 +428,7 @@ void f_umask(INT32 args)
 
   if (args) {
     INT_TYPE setmask;
-    get_all_args("umask", args, "%d", &setmask);
+    get_all_args("umask", args, "%i", &setmask);
     oldmask = umask(setmask);
   }
   else {

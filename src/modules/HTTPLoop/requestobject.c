@@ -1042,7 +1042,7 @@ void f_aap_reply_with_cache(INT32 args)
   if(!THIS->request)
     Pike_error("Reply already called.\n");
 
-  get_all_args("reply_with_cache", args, "%S%d", &reply, &time_to_keep);
+  get_all_args("reply_with_cache", args, "%S%i", &reply, &time_to_keep);
 
   if((size_t)reply->len < (size_t)THIS->request->cache->max_size/2)
   {

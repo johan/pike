@@ -254,7 +254,7 @@ void f_getgrgid(INT32 args)
 {
   INT_TYPE gid;
   struct group *foo;
-  get_all_args("getgrgid", args, "%d", &gid);
+  get_all_args("getgrgid", args, "%i", &gid);
 
   LOCK_IMUTEX(&password_protection_mutex);
 
