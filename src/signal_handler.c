@@ -4740,7 +4740,7 @@ void init_signals(void)
   ADD_EFUN("signum",f_signum,tFunc(tStr,tInt),0);
   
 /* function(:int) */
-  ADD_EFUN("getpid",f_getpid,tFunc(tNone,tInt),0);
+  ADD_EFUN("getpid",f_getpid,tFunc(tNone,tInt),OPT_EXTERNAL_DEPEND);
 
 #ifdef HAVE_ALARM
 /* function(int:int) */
