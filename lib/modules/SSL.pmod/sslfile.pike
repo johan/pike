@@ -460,7 +460,7 @@ Stdio.File shutdown()
       explicitly_closed = 0;
     }
 
-    if (conn->session)
+    if (conn->session && !sizeof(conn->session->identity))
       // conn->session doesn't exist before the handshake.
       conn->context->purge_session (conn->session);
     destruct (conn);		// Necessary to avoid garbage.
