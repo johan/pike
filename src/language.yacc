@@ -1263,7 +1263,8 @@ identifier_type: idents
       
       default:
 	if (Pike_compiler->compiler_pass!=1)
-	  yyerror("Illegal program identifier.");
+	  my_yyerror("Illegal program identifier (type:%s).",
+		     get_name_of_type(Pike_sp[-1].type));
 	pop_stack();
 	push_int(0);
 	push_object_type(0, 0);
