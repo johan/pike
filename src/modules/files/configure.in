@@ -430,6 +430,7 @@ if test x$ac_cv_func_statvfs = xyes ; then
     if test x$pike_cv_struct_statfs_f_fstr = xyes; then
       AC_DEFINE(HAVE_STATVFS_F_FSTR)
     else :; fi
+    AC_MSG_CHECKING(if the struct statfs has the member f_basetype)
     AC_CACHE_VAL(pike_cv_struct_statvfs_f_basetype, [
       AC_TRY_COMPILE([
 #ifndef _LARGEFILE_SOURCE

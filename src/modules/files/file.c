@@ -1407,6 +1407,34 @@ static void file_tell(INT32 args)
   push_int(to);
 }
 
+static void file_truncate(INT32 args)
+{
+#ifdef HAVE_LSEEK64
+  long long len;
+#else
+  INT32 len;
+#endif
+  int res;
+
+  if(args<1 || sp[-args].type != T_INT)
+    error("Bad argument 1 to file->truncate(int length).\n");
+
+  if(FD < 0)
+    error("File not open.\n");
+
+  len = sp[-args].u.integer;
+  
+  ERRNO=0;
+  res=fd_ftruncate(FD, len);
+
+  pop_n_elems(args);
+
+  if(res<0) 
+     ERRNO=errno;
+
+  push_int(!res);
+}
+
 struct array *encode_stat(struct stat *);
 
 static void file_stat(INT32 args)

@@ -517,6 +517,30 @@ long debug_fd_lseek(FD fd, long pos, int where)
   return ret;
 }
 
+long debug_fd_ftruncate(FD fd, long len)
+{
+  long ret;
+  mt_lock(&fd_mutex);
+  if(fd_type[fd]!=FD_FILE)
+  {
+    mt_unlock(&fd_mutex);
+    errno=ENOTSUPP;
+    return -1;
+  }
+  ret=da_handle[fd];
+  mt_unlock(&fd_mutex);
+
+  would you mind filling this one out? /Mirar
+
+  ret=i dont know((HANDLE)ret, len);
+  if(ret == 0xffffffff)
+  {
+    errno=GetLastError();
+    return -1;
+  }
+  return ret;
+}
+
 int debug_fd_flock(FD fd, int oper)
 {
   long ret;
