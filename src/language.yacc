@@ -1242,6 +1242,7 @@ opt_function_type: '('
       if (!$3) {
 	/* FIXME: Should this be a syntax error or not? */
 	push_type(T_MIXED);
+	yywarning("Implicit mixed type.");
       }
       push_type(T_MANY);
       type_stack_reverse();
