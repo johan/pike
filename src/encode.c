@@ -3747,10 +3747,18 @@ static void decode_value2(struct decode_data *data)
 		decode_number(func.offset, data);
 		if (bytecode_method == PIKE_BYTECODE_PORTABLE &&
 		    func.offset != -1) {
+#ifdef ENCODE_DEBUG
+		  int old_a_flag;
+#endif
 		  EDB(2,
-		      fprintf(stderr, "%*sDecoding portable bytecode.\n",
-			      data->depth, ""));
+		  {
+		    fprintf(stderr, "%*sDecoding portable bytecode.\n",
+			    data->depth, "");
+		    old_a_flag = a_flag;
+		    a_flag = (a_flag > (data->debug-1))?a_flag:(data->debug-1);
+		  });
 		  func.offset = decode_portable_bytecode(func.offset);
+		  EDB(2, a_flag = old_a_flag);
 		}
 
 		/* opt_flags */
@@ -4044,6 +4052,9 @@ static void decode_value2(struct decode_data *data)
 	    if ((constant->sval.type != T_INT) ||
 		(constant->sval.subtype != NUMBER_UNDEFINED)) {
 	      /* Already initialized. */
+	      EDB(5,
+		  fprintf(stderr, "%*sskipping constant %d\n",
+			  data->depth, "", e));
 	      continue;
 	    }
 	    /* value */
@@ -4064,6 +4075,10 @@ static void decode_value2(struct decode_data *data)
 	    dmalloc_touch_svalue(Pike_sp-1);
 	    dmalloc_touch_svalue(Pike_sp-2);
 	    Pike_sp -= 2;
+	    EDB(5,
+		fprintf(stderr, "%*sDecoded constant %d to a %s\n",
+			data->depth, "",
+			e, get_name_of_type(constant->sval.type)));
 	  }
 
 	  data->pickyness--;
