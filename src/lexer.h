@@ -698,6 +698,9 @@ static int low_yylex(YYSTYPE *yylval)
 	  case TWO_CHAR('e','l'):
 	    if(ISWORD("else")) return F_ELSE;
 	  break;
+	  case TWO_CHAR('e','x'):
+	    if(ISWORD("extern")) return F_EXTERN;
+	  break;
 	  case TWO_CHAR('f','i'):
 	    if(ISWORD("final")) return F_FINAL_ID;
 	  break;
