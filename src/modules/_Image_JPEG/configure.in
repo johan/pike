@@ -41,6 +41,9 @@ int main(int argc, char **argv)
     AC_CACHE_VAL(pike_cv_jpeg_height_in_blocks, [
       AC_TRY_COMPILE([
 #include <jpeglib.h>
+#include <jconfig.h>
+#define FILE void
+#define size_t unsigned int
       ],[
   JDIMENSION block_test;
   jpeg_component_info *compptr;
