@@ -25,8 +25,6 @@
 
 #pike __REAL_VERSION__
 
-#include "error.h"
-
 // #define DEBUG
 
 constant XPORT = 6000;

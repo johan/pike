@@ -25,8 +25,6 @@
 
 #pike __REAL_VERSION__
 
-#include "error.h"
-
 // Image --> X module.
 // Needs: Pike 0.6
 
