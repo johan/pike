@@ -66,6 +66,12 @@ PMOD_EXPORT extern struct program *thread_id_prog;
 /* AIX is *STUPID* - Hubbe */
 #undef func_data
 
+/* So is OSF/1 - Marcus */
+#undef try
+#undef except
+#undef finally
+#undef leave
+
 #undef HAVE_PTHREAD_H
 #endif /* _MIT_POSIX_THREADS */
 
