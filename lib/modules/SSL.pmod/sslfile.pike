@@ -39,6 +39,11 @@ int blocking;  /* 1 if in blocking mode.
 		* requests are just queued up. */
 int is_closed;
 
+int query_fd()
+{
+  return -1;
+}
+
 private void ssl_write_callback(mixed id);
 
 void die(int status)
