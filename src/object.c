@@ -1298,7 +1298,7 @@ struct magic_index_struct
   struct object *o;
 };
 
-#define MAGIC_THIS ((struct magic_index_struct *)(fp->current_storage))
+#define MAGIC_THIS ((struct magic_index_struct *)(CURRENT_STORAGE))
 #define MAGIC_O2S(o) ((struct magic_index_struct *)&(o->storage))
 
 struct program *magic_index_program=0;

@@ -242,6 +242,8 @@ extern long long time_base;
 
 #endif /* !NO_PIKE_SHORTHAND */
 
+#define CURRENT_STORAGE (dmalloc_touch(struct pike_frame *,Pike_fp)->current_storage)
+
 #endif
 
 

@@ -898,7 +898,7 @@ static RETSIGTYPE receive_sigchild(int signum)
 #define PROCESS_EXITED 1
 
 #undef THIS
-#define THIS ((struct pid_status *)fp->current_storage)
+#define THIS ((struct pid_status *)CURRENT_STORAGE)
 
 #ifdef USE_PID_MAPPING
 static struct mapping *pid_mapping=0;

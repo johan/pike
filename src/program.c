@@ -3238,7 +3238,7 @@ void check_all_programs(void)
 #endif
 
 #undef THIS
-#define THIS ((struct pike_trampoline *)(fp->current_storage))
+#define THIS ((struct pike_trampoline *)(CURRENT_STORAGE))
 struct program *pike_trampoline_program=0;
 
 static void apply_trampoline(INT32 args)

@@ -2381,7 +2381,7 @@ static int generate_call_function(node *n)
 struct program *string_assignment_program;
 
 #undef THIS
-#define THIS ((struct string_assignment_storage *)(fp->current_storage))
+#define THIS ((struct string_assignment_storage *)(CURRENT_STORAGE))
 static void f_string_assignment_index(INT32 args)
 {
   INT32 i;
