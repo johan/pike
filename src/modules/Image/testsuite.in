@@ -17,6 +17,11 @@ test_eq( Image.Image(100,100)->xsize(), 100)
 test_eq( Image.Image(100,100)->ysize(), 100)
 test_false( Image.Image(100,100)!=0 )
 
+test_do([[
+// http://bugs.roxen.com/3384
+Image.Image(1,1)->scale(0.5)->scale(2.0);
+]])
+
 define(test_too_big,[[
 test_true( $1>0 )
 test_eval_error([[
