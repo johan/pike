@@ -259,7 +259,7 @@ Gmp.mpz get_prime(int bits, function r)
 this_program generate_key(int bits, function|void r)
 {
   if (!r)
-    r = Crypto.randomness.really_random()->read;
+    r = Crypto.randomness.reasonably_random()->read;
   if (bits < 128)
     error( "Ridicously small key.\n" );
 
