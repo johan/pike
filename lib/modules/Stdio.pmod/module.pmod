@@ -537,6 +537,11 @@ class FILE {
       if (!query_num_arg()) {
 	bytes = 0x7fffffff;
       }
+
+      /* Optimization - Hubbe */
+      if(!strlen(b) && bytes > BUFSIZE)
+	return ::read(bytes, now);
+
       while(strlen(b) - bpos < bytes)
 	if(!get_data()) {
 	  // EOF.
