@@ -79,7 +79,6 @@
 %token F_CLASS
 %token F_COLON_COLON
 %token F_COMMA
-%token F_CONSTANT
 %token F_CONTINUE 
 %token F_DEFAULT
 %token F_DIV_EQ
