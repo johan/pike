@@ -394,4 +394,8 @@ FILE *popen PROT((char *,char *));
 char *getenv PROT((char *));
 #endif
 
+#ifdef USE_CRYPT_C
+char *crypt(char *, char *);
+#endif /* USE_CRYPT_C */
+
 #endif
