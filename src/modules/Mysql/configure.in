@@ -372,7 +372,6 @@ $ret_type * STDCALL mysql_fetch_lengths(MYSQL_RES *mysql)
     else
       AC_MSG_RESULT(no)
     fi
-    AC_CHECK_FUNCS(CreateSemaphoreA)
 
   fi
 fi
