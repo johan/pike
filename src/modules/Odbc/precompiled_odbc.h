@@ -63,6 +63,7 @@ struct field_info {
   SDWORD len;
   int size;		/* Size of buffer */
   void *buf;
+  SWORD type;
 };
 
 struct precompiled_odbc {
