@@ -472,11 +472,12 @@ void assemble(void)
 
 #ifdef PIKE_DEBUG
     if (instrs[c->opcode - F_OFFSET].flags & I_HASPOINTER) {
-      if ((e+1 < length) || c[1].opcode != F_POINTER) {
+      if ((e+1 >= length) || (c[1].opcode != F_POINTER)) {
 	Pike_fatal("Expected instruction %s to be followed by a pointer.\n"
-		   "Got %s\n.",
+		   "Got %s (%d != %d)\n.",
 		   instrs[c->opcode - F_OFFSET].name,
-		   (e+1 < length)?instrs[c[1].opcode - F_OFFSET].name:"EOI");
+		   (e+1 < length)?instrs[c[1].opcode - F_OFFSET].name:"EOI",
+		   (e+1 < length)?c[1].opcode:0, F_POINTER);
       }
     }
 #endif /* PIKE_DEBUG */
