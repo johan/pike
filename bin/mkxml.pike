@@ -659,10 +659,9 @@ void document(string enttype,
 	    res+="<group>\n";
 	    foreach (v,string arg)
 	    {
-	       string rv,name,params;
-	       if (sscanf(arg,"%s %s(%s",rv,name,params)<2)
-		  name=arg;
-	       res+="   <param name="+S(name)+"/>\n";
+	       sscanf(arg,"%*s %s",arg);
+	       sscanf(arg,"%s(%*s",arg); // type name(whatever)
+	       res+="   <param name="+S(arg)+"/>\n";
 	    }
 	    res+=
 	       "<text>"+
