@@ -33,6 +33,11 @@ void *debug_malloc_update_location(void *,const char *, int);
 void *debug_malloc_name(void *p,const char *fn, int line);
 void debug_malloc_copy_names(void *p, void *p2);
 
+/* glibc 2.1 defines this as a macro. */
+#ifdef strdup
+#undef strdup
+#endif
+
 #define malloc(x) debug_malloc((x), __FILE__, __LINE__)
 #define calloc(x, y) debug_calloc((x), (y), __FILE__, __LINE__)
 #define realloc(x, y) debug_realloc((x), (y), __FILE__, __LINE__)
