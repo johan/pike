@@ -279,7 +279,7 @@ void image_gif_render_block(INT32 args)
    struct pike_string *ps;
 
    unsigned char *indexbuf;
-   unsigned char buf[20];
+   char buf[20];
 
    int y,xs,ys;
    rgb_group *img_s,*alpha_s=NULL;
