@@ -13,7 +13,7 @@ RCSID("$Id$");
 #ifdef HAVE_LIBNETTLE
 
 #include <nettle/yarrow.h>
-#include <nettle.h>
+#include "nettle.h"
 
 #include <assert.h>
 #include <stdio.h>
