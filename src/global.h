@@ -156,6 +156,13 @@ void *alloca();
 #define FD_SETSIZE MAX_OPEN_FILEDESCRIPTORS
 #endif
 
+#ifdef HAVE_DEVICES_TIMER_H
+/* On AmigaOS, struct timeval is defined in a variety of places
+   and a variety of ways.  Making sure <devices/timer.h> is included
+   first brings some amount of order to the chaos. */
+#include <devices/timer.h>
+#endif
+
 #include <stdio.h>
 
 #ifdef HAVE_STDLIB_H
