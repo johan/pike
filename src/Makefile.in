@@ -396,7 +396,9 @@ lobotomize_crypto:
 # Pike internal targets
 #
 module_objects: machine.h global.h modules/static_module_makefile modules/dynamic_module_makefile $(SRCDIR)/language.h lib
-	( cd modules ; ${MAKE} $(MAKE_FLAGS) )
+	@( cd modules ; rm remake >/dev/null 2>&1 || : ; \
+	   ${MAKE} $(MAKE_FLAGS) || \
+	     ( test -f remake && ${MAKE} $(MAKE_FLAGS) ) ) || exit $$?
 
 language.o: $(SRCDIR)/language.c $(SRCDIR)/object.h $(SRCDIR)/interpret.h $(SRCDIR)/program.h
 
