@@ -3,8 +3,8 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
-#include <math.h>
 #include "global.h"
+#include <math.h>
 RCSID("$Id$");
 #include "interpret.h"
 #include "svalue.h"

@@ -33,6 +33,7 @@
  *   moving the check inside the actual sql classes.
  */
 
+#include "global.h"
 #include "pgres_config.h"
 #ifdef HAVE_POSTGRES
 
@@ -54,7 +55,6 @@
 #include <libpq-fe.h>
 
 /* Pike includes */
-#include "global.h"
 #include "stralloc.h"
 #include "object.h"
 #include "threads.h"

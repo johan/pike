@@ -2,6 +2,8 @@
  * $Id$
  */
 
+#include "global.h"
+
 #include "config.h"
 
 #if !defined(HAVE_LIBJPEG)
@@ -21,7 +23,6 @@
 #ifdef HAVE_STDLIB_H
 #undef HAVE_STDLIB_H
 #endif
-#include "global.h"
 RCSID("$Id$");
 
 #include "pike_macros.h"

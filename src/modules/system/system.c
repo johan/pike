@@ -10,10 +10,11 @@
  * Includes
  */
 
+#include "global.h"
+
 #include "system_machine.h"
 #include "system.h"
 
-#include "global.h"
 RCSID("$Id$");
 #ifdef HAVE_WINSOCK_H
 #include <winsock.h>

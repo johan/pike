@@ -7,6 +7,7 @@
  * of the GNU General Public License, version 2.
  */
 
+#include "global.h"
 #include "pgres_config.h"
 #ifdef HAVE_POSTGRES
 
@@ -20,7 +21,6 @@
 #include <string.h>
 
 /* Pike includes */
-#include "global.h"
 #include "las.h"
 #include "machine.h"
 #include "pike_memory.h"
