@@ -870,7 +870,8 @@ void actually_send(struct send_args *a)
        goto normal;
      default:
        if(fail != a->len)
-         fprintf(stderr, "sendfile returned %d; len=%d\n", fail, a->len);
+         fprintf(stderr, "sendfile returned %ld; len=%ld\n",
+		 PTRDIFF_T_TO_LONG(fail), PTRDIFF_T_TO_LONG(a->len));
     }
     goto end;
   }

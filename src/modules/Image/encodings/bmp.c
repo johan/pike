@@ -540,8 +540,8 @@ void i_img_bmp__decode(INT32 args,int header_only)
       case 68: /* fuji jpeg mode */
 
 	 if (len<54)
-	    error("Image.BMP.decode: unexpected EOF in header (at byte %d)\n",
-		  DO_NOT_WARN((long)len));
+	    error("Image.BMP.decode: unexpected EOF in header (at byte %ld)\n",
+		  PTRDIFF_T_TO_LONG(len));
 
 	 push_text("xsize");
 	 push_int(xsize=int_from_32bit(s+14+4*1));
