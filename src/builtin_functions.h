@@ -172,9 +172,9 @@ BLOCK_ALLOC_FILL_PAGES(list_node, 4);
 PMOD_EXPORT void free_list_node(struct list_node *node);
 PMOD_EXPORT void unlink_list_node(struct list_node *n);
 PMOD_EXPORT void prepend_list_node(struct list_node *node,
-				   struct list_node *new);
+				   struct list_node *new_node);
 PMOD_EXPORT void append_list_node(struct list_node *node,
-				  struct list_node *new);
+				  struct list_node *new_node);
 void init_builtin(void);
 void exit_builtin(void);
 
