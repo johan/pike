@@ -33,4 +33,13 @@
 /* Define if your setpgrp(2) takes two arguments (BSD). */
 #undef HAVE_SETPGRP_BSD
 
+/* Define if your get/setrlimit is using BSD 4.3 syntax. */
+#undef SETRLIMIT_SYNTAX_BSD43
+
+/* Define if your get/setrlimit is using stardard (with rlim_t) syntax. */
+#undef SETRLIMIT_SYNTAX_STANDARD
+
+/* Define if the get/setrlimit syntax is unknown */
+#undef SETRLIMIT_SYNTAX_UNKNOWN
+
 #endif /* SYSTEM_MACHINE_H */
