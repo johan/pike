@@ -168,6 +168,11 @@ case "$pike_cv_sys_os" in
        ;;
      esac
   ;;
+  SunOS*)
+    # gcc on SunOS 4 forgets to define this:
+    echo "SunOS. Adding -D__USE_FIXED_PROTOTYPES__"
+    CFLAGS="$CFLAGS -D__USE_FIXED_PROTOTYPES__"
+  ;;
   BSD/OS*)
     LD="$BINDIR/smartlink shlicc"
   ;;
