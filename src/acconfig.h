@@ -333,6 +333,9 @@
 /* You have cl-type __declspec? */
 #undef HAVE_DECLSPEC
 
+/* Your va_list is a state pointer? */
+#undef VA_LIST_IS_STATE_PTR
+
 /* Does your compiler grock 'volatile' */
 #define VOLATILE volatile
 
