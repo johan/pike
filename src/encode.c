@@ -561,6 +561,8 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
        * if INT_TYPE is larger than 32 bits (not currently happening)
        * then this must be fixed to encode numbers over 32 bits as
        * Gmp.mpz objects
+       *
+       * (Is too, --with-long-long-int. /Mirar)
        */
       code_entry(TAG_INT, val->u.integer,data);
       break;
