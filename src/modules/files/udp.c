@@ -391,7 +391,8 @@ void udp_read(INT32 args)
 
 void udp_sendto(INT32 args)
 {
-  int flags = 0, res=0, i, fd, e;
+  int flags = 0, i, fd, e;
+  ptrdiff_t res = 0;
   struct sockaddr_in to;
   char *str;
   ptrdiff_t len;
@@ -468,7 +469,7 @@ void udp_sendto(INT32 args)
     }
   }
   pop_n_elems(args);
-  push_int( res );
+  push_int(DO_NOT_WARN(res));
 }
 
 

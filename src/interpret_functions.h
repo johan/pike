@@ -1500,7 +1500,9 @@ BREAK;
       break;
 
     CASE(F_CALL_FUNCTION);
-      mega_apply(APPLY_STACK,Pike_sp - *--Pike_mark_sp,0,0);
+      mega_apply(APPLY_STACK,
+		 DO_NOT_WARN(Pike_sp - *--Pike_mark_sp),
+		 0,0);
       break;
 
     CASE(F_CALL_FUNCTION_AND_RETURN);
