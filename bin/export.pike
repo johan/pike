@@ -265,8 +265,8 @@ int main(int argc, array(string) argv)
   if(!files) // Unable to build file list.
     return 1;
 
-  Stdio.write_file("export.stamp", replace(stamp, symbols));
-  files += ({ vpath+"/export.stamp" });
+  Stdio.write_file("buildid.txt", replace(stamp, symbols));
+  files += ({ vpath+"/buildid.txt" });
 
   werror("Creating "+vpath+".tar.gz:\n");
 
@@ -300,7 +300,7 @@ int main(int argc, array(string) argv)
     }
 
   rm(vpath);
-  rm("export.stamp");
+  rm("buildid.txt");
   werror("Done.\n");
 
   if(cvs && tag)
