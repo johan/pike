@@ -97,6 +97,9 @@ test_any([[
   return Y()->Ack(2,2);
 ]],7)
 
+dnl FIXME: Add test that local and local:: in combination
+dnl        with recursion works correctly.
+
 test_eval_error([[mixed x; return mkmapping(x,x)]]);
 
 test_eval_error([[class Foo {
