@@ -1935,6 +1935,33 @@ static void file_errno(INT32 args)
  *!
  *! Returns the open mode for the file.
  *!
+ *! @int
+ *!   @value 0x1000
+ *!     FILE_READ
+ *!   @value 0x2000
+ *!     FILE_WRITE
+ *!   @value 0x4000
+ *!     FILE_APPEND
+ *!   @value 0x8000
+ *!     FILE_CREATE
+ *!   @value 0x0100
+ *!     FILE_TRUNC
+ *!   @value 0x0200
+ *!     FILE_EXCLUSIVE
+ *!   @value 0x0400
+ *!     FILE_NONBLOCKING
+ *!   @value 0x0800
+ *!     FILE_SET_CLOSE_ON_EXEC
+ *!   @value 0x0001
+ *!     FILE_HAS_INTERNAL_REF
+ *!   @value 0x0002
+ *!     FILE_NO_CLOSE_ON_DESTRUCT
+ *!   @value 0x0004
+ *!     FILE_LOCK_FD
+ *!   @value 0x0010
+ *!     FILE_NOT_OPENED
+ *! @endint
+ *!
  *! @seealso
  *!   @[open()]
  */
