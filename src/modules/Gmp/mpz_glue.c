@@ -301,7 +301,7 @@ static void mpzmod_cast(INT32 args)
 #if defined(__GNUC__) && defined(DEBUG_MALLOC)
 #define get_mpz(X,Y) ({ check_svalue(X); debug_get_mpz((X), (Y)); })
 #else
-#define get_mpz(X,Y) debug_get_mpz((X), (Y)
+#define get_mpz(X,Y) debug_get_mpz((X), (Y))
 #endif
 
 static MP_INT *debug_get_mpz(struct svalue *s, int throw_error)
