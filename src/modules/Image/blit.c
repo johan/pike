@@ -160,28 +160,32 @@ void img_box_nocheck(INT32 x1,INT32 y1,INT32 x2,INT32 y2)
    foo=this->img+x1+y1*this->xsize;
    end=this->img+x2+y2*this->xsize+1;
 
-   THREADS_ALLOW();
-   do {
-     if(!this->alpha)
-     {
-       if(!mod)
-	 img_clear(foo,rgb,end-foo);
-       else {
+   if(!this->alpha)
+   {
+     if(!mod)
+       img_clear(foo,rgb,end-foo);
+     else {
+       THREADS_ALLOW();
+       do {
 	 int length = x2-x1+1, xs=this->xsize, y=y2-y1+1;
 	 rgb_group *from = foo;
 	 if(!length)
 	   break;	/* Break to the while(0). */
 	 for(x=0; x<length; x++)  *(foo+x) = rgb;
 	 while(--y)  MEMCPY((foo+=xs), from, length*sizeof(rgb_group)); 
-       }
-     } 
-     else 
-     {
+       } while(0);
+       THREADS_DISALLOW();
+     }
+   } 
+   else 
+   {
+     THREADS_ALLOW();
+     do {
        for (; foo<=end; foo+=mod) for (x=x1; x<=x2; x++,foo++) 
 	 set_rgb_group_alpha(*foo,rgb,this->alpha);
-     }
-   } while(0);
-   THREADS_DISALLOW();
+     } while(0);
+     THREADS_DISALLOW();
+   }
 }
 
 
