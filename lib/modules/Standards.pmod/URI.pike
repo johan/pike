@@ -214,7 +214,6 @@ void reparse_uri(object|string|void _base_uri)
   if(sscanf(uri, "//%[^/]%s", authority, uri))		
   {
     debug("Found authority %O", authority);
-    parse_authority();
   }
 
   // Parse query information
@@ -238,6 +237,10 @@ void reparse_uri(object|string|void _base_uri)
   }
   scheme = base_uri->scheme;			
   debug("Inherited scheme %O from base URI", scheme);
+
+  if(authority)
+    parse_authority();
+
   
   // 4) If the authority component is defined, then the reference is a
   //	network-path and we skip to step 7.  Otherwise, the reference
