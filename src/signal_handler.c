@@ -3979,6 +3979,9 @@ static void do_signal_exit(INT32 sig)
  */
 void f_atexit(INT32 args)
 {
+  if(args < 1)
+    SIMPLE_TOO_FEW_ARGS_ERROR("atexit", 1);
+
   if(!atexit_functions)
   {
 #ifdef SIGHUP
