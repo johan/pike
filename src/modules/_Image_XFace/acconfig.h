@@ -20,3 +20,9 @@
 /* Define if your cpp supports K&R-style concatenation */
 #undef HAVE_KR_CONCAT
 
+/* Define if you have the <gmp2/gmp.h> header file.  */
+#undef HAVE_GMP2_GMP_H
+
+/* Define if you have the <gmp.h> header file.  */
+#undef HAVE_GMP_H
+
