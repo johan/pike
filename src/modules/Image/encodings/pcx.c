@@ -231,12 +231,6 @@ static void load_palette_pcx( struct pcx_header *hdr, struct buffer *b,
   THREADS_DISALLOW();
 }
 
-void do_free_object( struct object *o )
-{
-  free_object(o);
-}
-
-
 static struct object *low_pcx_decode( struct pike_string *data )
 {
   struct buffer b;
