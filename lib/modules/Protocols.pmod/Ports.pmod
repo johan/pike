@@ -1020,6 +1020,7 @@ constant tcp = ([
   "rmonitor":         560,	//    rmonitord
   "monitor":          561,	//
   "chshell":          562,	//    chcmd
+  "snews":	      563,	//    NNTP over SSL
   "9pfs":             564,	//    plan 9 file service
   "whoami":           565,	//    whoami
   "meter":            570,	//    demon
