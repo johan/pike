@@ -1504,6 +1504,13 @@ static int dl_load_coff_files(struct DLHandle *ret,
 
 #ifdef _WIN64
 
+	    /* We may need to support more types here */
+	  case COFFReloc_IA64_dir64:
+#ifdef DLDEBUG
+	    fprintf(stderr,"DL: reloc absolute: loc %p = %p\n", loc,ptr);
+#endif
+	    ((INT64 *)loc)[0]+=(INT64)ptr;
+	    break;
 
 #else
 
