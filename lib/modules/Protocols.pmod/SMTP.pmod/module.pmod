@@ -213,7 +213,7 @@ class Configuration {
   //! Message max size
   int maxsize = 100240000;
   
-  //! Maximum number of recipients
+  //! Maximum number of recipients (default 1000)
   int maxrcpt = 1000;
   
   //! Verify sender domain for MX
@@ -891,7 +891,7 @@ class Server {
    //!   the first element is the SMTP code and the second is the error string
    //!   to display.
    //! @example
-   //!  Here is an example of silly program that does nothing except outputting
+   //!  Here is an example of silly program that does nothing except outputing
    //!  informations to stdout.
    //! int cb_mailfrom(string mail)
    //! {
