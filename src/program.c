@@ -1204,9 +1204,11 @@ void PIKE_CONCAT(low_add_to_,NAME) (struct program_state *state,	\
   CHECK_FOO(NUMTYPE,TYPE,NAME);						\
   if(m == state->new_program->PIKE_CONCAT(num_,NAME)) {			\
     TYPE *tmp;								\
-    if(m==MAXVARS(NUMTYPE))					\
-      Pike_error("Too many " #NAME ".\n");				\
-    m = MINIMUM(m*2+1,MAXVARS(NUMTYPE));			\
+    if(m==MAXVARS(NUMTYPE)) {						\
+      yyerror("Too many " #NAME ".\n");					\
+      return;								\
+    }									\
+    m = MINIMUM(m*2+1,MAXVARS(NUMTYPE));				\
     tmp = realloc((void *)state->new_program->NAME,			\
 		  sizeof(TYPE) * m);					\
     if(!tmp) Pike_fatal("Out of memory.\n");				\
