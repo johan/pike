@@ -383,6 +383,14 @@ struct backlog;
 void dump_backlog(void);
 BLOCK_ALLOC(pike_frame,128)
 
+#if defined (PIKE_DEBUG) && defined (PIKE_USE_MACHINE_CODE)
+void simple_debug_instr_prologue_0 (PIKE_OPCODE_T *pc, PIKE_INSTR_T instr);
+void simple_debug_instr_prologue_1 (PIKE_OPCODE_T *pc, PIKE_INSTR_T instr,
+				    INT32 arg);
+void simple_debug_instr_prologue_2 (PIKE_OPCODE_T *pc, PIKE_INSTR_T instr,
+				    INT32 arg1, INT32 arg2);
+#endif
+
 PMOD_EXPORT void find_external_context(struct external_variable_context *loc,
 				       int arg2);
 void really_free_pike_scope(struct pike_frame *scope);
