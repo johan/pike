@@ -2128,7 +2128,7 @@ PMOD_EXPORT void f_destruct(INT32 args)
  *!
  *!   For mappings and multisets, the array may contain any value.
  *!
- *!   For objects which define @[_indices()] that return value will be used.
+ *!   For objects which define @[lfun::_indices()] that return value will be used.
  *!
  *!   For other objects an array with all non-static symbols will be returned.
  *!
@@ -2446,7 +2446,7 @@ static node *fix_aggregate_mapping_type(node *n)
  *!
  *!   For mappings the array may contain any value.
  *!
- *!   For objects which define @[_values()] that return value will be used.
+ *!   For objects which define @[lfun::_values()] that return value will be used.
  *!
  *!   For other objects an array with the values of all non-static symbols
  *!   will be returned.
