@@ -18,7 +18,8 @@ private int is_open;
 //! Filename or filedescriptor of the gzip file to open.
 //! @param mode
 //! mode for the file. Defaults to "rb".
-//! @seealso [open]
+//! @seealso 
+//!  [open]
 void create(mixed ... args) {
   ::create();
 
@@ -45,7 +46,8 @@ void destroy() {
 //! @enddl
 //! For the wb and ab mode, additional parameters may
 //! be specified. Please se zlib manual for more info.
-//! @returns non-zero if successful.
+//! @returns 
+//!  non-zero if successful.
 int open(string|int file, void|string mode) {
   string open_mode="rb";
 
