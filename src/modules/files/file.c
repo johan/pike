@@ -101,6 +101,9 @@ RCSID("$Id$");
 
 #include "dmalloc.h"
 
+/* This must be included last! */
+#include "module_magic.h"
+
 #undef THIS
 #define THIS ((struct my_file *)(Pike_fp->current_storage))
 #define FD (THIS->fd)

@@ -38,8 +38,12 @@ RCSID("$Id$");
 
 #include <limits.h>
 
+#endif /* defined(USE_GMP) || defined(USE_GMP2) */
+
 /* This must be included last! */
 #include "module_magic.h"
+
+#if defined(USE_GMP) || defined(USE_GMP2)
 
 #define sp Pike_sp
 #define fp Pike_fp

@@ -315,6 +315,9 @@ RCSID("$Id$");
 #include <fp_class.h>
 #endif
 
+/* This must be included last! */
+#include "module_magic.h"
+
 #define sp Pike_sp
 
 #define FORMAT_INFO_STACK_SIZE 200

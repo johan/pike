@@ -21,12 +21,16 @@ RCSID("$Id$");
 
 #include <gdbm.h>
 
-#ifdef _REENTRANT
-static MUTEX_T gdbm_lock STATIC_MUTEX_INIT;
-#endif  
+#endif /* defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM) */
 
 /* THIS MUST BE INCLUDED LAST */
 #include "module_magic.h"
+
+#if defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM)
+
+#ifdef _REENTRANT
+static MUTEX_T gdbm_lock STATIC_MUTEX_INIT;
+#endif  
 
 #define sp Pike_sp
 

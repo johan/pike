@@ -19,6 +19,9 @@
 #include "module_support.h"
 #include "builtin_functions.h"
 
+/* This must be included last! */
+#include "module_magic.h"
+
 
 #ifdef HAVE_WORKING_LIBFFMPEG
 

@@ -57,8 +57,12 @@ RCSID("$Id$");
 
 #include "gif_lzw.h"
 
+#endif /* WITH_GIF */
+
 /* MUST BE INCLUDED LAST */
 #include "module_magic.h"
+
+#ifdef WITH_GIF
 
 #define sp Pike_sp
 

@@ -105,6 +105,9 @@ RCSID("$Id$");
 
 #include "dmalloc.h"
 
+/* This must be included last! */
+#include "module_magic.h"
+
 #define sp Pike_sp
 
 #ifndef NGROUPS_MAX

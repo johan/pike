@@ -60,6 +60,13 @@
 #  include <ost/audio.h>
 #endif
 
+#endif /* HAVE_DVB */
+
+/* MUST BE LAST */
+#include "module_magic.h"
+
+#ifdef HAVE_DVB
+
 #define MAX_ERR_LEN	160
 
 static struct program *dvb_program;

@@ -27,6 +27,13 @@ RCSID("$Id$");
 
 #include <librsvg/rsvg.h>
 
+#endif /* HAVE_SVG */
+
+/* This must be included last! */
+#include "module_magic.h"
+
+#ifdef HAVE_SVG
+
 /*! @module Image
  */
 

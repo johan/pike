@@ -18,6 +18,12 @@ RCSID("$Id$");
 #include "module_support.h"
 #include "operators.h"
 #include "../Image/image.h"
+#endif /* HAVE_LIBFT2 */
+
+/* This must be included last! */
+#include "module_magic.h"
+
+#ifdef HAVE_LIBFT2
 
 #define sp Pike_sp
 #define fp Pike_fp
