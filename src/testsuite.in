@@ -2014,6 +2014,7 @@ test_program(inherit test; inherit TEST; )
 
 
 test_any([[
+  /* don't save parent */
   class Foo {  };
   return  function_object(object_program(Foo())) ==
 	  object_program(this_object());

@@ -495,11 +495,14 @@ int main(int argc, array(string) argv)
 
 	  if((shift/6)&1)
 	  {
-	    fname+=" (save parent)";
-	    to_compile=
-	      "#pragma save_parent\n"
-	      "# 1\n"
-	      +to_compile;
+	    if(search("don't save parent",to_compile) != -1)
+	    {
+	      fname+=" (save parent)";
+	      to_compile=
+		"#pragma save_parent\n"
+		"# 1\n"
+		+to_compile;
+	    }
 	  }
 
 	  if((shift/3)&1)
