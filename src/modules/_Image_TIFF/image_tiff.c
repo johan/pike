@@ -354,6 +354,7 @@ void low_image_tiff_decode( struct buffer *buf,
   sp--;
   if(!image_only)
   {
+#ifdef HAVE_TIFFIOP_H
     char *tmp;
     TIFFDirectory *td = &tif->tif_dir;
     if (TIFFFieldSet(tif,FIELD_RESOLUTION)) 
@@ -555,6 +556,7 @@ void low_image_tiff_decode( struct buffer *buf,
       }
       f_aggregate(td->td_samplesperpixel);
     }
+#endif
 #endif
   }
   TIFFClose(tif);
