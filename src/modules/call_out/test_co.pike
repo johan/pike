@@ -25,7 +25,7 @@ FUN(f8)
 FUN(f9)
 
 
-mixed *fn=({f0,f1,f2,f3,f4,f5,f6,f7,f8,f9});
+array fn=({f0,f1,f2,f3,f4,f5,f6,f7,f8,f9});
 
 void verify()
 {
