@@ -1174,12 +1174,14 @@ static void f_fetch_fields(INT32 args) {
 /********/
 /* Glue */
 /********/
+
+static struct program* sybase_program;
 void pike_module_exit (void) {
   SYB_MT_EXIT(mainlock);
+  if(sybase_program) free_program(sybase_program);
 }
 
 void pike_module_init (void) {
-  struct program* sybase_program;
 
   sybdebug((stderr,"sybase driver release " SYBASE_DRIVER_VERSION "\n"));
 
