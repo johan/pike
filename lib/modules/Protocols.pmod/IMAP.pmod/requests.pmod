@@ -186,7 +186,7 @@ class logout
     {
       send("*", "BYE");
       send(tag, "OK", "LOGOUT done");
-      server->log(session, "LOGOUT", session->user_name, 401);
+      server->log(session, "LOGOUT", session->user_name, 200);
       return ([ "action" : "close" ]);
     }
 }
