@@ -1145,6 +1145,8 @@ static void low_pike_sprintf(struct format_stack *fs,
 	    l -= 2;
 	  }
 	}
+	else if(mode == 'u')
+	  sprintf(x, "%u", val);
 	else
 	  sprintf(x, "%d", val);
 
