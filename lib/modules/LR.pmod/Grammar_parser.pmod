@@ -1,4 +1,4 @@
-#!/home/grubba/src/pike/build/sol2.5/pike
+#!/usr/local/bin/pike
 
 /*
  * $Id$
