@@ -259,6 +259,18 @@ int main(int argc, char **argv)
 #ifdef USE_RPATH
     new_argv[new_argc++] = "-rpath";
     new_argv[new_argc++] = rpath;
+#elif defined(USE_YP_)
+    if (linking) {
+      new_argv[new_argc++] = "-YP,";
+      new_argv[new_argc++] = rpath;
+    }
+#elif defined(USE_XLINKER_YP_)
+    if (linking) {
+      new_argv[new_argc++] = "-Xlinker";
+      new_argv[new_argc++] = "-YP,";
+      new_argv[new_argc++] = "-Xlinker";
+      new_argv[new_argc++] = rpath;
+    }
 #elif defined(USE_Wl)
     if (linking) {
       new_argv[new_argc++] = full_rpath;
