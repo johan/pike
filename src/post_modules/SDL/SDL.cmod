@@ -1420,6 +1420,16 @@ PIKEFUN int gl_get_attribute( int attribute )
   RETURN res;
 }
 
+PIKEFUN int show_cursor( int show )
+{
+  RETURN SDL_ShowCursor( show );
+}
+
+PIKEFUN void warp_mouse( int xpos, int ypos )
+{
+  SDL_WarpMouse( xpos, ypos );
+}
+
 PIKEFUN void gl_swap_buffers( )
 {
   SDL_GL_SwapBuffers( );
@@ -1601,7 +1611,7 @@ PIKECLASS Joystick {
     RETURN SDL_JoystickGetButton(THIS->joystick, button);
   }
 
-  PIKEFUN string name(int device_index) {
+  PIKEFUN string name() {
     const char *name;
     CHECK_INIT();
     name = SDL_JoystickName(SDL_JoystickIndex(THIS->joystick));
