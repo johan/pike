@@ -656,12 +656,10 @@ class Crawler
     
     void got_data()
     {
-      int called;
       queue->stats->close_callback(real_uri);
       if(status>=200 && status<=206)
       {
 	add_links(page_cb(real_uri, data(), headers, @args));
-	called=1;
       }
       else
       {
@@ -670,7 +668,8 @@ class Crawler
 	  if(headers->location && sizeof(headers->location))
 	    add_links(({ Standards.URI(headers->location) }));
       }
-      queue->done(real_uri,called);
+      if(queue->get_stage(real_uri)<=1)
+	queue->set_stage(real_uri, 5);
     }
     
     void request_ok(object httpquery)
@@ -681,7 +680,9 @@ class Crawler
     void request_fail(object httpquery)
     {
       queue->stats->close_callback(real_uri);
-      queue->done(uri);
+      error_cb(real_uri, 1100, ([]));
+      if(queue->get_stage(real_uri)<=1)
+	queue->set_stage(real_uri, 6);
     }
     
     void create(Standards.URI _uri, void|Standards.URI _real_uri, mapping extra_headers)
