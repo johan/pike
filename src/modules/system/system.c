@@ -376,9 +376,9 @@ void f_chroot(INT32 args)
   int res;
 
 #ifdef HAVE_FCHROOT
-  check_all_args("chroot", args, 1, BIT_STRING|BIT_OBJECT);
+  check_all_args("chroot", args, BIT_STRING|BIT_OBJECT, 0);
 #else
-  check_all_args("chroot", args, 1, BIT_STRING);
+  check_all_args("chroot", args, BIT_STRING, 0);
 #endif /* HAVE_FCHROOT */
 
 

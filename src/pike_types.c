@@ -1218,6 +1218,7 @@ char *get_name_of_type(int t)
     case T_OBJECT: return "object";
     case T_PROGRAM: return "program";
     case T_STRING: return "string";
+    case T_VOID: return "void";
     default: return "unknown";
   }
 }
