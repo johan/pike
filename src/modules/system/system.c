@@ -1682,10 +1682,41 @@ static MUTEX_T getservbyname_mutex;
 /* this is used from modules/file, and modules/spider! */
 int get_inet_addr(SOCKADDR *addr,char *name,char *service, INT_TYPE port, int udp)
 {
-  MEMSET((char *)addr,0,sizeof(SOCKADDR));
+#ifdef HAVE_GETADDRINFO
+  struct addrinfo hints = { 0, PF_UNSPEC, 0, 0, 0, NULL, NULL, NULL, }, *res;
+  char servnum_buf[200];
+#endif /* HAVE_GETADDRINFO */
 
+  MEMSET((char *)addr,0,sizeof(SOCKADDR));
+  if(name && !strcmp(name,"*"))
+    name = NULL;
+
+#ifdef HAVE_GETADDRINFO
+  if(!name) {
+    hints.ai_flags = AI_PASSIVE;
+    /* Avoid creating an IPv6 address for "*". */
+    /* For IN6ADDR_ANY, use "::". */
+    hints.ai_family = PF_INET;
+  }
+  hints.ai_protocol = (udp? IPPROTO_UDP:IPPROTO_TCP);
+  if(!service)
+    sprintf(servnum_buf, "%"PRINTPIKEINT"d", (port<0? 0:port));
+  if(!getaddrinfo(name, (service? service : servnum_buf), &hints, &res)) {
+    struct addrinfo *p;
+    size_t addr_len=0;
+    for(p=res; p; p=p->ai_next)
+      if(p->ai_addrlen > 0 && p->ai_addrlen <= sizeof(*addr))
+	break;
+    if(p)
+      MEMCPY((char *)addr, (char *)p->ai_addr, addr_len = p->ai_addrlen);
+    freeaddrinfo(res);
+    if(addr_len)
+      return addr_len;
+  }
+#endif /* HAVE_GETADDRINFO */
+  
   SOCKADDR_FAMILY(*addr) = AF_INET;
-  if(!name || !strcmp(name,"*"))
+  if(!name)
   {
     addr->ipv4.sin_addr.s_addr=htonl(INADDR_ANY);
   }
