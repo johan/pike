@@ -60,15 +60,15 @@ build/autodoc.xml: build/src/sub_manual.xml build/lib/sub_manual.xml bin/join.pi
 	$(PIKE) bin/join.pike --post-process build/autodoc.xml build/src/sub_manual.xml \
 	  build/lib/sub_manual.xml
 
-build/src/sub_manual.xml: build/src build/images bin/extract.pike \
-			  bin/mirardoc.pike bin/join.pike
+build/src/sub_manual.xml: build/src build/images always
 	$(PIKE) bin/extract.pike ../src/ build/src/ build/images/
 	$(PIKE) bin/join.pike build/src/sub_manual.xml build/src/
 
-build/lib/sub_manual.xml: build/lib build/images images bin/extract.pike \
-			  bin/mirardoc.pike bin/join.pike
+build/lib/sub_manual.xml: build/lib build/images images always
 	$(PIKE) bin/extract.pike ../lib/ build/lib/ build/images/
 	$(PIKE) bin/join.pike build/lib/sub_manual.xml build/lib/
+
+always:
 
 images: build/src/post_modules/GTK/refdoc/images
 	@cp ../src/post_modules/GTK/refdoc/images/*.png \
