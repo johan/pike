@@ -261,7 +261,7 @@ void f_file_truncate(INT32 args)
  *!       Number of free blocks in the filesystem.
  *!     @member int "bavail"
  *!       Number of available blocks in the filesystem.
- *!       This is usually somewhat less than the @{"bfree"} value, and
+ *!       This is usually somewhat less than the @["bfree"] value, and
  *!       can usually be adjusted with eg tunefs(1M).
  *!     @member int "files"
  *!       Total number of files (aka inodes) allowed by this filesystem.
