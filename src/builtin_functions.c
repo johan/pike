@@ -41,7 +41,7 @@ RCSID("$Id$");
 #include <crypt.h>
 #endif
 
-#define DIFF_DEBUG
+/* #define DIFF_DEBUG */
 
 
 void f_equal(INT32 args)
