@@ -51,7 +51,7 @@ typedef void (*modfun)(void);
 #ifdef USE_LOADLIBRARY
 #include <windows.h>
 
-static TCHAR *convert_string(char *str, int len)
+static TCHAR *convert_string(const char *str, int len)
 {
   int e;
   TCHAR *ret=(TCHAR *)xalloc((len+1) * sizeof(TCHAR));
