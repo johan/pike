@@ -133,11 +133,11 @@ static void free_colortable_struct(struct neo_colortable *nct)
    switch (nct->type)
    {
       case NCT_NONE:
-         return; /* done */
+         break; /* done */
       case NCT_FLAT:
          free(nct->u.flat.entries);
 	 nct->type=NCT_NONE;
-	 return; /* done */
+	 break; /* done */
       case NCT_CUBE:
          while ((s=nct->u.cube.firstscale))
 	 {
@@ -145,7 +145,7 @@ static void free_colortable_struct(struct neo_colortable *nct)
 	    free(s);
 	 };
 	 nct->type=NCT_NONE;
-         return; /* done */
+         break; /* done */
    }
 
    colortable_free_dither_union(nct);
@@ -3942,6 +3942,7 @@ static int* ordered_calculate_errors(int dxs,int dys)
       printf(" )\n");
    }
 #endif
+   free(dest);
 
    return src;
 }
