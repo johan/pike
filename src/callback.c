@@ -171,11 +171,10 @@ PMOD_EXPORT void low_call_callback(struct callback_list *lst, void *arg)
       }
 
       *ptr=l->next;
-      really_free_callback(l);
-
 #ifdef PIKE_DEBUG
       l->free_func=(callback_func)remove_callback;
 #endif
+      really_free_callback(l);
     }else{
       ptr=& l->next;
     }
