@@ -346,6 +346,17 @@ PMOD_EXPORT struct object *parent_clone_object(struct program *p,
   return o;
 }
 
+PMOD_EXPORT struct object *clone_object_from_object(struct object *o, int args)
+{
+  if (o->prog->flags & PROGRAM_USES_PARENT)
+    return parent_clone_object(o->prog,
+			       PARENT_INFO(o)->parent,
+			       PARENT_INFO(o)->parent_identifier,
+			       args);
+  else
+    return clone_object(o->prog, args);
+}
+
 /* BEWARE: This function does not call create() or __INIT() */
 struct object *decode_value_clone_object(struct svalue *prog)
 {
