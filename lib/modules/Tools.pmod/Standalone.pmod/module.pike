@@ -182,7 +182,12 @@ int main(int argc, array(string) argv)
       switch(opt[0])
       {
 	case "query":
-	  write((opt[1]=="specs"? "%O\n":"%s\n"),this_object()[opt[1]]);
+	  if(opt[1]=="specs")
+	    write("%O\n", specs);
+	  else if(stringp(this[opt[1]]))
+	    write("%s\n", this[opt[1]]);
+	  else
+	    write("Unknown variable %s.\n", opt[1]);
 	  exit(0);
 
         case "config_args": config_args=opt[1]; break;
