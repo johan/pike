@@ -474,7 +474,7 @@ void update_tracker(void|string event,void|int contact)
 	"downloaded":(string)downloaded,
 	"left":(string)bytes_left(),
 	"port":(string)my_port,
-	"numwant":max(max_peers-sizeof(peers_ordered),100),
+	"numwant":(string)max(max_peers-sizeof(peers_ordered),100),
       ]);
    if (my_ip) req->ip=my_ip;
    if (event) req->event=event;
