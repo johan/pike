@@ -300,7 +300,11 @@ static struct mapping *rehash(struct mapping *m, int new_size)
     for(e=0;e<md->hashsize;e++)
       mapping_rehash_backwards_good(new_md, md->hash[e]);
 
-    if(md->hardlinks) md->hardlinks--;
+    if(md->hardlinks)
+    {
+      md->hardlinks--;
+      md->valrefs--;
+    }
     free_mapping_data(md);
   }else{
     /* evil */
