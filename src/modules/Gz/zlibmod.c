@@ -36,7 +36,7 @@ struct zipper
 #endif /* _REENTRANT */
 };
 
-#define BUF 16384
+#define BUF 32768
 
 #define THIS ((struct zipper *)(fp->current_storage))
 
