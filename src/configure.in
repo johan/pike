@@ -2869,6 +2869,7 @@ AC_CHECK_FUNCS( \
  strtol \
  time \
  times \
+ tzset \
  vfprintf \
  vsprintf \
  vsnprintf \
