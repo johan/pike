@@ -162,6 +162,34 @@ fi
 rm -rf conftest*])
 
 
+
+dnl 
+dnl PIKE_FEATURE_CLEAR()
+dnl PIKE_FEATURE(feature,text)
+dnl
+
+define(PIKE_FEATURE_CLEAR,[
+  rm pike_*.feature 2>/dev/null
+])
+
+define(PIKE_FEATURE,[
+  cat >pike_[$1].feature <<EOF
+[$2]
+EOF])
+
+define(PIKE_FEATURE_WITHOUT,[
+  PIKE_FEATURE([$1],[$2]no (--without))
+])
+
+define(PIKE_FEATURE_NODEP,[
+  PIKE_FEATURE([$1],[$2]no (dependencies failed))
+])
+
+define(PIKE_FEATURE_OK,[
+  PIKE_FEATURE([$1],[$2]yes)
+])
+
+
 define([AC_LOW_MODULE_INIT],
 [
 # $Id$
@@ -184,6 +212,7 @@ AC_SUBST_FILE(static_module_makefile)
 define([AC_MODULE_INIT],
 [
 AC_LOW_MODULE_INIT()
+PIKE_FEATURE_CLEAR()
 
 ifdef([PIKE_INCLUDE_PATH],
 [
@@ -300,4 +329,3 @@ return 0;
     AC_DEFINE(translit(HAVE_$1,[a-z],[A-Z]))
   else :; fi
 ])
-

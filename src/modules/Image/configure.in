@@ -8,6 +8,8 @@ AC_CONFIG_SUBDIRS(encodings)
 
 AC_MODULE_INIT()
 
+PIKE_FEATURE_OK(Image,Image..............)
+
 AC_FUNC_MMAP
 
 AC_CHECK_HEADERS(math.h sys/fcntl.h fcntl.h stdlib.h netinet/in.h winsock.h)

@@ -7,7 +7,11 @@ AC_MODULE_INIT()
 AC_ARG_WITH(perl, [  --with-perl           enable the Perl module],[],
 	    [with_perl="yes"])
 
+PIKE_FEATURE_WITHOUT(Perl,Perl...............)
+
 if test "x$with_perl" = "xno"; then :; else
+
+  PIKE_FEATURE_NODEP(Perl,Perl...............)
 
   if test "x$with_perl" = "xyes"; then
     AC_CHECK_PROGS(perl, perl perl5, x)
@@ -80,6 +84,7 @@ int main(int argc, char **argv, char **env)
     fi
     AC_DEFINE(HAVE_PERL)
     AC_MSG_RESULT(yes)
+    PIKE_FEATURE_OK(Perl,Perl...............)
   else
     PERL_LDFLAGS=''
     PERL_CCFLAGS=''
