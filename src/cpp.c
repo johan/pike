@@ -1968,8 +1968,5 @@ void exit_cpp(void)
   }
   free_string(defined_macro->link.s);
   free((char *)defined_macro);
-
-  free_string(constant_macro->link.s);
-  free((char *)constant_macro);
 #endif
 }
