@@ -1033,7 +1033,7 @@ static void add_location(struct memhdr *mh, LOCATION location)
       add_location_seek++;
 #endif
       if(ml->location == location)
-	break;
+	goto old_ml;
 
       l2=lhash(mh, ml->location);
 
@@ -1050,9 +1050,6 @@ static void add_location(struct memhdr *mh, LOCATION location)
       }else{
 	prev=&ml->next;
       }
-    }
-    if(ml) {
-      goto old_ml;
     }
     mh->misses=0;
   }
