@@ -2015,7 +2015,7 @@ PMOD_EXPORT struct array *reverse_array(struct array *a)
   return ret;
 }
 
-PMOD_EXPORT void array_replace(struct array *a,
+void array_replace(struct array *a,
 		   struct svalue *from,
 		   struct svalue *to)
 {
