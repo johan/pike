@@ -3899,7 +3899,7 @@ test_any_equal([[
   a += ({search (m, "bar", a[-1])});
   a += ({search (m, "bar", a[-1])});
   return sort (a);
-]], ({0, "foo", "gnu"}))
+]], sort(({0, "foo", "gnu"})))
 
 // test large searches (find string, size, pattern)
 define(test_search,[[
