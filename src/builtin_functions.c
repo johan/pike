@@ -3258,10 +3258,17 @@ node *optimize_replace(node *n)
 	struct svalue *save_sp = Pike_sp;
 	JMP_BUF tmp;
 	if (SETJMP(tmp)) {
-	  yywarning("Optimizer failure in replace().");
-	  pop_n_elems(Pike_sp - save_sp);
-	  free_svalue(&throw_value);
+	  struct svalue thrown = throw_value;
+	  struct pike_string *s;
 	  throw_value.type = T_INT;
+	  pop_n_elems(Pike_sp - save_sp);
+	  yywarning("Optimizer failure in replace().");
+	  s = format_exception_for_error_msg (&thrown);
+	  if (s) {
+	    yywarning ("%S", s);
+	    free_string (s);
+	  }
+	  free_svalue(&thrown);
 	} else {
 	  extern struct program *multi_string_replace_program;
 	  INT16 lfun;
