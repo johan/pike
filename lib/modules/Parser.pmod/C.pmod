@@ -428,6 +428,7 @@ array hide_whitespaces(array tokens)
 	  case ' ':
 	  case '\t':
 	  case '\14':
+	  case '\r':
 	  case '\n':
 	    mixed tmp=ret[-1];
 	    while(arrayp(tmp)) tmp=tmp[-1];
