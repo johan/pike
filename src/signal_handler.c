@@ -3213,7 +3213,7 @@ static void f_kill(INT32 args)
 {
   int signum;
   int pid;
-  int res;
+  int res, save_errno;
 
 #ifdef PIKE_SECURITY
   if(!CHECK_SECURITY(SECURITY_BIT_SECURITY))
@@ -3246,18 +3246,20 @@ static void f_kill(INT32 args)
 
   THREADS_ALLOW_UID();
   res = !kill(pid, signum);
+  save_errno = errno;
   THREADS_DISALLOW_UID();
 
   check_signals(0,0,0);
   pop_n_elems(args);
   push_int(res);
+  errno = save_errno;
 }
 
 static void f_pid_status_kill(INT32 args)
 {
   int pid = THIS->pid;
   INT_TYPE signum;
-  int res;
+  int res, save_errno;
 
 #ifdef PIKE_SECURITY
   if(!CHECK_SECURITY(SECURITY_BIT_SECURITY))
@@ -3276,11 +3278,13 @@ static void f_pid_status_kill(INT32 args)
 
   THREADS_ALLOW_UID();
   res = !kill(pid, signum);
+  save_errno = errno;
   THREADS_DISALLOW_UID();
 
   check_signals(0,0,0);
   pop_n_elems(args);
   push_int(args);
+  errno = save_errno;
 }
 
 #else
