@@ -711,7 +711,7 @@ void destruct(struct object *o)
     else fputs(", is destructed\n", stderr);
   }
 #endif
-
+  add_ref( o );
   call_destroy(o,0);
 
   /* destructed in destroy() */
@@ -795,6 +795,7 @@ void destruct(struct object *o)
   if( frame_pushed )
     POP_FRAME2();
 
+  free_object( o );
   free_program(p);
 
   remove_destroy_called_mark(o);
