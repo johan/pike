@@ -551,7 +551,7 @@ static void f_select_db(INT32 args)
 static void f_big_query(INT32 args)
 {
   MYSQL *socket = PIKE_MYSQL->socket;
-  MYSQL_RES *result;
+  MYSQL_RES *result = NULL;
   char *query;
   int qlen;
   int tmp = -1;
@@ -575,6 +575,10 @@ static void f_big_query(INT32 args)
     tmp = mysql_query(socket, query);
 #endif /* HAVE_MYSQL_REAL_QUERY */
 
+    if (tmp >= 0) {
+      result = mysql_store_result(socket);
+    }
+
     MYSQL_DISALLOW();
   }
   if (!socket || (tmp < 0)) {
@@ -590,6 +594,10 @@ static void f_big_query(INT32 args)
 #else
     tmp = mysql_query(socket, query);
 #endif /* HAVE_MYSQL_REAL_QUERY */
+
+    if (tmp >= 0) {
+      result = mysql_store_result(socket);
+    }
 
     MYSQL_DISALLOW();
   }
@@ -608,14 +616,6 @@ static void f_big_query(INT32 args)
       error("mysql->big_query(): Query failed (%s)\n", err);
     }
   }
-
-  MYSQL_ALLOW();
-
-  /* The same thing applies here */
-
-  result = mysql_store_result(socket);
-
-  MYSQL_DISALLOW();
 
   pop_n_elems(args);
 
