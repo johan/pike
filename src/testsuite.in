@@ -7841,8 +7841,13 @@ cond([[all_constants()->mktime]],
 // - mv
 
 // - next_object
-test_true(objectp(next_object()))
-test_any(int e;object o=next_object(); for(e=0;e<10000 && (o || objectp(o));e++) o=next_object(o); return o,0)
+test_true(objectp(next_object()) || intp(next_object()) && next_object())
+test_any([[
+  object o=next_object();
+  for(int e=0; e<10000 && (objectp(o) || intp(o) && o); e++)
+    o=next_object(o);
+  return o;
+]], 0)
 
 // - normalize_path
 // Tested in lib
