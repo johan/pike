@@ -31,6 +31,18 @@ else
   fi
 fi
 
+autoconf_version="`autoconf --version|head -1|sed -e 's/.* \([0-9]*\.[0-9]*\).*/\1/p' -ed`"
+
+if [ "`echo $autoconf_version|awk -F. '{ print $1 }'`" -ne "2" -o \
+     "`echo $autoconf_version|awk -F. '{ print $2 }'`" -ge "50" ]; then
+  # Autoconf 2.50 and later is seriously broken.
+  echo "Autoconf version $autoconf_version is not supported." >&2
+  echo >&2
+  echo "Get and install autoconf 2.13." >&2
+  # Abort
+  exit 1
+else :; fi
+
 IFS=''
 ( find . -follow -type d -print || find . -type d -print ) |egrep -v '/(CVS)|(RCS)|(test-install)$'| while read dir; do
 
