@@ -366,6 +366,19 @@ program_ref: string_constant
   {
     push_string(make_shared_string(""));
     resolv_constant($1);
+    if(sp[-1].type == T_OBJECT)
+    {
+      struct program *p=sp[-1].u.object->prog;
+      if(!p)
+      {
+	pop_stack();
+	push_int(0);
+      }else{
+	p->refs++;
+	pop_stack();
+	push_program(p);
+      }
+    }
     if(sp[-1].type != T_PROGRAM)
     {
       yyerror("Illegal program identifier");
@@ -1159,7 +1172,7 @@ low_idents: F_IDENTIFIER
       pop_stack();
     }else{
       $$=0;
-      if( get_master() )
+      if( get_master() && !num_parse_error)
       {
 	reference_shared_string($1);
 	push_string($1);
