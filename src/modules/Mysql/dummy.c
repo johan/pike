@@ -22,7 +22,7 @@
 typedef INT64 _ll_t;
 typedef unsigned INT64 _ull_t;
 
-static _ll_t mysql_dummy(_ull_t a, _ull_t b, _ll_t c, _ll_t d) {
+_ll_t mysql_dummy_dum_dum(_ull_t a, _ull_t b, _ll_t c, _ll_t d) {
 #ifdef HAVE_LDIV
   ldiv(10, 3);
 #endif
