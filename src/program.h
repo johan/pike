@@ -165,15 +165,6 @@ union idptr
   ptrdiff_t offset;
 };
 
-#ifdef PIKE_PORTABLE_BYTECODE
-struct pike_tripple
-{
-  INT32 opcode;
-  INT32 arg;
-  INT32 arg2;
-};
-#endif /* PIKE_PORTABLE_BYTECODE */
-
 #define IDENTIFIER_VARIABLE 0
 #define IDENTIFIER_PIKE_FUNCTION 1
 #define IDENTIFIER_C_FUNCTION 2

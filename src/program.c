@@ -2350,18 +2350,6 @@ static void exit_program_struct(struct program *p)
   {
     for(e=0; e<p->num_identifiers; e++)
     {
-#ifdef PIKE_PORTABLE_BYTECODE
-      if (p->program &&
-	  IDENTIFIER_IS_PIKE_FUNCTION(p->identifiers[e].identifier_flags) &&
-	  p->identifiers[e].func.offset != -1) {
-	/* FIXME: What about LP64? */
-	struct pike_tripple *tripples =
-	  ((void **)(p->program+p->identifiers[e].func.offset))[-1];
-	fprintf(stderr, "Freeing tripples at 0x%08p.\n", tripples);
-	if (tripples)
-	  free(tripples);
-      }
-#endif /* PIKE_PORTABLE_BYTECODE */
       if(p->identifiers[e].name)
 	free_string(p->identifiers[e].name);
       if(p->identifiers[e].type)
