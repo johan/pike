@@ -915,12 +915,16 @@ void cleanup_objects(void)
   struct object *o, *next;
   for(o=first_object;o;o=next)
   {
+    if(o==master_object) { next=o->next; continue; }
     add_ref(o);
     destruct(o);
     next=o->next;
     free_object(o);
   }
 
+  destruct_objects_to_destruct();
+
+  destruct(master_object);
   free_object(master_object);
   master_object=0;
   free_program(master_program);
