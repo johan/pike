@@ -679,7 +679,7 @@ static void file_peek(INT32 args)
   fds.revents=0;
 
   THREADS_ALLOW();
-  ret=poll(&fds, 1, 0);
+  ret=poll(&fds, 1, 1);
   THREADS_DISALLOW();
 
   if(ret < 0)
@@ -687,14 +687,14 @@ static void file_peek(INT32 args)
     ERRNO=errno;
     ret=-1;
   }else{
-    ret = ret>=0 && (fds.revents & POLLIN);
+    ret = (ret > 0) && (fds.revents & POLLIN);
   }
 #else
   int ret;
   fd_set tmp;
   struct timeval tv;
 
-  tv.tv_usec=0;
+  tv.tv_usec=1;
   tv.tv_sec=0;
   fd_FD_ZERO(&tmp);
   fd_FD_SET(ret=THIS->fd, &tmp);
@@ -708,7 +708,7 @@ static void file_peek(INT32 args)
     ERRNO=errno;
     ret=-1;
   }else{
-    ret= ret>0 && fd_FD_ISSET(THIS->fd, &tmp);
+    ret = (ret > 0) && fd_FD_ISSET(THIS->fd, &tmp);
   }
 #endif
   pop_n_elems(args);
