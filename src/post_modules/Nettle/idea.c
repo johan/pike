@@ -36,14 +36,6 @@
 
 #include "idea.h"
 
-void idea_crypt_blocks(struct idea_ctx *ctx, int len,
-		       unsigned char *to, unsigned char *from)
-{
-  ptrdiff_t i;
-  for( i=0 ; i<len ; i+=IDEA_BLOCK_SIZE )
-    idea_crypt(ctx->ctx, (unsigned INT8 *)to+i, (unsigned INT8 *)from+i);
-}
-
 /*-------------------------------------------------------------*/
 
 #define low16(x)  ((x) & 0xffff)
@@ -275,3 +267,11 @@ idea_crypt(const unsigned INT16 *key,
 } /* idea_crypt */
 
 /*-------------------------------------------------------------*/
+
+void idea_crypt_blocks(struct idea_ctx *ctx, int len,
+		       unsigned char *to, unsigned char *from)
+{
+  ptrdiff_t i;
+  for( i=0 ; i<len ; i+=IDEA_BLOCK_SIZE )
+    idea_crypt(ctx->ctx, (unsigned INT8 *)to+i, (unsigned INT8 *)from+i);
+}
