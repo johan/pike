@@ -2215,7 +2215,7 @@ EOF
       sed -e 's/\\/\//g' | \
       sed -e 's/\(.*\) \(.*\)/  \1|\1\/*)\
     posix_prefix="\1"\
-    native_prefix="\2/"\
+    native_prefix="\2\/"\
   \;\;/p' -ed | \
       sed -e 's/\/\//\//g'
     cat <<\EOF
