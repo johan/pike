@@ -2216,7 +2216,8 @@ EOF
       sed -e 's/\(.*\) \(.*\)/  \1|\1\/*)\
     posix_prefix="\1"\
     native_prefix="\2"\
-  \;\;/p' -ed
+  \;\;/p' -ed | \
+      sed -e 's/\/\//\//g'
     cat <<\EOF
 esac
 echo "$posix_name" | sed -e "s,^$posix_prefix,$native_prefix,"
