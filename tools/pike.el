@@ -15,7 +15,7 @@
 ;;; want this too in that case:
 ;;;
 ;;; (setq auto-mode-alist
-;;;   (append '(("\\.pike$" . pike-mode)) auto-mode-alist)
+;;;   (append '(("\\.pike$" . pike-mode)) auto-mode-alist))
 
 (require 'font-lock)
 (require 'custom)
