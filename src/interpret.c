@@ -1273,7 +1273,7 @@ PMOD_EXPORT void mega_apply2(enum apply_type type, INT32 args, void *arg1, void 
 	unsigned char *pc;
 
 #ifdef PIKE_DEBUG
-	if (Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_KILL)
+	if (Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_FREE)
 	  fatal("Pike code called within gc.\n");
 #endif
 
