@@ -180,10 +180,9 @@ struct timeval next_timeout;
 /*
  * Stuff to map fds to the proper Backend
  */
-struct Backend_struct;
 static struct Backend_struct **fd_map=0;
 static int fd_map_size=0;
-static struct Backend_struct *default_backend = NULL;
+struct Backend_struct *default_backend = NULL;
 
 static int backend_do_call_outs(struct Backend_struct *me);
 static void backend_verify_call_outs(struct Backend_struct *me);

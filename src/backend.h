@@ -12,16 +12,19 @@
 #include "time_stuff.h"
 #include "callback.h"
 
+struct Backend_struct;
+struct selectors;
+
 PMOD_EXPORT extern struct timeval current_time;
 PMOD_EXPORT extern struct timeval next_timeout;
+extern struct Backend_struct *default_backend;
 typedef int (*file_callback)(int,void *);
 extern struct callback_list do_debug_callbacks;
 PMOD_EXPORT extern int fds_size;
 PMOD_EXPORT extern struct program *Backend_program;
 
 /* Prototypes begin here */
-struct Backend_struct;
-struct selectors;
+struct Backend_struct *get_backend_for_fd(int fd);
 PMOD_EXPORT struct callback *debug_add_backend_callback(callback_func call,
 				      void *arg,
 				      callback_func free_func);
