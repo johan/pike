@@ -5372,10 +5372,8 @@ static void run_exit(struct compilation *c)
 #endif /* PIKE_DEBUG */
   compilation_depth=c->save_depth;
 
-#ifdef PIKE_DEBUG
   if (resolve_cache)
     free_mapping(resolve_cache);
-#endif
   resolve_cache = c->resolve_cache_save;
 
   if (error_handler) free_object(error_handler);
