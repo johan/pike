@@ -766,6 +766,8 @@ arguments: /* empty */ optional_comma { $$=0; }
 
 arguments2: new_arg_name { $$ = 1; }
   | arguments2 ',' new_arg_name { $$ = $1 + 1; }
+  | arguments2 ',' error
+  | arguments2 error
   ;
 
 modifier: F_NO_MASK    { $$ = ID_NOMASK; }
