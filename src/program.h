@@ -250,7 +250,7 @@ struct pike_trampoline
 #define PROGRAM_NO_EXPLICIT_DESTRUCT 512
 
 /* Program is in an inconsistant state */
-#define PROGRAM_AVOID_CHECK 512
+#define PROGRAM_AVOID_CHECK 1024
 
 
 struct program
