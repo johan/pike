@@ -52,11 +52,11 @@ extract: build/src/Makefile build/lib/Makefile
 autodoc_appendix: build/src
 	@echo "<module name=''>\n<appendix name='AutoDoc'><doc><text>\n<p><pre>\n" > build/autodoc.xml
 	sed -e "s/&/\&amp;/g" -e "s/</\&lt;/g" -e "s/>/\&gt;/g" < syntax.txt >> build/autodoc.xml
-	@echo "\n</pre></p><p><pre>\n" >> build/autodoc.xml
+	@echo "\n\n" >> build/autodoc.xml
 	sed -e "s/&/\&amp;/g" -e "s/</\&lt;/g" -e "s/>/\&gt;/g" < inlining.txt >> build/autodoc.xml
-	@echo "\n</pre></p><p><pre>\n" >> build/autodoc.xml
+	@echo "\n\n" >> build/autodoc.xml
 	sed -e "s/&/\&amp;/g" -e "s/</\&lt;/g" -e "s/>/\&gt;/g" < tags.txt >> build/autodoc.xml
-	@echo "\n</pre></p><p><pre>\n" >> build/autodoc.xml
+	@echo "\n\n" >> build/autodoc.xml
 	sed -e "s/&/\&amp;/g" -e "s/</\&lt;/g" -e "s/>/\&gt;/g" < xml.txt >> build/autodoc.xml
 	@echo "</pre></p></text></doc></appendix></module>" >> build/autodoc.xml
 
