@@ -133,13 +133,14 @@ void check_tree(node *n, int depth)
 	     */
 	    if(id->type != n->type)
 	    {
-	      printf("Type of external node is not matching it's identifier.\nid->type: ");
+	      fprintf(stderr, "Type of external node "
+		      "is not matching its identifier.\nid->type: ");
 	      simple_describe_type(id->type);
-	      printf("\nn->type : ");
+	      fprintf(stderr, "\nn->type : ");
 	      simple_describe_type(n->type);
-	      printf("\n");
+	      fprintf(stderr, "\n");
 
-	      fatal("Type of external node is not matching it's identifier.\n");
+	      fatal("Type of external node is not matching its identifier.\n");
 	    }
 #endif
 	  }
@@ -1873,7 +1874,7 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 	      if (IS_ZERO(sp-1)) yy_describe_exception(&thrown);
 	      pop_stack();
 	    }
-	  }else{
+	  }else if (!force_resolve) {
 	    /* Hope it's there in pass 2 */
 	    pop_stack();
 	    ref_push_object(placeholder_object);
