@@ -1421,7 +1421,11 @@ static void init_dlopen(void)
     data->stringtable=(unsigned char *)( ((char *)data->symbols) + 
 					 18 * data->coff->num_symbols);
     
-    
+
+#ifdef PIKE_DEBUG
+    if(!data->coff->num_symbols)
+      fatal("No COFF symbols found in pike binary.\n");
+#endif      
     global_dlhandle.htable=alloc_htable(data->coff->num_symbols);
     
 #ifdef DLDEBUG
