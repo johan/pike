@@ -742,10 +742,11 @@ OPCODE0(F_ADD_TO, "+=", I_UPDATE_SP, {
     assign_lvalue(Pike_sp-4,&s);
   } else if (Pike_sp[-2].type == T_OBJECT) {
     /* One ref in the lvalue, and one on the stack. */
+    int i;
     if(Pike_sp[-2].u.object->refs <= 2 &&
-       FIND_LFUN(Pike_sp[-2].u.object->prog, LFUN_ADD_EQ) != -1)
+       (i = FIND_LFUN(Pike_sp[-2].u.object->prog, LFUN_ADD_EQ)) != -1)
     {
-      apply_lfun(Pike_sp[-2].u.object, LFUN_ADD_EQ, 1);
+      apply_low(Pike_sp[-2].u.object, i, 1);
       /* NB: The lvalue already contains the object, so
        *     no need to reassign it.
        */
@@ -798,10 +799,11 @@ OPCODE0(F_ADD_TO_AND_POP, "+= and pop", I_UPDATE_SP, {
     assign_lvalue(Pike_sp-4,&s);
   } else if (Pike_sp[-2].type == PIKE_T_OBJECT) {
     /* One ref in the lvalue, and one on the stack. */
+    int i;
     if(Pike_sp[-2].u.object->refs <= 2 &&
-       FIND_LFUN(Pike_sp[-2].u.object->prog, LFUN_ADD_EQ) != -1)
+       (i = FIND_LFUN(Pike_sp[-2].u.object->prog, LFUN_ADD_EQ)) != -1)
     {
-      apply_lfun(Pike_sp[-2].u.object, LFUN_ADD_EQ, 1);
+      apply_low(Pike_sp[-2].u.object, i, 1);
       /* NB: The lvalue already contains the object, so
        *     no need to reassign it.
        */
