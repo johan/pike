@@ -1040,7 +1040,7 @@ class BrokenTeletexString
   constant type_name = "TeletexString";	// Alias: T61String
 }
 
-Regexp asn1_IA5_invalid_chars = Regexp ("([\180-\377])");
+Regexp asn1_IA5_invalid_chars = Regexp ("([\200-\377])");
 
 //!
 int(0..1) asn1_IA5_valid (string s)
