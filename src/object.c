@@ -576,6 +576,8 @@ void low_object_index_no_free(struct svalue *to,
   if(!p)
     error("Cannot access global variables in destructed object.\n");
 
+  debug_malloc_touch(o);
+
   i=ID_FROM_INT(p, f);
 
   switch(i->identifier_flags & (IDENTIFIER_FUNCTION | IDENTIFIER_CONSTANT))
@@ -702,6 +704,7 @@ void object_low_set_index(struct object *o,
     return; /* make gcc happy */
   }
 
+  debug_malloc_touch(o);
   check_destructed(from);
 
   i=ID_FROM_INT(p, f);
