@@ -36,6 +36,8 @@ werror(const char *format, ...)
 #define werror(x)
 #endif
 
+/*! @module Nettle
+ */
 
 /* Checks if a key is acceptable. STR can be NULL, in which case only
  * the length is checked. */
