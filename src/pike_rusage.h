@@ -14,7 +14,7 @@ int pike_get_rusage(pike_rusage_t rusage_values);
 long *low_rusage(void);
 
 /* get_cpu_time returns the consumed cpu time (both in kernel and user
- * space, if applicable), or zero if it couldn't be read. Note that
+ * space, if applicable), or -1 if it couldn't be read. Note that
  * many systems have fairly poor resolution, e.g. on Linux x86 it's
  * only 0.01 second. gettimeofday can therefore be a better choice to
  * measure small time intervals. */
