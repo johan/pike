@@ -996,6 +996,13 @@ static class nb_sendfile
     }
   }
 
+#ifdef SENDFILE_DEBUG
+  void destroy()
+  {
+    werror("Stdio.sendfile(): Destructed.\n");
+  }
+#endif /* SENDFILE_DEBUG */
+
   /* Starter */
 
   void create(array(string) hd,
