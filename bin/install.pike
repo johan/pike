@@ -1,5 +1,9 @@
 #! /usr/bin/env pike
 
+// Pike installer and exporter.
+//
+// $Id$
+
 #define USE_GTK
 
 #if !constant(GTK.parse_rc)
