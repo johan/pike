@@ -2186,11 +2186,12 @@ void f_create_process(INT32 args)
 
       error("Failed to start process.\n" "errno:%d\n", errno);
     } else if(pid) {
+      int olderrno;
+
       process_started(pid);  /* Debug */
       /*
        * The parent process
        */
-      int olderrno;
 
       /* Close our child's end of the pipe. */
       close(control_pipe[1]);
