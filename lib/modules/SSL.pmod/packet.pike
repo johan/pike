@@ -88,10 +88,12 @@ object|string recv(string data)
 	return Alert(ALERT_fatal, ALERT_unexpected_message,
 		     sprintf("SSL.packet->send: Version %d is not supported\n",
 			     protocol_version[0]), backtrace());
+#ifdef SSL3_DEBUG
       if (protocol_version[1] > 0)
 	werror(sprintf("SSL.packet->recv: received version %d.%d packet\n",
 		       @ protocol_version));
-      
+#endif
+
       needed_chars += length;
     } else {
       if (content_type == PACKET_V2)
