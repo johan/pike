@@ -69,7 +69,7 @@ array(int) preferred_compressors =
 ({ COMPRESSION_null });
 
 constant Session = SSL.session;
-constant Queue = ADT.queue;
+constant Queue = ADT.Queue;
 
 int use_cache = 1;
 int session_lifetime = 600; /* Time to remember a session, in seconds */

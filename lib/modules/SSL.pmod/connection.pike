@@ -17,7 +17,7 @@ function(object,int|object,string:void) alert_callback;
 inherit "constants";
 inherit "handshake";
 
-constant Queue = ADT.queue;
+constant Queue = ADT.Queue;
 constant State = SSL.state;
 
 constant PRI_alert = 1;
