@@ -1302,8 +1302,8 @@ PIKE_MODULE_INIT
    start_new_program();
    ADD_STORAGE(struct pipe);
    
-/* function(:array) */
-  ADD_EFUN("_pipe_debug", f__pipe_debug,tFunc(tNone,tArray), 0);
+   /* function(:array) */
+  ADD_FUNCTION("_pipe_debug", f__pipe_debug,tFunc(tNone,tArray), 0);
    /* function(object:void) */
   ADD_FUNCTION("input",pipe_input,tFunc(tObj,tVoid),0);
    /* function(object,void|int:void) */
