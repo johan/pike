@@ -1632,9 +1632,6 @@ static struct array *longest_ordered_sequence(struct array *a)
     else
       links[i] = -1;
     stack[pos] = i;
-
-    fprintf(stderr, "%d: link:%d ltop:%d pos:%d top:%d\n",
-	    i, links[i], ltop, pos, top);
   }
 
   /* FIXME(?) memory unfreed upon error here */
