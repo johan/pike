@@ -257,6 +257,10 @@ CHRONO("begin hsv...");
 CHRONO("end hsv...");
 THREADS_DISALLOW();
 
+  /* FIXME: This looks like a ref-counting bug to me.
+   *	/grubba 1998-04-20
+   */
+
   o[4]->refs++;
 
   if (!w)
