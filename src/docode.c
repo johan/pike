@@ -25,7 +25,6 @@ RCSID("$Id$");
 #include "operators.h"
 #include "object.h"
 #include "opcodes.h"
-#include "language.h"
 #include "lex.h"
 #include "mapping.h"
 #include "multiset.h"

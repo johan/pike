@@ -6,7 +6,6 @@
 */
 
 #include "global.h"
-#include "language.h"
 #include "stralloc.h"
 #include "dynamic_buffer.h"
 #include "program.h"

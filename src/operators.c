@@ -16,7 +16,6 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "opcodes.h"
 #include "operators.h"
-#include "language.h"
 #include "pike_memory.h"
 #include "pike_error.h"
 #include "docode.h"

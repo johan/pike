@@ -11,7 +11,6 @@ RCSID("$Id$");
 #include "backend.h"
 #include "module.h"
 #include "object.h"
-#include "language.h"
 #include "lex.h"
 #include "pike_types.h"
 #include "builtin_functions.h"

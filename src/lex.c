@@ -7,7 +7,6 @@
 
 #include "global.h"
 RCSID("$Id$");
-#include "language.h"
 #include "lex.h"
 #include "stuff.h"
 
