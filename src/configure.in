@@ -2470,6 +2470,9 @@ AC_TYPE_SIGNAL
 
 dnl AC_CHECK_LIB(PW, alloca)
 
+dnl Checking if poll() call is in libpoll (in general in Darwin or BSD/OS)
+AC_CHECK_LIB(poll, poll)
+
 AC_CHECK_LIB(m, floor)
 
 AC_CHECK_LIB(socket, socket)
