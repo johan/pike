@@ -11,10 +11,10 @@
 //! certificate, the server's private key(s), etc. It also includes the
 //! session cache.
 
-inherit "constants";
+import .Constants;
 
 //! The server's private key
-object rsa;
+Crypto.rsa rsa;
 
 //! Temporary, non-certified, private keys, used with a
 //! server_key_exchange message. The rules are as follows:
@@ -28,10 +28,10 @@ object rsa;
 //! message with the (public part of) the long_rsa key.
 //!
 //! Otherwise, dont send any server_key_exchange message.
-object long_rsa;
-object short_rsa;
+Crypto.rsa long_rsa;
+Crypto.rsa short_rsa;
 
-object dsa;  /* Servers dsa key */
+Crypto.dsa dsa;  /* Servers dsa key */
 object dh_params; /* Parameters for dh keyexchange */
 
 //! Used to generate random cookies for the hello-message. If we use

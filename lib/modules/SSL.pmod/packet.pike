@@ -8,8 +8,7 @@
 //! SSL Record Layer. Handle formatting and parsing of packets.
 
 
-inherit "constants";
-
+import .Constants;
 
 constant SUPPORT_V2 = 1;
 

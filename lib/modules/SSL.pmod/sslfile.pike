@@ -6,6 +6,7 @@
 
 //! Interface similar to Stdio.File.
 
+import .Constants;
 inherit "connection" : connection;
 
 #ifdef SSL3_DEBUG_TRANSPORT

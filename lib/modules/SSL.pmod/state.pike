@@ -9,7 +9,7 @@
 //! stream of packets, and operates in either decryption or encryption
 //! mode.
 
-inherit "constants";
+import .Constants;
 
 //! Information about the used algorithms.
 object session;

@@ -22,7 +22,8 @@ int closing;
 
 function(object,int|object,string:void) alert_callback;
 
-inherit "constants";
+import .Constants;
+
 inherit "handshake";
 
 constant PRI_alert = 1;
