@@ -98,7 +98,7 @@ void image_any__decode(INT32 args)
 	 push_text("image/jpeg");
 	 goto simple_image;
 
-      case CHAR2('P','N'):
+      case CHAR2(137,'P'):
 	 /* PNG */
 	 push_text("Image");
 	 push_int(0);
