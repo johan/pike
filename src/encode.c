@@ -914,6 +914,8 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
 	code_number( p->PIKE_CONCAT(num_,Z), data);
 #include "program_areas.h"
 
+	code_number(PIKE_BYTECODE_METHOD, data);
+
 #ifdef ENCODE_PROGRAM
 #ifdef PIKE_DEBUG
 	{
@@ -2070,6 +2072,15 @@ static void decode_value2(struct decode_data *data)
 	  p->total_size=size + sizeof(struct program);
 
 	  p->flags |= PROGRAM_OPTIMIZED;
+
+	  {
+	    INT32 bytecode_method = 0;
+	    decode_number(bytecode_method, data);
+	    if (bytecode_method != PIKE_BYTECODE_METHOD) {
+	      Pike_error("Unsupported bytecode method: %d. Expected %d\n",
+			 bytecode_method, PIKE_BYTECODE_METHOD);
+	    }
+	  }
 
 	  getdata2(p->program, p->num_program);
 #ifdef PIKE_USE_MACHINE_CODE
