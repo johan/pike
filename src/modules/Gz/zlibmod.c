@@ -120,7 +120,7 @@ static int do_deflate(dynamic_buffer *buf,
 	 /* Absorb any unused space /Hubbe */
 	 low_make_buf_space(-this->gz.avail_out,buf);
 
-	 /* we don't care about Z_BUF_ERROR here; it won't happen. */
+	 if(ret == Z_BUF_ERROR) ret=Z_OK;
       }
       while (ret==Z_OK && (this->gz.avail_in || !this->gz.avail_out));
 
