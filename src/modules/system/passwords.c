@@ -123,7 +123,7 @@ void push_pwent(struct passwd *ent)
   SAFE_PUSH_TEXT(ent->pw_name);
 
 #if defined(HAVE_GETSPNAM) || defined(HAVE_GETSPNAM_R)
-  if(!strcmp(ent->pw_passwd, "x"))
+  if(!strcmp(ent->pw_passwd, "x") || !strcmp(ent->pw_passwd, "*NP*"))
   {
     /* 64-bit Solaris 7 SIGSEGV's with an access to address 0xffffffff
      * if the user is not root:
