@@ -309,6 +309,7 @@ class File
     return ::connect(host, port, client, client_port);
   }
 
+#if constant(files.__HAVE_CONNECT_UNIX__)
   int connect_unix(string path)
   //! Open a UNIX domain socket connection to the specified destination.
   //! 
@@ -328,6 +329,7 @@ class File
     debug_bits = 0;
     return ::connect_unix( path );
   }
+#endif
 
   static private function(int, mixed ...:void) _async_cb;
   static private array(mixed) _async_args;

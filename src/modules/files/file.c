@@ -3557,6 +3557,9 @@ PIKE_MODULE_INIT
   add_integer_constant("__OOB__",-1,0); /* unknown */
 #endif
 #endif
+#ifdef HAVE_SYS_UN_H
+  add_integer_constant("__HAVE_CONNECT_UNIX__",1,0);
+#endif
 
   /* function(:array(int)) */
   ADD_FUNCTION("get_all_active_fd", f_get_all_active_fd,
