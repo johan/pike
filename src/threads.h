@@ -117,7 +117,12 @@ extern pthread_attr_t small_pattr;
 #define th_create_small(ID,fun,arg) pthread_create(ID,&small_pattr,fun,arg)
 #define th_exit(foo) pthread_exit(foo)
 #define th_self() pthread_self()
+#ifdef HAVE_PTHREAD_KILL
 #define th_kill(ID,sig) pthread_kill((ID),(sig))
+#else /* !HAVE_PTHREAD_KILL */
+/* MacOS X (aka Darwin) doesn't have pthread_kill. */
+#define th_kill(ID,sig)
+#endif /* HAVE_PTHREAD_KILL */
 #define th_join(ID,res) pthread_join((ID),(res))
 #ifdef HAVE_PTHREAD_COND_INIT
 #define COND_T pthread_cond_t
