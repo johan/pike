@@ -2525,7 +2525,7 @@ void fix_type_field(node *n)
 	      if (!match_types(value_type, CDAR(n)->type)) {
 		struct pike_string *t1 = describe_type(value_type);
 		struct pike_string *t2 = describe_type(CDAR(n)->type);
-		my_yyerror("Variable type missmatch in foreach().");
+		my_yyerror("Variable type mismatch in foreach().");
 		my_yyerror("Expected: %s", t1->str);
 		my_yyerror("Got     : %s", t2->str);
 		free_string(t2);
@@ -2533,7 +2533,7 @@ void fix_type_field(node *n)
 	      } else if (lex.pragmas & ID_STRICT_TYPES) {
 		struct pike_string *t1 = describe_type(value_type);
 		struct pike_string *t2 = describe_type(CDAR(n)->type);
-		yywarning("Variable type missmatch in foreach().");
+		yywarning("Variable type mismatch in foreach().");
 		yywarning("Expected: %s", t1->str);
 		yywarning("Got     : %s", t2->str);
 		free_string(t2);
