@@ -32,8 +32,8 @@ RCSID("$Id$");
 #include <sys/socket.h>
 #endif
 
-#ifdef HAVE_WINSOCK2_H
-#include <winsock2.h>
+#ifdef HAVE_WINSOCK_H
+#include <winsock.h>
 #endif
 
 #if ! defined(EWOULDBLOCK) && defined(WSAEWOULDBLOCK)
