@@ -206,14 +206,14 @@ do_dump: {
     if(Stdio.Stat s=file_stat(fakeroot(file)))
     {
       if (update) {
-	if (Stdio.Stat o = file_stat (outfile + ".o"))
+	if (Stdio.Stat o = file_stat (fakeroot(outfile) + ".o"))
 	  if (o->mtime >= s->mtime) {
 	    if (!quiet) logmsg ("Up-to-date.\n");
 	    ok = 1;
 	    break do_dump;
 	  }
       }
-      rm(outfile+".o"); // Make sure no old files are left
+      rm(fakeroot(outfile)+".o"); // Make sure no old files are left
 
       if (s->isdir && recursive) {
 	if (array(string) dirlist = get_dir (fakeroot (file))) {
@@ -267,8 +267,8 @@ do_dump: {
 	else if(programp(p))
 	{
 	  string dir = combine_path (outfile, "..");
-	  if (!Stdio.is_dir (dir))
-	    if (!Stdio.mkdirhier (dir)) {
+	  if (!Stdio.is_dir (fakeroot(dir)))
+	    if (!Stdio.mkdirhier (fakeroot(dir))) {
 	      logmsg ("Failed to create target directory %O: %s.\n",
 		      dir, strerror (errno()));
 	      break do_dump;
