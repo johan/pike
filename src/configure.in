@@ -994,6 +994,7 @@ AC_CHECK_FUNCS( \
  fork \
  fork1 \
  flock \
+ lockf \
  setuid getuid seteuid geteuid \
  setgid getgid setegid getegid \
  getpwent getpwnam getpwuid \
