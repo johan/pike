@@ -174,6 +174,11 @@ class OutputController
     outfd->write(term->put("cd")||(partial?"":"\f"));
   }
 
+  void beep()
+  {
+    outfd->write(term->put("bl")||"");
+  }
+
   void create(object|void _outfd, object|string|void _term)
   {
     outfd = _outfd || Stdio.File("stdout");
