@@ -20,6 +20,7 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "operators.h"
 #include "dynamic_buffer.h"
+#include "bignum.h"
 
 #include "image.h"
 #include "colortable.h"
