@@ -210,6 +210,18 @@ struct object *debug_clone_object(struct program *p, int args)
   return o;
 }
 
+struct object *fast_clone_object(struct program *p, int args)
+{
+  ONERROR tmp;
+  struct object *o=low_clone(p);
+  SET_ONERROR(tmp, do_free_object, o);
+  debug_malloc_touch(o);
+  call_c_initializers(o);
+  UNSET_ONERROR(tmp);
+  debug_malloc_touch(o);
+  return o;
+}
+
 struct object *parent_clone_object(struct program *p,
 				   struct object *parent,
 				   int parent_identifier,
