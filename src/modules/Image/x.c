@@ -370,6 +370,7 @@ void image_to8bit_rgbcube_rdither(INT32 args)
        int r=(s->r*red)+(tal&255);
        int g=(s->g*green)+((tal>>8)&255);
        int b=(s->b*blue+((tal>>16)&255));
+
        if(r>rmax) r=rmax; if(g>gmax) g=gmax; if(b>bmax) b=bmax;
        *(d++)= (unsigned char)((r>>8)+(g>>8)*red+(b>>8)*redgreen);
        s++;
@@ -382,6 +383,7 @@ void image_to8bit_rgbcube_rdither(INT32 args)
        int r=(s->r*red)+(tal&255);
        int g=(s->g*green)+((tal>>8)&255);
        int b=(s->b*blue+((tal>>16)&255));
+
        if(r>rmax) r=rmax; if(g>gmax) g=gmax; if(b>bmax) b=bmax;
        *(d++)= map[ (r>>8)+(g>>8)*red+(b>>8)*redgreen ];
        s++;

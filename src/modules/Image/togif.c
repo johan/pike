@@ -751,12 +751,11 @@ CHRONO("gif add init");
       low_my_putchar( 0, &buf ); /* terminate block */
    }
 
-   ct=colortable_quant(THIS,256);
+   if(!ct)
+     ct=colortable_quant(THIS,256);
 
    colors=4; bpp=2;
    while (colors<ct->numcol) { colors<<=1; bpp++; }
-
-      
 
 
    low_my_putchar( ',', &buf ); /* image separator */
