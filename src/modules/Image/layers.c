@@ -83,6 +83,7 @@ struct layer
    int optimize_alpha;
 };
 
+#undef THIS
 #define THIS ((struct layer *)(fp->current_storage))
 #define THISOBJ (fp->current_object)
 
