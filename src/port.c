@@ -974,7 +974,9 @@ long long gethrtime()
    return now;
 }
 
-#endif
+#endif	/* OWN_GETHRTIME_RDTSC */
+
+#endif	/* OWN_GETHRTIME */
 
 #ifndef HAVE_LDEXP
 double LDEXP(double x, int exp)
@@ -991,6 +993,4 @@ double FREXP(double x, int *exp)
   ret = (x*pow(2.0,(double)-*exp));
   return ret;
 }
-#endif
-
 #endif
