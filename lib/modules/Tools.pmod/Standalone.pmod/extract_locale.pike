@@ -1,8 +1,10 @@
-#! /usr/bin/env pike
+// Locale Extractor Utility
+//
 // By Martin Nilsson and Andreas Lange
 //
 // $Id$
-//
+
+#pike __REAL_VERSION__
 
 constant description = "Pike locale extractor utility";
 
@@ -691,7 +693,7 @@ void update_pike_sourcefiles(array filelist) {
 
     foreach(id_pike_order, array id) {
       // Insert ids based on tokens and the now regexp-safe string
-      object(Regexp) RE;
+      Regexp.SimpleRegexp RE;
       // RE = ^(.*TOKEN\( ")(", string \).*)$
       RE = Regexp("^(.*" + id[1] + "\\([ \n\t]*)[\"0]*" +
 		  "([ ,\n\t]*"+id[2]+"[ \t\n]*\\).*)$");
