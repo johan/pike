@@ -752,6 +752,7 @@ static char *combine_path(char *cwd,char *file)
   char *my_cwd;
   char *cwdbuf = 0;
   int tmp;
+  ONERROR err;
 
   SET_ONERROR(err, free_nonull, cwdbuf);
   
