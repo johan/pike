@@ -2401,8 +2401,17 @@ int eval_low(node *n)
 
   while(new_program->num_constants > num_constants)
   {
+    struct program_constant *p_const;
+
     new_program->num_constants--;
-    free_svalue(&new_program->constants[new_program->num_constants].sval);
+
+    p_const = new_program->constants + new_program->num_constants;
+
+    free_svalue(&p_const->sval);
+    if (p_const->name) {
+      free_string(p_const->name);
+      p_const->name = NULL;
+    }
   }
 
   new_program->num_program=jump;
