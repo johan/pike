@@ -1366,7 +1366,7 @@ static void thread_was_checked(struct object *o)
 void f_thread_local_create( INT32 args )
 {
   static INT32 thread_local_id = 0;
-  ((struct thread_local *)Pike_fp->current_object->storage)->id =
+  ((struct thread_local *)CURRENT_STORAGE)->id =
     thread_local_id++;
   pop_n_elems(args);
   push_int(0);
