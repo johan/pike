@@ -598,17 +598,72 @@ void memfill(char *to,
   }
 }
 
+#if 0
+#if defined(HAVE_GETRLIMIT) && defined(HAVE_SETRLIMIT) && defined(RLIMIT_DATA)
+#define SOFTLIM 
+
+static long softlim_should_be=0;
+#endif
+#endif
+
+
 char *debug_xalloc(long size)
 {
   char *ret;
   if(!size) 
      error("Allocating zero bytes.\n");
 
+#ifdef SOFTLIM
+  if(softlim_should_be)
+  {
+    
+  }
+
+#endif
+
   ret=(char *)malloc(size);
   if(ret) return ret;
 
   error("Out of memory.\n");
   return 0;
+}
+
+char *debug_qalloc(long size)
+{
+  char *ret;
+  if(!size) return 0;
+
+  ret=(char *)malloc(size);
+  if(ret) return ret;
+
+#ifdef SOFTLIM
+  {
+    struct rlim lim;
+    if(getrlimit(RLIMIT_DATA,&lim)>= 0)
+    {
+      if(lim.rlim_cur < lim.rlim_max)
+      {
+	lim.rlim_cur+=size;
+	while(1)
+	{
+	  softlim_should_be=lim.rlim_cur;
+	  if(lim.rlim_cur > lim.rlim_max)
+	    lim.rlim_cur=lim.rlim_max;
+	  
+	  if(setrlimit(RLIM_DATA, &lim)>=0)
+	  {
+	    ret=(char *)malloc(size);
+	    if(ret) return ret;
+	  }
+	  if(lim.rlim_cur >= lim.rlim_max) break;
+	  lim.rlim_cur+=4096;
+	}
+      }
+    }
+  }
+#endif
+
+  fatal("Completely out of memory!\n");
 }
 
 #ifdef DEBUG_MALLOC
@@ -1365,6 +1420,19 @@ void cleanup_memhdrs(void)
   mt_destroy(&debug_malloc_mutex);
 }
 
+#ifdef _REENTRANT
+static void lock_da_lock(void)
+{
+  mt_lock(&debug_malloc_mutex);
+}
+
+static void unlock_da_lock(void)
+{
+  mt_unlock(&debug_malloc_mutex);
+}
+#endif
+
+
 int main(int argc, char *argv[])
 {
   extern int dbm_main(int, char **);
@@ -1374,7 +1442,10 @@ int main(int argc, char *argv[])
   exit(99);
 #endif
     
+#ifdef _REENTRANT
   mt_init(&debug_malloc_mutex);
+  th_atfork(lock_da_lock, unlock_da_lock,  unlock_da_lock);
+#endif
   init_memhdr_hash();
   loc_accepted_leak=location_number("*acceptable leak*", 0);
   loc_referenced=location_number("*referenced*", 0);
