@@ -397,6 +397,14 @@ static void memory_valid(INT32 args)
    pop_n_elems(args);
    push_int(!!(THIS->p));
 }
+//! method int(0..1) writeable()
+//! returns 1 if the memory is writeable, 0 if not
+
+static void memory_writeable(INT32 args)
+{
+   pop_n_elems(args);
+   push_int(!!(THIS->flags&MEM_WRITE));
+}
 
 //! method string|array cast(string to)
 //!	Cast to string or array.
@@ -804,6 +812,9 @@ void init_system_memory(void)
    
    ADD_FUNCTION("free",memory_free,tFunc(tVoid,tVoid),0);
 
+   ADD_FUNCTION("valid",memory_valid,tFunc(tVoid,tInt01),0);
+   ADD_FUNCTION("writeable",memory_writeable,tFunc(tVoid,tInt01),0);
+
    ADD_FUNCTION("_sizeof",memory__sizeof,tFunc(tVoid,tIntPos),0);
    ADD_FUNCTION("cast",memory_cast,
 		tFunc(tStr,tOr(tArr(tInt),tStr)),0);
@@ -840,6 +851,10 @@ void init_system_memory(void)
 #endif
 #ifdef PAGE_MASK
    ADD_INT_CONSTANT("PAGE_MASK",PAGE_MASK,0);
+#endif
+
+#ifdef HAVE_MMAP
+   ADD_INT_CONSTANT("__MMAP__",1,0);
 #endif
 }
 
