@@ -300,6 +300,8 @@ PMOD_EXPORT void assign_svalues_no_free(struct svalue *to,
 			    size_t num,
 			    TYPE_FIELD type_hint)
 {
+  TYPE_FIELD masked_type;
+
 #ifdef PIKE_DEBUG
   if(d_flag)
   {
@@ -311,25 +313,26 @@ PMOD_EXPORT void assign_svalues_no_free(struct svalue *to,
 	       (long)type_hint, from[e].type);
   }
 #endif
-  if((type_hint & ((2<<MAX_REF_TYPE)-1)) == 0)
-  {
-    MEMCPY((char *)to, (char *)from, sizeof(struct svalue) * num);
-    return;
-  }
+  MEMCPY((char *)to, (char *)from, sizeof(struct svalue) * num);
 
-  if((type_hint & ((2<<MAX_REF_TYPE)-1)) == type_hint)
+  if (!(masked_type = (type_hint & ((2<<MAX_REF_TYPE)-1))))
+    return;
+
+  if(masked_type == type_hint)
   {
-    while(num--)
-    {
-      struct svalue tmp;
-      tmp=*(from++);
-      *(to++)=tmp;
-      add_ref( tmp.u.array );
+    while(num--) {
+      add_ref(from->u.array);
+      from++;
     }
     return;
   }
 
-  while(num--) assign_svalue_no_free(to++,from++);
+  while(num--) {
+    if (from->type <= MAX_REF_TYPE) {
+      add_ref(from->u.array);
+    }
+    from++;
+  }
 }
 
 PMOD_EXPORT void assign_svalues(struct svalue *to,
