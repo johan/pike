@@ -203,7 +203,7 @@ struct DATA *PIKE_CONCAT(make_,DATA)(void *ptr, int hval)		     \
   return p;								     \
 }									     \
 									     \
-inline struct DATA *PIKE_CONCAT(get_,DATA)(void *ptr)			     \
+struct DATA *PIKE_CONCAT(get_,DATA)(void *ptr)			 	     \
 {									     \
   struct DATA *p;							     \
   int hval=(long)ptr;							     \
