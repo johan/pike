@@ -38,6 +38,9 @@
 /* Define as the return type of signal handlers (int or void).  */
 #undef RETSIGTYPE
 
+/* define this if igonoring SIGFPE helps with core dumps */
+#undef IGNORE_SIGFPE
+
 /* If using the C implementation of alloca, define if you know the
    direction of stack growth for your system; otherwise it will be
    automatically deduced at run-time.
