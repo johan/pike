@@ -534,6 +534,7 @@ static void describe_marker(struct marker *m)
 
 void debug_gc_fatal(void *a, int flags, const char *fmt, ...)
 {
+  struct marker *m;
   int orig_gc_pass = Pike_in_gc;
   va_list args;
 
@@ -546,7 +547,17 @@ void debug_gc_fatal(void *a, int flags, const char *fmt, ...)
    * checks in describe(). */
   Pike_in_gc = 0;
   describe(a);
+  
   if (flags & 1) locate_references(a);
+
+  m=find_marker(a);
+  if(m)
+  {
+    fprintf(stderr,"** Describing marker for this thing.\n");
+    describe(m);
+  }else{
+    fprintf(stderr,"** No marker found for this thing.\n");
+  }
   Pike_in_gc = orig_gc_pass;
   if (flags & 2)
     fatal_after_gc = "Fatal in garbage collector.\n";
