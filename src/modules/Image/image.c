@@ -3516,6 +3516,7 @@ void image_cast(INT32 args)
 
 void init_image_image(void)
 {
+   int i;
    for (i=0; i<CIRCLE_STEPS; i++) 
       circle_sin_table[i]=(INT32)4096*sin(((double)i)*2.0*3.141592653589793/(double)CIRCLE_STEPS);
 
