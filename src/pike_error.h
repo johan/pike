@@ -196,7 +196,7 @@ PMOD_EXPORT extern const char msg_assert_onerr[];
 
 /* Prototypes begin here */
 PMOD_EXPORT void check_recovery_context(void);
-PMOD_EXPORT void pike_gdb_breakpoint(void);
+PMOD_EXPORT void pike_gdb_breakpoint(INT32 args);
 PMOD_EXPORT JMP_BUF *init_recovery(JMP_BUF *r, size_t stack_pop_levels DEBUG_LINE_ARGS);
 PMOD_EXPORT DECLSPEC(noreturn) void pike_throw(void) ATTRIBUTE((noreturn));
 PMOD_EXPORT void push_error(const char *description);

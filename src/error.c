@@ -86,7 +86,7 @@ PMOD_EXPORT void check_recovery_context(void)
 }
 #endif
 
-PMOD_EXPORT void pike_gdb_breakpoint(void) 
+PMOD_EXPORT void pike_gdb_breakpoint(INT32 args)
 {
 }
 
