@@ -15,6 +15,7 @@ extern INT32 num_objects;
 extern INT32 num_allocs;
 extern ptrdiff_t alloc_threshold;
 PMOD_EXPORT extern int Pike_in_gc;
+extern int gc_generation;
 extern int gc_debug;
 
 extern struct callback *gc_evaluator_callback;

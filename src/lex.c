@@ -59,12 +59,16 @@ void exit_lex(void)
     }
 
 #ifdef INSTR_PROFILING
-    for(e=0;e<F_MAX_OPCODE-F_OFFSET;e++)
+    if(p_flag>1)
     {
-      int d;
-      for(d=0;d<256;d++)
-	if(instrs[e].reruns[d])
-	  fprintf(stderr,"%010ld::%s - %s\n",instrs[e].reruns[d],low_get_f_name(e+F_OFFSET,0),low_get_f_name(d+F_OFFSET,0));
+      fprintf(stderr,"Opcode sequences: (runned, opcode, opcode)\n");
+      for(e=0;e<F_MAX_OPCODE-F_OFFSET;e++)
+      {
+	int d;
+	for(d=0;d<256;d++)
+	  if(instrs[e].reruns[d])
+	    fprintf(stderr,"%010ld::%s - %s\n",instrs[e].reruns[d],low_get_f_name(e+F_OFFSET,0),low_get_f_name(d+F_OFFSET,0));
+      }
     }
 #endif
   }

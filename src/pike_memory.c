@@ -1024,6 +1024,7 @@ struct memhdr
 #ifdef DMALLOC_AD_HOC
   int misses;
 #endif
+  int gc_generation;
   void *data;
   struct memloc *locations;
 };
@@ -1459,6 +1460,7 @@ static struct memhdr *low_make_memhdr(void *p, int s, LOCATION location)
 
   mh->size=s;
   mh->locations=ml;
+  mh->gc_generation=gc_generation * 1000 + Pike_in_gc;
   ml->location=location;
   ml->next=0;
   ml->times=1;
@@ -1709,6 +1711,14 @@ void low_dump_memhdr_locations(struct memhdr *from,
 #ifdef DMALLOC_AD_HOC
   merge_location_list(from);
 #endif
+
+  fprintf(stderr,"%*s gc generation: %d/%d  gc pass: %d/%d\n",
+	  indent,"",
+	  from->gc_generation / 1000,
+	  gc_generation,
+	  from->gc_generation % 1000,
+	  Pike_in_gc);
+	  
 
   for(l=from->locations;l;l=l->next)
   {
