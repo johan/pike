@@ -11,7 +11,9 @@
 #include "global.h"
 #include "stralloc.h"
 
-
+#ifdef HAVE_VALGRIND_H
+#include <valgrind.h>
+#endif /* HAVE_VALGRIND_H */
 
 #define MEMSEARCH_LINKS 512
 
