@@ -876,7 +876,9 @@ static void file_write(INT32 args)
   struct pike_string *str;
 
   if(args<1 || ((sp[-args].type != T_STRING) && (sp[-args].type != T_ARRAY)))
-    error("Bad argument 1 to file->write().\n");
+    error("Bad argument 1 to file->write().\n"
+	  "Type is %s. Expected string or array(string)\n",
+	  type_name[sp[-args].type]);
 
   if(FD < 0)
     error("File not open for write.\n");
@@ -885,8 +887,14 @@ static void file_write(INT32 args)
     struct array *a = sp[-args].u.array;
     i = a->size;
     while(i--) {
-      if ((a->item[i].type != T_STRING) || (a->item[i].u.string->size_shift)) {
-	error("Bad argument 1 to file->write().\n");
+      if (a->item[i].type != T_STRING) {
+	error("Bad argument 1 to file->write().\n"
+	      "Element %d is not a string.\n",
+	      i);
+      } else if (a->item[i].u.string->size_shift) {
+	error("Bad argument 1 to file->write().\n"
+	      "Element %d is a wide string.\n",
+	      i);
       }
     }
 
