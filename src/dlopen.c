@@ -16,7 +16,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
+#if !defined(__FreeBSD__) || !defined(__OpenBSD__)
+/* FreeBSD and OpenBSD has <malloc.h>, but it just contains a warning... */
 #include <malloc.h>
+#endif /* !__FreeBSD__ || !__OpenBSD__ */
 #include <windows.h>
 #include <memory.h>
 #include <sys/stat.h>
