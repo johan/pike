@@ -151,13 +151,11 @@ void f_hardlink(INT32 args)
 
   get_all_args("hardlink",args, "%s%s", &from, &to);
 
+  THREADS_ALLOW();
   do {
-    THREADS_ALLOW();
-
     err = link(from, to);
-    
-    THREADS_DISALLOW();
   } while ((err < 0) && (errno == EINTR));
+  THREADS_DISALLOW();
 
   if (err < 0) {
     report_error("hardlink");
@@ -176,13 +174,11 @@ void f_symlink(INT32 args)
 
   get_all_args("symlink",args, "%s%s", &from, &to);
 
+  THREADS_ALLOW();
   do {
-    THREADS_ALLOW();
-
     err = symlink(from, to);
-    
-    THREADS_DISALLOW();
   } while ((err < 0) && (errno == EINTR));
+  THREADS_DISALLOW();
 
   if (err < 0) {
     report_error("symlink");
@@ -210,13 +206,11 @@ void f_readlink(INT32 args)
       error("readlink(): Out of memory\n");
     }
 
+    THREADS_ALLOW();
     do {
-      THREADS_ALLOW();
-
       err = readlink(path, buf, buflen);
-
-      THREADS_DISALLOW();
     } while ((err < 0) && (errno == EINTR));
+    THREADS_DISALLOW();
   } while (err >= buflen - 1);
 
   if (err < 0) {
