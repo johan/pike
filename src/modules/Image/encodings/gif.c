@@ -2320,7 +2320,7 @@ void init_image_gif(void)
 
    /** constants **/
 
-   add_integer_constant("RENDERER",GIF_RENDER,0);
+   add_integer_constant("RENDER",GIF_RENDER,0);
    add_integer_constant("EXTENSION",GIF_EXTENSION,0);
 
    add_integer_constant("LOOSE_GCE",GIF_LOOSE_GCE,0);
