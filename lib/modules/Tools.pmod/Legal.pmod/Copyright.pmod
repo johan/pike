@@ -29,6 +29,12 @@ static mapping(string:array(string)) copyrights = ([
   "Emacs font lock definitions":
   ({ "Copyright © 2002 Martin Stjernholm" }),
 
+  "IDEA encryption and decryption code":
+  ({ "Copyright © Xuejia Lai" }),
+
+  "MD5 password hash code":
+  ({ "Copyright © Poul-Henning Kamp" }),
+
   "Rijndael encryption and decryption code":
   ({ "Copyright © 2000 Joan Daemen" }),
 
