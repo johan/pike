@@ -1221,6 +1221,12 @@ class db {
     foreach(values(tables), object o)
       if(o)
 	destruct(o);
+    destruct(lock_file);
+  }
+
+  void close()
+  {
+    destruct(this_object());
   }
   
   int reorganize(float|void ratio)
@@ -1249,6 +1255,8 @@ class db {
     
   void create(string dir_in, string mode_in)
   {
+    atexit(close);
+    
     dir = dir_in;
     mode = mode_in;
 
