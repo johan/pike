@@ -1489,7 +1489,7 @@ PIKECLASS Backend
 	   for(e=0;e<me->num_pending_calls;e++)
 	   {
 	     call_out *c=CALL(e);
-	     hval=(size_t)c->args;
+	     hval=(size_t)(((char *)c->args)-(char *)0);
 
 #define LINK(X,c)							\
 	     hval%=me->hash_size;					\
@@ -1515,7 +1515,7 @@ PIKECLASS Backend
      new->pos=me->num_pending_calls;
      
      {
-       hval=(size_t)args;
+       hval=(size_t)(((char *)args)-(char *)0);
        LINK(arr,new);
        hval=hash_svalue(args->item);
        LINK(fun,new);
@@ -1692,7 +1692,7 @@ PIKECLASS Backend
        
        if(fun->type == T_ARRAY)
        {
-	 hval=(size_t)fun->u.array;
+	 hval=(size_t)(((char *)fun->u.array)-(char *)0);
 	 hval%=me->hash_size;
 	 for(c=me->call_hash[hval].arr;c;c=c->next_arr)
 	 {
