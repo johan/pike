@@ -290,12 +290,30 @@ void *check_storage(void *storage, unsigned long magic, char *prog)
 #define THIS_DBNULL ((struct dbnull *)check_storage(CURRENT_STORAGE,0xdb004711UL,"dbnull"))
 
 static struct program *oracle_program = NULL;
+#if 0
+
+void *ocimalloc (void *ctx, size_t l)
+{
+  return malloc (l);
+}
 static struct program *compile_query_program = NULL;
+void *ocirealloc (void *ctx, void *p, size_t l)
+{
+  return realloc (p, l);
+}
+
+void ocifree (void *ctx, void *p)
+{
+  free (p);
+}
+
+#else
 static struct program *big_query_program = NULL;
 static struct program *dbresultinfo_program = NULL;
 static struct program *Date_program = NULL;
 static struct program *NULL_program = NULL;
 
+#endif
 static int oracle_identifier;
 static int compile_query_identifier;
 static int big_query_identifier;
@@ -601,15 +619,17 @@ static OCIError *global_error_handle=0;;
 
 OCIError *get_global_error_handle(void)
 {
-  sword rc;
-  rc=OCIHandleAlloc(get_oracle_environment(),
-		    (void **)& global_error_handle,
-		    OCI_HTYPE_ERROR,
-		    0,
-		    0);
+  if (!global_error_handle) {
+    sword rc;
+    rc=OCIHandleAlloc(get_oracle_environment(),
+		      (void **)& global_error_handle,
+		      OCI_HTYPE_ERROR,
+		      0,
+		      0);
 
-  if(rc != OCI_SUCCESS)
-    Pike_error("Failed to allocate error handle.\n");
+    if(rc != OCI_SUCCESS)
+      Pike_error("Failed to allocate error handle.\n");
+  }
   
   return global_error_handle;
 }
