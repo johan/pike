@@ -1233,12 +1233,12 @@ class db {
   /* Remove maximum one level of directories and files. */
   static private void level2_rm(string f)
   {
-    if(sizeof(f) > 1 && f[-1] == '/')
-      f = f[0..sizeof(f)-2];  // Remove /'s.
-    if((file_stat(f)||({0,0}))[1] == -2)  // Directory.
+    if(has_suffix(f, "/"))
+      f = f[..sizeof(f)-2];
+    if(Stdio.is_dir(f))
       foreach(get_dir(f)||({}), string file)
-	rm(f+"/"+file);  // Delete file.
-    rm(f);  // Delete file/directory.
+	rm(f+"/"+file);
+    rm(f);
   }
 
   void purge()
