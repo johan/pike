@@ -1603,7 +1603,7 @@ PMOD_EXPORT void f_call_function(INT32 args)
  *!
  *!   Called by the Pike runtime if an exception isn't caught.
  *!
- *! @param
+ *! @param exception
  *!   Value that was @[throw()]'n.
  *!
  *! @seealso
