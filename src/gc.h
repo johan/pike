@@ -151,6 +151,7 @@ void do_gc_recurse_short_svalue(union anything *u, TYPE_T type);
 int gc_do_free(void *a);
 int do_gc(void);
 void f__gc_status(INT32 args);
+void cleanup_gc(void);
 /* Prototypes end here */
 
 #define gc_fatal \
