@@ -1,7 +1,12 @@
+/*
+ * $Id$
+ */
+
+#include "global.h"
+
 #include "config.h"
 
 #include "stralloc.h"
-#include "global.h"
 #include "pike_macros.h"
 #include "backend.h"
 #include "object.h"
