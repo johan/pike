@@ -45,7 +45,9 @@ static int va_check_args(struct svalue *s,
       }
     }
 
-    if (!((1UL << s[res->argno].type) & res->expected))
+    if (!((1UL << s[res->argno].type) & res->expected) &&
+	!(res->expected & BIT_ZERO &&
+	  s[res->argno].type == T_INT && s[res->argno].u.integer == 0))
     {
       res->got = DO_NOT_WARN((unsigned char)s[res->argno].type);
       res->error_type = ERR_BAD_ARG;
@@ -79,7 +81,7 @@ PMOD_EXPORT int check_args(int args, ...)
   return tmp.argno+1;
 }
 
-/* This function generates errors if any of the minargs first arguments
+/* This function generates errors if any of the args first arguments
  * is not OK.
  */
 PMOD_EXPORT void check_all_args(const char *fnname, int args, ... )
