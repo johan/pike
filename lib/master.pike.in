@@ -586,7 +586,7 @@ void _main(string *orig_argv, string *env)
       ({"compiler_trace",tmp->NO_ARG,"--compiler-trace"}),
       ({"debug",tmp->MAY_HAVE_ARG,"--debug",0,1}),
       ({"trace",tmp->MAY_HAVE_ARG,"--trace",0,1}),
-      ({"ignore",tmp->MAY_HAVE_ARG,"-Dqdatpl",0,1})
+      ({"ignore",tmp->MAY_HAVE_ARG,"-Dqdatpl",0,1}),
       ({"ignore",tmp->HAS_ARG,"-s"}),
     }), 1);
     
