@@ -173,7 +173,14 @@
 	my_strcat(function->name->str);
 	do_trace_call(args);
       }
-      
+
+#ifdef PIKE_DEBUG      
+      if (Pike_fp && (new_frame->locals < Pike_fp->locals)) {
+	fatal("New locals below old locals: %p < %p\n",
+	      new_frame->locals, Pike_fp->locals);
+      }
+#endif /* PIKE_DEBUG */
+
       Pike_fp = new_frame;
       
 #ifdef PROFILING

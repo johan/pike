@@ -2229,6 +2229,10 @@ OPCODE1(F_CALL_BUILTIN1_AND_POP, "call builtin1 & pop", I_UPDATE_ALL, {
     if(Pike_interpreter.trace_level > 3)				   \
       fprintf(stderr,"-    Allocating %d extra locals.\n",		   \
 	      new_frame->num_locals - new_frame->num_args);		   \
+    if (Pike_fp && (new_frame->locals < Pike_fp->locals)) {		   \
+      fatal("New locals below old locals: %p < %p\n",			   \
+	    new_frame->locals, Pike_fp->locals);			   \
+    }									   \
   });									   \
 									   \
                                                                            \
