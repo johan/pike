@@ -1465,6 +1465,10 @@ static int o_catch(unsigned char *pc)
   }
 }
 
+/*! @decl mixed call_function(function fun, mixed ... args)
+ *!
+ *! Call a function.
+ */
 PMOD_EXPORT void f_call_function(INT32 args)
 {
   mega_apply(APPLY_STACK,args,0,0);
