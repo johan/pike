@@ -20,6 +20,7 @@ RCSID("$Id$");
 #include "module_support.h"
 #include "operators.h"
 #include "mapping.h"
+#include "pike_types.h"
 
 #ifdef HAVE_WINDEF_H
 #include <windows.h>
