@@ -1359,7 +1359,8 @@ static INT32 low_cpp(struct cpp *this,
 	      continue;
 	      
 	    case '\\':
-	      if(GOBBLE('\n'))
+	      if(GOBBLE('\n') ||
+		 (data[pos]=='\r' && (data[pos+1]=='\n'?(pos+=2),1:0))
 	      { 
 		this->current_line++;
 		PUTNL();
