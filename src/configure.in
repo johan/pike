@@ -1448,6 +1448,11 @@ rm confdefs.out.2 >/dev/null 2>/dev/null || :
       LIBS="${OLDLIBS} -lpthreads -lc_r"
     ;;
 
+    xSolaris*)
+      # Some versions of Solaris 2.5.1 require linking with -lthread too.
+      LIBS="${OLDLIBS} -lpthread -lthread"
+    ;;
+
     *)
       LIBS="${OLDLIBS} -lpthread"
     ;;
