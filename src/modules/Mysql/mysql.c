@@ -84,7 +84,14 @@
 #endif
 
 #ifdef HAVE_MYSQL_SSL
+
+#ifdef HAVE_OPENSSL_SSL_H
 #include <openssl/ssl.h>
+#endif
+#ifdef HAVE_SSL_H
+#include <ssl.h>
+#endif
+
 #endif
 
 #define sp Pike_sp
