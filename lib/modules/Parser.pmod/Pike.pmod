@@ -63,7 +63,7 @@ array(string) split(string data, void|mapping state)
 	state->remains += data[..sizeof(data)-2];
 	return ret;
       }
-      ret += ({ state->remains + data[..pos] });
+      ret += ({ state->remains + data[..pos+1] });
       m_delete(state, "remains");
       pos+=2;
       break;
