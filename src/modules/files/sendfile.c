@@ -606,7 +606,7 @@ void worker(void *this_)
   mt_unlock(&interpreter_lock);
 
   /* Die */
-  return NULL;
+  return;
 }
 
 /*
