@@ -656,6 +656,7 @@ PMOD_EXPORT struct pike_string *end_and_resize_shared_string(struct pike_string 
       (len >  SHORT_STRING_THRESHOLD) && str->len  > len/2 )
   {
     str->len=len;
+    str->str[len]=0;
     return end_shared_string(str);
   }
   tmp = make_shared_binary_pcharp(MKPCHARP_STR(str),len);
