@@ -5184,8 +5184,8 @@ void init_builtin_efuns(void)
 /* function(mixed:int) */
   ADD_EFUN("arrayp",  f_arrayp,tFunc(tMix,tInt),0);
   
-/* function(:array(array(function|int|string))) */
-  ADD_EFUN("backtrace",f_backtrace,tFunc(tNone,tArr(tArr(tOr3(tFunction,tInt,tStr)))),OPT_EXTERNAL_DEPEND);
+/* function(:array(array)) */
+  ADD_EFUN("backtrace",f_backtrace,tFunc(tNone,tArr(tArray)),OPT_EXTERNAL_DEPEND);
 
   
 /* function(array,mixed:array) */
