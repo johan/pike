@@ -850,10 +850,9 @@ PIKECLASS Backend
 			float sleep_time)
     {
       int i;
+      struct timeval timeout;
       if(me->may_need_wakeup)
 	Pike_error("Backend is not thread safe yet.\n");
-
-      struct timeval timeout;
 
       next_timeout.tv_sec = (int)floor(sleep_time);
       next_timeout.tv_usec = (int)((sleep_time - next_timeout.tv_sec)*1000000);
