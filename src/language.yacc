@@ -533,7 +533,8 @@ constant_name: F_IDENTIFIER '=' safe_expr0
     {
       if(compiler_pass==2)
 	yyerror("Constant definition is not constant.");
-/*      add_constant($1->u.sval.u.string,0, current_modifiers); * Prototype */
+      else
+	add_constant($1->u.sval.u.string,0, current_modifiers);
     } else {
       if(!num_parse_error)
       {
@@ -938,12 +939,14 @@ opt_object_type:  /* Empty */ { push_type_int(0); push_type(0); }
     {
       push_type_int(p->id);
     }else{
-      if ((sp[-2].type == T_STRING) && (sp[-2].u.string->len > 0) &&
-	  (sp[-2].u.string->len < 256)) {
-	my_yyerror("Not a valid program specifier: '%s'",
-		   sp[-2].u.string->str);
-      } else {
-	yyerror("Not a valid program specifier.");
+      if (compiler_pass!=1) {
+	if ((sp[-2].type == T_STRING) && (sp[-2].u.string->len > 0) &&
+	    (sp[-2].u.string->len < 256)) {
+	  my_yyerror("Not a valid program specifier: '%s'",
+		     sp[-2].u.string->str);
+	} else {
+	  yyerror("Not a valid program specifier.");
+	}
       }
       push_type_int(0);
     }

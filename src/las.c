@@ -1003,7 +1003,8 @@ void resolv_class(node *n)
       break;
       
     default:
-      yyerror("Illegal program identifier");
+      if (compiler_pass!=1)
+	yyerror("Illegal program identifier");
       pop_stack();
       push_int(0);
       
@@ -1026,7 +1027,8 @@ void resolv_program(node *n)
 	break;
       
     default:
-      yyerror("Illegal program identifier");
+      if (compiler_pass!=1)
+	yyerror("Illegal program identifier");
       pop_stack();
       push_int(0);
       
