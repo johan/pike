@@ -136,8 +136,8 @@ class AttributeValueAssertion
 	      string type,
 	      object value)
     {
-      if (!types[type])
-	error( "Unknown attribute type '%s'\n", type );
+      if (!objectp(types[type]))
+	error("Unknown attribute type '%s':%O\n", type, types[type]);
       ::create( ({ types[type], value }) );
     }
 }
