@@ -6902,7 +6902,7 @@ $bundle_info])
 	  :
 	else
 	  echo "Extracting bundle $dist_file..."
-	  ( cd "$bundle_dir" && \
+	  ( cd "$pike_bundle_dir" && \
 	    gzip -cd "$dist_file" | tar xf -
 	  )
 	fi
