@@ -40,7 +40,7 @@ struct static_module
   modfun exit;
 };
 
-static struct static_module module_list[] = {
+static const struct static_module module_list[] = {
   { "Builtin", low_init_main, low_exit_main }
 #include "modules/modlist.h"
 #include "post_modules/modlist.h"

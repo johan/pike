@@ -826,7 +826,7 @@ struct program *image_encoding_ilbm_program=NULL;
 
 void init_image_ilbm(void)
 {
-   static char *str[] = { "BMHD", "CMAP", "CAMG", "BODY" };
+   static const char *str[] = { "BMHD", "CMAP", "CAMG", "BODY" };
    int n;
 
    for(n=0; n<4; n++) {
