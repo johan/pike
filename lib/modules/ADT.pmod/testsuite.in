@@ -248,6 +248,21 @@ test_any([[
   };
   return (string)Test();
 ]], "\22""44\22\22""4VxxV4\22");
+test_do([[
+  class Test {
+    inherit ADT.Struct;
+    Item a = Varchars();
+    Item b = Varchars(1,3);
+    Item c = Chars(1);
+  };
+  add_constant("Test",Test);
+]])
+test_eq( (string)Test("a\0b\0c"), "a\0b\0c" )
+test_eq( (string)Test("a\0b\0c\0"), "a\0b\0c" )
+test_eval_error( Test("a\0\0c") )
+test_eval_error( Test("a\0bbbb\0c") )
+test_eval_error( Test("a\0b\0") )
+test_eq( sizeof(Test("aa\0b\0c")), 6 )
 
 
 dnl - ADT.Table
