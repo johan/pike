@@ -92,6 +92,17 @@ int get( int bits ) {
   return res;
 }
 
+//! Reads @[bytes] (or less) bytes from the buffer and returns as
+//! string.
+string read( int bytes )
+{
+  bytes = min(bytes, _sizeof()/8);
+  String.Buffer buf = String.Buffer(bytes);
+  while(bytes--)
+    buf->putchar( get(8) );
+  return (string)buf;
+}
+
 static int in_buffer, bob;
 
 //! Put @[bits] number of bits with the value @[value] into the
