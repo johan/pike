@@ -137,6 +137,12 @@ private class CommandSet {
     }
   }
 
+  private array my_indices(string|mapping|multiset|object|program in) {
+    if(objectp(in) || programp(in))
+      return sort(indices(in));
+    return indices(in);
+  }
+
   void exec(Evaluator e, string line, array(string) words,
 	    array(string) tokens) {
 
@@ -174,6 +180,7 @@ private class CommandSet {
 	  e->variables[name] = vals[name];
 	  e->types[name] = type;
 	}
+      e->functions->indices = my_indices;
       return;
     }
 
@@ -1757,9 +1764,6 @@ class Evaluator {
 	p++;
 	continue;
       }
-
-      // FIXME: Handle variable declarations in sscanf.
-
     }
 
     return p;
