@@ -310,7 +310,8 @@ static void *dlclose(void *module)
 
 #ifndef NO_PIKE_GUTS
 
-#if defined(HAVE_DLOPEN) || defined(USE_DLD) || defined(USE_HPUX_DL) || defined(USE_LOADLIBRARY)
+#if defined(HAVE_DLOPEN) || defined(USE_DLD) || defined(USE_HPUX_DL) || \
+    defined(USE_LOADLIBRARY) || defined(USE_DYLD)
 #define USE_DYNAMIC_MODULES
 #endif
 
