@@ -137,6 +137,11 @@ class C
 }
 }()->C()->D()->bonk_me()]],"oiff")
 
+test_compile_error([[
+ class A { constant q = "x"; }
+ class B { inherit A; string z="z"; constant q="x"+z; }
+]])
+
 
 test_do([[
 class Foo
