@@ -501,9 +501,9 @@ void font_write(INT32 args)
    if(args>1)
      img->ysize = this->height+((double)this->height*(double)(args-1)*(double)this->yspacing_scale)+1;
    else
-     img->ysize = this->height+1;
+     img->ysize = this->height;
    img->rgb.r=img->rgb.g=img->rgb.b=255;
-   img->img=malloc(img->xsize*img->ysize*sizeof(rgb_group));
+   img->img=malloc(img->xsize*img->ysize*sizeof(rgb_group)+1);
 
    if (!img) { free_object(o); free(width_of); error("Out of memory\n"); }
 
