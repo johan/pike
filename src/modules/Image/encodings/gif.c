@@ -740,6 +740,7 @@ CHRONO("gif render_block begin");
 	       alphaidx=sp[n-args].u.integer;
 	       alpha=0;
 	       alphaentry=0;
+	       transparency=1;
 	       if (alphaidx!=-1 && numcolors<=alphaidx)
 		  error("Image.GIF.render_block(): illegal index to transparent color\n");
 	       n=6;
