@@ -221,10 +221,10 @@ void assign_svalues_no_free(struct svalue *to,
 #ifdef DEBUG
   if(d_flag)
   {
-    INT32 e,t;
-    for(t=e=0;e<num;e++) t|=1<<from[e].type;
-    if(t & ~type_hint)
-      fatal("Type hint lies!\n");
+    INT32 e;
+    for(e=0;e<num;e++)
+      if(!(type_hint & (1<<from[e].type)))
+	 fatal("Type hint lies (%ld %ld %d)!\n",(long)e,(long)type_hint,from[e].type);
   }
 #endif
   if((type_hint & ((2<<MAX_REF_TYPE)-1)) == 0)
