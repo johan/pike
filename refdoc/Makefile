@@ -42,7 +42,7 @@ subdirectories:
 clean:
 	rm *.xml
 	for d in */.; do \
-	  if test "$$d" = "*/."; then :; else \
+	  if test "$$d" = "*/." -o "$$d" = "CVS/."; then :; else \
 	    rm -rf "$$d"; \
 	  fi; \
 	done
