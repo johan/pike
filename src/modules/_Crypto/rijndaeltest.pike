@@ -6,7 +6,7 @@
  * Henrik Grubbström 2001-03-24
  */
 
-#if !constant(Crypto.aes)
+#if !constant(Crypto.cbc)
 #pike 7.4
 #endif
 
