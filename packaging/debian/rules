@@ -53,6 +53,7 @@ CFARGS=--without-rtldebug \
        --with-zlib \
        --with-freetype \
        --with-ttflib \
+       --with-libnettle \
        --without-libpdf \
        --without-libpanda \
        --without-sybase \
