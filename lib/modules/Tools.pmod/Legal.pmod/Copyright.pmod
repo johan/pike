@@ -37,6 +37,9 @@ static mapping(string:array(string)) copyrights = ([
 
   "Zlib detection and verification code":
   ({ "Copyright © 1995-1998 Jean-loup Gailly and Mark Adler" }),
+
+  "JPEG transform code":
+  ({ "Copyright © 1991-1998, Thomas G. Lane, Independent JPEG Group" }),
 ]);
 
 //! Adds a copyright message for the copyright @[holders] for the
