@@ -2514,7 +2514,6 @@ PIKECLASS Backend
 
 #ifdef BACKEND_USES_SELECT
 
-	debug_malloc_touch(me->fds);
 	for(i=0; i <= me->active_set.max_fd; i++)
 	{
 	  box = SAFE_GET_ACTIVE_BOX(me, i);
