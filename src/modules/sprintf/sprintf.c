@@ -642,7 +642,7 @@ static string low_pike_sprintf(char *format,
 	    s=sp;
 	    if(q)
 	    {
-	      push_array(q->array);
+	      ref_push_array(q->array);
 	    }else{
 	      array_index_no_free(sp,w,tmp);
 	      sp++;
