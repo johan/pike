@@ -1898,7 +1898,7 @@ AC_CACHE_VAL(pike_cv_sys_ansi_prototypes,
 if test "$pike_cv_sys_ansi_prototypes" = "yes"; then
   AC_MSG_RESULT(yes)
 else
-  AC_MSG_RESULT(no, giving up...)
+  AC_MSG_RESULT([no, giving up...])
   exit 1
 fi
 
