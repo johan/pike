@@ -71,7 +71,7 @@ static void push_device( SANE_Device *d )
 
 
 /*
-**! method array(mapping) list-scanners()
+**! method array(mapping) list_scanners()
 **!
 **!  Returns an array with all available scanners.
 **!
