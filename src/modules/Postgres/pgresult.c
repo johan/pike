@@ -236,9 +236,8 @@ void pgresult_init (void)
 	/* function(void:void|array(mixed)) */
   ADD_FUNCTION("fetch_row",f_fetch_row,tFunc(tVoid,tOr(tVoid,tArr(tMix))),
 			OPT_EXTERNAL_DEPEND|OPT_RETURN);
-	pgresult_program=end_program();
-	add_program_constant("postgres_result",pgresult_program,0);
-	add_ref(pgresult_program);
+  pgresult_program=end_program();
+  add_program_constant("postgres_result",pgresult_program,0);
 }
 
 #else
