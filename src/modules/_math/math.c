@@ -14,6 +14,7 @@
 #include "module_support.h"
 #include "operators.h"
 #include "bignum.h"
+#include "pike_types.h"
 
 #include <math.h>
 
@@ -468,11 +469,27 @@ void f_pow(INT32 args)
     case T_INT * 16 + T_OBJECT:
     case T_OBJECT * 16 + T_INT:
     case T_OBJECT * 16 + T_FLOAT:
+#ifdef AUTO_BIGNUM
       stack_swap();
       push_constant_text("pow");
       f_index(2);
       stack_swap();
       f_call_function(2);
+#else
+      ref_push_type_value(float_type_string);
+      stack_swap();
+      f_cast();
+      stack_swap();
+
+      ref_push_type_value(float_type_string);
+      stack_swap();
+      f_cast();
+
+      stack_swap();
+      f_pow(2);
+
+      o_cast_to_int();
+#endif
       return;
 
     case T_FLOAT * 16 + T_INT:
