@@ -9613,7 +9613,7 @@ test_any([[
   Process.TraceProcess proc =
     Process.TraceProcess(RUNPIKE_ARRAY + ({ "-e", "sleep(99999)" }));
 
-  inst state;
+  int state;
   int code;
   while ((code = proc->wait()) == -2) {
     int sig = proc->last_signal();
