@@ -20,9 +20,14 @@ ASSEMBLY_OBJECTS=""
 AC_MSG_CHECKING( [if nasm can be used] )
 
 if nasm -f elf -o assembly.o $srcdir/assembly.s ; then
-  ASSEMBLY_OBJECTS=assembly.o
-  AC_DEFINE(ASSEMBLY_OK)
-  AC_MSG_RESULT(yes)
+  # nasm/ia64 can compile ia32 code...
+  if test "`uname -m`" = "ia64"; then
+    AC_MSG_RESULT([yes, but we are on an IA64 machine])
+  else
+    ASSEMBLY_OBJECTS=assembly.o
+    AC_DEFINE(ASSEMBLY_OK)
+    AC_MSG_RESULT(yes)
+  fi
 else
   AC_MSG_RESULT(no)
 fi
