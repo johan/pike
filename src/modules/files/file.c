@@ -1472,10 +1472,13 @@ static int do_close(int flags)
  *!  If this file has been created by calling @[openpt()], return the
  *!  filename of the associated pts-file. This function should only be
  *!  called once.
+ *!
+ *!  @note
+ *!    This function is only available on some platforms.
  */
+#if defined(HAVE_GRANTPT) || defined(USE_PT_CHMOD) || defined(USE_CHGPT)
 static void file_grantpt( INT32 args )
 {
-#if defined(HAVE_GRANTPT) || defined(USE_PT_CHMOD) || defined(USE_CHGPT)
   pop_n_elems(args);
 #if defined(USE_PT_CHMOD) || defined(USE_CHGPT)
   push_constant_text("Process.Process");
@@ -1521,14 +1524,13 @@ static void file_grantpt( INT32 args )
     Pike_error("grantpt failed: %s\n", strerror(errno));
 #endif /* USE_PT_CHMOD || USE_CHGPT */
   push_text( ptsname( FD ) );
-#if defined(HAVE_UNLOCKPT)
+#ifdef HAVE_UNLOCKPT
   if( unlockpt( FD ) )
     Pike_error("unlockpt failed: %s\n", strerror(errno));
 #endif
-#else
-  Pike_error("Not supported\n");
-#endif
 }
+#endif /* HAVE_GRANTPT || USE_PT_CHMOD || USE_CHGPT */
+
 /*! @decl int close()
  *! @decl int close(string direction)
  *!
