@@ -43,6 +43,7 @@ struct marker
   INT32 refs;
 #ifdef PIKE_DEBUG
   INT32 xrefs;
+  INT32 saved_refs;
 #endif
   INT32 flags;
   void *data;
