@@ -123,7 +123,7 @@ array(Image.Layer) decode_layers( string data, mapping|void opt )
 #endif
 
   if(!i)
-    foreach( ({ "XCF", "PSD","ILBM" }), string fmt )
+    foreach( ({ "XCF", "PSD" }), string fmt )
       if( (f=Image[fmt]["decode_layers"]) &&
 	  !catch(i = f( data, opt )) && i )
 	break;
