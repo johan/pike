@@ -1711,6 +1711,11 @@ node *recursive_add_call_arg(node *n, node *arg)
 {
   node *tmp;
 
+  if (!n) {
+    /* Earlier parse error. */
+    return NULL;
+  }
+
   switch(n->token)
   {
     case F_ASSIGN:
