@@ -145,4 +145,6 @@ void image_tobitmap(INT32 args);
 
 void image_polyfill(INT32 args);
 
+/* orient.c */
 
+void image_orient(INT32 args);
