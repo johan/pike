@@ -121,7 +121,8 @@ struct wait_data {
 };
 
 static volatile struct wait_data wait_buf[WAIT_BUFFER];
-static volatile int firstwait=0, lastwait=0;
+static volatile int firstwait=0;
+static volatile int lastwait=0;
 
 #endif /* ! NT */
 
@@ -587,7 +588,7 @@ static void f_pid_status_wait(INT32 args)
 	key.type=T_INT;
 	key.u.integer=pid;
 	s=low_mapping_lookup(pid_mapping, &key);
-	if(s && s->type == T_OBJECT || s->u.object == fp->current_object)
+	if(s && s->type == T_OBJECT && s->u.object == fp->current_object)
 	{
 	  errorcount++;
 	  if(errorcount==50)
