@@ -57,7 +57,6 @@
 #include "operators.h"
 #include "fsort.h"
 #include "callback.h"
-#include "gc.h"
 #include "backend.h"
 #include "main.h"
 #include "pike_memory.h"
