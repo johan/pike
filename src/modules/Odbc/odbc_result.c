@@ -307,7 +307,7 @@ static void f_execute(INT32 args)
 
   odbc_check_error("odbc_result->execute", "Query failed",
 		   SQLExecDirect(hstmt, (unsigned char *)q->str,
-				 DO_NOT_WARN(q->len)),
+				 DO_NOT_WARN((SQLINTEGER)(q->len))),
 		   NULL);
 
   odbc_check_error("odbc_result->execute", "Couldn't get the number of fields",

@@ -261,7 +261,6 @@ void NCTLU_FLAT_RIGID_NAME(rgb_group *s,
 			   struct nct_dither *dith,
 			   int rowlen)
 {
-   rgbl_group sf = nct->spacefactor;
    ptrdiff_t mprim = nct->u.flat.numentries;
    struct nct_flat_entry *feprim = nct->u.flat.entries;
 
@@ -290,10 +289,6 @@ void NCTLU_FLAT_RIGID_NAME(rgb_group *s,
 
    while (n--)
    {
-      int mindist;
-      int m;
-      struct nct_flat_entry *fe;
-      struct lookupcache lc;
       rgbl_group val;
 	 
       if (dither_encode)

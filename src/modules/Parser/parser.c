@@ -95,7 +95,6 @@ static struct
 
 static void parser_magic_index(INT32 args)
 {
-   struct svalue tmp;
    int i;
 
    if (args!=1) 

@@ -137,8 +137,6 @@ static void clean_last_error(void)
 
 static void init_odbc_struct(struct object *o)
 {
-  RETCODE code;
-
   PIKE_ODBC->hdbc = SQL_NULL_HDBC;
   PIKE_ODBC->affected_rows = 0;
   PIKE_ODBC->flags = 0;

@@ -106,7 +106,6 @@ static inline long TO_LONG(ptrdiff_t x)
 
 static void pdf_magic_index(INT32 args)
 {
-   struct svalue tmp;
    int i;
 
    if (args!=1) 

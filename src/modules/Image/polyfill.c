@@ -579,7 +579,6 @@ static void polyfill_some(struct image *img,
 	       VY(c,c->xmin)>VY(c->next,c->xmin)))
 	 {
 	    struct line_list *l1;
-	    struct line_list *pll;
 	    /* resort */
 #ifdef POLYDEBUG
 	    fprintf(stderr,"  !!! resort !!!\n");
