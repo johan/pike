@@ -148,6 +148,8 @@ class File
 #ifdef __STDIO_DEBUG
 	__closed_backtrace=0;
 #endif
+	break; /* ARGH, this missing break took 6 hours to find! /Hubbe */
+
       case "stdout":
 	_fd=_stdout;
 #ifdef __STDIO_DEBUG
