@@ -1663,9 +1663,30 @@ void f_replace_master(INT32 args)
   pop_n_elems(args);
 }
 
+#ifdef HAVE_GETHRVTIME
+#include <sys/time.h>
+
+void f_gethrvtime(INT32 args)
+{
+  pop_n_elems(args);
+  push_int((INT32)((gethrvtime())/1000));
+}
+
+void f_gethrtime(INT32 args)
+{
+  pop_n_elems(args);
+  push_int((INT32)((gethrtime())/1000)); 
+}
+#endif
+
 void init_builtin_efuns()
 {
   init_operators();
+
+#ifdef HAVE_GETHRVTIME
+  add_efun("gethrvtime",f_gethrvtime,"function(void:int)",OPT_EXTERNAL_DEPEND);
+  add_efun("gethrtime", f_gethrtime,"function(void:int)", OPT_EXTERNAL_DEPEND);
+#endif
   
   add_efun("_refs",f__refs,"function(function|string|array|mapping|multiset|object|program:int)",OPT_EXTERNAL_DEPEND);
   add_efun("replace_master",f_replace_master,"function(object:void)",OPT_SIDE_EFFECT);
