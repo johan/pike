@@ -5574,7 +5574,7 @@ void init_builtin_efuns(void)
   ADD_PROTOTYPE("compile_warning", tFunc(tStr tInt tStr, tVoid), 0);
   ADD_PROTOTYPE("decode_charset", tFunc(tStr tStr, tStr), 0);
   ADD_PROTOTYPE("describe_backtrace", tFunc(tOr(tObj, tArr(tMix)), tStr), 0);
-  ADD_PROTOTYPE("handle_error", tFunc(tString, tVoid), 0);
+  ADD_PROTOTYPE("handle_error", tFunc(tOr(tArr(tMix),tObj), tVoid), 0);
   ADD_PROTOTYPE("handle_import",
 		tFunc(tStr tOr(tStr, tVoid) tOr(tObj, tVoid), tMix), 0);
   ADD_PROTOTYPE("handle_include", tFunc(tStr tStr tInt, tStr), 0);
