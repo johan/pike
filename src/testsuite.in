@@ -136,6 +136,18 @@ test_compile_any([[
   } 
 ]])
 
+test_compile_any([[
+  string foo (string a, string b, string c, string d, string e, string f, string g)
+  {
+    string out;
+    if (a)
+      out = "foo";
+    else
+      out = "bar";
+    return out;
+  }
+]])
+
 
 dnl FIXME: Add test that local and local:: in combination
 dnl        with recursion works correctly.
