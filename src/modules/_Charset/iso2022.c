@@ -433,6 +433,7 @@ static void eat_enc_string(struct pike_string *str, struct iso2022enc_stor *s,
     {
       char *p = str->str;
       p_wchar2 c;
+
       while(l--) {
 	if(s1) {
 	  c = *(p_wchar1 *)p;
@@ -698,15 +699,14 @@ static void f_enc_feed(INT32 args)
 {
   struct pike_string *str;
 
-  get_all_args(PRGM_NAME"Dec->feed()", args, "%W", &str);
-
-  eat_enc_string(str, (struct iso2022enc_stor *)fp->current_storage,
-		 ((struct iso2022enc_stor *)fp->current_storage)->replace,
-		 (((struct iso2022enc_stor *)fp->current_storage)->repcb.type
-		  == T_FUNCTION?
-		  &((struct iso2022enc_stor *)fp->current_storage)->repcb :
-		  NULL));
-
+  get_all_args(PRGM_NAME"Enc->feed()", args, "%W", &str);
+  if( str->len )
+    eat_enc_string(str, (struct iso2022enc_stor *)fp->current_storage,
+		   ((struct iso2022enc_stor *)fp->current_storage)->replace,
+		   (((struct iso2022enc_stor *)fp->current_storage)->repcb.type
+		    == T_FUNCTION?
+		    &((struct iso2022enc_stor *)fp->current_storage)->repcb :
+		    NULL));
   pop_n_elems(args);
   push_object(this_object());
 }
