@@ -5259,19 +5259,19 @@ esac
 #######################################################################
 
 MY_AC_CHECK_PRINTF_INT_TYPE(size_t,
-			    "ll" "" "L" "l", "",
+			    "" "l" "ll" "L", "",
 			    PRINTSIZET,
 			    [%${res}u, %${res}x])
 MY_AC_CHECK_PRINTF_INT_TYPE(ptrdiff_t,
-			    "ll" "" "L" "l", "",
+			    "" "l" "ll" "L", "",
 			    PRINTPTRDIFFT,
 			    [%${res}d, %${res}x])
 MY_AC_CHECK_PRINTF_INT_TYPE(INT_TYPE,
-			    "ll" "" "L" "l", "",
+			    "" "l" "ll" "L", "",
 			    PRINTPIKEINT,
 			    [%${res}d, %${res}x])
 MY_AC_CHECK_PRINTF_FLOAT_TYPE(FLOAT_TYPE,
-			      "" "L" "ll" "l", "",
+			      "" "l" "L" "ll", "",
 			      PRINTPIKEFLOAT,
 			      [%${res}g, %${res}f])
 
