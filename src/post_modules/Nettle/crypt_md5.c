@@ -19,6 +19,8 @@
  *
  */
 
+#ifdef HAVE_LIBNETTLE
+
 #include <string.h>
 #include <nettle/md5.h>
 
@@ -116,3 +118,5 @@ char *crypt_md5(int pl, const char *pw, int sl, const char *salt)
 
   return passwd;
 }
+
+#endif /* HAVE_LIBNETTLE */
