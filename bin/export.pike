@@ -111,6 +111,8 @@ array(string) build_file_list(string vpath, string list_file)
   array(string) ret=({ });
   foreach(Stdio.FILE(list_file)->line_iterator(1);; string line)
     {
+      if( !sizeof(line) || line[0]=='#' )
+	continue;
       werror("%O\n",line);
       string name=vpath+line;
       if(file_stat(name)->isdir)
