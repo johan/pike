@@ -818,6 +818,7 @@ void make_doc_files()
 
 void process_line(string s, string currentfile, int line)
 {
+  int i;
   s=getridoftabs(s);
 
   if ((i=search(s,"**!"))!=-1 || (i=search(s,"//!"))!=-1)
