@@ -1326,6 +1326,13 @@ test_program([[// [bug 3060]
   }
 ]])
 
+test_any([[
+  // Test a lot of code without a relative pc update in it. There must
+  // not be any labels in it since the pc counting is reset then.
+  int a = 1, b = 1, c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c; c=a+b,a=b,b=c;
+  return __LINE__ == backtrace()[-1][1];
+]], 1)
+
 dnl Note: This line number error tend to go away with more debug.
 test_program([[
   int x = 0;
