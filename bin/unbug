@@ -23,10 +23,10 @@
  */
 
 
+#ifndef DEBUG
 #define DEBUG 0
+#endif
 int failsafe;
-
-#define error(X) throw(({X,backtrace()}))
 
 mapping revsyms=([]);
 mapping syms=
@@ -2671,13 +2671,16 @@ class Debug
 
       case "info":
       {
-	switch(foo[1])
-	{
+	if(sizeof(foo)>1)
+	  switch(foo[1])
+	  {
 	  case "breakpoints":
 	    foreach(number_to_breakpoint, Breakpoint bp)
 	      write("%O\n",bp);
+	    return "";
 	    break;
-	}
+	  }
+	write("info breakpoints  : show breakpoints\n");
 	return "";
       }
       case "en":
