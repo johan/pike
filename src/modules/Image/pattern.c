@@ -511,9 +511,12 @@ void image_turbulence(INT32 args)
 **!	<td>...red channel<br></td>
 **!	</tr></table>
 **!
-**!	Use with ->grey() or ->color() for one-color-results.
+**!	Use with -><ref>grey</ref>() or -><ref>color</ref>() 
+**!	for one-color-results.
 **!
 **! returns a new image
+**!
+**! see also test, noise
 */
 
 void image_random(INT32 args)
