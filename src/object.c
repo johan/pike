@@ -596,7 +596,7 @@ void low_object_index_no_free(struct svalue *to,
   case IDENTIFIER_CONSTANT:
     {
       struct svalue *s;
-      s=PROG_FROM_INT(p,f)->constants + i->func.offset;
+      s=& PROG_FROM_INT(p,f)->constants[i->func.offset].sval;
       if(s->type==T_PROGRAM)
       {
 	to->type=T_FUNCTION;

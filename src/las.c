@@ -297,6 +297,7 @@ void free_node(node *n)
   }
   n->token=USHRT_MAX;
   if(n->type) free_string(n->type);
+  if(n->name) free_string(n->name);
 #ifdef PIKE_DEBUG
   if(n->current_file) free_string(n->current_file);
 #endif
@@ -329,6 +330,7 @@ static node *mkemptynode(void)
   copy_shared_string(res->current_file, lex.current_file);
 #endif
   res->type=0;
+  res->name=0;
   res->node_info=0;
   res->tree_info=0;
   res->parent=0;
@@ -1036,6 +1038,7 @@ node *copy_node(node *n)
     else
       b->type=0;
   }
+  if(n->name) add_ref(b->name=n->name);
   b->line_number = n->line_number;
   b->node_info = n->node_info;
   b->tree_info = n->tree_info;

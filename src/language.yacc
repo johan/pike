@@ -423,6 +423,7 @@ low_program_ref: string_constant
 		 $1->u.sval.u.string->str);
     free_node($1);
     $$=mksvaluenode(sp-1);
+    add_ref( $$->name=sp[-2].u.string );
     pop_stack();
   }
   | idents

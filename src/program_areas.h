@@ -10,6 +10,6 @@ FOO(unsigned INT16,struct reference,identifier_references)
 FOO(unsigned INT16,struct pike_string *,strings)
 FOO(unsigned INT16,struct inherit,inherits)
 FOO(unsigned INT16,struct identifier,identifiers)
-FOO(unsigned INT16,struct svalue, constants)
+FOO(unsigned INT16,struct program_constant, constants)
 #undef FOO
 

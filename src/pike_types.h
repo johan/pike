@@ -22,6 +22,7 @@ struct node_s
   struct pike_string *current_file;
 #endif
   struct pike_string *type;
+  struct pike_string *name;
   struct node_s *parent;
   union 
   {
