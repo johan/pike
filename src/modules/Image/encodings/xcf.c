@@ -59,8 +59,8 @@ struct buffer
 struct substring
 {
   struct pike_string *s;
-  int offset;
-  int len;
+  ptrdiff_t offset;
+  ptrdiff_t len;
 };
 
 static struct program *substring_program;
