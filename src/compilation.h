@@ -7,7 +7,7 @@
  */
 
 /*
- * IMEMBER: do not reset this member when popping
+ * IMEMBER: do not reset this member when pushing
  * DMEMBER: This member should be the same when popping as when pushing.
  * ZMEMBER: reset this member to zero when pushing
  * STACKMEMBER: Like IMEMBER, but is not allowed to become more when popping
