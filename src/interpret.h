@@ -658,6 +658,7 @@ void push_sp_mark(void);
 ptrdiff_t pop_sp_mark(void);
 void gc_mark_stack_external (struct pike_frame *frame,
 			     struct svalue *stack_p, struct svalue *stack);
+PMOD_EXPORT int low_init_interpreter(struct Pike_interpreter *interpreter);
 PMOD_EXPORT void init_interpreter(void);
 void lvalue_to_svalue_no_free(struct svalue *to,struct svalue *lval);
 PMOD_EXPORT void assign_lvalue(struct svalue *lval,struct svalue *from);
