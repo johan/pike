@@ -134,7 +134,7 @@ static void udp_bind(INT32 args)
 void udp_enable_broadcast(INT32 args)
 {
   int o;
-  pop_n_elmas(args);
+  pop_n_elms(args);
 #ifdef SO_BROADCAST
   o = 1;
   push_int(setsockopt(fd, SOL_SOCKET, SO_BROADCAST, (char *)&o, sizeof(int)));
