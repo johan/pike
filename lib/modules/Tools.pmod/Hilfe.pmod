@@ -986,7 +986,7 @@ class Evaluator {
 #if constant(_debug)
   //! The current debug level.
   //! Only available if Pike is compiled with RTL debug.
-  int debug_level
+  int debug_level;
 #endif
 
   function reswrite = lambda(string sres, int num, mixed res) {
@@ -1131,7 +1131,7 @@ class Evaluator {
 #endif
 #if constant(_debug)
     if(debug_level)
-      a = "\n_debug("+compiler_level+");\n" + a;
+      a = "\n_debug("+debug_level+");\n" + a;
 #endif
     a = "mixed ___HilfeWrapper() { " + a + " ; }";
 
