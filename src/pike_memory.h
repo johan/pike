@@ -49,6 +49,8 @@
     VALGRIND_DISCARD(VALGRIND_MAKE_READABLE(addr, bytes));		\
   } while (0)
 
+#define PIKE_MEM_CHECKER() RUNNING_ON_VALGRIND
+
 #else
 
 #define PIKE_MEM_NA(lvalue)		do {} while (0)
@@ -59,6 +61,7 @@
 #define PIKE_MEM_RW_RANGE(addr, bytes)	do {} while (0)
 #define PIKE_MEM_RO(lvalue)		do {} while (0)
 #define PIKE_MEM_RO_RANGE(addr, bytes)	do {} while (0)
+#define PIKE_MEM_CHECKER()		0
 
 #endif /* USE_VALGRIND */
 
