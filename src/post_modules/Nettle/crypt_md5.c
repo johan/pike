@@ -19,6 +19,8 @@
  *
  */
 
+#include "nettle_config.h"
+
 #ifdef HAVE_LIBNETTLE
 
 #include <string.h>
