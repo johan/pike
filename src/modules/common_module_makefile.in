@@ -5,7 +5,7 @@
 # static_module_makefile.
 #
 # Modules should NOT use this file directly, but instead use either
-# dynamic_module_makefile or static_module_makefile as apropriate.
+# dynamic_module_makefile or static_module_makefile as appropriate.
 #
 
 # These are set by make_variables.
@@ -27,7 +27,7 @@ force:
 	@:;
 
 dummy:	Makefile $(DUMMY) linker_options modlist_headers modlist_segment $(MODULE_TARGET) module.pmod
-	$(TMP_BINDIR)/install_module module.pmod \
+	@$(TMP_BINDIR)/install_module module.pmod \
 	  $(TMP_MODULE_BASE)/$(MODDIR)$(MODNAME).pmod
 
 $(MODULE_ARCHIVES) ThisIsAPhonyTargetBlaBlaBla: force
