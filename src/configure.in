@@ -745,6 +745,10 @@ int main()
         LIBS="${OLDLIBS}"
       ;;
 
+      xFreeBSD*)
+        LIBS="${OLDLIBS} -lc_r"
+      ;;
+
       xAIX*)
         LIBS="${OLDLIBS} -lpthreads -lc_r"
       ;;
