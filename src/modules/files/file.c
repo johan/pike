@@ -785,6 +785,7 @@ static void file_set_nonblocking(INT32 args)
   case 3: file_set_close_callback(1);
   case 2: file_set_write_callback(1);
   case 1: file_set_read_callback(1);
+  case 0: break;
   }
   set_nonblocking(FD,1);
   THIS->open_mode |= FILE_NONBLOCKING;
