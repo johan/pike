@@ -1,5 +1,4 @@
 #!/usr/local/bin/pike 
-// Copyright © 2000, Roxen IS.
 // By Martin Nilsson and Andreas Lange
 //
 // $Id$
