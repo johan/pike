@@ -21,6 +21,7 @@ int tests;
 int run_test(string raw, function(mapping(string:string):int) fun)
 {
   int fail;
+  raw -= "\r";
   foreach (raw / "\n\n", string segment) {
     tests++;
     if (has_prefix(segment, "==") || !has_value(segment, "=")) continue;
