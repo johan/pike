@@ -40,6 +40,13 @@
 #endif /* !_PROTOTYPES */
 
 /*
+ * We want to use __builtin functions.
+ */
+#ifndef __BUILTIN_VA_ARG_INCR
+#define __BUILTIN_VA_ARG_INCR	1
+#endif /* !__BUILTIN_VA_ARG_INCR */
+
+/*
  * Some structure forward declarations are needed.
  */
 
@@ -90,20 +97,26 @@ struct timeval;
 #endif
 
 /* AIX requires this to be the first thing in the file.  */
-#ifdef __GNUC__
-# ifdef alloca
-#  undef alloca
-# endif
-# define alloca __builtin_alloca
+#if HAVE_ALLOCA_H
+# include <alloca.h>
+# ifdef __GNUC__
+#  ifdef alloca
+#   undef alloca
+#  endif
+#  define alloca __builtin_alloca
+# endif 
 #else
-# if HAVE_ALLOCA_H
-#  include <alloca.h>
+# ifdef __GNUC__
+#  ifdef alloca
+#   undef alloca
+#  endif
+#  define alloca __builtin_alloca
 # else
 #  ifdef _AIX
  #pragma alloca
 #  else
 #   ifndef alloca /* predefined by HP cc +Olibcalls */
-char *alloca ();
+void *alloca();
 #   endif
 #  endif
 # endif
