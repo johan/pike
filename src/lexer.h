@@ -191,6 +191,7 @@ static int char_const(void)
 	}
 	break;
       }
+      break;
 
     case 'd':
       c=0;
@@ -206,6 +207,7 @@ static int char_const(void)
 	}
 	break;
       }
+      break;
   }
   return c;
 }
