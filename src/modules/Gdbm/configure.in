@@ -6,9 +6,17 @@ AC_ARG_WITH(gdbm,    [  --with(out)-gdbm       GNU database manager support ],[]
 
 AC_MODULE_INIT()
 
+PIKE_FEATURE_WITHOUT(Gdbm)
+
 if test x$with_gdbm = xyes; then
+  PIKE_FEATURE_NODEP(Gdbm)
+
   AC_CHECK_HEADERS(gdbm.h)
   AC_CHECK_LIB(gdbm, gdbm_open)
+
+  if test x$ac_cv_header_gdbm_h = xyes -a x$ac_cv_lib_gdbm_gdbm_open = xyes; then
+    PIKE_FEATURE(Gdbm)
+  fi
 fi
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
