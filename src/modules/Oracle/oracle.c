@@ -73,7 +73,7 @@ RCSID("$Id$");
  * -Hubbe
  */
 
-/* #define STATIC_BUFFERS 8000 */
+#define STATIC_BUFFERS 8000
 
 #ifndef ORACLE_USE_THREADS
 
