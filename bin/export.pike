@@ -205,7 +205,7 @@ int main(int argc, string *argv)
   object o=Stdio.File();
 
   int first=1;
-  foreach(files/50,files)
+  foreach(files/50.0,files)
     {
       if(Process.create_process(({"tar",
 				    first?"cvf":"rvf",

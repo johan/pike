@@ -27,7 +27,17 @@ int istty()
   if(!istty_cache)
   {
     istty_cache=!!Stdio.stdin->tcgetattr();
-    if(!istty_cache) istty_cache=-1;
+    if(!istty_cache)
+    {
+      istty_cache=-1;
+    }else{
+      switch(getenv("TERM"))
+      {
+	case "dumb":
+	case "emacs":
+	  istty_cache=-1;
+      }
+    }
   }
   return istty_cache>0;
 #endif
