@@ -3192,6 +3192,7 @@ AC_CHECK_FUNCS( \
  tzset \
  vfprintf \
  vsprintf \
+ snprintf \
  vsnprintf \
  wait3 \
  wait4 \

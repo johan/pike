@@ -184,6 +184,12 @@ PMOD_EXPORT int VSNPRINTF(char *buf, size_t size, const char *fmt, va_list args)
 #  define VSNPRINTF vsnprintf
 #endif
 
+#ifndef HAVE_SNPRINTF
+PMOD_EXPORT int SNPRINTF(char *buf, size_t size, const char *fmt, ...);
+#else
+#  define SNPRINTF snprintf
+#endif
+
 
 #ifdef EXTRACT_UCHAR_BY_CAST
 #  define EXTRACT_UCHAR(p) (*(const unsigned char *)(p))

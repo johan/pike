@@ -691,6 +691,20 @@ PMOD_EXPORT int VSNPRINTF(char *buf, size_t size, const char *fmt, va_list args)
 }
 #endif
 
+#ifndef HAVE_SNPRINTF
+/* Warning: It's possible to trick this with something like
+ * snprintf("...%c...", 0). */
+PMOD_EXPORT int SNPRINTF(char *buf, size_t size, const char *fmt, ...)
+{
+  int res;
+  va_list args;
+  va_start (args, fmt);
+  res = VSNPRINTF (buf, size, fmt, args);
+  va_end (args);
+  return res;
+}
+#endif
+
 #ifndef HAVE_VFPRINTF
 PMOD_EXPORT int VFPRINTF(FILE *f,const char *s,va_list args)
 {
