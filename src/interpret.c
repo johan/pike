@@ -131,6 +131,8 @@ void init_interpreter(void)
 	goto use_malloc;
       }
     }
+    /* Don't keep this fd on exec() */
+    set_close_on_exec(fd, 1);
   }
 #endif
 
