@@ -21,7 +21,6 @@ RCSID("$Id$");
 #include "pike_macros.h"
 #include "pike_error.h"
 #include "las.h"
-#include "language.h"
 #include "lex.h"
 #include "pike_memory.h"
 #include "bignum.h"
@@ -4941,11 +4940,17 @@ void cleanup_pike_type_table(void)
   /* Free the hashtable here. */
   if (pike_type_hash) {
     free(pike_type_hash);
-    /* Don't do this, it messes up stuff... */
-    /* pike_type_hash = NULL; */
+    /* Don't do this, it messes up stuff...
+     *
+     * It's needed for dmalloc to survive.
+     */
+    pike_type_hash = NULL;
   }
-  /* Don't do this, it messes up stuff... */
-  /* pike_type_hash_size = 0; */
+  /* Don't do this, it messes up stuff...
+   *
+   * It's needed for dmalloc to survive.
+   */
+  pike_type_hash_size = 0;
 #ifdef DO_PIKE_CLEANUP
   free_all_pike_type_blocks();
 #endif /* DO_PIKE_CLEANUP */
