@@ -2240,8 +2240,8 @@ static int do_docode2(node *n, int flags)
   }
 
   case F_VAL_LVAL:
-    res = do_docode(CAR(n),flags);
-    return res + do_docode(CDR(n), flags | DO_LVALUE);
+    ret = do_docode(CAR(n),flags);
+    return ret + do_docode(CDR(n), flags | DO_LVALUE);
 
   case F_AUTO_MAP:
     emit0(F_MARK);
