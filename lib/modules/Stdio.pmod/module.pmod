@@ -873,25 +873,24 @@ void perror(string s)
 
 /*
  * Predicates.
- *
- * The macro is used instead of file_size since
- * is_link requires a special stat mode.
  */
-#define FILE_STAT_SIZE(path) ((file_stat path)||([]))
 
 int is_file(string path)
 {
-  return FILE_STAT_SIZE((path))->isreg;
+  if (Stat s = file_stat (path)) return s->isreg;
+  return 0;
 }
 
 int is_dir(string path)
 {
-  return FILE_STAT_SIZE((path))->isdir;
+  if (Stat s = file_stat (path)) return s->isdir;
+  return 0;
 }
 
 int is_link(string path)
 {
-  return FILE_STAT_SIZE((path, 1))->islnk;
+  if (Stat s = file_stat (path, 1)) return s->islnk;
+  return 0;
 }
 
 int exist(string path)
