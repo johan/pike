@@ -177,6 +177,7 @@ static struct define *alloc_empty_define(struct pike_string *name,
   def->num_parts=parts;
   def->first=0;
   def->link.s=name;
+  debug_malloc_touch(name);
   return def;
 }
 
