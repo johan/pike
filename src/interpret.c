@@ -2025,7 +2025,7 @@ PMOD_EXPORT void safe_apply(struct object *o, const char *fun ,INT32 args)
     safe_apply_low2(o, id, args, 1);
   else {
     char buf[4096];
-    VSNPRINTF(buf, sizeof (buf), "Cannot call unknown function \"%s\".\n", fun);
+    SNPRINTF(buf, sizeof (buf), "Cannot call unknown function \"%s\".\n", fun);
     push_error (buf);
     free_svalue (&throw_value);
     move_svalue (&throw_value, --Pike_sp);
