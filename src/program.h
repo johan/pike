@@ -574,7 +574,7 @@ void gc_check_zapped (void *a, TYPE_T type, const char *file, int line);
 #define free_program(p) do{						\
     struct program *_=(p);						\
     debug_malloc_touch(_);						\
-    DO_IF_PIKE_CLEANUP (						\
+    DO_IF_DEBUG (							\
       if (gc_external_refs_zapped)					\
 	gc_check_zapped (_, PIKE_T_PROGRAM, __FILE__, __LINE__);	\
     );									\

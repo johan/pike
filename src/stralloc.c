@@ -1818,7 +1818,7 @@ void init_shared_string_table(void)
   empty_pike_string = make_shared_string("");
 }
 
-#ifdef DEBUG_MALLOC
+#ifdef DO_PIKE_CLEANUP
 struct shared_string_location *all_shared_string_locations;
 #endif
 
@@ -1833,7 +1833,7 @@ void cleanup_shared_string_table(void)
     empty_pike_string = 0;
   }
 
-#if defined(PIKE_DEBUG) && defined(DEBUG_MALLOC)
+#ifdef DO_PIKE_CLEANUP
   while(all_shared_string_locations)
   {
     struct shared_string_location *x=all_shared_string_locations;
@@ -1842,14 +1842,16 @@ void cleanup_shared_string_table(void)
     x->s=0;
   }
 
-  if(verbose_debug_exit)
+  if (exit_with_cleanup)
   {
     INT32 num,size;
     count_memory_in_strings(&num,&size);
     if(num)
     {
       fprintf(stderr,"Strings left: %d (%d bytes) (zapped)\n",num,size);
+#ifdef PIKE_DEBUG
       dump_stralloc_strings();
+#endif
     }
   }
 #endif

@@ -103,10 +103,10 @@ static INLINE PCHARP MKPCHARP(void *ptr, int shift)
  MKPCHARP((STR)->str + ((OFF)<<(STR)->size_shift), (STR)->size_shift)
 #define ADD_PCHARP(PTR,I) MKPCHARP_OFF((PTR).ptr,(PTR).shift,(I))
 
+#define reference_shared_string(s) add_ref(s)
+#define copy_shared_string(to,s) add_ref((to)=(s))
 
-#ifdef DEBUG_MALLOC
-#define reference_shared_string(s) do { struct pike_string *S_=(s); add_ref(S_); }while(0)
-#define copy_shared_string(to,s) do { struct pike_string *S_=(to)=(s); add_ref(S_); }while(0)
+#ifdef DO_PIKE_CLEANUP
 
 struct shared_string_location
 {
@@ -127,9 +127,6 @@ extern struct shared_string_location *all_shared_string_locations;
 }while(0)
 
 #else
-
-#define reference_shared_string(s) add_ref(s)
-#define copy_shared_string(to,s) add_ref((to)=(s))
 
 #define MAKE_CONST_STRING(var, text)						\
  do { static struct pike_string *str_;                                          \

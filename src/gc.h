@@ -81,13 +81,9 @@ extern void *gc_svalue_location;
 
 #ifdef DO_PIKE_CLEANUP
 extern int gc_destruct_everything;
-#else
-#define gc_destruct_everything 0
-#endif
-
-#if defined (DO_PIKE_CLEANUP)
 extern int gc_keep_markers;
 #else
+#define gc_destruct_everything 0
 #define gc_keep_markers 0
 #endif
 

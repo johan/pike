@@ -226,7 +226,7 @@ PMOD_PROTO void really_free_multiset (struct multiset *l);
 #define free_multiset(L) do {						\
     struct multiset *_ms_ = (L);					\
     debug_malloc_touch (_ms_);						\
-    DO_IF_PIKE_CLEANUP (						\
+    DO_IF_DEBUG (							\
       if (gc_external_refs_zapped)					\
 	gc_check_zapped (_ms_, PIKE_T_MULTISET, __FILE__, __LINE__);	\
     );									\

@@ -47,7 +47,7 @@ void gc_check_zapped (void *a, TYPE_T type, const char *file, int line);
     struct object *o_=(O);						\
     debug_malloc_touch(o_);						\
     debug_malloc_touch(o_->storage);					\
-    DO_IF_PIKE_CLEANUP (						\
+    DO_IF_DEBUG (							\
       if (gc_external_refs_zapped)					\
 	gc_check_zapped (o_, PIKE_T_OBJECT, __FILE__, __LINE__);	\
     );									\

@@ -370,8 +370,8 @@ int dmalloc_print_trace;
 #define DMALLOC_TRACE_LOG(X)
 #endif
 
-#if defined (PIKE_DEBUG) && defined (DO_PIKE_CLEANUP)
-int verbose_debug_exit = 1;
+#ifdef DO_PIKE_CLEANUP
+int exit_with_cleanup = 1;
 #endif
 
 #ifdef DEBUG_MALLOC
@@ -2119,7 +2119,7 @@ void cleanup_memhdrs(void)
   }
   exiting=1;
 
-  if(verbose_debug_exit)
+  if (exit_with_cleanup)
   {
     int first=1;
     low_search_all_memheaders_for_references();
