@@ -264,5 +264,13 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
   free_svalue(&tmp_);							 \
 }while(0)
 
+#define array_fix_bad_type_field(A) do {				\
+    struct array *a_ = (A);						\
+    if (a_->type_field == BIT_MIXED ||					\
+	a_->type_field == (BIT_MIXED|BIT_UNFINISHED)) {			\
+      DO_IF_DEBUG (array_check_type_field (a_));			\
+      array_fix_type_field (a_);					\
+    }									\
+  } while (0)
 
 #endif /* ARRAY_H */
