@@ -106,6 +106,13 @@
 #define THIS	((struct pike_sendfile *)(Pike_fp->current_storage))
 
 /*
+ * All known versions of sendfile(2) are broken.
+ */
+#ifndef HAVE_BROKEN_SENDFILE
+#define HAVE_BROKEN_SENDFILE
+#endif /* !HAVE_BROKEN_SENDFILE */
+
+/*
  * Disable any use of sendfile(2) if HAVE_BROKEN_SENDFILE is defined.
  */
 #ifdef HAVE_BROKEN_SENDFILE
