@@ -2441,7 +2441,14 @@ void fix_type_field(node *n)
 	}
 	else if (lex.pragmas & ID_STRICT_TYPES)
 	{
+	  struct pike_string *t1 =
+	    describe_type(compiler_frame->current_return_type);
+	  struct pike_string *t2 = describe_type(CAR(n)->type);
 	  yywarning("Return type mismatch.");
+	  yywarning("Expected: %s", t1->str);
+	  yywarning("Got     : %s", t2->str);
+	  free_string(t2);
+	  free_string(t1);
 	}
       }
     }
