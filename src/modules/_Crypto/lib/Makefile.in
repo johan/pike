@@ -9,7 +9,7 @@ AR=ar
 
 # Reset VPATH
 SRCDIR=@srcdir@
-VPATH=$(SRCDIR):$(SRCDIR)/../include
+VPATH=@srcdir@:@srcdir@/../include
 
 CRYPTO_INCLUDES=$(SRCDIR)/../include
 
