@@ -183,9 +183,11 @@ mapping (string:program) programs=(["/master":object_program(this_object())]);
 static program low_findprog(string pname, string ext)
 {
   program ret;
+  array s;
   string fname=pname+ext;
   if(ret=programs[fname]) return ret;
-  if(master_file_stat(fname))
+  if( (s=master_file_stat(fname)) 
+      && s[1]>=0 )
   {
     switch(ext)
     {
