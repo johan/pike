@@ -56,6 +56,14 @@ extern struct program *odbc_program;
 extern struct program *odbc_result_program;
 
 /*
+ * Typedefs
+ */
+
+#ifndef HAVE_SQLLEN
+typedef SQLINTEGER	SQLLEN;
+#endif /* !HAVE_SQLLEN */
+
+/*
  * Structures
  */
 
