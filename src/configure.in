@@ -4345,6 +4345,22 @@ MY_CHECK_FUNCTION(isless,
   exit(0);
 ])
 ########################################################################
+MY_CHECK_FUNCTION(isunordered,
+[
+#include <math.h>
+#ifdef HAVE_FLOATINGPOINT_H
+#include <floatingpoint.h>
+#endif
+
+#ifdef HAVE_IEEEFP_H
+#include <ieeefp.h>
+#endif
+
+], [
+  int t = isunordered(0.0, 0.0);
+  exit(0);
+])
+########################################################################
 
 MY_CHECK_FUNCTION(dlopen,
 [
