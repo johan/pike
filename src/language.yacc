@@ -640,7 +640,12 @@ opt_object_type:  /* Empty */ { push_type_int(0); }
   | '(' program_ref ')'
   {
     if(sp[-1].type == T_PROGRAM)
+    {
       push_type_int(sp[-1].u.program->id);
+    }else{
+      yyerror("Not a valid program specifyer");
+      push_type_int(0);
+    }
     pop_n_elems(2);
   }
   ;
