@@ -8,7 +8,8 @@
 
 **!
 **!
-**! <add_appendix name="layers" title="Image.Layer modes">
+**! appendix Image.Layer modes
+**!
 **! <dl compact>
 **! <dt><i>The variables in the expression:</i></dt>
 **! <dt>L</dt><dd><i>The active layer</i></dd>
@@ -209,7 +210,6 @@
 **! }
 **!
 **! </execute>
-**! </add_appendix>
 */
 
 #include "global.h"
