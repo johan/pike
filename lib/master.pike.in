@@ -2014,6 +2014,7 @@ class CompatResolver
 
 inherit CompatResolver;
 
+//!
 class Pike06Resolver
 {
   inherit CompatResolver;
