@@ -30,7 +30,7 @@ void create(void|int extra)
   needed_chars = HEADER_SIZE;
 }
 
-object check_size(int|void extra,int version)
+object check_size(int version, int|void extra)
 {
   marginal_size = extra;
   return (strlen(fragment) > (PACKET_MAX_SIZE + extra))
