@@ -4,6 +4,7 @@
 RCSID("$Id$");
 #include "interpret.h"
 #include "svalue.h"
+#include "threads.h"
 
 /* For this_object() */
 #include "object.h"
@@ -131,7 +132,9 @@ PIKECLASS HashState
 	Pike_error("HashState not properly initialized.\n");
 
       NO_WIDE_STRING(data);
+      THREADS_ALLOW();
       meta->update(THIS->ctx, data->len, data->str);
+      THREADS_DISALLOW();
 
       push_object(this_object());
     }
