@@ -3155,8 +3155,10 @@ static struct pike_string * replace_many(struct pike_string *str,
  *! This function can do several kinds replacement operations, the
  *! different syntaxes do different things as follows:
  *! 
- *! If all the arguments are strings, a copy of @[s] with every occurrence
- *! of @[from] replaced with @[to] will be returned.
+ *! If all the arguments are strings, a copy of @[s] with every
+ *! occurrence of @[from] replaced with @[to] will be returned.
+ *! Special case: @[to] will be inserted between every character in
+ *! @[s] if @[from] is the empty string.
  *!
  *! If the first argument is a string, and the others array(string), a string
  *! with every occurrance of @[from][@i{i@}] in @[s] replaced with
