@@ -7118,7 +7118,7 @@ PMOD_EXPORT void f_function_defined(INT32 args)
 /*! @module String
  */
 
-#define THB ((struct buffer_str *)Pike_fp->current_object->storage)
+#define THB ((struct buffer_str *)Pike_fp->current_storage)
 
 struct  buffer_str
 {
