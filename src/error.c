@@ -479,6 +479,18 @@ void resource_error(
   ERROR_DONE(generic);
 }
 
+void permission_error(
+  char *func,
+  struct svalue *base_sp, int args,
+  char *permission_type,
+  char *desc, ...) ATTRIBUTE((noreturn, format(printf, 2, 3)))
+{
+  INIT_ERROR(permission);
+  ERROR_STRUCT(permission,o)->permission_type=
+    make_shared_string(permission_type);
+  ERROR_DONE(generic);
+}
+
 void init_error(void)
 {
 #define ERR_SETUP
