@@ -140,8 +140,7 @@ static void code_number(INT32 num, struct encode_data *data)
 #ifdef _REENTRANT
 static void do_enable_threads(void)
 {
-  if(!--threads_disabled)
-    co_broadcast(&threads_disabled_change);
+  exit_threads_disable(NULL);
 }
 #endif
 
@@ -931,7 +930,7 @@ static void decode_value2(struct decode_data *data)
 
 #ifdef _REENTRANT
 	  ONERROR err;
-	  threads_disabled++;
+	  low_init_threads_disable();
 	  SET_ONERROR(err, do_enable_threads, 0);
 #endif
 
@@ -1102,8 +1101,7 @@ static void decode_value2(struct decode_data *data)
 
 #ifdef _REENTRANT
 	  UNSET_ONERROR(err);
-	  if(!--threads_disabled)
-	    co_broadcast(&threads_disabled_change);
+	  exit_threads_disable(NULL);
 #endif
 	  return;
 	}
