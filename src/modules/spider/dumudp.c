@@ -133,6 +133,7 @@ static void udp_bind(INT32 args)
 
 void udp_enable_broadcast(INT32 args)
 {
+  int o;
   pop_n_elmas(args);
 #ifdef SO_BROADCAST
   o = 1;
