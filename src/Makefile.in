@@ -556,6 +556,9 @@ fast_verify_testsuite: testsuite
 run_hilfe: master.pike
 	$(RUNPIKE) $(ARGS)
 
+valgrind_hilfe: master.pike
+	$(VALGRIND) $(VALGRINDARGS) $(RUNPIKE) $(ARGS)
+
 feature_list:
 	$(RUNPIKE) $(TMP_BINDIR)/feature_list
 
