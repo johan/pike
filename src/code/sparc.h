@@ -10,6 +10,7 @@
 #define LOW_GET_JUMP()	(PROG_COUNTER[0])
 #define LOW_SKIPJUMP()	(SET_PROG_COUNTER(PROG_COUNTER + 1))
 #define DEF_PROG_COUNTER	register unsigned INT32 *reg_pc __asm__ ("%i7")
+#define GLOBAL_DEF_PROG_COUNTER	DEF_PROG_COUNTER
 #define PROG_COUNTER		(reg_pc + 2)
 #define SET_PROG_COUNTER(X)	(reg_pc = ((unsigned INT32 *)(X))-2)
 
