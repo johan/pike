@@ -256,7 +256,7 @@ static struct pike_string *readstring(void)
 #if (SHIFT == 0)
       string_builder_binary_strcat(&tmp, buf, len);
 #else /* SHIFT != 0 */
-      bufptr.ptr = buf;
+      bufptr.ptr = (p_wchar0 *)buf;
       string_builder_append(&tmp, bufptr, len);
 #endif /* SHIFT == 0 */
     }

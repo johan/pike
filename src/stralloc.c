@@ -1642,9 +1642,9 @@ PMOD_EXPORT ptrdiff_t string_search(struct pike_string *haystack,
 			   haystack->len,
 			   needle);
 
-  r=mojt.vtab->funcN(mojt.data,
-		     ADD_PCHARP(MKPCHARP_STR(haystack), start),
-		     haystack->len - start).ptr;
+  r = (char *)mojt.vtab->funcN(mojt.data,
+			       ADD_PCHARP(MKPCHARP_STR(haystack), start),
+			       haystack->len - start).ptr;
 
   mojt.vtab->freeme(mojt.data);
 

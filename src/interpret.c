@@ -14,7 +14,6 @@ RCSID("$Id$");
 #include "array.h"
 #include "mapping.h"
 #include "pike_error.h"
-#include "language.h"
 #include "stralloc.h"
 #include "constants.h"
 #include "pike_macros.h"
@@ -206,6 +205,7 @@ PMOD_EXPORT void init_interpreter(void)
 	Pike_interpreter.evaluator_stack=0;
 	Pike_interpreter.mark_stack=0;
 	goto use_malloc;
+#define NEED_USE_MALLOC_LABEL
       }
     }
     /* Don't keep this fd on exec() */
@@ -222,12 +222,14 @@ PMOD_EXPORT void init_interpreter(void)
   if((char *)MAP_FAILED == (char *)Pike_interpreter.evaluator_stack) Pike_interpreter.evaluator_stack=0;
   if((char *)MAP_FAILED == (char *)Pike_interpreter.mark_stack) Pike_interpreter.mark_stack=0;
 
+#ifdef NEED_USE_MALLOC_LABEL
 use_malloc:
+#endif /* NEED_USE_MALLOC_LABEL */
 
-#else
+#else /* !USE_MMAP_FOR_STACK */
   Pike_interpreter.evaluator_stack=0;
   Pike_interpreter.mark_stack=0;
-#endif
+#endif /* USE_MMAP_FOR_STACK */
 
   if(!Pike_interpreter.evaluator_stack)
   {
