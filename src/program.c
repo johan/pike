@@ -2004,7 +2004,7 @@ void my_yyerror(char *fmt,...)  ATTRIBUTE((format(printf,1,2)))
   VSPRINTF(buf,fmt,args);
 
   if((long)strlen(buf) >= (long)sizeof(buf))
-    fatal("Buffer overflow in my_yyerror.");
+    fatal("Buffer overflow in my_yyerror.\n");
 
   yyerror(buf);
   va_end(args);
