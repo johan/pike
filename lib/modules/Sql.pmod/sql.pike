@@ -9,7 +9,7 @@
 //.
 //. File:	sql.pike
 //. RCSID:	$Id$
-//. Author:	Henrik Grubbström (grubba@infovav.se)
+//. Author:	Henrik Grubbström (grubba@idonex.se)
 //.
 //. Synopsis:	Implements the generic parts of the SQL-interface.
 //.
@@ -19,9 +19,6 @@
 //.
 
 #define throw_error(X)	throw(({ (X), backtrace() }))
-
-// import Array;
-// import Simulate;
 
 //. + master_sql
 //.   Object to use for the actual SQL-queries.
