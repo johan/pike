@@ -2,7 +2,7 @@
 RCSID("$Id$");
 #include "file_machine.h"
 
-#if defined(WITH_TERMIOS) && defined(HAVE_TERMIOS_H)
+#if defined(HAVE_TERMIOS_H)
 
 #include <termios.h>
 #include <unistd.h>
