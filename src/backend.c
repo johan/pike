@@ -722,17 +722,11 @@ void backend(void)
 
   if(SETJMP(back))
   {
-    ONERROR tmp;
-    t_flag=0;
-    SET_ONERROR(tmp,exit_on_error,"Error in handle_error in master object!");
-    *(sp++)=throw_value;
+    call_handle_error();
+    free_svalue(&throw_value);
     throw_value.type=T_INT;
     throw_value.subtype=NUMBER_UNDEFINED;
     throw_value.u.integer=0;
-
-    APPLY_MASTER("handle_error", 1);
-    pop_stack();
-    UNSET_ONERROR(tmp);
   }
 
   while(first_object)

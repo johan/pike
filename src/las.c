@@ -1517,15 +1517,10 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 
   if(SETJMP(tmp))
   {
-    ONERROR tmp;
     struct svalue s;
 
-    SET_ONERROR(tmp,exit_on_error,"Error in handle_error in master object!");
-    assign_svalue_no_free(Pike_sp++, &throw_value);
     assign_svalue_no_free(&s, &throw_value);
-    APPLY_MASTER("handle_error", 1);
-    pop_stack();
-    UNSET_ONERROR(tmp);
+    call_handle_error();
 
     if (node_name) {
       my_yyerror("Couldn't index module '%s'.", node_name);

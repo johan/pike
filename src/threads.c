@@ -621,15 +621,7 @@ TH_RETURN_TYPE new_thread_func(void * data)
   if(SETJMP(back))
   {
     if(throw_severity < THROW_EXIT)
-    {
-      ONERROR tmp;
-      t_flag=0;
-      SET_ONERROR(tmp,exit_on_error,"Error in handle_error in master object!");
-      assign_svalue_no_free(Pike_sp++, & throw_value);
-      APPLY_MASTER("handle_error", 1);
-      pop_stack();
-      UNSET_ONERROR(tmp);
-    }
+      call_handle_error();
     if(throw_severity == THROW_EXIT)
     {
       free((char *) data);
