@@ -16,6 +16,7 @@ _tree-split:
 	@rm -rf manual-tree-split || /bin/true
 	@$(PIKE) presentation/tree-split-autodoc.pike \
 	  manual.xml tree-split-template.html manual-tree-split
+	@cp tree-split-style.css manual-tree-split/style.css
 	@mkdir manual-tree-split/images
 	@cp manual/images/* manual-tree-split/images
 
