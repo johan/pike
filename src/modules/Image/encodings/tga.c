@@ -213,7 +213,7 @@ static struct image_alpha load_image(struct pike_string *str)
 static int std_fread (unsigned char *buf,
                       int datasize, int nelems, struct buffer *fp)
 {
-  int amnt = MIN((nelems*datasize),((int)fp->len));
+  size_t amnt = MIN((nelems*datasize),((int)fp->len));
   MEMCPY(buf, fp->str, amnt);
   fp->len -= amnt;
   fp->str += amnt;
@@ -223,7 +223,7 @@ static int std_fread (unsigned char *buf,
 static int std_fwrite (unsigned char *buf,
                        int datasize, int nelems, struct buffer *fp)
 {
-  int amnt = MIN((nelems*datasize),(int)fp->len);
+  size_t amnt = MIN((nelems*datasize),(int)fp->len);
   MEMCPY(fp->str, buf, amnt);
   fp->len -= amnt;
   fp->str += amnt;
@@ -793,7 +793,7 @@ static struct buffer save_tga(struct image *img, struct image *alpha,
   hdr.heightHi = (height >> 8);
 
   /* Mark our save ID. */
-  hdr.idLength = strlen (SAVE_ID_STRING);
+  hdr.idLength = DO_NOT_WARN(strlen(SAVE_ID_STRING));
 
   buf.len = width*height*(alpha?4:3)+strlen(SAVE_ID_STRING)+sizeof(hdr)+65535;
   buf.str = xalloc(buf.len);
