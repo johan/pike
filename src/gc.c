@@ -2348,6 +2348,40 @@ static void free_obj_arr(void *oa)
   free(oa);
 }
 
+/*! @class MasterObject
+ */
+
+/*! @decl void runtime_warning(string subsystem, string msg, mixed|void data)
+ *!
+ *!   Called by the Pike runtime to warn about data inconsistencies.
+ *!
+ *! @param subsystem
+ *!   Runtime subsystem where the warning was generated.
+ *!   Currently the following subsystems may call this function:
+ *!   @string
+ *!     @value "gc"
+ *!       The garbage collector.
+ *!   @endstring
+ *!
+ *! @param msg
+ *!   Warning message.
+ *!   Currently the following messages may be generated:
+ *!   @string
+ *!     @value "bad_cycle"
+ *!       A cycle where the destruction order isn't deterministic
+ *!       was detected by the garbage collector.
+ *!
+ *!       @[data] will in this case contain an array of the elements
+ *!       in the cycle.
+ *!   @endstring
+ *!
+ *! @param data
+ *!   Optional data that further describes the warning specified by @[msg].
+ */
+
+/*! @endclass
+ */
+
 static void warn_bad_cycles()
 {
   /* The reason for the extra level of indirection, is that it might
