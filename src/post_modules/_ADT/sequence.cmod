@@ -18,7 +18,7 @@
 #include "program_id.h"
 
 #include "module_support.h"
-#include "array_adapter.h"
+#include "sequence.h"
 
 
 /*! @module ADT
