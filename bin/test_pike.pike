@@ -20,6 +20,15 @@ mapping(string:int) cond_cache=([]);
 #define HAVE_DEBUG
 #endif
 
+void bzot(string test)
+{
+  int line=1;
+  int tmp=strlen(test)-1;
+  while(test[tmp]=='\n') tmp--;
+  foreach(test[..tmp]/"\n",string s)
+    werror("%3d: %s\n",line++,s);
+}
+
 int main(int argc, string *argv)
 {
   int e, verbose, successes, errors, t, check;
@@ -165,8 +174,7 @@ int main(int argc, string *argv)
 	  if(verbose)
 	  {
 	    werror("Doing test %d (%d total)%s\n",e+1,successes+errors+1,extra_info);
-	    if(verbose>1)
-	      werror(test+"\n");
+	    if(verbose>1) bzot(test);
 	  }
 
 	  if(check > 1) _verify_internals();
@@ -186,7 +194,7 @@ int main(int argc, string *argv)
 	      if(catch(compile_string(test + widener, fname)))
 	      {
 		werror(fname + " failed.\n");
-		werror(test+"\n");
+		bzot(test);
 		errors++;
 	      }else{
 		successes++;
@@ -200,7 +208,7 @@ int main(int argc, string *argv)
 		successes++;
 	      }else{
 		werror(fname + " failed.\n");
-		werror(test+"\n");
+		bzot(test);
 		errors++;
 	      }
 	      master()->set_inhibit_compile_errors(0);
@@ -213,7 +221,7 @@ int main(int argc, string *argv)
 		successes++;
 	      }else{
 		werror(fname + " failed.\n");
-		werror(test+"\n");
+		bzot(test);
 		errors++;
 	      }
 	      master()->set_inhibit_compile_errors(0);
@@ -248,7 +256,7 @@ int main(int argc, string *argv)
 		  if(a)
 		  {
 		    werror(fname + " failed.\n");
-		    werror(test+"\n");
+		    bzot(test);
 		    werror(sprintf("o->a(): %O\n",a));
 		    errors++;
 		  }else{
@@ -260,7 +268,7 @@ int main(int argc, string *argv)
 		  if(!a)
 		  {
 		    werror(fname + " failed.\n");
-		    werror(test+"\n");
+		    bzot(test);
 		    werror(sprintf("o->a(): %O\n",a));
 		    errors++;
 		  }else{
@@ -276,7 +284,7 @@ int main(int argc, string *argv)
 		  if(a!=b)
 		  {
 		    werror(fname + " failed.\n");
-		    werror(test+"\n");
+		    bzot(test);
 		    werror(sprintf("o->a(): %O\n",a));
 		    werror(sprintf("o->b(): %O\n",b));
 		    errors++;
@@ -289,7 +297,7 @@ int main(int argc, string *argv)
 		  if(!equal(a,b))
 		  {
 		    werror(fname + " failed.\n");
-		    werror(test+"\n");
+		    bzot(test);
 		    werror(sprintf("o->a(): %O\n",a));
 		    werror(sprintf("o->b(): %O\n",b));
 		    errors++;
