@@ -54,7 +54,7 @@ static void nil_search_free(void *data) {}
 #define memchr_search_free nil_search_free
 
 
-static struct SearchMojtVtable nil_search_vtable = {
+static const struct SearchMojtVtable nil_search_vtable = {
   (SearchMojtFunc0) nil_search,
   (SearchMojtFunc1) nil_search,
   (SearchMojtFunc2) nil_search,
@@ -178,6 +178,7 @@ PMOD_EXPORT SearchMojt compile_memsearcher(PCHARP needle,
 #ifdef PIKE_DEBUG
   Pike_fatal("Illegal shift\n");
 #endif
+  /* NOTREACHED */
 }
 
 PMOD_EXPORT SearchMojt simple_compile_memsearcher(struct pike_string *str)

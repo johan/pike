@@ -64,7 +64,7 @@ struct SearchMojtVtable
 
 typedef struct SearchMojt
 {
-  struct SearchMojtVtable *vtab;
+  const struct SearchMojtVtable *vtab;
   void *data;
 } SearchMojt;
 

@@ -241,7 +241,7 @@ void present_runned(struct instr_counter *d, int depth, int maxdepth)
 
 #define LEXER
 
-struct keyword instr_names[]=
+const struct keyword instr_names[]=
 {
 #ifndef PIKE_PRECOMPILER
 #include "interpret_protos.h"
@@ -296,7 +296,7 @@ struct instr instrs[F_MAX_INSTR - F_OFFSET];
 size_t instrs_checksum;
 #endif /* PIKE_USE_MACHINE_CODE */
 
-char *low_get_f_name(int n, struct program *p)
+const char *low_get_f_name(int n, struct program *p)
 {
   static char buf[30];
   
@@ -320,7 +320,7 @@ char *low_get_f_name(int n, struct program *p)
   return buf;
 }
 
-char *get_f_name(int n)
+const char *get_f_name(int n)
 {
   if (Pike_fp && Pike_fp->context.prog)
     return low_get_f_name(n, Pike_fp->context.prog);
@@ -355,7 +355,7 @@ char *get_opcode_name(PIKE_INSTR_T n)
 }
 #endif /* HAVE_COMPUTED_GOTO */
 
-char *get_token_name(int n)
+const char *get_token_name(int n)
 {
   static char buf[30];
   if (n<F_MAX_INSTR && instrs[n-F_OFFSET].name)

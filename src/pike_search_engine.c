@@ -42,7 +42,7 @@ PCHARP PxC3(NAME,NSHIFT,N)(void *s,	\
   return haystack;	/* NOT_REACHED */	\
 }						\
 						\
-static struct SearchMojtVtable PxC3(NAME,NSHIFT,_vtable) = {	\
+static const struct SearchMojtVtable PxC3(NAME,NSHIFT,_vtable) = {	\
   (SearchMojtFunc0)PxC3(NAME,NSHIFT,0),		\
   (SearchMojtFunc1)PxC3(NAME,NSHIFT,1),			\
   (SearchMojtFunc2)PxC3(NAME,NSHIFT,2),			\
