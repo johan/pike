@@ -127,7 +127,8 @@ void init_types(void)
   void_type_string=CONSTTYPE(tVoid);
   zero_type_string=CONSTTYPE(tZero);
   any_type_string=CONSTTYPE(tOr(tVoid,tMix));
-  weak_type_string=CONSTTYPE(tOr4(tArray,tMultiset,tMapping,tFunction));
+  weak_type_string=CONSTTYPE(tOr4(tArray,tMultiset,tMapping,
+				  tFunc(tNone,tMix)));
 }
 
 static int type_length(char *t)
