@@ -235,6 +235,7 @@ snapshot: snapshot_export
 
 xenofarm_export:
 	@echo Begin export
+	-cp ~/pike_bundles/* bundles
 	@$(DO_MAKE) "CONFIGUREARGS=--disable-binary $(CONFIGUREARGS)" \
 	  "OS=source" "LIMITED_TARGETS=yes" "METATARGET=snapshot_export" \
 	  "EXPORT_NAME=Pike%maj.%min-%Y%M%D-%h%m%s" \
