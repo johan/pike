@@ -85,7 +85,7 @@ Disabling use of getaddrinfo.])
   esac
 fi
      
-AC_HAVE_FUNCS(syslog link symlink readlink resolvepath chown \
+AC_HAVE_FUNCS(syslog link symlink readlink resolvepath realpath chown \
 	initgroups setgroups getgroups seteuid setresuid setegid setresgid \
         geteuid getpgrp getpgid getppid getuid getgid setuid setgid setpgrp \
         setpgid getsid setsid \
