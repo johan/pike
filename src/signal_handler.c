@@ -1386,7 +1386,7 @@ void f_create_process(INT32 args)
 	    struct array *i,*v;
 	    int ptr=0;
 	    i=mapping_indices(m);
-	    v=mapping_indices(m);
+	    v=mapping_values(m);
 
 	    for(e=0;e<i->size;e++)
 	    {
@@ -1404,7 +1404,7 @@ void f_create_process(INT32 args)
 	    free_array(v);
 	    push_string(make_shared_binary_string("\0\0",1));
 	    f_aggregate(ptr+1);
-	    push_string(make_shared_binary_string("\0\0",1));
+	    push_string(make_shared_binary_string("\0",1));
 	    o_multiply();
 	    env=(void *)sp[-1].u.string->str;
 	  }
