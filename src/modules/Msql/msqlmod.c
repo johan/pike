@@ -33,7 +33,6 @@
 #include "operators.h"
 #include "multiset.h"
 
-RCSID("$Id$");
 #include "version.h"
 
 #ifdef _REENTRANT

@@ -6,8 +6,6 @@
 */
 
 #include "global.h"
-RCSID("$Id$");
-
 #include "pdf_machine.h"
 
 #if !defined(HAVE_LIBPDF)

@@ -16,7 +16,6 @@
  */
 
 #ifdef HAVE_WORKING_LIBTIFF
-RCSID("$Id$");
 
 #include "global.h"
 #include "machine.h"

@@ -8,7 +8,6 @@
 #include "global.h"
 
 #include "stralloc.h"
-RCSID("$Id$");
 #include "interpret.h"
 #include "svalue.h"
 #include "mapping.h"

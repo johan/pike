@@ -14,9 +14,6 @@
  */
 
 #include "global.h"
-
-RCSID("$Id$");
-
 #include "gmp_machine.h"
 
 #if defined(HAVE_GMP2_GMP_H) && defined(HAVE_LIBGMP2)

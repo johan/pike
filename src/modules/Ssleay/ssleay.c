@@ -9,7 +9,6 @@
 
 #include "config.h"
 
-RCSID("$Id$");
 #include "interpret.h"
 #include "svalue.h"
 #include "stralloc.h"

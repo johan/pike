@@ -22,8 +22,6 @@
 #include "module_support.h"
 #include "builtin_functions.h"
 
-RCSID("$Id$");
-
 #include "pike_regexp.h"
 
 struct regexp_glue

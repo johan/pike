@@ -61,10 +61,6 @@
 #include "image.h"
 #include "colortable.h"
 
-
-
-RCSID("$Id$");
-
 #define ROUNDUP_DIVIDE(n,d) (((n) + (d - 1)) / (d))
 
 extern struct program *image_colortable_program;

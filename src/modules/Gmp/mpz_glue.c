@@ -6,7 +6,6 @@
 */
 
 #include "global.h"
-RCSID("$Id$");
 #include "gmp_machine.h"
 #include "module.h"
 

@@ -51,8 +51,6 @@
 #include "operators.h"
 #include "pike_security.h"
 
-RCSID("$Id$");
-
 #ifdef HAVE_PWD_H
 #include <pwd.h>
 #undef HAVE_PWD_H

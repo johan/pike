@@ -53,9 +53,6 @@
 
 #include <math.h>
 
-RCSID("$Id$");
-
-
 /* User-changable defines: */
 
 #define BLOB_FETCH_CHUNK 16384

@@ -10,7 +10,6 @@
 #include <math.h>
 #include <ctype.h>
 
-RCSID("$Id$");
 #include "object.h"
 #include "interpret.h"
 #include "svalue.h"

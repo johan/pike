@@ -24,8 +24,6 @@
 /* #define COLORTABLE_REDUCE_DEBUG */
 /* #define CUBICLE_DEBUG */
 
-RCSID("$Id$");
-
 #include <math.h> /* fabs() */
 
 #include "image_machine.h"

@@ -21,8 +21,6 @@
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
 
-RCSID("$Id$");
-
 #include "interpret.h"
 #include "object.h"
 #include "threads.h"

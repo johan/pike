@@ -37,7 +37,6 @@
 #include <winsock.h>
 #endif
 
-RCSID("$Id$");
 #include "pike_macros.h"
 #include "object.h"
 #include "interpret.h"

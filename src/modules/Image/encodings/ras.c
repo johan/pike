@@ -17,7 +17,6 @@
 #include "global.h"
 
 #include "stralloc.h"
-RCSID("$Id$");
 #include "object.h"
 #include "interpret.h"
 #include "svalue.h"

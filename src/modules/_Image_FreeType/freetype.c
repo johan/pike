@@ -7,7 +7,6 @@
 
 #include "config.h"
 #include "global.h"
-RCSID("$Id$");
 #include "module.h"
 #include "pike_error.h"
 

@@ -6,8 +6,6 @@
 */
 
 #include "global.h"
-RCSID("$Id$");
-
 #include "image_machine.h"
 
 #include "pike_macros.h"

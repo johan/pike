@@ -38,8 +38,6 @@
 
 #include <fcntl.h>
 
-RCSID("$Id$");
-
 #include "threads.h"
 #include "stralloc.h"
 #include "pike_macros.h"

@@ -72,8 +72,6 @@ static void pgdebug (char * a, ...) {}
 
 struct program * postgres_program;
 
-RCSID("$Id$");
-
 static void set_error (char * newerror)
 {
 	pgdebug("set_error(%s).\n",newerror);

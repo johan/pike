@@ -8,8 +8,6 @@
 #define NO_PIKE_SHORTHAND
 
 #include "global.h"
-RCSID("$Id$");
-
 #include "image_machine.h"
 
 #include "interpret.h"

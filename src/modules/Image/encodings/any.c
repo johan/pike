@@ -25,7 +25,6 @@
 #include <math.h>
 #include <ctype.h>
 
-RCSID("$Id$");
 #include "operators.h"
 #include "builtin_functions.h"
 #include "interpret.h"

@@ -15,8 +15,6 @@
 
 #include <math.h> /* floor */
 
-RCSID("$Id$");
-
 #include "image_machine.h"
 
 #include "stralloc.h"

@@ -52,7 +52,6 @@
 #include <ctype.h>
 
 #include "stralloc.h"
-RCSID("$Id$");
 #include "pike_macros.h"
 #include "object.h"
 #include "interpret.h"

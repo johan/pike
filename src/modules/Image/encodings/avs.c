@@ -18,7 +18,6 @@
 #endif
 
 #include "stralloc.h"
-RCSID("$Id$");
 #include "object.h"
 #include "interpret.h"
 #include "pike_error.h"

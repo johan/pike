@@ -37,8 +37,6 @@
 
 #define sp Pike_sp
 
-RCSID("$Id$");
-
 #ifdef HAVE_YPERR_STRING
 #define YPERROR(e) do{ if(err) Pike_error("%s\n", yperr_string(e)); }while(0)
 #else /* !HAVE_YPERR_STRING */

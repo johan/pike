@@ -97,8 +97,6 @@
  * Globals
  */
 
-RCSID("$Id$");
-
 /*! @module Mysql
  *!
  *! This module enables access to the Mysql database from within Pike.

@@ -6,7 +6,6 @@
 */
 
 #include "global.h"
-RCSID("$Id$");
 #include "gdbm_machine.h"
 #include "threads.h"
 

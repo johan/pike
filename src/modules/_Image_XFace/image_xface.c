@@ -6,8 +6,6 @@
 */
 
 #include "global.h"
-RCSID("$Id$");
-
 #include "module.h"
 #include "config.h"
 

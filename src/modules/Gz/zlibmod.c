@@ -6,8 +6,6 @@
 */
 
 #include "global.h"
-RCSID("$Id$");
-
 #include "zlib_machine.h"
 #include "module.h"
 

@@ -39,8 +39,6 @@
 
 #define sp Pike_sp
 
-RCSID("$Id$");
-
 /*! @module SANE
  *!
  *!  This module enables access to the SANE (Scanner Access Now Easy)

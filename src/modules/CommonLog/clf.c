@@ -7,7 +7,6 @@
 
 /* MUST BE FIRST */
 #include "global.h"
-RCSID("$Id$");
 #include "fdlib.h"
 #include "stralloc.h"
 #include "program.h"

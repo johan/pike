@@ -8,8 +8,6 @@
 /* Dream SNES Image file */
 
 #include "global.h"
-RCSID("$Id$");
-
 #include "image_machine.h"
 
 #include "object.h"

@@ -59,7 +59,6 @@
 #ifdef HAVE_STDLIB_H
 #undef HAVE_STDLIB_H
 #endif
-RCSID("$Id$");
 
 /* jpeglib defines EXTERN for some reason.
  * This is not good, since it confuses compilation.h.

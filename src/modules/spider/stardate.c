@@ -20,9 +20,7 @@
 #include "builtin_functions.h"
 #include "pike_error.h"
 
-RCSID("$Id$");
-
-#ifdef HAVE_SYS_TIME_H 
+#ifdef HAVE_SYS_TIME_H
 #include <sys/time.h>
 #endif
 #include <time.h>

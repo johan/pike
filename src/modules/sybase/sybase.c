@@ -30,8 +30,6 @@
 #include "sybase_config.h"
 #include "global.h"
 
-RCSID("$Id$");
-
 #ifdef HAVE_SYBASE
 
 

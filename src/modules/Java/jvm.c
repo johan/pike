@@ -22,7 +22,6 @@
 #endif /* HAVE_CONFIG_H */
 
 #include "global.h"
-RCSID("$Id$");
 #include "program.h"
 #include "interpret.h"
 #include "stralloc.h"

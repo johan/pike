@@ -10,9 +10,6 @@
  */
 
 #include "global.h"
-
-RCSID("$Id$");
-
 #include "gmp_machine.h"
 
 #ifndef HAVE_MPZ_XOR

@@ -90,8 +90,6 @@
  * Globals
  */
 
-RCSID("$Id$");
-
 struct program *mysql_result_program = NULL;
 
 /*

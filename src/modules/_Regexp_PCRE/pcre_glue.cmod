@@ -7,7 +7,6 @@
 */
 
 #include "global.h"
-RCSID("$Id$");
 #include "pcre_machine.h"
 
 #include "pike_macros.h"

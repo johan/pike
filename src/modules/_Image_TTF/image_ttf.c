@@ -8,7 +8,6 @@
 #include "config.h"
 
 #include "global.h"
-RCSID("$Id$");
 #include "module.h"
 
 #ifdef HAVE_LIBTTF

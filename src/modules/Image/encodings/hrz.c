@@ -11,7 +11,6 @@
 #include <ctype.h>
 
 #include "stralloc.h"
-RCSID("$Id$");
 #include "object.h"
 #include "mapping.h"
 #include "interpret.h"

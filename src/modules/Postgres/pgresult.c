@@ -84,8 +84,6 @@
 #include <catalog/pg_type.h>
 #endif
 
-RCSID("$Id$");
-
 #ifdef _REENTRANT
 # ifdef PQ_THREADSAFE
 #  define PQ_FETCH() PIKE_MUTEX_T *pg_mutex = &THIS->pgod->mutex;

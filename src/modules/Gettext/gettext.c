@@ -29,8 +29,6 @@
 
 #define sp Pike_sp
 
-RCSID("$Id$");
-
 /*! @module Locale
  */
 
