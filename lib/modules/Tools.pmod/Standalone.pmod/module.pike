@@ -57,7 +57,7 @@ array(string) do_split_quoted_string(string s)
 
 string fix(string path)
 {
-  if(search(path,"$src")==-1) return path;
+  if(!has_value(path, "$src")) return path;
   if(!srcdir)
   {
     string s=Stdio.read_file("Makefile");
@@ -87,12 +87,12 @@ void do_zero()
 int max_time_of_files(string ... a)
 {
   int t=0;
-  foreach(a,string file)
-    {
-      mixed s=file_stat(fix(file));
-      if(!s) return 0;
-      t=max(t,s[3]);
-    }
+  foreach(a, string file)
+  {
+    Stdio.Stat s = file_stat(fix(file));
+    if(!s) return 0;
+    t = max(t, s->mtime);
+  }
   return t;
 }
 
