@@ -532,7 +532,7 @@ void th_init(void)
   set_gc_mark_callback(thread_was_marked);
 #endif
   set_init_callback(init_thread_obj);
-  set_init_callback(exit_thread_obj);
+  set_exit_callback(exit_thread_obj);
   thread_id_prog=end_program();
   if(!mutex_key)
     fatal("Failed to initialize thread program!\n");
