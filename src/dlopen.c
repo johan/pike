@@ -3,6 +3,8 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
+
 #include <global.h>
 #include "fdlib.h"
 #define DL_INTERNAL
@@ -62,6 +64,10 @@ size_t STRNLEN(char *s, size_t maxlen)
   if(tmp) return tmp-s;
   return maxlen;
 }
+
+#else /* PIKE_CONCAT */
+
+RCSID("$Id$");
 
 #endif
 
