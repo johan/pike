@@ -588,8 +588,10 @@ static string low_pike_sprintf(char *format,
       {
 	struct pike_string *s;
 	GET_STRING(s);
-	fsp->pad_string=s->str;
-	fsp->pad_length=s->len;
+	if (s->len) {
+	  fsp->pad_string=s->str;
+	  fsp->pad_length=s->len;
+	}
 	continue;
       }
 
