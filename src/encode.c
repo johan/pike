@@ -35,6 +35,12 @@ RCSID("$Id$");
 #define EDB(X)
 #endif
 
+/* The sp macro conflicts with Solaris 2.5.1's <sys/conf.h>. */
+#ifdef sp
+#undef sp
+#define STACKPOINTER_WAS_DEFINED
+#endif /* sp */
+
 #ifdef _AIX
 #include <net/nh.h>
 #endif
@@ -44,6 +50,12 @@ RCSID("$Id$");
 #endif
 
 #include <math.h>
+
+/* Restore the sp macro */
+#ifdef STACKPOINTER_WAS_DEFINED
+#define sp Pike_sp
+#undef STACK_POINTER_WAS_DEFINED
+#endif /* STACKPOINTER_WAS_DEFINED */
 
 #ifdef HAVE_FREXP
 #define FREXP frexp
