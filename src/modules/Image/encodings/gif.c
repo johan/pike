@@ -2279,7 +2279,7 @@ void image_gif__encode(INT32 args)
 
 /** module *******************************************/
 
-struct program *image_gif_module_program=NULL;
+struct program *image_encoding_gif_program=NULL;
 
 void init_image_gif(void)
 {
@@ -2333,8 +2333,8 @@ void init_image_gif(void)
 
    /** done **/
 
-   image_gif_module_program=end_program();
-   push_object(clone_object(image_gif_module_program,0));
+   image_encoding_gif_program=end_program();
+   push_object(clone_object(image_encoding_gif_program,0));
    {
      struct pike_string *s=make_shared_string("GIF");
      add_constant(s,sp-1,0);
@@ -2345,9 +2345,9 @@ void init_image_gif(void)
 
 void exit_image_gif(void)
 {
-  if(image_gif_module_program)
+  if(image_encoding_gif_program)
   {
-    free_program(image_gif_module_program);
-    image_gif_module_program=0;
+    free_program(image_encoding_gif_program);
+    image_encoding_gif_program=0;
   }
 }
