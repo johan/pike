@@ -20,6 +20,9 @@
 /* Define if you have mySQL */
 #undef HAVE_MYSQL
 
+/* Define if you have SSL support in MySQL */
+#undef HAVE_MYSQL_SSL
+
 /* Return type of mysql_fetch_lengths(). Usually unsigned long. */
 #undef FETCH_LENGTHS_TYPE
 

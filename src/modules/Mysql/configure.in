@@ -307,6 +307,8 @@ fi
     PIKE_CHECK_MYSQL_FUNC(mysql_fetch_lengths)
     PIKE_CHECK_MYSQL_FUNC(mysql_options)
 
+    AC_CHECK_LIB(mysqlclient, mysql_ssl_set, [ AC_DEFINE(HAVE_MYSQL_SSL) ])
+
     # Note: The following two are variables:
     PIKE_CHECK_MYSQL_FUNC(mysql_port)
     PIKE_CHECK_MYSQL_FUNC(mysql_unix_port)

@@ -58,6 +58,7 @@ struct precompiled_mysql {
 
   MYSQL		*mysql, *socket;
   struct pike_string	*host, *database, *user, *password;	/* Reconnect */
+  struct mapping   *options;
 };
 
 struct precompiled_mysql_result {
