@@ -135,6 +135,9 @@
 /* So has True64, but no useful information in prstatus_t */
 #undef GETRUSAGE_THROUGH_PROCFS_PRS
 
+/* Define if you have infnan */
+#undef HAVE_INFNAN
+
 /* Define if you have fork */
 #undef HAVE_FORK
 
