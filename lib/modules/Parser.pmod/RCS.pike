@@ -551,8 +551,9 @@ class Revision
   //! the state of the revision - typically "Exp" or "dead"
   string state;
 
-  //! the (UTC) date and time when the revision was committed
-  object/* Calendar.ISO.Second */ time;
+  //! the (UTC) date and time when the revision was committed (second
+  //! precision)
+  Calendar.TimeRange time;
 
   //! the branch name on which this revision was committed (calculated
   //! according to how cvs manages branches)
