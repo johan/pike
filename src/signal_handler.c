@@ -676,8 +676,8 @@ static void free_perishables(struct perishables *storage)
  *
  * only on UNIX:
  *
- *   uid		int
- *   gid		int
+ *   uid		int|string
+ *   gid		int|string
  *   nice		int
  *   noinitgroups	int
  *   setgroups		array(int|string)
@@ -863,7 +863,7 @@ void f_create_process(INT32 args)
 #ifdef HAVE_GETEUID
     wanted_uid=geteuid();
 #else
-    wanted_uid=getgid();
+    wanted_uid=getuid();
 #endif
 
 #ifdef HAVE_GETEGID
