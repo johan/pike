@@ -5,6 +5,7 @@
 
 // RegGetValue		__NT__
 // cp			__NT__
+// umask
 // chmod
 // chown		HAVE_CHOWN
 // chroot		HAVE_CHROOT
