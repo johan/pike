@@ -270,7 +270,7 @@ void assign_lvalue(struct svalue *lval,struct svalue *from)
     
   case T_VOID:
     error("Indexing a void.\n");	  /* Grubba */
-    return(0);
+    break;
 
   default:
    if(IS_ZERO(lval))
