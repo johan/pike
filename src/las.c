@@ -868,6 +868,8 @@ node *debug_mkcastnode(struct pike_string *type,node *n)
 
   if(!n) return 0;
 
+  if (type == void_type_string) return mknode(F_POP_VALUE, n, 0);
+
   if(type==n->type) return n;
 
   res = mkemptynode();
