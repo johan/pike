@@ -956,7 +956,7 @@ static void image_layer_mode(INT32 args)
 	 return;
       }
 
-   fatal("illegal mode: %p\n",layer_mode[i].func);
+   fatal("illegal mode: %p\n", (void *)layer_mode[i].func);
 }
 
 static void image_layer_available_modes(INT32 args)

@@ -164,7 +164,8 @@ static toff_t seek_buffer(thandle_t bh, toff_t seek, int seek_type )
      break;
    case SEEK_END:
      if (seek > 0) {
-       while (buffer_handle->real_len + seek >= buffer_handle->len) {
+       while (buffer_handle->real_len + ((ptrdiff_t)seek) >=
+	      buffer_handle->len) {
 	 increase_buffer_size(buffer_handle);
        }
      }
