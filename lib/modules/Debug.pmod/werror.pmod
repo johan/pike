@@ -1,3 +1,10 @@
+/*
+ * $Id$
+ *
+ * Some functions to simplify writing debug-messages.
+ * (Aren't we lazy? :-) )
+ */
+
 function(:int(0..0)) `[](string print_what)
 {
    if (print_what=="") print_what="bipp\n";
