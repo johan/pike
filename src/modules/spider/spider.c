@@ -302,8 +302,8 @@ void f_parse_html_lines(INT32 args)
 /*   fprintf(stderr, "sp=%p (strings=%d)\n", sp, strings); */
 }
 
-char start_quote_character = '\000';
-char end_quote_character = '\000';
+static char start_quote_character = '\000';
+static char end_quote_character = '\000';
 
 /*! @decl void set_end_quote(int quote)
  */
