@@ -225,9 +225,9 @@ static void just_close_fd(void)
   while(1)
   {
     int i;
-    THREADS_ALLOW();
+    THREADS_ALLOW_UID();
     i=fd_close(fd);
-    THREADS_DISALLOW();
+    THREADS_DISALLOW_UID();
     
     if(i < 0)
     {
