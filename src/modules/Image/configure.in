@@ -26,6 +26,10 @@ else
     # nasm/ia64 can compile ia32 code...
     if test "`uname -m`" = "ia64"; then
       AC_MSG_RESULT([yes, but we are on an IA64 machine])
+    elif test "`uname -m`" = "x86_64"; then
+      # nasm/x86_64 can also compile ia32 code.
+      # It can even link with it, but it's not a good idea...
+      AC_MSG_RESULT([yes, but we are on an x86_64 machine])
     elif test "`uname -s`" = "OpenBSD"; then
       #nasm on OpenBSD is braindamaged
       AC_MSG_RESULT(no)
