@@ -97,13 +97,14 @@ extern struct pike_string *this_program_string;
 #define LFUN__EQUAL 41
 #define LFUN__M_DELETE 42
 #define LFUN__GET_ITERATOR 43
+#define LFUN_RANGE 44
 
-#define NUM_LFUNS 44
+#define NUM_LFUNS 45
 
 /* NOTE: After this point there are only fake lfuns.
  *       ie use low_find_lfun(), and NOT FIND_LFUN()!
  */
-#define LFUN__SEARCH 44
+#define LFUN__SEARCH 45
 
 extern const char *const lfun_names[];
 

@@ -926,7 +926,11 @@ static int low_yylex(YYSTYPE *yylval)
 	  if(GOBBLE('=')) tmp="```[]=";
 	  break;
 	}
-	yyerror("Illegal ` identifier. Expected `[].");
+	if (GOBBLE ('.') && GOBBLE ('.') && GOBBLE (']')) {
+	  tmp = "```[..]";
+	  break;
+	}
+	yyerror("Illegal ` identifier. Expected `[], `[]= or `[..].");
 	break;
 
       default:

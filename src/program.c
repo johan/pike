@@ -148,6 +148,7 @@ const char *const lfun_names[]  = {
   "_equal",
   "_m_delete",
   "_get_iterator",
+  "`[..]",
   /* NOTE: After this point there are only fake lfuns. */
   "_search",
 };
@@ -204,6 +205,7 @@ static char *raw_lfun_types[] = {
   tFuncV(tMix,tVoid,tInt),	/* "_equal", */
   tFuncV(tZero,tVoid,tMix),	/* "_m_delete", */
   tFuncV(tNone,tVoid,tObj),	/* "_get_iterator", */
+  tFuncV(tZero tRangeBound tZero tRangeBound, tVoid, tMix), /* "`[..]" */
   /* NOTE: After this point there are only fake lfuns. */
   tFuncV(tZero tOr(tZero, tVoid), tVoid, tMix), /* "_search", */
 };
@@ -799,15 +801,30 @@ static char *raw_lfun_types[] = {
  *!   It's assumed that this function is side-effect free.
  */
 
-/*! @decl mixed lfun::`[](zero arg1, zero|void arg2)
+/*! @decl mixed lfun::`[..](zero low, int low_bound_type, zero high, int high_bound_type)
  *!
- *!   Index/subrange callback.
+ *!   Subrange callback.
  *!
  *! @note
  *!   It's assumed that this function is side-effect free.
  *!
  *! @seealso
- *!   @[predef::`[]()]
+ *!   @[predef::`[..]]
+ */
+
+/*! @decl mixed lfun::`[](zero arg1, zero|void arg2)
+ *!
+ *!   Indexing callback.
+ *!
+ *!   For compatibility, this is also called to do subranges unless
+ *!   there is a @[`[..]] in the class. See @[predef::`[..]] for
+ *!   details.
+ *!
+ *! @note
+ *!   It's assumed that this function is side-effect free.
+ *!
+ *! @seealso
+ *!   @[predef::`[]()], @[predef::`[..]]
  */
 
 /*! @decl mixed lfun::`[]=(zero arg1, zero arg2)

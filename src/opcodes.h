@@ -224,6 +224,9 @@ enum Pike_opcodes
   F_VAL_LVAL,
   F_XOR_EQ,
   F_NOP,
+  F_RANGE_FROM_BEG,		/* a[i.. */
+  F_RANGE_FROM_END,		/* a[<i.. */
+  F_RANGE_OPEN,			/* a[.. */
 
   F_ALIGN,
   F_POINTER,
