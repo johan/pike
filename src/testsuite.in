@@ -1758,6 +1758,9 @@ test_true(objectp(this_object()))
 // - throw
 test_eq(20,catch(throw(a())))
 
+// - catch compile-errors
+test_any([[ master()->set_inhibit_compile_errors(lambda(){});mixed res = catch{compile_string("dfasfqw123");};master()->set_inhibit_compile_errors(0); return arrayp(res); ]], 1)
+
 // - time
 test_true(intp(time()))
 
