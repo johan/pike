@@ -1226,7 +1226,7 @@ TYPE_FIELD real_gc_check_svalues(struct svalue *s, int num)
       {
 	if(d_flag)
 	{
-	  if(!gc_check_nongarbed(s->u.efun))
+	  if(!gc_check(s->u.efun))
 	  {
 	    gc_check(s->u.efun->name);
 	    gc_check(s->u.efun->type);
