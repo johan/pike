@@ -135,6 +135,7 @@ int(0..1) join_files(array(string) files, string save_to, int(0..1) post_process
 
   if(post_process) {
     werror("Post processing manual file.\n");
+    Tools.AutoDoc.ProcessXML.handleAppears(dest);
     Tools.AutoDoc.ProcessXML.postProcess(dest);
   }
 
