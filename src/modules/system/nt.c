@@ -20,7 +20,8 @@
 
 /*
  * Get some wrappers for functions not implemented in old versions
- * of WIN32. Needs a new Platform SDK installed.
+ * of WIN32. Needs a Platform SDK installed. The SDK included in 
+ * MSVS 6.0 is not enough.
  */
 #define COMPILE_NEWAPIS_STUBS
 /* We want GetLongPathName()... */
