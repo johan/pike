@@ -92,7 +92,7 @@ int main(int n, array(string) args) {
       result = Tools.AutoDoc.ProcessXML.extractXML(filename, 1, type, name, parents);
     }
   };
-  if(result) {
+  if(result && sizeof(result)) {
     write( Tools.AutoDoc.ProcessXML.moveImages(result, ".", imgdest) );
   }
 
