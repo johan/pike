@@ -11,11 +11,11 @@
 #include "global.h"
 #include "stralloc.h"
 
+#ifdef USE_VALGRIND
+
 #ifdef HAVE_VALGRIND_H
 #include <valgrind.h>
 #endif /* HAVE_VALGRIND_H */
-
-#ifdef USE_VALGRIND
 
 /* No Access */
 #define PIKE_MEM_NA(lvalue) do {					\
