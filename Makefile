@@ -146,6 +146,12 @@ documentation:
 
 doc: documentation
 
+legal: bin/pike
+	bin/pike -e 'Stdio.write_file("COPYRIGHT", \
+	  Tools.Legal.Copyright.get_text());'
+	bin/pike -e 'Stdio.write_file("COPYING", \
+	  Tools.Legal.License.get_text());'
+
 # Don't make bin/pike if we're recursing with a $(METATARGET) since we
 # don't want the backquote expression which usually is part of
 # $(BUILDDIR) to be expanded in that script. It's better to evaluate
