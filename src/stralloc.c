@@ -301,6 +301,7 @@ static struct pike_string *internal_findstring(const char *s,
       fatal("String with no references.\n");
     }
 #endif
+    debug_malloc_touch(curr);
 
     if (full_hash_value == curr->hval &&
 	len==curr->len &&

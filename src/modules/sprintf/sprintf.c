@@ -474,11 +474,9 @@ static void free_sprintf_strings(struct format_stack *fs)
 {
   for(;fs->fsp>=fs->format_info_stack;fs->fsp--)
   {
-    if(fs->fsp->fi_free_string)
-      free(fs->fsp->fi_free_string);
+    if(fs->fsp->fi_free_string) free(fs->fsp->fi_free_string);
     fs->fsp->fi_free_string=0;
-    if(fs->fsp->to_free_string)
-      free_string(fs->fsp->to_free_string);
+    if(fs->fsp->to_free_string) free_string(fs->fsp->to_free_string);
     fs->fsp->to_free_string=0;
   }
 }
@@ -1288,7 +1286,7 @@ static void low_pike_sprintf(struct format_stack *fs,
 #endif
     if(fs->fsp->fi_free_string) free(fs->fsp->fi_free_string);
     fs->fsp->fi_free_string=0;
-    if(fs->fsp->to_free_string) free(fs->fsp->to_free_string);
+    if(fs->fsp->to_free_string) free_string(fs->fsp->to_free_string);
     fs->fsp->to_free_string=0;
     --fs->fsp;
   }
