@@ -692,6 +692,7 @@ HANDLE CheckValidHandle(HANDLE h);
 
 extern int threads_disabled;
 extern ptrdiff_t thread_storage_offset;
+extern struct program *thread_id_prog;
 
 #ifndef NO_PIKE_SHORTHAND
 #define MUTEX_T PIKE_MUTEX_T

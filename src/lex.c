@@ -175,6 +175,7 @@ struct keyword instr_names[]=
 { "apply and return",   F_APPLY_AND_RETURN, I_HASARG },
 { "call function",      F_CALL_FUNCTION, 0 },
 { "call function & return", F_CALL_FUNCTION_AND_RETURN, 0 },
+{ "notreached!",        F_NOTREACHED, 0 },
 };
 
 struct instr instrs[F_MAX_INSTR - F_OFFSET];

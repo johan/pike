@@ -312,7 +312,7 @@ PMOD_EXPORT void push_error(char *description)
   f_aggregate(2);
 }
 
-struct svalue throw_value = { PIKE_T_INT };
+PMOD_EXPORT struct svalue throw_value = { PIKE_T_INT };
 int throw_severity;
 static const char *in_error;
 
