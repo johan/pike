@@ -2467,8 +2467,11 @@ void fix_type_field(node *n)
     if (CDR(n) && CAR(n)) {
       /* case 1 .. 2: */
       if (!match_types(CAR(n)->type, CDR(n)->type)) {
-	yytype_error("Type mismatch in case range.",
-		     CAR(n)->type, CDR(n)->type, 0);
+	if (!match_types(CAR(n)->type, int_type_string) ||
+	    !match_types(CDR(n)->type, int_type_string)) {
+	  yytype_error("Type mismatch in case range.",
+		       CAR(n)->type, CDR(n)->type, 0);
+	}
       } else if ((lex.pragmas & ID_STRICT_TYPES) &&
 		 (CAR(n)->type != CDR(n)->type)) {
 	/* The type should be the same for both CAR & CDR. */
