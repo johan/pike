@@ -778,7 +778,11 @@ void f_mkdir(INT32 args)
 	mode = ((mode & 0777) | (statbuf1.st_mode & ~0777)) & ~mask;
 	do {
 	  i = chmod(str->str, mode) != -1;
-	} while (!i && (errno == EINTR));
+	  if (i || errno != EINTR) break;
+	  THREADS_DISALLOW_UID();
+	  check_threads_etc();
+	  THREADS_ALLOW_UID();
+	} while (1);
       }
       if (i) {
 	i = LSTAT(str->str, &statbuf2) != -1;

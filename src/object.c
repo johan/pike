@@ -398,7 +398,8 @@ static struct pike_string *low_read_file(char *file)
   ptrdiff_t len;
   FD f;
 
-  while((f = fd_open(file,fd_RDONLY,0666)) <0 && errno==EINTR);
+  while((f = fd_open(file,fd_RDONLY,0666)) <0 && errno==EINTR)
+    check_threads_etc();
   if(f >= 0)
   {
     ptrdiff_t tmp, pos = 0;
@@ -412,7 +413,10 @@ static struct pike_string *low_read_file(char *file)
       tmp = fd_read(f,s->str+pos,len-pos);
       if(tmp<0)
       {
-	if(errno==EINTR) continue;
+	if(errno==EINTR) {
+	  check_threads_etc();
+	  continue;
+	}
 	fatal("low_read_file(%s) failed, errno=%d\n",file,errno);
       }
       pos+=tmp;

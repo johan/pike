@@ -397,7 +397,7 @@ void udp_read(INT32 args)
     e = errno;
     THREADS_DISALLOW();
 
-    check_signals(0, 0, 0);
+    check_threads_etc();
   } while((res==-1) && (e==EINTR));
 
   THIS->my_errno=e;
@@ -503,7 +503,7 @@ void udp_sendto(INT32 args)
     e = errno;
     THREADS_DISALLOW();
 
-    check_signals(0, 0, 0);
+    check_threads_etc();
   } while((res == -1) && e==EINTR);
   
   if(res<0)

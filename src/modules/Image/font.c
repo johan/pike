@@ -325,8 +325,7 @@ void font_load(INT32 args)
      fprintf(stderr,"FONT open '%s'\n",sp[-args].u.string->str);
 #endif
      fd = fd_open(sp[-args].u.string->str,fd_RDONLY,0);
-     /* FIXME: check_threads_etc(); ?
-      */
+     if (errno == EINTR) check_threads_etc();
    } while(fd < 0 && errno == EINTR);
 
    if (fd >= 0)

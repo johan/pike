@@ -472,6 +472,7 @@ static INLINE struct pike_string* gimme_some_data(size_t pos)
 	  if (errno != EINTR) {
 	    return(NULL);
 	  }
+	  check_threads_etc();
 	}
       } while(len < 0);
       /*

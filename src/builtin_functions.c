@@ -3403,7 +3403,7 @@ PMOD_EXPORT void f_sleep(INT32 args)
      {
        break;
      }else{
-       check_signals(0,0,0);
+       check_threads_etc();
      }
    }
 }
@@ -3517,7 +3517,7 @@ PMOD_EXPORT void f_delay(INT32 args)
        {
 	 break;
        }else{
-	 check_signals(0,0,0);
+	 check_threads_etc();
        }
      }
    }

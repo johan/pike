@@ -251,11 +251,13 @@ void f_hardlink(INT32 args)
 
   get_all_args("hardlink",args, "%s%s", &from, &to);
 
-  THREADS_ALLOW_UID();
   do {
+    THREADS_ALLOW_UID();
     err = link(from, to);
-  } while ((err < 0) && (errno == EINTR));
-  THREADS_DISALLOW_UID();
+    THREADS_DISALLOW_UID();
+    if (err >= 0 || errno != EINTR) break;
+    check_threads_etc();
+  } while (1);
 
   if (err < 0) {
     report_error("hardlink");
@@ -285,11 +287,13 @@ void f_symlink(INT32 args)
 
   get_all_args("symlink",args, "%s%s", &from, &to);
 
-  THREADS_ALLOW_UID();
   do {
+    THREADS_ALLOW_UID();
     err = symlink(from, to);
-  } while ((err < 0) && (errno == EINTR));
-  THREADS_DISALLOW_UID();
+    THREADS_DISALLOW_UID();
+    if (err >= 0 || errno != EINTR) break;
+    check_threads_etc();
+  } while (1);
 
   if (err < 0) {
     report_error("symlink");
@@ -328,11 +332,13 @@ void f_readlink(INT32 args)
       Pike_error("readlink(): Out of memory\n");
     }
 
-    THREADS_ALLOW_UID();
     do {
+      THREADS_ALLOW_UID();
       err = readlink(path, buf, buflen);
-    } while ((err < 0) && (errno == EINTR));
-    THREADS_DISALLOW_UID();
+      THREADS_DISALLOW_UID();
+      if (err >= 0 || errno != EINTR) break;
+      check_threads_etc();
+    } while (1);
   } while(
 #ifdef ENAMETOOLONG
 	  ((err < 0) && (errno == ENAMETOOLONG)) ||
@@ -385,11 +391,13 @@ void f_resolvepath(INT32 args)
       Pike_error("resolvepath(): Out of memory\n");
     }
 
-    THREADS_ALLOW_UID();
     do {
+      THREADS_ALLOW_UID();
       err = resolvepath(path, buf, buflen);
-    } while ((err < 0) && (errno == EINTR));
-    THREADS_DISALLOW_UID();
+      THREADS_DISALLOW_UID();
+      if (err >= 0 || errno != EINTR) break;
+      check_threads_etc();
+    } while (1);
   } while(
 #ifdef ENAMETOOLONG
 	  ((err < 0) && (errno == ENAMETOOLONG)) ||
@@ -452,11 +460,13 @@ void f_chmod(INT32 args)
   VALID_FILE_IO("chmod","chmod");
 
   get_all_args("chmod", args, "%s%i", &path, &mode);
-  THREADS_ALLOW_UID();
   do {
+    THREADS_ALLOW_UID();
     err = chmod(path, mode);
-  } while ((err < 0) && (errno == EINTR));
-  THREADS_DISALLOW_UID();
+    THREADS_DISALLOW_UID();
+    if (err >= 0 || errno != EINTR) break;
+    check_threads_etc();
+  } while (1);
   if (err < 0) {
     report_error("chmod");
   }
@@ -486,11 +496,13 @@ void f_chown(INT32 args)
 #endif
 
   get_all_args("chown", args, "%s%i%i", &path, &uid, &gid);
-  THREADS_ALLOW_UID();
   do {
+    THREADS_ALLOW_UID();
     err = chown(path, uid, gid);
-  } while((err < 0) && (errno == EINTR));
-  THREADS_DISALLOW_UID();
+    THREADS_DISALLOW_UID();
+    if (err >= 0 || errno != EINTR) break;
+    check_threads_etc();
+  } while (1);
   if (err < 0) {
     report_error("chown");
   }
@@ -529,11 +541,13 @@ void f_utime(INT32 args)
   get_all_args("utime", args, "%s%i%i", &path, &atime, &mtime);
   b.actime=atime;
   b.modtime=mtime;
-  THREADS_ALLOW_UID();
   do {
+    THREADS_ALLOW_UID();
     err = utime(path, &b);
-  } while((err < 0) && (errno == EINTR));
-  THREADS_DISALLOW_UID();
+    THREADS_DISALLOW_UID();
+    if (err >= 0 || errno != EINTR) break;
+    check_threads_etc();
+  } while (1);
   if (err < 0) {
     report_error("utime");
   }

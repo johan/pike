@@ -85,8 +85,10 @@ static void do_close(struct port *p, struct object *o)
   if(p->fd >= 0)
   {
     if(fd_close(p->fd) < 0)
-      if(errno == EINTR)
+      if(errno == EINTR) {
+	check_threads_etc();
 	goto retry;
+      }
 
     set_read_callback(p->fd,0,0);
   }
