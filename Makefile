@@ -50,6 +50,7 @@ configure_help: src/configure
 
 builddir:
 	@builddir="$(BUILDDIR)"; \
+	if [ -d $$builddir ]; then : ; else NEWBUILD=YEP ; fi; \
 	IFS='/'; \
 	dir=`echo "$$builddir" | sed -e 's|[^/].*||'`; \
 	for d in $$builddir; do \
@@ -57,6 +58,9 @@ builddir:
 	  test x"$$dir" = x -o -d "$$dir" || mkdir "$$dir" || exit 1; \
 	  dir="$$dir/"; \
 	done; \
+	if [ $$NEWBUILD = YEP ]; then \
+	  cp refdoc/autodoc.xml "$$builddir" || true; \
+	fi; \
 	cd "$$builddir"
 
 configure: src/configure builddir
