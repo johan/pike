@@ -21,7 +21,7 @@ if test x$with_oracle = xyes; then
     if test x"$ORACLE_HOME" = x; then
       pike_cv_oracle_oracle_home=no
     else
-      pike_cv_oracle_oracle_home="$ORACLE_HOME"
+      pike_cv_oracle_oracle_home="`echo \"$ORACLE_HOME\" | sed -e 's://*$::'`"
     fi
   ])
 
