@@ -2017,5 +2017,4 @@ void zap_all_mappings(void)
     
     /* free_mapping(m); */
   }
-  free_all_mapping_blocks();
 }
