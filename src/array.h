@@ -227,6 +227,10 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
 
 #define END_AGGREGATE_ARRAY						\
   DO_AGGREGATE_ARRAY(0);						\
+  DO_IF_DEBUG(if (Pike_sp[-1].type != T_ARRAY) {			\
+		Pike_fatal("Lost track of aggregated array.\n");	\
+	      });							\
+  array_fix_type_field(Pike_sp[-1].u.array);				\
 } while (0)
 
 
