@@ -480,9 +480,6 @@
  */
 #undef USE_SIGCHILD
 
-/* Enable code to handle Out-Of-Band data */
-#undef WITH_OOB
-
 /* Enable tracing of the compiler */
 #undef YYDEBUG
 

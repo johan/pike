@@ -545,10 +545,8 @@ PIKECLASS Shuffle
       set_nonblocking( THIS->fd, 1 );
       set_read_callback( THIS->fd, 0, 0 );
       set_write_callback( THIS->fd, 0, 0 );
-#ifdef WITH_OOB
       set_read_oob_callback( THIS->fd, 0, 0 );
       set_write_oob_callback( THIS->fd, 0, 0 );
-#endif
     }
     else
     {

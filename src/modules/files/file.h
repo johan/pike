@@ -35,10 +35,8 @@ struct my_file
   int my_errno;
   struct svalue read_callback;
   struct svalue write_callback;
-#ifdef WITH_OOB
   struct svalue read_oob_callback;
   struct svalue write_oob_callback;
-#endif /* WITH_OOB */
 
 #if defined(HAVE_FD_FLOCK) || defined(HAVE_FD_LOCKF) 
   struct object *key;

@@ -12,10 +12,8 @@ FILE_FUNC("open",file_open,"function(string,string,void|int:int)")
   FILE_FUNC("peek",file_peek,"function(float|int|void:int)")
 #endif
   FILE_FUNC("write",file_write,"function(string|array(string),void|mixed...:int)")
-#ifdef WITH_OOB
   FILE_FUNC("read_oob",file_read_oob,"function(int|void,int|void:string)")
   FILE_FUNC("write_oob",file_write_oob,"function(string,void|mixed...:int)")
-#endif /* WITH_OOB */
 
 #ifdef HAVE_FSYNC
   FILE_FUNC("sync", file_sync, "function(:int)")
@@ -35,12 +33,9 @@ FILE_FUNC("open",file_open,"function(string,string,void|int:int)")
 
   FILE_FUNC("set_write_callback",file_set_write_callback,"function(mixed:void)")
 
-#ifdef WITH_OOB
   FILE_FUNC("set_read_oob_callback",file_set_read_oob_callback,"function(mixed:void)")
-
   FILE_FUNC("set_write_oob_callback",file_set_write_oob_callback,"function(mixed:void)")
 
-#endif /* WITH_OOB */
   FILE_FUNC("_enable_callbacks",file__enable_callbacks,"function(:void)")
   FILE_FUNC("_disable_callbacks",file__disable_callbacks,"function(:void)")
 
