@@ -50,4 +50,7 @@
 /* Define to the size of mp_limb_t */
 #undef SIZEOF_MP_LIMB_T
 
+/* Define if mpz_getlimbn works on negative numbers. */
+#undef MPZ_GETLIMBN_WORKS
+
 #endif
