@@ -915,7 +915,7 @@ static int eval_instruction(unsigned char *pc)
       pop_n_elems(3);
       break;
 
-      CASE(F_GLOBAL_LVALUE)
+      CASE(F_GLOBAL_LVALUE);
       {
 	struct identifier *i;
 	INT32 tmp=GET_ARG() + fp->context.identifier_level;

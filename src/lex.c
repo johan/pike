@@ -814,6 +814,9 @@ static int yylex2(YYSTYPE *yylval)
 	  case TWO_CHAR('e','l'):
 	    if(ISWORD("else")) return F_ELSE;
 	  break;
+	  case TWO_CHAR('f','i'):
+	    if(ISWORD("final")) return F_FINAL_ID;
+	  break;
 	  case TWO_CHAR('f','l'):
 	    if(ISWORD("float")) return F_FLOAT_ID;
 	  break;
@@ -840,6 +843,9 @@ static int yylex2(YYSTYPE *yylval)
 	  break;
 	  case TWO_CHAR('l','a'):
 	    if(ISWORD("lambda")) return F_LAMBDA;
+	  break;
+	  case TWO_CHAR('l','o'):
+	    if(ISWORD("local")) return F_LOCAL_ID;
 	  break;
 	  case TWO_CHAR('m','a'):
 	    if(ISWORD("mapping")) return F_MAPPING_ID;
