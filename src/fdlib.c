@@ -14,6 +14,11 @@ RCSID("$Id$");
 
 #ifdef HAVE_WINSOCK_H
 
+/* Old versions of the headerfiles don't have this constant... */
+#ifndef INVALID_SET_FILE_POINTER
+#define INVALID_SET_FILE_POINTER ((DWORD)-1)
+#endif
+
 #include "threads.h"
 
 static MUTEX_T fd_mutex;
