@@ -45,8 +45,11 @@ constant HASH_hashes = (< HASH_md5, HASH_sha >);
 
 /* Key exchange */
 constant KE_rsa	= 1;
+/* We ignore the distinction between dh_dss and dh_rsa for now. */
 constant KE_dh	= 2;
-constant KE_dms	= 3;
+constant KE_dhe_dss = 3;
+constant KE_dhe_rsa = 4;
+constant KE_dms	= 5;
 
 /* Compression methods */
 constant COMPRESSION_null = 0;
