@@ -91,7 +91,7 @@ void f__gc_status(INT32 args);
 #define GC_FREE() do {							\
   DO_IF_DEBUG(								\
   if(Pike_in_gc >0 && Pike_in_gc<3)					\
-    fatal("Freeing objects within gc is not allowed!\n");	\
+    fatal("Freeing objects within gc is not allowed!\n");		\
   )									\
   LOW_GC_FREE();							\
 }while(0)
@@ -99,7 +99,7 @@ void f__gc_status(INT32 args);
 #define GC_FREE_OBJ() do {						\
   DO_IF_DEBUG(								\
   if(Pike_in_gc >1 && Pike_in_gc<4)					\
-    fatal("Allocating new objects within gc is not allowed!\n");	\
+    fatal("Freeing objects within gc is not allowed!\n");		\
   )									\
   LOW_GC_FREE();							\
 }while(0)
