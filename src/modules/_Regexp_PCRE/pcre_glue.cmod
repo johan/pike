@@ -415,11 +415,6 @@ PIKECLASS _pcre
 	 if (!THIS->re)
 	    Pike_error("need to initialize before exec() is called\n");
 
-#ifdef PCRE_EXTRA_STUDY_DATA
-	 if (THIS->extra) opts|=PCRE_EXTRA_STUDY_DATA;
-#else
-	 /* FIXME: Throw an error if THIS->extra is set? */
-#endif /* PCRE_EXTRA_STUDY_DATA */
          /* FIXME: also MATCH_LIMIT and CALLOUT_DATA ... later */
 
 	 switch (args) /* get ints and check 8 bit compliancy */
