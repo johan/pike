@@ -64,12 +64,6 @@ fi
 log_start response_assembly
   cp buildid.txt build/xenofarm/
   cp "$BUILDDIR/config.info" build/xenofarm/configinfo.txt || /bin/true
-  if test ! -f "build/xenofarm/verifylog.txt"; then
-    cp "$BUILDDIR/config.cache" build/xenofarm/configcache.txt || /bin/true; \
-    for f in `find $BUILDDIR -name config.log -print`; do
-      cp $f build/xenofarm/configlog`echo $f|tr '[/]' '[_]'`.txt || /bin/true;\
-    done;
-  fi
   if test ! -f "build/xenofarm/exportlog.txt"; then
     cp "$BUILDDIR/testsuite" build/xenofarm/testsuite.txt || /bin/true;
   fi
@@ -94,6 +88,7 @@ log_start response_assembly
       cat "$f"
     done
   ) > build/xenofarm/configlogs.txt
+  cp "$BUILDDIR/config.cache" build/xenofarm/configcache.txt || /bin/true;
 log_end $?
 
 log "END"
