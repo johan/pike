@@ -694,6 +694,7 @@ int cp(string from, string to)
 #define READER_RESTART 4
 #define READER_HALT 32
 
+// FIXME: Support for timeouts?
 static class nb_sendfile
 {
   static object from;
@@ -1075,6 +1076,7 @@ static class nb_sendfile
   }
 }
 
+// FIXME: Support for timeouts?
 object sendfile(array(string) headers,
 		object from, int offset, int len,
 		array(string) trailers,
