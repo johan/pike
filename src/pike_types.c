@@ -4321,6 +4321,13 @@ struct pike_type *get_type_of_svalue(struct svalue *s)
 	/* yywarning("Failed to zzap function return for type: %s.", tmp->str);*/
 	free_string(tmp);
       }
+      if (!(s->u.program->flags & PROGRAM_PASS_1_DONE)) {
+	/* We haven't added all identifiers in s->u.program yet,
+	 * so we might find a create() later.
+	 */
+	if((a = zzap_function_return(function_type_string, s->u.program->id)))
+	  return a;
+      }
     } else {
       if((a = zzap_function_return(function_type_string, s->u.program->id)))
 	return a;
