@@ -13,6 +13,10 @@
 
 #ifdef USE_VALGRIND
 
+#ifdef HAVE_MEMCHECK_H
+#include <memcheck.h>
+#endif
+
 #ifdef HAVE_VALGRIND_H
 #include <valgrind.h>
 #endif /* HAVE_VALGRIND_H */
