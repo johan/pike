@@ -468,6 +468,9 @@ static void port_accept(INT32 args)
   if(this->box.fd < 0)
     Pike_error("port->accept(): Port not open.\n");
 
+  /* FIXME: Race. */
+  THIS->box.revents = 0;
+
   THREADS_ALLOW();
   len=sizeof(addr);
   do {
