@@ -357,7 +357,7 @@ static void f_fetch_row(INT32 args)
 
 	if ((field = mysql_fetch_field(PIKE_MYSQL_RES->result))) {
 	  switch (field->type) {
-#ifndef OLD_SQL_COMPAT
+#ifdef OLD_SQL_COMPAT
 	    /* Integer types */
 	  case FIELD_TYPE_SHORT:
 	  case FIELD_TYPE_LONG:
@@ -374,7 +374,7 @@ static void f_fetch_row(INT32 args)
 	  case FIELD_TYPE_DOUBLE:
 	    push_float(atof(row[i]));
 	    break;
-#endif /* !OLD_SQL_COMPAT */
+#endif /* OLD_SQL_COMPAT */
 	  default:
 #ifdef HAVE_MYSQL_FETCH_LENGTHS
 	    push_string(make_shared_binary_string(row[i], row_lengths[i]));
