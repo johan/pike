@@ -157,7 +157,7 @@ retry:
 
 void pike_module_init(void)
 {
-  rl_completion_entry_function = (void *)my_rl_complete;
+  rl_completion_entry_function = (int (*)())my_rl_complete;
   add_function_constant("_module_value",f_readline,
 			"function(string,void|function:string)",
 			OPT_SIDE_EFFECT);
