@@ -13,8 +13,6 @@
 #define CHARS 256
 #define TUNAFISH
 
-#define generic_mem_searcher pike_mem_searcher
-
 struct hubbe_search_link
 {
   struct hubbe_search_link *next;
@@ -96,16 +94,6 @@ PMOD_EXPORT char *my_memmem(char *needle,
 			    size_t needlelen,
 			    char *haystack,
 			    size_t haystacklen);
-PMOD_EXPORT void init_generic_memsearcher(struct generic_mem_searcher *s,
-			      void *needle,
-			      size_t needlelen,
-			      int needle_shift,
-			      size_t estimated_haystack,
-			      int haystack_shift);
-PMOD_EXPORT void *generic_memory_search(struct generic_mem_searcher *s,
-			    void *haystack,
-			    size_t haystacklen,
-			    int haystack_shift);
 void init_pike_searching(void);
 void exit_pike_searching(void);
 /* Prototypes end here */
