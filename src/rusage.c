@@ -101,7 +101,7 @@ static int open_proc_fd()
     proc_fd = open(proc_name, O_RDONLY);
     if(proc_fd >= 0) break;
     if(errno != EINTR) return 0;
-  } while(proc_fd < 0)
+  } while(proc_fd < 0);
 
 #ifndef CONFIGURE_TEST
   set_close_on_exec(proc_fd, 1);
