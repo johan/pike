@@ -461,7 +461,11 @@ if test "$pike_cv_sys_os" = "Solaris" ; then
   AC_DEFINE(SOLARIS)
   AC_DEFINE(USE_WAIT_THREAD)
 else
-  AC_DEFINE(USE_SIGCHILD)
+  if test "$pike_cv_sys_os" = "Windows_NT" ; then
+    :
+  else
+    AC_DEFINE(USE_SIGCHILD)
+  fi
 fi
 
 if test ! -d modules/. ; then
