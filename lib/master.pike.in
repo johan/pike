@@ -78,7 +78,7 @@ object low_cast_to_object(string oname, string current_file);
 array(string) pike_include_path=({});
 array(string) pike_module_path=({});
 array(string) pike_program_path=({});
-int want_warnings = 1;
+int want_warnings = 0;
 
 #ifdef PIKE_AUTORELOAD
 
