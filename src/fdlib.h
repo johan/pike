@@ -37,11 +37,14 @@
 #include <socket.h>
 #endif /* HAVE_SOCKET_H */
 
+#include "pike_netlib.h"
+
 #define fd_INTERPROCESSABLE   1
 #define fd_CAN_NONBLOCK       2
 #define fd_CAN_SHUTDOWN       4
 #define fd_BUFFERED           8
 #define fd_BIDIRECTIONAL     16
+#define fd_REVERSE	     32
 
 
 #ifdef HAVE_WINSOCK_H
