@@ -387,9 +387,9 @@ static void NCTLU_CUBE_NAME(rgb_group *s,
 
 	       i=(int)
 		  (( sc->steps *
-		     ( ((int)rgbr-sc->low.r)*sc->vector.r +
-		       ((int)rgbg-sc->low.g)*sc->vector.g +
-		       ((int)rgbb-sc->low.b)*sc->vector.b ) ) *
+		     ( ((int)rgbr-(int)sc->low.r)*sc->vector.r +
+		       ((int)rgbg-(int)sc->low.g)*sc->vector.g +
+		       ((int)rgbb-(int)sc->low.b)*sc->vector.b ) ) *
 		   sc->invsqvector);
 
 	       if (i<0) i=0; else if (i>=sc->steps) i=sc->steps-1;
