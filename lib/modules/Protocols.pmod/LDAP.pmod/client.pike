@@ -789,11 +789,11 @@ int _prof_gtim;
     int op ;
 
     DWRITE("client.make_filter: filter=["+filter+"]\n");
+
+    if (!sizeof(filter)) return make_simple_filter(filter);
+
     // strip leading and trailing spaces
-    while(filter[0] == ' ')
-      filter = filter[1..];
-    while(filter[-1] == ' ')
-      filter = reverse(reverse(filter)[1..]);
+    filter = String.trim_all_whites(filter);
 
     // strip leading and trailing brackets
 #if 1
