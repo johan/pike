@@ -848,7 +848,7 @@ class File
       // nothing else. What we really need is a special error callback
       // from the backend. /mast
       ::set_read_callback(0);
-      ___close_callback = 0;
+      //___close_callback = 0;
     }
     else {
       ::set_read_callback(0);
