@@ -1113,7 +1113,12 @@ tifier););
 	      pop_stack();
 
 	      /* parent */
-	      ref_push_object(inh->parent);
+	      if (inh->parent) {
+		ref_push_object(inh->parent);
+	      } else {
+		push_int(0);
+		Pike_sp[-1].subtype = NUMBER_UNDEFINED;
+	      }
 	      encode_value2(Pike_sp-1, data);
 	      pop_stack();
 
@@ -1150,7 +1155,12 @@ tifier););
 	    encode_value2(&str_sval, data);
 
 	    /* prog */
-	    ref_push_program(inh->prog);
+	    if (inh->prog) {
+	      ref_push_program(inh->prog);
+	    } else {
+	      push_int(0);
+	      Pike_sp[-1].subtype = NUMBER_UNDEFINED;
+	    }
 	    encode_value2(Pike_sp-1, data);
 	    pop_stack();
 
