@@ -2225,8 +2225,8 @@ static int do_docode2(node *n, INT16 flags)
   }
 
   case F_VAL_LVAL:
-    return do_docode(CAR(n),flags) +
-      do_docode(CDR(n), (INT16)(flags | DO_LVALUE));
+    ret = do_docode(CAR(n),flags);
+    return ret + do_docode(CDR(n), (INT16)(flags | DO_LVALUE));
 
   case F_AUTO_MAP:
     emit0(F_MARK);
