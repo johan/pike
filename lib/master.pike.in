@@ -1804,8 +1804,7 @@ void _main(array(string) orig_argv, array(string) env)
     foreach(syms[1..], string sym)
       if(v) v = v[sym];
     if(!v)
-      _error("Could not resolv %s\n"
-	     "Is your PIKE_MODULE_PATH environment variable set correctly?\n",
+      _error("Could not resolv %s. (Perhaps the installed pike tree has been moved.)\n",
 	     syms*".");
     return v;
   };
