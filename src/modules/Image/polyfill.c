@@ -27,7 +27,7 @@ extern double floor(double);
 #define THIS ((struct image *)(fp->current_storage))
 #define THISOBJ (fp->current_object)
 
-#define POLYDEBUG
+#undef POLYDEBUG
 
 /*
 **! module Image
