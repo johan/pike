@@ -4220,11 +4220,15 @@ static struct pike_type *debug_low_make_pike_type(unsigned char *type_string,
 static struct pike_type *debug_low_make_function_type(unsigned char *type_string,
 						      unsigned char **cont)
 {
+  struct pike_type *tmp;
+
   if (*type_string == T_MANY) {
-    return mk_type(T_MANY, low_make_pike_type(type_string+1, cont),
+    tmp = low_make_pike_type(type_string+1, cont);
+    return mk_type(T_MANY, tmp,
 		   low_make_pike_type(*cont, cont), PT_COPY_BOTH);
   }
-  return mk_type(T_FUNCTION, low_make_pike_type(type_string, cont),
+  tmp = low_make_pike_type(type_string, cont);
+  return mk_type(T_FUNCTION, tmp,
 		 low_make_function_type(*cont, cont), PT_COPY_BOTH);
 }
 
@@ -4232,6 +4236,7 @@ static struct pike_type *debug_low_make_pike_type(unsigned char *type_string,
 						  unsigned char **cont)
 {
   unsigned INT32 type;
+  struct pike_type *tmp;
 
   switch(type = *type_string) {
   case T_SCOPE:
@@ -4249,13 +4254,15 @@ static struct pike_type *debug_low_make_pike_type(unsigned char *type_string,
   case T_MAPPING:
   case PIKE_T_RING:
     /* Order dependant */
-    return mk_type(type, low_make_pike_type(type_string+1, cont),
+    tmp = low_make_pike_type(type_string+1, cont);
+    return mk_type(type, tmp,
 		   low_make_pike_type(*cont, cont), PT_COPY_BOTH);
   case T_OR:
   case T_AND:
     /* Order independant */
     /* FIXME: */
-    return mk_type(type, low_make_pike_type(type_string+1, cont),
+    tmp = low_make_pike_type(type_string+1, cont);
+    return mk_type(type, tmp,
 		   low_make_pike_type(*cont, cont), PT_COPY_BOTH);
   case T_ARRAY:
   case T_MULTISET:
