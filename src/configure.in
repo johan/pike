@@ -6880,6 +6880,14 @@ AC_OUTPUT(Makefile \
 if test "$pike_bundle_dir" = ""; then :; else
   bundle_info="`find . -type f -name '*.bundle'`"
   if test "$bundle_info" = ""; then :; else
+    cat <<EOF
+
+
+###################################################
+# Extracting bundles...
+#   Requested from:
+`echo "$bundle_info"|sed -e 's/^/#     /'`
+EOF
     # We have some bundles to enable.
     bundles=`echo "$bundle_info" | sed -e 's/.*\///g' -e 's/\.bundle$//' | sort | uniq`
     # FIXME: Intra-bundle dependencies?
