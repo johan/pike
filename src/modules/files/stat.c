@@ -312,7 +312,7 @@ static void stat_index(INT32 args)
 	    case STAT_UID: push_int(THIS_STAT->s.st_uid); break;
 	    case STAT_GID: push_int(THIS_STAT->s.st_gid); break;
 	    case STAT_RDEV: push_int(THIS_STAT->s.st_rdev); break;
-	    case STAT_SIZE: push_int(THIS_STAT->s.st_size); break;
+	    case STAT_SIZE: push_int64(THIS_STAT->s.st_size); break;
 #if 0
 	    case STAT_BLKSIZE: push_int(THIS_STAT->s.st_blksize); break;
 	    case STAT_BLOCKS: push_int(THIS_STAT->s.st_blocks); break;
