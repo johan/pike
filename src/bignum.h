@@ -58,8 +58,8 @@ struct pike_string *string_from_bignum(struct object *o, int base);
 void convert_svalue_to_bignum(struct svalue *s);
 
 #ifdef INT64
-PMOD_EXPORT void (*push_int64)(INT64 i);
-PMOD_EXPORT int (*int64_from_bignum) (INT64 *i, struct object *bignum);
+PMOD_EXPORT extern void (*push_int64)(INT64 i);
+PMOD_EXPORT extern int (*int64_from_bignum) (INT64 *i, struct object *bignum);
 PMOD_EXPORT void hook_in_int64_funcs (
   void (*push_int64_val)(INT64),
   int (*int64_from_bignum_val) (INT64 *, struct object *));
