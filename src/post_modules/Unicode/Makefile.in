@@ -8,18 +8,18 @@ CONFIG_HEADERS=@CONFIG_HEADERS@
 
 UNICODEDATA=../../UnicodeData.txt
 
-$(SRCDIR)/unicode_module.c: $(SRCDIR)/unicode_module.cmod
-	$(RUNPIKE) $(TMP_BINDIR)/precompile.pike >"$@" "$<" || { rm "$@"; exit 1; }
+$(SRCDIR)/unicode_module.c: $(SRCDIR)/unicode_module.cmod $(TMP_BINDIR)/precompile.pike
+	$(RUNPIKE) $(TMP_BINDIR)/precompile.pike >"$@" "$(SRCDIR)/unicode_module.cmod" || { rm "$@"; exit 1; }
 
-$(SRCDIR)/decompositions.h: $(SRCDIR)/make_decompose.pike
+$(SRCDIR)/decompositions.h: $(SRCDIR)/make_decompose.pike $(SRCDIR)/$(UNICODEDATA)
 	 $(RUNPIKE) $(SRCDIR)/make_decompose.pike 		\
                     < $(SRCDIR)/$(UNICODEDATA) > "$@" || { rm "$@"; exit 1; }
 
-$(SRCDIR)/canonicals.h: $(SRCDIR)/make_canonicals.pike
+$(SRCDIR)/canonicals.h: $(SRCDIR)/make_canonicals.pike $(SRCDIR)/$(UNICODEDATA)
 	 $(RUNPIKE) $(SRCDIR)/make_canonicals.pike 		\
                     < $(SRCDIR)/$(UNICODEDATA) > "$@" || { rm "$@"; exit 1; }
 
-$(SRCDIR)/wordbits.h: $(SRCDIR)/make_wordbits.pike
+$(SRCDIR)/wordbits.h: $(SRCDIR)/make_wordbits.pike $(SRCDIR)/$(UNICODEDATA)
 	 $(RUNPIKE) $(SRCDIR)/make_wordbits.pike 		\
                     < $(SRCDIR)/$(UNICODEDATA) > "$@" || { rm "$@"; exit 1; }
 
