@@ -552,6 +552,19 @@ void permission_error(
   ERROR_DONE(generic);
 }
 
+void wrong_number_of_args_error(char *name, int args, int expected)
+{
+  char *msg;
+  if(expected>args)
+  {
+    msg="Too few arguments";
+  }else{
+    msg="Too many arguments";
+  }
+
+  new_error(name, msg, sp-args, args, 0,0);
+}
+
 #ifdef PIKE_DEBUG
 static void gc_check_throw_value(struct callback *foo, void *bar, void *gazonk)
 {
