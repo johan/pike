@@ -623,7 +623,7 @@ string data(int|void max_length)
 
    if (buf=="") return ""; // already emptied
 
-   if (headers["transfer-encoding"]=="chunked")
+   if (lower_case(headers["transfer-encoding"])=="chunked")
    {
       string rbuf=buf[datapos..];
       string lbuf="";
