@@ -5800,6 +5800,11 @@ cond([[ sizeof( cpp("__AUTO_BIGNUM__")/"__AUTO_BIGNUM__" ) == 1 ]],
   test_eq(-0x12345678012, [[ decode_value(encode_value(-0x12345678012)) ]])
   test_eq(-0x123456780123, [[ decode_value(encode_value(-0x123456780123)) ]])
   test_eq(-0x1234567801234, [[ decode_value(encode_value(-0x1234567801234))]])
+
+  test_eval_error([[ _next ((mixed) decode_value (encode_value (Int.NATIVE_MAX))) ]])
+  test_eval_error([[ _next ((mixed) decode_value (encode_value (Int.NATIVE_MIN))) ]])
+  test_do([[ _next ((mixed) decode_value (encode_value (Int.NATIVE_MAX + 1))) ]])
+  test_do([[ _next ((mixed) decode_value (encode_value (Int.NATIVE_MIN - 1))) ]])
 ]])
 
 cond([[ sizeof( cpp("__AUTO_BIGNUM__")/"__AUTO_BIGNUM__" ) == 1 ]],
