@@ -367,7 +367,17 @@ int main(int argc, array(string) argv)
 	    int tmp;
 	    if(!(tmp=cond_cache[condition]))
 	    {
-	      tmp=!!(clone(compile_string("mixed c() { return "+condition+"; }","Cond "+(e+1)))->c());
+	      mixed err;
+	      if (err = catch {
+		tmp=!!(compile_string("mixed c() { return "+condition+"; }",
+				      "Cond "+(e+1))()->c());
+	      }) {
+		werror(sprintf("\nConditional %d failed:\n"
+			       "%s\n",
+			       e+1, describe_backtrace(err)));
+		errors++;
+		tmp = -1;
+	      }
 	      if(!tmp) tmp=-1;
 	      cond_cache[condition]=tmp;
 	    }
