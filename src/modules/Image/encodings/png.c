@@ -1677,6 +1677,9 @@ void exit_image_png(void)
 
 struct object *init_image_png(void)
 {
+   struct program *p;
+   struct object *o;
+
    start_new_program();
 
    push_text("Gz");
@@ -1740,5 +1743,8 @@ struct object *init_image_png(void)
    param_type=make_shared_string("type");
    param_background=make_shared_string("background");
    
-   return clone_object(end_program(),0);
+   o = clone_object((p = end_program()),0);
+   free_program(p);
+
+   return o;
 }
