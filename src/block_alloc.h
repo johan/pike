@@ -185,13 +185,13 @@ static inline struct DATA *						     \
 {									     \
   struct DATA *p,**pp;							     \
   p=PIKE_CONCAT(DATA,_hash_table)[hval];                                     \
-  if(!p || p->PTR_HASH_ALLOC_DATA == ptr)				     \
+  if(!p || p->data == ptr)						     \
   {                                                                          \
     return p;                                                                \
   }                                                                          \
   while((p=p->BLOCK_ALLOC_NEXT)) 	                                     \
   {									     \
-    if(p->PTR_HASH_ALLOC_DATA==ptr) return p;				     \
+    if(p->data==ptr) return p;						     \
   }									     \
   return 0;								     \
 }									     \
