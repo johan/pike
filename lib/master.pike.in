@@ -10,6 +10,10 @@
 
 #pike __REAL_VERSION__
 
+#if "¤/" != "\244/"
+#error "master.pike.in is corrupted."
+#endif
+
 // --- Some configurable parameters
 
 #define PIKE_AUTORELOAD
