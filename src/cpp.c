@@ -1444,6 +1444,11 @@ static INT32 low_cpp(struct cpp *this,
       goto unknown_preprocessor_directive;
 
     case 'p': /* pragma */
+      if(WGOBBLE("pike"))
+      {
+	FIND_EOL();
+	break;
+      }
       if(WGOBBLE("pragma"))
 	{
 	  if(OUTP())
