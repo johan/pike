@@ -422,7 +422,7 @@ void f_get_dir(INT32 args)
     struct dirent *tmp;
 
     if (!(tmp =
-#ifdef HAVE_SOLARIS_READDIR_R
+#if defined(HAVE_SOLARIS_READDIR_R) || defined(_PC_NAME_MAX)
 	  alloca(sizeof(struct dirent) + 
 		 ((pathconf(path, _PC_NAME_MAX) < 1024)?1024:
 		  pathconf(path, _PC_NAME_MAX)) + 1)
