@@ -53,5 +53,8 @@
 /* Number of args to mkdir() */
 #define MKDIR_ARGS 2
 
+/* Type of the last argument to accept() et al */
+#define PIKE_ACCEPT_TYPE	int
+
 #endif
 
