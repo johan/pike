@@ -2542,7 +2542,7 @@ static struct pike_string *debug_low_index_type(char *t,
       if(n->token == F_ARROW)
       {
 	/* FIXME: make this stricter */
-	if((i=FIND_LFUN(p,LFUN_ARROW))!=-1 || FIND_LFUN(p,LFUN_ASSIGN_ARROW)!=-1)
+	if((i=FIND_LFUN(p,LFUN_ARROW))!=-1)
 	{
 	  /* FIXME: function_type_string should be replaced with something
 	   * derived from type_string
@@ -2554,7 +2554,7 @@ static struct pike_string *debug_low_index_type(char *t,
 	  return mixed_type_string;
 	}
       }else{
-	if((i=FIND_LFUN(p,LFUN_INDEX)) != -1 || FIND_LFUN(p,LFUN_ASSIGN_INDEX) != -1)
+	if((i=FIND_LFUN(p,LFUN_INDEX)) != -1)
 	{
 	  /* FIXME: function_type_string should be replaced with something
 	   * derived from type_string
