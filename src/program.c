@@ -638,13 +638,15 @@ void fixate_program(void)
       {
 	struct pike_string *name=ID_FROM_INT(p, i)->name;
 
-	e=find_shared_string_identifier(name,p);
+	if(e == -1)
+	  e=really_low_find_shared_string_identifier(name,p,SEE_STATIC);
+
 	if(e != i)
 	{
 	  if(name->len < 1024 && !name->size_shift)
-	    my_yyerror("Illegal to redefine final identifier %s\n",name->str);
+	    my_yyerror("Illegal to redefine final identifier %s",name->str);
 	  else
-	    my_yyerror("Illegal to redefine final identifier (unable to output name of identifier).\n");
+	    my_yyerror("Illegal to redefine final identifier (unable to output name of identifier).");
 	}
       }
     }
