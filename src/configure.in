@@ -6880,7 +6880,7 @@ if test "$pike_bundle_dir" = ""; then :; else
       if test "$dist_file" = "no"; then
         PIKE_MSG_WARN([Bundle $bundle not found.
 Requested from:
-`echo "$bundle_info"| grep "$bundle.bundle"`])
+$bundle_info])
         bundle_info=`echo "$bundle_info" | grep -v "$bundle.bundle"`
       else
         # FIXME: Extract bundle
