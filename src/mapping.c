@@ -1808,9 +1808,9 @@ PMOD_EXPORT struct mapping *copy_mapping_recursively(struct mapping *m,
   add_ref(md);
   NEW_MAPPING_LOOP(md)
   {
-    copy_svalues_recursively_no_free(sp,&k->ind, 1, p);
+    copy_svalues_recursively_no_free(sp,&k->ind, 1, &doing);
     sp++;
-    copy_svalues_recursively_no_free(sp,&k->val, 1, p);
+    copy_svalues_recursively_no_free(sp,&k->val, 1, &doing);
     sp++;
     
     mapping_insert(ret, sp-2, sp-1);
