@@ -1036,14 +1036,15 @@ void f_getcwd(INT32 args)
  *! @decl int exece(string file, array(string) args, @
  *!                 mapping(string:string) env)
  *!
- *! This function transforms the Pike process into a process running
- *! the program specified in the argument @[file] with the arguments @[args].
+ *!   This function transforms the Pike process into a process running
+ *!   the program specified in the argument @[file] with the arguments @[args].
  *!
- *! If the mapping @[env] is present, it will completely replace all
- *! environment variables before the new program is executed.
+ *!   If the mapping @[env] is present, it will completely replace all
+ *!   environment variables before the new program is executed.
  *!
- *! This function only returns if something went wrong during exece(2),
- *! and in that case it returns @tt{0@} (zero).
+ *! @returns
+ *!   This function only returns if something went wrong during @tt{exece(2)@},
+ *!   and in that case it returns @tt{0@} (zero).
  *!
  *! @note
  *!   The Pike driver _dies_ when this function is called. You must either
