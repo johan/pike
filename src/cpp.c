@@ -1034,7 +1034,7 @@ while(1)					\
 
 #define FINDTOK() 				\
   do {						\
-  SKIPSPACE();					\
+  SKIPWHITE();					\
   if(data[pos]=='/')				\
   {						\
     ptrdiff_t tmp;				\
