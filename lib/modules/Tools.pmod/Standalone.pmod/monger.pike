@@ -404,7 +404,7 @@ void do_list(string|void name)
 
 class xmlrpc_handler
 {
-  object x;
+  Protocols.XMLRPC.Client x;
 
   void create(string loc)
   {
@@ -412,15 +412,15 @@ class xmlrpc_handler
   }
  
 
-  class _caller (string n, object c){
+  class _caller (string n){
 
     mixed `()(mixed ... args)
     {
       array|Protocols.XMLRPC.Fault r;
       if(args)
-        r = c[n](@args);
+	r = x[n](@args);
       else
-        r = c[n]();
+	r = x[n]();
       if(objectp(r)) // we have an error, throw it.
         error(r->fault_string);
       else return r[0];
@@ -430,7 +430,7 @@ class xmlrpc_handler
 
   function `->(string n, mixed ... args)
   {
-    return _caller(n, x);
+    return _caller(n);
   }
 
 }
