@@ -1470,13 +1470,7 @@ void gc_free_all_unreferenced_objects(void)
 
   for(o=gc_internal_object; o; o=next)
   {
-    if (!o->refs) {
-      /* Time to handle the refless object left around by
-       * schedule_really_free_object() during the gc. */
-      next = o->next;
-      schedule_really_free_object(o);
-    }
-    else if(gc_do_free(o))
+    if(gc_do_free(o))
     {
       /* Got an extra ref from gc_cycle_pop_object(). */
 #ifdef PIKE_DEBUG
