@@ -26,6 +26,11 @@
 #define SEC_SUCCESS(Status) ((Status) >= 0)
 #include <sspi.h>
 
+/* These are defined by winerror.h in recent SDKs. */
+#ifndef SEC_E_INSUFFICIENT_MEMORY
+#include <issperr.h>
+#endif
+
 /*
  * Get some wrappers for functions not implemented in old versions
  * of WIN32. Needs a Platform SDK installed. The SDK included in 
