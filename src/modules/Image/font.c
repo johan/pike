@@ -336,8 +336,11 @@ void font_load(INT32 args);
 
 void font_create(INT32 args)
 {
-   if (args) font_load(args);
-   pop_n_elems(1);
+   if (args) 
+   {
+     font_load(args);
+     pop_stack();
+   }
 }
 
 void font_load(INT32 args)
