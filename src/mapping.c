@@ -590,6 +590,7 @@ struct array *mapping_to_array(struct mapping *m)
       assign_svalue(b->item+1, & k->val);
       s->u.array=b;
       s->type=T_ARRAY;
+      s++;
     }
   a->type_field = BIT_ARRAY;
 
