@@ -555,7 +555,7 @@ void dump_backlog(void)
       {
 	fprintf(stderr,"(%ld)", (long)backlog[e].arg);
       }
-      fprintf(stderr," %d, %d", backlog[e].stack, backlog[e].mark_stack);
+      fprintf(stderr," %d, %d\n", backlog[e].stack, backlog[e].mark_stack);
     }
   }while(e!=backlogp);
 }
