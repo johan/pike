@@ -35,7 +35,9 @@ mapping _decode( string data, mixed|void tocolor )
   }
 
   // macbinary decoding
-  if (data[102..105]=="mBIN")
+  if (data[102..105]=="mBIN" ||
+      data[65..68]=="JPEG" ||    // wierd standard, that
+      data[69..72]=="8BIM")
   {
      int i;
      sscanf(data,"%2c",i);
