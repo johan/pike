@@ -2414,7 +2414,7 @@ void image_colortable_reduce_fs(INT32 args)
 
 
 /*
-**! method object `+(object with,...)
+**! method object `+(object with, mixed ... more)
 **!	sums colortables
 **! returns the resulting new <ref>Colortable</ref> object
 **!
@@ -2467,7 +2467,7 @@ void image_colortable_operator_plus(INT32 args)
 }
 
 /*
-**! method object `-(object with,...)
+**! method object `-(object with, mixed ... more)
 **!	subtracts colortables
 **! returns the resulting new <ref>Colortable</ref> object
 **!

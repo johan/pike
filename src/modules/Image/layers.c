@@ -2895,8 +2895,8 @@ void img_lay(struct layer **layer,
 
 /*
 **! module Image
-**! method Image.Layer lay(array(Image.Layer|mapping))
-**! method Image.Layer lay(array(Image.Layer|mapping),int xoffset,int yoffset,int xsize,int ysize)
+**! method Image.Layer lay(array(Image.Layer|mapping) layers)
+**! method Image.Layer lay(array(Image.Layer|mapping) layers,int xoffset,int yoffset,int xsize,int ysize)
 **!	Combine layers.
 **! returns a new layer object.
 **!

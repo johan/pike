@@ -3483,7 +3483,7 @@ static void image_outline_mask(INT32 args)
 }
 
 /*
-**! method object modify_by_intensity(int r,int g,int b,int|array(int) v1,...,int|array(int) vn)
+**! method object modify_by_intensity(int r,int g,int b,int|array(int) ... vn)
 **!    Recolor an image from intensity values.
 **!
 **!    For each color an intensity is calculated, from r, g and b factors
@@ -3829,7 +3829,7 @@ static void image_apply_curve( INT32 args )
 
 /*
 **! method object gamma(float g)
-**! method object gamma(float gred,ggreen,gblue)
+**! method object gamma(float gred, float ggreen, float gblue)
 **!     Calculate pixels in image by gamma curve.
 **!
 **!	Intensity of new pixels are calculated by:<br>

@@ -120,8 +120,8 @@ extern struct program *math_lmatrix_program;
 #undef FTYPE
 
 /*
-**! method void create(array(array(int|float)))
-**! method void create(array(int|float))
+**! method void create(array(array(int|float)) 2d_matrix)
+**! method void create(array(int|float) 1d_matrix)
 **! method void create(int n,int m)
 **! method void create(int n,int m,string type)
 **! method void create(int n,int m,float|int init)

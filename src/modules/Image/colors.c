@@ -1454,7 +1454,7 @@ static void image_make_color(INT32 args)
 **! module Image
 **! submodule Color
 **!
-**! method object guess(string)
+**! method object guess(string color)
 **!	This is equivalent to
 **!	<tt><ref>Image.Color</ref>(lower_case(str)-" ")</tt>,
 **!	and tries the color with a prepending '#' if no 

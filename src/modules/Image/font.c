@@ -546,7 +546,7 @@ done:
 }
 
 /*
-**! method object write(string text,...)
+**! method object write(string text, string ... more_text_lines)
 **! 	Writes some text; thus creating an image object
 **!	that can be used as mask or as a complete picture.
 **! returns an <ref>Image.Image</ref> object
@@ -753,7 +753,7 @@ void font_height(INT32 args)
 }
 
 /*
-**! method array(int) text_extents(string text,...)
+**! method array(int) text_extents(string text, string ... more_text_lines)
 **!	Calculate extents of a text-image,
 **!	that would be created by calling <ref>write</ref>
 **!	with the same arguments.

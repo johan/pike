@@ -67,7 +67,7 @@ static void chrono(char *x)
 #endif
 
 /*
-**! method object orient(void|array(object))
+**! method object orient(void|array(object) something)
 **! method array(object) orient4()
 **!	Draws images describing the orientation
 **!     of the current image.
