@@ -416,11 +416,15 @@ while(1)					\
     if(data[pos+1]=='\n')			\
     {						\
       pos++;					\
+      this->current_line++;			\
+      PUTNL();                                  \
       continue;					\
     }						\
     if(data[pos+1]=='\r' && data[pos+2]=='\n')	\
     {						\
       pos+=2;					\
+      this->current_line++;			\
+      PUTNL();                                  \
       continue;					\
     }						\
     READCHAR(tmp);				\
