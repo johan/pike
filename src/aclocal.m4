@@ -389,8 +389,8 @@ define([AC_MODULE_INIT],
     MODULE_DIR=""
   ], [
     MODULE_NAME="`echo '$1'|sed -e 's/.*\.//'`"
-    MODULE_PATH="`echo '$1'|sed -e 's/[^\.]*$//'`"
-    MODULE_DIR="`echo '$1'|sed -e 's/[^\.]*$//' -e 's@\.@.pmod/@g'`"
+    MODULE_PATH="`echo '$1'|sed -e 's/[[^\.]]*$//'`"
+    MODULE_DIR="`echo '$1'|sed -e 's/[[^\.]]*$//' -e 's@\.@.pmod/@g'`"
   ])
   AC_SUBST(MODULE_NAME)
   AC_SUBST(MODULE_PATH)
