@@ -1679,15 +1679,15 @@ void init_image_programs()
 		"function(:object)",0);
 
    add_function("`-",image_operator_minus,
-		"function(object:object)",0);
+		"function(object|array(int):object)",0);
    add_function("`+",image_operator_plus,
-		"function(object:object)",0);
+		"function(object|array(int):object)",0);
    add_function("`*",image_operator_multiply,
-		"function(object:object)",0);
+		"function(object|array(int):object)",0);
    add_function("`&",image_operator_minimum,
-		"function(object:object)",0);
+		"function(object|array(int):object)",0);
    add_function("`|",image_operator_maximum,
-		"function(object:object)",0);
+		"function(object|array(int):object)",0);
 		
    set_init_callback(init_image_struct);
    set_exit_callback(exit_image_struct);

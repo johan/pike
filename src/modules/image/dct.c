@@ -116,8 +116,8 @@ void image_dct(INT32 args)
    }
    fprintf(stderr,"\n");
 
-   dx=((double)THIS->xsize)/img->xsize;
-   dy=((double)THIS->ysize)/img->ysize;
+   dx=((double)(THIS->xsize-1))/(img->xsize);
+   dy=((double)(THIS->ysize-1))/(img->ysize);
 
    pix=img->img;
    for (y=0,yp=0; y<img->ysize; y++,yp+=dy)
