@@ -94,20 +94,20 @@ function(string:int) decode_datetime;
 //!     @type object
 //!       Use this object to access the SQL-database.
 //!     @type string
-//!       Connect to the server specified.
-//!       The string should be on the format:
+//!       Connect to the server specified. The string should be on the
+//!       format:
 //!       @tt{dbtype://[user[:password]@@]hostname[:port][/database]@}
-//!       Use the dbtype protocol to connect to the database server
-//!       on the specified host.
-//!       If the hostname is @expr{""@}, access through a UNIX-domain
-//!	  socket or similar, e g @expr{"mysql://root@@:/tmp/mysql.sock/"@}
+//!       Use the @i{dbtype@} protocol to connect to the database
+//!       server on the specified host. If the hostname is @expr{""@}
+//!       then the port can be a file name to access through a
+//!       UNIX-domain socket or similar, e g
+//!       @expr{"mysql://root@@:/tmp/mysql.sock/"@}.
 //!
-//!       There is a special dbtype 'mysqls' which works like the type
-//!       'mysql' but it sets the CLIENT_SSL option and loads the /etc/my.cnf
-//!       config file to find the SSL-parameters. The same function can
-//!       be achieved using the mysql dbtype.
-//!     @type int(0..0)
-//!       Access through a UNIX-domain socket or similar.
+//!       There is a special dbtype @expr{"mysqls"@} which works like
+//!       @expr{"mysql"@} but sets the @tt{CLIENT_SSL@} option and
+//!       loads the @tt{/etc/my.cnf@} config file to find the SSL
+//!       parameters. The same function can be achieved using the
+//!       @expr{"mysql"@} dbtype.
 //!   @endmixed
 //!
 //! @param db
