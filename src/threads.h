@@ -556,6 +556,7 @@ void thread_table_delete(struct object *o);
 struct thread_state *thread_state_for_id(THREAD_T tid);
 struct object *thread_for_id(THREAD_T tid);
 void f_all_threads(INT32 args);
+int count_pike_threads(void);
 TH_RETURN_TYPE new_thread_func(void * data);
 void f_thread_create(INT32 args);
 void f_thread_set_concurrency(INT32 args);
