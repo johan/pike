@@ -102,6 +102,13 @@ struct node_s;
 struct object;
 #endif
 
+/* Byte-code method identification. */
+#define PIKE_BYTECODE_DEFAULT	0
+#define PIKE_BYTECODE_GOTO	1
+#define PIKE_BYTECODE_SPARC	2
+#define PIKE_BYTECODE_IA32	3
+#define PIKE_BYTECODE_PPC32     4
+
 #if PIKE_BYTECODE_METHOD == PIKE_BYTECODE_IA32
 #define PIKE_OPCODE_T unsigned INT8
 #elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_SPARC
