@@ -499,6 +499,7 @@ CHRONO("gif _render_block push of packed data begin");
       {
 	 push_string(make_shared_binary_string("\0",1));
 	 numstrings++;
+         break;
       }
       else if (lzw.outpos-i>=255)
       {
