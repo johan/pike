@@ -10,9 +10,22 @@
 
 #include "module.h"
 
-/* NB: module_magic will be deprecated in the next release.
+/* NB: use of module_magic is deprecated.
    Please use the PIKE_MODULE_INIT/PIKE_MODULE_EXIT macros
    directly in new code. */
+
+
+#ifndef ALLOW_DEPRECATED_MODULE_MAGIC
+
+/* To get rid of the following message, define ALLOW_DEPRECATED_MODULE_MAGIC.
+   This option is a transitional measure and may be removed at some
+   future time.  Please update your code to use PIKE_MODULE_INIT/
+   PIKE_MODULE_EXIT instead. */
+
+#error module_magic.h is deprecated.  Please read the header file for details.
+
+#endif /* ALLOW_DEPRECATED_MODULE_MAGIC */
+
 
 #ifdef DYNAMIC_MODULE
 #define pike_module_init(X) mYDummyFunctioN1(void); PIKE_MODULE_INIT
