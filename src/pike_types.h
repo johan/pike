@@ -39,7 +39,7 @@ struct node_s
 {
 #if defined(SHARED_NODES)
   unsigned INT32 refs;
-  unsigned INT32 hash;
+  size_t hash;
   struct node_s *next;
 #endif /* SHARED_NODES */
 #ifdef PIKE_DEBUG
@@ -62,7 +62,7 @@ struct node_identifier
 {
   ptrdiff_t refs;
   struct node_identifier *next;
-  unsigned INT32 hash;
+  size_t hash;
   INT16 token;
   union node_data u;
 };
