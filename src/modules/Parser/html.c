@@ -4417,7 +4417,7 @@ static void html_tag_name(INT32 args)
        ptrdiff_t cbeg;
        if (THIS->flags & FLAG_WS_BEFORE_TAG_NAME)
 	 scan_forward (THIS->start, THIS->cstart+1, &beg, &cbeg,
-		       WS(THIS), -(ptrdif_t)N_WS(THIS));
+		       WS(THIS), -(ptrdiff_t)N_WS(THIS));
        else
 	 beg = THIS->start, cbeg = THIS->cstart + 1;
        quote_tag_lookup (THIS, beg, cbeg, &beg, &cbeg, 1, &v);
