@@ -77,6 +77,8 @@ F_APPLY(0 = F_CONSTANT
     n->hash = hash_node(n);
     n->node_info |= OPT_DEFROSTED;
 #endif /* SHARED_NODES */
+    _CDR(n)->parent = NULL;
+    fix_type_field(_CDR(n));
     free_node(arglist);
 #ifdef PIKE_DEBUG
     if (l_flag > 4) {
@@ -108,6 +110,8 @@ F_APPLY(0 = F_CONSTANT
     n->hash = hash_node(n);
     n->node_info |= OPT_DEFROSTED;
 #endif /* SHARED_NODES */
+    _CDR(n)->parent = NULL;
+    fix_type_field(_CDR(n));
     free_node(arglist);
 #ifdef PIKE_DEBUG
     if (l_flag > 4) {
@@ -141,6 +145,8 @@ F_APPLY(0 = F_CONSTANT
     n->hash = hash_node(n);
     n->node_info |= OPT_DEFROSTED;
 #endif /* SHARED_NODES */
+    _CDR(n)->parent = NULL;
+    fix_type_field(_CDR(n));
     free_node(arglist);
 #ifdef PIKE_DEBUG
     if (l_flag > 4) {
