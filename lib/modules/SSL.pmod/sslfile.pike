@@ -48,7 +48,7 @@ static class MyLock
 	     describe_backtrace (old_cur_thread->backtrace()));		\
     lock = MyLock (old_cur_thread);					\
   }
-#define THREAD_UNLOCK lock = 0
+#define THREAD_UNLOCK destruct (lock)
 
 #else  // !THREAD_DEBUG
 
