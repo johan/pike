@@ -536,7 +536,7 @@ static struct colortable *colortable_allocate(int numcol)
    ct->rgb_node=malloc(sizeof(unsigned long)*numcol*2);
    ct->index=malloc(sizeof(unsigned short)*numcol);
    MEMSET(ct->rgb_node,0,
-	  sizeof(unsigned long)*numcol*4);
+	  sizeof(unsigned long)*numcol*2);
    return ct;
 }
 
