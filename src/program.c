@@ -1928,9 +1928,11 @@ int define_variable(struct pike_string *name,
 
       if(!(IDENTIFIERP(n)->id_flags & ID_INLINE) || compiler_pass!=1)
       {
-/* 	if(ID_FROM_INT(new_program, n)->type != type) */
-/* 	  my_yyerror("Illegal to redefine inherited variable " */
-/* 		     "with different type."); */
+ 	if(!match_types(ID_FROM_INT(new_program, n)->type, type))
+ 	  my_yyerror("Illegal to redefine inherited variable "
+ 		     "with different type.");
+
+	
 
 	if(!IDENTIFIER_IS_VARIABLE(ID_FROM_INT(new_program, n)->
 				   identifier_flags))
