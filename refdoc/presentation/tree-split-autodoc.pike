@@ -185,7 +185,7 @@ class Node
     array a = reverse(parent->get_ancestors());
 
     _make_class_path = "";
-    foreach(a[1..], Node n)
+    foreach(a, Node n)
     {
       _make_class_path += n->name;
       if(n->type=="class")
