@@ -202,7 +202,7 @@ static struct pike_string *low_get_digits(MP_INT *mpz, int base)
       s->str[0] = 0;
     } else {
       mp_limb_t *src = mpz->_mp_d;
-      unsigned char *dst = s->str+s->len;
+      unsigned char *dst = (unsigned char *)s->str+s->len;
 
       while (len > 0)
       {
