@@ -47,9 +47,13 @@ int debug_options=0;
 int d_flag=0;
 int c_flag=0;
 int t_flag=0;
+int default_t_flag=0;
 int a_flag=0;
 int l_flag=0;
 int p_flag=0;
+#ifdef YYDEBUG
+extern int yydebug;
+#endif /* YYDEBUG */
 static long instructions_left;
 
 static void time_to_exit(struct callback *cb,void *tmp,void *ignored)
@@ -225,6 +229,13 @@ int dbm_main(int argc, char **argv)
 	      d_flag+=STRTOL(p+1,&p,10);
 	      break;
 
+	    case 'c':
+	      p++;
+#ifdef YYDEBUG
+	      yydebug++;
+#endif /* YYDEBUG */
+	      break;
+
 	    case 's':
 	      debug_options|=DEBUG_SIGNALS;
 	      p++;
@@ -254,6 +265,7 @@ int dbm_main(int argc, char **argv)
 	    t_flag+=STRTOL(p+1,&p,10);
 	  else
 	    t_flag++,p++;
+	  default_t_flag = t_flag;
 	  break;
 
 	case 'p':
