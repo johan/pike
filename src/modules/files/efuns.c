@@ -83,6 +83,8 @@ RCSID("$Id$");
 
 #ifdef __NT__
 
+#include <winbase.h>
+
 /* Dynamic load of functions that doesn't exist in all Windows versions. */
 
 static HINSTANCE kernel32lib;
