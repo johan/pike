@@ -135,6 +135,25 @@ private class CommandSet {
       return 1;
     };
 
+    if(words[1]=="hedda") {
+      mapping vars = ([
+	"foo":"mixed",
+	"bar":"mixed",
+	"i":"int",
+	"s":"string",
+	"f":"float",
+	"m":"mapping",
+	"a":"array"
+      ]);
+      mapping vals = ([	"s":"", "f":0.0, "m":([]), "a":({}) ]);
+      foreach(vars; string name; string type)
+	if(!e->variables[name]) {
+	  e->variables[name] = vals[name];
+	  e->types[name] = type;
+	}
+      return;
+    }
+
     if(arg_check("trace")) {
       e->trace_level = (int)words[2];
       return;
@@ -1598,6 +1617,12 @@ format
     Changes the formatting of the result values from evaluated
     Pike expressions. Enter \"help set format\" for more
     information.
+
+hedda
+    Initializes some variables for quick access, unless they are
+    already defined. These variables may be added: mixed foo,
+    mixed bar, int i, float f=0.0, mapping m=([]), array a=({})
+    and string s=\"\".
 
 history
     Change the maximum number of entries that are kept in the
