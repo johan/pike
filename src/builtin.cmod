@@ -553,6 +553,7 @@ PIKECLASS Buffer
     }
     pop_n_elems(args);
     push_text("");
+    return;
   }
 
   INIT
