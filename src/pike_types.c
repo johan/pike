@@ -274,7 +274,8 @@ static inline struct pike_type *mk_type(unsigned INT32 type,
 {
   unsigned INT32 hash = DO_NOT_WARN((unsigned INT32)
 				    ((ptrdiff_t)type*0x10204081)^
-				    ((ptrdiff_t)car)^~((ptrdiff_t)cdr));
+				    ((ptrdiff_t)car)^
+				    ~(0x10001*(ptrdiff_t)cdr));
   unsigned INT32 index = hash % pike_type_hash_size;
   struct pike_type *t;
 
