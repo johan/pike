@@ -4054,6 +4054,7 @@ struct program *compile(struct pike_string *prog,
 	/* fprintf(stderr, "Placeholder already has storage!\n"
 	   "placeholder: %p, storage: %p, prog: %p, p: %p\n",
 	   placeholder, placeholder->storage, placeholder->prog, p); */
+	debug_malloc_touch(placeholder);
 	destruct(placeholder);
       } else {
 	/* FIXME: Is this correct? */
@@ -4164,6 +4165,7 @@ struct program *compile(struct pike_string *prog,
 	/* fprintf(stderr, "Placeholder already has storage!\n"
 	   "placeholder: %p, storage: %p, prog: %p, p: %p\n",
 	   placeholder, placeholder->storage, placeholder->prog, p); */
+	debug_malloc_touch(placeholder);
 	destruct(placeholder);
       } else {
 	/* FIXME: Is this correct? */

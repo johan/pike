@@ -2197,6 +2197,7 @@ PMOD_EXPORT void f_destruct(INT32 args)
   if(!CHECK_DATA_SECURITY(o, SECURITY_BIT_DESTRUCT))
     Pike_error("Destruct permission denied.\n");
 #endif
+  debug_malloc_touch(o);
   destruct(o);
   pop_n_elems(args);
   destruct_objects_to_destruct();

@@ -2123,6 +2123,16 @@ void * debug_malloc_update_location(void *p,LOCATION location)
   return p;
 }
 
+void * debug_malloc_update_location_ptr(void *p,
+					ptrdiff_t offset,
+					LOCATION location)
+{
+  if(p)
+    debug_malloc_update_location(*(void **)(((char *)p)+offset), location);
+  return p;
+}
+
+
 /* another shared-string table... */
 struct dmalloc_string
 {
