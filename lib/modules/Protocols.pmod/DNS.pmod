@@ -4,6 +4,8 @@
 //! module Protocols
 //! submodule DNS
 
+//! $Id$
+
 constant NOERROR=0;
 constant FORMERR=1;
 constant SERVFAIL=2;
