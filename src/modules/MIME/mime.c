@@ -198,7 +198,7 @@ static void f_decode_base64( INT32 args )
 /*  Convenience function for encode_base64();  Encode groups*3 bytes from
  *  *srcp into groups*4 bytes at *destp.
  */
-static int do_b64_encode( INT32 groups, unsigned char **srcp, char **destp,
+static int do_b64_encode( ptrdiff_t groups, unsigned char **srcp, char **destp,
 			  int insert_crlf )
 {
   unsigned char *src = *srcp;
@@ -485,8 +485,8 @@ static void f_decode_uue( INT32 args )
 /*  Convenience function for encode_uue();  Encode groups*3 bytes from
  *  *srcp into groups*4 bytes at *destp, and reserve space for last more.
  */
-static void do_uue_encode( INT32 groups, unsigned char **srcp, char **destp,
-			   INT32 last )
+static void do_uue_encode(ptrdiff_t groups, unsigned char **srcp, char **destp,
+			  ptrdiff_t last )
 {
   unsigned char *src = *srcp;
   char *dest = *destp;
@@ -955,7 +955,7 @@ static void f_quote( INT32 args )
       } else {
 
 	/* Have to use quoted-string */
-	INT32 len = str->len;
+	ptrdiff_t len = str->len;
 	char *src = str->str;
 	string_builder_putchar( &buf, '"' );
 	while(len--) {
