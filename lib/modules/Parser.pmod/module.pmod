@@ -6,6 +6,7 @@
 // inherit Parser._parser;
 
 constant HTML = Parser._parser.HTML;
+constant _RCS = Parser._parser._RCS;
 
 static int(0..0) return_zero() {return 0;}
 static HTML xml_parser =
