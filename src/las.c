@@ -1870,7 +1870,11 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 	  p=Pike_sp[-1].u.program;
 
 	if (p == Pike_compiler->new_program) {
-	  /* We're looking at ourselves... */
+	  /* We're looking at ourselves...
+	   *
+	   * FIXME: This code isn't correct since it changes the reference
+	   *        to a local reference, and not a global reference.
+	   */
 	  int i = really_low_find_shared_string_identifier(id, p, 0);
 	  UNSETJMP(tmp);
 	  pop_stack();
