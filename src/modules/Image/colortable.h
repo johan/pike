@@ -201,4 +201,6 @@ int image_colortable_map_image(struct neo_colortable *nct,
 			       int len,
 			       int rowlen);
 
+void image_colortable_cast_to_array(struct neo_colortable *nct);
+
 #endif /* PIKE_IMAGE_COLORTABLE_H */
