@@ -60,7 +60,7 @@ struct source *source_pikestring_make( struct svalue *s,
 
   if( s->type != PIKE_T_STRING )   return 0;
   if( s->u.string->size_shift )    return 0;
-  
+
   res = malloc( sizeof( struct ps_source ) );
   debug_malloc_touch( res );
   debug_malloc_touch( s );
@@ -90,6 +90,7 @@ struct source *source_pikestring_make( struct svalue *s,
   {
     sub_ref(res->str);
     free(res);
+    return 0;
   }
   return (struct source *)res;
 }
