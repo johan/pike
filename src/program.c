@@ -5597,7 +5597,8 @@ PMOD_EXPORT void change_compiler_compatibility(int major, int minor)
 
 void make_program_executable(struct program *p)
 {
-  mprotect(p->program, p->num_program, PROT_EXEC | PROT_READ | PROT_WRITE);
+  mprotect((void *)p->program, p->num_program*sizeof(p->program[0]),
+	   PROT_EXEC | PROT_READ | PROT_WRITE);
 #ifdef FLUSH_INSTRUCTION_CACHE
   FLUSH_INSTRUCTION_CACHE(p->program,
 			  p->num_program*sizeof(p->program[0]));
