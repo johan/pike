@@ -199,7 +199,7 @@ class Plain
       {
 	 array(int)|int v=exec(subject,i);
 	 if (intp(v) && !handle_exec_error([int]v)) 
-	    return this_object();
+	    return this;
 	 callback(split_subject(subject,v),v);
 	 i=v[1];
       }
@@ -216,7 +216,7 @@ class Plain
    string cast(string to)
    {
       if (to=="string") return pattern; 
-      else error("can't cast %t to %O\n",this_object(),to);
+      else error("can't cast %t to %O\n",this,to);
    }
 }
 
