@@ -1,6 +1,6 @@
 # $Id$
 AC_INIT(nettle.cmod)
-AC_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADER(nettle_config.h)
 
 AC_SET_MAKE
 
