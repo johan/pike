@@ -997,6 +997,19 @@ void describe_svalue(struct svalue *s,int indent,struct processing *p)
   }
 }
 
+void print_svalue (FILE *out, struct svalue *s)
+{
+  string orig_str;
+  string str;
+  orig_str = complex_free_buf();
+  init_buf();
+  describe_svalue (s, 0, 0);
+  str = complex_free_buf();
+  if (orig_str.str) init_buf_with_string (orig_str);
+  fwrite (str.str, str.len, 1, out);
+  free (str.str);
+}
+
 void clear_svalues(struct svalue *s, INT32 num)
 {
   struct svalue dum;

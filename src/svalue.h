@@ -307,6 +307,7 @@ int low_short_is_equal(const union anything *a,
 int is_equal(struct svalue *a,struct svalue *b);
 int is_lt(struct svalue *a,struct svalue *b);
 void describe_svalue(struct svalue *s,int indent,struct processing *p);
+void print_svalue(FILE *out, struct svalue *s);
 void clear_svalues(struct svalue *s, INT32 num);
 void clear_svalues_undefined(struct svalue *s, INT32 num);
 void copy_svalues_recursively_no_free(struct svalue *to,
