@@ -354,6 +354,10 @@ static int low_yylex(YYSTYPE *yylval)
 	  {
 	    lex.pragmas |= ID_NOMASK;
 	  }
+	  else if (ISWORD("strict_types"))
+	  {
+	    lex.pragmas |= ID_STRICT_TYPES;
+	  }
 	  break;
 	}
 	
