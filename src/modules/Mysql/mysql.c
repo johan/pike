@@ -1098,7 +1098,12 @@ static void f_shutdown(INT32 args)
   if (socket) {
     MYSQL_ALLOW();
   
+#ifdef SHUTDOWN_DEFAULT
+    /* Mysql 4.1.3 added an extra shutdown_level argument. */
+    tmp = mysql_shutdown(socket, SHUTDOWN_DEFAULT);
+#else
     tmp = mysql_shutdown(socket);
+#endif /* SHUTDOWN_DEFAULT */
 
     MYSQL_DISALLOW();
   }
