@@ -205,7 +205,15 @@ static int va_get_args_2(struct svalue *s,
       return ret;
     }
 
-    switch(*++fmt)
+    if (optional && IS_UNDEFINED (s)) {
+      /* An optional argument with an undefined value should be
+       * treated as if it isn't given at all, i.e. don't assign this
+       * argument. */
+      fmt++;
+      va_arg (ap, void *);
+    }
+
+    else switch(*++fmt)
     {
     case 'd':
       if(s->type != T_INT) goto type_err;
