@@ -190,6 +190,11 @@ static struct array * new_call_out(int num_arg,struct svalue *argp)
   num_pending_calls++;
   adjust_up(num_pending_calls-1);
   verify_call_outs();
+
+#ifdef _REENTRANT
+  wake_up_backend();
+#endif
+
   return new->args;
 }
 
