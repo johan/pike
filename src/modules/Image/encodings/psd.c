@@ -38,7 +38,7 @@ extern struct program *image_program;
 **!
 */
 
-#define STRING(X) static struct pike_string *s_##X;
+#define STRING(X) static struct pike_string *PIKE_CONCAT(s_, X);
 #include "psd_constant_strings.h"
 #undef STRING
 
@@ -646,7 +646,8 @@ void init_image_psd()
   add_integer_constant("LAYER_FLAG_BIT4", 0x04, 0 );
   add_integer_constant("LAYER_FLAG_NOPIX", 0x08, 0 );
 
-#define STRING(X) s_##X = make_shared_binary_string(#X,sizeof( #X )-sizeof(""));
+#define STRING(X) PIKE_CONCAT(s_, X) = \
+  make_shared_binary_string(#X,sizeof( #X )-sizeof(""))
 #include "psd_constant_strings.h"
 #undef STRING
 }
@@ -654,7 +655,7 @@ void init_image_psd()
 
 void exit_image_psd()
 {
-#define STRING(X) free_string(s_##X)
+#define STRING(X) free_string(PIKE_CONCAT(s_, X))
 #include "psd_constant_strings.h"
 #undef STRING
 }
