@@ -19,6 +19,6 @@ class Condition
       m = Mutex();
       m->lock();
     }
-    ::wait();
+    ::wait(m);
   }
 }
