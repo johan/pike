@@ -1965,6 +1965,13 @@ int really_low_find_shared_string_identifier(struct pike_string *name,
   CDFPRINTF((stderr,"Trying to find %s see_static=%d\n",
 	     name->str, see_static));
 
+#ifdef PIKE_DEBUG
+  if (!prog) {
+    fatal("really_low_find_shared_string_identifier(\"%s\", NULL, %d)\n"
+	  "prog is NULL!\n", name, see_static);
+  }
+#endif /* PIKE_DEBUG */
+
   for(i=0;i<(int)prog->num_identifier_references;i++)
   {
     funp = prog->identifier_references + i;
