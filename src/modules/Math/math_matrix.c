@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #include "global.h"
 #include "config.h"
 
