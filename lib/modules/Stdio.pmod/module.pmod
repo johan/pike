@@ -2038,16 +2038,14 @@ int mkdirhier (string pathname, void|int mode)
 //!
 int recursive_rm (string path)
 {
-  int res = 1;
   Stat a = file_stat(path, 1);
   if(!a)
     return 0;
-  if(a[1] == -2)
+  if(a->isdir)
     if (array(string) sub = get_dir (path))
       foreach( sub, string name )
-        if (!recursive_rm (path + "/" + name)) 
-          res = 0;
-  return res && rm (path);
+	recursive_rm (path + "/" + name);
+  return rm (path);
 }
 
 /*
