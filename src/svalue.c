@@ -1009,7 +1009,7 @@ PMOD_EXPORT void describe_svalue(struct svalue *s,int indent,struct processing *
 	      break;
 
             default:
-	      if(j>=0 && j<256 && isprint(j))
+	      if(j>0 && j<256 && isprint(j))
 	      {
 		my_putchar(j);
 		break;
