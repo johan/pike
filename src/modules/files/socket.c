@@ -61,6 +61,10 @@ RCSID("$Id$");
 #include <sys/socketvar.h>
 #endif
 
+#ifdef HAVE_SYS_UN_H
+#include <sys/un.h>
+#endif
+
 #include "dmalloc.h"
 
 /*! @module Stdio
