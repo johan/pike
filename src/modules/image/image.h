@@ -61,6 +61,7 @@ struct colortable
 
 struct colortable *colortable_quant(struct image *img,int numcol);
 int colortable_rgb(struct colortable *ct,rgb_group rgb);
+int colortable_rgb_nearest(struct colortable *ct,rgb_group rgb);
 void colortable_free(struct colortable *ct);
 struct colortable *colortable_from_array(struct array *arr,char *from);
 
