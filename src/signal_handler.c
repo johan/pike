@@ -720,8 +720,9 @@ struct perishables
 
 static void free_perishables(struct perishables *storage)
 {
-  if (storage->disabled)
+  if (storage->disabled) {
     exit_threads_disable(NULL);
+  }
 
   if(storage->env) free((char *)storage->env);
 
