@@ -1,8 +1,7 @@
 #pike __REAL_VERSION__
+#pragma strict_types
 
-/* $Id$
- *
- */
+// $Id$
 
 //! Alert package.
 
@@ -17,7 +16,8 @@ mixed trace;
 
 constant is_alert = 1;
 
-//! @decl void create(int level, int description, string|void message, mixed|void trace)
+//! @decl void create(int level, int description,@
+//!                   int version, string|void message, mixed|void trace)
 void create(int l, int d, int version, string|void m, mixed|void t)
 {
   if (! ALERT_levels[l])
