@@ -702,7 +702,7 @@ struct send_args
 };
 
 static int num_send_args;
-struct send_args *new_send_args()
+struct send_args *new_send_args(void)
 {
   num_send_args++;
   return aap_malloc( sizeof( struct send_args ) );

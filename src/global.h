@@ -51,6 +51,14 @@
 #define _GNU_SOURCE
 #endif
 
+/* Get more declarations from AIX libc. */
+#ifndef _ANSI_C_SOURCE
+#define _ANSI_C_SOURCE
+#endif
+#ifndef _ALL_SOURCE
+#define _ALL_SOURCE
+#endif
+
 /*
  * Some structure forward declarations are needed.
  */

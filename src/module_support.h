@@ -26,7 +26,7 @@ struct expect_result {
 
 /* This should be used in module_init */
 #define PIKE_MODULE_EXPORT(MOD, SYM) \
-  pike_module_export_symbol(#MOD "." #SYM, CONSTANT_STRLEN(#MOD "." #SYM), SYM)
+  pike_module_export_symbol(#MOD "." #SYM, CONSTANT_STRLEN(#MOD "." #SYM), (void *)SYM)
 
 #define PIKE_MODULE_IMPORT(MOD, SYM) \
   pike_module_import_symbol(#MOD "." #SYM, CONSTANT_STRLEN(#MOD "." #SYM), #MOD, CONSTANT_STRLEN(#MOD))

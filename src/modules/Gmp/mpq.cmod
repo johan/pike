@@ -58,7 +58,7 @@ PIKECLASS mpq
 				  struct pike_string *digits,
 				  int base)
     {
-      char *str;
+      p_wchar0 *str;
   
       if(digits->size_shift)
 	Pike_error("Illegal characters, cannot convert to Mpq.\n");
