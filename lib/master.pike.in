@@ -618,6 +618,9 @@ static program low_findprog(string pname,
   Stat s;
   string fname=pname+ext;
 
+  resolv_debug("low_findprog(%O, %O, %O, %O)\n",
+	       pname, ext, handler, mkobj);
+
 #ifdef THREADED
   object key;
   // FIXME: The catch is needed, since we might be called in
