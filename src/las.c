@@ -3671,6 +3671,7 @@ int eval_low(node *n)
 
 static node *eval(node *n)
 {
+  node *new;
   int args;
   extern struct svalue *sp;
   if(!is_const(n) || n->token==':')
@@ -3697,13 +3698,16 @@ static node *eval(node *n)
       return n;
     }
     if (n->token != F_SOFT_CAST) {
-      free_node(n);
-      n=mksvaluenode(sp-1);
+      new = mksvaluenode(sp-1);
     } else {
-      node *nn = n;
-      n = mksoftcastnode(n->type, mksvaluenode(sp-1));
-      free_node(nn);
+      new = mksoftcastnode(n->type, mksvaluenode(sp-1));
     }
+    if (n->type && (!new->type || pike_types_le(n->type,new->type))) {
+      if (new->type) free_string(new->type);
+      copy_shared_string(new->type,n->type);
+    }
+    free_node(n);
+    n = new;
     pop_stack();
     break;
 
