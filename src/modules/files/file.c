@@ -491,9 +491,10 @@ static void file_open(INT32 args)
   if(!( flags &  (FILE_READ | FILE_WRITE)))
     error("Must open file for at least one of read and write.\n");
 
- retry:
   THREADS_ALLOW();
-  fd=open(str->str,map(flags), 00666);
+  do {
+    fd=open(str->str,map(flags), 00666);
+  } while(fd < 0 && errno == EINTR);
   THREADS_DISALLOW();
 
   if(!fp->current_object->prog)
@@ -507,9 +508,6 @@ static void file_open(INT32 args)
   }
   else if(fd < 0)
   {
-    if(errno == EINTR)
-      goto retry;
-
     ERRNO=EBADF;
   }
   else

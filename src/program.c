@@ -1292,9 +1292,13 @@ struct program *compile_file(struct pike_string *file_name)
   int fd;
   struct program *p;
 
-  fd=open(file_name->str,O_RDONLY);
-  if(fd < 0)
-    error("Couldn't open file '%s'.\n",file_name->str);
+  while(1)
+  {
+    fd=open(file_name->str,O_RDONLY);
+    if(fd >= 0) break;
+    if(errno != EINTR)
+      error("Couldn't open file '%s'.\n",file_name->str);
+  }
 
 #define FILE_STATE
 #define PUSH

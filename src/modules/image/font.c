@@ -165,8 +165,11 @@ void font_load(INT32 args)
       free_font_struct(THIS);
       THIS=NULL;
    }
+   do {
+     fd = open(sp[-args].u.string->str,O_RDONLY);
+   } while(fd < 0 && errno == EINTR);
 
-   if ( (fd = open(sp[-args].u.string->str,O_RDONLY)) > -1)
+   if (fd >= 0)
    {
       long size;
       size = file_size(fd);

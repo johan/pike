@@ -83,8 +83,13 @@ void init_interpreter()
 #define MAP_ANONYMOUS 0
   if(fd == -1)
   {
-    fd=open("/dev/zero",O_RDONLY);
-    if(fd < 0) fatal("Failed to open /dev/zero.\n");
+    while(1)
+    {
+      fd=open("/dev/zero",O_RDONLY);
+      if(fd >= 0) break;
+      if(errno != EINTR)
+	fatal("Failed to open /dev/zero.\n");
+    }
   }
 #endif
 
