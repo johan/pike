@@ -715,6 +715,8 @@ struct perishables
 
 static void free_perishables(struct perishables *storage)
 {
+  exit_threads_disable(NULL);
+
   if(storage->env) free((char *)storage->env);
 
   if(storage->argv) free((char *)storage->argv);
@@ -731,8 +733,6 @@ static void free_perishables(struct perishables *storage)
   if(storage->wanted_gids_array) free_array(storage->wanted_gids_array);
   
 #endif
-
-  exit_threads_disable(NULL);
 }
 
 #endif
