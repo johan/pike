@@ -193,6 +193,7 @@ static void gz_deflate(INT32 args)
   int flush, fail;
   struct zipper *this=THIS;
   dynamic_buffer buf;
+  ONERROR err;
 
   if(!THIS->gz.state)
     Pike_error("gz_deflate not initialized or destructed\n");
@@ -232,7 +233,9 @@ static void gz_deflate(INT32 args)
 
   initialize_buf(&buf);
 
+  SET_ONERROR(err,toss_buffer,&buf);
   fail=do_deflate(&buf,this,flush);
+  UNSET_ONERROR(err);
   pop_n_elems(args);
 
   if(fail != Z_OK && fail != Z_STREAM_END)
@@ -360,6 +363,7 @@ static void gz_inflate(INT32 args)
   int fail;
   struct zipper *this=THIS;
   dynamic_buffer buf;
+  ONERROR err;
 
   if(!THIS->gz.state)
     Pike_error("gz_inflate not initialized or destructed\n");
@@ -376,9 +380,10 @@ static void gz_inflate(INT32 args)
   this->gz.avail_in = DO_NOT_WARN(data->len);
 
   initialize_buf(&buf);
-
+  SET_ONERROR(err,toss_buffer,&buf);
   fail=do_inflate(&buf,this,Z_PARTIAL_FLUSH);
   pop_n_elems(args);
+  UNSET_ONERROR(err);
 
   if(fail != Z_OK && fail != Z_STREAM_END)
   {
