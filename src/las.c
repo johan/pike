@@ -584,7 +584,7 @@ void free_all_nodes(void)
 	  /* We want to be able to access the token field of all
 	   * the blocks...
 	   */
-	  PIME_MEM_RW(&tmp2->x, sizeof(tmp2->x));
+	  PIKE_MEM_RW(&tmp2->x, sizeof(tmp2->x));
 	  for(e=0;n && e<NODES;e++)
 	  {
 	    if (tmp2->x[e].token != USHRT_MAX)
