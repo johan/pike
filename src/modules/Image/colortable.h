@@ -129,7 +129,10 @@ typedef void nct_dither_got_function(struct nct_dither *dith,
 typedef void nct_dither_line_function(struct nct_dither *dith,
 				      int *rowpos,
 				      rgb_group **s,
-				      rgb_group **d,
+				      rgb_group **drgb,
+				      unsigned char **d8bit,
+				      unsigned short **d16bit,
+				      long **d32bit,
 				      int *cd);
 
 struct nct_dither
