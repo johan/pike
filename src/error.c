@@ -308,7 +308,8 @@ void DECLSPEC(noreturn) va_error(const char *fmt, va_list args)
   {
     const char *tmp=in_error;
     in_error = NULL;
-    Pike_fatal("Recursive error() calls, original error: %s",tmp);
+    Pike_fatal("Recursive error() calls, original error: %s, new error: %s",
+	       tmp, fmt);
   }
 
   in_error=fmt;
@@ -878,6 +879,7 @@ DECLSPEC(noreturn) void generic_error_va(struct object *o,
 
   free_svalue(& throw_value);
   throw_value.type=PIKE_T_OBJECT;
+  throw_value.subtype = 0;
   throw_value.u.object=o;
   throw_severity = THROW_ERROR;
   in_error=0;

@@ -1805,14 +1805,16 @@ PIKEFUN object(Iterator) get_iterator(object|array|mapping|multiset|string data)
 
     case PIKE_T_OBJECT: {
       int fun;
+      struct program *p;
 
-      if(!data->u.object->prog)
+      if(!(p = data->u.object->prog))
 	SIMPLE_ARG_ERROR ("get_iterator", 1, "Got a destructed object.\n");
 
-      fun = FIND_LFUN(data->u.object->prog, LFUN__GET_ITERATOR);
+      fun = FIND_LFUN(p->inherits[data->subtype].prog, LFUN__GET_ITERATOR);
       if (fun != -1)
       {
-	apply_low (data->u.object, fun, 0);
+	apply_low (data->u.object,
+		   fun + p->inherits[data->subtype].identifier_level, 0);
 	if (sp[-1].type != T_OBJECT) {
 	  /* FIXME: Ought to include what we got in the error message. */
 	  pop_stack();
