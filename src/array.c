@@ -1957,6 +1957,19 @@ void gc_free_all_unreferenced_arrays(void)
 {
   struct array *a,*next;
 
+  if (gc_ext_weak_refs) {
+    /* Have to go through all marked things if we got external weak
+     * references to otherwise unreferenced things, so the mark
+     * functions can free those references. */
+    gc_mark_array_pos = empty_array.next;
+    while (gc_mark_array_pos != gc_internal_array && gc_ext_weak_refs) {
+      struct array *a = gc_mark_array_pos;
+      gc_mark_array_pos = a->next;
+      gc_mark_array_as_referenced(a);
+    }
+    discard_queue(&gc_mark_queue);
+  }
+
   for (a = gc_internal_array; a != &empty_array; a = next)
   {
 #ifdef PIKE_DEBUG

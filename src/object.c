@@ -1477,6 +1477,20 @@ void gc_free_all_unreferenced_objects(void)
 {
   struct object *o,*next;
 
+  if (gc_ext_weak_refs) {
+    /* Have to go through all marked things if we got external weak
+     * references to otherwise unreferenced things, so the mark
+     * functions can free those references. */
+    gc_mark_object_pos = first_object;
+    while (gc_mark_object_pos != gc_internal_object && gc_ext_weak_refs) {
+      struct object *o = gc_mark_object_pos;
+      gc_mark_object_pos = o->next;
+      if (o->refs)
+	gc_mark_object_as_referenced(o);
+    }
+    discard_queue(&gc_mark_queue);
+  }
+
   for(o=gc_internal_object; o; o=next)
   {
     if(gc_do_free(o))

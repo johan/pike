@@ -369,6 +369,9 @@ void gc_free_all_unreferenced_multisets(void)
 {
   struct multiset *l,*next;
 
+  /* No gc_ext_weak_refs stuff here; it's been taken care of by
+   * gc_free_all_unreferenced_arrays(). */
+
   for(l=gc_internal_multiset;l;l=next)
   {
     if(gc_do_free(l))
