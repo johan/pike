@@ -9345,6 +9345,7 @@ void test_dir(string dir, int|void base_size)
 #if !constant(GTK.Window)
       case "GTKSupport.pmod":
       case "PV.pike":
+      case "pv.pike":
 #endif
       case "GZipFile.pike":
         continue; // These modules cannot be tested properly by this test
