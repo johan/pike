@@ -77,7 +77,7 @@ int main(int argc, array(string) argv)
 		" * Unicode characters.\n"
 		" *\n"
 		" * Henrik Grubbström 1999-03-20\n"
-		" */\n\n", ctime(time()));
+		" */\n\n", ctime(time())));
 
   foreach(ci, array(int) info) {
     write(sprintf("{ 0x%04x, %s, 0x%04x, },\n",
