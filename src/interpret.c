@@ -1173,6 +1173,26 @@ static int eval_instruction(unsigned char *pc)
       CJUMP(F_BRANCH_WHEN_GT, is_gt);
       CJUMP(F_BRANCH_WHEN_GE,!is_lt);
 
+      CASE(F_BRANCH_AND_POP_WHEN_ZERO);
+      if(!IS_ZERO(sp-1))
+      {
+	pc+=sizeof(INT32);
+      }else{
+	DOJUMP();
+	pop_stack();
+      }
+      break;
+
+      CASE(F_BRANCH_AND_POP_WHEN_NON_ZERO);
+      if(!IS_ZERO(sp-1))
+      {
+	pc+=sizeof(INT32);
+      }else{
+	DOJUMP();
+	pop_stack();
+      }
+      break;
+
       CASE(F_LAND);
       if(!IS_ZERO(sp-1))
       {

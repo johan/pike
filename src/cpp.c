@@ -609,15 +609,22 @@ static INT32 low_cpp(struct cpp *this,
 	    
 	    for(arg=0;arg<d->args;arg++)
 	    {
-	      if(arg && data[pos]==',') pos++;
-	      SKIPWHITE();
+	      if(arg && data[pos]==',')
+	      {
+		pos++;
+		SKIPWHITE();
+	      }else{
+		SKIPWHITE();
+		if(data[pos]==')')
+		{
+		  char buffer[1024];
+		  sprintf(buffer,"Too few arguments to macro %s, expected %d.",d->link.s->str,d->args);
+		  cpp_error(this,buffer);
+		  break;
+		}
+	      }
 	      arguments[arg].arg=data + pos;
 
-	      if(data[pos]==')')
-	      {
-		cpp_error(this,"Too few arguments to macro.");
-		break;
-	      }
 	      
 	      while(1)
 	      {

@@ -146,6 +146,8 @@ struct keyword instr_names[]=
 { "branch if >=",	F_BRANCH_WHEN_GE, I_ISJUMP },
 { "branch if ==",	F_BRANCH_WHEN_EQ, I_ISJUMP },
 { "branch if !=",	F_BRANCH_WHEN_NE, I_ISJUMP },
+{ "branch & pop if zero",	F_BRANCH_AND_POP_WHEN_ZERO, I_ISJUMP },
+{ "branch & pop if !zero",	F_BRANCH_AND_POP_WHEN_NON_ZERO, I_ISJUMP },
 { "++Loop",		F_INC_LOOP, I_ISJUMP },	
 { "++Loop!=",		F_INC_NEQ_LOOP, I_ISJUMP },
 { "--Loop",		F_DEC_LOOP, I_ISJUMP },	
