@@ -331,10 +331,12 @@ void f_file_truncate(INT32 args)
  *!       Number of available files in the filesystem.
  *!       This is usually the same as the @expr{"ffree"@} value, and can
  *!       usually be adjusted with eg tunefs(1M).
- *!     @member int "fsname"
- *!       Name assigned to the filesystem.
- *!     @member int "fstype"
- *!       Type of filesystem (eg @expr{"nfs"@}).
+ *!     @member string "fsname"
+ *!       Name assigned to the filesystem. This item is not available
+ *!       on all systems.
+ *!     @member string "fstype"
+ *!       Type of filesystem (eg @expr{"nfs"@}). This item is not
+ *!       available on all systems.
  *!   @endmapping
  *!
  *! @note
