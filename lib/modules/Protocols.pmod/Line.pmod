@@ -16,6 +16,12 @@ class simple
   static int timeout;		// Idle time before timeout.
   static int timeout_time;	// Time at which next timeout will occur.
 
+  static void send(string s)
+  {
+    send_q->put(s);
+    con->set_write_callback(write_callback);
+  }
+
   static void do_timeout()
   {
     if (con) {
