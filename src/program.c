@@ -2967,6 +2967,9 @@ int define_variable(struct pike_string *name,
 						  n)->storage_offset,
 				 ID_FROM_INT(Pike_compiler->new_program, n)->
 				 run_time_type);
+	/* Hide the old variable. */
+	Pike_compiler->new_program->identifier_references[n].id_flags |=
+	  ID_STATIC|ID_PRIVATE;
 	return n2;
       }
     }
