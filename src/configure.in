@@ -1226,7 +1226,11 @@ if test "$cflags_is_set" = "no"; then
   AC_SYS_COMPILER_FLAG(-Wimplicit-function-declaration,Wimplicit_function_declaration,WARN)
   AC_SYS_COMPILER_FLAG(-Wmultichar,Wmultichar,WARN)
   AC_SYS_COMPILER_FLAG(-Wswitch,Wswitch,WARN)
-  AC_SYS_COMPILER_FLAG(-Wuninitialized,Wuninitialized,WARN)
+  if test "x$with_copt" != xno; then
+    # gcc complains that it doesn't support this when compiling
+    # without optimizations.
+    AC_SYS_COMPILER_FLAG(-Wuninitialized,Wuninitialized,WARN)
+  fi
   AC_SYS_COMPILER_FLAG(-Wpointer-arith,Wpointer_arith,WARN)
   AC_SYS_COMPILER_FLAG(-Wchar-subscripts,Wchar_subscripts,WARN)
   AC_SYS_COMPILER_FLAG(-Wno-long-long,Wno_long_long,WARN)
