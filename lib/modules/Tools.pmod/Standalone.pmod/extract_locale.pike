@@ -4,6 +4,7 @@
 // $Id$
 //
 
+constant description = "Pike locale extractor utility";
 
 // The arguments given to the program
 mapping args = ([]);
@@ -1049,7 +1050,7 @@ int main(int argc, array(string) argv) {
       (!sizeof(files) || args->help) ) {
     sscanf("$Revision$", "$"+"Revision: %s $", string v);
     werror("\n  Locale Extractor Utility "+v+"\n\n");
-    werror("  Syntax: extract.pike [arguments] infile(s)\n\n");
+    werror("  Syntax: pike -x extract_locale [arguments] infile(s)\n\n");
     werror("  Arguments: --project=name  default: first found in infile\n");
     werror("             --config=file   default: [project].xml\n");
     werror("             --out=file      default: [project]_eng.xml\n");
