@@ -87,6 +87,7 @@ function(string|program, mixed ... : object) clone = new;
 
 // spider
 #define SPIDER(X) constant X = spider.##X
+//! @ignore
 SPIDER(_low_program_name);
 SPIDER(set_start_quote);
 SPIDER(set_end_quote);
@@ -98,6 +99,7 @@ SPIDER(discdate);
 SPIDER(stardate);
 SPIDER(get_all_active_fd);
 SPIDER(fd_info);
+//! @endignore
 
 mapping(string:mixed) all_constants()
 {
