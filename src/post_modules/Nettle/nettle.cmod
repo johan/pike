@@ -10,6 +10,8 @@ RCSID("$Id$");
 
 #include "module_support.h"
 
+#ifdef HAVE_LIBNETTLE
+
 #include "nettle.h"
 
 #include <nettle/md5.h>
@@ -84,7 +86,7 @@ PIKECLASS hash_state
   INHERIT nettle_hash;
   
   /* FIXME: The ctx pointer isn't strictly needed, as the ctx is in
-   * the storage area just after the poitner. But this seems like the
+   * the storage area just after the pointer. But this seems like the
    * simplest and most portable way to get to it. */
   CVAR void *ctx;
   
@@ -358,3 +360,5 @@ PIKECLASS aes
       memset(&THIS->ctx, 0, sizeof(THIS->ctx));
     }
 }
+
+#endif /* HAVE_LIBNETTLE */
