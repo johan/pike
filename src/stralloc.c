@@ -1862,11 +1862,11 @@ void cleanup_shared_string_table(void)
   base_table=0;
   num_strings=0;
 
-#ifdef DEBUG_MALLOC
+#ifdef DO_PIKE_CLEANUP
   free_all_short_pike_string0_blocks();
   free_all_short_pike_string1_blocks();
   free_all_short_pike_string2_blocks();
-#endif /* DEBUG_MALLOC */
+#endif /* DO_PIKE_CLEANUP */
 }
 
 void count_memory_in_strings(INT32 *num, INT32 *size)
