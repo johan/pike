@@ -1580,7 +1580,7 @@ if test "$cflags_is_set" = "no"; then
 	    AC_SYS_COMPILER_FLAG([-Wa,--execstack], Wa_execstack, CFLAGS, [
 	      # No.
 	      # FIXME: Add support for use of chstk(1).
-	      PIKE_MSG_WARN([Could not find any way to enable executable stack.])
+	      AC_MSG_WARN([Could not find any way to enable executable stack.])
 	    ])
 	  ])
 	])
