@@ -102,7 +102,7 @@ static void f_cast_to_string(INT32 args)
 
     PIKE_MD2->string = make_shared_binary_string((char *)PIKE_MD2->checksum,
 						 MD2_DIGEST_LENGTH);
-    PIKE_MD2->string->refs++;
+    add_ref(PIKE_MD2->string);
   }
 
   push_string(PIKE_MD2->string);
@@ -164,8 +164,7 @@ void init_md2_programs(void)
   set_init_callback(init_pike_md2);
   set_exit_callback(exit_pike_md2);
 
-  pike_md2_program = end_c_program("/precompiled/crypto/md2");
-  pike_md2_program->refs++;
+  add_ref(pike_md2_program = end_c_program("/precompiled/crypto/md2"));
 }
 
 void exit_md2(void)

@@ -179,8 +179,7 @@ static void f_error(INT32 args)
   pop_n_elems(args);
 
   if (PIKE_ODBC->last_error) {
-    PIKE_ODBC->last_error->refs++;
-    push_string(PIKE_ODBC->last_error);
+    ref_push_string(PIKE_ODBC->last_error);
   } else {
     push_int(0);
   }
@@ -257,8 +256,7 @@ static void f_big_query(INT32 args)
 
   if (PIKE_ODBC->num_fields) {
     /* PIKE_ODBC->hstmt=hstmt; */
-    push_object(fp->current_object);
-    fp->current_object->refs++;
+    ref_push_object(fp->current_object);
 
     push_object(clone_object(odbc_result_program, 1));
   } else {

@@ -862,8 +862,7 @@ struct mapping *copy_mapping_recursively(struct mapping *m,
   {
     if(p->pointer_a == (void *)m)
     {
-      ret=(struct mapping *)p->pointer_b;
-      ret->refs++;
+      add_ref(ret=(struct mapping *)p->pointer_b);
       return ret;
     }
   }
@@ -1058,7 +1057,7 @@ void gc_free_all_unreferenced_mappings(void)
     check_mapping_for_destruct(m);
     if(gc_do_free(m))
     {
-      m->refs++;
+      add_ref(m);
 
       for(e=0;e<m->hashsize;e++)
       {
@@ -1129,7 +1128,7 @@ void zap_all_mappings(void)
 
   for(m=first_mapping;m;m=next)
   {
-    m->refs++;
+    add_ref(m);
 
 #if defined(DEBUG) && defined(DEBUG_MALLOC)
     if(verbose_debug_exit)

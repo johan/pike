@@ -113,10 +113,9 @@ static void f_result_create(INT32 args)
   r->curs = curs;
   dbcon->share_cda = NULL;
 
-  r->parent = p;
+  add_ref(r->parent = p);
   r->dbcon = dbcon;
   r->cda = &curs->cda;
-  p->refs++;
 
   r->cols = 0;
 }

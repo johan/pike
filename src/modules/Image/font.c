@@ -463,8 +463,7 @@ void font_load(INT32 args)
 
 		  fd_close(fd);
 		  pop_n_elems(args);
-		  THISOBJ->refs++;
-		  push_object(THISOBJ);   /* success */
+		  ref_push_object(THISOBJ);   /* success */
 #ifdef FONT_DEBUG
 		  fprintf(stderr,"FONT successfully loaded\n");
 #endif

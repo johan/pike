@@ -595,7 +595,7 @@ static INT32 low_cpp(struct cpp *this,
 	  dynamic_buffer tmp;
 	  struct define_argument arguments [MAX_ARGS];
 	  
-	  if(s) s->refs++;
+	  if(s) add_ref(s);
 	  
 	  if(d->args>=0)
 	  {

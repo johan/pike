@@ -139,7 +139,7 @@ static void regexp_split(INT32 args)
   if (match) {
     int i,j;
     
-    s->refs++;
+    add_ref(s);
     pop_n_elems(args);
 
     for (i=1; i < nmatch; i++) {
@@ -160,7 +160,7 @@ static void regexp_split(INT32 args)
   if(pike_regexec(r=THIS->regexp, s->str))
   {
     int i,j;
-    s->refs++;
+    add_ref(s);
     pop_n_elems(args);
     for(j=i=1;i<NSUBEXP;i++)
     {

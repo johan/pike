@@ -432,8 +432,7 @@ static void decode_value2(struct decode_data *data)
 	ITEM(a)[e]=sp[-1];
 	sp--;
       }
-      a->refs++;
-      push_array(a);
+      ref_push_array(a);
       return;
     }
     
@@ -457,8 +456,7 @@ static void decode_value2(struct decode_data *data)
 	mapping_insert(m, sp-2, sp-1);
 	pop_n_elems(2);
       }
-      m->refs++;
-      push_mapping(m);
+      ref_push_mapping(m);
       return;
     }
     
@@ -477,8 +475,7 @@ static void decode_value2(struct decode_data *data)
 	multiset_insert(m, sp-1);
 	pop_stack();
       }
-      m->refs++;
-      push_multiset(m);
+      ref_push_multiset(m);
       return;
     }
     

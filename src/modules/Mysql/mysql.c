@@ -303,8 +303,7 @@ static void f_create(INT32 args)
       error("Bad argument 1 to mysql()\n");
     }
     if (sp[-args].u.string->len) {
-      PIKE_MYSQL->host = sp[-args].u.string;
-      PIKE_MYSQL->host->refs++;
+      add_ref(PIKE_MYSQL->host = sp[-args].u.string);
     }
 
     if (args >= 2) {
@@ -312,8 +311,7 @@ static void f_create(INT32 args)
 	error("Bad argument 2 to mysql()\n");
       }
       if (sp[1-args].u.string->len) {
-	PIKE_MYSQL->database = sp[1-args].u.string;
-	PIKE_MYSQL->database->refs++;
+	add_ref(PIKE_MYSQL->database = sp[1-args].u.string);
       }
 
       if (args >= 3) {
@@ -321,8 +319,7 @@ static void f_create(INT32 args)
 	  error("Bad argument 3 to mysql()\n");
 	}
 	if (sp[2-args].u.string->len) {
-	  PIKE_MYSQL->user = sp[2-args].u.string;
-	  PIKE_MYSQL->user->refs++;
+	  add_ref(PIKE_MYSQL->user = sp[2-args].u.string);
 	}
 
 	if (args >= 4) {
@@ -330,8 +327,7 @@ static void f_create(INT32 args)
 	    error("Bad argument 4 to mysql()\n");
 	  }
 	  if (sp[3-args].u.string->len) {
-	    PIKE_MYSQL->password = sp[3-args].u.string;
-	    PIKE_MYSQL->password->refs++;
+	    add_ref(PIKE_MYSQL->password = sp[3-args].u.string);
 	  }
 	}
       }
@@ -486,8 +482,7 @@ static void f_select_db(INT32 args)
   if (PIKE_MYSQL->database) {
     free_string(PIKE_MYSQL->database);
   }
-  PIKE_MYSQL->database = sp[-args].u.string;
-  PIKE_MYSQL->database->refs++;
+  add_ref(PIKE_MYSQL->database = sp[-args].u.string);
 
   pop_n_elems(args);
 }
@@ -593,8 +588,7 @@ static void f_big_query(INT32 args)
   } else {
     /* Return the result-object */
 
-    push_object(fp->current_object);
-    fp->current_object->refs++;
+    ref_push_object(fp->current_object);
 
     push_object(clone_object(mysql_result_program, 1));
   }
@@ -1002,8 +996,7 @@ static void f_list_dbs(INT32 args)
 
   pop_n_elems(args);
 
-  push_object(fp->current_object);
-  fp->current_object->refs++;
+  ref_push_object(fp->current_object);
 
   push_object(clone_object(mysql_result_program, 1));
 }
@@ -1074,8 +1067,7 @@ static void f_list_tables(INT32 args)
 
   pop_n_elems(args);
 
-  push_object(fp->current_object);
-  fp->current_object->refs++;
+  ref_push_object(fp->current_object);
 
   push_object(clone_object(mysql_result_program, 1));
 }
@@ -1248,8 +1240,7 @@ static void f_list_processes(INT32 args)
     error("mysql->list_processes(): Cannot list databases: %s\n", err);
   }
 
-  push_object(fp->current_object);
-  fp->current_object->refs++;
+  ref_push_object(fp->current_object);
 
   push_object(clone_object(mysql_result_program, 1));
 }

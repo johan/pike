@@ -403,7 +403,7 @@ INT32 gc_check(void *a)
     return 0;
   }
 #endif
-  return getmark(a)->refs++;
+  return add_ref(getmark(a));
 }
 
 static void init_gc(void)

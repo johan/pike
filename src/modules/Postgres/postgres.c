@@ -422,7 +422,7 @@ void pike_module_init (void)
 
 	postgres_program = end_program();
 	add_program_constant("postgres",postgres_program,0);
-	postgres_program->refs++;
+	add_ref(postgres_program);
 
 	add_string_constant("version",PGSQL_VERSION,0);
 
