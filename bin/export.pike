@@ -109,7 +109,7 @@ void bump_version(int|void is_release)
   if (s) {
     werror("Bumping Debian changelog.\n");
     array(int) version = getversion();
-    s = sprintf("pike%d.%d (%d.%d.%d-1) experimental; urgency=low\n"
+    s = sprintf("pike%d.%d (%d.%d.%d-1) unstable; urgency=low\n"
 		"\n" +
 		"  * %s\n"
 		"\n"
