@@ -13,8 +13,8 @@
  * Includes
  */
 
-#include <global.h>
-#include <pike_types.h>
+#include "global.h"
+#include "pike_types.h"
 
 /*
  * Prototypes
