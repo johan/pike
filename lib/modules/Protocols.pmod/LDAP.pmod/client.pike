@@ -457,7 +457,7 @@ int _prof_gtim;
   //!  Only @tt{2@} or @tt{3@} can be entered.
   //!
   //! @returns
-  //!  Returns @tt{1@} on uccess, @tt{0@} otherwise.
+  //!  Returns @tt{1@} on success, @tt{0@} otherwise.
   //!
   //! @note
   //!  Only simple authentication type is implemented. So be warned
@@ -541,6 +541,9 @@ int _prof_gtim;
   //! @param dn
   //!  The distinguished name of deleted entry.
   //!
+  //! @returns
+  //!  Returns @tt{1@} on success, @tt{0@} otherwise.
+  //!
   //! @note
   //!   The API change: the returning code was changed in Pike 7.3+
   //!	to follow his logic better.
@@ -596,6 +599,9 @@ int _prof_gtim;
   //!
   //! @param aval
   //!  The mapping of compared attributes and theirs values.
+  //!
+  //! @returns
+  //!  Returns @tt{1@} on success, @tt{0@} otherwise.
   //!
   //! @note
   //!   The API change: the returning code was changed in Pike 7.3+
@@ -667,6 +673,9 @@ int _prof_gtim;
   //! @param attrs
   //!  The mapping of attributes and their values that make up the content
   //!  of the entry being added.
+  //!
+  //! @returns
+  //!  Returns @tt{1@} on success, @tt{0@} otherwise.
   //!    
   //! @note
   //!   The API change: the returning code was changed in Pike 7.3+
@@ -1163,6 +1172,9 @@ int _prof_gtim;
   //! @param newsuperior
   //!  If present, this is the Distinguished Name of the entry
   //!  which becomes the immediate superior of the existing entry.
+  //!
+  //! @returns
+  //!  Returns @tt{1@} on success, @tt{0@} otherwise.
   //!
   //! @note
   //!   The API change: the returning code was changed in Pike 7.3+
