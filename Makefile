@@ -32,8 +32,10 @@ src/configure: src/configure.in
 	cd src && ./run_autoconfig . 2>&1 | grep -v warning
 	-rm -f "$(BUILDDIR)/Makefile"
 
-force_configure:
+force_autoconfig:
 	cd src && ./run_autoconfig . 2>&1 | grep -v warning
+
+force_configure:
 	-rm -f "$(BUILDDIR)/Makefile"
 	@$(MAKE) $(MAKE_FLAGS) configure
 
