@@ -40,7 +40,7 @@ static struct mapping *gc_mark_mapping_pos = 0;
 
 
 #define MD_KEYPAIRS(MD, HSIZE) \
-   ( (struct keypair *)DO_ALIGN( (long) (((struct mapping_data *)(MD))->hash + HSIZE), ALIGNOF(struct keypair)) )
+   ( (struct keypair *)DO_ALIGN( (ptrdiff_t) (((struct mapping_data *)(MD))->hash + HSIZE), ALIGNOF(struct keypair)) )
 
 #define MAPPING_DATA_SIZE(HSIZE, KEYPAIRS) \
    (long)( MD_KEYPAIRS(0, HSIZE) + KEYPAIRS )
