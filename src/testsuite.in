@@ -7873,6 +7873,8 @@ int main(int argc, array(string) argv)
     int i;
     for(i = 0; i < 1000; i++) {
       compile_string(file);
+      if (!(i%10))
+        __signal_watchdog();
     }
   } )->wait();
 
