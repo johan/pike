@@ -895,7 +895,7 @@ void low_exit_main(void)
     {
       struct program *p;
       for(p=first_program;p;p=p->next)
-	describe_something(p, T_PROGRAM, 0,2,0);
+	describe_something(p, T_PROGRAM, 0,2,0, NULL);
     }
 
 
@@ -906,7 +906,7 @@ void low_exit_main(void)
     {
       struct object *o;
       for(o=first_object;o;o=o->next)
-	describe_something(o, T_OBJECT, 0,2,0);
+	describe_something(o, T_OBJECT, 0,2,0, NULL);
     }
 
 #ifdef USE_PIKE_TYPE
