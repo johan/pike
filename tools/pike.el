@@ -439,7 +439,7 @@ The name is assumed to begin with a capital letter.")
       (save-excursion
 	;; Don't format identifiers as indexes in mapping constants.
 	(condition-case nil (up-list -1) (error (throw 'found t)))
-	(if (not (eq (char-after) ?\[)) (throw 'found t))))))
+	(if (not (eq (char-after (point)) ?\[)) (throw 'found t))))))
 
 ;; XEmacs way.
 (put 'pike-mode 'font-lock-defaults 
