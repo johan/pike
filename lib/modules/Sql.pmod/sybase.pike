@@ -97,6 +97,12 @@ void create(void|string host, void|string db, void|string user,
   }
 }
 
+int|object big_query(string q, mapping(string|int:mixed)|void bindings) {
+  if (!bindings)
+    return ::big_query(q);
+  return ::big_query(.sql_util.emulate_bindings(q,bindings));
+}
+
 #else
 #error "Sybase driver not available.\n"
 #endif

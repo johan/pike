@@ -124,6 +124,14 @@ mapping(string:array(mixed)) list_fields (string table, void|string wild) {
 	}
 	return ret;
 }
+
+int|object big_query(object|string q, mapping(string|int:mixed)|void bindings)
+{  
+  if (!bindings)
+    return ::big_query(q);
+  return ::big_query(.sql_util.emulate_bindings(q,bindings));
+}
+
 #else /* !constant(Postgres.postgres) */
 #error "Postgres support not available.\n"
 #endif /* constant(Postgres.postgres) */
