@@ -213,7 +213,7 @@ do{ \
 #include "block_alloc_h.h"
 /* Prototypes begin here */
 void push_sp_mark(void);
-int pop_sp_mark(void);
+ptrdiff_t pop_sp_mark(void);
 void init_interpreter(void);
 void lvalue_to_svalue_no_free(struct svalue *to,struct svalue *lval);
 void assign_lvalue(struct svalue *lval,struct svalue *from);
