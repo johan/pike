@@ -86,7 +86,7 @@ PMOD_EXPORT struct array *low_allocate_array(ptrdiff_t size, ptrdiff_t extra_spa
     Pike_error("Couldn't allocate array, out of memory.\n");
 
   GC_ALLOC(v);
-  
+
 
   /* for now, we don't know what will go in here */
   v->type_field=BIT_MIXED | BIT_UNFINISHED;
@@ -2244,9 +2244,10 @@ void gc_zap_ext_weak_refs_in_arrays(void)
   discard_queue(&gc_mark_queue);
 }
 
-void gc_free_all_unreferenced_arrays(void)
+size_t gc_free_all_unreferenced_arrays(void)
 {
   struct array *a,*next;
+  size_t freed = 0;
 
   for (a = gc_internal_array; a != &weak_empty_array; a = next)
   {
@@ -2262,12 +2263,15 @@ void gc_free_all_unreferenced_arrays(void)
 
       gc_free_extra_ref(a);
       SET_NEXT_AND_FREE(a, free_array);
+      freed++;
     }
     else
     {
       next=a->next;
     }
   }
+
+  return freed;
 }
 
 

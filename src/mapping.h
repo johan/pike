@@ -173,7 +173,7 @@ void gc_check_all_mappings(void);
 void gc_mark_all_mappings(void);
 void gc_cycle_check_all_mappings(void);
 void gc_zap_ext_weak_refs_in_mappings(void);
-void gc_free_all_unreferenced_mappings(void);
+size_t gc_free_all_unreferenced_mappings(void);
 void simple_describe_mapping(struct mapping *m);
 void debug_dump_mapping(struct mapping *m);
 void zap_all_mappings(void);

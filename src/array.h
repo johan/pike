@@ -171,7 +171,7 @@ void gc_check_all_arrays(void);
 void gc_mark_all_arrays(void);
 void gc_cycle_check_all_arrays(void);
 void gc_zap_ext_weak_refs_in_arrays(void);
-void gc_free_all_unreferenced_arrays(void);
+size_t gc_free_all_unreferenced_arrays(void);
 void debug_dump_type_field(TYPE_FIELD t);
 void debug_dump_array(struct array *a);
 void zap_all_arrays(void);

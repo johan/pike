@@ -420,7 +420,7 @@ void gc_mark_all_multisets (void);
 void gc_zap_ext_weak_refs_in_multisets (void);
 void real_gc_cycle_check_multiset (struct multiset *l, int weak);
 void gc_cycle_check_all_multisets (void);
-void gc_free_all_unreferenced_multisets (void);
+size_t gc_free_all_unreferenced_multisets (void);
 #define gc_cycle_check_multiset(X, WEAK) \
   gc_cycle_enqueue ((gc_cycle_check_cb *) real_gc_cycle_check_multiset, (X), (WEAK))
 
@@ -488,7 +488,7 @@ unsigned gc_touch_all_multisets(void);
 void gc_check_all_multisets(void);
 void gc_mark_all_multisets(void);
 void gc_cycle_check_all_multisets(void);
-void gc_free_all_unreferenced_multisets(void);
+size_t gc_free_all_unreferenced_multisets(void);
 void count_memory_in_multisets(INT32 *num_, INT32 *size_);
 int multiset_is_constant(struct multiset *m,
 			 struct processing *p);

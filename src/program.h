@@ -630,7 +630,7 @@ void gc_check_all_programs(void);
 void gc_mark_all_programs(void);
 void gc_cycle_check_all_programs(void);
 void gc_zap_ext_weak_refs_in_programs(void);
-void gc_free_all_unreferenced_programs(void);
+size_t gc_free_all_unreferenced_programs(void);
 void push_compiler_frame(int lexical_scope);
 void low_pop_local_variables(int level);
 void pop_local_variables(int level);

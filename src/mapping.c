@@ -2392,10 +2392,11 @@ void gc_zap_ext_weak_refs_in_mappings(void)
   discard_queue(&gc_mark_queue);
 }
 
-void gc_free_all_unreferenced_mappings(void)
+size_t gc_free_all_unreferenced_mappings(void)
 {
   struct mapping *m,*next;
   struct mapping_data *md;
+  size_t freed = 0;
 
   for(m=gc_internal_mapping;m;m=next)
   {
@@ -2420,12 +2421,15 @@ void gc_free_all_unreferenced_mappings(void)
 #endif
       gc_free_extra_ref(m);
       SET_NEXT_AND_FREE(m, free_mapping);
+      freed++;
     }
     else
     {
       next=m->next;
     }
   }
+
+  return freed;
 }
 
 #ifdef PIKE_DEBUG
