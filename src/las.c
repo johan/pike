@@ -2123,13 +2123,17 @@ void fix_type_field(node *n)
 	} else if (lex.pragmas & ID_STRICT_TYPES) {
 	  struct pike_string *t1 = describe_type(CAR(n)->type);
 	  struct pike_string *t2 = describe_type(CDR(n)->type);
-	  print_tree(n);
+#ifdef PIKE_DEBUG
+	  if (l_flag > 0) {
+	    fprintf(stderr, "Warning: Invalid assignment: ");
+	    print_tree(n);
+	  }
+#endif /* PIKE_DEBUG */
 	  yywarning("An expression type %s cannot be assigned to "
 		    "a variable of type %s.",
 		    t1->str, t2->str);
 	  free_string(t2);
 	  free_string(t1);
-	  yywarning("Incompatible types in assignment.");
 	}
       }
     }
