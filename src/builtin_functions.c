@@ -2121,10 +2121,10 @@ void f_mktime (INT32 args)
 #if STRUCT_TM_HAS_GMTOFF
   if(sp[7-args].subtype == NUMBER_NUMBER)
   {
-    date.tm_gmtoff=sp[7-args].u.intger;
+    date.tm_gmtoff=sp[7-args].u.integer;
   }else{
     time_t tmp=0;
-    data.tm_gmtoff=localtime(&t).tm_gmtoff;
+    data.tm_gmtoff=localtime(&t)->tm_gmtoff;
   }
   retval=mktime(&date);
 #else

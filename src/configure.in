@@ -1506,7 +1506,7 @@ AC_TRY_COMPILE([
 ],[
   int _tz;
   struct tm foo;
-  _tz=foo->tm_gmtoff;
+  _tz = foo.tm_gmtoff;
 ],pike_cv_struct_tm_has_gmtoff=yes,pike_cv_struct_tm_has_gmtoff=no)
 ])
 
