@@ -897,14 +897,14 @@ class Node {
       if (!has_prefix(attr_name, "xmlns:")) {
 	int i = -1;
 	int j;
-	while ((j = search(attr_name, ":", i)) >= 0) {
+	while ((j = search(attr_name, ":", i + 1)) >= 0) {
 	  i = j;
 	}
-	while ((j = search(attr_name, "/", i)) >= 0) {
+	while ((j = search(attr_name, "/", i + 1)) >= 0) {
 	  i = j;
 	}
 	if (i >= 0) {
-	  string ns = attr_name[..i-1];
+	  string ns = attr_name[..i];
 	  string prefix;
 	  if (!(prefix = forward_lookup[ns])) {
 	    // We need to allocate a short namespace symbol.
@@ -919,7 +919,7 @@ class Node {
 	    short_attrs["xmlns:NS"+i] = ns;
 	  }
 	  m_delete(short_attrs, attr_name);
-	  short_attrs[prefix + ns] = attrs[attr_name];
+	  short_attrs[prefix + attr_name[i+1..]] = attrs[attr_name];
 	}
       }
     }
