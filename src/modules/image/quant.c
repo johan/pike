@@ -14,13 +14,15 @@ David Kågedal, kg@infovav.se
 
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
-#include "threads.h"
 #endif
 
 #include "types.h"
 #include "error.h"
 #include "global.h"
 #include "array.h"
+
+#include "threads.h"
+
 
 #include "image.h"
 
