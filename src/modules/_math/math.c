@@ -37,8 +37,6 @@
   if(sp[-args].type!=T_FLOAT) SIMPLE_BAD_ARG_ERROR(X, 1, "float"); \
   TRIM_STACK(1)
 
-RCSID("$Id$");
-
 #ifndef M_PI
 #define M_PI 3.1415926535897932384626433832795080
 #endif

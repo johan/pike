@@ -24,8 +24,6 @@
 #  include "lex.h"
 #  include "object.h"
 
-RCSID("$Id$");
-
 #else /* TESTING */
 
 #include <stdio.h>

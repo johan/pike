@@ -10,8 +10,6 @@
 #include "pike_error.h"
 #include <math.h>
 
-RCSID("$Id$");
-
 #ifdef HAVE_WINSOCK_H
 
 /* Old versions of the headerfiles don't have this constant... */

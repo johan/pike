@@ -6,7 +6,6 @@
 */
 
 #include "global.h"
-RCSID("$Id$");
 #include "program.h"
 #include "object.h"
 #include "dynamic_buffer.h"

@@ -23,8 +23,6 @@
 #include "threads.h"
 #include "gc.h"
 
-RCSID("$Id$");
-
 /* __attribute__ only applies to function declarations, not
    definitions, so we disable them here. */
 #undef ATTRIBUTE

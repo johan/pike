@@ -7,7 +7,6 @@
 
 #ifndef CONFIGURE_TEST
 #include "global.h"
-RCSID("$Id$");
 
 PMOD_EXPORT int num_threads = 1;
 PMOD_EXPORT int threads_disabled = 0;

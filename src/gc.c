@@ -33,8 +33,6 @@ struct callback *gc_evaluator_callback=0;
 
 #include "block_alloc.h"
 
-RCSID("$Id$");
-
 int gc_enabled = 1;
 
 /* These defaults are only guesses and hardly tested at all. Please improve. */

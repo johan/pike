@@ -11,8 +11,6 @@
 #include "pike_error.h"
 #include "pike_memory.h"
 
-RCSID("$Id$");
-
 dynamic_buffer pike_global_buffer;
 
 PMOD_EXPORT char *low_make_buf_space(size_t space, dynamic_buffer *buf)

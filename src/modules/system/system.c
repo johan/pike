@@ -20,8 +20,6 @@
 #include "system_machine.h"
 #include "system.h"
 
-RCSID("$Id$");
-
 #ifdef HAVE_WINDOWS_H
 #include <windows.h>
 #endif

@@ -22,8 +22,6 @@
 
 #ifdef HAVE_SYSLOG
 
-RCSID("$Id$");
-
 #include "interpret.h"
 #include "svalue.h"
 #include "stralloc.h"

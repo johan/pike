@@ -18,8 +18,6 @@
 #include "pike_security.h"
 #include "block_alloc.h"
 
-RCSID("$Id$");
-
 struct mapping *builtin_constants = 0;
 
 #ifdef PIKE_DEBUG

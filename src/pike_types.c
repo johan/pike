@@ -6,7 +6,6 @@
 */
 
 #include "global.h"
-RCSID("$Id$");
 #include <ctype.h>
 #include "svalue.h"
 #include "pike_types.h"

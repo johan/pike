@@ -24,8 +24,6 @@
 #include <ctype.h>
 #include <math.h>
 
-RCSID("$Id$");
-
 /* #define STRALLOC_USE_PRIMES */
 
 #ifdef STRALLOC_USE_PRIMES 

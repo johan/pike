@@ -202,8 +202,6 @@ size_t STRNLEN(char *s, size_t maxlen)
 
 #else /* PIKE_CONCAT */
 
-RCSID("$Id$");
-
 #endif
 
 /****************************************************************/

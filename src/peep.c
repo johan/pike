@@ -25,8 +25,6 @@
 #include "interpret.h"
 #include "pikecode.h"
 
-RCSID("$Id$");
-
 static int asm_opt(void);
 
 dynamic_buffer instrbuf;

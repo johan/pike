@@ -6,7 +6,6 @@
 */
 
 #include "global.h"
-RCSID("$Id$");
 #include "las.h"
 #include "program.h"
 #include "pike_types.h"

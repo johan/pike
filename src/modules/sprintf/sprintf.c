@@ -278,7 +278,6 @@
  *!   @[lfun::_sprintf()]
  */
 #include "global.h"
-RCSID("$Id$");
 #include "pike_error.h"
 #include "array.h"
 #include "svalue.h"

@@ -12,8 +12,6 @@
 
 #include "global.h"
 
-RCSID("$Id$");
-
 #include "interpret.h"
 #include "pike_error.h"
 #include "rbtree_low.h"

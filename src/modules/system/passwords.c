@@ -26,9 +26,6 @@
 
 #include "system_machine.h"
 #include "system.h"
-
-RCSID("$Id$");
-
 #include "module_support.h"
 #include "interpret.h"
 #include "stralloc.h"

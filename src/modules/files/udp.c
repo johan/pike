@@ -10,7 +10,6 @@
 
 #include "file_machine.h"
 
-RCSID("$Id$");
 #include "fdlib.h"
 #include "pike_netlib.h"
 #include "interpret.h"

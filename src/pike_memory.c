@@ -11,8 +11,6 @@
 #include "pike_macros.h"
 #include "gc.h"
 
-RCSID("$Id$");
-
 /* strdup() is used by several modules, so let's provide it */
 #ifndef HAVE_STRDUP
 char *strdup(const char *str)

@@ -30,8 +30,6 @@
 
 #define sp Pike_sp
 
-RCSID("$Id$");
-
 const struct svalue dest_ob_zero = {
   T_INT, 0,
 #ifdef HAVE_UNION_INIT

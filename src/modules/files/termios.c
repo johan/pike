@@ -6,7 +6,6 @@
 */
 
 #include "global.h"
-RCSID("$Id$");
 #include "file_machine.h"
 
 #if defined(HAVE_TERMIOS_H)

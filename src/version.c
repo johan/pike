@@ -11,8 +11,6 @@
 #include "stralloc.h"
 #include "version.h"
 
-RCSID("$Id$");
-
 /*! @decl string version()
  *!
  *! Report the version of Pike. Does the same as

@@ -11,8 +11,6 @@
 #include "stuff.h"
 #include "pike_error.h"
 
-RCSID("$Id$");
-
 static size_t gobble(struct pike_string *s)
 {
   size_t i;

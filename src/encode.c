@@ -31,8 +31,6 @@
 #include "opcodes.h"
 #include "peep.h"
 
-RCSID("$Id$");
-
 /* #define ENCODE_DEBUG */
 
 /* Use the old encoding method for programs. */

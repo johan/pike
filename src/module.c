@@ -22,8 +22,6 @@
 #include "modules/modlist_headers.h"
 #include "post_modules/modlist_headers.h"
 
-RCSID("$Id$");
-
 /* Define this to trace the initialization and cleanup of static modules. */
 /* #define TRACE_MODULE */
 

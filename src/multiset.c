@@ -24,8 +24,6 @@
 #include "svalue.h"
 #include "block_alloc.h"
 
-RCSID("$Id$");
-
 /* FIXME: Optimize finds and searches on type fields? (But not when
  * objects are involved!) Well.. Although cheap I suspect it pays off
  * so extremely seldom that it isn't worth it. /mast */

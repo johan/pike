@@ -19,8 +19,6 @@
  *!	Don't blame Pike if you shoot your foot off.
  */
 #include "global.h"
-RCSID("$Id$");
-
 #include "system_machine.h"
 
 #ifdef HAVE_UNISTD_H

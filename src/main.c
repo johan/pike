@@ -6,7 +6,6 @@
 */
 
 #include "global.h"
-RCSID("$Id$");
 #include "fdlib.h"
 #include "backend.h"
 #include "module.h"

@@ -14,8 +14,6 @@
 #include "main.h"
 #include "pike_macros.h"
 
-RCSID("$Id$");
-
 #define CMP(X,Y) ( (*cmpfun)((void *)(X),(void *)(Y)) )
 #define EXTRA_ARGS ,fsortfun cmpfun
 #define XARGS ,cmpfun

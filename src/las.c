@@ -6,8 +6,6 @@
 */
 
 #include "global.h"
-RCSID("$Id$");
-
 #include "interpret.h"
 #include "las.h"
 #include "array.h"

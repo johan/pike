@@ -7,8 +7,6 @@
 
 #include "global.h"
 
-RCSID("$Id$");
-
 struct datagram
 {
   int fd;

@@ -10,8 +10,6 @@
 #include "pike_error.h"
 #include "fdlib.h"
 
-RCSID("$Id$");
-
 #else /* TESTING */
 
 #define PMOD_EXPORT

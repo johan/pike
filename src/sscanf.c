@@ -19,9 +19,7 @@
 
 #define sp Pike_sp
 
-RCSID("$Id$");
-
-/* 
+/*
  * helper functions for sscanf %O
  */
 

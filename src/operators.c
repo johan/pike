@@ -7,7 +7,6 @@
 
 #include "global.h"
 #include <math.h>
-RCSID("$Id$");
 #include "interpret.h"
 #include "svalue.h"
 #include "multiset.h"

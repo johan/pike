@@ -27,8 +27,6 @@
 #include "multiset.h"
 #include "mapping.h"
 
-RCSID("$Id$");
-
 PMOD_EXPORT struct array empty_array=
 {
   PIKE_CONSTANT_MEMOBJ_INIT(1), /* Never free */
