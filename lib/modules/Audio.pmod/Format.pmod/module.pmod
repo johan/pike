@@ -32,9 +32,9 @@ class ANY {
   //!
   //! @seealso
   //!   @[read_streamed]
-  object read_file(string filename, int|void nocheck) {
+  this_program read_file(string filename, int|void nocheck) {
     real_read(Stdio.File(filename), nocheck);
-    return this_object();
+    return this;
   }
 
   //! Reads data from stream
@@ -44,15 +44,15 @@ class ANY {
   //!
   //! @seealso
   //!  @[read_file]
-  object read_streamed(string filename, int|void nocheck) {
+  this_program read_streamed(string filename, int|void nocheck) {
     streamed = 1;
     return read_file(filename, nocheck);
   }
 
   //! Reads data from string
-  object read_string(string data, int|void nocheck) {
+  this_program read_string(string data, int|void nocheck) {
     real_read(Stdio.FakeFile(data), nocheck);
-    return this_object();
+    return this;
   }
 
   void real_read(Stdio.File|Stdio.FakeFile file, int|void nocheck);

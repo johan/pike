@@ -105,7 +105,7 @@ class lock_key
       return 0;
     f->close();
     
-    return my_hardlink(c_name, l_name) && this_object();
+    return my_hardlink(c_name, l_name) && this;
   }
   
   void destroy()

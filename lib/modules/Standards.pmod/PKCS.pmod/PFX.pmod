@@ -73,17 +73,17 @@ class ContentInfo_meta
 	  }
 	}
       
-      object set_types(mapping(string:function) types)
+      this_program set_types(mapping(string:function) types)
 	{
 	  content_types = types;
-	  return this_object();
+	  return this;
 	}
 
-      object end_decode_constructed(int length)
+      this_program end_decode_constructed(int length)
 	{
 	  if (length > 2)
 	    error("ContentInfo->end_decode_constructed: Bad index\n");
-	  return this_object();
+	  return this;
 	}
   
 #if 0
@@ -108,7 +108,7 @@ class ContentInfo_meta
 	      return 0;
 	    elements[1] = p(elements[1]);
 	  }
-	  return this_object();
+	  return this;
 	}
 #endif
 
@@ -284,7 +284,7 @@ class PFX
 
   this_program init(object s) {
     safes = s;
-    return this_object();
+    return this;
   }
 
   object set_signature_key(object key) {

@@ -26,7 +26,6 @@
 
 import ".";
 
-object this=this_object();
 object con; // LysKOM.Raw
 
 //!	Description of the connected server.
@@ -163,7 +162,7 @@ mixed `->(string request)
 {
    program p;
    if ( (p=Request[String.capitalize(request)]) )
-      return SyncRequest(p,this_object());
+      return SyncRequest(p,this);
    else if ( request[..5]=="async_" &&
 	     (p=Request[String.capitalize(request[6..])]) )
       return AsyncRequest(p);

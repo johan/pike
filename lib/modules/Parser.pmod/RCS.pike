@@ -420,7 +420,7 @@ class DeltatextIterator
   {
     while(nsteps--)
       next();
-    return this_object();
+    return this;
   }
 
   //! like @expr{@[`+=](1)@}, but returns 0 if the iterator is finished
@@ -532,7 +532,7 @@ class DeltatextIterator
 this_program parse(string raw, void|function(string:void) progress_callback)
 {
   parse_deltatext_sections(parse_delta_sections(parse_admin_section( raw )));
-  return this_object();
+  return this;
 }
 
 //! All data tied to a particular revision of the file.

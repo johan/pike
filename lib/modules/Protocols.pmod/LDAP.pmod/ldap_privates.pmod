@@ -50,19 +50,19 @@ class asn1_boolean
   constant type_name = "BOOLEAN";
   int value;
 
-  object init(int n) {
+  this_program init(int n) {
     if(n)
       n=0xff;
     value = n;
-    return (this_object());
+    return this;
   }
 
   string der_encode() { return build_der(value? "\377" : "\0"); }
 
-  object decode_primitive(string contents) {
+  this_program decode_primitive(string contents) {
     record_der(contents);
     value = ( contents != "\0" );
-    return this_object();
+    return this;
   }
 
   string debug_string() {

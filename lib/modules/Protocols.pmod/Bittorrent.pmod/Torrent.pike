@@ -1016,9 +1016,9 @@ class PieceDownload
 
    void abort()
    {
-      if (!this_object()) werror("abort in destructed\n");
+      if (!this) werror("abort in destructed\n");
 #ifdef TORRENT_PIECEDOWNLOAD_DEBUG
-      werror("%O abort\n",this_object());
+      werror("%O abort\n",this);
 #endif
 
       remove_call_out(abort);

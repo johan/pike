@@ -402,7 +402,7 @@ int _prof_gtim;
       //ldap=0;
       //ok = 0;
       //if(con_fail)
-      //  con_fail(this_object(), @extra_args);
+      //  con_fail(this, @extra_args);
       THROW(({"Failed to connect to LDAP server.\n",backtrace()}));
     }
 
@@ -532,7 +532,7 @@ int _prof_gtim;
   void destroy() {
 
     //send_unbind_op();
-    destruct(this_object());
+    destruct(this);
   }
 
   //!

@@ -37,8 +37,8 @@ void create(int is_server, void|SSL.context ctx)
   alert::create();
   urgent::create();
   application::create();
-  current_read_state = SSL.state(this_object());
-  current_write_state = SSL.state(this_object());
+  current_read_state = SSL.state(this);
+  current_write_state = SSL.state(this);
   handshake::create(is_server, ctx);
 }
 
@@ -294,7 +294,7 @@ string|int got_data(string|int s)
       send_packet(packet);
       if (alert_callback)
 	alert_callback(packet, current_read_state->seq_num, alert_context);
-      if ((!packet) || (!this_object()) || (packet->level == ALERT_fatal))
+      if ((!packet) || (!this) || (packet->level == ALERT_fatal))
 	return -1;
     }
     else

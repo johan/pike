@@ -82,7 +82,7 @@ void flush()
 //! It is possible to cast ADT.Queue to an array.
 mixed cast(string to) {
   switch(to) {
-  case "object": return this_object();
+  case "object": return this;
   case "array": return l[tail..head-1];
   }
   error("Can not cast ADT.Queue to %s.\n", to);

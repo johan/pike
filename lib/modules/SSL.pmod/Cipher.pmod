@@ -189,13 +189,13 @@ class DES
   this_program set_encrypt_key(string k)
   {
     c::set_encrypt_key(Crypto.des_parity(k));
-    return this_object();
+    return this;
   }
 
   this_program set_decrypt_key(string k)
   {
     c::set_decrypt_key(Crypto.des_parity(k));
-    return this_object();
+    return this;
   }
 }
 
@@ -207,13 +207,13 @@ class DES3
   this_program set_encrypt_key(string k)
   {
     c::set_encrypt_key(Crypto.des_parity(k));
-    return this_object();
+    return this;
   }
 
   this_program set_decrypt_key(string k)
   {
     c::set_decrypt_key(Crypto.des_parity(k));
-    return this_object();
+    return this;
   }
 }
 
@@ -295,7 +295,7 @@ class DHParameters
 
     g = Gmp.mpz(2);
 
-    return this_object();
+    return this;
   }
 
   static void create(object ... args) {
@@ -331,12 +331,12 @@ class DHKeyExchange
       % (parameters->order - 1) + 1;
 
     our = parameters->g->powm(secret, parameters->p);
-    return this_object();
+    return this;
   }
   
   this_program set_other(Gmp.mpz o) {
     other = o;
-    return this_object();
+    return this;
   }
 
   object get_shared() {

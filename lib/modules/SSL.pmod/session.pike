@@ -249,8 +249,8 @@ array(string) generate_keys(string client_random, string server_random,
 array(.state) new_server_states(string client_random, string server_random,
 				array(int) version)
 {
-  .state write_state = .state(this_object());
-  .state read_state = .state(this_object());
+  .state write_state = .state(this);
+  .state read_state = .state(this);
   array(string) keys = generate_keys(client_random, server_random,version);
 
   if (cipher_spec->mac_algorithm)
@@ -291,8 +291,8 @@ array(.state) new_server_states(string client_random, string server_random,
 array(.state) new_client_states(string client_random, string server_random,
 				array(int) version)
 {
-  .state write_state = .state(this_object());
-  .state read_state = .state(this_object());
+  .state write_state = .state(this);
+  .state read_state = .state(this);
   array keys = generate_keys(client_random, server_random,version);
   
   if (cipher_spec->mac_algorithm)

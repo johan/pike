@@ -371,7 +371,7 @@ class `()
     if(!fd)
       error("Not a Tar file\n");
 
-    _Tar tar = _Tar(fd, filename, this_object());
+    _Tar tar = _Tar(fd, filename, this);
 
     _TarFS::create(tar, "/", "", parent);
   }

@@ -138,7 +138,7 @@
     ok = 1;
 
     if(con_ok)
-      con_ok(this_object(), @extra_args);
+      con_ok(this, @extra_args);
   }
 
   static int is_whole_pdu() {

@@ -222,7 +222,7 @@ class rsa_verifier
   object init(string key)
   {
     rsa = RSA.parse_public_key(key);
-    return rsa && this_object();
+    return rsa && this;
   }
 
   //!
@@ -405,7 +405,7 @@ class TBSCertificate
 
     int i = 6;
     if (i == sizeof(a))
-      return this_object();
+      return this;
 
     if (version < 2)
       return 0;
@@ -416,7 +416,7 @@ class TBSCertificate
       issuer_id = BitString()->decode_primitive(a[i]->raw);
       i++;
       if (i == sizeof(a))
-	return this_object();
+	return this;
     }
     if (! a[i]->constructed
 	&& (a[i]->combined_tag == make_combined_tag(2, 2)))
@@ -424,7 +424,7 @@ class TBSCertificate
       subject_id = BitString()->decode_primitive(a[i]->raw);
       i++;
       if (i == sizeof(a))
-	return this_object();
+	return this;
     }
     if (a[i]->constructed
 	&& (a[i]->combined_tag == make_combined_tag(2, 3)))
@@ -432,7 +432,7 @@ class TBSCertificate
       extensions = a[i];
       i++;
       if (i == sizeof(a))
-	return this_object();
+	return this;
     }
     /* Too many fields */
     return 0;

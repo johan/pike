@@ -224,7 +224,7 @@ void create(int|void rem_port, string|void rem_addr, int|void loc_port, string|v
     DWRITE("protocol.create: can't bind to the socket.\n");
     ok = 0;
     if(con_fail)
-      con_fail(this_object(), @extra_args);
+      con_fail(this, @extra_args);
   }
 
   if(snmp_errno)

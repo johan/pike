@@ -1097,7 +1097,7 @@ class Message {
 	  part = part[1..];
 	else if(!guess)
 	  error("newline missing after multipart boundary\n");
-	return object_program(this_object())(part, 0, 0, guess);
+	return this_program(part, 0, 0, guess);
       });
     }
     if((hdrs || parts) && !decoded_data) {

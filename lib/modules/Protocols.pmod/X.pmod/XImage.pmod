@@ -90,7 +90,7 @@ class Image_wrapper
   mixed `->( string ind )
   {
     mixed x;
-    if((x = `[](this_object(),ind)))
+    if((x = `[](this,ind)))
       return x;
     return funcall(image[ind]);
   }

@@ -180,7 +180,7 @@ string _sprintf(int t) {
 mixed cast(string to) {
   switch(to) {
   case "string": return data;
-  case "object": return this_object();
+  case "object": return this;
   }
   error("Can not cast object to %O.\n", to);
 }
