@@ -67,6 +67,16 @@ class MyMaster
   {
     logmsg_long (describe_backtrace (trace));
   }
+
+  static void create()
+  {
+    object old_master = master();
+    ::create();
+    foreach (indices (old_master), string var)
+      catch {this[var] = old_master[var];};
+    programs["/master"] = this_program;
+    objects[this_program] = this;
+  }
 }
 
 class Handler
@@ -166,7 +176,7 @@ do_dump: {
 	string s;
 	if ((err = catch {
 	    s=encode_value(p, master()->Encoder(p));
-	    p=decode_value(s,master()->Decoder());
+	    p=decode_value(s, master()->Decoder());
 	  }))
 	  logmsg_long(describe_backtrace(err));
 
@@ -328,11 +338,6 @@ int main(int argc, array(string) argv)
   argv = argv[1..];
 
   argv=Getopt.get_args(argv);
-
-#if 0
-  // Hack to get Calendar files to compile in correct order.
-  object tmp = Calendar;
-#endif
 
   foreach(argv, string file)
   {
