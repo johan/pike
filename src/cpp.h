@@ -10,7 +10,6 @@ struct hash_entry;
 #endif
 
 /* Prototypes begin here */
-struct pike_predef_s;
 struct define_part;
 struct define_argument;
 struct define;
