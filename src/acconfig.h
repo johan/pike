@@ -104,6 +104,12 @@
  */
 #undef STACK_DIRECTION
 
+/* Define this to the number of KB in the initial stack,
+ * currently this is 1 Mb on FreeBSD, 2Mb on Linux and
+ * unlimited (undefined) everywhere else
+ */
+#undef Pike_INITIAL_STACK_SIZE
+
 /* If so, is it restricted to user and system time? */
 #undef GETRUSAGE_RESTRICTED
 
