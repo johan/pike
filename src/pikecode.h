@@ -38,4 +38,8 @@ void ins_f_byte_with_2_args(unsigned int a,
 #include "code/bytecode.h"
 #endif
 
+#ifndef CHECK_RELOC
+#define CHECK_RELOC(REL, PROG_SIZE)
+#endif /* !CHECK_RELOC */
+
 #endif /* CODE_PIKECODE_H */
