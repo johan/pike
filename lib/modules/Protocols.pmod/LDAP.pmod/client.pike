@@ -800,7 +800,7 @@ import SSL.constants;
 	    for(int cnt = 0; cnt < sizeof(filtval); cnt++) {
 		if(cnt) {
 		    if(sizeof(filtval[cnt-1]) && filtval[cnt-1][-1] == '\\')
-			ahlp[-1] = reverse(reverse(ahlp[-1])[1..]) + filtval[cnt];
+		      ahlp[-1] = ahlp[-1][..sizeof (ahlp[-1]) - 2] + "*" + filtval[cnt];
 		    else
 			ahlp += ({ filtval[cnt] });
 		} else
