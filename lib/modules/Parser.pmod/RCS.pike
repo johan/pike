@@ -44,7 +44,6 @@
 string head;		// num
 string branch;		// num
 array(string) access;	// ids
-int strict_locks;
 string comment;
 string expand;
 string description;
@@ -52,6 +51,9 @@ string description;
 //! Maps from username to revision for users that have aquired locks
 //! on this file.
 mapping(string:string) locks;	 // id:num
+
+//! 1 if strict locking is set, 0 otherwise.
+int(0..1) strict_locks;
 
 //! Maps tag names (indices) to tagged revision numbers (values).
 mapping(string:string) tags;
