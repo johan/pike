@@ -368,7 +368,7 @@ void image_turbulence(INT32 args)
 **!	<td>color(red)<br>(same again)</td>
 **!	<td>...red channel<br></td>
 **!	</tr></table>
-**!	</tr><tr>
+**!	</tr></tr>
 **!
 **!	Use with ->grey() or ->color() for one-color-results.
 **!

@@ -620,7 +620,7 @@ static void image_ttf_face_make(INT32 args)
 **!     This is the instance of a face, with geometrics,
 **!	encodings and stuff.
 **! 
-**! method create(object face)
+**! method void create(object face)
 **!	creates a new Instance from a face.
 */
 

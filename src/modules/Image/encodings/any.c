@@ -11,7 +11,7 @@
 **!	this is.
 **!
 **!	Methods:
-**!	<ref>decode</ref>, <ref>decode_trans</ref>,
+**!	<ref>decode</ref>, <ref>decode_alpha</ref>,
 **!	<ref>_decode</ref>
 **!
 **! see also: Image
@@ -39,6 +39,24 @@ RCSID("$Id$");
 void image_gif__decode(INT32 args);
 void image_pnm_decode(INT32 args);
 void image_xwd__decode(INT32 args);
+
+/*
+**! method mapping _decode(string data)
+**  method object decode(string data)
+**  method object decode_alpha(string data)
+**!	Tries heuristics to find the correct method 
+**!	of decoding the data, then calls that method.
+**!
+**! 	The result of _decode() is a mapping that contains
+**!	<pre>
+**!		"type":image data type (ie, "image/jpeg" or similar)
+**!		"image":the image object,
+**!		"alpha":the alpha channel or 0 if N/A
+**!	</pre>
+**!
+**! note
+**!	Throws upon failure.
+*/
 
 void image_any__decode(INT32 args)
 {
@@ -112,7 +130,10 @@ void image_any__decode(INT32 args)
 	       return; /* done */
 	 }
 	 
+	 goto unknown_format;
+
       default:
+unknown_format:
 	 error("Unknown image format.\n");	 
    }
 
