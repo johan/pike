@@ -325,7 +325,11 @@ void lvalue_to_svalue_no_free(struct svalue *to,struct svalue *lval)
       break;
       
     case T_OBJECT:
-      object_index_no_free(to, lval->u.object, lval+1);
+      if (lval[1].type == T_LVALUE) {
+	low_object_index_no_free(to, lval->u.object, lval[1].u.integer);
+      } else {
+	object_index_no_free(to, lval->u.object, lval+1);
+      }
       break;
       
     case T_ARRAY:
@@ -392,7 +396,11 @@ PMOD_EXPORT void assign_lvalue(struct svalue *lval,struct svalue *from)
     break;
 
   case T_OBJECT:
-    object_set_index(lval->u.object, lval+1, from);
+    if (lval[1].type == T_LVALUE) {
+      object_low_set_index(lval->u.object, lval[1].u.integer, from);
+    } else {
+      object_set_index(lval->u.object, lval+1, from);
+    }
     break;
 
   case T_ARRAY:
