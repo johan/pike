@@ -1406,7 +1406,8 @@ int low_define_variable(struct pike_string *name,
     fatal("Attempting to add variable to fixed program\n");
 
   if(compiler_pass==2)
-    fatal("Internal error: Not allowed to add more identifiers during second compiler pass.\n");
+    fatal("Internal error: Not allowed to add more identifiers during second compiler pass.\n"
+	  "Added identifier: \"%s\"\n", name->str);
 #endif
 
   copy_shared_string(dummy.name, name);
