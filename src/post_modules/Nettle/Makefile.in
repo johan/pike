@@ -11,5 +11,6 @@ CONFIG_HEADERS=@CONFIG_HEADERS@
 
 nettle.o: $(SRCDIR)/nettle.c
 hash.o: $(SRCDIR)/hash.c
+cipher.o: $(SRCDIR)/cipher.c
 
 @dependencies@
