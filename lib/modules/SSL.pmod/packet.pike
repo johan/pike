@@ -71,7 +71,7 @@ object|string recv(string data, int version)
 	if (SUPPORT_V2)
 	{
 #ifdef SSL3_DEBUG
-	  werror("SSL.packet: Receiving SSL2 packet '%s'\n", buffer[..4]);
+	  werror("SSL.packet: Receiving SSL2 packet %O\n", buffer[..4]);
 #endif
 
 	  content_type = PACKET_V2;
