@@ -1733,13 +1733,13 @@ void f_master(INT32 args)
 void f_gethrvtime(INT32 args)
 {
   pop_n_elems(args);
-  push_int((INT32)(gethrvtime())/1000));
+  push_int((INT32)(gethrvtime()/1000));
 }
 
 void f_gethrtime(INT32 args)
 {
   pop_n_elems(args);
-  push_int((INT32)(gethrtime())/1000)); 
+  push_int((INT32)(gethrtime()/1000)); 
 }
 #endif /* __STDC__ == 0 && !defined(_NO_LONGLONG) */
 #endif /* HAVE_GETHRVTIME */
