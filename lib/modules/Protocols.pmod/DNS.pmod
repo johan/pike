@@ -581,7 +581,7 @@ class client
 	      break;
 	  }
 	}
-      }
+
       if(domain)
 	domains = ({ domain }) + domains;
 #endif
