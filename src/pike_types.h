@@ -115,7 +115,7 @@ PMOD_EXPORT extern struct pike_type *object_type_string;
 PMOD_EXPORT extern struct pike_type *function_type_string;
 PMOD_EXPORT extern struct pike_type *program_type_string;
 PMOD_EXPORT extern struct pike_type *array_type_string;
-PMOD_EXPORT extern struct pike_type *list_type_string;
+PMOD_EXPORT extern struct pike_type *multiset_type_string;
 PMOD_EXPORT extern struct pike_type *mapping_type_string;
 PMOD_EXPORT extern struct pike_type *type_type_string;
 PMOD_EXPORT extern struct pike_type *mixed_type_string;
