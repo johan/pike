@@ -350,6 +350,20 @@ class File
 #endif
     ::set_blocking();
   }
+
+  void destroy()
+  {
+    if(_fd)
+    { 
+#define FREE_CB(X) if(___##X && query_##X == __stdio_##X) ::set_##X(0)
+      FREE_CB(read_callback);
+      FREE_CB(write_callback);
+#if constant(files.__HAVE_OOB__)
+      FREE_CB(read_oob_callback);
+      FREE_CB(write_oob_callback);
+#endif
+    }
+  }
 };
 
 class Port
