@@ -788,7 +788,7 @@ int dbm_main(int argc, char **argv)
 	describe_svalue(&t,0,0);
 	s=complex_free_buf(&buf);
 
-	fprintf(stderr, s.str);
+	fprintf(stderr, "%s", s.str);
 	free(s.str);
       }
       else
