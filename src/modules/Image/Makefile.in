@@ -9,7 +9,7 @@ OBJS = image_module.o \
 MODNAME=image
 MODULE_SUBDIRS=encodings
 MODULE_ARCHIVES=encodings/encodings.a
-MODULE_LDFLAGS=@LDFLAGS@
+MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 REAL_TESTSUITE=module_testsuite.in
 
 CONFIG_HEADERS=@CONFIG_HEADERS@
