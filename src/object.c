@@ -33,7 +33,7 @@ void setup_fake_object()
   fake_object.refs=0xffffff;
 }
 
-static struct object *low_clone(struct program *p)
+struct object *low_clone(struct program *p)
 {
   int e;
   struct object *o;
@@ -103,14 +103,18 @@ static struct object *low_clone(struct program *p)
   return o;
 }
 
-struct object *clone(struct program *p, int args)
+static void init_object(struct object *o, int args)
 {
-  struct object *o=low_clone(p);
-
   apply_lfun(o,LFUN___INIT,0);
   pop_stack();
   apply_lfun(o,LFUN_CREATE,args);
   pop_stack();
+}
+
+struct object *clone(struct program *p, int args)
+{
+  struct object *o=low_clone(p);
+  init_object(o,args);
   return o;
 }
 
