@@ -137,7 +137,7 @@ void udp_enable_broadcast(INT32 args)
   int o;
   pop_n_elems(args);
   o = 1;
-  push_int(setsockopt(fd, SOL_SOCKET, SO_BROADCAST, (char *)&o, sizeof(int)));
+  push_int(setsockopt(FD, SOL_SOCKET, SO_BROADCAST, (char *)&o, sizeof(int)));
 #else /* SO_BROADCAST */
   pop_n_elems(args);
   push_int(0);
