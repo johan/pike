@@ -77,12 +77,21 @@ int main(int argc, string *argv)
   e=search(tmp,"pike");
   if(e==-1)
   {
-    werror("Couldn't find Pike source dir.\n");
-    werror("Use /full/path/export.pike <except modules>.\n");
-    exit(1);
+    if ((e = search(tmp, "0.5")) == -1)
+    {
+      werror("Couldn't find Pike source dir.\n");
+      werror("Use /full/path/export.pike <except modules>.\n");
+      exit(1);
+    }
+    // Make s symlink to the proper place...
+    tmp=reverse(tmp[e+1..]);
+    system("rm -f tmp/pike; mkdir tmp; ln -s "+tmp*"/"+"/0.6 tmp/pike");
+    cd("tmp");
+    tmp = getcwd()/"/" - ({ "" });
+  } else {
+    tmp=reverse(tmp[e+1..]);
+    cd(tmp*"/");
   }
-  tmp=reverse(tmp[e+1..]);
-  cd(tmp*"/");
   werror("Sourcedir = "+tmp*"/"+"/pike\n");
 
   vpath=replace(getversion()," ","-");
