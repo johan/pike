@@ -1853,19 +1853,19 @@ static void really_low_inherit(struct program *p,
 		tmp.inherit=in2;
 		tmp.parent_identifier=pid;
 		find_external_context(&tmp, in->parent_offset);
-		par=tmp.o;
-		pid=tmp.parent_identifier;
+		par = tmp.o;
+		pid = tmp.parent_identifier;
 	      }
 	      break;
 
 	      case -17:
-		pid=in->parent_identifier;
-		par=in->parent;
+		pid = in->parent_identifier;
+		par = in->parent;
 		break;
 
 	      case -18:
-		par=par->parent_identifier;
-		par=par->parent;
+		pid = par->parent_identifier;
+		par = par->parent;
 	    }
 	  }
 
