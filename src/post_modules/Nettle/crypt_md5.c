@@ -26,6 +26,7 @@
 #include <string.h>
 #include <nettle/md5.h>
 
+#include "nettle.h"
 
 static unsigned char itoa64[] =		/* 0 ... 63 => ascii - 64 */
 	"./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -37,7 +38,7 @@ static unsigned char itoa64[] =		/* 0 ... 63 => ascii - 64 */
  *p++ = itoa64[ (l>>=6) & 0x3f ];
 
 
-char *crypt_md5(int pl, const char *pw, int sl, const char *salt)
+char *pike_crypt_md5(int pl, const char *pw, int sl, const char *salt)
 {
   static char *magic = "$1$"; /*
 			       * This string is magic for
