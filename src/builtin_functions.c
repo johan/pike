@@ -614,7 +614,7 @@ void f_string_to_unicode(INT32 args)
     out = begin_shared_string(len);
     MEMSET(out->str, 0, len);	/* Clear the upper (and lower) byte */
     for(i = in->len; i--;) {
-      out->str[i * 2] = in->str[i];
+      out->str[i * 2 + 1] = in->str[i];
     }
     out = end_shared_string(out);
     break;
