@@ -48,7 +48,7 @@ static struct pike_string *param_background;
 /*! @module Image
  */
 
-/*! @class PNG
+/*! @module PNG
  *!   Support for encoding and decoding the Portable Network Graphics
  *!   format, PNG.
  *!
@@ -1695,7 +1695,7 @@ static void image_png_decode_alpha(INT32 args)
    free_svalue(&s);
 }
 
-/*! @endclass
+/*! @endmodule
  */
 
 /*! @endmodule
