@@ -1673,23 +1673,22 @@ int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 #endif
 
 
-#define basic_low_return() do {				\
-    struct svalue *save_sp=Pike_fp->save_sp;		\
-    DO_IF_DEBUG(					\
-      if(Pike_mark_sp < Pike_fp->save_mark_sp)		\
-        Pike_fatal("Popped below save_mark_sp!\n");	\
-      if(Pike_sp<Pike_interpreter.evaluator_stack)	\
-        Pike_fatal("Stack error (also simple).\n");	\
+#define basic_low_return(save_sp)			\
+  DO_IF_DEBUG(						\
+    if(Pike_mark_sp < Pike_fp->save_mark_sp)		\
+      Pike_fatal("Popped below save_mark_sp!\n");	\
+    if(Pike_sp<Pike_interpreter.evaluator_stack)	\
+      Pike_fatal("Stack error (also simple).\n");	\
     )							\
 							\
     Pike_mark_sp=Pike_fp->save_mark_sp;			\
 							\
-    POP_PIKE_FRAME();					\
-  } while(0)
+  POP_PIKE_FRAME()
 
 
 void low_return(void)
 {
+  struct svalue *save_sp = Pike_fp->save_sp;
 #if defined (PIKE_USE_MACHINE_CODE) && defined (OPCODE_RETURN_JUMPADDR)
   /* If the function that returns is the only ref to the current
    * object and its program then the program would be freed in
@@ -1702,7 +1701,7 @@ void low_return(void)
   add_ref (o);
 #endif
 
-  basic_low_return();
+  basic_low_return (save_sp);
   if(save_sp+1 > Pike_sp)
   {
     push_int(0);
@@ -1725,13 +1724,14 @@ void low_return(void)
 
 void low_return_pop(void)
 {
+  struct svalue *save_sp = Pike_fp->save_sp;
 #if defined (PIKE_USE_MACHINE_CODE) && defined (OPCODE_RETURN_JUMPADDR)
   /* See note above. */
   struct object *o = Pike_fp->current_object;
   add_ref (o);
 #endif
 
-  basic_low_return();
+  basic_low_return (save_sp);
 
   if(save_sp < Pike_sp)
   {
