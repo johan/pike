@@ -387,6 +387,9 @@ static int low_yylex(YYSTYPE *yylval)
 	case TWO_CHAR('g','a'):
 	  if(ISWORD("gauge")) return TOK_GAUGE;
 	  break;
+	case TWO_CHAR('g','l'):
+	  if (ISWORD("global") && !TEST_COMPAT(7,2)) return TOK_GLOBAL;
+	  break;
 	case TWO_CHAR('i','f'):
 	  if(ISWORD("if")) return TOK_IF;
 	  break;
