@@ -156,6 +156,7 @@
 /* This is the grammar definition of Pike. */
 
 #include "global.h"
+RCSID("$Id$");
 #ifdef HAVE_MEMORY_H
 #include <memory.h>
 #endif
