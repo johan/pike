@@ -137,8 +137,22 @@ void gc_mark_stack_external (struct pike_frame *f,
       gc_mark_external (f->current_object, " in current_object in frame on stack");
       gc_mark_external (f->context.prog, " in context.prog in frame on stack");
       if (f->locals) {		/* Check really needed? */
-	gc_mark_external_svalues (f->locals, stack_p - f->locals, " on svalue stack");
-	stack_p = f->locals;
+	if (f->flags & PIKE_FRAME_MALLOCED_LOCALS) {
+	  /* FIXME: In this case the frame is an object;
+	   *        Are we counting double?
+	   */
+	  gc_mark_external_svalues(f->locals, f->num_locals,
+				   " in malloced locals");
+	} else {
+	  /* NOTE: stack_fp may be less than f->locals. */
+	  if ((stack_p - f->locals) >= 0x10000) {
+	    fatal("Unreasonable locals: stack:%p locals:%p\n",
+		  stack_p, f->locals);
+	  }
+	  gc_mark_external_svalues (f->locals, stack_p - f->locals, " on svalue stack");
+	  /* FIXME: Is this safe if stack_p is less than f->locals? */
+	  stack_p = f->locals;
+	}
       }
     } GC_LEAVE;
   if (stack != stack_p)
