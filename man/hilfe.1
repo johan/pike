@@ -1,7 +1,9 @@
 .\" $Id$
 .ds ]L Hilfe
 .TH hilfe 1 "$Date$" Hilfe "Pike Manual" Pike
-.if !\*]LHilfe .ds ]L $Date$ \" Solaris nroff
+.\" On Solaris ]L will contain "Last modified $Date$"
+.\" while HPUX uses ]L to contain "Hilfe".
+.if !\*(]LHilfe .ds ]L $Date$ \" Solaris nroff
 .SH NAME
 hilfe \- interactive pike interpreter
 .SH SYNOPSIS
