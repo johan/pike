@@ -58,8 +58,8 @@ void image_hrz_f_decode(INT32 args)
   {
     rgb_group pix;
     pix.r = s->str[c*3]<<2 | s->str[c*3]>>4;
-    pix.g = s->str[c*3+1]<<2 | s->str[c*3]>>4;
-    pix.b = s->str[c*3+2]<<2 | s->str[c*3]>>4;
+    pix.g = s->str[c*3+1]<<2 | s->str[c*3+1]>>4;
+    pix.b = s->str[c*3+2]<<2 | s->str[c*3+2]>>4;
     ((struct image *)io->storage)->img[c] = pix;
   }
   pop_n_elems(args);
