@@ -75,7 +75,7 @@ static void push_pwent(struct passwd *ent)
 }
 #endif
 
-#if defined(HAVE_GETGRNAM) || defined(HAVE_GETGRUID) || defined(HAVE_GETGRENT)
+#if defined(HAVE_GETGRNAM) || defined(HAVE_GETGRGID) || defined(HAVE_GETGRENT)
 static void push_grent(struct group *ent)
 {
   if(!ent)
