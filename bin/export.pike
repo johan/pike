@@ -97,7 +97,7 @@ int main(int argc, string *argv)
 
     vpath=replace(getversion()," ","-");
     string tag=replace(vpath,({"Pike-","."}),({"","_"}));
-    vpath=replace(getversion(),"-release-",".");
+    vpath=replace(vpath,"-release-",".");
 #if 0
     mapping x=localtime(time());
     tag+=+"-"+sprintf("%02d%02d%02d-%02d%02d",
@@ -122,6 +122,7 @@ int main(int argc, string *argv)
     if(file_size("pike/src/modules/"+tmp) == -2)
       fix_configure("modules/"+tmp);
 
+    werror("vpath = %s\n",vpath);
   system("ln -s pike "+vpath);
 
   files=sum(({ vpath+"/README", vpath+"/ANNOUNCE" }),
