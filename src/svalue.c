@@ -1295,9 +1295,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 		  END_CYCLIC();
 		  break;
 		}
-	      
-	      debug_malloc_touch(save_buffer.str);
-	      
+
 	      restore_buffer (&save_buf);
 	      Pike_interpreter.trace_level=save_t_flag;
 	      pop_stack();
@@ -1387,8 +1385,6 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 		  END_CYCLIC();
 		  break;
 		}
-
-	      debug_malloc_touch(save_buffer.str);
 
 	      restore_buffer (&save_buf);
 	      Pike_interpreter.trace_level=save_t_flag;
