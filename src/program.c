@@ -598,8 +598,11 @@ void low_start_new_program(struct program *p,
   num_parse_error=0;
 
   push_compiler_frame();
+
+#ifdef DEBUG
   if(lex.current_file)
-    store_linenumber(lex.current_line, lex.current_file);
+    store_linenumber(last_pc, lex.current_file);
+#endif
 }
 
 void start_new_program(void)
@@ -2073,7 +2076,9 @@ char *get_line(unsigned char *pc,struct program *prog,INT32 *linep)
     return "Optimizer";
   }
 
+#if 0
   if(prog->id != pid || offset < off)
+#endif
   {
     cnt=prog->linenumbers;
     off=line=0;
@@ -2159,7 +2164,7 @@ struct program *compile(struct pike_string *prog)
   start_new_program();
   compilation_depth=0;
 
-  start_line_numbering();
+/*  start_line_numbering(); */
 
   compiler_pass=1;
   lex.pos=prog->str;
