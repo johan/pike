@@ -335,7 +335,7 @@ class Revision
   }
 
   //! Returns the file contents from this revision.
-  //! @todo
+  //! @bugs
   //!   add optional argument "expand_override" and implement keyword expansion
   string get_contents()
   {
