@@ -900,7 +900,7 @@ static int alpha_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
     if(a->type!=T_OBJECT && b->type!=T_OBJECT)
       return a->type - b->type;
   }
-  return is_gt(a,b);
+  return is_gt(a,b) ? 1 : is_gt(b,a) ? -1 : 0;
 }
 
 #define CMP(X,Y) alpha_svalue_cmpfun(X,Y)
