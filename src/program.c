@@ -631,7 +631,7 @@ struct program *end_program(void)
       struct reference *funp;
       struct identifier *fun;
       funp=prog->identifier_references+i;
-      if(funp->id_flags & (ID_HIDDEN|ID_STATIC|ID_PRIVATE)) continue;
+      if(funp->id_flags & (ID_HIDDEN|ID_STATIC)) continue;
 
       if(funp->id_flags & ID_INHERITED)
       {
