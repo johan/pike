@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 #include "fdlib.h"
 #include "interpret.h"
@@ -280,6 +281,7 @@ void f_filesystem_stat(INT32 args)
     push_int(0);
   }else{
 #ifdef HAVE_STATVFS
+    int num_fields = 8;
     push_text("blocksize");
     push_int(st.f_frsize);
     push_text("blocks");
@@ -294,15 +296,17 @@ void f_filesystem_stat(INT32 args)
     push_int(st.f_ffree);
     push_text("favail");
     push_int(st.f_favail);
+#ifdef HAVE_STATVFS_F_FSTR
     push_text("fsname");
     push_text(st.f_fstr);
+    num_fields++;
+#endif /* HAVE_STATVFS_F_FSTR */
 #ifdef HAVE_STATVFS_F_BASETYPE
     push_text("fstype");
     push_text(st.f_basetype);
-    f_aggregate_mapping(9*2);
-#else /* !HAVE_STATVFS_F_BASETYPE */
-    f_aggregate_mapping(8*2);
+    num_fields++;
 #endif /* HAVE_STATVFS_F_BASETYPE */
+    f_aggregate_mapping(num_fields*2);
 #else /* !HAVE_STATVFS */
 #ifdef HAVE_STATFS
 #ifdef HAVE_STRUCT_STATFS
