@@ -11,6 +11,9 @@
 @TOP@
 @BOTTOM@
 
+/* Define this if your <sys/sendfile.h> is broken. */
+#undef HAVE_BROKEN_SYS_SENDFILE_H
+
 /* Define this if you have a FreeBSD-style (7 args) sendfile(). */
 #undef HAVE_FREEBSD_SENDFILE
 

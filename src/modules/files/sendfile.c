@@ -64,7 +64,9 @@
 #endif /* HAVE_NETINET_TCP_H */
 
 #ifdef HAVE_SYS_SENDFILE_H
+#ifndef HAVE_BROKEN_SYS_SENDFILE_H
 #include <sys/sendfile.h>
+#endif /* !HAVE_BROKEN_SYS_SENDFILE_H */
 #endif /* HAVE_SYS_SENDFILE_H */
 
 #if 0
