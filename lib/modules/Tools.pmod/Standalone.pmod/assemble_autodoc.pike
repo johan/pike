@@ -322,7 +322,7 @@ void ref_expansion(Node n, string dir, void|string file) {
 	error("chapter-ref element outside file element\n");
       if(!c->get_attributes()->file)
 	error("No file attribute on chapter-ref element.\n");
-      n->replace_child(c, parse_file(c->get_attributes()->file)->
+      n->replace_child(c, c = parse_file(c->get_attributes()->file)->
 		       get_first_element("chapter") );
       // fallthrough
     case "chapter":
@@ -338,6 +338,12 @@ void ref_expansion(Node n, string dir, void|string file) {
       n->remove_child(c);
       void_node->add_child(c);
       chapter_ref_expansion(c, dir);
+      break;
+
+    default:
+      werror("Warning unhandled tag %O in ref_expansion\n",
+	     c->get_tag_name());
+      break;
     }
   }
 }
