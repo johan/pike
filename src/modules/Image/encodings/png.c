@@ -290,7 +290,14 @@ static void image_png___decode(INT32 args)
  *! @decl mapping _decode(string|array data, mapping options)
  *!   Decode a PNG image file.
  *!
- *! @result
+ *! @param options
+ *!    @mapping
+ *!      @member string|array|Image.Colortable "colortable"
+ *!        A replacement color table to be used instead of the one
+ *!        in the PNG file, if any.
+ *!    @endmapping
+ *!
+ *! @returns
  *!   @mapping
  *!     @member Image.Image "image"
  *!       The decoded image.
@@ -316,13 +323,6 @@ static void image_png___decode(INT32 args)
  *!     @member Image.Image "alpha"
  *!       The alpha channel, if any.
  *!   @endmapping
- *!
- *! @param options
- *!    @mapping
- *!      @member string|array|Image.Colortable "colortable"
- *!        A replacement color table to be used instead of the one
- *!        in the PNG file, if any.
- *!    @endmapping
  *!
  *! @throws
  *!   Throws an error if the image data is erroneous.
