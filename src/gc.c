@@ -509,8 +509,16 @@ void describe_location(void *real_memblock,
     {
       struct array *a=(struct array *)descblock;
       struct svalue *s=(struct svalue *)location;
-      fprintf(stderr,"%*s  **In index number %"PRINTPTRDIFFT"d\n",indent,"",
-	      s-ITEM(a));
+
+      if(location == (void *)&a->next)
+	fprintf(stderr,"%*s  **In a->next\n",indent,"");
+
+      if(location == (void *)&a->prev)
+	fprintf(stderr,"%*s  **In a->prev\n",indent,"");
+
+      if( s-ITEM(a) > 0)
+	fprintf(stderr,"%*s  **In index number %"PRINTPTRDIFFT"d\n",indent,"",
+		s-ITEM(a));
       break;
     }
 
