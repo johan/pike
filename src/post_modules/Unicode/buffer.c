@@ -110,7 +110,7 @@ void uc_buffer_insert( struct buffer *b, unsigned int pos, int c )
   else
   {
     uc_buffer_write( b, 0 );
-    for( i = b->size-1; i>=pos; i-- )
+    for( i = b->size-1; i>pos; i-- )
       b->data[i] = b->data[i-1];
     b->data[pos] = c;
   }
