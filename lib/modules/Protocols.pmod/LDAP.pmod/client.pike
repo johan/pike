@@ -413,6 +413,12 @@ int _prof_gtim;
       info->tls_version = ldapfd->version;
     } else
       ::create(::_fd);
+#else
+    if(lauth->scheme == "ldaps") {
+	THROW(({"LDAP: LDAPS is not available without SSL support.\n",backtrace()}));
+    }
+    else
+      ::create(::_fd);
 #endif
 
     DWRITE("client.create: connected!\n");
