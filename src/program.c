@@ -3318,7 +3318,19 @@ struct program *program_from_svalue(struct svalue *s)
   {
     case T_OBJECT:
     {
-      struct program *p;
+      struct program *p = s->u.object->prog;
+      int call_fun;
+
+      if (!p) return 0;
+
+      if (!s->subtype) {
+	if ((call_fun = FIND_LFUN(p, LFUN_CALL)) >= 0) {
+	  /* Get the program from the return type. */
+	  struct identifier *id = ID_FROM_INT(p, call_fun);
+	  /* FIXME: do it. */
+	  return 0;
+	}
+      }
       push_svalue(s);
       f_object_program(1);
       p=program_from_svalue(sp-1);
