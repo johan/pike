@@ -25,7 +25,8 @@ TMP_LIBDIR = $(TMP_BUILDDIR)/lib
 prefix = @prefix@
 exec_prefix = $(prefix)/bin
 lib_prefix = $(prefix)/lib/pike
-share_prefix = @datadir@/pike
+data_prefix = @datadir@
+share_prefix = $(data_prefix)/pike
 
 #
 # use bison please, yacc isn't good enough.
@@ -187,7 +188,7 @@ install: pike hilfe
 	@echo
 	@echo "Creating directories..."; \
 	for d in "$(prefix)" "$(exec_prefix)" "$(prefix)/lib" \
-	          "$(lib_prefix)" "$(share_prefix)" \
+	          "$(lib_prefix)" "$(data_prefix)" "$(share_prefix)" \
 	          "$(prefix)/include" "$(prefix)/include/pike"; do \
 	  if [ -d "$$d/." ]; then : ; else \
 	    echo "$$d"; \
