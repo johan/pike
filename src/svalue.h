@@ -123,6 +123,7 @@ extern char *type_name[];
 #define tFloat "\007"
 #define tInt "\010\200\000\000\000\177\377\377\377"
 #define tInt01 "\010\000\000\000\000\000\000\000\001"
+#define tByte "\010\000\000\000\000\000\000\000\377"
 
 #define tVoid "\020"
 #define tVar(X) #X
