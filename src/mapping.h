@@ -86,7 +86,7 @@ extern struct mapping *gc_internal_mapping;
 #define free_mapping(M) do{						\
     struct mapping *m_=(M);						\
     debug_malloc_touch(m_);						\
-    DO_IF_PIKE_CLEANUP (						\
+    DO_IF_DEBUG (							\
       if (gc_external_refs_zapped)					\
 	gc_check_zapped (m_, PIKE_T_MAPPING, __FILE__, __LINE__);	\
     );									\

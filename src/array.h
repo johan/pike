@@ -72,7 +72,7 @@ extern struct array *gc_internal_array;
 #define free_array(V) do{						\
     struct array *v_=(V);						\
     debug_malloc_touch(v_);						\
-    DO_IF_PIKE_CLEANUP (						\
+    DO_IF_DEBUG (							\
       if (gc_external_refs_zapped)					\
 	gc_check_zapped (v_, PIKE_T_ARRAY, __FILE__, __LINE__);		\
     );									\
