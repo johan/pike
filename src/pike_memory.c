@@ -1984,7 +1984,9 @@ static void low_search_all_memheaders_for_references(void)
 {
   unsigned long h;
   struct memhdr *m;
-  
+
+  if (PIKE_MEM_CHECKER()) return;
+
   for(h=0;h<(unsigned long)memhdr_hash_table_size;h++)
     for(m=memhdr_hash_table[h];m;m=m->next)
       m->flags &=~ MEM_REFERENCED;
@@ -1996,7 +1998,7 @@ static void low_search_all_memheaders_for_references(void)
       unsigned int e;
       struct memhdr *tmp;
       void **p=m->data;
-      
+
       if( ! ((sizeof(void *)-1) & (long) p ))
       {
 	if(m->size > 0)
