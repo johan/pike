@@ -624,7 +624,7 @@ reposition the cursor to fontify more identifiers."
 	      (1 ,font-lock-preprocessor-face)
 	      (2 font-lock-variable-name-face nil t)))
 
-	    (,(concat "^[ \t]*#[ \t]*ifdef[ \t]+"
+	    (,(concat "^[ \t]*#[ \t]*ifn?def[ \t]+"
 		      pike-font-lock-identifier-regexp)
 	     (1 font-lock-variable-name-face))
 
