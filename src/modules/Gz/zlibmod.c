@@ -314,7 +314,7 @@ static void gz_inflate(INT32 args)
 
 static void init_gz_inflate(struct object *o)
 {
-  mt_init(& THIS->locked);
+  mt_init(& THIS->lock);
   MEMSET(& THIS->gz, 0, sizeof(THIS->gz));
   THIS->gz.zalloc=Z_NULL;
   THIS->gz.zfree=Z_NULL;
