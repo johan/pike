@@ -316,7 +316,7 @@ PMOD_EXPORT struct svalue throw_value = { PIKE_T_INT };
 int throw_severity;
 static const char *in_error;
 
-PMOD_EXPORT DECLSPEC(noreturn) void low_error(char *buf) ATTRIBUTE((noreturn))
+PMOD_EXPORT DECLSPEC(noreturn) void low_error(const char *buf) ATTRIBUTE((noreturn))
 {
   push_error(buf);
   free_svalue(& throw_value);
