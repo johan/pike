@@ -65,19 +65,19 @@ array find_testsuites(string dir)
   {
     foreach(s, string file)
       {
-	string name=combine_path(dir||"",file);
-	if(file_size(name)==-2)
-	  ret+=find_testsuites(name);
-      }
-    
-    foreach(s, string file)
-      {
 	switch(file)
 	{
 	  case "testsuite":
 	  case "module_testsuite":
 	    ret+=({ combine_path(dir||"",file) });
 	}
+      }
+
+    foreach(s, string file)
+      {
+	string name=combine_path(dir||"",file);
+	if(file_size(name)==-2)
+	  ret+=find_testsuites(name);
       }
   }
   return ret;
