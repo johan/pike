@@ -25,7 +25,7 @@ log_end() {
 
 xenofarm_build() {
   log_start compile
-  $MAKE $MAKE_FLAGS > build/xenofarm/compilelog.txt 2>&1
+  $MAKE $MAKE_FLAGS "CONFIGUREARGS=$CONFIGUREARGS" >build/xenofarm/compilelog.txt 2>&1
   log_end $?
   [ $LASTERR = 0 ] || return 1
 }
