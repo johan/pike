@@ -215,4 +215,10 @@ PMOD_EXPORT void *debug_xcalloc(size_t n, size_t s);
     RET = ret;						\
   } while(0)
 
+#ifdef DEBUG_MALLOC
+void initialize_dmalloc(void);
+#else
+#define initialize_dmalloc()
+#endif
+
 #endif
