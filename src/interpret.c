@@ -759,18 +759,18 @@ void *dummy_label;
 
 #define OPCODE0(O,N,C) \
 void PIKE_CONCAT(opcode_,O)(void) { \
-DO_IF_DEBUG(if(t_flag > 3) fprintf(stderr,"-   %s()\n",N));\
+DO_IF_DEBUG(if(t_flag > 3) fprintf(stderr,"- (%p,%ld): %s()\n",PROG_COUNTER,DO_NOT_WARN((long)(Pike_sp-Pike_interpreter.evaluator_stack)),N));\
 C }
 
 #define OPCODE1(O,N,C) \
 void PIKE_CONCAT(opcode_,O)(INT32 arg1) {\
-DO_IF_DEBUG(if(t_flag > 3) fprintf(stderr,"-   %s(%d)\n",N,arg1)); \
+DO_IF_DEBUG(if(t_flag > 3) fprintf(stderr,"- (%p,%ld): %s(%d)\n",PROG_COUNTER,DO_NOT_WARN((long)(Pike_sp-Pike_interpreter.evaluator_stack)),N,arg1)); \
 C }
 
 
 #define OPCODE2(O,N,C) \
 void PIKE_CONCAT(opcode_,O)(INT32 arg1,INT32 arg2) { \
-DO_IF_DEBUG(if(t_flag > 3) fprintf(stderr,"-   %s(%d,%d)\n",N,arg1,arg2)); \
+DO_IF_DEBUG(if(t_flag > 3) fprintf(stderr,"- (%p,%ld): %s(%d,%d)\n",PROG_COUNTER,DO_NOT_WARN((long)(Pike_sp-Pike_interpreter.evaluator_stack)),N,arg1,arg2)); \
 C }
 
 
