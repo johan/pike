@@ -1,0 +1,14 @@
+/*
+ * Null policy-manager for the generic Caching system
+ * by Francesco Chemolli <kinkie@roxen.com>
+ * (C) 2000 Roxen IS
+ *
+ * $Id$
+ *
+ * This is a policy manager that doesn't actually expire anything.
+ * It is useful in multilevel and/or network-based caches.
+ */
+
+void expire (Cache.Storage storage) {
+  /* empty */
+}
