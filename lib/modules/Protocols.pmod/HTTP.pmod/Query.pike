@@ -497,7 +497,7 @@ object sync_request(string server, int port, string query,
 #endif
     kept_alive = 1;
     // Remove unread data from the connection.
-    local::data();
+    this_program::data();
   }
   else
   {

@@ -205,15 +205,15 @@ class _Tar  // filesystem
 
   void create(Stdio.File fd, string filename, object parent)
   {
-    local::filename = filename;
+    this_program::filename = filename;
     // read all entries
 
-    local::fd = fd;
+    this_program::fd = fd;
     int pos = 0; // fd is at position 0 here
     for(;;)
     {
       Record r;
-      string s = local::fd->read(512);
+      string s = this_program::fd->read(512);
 
       if(s=="" || strlen(s)<512 || sscanf(s, "%*[\0]%*2s")==1)
 	break;
@@ -227,7 +227,7 @@ class _Tar  // filesystem
       pos += 512 + r->size;
       if(pos%512)
 	pos += 512 - (pos%512);
-      local::fd->seek(pos);
+      this_program::fd->seek(pos);
     }
 
     filename_to_entry = mkmapping(entries->fullpath, entries);

@@ -291,8 +291,8 @@ class simple
   //!
   void create(object(Stdio.File) con, int|void timeout)
   {
-    local::con = con;
-    local::timeout = timeout;
+    this_program::con = con;
+    this_program::timeout = timeout;
 
     // Start the timeout handler.
     touch_time();
