@@ -2359,6 +2359,8 @@ PIKE_MODULE_INIT
 PIKE_MODULE_EXIT
 {
   EXIT;
+  free_svalue(&_image_color_program);
+  _image_color_program.type = PIKE_T_INT;
   free_svalue(&_image_program);
   _image_program.type = PIKE_T_INT;
   SDL_Quit();
