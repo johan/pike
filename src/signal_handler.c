@@ -706,6 +706,7 @@ struct perishables
   struct pike_string *stdout_s;
   struct pike_string *stderr_s;
   struct pike_string *keep_signals_s;
+  int disabled;
 #ifdef HAVE_SETGROUPS
   gid_t *wanted_gids;
   struct array *wanted_gids_array;
