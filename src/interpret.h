@@ -171,5 +171,11 @@ extern long long time_base;
 #endif
 #endif
 
+/* Forward compatibility */
+#define Pike_sp sp
+#define Pike_fp fp
+#define Pike_mark_sp mark_sp
+#define Pike_stack_size stack_size
+
 #endif
 
