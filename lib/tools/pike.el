@@ -334,7 +334,8 @@ The name is assumed to begin with a capital letter.")
      (save-excursion
        (goto-char (match-beginning 1))
        (not (looking-at
-	     (concat pike-font-lock-class-name-regexp
+	     (concat "\\(\\sw+\\.\\)*"
+		     pike-font-lock-class-name-regexp
 		     "\\s *\\(\\<\\||\\)")))))
    (save-match-data
      (let ((start (match-end 0)))
