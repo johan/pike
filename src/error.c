@@ -181,6 +181,8 @@ void new_error(const char *name, const char *text, struct svalue *oldsp,
 #endif
 
     fprintf(stderr,"No error recovery context!\n%s():%s",name,text);
+    if(file)
+      fprintf(stderr,"at %s:%d\n",file,line);
     exit(99);
   }
 
