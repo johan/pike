@@ -79,7 +79,7 @@ void create(void|string|object host, void|string db,
 
   array(string) program_names;
 
-  if (host != replace(host, ({ ":", "/", "@" }), ({ "", "", "" }))) {
+  if (host && (host != replace(host, ({ ":", "/", "@" }), ({ "", "", "" })))) {
 
     // The hostname is on the format:
     //
