@@ -40,10 +40,10 @@ struct Pike_interpreter {
   char *stack_bottom;
 #endif
 
-#ifdef THREAD_TRACE
-  int t_flag;
-#endif /* THREAD_TRACE */
+  int trace_level;
 };
+
+#define t_flag (Pike_interpreter.trace_level)
 
 #ifndef STRUCT_FRAME_DECLARED
 #define STRUCT_FRAME_DECLARED

@@ -81,7 +81,6 @@ PMOD_EXPORT int debug_options=0;
 PMOD_EXPORT int runtime_options=0;
 PMOD_EXPORT int d_flag=0;
 PMOD_EXPORT int c_flag=0;
-PMOD_EXPORT int t_flag=0;
 PMOD_EXPORT int default_t_flag=0;
 PMOD_EXPORT int a_flag=0;
 PMOD_EXPORT int l_flag=0;

@@ -498,15 +498,6 @@ PMOD_EXPORT extern unsigned long thread_yields;
 PMOD_EXPORT extern THREAD_T threads_disabled_thread;
 #endif
 
-#ifdef THREAD_TRACE
-PMOD_EXPORT extern int t_flag;
-#define SWAP_OUT_TRACE(_tmp)	do { (_tmp)->status.t_flag = t_flag; } while(0)
-#define SWAP_IN_TRACE(_tmp)	do { t_flag = (_tmp)->status.t_flag; } while(0)
-#else /* !THREAD_TRACE */
-#define SWAP_OUT_TRACE(_tmp)
-#define SWAP_IN_TRACE(_tmp)
-#endif /* THREAD_TRACE */
-
 #define SWAP_OUT_THREAD(_tmp) do {				\
        (_tmp)->state=Pike_interpreter;				\
        (_tmp)->swapped=1;					\

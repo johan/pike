@@ -1799,9 +1799,6 @@ MK_VERY_LOW_SSCANF(2,2)
 
 void o_sscanf(INT32 args)
 {
-#ifdef PIKE_DEBUG
-  extern int t_flag;
-#endif
   INT32 i=0;
   int x;
   ptrdiff_t matched_chars;
@@ -1935,9 +1932,6 @@ void o_sscanf(INT32 args)
  */
 PMOD_EXPORT void f_sscanf(INT32 args)
 {
-#ifdef PIKE_DEBUG
-  extern int t_flag;
-#endif
   INT32 i;
   int x;
   ptrdiff_t matched_chars;
