@@ -2515,6 +2515,8 @@ class: modifiers TOK_CLASS line_number_info optional_identifier
 
     if(p) {
       free_program(p);
+    } else {
+      Pike_compiler->num_parse_error++;
     }
 
     $$=mkidentifiernode($<number>5);
