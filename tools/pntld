@@ -84,6 +84,7 @@ array(string) libpath=({});
 array(string) libraries=({});
 
 int err;
+int output_machine;
 
 
 #define CHR_LINK_INFO 0x200
@@ -319,7 +320,7 @@ class Linker
 		"%s%s%s%s" /* the rest */ , 
 		
 		/* coff */
-		MACHINE_I386, /* Intel x86 */
+		output_machine,
 		sizeof(section_to_number),
 		time(),
 		base+strlen(sectiondata),
@@ -564,7 +565,8 @@ class dumpfile
 	      i4(pos),
 	      i4(pos+4),
 	      decodeRelocType(i2(pos+8)),
-	      getsymbolname(i4(pos+4)));
+	      (machine == MACHINE_IA64 && i2(pos+2)==31 ?
+	       "N/A" : getsymbolname(i4(pos+4))));
 #endif
 	Reloc r=Reloc();
 	r->loc=i4(pos);
@@ -897,6 +899,8 @@ class dumpfile
       write("Character   : %s\n",character_descriptor->desc(characteristics));
 #endif
 
+      if(!output_machine) output_machine = machine;
+
       stringtable = symboltable + numsymbols*18;
       sections=pos+20+sizeofoptheader;
 
@@ -1173,6 +1177,9 @@ int main(int argc, array(string) argv)
   }
 
   argv=Getopt.get_args(argv);
+
+  if(sizeof(argv)>1)
+    output_machine = 0;
 
   foreach(argv[1..],string file)
     dumpfile(Stdio.read_file(file),0,0,file+":"+file);
