@@ -33,6 +33,14 @@ RCSID("$Id$");
 #include "constants.h"
 #include "version.h"
 
+#ifdef HAVE_PTHREAD_INITIAL_THREAD_BOS
+#if defined(HAVE_DLOPEN)
+#ifdef HAVE_DLFCN_H
+#include <dlfcn.h>
+#endif
+#endif
+#endif
+
 #include "las.h"
 
 #include <errno.h>
@@ -425,6 +433,26 @@ int dbm_main(int argc, char **argv)
       stack_top += STACK_DIRECTION * lim.rlim_cur;
 
 #ifdef HAVE_PTHREAD_INITIAL_THREAD_BOS
+#if defined(HAVE_DLOPEN) && defined(HAVE_DLFCN_H)
+      /* FIXME: this code should be used on all linux glibc systems
+       * even those without __pthread_initial_thread_bos
+       * -Hubbe
+       */
+      {
+	char ** bos_location;
+	void *handle;
+	if((handle=dlopen(0, RTLD_LAZY)))
+	{
+	  bos_location=dlsym(handle,"__pthread_initial_thread_bos");
+	  dlclose(handle);
+
+	  if(bos_location && *bos_location &&
+	     (*bos_location - stack_top) *STACK_DIRECTION < 0)
+	    stack_top=*bos_location;
+	}
+      }
+#else
+
       {
 	extern char * __pthread_initial_thread_bos;
 	/* Linux glibc threads are limited to a 4 Mb stack
@@ -435,6 +463,7 @@ int dbm_main(int argc, char **argv)
 	   (__pthread_initial_thread_bos - stack_top) *STACK_DIRECTION < 0)
 	  stack_top=__pthread_initial_thread_bos;
       }
+#endif
 #endif
       stack_top -= STACK_DIRECTION * 8192 * sizeof(char *);
 
