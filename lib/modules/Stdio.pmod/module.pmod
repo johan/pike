@@ -570,11 +570,18 @@ nothing to read happens if you do, in backend:
  o read it
  o finish backend (ie, callback)
 
+We still need to read 0 bytes though, to get the next callback.
+
 FIXME for NT or internally? /Mirar
 
 */
+
 #if !defined(__NT__)
-    if (!::peek()) return; // nothing to read
+    if (!::peek()) 
+    {
+       ::read(0,1);
+       return; // nothing to read
+    }
 #endif
 
     string s=::read(8192,1);
