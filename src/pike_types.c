@@ -26,7 +26,7 @@ RCSID("$Id$");
 #include "bignum.h"
 #include "main.h"
 
-/* #define PIKE_TYPE_DEBUG */
+#define PIKE_TYPE_DEBUG
 
 int max_correct_args;
 
@@ -2269,7 +2269,11 @@ static int low_pike_types_le2(char *a, char *b, int array_cnt)
       }
 
       if (EXTRACT_UCHAR(a_tmp) != T_VOID) {
-	/* if (EXTRACT_UCHAR(b_tmp) == T_VOID) return 0; */
+	if ((EXTRACT_UCHAR(b_tmp) == T_VOID) &&
+	    (a_tmp != a+1)) {
+	  /* a is not a many arg */
+	  return 0;
+	}
 	if (!low_pike_types_le(b_tmp, a_tmp, 0)) return 0;
       }
     }
