@@ -727,7 +727,7 @@ static void f_big_query(INT32 args) {
 /*       this->busy--; */
       flush_results_queue(this);
       break;
-    default: /* Ok */
+    default:; /* Ok */
     }
 
     if (err||done) break; /* get out of the while cycle */
@@ -1208,10 +1208,10 @@ PIKE_MODULE_INIT {
                                          tOr(tInt,tVoid), tVoid),
                0);
   ADD_FUNCTION("error",f_error,tFunc(tVoid,tOr(tVoid,tStr)),
-               OPT_RETURN);
+	       0);
 
   ADD_FUNCTION("big_query",f_big_query,tFunc(tString,tOr(tInt,tObj)),
-               OPT_RETURN);
+	       0);
 
   ADD_FUNCTION("fetch_row", f_fetch_row,
                tFunc(tVoid,tOr(tVoid,tArr(tMix))), 0);
@@ -1231,11 +1231,9 @@ PIKE_MODULE_INIT {
   add_function("connect",f_connect,
                "function(void|string,void|string,void|string,void|string,int|void:void)",
                0);
-  add_function("error",f_error,"function(void:void|string)",OPT_RETURN);
-  add_function("big_query",f_big_query,"function(string:void|object)",
-               OPT_RETURN);
-  add_function("fetch_row", f_fetch_row,"function(void:void|array(mixed))",
-               OPT_RETURN);
+  add_function("error",f_error,"function(void:void|string)", 0);
+  add_function("big_query",f_big_query,"function(string:void|object)", 0);
+  add_function("fetch_row", f_fetch_row,"function(void:void|array(mixed))", 0);
   add_function("num_fields", f_num_fields, "function(void:int)",0);
   add_function("affected_rows",f_affected_rows,"function(void:int)",0);
   add_function("fetch_fields",f_fetch_fields,
