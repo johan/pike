@@ -145,10 +145,11 @@ static void APPEND_PATH(struct string_builder *s,
 		tmp++;
 	      }
 	      
-	      if(index_shared_string(s->s,tmp)=='.' &&
-		 index_shared_string(s->s,tmp+1)=='.' && 
-		 ( IS_SEP(index_shared_string(s->s,tmp+2)) ||
-		   !index_shared_string(s->s,tmp+2)))
+	      if ((tmp+2 < s->s->len) &&
+		  (index_shared_string(s->s,tmp)=='.') &&
+		  (index_shared_string(s->s,tmp+1)=='.') && 
+		  ( IS_SEP(index_shared_string(s->s,tmp+2)) ||
+		    !index_shared_string(s->s,tmp+2)))
 		break;
 
 	      
