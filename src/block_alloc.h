@@ -51,7 +51,7 @@ struct DATA *PIKE_CONCAT(alloc_,DATA)(void)				\
 									\
   tmp=PIKE_CONCAT3(free_,DATA,s);					\
   PIKE_CONCAT3(free_,DATA,s)=tmp->BLOCK_ALLOC_NEXT;			\
-  DO_IF_DMALLOC( dmalloc_register(tmp,0, __FILE__, __LINE__);  )	\
+  DO_IF_DMALLOC( dmalloc_register(tmp,0, DMALLOC_LOCATION());  )	\
   INIT_BLOCK(tmp);							\
   return tmp;								\
 }									\

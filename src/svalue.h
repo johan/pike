@@ -279,10 +279,8 @@ do{ \
 extern struct svalue dest_ob_zero;
 
 #ifdef DEBUG_MALLOC
-#define LINE_ARGS  , int line, char * file
-#define free_svalues(X,Y,Z) debug_free_svalues((X),(Y),(Z),__LINE__,__FILE__)
+#define free_svalues(X,Y,Z) debug_free_svalues((X),(Y),(Z), DMALLOC_LOCATION())
 #else
-#define LINE_ARGS
 #define free_svalues(X,Y,Z) debug_free_svalues((X),(Y),(Z))
 #endif
 
@@ -290,7 +288,7 @@ extern struct svalue dest_ob_zero;
 void really_free_short_svalue(union anything *s, TYPE_T type);
 void really_free_svalue(struct svalue *s);
 void do_free_svalue(struct svalue *s);
-void debug_free_svalues(struct svalue *s,INT32 num, INT32 type_hint LINE_ARGS);
+void debug_free_svalues(struct svalue *s,INT32 num, INT32 type_hint DMALLOC_LINE_ARGS);
 void assign_svalues_no_free(struct svalue *to,
 			    struct svalue *from,
 			    INT32 num,

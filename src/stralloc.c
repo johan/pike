@@ -727,7 +727,7 @@ void really_free_string(struct pike_string *s)
   }
 #endif
   unlink_pike_string(s);
-  debug_free((char *)s,__FILE__,__LINE__,1);
+  debug_free((char *)s,DMALLOC_LOCATION(),1);
 }
 
 void debug_free_string(struct pike_string *s)

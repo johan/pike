@@ -36,6 +36,10 @@ void check_recovery_context(void)
 
   /* Add more stuff here when required */
 }
+
+void pike_gdb_breakpoint(void) 
+{
+}
 #endif
 
 JMP_BUF *init_recovery(JMP_BUF *r DEBUG_LINE_ARGS)

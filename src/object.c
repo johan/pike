@@ -447,14 +447,6 @@ void low_destruct(struct object *o,int do_free)
 
   o->prog=0;
 
-  if(o->parent)
-  {
-    /* fprintf(stderr, "destruct(): Zapping parent.\n"); */
-
-    free_object(o->parent);
-    o->parent=0;
-  }
-
   LOW_PUSH_FRAME(o);
 
   /* free globals and call C de-initializers */
@@ -489,6 +481,15 @@ void low_destruct(struct object *o,int do_free)
   }
 
   POP_FRAME();
+
+  if(o->parent)
+  {
+    /* fprintf(stderr, "destruct(): Zapping parent.\n"); */
+
+    free_object(o->parent);
+    o->parent=0;
+  }
+
 
   free_program(p);
 }
