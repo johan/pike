@@ -5991,7 +5991,7 @@ void init_builtin_efuns(void)
 		tFunc(tMap(tSetvar(1,tMix),tSetvar(2,tMix)) tVar(2) tOr(tVoid,tVar(1)),
 		      tVar(1)),
 
-		tIfnot(tOr(tFunc(tNot(tArray) tMix tOr(tVoid,tInt), tMix)
+		tIfnot(tOr(tFunc(tNot(tArray) tMix tOr(tVoid,tInt), tMix),
 			   tFunc(tNot(tMapping) tMix tOr(tVoid,tInt), tMix)),
 		       tFunc(tOr(tMapping, tArray) tMix tOr(tVoid,tInt),
 			     tZero))),
