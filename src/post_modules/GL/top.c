@@ -10,6 +10,7 @@
 #ifdef HAVE_GL
 
 #ifdef HAVE_WINDEF_H
+#include <windows.h>
 #include <windef.h>
 #endif /* HAVE_WINDEF_H */
 #ifdef HAVE_WINGDI_H
