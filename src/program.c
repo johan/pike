@@ -863,6 +863,7 @@ void check_program(struct program *p)
   for(e=0;e<(int)p->num_strings;e++)
     check_string(p->strings[e]);
 
+  if(p->flags & PROGRAM_FINISHED)
   for(e=0;e<(int)p->num_identifiers;e++)
   {
     check_string(p->identifiers[e].name);
