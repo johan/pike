@@ -20,7 +20,6 @@ RCSID("$Id$");
 #include "las.h"
 #include "gc.h"
 
-
 #define AVG_LINK_LENGTH 4
 #define MIN_LINK_LENGTH 1
 #define MAP_SLOTS(X) ((X)+((X)>>4)+8)
@@ -1047,4 +1046,24 @@ void zap_all_mappings()
     
     free_mapping(m);
   }
+}
+
+void count_memory_in_mappings(INT32 *num_, INT32 *size_)
+{
+  INT32 num=0, size=0;
+  struct mapping *m;
+  for(m=first_mapping;m;m=m->next)
+  {
+    struct keypair *k;
+    num++;
+    size+=sizeof(struct mapping)+
+      sizeof(struct keypair *) * m->hashsize+
+      sizeof(struct keypair) *  m->size;
+
+    for(k=m->free_list;k;k=k->next)
+      size+=sizeof(struct keypair);
+  }
+
+  *num_=num;
+  *size_=size;
 }

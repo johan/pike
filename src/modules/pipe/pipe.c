@@ -1108,6 +1108,7 @@ void init_pipe_programs()
    
    pipe_program->refs++;
    
+   /* Why is this here?? /Hubbe */
    port_setup_program();
    
    offset_output_close_callback=find_identifier("_output_close_callback",

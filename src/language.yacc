@@ -1295,6 +1295,7 @@ void yyerror(char *str)
 
   if (num_parse_error > 5) return;
   num_parse_error++;
+  cumulative_parse_error++;
 
   if ( get_master() )
   {

@@ -808,3 +808,20 @@ void gc_free_all_unreferenced_objects()
 
 #endif /* GC2 */
 
+void count_memory_in_objects(INT32 *num_, INT32 *size_)
+{
+  INT32 num=0, size=0;
+  struct object *o;
+  for(o=first_object;o;o=o->next)
+  {
+    num++;
+    if(o->prog)
+    {
+      size+=sizeof(struct object);
+    }else{
+      size+=sizeof(struct object)-1+o->prog->storage_needed;
+    }
+  }
+  *num_=num;
+  *size_=size;
+}

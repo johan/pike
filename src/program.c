@@ -1452,3 +1452,17 @@ void gc_free_all_unreferenced_programs()
 }
 
 #endif /* GC2 */
+
+
+void count_memory_in_programs(INT32 *num_, INT32 *size_)
+{
+  INT32 size=0, num=0;
+  struct program *p;
+  for(p=first_program;p;p=p->next)
+  {
+    num++;
+    size+=p->total_size;
+  }
+  *num_=num;
+  *size_=size;
+}

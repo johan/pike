@@ -16,6 +16,8 @@ RCSID("$Id$");
 #include "backend.h"
 #include "time_stuff.h"
 #include "constants.h"
+#include "stralloc.h"
+#include "builtin_functions.h"
 
 #include "callback.h"
 
@@ -166,7 +168,19 @@ static struct array * new_call_out(int num_arg,struct svalue *argp)
   return new->args;
 }
 
+static void count_memory_in_call_outs(struct callback *foo,
+				      void *bar,
+				      void *gazonk)
+{
+  push_text("num_call_outs");
+  push_int(num_pending_calls);
+  push_text("call_out_memory");
+  push_int(call_buffer_size * sizeof(call_out **)+
+	   num_pending_calls * sizeof(call_out));
+}
+
 static struct callback *call_out_backend_callback=0;
+static struct callback *mem_callback=0;
 void do_call_outs(struct callback *ignored, void *ignored_too, void *arg);
 
 void f_call_out(INT32 args)
@@ -193,6 +207,9 @@ void f_call_out(INT32 args)
    */
   if(!call_out_backend_callback)
     call_out_backend_callback=add_backend_callback(do_call_outs,0,0);
+
+  if(!mem_callback)
+    mem_callback=add_memory_usage_callback(count_memory_in_call_outs,0,0);
 }
 
 void do_call_outs(struct callback *ignored, void *ignored_too, void *arg)
