@@ -427,7 +427,7 @@ class Display
 	    received->expect(32);
 	    get_keyboard_mapping();
 
-	    foreach(values(Extensions), program p)
+	    foreach(values(.Extensions), program p)
 	      {
 		object e = p();
 		if(e->init( this_object() ))
