@@ -540,7 +540,7 @@ class Node {
 
   //  Member variables for this node type
   static int            mNodeType;
-  static string		mShortNamespace;	// Namespace prefix
+  static string		mShortNamespace = "";	// Namespace prefix
   static string		mNamespace;	// Resolved namespace
   static string         mTagName;
 //   private int            mTagCode;
