@@ -180,7 +180,7 @@ EOF])
 dnl newer autoconf call substr m4_substr
 ifdef([substr], ,m4_copy(m4_substr,substr))
 
-define([PAD_FEATURE],[substr([$1][................................],0,22)])
+define([PAD_FEATURE],[substr([$1][................................],0,17) ])
 
 define(PIKE_FEATURE_3,[
   cat >pike_[$1].feature <<EOF
