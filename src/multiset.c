@@ -841,6 +841,9 @@ PMOD_EXPORT struct multiset *allocate_multiset (int allocsize,
 {
   struct multiset *l = alloc_multiset();
 
+  /* FIXME: It's currently little use making "inflated" multisets with
+   * allocsize, since prepare_for_add shrinks them. */
+
 #ifdef PIKE_DEBUG
   if (cmp_less) check_svalue (cmp_less);
 #endif
