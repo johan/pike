@@ -39,7 +39,7 @@ RCSID("$Id$");
 #define ATTRIBUTE(X)
 
 
-#define COMPILER_DEBUG
+/* #define COMPILER_DEBUG */
 
 #ifdef COMPILER_DEBUG
 #define CDFPRINTF(X)	fprintf X
