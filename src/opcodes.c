@@ -580,6 +580,11 @@ void o_cast(struct pike_type *type, INT32 run_time_type)
 	  case T_FUNCTION:
 	    if (Pike_sp[-1].subtype == FUNCTION_BUILTIN) {
 	      Pike_error("Cannot cast builtin functions to object.\n");
+	    } else if (Pike_sp[-1].u.object->prog == pike_trampoline_program) {
+	      ref_push_object(((struct pike_trampoline *)
+			       (Pike_sp[-1].u.object->storage))->
+			      frame->current_object);
+	      stack_pop_n_elems_keep_top(1);
 	    } else {
 	      Pike_sp[-1].type = T_OBJECT;
 	    }
