@@ -2677,7 +2677,7 @@ int define_variable(struct pike_string *name,
       struct identifier *id;
       id=ID_FROM_INT(Pike_compiler->new_program,n);
       free_type(id->type);
-      copy_shared_string(id->type, type);
+      copy_type(id->type, type);
       return n;
     }
   }
@@ -3136,7 +3136,7 @@ INT32 define_function(struct pike_string *name,
       funp->opt_flags &= opt_flags;
 
       free_type(funp->type);
-      copy_shared_string(funp->type, type);
+      copy_type(funp->type, type);
     }else{
 
       if((ref.id_flags & ID_NOMASK)
