@@ -117,6 +117,17 @@ class AbstractNode {
     c->mParent = 0;
   }
 
+  AbstractNode replace_child(AbstractNode old, AbstractNode new)
+  {
+    // Replace THE FIRST occurrence of old with new.
+    int index = search(mChildren, old);
+    if (index < 0)
+      return 0;
+    mChildren[index] = new;
+    old->mParent = 0;
+    return new;
+  }
+
   int|void walk_preorder(function(AbstractNode, mixed ...:int|void) callback,
 			 mixed ... args)
   {
