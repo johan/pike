@@ -349,7 +349,7 @@ typedef struct cond_t_s
 
 #define COND_T struct cond_t_s
 
-#define co_init(X) do { mt_init(& (X)->lock), (X)->head=(X)->tail=0; }while(0)
+#define co_init(X) do { mt_init(& (X)->lock); (X)->head=(X)->tail=0; }while(0)
 
 PMOD_EXPORT int co_wait(COND_T *c, PIKE_MUTEX_T *m);
 PMOD_EXPORT int co_signal(COND_T *c);
