@@ -544,6 +544,7 @@ static node *optimize_not(node *n)
     if((more_args=is_call_to(*first_arg, X)))	\
     {						\
       node *tmp=*more_args;			\
+      if(count_args(*more_args) > 2) return 0;  \
       ADD_NODE_REF(*more_args);			\
       return mkopernode(Y,tmp,0);		\
     } } while(0)
