@@ -916,10 +916,36 @@ BREAK;
 
 
       /* FIXME: Does this need bignum tests? /Fixed - Hubbe */
+      /* LOOP(OPCODE, INCREMENT, OPERATOR, IS_OPERATOR) */
       LOOP(F_INC_LOOP, 1, <, is_lt);
       LOOP(F_DEC_LOOP, -1, >, is_gt);
       LOOP(F_INC_NEQ_LOOP, 1, !=, !is_eq);
       LOOP(F_DEC_NEQ_LOOP, -1, !=, !is_eq);
+
+/* Use like:
+ *
+ * push(loopcnt)
+ * branch(l2)
+ * l1:
+ *   sync_mark
+ *     code
+ *   pop_sync_mark
+ * l2:
+ * loop(l1)
+ */
+OPCODE0_JUMP(F_LOOP, "loop") /* loopcnt */
+{
+  /* Use ge and 1 to be able to reuse the 1 for the subtraction. */
+  push_int(1);
+  if (is_ge(sp-2, sp-1)) {
+    o_subtract();
+    DOJUMP();
+  } else {
+    pop_n_elems(2);
+    SKIPJUMP();
+  }
+}
+BREAK;
 
       CASE(F_FOREACH) /* array, lvalue, X, i */
       {
