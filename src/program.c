@@ -2382,7 +2382,7 @@ void dump_program_tables (struct program *p, int indent)
       if (!file->size_shift)
 	fprintf (stderr, "%*s                                  %s:%d\n",
 		 indent, "", file->str, line);
-      sub_ref(file);
+      free_string (file);
     }
   }
 
