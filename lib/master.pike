@@ -294,8 +294,17 @@ object new(mixed prog, mixed ... args)
 
 /* Note that create is called before add_precompiled_program
  */
+void my_werror(mixed ... args)
+{
+  if(sizeof(args) == 1) 
+    werror(@args);
+  else 
+    werror(sprintf(@args));
+}
+
 void create()
 {
+  add_constant("werror", my_werror);
   add_constant("basename",basename);
   add_constant("dirname",dirname);
   add_constant("is_absolute_path",is_absolute_path);
