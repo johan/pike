@@ -1166,7 +1166,7 @@ void pike_module_init(void)
 /* function(int:string) */
   ADD_EFUN("fd_info", f_fd_info,tFunc(tInt,tStr), OPT_EXTERNAL_DEPEND);
   {
-    extern void init_xml();
+    extern void init_xml(void);
     init_xml();
   }
 }
@@ -1177,7 +1177,7 @@ void pike_module_exit(void)
   int i;
   free_string(empty_string.u.string);
   {
-    extern void exit_xml();
+    extern void exit_xml(void);
     exit_xml();
   }
 }

@@ -1854,7 +1854,7 @@ static struct pike_string *s_memlock=NULL;
 static struct pike_string *s_as=NULL;
 static struct pike_string *s_vmem=NULL;
 
-static void make_rlimit_strings()
+static void make_rlimit_strings(void)
 {
    MAKE_CONSTANT_SHARED_STRING(s_cpu,"cpu");
    MAKE_CONSTANT_SHARED_STRING(s_fsize,"fsize");
@@ -2344,7 +2344,7 @@ static void f_get_netinfo_property(INT32 args)
 			   :"=a" (l),					\
 			   "=d" (h))
 
-static INLINE long long rdtsc()
+static INLINE long long rdtsc(void)
 {
    long long now;
    unsigned long nl,nh;
