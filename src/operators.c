@@ -1938,7 +1938,7 @@ PMOD_EXPORT void o_lsh(void)
 
     if(sp[-2].type != T_INT)
       SIMPLE_BAD_ARG_ERROR("`<<", 1, "int|object");
-    SIMPLE_BAD_ARG_ERROR("`<<", 2, "int|object");
+    SIMPLE_BAD_ARG_ERROR("`<<", 2, "int(0..)|object");
   }
 #ifndef AUTO_BIGNUM
   if (sp[-1].u.integer > 31) {
@@ -1947,6 +1947,9 @@ PMOD_EXPORT void o_lsh(void)
     return;
   }
 #endif /* !AUTO_BIGNUM */
+  if (sp[-1].u.integer < 0) {
+    SIMPLE_BAD_ARG_ERROR("`<<", 2, "int(0..)|object");    
+  }
   sp--;
   sp[-1].u.integer = sp[-1].u.integer << sp->u.integer;
 }
@@ -1997,18 +2000,21 @@ PMOD_EXPORT void o_rsh(void)
       return;
     if(sp[-2].type != T_INT)
       SIMPLE_BAD_ARG_ERROR("`>>", 1, "int|object");
-    SIMPLE_BAD_ARG_ERROR("`>>", 2, "int|object");
+    SIMPLE_BAD_ARG_ERROR("`>>", 2, "int(0..)|object");
   }
   
-#ifdef AUTO_BIGNUM
-  if(INT_TYPE_RSH_OVERFLOW(sp[-2].u.integer, sp[-1].u.integer))
-  {
-    sp--;
-    sp[-1].u.integer = 0;
-    return;
+  if (sp[-1].u.integer < 0) {
+    SIMPLE_BAD_ARG_ERROR("`>>", 2, "int(0..)|object");
   }
+
+  if(
+#ifdef AUTO_BIGNUM
+     (INT_TYPE_RSH_OVERFLOW(sp[-2].u.integer, sp[-1].u.integer))
 #else /* !AUTO_BIGNUM */
-  if (sp[-1].u.integer > 31) {
+     (sp[-1].u.integer > 31)
+#endif /* AUTO_BIGNUM */
+     )
+  {
     sp--;
     if (sp[-1].u.integer < 0) {
       sp[-1].u.integer = -1;
@@ -2017,7 +2023,6 @@ PMOD_EXPORT void o_rsh(void)
     }
     return;
   }
-#endif /* AUTO_BIGNUM */
   
   sp--;
   sp[-1].u.integer = sp[-1].u.integer >> sp->u.integer;
