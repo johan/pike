@@ -115,6 +115,10 @@ class LiteralResource {
     return id; // FIXME: XML quote.
   }
 
+  string get_literal() {
+    return id;
+  }
+
   string _sprintf(int t) { return __sprintf("LiteralResource", t); }
 }
 
