@@ -278,7 +278,7 @@ static void encode_type(struct pike_type *t, struct encode_data *data)
 	sval.subtype = 0;
 	sval.u.string = (void *)t->car;
 
-	encode_value2(&sval, encode_data);
+	encode_value2(&sval, data);
       }
       t=t->cdr;
       goto one_more_type;

@@ -2069,7 +2069,7 @@ static int do_docode2(node *n, INT16 flags)
       /* FALL_THROUGH */
     default:
 #ifdef PIKE_DEBUG
-      if((n->type == T_OBJECT) &&
+      if((n->u.sval.type == T_OBJECT) &&
 	 (n->u.sval.u.object->next == n->u.sval.u.object))
 	Pike_fatal("Internal error: Pointer to parent cannot be a compile time constant!\n");
 #endif
