@@ -63,8 +63,16 @@ RCSID("$Id$");
 
 /* Keep some margin on the stack space checks. They're lifted when
  * handle_error runs to give it some room. */
-#define SVALUE_STACK_MARGIN 100	/* Tested in 7.1: 40 was enough, 30 wasn't. */
-#define C_STACK_MARGIN 8000	/* Tested in 7.1: 3000 was enough, 2600 wasn't. */
+/* Observed in 7.1: 40 was enough, 30 wasn't. */
+#define SVALUE_STACK_MARGIN (100 + LOW_SVALUE_STACK_MARGIN)
+/* Observed in 7.4: 11000 was enough, 10000 wasn't. */
+#define C_STACK_MARGIN (20000 + LOW_C_STACK_MARGIN)
+
+/* Another extra margin to use while dumping the raw error in
+ * exit_on_error, so that backtrace_frame._sprintf can be called
+ * then. */
+#define LOW_SVALUE_STACK_MARGIN 20
+#define LOW_C_STACK_MARGIN 500
 
 #ifdef HAVE_COMPUTED_GOTO
 PIKE_OPCODE_T *fcode_to_opcode = NULL;
@@ -1747,7 +1755,12 @@ void unlink_previous_frame(void)
 
 void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 {
-  check_c_stack(8192);
+  /* The C stack margin is normally 8 kb, but if we get here during a
+   * lowered margin then don't fail just because of that, unless it's
+   * practically zero. */
+  check_c_stack(Pike_interpreter.c_stack_margin ?
+		Pike_interpreter.c_stack_margin : 100);
+
   if(low_mega_apply(type, args, arg1, arg2))
   {
     eval_instruction(Pike_fp->pc
@@ -1821,11 +1834,11 @@ PMOD_EXPORT void call_handle_error(void)
 {
   dmalloc_touch_svalue(&throw_value);
 
-  if (Pike_interpreter.svalue_stack_margin) {
+  if (Pike_interpreter.svalue_stack_margin > LOW_SVALUE_STACK_MARGIN) {
     int old_t_flag = t_flag;
     t_flag = 0;
-    Pike_interpreter.svalue_stack_margin = 0;
-    Pike_interpreter.c_stack_margin = 0;
+    Pike_interpreter.svalue_stack_margin = LOW_SVALUE_STACK_MARGIN;
+    Pike_interpreter.c_stack_margin = LOW_C_STACK_MARGIN;
     *(Pike_sp++) = throw_value;
     throw_value.type=T_INT;
 
