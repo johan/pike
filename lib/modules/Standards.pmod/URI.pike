@@ -367,6 +367,7 @@ string|mapping cast(string to)
   }
 }
 
+//! Returns path and query part of the URI if present.
 string get_path_query()
 {
   return (path||"") + (query ? "?" + query : "");
