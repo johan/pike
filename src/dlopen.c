@@ -2278,7 +2278,6 @@ static unsigned char *find_pdb_symtab(unsigned char *buf, size_t *plen)
 
 static void init_dlopen(void)
 {
-  int tmp;
   extern char ** ARGV;
   INT32 offset;
   struct DLObjectTempData objtmp;
