@@ -772,7 +772,7 @@ void init_font_programs(void)
    add_function("load",font_load,
                 "function(string:object|int)",0);
 
-   add_function("create",font_load,
+   add_function("create",font_create,
                 "function(void|string:void)",0);
 
    add_function("write",font_write,
