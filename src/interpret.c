@@ -914,6 +914,10 @@ int PIKE_CONCAT(test_opcode_,O)(INT32 arg1, INT32 arg2) { \
 #define OPCODE1_TAILBRANCH(O,N,F,C) TEST_OPCODE1(O,N,F,C)
 #define OPCODE2_TAILBRANCH(O,N,F,C) TEST_OPCODE2(O,N,F,C)
 
+#define OPCODE0_ALIAS(O,N,F,C)
+#define OPCODE1_ALIAS(O,N,F,C)
+#define OPCODE2_ALIAS(O,N,F,C)
+
 #undef HAVE_COMPUTED_GOTO
 
 #ifdef __GNUC__

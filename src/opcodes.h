@@ -34,6 +34,9 @@
 #define OPCODE0_TAILBRANCH(X,Y,F) X,
 #define OPCODE1_TAILBRANCH(X,Y,F) X,
 #define OPCODE2_TAILBRANCH(X,Y,F) X,
+#define OPCODE0_ALIAS(X,Y,F,A) X,
+#define OPCODE1_ALIAS(X,Y,F,A) X,
+#define OPCODE2_ALIAS(X,Y,F,A) X,
 
 enum Pike_opcodes
 {
@@ -139,6 +142,9 @@ enum Pike_opcodes
 #undef OPCODE0_TAILBRANCH
 #undef OPCODE1_TAILBRANCH
 #undef OPCODE2_TAILBRANCH
+#undef OPCODE0_ALIAS
+#undef OPCODE1_ALIAS
+#undef OPCODE2_ALIAS
 
 
 /* Prototypes begin here */
