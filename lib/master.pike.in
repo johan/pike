@@ -2132,7 +2132,10 @@ void _main(array(string) orig_argv, array(string) env)
     handle_error (err);
     ret = 10;
   }
-  if(!intp(ret)) exit(0);
+  if(!intp(ret)) {
+    werror("Error: Non-integer value %O returned from main.\n", ret);
+    exit(10);
+  }
   if(ret >=0) exit([int]ret);
   _async=1;
   
