@@ -96,20 +96,38 @@ pushdef([AC_CONFIG_HEADER],
   AC_CONFIG_HEADER($1)
 ])
 
+define([PIKE_CHECK_GNU_STUB_H],[
+  AC_CHECK_HEADERS([gnu/stub.h])
+])
+
 define([ORIG_AC_CHECK_FUNC], defn([AC_CHECK_FUNC]))
 pushdef([AC_CHECK_FUNC],
 [
-  # The original is vulnerable to prototypes included through assert.h.
-  # Try to correct that stupidity.
-  ORIG_FUNC_CPPFLAGS="$CPPFLAGS"
-  CPPFLAGS="-DFIXINC_BROKEN_ASSERT_STDLIB_CHECK -DFIXINC_BROKEN_ASSERT_STDIO_CHECK $CPPFLAGS"
-  ORIG_AC_CHECK_FUNC([$1],[
-    CPPFLAGS="$ORIG_FUNC_CPPFLAGS"
-    $2
-  ],[
-    CPPFLAGS="$ORIG_FUNC_CPPFLAGS"
-    $3
-  ])
+AC_REQUIRE([PIKE_CHECK_GNU_STUB_H])
+AC_MSG_CHECKING([for $1])
+AC_CACHE_VAL(ac_cv_func_$1,
+[AC_TRY_LINK(
+[
+#ifdef HAVE_GNU_STUB_H
+/* This file contains __stub_ defines for broken functions. */
+#include <gnu/stub.h>
+#endif
+extern int $1();
+], [
+#if defined (__stub_$1) || defined (__stub___$1)
+#error stupidity are us...
+#else
+$1();
+#endif
+], eval "ac_cv_func_$1=yes", eval "ac_cv_func_$1=no")])
+if eval "test \"`echo '$ac_cv_func_'$1`\" = yes"; then
+  AC_MSG_RESULT(yes)
+  ifelse([$2], , :, [$2])
+else
+  AC_MSG_RESULT(no)
+ifelse([$3], , , [$3
+])dnl
+fi
 ])
 
 define([ORIG_AC_CHECK_SIZEOF], defn([AC_CHECK_SIZEOF]))
