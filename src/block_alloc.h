@@ -120,7 +120,7 @@ inline struct DATA *							\
 									\
 struct DATA *PIKE_CONCAT(find_,DATA)(void *ptr)				\
 {									\
-  int hval=(long)ptr;							\
+  unsigned int hval=(long)ptr;						\
   hval%=PIKE_CONCAT(DATA,_hash_table_size);				\
   return PIKE_CONCAT(really_low_find_,DATA)(ptr, hval);			\
 }									\
