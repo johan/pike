@@ -440,7 +440,7 @@ static void f_num_fields(INT32 args)
 		  &columns,
 		  0,
 		  OCI_ATTR_PARAM_COUNT,
-		  dbcon->error_handle); // <- FIXME
+		  dbcon->error_handle); /* <- FIXME */
 
 
     THREADS_DISALLOW();
@@ -538,7 +538,6 @@ static sb4 define_callback(void *dbresultinfo,
 }
 
 
-// FIXME: Threading...
 static void f_fetch_fields(INT32 args)
 {
   struct dbresult *dbresult = THIS_RESULT;
