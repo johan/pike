@@ -62,7 +62,7 @@ extern struct mapping *gc_internal_mapping;
 #define mapping_get_flags(m) ((m)->data->flags)
 
 #define MD_KEYPAIRS(MD, HSIZE) \
-   ( (struct keypair *)DO_ALIGN( (ptrdiff_t) (((struct mapping_data *)(MD))->hash + HSIZE), ALIGNOF(struct keypair)) )
+   ( (struct keypair *)DO_ALIGN( ((char *)(((struct mapping_data *)(MD))->hash + HSIZE))-(char *)0, ALIGNOF(struct keypair)) )
 
 #ifndef PIKE_MAPPING_KEYPAIR_LOOP
 #define NEW_MAPPING_LOOP(md) \

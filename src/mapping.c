@@ -42,7 +42,7 @@ static struct mapping *gc_mark_mapping_pos = 0;
 
 
 #define MAPPING_DATA_SIZE(HSIZE, KEYPAIRS) \
-   (ptrdiff_t)( MD_KEYPAIRS(0, HSIZE) + KEYPAIRS )
+   (((char *)(MD_KEYPAIRS(0, HSIZE) + KEYPAIRS))-(char *)0)
    
    
 
