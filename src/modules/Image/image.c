@@ -2273,8 +2273,8 @@ void image_color(INT32 args)
        x = x%4;
        s -= x;
      }
-   }
 #endif
+   }
    while (x--)
    {
       d->r=( (((long)rgb.r*s->r)/255) );
