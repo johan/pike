@@ -2291,7 +2291,7 @@ static int really_low_parse_dtd(struct xmldata *data)
 
 static int low_parse_dtd(struct xmldata *data)
 {
-  int done=0;
+  int done;
   struct svalue *save_sp=sp;
 
   done=really_low_parse_dtd(data);
