@@ -57,7 +57,7 @@ DO_IF_RUN_UNLOCKED(static PIKE_MUTEX_T PIKE_CONCAT(DATA,_mutex);)       \
 static void PIKE_CONCAT(alloc_more_,DATA)(void)				\
 {                                                                       \
   struct PIKE_CONCAT(DATA,_block) *n;					\
-  int e;								\
+  size_t e;								\
   n=(struct PIKE_CONCAT(DATA,_block) *)					\
      malloc(sizeof(struct PIKE_CONCAT(DATA,_block)));			\
   if(!n)								\
