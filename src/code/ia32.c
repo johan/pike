@@ -5,7 +5,7 @@
  *
  */
 
-#define PUSH_INT(X) ins_int((INT32)(X), add_to_program)
+#define PUSH_INT(X) ins_int((INT32)(X), (void (*)(char))add_to_program)
 #define PUSH_ADDR(X) PUSH_INT((X))
 
 /* This is ugly, but since the code may be moved we cannot use
