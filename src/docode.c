@@ -706,7 +706,7 @@ static int do_docode2(node *n,int flags)
     return 1;
 
   case F_SOFT_CAST:
-    return do_docode(CAR(n), 0);
+    return do_docode(CAR(n), flags);
 
   case F_APPLY:
     if(CAR(n)->token == F_CONSTANT)
