@@ -22,6 +22,9 @@ string *get_files(string path)
     if(path==vpath+"/src/modules" && except_modules[tmp])
       continue;
 
+    if(path==vpath+"/bin" && except_modules[tmp])
+      continue;
+
     if(search(path,vpath+"/lib/modules")==0 &&
        (except_modules[tmp] || except_modules[tmp - ".pmod"]))
       continue;
