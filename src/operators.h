@@ -12,6 +12,8 @@
 
 #define COMPARISON(ID,NAME,X) void ID(INT32 num_arg);
 
+#include "svalue.h"
+
 extern struct program *string_assignment_program;
 struct string_assignment_storage
 {
