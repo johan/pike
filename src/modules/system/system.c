@@ -1658,8 +1658,6 @@ static void f_getrlimits(INT32 args)
    n+=2;
 #endif
    
-   fprintf(stderr,"n=%d\n",n);
-
    f_aggregate_mapping(n);
 }
 
