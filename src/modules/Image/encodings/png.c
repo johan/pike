@@ -1704,7 +1704,7 @@ static void image_png_decode(INT32 args)
 /*! @decl Image.Image decode_alpha(string data, @
  *!     void|mapping(string:mixed) options)
  *!   Decodes the alpha channel in a PNG file. The
- *!   @[optios] mapping is the same as for @[_decode].
+ *!   @[options] mapping is the same as for @[_decode].
  *!
  *! @throws
  *!   Throws upon error in data.

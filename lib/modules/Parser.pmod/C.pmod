@@ -445,7 +445,7 @@ array hide_whitespaces(array tokens)
 
 //! Reconstitutes the token array into a plain string again; essentially
 //! reversing @[split()] and whichever of the @[tokenize], @[group] and
-//! @[hide_whitespace] methods may have been invoked.
+//! @[hide_whitespaces] methods may have been invoked.
 string simple_reconstitute(array(string|object(Token)|array) tokens)
 {
   string ret="";
