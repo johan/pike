@@ -2258,7 +2258,7 @@ void init_files_efuns(void);
 #define REF (*((struct object **)(fp->current_storage)))
 
 #define FILE_FUNC(X,Y,Z) \
-static int PIKE_CONCAT(Y,_function_number);
+static int PIKE_CONCAT(Y,_function_number)
 
 #include "file_functions.h"
 
