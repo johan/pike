@@ -442,7 +442,7 @@ static void file_write(INT32 args)
     THREADS_DISALLOW();
 
 #ifdef _REENTRANT
-    if(FD<0) error("File destructed while in file->write.\");
+    if(FD<0) error("File destructed while in file->write.\n");
 #endif
 
     if(i<0)
