@@ -170,6 +170,9 @@ case "$UNAME" in
   Linux\ 2.*)
     AC_DEFINE(USE_Wl)
     ;;
+  UnixWare\ 7.*)
+    AC_DEFINE(USE_YP_)
+    ;;
   *)
     AC_DEFINE(USE_LD_LIBRARY_PATH)
     ;;
@@ -3228,6 +3231,9 @@ AC_CACHE_VAL(pike_cv_sys_nonblock,
   if test "$pike_cv_sys_os" = "AmigaOS" ; then
     pike_cv_sys_nonblock=USE_FCNTL_O_NONBLOCK
   else
+    # Make sure we can run configure in a separate directory.
+    OCPPFLAGS="$CPPFLAGS"
+    CPPFLAGS="-I$srcdir $CPPFLAGS"
     AC_TRY_RUN([
 #define TESTING
 #define USE_FCNTL_FNDELAY
@@ -3259,6 +3265,8 @@ unset pike_cv_sys_nonblock),
 unset pike_cv_sys_nonblock),
 unset pike_cv_sys_nonblock),
 unset pike_cv_sys_nonblock)
+    # Restore CPPFLAGS
+    CPPFLAGS="$OCPPFLAGS"
   fi
 ])
 
