@@ -10,9 +10,12 @@ PIKE=pike
 
 all: split
 
-split: join
+split: join manual
+	@$(PIKE) ../bin/split-autodoc.pike manual.xml structure.xml autodoc
 
 join: images
+	@$(PIKE) ../bin/join-autodoc.pike manual.xml \
+	  `find build -name '*.xml' -print`
 
 images: extract
 
@@ -36,6 +39,9 @@ build/lib: build
 
 build:
 	@test -d build || mkdir build
+
+manual:
+	@test -d manual || mkdir manual
 
 clean:
 	@rm -rf build || /bin/true
