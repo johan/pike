@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 #include "hashtable.h"
 #include "stralloc.h"
@@ -11,9 +12,9 @@
 
 RCSID("$Id$");
 
-static unsigned INT32 gobble(struct pike_string *s)
+static size_t gobble(struct pike_string *s)
 {
-  unsigned INT32 i;
+  size_t i;
   i=my_hash_string(s);
   i+=i >> 3;
   i+=i >> 7;

@@ -235,7 +235,7 @@ int do_lfun_call(int id,node *args)
 
 static int do_docode2(node *n,int flags)
 {
-  INT32 tmp1,tmp2,tmp3;
+  ptrdiff_t tmp1,tmp2,tmp3;
 
   if(!n) return 0;
 
@@ -918,7 +918,7 @@ static int do_docode2(node *n,int flags)
 
     for(e=1; e<cases*2+2; e++)
     {
-      jumptable[e]=emit1(F_POINTER, 0);
+      jumptable[e] = DO_NOT_WARN((INT32)emit1(F_POINTER, 0));
       current_switch_jumptable[e]=-1;
     }
 

@@ -1006,7 +1006,7 @@ void backend(void)
 
       }
     }
-    call_callback(& backend_callbacks, (void *)1);
+    call_callback(& backend_callbacks, (void *)(ptrdiff_t)1);
   }
 
   UNSETJMP(back);
