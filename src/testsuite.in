@@ -138,6 +138,17 @@ test_any([[
   return 0;
 ]], 0)
 
+test_any([[
+  // Test that optimizer notes side effects in arguments to `!=
+  // Thanks to Marcus Agehall
+  int j = 20, i;
+  string end = "17";
+  for( ; i < j ; i++)
+    if(sscanf(end, "%d%s", j, end) != 2)
+      cd(".");
+  return i;
+]], 17)
+
 test_compile_any([[
   void foo() 
   {
