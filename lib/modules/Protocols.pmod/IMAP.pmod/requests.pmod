@@ -309,9 +309,9 @@ class status
 
     if (res) {
       send("*", "STATUS", mailbox, imap_list(res));
-      send(tag, "OK");
+      send(tag, "OK", "STATUS done");
     } else {
-      send(tag, "NO");
+      send(tag, "NO", "STATUS failed");
     }
     return([ "action" : "finished" ]);
   }
