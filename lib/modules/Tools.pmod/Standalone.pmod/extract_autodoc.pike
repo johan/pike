@@ -73,6 +73,11 @@ string extract(string filename, string imgdest, int(0..1) rootless, string build
   werror("Extracting file %O...\n", filename);
   string file = Stdio.read_file(filename);
 
+  if (!file) {
+    werror("WARNING: Failed to read file %O!\n", filename);
+    return "\n";
+  }
+
   int i;
   if (has_value(file, "**""!") ||
       (((i = search(file, "//! ""module ")) != -1) &&
