@@ -45,7 +45,7 @@ static void get_mpz_from_digits(MP_INT *tmp,
   }
   else if(base == 256)
   {
-    unsigned i;
+    int i;
     mpz_t digit;
     
     mpz_init(digit);
