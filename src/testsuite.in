@@ -9612,8 +9612,8 @@ int gnapp(int t)
       object o=Process.create_process(({"/bin/sleep","99999"}));
       kill( o->pid(), 9 );
       o->wait();
+      __signal_watchdog();
     }
-    __signal_watchdog();
 //    werror("%d",t);
   }
   return -1;
