@@ -500,8 +500,8 @@ void *new_thread_func(void * data)
     ((struct thread_state *)(thread_id->storage))->thread_local = NULL;
   }
 
-   ((struct thread_state *)(thread_id->storage))->status=THREAD_EXITED;
-   co_signal(& ((struct thread_state *)(thread_id->storage))->status_change);
+  ((struct thread_state *)(thread_id->storage))->status=THREAD_EXITED;
+  co_broadcast(& ((struct thread_state *)(thread_id->storage))->status_change);
 
   free((char *)data); /* Moved by per, to avoid some bugs.... */
   UNSETJMP(back);
@@ -888,7 +888,7 @@ void f_thread_local(INT32 args)
 {
   static INT32 thread_local_id = 0;
 
-  struct object *loc = clone_object(thread_local_prog,0);
+  struct object *loc = clone_object(thread_local_prog, 0);
   ((struct thread_local *)loc->storage)->id = thread_local_id++;
   pop_n_elems(args);
   push_object(loc);
