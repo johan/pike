@@ -75,5 +75,6 @@ extern struct program *mysql_result_program;
 void init_mysql_res_efuns(void);
 void init_mysql_res_programs(void);
 void exit_mysql_res(void);
+void mysqlmod_parse_field(MYSQL_FIELD *field, int support_default);
 
 #endif /* PRECOMPILED_MYSQL_H */

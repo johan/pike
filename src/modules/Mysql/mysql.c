@@ -44,15 +44,17 @@ typedef struct dynamic_buffer_s dynamic_buffer;
 #endif /* HAVE_MYSQL */
 
 /* From the Pike-dist */
-#include <global.h>
-#include <svalue.h>
-#include <object.h>
-#include <stralloc.h>
-#include <interpret.h>
-#include <port.h>
-#include <error.h>
-#include <threads.h>
-#include <program.h>
+#include "global.h"
+#include "svalue.h"
+#include "object.h"
+#include "stralloc.h"
+#include "interpret.h"
+#include "port.h"
+#include "error.h"
+#include "threads.h"
+#include "program.h"
+#include "operators.h"
+#include "builtin_functions.h"
 
 /* System includes */
 #ifdef HAVE_STRING_H
