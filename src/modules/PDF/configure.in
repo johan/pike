@@ -48,7 +48,7 @@ if test x$with_libpanda = xyes ; then
       AC_DEFINE(HAVE_LIBPANDA) 
       LIBS="${LIBS-} -lpanda"
 
-      PIKE_FEATURE_OK(PDF.Panda)
+      PIKE_FEATURE(PDF.Panda,[yes (but not implemented)])
       ])
 
   fi
