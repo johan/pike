@@ -834,7 +834,7 @@ string pike_sprintf(char *format,struct svalue *argp,int num_arg)
 }
 
 /* The efun */
-static void f_sprintf(INT32 num_arg)
+void f_sprintf(INT32 num_arg)
 {
   struct pike_string *ret;
   struct svalue *argp;
