@@ -113,7 +113,7 @@ char *my_rl_complete(char *text, int status)
     fatal("Bad idea!\n");
   return res;
 #else
-  return low_do_rl_comlete(text,status);
+  return low_do_rl_complete(text,status);
 #endif
 }
 
