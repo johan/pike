@@ -42,12 +42,6 @@ RCSID("$Id$");
 #endif /* HAVE_SYS_PARAM_H */
 #include <errno.h>
 
-#ifdef HAVE_NOTIFICATIONS
-#ifdef __linux__
-#define _GNU_SOURCE
-#endif
-#endif
-
 #include <fcntl.h>
 #include <signal.h>
 
@@ -3657,6 +3651,8 @@ PIKE_MODULE_INIT
   add_integer_constant("PROP_SHUTDOWN",fd_CAN_SHUTDOWN,0);
   add_integer_constant("PROP_BUFFERED",fd_BUFFERED,0);
   add_integer_constant("PROP_BIDIRECTIONAL",fd_BIDIRECTIONAL,0);
+
+  add_integer_constant("PROP_IS_NONBLOCKING", FILE_NONBLOCKING, 0);
 
 #ifdef DN_ACCESS
   /*! @decl constant DN_ACCESS
