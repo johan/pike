@@ -321,6 +321,8 @@ int dbm_main(int argc, char **argv)
   init_cpp();
   init_lex();
 
+  low_th_init();
+
   init_modules();
   master();
   call_callback(& post_master_callbacks, 0);
