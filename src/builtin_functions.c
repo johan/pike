@@ -308,11 +308,7 @@ struct case_info {
 #define CIM_CASEBITOFF	4	/* Same as above, but also offset by data */
 
 static const struct case_info case_info[] = {
-#ifdef IN_TPIKE
-#include "dummy_ci.h"
-#else /* !IN_TPIKE */
 #include "case_info.h"
-#endif /* IN_TPIKE */
   { 0x7fffffff, CIM_NONE, 0x0000, },	/* End sentinel. */
 };
 

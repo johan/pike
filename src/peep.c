@@ -861,9 +861,7 @@ static void asm_opt(void)
   }
 #endif
 
-#ifndef IN_TPIKE
 #include "peep_engine.c"
-#endif /* IN_TPIKE */
 
 #ifdef PIKE_DEBUG
   if(a_flag > 4)
