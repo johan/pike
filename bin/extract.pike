@@ -25,7 +25,13 @@ int high_int_id = 0;
 
 int make_id() {
   // Returns the next unused unique id
-  while ( has_value(id_xml_order, ++high_int_id) );
+  //  while ( has_value(id_xml_order, ++high_int_id) );
+  if(high_int_id)
+    return ++high_int_id;
+  high_int_id = max( @map(id_xml_order,
+			  lambda(string|int in) {
+			    return intp(in)?in:0;
+			  }) ) + 1;
   return high_int_id;
 }
 
