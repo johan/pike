@@ -277,7 +277,7 @@ int dbm_main(int argc, char **argv)
   init_modules();
   master();
   call_callback(& post_master_callbacks, 0);
-  free_callback(& post_master_callbacks);
+  free_callback_list(& post_master_callbacks);
   
   if(SETJMP(back))
   {
@@ -331,7 +331,7 @@ int dbm_main(int argc, char **argv)
 void do_exit(int num) ATTRIBUTE((noreturn))
 {
   call_callback(&exit_callbacks, (void *)0);
-  free_callback(&exit_callbacks);
+  free_callback_list(&exit_callbacks);
 
   exit_modules();
 
