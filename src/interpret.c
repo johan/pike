@@ -808,7 +808,7 @@ C }
 #elif defined(sparc)
 register unsigned INT32 *reg_pc __asm__ ("%i7");
 #define PROG_COUNTER		(reg_pc + 2)
-#define SET_PROG_COUNTER(X)	(reg_pc = ((unsigned INT32 *)X)-2)
+#define SET_PROG_COUNTER(X)	(reg_pc = ((unsigned INT32 *)(X))-2)
 #endif /* __i386__ || sparc */
 
 static int eval_instruction(PIKE_OPCODE_T *pc)
