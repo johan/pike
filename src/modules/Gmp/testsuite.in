@@ -1,3 +1,4 @@
+START_MARKER
 dnl $Id$
 
 cond( [[ master()->resolv("Gmp")->mpz ]],
@@ -249,3 +250,4 @@ cond( [[ master()->resolv("Gmp")->mpz ]],
   test_eq(Gmp.mpz(10403)->small_factor(),101)
 ]]);
 
+END_MARKER

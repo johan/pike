@@ -1,3 +1,4 @@
+START_MARKER
 dnl $Id$
 
 dnl - ADT.BitBuffer
@@ -364,3 +365,4 @@ test_eval_error([[
   s->get_rest();
   s->get_fix_string(1);
 ]])
+END_MARKER

@@ -1,3 +1,4 @@
+START_MARKER
 // $Id$
 
 cond( [[ master()->resolv("Java")->jvm ]],
@@ -34,3 +35,4 @@ AAIAJg==
   }()]],935.5)
   test_do(rm("conftest.class"))
 ]])
+END_MARKER

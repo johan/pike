@@ -1,3 +1,4 @@
+START_MARKER
 // $Id$
 
 
@@ -246,3 +247,4 @@ cond([[ System["__MMAP__"] ]],
     return "testprositsting";
   ]], "testprositsting" )
 ]])
+END_MARKER

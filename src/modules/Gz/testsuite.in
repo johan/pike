@@ -1,3 +1,4 @@
+START_MARKER
 // $Id$
 
 cond_resolv(Gz.deflate,
@@ -41,3 +42,4 @@ define(dotest,[[
   dotest(random_string(524288))
   dotest(random_string(8388500))
 ]])
+END_MARKER

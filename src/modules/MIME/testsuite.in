@@ -1,3 +1,4 @@
+START_MARKER
 // $Id$
 
 // MIME
@@ -138,3 +139,4 @@ test_eq([[MIME.Message("MIME-Version: 1.0\r\n\r\nfoo\r\n")->getencoded()]], "foo
 test_equal([[MIME.Message((string)MIME.Message("foo\r\n",
 		(["mImE-veRsion":"1.0"])))->headers]],
 	(["mime-version":"1.0","content-length":"5"]))
+END_MARKER

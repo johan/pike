@@ -1,3 +1,4 @@
+START_MARKER
 // $Id$
 
 // Tools.Hilfe
@@ -187,3 +188,4 @@ test_eval_error([[ Tools.Legal.Copyright.add( "Basun", ({ "Muckey Mice" }) ); ]]
 test_equal([[ Tools.Legal.Copyright.get_all()->Basun ]], [[ ({ "Dunald Dock" }) ]])
 
 test_true([[ stringp( Tools.Legal.License.get_text() ) ]])
+END_MARKER

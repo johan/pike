@@ -1,3 +1,4 @@
+START_MARKER
 dnl $Id$
 
 test_do([[
@@ -25,3 +26,4 @@ test_any_equal([[
 }) ]])
 
 test_do( rm("clf"); )
+END_MARKER

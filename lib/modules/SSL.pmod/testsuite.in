@@ -1,3 +1,4 @@
+START_MARKER
 dnl $Id$
 
 test_any([[
@@ -84,3 +85,4 @@ dnl       error("Failed\n");
 dnl     /* How to kill the process if running on windows? */
 dnl     p->kill(15);
 dnl   ]])
+END_MARKER

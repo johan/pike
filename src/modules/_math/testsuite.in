@@ -1,3 +1,4 @@
+START_MARKER
 dnl $Id$
 
 define(exarg,[[test_any([[
@@ -201,3 +202,4 @@ test_eq(sgn("bar","foo"),-1)
 test_eq(sgn("foo","foo"),0)
 test_eq(sgn("gazonk","foo"),1)
 exarg(sgn)
+END_MARKER

@@ -1,3 +1,4 @@
+START_MARKER
 // $Id$
 
 test_do([[ Yabu.db("test.db", "wct")->purge(); ]])
@@ -81,3 +82,4 @@ test_do( add_constant("multi") )
 test_do( add_constant("trans") )
 test_do( add_constant("table") )
 test_do( add_constant("db") )
+END_MARKER

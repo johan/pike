@@ -1,3 +1,4 @@
+START_MARKER
 test_true([["$Id$"]]);
 
 
@@ -741,3 +742,4 @@ test_any_equal([[
     "",
     "<http://a> <http://b> <http://c> .",
 >))
+END_MARKER

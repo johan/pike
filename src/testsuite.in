@@ -1,3 +1,4 @@
+START_MARKER
 test_true([["$Id$"]]);
 
 // This triggered a bug only if run sufficiently early.
@@ -10785,3 +10786,4 @@ test_any_equal([[
   };
   return X()->test(1,2);
 ]],[[ ({}) ]])
+END_MARKER
