@@ -201,6 +201,22 @@ class create_mailbox
   }
 }
 
+class delete
+{
+  inherit request;
+  constant arg_info = ({ ({ "string" }) });
+
+  mapping easy_process(string mailbox_name)
+  {
+    if (server->delete(session, mailbox_name)) {
+      send(tag, "OK");
+    } else {
+      send(tag, "NO");
+    }
+    return ([ "action" : "finished" ]);
+  }
+}
+
 class list
 {
   inherit request;
@@ -811,7 +827,6 @@ class search
 
 constant authenticate = unimplemented;
 constant examine = unimplemented;
-constant delete = unimplemented;
 constant rename = unimplemented;
 constant subscribe = unimplemented;
 constant unsubscribe = unimplemented;
