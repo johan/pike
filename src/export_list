@@ -6,6 +6,7 @@
 /README-CVS
 /ANNOUNCE
 /CHANGES
+/COMMITTERS
 /COPYING
 /COPYRIGHT
 /Makefile
@@ -25,3 +26,4 @@
 /refdoc/tags.txt
 /refdoc/template.xsl
 /refdoc/xml.txt
+/tools
