@@ -39,7 +39,6 @@ object(this_program) base_uri;
 // properties with respect to that change.
 string raw_uri;
 
-#define error(S) throw( ({ (S), backtrace() }) )
 #ifdef STANDARDS_URI_DEBUG
 #define DEBUG(X, Y ...) werror("Standards.URI: "+X+"\n", Y)
 #else
