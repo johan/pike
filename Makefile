@@ -56,7 +56,7 @@ builddir:
 	for d in $$builddir; do \
 	  dir="$$dir$$d"; \
 	  if test x"$$dir" = x -o -d "$$dir"; then :; else \
-	    echo "Creating $$dir..." \
+	    echo "Creating $$dir..."; \
 	    mkdir "$$dir" || exit 1; \
 	  fi; \
 	  dir="$$dir/"; \
