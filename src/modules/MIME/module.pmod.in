@@ -293,7 +293,8 @@ class Message {
 
   string get_filename( )
   {
-    return disp_params["filename"] || params["name"];
+    string fn = disp_params["filename"] || params["name"];
+    return fn && decode_words_text_remapped(fn);
   }
   
   array(string|int) is_partial( )
