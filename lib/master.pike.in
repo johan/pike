@@ -506,7 +506,6 @@ void _main(string *orig_argv, string *env)
 
   add_constant("write",_static_modules.files()->_stdout->write);
 
-
   // add path for architecture-shared files
   add_include_path("¤share_prefix¤/include");
   add_module_path("¤share_prefix¤/modules");
