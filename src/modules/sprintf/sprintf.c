@@ -96,7 +96,7 @@
 */
 
 #include "global.h"
-RCSID("$Id");
+RCSID("$Id$");
 #include "error.h"
 #include "array.h"
 #include "svalue.h"
