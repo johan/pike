@@ -195,10 +195,10 @@ int image_colortable_size(struct neo_colortable *nct);
 void image_colortable_write_rgb(struct neo_colortable *nct,
 				unsigned char *dest);
 
-void image_colortable_write_rgba(struct neo_colortable *nct,
+void image_colortable_write_rgbz(struct neo_colortable *nct,
 				 unsigned char *dest);
 
-void image_colortable_write_bgra(struct neo_colortable *nct,
+void image_colortable_write_bgrz(struct neo_colortable *nct,
 				 unsigned char *dest);
 
 int image_colortable_initiate_dither(struct neo_colortable *nct,
