@@ -332,16 +332,6 @@ OPCODE1(F_LOOKUP_LFUN, "->lfun", 0, {
   print_return_value();
 });
 
-OPCODE0_JUMP(F_FLOAT, "push float", I_UPDATE_SP, {
-  /* FIXME, this opcode uses 'PROG_COUNTER' which is not allowed.. */
-  PIKE_OPCODE_T *next_addr;
-  JUMP_SET_TO_PC_AT_NEXT (next_addr);
-  MEMCPY((void *)&Pike_sp->u.float_number, next_addr, sizeof(FLOAT_TYPE));
-  Pike_sp->type=PIKE_T_FLOAT;
-  Pike_sp++;
-  DO_JUMP_TO((PIKE_OPCODE_T *)(((FLOAT_TYPE *) next_addr) + 1));
-});
-
 OPCODE1(F_LFUN, "local function", I_UPDATE_SP, {
   ref_push_function (Pike_fp->current_object,
 		     arg1+Pike_fp->context.identifier_level);
