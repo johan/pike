@@ -41,16 +41,18 @@ DECLARATIONS
  *! example you can create a file MyFacetgroup.pmod with the following
  *! content:
  *!
- *! @code{inherit FacetGroup; @}
+ *! @expr{inherit FacetGroup; @}
  *!
  *! You can then use the facet group MyFacetGroup in a facet-class 
  *! like this:
  *!
- *! @code{class A
+ *! @code
+ *! class A
  *! {
  *!   facet NameOfMyFacet : .MyFacetGroup; 
  *!   // Rest of class A 
- *! }@}
+ *! }
+ *! @endcode
  *!
  */
 
