@@ -1362,6 +1362,11 @@ MY_AC_ARG_WITH(keypair-loop,
 		 [enable use of keypair mapping loop method (EXPERIMENTAL).]),
 	       [AC_DEFINE(PIKE_MAPPING_KEYPAIR_LOOP)])
 
+MY_AC_ARG_WITH(portable-bytecode,
+	MY_DESCR([--with-portable-bytecode],
+		 [enable portable bytecode support (EXPERIMENTAL).]),
+	       [AC_DEFINE(PIKE_PORTABLE_BYTECODE)])
+
 MY_AC_ARG_WITH(lock,
 	       MY_DESCR([--without-lock],
 	  [enable experimental code for multicpu machines (EXPERIMENTAL).]),
