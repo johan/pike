@@ -132,7 +132,11 @@ void push_pwent(struct passwd *ent)
     push_text(ent->pw_passwd);
   push_int(ent->pw_uid);
   push_int(ent->pw_gid);
+#ifdef HAVE_PW_GECOS
   push_text(ent->pw_gecos);
+#else /* !HAVE_PW_GECOS */
+  push_text("Mister Anonymous");
+#endif /* HAVE_PW_GECOS */
   push_text(ent->pw_dir);
   push_text(ent->pw_shell);
   f_aggregate(7);
