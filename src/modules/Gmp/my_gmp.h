@@ -84,7 +84,7 @@ static inline mp_limb_t MPZ_GETLIMBN (mpz_srcptr gmp_z, mp_size_t gmp_n)
  * -0xffffffff80000000 if the limb size is larger than the long size)...
  */
 #define PIKE_MPZ_SET_SI(MPZ_VAL, VALUE)	do {		\
-    mpz_t mpz_ = (MPZ_VAL);				\
+    MP_INT *mpz_ = (MPZ_VAL);				\
     long val_ = (VALUE);				\
     if (val_ < 0) {					\
       mpz_set_ui(mpz_, (unsigned long) -val_);		\
