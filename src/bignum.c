@@ -82,6 +82,7 @@ int is_bignum_object(struct object *o)
 
 PMOD_EXPORT int is_bignum_object_in_svalue(struct svalue *sv)
 {
+  /* FIXME: object subtype? */
   return sv->type == T_OBJECT && is_bignum_object(sv->u.object);
 }
 
