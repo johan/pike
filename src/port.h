@@ -108,14 +108,8 @@ struct timeval;
 #ifdef HAVE_ISSPACE
 #define ISSPACE(X) isspace(X)
 #else
-#define ISSPACE(X) ("0012345678SSSSS456789012345678901" \
-                     "S3456789012345678901234567890123" \
-                     "45678901234567890123456789012345" \
-                     "67890123456789012345678901234567" \
-                     "89012345678901234567890123456789" \
-                     "01234567890123456789012345678901" \
-                     "23456789012345678901234567890123" \
-                     "45678901234567890123456789000000"[(X)+1] == 'S')
+PMOD_EXPORT extern const char Pike_isspace_vector[];
+#define ISSPACE(X) (Pike_isspace_vector[(X)+1] == 'S')
 #endif
 
 /* Warning, these run 'C' more than once */

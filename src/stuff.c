@@ -9,6 +9,25 @@
 #include "stuff.h"
 #include "stralloc.h"
 
+/* Used by is8bitalnum in pike_macros.h. */
+PMOD_EXPORT const char Pike_is8bitalnum_vector[] =
+  "0000000000000000"
+  "0000000000000000"
+  "0000000000000000"
+  "1111111111000000"
+  "0111111111111111"
+  "1111111111100001"
+  "0111111111111111"
+  "1111111111100000"
+  "0000000000000000"
+  "0000000000000000"
+  "1011110101100010"
+  "1011011001101110"
+  "1111111111111111"
+  "1111111011111111"
+  "1111111111111111"
+  "1111111011111111";
+
 /* Not all of these are primes, but they should be adequate */
 PMOD_EXPORT const INT32 hashprimes[32] =
 {
