@@ -163,7 +163,7 @@ static void port_listen_fd(INT32 args)
     set_nonblocking(fd,1);
     if(!IS_ZERO(& THIS->accept_callback))
     {
-      fp->current_object->refs++;
+      add_ref(fp->current_object);
       set_read_callback(fd, port_accept_callback, (void *)THIS);
     }
   }
@@ -250,7 +250,7 @@ static void port_bind(INT32 args)
     assign_svalue(& THIS->accept_callback, sp+1-args);
     if(!IS_ZERO(& THIS->accept_callback))
     {
-      fp->current_object->refs++;
+      add_ref(fp->current_object);
       set_read_callback(fd, port_accept_callback, (void *)THIS);
       set_nonblocking(fd,1);
     }
@@ -289,7 +289,7 @@ static void port_create(INT32 args)
 	  assign_svalue(& THIS->accept_callback, sp+1-args);
 	  if(!IS_ZERO(& THIS->accept_callback))
 	  {
-	    fp->current_object->refs++;
+	    add_ref(fp->current_object);
 	    set_read_callback(THIS->fd, port_accept_callback, (void *)THIS);
 	    set_nonblocking(THIS->fd,1);
 	  }

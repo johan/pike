@@ -128,7 +128,7 @@ OOBOP( || (query_read_oob_callback((X)->fd)==file_read_oob_callback) ||	\
 #define DEBUG_CHECK_INTERNAL_REFERENCE(X)
 #endif
 #define SET_INTERNAL_REFERENCE(f) \
-  do { CHECK_FILEP(f->myself); if(!(f->flags & FILE_HAS_INTERNAL_REF)) { f->myself->refs++; f->flags|=FILE_HAS_INTERNAL_REF; } }while (0)
+  do { CHECK_FILEP(f->myself); if(!(f->flags & FILE_HAS_INTERNAL_REF)) { add_ref(f->myself); f->flags|=FILE_HAS_INTERNAL_REF; } }while (0)
 
 #define REMOVE_INTERNAL_REFERENCE(f) \
   do { CHECK_FILEP(f->myself); if(f->flags & FILE_HAS_INTERNAL_REF) {  f->flags&=~FILE_HAS_INTERNAL_REF; free_object(f->myself); } }while (0)
@@ -1994,7 +1994,7 @@ static void init_file_lock_key(struct object *o)
   THIS_KEY->f=0;
 #ifdef _REENTRANT
   THIS_KEY->owner=thread_id;
-  thread_id->refs++;
+  add_ref(thread_id);
 #endif
 }
 
