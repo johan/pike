@@ -954,7 +954,7 @@ again:
 	fprintf(stderr,"%*s**The program was written in C.\n",indent,"");
       }
 
-      tmp = debug_get_program_line(p, &line);
+      tmp = debug_get_line(NULL, p, &line);
       if(strcmp(tmp, "-"))
       {
 	fprintf(stderr,"%*s**Location: %s:%ld\n",
