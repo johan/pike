@@ -19,6 +19,7 @@
 #include "builtin_functions.h"
 #include "module_support.h"
 #include "fsort.h"
+#include "threads.h"
 
 RCSID("$Id$");
 
@@ -132,6 +133,14 @@ static void code_number(INT32 num, struct encode_data *data)
 {
   code_entry(num & 15, num >> 4, data);
 }
+
+#ifdef _REENTRANT
+static void do_enable_threads(void)
+{
+  if(!--threads_disabled)
+    co_broadcast(&threads_disabled_change);
+}
+#endif
 
 static int encode_type(char *t, struct encode_data *data)
 {
@@ -887,6 +896,12 @@ static void decode_value2(struct decode_data *data)
 	  char *dat;
 	  struct program *p;
 
+#ifdef _REENTRANT
+	  ONERROR err;
+	  threads_disabled++;
+	  SET_ONERROR(err, do_enable_threads, 0);
+#endif
+
 	  p=low_allocate_program();
 	  debug_malloc_touch(p);
 	  tmp.type=T_PROGRAM;
@@ -1045,6 +1060,12 @@ static void decode_value2(struct decode_data *data)
 	  }
 	  p->flags |= PROGRAM_FINISHED;
 	  ref_push_program(p);
+
+#ifdef _REENTRANT
+	  UNSET_ONERROR(err);
+	  if(!--threads_disabled)
+	    co_broadcast(&threads_disabled_change);
+#endif
 	  return;
 	}
 
