@@ -1285,7 +1285,7 @@ static void _decode_get_extension(unsigned char **s,
    if (!n)
       push_string(make_shared_binary_string("",0));
    else
-      f_add(n);
+      f_add(DO_NOT_WARN(n));
 
    f_aggregate(3);
 }
@@ -2351,7 +2351,7 @@ void image_gif__encode_extension(INT32 args)
       else
       {
 	 d=begin_shared_string(s->len-i+2);
-	 d->str[0] = s->len-i;
+	 d->str[0] = DO_NOT_WARN(s->len - i);
 	 MEMCPY(d->str+1, s->str+i, d->len-i);
 	 d->str[d->len-i+1]=0;
 	 push_string(end_shared_string(d));
