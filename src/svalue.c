@@ -1112,7 +1112,7 @@ static void dsv_add_string_to_buf (struct pike_string *str)
 	my_putchar (j);
 	my_putchar (j);
       }
-      else if (j < 256 && isprint (j))
+      else if ((j < 256) && (isprint(j) || (j=='\n' || j=='\r')))
 	my_putchar (j);
       else {
 	char buf[11];
