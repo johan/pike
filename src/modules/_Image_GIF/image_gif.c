@@ -65,13 +65,13 @@ static struct program *image_program = NULL;
 static struct program *image_colortable_program = NULL;
 static struct program *image_layer_program = NULL;
 
-#ifdef FAKE_DYNAMIC_LOAD
+/*  #ifdef FAKE_DYNAMIC_LOAD */
 
 /* These should really be cached in local, static variables */
 #define image_lay ((void(*)(INT32))PIKE_MODULE_IMPORT(Image,image_lay))
 
 #define image_colortable_write_rgb \
- ((void(*)(struct neo_colortable *,unsigned char *))PIKE_MODULE_IMPORT(Image,image_colorable_write_rgb))
+ ((void(*)(struct neo_colortable *,unsigned char *))PIKE_MODULE_IMPORT(Image,image_colortable_write_rgb))
 
 #define image_colortable_size \
   ((ptrdiff_t(*)(struct neo_colortable *))PIKE_MODULE_IMPORT(Image,image_colortable_size))
@@ -82,7 +82,7 @@ static struct program *image_layer_program = NULL;
 #define image_colortable_internal_floyd_steinberg \
   ((void(*)(struct neo_colortable *))PIKE_MODULE_IMPORT(Image,image_colortable_internal_floyd_steinberg))
 
-#endif
+/*  #endif */
 
 #else
 extern struct program *image_program;
