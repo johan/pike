@@ -1079,15 +1079,16 @@ char *get_name_of_type(int t)
 {
   switch(t)
   {
-    case T_LVALUE: return "lvalue";
-    case T_INT: return "int";
-    case T_STRING: return "string";
     case T_ARRAY: return "array";
-    case T_OBJECT: return "object";
+    case T_FLOAT: return "float";
+    case T_FUNCTION: return "function";
+    case T_INT: return "int";
+    case T_LVALUE: return "lvalue";
     case T_MAPPING: return "mapping";
     case T_MULTISET: return "multiset";
-    case T_FUNCTION: return "function";
-    case T_FLOAT: return "float";
+    case T_OBJECT: return "object";
+    case T_PROGRAM: return "program";
+    case T_STRING: return "string";
     default: return "unknown";
   }
 }
