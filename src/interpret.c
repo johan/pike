@@ -1149,6 +1149,7 @@ int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 	  do_trace_call(args);
 	}
 #endif
+	check_threads_etc();
 	(*(s->u.efun->function))(args);
 
 #ifdef PIKE_DEBUG
