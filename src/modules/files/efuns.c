@@ -920,27 +920,35 @@ void f_mv(INT32 args)
   push_int(!i);
 }
 
-#ifdef HAVE_STRERROR
 void f_strerror(INT32 args)
 {
   char *s;
+  int err;
 
   if(!args) 
     error("Too few arguments to strerror()\n");
   if(sp[-args].type != T_INT)
     error("Bad argument 1 to strerror()\n");
 
-  if(sp[-args].u.integer < 0 || sp[-args].u.integer > 256 )
-    s=0;
-  else
-    s=strerror(sp[-args].u.integer);
+  err = sp[-args].u.integer;
   pop_n_elems(args);
+  if(err < 0 || err > 256 )
+    s=0;
+  else {
+#ifdef HAVE_STRERROR
+    s=strerror(err);
+#else
+    s=0;
+#endif
+  }
   if(s)
     push_text(s);
-  else
-    push_int(0);
+  else {
+    push_constant_text("Error ");
+    push_int(err);
+    f_add(2);
+  }
 }
-#endif
 
 void f_errno(INT32 args)
 {
@@ -994,9 +1002,6 @@ void init_files_efuns(void)
 /* function(string,mixed*,void|mapping(string:string):int) */
   ADD_EFUN("exece",f_exece,tFunc(tStr tArr(tMix) tOr(tVoid,tMap(tStr,tStr)),tInt),OPT_SIDE_EFFECT); 
 
-#ifdef HAVE_STRERROR
-  
 /* function(int:string) */
   ADD_EFUN("strerror",f_strerror,tFunc(tInt,tStr),0);
-#endif
 }
