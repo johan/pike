@@ -460,7 +460,6 @@ void set_nonblocking(function ...args)
 #ifdef SSL3_DEBUG
   werror(sprintf("SSL.sslfile->set_nonblocking(%O)\n", args));
 #endif
-
   if (is_closed || !socket) return;
 
   switch (sizeof(args))
@@ -490,7 +489,7 @@ void set_blocking()
 {
 #ifdef SSL3_DEBUG
   werror("SSL.sslfile->set_blocking\n");
-#endi
+#endif
   blocking = 1;
 
   if( !socket )
