@@ -237,7 +237,6 @@ AC_ARG_WITH(include-path,[  --with-include-path    A list of paths to search for
 AC_ARG_WITH(lib-path,    [  --with-lib-path        A list of paths to search for libraries.])
 AC_ARG_WITH(gdbm,        [  --without-gdbm         no GNU database manager support ])
 AC_ARG_WITH(gmp,         [  --without-gmp          no Support bignums])
-AC_ARG_WITH(readline,    [  --without-readline     no support for command line editing])
 AC_ARG_WITH(debug,       [  --without-debug        disable run debugging],[],[with_debug=])
 AC_ARG_WITH(rtldebug,    [  --without-rtldebug     disable run time self tests],[],[with_rtldebug=])
 AC_ARG_WITH(cdebug,      [  --without-cdebug       disable -g],[],[with_cdebug=])
