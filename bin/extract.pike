@@ -535,25 +535,27 @@ array(string) get_tokens(string in, mapping args, string filename) {
   // The order between // blocks and /* */ blocks is not important
   // for our purposes.
   string comments = "";
-  foreach(in/"//", string line) {
+  foreach( (in/"//")[1..], string line) {
     sscanf(line, "%s\n", line);
     comments += line+"\n";
   }
-  foreach(in/"/\052", string block) {
-    string c = "";
-    sscanf(block, "%s\052/", c);
-    comments += c+"\n";
-  }
+
+  // This is code is flawed. Breaks in e.g. userfs.pike in Roxen.
+  //  foreach(in/"/\052", string block) {
+  //    string c = "";
+  //    sscanf(block, "%s\052/", c);
+  //    comments += c+"\n";
+  //  }
 
   array(string) tokens = ({});
   Parser.HTML()->      
     add_container("locale-token",
 		  lambda(object foo, mapping m, string c) {
-		    if(args->project && m->project!=args->project) 
+		    if(args->project && m->project!=args->project)
 		      return 0;
 		    c = String.trim_whites(c);
 		    if(has_value(tokens, c))
-		      werror("\n* Warning: Token %O already found\n", c);
+		      werror("\n* Warning: Token %O already found.\n", c);
 		    tokens += ({c});
 		    if (m->project)
 		      args->project = m->project;
