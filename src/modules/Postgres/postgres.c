@@ -458,7 +458,7 @@ static void f_big_query(INT32 args)
 	pgdebug("f_big_query(\"%s\")\n",query);
 #define SELECTSTR	"SELECT "
 #define LIMIT1STR	"LIMIT 1"
-#define LIMIT1STRSCLIMIT1STR	";"
+#define LIMIT1STRSC	LIMIT1STR";"
 #define LIMITLENSC	(sizeof(LIMIT1STRSC)-1)
 #define LIMITLEN	(sizeof(LIMIT1STR)-1)
 	res = 0;
