@@ -58,8 +58,11 @@
 
 #include <stdio.h>
 #include <libpq-fe.h>
+#ifdef HAVE_SERVER_POSTGRES_H
+/* FIXME: Clients should probably not touch these files... */
 #include <server/postgres.h>
 #include <server/catalog/pg_type.h>
+#endif /* HAVE_SERVER_POSTGRES_H
 
 /* Pike includes */
 #include "stralloc.h"
