@@ -1859,11 +1859,10 @@ void gc_free_all_unreferenced_arrays(void)
       free_svalues(ITEM(a), a->size, a->type_field);
       a->size=0;
 
-      if(!(next=a->next))
-	fatal("Null pointer in array list.\n");
+      SET_NEXT_AND_FREE(a, free_array);
 
-      free_array(a);
-      a=next;
+      if (!(a = next))
+	fatal("Null pointer in array list.\n");
     }
     else if(a->flags & ARRAY_WEAK_FLAG)
     {
@@ -1901,11 +1900,10 @@ void gc_free_all_unreferenced_arrays(void)
 	}
       }
 	  
-      if(!(next=a->next))
-	fatal("Null pointer in array list.\n");
+      SET_NEXT_AND_FREE(a, free_array);
 
-      free_array(a);
-      a=next;
+      if (!(a = next))
+	fatal("Null pointer in array list.\n");
     }
     else
     {
