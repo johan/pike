@@ -115,6 +115,15 @@ test_any([[mapping(string:int) foo;
 	  return typeof(rows(foo, bar)); ]],
 	 "array(int)")
 
+test_any([[
+  class Foo {
+    constant zero = 0;
+    mapping(string:array(int)) m;
+    string foo() { return typeof(m[""][zero]); }
+  };
+  return Foo()->foo();
+]], "int")
+
 test_compile_any([[
   constant FOO = 0;
   mapping(int:string) foo = ([FOO: "foo"]);
