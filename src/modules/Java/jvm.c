@@ -2983,7 +2983,7 @@ static void f_att_create(INT32 args)
   att->args.group = NULL;
 
   att->tid = th_self();
-  if((*jvm->jvm)->AttachCurrentThread(jvm->jvm, &att->env, &att->args)<0)
+  if((*jvm->jvm)->AttachCurrentThread(jvm->jvm, (void *)&att->env, &att->args)<0)
     destruct(Pike_fp->current_object);
 }
 
