@@ -1371,14 +1371,12 @@ PIKECLASS Backend
 #endif
 	if(!was_set)
 	{
-	  MY_FD_SET(&me->set, fd,
-		    MY_POLLIN
+	  MY_FD_SET(&me->set, fd, MY_POLLIN);
 #ifndef HAVE_POLL
 		    /* Got to enable the exception set to get errors
 		     * (at least according to POSIX). */
-		    | MY_POLLEXCEPT
+	  MY_FD_SET(&me->set, fd, MY_POLLEXCEPT);
 #endif
-		    );
 	  backend_wake_up_backend(me);
 	}
       }else{
@@ -1428,13 +1426,12 @@ PIKECLASS Backend
 #endif
 	if(!was_set)
 	{
-	  MY_FD_SET(&me->set, fd, MY_POLLOUT
+	  MY_FD_SET(&me->set, fd, MY_POLLOUT);
 #ifndef HAVE_POLL
 		    /* Got to enable the exception set to get errors
 		     * (at least according to POSIX). */
-		    | MY_POLLEXCEPT
+	  MY_FD_SET(&me->set, fd, MY_POLLEXCEPT);
 #endif
-		    );
 	  backend_wake_up_backend(me);
 	}
       } else {
