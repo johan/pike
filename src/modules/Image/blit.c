@@ -125,7 +125,7 @@ static INLINE int getrgb(struct image *img,
 /*** end internals ***/
 
 
-void img_clear(rgb_group *dest,rgb_group rgb,INT32 size)
+void img_clear(rgb_group *dest, rgb_group rgb, ptrdiff_t size)
 {
   if(!size) return;
   THREADS_ALLOW();
