@@ -23,6 +23,10 @@ RCSID("$Id$");
 
 #include <math.h>
 
+#ifdef HAVE_SYS_TIME_H
+#include <sys/time.h>
+#endif /* HAVE_SYS_TIME_H */
+
 struct call_out_s
 {
   struct timeval tv;
