@@ -2965,10 +2965,13 @@ static void file_query_address(INT32 args)
     push_int(0);
     return;
   }
-
+#ifdef HAVE_INET_NTOP
+  inet_ntop(addr.sin_family, &addr.sin_addr, buffer, sizeof(buffer)-20);
+#else
   q=inet_ntoa(addr.sin_addr);
   strncpy(buffer,q,sizeof(buffer)-20);
   buffer[sizeof(buffer)-20]=0;
+#endif
   sprintf(buffer+strlen(buffer)," %d",(int)(ntohs(addr.sin_port)));
 
   push_string(make_shared_string(buffer));

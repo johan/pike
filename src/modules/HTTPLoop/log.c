@@ -79,7 +79,16 @@ static void push_log_entry(struct log_entry *le)
   lo->method = make_shared_binary_string(le->method.str, le->method.len);
   lo->protocol = le->protocol;
   le->protocol->refs++;
+#ifdef HAVE_INET_NTOP
+  {
+    char buffer[64];
+    lo->from = make_shared_string( inet_ntop(le->from.sin_family,
+					     &le->from.sin_addr,
+					     buffer, sizeof(buffer)) );
+  }
+#else
   lo->from = make_shared_string( inet_ntoa(le->from.sin_addr) );
+#endif
   push_object( o );
 }
 

@@ -1767,10 +1767,16 @@ static void describe_hostent(struct hostent *hp)
     INT32 nelem = 0;
 
     for (p = hp->h_addr_list; *p != 0; p++) {
+#ifdef HAVE_INET_NTOP
+      char buffer[64];
+
+      push_text(inet_ntop(hp->h_addrtype, *p, buffer, sizeof(buffer)));
+#else
       struct in_addr in;
  
       MEMCPY(&in.s_addr, *p, sizeof (in.s_addr));
       push_text(inet_ntoa(in));
+#endif
       nelem++;
     }
 
@@ -1785,9 +1791,15 @@ static void describe_hostent(struct hostent *hp)
   }
 #else
   {
+#ifdef HAVE_INET_NTOP
+    char buffer[64];
+
+    push_text(inet_ntop(hp->h_addrtype, hp->h_addr, buffer, sizeof(buffer)));
+#else
     struct in_addr in;
     MEMCPY(&in.s_addr, hp->h_addr, sizeof (in.s_addr));
     push_text(inet_ntoa(in));
+#endif
   }
 
   f_aggregate(1);

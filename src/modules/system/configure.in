@@ -7,7 +7,6 @@ AC_MODULE_INIT()
 AC_CHECK_LIB(bind, __inet_ntoa)
 AC_CHECK_LIB(socket, socket)
 AC_CHECK_LIB(nsl, gethostbyname)
-AC_CHECK_LIB(nsl, getservbyname)
 
 dnl For Cygwin
 AC_CHECK_LIB(cygipc, shmget)
@@ -68,7 +67,7 @@ AC_HAVE_FUNCS(syslog link symlink readlink resolvepath chown \
         getspnam_r innetgr utime sleep usleep nanosleep \
         getrlimit setrlimit  \
         setitimer getitimer mmap munmap \
-	gettimeofday settimeofday prctl)
+	gettimeofday settimeofday prctl inet_ntoa inet_ntop)
 
 
 if test "x$ac_cv_func_setpgrp" = "xyes"; then

@@ -468,7 +468,14 @@ void f_aap_index_op(INT32 args)
 
   if(s == s_remoteaddr)
   {
+#ifdef HAVE_INET_NTOP
+    char buffer[64];
+    push_text(inet_ntop(THIS->request->from.sin_family,
+			&THIS->request->from.sin_addr,
+			buffer, sizeof(buffer)) );
+#else
     push_text(inet_ntoa(THIS->request->from.sin_addr));
+#endif
     push_string(s_remoteaddr);
     mapping_insert(THIS->misc_variables, sp-1, sp-2);
     sp--;

@@ -465,14 +465,19 @@ void udp_read(INT32 args)
   /* Now comes the interresting part.
    * make a nice mapping from this stuff..
    */
+  push_text("data");
+  push_string( make_shared_binary_string(buffer, res) );
+
   push_text("ip");
+#ifdef HAVE_INET_NTOP
+  push_text( inet_ntop( from.sin_family, &from.sin_addr,
+			buffer, sizeof(buffer) ) );
+#else
   push_text( inet_ntoa( from.sin_addr ) );
+#endif
 
   push_text("port");
   push_int(ntohs(from.sin_port));
-
-  push_text("data");
-  push_string( make_shared_binary_string(buffer, res) );
   f_aggregate_mapping( 6 );
 }
 
@@ -752,9 +757,13 @@ static void udp_query_address(INT32 args)
     return;
   }
 
+#ifdef HAVE_INET_NTOP
+  inet_ntop(addr.sin_family, &addr.sin_addr, buffer, sizeof(buffer)-20);
+#else
   q=inet_ntoa(addr.sin_addr);
   strncpy(buffer,q,sizeof(buffer)-20);
   buffer[sizeof(buffer)-20]=0;
+#endif
   sprintf(buffer+strlen(buffer)," %d",(int)(ntohs(addr.sin_port)));
 
   push_string(make_shared_string(buffer));
