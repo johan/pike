@@ -680,9 +680,25 @@ static INLINE int set_svalue_cmpfun(struct svalue *a, struct svalue *b)
 
       case T_OBJECT:
 	if(a->u.object == b->u.object) return 0;
-	if(a->u.refs < b->u.refs) { def=-1; break; }
-	if(a->u.refs > b->u.refs) { def=1; break; }
-	def = (a<b)?-1:1;
+	if(a->u.object->prog == b->u.object->prog) {
+	  if (a->u.object->prog) {
+	    if(a->u.object < b->u.object) {
+	      def = -1;
+	    } else {
+	      def = 1;
+	    }
+	  } else {
+	    /* Destructed objects are considered equal. */
+	    return 0;
+	  }
+	} else {
+	  /* Attempt to group objects cloned from the same program */
+	  if (a->u.object->prog < b->u.object->prog) {
+	    def = -1;
+	  } else {
+	    def = 1;
+	  }
+	}
 	break;
     }
   }else{
