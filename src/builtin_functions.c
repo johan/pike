@@ -7249,6 +7249,9 @@ PMOD_EXPORT void f_function_defined(INT32 args)
   
 }
 
+/*! @endmodule Function
+ */
+
 void init_builtin_efuns(void)
 {
   struct program *pike___master_program;
