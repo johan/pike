@@ -762,7 +762,7 @@ OPCODE0_TAIL(F_POP_SYNCH_MARK, "pop synch mark")
       /* Some attempt to recover, just to be able to report the backtrace. */
       pop_n_elems(Pike_sp - *Pike_mark_sp);
     fatal("Stack out of synch - should be %ld, is %ld.\n",
-	  (long) should, (long) is);
+	  DO_NOT_WARN((long)should), DO_NOT_WARN((long)is));
   }
 BREAK;
 
