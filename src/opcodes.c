@@ -157,7 +157,7 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	    break;
 	    
 	  case T_STRING:
-	    i=STRTOL(sp[-1].u.string->str,0,0);
+	    i=STRTOL(sp[-1].u.string->str,0,10);
 	    free_string(sp[-1].u.string);
 	    break;
 	    
