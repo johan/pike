@@ -64,7 +64,7 @@ extern struct mapping *first_mapping;
 #define free_mapping_data(M) do{ struct mapping_data *md_=(M); debug_malloc_touch(md_); if(!--md_->refs) really_free_mapping_data(md_); }while(0)
 
 /* Prototypes begin here */
-struct mapping *allocate_mapping(int size);
+struct mapping *debug_allocate_mapping(int size);
 void really_free_mapping(struct mapping *m);
 void really_free_mapping_data(struct mapping_data *md);
 void mapping_fix_type_field(struct mapping *m);
@@ -133,3 +133,6 @@ void count_memory_in_mappings(INT32 *num_, INT32 *size_);
 struct mapping_data *copy_mapping_data(struct mapping_data *md);
 /* Prototypes end here */
 #endif
+
+#define allocate_mapping(X) dmalloc_touch(struct mapping *,debug_allocate_mapping(X))
+
