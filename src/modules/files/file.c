@@ -1744,6 +1744,9 @@ static void file_open(INT32 args)
 	Pike_error("Not a valid FD.\n");
 
      init_fd(fd,flags | fd_query_properties(fd, FILE_CAPABILITIES));
+     /* FIXME: What are the intended semantics for this flag?
+      *        (grubba 2004-09-01
+      */
      THIS->flags|=FILE_NOT_OPENED;
   }
 
