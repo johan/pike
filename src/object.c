@@ -911,7 +911,7 @@ PMOD_EXPORT void object_index_no_free2(struct svalue *to,
     break;
 
   default:
-    Pike_error("Lookup on non-string value.\n");
+    Pike_error("Lookup in object with non-string index.\n");
   }
 
   if(f < 0)
