@@ -41,6 +41,17 @@ pushdef([AC_PROG_CC],
   fi
 ])
 
+dnl option, descr, with, without, default
+define([MY_AC_ARG_WITH], [
+  AC_ARG_WITH([$1], [$2], [
+    if test "x$withval" = "xno"; then
+      $4
+    else
+      $3
+    fi
+  ], [$5])
+])
+
 define([MY_AC_PROG_CC],
 [
   if test "x$enable_binary" != "xno"; then
