@@ -6,7 +6,7 @@
  * Henrik Grubbström 1996-11-27
  */
 
-#pike __REAL_VERSION__
+#pike 7.2
 
 //!
 //! An LR(0) item, a partially parsed rule.

@@ -6,7 +6,7 @@
  * Henrik Grubbström 1996-11-24
  */
 
-#pike __REAL_VERSION__
+#pike 7.2
 
 //!
 //! This object is used to represent a BNF-rule in the LR parser.

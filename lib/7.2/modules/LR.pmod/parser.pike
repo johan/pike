@@ -7,7 +7,7 @@
  * Henrik Grubbström 1996-11-24
  */
 
-#pike __REAL_VERSION__
+#pike 7.2
 
 //! This object implements an LALR(1) parser and compiler.
 //!

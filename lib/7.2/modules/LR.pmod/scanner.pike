@@ -6,4 +6,4 @@
  * Henrik Grubbström 1996-12-16
  */
 
-#pike __REAL_VERSION__
+#pike 7.2

@@ -1,6 +1,6 @@
 #!/usr/local/bin/pike
 
-#pike __REAL_VERSION__
+#pike 7.2
 
 /*
  * $Id$

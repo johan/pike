@@ -6,7 +6,7 @@
  * Henrik Grubbström 1996-12-05
  */
 
-#pike __REAL_VERSION__
+#pike 7.2
 
 //!
 //! Specifies the priority and associativity of a rule.
