@@ -31,8 +31,8 @@ char *strdup(const char *str)
 
 int pcharp_memcmp(PCHARP a, PCHARP b, int sz)
 {
-  return generic_quick_binary_strcmp(a.str, sz, a.shift,
-				     b.str, sz, b.shift);
+  return generic_quick_binary_strcmp(a.ptr, sz, a.shift,
+				     b.ptr, sz, b.shift);
 }
 
 INLINE p_wchar1 *MEMCHR1(p_wchar1 *p,p_wchar1 c,INT32 e)
