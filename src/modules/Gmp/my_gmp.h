@@ -7,9 +7,12 @@
 #ifndef MY_GMP_H_INCLUDED
 #define MY_GMP_H_INCLUDED
 
-#ifndef __MPN
-#define __MPN(x) PIKE_CONCAT(__mpn_,x)
+/* Kludge for some compilers only defining __STDC__ in strict mode. */
+#ifndef __STDC__
+#ifdef HAVE_ANSI_CONCAT
+#define __STDC__ 0
 #endif
+#endif /* __STDC__ */
 
 #undef _PROTO
 #define _PROTO(x) x
