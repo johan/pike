@@ -548,6 +548,8 @@ void *generic_memory_search(struct generic_mem_searcher *s,
     default:
      fatal("Wacko method!\n");
   }
+  /* NOT REACHED */
+  return NULL;	/* Keep the compiler happy. */
 }
 		    
 
@@ -664,6 +666,8 @@ char *debug_qalloc(long size)
 #endif
 
   fatal("Completely out of memory!\n");
+  /* NOT_REACHED */
+  return NULL;	/* Keep the compiler happy. */
 }
 
 #ifdef DEBUG_MALLOC
