@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 #include "pike_macros.h"
 #include "time_stuff.h"
@@ -58,6 +59,10 @@ time_t TIME(time_t *t)
   return tv.tv_sec;
 }
 #endif
+
+#ifndef HUGE
+#define HUGE HUGE_VAL
+#endif /*!HUGE*/
 
 /*
  * This file defines things that may have to be changem when porting
