@@ -218,7 +218,7 @@ PIKEFUN string int2hex(int|object x)
   len=1;
   if(c<0) {
     len++;
-    n=(-c)&((unsigned int)(-1));
+    n=(-c)&((unsigned INT_TYPE)(-1));
   }else{
     n=c;
   }
@@ -234,7 +234,7 @@ PIKEFUN string int2hex(int|object x)
     if(c<0)
     {
       s->str[0]='-';
-      n=(-c)&((unsigned int)(-1));
+      n=(-c)&((unsigned INT_TYPE)(-1));
     }else{
       n=c;
     }
