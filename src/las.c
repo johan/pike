@@ -923,6 +923,7 @@ node *debug_mkexternalnode(int level,
 
   /* Can't freeze the node, since the type-info may become wrong. */
   /* return freeze_node(res); */
+  res->hash = hash_node(res);
   return res;
 }
 
