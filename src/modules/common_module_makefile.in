@@ -45,6 +45,7 @@ $(MODULE_ARCHIVES) ThisIsAPhonyTargetBlaBlaBla: force
 	              ( test -f remake ; $(MAKE) $(MAKE_FLAGS) $$m ) ) \
 	) || exit $$?
 
+.SUFFIXES:
 .SUFFIXES: .c .o .cmod .protos
 
 .cmod.c: $(BUILD_BASE)/precompile.sh-stamp $(TMP_BINDIR)/precompile.pike

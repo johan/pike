@@ -317,6 +317,7 @@ delete_dumped_modules:
 undump_modules: delete_dumped_modules
 	-rm dumpversion 2>/dev/null
 
+.SUFFIXES:
 .SUFFIXES: .c .h .o .cmod .pp .pph .protos .h_src
 
 .c.pp:
