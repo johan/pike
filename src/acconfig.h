@@ -55,6 +55,10 @@
 /* Define this if your ld doesn't have an option to set the run path */
 #undef USE_LD_LIBRARY_PATH
 
+/* Define this if your compiler attempts to use _chkstk, but libc contains
+ * __chkstk. */
+#undef HAVE_BROKEN_CHKSTK
+
 @TOP@
 
 /* Enable profiling */
@@ -416,6 +420,14 @@
 #define errno (oserror())
 #endif /* HAVE_OSERROR && !errno */
 #endif /* _SGI_SPROC_THREADS */
+
+/* This macro is only provided for compatibility with
+ * Windows PreRelease. Use ALIGNOF() instead!
+ * (Needed for va_arg().)
+ */
+#ifndef __alignof
+#define __alignof(X) ((size_t)&(((struct { char ignored_ ; X fooo_; } *)0)->fooo_))
+#endif /* __alignof */
 
 #ifdef HAVE_FUNCTION_ATTRIBUTES
 #define ATTRIBUTE(X) __attribute__ (X)
