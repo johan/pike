@@ -96,6 +96,6 @@
 
 
 /* Needed for fsort_template.h */
-ptrdiff_t my_log2(size_t x);
+int my_log2(size_t x);
 
 #endif

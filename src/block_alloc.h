@@ -246,7 +246,7 @@ int PIKE_CONCAT(remove_,DATA)(void *ptr)				     \
 void PIKE_CONCAT3(init_,DATA,_hash)(void)				     \
 {									     \
   extern INT32 hashprimes[32];						     \
-  extern ptrdiff_t my_log2(size_t x);					     \
+  extern int my_log2(size_t x);					     \
   PIKE_CONCAT(DATA,_hash_table_size)=hashprimes[my_log2(BSIZE)];	     \
 									     \
   PIKE_CONCAT(DATA,_hash_table)=(struct DATA **)			     \
