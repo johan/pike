@@ -133,6 +133,9 @@ OPCODE1(F_GLOBAL,"global")
   print_return_value();
 BREAK;
 
+OPCODE2_TAIL(F_MARK_AND_EXTERNAL,"mark & external")
+  *(Pike_mark_sp++)=Pike_sp;
+
 OPCODE2(F_EXTERNAL,"external")
 {
   struct external_variable_context loc;
@@ -159,6 +162,7 @@ OPCODE2(F_EXTERNAL,"external")
   print_return_value();
 }
 BREAK;
+
 
 OPCODE2(F_EXTERNAL_LVALUE,"& external")
 {
