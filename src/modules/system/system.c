@@ -580,8 +580,7 @@ void f_initgroups(INT32 args)
   if(!CHECK_SECURITY(SECURITY_BIT_SECURITY))
     Pike_error("initgroups: permission denied.\n");
 #endif
-  
-  VALID_FILE_IO("initgroups","status");
+
   get_all_args("initgroups", args, "%s%i", &user, &group);
   err = initgroups(user, group);
   if (err < 0) {
