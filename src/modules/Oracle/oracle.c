@@ -73,7 +73,7 @@ RCSID("$Id$");
  * -Hubbe
  */
 
-#define STATIC_BUFFERS 8000
+/* #define STATIC_BUFFERS 8000 */
 
 #ifndef ORACLE_USE_THREADS
 
@@ -927,7 +927,7 @@ static void f_fetch_fields(INT32 args)
 #ifdef STATIC_BUFFERS
 			data_size<0? STATIC_BUFFERS :data_size,
 #else
-			data_size<0? (0x7fffffff) :data_size,
+			data_size<0? (0x00200000) :data_size,
 #endif
 			type,
 			& info->data.indicator,
