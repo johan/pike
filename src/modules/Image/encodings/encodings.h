@@ -20,6 +20,7 @@ void img_bmp_decode_header(INT32 args);
 void img_ilbm_decode(INT32 args);
 void img_pnm_decode(INT32 args);
 void img_ras_decode(INT32 args);
+void img_ras__decode(INT32 args);
 void img_neo_f_decode(INT32 args);
 
 #endif /* !IMAGE_ENCODINGS_ENCODINGS_H */
