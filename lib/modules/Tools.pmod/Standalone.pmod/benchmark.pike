@@ -72,11 +72,18 @@ int(0..) main(int num, array(string) args)
 
    foreach (test_globs, string test_glob)
      foreach (to_run; int idx; string id)
-       if (id && glob (test_glob, to_run_names[idx])) {
-	 ecode += Tools.Shoot.ExecTest(id,tests[id])
-	   ->run(seconds_per_test,maximum_runs);
-	 // Don't run test more than once if it matches several globs.
-	 to_run[idx] = 0;
+       if (id) {
+	 if (!to_run_names[idx]) {
+	   write("No name on test %O!\n", id);
+	   ecode++;
+	   // Don't report the error multiple times.
+	   to_run[idx] = 0;
+	 } else if (glob (test_glob, to_run_names[idx])) {
+	   ecode += Tools.Shoot.ExecTest(id,tests[id])
+	     ->run(seconds_per_test,maximum_runs);
+	   // Don't run test more than once if it matches several globs.
+	   to_run[idx] = 0;
+	 }
        }
    return ecode;
 }
