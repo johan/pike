@@ -453,4 +453,14 @@ char *crypt(char *, char *);
 #define DO_IF_RUN_UNLOCKED(X)
 #endif
 
+/* Used in more than one place, better put it here */
+
+#if defined(PROFILING) && defined(HAVE_GETHRTIME)
+#define DO_IF_PROFILING(X) X
+#else
+#define DO_IF_PROFILING(X)
+#endif
+
+
+
 #endif

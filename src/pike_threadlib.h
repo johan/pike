@@ -466,12 +466,6 @@ PMOD_EXPORT extern int t_flag;
 #define SWAP_IN_TRACE(_tmp)
 #endif /* THREAD_TRACE */
 
-#if defined(PROFILING) && defined(HAVE_GETHRTIME)
-#define DO_IF_PROFILING(X) X
-#else
-#define DO_IF_PROFILING(X)
-#endif
-
 #define SWAP_OUT_THREAD(_tmp) do {				\
        (_tmp)->state=Pike_interpreter;				\
        (_tmp)->swapped=1;					\
