@@ -3085,7 +3085,7 @@ PIKE_MODULE_INIT
  
   
 /* function(:int) */
-  ADD_EFUN("getpid", f_getpid,tFunc(tNone,tInt), OPT_EXTERNAL_DEPEND);
+/* Also available as efun */
   ADD_FUNCTION2("getpid", f_getpid,tFunc(tNone,tInt), 0, OPT_EXTERNAL_DEPEND);
 #ifdef HAVE_GETPPID
   
