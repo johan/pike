@@ -4,6 +4,8 @@ AC_CONFIG_HEADER(config.h)
 
 AC_SET_MAKE
 
+AC_CONFIG_SUBDIRS(lib)
+
 AC_MODULE_INIT()
 
 AC_ARG_WITH(rsaref,     [  --with-rsaref[=path]      Support for RSAREF],[],[])
@@ -14,8 +16,8 @@ else
   AC_MSG_CHECKING(for RSA libraries)
   pike_cv_rsa_dir="no"
   for d in `echo ${with_rsaref} | sed 's/:/ /g'` \
-    `echo $prefix | sed "s@^NONE@$ac_default_prefix@g"` \
-    /usr/local /sw/local /sw $srcdir `pwd`; do
+    `echo $prefix | sed "s@^NONE@$with_root/$ac_default_prefix@g"` \
+    $with_root/usr/local $with_root/sw/local $with_root/sw $srcdir `pwd`; do
     echo "[" $d "]"
     if test -d "$d/."; then
       if test -d "$d/rsa/."; then
@@ -46,7 +48,5 @@ else
   AC_CHECK_LIB(cryptoci, b_rsa_public_key_type)
 fi
 fi
-
-AC_CONFIG_SUBDIRS(lib)
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
