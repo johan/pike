@@ -6029,7 +6029,9 @@ void init_builtin_efuns(void)
   
 /* function(void|int:int|float) */
   ADD_EFUN("time",f_time,
-	   tFunc(tOr(tVoid,tInt),tOr(tInt,tFlt)),OPT_EXTERNAL_DEPEND);
+	   tOr(tFunc(tOr(tVoid,tInt01),tInt),
+	       tFunc(tAnd(tIntPos,tNot(tInt01)),tFlt)),
+	   OPT_EXTERNAL_DEPEND);
   
 /* function(int:int) */
   ADD_EFUN("trace",f_trace,tFunc(tInt,tInt),OPT_SIDE_EFFECT);
