@@ -722,6 +722,8 @@ lex_t.o: $(SRCDIR)/lex_t.c $(SRCDIR)/interpret_protos.h
 
 language.o: $(SRCDIR)/language.c $(SRCDIR)/object.h $(SRCDIR)/interpret.h $(SRCDIR)/program.h
 
+$(SRCDIR)/language.c: $(SRCDIR)/language.h $(SRCDIR)/language.yacc
+
 $(SRCDIR)/language.h_src: $(SRCDIR)/language.yacc
 	@echo "Expect 1 shift/reduce conflict."
 	( cd $(SRCDIR) &&\
