@@ -108,6 +108,11 @@ test_any([[class Foo { array(string) _values() {return ({""});} };
 	  return typeof(values(foo)); ]],
 	 "array(string)")
 
+test_any([[mapping(string:int) foo;
+	  array(string) bar;
+	  return typeof(rows(foo, bar)); ]],
+	 "array(int)")
+
 test_compile_any([[
   constant FOO = 0;
   mapping(int:string) foo = ([FOO: "foo"]);
@@ -2568,6 +2573,10 @@ test_true(intp(__LINE__))
 test_true(stringp(__FILE__))
 test_true(stringp(__DATE__))
 test_true(stringp(__TIME__))
+test_true(floatp(__VERSION__))
+test_true(intp(__MAJOR__))
+test_true(intp(__MINOR__))
+test_true(intp(__BUILD__))
 
 // #define
 test_any([[
