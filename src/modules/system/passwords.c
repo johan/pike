@@ -436,7 +436,7 @@ void f_get_groups_for_user(INT32 arg)
   struct group *gr;
   struct passwd *pw;
   struct array *a;
-  char *user;
+  char *user = NULL;	/* Keep compiler happy */
   ONERROR err;
   int base_gid;
 
