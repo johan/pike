@@ -669,7 +669,10 @@ if test $cflags_is_set = no; then
 
 
  if test "x${GCC-}" = xyes ; then
-  WARN="-W -Wall -Wpointer-arith -Wno-unused"
+  # Do not use -Wall, since that produces a lot of warnings that are not
+  # really interresting (such as the warning for if( ... ) ... else if(
+  # ... ) .... else
+  WARN="-Wcomment -Wformat -Wimplicit-function-declaration -Wmultichar -Wswitch -Wuninitialized -Wpointer-arith -Wchar-subscripts -Wno-long-long"
 
   if test "x${with_static_linking-}" = "xyes" ; then
     AC_SYS_COMPILER_FLAG(-static,link_static,CFLAGS)
@@ -713,6 +716,20 @@ if test $cflags_is_set = no; then
        AC_SYS_COMPILER_FLAG(-mpentium,pentium,OPTIMIZE)
     ])
    ;;
+   i86pc)
+     case "`isalist 2>/dev/null`" in 
+        *pentium_pro*)
+        AC_SYS_COMPILER_FLAG(-mcpu=pentiumpro,pentiumpro,OPTIMIZE,[
+          AC_SYS_COMPILER_FLAG(-mcpu=pentium,pentium,OPTIMIZE)
+        ])
+	;;
+        *pentium*)
+         AC_SYS_COMPILER_FLAG(-mcpu=pentium,pentium,OPTIMIZE,[
+           AC_SYS_COMPILER_FLAG(-m486,486,OPTIMIZE)
+         ])
+	;;
+     esac
+    ;;
   esac
 
   # AIX
