@@ -72,7 +72,7 @@ int main(int argc, array(string) argv)
 	    info = Tools.AutoDoc.PikeExtractor.extractModule(raw, path, name);
 
 	  } else if (has_suffix(path, ".pike")) {
-	    if (segments[-1] == "module.pike") {
+	    if (!rootless && segments[-1] == "module.pike") {
 	      // Handling of Foo.pmod/module.pike.
 	      segments = segments[..sizeof(segments)-2];
 	    }
