@@ -1770,5 +1770,8 @@ PIKE_MODULE_EXIT
   if(std_cs_program != NULL)
     free_program(std_cs_program);
 
+  if(multichar_program != NULL)
+    free_program(multichar_program);
+
   iso2022_exit();
 }
