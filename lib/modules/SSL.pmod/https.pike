@@ -13,7 +13,7 @@
 
 import Stdio;
 
-inherit "sslport";
+inherit SSL.sslport;
 
 string my_certificate = MIME.decode_base64(
   "MIIBxDCCAW4CAQAwDQYJKoZIhvcNAQEEBQAwbTELMAkGA1UEBhMCREUxEzARBgNV\n"
