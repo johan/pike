@@ -499,7 +499,10 @@ static void f_list_tables(INT32 args)
 
   THREADS_DISALLOW();
 
-  PIKE_MYSQL->last_result = result;
+  if (!(PIKE_MYSQL->last_result = result)) {
+    error("mysql->list_tables(): Cannot list databases: %s\n",
+	  mysql_error(PIKE_MYSQL->socket));
+  }
 
   pop_n_elems(args);
 
@@ -547,7 +550,10 @@ static void f_list_fields(INT32 args)
 
   THREADS_DISALLOW();
 
-  PIKE_MYSQL->last_result = result;
+  if (!(PIKE_MYSQL->last_result = result)) {
+    error("mysql->list_fields(): Cannot list databases: %s\n",
+	  mysql_error(PIKE_MYSQL->socket));
+  }
 
   pop_n_elems(args);
 
@@ -571,7 +577,10 @@ static void f_list_processes(INT32 args)
 
   THREADS_DISALLOW();
 
-  PIKE_MYSQL->last_result = result;
+  if (!(PIKE_MYSQL->last_result = result)) {
+    error("mysql->list_processes(): Cannot list databases: %s\n",
+	  mysql_error(PIKE_MYSQL->socket));
+  }
 
   push_object(fp->current_object);
   fp->current_object->refs++;
