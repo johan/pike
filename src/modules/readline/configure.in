@@ -3,7 +3,7 @@ AC_INIT(readlinemod.c)
 AC_CONFIG_HEADER(readline_machine.h)
 AC_ARG_WITH(readline,[  --with(out)-readline   support command line editing],[],[with_readline=yes])
 
-sinclude(../module_configure.in)
+AC_MODULE_INIT()
 
 if test x$with_readline = xyes ; then
   AC_MSG_CHECKING(Checking for GNU directory)

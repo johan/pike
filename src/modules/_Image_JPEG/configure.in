@@ -5,7 +5,7 @@ AC_INIT(image_jpeg.c)
 AC_CONFIG_HEADER(config.h)
 AC_ARG_WITH(jpeglib,     [  --with(out)-jpeglib       Support JPEG (Image.JPEG)],[],[with_jpeglib=yes])
 
-sinclude(../module_configure.in)
+AC_MODULE_INIT()
 
 if test x$with_jpeglib = xyes ; then
   AC_CHECK_HEADERS(jpeglib.h)

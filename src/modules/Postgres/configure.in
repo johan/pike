@@ -16,7 +16,7 @@ AC_ARG_WITH(libpq-dir,
 	[  --with-libpq-dir=dir               look for library-files in dir],
 	[pike_postgres_user_lib_directory=$withval])
 
-sinclude(../module_configure.in)
+AC_MODULE_INIT()
 
 ac_pike_postgres_skip=no
 

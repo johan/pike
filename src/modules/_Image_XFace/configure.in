@@ -3,7 +3,7 @@ AC_INIT(image_xface.c)
 AC_CONFIG_HEADER(config.h)
 AC_ARG_WITH(gmp,     [  --with(out)-gmp        Support bignums],[],[with_gmp=yes])
 
-sinclude(../module_configure.in)
+AC_MODULE_INIT()
 
 if test x$with_gmp = xyes ; then
   AC_CHECK_HEADERS(gmp.h)

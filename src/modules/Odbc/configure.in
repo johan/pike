@@ -9,7 +9,7 @@
 AC_INIT(odbc.c)
 AC_CONFIG_HEADER(config.h)
 
-sinclude(../module_configure.in)
+AC_MODULE_INIT()
 
 OLD_LIBS=$LIBS
 OLD_LDFLAGS=$LDFLAGS
