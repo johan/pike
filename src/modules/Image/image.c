@@ -380,7 +380,7 @@ CHRONO("apply_matrix, one");
 	 r=g=b=0;
 	 mp=matrix;
 	 ip=img->img+(x-bx)+(y-by)*img->xsize;
-	 //for (yp=y-by,j=0; j<height; j++,yp++)
+	 /* for (yp=y-by,j=0; j<height; j++,yp++) */
 #ifdef MATRIX_DEBUG
 j=-1;
 #endif
