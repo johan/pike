@@ -1567,11 +1567,7 @@ void cleanup_objects(void)
     }
     SET_NEXT_AND_FREE(o,free_object);
   }
-  if (master_object) free_object(master_object);
-  master_object=0;
-  if (master_program) free_program(master_program);
-  master_program=0;
-  destruct_objects_to_destruct();
+  destruct_objects_to_destruct_cb();
 }
 
 PMOD_EXPORT struct array *object_indices(struct object *o)
@@ -2326,6 +2322,18 @@ void exit_object(void)
     remove_callback(destruct_object_evaluator_callback);
     destruct_object_evaluator_callback = NULL;
   }
+
+  if (master_object) {
+    free_object(master_object);
+    master_object=0;
+  }
+
+  if (master_program) {
+    free_program(master_program);
+    master_program=0;
+  }
+
+  destruct_objects_to_destruct();
 
   if(magic_index_program)
   {

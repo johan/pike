@@ -61,6 +61,11 @@ extern struct callback *gc_evaluator_callback;
 extern void *gc_svalue_location;
 #endif
 
+#ifdef DEBUG_MALLOC
+extern int gc_keep_markers;
+extern int gc_external_refs_zapped;
+#endif
+
 #define ADD_GC_CALLBACK() do { if(!gc_evaluator_callback)  gc_evaluator_callback=add_to_callback(&evaluator_callbacks,(callback_func)do_gc,0,0); }while(0)
 
 #define LOW_GC_ALLOC(OBJ) do {						\
