@@ -2328,8 +2328,7 @@ void f_create_process(INT32 args)
 #else
       pid=fork();
 #endif
-
-    }while(pid == -1 && (errno==EAGAIN || errno==EINTR));
+    }while(pid==-1 && errno==EINTR)
 
     UNSET_ONERROR(err);
 
