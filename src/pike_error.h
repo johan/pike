@@ -8,6 +8,22 @@
 #ifndef PIKE_ERROR_H
 #define PIKE_ERROR_H
 
+#ifdef CONFIGURE_TEST
+
+#include <stdio.h>
+
+static inline void Pike_fatal (const char *fmt, ...)
+{
+  va_list args;
+  va_start (args, fmt);
+  vfprintf (stderr, fmt, args);
+  abort();
+}
+
+#define Pike_error Pike_fatal
+
+#else  /* !CONFIGURE_TEST */
+
 #include "machine.h"
 
 #ifdef HAVE_SETJMP_H
@@ -346,5 +362,7 @@ PMOD_EXPORT extern const char msg_div_by_zero[];
 /* Generic error stuff */
 #define ERR_EXT_DECLARE
 #include "errors.h"
+
+#endif	/* !CONFIGURE_TEST */
 
 #endif /* PIKE_ERROR_H */

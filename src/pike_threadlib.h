@@ -800,7 +800,7 @@ PMOD_EXPORT extern int Pike_in_gc;
 #endif
 
 #ifdef __NT__
-#ifndef PIKE_DEBUG
+#if !defined (PIKE_DEBUG) || defined (CONFIGURE_TEST)
 #define CheckValidHandle(X) (X)
 #else
 PMOD_EXPORT HANDLE CheckValidHandle(HANDLE h);
