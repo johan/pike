@@ -2951,7 +2951,7 @@ static int find_used_variables(node *n,
 
   case F_ARROW:
   case F_INDEX:
-    p->ext_flags |= VAR_USED;
+    p->ext_flags = VAR_USED;
     if(car_is_node(n)) find_used_variables(CAR(n),p,noblock,0);
     if(cdr_is_node(n)) find_used_variables(CDR(n),p,noblock,0);
     break;
@@ -3175,16 +3175,15 @@ static int depend_p2(node *a, node *b)
   UNSET_ONERROR(free_bb);
   UNSET_ONERROR(free_aa);
 
-  if(aa.err || bb.err) {
+  /* If there was an error or
+   * If A has external dependencies due to indexing, we won't
+   * investigate further.
+   */
+  if(aa.err || bb.err || aa.ext_flags == VAR_USED) {
     free_vars(&aa);
     free_vars(&bb);
     return 1;
   }
-
-  /* If A has external dependencies due to indexing, we won't
-   * investigate further.
-   */
-  if (aa.ext_flags == VAR_USED) return 1;
 
   /* Check for overlap in locals. */
   {
