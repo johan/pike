@@ -168,8 +168,12 @@ void f_load_module(INT32 args)
   {
     const char *err = dlerror();
     if(!err) err = "Unknown reason";
-    error("load_module(\"%s\") failed: %s\n",
-	  sp[-args].u.string->str, err);
+    if (sp[-args].u.string->len < 1024) {
+      error("load_module(\"%s\") failed: %s\n",
+	    sp[-args].u.string->str, err);
+    } else {
+      error("load_module() failed: %s\n", err);
+    }
   }
 
   init=(modfun)dlsym(module, "pike_module_init");
@@ -184,8 +188,12 @@ void f_load_module(INT32 args)
   if(!init || !exit)
   {
     dlclose(module);
-    
-    error("Failed to initialize module \"%s\".\n", module_name);
+
+    if (sizeof(module_name) < 1024) {
+      error("Failed to initialize dynamic module \"%s\".\n", module_name);
+    } else {
+      error("Failed to initialize dynamic module.\n");
+    }
   }
 
   new_module=ALLOC_STRUCT(module_list);
