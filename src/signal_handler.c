@@ -1651,9 +1651,10 @@ extern int pike_make_pipe(int *);
       while (((_l = write(control_pipe[1], buf + _i, 3 - _i)) < 0) && \
              (errno == EINTR)) \
         ; \
-      if (_l < 0) break; \
+      if (_l < 0) exit (99 - errno); \
     } \
-    while(close(control_pipe[1]) < 0 && errno==EINTR); \
+    while((_l = close(control_pipe[1])) < 0 && errno==EINTR); \
+    if (_l < 0) exit (99 + errno); \
     exit(99); \
   } while(0)
 
