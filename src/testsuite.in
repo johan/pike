@@ -7881,9 +7881,12 @@ test_true(mappingp(all_constants()))
 test_eq(all_constants()["all_constants"],all_constants)
 
 // - all_threads
-test_true(arrayp(all_threads()))
-test_true(sizeof(all_threads()))
-test_true(objectp(all_threads()[0]))
+cond([[all_constants()->thread_create]],
+[[
+  test_true(arrayp(all_threads()))
+  test_true(sizeof(all_threads()))
+  test_true(objectp(all_threads()[0]))
+]])
 
 // - allocate
 test_equal(allocate(0),({}))
