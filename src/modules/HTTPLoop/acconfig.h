@@ -7,3 +7,6 @@
 
 /* Define if your sendfile() takes 7 args (FreeBSD style) */
 #undef HAVE_FREEBSD_SENDFILE
+
+/* Define this if you want to disable the use of sendfile(2). */
+#undef HAVE_BROKEN_SENDFILE
