@@ -54,7 +54,7 @@ extern struct program *image_program;
 **! method string encode_truecolor_masks(object image,int bpp,int alignbits,int swapbytes,int rmask,int gmask,int bmask)
 **! method string encode_truecolor(object image,int bpp,int alignbits,int swapbytes,int rbits,int rshift,int gbits,int gshift,int bbits,int bshift,object ct)
 **! method string encode_truecolor_masks(object image,int bpp,int alignbits,int swapbytes,int rmask,int gmask,int bmask,object ct)
-**!	Pack a image into a truecolor string. You will get a string
+**!	Pack an image into a truecolor string. You will get a string
 **!	of packed red, green and blue bits; 
 **!	ie: 
 **!
