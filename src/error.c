@@ -820,10 +820,8 @@ DECLSPEC(noreturn) void generic_error_va(struct object *o,
 					 va_list foo)
      ATTRIBUTE((noreturn))
 {
-  char buf[8192];
+  struct string_builder s;
   int i;
-
-  VSNPRINTF(buf, sizeof(buf), fmt, foo);
 
   if(in_error)
   {
@@ -831,15 +829,18 @@ DECLSPEC(noreturn) void generic_error_va(struct object *o,
     in_error=0;
     Pike_fatal("Recursive error() calls, original error: %s",tmp);
   }
-  in_error=buf;
+
+  in_error = fmt;
+  init_string_builder(&s, 0);  
+  string_builder_vsprintf(&s, fmt, foo);
 
 #if 0
   if (!master_program) {
-    fprintf(stderr, "ERROR: %s\n", buf);
+    fprintf(stderr, "ERROR: %s\n", s.s->str);
   }
 #endif
 
-  ERROR_STRUCT(generic,o)->error_message=make_shared_string(buf);
+  ERROR_STRUCT(generic,o)->error_message = finish_string_builder(&s);
   f_backtrace(0);
 
   if(func)
