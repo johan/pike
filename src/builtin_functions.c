@@ -7909,6 +7909,7 @@ void init_builtin_efuns(void)
 		tFunc(tStr tOr(tStr, tVoid) tOr(tObj, tVoid), tMix), 0);
   ADD_PROTOTYPE("handle_include", tFunc(tStr tStr tInt, tStr), 0);
   ADD_PROTOTYPE("handle_inherit", tFunc(tStr tStr tOr(tObj, tVoid), tPrg(tObj)), 0);
+  ADD_PROTOTYPE("write", tFunc(tStr tOr(tVoid,tMix), tVoid), OPT_SIDE_EFFECT);
   ADD_PROTOTYPE("werror", tFunc(tStr tOr(tVoid,tMix), tVoid), OPT_SIDE_EFFECT);
   
   /* FIXME: Are these three actually supposed to be used?

@@ -576,32 +576,6 @@ void f_filesystem_stat(INT32 args)
 #endif /* HAVE_STATVFS || HAVE_STATFS || HAVE_USTAT */
 #endif /* __NT__ */
 
-/* This function is available as the builtin _werror(), to be called by
- * werror() to allow werror() to be overridden by load-reordering
- */
-
-void f_werror(INT32 args)
-{
-  VALID_FILE_IO("werror","werror");
-
-  if(!args)
-    SIMPLE_TOO_FEW_ARGS_ERROR("werror", 1);
-  if(sp[-args].type != T_STRING)
-    SIMPLE_BAD_ARG_ERROR("werror", 1, "string");
-
-  if(args> 1)
-  {
-    f_sprintf(args);
-    args=1;
-  }
-
-  /* FIXME: Wide string handling. */
-  if(sp[-args].u.string->size_shift!=0)
-    Pike_error("Wide strings can not be written to stderr.\n");
-  write_to_stderr(sp[-args].u.string->str, sp[-args].u.string->len);
-  pop_n_elems(args);
-}
-
 /*! @decl int rm(string f)
  *!
  *! Remove a file or directory.
@@ -1543,9 +1517,6 @@ void init_files_efuns(void)
   
 /* function(:int) */
   ADD_EFUN("errno",f_errno,tFunc(tNone,tInt),OPT_EXTERNAL_DEPEND);
-  
-/* function(string,void|mixed...:void) */
-  ADD_EFUN("_werror",f_werror,tFuncV(tStr,tOr(tVoid,tMix),tVoid),OPT_SIDE_EFFECT);
   
 /* function(string:int) */
   ADD_EFUN("rm",f_rm,tFunc(tStr,tInt),OPT_SIDE_EFFECT);

@@ -9,7 +9,7 @@ string fr;
 
 array encoded=({});
 
-#define werror _werror
+private function werror = _static_modules.files()->_stderr->write;
 
 void handle_error(mixed err)
 {
