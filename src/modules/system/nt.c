@@ -526,8 +526,8 @@ void f_NetUserEnum(INT32 args)
 
     THREADS_ALLOW();
     ret=netuserenum(server,
-		    filter,
 		    level,
+		    filter,
 		    &buf,
 		    0x10000,
 		    &read,
