@@ -2541,6 +2541,22 @@ char foo[23];
   for (i=6; i--;) {
     if (foo[i+3] != 1) exit(1);
   }
+  memset(foo+4, 0, 6);
+  for (i=6; i--;) {
+    if (foo[i+4]) exit(1);
+  }
+  memset(foo+5, 1, 6);
+  for (i=6; i--;) {
+    if (foo[i+5] != 1) exit(1);
+  }
+  memset(foo+6, 0, 6);
+  for (i=6; i--;) {
+    if (foo[i+6]) exit(1);
+  }
+  memset(foo+7, 1, 6);
+  for (i=6; i--;) {
+    if (foo[i+7] != 1) exit(1);
+  }
   exit(0);
 ])
 
