@@ -284,7 +284,7 @@ static struct pike_string *do_read(int fd,
   bytes_read=0;
   *err=0;
 
-  if(r < 65536)
+  if(r <= 65536)
   {
     struct pike_string *str;
 
