@@ -125,6 +125,14 @@ PMOD_EXPORT void really_free_svalue(struct svalue *s)
     break;
     
   case T_TYPE:
+#ifdef USE_PIKE_TYPE
+    really_free_pike_type(s->u.type);
+#ifdef PIKE_DEBUG
+    s->type = 99;
+#endif /* PIKE_DEBUG */
+    break;
+#endif /* USE_PIKE_TYPE */
+    /* FALL_THROUGH */
   case T_STRING:
     really_free_string(s->u.string);
 #ifdef PIKE_DEBUG
