@@ -6030,7 +6030,7 @@ void init_builtin_efuns(void)
 /* function(void|int:int|float) */
   ADD_EFUN("time",f_time,
 	   tOr(tFunc(tOr(tVoid,tInt01),tInt),
-	       tFunc(tAnd(tIntPos,tNot(tInt01)),tFlt)),
+	       tFunc(tInt2Plus,tFlt)),
 	   OPT_EXTERNAL_DEPEND);
   
 /* function(int:int) */
