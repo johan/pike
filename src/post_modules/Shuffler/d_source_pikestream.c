@@ -18,9 +18,7 @@
 
 #include "shuffler.h"
 
-#define CHUNK 8192
-
-/* Source: Pike-Stream 
+/* Source: Pike-Stream
  * Argument: Stdio.File lookalike with read
  *           callback support (set_read_callback)
  */
