@@ -436,24 +436,9 @@ OPCODE2(F_LOCAL_2_LOCAL, "local = local", 0, {
 });
 
 OPCODE2(F_LOCAL_2_GLOBAL, "global = local", 0, {
-  INT32 tmp = arg1 + Pike_fp->context.identifier_level;
-  struct identifier *i;
-
-  if(!Pike_fp->current_object->prog)
-    Pike_error("Cannot access global variables in destructed object.\n");
-
-  i = ID_FROM_INT(Pike_fp->current_object->prog, tmp);
-  if(!IDENTIFIER_IS_VARIABLE(i->identifier_flags))
-    Pike_error("Cannot assign functions or constants.\n");
-  if(i->run_time_type == PIKE_T_MIXED)
-  {
-    assign_svalue((struct svalue *)GLOBAL_FROM_INT(tmp),
-		  Pike_fp->locals + arg2);
-  }else{
-    assign_to_short_svalue((union anything *)GLOBAL_FROM_INT(tmp),
-			   i->run_time_type,
-			   Pike_fp->locals + arg2);
-  }
+  object_low_set_index(Pike_fp->current_object,
+		       arg1 + Pike_fp->context.identifier_level,
+		       Pike_fp->locals + arg2);
 });
 
 OPCODE2(F_GLOBAL_2_LOCAL, "local = global", 0, {
