@@ -2468,18 +2468,18 @@ void image_threshold(INT32 args)
 **!	<td>->rgb_to_hsv();</td>
 **!	</tr><tr valign=center>
 **!	<td><illustration>
-**!     return image(67,67)->tuned_box(0,0, 67,67,
+**!     return Image.image(67,67)->tuned_box(0,0, 67,67,
 **!                      ({ ({ 255,255,128 }), ({ 0,255,128 }),
 **!                         ({ 255,255,255 }), ({ 0,255,255 })}));
 **!	</illustration></td>
 **!	<td><illustration>
-**!     return image(67,67)->tuned_box(0,0, 67,67,
+**!     return Image.image(67,67)->tuned_box(0,0, 67,67,
 **!                      ({ ({ 255,255,128 }), ({ 0,255,128 }),
 **!                         ({ 255,255,255 }), ({ 0,255,255 })}))
 **!          ->hsv_to_rgb();
 **!	</illustration></td>
 **!	<td><illustration>
-**!     return image(67,67)->tuned_box(0,0, 67,67,
+**!     return Image.image(67,67)->tuned_box(0,0, 67,67,
 **!                      ({ ({ 255,255,128 }), ({ 0,255,128 }),
 **!                         ({ 255,255,255 }), ({ 0,255,255 })}))
 **!          ->rgb_to_hsv();
