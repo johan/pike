@@ -152,7 +152,7 @@ void describe_index(struct array *a,
 		    struct processing *p,
 		    int indent);
 void describe_array(struct array *a,struct processing *p,int indent);
-struct array *aggregate_array(INT32 args);
+PMOD_EXPORT struct array *aggregate_array(INT32 args);
 PMOD_EXPORT struct array *append_array(struct array *a, struct svalue *s);
 PMOD_EXPORT struct array *explode(struct pike_string *str,
 		       struct pike_string *del);
