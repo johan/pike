@@ -557,7 +557,6 @@ void f_get_all_users(INT32 args)
   while(1)
   {
     struct passwd *pw;
-    struct pike_pwent *nppwent;
 
     THREADS_ALLOW_UID();
     pw=getpwent();
