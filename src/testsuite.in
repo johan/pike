@@ -613,7 +613,8 @@ cond( [[ master()->resolv("Pike")->Security ]],[[
 
   object luser_creds = Pike.Security.Creds(luser, 0, 0);
   return !catch {
-    return !!call_with_creds(luser_creds, Stdio.File, "/dev/null");
+    return !!Pike.Security.call_with_creds(luser_creds, Stdio.File,
+        "/dev/null");
   };
 
   return 0;
