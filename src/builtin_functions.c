@@ -4480,6 +4480,7 @@ PMOD_EXPORT void f_glob(INT32 args)
   case T_ARRAY:
     a=Pike_sp[1-args].u.array;
     matches=0;
+    check_stack(a->size);
     for(i=0;i<a->size;i++)
     {
       if(ITEM(a)[i].type != T_STRING)
