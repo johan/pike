@@ -1700,7 +1700,7 @@ PIKEFUN int grab_input(int mode) {
 
 /* Joystick related functionality */
 
-#define CHECK_INIT() if(THIS->joystick == NULL) { Pike_error("Joystick unitialized!\n"); }
+#define CHECK_INIT() if(THIS->joystick == NULL) { Pike_error("Joystick uninitialized!\n"); }
 PIKECLASS Joystick {
   CVAR SDL_Joystick *joystick;
   INIT {
