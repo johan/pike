@@ -446,7 +446,7 @@ class Node
 	"$type$": String.capitalize(type),
 	"$title$": make_class_path(1),
 	"$style$": style,
-	"$dotdot$": extra_prefix,
+	"$dotdot$": sizeof(extra_prefix)?extra_prefix:".",
 	"$imagedir$":image_prefix(),
       ]));
 
