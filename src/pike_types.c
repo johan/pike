@@ -1062,6 +1062,16 @@ static char *low_match_types(char *a,char *b, int flags)
     break;
 
   case T_OBJECT:
+#if 0
+    if(EXTRACT_INT(a+2) || EXTRACT_INT(b+2))
+    {
+      fprintf(stderr,"Type match1: ");
+      stupid_describe_type(a,type_length(a));
+      fprintf(stderr,"Type match2: ");
+      stupid_describe_type(b,type_length(b));
+    }
+#endif
+
     /* object(* 0) matches any object */
     if(!EXTRACT_INT(a+2) || !EXTRACT_INT(b+2)) break;
 
@@ -1081,11 +1091,11 @@ static char *low_match_types(char *a,char *b, int flags)
 
     {
       struct program *ap,*bp;
-      ap=id_to_program(EXTRACT_UCHAR(a+2));
-      bp=id_to_program(EXTRACT_UCHAR(b+2));
+      ap=id_to_program(EXTRACT_INT(a+2));
+      bp=id_to_program(EXTRACT_INT(b+2));
 
       if(!ap || !bp) break;
-      
+
       if(EXTRACT_UCHAR(a+1))
       {
 	if(!implements(ap,bp))

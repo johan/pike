@@ -682,6 +682,9 @@ void check_program(struct program *p)
   INT32 size,e;
   unsigned INT32 checksum;
 
+  if(p->id > current_program_id)
+    fatal("Program id is out of sync! (p->id=%d, current_program_id=%d)\n",p->id,current_program_id);
+
   if(p->refs <=0)
     fatal("Program has zero refs.\n");
 
@@ -2490,6 +2493,7 @@ int implements(struct program *a, struct program *b)
   unsigned long hval;
   if(!a || !b) return -1;
   if(a==b) return 1;
+
   hval = a->id*9248339 + b->id;
   hval %= IMPLEMENTS_CACHE_SIZE;
   if(implements_cache[hval].aid==a->id && implements_cache[hval].bid==b->id)
@@ -2499,5 +2503,6 @@ int implements(struct program *a, struct program *b)
   /* Do it the tedious way */
   implements_cache[hval].aid=a->id;
   implements_cache[hval].bid=b->id;
-  return implements_cache[hval].ret=low_implements(a,b);
+  implements_cache[hval].ret=low_implements(a,b);
+  return implements_cache[hval].ret;
 }
