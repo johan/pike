@@ -18,7 +18,7 @@
 #endif /* HAVE_CONFIG_H */
 
 /* From the mysql-dist */
-/* Workaround for versions prior to 3.20.0 not beeing protected for
+/* Workaround for versions prior to 3.20.0 not beeing protected against
  * multiple inclusion.
  */
 #ifndef _mysql_h
@@ -43,6 +43,9 @@
  */
 
 struct precompiled_mysql {
+#ifdef MUTEX_T
+  MUTEX_T	lock;
+#endif /* MUTEX_T */
   MYSQL		mysql, *socket;
   MYSQL_RES	*last_result;	/* UGLY way to pass arguments to create() */
   struct pike_string	*host, *database, *user, *password;	/* Reconnect */
