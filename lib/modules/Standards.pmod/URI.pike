@@ -2,7 +2,6 @@
 //! absolute form, as defined in RFC 2396
 
 // Implemented by Johan Sundström and Johan Schön.
-// Copyright (c) Roxen Internet Software 2001
 // $Id$
 
 #pragma strict_types
@@ -79,7 +78,7 @@ int `==(mixed something)
 {
   return
     _sprintf('t') == sprintf("%t", something) &&
-    _sprintf('x') == sprintf("%x", something);
+    _sprintf('x') == sprintf("%x", [object]something);
 }
 
 string combine_uri_path(string base, string rel)
