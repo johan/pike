@@ -559,10 +559,10 @@ static void f_create_multichar(INT32 args)
 
   switch(no) {
   case 1:
-    s->table = &GBK;
+    s->table = GBK;
     break;
   case 2:
-    s->table = &cp949;
+    s->table = cp949;
     break;
   default:
     Pike_error("Unknown multichar table.\n");
