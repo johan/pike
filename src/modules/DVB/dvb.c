@@ -5,6 +5,10 @@
  *
  * $Id$
  *
+ * + Tuner zapping code based on 'szap' app from linux DVB driver
+ *   package [ szap.c: (c) 2001 Johannes Stezenbach js@convergence.de ]
+ * + TS parsing code based on 'mgcam' app [ by badfish :]
+ *
  * Distro: aconfig.h (automake-> config.h.in), configure.in, Makefile.in
  *
  * Todo:
