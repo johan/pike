@@ -123,7 +123,12 @@ desdata.yes:	$(SRCDIR)/desdata.pike
 
 .c.o:
 	@echo "Compiling $<" ;\
-	$(CC) $(CFLAGS) -c $< -o $@
+	if $(CC) $(CFLAGS) -c $< -o $@ ; then : ;\
+	else \
+	  echo "WARNING: Compiler failure! Trying without optimization!" >&2;\
+	  echo "echo $(CC) $(PREFLAGS) $(NOOPTFLAGS) -c $< -o $@" >&2 ;\
+	  NO_ULIMIT=yes $(CC) $(PREFLAGS) $(NOOPTFLAGS) -c $< -o $@ ;\
+	fi
 
 # slowest to quickest
 desSmallFips.c:
