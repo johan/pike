@@ -979,7 +979,9 @@ void check_mapping(struct mapping *m)
 
       if(! ( (1 << k->val.type) & (m->val_types) ))
 	fatal("Mapping values type field lies.\n");
-      
+
+      check_svalues(& k->ind);
+      check_svalues(& k->val);
     }
   
   if(m->size != num)
