@@ -127,7 +127,12 @@ case "$UNAME" in
     AC_DEFINE(USE_RPATH)
     ;;
   SunOS\ 5.*)
-    AC_DEFINE(USE_R)
+    if test "$TCC" = "yes"; then
+      # tcc doesn't know about -R
+      AC_DEFINE(USE_Wl_R)
+    else
+      AC_DEFINE(USE_R)
+    fi
     ;;
   Linux\ 2.*)
     AC_DEFINE(USE_Wl)
