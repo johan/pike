@@ -887,7 +887,13 @@ char *low_describe_type(char *t)
 	   (EXTRACT_UCHAR(t+6) == T_MIXED && EXTRACT_UCHAR(t+5) == T_VOID))))
       {
 	/* done */
-	;
+	if (EXTRACT_UCHAR(t+1) == T_MIXED) {
+	  /* function(mixed...:mixed|void) */
+	  t += 5;
+	} else {
+	  /* function(mixed|void...mixed|void) */
+	  t += 7;
+	}
       } else {
 	my_strcat("(");
 	s=0;
@@ -961,11 +967,20 @@ char *low_describe_type(char *t)
       }else{
 	my_strcat("(");
 	t=low_describe_type(t);
-      my_strcat(":");
-      t=low_describe_type(t);
-      my_strcat(")");
-    }
-    break;
+	my_strcat(":");
+	t=low_describe_type(t);
+	my_strcat(")");
+      }
+      break;
+    default:
+      {
+	char buf[20];
+	my_strcat("unknown code(");
+	sprintf(buf, "%d", EXTRACT_UCHAR(t-1));
+	my_strcat(buf);
+	my_strcat(")");
+	break;
+      }
   }
   return t;
 }
