@@ -78,10 +78,6 @@ RCSID("$Id$");
 #define RIGID_DEFAULT_G 16
 #define RIGID_DEFAULT_B 16
 
-#ifndef MAX
-#define MAX(X,Y) ((X)>(Y)?(X):(Y))
-#endif
-
 #define SQ(x) ((x)*(x))
 static INLINE ptrdiff_t sq(ptrdiff_t x) { return x*x; }
 static INLINE int sq_int(int x) { return x*x; }
@@ -2910,12 +2906,12 @@ void image_colortable_cubicles(INT32 args)
 	  sp[2-args].type==T_INT &&
 	  sp[1-args].type==T_INT)
       {
-	 THIS->lu.cubicles.r=MAX(sp[-args].u.integer,1);
-	 THIS->lu.cubicles.g=MAX(sp[1-args].u.integer,1);
-	 THIS->lu.cubicles.b=MAX(sp[2-args].u.integer,1);
+	 THIS->lu.cubicles.r=MAXIMUM(sp[-args].u.integer,1);
+	 THIS->lu.cubicles.g=MAXIMUM(sp[1-args].u.integer,1);
+	 THIS->lu.cubicles.b=MAXIMUM(sp[2-args].u.integer,1);
 	 if (args>=4 &&
 	     sp[3-args].type==T_INT)
-	    THIS->lu.cubicles.accur=MAX(sp[3-args].u.integer,1);
+	    THIS->lu.cubicles.accur=MAXIMUM(sp[3-args].u.integer,1);
 	 else
 	    THIS->lu.cubicles.accur=CUBICLE_DEFAULT_ACCUR;
       }
@@ -4295,8 +4291,8 @@ void image_colortable_ordered(INT32 args)
 		"Bad arguments to Image.Colortable->ordered()\n");
       else
       {
-	 xsize=MAX(sp[3-args].u.integer,1);
-	 ysize=MAX(sp[4-args].u.integer,1);
+	 xsize=MAXIMUM(sp[3-args].u.integer,1);
+	 ysize=MAXIMUM(sp[4-args].u.integer,1);
       }
    }
 

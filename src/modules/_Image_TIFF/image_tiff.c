@@ -55,10 +55,6 @@ extern struct program *image_program;
 extern struct program *image_colortable_program;
 #endif
 
-#ifndef MIN
-#define MIN(X,Y) ((X)<(Y)?(X):(Y))
-#endif
-
 struct buffer 
 {
   char *str;
@@ -117,11 +113,11 @@ static tsize_t read_buffer( thandle_t bh, tdata_t d, tsize_t len )
   TRACE("read_buffer(%p,%p,%d)\n", buffer_handle,data,len);
   avail = buffer_handle->len-buffer_handle->offset;
   if(!avail) return -1;
-  MEMCPY( data, buffer_handle->str+buffer_handle->offset, MIN(avail,len) );
-  buffer_handle->offset += MIN(avail,len);
+  MEMCPY( data, buffer_handle->str+buffer_handle->offset, MINIMUM(avail,len) );
+  buffer_handle->offset += MINIMUM(avail,len);
   if(buffer_handle->offset > buffer_handle->real_len)
     buffer_handle->real_len = buffer_handle->offset;
-  return MIN(avail,len);
+  return MINIMUM(avail,len);
 }
 
 /* Complies with the TIFFReadWriteProc API */

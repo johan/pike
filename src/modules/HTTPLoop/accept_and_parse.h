@@ -154,8 +154,6 @@ struct c_request_object
   int headers_parsed;
 };
 
-#define MY_MIN(a,b) ((a)<(b)?(a):(b))
-
 #define LOG(X,Y,Z) do { \
     if((Y)->cache) {\
       (Y)->cache->num_requests++;\

@@ -26,6 +26,7 @@
 #include "object.h"
 #include "operators.h"
 #include "pike_memory.h"
+#include "pike_macros.h"
 #include "fdlib.h"
 #include "program.h"
 #include "stralloc.h"
@@ -75,13 +76,6 @@ struct program *accept_loop_program;
 #include "static_strings.h"
 #undef STRING
 /* there.. */
-
-#ifndef MIN
-#define MIN(a,b) ((a)<(b)?(a):(b))
-#endif
-#ifndef MAX
-#define MAX(a,b) ((a)<(b)?(b):(a))
-#endif
 
 #define MAXLEN (1024*1024*10)
 static MUTEX_T queue_mutex;
@@ -276,7 +270,7 @@ static int parse(struct args *arg)
 			      arg->cache,0, NULL, NULL)) && ce->data)
 	{
 	  ptrdiff_t len = WRITE(arg->fd, ce->data->str, ce->data->len);
-	  LOG(len, arg, atoi(ce->data->str+MY_MIN(ce->data->len, 9))); 
+	  LOG(len, arg, atoi(ce->data->str+MINIMUM(ce->data->len, 9)));
 	  simple_aap_free_cache_entry( arg->cache, ce );
 	  /* if keepalive... */
 	  if((arg->res.protocol==s_http_11)
@@ -309,7 +303,7 @@ void aap_handle_connection(struct args *arg)
   if(arg->res.data && arg->res.data_len > 0)
   {
     p = buffer = arg->res.data;
-    buffer_len = MAX(arg->res.data_len,8192);
+    buffer_len = MAXIMUM(arg->res.data_len,8192);
     arg->res.data=0;
   }
   else 
@@ -364,7 +358,7 @@ void aap_handle_connection(struct args *arg)
       return;
     }
     pos += data_read;
-    if((tmp = my_memmem("\r\n\r\n", 4, MAX(p-3, buffer), 
+    if((tmp = my_memmem("\r\n\r\n", 4, MAXIMUM(p-3, buffer),
 			data_read+(p-3>buffer?3:0))))
       goto ok;
     p += data_read;
