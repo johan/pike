@@ -35,7 +35,7 @@ static char *dlerr=0;
  *  Separate RWX, RW and R memory sections.
  */
 
-#define DLDEBUG 1
+/* #define DLDEBUG 1*/
 #define DL_VERBOSE 1
 
 #define REALLY_FLUSH() /* do{ fflush(stderr); Sleep(500); }while(0) */
@@ -847,7 +847,7 @@ static int dl_load_coff_files(struct DLHandle *ret,
 			   MEM_COMMIT,
 			   PAGE_EXECUTE_READWRITE);
 
-  if(!ret->memory)
+  if(!ret->memory && ret->memsize)
   {
     static char buf[300];
     sprintf(buf, "Failed to allocate %d bytes RWX-memory.", ret->memsize);
@@ -864,7 +864,7 @@ static int dl_load_coff_files(struct DLHandle *ret,
 
 
   /* Create a hash table for exported symbols */
-  ret->htable=alloc_htable(num_exports);
+  ret->htable=alloc_htable(num_exports?num_exports:1);
 
   if(data->flags & RTLD_GLOBAL)
     global_dlhandle.htable = htable_add_space(global_dlhandle.htable, num_exports);
