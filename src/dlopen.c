@@ -10,6 +10,7 @@
 #define DL_INTERNAL
 #include "pike_dlfcn.h"
 #include "pike_memory.h"
+#include "pike_error.h"
 
 #include <stdio.h>
 #include <stdlib.h>
