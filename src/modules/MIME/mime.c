@@ -149,7 +149,8 @@ static void f_decode_base64( INT32 args )
     buf.s.str = NULL;
     initialize_buf( &buf );
 
-    for (src = sp[-1].u.string->str, cnt = sp[-1].u.string->len; cnt--; src++)
+    for (src = (SIGNED char *)sp[-1].u.string->str, cnt = sp[-1].u.string->len;
+	 cnt--; src++)
       if(*src>=' ' && base64rtab[*src-' ']>=0) {
 	/* 6 more bits to put into d */
 	if((d=(d<<6)|base64rtab[*src-' '])>=0x1000000) {
@@ -287,7 +288,8 @@ static void f_decode_qp( INT32 args )
     buf.s.str=NULL;
     initialize_buf(&buf);
 
-    for (src = sp[-1].u.string->str, cnt = sp[-1].u.string->len; cnt--; src++)
+    for (src = (SIGNED char *)sp[-1].u.string->str, cnt = sp[-1].u.string->len;
+	 cnt--; src++)
       if (*src == '=') {
 	/* Encoded data */
 	if (cnt > 0 && (src[1] == 10 || src[1] == 13)) {
