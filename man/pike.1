@@ -55,6 +55,12 @@ Set the debug level to
 .B \-dc
 Increase the debug level of the Pike compiler (debug).
 .TP
+.B \-dg
+Resets the debug malloc at every garbage collection (debug).
+.TP
+.B \-dp
+Turns off the peep hole optimization (debug).
+.TP
 .B \-ds
 Debug signals (debug).
 .TP
@@ -165,6 +171,9 @@ Increase or set the debug level (debug).
 Hide 
 .I feature
 from the resolver (debug).
+.TP
+.B \-\-dumpversion
+Print the Pike version number to stderr, e.g. "7.8.10\\n"
 .TP
 .B \-\-features
 List some of the features that are enabled in this Pike binary
