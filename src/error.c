@@ -23,8 +23,12 @@ RCSID("$Id$");
 
 JMP_BUF *recoveries=0;
 
-JMP_BUF *init_recovery(JMP_BUF *r)
+JMP_BUF *init_recovery(JMP_BUF *r DEBUG_LINE_ARGS)
 {
+#ifdef DEBUG
+  r->line=line;
+  r->file=file;
+#endif
   r->fp=fp;
   r->sp=sp-evaluator_stack;
   r->mark_sp=mark_sp - mark_stack;
