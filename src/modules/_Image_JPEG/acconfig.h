@@ -21,4 +21,7 @@
 /* Define this if you don't have image transformation capabilities in jpeglib*/
 #undef TRANSFORMS_NOT_SUPPORTED
 
+/* Define this if your <jconfig.h> sets HAVE_BOOLEAN */
+#undef HAVE_JCONFIG_H_HAVE_BOOLEAN
+
 #endif

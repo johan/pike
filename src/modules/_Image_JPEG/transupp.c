@@ -55,6 +55,7 @@
 #undef FAR
 #endif
 
+#ifdef HAVE_JCONFIG_H_HAVE_BOOLEAN
 #ifdef HAVE_WINDOWS_H
 #include <windows.h>
 #ifdef HAVE_WTYPES_H
@@ -62,6 +63,7 @@
  * So we need this one to get the boolean typedef.
  */
 #include <wtypes.h>
+#endif
 #endif
 #endif
 
