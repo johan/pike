@@ -6,7 +6,7 @@
 //
 // $Id$
 
-//! This module parses and tokanizes Pike source code.
+//! This module parses and tokenizes Pike source code.
 
 inherit "C.pmod";
 
