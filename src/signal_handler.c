@@ -1306,7 +1306,7 @@ static TH_RETURN_TYPE wait_thread(void *data)
     (defined(SIGPROF) || \
      defined(_W_SLWTED) || defined(_W_SEWTED) || defined(_W_SFWTED))
       if (WIFSTOPPED(status) &&
-#ifdef SIGPROF
+#if !defined(_W_SLWTED) && !defined(_W_SEWTED) && !defined(_W_SFWTED)
 	  (WSTOPSIG(status) == SIGPROF)
 #else
 	  ((status & 0xff) != 0x7f)
