@@ -209,9 +209,9 @@ PMOD_EXPORT extern const char msg_assert_onerr[];
 /* Works, but probably not interresting for most people
  *	/grubba 1998-04-11
  */
-#define PIKE_ERROR(NAME, TEXT, SP, ARGS)	new_error(NAME, TEXT, SP, ARGS, __FILE__, __LINE__);
+#define PIKE_ERROR(NAME, TEXT, SP, ARGS) new_error(NAME, TEXT, SP, ARGS, __FILE__, __LINE__)
 #else
-#define PIKE_ERROR(NAME, TEXT, SP, ARGS)	new_error(NAME, TEXT, SP, ARGS, NULL, 0);
+#define PIKE_ERROR(NAME, TEXT, SP, ARGS) new_error(NAME, TEXT, SP, ARGS, NULL, 0)
 #endif /* PIKE_DEBUG */
 
 /* Prototypes begin here */
