@@ -842,8 +842,6 @@ fprintf(stderr," -> %lu: %d,%d,%d\n",best,
    return best;
 }
 
-#define QUANT_DEBUG_RGB
-
 int colortable_rgb_nearest(struct colortable *ct,rgb_group rgb)
 {
    int i,best=0,di,di2;
@@ -888,11 +886,13 @@ fprintf(stderr,"cache: %lu: %d,%d,%d\n",best,ct->clut[best].r,ct->clut[best].g,c
       { 
 	 best=i; 
 	 di=di2;
+#ifdef QUANT_DEBUG_RGB
 	 fprintf(stderr,"#%02x%02x%02x (%d) (%d), ",
 		 ct->clut[i].r,
 		 ct->clut[i].g,
 		 ct->clut[i].b,
 		 i,di);
+#endif
       }
    }
    fprintf(stderr,"\n");
