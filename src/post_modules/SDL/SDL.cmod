@@ -2761,7 +2761,7 @@ PIKE_MODULE_INIT
   SAFE_APPLY_MASTER("resolv", 1);
   
   _image_color_program = Pike_sp[-1];
-  dmalloc_touch_svalue(&_image_program);
+  dmalloc_touch_svalue(&_image_color_program);
   image_color_program = program_from_svalue(&_image_color_program);
 
   Pike_sp--;
