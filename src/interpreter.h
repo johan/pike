@@ -103,6 +103,7 @@ static int eval_instruction(PIKE_OPCODE_T *pc)
   debug_malloc_touch(Pike_fp);
   while(1)
   {
+    INT32 arg1, arg2;
     instr = pc[0];
     Pike_fp->pc = pc++;
 
@@ -151,14 +152,14 @@ static int eval_instruction(PIKE_OPCODE_T *pc)
 
 #define OPCODE0(OP, DESC, FLAGS, CODE) CASE(OP); CODE; DONE
 #define OPCODE1(OP, DESC, FLAGS, CODE) CASE(OP); { \
-    INT32 arg1=GET_ARG(); \
+    arg1=GET_ARG(); \
     FETCH; \
     CODE; \
   } DONE
 
 #define OPCODE2(OP, DESC, FLAGS, CODE) CASE(OP); { \
-    INT32 arg1=GET_ARG(); \
-    INT32 arg2=GET_ARG2(); \
+    arg1=GET_ARG(); \
+    arg2=GET_ARG2(); \
     FETCH; \
     CODE; \
   } DONE
@@ -193,14 +194,14 @@ static int eval_instruction(PIKE_OPCODE_T *pc)
  * the instruction itself.
  */
 #define OPCODE1_PTRJUMP(OP, DESC, FLAGS, CODE) CASE(OP); { \
-    INT32 arg1=GET_ARG(); \
+    arg1=GET_ARG(); \
     FETCH; \
     CODE; \
   } DONE
 
 #define OPCODE2_PTRJUMP(OP, DESC, FLAGS, CODE) CASE(OP); { \
-    INT32 arg1=GET_ARG(); \
-    INT32 arg2=GET_ARG2(); \
+    arg1=GET_ARG(); \
+    arg2=GET_ARG2(); \
     FETCH; \
     CODE; \
   } DONE
