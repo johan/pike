@@ -4762,6 +4762,18 @@ test_any([[
 ]],1585)
 
 test_any([[
+  int ret;
+  foreach( "foobar" ; int a;) ret+=a;
+  return ret;
+]],21)
+
+test_any([[
+  int ret;
+  foreach( "foobar" ; ; int b) ret+=b;
+  return ret;
+]],633)
+
+test_any([[
   mapping m=([1:2,3:5,7:11,13:17]);
   foreach(m  ; int a ; int b) m_delete(m,a);
   return sizeof(m);
