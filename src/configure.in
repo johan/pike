@@ -134,7 +134,7 @@ REALCC="`echo $CC|sed -e 's/.*smartlink //'`"
 SMARTLINK="$BUILDDIR/smartlink"
 
 AC_MSG_CHECKING(if $SMARTLINK exists is up to date and works)
-if ls -1tr "$SMARTLINK${ac_exeext}" "$srcdir/smartlink.$ac_ext" | head -1 | grep "smartlink.$ac_ext" >/dev/null && "$SMARTLINK" -v >/dev/null 2>&5; then
+if ls -1tr "$SMARTLINK${ac_exeext}" "$srcdir/smartlink.$ac_ext" | head -1 | grep "smartlink.$ac_ext" >/dev/null 2>&5 && "$SMARTLINK" -v >/dev/null 2>&5; then
   AC_MSG_RESULT(yes)
 else
   AC_MSG_RESULT(no)
