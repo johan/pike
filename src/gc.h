@@ -14,7 +14,8 @@
 #include "threads.h"
 #include "interpret.h"
 
-/* Set to zero to disable automatic gc runs. */
+/* 1: Normal operation. 0: Disable automatic gc runs. -1: Disable
+ * completely. */
 extern int gc_enabled;
 
 /* As long as the gc time is less than gc_time_ratio, aim to run the
