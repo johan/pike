@@ -90,12 +90,12 @@ int PROXY(_equal, 0);
 mixed PROXY(_m_delete, 0);
 
 array _indices(mixed ... args) { 
-   werror(id+"_values got %O\n", args); 
+   ENTER(_indices);
    return ::_indices(); 
 }
  
 array _values(mixed ... args) { 
-   werror(id+"_values got %O\n", args); 
+   ENTER(_values);
    return ::_values(); 
 }
 
