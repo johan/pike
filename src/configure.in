@@ -1679,6 +1679,10 @@ rm confdefs.out.2 >/dev/null 2>/dev/null || :
       LIBS="${OLDLIBS} -lpthread -lthread"
     ;;
 
+    xDarwin*)
+      LIBS="${OLDLIBS}"
+    ;;
+
     *)
       LIBS="${OLDLIBS} -lpthread"
     ;;
