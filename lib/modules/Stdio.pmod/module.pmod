@@ -1,9 +1,6 @@
 // $Id$
 #pike __REAL_VERSION__
 
-
-import String;
-
 inherit files;
 
 // TRACK_OPEN_FILES is a debug tool to track down where a file is
@@ -1490,7 +1487,7 @@ string read_file(string filename,void|int start,void|int len)
     len=0x7fffffff;
   case 3:
     while(start-- && f->gets());
-    object(String_buffer) buf=String_buffer();
+    object(String.String_buffer) buf=String.String_buffer();
     while(len-- && (tmp=f->gets()))
     {
       buf->append(tmp);
