@@ -47,7 +47,7 @@ void recurse(string srcdir, string builddir) {
     if(fn[-1]=='~') continue;
     if(fn[0]=='#' && fn[-1]=='#') continue;
 
-    Stdio.Stat stat = file_stat(srcdir+fn);
+    Stdio.Stat stat = file_stat(srcdir+fn, 1);
 
     if(stat->isdir) {
       if(!file_stat(builddir+fn)) mkdir(builddir+fn);
