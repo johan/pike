@@ -173,7 +173,15 @@ void img_pnm_decode(INT32 args)
    }
    else
    {
-     skip_to_eol(s,&pos);
+/*     skip_to_eol(s,&pos); */ 
+/* just skip one char:
+
+      - Whitespace is not allowed in the pixels area, and only a
+         single  character of whitespace (typically a newline) is
+         allowed after the maxval.
+
+   [man ppm]
+*/
      pos++;
    }
    d=new->img;
@@ -183,7 +191,10 @@ void img_pnm_decode(INT32 args)
    nx=x;
 
    if (type=='6' && maxval==255 && sizeof(rgb_group)==3)  /* optimize */
-      MEMCPY(d,s->str+pos,MINIMUM(n*3,s->len-pos));
+   {
+      if (pos<s->len)
+        MEMCPY(d,s->str+pos,MINIMUM(n*3,s->len-pos));
+   }
    else while (n--)
    {
       switch (type)
