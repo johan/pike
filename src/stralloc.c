@@ -263,6 +263,16 @@ struct pike_string *debug_make_shared_string(const char *str)
   return make_shared_binary_string(str, strlen(str));
 }
 
+struct pike_string *make_shared_string2(const INT16 *str)
+{
+  INT32 e,len;
+  struct pike_string *s;
+  for(len=0;str[len];len++);
+  s=begin_shared_string(len);
+  for(e=0;e<len;e++) s->str[e]=str[e];
+  return end_shared_string(s);
+}
+
 /*** Free strings ***/
 
 void unlink_pike_string(struct pike_string *s)
