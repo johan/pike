@@ -90,6 +90,9 @@
 /* Define this if your ld uses -R, but your cc wants -Wl,-R */
 #undef USE_Wl_R
 
+/* Define this if your ld uses -rpath, but your cc -Qoption,ld,-rpath (icc) */
+#undef USE_Qoption
+
 /* Define this if your ld uses -YP, , but your cc wants -Xlinker -YP, */
 #undef USE_XLINKER_YP_
 

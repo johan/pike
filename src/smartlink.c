@@ -151,9 +151,11 @@ int main(int argc, char **argv)
   strcat(rpath, "-Wl,-R");
 #elif defined(USE_R)
   strcat(rpath, "-R");
+#elif defined(USE_Qoption)
+  strcat(rpath, "-Qoption,ld,-rpath,");
 #elif defined(USE_LD_LIBRARY_PATH)
   strcat(rpath, "LD_LIBRARY_PATH=");
-#endif /* defined(USE_Wl) || defined(USE_Wl_R) || defined(USE_R) || defined(USE_LD_LIBRARY_PATH) */
+#endif /* defined(USE_Wl) || defined(USE_Wl_R) || defined(USE_R) || defined(USE_LD_LIBRARY_PATH) || defined(USE_Qoption) */
   rpath += strlen(rpath);
 
   new_argv[new_argc++] = argv[1];
@@ -282,7 +284,7 @@ int main(int argc, char **argv)
       new_argv[new_argc++] = "-Xlinker";
       new_argv[new_argc++] = rpath;
     }
-#elif defined(USE_Wl)
+#elif defined(USE_Wl) || defined(USE_Qoption)
     if (linking) {
       new_argv[new_argc++] = full_rpath;
     }
