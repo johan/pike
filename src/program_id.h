@@ -88,7 +88,9 @@
 #define PROG_IMAGE_SUBMAGIC_START       160
 
 /* 200 - 300: Submodule programs */
-#define PROG_IMAGE_COLOR_COLOR_ID       200
+#define     PROG_IMAGE_COLOR_COLOR_ID                      0310 /* 200 */
+#define tObjImpl_IMAGE_COLOR_COLOR_ID "\003\000\000\000\000\310"
+#define   tObjIs_IMAGE_COLOR_COLOR_ID "\003\001\000\000\000\310"
 
 /* 1000 - 2000 reserved for GTK. */
 
