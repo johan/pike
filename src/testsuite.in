@@ -366,6 +366,11 @@ test_eq([[
   }))
 ]], [[ "function(string : string)" ]])
 
+// Test implicit lambda.
+test_eq([[
+  `()(){ return 1; }
+]], 1)
+
 // Argument checking
 
 // Test get_all_args.
