@@ -112,4 +112,6 @@ int yp_order(const char *, const char *, long *);
 AC_DEFINE_UNQUOTED(YP_ORDER_TYPE, $pike_cv_yp_order_type)
 AC_MSG_RESULT($pike_cv_yp_order_type)
 
+AC_CHECK_FUNCS(yperr_string)
+
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
