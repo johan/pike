@@ -281,9 +281,6 @@ clean:
 	  if test -f remake; then $(DO_MAKE) clean; \
 	  else exit $$res; fi; \
 	} || exit $$?
-	if test -f "refdoc/Makefile"; then \
-	  cd refdoc; $(DO_MAKE) clean; \
-	else :; fi
 
 spotless:
 	-cd "$(BUILDDIR)" && test -f Makefile && $(DO_MAKE) spotless || { \
