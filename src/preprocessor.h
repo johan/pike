@@ -1746,6 +1746,7 @@ static INT32 lower_cpp(struct cpp *this,
 	      continue;
 	      
 	    case '\\':
+	      GOBBLE('\r'); /* Should we actually do anything here ? */
 	      if(GOBBLE('\n'))
 	      { 
 		this->current_line++;
