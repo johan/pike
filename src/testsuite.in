@@ -81,7 +81,11 @@ test_compile_error(""())
 test_compile_error(([])())
 test_compile_error(([])())
 test_any([[ class X { int y; class Z { void destroy() { y++; } } }; X x=X(); destruct(x->Z()); return x->y;]],1)
+
 test_eval_error([[ class Z { int destroy() { return 1/y; } }(); ]])
+
+test_any([[ class X { int y; class Z { static void destroy() { y++; } } }; X x=X(); destruct(x->Z()); return x->y;]],1)
+test_any([[ class X { int y; class Z { static void create() { y++; } } }; X x=X(); destruct(x->Z()); return x->y;]],1)
 
 cond([[all_constants()->_debug]],
 [[
