@@ -8,7 +8,7 @@
 
 #include <simulate.h>
 
-inherit "/precompiled/port";
+inherit Stdio.Port;
 
 /* number of bytes to read for each write */
 #define BLOCK 16060
@@ -24,8 +24,8 @@ inherit "/precompiled/port";
 
 program output_class=class
 {
-  inherit "/precompiled/file" : socket;
-  inherit "/precompiled/file" : file;
+  inherit Stdio.File : socket;
+  inherit Stdio.File : file;
 
   int offset=0;
 
@@ -36,7 +36,7 @@ program output_class=class
 
     file::seek(offset);
     data=file::read(BLOCK);
-    if(strlen(data))
+    if(data && strlen(data))
     {
       written=socket::write(data);
       if(written >= 0)
