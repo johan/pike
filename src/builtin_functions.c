@@ -3745,7 +3745,7 @@ void init_builtin_efuns(void)
   
 #ifdef PROFILING
   ADD_EFUN("get_profiling_info", f_get_prof_info,
-	   tFunc(tProg,tArr), OPT_EXTERNAL_DEPEND);
+	   tFunc(tPrg,tArr), OPT_EXTERNAL_DEPEND);
 #endif /* PROFILING */
 
   ADD_EFUN("_refs",f__refs,tFunc(tRef,tInt),OPT_EXTERNAL_DEPEND);
