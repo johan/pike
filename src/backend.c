@@ -224,10 +224,10 @@ void do_debug(void)
 	switch(errno)
 	{
 	  case EBADF:
-	    fatal("Backend filedescriptor is bad.\n");
+	    fatal("Backend filedescriptor %d is bad.\n",e);
 	    break;
 	  case ENOENT:
-	    fatal("Backend filedescriptor is not.\n");
+	    fatal("Backend filedescriptor %d is not.\n",e);
 	    break;
 	}
       }
