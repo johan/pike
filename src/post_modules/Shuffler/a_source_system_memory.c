@@ -77,7 +77,7 @@ struct source *source_system_memory_make( struct svalue *s,
     return 0;
   }
   
-  res->s.free = free_source;
+  res->s.free_source = free_source;
   res->s.get_data = get_data;
   res->obj = s->u.object;
   res->obj->refs++;

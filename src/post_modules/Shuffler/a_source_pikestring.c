@@ -57,7 +57,7 @@ struct source *source_pikestring_make( struct svalue *s,
   res = malloc( sizeof( struct ps_source ) );
   MEMSET( res, 0, sizeof( struct ps_source ) );
 
-  res->s.free = free_source;
+  res->s.free_source = free_source;
   res->s.get_data = get_data;
 
   res->str = s->u.string;

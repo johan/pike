@@ -100,7 +100,7 @@ struct source *source_normal_file_make( struct svalue *s,
     goto fail;
 
   res->s.get_data = get_data;
-  res->s.free = free_source;
+  res->s.free_source = free_source;
   res->obj = s->u.object;
   res->obj->refs++;
   return (struct source *)res;
