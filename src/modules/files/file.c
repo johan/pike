@@ -925,7 +925,8 @@ static void file_write(INT32 args)
       o_multiply();
       sp--;
       dmalloc_touch_svalue(sp);
-      assign_svalue(sp-args, sp);
+      Pike_sp[-args] = *Pike_sp;
+      free_array(a);
 
 #ifdef PIKE_DEBUG
       if (sp[-args].type != T_STRING) {
