@@ -804,7 +804,7 @@ static INLINE float low_parse_IEEE_float(char *b, int sz)
 #else
 #define EXTRACT_FLOAT(SVAL, INPUT, SHIFT)				\
 	    /* FIXME! */						\
-	    (SVAL).u.float_number = low_parse_IEEE_float((INPUT), 4);
+	    (SVAL).u.float_number = low_parse_IEEE_float((INPUT), 4)
 #endif
 #endif
 
@@ -840,7 +840,7 @@ static INLINE float low_parse_IEEE_float(char *b, int sz)
 #else
 #define EXTRACT_DOUBLE(SVAL, INPUT, SHIFT)				\
 	    /* FIXME! */						\
-	    (SVAL).u.float_number = low_parse_IEEE_float((INPUT), 8);
+	    (SVAL).u.float_number = low_parse_IEEE_float((INPUT), 8)
 #endif
 #endif
 
