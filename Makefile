@@ -35,6 +35,7 @@ src/configure: src/configure.in
 force_configure:
 	cd src && ./run_autoconfig . 2>&1 | grep -v warning
 	-rm -f "$(BUILDDIR)/Makefile"
+	@$(MAKE) $(MAKE_FLAGS) configure
 
 builddir:
 	@builddir="$(BUILDDIR)"; \
