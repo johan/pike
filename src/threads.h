@@ -181,9 +181,10 @@ extern pthread_attr_t small_pattr;
 
 #define THREAD_T unsigned
 #define th_setconcurrency(X)
-#define th_create(ID,fun,arg) (!_beginthreadex(NULL, 2*1024*1024,fun, arg,0,ID))
-#define th_create_small(ID,fun,arg) (!_beginthreadex(NULL, 8192*sizeof(char *), fun,arg,0,ID))
+#define th_create(ID,fun,arg) low_nt_create_thread(2*1024*1024,fun, arg,ID)
+#define th_create_small(ID,fun,arg) low_nt_create_thread(8192*sizeof(char *), fun,arg,ID)
 #define TH_RETURN_TYPE unsigned __stdcall
+#define TH_STDCALL __stdcall
 #define th_exit(foo) _endthread(foo)
 #define th_join(ID,res)	/******************* FIXME! ****************/
 #define th_self() GetCurrentThreadId()
@@ -311,6 +312,10 @@ struct thread_state {
 
 #ifndef TH_RETURN_TYPE
 #define TH_RETURN_TYPE void *
+#endif
+
+#ifndef TH_STDCALL
+#define TH_STDCALL
 #endif
 
 #ifndef th_destroy
@@ -490,6 +495,10 @@ struct thread_state {
    } while(0)
 
 /* Prototypes begin here */
+int low_nt_create_thread(unsigned stack_size,
+			 unsigned (TH_STDCALL *func)(void *),
+			 void *arg,
+			 unsigned *id);
 struct thread_starter;
 TH_RETURN_TYPE new_thread_func(void * data);
 void f_thread_create(INT32 args);
