@@ -154,6 +154,7 @@ void image_operator_minus(INT32 args);
 void image_operator_plus(INT32 args);
 void image_operator_multiply(INT32 args);
 void image_operator_divide(INT32 args);
+void image_operator_rest(INT32 args);
 void image_operator_maximum(INT32 args);
 void image_operator_minimum(INT32 args);
 
