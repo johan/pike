@@ -162,7 +162,7 @@ PMOD_EXPORT char *STRTOK(char *s1,char *s2);
 #  define STRTOK strtok
 #endif
 
-#if !defined(HAVE_VFPRINTF) || !defined(HAVE_VSPRINTF)
+#if !defined(HAVE_VFPRINTF) || !defined(HAVE_VSPRINTF) || !defined(HAVE_VSNPRINTF)
 #  include <stdarg.h>
 #endif
 
