@@ -1,7 +1,7 @@
 # $Id$
 SRCDIR=@srcdir@
 VPATH=@srcdir@:@srcdir@/../..:../..
-OBJS=spider.o discdate.o stardate.o dumudp.o accesseddb.o xml.o
+OBJS=spider.o discdate.o stardate.o dumudp.o xml.o
 MODULE_LDFLAGS=@LDFLAGS@
 #  streamed_parser.o
 
