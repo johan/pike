@@ -13,6 +13,7 @@
 #include "callback.h"
 
 extern int d_flag, t_flag, a_flag, l_flag, c_flag, p_flag, debug_options;
+extern int default_t_flag;
 
 #define DEBUG_SIGNALS 1
 #define NO_TAILRECURSION 2
