@@ -160,12 +160,12 @@ int va_get_args(struct svalue *s,
       break;
     case 's':
       if(s->type != T_STRING) return ret;
-      if(s->size_shift) return ret;
+      if(s->u.string->size_shift) return ret;
       *va_arg(ap, char **)=s->u.string->str;
       break;
     case 'S':
       if(s->type != T_STRING) return ret;
-      if(s->size_shift) return ret;
+      if(s->u.string->size_shift) return ret;
       *va_arg(ap, struct pike_string **)=s->u.string;
       break;
     case 'W':
