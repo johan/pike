@@ -1287,6 +1287,14 @@ static void file_open(INT32 args)
   {
      str=sp[-args].u.string;
 
+     if (strlen(str->str) != (size_t)str->len) {
+       /* Filenames with NUL are not supported. */
+       ERRNO = ENOENT;
+       pop_n_elems(args);
+       push_int(0);
+       return;
+     }
+
 #ifdef PIKE_SECURITY
      if(!CHECK_SECURITY(SECURITY_BIT_SECURITY))
      {
