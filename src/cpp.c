@@ -301,7 +301,7 @@ void cpp_describe_exception(struct cpp *this, struct svalue *thrown)
  *!   File that was requested for inclusion.
  *!
  *! @param current_file
- *!   File where the dicerctiva was found.
+ *!   File where the directive was found.
  *!
  *! @param is_local_ref
  *!   Specifies reference method.
