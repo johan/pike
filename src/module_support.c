@@ -162,6 +162,11 @@ int va_get_args(struct svalue *s,
       if(s->type != T_INT) return ret;
       *va_arg(ap, INT_TYPE *)=s->u.integer;
       break;
+    case '+':
+      if(s->type != T_INT) return ret;
+      if(s->u.integer<0) return ret;
+      *va_arg(ap, INT_TYPE *)=s->u.integer;
+      break;
     case 'D':
       if(s->type == T_INT)
 	 *va_arg(ap, int *)=s->u.integer;
@@ -321,6 +326,7 @@ void get_all_args(char *fname, INT32 args, char *format,  ... )
     case 'o': expected_type = "object"; break;
     case 'O': expected_type = "object or zero"; break;
     case 'p': expected_type = "program"; break;
+    case '+': expected_type = "int(0..)"; break;
     case '*': expected_type = "mixed"; break;
     default: expected_type = "Unknown"; break;
     }
