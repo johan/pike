@@ -52,7 +52,9 @@
 #define isgraph(X)	(ispunct(X) || isupper(X) || islower(X) || isdigit(X))
 #endif /* !HAVE_ISGRAPH */
 
-#define ALIGN_BOUND sizeof(char *)
+/* On some OS's sizeof(long long) is 8 while sizeof(char *) is still 4.
+ */
+#define ALIGN_BOUND 16 /* sizeof(char *) */
 
 #ifdef __GNUC__
 #define ALIGNOF(X) __alignof__(X)
