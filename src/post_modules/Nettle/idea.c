@@ -273,5 +273,6 @@ void idea_crypt_blocks(struct idea_ctx *ctx, int len,
 {
   ptrdiff_t i;
   for( i=0 ; i<len ; i+=IDEA_BLOCK_SIZE )
-    idea_crypt(ctx->ctx, (unsigned INT8 *)to+i, (unsigned INT8 *)from+i);
+    idea_crypt((const unsigned INT16 *)ctx->ctx,
+	       (unsigned INT8 *)to+i, (unsigned INT8 *)from+i);
 }

@@ -163,7 +163,7 @@ PIKECLASS HashState
 	    Pike_error("Bad argument type.\n");
 	  if (arg->u.integer < 0)
 	    Pike_error("Invalid length, must be positive.\n");
-	  if (arg->u.integer > meta->digest_size)
+	  if ((unsigned)arg->u.integer > meta->digest_size)
 	    Pike_error("Unsupported digest length.\n");
 
 	  length = arg->u.integer;
