@@ -4399,7 +4399,7 @@ int yyexplain_not_implements(struct program *a, struct program *b, int flags)
 
     if(!match_types(ID_FROM_INT(a,i)->type, bid->type)) {
       struct pike_string *s1,*s2;
-      my_yyerror("Type of identifier dentifier \"%s\" does not match.", bid->name->str);
+      my_yyerror("Type of identifier \"%s\" does not match.", bid->name->str);
       s1=describe_type(ID_FROM_INT(a,i)->type);
       s2=describe_type(bid->type);
       if(flags & YYTE_IS_WARNING)
