@@ -572,7 +572,7 @@ with the option --without-bignums instead.
   else :; fi
 else :; fi
 
-if test "x$with_shared_nodes" != xyes; then
+if test "x$with_shared_nodes" != xno; then
   AC_MSG_WARN([Enabling the SHARED_NODES mode of the optimizer.])
   AC_MSG_WARN([Note that this is EXPERIMENTAL.])
   AC_DEFINE(SHARED_NODES)
