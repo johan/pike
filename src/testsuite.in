@@ -1170,8 +1170,6 @@ int a()
 {
   werror("Testing vtables and scope access.\n");
 
-  return 0;
-
   string testargs=getenv()->TESTARGS;
   if(testargs &&
      (has_value(testargs/" ", "-q") ||
