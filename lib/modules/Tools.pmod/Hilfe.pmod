@@ -944,6 +944,7 @@ class Evaluator {
   private int relocate( Expression expr, int p, multiset(string) symbols ) {
     multiset next_symbols = (<>);
     int plevel;
+    int scanf;
     for( ; p<sizeof(expr); p++) {
 
       // Ignore whspc tokens
@@ -952,10 +953,12 @@ class Evaluator {
 
       if(expr[p]=="(") {
 	plevel++;
+	if(p && expr[p-1]=="sscanf") scanf=1;
 	continue;
       }
       if(expr[p]==")") {
 	plevel--;
+	scanf=0;
 	continue;
       }
 
@@ -989,7 +992,7 @@ class Evaluator {
 	    } while(plevel);
 	}
 
-	if(plevel)
+	if(plevel && !scanf)
 	  next_symbols[expr[p]] = 1;
 	else
 	  symbols[expr[p]] = 0;
