@@ -3,6 +3,7 @@
 
 inherit @module@;
 
+#if constant(@module@._file)
 
 //! Allows the user to open a Gzip archive and read and write
 //! it's contents in an uncompressed form, emulating the @[Stdio.File]
@@ -104,3 +105,5 @@ class File {
     return ret;
   }
 }
+
+#endif /* constant(@module@._file) */
