@@ -157,7 +157,7 @@ void image_to8bit_rgbcube(INT32 args)
   redgreen=red*green;
   redgreenblue=red*green*blue;
 
-  if (args>3)
+  if (args>3) {
      if (sp[3-args].type!=T_STRING)
 	error("Illegal argument 4 to image->to8bit_rgbcube()"
 	      " (expected string or no argument)\n");
@@ -165,7 +165,7 @@ void image_to8bit_rgbcube(INT32 args)
 	error("map string is not long enough to image->to8bit_rgbcube()\n");
      else
 	map=(unsigned char *)sp[3-args].u.string->str;
-
+  }
   i=THIS->xsize*THIS->ysize;
   s=THIS->img;
   d=(unsigned char *)res->str;
@@ -230,7 +230,7 @@ void image_to8bit_rgbcube_rdither(INT32 args)
   redgreen=red*green;
   redgreenblue=red*green*blue;
 
-  if (args>3)
+  if (args>3) {
      if (sp[3-args].type!=T_STRING)
 	error("Illegal argument 4 to image->to8bit_rgbcube()"
 	      " (expected string or no argument)\n");
@@ -238,7 +238,7 @@ void image_to8bit_rgbcube_rdither(INT32 args)
 	error("map string is not long enough to image->to8bit_rgbcube()\n");
      else
 	map=(unsigned char *)sp[3-args].u.string->str;
-
+  }
   i=THIS->xsize*THIS->ysize;
   s=THIS->img;
   d=(unsigned char *)res->str;

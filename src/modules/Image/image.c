@@ -91,6 +91,7 @@ RCSID("$Id$");
 #include "threads.h"
 #include "array.h"
 #include "error.h"
+#include "operators.h"
 
 
 #include "image.h"

@@ -128,17 +128,17 @@ static void vertex_connect(struct vertex *above,
 
 static INLINE float vertex_xmax(struct vertex_list *v,float yp,float *ydest)
 {
-   if (v->dx>0.0)
+   if (v->dx>0.0) {
       if (v->below->y>yp+1.0+1e-10)
 	 return v->above->x+v->dx*((*ydest=(yp+1.0))-v->above->y);
       else
 	 return (*ydest=v->below->y),v->below->x;
-   else if (v->dx<0.0)
+   } else if (v->dx<0.0) {
       if (v->above->y<yp-1e-10)
 	 return v->above->x+v->dx*((*ydest=yp)-v->above->y);
       else
 	 return (*ydest=v->above->y),v->above->x;
-   else if (v->below->y>yp+1.0+1e-10) 
+   } else if (v->below->y>yp+1.0+1e-10) 
       return (*ydest=yp+1.0),v->above->x;
    else
       return (*ydest=v->below->y),v->below->x;
@@ -146,17 +146,17 @@ static INLINE float vertex_xmax(struct vertex_list *v,float yp,float *ydest)
 
 static INLINE float vertex_xmin(struct vertex_list *v,float yp,float *ydest)
 {
-   if (v->dx<0.0)
+   if (v->dx<0.0) {
       if (v->below->y>yp+1.0+1e-10)
 	 return v->above->x+v->dx*((*ydest=(yp+1.0))-v->above->y);
       else
 	 return (*ydest=v->below->y),v->below->x;
-   else if (v->dx>0.0)
+   } else if (v->dx>0.0) {
       if (v->above->y<yp-1e-10)
 	 return v->above->x+v->dx*((*ydest=yp)-v->above->y);
       else
 	 return (*ydest=v->above->y),v->above->x;
-   else if (v->above->y<yp-1e-10) 
+   } else if (v->above->y<yp-1e-10) 
       return (*ydest=yp),v->above->x;
    else
       return (*ydest=v->above->y),v->above->x;

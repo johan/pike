@@ -259,11 +259,12 @@ static INLINE void write_char(struct _char *ci,
       for (x=(INT32)ci->width; x>0; x--)
       {
 	 int r,c;
-	 if((c=255-*p))
+	 if((c=255-*p)) {
 	   if ((r=pos->r+c)>255)
 	     pos->r=pos->g=pos->b=255;
 	   else
 	     pos->r=pos->g=pos->b=r;
+	 }
 	 pos++;
 	 p++;
       }
