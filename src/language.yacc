@@ -1808,11 +1808,13 @@ low_idents: F_IDENTIFIER
   ;
 
 comma_expr_or_zero: /* empty */ { $$=mkintnode(0); }
-  | safe_comma_expr
+  | comma_expr
+  | F_LEX_EOF { yyerror("Unexpected end of file."); $$=mkintnode(0); }
   ;
 
 comma_expr_or_maxint: /* empty */ { $$=mkintnode(0x7fffffff); }
-  | safe_comma_expr
+  | comma_expr
+  | F_LEX_EOF { yyerror("Unexpected end of file."); $$=mkintnode(0x7fffffff); }
   ;
 
 gauge: F_GAUGE catch_arg
