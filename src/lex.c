@@ -1088,7 +1088,7 @@ static int char_const(void)
 	  break;
 
 	case 'A': case 'B': case 'C': case 'D': case 'E': case 'F':
-	  c=GETC()-'a'+10;
+	  c=GETC()-'A'+10;
 	  break;
       }
       switch(LOOK())

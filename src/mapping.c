@@ -948,8 +948,6 @@ void check_all_mappings(void)
 #endif
 
 
-#ifdef GC2
-
 void gc_mark_mapping_as_referenced(struct mapping *m)
 {
   INT32 e;
@@ -1056,8 +1054,6 @@ void gc_free_all_unreferenced_mappings(void)
     }
   }
 }
-
-#endif /* GC2 */
 
 void zap_all_mappings(void)
 {

@@ -1770,8 +1770,6 @@ void cleanup_program(void)
 #endif
 }
 
-#ifdef GC2
-
 void gc_mark_program_as_referenced(struct program *p)
 {
   if(gc_mark(p))
@@ -1827,8 +1825,6 @@ void gc_free_all_unreferenced_programs(void)
     }
   }
 }
-
-#endif /* GC2 */
 
 
 void count_memory_in_programs(INT32 *num_, INT32 *size_)

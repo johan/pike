@@ -87,7 +87,7 @@ struct frame *fp; /* frame pointer */
 #ifdef DEBUG
 static void gc_check_stack_callback(struct callback *foo, void *bar, void *gazonk)
 {
-  gc_xmark_svalues(evaluator_stack,sp-evaluator_stack-1);
+  debug_gc_xmark_svalues(evaluator_stack,sp-evaluator_stack-1,"interpreter stack");
 }
 #endif
 
@@ -1140,7 +1140,7 @@ static void eval_instruction(unsigned char *pc)
       }
 
     do_return:
-#if defined(DEBUG) && defined(GC2)
+#ifdef DEBUG
       if(d_flag > 2)
 	do_gc();
 #endif

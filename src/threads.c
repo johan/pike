@@ -405,7 +405,7 @@ static void thread_was_marked(struct object *o)
   struct thread_state *tmp=(struct thread_state *)(o->storage);
   if(tmp->swapped)
   {
-    gc_xmark_svalues(tmp->evaluator_stack,tmp->sp-tmp->evaluator_stack-1);
+    debug_gc_xmark_svalues(tmp->evaluator_stack,tmp->sp-tmp->evaluator_stack-1,"idle thread stack");
   }
 }
 #endif

@@ -297,9 +297,7 @@ void low_exit_main(void)
   cleanup_pike_types();
   cleanup_program();
 
-#ifdef GC2
   do_gc();
-#endif
 
   cleanup_callbacks();
   zap_all_arrays();
