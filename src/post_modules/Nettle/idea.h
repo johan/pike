@@ -24,7 +24,3 @@ void idea_expand(unsigned INT16 *ctx,
 
 void idea_invert(unsigned INT16 *d,
 		 const unsigned INT16 *e);
-
-void idea_crypt(const unsigned INT16 *ctx,
-		unsigned INT8 *dest,
-		const unsigned INT8 *src);
