@@ -313,13 +313,13 @@ static void image_xbm__decode( INT32 args )
     if(invert)
     {
       apply(a, "invert", 0);
-      i = sp[-1].u.object;
+      i = (struct object *)debug_malloc_pass(sp[-1].u.object);
       sp--;
     }
     else
     {
       i = a;
-      a->refs++;
+      add_ref(a);
     }
   } else {
     if(!bg)
@@ -328,7 +328,7 @@ static void image_xbm__decode( INT32 args )
       push_int(255);
       push_int(255);
       f_aggregate(3);
-      bg = sp[-1].u.array;
+      bg = (struct array *)debug_malloc_pass(sp[-1].u.array);
       sp--;
     }
     if(invert)
