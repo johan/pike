@@ -850,7 +850,7 @@ void low_exit_main(void)
   {
     while(1) {
       int tmp=num_objects;
-      do_gc();
+      do_gc(NULL, 1);
       if(num_objects >= tmp) break;
     }
   }
@@ -905,7 +905,7 @@ void low_exit_main(void)
     {
 
       fprintf(stderr,"Garbage collecting..\n");
-      do_gc();
+      do_gc(NULL, 1);
       
       count_memory_in_arrays(&num, &size);
       fprintf(stderr,"Arrays left: %d (%d bytes)\n",num,size);

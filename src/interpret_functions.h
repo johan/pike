@@ -172,7 +172,7 @@
 #define DO_RETURN DO_DUMB_RETURN
 #else
 #define DO_RETURN {				\
-  if(d_flag>3) do_gc();				\
+  if(d_flag>3) do_gc(NULL, 0);			\
   if(d_flag>4) do_debug();			\
   DO_DUMB_RETURN;				\
 }
@@ -1365,7 +1365,7 @@ OPCODE1_RETURN(F_RETURN_LOCAL,"return local",0,{
      * call return -1, so we must call the callbacks here to
      * prevent false alarms! /Hubbe
      */
-    if(d_flag>3) do_gc();
+    if(d_flag>3) do_gc(NULL, 0);
     if(d_flag>4) do_debug();
     );
   if(Pike_fp->expendible <= Pike_fp->locals + arg1)

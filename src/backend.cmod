@@ -897,7 +897,7 @@ PIKECLASS Backend
       }
 #endif
 
-      if(d_flag>3) do_gc();
+      if(d_flag>3) do_gc(NULL, 0);
     }
 #endif
 

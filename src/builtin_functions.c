@@ -3625,11 +3625,14 @@ PMOD_EXPORT void f_delay(INT32 args)
  *!   the same as the number of freed things, but there might be some
  *!   difference since destroy() functions are called during freeing,
  *!   which can cause more things to be freed or allocated.
+ *!
+ *! @seealso
+ *!   @[Pike.gc_parameters], @[Debug.gc_status]
  */
 void f_gc(INT32 args)
 {
   pop_n_elems(args);
-  push_int(do_gc());
+  push_int(do_gc(NULL, 1));
 }
 
 #ifdef TYPEP
@@ -3882,7 +3885,7 @@ PMOD_EXPORT void f__verify_internals(INT32 args)
   d_flag=0x7fffffff;
   do_debug();
   d_flag=tmp;
-  do_gc();
+  do_gc(NULL, 1);
   pop_n_elems(args);
 }
 
