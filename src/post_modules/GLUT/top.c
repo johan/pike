@@ -16,18 +16,21 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "error.h"
 
-
+#ifdef HAVE_LIBGLUT
 #ifdef HAVE_GL_GLUT_H
 #define GLUT_API_VERSION 4
 #include <GL/glut.h>
+#endif
 #endif
 
 
 void pike_module_init( void )
 {
+#ifdef HAVE_LIBGLUT
 #ifdef HAVE_GL_GLUT_H
   extern void add_auto_funcs_glut(void);
   add_auto_funcs_glut();
+#endif
 #endif
 }
 
