@@ -897,6 +897,14 @@ test_eq(typeof(""[0]),"int")
 test_eq(typeof(0.0),"float")
 test_eq(typeof(all_constants()["all_constants"]),"mixed")
 
+// _typeof
+test_eq(_typeof(1),"int")
+test_eq(_typeof(""),"string")
+test_eq(_typeof("x"[0]),"int")
+test_eq(_typeof(0.0),"float")
+test_eq(_typeof(this_object)-" ","function(:object)")
+
+
 // class
 test_true(programp(class c {}))
 test_true(functionp(clone(class c { int foo() { return 1; }})->foo))
