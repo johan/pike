@@ -17,6 +17,9 @@
 #include "program_id.h"
 
 #include "modules/modlist_headers.h"
+#ifndef IN_TPIKE
+#include "post_modules/modlist_headers.h"
+#endif
 
 RCSID("$Id$");
 
@@ -32,6 +35,9 @@ struct static_module
 static struct static_module module_list[] = {
   { "Builtin", low_init_main, low_exit_main }
 #include "modules/modlist.h"
+#ifndef IN_TPIKE
+#include "post_modules/modlist.h"
+#endif
   ,{ "Builtin2", init_main, exit_main }
 };
 
