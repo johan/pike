@@ -18,7 +18,7 @@ long *low_rusage(void);
 #ifdef INT64
 /* The time is returned in nanoseconds. (There's no guarantee that the
  * returned value has nanosecond resolution.) */
-typedef unsigned INT64 cpu_time_t;
+typedef INT64 cpu_time_t;
 #define LONG_CPU_TIME
 #define CPU_TIME_TICKS /* per second */ ((cpu_time_t) 1000000000)
 #define CPU_TIME_UNIT "ns"
