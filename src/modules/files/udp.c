@@ -193,7 +193,6 @@ static void udp_bind(INT32 args)
 
   if(FD != -1)
   {
-    set_read_callback( FD, 0, 0 );
     set_backend_for_fd(FD, NULL);
     fd_close(FD);
     FD = -1;
@@ -607,7 +606,6 @@ void exit_udp(struct object *ignored)
 
   if(fd != -1)
   {
-    set_read_callback( fd, 0, 0 );
     set_backend_for_fd(fd, NULL);
 
     THREADS_ALLOW();
