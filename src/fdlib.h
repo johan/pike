@@ -303,7 +303,7 @@ typedef int FD;
 #define fd_LOCK_UN F_ULOCK
 #define fd_LOCK_NB F_TLOCK
 
-#define fd_flock(fd,mode) lockf(dmalloc_touch_fd(fd),mode,0)
+#define fd_lockf(fd,mode) lockf(dmalloc_touch_fd(fd),mode,0)
 #endif
 #endif
 
