@@ -13,7 +13,11 @@
 #include "las.h"
 #include "block_alloc_h.h"
 
-#define MAPPING_FLAG_WEAK 1
+/* Compatible with PIKE_WEAK_INDICES and PIKE_WEAK_VALUES. */
+#define MAPPING_WEAK_INDICES	2
+#define MAPPING_WEAK_VALUES	4
+#define MAPPING_WEAK		6
+#define MAPPING_FLAG_WEAK	6 /* Compat. */
 
 struct keypair
 {
