@@ -147,7 +147,7 @@ spotless:
 	-cd "$(BUILDDIR)" && test -f Makefile && $(MAKE) "MAKE=$(MAKE)" spotless
 
 distclean:
-	-rm -rf build bin/pike
+	-rm -rf "$(BUILDDIR)" bin/pike
 
 cvsclean: distclean
 	for d in `find src -type d -print`; do if test -f "$$d/.cvsignore"; then (cd "$$d" && rm -f `cat ".cvsignore"`); else :; fi; done
