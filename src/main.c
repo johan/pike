@@ -447,8 +447,8 @@ int dbm_main(int argc, char **argv)
 	  dlclose(handle);
 
 	  if(bos_location && *bos_location &&
-	     (*bos_location - stack_top) *STACK_DIRECTION < 0)
-	    stack_top=*bos_location;
+	     (*bos_location - Pike_interpreter.stack_top) *STACK_DIRECTION < 0)
+	    Pike_interpreter.stack_top=*bos_location;
 	}
       }
 #else
