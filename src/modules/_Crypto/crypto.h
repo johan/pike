@@ -37,8 +37,6 @@ extern void pike_cbc_init(void);
 extern void pike_cbc_exit(void);
 extern void pike_rijndael_init(void);
 extern void pike_rijndael_exit(void);
-extern void pike_rsa_init(void);
-extern void pike_rsa_exit(void);
 extern void pike_pipe_init(void);
 extern void pike_pipe_exit(void);
 extern char *crypt_md5(const char *pw, const char *salt);

@@ -658,7 +658,6 @@ PIKE_MODULE_INIT
   pike_des_init();
   pike_cast_init();
   pike_arcfour_init();
-  pike_rsa_init();
   pike_rijndael_init();
 }
 
@@ -677,6 +676,5 @@ PIKE_MODULE_EXIT
   pike_des_exit();
   pike_cast_exit();
   pike_arcfour_exit();
-  pike_rsa_exit();
   pike_rijndael_exit();
 }
