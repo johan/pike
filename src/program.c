@@ -2875,7 +2875,7 @@ struct program *compile(struct pike_string *prog, struct object *handler)
   return p;
 }
 
-int add_function(char *name,void (*cfun)(INT32),char *type,INT16 flags)
+int pike_add_function(char *name,void (*cfun)(INT32),char *type,INT16 flags)
 {
   int ret;
   struct pike_string *name_tmp,*type_tmp;

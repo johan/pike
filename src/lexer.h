@@ -426,7 +426,7 @@ static int low_yylex(YYSTYPE *yylval)
 	struct svalue sval;
 	base = 16;
       read_based_number:
-	sval.type = T_INT;
+	sval.type = PIKE_T_INT;
 	sval.subtype = NUMBER_NUMBER;
 	sval.u.integer = 0;
 	wide_string_to_svalue_inumber(&sval,
@@ -459,7 +459,7 @@ static int low_yylex(YYSTYPE *yylval)
 
       f=lex_strtod(lex.pos, &p1);
 
-      sval.type = T_INT;
+      sval.type = PIKE_T_INT;
       sval.subtype = NUMBER_NUMBER;
       sval.u.integer = 0;      
 
