@@ -29,6 +29,8 @@ RCSID("$Id$");
 #endif
 
 /*
+**! module Stdio
+**! class File
 **! method mapping tcgetattr()
 **! method int tcsetattr(mapping attr)
 **! method int tcsetattr(mapping attr,string when)
