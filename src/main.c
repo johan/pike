@@ -1067,6 +1067,12 @@ void low_exit_main(void)
      * another gc so that we don't report the blocks again in the low
      * level dmalloc reports. */
 
+#if 1
+    /* It can be a good idea to disable this to leave the blocks
+     * around to be reported by an external memchecker like valgrind.
+     * Ideally we should only free the svalues inside these things but
+     * leave the blocks themselves. */
+
 #define ZAP_LINKED_LIST_LEAKS(TYPE, START, STATICS) do {		\
       struct TYPE *x, *next;						\
       for (x = START; x; x = next) {					\
@@ -1102,6 +1108,8 @@ void low_exit_main(void)
     /* If we stumble on the real refs whose refcounts we've zapped
      * above we should try to handle it gracefully. */
     gc_external_refs_zapped = 1;
+#endif
+
 #endif
 
     do_gc (NULL, 1);
