@@ -188,7 +188,7 @@ CHRONO("scale begin");
    }
 
    dest->img=d=malloc(newx*newy*sizeof(rgb_group) +1);
-   if (!d) error("Out of memory!\n");
+   if (!d) { free(new); error("Out of memory!\n"); }
 
 CHRONO("transfer begin");
 
@@ -204,6 +204,8 @@ CHRONO("transfer begin");
 
    dest->xsize=newx;
    dest->ysize=newy;
+
+   free(new);
 
 CHRONO("scale end");
 }
