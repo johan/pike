@@ -1713,7 +1713,7 @@ static void file_connect(INT32 args)
   tmp=fd_connect(tmp, (struct sockaddr *)&addr, sizeof(addr));
   THREADS_DISALLOW();
 
-  if(tmp < 0)
+  if(tmp < 0 && !(errno==EINPROGRESS && (THIS->open_mode & FILE_NONBLOCKING)))
   {
     /* something went wrong */
     ERRNO=errno;
