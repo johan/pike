@@ -1338,8 +1338,6 @@ void redisplay(int clear, int|void nobackup)
   setcursorpos(p);
 }
 
-//! @fixme
-//!   Document this function
 static private void initline()
 {
   text = "";
