@@ -433,7 +433,10 @@ struct interleave_mutex
     } \
   } while(0)
 
-/* If threads are disabled, the lock will be released later. */
+/* If threads are disabled, the lock will be released later.
+ *
+ * NOTE: MUST be called in a THREADS_ALLOW() context.
+ */
 #define UNLOCK_IMUTEX(im) do { \
     if (!threads_disabled) { \
       THREADS_FPRINTF(0, (stderr, "Unlocking IMutex 0x%p...\n", (im))); \
