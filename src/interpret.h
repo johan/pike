@@ -161,5 +161,13 @@ extern int evaluator_stack_malloced, mark_stack_malloced;
 struct callback;
 extern struct callback_list evaluator_callbacks;
 extern void call_callback(struct callback_list *, void *);
+
+#ifdef PROFILING
+#ifdef HAVE_GETHRTIME
+extern long long accounted_time;
+extern long long time_base;
+#endif
+#endif
+
 #endif
 
