@@ -390,7 +390,7 @@ void f_load_module(INT32 args)
    * detect linking problems at runtime..
    */
   module=dlopen(module_name, 
-                RTLD_NOW |RTLD_GLOBAL  );
+                RTLD_NOW /*|RTLD_GLOBAL*/  );
 
   if(!module)
   {
