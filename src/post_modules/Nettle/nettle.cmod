@@ -146,16 +146,21 @@ PIKECLASS aes
     }
 }
 
+#endif /* HAVE_LIBNETTLE */
+
 PIKE_MODULE_INIT
 {
   INIT;
+#ifdef HAVE_LIBNETTLE
   hash_init();
+#endif /* HAVE_LIBNETTLE */
 }
 
 PIKE_MODULE_EXIT
 {
+#ifdef HAVE_LIBNETTLE
   hash_exit();
+#endif /* HAVE_LIBNETTLE */
   EXIT;
 }
 
-#endif /* HAVE_LIBNETTLE */
