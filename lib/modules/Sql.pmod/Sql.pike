@@ -179,12 +179,13 @@ void create(void|string|object host, void|string db,
     }
 
     if (!program_name) {
-      error("Sql.Sql(): No protocol specified.\n");
+      throw_error("Sql.Sql(): No protocol specified.\n");
     }
     /* Don't call ourselves... */
     if ((sizeof(program_name / "_result") != 1) ||
 	(lower_case(program_name[..2]) == "sql")) {
-      error(sprintf("Sql.Sql(): Unsupported protocol: %O\n", program_name));
+      throw_error(sprintf("Sql.Sql(): Unsupported protocol: %O\n",
+			  program_name));
     }
 
 
@@ -205,8 +206,8 @@ void create(void|string|object host, void|string db,
 	master_sql = p();
       }
     } else {
-      throw(({ sprintf("Sql.sql(): Failed to index module Sql.%s\n",
-		       program_name), backtrace() }));
+      throw_error(sprintf("Sql.sql(): Failed to index module Sql.%s\n",
+			  program_name));
     }
   }
 
