@@ -69,7 +69,8 @@ overlaid over the `font-lock-comment-face'."
 overlaid over the `font-lock-reference-face'."
   :group 'pike-faces)
 (defface pike-font-lock-refdoc-error-face
-  '((((class color)) (:foreground "black" :background "hotpink"))
+  '((((class color) (background light)) (:foreground "red"))
+    (((class color)) (:foreground "hotpink"))
     (((background light)) (:foreground "white" :background "black"))
     (t (:foreground "black" :background "white")))
   "Face to use for invalid markup in Pike documentation comments."
