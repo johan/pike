@@ -95,13 +95,7 @@ static void ponder_answer()
 	    headers[n]=(headers[n]||({}))+({d});
 	    break;
 	 default:
-	   if (headers[n])
-	     if (arrayp (headers[n]))
-	       headers[n] += ({d});
-	     else
-	       headers[n] = ({headers[n], d});
-	   else
-	     headers[n]=d;
+	   headers[n]=d;
       }
    }
 
