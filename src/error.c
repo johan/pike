@@ -13,6 +13,7 @@
 #include "object.h"
 #include "main.h"
 #include "builtin_functions.h"
+#include "backend.h"
 
 RCSID("$Id$");
 
@@ -166,10 +167,8 @@ void debug_fatal(char *fmt, ...) ATTRIBUTE((noreturn,format (printf, 1, 2)))
 
   (void)VFPRINTF(stderr, fmt, args);
 
-  fprintf(stderr,"Attempting to dump backlog (may fail).\n");
-
   d_flag=t_flag=0;
-  push_text("Fatal error");
+  push_text("Attempting to dump backlog (may fail).\n");
   f_backtrace(0);
   f_aggregate(2);
   APPLY_MASTER("describe_backtrace",1);
