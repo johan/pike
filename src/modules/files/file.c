@@ -35,7 +35,9 @@ RCSID("$Id$");
 #include <errno.h>
 #include <fcntl.h>
 #include <signal.h>
+#ifdef HAVE_SYS_SOCKET_H
 #include <sys/socket.h>
+#endif /* HAVE_SYS_SOCKET_H */
 
 #ifdef HAVE_SYS_STREAM_H
 #include <sys/stream.h>
