@@ -2194,7 +2194,7 @@ int gc_cycle_check_weak_short_svalue(union anything *u, TYPE_T type)
 
 void real_gc_free_svalue(struct svalue *s)
 {
-  if (Pike_in_gc) {
+  if (Pike_in_gc && Pike_in_gc < GC_PASS_FREE) {
 #ifdef PIKE_DEBUG
     if (Pike_in_gc != GC_PASS_MARK && Pike_in_gc != GC_PASS_CYCLE &&
 	Pike_in_gc != GC_PASS_ZAP_WEAK)
@@ -2208,7 +2208,7 @@ void real_gc_free_svalue(struct svalue *s)
 
 void real_gc_free_short_svalue(union anything *u, TYPE_T type)
 {
-  if (Pike_in_gc) {
+  if (Pike_in_gc && Pike_in_gc < GC_PASS_FREE) {
 #ifdef PIKE_DEBUG
     if (Pike_in_gc != GC_PASS_MARK && Pike_in_gc != GC_PASS_CYCLE &&
 	Pike_in_gc != GC_PASS_ZAP_WEAK)
