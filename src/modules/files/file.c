@@ -1055,7 +1055,7 @@ static void file_write(INT32 args)
 	if (!written) {
 	  push_int(-1);
 	} else {
-	  push_int(written);
+	  push_int64(written);
 	}
 	return;
 
@@ -1080,7 +1080,7 @@ static void file_write(INT32 args)
   ERRNO=0;
 
   pop_n_elems(args);
-  push_int(written);
+  push_int64(written);
 }
 
 #ifdef WITH_OOB

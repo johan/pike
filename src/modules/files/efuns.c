@@ -604,7 +604,7 @@ void f_get_dir(INT32 args)
 #define FPR 1024
     char buffer[MAXPATHLEN * 4];
     char *ptrs[FPR];
-    int lens[FPR];
+    ptrdiff_t lens[FPR];
     struct dirent *tmp;
 
     if (!(tmp =
@@ -733,7 +733,7 @@ void f_get_dir(INT32 args)
     free(tmp);
     closedir(dir);
     THREADS_DISALLOW();
-    a=aggregate_array(sp-save_sp);
+    a = aggregate_array(DO_NOT_WARN((INT32)(sp - save_sp)));
   }
 #else
   dir = opendir(str->str);

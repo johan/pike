@@ -493,11 +493,12 @@ static void do_uue_encode(ptrdiff_t groups, unsigned char **srcp, char **destp,
 
   while (groups || last) {
     /* A single line can hold at most 15 groups */
-    int g = (groups >= 15? 15 : groups);
+    ptrdiff_t g = (groups >= 15? 15 : groups);
 
     if (g<15) {
       /* The line isn't filled completely.  Add space for the "last" bytes */
-      *dest++ = ' ' + (3*g + last);
+      *dest++ = ' ' +
+	DO_NOT_WARN((char)(3*g + last));
       last = 0;
     } else
       *dest++ = ' ' + (3*g);

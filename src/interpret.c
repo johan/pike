@@ -936,13 +936,13 @@ PMOD_EXPORT void mega_apply2(enum apply_type type, INT32 args, void *arg1, void 
 		  ref->identifier_offset,
 		  ref->id_flags);
 
-	  fprintf(stderr,"-- context: prog->id=%d inlev=%d idlev=%d pi=%d po=%d so=%d name=%s\n",
+	  fprintf(stderr,"-- context: prog->id=%d inlev=%d idlev=%d pi=%d po=%d so=%ld name=%s\n",
 		  new_frame->context.prog->id,
 		  new_frame->context.inherit_level,
 		  new_frame->context.identifier_level,
 		  new_frame->context.parent_identifier,
 		  new_frame->context.parent_offset,
-		  new_frame->context.storage_offset,
+		  DO_NOT_WARN((long)new_frame->context.storage_offset),
 		  new_frame->context.name ? new_frame->context.name->str  : "NULL");
 	  if(t_flag>19)
 	  {

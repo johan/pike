@@ -404,7 +404,8 @@ static void f_pad(INT32 args)
   for (i = THIS->backlog_len; i < THIS->block_size - 1; i++) 
     THIS->backlog[i] = my_rand() & 0xff;
   
-  THIS->backlog[THIS->block_size - 1] = 7 - THIS->backlog_len;
+  THIS->backlog[THIS->block_size - 1] =
+    DO_NOT_WARN((unsigned char)(7 - THIS->backlog_len));
 
   push_string(make_shared_binary_string((const char *)THIS->backlog,
 					THIS->block_size));
