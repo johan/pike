@@ -1993,6 +1993,57 @@ int store_constant(struct svalue *foo, int equal)
 }
 
 /*
+ * program examination functions available from Pike.
+ */
+
+struct array *program_indices(struct program *p)
+{
+  int e;
+  int n = 0;
+  struct array *res;
+  for (e = p->num_identifier_references; e--; ) {
+    struct identifier *id;
+    if (p->identifier_references[e].id_flags & ID_HIDDEN) {
+      continue;
+    }
+    id = ID_FROM_INT(p, e);
+    if (IDENTIFIER_IS_CONSTANT(id->identifier_flags)) {
+      ref_push_string(ID_FROM_INT(p, e)->name);
+      n++;
+    }
+  }
+  f_aggregate(n);
+  res = sp[-1].u.array;
+  add_ref(res);
+  pop_stack();
+  return(res);
+}
+
+struct array *program_values(struct program *p)
+{
+  int e;
+  int n = 0;
+  struct array *res;
+  for(e = p->num_identifier_references; e--; ) {
+    struct identifier *id;
+    if (p->identifier_references[e].id_flags & ID_HIDDEN) {
+      continue;
+    }
+    id = ID_FROM_INT(p, e);
+    if (IDENTIFIER_IS_CONSTANT(id->identifier_flags)) {
+      struct program *p2 = PROG_FROM_INT(p, e);
+      push_svalue(p2->constants + id->func.offset);
+      n++;
+    }
+  }
+  f_aggregate(n);
+  res = sp[-1].u.array;
+  add_ref(res);
+  pop_stack();
+  return(res);
+}
+
+/*
  * Line number support routines, now also tells what file we are in
  */
 static int get_small_number(char **q)
