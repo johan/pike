@@ -299,7 +299,7 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
       struct pike_string *itype;
       INT32 run_time_itype;
 
-      push_string(itype=index_type(sp[-2].u.string,0));
+      push_string(itype=index_type(type,0));
       run_time_itype=compile_type_to_runtime_type(itype);
 
       if(run_time_itype != T_MIXED)
@@ -314,6 +314,9 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	}else{
 	  INT32 e,i;
 	  struct pike_string *s;
+#ifdef DEBUG
+	  struct svalue *save_sp=sp+1;
+#endif
 	  push_array(a=allocate_array(tmp->size));
 	  SET_CYCLIC_RET(a);
 	  
@@ -324,6 +327,10 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	    array_set_index(a,e,sp-1);
 	    pop_stack();
 	  }
+#ifdef DEBUG
+	  if(save_sp!=sp)
+	    fatal("o_cast left stack droppings.\n");
+#endif
 	  END_CYCLIC();
 	}
 	assign_svalue(sp-3,sp-1);
