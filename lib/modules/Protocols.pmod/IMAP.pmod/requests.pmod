@@ -608,7 +608,7 @@ class fetch
       }
 
       if (sizeof(atom->options)
-	  && ( (atom->options[0]->type != atom)
+	  && ( (atom->options[0]->type != "atom")
 	       || (atom->options[0]->options)))	{	// FIXME: ?????
 	werror("Insane options?\n");
 	return 0;
