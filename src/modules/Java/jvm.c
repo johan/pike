@@ -2755,11 +2755,13 @@ static void f_create(INT32 args)
     j->vm_args.options[j->vm_args.nOptions].extraInfo = NULL;
     j->vm_args.nOptions++;
   }
+#ifndef __NT__
 #ifdef JAVA_LIBPATH
   j->vm_args.options[j->vm_args.nOptions].optionString =
     "-Djava.library.path="JAVA_LIBPATH;
   j->vm_args.options[j->vm_args.nOptions].extraInfo = NULL;
   j->vm_args.nOptions++;
+#endif
 #endif
 
   /* load and initialize a Java VM, return a JNI interface 
