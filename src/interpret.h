@@ -329,7 +329,6 @@ PMOD_EXPORT extern struct Pike_interpreter Pike_interpreter;
 #ifndef NO_PIKE_SHORTHAND
 
 /* Shouldn't this be in Pike_interpreter? - Hubbe */
-#define stack_size Pike_stack_size
 #define sp Pike_sp
 #define fp Pike_fp
 #define mark_sp Pike_mark_sp
