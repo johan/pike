@@ -1446,7 +1446,7 @@ struct rb_node_hdr *rb_make_tree (struct rb_node_hdr *list, size_t length)
       if ((size_t) 1 << depth <= length) depth++;
     }
 
-    deep_end = (length - (1 << (depth - 1))) << 1;
+    deep_end = (length - ((size_t) 1 << (depth - 1))) << 1;
     if (!(length & 1)) deep_end |= 1;
 
     {
