@@ -1739,8 +1739,7 @@ static void f_big_typed_query_create(INT32 args)
   if(d_flag)
   {
       CHECK_INTERPRETER_LOCK();
-      if(d_flag>1 && thread_for_id(th_self()) != Pike_interpreter.thread_obj)
-        Pike_fatal("thread_for_id() (or Pike_interpreter.thread_obj) failed in oracle.c! %p != %p\n",thread_for_id(th_self()),Pike_interpreter.thread_obj);
+      DEBUG_CHECK_THREAD();
   }
 #endif
 
@@ -1788,8 +1787,7 @@ static void f_big_typed_query_create(INT32 args)
   if(d_flag)
   {
       CHECK_INTERPRETER_LOCK();
-      if(d_flag>1 && thread_for_id(th_self()) != Pike_interpreter.thread_obj)
-        Pike_fatal("thread_for_id() (or Pike_interpreter.thread_obj) failed in oracle.c! %p != %p\n",thread_for_id(th_self()),Pike_interpreter.thread_obj);
+      DEBUG_CHECK_THREAD();
   }
 #endif
 
@@ -2001,8 +1999,7 @@ static void f_big_typed_query_create(INT32 args)
   if(d_flag)
   {
       CHECK_INTERPRETER_LOCK();
-      if(d_flag>1 && thread_for_id(th_self()) != Pike_interpreter.thread_obj)
-        Pike_fatal("thread_for_id() (or Pike_interpreter.thread_obj) failed in oracle.c! %p != %p\n",thread_for_id(th_self()),Pike_interpreter.thread_obj);
+      DEBUG_CHECK_THREAD();
   }
 #endif
 
@@ -2046,8 +2043,7 @@ static void f_big_typed_query_create(INT32 args)
   if(d_flag)
   {
       CHECK_INTERPRETER_LOCK();
-      if(d_flag>1 && thread_for_id(th_self()) != Pike_interpreter.thread_obj)
-        Pike_fatal("thread_for_id() (or Pike_interpreter.thread_obj) failed in oracle.c! %p != %p\n",thread_for_id(th_self()),Pike_interpreter.thread_obj);
+      DEBUG_CHECK_THREAD();
   }
 #endif
 
