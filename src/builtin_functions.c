@@ -230,11 +230,14 @@ void f_search(INT32 args)
 
       start=sp[2-args].u.integer;
       if(start<0)
-	PIKE_ERROR("search", "Start must be greater or equal to zero.\n", sp, args);
+	PIKE_ERROR("search",
+		   "Start must be greater or equal to zero.\n", sp, args);
     }
 
-    if(len<0)
-      PIKE_ERROR("search", "Start must not be greater than the length of the string.\n", sp, args);
+    if(sp[-args].u.string->len < start)
+      PIKE_ERROR("search",
+		 "Start must not be greater than the length of the string.\n",
+		 sp, args);
 
     start=string_search(sp[-args].u.string,
 			sp[1-args].u.string,
