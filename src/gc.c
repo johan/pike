@@ -848,8 +848,12 @@ void do_gc(void)
   }
 #endif
 
+  /* These callbacks are mainly for pass 1, but can also
+   * do things that are normally associated with pass 2
+   */
   call_callback(& gc_callbacks, (void *)0);
 
+  Pike_in_gc=2;
 
   /* Next we mark anything with external references */
   gc_mark_all_arrays();
@@ -870,12 +874,12 @@ void do_gc(void)
 #ifdef PIKE_DEBUG
   check_for=(void *)1;
 #endif
+  Pike_in_gc=3;
   /* Now we free the unused stuff */
   gc_free_all_unreferenced_arrays();
   gc_free_all_unreferenced_multisets();
   gc_free_all_unreferenced_mappings();
   gc_free_all_unreferenced_programs();
-  Pike_in_gc=2;
   gc_free_all_unreferenced_objects();
 
 #ifdef PIKE_DEBUG
