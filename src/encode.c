@@ -2446,8 +2446,11 @@ static void decode_value2(struct decode_data *data)
 	    {
 	      if(o->prog->flags & PROGRAM_FINISHED)
 	      {
-		apply_lfun(o, LFUN___INIT, 0);
-		pop_stack();
+		int lfun = FIND_LFUN(o->prog, LFUN___INIT);
+		if (lfun >= 0) {
+		  apply_low(o, lfun, 0);
+		  pop_stack();
+		}
 		/* FIXME: Should call LFUN_CREATE here in <= 7.2
 		 * compatibility mode. */
 	      }else{
