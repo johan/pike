@@ -41,6 +41,10 @@
 
 #include <sys/stat.h>
 
+#ifdef HAVE_SYS_SOCKET_H
+#include <sys/socket.h>
+#endif /* HAVE_SYS_SOCKET_H */
+
 #ifdef HAVE_SYS_UIO_H
 #include <sys/uio.h>
 #endif /* HAVE_SYS_UIO_H */
@@ -347,7 +351,7 @@ void *worker(void *this_)
 	fatal("FreeBSD style sendfile(): EFAULT\n");
 	break;
       case EBADF:
-      case ENOTCON:
+      case ENOTCONN:
       case EPIPE:
       case EIO:
       case EAGAIN:
