@@ -46,6 +46,11 @@
 #define __BUILTIN_VA_ARG_INCR	1
 #endif /* !__BUILTIN_VA_ARG_INCR */
 
+/* Get more declarations in GNU libc. */
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE
+#endif
+
 /*
  * Some structure forward declarations are needed.
  */
