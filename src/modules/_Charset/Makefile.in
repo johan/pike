@@ -5,7 +5,7 @@
 SRCDIR=@srcdir@
 VPATH=@srcdir@:@srcdir@/../..:../..
 MODULE_CPPFLAGS=@DEFS@ @CPPFLAGS@
-OBJS=charsetmod.o iso2022.o tables.o
+OBJS=charsetmod.o iso2022.o tables.o misc.o
 MODULE_LDFLAGS=@LDFLAGS@
 
 @dynamic_module_makefile@
