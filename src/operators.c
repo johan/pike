@@ -129,7 +129,7 @@ void f_add(INT32 args)
 	    assign_svalues_no_free(sp, sp-args, e, -1);
 	    sp+=e;
 	    apply_lfun(tmp->u.object, LFUN_RADD, e);
-	    if(args - e > 2)
+	    if(args - e > 1)
 	    {
 	      assign_svalue(tmp, sp-1);
 	      pop_stack();
