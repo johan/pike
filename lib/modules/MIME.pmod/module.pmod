@@ -1078,10 +1078,18 @@ class Message {
 	error("multipart message improperly terminated (%O)\n", parts[-1]);
       encoded_data = 0;
       decoded_data = parts[0][1..];
+      if(sizeof(decoded_data) && decoded_data[-1]=='\r')
+	decoded_data = decoded_data[..sizeof(decoded_data)-2];
       body_parts = map(parts[1..sizeof(parts)-2], lambda(string part){
 	if(sizeof(part) && part[-1]=='\r')
 	  part = part[..sizeof(part)-2];
-	return object_program(this_object())(part[1..], 0, 0, guess);
+	if(has_prefix(part, "\r\n"))
+	  part = part[2..];
+	else if(has_prefix(part, "\n"))
+	  part = part[1..];
+	else if(!guess)
+	  error("newline missing after multipart boundary\n");
+	return object_program(this_object())(part, 0, 0, guess);
       });
     }
     if((hdrs || parts) && !decoded_data) {
