@@ -1114,6 +1114,10 @@ void create(int is_server, void|SSL.context ctx)
   version=({0,0});
   context = ctx;
   auth_level = context->auth_level;
+
+  if(context->authorities)
+    authorities = context->authorities;
+
   if (is_server)
     handshake_state = STATE_server_wait_for_hello;
   else
