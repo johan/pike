@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #define NO_PIKE_SHORTHAND
 
 #include "global.h"
@@ -227,7 +228,8 @@ static void port_bind(INT32 args)
   addr.sin_family = AF_INET;
 
   THREADS_ALLOW_UID();
-  tmp=fd_bind(fd, (struct sockaddr *)&addr, sizeof(addr)) < 0 || fd_listen(fd, 16384) < 0;
+  tmp = fd_bind(fd, (struct sockaddr *)&addr, sizeof(addr)) < 0 ||
+    fd_listen(fd, 16384) < 0;
   THREADS_DISALLOW_UID();
 
   if(tmp)
