@@ -4964,6 +4964,31 @@ AC_DEFINE_UNQUOTED(PRINTPIKEFLOAT,"$pike_cv_printf_float_type")
 
 #######################################################################
 
+AC_MSG_CHECKING(if union initialization works)
+AC_CACHE_VAL(pike_cv_have_union_init, [
+  AC_TRY_COMPILE([], [
+    struct foo {int a; char *b;};
+    struct bar {int c[2];};
+    union anything
+    {
+      struct foo *foo;
+      struct bar *bar;
+    };
+    struct svalue
+    {
+      unsigned type;
+      unsigned subtype;
+      union anything u;
+    };
+    struct svalue my_svalue = {0, 0, {{17, "17"}}};
+  ], pike_cv_have_union_init=yes, pike_cv_have_union_init=no)])
+AC_MSG_RESULT($pike_cv_have_union_init)
+if test "$pike_cv_have_union_init" = yes; then
+  AC_DEFINE(HAVE_UNION_INIT)
+fi
+
+#######################################################################
+
 # Set info about shared libraries.
 AC_SUBST(SO)
 AC_SUBST(LDSHARED)

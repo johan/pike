@@ -132,7 +132,12 @@ PMOD_EXPORT void push_error(const char *description)
   f_aggregate(2);
 }
 
-PMOD_EXPORT struct svalue throw_value = { PIKE_T_INT };
+PMOD_EXPORT struct svalue throw_value = {
+  PIKE_T_INT, 0,
+#ifdef HAVE_UNION_INIT
+  {0}, /* Only to avoid warnings. */
+#endif
+};
 int throw_severity;
 static const char *in_error;
 

@@ -35,18 +35,27 @@ PMOD_EXPORT struct array empty_array=
   0,                     /* no types */
   0,			 /* no flags */
   empty_array.real_item, /* Initialize the item pointer. */
+#ifdef HAVE_UNION_INIT
+  {{0, 0, {0}}}, /* Only to avoid warnings. */
+#endif
 };
 PMOD_EXPORT struct array weak_empty_array=
 {
   PIKE_CONSTANT_MEMOBJ_INIT(1),
   &weak_shrink_empty_array, &empty_array, 0, 0, 0, ARRAY_WEAK_FLAG,
   weak_empty_array.real_item,
+#ifdef HAVE_UNION_INIT
+  {{0, 0, {0}}}, /* Only to avoid warnings. */
+#endif
 };
 PMOD_EXPORT struct array weak_shrink_empty_array=
 {
   PIKE_CONSTANT_MEMOBJ_INIT(1),
   &empty_array, &weak_empty_array, 0, 0, 0, ARRAY_WEAK_FLAG|ARRAY_WEAK_SHRINK,
   weak_shrink_empty_array.real_item,
+#ifdef HAVE_UNION_INIT
+  {{0, 0, {0}}}, /* Only to avoid warnings. */
+#endif
 };
 
 struct array *gc_internal_array = &empty_array;

@@ -525,7 +525,12 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
 #endif
 
 {
-  static struct svalue dested = { T_INT, NUMBER_DESTRUCTED };
+  static struct svalue dested = {
+    T_INT, NUMBER_DESTRUCTED,
+#ifdef HAVE_UNION_INIT
+  {0}, /* Only to avoid warnings. */
+#endif
+  };
   INT32 i;
   struct svalue *tmp;
 

@@ -64,7 +64,12 @@ static int pike_isnan(double x)
 
 RCSID("$Id$");
 
-struct svalue dest_ob_zero = { T_INT, 0 };
+struct svalue dest_ob_zero = {
+  T_INT, 0,
+#ifdef HAVE_UNION_INIT
+  {0}, /* Only to avoid warnings. */
+#endif
+};
 
 /*
  * This routine frees a short svalue given a pointer to it and
