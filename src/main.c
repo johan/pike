@@ -26,6 +26,7 @@ RCSID("$Id$");
 #include "mapping.h"
 #include "cpp.h"
 #include "main.h"
+#include "operators.h"
 
 #include <errno.h>
 
@@ -395,6 +396,7 @@ void do_exit(int num) ATTRIBUTE((noreturn))
 void low_init_main(void)
 {
   th_init();
+  init_operators();
   init_builtin_efuns();
   init_signals();
   init_dynamic_load();
@@ -424,6 +426,7 @@ void low_exit_main(void)
   exit_cpp();
   cleanup_interpret();
   cleanup_added_efuns();
+  exit_operators();
   cleanup_pike_types();
   cleanup_program();
   cleanup_compiler();

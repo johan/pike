@@ -155,7 +155,8 @@ int va_get_args(struct svalue *s,
       break;
     case 'i':
       if(s->type != T_INT) return ret;
-      *va_arg(ap, INT32 *)=s->u.integer; break;
+      *va_arg(ap, INT32 *)=s->u.integer;
+      break;
     case 's':
       if(s->type != T_STRING) return ret;
       *va_arg(ap, char **)=s->u.string->str;

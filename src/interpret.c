@@ -1584,7 +1584,13 @@ static int eval_instruction(unsigned char *pc)
 
       CASE(F_INDEX);
     do_index:
-      o_index();
+      {
+	struct svalue s;
+	index_no_free(&s,sp-2,sp-1);
+	pop_n_elems(2);
+	*sp=s;
+	sp++;
+      }
       print_return_value();
       break;
 
@@ -1599,6 +1605,29 @@ static int eval_instruction(unsigned char *pc)
 	sp[-1]=tmp;
       }
       break;
+
+      CASE(F_INDIRECT);
+      {
+	struct svalue s;
+	lvalue_to_svalue_no_free(&s,sp-2);
+	if(s.type != T_STRING)
+	{
+	  pop_n_elems(2);
+	  *sp=s;
+	  sp++;
+	}else{
+	  struct object *o;
+	  o=low_clone(string_assignment_program);
+	  ((struct string_assignment_storage *)o->storage)->lval[0]=sp[-2];
+	  ((struct string_assignment_storage *)o->storage)->lval[1]=sp[-1];
+	  ((struct string_assignment_storage *)o->storage)->s=s.u.string;
+	  sp-=2;
+	  push_object(o);
+	}
+      }
+      print_return_value();
+      break;
+      
 
       CASE(F_SIZEOF);
       instr=pike_sizeof(sp-1);

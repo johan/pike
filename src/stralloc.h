@@ -99,7 +99,7 @@ struct pike_string *realloc_unlinked_string(struct pike_string *a, INT32 size);
 struct pike_string *realloc_shared_string(struct pike_string *a, INT32 size);
 struct pike_string *modify_shared_string(struct pike_string *a,
 					 INT32 index,
-					 char c);
+					 int c);
 struct pike_string *add_shared_strings(struct pike_string *a,
 					 struct pike_string *b);
 struct pike_string *add_and_free_shared_strings(struct pike_string *a,
