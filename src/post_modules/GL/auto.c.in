@@ -436,7 +436,8 @@ static void post_init()
 
 @@
 
-static void my_glFrustum(INT32 args) {
+static void my_glFrustum(INT32 args)
+{
   float right,left,bottom,top,near,far;
 
   get_all_args("glFrustum", args, "%F%F%F%F%F%F",
