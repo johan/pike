@@ -1304,6 +1304,8 @@ void mega_apply2(enum apply_type type, INT32 args, void *arg1, void *arg2)
   {
     assign_svalue(save_sp,sp-1);
     pop_n_elems(sp-save_sp-1);
+
+    destruct_objects_to_destruct();
   }
 
   if(save_sp+1 > sp)
