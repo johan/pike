@@ -554,6 +554,8 @@ void assemble(void)
   if (a_flag > 6) {
     size_t len = (Pike_compiler->new_program->num_program - fun_start)*
       sizeof(PIKE_OPCODE_T);
+    fprintf(stderr, "Code at offset %d through %d:\n",
+	    fun_start, Pike_compiler->new_program->num_program-1);
 #ifdef DISASSEMBLE_CODE
     DISASSEMBLE_CODE(Pike_compiler->new_program->program + fun_start, len);
 #else /* !DISASSEMBLE_CODE */
