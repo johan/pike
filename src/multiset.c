@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #include "global.h"
 #include "array.h"
 #include "multiset.h"
@@ -83,7 +84,7 @@ struct multiset *mkmultiset(struct array *ind)
 }
 
 void multiset_insert(struct multiset *l,
-		 struct svalue *ind)
+		     struct svalue *ind)
 {
   INT32 i;
   i=set_lookup(l->ind, ind);
