@@ -1617,13 +1617,13 @@ void _main(array(string) orig_argv, array(string) env)
 #endif
   
   string format_paths() {
-    return  ("master.pike..." + (_master_file_name || __FILE__) + "\n"
-	     "Module path..." + pike_module_path*"\n"
-	     "              " + "\n"
-	     "Include path.." + pike_include_path*"\n"
-	     "              " + "\n"
-	     "Program path.." + pike_program_path*"\n"
-	     "              " + "\n");
+    return  ("master.pike...: " + (_master_file_name || __FILE__) + "\n"
+	     "Module path...: " + pike_module_path*"\n"
+	     "" + "\n"
+	     "Include path..: " + pike_include_path*"\n"
+	     "" + "\n"
+	     "Program path..: " + pike_program_path*"\n"
+	     "" + "\n");
   };
 
   if(sizeof(argv)>1 && sizeof(argv[1]) && argv[1][0]=='-')
