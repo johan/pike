@@ -823,7 +823,6 @@ void f_mkdir(INT32 args)
  */
 void f_get_dir(INT32 args)
 {
-  struct svalue *save_sp=sp;
   DIR *dir;
   struct dirent *d;
   struct pike_string *str;
@@ -984,6 +983,7 @@ void f_get_dir(INT32 args)
     THREADS_DISALLOW();
 
     END_AGGREGATE_ARRAY;
+    Pike_sp[-1].u.array->type_field = BIT_STRING;
 
     stack_pop_n_elems_keep_top(args);
   }
@@ -1007,6 +1007,7 @@ void f_get_dir(INT32 args)
     }
     closedir(dir);
     END_AGGREGATE_ARRAY;
+    Pike_sp[-1].u.array->type_field = BIT_STRING;
 
     stack_pop_n_elems_keep_top(args);
   }
