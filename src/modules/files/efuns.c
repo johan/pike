@@ -160,7 +160,7 @@ void f_file_truncate(INT32 args)
   VALID_FILE_IO("file_truncate","write");
 
   res=truncate(s,len);
-  // NT: fixme?  /Mirar
+  /* NT: fixme?  /Mirar */
 
   pop_n_elems(args);
 
