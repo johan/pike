@@ -1803,7 +1803,7 @@ node *make_node_from_mapping(struct mapping *m)
  *!
  *! Groups the arguments together two and two in key-index pairs and
  *! creates a mapping of those pairs. Generally, the mapping literal
- *! syntax is handier: @code{([ key1:val1, key2:val2, ... ])@}
+ *! syntax is handier: @expr{([ key1:val1, key2:val2, ... ])@}
  *!
  *! @seealso
  *!   @[sizeof()], @[mappingp()], @[mkmapping()]

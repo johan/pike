@@ -261,7 +261,9 @@ static void f_des_parity(INT32 args)
  *! be randomized.
  *!
  *! Verification can be done by supplying the crypted password as @[salt]:
- *! @code{crypt_md5(typed_pw, crypted_pw) == crypted_pw@}
+ *! @code
+ *! crypt_md5(typed_pw, crypted_pw) == crypted_pw;
+ *! @endcode
  *! 
  *! @seealso
  *!   @[crypt()]

@@ -3591,9 +3591,9 @@ node *make_node_from_multiset (struct multiset *l)
  * Construct a multiset with the arguments as indices. The multiset
  * will not contain any values. This method is most useful when
  * constructing multisets with @[map] or similar; generally, the
- * multiset literal syntax is handier: @code{(<elem1, elem2, ...>)@}
+ * multiset literal syntax is handier: @expr{(<elem1, elem2, ...>)@}
  * With it, it's also possible to construct a multiset with values:
- * @code{(<index1: value1, index2: value2, ...>)@}
+ * @expr{(<index1: value1, index2: value2, ...>)@}
  *
  * @seealso
  *   @[sizeof()], @[multisetp()], @[mkmultiset()]
@@ -5562,7 +5562,7 @@ node * make_node_from_multiset(struct multiset *l)
  *! Construct a multiset with the arguments as indices.
  *! This method is most useful when constructing multisets
  *! with @[map] or similar; generally, the multiset literal
- *! syntax is handier: @code{(< elem1, elem2, ... >)@}
+ *! syntax is handier: @expr{(< elem1, elem2, ... >)@}
  *!
  *! @seealso
  *!   @[sizeof()], @[multisetp()], @[mkmultiset()]

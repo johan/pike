@@ -1733,7 +1733,7 @@ void file_sync(INT32 args)
  *! Seek to a specified offset in a file.
  *!
  *! If @[mult] or @[add] are specified, @[pos] will be claculated as
- *! @code{@[pos] = @[unit]*@[mult] + @[add]@}.
+ *! @expr{@[pos] = @[unit]*@[mult] + @[add]@}.
  *!
  *! If @[pos] is negative it will be relative to the start of the file,
  *! otherwise it will be an absolute offset from the start of the file.

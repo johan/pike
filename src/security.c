@@ -81,7 +81,7 @@ static void restore_creds(struct object *creds)
  *! Call with credentials.
  *!
  *! Sets the current credentials to @[creds], and calls
- *! @code{@[func](@@@[args])@}. If @[creds] is @tt{0@} (zero), the
+ *! @expr{@[func](@@@[args])@}. If @[creds] is @tt{0@} (zero), the
  *! credentials from the current object will be used.
  *!
  *! @note

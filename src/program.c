@@ -298,23 +298,23 @@ static char *raw_lfun_types[] = {
  *! @note
  *!   In Pike 7.2 and later this function can be created implicitly
  *!   by the compiler using the new syntax:
- *!     @code{
- *!       class Foo(int foo) {
- *!         int bar;
- *!       }
- *!     @}
+ *! @code
+ *! class Foo(int foo) {
+ *!   int bar;
+ *! }
+ *! @endcode
  *!   In the above case an implicit @[lfun::create()] will be created,
  *!   and it will be equvivalent to:
- *!     @code{
- *!       class Foo {
- *!         int foo;
- *!         int bar;
- *!         static void create(int foo)
- *!         {
- *!           local::foo = foo;
- *!         }
- *!       }
- *!     @}
+ *! @code
+ *! class Foo {
+ *!   int foo;
+ *!   int bar;
+ *!   static void create(int foo)
+ *!   {
+ *!     local::foo = foo;
+ *!   }
+ *! }
+ *! @endcode
  *!
  *! @seealso
  *!   @[lfun::__INIT()], @[lfun::destroy()]

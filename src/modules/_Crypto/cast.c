@@ -162,7 +162,7 @@ static void f_set_decrypt_key(INT32 args)
  *! will be encrypted the same way as the first one (ie ECB-mode).
  *!
  *! @note
- *!   Will throw errors if @code{sizeof(@[data])@} is not a multiple
+ *!   Will throw errors if @expr{sizeof(@[data])@} is not a multiple
  *!   of the block size.
  *!
  *! @seealso
