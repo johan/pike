@@ -828,6 +828,11 @@ static mapping TAG_INFO = ([
 		      "OLYMPUS DIGITAL CAMERA": ({"TAGS", OLYMPUS_MAKERNOTE}),
 		      "SANYO DIGITAL CAMERA": ({"TAGS", SANYO_MAKERNOTE}),
 		      "CASIO": ({"TAGS", CASIO_MAKERNOTE}),
+
+		      // FIXME: Reverse engineer these.
+		      "FUJIFILM_FinePix2400Zoom": ({ 0, ([]) }),
+		      "FUJIFILM_FinePix4700 ZOOM": ({ 0, ([]) }),
+
 		      "": ({ 0, ([]) }) ]) }),
   0x9286:       ({"UserComment",                }),
   0x9290:       ({"SubSecTime",                 }),
