@@ -77,6 +77,9 @@
  * one above can do. I.e. it frees a ref to the item p points at, and
  * sets p to the same or next item with references, or sets it to
  * zero. */
+/* how can SET_NEXT_AND_FREE leave *next* pointing to a deallocated block?
+ * -Hubbe
+ */
 #define FREE_AND_GET_REFERENCED(p, item_type, free_item) do {		\
   item_type *next;							\
   while (1) {								\
