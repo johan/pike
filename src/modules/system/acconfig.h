@@ -45,6 +45,9 @@
 /* Define if you have the <sys/resource.h> header file.  */
 #undef HAVE_SYS_RESOURCE_H
 
+/* Define if you have the <sys/user.h> header file.  */
+#undef HAVE_SYS_USER_H
+
 /* Define if ITIMER_REAL, ITIMER_VIRTUAL and ITIMER_PROF is in tInt02 */
 #undef ITIMER_TYPE_IS_02
 
