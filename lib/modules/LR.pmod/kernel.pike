@@ -73,13 +73,14 @@ void add_item(object(item) i)
 void make_kernel_hash()
 {
   if (!kernel_hash) {
-    items->make_item_hash();
-    kernel_hash = sort(items->item_hash) * ":";
+    kernel_hash = (string)sort(items->item_id);
+    // kernel_hash = sprintf("%4c:%@4c", sizeof(items), sort(items->item_id));
+    // werror("Kernel hash:%O\n", kernel_hash);
   }
 }
 
 //. - equalp
-//.   Compare with another state.
+//.   Compare with another state. (OBSOLETE)
 //. > state
 //.   State to compare with.
 int equalp(object /* (kernel) */ state)
