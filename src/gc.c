@@ -1240,6 +1240,17 @@ void gc_mark_enqueue (queue_call call, void *data)
 {
   struct gc_queue_block *b;
 
+#ifdef PIKE_DEBUG
+  {
+    struct marker *m;
+    if (gc_is_watching && (m = find_marker(data)) && m->flags & GC_WATCHED) {
+      /* This is useful to set breakpoints on. */
+      fprintf(stderr, "## Watched thing %p found in "
+	      "gc_mark_enqueue() in pass %d.\n", data, Pike_in_gc);
+    }
+  }
+#endif
+
   b=gc_mark_last;
   if(!b || b->used >= GC_QUEUE_ENTRIES)
   {
@@ -1816,19 +1827,6 @@ void gc_delayed_free(void *a, int type)
   gc_add_extra_ref(a);
   m->flags |= GC_GOT_DEAD_REF;
 }
-
-#ifdef PIKE_DEBUG
-void gc_mark_enqueue(queue_call call, void *data)
-{
-  struct marker *m;
-  if (gc_is_watching && (m = find_marker(data)) && m->flags & GC_WATCHED) {
-    /* This is useful to set breakpoints on. */
-    fprintf(stderr, "## Watched thing %p found in "
-	    "gc_mark_enqueue() in pass %d.\n", data, Pike_in_gc);
-  }
-  enqueue(&gc_mark_queue, call, data);
-}
-#endif
 
 int gc_mark(void *a)
 {
