@@ -53,7 +53,7 @@ else
        [ pike_cv_lib_glut=yes ], [ pike_cv_lib_glut=no ])
     LIBS="$oldLIBS"
   ])
-  if test x"$pike_cv_lib_glut" = xyes; then
+  if test x"$ac_cv_header_GL_glut_h$pike_cv_lib_glut" = "xyesyes"; then
     AC_MSG_RESULT(yes)
     AC_DEFINE_UNQUOTED(HAVE_LIBGLUT)
     LIBS="-lglut $LIBS"
