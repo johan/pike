@@ -29,7 +29,7 @@
 //!         {
 //!             call_out(exit,3600,0);    // share for an hour, then exit
 //!         };
-//!   
+//!
 //!      // Callback to print warnings (same args as sprintf):
 //!      //   t->warning=werror; 
 //!   
@@ -43,8 +43,7 @@
 //!   
 //!      // Open port to listen on,
 //!      // we want to do this to be able to talk to firewalled peers:
-//!      t->my_port=6881;
-//!      t->open_port();
+//!      t->open_port(6881);
 //!   
 //!      // Ok, start calling tracker to get peers,
 //!      // and tell about us:
@@ -412,8 +411,9 @@ void verify_targets(void|function(int,int:void) progress_callback)
 }
 
 //! Open the port we're listening on.
-void open_port()
+void open_port(void|int port)
 {
+   if(port) my_port=port;
    listen_port=.Port(this);
 }
 
@@ -481,6 +481,7 @@ void update_tracker(void|string event,void|int contact)
 	"port":(string)my_port,
  	"numwant":(string)max(max_peers-sizeof(peers_ordered),100),
 	"compact":"1",
+	"no_peer_id":"1",
       ]);
    if (my_ip) req->ip=my_ip;
    if (event) req->event=event;
@@ -511,7 +512,7 @@ void update_tracker(void|string event,void|int contact)
 
 	 string data=r->data();
 
-	 if (r->headers()["content-encoding"]=="gzip")
+	 if ( (< "gzip", "x-gzip" >)[ r->headers()["content-encoding"] ])
 	 {
 // 	    werror("gruk %O\n",data);
 	    data=Gz.File(Stdio.FakeFile(data))->read();
