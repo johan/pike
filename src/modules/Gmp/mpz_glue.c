@@ -1223,7 +1223,23 @@ static void mpzmod_div(INT32 args)
   for(e=0;e<args;e++)	
   {
     if(sp[e-args].type == T_INT)
+#ifdef BIG_PIKE_INT
+    {
+       INT_TYPE i=sp[e-args].u.integer;
+       if ( (unsigned long int)i == i)
+       {
+	  mpz_fdiv_q_ui(OBTOMPZ(res), OBTOMPZ(res), i);
+       }
+       else
+       {
+	  MP_INT *tmp=get_mpz(sp+e-args,1,"Gmp.mpz->`/",e,e);
+	  mpz_fdiv_q(OBTOMPZ(res), OBTOMPZ(res), tmp);
+/* will this leak? there is no simple way of poking at the references to tmp */
+       }
+    }
+#else
       mpz_fdiv_q_ui(OBTOMPZ(res), OBTOMPZ(res), sp[e-args].u.integer);
+#endif
    else
       mpz_fdiv_q(OBTOMPZ(res), OBTOMPZ(res), OBTOMPZ(sp[e-args].u.object));
   }
