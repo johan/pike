@@ -115,6 +115,11 @@ mapping(string:mixed) all_constants()
   mapping(string:mixed) ret = predef::all_constants()+([]);
   ret->rusage = rusage;
   ret->hash = hash_7_4;
+#if constant(__builtin.security)
+  ret->call_with_creds = __builtin.security.call_with_creds;
+  ret->get_current_creds = __builtin.security.get_current_creds;
+  ret->get_object_creds = __builtin.security.get_object_creds;
+#endif
 #if constant(Pipe._pipe_debug)
   ret->_pipe_debug = Pipe._pipe_debug;
 #endif /* constant(Pipe._pipe_debug) */
