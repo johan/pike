@@ -10,3 +10,8 @@
 
 /* aka rijndael */
 inherit Crypto.rijndael;
+
+string name()
+{
+  return "AES";
+}
