@@ -110,6 +110,7 @@ void f__gc_status(INT32 args);
 #define debug_gc_check_short_svalue(S,N,T,V) gc_check_short_svalue((S),N)
 #define debug_gc_xmark_svalues(S,N,X) gc_xmark_svalues((S),N)
 #define debug_gc_check(VP,T,V) gc_check((VP))
+#define LOW_GC_FREE() do {} while(0)
 #define GC_FREE() do { num_objects-- ; }while(0)
 #define GC_FREE_OBJ() do { num_objects-- ; }while(0)
 #endif
