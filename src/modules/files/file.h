@@ -31,7 +31,13 @@ struct my_file
 {
   short open_mode;
   short flags;
+#ifdef PIKE_DEBUG
+  /* It can be useful to have this mapped as a pike variable for debug
+   * messages. */
+  INT_TYPE fd;
+#else
   FD fd;
+#endif
   int my_errno;
   struct svalue read_callback;
   struct svalue write_callback;

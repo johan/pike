@@ -3878,7 +3878,11 @@ static void fd__sprintf(INT32 args)
     case 'O':
     {
       char buf[20];
+#ifdef PIKE_DEBUG
+      sprintf (buf, "Fd(%"PRINTPIKEINT"d)", FD);
+#else
       sprintf (buf, "Fd(%d)", FD);
+#endif
       push_text(buf);
       return;
     }
@@ -3916,6 +3920,9 @@ PIKE_MODULE_INIT
   map_variable("_write_callback","mixed",0,OFFSETOF(my_file, write_callback),PIKE_T_MIXED);
   map_variable("_read_oob_callback","mixed",0,OFFSETOF(my_file, read_oob_callback),PIKE_T_MIXED);
   map_variable("_write_oob_callback","mixed",0,OFFSETOF(my_file, write_oob_callback),PIKE_T_MIXED);
+#ifdef PIKE_DEBUG
+  map_variable("fd", "int", ID_STATIC|ID_PRIVATE, OFFSETOF (my_file, fd), PIKE_T_INT);
+#endif
 
   /* function(int, void|mapping:string) */
   ADD_FUNCTION("_sprintf",fd__sprintf,
