@@ -10286,6 +10286,31 @@ test_true([[lambda () {mixed a; return zero_type(a = ([])[0]);}()]])
 test_true([[lambda () {mapping a=([]); return zero_type(a[0] = ([])[0]);}()]])
 test_true([[zero_type (lambda () {return ([])[0];}())]])
 
+test_any([[
+  int i = lambda() {return UNDEFINED;}();
+  lambda (int x) {} (i += 17);
+  return zero_type (i);
+]], 0)
+test_any([[
+  int i = lambda() {return UNDEFINED;}();
+  lambda (int x) {} (i -= 17);
+  return zero_type (i);
+]], 0)
+test_any([[
+  int i = lambda() {return UNDEFINED;}();
+  lambda (int x) {} (i++);
+  i++;
+  return zero_type (i);
+]], 0)
+test_any([[
+  int i = lambda() {return UNDEFINED;}();
+  lambda (int x) {} (i--);
+  return zero_type (i);
+]], 0)
+test_any([[
+  int i = lambda() {return UNDEFINED;}();
+  return zero_type (-i);
+]], 0)
 
 
 
