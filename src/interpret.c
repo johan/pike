@@ -874,7 +874,7 @@ static int eval_instruction(PIKE_OPCODE_T *pc)
 #ifdef PIKE_DEBUG
   if (t_flag) {
     int i;
-    fprintf(stderr, "Calling code at 0x%p:\n", pc);
+    fprintf(stderr, "Calling code at %p:\n", pc);
 #ifdef PIKE_OPCODE_ALIGN
     if (((INT32)pc) % PIKE_OPCODE_ALIGN) {
       Pike_fatal("Odd offset!\n");
