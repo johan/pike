@@ -799,6 +799,7 @@ static struct {
 #ifdef SI_SRPC_DOMAIN
   { "srpc domain", SI_SRPC_DOMAIN },
 #endif /* SI_SRPC_DOMAIN */
+  { "TERMINATOR", 0 }
 };
 
 /* Recomended is >257 */
@@ -814,7 +815,7 @@ void f_uname(INT32 args)
 
   old_sp = sp;
 
-  for(i=0; i < NELEM(si_fields); i++) {
+  for(i=0; i < NELEM(si_fields)-1; i++) {
     long res;
     res = sysinfo(si_fields[i].command, buffer, PIKE_SI_BUFLEN);
 
