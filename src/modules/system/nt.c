@@ -3077,6 +3077,7 @@ static void f_nt_uname(INT32 args)
       machine = "amd64";
       push_text("amd64");
       break;
+#endif
 
 #ifdef PROCESSOR_ARCHITECTURE_MSIL
     case PROCESSOR_ARCHITECTURE_MSIL:
