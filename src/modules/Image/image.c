@@ -2453,7 +2453,7 @@ void _image_map_compat(INT32 args,int fs) /* compat function */
   nct=(struct neo_colortable*)get_storage(co,image_colortable_program);
 
   if (fs) image_colortable_internal_floyd_steinberg(
-		     get_storage(co,image_colortable_program));
+	   (struct neo_colortable *)get_storage(co,image_colortable_program));
 
   push_int(this->xsize);
   push_int(this->ysize);
