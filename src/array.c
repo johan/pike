@@ -1196,7 +1196,7 @@ PMOD_EXPORT struct array *reorder_and_copy_array(struct array *v, INT32 *order)
 }
 
 /* Maybe I should have a 'clean' flag for this computation */
-PMOD_EXPORT void array_fix_type_field(struct array *v)
+PMOD_EXPORT TYPE_FIELD array_fix_type_field(struct array *v)
 {
   int e;
   TYPE_FIELD t;
@@ -1222,7 +1222,7 @@ PMOD_EXPORT void array_fix_type_field(struct array *v)
 	       v->type_field, t);
   }
 #endif
-  v->type_field = t;
+  return v->type_field = t;
 }
 
 #ifdef PIKE_DEBUG
