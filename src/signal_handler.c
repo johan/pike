@@ -2387,7 +2387,13 @@ void f_fork(INT32 args)
 #endif
 
 /*   THREADS_ALLOW_UID(); */
-#if defined(HAVE_FORK1) && defined(_REENTRANT)
+#if 0 && defined(HAVE_FORK1) && defined(_REENTRANT)
+  /* This section is disabled, since fork1() isn't usefull if
+   * you aren't about do an exec().
+   * In addition any helper threads (like the wait thread) would
+   * disappear, so the child whould be crippled.
+   *	/grubba 1999-03-07
+   */
   pid=fork1();
 #else
   pid=fork();
