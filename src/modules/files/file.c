@@ -1261,7 +1261,7 @@ static void file_dup2(INT32 args)
    * /precompiled/file
    */
   if(!o->prog || o->prog->inherits[0].prog != file_program)
-    error("Argument 1 to file->assign() must be a clone of Stdio.File\n");
+    error("Argument 1 to file->dup2() must be a clone of Stdio.File\n");
 
   fd=((struct file_struct *)(o->storage))->fd;
 

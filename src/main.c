@@ -68,6 +68,9 @@ void main(int argc, char **argv)
   int e, num;
   char *p;
   struct array *a;
+#ifdef DECLARE_ENVIRON
+  extern char **environ;
+#endif
 
   ARGV=argv;
 

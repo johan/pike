@@ -44,8 +44,5 @@
 /* Number of args to mkdir() */
 #define MKDIR_ARGS 2
 
-/* Can we declare 'extern char ** environ;' ? */
-#undef DECLARE_ENVIRON
-
 #endif
 
