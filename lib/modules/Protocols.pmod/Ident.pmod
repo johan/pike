@@ -35,7 +35,7 @@ class client {
       destruct(remote_fd);
       throw(err);
     }
-    if(remote_fd->write(laddr[1]+","+raddr[1]+"\r\n") == -1) {
+    if(remote_fd->write(raddr[1]+","+laddr[1]+"\r\n") == -1) {
       destruct(remote_fd);
       throw(backtrace() +({ "Protocols.Ident: write failed."}));
     }
@@ -50,7 +50,7 @@ class client {
     response -= " ";
     response -= "\r\n";
     response /= ":";
-    if(sizeof(response) < 3)
+    if(sizeof(response) < 2)
       return ({ "ERROR", "UNKNOWN-ERROR" });
     return response[1..];
   }
