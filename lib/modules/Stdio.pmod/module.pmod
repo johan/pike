@@ -247,10 +247,10 @@ class File
     __closed_backtrace=0;
 #endif
     is_file = 0;
-    debug_file="socket";
-    debug_mode=ip+":"+port; 
-    debug_bits=0;
-    return ::connect(ip,port);
+    debug_file = "socket";
+    debug_mode = host+":"+port; 
+    debug_bits = 0;
+    return ::connect(host, port);
   }
 
   static private function(int, mixed ...:void) _async_cb;
