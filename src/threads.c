@@ -501,7 +501,7 @@ void *new_thread_func(void * data)
   }
 
    ((struct thread_state *)(thread_id->storage))->status=THREAD_EXITED;
-   co_signal(& ((struct thread_state *)(thread_id->storage))->status_change);
+   co_broadcast(& ((struct thread_state *)(thread_id->storage))->status_change);
 
   free((char *)data); /* Moved by per, to avoid some bugs.... */
   UNSETJMP(back);

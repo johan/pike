@@ -27,6 +27,7 @@ RCSID("$Id$");
 #include "cpp.h"
 #include "main.h"
 #include "operators.h"
+#include "security.h"
 
 #include <errno.h>
 
@@ -468,6 +469,7 @@ void do_exit(int num) ATTRIBUTE((noreturn))
 
 void low_init_main(void)
 {
+  init_pike_security();
   th_init();
   init_operators();
   init_builtin_efuns();

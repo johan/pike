@@ -28,6 +28,7 @@ RCSID("$Id$");
 #include "stuff.h"
 #include "mapping.h"
 #include "cyclic.h"
+#include "security.h"
 
 #include <errno.h>
 #include <fcntl.h>
@@ -495,6 +496,7 @@ struct program *low_allocate_program(void)
   if((p->next=first_program)) first_program->prev=p;
   first_program=p;
   GETTIMEOFDAY(& p->timestamp);
+  INITIALIZE_PROT(p);
   return p;
 }
 
@@ -560,6 +562,9 @@ void low_start_new_program(struct program *p,
   fake_object->parent=0;
   fake_object->parent_identifier=0;
   fake_object->prog=p;
+#ifdef PIKE_SECURITY
+  fake_object->prot=0;
+#endif
   add_ref(p);
 
   if(name)
@@ -676,6 +681,7 @@ void really_free_program(struct program *p)
 #include "program_areas.h"
   }
   
+  FREE_PROT(p);
   free((char *)p);
   
   GC_FREE();

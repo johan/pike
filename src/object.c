@@ -22,6 +22,7 @@ RCSID("$Id$");
 #include "cpp.h"
 #include "builtin_functions.h"
 #include "cyclic.h"
+#include "security.h"
 
 #ifdef HAVE_SYS_FILE_H
 #include <sys/file.h>
@@ -84,6 +85,7 @@ struct object *low_clone(struct program *p)
     first_object->prev=o;
   first_object=o;
   o->refs=1;
+  INITIALIZE_PROT(o);
   return o;
 }
 
@@ -465,6 +467,7 @@ void really_free_object(struct object *o)
     o->prev=0;
     objects_to_destruct=o;
   } else {
+    FREE_PROT(o);
     free((char *)o);
     GC_FREE();
   }

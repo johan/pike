@@ -20,7 +20,11 @@ struct keypair
 
 struct mapping
 {
-  INT32 refs, size, hashsize;
+  INT32 refs;
+#ifdef PIKE_SECURITY
+  struct object *prot;
+#endif
+  INT32 size, hashsize;
   TYPE_FIELD ind_types, val_types;
   struct mapping *next, *prev;
   struct keypair **hash;

@@ -14,6 +14,7 @@
 #include "interpret.h"
 #include "builtin_functions.h"
 #include "gc.h"
+#include "security.h"
 
 RCSID("$Id$");
 
@@ -39,6 +40,8 @@ static struct multiset *allocate_multiset(struct array *ind)
   if(first_multiset) first_multiset->prev = l;
   first_multiset=l;
 
+  INITIALIZE_PROT(l);
+
   return l;
 }
 
@@ -53,6 +56,7 @@ void really_free_multiset(struct multiset *l)
 #endif
 
   free_array(l->ind);
+  FREE_PROT(l);
 
   if(l->prev)
     l->prev->next = l->next;

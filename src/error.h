@@ -95,9 +95,9 @@ extern int throw_severity;
   do{ \
      OED_FPRINTF((stderr, "SET_ONERROR(%p, %p, %p) %s:%d\n", \
                   &(X), (Y), (Z), __FILE__, __LINE__)); \
-     if(!recoveries) break; \
      X.func=(error_call)(Y); \
      X.arg=(void *)(Z); \
+     if(!recoveries) break; \
      X.previous=recoveries->onerror; \
      X.file = __FILE__; \
      X.line = __LINE__; \
@@ -120,6 +120,11 @@ extern int throw_severity;
     } \
     recoveries->onerror=(X).previous; \
   } while(0)
+
+#define CALL_AND_UNSET_ONERROR(X) do {		\
+     X.func(X.arg);				\
+     UNSET_ONERROR(X);				\
+  }while(0)
 
 #define ASSERT_ONERROR(X) \
   do{ \

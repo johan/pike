@@ -19,6 +19,7 @@ RCSID("$Id$");
 #include "las.h"
 #include "gc.h"
 #include "stralloc.h"
+#include "security.h"
 
 #define AVG_LINK_LENGTH 4
 #define MIN_LINK_LENGTH 1
@@ -106,6 +107,7 @@ struct mapping *allocate_mapping(int size)
 
   m=ALLOC_STRUCT(mapping);
 
+  INITIALIZE_PROT(m);
   init_mapping(m,size);
 
   m->next = first_mapping;
@@ -129,6 +131,8 @@ void really_free_mapping(struct mapping *m)
   if(m->refs)
     fatal("really free mapping on mapping with nonzero refs.\n");
 #endif
+
+  FREE_PROT(m);
 
   MAPPING_LOOP(m)
   {

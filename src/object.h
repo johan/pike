@@ -21,6 +21,9 @@
 struct object
 {
   INT32 refs;                    /* Reference count, must be first. */
+#ifdef PIKE_SECURITY
+  struct object *prot;
+#endif
   struct program *prog;
   struct object *parent;
   INT16 parent_identifier;

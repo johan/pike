@@ -15,6 +15,9 @@
 struct multiset
 {
   INT32 refs;
+#ifdef PIKE_SECURITY
+  struct object *prot;
+#endif
   struct multiset *next,*prev;
   struct array *ind;
 };

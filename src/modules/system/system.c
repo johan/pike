@@ -416,7 +416,7 @@ void f_setgroups(INT32 args)
     if (size) {
       free(gids);
     }
-    report_error("cleargroups");
+    report_error("setgroups");
   }
 }
 #endif /* HAVE_SETGROUPS */

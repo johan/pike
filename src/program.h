@@ -187,6 +187,9 @@ struct inherit
 struct program
 {
   INT32 refs;
+#ifdef PIKE_SECURITY
+  struct object *prot;
+#endif
   INT32 id;             /* used to identify program in caches */
   INT32 flags;
   INT32 storage_needed; /* storage needed in the object struct */
