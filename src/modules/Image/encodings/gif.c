@@ -1219,6 +1219,8 @@ void init_image_gif(void)
 		"function(:string)",0);
    add_function("encode",image_gif_encode,
 		"function(object,mixed...:string)",0);
+   add_function("encode_trans",image_gif_encode,
+		"function(object,mixed...:string)",0);
    add_function("encode_fs",image_gif_encode_fs,
 		"function(object,mixed...:string)",0);
    add_function("netscape_loop_block",image_gif_netscape_loop_block,
