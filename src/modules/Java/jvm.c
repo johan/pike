@@ -3498,6 +3498,14 @@ PIKE_MODULE_INIT
     return;
 #endif /* __NT__ */
 
+#ifdef HAVE_IBMFINDDLL
+  {
+    /* Debug... */
+    extern char *ibmFindDLL(void);
+    fprintf(stderr, "ibmFindDLL(): \"%s\"\n", ibmFindDLL());
+  }
+#endif
+
   start_new_program();
   ADD_STORAGE(struct jobj_storage);
   pike_add_function("cast", f_jobj_cast, "function(string:mixed)", 0);

@@ -38,4 +38,7 @@
 /* Define if you have an alpha CPU */
 #undef HAVE_ALPHA_CPU
 
+/* Define for debug if you java has ibmFindDLL(). */
+#undef HAVE_IBMFINDDLL
+
 #endif /* PIKE_JAVA_CONFIG_H */
