@@ -29,9 +29,6 @@ struct object
   INT16 parent_identifier;
   struct object *next;
   struct object *prev;
-#ifdef PIKE_SECURITY
-  char *pad;		/* FIXME: Kluge to get longlong alignment of storage */
-#endif
   char storage[1];
 };
 
