@@ -98,6 +98,14 @@ struct external_variable_context
   int parent_identifier;
 };
 
+#ifdef HAVE_COMPUTED_GOTO
+extern PIKE_OPCODE_T *fcode_to_opcode;
+extern struct op_2_f {
+  PIKE_OPCODE_T opcode;
+  INT32 fcode;
+} *opcode_to_fcode;
+#endif /* HAVE_COMPUTED_GOTO */
+
 #ifdef PIKE_DEBUG
 #define debug_check_stack() do{if(Pike_sp<Pike_interpreter.evaluator_stack)fatal("Stack error.\n");}while(0)
 #define check__positive(X,Y) if((X)<0) fatal Y

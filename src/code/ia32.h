@@ -2,6 +2,8 @@
  * $Id$
  */
 
+#define PIKE_OPCODE_T	unsigned INT8
+
 #define ins_pointer(PTR)	ins_int((PTR), (void (*)(char))add_to_program)
 #define read_pointer(OFF)	read_int(OFF)
 #define upd_pointer(OFF, PTR)	upd_int(OFF, PTR)
