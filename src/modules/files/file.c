@@ -884,8 +884,8 @@ static void file_peek(INT32 args)
  *! stream.
  *!
  *! @note
- *!   Out-of-band data was not be supported on Pike 0.5 and earlier,
- *!   and not on Pike 0.6 through 7.4 if they were compiled with the
+ *!   Out-of-band data was not supported in Pike 0.5 and earlier, and
+ *!   not in Pike 0.6 through 7.4 if they were compiled with the
  *!   option @tt{'--without-oob'@}.
  *!
  *! @note
@@ -1287,8 +1287,8 @@ static void file_write(INT32 args)
  *! them.
  *!
  *! @note
- *!   Out-of-band data was not be supported on Pike 0.5 and earlier,
- *!   and not on Pike 0.6 through 7.4 if they were compiled with the
+ *!   Out-of-band data was not supported in Pike 0.5 and earlier, and
+ *!   not in Pike 0.6 through 7.4 if they were compiled with the
  *!   option @tt{'--without-oob'@}.
  *!
  *! @note
