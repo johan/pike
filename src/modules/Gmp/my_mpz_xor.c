@@ -19,7 +19,7 @@ RCSID("$Id$");
 
 #if defined(USE_GMP) || defined(USE_GMP2)
 
-#include "gmp.h"
+#include "my_gmp.h"
 
 void my_mpz_xor (mpz_ptr res, mpz_srcptr a, mpz_srcptr b)
 {
