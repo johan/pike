@@ -2722,7 +2722,7 @@ void f_column(INT32 args)
   get_all_args("column", args, "%a%*", &tmp, &val);
 
   /* Optimization */
-  if(tmp->refs == 1)
+  if(tmp->refs == 1 || ~(tmp->type_field & BIT_COMPLEX))
   {
     /* An array with one ref cannot possibly be cyclic */
     struct svalue sval;
