@@ -10132,6 +10132,8 @@ cond([[all_constants()->_verify_internals]],
 ]])
 
 test_tests([[
+array a()
+{
   Stdio.File p = Stdio.File();
   object pid = Process.create_process(RUNPIKE_ARRAY +
 				      ({ "]]SRCDIR[[/test_resolve.pike" }),
@@ -10148,6 +10150,7 @@ test_tests([[
     return ({ err, s });
   }
   return ({ ok, failed });
+}
 ]])
 
 // - modifiers, compile time type checks
