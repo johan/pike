@@ -1841,17 +1841,14 @@ static void make_java_exception(struct object *jvm, JNIEnv *env,
   if(!j)
     return;
 
-  if(v->type == PIKE_T_ARRAY && v->u.array->size &&
-     (a=low_array_get_item_ptr(v->u.array, 0, PIKE_T_STRING))!=NULL) {
-    (*env)->ThrowNew(env, j->class_runtimex, a->string->str);
-  } else if(v->type == PIKE_T_OBJECT &&
-	    (gen_err = (struct generic_error_struct *)
-	     get_storage(v->u.object, generic_error_program)) != NULL) {
-    (*env)->ThrowNew(env, j->class_runtimex, gen_err->desc->str);
-  } else {
-    (*env)->ThrowNew(env, j->class_runtimex,
-		     "Nonstandard pike exception thrown.");
-  }
+  push_svalue (v);
+  SAFE_APPLY_MASTER ("describe_error", 1);
+#ifdef PIKE_DEBUG
+  if (Pike_sp[-1].type != PIKE_T_STRING)
+    Pike_fatal ("Unexpected return value from destribe_error\n");
+#endif
+  (*env)->ThrowNew(env, j->class_runtimex, Pike_sp[-1].u.string->str);
+  pop_stack();
 }
 
 #ifdef VARARG_NATIVE_DISPATCH
