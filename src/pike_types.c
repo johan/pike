@@ -4096,18 +4096,6 @@ struct pike_type *check_call(struct pike_type *args,
   }
 }
 
-INT32 get_max_args(struct pike_type *type)
-{
-  INT32 ret,tmp=max_correct_args;
-  check_type(type->type);
-  clear_markers();
-  type = check_call(function_type_string, type, 0);
-  if(type) free_type(type);
-  ret=max_correct_args;
-  max_correct_args=tmp;
-  return tmp;
-}
-
 /* NOTE: type loses a reference. */
 struct pike_type *new_check_call(node *fun, int *argno,
 				 struct pike_type *type, node *args)

@@ -266,7 +266,6 @@ int minimum_arguments(struct pike_type *s);
 struct pike_type *check_call(struct pike_type *args,
 			     struct pike_type *type,
 			     int strict);
-INT32 get_max_args(struct pike_type *type);
 struct pike_type *zzap_function_return(struct pike_type *t, INT32 id);
 struct pike_type *get_type_of_svalue(struct svalue *s);
 struct pike_type *object_type_to_program_type(struct pike_type *obj_t);
