@@ -3401,7 +3401,7 @@ void fix_type_field(node *n)
 	free_string(t1);
       }
       /* FIXME: check_soft_cast() is weaker than pike_types_le()
-       * The resulting type should probably be the and between the old
+       * The resulting type should probably be the AND between the old
        * and the new type.
        */
     }
@@ -3442,8 +3442,9 @@ void fix_type_field(node *n)
       fix_type_field(CDR(n));
       if (!pike_types_le(CAR(n)->type, CDR(n)->type)) {
 	/* a["b"]=c and a->b=c can be valid when a is an array */
-	if (CDR(n)->token != F_INDEX &&
-	    CDR(n)->token != F_ARROW &&
+	if (((CDR(n)->token != F_INDEX &&
+	      CDR(n)->token != F_ARROW) ||
+	     !match_types(array_type_string, CDR(n)->type)) &&
 	    !match_types(CDR(n)->type,CAR(n)->type)) {
 	  yytype_error("Bad type in assignment.",
 		       CDR(n)->type, CAR(n)->type, 0);
