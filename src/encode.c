@@ -1885,7 +1885,7 @@ static int my_extract_char(struct decode_data *data)
       data->ptr+=sizeof(S[0])*(L);					\
   }while(0)
 
-#if BYTEORDER == 4123
+#if BYTEORDER == 4321
 #define BITFLIP(S)
 #else
 #define BITFLIP(S)						\
