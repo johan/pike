@@ -757,9 +757,15 @@ static class VirtualNode {
   static void create(int type, string name, mapping attr, string text)
   {
     if (name) {
-      sscanf(reverse(name), "%[^/:]", mTagName);
-      mTagName=reverse(mTagName);
-      mNamespace=name[..sizeof(name)-(1+sizeof(mTagName))];
+      if (sscanf (name, "%*[^/:]%*c") == 2) {
+	sscanf(reverse(name), "%[^/:]", mTagName);
+	mTagName=reverse(mTagName);
+	mNamespace=name[..sizeof(name)-(1+sizeof(mTagName))];
+      }
+      else {
+	mTagName = name;
+	mNamespace = "";
+      }
     }
     mNodeType = type;
 //     mTagCode = kTagMapping[name] || kUnsupportedTagMapping[name];
