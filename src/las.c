@@ -792,6 +792,7 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 	  } else {
 	    f_index(2);
 	  }
+	  UNSETJMP(recovery);
 	}
       
 	if(sp[-1].type == T_INT &&
