@@ -1723,6 +1723,12 @@ void check_mapping(struct mapping *m)
 
   if(m->debug_size != md->size)
   {
+    if(Pike_in_gc)
+    {
+      fprintf(stderr,"Pike was in GC stage %d when this fatal occured:\n",Pike_in_gc);
+      Pike_in_gc=0;
+    }
+    
     fprintf(stderr,"--MAPPING ZAPPING (%d!=%d), mapping:\n",m->debug_size,md->size);
     describe(m);
     fprintf(stderr,"--MAPPING ZAPPING (%d!=%d), mapping data:\n",m->debug_size,md->size);
