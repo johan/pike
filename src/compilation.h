@@ -130,6 +130,7 @@
 #undef ZMEMBER2
 #undef SNAME
 #undef SEND
+#undef STACKMEMBER
 
 #undef STRUCT
 #undef PUSH
