@@ -13,6 +13,7 @@
 #include "interpret.h"
 #include "language.h"
 #include "lex.h"
+#include "main.h"
 
 #include "pikecode.h"
 
