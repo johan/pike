@@ -269,6 +269,7 @@ class Connection {
   ]);
 
   constant protocol = "ESMTP";
+  constant internal_error_name = ". Problem due to the internal error: ";
 
   // the fd of the socket
   static Stdio.File fd = Stdio.File();
@@ -340,9 +341,11 @@ class Connection {
    
    static void outcode(int code, void|string internal_error)
    {
-     string msg = sprintf("%d %s", code, replycodes[code]);
+     string msg = (string) code + " ";
      if(internal_error)
-       msg += ". Problem due to the internal error: " + internal_error;
+       msg += internal_error;
+     else
+       msg += replycodes[code];
      msg += "\r\n";
      fd->write(msg);
 #ifdef SMTP_DEBUG
@@ -490,7 +493,7 @@ class Connection {
          err = catch(check = cfg->cb_mailfrom(email));
          if(err)
          {
-           outcode(451, err[0]);
+           outcode(451, internal_error_name + err[0]);
            log(describe_backtrace(err));
            return;
          }
@@ -604,7 +607,7 @@ class Connection {
      mixed err = catch (message = MIME.Message(content, 0, 0, 1));
      if(err)
      {
-       outcode(554, err[0]);
+       outcode(554, internal_error_name + err[0]);
        log(describe_backtrace(err));
        return 0;
      }
@@ -613,7 +616,7 @@ class Connection {
      };
      if(err)
      {
-       outcode(554, err[0]);
+       outcode(554, internal_error_name + err[0]);
        log(describe_backtrace(err));
        return 0;
      }
@@ -639,7 +642,7 @@ class Connection {
        err = catch(check = cfg->cb_data(message, mailfrom, mailto));
      if(err)
      {
-       outcode(554, err[0]);
+       outcode(554, internal_error_name + err[0]);
        log(describe_backtrace(err));
        return;
      }
@@ -706,7 +709,7 @@ class Connection {
        if(err)
        {
          log("error while executing command %O", _command);
-	 outcode(554, err[0]);
+	 outcode(554, internal_error_name + err[0]);
        }
      }
    }

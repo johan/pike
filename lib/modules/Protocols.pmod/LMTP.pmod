@@ -51,7 +51,7 @@ class Connection {
 	err = catch(check = cfg->cb_data(copy_value(message), mailfrom, recipient));
       if(err)
       {
-	outcode(554, err[0]);
+	outcode(554, internal_error_name + err[0]);
 	log(describe_backtrace(err));
 	continue;
       }
