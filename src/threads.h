@@ -42,7 +42,7 @@ struct thread_state {
   long time_base;
 #endif
 #endif /* PROFILING */
-#if CPU_TIME_IS_THREAD_LOCAL == YES
+#if CPU_TIME_IS_THREAD_LOCAL == PIKE_YES
   cpu_time_t auto_gc_time;
 #endif
 };

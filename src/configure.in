@@ -5825,11 +5825,11 @@ Problems in rusage.c or threads.c with CONFIGURE_TEST is defined?
 ])
 AC_MSG_RESULT($pike_cv_thread_local_cpu_time)
 if test "$pike_cv_thread_local_cpu_time" = yes; then
-  AC_DEFINE(CPU_TIME_IS_THREAD_LOCAL, YES)
+  AC_DEFINE(CPU_TIME_IS_THREAD_LOCAL, PIKE_YES)
 elif test "$pike_cv_thread_local_cpu_time" = no; then
-  AC_DEFINE(CPU_TIME_IS_THREAD_LOCAL, NO)
+  AC_DEFINE(CPU_TIME_IS_THREAD_LOCAL, PIKE_NO)
 else
-  AC_DEFINE(CPU_TIME_IS_THREAD_LOCAL, UNKNOWN)
+  AC_DEFINE(CPU_TIME_IS_THREAD_LOCAL, PIKE_UNKNOWN)
 fi
 
 #######################################################################

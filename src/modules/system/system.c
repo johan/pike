@@ -2927,9 +2927,9 @@ PIKE_MODULE_INIT
 	       tFunc(tNone,tArr(tInt)),0);
 #endif
 
-#if CPU_TIME_IS_THREAD_LOCAL == YES
+#if CPU_TIME_IS_THREAD_LOCAL == PIKE_YES
   add_string_constant ("CPU_TIME_IS_THREAD_LOCAL", "yes", 0);
-#elif CPU_TIME_IS_THREAD_LOCAL == NO
+#elif CPU_TIME_IS_THREAD_LOCAL == PIKE_NO
   add_string_constant ("CPU_TIME_IS_THREAD_LOCAL", "no", 0);
 #endif
 
