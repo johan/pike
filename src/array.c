@@ -2083,24 +2083,23 @@ void real_gc_cycle_check_array(struct array *a, int weak)
 
     if (a->type_field & BIT_COMPLEX)
     {
-      if (a->flags & ARRAY_WEAK_FLAG) {
-	if (gc_cycle_check_weak_svalues(ITEM(a), a->size)) {
+      TYPE_FIELD t = a->flags & ARRAY_WEAK_FLAG ?
+	gc_cycle_check_weak_svalues(ITEM(a), a->size) :
+	gc_cycle_check_svalues(ITEM(a), a->size);
+      if (t) {
+	/* In the weak case we should only get here if references to
+	 * destructed objects are removed. */
+	if(!(a->type_field & BIT_UNFINISHED) || a->refs!=1)
+	  a->type_field = t;
+	else
+	  a->type_field |= t;
+      }
 #ifdef PIKE_DEBUG
-	  fatal("Didn't expect an svalue zapping now.\n");
-#endif
-	}
+      if (a->flags & ARRAY_WEAK_FLAG)
 	gc_assert_checked_as_weak(a);
-      }
-      else {
-	TYPE_FIELD t;
-	if ((t = gc_cycle_check_svalues(ITEM(a), a->size))) {
-	  if(!(a->type_field & BIT_UNFINISHED) || a->refs!=1)
-	    a->type_field = t;
-	  else
-	    a->type_field |= t;
-	}
+      else
 	gc_assert_checked_as_nonweak(a);
-      }
+#endif
     }
   } GC_CYCLE_LEAVE;
 }
