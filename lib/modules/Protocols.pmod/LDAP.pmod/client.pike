@@ -399,9 +399,13 @@ int _prof_gtim;
     }
 
     if(lauth->scheme == "ldaps") {
+#if constant(SSL.sslfile)
       context->random = Crypto.randomness.reasonably_random()->read;
-      ::create(SSL.sslfile(::_fd, context, 1,1));
+      ::create(SSL.sslfile(this_object(), context, 1,1));
       info->tls_version = ldapfd->version;
+#else
+      error("LDAP: LDAPS is not available without SSL support.\n");
+#endif
     } else
       ::create(::_fd);
  
