@@ -2634,7 +2634,7 @@ static void file_dup(INT32 args)
   push_object(o);
 }
 
-/*! @decl int(0..1) open_socket(int|void port, string|void addr)
+/*! @decl int(0..1) open_socket(int|void port, string|void addr, int|void family)
  */
 static void file_open_socket(INT32 args)
 {
@@ -2644,9 +2644,12 @@ static void file_open_socket(INT32 args)
   close_fd();
   FD=-1;
 
-  if (args > 0 && Pike_sp[-args].type == PIKE_T_INT &&
-      Pike_sp[-args].subtype == 3) {
-    family = Pike_sp[-args].u.integer;
+  if (args > 2 && Pike_sp[2-args].type == PIKE_T_INT &&
+      Pike_sp[2-args].u.integer != 0)
+    family = Pike_sp[2-args].u.integer;
+
+  if (args && Pike_sp[-args].type == PIKE_T_INT &&
+      Pike_sp[-args].u.integer < 0) {
     pop_n_elems(args);
     args = 0;
   }
@@ -2877,9 +2880,10 @@ static void file_connect(INT32 args)
   if(FD < 0)
   {
     if (args < 4) {
+      push_int(-1);
+      push_int(0);
       push_int(SOCKADDR_FAMILY(addr));
-      Pike_sp[-1].subtype = 3;
-      file_open_socket(1);
+      file_open_socket(3);
     } else {
       push_svalue(src_port);
       ref_push_string(src_addr);
