@@ -378,6 +378,11 @@ private void ssl_write_callback(mixed id)
 	  die(-1);
     }
   }
+
+  if (!this_object()) {
+    // We've been destructed.
+    return;
+  }
   int res = queue_write();
 #ifdef SSL3_DEBUG
   werror(sprintf("SSL.sslport->ssl_write_callback: res = '%O'\n", res));
