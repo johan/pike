@@ -696,7 +696,6 @@ class File
     to->is_file = is_file;
     to->_fd = _fd;
 
-    // FIXME: This looks broken... Isn't __stdio_*_callback declared static?
     to->set_read_callback(query_read_callback());
     to->set_write_callback(query_write_callback());
     to->set_close_callback(query_close_callback());
