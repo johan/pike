@@ -102,6 +102,19 @@ extern struct program *bignum_program;
 #define INT64_BITS (SIZEOF_INT64 * CHAR_BIT - 1)
 #endif
 
+#if SIZEOF_INT_TYPE > SIZEOF_LONG
+/* INT_TYPE is too big to feed directly to mpz_set_si etc. */
+#define BIG_PIKE_INT
+#endif
+
+#ifdef BIG_PIKE_INT
+#define FITS_LONG(VAL) ((VAL) >= LONG_MIN && (VAL) <= LONG_MAX)
+#define FITS_ULONG(VAL) ((VAL) >= 0 && (VAL) <= ULONG_MAX)
+#else
+#define FITS_LONG(VAL) 1
+#define FITS_ULONG(VAL) ((VAL) >= 0)
+#endif
+
 /* MPQ protos */
 void pike_init_mpq_module(void);
 void pike_exit_mpq_module(void);
