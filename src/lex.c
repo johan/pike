@@ -605,7 +605,7 @@ static int yylex2(YYSTYPE *yylval)
       if(p1>p2)
       {
 	lex.pos=p1;
-	yylval->fnum=(float)f;
+	yylval->fnum=(FLOAT_TYPE)f;
 	return F_FLOAT;
       }else{
 	lex.pos=p2;

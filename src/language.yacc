@@ -1298,7 +1298,7 @@ expr3: expr4
 
 expr4: string
   | F_NUMBER { $$=mkintnode($1); }
-  | F_FLOAT { $$=mkfloatnode($1); }
+  | F_FLOAT { $$=mkfloatnode((FLOAT_TYPE)$1); }
   | catch
   | gauge
   | typeof
