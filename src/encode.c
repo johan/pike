@@ -259,6 +259,7 @@ one_more_type:
     case T_STRING:
     case T_PROGRAM:
     case T_MIXED:
+    case T_ZERO:
     case T_VOID:
     case T_UNKNOWN:
       break;
@@ -833,6 +834,7 @@ one_more_type:
     case T_STRING:
     case T_PROGRAM:
     case T_MIXED:
+    case T_ZERO:
     case T_VOID:
     case T_UNKNOWN:
       break;
