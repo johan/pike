@@ -215,8 +215,13 @@ void f_search(INT32 args)
 	error("Bad argument 3 to search()\n");
 
       start=sp[2-args].u.integer;
+      if(start<0)
+	error("Start must be greater or equal to zero.\n");
     }
     len=sp[-args].u.string->len - start;
+
+    if(len<0)
+      error("Start must not be greater than the length of the string.\n");
 
     if(len>0 && (ptr=my_memmem(sp[1-args].u.string->str,
 			       sp[1-args].u.string->len,
