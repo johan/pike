@@ -723,10 +723,14 @@ int main() {
 ])
 
 dnl PIKE_MSG_WARN(message) 
-dnl == AC_MSG_WARN but adds to config.info
+dnl == AC_MSG_WARN but prints with a bit more emphasis and adds to config.info.
 define(PIKE_MSG_WARN, [
-  AC_MSG_WARN($1)
-  cat >>config.warnings <<EOF
+  AC_MSG_WARN([
+
 $1
+])
+  cat >>config.warnings <<EOF
+WARNING: $1
+
 EOF
 ])
