@@ -47,7 +47,7 @@ constant CERT_UNAUTHORIZED_CA = 7;
 //! time @[t].
 UTC make_time(int t)
 {
-  object /*Calendar.Second*/ second = Calendar->Second(t)->set_timezone("UTC");
+  object /*Calendar.Second*/ second = Calendar["Second"](t)->set_timezone("UTC");
 
   if (second->year_no() >= 2050)
     error( "Times later than 2049 not supported yet\n" );
@@ -93,7 +93,7 @@ mapping(string:int) parse_time(UTC asn1)
     return 0;
   m->mon--;
   
-  if ( (m->mday <= 0) || (m->mday > Calendar->ISO->Year(m->year + 1900)
+  if ( (m->mday <= 0) || (m->mday > Calendar["ISO"]["Year"](m->year + 1900)
 			  ->month(m->mon + 1)->number_of_days()))
     return 0;
 
