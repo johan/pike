@@ -894,7 +894,9 @@ fprintf(stderr,"cache: %lu: %d,%d,%d\n",best,ct->clut[best].r,ct->clut[best].g,c
 #endif
       }
    }
+#ifdef QUANT_DEBUG_RGB
    fprintf(stderr,"\n");
+#endif
 
    /* place in cache */
 #if QUANT_SELECT_CACHE>1
