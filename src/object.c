@@ -252,7 +252,8 @@ static void call_pike_initializers(struct object *o, int args)
 
 void do_free_object(struct object *o)
 {
-  free_object(o);
+  if (o)
+    free_object(o);
 }
 
 struct object *debug_clone_object(struct program *p, int args)

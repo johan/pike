@@ -129,7 +129,8 @@ void really_free_array(struct array *v)
 
 void do_free_array(struct array *a)
 {
-  free_array(a);
+  if (a)
+    free_array(a);
 }
 
 /*

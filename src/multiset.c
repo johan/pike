@@ -70,6 +70,12 @@ void really_free_multiset(struct multiset *l)
   GC_FREE();
 }
 
+void do_free_multiset(struct multiset *l)
+{
+  if (l)
+    free_multiset(l);
+}
+
 
 void order_multiset(struct multiset *l)
 {
