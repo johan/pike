@@ -12,7 +12,7 @@ RCSID("$Id$");
 
 #define IMAGE_INITER
 
-/*#define DEBUG*/
+/* #define DEBUG */
 
 #define IMAGE_CLASS(name,init,exit,prog) \
     void init(void); void exit(void); struct program *prog;
@@ -225,10 +225,15 @@ void pike_module_exit(void)
    }
    for (i=0; i<(int)NELEM(initsubmodule); i++)
       (initsubmodule[i].exit)();
-   for (i=0; i<(int)NELEM(submagic); i++)
+   for (i=0; i<(int)NELEM(submagic); i++) {
       if (submagic[i].o)
       {
 	 (submagic[i].exit)();
 	 free_object(submagic[i].o);
       }
+      if (submagic[i].ps)
+      {
+	 free_string(submagic[i].ps);
+      }
+   }
 }
