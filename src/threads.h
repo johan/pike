@@ -386,7 +386,11 @@ struct thread_state {
   struct mapping *thread_local;
   struct thread_state *hashlink, **backlink;
 #ifdef PROFILING
+#if SIZEOF_LONG_LONG - 0 != 0
   long long time_base;
+#else
+  long time_base;
+#endif
 #endif /* PROFILING */
 };
 
