@@ -67,6 +67,8 @@ extern struct pike_string *mixed_type_string;
 extern struct pike_string *void_type_string;
 extern struct pike_string *any_type_string;
 
+#define CONSTTYPE(X) make_shared_binary_string(X,CONSTANT_STRLEN(X))
+
 #ifdef PIKE_DEBUG
 #define init_type_stack() type_stack_mark()
 #define exit_type_stack() do {\
