@@ -9,7 +9,7 @@
 @BOTTOM@
 
 /* Define if your statfs() call takes 4 arguments */
-#undef HAVE_SGI_STATFS
+#undef HAVE_SYSV_STATFS
 
 /* Define if your statfs struct has the f_bavail member */
 #undef HAVE_STATFS_F_BAVAIL
