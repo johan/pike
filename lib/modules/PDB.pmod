@@ -37,15 +37,20 @@ class FileIO {
     int n;
     for(;;) {
       n = o->write(d);
-      if(!sov || n == sizeof(d) || n<0)
+      if(!sov || n == sizeof(d) || (n<0 && !(<11,12,16,24,28,49>)[o->errno()]))
 	break;
       d = d[n..];
       if(!warned_already) {
-	PDB_WARN(ctx+": Disk seems to be full.");
+	if(n<0)
+	  PDB_WARN(ctx+": "+strerror(o->errno())+" (sleeping)");
+	else
+	  PDB_WARN(ctx+": Disk seems to be full. (sleeping)");
 	warned_already=1;
       }
       sleep(1);
     }
+    if(warned_already)
+      PDB_WARN(ctx+": I'm OK now.");
     return (n<0? n : (n==strlen(d)? 1 : 0));
   }
 
