@@ -23,6 +23,28 @@ RCSID("$Id$");
 
 int matherr(struct exception *exc)
 {
+#ifdef HUGE_VAL
+  if (exc) {
+    switch(exc->type) {
+    case OVERFLOW:
+      exc->retval = HUGE_VAL;
+      return 1;	/* No error */
+    case UNDERFLOW:
+      exc->retval = 0.0;
+      return 1; /* No error */
+#ifdef TLOSS
+    case TLOSS:
+      return 1; /* No error */
+#endif /* TLOSS */
+#ifdef PLOSS
+    case PLOSS:
+      return 1; /* No error */
+#endif /* PLOSS */
+    default:
+      return 0; /* Error */
+    }
+  }
+#endif /* HUGE_VAL */
   return 1;	/* No error */
 }
 
@@ -131,12 +153,13 @@ void f_exp(INT32 args)
 
 void f_pow(INT32 args)
 {
+  float tmp;
   if(args<2) error("Too few arguments to pow()\n");
   if(sp[-args].type!=T_FLOAT) error("Bad argument 1 to pow()\n");
   if(sp[1-args].type!=T_FLOAT) error("Bad argument 2 to pow()\n");
-  sp[-args].u.float_number=pow(sp[-args].u.float_number,
-			       sp[1-args].u.float_number);
-  sp--;
+  tmp = pow(sp[-args].u.float_number, sp[1-args].u.float_number);
+  sp[-args].u.float_number = tmp;
+  pop_n_elems(args-1);
 }
 
 void f_floor(INT32 args)
