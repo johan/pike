@@ -141,7 +141,7 @@ string symbol_to_string(int|string symbol)
 
 void create()
 {
-  g = parser();
+  g = Parser();
 
   g->set_symbol_to_string(symbol_to_string);
   
