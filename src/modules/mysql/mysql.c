@@ -42,9 +42,6 @@ typedef struct dynamic_buffer_s dynamic_buffer;
 #include <las.h>
 #include <threads.h>
 
-/* Local includes */
-#include "precompiled_mysql.h"
-
 /* System includes */
 #ifdef HAVE_STRING_H
 #include <string.h>
@@ -54,6 +51,9 @@ typedef struct dynamic_buffer_s dynamic_buffer;
 #endif
 
 #ifdef HAVE_MYSQL
+
+/* Local includes */
+#include "precompiled_mysql.h"
 
 /*
  * Globals
