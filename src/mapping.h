@@ -71,12 +71,12 @@ extern struct mapping *first_mapping;
  struct mapping_data *md_=(M); \
  debug_malloc_touch(md_); \
  if(!--md_->refs) really_free_mapping_data(md_); \
+ /* FIXME: What about valrefs & hardlinks? */ \
 }while(0)
 
 /* Prototypes begin here */
 BLOCK_ALLOC(mapping, 511)
 
-static void check_mapping_type_fields(struct mapping *m);
 struct mapping *debug_allocate_mapping(int size);
 void really_free_mapping_data(struct mapping_data *md);
 struct mapping_data *copy_mapping_data(struct mapping_data *md);
