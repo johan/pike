@@ -58,6 +58,10 @@
 /* Define this if your ld doesn't have an option to set the run path */
 #undef USE_LD_LIBRARY_PATH
 
+/* Define this if your compiler attempts to use _chkstk, but libc contains
+ * __chkstk. */
+#undef HAVE_BROKEN_CHKSTK
+
 @TOP@
 
 /* Enable profiling */

@@ -656,6 +656,17 @@ PMOD_EXPORT INT32 EXTRACT_INT_(unsigned char *p)
 }
 #endif
 
+#ifdef HAVE_BROKEN_STKCHK
+/* Intels ecl compiler adds calls to _stkchk() in the prologue,
+ * MicroSoft seems to have renamed it to __stkchk() in later
+ * versions of their SDK. This kludge attempts to workaround
+ * that compiler bug.
+ *	/grubba 2001-02-17.
+ */
+extern size_t __chkstk();
+size_t _chkstk() { return __chkstk(); }
+#endif /* HAVE_BROKEN_CHKSTK */
+
 #ifdef OWN_GETHRTIME
 
 #ifdef OWN_GETHRTIME_RDTSC
