@@ -176,7 +176,6 @@ int get_compose_pair( int c1, int c2 )
 static void rec_get_decomposition( int canonical, int c, struct buffer *tmp )
 {
   const struct decomp *decomp = get_decomposition( c );
-  int i;
   
   if( decomp && !(canonical && decomp->compat) )
   {

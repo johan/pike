@@ -4162,7 +4162,6 @@ static void find_usage(node *n, unsigned char *usage,
       unsigned char loop_usage[MAX_LOCAL];
       unsigned char break_usage[MAX_LOCAL];
       unsigned char continue_usage[MAX_LOCAL];
-      node *car1, cadr, cddr;
       int i;
 
       MEMCPY(break_usage, usage, MAX_LOCAL);

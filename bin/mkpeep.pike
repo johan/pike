@@ -445,8 +445,6 @@ int main(int argc, array(string) argv)
 	"  fifo_len=0;\n"
 	"  init_bytecode();\n\n"
 	"  for(eye=0;eye<len || fifo_len;)\n  {\n"
-	"    INT32 current_line;\n"
-	"    struct pike_string *current_file;\n"
 	"\n"
 	"#ifdef PIKE_DEBUG\n"
 	"    if(a_flag>6) {\n"
