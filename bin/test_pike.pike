@@ -130,6 +130,8 @@ int main(int argc, string *argv)
       
 	for(e=start;e<sizeof(tests);e++)
 	{
+	  werror("%6d\r",e+1);
+
 	  string test,condition;
 	  int type;
 	  object o;
@@ -170,6 +172,7 @@ int main(int argc, string *argv)
 	  if(check > 1) _verify_internals();
 	
 	  shift++;
+	  shift%=3;
 	  string fname = argv[f] + ": Test " + (e + 1) +
 	    " (shift " + shift + ")";
 
@@ -228,7 +231,6 @@ int main(int argc, string *argv)
 		if(functionp(o->a)) a=o->a();
 		if(functionp(o->b)) b=o->b();
 		if(t) trace(0);
-	    
 		if(check > 1) _verify_internals();
 	      }) {
 		werror(fname + " failed.\n");
@@ -311,6 +313,7 @@ int main(int argc, string *argv)
 	
 	  a=b=0;
       }
+	werror("             \r");
     }
     if(mem)
     {
