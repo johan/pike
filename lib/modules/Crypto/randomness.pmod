@@ -82,8 +82,19 @@ class pike_random {
   //!	Returns a string of length len with pseudo random values.
   string read(int len)
   {
+#if 1 // 30% optimization /Hubbe
+    string ret="";
+    if(len>=16384)
+    {
+      array x=allocate(16384,random);
+      for(int e=0;e<(len/16384);e++) ret+=(string)x(256);
+    }
+    ret+=(string)allocate(len % 16384, random)(256);
+    return ret;
+#else
     if (len > 16384) return read(len/2)+read(len-len/2);
     return (string)allocate(len, random)(256);
+#endif
   }
 }
 
