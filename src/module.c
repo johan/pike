@@ -29,6 +29,8 @@
 #include "multiset.h"
 #include "pike_types.h"
 #include "constants.h"
+#include "bignum.h"
+#include "module_support.h"
 
 #include "modules/modlist_headers.h"
 #include "post_modules/modlist_headers.h"
