@@ -1684,6 +1684,9 @@ static int eval_instruction(unsigned char *pc)
       switch(sp[-args].type)
       {
 	case T_INT:
+	  if (!sp[-args].u.integer) {
+	    PIKE_ERROR("`()", "Attempt to call the NULL-value\n", sp, args);
+	  }
 	case T_STRING:
 	case T_FLOAT:
 	case T_MAPPING:
