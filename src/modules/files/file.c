@@ -38,6 +38,10 @@ RCSID("$Id$");
 #include <fcntl.h>
 #include <signal.h>
 
+#ifdef HAVE_SYS_FILE_H
+#include <sys/file.h>
+#endif /* HAVE_SYS_FILE_H */
+
 #ifdef HAVE_SYS_SOCKET_H
 #  include <sys/socket.h>
 #endif
