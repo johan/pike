@@ -554,7 +554,7 @@ void debug_push_assign_type(int marker)
   marker -= '0';
 #ifdef PIKE_DEBUG 
   if ((marker < 0) || (marker > 9)) {
-    Pike_fatal("Bad assign marker: %ld\n", marker);
+    Pike_fatal("Bad assign marker: %d\n", marker);
   }
 #endif /* PIKE_DEBUG */
 
