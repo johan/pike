@@ -312,7 +312,7 @@ static void image_png___decode(INT32 args)
  *!           Color used.
  *!         @value 4
  *!           Alpha channel used.
- *!       @endit
+ *!       @endint
  *!       Valid values are 0, 2, 3, 4 and 6.
  *!     @member int "xsize"
  *!     @member int "ysize"
