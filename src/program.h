@@ -262,7 +262,7 @@ struct program
   void (*init)(struct object *);
   void (*exit)(struct object *);
   void (*gc_marked)(struct object *);
-  void (*gc_check)(struct object *);
+  void (*gc_check_func)(struct object *);
 #ifdef PIKE_DEBUG
   unsigned INT32 checksum;
 #endif

@@ -620,8 +620,11 @@ static void do_trace_call(INT32 args)
   DO_IF_DMALLOC(					\
     X->context.prog=0;					\
     X->context.parent=0;				\
+    X->context.name=0;					\
     X->scope=0;						\
+    X->current_object=0;				\
     X->malloced_locals=0;				\
+    X->expendible=0;					\
     X->locals=0;					\
  )							\
 }while(0)

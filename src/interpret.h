@@ -20,7 +20,7 @@ struct pike_frame
 {
   INT32 refs; /* must be first */
   INT32 args;
-  INT16 fun;
+  unsigned INT16 fun;
   INT16 num_locals;
   INT16 num_args;
   INT16 malloced_locals;

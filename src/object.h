@@ -29,6 +29,9 @@ struct object
   INT16 parent_identifier;
   struct object *next;
   struct object *prev;
+#if PIKE_DEBUG
+  long program_id;
+#endif
   char storage[1];
 };
 
