@@ -107,10 +107,6 @@ PMOD_EXPORT void f_equal(INT32 args)
 PMOD_EXPORT void debug_f_aggregate(INT32 args)
 {
   struct array *a;
-#ifdef PIKE_DEBUG
-  if(args < 0) Pike_fatal("Negative args to f_aggregate() (%d)\n",args);
-#endif
-
   a=aggregate_array(args);
   push_array(a); /* beware, macro */
 }
@@ -6415,9 +6411,6 @@ void f_everynth(INT32 args)
   struct array *ina;
   TYPE_FIELD types;
   INT32 size=0;
-#ifdef PIKE_DEBUG
-  if(args < 0) Pike_fatal("Negative args to f_everynth()\n");
-#endif
 
   check_all_args("everynth", args,
 		 BIT_ARRAY, BIT_INT | BIT_VOID, BIT_INT | BIT_VOID , 0);
@@ -6462,10 +6455,7 @@ PMOD_EXPORT void f_transpose(INT32 args)
   INT32 sizeininner=0,sizein=0;
   INT32 j,i;
   TYPE_FIELD type=0;
-#ifdef PIKE_DEBUG
-  if(args < 0) Pike_fatal("Negative args to f_transpose()\n");
-#endif
-  
+
   if (args<1)
     SIMPLE_TOO_FEW_ARGS_ERROR("transpose", 1);
 
