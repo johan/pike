@@ -39,7 +39,7 @@ extern struct program *image_program;
 static const double c0=0.70710678118654752440;
 static const double my_PI=3.14159265358979323846;
 
-#if 1
+#if 0
 #include <sys/resource.h>
 #define CHRONO(X) chrono(X);
 
