@@ -199,7 +199,7 @@ string synopsis_to_html(string s,mapping huh)
 string htmlify(string s) 
 {
 #define HTMLIFY(S) \
-   (replace((S),({"&lt;",">","&","\240"}),({"&lt;","&gt;","&amp;","&nbsp;"})))
+   (replace((S),({"&lt;","&gt;",">","&","\240"}),({"&lt;","&gt;","&gt;","&amp;","&nbsp;"})))
 
    string t="",u,v;
    while (sscanf(s,"%s<%s>%s",u,v,s)==3)
