@@ -50,6 +50,12 @@ if test x$with_libpanda = xyes ; then
 
       PIKE_FEATURE(PDF.Panda,[yes (but not implemented)])
       ])
+    AC_CHECK_LIB(panda, panda_settitle, [
+      AC_DEFINE(HAVE_LIBPANDA)
+      LIBS="${LIBS-} -lpanda"
+
+      PIKE_FEATURE(PDF.Panda,[yes (but not implemented)])
+      ])
 
   fi
 fi
