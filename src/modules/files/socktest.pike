@@ -176,6 +176,11 @@ object *spair(int type)
     }
   }else{
     sock2=sock1->pipe();
+    if(!sock2)
+    {
+      werror("File->pipe() failed 0\n");
+      exit(1);
+    }
   }
   return ({sock1,sock2});
 }
