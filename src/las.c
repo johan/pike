@@ -485,7 +485,7 @@ void debug_free_node(node *n)
   {
     size_t hash;
     if ((hash = hash_node(n)) != n->hash) {
-      fprintf(stderr, "Hash-value is bad 0x%08x != 0x%08lx\n",
+      fprintf(stderr, "Hash-value is bad 0x%08lx != 0x%08lx\n",
 	      DO_NOT_WARN((unsigned long)hash),
 	      DO_NOT_WARN((unsigned long)n->hash));
       print_tree(n);
