@@ -906,25 +906,7 @@ static INT32 really_low_sscanf(char *input,
 	    return matches;
 	  }
 	  
-	  /* This can be here independently of AUTO_BIGNUM. Besides,
-	     we really want to reduce the number of number parsers
-	     around here. :) /Noring */
-#ifdef AUTO_BIGNUM
 	  string_to_svalue_inumber(&sval, input+eye, &t, 10, field_length);
-#else
-	  if(field_length != -1 && eye+field_length < input_len)
-	  {
-	    char save=input[eye+field_length];
-	    input[eye+field_length]=0; /* DANGEROUS */
-	    sval.u.integer=STRTOL(input+eye,&t,10);
-	    input[eye+field_length]=save;
-	  }
-	  else
-	    sval.u.integer=STRTOL(input+eye,&t,10);
-	  
-	  sval.type=T_INT;
-	  sval.subtype=NUMBER_NUMBER;
-#endif /* AUTO_BIGNUM */
 
 	  if(input + eye == t)
 	  {
@@ -945,25 +927,7 @@ static INT32 really_low_sscanf(char *input,
 	    return matches;
 	  }
 	  
-	  /* This can be here independently of AUTO_BIGNUM. Besides,
-	     we really want to reduce the number of number parsers
-	     around here. :) /Noring */
-#ifdef AUTO_BIGNUM
 	  string_to_svalue_inumber(&sval, input+eye, &t, 16, field_length);
-#else
-	  if(field_length != -1 && eye+field_length < input_len)
-	  {
-	    char save=input[eye+field_length];
-	    input[eye+field_length]=0; /* DANGEROUS */
-	    sval.u.integer=STRTOL(input+eye,&t,16);
-	    input[eye+field_length]=save;
-	  }
-	  else
-	    sval.u.integer=STRTOL(input+eye,&t,16);
-	  
-	  sval.type=T_INT;
-	  sval.subtype=NUMBER_NUMBER;
-#endif /* AUTO_BIGNUM */
 	  
 	  if(input + eye == t)
 	  {
@@ -984,25 +948,7 @@ static INT32 really_low_sscanf(char *input,
 	    return matches;
 	  }
 	  
-	  /* This can be here independently of AUTO_BIGNUM. Besides,
-	     we really want to reduce the number of number parsers
-	     around here. :) /Noring */
-#ifdef AUTO_BIGNUM
 	  string_to_svalue_inumber(&sval, input+eye, &t, 8, field_length);
-#else
-	  if(field_length != -1 && eye+field_length < input_len)
-	  {
-	    char save=input[eye+field_length];
-	    input[eye+field_length]=0; /* DANGEROUS */
-	    sval.u.integer=STRTOL(input+eye,&t,8);
-	    input[eye+field_length]=save;
-	  }
-	  else
-	    sval.u.integer=STRTOL(input+eye,&t,8);
-	  
-	  sval.type=T_INT;
-	  sval.subtype=NUMBER_NUMBER;
-#endif /* AUTO_BIGNUM */
 	  
 	  if(input + eye == t)
 	  {
@@ -1024,25 +970,7 @@ static INT32 really_low_sscanf(char *input,
 	    return matches;
 	  }
 	  
-	  /* This can be here independently of AUTO_BIGNUM. Besides,
-	     we really want to reduce the number of number parsers
-	     around here. :) /Noring */
-#ifdef AUTO_BIGNUM
 	  string_to_svalue_inumber(&sval, input+eye, &t, 0, field_length);
-#else
-	  if(field_length != -1 && eye+field_length < input_len)
-	  {
-	    char save=input[eye+field_length];
-	    input[eye+field_length]=0; /* DANGEROUS */
-	    sval.u.integer=STRTOL(input+eye,&t,0);
-	    input[eye+field_length]=save;
-	  }
-	  else
-	    sval.u.integer=STRTOL(input+eye,&t,0);
-	  
-	  sval.type=T_INT;
-	  sval.subtype=NUMBER_NUMBER;
-#endif /* AUTO_BIGNUM */
 	  
 	  if(input + eye == t)
 	  {

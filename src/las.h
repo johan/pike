@@ -115,8 +115,8 @@ int dooptcode(struct pike_string *name,
 void resolv_program(node *n);
 /* Prototypes end here */
 
-#define CAR(n) ((n)->u.node.a)
-#define CDR(n) ((n)->u.node.b)
+#define CAR(n) (dmalloc_touch(node *,(n))->u.node.a)
+#define CDR(n) (dmalloc_touch(node *,(n))->u.node.b)
 #define CAAR(n) CAR(CAR(n))
 #define CADR(n) CAR(CDR(n))
 #define CDAR(n) CDR(CAR(n))

@@ -33,6 +33,13 @@ int pcharp_memcmp(PCHARP a, PCHARP b, int sz)
 				     b.ptr, sz, b.shift);
 }
 
+long pcharp_strlen(PCHARP a)
+{
+  long len;
+  for(len=0;INDEX_PCHARP(a,len);len++);
+  return len;
+}
+
 INLINE p_wchar1 *MEMCHR1(p_wchar1 *p,p_wchar1 c,INT32 e)
 {
   while(--e >= 0) if(*(p++)==c) return p-1;
