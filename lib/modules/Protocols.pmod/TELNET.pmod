@@ -276,6 +276,8 @@ class protocol
     if (!nonblocking_write && (write_cb || sizeof(to_send) || done)) {
       fd->set_nonblocking(got_data, send_data, close_cb, got_oob);
       nonblocking_write = 1;
+    } else {
+      send_data();
     }
   }
 
