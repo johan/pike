@@ -1525,9 +1525,6 @@ void strict_apply_svalue(struct svalue *s, INT32 args)
       error("Calling object without `() operator\n");
 
     apply_lfun(s->u.object, LFUN_CALL, args);
-    free_svalue(sp-2);
-    sp[-2]=sp[-1];
-    sp--;
     break;
   }
 
