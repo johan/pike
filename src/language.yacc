@@ -154,7 +154,7 @@ static struct program_state *inherit_state = NULL;
  */
 #ifndef __GNUC__
 #ifndef __cplusplus
-static void __yy_memcpy(char *to, char *from, unsigned int count);
+static void __yy_memcpy(char *to, char *from, YY_COUNT_TYPE count);
 #endif /* !__cplusplus */
 #endif /* !__GNUC__ */
 
