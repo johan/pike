@@ -15,6 +15,7 @@ METATARGET=
 BIN_TRUE=":"
 
 all: bin/pike compile
+	-@$(BIN_TRUE)
 
 src/configure: src/configure.in
 	cd src && ./run_autoconfig . 2>&1 | grep -v warning
