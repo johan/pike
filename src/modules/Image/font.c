@@ -279,12 +279,12 @@ static INLINE int my_read(int from, void *t, int towrite)
 }
 #endif
 
-static INLINE long file_size(int fd)
+static INLINE size_t file_size(int fd)
 {
   struct stat tmp;
   if((!fd_fstat(fd, &tmp)) &&
      (tmp.st_mode & S_IFREG)) 
-     return (long)tmp.st_size;
+     return (size_t)tmp.st_size;
   return -1;
 }
 
