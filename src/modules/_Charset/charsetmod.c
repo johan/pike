@@ -1059,10 +1059,9 @@ void pike_module_init(void)
 {
   int i;
   struct svalue prog;
-  extern struct program *iso2022_init();
-  struct program *iso2022_program = iso2022_init();
-  if(iso2022_program != NULL)
-    add_program_constant("ISO2022", iso2022_program, ID_STATIC|ID_NOMASK);
+  extern void iso2022_init();
+
+  iso2022_init();
 
   start_new_program();
   ADD_STORAGE(struct std_cs_stor);
