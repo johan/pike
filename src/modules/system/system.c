@@ -83,6 +83,10 @@ RCSID("$Id$");
 #include <utime.h>
 #endif
 
+#ifdef HAVE_SYS_UTIME_H
+#include <sys/utime.h>
+#endif
+
 #include "dmalloc.h"
 
 #ifndef NGROUPS_MAX
@@ -404,7 +408,12 @@ void f_utime(INT32 args)
   char *path;
   INT32 atime, mtime;
   int err;
+  /*&#()&@(*#&$ NT ()*&#)(&*@$#*/
+#ifdef _UTIMBUF_DEFINED
+  struct _utimbuf b;
+#else
   struct utimbuf b;
+#endif
 
 #ifdef PIKE_SECURITY
   if(!CHECK_SECURITY(SECURITY_BIT_SECURITY))
