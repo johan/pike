@@ -296,16 +296,19 @@ class Node
 		 _reference, resolution, refs[resolved]);
 	}
       }
-      if (!missing[resolved] && !has_prefix(_reference, "lfun::"))
-	werror("Missed reference %O (%{%O, %}) in %s\n"
-	       "Potential refs:%O\n",
-	       _reference, resolved, make_class_path(),
+      if (!missing[resolved] && !has_prefix(_reference, "lfun::")) {
+	werror("Missed reference %O (%{%O, %}) in %s\n",
+	       _reference, resolved, make_class_path());
+#if 0
+	werror("Potential refs:%O\n",
 	       sort(map(resolved,
 			lambda (string resolution) {
 			  return filter(indices(refs),
 					glob(resolution[..sizeof(resolution)/2]+
 					     "*", indices(refs)[*]));
 			}) * ({})));
+#endif /* 0 */
+      }
       unresolved++;
     }
     return "<font face='courier'>" + _reference + "</font>";
