@@ -2215,12 +2215,14 @@ EOF
       sed -e 's/\\/\//g' | \
       sed -e 's/\(.*\) \(.*\)/  \1|\1\/*)\
     posix_prefix="\1"\
-    native_prefix="\2"\
+    native_prefix="\2/"\
   \;\;/p' -ed | \
       sed -e 's/\/\//\//g'
     cat <<\EOF
 esac
-echo "$posix_name" | sed -e "s,^$posix_prefix,$native_prefix,"
+echo "$posix_name" | \
+  sed -e "s,^$posix_prefix,$native_prefix," | \
+  sed -e 's/\/\//\//g'
 EOF
   else
     # Native POSIX system.
