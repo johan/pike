@@ -593,13 +593,29 @@ void parse_data()
       // werror(sprintf("\t%s;\n\n", n2));
       array(string) t = Array.uniq(n2->used_nodes());
 
-      action = sprintf("{\n"
-		       "  tmp1 = %s;\n"
-		       "%s"
-		       "  goto use_tmp1;\n"
-		       "}",
-		       n2->generate_code(),
-		       sizeof(t)?("  " + (t * " = ") + " = 0;\n"):"");
+      string expr = n2->generate_code();
+
+      // Some optimizations for common cases
+      switch(expr) {
+      case "0":
+	action = "goto zap_node;";
+	break;
+      case "CAR(n)":
+	action = "goto use_car;";
+	break;
+      case "CDR(n)":
+	action = "goto use_cdr;";
+	break;
+      default:
+	action = sprintf("{\n"
+			 "  tmp1 = %s;\n"
+			 "%s"
+			 "  goto use_tmp1;\n"
+			 "}",
+			 expr,
+			 sizeof(t)?("  " + (t * " = ") + " = 0;\n"):"");
+	break;
+      }
     } else {
       // Null action.
       // Used to force code generation for eg NULL-detection.
