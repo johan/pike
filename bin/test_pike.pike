@@ -524,7 +524,7 @@ int main(int argc, array(string) argv)
 		successes++;
 	      }else{
 		_dmalloc_set_name();
-		werror(fname + " failed.\n");
+		werror(fname + " failed (expected compile error).\n");
 		bzot(test);
 		errors++;
 	      }
@@ -548,7 +548,7 @@ int main(int argc, array(string) argv)
 		  werror("Time in a(): %f\n",at);
 	      }else{
 		_dmalloc_set_name();
-		werror(fname + " failed.\n");
+		werror(fname + " failed (expected eval error).\n");
 		bzot(test);
 		errors++;
 	      }
