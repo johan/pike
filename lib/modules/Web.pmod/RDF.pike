@@ -711,6 +711,8 @@ static Node add_xml_children(Node p, string rdfns) {
       add_statement( subj, make_resource(ns+pred), LiteralResource(obj) );
   }
 
+  int li_counter; // FIXME: Restart for every collection?
+
   // Handle subnodes
   foreach(p->get_elements(), Node c) {
     if(c->get_ns()==rdfns) {
@@ -725,6 +727,13 @@ static Node add_xml_children(Node p, string rdfns) {
 	string obj_uri = c->get_ns_attributes(rdfns)->resource;
 	if(!obj_uri) error("rdf:_n missing resource attribute.\n");
 	add_statement( subj, make_resource(rdf_ns+name),
+		       make_resource(obj_uri) );
+	continue;
+      }
+      else if(name=="li") {
+	string obj_uri = c->get_ns_attributes(rdfns)->resource;
+	if(!obj_uri) error("rdf:li missing resource attribute.\n");
+	add_statement( subj, make_resource(rdf_ns+"_"+(++li_counter)),
 		       make_resource(obj_uri) );
 	continue;
       }
