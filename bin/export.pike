@@ -113,7 +113,7 @@ void bump_version(int|void is_release)
 		"\n" +
 		"  * %s\n"
 		"\n"
-		" -- Pike build system <pike-devel@lists.lysator.liu.se>  %s\n"
+		" -- Marek Habersack <grendel@debian.org>  %s\n"
 		"\n"
 		"%s",
 		version[0], version[1],
