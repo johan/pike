@@ -476,7 +476,7 @@ void assemble(void)
 	Pike_fatal("Expected instruction %s to be followed by a pointer.\n"
 		   "Got %s\n.",
 		   instrs[c->opcode - F_OFFSET].name,
-		   (e+1 < length)?instrs[c[1]->opcode - F_OFFSET].name:"EOI");
+		   (e+1 < length)?instrs[c[1].opcode - F_OFFSET].name:"EOI");
       }
     }
 #endif /* PIKE_DEBUG */
