@@ -24,13 +24,6 @@ object create(int l, int d, string|void m, mixed|void t)
   message = m;
   trace = t;
 
-#ifdef SSL3_DEBUG
-  if(m)
-    werror(m);
-  if(t)
-    werror(describe_backtrace(t));
-#endif
-
   packet::create();
   packet::content_type = PACKET_alert;
   packet::protocol_version = ({ 3, 0 });
