@@ -343,13 +343,13 @@ static void create (Stdio.File stream, SSL.context ctx,
   } LEAVE;
 }
 
-//!
+//! returns the client certificate chain, if any.
 array get_client_certificates()
 {
   return conn->session->client_certificate_chain;
 }
 
-//!
+//! returns the server certificate chain, if any.
 array get_server_certificates()
 {
   return conn->session->server_certificate_chain;
