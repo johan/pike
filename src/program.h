@@ -218,6 +218,13 @@ struct pike_trampoline
 /* */
 #define PROGRAM_USES_PARENT 128
 
+/* Objects should not be destructed even when they only has weak
+ * references left. */
+#define PROGRAM_NO_WEAK_DESTRUCT 256
+
+/* Objects should not be destructed by f_destruct(). */
+#define PROGRAM_NO_EXPLICIT_DESTRUCT 512
+
 struct program
 {
   INT32 refs;
