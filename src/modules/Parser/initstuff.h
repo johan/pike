@@ -16,6 +16,7 @@ PARSER_CLASS("HTML", init_parser_html, exit_parser_html,
 	    parser_html_program, PROG_PARSER_HTML_ID )
 
 PARSER_SUBMODULE("_RCS", init_parser_rcs, exit_parser_rcs )
+PARSER_SUBMODULE("_C", init_parser_c, exit_parser_c )
 
    /*
 for documentation purpose:
