@@ -1888,10 +1888,10 @@ static void file_pipe(INT32 args)
   if ((i<0) || (inout[0] < 0) || (inout[1] < 0))
   {
     if (inout[0] >= 0) {
-      close(inout[0]);
+      fd_close(inout[0]);
     }
     if (inout[1] >= 0) {
-      close(inout[1]);
+      fd_close(inout[1]);
     }
     ERRNO=errno;
     push_int(0);
@@ -2087,7 +2087,7 @@ static void file_open_socket(INT32 args)
     }
     if (args > 1) {
       if (Pike_sp[1-args].type != T_STRING) {
-	close(fd);
+	fd_close(fd);
 	error("Bad argument 2 to open_socket(), expected string\n");
       }
       get_inet_addr(&addr, Pike_sp[1-args].u.string->str);
@@ -2100,14 +2100,14 @@ static void file_open_socket(INT32 args)
     o=1;
     if(fd_setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char *)&o, sizeof(int)) < 0) {
       ERRNO=errno;
-      close(fd);
+      fd_close(fd);
       pop_n_elems(args);
       push_int(0);
       return;
     }
     if (fd_bind(fd, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
       ERRNO=errno;
-      close(fd);
+      fd_close(fd);
       pop_n_elems(args);
       push_int(0);
       return;

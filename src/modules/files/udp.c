@@ -134,8 +134,8 @@ struct udp_storage {
 };
 
 #undef THIS
-#define THIS ((struct udp_storage *)fp->current_storage)
-#define THISOBJ (fp->current_object)
+#define THIS ((struct udp_storage *)Pike_fp->current_storage)
+#define THISOBJ (Pike_fp->current_object)
 #define FD (THIS->fd)
 
 extern void get_inet_addr(struct sockaddr_in *addr,char *name);
