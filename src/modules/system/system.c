@@ -81,6 +81,12 @@ RCSID("$Id$");
 #endif /* NGROUPS */
 #endif /* !NGROUPS_MAX */
 
+#ifdef HAVE_IN_ADDR_T
+#define IN_ADDR_T	in_addr_t
+#else /* !HAVE_IN_ADDR_T */
+#define IN_ADDR_T	unsigned int
+#endif /* HAVE_IN_ADDR_T */
+
 /*
  * Functions
  */
@@ -750,7 +756,7 @@ void get_inet_addr(struct sockaddr_in *addr,char *name)
   }
   else if(my_isipnr(name)) /* I do not entirely trust inet_addr */
   {
-    if (inet_addr(name) == (in_addr_t)-1)
+    if (((IN_ADDR_T)inet_addr(name)) == ((IN_ADDR_T)-1))
       error("Malformed ip number.\n");
 
     addr->sin_addr.s_addr = inet_addr(name);
