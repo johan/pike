@@ -4,7 +4,7 @@
 
 constant TEST_SIZE = 16384;
 
-string testdata = Crypto.randomness.reasonably_random()->read(TEST_SIZE);
+string testdata = random_string(TEST_SIZE);
 
 int testno;
 
