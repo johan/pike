@@ -314,6 +314,9 @@
 /* define this if your struct tm has a tm_gmtoff */
 #undef STRUCT_TM_HAS_GMTOFF
 
+/* define this if your struct tm has a __tm_gmtoff */
+#undef STRUCT_TM_HAS___TM_GMTOFF
+
 /* Define if you have struct timeval */
 #undef HAVE_STRUCT_TIMEVAL
 
