@@ -303,6 +303,7 @@ static INLINE rgb_group _pixel_apply_matrix(struct image *img,
   /* NOTE:
    *	This code MUST be MT-SAFE!
    */
+  HIDE_GLOBAL_VARIABLES();
    rgb_group res;
    int i,j,bx,by,xp,yp;
    int sumr,sumg,sumb,r,g,b;
@@ -342,6 +343,7 @@ static INLINE rgb_group _pixel_apply_matrix(struct image *img,
    fprintf(stderr,"->%d,%d,%d\n",res.r,res.g,res.b);
 #endif
    return res;
+   REVEAL_GLOBAL_VARIABLES();
 }
 
 
@@ -1128,10 +1130,12 @@ static INLINE void
   /* NOTE:
    *	This code MUST be MT-SAFE!
    */
+  HIDE_GLOBAL_VARIABLES();
    sum->r=testrange(sum->r+(INT32)(rgba.r*factor+0.5));
    sum->g=testrange(sum->g+(INT32)(rgba.g*factor+0.5));
    sum->b=testrange(sum->b+(INT32)(rgba.b*factor+0.5));
    sum->alpha=testrange(sum->alpha+(INT32)(rgba.alpha*factor+0.5));
+   REVEAL_GLOBAL_VARIABLES();
 }
 
 static INLINE void
@@ -1142,9 +1146,11 @@ static INLINE void
   /* NOTE:
    *	This code MUST be MT-SAFE!
    */
+  HIDE_GLOBAL_VARIABLES();
    sum->r=testrange(sum->r+(INT32)(rgba.r*factor+0.5));
    sum->g=testrange(sum->g+(INT32)(rgba.g*factor+0.5));
    sum->b=testrange(sum->b+(INT32)(rgba.b*factor+0.5));
+   REVEAL_GLOBAL_VARIABLES();
 }
 
 /*

@@ -328,10 +328,13 @@ static struct pike_string *do_read(int fd,
     initialize_buf(&b);
     SET_ONERROR(ebuf, free_dynamic_buffer, &b);
     do{
+      char *buf;
       try_read=MINIMUM(CHUNK,r);
       
+      buf = low_make_buf_space(try_read, &b);
+
       THREADS_ALLOW();
-      i=read(fd, low_make_buf_space(try_read, &b), try_read);
+      i=read(fd, buf, try_read);
       THREADS_DISALLOW();
 
       check_signals(0,0,0);
