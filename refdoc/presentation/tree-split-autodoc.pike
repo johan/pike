@@ -323,12 +323,12 @@ class Node
     res += make_navbar_really_low(root->module_children);
     if(sizeof(root->class_children))
       res += "<tr><td><br /><b>Classes</b></td></tr>\n" +
-	make_navbar_really_low(root->class_children);
+	make_navbar_really_low(root->class_children) + "<br />";
 
     if(root->appendix_children) {
       if(sizeof(root->appendix_children))
 	res += "<tr><td><br /><b>Appendices</b></td></tr>\n"+
-	  make_navbar_really_low(root->appendix_children);
+	  make_navbar_really_low(root->appendix_children) + "<br />";
     }
     else
       res += make_navbar_really_low(root->method_children);
