@@ -1676,6 +1676,29 @@ test_any_equal([[
   return res;
 ]], (<>));
 
+test_do([[
+  Stdio.recursive_rm ("testsuite_test_dir.pmod");
+  mkdir ("testsuite_test_dir.pmod");
+
+  Stdio.write_file ("testsuite_test_dir.pmod/A.pmod", #"\
+    string pof() {return testsuite_test_dir.A.bingo();}
+    string bingo () {return \"17\";}");
+
+  object orig_master = master();
+  replace_master (object_program (orig_master)());
+  master()->add_module_path (getcwd());
+  mixed err = catch {
+      compile_string (#"\
+	string foo() {
+	  return testsuite_test_dir.A.pof();
+	}", "test");
+    };
+  replace_master (orig_master);
+  if (err) throw (err);
+
+  Stdio.recursive_rm ("testsuite_test_dir.pmod");
+]])
+
 cond(0,[[
 test_do([[
   // This is a case of cyclic references I think should work, but
