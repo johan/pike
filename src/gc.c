@@ -568,7 +568,7 @@ int debug_gc_do_free(void *a)
   struct marker *m;
   m=get_marker(a);
 
-  if( !(m->flags & GC_REFERENCED)  && m->flags & GC_XREFERENCED )
+  if( !(m->flags & GC_REFERENCED)  && (m->flags & GC_XREFERENCED))
   {
     INT32 refs=m->refs;
     INT32 xrefs=m->xrefs;
