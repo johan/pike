@@ -43,7 +43,6 @@ int main(int argc, char **argv)
 #define FILE void
 #define size_t unsigned int
 #include <jpeglib.h>
-#include <jconfig.h>
       ],[
   JDIMENSION block_test;
   jpeg_component_info *compptr;
@@ -65,12 +64,10 @@ int main(int argc, char **argv)
 #define FILE void
 #define size_t unsigned int
 #include <jpeglib.h>
-#include <jconfig.h>
       ],[
 #define FILE void
 #define size_t unsigned int
 #include <jpeglib.h>
-#include <jconfig.h>
 
 j_decompress_ptr srcinfo;
 void *test_ptr;
