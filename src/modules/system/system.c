@@ -608,7 +608,7 @@ void f_cleargroups(INT32 args)
   }
 }
 
-/*! @decl void setgroup(array(int) gids)
+/*! @decl void setgroups(array(int) gids)
  *!
  *! Set the supplemental group access list for this process.
  *!

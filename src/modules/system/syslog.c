@@ -173,7 +173,7 @@ RCSID("$Id$");
  *! LOG_NOWAIT should probably always be specified.
  *!
  *! @seealso
- *!   @[syslog], @[closelog], @[setlogmask]
+ *!   @[syslog], @[closelog]
  */
 void f_openlog(INT32 args)
 {
