@@ -272,7 +272,12 @@ PMOD_EXPORT extern const char msg_bad_arg[];
 PMOD_EXPORT extern const char msg_too_few_args[];
 #define SIMPLE_TOO_FEW_ARGS_ERROR(FUNC, ARG) \
    bad_arg_error(FUNC, Pike_sp-args, args, ARG, "void", 0,\
-                 msg_too_few_args,FUNC)
+		 msg_too_few_args,FUNC, ARG)
+
+PMOD_EXPORT extern const char msg_wrong_num_args[];
+#define SIMPLE_WRONG_NUM_ARGS_ERROR(FUNC, ARG) \
+   bad_arg_error(FUNC, Pike_sp-args, args, ARG, "void", 0,\
+		 msg_wrong_num_args,FUNC, ARG)
 
 PMOD_EXPORT extern const char msg_out_of_mem[];
 #define SIMPLE_OUT_OF_MEMORY_ERROR(FUNC, AMOUNT) \

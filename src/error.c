@@ -48,7 +48,9 @@ PMOD_EXPORT const char msg_assert_onerr[] =
 PMOD_EXPORT const char msg_bad_arg[] =
   "Bad argument %d to %s(). Expected %s.\n";
 PMOD_EXPORT const char msg_too_few_args[] =
-  "Too few arguments to %s().\n";
+  "Too few arguments to %s(). Expected at least %d.\n";
+PMOD_EXPORT const char msg_wrong_num_args[] =
+  "Invalid number of arguments to %s(). Expected %d.\n";
 PMOD_EXPORT const char msg_out_of_mem[] =
   "Out of memory.\n";
 PMOD_EXPORT const char msg_div_by_zero[] =
