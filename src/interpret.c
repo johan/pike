@@ -902,7 +902,7 @@ PMOD_EXPORT void mega_apply2(enum apply_type type, INT32 args, void *arg1, void 
   case APPLY_STACK:
   apply_stack:
     if(!args)
-      PIKE_ERROR("`()", "Too few arguments.\n", Pike_sp, 0);
+      PIKE_ERROR("`()", "Too few arguments (apply stack).\n", Pike_sp, 0);
     args--;
     if(Pike_sp-save_sp-args > (args<<2) + 32)
     {

@@ -1423,7 +1423,7 @@ BREAK;
     {
       INT32 args = DO_NOT_WARN(Pike_sp - *--Pike_mark_sp);
       if(!args)
-	PIKE_ERROR("`()", "Too few arguments.\n", Pike_sp, 0);
+	PIKE_ERROR("`()", "Too few arguments (call&return).\n", Pike_sp, 0);
       switch(Pike_sp[-args].type)
       {
 	case PIKE_T_INT:
