@@ -135,7 +135,7 @@ static void dlinit(void)
 #endif
 
 
-#endif /* HAVE_DLOPEN || USE_DLD */
+#endif /* !EMULATE_DLOPEN */
 
 #ifndef TESTING
 
