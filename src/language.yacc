@@ -2581,8 +2581,10 @@ void add_local_name(struct pike_string *str,
     check_type_string(type);
 #endif /* PIKE_DEBUG */
     if (pike_types_le(type, void_type_string)) {
-      yywarning("Declaring local variable with type void "
-		"(converted to type zero).");
+      if (compiler_pass != 1) {
+	yywarning("Declaring local variable with type void "
+		  "(converted to type zero).");
+      }
       free_string(type);
       copy_shared_string(type, zero_type_string);
     }
