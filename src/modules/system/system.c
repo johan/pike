@@ -67,8 +67,20 @@ RCSID("$Id$");
 #ifdef HAVE_SYS_STAT_H
 #include <sys/stat.h>
 #endif /* HAVE_SYS_STAT_H */
+#ifdef HAVE_SYS_PARAM_H
+#include <sys/param.h>
+#endif /* HAVE_SYS_PARAM_H */
 
 #include "dmalloc.h"
+
+#ifndef NGROUPS_MAX
+#ifdef NGROUPS
+#define NGROUPS_MAX	NGROUPS
+#else /* !NGROUPS */
+#define NGROUPS_MAX	256	/* Should be sufficient for most OSs */
+#endif /* NGROUPS */
+#endif /* !NGROUPS_MAX */
+
 /*
  * Functions
  */
