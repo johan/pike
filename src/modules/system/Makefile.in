@@ -1,7 +1,7 @@
 # $Id$
 @make_variables@
 VPATH=@srcdir@:@srcdir@/../..:../..:.
-OBJS=system.o syslog.o passwords.o nt.o
+OBJS=system.o syslog.o passwords.o nt.o memory.o
 MODULE_LDFLAGS=@LIBS@
 
 CONFIG_HEADERS=@CONFIG_HEADERS@

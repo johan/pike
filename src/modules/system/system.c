@@ -2464,6 +2464,7 @@ void pike_module_init(void)
 
 
   init_passwd();
+  init_system_memory();
 
 #ifdef GETHOSTBYNAME_MUTEX_EXISTS
   dmalloc_accept_leak(add_to_callback(& fork_child_callback,

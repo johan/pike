@@ -42,3 +42,20 @@ void f_syslog(INT32 args);
 void f_closelog(INT32 args);
 
 #endif /* PIKE_MODULES_SYSTEM_H */
+
+/*
+ * memory.c
+ */
+
+struct memory_storage
+{
+   unsigned char *p;
+   size_t size;
+   
+#define MEM_READ        0x01
+#define MEM_WRITE       0x02
+#define MEM_FREE_FREE   0x10
+#define MEM_FREE_MUNMAP 0x20   
+   unsigned long flags;
+};
+
