@@ -125,7 +125,7 @@ int _prof_gtim;
     array(string) referrals;
 
     private string utf2s(string in) {
-    // catched variant of utf8_to_string needed for tagged octed string data
+    // catched variant of utf8_to_string needed for tagged octet string data
 
       string out = "";
       catch( out = utf8_to_string(in) );
