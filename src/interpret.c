@@ -828,6 +828,51 @@ void PIKE_CONCAT(opcode_,O)(INT32 arg1,INT32 arg2) { \
 DO_IF_DEBUG(if(t_flag > 3) fprintf(stderr,"- (%p,%ld): %s(%d,%d)\n",PROG_COUNTER,DO_NOT_WARN((long)(Pike_sp-Pike_interpreter.evaluator_stack)),N,arg1,arg2)); \
 C }
 
+#ifdef OPCODE_INLINE_BRANCH
+#define TEST_OPCODE0(O,N,F,C) \
+int PIKE_CONCAT(test_opcode_,O)(void) { \
+    int branch_taken = 0;	\
+    DEF_PROG_COUNTER; \
+    DO_IF_DEBUG(if(t_flag > 3) \
+      fprintf(stderr, "- (%p,%ld): %s()\n", PROG_COUNTER, \
+              DO_NOT_WARN((long)(Pike_sp-Pike_interpreter.evaluator_stack)), \
+              N));\
+    C; \
+    return branch_taken; \
+  }
+
+#define TEST_OPCODE1(O,N,F,C) \
+int PIKE_CONCAT(test_opcode_,O)(INT32 arg1) {\
+    int branch_taken = 0;	\
+    DEF_PROG_COUNTER; \
+    DO_IF_DEBUG(if(t_flag > 3) \
+      fprintf(stderr, "- (%p,%ld): %s(%d)\n", PROG_COUNTER, \
+              DO_NOT_WARN((long)(Pike_sp-Pike_interpreter.evaluator_stack)), \
+              N, arg1)); \
+    C; \
+    return branch_taken; \
+  }
+
+
+#define TEST_OPCODE2(O,N,F,C) \
+int PIKE_CONCAT(test_opcode_,O)(INT32 arg1, INT32 arg2) { \
+    int branch_taken = 0;	\
+    DEF_PROG_COUNTER; \
+    DO_IF_DEBUG(if(t_flag > 3) \
+      fprintf(stderr, "- (%p,%ld): %s(%d,%d)\n", PROG_COUNTER, \
+              DO_NOT_WARN((long)(Pike_sp-Pike_interpreter.evaluator_stack)), \
+              N, arg1, arg2)); \
+    C; \
+    return branch_taken; \
+  }
+
+#define DO_BRANCH	(branch_taken = -1)
+#define DONT_BRANCH	(branch_taken = 0)
+#else /* !OPCODE_INLINE_BRANCH */
+#define TEST_OPCODE0	OPCODE0
+#define TEST_OPCODE1	OPCODE1
+#define TEST_OPCODE2	OPCODE2
+#endif /* OPCODE_INLINE_BRANCH */
 
 #define OPCODE0_JUMP(O,N,F,C) OPCODE0(O,N,F,C)
 #define OPCODE1_JUMP(O,N,F,C) OPCODE1(O,N,F,C)
@@ -848,6 +893,16 @@ C }
 #define OPCODE0_RETURNJUMP(O,N,F,C) OPCODE0(O,N,F,C)
 #define OPCODE1_RETURNJUMP(O,N,F,C) OPCODE1(O,N,F,C)
 #define OPCODE2_RETURNJUMP(O,N,F,C) OPCODE2(O,N,F,C)
+
+/* BRANCH opcodes only generate code for the test,
+ * so that the branch instruction can be inlined.
+ */
+#define OPCODE0_BRANCH(O,N,F,C) TEST_OPCODE0(O,N,F,C)
+#define OPCODE1_BRANCH(O,N,F,C) TEST_OPCODE1(O,N,F,C)
+#define OPCODE2_BRANCH(O,N,F,C) TEST_OPCODE2(O,N,F,C)
+#define OPCODE0_TAILBRANCH(O,N,F,C) TEST_OPCODE0(O,N,F,C)
+#define OPCODE1_TAILBRANCH(O,N,F,C) TEST_OPCODE1(O,N,F,C)
+#define OPCODE2_TAILBRANCH(O,N,F,C) TEST_OPCODE2(O,N,F,C)
 
 #undef HAVE_COMPUTED_GOTO
 
