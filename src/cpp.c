@@ -1530,6 +1530,10 @@ static int do_safe_index_call(struct pike_string *s)
   return res;
 }
 
+/*! @namespace predef:: */
+/*! @decl import cpp:: */
+/*! @endnamespace */
+
 /*! @namespace cpp:: */
 
 /*! @decl constant __VERSION__
