@@ -133,8 +133,7 @@ class Map {
     case "mapping":
       return(cast_to_mapping());
     default:
-      throw(({ "Yp.YpDomain: Cast to " + type + " not supported.\n",
-		 backtrace() }));
+      error( "Cast to " + type + " not supported.\n" );
     }
   }
 }
