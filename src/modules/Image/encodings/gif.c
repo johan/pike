@@ -998,12 +998,13 @@ void _image_gif_encode(INT32 args,int fs)
 
 	    imgobj->refs++;
 	    push_object(imgobj);
-	    if (alpha) push_int(n);
+	    push_int(n);
 	    nctobj=clone_object(image_colortable_program,2);
 	    nct=(struct neo_colortable*)
 	       get_storage(nctobj,image_colortable_program);
 	    if (!nct)
 	       error("Image.GIF.encode(): Internal error; colortable isn't colortable\n");
+	    arg=2;
 	 }
 	 else arg=1;
       }
