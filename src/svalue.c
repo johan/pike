@@ -1100,7 +1100,7 @@ PMOD_EXPORT int is_le(const struct svalue *a, const struct svalue *b)
     struct pike_type *a_type = NULL;
     struct pike_type *b_type = NULL;
     int res;
-    if ((a->type == b->type) && (a->u.ptr = b->u.ptr)) return 1;  /* eq */
+    if ((a->type == b->type) && (a->u.ptr == b->u.ptr)) return 1;  /* eq */
     if (a->type == T_TYPE) {
       add_ref(a_type = a->u.type);
     } else {
