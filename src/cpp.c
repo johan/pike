@@ -1070,7 +1070,7 @@ static struct pike_string *recode_string(struct cpp *this, struct pike_string *d
     MEMCPY(new_str->str, p, len);
 
     pop_stack();
-    ref_push_string(end_shared_string(new_str));
+    ref_push_string(new_str = end_shared_string(new_str));
 		
     /* Decode the string */
 
