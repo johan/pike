@@ -737,9 +737,9 @@ if((char *)(p->X) < (char *)p || (char *)(p->X)> ((char *)p)+size) fatal("Progra
 
     if(IDENTIFIER_IS_VARIABLE(p->identifiers[e].identifier_flags))
     {
-      if(p->identifiers[e].offset & (sizeof(char *)-1))
+      if(p->identifiers[e].func.offset & (sizeof(char *)-1))
       {
-	fatal("Variable offset is not properly aligned (%s).\n",p->identifers[e].name->str);
+	fatal("Variable offset is not properly aligned (%s).\n",p->identifiers[e].name->str);
       }
     }
   }
