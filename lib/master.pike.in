@@ -3403,7 +3403,7 @@ string describe_function (function f)
 //! @seealso
 //! @[backtrace()], @[describe_error()], @[catch()], @[throw()]
 //!
-string describe_backtrace(array|object trace, void|int linewidth)
+string describe_backtrace(mixed trace, void|int linewidth)
 {
   int e;
   string ret;
