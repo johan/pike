@@ -1662,7 +1662,8 @@ int main(int argc, char **argv)
   if(x == 2.0) exit(1);
   exit(0);
 }
-],pike_cv_sys_idiot_sigfpe=no,pike_cv_sys_idiot_sigfpe=yes)
+],pike_cv_sys_idiot_sigfpe=no,pike_cv_sys_idiot_sigfpe=yes,
+  pike_cv_sys_idiot_sigfpe=yes)
 ])
 
 if test $pike_cv_sys_idiot_sigfpe = yes ; then
@@ -1698,7 +1699,8 @@ int main(int argc, char **argv)
   if(x == 2.0) exit(1);
   exit(0);
 }
-],pike_cv_sys_idiot_sigfpe_with_ieee=no,pike_cv_sys_idiot_sigfpe_with_ieee=yes)
+],pike_cv_sys_idiot_sigfpe_with_ieee=no,pike_cv_sys_idiot_sigfpe_with_ieee=yes,
+  pike_cv_sys_idiot_sigfpe_with_ieee=yes)
   CFLAGS="$OLD_CFLAGS"
 ])
    
@@ -1740,7 +1742,8 @@ int main(int argc, char **argv)
   if(x == 2.0) exit(1);
   exit(0);
 }
-],pike_cv_sys_ignore_sigfpe=yes,pike_cv_sys_ignore_sigfpe=no)
+],pike_cv_sys_ignore_sigfpe=yes,pike_cv_sys_ignore_sigfpe=no,
+  pike_cv_sys_ignore_sigfpe=yes)
   CFLAGS="$OLD_CFLAGS"
 ])
 
