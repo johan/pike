@@ -17,8 +17,6 @@
 
 #define WANT_LVALUE (DO_LVALUE | DO_INDIRECT)
 
-extern int store_linenumbers;
-
 #define emit0(X)     insert_opcode0((X),lex.current_line, lex.current_file)
 #define emit1(X,Y)   insert_opcode1((X),(Y),lex.current_line, lex.current_file)
 #define emit2(X,Y,Z) insert_opcode2((X),(Y),(Z),lex.current_line, lex.current_file)
@@ -35,7 +33,7 @@ void do_pop(int x);
 int do_docode(node *n, int flags);
 void do_cond_jump(node *n, int label, int iftrue, int flags);
 INT32 do_code_block(node *n);
-int docode(node *n);
+INT32 docode(node *n);
 /* Prototypes end here */
 
 #endif

@@ -241,7 +241,11 @@ enum Pike_opcodes
   /* Alias for F_RETURN, but cannot be optimized into a tail recursion call */
   F_VOLATILE_RETURN,
 
-  F_MAX_INSTR
+  F_MAX_INSTR,
+
+  /* These are only used for dumping. */
+  F_FILENAME,
+  F_LINE,
 };
 
 #undef OPCODE0
