@@ -10,8 +10,8 @@
  *         without locking the password_protection_mutex, we are
  *         pretty much screwed.
  *
- * NOTE: To avoid deadlocks, any locking of password_protection_mutex
- *       MUST be done within THREADS_ALLOW_UID()/THREADS_DISALLOW_UID().
+ * NOTE: To avoid deadlocks, any locking/unlocking of password_protection_mutex
+ *       MUST be done with LOCK_IMUTEX()/UNLOCK_IMUTEX().
  */
 
 /*
