@@ -96,6 +96,10 @@ bin/pike: force
 	sed -e "s|\"BASEDIR\"|\"`pwd`\"|" < bin/pike.in > bin/pike
 	chmod a+x bin/pike
 
+# This skips the modules.
+pike: force
+	@$(MAKE) "METATARGET=pike"
+
 install:
 	@$(MAKE) "METATARGET=install"
 
