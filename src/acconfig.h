@@ -500,6 +500,9 @@
 /* Define to the page size (handled efficiently by malloc). */
 #undef PIKE_MALLOC_PAGE_SIZE
 
+/* Define to the size of the c-stack for new threads */
+#undef PIKE_THREAD_C_STACK_SIZE
+
 @BOTTOM@
 
 /* NT stuff */
