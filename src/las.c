@@ -516,7 +516,7 @@ node *index_node(node *n, struct pike_string * id)
       f_index(2);
 
       if(sp[-1].type == T_INT &&
-	 !sp[-1].u.number &&
+	 !sp[-1].u.integer &&
 	 sp[-1].subtype==NUMBER_UNDEFINED)
       {
 	my_yyerror("Index '%s' not present in module.",id->str);
