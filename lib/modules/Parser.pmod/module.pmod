@@ -5,7 +5,9 @@
 
 #pike __REAL_VERSION__
 
-inherit Parser._parser;
+// inherit Parser._parser;
+
+constant HTML = Parser._parser.HTML;
 
 class SGML
 //!  	This is a handy simple parser of SGML-like
@@ -219,7 +221,7 @@ HTML html_entity_parser()
 	 p->add_entity(name,value);
       
       p->_set_entity_callback(
-	 lambda(Parser.HTML p,string ent)
+	 lambda(HTML p,string ent)
 	 {
 	    int i;
 	    if (sscanf(ent,"&#x%x",i))
