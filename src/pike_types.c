@@ -301,6 +301,27 @@ struct pike_string *debug_pop_type(void)
   return s;
 }
 
+struct pike_string *debug_compiler_pop_type(void)
+{
+  extern int num_parse_error;
+  if(num_parse_error)
+  {
+    /* This could be fixed to check if the type
+     * is correct and then return it, I just didn't feel
+     * like writing the checking code today. / Hubbe
+     */
+    pop_stack_mark();
+    type_stack_mark();
+    reference_shared_string(mixed_type_string);
+    return mixed_type_string;
+  }else{
+    struct pike_string *s;
+    s=pop_unfinished_type();
+    type_stack_mark();
+    return s;
+  }
+}
+
 static void internal_parse_typeA(char **_s)
 {
   char buf[80];
