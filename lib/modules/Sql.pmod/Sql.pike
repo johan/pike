@@ -93,7 +93,7 @@ function(string:int) decode_datetime;
 //!       Access through a UNIX-domain socket or similar.
 //!   @endmixed
 //!
-//! @param database
+//! @param db
 //!   Select this database.
 //!
 //! @param user
