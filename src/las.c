@@ -2233,13 +2233,11 @@ static void optimize(node *n)
     {
 #include "treeopt.h"
     use_car:
-      tmp1 = CAR(n);
-      ADD_NODE_REF(CAR(n));
+      ADD_NODE_REF2(CAR(n), tmp1 = CAR(n));
       goto use_tmp1;
 
     use_cdr:
-      tmp1 = CDR(n);
-      ADD_NODE_REF(CDR(n));
+      ADD_NODE_REF2(CDR(n), tmp1 = CDR(n));
       goto use_tmp1;
 
     zap_node:
