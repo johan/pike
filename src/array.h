@@ -26,7 +26,8 @@ struct array
 			 * though.
 			 */
   INT16 flags;          /* ARRAY_* flags */
-  struct svalue item[1];
+  struct svalue *item;
+  struct svalue real_item[1];
 };
 
 #define ARRAY_WEAK_FLAG 1

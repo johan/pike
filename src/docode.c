@@ -714,6 +714,7 @@ static int do_docode2(node *n, INT16 flags)
   case F_ASSIGN:
     switch(CAR(n)->token)
     {
+    case F_RANGE:
     case F_AND:
     case F_OR:
     case F_XOR:
@@ -730,11 +731,18 @@ static int do_docode2(node *n, INT16 flags)
 	if(match_types(CDR(n)->type, array_type_string) ||
 	   match_types(CDR(n)->type, string_type_string))
 	{
-	  code_expression(CDAR(n), 0, "binary operand");
-	  emit0(F_LTOSVAL2);
+	  switch(do_docode(check_node_hash(CDAR(n)), 0))
+	  {
+	    case 1: emit0(F_LTOSVAL2); break;
+	    case 2: emit0(F_LTOSVAL3); break;
+#ifdef PIKE_DEBUG
+	    default:
+	      fatal("Arglebargle glop-glyf?\n");
+#endif
+	  }
 	}else{
 	  emit0(F_LTOSVAL);
-	  code_expression(CDAR(n), 0, "binary operand");
+	  do_docode(check_node_hash(CDAR(n)), 0);
 	}
 
 	emit0(CAR(n)->token);
