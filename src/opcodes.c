@@ -45,7 +45,7 @@ void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind)
     convert_svalue_to_bignum(what);
     index_no_free(to, what, ind);
     if(IS_UNDEFINED(to))
-      error("Indexing an integer with unknown method.\n");
+      error("Indexing an integer with an unknown method.\n");
     break;
 #endif /* AUTO_BIGNUM */
     

@@ -857,7 +857,9 @@ one_more_type:
 	  break;
 	  
 	default:
-	  error("Failed to decode type.\n");
+	  error("Failed to decode type "
+		"(object(%s), expected object(zero|program)).\n",
+		get_name_of_type(sp[-1].type));
       }
       pop_stack();
       type_stack_reverse();
