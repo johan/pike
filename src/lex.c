@@ -1477,9 +1477,9 @@ static int do_lex2(int literal, YYSTYPE *yylval)
     case '1': case '2': case '3': case '4':
     case '5': case '6': case '7': case '8': case '9':
     {
-      char *p;
+      char *p, *p2;
       UNGETC(c);
-      READBUF(isdigit(C) || C=='.');
+      READBUF(isdigit(C) || C=='.' || C=='e' || C=='E');
 
       p=STRCHR(buf,'.');
       
@@ -1500,6 +1500,19 @@ static int do_lex2(int literal, YYSTYPE *yylval)
 	  yylval->fnum=STRTOD(buf,NULL);
 	  return F_FLOAT;
 	}
+      }
+      p = STRCHR(buf, 'e');
+      p2 = STRCHR(buf, 'E');
+      if (p || p2) {
+	if (p) {
+	  if (p2 && (p > p2)) {
+	    p = p2;
+	  }
+	} else {
+	  p = p2;
+	}
+	UNGETSTR(p, strlen(p));
+	*p = 0;
       }
       if(buf[0]=='0')
 	yylval->number=STRTOL(buf,NULL,8);
