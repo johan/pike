@@ -26,6 +26,9 @@ int main(int argc, array(string) argv)
     if (mixed err = catch {
       Tools.AutoDoc.ProcessXML.mergeTrees(dest, src);
     }) {
+      if (arrayp(err)) {
+	throw(err);
+      }
       if (err->position) {
 	werror("%s %O: %s\n", err->part, err->position, err->message);
       } else {
