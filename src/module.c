@@ -14,6 +14,7 @@
 #include "stralloc.h"
 #include "object.h"
 #include "mapping.h"
+#include "program_id.h"
 
 #include "modules/modlist_headers.h"
 
@@ -40,6 +41,7 @@ void init_modules(void)
   unsigned int e;
 
   start_new_program();
+  Pike_compiler->new_program->id=PROG___BUILTIN_ID;
 
   for(e=0;e<NELEM(module_list);e++)
   {
