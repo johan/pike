@@ -320,6 +320,12 @@ struct pike_string *unicode_normalize( struct pike_string *source,
 {
   struct pike_string *d = unicode_decompose( source, how );
   if( how & COMPOSE_BIT )
-    d = unicode_compose( d, how );
+  {
+    struct pike_string *d2;
+    debug_malloc_touch(d2);
+    d2 = unicode_compose( d, how );
+    free_string(d);
+    return d2;
+  }
   return d;
 }
