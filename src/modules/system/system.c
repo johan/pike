@@ -107,7 +107,7 @@ static volatile void report_error(const char *function_name)
     break;
 #ifdef ENOLINK
   case ENOLINK:
-    error_msg = "Link to remote machine nolonger active";
+    error_msg = "Link to remote machine no longer active";
     break;
 #endif /* ENOLINK */
   case ENOSPC:
