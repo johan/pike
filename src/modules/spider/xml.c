@@ -648,7 +648,9 @@ ISWRAP(isHexChar)
 
 #ifdef VERBOSE_XMLDEBUG
 #define IF_XMLDEBUG(X) X
+#ifndef PIKE_DEBUG
 #define PIKE_DEBUG
+#endif
 #else
 #define IF_XMLDEBUG(X)
 #endif
@@ -2656,8 +2658,10 @@ static struct pike_string *very_low_parse_xml(struct xmldata *data,
 		  pop_n_elems(sp-save_sp);
 		}
 
-		if(low_parse_xml(data, sp[-2].u.string,0))
-		  xmlerror("Unmatched tag.", data, sp[-2].u.string);
+		if(low_parse_xml(data, sp[-2].u.string, 0)) {
+		  /* NOTE: low_parse_xml() pushes an element on the stack. */
+		  xmlerror("Unmatched tag.", data, sp[-3].u.string);
+		}
 		SYS();
 		break;
 
