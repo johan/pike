@@ -460,8 +460,8 @@ static char *combine_path(char *cwd,char *file)
     to++;
   }
 
-  if(*cwd && from[-1]!='/' && *ret && ret[-1]=='/')
-    *--to=0;
+  if(*ret && from[-1]!='/' && to[-1]=='/')
+      *--to=0;
 
   if(!*ret)
   {
