@@ -380,7 +380,7 @@ void free_all_nodes(void)
 			tmp, tmp->current_file->str, tmp->line_number,
 			tmp->token);
 
-		debug_malloc_dump_references(tmp);
+		debug_malloc_dump_references(tmp,0,2,0);
 
 		if(tmp->token==F_CONSTANT)
 		  print_tree(tmp);

@@ -1707,7 +1707,13 @@ void check_mapping(struct mapping *m)
     fatal("Mapping ->next->prev != mapping.\n");
 
   if(m->debug_size != md->size)
-    fatal("Mapping zapping detected!\n");
+  {
+    fprintf(stderr,"--MAPPING ZAPPING, mapping:\n");
+    describe(m);
+    fprintf(stderr,"--MAPPING ZAPPING, mapping data:\n");
+    describe(md);
+    fatal("Mapping zapping detected (%d != %d)!\n",m->debug_size,md->size);
+  }
 
   if(m->prev)
   {
@@ -1858,7 +1864,7 @@ void gc_check_all_mappings(void)
 #ifdef DEBUG_MALLOC
     if (((int)m->data) == 0x55555555) {
       fprintf(stderr, "** Zapped mapping in list of active mappings!\n");
-      describe_something(m, T_MAPPING, 1);
+      describe_something(m, T_MAPPING, 0,2,0);
       fatal("Zapped mapping in list of active mappings!\n");
     }
 #endif /* DEBUG_MALLOC */

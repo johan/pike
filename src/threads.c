@@ -579,8 +579,8 @@ TH_RETURN_TYPE new_thread_func(void * data)
       THREAD_T self = th_self();
 
       if( thread_id && !th_equal( OBJ2THREAD(thread_id)->id, self) )
-	fatal("Current thread is wrong. %x %x\n",
-	      OBJ2THREAD(thread_id)->id, self);
+	fatal("Current thread is wrong. %lx %lx\n",
+	      (long)OBJ2THREAD(thread_id)->id, (long)self);
 	
       if(thread_for_id(th_self()) != thread_id)
 	fatal("thread_for_id() (or thread_id) failed in new_thread_func! "
