@@ -13,15 +13,12 @@
 
 #ifdef __NT__
 
-#include "interpret.h"
-#include "object.h"
 #include "program.h"
-#include "svalue.h"
 #include "stralloc.h"
-#include "las.h"
 #include "threads.h"
 #include "module_support.h"
 #include "array.h"
+#include "constants.h"
 
 #include <winsock.h>
 #include <windows.h>
