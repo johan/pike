@@ -8,7 +8,7 @@ AC_MODULE_INIT()
 
 AC_ARG_WITH(rsaref,     [  --with-rsaref[=path]      Support for RSAREF],[],[])
 
-if /bin/test x$with_rsaref = x ; then
+if test x$with_rsaref = x ; then
   :
 else
   AC_MSG_CHECKING(for RSA libraries)
