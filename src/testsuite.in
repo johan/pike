@@ -2891,8 +2891,13 @@ void test_dir(string dir)
     {
       test_dir(file);
     }else if(stat[1]>=0){
-      if(glob("*.pike",file) || glob("*.pmod",file))
-        (program)file;
+      if(!glob("*/my_struct.pmod",file))
+      {
+        if(glob("*.pike",file) || glob("*.pmod",file))
+        {
+          (program)file;
+        }
+      }
     }
   }
 }
