@@ -2754,8 +2754,8 @@ int pike_make_pipe(int *fds)
 {
   int res = socketpair(AF_UNIX, SOCK_STREAM, 0, fds);
   if (res < 0) return res;
-  if ((fds[0] > MAX_OPEN_FILEDESCRIPTORS) ||
-      (fds[1] > MAX_OPEN_FILEDESCRIPTORS)) {
+  if ((fds[0] >= MAX_OPEN_FILEDESCRIPTORS) ||
+      (fds[1] >= MAX_OPEN_FILEDESCRIPTORS)) {
     close(fds[0]);
     close(fds[1]);
 #ifdef EMFILE
