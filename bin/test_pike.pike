@@ -212,6 +212,19 @@ int main(int argc, array(string) argv)
   string extra_info="";
   int shift;
 
+#if constant(System.getrlimit)
+  // Attempt to enable coredumps.
+  // Many Linux distributions default to having coredumps disabled.
+  catch {
+    [ int current, int max ] = System.getrlimit("core");
+    if ((current != -1) && ((current < max) || (max == -1))) {
+      // Not unlimited, and less than max.
+      // Attempt to raise.
+      System.setrlimit("core", max, max);
+    }
+  };
+#endif /* constant(System.getrlimit) */
+
   if(signum("SIGQUIT")>=0)
   {
     signal(signum("SIGQUIT"),lambda()
