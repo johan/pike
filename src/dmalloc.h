@@ -80,6 +80,7 @@ void dmalloc_add_mmap_entry(struct memory_map *m,
 			    int count,
 			    struct memory_map *recur,
 			    int recur_offset);
+int dmalloc_is_invalid_memory_block(void *block);
 
 
 #else

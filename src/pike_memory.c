@@ -2245,4 +2245,12 @@ void dmalloc_add_mmap_entry(struct memory_map *m,
   mt_unlock(&debug_malloc_mutex);
 }
 
+int dmalloc_is_invalid_memory_block(void *block)
+{
+  struct memhdr *mh=my_find_memhdr(block,0); 
+  if(!mh) return -1; /* no such known block */
+  if(mh->size < 0) return -2; /* block has been freed */
+  return 0; /* block is valid */
+}
+
 #endif
