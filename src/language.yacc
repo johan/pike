@@ -2095,16 +2095,29 @@ void yyerror(char *str)
 
   if ( get_master() )
   {
-    ref_push_string(lex.current_file);
+    if (lex.current_file) {
+      ref_push_string(lex.current_file);
+    } else {
+      /* yyerror() can be called from define_function(), which
+       * can be called by the C module initialization code.
+       */
+      push_constant_text("");
+    }
     push_int(lex.current_line);
     push_text(str);
     SAFE_APPLY_MASTER("compile_error",3);
     pop_stack();
   }else{
-    (void)fprintf(stderr, "%s:%ld: %s\n",
-		  lex.current_file->str,
-		  (long)lex.current_line,
-		  str);
+    if (lex.current_file) {
+      (void)fprintf(stderr, "%s:%ld: %s\n",
+		    lex.current_file->str,
+		    (long)lex.current_line,
+		    str);
+    } else {
+      (void)fprintf(stderr, "NULL:%ld: %s\n",
+		    (long)lex.current_line,
+		    str);
+    }
     fflush(stderr);
   }
 }
