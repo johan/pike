@@ -268,7 +268,7 @@ void chapter_ref_expansion(Node n, string dir) {
       break;
 
     case "contents":
-      c->replace_node( TocNode(dir, 3) );
+      n->replace_child(c, TocNode(dir, 3) );
       break;
 
     case "section":
@@ -322,8 +322,8 @@ void ref_expansion(Node n, string dir, void|string file) {
 	error("chapter-ref element outside file element\n");
       if(!c->get_attributes()->file)
 	error("No file attribute on chapter-ref element.\n");
-      c = c->replace_node( parse_file(c->get_attributes()->file)->
-			   get_first_element("chapter") );
+      n->replace_child(c, parse_file(c->get_attributes()->file)->
+		       get_first_element("chapter") );
       // fallthrough
     case "chapter":
       mapping m = c->get_attributes();
