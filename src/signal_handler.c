@@ -1460,7 +1460,13 @@ extern int pike_make_pipe(int *);
 # include <sys/tspriocntl.h>
 #else
 # ifdef HAVE_SCHED_SETSCHEDULER
-#  include <sched.h>
+#  ifdef HAVE_SCHED_H
+#    include <sched.h>
+#  else
+#   ifdef HAVE_SYS_SCHED_H
+#    include <sys/sched.h>
+#   endif
+#  endif
 # endif
 #endif
 
