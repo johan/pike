@@ -214,7 +214,7 @@ struct object *get_master(void)
 	/* do nothing */
 	UNSETJMP(tmp);
       }else{
-	extern f_decode_value(INT32);
+	extern void f_decode_value(INT32);
 
 	push_string(s);
 	push_int(0);
