@@ -6228,7 +6228,7 @@ PMOD_EXPORT void f_map_array(INT32 args)
  *! @returns
  *! Generally the same datatype as given, but with the subtype set to
  *! the return value of the function; the exception are program and
- *! function that gives a mapping back
+ *! function that give a mapping back.
  *!
  *! @note
  *! You may get unexpected errors if you feed the function with
