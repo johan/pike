@@ -1945,6 +1945,7 @@ PMOD_EXPORT int apply_low_safe_and_stupid(struct object *o, INT32 offset)
   struct pike_frame *new_frame=alloc_pike_frame();
   int ret;
   int use_dummy_reference = !o->prog->num_identifier_references;
+  int p_flags = o->prog->flags;
 
   /* This is needed for opcodes that use INHERIT_FROM_*
    * (eg F_EXTERN) to work.
@@ -1953,6 +1954,8 @@ PMOD_EXPORT int apply_low_safe_and_stupid(struct object *o, INT32 offset)
     struct reference dummy_ref = {
       0, 0, ID_HIDDEN,
     };
+    /* check_program() doesn't like our identifier... */
+    o->prog->flags |= PROGRAM_AVOID_CHECK;
     add_to_identifier_references(dummy_ref);
   }
 
@@ -1994,6 +1997,7 @@ PMOD_EXPORT int apply_low_safe_and_stupid(struct object *o, INT32 offset)
 
   if (use_dummy_reference) {
     Pike_compiler->new_program->num_identifier_references--;
+    o->prog->flags = p_flags;
   }
 
   POP_PIKE_FRAME();
