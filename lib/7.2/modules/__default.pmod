@@ -1,4 +1,4 @@
-// Compatibility module
+// Compatibility namespace
 // $Id$
 
 #pike 7.3
