@@ -1711,22 +1711,21 @@ static void mpzmod_pow(INT32 args)
   if (sp[-1].type == T_INT) {
     if (sp[-1].u.integer < 0)
       SIMPLE_ARG_ERROR ("Gmp.mpz->pow", 1, "Negative exponent.");
-#ifdef BIG_PIKE_INT
-    if (!FITS_ULONG (sp[-1].u.integer))
+    /* Cut off at 1 MB. */
+    if ((mpz_size(THIS)*sp[-1].u.integer>(0x100000/sizeof(mp_limb_t))))
       if(mpz_cmp_si(THIS, -1)<0 || mpz_cmp_si(THIS, 1)>0)
 	 goto too_large;
-#endif
     res = fast_clone_object(THIS_PROGRAM);
     mpz_pow_ui(OBTOMPZ(res), THIS, sp[-1].u.integer);
   } else {
-#ifdef BIG_PIKE_INT
 too_large:
-#endif
     mi = get_mpz(sp-1, 1, "Gmp.mpz->pow", 1, 1);
     if(mpz_sgn(mi)<0)
       SIMPLE_ARG_ERROR ("Gmp.mpz->pow", 1, "Negative exponent.");
     i=mpz_get_si(mi);
-    if(mpz_cmp_si(mi, i))
+    /* Cut off at 1 MB. */
+    if(mpz_cmp_si(mi, i) ||
+       (mpz_size(THIS)*i>(0x100000/sizeof(mp_limb_t))))
     {
        if(mpz_cmp_si(THIS, -1)<0 || mpz_cmp_si(THIS, 1)>0)
 	 SIMPLE_ARG_ERROR ("Gmp.mpz->pow", 1, "Exponent too large.");
