@@ -633,8 +633,9 @@ void backend(void)
     THREADS_DISALLOW();
     may_need_wakeup=0;
 
-    if(i>=0)
-    {
+    if (!i) {
+      /* Timeout */
+    } else if (i>0) {
 #ifdef DEBUG
       int num_active = i;
 #endif /* DEBUG */
