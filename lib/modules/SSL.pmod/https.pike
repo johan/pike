@@ -80,7 +80,7 @@ class no_random {
   {
     if (!secret)
       secret = sprintf("Foo!%4c", time());
-    arcfour->set_encrypt_key(Crypto.SHA->hash(secret));
+    arcfour->set_encrypt_key(Crypto.SHA1->hash(secret));
   }
 
   string read(int size)
