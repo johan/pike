@@ -36,7 +36,7 @@ RCSID("$Id$");
 
 #include "precompiled_odbc.h"
 
-#define ODBC_DEBUG
+/* #define ODBC_DEBUG */
 
 /*
  * Globals
