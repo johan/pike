@@ -1524,7 +1524,7 @@ one_more_type:
   switch(tmp)
   {
     default:
-      fatal("error in type string.\n");
+      Pike_error("error in type string.\n");
       /*NOTREACHED*/
       break;
 
