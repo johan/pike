@@ -756,14 +756,17 @@ static int o_catch(unsigned char *pc);
 
 struct light_frame_info
 {
+  struct pike_frame *saved_fp;
   struct svalue *expendible;
   struct svalue *locals;
 };
 
 static void restore_light_frame_info(struct light_frame_info *info)
 {
-  Pike_fp->expendible = info->expendible;
-  Pike_fp->locals = info->locals;
+  if (Pike_fp == info->saved_fp) {
+    Pike_fp->expendible = info->expendible;
+    Pike_fp->locals = info->locals;
+  }
 }
 
 #ifdef PIKE_DEBUG

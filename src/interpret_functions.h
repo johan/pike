@@ -1517,6 +1517,7 @@ OPCODE0_TAILJUMP(F_RECUR,"recur")
   check_c_stack(8192);
   check_stack(256);
 
+  info.saved_fp = Pike_fp;
   info.expendible = Pike_fp->expendible;
   info.locals = Pike_fp->locals;
   SET_ONERROR(uwp, restore_light_frame_info, &info);
