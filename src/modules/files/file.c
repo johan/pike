@@ -2392,13 +2392,13 @@ static void file_pipe(INT32 args)
 
   if ((i<0) || (inout[0] < 0) || (inout[1] < 0))
   {
+    ERRNO=errno;
     if (inout[0] >= 0) {
       fd_close(inout[0]);
     }
     if (inout[1] >= 0) {
       fd_close(inout[1]);
     }
-    ERRNO=errno;
     push_int(0);
   }
   else
