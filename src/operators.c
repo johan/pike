@@ -72,7 +72,6 @@ COMPARISON(f_ge,"`>=",!is_lt)
  sp[-2]=sp[-1]; \
  sp--;
 
-
 void f_add(INT32 args)
 {
   INT_TYPE e,size;
@@ -271,7 +270,7 @@ void f_add(INT32 args)
     break;
   }
 
-  case BIT_FLOAT | BIT_INT:
+  case BIT_FLOAT|BIT_INT:
   {
     FLOAT_TYPE sum;
     sum=0.0;
@@ -300,7 +299,7 @@ void f_add(INT32 args)
       for(e=1;e<args;e++)
 	if(sp[e-args].type != T_ARRAY)
 	  error("`+: trying to add integers and arrays.\n");
-
+      
       a=add_arrays(sp-args+1,args-1);
       pop_n_elems(args);
       push_array(a);
@@ -316,6 +315,25 @@ void f_add(INT32 args)
     pop_n_elems(args);
     push_array(a);
     break;
+  }
+
+  case BIT_MAPPING|BIT_INT:
+  {
+    if(IS_UNDEFINED(sp-args))
+    {
+      int e;
+      struct mapping *a;
+
+      for(e=1;e<args;e++)
+	if(sp[e-args].type != T_MAPPING)
+	  error("`+: trying to add integers and mappings.\n");
+
+      a=add_mappings(sp-args+1,args-1);
+      pop_n_elems(args);
+      push_mapping(a);
+      return;
+    }
+    error("`+: trying to add integers and mappings.\n");
   }
 
   case BIT_MAPPING:
