@@ -28,6 +28,7 @@ struct pike_crypto_cast {
 		    unsigned INT8* outblock);
 };
 
+#undef THIS
 #define THIS ((struct pike_crypto_cast *)(fp->current_storage))
 #define OBTOCTX(o) ((struct pike_crypto_cast *)(o->storage))
 
