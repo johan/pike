@@ -2328,7 +2328,7 @@ PMOD_EXPORT void o_range(void)
   case T_STRING:
   {
     struct pike_string *s;
-    if(to+1>=sp[-1].u.string->len)
+    if(to >= sp[-1].u.string->len-1)
     {
       if(from==0) return;
       to = sp[-1].u.string->len-1;
@@ -2349,7 +2349,7 @@ PMOD_EXPORT void o_range(void)
   case T_ARRAY:
   {
     struct array *a;
-    if(to+1 >= sp[-1].u.array->size)
+    if(to >= sp[-1].u.array->size-1)
     {
       to = sp[-1].u.array->size-1;
 
