@@ -1197,8 +1197,9 @@ if test "$with_bundles" = "no"; then :; else
     # We have a bundle directory; enable them if needed.
     pike_bundle_dir=`cd "$srcdir/../bundles" && pwd`
   fi
+  test -d bundles/. || mkdir bundles;
 fi
-if test -d bundles || mkdir bundles; then
+if test -d bundles/.; then
   touch bundles/no_testsuites
   pike_bundle_prefix="`pwd`/bundles"
   LDFLAGS="$LDFLAGS -L$pike_bundle_prefix/lib"
