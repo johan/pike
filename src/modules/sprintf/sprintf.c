@@ -1032,13 +1032,13 @@ static void low_pike_sprintf(struct format_stack *fs,
   {
     int num_snurkel;
 
+    if(fs->fsp-fs->format_info_stack==FORMAT_INFO_STACK_SIZE - 1)
+      sprintf_error(fs, "Sprintf stack overflow.\n");
     fs->fsp++;
 #ifdef PIKE_DEBUG
     if(fs->fsp < fs->format_info_stack)
       Pike_fatal("sprintf: fs->fsp out of bounds.\n");
 #endif
-    if(fs->fsp-fs->format_info_stack==FORMAT_INFO_STACK_SIZE)
-      sprintf_error(fs, "Sprintf stack overflow.\n");
     fs->fsp->pad_string=MKPCHARP(" ",0);
     fs->fsp->pad_length=1;
     fs->fsp->fi_free_string=0;
