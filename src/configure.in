@@ -2265,6 +2265,11 @@ else
       fi
     ;;
 
+    xOpenBSD*)
+      CFLAGS="${CFLAGS} -pthread"
+      LDFLAGS="${LDFLAGS} -pthread"
+    ;;
+
     xFreeBSD*)      
       # Threads on FreeBSD earlier than 1998-06-07 are broken.
       LIBS="${OLDLIBS}"
