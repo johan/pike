@@ -593,7 +593,7 @@ private class SubSysLogger {
 
   constant startdoc = "logging [<filename>]\n"
   "\tLogs all input and output to a log file. If no file name is \n"
-  "\tspecified logging will be prepended to hilfe.log in the current\n"
+  "\tspecified logging will be appended to hilfe.log in the current\n"
   "\twork directory.\n";
 
   constant stopdoc = "logging\n\tTurns off logging to file.\n";
