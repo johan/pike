@@ -2757,8 +2757,19 @@ AC_MSG_CHECKING(CCSHARED)
 if test -z "$CCSHARED" ; then
   if test "$GCC" = yes ; then
     case $pike_cv_sys_os in
-      BSD/OS*) CCSHARED="";;
-      *) CCSHARED="-fpic";;
+      BSD/OS*)
+	CCSHARED=""
+      ;;
+      Solaris*)
+        # The Image module runs out of symbol reference space unless we
+	# use the large PIC model:
+	# ld: fatal: too many symbols require `small' PIC references:
+        # 	have 2205, maximum 2048 -- recompile some modules -K PIC.
+	CCSHARED="-fPIC"
+      ;;
+      *)
+	CCSHARED="-fpic"
+      ;;
     esac
   else
     case $pike_cv_sys_os in
