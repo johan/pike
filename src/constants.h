@@ -14,7 +14,6 @@
 #include "hashtable.h"
 #include "las.h" /* For OPT_SIDE_EFFECT etc. */
 
-typedef void (*c_fun)(INT32);
 typedef int (*docode_fun)(node *n);
 typedef node *(*optimize_fun)(node *n);
 
