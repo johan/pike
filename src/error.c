@@ -90,7 +90,7 @@ PMOD_EXPORT void pike_gdb_breakpoint(void)
 {
 }
 
-PMOD_EXPORT JMP_BUF *init_recovery(JMP_BUF *r DEBUG_LINE_ARGS)
+PMOD_EXPORT JMP_BUF *init_recovery(JMP_BUF *r, size_t stack_pop_levels DEBUG_LINE_ARGS)
 {
   check_recovery_context();
 #ifdef PIKE_DEBUG
@@ -98,7 +98,7 @@ PMOD_EXPORT JMP_BUF *init_recovery(JMP_BUF *r DEBUG_LINE_ARGS)
   OED_FPRINTF((stderr, "init_recovery(%p) %s\n", r, location));
 #endif
   r->frame_pointer=Pike_fp;
-  r->stack_pointer=Pike_sp-Pike_interpreter.evaluator_stack;
+  r->stack_pointer=Pike_sp - stack_pop_levels - Pike_interpreter.evaluator_stack;
   r->mark_sp=Pike_mark_sp - Pike_interpreter.mark_stack;
   r->previous=Pike_interpreter.recoveries;
   r->onerror=0;
