@@ -511,7 +511,7 @@ CHRONO("image_paste_mask end");
 
 void image_paste_alpha_color(INT32 args)
 {
-   struct image *img,*mask;
+   struct image *mask;
    INT32 x1,y1,x,y,x2,y2;
    rgb_group rgb,*d,*m;
    INT32 mmod,dmod;
