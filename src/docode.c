@@ -440,8 +440,20 @@ int do_lfun_call(int id, node *args)
   struct reference *ref =
     Pike_compiler->new_program->identifier_references + id;
 
-  /* NB: The second part handles use of local::fun(). */
+  /* Test description:
+   *
+   * * Test if we have a valid current function.
+   *
+   * * Check that the function isn't varargs.
+   *
+   * * Quick check if id is the current function.
+   *
+   * * Check if id is an alternate reference to the current function.
+   */
   if((Pike_compiler->compiler_frame->current_function_number >= 0) &&
+     (!(Pike_compiler->new_program->
+	identifiers[ref->identifier_offset].identifier_flags &
+	IDENTIFIER_VARARGS)) &&
      ((id == Pike_compiler->compiler_frame->current_function_number) ||
       ((!ref->inherit_offset) &&
        (ref->identifier_offset ==
