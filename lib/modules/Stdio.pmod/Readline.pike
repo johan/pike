@@ -939,7 +939,7 @@ string set_prompt(string newp)
   {
     if(newline_func)
     {
-      werror("\nNew prompt!!! %O\n",newline_func);
+//      werror("\nNew prompt!!! %O\n",newline_func);
       int p=cursorpos;
       setcursorpos(0);
       output_controller->bol();
