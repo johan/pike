@@ -19,7 +19,6 @@
 
 (require 'font-lock)
 (require 'custom)
-(require 'advice)
 
 ;; Added in later font-lock versions. Copied here for backward
 ;; compatibility.
