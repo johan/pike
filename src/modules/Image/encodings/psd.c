@@ -244,6 +244,7 @@ static struct buffer read_pstring( struct buffer *data )
     layer->flags = read_uchar( src );
     read_uchar( src );
     layer->extra_data = read_string( src );
+    layer->extra_data.len++;
     if(layer->extra_data.len)
     {
       struct buffer tmp = layer->extra_data;
