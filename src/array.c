@@ -90,10 +90,13 @@ PMOD_EXPORT struct array *low_allocate_array(ptrdiff_t size, ptrdiff_t extra_spa
     return &empty_array;
   }
 
+  if( (size+extra_space-1) >
+      (ULONG_MAX-sizeof(struct array))/sizeof(struct svalue) )
+    Pike_error("Too large array (memory size exceeds size of size_t)\n");
   v=(struct array *)malloc(sizeof(struct array)+
 			   (size+extra_space-1)*sizeof(struct svalue));
   if(!v)
-    Pike_error("Couldn't allocate array, out of memory.\n");
+    Pike_error(msg_out_of_mem);
 
   GC_ALLOC(v);
 
