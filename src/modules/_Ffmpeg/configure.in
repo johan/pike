@@ -57,7 +57,7 @@ dnl don't ask me why.
       AC_DEFINE(HAVE_WORKING_LIBFFMPEG)
 dnl      PIKE_FEATURE(FFmpeg)
     else 
-      PIKE_FEATURE(FFmpeg,[no, detected library, but not working])
+      PIKE_FEATURE(FFmpeg,[no])
     fi
 fi
 
