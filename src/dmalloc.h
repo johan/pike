@@ -1,8 +1,9 @@
 /*
  * $Id$
  */
-#ifdef DEBUG_MALLOC
 
+extern char *debug_xalloc(long);
+#ifdef DEBUG_MALLOC
 struct memhdr;
 
 void dump_memhdr_locations(struct memhdr *from,
@@ -16,7 +17,6 @@ void low_add_marks_to_memhdr(struct memhdr *to,
 extern int verbose_debug_malloc;
 extern int verbose_debug_exit;
 extern void *debug_malloc(size_t, const char *, int);
-extern char *debug_xalloc(long);
 extern void *debug_calloc(size_t, size_t, const char *, int);
 extern void *debug_realloc(void *, size_t, const char *, int);
 extern void debug_free(void *, const char *, int);
