@@ -4516,7 +4516,8 @@ struct program *compile(struct pike_string *prog,
       placeholder=0;
     }
 
-    Pike_error("Compilation failed.\n");
+    throw_error_object(low_clone(compilation_error_program), 0, 0, 0,
+		       "Compilation failed.\n");
   }
 
   if (placeholder) {
