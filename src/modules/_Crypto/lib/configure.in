@@ -1,7 +1,7 @@
 # $Id$
 AC_INIT(sha.c)
 
-AC_PROG_CC
+MY_AC_PROG_CC
 AC_PROG_CPP
 AC_PROG_RANLIB
 
