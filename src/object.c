@@ -842,7 +842,7 @@ PMOD_EXPORT void object_index_no_free2(struct svalue *to,
 			  struct svalue *index)
 {
   struct program *p;
-  int f;
+  int f = -1;
 
   if(!o || !(p=o->prog))
   {
@@ -944,7 +944,7 @@ PMOD_EXPORT void object_set_index2(struct object *o,
 		      struct svalue *from)
 {
   struct program *p;
-  int f;
+  int f = -1;
 
   if(!o || !(p=o->prog))
   {

@@ -1377,8 +1377,8 @@ PMOD_EXPORT struct mapping *merge_mapping_array_ordered(struct mapping *a,
 					    struct array *b, INT32 op)
 {
   struct array *ai, *av;
-  struct array *ci, *cv;
-  INT32 *zipper;
+  struct array *ci = NULL, *cv = NULL;
+  INT32 *zipper = NULL;
   struct mapping *m;
 
   ai=mapping_indices(a);

@@ -4445,7 +4445,7 @@ PMOD_EXPORT void *parent_storage(int depth)
     }
   }
 
-  if(Pike_fp->fun == -1)
+  if(!~Pike_fp->fun)
     error("Cannot access parent storage!\n");
 
   loc.parent_identifier=Pike_fp->fun;
