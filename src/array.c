@@ -1525,10 +1525,12 @@ void describe_array(struct array *a,struct processing *p,int indent)
       return;
     }
   }
-  
-  sprintf(buf, a->size == 1 ? "({ /* %ld element */\n" :
-	                      "({ /* %ld elements */\n",
-	  (long)a->size);
+
+  if (a->size == 1) {
+    sprintf(buf, "({ /* 1 element */\n");
+  } else {
+    sprintf(buf, "({ /* %ld elements */\n", (long)a->size);
+  }
   my_strcat(buf);
   describe_array_low(a,&doing,indent);
   my_putchar('\n');
