@@ -180,6 +180,9 @@ one_more_type:
     case T_INT:
       {
 	int i;
+	/* FIXME: I assume the type is saved in network byte order. Is it?
+	 *	/grubba 1999-03-07
+	 */
 	for(i = 0; i < 2*sizeof(INT32); i++) {
 	  addchar(EXTRACT_UCHAR(t++));
 	}
@@ -627,7 +630,19 @@ one_more_type:
     case T_MULTISET:
     case T_NOT:
       goto one_more_type;
-      
+
+    case T_INT:
+      {
+	int i;
+	/* FIXME: I assume the type is saved in network byte order. Is it?
+	 *	/grubba 1999-03-07
+	 */
+	for(i=0; i < 2*sizeof(INT32); i++) {
+	  push_type(GETC());
+	}
+      }
+      break;
+
     case '0':
     case '1':
     case '2':
@@ -638,7 +653,6 @@ one_more_type:
     case '7':
     case '8':
     case '9':
-    case T_INT:
     case T_FLOAT:
     case T_STRING:
     case T_PROGRAM:
