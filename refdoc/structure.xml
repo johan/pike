@@ -49,6 +49,9 @@
   <file name="GDK.xml">
     <target module="GDK"/>
   </file>
+  <file name="Gnome.xml">
+    <target module="Gnome"/>
+  </file>
   <!--
   <file name="GL.xml">
     <target module="GL"/>
