@@ -1584,6 +1584,12 @@ test_any([[
    return x;
 ]], 11)
 
+test_any([[
+  int x;
+  for(int i=5; i < 10; i++) x++;
+  return x;
+]], 5)
+
 test_true([[lambda(function f) {return 1;}(object_program(this_object()));]])
 test_eq([[class c { int `()(){ return 4711; } }()(); ]],4711)
 teste_eval_error(mixed foo=({}); sort(@foo); )
