@@ -972,7 +972,6 @@ constant authenticate = unimplemented;
 constant examine = unimplemented;
 constant subscribe = unimplemented;
 constant unsubscribe = unimplemented;
-constant status = unimplemented;
 constant append = unimplemented;
 constant check = unimplemented;
 
