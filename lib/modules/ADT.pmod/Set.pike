@@ -137,9 +137,6 @@ int(0..1) superset(ADT.Set other)
 //! and all items in B are present in A. Otherwise, it returns false.
 int(0..1) `==(ADT.Set other)
 {
-  if (predef::`==(this, other))
-    return 1; // Identical.
-
   foreach(indices(set), mixed item)
     if (!other->contains(item))
       return 0;
