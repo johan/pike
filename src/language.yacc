@@ -47,6 +47,7 @@
 %token F_CLEAR_STRING_SUBTYPE
 %token F_CONSTANT F_FLOAT F_STRING F_ARROW_STRING
 %token F_NUMBER F_NEG_NUMBER F_CONST_1 F_CONST0 F_CONST1 F_BIGNUM
+%token F_UNDEFINED
 /*
  * These are the predefined functions that can be accessed from Pike.
  */

@@ -1078,7 +1078,12 @@ static int do_docode2(node *n,int flags)
     switch(n->u.sval.type)
     {
     case T_INT:
-      emit(F_NUMBER,n->u.sval.u.integer);
+      if(!n->u.sval.u.integer && n->u.sval.subtype==NUMBER_UNDEFINED)
+      {
+	emit2(F_UNDEFINED);
+      }else{
+	emit(F_NUMBER,n->u.sval.u.integer);
+      }
       return 1;
 
     case T_STRING:
