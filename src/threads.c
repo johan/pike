@@ -395,7 +395,7 @@ void f_thread_create(INT32 args)
     free_object(arg->id);
     free_array(arg->args);
     free((char *)arg);
-    error("Failed to create thread.\n");
+    error("Failed to create thread (errno = %d).\n",errno);
   }
 }
 
