@@ -148,8 +148,15 @@ int seek(int pos, void|int mult, void|int add) {
   if(mult)
     pos = pos*mult+add;
   if(pos<0)
+  {
     pos = sizeof(data)+pos;
+    if( pos < 0 )
+	pos = 0;
+  }
   ptr = pos;
+  if( ptr > strlen( data ) )
+      ptr = strlen(data);
+  return ptr;
 }
 
 //! Always returns 1.
