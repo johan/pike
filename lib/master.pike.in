@@ -784,7 +784,7 @@ class dirnode
 //      werror("dirnode(%O)[%O] -> %O\n",dirname,index,p);
       return p;
     }
-    werror("Returning UNDEFINED for %s\n",ind);
+//    werror("Returning UNDEFINED for %s\n",ind);
     return UNDEFINED;
   }
 

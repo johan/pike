@@ -1266,6 +1266,8 @@ PMOD_EXPORT void gc_mark_object_as_referenced(struct object *o)
     if(o->parent)
       gc_mark_object_as_referenced(o->parent);
 
+    if(!PIKE_OBJ_INITED(o)) return;
+
     LOW_PUSH_FRAME(o);
 
     for(e=p->num_inherits-1; e>=0; e--)
@@ -1310,6 +1312,7 @@ PMOD_EXPORT void gc_mark_object_as_referenced(struct object *o)
 PMOD_EXPORT void real_gc_cycle_check_object(struct object *o, int weak)
 {
   if(o->next == o) return; /* Fake object used by compiler */
+  if(!PIKE_OBJ_INITED(o)) return;
 
   GC_CYCLE_ENTER_OBJECT(o, weak) {
     int e;
@@ -1383,7 +1386,7 @@ static inline void gc_check_object(struct object *o)
 #endif
   }
 
-  if((p=o->prog))
+  if((p=o->prog) && PIKE_OBJ_INITED(o))
   {
     debug_malloc_touch(p);
 
