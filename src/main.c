@@ -918,6 +918,7 @@ DECLSPEC(noreturn) void pike_do_exit(int num) ATTRIBUTE((noreturn))
 void low_init_main(void)
 {
   void init_iterators(void);
+  void init_facetgroup(void);
 
   init_cpp();
   init_backend();
@@ -933,6 +934,7 @@ void low_init_main(void)
   init_builtin_efuns();
   init_signals();
   init_dynamic_load();
+  init_facetgroup();
 }
 
 void exit_main(void)
@@ -972,6 +974,7 @@ void low_exit_main(void)
 {
 #ifdef DO_PIKE_CLEANUP
   void exit_iterators(void);
+  void exit_facetgroup(void);
 
   /* Clear various global references. */
 
@@ -988,6 +991,7 @@ void low_exit_main(void)
   cleanup_module_support();
   exit_operators();
   exit_iterators();
+  exit_facetgroup();
   cleanup_program();
   cleanup_compiler();
   cleanup_error();

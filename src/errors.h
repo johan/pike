@@ -125,6 +125,8 @@ DECLARE_ERROR(cpp, Cpp, ERR_INHERIT(generic), EMPTY)
 
 DECLARE_ERROR(compilation, Compilation, ERR_INHERIT(generic), EMPTY)
 
+DECLARE_ERROR(compile_callback, CompileCallback, ERR_INHERIT(generic), EMPTY)
+
 DECLARE_ERROR(master_load, MasterLoad, ERR_INHERIT (generic), EMPTY)
 
 DECLARE_ERROR (module_load, ModuleLoad,

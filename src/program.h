@@ -472,6 +472,10 @@ struct pike_trampoline
  * parent object. Only set if PROGRAM_USES_PARENT is. */
 #define PROGRAM_NEEDS_PARENT 0x1000
 
+/* Indicates that the class is a facet or product_class. */
+#define PROGRAM_IS_FACET_CLASS 0x1
+#define PROGRAM_IS_PRODUCT_CLASS 0x2
+
 /* Using define instead of enum allows for ifdefs - Hubbe */
 #define PROG_EVENT_INIT 0
 #define PROG_EVENT_EXIT 1
@@ -539,6 +543,11 @@ struct program
 #include "program_areas.h"
   
   INT16 lfuns[NUM_LFUNS];
+
+  /* Facet related stuff */
+  INT16 facet_class;   /* PROGRAM_IS_X_CLASS (X=FACET/PRODUCT) */
+  INT32 facet_index;   /* Index to the facet this facet class belongs to */
+  struct object *facet_group;
 };
 
 #if 0
