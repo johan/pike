@@ -76,6 +76,17 @@ string rsa_unpad(bignum block, int type)
   return s[i+1..];
 }
 
+object sign(string message, program h, mixed|void r)
+{
+  return rsa_pad(pkcs.build_digestinfo(message, h()), 1, r)->powm(d, n);
+}
+
+int verify(string msg, program h, object sign)
+{
+  string s = pkcs.build_digestinfo(msg, h());
+  return s == rsa_unpad(sign->powm(e, n), 1);
+}
+
 string sha_sign(string message, mixed|void r)
 {
   object hash = Crypto.sha();
