@@ -148,7 +148,7 @@
   ZMEMBER(INT32,parent_identifier,0)
   IMEMBER(int, compat_major, PIKE_MAJOR_VERSION)
   IMEMBER(int, compat_minor, PIKE_MINOR_VERSION)
-  ZMEMBER(int, check_final, 0)
+  ZMEMBER(int, flags, 0)
   ZMEMBER(struct compilation *,compiler,0)
   SEND
 

@@ -3067,7 +3067,7 @@ static void decode_value2(struct decode_data *data)
 	  /* Start the new program. */
 	  orig_compilation_depth = compilation_depth;
 	  compilation_depth = -1;
-	  low_start_new_program(NULL, NULL, 0, NULL);
+	  low_start_new_program(NULL, 1, NULL, 0, NULL);
 	  p = Pike_compiler->new_program;
 
 	  /* We don't want to be affected by #pragma save_parent or
