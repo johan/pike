@@ -14,6 +14,7 @@
 #include "operators.h"
 #include "constants.h"
 #include "object.h"
+#include "builtin_functions.h"
 
 #if PIKE_BYTEORDER == 1234
 #define MAKE_TYPE_WORD(t,st) ((t)|((st)<<16))
@@ -435,9 +436,8 @@ void ins_f_byte(unsigned int b)
      
   case F_MAKE_ITERATOR - F_OFFSET:
     {
-      extern void f_Iterator(INT32);
       SET_REG(PPC_REG_ARG1, 1);
-      addr = (void *)f_Iterator;
+      addr = (void *)f_get_iterator;
     }
     break;
   case F_ADD - F_OFFSET:

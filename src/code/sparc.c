@@ -15,6 +15,7 @@
 #include "svalue.h"
 #include "operators.h"
 #include "object.h"
+#include "builtin_functions.h"
 
 /*
  * Register definitions
@@ -601,10 +602,9 @@ static void low_ins_f_byte(unsigned int b, int delay_ok)
 
   case F_MAKE_ITERATOR - F_OFFSET:
     {
-      extern void f_Iterator(INT32);
       SET_REG(SPARC_REG_O0, 1);
       delay_ok = 1;
-      addr = (void *)f_Iterator;
+      addr = (void *)f_get_iterator;
     }
     break;
 

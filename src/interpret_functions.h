@@ -1363,8 +1363,7 @@ OPCODE0_BRANCH(F_FOREACH, "foreach", 0, { /* array, lvalue, X, i */
 });
 
 OPCODE0(F_MAKE_ITERATOR, "Iterator", 0, {
-  extern void f_Iterator(INT32);
-  f_Iterator(1);
+  f_get_iterator(1);
 });
 
 OPCODE0_BRANCH(F_NEW_FOREACH, "foreach++", 0, { /* iterator, lvalue, lvalue */

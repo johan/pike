@@ -12,6 +12,7 @@
 #include "operators.h"
 #include "constants.h"
 #include "object.h"
+#include "builtin_functions.h"
 
 enum ia32_reg {REG_EAX = 0, REG_EBX = 3, REG_ECX = 1, REG_EDX = 2, REG_NONE = 4};
 
@@ -757,10 +758,9 @@ void ins_f_byte(unsigned int b)
 
     case F_MAKE_ITERATOR - F_OFFSET:
       {
-	extern void f_Iterator(INT32);
 	ins_debug_instr_prologue (b, 0, 0);
 	update_arg1(1);
-	addr = (void *)f_Iterator;
+	addr = (void *)f_get_iterator;
       }
       break;
   }
