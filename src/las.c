@@ -2233,7 +2233,11 @@ static struct svalue *is_stupid_func(node *n,
 
   n=CAR(n);
   if(!n || n->token != F_CONSTANT) return 0;
-  return &n->u.sval;
+
+  if((count_arguments(n->type) < 0) == !!vargs)
+    return &n->u.sval;
+
+  return 0;
 }
 
 int dooptcode(struct pike_string *name,
