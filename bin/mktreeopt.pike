@@ -695,13 +695,20 @@ void parse_data()
 	action = "goto use_cdr;";
 	break;
       default:
+	string fix_refs = "";
+	if (sizeof(t)) {
+	  fix_refs =
+	    "#ifndef SHARED_NODES\n" +
+	    "  " + (t + ({ "0;\n" })) * " = " +
+	    "#endif /* !SHARED_NODES */\n";
+	}
 	action = sprintf("{\n"
 			 "  tmp1 = %s;\n"
 			 "%s"
 			 "  goto use_tmp1;\n"
 			 "}",
 			 expr,
-			 sizeof(t)?("  " + (t * " = ") + " = 0;\n"):"");
+			 fix_refs);
 	break;
       }
     } else {
@@ -722,7 +729,7 @@ string do_indent(string code, string indent)
 {
   array a = code/"\n";
   for(int i = 0; i < sizeof(a); i++) {
-    if (sizeof(a[i])) {
+    if (sizeof(a[i]) && (a[i][0] != '#')) {
       a[i] = indent + a[i];
     }
   }
