@@ -452,6 +452,8 @@ void f_rm(INT32 args)
   INT32 i;
   struct pike_string *str;
 
+  destruct_objects_to_destruct();
+
   if(!args)
     error("Too few arguments to rm()\n");
 
