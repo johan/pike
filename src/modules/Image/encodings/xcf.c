@@ -1309,7 +1309,6 @@ void image_xcf_f__decode_tiles( INT32 args )
       for(cx=0; cx<ewidth; cx+=shrink,ind+=shrink,ix++)         \
       {                                                         \
         rgb_group pix;                                          \
-        rgb_group apix;                                         \
         if(ix >= i->xsize)  continue
 
 #define LOOP_EXIT()                                             \
@@ -1323,56 +1322,58 @@ void image_xcf_f__decode_tiles( INT32 args )
     else
       span = 1;
 
-    switch( bpp )
     {
-     case 1: /* indexed or grey */
-       if(colortable)
-       {
-         LOOP_INIT();
-         pix = colortable[s[ind]];
-	 apix.r = apix.g = apix.b = 255;
-         LOOP_EXIT();
-       } 
-       else
-       {
-         LOOP_INIT();
-         pix.r = pix.g = pix.b = s[ind];
-	 apix.r = apix.g = apix.b = 255;
-         LOOP_EXIT();
-       }
-       break;
-     case 2: /* indexed or grey with alpha */
-       if(colortable)
-       {
-         LOOP_INIT();
-         pix = colortable[s[ind]];
-         apix.r = apix.g = apix.b = s[ind+span];
-         LOOP_EXIT();
-       }
-       else
-       {
-         LOOP_INIT();
-         pix.r = pix.g = pix.b = s[ind];
-         apix.r = apix.g = apix.b = s[ind+span];
-         LOOP_EXIT();
-       }
-       break;
-     case 3: /* rgb */
-       LOOP_INIT();
-       pix.r = s[ind];
-       pix.g = s[ind+span];
-       pix.b = s[ind+span*2];
-       apix.r = apix.g = apix.b = 255;
-       LOOP_EXIT();
-       break;
-     case 4: /* rgba */
-       LOOP_INIT();
-       pix.r = s[ind];
-       pix.g = s[ind+span];
-       pix.b = s[ind+span*2];
-       apix.r = apix.b = apix.g = s[ind+span*3];
-       LOOP_EXIT();
-       break;
+      rgb_group apix;
+      switch( bpp )
+      {
+      case 1: /* indexed or grey */
+	apix.r = apix.g = apix.b = 255;
+	if(colortable)
+	{
+	  LOOP_INIT();
+	  pix = colortable[s[ind]];
+	  LOOP_EXIT();
+	} 
+	else
+	{
+	  LOOP_INIT();
+	  pix.r = pix.g = pix.b = s[ind];
+	  LOOP_EXIT();
+	}
+	break;
+      case 2: /* indexed or grey with alpha */
+	if(colortable)
+	{
+	  LOOP_INIT();
+	  pix = colortable[s[ind]];
+	  apix.r = apix.g = apix.b = s[ind+span];
+	  LOOP_EXIT();
+	}
+	else
+	{
+	  LOOP_INIT();
+	  pix.r = pix.g = pix.b = s[ind];
+	  apix.r = apix.g = apix.b = s[ind+span];
+	  LOOP_EXIT();
+	}
+	break;
+      case 3: /* rgb */
+	apix.r = apix.g = apix.b = 255;
+	LOOP_INIT();
+	pix.r = s[ind];
+	pix.g = s[ind+span];
+	pix.b = s[ind+span*2];
+	LOOP_EXIT();
+	break;
+      case 4: /* rgba */
+	LOOP_INIT();
+	pix.r = s[ind];
+	pix.g = s[ind+span];
+	pix.b = s[ind+span*2];
+	apix.r = apix.b = apix.g = s[ind+span*3];
+	LOOP_EXIT();
+	break;
+      }
     }
 
     if( df )
