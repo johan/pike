@@ -6779,7 +6779,7 @@ PMOD_EXPORT void f_map(INT32 args)
 	 dmalloc_touch_svalue(Pike_sp);
 	 push_array_items(Pike_sp->u.array);
 	 f_map(splice+2);     /* ... arr fun extra -> ... retval */
-	 stack_pop_n_elems_keep_top(2); /* arr fun extra ret -> arr retval */
+	 stack_pop_2_elems_keep_top(); /* arr fun extra ret -> arr retval */
 	 stack_swap();        /* retval arr */
 	 f_indices(1);        /* retval retind */
 	 stack_swap();        /* retind retval */
@@ -7178,7 +7178,7 @@ PMOD_EXPORT void f_filter(INT32 args)
 	   k++;
 	 }
 	 if (k > 1) f_add(k);
-	 stack_pop_n_elems_keep_top(2);
+	 stack_pop_2_elems_keep_top();
 	 return;
 
       case T_MAPPING:

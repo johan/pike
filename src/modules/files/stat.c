@@ -907,7 +907,7 @@ static void stat_values(INT32 args)
       f_index(2);
    }
    f_aggregate(z);
-   stack_pop_n_elems_keep_top(1);
+   stack_pop_keep_top();
 }
 
 #undef THIS_STAT

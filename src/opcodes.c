@@ -585,7 +585,7 @@ void o_cast(struct pike_type *type, INT32 run_time_type)
 	      ref_push_object(((struct pike_trampoline *)
 			       (Pike_sp[-1].u.object->storage))->
 			      frame->current_object);
-	      stack_pop_n_elems_keep_top(1);
+	      stack_pop_keep_top();
 	    } else {
 	      Pike_sp[-1].type = T_OBJECT;
 	    }
