@@ -33,6 +33,7 @@ RCSID("$Id$");
 #include "svalue.h"
 #include "threads.h"
 #include "array.h"
+#include "mapping.h"
 #include "pike_error.h"
 #include "threads.h"
 
@@ -42,6 +43,26 @@ RCSID("$Id$");
 
 /* MUST BE INCLUDED LAST */
 #include "module_magic.h"
+
+
+/* PNG module uses "type" for something else than what we want to use
+   it for.  Rename "type" to "_type", and insert our own "type"...  */
+
+static void fix_png_mapping(void)
+{
+  struct svalue *s;
+  if(sp[-1].type != T_MAPPING) return;
+  if((s = simple_mapping_string_lookup(sp[-1].u.mapping, "type"))) {
+    push_text("_type");
+    mapping_insert(sp[-2].u.mapping, &sp[-1], s);
+    pop_stack();
+  }
+  push_text("type");
+  push_text("image/png");
+  mapping_insert(sp[-3].u.mapping, &sp[-2], &sp[-1]);
+  pop_n_elems(2);
+}
+
 
 /*
 **! method mapping _decode(string data)
@@ -122,6 +143,7 @@ void image_any__decode(INT32 args)
 	 f_index(2);
 	 stack_swap();
 	 f_call_function(2);
+	 fix_png_mapping();
 	 return;
 
       case CHAR2('G','I'):
@@ -237,6 +259,7 @@ void image_any_decode_header(INT32 args)
 	 f_index(2);
 	 stack_swap();
 	 f_call_function(2);
+	 fix_png_mapping();
 	 return;
 
       case CHAR2('g','i'):
