@@ -844,7 +844,7 @@ int main(int argc, char **argv)
       ;;
 
       xAIX*)
-        LIBS="${OLDLIBS} -lpthreads"
+        LIBS="${OLDLIBS} -lpthreads -lc_r"
       ;;
 
       *)
