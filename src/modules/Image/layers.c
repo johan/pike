@@ -31,14 +31,12 @@ RCSID("$Id$");
 #include "image.h"
 
 extern struct program *image_program;
-struct program *image_layer_program;
+extern struct program *image_layer_program;
+extern struct program *image_colortable_program;
 
 static struct mapping *colors=NULL;
 static struct object *colortable=NULL;
 static struct array *colornames=NULL;
-
-struct program *image_layer_program=NULL;
-extern struct program *image_colortable_program;
 
 static const rgb_group black={0,0,0};
 static const rgb_group white={COLORMAX,COLORMAX,COLORMAX};
