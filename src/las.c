@@ -3127,6 +3127,8 @@ static void find_written_vars(node *n,
 
   case F_SSCANF:
     find_written_vars(CAR(n), p, 0);
+    /* FIXME: Marks arg 2 as written for now.
+     */
     find_written_vars(CDR(n), p, 1);
     break;
 
