@@ -158,7 +158,7 @@ AC_CACHE_VAL(pike_cv_ld_accepts_r,
 ])
 AC_MSG_RESULT($pike_cv_ld_accepts_r)
 
-if test x$pike_cv_ld_accepts_r ; then
+if test x$pike_cv_ld_accepts_r = xyes ; then
   SET_RUN_PATH='`cat modules/lib_dirs`'
 else
   :
