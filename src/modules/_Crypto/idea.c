@@ -94,8 +94,8 @@ static void f_set_key(INT32 args)
     error("idea->set_key(): Too short key\n");
   }
   idea_set_encrypt_key((unsigned char *)sp[-1].u.string->str,
-		       &(PIKE_IDEA->e_key));
-  idea_set_decrypt_key(&(PIKE_IDEA->e_key), &(PIKE_IDEA->d_key));
+		       &PIKE_IDEA->e_key);
+  idea_set_decrypt_key(&PIKE_IDEA->e_key, &PIKE_IDEA->d_key);
 
   MEMCPY(&(PIKE_IDEA->key), sp[-1].u.string->str, 8);
 
@@ -143,7 +143,7 @@ static void f_decrypt(INT32 args)
   }
 
   idea_ecb_encrypt((unsigned char *)sp[-1].u.string->str, buffer,
-		   &(PIKE_IDEA->e_key));
+		   &(PIKE_IDEA->d_key));
 
   pop_n_elems(args);
 
