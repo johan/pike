@@ -160,6 +160,12 @@ cond([[ Crypto["SHA256"] ]], [[
 ]])
 
 
+dnl Crypto.DES
+test_eq( Crypto.DES.fix_parity("\xff"*8), "\xfe"*8 )
+test_eq( Crypto.DES.fix_parity("12345678"), "12244778" )
+test_eq( Crypto.DES.fix_parity("\xff"*7), "\xfe"*8 )
+test_eq( Crypto.DES.fix_parity("\1"*7), "\1\200\100\40\20\10\4\2")
+
 dnl Crypto.rsa
 
 test_do( add_constant("RSA", Crypto.rsa()) )
