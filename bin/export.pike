@@ -159,7 +159,6 @@ int main(int argc, array(string) argv)
   string export_list, filename;
   object cvs;
   int tag, snapshot, t;
-  int snapshot;
 
   foreach(Getopt.find_all_options(argv, ({
     ({ "srcdir",    Getopt.HAS_ARG, "--srcdir"     }),
