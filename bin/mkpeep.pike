@@ -180,7 +180,8 @@ string treat(string expr)
   tmp=expr/"$";
   for(e=1;e<sizeof(tmp);e++)
   {
-    string num, type, rest;
+    string num, rest;
+    int type;
     if(sscanf(tmp[e],"%d%c%s",num,type,rest)!=3)
     {
       werror("Syntax error (3).\n");
