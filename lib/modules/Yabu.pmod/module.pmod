@@ -486,7 +486,7 @@ class Chunk {
   void destroy()
   {
     if(parent && write)
-      destruct(parent);
+      parent->sync();
   }
 
   void create(string filename_in, string mode,
@@ -920,8 +920,11 @@ class Table {
 
   void destroy()
   {
-    remove_call_out(sync_schedule);
     sync();
+    destruct(index);
+    destruct(db);
+    destruct(lock_file);
+    remove_call_out(sync_schedule);
   }
 
   void _destroy()
