@@ -314,8 +314,6 @@ regexp *pike_regcomp(char *exp,int excompat)
 
     /* Allocate space. */
     r = (regexp *) xalloc(sizeof(regexp) + (unsigned) regsize);
-    if (r == (regexp *) NULL)
-	FAIL("out of space");
 
     /* Second pass: emit code. */
     regparse = exp2;
