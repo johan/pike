@@ -96,7 +96,7 @@ struct marker
 #define GC_XREFERENCED		0x040000
 #define GC_DO_FREE		0x080000
 #define GC_GOT_EXTRA_REF	0x100000
-#define GC_FOLLOWED_NONSTRONG	0x200000
+#define GC_FOLLOWED_STRONG	0x200000
 
 #include "block_alloc_h.h"
 PTR_HASH_ALLOC(marker,MARKER_CHUNK_SIZE)
@@ -218,8 +218,8 @@ extern int gc_in_cycle_check;
 
 /* Use WEAK < 0 for strong links. The gc makes these assumptions about
  * those:
- * 1.  All strong links are recursed before any other links, i.e.
- *     strong links should be pushed last into the lifo queue.
+ * 1.  All strong links are recursed after any other links, i.e.
+ *     strong links should be pushed first into the lifo queue.
  * 2.  There can never be a cycle consisting of only strong links.
  */
 
