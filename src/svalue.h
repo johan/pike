@@ -566,6 +566,7 @@ PMOD_EXPORT void copy_svalues_recursively_no_free(struct svalue *to,
 				      struct processing *p);
 void check_short_svalue(const union anything *u, TYPE_T type);
 void debug_check_svalue(const struct svalue *s);
+void debug_check_type_hint (const struct svalue *svals, size_t num, TYPE_FIELD type_hint);
 PMOD_EXPORT void real_gc_xmark_svalues(const struct svalue *s, ptrdiff_t num);
 PMOD_EXPORT void real_gc_check_svalues(const struct svalue *s, size_t num);
 void gc_check_weak_svalues(const struct svalue *s, size_t num);
