@@ -154,6 +154,7 @@ MODULE_REQUIREMENTS= \
   modules/static_module_makefile \
   modules/dynamic_module_makefile \
   $(SRCDIR)/language.h \
+  interpret_protos.h \
   lib \
   master.pike @EXTRA_MODULE_REQUIREMENTS@
 
