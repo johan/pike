@@ -779,9 +779,9 @@ static int dl_load_coff_files(struct DLHandle *ret,
   if(!ret->memory)
   {
     static char buf[300];
-    sprintf(buf,"Failed to allocate %d bytes RWX-memory.\n",ret->memsize);
+    sprintf(buf, "Failed to allocate %d bytes RWX-memory.", ret->memsize);
 #ifdef DLDEBUG
-    fprintf(stderr,buf);
+    fprintf(stderr, "%s\n", buf);
 #endif
     dlerr=buf;
     return -1;
