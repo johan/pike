@@ -313,8 +313,6 @@ void got_oob0(mixed ignored, string got)
 
 inherit Port : port1;
 inherit Port : port2;
-inherit Port : port1_v6;
-inherit Port : port2_v6;
 void create() {}
 
 int portno1;
