@@ -2804,7 +2804,7 @@ struct program *compile(struct pike_string *prog, struct object *handler)
 
   lex.current_line=1;
   lex.current_file=make_shared_string("-");
-  if (debug_options & DEBUG_TYPES) {
+  if (runtime_options & RUNTIME_STRICT_TYPES) {
     lex.pragmas = ID_STRICT_TYPES;
   } else {
     lex.pragmas = 0;
