@@ -17,7 +17,7 @@ void create(object s)
 }
 
 //! Information about the used algorithms.
-.session session;
+object session;
 
 //! Message Authentication Code
 .Cipher.MACAlgorithm mac;
