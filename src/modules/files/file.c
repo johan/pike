@@ -1451,8 +1451,26 @@ void mark_ids(struct callback *foo, void *bar, void *gazonk)
   int e;
   for(e=0;e<MAX_OPEN_FILEDESCRIPTORS;e++)
   {
-    gc_check_svalues( & files[e].id, 1);
-    gc_check_svalues( & files[e].close_callback, 1);
+    int tmp=1;
+    if(!query_read_callback(e))
+    {
+      gc_check_svalues( & files[e].read_callback, 1);
+      gc_check_svalues( & files[e].close_callback, 1);
+    }else{
+      tmp=0;
+    }
+
+    if(!query_write_callback(e))
+    {
+      gc_check_svalues( & files[e].write_callback, 1);
+    }else{
+      tmp=0;
+    }
+
+    if(tmp)
+    {
+      gc_check_svalues( & files[e].id, 1);
+    }
   }
 }
 
