@@ -108,8 +108,7 @@ int regexp_match_low(regex_t *regexp, char *str)
 #define regexp_match_low pike_regexec
 #endif /* USE_SYSTEM_REGEXP */
 
-/*!
- *! @decl int match(string str)
+/*! @decl int match(string str)
  *!
  *! Returns 1 if @[str] matches the regexp bound to the regexp object.
  *! Zero otherwise.

@@ -681,13 +681,18 @@ static void f_encode_uue( INT32 args )
  *! a sequence of lexical elements.
  *!
  *! These are:
- *! @list
- *!   @element individual special characters
- *!   @element quoted-strings
- *!   @element domain-literals
- *!   @element comments
- *!   @element atoms
- *! @endlist
+ *! @dl
+ *!   @item
+ *!     individual special characters
+ *!   @item
+ *!     quoted-strings
+ *!   @item
+ *!     domain-literals
+ *!   @item
+ *!     comments
+ *!   @item
+ *!     atoms
+ *! @enddl
  *!
  *! This function will analyze a string containing the header value,
  *! and produce an array containing the lexical elements.
@@ -707,7 +712,7 @@ static void f_encode_uue( INT32 args )
  *! Domain-literals are used seldom, if at all, anyway...
  *! 
  *! The set of special-characters is the one specified in RFC1521
- *! (i.e. @tt{"<", ">", "@", ",", ";", ":", "\", "/", "?", "="@}),
+ *! (i.e. @tt{"<", ">", "@@", ",", ";", ":", "\", "/", "?", "="@}),
  *! and not the set specified in RFC822.
  *!
  *! @seealso
