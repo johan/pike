@@ -95,7 +95,7 @@ static INLINE long get_time_int(timestruc_t * val)
   return val->tv_sec * 1000L + val->tv_nsec / 1000000;
 }
 
-int proc_fd = -1;
+static int proc_fd = -1;
 
 static int open_proc_fd()
 {
