@@ -10,7 +10,7 @@
 inherit Cache.Policy.Base;
 private array(Cache.Policy.Base) my_policies;
 
-void expire (Cache.Storage storage) {
+void expire (Cache.Storage.Base storage) {
   foreach(my_policies, object policy) {
     policy->expire(storage);
   }

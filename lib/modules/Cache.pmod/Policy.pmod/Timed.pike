@@ -15,7 +15,7 @@ private int ktime;
 
 inherit Cache.Policy.Base;
 
-void expire(Cache.Storage storage) {
+void expire(Cache.Storage.Base storage) {
   werror("Expiring cache\n");
   int now=time(1);
   int limit=now-ktime;

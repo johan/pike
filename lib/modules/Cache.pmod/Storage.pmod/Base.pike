@@ -37,7 +37,7 @@ void set(string key, mixed value,
 // fetches some data from the cache synchronously.
 // be careful, as with some storage managers it might block the calling
 // thread for some time.
-int(0..0)|Cache.Data get(string key) {
+int(0..0)|Cache.Data get(string key, void|int(0..1) notouch) {
   T();
 }
 

@@ -16,7 +16,7 @@ int min_size=0;
 #define KEY 0
 #define SIZE 1
 
-void expire (Cache.Storage storage) {
+void expire (Cache.Storage.Base storage) {
   ADT.Priority_queue removables=ADT.Priority_queue();
   Cache.Data got;
   mixed tmp;

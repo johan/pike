@@ -10,6 +10,6 @@
 
 #pike __REAL_VERSION__
 
-void expire (Cache.Storage storage) {
+void expire (Cache.Storage.Base storage) {
   /* empty */
 }
