@@ -267,7 +267,12 @@ class Switch(string test) {
 
   void make_child_fun() {
     foreach(sort(indices(cases)), string c)
-      cases[c]->make_fun();
+      if(sizeof(cases[c])==1 && cases[c][0]->is_switch)
+	([object(Switch)]cases[c][0])->make_fun();
+      else
+	foreach(cases[c], object(Switch)|object(Breakable) b)
+	  if(b->is_switch)
+	    ([object(Switch)]b)->make_child_fun();
   }
 
   void make_fun() {
@@ -465,7 +470,7 @@ int main(int argc, array(string) argv)
   array(Switch) a = [array(Switch)]make_switches(data);
   if(sizeof(a)!=1 || !a[0]->is_switch) error("Expected one top switch.\n");
 
-  //  a[0]->make_child_fun();
+  a[0]->make_child_fun();
   write( functions );
 
   write("inline static void low_asm_opt(void) {\n");
