@@ -439,12 +439,6 @@ void really_free_object(struct object *o)
     if(--o->refs > 0) return;
   }
 
-  if(o->parent)
-  {
-    free_object(o->parent);
-    o->parent=0;
-  }
-
   if(o->prev)
     o->prev->next=o->next;
   else
@@ -465,6 +459,12 @@ void really_free_object(struct object *o)
     o->prev=0;
     objects_to_destruct=o;
   } else {
+    if(o->parent)
+    {
+      free_object(o->parent);
+      o->parent=0;
+    }
+
     free((char *)o);
     GC_FREE();
   }
