@@ -826,7 +826,7 @@ def: modifiers type_or_error optional_stars TOK_IDENTIFIER push_compiler_frame0
       {
 	int l = $10->line_number;
 #ifdef PIKE_DEBUG
-	char *f = $10->current_file;
+	struct pike_string *f = $10->current_file;
 #endif
 	if (check_args) {
 	  /* Prepend the arg checking code. */
