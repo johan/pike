@@ -42,14 +42,12 @@ static int va_check_args(struct svalue *s,
   }
 
   if(!(res->expected & BIT_MANY))
-  {
     res->expected = va_arg(arglist, unsigned int);
-    if(!res->expected || (res->expected & BIT_VOID)) return 1;
-    res->error_type = ERR_TOO_FEW;
-    return 0;
-  }else{
-    return 1;
-  }
+
+  if(!res->expected ||
+     (res->expected & (BIT_MIXED|BIT_VOID))) return 1;
+  res->error_type = ERR_TOO_FEW;
+  return 0;
 }
 
 /* Returns the number of the first bad argument,
