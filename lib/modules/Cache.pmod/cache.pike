@@ -95,13 +95,11 @@ void store(string key, mixed value, void|int max_life,
                preciousness);
 }
 
-//. Forcibly removes some key. If data was actually present under that key,
-//. it is returned. Otherwise 0 is returned.
+//. Forcibly removes some key.
 //. If the 'hard' parameter is supplied and true, deleted objects will also
-//. be destruct()-ed upon removal.
-mixed delete(string key, void|int(0..1)hard) {
-  object(Cache.Data) tmp=storage->delete(key,hard);
-  return (tmp?tmp->data():0);
+//. be destruct()-ed upon removal by some backends (i.e. memory)
+void delete(string key, void|int(0..1)hard) {
+  storage->delete(key,hard);
 }
 
 
