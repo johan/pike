@@ -99,7 +99,12 @@ static void call_c_initializers(struct object *o)
 	union anything *u;
 	u=(union anything *)(frame.current_storage +
 			     frame.context.prog->identifiers[d].func.offset);
-	MEMSET((char *)u,0,sizeof(*u));
+	switch(frame.context.prog->identifiers[d].run_time_type)
+	{
+	  case T_INT: u->integer=0; break;
+	  case T_FLOAT: u->float_number=0.0; break;
+	  default: u->refs=0; break;
+	}
       }
     }
 
