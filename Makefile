@@ -259,7 +259,8 @@ xenofarm_export:
 	@$(DO_MAKE) "CONFIGUREARGS=--disable-binary $(CONFIGUREARGS)" \
 	  "OS=source" "LIMITED_TARGETS=yes" "METATARGET=snapshot_export" \
 	  "EXPORT_NAME=Pike%maj.%min-%Y%M%D-%h%m%s" \
-	  "EXPORTARGS=$(EXPORTARGS)" compile >>export_result.txt 2>&1
+	  "EXPORTARGS=--snapshot $(EXPORTARGS)" \
+	  compile >>export_result.txt 2>&1
 	@echo Export done
 
 bin_export:
