@@ -1767,7 +1767,7 @@ OP(PIKE_CONCAT3(F_MARK_,OPCODE,_AND_RETURN),"mark, " NAME " & return", {   \
     PIKE_OPCODE_T *addr = Pike_fp->pc;					   \
     DO_IF_DEBUG(Pike_fp->next->pc=0);					   \
     unlink_previous_frame();						   \
-    DO_JUMP_TO(Pike_fp->pc);						   \
+    DO_JUMP_TO(addr);							   \
   }else{								   \
     DO_DUMB_RETURN;							   \
   }									   \
