@@ -359,7 +359,7 @@ clean: tidy
 	-rm -rf test-install test-pike
 	-rm -f TAGS tags yacc.acts yacc.debug yacc.tmp *.debug.log a.out
 	-rm -f hilfe master.pike compiler-warnings
-	find lib/modules/ -type f -name '*.so_pure*' -exec rm -f \{\} \;
+	-find lib/modules/ -type f -name '*.so_pure*' -exec rm -f \{\} \;
 #	-rm -f lib/master.pike
 
 # make _really_ clean
