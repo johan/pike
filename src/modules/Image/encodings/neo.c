@@ -6,14 +6,16 @@
 */
 
 #include "global.h"
-#include "image_machine.h"
+#include "program.h"
+#include "module_support.h"
+#include "interpret.h"
+#include "builtin_functions.h"
+#include "mapping.h"
+#include "operators.h"
 
-#include "stralloc.h"
-RCSID("$Id$");
+#include "image_machine.h"
 #include "atari.h"
 
-/* MUST BE INCLUDED LAST */
-/* #include "module_magic.h" */
 
 extern struct program *image_program;
 
@@ -43,7 +45,7 @@ extern struct program *image_program;
  */
 void image_neo_f__decode(INT32 args)
 {
-  unsigned int res, size = 0;
+  unsigned int i, res, size = 0;
   struct atari_palette *pal=0;
   struct object *img;
 
@@ -69,7 +71,15 @@ void image_neo_f__decode(INT32 args)
   else if(res==1)
     pal = decode_atari_palette(q+4, 4);
 
-  /* FIXME: Push palette */
+  push_constant_text("palette");
+  for( i=0; i<pal->size; i++ ) {
+    push_int(pal->colors[i].r);
+    push_int(pal->colors[i].g);
+    push_int(pal->colors[i].b);
+    f_aggregate(3);
+  }
+  f_aggregate(pal->size);
+  size += 2;
 
   img = decode_atari_screendump(q+128, res, pal);
   if(pal)
@@ -125,8 +135,9 @@ void image_neo_f_decode(INT32 args)
 
 void init_image_neo()
 {
-  add_function( "decode",  image_neo_f_decode,  "function(string:object)",  0);
-  add_function( "_decode", image_neo_f__decode, "function(string:mapping)", 0);
+  ADD_FUNCTION("decode",  image_neo_f_decode,  tFunc(tStr,tObj),  0);
+  ADD_FUNCTION("_decode", image_neo_f__decode,
+	       tFunc(tStr,tMap(tStr,tMix)), 0);
 }
 
 void exit_image_neo()
