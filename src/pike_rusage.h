@@ -41,6 +41,7 @@ typedef unsigned long cpu_time_t;
 #define PRINT_CPU_TIME "lu"
 #endif
 cpu_time_t get_cpu_time (void);
+cpu_time_t get_real_time(void);
 
 INT32 internal_rusage(void);	/* For compatibility. */
 
