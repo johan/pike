@@ -292,11 +292,6 @@ spotless:
 	  else exit $$res; fi; \
 	} || exit $$?
 
-doc_spotless:
-	if test -f "refdoc/Makefile"; then \
-	  cd refdoc; $(DO_MAKE) spotless; \
-	else :; fi
-
 delete_builddir:
 	-rm -rf "$(BUILDDIR)"
 
@@ -311,7 +306,7 @@ srcclean:
 	  else :; fi; \
 	done
 
-cvsclean: srcclean distclean doc_spotless
+cvsclean: srcclean distclean docspotless
 	-rm -rf build
 	-rm -f export_result.txt
 	-rm -f Pike*.tar.gz
@@ -322,6 +317,11 @@ docclean:
 	-rm -f "$(BUILDDIR)/modref.xml"
 	-rm -f "$(BUILDDIR)/onepage.xml"
 	-rm -f "$(BUILDDIR)/traditional.xml"
+
+docspotless:
+	if test -f "refdoc/Makefile"; then \
+	  cd refdoc; $(DO_MAKE) spotless; \
+	else :; fi
 
 depend: configure
 	-@cd "$(BUILDDIR)" && \
