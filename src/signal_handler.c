@@ -1156,6 +1156,11 @@ static void f_pid_status_wait(INT32 args)
   {
     SWAP_OUT_CURRENT_THREAD();
     co_wait_interpreter( & process_status_change);
+    while (threads_disabled) {
+      THREADS_FPRINTF(1, (stderr,
+			  "f_pid_status_wait(): Threads disabled\n"));
+      co_wait_interpreter(&threads_disabled_change);
+    }
     SWAP_IN_CURRENT_THREAD();
   }
 
