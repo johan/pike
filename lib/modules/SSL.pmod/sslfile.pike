@@ -219,7 +219,7 @@ int write(string|array(string) s)
   werror("SSL.sslfile->write\n");
 #endif
 
-  if (is_closed || !socket) return -1;
+  if (is_closed || !socket) return -1;
 
   if (arrayp(s)) {
     s = s*"";
