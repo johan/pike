@@ -94,6 +94,9 @@
     </chapter>
   </file>
   <file>
+    <chapter-ref file="not_extracted/modules.xml"/>
+  </file>
+  <file>
     <chapter title="The rest">
       <insert-move entity=""/>
     </chapter>
