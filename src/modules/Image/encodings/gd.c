@@ -36,7 +36,7 @@ extern struct program *image_program;
 **! 	Handle encoding and decoding of GD images.
 **! 
 **! 	GD is the internal format of libgd by Thomas Boutell,
-**!     <a href='http://www.boutell.com/gd/'><tt>http://www.boutell.com/gd/</tt></a>
+**!     <a href='http://www.boutell.com/gd/'>http://www.boutell.com/gd/</a>
 **! 	It is a rather simple, uncompressed, palette
 **!     format. 
 */
