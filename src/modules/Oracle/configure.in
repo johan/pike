@@ -167,9 +167,9 @@ if test x$with_oracle = xyes; then
 
   if test "x$oracle_lib_dir" = xno -o "x$oracle_include_dir" = xno; then :; else
 
-    CPPFLAGS="-I\"$oracle_include_dir\" ${CPPFLAGS}"
+    CPPFLAGS="-I\"$oracle_include_dir\" ${CPPFLAGS} -L\"$oracle_lib_dir\""
 
-    ORACLE_LIBS="-L\"$oracle_lib_dir\" -lclient -lsqlnet -lncr -lsqlnet -lclient -lcommon -lgeneric -lsqlnet -lncr -lsqlnet -lclient -lcommon -lgeneric -lepc -lnlsrtl3 -lc3v6 -lcore3 -lnlsrtl3 -lcore3 -lnlsrtl3 $pike_cv_oracle_sysliblist $oracle_aio -lm -lcore3"
+    ORACLE_LIBS="-lclient -lsqlnet -lncr -lsqlnet -lclient -lcommon -lgeneric -lsqlnet -lncr -lsqlnet -lclient -lcommon -lgeneric -lepc -lnlsrtl3 -lc3v6 -lcore3 -lnlsrtl3 -lcore3 -lnlsrtl3 $pike_cv_oracle_sysliblist $oracle_aio -lm -lcore3"
 
     OLDLIBS=LIBS
     LIBS="$LIBS $ORACLE_LIBS"
