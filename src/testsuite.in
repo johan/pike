@@ -337,7 +337,7 @@ test_any([[
   class Foo
   {
     int foo();
-    function f()
+    int(0..1) f()
     {
       return !foo;
     }
