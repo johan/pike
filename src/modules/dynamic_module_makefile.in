@@ -63,7 +63,7 @@ dummy:	$(DUMMY) linker_options modlist_headers modlist_segment module.so
 	fi
 
 linker_options: Makefile
-	@if test "x$(LINKER_OPTIONS)" != x ; then echo "LINKER_OPTIONS+=$(LINKER_OPTIONS)" else : ; fi ; echo "$(LINKER_OPTIONS)" >linker_options
+	@if test "x$(LINKER_OPTIONS)" != x ; then echo "LINKER_OPTIONS+=$(LINKER_OPTIONS)" ; else : ; fi ; echo "$(LINKER_OPTIONS)" >linker_options
 
 modlist_headers: Makefile
 	@echo "" >modlist_headers
