@@ -1264,7 +1264,8 @@ PMOD_EXPORT union anything *array_get_item_ptr(struct array *a,
 {
   INT32 i;
   if(ind->type != T_INT)
-    Pike_error("Index is not an integer.\n");
+    Pike_error("Expected integer as array index, got %s.\n",
+	       get_name_of_type (ind->type));
   i=ind->u.integer;
   if(i<0) i+=a->size;
   if(i<0 || i>=a->size) {
