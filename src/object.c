@@ -260,7 +260,6 @@ struct object *get_master(void)
 
   if(!master_program)
   {
-    extern struct timeval TM;
     struct pike_string *s,*s2;
     char *tmp=xalloc(strlen(master_file)+3);
     struct stat stat_buf;
