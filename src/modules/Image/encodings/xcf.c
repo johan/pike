@@ -1243,6 +1243,8 @@ void image_xcf_f__decode_tiles( INT32 args )
     ewidth = MINIMUM(TILE_WIDTH, (rxs-x));
     eheight = MINIMUM(TILE_HEIGHT, (rys-y));
 
+    if( (double)ewidth * eheight * bpp > INT_MAX )
+      Pike_error("Insanely large tiles not supported\n");
     if(rle)
     {
       struct buffer s = tile, od, d;

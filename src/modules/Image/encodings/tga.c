@@ -501,6 +501,11 @@ static struct image_alpha ReadImage(struct buffer *fp, struct tga_header *hdr)
     really_no_alpha = 1;
   }
 
+
+  if((double)width * (double)height * bpp  > (double)INT_MAX )
+    Pike_error("Too large image (width * height * bpp overflows)\n");
+
+
   switch (hdr->imageType)
   {
    case TGA_TYPE_MAPPED_RLE:

@@ -222,6 +222,9 @@ void img_ras_decode(INT32 args)
        len = rs.ras_length;
    }
 
+   if( (double)((rs.ras_width+1)&~1)*3*(double)rs.ras_height > (double)INT_MAX )
+       Pike_error("Too large RAS image (overflow imminent)");
+
    if(rs.ras_type == RT_BYTE_ENCODED) {
      INT32 img_sz = 0;
      switch(rs.ras_depth) {
