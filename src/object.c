@@ -12,7 +12,7 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "svalue.h"
 #include "pike_macros.h"
-#include "memory.h"
+#include "pike_memory.h"
 #include "error.h"
 #include "main.h"
 #include "array.h"

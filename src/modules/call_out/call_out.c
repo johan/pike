@@ -11,7 +11,7 @@ RCSID("$Id$");
 #include "interpret.h"
 #include "error.h"
 #include "builtin_functions.h"
-#include "memory.h"
+#include "pike_memory.h"
 #include "main.h"
 #include "backend.h"
 #include "time_stuff.h"

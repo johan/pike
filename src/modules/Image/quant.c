@@ -21,6 +21,7 @@ David Kågedal, kg@infovav.se
 
 #include "error.h"
 #include "global.h"
+#include "pike_memory.h"
 #include "array.h"
 
 #include "threads.h"

@@ -105,7 +105,7 @@ RCSID("$Id$");
 #include "pike_types.h"
 #include "constants.h"
 #include "interpret.h"
-#include "memory.h"
+#include "pike_memory.h"
 
 #define FORMAT_INFO_STACK_SIZE 200
 #define RETURN_SHARED_STRING

@@ -13,7 +13,7 @@ RCSID("$Id$");
 #include "constants.h"
 #include "hashtable.h"
 #include "stuff.h"
-#include "memory.h"
+#include "pike_memory.h"
 #include "interpret.h"
 #include "error.h"
 #include "object.h"

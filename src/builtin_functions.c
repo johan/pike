@@ -25,7 +25,7 @@ RCSID("$Id$");
 #include "gc.h"
 #include "backend.h"
 #include "main.h"
-#include "memory.h"
+#include "pike_memory.h"
 #include "threads.h"
 #include "time_stuff.h"
 #include "version.h"

@@ -15,7 +15,7 @@ RCSID("$Id$");
 #include "opcodes.h"
 #include "operators.h"
 #include "language.h"
-#include "memory.h"
+#include "pike_memory.h"
 #include "error.h"
 #include "docode.h"
 #include "constants.h"

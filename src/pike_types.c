@@ -20,7 +20,7 @@ RCSID("$Id$");
 #include "error.h"
 #include "las.h"
 #include "language.h"
-#include "memory.h"
+#include "pike_memory.h"
 
 int max_correct_args;
 

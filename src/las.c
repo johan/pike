@@ -21,7 +21,7 @@ RCSID("$Id$");
 #include "error.h"
 #include "docode.h"
 #include "main.h"
-#include "memory.h"
+#include "pike_memory.h"
 #include "operators.h"
 #include "callback.h"
 #include "pike_macros.h"

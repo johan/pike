@@ -13,7 +13,7 @@ RCSID("$Id$");
 #include "pike_macros.h"
 #include "language.h"
 #include "error.h"
-#include "memory.h"
+#include "pike_memory.h"
 #include "dynamic_buffer.h"
 #include "interpret.h"
 #include "las.h"
