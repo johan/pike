@@ -178,6 +178,8 @@ if test x$with_mysql = xyes; then
       MYSQL_LIBS=""
     else
       AC_DEFINE(HAVE_MYSQL)
+
+      AC_CHECK_FUNCS(mysql_real_query mysql_fetch_lengths)
     fi
   fi
 else

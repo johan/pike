@@ -315,6 +315,9 @@ static void f_fetch_row(INT32 args)
 {
   int num_fields = mysql_num_fields(PIKE_MYSQL_RES->result);
   MYSQL_ROW row = mysql_fetch_row(PIKE_MYSQL_RES->result);
+#ifdef HAVE_MYSQL_FETCH_LENGTHS
+  int *row_lengths = mysql_fetch_lengths(PIKE_MYSQL_RES->result);
+#endif /* HAVE_MYSQL_FETCH_LENGTHS */
 
   pop_n_elems(args);
 
@@ -335,7 +338,7 @@ static void f_fetch_row(INT32 args)
 	  case FIELD_TYPE_INT24:
 #if 0
 	    /* This one will not always fit in an INT32 */
-	  case FIELD_TYPE_LONGLONG:
+          case FIELD_TYPE_LONGLONG:
 #endif /* 0 */
 	    push_int(atoi(row[i]));
 	    break;
@@ -346,12 +349,20 @@ static void f_fetch_row(INT32 args)
 	    push_float(atof(row[i]));
 	    break;
 	  default:
+#ifdef HAVE_MYSQL_FETCH_LENGTHS
+	    push_string(make_shared_binary_string(row[i], row_lengths[i]));
+#else
 	    push_text(row[i]);
+#endif /* HAVE_MYSQL_FETCH_LENGTHS */
 	    break;
 	  }
 	} else {
 	  /* Probably doesn't happen, but... */
+#ifdef HAVE_MYSQL_FETCH_LENGTHS
+	  push_string(make_shared_binary_string(row[i], row_lengths[i]));
+#else
 	  push_text(row[i]);
+#endif /* HAVE_MYSQL_FETCH_LENGTHS */
 	}
       } else {
 	/* NULL? */
