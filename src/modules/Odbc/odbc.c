@@ -28,6 +28,7 @@ RCSID("$Id$");
 #include "multiset.h"
 #include "program.h"
 #include "module_support.h"
+#include "bignum.h"
 
 #include "precompiled_odbc.h"
 
@@ -247,7 +248,7 @@ static void f_create(INT32 args)
 static void f_affected_rows(INT32 args)
 {
   pop_n_elems(args);
-  push_int(PIKE_ODBC->affected_rows);
+  push_int64(PIKE_ODBC->affected_rows);
 }
 
 static void f_select_db(INT32 args)
