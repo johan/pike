@@ -105,7 +105,7 @@ static void slow_srand(INT32 seed)
 static unsigned INT32 rndbuf[ RNDBUF ];
 static int rnd_index;
 
-PMOD_EXPORT void my_srand(long seed)
+PMOD_EXPORT void my_srand(INT32 seed)
 {
   int e;
   unsigned INT32 mask;
