@@ -583,6 +583,21 @@ else
   :
 fi
 
+# Workaround for compiling Pike on Cygwin
+case "$pike_cv_sys_os" in
+   CYGWIN*)
+      echo 'Cygwin host detected. Enabling workarounds...'
+      # winsock.h, winbase.h, winsock2.h, windows.h, wingdi.h
+      # are part of VC api but given as headers in cygwin. We
+      # should detect them when using cygwin
+      ac_cv_header_wingdi_h="no"
+      ac_cv_header_winsock_h="no"
+      ac_cv_header_winsock2_h="no"
+      ac_cv_header_winbase_h="no"
+      ac_cv_header_windows_h="no"
+   ;;
+esac
+
 # FIXME: Add proper tests
 AC_MSG_CHECKING([for ld.so run path method])
 AC_CACHE_VAL(pike_cv_ld_so_run_path_method, [
