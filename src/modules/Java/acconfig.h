@@ -35,4 +35,7 @@
 /* Define if you have a PowerPC CPU */
 #undef HAVE_PPC_CPU
 
+/* Define if you have an alpha CPU */
+#undef HAVE_ALPHA_CPU
+
 #endif /* PIKE_JAVA_CONFIG_H */
