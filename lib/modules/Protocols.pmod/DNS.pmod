@@ -423,9 +423,11 @@ class client
     }
 
 #if constant(RegGetKeyNames)
-    foreach(RegGetKeyNames(HKEY_LOCAL_MACHINE,
-			   "SYSTEM\\CurrentControlSet\\Services\\Tcpip\\"
-			   "Parameters\\Interfaces"), string key)
+    /* Catch if RegGetKeyNames() doesn't find the directory. */
+    catch {
+      foreach(RegGetKeyNames(HKEY_LOCAL_MACHINE,
+			     "SYSTEM\\CurrentControlSet\\Services\\Tcpip\\"
+			     "Parameters\\Interfaces"), string key)
       {
 	catch {
 	  res += ({ RegGetValue(HKEY_LOCAL_MACHINE,
@@ -433,6 +435,7 @@ class client
 				"Parameters\\Interfaces\\" + key, val) });
 	};
       }
+    };
 #endif
     return sizeof(res) ? res : ({ fallbackvalue });
   }
