@@ -749,7 +749,7 @@ class Evaluator {
   //!
   void create()
   {
-    print_version();
+    if(write) print_version();
     commands->set = command_set;
     commands->exit = command_exit;
     commands->quit = command_exit;
