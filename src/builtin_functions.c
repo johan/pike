@@ -33,6 +33,8 @@ RCSID("$Id$");
 #include <math.h>
 #include <ctype.h>
 #include "module_support.h"
+#include "module.h"
+#include "opcodes.h"
 
 #ifdef HAVE_CRYPT_H
 #include <crypt.h>

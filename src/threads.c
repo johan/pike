@@ -10,6 +10,8 @@ int threads_disabled = 0;
 #include "object.h"
 #include "pike_macros.h"
 #include "callback.h"
+#include "builtin_functions.h"
+#include "constants.h"
 
 
 struct object *thread_id;
@@ -45,7 +47,7 @@ void *new_thread_func(void * data)
   INT32 tmp;
 
 /*  fprintf(stderr, "Thread create[%d]...",dbt++);*/
-  if(tmp=mt_lock( & interpreter_lock))
+  if((tmp=mt_lock( & interpreter_lock)))
     fatal("Failed to lock interpreter, errno %d\n",tmp);
 /*  fprintf(stderr,"Created[%d]...",dbt);*/
   free((char *)data); /* Moved by per, to avoid some bugs.... */

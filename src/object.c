@@ -250,7 +250,7 @@ void destruct_objects_to_destruct()
 {
   struct object *o, *next;
 
-  while(o=objects_to_destruct)
+  while((o=objects_to_destruct))
   {
     /* Link object back to list of objects */
     objects_to_destruct=o->next;

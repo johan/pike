@@ -22,6 +22,7 @@ RCSID("$Id$");
 #include "opcodes.h"
 #include "builtin_functions.h"
 #include "main.h"
+#include "mapping.h"
 
 #include "pike_macros.h"
 #include <sys/param.h>

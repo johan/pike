@@ -23,6 +23,8 @@ RCSID("$Id$");
 #include <svalue.h>
 #include <stralloc.h>
 #include <threads.h>
+#include <module_support.h>
+#include <builtin_functions.h>
 
 #ifdef HAVE_SYSLOG_H
 #include <syslog.h>

@@ -52,6 +52,7 @@
 #include "svalue.h"
 #include "array.h"
 #include "threads.h"
+#include "builtin_functions.h"
 
 #include "image.h"
 #ifdef HAVE_MMAP
@@ -147,10 +148,10 @@ static inline long file_size(int fd)
   return -1;
 }
 
-static inline write_char(struct _char *ci,
-			 rgb_group *pos,
-			 INT32 xsize,
-			 INT32 height)
+static inline void write_char(struct _char *ci,
+			      rgb_group *pos,
+			      INT32 xsize,
+			      INT32 height)
 {
    rgb_group *nl;
    INT32 x,y;

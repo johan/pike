@@ -23,6 +23,9 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "object.h"
 #include "pike_types.h"
+#include "error.h"
+#include "builtin_functions.h"
+#include "opcodes.h"
 
 #include <gmp.h>
 

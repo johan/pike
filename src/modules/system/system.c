@@ -21,6 +21,9 @@ RCSID("$Id$");
 #include <stralloc.h>
 #include <threads.h>
 #include <svalue.h>
+#include <mapping.h>
+#include <builtin_functions.h>
+#include <constants.h>
 
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>

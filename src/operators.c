@@ -23,6 +23,7 @@ RCSID("$Id$");
 #include "lex.h"
 #include "program.h"
 #include "object.h"
+#include "pike_types.h"
 
 #define COMPARISON(ID,NAME,EXPR) \
 void ID(INT32 args) \

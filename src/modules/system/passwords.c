@@ -22,6 +22,7 @@ RCSID("$Id$");
 #include <stralloc.h>
 #include <threads.h>
 #include <svalue.h>
+#include <builtin_functions.h>
 
 #ifdef HAVE_PASSWD_H
 # include <passwd.h>

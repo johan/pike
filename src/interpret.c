@@ -27,6 +27,7 @@ RCSID("$Id$");
 #include "gc.h"
 #include "threads.h"
 #include "callback.h"
+#include "fd_control.h"
 
 #include <fcntl.h>
 #include <errno.h>

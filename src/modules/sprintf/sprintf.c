@@ -626,7 +626,7 @@ static string low_pike_sprintf(char *format,
 	    struct svalue *s;
 	    union anything *q;
 
-	    check_signals();
+	    check_threads_etc();
 	    q=low_array_get_item_ptr(w,tmp,T_ARRAY);
 	    s=sp;
 	    if(q)

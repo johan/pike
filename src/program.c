@@ -23,6 +23,7 @@ RCSID("$Id$");
 #include "gc.h"
 #include "threads.h"
 #include "constants.h"
+#include "operators.h"
 
 #include <errno.h>
 #include <fcntl.h>
@@ -635,7 +636,7 @@ struct program *end_program()
 
     prog->inherits[0].prog=prog;
     prog->prev=0;
-    if(prog->next=first_program)
+    if((prog->next=first_program))
       first_program->prev=prog;
     first_program=prog;
 

@@ -11,6 +11,9 @@ RCSID("$Id$");
 #include "pike_macros.h"
 #include "backend.h"
 #include "fd_control.h"
+#include "error.h"
+#include "builtin_functions.h"
+#include "mapping.h"
 
 #include "error.h"
 #include "signal_handler.h"

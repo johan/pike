@@ -20,6 +20,9 @@ RCSID("$Id$");
 #include "callback.h"
 #include "signal_handler.h"
 #include "threads.h"
+#include "dynamic_load.h"
+#include "gc.h"
+#include "mapping.h"
 
 #ifdef HAVE_LOCALE_H
 #include <locale.h>

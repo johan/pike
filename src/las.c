@@ -25,6 +25,7 @@ RCSID("$Id$");
 #include "operators.h"
 #include "callback.h"
 #include "pike_macros.h"
+#include "peep.h"
 
 #define LASDEBUG
 
@@ -1432,7 +1433,7 @@ static void optimize(node *n)
 	 CAR(n)->u.sval.subtype == FUNCTION_BUILTIN && /* driver fun? */
 	 CAR(n)->u.sval.u.efun->optimize)
       {
-	if(tmp1=CAR(n)->u.sval.u.efun->optimize(n))
+	if((tmp1=CAR(n)->u.sval.u.efun->optimize(n)))
 	{
 	  goto use_tmp1;
 	}
@@ -1947,7 +1948,7 @@ static int stupid_args(node *n, int expected,int vargs)
   }
 }
 
-static is_null_branch(node *n)
+static int is_null_branch(node *n)
 {
   if(!n) return 1;
   if(n->token==F_CAST && n->type==void_type_string)
@@ -2022,7 +2023,7 @@ int dooptcode(struct pike_string *name,
   }
   n=mknode(F_ARG_LIST,n,0);
 
-  if(foo=is_stupid_func(n, args, vargs))
+  if((foo=is_stupid_func(n, args, vargs)))
   {
     if(foo->type == T_FUNCTION && foo->subtype==FUNCTION_BUILTIN)
     {

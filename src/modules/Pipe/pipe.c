@@ -30,6 +30,7 @@ RCSID("$Id$");
 #include "interpret.h"
 #include "svalue.h"
 #include "error.h"
+#include "builtin_functions.h"
 
 #ifndef S_ISREG
 #ifdef S_IFREG
@@ -212,6 +213,8 @@ static INLINE void free_input(struct input *i)
     error("I_MMAP input when MMAP is diabled!");
 #endif
     break;
+
+  case I_NONE: break;
   }
   free((char *)i);
 }
@@ -353,6 +356,8 @@ static INLINE void input_finish(void)
 
     case I_STRING:
       append_buffer(i->u.str);
+
+    case I_NONE: break;
     }
   }
   THIS->sleeping=0;
