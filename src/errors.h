@@ -127,6 +127,12 @@ DECLARE_ERROR(compilation, ERR_INHERIT(generic), EMPTY)
 
 DECLARE_ERROR(master_load, ERR_INHERIT (generic), EMPTY)
 
+DECLARE_ERROR (dlopen,
+	       ERR_INHERIT (generic),
+  ERR_VAR (struct pike_string *, string, PIKE_T_STRING, path)
+  ERR_VAR (struct pike_string *, string, PIKE_T_STRING, dlerror)
+)
+
 #undef DECLARE_ERROR
 #undef ERR_INHERIT
 #undef ERR_VAR
