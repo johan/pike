@@ -32,17 +32,10 @@ struct keyword
 #define INSTR_PROFILING
 #endif
 
-#ifdef INSTR_PROFILING
-extern int last_instruction;
-#endif
 
 struct instr
 {
 #ifdef PIKE_DEBUG
-#ifdef INSTR_PROFILING
-  long reruns[256];
-#endif
-  long runs;
   long compiles;
 #endif
   int flags;
@@ -52,9 +45,10 @@ struct instr
 #ifdef PIKE_DEBUG
 #define ADD_COMPILED(X) instrs[(X)-F_OFFSET].compiles++
 #ifdef INSTR_PROFILING
-#define ADD_RUNNED(X) do { int _x=(X)-F_OFFSET; instrs[last_instruction].reruns[_x]++; instrs[last_instruction=_x].runs++; } while(0)
+extern void add_runned(int);
+#define ADD_RUNNED(X) add_runned((X)-F_OFFSET)
 #else
-#define ADD_RUNNED(X) instrs[(X)-F_OFFSET].runs++
+#define ADD_RUNNED(X)
 #endif
 #else
 #define ADD_COMPILED(X)
