@@ -27,6 +27,9 @@
 /* Define this to enable the internal bignum conversion */
 #undef AUTO_BIGNUM
 
+/* Define this if you want to enable the shared nodes mode of the optimizer. */
+#undef SHARED_NODES
+
 /* The following four are used by smartlink */
 /* Define this if your ld sets the run path with -rpath */
 #undef USE_RPATH
