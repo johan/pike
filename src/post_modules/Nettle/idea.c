@@ -41,7 +41,7 @@ void idea_crypt_blocks(struct idea_ctx *ctx, int len,
 {
   ptrdiff_t i;
   for( i=0 ; i<len ; i+=IDEA_BLOCK_SIZE )
-    idea_crypt(ctx->ctx, (unsigned INT8 *)to, (unsigned INT8 *)from);
+    idea_crypt(ctx->ctx, (unsigned INT8 *)to+i, (unsigned INT8 *)from+i);
 }
 
 /*-------------------------------------------------------------*/
@@ -225,7 +225,7 @@ idea_invert(unsigned INT16 *d,
      
 /*	IDEA encryption/decryption algorithm */
 /* Note that in and out can be the same buffer */
-void
+static void
 idea_crypt(const unsigned INT16 *key,
 	   unsigned INT8 *dest,
 	   const unsigned INT8 *src)
