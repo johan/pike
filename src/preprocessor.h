@@ -1016,8 +1016,6 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	  /* NOTE: defined() must be handled here, since it's argument
 	   *       must not be macro expanded.
 	   */
-	  static const WCHAR efun_[] = { 'e','f','u','n' };
-	  static const WCHAR constant_[] = { 'c','o','n','s','t','a','n','t' };
 
 	  if(pos-tmp == 7 && !MEMCMP(defined_, data+tmp, 7<<SHIFT))
 	  {
