@@ -57,6 +57,14 @@
 #endif /* _SGI_SPROC_THREADS */
 
 
+
+/* Restore the fp macro. */
+#ifdef FRAMEPOINTER_WAS_DEFINED
+#define fp Pike_fp
+#undef FRAMEPOINTER_WAS_DEFINED
+#endif /* FRAMEPOINTER_WAS_DEFINED */
+
+
 extern int num_threads;
 extern int live_threads;
 struct object;
@@ -629,13 +637,6 @@ void th_farm(void (*fun)(void *), void *here);
 #define low_init_threads_disable()
 #define init_threads_disable(X)
 #define exit_threads_disable(X)
-
-
-/* Restore the fp macro. */
-#ifdef FRAMEPOINTER_WAS_DEFINED
-#define fp Pike_fp
-#undef FRAMEPOINTER_WAS_DEFINED
-#endif /* FRAMEPOINTER_WAS_DEFINED */
 
 
 #endif /* PIKE_THREADS */
