@@ -201,12 +201,22 @@ void f_atan2(INT32 args)
 
 /*! @decl float sqrt(float f)
  *! @decl int sqrt(int i)
+ *! @decl mixed sqrt(object o)
  *!
  *! Returns the square root of @[f], or in the integer case, the square root
- *! truncated to the closest lower integer.
+ *! truncated to the closest lower integer. If the argument is an object,
+ *! the lfun _sqrt in the object will be called.
  *!
  *! @seealso
- *!   @[pow()], @[log()], @[exp()], @[floor()]
+ *!   @[pow()], @[log()], @[exp()], @[floor()], @[lfun::_sqrt]
+ */
+
+/*! @decl mixed lfun::_sqrt()
+ *!   Called by sqrt when the square root of an object is requested.
+ *! @note
+ *!   _sqrt is not a real lfun, so it must not be defined as static.
+ *! @seealso
+ *!   @[predef::sqrt()]
  */
 void f_sqrt(INT32 args)
 {
