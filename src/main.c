@@ -501,7 +501,7 @@ void low_exit_main(void)
   zap_all_mappings();
 
   cleanup_shared_string_table();
-  cleanup_callbacks();
 #endif
+  cleanup_callbacks();
 }
 
