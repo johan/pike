@@ -45,10 +45,15 @@ void die(int status)
 #endif
   }
   is_closed = 1;
-  if (socket) {
+  if (socket)
+  {
+    mixed id;
+    catch(id = socket->query_id());
     catch(socket->close());
+    socket = 0;
+    // Avoid recursive calls if the close callback closes the socket.
     if(close_callback)
-      close_callback(socket->query_id());
+      close_callback( id );
   }
 }
 
