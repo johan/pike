@@ -709,7 +709,7 @@ static void image_poly_cast(INT32 args)
 		     struct line *lk;
 
 		     fprintf(stderr," %ld %ld:%g,%g - ",
-			     DO_NOT_WARN((long)(l - THIS->line),
+			     DO_NOT_WARN((long)(l - THIS->line)),
 			     DO_NOT_WARN((long)(v - THIS->vertex)),
 			     v->x,v->y);
 #endif
