@@ -65,7 +65,11 @@ module.pmod: Makefile
 	if [ -f $(SRCDIR)/module.pmod.in ]; then \
 	   sed -e "s/@module@/_static_modules.$(MODNAME)/" <$(SRCDIR)/module.pmod.in >module.pmod ;\
 	else \
-	  echo >module.pmod "inherit _static_modules.$(MODNAME);" ;\
+	  if [ -f ./module.pmod.in ]; then \
+	   sed -e "s/@module@/_static_modules.$(MODNAME)/" <./module.pmod.in >module.pmod ;\
+	  else \
+	    echo >module.pmod "inherit _static_modules.$(MODNAME);" ;\
+	  fi \
 	fi
 
 module.a: $(OBJS)
