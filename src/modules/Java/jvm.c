@@ -3650,7 +3650,7 @@ PIKE_MODULE_INIT
   pike_add_function("get_version", f_get_version, "function(:int)", 0);
   pike_add_function("find_class", f_find_class, "function(string:object)", 0);
   pike_add_function("define_class", f_define_class,
-		    "function(object,string:object)", 0);
+		    "function(string,object,string:object)", 0);
   pike_add_function("exception_check", f_exception_check, "function(:int)", 0);
   pike_add_function("exception_occurred", f_exception_occurred,
 		    "function(:object)", 0);
