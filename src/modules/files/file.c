@@ -77,6 +77,9 @@ RCSID("$Id$");
 #ifdef HAVE_NETDB_H
 #include <netdb.h>
 #endif
+#ifdef HAVE_NET_NETDB_H
+#include <net/netdb.h>
+#endif /* HAVE_NET_NETDB_H */
 
 #include "dmalloc.h"
 
