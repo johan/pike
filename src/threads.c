@@ -733,7 +733,7 @@ static void check_threads(struct callback *cb, void *arg, void * arg2)
       return;
     last_ = now;
   }
-#elif HAVE_MACH_TASK_INFO_H
+#elif defined(HAVE_MACH_TASK_INFO_H) && defined(TASK_THREAD_TIMES_INFO)
   {
     static struct timeval         last_check = { 0, 0 };
     task_thread_times_info_data_t info;
