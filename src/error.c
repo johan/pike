@@ -225,6 +225,9 @@ void new_error(const char *name, const char *text, struct svalue *oldsp,
 
 void exit_on_error(void *msg)
 {
+  ONERROR tmp;
+  SET_ONERROR(tmp,fatal_on_error,"Fatal in exit_on_error!");
+
   fprintf(stderr,"%s\n",(char *)msg);
 #ifdef PIKE_DEBUG
   dump_backlog();
