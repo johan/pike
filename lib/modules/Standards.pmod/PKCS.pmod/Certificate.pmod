@@ -166,6 +166,11 @@ Sequence build_distinguished_name(mapping(string:object) ... args)
 			    } ));
 }
 
+Sequence decode_pem_certificate(string cert)
+{
+
+}
+
 //! Return the certificate issuer RDN from a certificate string.
 //!
 //! @param cert
@@ -203,7 +208,7 @@ string get_dn_string(Sequence dnsequence)
   string dn="";
   array rdns=({});
 
-  foreach(dnsequence->elements, Set att)
+  foreach(reverse(dnsequence->elements), Set att)
   {
     foreach(att->elements, Sequence val)
     {
