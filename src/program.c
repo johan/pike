@@ -1504,8 +1504,19 @@ struct pike_string *find_program_name(struct program *p, INT32 *line)
 #ifdef DEBUG_MALLOC
   {
     char *tmp=dmalloc_find_name(p);
-    *line=0;
-    if(tmp) return make_shared_string(tmp);
+    if (tmp) {
+      char *p = strchr (tmp, ':');
+      if (p) {
+	char *pp;
+	while ((pp = strchr (p + 1, ':'))) p = pp;
+	*line = atoi (p + 1);
+	return make_shared_binary_string (tmp, p - tmp);
+      }
+      else {
+	*line=0;
+	return make_shared_string(tmp);
+      }
+    }
   }
 #endif
 
