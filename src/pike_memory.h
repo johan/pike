@@ -15,6 +15,23 @@
 #include <valgrind.h>
 #endif /* HAVE_VALGRIND_H */
 
+#ifdef USE_VALGRIND
+/* No Access */
+#define PIKE_MEM_NA(addr, bytes)	VALGRIND_MAKE_NOACCESS(addr, bytes)
+/* Write Only -- Will become RW when hving been written to */
+#define PIKE_MEM_WO(addr, bytes)	VALGRIND_MAKE_WRITABLE(addr, bytes)
+/* Read/Write */
+#define PIKE_MEM_RW(addr, bytes)	VALGRIND_MAKE_READABLE(addr, bytes)
+/* Read Only -- Not currently supported by valgrind */
+#define PIKE_MEM_RO(addr, bytes)	VALGRIND_MAKE_READABLE(addr, bytes)
+#else
+#define PIKE_MEM_NA(addr, bytes)	0
+#define PIKE_MEM_WO(addr, bytes)	0
+#define PIKE_MEM_RW(addr, bytes)	0
+#define PIKE_MEM_RO(addr, bytes)	0
+#endif /* USE_VALGRIND */
+
+
 #define MEMSEARCH_LINKS 512
 
 struct link
