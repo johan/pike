@@ -6,7 +6,6 @@
 /**/
 #include "global.h"
 #include "config.h"
-#include <math.h>
 #include "interpret.h"
 #include "constants.h"
 #include "svalue.h"
@@ -15,6 +14,8 @@
 #include "operators.h"
 #include "bignum.h"
 #include "opcodes.h"
+
+#include <math.h>
 
 #ifdef PC
 #undef PC
