@@ -52,7 +52,7 @@ class simple
   //! Queue some data to send.
   //!
   //! @seealso
-  //! @[handle_commend()], @[handle_data()], @[disconnect()]
+  //! @[handle_command()], @[handle_data()], @[disconnect()]
   //!
   static void send(string s)
   {
