@@ -141,6 +141,9 @@ struct udp_storage {
   struct svalue read_callback;
 };
 
+void zero_udp(struct object *ignored);
+void exit_udp(struct object *ignored);
+
 #undef THIS
 #define THIS ((struct udp_storage *)Pike_fp->current_storage)
 #define THISOBJ (Pike_fp->current_object)
