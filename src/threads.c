@@ -191,7 +191,6 @@ void f_mutex_lock(INT32 args)
   mt_lock(& m->kludge);
   if(m->key && OB2KEY(m->key)->owner == thread_id)
   {
-    mt_unlock(& m->kludge);
     THREADS_FPRINTF((stderr, "Recursive LOCK k:%08x, m:%08x(%08x), t:%08x\n",
 		     (unsigned int)OB2KEY(m->key),
 		     (unsigned int)m,
