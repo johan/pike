@@ -229,8 +229,8 @@ static INLINE INT32 EXTRACT_INT_(unsigned char *p)
 
 #endif
 
-PMOD_EXPORT unsigned long my_rand(void);
-PMOD_EXPORT void my_srand(long seed);
+PMOD_EXPORT unsigned INT32 my_rand(void);
+PMOD_EXPORT void my_srand(INT32 seed);
 
 #ifdef OWN_GETHRTIME
 void own_gethrtime_init(void);
