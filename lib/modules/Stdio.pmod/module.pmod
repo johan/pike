@@ -1628,6 +1628,14 @@ string read_file(string filename,void|int start,void|int len)
 //!
 //! If @[start] is also omitted, the entire file will be returned.
 //!
+//! @throws
+//!   Throws an error if @[filename] isn't a regular file.
+//!
+//! @returns
+//!   Returns @tt{0@} (zero) on failure to open @[filename].
+//!
+//!   Returns a string with the requested data otherwise.
+//!
 //! @seealso
 //! @[read_file], @[write_file()], @[append_file()]
 //!
