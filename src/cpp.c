@@ -893,7 +893,7 @@ static void check_defined(struct cpp *this,
 			  struct define_argument *args,
 			  struct string_builder *tmp)
 {
-  struct pike_string *s;
+  struct pike_string *s = NULL;
   switch(args[0].arg.shift) {
   case 0:
     s=binary_findstring((char *)args[0].arg.ptr, args[0].len);
@@ -921,7 +921,7 @@ static void dumpdef(struct cpp *this,
 		    struct define_argument *args,
 		    struct string_builder *tmp)
 {
-  struct pike_string *s;
+  struct pike_string *s = NULL;
   struct define *d;
 
   switch(args[0].arg.shift) {
