@@ -53,7 +53,7 @@ RCSID("$Id$");
 #endif
 
 /* #define DIFF_DEBUG */
-
+/* #define ENABLE_DYN_DIFF */
 
 void f_equal(INT32 args)
 {
@@ -2179,6 +2179,8 @@ static struct array *diff_dyn_longest_sequence(struct array *cmptbl, int blen)
   unsigned int i;
   unsigned int off1 = 0;
   unsigned int off2 = blen + 1;
+  unsigned int l1 = 0;
+  unsigned int l2 = 0;
 
   table = calloc(sizeof(struct diff_magic_link_head)*2, off2);
   if (!table) {
