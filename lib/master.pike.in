@@ -427,11 +427,6 @@ object new(mixed prog, mixed ... args)
   return prog(@args);
 }
 
-multiset mkmultiset(array a)
-{
-  return aggregate_multiset(@a);
-}
-
 function clone = new;
 
 /* This array contains the names of the functions
@@ -453,7 +448,6 @@ constant master_efuns = ({
   "remove_program_path",
   "describe_backtrace",
   "describe_error",
-  "mkmultiset",
   "new",
   "clone",
 
