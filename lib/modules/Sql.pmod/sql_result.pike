@@ -6,6 +6,8 @@
  * Henrik Grubbström 1996-01-09
  */
 
+#pike __VERSION__
+
 //.
 //. File:	sql_result.pike
 //. RCSID:	$Id$

@@ -8,6 +8,8 @@
  * All storage managers must provide these methods.
  */
 
+#pike __VERSION__
+
 #define T() throw( ({"override this", backtrace()}))
 
 // The next two functions are an iterator over the cache. There is an

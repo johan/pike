@@ -6,6 +6,8 @@
 // $Id$
 //
 
+#pike __VERSION__
+
 class client {
   string host;
   int port;

@@ -12,6 +12,8 @@
  * Settings will be added later.
  */
 
+#pike __VERSION__
+
 class Data {
 
   inherit Cache.Data;

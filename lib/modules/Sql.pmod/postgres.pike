@@ -6,6 +6,8 @@
  *
  */
 
+#pike __VERSION__
+
 #if constant(Postgres.postgres)
 
 #define ERROR(X) throw (({X,backtrace()}))

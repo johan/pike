@@ -2,6 +2,8 @@
  *
  */
 
+#pike __VERSION__
+
 inherit Crypto.cbc : cbc;
 
 void create()

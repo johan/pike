@@ -6,6 +6,8 @@
  * Henrik Grubbström 1998-06-23
  */
 
+#pike __VERSION__
+
 // Contains all UDP ports assigned for private use as of RFC 1700
 constant private_udp = ([
   "mail":              24,	//    any private mail system

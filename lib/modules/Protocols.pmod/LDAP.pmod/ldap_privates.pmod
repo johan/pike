@@ -1,3 +1,5 @@
+#pike __VERSION__
+
 // LDAP client protocol implementation for Pike.
 //
 // $Id$

@@ -1,5 +1,7 @@
 #!NOMODULE
 
+#pike __VERSION__
+
 #include "graph.h"
 
 // import Image;

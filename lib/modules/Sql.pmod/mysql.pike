@@ -17,6 +17,8 @@
 //. SQL module.
 //.
 
+#pike __VERSION__
+
 #if constant(Mysql.mysql)
 
 inherit Mysql.mysql;

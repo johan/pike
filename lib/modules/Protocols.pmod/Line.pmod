@@ -6,6 +6,8 @@
  * Henrik Grubbström 1998-05-27
  */
 
+#pike __VERSION__
+
 class simple
 {
   static object con;

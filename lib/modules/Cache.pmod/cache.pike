@@ -11,6 +11,8 @@
  * will be added in time, or at least this is the plan.
  */
 
+#pike __VERSION__
+
 #if constant(thread_create)
 #define do_possibly_threaded_call thread_create
 #else

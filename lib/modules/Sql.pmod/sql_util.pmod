@@ -7,6 +7,8 @@
  * Henrik Grubbström 1999-07-01
  */
 
+#pike __VERSION__
+
 //.
 //. File:	sql_util.pmod
 //. RCSID:	$Id$

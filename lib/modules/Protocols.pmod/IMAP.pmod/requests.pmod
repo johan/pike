@@ -3,6 +3,8 @@
  * $Id$
  */
 
+#pike __VERSION__
+
 import .types;
 
 // FIXME: Pass the current request's tag when returning a "bad" action.

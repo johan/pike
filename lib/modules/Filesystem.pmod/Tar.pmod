@@ -2,6 +2,8 @@
  * $Id$
  */
 
+#pike __VERSION__
+
 class _Tar  // filesystem
 {
   Stdio.File fd;

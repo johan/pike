@@ -31,6 +31,8 @@
  * mailing list, pike@idonex.se, or to the athors (see AUTHORS for
  * email addresses. */
 
+#pike __VERSION__
+
 /* Steals and processes mousebutton events */
 class Button
 {

@@ -6,6 +6,8 @@
  * Henrik Grubbström 1996-12-05
  */
 
+#pike __VERSION__
+
 //.
 //. File:	priority.pike
 //. RCSID:	$Id$

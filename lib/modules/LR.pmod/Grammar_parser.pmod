@@ -1,5 +1,7 @@
 #!/usr/local/bin/pike
 
+#pike __VERSION__
+
 /*
  * $Id$
  *

@@ -8,6 +8,8 @@
  * Henrik Grubbström 1996-11-23
  */
 
+#pike __VERSION__
+
 import LR;
 
 object(parser) g;

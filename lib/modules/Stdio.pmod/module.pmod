@@ -1,4 +1,6 @@
 // $Id$
+#pike __VERSION__
+
 
 import String;
 

@@ -7,6 +7,8 @@
  *
  */
 
+#pike __VERSION__
+
 #if constant(sybase.sybase)
 
 inherit sybase.sybase:mo;

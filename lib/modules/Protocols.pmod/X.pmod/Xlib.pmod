@@ -28,6 +28,8 @@
  * mailing list, pike@idonex.se, or to the athors (see AUTHORS for
  * email addresses. */
 
+#pike __VERSION__
+
 #include "error.h"
 
 // #define DEBUG

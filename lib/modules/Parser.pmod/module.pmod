@@ -3,6 +3,8 @@
  *
  */
 
+#pike __VERSION__
+
 inherit Parser._parser;
 
 //! module Parser

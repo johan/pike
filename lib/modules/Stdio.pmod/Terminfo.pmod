@@ -1,4 +1,5 @@
 // $Id$
+#pike __VERSION__
 
 
 #if constant(thread_create)

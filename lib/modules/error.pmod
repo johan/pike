@@ -1,3 +1,5 @@
+#pike __VERSION__
+
 // Moahahahah!
 // $Id$
 void `()(string f, mixed ... args)

@@ -8,6 +8,8 @@
  * $Id$
  */
 
+#pike __VERSION__
+
 void expire(Cache.Storage storage) {
   throw("Override this!");
 }

@@ -3,6 +3,8 @@
  * Follow the PKCS#1 standard for padding and encryption.
  */
 
+#pike __VERSION__
+
 #if constant(Gmp.mpz)
 
 #define bignum object(Gmp.mpz)

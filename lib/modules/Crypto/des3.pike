@@ -2,6 +2,8 @@
  *
  */
 
+#pike __VERSION__
+
 inherit Crypto.pipe : pipe;
 
 private array(object) d;

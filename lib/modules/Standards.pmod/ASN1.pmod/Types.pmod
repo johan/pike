@@ -4,6 +4,8 @@
  * Encodes various asn.1 objects according to the Distinguished
  * Encoding Rules (DER) */
 
+#pike __VERSION__
+
 #if constant(Gmp.mpz)
 
 #if 0

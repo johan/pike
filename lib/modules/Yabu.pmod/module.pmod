@@ -4,6 +4,8 @@
  * associated with a unique key.
  */
 
+#pike __VERSION__
+
 constant cvs_id = "$Id$";
 
 #define ERR(msg) throw(({ "(Yabu) "+msg+"\n", backtrace() }))

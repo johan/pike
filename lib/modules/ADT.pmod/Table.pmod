@@ -1,6 +1,7 @@
 // Table.pmod by Fredrik Noring, 1998
 // $Id$
 
+#pike __VERSION__
 #define TABLE_ERR(msg) throw(({ "(Table) "+msg+"\n", backtrace() }))
 
 class table {

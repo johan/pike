@@ -1,3 +1,5 @@
+#pike __VERSION__
+
 //  $Id$
 //! module Protocols
 //! submodule LysKOM

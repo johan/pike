@@ -30,6 +30,8 @@
  * mailing list, pike@idonex.se, or to the athors (see AUTHORS for
  * email addresses. */
 
+#pike __VERSION__
+
 program pixmap_class;
 
 program get_pixmap_class() { return pixmap_class; }

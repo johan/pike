@@ -10,6 +10,8 @@
  * will block if it can't provide enough random bits, while /dev/urandom
  * will degenerate into a reasonably strong pseudo random generator */
 
+#pike __VERSION__
+
 static constant RANDOM_DEVICE = "/dev/random";
 static constant PRANDOM_DEVICE = "/dev/urandom";
 

@@ -6,6 +6,8 @@
  * $Id$
  */
 
+#pike __VERSION__
+
 inherit Cache.Policy.Base;
 //watermarks
 int max_size=0; //in bytes

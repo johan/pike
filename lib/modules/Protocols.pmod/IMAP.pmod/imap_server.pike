@@ -2,6 +2,7 @@
  *
  * $Id$
  */
+#pike __VERSION__
 
 constant unauth_commands =
 ([ "noop" : .requests.noop,

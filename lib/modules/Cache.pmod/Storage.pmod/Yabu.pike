@@ -8,6 +8,8 @@
  * Settings will be added later.
  */
 
+#pike __VERSION__
+
 #define CLUTTERED 200
 
 Yabu.Table db, metadb;

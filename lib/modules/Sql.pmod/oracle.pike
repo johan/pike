@@ -4,6 +4,8 @@
  * Glue for the Oracle-module
  */
 
+#pike __VERSION__
+
 #if constant(Oracle.oracle)
 inherit Oracle.oracle;
 

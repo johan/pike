@@ -3,6 +3,9 @@
  *
  * GL Utilities module.
  */
+
+#pike __VERSION__
+
 #if constant(GL.glGet)
 import GL;
 import Math;

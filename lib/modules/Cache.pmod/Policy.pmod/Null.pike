@@ -9,6 +9,8 @@
  * It is useful in multilevel and/or network-based caches.
  */
 
+#pike __VERSION__
+
 void expire (Cache.Storage storage) {
   /* empty */
 }

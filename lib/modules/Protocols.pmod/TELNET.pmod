@@ -6,6 +6,8 @@
 // Henrik Grubbström <grubba@idonex.se> 1998-04-04
 //
 
+#pike __VERSION__
+
 // #define TELNET_DEBUG
 
 #ifdef TELNET_DEBUG
