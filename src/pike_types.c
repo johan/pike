@@ -2634,6 +2634,7 @@ static struct pike_type *low_match_types2(struct pike_type *a,
 
   case T_OBJECT:
 #if 0
+#if 0
     if(a->cdr || b->cdr)
     {
       fprintf(stderr,"Type match1: ");
@@ -2694,7 +2695,7 @@ static struct pike_type *low_match_types2(struct pike_type *a,
       }
 #endif /* 1 */
     }
-    
+#endif /* 0 */
     break;
 
   case T_INT:
@@ -3212,15 +3213,20 @@ static int low_pike_types_le2(struct pike_type *a, struct pike_type *b,
 
     if(!a->cdr)
       return 0;
+
+    /* The 'is' flag is now ignored.
+     *	/grubba 2003-11-11
+     */
     
-    if ((a->car || !b->car) &&
+    if (/* (a->car || !b->car) && */
 	(a->cdr == b->cdr))
       return 1;
 
-    if (b->car) {
-      return 0;
-    }
-
+    /*
+     * if (b->car) {
+     *   return 0;
+     * }
+     */
     {
       struct program *ap = id_to_program(CDR_TO_INT(a));
       struct program *bp = id_to_program(CDR_TO_INT(b));
@@ -3229,7 +3235,7 @@ static int low_pike_types_le2(struct pike_type *a, struct pike_type *b,
 	/* Shouldn't happen... */
 	return 0;
       }
-      if ((flags & LE_WEAK_OBJECTS) && (!a->car)) {
+      if ((flags & LE_WEAK_OBJECTS) /* && (!a->car) */) {
 	return is_compatible(implements_a=ap, implements_b=bp);
       }
       return implements(implements_a=ap, implements_b=bp);
