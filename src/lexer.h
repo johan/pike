@@ -527,12 +527,6 @@ static int low_yylex(YYSTYPE *yylval)
 
       switch(len>0?INDEX_CHARP(buf, 0, SHIFT):0)
       {
-      case 'l':
-	if(!ISWORD("line")) goto badhash;
-	SKIPSPACE();
-	READBUF(C!=' ' && C!='\t' && C!='\n');
-	/* FIXME: Check that buf is a number? */
-	
       case '0': case '1': case '2': case '3': case '4':
       case '5': case '6': case '7': case '8': case '9':
 	lex.current_line=lex_atoi(buf)-1;
@@ -554,22 +548,6 @@ static int low_yylex(YYSTYPE *yylval)
 #endif
 	}
 	break;
-
-      case 'e':
-	if(ISWORD("error"))
-	{
-	  SKIPSPACE();
-	  READBUF(C!='\n');
-	  /* FIXME: Does the following actually work?
-	   * Where does the NUL-termination come from?
-	   * Suspicion: #error is usually handled by cpp().
-	   * What about wide-strings?
-	   * /grubba 2000-11-19 (in Versailles)
-	   */
-	  yyerror(buf);
-	  break;
-	}
-	goto badhash;
 
       case 'p':
 	if(ISWORD("pragma"))
@@ -598,6 +576,7 @@ static int low_yylex(YYSTYPE *yylval)
 	  }
 	  break;
 	}
+
 	if(ISWORD("pike"))
 	{
 	  int minor;
