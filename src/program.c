@@ -889,6 +889,14 @@ void check_program(struct program *p)
     if(p->identifier_references[e].inherit_offset > p->num_inherits)
       fatal("Inherit offset is wrong!\n");
 
+    if(!p->inherits[p->identifier_references[e].inherit_offset].prog)
+    {
+      if(!(p->flags & PROGRAM_FINISHED))
+	continue;
+
+      fatal("p->inherit[%d].prog = NULL!\n",p->identifier_references[e].inherit_offset);
+    }
+
     if(p->identifier_references[e].identifier_offset >
        p->inherits[p->identifier_references[e].inherit_offset].prog->num_identifiers)
       fatal("Identifier offset is wrong!\n");
