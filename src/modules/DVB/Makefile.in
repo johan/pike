@@ -1,0 +1,9 @@
+# $Id$
+@make_variables@
+VPATH=@srcdir@:@srcdir@/../..:../..
+OBJS=dvb.o
+MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
+CONFIG_HEADERS=@CONFIG_HEADERS@
+
+@dynamic_module_makefile@
+@dependencies@
