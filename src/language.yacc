@@ -2438,7 +2438,7 @@ enum_def: /* EMPTY */
   {
     if ($1) {
       add_constant($1->u.sval.u.string, Pike_sp-1,
-		   (Pike_compiler->current_modifiers & ~ID_EXTERN) | ID_LOCAL);
+		   (Pike_compiler->current_modifiers & ~ID_EXTERN) | ID_INLINE);
     }
     free_node($1);
     /* Update the type. */
