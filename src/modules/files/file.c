@@ -873,7 +873,7 @@ DO_DISABLE(write_oob_callback)
 
 static void file_write(INT32 args)
 {
-  INT32 written,i;
+  ptrdiff_t written, i;
   struct pike_string *str;
 
   if(args<1 || ((Pike_sp[-args].type != PIKE_T_STRING) && (Pike_sp[-args].type != PIKE_T_ARRAY)))
@@ -2286,7 +2286,7 @@ static void file_query_address(INT32 args)
 
 static void file_lsh(INT32 args)
 {
-  INT32 len;
+  ptrdiff_t len;
   if(args != 1)
     error("Too few/many args to file->`<<\n");
 
@@ -2562,9 +2562,9 @@ static void exit_file_lock_key(struct object *o)
 
 static void init_file_locking(void)
 {
-  INT32 off;
+  ptrdiff_t off;
   start_new_program();
-  off=ADD_STORAGE(struct file_lock_key_storage);
+  off = ADD_STORAGE(struct file_lock_key_storage);
 #ifdef _REENTRANT
   map_variable("_owner","object",0,
 	       off + OFFSETOF(file_lock_key_storage, owner),
