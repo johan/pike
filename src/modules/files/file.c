@@ -930,9 +930,14 @@ static void file_write(INT32 args)
 	int fd = FD;
 	int cnt = iovcnt;
 	THREADS_ALLOW();
-	if (cnt > IOV_MAX) {
-	  cnt = IOV_MAX;
-	}
+
+#ifdef IOV_MAX
+	if (cnt > IOV_MAX) cnt = IOV_MAX;
+#endif
+
+#ifdef MAX_IOVEC
+	if (cnt > MAX_IOVEC) cnt = MAX_IOVEC;
+#endif
 	i = writev(fd, iov, cnt);
 	THREADS_DISALLOW();
 
