@@ -576,3 +576,8 @@ void init_builtin(void)
 {
 INIT
 }
+
+void exit_builtin(void)
+{
+EXIT
+}
