@@ -35,7 +35,7 @@ Makefile: $(MODULE_BASE)/dynamic_module_makefile $(SRCDIR)/Makefile.in $(SRCDIR)
 	@exit 1
 
 $(MODULE_TARGET): module.so
-	if test "x$(OBJS)" = "x" ; then \
+	@if test "x$(OBJS)" = "x" ; then \
 	  exit 0; \
 	fi; \
 	echo "Installing C component"; \
