@@ -200,7 +200,7 @@ struct node_chunk
 static struct node_chunk *node_chunks=0;
 static node *free_nodes=0;
 
-void free_all_nodes()
+void free_all_nodes(void)
 {
   if(!compiler_frame)
   {
