@@ -450,7 +450,7 @@ int fnordel=0;
 static void do_abort()
 {
   if (!d_flag && !getenv("PIKE_DEBUG")) {
-    /*exit(-6);	/* -SIGIOT */
+    exit(-6);	/* -SIGIOT */
   }
   fnordel=999/fnordel;
 }
