@@ -728,8 +728,8 @@ static void pipe_input(INT32 args)
      {
        int filep=fd_lseek(fd, 0L, SEEK_CUR); /* keep the file pointer */
        if(S_ISREG(s.st_mode)	/* regular file */
-	  && ((long)(m=(char *)mmap(0,s.st_size - filep,PROT_READ,
-				    MAP_FILE|MAP_SHARED,fd,filep))!=-1))
+	  && ((m=(char *)mmap(0,s.st_size - filep,PROT_READ,
+			      MAP_FILE|MAP_SHARED,fd,filep))+1))
        {
 #ifdef HAVE_GETEUID
 	 int ou = 0;
