@@ -2650,9 +2650,9 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 					flags, min_width, precision);
 	  break;
 	case 'd':
+	  flags |= APPEND_SIGNED;
 	  string_builder_append_integer(s, pike_va_int(VA_LIST_ADDR(args), flags), 10,
-					flags | APPEND_SIGNED,
-					min_width, precision);
+					flags, min_width, precision);
 	  break;
 
 	  /* FIMXE: TODO: Doubles (ie 'a', 'e', 'E', 'g', 'G'). */
