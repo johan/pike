@@ -2780,7 +2780,7 @@ class Debug
       string c="stty sane ;tty >"+tmpfile+".tmp ; mv "+tmpfile+".tmp "+tmpfile+" ; while kill -0 "+getpid()+"; do sleep 2; done";
       array(string) fnord;
       if(getenv("STY")) fnord=({"screen","/bin/sh","-c",c });
-      if(getenv("XTERM")) fnord=({"xterm","-e","/bin/sh","-c",c });
+      if(getenv("DISPLAY")) fnord=({"xterm","-e","/bin/sh","-c",c });
       terminal=Process.create_process(fnord, (["setsid":1]) );
 
       while(!file_stat(tmpfile))
