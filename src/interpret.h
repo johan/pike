@@ -47,7 +47,7 @@ struct Pike_interpreter {
 #endif
 struct pike_frame
 {
-  INT32 refs; /* must be first */
+  ptrdiff_t refs; /* must be first */
   INT32 args;
   unsigned INT16 fun;
   INT16 num_locals;

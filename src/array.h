@@ -14,7 +14,7 @@
 
 struct array
 {
-  INT32 refs;		/* Reference count */
+  ptrdiff_t refs;		/* Reference count */
 #ifdef PIKE_SECURITY
   struct object *prot;
 #endif

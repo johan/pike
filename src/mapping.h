@@ -24,7 +24,7 @@ struct keypair
 
 struct mapping_data
 {
-  INT32 refs;
+  ptrdiff_t refs;
   INT32 valrefs; /* lock values too */
   INT32 hardlinks;
   INT32 size, hashsize;
@@ -37,7 +37,7 @@ struct mapping_data
 
 struct mapping
 {
-  INT32 refs;
+  ptrdiff_t refs;
 #ifdef PIKE_SECURITY
   struct object *prot;
 #endif

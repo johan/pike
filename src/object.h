@@ -20,7 +20,7 @@
 #endif
 struct object
 {
-  INT32 refs;                    /* Reference count, must be first. */
+  ptrdiff_t refs;                    /* Reference count, must be first. */
 #ifdef PIKE_SECURITY
   struct object *prot;
 #endif
