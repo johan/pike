@@ -13,6 +13,19 @@
 
 inherit Mysql.mysql;
 
+#if constant( Mysql.mysql.MYSQL_NO_ADD_DROP_DB )
+// Documented in the C-file.
+void create_db( string db )
+{
+  ::big_query( "CREATE DATABASE "+db );
+}
+
+void drop_db( string db )
+{
+  ::big_query( "DROP DATABASE "+db );
+}
+#endif
+
 //! Quote a string so that it can safely be put in a query.
 //!
 //! @param s
