@@ -15,7 +15,7 @@ constant cvs_id = "$Id$";
 #define THREAD_SAFE
 #define LOCK() do { object key___; catch(key___=lock())
 #define UNLOCK() key___=0; } while(0)
-#define INHERIT_MUTEX static inherit Thread.Mutex
+#define INHERIT_MUTEX static inherit Thread.Mutex;
 #else
 #undef  THREAD_SAFE
 #define LOCK() do {
@@ -124,7 +124,7 @@ class YabuLog {
  *
  */
 static private class FileIO {
-  INHERIT_MUTEX;
+  INHERIT_MUTEX
   static private inherit Stdio.File:file;
 
   static private void seek(int offset)
@@ -181,7 +181,7 @@ static private class FileIO {
  *
  */
 class Chunk {
-  INHERIT_MUTEX;
+  INHERIT_MUTEX
   static private inherit FileIO:file;
 
   static private object parent;
@@ -603,7 +603,7 @@ class Transaction {
  *
  */
 class Table {
-  INHERIT_MUTEX;
+  INHERIT_MUTEX
   static private object index, db, lock_file;
 
   static private string mode, filename;
@@ -1115,7 +1115,7 @@ class _Table {
  *
  */
 class db {
-  INHERIT_MUTEX;
+  INHERIT_MUTEX
 
   static string dir, mode;
   static mapping tables = ([]), table_refs = ([]);
@@ -1269,7 +1269,7 @@ class db {
  * data records.
  */
 class LookupTable {
-  INHERIT_MUTEX;
+  INHERIT_MUTEX
   
   static private int minx;
   static private object table;
