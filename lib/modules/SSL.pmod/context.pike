@@ -72,7 +72,8 @@ object lookup_session(string id)
 object new_session()
 {
   object s = Session();
-  s->identity = (use_cache) ? sprintf("%4c%4c", time(), session_number++) : "";
+  s->identity = (use_cache) ? sprintf("%4cPikeSSL3%4c",
+				      time(), session_number++) : "";
   return s;
 }
 
