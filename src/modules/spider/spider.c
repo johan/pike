@@ -834,7 +834,6 @@ void do_html_parse(struct pike_string *ss,
 
 #define HANDLE_RETURN_VALUE() do {		\
   free_svalue(&sval1);                          \
-  free_svalue(&sval2); 			        \
   if (sp[-1].type==T_STRING)			\
   {						\
     PARSE_RECURSE();				\
@@ -925,6 +924,7 @@ void do_html_parse_lines(struct pike_string *ss,
 	}
 	apply_svalue(&sval1,3+(extra_args?extra_args->size:0));
 	HANDLE_RETURN_VALUE();
+	continue;
       }
       free_svalue(&sval1);
 
@@ -963,6 +963,7 @@ void do_html_parse_lines(struct pike_string *ss,
 	}
 	apply_svalue(&sval1,4+(extra_args?extra_args->size:0));
 	HANDLE_RETURN_VALUE();
+	continue;
       }
       i=j;
     }
