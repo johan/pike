@@ -158,6 +158,7 @@ OBJ= \
  program.o \
  rbtree.o \
  rusage.o \
+ sscanf.o \
  stralloc.o \
  stuff.o \
  threads.o \
