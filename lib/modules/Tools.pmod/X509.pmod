@@ -8,6 +8,8 @@
  *
  */
 
+constant dont_dump_module = 1;
+
 #if constant(Standards.ASN1.Types.Sequence) && constant(Crypto.Hash)
 
 import Standards.ASN1.Types;
