@@ -63,6 +63,13 @@ void main(int argc, char **argv, char **env)
 
   ARGV=argv;
 
+  /* Close extra fds (if any) */
+  for (e=3; e < MAX_OPEN_FILEDESCRIPTORS; e++) {
+    do {
+      num = close(e);
+    } while ((num < 0) && (errno == EINTR));
+  }
+
 #ifdef HAVE_SETLOCALE
 #ifdef LC_NUMERIC
   setlocale(LC_NUMERIC, "C");
