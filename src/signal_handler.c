@@ -1014,7 +1014,7 @@ static void f_signame(int args)
   n=signame(Pike_sp[-args].u.integer);
   pop_n_elems(args);
   if(n)
-    push_string(make_shared_string(n));
+    push_text(n);
   else
     push_int(0);
 }
@@ -3205,7 +3205,7 @@ void f_create_process(INT32 args)
 	    {
 	      check_stack(3);
 	      ref_push_string(ITEM(i)[e].u.string);
-	      push_string(make_shared_string("="));
+	      push_text("=");
 	      ref_push_string(ITEM(v)[e].u.string);
 	      f_add(3);
 	      storage.env[ptr++]=Pike_sp[-1].u.string->str;

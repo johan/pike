@@ -378,8 +378,8 @@ static struct mapping *initial_predefs_mapping()
   if (!use_initial_predefs) Pike_fatal ("Initial predefs has been taken over.\n");
 #endif
   for (def = first_predef; def; def = def->next) {
-    push_string (make_shared_string (def->name));
-    push_string (make_shared_string (def->value));
+    push_text (def->name);
+    push_text (def->value);
     mapping_insert (map, sp - 2, sp - 1);
     pop_n_elems (2);
   }
