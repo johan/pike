@@ -1130,6 +1130,10 @@ static void create()
   include_prefix = "¤include_prefix¤";
 #endif
   system_module_path=pike_module_path;
+  if (master()) {
+    // getenv() and putenv() will get confused if we don't do this.
+    environment = master()->environment || environment;
+  }
 }
 
 
