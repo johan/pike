@@ -131,7 +131,7 @@ static void regexp_match(INT32 args)
       SIMPLE_BAD_ARG_ERROR("Regexp.SimpleRegexp->match", 1,
 			   "Expected string (8bit)");
     
-    i = pike_regexec(regexp, STR0(Pike_sp[-args].u.string));
+    i = pike_regexec(regexp, (char *)STR0(Pike_sp[-args].u.string));
     pop_n_elems(args);
     push_int(i);
     return;
@@ -151,7 +151,7 @@ static void regexp_match(INT32 args)
 	SIMPLE_BAD_ARG_ERROR("Regexp.SimpleRegexp->match", 1,
 			     "Expected string (8bit)");
 
-      if(pike_regexec(regexp, STR0(sv->u.string)))
+      if(pike_regexec(regexp, (char *)STR0(sv->u.string)))
       {
 	ref_push_string(sv->u.string);
 	n++;
