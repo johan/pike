@@ -1858,41 +1858,43 @@ void gc_check_all_programs(void)
   for(p=first_program;p;p=p->next)
   {
     int e;
-    gc_check_svalues(p->constants, p->num_constants);
+    debug_gc_check_svalues(p->constants, p->num_constants, T_PROGRAM, p);
 
     for(e=0;e<p->num_inherits;e++)
     {
       if(p->inherits[e].parent)
       {
 #ifdef DEBUG
-	if(gc_check(p->inherits[e].parent)==-2)
+	if(debug_gc_check(p->inherits[e].parent,T_PROGRAM,p)==-2)
 	  fprintf(stderr,"(program at 0x%lx -> inherit[%d].parent)\n",
 		  (long)p,
 		  e);
 #else
-	gc_check(p->inherits[e].parent);
+	debug_gc_check(p->inherits[e].parent, T_PROGRAM, p);
 #endif
       }
 
       if(d_flag && p->inherits[e].name)
-	gc_check(p->inherits[e].name);
+	debug_gc_check(p->inherits[e].name, T_PROGRAM, p);
 
       if(e)
-	gc_check(p->inherits[e].prog);
+	debug_gc_check(p->inherits[e].prog, T_PROGRAM, p);
     }
 
+#ifdef DEBUG
     if(d_flag)
     {
       int e;
       for(e=0;e<(int)p->num_strings;e++)
-	gc_check(p->strings[e]);
+	debug_gc_check(p->strings[e], T_PROGRAM, p);
 
       for(e=0;e<(int)p->num_identifiers;e++)
       {
-	gc_check(p->identifiers[e].name);
-	gc_check(p->identifiers[e].type);
+	debug_gc_check(p->identifiers[e].name, T_PROGRAM, p);
+	debug_gc_check(p->identifiers[e].type, T_PROGRAM, p);
       }
     }
+#endif
   }
 }
 
