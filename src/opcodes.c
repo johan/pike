@@ -238,8 +238,6 @@ void present_runned(struct instr_counter *d, int depth, int maxdepth)
 #define OPCODE1_TAILBRANCH(OP,DESC,FLAGS) OPCODE1_BRANCH(OP,DESC,FLAGS)
 #define OPCODE2_TAILBRANCH(OP,DESC,FLAGS) OPCODE2_BRANCH(OP,DESC,FLAGS)
 
-#define LEXER
-
 const struct keyword instr_names[]=
 {
 #ifndef PIKE_PRECOMPILER
