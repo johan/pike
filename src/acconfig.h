@@ -499,6 +499,13 @@
 /* Define when binary --disable-binary is used. */
 #undef DISABLE_BINARY
 
+/* Define to the size of the overhead for a malloc'ed block. (Slightly
+ * too much is better than slightly too little.) */
+#undef PIKE_MALLOC_OVERHEAD
+
+/* Define to the page size (handled efficiently by malloc). */
+#undef PIKE_MALLOC_PAGE_SIZE
+
 @BOTTOM@
 
 /* NT stuff */
