@@ -169,6 +169,7 @@ class TagHeader {
   }
 }
 
+//!
 class ExtendedHeader {
 
   int(0..1) flag_is_update = 0;

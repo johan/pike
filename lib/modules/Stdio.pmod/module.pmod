@@ -467,7 +467,7 @@ class File
   //! This function creates a pipe between the object it was called in
   //! and an object that is returned.
   //!
-  //! @param void|int required_properties
+  //! @param required_properties
   //!   Binary or (@[predef::`|()]) of required @expr{PROP_@} properties.
   //!   @int
   //!     @value PROP_IPC
