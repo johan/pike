@@ -438,7 +438,9 @@ void pike_module_init(void)
   add_integer_constant("LC_ALL", LC_ALL, 0);
   add_integer_constant("LC_COLLATE", LC_COLLATE, 0);
   add_integer_constant("LC_CTYPE", LC_CTYPE, 0);
+#ifdef LC_MESSAGES
   add_integer_constant("LC_MESSAGES", LC_MESSAGES, 0);
+#endif
   add_integer_constant("LC_MONETARY", LC_MONETARY, 0);
   add_integer_constant("LC_NUMERIC", LC_NUMERIC, 0);
   add_integer_constant("LC_TIME", LC_TIME, 0);
