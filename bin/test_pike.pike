@@ -312,7 +312,7 @@ int main(int argc, array(string) argv)
 	  break;
 
 	case "help":
-	  stdout->write(doc);
+	  write(doc);
 	  return 0;
 
 	case "verbose": verbose+=foo(opt[1]); break;
