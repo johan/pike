@@ -20,6 +20,7 @@ PMOD_EXPORT int threads_disabled = 0;
 #include "module_support.h"
 #include "pike_types.h"
 #include "operators.h"
+#include "bignum.h"
 
 #include <errno.h>
 

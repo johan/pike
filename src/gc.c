@@ -1827,7 +1827,7 @@ static void warn_bad_cycles()
 	obj_arr = append_array(obj_arr, --sp);
       }
       p = NEXT(p);
-      if (p ? CYCLE(p) != cycle : cycle) {
+      if (p ? ((unsigned)(CYCLE(p) != cycle)) : cycle) {
 	if (obj_arr->size >= 2) {
 	  push_constant_text("gc");
 	  push_constant_text("bad_cycle");
