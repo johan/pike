@@ -5197,7 +5197,9 @@ ifefun(gc,
 	}
       }
     }
-    werror ("%60s\r", "");
+    if (!quiet) {
+      werror ("%60s\r", "");
+    }
     return ({ tests-tests_failed, tests_failed });
   }]])
 
@@ -8357,7 +8359,7 @@ function reference=lambda(string x, array(string) a, array(string) b)
 
     if(r1 != r2)
     {
-      werror("\nFailiure:\n");
+      werror("\nFailure:\n");
       werror("Text: %O\n",text);
       werror("From: %O\n",base);
       werror("To  : %O\n",to);
