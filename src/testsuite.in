@@ -2675,6 +2675,28 @@ test_compile_any([[
   }
 ]])
 
+// Identity of nested programs.
+test_program([[
+  class A {int i; class X {int j;};}
+  class B {inherit A;}
+  int a() {return A()->X == B()->X;}
+]])
+test_program([[
+  class A {int i; class X {int j;};}
+  class B {inherit A;}
+  int a() {return A.X == B.X;}
+]])
+test_program([[
+  class A {int i; class X {int j = i;};}
+  class B {inherit A;}
+  int a() {return A()->X != B()->X;}
+]])
+test_program([[
+  class A {int i; class X {int j = i;};}
+  class B {inherit A;}
+  int a() {return A.X == B.X;}
+]])
+
 // Testing __INIT
 test_any([[
   class X { int x = 1; };
