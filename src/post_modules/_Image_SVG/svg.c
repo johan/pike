@@ -317,12 +317,13 @@ static void f_decode_layers( INT32 args )
  *!  For now there is always at most one member in the array.
  */
 {
+  low__decode( args, 0 );
+  /* stack: mapping */
   push_text( "Image.Layer" );
   APPLY_MASTER( "resolv", 1 );
-  low__decode( args, 0 );
-  apply_svalue( Pike_sp-2, 1 );
+  /* stack: mapping Image.Layer */
   stack_swap();
-  pop_stack();
+  apply_svalue( Pike_sp-2, 1 );
   f_aggregate( 1 );
 }
 
