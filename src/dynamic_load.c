@@ -545,7 +545,10 @@ void free_dynamic_load(void)
 #ifndef DEBUG_MALLOC
     dlclose(tmp->module);
 #endif
-    if (tmp->module_prog) free_program(tmp->module_prog);
+#ifdef PIKE_DEBUG
+    if (tmp->module_prog)
+      Pike_fatal ("There's still a program for a dynamic module.\n");
+#endif
     free((char *)tmp);
   }
 #endif
