@@ -313,9 +313,9 @@ void f_load_module(INT32 args)
   (*(modfun)init)();
 #ifdef PIKE_DEBUG
   if(sp != save_sp)
-    fatal("load_module(%s) left %d droppings on stack!\n",
+    fatal("load_module(%s) left %ld droppings on stack!\n",
 	  module_name,
-	  sp-save_sp);
+	  PTRDIFF_T_TO_LONG(sp - save_sp));
   }
 #endif
 

@@ -72,11 +72,13 @@ struct pike_frame
 #define debug_check_stack() 
 #endif
 
-#define check_stack(X) do {			\
-  if(Pike_sp - Pike_interpreter.evaluator_stack + (X) >= Pike_stack_size)	\
+#define check_stack(X) do { \
+  if(Pike_sp - Pike_interpreter.evaluator_stack + (X) >= Pike_stack_size) \
     error("Svalue stack overflow. " \
-	  "(%d of %d entries on stack, needed %d more entries)\n", \
-	  Pike_sp-Pike_interpreter.evaluator_stack,Pike_stack_size,(X)); \
+	  "(%ld of %ld entries on stack, needed %ld more entries)\n", \
+	  PTRDIFF_T_TO_LONG(Pike_sp - Pike_interpreter.evaluator_stack), \
+          PTRDIFF_T_TO_LONG(Pike_stack_size), \
+          PTRDIFF_T_TO_LONG(X)); \
   }while(0)
 
 #define check_mark_stack(X) do {		\

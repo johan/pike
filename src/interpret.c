@@ -1410,8 +1410,9 @@ void slow_check_stack(void)
 
   if(Pike_sp > &(Pike_interpreter.evaluator_stack[stack_size]))
     fatal("Svalue stack overflow. "
-	  "(%d entries on stack, stack_size is %d entries)\n",
-	  Pike_sp-Pike_interpreter.evaluator_stack,stack_size);
+	  "(%ld entries on stack, stack_size is %ld entries)\n",
+	  PTRDIFF_T_TO_LONG(Pike_sp - Pike_interpreter.evaluator_stack),
+	  PTRDIFF_T_TO_LONG(stack_size));
 
   if(Pike_mark_sp > &(Pike_interpreter.mark_stack[stack_size]))
     fatal("Mark stack overflow.\n");

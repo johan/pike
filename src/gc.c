@@ -2141,8 +2141,8 @@ int do_gc(void)
   if (gc_extra_refs)
     fatal("Lost track of %d extra refs to things in gc.\n", gc_extra_refs);
   if (gc_ext_weak_refs)
-    fatal("Still got %u external weak references to internal things in gc.\n",
-	  gc_ext_weak_refs);
+    fatal("Still got %lu external weak references to internal things in gc.\n",
+	  (unsigned long)PTRDIFF_T_TO_LONG(gc_ext_weak_refs));
 #endif
 
   Pike_in_gc=0;

@@ -94,7 +94,8 @@
 
 #define STACKMEMBER(X,Y,Z) DO_DEBUG_CODE( \
     if(Pike_compiler->Y < oLd->Y) \
-      fatal("Stack " #Y " shrunk %d steps compilation, currently: %p.\n",oLd->Y - Pike_compiler->Y,Pike_compiler->Y); )
+      fatal("Stack " #Y " shrunk %ld steps compilation, currently: %p.\n", \
+            PTRDIFF_T_TO_LONG(oLd->Y - Pike_compiler->Y), Pike_compiler->Y); )
 
 #define SNAME(X,Y) { \
       struct X *oLd=Pike_compiler->previous;

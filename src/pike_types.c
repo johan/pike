@@ -114,7 +114,9 @@ void check_type_string(struct pike_string *s)
   if(type_length(s->str) != s->len)
   {
     stupid_describe_type(s->str,s->len);
-    fatal("Length of type is wrong. (should be %d, is %d)\n",type_length(s->str),s->len);
+    fatal("Length of type is wrong. (should be %ld, is %ld)\n",
+	  PTRDIFF_T_TO_LONG(type_length(s->str)),
+	  PTRDIFF_T_TO_LONG(s->len));
   }
 }
 #endif

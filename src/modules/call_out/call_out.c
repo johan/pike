@@ -23,6 +23,7 @@ RCSID("$Id$");
 #include "gc.h"
 #include "threads.h"
 #include "stuff.h"
+#include "bignum.h"
 
 #include "callback.h"
 
