@@ -651,10 +651,11 @@ class Node {
   }
 };
 
-//!
-mixed parse_xml_callback(string type, string name,
-			 mapping attr, string|array contents,
-			 mixed location, mixed ...extra)
+
+private Node|int(0..0)
+  parse_xml_callback(string type, string name,
+		     mapping attr, string|array contents,
+		     mixed location, mixed ...extra)
 {
   Node   node;
 
