@@ -1059,6 +1059,9 @@ void pike_module_init(void)
   ADD_GLOBAL_INTEGER_CONSTANT("HKEY_CLASSES_ROOT",HKEY_CLASSES_ROOT);
   add_efun("RegGetValue",f_RegGetValue,"function(int,string,string:string|int|string*)",OPT_EXTERNAL_DEPEND);
 #endif
+
+  /* errnos */
+#include "add-errnos.h"
 }
 
 void pike_module_exit(void)
