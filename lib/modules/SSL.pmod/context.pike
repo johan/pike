@@ -38,6 +38,15 @@ array(int) preferred_suites =
    SSL_rsa_with_null_md5
 });
 
+void export_mode()
+{
+  preferred_suites =
+    ({ SSL_rsa_export_with_rc4_40_md5,
+       SSL_rsa_with_null_sha,
+       SSL_rsa_with_null_md5
+    });
+}
+
 array(int) preferred_compressors =
 ({ COMPRESSION_null });
 
