@@ -289,11 +289,15 @@ static INT32 eat_chars(unsigned char *src, INT32 srclen,
     else if(*src>=0x80) {
       for(l=1; l<srclen && src[l]>=0xa0; l++);
       l -= eat_text(src, l, s, s->gr);
+      if(l==0)
+	return srclen;
       src += l;
       srclen -= l;
     } else {
       for(l=1; l<srclen && src[l]>=0x20 && src[l]<0x80; l++);
       l -= eat_text(src, l, s, s->gl);
+      if(l==0)
+	return srclen;
       src += l;
       srclen -= l;
     }
