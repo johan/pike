@@ -406,7 +406,12 @@ struct thread_state {
 #endif
 
 #ifndef th_yield
-#define th_yield()
+#ifdef HAVE_THR_YIELD
+#define th_yield() thr_yield()
+#else
+#define th_yield() 0
+#define HAVE_NO_YIELD
+#endif
 #endif
 
 #ifndef th_equal
