@@ -12,6 +12,9 @@ define([AC_LOW_MODULE_INIT],
 MY_AC_PROG_CC
 
 AC_DEFINE(POSIX_SOURCE)
+
+AC_SUBST(CONFIG_HEADERS)
+
 AC_SUBST_FILE(dependencies)
 dependencies=$srcdir/dependencies
 
