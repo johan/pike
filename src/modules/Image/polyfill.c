@@ -1,4 +1,5 @@
 #include "global.h"
+RCSID("$Id$");
 
 /* Prototypes are needed for these */
 extern double floor(double);
