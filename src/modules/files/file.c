@@ -3492,10 +3492,12 @@ void pike_module_init(void)
   ADD_FUNCTION("get_all_active_fd", f_get_all_active_fd,
 	       tFunc(tNone,tArr(tInt)), OPT_EXTERNAL_DEPEND);
 
+#ifdef PIKE_DEBUG
   dmalloc_accept_leak(add_to_callback(&do_debug_callbacks,
 				      check_static_file_data,
 				      0,
 				      0));
+#endif
 }
 
 /* Used from backend */
