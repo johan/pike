@@ -59,6 +59,35 @@ pushdef([AC_PROG_CC],
   fi
 ])
 
+pushdef([AC_CONFIG_SUBDIRS],
+[
+  popdef([AC_CONFIG_SUBDIRS])
+
+  # Autoconf 2.50 and later stupidity...
+  if test "0`echo 'if(AC_ACVERSION >= 2.50)1'|bc`" = "01"; then
+    AC_MSG_WARN(cleaning the environment from autoconf 2.5x pollution)
+  
+    unset ac_cv_env_build_alias_set
+    unset ac_cv_env_build_alias_value
+    unset ac_cv_env_host_alias_set
+    unset ac_cv_env_host_alias_value
+    unset ac_cv_env_target_alias_set
+    unset ac_cv_env_target_alias_value
+    unset ac_cv_env_CC_set
+    unset ac_cv_env_CC_value
+    unset ac_cv_env_CFLAGS_set
+    unset ac_cv_env_CFLAGS_value
+    unset ac_cv_env_LDFLAGS_set
+    unset ac_cv_env_LDFLAGS_value
+    unset ac_cv_env_CPPFLAGS_set
+    unset ac_cv_env_CPPFLAGS_value
+    unset ac_cv_env_CPP_set
+    unset ac_cv_env_CPP_value
+  fi
+
+  AC_CONFIG_SUBDIRS([$1])
+])
+
 dnl option, descr, with, without, default
 define([MY_AC_ARG_WITH], [
   AC_ARG_WITH([$1], [$2], [
