@@ -19,7 +19,6 @@
  *
  */
 
-#include <stdio.h>
 #include <string.h>
 #include <nettle/md5.h>
 
@@ -43,7 +42,6 @@ char *crypt_md5(int pl, const char *pw, int sl, const char *salt)
 			       * better later on
 			       */
   static char passwd[22], *p;
-  static const char *ep;
   unsigned char final[MD5_DIGEST_SIZE];
   int i;
   struct md5_ctx ctx;
