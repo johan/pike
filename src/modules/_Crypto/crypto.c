@@ -249,13 +249,13 @@ static void f_des_parity(INT32 args)
 /*! @decl string crypt_md5(string password)
  *! @decl string crypt_md5(string password, string salt)
  *!
- *! This function crypts a password with an algorithm using MD5 hashing.
+ *! This function crypts a password with an algorithm based on MD5 hashing.
  *! 
  *! If @[salt] is left out, an 8 character long salt (max length) will 
  *! be randomized.
  *!
  *! Verification can be done by supplying the crypted password as @[salt]:
- *! @code{crypt_md5(typed_pw, crypted_pw) == crypted_pw}
+ *! @code{crypt_md5(typed_pw, crypted_pw) == crypted_pw@}
  *! 
  *! @seealso
  *!   @[crypt()]
