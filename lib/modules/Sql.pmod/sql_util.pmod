@@ -12,7 +12,7 @@
 //.
 //. File:	sql_util.pmod
 //. RCSID:	$Id$
-//. Author:	Henrik Grubbström (grubba@idonex.se)
+//. Author:	Henrik Grubbström (grubba@roxen.com)
 //.
 //. Synopsis:	Some SQL utility functions
 //.

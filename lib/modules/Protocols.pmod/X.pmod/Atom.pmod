@@ -26,7 +26,7 @@
  */
 
 /* Questions, bug fixes and bug reports can be sent to the pike
- * mailing list, pike@idonex.se, or to the athors (see AUTHORS for
+ * mailing list, pike@roxen.com, or to the athors (see AUTHORS for
  * email addresses. */
 
 #pike __REAL_VERSION__

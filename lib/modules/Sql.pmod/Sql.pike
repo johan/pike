@@ -11,7 +11,7 @@
 //.
 //. File:	sql.pike
 //. RCSID:	$Id$
-//. Author:	Henrik Grubbström (grubba@idonex.se)
+//. Author:	Henrik Grubbström (grubba@roxen.com)
 //.
 //. Synopsis:	Implements the generic parts of the SQL-interface.
 //.

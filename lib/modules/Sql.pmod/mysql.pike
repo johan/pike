@@ -7,7 +7,7 @@
 //.
 //. File:	mysql.pike
 //. RCSID:	$Id$
-//. Author:	Henrik Grubbström (grubba@idonex.se)
+//. Author:	Henrik Grubbström (grubba@roxen.com)
 //.
 //. Synopsis:	Implements the glue to the Mysql-module.
 //.
