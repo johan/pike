@@ -26,7 +26,7 @@ RCSID("$Id$");
 #endif /* HAVE_WINDEF_H */
 /* #ifdef HAVE_WINGDI_H */
 /* #include <wingdi.h> */
-/* #endif /* HAVE_WINGDI_H */ */
+/* #endif */
 #ifdef HAVE_GL_GL_H
 #include <GL/gl.h>
 #endif /* HAVE_GL_GL_H */
