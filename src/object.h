@@ -22,7 +22,7 @@ struct object
   struct program *prog;
   struct object *next;
   struct object *prev;
-#if PIKE_DEBUG
+#ifdef PIKE_DEBUG
   INT32 program_id;
 #endif
   char *storage;
