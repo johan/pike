@@ -2110,7 +2110,7 @@ void _main(array(string) orig_argv, array(string) env)
       // The main reason for this catch is actually to get a new call
       // to eval_instruction in interpret.c so that the debug and
       // trace levels set above take effect in the bytecode evaluator.
-      object script=prog();
+      object script=prog(argv);
       if(!script->main)
 	_error("Error: %s has no main().\n", argv[0]);
       i=script->main(sizeof(argv),argv,env);
