@@ -830,7 +830,7 @@ again:
       {
 	fprintf(stderr,"%*s**Parent identifier: %d\n",indent,"",PARENT_INFO( ((struct object *)a) )->parent_identifier);
       }
-      fprintf(stderr,"%*s**Program id: %ld\n",indent,"",((struct object *)a)->program_id);
+      fprintf(stderr,"%*s**Program id: %d\n",indent,"",((struct object *)a)->program_id);
 
       if (((struct object *)a)->next == ((struct object *)a))
 	fprintf(stderr, "%*s**The object is fake.\n",indent,"");
@@ -889,6 +889,10 @@ again:
       {
 	fprintf(stderr,"%*s**The program was written in C.\n",indent,"");
       }
+
+#if 0
+      dump_program_tables (p, indent + 2);
+#endif
 
       tmp = low_get_program_line_plain(p, &line, 1);
       if (tmp) {

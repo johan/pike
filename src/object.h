@@ -23,7 +23,7 @@ struct object
   struct object *next;
   struct object *prev;
 #if PIKE_DEBUG
-  long program_id;
+  INT32 program_id;
 #endif
   char *storage;
 };
