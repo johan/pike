@@ -190,11 +190,8 @@ PMOD_EXPORT DECLSPEC(noreturn) void low_error(const char *buf) ATTRIBUTE((noretu
 }
 
 PMOD_EXPORT void Pike_vsnprintf(char *str, size_t size,
-				const char *fmt, va_list ap)
+				const char *fmt, va_list args)
 {
-  va_list args;
-  va_copy(args, ap);
-
   size--;
 
   do {
@@ -453,7 +450,7 @@ int fnordel=0;
 static void do_abort()
 {
   if (!d_flag && !getenv("PIKE_DEBUG")) {
-    exit(-6);	/* -SIGIOT */
+    /*exit(-6);	/* -SIGIOT */
   }
   fnordel=999/fnordel;
 }
