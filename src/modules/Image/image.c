@@ -338,7 +338,7 @@ void img_apply_matrix(struct image *dest,
 {
    rgb_group *d,*ip,*dp;
    rgbd_group *mp;
-   int i,j,x,y,bx,by,ex,ey,yp;
+   int i,x,y,bx,by,ex,ey,yp;
    int widthheight;
    double sumr,sumg,sumb;
    double qr,qg,qb;
