@@ -622,11 +622,19 @@ void exit_udp(struct object *ignored)
 
 static int udp_read_callback( int fd, void *data )
 {
+  check_destructed (&THIS_DATA->read_callback);
   if(UNSAFE_IS_ZERO(&THIS_DATA->read_callback))
     set_read_callback(THIS_DATA->fd, 0, 0);
-  else
+  else {
+    THIS_DATA->my_errno = errno; /* Propagate the backend setting. */
     apply_svalue(& THIS_DATA->read_callback, 0);
-  pop_stack(); 
+    if (Pike_sp[-1].type == PIKE_T_INT &&
+	Pike_sp[-1].u.integer == -1) {
+      pop_stack();
+      return -1;
+    }
+    pop_stack();
+  }
   return 0;
 }
 
