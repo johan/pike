@@ -41,7 +41,7 @@ static INT32 circle_sin_table[CIRCLE_STEPS];
 
 
 
-#if 1
+#if 0
 #include <sys/resource.h>
 #define CHRONO(X) chrono(X)
 
