@@ -26,6 +26,7 @@ RCSID("$Id$");
 #include "callback.h"
 #include "pike_macros.h"
 #include "peep.h"
+#include "builtin_functions.h"
 
 #define LASDEBUG
 
