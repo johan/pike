@@ -389,7 +389,7 @@ DWRITE("protocol.async_timeout: ERROR: connection timeout.\n");
   // Reads LDAP PDU (with defined msgid) from server, checks msgid ...
 
     int msglen = 0, ix;
-    string|int(-1..0) retv;
+    string|int retv;
     string s, shlp;
 
     retv = ldap::read(2); 	// 1. byte = 0x0C, 2. byte = msglen
