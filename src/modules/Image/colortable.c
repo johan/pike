@@ -1743,7 +1743,6 @@ static void dither_floyd_steinberg_firstline(struct nct_dither *dith,
       er[i].r=(my_rand()&65535)*(1.0/65536)-0.49999; 
       er[i].g=(my_rand()&65535)*(1.0/65536)-0.49999; 
       er[i].b=(my_rand()&65535)*(1.0/65536)-0.49999; 
-      fprintf(stderr,"%g %g %g\n",er[i].r,er[i].g,er[i].b);
    }
 
    er=dith->u.floyd_steinberg.nexterrors;
