@@ -234,6 +234,13 @@ static void init_fd(int fd, int open_mode)
 #if defined(HAVE_FD_FLOCK) || defined(HAVE_FD_LOCKF)
   THIS->key=0;
 #endif
+#ifdef PIKE_DEBUG
+  {
+    struct Backend_struct *b = get_backend_for_fd (fd);
+    if (fd >= 0 && b && b != default_backend)
+      Pike_fatal ("Got unexpected backend %p for new fd %d\n", b, fd);
+  }
+#endif
 }
 
 
@@ -2286,6 +2293,13 @@ struct object *file_make_object_from_fd(int fd, int mode, int guess)
   call_c_initializers(o);
   ((struct my_file *)(o->storage))->fd=fd;
   ((struct my_file *)(o->storage))->open_mode=mode | fd_query_properties(fd, guess);
+#ifdef PIKE_DEBUG
+  {
+    struct Backend_struct *b = get_backend_for_fd (fd);
+    if (fd >= 0 && b && b != default_backend)
+      Pike_fatal ("Got unexpected backend %p for new fd %d\n", b, fd);
+  }
+#endif
   return o;
 }
 
