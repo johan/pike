@@ -1935,7 +1935,7 @@ static void internal_add_limit( struct perishables *storage,
  *!  limit, and the soft limit may never be increased over the hard
  *!  limit. The indices of the mapping indicate what limit to impose,
  *!  and the values dictate what the limit should be. (See also
- *!  @[system.setrlimit])
+ *!  @[System.setrlimit])
  *!
  *! @mapping
  *! @member limit_value "core"
@@ -3654,7 +3654,7 @@ static void f_pid_status_kill(INT32 args)
  *! Returns the process ID of this process.
  *!
  *! @seealso
- *!    @[system.getppid()], @[system.getpgrp()]
+ *!    @[System.getppid()], @[System.getpgrp()]
  */
 static void f_getpid(INT32 args)
 {

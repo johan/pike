@@ -1895,7 +1895,7 @@ static void f_magic_set_index(INT32 args)
 /*! @decl mixed ::_indices()
  *!
  *! Builtin function to list the identifiers of an object.
- *! This is useful when @[_indices] has been overloaded.
+ *! This is useful when @[lfun::_indices] has been overloaded.
  *!
  *! @seealso
  *!   @[::_values, ::`->]
@@ -1958,7 +1958,7 @@ static void f_magic_indices (INT32 args)
 /*! @decl mixed ::_values()
  *!
  *! Builtin function to list the values of the identifiers of an
- *! object. This is useful when @[_values] has been overloaded.
+ *! object. This is useful when @[lfun::_values] has been overloaded.
  *!
  *! @seealso
  *!   @[::_indices, ::`->]
