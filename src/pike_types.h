@@ -35,6 +35,9 @@ struct pike_type
   struct pike_type *cdr;
 };
 
+#include "block_alloc_h.h"
+BLOCK_ALLOC(pike_type, n/a)
+
 /* pike_type flags: */
 #define PT_FLAG_MARKER	1	/* Type contains markers. */
 
@@ -375,6 +378,7 @@ int pike_type_allow_premature_toss(struct pike_type *type);
 #endif /* !USE_PIKE_TYPE */
 
 #ifdef DEBUG_MALLOC
+void describe_all_types(void);
 #define pop_type() ((struct pike_type *)debug_malloc_pass(debug_pop_type()))
 #define compiler_pop_type() ((struct pike_type *)debug_malloc_pass(debug_compiler_pop_type()))
 #define pop_unfinished_type() \
