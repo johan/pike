@@ -796,7 +796,7 @@ class Display
     buffer = "";
     received = rec_buffer();
     pending_requests = ([]);
-    pending_actions = ADT.queue();
+    pending_actions = ADT.Queue();
     sequence_number = 1;
     
     /* Always uses network byteorder (big endian) */
