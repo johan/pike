@@ -1756,7 +1756,7 @@ static int dl_load_coff_files(struct DLHandle *ret,
 	    switch(flag) {
 	    case 0:
 	      ((unsigned INT64 *)loc)[0] = (lost_bits & 0xffffc00000000000) |
-		(instr >> 18)
+		(instr >> 18);
 	      break;
 	    case 1:
 	      ((unsigned INT32 *)loc)[1] = (instr >> 9);
