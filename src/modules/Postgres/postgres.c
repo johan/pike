@@ -456,16 +456,16 @@ static void f_big_query(INT32 args)
 	THREADS_ALLOW();
 	PQ_LOCK();
 	pgdebug("f_big_query(\"%s\")\n",query);
-#define SELECTSTR"SELECT "
-#define LIMIT1STR"LIMIT 1"
-#define LIMIT1STRSCLIMIT1STR";"
-#define LIMITLENSC(sizeof(LIMIT1STRSC)-1)
-#define LIMITLEN(sizeof(LIMIT1STR)-1)
+#define SELECTSTR	"SELECT "
+#define LIMIT1STR	"LIMIT 1"
+#define LIMIT1STRSCLIMIT1STR	";"
+#define LIMITLENSC	(sizeof(LIMIT1STRSC)-1)
+#define LIMITLEN	(sizeof(LIMIT1STR)-1)
 	res = 0;
 	if(!strncmp(query,SELECTSTR,sizeof(SELECTSTR)-1))
 	{
-#define CURSORPREFIX"DECLARE "CURSORNAME" CURSOR FOR "
-#define CPREFLENsizeof(CURSORPREFIX)
+#define CURSORPREFIX	"DECLARE "CURSORNAME" CURSOR FOR "
+#define CPREFLEN	sizeof(CURSORPREFIX)
 	  int qlen=strlen(query);
 	  char *nquery;
 	  if(qlen>LIMITLENSC && strcmp(query+qlen-LIMITLENSC,LIMIT1STRSC)
