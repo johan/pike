@@ -3,22 +3,22 @@
 //! This module implements a generic web crawler.
 //!
 //! Features:
-//! @ul
+//! @dl
 //!   @item
 //!     Fully asynchronous operation (Several hundred simultaneous requests)
 //!   @item
 //!     Supports the /robots.txt exclusion standard
 //!   @item
 //!     Extensible
-//!     @ul 
+//!     @dl 
 //!       @item
 //!         URI Queues
 //!       @item
 //!         Allow/Deny rules
-//!     @endul
+//!     @enddl
 //!   @item
 //!     Configurable
-//!     @ul
+//!     @dl
 //!       @item
 //!         Number of concurrent fetchers
 //!       @item
@@ -27,10 +27,10 @@
 //!         Number of concurrent fetchers per host
 //!       @item
 //!         Delay between fetches from the same host
-//!     @endul
+//!     @enddl
 //!   @item
 //!     Supports HTTP and HTTPS
-//! @endul
+//! @enddl
 
 // Author:  Johan Schön.
 // Copyright (c) Roxen Internet Software 2001

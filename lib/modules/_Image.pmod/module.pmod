@@ -208,7 +208,6 @@ object(Image.Image) load(object|string file)
    return _load(file)->image;
 }
 
-//!
 //! @decl Image.Image filled_circle(int d)
 //! @decl Image.Image filled_circle(int xd,int yd)
 //! @decl Image.Layer filled_circle_layer(int d)
@@ -217,6 +216,7 @@ object(Image.Image) load(object|string file)
 //! @decl Image.Layer filled_circle_layer(int xd,int yd,Image.Color color)
 //! @decl Image.Layer filled_circle_layer(int d,int r,int g,int b)
 //! @decl Image.Layer filled_circle_layer(int xd,int yd,int r,int g,int b)
+//!
 //!	Generates a filled circle of the 
 //!	dimensions xd x yd (or d x d).
 //!	The Image is a white circle on black background; the layer
