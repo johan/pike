@@ -445,6 +445,7 @@ static int map(int flags)
   if(flags & FILE_CREATE) ret|=fd_CREAT;
   if(flags & FILE_TRUNC) ret|=fd_TRUNC;
   if(flags & FILE_EXCLUSIVE) ret|=fd_EXCL;
+  ret |= fd_LARGEFILE;
   return ret;
 }
 
