@@ -94,6 +94,7 @@ static void exit_res_struct(struct object *o)
 void mysqlmod_parse_field(MYSQL_FIELD *field, int support_default)
 {
   if (field) {
+    int nbits = 0;
     push_text("name"); push_text(field->name);
     push_text("table"); push_text(field->table);
     if (support_default) {
@@ -160,7 +161,22 @@ void mysqlmod_parse_field(MYSQL_FIELD *field, int support_default)
     }
     push_text("length"); push_int(field->length);
     push_text("max_length"); push_int(field->max_length);
-    push_text("flags"); push_int(field->flags);		/*************/
+
+    push_text("flags");
+    if (IS_PRI_KEY(field->flags)) {
+      nbits++;
+      push_text("primary_key");
+    }
+    if (IS_NOT_NULL(field->flags)) {
+      nbits++;
+      push_text("not_null");
+    }
+    if (IS_BLOB(field->flags)) {
+      nbits++;
+      push_text("blob");
+    }
+    f_aggregate_multiset(nbits);
+
     push_text("decimals"); push_int(field->decimals);
       
     if (support_default) {
