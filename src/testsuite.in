@@ -145,6 +145,18 @@ test_any([[
 ]], "int")
 
 test_compile_any([[
+  class { ; }
+]])
+
+test_compile_any([[
+  class { ; ; }
+]])
+
+test_compile_any([[
+  class { ; constant c = 0; }
+]])
+
+test_compile_any([[
   constant FOO = 0;
   mapping(int:string) foo = ([FOO: "foo"]);
 ]])
