@@ -139,7 +139,13 @@ void f_sin(INT32 args)
 void f_asin(INT32 args)
 {
   ARG_CHECK("asin");
-  sp[-1].u.float_number = FL1(asin,sp[-1].u.float_number);
+  if ((sp[-1].u.float_number >= -1.0) &&
+      (sp[-1].u.float_number <= 1.0)) {
+    sp[-1].u.float_number = FL1(asin,sp[-1].u.float_number);
+  } else {
+    DECLARE_NAN;
+    sp[-1].u.float_number = MAKE_NAN();
+  }
 }
 
 /*! @decl float cos(float f)
@@ -167,7 +173,13 @@ void f_cos(INT32 args)
 void f_acos(INT32 args)
 {
   ARG_CHECK("acos");
-  sp[-1].u.float_number = FL1(acos,sp[-1].u.float_number);
+  if ((sp[-1].u.float_number >= -1.0) &&
+      (sp[-1].u.float_number <= 1.0)) {
+    sp[-1].u.float_number = FL1(acos,sp[-1].u.float_number);
+  } else {
+    DECLARE_NAN;
+    sp[-1].u.float_number = MAKE_NAN();
+  }
 }
 
 /*! @decl float tan(float f)
