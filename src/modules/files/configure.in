@@ -1176,7 +1176,7 @@ if test yes = "$ac_cv_func_grantpt"; then
       pike_cv_chgpt_path=no
       for i in $pt_chmod_dirs; do
         if test -x ${i}/chgpt; then
-          pike_cv_pt_chmod_path="${i}/chgpt"
+          pike_cv_chgpt_path="${i}/chgpt"
 	  break
         else
           :
