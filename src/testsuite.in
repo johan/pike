@@ -6105,6 +6105,13 @@ test_eq([[combine_path("/","../../foo")]],"/foo")
 test_eq([[combine_path("./foobar/.","..")]],".")
 test_eq([[combine_path("/","foo","bar","gazonk")]],"/foo/bar/gazonk")
 
+test_eq([[combine_path("/","/foo/bar/ga\11111zonk/../../")]],"/foo/")
+test_eq([[combine_path("/","/fo\1111/bar/ga\11111zonk/../../")]],"/fo\1111/")
+test_eq([[combine_path("/","/fo\1111/bar/gazonk/../../")]],"/fo\1111/")
+test_eq([[combine_path_nt("/","/fo\1111/bar/gazonk/../../")]],"/fo\1111/")
+test_eq([[combine_path_unix("/","/fo\1111/bar/gazonk/../../")]],"/fo\1111/")
+test_eq([[combine_path_nt("a:/","/fo\1111/bar/gazonk/../../")]],"a:/fo\1111/")
+
 // - Stdio.append_path
 test_eq([[ Stdio.append_path("../foo/", "../bar") ]], "../foo/bar")
 test_eq([[ Stdio.append_path("../foo/", "../bar", "../baz") ]], "../foo/bar/baz")
