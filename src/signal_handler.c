@@ -1227,17 +1227,15 @@ void f_create_process(INT32 args)
 #else
     pid=fork();
 #endif
+
+    UNSET_ONERROR(err);
+
     if(pid==-1) {
+      free_perishables(&storage);
+
       error("Failed to start process.\n"
 	    "errno:%d\n", errno);
-    }
-    if(pid)
-    {
-      exit_threads_disable(NULL);
-      storage.disabled = 0;
-
-      UNSET_ONERROR(err);
-
+    } else if(pid) {
       free_perishables(&storage);
 
       pop_n_elems(sp - stack_save);
