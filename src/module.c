@@ -66,7 +66,7 @@ void init_modules(void)
     JMP_BUF recovery;
     if (!p) {
       start_new_program();
-      p = Pike_compiler.new_program;
+      p = Pike_compiler->new_program;
     }
     if(SETJMP(recovery)) {
       /* FIXME: We could loop here until we find p. */
@@ -77,7 +77,7 @@ void init_modules(void)
       TRACE((stderr, "Initializing static module #%d: \"%s\"...\n",
 	     e, module_list[e].name));
       module_list[e].init();
-      if (Pike_compiler.new_program->num_identifier_references) {
+      if (Pike_compiler->new_program->num_identifier_references) {
 	debug_end_class(module_list[e].name,strlen(module_list[e].name),0);
 	p = NULL;
       } else {
