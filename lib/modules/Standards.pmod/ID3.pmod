@@ -763,8 +763,7 @@ class FrameDatav1 {
 
     frame_data = buffer;
     id = name;
-    if((i = search(buffer, "\0")) > -1)
-      frame_data = i ? buffer[..i-1] : "";
+    sscanf(frame_data, "%s\0", frame_data);
   }
 
   string get_string() {
