@@ -1052,8 +1052,8 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
 		      "in comparison on the form a < b.\n");
       }
       push_svalue(a);
-      apply_lfun(b->u.object,
-		 fun + p->inherits[b->subtype].identifier_level, 1);
+      apply_low(b->u.object,
+		fun + p->inherits[b->subtype].identifier_level, 1);
       if(UNSAFE_IS_ZERO(sp-1))
       {
 	if(!sp[-1].subtype)
