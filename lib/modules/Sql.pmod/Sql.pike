@@ -100,7 +100,7 @@ function(string:int) decode_datetime;
 //!       Use the dbtype protocol to connect to the database server
 //!       on the specified host.
 //!       If the hostname is @tt{""@}, access through a UNIX-domain
-//!	  socket or similar, e g @tt{"mysql://root@:/tmp/mysql.sock/"@}
+//!	  socket or similar, e g @tt{"mysql://root@@:/tmp/mysql.sock/"@}
 //!     @type int(0..0)
 //!       Access through a UNIX-domain socket or similar.
 //!   @endmixed
