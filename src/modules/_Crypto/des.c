@@ -75,6 +75,20 @@ static void exit_pike_des(struct object *o)
  * efuns and the like
  */
 
+/* int query_block_size(void) */
+static void f_query_block_size(INT32 args)
+{
+  pop_n_elems(args);
+  push_integer(8);
+}
+
+/* int query_key_length(void) */
+static void f_query_key_length(INT32 args)
+{
+  pop_n_elems(args);
+  push_integer(8);
+}
+
 /* void set_key(string) */
 static void f_set_key(INT32 args)
 {
@@ -357,6 +371,9 @@ void init_des_programs(void)
   /* /precompiled/crypto/des */
   start_new_program();
   add_storage(sizeof(struct pike_des));
+
+  add_function("query_block_size", f_query_block_size, "function(void:int)", OPT_TRY_OPTIMIZE);
+  add_function("query_key_length", f_query_key_length, "function(void:int)", OPT_TRY_OPTIMIZE);
 
   add_function("set_key", f_set_key, "function(string:void)", OPT_SIDE_EFFECT);
   add_function("get_schedule", f_get_schedule, "function(void:string)", OPT_EXTERNAL_DEPEND);
