@@ -388,10 +388,12 @@ typedef struct p_wchar_p
 #define DO_IF_INTERNAL_PROFILING(X)
 #endif
 
+#ifndef INLINE
 #if defined(__GNUC__) && !defined(PIKE_DEBUG) && !defined(lint)
 #define INLINE inline
 #else
 #define INLINE
+#endif
 #endif
 
 /* PMOD_EXPORT exports a function / variable / whatever.
