@@ -1307,6 +1307,7 @@ then
 	next) LDSHARED='$(CC) $(CFLAGS) -nostdlib -r';;
 	Linux*) LDSHARED="gcc -shared";;
 	FreeBSD*) LDSHARED="ld -Bshareable";;
+	NetBSD) LDSHARED="ld -Bshareable";;
 	SCO_SV*) LDSHARED="cc -G -KPIC -Ki486 -belf -Wl,-Bexport";;
 	*)	LDSHARED="ld";;
 	esac
