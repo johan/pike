@@ -1767,11 +1767,16 @@ PMOD_EXPORT void real_gc_cycle_check_object(struct object *o, int weak)
     
       LOW_POP_FRAME();
 
-      /* Strong refs follows. They must be last. */
+      /* Even though it's essential that the program isn't freed
+       * before the object, it doesn't need a strong link. That since
+       * programs can't be destructed before they run out of
+       * references. */
+      gc_cycle_check_program (p, 0);
+
+      /* Strong ref follows. It must be last. */
       if(o->prog->flags & PROGRAM_USES_PARENT)
 	if(PARENT_INFO(o)->parent)
 	  gc_cycle_check_object(PARENT_INFO(o)->parent, -1);
-      gc_cycle_check_program (p, -1);
     }
   } GC_CYCLE_LEAVE;
 }
