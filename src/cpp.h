@@ -24,6 +24,8 @@ void cpp_error_sprintf(struct cpp *this, const char *fmt, ...)
   ATTRIBUTE((format(printf,2,3)));
 void cpp_handle_exception(struct cpp *this, const char *cpp_error_fmt, ...)
   ATTRIBUTE((format(printf,2,3)));
+void cpp_warning(struct cpp *this, const char *cpp_warn_fmt, ...)
+  ATTRIBUTE((format(printf,2,3)));
 void PUSH_STRING(char *str,
 		 INT32 len,
 		 dynamic_buffer *buf);
