@@ -801,6 +801,7 @@ static int eval_instruction(unsigned char *pc)
       CASE(F_ARRAY_LVALUE);
       f_aggregate(GET_ARG()*2);
       sp[-1].u.array->flags |= ARRAY_LVALUE;
+      sp[-1].u.array->type_field |= BIT_UNFINISHED;
       sp[0]=sp[-1];
       sp[-1].type=T_ARRAY_LVALUE;
       sp++;
@@ -1420,7 +1421,8 @@ static int eval_instruction(unsigned char *pc)
       CASE(F_RETURN);
     do_return:
 #if defined(DEBUG) && defined(GC2)
-      if(d_flag > 2) do_gc();
+      if(d_flag>2) do_gc();
+      if(d_flag>3) do_debug();
       check_threads_etc();
 #endif
 
