@@ -1673,18 +1673,19 @@ int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 #endif
 
 
-#define basic_low_return() 				\
-  struct svalue *save_sp=Pike_fp->save_sp;		\
-  DO_IF_DEBUG(						\
-    if(Pike_mark_sp < Pike_fp->save_mark_sp)		\
-      Pike_fatal("Popped below save_mark_sp!\n");		\
-    if(Pike_sp<Pike_interpreter.evaluator_stack)	\
-      Pike_fatal("Stack error (also simple).\n");		\
+#define basic_low_return() do {				\
+    struct svalue *save_sp=Pike_fp->save_sp;		\
+    DO_IF_DEBUG(					\
+      if(Pike_mark_sp < Pike_fp->save_mark_sp)		\
+        Pike_fatal("Popped below save_mark_sp!\n");	\
+      if(Pike_sp<Pike_interpreter.evaluator_stack)	\
+        Pike_fatal("Stack error (also simple).\n");	\
     )							\
 							\
     Pike_mark_sp=Pike_fp->save_mark_sp;			\
 							\
-  POP_PIKE_FRAME()
+    POP_PIKE_FRAME();					\
+  } while(0)
 
 
 void low_return(void)
