@@ -227,12 +227,12 @@ struct pike_type *get_type_of_svalue(struct svalue *s);
 struct pike_type *object_type_to_program_type(struct pike_type *obj_t);
 char *get_name_of_type(int t);
 void cleanup_pike_types(void);
-int type_may_overload(char *type, int lfun);
+int type_may_overload(struct pike_type *type, int lfun);
 void yyexplain_nonmatching_types(struct pike_type *type_a,
 				 struct pike_type *type_b,
 				 int flags);
 struct pike_type *make_pike_type(char *t);
-int pike_type_allow_premature_toss(char *type);
+int pike_type_allow_premature_toss(struct pike_type *type);
 /* Prototypes end here */
 
 /* "Dynamic types" - use with ADD_FUNCTION_DTYPE */
