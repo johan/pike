@@ -9,6 +9,8 @@
 
 constant wix_ns = "http://schemas.microsoft.com/wix/2003/01/wi";
 
+// FIXME: Generate deterministic output!
+
 class WixNode
 {
   inherit Parser.XML.Tree.SimpleElementNode;
