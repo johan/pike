@@ -748,7 +748,9 @@ int main(int argc, array(string) argv)
 	      ( computed_line && computed_line!=o->__cpp_line))
 	    {
 	      werror(pad_on_error + fname + " Line numbering failed.\n");
-	      print_code(test + linetester);
+	      print_code(to_compile);
+	      werror("   Preprocessed:\n");
+	      print_code(cpp(to_compile, fname));
 	      werror("   CPP lines: %d\n",o->__cpp_line);
 	      werror("   RTL lines: %d\n",o->__rtl_line);
 	      if(computed_line)
