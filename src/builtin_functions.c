@@ -1900,8 +1900,11 @@ static node *optimize_this_object(node *n)
 	Pike_fatal ("The type check for this_object() failed.\n");
 #endif
       level = CDR (n)->u.sval.u.integer;
-      for (i = MIN (level, compilation_depth); i; i--, state = state->previous)
-	state->new_program->flags |= PROGRAM_USES_PARENT | PROGRAM_NEEDS_PARENT;
+      for (i = MINIMUM(level, compilation_depth); i;
+	   i--, state = state->previous) {
+	state->new_program->flags |=
+	  PROGRAM_USES_PARENT | PROGRAM_NEEDS_PARENT;
+      }
     }
   }
 
@@ -6137,7 +6140,7 @@ PMOD_EXPORT void f_gethrvtime(INT32 args)
   nsec = args && !UNSAFE_IS_ZERO(Pike_sp-args);
 
   pop_n_elems(args);
-  if (nsec)
+  if (args)
     push_int64(time);
   else
     push_int64(time/1000);
