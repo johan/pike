@@ -649,7 +649,7 @@ void image_mirrory(INT32 args)
 }
 
 
-#define ROUND(X) ((unsigned char)((X)+0.5))
+#define ROUND(X) (DOUBLE_TO_COLOR((X)+0.5))
 
 static void img_skewx(struct image *src,
 		      struct image *dest,
