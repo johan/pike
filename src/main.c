@@ -23,6 +23,8 @@ RCSID("$Id$");
 #include "gc.h"
 #include "mapping.h"
 
+#include <errno.h>
+
 #ifdef HAVE_LOCALE_H
 #include <locale.h>
 #endif
