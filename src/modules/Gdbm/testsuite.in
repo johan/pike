@@ -51,4 +51,5 @@ cond( [[ master()->resolv("Gdbm")->gdbm ]],
   GDBMTESTS
 
   test_do(rm("test.gdbm"))
+  test_do(add_constant("GDBMBASE"))
 ]])
