@@ -47,6 +47,10 @@ RCSID("$Id$");
 #include <sys/shm.h>
 #endif
 
+#ifdef HAVE_CYGWIN_SHM_H
+#include <cygwin/ipc.h>
+#include <cygwin/shm.h>
+#endif
 
 /* something on AIX defines these */
 #ifdef T_INT
