@@ -25,7 +25,7 @@
 #endif /* !HAVE_RSA_LIB */
 #endif /* HAVE_LIBCRYPTOCI */
 
-#define PIKE_RSA_DEBUG
+/* #define PIKE_RSA_DEBUG */
 
 #ifdef HAVE_RSA_LIB
 
