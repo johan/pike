@@ -3979,7 +3979,9 @@ void init_image_image(void)
 		tOr(tFunc(tOr(tInt,tVoid) tOr(tInt,tVoid) tRGB,tVoid),
 		    tFuncV(tInt tInt tString,tMixed,tVoid)),0);
    ADD_FUNCTION("clone",image_clone,
-		tFunc(tOr(tInt,tVoid) tOr(tInt,tVoid) tRGB,tObj),0);
+		tOr3(tFunc(tInt tInt tInt tInt tRGB,tObj),
+                     tFunc(tRGB,tObj),
+                     tFunc(tNone,tObj)),0);
    ADD_FUNCTION("new",image_clone, /* alias */
 		tFunc(tOr(tInt,tVoid) tOr(tInt,tVoid) tRGB,tObj),0);
    ADD_FUNCTION("clear",image_clear,
@@ -4019,7 +4021,7 @@ void init_image_image(void)
 		     tFunc(tObj,tObj)),0);
 
    ADD_FUNCTION("setcolor",image_setcolor,
-		tFunc(tInt tInt tInt,tObj),0);
+		tFunc(tInt tInt tInt tOr(tInt,tVoid),tObj),0);
    ADD_FUNCTION("setpixel",image_setpixel,
 		tFunc(tInt tInt tRGB,tObj),0);
    ADD_FUNCTION("getpixel",image_getpixel,
@@ -4075,7 +4077,7 @@ void init_image_image(void)
 		tOr(tFunc(tOr(tVoid,tArr(tArr(tInt))),tObj),
 		    tFunc(tArr(tArr(tInt)) tInt tInt tInt,tObj)),0);
    ADD_FUNCTION("modify_by_intensity",image_modify_by_intensity,
-		tFunc(tInt tInt tInt tInt tInt,tObj),0);
+		tFunc(tInt tInt tInt tInt tRGB,tObj),0);
    ADD_FUNCTION("gamma",image_gamma,
 		tOr(tFunc(tOr(tFlt,tInt),tObj),
 		    tFunc(tOr(tFlt,tInt) tOr(tFlt,tInt) tOr(tFlt,tInt),tObj)),0);
