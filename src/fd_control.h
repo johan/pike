@@ -11,9 +11,9 @@
 #define FD_CONTROL_H
 
 /* Prototypes begin here */
-int set_nonblocking(int fd,int which);
-int query_nonblocking(int fd);
-int set_close_on_exec(int fd, int which);
+PMOD_EXPORT int set_nonblocking(int fd,int which);
+PMOD_EXPORT int query_nonblocking(int fd);
+PMOD_EXPORT int set_close_on_exec(int fd, int which);
 
 #ifdef HAVE_BROKEN_F_SETFD
 void do_close_on_exec(void);

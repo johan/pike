@@ -10,7 +10,7 @@
 #ifndef OPERATORS_H
 #define OPERATORS_H
 
-#define COMPARISON(ID,NAME,X) void ID(INT32 num_arg);
+#define COMPARISON(ID,NAME,X) PMOD_EXPORT void ID(INT32 num_arg);
 
 #include "svalue.h"
 
@@ -22,7 +22,7 @@ struct string_assignment_storage
 };
 
 /* Prototypes begin here */
-void f_ne(INT32 args);
+PMOD_EXPORT void f_ne(INT32 args);
 COMPARISON(f_eq,"`==", is_eq)
 COMPARISON(f_lt,"`<" , is_lt)
 COMPARISON(f_le,"`<=",!is_gt)

@@ -154,9 +154,9 @@ enum Pike_opcodes
 void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind);
 void o_index(void);
 void o_cast(struct pike_string *type, INT32 run_time_type);
-void f_cast(void);
+PMOD_EXPORT void f_cast(void);
 void o_sscanf(INT32 args);
-void f_sscanf(INT32 args);
+PMOD_EXPORT void f_sscanf(INT32 args);
 /* Prototypes end here */
 
 #endif

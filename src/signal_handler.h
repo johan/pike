@@ -15,7 +15,7 @@ typedef RETSIGTYPE (*sigfunctype) (int);
 /* Prototypes begin here */
 struct sigdesc;
 void my_signal(int sig, sigfunctype fun);
-void check_signals(struct callback *foo, void *bar, void *gazonk);
+PMOD_EXPORT void check_signals(struct callback *foo, void *bar, void *gazonk);
 void set_default_signal_handler(int signum, void (*func)(INT32));
 void process_started(pid_t pid);
 void process_done(pid_t pid, char *from);

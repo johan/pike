@@ -123,6 +123,6 @@
 
 
 /* Needed for fsort_template.h */
-int my_log2(size_t x);
+PMOD_EXPORT int my_log2(size_t x);
 
 #endif
