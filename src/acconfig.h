@@ -152,6 +152,9 @@
 /* Define if gettimeofday takes to arguments */
 #undef GETTIMEOFDAY_TAKES_TWO_ARGS
 
+/* Define if your strtod is off by one (HPUX). */
+#undef HAVE_STRTOD_OFF_ONE
+
 /* Define if you have a working, 8-bit-clean memcmp */
 #undef HAVE_MEMCMP
 
