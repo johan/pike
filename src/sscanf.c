@@ -15,6 +15,7 @@
 #include "module_support.h"
 #include "operators.h"
 #include "bignum.h"
+#include "pike_float.h"
 
 #define sp Pike_sp
 
@@ -401,26 +402,7 @@ CHAROPT(							\
 /* Parse binary IEEE strings on a machine which uses a different kind
    of floating point internally */
 
-#ifndef FLOAT_IS_IEEE_BIG
-#ifndef FLOAT_IS_IEEE_LITTLE
-#define NEED_CUSTOM_IEEE
-#endif
-#endif
-#ifndef NEED_CUSTOM_IEEE
-#ifndef DOUBLE_IS_IEEE_BIG
-#ifndef DOUBLE_IS_IEEE_LITTLE
-#define NEED_CUSTOM_IEEE
-#endif
-#endif
-#endif
-
 #ifdef NEED_CUSTOM_IEEE
-
-#if HAVE_LDEXP
-#define LDEXP ldexp
-#else
-extern double LDEXP(double x, int exp); /* defined in encode.c */
-#endif
 
 static INLINE FLOAT_TYPE low_parse_IEEE_float(char *b, int sz)
 {
