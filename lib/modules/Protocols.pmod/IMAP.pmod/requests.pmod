@@ -396,6 +396,7 @@ class store
     } else {
       send(tag, "NO");
     }
+    return ([ "action" : "finished" ]);
   }
 }
 
