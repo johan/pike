@@ -5,7 +5,13 @@ pushdef([AC_PROG_CC],
   AC_PROG_CC
 
   case "`$CC -V 2>&1|head -1`" in
-    tcc*) TCC="yes" ;;
+    tcc*)
+      TCC="yes"
+      if echo "$CC $CFLAGS $CPPFLAGS" | grep " -Y" >/dev/null; then :; else
+	# We want to use the system API's...
+	CPPFLAGS="-Ysystem $CPPFLAGS"
+      fi
+    ;;
     *) TCC="no" ;;
   esac
 ])
