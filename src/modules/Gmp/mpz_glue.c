@@ -238,11 +238,16 @@ overflow:
 #endif /* AUTO_BIGNUM */
 
 /*! @module Gmp
+ *! GMP is a free library for arbitrary precision arithmetic,
+ *! operating on signed integers, rational numbers, and floating point
+ *! numbers. There is no practical limit to the precision except the
+ *! ones implied by the available memory in the machine GMP runs on.
+ *! @url{http://www.swox.com/gmp/@}
  */
 
 /*! @class bignum
  *! This program is used by the internal auto-bignum conversion. It
- *! can be used to explicitly type integers that are to big to be
+ *! can be used to explicitly type integers that are too big to be
  *! INT_TYPE. Best is however to not use this program unless you
  *! really know what you are doing.
  *! @endclass
