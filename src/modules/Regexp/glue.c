@@ -16,6 +16,7 @@
 #include "stralloc.h"
 #include "array.h"
 #include "object.h"
+#include "program.h"
 #include "pike_macros.h"
 #include "threads.h"
 #include "module_support.h"
@@ -324,10 +325,12 @@ PIKE_MODULE_EXIT {}
 
 PIKE_MODULE_INIT
 {
+  start_new_program();
   ADD_STORAGE(struct regexp_glue);
-  
+
   /* function(void|string:void) */
   ADD_FUNCTION("create",regexp_create,tFunc(tOr(tVoid,tStr),tVoid),0);
+
   /* function(string:int) */
   ADD_FUNCTION("match",regexp_match,
 	       tOr(tFunc(tStr, tInt),
@@ -337,4 +340,5 @@ PIKE_MODULE_INIT
 
   set_init_callback(init_regexp_glue);
   set_exit_callback(exit_regexp_glue);
+  end_class("_SimpleRegexp", 0);
 }
