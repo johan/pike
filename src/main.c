@@ -526,10 +526,23 @@ int dbm_main(int argc, char **argv)
 	  break;
 
 	case 't':
-	  if(p[1]>='0' && p[1]<='9')
-	    Pike_interpreter.trace_level+=STRTOL(p+1,&p,10);
-	  else
-	    Pike_interpreter.trace_level++,p++;
+	  more_t_flags:
+	  switch (p[1]) {
+	    case '0': case '1': case '2': case '3': case '4':
+	    case '5': case '6': case '7': case '8': case '9':
+	      Pike_interpreter.trace_level+=STRTOL(p+1,&p,10);
+	      break;
+
+	    case 'g':
+	      gc_trace++;
+	      p++;
+	      goto more_t_flags;
+
+	    default:
+	      if (p[0] == 't')
+		Pike_interpreter.trace_level++;
+	      p++;
+	  }
 	  default_t_flag = Pike_interpreter.trace_level;
 	  break;
 
