@@ -3,12 +3,6 @@
 <!-- $Id$ -->
 
 <dir name="manual">
-  <file name="structure.xml">
-    <!-- Don't delete this file on us in the import stage... :) -->
-    <!-- This file is not touched at all by the splitter, since -->
-    <!-- there are no targets here; it's only used on the other -->
-    <!-- side, for dark purposes not fit for printing here. :-) -->
-  </file>
   <dir name="Process">
     <file name="create_process.xml">
       <!-- Only list create() and limit_value at -->
