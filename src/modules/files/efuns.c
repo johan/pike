@@ -1513,7 +1513,7 @@ void init_files_efuns(void)
 #endif
 
 /* function(string,int|void:object) */
-  ADD_EFUN("file_stat",f_file_stat,tFunc(tStr tOr(tInt,tVoid),tObj), OPT_EXTERNAL_DEPEND);
+  ADD_EFUN("file_stat",f_file_stat,tFunc(tStr tOr(tInt,tVoid),tObj), OPT_EXTERNAL_DEPEND|OPT_SIDE_EFFECT);
 
   /* function(string,int:int(0..1)) */
   ADD_EFUN("file_truncate",f_file_truncate,tFunc(tStr tInt,tInt),OPT_EXTERNAL_DEPEND|OPT_SIDE_EFFECT);
@@ -1522,7 +1522,7 @@ void init_files_efuns(void)
 #if defined(HAVE_STATVFS) || defined(HAVE_STATFS) || defined(HAVE_USTAT) || defined(__NT__)
   
 /* function(string:mapping(string:string|int)) */
-  ADD_EFUN("filesystem_stat", f_filesystem_stat,tFunc(tStr,tMap(tStr,tOr(tStr,tInt))), OPT_EXTERNAL_DEPEND);
+  ADD_EFUN("filesystem_stat", f_filesystem_stat,tFunc(tStr,tMap(tStr,tOr(tStr,tInt))), OPT_EXTERNAL_DEPEND|OPT_SIDE_EFFECT);
 #endif /* HAVE_STATVFS || HAVE_STATFS */
   
 /* function(:int) */
@@ -1541,13 +1541,13 @@ void init_files_efuns(void)
   ADD_EFUN("mv", f_mv,tFunc(tStr tStr,tInt), OPT_SIDE_EFFECT);
   
 /* function(string:string *) */
-  ADD_EFUN("get_dir",f_get_dir,tFunc(tStr,tArr(tStr)),OPT_EXTERNAL_DEPEND);
+  ADD_EFUN("get_dir",f_get_dir,tFunc(tStr,tArr(tStr)),OPT_EXTERNAL_DEPEND|OPT_SIDE_EFFECT);
   
 /* function(string:int) */
   ADD_EFUN("cd",f_cd,tFunc(tStr,tInt),OPT_SIDE_EFFECT);
   
 /* function(:string) */
-  ADD_EFUN("getcwd",f_getcwd,tFunc(tNone,tStr),OPT_EXTERNAL_DEPEND);
+  ADD_EFUN("getcwd",f_getcwd,tFunc(tNone,tStr),OPT_EXTERNAL_DEPEND|OPT_SIDE_EFFECT);
   
 /* function(string,mixed*,void|mapping(string:string):int) */
   ADD_EFUN("exece",f_exece,tFunc(tStr tArr(tMix) tOr(tVoid,tMap(tStr,tStr)),tInt),OPT_SIDE_EFFECT); 
