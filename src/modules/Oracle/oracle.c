@@ -1698,8 +1698,8 @@ static void call_atexits(void)
 
 #else /* HAVE_ORACLE */
 
-void pike_modle_init(void)  {}
-void pike_modle_exit(void)  {}
+void pike_module_init(void)  {}
+void pike_module_exit(void)  {}
 
 #endif
 
