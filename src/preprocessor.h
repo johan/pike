@@ -892,7 +892,7 @@ static INT32 lower_cpp(struct cpp *this,
 		{
 		  char buffer[1024];
 		  sprintf(buffer,
-			  "Too few arguments to macro %950s, expected %d.",
+			  "Too few arguments to macro %.950s, expected %d.",
 			  d->link.s->str, d->args);
 		  cpp_error(this, buffer);
 		  break;
