@@ -10,10 +10,12 @@
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
 
+#include "global.h"
+
 #ifdef HAVE_MYSQL
 
-typedef long long _ll_t;
-typedef unsigned long long _ull_t;
+typedef INT64 _ll_t;
+typedef unsigned INT64 _ull_t;
 
 static _ll_t mysql_dummy(_ull_t a, _ull_t b, _ll_t c, _ll_t d) {
   return(a%b+(c%d)+(c/d)+(a/b));
