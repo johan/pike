@@ -145,6 +145,11 @@ string extract(string filename, string imgdest, int(0..1) rootless,
 	  error("Unknown module parent name.\n");
 	name = root[-1];
 	root = root[..sizeof(root)-2];
+      } else if ((name == "__default") && (sizeof(root) == 1)) {
+	// Pike backward compatibility module.
+	name = root[0][..sizeof(root[0])-3];
+	root = ({});
+	type = "namespace";
       }
 
       result =
