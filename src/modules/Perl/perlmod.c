@@ -431,10 +431,10 @@ static void _perlmod_eval(INT32 args, int perlflags)
 }
 
 static void perlmod_eval(INT32 args)
-  { return _perlmod_eval(args, G_SCALAR);}
+  { _perlmod_eval(args, G_SCALAR); }
 
 static void perlmod_eval_list(INT32 args)
-  { return _perlmod_eval(args, G_ARRAY);}
+  { _perlmod_eval(args, G_ARRAY); }
 
 static void _perlmod_call(INT32 args, int perlflags)
 { PerlInterpreter *p = PERL;
