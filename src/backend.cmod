@@ -1547,10 +1547,9 @@ PIKECLASS Backend
     if (WANT_EVENT (box, WRITE_OOB)) {
       events |= MY_POLLWREXCEPT;
     }
-#ifdef POLL_DEBUG
-    fprintf(stderr, "UPDATE_BLACK_BOX(%d, %d) ==> events: 0x%08x\n",
-	    me->set, fd, events);
-#endif /* POLL_DEBUG */
+
+    IF_PD(fprintf(stderr, "UPDATE_BLACK_BOX(%d, %d) ==> events: 0x%08x\n",
+		  me->set, fd, events));
     POLL_DEVICE_SET_EVENTS(me->set, fd, events);
   }
 
@@ -1584,8 +1583,8 @@ PIKECLASS Backend
     set_close_on_exec(me->set, 1);
 
     /* Restore the poll-state for all the fds. */
-    for (fd = 0; fd < me->fds_size; fd++)
-      UPDATE_BLACK_BOX(me, fd);
+    for (fd = 0; fd < me->num_fdboxes; fd++)
+      if (GET_BOX(me, fd)) UPDATE_BLACK_BOX(me, fd);
   }
 #endif /* CHILD_NEEDS_TO_REOPEN */
 #endif /* USE_POLL_DEVICE */
