@@ -697,7 +697,7 @@ CHAROPT(							\
 	if(match[cnt] < sizeof(set->c))				\
 	{							\
 )								\
-	  for(e=last;e<match[cnt];e++) set->c[e]=1;		\
+	  for(e=last;e<=match[cnt];e++) set->c[e]=1;		\
 CHAROPT(							\
 	}else{							\
 	  for(e=last;e<sizeof(set->c);e++) set->c[e]=1;		\
