@@ -25,6 +25,10 @@
 #include "operators.h"
 #include "signal_handler.h"
 #include "dynamic_load.h"
+#include "gc.h"
+#include "multiset.h"
+#include "pike_types.h"
+#include "constants.h"
 
 #include "modules/modlist_headers.h"
 #include "post_modules/modlist_headers.h"
