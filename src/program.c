@@ -4608,7 +4608,7 @@ void store_linenumber(INT32 current_line, struct pike_string *current_file)
 	shift = *cnt;
 	file = ++cnt;
 	cnt += len<<shift;
-	if (a_flag > 10) {
+	if (a_flag > 100) {
 	  fprintf(stderr, "Filename entry:\n"
 		  "  len: %d, shift: %d\n",
 		  len, shift);
