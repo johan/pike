@@ -3842,6 +3842,15 @@ test_eq(search("fo-obar|gazonk"/"|","gazonk"),1)
 test_eq(search(([1:2,3:4,5:6,7:8]),4),3)
 test_true(zero_type(search(([1:2,3:4,5:6,7:8]),3)))
 test_eq(search(([1:2,3:4,5:6,7:8]),8),7)
+test_any([[
+  mapping m=([]);
+  m+=(["x":([])]);
+  m->x->y++;
+  m=([]);
+  m+=(["x":([])]);
+  return m->x->y;
+]], 0)
+
 test_do([[
   class C
   {

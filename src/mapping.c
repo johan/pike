@@ -1552,7 +1552,7 @@ struct mapping *copy_mapping_recursively(struct mapping *m,
     }
   }
 
-  if((m->data->val_types | m->data->ind_types) & BIT_COMPLEX)
+  if(!((m->data->val_types | m->data->ind_types) & BIT_COMPLEX))
     return copy_mapping(m);
 
   ret=allocate_mapping(MAP_SLOTS(m->data->size));
