@@ -332,7 +332,7 @@ void udp_read(INT32 args)
 
   if(res<0)
   {
-    switch(errno)
+    switch(e)
     {
 #ifdef WSAEBADF
        case WSAEBADF:
@@ -360,7 +360,7 @@ void udp_read(INT32 args)
 	  return;
 
        default:
-	  error("Socket read failed with errno %d.\n",errno);
+	  error("Socket read failed with errno %d.\n", e);
     }
   }
   /* Now comes the interresting part.
@@ -430,7 +430,7 @@ void udp_sendto(INT32 args)
   
   if(res<0)
   {
-    switch(errno)
+    switch(e)
     {
 #ifdef EMSGSIZE
        case EMSGSIZE:
