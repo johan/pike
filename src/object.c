@@ -431,9 +431,9 @@ void object_index_no_free(struct svalue *to,
 }
 
 
-static void object_low_set_index(struct object *o,
-				 int f,
-				 struct svalue *from)
+void object_low_set_index(struct object *o,
+			  int f,
+			  struct svalue *from)
 {
   struct identifier *i;
   struct program *p;
