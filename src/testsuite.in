@@ -7582,6 +7582,37 @@ int z() {return 0;}
 mixed a() {return functionp(X(Y));}
 ")()->a()]])
 
+test_do([[
+  Stdio.write_file("testsuite_test.pmod", "#error foo");
+  object orig_master = master();
+  replace_master(object_program(orig_master)());
+  mixed err = catch {
+    compile_string(#"
+#ifdef NONEXISTING_DEFINE
+#error Not expected
+#if constant (.testsuite_test)
+#error Not expected either
+#endif
+#endif", "testsuite_test");
+  };
+  replace_master(orig_master);
+  if (err) throw (err);
+]]);
+
+test_do([[
+  Stdio.write_file("testsuite_test.pmod", "#error foo");
+  object orig_master = master();
+  replace_master(object_program(orig_master)());
+  mixed err = catch {
+    compile_string(#"
+#if defined (NONEXISTING_DEFINE) && constant (.testsuite_test)
+#error Not expected
+#endif", "testsuite_test");
+  };
+  replace_master(orig_master);
+  if (err) throw (err);
+]]);
+
 test_any([[
   class handler {mapping get_predefines() {return (["x": "1", "y": "", "z": 0]);}};
   return cpp ("x y z p", "-", 0, handler());
