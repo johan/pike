@@ -116,10 +116,11 @@ void rbstack_insert (struct rbstack_ptr *top, struct rbstack_ptr *pos,
   *pos = rbp2;
 }
 
+#if 0
+/* Disabled since these aren't tested and not currently used. */
+
 void rbstack_assign (struct rbstack_ptr *target, struct rbstack_ptr *source)
 {
-  /* Not tested. */
-
   struct rbstack_slice *src_slice = source->slice;
   struct rbstack_slice *tgt_slice = target->slice;
 
@@ -154,8 +155,6 @@ void rbstack_assign (struct rbstack_ptr *target, struct rbstack_ptr *source)
 
 void rbstack_copy (struct rbstack_ptr *target, struct rbstack_ptr *source)
 {
-  /* Not tested. */
-
   struct rbstack_slice *src_slice = source->slice;
   struct rbstack_slice *tgt_stack_slice = target->slice;
   size_t ssp = source->ssp;
@@ -194,6 +193,8 @@ void rbstack_copy (struct rbstack_ptr *target, struct rbstack_ptr *source)
   target->slice->maxdepth = target->slice->depth = source->slice->depth;
 #endif
 }
+
+#endif	/* Not tested or used. */
 
 /* Offsets all the rb_node_hdr pointers in rbstack from their offsets
  * relative oldbase to the same relative newbase. Useful if the memory
