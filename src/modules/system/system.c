@@ -419,11 +419,11 @@ void f_resolvepath(INT32 args)
 #error "f_resolvepath with neither resolvepath nor realpath."
 #endif /* HAVE_RESOLVEPATH */
 
-  if (err < 0) {
+  if (len < 0) {
     report_error("resolvepath");
   }
   pop_n_elems(args);
-  push_string(make_shared_binary_string(buf, err));
+  push_string(make_shared_binary_string(buf, len));
 }
 #endif /* HAVE_RESOLVEPATH || HAVE_REALPATH */
 
