@@ -892,10 +892,7 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	    
 	    if(!GOBBLE('('))
 	    {
-	      char buffer[1024];
-	      sprintf(buffer, "Missing ( in the macro %.950s.", 
-		      d->link.s->str);
-	      cpp_error(this, buffer);
+	      string_builder_shared_strcat(&this->buf,s);
 	      break;
 	    }
 	    
