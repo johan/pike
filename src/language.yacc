@@ -1292,6 +1292,7 @@ string: low_string { $$=mkstrnode($1); free_string($1); } ;
 void yyerror(char *str)
 {
   extern int num_parse_error;
+  extern int cumulative_parse_error;
 
   if (num_parse_error > 5) return;
   num_parse_error++;
