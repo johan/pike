@@ -74,7 +74,7 @@ static void create() {
   }
 
   if(tmp = getenv("PIKE_LOCAL_PATH") ) {
-    array to_add=tmp/":";
+    array to_add=reverse(tmp/":"); // preserve order
     add_path( to_add[*] ); 
   }
 }
