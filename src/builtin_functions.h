@@ -10,7 +10,7 @@
 #ifndef BUILTIN_EFUNS_H
 #define BUILTIN_EFUNS_H
 
-#define TYPEP(ID,NAME,TYPE) void ID(INT32 args);
+#define TYPEP(ID,NAME,TYPE) PMOD_EXPORT void ID(INT32 args);
 
 #include "callback.h"
 
