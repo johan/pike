@@ -324,7 +324,7 @@ one_more_type:
     case T_MIXED:
     case T_ZERO:
     case T_VOID:
-    case T_UNKNOWN:
+    case PIKE_T_UNKNOWN:
       break;
 
     case T_OBJECT:
@@ -1017,7 +1017,7 @@ one_more_type:
     case T_MIXED:
     case T_ZERO:
     case T_VOID:
-    case T_UNKNOWN:
+    case PIKE_T_UNKNOWN:
       break;
 
     case T_OBJECT:

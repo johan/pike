@@ -1634,7 +1634,7 @@ static void find_references_to(void *block, int indent, int depth, int flags)
 	    if(p[e] == block)
 	    {
 /*	      fprintf(stderr,"  <from %p word %d>\n",p,e); */
-	      describe_location(p,T_UNKNOWN,p+e, indent,depth,flags);
+	      describe_location(p,PIKE_T_UNKNOWN,p+e, indent,depth,flags);
 
 /*	      low_dmalloc_describe_location(m, e * sizeof(void *), indent); */
 

@@ -100,7 +100,7 @@ struct svalue
 #define PIKE_T_TUPLE 244	/* Not supported yet */
 #define T_ASSIGN 245
 #define T_DELETED 246
-#define T_UNKNOWN 247
+#define PIKE_T_UNKNOWN 247
 #define T_SHORT_LVALUE 248
 #define T_LVALUE 249
 #define T_ARRAY_LVALUE 250
