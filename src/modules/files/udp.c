@@ -507,9 +507,10 @@ static void udp_read_callback( int fd, void *data )
 {
   if(IS_ZERO(&THIS_DATA->read_callback))
     set_read_callback(THIS_DATA->fd, 0, 0);
-  else
+  else {
     apply_svalue(& THIS_DATA->read_callback, 0);
-  pop_stack(); 
+    pop_stack();
+  }
   return;
 }
 
