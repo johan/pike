@@ -662,9 +662,31 @@ void resolv_constant(node *n)
       return;
 
     default:
-      yyerror("Expected constant, got something else");
+    {
+      char fnord[1000];
+      if(is_const(n))
+      {
+	int args=eval_low(n);
+	if(args==1) return;
+
+	if(args!=-1)
+	{
+	  if(!args)
+	  {
+	    yyerror("Expected constant, got void expression");
+	  }else{
+	    yyerror("Possible internal error!!!");
+	    pop_n_elems(args-1);
+	    return;
+	  }
+	}
+      }
+	
+      sprintf(fnord,"Expected constant, got something else (%d)",n->token);
+      yyerror(fnord);
       push_int(0);
       return;
+    }
     }
 
     i=ID_FROM_INT(p, numid);
