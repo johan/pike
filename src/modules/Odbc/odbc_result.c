@@ -111,7 +111,7 @@ static void init_res_struct(struct object *o)
 static void exit_res_struct(struct object *o)
 {
   if (PIKE_ODBC_RES->hstmt != SQL_NULL_HSTMT) {
-    HSTMT hstmt = PIKE_ODBC_RES->hstmt;
+    SQLHSTMT hstmt = PIKE_ODBC_RES->hstmt;
     PIKE_ODBC_RES->hstmt = SQL_NULL_HSTMT;
     odbc_check_error("exit_res_struct", "Freeing of HSTMT failed",
 		     SQLFreeStmt(hstmt, SQL_DROP), clean_sql_res);
@@ -279,7 +279,7 @@ static void odbc_fix_fields(void)
 /* void create(object(odbc)) */
 static void f_create(INT32 args)
 {
-  HSTMT hstmt = SQL_NULL_HSTMT;
+  SQLHSTMT hstmt = SQL_NULL_HSTMT;
 
   if (!args) {
     Pike_error("Too few arguments to odbc_result()\n");
@@ -300,7 +300,7 @@ static void f_create(INT32 args)
 static void f_execute(INT32 args)
 {
   struct pike_string *q = NULL;
-  HSTMT hstmt = PIKE_ODBC_RES->hstmt;
+  SQLHSTMT hstmt = PIKE_ODBC_RES->hstmt;
 
   get_all_args("odbc_result->execute", args, "%S", &q);
 
@@ -331,7 +331,7 @@ static void f_execute(INT32 args)
 static void f_list_tables(INT32 args)
 {
   struct pike_string *table_name_pattern = NULL;
-  HSTMT hstmt = PIKE_ODBC_RES->hstmt;
+  SQLHSTMT hstmt = PIKE_ODBC_RES->hstmt;
 
   if (!args) {
     push_constant_text("%");

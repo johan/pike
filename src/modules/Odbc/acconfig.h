@@ -34,6 +34,15 @@
 /* Define if you have SQLULEN */
 #undef HAVE_SQLULEN
 
+/* Define if you have SQLHENV */
+#undef HAVE_SQLHENV
+
+/* Define if you have SQLHDBC */
+#undef HAVE_SQLHDBC
+
+/* Define if you have SQLHSTMT */
+#undef HAVE_SQLHSTMT
+
 /* Define if you have ODBC */
 #undef HAVE_ODBC
 
