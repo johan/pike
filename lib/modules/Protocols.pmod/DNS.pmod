@@ -1,7 +1,8 @@
+// $Id$
 // Not yet finished -- Fredrik Hubinette
+
 //! Domain Name System
 //! RFC 1035
-//! $Id$
 
 #pike __REAL_VERSION__
 
