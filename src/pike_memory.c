@@ -169,7 +169,11 @@ void reorder(char *memory, INT32 nitems, INT32 size,INT32 *order)
 
 size_t hashmem(const unsigned char *a_, size_t len_, size_t mlen_)
 {
-  DO_HASHMEM(a_, len_m mlen_);
+  size_t ret_;
+
+  DO_HASHMEM(ret_, a_, len_, mlen_);
+
+  return ret_;
 }
 
 size_t hashstr(const unsigned char *str, ptrdiff_t maxn)
