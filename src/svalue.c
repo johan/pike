@@ -900,18 +900,24 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
     a_is_object:
       if(!a->u.object->prog)
 	Pike_error("Comparison on destructed object.\n");
-      if(FIND_LFUN(a->u.object->prog,LFUN_LT) == -1)
-	Pike_error("Object lacks `<\n");
-      assign_svalue_no_free(sp, b);
-      sp++;
-      apply_lfun(a->u.object, LFUN_LT, 1);
-      if(IS_ZERO(sp-1))
+      if(FIND_LFUN(a->u.object->prog,LFUN_LT) != -1)
       {
-	pop_stack();
-	return 0;
-      }else{
-	pop_stack();
-	return 1;
+	assign_svalue_no_free(sp, b);
+	sp++;
+	apply_lfun(a->u.object, LFUN_LT, 1);
+	if(IS_ZERO(sp-1))
+	{
+	  if(!sp[-1].subtype)
+	  {
+	    pop_stack();
+	    return 0;
+	  }else{
+	    pop_stack();
+	  }
+	}else{
+	  pop_stack();
+	  return 1;
+	}
       }
     }
 
@@ -926,8 +932,13 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
       apply_lfun(b->u.object, LFUN_GT, 1);
       if(IS_ZERO(sp-1))
       {
-	pop_stack();
-	return 0;
+	if(!sp[-1].subtype)
+	{
+	  pop_stack();
+	  return 0;
+	}else{
+	  pop_stack();
+	}
       }else{
 	pop_stack();
 	return 1;
