@@ -15,11 +15,11 @@
 #include "callback.h"
 
 /* Prototypes begin here */
+void debug_f_aggregate(INT32 args);
 #ifdef DEBUG_MALLOC
-void _f_aggregate(INT32 args);
-#define f_aggregate(X) do { _f_aggregate(X); debug_malloc_touch(Pike_sp[-1].u.refs); } while (0)
+#define f_aggregate(X) do { debug_f_aggregate(X); debug_malloc_touch(Pike_sp[-1].u.refs); } while (0)
 #else
-void f_aggregate(INT32 args);
+#define f_aggregate(X) debug_f_aggregate(X)
 #endif
 
 void f_equal(INT32 args);
