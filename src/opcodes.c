@@ -863,18 +863,21 @@ PMOD_EXPORT void f_cast(void)
  * helper functions for sscanf %O
  */
 
-static PMOD_EXPORT int pcharp_extract_char_const(PCHARP str,
-						 PCHARP *dstr,
-						 ptrdiff_t maxlength,
-						 ptrdiff_t *dmaxlength)
+static int pcharp_extract_char_const(PCHARP str,
+				     PCHARP *dstr,
+				     ptrdiff_t maxlength,
+				     ptrdiff_t *dmaxlength)
 {
    int c;
 
    *dstr=str;
-   maxlength--;  
-   *dmaxlength=maxlength;
+   *dmaxlength=maxlength-1;
 
-   switch (c=EXTRACT_PCHARP(str))
+   /* use of macros to keep similar to lexer.h: char_const */
+#define LOOK() (maxlength?INDEX_PCHARP(str,1):0)
+#define GETC() (maxlength?(INC_PCHARP(str,1),maxlength--,EXTRACT_PCHARP(str)):0)
+      
+   switch (c=GETC())
    {
       case 0:
 	 *dmaxlength=maxlength+1;
@@ -883,10 +886,6 @@ static PMOD_EXPORT int pcharp_extract_char_const(PCHARP str,
       case '\\':
 	 return '\\';
 
-   /* use of macros to keep similar to lexer.h: char_const */
-#define LOOK() (maxlength?INDEX_PCHARP(str,1):0)
-#define GETC() (INC_PCHARP(str,1),INDEX_PCHARP(str,0))
-      
       case '0': case '1': case '2': case '3':
       case '4': case '5': case '6': case '7':
 	 c-='0';
@@ -952,10 +951,10 @@ static PMOD_EXPORT int pcharp_extract_char_const(PCHARP str,
    return c;
 }
 
-static PMOD_EXPORT int pcharp_to_svalue_procento(struct svalue *r,
-						 PCHARP str,
-						 PCHARP *dstr,
-						 ptrdiff_t maxlength)
+static int pcharp_to_svalue_percent_o(struct svalue *r,
+				      PCHARP str,
+				      PCHARP *dstr,
+				      ptrdiff_t maxlength)
 {
    *dstr=str; /* default: no hit */
 
@@ -1971,31 +1970,31 @@ CHAROPT2(								 \
 				    INPUT_SHIFT)(input+e,eye-e);	 \
 	  break;							 \
 									 \
-        case 'O':                                                        \
-        {                                                                \
+        case 'O':							 \
+        {								 \
  	   PIKE_CONCAT(p_wchar, INPUT_SHIFT) *t;			 \
-           PCHARP tmp;                                                   \
-           if(eye>=input_len)                                            \
-           {                                                             \
-              chars_matched[0]=eye;                                      \
-              return matches;                                            \
-           }                                                             \
-                                                                         \
-           pcharp_to_svalue_procento(&sval,				 \
-				     MKPCHARP(input+eye,INPUT_SHIFT),    \
-                                     &tmp,                               \
-				     field_length);			 \
-           t=(PIKE_CONCAT(p_wchar, INPUT_SHIFT) *)tmp.ptr;               \
-           if(input + eye == t)                                          \
-           {                                                             \
-              chars_matched[0]=eye;                                      \
-              return matches;                                            \
-           }                                                             \
-           eye=t-input;                                                  \
-                                                                         \
-           break;                                                        \
-        }                                                                \
-                                                                         \
+           PCHARP tmp;							 \
+           if(eye>=input_len)						 \
+           {								 \
+              chars_matched[0]=eye;					 \
+              return matches;						 \
+           }								 \
+									 \
+           pcharp_to_svalue_percent_o(&sval,				 \
+				      MKPCHARP(input+eye,INPUT_SHIFT),	 \
+                                      &tmp,				 \
+				      field_length);			 \
+           t=(PIKE_CONCAT(p_wchar, INPUT_SHIFT) *)tmp.ptr;		 \
+           if(input + eye == t)						 \
+           {								 \
+              chars_matched[0]=eye;					 \
+              return matches;						 \
+           }								 \
+           eye=t-input;							 \
+									 \
+           break;							 \
+        }								 \
+									 \
 	case 'n':							 \
 	  sval.type=T_INT;						 \
 	  sval.subtype=NUMBER_NUMBER;					 \
