@@ -1166,10 +1166,24 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	    }
 	  }
 	  
-	  /* FIXME */
-	  for(e=0; e< (ptrdiff_t)tmp.s->len; e++)
-	    if(tmp.s->str[e]=='\n')
-	      tmp.s->str[e]=' ';
+	  /* Remove any newlines from the completed expression. */
+	  switch (tmp.s->size_shift) {
+	  case 0:
+	    for(e=0; e< (ptrdiff_t)tmp.s->len; e++)
+	      if(STR0(tmp.s)[e]=='\n')
+		STR0(tmp.s)[e]=' ';
+	    break;
+	  case 1:
+	    for(e=0; e< (ptrdiff_t)tmp.s->len; e++)
+	      if(STR1(tmp.s)[e]=='\n')
+		STR1(tmp.s)[e]=' ';
+	    break;
+	  case 2:
+	    for(e=0; e< (ptrdiff_t)tmp.s->len; e++)
+	      if(STR2(tmp.s)[e]=='\n')
+		STR2(tmp.s)[e]=' ';
+	    break;
+	  }
 
 	  if(s) d->inside=1;
 	  
