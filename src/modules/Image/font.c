@@ -4,6 +4,19 @@
 **! module Image
 **! class font
 **!
+**!	This object adds the text-drawing and -creation
+**!	capabilities of the <ref>Image</ref> module.
+**!
+**!	For simple usage, see
+**!	<ref>write</ref> and <ref>load</ref>.
+**!
+**!	other methods: <ref>baseline</ref>,
+**!	<ref>height</ref>,
+**!	<ref>set_xspacing_scale</ref>,
+**!	<ref>set_yspacing_scale</ref>,
+**!	<ref>text_extents</ref>
+**!	
+**! note
 **! 	Short technical documentation on a font file:
 **!	<pre>
 **!	       struct file_head 
@@ -23,6 +36,7 @@
 **!	       } *ch;
 **!	</pre>
 **!
+**! see also: Image, Image.image
 */
 
 /* $Id$ */
