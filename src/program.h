@@ -24,8 +24,6 @@
 #define EXTERN
 #include "compilation.h"
 
-struct program_state;
-
 /* Needed to support dynamic loading on NT */
 PMOD_PROTO extern struct program_state * Pike_compiler;
 
