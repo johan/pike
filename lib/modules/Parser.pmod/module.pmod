@@ -76,7 +76,7 @@ class SGML
 	 {
 	    string res=name;
 	    if (sizeof(args))
-	       foreach ( [array]args, [string i,string v])
+	       foreach ( (array)args, [string i,string v])
 		  res+=sprintf(" %s=%O",i,v);
 
 	    res="<"+res+">";
