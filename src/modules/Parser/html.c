@@ -4686,8 +4686,7 @@ static void html_clone(INT32 args)
 
    DEBUG((stderr,"parse_html_clone object %p\n",THISOBJ));
 
-   /* clone the current object, same class (!) */
-   push_object(o=clone_object(THISOBJ->prog,args));
+   push_object(o=clone_object_from_object(THISOBJ,args));
 
    p=(struct parser_html_storage*)get_storage(o,parser_html_program);
 
