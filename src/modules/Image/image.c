@@ -1729,6 +1729,7 @@ void image_hsv_to_rgb(INT32 args)
      s++; d++;
    }
 exit_loop:
+   ;	/* Needed to keep some compilers happy. */
    THREADS_DISALLOW();
 
    if (err) {
