@@ -109,8 +109,16 @@ struct object;
 #define PIKE_OPCODE_T unsigned INT32
 #elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_GOTO
 #define PIKE_OPCODE_T void *
+#define PIKE_INSTR_T void *
 #else
 #define PIKE_OPCODE_T unsigned INT8
+#endif
+
+#ifndef PIKE_INSTR_T
+/* The type for an opcode instruction identifier (not packed). In all
+ * cases but PIKE_BYTECODE_GOTO, this is n - F_OFFSET where n is the
+ * number in the Pike_opcodes enum. */
+#define PIKE_INSTR_T unsigned int
 #endif
 
 /* I need:
