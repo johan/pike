@@ -293,6 +293,9 @@ cpu_time_t get_cpu_time (void)
 
 #elif defined (GETRUSAGE_THROUGH_PROCFS)
 
+/* Note: This code is untested; haven't got access to any system where
+ * this old ioctl method still works. */
+
 cpu_time_t get_cpu_time (void)
 {
   prstatus_t  prs;
