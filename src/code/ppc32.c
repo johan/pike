@@ -551,6 +551,7 @@ void ppc32_flush_instruction_cache(void *addr, size_t len)
 {
   INT32 a;
 
+#ifndef _POWER
 #ifdef _AIX
   __asm__(".machine \"ppc\"");
 #endif
@@ -562,6 +563,7 @@ void ppc32_flush_instruction_cache(void *addr, size_t len)
   }
   __asm__("sync");
   __asm__("isync");
+#endif /* !_POWER */
 }
 
 #if 0
