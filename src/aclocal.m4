@@ -5,6 +5,7 @@ pushdef([AC_PROG_CC],
   AC_PROG_CC
 
   case "$CC" in
+    *rntcc*) TCC="no" ;;
     *tcc*) TCC="yes" ;;
     *) TCC="no" ;;
   esac
