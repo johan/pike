@@ -761,6 +761,16 @@ void f_chroot(INT32 args)
 #endif /* HAVE_CHROOT */
  
 #ifdef HAVE_SYSINFO
+#  ifdef SI_NODENAME
+#    define USE_SYSINFO
+#  else
+#    ifndef HAVE_UNAME
+#      define USE_SYSINFO
+#    endif
+#  endif
+#endif
+
+#ifdef USE_SYSINFO
 
 static struct {
   char *name;
