@@ -4189,8 +4189,9 @@ void image_read_lsb_grey(INT32 args)
    if (s)
    while (n--)
    {
+      int q=(s->r&1)+(s->g&1)+(s->b&1); /* vote */
       if (b==0) { b=128; d++; }
-      *d|=(s->r&1)*b; b>>=1;
+      *d|=(q>1)*b; b>>=1;
       s++;
    }
 
@@ -4545,13 +4546,13 @@ void init_image_image(void)
 		    tFunc(tInt tInt tInt,tArr(tInt))),0);
 		
    ADD_FUNCTION("read_lsb_rgb",image_read_lsb_rgb,
-		tFunc(tNone,tObj),0);
+		tFunc(tNone,tString),0);
    ADD_FUNCTION("write_lsb_rgb",image_write_lsb_rgb,
-		tFunc(tNone,tObj),0);
-   ADD_FUNCTION("read_lsb_grey",image_read_lsb_rgb,
-		tFunc(tNone,tObj),0);
-   ADD_FUNCTION("write_lsb_grey",image_write_lsb_rgb,
-		tFunc(tNone,tObj),0);
+		tFunc(tString,tObj),0);
+   ADD_FUNCTION("read_lsb_grey",image_read_lsb_grey,
+		tFunc(tNone,tString),0);
+   ADD_FUNCTION("write_lsb_grey",image_write_lsb_grey,
+		tFunc(tString,tObj),0);
 
    ADD_FUNCTION("orient4",image_orient4,
 		tFunc(tNone,tArr(tObj)),0);

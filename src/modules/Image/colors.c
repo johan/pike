@@ -1366,10 +1366,13 @@ static void image_get_color(INT32 args)
 	 if (sp[-1].type==T_ARRAY &&
 	     sp[-1].u.array->size==1)
 	 {
-	    double f;	/* FIXME: What is f used for? */
+	    double f;	
 	    f = sp[-1].u.array->item[0].u.float_number;
 	    pop_stack();
-	    sp--;
+	    push_int( (int)(255*f/99) );
+	    stack_dup();
+	    stack_dup();
+	    image_make_rgb_color(3);
 	       
 	    return;
 	 }
