@@ -111,6 +111,7 @@ static array _values() {
 //! The size of the struct object is the number of bytes
 //! allocated for the struct.
 static int _sizeof() {
+  if(!sizeof(items)) return 0;
   return `+( @sizeof(items[*]) );
 }
 
