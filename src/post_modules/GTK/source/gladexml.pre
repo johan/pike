@@ -192,6 +192,7 @@ FUNCTION(create, "function(void|int:void)");
 // Create a new GladeXML object. The first time it is run the libglade
 // initializing function is automatically run.
 {
+  pgtk_verify_setup();
   if(!glade_is_setup)
   {
     glade_init();
@@ -326,4 +327,3 @@ RETURNS(void);
 }
 
 // <p align=right><font size=2><i>$Id$</i></font>
-
