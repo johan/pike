@@ -1464,7 +1464,7 @@ struct node_s *resolve_identifier(struct pike_string *ident)
     }
   }
 
-  if(!Pike_compiler->num_parse_error && get_master())
+  if(get_master())
   {
     DECLARE_CYCLIC();
     node *ret=0;
@@ -1525,7 +1525,8 @@ struct node_s *resolve_identifier(struct pike_string *ident)
 	}
     }
     END_CYCLIC();
-    if(ret) return ret;
+
+    return ret;
   }
 
   return 0;
