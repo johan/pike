@@ -101,7 +101,13 @@ static struct marker *getmark(void *a)
   unsigned long hashval;
   struct marker *m;
 
-  hashval=((unsigned long)a)%hashsize;
+  hashval=(unsigned long)a;
+  hashval%=hashsize;
+
+#ifdef DEBUG
+  if(hashval >= hashsize)
+    fatal("Compiler has buggy modulo operator.\n");
+#endif
 
   for(m=hash[hashval];m;m=m->next)
     if(m->marked == a)
