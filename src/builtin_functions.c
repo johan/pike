@@ -3611,13 +3611,20 @@ PMOD_EXPORT void f_delay(INT32 args)
  *!   This function checks all the memory for cyclic structures such
  *!   as arrays containing themselves and frees them if appropriate.
  *!   It also frees up destructed objects and things with only weak
- *!   references. It then returns how many
- *!   arrays/objects/programs/etc. it managed to free by doing this.
+ *!   references.
  *!
  *!   Normally there is no need to call this function since Pike will
  *!   call it by itself every now and then. (Pike will try to predict
  *!   when 20% of all arrays/object/programs in memory is 'garbage'
  *!   and call this routine then.)
+ *!
+ *! @returns
+ *!   The amount of garbage is returned. This is the number of arrays,
+ *!   mappings, multisets, objects and programs that had no nonweak
+ *!   external references during the garbage collection. It's normally
+ *!   the same as the number of freed things, but there might be some
+ *!   difference since destroy() functions are called during freeing,
+ *!   which can cause more things to be freed or allocated.
  */
 void f_gc(INT32 args)
 {
