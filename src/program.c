@@ -160,7 +160,7 @@ static struct mapping *lfun_ids;
 /* mapping(string:type) */
 static struct mapping *lfun_types;
 
-static char *raw_lfun_types[] = {
+static const char *const raw_lfun_types[] = {
   tFuncV(tNone,tVoid,tVoid),	/* "__INIT", */
   tFuncV(tNone,tZero,tVoid),	/* "create", */
   tFuncV(tNone,tVoid,tVoid),	/* "destroy", */
