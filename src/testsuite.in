@@ -9918,3 +9918,8 @@ test_any_equal([[
   };
   return X()->test(1,2);
 ]],[[ ({}) ]])
+
+
+// - pike -e
+test_false( Process.system(RUNPIKE + " -e \"return 0;\"") )
+test_true( Process.system(RUNPIKE + " -e \"return 1;\"") )
