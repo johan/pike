@@ -26,6 +26,17 @@ pushdef([AC_PROG_CC],
 
   AC_PROG_CC
 
+  if test "$ac_test_CFLAGS" = set; then :; else
+    if test "$GCC" = yes; then
+      # Remove -O2, and use a real test to restore it.
+      if test "$ac_cv_prog_cc_g" = yes; then
+	CFLAGS="-g"
+      else
+	CFLAGS=
+      fi
+    else :; fi
+  fi
+
   AC_MSG_CHECKING([if we are using TCC])
   AC_CACHE_VAL(pike_cv_prog_tcc, [
     case "`$CC -V 2>&1|head -1`" in
