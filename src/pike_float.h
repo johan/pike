@@ -50,4 +50,17 @@ static inline int pike_isnan(double x)
 #define PIKE_ISUNORDERED(X,Y) (PIKE_ISNAN(X)||PIKE_ISNAN(Y))
 #endif /* HAVE_ISUNORDERED */
 
+#ifndef FLOAT_IS_IEEE_BIG
+#ifndef FLOAT_IS_IEEE_LITTLE
+#define NEED_CUSTOM_IEEE
+#endif
+#endif
+#ifndef NEED_CUSTOM_IEEE
+#ifndef DOUBLE_IS_IEEE_BIG
+#ifndef DOUBLE_IS_IEEE_LITTLE
+#define NEED_CUSTOM_IEEE
+#endif
+#endif
+#endif
+
 #endif	/* !PIKE_FLOAT_H */
