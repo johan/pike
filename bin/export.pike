@@ -80,7 +80,6 @@ int main(int argc, string *argv)
 
   files=sum(({ vpath+"/README" }),
 	    get_files(vpath+"/src"),
-	    get_files(vpath+"/doc"),
 	    get_files(vpath+"/lib"),
 	    get_files(vpath+"/bin"));
 
