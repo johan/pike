@@ -202,6 +202,12 @@ static void dlclose(void *module)
 #ifndef RTLD_NOW
 #define RTLD_NOW 0
 #endif
+#ifndef RTLD_LAZY
+#define RTLD_LAZY 0
+#endif
+#ifndef RTLD_GLOBAL
+#define RTLD_GLOBAL 0 
+#endif
 
 #ifndef TESTING
 
@@ -228,7 +234,12 @@ void f_load_module(INT32 args)
 
   module_name = sp[-args].u.string->str;
 
+#ifdef DEBUG
+  module=dlopen(module_name,
+                (d_flag?RTLD_NOW|RTLD_GLOBAL:RTLD_LAZY|RTLD_GLOBAL));
+#else
   module=dlopen(module_name, RTLD_NOW);
+#endif
 
   if(!module)
   {
