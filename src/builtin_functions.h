@@ -121,7 +121,6 @@ PMOD_EXPORT void f__locate_references(INT32 args);
 PMOD_EXPORT void f__describe(INT32 args);
 PMOD_EXPORT void f__gc_set_watch(INT32 args);
 PMOD_EXPORT void f__dump_backlog(INT32 args);
-PMOD_EXPORT void f_map_array(INT32 args);
 PMOD_EXPORT void f_map(INT32 args);
 PMOD_EXPORT void f_filter(INT32 args);
 PMOD_EXPORT void f_inherit_list(INT32 args);
