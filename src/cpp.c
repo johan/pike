@@ -232,19 +232,19 @@ void cpp_describe_exception(struct cpp *this, struct svalue *thrown)
 /*! @class CompilationHandler
  */
 
-/*! @decl void compile_error(string msg, int line, string filename)
+/*! @decl void compile_error(string filename, int line, string msg)
  *!
  *!   Called by @[compile()] and @[cpp()] when they encounter
  *!   errors in the code they compile.
  *!
- *! @param msg
- *!   Description of error.
+ *! @param filename
+ *!   File where the error was detected.
  *!
  *! @param line
  *!   Line where the error was detected.
  *!
- *! @param filename
- *!   File where the error was detected.
+ *! @param msg
+ *!   Description of error.
  *!
  *! @seealso
  *!   @[compile_warning()].
