@@ -24,7 +24,7 @@ static int _sizeof()
 
 static array _values()
 {
-  return l[tail..head];
+  return l[tail..head-1];
 }
 
 void write(mixed item)
