@@ -179,7 +179,7 @@ static private array(string) nonterminals = ({
   "priority",
 });
 
-static private object(Stack.stack) id_stack = Stack.stack();
+static private object(ADT.Stack) id_stack = ADT.Stack();
 
 static private mapping(string:int) nonterminal_lookup = ([]);
 
@@ -342,7 +342,7 @@ object(parser) make_parser(string str, object|void m)
 
   g->set_symbol_to_string(symbol_to_string);
 
-  id_stack = Stack.stack();
+  id_stack = ADT.Stack();
 
   nonterminal_lookup = ([]);
 
