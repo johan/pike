@@ -544,7 +544,10 @@ void describe_location(void *real_memblock,
   /* FIXME: Is the following call correct?
    * Shouldn't the second argument be an offset?
    */
-  dmalloc_describe_location(descblock, location, indent);
+  /* dmalloc_describe_location(descblock, location, indent); */
+  /* My attempt to fix it, although I'm not really sure: /mast */
+  if (memblock)
+    dmalloc_describe_location(memblock, (char *) location - (char *) memblock, indent);
 #endif
 }
 
@@ -1224,7 +1227,7 @@ static void init_gc(void)
 static void exit_gc(void)
 {
 #ifdef DO_PIKE_CLEANUP
-  int e=0;
+  size_t e=0;
   struct marker *h;
   for(e=0;e<marker_hash_table_size;e++)
     while(marker_hash_table[e])
