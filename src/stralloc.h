@@ -157,8 +157,8 @@ extern struct shared_string_location *all_shared_string_locations;
 #define compare_2_to_2(X,Y,Z) MEMCMP((char *)(X),(char *)(Y),(Z)<<2)
 
 #define CONVERT(FROM,TO) \
-INLINE void PIKE_CONCAT4(convert_,FROM,_to_,TO)(PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, ptrdiff_t len); \
-INLINE INT32 PIKE_CONCAT4(compare_,FROM,_to_,TO)(const PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, ptrdiff_t len);
+void PIKE_CONCAT4(convert_,FROM,_to_,TO)(PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, ptrdiff_t len); \
+INT32 PIKE_CONCAT4(compare_,FROM,_to_,TO)(const PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, ptrdiff_t len);
 
 PMOD_EXPORT extern struct pike_string *empty_pike_string;
 
@@ -179,8 +179,7 @@ PMOD_EXPORT int generic_compare_strings(const void *a, ptrdiff_t alen, int asize
 PMOD_EXPORT void generic_memcpy(PCHARP to,
 				PCHARP from,
 				ptrdiff_t len);
-PMOD_EXPORT INLINE void pike_string_cpy(PCHARP to,
-			    struct pike_string *from);
+PMOD_EXPORT void pike_string_cpy(PCHARP to, struct pike_string *from);
 PMOD_EXPORT struct pike_string *binary_findstring(const char *foo, ptrdiff_t l);
 PMOD_EXPORT struct pike_string *findstring(const char *foo);
 struct short_pike_string0;

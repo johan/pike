@@ -218,9 +218,9 @@ PMOD_EXPORT struct pike_string *debug_check_size_shift(struct pike_string *a,
 #endif
 
 #define CONVERT(FROM,TO) \
-INLINE void PIKE_CONCAT4(convert_,FROM,_to_,TO)(PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, ptrdiff_t len) \
+void PIKE_CONCAT4(convert_,FROM,_to_,TO)(PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, ptrdiff_t len) \
 {  while(--len>=0) *(to++)=*(from++); } \
-INLINE INT32 PIKE_CONCAT4(compare_,FROM,_to_,TO)(const PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, ptrdiff_t len) \
+INT32 PIKE_CONCAT4(compare_,FROM,_to_,TO)(const PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, ptrdiff_t len) \
 { int tmp; while(--len>=0) if((tmp=*(to++)-*(from++))) return tmp; return 0; }
 
 
@@ -294,8 +294,7 @@ PMOD_EXPORT void generic_memcpy(PCHARP to,
   }
 }
 
-PMOD_EXPORT INLINE void pike_string_cpy(PCHARP to,
-			    struct pike_string *from)
+PMOD_EXPORT void pike_string_cpy(PCHARP to, struct pike_string *from)
 {
   generic_memcpy(to,MKPCHARP_STR(from),from->len);
 }
