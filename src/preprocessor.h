@@ -1261,6 +1261,8 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	  SKIPSPACE();
 	  
 	  check_stack(3);
+
+	  /* FIXME: Ought to macro-expand (Bug 2440). */
 	  
 	  switch(data[pos++])
 	  {
