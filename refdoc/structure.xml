@@ -40,6 +40,28 @@
       <target module="Standards" class="URI"/>
     </file>
   </dir>
+  <file name="Calendar.xml">
+    <target module="Calendar"/>
+  </file>
+  <file name="Crypto.xml">
+    <target module="Crypto"/>
+  </file>
+  <file name="GDK.xml">
+    <target module="GDK"/>
+  </file>
+  <!--
+  <file name="GL.xml">
+    <target module="GL"/>
+    <target module="GLU"/>
+    <target module="GLUT"/>
+  </file>
+  -->
+  <file name="GTK.xml">
+    <target module="GTK"/>
+  </file>
+  <file name="Sql.xml">
+    <target module="Sql"/>
+  </file>
   <file name="index.xml">
     <!-- Import all remaining crawled data to this file: -->
     <target module=""/>
