@@ -218,7 +218,7 @@ void f_parse_html(INT32 args)
 }
 
 
-/*! @decl string parse_html(string html, @
+/*! @decl string parse_html_lines(string html, @
  *!                         mapping(string:function(string, mapping(string:string), int, mixed ...:string|array)) tag_callbacks, @
  *!                         mapping(string:function(string, mapping(string:string), string, int, mixed ...:string|array)) container_callbacks, @
  *!                         mixed ... extras)
