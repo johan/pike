@@ -188,8 +188,9 @@ class Word {
   }
 
   void set(int(0..) in) {
-    if(in<0 || in>=pow(2,size*8)) error("Value %d out of bound (0..%d).\n",
-					in, ~((-1)<<size*8));
+    if(in<0 || in>~((-1)<<size*8))
+      error("Value %d out of bound (0..%d).\n",
+	    in, ~((-1)<<size*8));
     value = in;
   }
   void decode(object f) { sscanf(f->read(size), "%"+size+"c", value); }
