@@ -822,6 +822,7 @@ void image_create_method(INT32 args)
       push_int(THIS->xsize-1); stack_swap();
       push_int(THIS->ysize-1); stack_swap();
       image_tuned_box(5);
+      return;
    }
    else 
       Pike_error("create_method: unknown method\n");
