@@ -42,7 +42,7 @@ string remove_ext(string file)
 
 string o_to_obj(string fname)
 {
-  if (fname[sizeof(fname)-3..] == ".o") {
+  if (fname[sizeof(fname)-2..] == ".o") {
     return fname + "bj";
   }
   return fname;
