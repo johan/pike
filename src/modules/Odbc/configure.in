@@ -143,6 +143,8 @@ EOF
   
     if test "$ac_cv_header_isql_h$ac_cv_header_isqlext_h" = "yesyes"; then
   
+      AC_CHECK_LIB(iodbcinst, SQLGetConfigMode)
+  
       AC_CHECK_LIB(iodbc, SQLConnect, [
   	LIBS="-liodbc $LIBS"
   	pike_cv_odbc=yes;
