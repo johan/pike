@@ -28,9 +28,7 @@ extern struct program *image_program;
 #define THIS ((struct image *)(fp->current_storage))
 #define THISOBJ (fp->current_object)
 
-#define min(a,b) ((a)<(b)?(a):(b))
-#define max(a,b) ((a)<(b)?(b):(a))
-#define testrange(x) max(min((x),255),0)
+#define testrange(x) MAXIMUM(MINIMUM((x),255),0)
 
 /**************** noise ************************/
 

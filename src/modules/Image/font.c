@@ -106,7 +106,10 @@ Kerningtable types:
 #include <sys/fcntl.h>
 #endif
 
+#ifdef HAVE_NETINET_IN_H
 #include <netinet/in.h>
+#endif
+
 #include <errno.h>
 
 #include "config.h"

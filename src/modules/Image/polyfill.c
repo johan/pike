@@ -652,7 +652,7 @@ static void polyfill_some(struct image *img,
    int i;
 
    rgb_group *dest=img->img,rgb=img->rgb;
-   float *buf=alloca(sizeof(float)*(img->xsize+1));
+   float *buf=(float *)alloca(sizeof(float)*(img->xsize+1));
 
 
    if (!buf) error("out of stack, typ\n");
