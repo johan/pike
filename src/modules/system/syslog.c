@@ -102,6 +102,9 @@ RCSID("$Id$");
 #define LOG_PERROR 0
 #endif
 
+/*! @module system
+ */
+
 /*! @decl void openlog(string ident, int options, facility)
  *!
  *! Initializes the connection to syslogd.
@@ -267,5 +270,7 @@ void f_closelog(INT32 args)
   pop_n_elems(args);
 }
 
+/*! @endmodule
+ */
 
 #endif /* HAVE_SYSLOG */
