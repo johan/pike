@@ -2513,9 +2513,7 @@ class: modifiers TOK_CLASS line_number_info optional_identifier
 
     /* fprintf(stderr, "LANGUAGE.YACC: CLASS end\n"); */
 
-    if(!p) {
-      yyerror("Class definition failed.");
-    }else{
+    if(p) {
       free_program(p);
     }
 
@@ -3921,7 +3919,7 @@ void yyerror(char *str)
     Pike_fatal("Stack error (underflow)\n");
 #endif
 
-  if (Pike_compiler->num_parse_error > 10) return;
+  if (Pike_compiler->num_parse_error > 20) return;
   Pike_compiler->num_parse_error++;
   cumulative_parse_error++;
 
