@@ -29,7 +29,7 @@ static mapping(string : int) backquoteops =
    "==":2, "=":1,
    "()":2,
    "->=":3, "->":2,
-   "[]=":3, "[]":2 ]);
+   "[]=":3, "[]":2, "[..]":4 ]);
 
 //! Splits the @[data] string into an array of tokens. An additional
 //! element with a newline will be added to the resulting array of
