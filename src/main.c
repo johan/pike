@@ -445,6 +445,11 @@ int dbm_main(int argc, char **argv)
 	      p++;
 	      goto more_d_flags;
 
+	    case 'T':
+	      debug_options |= ERRORCHECK_MUTEXES;
+	      p++;
+	      goto more_d_flags;
+
 	    default:
 	      d_flag += (p[0] == 'd');
 	      p++;
@@ -518,6 +523,13 @@ int dbm_main(int argc, char **argv)
       break;
     }
   }
+
+#ifndef PIKE_MUTEX_ERRORCHECK
+  if (debug_options & ERRORCHECK_MUTEXES)
+    fputs ("Warning: -dT (error checking mutexes) not supported on this system.\n",
+	   stderr);
+#endif
+  if (d_flag) debug_options |= ERRORCHECK_MUTEXES;
 
 #if !defined(RLIMIT_NOFILE) && defined(RLIMIT_OFILE)
 #define RLIMIT_NOFILE RLIMIT_OFILE

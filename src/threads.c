@@ -42,6 +42,11 @@ PMOD_EXPORT COND_T live_threads_change;
 PMOD_EXPORT COND_T threads_disabled_change;
 PMOD_EXPORT size_t thread_stack_size=256 * 1204;
 
+PMOD_EXPORT void thread_low_error (int errcode)
+{
+  Pike_fatal ("Unexpected error from thread function: %d\n", errcode);
+}
+
 /* SCO magic... */
 int  __thread_sys_behavior = 1;
 
@@ -705,14 +710,8 @@ TH_RETURN_TYPE new_thread_func(void * data)
   }
 #endif /* HAVE_BROKEN_LINUX_THREAD_EUID */
   
-  if((tmp=mt_lock_interpreter()))
-    Pike_fatal("Failed to lock interpreter, return value=%d, errno=%d\n",tmp,
-#ifdef __NT__
-	  GetLastError()
-#else
-	  errno
-#endif
-	  );
+  mt_lock_interpreter();
+
   SWAP_IN_THREAD(OBJ2THREAD(arg.id)); /* Init struct */
   init_interpreter();
   Pike_interpreter.thread_id=arg.id;
