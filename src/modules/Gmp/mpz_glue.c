@@ -144,8 +144,7 @@ static void gmp_push_int64 (INT64 i)
 #else
     {
       int neg = i < 0;
-      unsigned INT64 bits = (unsigned INT64)i;
-      if (neg) bits = -bits;
+      unsigned INT64 bits = (unsigned INT64) (neg ? -i : i);
 
 #ifdef HAVE_MPZ_IMPORT
       mpz_import (mpz, 1, 1, SIZEOF_INT64, 0, 0, &bits);
