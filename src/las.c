@@ -383,7 +383,7 @@ static node *freeze_node(node *orig)
 #ifdef PIKE_DEBUG
 static node *freeze_node(node *orig)
 {
-  check_tree(orig);
+  check_tree(orig, 0);
   return orig;
 }
 #else /* !PIKE_DEBUG */
