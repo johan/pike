@@ -337,7 +337,7 @@ void finish()
 	}
 	break;
 
-#if constant(Stdio.__HAVE_OOB__)
+#if Stdio.__OOB__ >= 3
     case 49:
       werror("Testing out-of-band data. ");
       start();
