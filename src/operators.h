@@ -20,6 +20,13 @@ struct string_assignment_storage
 };
 
 /* Prototypes begin here */
+void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind);
+void o_index(void);
+void o_cast_to_int(void);
+void o_cast_to_string(void);
+void o_cast(struct pike_type *type, INT32 run_time_type);
+PMOD_EXPORT void f_cast(void);
+
 PMOD_EXPORT void f_ne(INT32 args);
 COMPARISON(f_eq,"`==", is_eq)
 COMPARISON(f_lt,"`<" , is_lt)

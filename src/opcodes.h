@@ -8,7 +8,8 @@
 #ifndef OPCODES_H
 #define OPCODES_H
 
-/* To provide o_sscanf and f_sscanf for compatibility. */
+/* To provide the cast and sscanf declarations for compatibility. */
+#include "operators.h"
 #include "sscanf.h"
 
 /* Opcodes */
@@ -160,15 +161,5 @@ enum Pike_opcodes
 #undef OPCODE0_ALIAS
 #undef OPCODE1_ALIAS
 #undef OPCODE2_ALIAS
-
-
-/* Prototypes begin here */
-void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind);
-void o_index(void);
-void o_cast_to_int(void);
-void o_cast_to_string(void);
-void o_cast(struct pike_type *type, INT32 run_time_type);
-PMOD_EXPORT void f_cast(void);
-/* Prototypes end here */
 
 #endif
