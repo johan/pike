@@ -135,6 +135,7 @@ OBJ= \
  mapping.o \
  pike_memory.o \
  module_support.o \
+ pikecode.o \
  object.o \
  opcodes.o \
  operators.o \
