@@ -61,6 +61,5 @@ void add_item(object(item) i)
       symbol_items[symbol] = (< i >);
     }
   }
-  kernel_hash = 0;
 }
 
