@@ -112,8 +112,15 @@ extern char *type_name[];
 #define tSet(IND) "\002" IND
 #define tMultiset tSet(tMix)
 #define tObj "\003\000\000\000\000\000"
-#define tFuncV(ARGS,REST,RET) "\004" ARGS "\021" REST RET
-#define tFunc(ARGS,RET) tFuncV(ARGS "", tVoid, RET)
+
+#define tFuncV(ARGS,REST,RET) MagictFuncV(RET,REST,ARGS)
+#define tFunc(ARGS,RET) MagictFunc(RET,ARGS)
+
+/* These two magic funcions are used to make MSVC++ work
+ * even if 'ARGS' is empty.
+ */
+#define MagictFuncV(RET,REST,ARGS) "\004" ARGS "\021" REST RET
+#define MagictFunc(RET,ARGS) tFuncV(ARGS "", tVoid, RET)
 #define tFunction tFuncV("" ,tMix,tMix)
 #define tNone ""
 #define tPrg "\005"
