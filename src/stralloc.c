@@ -19,6 +19,7 @@
 #include "block_alloc.h"
 #include "operators.h"
 #include "pike_float.h"
+#include "port.h"
 
 #include <errno.h>
 #include <float.h>
@@ -2402,6 +2403,11 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 	    flags |= APPEND_WIDTH_LONG;
 	  }
 	  continue;
+
+	case 't':	/* ptrdiff_t */
+	case 'z':	/* size_t */
+	  flags = (flags & ~APPEND_WIDTH_MASK) | APPEND_WIDTH_PTR;
+	  continue;
 	  
 	case 'O':
 	  {
@@ -2543,9 +2549,9 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 	      break;
 	    }
 	    /* FIXME: Field lengths and precision. */
-	    if ((bytes = snprintf(NULL, 0, "%f", val))) {
+	    if ((bytes = SNPRINTF(NULL, 0, "%f", val))) {
 	      p_wchar0 *p = string_builder_allocate(s, bytes, 0);
-	      size_t check = snprintf(p, bytes+1, "%f", val);
+	      size_t check = SNPRINTF(p, bytes+1, "%f", val);
 	      if (check != bytes) {
 		Pike_fatal("string_builder_vsprintf(): snprintf(%f) is not "
 			   "trustworthy: %"PRINTSIZET"u != %"PRINTSIZET"u\n",
