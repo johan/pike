@@ -643,7 +643,8 @@ static string low_pike_sprintf(char *format,
 	    s=sp;
 	    if(q)
 	    {
-	      ref_push_array(q->array);
+	      q->array->refs++;
+	      push_array_items(q->array);
 	    }else{
 	      array_index_no_free(sp,w,tmp);
 	      sp++;
