@@ -311,7 +311,7 @@ static void port_bind(INT32 args)
 
 #ifdef HAVE_SYS_UN_H
 
-/*! @decl int bind_unix(int|string path, void|function accept_callback)
+/*! @decl int bind_unix(string path, void|function accept_callback)
  *!
  *! Bind opens a Unix domain socket at the filesystem location path.
  *! If the second argument is present, the socket is set to nonblocking
