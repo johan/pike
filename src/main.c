@@ -789,6 +789,9 @@ void low_exit_main(void)
   void free_all_object_blocks(void);
   void free_all_program_blocks(void);
   void exit_builtin(void);
+  void exit_iterators(void);
+  void exit_backend(void);
+  void cleanup_pike_type_table(void);
 
 #ifdef AUTO_BIGNUM
   void exit_auto_bignum(void);
