@@ -1942,16 +1942,16 @@ static struct svalue *is_stupid_func(node *n,
     break;
   }
 
-  if(n->token != F_RETURN) return 0;
+  if(!n || n->token != F_RETURN) return 0;
   n=CAR(n);
 
-  if(n->token != F_APPLY) return 0;
+  if(!n || n->token != F_APPLY) return 0;
 
   tmp=stupid_args(CDR(n),0,vargs);
   if(!(vargs?tmp==65535:tmp==args)) return 0;
 
   n=CAR(n);
-  if(n->token != F_CONSTANT) return 0;
+  if(!n || n->token != F_CONSTANT) return 0;
   return &n->u.sval;
 }
 
