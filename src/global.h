@@ -16,6 +16,11 @@
 #  define _LARGEFILE64_SOURCE 1
 #endif
 
+/* HPUX needs these too... */
+#ifndef __STDC_EXT__
+#  define __STDC_EXT__
+#endif /* !__STDC_EXT__ */
+
 /*
  * Some structure forward declarations are needed.
  */
