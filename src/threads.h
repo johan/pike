@@ -586,6 +586,12 @@ void th_farm(void (*fun)(void *), void *here);
 /* Prototypes end here */
 
 #else
+
+#define th_atfork(X,Y,Z)
+#define th_atfork_prepare()
+#define th_atfork_parent()
+#define th_atfork_child()
+
 #define th_setconcurrency(X)
 #define DEFINE_MUTEX(X)
 #define DEFINE_IMUTEX(X)

@@ -583,6 +583,10 @@ node *mkexternalnode(int level,
 #endif
   res->u.integer.a = level;
   res->u.integer.b = i;
+
+  /* Bzot-i-zot */
+  new_program->flags |= PROGRAM_USES_PARENT;
+
   return res;
 }
 
@@ -2322,7 +2326,20 @@ int eval_low(node *n)
 	  }else{
 	    yyerror("Nonstandard error format.");
 	  }
-	}else{
+	}
+	else if(throw_value.type == T_OBJECT)
+	{
+	  ref_push_object(throw_value.u.object);
+	  push_int(0);
+	  f_index(2);
+	  if(sp[-1].type != T_STRING)
+	    yyerror("Nonstandard error format.");
+	  else
+	    yyerror(sp[-1].u.string->str);
+	  pop_stack();
+	}
+	else
+	{
 	  yyerror("Nonstandard error format.");
 	}
       }

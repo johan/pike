@@ -120,6 +120,7 @@ union idptr
 #define IDENTIFIER_PROTOTYPED 16
 
 #define IDENTIFIER_IS_FUNCTION(X) ((X) & IDENTIFIER_FUNCTION)
+#define IDENTIFIER_IS_PIKE_FUNCTION(X) ((X) & IDENTIFIER_PIKE_FUNCTION)
 #define IDENTIFIER_IS_CONSTANT(X) ((X) & IDENTIFIER_CONSTANT)
 #define IDENTIFIER_IS_VARIABLE(X) (!((X) & (IDENTIFIER_FUNCTION | IDENTIFIER_CONSTANT)))
 
@@ -195,9 +196,11 @@ struct inherit
 /* Self explanatory, automatically detected */
 #define PROGRAM_HAS_C_METHODS 32
 
-
 /* All non-static functions are inlinable */
 #define PROGRAM_CONSTANT 64
+
+/* */
+#define PROGRAM_USES_PARENT 128
 
 struct program
 {

@@ -257,9 +257,21 @@ int va_get_args(struct svalue *s,
         return ret;
       break;
     case 'p':
-      if(s->type != T_PROGRAM) return ret;
-      *va_arg(ap, struct program **)=s->u.program;
+      switch(s->type)
+      {
+	case T_PROGRAM:
+	  *va_arg(ap, struct program **)=s->u.program;
+	  break;
+
+	case T_FUNCTION:
+	  if((*va_arg(ap, struct program **)=program_from_svalue(s)))
+	    break;
+
+	default:
+	  return;
+      }
       break;
+
     case '*':
       *va_arg(ap, struct svalue **)=s;
       break;
