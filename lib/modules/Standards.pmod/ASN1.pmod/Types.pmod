@@ -1035,7 +1035,8 @@ class IA5String
   constant tag = 22;
   constant type_name = "IA5STRING";
 }
-constant asn1_utc = UTC;
+
+//!
 class UTC
 {
   inherit String;
@@ -1191,6 +1192,7 @@ constant asn1_printable_string = PrintableString;
 constant asn1_teletex_string = TeletexString;
 constant asn1_broken_teletex_string = BrokenTeletexString;
 constant asn1_IA5_string = IA5String;
+constant asn1_utc = UTC;
 constant asn1_universal_string = UniversalString;
 constant asn1_bmp_string = BMPString;
 #endif
