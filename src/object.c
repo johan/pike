@@ -471,6 +471,8 @@ void low_destruct(struct object *o,int do_free)
 
 #ifdef PIKE_DEBUG
   if(d_flag > 20) do_debug();
+  if(Pike_in_gc && Pike_in_gc<4)
+    fatal("Destructing object inside gc()\n");
 #endif
 
   add_ref(o);
@@ -625,7 +627,7 @@ void really_free_object(struct object *o)
     FREE_PROT(o);
 
     free((char *)o);
-    GC_FREE();
+    GC_FREE_OBJ();
   }
 }
 

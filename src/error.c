@@ -227,6 +227,7 @@ void exit_on_error(void *msg)
 {
   ONERROR tmp;
   SET_ONERROR(tmp,fatal_on_error,"Fatal in exit_on_error!");
+  d_flag=0;
 
   fprintf(stderr,"%s\n",(char *)msg);
 #ifdef PIKE_DEBUG
@@ -294,11 +295,16 @@ void debug_fatal(const char *fmt, ...) ATTRIBUTE((noreturn,format (printf, 1, 2)
   (void)VFPRINTF(stderr, fmt, args);
 
   d_flag=t_flag=0;
-  push_error("Attempting to dump backlog (may fail).\n");
-  APPLY_MASTER("describe_backtrace",1);
-  if(sp[-1].type==T_STRING)
-    write_to_stderr(sp[-1].u.string->str, sp[-1].u.string->len);
-
+  if(!Pike_sp)
+  {
+    fprintf(stderr,"Attempting to dump backlog (may fail)...\n");
+    push_error("Backtrace at time of fatal:\n");
+    APPLY_MASTER("describe_backtrace",1);
+    if(sp[-1].type==T_STRING)
+      write_to_stderr(sp[-1].u.string->str, sp[-1].u.string->len);
+  }else{
+    fprintf(stderr,"No stack - no backtrace.\n");
+  }
   fflush(stderr);
   abort();
 }
