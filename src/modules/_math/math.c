@@ -210,9 +210,11 @@ void f_atan2(INT32 args)
  */
 void f_sinh(INT32 args)
 {
+  double x;
   ARG_CHECK("sinh");
-  sp[-1].u.float_number =
-    DO_NOT_WARN((FLOAT_TYPE)sinh(sp[-1].u.float_number));
+  x=(double)sp[-1].u.float_number;
+
+  sp[-1].u.float_number = 0.5*(exp(x)-exp(-x));
 }
 
 /*! @decl float asinh(float f)
@@ -224,23 +226,27 @@ void f_sinh(INT32 args)
  */
 void f_asinh(INT32 args)
 {
+  double x;
   ARG_CHECK("asinh");
-  sp[-1].u.float_number =
-    DO_NOT_WARN((FLOAT_TYPE)asinh(sp[-1].u.float_number));
+  x=(double)sp[-1].u.float_number;
+
+  sp[-1].u.float_number = log(x+sqrt(1+x*x));
 }
 
 /*! @decl float cosh(float f)
  *!
- *! Return the cosine value for @[f].
+ *! Return the hyperbolic cosine value for @[f].
  *!
  *! @seealso
  *!   @[acosh()], @[sinh()], @[tanh()]
  */
 void f_cosh(INT32 args)
 {
+  double x;
   ARG_CHECK("cosh");
-  sp[-1].u.float_number =
-    DO_NOT_WARN((FLOAT_TYPE)cosh(sp[-1].u.float_number));
+  x=(double)sp[-1].u.float_number;
+
+  sp[-1].u.float_number = 0.5*(exp(x)+exp(-x));
 }
 
 /*! @decl float acosh(float f)
@@ -252,9 +258,11 @@ void f_cosh(INT32 args)
  */
 void f_acosh(INT32 args)
 {
+  double x;
   ARG_CHECK("acosh");
-  sp[-1].u.float_number =
-    DO_NOT_WARN((FLOAT_TYPE)acosh(sp[-1].u.float_number));
+  x=(double)sp[-1].u.float_number;
+
+  sp[-1].u.float_number = 2*log(sqrt(0.5*(x+1))+sqrt(0.5*(x-1)));
 }
 
 /*! @decl float tanh(float f)
@@ -266,10 +274,11 @@ void f_acosh(INT32 args)
  */
 void f_tanh(INT32 args)
 {
+  double x;
   ARG_CHECK("tanh");
+  x=(double)sp[-1].u.float_number;
 
-  sp[-1].u.float_number =
-    DO_NOT_WARN((FLOAT_TYPE)tanh(sp[-1].u.float_number));
+  sp[-1].u.float_number = (exp(x)-exp(-x))/(exp(x)+exp(-x));
 }
 
 /*! @decl float atanh(float f)
@@ -281,9 +290,11 @@ void f_tanh(INT32 args)
  */ 
 void f_atanh(INT32 args)
 {
+  double x;
   ARG_CHECK("atanh");
-  sp[-1].u.float_number =
-    DO_NOT_WARN((FLOAT_TYPE)atanh(sp[-1].u.float_number));
+  x=(double)sp[-1].u.float_number;
+
+  sp[-1].u.float_number = 0.5*(log(1+x)-log(1-x));
 }
 
 #endif
