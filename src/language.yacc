@@ -775,10 +775,6 @@ def: modifiers type_or_error optional_stars TOK_IDENTIFIER push_compiler_frame0
 			0,
 			OPT_EXTERNAL_DEPEND|OPT_SIDE_EFFECT);
 
-      fprintf(stderr, "%s:%d: current_function_number: %d\n",
-	      __FILE__, __LINE__,
-	      Pike_compiler->compiler_frame->current_function_number);
-
       Pike_compiler->varargs=0;
 
       if ($1 & ID_VARIANT) {
@@ -1936,10 +1932,6 @@ lambda: TOK_LAMBDA line_number_info push_compiler_frame1
     if(Pike_compiler->compiler_pass == 2)
       Pike_compiler->compiler_frame->current_function_number=isidentifier(name);
 
-    fprintf(stderr, "%s:%d: current_function_number: %d\n",
-	    __FILE__, __LINE__,
-	    Pike_compiler->compiler_frame->current_function_number);
-
     f=dooptcode(name,
 		$7,
 		type,
@@ -2036,9 +2028,6 @@ local_function: TOK_IDENTIFIER push_compiler_frame1 func_args
     Pike_compiler->varargs=0;
     Pike_compiler->compiler_frame->current_function_number=id;
 
-    fprintf(stderr, "%s:%d: current_function_number: %d\n",
-	    __FILE__, __LINE__,
-	    Pike_compiler->compiler_frame->current_function_number);
     n=0;
     if(Pike_compiler->compiler_pass > 1 &&
        (i=ID_FROM_INT(Pike_compiler->new_program, id)))
@@ -2176,9 +2165,6 @@ local_function2: optional_stars TOK_IDENTIFIER push_compiler_frame1 func_args
     Pike_compiler->varargs=0;
     Pike_compiler->compiler_frame->current_function_number=id;
 
-    fprintf(stderr, "%s:%d: current_function_number: %d\n",
-	    __FILE__, __LINE__,
-	    Pike_compiler->compiler_frame->current_function_number);
     n=0;
     if(Pike_compiler->compiler_pass > 1 &&
        (i=ID_FROM_INT(Pike_compiler->new_program, id)))
@@ -2340,10 +2326,6 @@ optional_create_arguments: /* empty */ { $$ = 0; }
 		      (Pike_compiler->varargs?IDENTIFIER_VARARGS:0),
 		      0,
 		      OPT_SIDE_EFFECT);
-
-    fprintf(stderr, "%s:%d: current_function_number: %d\n",
-	    __FILE__, __LINE__,
-	    Pike_compiler->compiler_frame->current_function_number);
 
     Pike_compiler->varargs = 0;
 
@@ -3925,8 +3907,6 @@ void yyerror(char *str)
   if(Pike_interpreter.recoveries && Pike_sp-Pike_interpreter.evaluator_stack < Pike_interpreter.recoveries->stack_pointer)
     Pike_fatal("Stack error (underflow)\n");
 #endif
-
-  fprintf(stderr, "YYERROR: %s\n", str);
 
   if (Pike_compiler->num_parse_error > 20) return;
   Pike_compiler->num_parse_error++;
