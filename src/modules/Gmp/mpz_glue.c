@@ -390,7 +390,7 @@ static void mpzmod_div(INT32 args)
   struct object *res;
   
   for(e=0;e<args;e++)
-    if (mpz_sgn(get_mpz(sp+e-args)))
+    if (!mpz_sgn(get_mpz(sp+e-args)))
       error("Division by zero.\n");	
   
   res = clone(mpzmod_program, 0);
@@ -408,7 +408,7 @@ static void mpzmod_mod(INT32 args)
   struct object *res;
   
   for(e=0;e<args;e++)
-    if (mpz_sgn(get_mpz(sp+e-args)))
+    if (!mpz_sgn(get_mpz(sp+e-args)))
       error("Division by zero.\n");	
   
   res = clone(mpzmod_program, 0);
