@@ -64,6 +64,9 @@ RCSID("$Id$");
 #ifdef HAVE_ARPA_INET_H
 #include <arpa/inet.h>
 #endif
+#ifdef HAVE_SYS_FILE_H
+#include <sys/file.h>
+#endif
 
 
 int set_nonblocking(int fd,int which)
