@@ -4022,6 +4022,18 @@ void Pike_f_fork(INT32 args)
     th_atfork_parent();
   } else {
     th_atfork_child();
+    DO_IF_PROFILING({
+	/* Reset profiling information. */
+	struct pike_frame *frame = Pike_fp;
+	cpu_time_t now = get_cpu_time();
+	Pike_interpreter.unlocked_time = 0;
+	Pike_interpreter.accounted_time = 0;
+	while(frame) {
+	  frame->start_time = now;
+	  frame->children_base = 0;
+	  frame = frame->next;
+	}
+      });
   }
   
   if(pid==-1) {
