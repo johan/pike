@@ -1393,26 +1393,36 @@ void gc_mark_short_svalue(union anything *u, TYPE_T type)
   {
   case T_ARRAY: 
     if(!u->refs) return;
-    gc_mark_array_as_referenced(u->array);
+    enqueue(&gc_mark_queue,
+	    (queue_call)gc_mark_array_as_referenced,
+	    u->array);
     break;
   case T_MULTISET:
     if(!u->refs) return;
-    gc_mark_multiset_as_referenced(u->multiset);
+    enqueue(&gc_mark_queue,
+	    (queue_call)gc_mark_multiset_as_referenced,
+	    u->multiset);
     break;
   case T_MAPPING:
     if(!u->refs) return;
-    gc_mark_mapping_as_referenced(u->mapping);
+    enqueue(&gc_mark_queue,
+	    (queue_call)gc_mark_mapping_as_referenced,
+	    u->mapping);
     break;
   case T_PROGRAM:
     if(!u->refs) return;
-    gc_mark_program_as_referenced(u->program);
+    enqueue(&gc_mark_queue,
+	    (queue_call)gc_mark_program_as_referenced,
+	    u->program);
     break;
 
   case T_OBJECT:
     if(!u->refs) return;
     if(u->object->prog)
     {
-      gc_mark_object_as_referenced(u->object);
+      enqueue(&gc_mark_queue,
+	      (queue_call)gc_mark_object_as_referenced,
+	      u->object);
     }else{
       free_short_svalue(u,T_OBJECT);
       u->object=0;
