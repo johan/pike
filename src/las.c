@@ -1863,7 +1863,6 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 
     case T_OBJECT:
     case T_PROGRAM:
-#if 1
       if(!(Pike_compiler->new_program->flags & PROGRAM_PASS_1_DONE))
       {
 	struct program *p;
@@ -1885,7 +1884,6 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 	  }
 	}
       }
-#endif
 
     default:
     {
@@ -1953,6 +1951,26 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 	    if (thrown.type != PIKE_T_UNKNOWN)
 	      free_svalue(&thrown);
 	  }
+	}
+
+	else if ((Pike_compiler->new_program->flags & PROGRAM_PASS_1_DONE) &&
+		 ((Pike_sp[-1].type == T_OBJECT &&
+		   Pike_sp[-1].u.object == placeholder_object) ||
+		  (Pike_sp[-1].type == T_PROGRAM &&
+		   Pike_sp[-1].u.program == placeholder_program)) &&
+		 /* Ugly special case: We must be able to get
+		  * predef::__placeholder_object. */
+		 (!node_name || strcmp (node_name, "predef"))) {
+	  if (node_name)
+	    my_yyerror("Got placeholder %s (resolver problem) "
+		       "when indexing module '%s' with '%s'.",
+		       get_name_of_type (Pike_sp[-1].type),
+		       node_name, id->str);
+	  else
+	    my_yyerror("Got placeholder %s (resolver problem) "
+		       "when indexing a module with '%s'.",
+		       get_name_of_type (Pike_sp[-1].type),
+		       id->str);
 	}
       }
       END_CYCLIC();

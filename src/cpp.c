@@ -261,15 +261,14 @@ void cpp_describe_exception(struct cpp *this, struct svalue *thrown)
 
 /*! @decl mapping(string:mixed) get_predefines()
  *!
- *!   Called by @[compile()] and @[cpp()] to get
- *!   the set of global symbols.
+ *!   Called by @[cpp()] to get the set of global symbols.
  *!
  *! @returns
  *!   Returns a mapping from symbol name to symbol value.
  *!   Returns zero on failure.
  *!
  *! @seealso
- *!   @[resolv()]
+ *!   @[resolv()], @[get_default_module()]
  */
 
 /*! @decl mixed resolv(string symbol, string filename, @
@@ -1273,8 +1272,28 @@ static void check_constant(struct cpp *this,
       }
 
       if (safe_apply_handler("resolv", this->handler,
-			     this->compat_handler, 3, 0))
-	res = !(SAFE_IS_ZERO(sp-1) && sp[-1].subtype == NUMBER_UNDEFINED);
+			     this->compat_handler, 3, 0)) {
+	if ((Pike_sp[-1].type == T_OBJECT &&
+	     Pike_sp[-1].u.object == placeholder_object) ||
+	    (Pike_sp[-1].type == T_PROGRAM &&
+	     Pike_sp[-1].u.program == placeholder_program)) {
+	  if (!data.shift) {
+	    char *str = malloc(dlen + 1);
+	    MEMCPY(str, data.ptr, dlen);
+	    str[dlen] = 0;
+	    cpp_error_sprintf (this, "Got placeholder %s (resolver problem) "
+			       "when resolving '%s'.",
+			       get_name_of_type (Pike_sp[-1].type), str);
+	    free (str);
+	  }
+	  else
+	    cpp_error_sprintf (this, "Got placeholder %s (resolver problem).",
+			       get_name_of_type (Pike_sp[-1].type));
+	  res = 0;
+	}
+	else
+	  res = !(SAFE_IS_ZERO(sp-1) && sp[-1].subtype == NUMBER_UNDEFINED);
+      }
       else {
 	if (throw_value.type == T_STRING && !throw_value.u.string->size_shift) {
 	  cpp_error(this, throw_value.u.string->str);
