@@ -318,6 +318,7 @@ rsif: $(TMP_BINDIR)/rsif Makefile
 	  >./rsif && chmod 755 ./rsif) || exit 1 ;
 
 dump_modules: pike master-stamp $(SRCDIR)/dumpmodule.pike
+	-rm dumpmodule.log
 	args="$(DUMPARGS)"; \
 	args=$${args:-"--log-file --update-only=dumpversion --report-failed"}; \
 	$(RUNPIKE) $(SRCDIR)/dumpmodule.pike $$args \
