@@ -695,7 +695,7 @@ static struct image_alpha ReadImage(struct buffer *fp, struct tga_header *hdr)
                if( !really_no_alpha )
 	       {
                  ad->r = ad->g = ad->b = *sd;
-		 add++;
+		 ad++;
 	       }
                sd++;
              }
