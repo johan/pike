@@ -697,7 +697,11 @@ int main(int argc, array(string) argv)
 	  if(fail && errors)
 	    exit(1);
 
-	  if(!--end) break;
+	  if(successes+errors > end)
+	  {
+	    f=sizeof(argv);
+	    break;
+	  }
 	
 	  a=b=0;
 	}
