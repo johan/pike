@@ -641,6 +641,7 @@ void low_exit_main(void)
   cleanup_pike_types();
   cleanup_program();
   cleanup_compiler();
+  exit_mapping_stuff();
   cleanup_error();
   cleanup_backend();
 
