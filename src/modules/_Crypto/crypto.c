@@ -93,7 +93,7 @@ static void check_functions(struct object *o, const char **requiered)
   p = o->prog;
 
   while (*requiered) {
-    if (find_identifier(*requiered, p) < 0) {
+    if (find_identifier( (char *) *requiered, p) < 0) {
       error("/precompiled/crypto: Object is missing identifier \"%s\"\n",
 	    *requiered);
     }
