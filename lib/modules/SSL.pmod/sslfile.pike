@@ -309,8 +309,8 @@ static THREAD_T op_thread;
 	  break;							\
 	}								\
 									\
-	SSL3_DEBUG_MSG ("Reentering %s backend\n",			\
-			NONBLOCKING_MODE ? "nonblocking" : "blocking");	\
+	SSL3_DEBUG_MORE_MSG ("Reentering %s backend\n",			\
+			     NONBLOCKING_MODE ? "nonblocking" : "blocking"); \
       }									\
 									\
       stream->set_backend (real_backend);				\
@@ -984,6 +984,12 @@ string query_address(int|void arg)
   // Only signal an error after an explicit close() call.
   if (explicitly_closed) error ("Not open.\n");
   return stream->query_address(arg);
+}
+
+int is_open()
+//!
+{
+  return !explicitly_closed && stream && stream->is_open();
 }
 
 Stdio.File query_stream()
