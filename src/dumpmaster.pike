@@ -35,7 +35,7 @@ string fakeroot(string s)
 
 string read_file(string s)
 {
-  return _static_modules.files()->Fd(fakeroot(s),"r")->read();
+  return _static_modules.___files()->Fd(fakeroot(s),"r")->read();
 }
 
 program compile_file(string file)
@@ -51,7 +51,7 @@ class Codec
     switch(x)
     {
 #define CONST(X) case X: return #X
-      CONST(_static_modules.files.Stat);
+      CONST(_static_modules.___files.Stat);
       CONST(_static_modules.Builtin.__backend);
     }
     encoded+=({x});
@@ -66,7 +66,7 @@ void _main(array(string) argv, array(string) env)
     
   program p=compile_file(argv[-1]);
   string s=encode_value(p, Codec());
-  _static_modules.files()->Fd(fakeroot(argv[-1]) + ".o","wct")->write(s);
+  _static_modules.___files()->Fd(fakeroot(argv[-1]) + ".o","wct")->write(s);
   exit(0);
 }
 
