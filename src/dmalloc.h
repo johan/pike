@@ -26,6 +26,10 @@ extern size_t dmalloc_tracelogptr;
 
 #endif /* DMALLOC_TRACE */
 
+#if defined (PIKE_DEBUG) && defined (DO_PIKE_CLEANUP)
+extern int verbose_debug_exit;
+#endif
+
 #ifdef DEBUG_MALLOC
 struct memhdr;
 
@@ -37,7 +41,6 @@ void really_free_memhdr(struct memhdr *mh);
 void add_marks_to_memhdr(struct memhdr *to,void *ptr);
 
 extern int verbose_debug_malloc;
-extern int verbose_debug_exit;
 extern void dmalloc_trace(void *);
 extern void dmalloc_register(void *, int, char *);
 extern int dmalloc_unregister(void *, int);

@@ -372,6 +372,9 @@ int dmalloc_print_trace;
 #define DMALLOC_TRACE_LOG(X)
 #endif
 
+#if defined (PIKE_DEBUG) && defined (DO_PIKE_CLEANUP)
+int verbose_debug_exit = 1;
+#endif
 
 #ifdef DEBUG_MALLOC
 
@@ -704,7 +707,6 @@ BLOCK_ALLOC_FILL_PAGES(memory_map_entry, n/a)
 #include "block_alloc.h"
 
 int verbose_debug_malloc = 0;
-int verbose_debug_exit = 1;
 int debug_malloc_check_all = 0;
 
 /* #define DMALLOC_PROFILE */
