@@ -291,6 +291,7 @@ F_ARROW(0 = F_CONSTANT[$$->u.sval.type == T_OBJECT]
 	    [$$->u.sval.u.object->prog],
 	1 = F_CONSTANT[$$->u.sval.type == T_STRING]):
 {
+  /*
   if (find_identifier("`->", $0->u.sval.u.object->prog) == -1) {
     int i = find_shared_string_identifier($1->u.sval.u.string,
 					  $0->u.sval.u.object->prog);
@@ -308,6 +309,7 @@ F_ARROW(0 = F_CONSTANT[$$->u.sval.type == T_OBJECT]
   }
  next_arrow_opt:
   ;
+  */
 }
 ;
 
