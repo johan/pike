@@ -6140,7 +6140,7 @@ PMOD_EXPORT void f_gethrvtime(INT32 args)
   nsec = args && !UNSAFE_IS_ZERO(Pike_sp-args);
 
   pop_n_elems(args);
-  if (args)
+  if (nsec)
     push_int64(time);
   else
     push_int64(time/1000);
