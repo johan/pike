@@ -3647,6 +3647,10 @@ void f_create_process(INT32 args)
 	  Pike_error("Process.create_process(): set_close_on_exec() failed. errno:%d\n",
 		     buf[1]);
 	  break;
+	case PROCE_CHROOT:
+	  Pike_error("Process.create_process(): chroot() failed. errno:%d\n",
+		     buf[1]);
+	  break;
 	case 0:
 	  /* read() probably failed. */
 	default:
