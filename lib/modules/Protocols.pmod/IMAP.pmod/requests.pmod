@@ -266,21 +266,25 @@ class fetch
 	switch(lower_case(request->atom))
 	{
 #define ATTR(x) ([ "wanted" : (x) ])
+#define ATTR_SECTION(x,y) ([ "wanted" : (x), "section" : (y) ])
 	case "all":
 	  fetch_attrs = ({ ATTR("flags"), ATTR("internaldate"),
-			   ATTR("rfc822.size"), ATTR("envelope") });
+			   ATTR_SECTION("rfc822", ({ "size" })),
+			   ATTR("envelope") });
 	  break;
 	case "fast":
 	  fetch_attrs = ({ ATTR("flags"), ATTR("internaldate"),
-			   ATTR("rfc822.size"), });
+			   ATTR_SECTION("rfc822", ({ "size" })), });
 	  break;
 	case "full":
 	  fetch_attrs = ({ ATTR("flags"), ATTR("internaldate"),
-			   ATTR("rfc822.size"), ATTR("envelope"),
+			   ATTR_SECTION("rfc822", ({ "size" })),
+			   ATTR("envelope"),
 			   ([ "wanted" : "bodystructure",
 			      "no_extention_data" : 1 ]) });
 	  break;
 #undef ATTR
+#undef ATTR_SECTION
 	default:
 	  /* Handled below */
 	}
