@@ -1198,6 +1198,9 @@ struct mapping *copy_mapping(struct mapping *m)
   debug_malloc_touch(n->data);
   free_mapping_data(n->data);
   n->data=m->data;
+#ifdef PIKE_DEBUG
+  n->debug_size=n->data->size;
+#endif
   n->data->refs++;
   n->data->valrefs++;
   n->data->hardlinks++;
@@ -1879,6 +1882,9 @@ void gc_free_all_unreferenced_mappings(void)
       m->data=&empty_data;
       m->data->refs++;
       next=m->next;
+#ifdef PIKE_DEBUG
+      m->debug_size=0;
+#endif
 
       free_mapping(m);
     }
@@ -1908,7 +1914,7 @@ void gc_free_all_unreferenced_mappings(void)
 	    md->free_list=k;
 	    md->size--;
 #ifdef PIKE_DEBUG
-	    m->debug_size++;
+	    m->debug_size--;
 #endif
 	  }else{
 	    prev=&k->next;

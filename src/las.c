@@ -1097,7 +1097,14 @@ void resolv_constant(node *n)
      */
     if(IDENTIFIER_IS_CONSTANT(i->identifier_flags))
     {
-      push_svalue(&PROG_FROM_INT(p, numid)->constants[i->func.offset].sval);
+      if(i->func.offset != -1)
+      {
+	push_svalue(&PROG_FROM_INT(p, numid)->constants[i->func.offset].sval);
+      }else{
+	if(compiler_pass!=1)
+	  yyerror("Constant is not defined yet.");
+	push_int(0);
+      }
     }else{
       my_yyerror("Identifier '%s' is not a constant", i->name->str);
       push_int(0);
