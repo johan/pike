@@ -4459,7 +4459,7 @@ void check_multiset (struct multiset *l, int safe)
 	  }
 	}
 
-    order_check_done:
+    order_check_done:;
     }
 
     UNSETJMP (recovery);
