@@ -26,7 +26,7 @@ _html: html_manual manual/Makefile
 	@(cd manual && $(MAKE) PIKE="$(PIKE)" html)
 
 split: join manual
-	@$(PIKE) ../bin/split-autodoc.pike manual.xml structure.xml manual
+	@$(PIKE) ../bin/split-autodoc.pike manual.xml structure.xml .
 	@rm manual/structure.xml
 
 join: recursive_join
