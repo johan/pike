@@ -380,7 +380,7 @@ unsigned long find_good_hash_size(unsigned long num)
   if(x<32)
   {
     static unsigned long lowprimes[32]={
-      3,3,3,3,
+      1,1,2,3,
       5,5,7,7,
       11,11,11,11,
       13,13,17,17,
