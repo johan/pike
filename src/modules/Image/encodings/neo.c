@@ -57,6 +57,7 @@ void image_neo_f__decode(INT32 args)
 
   struct pike_string *s, *fn;
   unsigned char *q;
+  ONERROR err;
 
   get_all_args( "decode", args, "%S", &s );
   if(s->len!=32128)
@@ -76,6 +77,7 @@ void image_neo_f__decode(INT32 args)
     pal = decode_atari_palette(q+4, 16);
   else if(res==1)
     pal = decode_atari_palette(q+4, 4);
+  SET_ONERROR(err, free_atari_palette, pal);
 
   push_constant_text("palette");
   for( i=0; i<pal->size; i++ ) {
@@ -124,11 +126,8 @@ void image_neo_f__decode(INT32 args)
     size += 10;
   }
 
-  if(pal)
-  {
-    free(pal->colors);
-    free(pal);
-  }
+  UNSET_ONERROR(err);
+  free_atari_palette(pal);
 
   fn = make_shared_binary_string((const char *)q+36, 12);
 

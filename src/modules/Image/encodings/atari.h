@@ -7,6 +7,7 @@
 
 #include "global.h"
 #include "pike_error.h"
+#include "object.h"
 
 #include "image.h"
 
@@ -18,6 +19,7 @@ struct atari_palette
 
 void rotate_atari_palette(struct atari_palette* pal, unsigned int left,
 			  unsigned int right);
+void free_atari_palette(struct atari_palette* pal);
 struct atari_palette* decode_atari_palette(unsigned char *pal,
 					  unsigned int size);
 struct object* decode_atari_screendump(unsigned char *q,

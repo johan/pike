@@ -33,12 +33,20 @@ void rotate_atari_palette(struct atari_palette* pal, unsigned int left,
   }
 }
 
+void free_atari_palette(struct atari_palette* pal)
+{
+  if(pal) {
+    if(pal->colors) free(pal->colors);
+    free(pal);
+  }
+}
+
 /* pal is 2*size of palette data */
 struct atari_palette* decode_atari_palette(unsigned char *pal,
 					  unsigned int size)
 {
   unsigned int i;
-  struct atari_palette* ret_pal = malloc(sizeof(struct atari_palette));
+  struct atari_palette* ret_pal = xalloc(sizeof(struct atari_palette));
 
   ret_pal->size=size;
   ret_pal->colors=xalloc(size*sizeof(rgb_group));

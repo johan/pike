@@ -3200,10 +3200,8 @@ static INLINE void _build_cubicle(struct neo_colortable *nct,
    INT32 n = nct->u.flat.numentries;
 
    int i=0;
-   int *p=malloc(n*sizeof(struct nctlu_cubicle));
+   int *p=xalloc(n*sizeof(struct nctlu_cubicle));
    int *pp; /* write */
-
-   if (!p) resource_error(NULL,0,0,"memory",0,"Out of memory.\n");
 
    rmin=(r*256)/red;   rmax=((r+1)*256)/red-1;
    gmin=(g*256)/green; gmax=((g+1)*256)/green-1;

@@ -382,7 +382,8 @@ void image_noise(INT32 args)
    if (!(img->img=malloc(sizeof(rgb_group)*THIS->xsize*THIS->ysize+1)))
    {
       free_object(o);
-      Pike_error("Out of memory\n");
+      SIMPLE_OUT_OF_MEMORY_ERROR("noise",
+				 sizeof(rgb_group)*THIS->xsize*THIS->ysize+1);
    }
 
    cscale*=COLORRANGE_LEVELS;
@@ -462,7 +463,8 @@ void image_turbulence(INT32 args)
    if (!(img->img=malloc(sizeof(rgb_group)*THIS->xsize*THIS->ysize+1)))
    {
       free_object(o);
-      Pike_error("Out of memory\n");
+      SIMPLE_OUT_OF_MEMORY_ERROR("noise",
+				 sizeof(rgb_group)*THIS->xsize*THIS->ysize+1);
    }
 
    cscale*=COLORRANGE_LEVELS;

@@ -939,8 +939,8 @@ static void image_x_decode_truecolor(INT32 args)
 	 COLORTYPE *gtbl=alloca(1<<gbits);
 	 COLORTYPE *btbl=alloca(1<<bbits);
 	 if (!rtbl || !gtbl || !btbl)
-	    resource_error(NULL,0,0,"memory",(1<<rbits)+(1<<rbits)+(1<<rbits),
-			   "Out of memory.\n");
+	   SIMPLE_OUT_OF_MEMORY_ERROR("decode_truecolor",
+				      (1<<rbits)+(1<<rbits)+(1<<rbits));
 
 	 for (j=0,i=24-rbits; i>0; i-=rbits) j+=1<<i;
 	 for (i=0; i<(1<<rbits); i++) rtbl[i]=(j*i)>>16;

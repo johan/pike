@@ -509,6 +509,8 @@ void img_apply_max(struct image *dest,
    double qr,qg,qb;
    register double r=0,g=0,b=0;
 
+   d=xalloc(sizeof(rgb_group)*img->xsize*img->ysize +1);
+
 THREADS_ALLOW();
 
    widthheight=width*height;
@@ -529,13 +531,6 @@ THREADS_ALLOW();
    ex=width-bx;
    ey=height-by;
    
-   d=malloc(sizeof(rgb_group)*img->xsize*img->ysize +1);
-THREADS_DISALLOW();
-
-   if(!d) resource_error(NULL,0,0,"memory",0,"Out of memory.\n");
-   
-THREADS_ALLOW();
-
    for (y=by; y<img->ysize-ey; y++)
    {
       dp=d+y*img->xsize+bx;
@@ -674,9 +669,8 @@ void image_apply_max(INT32 args)
    }
    if (width==-1) width=0;
 
-   matrix=malloc(sizeof(rgbd_group)*width*height+1);
-   if (!matrix) resource_error(NULL,0,0,"memory",0,"Out of memory.\n");
-   
+   matrix=xalloc(sizeof(rgbd_group)*width*height+1);
+
    for (i=0; i<height; i++)
    {
       struct svalue s=sp[-args].u.array->item[i];

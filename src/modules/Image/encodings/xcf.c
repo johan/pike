@@ -1192,6 +1192,7 @@ void image_xcf_f__decode_tiles( INT32 args )
 
   INT_TYPE rle, bpp, span, shrink;
   unsigned int l, x=0, y=0, cx, cy;
+  ONERROR err;
   get_all_args( "_decode_tiles", args, "%o%O%a%i%i%O%i%d%d",
                 &io, &ao, &tiles, &rle, &bpp, &cmapo, &shrink, &rxs, &rys);
 
@@ -1216,7 +1217,8 @@ void image_xcf_f__decode_tiles( INT32 args )
 
   if(cmap)
   {
-    colortable = malloc(sizeof(rgb_group)*image_colortable_size( cmap ));
+    colortable = xalloc(sizeof(rgb_group)*image_colortable_size( cmap ));
+    SET_ONERROR(err, free, colortable);
     image_colortable_write_rgb( cmap, (unsigned char *)colortable );
   }
 
@@ -1403,8 +1405,10 @@ void image_xcf_f__decode_tiles( INT32 args )
     }
   }
   THREADS_DISALLOW();
-  if(colortable) 
+  if(colortable) {
+    UNSET_ONERROR(err);
     free( colortable );
+  }
 
   pop_n_elems(args);
   push_int(0);
