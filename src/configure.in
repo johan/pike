@@ -6456,6 +6456,17 @@ then
       # What about UNIX_SV?
       UnixWare*|OpenUNIX*) LINKFORSHARED="-Bdynamic -dy -Wl,-Bexport";;
       Windows_NT*|NT*) LINKFORSHARED="-rdynamic";;
+
+      FreeBSD*)
+        AC_TRY_RUN([int main(){exit(
+#ifdef __ELF__
+    0
+#else
+    1
+#endif
+);}
+        ],LINKFORSHARED=-rdynamic)
+      ;;
     esac
   fi
 fi
