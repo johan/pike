@@ -1016,6 +1016,11 @@ test_program([[
   class B {inherit A;}
   int a() {return object_program (B()->clone()) == B;}
 ]])
+test_program([[
+  class A {this_program clone() {return this_program();}}
+  class B {inherit A;}
+  int a() {return typeof(B()->clone()) <= B;}
+]])
 
 test_program([[
   class A {
