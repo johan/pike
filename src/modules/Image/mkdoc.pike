@@ -167,10 +167,15 @@ string make_nice_reference(string refto,string my_prefix)
       case 3: link=refto; break;
    }
 
-   if (search(link,"::")!=-1)
-      link=replace(link,"::",".html#");
-   else 
-      link+=".html";
+   s=0; t=0;
+   sscanf(link,"%s.%s.%s",link,s,t);
+   if (s) link+="."+s;
+   if (t) link=link+".html#"+t;
+   else
+      if (search(link,"::")!=-1)
+	 link=replace(link,"::",".html#");
+      else 
+	 link+=".html";
    return "<tt><a href="+urlify(link)+">"+refto+"</a></tt>";
 }
 
