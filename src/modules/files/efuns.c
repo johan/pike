@@ -443,6 +443,13 @@ void f_mkdir(INT32 args)
   i = mkdir(s, mode) != -1;
   THREADS_DISALLOW_UID();
 #else
+
+#ifdef HAVE_LSTAT
+#define LSTAT lstat
+#else
+#define LSTAT stat
+#endif
+
   /* Most OS's should have MKDIR_ARGS == 2 nowadays fortunately. */
   i = mkdir(s) != -1;
   if (i) {
@@ -454,7 +461,7 @@ void f_mkdir(INT32 args)
     struct stat statbuf2;
     int mask = umask(0);
     umask(mask);
-    i = lstat(s, &statbuf1) != -1;
+    i = LSTAT(s, &statbuf1) != -1;
     if (i) {
       i = ((statbuf1.st_mode & S_IFMT) == S_IFDIR);
     }
@@ -463,7 +470,7 @@ void f_mkdir(INT32 args)
       i = chmod(s, mode) != -1;
     }
     if (i) {
-      i = lstat(s, &statbuf2) != -1;
+      i = LSTAT(s, &statbuf2) != -1;
     }
     if (i) {
       i = (statbuf2.st_mode == mode) && (statbuf1.st_ino == statbuf2.st_ino);
