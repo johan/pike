@@ -162,6 +162,11 @@ PMOD_EXPORT struct callable *quick_add_efun(const char *name, ptrdiff_t name_len
   struct pike_type *t;
   struct callable *ret;
 
+#if PIKE_DEBUG
+  if(simple_mapping_string_lookup(builtin_constants, name))
+    Pike_fatal("%s added as efun more than once.\n", name);
+#endif
+
   n = make_shared_binary_string(name, name_length);
   t = make_pike_type(type);
 #ifdef DEBUG
@@ -171,7 +176,7 @@ PMOD_EXPORT struct callable *quick_add_efun(const char *name, ptrdiff_t name_len
   s.subtype=FUNCTION_BUILTIN;
   add_ref(n);
   ret=s.u.efun=low_make_callable(fun, n, t, flags, optimize, docode);
-  low_add_efun(n, &s);
+  mapping_string_insert(builtin_constants, n, &s);
   free_svalue(&s);
   free_string(n);
   return ret;
