@@ -115,8 +115,10 @@ int write(string|array(string) s)
     s = s[PACKET_MAX_SIZE..];
   }
 
+#ifndef __NT__  
   if (call_write)
     ssl_write_callback(socket->query_id());
+#endif
 
 #if 0
   if (queue_write() == -1)
