@@ -1203,9 +1203,9 @@ static void low_pike_sprintf(struct format_stack *fs,
 	  }
 	}
 	else if(mode == 'u')
-	  sprintf(x, "%"PRINTINT"u", (unsigned INT_TYPE) val);
+	  sprintf(x, "%"PRINTPIKEINT"u", (unsigned INT_TYPE) val);
 	else
-	  sprintf(x, "%"PRINTINT"d", val);
+	  sprintf(x, "%"PRINTPIKEINT"d", val);
 
 	fs->fsp->len=strlen(x);
 	break;

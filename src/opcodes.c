@@ -49,7 +49,8 @@ void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind)
       index_no_free(to, what, ind);
       if(IS_UNDEFINED(to)) {
 	if (val) {
-	  Pike_error("Indexing the integer %d with an unknown method.\n", val);
+	  Pike_error("Indexing the integer %"PRINTPIKEINT"d "
+		     "with an unknown method.\n", val);
 	} else {
           if(ind->type == T_STRING)
             Pike_error("Indexing the NULL value with \"%s\".\n", ind->u.string->str);

@@ -398,6 +398,12 @@
 /* Define if you want to enable use of the struct pike_type (EXPERIMENTAL) */
 #undef USE_PIKE_TYPE
 
+/* set this to the modifier type string to print INT_TYPE, like "" or "ll" */
+#undef PRINTPIKEINT
+
+/* set this to the modifier type string to print FLOAT_TYPE, like "L" or "" */
+#undef PRINTPIKEFLOAT
+
 @BOTTOM@
 
 /* NT stuff */

@@ -922,7 +922,7 @@ PMOD_EXPORT void describe_svalue(struct svalue *s,int indent,struct processing *
       break;
 
     case T_INT:
-      sprintf(buf,"%ld",(long)s->u.integer);
+      sprintf(buf,"%"PRINTPIKEINT"d",s->u.integer);
       my_strcat(buf);
       break;
 
