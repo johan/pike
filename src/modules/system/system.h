@@ -23,6 +23,8 @@
 /*
  * passwords.c
  */
+void f_getgrnam(INT32 args);
+void f_getgrgid(INT32 args);
 void f_getpwnam(INT32 args);
 void f_getpwuid(INT32 args);
 void f_setpwent(INT32 args);
