@@ -136,7 +136,7 @@ static void report_error(const char *function_name)
     break;
 #ifdef ELOOP
   case ELOOP:
-    error_msg = "Do deep nesting of symlinks";
+    error_msg = "Too deep nesting of symlinks";
     break;
 #endif /* ELOOP */
 #ifdef EMLINK
