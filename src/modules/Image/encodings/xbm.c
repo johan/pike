@@ -24,7 +24,6 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "multiset.h"
 #include "pike_types.h"
-#include "rusage.h"
 #include "operators.h"
 #include "fsort.h"
 #include "callback.h"
