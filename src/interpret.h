@@ -45,7 +45,9 @@ struct pike_frame
 
 #define check_stack(X) do {			\
   if(sp - evaluator_stack + (X) >= stack_size)	\
-    error("Stack overflow.\n");			\
+    error("Svalue stack overflow. " \
+	  "(%d of %d entries on stack, needed %d more entries)\n", \
+	  sp-evaluator_stack,stack_size,(X)); \
   }while(0)
 
 #define check_mark_stack(X) do {		\
