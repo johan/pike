@@ -1253,6 +1253,11 @@ class: modifiers F_CLASS optional_identifier
     if(compiler_pass==1)
     {
       low_start_new_program(0, $3->u.sval.u.string, $1);
+      if(lex.current_file)
+      {
+	store_linenumber(lex.current_line, lex.current_file);
+	debug_malloc_name(new_program, lex.current_file->str, lex.current_line);
+      }
     }else{
       int i;
       struct program *p;

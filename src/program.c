@@ -645,9 +645,6 @@ void low_start_new_program(struct program *p,
 
   push_compiler_frame(0);
   add_ref(compiler_frame->current_return_type=void_type_string);
-
-#ifdef PIKE_DEBUG
-#endif
 }
 
 void debug_start_new_program(PROGRAM_LINE_ARGS)
@@ -2427,7 +2424,7 @@ void program_index_no_free(struct svalue *to, struct program *p,
 /*
  * Line number support routines, now also tells what file we are in
  */
-static int get_small_number(char **q)
+int get_small_number(char **q)
 {
   int ret;
   switch(ret=(*(signed char **)q)++[0])
