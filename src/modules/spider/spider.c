@@ -931,7 +931,7 @@ void do_html_parse_lines(struct pike_string *ss,
 	HANDLE_RETURN_VALUE(j+k);
 	continue;
       }
-      free_svalue(&sval1);
+      /* free_svalue(&sval1); Not needed. The type is always T_INT */
 
       /* Is it a container then? */
       mapping_index_no_free(&sval1,cont,&sval2);
@@ -972,6 +972,8 @@ void do_html_parse_lines(struct pike_string *ss,
 	apply_svalue(&sval1,4+(extra_args?extra_args->size:0));
 	HANDLE_RETURN_VALUE(m);
 	continue;
+      } else {
+	free_svalue(&sval2);
       }
       i=j;
     }
