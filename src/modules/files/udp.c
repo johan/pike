@@ -500,7 +500,7 @@ void udp_sendto(INT32 args)
     Pike_error("UDP: not open\n");
   
   check_all_args("send", args,
-		 BIT_STRING, BIT_STRING, BIT_INT, BIT_INT|BIT_VOID, 0);
+		 BIT_STRING, BIT_INT, BIT_STRING, BIT_INT|BIT_VOID, 0);
   
   if(args>3)
   {
