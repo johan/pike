@@ -1200,8 +1200,8 @@ void gc_mark_object_as_referenced(struct object *o)
       
       LOW_SET_FRAME_CONTEXT(p->inherits[e]);
 
-      if(pike_frame->context.prog->gc_marked)
-	pike_frame->context.prog->gc_marked(o);
+      if(pike_frame->context.prog->gc_recurse_func)
+	pike_frame->context.prog->gc_recurse_func(o);
 
       for(q=0;q<(int)pike_frame->context.prog->num_variable_index;q++)
       {
@@ -1255,8 +1255,8 @@ static void low_gc_cycle_check_object(struct object *o)
       
       LOW_SET_FRAME_CONTEXT(p->inherits[e]);
 
-      if(pike_frame->context.prog->gc_marked)
-	pike_frame->context.prog->gc_marked(o);
+      if(pike_frame->context.prog->gc_recurse_func)
+	pike_frame->context.prog->gc_recurse_func(o);
 
       for(q=0;q<(int)pike_frame->context.prog->num_variable_index;q++)
       {
