@@ -237,18 +237,6 @@ void image_to8bit_rgbcube(INT32 args)
   if (!map)
      while (i--)
      {
-// 	fprintf(stderr,"%02x%02x%02x -> %x,%x,%x -> %d,%d,%d -> %d\n",
-// 		s->r,s->g,s->b,
-// 		s->r*red+hred,
-// 		s->g*green+hgreen,
-// 		s->b*blue+hblue,
-// 		((s->r*red+hred)>>8),
-// 		((s->g*green+hgreen)>>8),
-// 		((s->b*blue+hblue)>>8),
-// 		((s->r*red+hred)>>8)+
-// 		((s->g*green+hgreen)>>8)*red+
-// 		((s->b*blue+hblue)>>8)*redgreen);
-		
 	*(d++)=
 	   (unsigned char)( ((s->r*red+hred)>>8)+
 			    ((s->g*green+hgreen)>>8)*red+
