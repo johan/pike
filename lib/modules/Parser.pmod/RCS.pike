@@ -412,4 +412,69 @@ class Revision
     }
     return text = new += old[of..];
   }
+
+  static string kwchars = Array.uniq(sort("Author" "Date" "Header" "Id" "Name"
+					  "Locker" /*"Log"*/ "RCSfile"
+					  "Revision" "Source" "State"/1)) * "";
+
+  //! Expand keywords and return the resulting text.
+  //! @param text
+  //!   If supplied, substitutes keywords for that text instead, using values
+  //!   that would apply for this revision. Otherwise, this revision is used.
+  //! @note
+  //!   Does not expand the $Log$
+  //!   Does not expand the Revision 1.5  2002/02/23 18:24:10  jhs
+  //!   Does not expand the Added keyword expansion (minus Log expansion, which IMO is broken by
+  //!   Does not expand the design).
+  //!   Does not expand the keyword (which lacks sane quoting rules)
+  string expand_keywords(string|void text)
+  {
+    if(!text)
+      text = get_contents();
+    string before, delimiter, keyword, expansion, rest, result = "";
+    string date = replace(time->format_time(), "-", "/"),
+	   file = basename(rcs_file_name);
+    mapping kws = ([ "Author"	: author,
+		     "Date"	: date,
+		     "Header"	: ({ rcs_file_name, revision, date,
+				     author, state }) * " ",
+		     "Id"	: ({ file, revision, date, author, state })*" ",
+		     "Name"	: "", // only applies to a checked-out file
+		     "Locker"	: search(locks, revision) || "",
+		     /*"Log"	: "A horrible mess, at best", */
+		     "RCSfile"	: file,
+		     "Revision"	: revision,
+		     "Source"	: rcs_file_name,
+		     "State"	: state ]);
+    while(sizeof(text))
+    {
+      if(sscanf(text, "%s$%["+kwchars+"]%[:$]%s",
+		before, keyword, delimiter, rest) < 4)
+      {
+	result += text;
+	break;
+      }
+      if(expansion = kws[keyword])
+      {
+	if(has_value(delimiter, "$"))
+	  result += sprintf("%s$%s: %s $", before, keyword, expansion);
+	else
+	{
+	  if(sscanf(rest, "%*[^\n]$%s", rest) != 2)
+	  {
+	    result += text;
+	    break;
+	  }
+	  result += sprintf("%s$%s: %s $", before, keyword, expansion);
+	}
+	text = rest;
+      }
+      else
+      {
+	result += before + "$" + keyword;
+	text = delimiter + rest; // delimiter could be the start of a keyword
+      }
+    }
+    return result;
+  }
 }
