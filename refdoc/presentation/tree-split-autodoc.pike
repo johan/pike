@@ -38,8 +38,12 @@ class Node
     parent = _parent;
     data = get_parser()->finish( _data )->read();
 
-    refs[make_class_path()] = this_object();
-    refs[replace(make_class_path(), "()->", "->")] = this_object();
+    string path = make_class_path();
+    refs[path] = this_object();
+    if(has_suffix(path, "()")) {
+      path = path[..sizeof(path)-3];
+      refs[path] = this_object();
+    }
 
     sort(class_children->name, class_children);
     sort(module_children->name, module_children);
