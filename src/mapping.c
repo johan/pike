@@ -1552,11 +1552,13 @@ void describe_mapping(struct mapping *m,struct processing *p,int indent)
       return;
     }
   }
-  
-  sprintf(buf, m->data->size == 1 ? "([ /* %ld element */\n" :
-	                            "([ /* %ld elements */\n",
-	  (long)m->data->size);
-  my_strcat(buf);
+
+  if (m->data->size == 1) {
+    my_strcat("([ /* 1 element */\n");
+  } else {
+    sprintf(buf, "([ /* %ld elements */\n", (long)m->data->size);
+    my_strcat(buf);
+  }
 
   a = mapping_indices(m);
   SET_ONERROR(err, do_free_array, a);
