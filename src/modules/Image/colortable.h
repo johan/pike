@@ -153,7 +153,7 @@ typedef void nct_dither_line_function(struct nct_dither *dith,
 				      rgb_group **drgb,
 				      unsigned char **d8bit,
 				      unsigned short **d16bit,
-				      long **d32bit,
+				      unsigned INT32 **d32bit,
 				      int *cd);
 
 struct nct_dither
