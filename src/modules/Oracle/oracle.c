@@ -290,12 +290,30 @@ void *parent_storage(int depth)
 }
 #endif
 
+#if 0
 
+void *ocimalloc (void *ctx, size_t l)
+{
+  return malloc (l);
+}
+
+void *ocirealloc (void *ctx, void *p, size_t l)
+{
+  return realloc (p, l);
+}
+
+void ocifree (void *ctx, void *p)
+{
+  free (p);
+}
+
+#else
 
 #define ocimalloc NULL
 #define ocirealloc NULL
 #define ocifree NULL
 
+#endif
 
 #ifdef PIKE_DEBUG
 void *low_check_storage(void *storage, unsigned long magic, char *prog)
@@ -666,15 +684,17 @@ static OCIError *global_error_handle=0;
 
 OCIError *get_global_error_handle(void)
 {
-  sword rc;
-  rc=OCIHandleAlloc(get_oracle_environment(),
-		    (void **)& global_error_handle,
-		    OCI_HTYPE_ERROR,
-		    0,
-		    0);
+  if (!global_error_handle) {
+    sword rc;
+    rc=OCIHandleAlloc(get_oracle_environment(),
+		      (void **)& global_error_handle,
+		      OCI_HTYPE_ERROR,
+		      0,
+		      0);
 
-  if(rc != OCI_SUCCESS)
-    Pike_error("Failed to allocate error handle.\n");
+    if(rc != OCI_SUCCESS)
+      Pike_error("Failed to allocate error handle.\n");
+  }
   
   return global_error_handle;
 }
@@ -2202,7 +2222,7 @@ PIKE_MODULE_INIT
     0, ocimalloc, ocirealloc, ocifree) != OCI_SUCCESS)
   {
 #ifdef ORACLE_DEBUG
-    fprintf(stderr,"OCIInitizlie failed\n");
+    fprintf(stderr,"OCIInitialize failed\n");
 #endif
     return;
   }
