@@ -36,6 +36,11 @@ extract: xml recurse
 	@$(PIKE) $(ROOT)/../bin/autodoc.pike "$<" >"$@.new" && \
 	  mv -f "$@.new" "$@"
 
+.pmod.in.xml: $(ROOT)/../bin/autodoc.pike
+	@rm -f "$@.new" 2>/dev/null || /bin/true
+	@$(PIKE) $(ROOT)/../bin/autodoc.pike "$<" >"$@.new" && \
+	  mv -f "$@.new" "$@"
+
 xml:
 	$(MAKE) PIKE="$(PIKE)" `(cd $(SRCDIR) && ls *.c *.pike *.pmod *.pmod.in 2>/dev/null)|sed -e 's/\.c$$/\.xml/' -e 's/\.pike$$/\.xml/' -e 's/\.pmod\.in$$/\.xml/' -e 's/\.pmod$$/\.xml/' ` xml_dummy
 
