@@ -4188,6 +4188,17 @@ make_a_new_def:
 
   fun.opt_flags = opt_flags;
 
+#ifdef PIKE_DEBUG
+  if (a_flag > 5) {
+    fprintf(stderr, 
+	    "Adding new function #%d: '%s'\n"
+	    "  identifier_flags:0x%02x opt_flags:0x%04x\n",
+	    Pike_compiler->new_program->num_identifiers,
+	    fun.name->str,
+	    fun.identifier_flags, fun.opt_flags);
+  }
+#endif /* PIKE_DEBUG */
+
   i=Pike_compiler->new_program->num_identifiers;
 
   debug_add_to_identifiers(fun);
