@@ -1565,6 +1565,8 @@ void describe_mapping(struct mapping *m,struct processing *p,int indent)
     my_strcat("([ ])");
   }
   else {
+    int save_t_flag = t_flag;
+
     if (m->data->size == 1) {
       my_strcat("([ /* 1 element */\n");
     } else {
@@ -1572,9 +1574,11 @@ void describe_mapping(struct mapping *m,struct processing *p,int indent)
       my_strcat(buf);
     }
 
+    t_flag = 0;
     if(!SETJMP(catch))
       sort_array_destructively(a);
     UNSETJMP(catch);
+    t_flag = save_t_flag;
 
     /* no mapping locking required (I hope) */
     for(e = 0; e < a->size; e++)
