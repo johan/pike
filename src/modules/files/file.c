@@ -2360,7 +2360,7 @@ static void file_connect(INT32 args)
     ERRNO=errno;
     if (was_closed) {
       while (fd_close (FD) && errno == EINTR) {}
-      change_fd_for_box (&THIS->box, -1);
+      FD = -1;
       errno = ERRNO;
     }
     pop_n_elems(args);
