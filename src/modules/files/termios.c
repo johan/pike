@@ -20,6 +20,13 @@ RCSID("$Id$");
 
 #include "file.h"
 
+/* Friendly BeOS fix */
+#if defined(CS5) && defined(CS6) && CS6 == CS5
+#undef CS5
+#endif
+#if defined(CS6) && defined(CS7) && CS7 == CS6
+#undef CS6
+#endif
 
 /*
 **! method mapping tcgetattr()
