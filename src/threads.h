@@ -12,9 +12,6 @@
 
 #ifdef PIKE_THREADS
 
-PMOD_EXPORT extern COND_T live_threads_change;		/* Used by _disable_threads */
-PMOD_EXPORT extern COND_T threads_disabled_change;		/* Used by _disable_threads */
-
 struct svalue;
 struct pike_frame;
 
