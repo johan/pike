@@ -11,7 +11,7 @@
 #include "global.h"
 #include "program.h"
 #include "pike_error.h"
-#include "bignum.h"
+#include "object.h"
 
 struct Pike_interpreter {
   /* Swapped variables */
