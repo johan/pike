@@ -4458,6 +4458,11 @@ test_any([[
 test_equal([[lambda(mapping x){return ({x[17]++,x[17]++,x[17]++});}(([]))]],
 		[[({0,1,2})]])
 
+test_equal([[([1:2, 3:4]) - (<0, 1, 2>)]], ([3:4]))
+test_equal([[([1:2, 3:4]) - ({0, 1, 2})]], ([3:4]))
+test_equal([[([1:2, 3:4]) & (<0, 1, 2>)]], ([1:2]))
+test_equal([[([1:2, 3:4]) & ({0, 1, 2})]], ([1:2]))
+
 // destructed indices
 test_any([[{
   object o = class{}();
