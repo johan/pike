@@ -2420,6 +2420,14 @@ OPCODE0(F_ZERO_TYPE, "zero_type", 0, {
   }
 });
 
+OPCODE0(F_SWAP,"swap",0,{
+  stack_swap();
+});
+
+OPCODE0(F_DUP,"dup",I_UPDATE_SP,{
+  stack_dup();
+});
+
 /*
 #undef PROG_COUNTER
 */
