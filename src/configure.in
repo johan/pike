@@ -422,7 +422,7 @@ else
   :
 fi
 
-CPPFLAGS="${CPPFLAGS} -I$srcdir"
+CPPFLAGS="${CPPFLAGS} -I$srcdir -I`pwd`"
 
 echo Searching for library directories...
 if test $ldflags_is_set = no ; then
