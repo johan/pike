@@ -65,6 +65,10 @@ static void f_update(INT32 args)
 
 static void f_identifier(INT32 args)
 {
+  /* From RFC 1321 
+   md5 OBJECT IDENTIFIER ::=
+     iso(1) member-body(2) US(840) rsadsi(113549) digestAlgorithm(2) 5}
+  */
   pop_n_elems(args);
   push_string(make_shared_binary_string(
     "\x2a\x86\x48\x86\xf7\x0d\x02\x05", 8));
