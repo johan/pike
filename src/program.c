@@ -1107,7 +1107,8 @@ SIZE_T low_add_storage(SIZE_T size, SIZE_T alignment, int modulo_orig)
     
 #endif
 
-  new_program->storage_needed = offset + size;
+  new_program->storage_needed = offset + size -
+    new_program->inherits[0].storage_offset;
 
   return (SIZE_T) offset;
 }
