@@ -2070,7 +2070,7 @@ OPCODE1(F_CALL_BUILTIN1_AND_POP, "call builtin1 & pop", {
 									   \
                                                                            \
   new_frame->fun=Pike_fp->fun;						   \
-  new_frame->ident=Pike_fp->ident;					   \
+  DO_IF_PROFILING( new_frame->ident=Pike_fp->ident );			   \
   new_frame->current_storage=Pike_fp->current_storage;                     \
   if(Pike_fp->scope) add_ref(new_frame->scope=Pike_fp->scope);		   \
   add_ref(new_frame->current_object=Pike_fp->current_object);		   \
