@@ -940,6 +940,7 @@ void backend(void)
 	    }
 	  }
 #ifdef _REENTRANT
+	  /* FIXME: Extra stderr messages should not be allowed.../Hubbe */
 	  write_to_stderr("Bad filedescriptor to select().\n"
 			  "fd closed in another thread?\n", 62);
 #else /* !_REENTRANT */
