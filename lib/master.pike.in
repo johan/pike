@@ -238,8 +238,8 @@ array(string) explode_path(string p)
 //!
 //! @xml{<matrix>
 //! <r><c><b>Expression</b></c><c><b>Value</b></c></r>
-//! <r><c>dirname("/a/b")</c><c>"/a/"</c></r>
-//! <r><c>dirname("/a/")</c><c>"/a/"</c></r>
+//! <r><c>dirname("/a/b")</c><c>"/a"</c></r>
+//! <r><c>dirname("/a/")</c><c>"/a"</c></r>
 //! <r><c>dirname("/a")</c><c>"/"</c></r>
 //! <r><c>dirname("/")</c><c>"/"</c></r>
 //! <r><c>dirname("")</c><c>""</c></r>
