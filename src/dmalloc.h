@@ -37,12 +37,9 @@ extern size_t dmalloc_tracelogptr;
 extern int verbose_debug_exit;
 extern int gc_external_refs_zapped;
 void gc_check_zapped (void *a, TYPE_T type, const char *file, int line);
-#endif
-
-#ifdef DO_PIKE_CLEANUP
-#  define DO_IF_PIKE_CLEANUP(X) X
+#define DO_IF_PIKE_CLEANUP(X) X
 #else
-#  define DO_IF_PIKE_CLEANUP(X)
+#define DO_IF_PIKE_CLEANUP(X)
 #endif
 
 typedef void describe_block_fn (void *);
