@@ -255,7 +255,7 @@ STANDARD_OPERATOR_HEADER("`*")
 void image_operator_rest(INT32 args)
 {
    double q=1/255.0;
-STANDARD_OPERATOR_HEADER("`%")
+STANDARD_OPERATOR_HEADER("`%%")
    while (i--)
    {
       d->r=s1->r%(s2->r?s2->r:1);
