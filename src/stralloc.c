@@ -1618,6 +1618,8 @@ PMOD_EXPORT ptrdiff_t string_search(struct pike_string *haystack,
      start + needle->len > haystack->len)
     return -1;
 
+  if(!needle->len) return start;
+
   mojt=compile_memsearcher(MKPCHARP_STR(needle),
 			   needle->len,
 			   haystack->len,
