@@ -80,7 +80,7 @@ array(int) a() {
   test( ({ "string a=#\"hej", "san\";" }), "");
   test("a;", "\"hej\\nsan\"");
   test("class A{}", "");
-  test("A();", "object");
+  test("A();", "HilfeInput()->A()");
   test("A a=A();", "");
   test("class { int i=4; }()->i;", "4");
   //  test("class A{}();", "object");
