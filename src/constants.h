@@ -25,7 +25,7 @@ struct callable
   struct object *prot;
 #endif
   c_fun function;
-  struct pike_string *type;
+  struct pike_type *type;
   struct pike_string *name;
   INT16 flags;
 #ifdef PIKE_DEBUG
@@ -44,7 +44,7 @@ PMOD_EXPORT void add_global_program(char *name, struct program *p);
 BLOCK_ALLOC(callable,128)
 PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
 				   struct pike_string *name,
-				   struct pike_string *type,
+				   struct pike_type *type,
 				   INT16 flags,
 				   optimize_fun optimize,
 				   docode_fun docode);

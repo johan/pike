@@ -66,7 +66,7 @@ PMOD_EXPORT void add_global_program(char *name, struct program *p)
 
 #undef EXIT_BLOCK
 #define EXIT_BLOCK(X) do {		\
-  free_string(X->type);			\
+  free_type(X->type);			\
   free_string(X->name);			\
 }while(0)
 BLOCK_ALLOC(callable,128)

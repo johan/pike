@@ -408,4 +408,14 @@ char *crypt(char *, char *);
  */
 #define Pike_error_present
 
+/* This stuff is here to avoid circularities with
+ * svalue.h and pike_types.h
+ */
+#ifndef USE_PIKE_TYPE
+/*
+ * The old type type.
+ */
+#define pike_type	pike_string
+#endif /* !USE_PIKE_TYPE */
+
 #endif

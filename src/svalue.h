@@ -62,6 +62,7 @@ union anything
   struct object *object;
   struct program *program;
   struct pike_string *string;
+  struct pike_type *type;
   INT32 *refs;
   INT_TYPE integer;
   FLOAT_TYPE float_number;
