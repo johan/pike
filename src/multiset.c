@@ -5608,7 +5608,6 @@ struct multiset *copy_multiset_recursively(struct multiset *l,
 void gc_mark_multiset_as_referenced(struct multiset *l)
 {
   if(gc_mark(l)) {
-    INT32 orig_size = l->ind->size;
     if (l == gc_mark_multiset_pos)
       gc_mark_multiset_pos = l->next;
     if (l == gc_internal_multiset)
@@ -5618,10 +5617,6 @@ void gc_mark_multiset_as_referenced(struct multiset *l)
       DOUBLELINK(first_multiset, l); /* Linked in first. */
     }
     gc_mark_array_as_referenced(l->ind);
-    if (l->ind->size != orig_size) {
-      /* Make sure the index array gets reallocated if needed. */
-      l->ind = array_shrink(l->ind, l->ind->size);
-    }
   }
 }
 
