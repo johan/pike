@@ -175,6 +175,7 @@ int dbm_main(int argc, char **argv)
   setlocale(LC_MESSAGES, "");
 #endif
 #endif  
+
   init_backend();
   master_file = 0;
 
