@@ -478,8 +478,9 @@ mixed resolv(string identifier, string|void current_file)
  * and an array containing the environment variables on the same form as
  * a C program receives them.
  */
-void _main(string *argv, string *env)
+void _main(string *orig_argv, string *env)
 {
+  string *argv=copy_value(orig_argv);
   int i,debug,trace;
   object script;
   object tmp;
