@@ -367,7 +367,17 @@ static void f_fetch_row(INT32 args)
   }
 }
  
+/* int eof() */
+static void f_eof(INT32 args)
+{
+  error("odbc->eof(): Not implemented yet!\n");
+}
 
+/* void seek() */
+static void f_seek(INT32 args)
+{
+  error("odbc->seek(): Not implemented yet!\n");
+}
  
 /*
  * Module linkage
