@@ -997,6 +997,13 @@ class Gnu
 ]])
 
 test_any([[
+  int var;
+  void x() {var++;};
+  lambda () {x();}();
+  return var;
+]], 1);
+
+test_any([[
  Stdio.write_file("testsuite_test.pmod",
 	#"
 // this crashes Pike /Mirar 2001-05-19
