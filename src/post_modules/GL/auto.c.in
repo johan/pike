@@ -175,7 +175,7 @@ static void check_img_arg(struct svalue *a, struct zimage *img,
   }
 
   if(shm_program == NULL) {
-    push_string(make_shared_string("system.Memory")); push_int(0);
+    push_string(make_shared_string("System.Memory")); push_int(0);
     SAFE_APPLY_MASTER("resolv",2);
     shm_program=program_from_svalue(sp-1);
     pop_stack();
