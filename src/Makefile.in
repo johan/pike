@@ -287,7 +287,8 @@ module_testsuites:
 	( cd modules ; $(MAKE) $(MAKE_FLAGS) testsuites )
 
 just_verify: module_testsuites testsuite master.pike
-	$(RUNPIKE) $(TMP_BINDIR)/test_pike.pike -a
+	if test "$(TESTARGS)" = "" ; then args="-a" ; else args="$(TESTARGS)" ; fi; \
+	$(RUNPIKE) $(TMP_BINDIR)/test_pike.pike $$args
 
 tinstall: aclocal master.pike
 	rm -rf test-install
