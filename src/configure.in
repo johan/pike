@@ -1404,7 +1404,9 @@ if test x"$pike_cv_sys_os" = xWindows_NT ; then
   ])
   if test "x$pike_cv_sys_win64" = "xyes"; then
     AC_MSG_RESULT(yes)
-    LIBS="-lkernel64 -lws2_64 -ladvapi64 $LIBS"
+    # Apparently the libraries are stilled named *32...
+    # LIBS="-lkernel64 -lws2_64 -ladvapi64 $LIBS"
+    LIBS="-lkernel32 -lws2_32 -ladvapi32 $LIBS"
   else
     AC_MSG_RESULT(no)
     LIBS="-lkernel32 -lws2_32 -ladvapi32 $LIBS"
