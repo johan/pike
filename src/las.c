@@ -3893,7 +3893,7 @@ int dooptcode(struct pike_string *name,
     }
 #endif
   }else{
-#if defined(SHARED_NODES) && !defined(IN_TPIKE)
+#if defined(SHARED_NODES) && !defined(IN_TPIKE) && 0
     /* Try the local variable usage analyser. */
     n = localopt(check_node_hash(n));
     /* Try optimizing some more. */
