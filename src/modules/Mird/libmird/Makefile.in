@@ -2,7 +2,7 @@
 
 # $Id$
 SRCDIR=@srcdir@
-VPATH=@srcdir@:@srcdir@/../../..:../../..
+VPATH=@srcdir@
 
 OBJS = blocks.o cells.o database.o debug.o dmalloc.o errors.o frags.o  \
 	freelist.o hashtrie.o journal.o skeys.o tables.o transaction.o \

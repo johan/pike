@@ -1,6 +1,6 @@
 # $Id$
 @make_variables@
-VPATH=@srcdir@:@srcdir@/../..:../..
+VPATH=@srcdir@
 OBJS=pipe.o
 MODULE_LDFLAGS=@LDFLAGS@
 

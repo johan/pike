@@ -3,7 +3,7 @@
 # Makefile for low-level crypto library
 
 @make_variables@
-VPATH=@srcdir@:@srcdir@/../include
+VPATH=@srcdir@
 RANLIB=@RANLIB@
 
 CRYPTO_INCLUDES=$(SRCDIR)/../include

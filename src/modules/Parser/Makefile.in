@@ -1,6 +1,6 @@
 # $Id$
 @make_variables@
-VPATH=@srcdir@:@srcdir@/../..:../..
+VPATH=@srcdir@
 OBJS=parser.o html.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 INSTALL_NAME=Parser.pmod/_parser

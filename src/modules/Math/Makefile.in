@@ -1,6 +1,6 @@
 # $Id$
 @make_variables@
-VPATH=@srcdir@:@srcdir@/../..:../..
+VPATH=@srcdir@
 OBJS=math_module.o math_matrix.o transforms.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 

@@ -1,6 +1,6 @@
 # $Id$
 @make_variables@
-VPATH=@srcdir@:@srcdir@/../..:../..
+VPATH=@srcdir@
 OBJS = image_module.o \
 	image.o font.o matrix.o blit.o pattern.o dct.o \
         operator.o colortable.o polyfill.o \

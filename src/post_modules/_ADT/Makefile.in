@@ -1,6 +1,6 @@
 # $Id$
 @make_variables@
-VPATH=@srcdir@:@srcdir@/../..:../..
+VPATH=@srcdir@
 OBJS=adt.o sequence.o circular_list.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 

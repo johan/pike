@@ -1,7 +1,7 @@
 # $Id$
 
 @make_variables@
-VPATH=@srcdir@:@srcdir@/../..:../..
+VPATH=@srcdir@
 MODULE_CPPFLAGS=@DEFS@
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 OBJS=postgres.o pgresult.o

@@ -1,6 +1,6 @@
 # $Id$
 @make_variables@
-VPATH=@srcdir@:@srcdir@/../..:../..
+VPATH=@srcdir@
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 OBJS=mpz_glue.o next_prime.o my_mpz_xor.o mpq.o mpf.o
 SRC_TARGETS=$(SRCDIR)/prime_table.out

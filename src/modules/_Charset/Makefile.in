@@ -3,7 +3,7 @@
 #
 
 @make_variables@
-VPATH=@srcdir@:@srcdir@/../..:../..
+VPATH=@srcdir@
 MODULE_CPPFLAGS=@DEFS@
 OBJS=charsetmod.o iso2022.o tables.o misc.o
 MODULE_LDFLAGS=@LDFLAGS@

@@ -1,6 +1,6 @@
 # $Id$
 @make_variables@
-VPATH=@srcdir@:@srcdir@/../..:../..
+VPATH=@srcdir@
 OBJS=msqlmod.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 MSQL_SUPPORTED=@MSQL_SUPPORTED@

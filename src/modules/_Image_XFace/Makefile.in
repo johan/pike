@@ -1,6 +1,6 @@
 # $Id$
 @make_variables@
-VPATH=@srcdir@:@srcdir@/../..:../..
+VPATH=@srcdir@
 OBJS=image_xface.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 

@@ -1,6 +1,6 @@
 # $Id$
 @make_variables@
-VPATH=@srcdir@:@srcdir@/../..:../..
+VPATH=@srcdir@
 OBJS=image_jpeg.o transupp.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 

@@ -1,6 +1,6 @@
 # $Id$
 @make_variables@
-VPATH=@srcdir@:@srcdir@/../..:../..
+VPATH=@srcdir@
 MODNAME=SDL
 OBJS=SDL.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
