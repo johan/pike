@@ -389,7 +389,7 @@ void gc_check_all_multisets(void)
 {
   struct multiset *l;
   for(l=first_multiset;l;l=l->next)
-    debug_gc_check(l->ind, T_MULTISET, l);
+    debug_gc_check2(l->ind, T_MULTISET, l, " as indices array of a multiset");
 }
 
 void gc_mark_all_multisets(void)

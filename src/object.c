@@ -45,6 +45,9 @@ RCSID("$Id$");
 #include "dmalloc.h"
 
 
+/* #define GC_VERBOSE */
+
+
 #ifndef SEEK_SET
 #ifdef L_SET
 #define SEEK_SET	L_SET
@@ -540,8 +543,15 @@ void destruct(struct object *o)
   if(d_flag > 20) do_debug();
 #endif
 #ifdef GC_VERBOSE
-  if (Pike_in_gc > GC_PASS_PREPARE)
-    fprintf(stderr, "|   Destructing %p with %d refs.\n", o, o->refs);
+  if (Pike_in_gc > GC_PASS_PREPARE) {
+    fprintf(stderr, "|   Destructing %p with %d refs", o, o->refs);
+    if (o->prog) {
+      INT32 line;
+      char *file = get_program_line (o->prog, &line);
+      fprintf(stderr, ", prog %s:%d\n", file, line);
+    }
+    else fputs(", is destructed\n", stderr);
+  }
 #endif
 
   add_ref(o);
@@ -1385,16 +1395,9 @@ static inline void gc_check_object(struct object *o)
 
   if(o->prog && o->prog->flags & PROGRAM_USES_PARENT)
   {
-    if(PARENT_INFO(o)->parent) {
-#ifdef PIKE_DEBUG
-      if(debug_gc_check(debug_malloc_pass(PARENT_INFO(o)->parent),T_OBJECT,
-			debug_malloc_pass(o))==-2)
-	fprintf(stderr,"(in object at %lx -> parent)\n",
-		DO_NOT_WARN((long)o));
-#else
-      gc_check(PARENT_INFO(o)->parent);
-#endif
-    }
+    if(PARENT_INFO(o)->parent)
+      debug_gc_check2(PARENT_INFO(o)->parent, T_OBJECT, o,
+		      " as parent of an object");
   }
 
   if((p=o->prog) && PIKE_OBJ_INITED(o))
