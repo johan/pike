@@ -393,7 +393,6 @@ PMOD_EXPORT DECLSPEC(noreturn) void debug_fatal(const char *fmt, ...) ATTRIBUTE(
   if(Pike_sp && Pike_interpreter.evaluator_stack &&
      master_object && master_object->prog)
   {
-    fprintf(stderr,"Attempting to dump backlog (may fail)...\n");
     push_error("Backtrace at time of fatal:\n");
     APPLY_MASTER("describe_backtrace",1);
     if(Pike_sp[-1].type==PIKE_T_STRING)
@@ -626,6 +625,13 @@ DECLSPEC(noreturn) void generic_error_va(struct object *o,
   if(buf[sizeof(buf)-1])
     Pike_fatal("Buffer overflow in error()\n");
 #endif /* HAVE_VSNPRINTF */
+
+  if(in_error)
+  {
+    const char *tmp=in_error;
+    in_error=0;
+    Pike_fatal("Recursive error() calls, original error: %s",tmp);
+  }
   in_error=buf;
 
   if (!master_program) {
