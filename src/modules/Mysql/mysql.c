@@ -1188,7 +1188,7 @@ static void f_list_tables(INT32 args)
  *! @endmultiset
  *!
  *! @note
- *!   Michael Widenius recomends usage of the following query instead:
+ *!   Michael Widenius recomends use of the following query instead:
  *!   @tt{show fields in 'table' like "wild"@}.
  *!
  *! @seealso
