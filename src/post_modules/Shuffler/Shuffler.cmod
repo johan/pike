@@ -610,7 +610,7 @@ PIKECLASS Shuffle
     *!     An ordinary 8-bit wide pike string.
     *!   @item Memory
     *!     An initialized instance of the System.Memory class.
-    *!   @item Normal file
+    *!   @item NormalFile
     *!     Stdio.File instance pointing to a normal file.
     *!   @item Stream
     *!     Stdio.File instance pointing to a stream of some kind
