@@ -1,4 +1,5 @@
-/* X509.pmod
+/* 
+ * $Id$
  *
  * Some random functions for creating RFC-2459 style X.509 certificates.
  *
@@ -298,7 +299,7 @@ class TBSCertificate
       {
 	/* The optional version field must be present */
 	if (!a[0]->constructed
-	    || (a[0]->get_combinded_tag() != make_combined_tag(2, 0))
+	    || (a[0]->get_combined_tag() != make_combined_tag(2, 0))
 	    || (sizeof(a[0]->elements) != 1)
 	    || (a[0]->elements[0]->type_name != "INTEGER"))
 	  return 0;
