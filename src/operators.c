@@ -947,7 +947,8 @@ PMOD_EXPORT void f_ne(INT32 args)
  *!   successful iff all comparisons are successful.
  *!
  *!   If the first argument is an object with an @[lfun::`==()], that
- *!   function is called with the second as argument, and the test is
+ *!   function is called with the second as argument, unless the
+ *!   second argument is the same as the first argument. The test is
  *!   successful iff its result is nonzero (according to @[`!]).
  *!
  *!   Otherwise, if the second argument is an object with an
