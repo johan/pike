@@ -21,17 +21,17 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include <global.h>
-#include <threads.h>
-#include <machine.h>
-#include <interpret.h>
-#include <builtin_functions.h>
-#include <module_support.h>
-#include <svalue.h>
-#include <program.h>
-#include <array.h>
-#include <mapping.h>
-#include <stralloc.h>
+#include "global.h"
+#include "threads.h"
+#include "machine.h"
+#include "interpret.h"
+#include "builtin_functions.h"
+#include "module_support.h"
+#include "svalue.h"
+#include "program.h"
+#include "array.h"
+#include "mapping.h"
+#include "stralloc.h"
 #include "operators.h"
 #include "multiset.h"
 

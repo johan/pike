@@ -20,16 +20,16 @@
 #include <string.h>
 
 /* Pike includes */
-#include <global.h>
-#include <las.h>
-#include <machine.h>
-#include <pike_memory.h>
-#include <svalue.h>
-#include <threads.h>
-#include <stralloc.h>
-#include <object.h>
-#include <module_support.h>
-#include <operators.h>
+#include "global.h"
+#include "las.h"
+#include "machine.h"
+#include "pike_memory.h"
+#include "svalue.h"
+#include "threads.h"
+#include "stralloc.h"
+#include "object.h"
+#include "module_support.h"
+#include "operators.h"
 
 /* Postgres includes */
 /* A hack, because DEBUG is defined both in pike's machine.h and in postgres */
