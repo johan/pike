@@ -2281,6 +2281,10 @@ int dooptcode(struct pike_string *name,
 			    IDENTIFIER_C_FUNCTION | vargs,
 			    &tmp);
 	free_node(n);
+#ifdef DEBUG
+	if(a_flag > 1)
+	  fprintf(stderr,"Identifer (C) = %d\n",ret);
+#endif
 	return ret;
       }
     }
@@ -2307,6 +2311,12 @@ int dooptcode(struct pike_string *name,
 		      modifiers,
 		      IDENTIFIER_PIKE_FUNCTION | vargs,
 		      &tmp);
+
+
+#ifdef DEBUG
+  if(a_flag > 1)
+    fprintf(stderr,"Identifer = %d\n",ret);
+#endif
 
   free_node(n);
   return ret;
