@@ -1299,6 +1299,7 @@ static struct program *streamed_parser;
 #endif /* ENABLE_STREAMED_PARSER */
 
 extern void init_udp(void);
+extern void init_xml(void);
 
 
 /* Hohum. Here we go. This is try number three for a more optimized Roxen. */
@@ -1525,6 +1526,8 @@ void pike_module_init(void)
   streamed_parser = end_program();
   add_program_constant("streamed_parser", streamed_parser,0);
 #endif /* ENABLE_STREAMED_PARSER */
+
+  init_xml();
 }
 
 
