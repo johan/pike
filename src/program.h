@@ -79,8 +79,9 @@ extern struct pike_string *this_program_string;
 #define LFUN__SPRINTF 40
 #define LFUN__EQUAL 41
 #define LFUN__M_DELETE 42
+#define LFUN__GET_ITERATOR 43
 
-#define NUM_LFUNS 43
+#define NUM_LFUNS 44
 
 extern char *lfun_names[];
 
