@@ -12,7 +12,7 @@ all: modref traditional one_page
 
 # These are the actual build targets for making manuals...
 
-modref: build/modref.xml
+modref: build/modref.xml structure/modref.css structure/modref.html presentation/make_html.pike presentation/tree-split-autodoc.pike
 	@$(MAKE) PIKE="$(PIKE)" low_modref
 
 low_modref:
@@ -54,17 +54,19 @@ low_traditional:
 
 # Sub targets used by the above targets.
 
-build/autodoc.xml: recursive_join build/src/sub_manual.xml build/lib/sub_manual.xml bin/join.pike
+build/autodoc.xml: build/src/sub_manual.xml build/lib/sub_manual.xml bin/join.pike
 	@$(PIKE) bin/join.pike --post-process build/autodoc.xml build/src/sub_manual.xml \
 	  build/lib/sub_manual.xml
 
-recursive_join: extract bin/join.pike
-	@$(PIKE) bin/join.pike build/src/sub_manual.xml build/src/
-	@$(PIKE) bin/join.pike build/lib/sub_manual.xml build/lib/
-
-extract: build/lib build/src build/images images bin/extract.pike bin/mirardoc.pike
+build/src/sub_manual.xml: build/src build/images bin/extract.pike \
+			  bin/mirardoc.pike bin/join.pike
 	@$(PIKE) bin/extract.pike ../src/ build/src/ build/images/
+	@$(PIKE) bin/join.pike build/src/sub_manual.xml build/src/
+
+build/lib/sub_manual.xml: build/lib build/images images bin/extract.pike \
+			  bin/mirardoc.pike bin/join.pike
 	@$(PIKE) bin/extract.pike ../lib/ build/lib/ build/images/
+	@$(PIKE) bin/join.pike build/lib/sub_manual.xml build/lib/
 
 images: build/src/post_modules/GTK/refdoc/images
 	@cp ../src/post_modules/GTK/refdoc/images/*.png \
