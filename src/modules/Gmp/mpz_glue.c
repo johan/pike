@@ -1224,11 +1224,17 @@ static void exit_mpz_glue(struct object *o)
 void pike_module_exit(void)
 {
 #if defined(USE_GMP) || defined(USE_GMP2)
-  free_program(mpzmod_program);
-  mpzmod_program=0;
+  if(mpzmod_program)
+  {
+    free_program(mpzmod_program);
+    mpzmod_program=0;
+  }
 #ifdef AUTO_BIGNUM
-  free_program(bignum_program);
-  bignum_program=0;
+  if(bignum_program)
+  {
+    free_program(bignum_program);
+    bignum_program=0;
+  }
 #endif
 #endif
 }
