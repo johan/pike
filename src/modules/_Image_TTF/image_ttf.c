@@ -1279,7 +1279,7 @@ PIKE_MODULE_INIT
      return;
    }
 
-   TT_Set_Raster_Gray_Palette(engine,(char*)palette);
+   TT_Set_Raster_Gray_Palette(engine, palette);
    TT_Init_Kerning_Extension( engine );
 
 #ifdef DYNAMIC_MODULE

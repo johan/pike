@@ -353,7 +353,10 @@ static void f_decode(INT32 args) {
     Pike_error("Low memory? Decoder buffer doesn't exist.\n");
 
   if(!idata->len)
-    Pike_error("Decoded data are empty.\n");
+    Pike_error("Encoded data is empty.\n");
+
+  if (idata->size_shift)
+    Pike_error("Encoded data is wide.\n");
 
   if(args > 1) {
     /* FIXME: shuffler part not implemented, yet */
@@ -369,7 +372,7 @@ static void f_decode(INT32 args) {
 
   /* one pass decoding */
   len = avcodec_decode_audio(THIS->c, (short *)THIS->outbuf, &samples_size,
-		  	     idata->str, idata->len);
+		  	     STR0(idata), idata->len);
   if(len < 0)
     Pike_error("Error while decoding.\n");
   if(samples_size > 0) {
