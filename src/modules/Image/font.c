@@ -159,7 +159,10 @@ static inline long file_size(int fd)
 {
   struct stat tmp;
   int res;
-  if(!fstat(fd, &tmp)) return res = tmp.st_size;
+  if((!fstat(fd, &tmp)) &&
+     (tmp.st_mode & S_IFREG)) {
+    return res = tmp.st_size;
+  }
   return -1;
 }
 
