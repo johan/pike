@@ -257,6 +257,7 @@ extern int fd_type[MAX_OPEN_FILEDESCRIPTORS];
 #define direct _WIN32_FIND_DATAA
 #define dirent direct
 #define MAXPATHLEN MAX_PATH
+#define NAMELEN(dirent) strlen((dirent)->d_name)
 
 typedef struct DIR_s
 {
@@ -270,6 +271,12 @@ int readdir_r(DIR *dir, struct direct *tmp ,struct direct **d);
 void closedir(DIR *dir);
 
 #define HAVE_POSIX_READDIR_R
+
+/* Do not use these... */
+#undef HAVE_DIRECT_H
+#undef HAVE_NDIR_H
+#undef HAVE_SYS_NDIR_H
+#undef HAVE_DIRENT_H
 
 #endif
 
