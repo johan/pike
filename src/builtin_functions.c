@@ -636,8 +636,8 @@ void f_string_to_unicode(INT32 args)
       p_wchar1 *str1 = STR1(in);
       for(i = in->len; i--;) {
 	unsigned INT32 c = str1[i];
-	out->str[i * 2] = c & 0xff;
-	out->str[i * 2 + 1] = c >> 8;
+	out->str[i * 2] = c >> 8;
+	out->str[i * 2 + 1] = c & 0xff;
       }
     }
 #endif
