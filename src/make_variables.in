@@ -1,3 +1,7 @@
+#
+# $Id$
+#
+
 @SET_MAKE@
 prefix=@prefix@
 exec_prefix=$(prefix)/bin
