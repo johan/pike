@@ -2074,6 +2074,9 @@ void pike_module_init(void)
 #ifdef ORACLE_DEBUG
 	set_gc_check_callback(gc_dbresultinfo_struct);
 #endif
+#ifdef PROGRAM_USES_PARENT
+	Pike_compiler->new_program->flags|=PROGRAM_USES_PARENT;
+#endif
 	MY_END_CLASS(dbresultinfo);
       }
 
