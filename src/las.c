@@ -2100,19 +2100,17 @@ void fix_type_field(node *n)
 
   case F_LAND:
   case F_LOR:
-    if (!CAR(n) || CAR(n)->type == void_type_string ||
-	!CDR(n) || CDR(n)->type == void_type_string) {
-      yyerror("Conditional contains void expression.");
+    if (!CAR(n) || CAR(n)->type == void_type_string) {
+      yyerror("Conditional uses void expression.");
       copy_shared_string(n->type, mixed_type_string);
       break;
     }
     if(!match_types(CAR(n)->type,mixed_type_string))
       yyerror("Bad conditional expression.");
 
-    if(!match_types(CDR(n)->type,mixed_type_string))
-      yyerror("Bad conditional expression.");
-
-    if(CAR(n)->type == CDR(n)->type)
+    if (!CDR(n) || CDR(n)->type == void_type_string)
+      copy_shared_string(n->type,void_type_string);
+    else if(CAR(n)->type == CDR(n)->type)
     {
       copy_shared_string(n->type,CAR(n)->type);
     }else{
@@ -2283,7 +2281,9 @@ void fix_type_field(node *n)
     } else if(!match_types(CAR(n)->type,mixed_type_string))
       yyerror("Bad conditional expression.");
 
-    if(!CDR(n) || !CADR(n) || !CDDR(n))
+    if(!CDR(n) || !CADR(n) || !CDDR(n) ||
+       CADR(n)->type == void_type_string ||
+       CDDR(n)->type == void_type_string)
     {
       copy_shared_string(n->type,void_type_string);
       break;
