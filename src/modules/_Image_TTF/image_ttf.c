@@ -661,7 +661,7 @@ static void image_ttf_faceinstance_create(INT32 args)
       my_tt_error("Image.TTF.FaceInstance()","TT_New_Instance: ",res);
 
    face_i->load_flags = TTLOAD_SCALE_GLYPH|TTLOAD_HINT_GLYPH;
-   (face_i->faceobj=sp[-args].u.object)->refs++;
+   add_ref(face_i->faceobj=sp[-args].u.object);
 
    ttf_instance_setc(face_s,face_i,32*64,"Image.TTF.FaceInstance()");
 }
