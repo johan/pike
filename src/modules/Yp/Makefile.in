@@ -1,5 +1,5 @@
 # $Id$
-SRCDIR=@srcdir@
+@make_variables@
 VPATH=@srcdir@:@srcdir@/../..:../..
 OBJS=yp.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@

@@ -1,5 +1,5 @@
 # $Id$
-SRCDIR=@srcdir@
+@make_variables@
 VPATH=@srcdir@:@srcdir@/../..:../..
 OBJS=file.o efuns.o socket.o termios.o sendfile.o udp.o
 MODULE_LDFLAGS=@LIBS@

@@ -1,7 +1,7 @@
 # $Id$
 # (C) 1997 Francesco Chemolli <kinkie@kame.usr.dsi.unimi.it>
 
-SRCDIR=@srcdir@
+@make_variables@
 VPATH=@srcdir@:@srcdir@/../..:../..
 MODULE_CPPFLAGS=@DEFS@ @CPPFLAGS@
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@

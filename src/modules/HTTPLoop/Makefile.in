@@ -1,5 +1,5 @@
 # $Id$
-SRCDIR=@srcdir@
+@make_variables@
 VPATH=@srcdir@:@srcdir@/../..:../..
 OBJS=accept_and_parse.o util.o cache.o requestobject.o log.o timeout.o 
 # filesystem.o

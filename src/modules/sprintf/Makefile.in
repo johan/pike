@@ -1,5 +1,5 @@
 # $Id$
-SRCDIR=@srcdir@
+@make_variables@
 VPATH=@srcdir@:@srcdir@/../..:../..
 OBJS=sprintf.o
 MODULE_LDFLAGS=@LDFLAGS@

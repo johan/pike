@@ -1,5 +1,5 @@
 # $Id$
-SRCDIR=@srcdir@
+@make_variables@
 VPATH=@srcdir@:@srcdir@/../..:../..
 
 # BEGIN NATIONAL SECURITY

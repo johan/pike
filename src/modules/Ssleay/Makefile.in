@@ -1,5 +1,5 @@
 # $Id$
-SRCDIR=@srcdir@
+@make_variables@
 VPATH=@srcdir@:@srcdir@/../..:../..
 MODULE_CFLAGS=@DEFS@ @CPPFLAGS@
 OBJS=ssleay.o
