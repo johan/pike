@@ -1136,8 +1136,13 @@ lambda: F_LAMBDA
 
     sprintf(buf,"__lambda_%ld_%ld",
 	    (long)new_program->id,
-	    local_class_counter++);
+	    (long)(local_class_counter++ & 0xffffffff)); /* OSF/1 cc bug. */
     name=make_shared_string(buf);
+
+#ifdef LAMBDA_DEBUG
+    fprintf(stderr, "%d: LAMBDA: %s 0x%08lx 0x%08lx\n",
+	    compiler_pass, buf, (long)new_program->id, local_class_counter-1);
+#endif /* LAMBDA_DEBUG */
     
     f=dooptcode(name,
 		$4,
