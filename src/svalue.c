@@ -1091,6 +1091,9 @@ PMOD_EXPORT void describe_svalue(struct svalue *s,int indent,struct processing *
 	  t_flag=save_t_flag;
 	  pop_stack();
 	}
+      } else {
+	my_strcat("0");
+	break;
       }
       
       my_strcat("object");
