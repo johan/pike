@@ -192,7 +192,7 @@ PIKECLASS CipherState
 
       s = begin_shared_string(data->len);
 
-      THIS->crypt(&THIS->ctx, data->len, s->str, data->str);
+      THIS->crypt(THIS->ctx, data->len, s->str, data->str);
       push_string(end_shared_string(s));      
     }
 
@@ -232,7 +232,7 @@ PIKECLASS AES_Info
     {
       struct CipherInfo_struct *CipherInfo = GET_INFO(this_object());
 
-      if (CipherInfo || !CipherInfo->meta)
+      if (CipherInfo && !CipherInfo->meta)
       {
 	CipherInfo->meta = &nettle_aes256;
 	CipherInfo->check_key = &AES_check_key;
