@@ -39,6 +39,8 @@ RCSID("$Id$");
 #include "image.h"
 #include "builtin_functions.h"
 
+#include "encodings.h"
+
 extern struct program *image_colortable_program;
 extern struct program *image_program;
 

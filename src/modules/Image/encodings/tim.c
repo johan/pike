@@ -22,6 +22,8 @@ RCSID("$Id$");
 
 #include "image.h"
 
+#include "encodings.h"
+
 extern struct program *image_program;
 
 /*

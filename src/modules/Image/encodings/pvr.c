@@ -22,6 +22,8 @@ RCSID("$Id$");
 
 #include "image.h"
 
+#include "encodings.h"
+
 extern struct program *image_program;
 
 /*
@@ -227,7 +229,7 @@ void image_pvr_f_encode(INT32 args)
   struct object *imgo;
   struct mapping *optm = NULL;
   struct image *alpha = NULL, *img;
-  INT32 gbix, sz, attr;
+  INT32 gbix=0, sz, attr=0;
   int has_gbix=0, twiddle=0;
   struct pike_string *res;
   unsigned char *dst;
@@ -245,13 +247,14 @@ void image_pvr_f_encode(INT32 args)
 	 (alpha=(struct image*)get_storage(s->u.object, image_program))==NULL)
 	error("Image.PVR.encode: option (arg 2) \"alpha\" has illegal type\n");
     if((s = simple_mapping_string_lookup(optm, "global_index"))!=NULL &&
-       !IS_UNDEFINED(s))
+       !IS_UNDEFINED(s)) {
       if(s->type == T_INT) {
 	gbix = s->u.integer;
 	has_gbix=1;
       }
       else
 	error("Image.PVR.encode: option (arg 2) \"global_index\" has illegal type\n");
+    }
   }
 
   if (!img->img)

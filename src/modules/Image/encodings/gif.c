@@ -49,6 +49,8 @@ RCSID("$Id$");
 
 #include "gif_lzw.h"
 
+#include "encodings.h"
+
 extern struct program *image_colortable_program;
 extern struct program *image_program;
 extern struct program *image_layer_program;
@@ -2638,7 +2640,7 @@ static void image_gif_lzw_decode(INT32 args)
 	 last=n;
 
 	 m++;
-	 if (m>=maxcode - earlychange) 
+	 if (m>=maxcode - earlychange) {
 	    if (m==MAX_GIF_CODE - earlychange)
 	    {
 #ifdef GIF_DEBUG
@@ -2660,6 +2662,7 @@ static void image_gif_lzw_decode(INT32 args)
 		  break; /* error! too much codes */
 	       }
 	    }
+	 }
       }
 
       if (reversebits)

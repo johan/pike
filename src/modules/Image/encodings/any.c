@@ -38,13 +38,7 @@ RCSID("$Id$");
 
 #include "image.h"
 
-void image_gif__decode(INT32 args);
-void image_pnm_decode(INT32 args);
-void image_xwd__decode(INT32 args);
-void image_ilbm_decode(INT32 args);
-void image_ras_decode(INT32 args);
-void image_pvr_f_decode_header(INT32 args);
-void image_tim_f_decode_header(INT32 args);
+#include "encodings.h"
 
 /*
 **! method mapping _decode(string data)
