@@ -2576,7 +2576,7 @@ static void file_pipe(INT32 args)
 
     my_set_close_on_exec(inout[1],1);
     my_set_close_on_exec(inout[0],1);
-    FD=inout[0];
+    FD=inout[1];
 
     ERRNO=0;
     push_object(file_make_object_from_fd(inout[0], (type&fd_BIDIRECTIONAL?FILE_READ:0)| FILE_WRITE,type));
