@@ -191,6 +191,11 @@ static void undefine(struct cpp *this,
 
   if(!d) return;
 
+  if (d->inside) {
+    cpp_error(this, "Illegal to undefine a macro during its expansion.");
+    return;
+  }
+
   this->defines=hash_unlink(this->defines, & d->link);
 
   for(e=0;e<d->num_parts;e++)
@@ -824,6 +829,18 @@ static struct pike_string *filter_bom(struct pike_string *data)
   return(data);
 }
 
+void free_one_define(struct hash_entry *h)
+{
+  int e;
+  struct define *d=BASEOF(h, define, link);
+
+  for(e=0;e<d->num_parts;e++)
+    free_string(d->parts[e].postfix);
+  if(d->first)
+    free_string(d->first);
+  free((char *)d);
+}
+
 static ptrdiff_t low_cpp(struct cpp *this, void *data, ptrdiff_t len,
 			 int shift, int flags, int auto_convert,
 			 struct pike_string *charset);
@@ -859,18 +876,6 @@ static ptrdiff_t low_cpp(struct cpp *this, void *data, ptrdiff_t len,
   }
   /* NOT_REACHED */
   return 0;
-}
-
-void free_one_define(struct hash_entry *h)
-{
-  int e;
-  struct define *d=BASEOF(h, define, link);
-
-  for(e=0;e<d->num_parts;e++)
-    free_string(d->parts[e].postfix);
-  if(d->first)
-    free_string(d->first);
-  free((char *)d);
 }
 
 /*** Magic defines ***/
