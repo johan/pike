@@ -23,7 +23,7 @@ string quote(string s)
 //! Throw an error in case an unimplemented function is called.
 void fallback()
 {
-  throw(({ "Function not supported in this database.", backtrace() }));
+  error( "Function not supported in this database." );
 }
 
 //! Build a raw SQL query, given the cooked query and the variable bindings
