@@ -312,7 +312,7 @@ string fixdesc(string s,string prefix,string where)
 	  sscanf(t,"%s<illustration%s>%s</illustration>%s",t,q,u,v)==4)
       {
 	 s+=replace(t,"\n\n","\n\n<p>")+
-	    "<illustration __from__='"+where+"' src=image_ill.pnm"+q+">\n"
+	    "<illustration "+where+" src=image_ill.pnm"+q+">\n"
 	    +replace(u,"lena()","src")+"</illustration>";
 	 t=v;
       }
