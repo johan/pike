@@ -10,6 +10,7 @@
 
 #include "global.h"
 #include "svalue.h"
+#include "dmalloc.h"
 
 /* a destructed object has no program */
 

@@ -15,6 +15,8 @@
 
 /* #define TEST_MULTISET */
 
+#include "svalue.h"
+#include "dmalloc.h"
 #include "rbtree.h"
 #include "block_alloc_h.h"
 
