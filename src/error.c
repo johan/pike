@@ -371,7 +371,8 @@ PMOD_EXPORT DECLSPEC(noreturn) void debug_fatal(const char *fmt, ...) ATTRIBUTE(
   (void)VFPRINTF(stderr, fmt, args);
 
   d_flag=t_flag=0;
-  if(Pike_sp && Pike_interpreter.evaluator_stack && get_master())
+  if(Pike_sp && Pike_interpreter.evaluator_stack &&
+     master_object && master_object->prog)
   {
     fprintf(stderr,"Attempting to dump backlog (may fail)...\n");
     push_error("Backtrace at time of fatal:\n");
