@@ -722,7 +722,7 @@ static int low_yylex(YYSTYPE *yylval)
     {
       char *p1, *p2;
       double f;
-      long l;
+      long l = 0;
       struct svalue sval;
 
       lex.pos -= (1<<SHIFT);
