@@ -3037,6 +3037,7 @@ static struct pike_string * replace_many(struct pike_string *str,
 
 /*! @decl string replace(string s, string from, string to)
  *! @decl string replace(string s, array(string) from, array(string) to)
+ *! @decl string replace(string s, mapping(string:string) replacements)
  *! @decl array replace(array a, mixed from, mixed to)
  *! @decl mapping replace(mapping a, mixed from, mixed to)
  *!
@@ -3050,7 +3051,8 @@ static struct pike_string * replace_many(struct pike_string *str,
  *!
  *! If the first argument is a string, and the others array(string), a string
  *! with every occurrance of @[from][@i{i@}] in @[s] replaced with
- *! @[to][@i{i@}] will be returned.
+ *! @[to][@i{i@}] will be returned. Instead of the arrays @[from] and @[to]
+ *! a mapping eqivivalent to mkmapping(from,to) can be used.
  *!
  *! If the first argument is an array or mapping, the values of @[a] which
  *! are @[`==()] with @[from] will be replaced with @[to] destructively.
