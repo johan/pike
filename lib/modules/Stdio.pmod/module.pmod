@@ -887,13 +887,17 @@ class File
   void set_blocking_keep_callbacks()
   {
      CHECK_OPEN();
+     ::_disable_callbacks(); // Thread safing
      ::set_blocking();
+     ::_enable_callbacks();
   }
 
   void set_nonblocking_keep_callbacks()
   {
      CHECK_OPEN();
+     ::_disable_callbacks(); // Thread safing
      ::set_nonblocking();
+     ::_enable_callbacks();
   }
    
   static void destroy()
