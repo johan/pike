@@ -4705,6 +4705,11 @@ ifefun(gc,
     return sizeof (m);
   ]], 1)
 
+]])
+
+ifefun(gc,
+[[
+
   test_do([[
     mapping m = set_weak_flag (([]), Pike.WEAK_INDICES);
     object o = class {object o;}();
