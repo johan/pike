@@ -44,7 +44,10 @@ static string fixup_path(string x)
 /* FIXME: this is a bit ad-hoc */
 string mkmodulename(mixed x, string dirname)
 {
-  if(!sscanf(dirname,"%*slib/modules/%s",dirname))
+  if(master()->relocate_module &&
+     dirname[..20]=="/${PIKE_MODULE_PATH}/")
+    dirname = dirname[21..];
+  else if(!sscanf(dirname,"%*slib/modules/%s",dirname))
     return 0;
   dirname-=".pmod";
   dirname=replace(dirname,"/",".");
