@@ -94,7 +94,7 @@ static void set_key(INT32 args)
   }
   if (sp[-1].u.string->len != 8)
     error("Invalid key length to des->set_key()\n");
-  switch (DesMethod(THIS->method, sp[-1].u.string->str))
+  switch (DesMethod(THIS->method, (unsigned INT8 *)sp[-1].u.string->str))
     {
     case -1:
       error("des->set_key: parity error\n");

@@ -188,7 +188,7 @@ void type_stack_reverse()
 {
   INT32 a;
   a=pop_stack_mark();
-  reverse(type_stackp-a,a,1);
+  reverse((char *)(type_stackp-a),a,1);
 }
 
 void push_type_int(unsigned INT32 i)
