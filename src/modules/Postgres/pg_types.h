@@ -15,6 +15,9 @@ struct pgres_object_data {
 	struct pike_string *last_error;
 	PGresult * last_result;
 	struct svalue * notify_callback;
+#ifdef PQ_THREADSAFE
+        MUTEX_T mutex;
+#endif
 };
 
 /* The header name could be deceiving, but who cares? */

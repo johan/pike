@@ -38,12 +38,20 @@
 
 /* Actual code */
 #ifdef _REENTRANT
+# ifdef PQ_THREADSAFE
+#  define PQ_FETCH() PIKE_MUTEX_T *pg_mutex = &THIS->mutex;
+#  define PQ_LOCK() mt_lock(pg_mutex);
+#  define PQ_UNLOCK() mt_unlock(pg_mutex);
+# else
 MUTEX_T pike_postgres_mutex;
-#define PQ_LOCK() mt_lock(&pike_postgres_mutex);
-#define PQ_UNLOCK() mt_unlock(&pike_postgres_mutex);
+#  define PQ_FETCH()
+#  define PQ_LOCK() mt_lock(&pike_postgres_mutex);
+#  define PQ_UNLOCK() mt_unlock(&pike_postgres_mutex);
+# endif
 #else
-#define PQ_LOCK()
-#define PQ_UNLOCK()
+# define PQ_FETCH()
+# define PQ_LOCK()
+# define PQ_UNLOCK()
 #endif
 
 #include "pg_types.h"
@@ -75,11 +83,15 @@ static void pgres_create (struct object * o) {
 	THIS->last_error=NULL;
 	THIS->notify_callback=(struct svalue*)xalloc(sizeof(struct svalue));
 	THIS->notify_callback->type=T_INT;
+#ifdef PQ_THREADSAFE
+	mt_init(&THIS->mutex);
+#endif
 }
 
 static void pgres_destroy (struct object * o)
 {
 	PGconn * conn;
+	PQ_FETCH();
 	pgdebug ("pgres_destroy().\n");
 	if ((conn=THIS->dblink)) {
 		THREADS_ALLOW();
@@ -96,8 +108,11 @@ static void pgres_destroy (struct object * o)
 	}
 	if (THIS->notify_callback->type!=T_INT) {
 		free_svalue(THIS->notify_callback);
-		free(THIS->notify_callback);
 	}
+	free(THIS->notify_callback);
+#ifdef PQ_THREADSAFE
+	mt_destroy(&THIS->mutex);
+#endif
 }
 
 /* create (host,database,username,password,port) */
@@ -106,6 +121,7 @@ static void f_create (INT32 args)
         /*port will be used as a string with a sprintf()*/
 	char * host=NULL, *db=NULL, *user=NULL, *pass=NULL, *port=NULL;
 	PGconn * conn;
+	PQ_FETCH();
 
 	check_all_args("postgres->create",args,
 			BIT_STRING|BIT_VOID,
@@ -208,6 +224,7 @@ static void f_select_db (INT32 args)
 {
 	char *host, *port, *options, *tty, *db;
 	PGconn * conn, *newconn;
+	PQ_FETCH();
 
 	check_all_args("Postgres->select_db",args,BIT_STRING,0);
 	
@@ -263,6 +280,7 @@ static void f_big_query(INT32 args)
 	PGresult * res;
 	PGnotify * notification;
 	char *query;
+	PQ_FETCH();
 
 	check_all_args("Postgres->big_query",args,BIT_STRING,0);
 
@@ -359,6 +377,7 @@ static void f_error (INT32 args)
 static void f_reset (INT32 args)
 {
 	PGconn * conn;
+	PQ_FETCH();
 
 	check_all_args("Postgres->reset",args,0);
 
