@@ -174,6 +174,7 @@ class Node
 
       case "constant":
       case "variable":
+      case "inherit":
 	string path = replace(make_class_path(), "()->", ".");
 	if(sizeof(path)) path += ".";
 	if(!m["homogen-name"]) {
@@ -189,7 +190,13 @@ class Node
 		   string name = Parser.parse_html_entities(m->name);
 		   refs[path + name] =
 		     Node( "variable", name, "", this_object());
-		 }
+		 },
+		 "inherit":
+		 lambda(Parser.HTML p, mapping m, string c) {
+		   string name = Parser.parse_html_entities(m->name);
+		   refs[path + name] =
+		     Node( "inherit", name, "", this_object());
+		 },
 	    ]) )->finish(c);
 	}
 	else
