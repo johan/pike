@@ -3208,7 +3208,7 @@ static void exit_file_lock_key(struct object *o)
 /*! @decl array(int) get_all_active_fds()
  *! Returns the id of all the active file descriptors.
  */
-void f_get_all_active_fd(INT32 args)
+static void f_get_all_active_fd(INT32 args)
 {
   int i,fds,ne;
   struct stat foo;
