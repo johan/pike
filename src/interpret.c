@@ -571,7 +571,7 @@ PMOD_EXPORT void find_external_context(struct external_variable_context *loc,
 #endif
 	  while(loc->inherit->inherit_level >= my_level)
 	  {
-	    TRACE((5,"-   inherit-- (%d >= %d)\n",tmp.inherit->inherit_level, my_level));
+	    TRACE((5,"-   inherit-- (%d >= %d)\n",loc->inherit->inherit_level, my_level));
 	    loc->inherit--;
 	  }
 
