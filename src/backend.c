@@ -554,6 +554,7 @@ void do_debug(void)
   check_all_programs();
   verify_all_objects();
   verify_shared_strings_tables();
+  check_all_objects();
 
   call_callback(& do_debug_callbacks, 0);
 

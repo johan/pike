@@ -95,6 +95,8 @@ struct magic_index_struct;
 void push_magic_index(struct program *type, int inherit_no, int parent_level);
 void init_object(void);
 void exit_object(void);
+void check_object(struct object *o);
+void check_all_objects(void);
 /* Prototypes end here */
 
 #ifdef MALLOC_DEBUG
