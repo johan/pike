@@ -2039,12 +2039,9 @@ void dmalloc_describe_location(void *p, int offset, int indent)
   if(p)
   {
     struct memhdr *mh;
-    int lock=mt_trylock(&debug_malloc_mutex) != EBUSY;
 
     if((mh=my_find_memhdr(p,0)))
       low_dmalloc_describe_location(mh, offset, indent);
-
-    if(lock) mt_unlock(&debug_malloc_mutex);
   }
 }
 
