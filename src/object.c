@@ -364,7 +364,7 @@ struct object *get_master(void)
   return master_object;
 }
 
-struct object *master(void)
+struct object *debug_master(void)
 {
   struct object *o;
   o=get_master();
