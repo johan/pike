@@ -150,7 +150,7 @@ extern struct shared_string_location *all_shared_string_locations;
 INLINE void PIKE_CONCAT4(convert_,FROM,_to_,TO)(PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, ptrdiff_t len); \
 INLINE INT32 PIKE_CONCAT4(compare_,FROM,_to_,TO)(const PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, ptrdiff_t len);
 
-PMOD_EXPORT extern struct pike_string *empty_string;
+PMOD_EXPORT extern struct pike_string *empty_pike_string;
 
 /* Prototypes begin here */
 PMOD_EXPORT INLINE unsigned INT32 index_shared_string(struct pike_string *s,

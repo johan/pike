@@ -1699,7 +1699,7 @@ void f_cpp(INT32 args)
       if (k->val.type == T_STRING)
 	add_define (&this, k->ind.u.string, k->val.u.string);
       else
-	add_define (&this, k->ind.u.string, empty_string);
+	add_define (&this, k->ind.u.string, empty_pike_string);
     }
     free_mapping (predefs);
   }
