@@ -281,7 +281,7 @@ array(string) split(string data, void|mapping state)
 
 	  case "<<": case ">>":
 	    if(data[pos+2]=='=') pos++;
-	  case "==": case "<=": case ">=":
+	  case "==": case "!=": case "<=": case ">=":
 	  case "*=": case "/=": case "%=":
 	  case "&=": case "|=": case "^=":
 	  case "+=": case "-=":
