@@ -117,8 +117,8 @@ clean:
 depend: $(SRC_TARGETS) $(PMOD_TARGETS)
 	-@echo Fixing dependencies for $(SRCDIR)/\*.c
 	@gcc -MM $(PREFLAGS) $(SRCDIR)/*.c \
-	|sed -e "s@ $(PIKE_SRC_DIR)/\([-a-zA-Z0-9.,_]*\)@ \$$(PIKE_SRC_DIR)/\1@g" \
 	|sed -e "s@ $(SRCDIR)/\([-a-zA-Z0-9.,_]*\)@ \$$(SRCDIR)/\1@g" \
+	|sed -e "s@ $(PIKE_SRC_DIR)/\([-a-zA-Z0-9.,_]*\)@ \$$(PIKE_SRC_DIR)/\1@g" \
 	|sed -e "s@ $(BUILD_BASE)/\([-a-zA-Z0-9.,_]*\)@ \$$(BUILD_BASE)/\1@g" \
 	|sed -e "s@$(SRCDIR)/\([-a-zA-Z0-9.,_]*\)@\1@g" \
 	>$(SRCDIR)/dependencies
