@@ -974,7 +974,10 @@ static void file_set_buffer(INT32 args)
  */
 #define socketpair socketpair_ultra
 
+/* Protected since errno may expand to a function call. */
+#ifndef errno
 extern int errno;
+#endif /* !errno */
 int socketpair(int family, int type, int protocol, int sv[2])
 {
   static int fd=-1;
