@@ -9,6 +9,7 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "object.h"
 #include "module_support.h"
+#include "error.h"
 
 #include "iso2022.h"
 
