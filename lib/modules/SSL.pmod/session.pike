@@ -132,7 +132,6 @@ array generate_keys(string client_random, string server_random,array(int) versio
       //TLS1.0
       string client_wkey= key_data->get_fix_string(5);
       string server_wkey= key_data->get_fix_string(5);
-      werror("APAPAPAPAPAPAPAPAPPAPAPAPAPAPAP!!!!\n");
       keys[2] = prf(client_wkey,"client write key",client_random+server_random,cipher_spec->key_material);
       keys[3] = prf(server_wkey,"server write key",client_random+server_random,cipher_spec->key_material);
       if(cipher_spec->iv_size) {
