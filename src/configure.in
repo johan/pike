@@ -92,6 +92,7 @@ AC_ARG_WITH(threads,   [  --without-threads      no threads support],[],[with_th
 AC_ARG_WITH(zlib,      [  --without-zlib         no gz compression support],[],[with_zlib=yes])
 AC_ARG_WITH(ssleay,    [  --without-ssleay       no support for the secure socket protocol],[],[with_ssleay=yes])
 AC_ARG_WITH(mysql,     [  --without-mysql        no support for the Mysql database],[],[with_mysql=yes])
+AC_ARG_WITH(dmalloc,   [  --with-dmallloc        enable memory-leak tests],[AC_DEFINE(DEBUG_MALLOC)],[])
 AC_ARG_WITH(profiling, [  --with-profiling       add code used to profile pike code ],[AC_DEFINE(PROFILING)],[])
 
 #
