@@ -1150,7 +1150,7 @@ struct unfinished_prog_link
 
 struct unfinished_obj_link
 {
-  struct unfinished_prog_link *next;
+  struct unfinished_obj_link *next;
   struct object *o;
 };
 
@@ -1862,9 +1862,6 @@ static void decode_value2(struct decode_data *data)
 	if(data->pickyness)
 	  Pike_error("Failed to decode object.\n");
 
-#ifdef ENCODE_DEBUG
-      data->depth -= 2;
-#endif
       break;
     }
 
