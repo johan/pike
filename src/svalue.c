@@ -1450,7 +1450,7 @@ void gc_check_weak_short_svalue(const union anything *u, TYPE_T type)
 
 #define ZAP_SVALUE()							\
       do {								\
-	free_svalue(s);							\
+	gc_free_svalue(s);						\
 	s->type = T_INT;						\
 	s->u.integer = 0;						\
 	s->subtype = NUMBER_DESTRUCTED;					\
@@ -1458,7 +1458,7 @@ void gc_check_weak_short_svalue(const union anything *u, TYPE_T type)
 
 #define ZAP_SHORT_SVALUE()						\
       do {								\
-	free_short_svalue(u, type);					\
+	gc_free_short_svalue(u, type);					\
 	u->refs = 0;							\
       } while (0)
 
