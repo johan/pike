@@ -22,6 +22,6 @@
     add_to_program(0x40);						\
     add_to_program(OFFSETOF(pike_frame, pc));				\
     ins_int((INT32)tmp, add_to_program);				\
-}while(0)
+  }while(0)
 
 #define READ_INCR_BYTE(PC)	EXTRACT_UCHAR((PC)++)
