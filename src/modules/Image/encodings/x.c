@@ -898,8 +898,8 @@ static void image_x_decode_truecolor(INT32 args)
       struct object *o;
       struct image *img;
       int rmask=(1<<rbits)-1;
-      int gmask=(1<<rbits)-1;
-      int bmask=(1<<rbits)-1;
+      int gmask=(1<<gbits)-1;
+      int bmask=(1<<bbits)-1;
 
       push_int(width);
       push_int(height);
@@ -914,9 +914,9 @@ static void image_x_decode_truecolor(INT32 args)
 	 {
 	    int x;
 	    if (swapbytes)
-	       x=s[1]+(((int)s[0])<<8);
-	    else
 	       x=s[0]+(((int)s[1])<<8);
+	    else
+	       x=s[1]+(((int)s[0])<<8);
 
 	    d->r=nct->u.flat.entries[(x>>rshift)&rmask].color.r;
 	    d->g=nct->u.flat.entries[(x>>gshift)&gmask].color.g;
@@ -950,9 +950,9 @@ static void image_x_decode_truecolor(INT32 args)
 	 {
 	    int x;
 	    if (swapbytes)
-	       x=s[1]+(((int)s[0])<<8);
-	    else
 	       x=s[0]+(((int)s[1])<<8);
+	    else
+	       x=s[1]+(((int)s[0])<<8);
 
 	    d->r=rtbl[(x>>rshift)&rmask];
 	    d->g=gtbl[(x>>gshift)&gmask];
