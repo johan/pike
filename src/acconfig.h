@@ -9,6 +9,16 @@
 #define POSIX_SOURCE
 #endif
 
+/* Get more declarations in GNU libc. */
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE
+#endif
+
+/* Get more declarations from AIX libc. */
+#ifndef _ALL_SOURCE
+#define _ALL_SOURCE
+#endif
+
 /* Where's the master.pike file installed? */
 #define DEFAULT_MASTER "@prefix@/lib/pike/master.pike"
 
@@ -48,6 +58,12 @@
 /* Define this to use the new multiset implementation. */
 #undef PIKE_NEW_MULTISETS
 
+/* Enable profiling */
+#undef PROFILING
+
+/* Enable internal profiling */
+#undef INTERNAL_PROFILING
+
 /* The following USE_* are used by smartlink */
 /* Define this if your ld sets the run path with -rpath */
 #undef USE_RPATH
@@ -73,17 +89,32 @@
 /* Define this if your ld doesn't have an option to set the run path */
 #undef USE_LD_LIBRARY_PATH
 
-/* Define this if your compiler attempts to use _chkstk, but libc contains
- * __chkstk. */
-#undef HAVE_BROKEN_CHKSTK
+/* Define if your tcc supports #pragma TenDRA longlong type allow. */
+#undef HAVE_PRAGMA_TENDRA_LONGLONG
+
+/* Define if your tcc supports #pragma TenDRA set longlong type : long long. */
+#undef HAVE_PRAGMA_TENDRA_SET_LONGLONG_TYPE
+
+/* The worlds most stringent C compiler? */
+#ifdef __TenDRA__
+/* We want to be able to use 64bit arithmetic */
+#ifdef HAVE_PRAGMA_TENDRA_LONGLONG
+#pragma TenDRA longlong type allow
+#endif /* HAVE_PRAGMA_TENDRA_LONGLONG */
+#ifdef HAVE_PRAGMA_TENDRA_SET_LONGLONG_TYPE
+#pragma TenDRA set longlong type : long long
+#endif /* HAVE_PRAGMA_TENDRA_SET_LONGLONG_TYPE */
+
+#ifdef _NO_LONGLONG
+#undef _NO_LONGLONG
+#endif /* _NO_LONGLONG */
+#endif /* __TenDRA__ */
 
 @TOP@
 
-/* Enable profiling */
-#undef PROFILING
-
-/* Enable internal profiling */
-#undef INTERNAL_PROFILING
+/* Define this if your compiler attempts to use _chkstk, but libc contains
+ * __chkstk. */
+#undef HAVE_BROKEN_CHKSTK
 
 /* Define for solaris */
 #undef SOLARIS

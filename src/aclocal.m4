@@ -98,18 +98,35 @@ pushdef([AC_CONFIG_HEADER],
 define([ORIG_AC_CHECK_SIZEOF], defn([AC_CHECK_SIZEOF]))
 pushdef([AC_CHECK_SIZEOF],
 [
-  if test "x$cross_compiling" = "xyes"; then
-    changequote(<<, >>)dnl
-    define(<<AC_CV_NAME>>, translit(ac_cv_sizeof_$1, [ *], [_p]))dnl
-    changequote([, ])dnl
-    AC_MSG_CHECKING(size of $1 ... crosscompiling)
+  changequote(<<, >>)dnl
+  define(<<AC_CV_NAME>>, translit(ac_cv_sizeof_$1, [ *], [_p]))dnl
+  changequote([, ])dnl
+  if test "x$cross_compiling" = "xyes" -o "x$TCC" = "xyes"; then
+    AC_MSG_CHECKING(size of $1 ... crosscompiling or tcc)
     AC_CACHE_VAL(AC_CV_NAME,[
       cat > conftest.$ac_ext <<EOF
 dnl This sometimes fails to find confdefs.h, for some reason.
 dnl [#]line __oline__ "[$]0"
 [#]line __oline__ "configure"
 #include "confdefs.h"
+
+/* The worlds most stringent C compiler? */
+#ifdef __TenDRA__
+/* We want to be able to use 64bit arithmetic */
+#ifdef HAVE_PRAGMA_TENDRA_LONGLONG
+#pragma TenDRA longlong type allow
+#endif /* HAVE_PRAGMA_TENDRA_LONGLONG */
+#ifdef HAVE_PRAGMA_TENDRA_SET_LONGLONG_TYPE
+#pragma TenDRA set longlong type : long long
+#endif /* HAVE_PRAGMA_TENDRA_SET_LONGLONG_TYPE */
+
+#ifdef _NO_LONGLONG
+#undef _NO_LONGLONG
+#endif /* _NO_LONGLONG */
+#endif /* __TenDRA__ */
+
 #include <stdio.h>
+
 char size_info[[]] = {
   0, 'S', 'i', 'Z', 'e', '_', 'I', 'n', 'F', 'o', '_',
   '0' + sizeof([$1]), 0
@@ -132,10 +149,10 @@ EOF
       rm -rf conftest*
     ])    
     AC_MSG_RESULT($AC_CV_NAME)
-    undefine([AC_CV_NAME])dnl
   elif test "x$enable_binary" = "xno"; then
-    translit(ac_cv_sizeof_$1, [ *], [_p])=$2
+    AC_CV_NAME=$2
   fi
+  undefine([AC_CV_NAME])dnl
   ORIG_AC_CHECK_SIZEOF($1,$2)
 ])
 
