@@ -1320,7 +1320,7 @@ int main()
         pike_cv_have_pthread_atfork=no
       ])
     ])
-    if test x$pike_cv_have_pthread_attr_setstacksize = xyes ; then
+    if test x$pike_cv_have_pthread_atfork = xyes ; then
       AC_MSG_RESULT(yes)
       AC_DEFINE(HAVE_PTHREAD_ATFORK)
     else
