@@ -570,15 +570,18 @@ source: depend
 
 small_export: source
 	chmod +x $(SRCDIR)/install-sh
-	$(RUNPIKE) $(TMP_BINDIR)/export.pike --srcdir="$(SRCDIR)" --notag
+	$(RUNPIKE) $(TMP_BINDIR)/export.pike --srcdir="$(SRCDIR)" \
+	--exportlist=src/export_list --name=%Y%M%D_%h%m%s
 
 full_export: source
 	chmod +x $(SRCDIR)/install-sh
-	$(RUNPIKE) $(TMP_BINDIR)/export.pike --srcdir="$(SRCDIR)" 
+	$(RUNPIKE) $(TMP_BINDIR)/export.pike --srcdir="$(SRCDIR)"  \
+	--exportlist=src/export_list --name=Pike-v%maj.%min.%bld --tag
 
 snapshot_export: source
 	chmod +x $(SRCDIR)/install-sh
-	$(RUNPIKE) $(TMP_BINDIR)/export.pike --srcdir="$(SRCDIR)" --notag --snapshot
+	$(RUNPIKE) $(TMP_BINDIR)/export.pike --srcdir="$(SRCDIR)"  \
+	--exportlist=src/export_list --name=Pike-v%maj.%min-snapshot-%Y%M%D
 
 export: full_export
 
