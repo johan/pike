@@ -940,7 +940,8 @@ void mega_apply2(enum apply_type type, INT32 args, void *arg1, void *arg2)
 	
       case IDENTIFIER_CONSTANT:
       {
-	struct svalue *s=fp->context.prog->constants+function->func.offset;
+	struct svalue *s=&(fp->context.prog->
+			   constants[function->func.offset].sval);
 	debug_malloc_touch(fp);
 	if(s->type == T_PROGRAM)
 	{
