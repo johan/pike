@@ -4,6 +4,8 @@ AC_CONFIG_HEADER(config.h)
 
 AC_SET_MAKE
 
+AC_CONFIG_SUBDIRS(lib)
+
 AC_MODULE_INIT()
 
 AC_ARG_WITH(rsaref,     [  --with-rsaref[=path]      Support for RSAREF],[],[])
@@ -46,7 +48,5 @@ else
   AC_CHECK_LIB(cryptoci, b_rsa_public_key_type)
 fi
 fi
-
-AC_CONFIG_SUBDIRS(lib)
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )

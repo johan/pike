@@ -4,6 +4,8 @@ AC_CONFIG_HEADER(image_machine.h)
 
 AC_SET_MAKE
 
+AC_CONFIG_SUBDIRS(encodings)
+
 AC_MODULE_INIT()
 
 AC_FUNC_MMAP
@@ -65,8 +67,4 @@ fi
 
 AC_SUBST(RANLIB)
 
-AC_CONFIG_SUBDIRS(encodings)
-
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
-
-
