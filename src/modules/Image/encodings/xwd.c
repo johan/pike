@@ -347,6 +347,11 @@ void image_xwd__decode(INT32 args)
    free_string(s);
 }
 
+/*
+**! method object decode(string data)
+**!	Simple decodes a XWD image file.
+*/
+
 static void image_xwd_decode(INT32 args)
 {
    if (!args)

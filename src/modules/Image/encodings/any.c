@@ -36,14 +36,16 @@ RCSID("$Id$");
 #include "error.h"
 #include "threads.h"
 
+#include "image.h"
+
 void image_gif__decode(INT32 args);
 void image_pnm_decode(INT32 args);
 void image_xwd__decode(INT32 args);
 
 /*
 **! method mapping _decode(string data)
-**  method object decode(string data)
-**  method object decode_alpha(string data)
+**! method object decode(string data)
+**! method object decode_alpha(string data)
 **!	Tries heuristics to find the correct method 
 **!	of decoding the data, then calls that method.
 **!
@@ -148,6 +150,21 @@ simple_image:
    return;
 }
 
+void image_any_decode(INT32 args)
+{
+   image_any__decode(args);
+   push_text("image");
+   f_index(2);
+}
+
+void image_any_decode_alpha(INT32 args)
+{
+   image_any__decode(args);
+   push_text("alpha");
+   f_index(2);
+}
+
+
 /** module *******************************************/
 
 void init_image_any(void)
@@ -157,6 +174,10 @@ void init_image_any(void)
    start_new_program();
    
    add_function("_decode",image_any__decode,
+		"function(string:mapping)",0);
+   add_function("decode",image_any_decode,
+		"function(string:mapping)",0);
+   add_function("decode_alpha",image_any_decode_alpha,
 		"function(string:mapping)",0);
    /** done **/
 
