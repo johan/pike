@@ -199,6 +199,12 @@ int image_colortable_index_8bit_image(struct neo_colortable *nct,
 				      int len,
 				      int rowlen);
 
+int image_colortable_index_16bit_image(struct neo_colortable *nct,
+				      rgb_group *s,
+				      unsigned short *d,
+				      int len,
+				      int rowlen);
+
 void image_colortable_internal_floyd_steinberg(struct neo_colortable *nct);
 
 int image_colortable_map_image(struct neo_colortable *nct,
