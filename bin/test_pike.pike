@@ -355,7 +355,16 @@ int main(int argc, array(string) argv)
 	  object o;
 	  mixed a,b;
 	
-	  if(check) _verify_internals();
+	  if(check)
+	  {
+	    if(check < 0)
+	    {
+	      if(!(e % -check)) 
+		_verify_internals();
+	    }else{
+	      _verify_internals();
+	    }
+	  }
 	  if(check>3) {
 	    gc();
 	    _verify_internals();
