@@ -3317,10 +3317,11 @@ PMOD_EXPORT int add_constant(struct pike_string *name,
     if(IDENTIFIERP(n)->id_flags & ID_NOMASK)
       my_yyerror("Illegal to redefine 'nomask' identifier \"%s\"", name->str);
 
-    if(IDENTIFIER_IS_VARIABLE(ID_FROM_INT(Pike_compiler->new_program,
+    if(!TEST_COMPAT(7,0) &&
+       IDENTIFIER_IS_VARIABLE(ID_FROM_INT(Pike_compiler->new_program,
 					  n)->identifier_flags))
     {
-      my_yyerror("Illegal to redefine variable \"%s\" as constant.\n",
+      my_yyerror("Illegal to redefine variable \"%s\" as constant.",
 		 name->str);
     }
 
