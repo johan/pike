@@ -1308,7 +1308,7 @@ void push_magic_index(struct program *type, int inherit_no, int parent_level)
   o=fp->current_object;
   if(!o) error("Illegal magic index call.\n");
   
-  inherit=INHERIT_FROM_INT(fp->context.prog, fp->fun);
+  inherit=INHERIT_FROM_INT(fp->current_object->prog, fp->fun);
 
   while(parent_level--)
   {
