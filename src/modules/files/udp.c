@@ -394,7 +394,8 @@ void udp_sendto(INT32 args)
   int flags = 0, res=0, i, fd, e;
   struct sockaddr_in to;
   char *str;
-  INT32 len;
+  ptrdiff_t len;
+
   if(FD < 0)
     error("UDP: not open\n");
   
