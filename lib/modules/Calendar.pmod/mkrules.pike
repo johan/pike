@@ -202,11 +202,11 @@ class Shift
 
       yjd=y1->julian_day();
       leap=y1->leap_year();
-      int d1=LDAYL(d1,wd);
+      d1=LDAYL(d1,wd);
 
       yjd=y2->julian_day();
       leap=y2->leap_year();
-      int d2=FIX_L(d2);
+      d2=FIX_L(d2);
 
       return d1==d2;
    }
