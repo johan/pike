@@ -7552,7 +7552,7 @@ test_equal([[
 		 "constant val = TOSTR2(FOO);\n")()->val;
 ]], "")
 test_equal([[
-  compile_string(Locale.Charset("ebcdic-us")->
+  compile_string(Locale.Charset.encoder("ebcdic-us")->
     feed("#charset ebcdic-us\n"
 	 "constant val = \"abc\";\n")->drain())()->val;
 ]], "abc")
