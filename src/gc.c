@@ -532,6 +532,8 @@ void debug_gc_fatal(void *a, int flags, const char *fmt, ...)
   fprintf(stderr, "**");
   (void) VFPRINTF(stderr, fmt, args);
 
+  va_end(args);
+
   describe(a);
   if (flags & 1) locate_references(a);
   if (flags & 2)
