@@ -835,6 +835,15 @@ string efoo(string e)
 }	
 	");
 
+ // Compilation handler that hides compilation errors.
+ class handler
+ {
+   void compile_error(string file, int line, string err)
+   {
+     // werror("file: %O, line: %O, err: %O\n", file, line, err);
+   }
+ };
+
  // turn this on when the bug is found
  // master()->set_inhibit_compile_errors(lambda(){});
 
@@ -842,8 +851,9 @@ string efoo(string e)
  //_assembler_debug(20);
 
  catch {
- compile_string("import \".\";\n"
-                "int foo() { testsuite_test.efoo; }\n");
+   compile_string("import \".\";\n"
+                  "int foo() { testsuite_test.efoo; }\n",
+		  "testsuite_test", handler());
  };
  return 0;
 ]],0);
