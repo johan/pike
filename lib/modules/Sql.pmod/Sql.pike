@@ -136,6 +136,8 @@ function(string:int) decode_datetime;
 //!       loads the @tt{/etc/my.cnf@} config file to find the SSL
 //!       parameters. The same function can be achieved using the
 //!       @expr{"mysql"@} dbtype.
+//!     @type int(0..0)
+//!       Access through a UNIX-domain socket or similar.
 //!   @endmixed
 //!
 //! @param db
