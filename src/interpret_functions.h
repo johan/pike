@@ -767,7 +767,7 @@ OPCODE0(F_INC, "++x", 0, {
      )
      )
   {
-    INT32 val = ++u->integer;
+    INT_TYPE val = ++u->integer;
     pop_2_elems();
     push_int(val);
   } else {
@@ -787,7 +787,7 @@ OPCODE0(F_DEC, "--x", 0, {
      )
      )
   {
-    INT32 val = --u->integer;
+    INT_TYPE val = --u->integer;
     pop_2_elems();
     push_int(val);
   } else {
@@ -845,7 +845,7 @@ OPCODE0(F_POST_INC, "x++", 0, {
      )
      )
   {
-    INT32 val = u->integer++;
+    INT_TYPE val = u->integer++;
     pop_2_elems();
     push_int(val);
   } else {
@@ -868,7 +868,7 @@ OPCODE0(F_POST_DEC, "x--", 0, {
      )
      )
   {
-    INT32 val = u->integer--;
+    INT_TYPE val = u->integer--;
     pop_2_elems();
     push_int(val);
   } else {
@@ -1757,7 +1757,7 @@ OPCODE0(F_INDIRECT, "indirect", 0, {
 });
       
 OPCODE0(F_SIZEOF, "sizeof", 0, {
-  INT32 val = pike_sizeof(Pike_sp-1);
+  INT_TYPE val = pike_sizeof(Pike_sp-1);
   pop_stack();
   push_int(val);
 });
