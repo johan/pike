@@ -26,7 +26,7 @@
  *  Separate RWX, RW and R memory sections.
  */
 
-/* #define DLDEBUG 1 */
+#define DLDEBUG 1
 #define DL_VERBOSE 1
 
 
