@@ -111,7 +111,6 @@ RCSID("$Id$");
 
 #include "image.h"
 #include "colortable.h"
-#include "polygon.h"
 #include "builtin_functions.h"
 
 struct program *image_program;
@@ -3775,7 +3774,6 @@ void pike_module_init(void)
 
    init_font_programs();
    init_colortable_programs();
-   init_polygon_programs();
 
    add_function("`[]",image_index_magic,
 		"function(string:object)",0);
@@ -3795,7 +3793,6 @@ void pike_module_exit(void)
   }
   exit_font();
   exit_colortable();
-  exit_polygon();
 
   exit_image_gif();
   exit_image_pnm();
