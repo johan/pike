@@ -192,7 +192,6 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "las.h"
 #include "interpret.h"
-#include "lex.h"
 #include "program.h"
 #include "pike_types.h"
 #include "constants.h"
@@ -236,6 +235,11 @@ static void __yy_memcpy(char *to, char *from, int count);
   FLOAT_TYPE fnum;
   struct node_s *n;
 }
+
+%{
+/* Needs to be included after YYSTYPE is defined. */
+#include "lex.h"
+%}
 
 %{
 /* Include <stdio.h> our selves, so that we can do our magic
