@@ -147,7 +147,11 @@ DEFINE_MUTEX(oracle_serialization_mutex);
 #define PARENTOF(X) (X)->parent
 
 
-/* This will be moved to program.c - Hubbe */
+/* This define only exists in Pike 7.1.x, if it isn't defined
+ * we have to provide this function ourselves -Hubbe
+ */
+#ifndef IDENTIFIER_SCOPE_USED
+
 void *parent_storage(int depth)
 {
   struct inherit *inherit;
@@ -216,6 +220,7 @@ void *parent_storage(int depth)
 
   return o->storage + inherit->storage_offset;
 }
+#endif
 
 #ifdef PIKE_DEBUG
 void *check_storage(void *storage, unsigned long magic, char *prog)
