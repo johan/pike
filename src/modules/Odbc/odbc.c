@@ -234,9 +234,12 @@ static void f_create(INT32 args)
   }
   odbc_check_error("odbc->create", "Connect failed",
 		   SQLConnect(PIKE_ODBC->hdbc, (unsigned char *)server->str,
-			      server->len, (unsigned char *)user->str,
-			      user->len, (unsigned char *)pwd->str,
-			      pwd->len), NULL);
+			      DO_NOT_WARN(server->len),
+			      (unsigned char *)user->str,
+			      DO_NOT_WARN(user->len),
+			      (unsigned char *)pwd->str,
+			      DO_NOT_WARN(pwd->len)),
+		   NULL);
   PIKE_ODBC->flags |= PIKE_ODBC_CONNECTED;
   pop_n_elems(args);
 }

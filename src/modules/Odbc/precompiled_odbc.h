@@ -77,7 +77,7 @@ struct field_info {
 
 struct precompiled_odbc {
   HDBC hdbc;
-  int affected_rows;
+  SQLLEN affected_rows;
   unsigned int flags;
   struct pike_string *last_error;
 };
