@@ -3359,7 +3359,7 @@ AC_CACHE_VAL(pike_cv_sys_ccshared,[
 	  CCSHARED="-fPIC"
 	;;
 	*)
-	  CCSHARED="-fpic"
+	  CCSHARED="-fPIC"
 	;;
       esac
     else
