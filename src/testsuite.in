@@ -1071,8 +1071,8 @@ cond([[all_constants()->_verify_internals]],
 // sort
 test_equal(sort(({1,3,2,4})),({1,2,3,4}))
 test_equal(sort(({4,3,2,1})),({1,2,3,4}))
-test_equal([[lambda() {string *a=({1,2,3,4}); sort(({4,3,2,1}),a); return a; }()]],[[({4,3,2,1})]] )
-test_equal([[lambda() {string *a=({1,2,3,4}),*b=a+({}); sort(({4,3,2,1}),a,b); return b; }()]],[[({4,3,2,1})]] )
+test_equal([[lambda() {array(int) a=({1,2,3,4}); sort(({4,3,2,1}),a); return a; }()]],[[({4,3,2,1})]] )
+test_equal([[lambda() {array(int) a=({1,2,3,4}), b=a+({}); sort(({4,3,2,1}),a,b); return b; }()]],[[({4,3,2,1})]] )
 
 cond([[all_constants()->thread_create]],
 [[
