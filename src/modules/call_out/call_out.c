@@ -49,12 +49,12 @@ struct call_out_s
 
 #ifdef PIKE_DEBUG
 #define MESS_UP_BLOCK(X) \
- (X)->next_arr=(struct call_out_s *)-1; \
- (X)->next_fun=(struct call_out_s *)-1; \
- (X)->prev_arr=(struct call_out_s **)-1; \
- (X)->prev_fun=(struct call_out_s **)-1; \
- (X)->caller=(struct object *)-1; \
- (X)->args=(struct array *)-1; \
+ (X)->next_arr=(struct call_out_s *)(ptrdiff_t)-1; \
+ (X)->next_fun=(struct call_out_s *)(ptrdiff_t)-1; \
+ (X)->prev_arr=(struct call_out_s **)(ptrdiff_t)-1; \
+ (X)->prev_fun=(struct call_out_s **)(ptrdiff_t)-1; \
+ (X)->caller=(struct object *)(ptrdiff_t)-1; \
+ (X)->args=(struct array *)(ptrdiff_t)-1; \
  (X)->pos=-1
 #else
 #define MESS_UP_BLOCK(X)
