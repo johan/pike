@@ -125,5 +125,5 @@ mapping(string:array(mixed)) list_fields (string table, void|string wild) {
 	return ret;
 }
 #else /* !constant(Postgres.postgres) */
-#error "Prostgras support not available.\n"
+#error "Postgres support not available.\n"
 #endif /* constant(Postgres.postgres) */
