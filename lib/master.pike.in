@@ -187,7 +187,7 @@ string dirname(string x)
 {
   if(x=="") return "";
   array(string) tmp=EXPLODE_PATH(x);
-  if(sizeof(tmp)<3) return "/";
+  if(x[0]=='/' && sizeof(tmp)<3) return "/";
   return tmp[..sizeof(tmp)-2]*"/";
 }
 
