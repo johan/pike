@@ -91,7 +91,7 @@ static INLINE int min_magnitude(const unsigned INT32 c)
   return 2;
 }
 
-static INLINE unsigned INT32 generic_extract (const void *str, int size, int pos)
+static INLINE unsigned INT32 generic_extract (const void *str, int size, ptrdiff_t pos)
 {
   switch(size)
   {
@@ -103,7 +103,7 @@ static INLINE unsigned INT32 generic_extract (const void *str, int size, int pos
   return 0;
 }
 
-PMOD_EXPORT INLINE unsigned INT32 index_shared_string(struct pike_string *s, int pos)
+PMOD_EXPORT INLINE unsigned INT32 index_shared_string(struct pike_string *s, ptrdiff_t pos)
 {
 #ifdef PIKE_DEBUG
   if(pos > s->len || pos<0) {
