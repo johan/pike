@@ -920,7 +920,7 @@ class TimeRange
       return rules->timezone;
    }
 
-//! method TimeRange set_language(Language lang)
+//! method TimeRange set_language(Rule.Language lang)
 //! method TimeRange set_language(string lang)
 //! method Language language()
 //!	Set or get the current language rule.
