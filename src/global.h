@@ -294,6 +294,12 @@ typedef struct p_wchar_p
 #define NDEBUG
 #endif
 
+#ifdef INTERNAL_PROFILING
+#define DO_IF_INTERNAL_PROFILING(X) X
+#else
+#define DO_IF_INTERNAL_PROFILING(X)
+#endif
+
 #if defined(__GNUC__) && !defined(PIKE_DEBUG) && !defined(lint)
 #define INLINE inline
 #else

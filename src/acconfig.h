@@ -82,6 +82,9 @@
 /* Enable profiling */
 #undef PROFILING
 
+/* Enable internal profiling */
+#undef INTERNAL_PROFILING
+
 /* Define for solaris */
 #undef SOLARIS
 
@@ -311,7 +314,7 @@
 /* Define if we can declare 'extern char **environ' */
 #undef DECLARE_ENVIRON
 
-/* What byteorder does your machie use most machines use 4321, PC use 1234 */
+/* The byteorder your machine use, most use 4321, PC use 1234 */
 #define PIKE_BYTEORDER 0
 
 /* What alignment do 32-bit integers need */
