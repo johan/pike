@@ -335,6 +335,9 @@ INT32 define_function(struct pike_string *name,
 		      INT16 flags,
 		      INT8 function_flags,
 		      union idptr *func);
+int really_low_find_shared_string_identifier(struct pike_string *name,
+					     struct program *prog,
+					     int see_static);
 int low_find_shared_string_identifier(struct pike_string *name,
 				      struct program *prog);
 struct ff_hash;
