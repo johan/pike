@@ -6,37 +6,6 @@
  * Henrik Grubbström 20010720
  */
 
-void ins_pointer(INT32 ptr)
-{
-  add_to_program(ptr);
-}
-
-INT32 read_pointer(INT32 off)
-{
-  return Pike_compiler->new_program->program[off];
-}
-
-void upd_pointer(INT32 off, INT32 ptr)
-{
-  Pike_compiler->new_program->program[off] = ptr;
-}
-
-void ins_align(INT32 align)
-{
-  /* Already aligned... */
-}
-
-void ins_byte(INT32 val)
-{
-  add_to_program(val);
-}
-
-void ins_data(INT32 val)
-{
-  add_to_program(val);
-}
-
-
 #define CALL_ABSOLUTE(X) do {						\
     INT32 delta_;							\
     struct program *p_ = Pike_compiler->new_program;			\
@@ -95,4 +64,3 @@ void ins_f_byte_with_2_args(unsigned int a,
   ins_f_byte(a);
   return;
 }
-
