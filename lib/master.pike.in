@@ -837,7 +837,7 @@ static program low_findprog(string pname,
 	resolv_debug ("low_findprog %s: failed to load binary\n", fname);
 	objects[ret] = no_value;
 	ret=programs[fname]=0;	// Negative cache.
-	if (objectp (err) && err->is_dlopen_error)
+	if (objectp (err) && err->is_module_load_error)
 	  // Do not treat errors from dlopen(3) as exceptions since in
 	  // a dist we can have .so files that are dynamically linked
 	  // against libraries that don't exist on the system, and in
@@ -848,7 +848,7 @@ static program low_findprog(string pname,
 	  // from dlerror(3) doesn't allow us to tell those from other
 	  // errors.
 	  call_compile_warning (handler, fname,
-				"Failed to load library: %s\n", err->dlerror);
+				"Failed to load library: %s\n", err->reason);
 	else
 	  compile_cb_rethrow (err);
       }
