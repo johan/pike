@@ -98,7 +98,6 @@ BLOCK_ALLOC(mapping, 511)
 
 
 
-static void check_mapping_type_fields(struct mapping *m);
 PMOD_EXPORT struct mapping *debug_allocate_mapping(int size);
 PMOD_EXPORT void really_free_mapping_data(struct mapping_data *md);
 PMOD_EXPORT void do_free_mapping(struct mapping *m);
