@@ -5186,6 +5186,26 @@ void my_yyerror(char *fmt,...)  ATTRIBUTE((format(printf,1,2)))
   va_end(args);
 }
 
+struct pike_string *format_exception_for_error_msg (struct svalue *thrown)
+{
+  struct pike_string *s = NULL;
+
+  push_svalue (thrown);
+  SAFE_APPLY_MASTER ("describe_error", 1);
+
+  if (sp[-1].type == T_STRING) {
+    f_string_trim_all_whites(1);
+    push_constant_text("\n");
+    push_constant_text(" ");
+    f_replace(3);
+    return (--sp)->u.string;
+  }
+  else {
+    pop_stack();
+    return NULL;
+  }
+}
+
 void yy_describe_exception(struct svalue *thrown)
 {
   /* FIXME: Doesn't handle wide string error messages. */

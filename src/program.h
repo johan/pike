@@ -637,6 +637,7 @@ PMOD_EXPORT struct pike_string *low_get_line(PIKE_OPCODE_T *pc,
 PMOD_EXPORT struct pike_string *get_line(PIKE_OPCODE_T *pc,
 					 struct program *prog, INT32 *linep);
 void my_yyerror(char *fmt,...)  ATTRIBUTE((format(printf,1,2)));
+struct pike_string *format_exception_for_error_msg (struct svalue *thrown);
 void yy_describe_exception(struct svalue *thrown);
 struct supporter_marker;
 void verify_supporters(void);
