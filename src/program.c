@@ -3795,6 +3795,11 @@ int define_variable(struct pike_string *name,
 						  n)->storage_offset,
 				 ID_FROM_INT(Pike_compiler->new_program, n)->
 				 run_time_type);
+	/* Copy IDENTIFIER_NO_THIS_REF state from the old variable.
+	 */
+	ID_FROM_INT(Pike_compiler->new_program, n2)->identifier_flags |=
+	  ID_FROM_INT(Pike_compiler->new_program, n)->identifier_flags &
+	  IDENTIFIER_NO_THIS_REF;
 	/* Hide the old variable. */
 	Pike_compiler->new_program->identifier_references[n].id_flags |=
 	  ID_STATIC|ID_PRIVATE;
