@@ -141,5 +141,5 @@ string extract(string filename, string imgdest, int(0..1) rootless, string build
   if(result && sizeof(result))
     return Tools.AutoDoc.ProcessXML.moveImages(result, builddir, imgdest);
 
-  return "";
+  return "\n";
 }
