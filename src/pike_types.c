@@ -1076,7 +1076,7 @@ static int low_and_push_complex_pike_type(char *type)
   {
     int new_complex;
     type++;
-    new_complex |= low_and_push_complex_pike_type(type);
+    new_complex = low_and_push_complex_pike_type(type);
     if (new_complex) {
       push_type(T_OR);
       is_complex = 1;
