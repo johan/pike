@@ -822,6 +822,16 @@ void f_indices(INT32 args)
     a = program_indices(sp[-args].u.program);
     break;
 
+  case T_FUNCTION:
+    {
+      struct program *p = program_from_svalue(sp-args);
+      if (p) {
+	a = program_indices(p);
+	break;
+      }
+    }
+    /* FALL THROUGH */
+
   default:
     PIKE_ERROR("indices", "Bad argument 1.\n", sp, args);
     return; /* make apcc happy */
@@ -876,6 +886,16 @@ void f_values(INT32 args)
   case T_PROGRAM:
     a = program_values(sp[-args].u.program);
     break;
+
+  case T_FUNCTION:
+    {
+      struct program *p = program_from_svalue(sp - args);
+      if (p) {
+	a = program_values(p);
+	break;
+      }
+    }
+    /* FALL THROUGH */
 
   default:
     PIKE_ERROR("values", "Bad argument 1.\n", sp, args);
