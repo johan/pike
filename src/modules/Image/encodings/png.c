@@ -1336,8 +1336,13 @@ static void image_png__decode(INT32 args)
 **!	normal options:
 **!	    "alpha":image object
 **!		Use this image as alpha channel 
-**!		(Note that PNG alpha channel is grey.
-**!		 The values are calculated by (r+2g+b)/3.)
+**!		(Note: PNG alpha channel is grey.
+**!		 The values are calculated by (r+2g+b)/4.)
+**!
+**!	    "palette":colortable object
+**!		Use this as palette for pseudocolor encoding
+**!		(Note: encoding with alpha channel and pseudocolor
+**!		 at the same time are not supported)
 **!
 **!	</pre>
 **!
