@@ -6941,6 +6941,9 @@ $bundle_info])
 	  # Install bundle.
 	  echo "Installing bundle $bundle in ${pike_bundle_prefix}..."
 	  ${MAKE-make} install || exit 1
+
+	  # Done.
+	  echo "Bundle $bundle installed successfully."
 	) || exit 1
       fi
     done
