@@ -817,4 +817,3 @@ constant check = unimplemented;
 constant close = unimplemented;
 constant expunge = unimplemented;
 constant store = unimplemented;
-constant copy = unimplemented;
