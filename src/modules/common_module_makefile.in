@@ -132,7 +132,7 @@ module.pmod: Makefile $(MODULE_PMOD_IN)
 
 
 clean:	
-	-rm -f *.o *.fail *.obj *.a *.so stamp-h linker_options modlist_headers modlist_segment testsuite make_variables dependencies $(MODULE_CLEAN_EXTRA); rm -rf module.pmod plib
+	-rm -f *.o *.fail *.obj *.a *.so stamp-h linker_options modlist_headers modlist_segment testsuite make_variables dependencies $(MODULE_CLEAN_EXTRA); rm -rf module.pmod plib refdoc doc
 	@for a in '' $(MODULE_SUBDIRS) ; do if test "x$$a" = "x"; then :; else echo cleaning $$a ; ( cd $$a ; $(MAKE) $(MAKE_FLAGS) clean ) ; fi ; done
 
 spotless: clean
@@ -220,9 +220,14 @@ modref:	join_autodoc modref.xml
 module_join_autodoc: extract_autodoc refdoc/modref
 	$(RUNPIKE) -x join_autodoc --quiet --post-process  "plib/autodoc.xml" "plib/refdoc"
 
-module_modref: module_join_autodoc modref.xml
-	cd $(SYSTEM_DOC_PATH)/src && $(MAKE) $(MAKE_FLAGS) BUILDDIR="$(FULL_SRCDIR)/plib" DESTDIR="$(FULL_SRCDIR)/refdoc" modref
+module_modref: module_join_autodoc module_modref.xml
+	cd $(SYSTEM_DOC_PATH)/src && $(MAKE) $(MAKE_FLAGS) BUILDDIR="$(FULL_SRCDIR)/plib" DESTDIR="$(FULL_SRCDIR)/refdoc/" module_modref
 
 modref.xml: plib/autodoc.xml $(SYSTEM_DOC_PATH)/src/structure/modref.xml
 	  $(RUNPIKE) -x assemble_autodoc $(SYSTEM_DOC_PATH)/src/structure/modref.xml \
 	  plib/autodoc.xml >plib/modref.xml
+
+module_modref.xml: plib/autodoc.xml $(SYSTEM_DOC_PATH)/src/structure/module_modref.xml
+	  $(RUNPIKE) -x assemble_autodoc $(SYSTEM_DOC_PATH)/src/structure/module_modref.xml \
+	  plib/autodoc.xml >plib/module_modref.xml
+
