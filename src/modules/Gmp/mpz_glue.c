@@ -143,11 +143,11 @@ static void gmp_push_int64 (INT64 i)
 	((SIZEOF_INT64 + SIZEOF_LONG - 1) / SIZEOF_LONG - 1)
 	/* The above is the position of the top unsigned long in the INT64. */
 	* ULONG_BITS;
-      mpz_set_ui (mpz, (i >> n) & ULONG_MAX);
+      mpz_set_ui (mpz, (unsigned long) (i >> n));
       while (n) {
 	n -= ULONG_BITS;
 	mpz_mul_2exp (mpz, mpz, ULONG_BITS);
-	mpz_add_ui (mpz, mpz, (i >> n) & ULONG_MAX);
+	mpz_add_ui (mpz, mpz, (unsigned long) (i >> n));
       }
     }
 #endif
@@ -308,11 +308,11 @@ int get_new_mpz(MP_INT *tmp, struct svalue *s,
 	  ((SIZEOF_INT_TYPE + SIZEOF_LONG - 1) / SIZEOF_LONG - 1)
 	  /* The above is the position of the top unsigned long in the INT_TYPE. */
 	  * ULONG_BITS;
-	mpz_set_ui (tmp, (i >> n) & ULONG_MAX);
+	mpz_set_ui (tmp, (unsigned long) (i >> n));
 	while (n) {
 	  n -= ULONG_BITS;
 	  mpz_mul_2exp (tmp, tmp, ULONG_BITS);
-	  mpz_add_ui (tmp, tmp, (i >> n) & ULONG_MAX);
+	  mpz_add_ui (tmp, tmp, (unsigned long) (i >> n));
 	}
       }
 #endif
@@ -1724,8 +1724,7 @@ PIKE_MODULE_EXIT
     mpz_clear (mpz_int_type_min);
 #ifdef INT64
     mpz_clear (mpz_int64_min);
-    push_int64 = bootstrap_push_int64;
-    int64_from_bignum = NULL;
+    hook_in_int64_funcs (NULL, NULL);
 #endif
   }
 #endif
@@ -1886,8 +1885,7 @@ PIKE_MODULE_INIT
     mpz_init (mpz_int64_min);
     mpz_setbit (mpz_int64_min, INT64_BITS);
     mpz_neg (mpz_int64_min, mpz_int64_min);
-    push_int64 = gmp_push_int64;
-    int64_from_bignum = gmp_int64_from_bignum;
+    hook_in_int64_funcs (gmp_push_int64, gmp_int64_from_bignum);
 #endif
 
 #if 0
