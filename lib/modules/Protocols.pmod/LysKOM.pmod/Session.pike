@@ -921,5 +921,5 @@ object|void send_message(string textstring, mapping options)
 
 void register_async_message_callback(function(int,int,string:void) cb)
 {
-  s->con->con->add_async_callback("async-send-message", cb);
+  con->con->add_async_callback("async-send-message", cb);
 }
