@@ -109,14 +109,15 @@ void f_copy_value(INT32 args)
 
 void f_ctime(INT32 args)
 {
-  INT32 i;
+  time_t i;
+
   if(!args)
     error("Too few arguments to ctime()\n");
   if(sp[-args].type != T_INT)
     error("Bad argument 1 to ctime()\n");
-  i=sp[-args].u.integer;
+  i=(time_t)sp[-args].u.integer;
   pop_n_elems(args);
-  push_string(make_shared_string(ctime((time_t *)&i)));
+  push_string(make_shared_string(ctime(&i)));
 }
 
 void f_lower_case(INT32 args)
