@@ -829,7 +829,7 @@ static mapping ext2type = ([
 
 //! @decl string ext_to_media_type(string extension)
 //! @belongs MIME
-//! Returns the MIME media type for the provided filename extension @[ext].
+//! Returns the MIME media type for the provided filename @[extension].
 //! Zero will be returned on unknown file extensions.
 
 string `()(string ext) {
