@@ -3507,6 +3507,7 @@ static void _image_outline(INT32 args,int mask)
 	 }
       d+=width;
    }
+   free(tmp);
 
    if (matrix!=defaultmatrix) free(matrix);
 
