@@ -103,7 +103,7 @@ if [ X$R = Xyes -o X$V = Xyes ]; then
   OUTPUT="$OUTPUT `echo $RAW_VERSION|sed -e's/[^0-9.]*//g'`"
   # If there are more than one processor, apply "-smp"
   NUMPROCS="`getntenv NUMBER_OF_PROCESSORS`"
-  if [ "x$NUMPROCS" != "x" -a "$NUMPROCS" -gt 1 ]; then
+  if [ "x$NUMPROCS" != "x" ] && [ "$NUMPROCS" -gt 1 ]; then
     OUTPUT="$OUTPUT-smp"
   fi
 fi
