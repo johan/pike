@@ -339,7 +339,7 @@ class fetch
   {
     werror("fetch->process_fetch_attr(%O)\n", atom);
 
-    if (atom->type != atom)
+    if (atom->type != "atom")
       return 0;
 
     string wanted = lower_case(atom->atom);
