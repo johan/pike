@@ -609,7 +609,7 @@ static void decode_resources( struct buffer *b )
 	push_constant_text( "guides" );
 	{
 	  int i,num_guides;
-	  short magic1, magic2, magic3, magic4, magic5, magic6; // from gimp.
+	  short magic1, magic2, magic3, magic4, magic5, magic6;/* from gimp. */
 	  magic1 = read_short( &data ); magic2 = read_short( &data );
 	  magic3 = read_short( &data ); magic4 = read_short( &data );
 	  magic5 = read_short( &data ); magic6 = read_short( &data );
