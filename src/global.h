@@ -325,6 +325,8 @@ typedef struct p_wchar_p
 #define DO_IF_SECURITY(X)
 #endif
 
+/* Used by the AutoBuild system to mark known warnings. */
+#define DO_NOT_WARN(X)	(X)
 
 #include "port.h"
 #include "dmalloc.h"

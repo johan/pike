@@ -38,7 +38,6 @@ extern int image_cpuid;
 #define RGBL_TO_RGB(RGB,RGBL) (((RGB).r=COLORL_TO_COLOR((RGBL).r)),((RGB).g=COLORL_TO_COLOR((RGBL).g)),((RGB).b=COLORL_TO_COLOR((RGBL).b)))
 
 /* Some marcos to avoid loss of precision warnings. */
-#define DO_NOT_WARN(X)	(X)
 #ifdef __ECL
 static inline int DOUBLE_TO_INT(double d)
 {
