@@ -730,6 +730,7 @@ static int do_docode2(node *n, INT16 flags)
 	tmp1=do_docode(CDR(n),DO_LVALUE);
 	if(match_types(CDR(n)->type, array_type_string) ||
 	   match_types(CDR(n)->type, string_type_string) ||
+	   match_types(CDR(n)->type, object_type_string) ||
 	   match_types(CDR(n)->type, multiset_type_string) ||
 	   match_types(CDR(n)->type, mapping_type_string))
 	{
