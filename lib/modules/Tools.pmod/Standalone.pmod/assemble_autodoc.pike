@@ -1,3 +1,7 @@
+// $Id$
+
+// AutoDoc mk II assembler
+
 #define Node Parser.XML.Tree.Node
 #define XML_ELEMENT Parser.XML.Tree.XML_ELEMENT
 #define XML_TEXT Parser.XML.Tree.XML_TEXT
