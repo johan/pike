@@ -274,7 +274,11 @@ void *MEMSET(void *s,int c,size_t n)
 
 #if (0 && defined(TRY_USE_MMX)) || !defined(HAVE_MEMCPY) && !defined(HAVE_BCOPY)
 #ifdef TRY_USE_MMX
+#ifdef HAVE_MMX_H
 #include <mmx.h>
+#else
+#include <asm/mmx.h>
+#endif
 #endif
 PMOD_EXPORT void MEMCPY(void *bb,const void *aa,size_t s)
 {

@@ -61,7 +61,11 @@ RCSID("$Id$");
 #endif
 
 #ifdef TRY_USE_MMX
+#ifdef HAVE_MMX_H
 #include <mmx.h>
+#else
+#include <asm/mmx.h>
+#endif
 int try_use_mmx;
 #endif
 
@@ -311,7 +315,7 @@ int dbm_main(int argc, char **argv)
   }
 
   TRACE((stderr, "Default master at \"%s\"...\n", master_file));
-  
+
   for(e=1; e<argc; e++)
   {
     TRACE((stderr, "Parse argument %d:\"%s\"...\n", e, argv[e]));
