@@ -512,11 +512,14 @@ void f_zero_type(INT32 args)
   if(args < 1)
     error("Too few arguments to zero_type()\n");
   if(sp[-args].type != T_INT)
-    error("Bad argument 1 to zero_type.\n");
-
-  pop_n_elems(args-1);
-  sp[-1].u.integer=sp[-1].subtype;
-  sp[-1].subtype=NUMBER_NUMBER;
+  {
+    pop_n_elems(args);
+    push_int(0);
+  }else{
+    pop_n_elems(args-1);
+    sp[-1].u.integer=sp[-1].subtype;
+    sp[-1].subtype=NUMBER_NUMBER;
+  }
 }
 
 void f_all_constants(INT32 args)
