@@ -1298,12 +1298,10 @@ opt_function_type: '('
   }
   function_type_list optional_dot_dot_dot ':'
   {
+    /* Add the many type if there is none. */
     if ($4)
     {
-      if ($3) {
-	push_type(T_MANY);
-	type_stack_reverse();
-      } else {
+      if (!$3) {
 	/* function_type_list ends with a comma, or is empty.
 	 * FIXME: Should this be a syntax error or not?
 	 */
@@ -1311,14 +1309,17 @@ opt_function_type: '('
 	  yyerror("Missing type before ... .");
 	}
 	type_stack_reverse();
-	push_type(T_MANY);
+	type_stack_mark();
 	push_type(T_MIXED);
       }
     }else{
       type_stack_reverse();
-      push_type(T_MANY);
+      type_stack_mark();
       push_type(T_VOID);
     }
+    /* Rotate T_MANY into the proper position. */
+    push_type(T_MANY);
+    type_stack_reverse();
     type_stack_mark();
   }
   type7 ')'
