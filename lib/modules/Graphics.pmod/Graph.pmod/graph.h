@@ -11,7 +11,7 @@ private constant LITET = 1.0e-38;
 private constant STORTLITET = 1.0e-30;
 private constant STORT = 1.0e30;
 
-#define GETFONT(WHATFONT) ((diagram_data->WHATFONT) || diagram_data->font);
+#define GETFONT(WHATFONT) ((diagram_data->WHATFONT) || diagram_data->font)
 
 //#define BG_DEBUG 1
 
