@@ -710,7 +710,7 @@ PIKECLASS Shuffler
   
 
   PIKEFUN void set_backend( object b )
-    /*! @decl void set_backend( Backend b );
+    /*! @decl void set_backend( Pike.Backend b );
      *! Set the backend that will be used by all @[Shuffle] objects created
      *! from this shuffler.
      *! 
