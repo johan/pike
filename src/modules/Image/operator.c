@@ -579,7 +579,6 @@ void image_operator_equal(INT32 args)
    if (s1==s2)
    {
       pop_n_elems(args);
-fprintf(stderr,"ok 1\n");
       push_int(1);
       return; /* same image is equal */
    }
