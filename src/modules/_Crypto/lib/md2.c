@@ -54,7 +54,8 @@ void md2_update(struct md2_ctx *ctx,
   unsigned INT32 L;
   while (len) 
   {
-    L = (16 < (len + ctx->count)) ? (16-ctx->count) : len;
+    L = (((unsigned INT32)16) < (len + ctx->count)) ?
+      ((unsigned INT32)(16-ctx->count)) : len;
     memcpy(ctx->buf+ctx->count, buffer, L);
     ctx->count+=L;
     buffer+=L;
