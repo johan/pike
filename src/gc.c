@@ -2222,3 +2222,13 @@ void f__gc_status(INT32 args)
 
   f_aggregate_mapping(14);
 }
+
+void cleanup_gc(void)
+{
+#ifdef PIKE_DEBUG
+  if (gc_evaluator_callback) {
+    remove_callback(gc_evaluator_callback);
+    gc_evaluator_callback = NULL;
+  }
+#endif /* PIKE_DEBUG */
+}
