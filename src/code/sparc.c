@@ -477,9 +477,9 @@ void sparc_escape_catch(void)
   /* add %o7, 24, %i0 */
   SPARC_ADD(SPARC_REG_I0, SPARC_REG_O7, 6*4, 1);
 #endif /* 0 */
-  /* stw %i0, [ %pike_fp, %offset(pike_frame, pc) ] */
+  /* stw %i0, [ %pike_fp, %offset(pike_frame, return_addr) ] */
   SPARC_STW(SPARC_REG_I0, SPARC_REG_PIKE_FP,
-	    OFFSETOF(pike_frame, pc), 1);
+	    OFFSETOF(pike_frame, return_addr), 1);
 #if 0
   /* The following code is Sparc V9 only code. */
   /* return %i7 + 8 */
