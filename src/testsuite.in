@@ -36,6 +36,21 @@ test_eq(-8, -0b1000);
 test_eq(16, 0b10000);
 test_eq(-16, -0b10000);
 
+test_any([[
+class X
+{
+  int Ack(int M, int N) {
+    if (M == 0) return( N + 1 );
+    if (N == 0) return( Ack(M - 1, 1) );
+    return( Ack(M - 1, Ack(M, (N - 1))) );
+  }
+};
+
+class Y { inherit X; };
+
+return Y()->Ack(2,2);
+]],7)
+
 test_eval_error([[mixed x; return mkmapping(x,x)]]);
 
 test_eval_error([[class Foo {
