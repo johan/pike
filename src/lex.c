@@ -550,7 +550,11 @@ static int yylex2(YYSTYPE *yylval)
 	}
 	
       badhash:
-	my_yyerror("Unknown directive #%s.",buf);
+	if (sizeof(buf) < 1024) {
+	  my_yyerror("Unknown preprocessor directive #%s.",buf);
+	} else {
+	  my_yyerror("Unknown preprocessor directive.");
+	}
 	SKIPUPTO('\n');
 	continue;
       }
