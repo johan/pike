@@ -931,7 +931,9 @@ import SSL.constants;
 		})) ;
   }
 
+//! @ignore
 IF_ELSE_PAGED_SEARCH(static multiset(string) supported_controls;,)
+//! @endignore
 
   //! Search LDAP directory.
   //!
