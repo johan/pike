@@ -285,9 +285,9 @@ string fixdesc(string s,string prefix,string where)
 	 s+=htmlify(t)+make_nice_reference(u,prefix,u);
       t=v;
    }
-   if (search(s,"<ref")!=-1)
+   if (search(t,"<ref")!=-1)
    {
-      werror("%O\n",s);
+      werror("%O\n",t);
       error("buu\n");
    }
 
