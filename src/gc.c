@@ -2048,7 +2048,8 @@ int do_gc(void)
 #ifdef PIKE_DEBUG
   destroy_count = 0;
 #endif
-  for (; kill_list; kill_list = NEXT(kill_list)) {
+  while (kill_list) {
+    struct gc_frame *next = NEXT(kill_list);
     struct object *o = (struct object *) kill_list->data;
 #ifdef PIKE_DEBUG
     if ((get_marker(kill_list->data)->flags & (GC_LIVE|GC_LIVE_OBJ)) !=
@@ -2066,6 +2067,8 @@ int do_gc(void)
 #ifdef PIKE_DEBUG
     destroy_count++;
 #endif
+    really_free_gc_frame(kill_list);
+    kill_list = next;
   }
 
   GC_VERBOSE_DO(fprintf(stderr, "| kill: %u objects killed, %d things really freed\n",
