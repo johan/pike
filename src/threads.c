@@ -1676,7 +1676,7 @@ void f_thread_id_id_number(INT32 args)
   push_int64(PTR_TO_INT(THREAD_T_TO_PTR(THIS_THREAD->id)));
 }
 
-/*! @decl mixed result()
+/*! @decl mixed wait()
  *!
  *! Waits for the thread to complete, and then returns
  *! the value returned from the thread function.
