@@ -58,7 +58,7 @@ struct pike_sendfile
 {
   struct object *self;
 
-  ptrdiff_t sent;
+  LONGEST sent;
 
   struct array *headers;
   struct array *trailers;
@@ -76,8 +76,8 @@ struct pike_sendfile
   struct my_file *from;
   struct my_file *to;
 
-  ptrdiff_t offset;
-  ptrdiff_t len;
+  LONGEST offset;
+  LONGEST len;
 
   struct iovec *hd_iov;
   struct iovec *tr_iov;
