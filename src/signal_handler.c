@@ -148,7 +148,7 @@ RCSID("$Id$");
 #define PIKE_BADF_LIMIT	1024
 #endif /* !PIKE_BADF_LIMIT */
 
-#define PROC_DEBUG
+/* #define PROC_DEBUG */
 
 #ifndef __NT__
 #define USE_PID_MAPPING
