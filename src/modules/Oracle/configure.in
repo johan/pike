@@ -217,7 +217,12 @@ if test x$with_oracle = xyes; then
     AC_MSG_CHECKING(for working Oracle libs)
     AC_CACHE_VAL(pike_cv_working_oracle,[
       AC_TRY_COMPILE([
+#ifdef HAVE_OCI_H
 #include <oci.h>
+#else /* !HAVE_OCI_H */
+#include <ocidfn.h>
+#include <ociapr.h>
+#endif /* HAVE_OCI_H */
 ],[
   OCIInitialize(OCI_DEFAULT,0,0,0,0);
 ],pike_cv_working_oracle=yes,pike_cv_working_oracle=no)
