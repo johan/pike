@@ -86,6 +86,7 @@ void set_mode( int fullscreen, int depth,
   window->realize();
   if( fullscreen )
   {
+#if constant(GTK.move_cursor_abs)
 #if constant( ChangeRes.change_res )
     restore_res =
       lambda() {
@@ -143,6 +144,9 @@ void set_mode( int fullscreen, int depth,
 			      }
 			    }
 			  );
+#else /* !constant(GTK.move_cursor_abs) */
+    error("Full screen mode not supported with this version of GTK.\n");
+#endif /* constant(GTK.move_cursor_abs) */
   }
 #if constant( ChangeRes.change_res )
   else
