@@ -3504,3 +3504,39 @@ struct pike_string *make_pike_type(char *t)
 {
   return make_shared_binary_string(t, type_length(t));
 }
+
+
+int pike_type_allow_premature_toss(char *type)
+{
+ again:
+  switch(EXTRACT_UCHAR(type++))
+  {
+    case T_NOT:
+      return !pike_type_allow_premature_toss(type);
+
+    case T_OBJECT:
+    case T_MIXED:
+    case T_FUNCTION:
+      return 0;
+
+    case T_SCOPE:
+    case T_ASSIGN:
+      type++;
+      goto again;
+
+    case T_OR:
+    case T_MAPPING:
+      if(!pike_type_allow_premature_toss(type)) return 0;
+    case T_AND:
+      type+=type_length(type);
+    case T_ARRAY:
+    case T_MULTISET:
+      goto again;
+
+    case T_PROGRAM:
+    case T_INT:
+    case T_FLOAT:
+    case T_STRING:
+      return 1;
+  }
+}

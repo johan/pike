@@ -201,6 +201,7 @@ void yyexplain_nonmatching_types(struct pike_string *type_a,
 				 struct pike_string *type_b,
 				 int flags);
 struct pike_string *make_pike_type(char *t);
+int pike_type_allow_premature_toss(char *type);
 /* Prototypes end here */
 
 /* "Dynamic types" - use with ADD_FUNCTION_DTYPE */
