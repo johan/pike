@@ -21,6 +21,13 @@
  * Argument: Stdio.File instance pointing to a normal file
  */
 
+#ifndef S_ISREG
+#ifdef S_IFREG
+#define S_ISREG(mode)	(((mode) & (S_IFMT)) == (S_IFREG))
+#else /* !S_IFREG */
+#define S_ISREG(mode)	(((mode) & (_S_IFMT)) == (_S_IFREG))
+#endif /* S_IFREG */
+#endif /* !S_ISREG */
 
 static struct program *Fd_ref_program = NULL;
 
