@@ -66,8 +66,13 @@ class _Request
    
    mixed _sync(int call,mixed ... data)
    {
+#if constant(thread_create)
+      _async(call,@data);
+      return `()();
+#else
       mixed res=raw->send_sync(encode(call,@data),_reply);
       return _reply(res);
+#endif
    }
 
    mixed _reply(object|array what)
