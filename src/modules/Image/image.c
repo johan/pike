@@ -495,12 +495,28 @@ THREADS_DISALLOW();
 **!	(xsize*ysize)&MAXINT is small enough to allocate.
 */
 
+int image_too_big(INT_TYPE xsize,INT_TYPE ysize)
+{
+   register INT_TYPE a,b,c,d,z;
+
+   if (xsize<0 || ysize<0) return 1;
+
+   a=(xsize>>16);
+   b=xsize&0xffff;
+   c=(ysize>>16);
+   d=ysize&0xffff;
+
+   if ((a&&c) || ((b*d>>16)&0xffff) + (a*d) + (b*c) > 0x7fff) return 1;
+
+   return 0;
+}
+
 void image_create(INT32 args)
 {
    if (args<2) return;
    if (sp[-args].type!=T_INT||
        sp[1-args].type!=T_INT)
-      error("Illegal arguments to Image.image->create()\n");
+      error("Image.image->create(): Illegal arguments\n");
 
    getrgb(THIS,2,args,"Image.image->create()"); 
 
@@ -511,10 +527,12 @@ void image_create(INT32 args)
    if (THIS->xsize<0) THIS->xsize=0;
    if (THIS->ysize<0) THIS->ysize=0;
 
+   if (image_too_big(THIS->xsize,THIS->ysize)) 
+      error("Image.image->create(): image too large (>2Gpixels)\n");
+
    THIS->img=malloc(sizeof(rgb_group)*THIS->xsize*THIS->ysize +1);
    if (!THIS->img)
-     error("out of memory\n");
-
+     error("Image.image->create(): out of memory\n");
 
    img_clear(THIS->img,THIS->rgb,THIS->xsize*THIS->ysize);
    pop_n_elems(args);
