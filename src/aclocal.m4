@@ -749,6 +749,7 @@ dnl Checks if bundle_name is available, and if it is enables it and
 dnl invalidates the cache variable specified in invalidate_set.
 dnl Otherwise if opt_error_msg has been specified performs an error exit.
 define(PIKE_ENABLE_BUNDLE, [
+  test -f [$1].bundle && rm -f [$1].bundle
   if test "$pike_bundle_dir" = ""; then
     # Bundles not available.
     ifelse([$3], , :, [ AC_MSG_ERROR([$3]) ])
