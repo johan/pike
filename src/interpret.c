@@ -1298,7 +1298,7 @@ void slow_check_stack(void)
   for(m=mark_stack;m<mark_sp;m++)
   {
     if(*m < s)
-      fatal("Mark stack failiure.\n");
+      fatal("Mark stack failure.\n");
 
     s=*m;
   }
