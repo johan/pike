@@ -438,6 +438,7 @@ void init_image_xbm( )
     add_constant(s,sp-1,0);
     free_string(s);
   }
+  pop_stack();
   param_name=make_shared_string("name");
   param_fg=make_shared_string("fg");
   param_bg=make_shared_string("bg");

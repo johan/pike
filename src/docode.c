@@ -676,7 +676,9 @@ static int do_docode2(node *n,int flags)
 				!(CAR(n)->tree_info & OPT_EXTERNAL_DEPEND));
 	    emit(F_APPLY,tmp1);
 	  }
-	  if(n->type == void_type_string) return 0;
+	  if(n->type == void_type_string)
+	    return 0;
+
 	  return 1;
 	}else{
 	  if(CAR(n)->u.sval.u.object == fake_object)

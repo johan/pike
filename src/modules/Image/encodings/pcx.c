@@ -599,6 +599,7 @@ void init_image_pcx( )
     add_constant(s,sp-1,0);
     free_string(s);
   }
+  pop_stack();
   opt_raw=make_shared_string("raw");
   opt_dpy=make_shared_string("dpy");
   opt_xdpy=make_shared_string("xdpy");

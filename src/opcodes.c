@@ -527,6 +527,8 @@ void f_cast(void)
 {
 #ifdef PIKE_DEBUG
   struct svalue *save_sp=sp;
+  if(sp[-2].type != T_STRING)
+    fatal("Cast expression destroyed stack or left droppings!\n");
 #endif
   o_cast(sp[-2].u.string,
 	 compile_type_to_runtime_type(sp[-2].u.string));

@@ -28,6 +28,9 @@ struct callable
   struct pike_string *type;
   struct pike_string *name;
   INT16 flags;
+#ifdef PIKE_DEBUG
+  INT8 may_return_void;
+#endif
   optimize_fun optimize;
   docode_fun docode;
   struct callable *next;

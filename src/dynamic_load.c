@@ -279,10 +279,20 @@ void f_load_module(INT32 args)
   new_module->init=init;
   new_module->exit=exit;
 
-  pop_n_elems(args);
   start_new_program();
+#ifdef PIKE_DEBUG
+  { struct svalue *save_sp=sp;
+#endif
   (*(modfun)init)();
+#ifdef PIKE_DEBUG
+  if(sp != save_sp)
+    fatal("load_module(%s) left %d droppings on stack!\n",
+	  module_name,
+	  sp-save_sp);
+  }
+#endif
 
+  pop_n_elems(args);
   push_program(end_program());
 }
 

@@ -946,6 +946,7 @@ void init_image_tga( )
      add_constant(s,sp-1,0);
      free_string(s);
    }
+   pop_stack();
    param_alpha=make_shared_string("alpha");
    param_raw=make_shared_string("raw");
 }

@@ -1320,6 +1320,7 @@ void init_image_xcf()
     add_constant(s,sp-1,0);
     free_string(s);
   }
+  pop_stack();
 #define STRING(X) s_##X = make_shared_binary_string(#X,sizeof( #X )-sizeof(""));
 #include "xcf_constant_strings.h"
 #undef STRING

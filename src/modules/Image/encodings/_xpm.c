@@ -400,6 +400,7 @@ void init_image__xpm( )
     add_constant(s,sp-1,0);
     free_string(s);
   }
+  pop_stack();
 }
 
 void exit_image__xpm(void)
