@@ -148,3 +148,4 @@ void image_polyfill(INT32 args);
 /* orient.c */
 
 void image_orient(INT32 args);
+void image_orient4(INT32 args);
