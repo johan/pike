@@ -9628,8 +9628,10 @@ test_any([[
       proc->cont();
 
       // Give it some time to settle down after initialization.
-      sleep(initial_sleep);
-      initial_sleep=1;
+      if (initial_sleep) {
+	sleep(initial_sleep);
+	initial_sleep=0;
+      }
 
       // Check that we can block deadly signals.
       proc->kill(signum("TERM"));
