@@ -1681,8 +1681,15 @@ string describe_backtrace(mixed trace, void|int linewidth)
 	  
 	  if(sizeof(tmp)>=3)
 	  {
-	    if(functionp(tmp[2]))
-	      data = function_name(tmp[2]);
+	    if(functionp(tmp[2])) {
+	      data = "";
+	      if (object o = function_object(tmp[2])) {
+		string s;
+		if (!catch (s = sprintf("%O",o)) && s != "object")
+		  data = s + "->";
+	      }
+	      data += function_name(tmp[2]);
+	    }
 	    else if (stringp(tmp[2])) {
 	      data= tmp[2];
 	    } else
