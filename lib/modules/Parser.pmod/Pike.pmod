@@ -11,7 +11,7 @@
 inherit "C.pmod";
 
 #define UNKNOWN_TOKEN \
-  error(sprintf("Unknown pike token: %O\n",data[pos..pos+20]))
+  error("Unknown pike token: %O\n", data[pos..pos+20])
 
 static mapping(string : int) backquoteops =
 (["/":1,
