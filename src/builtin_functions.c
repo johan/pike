@@ -1058,14 +1058,14 @@ static struct pike_string * replace_many(struct pike_string *str,
   for(e=0;e<from->size;e++)
   {
     if(ITEM(from)[e].type != T_STRING)
-      error("Replace: from array not string *\n");
+      error("Replace: from array is not array(string)\n");
     v[e].ind=ITEM(from)[e].u.string;
   }
 
   for(e=0;e<to->size;e++)
   {
     if(ITEM(to)[e].type != T_STRING)
-      error("Replace: to array not string *\n");
+      error("Replace: to array is not array(string)\n");
     v[e].val=ITEM(to)[e].u.string;
   }
 
