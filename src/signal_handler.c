@@ -370,7 +370,12 @@ static RETSIGTYPE receive_signal(int signum)
   if(signum==SIGCHLD)
   {
     pid_t pid;
+#ifdef HAVE_UNION_WAIT
+    /* OLD BSD's used this. */
+    union wait status;
+#else /* !HAVE_UNION_WAIT */
     int status;
+#endif /* HAVE_UNION_WAIT */
   try_reap_again:
     /* We carefully reap what we saw */
 #ifdef HAVE_WAITPID
