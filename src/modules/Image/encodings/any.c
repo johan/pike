@@ -141,6 +141,14 @@ void image_any__decode(INT32 args)
 	 f_call_function(2);
 	 return;
 
+      case CHAR2('8','B'):
+	/* Photoshop (8BPS) */
+	push_text("Image.PSD._decode");
+	SAFE_APPLY_MASTER("resolv_or_error",1);
+	stack_swap();
+	f_call_function(2);
+	return;
+
       case CHAR2('F','O'):
 	 /* ILBM (probably) */
 	 img_ilbm_decode(1);
