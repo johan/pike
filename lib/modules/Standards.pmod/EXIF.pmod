@@ -857,8 +857,11 @@ static mapping parse_tag(Stdio.File file, mapping tags, mapping exif_info,
     else if(tag_format == "TAGS")
     {
       int num_entries=short_value(file->read(2), order);
-      for(int i=0; i<num_entries; i++)
-	tags|=parse_tag(file, tags, tag_map, exif_offset, order);
+      for(int i=0; i<num_entries; i++) {
+	catch {
+	  tags|=parse_tag(file, tags, tag_map, exif_offset, order);
+	};
+      }
     }
     else
     {
