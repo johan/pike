@@ -5919,6 +5919,13 @@ AC_CACHE_VAL(pike_cv_thread_local_cpu_time, [
 
 #ifdef PIKE_THREADS
 
+#ifndef TOSTR
+#define TOSTR(X)	#X
+#endif
+#ifndef DEFINETOSTR
+#define DEFINETOSTR(X)	TOSTR(X)
+#endif
+
 #define CONFIGURE_TEST
 
 #include "port.c"
