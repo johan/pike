@@ -22,10 +22,6 @@ RCSID("$Id$");
 #include <bzlib.h>
 #endif
 
-
-/* This must be included last! */
-#include "module_magic.h"
-
 /* These constants are the default values that
    are sent to a Bz2 stream when it is initialized */
 #define DEFAULT_COMPRESSION_RATE 9
@@ -1115,7 +1111,7 @@ PIKECLASS File
 /*! @endmodule
  */
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_LIBBZ2
 #ifdef HAVE_BZLIB_H
@@ -1127,7 +1123,7 @@ void pike_module_init(void)
 #endif
 }
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
 #ifdef HAVE_LIBBZ2
 #ifdef HAVE_BZLIB_H	
