@@ -1277,7 +1277,7 @@ class Evaluator {
   void add_buffer(string s)
   {
     // Tokenize the input
-    array(string) tokens = state->push_string(s);
+    array(string) tokens = state->push_string(s+"\n");
     array(string) words = s/" ";
     string command = words[0];
 
