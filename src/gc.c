@@ -1567,8 +1567,8 @@ static void init_gc(void)
      * gc_keep_markers is set. */
     if (marker_hash_table) cleanup_markers();
     if (!marker_hash_table)
-      low_init_marker_hash(num_objects);
 #endif
+      low_init_marker_hash(num_objects);
     get_marker(rec_list.data);	/* Used to simplify fencepost conditions. */
 #ifdef PIKE_DEBUG
   }
