@@ -606,7 +606,7 @@ void f_rm(INT32 args)
  *!
  *! @seealso
  *!   @[rm()], @[cd()], @[Stdio.mkdirhier()]
- *!
+ */
 void f_mkdir(INT32 args)
 {
   struct pike_string *str;
