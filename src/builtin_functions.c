@@ -19,7 +19,7 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "multiset.h"
 #include "pike_types.h"
-#include "rusage.h"
+#include "pike_rusage.h"
 #include "operators.h"
 #include "fsort.h"
 #include "callback.h"
@@ -1801,25 +1801,25 @@ PMOD_EXPORT void f_allocate(INT32 args)
  *!   	@elem int sysc
  *!   	  Number of system calls.
  *!   	@elem int ioch
- *!   	  ?
+ *!   	  Number of characters read and written.
  *!   	@elem int rtime
- *!   	  ?
+ *!   	  Elapsed real time (ms).
  *!   	@elem int ttime
- *!   	  ?
+ *!   	  Elapsed system trap (system call) time (ms).
  *!   	@elem int tftime
- *!   	  ?
+ *!   	  Text page fault sleep time (ms).
  *!   	@elem int dftime
- *!   	  ?
+ *!   	  Data page fault sleep time (ms).
  *!   	@elem int kftime
- *!   	  ?
+ *!   	  Kernel page fault sleep time (ms).
  *!   	@elem int ltime
- *!   	  ?
+ *!   	  User lock wait sleep time (ms).
  *!   	@elem int slptime
- *!   	  ?
+ *!   	  Other sleep time (ms).
  *!   	@elem int wtime
- *!   	  ?
+ *!   	  Wait CPU (latency) time (ms).
  *!   	@elem int stoptime
- *!   	  ?
+ *!   	  Time spent in stopped (suspended) state.
  *!   	@elem int brksize
  *!   	  Heap size.
  *!   	@elem int stksize
@@ -1833,7 +1833,7 @@ PMOD_EXPORT void f_allocate(INT32 args)
  *!   All values may not be present on all systems.
  *!
  *! @seealso
- *!   @[time()]
+ *!   @[time()], @[System.getrusage()]
  */
 void f_rusage(INT32 args)
 {

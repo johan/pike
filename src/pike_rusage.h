@@ -5,8 +5,8 @@
 || $Id$
 */
 
-#ifndef RUSAGE_H
-#define RUSAGE_H
+#ifndef PIKE_RUSAGE_H
+#define PIKE_RUSAGE_H
 
 /* Prototypes begin here */
 typedef INT32 pike_rusage_t[30];
@@ -18,4 +18,4 @@ void debug_print_rusage(FILE *out);
 #endif
 /* Prototypes end here */
 
-#endif
+#endif /* !PIKE_RUSAGE_H */
