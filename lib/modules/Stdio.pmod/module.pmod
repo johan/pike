@@ -1859,9 +1859,9 @@ int exist(string path)
   // NOTE: file_stat() may fail with eg EFBIG if the file exists,
   //       but the filesystem, doesn't support the file size.
   return !!file_stat(path) || !(<
-#ifdef __NT__
+#if constant(System.WSAENOTSUPP)
     System.WSAENOTSUPP,
-#endif /* __NT__ */
+#endif /* constant(System.WSAENOTSUPP) */
     System.ENOENT,
   >)[errno()];
 }
