@@ -4696,13 +4696,7 @@ PMOD_EXPORT void f_mktime (INT32 args)
      * /mast */
     if ((isdst != -1) && (isdst != date.tm_isdst)) {
       /* Some stupid libc's (Hi Linux!) don't accept that we've set isdst... */
-#ifdef HAVE_LOCALTIME
-      if (!my_time_inverse (&date, &retval, localtime))
-	PIKE_ERROR("mktime", "Cannot convert.\n", Pike_sp, args);
-#else
-      /* Last resort: Assumes a one hour DST. */
       retval += 3600 * (isdst - date.tm_isdst);
-#endif
     }
 #endif	/* 0 */
   }
