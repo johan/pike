@@ -2270,6 +2270,7 @@ static TH_RETURN_TYPE proxy_thread(void * data)
   num_threads--;
   mt_unlock(&interpreter_lock);
   free((char *)p);
+  th_exit(0);
   return 0;
 }
 
