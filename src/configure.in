@@ -1295,8 +1295,11 @@ AC_PROG_CPP
 AC_PROG_RANLIB
 AC_SET_MAKE
 
-AC_PATH_PROG(AR, ar, ar, $PATH:$EXTRA_PATH)
-export AR
+if test "x${AR-}" = x ; then
+  AC_PATH_PROG(AR, ar, ar, $PATH:$EXTRA_PATH)
+  export AR
+fi
+
 AC_SUBST(AR)
 
 #############################################################################
