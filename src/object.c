@@ -292,9 +292,9 @@ PMOD_EXPORT struct object *fast_clone_object(struct program *p, int args)
 }
 
 PMOD_EXPORT struct object *parent_clone_object(struct program *p,
-				   struct object *parent,
-				   int parent_identifier,
-				   int args)
+					       struct object *parent,
+					       ptrdiff_t parent_identifier,
+					       int args)
 {
   ONERROR tmp;
   struct object *o=low_clone(p);
