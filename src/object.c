@@ -485,16 +485,16 @@ void low_destruct(struct object *o,int do_free)
     }
   }
 
+
   POP_FRAME();
 
+  debug_malloc_touch(o);
   if(o->parent)
   {
     /* fprintf(stderr, "destruct(): Zapping parent.\n"); */
-
     free_object(o->parent);
     o->parent=0;
   }
-
 
   free_program(p);
 }
@@ -532,7 +532,9 @@ void destruct_objects_to_destruct(void)
     first_object=o;
     o->prev=0;
 
+    add_ref(o);
     destruct(o);
+    free_object(o);
   }
   objects_to_destruct=0;
   if(destruct_object_evaluator_callback)
