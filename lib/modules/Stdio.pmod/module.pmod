@@ -1140,7 +1140,7 @@ class UDP
    private static void _read_callback()
    {
       mapping i;
-      while (i=read())
-	 callback(i,@extra);
+      if (i=read())
+	callback(i,@extra);
    }
 }
