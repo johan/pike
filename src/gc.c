@@ -337,7 +337,7 @@ void describe_something(void *a, int t, int dm)
       INT32 line,pos;
 
       fprintf(stderr,"**Program id: %ld\n",(long)(p->id));
-      if(!p->num_linenumbers)
+      if(p->flags & PROGRAM_HAS_C_METHODS)
       {
 	int e;
 	fprintf(stderr,"**The program was written in C.\n");
