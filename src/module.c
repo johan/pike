@@ -1,5 +1,5 @@
 /*\
-||| This file a part of Pike, and is copyright by Fredrik Hubinette
+||| This file is part of Pike. For copyright information see COPYRIGHT.
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
