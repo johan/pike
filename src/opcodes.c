@@ -55,7 +55,7 @@ void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind)
       if(i<0)
 	i+=what->u.string->len;
       if(i<0 || i>=what->u.string->len)
-	error("Index out of range.\n");
+	error("Index %d is out of range 0 - %d.\n", i, what->u.string->len-1);
       else
 	i=EXTRACT_UCHAR(what->u.string->str + i);
       to->type=T_INT;
