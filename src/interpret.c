@@ -842,14 +842,14 @@ static int eval_instruction(PIKE_OPCODE_T *pc)
 #endif /* PIKE_DEBUG */
 
 #ifdef __i386__
-  /* This code does not clobber %eax, but
+  /* This code does not clobber %eax, %ecx & %edx, but
    * the code jumped to does.
    */
   __asm__ __volatile__( "	sub $8,%%esp\n"
 			"	jmp *%0"
 			: "=m" (pc)
 			:
-			: "cc", "memory", "eax" );
+			: "cc", "memory", "eax", "ecx", "edx" );
 #elif defined(__ppc__) || defined(_POWER)
   __asm__ __volatile__( "       mtlr %0\n"
 			"	blr"
