@@ -1630,8 +1630,13 @@ void init_image_programs()
    add_function("turbulence",image_turbulence,
                 "function(array(float|int|array(int)),int|void,float|void,float|void,float|void,float|void:object)",0);
 
+#if 0
+   /* If you check this in, maybe you should chekin dct.c too? 
+    * /Hubbe
+    */
    add_function("dct",image_dct,
 		"function(:object)",0);
+#endif
 		
    set_init_callback(init_image_struct);
    set_exit_callback(exit_image_struct);
