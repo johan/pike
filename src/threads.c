@@ -766,6 +766,7 @@ void f_mutex_lock(INT32 args)
 
 	pop_n_elems(args);
 	push_int(0);
+	return;
       }
     case 1:
       break;
