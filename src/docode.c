@@ -683,6 +683,12 @@ static int do_docode2(node *n,int flags)
     return 0;
   }
 
+  case F_POP_VALUE:
+    {
+      DO_CODE_BLOCK(CAR(n));
+      return 0;
+    }
+
   case F_CAST:
     if(n->type==void_type_string)
     {
