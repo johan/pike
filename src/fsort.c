@@ -12,6 +12,7 @@
 #include "pike_error.h"
 #include "fsort.h"
 #include "main.h"
+#include "pike_macros.h"
 
 RCSID("$Id$");
 
