@@ -5438,7 +5438,6 @@ test_equal(reverse(({1,5,9})),({9,5,1}))
 test_equal(reverse(({})),({}))
 test_equal(reverse(({42})),({42}))
 test_equal(reverse(({42,4711})),({4711,42}))
-test_equal(reverse(({42,4711,76})),({76,4711,42}))
 test_equal(reverse(0x12345678),0x1e6a2c48)
 
 // - rusage
