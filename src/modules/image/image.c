@@ -1475,6 +1475,10 @@ void init_image_programs()
 		"function(int|void,int|void:string)",0);
    add_function("gif_add_fs",image_gif_add_fs,
 		"function(int|void,int|void:string)",0);
+   add_function("gif_add_nomap",image_gif_add_nomap,
+		"function(int|void,int|void:string)",0);
+   add_function("gif_add_fs_nomap",image_gif_add_fs_nomap,
+		"function(int|void,int|void:string)",0);
    add_function("gif_end",image_gif_end,
 		"function(:string)",0);
    add_function("gif_netscape_loop",image_gif_netscape_loop,

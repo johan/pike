@@ -79,6 +79,8 @@ void image_fromgif(INT32 args);
 void image_gif_begin(INT32 args);
 void image_gif_add(INT32 args);
 void image_gif_add_fs(INT32 args);
+void image_gif_add_nomap(INT32 args);
+void image_gif_add_fs_nomap(INT32 args);
 void image_gif_end(INT32 args);
 void image_gif_netscape_loop(INT32 args);
 

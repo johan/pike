@@ -610,7 +610,7 @@ CHRONO("skewy end\n");
 
 void image_skewx(INT32 args)
 {
-   float diff;
+   float diff=0;
    struct object *o;
 
    if (args<1)
@@ -637,7 +637,7 @@ void image_skewx(INT32 args)
 
 void image_skewy(INT32 args)
 {
-   float diff;
+   float diff=0;
    struct object *o;
 
    if (args<1)
@@ -664,7 +664,7 @@ void image_skewy(INT32 args)
 
 void image_skewx_expand(INT32 args)
 {
-   float diff;
+   float diff=0;
    struct object *o;
 
    if (args<1)
@@ -691,7 +691,7 @@ void image_skewx_expand(INT32 args)
 
 void image_skewy_expand(INT32 args)
 {
-   float diff;
+   float diff=0;
    struct object *o;
 
    if (args<1)
@@ -720,7 +720,7 @@ void image_skewy_expand(INT32 args)
 
 void img_rotate(INT32 args,int xpn)
 {
-   float angle;
+   float angle=0;
    struct object *o;
    struct image *dest,d0,dest2;
 
