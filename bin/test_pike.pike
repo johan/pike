@@ -379,7 +379,6 @@ int main(int argc, array(string) argv)
   while(loop--)
   {
     successes=errors=0;
-    mapping diffmem = _memory_usage();
   testloop:
     foreach(testsuites, string testsuite)
     {
