@@ -26,7 +26,7 @@ RCSID("$Id$");
 #include "bignum.h"
 #include "main.h"
 
-#define PIKE_TYPE_DEBUG
+/* #define PIKE_TYPE_DEBUG */
 
 int max_correct_args;
 
