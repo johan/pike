@@ -9665,7 +9665,7 @@ test_any([[
     return sprintf("Bad termination returncode from wait():%d (expected -1)",
 		   code);
   }
-  sig = proc->last_signal();
+  int sig = proc->last_signal();
   if (sig != signum("KILL")) {
     proc->kill(signum("KILL"));
     return sprintf("Unexpected termination signal:%d (expected %d)",
