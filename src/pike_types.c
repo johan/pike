@@ -2540,7 +2540,7 @@ static struct pike_type *low_match_types2(struct pike_type *a,
 #else /* !1 */
       if(a->car)
       {
-	if (!is_compatible(implements_a=ap,implements_b=bp)) {
+	if (!is_compatible(implements_a=ap,implements_b=bp))
 	  return 0;
       }else{
 	if(!is_compatible(implements_a=bp,implements_b=ap))
