@@ -105,7 +105,7 @@ static void init_fd(int fd, int open_mode)
 static int close_fd(int fd)
 {
 #ifdef DEBUG
-  if(fd < 0 || fd>=MAX_OPEN_FILEDESCRIPTORS)
+  if(fd < 0 || fd >= MAX_OPEN_FILEDESCRIPTORS)
     fatal("Bad argument to close_fd()\n");
 
   if(files[fd].refs<1)
