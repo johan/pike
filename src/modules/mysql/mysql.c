@@ -237,6 +237,7 @@ static void f_big_query(INT32 args)
   MYSQL *socket = PIKE_MYSQL->socket;
   MYSQL_RES *result;
   char *query;
+  int qlen;
   int tmp;
 
   if (!args) {
@@ -247,6 +248,7 @@ static void f_big_query(INT32 args)
   }
 
   query = sp[-args].u.string->str;
+  qlen = sp[-args].u.string->len;
 
   THREADS_ALLOW();
 
@@ -254,7 +256,11 @@ static void f_big_query(INT32 args)
    * which is closed at THREADS_DISALLOW()
    */
 
+#ifdef HAVE_MYSQL_REAL_QUERY
+  tmp = mysql_real_query(socket, query, qlen);
+#else
   tmp = mysql_query(socket, query);
+#endif /* HAVE_MYSQL_REAL_QUERY */
 
   THREADS_DISALLOW();
 
