@@ -13,15 +13,11 @@
 
 #include "stralloc.h"
 RCSID("$Id$");
-#include "pike_macros.h"
 #include "object.h"
 #include "mapping.h"
-#include "constants.h"
 #include "interpret.h"
 #include "operators.h"
 #include "svalue.h"
-#include "threads.h"
-#include "array.h"
 #include "pike_error.h"
 #include "builtin_functions.h"
 #include "program.h"

@@ -10,17 +10,13 @@ RCSID("$Id$");
 
 #include "image_machine.h"
 
-#include "pike_macros.h"
 #include "object.h"
-#include "constants.h"
 #include "interpret.h"
 #include "svalue.h"
 #include "threads.h"
-#include "array.h"
 #include "mapping.h"
 #include "pike_error.h"
 #include "stralloc.h"
-#include "dynamic_buffer.h"
 #include "builtin_functions.h"
 #include "operators.h"
 
