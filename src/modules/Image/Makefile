@@ -23,7 +23,6 @@ DOCFILES = doc-header \
    font.c \
    image.h \
    matrix.c \
-   myorient.c \
    operator.c \
    orient.c \
    pattern.c \
@@ -45,8 +44,9 @@ default:
 doc:	$(DOCFILES) mkdoc.pike Makefile
 	$(pike) mkdoc.pike $(DOCFILES)
 
-$(WMMLDOCPLACE): $(DOCFILES) mkwmml.pike Makefile
-	$(pike) mkwmml.pike --nonverbose $(DOCFILES) >$(WMMLDOCPLACE)
+$(WMMLDOCPLACE): $(DOCFILES) ../../../bin/mkwmml.pike Makefile
+	$(pike) ../../../bin/mkwmml.pike --nonverbose $(DOCFILES) \
+	  >$(WMMLDOCPLACE)
 
 wmml:	$(WMMLDOCPLACE)
 
