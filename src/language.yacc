@@ -49,6 +49,7 @@
 %token TOK_DOT_DOT
 %token TOK_DOT_DOT_DOT
 %token TOK_ELSE
+%token TOK_ENUM
 %token TOK_EXTERN
 %token TOK_FLOAT_ID
 %token TOK_FOR
@@ -1005,6 +1006,7 @@ magic_identifiers2:
   | TOK_STRING_ID     { $$ = "string"; }
   | TOK_FLOAT_ID      { $$ = "float"; }
   | TOK_INT_ID        { $$ = "int"; }
+  | TOK_ENUM	      { $$ = "enum"; }
   ;
 
 magic_identifiers3:
@@ -3386,6 +3388,8 @@ bad_identifier: bad_expr_ident
   { yyerror("string is a reserved word."); }
   | TOK_VOID_ID
   { yyerror("void is a reserved word."); }
+  | TOK_ENUM
+  { yyerror("enum is a reserved word."); }
   ;
 
 bad_expr_ident:

@@ -366,6 +366,9 @@ static int low_yylex(YYSTYPE *yylval)
 	case TWO_CHAR('e','l'):
 	  if(ISWORD("else")) return TOK_ELSE;
 	  break;
+	case TWO_CHAR('e','n'):
+	  if(ISWORD("enum")) return TOK_ENUM;
+	  break;
 	case TWO_CHAR('e','x'):
 	  if(ISWORD("extern")) return TOK_EXTERN;
 	  break;
