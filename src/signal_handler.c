@@ -2362,6 +2362,9 @@ void f_create_process(INT32 args)
       else
 	th_atfork_child();
     }
+    /* FIXME: Shouldn't th_atfork_parent() be called if pid == -1?
+     * /grubba 1999-08-30
+     */
 
     UNSET_ONERROR(err);
 
@@ -2734,6 +2737,9 @@ void f_fork(INT32 args)
     else
       th_atfork_child();
   }
+  /* FIXME: Shouldn't th_atfork_parent() be called if pid == -1?
+   * /grubba 1999-08-30
+   */
 
   if(pid==-1) {
     error("Fork failed\n"
