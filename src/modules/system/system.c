@@ -476,7 +476,7 @@ void f_setuid(INT32 args)
 #ifdef HAVE_SETGID
 void f_setgid(INT32 args)
 {
-  int id;
+  int id,err;
 
   get_all_args("setgid", args, "%i", &id);
  
@@ -488,8 +488,9 @@ void f_setgid(INT32 args)
   }
 
   /* FIXME: Check return-code */
-  setgid(id);
-  pop_n_elems(args-1);
+  err=setgid(id);
+  pop_n_elems(args);
+  push_int(err);
 }
 #endif
 
