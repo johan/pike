@@ -2398,7 +2398,7 @@ PMOD_EXPORT void string_builder_vsprintf(struct string_builder *s,
 	  flags |= APPEND_WIDTH_HALF;
 	  continue;
 
-	case 'w':	/* Same as l, but for %s. */
+	case 'w':	/* Same as l, but old-style, and only for %s. */
 	case 'l':
 	  if (flags & APPEND_WIDTH_LONG) {
 	    flags |= APPEND_WIDTH_LONG_LONG;
