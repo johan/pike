@@ -89,9 +89,9 @@ static HINSTANCE kernel32lib;
   static PIKE_CONCAT(NAME,type) NAME
 
 LINKFUNC(BOOL, movefileex, (
-  LPCTSTR lpExistingFileName,  // file name
-  LPCTSTR lpNewFileName,       // new file name
-  DWORD dwFlags                // move options
+  LPCTSTR lpExistingFileName,  /* file name     */
+  LPCTSTR lpNewFileName,       /* new file name */
+  DWORD dwFlags                /* move options  */
 ));
 
 #endif
