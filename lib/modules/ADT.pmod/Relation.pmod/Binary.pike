@@ -123,9 +123,6 @@ mixed `<=(object rel)
 
 int(0..1) `==(mixed rel)
 {
-  if (predef::`==(rel, this))
-    return 1; // equal because of being identical
-
   if (!objectp(rel) || !rel->is_binary_relation)
     return 0; // different because of having different types
 
