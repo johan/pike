@@ -21,20 +21,21 @@ import Standards.PKCS;
 
 object make_time(int t)
 {
-  mapping m = gmtime(t);
+  object(Calendar.Second) second = Calendar.Second(t)->set_timezone("UTC");
 
-  if (m->year >= 150)
+  if (second->year() >= 2050) {
     throw( ({ "Tools.X509.make_time: "
 	      "Times later than 2049 not supported yet\n",
 	      backtrace() }) );
+  }
 
   return asn1_utc(sprintf("%02d%02d%02d%02d%02d%02dZ",
-			  m->year % 100,
-			  m->mon + 1,
-			  m->mday,
-			  m->hour,
-			  m->min,
-			  m->sec));
+			  second->year() % 100,
+			  second->month_no(),
+			  second->month_day(),
+			  second->hour_no(),
+			  second->minute_no(),
+			  second->second_no()));
 }
 
 /* Returns a mapping similar to that returned by gmtime */
