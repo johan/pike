@@ -1839,7 +1839,7 @@ static int do_docode2(node *n, int flags)
 	for (lbl_name = label->name; lbl_name; lbl_name = lbl_name->next)
 	  if (lbl_name->str == name)
 	    goto label_found_1;
-      my_yyerror("No surrounding statement labeled '%s'.", name->str);
+      my_yyerror("No surrounding statement labeled %S.", name);
       return 0;
 
     label_found_1:
