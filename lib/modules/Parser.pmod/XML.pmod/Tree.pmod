@@ -35,7 +35,7 @@ string text_quote(string data, void|int preserve_roxen_entities)
     string out = "";
     int pos = 0;
     while ((pos = search(data, "&")) >= 0) {
-      if ((sscanf(data[pos..], "&%[^ <>;&];", string entity) == 1) &&
+      if ((sscanf(data[pos..], "&%[^\n\r\t <>;&];%*s", string entity) == 2) &&
 	  search(entity, ".") >= 0) {
 	out += text_quote(data[..pos - 1], 0) + "&" + entity + ";";
 	data = data[pos + strlen(entity) + 2..];
