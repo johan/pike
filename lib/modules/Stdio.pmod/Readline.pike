@@ -1176,8 +1176,7 @@ void redisplay(int clear, int|void nobackup)
   output_controller->check_columns();
 
   if(!input_controller->dumb) {
-  // This seems like a silly limitation
-  //  if(newline_func == read_newline)
+    if(newline_func == read_newline)
       output_controller->write(prompt);
     output_controller->write(text,0,hide);
   }
