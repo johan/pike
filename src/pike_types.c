@@ -659,7 +659,11 @@ void debug_pop_type_stack(unsigned INT16 expected)
   if(Pike_compiler->type_stackp<type_stack)
     fatal("Type stack underflow\n");
 
-  top = *(Pike_compiler->type_stackp--);
+  top = *(Pike_compiler->type_stackp);
+  /* Special case... */
+  if (top->type == T_MIXED) return;	/* Probably due to an earlier error */
+
+  Pike_compiler->type_stackp--;
 #ifdef PIKE_DEBUG
   if ((top->type != expected) && (top->type != PIKE_T_NAME)) {
     fatal("Unexpected type on stack: %d (expected %d)\n", top->type, expected);
