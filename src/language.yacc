@@ -210,7 +210,7 @@ void fix_comp_stack(int sp)
  */
 #ifndef __GNUC__
 #ifndef __cplusplus
-static void __yy_memcpy(char *to, char *from, int count)
+static void __yy_memcpy(char *to, char *from, int count);
 #endif /* !__cplusplus */
 #endif /* !__GNUC__ */
 
