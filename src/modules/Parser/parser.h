@@ -6,3 +6,5 @@
 */
 
 void init_parser_html(void);
+void init_parser_rcs(void);
+void exit_parser_rcs(void);
