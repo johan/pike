@@ -3023,6 +3023,7 @@ AC_CACHE_VAL(pike_cv_sys_ccshared,[
 	hp*|HP*) CCSHARED="+z"; ;;
 	FreeBSD*) CCSHARED="-fpic";;
 	SCO_SV*) CCSHARED="-KPIC -dy -Bdynamic";;
+        UnixWare*) CCSHARED="-KPIC -dy -Bdynamic";;
 	Solaris*) CCSHARED="-KPIC -Bdynamic";;
 	Windows_NT*) CCSHARED="-shared" ;;
       esac
