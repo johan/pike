@@ -2017,6 +2017,13 @@ static struct ff_hash cache[FIND_FUNCTION_HASHSIZE];
 int find_shared_string_identifier(struct pike_string *name,
 				  struct program *prog)
 {
+#ifdef PIKE_DEBUG
+  if (!prog) {
+    fatal("find_shared_string_identifier(): No program!\n"
+	  "Identifier: %s%s%s\n",
+	  name?"\"":"", name?name->str:"NULL", name?"\"":"");
+  }
+#endif /* PIKE_DEBUG */
 #ifdef FIND_FUNCTION_HASHSIZE
   if(prog -> flags & PROGRAM_FIXED)
   {
