@@ -23,9 +23,6 @@ static mapping(string:array(string)) copyrights = ([
   "TrueVision Targa code":
   ({ "Copyright © 1997 Raphael FRANCOIS and Gordon Matzigkeit" }),
 
-  "DES encryption and decryption code":
-  ({ "Copyright © 1992 Dana L. How" }),
-
   "Emacs font lock definitions":
   ({ "Copyright © 2002 Martin Stjernholm" }),
 
@@ -34,12 +31,6 @@ static mapping(string:array(string)) copyrights = ([
 
   "MD5 password hash code":
   ({ "Copyright © Poul-Henning Kamp" }),
-
-  "Rijndael encryption and decryption code":
-  ({ "Copyright © 2000 Joan Daemen" }),
-
-  "Secure Hash Algorithm code":
-  ({ "Copyright © 1995, A.M. Kuchling" }),
 
   "Regular expression matching code":
   ({ "Copyright © 1986 by University of Toronto." }),
