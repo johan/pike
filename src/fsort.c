@@ -89,7 +89,7 @@ void fsort(void *base,
 #ifdef HANDLES_UNALIGNED_MEMORY_ACCESS
   switch(elmSize)
 #else
-  switch( (((unsigned long)base) % elmSize) ? 0 : size )
+  switch( (((unsigned long)base) % elmSize) ? 0 : elmSize )
 #endif
   {
   case  1:  fsort_1(( B1_T *)base,(elms-1)+( B1_T *)base, cmpfunc); break;
