@@ -13,6 +13,26 @@
 
 extern struct program *image_program;
 
+void rotate_atari_palette(struct atari_palette* pal, unsigned int left,
+			  unsigned int right)
+{
+  rgb_group tmp;
+  unsigned int i;
+
+  if(right>left) {
+    tmp = pal->colors[right];
+    for(i=right; i>left; i--)
+      pal->colors[i] = pal->colors[i-1];
+    pal->colors[left] = tmp;
+  }
+  else {
+    tmp = pal->colors[left];
+    for(i=left; i<right; i++)
+      pal->colors[i] = pal->colors[i+1];
+    pal->colors[right] = tmp;
+  }
+}
+
 /* pal is 2*size of palette data */
 struct atari_palette* decode_atari_palette(unsigned char *pal,
 					  unsigned int size)
