@@ -2607,9 +2607,16 @@ void fix_type_field(node *n)
     break;
 
   case F_MAGIC_INDEX:
+    /* FIXME: Could have a stricter type for ::`->(). */
+    MAKE_CONSTANT_SHARED_STRING(n->type, tFunc(tMix,tMix));
+    break;
   case F_MAGIC_SET_INDEX:
+    /* FIXME: Could have a stricter type for ::`->=(). */
+    MAKE_CONSTANT_SHARED_STRING(n->type, tFunc(tMix tSetvar(0,tMix), tVar(0)));
+    break;
+
   case F_CATCH:
-    /* FIXME: FALL_THROUGH */
+    /* FALL_THROUGH */
   default:
     copy_shared_string(n->type,mixed_type_string);
   }
