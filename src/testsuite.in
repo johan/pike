@@ -2437,6 +2437,12 @@ class blorg
 return blorg()->goo();
 ]],3)
 
+test_compile_error_any([[class X {int x; int f() {return local::x;}}]])
+test_compile_any([[
+  #pike 7.2
+  class X {int x; int f() {return local::x;}}
+]])
+
 // Testing the 'inline' keyword
 test_program([[class foo { inline int c() { return time(); } int d() { return c(); } }; class bar { inherit foo; int c() { return 0; } } int a() { return bar()->d(); }]],0)
 
