@@ -562,16 +562,16 @@ int my_isipnr(char *s)
     struct hostent *ret; \
     struct hostent result; \
     char data[2048]; \
-    int h_errno
+    int gh_errno
 
 #define CALL_GETHOSTBYNAME(X) \
     THREADS_ALLOW(); \
-    ret=gethostbyname_r((X), &result, data, sizeof(data), &h_errno); \
+    ret=gethostbyname_r((X), &result, data, sizeof(data), &gh_errno); \
     THREADS_DISALLOW()
 
 #define CALL_GETHOSTBYADDR(X,Y,Z) \
     THREADS_ALLOW(); \
-    ret=gethostbyaddr_r((X),(Y),(Z), &result, data, sizeof(data), &h_errno); \
+    ret=gethostbyaddr_r((X),(Y),(Z), &result, data, sizeof(data), &gh_errno); \
     THREADS_DISALLOW()
 
 #else /* HAVE_SOLARIS_GETHOSTBYNAME_R */
@@ -842,7 +842,7 @@ void pike_module_init(void)
            OPT_TRY_OPTIMIZE);
   add_efun("gethostbyaddr", f_gethostbyaddr, "function(string:array)",
            OPT_TRY_OPTIMIZE);
-#endif /* HAVE_GETHOSTBYNAME */
+#endif /* GETHOST_DECLARE */
 
   /*
    * From syslog.c:
