@@ -1,4 +1,4 @@
-/* prime_table.c
+/* $Id$
  *
  * Generates a table of small odd primes.
  */
