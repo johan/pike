@@ -79,7 +79,7 @@ PMOD_EXPORT int set_nonblocking(int fd,int which)
   int ret;
 #ifdef PIKE_DEBUG
   if(fd<0)
-    Pike_fatal("Filedescriptor %d out of range [0,inf).\n", fd);
+    Pike_fatal("File descriptor %d out of range.\n", fd);
 #endif
 
   do 

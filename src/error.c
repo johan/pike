@@ -525,7 +525,7 @@ static void f_error_index(INT32 args)
       break;
     default:
       index_error("error->`[]", Pike_sp-args, args, NULL, Pike_sp-args,
-		  "Index %"PRINTPIKEINT"d is out of range 0 - 1.\n", ind);
+		  "Index %"PRINTPIKEINT"d is out of range 0..1.\n", ind);
       break;
   }
 }
