@@ -503,6 +503,17 @@ static node *freeze_node(node *orig)
 	 */
 	sub_node(orig);
       }
+      /* Propagate the line-number information. */
+      n->line_number = orig->line_number;
+#ifdef PIKE_DEBUG
+      if (orig->current_file) {
+	if (n->current_file) {
+	  free_string(n->current_file);
+	}
+	n->current_file = orig->current_file;
+	orig->current_file = NULL;
+      }
+#endif /* PIKE_DEBUG */
       free_node(dmalloc_touch(node *, orig));
       n->refs++;
       return check_node_hash(dmalloc_touch(node *, n));
