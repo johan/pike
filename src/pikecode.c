@@ -17,7 +17,7 @@
 #include "docode.h"
 #include "interpret.h"
 #include "lex.h"
-#include "main.h"
+#include "pike_embed.h"
 
 #include "pikecode.h"
 
