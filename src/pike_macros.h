@@ -95,6 +95,11 @@
 }while(0)
 
 
+#define PIKE_XCONCAT(X,Y)	PIKE_CONCAT(X,Y)
+#define PIKE_XCONCAT3(X,Y,Z)	PIKE_CONCAT(X,Y,Z)
+#define PIKE_XCONCAT4(X,Y,Z,Q)	PIKE_CONCAT(X,Y,Z,Q)
+
+
 /* Needed for fsort_template.h */
 int my_log2(size_t x);
 
