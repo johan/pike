@@ -572,7 +572,8 @@ class fetch
 
     string wanted = lower_case(atom->atom);
     mapping res = ([ "wanted" : wanted ]);
-    string section = atom->options && atom->options[0]->raw;
+    string section = atom->options && sizeof(atom->options) &&
+      atom->options[0]->raw;
 
     res->raw_wanted = atom->raw || atom->atom;
 
