@@ -272,10 +272,6 @@ class _TarFS
     parent = _parent;
   }
 
-  void destroy() {
-    if(tar && tar->fd) tar->fd->close();
-  }
-
   string _sprintf(int t)
   {
     return  t=='O' && sprintf("_TarFS(/* root=%O, wd=%O */)", root, wd);
