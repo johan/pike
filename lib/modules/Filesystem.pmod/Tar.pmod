@@ -1,4 +1,6 @@
-// $Id$
+/*
+ * $Id$
+ */
 
 class _Tar  // filesystem
 {
