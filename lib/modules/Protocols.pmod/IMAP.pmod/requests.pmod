@@ -624,6 +624,10 @@ class fetch
 	part_number += ({ n });
       }
 
+      if (sizeof(part_number) < sizeof(path)) {
+	break;
+      }
+
       res->raw_options = atom->options;
       res->section = path[i..];
       res->part = part_number;
