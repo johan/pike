@@ -29,6 +29,22 @@ constant XML_NODE     = (XML_ROOT | XML_ELEMENT | XML_TEXT |
 #define  XML_NODE     (XML_ROOT | XML_ELEMENT | XML_TEXT |    \
 					   XML_PI | XML_COMMENT | XML_ATTR)
 
+string text_quote(string data) {
+  data = replace(data, "&", "&amp;");
+  data = replace(data, "<", "&lt;");
+  data = replace(data, ">", "&gt;");
+  return data;
+}
+
+string attribute_quote(string data) {
+  data = replace(data, "&",  "&amp;");
+  data = replace(data, "<",  "&lt;");
+  data = replace(data, ">",  "&gt;");
+  data = replace(data, "\"", "&quot;");
+  data = replace(data, "'",  "&apos;");
+  return data;
+}
+
 void throw_error(mixed ...args)
 {
   //  Put message in debug log and throw exception
@@ -366,19 +382,16 @@ class Node {
 		    lambda(Node n) {
 		      switch(n->get_node_type()) {
 		      case XML_TEXT:
-			data += n->get_text();
+                        data += text_quote(n->get_text());
 			break;
 		      case XML_ELEMENT:
 			if (!strlen(n->get_tag_name()))
 			  break;
 			data += "<" + n->get_tag_name();
 			if (mapping attr = n->get_attributes()) {
-			  foreach(indices(attr), string a) {
-			    if (search(attr[a], "\"") > -1)
-			      data += " " + a + "='" + attr[a] + "'";
-			    else
-			      data += " " + a + "=\"" + attr[a] + "\"";
-			  }
+                          foreach(indices(attr), string a)
+                            data += " " + a + "='"
+                              + attribute_quote(attr[a]) + "'";
 			}
 			if (n->count_children())
 			  data += ">";
