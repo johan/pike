@@ -2344,7 +2344,7 @@ enum_def: /* EMPTY */
   {
     if ($1) {
       add_constant($1->u.sval.u.string, Pike_sp-1,
-		   Pike_compiler->current_modifiers & ~ID_EXTERN);
+		   (Pike_compiler->current_modifiers & ~ID_EXTERN) | ID_INLINE);
     }
     free_node($1);
     /* Update the type. */
@@ -2382,7 +2382,7 @@ enum: modifiers TOK_ENUM
     if ($4) {
       ref_push_type_value(t);
       add_constant($4->u.sval.u.string, Pike_sp-1,
-		   Pike_compiler->current_modifiers & ~ID_EXTERN);
+		   (Pike_compiler->current_modifiers & ~ID_EXTERN) | ID_INLINE);
       pop_stack();
       free_node($4);
     }
