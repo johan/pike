@@ -806,7 +806,6 @@ again:
       }
       /* FALL THROUGH */
 
-    describe_object:
     case T_OBJECT:
       p=((struct object *)a)->prog;
       if(p && (p->flags & PROGRAM_USES_PARENT))
