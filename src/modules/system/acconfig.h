@@ -30,4 +30,7 @@
 /* Define if <netinet/in.h> defines the in_addr_t type. */
 #undef HAVE_IN_ADDR_T
 
+/* Define if your setpgrp(2) takes two arguments (BSD). */
+#undef HAVE_SETPGRP_BSD
+
 #endif /* SYSTEM_MACHINE_H */
