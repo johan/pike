@@ -956,6 +956,13 @@ int node_is_false(node *n)
   }
 }
 
+int node_may_overload(node *n, int lfun)
+{
+  if(!n) return 0;
+  if(!n->type) return 1;
+  return type_may_overload(n->type->str, lfun);
+}
+
 node **last_cmd(node **a)
 {
   node **n;
@@ -1001,7 +1008,22 @@ static node **low_get_arg(node **a,int *nr)
 }
 
 node **my_get_arg(node **a,int n) { return low_get_arg(a,&n); }
-/* static node **first_arg(node **a) { return my_get_arg(a,0); } */
+
+node **is_call_to(node *n, c_fun f)
+{
+  switch(n->token)
+  {
+    case F_APPLY:
+      if(CAR(n) &&
+	 CAR(n)->token == F_CONSTANT &&
+	 CAR(n)->u.sval.type == T_FUNCTION &&
+	 CAR(n)->u.sval.subtype == FUNCTION_BUILTIN &&
+	 CAR(n)->u.sval.u.efun->function == f)
+	return & CDR(n);
+  }
+  return 0;
+}
+
 
 static void low_print_tree(node *foo,int needlval)
 {

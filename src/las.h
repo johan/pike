@@ -17,6 +17,7 @@
 #include "program.h"
 
 #define MAX_GLOBAL_VARIABLES 1000
+typedef void (*c_fun)(INT32);
 
 
 void yyerror(char *s);
@@ -95,8 +96,10 @@ int is_const(node *n);
 int node_is_tossable(node *n);
 int node_is_true(node *n);
 int node_is_false(node *n);
+int node_may_overload(node *n, int lfun);
 node **last_cmd(node **a);
 node **my_get_arg(node **a,int n);
+node **is_call_to(node *n, c_fun f);
 void print_tree(node *n);
 struct used_vars;
 void fix_type_field(node *n);
