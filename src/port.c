@@ -552,8 +552,10 @@ PMOD_EXPORT double STRTOD(const char * nptr, char **endptr)
 
  underflow:
   /* Return an underflow error.  */
+#if 0
   if (endptr != NULL)
     *endptr = (char *) nptr;
+#endif
   errno = ERANGE;
   return 0.0;
   
