@@ -18,6 +18,7 @@
 struct keypair
 {
   struct keypair *next;
+  unsigned INT32 hval;
   struct svalue ind, val;
 };
 
@@ -62,7 +63,12 @@ extern struct mapping *first_mapping;
   for((e=0) DO_IF_DMALLOC( ?0:(debug_malloc_touch(m),debug_malloc_touch(m->data))) ;e<m->data->hashsize;e++) for(k=m->data->hash[e];k;k=k->next)
 
 #define free_mapping(M) do{ struct mapping *m_=(M); debug_malloc_touch(m_); if(!--m_->refs) really_free_mapping(m_); }while(0)
-#define free_mapping_data(M) do{ struct mapping_data *md_=(M); debug_malloc_touch(md_); if(!--md_->refs) really_free_mapping_data(md_); }while(0)
+
+#define free_mapping_data(M) do{ \
+ struct mapping_data *md_=(M); \
+ debug_malloc_touch(md_); \
+ if(!--md_->refs) really_free_mapping_data(md_); \
+}while(0)
 
 /* Prototypes begin here */
 BLOCK_ALLOC(mapping, 511)
