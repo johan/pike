@@ -806,7 +806,7 @@ void process_line(string s,string currentfile,int line)
    s=getridoftabs(s);
 
    int i;
-   if ((i=search(s,"**!"))!=-1 || (i=search(s,"//!"))!=-1)
+   if ((i=search(s,"**""!"))!=-1 || (i=search(s,"//""!"))!=-1)
    {
       string kw,arg;
 
