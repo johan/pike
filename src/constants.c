@@ -74,7 +74,7 @@ BLOCK_ALLOC(callable,128)
 /* Eats one ref to 'type' and 'name' */
 PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
 				   struct pike_string *name,
-				   struct pike_string *type,
+				   struct pike_type *type,
 				   INT16 flags,
 				   optimize_fun optimize,
 				   docode_fun docode)
@@ -89,10 +89,10 @@ PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
   f->optimize=optimize;
 #ifdef PIKE_DEBUG
   {
-    struct pike_string *z=check_call(function_type_string,type,0);
+    struct pike_type *z = check_call(function_type_string, type, 0);
     f->may_return_void= z == void_type_string;
     if(!z) fatal("Gnapp!\n");
-    free_string(z);
+    free_type(z);
   }
 #endif
   return f;
@@ -142,7 +142,8 @@ PMOD_EXPORT struct callable *quick_add_efun(char *name, ptrdiff_t name_length,
 					    docode_fun docode)
 {
   struct svalue s;
-  struct pike_string *n,*t;
+  struct pike_string *n;
+  struct pike_type *t;
   struct callable *ret;
 
   n=make_shared_binary_string(name,name_length);
