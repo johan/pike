@@ -11,10 +11,12 @@ AC_HAVE_HEADERS(locale.h libintl.h)
 ########################################################################
 
 AC_CHECK_FUNCS(setlocale)
-AC_CHECK_FUNC(gettext, [AC_DEFINE(HAVE_GETTEXT)], 
-	AC_CHECK_LIB(intl, gettext, [LIBS="$LIBS -lintl"
-			 	     AC_DEFINE(HAVE_GETTEXT)],
-			 INTLIBS="" ))
+AC_CHECK_FUNC(gettext,
+              [AC_DEFINE(HAVE_GETTEXT)],
+              [AC_CHECK_LIB(intl, gettext,
+                            [LIBS="$LIBS -lintl"
+                             AC_DEFINE(HAVE_GETTEXT)],
+                            [INTLIBS=""])])
 
 AC_ARG_WITH(nlsdir, 
 	[  --with-nlsdir=PATH      specify where the locale stuff should go ])
