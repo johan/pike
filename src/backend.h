@@ -20,6 +20,8 @@ PMOD_EXPORT extern int fds_size;
 
 /* Prototypes begin here */
 struct selectors;
+struct Backend_struct *get_backend_for_fd(int fd);
+PMOD_EXPORT void set_backend_for_fd(int fd, struct Backend_struct *b);
 PMOD_EXPORT struct callback *debug_add_backend_callback(callback_func call,
 				      void *arg,
 				      callback_func free_func);
