@@ -3482,8 +3482,8 @@ extern void init_image_tga(void);
 extern void exit_image_tga(void);
 extern void init_image_pcx(void);
 extern void exit_image_pcx(void);
-extern void init_image_xpm(void);
-extern void exit_image_xpm(void);
+extern void init_image__xpm(void);
+extern void exit_image__xpm(void);
 extern void exit_image_xbm(void);
 extern void init_image_xbm(void);
 
@@ -3858,7 +3858,7 @@ void pike_module_init(void)
    init_image_tga();
    init_image_pcx();
    init_image_xbm();
-/*    init_image_xpm(); */
+   init_image__xpm();
    init_image_x();
 }
 
@@ -3880,7 +3880,7 @@ void pike_module_exit(void)
    exit_image_any();
    exit_image_tga();
    exit_image_pcx();
-/*    exit_image_xpm(); */
+   exit_image__xpm();
    exit_image_xbm();
    if (png_object) 
    {
