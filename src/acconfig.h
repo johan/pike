@@ -468,6 +468,14 @@
 #undef DL_EXPORT
 #undef USE_MY_WIN32_DLOPEN
 
+/* CygWin kludge. */
+#if defined(HAVE_UNISTD_H) && defined(HAVE_WINDOWS_H)
+#undef HAVE_WINDOWS_H
+#undef HAVE_WINBASE_H
+#undef HAVE_WINSOCK_H
+#undef HAVE_WINSOCK2_H
+#endif /* HAVE_SYS_UNISTD_H && HAVE_WINDOWS_H */
+
 /* How to set a socket non-blocking */
 #undef USE_IOCTL_FIONBIO
 #undef USE_IOCTLSOCKET_FIONBIO
