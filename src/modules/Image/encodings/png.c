@@ -1690,14 +1690,16 @@ struct object *init_image_png(void)
      push_text("inflate");
      f_index(2);
      gz_inflate=program_from_svalue(sp-1);
-     add_ref(gz_inflate);
+     if(gz_inflate) 
+       add_ref(gz_inflate);
      pop_stack();
 
      stack_dup();
      push_text("deflate");
      f_index(2);
      gz_deflate=program_from_svalue(sp-1);
-     add_ref(gz_deflate);
+     if(gz_deflate) 
+       add_ref(gz_deflate);
      pop_stack();
 
      stack_dup();
