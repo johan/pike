@@ -1195,7 +1195,7 @@ static void do_skip(int to)
 	  READBUF(C!='\n');
 	  if(buf[0]=='"' &&
 	     buf[strlen(buf)-1]=='2' &&
-	     ISSPACE(buf[strlen(buf)-2]))
+	     ISSPACE(((unsigned char *)buf)[strlen(buf)-2]))
 	  {
 	    if(lvl)
 	    {
