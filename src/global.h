@@ -43,11 +43,6 @@ struct svalue;
 #include "machine.h"
 
 /*
- * Ugga, bugga, hope the gods of select() listen to us!
- */
-#define FD_SETSIZE MAX_OPEN_FILEDESCRIPTORS
-
-/*
  * Max number of local variables in a function.
  * Currently there is no support for more than 256
  */

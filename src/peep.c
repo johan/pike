@@ -332,6 +332,7 @@ void assemble(void)
 
 /**** Peephole optimizer ****/
 
+int remove_clear_locals=0x7fffffff;
 static int fifo_len, eye,len;
 static p_instr *instructions;
 

@@ -2360,7 +2360,11 @@ int dooptcode(struct pike_string *name,
 #endif
     if(!num_parse_error)
     {
+      extern int remove_clear_locals;
+      remove_clear_locals=args;
+      if(vargs) remove_clear_locals++;
       do_code_block(n);
+      remove_clear_locals=0x7fffffff;
     }
   }
   

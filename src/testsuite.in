@@ -2050,7 +2050,7 @@ test_equal(Array.diff("123.org"/"","http://123.org/"/""),
 // - explode
 test_equal(({"a","b","c",}), "anna bnna c"/"nna ")
 test_equal(({"","",}),"hej"/"hej")
-test_equal(({}),""/"hej")
+test_equal(({""}),""/"hej")
 
 // - fork()
 // FIXME: add tests for fork
