@@ -6,7 +6,12 @@
 //! will block if it can't provide enough random bits, while /dev/urandom
 //! will degenerate into a reasonably strong pseudo random generator
 
+#if constant(Crypto.arcfour)
 #pike __REAL_VERSION__
+#else
+#pike 7.4
+#endif
+
 // #pragma strict_types
 
 static constant RANDOM_DEVICE = "/dev/random";

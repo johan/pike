@@ -3,7 +3,11 @@
  * Follow the PKCS#1 standard for padding and encryption.
  */
 
+#if constant(Crypto.sha)
 #pike __REAL_VERSION__
+#else
+#pike 7.4
+#endif
 
 #if constant(Gmp.mpz)
 

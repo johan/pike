@@ -6,6 +6,10 @@
  * Henrik Grubbström 2001-03-24
  */
 
+#if !constant(Crypto.aes)
+#pike 7.4
+#endif
+
 // Read the raw vectors. 
 constant raw_cbc_d_m = #string "rijndael_cbc_d_m.txt";
 constant raw_cbc_e_m = #string "rijndael_cbc_e_m.txt";
