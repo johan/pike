@@ -190,6 +190,17 @@ test_any([[
 return class { int i=17; mixed `[](string foo) { return ::`[]; }}()[""]("y")
 ]],0)
 
+test_any([[
+object o=class {
+  int i=17;
+  mixed `[](string foo) { return ::`[]=; }
+  mixed `[]=(string ind, mixed foo) {}
+}();
+
+o[""]("i",99);
+return o->i;
+]],99)
+
 test_compile_any([[
   class X { void hej() {} }
   class Y { inherit X:banan; void hopp() { banan::hej(); } }
