@@ -291,7 +291,7 @@ class lsub
 class status
 {
   inherit request;
-  constant arg_info ({ ({ "string" }), ({ "list" }) });
+  constant arg_info = ({ ({ "string" }), ({ "list" }) });
 
   mapping easy_process(string mailbox, array(string) list)
   {
