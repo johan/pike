@@ -70,7 +70,7 @@ class conn {
 }
 
 class no_random {
-  object rc4 = Crypto.rc4();
+  object arcfour = Crypto.arcfour();
   
   void create(string|void secret)
   {
@@ -78,12 +78,12 @@ class no_random {
       secret = sprintf("Foo!%4c", time());
     object sha = Crypto.sha();
     sha->update(secret);
-    rc4->set_encrypt_key(sha->digest());
+    arcfour->set_encrypt_key(sha->digest());
   }
 
   string read(int size)
   {
-    return rc4->crypt(replace(allocate(size), 0, "\021") * "");
+    return arcfour->crypt(replace(allocate(size), 0, "\021") * "");
   }
 }
 
