@@ -372,5 +372,5 @@ int _sizeof() {
 }
 
 string _sprintf(int t) {
-  return t=='O' && sprintf("%O(%d)", _sizeof());
+  return t=='O' && sprintf("%O(%d)", this_program, _sizeof());
 }
