@@ -813,9 +813,9 @@ PMOD_EXPORT void wrong_number_of_args_error(const char *name, int args, int expe
   char *msg;
   if(expected>args)
   {
-    msg="Too few arguments";
+    msg="Too few arguments.\n";
   }else{
-    msg="Too many arguments";
+    msg="Too many arguments.\n";
   }
 
   new_error(name, msg, Pike_sp-args, args, 0,0);
