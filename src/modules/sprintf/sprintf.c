@@ -1439,6 +1439,7 @@ static void low_pike_sprintf(struct format_stack *fs,
 	  } else {
 	    sprintf(x, "nan");
 	  }
+	  fs->fsp = strlen(x);
 	  break;
 	}
 
