@@ -133,6 +133,18 @@ OBJ= \
 all: module_objects hilfe
 	$(MAKE) $(MAKE_FLAGS) pike
 
+compiler-warnings : clean
+	@echo Summarizing compiler warnings.
+	@echo
+	@if $(MAKE) $(MAKE_FLAGS) all 2>compiler-warnings ; then \
+	  echo; \
+	  echo 'Compilation warning summary:'; \
+	else \
+	  echo; \
+	  echo 'Compilation warning and error summary:'; \
+	fi
+	@cat compiler-warnings
+
 pike: $(OBJ) modules/linker_options
 	-@if [ -f pike ] ; then mv pike pike.old || : ; else : ; fi
 	$(LD) $(LDFLAGS) $(OBJ) `cat modules/linker_options` $(LIBS) -o pike
@@ -292,6 +304,7 @@ clean: tidy
 	-rm -f TAGS tags
 	-rm -f yacc.acts yacc.debug yacc.tmp *.debug.log a.out
 	-rm -f hilfe master.pike
+	-rm -f compiler-warnings
 	find lib/modules/ -type f -name '*.so_pure*' -exec rm -f \{\} \;
 #	-rm -f lib/master.pike
 
