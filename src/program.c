@@ -1055,6 +1055,12 @@ void check_program(struct program *p)
 
   for(e=0;e<p->num_inherits;e++)
   {
+    if(!p->inherits[e].prog) 
+    {
+      /* This inherit is not yet initialized, ignore it */
+      continue;
+    }
+
     if(p->inherits[e].storage_offset < 0)
       fatal("Inherit->storage_offset is wrong.\n");
 
