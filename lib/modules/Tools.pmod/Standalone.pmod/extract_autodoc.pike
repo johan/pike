@@ -6,11 +6,6 @@
  * Henrik Grubbström 2001-01-08
  */
 
-class MirarDoc
-{
-  inherit "mirardoc.pike";
-}
-
 array(string) find_root(string path) {
   if(file_stat(path+"/.autodoc"))
     return reverse((Stdio.read_file(path+"/.autodoc")/"\n")[0]/" ") - ({""});
@@ -21,18 +16,20 @@ array(string) find_root(string path) {
     ({ (parts[-1]/".")[0] });
 }
 
+string imgsrc;
 string imgdir;
 
 int main(int n, array(string) args) {
 
   if(n!=4) {
-    write("%s <srcdir> <builddir> <imgdir>\n", args[0]);
+    write("%s <srcdir> <imgsrc> <builddir> <imgdir>\n", args[0]);
     exit(1);
   }
 
   string srcdir = combine_path(getcwd(), args[1]);
-  string builddir = combine_path(getcwd(), args[2]);
-  imgdir = combine_path(getcwd(), args[3]);
+  imgsrc = combine_path(getcwd(), args[2]);
+  string builddir = combine_path(getcwd(), args[3]);
+  imgdir = combine_path(getcwd(), args[4]);
   if(srcdir[-1]!='/') srcdir += "/";
   if(builddir[-1]!='/') builddir += "/";
   if(imgdir[-1]!='/') imgdir += "/";
@@ -81,7 +78,8 @@ string extract(string filename, string imgdest, int(0..1) rootless, string build
       (((i = search(file, "//! ""module ")) != -1) &&
        (sizeof(array_sscanf(file[i+11..],"%s\n%*s")[0]/" ") == 1))) {
     // Mirar-style markup.
-    MirarDoc mirar_parser = MirarDoc();
+    Tools.AutoDoc.MirarDocParser mirar_parser =
+      Tools.AutoDoc.MirarDocParser(imgsrc);
     int lineno = 1;
     foreach(file/"\n", string line) {
       mirar_parser->process_line(line, filename, lineno++);
