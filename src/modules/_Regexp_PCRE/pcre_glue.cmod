@@ -329,6 +329,7 @@ PIKECLASS _pcre
       {
 	 if (THIS->re) (*pcre_free)(THIS->re); /* -> free() usually */
 	 if (THIS->extra) (*pcre_free)(THIS->extra); /* -> free() usually */
+	 if (THIS->pattern) free_string(THIS->pattern);
       }
 
 /*! @decl int get_stringnumber(string stringname)
