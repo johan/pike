@@ -4,6 +4,17 @@
 
 // Tree
 
+test_eq([[ Parser.XML.Tree.parse_input("<a>foo &gt; hej &x.y; hopp &lt; bar</a>")->render_xml(); ]],
+[[ "<a>foo &gt; hej &amp;x.y; hopp &lt; bar</a>" ]])
+test_eq([[ Parser.XML.Tree.parse_input("<a>foo &gt; hej &x.y; hopp &lt; bar</a>")->render_xml(1); ]],
+[[ "<a>foo &gt; hej &x.y; hopp &lt; bar</a>" ]])
+test_eq([[ Parser.XML.Tree.parse_input("<a>hej &x.y; hopp</a>")->render_xml(); ]],
+[[ "<a>hej &amp;x.y; hopp</a>" ]])
+test_eq([[ Parser.XML.Tree.parse_input("<a>hej &x.y; hopp</a>")->render_xml(1); ]],
+[[ "<a>hej &x.y; hopp</a>" ]])
+test_eq([[ (string)Parser.XML.Tree.parse_input("<a><b> <c/> </b></a>") ]],
+[[ "<a><b> <c/> </b></a>" ]])
+
 // NSTree
 
 // XML NS section 2
