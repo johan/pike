@@ -121,6 +121,11 @@ void mpzmod_reduce(struct object *o)
 #define PUSH_REDUCED(o) push_object(o)
 #endif /* AUTO_BIGNUM */
 
+/*! @module Gmp
+ */
+
+/*! @class mpz
+ */
 
 void get_mpz_from_digits(MP_INT *tmp,
 			 struct pike_string *digits,
@@ -1698,3 +1703,8 @@ void pike_module_init(void)
   pike_init_mpf_module();
 }
 
+/*! @endclass
+ */
+
+/*! @endmodule
+ */
