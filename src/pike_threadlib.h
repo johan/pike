@@ -211,7 +211,7 @@ extern pthread_attr_t small_pattr;
 #ifdef HAVE_PTHREAD_KILL
 #define th_kill(ID,sig) LOW_THREAD_CHECK_NONZERO_ERROR (pthread_kill((ID),(sig)))
 #else /* !HAVE_PTHREAD_KILL */
-/* MacOS X (aka Darwin) doesn't have pthread_kill. */
+/* MacOS X (aka Darwin) prior to 10.2 doesn't have pthread_kill. */
 #define th_kill(ID,sig)
 #endif /* HAVE_PTHREAD_KILL */
 #ifdef HAVE_PTHREAD_COND_INIT
