@@ -290,7 +290,8 @@ extern pthread_attr_t small_pattr;
 #include <windows.h>
  
 #define LOW_THREAD_CHECK_ZERO_ERROR(CALL) do {				\
-    if (!(CALL)) thread_low_error (GetLastError());			\
+    if (!(CALL)) thread_low_error (GetLastError(), TOSTR(CALL),		\
+				   __FILE__, __LINE__);			\
   } while (0)
 
 #define THREAD_T unsigned
