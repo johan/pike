@@ -245,7 +245,9 @@ void cleanup_gc(void);
 
 #ifdef PIKE_DEBUG
 
-#define gc_checked_as_weak(X) (get_marker(X)->flags |= GC_CHECKED_AS_WEAK)
+#define gc_checked_as_weak(X) do {					\
+  get_marker(X)->flags |= GC_CHECKED_AS_WEAK;				\
+} while (0)
 #define gc_assert_checked_as_weak(X) do {				\
   if (!(find_marker(X)->flags & GC_CHECKED_AS_WEAK))			\
     fatal("A thing was checked as nonweak but "				\
@@ -257,7 +259,7 @@ void cleanup_gc(void);
 	  "marked or cycle checked as nonweak.\n");			\
 } while (0)
 #else
-#define gc_checked_as_weak(X) 0
+#define gc_checked_as_weak(X) do {} while (0)
 #define gc_assert_checked_as_weak(X) do {} while (0)
 #define gc_assert_checked_as_nonweak(X) do {} while (0)
 #endif
