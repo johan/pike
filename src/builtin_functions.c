@@ -4426,7 +4426,7 @@ static time_t my_timegm(struct tm *target_tm)
   while((diff_ts = my_tm_diff(target_tm, current_tm = gmtime(&current_ts)))) {
     current_ts += diff_ts;
     loop_cnt++;
-    fprintf(stderr, "Loop [%d]: %d, %d\n", loop_cnt, current_ts, diff_ts);
+    /* fprintf(stderr, "Loop [%d]: %d, %d\n", loop_cnt, current_ts, diff_ts); */
     if (loop_cnt > 20) {
       /* Infinite loop? */
       return -1;
