@@ -423,6 +423,7 @@ static void init_dbcon_struct(struct object *o)
   THIS_DBCON->error_handle=0;
   THIS_DBCON->context=0;
   THIS_DBCON->timeout_limit = 30; /* default value */
+  THIS_DBCON->resultobject_busy = 0;
 #ifdef LOCAL_ENV
   THIS_DBCON->env=0;
 #endif
