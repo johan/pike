@@ -56,6 +56,7 @@ struct memory_storage
 #define MEM_WRITE       0x02
 #define MEM_FREE_FREE   0x10
 #define MEM_FREE_MUNMAP 0x20   
+#define MEM_FREE_SHMDEL 0x40
    unsigned long flags;
 };
 
