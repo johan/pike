@@ -26,11 +26,11 @@ int main(int argc, string *argv)
   int sunos = 0;
   int hexkey = 0;
   int i;
-  object crypto_object = clone((program)"/precompiled/crypto",
-			       (program)("/precompiled/crypto/" +
-					 ((argv[0]/"/")[-1] / ".")[0]));
-  object input = clone((program)"/precompiled/file", "stdin");
-  object output = clone((program)"/precompiled/file", "stdout");
+  object crypto_object = ((program)"/precompiled/crypto")
+                         ((program)("/precompiled/crypto/" +
+				    ((argv[0]/"/")[-1] / ".")[0]));
+  object input = ((program)"/precompiled/file")("stdin");
+  object output = ((program)"/precompiled/file")("stdout");
   string data = "";
   string outstr = "";
 
