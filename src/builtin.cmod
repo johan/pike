@@ -189,7 +189,7 @@ PIKEFUN string int2hex(int|object x)
   optflags OPT_TRY_OPTIMIZE;
 {
   INT_TYPE c;
-  unsigned long n;
+  unsigned INT_TYPE n;
   int len;
   struct pike_string *s;
 
