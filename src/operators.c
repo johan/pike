@@ -1948,6 +1948,7 @@ PMOD_EXPORT void o_lsh(void)
   }
 #endif /* !AUTO_BIGNUM */
   if (sp[-1].u.integer < 0) {
+    int args = 2;
     SIMPLE_BAD_ARG_ERROR("`<<", 2, "int(0..)|object");    
   }
   sp--;
@@ -2004,6 +2005,7 @@ PMOD_EXPORT void o_rsh(void)
   }
   
   if (sp[-1].u.integer < 0) {
+    int args = 2;
     SIMPLE_BAD_ARG_ERROR("`>>", 2, "int(0..)|object");
   }
 
