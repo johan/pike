@@ -2852,7 +2852,7 @@ void f_everynth(INT32 args)
     default:
     case 3:
      start=sp[2-args].u.integer;
-     if(start<2) error("Third argument to everynth is negative.\n");
+     if(start<0) error("Third argument to everynth is negative.\n");
     case 2:
       n=sp[1-args].u.integer;
       if(n<1) error("Second argument to everynth is negative.\n");
