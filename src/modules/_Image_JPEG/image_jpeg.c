@@ -29,6 +29,11 @@
 
 #define XMD_H /* Avoid INT16 / INT32 being redefined */
 
+/* FAR is defined by windef.h and jmorecfg.h */
+#ifdef FAR
+#undef FAR
+#endif
+
 #include <jpeglib.h>
 #include "transupp.h" /* Support routines for jpeg transformations */
 
