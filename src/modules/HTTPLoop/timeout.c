@@ -13,6 +13,8 @@
 #include <signal.h>
 #include <fdlib.h>
 
+#define AAP_DEBUG
+
 #ifdef _REENTRANT
 #include <stdlib.h>
 #include <errno.h>
@@ -166,12 +168,19 @@ void aap_remove_timeout_thr(int *to)
 
 static volatile int aap_time_to_die = 0;
 
+static COND_T aap_timeout_thread_is_dead;
+
 static void *handle_timeouts(void *ignored)
 {
-  while(!aap_time_to_die)
+  while(1)
   {
     struct timeout *t;
     mt_lock( &aap_timeout_mutex );
+    if (aap_time_to_die) {
+      co_signal (&aap_timeout_thread_is_dead);
+      mt_unlock (&aap_timeout_mutex);
+      break;
+    }
     t = first_timeout;
     while(t)
     {
@@ -206,6 +215,7 @@ void aap_init_timeouts(void)
   fprintf(stderr, "AAP: aap_init_timeouts.\n");
 #endif /* AAP_DEBUG */
   mt_init(&aap_timeout_mutex);
+  co_init (&aap_timeout_thread_is_dead);
   th_create_small(&aap_timeout_thread, handle_timeouts, 0);
 #ifdef AAP_DEBUG
   fprintf(stderr, "AAP: handle_timeouts started.\n");
@@ -218,14 +228,14 @@ void aap_exit_timeouts(void)
 #ifdef AAP_DEBUG
   fprintf(stderr, "AAP: aap_exit_timeouts.\n");
 #endif /* AAP_DEBUG */
+  THREADS_ALLOW();
+  mt_lock (&aap_timeout_mutex);
   aap_time_to_die = 1;
-  if (Pike_interpreter.thread_state) {
-    THREADS_ALLOW();
-    th_join(aap_timeout_thread, &res);
-    THREADS_DISALLOW();
-  } else {
-    th_join(aap_timeout_thread, &res);
-  }
+  co_wait (&aap_timeout_thread_is_dead, &aap_timeout_mutex);
+  mt_unlock (&aap_timeout_mutex);
+  THREADS_DISALLOW();
+  mt_destroy (&aap_timeout_mutex);
+  co_destroy (&aap_timeout_thread_is_dead);
 #ifdef AAP_DEBUG
   fprintf(stderr, "AAP: aap_exit_timeouts done.\n");
 #endif /* AAP_DEBUG */
