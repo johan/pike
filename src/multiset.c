@@ -358,7 +358,6 @@ void real_gc_cycle_check_multiset(struct multiset *l, int weak)
   } GC_CYCLE_LEAVE;
 }
 
-#ifdef PIKE_DEBUG
 unsigned gc_touch_all_multisets(void)
 {
   unsigned n = 0;
@@ -373,7 +372,6 @@ unsigned gc_touch_all_multisets(void)
   }
   return n;
 }
-#endif
 
 void gc_check_all_multisets(void)
 {
