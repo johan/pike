@@ -1042,13 +1042,14 @@ void zap_all_mappings()
 
     for(e=0;e<m->hashsize;e++)
     {
-      for(k=m->hash[e];k;k=k->next)
+      while(k=m->hash[e])
       {
+	m->hash[e]=k->next;
+	k->next=m->free_list;
+	m->free_list=k;
 	free_svalue(&k->ind);
 	free_svalue(&k->val);
       }
-      k->next=m->free_list;
-      m->hash[e]=0;
     }
     m->size=0;
     
