@@ -185,8 +185,8 @@ int(0..1) verify(string msg, program h, object sign)
 //!   Document this function.
 string sha_sign(string message, mixed|void r)
 {
-#if constant(Crypto.SHA.`())
-  Crypto.Cipher hash = Crypto.SHA();
+#if constant(Crypto.SHA1.`())
+  Crypto.Cipher hash = Crypto.SHA1();
 #else
   Crypto.sha hash = Crypto.sha();
 #endif
@@ -202,8 +202,8 @@ string sha_sign(string message, mixed|void r)
 //!   Document this function.
 int sha_verify(string message, string signature)
 {
-#if constant(Crypto.SHA.`())
-  Crypto.Cipher hash = Crypto.SHA();
+#if constant(Crypto.SHA1.`())
+  Crypto.Cipher hash = Crypto.SHA1();
 #else
   Crypto.sha hash = Crypto.sha();
 #endif

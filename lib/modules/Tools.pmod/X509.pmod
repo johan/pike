@@ -224,8 +224,8 @@ string make_selfsigned_rsa_certificate(Crypto.RSA rsa, int ttl, array name,
     ({ tbs,
        rsa_sha1_algorithm,
        BitString(rsa_sign_digest(rsa, Identifiers.sha1_id,
-#if constant(Crypto.SHA.name)
-				 Crypto.SHA.hash(tbs->get_der())
+#if constant(Crypto.SHA1.name)
+				 Crypto.SHA1.hash(tbs->get_der())
 #else
 				 Crypto.sha()->update(tbs->get_der())->digest()
 #endif
@@ -267,8 +267,8 @@ class rsa_verifier
 			       signature);
     if (algorithm->get_der() == rsa_sha1_algorithm->get_der())
       return rsa_verify_digest(rsa, Identifiers.sha1_id,
-#if constant(Crypto.SHA.name)
-			       Crypto.SHA.hash(msg),
+#if constant(Crypto.SHA1.name)
+			       Crypto.SHA1.hash(msg),
 #else
 			       Crypto.sha()->update(msg)->digest(),
 #endif

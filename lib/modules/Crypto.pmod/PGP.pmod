@@ -246,7 +246,7 @@ int verify_signature(string text, string sig, string pubkey)
   mapping signt = decode(sig)->signature;
   object hash;
   if(signt->digest_algorithm == 2)
-    hash = Crypto.SHA();
+    hash = Crypto.SHA1();
   else
     hash = Crypto.MD5();
   if(signt->literal_data && signt->literal_data!=text) return 0;
@@ -256,7 +256,7 @@ int verify_signature(string text, string sig, string pubkey)
 }
 
 string sha_sign(string text, mixed key) {
-  string hash=Crypto.SHA.hash(text);
+  string hash=Crypto.SHA1.hash(text);
   if(key->dsa_hash) {
     int r,s;
     [ r, s ] = key->raw_sign( Gmp.mpz(hash,256) );

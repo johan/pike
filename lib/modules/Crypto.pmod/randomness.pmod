@@ -111,7 +111,7 @@ class arcfour_random {
   //! Initialize and seed the arcfour random generator.
   void create(string secret)
   {
-    set_encrypt_key(Crypto.SHA->hash(secret));
+    set_encrypt_key(Crypto.SHA1->hash(secret));
   }
 
   //! Return a string of the next len random characters from the
