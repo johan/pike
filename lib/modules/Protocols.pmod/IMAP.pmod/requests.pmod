@@ -86,6 +86,9 @@ class request
       case "set":
 	return parser->get_set(append_arg);
 
+      case "list":
+	return parser->get_list(append_arg);
+
       case "any":
 	/* A single atom or string or a list of atoms (with
 	 * options), lists. Used for fetch. */
@@ -314,6 +317,19 @@ class copy
       break;
     }
     return ([ "action" : "finished" ]);
+  }
+}
+
+class store
+{
+  inherit request;
+
+  constant arg_info ({ ({ "set" }), ({ "string" }), ({ "list" }) });
+
+  mapping easy_process(object message_set, string data_item, mixed list)
+  {
+    werror(sprintf("store->easy_process(X, %O, %O)\n", data_item, list));
+    throw(({ "Not implemented yet", backtrace() }));
   }
 }
 
@@ -804,4 +820,3 @@ constant append = unimplemented;
 constant check = unimplemented;
 constant close = unimplemented;
 constant expunge = unimplemented;
-constant store = unimplemented;
