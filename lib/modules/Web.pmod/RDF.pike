@@ -76,6 +76,10 @@ class RDFResource {
   string get_3_tuple_name() {
     return "RDF:"+id;
   }
+
+  string get_qname() {
+    return "rdf:"+id;
+  }
 }
 
 RDFResource rdf_Statement = RDFResource("Statement");
