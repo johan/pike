@@ -390,8 +390,8 @@ void f_mkdir(INT32 args)
 }
 
 #undef HAVE_READDIR_R
-#if defined(HAVE_SOLARIS_READDIR_R) || defined(HAVE_SOLARIS_HPUX_R) || \
-    defined(HAVE_POSIX_R)
+#if defined(HAVE_SOLARIS_READDIR_R) || defined(HAVE_HPUX_READDIR_R) || \
+    defined(HAVE_POSIX_READDIR_R)
 #define HAVE_READDIR_R
 #endif
 
@@ -441,7 +441,6 @@ void f_get_dir(INT32 args)
 
       while(1)
       {
-	/* Should have code for the POSIX variant here also */
 #ifdef HAVE_SOLARIS_READDIR_R
 	/* Solaris readdir_r returns the second arg on success,
 	 * and returns NULL on error or at end of dir.
