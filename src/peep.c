@@ -477,7 +477,7 @@ static INLINE ptrdiff_t insopt1(int f, INT32 a, int cl, struct pike_string *cf)
   return insopt2(f,a,0,cl, cf);
 }
 
-statci INLINE ptrdiff_t insopt0(int f, int cl, struct pike_string *cf)
+static INLINE ptrdiff_t insopt0(int f, int cl, struct pike_string *cf)
 {
 #ifdef PIKE_DEBUG
   if(hasarg(f))
