@@ -131,7 +131,7 @@ int main(int argc, array(string) argv)
       }
     };
     if (err) {
-      if (_typeof(err) <= Tools.AutoDoc.AutoDocError)
+      if (arrayp(err) && _typeof(err[0]) <= Tools.AutoDoc.AutoDocError)
         werror("%O\n", err);
       else
 	throw(err);
