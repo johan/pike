@@ -1633,7 +1633,7 @@ string read_bytes(string filename, void|int start,void|int len)
     len=0x7fffffff;
   case 3:
     if(start)
-      f->seek(start);
+      if (f->seek(start) < 0) {f->close(); return 0;}
   }
   ret=f->read(len);
   f->close();
