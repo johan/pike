@@ -86,10 +86,11 @@ PMOD_EXPORT const char msg_ssval_obj_wo_refs[] =
  * its type.
  */
 
-PMOD_EXPORT void really_free_short_svalue(union anything *s, TYPE_T type)
+PMOD_EXPORT void really_free_short_svalue(void **s, TYPE_T type)
 {
-  union anything tmp=*s;
-  s->refs=0; /* Prevent cyclic calls */
+  union anything tmp;
+  tmp.program = *s;
+  *s = NULL; /* Prevent cyclic calls */
   switch(type)
   {
     case T_ARRAY:

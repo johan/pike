@@ -1878,7 +1878,7 @@ int sizeof_variable(int run_time_type)
     case T_MIXED: return sizeof(struct svalue);
     case T_FLOAT: return sizeof(FLOAT_TYPE);
     case T_INT: return sizeof(INT_TYPE);
-    default: return sizeof(char *);
+    default: return sizeof(void *);
   }
 }
 
@@ -1890,7 +1890,7 @@ static ptrdiff_t alignof_variable(int run_time_type)
     case T_MIXED: return ALIGNOF(struct svalue);
     case T_FLOAT: return ALIGNOF(FLOAT_TYPE);
     case T_INT: return ALIGNOF(INT_TYPE);
-    default: return ALIGNOF(char *);
+    default: return ALIGNOF(void *);
   }
 }
 
