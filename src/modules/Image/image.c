@@ -1636,7 +1636,7 @@ void pike_module_init()
    add_storage(sizeof(struct image));
 
    add_function("create",image_create,
-		"function(int,int,"RGB_TYPE":void)",0);
+		"function(int|void,int|void,"RGB_TYPE":void)",0);
    add_function("clone",image_clone,
 		"function(int,int,"RGB_TYPE":object)",0);
    add_function("new",image_clone, /* alias */

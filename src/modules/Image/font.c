@@ -528,7 +528,7 @@ void init_font_programs(void)
    add_storage(sizeof(struct font*));
 
    add_function("load",font_load,
-                "function(string:int)",0);
+                "function(string:object|int)",0);
 
    add_function("write",font_write,
                 "function(string:object)",0);
