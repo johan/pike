@@ -9171,7 +9171,7 @@ test_do([[
 
 cond([[ file_stat("/bin/sleep")  && __builtin->TraceProcess && (cpp("__NT__")/"\n")[1]=="__NT__" ]],
 [[
-test_do([[
+test_any([[
   // Check that tracing works...
   Process.TraceProcess proc =
     Process.TraceProcess(({ "/bin/sleep", "99999" }));
