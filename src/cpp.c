@@ -2059,6 +2059,7 @@ void f_cpp(INT32 args)
   }
 
   simple_add_define(&this,"__PIKE__"," 1 ");
+  simple_add_define(&this,"__VERSION__"," 0.6 ");
 #ifdef __NT__
   simple_add_define(&this,"__NT__"," 1 ");
 #endif
