@@ -189,7 +189,7 @@ class list
       
     if (mailboxes)
       foreach(mailboxes, array a)
-	send("*", @a);
+	send("*", "LIST", @a);
       
     send(tag, "OK");
     return ([ "action" : "finished" ]);
@@ -215,7 +215,7 @@ class lsub
       
       if (mailboxes)
 	foreach(mailboxes, array a)
-	  send("*", @a);
+	  send("*", "LSUB", @a);
       
       send(tag, "OK");
       return ([ "action" : "finished" ]);
