@@ -1,7 +1,6 @@
-/* $Id$
- *
- * A simple FIFO queue. 
- */
+// $Id$
+
+//! A simple FIFO queue.
 
 #pike __REAL_VERSION__
 #define QUEUE_SIZE 100
