@@ -1283,13 +1283,14 @@ static int do_safe_index_call(struct pike_string *s)
   int res;
   JMP_BUF recovery;
   if(!s) return 0;
-  
-  if (SETJMP(recovery)) {
+
+  if (SETJMP_SP(recovery, 1)) {
     /* FIXME: Maybe call compile_exception here, but then we probably
      * want to provide some extra flag to it. */
     res = 0;
     free_svalue(&throw_value);
     throw_value.type = T_INT;
+    push_undefined();
   } else {
     ref_push_string(s);
     f_index(2);

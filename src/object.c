@@ -496,7 +496,7 @@ PMOD_EXPORT struct object *get_master(void)
       push_string(s);
       push_int(0);
 
-      if(SETJMP(tmp))
+      if(SETJMP_SP(tmp, 2))
       {
 #ifdef DEBUG
 	if(d_flag)
@@ -1067,7 +1067,9 @@ PMOD_EXPORT void object_index_no_free(struct svalue *to,
     {
       if(report_compiler_dependency(p))
       {
-/*	fprintf(stderr,"PLACEHOLDER DEPLOYED\n"); */
+#if 0
+	fprintf(stderr,"Placeholder deployed for %p\n", p);
+#endif
 	add_ref(to->u.object=placeholder_object);
 	to->type=T_OBJECT;
 	return;
