@@ -659,12 +659,10 @@ static private object(kernel) first_state()
   return(state);
 }
 
-/*
- * Contains all states used.
- *
- * In the queue-part are the states that remain to be compiled.
- */
-static private object(state_queue) s_q;
+//. + s_q
+//.   Contains all states used.
+//.   In the queue-part are the states that remain to be compiled.
+object(state_queue) s_q;
 
 static private object(Stack.stack) item_stack;
 
