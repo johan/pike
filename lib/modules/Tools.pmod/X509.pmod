@@ -609,7 +609,8 @@ mapping verify_certificate_chain(array(string) cert_chain,
   foreach(chain_obj; int idx; TBSCertificate tbs)
   {
     object v;
-/*
+
+#if 0
     // NOTE: disabled due to unreliable presence of cA constraint.
     //
     // if we are a CA certificate (we don't care about the end cert)
@@ -647,7 +648,8 @@ mapping verify_certificate_chain(array(string) cert_chain,
           return m;
         }
     }
-*/    
+#endif  /* 0 */
+
     if(idx == 0) // The root cert
     {
       v = authorities[tbs->issuer->get_der()];
