@@ -1278,7 +1278,7 @@ static void low_pike_sprintf(struct format_stack *fs,
 
       case 'c':
       {
-        INT32 tmp;
+        INT_TYPE tmp;
 	ptrdiff_t l,n;
 	char *x;
         DO_OP();
