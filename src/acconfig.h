@@ -607,14 +607,6 @@
 #define DECLSPEC(X)
 #endif /* HAVE_DECLSPEC */
 
-#ifndef HAVE_WORKING___FUNC__
-#ifdef HAVE_WORKING___FUNCTION__
-#define __func__	__FUNCTION__
-#else /* !HAVE_WORKING___FUNCTION__ */
-#define __func__	"unknown"
-#endif /* HAVE_WORKING___FUNCTION__ */
-#endif /* !HAVE_WORKING___FUNC__ */
-
 #ifndef HAVE_WORKING_REALLOC_NULL
 #define realloc(PTR, SZ)	pike_realloc(PTR,SZ)
 #endif
