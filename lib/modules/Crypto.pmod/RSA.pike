@@ -6,7 +6,7 @@
 #pike __REAL_VERSION__
 #pragma strict_types
 
-#if constant(Gmp.mpz) && constant(Crypto.Hash)
+#if constant(Gmp) && constant(Gmp.mpz) && constant(Crypto.Hash)
 
 static Gmp.mpz n;  /* modulo */
 static Gmp.mpz e;  /* public exponent */
@@ -367,4 +367,6 @@ string name() {
   return "RSA";
 }
 
+#else
+constant this_program_does_not_exist=1;
 #endif

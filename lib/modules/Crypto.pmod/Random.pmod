@@ -4,7 +4,7 @@
 //! This module contains stuff to that tries to give you the
 //! best possible random generation.
 
-#if constant(Nettle.Yarrow)
+#if constant(Nettle) && constant(Nettle.Yarrow)
 
 #if constant(Nettle.NT)
 
@@ -199,4 +199,6 @@ void add_entropy(string data, int entropy) {
     rnd_block_obj->update(data, 2, entropy);
 }
 
+#else
+constant this_program_does_not_exist=1;
 #endif
