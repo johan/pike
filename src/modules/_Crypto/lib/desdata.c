@@ -5,7 +5,7 @@
  *
  *	Generate tables used by desUtil.c and desCode.h.
  */
-#include "stdio.h"
+#include	<stdio.h>
 #include	"desinfo.h"
 #include	"desCode.h"
 
