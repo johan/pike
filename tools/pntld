@@ -1193,8 +1193,9 @@ int main(int argc, array(string) argv)
   }else{
     foreach(global_directives, string dir)
       {
-	if(sscanf(dir,"-export:%s",string sym))
+	if(2==sscanf(lower_case(dir),"%*[-/]export:%*s"))
 	{
+	  string sym=dir[8..];
 	  int exported;
 //	  werror("Exporting symbol: %O\n",sym);
 	  if(global_symbols[sym])
