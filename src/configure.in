@@ -3427,7 +3427,7 @@ if test "x$pike_cv_sys_os" = "xWindows_NT" -o "x$pike_cv_sys_os" = "xAmigaOS"; t
       while read x; do
         pike_cv_initial_stack_size=$x ;
       done <confdefs.out.2
-    ])
+    ], [pike_cv_initial_stack_size=''])
     rm confdefs.out.2 >/dev/null 2>/dev/null || :
   ])
   if test x$pike_cv_initial_stack_size = x ; then
