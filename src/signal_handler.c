@@ -84,6 +84,10 @@ RCSID("$Id$");
 #endif /* HAVE_SYS_POLL_H */
 #endif /* HAVE_POLL */
 
+#ifdef HAVE_SYS_RESOURCE_H
+#include <sys/resource.h>
+#endif
+
 #ifdef __amigaos__
 #define timeval amigaos_timeval
 #include <exec/types.h>
@@ -1377,7 +1381,6 @@ static HANDLE get_inheritable_handle(struct mapping *optional,
 
 #ifdef HAVE_SETRLIMIT
 #include <sys/time.h>
-#include <sys/resource.h>
 struct plimit
 {
   int resource;
@@ -1696,6 +1699,7 @@ void f_set_priority( INT32 args )
  * FIXME:
  *   Support for setresgid().
  */
+#ifndef __amigaos__
 #ifdef HAVE_SETRLIMIT
 static void internal_add_limit( struct perishables *storage, 
                                 char *limit_name,
@@ -1758,6 +1762,7 @@ static void internal_add_limit( struct perishables *storage,
   }
 }
 #endif
+#endif /* __amigaos__ */
 
 void f_create_process(INT32 args)
 {
