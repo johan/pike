@@ -11,6 +11,7 @@
 #include "pike_memory.h"
 #include "peep.h"
 #include "dmalloc.h"
+#include "stuff.h"
 
 RCSID("$Id$");
 
