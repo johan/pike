@@ -956,7 +956,12 @@ static int PIKE_CONCAT(file_,X) (int fd, void *data)		\
   PIKE_CONCAT(set_,X)(fd, 0, 0);				\
   check_internal_reference(f);                                  \
   check_destructed(& f->X );				        \
-  if(!UNSAFE_IS_ZERO(& f->X )) {				\
+  if(UNSAFE_IS_ZERO(& f->X )) {					\
+    PIKE_CONCAT (set_,X) (fd, 0, 0);				\
+    check_internal_reference (THIS);				\
+  }								\
+  else {							\
+    f->my_errno = errno; /* Propagate the backend setting. */	\
     apply_svalue(& f->X, 0);					\
     if (Pike_sp[-1].type == PIKE_T_INT &&			\
 	Pike_sp[-1].u.integer == -1) {				\
