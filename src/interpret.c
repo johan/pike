@@ -61,7 +61,7 @@ RCSID("$Id$");
 /* Keep some margin on the stack space checks. They're lifted when
  * handle_error runs to give it some room. */
 #define SVALUE_STACK_MARGIN 100	/* Tested in 7.1: 40 was enough, 30 wasn't. */
-#define C_STACK_MARGIN 2000	/* Tested in 7.1: 1500 was enough, 1400 wasn't. */
+#define C_STACK_MARGIN 8000	/* Tested in 7.1: 3000 was enough, 2600 wasn't. */
 
 
 #ifdef PIKE_DEBUG
