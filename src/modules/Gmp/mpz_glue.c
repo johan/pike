@@ -158,8 +158,8 @@ static void gmp_push_int64 (INT64 i)
 #endif	/* !HAVE_MPZ_IMPORT */
 
       if (neg) mpz_neg (mpz, mpz);
-#endif	/* SIZEOF_LONG < SIZEOF_INT64 */
     }
+#endif	/* SIZEOF_LONG < SIZEOF_INT64 */
   }
 }
 
