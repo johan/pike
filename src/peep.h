@@ -34,9 +34,6 @@ ptrdiff_t insert_opcode0(int f,int current_line, struct pike_string *current_fil
 void update_arg(int instr,INT32 arg);
 void ins_f_byte(unsigned int b);
 void assemble(void);
-ptrdiff_t insopt2(int f, INT32 a, INT32 b, int cl, struct pike_string *cf);
-ptrdiff_t insopt1(int f, INT32 a, int cl, struct pike_string *cf);
-ptrdiff_t insopt0(int f, int cl, struct pike_string *cf);
 /* Prototypes end here */
 
 #endif
