@@ -199,9 +199,14 @@ int dbm_main(int argc, char **argv)
 	    case 's':
 	      debug_options|=DEBUG_SIGNALS;
 	      p++;
-	      if(p[1]) goto more_d_flags;
+	      d_flag--;
+	      goto more_d_flags;
+
+	    case 't':
+	      debug_options|=NO_TAILRECURSION;
 	      p++;
-	      break;
+	      d_flag--;
+	      goto more_d_flags;
 
 	    default:
 	      d_flag++,p++;
