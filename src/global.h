@@ -143,6 +143,11 @@ char *alloca ();
 #undef HAVE_MEMORY_H
 #endif
 
+#ifdef HAVE_WINDOWS_H
+#include <windows.h>
+#undef HAVE_WINDOWS_H
+#endif
+
 
 /* we here define a few types with more defined values */
 
