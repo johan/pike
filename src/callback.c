@@ -82,8 +82,10 @@ static void check_callback_chain(struct callback_list *lst)
 	struct callback *tmp;
 	for(tmp=foo->next;tmp && len2<=len;tmp=tmp->next)
 	{
+#ifdef PIKE_DEBUG
 	  if(tmp==foo)
 	    Pike_fatal("Callback list is cyclic!!!\n");
+#endif
 	}
       }
       len++;
@@ -174,11 +176,13 @@ PMOD_EXPORT void low_call_callback(struct callback_list *lst, void *arg)
       while(*ptr != l)
       {
 	ptr=&(ptr[0]->next);
+#ifdef PIKE_DEBUG
 	if(!*ptr)
 	{
 	  /* We totally failed to find where we are in the linked list.. */
 	  Pike_fatal("Callback linked list breakdown.\n");
 	}
+#endif
       }
 
       *ptr=l->next;
