@@ -1298,6 +1298,8 @@ PMOD_EXPORT void gc_mark_object_as_referenced(struct object *o)
 
 PMOD_EXPORT void real_gc_cycle_check_object(struct object *o, int weak)
 {
+  if(o->next == o) return; /* Fake object used by compiler */
+
   GC_CYCLE_ENTER_OBJECT(o, weak) {
     int e;
     struct program *p = o->prog;
