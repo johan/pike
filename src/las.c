@@ -1037,7 +1037,11 @@ node *copy_node(node *n)
     else
       b->type=0;
   }
-  if(n->name) add_ref(b->name=n->name);
+  if(n->name)
+  {
+    if(b->name) free_string(b->name);
+    add_ref(b->name=n->name);
+  }
   b->line_number = n->line_number;
   b->node_info = n->node_info;
   b->tree_info = n->tree_info;

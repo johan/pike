@@ -687,8 +687,13 @@ void really_free_program(struct program *p)
   }
 
   if(p->constants)
+  {
     for(e=0;e<p->num_constants;e++)
+    {
       free_svalue(& p->constants[e].sval);
+      if(p->constants[e].name) free_string(p->constants[e].name);
+    }
+  }
 
   if(p->inherits)
     for(e=0; e<p->num_inherits; e++)
