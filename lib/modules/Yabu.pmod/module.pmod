@@ -53,7 +53,7 @@ static private class ProcessLock {
   {
     lock_file = _lock_file;
 
-    while(1) {
+    for(int tryout = 0; tryout < 3; tryout++) {
       object f = Stdio.File();
       
       if(f->open(lock_file, "cxw")) {
@@ -82,6 +82,7 @@ static private class ProcessLock {
       rm(lock_file);
       sleep(10);
     }
+    ERR("Lock tryout error (insufficient permissions?)");
   }
 }
 
