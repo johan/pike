@@ -1734,7 +1734,7 @@ void gc_check_all_programs(void)
   struct program *p;
   for(p=first_program;p;p=p->next)
   {
-    gc_check_svalues(p->constants, p->num_constants);
+    debug_gc_check_svalues(p->constants, p->num_constants, T_PROGRAM, p);
 
     if(d_flag)
     {

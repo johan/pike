@@ -994,8 +994,8 @@ void gc_check_all_mappings(void)
 	   !(k->ind.u.object->prog))
 	  continue;
 	  
-	gc_check_svalues(&k->ind, 1);
-	m->val_types |= gc_check_svalues(&k->val, 1);
+	debug_gc_check_svalues(&k->ind, 1, T_MAPPING, m);
+	m->val_types |= debug_gc_check_svalues(&k->val, 1, T_MAPPING, m);
       }
 
 #ifdef DEBUG
