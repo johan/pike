@@ -759,6 +759,7 @@ fi
 if test "x$with_dmalloc" = "x"; then :; else
   if test "x$with_rtldebug" = "xyes"; then :; else
     AC_MSG_WARN([Debug malloc requires rtldebug. Enabling rtldebug.])
+    with_rtldebug=yes
   fi
 fi
 
