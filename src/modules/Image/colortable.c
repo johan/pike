@@ -1845,8 +1845,8 @@ void image_colortable_free_dither(struct nct_dither *dith)
 **!	<ref>create</ref> initiates a colortable object. 
 **!	Default is that no colors are in the colortable. 
 **!
-**!	<ref>create</ref> can also take the same arguments
-**!	as <ref>add</ref>, thus adding colors to the colortable.
+**!	<ref>add</ref> takes the same argument(s) as
+**!	<ref>create</ref>, thus adding colors to the colortable.
 **!
 **!	The colortable is mostly a list of colors,
 **!	or more advanced, colors and weight.
@@ -3061,7 +3061,7 @@ void image_colortable_spacefactors(INT32 args)
 **!	</tr><tr valign=center>
 **!	<td>original</td>
 **!	<td>floyd_steinberg to a 4󫶘 colorcube</td>
-**!	<td>floyd_steinberg to a 16 chosen colors</td>
+**!	<td>floyd_steinberg to 16 chosen colors</td>
 **!	</tr></table>
 **!
 **! arg int bidir

@@ -830,7 +830,7 @@ void image_polygone(INT32 args)
    struct vertex *v;
 
    if (!THIS->img)
-      error("No image when calling image::polygone()\n");
+      error("No image when calling Image.image->polygone()\n");
 
    v=polygone_begin();
 
@@ -841,14 +841,14 @@ void image_polygone(INT32 args)
       if (sp[-1].type!=T_ARRAY)
       {
 	 polygone_free(v);
-	 error("Illegal argument %d to image::polygone(), expected array\n",
+	 error("Illegal argument %d to Image.image->polygone(), expected array\n",
 	       args);
       }
-      if ((v_tmp=polygone_add(v, sp[-1].u.array, args, "image::polygone()"))) {
+      if ((v_tmp=polygone_add(v, sp[-1].u.array, args, "Image.image->polygone()"))) {
 	 v = v_tmp;
       } else {
 	 polygone_free(v);
-	 error("Bad argument %d to image::polygone(), bad vertice\n", args);
+	 error("Bad argument %d to Image.image->polygone(), bad vertice\n", args);
       }
       args--;
       pop_stack();
