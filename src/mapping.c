@@ -1464,7 +1464,7 @@ PMOD_EXPORT struct mapping *add_mappings(struct svalue *argp, INT32 args)
 
     if(md->size == 0) continue;
 
-    if(!(md->flags  && MAPPING_FLAG_WEAK))
+    if(!(md->flags  & MAPPING_FLAG_WEAK))
     {
 #if 1 /* major optimization */
       if(e==md->size)
