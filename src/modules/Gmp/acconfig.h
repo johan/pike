@@ -53,4 +53,7 @@
 /* Define if mpz_getlimbn works on negative numbers. */
 #undef MPZ_GETLIMBN_WORKS
 
+/* Define if mpz_set_si works for LONG_MIN. */
+#undef MPZ_SET_SI_WORKS
+
 #endif
