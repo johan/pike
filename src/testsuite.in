@@ -1,3 +1,4 @@
+dnl -*- Pike -*-
 test_true([["$Id$"]]);
 
 cond([[all_constants()->_verify_internals]],
