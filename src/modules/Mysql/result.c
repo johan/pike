@@ -246,9 +246,21 @@ static void f_create(INT32 args)
   if (!args) {
     Pike_error("Too few arguments to mysql_result()\n");
   }
+  if (sp[-args].type != T_OBJECT) {
+    Pike_error("Bad argument 1 to mysql_result()\n");
+  }
+
+  if (PIKE_MYSQL_RES->result) {
+    mysql_free_result(PIKE_MYSQL_RES->result);
+  }
+
+  PIKE_MYSQL_RES->result = NULL;
+
+  if (PIKE_MYSQL_RES->connection) {
+    free_object(PIKE_MYSQL_RES->connection);
+  }
 
   add_ref(PIKE_MYSQL_RES->connection = sp[-args].u.object);
-  PIKE_MYSQL_RES->result = NULL;
   
   pop_n_elems(args);
 }
