@@ -754,8 +754,6 @@ static char *combine_path(char *cwd,char *file)
   int tmp;
   ONERROR err;
 
-  SET_ONERROR(err, free_nonull, &cwdbuf);
-  
   if((tmp=IS_ABS(file)))
   {
     cwdbuf = (char *)xalloc(tmp+1);
