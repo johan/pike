@@ -366,7 +366,7 @@ class Frame {
   }
 
   program get_frame_data(string id) {
-    if( (< "TIT1", "TIT2", "TIT3", "TALB", "TOAL", "TSST", "TSRC",
+    if( (< "TIT1", "TIT2", "TIT3", "TALB", "TOAL", "TSSE", "TSRC",
 	   "TPE1", "TPE2", "TPE3", "TPE4", "TOPE", "TEXT", "TOLY",
 	   "TCOM", "TENC", "TYER" >)[id] )
       return Frame_TextPlain;
@@ -697,7 +697,8 @@ class Frame_TextMapping {
   mapping list = ([]);
 
   void decode(string data) {
-    if(!sizeof(data)) error( "Malformed text frame. Missing encoding byte.\n" );
+    if(!sizeof(data))
+      error( "Malformed text frame. Missing encoding byte.\n" );
     array tmp = data[1..]/"\0";
     tmp = map(tmp, decode_string, data[0]);
     foreach(tmp/2, array pair)
