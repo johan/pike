@@ -822,7 +822,7 @@ void low_exit_main(void)
   free_svalue(& throw_value);
   throw_value.type=T_INT;
   {
-    while(1)
+    while(1) {
       int tmp=num_objects;
       do_gc();
       if(num_objects >= tmp) break;
