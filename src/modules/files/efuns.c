@@ -983,6 +983,7 @@ void f_get_dir(INT32 args)
   {
     for(d=readdir(dir); d; d=readdir(dir))
     {
+      /* Filter "." and ".." from the list. */
       if(d->d_name[0]=='.')
       {
 	if(NAMLEN(d)==1) continue;

@@ -133,6 +133,10 @@ void f_strerror(INT32 args);
 void push_stat(PIKE_STAT_T *s);
 /* Prototypes end here */
 
+/* open_mode
+ *
+ * Note: The lowest 8 bits are reserved for the fd_* flags from "fdlib.h".
+ */
 #define FILE_READ               0x1000
 #define FILE_WRITE              0x2000
 #define FILE_APPEND             0x4000
