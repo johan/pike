@@ -106,6 +106,14 @@
 #define THIS	((struct pike_sendfile *)(fp->current_storage))
 
 /*
+ * Disable use of sendfile(2) on all OS's, since it's usually broken.
+ */
+
+#ifndef HAVE_BROKEN_SENDFILE
+#define HAVE_BROKEN_SENDFILE
+#endif /* !HAVE_BROKEN_SENDFILE */
+
+/*
  * Disable any use of sendfile(2) if HAVE_BROKEN_SENDFILE is defined.
  */
 #ifdef HAVE_BROKEN_SENDFILE
