@@ -63,7 +63,7 @@ ifelse([$3], , , [  rm -rf conftest*
 ])dnl
 fi
 rm -rf conftest*])
-])
+
 
 define([AC_LOW_MODULE_INIT],
 [
