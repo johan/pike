@@ -127,7 +127,7 @@ class YabuLog {
 static private class FileIO {
   INHERIT_MUTEX
   static private inherit Stdio.File:file;
-  static private string filemode;
+  static private string filename, filemode;
 
   static private void seek(int offset)
   {
@@ -171,16 +171,18 @@ static private class FileIO {
     file::close();
   }
 
-  void file_open(string filename)
+  void file_open(string _filename)
   {
+    filename = _filename;
     if(!file::open(filename, filemode))
       ERR(strerror(file::errno()));
   }
   
-  void create(string filename, string _filemode)
+  void create(string _filename, string _filemode)
   {
     file::create();
-    
+
+    filename = _filename;
     filemode = _filemode;
     file_open(filename);
   }
@@ -454,6 +456,7 @@ class Chunk {
     LOCK();
     if(!write)
       ERR("Cannot purge in read mode");
+    file::file_close();
     rm(filename);
     keys = 0;
     frees = 0;
@@ -467,11 +470,11 @@ class Chunk {
     LOCK();
     if(!write)
       ERR("Cannot move in read mode");
-    file_close();
+    file::file_close();
     if(!mv(filename, new_filename))
       IO_ERR("Move failed");
     filename = new_filename;
-    file_open(filename);
+    file::file_open(filename);
     UNLOCK();
   }
   
