@@ -260,6 +260,7 @@ install: build
 		dh_link -p$$f /usr/share/doc/$(PIKE)-core /usr/share/doc/$$f ; \
 	done
 
+	rm -r $(CURDIR)/debian/$(PIKE)-core/usr/lib/pike/$(VERSION)/doc
 	dh_movefiles --sourcedir=debian/$(PIKE)-core
 
 # Build architecture-independent files here.
