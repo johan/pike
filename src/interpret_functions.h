@@ -1303,7 +1303,6 @@ OPCODE1_RETURN(F_RETURN_LOCAL,"return local",{
   }else{
     push_svalue(Pike_fp->locals + arg1);
   }
-  print_return_value();
   DO_DUMB_RETURN;
 });
 
