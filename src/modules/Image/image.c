@@ -1871,7 +1871,8 @@ void image_select_from(INT32 args)
 	       sp[1-args].u.integer,
 	       THIS->img,img->img,img->xsize,img->ysize,
 	       pixel(THIS,sp[-args].u.integer,sp[1-args].u.integer),0);
-      MARK_DISTANCE(pixel(THIS,sp[-args].u.integer,sp[1-args].u.integer),0);
+
+      MARK_DISTANCE(pixel(img,sp[-args].u.integer,sp[1-args].u.integer),0);
    }
 
    pop_n_elems(args);
