@@ -87,7 +87,11 @@ void create(void|string|object host, void|string db,
 
     array(string) arr = host/"://";
     if ((sizeof(arr) > 1) && (arr[0] !="")) {
-      program_names = ({ arr[0] });
+      if (sizeof(arr[0]/".pike") > 1) {
+	program_names = ({ arr[0] });
+      } else {
+	program_names = ({ arr[0]+".pike" });
+      }
       host = arr[1..] * "://";
     }
     arr = host/"@";
@@ -178,11 +182,11 @@ void create(void|string|object host, void|string db,
     }
   }
 
-  if (sizeof(program_names) > 1) {
+  if (!program_names) {
     throw_error("Sql.sql(): Couldn't connect using any of the databases\n");
   } else {
     throw_error("Sql.sql(): Couldn't connect using the " +
-		program_names[0] + " database\n");
+		(program_names[0]/".pike")[0] + " database\n");
   }
 }
 
