@@ -597,6 +597,8 @@ AC_CHECK_LIB(nsl, gethostbyname)
 AC_CHECK_LIB(dl, dlopen)
 AC_CHECK_LIB(dld, dld_link)
 
+AC_HAVE_FUNCS(strdup)
+
 
 if test "${pike_cv_sys_os}" = "Linux"; then
   if test "${ac_cv_lib_m_floor}" = "no"; then
