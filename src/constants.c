@@ -202,7 +202,7 @@ void present_constant_profiling(void)
 
 void init_builtin_constants(void)
 {
-  builtin_constants = allocate_mapping(256);
+  builtin_constants = allocate_mapping(280);
 }
 
 void exit_builtin_constants(void)
