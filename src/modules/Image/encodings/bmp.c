@@ -643,7 +643,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
       push_text("decode");
       f_index(2);
 
-      push_string(make_shared_binary_string(os+n,olen-n));
+      push_string(make_shared_binary_string((char *)os+n,olen-n));
 
       push_text("quant_tables");
 
@@ -675,7 +675,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	 if ((4<<bpp)>len)
 	    error("Image.BMP.decode: unexpected EOF in palette\n");
 
-	 push_string(make_shared_binary_string(s,(4<<bpp)));
+	 push_string(make_shared_binary_string((char *)s,(4<<bpp)));
 	 push_int(2);
 	 push_object(o=clone_object(image_colortable_program,2));
 	 nct=(struct neo_colortable*)get_storage(o,image_colortable_program);
@@ -688,7 +688,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	 if ((3<<bpp)>len)
 	    error("Image.BMP.decode: unexpected EOF in palette\n");
 
-	 push_string(make_shared_binary_string(s,(3<<bpp)));
+	 push_string(make_shared_binary_string((char *)s,(3<<bpp)));
 	 push_int(1);
 	 push_object(o=clone_object(image_colortable_program,2));
 	 nct=(struct neo_colortable*)get_storage(o,image_colortable_program);
