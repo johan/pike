@@ -191,6 +191,34 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	  case T_FLOAT:
 	    sprintf(buf,"%f",(double)sp[-1].u.float_number);
 	    break;
+
+	  case T_ARRAY:
+	    {
+	      int i;
+	      struct array *a = sp[-1].u.array;
+	      struct pike_string *s;
+
+	      for(i = a->size; i--; ) {
+		if (a->item[i].type != T_INT) {
+		  error("cast: Item %d is not an integer.\n", i);
+		}
+		if ((a->item[i].u.integer < 0) ||
+		    (a->item[i].u.integer > 255)) {
+		  error("cast: Wide strings are not supported yet.\n"
+			"Index %d is %d, and is out of range 0 .. 255.\n",
+			i, a->item[i].u.integer);
+		}
+	      }
+	      s = begin_shared_string(a->size);
+	      for(i = a->size; i--; ) {
+		s->str[i] = a->item[i].u.integer;
+	      }
+	      s = end_shared_string(s);
+	      pop_stack();
+	      push_string(s);
+	      return;
+	    }
+	    break;
 	    
 	  default:
 	    error("Cannot cast to string.\n");
