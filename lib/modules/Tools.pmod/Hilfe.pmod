@@ -788,17 +788,26 @@ private class Expression {
       // We are in a type declaration.
       position++;
 
-      if( !(< "(", "|" >)[`[](position)] )
+      t = `[](position);
+      if( !(< "(", "|" >)[t] )
         return position-1;
 
-      int plevel;
-      for(; position<sizeof(positions); position++) {
-	t = `[](position);
-        if( t=="(" ) plevel++;
-        if( t==")" ) plevel--;
-	if( !plevel ) break;
-	// We will not index outside the array, since "|" can't be the last entry.
-	if( t=="|" ) position++;
+      if( t=="(" ) {
+	int plevel;
+	for(; position<sizeof(positions); position++) {
+	  t = `[](position);
+	  if( t=="(" ) plevel++;
+	  if( t==")" ) plevel--;
+	  if( !plevel ) {
+	    position++;
+	    t = `[](position);
+	    break;
+	  }
+	  // We will not index outside the array,
+	  // since "|" can't be the last entry.
+
+	  if( t=="|" ) position++;
+	}
       }
 
       if( t=="|" )
