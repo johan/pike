@@ -15,4 +15,7 @@
 /* Define if you have mySQL */
 #undef HAVE_MYSQL
 
+/* Return type of mysql_fetch_lengths(). Usually unsigned long. */
+#undef FETCH_LENGTHS_TYPE
+
 #endif /* PIKE_MYSQL_CONFIG_H */
