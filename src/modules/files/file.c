@@ -1274,12 +1274,12 @@ static void file_open(INT32 args)
 	{
 	  case 0: /* return 0 */
 	    ERRNO=EPERM;
-	    pop_n_elems(args-1);
+	    pop_n_elems(args+1);
 	    push_int(0);
 	    return;
 	    
 	  case 1: /* return 1 */
-	    pop_n_elems(args-1);
+	    pop_n_elems(args+1);
 	    push_int(1);
 	    return;
 	    
