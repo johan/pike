@@ -1224,7 +1224,7 @@ static void select_encoding_parameters(struct iso2022enc_stor *s,
   char *var;
   if(str == NULL || str->size_shift)
     Pike_error("Invalid ISO2022 encoding variant\n");
-  var = STR0(str);
+  var = (char *)STR0(str);
   if(!*var)
     s->variant = 0;
   else if(!strcmp(var, "jp"))
