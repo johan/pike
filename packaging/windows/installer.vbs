@@ -15,9 +15,9 @@ Function FinalizePike()
 
   Set WshShell = CreateObject("WScript.Shell")
   WshShell.Run """" & targetdir & "bin\pike""" &_
-    " ""-m" & targetdir & "lib\master.pike" &_
-    " """ & targetdir & "bin\install.pike &_
-    "--finalize BASEDIR=""" & targetdir & """" &_
+    " ""-m" & targetdir & "lib\master.pike""" &_
+    " """ & targetdir & "bin\install.pike""" &_
+    " --finalize BASEDIR=""" & targetdir & """" &_
     " ""TMP_BUILDDIR=" & targetdir & "bin""", 0, True
 
   FinalizePike = 1
