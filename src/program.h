@@ -687,18 +687,22 @@ PMOD_EXPORT int simple_add_constant(const char *name,
 			struct svalue *c,
 			INT32 flags);
 PMOD_EXPORT int add_integer_constant(const char *name,
-			 INT32 i,
-			 INT32 flags);
+				     INT_ARG_TYPE i,
+				     INT32 flags);
 PMOD_EXPORT int quick_add_integer_constant(const char *name,
-			       int name_length,
-			       INT32 i,
-			       INT32 flags);
+					   int name_length,
+					   INT_ARG_TYPE i,
+					   INT32 flags);
 PMOD_EXPORT int add_float_constant(const char *name,
-			 double f,
-			 INT32 flags);
+				   FLOAT_ARG_TYPE f,
+				   INT32 flags);
+PMOD_EXPORT int quick_add_float_constant(const char *name,
+					 int name_length,
+					 FLOAT_ARG_TYPE f,
+					 INT32 flags);
 PMOD_EXPORT int add_string_constant(const char *name,
-			const char *str,
-			INT32 flags);
+				    const char *str,
+				    INT32 flags);
 PMOD_EXPORT int add_program_constant(const char *name,
 			 struct program *p,
 			 INT32 flags);
@@ -835,6 +839,9 @@ void count_memory_in_programs(INT32*,INT32*);
 
 #define ADD_INT_CONSTANT(NAME, CONST, FLAGS) \
   quick_add_integer_constant(NAME, CONSTANT_STRLEN(NAME), CONST, FLAGS)
+
+#define ADD_FLOAT_CONSTANT(NAME, CONST, FLAGS) \
+  quick_add_float_constant(NAME, CONSTANT_STRLEN(NAME), CONST, FLAGS)
 
 #define PIKE_MAP_VARIABLE(NAME, OFFSET, TYPE, RTTYPE, FLAGS) \
   quick_map_variable(NAME, CONSTANT_STRLEN(NAME), OFFSET, \
