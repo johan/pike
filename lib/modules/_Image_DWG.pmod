@@ -4,7 +4,6 @@
 #pike __REAL_VERSION__
 
 //! @appears Image.DWG
-
 //! This module decodes the thumbnail raster images embedded in AutoCAD DWG files for
 //! AutoCAD version R13, R14 and R2000 (which equals to file version 12, 14 and 15).
 //! Implemented according to specifications from @url{http://www.opendwg.org/@}.
