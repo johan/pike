@@ -15,6 +15,9 @@
 /* Define this if you want run time self tests */
 #undef PIKE_DEBUG
 
+/* Define this if you are going to use a memory access checker (like Purify) */
+#undef __CHECKER__
+
 /* Define this if you want malloc debugging */
 #undef DEBUG_MALLOC
 
