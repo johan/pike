@@ -77,6 +77,8 @@ struct color_struct
    struct pike_string *name;
 };
 
+#define tColor tOr3(tArr(tInt),tString,tObj)
+
 /* COMPAT: encoding of a gif - from togif */
 
 void image_togif(INT32 args);
