@@ -12,7 +12,7 @@
 extern struct pike_queue gc_mark_queue;
 extern INT32 num_objects;
 extern INT32 num_allocs;
-extern INT32 alloc_threshold;
+extern ptrdiff_t alloc_threshold;
 extern int Pike_in_gc;
 extern int gc_debug;
 
