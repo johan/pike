@@ -777,6 +777,18 @@ void *dummy_label;
 #define DEF_PROG_COUNTER
 #endif /* !DEF_PROG_COUNTER */
 
+#ifndef CALL_MACHINE_CODE
+#define CALL_MACHINE_CODE(pc)					\
+  do {								\
+    /* The test is needed to get the labels to work... */	\
+    if (pc) {							\
+      /* No extra setup needed!					\
+       */							\
+      return ((int (*)(void))(pc))();				\
+    }								\
+  while(0)
+#endif /* !CALL_MACHINE_CODE */
+
 #define OPCODE0(O,N,C) \
 void PIKE_CONCAT(opcode_,O)(void) { \
   DEF_PROG_COUNTER; \
@@ -849,31 +861,8 @@ static int eval_instruction(PIKE_OPCODE_T *pc)
   }
 #endif /* PIKE_DEBUG */
 
-#ifdef __i386__
-  /* This code does not clobber %eax, %ecx & %edx, but
-   * the code jumped to does.
-   */
-  __asm__ __volatile__( "	sub $8,%%esp\n"
-			"	jmp *%0"
-			: "=m" (pc)
-			:
-			: "cc", "memory", "eax", "ecx", "edx" );
-#elif defined(__ppc__) || defined(_POWER)
-  __asm__ __volatile__( "       mtlr %0\n"
-			"	blr"
-			:
-			: "r" (pc)
-			: "cc", "memory", "r0", "r3", "r4", "r5",
-			  "r6", "r7", "r8", "r9", "r10", "r11", "r12",
-			  "lr", "ctr");
-#else /* !__i386__ && !__ppc__ */
-  /* The test is needed to get the labels to work... */
-  if (pc) {
-    /* No extra setup needed!
-     */
-    return ((int (*)(void))pc)();
-  }
-#endif /* __i386__ || __ppc__ */
+  CALL_MACHINE_CODE(pc);
+
   /* This code is never reached, but will
    * prevent gcc from optimizing the labels below too much
    */

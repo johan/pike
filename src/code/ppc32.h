@@ -76,3 +76,6 @@ void ppc32_decode_program(struct program *p);
 #define ENCODE_PROGRAM(P, BUF)	ppc32_encode_program(P, BUF)
 #define DECODE_PROGRAM(P)	ppc32_decode_program(p)
 */
+
+#define CALL_MACHINE_CODE(pc)    do { if(pc) goto *(pc); } while(0)
+
