@@ -1,6 +1,6 @@
 // $Id$
 
-#include <string.h>
+import String;
 
 inherit files;
 

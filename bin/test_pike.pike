@@ -2,7 +2,7 @@
 
 /* $Id$ */
 
-#include <simulate.h>
+import Stdio;
 
 #if !efun(_verify_internals)
 #define _verify_internals()
