@@ -507,7 +507,7 @@ array(string) list_dbs(string|void wild)
   }
   if (wild) {
     res = filter(res,
-		 Regexp(replace(wild, ({"%", "_"}), ({".*", "."}))->match);
+		 Regexp(replace(wild, ({"%", "_"}), ({".*", "."})))->match);
   }
   return(res);
 }
@@ -534,7 +534,7 @@ array(string) list_tables(string|void wild)
   }
   if (wild) {
     res = filter(res,
-		 Regexp(replace(wild, ({"%", "_"}), ({".*", "."}))->match);
+		 Regexp(replace(wild, ({"%", "_"}), ({".*", "."})))->match);
   }
   return(res);
 }
