@@ -31,7 +31,9 @@ void *debug_malloc_update_location(void *,const char *, int);
 #define debug_malloc_touch(X) debug_malloc_update_location((X),__FILE__,__LINE__)
 #define debug_malloc_pass(X) debug_malloc_update_location((X),__FILE__,__LINE__)
 #define xalloc(X) ((char *)debug_malloc_touch(debug_xalloc(X)))
+void debug_malloc_dump_references(void *x);
 #else
+#define debug_malloc_dump_references(X)
 #define xalloc debug_xalloc
 #define dbm_main main
 #define DO_IF_DMALLOC(X)

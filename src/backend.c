@@ -462,6 +462,7 @@ void do_debug(void)
   extern void check_all_objects(void);
   extern void verify_shared_strings_tables(void);
   extern void slow_check_stack(void);
+  extern void do_gc(void);
 
   slow_check_stack();
   check_all_arrays();
@@ -519,6 +520,8 @@ void do_debug(void)
     }
   }
 #endif
+
+  if(d_flag>3) do_gc();
 }
 #endif
 
