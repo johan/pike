@@ -1227,7 +1227,6 @@ void pike_module_exit(void)
 
 #ifdef HAVE_LIBTTF
    TT_Done_FreeType(engine);
-#endif /* HAVE_LIBTTF */
    if (image_ttf_faceinstance_program) {
      free_program(image_ttf_faceinstance_program);
      image_ttf_faceinstance_program = NULL;
@@ -1236,6 +1235,7 @@ void pike_module_exit(void)
      free_program(image_ttf_face_program);
      image_ttf_face_program = NULL;
    }
+#endif /* HAVE_LIBTTF */
 }
 
 void pike_module_init(void)
