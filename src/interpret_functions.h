@@ -274,9 +274,11 @@ OPCODE1(F_LFUN, "local function", {
   print_return_value();
 });
 
-OPCODE1(F_TRAMPOLINE, "trampoline", {
+OPCODE2(F_TRAMPOLINE, "trampoline", {
   struct object *o=low_clone(pike_trampoline_program);
-  add_ref( ((struct pike_trampoline *)(o->storage))->frame=Pike_fp );
+  struct pike_frame *f=Pike_fp;
+  while(arg2--) f=f->scope;
+  add_ref( ((struct pike_trampoline *)(o->storage))->frame=f );
   ((struct pike_trampoline *)(o->storage))->func=arg1+Pike_fp->context.identifier_level;
   push_object(o);
   /* Make it look like a function. */

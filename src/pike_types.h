@@ -81,6 +81,8 @@ extern unsigned char *pike_type_mark_stack[PIKE_TYPE_STACK_SIZE/4];
 
 #endif /* USE_PIKE_TYPE */
 
+struct compiler_frame;
+
 /* Also used in struct node_identifier */
 union node_data
 {
@@ -89,6 +91,14 @@ union node_data
     int number;
     struct program *prog;
   } id;
+  struct
+  {
+    int ident;
+    struct compiler_frame *frame;
+#ifdef SHARED_NODES
+    struct program *prog;
+#endif
+  } trampoline;
   struct svalue sval;
   struct
   {
