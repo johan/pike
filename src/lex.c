@@ -25,7 +25,9 @@ RCSID("$Id$");
 #include "mapping.h"
 
 #include "pike_macros.h"
+#ifdef HAVE_SYS_PARAM_H
 #include <sys/param.h>
+#endif
 #include <ctype.h>
 #include <math.h>
 #include <fcntl.h>

@@ -31,12 +31,26 @@ RCSID("$Id$");
 #endif
 
 #include <sys/stat.h>
+#ifdef HAVE_SYS_PARAM_H
 #include <sys/param.h>
+#endif
 #include <errno.h>
 #include <fcntl.h>
 #include <signal.h>
 
-#include <sys/socket.h>
+#ifdef HAVE_SYS_SOCKET_H
+#  include <sys/socket.h>
+#endif
+
+#ifdef HAVE_WINSOCK_H
+#  include <winsock.h>
+#ifndef EWOULDBLOCK
+#define EWOULDBLOCK WSAEWOULDBLOCK
+#endif
+#ifndef EADDRINUSE
+#define EADDRINUSE WSAEADDRINUSE
+#endif
+#endif
 
 #ifdef HAVE_SYS_STREAM_H
 #include <sys/stream.h>
@@ -80,6 +94,7 @@ struct file_struct
 
 #define FD (((struct file_struct *)(fp->current_storage))->fd)
 #define ERRNO (((struct file_struct *)(fp->current_storage))->my_errno)
+#undef THIS
 #define THIS (files + FD)
 
 static struct my_file files[MAX_OPEN_FILEDESCRIPTORS];
