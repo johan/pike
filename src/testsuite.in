@@ -4594,7 +4594,7 @@ ifefun(gc,
 	  }();
 	o = 0;
 	gc();
-	return x && !sizeof (x + (<>));
+	return x && !sizeof (indices (x + (<>)));
       }
     }()->test();
   ]], 1)
