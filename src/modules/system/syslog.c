@@ -240,8 +240,10 @@ void f_syslog(INT32 args)
   struct pike_string *s;
   INT_TYPE pri=0, i;
 
+#ifdef PIKE_SECURITY
   int errno;
 #define EPERM 0
+#endif
   VALID_FILE_IO("System.syslog","write");
 
   get_all_args("syslog", args, "%i%S", &i, &s);
