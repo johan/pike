@@ -1,4 +1,4 @@
-#!/usr/local/bin/pike
+#! /usr/bin/env pike
 // By Martin Nilsson and Andreas Lange
 //
 // $Id$
