@@ -46,21 +46,21 @@ struct program *odbc_program = NULL;
  * Helper functions
  */
 
-volatile void odbc_error(const char *fun, const char *msg,
-			 struct precompiled_odbc *odbc, HSTMT hstmt,
-			 RETCODE code, void (*clean)(void));
+void odbc_error(const char *fun, const char *msg,
+		struct precompiled_odbc *odbc, HSTMT hstmt,
+		RETCODE code, void (*clean)(void));
 
-static INLINE volatile void odbc_check_error(const char *fun, const char *msg,
-					     RETCODE code, void (*clean)(void))
+static INLINE void odbc_check_error(const char *fun, const char *msg,
+				    RETCODE code, void (*clean)(void))
 {
   if ((code != SQL_SUCCESS) && (code != SQL_SUCCESS_WITH_INFO)) {
     odbc_error(fun, msg, PIKE_ODBC, PIKE_ODBC->hstmt, code, clean);
   }
 }
 
-volatile void odbc_error(const char *fun, const char *msg,
-			 struct precompiled_odbc *odbc, HSTMT hstmt,
-			 RETCODE code, void (*clean)(void))
+void odbc_error(const char *fun, const char *msg,
+		struct precompiled_odbc *odbc, HSTMT hstmt,
+		RETCODE code, void (*clean)(void))
 {
   RETCODE _code;
   unsigned char errcode[256];

@@ -72,9 +72,9 @@ struct precompiled_odbc_result {
 /*
  * Prototypes
  */
-volatile void odbc_error(const char *fun, const char *msg,
-			 struct precompiled_odbc *odbc, HSTMT hstmt,
-			 RETCODE code, void (*clean)(void));
+void odbc_error(const char *fun, const char *msg,
+		struct precompiled_odbc *odbc, HSTMT hstmt,
+		RETCODE code, void (*clean)(void));
 
 void init_odbc_res_programs(void);
 void exit_odbc_res(void);
