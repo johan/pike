@@ -77,6 +77,9 @@ union anything
 #define STRUCT_SVALUE_DECLARED
 #endif
 
+/* Note: At least rbtree overlays the type field and uses the top 4
+ * bits in it internally. */
+
 struct svalue
 {
   unsigned INT16 type;
