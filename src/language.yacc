@@ -2792,7 +2792,11 @@ case: TOK_CASE safe_comma_expr expected_colon
   }
   | TOK_CASE safe_comma_expr expected_dot_dot optional_comma_expr expected_colon
   {
-     $$=mknode(F_CASE,$4?$2:0,$4?$4:$2);
+     $$=mknode(F_CASE_RANGE,$2,$4);
+  }
+  | TOK_CASE expected_dot_dot safe_comma_expr expected_colon
+  {
+     $$=mknode(F_CASE_RANGE,0,$3);
   }
   ;
 

@@ -250,6 +250,9 @@ F_POP_VALUE(0 = F_BREAK, *):
 F_POP_VALUE(0 = F_CASE, *):
   $0;
 
+F_POP_VALUE(0 = F_CASE_RANGE, *):
+  $0;
+
 F_POP_VALUE(0 = F_DEFAULT, *):
   $0;
 

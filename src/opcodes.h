@@ -74,6 +74,7 @@ enum Pike_opcodes
   F_COMMA_EXPR,
   F_BREAK,
   F_CASE,
+  F_CASE_RANGE,
   F_CONTINUE,
   F_DEFAULT,
   F_DIV_EQ,
