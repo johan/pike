@@ -5,7 +5,7 @@
 
  */
 
-#pike __REAL_VERSION__
+#pike 7.3
 
 inherit Protocols.LDAP.client;
 
