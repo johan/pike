@@ -1346,10 +1346,12 @@ int my_socketpair(int family, int type, int protocol, int sv[2])
   static struct sockaddr_in my_addr;
   struct sockaddr_in addr,addr2;
   int retries=0;
-  /* Solaris thinks this variable should a size_t, everybody else thinks
-   * it should be an int.
+  /* Solaris and AIX think this variable should a size_t, everybody else
+   * thinks it should be an int.
+   *
+   * FIXME: Configure-test?
    */
-   int len;
+  int len;
 
   MEMSET((char *)&addr,0,sizeof(struct sockaddr_in));
 
