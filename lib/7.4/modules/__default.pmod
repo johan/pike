@@ -115,6 +115,7 @@ mapping(string:mixed) all_constants()
 {
   mapping(string:mixed) ret=predef::all_constants()+([]);
   ret->rusage = rusage;
+  ret->hash = hash_7_4;
   return ret;
 }
 

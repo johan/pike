@@ -134,6 +134,8 @@ PMOD_EXPORT void reorder(char *memory, INT32 nitems, INT32 size,INT32 *order);
 PMOD_EXPORT size_t hashmem(const unsigned char *a, size_t len, size_t mlen);
 PMOD_EXPORT size_t hashstr(const unsigned char *str, ptrdiff_t maxn);
 PMOD_EXPORT size_t simple_hashmem(const unsigned char *str, ptrdiff_t len, ptrdiff_t maxn);
+PMOD_EXPORT size_t simple_hashmem1(const p_wchar1 *str, ptrdiff_t len, ptrdiff_t maxn);
+PMOD_EXPORT size_t simple_hashmem2(const p_wchar2 *str, ptrdiff_t len, ptrdiff_t maxn);
 PMOD_EXPORT void init_memsearch(struct mem_searcher *s,
 		    char *needle,
 		    size_t needlelen,
