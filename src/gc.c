@@ -899,7 +899,7 @@ again:
 	    else
 	      assign_from_short_svalue_no_free (
 		Pike_sp++, (union anything *) ptr, id->run_time_type);
-	    print_svalue (stderr, Pike_sp - 1);
+	    print_svalue_compact (stderr, Pike_sp - 1);
 	    pop_stack();
 
 	    fputc ('\n', stderr);
@@ -1054,7 +1054,7 @@ again:
 	  fprintf (stderr, "  pc: %"PRINTPTRDIFFT"d", id->func.offset);
 	else if (IDENTIFIER_IS_CONSTANT (id->identifier_flags)) {
 	  fputs ("  value: ", stderr);
-	  print_svalue (stderr, &id_inh->prog->constants[id->func.offset].sval);
+	  print_svalue_compact (stderr, &id_inh->prog->constants[id->func.offset].sval);
 	}
 
 	fputc ('\n', stderr);
