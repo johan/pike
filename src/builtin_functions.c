@@ -1937,8 +1937,10 @@ static node *optimize_this_object(node *n)
 	Pike_fatal ("The type check for this_object() failed.\n");
 #endif
       level = CDR (n)->u.sval.u.integer;
-      for (i = MIN (level, compilation_depth); i; i--, state = state->previous)
-	state->new_program->flags |= PROGRAM_USES_PARENT | PROGRAM_NEEDS_PARENT;
+      for (i = MINIMUM(level, compilation_depth); i;
+           i--, state = state->previous)
+	state->new_program->flags |=
+          PROGRAM_USES_PARENT | PROGRAM_NEEDS_PARENT;
     }
   }
 
