@@ -63,12 +63,6 @@ PMOD_EXPORT void really_free_multiset(struct multiset *l)
   free_array(l->ind);
   FREE_PROT(l);
 
-  if (gc_internal_multiset) {
-    if (l == gc_internal_multiset)
-      gc_internal_multiset = l->next;
-    if (l == gc_mark_multiset_pos)
-      gc_mark_multiset_pos = l->next;
-  }
   DOUBLEUNLINK(first_multiset, l);
 
   free((char *)l);
