@@ -1,5 +1,4 @@
 /* $Id$ */
-/* $Id$ */
 #include "global.h"
 
 #include <math.h>
