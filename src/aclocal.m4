@@ -2,9 +2,9 @@ dnl $Id$
 
 dnl Some compatibility with Autoconf 2.50+. Not complete.
 dnl newer Autoconf calls substr m4_substr
-ifdef([substr], ,m4_copy([m4_substr],[substr]))
+ifdef([substr], ,[m4_copy([m4_substr],[substr])])
 dnl Autoconf 2.53+ hides their version numbers in m4_PACKAGE_VERSION.
-ifdef([AC_ACVERSION], ,m4_copy([m4_PACKAGE_VERSION],[AC_ACVERSION]))
+ifdef([AC_ACVERSION], ,[m4_copy([m4_PACKAGE_VERSION],[AC_ACVERSION])])
 
 pushdef([AC_PROG_CC_WORKS],
 [
