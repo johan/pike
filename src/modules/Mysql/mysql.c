@@ -160,7 +160,8 @@ static MUTEX_T stupid_port_lock;
 #define CHECK_8BIT_NONBINARY_STRING(FUNC, ARG) do {			\
     if (sp[ARG-1-args].type != T_STRING ||				\
 	sp[ARG-1-args].u.string->size_shift ||				\
-	strlen (sp[ARG-1-args].u.string->str) != sp[ARG-1-args].u.string->len) \
+	((ptrdiff_t) strlen (sp[ARG-1-args].u.string->str) !=		\
+	 sp[ARG-1-args].u.string->len))					\
       SIMPLE_BAD_ARG_ERROR (FUNC, ARG, "string (nonbinary 8bit)");	\
   } while (0)
 
