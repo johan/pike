@@ -78,10 +78,10 @@ array(mapping(string:mixed)) fetch_fields()
 {
   if (arrayp(master_res)) {
     /* Only supports the name field */
-    array(mapping(string:mixed)) res = allocate(sizeof(master_res));
+    array(mapping(string:mixed)) res = allocate(sizeof(master_res[0]));
     int index = 0;
     
-    foreach(sort(indices(master_res)), string name) {
+    foreach(sort(indices(master_res[0])), string name) {
       res[index++] = ([ "name": name ]);
     }
     return(res);
