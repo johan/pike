@@ -1450,11 +1450,11 @@ failsafe_block: block
   
 
 local_name_list: new_local_name
-  | local_name_list ',' { $<n>$=$<n>0; } new_local_name { $$=mknode(F_ARG_LIST,$1,$4); }
+  | local_name_list ',' { $<n>$=$<n>0; } new_local_name { $$=mknode(F_COMMA_EXPR,mkcastnode(void_type_string,$1),$4); }
   ;
 
 local_name_list2: new_local_name2
-  | local_name_list2 ',' { $<n>$=$<n>0; } new_local_name { $$=mknode(F_ARG_LIST,$1,$4); }
+  | local_name_list2 ',' { $<n>$=$<n>0; } new_local_name { $$=mknode(F_COMMA_EXPR,mkcastnode(void_type_string,$1),$4); }
   ;
 
 statements: { $$=0; }
