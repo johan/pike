@@ -259,6 +259,12 @@ int main(int argc, char **argv)
 #ifdef USE_RPATH
     new_argv[new_argc++] = "-rpath";
     new_argv[new_argc++] = rpath;
+#elif defined(USE_PLUS_b)
+    if (linking) {
+      /* +b: is probaly enough, but... */
+      new_argv[new_argc++] = "+b";
+      new_argv[new_argc++] = rpath;
+    }
 #elif defined(USE_YP_)
     if (linking) {
       new_argv[new_argc++] = "-YP,";
