@@ -1459,13 +1459,13 @@ CHAROPT2(								 \
   match_set:								 \
 	  for(e=eye;eye<input_len;eye++)				 \
 	  {								 \
-CHAROPT(								 \
+CHAROPT2(								 \
 	    if(input[eye]<sizeof(set.c))				 \
 	    {								 \
 )									 \
 	      if(set.c[input[eye]] == set.neg)				 \
 		break;							 \
-CHAROPT(								 \
+CHAROPT2(								 \
 	    }else{							 \
 	      if(set.a)							 \
 	      {								 \
@@ -1520,8 +1520,11 @@ CHAROPT(								 \
 /* Confusing? Yes - Hubbe */
 
 #define CHAROPT(X)
-#define CHAROPT2(X) X
+#define CHAROPT2(X)
 
+/* CHAROPT(X) is X if the match set is wide.
+ * CHAROPT2(X) is X if the input is wide.
+ */
 MKREADSET(0)
 MK_VERY_LOW_SSCANF(0,0)
 
