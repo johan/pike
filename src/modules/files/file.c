@@ -2782,7 +2782,9 @@ static void low_dup(struct object *toob,
   my_set_close_on_exec(to->box.fd, to->box.fd > 2);
 
   to->open_mode=from->open_mode;
-  to->flags=from->flags;
+  to->flags = from->flags & ~(FILE_NO_CLOSE_ON_DESTRUCT |
+			      FILE_LOCK_FD |
+			      FILE_NOT_OPENED);
 
   /* Note: This previously enabled all events for which there were
    * callbacks instead of copying the event settings from the source
