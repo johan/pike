@@ -3148,6 +3148,8 @@ test_equal(mkmultiset(values(class{ constant a="a"; constant b="b";}())),
 test_eq(zero_type(0),0)
 test_eq(zero_type(([])[7]),1)
 
+test_true([[lambda (int|void a) { return zero_type(a); }()]])
+
 test_program(int b=10; mixed a() { return 1; })
 test_program(mixed b=10; mixed a() { return 1;})
 test_define_program(test,[[int q,w,e,r,t; mixed foo() { return 10; }]])
