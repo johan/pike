@@ -10,6 +10,8 @@ array l;
 int head;
 int tail;
 
+//! @fixme
+//!   Document this function
 void create(mixed ...args)
 {
   l = args + allocate(QUEUE_SIZE);
@@ -22,6 +24,10 @@ void write(mixed item)
   put(item);
 }
 
+//! @decl void write(mixed item)
+//! @decl void put(mixed item)
+//! Adds the @[item] to the queue.
+//
 void put(mixed item)
 {
   if (head == sizeof(l))
@@ -40,6 +46,10 @@ mixed read()
   return get();
 }
 
+//! @decl mixed read()
+//! @decl mixed get()
+//! Returns the next element from the queue.
+//
 mixed get()
 {
 //  werror(sprintf("Queue->get: %O\n", l[tail..head-1]));
@@ -51,16 +61,21 @@ mixed get()
   return res;
 }
 
+//! Returns the next element from the queue
+//! without removing it from the queue.
 mixed peek()
 {
   return (tail < head) && l[tail];
 }
 
-int is_empty()
+//! Returns true if the queue is empty,
+//! otherwise zero.
+int(0..1) is_empty()
 {
   return (tail == head);
 }
 
+//! Empties the queue.
 void flush()
 {
   create();
