@@ -156,6 +156,7 @@ class table {
   object where(array(int|string)|int|string cs, function f, mixed ... args)
   {
     array t = ({});
+    f = f || lambda(mixed x) { return x; };
     cs = remap(arrayp(cs)?cs:({ cs }));
     foreach(table, mixed row)
       if(f(@rows(row, cs), @args))
