@@ -574,7 +574,7 @@ static void do_drop_db (INT32 args)
 	return;
 }
 
-/* mapping(string:array(string)) list_fields (string table) */
+/* array(mapping(string:mixed)) list_fields (string table) */
 static void do_list_fields (INT32 args)
 {
 	m_result * result;
@@ -612,8 +612,9 @@ static void do_list_fields (INT32 args)
 	{
 		int flagsnum=0;
 		field=msqlFetchField(result);
+    
+    push_text("name");
 		push_text(field->name);
-	
 		push_text("type");
 		push_text(decode_msql_type(field->type));
 		push_text("length");
@@ -640,9 +641,9 @@ static void do_list_fields (INT32 args)
 		}
 #endif
 		f_aggregate_multiset(flagsnum);
-		f_aggregate_mapping(8); /*must aggregate on the fields above, except name*/
+		f_aggregate_mapping(10);
 	}
-	f_aggregate_mapping(fields*2);
+  f_aggregate(fields);
 
 	msqlFreeResult(result);
 	return;
@@ -745,7 +746,7 @@ void pike_module_init(void)
 	/* Lists the tables contained in the selected database. */
 
 	/* function(string:mapping(string:array(mixed))) */
-  ADD_FUNCTION("list_fields", do_list_fields,tFunc(tStr,tMap(tStr,tArr(tMix))),
+  ADD_FUNCTION("list_fields", do_list_fields,tFunc(tStr,tArr(tMap(tStr,tMix))),
 		OPT_RETURN|OPT_EXTERNAL_DEPEND);
 	/* Returns information on the the fields of the given table of the current
 	  database */
