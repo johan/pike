@@ -512,7 +512,7 @@ fast_verify_testsuite: testsuite
 
 # run hilfe, for interactive testing
 run_hilfe:
-	$(RUNPIKE) $(TMP_BINDIR)/hilfe
+	$(RUNPIKE)
 
 feature_list:
 	$(RUNPIKE) $(TMP_BINDIR)/feature_list
