@@ -701,15 +701,21 @@ PMOD_EXPORT void f_backtrace(INT32 args)
     if(f->current_object && f->context.prog)
     {
       INT32 args;
-      args=f->num_args;
-      args = DO_NOT_WARN((INT32) MINIMUM(f->num_args, Pike_sp - f->locals));
-      if(of)
-	args = DO_NOT_WARN((INT32)MINIMUM(f->num_args,of->locals - f->locals));
-      args=MAXIMUM(args,0);
+      if(!f->locals)
+      {
+	args=0;
+      }else{
+	args=f->num_args;
+	args = DO_NOT_WARN((INT32) MINIMUM(f->num_args, Pike_sp - f->locals));
+	if(of)
+	  args = DO_NOT_WARN((INT32)MINIMUM(f->num_args,of->locals - f->locals));
+	args=MAXIMUM(args,0);
+      }
 
       ITEM(a)[frames].u.array=i=allocate_array_no_init(3+args,0);
       ITEM(a)[frames].type=T_ARRAY;
-      assign_svalues_no_free(ITEM(i)+3, f->locals, args, BIT_MIXED);
+      if(f->locals)
+	assign_svalues_no_free(ITEM(i)+3, f->locals, args, BIT_MIXED);
       if(f->current_object->prog)
       {
 	ITEM(i)[2].type=T_FUNCTION;
