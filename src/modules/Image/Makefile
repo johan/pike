@@ -26,8 +26,9 @@ DOCFILES = doc-header \
    operator.c \
    orient.c \
    pattern.c \
-   pnm.c \
+   pnm_compat.c \
    polyfill.c \
+   search.c \
    togif.c \
    x.c \
    colors.c \
