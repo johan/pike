@@ -245,7 +245,7 @@ struct callback *debug_add_gc_callback(callback_func call,
 				 void *arg,
 				 callback_func free_func);
 void dump_gc_info(void);
-int attempt_to_identify(void *something, void **inblock);
+TYPE_T attempt_to_identify(void *something, void **inblock);
 void describe_location(void *real_memblock,
 		       int real_type,
 		       void *location,
