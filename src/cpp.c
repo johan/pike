@@ -1479,6 +1479,8 @@ static int do_safe_index_call(struct pike_string *s)
   return res;
 }
 
+/*! @namespace cpp:: */
+
 /*! @decl constant __VERSION__
  *!
  *! This define contains the current Pike version as a float. If
@@ -1600,6 +1602,8 @@ static int do_safe_index_call(struct pike_string *s)
  *!
  *! This define is defined when the Pike is running on Amiga OS.
  */
+
+/*! @endnamespace */
 
 /*! @decl string cpp(string data, string|void current_file, @
  *!                  int|string|void charset, object|void handler, @
