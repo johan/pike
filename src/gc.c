@@ -2487,7 +2487,7 @@ live_recurse:
     /* A thing previously popped as dead is now being marked live.
      * Have to remove the extra ref added by gc_cycle_pop(). */
     gc_free_extra_ref(x);
-    if (!--*(INT32 *) x) {
+    if (!sub_ref ((struct ref_dummy *) x)) {
 #ifdef PIKE_DEBUG
       gc_fatal(x, 0, "Thing got zero refs after removing the dead gc ref.\n");
 #endif
