@@ -47,7 +47,24 @@ PMOD_EXPORT void convert_stack_top_to_bignum(void)
   apply_svalue(&auto_bignum_program, 1);
 
   if(sp[-1].type != T_OBJECT)
-    Pike_error("Gmp.mpz conversion failed.\n");
+  {
+     if (auto_bignum_program.type!=T_PROGRAM)
+     {
+  /* for some reason, Gmp isn't loaded */
+	push_text("Gmp");
+	push_int(0);
+	SAFE_APPLY_MASTER("resolv",2);
+	pop_stack();
+
+	if (auto_bignum_program.type!=T_PROGRAM)
+	   Pike_error("Gmp.mpz conversion failed (failed to load Gmp?).\n");
+
+	apply_svalue(&auto_bignum_program, 1);
+     }
+
+     if(sp[-1].type != T_OBJECT)
+	Pike_error("Gmp.mpz conversion failed (unknown error).\n");
+  }
 }
 
 PMOD_EXPORT void convert_stack_top_with_base_to_bignum(void)
