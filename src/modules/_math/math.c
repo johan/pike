@@ -310,9 +310,6 @@ void pike_module_init(void)
 /* function(float:float) */
   ADD_EFUN("round",f_round,tFunc(tFlt,tFlt),0);
 
-/* function(float:float) */
-  ADD_EFUN("rint",f_round,tFunc(tFlt,tFlt),0);
-
 #define CMP_TYPE \
   "!function(!object...:mixed)&function(mixed...:mixed)|" \
   "function(int...:int)|" \
