@@ -3218,8 +3218,9 @@ PIKE_CHECK_CONSTANTS(recursive mutex flag,
 # It also clobbers $LIBOBJS.
 #
 # Handle the latest autoconf incompatibility...
-m4_pattern_allow(LIBOBJS)
-
+ifdef([m4_pattern_allow], [
+  m4_pattern_allow(LIBOBJS)
+])
 OLD_LIBOBJS="${LIBOBJS}"
 
 AC_FUNC_MEMCMP
