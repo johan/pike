@@ -85,7 +85,7 @@ int main(int argc, string *argv)
 	    get_files(vpath+"/bin"));
 
   perror("Creating "+vpath+".tar.gz:\n");
-  system("tar cvzf pike/"+vpath+".tar.gz "+files*" ");
+  system("tar cvf - "+files*" "+" | gzip -9 pike/"+vpath+".tar.gz");
   rm(vpath);
   perror("Done.\n");
   return 0;
