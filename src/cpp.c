@@ -472,11 +472,12 @@ static void simple_add_define(struct cpp *this,
       break;								\
     case '"': break;							\
     case '\\':								\
-      if(data[++pos]=='\n') this->current_line++;			\
+      if(data[pos]=='\n') this->current_line++;				\
       else if ((data[pos] == '\r') && (data[pos+1] == '\n')) {		\
 	this->current_line++;						\
 	pos++;								\
       }									\
+      pos++;								\
     default: continue;							\
     }									\
    break;								\
@@ -497,11 +498,12 @@ static void simple_add_define(struct cpp *this,
       continue;								\
     case '"': break;							\
     case '\\':								\
-      if(data[++pos]=='\n') this->current_line++;			\
+      if(data[pos]=='\n') this->current_line++;				\
       else if ((data[pos] == '\r') && (data[pos+1] == '\n')) {		\
 	this->current_line++;						\
 	pos++;								\
       }									\
+      pos++;								\
     default: continue;							\
     }									\
    break;								\
@@ -531,11 +533,12 @@ static void simple_add_define(struct cpp *this,
       break;							\
     case '\'': break;						\
     case '\\':							\
-      if(data[++pos]=='\n') this->current_line++;		\
+      if(data[pos]=='\n') this->current_line++;			\
       else if ((data[pos] == '\r') && (data[pos+1] == '\n')) {	\
 	this->current_line++;					\
 	pos++;							\
       }								\
+      pos++;							\
     default: continue;						\
     }								\
     break;							\
