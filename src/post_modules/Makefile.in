@@ -23,7 +23,7 @@ $(MODULES) no : force
 	  ) || exit $$?; \
 	fi
 
-modules: $(MODULES)
+modules: Makefile $(MODULES)
 
 modlist.h: $(MODULE_SEGMENTS)
 	( for a in $(MODULES) no ; do \
