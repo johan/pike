@@ -114,8 +114,8 @@ class protocol
 
   int decode_int(string s, array(int) next)
   {
-    sscanf(s[next[0]..next[0]+1],"%2c",int ret);
-    next[0]+=2;
+    sscanf(s[next[0]..next[0]+3],"%4c",int ret);
+    next[0]+=4;
     return ret;
   }
   
