@@ -34,8 +34,9 @@ int main(int argc, array(string) argv)
       fail = 1;
     }
   }
-  werror("\rWriting %s...\n", save_to);
-  Stdio.write_file(save_to, dest->html_of_node());
-
+  if (!fail) {
+    werror("\rWriting %s...\n", save_to);
+    Stdio.write_file(save_to, dest->html_of_node());
+  }
   return fail;
 }
