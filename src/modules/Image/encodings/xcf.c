@@ -82,7 +82,10 @@ static void f_substring_index( INT32 args )
   pop_n_elems( args );
 
   if( i < 0 ) i = s->len + i;
-  if( i >= s->len ) error("Index out of bounds, %d > %d\n", i, s->len-1 );
+  if( i >= s->len ) {
+    error("Index out of bounds, %d > %ld\n", i,
+	  DO_NOT_WARN((long)s->len-1) );
+  }
   push_int( ((unsigned char *)s->s->str)[s->offset+i] );
 }
 
@@ -1302,7 +1305,7 @@ void image_xcf_f__decode_tiles( INT32 args )
     int ix, iy=y/shrink;                                        \
     for(cy=0; cy<eheight; cy+=shrink,iy=((cy+y)/shrink))        \
     {                                                           \
-      rgb_group *ip, *ap;                                       \
+      rgb_group *ip, *ap = NULL;                                \
       int ind=cy*ewidth;                                        \
       int ds = 0;                                               \
       if(iy >= i->ysize)  continue;                             \
