@@ -567,6 +567,7 @@ static void simple_add_define(struct cpp *this,
       break;							\
     }								\
     pos+=2;							\
+    PUTNL();							\
     this->current_line++;					\
   } while (1)
 
