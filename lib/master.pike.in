@@ -813,10 +813,13 @@ constant master_efuns = ({
 
 string include_prefix;
 
+
+//! @decl int strlen(string|multiset|array|mapping|object thing)
 //! @appears strlen
 //! Alias for @[sizeof].
 //! @deprecated sizeof
 
+//! @decl int write(string fmt, mixed ... args)
 //! @appears write
 //! Writes a string on stdout. Works just like @[Stdio.File.write]
 //! on @[Stdio.stdout].
