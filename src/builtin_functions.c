@@ -1189,6 +1189,17 @@ void f_utf8_to_string(INT32 args)
   push_string(out);
 }
 
+static void f_parse_pike_type( INT32 args )
+{
+  struct pike_string *res;
+  if( sp[-1].type != T_STRING ||
+      sp[-1].u.string->size_shift )
+    error( "__parse_type requires a 8bit string as its first argument\n" );
+  res = parse_type( STR0(sp[-1].u.string) );
+  pop_stack();
+  push_string( res );
+}
+
 void f_all_constants(INT32 args)
 {
   pop_n_elems(args);
@@ -5323,6 +5334,9 @@ void init_builtin_efuns(void)
   
 /* function(string,int|void:string) */
   ADD_EFUN("utf8_to_string", f_utf8_to_string,tFunc(tStr tOr(tInt,tVoid),tStr), OPT_TRY_OPTIMIZE);
+
+
+  ADD_EFUN("__parse_pike_type", f_parse_pike_type,tFunc(tStr,tStr),OPT_TRY_OPTIMIZE);
 
 #ifdef HAVE_LOCALTIME
   
