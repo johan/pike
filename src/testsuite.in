@@ -446,6 +446,13 @@ test_any([[
   return 1;
 ]], 1);
 
+test_compile_error( [[
+  // This triggs a compiler bug on old Pike 7.3.
+  non_existant(17) {
+    return 0;
+  }
+]])
+
 test_any( [[
 // bug [2861] ------------------------------------------------------------
 // http://community/crunch/show_bug.cgi?id=2861
