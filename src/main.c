@@ -440,7 +440,6 @@ int dbm_main(int argc, char **argv)
   init_lex();
   init_program();
   init_object();
-  init_error();
 
   low_th_init();
 
@@ -518,6 +517,7 @@ void do_exit(int num) ATTRIBUTE((noreturn))
 
 void low_init_main(void)
 {
+  init_error();
   init_pike_security();
   th_init();
   init_operators();
