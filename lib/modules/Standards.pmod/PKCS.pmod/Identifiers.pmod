@@ -5,6 +5,8 @@
 #pike __REAL_VERSION__
 #pragma strict_types
 
+//! Various ASN.1 identifiers used by PKCS.
+
 /* Attributes (from http://leangen.uninett.no:29659/~hta/ietf/oid/2.5.4.html):
    (by 1999-01-25, a better URL is http://www.alvestrand.no/objectid/top.html)
 
