@@ -731,6 +731,7 @@ void destruct(struct object *o)
   ONERROR uwp;
   SET_ONERROR(uwp, fatal_on_error,
 	      "Shouldn't get an exception in destruct().\n");
+  fatal_check_c_stack(8192);
   if(d_flag > 20) do_debug();
 #endif
 #ifdef GC_VERBOSE
@@ -1052,18 +1053,25 @@ PMOD_EXPORT void low_object_index_no_free(struct svalue *to,
 
   case IDENTIFIER_CONSTANT:
     {
-      struct svalue *s;
-      s=& PROG_FROM_INT(p,f)->constants[i->func.offset].sval;
-      if(s->type==T_PROGRAM &&
-	 (s->u.program->flags & PROGRAM_USES_PARENT))
-      {
-	to->type=T_FUNCTION;
-	to->subtype = DO_NOT_WARN(f);
-	to->u.object=o;
-	add_ref(o);
-      }else{
-	check_destructed(s);
-	assign_svalue_no_free(to, s);
+      if (i->func.offset >= 0) {
+	struct svalue *s;
+	s=& PROG_FROM_INT(p,f)->constants[i->func.offset].sval;
+	if(s->type==T_PROGRAM &&
+	   (s->u.program->flags & PROGRAM_USES_PARENT))
+	{
+	  to->type=T_FUNCTION;
+	  to->subtype = DO_NOT_WARN(f);
+	  to->u.object=o;
+	  add_ref(o);
+	}else{
+	  check_destructed(s);
+	  assign_svalue_no_free(to, s);
+	}
+      } else {
+	/* Prototype constant. */
+	to->type = T_INT;
+	to->subtype = NUMBER_NUMBER;
+	to->u.integer = 0;
       }
       break;
     }
