@@ -5249,6 +5249,7 @@ static node *fix_map_node_info(node *n)
       }
       node_info = cb->u.sval.u.efun->flags & OPT_SIDE_EFFECT;
     }
+    /* FIXME: Type-checking? */
     break;
   }
 
