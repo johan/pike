@@ -1884,6 +1884,7 @@ int svalues_are_constant(struct svalue *s,
 		return 0;
 	      break;
 	  }
+          break;
 	}
 	  
 	case T_FUNCTION:
