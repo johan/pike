@@ -138,7 +138,7 @@ mapping(string: array(object(node))) rules = ([]);
 void fail(string msg, mixed ... args)
 {
   werror(msg, @args);
-  exit(1);
+  exit(7); /* distinctive error... */
 }
 
 string fname;
