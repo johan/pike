@@ -80,6 +80,7 @@ static struct pike_type *a_markers[10], *b_markers[10];
 
 static struct program *implements_a;
 static struct program *implements_b;
+static int implements_mode;
 
 #ifdef PIKE_DEBUG
 void TYPE_STACK_DEBUG(const char *fun)
@@ -2653,6 +2654,7 @@ static struct pike_type *low_match_types2(struct pike_type *a,
 
       if(!ap || !bp) break;
 
+      implements_mode = 0;
       if (!is_compatible(implements_a=ap,implements_b=bp))
 	return 0;
     }
@@ -3196,8 +3198,10 @@ static int low_pike_types_le2(struct pike_type *a, struct pike_type *b,
 	return 0;
       }
       if ((flags & LE_WEAK_OBJECTS) /* && (!a->car) */) {
+	implements_mode = 0;
 	return is_compatible(implements_a=ap, implements_b=bp);
       }
+      implements_mode = 1;
       return implements(implements_a=ap, implements_b=bp);
     }
     break;
@@ -4432,6 +4436,7 @@ void yyexplain_nonmatching_types(struct pike_type *type_a,
 {
   implements_a=0;
   implements_b=0;
+  implements_mode=0;
 
   match_types(type_a, type_b);
 
@@ -4456,8 +4461,13 @@ void yyexplain_nonmatching_types(struct pike_type *type_a,
     free_string(s2);
   }
 
-  if(implements_a && implements_b)
-    yyexplain_not_implements(implements_a,implements_b,flags);
+  if(implements_a && implements_b) {
+    if (implements_mode) {
+      yyexplain_not_implements(implements_a, implements_b, flags);
+    } else {
+      yyexplain_not_compatible(implements_a, implements_b, flags);
+    }
+  }
 }
 
 
