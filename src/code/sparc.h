@@ -84,3 +84,6 @@ void sparc_decode_program(struct program *p);
 
 #define ENCODE_PROGRAM(P, BUF)	sparc_encode_program(P, BUF)
 #define DECODE_PROGRAM(P)	sparc_decode_program(p)
+
+void sparc_disassemble_code(void *addr, size_t bytes);
+#define DISASSEMBLE_CODE(ADDR, BYTES)	sparc_disassemble_code(ADDR, BYTES)
