@@ -360,7 +360,7 @@ void f_filesystem_stat(INT32 args)
 #else /* !HAVE_STATVFS */
 #ifdef HAVE_STATFS
 #ifdef HAVE_STRUCT_STATFS
-#ifdef 0 && HAVE_STATFS_F_FSID
+#if 0 && HAVE_STATFS_F_FSID
     push_text("id");           push_int(st.f_fsid);
 #else
     num_fields--;
