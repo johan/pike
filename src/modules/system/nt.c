@@ -127,7 +127,7 @@ void f_LogonUser(INT32 args)
     
   check_all_args("System.LogonUser",args,
 		 BIT_STRING, BIT_INT | BIT_STRING, BIT_STRING,
-		 BIT_INT, BIT_INT | BIT_VOID,0);
+		 BIT_INT | BIT_VOID, BIT_INT | BIT_VOID,0);
 
   username=(LPTSTR)sp[-args].u.string->str;
 
