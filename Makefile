@@ -267,6 +267,8 @@ xenofarm_low:
 	@echo Begin export | tee -a build/xenofarm/xenofarmlog.txt
 	@date >> build/xenofarm/xenofarmlog.txt
 	@$(MAKE) $(MAKE_FLAGS) bin_export > build/xenofarm/exportlog.txt 2>&1
+	@echo Xenofarm OK | tee -a build/xenofarm/xenofarmlog.txt
+	@date >> build/xenofarm/xenofarmlog.txt
 
 clean:
 	-cd "$(BUILDDIR)" && test -f Makefile && $(MAKE) "MAKE=$(MAKE)" clean || { \
