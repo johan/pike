@@ -1412,9 +1412,8 @@ void th_init(void)
   ADD_STORAGE(struct thread_local);
   ADD_FUNCTION("get",f_thread_local_get,tFunc(tNone,tMix),0);
   ADD_FUNCTION("set",f_thread_local_set,tFunc(tSetvar(1,tMix),tVar(1)),0);
-  ADD_EFUN("crate",f_thread_local_create,
-	   tFunc(tNone,tObjIs_THREAD_LOCAL),
-	   OPT_SIDE_EFFECT);
+  ADD_FUNCTION("crate",f_thread_local_create,
+	       tFunc(tNone,tVoid), OPT_SIDE_EFFECT);
   thread_local_prog=Pike_compiler->new_program;
   add_ref(thread_local_prog);
   end_class("thread_local", 0);
