@@ -647,7 +647,7 @@ string read_file(string filename,void|int start,void|int len)
     ret=buf->get_buffer();
     destruct(buf);
   }
-  destruct(f);
+  f->close();
 
   return ret;
 }
