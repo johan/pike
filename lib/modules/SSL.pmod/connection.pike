@@ -11,6 +11,14 @@
 //! sending packets, processing handshake packets, and providing a clear
 //! text packages for some application.
 
+// SSL/TLS Protocol Specification documents:
+//
+// SSL 2		http://wp.netscape.com/eng/security/SSL_2.html
+// SSL 3.0		http://wp.netscape.com/eng/ssl3/draft302.txt
+//			(aka draft-freier-ssl-version3-02.txt).
+// TLS 1.0 (SSL 3.1)	RFC 2246 "The TLS Protocol Version 1.0".
+// TLS 1.1 (SSL 3.2)	draft-ietf-tls-rfc2246-bis
+
 #if constant(SSL.Cipher.CipherAlgorithm)
 
 .state current_read_state;
