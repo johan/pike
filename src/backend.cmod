@@ -2425,7 +2425,7 @@ PIKECLASS Backend
 	      check_box (box, i);
 	      /* We don't want to keep this fd anymore. */
 	      old_events = box->events;
-	      set_fd_callback_events (box, box->events & ~PIKE_BIT_FD_ERROR);
+	      set_fd_callback_events (box, box->events & PIKE_BIT_FD_ERROR);
 	      if (WANT_EVENT (box, ERROR)) {
 		IF_PD(fprintf(stderr,
 			      "[%d]BACKEND[%d]: error event %d on fd %d sent to %p\n",
@@ -2612,7 +2612,7 @@ PIKECLASS Backend
 	      check_box (box, fd);
 	      /* We don't want to keep this fd anymore. */
 	      old_events = box->events;
-	      set_fd_callback_events (box, box->events & ~PIKE_BIT_FD_ERROR);
+	      set_fd_callback_events (box, box->events & PIKE_BIT_FD_ERROR);
 	      if (WANT_EVENT (box, ERROR)) {
 		IF_PD(fprintf(stderr,
 			      "[%d]BACKEND[%d]: error event on fd %d sent to %p\n",
