@@ -417,11 +417,15 @@ int main(int argc, array(string) argv)
 #endif // else WATCHDOG_PIPE
 
   testsuites += Getopt.get_args(argv, 1)[1..];
-  if(!sizeof(testsuites))
-  {
-    werror("No tests found. Use --help for more information.\n");
-    exit(1);
+  foreach(testsuites; int pos; string ts) {
+    if(Stdio.is_dir(ts))
+      testsuites[pos] = ts = combine_path(ts, "testsuite");
+    if(!file_stat(ts))
+      exit(1, "Could not find test %O.\n", ts);
   }
+
+  if(!sizeof(testsuites))
+    exit(1, "No tests found. Use --help for more information.\n");
 
 #if 1
   // Store the name of all constants so that we can see
