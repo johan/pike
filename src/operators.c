@@ -1705,7 +1705,10 @@ PMOD_EXPORT void o_multiply(void)
 	  MEMCPY(pos,sp[-2].u.string->str,len);
 	/* copy the last part of the string */
 	if (extra)
+	{
+	  extra=extra << sp[-2].u.string->size_shift;
 	  MEMCPY(pos,sp[-2].u.string->str,extra);
+	}
 	pop_n_elems(2);
 	push_string(low_end_shared_string(ret));
 	return;
