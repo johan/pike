@@ -70,6 +70,10 @@ struct pike_frame
   free_svalues(sp,x_,BIT_MIXED);				\
  } } while (0)
 
+#define stack_pop_n_elems_keep_top(X) \
+ do { struct svalue s=sp[-1]; sp[-1]=sp[-1-(X)]; sp[-1-(X)]=s; \
+      pop_n_elems(X); } while (0)
+
 #define push_program(P) do{ struct program *_=(P); debug_malloc_touch(_); sp->u.program=_; sp++->type=T_PROGRAM; }while(0)
 #define push_int(I) do{ INT32 _=(I); sp->u.integer=_;sp->type=T_INT;sp++->subtype=NUMBER_NUMBER; }while(0)
 #define push_mapping(M) do{ struct mapping *_=(M); debug_malloc_touch(_); sp->u.mapping=_; sp++->type=T_MAPPING; }while(0)
