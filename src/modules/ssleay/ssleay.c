@@ -175,7 +175,8 @@ static void ssleay_new(INT32 args)
 	error("ssleay->open: invalid mode\n");
     }
 #endif
-  pop_n_elems(args );
+  pop_n_elems(args);
+  THISOBJ->refs++;
   push_object(THISOBJ);
   push_object(clone(ssleay_connection_program, 1));
 }
