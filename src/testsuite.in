@@ -2633,6 +2633,7 @@ void test()
       "-e",
       sprintf ("sleep (0.5); "
 	       "Stdio.File f = Stdio.File (%O, \"w\"); "
+	       "sleep (0.5); "
 	       "f->close();", fifo)}));
 
   log (test, "opening pipe\n");
