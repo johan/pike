@@ -2221,6 +2221,7 @@ struct program *end_first_pass(int finish)
  */
 PMOD_EXPORT struct program *debug_end_program(void)
 {
+  Pike_compiler->compiler_pass = 2;
   return end_first_pass(1);
 }
 
