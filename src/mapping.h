@@ -9,6 +9,7 @@
 #define MAPPING_H
 
 #include "svalue.h"
+#include "dmalloc.h"
 #include "block_alloc_h.h"
 
 /* Compatible with PIKE_WEAK_INDICES and PIKE_WEAK_VALUES. */

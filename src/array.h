@@ -9,6 +9,7 @@
 #define ARRAY_H
 
 #include "svalue.h"
+#include "dmalloc.h"
 
 /* This debug tool writes out messages whenever arrays with unfinished
  * type fields are encountered. */
