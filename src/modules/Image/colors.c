@@ -1302,7 +1302,7 @@ static void image_make_hsv_color(INT32 args)
 #define t (v * (1 - (s * (1 -f))))
       switch((int)i)
       {
-	 case 6: // 360 degrees. Same as 0..
+         case 6: /* 360 degrees. Same as 0.. */
 	 case 0: r = v;	 g = t;	 b = p;	 break;
 	 case 1: r = q;	 g = v;	 b = p;	 break;
 	 case 2: r = p;  g = v;	 b = t;	 break;
