@@ -608,7 +608,8 @@ void img_read_get_channel(int arg,char *name,INT32 args,
 		  "uninitialized image object\n",arg+1,name);
 	 if (img->xsize!=THIS->xsize || img->ysize!=THIS->ysize) 
 	    Pike_error("create_method: argument %d (%s channel): "
-		  "size is wrong, %dx%d; expected %dx%d\n",
+		  "size is wrong, %"PRINTPIKEINT"dx%"PRINTPIKEINT"d;"
+		       " expected %"PRINTPIKEINT"dx%"PRINTPIKEINT"d\n",
 		  arg+1,name,img->xsize,img->ysize,
 		  THIS->xsize,THIS->ysize);
 	 *s=(COLORTYPE*)img->img;

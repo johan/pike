@@ -103,7 +103,7 @@ typedef struct
 struct image
 {
    rgb_group *img;
-   INT32 xsize,ysize;
+   INT_TYPE xsize,ysize;
    rgb_group rgb;
    unsigned char alpha;
 };

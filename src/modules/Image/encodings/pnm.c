@@ -292,7 +292,7 @@ void img_pnm_encode_P1(INT32 args) /* ascii PBM */
    if (!img->img)
       Pike_error("Image.PNM.encode_P1(): Given image is empty\n");
 
-   sprintf(buf,"P1\n%d %d\n",img->xsize,img->ysize);
+   sprintf(buf,"P1\n%"PRINTPIKEINT"d %"PRINTPIKEINT"d\n",img->xsize,img->ysize);
    a=make_shared_string(buf);
 
    y=img->ysize;
@@ -338,7 +338,7 @@ void img_pnm_encode_P2(INT32 args) /* ascii PGM */
    add_ref(o);
    pop_n_elems(args);
 
-   sprintf(buf,"P2\n%d %d\n255\n",img->xsize,img->ysize);
+   sprintf(buf,"P2\n%"PRINTPIKEINT"d %"PRINTPIKEINT"d\n255\n",img->xsize,img->ysize);
    push_string(make_shared_string(buf));
    n=1;
 
@@ -379,7 +379,7 @@ void img_pnm_encode_P3(INT32 args) /* ascii PPM */
    add_ref(o);
    pop_n_elems(args);
 
-   sprintf(buf,"P3\n%d %d\n255\n",img->xsize,img->ysize);
+   sprintf(buf,"P3\n%"PRINTPIKEINT"d %"PRINTPIKEINT"d\n255\n",img->xsize,img->ysize);
    push_string(make_shared_string(buf));
    n=1;
 
@@ -417,7 +417,7 @@ void img_pnm_encode_P4(INT32 args) /* binary PBM */
    if (!img->img)
       Pike_error("Image.PNM.encode_P4(): Given image is empty\n");
 
-   sprintf(buf,"P4\n%d %d\n",img->xsize,img->ysize);
+   sprintf(buf,"P4\n%"PRINTPIKEINT"d %"PRINTPIKEINT"d\n",img->xsize,img->ysize);
    a=make_shared_string(buf);
 
    y=img->ysize;
@@ -463,7 +463,7 @@ void img_pnm_encode_P5(INT32 args) /* binary PGM */
    if (!img->img)
       Pike_error("Image.PNM.encode_P5(): Given image is empty\n");
 
-   sprintf(buf,"P5\n%d %d\n255\n",img->xsize,img->ysize);
+   sprintf(buf,"P5\n%"PRINTPIKEINT"d %"PRINTPIKEINT"d\n255\n",img->xsize,img->ysize);
    a=make_shared_string(buf);
 
    n=img->xsize*img->ysize;
@@ -495,7 +495,7 @@ void img_pnm_encode_P6(INT32 args)
    if (!img->img)
       Pike_error("Image.PNM.encode_P6(): Given image is empty\n");
 
-   sprintf(buf,"P6\n%d %d\n255\n",img->xsize,img->ysize);
+   sprintf(buf,"P6\n%"PRINTPIKEINT"d %"PRINTPIKEINT"d\n255\n",img->xsize,img->ysize);
    a=make_shared_string(buf);
    if (sizeof(rgb_group)==3)
       b=make_shared_binary_string((char*)img->img,
