@@ -4259,6 +4259,11 @@ void f_map(INT32 args)
 	    push_svalue(a->item+i);
 	    push_svalue(mysp-2);
 	    f_arrow(2);
+	    if(IS_ZERO(sp-1))
+	    {
+	      pop_stack();
+	      continue;
+	    }
 	    add_ref_svalue(mysp-1);
 	    push_array_items(mysp[-1].u.array);
 	    f_call_function(splice+1);
