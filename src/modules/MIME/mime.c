@@ -501,7 +501,8 @@ static void do_uue_encode(ptrdiff_t groups, unsigned char **srcp, char **destp,
 	DO_NOT_WARN((char)(3*g + last));
       last = 0;
     } else
-      *dest++ = ' ' + (3*g);
+      *dest++ = ' ' + 
+	DO_NOT_WARN((char)(3*g));
 
     groups -= g;
 

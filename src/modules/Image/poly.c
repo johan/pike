@@ -416,7 +416,7 @@ static void mend_crossed_lines(struct poly *p)
    struct line **active,*l;
    int nactive;
    int from,i,j=0;
-   float f;
+   double f;
    int new;
    PFLOAT x,y;
 

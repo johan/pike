@@ -513,7 +513,7 @@ static void polyfill_some(struct image *img,
    /* beat row for row */
    
    if (y+1.0+1e-10<v->y) 
-      y=(int)v->y;
+      y = DOUBLE_TO_INT(v->y);
 
    while (y<img->ysize && (to_loose||to_add) )
    {

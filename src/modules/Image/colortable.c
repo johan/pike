@@ -2986,7 +2986,8 @@ static void _cub_add_cs_2cub_recur(int *i,int *p,
    _cub_add_cs_2cub_recur(i,p,p2,n2,fe, rp+rd2+rd1,gp+gd2+gd1,bp+bd2+bd1, rm1,gm1,bm1, rm2,gm2,bm2, &f,&g,&j,d,sf,accur);
 }
 
-static INLINE ptrdiff_t _cub_find_full_add(int **pp,int *i,int *p,int n,
+static INLINE ptrdiff_t _cub_find_full_add(int **pp, int *i, int *p,
+					   ptrdiff_t n,
 					   struct nct_flat_entry *fe,
 					   int r,int g,int b,
 					   rgbl_group sf)
