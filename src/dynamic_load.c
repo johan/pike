@@ -21,7 +21,6 @@
 #  include "pike_macros.h"
 #  include "main.h"
 #  include "constants.h"
-#  include "language.h"
 #  include "lex.h"
 #  include "object.h"
 
@@ -587,8 +586,14 @@ void f_load_module(INT32 args)
     compilation_depth = save.compilation_depth;
     lex = save.lex;
     if (p) {
-      push_program(p);
-      add_ref(new_module->module_prog = Pike_sp[-1].u.program);
+      if (p->num_identifier_references) {
+	push_program(p);
+	add_ref(new_module->module_prog = Pike_sp[-1].u.program);
+      } else {
+	/* No identifier references -- Disabled module. */
+	free_program(p);
+	push_undefined();
+      }
     } else {
       /* Initialization failed. */
       new_module->exit();
