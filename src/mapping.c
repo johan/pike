@@ -404,7 +404,7 @@ struct mapping_data *copy_mapping_data(struct mapping_data *md)
   long off;					\
   m->data=copy_mapping_data(m->data);		\
   debug_malloc_touch(m->data);                  \
-  if(d_flag>1)  check_mapping(m);               \
+  DO_IF_DEBUG( if(d_flag>1)  check_mapping(m); ) \
   off=((char *)m->data)-((char *)md);		\
   LOW_RELOC(k);					\
   LOW_RELOC(prev);				\
