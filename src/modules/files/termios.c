@@ -85,7 +85,7 @@ void file_tcgetattr(INT32 args)
 
    pop_n_elems(args);
 
-   if (tcgetattr(FD,&ti)) /* Pike_error */
+   if (tcgetattr(FD,&ti)) /* error */
    {
       ERRNO=errno;
       push_int(0);
@@ -200,7 +200,7 @@ void file_tcsetattr(INT32 args)
       Pike_error("illegal argument 1 to tcsetattr\n");
 
    /* read attr to edit */
-   if (tcgetattr(FD,&ti)) /* Pike_error */
+   if (tcgetattr(FD,&ti)) /* error */
    {
       ERRNO=errno;
       push_int(0);

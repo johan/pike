@@ -441,7 +441,7 @@ static void f_rfc1345(INT32 args)
 	case MODE_9494: lowtrans=lo=lo2=33; hi=hi2=126; break;
 	case MODE_9696: lowtrans=32; lo=lo2=160; hi=hi2=255; break;
 	default:
-	  fatal("Internal Pike_error in rfc1345\n");
+	  fatal("Internal error in rfc1345\n");
 	}
 	
 	if(hi2) {
@@ -484,7 +484,7 @@ static void f_rfc1345(INT32 args)
       case MODE_9494: p = std_9494_program; break;
       case MODE_9696: p = std_9696_program; break;
       default:
-	fatal("Internal Pike_error in rfc1345\n");
+	fatal("Internal error in rfc1345\n");
       }
       push_object(clone_object(p, 0));
       ((struct std_rfc_stor *)(sp[-1].u.object->storage+std_rfc_stor_offs))

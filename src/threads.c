@@ -1297,7 +1297,7 @@ PMOD_EXPORT void th_farm(void (*fun)(void *), void *here)
 void low_th_init(void)
 {
 #ifdef SGI_SPROC_THREADS
-#Pike_error /* Need to specify a filename */
+#error /* Need to specify a filename */
   us_cookie = usinit("");
 #endif /* SGI_SPROC_THREADS */
 

@@ -2347,12 +2347,12 @@ PMOD_EXPORT double STRTOD_PCHARP(PCHARP nptr, PCHARP *endptr)
   return num * sign;
 
  overflow:
-  /* Return an overflow Pike_error.  */
+  /* Return an overflow error.  */
   errno = ERANGE;
   return HUGE * sign;
 
  underflow:
-  /* Return an underflow Pike_error.  */
+  /* Return an underflow error.  */
   if (endptr != NULL)
     *endptr = nptr;
   errno = ERANGE;

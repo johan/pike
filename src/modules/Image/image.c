@@ -3693,9 +3693,9 @@ static void image_apply_curve_2( struct object *o,
   THREADS_ALLOW();
   switch( channel ) 
   {
-   case 0: for( ; i>0; i-- ) d->r = curve[(d++)->r]; break;
-   case 1: for( ; i>0; i-- ) d->g = curve[(d++)->g]; break;
-   case 2: for( ; i>0; i-- ) d->b = curve[(d++)->b]; break;
+   case 0: for( ; i>0; i--,d++ ) d->r = curve[d->r]; break;
+   case 1: for( ; i>0; i--,d++ ) d->g = curve[d->g]; break;
+   case 2: for( ; i>0; i--,d++ ) d->b = curve[d->b]; break;
   }
   THREADS_DISALLOW();
 

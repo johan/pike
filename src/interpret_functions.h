@@ -222,7 +222,7 @@ OPCODE2(F_LEXICAL_LOCAL,"lexical local")
   while(arg2--)
   {
     f=f->scope;
-    if(!f) Pike_error("Lexical scope Pike_error.\n");
+    if(!f) Pike_error("Lexical scope error.\n");
   }
   push_svalue(f->locals + arg1);
   print_return_value();
@@ -235,7 +235,7 @@ OPCODE2(F_LEXICAL_LOCAL_LVALUE,"&lexical local")
   while(arg2--)
   {
     f=f->scope;
-    if(!f) Pike_error("Lexical scope Pike_error.\n");
+    if(!f) Pike_error("Lexical scope error.\n");
   }
   Pike_sp[0].type=T_LVALUE;
   Pike_sp[0].u.lval=f->locals+arg1;

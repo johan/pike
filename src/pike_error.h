@@ -230,9 +230,10 @@ void cleanup_error(void);
 /* Prototypes end here */
 
 #define fatal \
- fprintf(stderr,"%s:%d: Fatal Pike_error:\n",__FILE__,__LINE__),debug_fatal
+ fprintf(stderr,"%s:%d: Fatal error:\n",__FILE__,__LINE__),debug_fatal
 
-/* Some useful Pike_error macros. */
+/* Some useful error macros. */
+
 
 #define SIMPLE_BAD_ARG_ERROR(FUNC, ARG, EXPECT) \
    bad_arg_error(FUNC, Pike_sp-args, args, ARG, EXPECT, Pike_sp+ARG-1-args,\
@@ -291,7 +292,7 @@ void cleanup_error(void);
         } \
         while(0)
 
-/* Generic Pike_error stuff */
+/* Generic error stuff */
 #define ERR_EXT_DECLARE
 #include "errors.h"
 

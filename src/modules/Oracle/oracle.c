@@ -591,7 +591,7 @@ OCIError *get_global_error_handle(void)
 		    0);
 
   if(rc != OCI_SUCCESS)
-    Pike_error("Failed to allocate Pike_error handle.\n");
+    Pike_error("Failed to allocate error handle.\n");
   
   return global_error_handle;
 }

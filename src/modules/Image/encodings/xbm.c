@@ -218,7 +218,7 @@ static struct pike_string *save_xbm( struct image *i, struct pike_string *name )
 **! 	Decodes a XBM image. 
 **!
 **! note
-**!	Throws upon Pike_error in data.
+**!	Throws upon error in data.
 */
 static void image_xbm_decode( INT32 args )
 {
@@ -246,7 +246,7 @@ static void image_xbm_decode( INT32 args )
 **!	</pre>
 **!
 **! note
-**!	Throws upon Pike_error in data.
+**!	Throws upon error in data.
 */
 
 

@@ -1578,7 +1578,7 @@ static void *low_make_stub(struct cpu_context *ctx, void *data, int statc,
 }
 
 #else
-#Pike_error How did you get here?  It should never happen.
+#error How did you get here?  It should never happen.
 #endif /* HAVE_PPC_CPU */
 #endif /* HAVE_X86_CPU */
 #endif /* HAVE_SPARC_CPU */

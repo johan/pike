@@ -650,7 +650,7 @@ PMOD_EXPORT void f_cast(void)
 	 compile_type_to_runtime_type(sp[-2].u.string));
 #ifdef PIKE_DEBUG
   if(save_sp != sp)
-    fatal("Internal Pike_error: o_cast() left droppings on stack.\n");
+    fatal("Internal error: o_cast() left droppings on stack.\n");
 #endif
   free_svalue(sp-2);
   sp[-2]=sp[-1];

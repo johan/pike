@@ -360,7 +360,7 @@ void udp_read(INT32 args)
 #endif
        case EIO:
 	  set_read_callback( FD, 0, 0 );
-	  Pike_error("I/O Pike_error\n");
+	  Pike_error("I/O error\n");
        case ENOMEM:
 #ifdef ENOSR
        case ENOSR:

@@ -640,7 +640,7 @@ static struct pike_string *recode_string(struct pike_string *data)
      *   according to EBCDIC-US, and then the rest of the string
      *   according to the encoding specified by the first line.
      *
-     * * It's an Pike_error for a program written in EBCDIC not to
+     * * It's an error for a program written in EBCDIC not to
      *   start with a #charset directive.
      *
      * Obfuscation note:

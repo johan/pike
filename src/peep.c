@@ -411,7 +411,7 @@ void assemble(void)
     {
 #ifdef PIKE_DEBUG
       if(labels[e]==-1)
-	fatal("Hyperspace Pike_error: unknown jump point %ld at %d (pc=%x).\n",
+	fatal("Hyperspace error: unknown jump point %ld at %d (pc=%x).\n",
 	      PTRDIFF_T_TO_LONG(e), labels[e], jumps[e]);
 #endif
       tmp=read_int(jumps[e]);

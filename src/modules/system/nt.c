@@ -32,7 +32,7 @@
 
 static void throw_nt_error(char *funcname, int err)
 /*
- *  Give string equivalents to some of the more common NT Pike_error codes.
+ *  Give string equivalents to some of the more common NT error codes.
  */ 
 {
   char *msg;
@@ -116,11 +116,11 @@ static void throw_nt_error(char *funcname, int err)
       break;
 
     case NERR_Success:
-      msg = "Strange Pike_error (NERR_Success).";
+      msg = "Strange error (NERR_Success).";
       break;
 
     default:
-      Pike_error("%s: Unknown Pike_error 0x%04x (%d)\n", funcname, err, err);
+      Pike_error("%s: Unknown error 0x%04x (%d)\n", funcname, err, err);
       return;
   }
   Pike_error("%s: %s\n", funcname, msg);

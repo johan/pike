@@ -37,7 +37,7 @@ RCSID("$Id$");
 #define YPERROR(fun,err) do{ if(err) Pike_error("yp->%s(): %s\n", (fun), \
                                            yperr_string(err)); }while(0)
 #else /* !HAVE_YPERR_STRING */
-#define YPERROR(fun,err) do{ if(err) Pike_error("yp->%s(): YP Pike_error %d.\n", (fun), \
+#define YPERROR(fun,err) do{ if(err) Pike_error("yp->%s(): YP error %d.\n", (fun), \
                                            (err)); }while(0)
 #endif /* HAVE_YPERR_STRING */
 

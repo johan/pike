@@ -669,7 +669,7 @@ static INLINE void output_try_write_some(struct object *obj)
     if(sp[-1].type == T_INT) ret=sp[-1].u.integer;
     pop_stack();
 
-    if (ret==-1)		/* Pike_error, byebye */
+    if (ret==-1)		/* error, byebye */
     {
       output_finish(obj);
       return;

@@ -32,7 +32,7 @@
 #ifdef HAVE_MYSQL_MYSQL_H
 #include <mysql/mysql.h>
 #else
-#Pike_error Need mysql.h header-file
+#error Need mysql.h header-file
 #endif /* HAVE_MYSQL_MYSQL_H */
 #endif /* HAVE_MYSQL_H */
 #ifndef _mysql_h
@@ -211,7 +211,7 @@ void mysqlmod_parse_field(MYSQL_FIELD *field, int support_default)
     }
   } else {
     /*
-     * Should this be an Pike_error?
+     * Should this be an error?
      */
     push_int(0);
   }

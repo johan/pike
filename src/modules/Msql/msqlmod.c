@@ -514,7 +514,7 @@ static void do_host_info (INT32 args)
 /* string Pike_error() */
 static void do_error (INT32 args)
 {
-	check_all_args("Msql->Pike_error",args,0);
+	check_all_args("Msql->error",args,0);
 	pop_n_elems(args);
 	if (THIS->error_msg)
 		ref_push_string(THIS->error_msg);
@@ -751,9 +751,9 @@ void pike_module_init(void)
 	  database */
 
 	/* function(void:void|string) */
-  ADD_FUNCTION("Pike_error",do_error,tFunc(tVoid,tOr(tVoid,tStr)),
+  ADD_FUNCTION("error",do_error,tFunc(tVoid,tOr(tVoid,tStr)),
 		OPT_RETURN|OPT_EXTERNAL_DEPEND);
-	/* return the last Pike_error reported by the server. */
+	/* return the last error reported by the server. */
 
 	/* function(void:string) */
   ADD_FUNCTION("server_info", do_info,tFunc(tVoid,tStr),

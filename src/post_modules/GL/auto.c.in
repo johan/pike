@@ -97,7 +97,7 @@ static int check_234_args(char *func, INT32 args, int mn, int mx, int ty,
   else if(tr==BIT_FLOAT)
     tt=((rty&ZT_FLOAT)? ZT_FLOAT:ZT_DOUBLE);
   else if(tr!=BIT_INT)
-    Pike_error("Internal Pike_error in check_234_args for %s!\n", func);
+    Pike_error("Internal error in check_234_args for %s!\n", func);
   else if(rty&ZT_INT)
     tt=ZT_INT;
   else 
@@ -322,7 +322,7 @@ static int check_1n_args(char *func, INT32 args, int ty, int rty,
   else if(tr==BIT_FLOAT)
     tt=((rty&ZT_FLOAT)? ZT_FLOAT:ZT_DOUBLE);
   else if(tr!=BIT_INT)
-    Pike_error("Internal Pike_error in check_1n_args for %s!\n", func);
+    Pike_error("Internal error in check_1n_args for %s!\n", func);
   else if(rty&ZT_INT)
     tt=ZT_INT;
   else 

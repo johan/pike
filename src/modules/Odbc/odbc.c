@@ -312,7 +312,7 @@ static void f_big_query(INT32 args)
   }
 #ifdef PIKE_DEBUG
   if (sp != save_sp) {
-    fatal("Stack Pike_error in odbc->big_query().\n");
+    fatal("Stack error in odbc->big_query().\n");
   }
 #endif /* PIKE_DEBUG */
 }
@@ -359,7 +359,7 @@ void pike_module_init(void)
   ADD_STORAGE(struct precompiled_odbc);
 
   /* function(void:int|string) */
-  ADD_FUNCTION("Pike_error", f_error,tFunc(tVoid,tOr(tInt,tStr)), ID_PUBLIC);
+  ADD_FUNCTION("error", f_error,tFunc(tVoid,tOr(tInt,tStr)), ID_PUBLIC);
   /* function(string|void, string|void, string|void, string|void:void) */
   ADD_FUNCTION("create", f_create,tFunc(tOr(tStr,tVoid) tOr(tStr,tVoid) tOr(tStr,tVoid) tOr(tStr,tVoid),tVoid), ID_PUBLIC);
 

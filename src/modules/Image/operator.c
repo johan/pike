@@ -504,7 +504,7 @@ STANDARD_OPERATOR_HEADER("`& 'minimum'")
 **!	
 **! note:
 **!	`&lt; or `> on empty ("no image") image objects or images
-**!	with different size will result in an Pike_error. 
+**!	with different size will result in an error. 
 **!	`== is always true on two empty image objects and
 **!	always false if one and only one of the image objects
 **!	is empty or the images differs in size.

@@ -116,7 +116,7 @@ static void my_error_exit(struct jpeg_common_struct *cinfo)
    (*cinfo->err->format_message) (cinfo, buffer);
 
    jpeg_destroy(cinfo);
-   Pike_error("Image.JPEG: fatal Pike_error in libjpeg; %s\n",buffer);
+   Pike_error("Image.JPEG: fatal error in libjpeg; %s\n",buffer);
 }
 
 static void my_emit_message(struct jpeg_common_struct *cinfo,int msg_level)

@@ -142,13 +142,13 @@ static void report_error(const char *function_name)
     error_msg = "Destination already exists";
     break;
   case EFAULT:
-    error_msg = "Internal Pike Pike_error:Bad Pike string!";
+    error_msg = "Internal Pike error: Bad Pike string!";
     break;
   case EINVAL:
     error_msg = "Bad argument";
     break;
   case EIO:
-    error_msg = "I/O Pike_error";
+    error_msg = "I/O error";
     break;
 #ifdef ELOOP
   case ELOOP:

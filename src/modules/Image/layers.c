@@ -531,7 +531,7 @@ struct layer_mode_desc
     COMBINE_ALPHA_SUM(aS,(aL)*(V))
 
 #else /* unknown COMBINE_METHOD */
-#Pike_error unknown COMBINE_METHOD
+#error unknown COMBINE_METHOD
 #endif /* COMBINE_METHOD_FLOAT  */
 
 #endif

@@ -328,7 +328,7 @@ static struct object *low_pcx_decode( struct pike_string *data )
 **! 	Decodes a PCX image. 
 **!
 **! note
-**!	Throws upon Pike_error in data.
+**!	Throws upon error in data.
 */
 void image_pcx_decode( INT32 args )
 {
@@ -346,7 +346,7 @@ void image_pcx_decode( INT32 args )
 **! 	Decodes a PCX image to a mapping. 
 **!
 **! note
-**!	Throws upon Pike_error in data.
+**!	Throws upon error in data.
 */
 void image_pcx__decode( INT32 args )
 {
