@@ -1851,7 +1851,7 @@ void f_create_process(INT32 args)
 	if(tmp->type == T_STRING)
 	{
 	  dir=(TCHAR *)STR0(tmp->u.string);
-	  fprintf(stderr,"DIR: %s\n",STR0(tmp->u.string));
+	  /* fprintf(stderr,"DIR: %s\n",STR0(tmp->u.string)); */
 	}
       }
 
