@@ -1507,8 +1507,15 @@ static void file_grantpt( INT32 args )
 
   apply_svalue(Pike_sp-3, 2);
   apply(Pike_sp[-1].u.object, "wait", 0);
-  if(!UNSAFE_IS_ZERO(Pike_sp-1))
-    Pike_error(USE_PT_CHMOD " returned error %d.\n", Pike_sp[-1].u.integer);
+  if(!UNSAFE_IS_ZERO(Pike_sp-1)) {
+    Pike_error(
+#ifdef USE_PY_CHMOD
+	       USE_PT_CHMOD
+#else /* USE_CHGPT */
+	       USE_CHGPT
+#endif /* USE_PT_CHMOD */
+	       " returned error %d.\n", Pike_sp[-1].u.integer);
+  }
   pop_n_elems(3);
 #else /* HAVE_GRANTPT */
   if( grantpt( FD ) )
