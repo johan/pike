@@ -16,8 +16,6 @@
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
 
-#ifdef HAVE_ODBC
-
 RCSID("$Id$");
 
 #include "interpret.h"
@@ -37,6 +35,8 @@ RCSID("$Id$");
 #include "module_support.h"
 
 #include "precompiled_odbc.h"
+
+#ifdef HAVE_ODBC
 
 /* #define ODBC_DEBUG */
 

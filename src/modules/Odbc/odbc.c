@@ -29,9 +29,9 @@ RCSID("$Id$");
 #include "program.h"
 #include "module_support.h"
 
-#ifdef HAVE_ODBC
-
 #include "precompiled_odbc.h"
+
+#ifdef HAVE_ODBC
 
 /*
  * Globals
