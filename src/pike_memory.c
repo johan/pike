@@ -1488,6 +1488,7 @@ static struct memhdr *low_make_memhdr(void *p, int s, LOCATION location)
   ml->location=location;
   ml->next=0;
   ml->times=1;
+  ml->mh=mh;
   mlhash[l]=ml;
 
   if(dmalloc_default_location)
