@@ -1580,6 +1580,40 @@ int gc_cycle_check_weak_short_svalue(union anything *u, TYPE_T type)
   return freed;
 }
 
+/* gc_free_svalue() and gc_free_short_svalue() can be used to free
+ * things in general during gc mark and cycle check passes, where
+ * normal freeing is prohibited. If the thing runs out of refs, they
+ * record them so that they're freed in the free pass along with the
+ * rest.
+ *
+ * Note that the gc will bug out if these are used on references that
+ * have been accounted for by the gc mark or cycle check functions
+ * above. */
+
+void real_gc_free_svalue(struct svalue *s)
+{
+#ifdef PIKE_DEBUG
+  if (Pike_in_gc != GC_PASS_MARK && Pike_in_gc != GC_PASS_CYCLE &&
+      Pike_in_gc != GC_PASS_ZAP_WEAK)
+    fatal("gc_free_svalue() called in invalid gc pass.\n");
+#endif
+  if (((1 << s->type) & BIT_COMPLEX) && *(s->u.refs) == 1)
+    gc_delayed_free(s->u.refs);
+  free_svalue(s);
+}
+
+void real_gc_free_short_svalue(union anything *u, TYPE_T type)
+{
+#ifdef PIKE_DEBUG
+  if (Pike_in_gc != GC_PASS_MARK && Pike_in_gc != GC_PASS_CYCLE &&
+      Pike_in_gc != GC_PASS_ZAP_WEAK)
+    fatal("gc_free_short_svalue() called in invalid gc pass.\n");
+#endif
+  if (((1 << type) & BIT_COMPLEX) && *u->refs == 1)
+    gc_delayed_free(u->refs);
+  free_short_svalue(u, type);
+}
+
 PMOD_EXPORT INT32 pike_sizeof(struct svalue *s)
 {
   switch(s->type)
