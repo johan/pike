@@ -44,5 +44,5 @@ fi
 AC_CONFIG_SUBDIRS(lib)
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
-syscmd([cd lib && autoconf])
+
 
