@@ -953,11 +953,12 @@ PIKECLASS Surface {
     CHECK_INIT();
     if(THIS->fast_set_pixel) {
       SDL_Surface *surface = THIS->_s;
+      int bpp = surface->format->BytesPerPixel;
+      Uint8 *p;
       if(x < 0 || y < 0 || x > surface->w || y > surface->h) {
 	Pike_error("Pixel out of bounds!\n");
       }
-      int bpp = surface->format->BytesPerPixel;
-      Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
+      p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
       
       switch(bpp) {
       case 1:  RETURN *p;
