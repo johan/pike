@@ -2241,7 +2241,7 @@ static void low_search_all_memheaders_for_references(void)
 	  __try {
 #endif
 	    for(e=0;e<m->size/sizeof(void *);e++)
-	      if((tmp=find_memhdr(p[e])))
+	      if((tmp=just_find_memhdr(p[e])))
 		tmp->flags |= MEM_REFERENCED;
 #ifdef __NT__
 	  }
