@@ -1357,6 +1357,9 @@ test_true(([])?1:0)
 test_true(({})?1:0)
 test_true((<>)?1:0)
 test_true(object_program(this_object())?1:0)
+test_eq(1 ? "a" : 1 ? "b" : 1, "a")
+test_eq(0 ? "a" : 1 ? "b" : 1 ? "c" : 1, "b")
+test_eq(0 ? "a" : 0 ? "b" : 1 ? "c" : 1, "c")
 
 // testing indexing
 test_eq("foo"[0],'f')
