@@ -589,9 +589,10 @@ void img_read_get_channel(int arg,char *name,INT32 args,
 		  "wide strings are not supported (yet)\n",arg+1,name);
 	 if (sp[arg-args-1].u.string->len!=THIS->xsize*THIS->ysize)
 	    error("create_method: argument %d (%s channel): "
-		  "string is %d characters, expected %d\n",
-		  arg+1,name,sp[arg-args-1].u.string->len,
-		  THIS->xsize*THIS->ysize);
+		  "string is %ld characters, expected %ld\n",
+		  arg+1, name,
+		  DO_NOT_WARN((long)sp[arg-args-1].u.string->len),
+		  DO_NOT_WARN((long)(THIS->xsize*THIS->ysize)));
 	 *s=(unsigned char *)sp[arg-args-1].u.string->str;
 	 *m=1;
 	 break;
@@ -2589,7 +2590,7 @@ exit_loop:
    THREADS_DISALLOW();
 
    if (err) {
-     error(err);
+     error("%s\n", err);
    }
 
    pop_n_elems(args);

@@ -65,7 +65,9 @@ void image_avs_f__decode(INT32 args)
     error("This is not an AVS file (w=%d; h=%d)\n", w, h);
 
   if((size_t)w*h*4+8 > (size_t)s->len)
-    error("This is not an AVS file (w=%d; h=%d; s=%d)\n",w,h,s->len);
+    error("This is not an AVS file (w=%d; h=%d; s=%ld)\n",
+	  w, h,
+	  DO_NOT_WARN((long)s->len));
 
   push_int( w );
   push_int( h );

@@ -749,7 +749,10 @@ void image_x_encode_pseudocolor(INT32 args)
       if (sp[5-args].type!=T_STRING)
 	 error("Image.X.encode_pseudocolor: illegal argument 6 (expected string)\n");
       else if (sp[5-args].u.string->len!=((vbpp>8)?2:1)<<vbpp)
-	 error("Image.X.encode_pseudocolor: illegal argument 6 (expected translate string of length %d, not %d)\n",((vbpp>8)?2:1)<<vbpp,sp[5-args].u.string->len);
+	 error("Image.X.encode_pseudocolor: illegal argument 6 "
+	       "(expected translate string of length %d, not %ld)\n",
+	       ((vbpp>8)?2:1)<<vbpp,
+	       DO_NOT_WARN((long)sp[5-args].u.string->len));
       else 
 	 translate=sp[5-args].u.string->str;
    } 

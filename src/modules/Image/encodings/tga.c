@@ -186,7 +186,8 @@ static struct image_alpha load_image(struct pike_string *str)
   buffer.len = str->len;
 
   if(buffer.len < ((sizeof(struct tga_footer)+sizeof(struct tga_header))))
-    error("Data (%d bytes) is too short\n", buffer.len);
+    error("Data (%ld bytes) is too short\n",
+	  DO_NOT_WARN((long)buffer.len));
 
 
 /*   MEMCPY(&footer, (buffer.str+(buffer.len-sizeof(struct tga_footer))), */

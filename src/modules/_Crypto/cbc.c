@@ -85,8 +85,8 @@ INLINE static void cbc_encrypt_step(const unsigned INT8 *source,
     error("cbc->encrypt(): Expected string from crypt_block()\n");
   }
   if (sp[-1].u.string->len != block_size) {
-    error("cbc->encrypt(): Bad string length %d returned from crypt_block()\n",
-	  sp[-1].u.string->len);
+    error("cbc->encrypt(): Bad string length %ld returned from crypt_block()\n",
+	  DO_NOT_WARN((long)sp[-1].u.string->len));
   }
   MEMCPY(THIS->iv, sp[-1].u.string->str, block_size);
   MEMCPY(dest, sp[-1].u.string->str, block_size);
@@ -106,8 +106,8 @@ INLINE static void cbc_decrypt_step(const unsigned INT8 *source,
     error("cbc->decrypt(): Expected string from crypt_block()\n");
   }
   if (sp[-1].u.string->len != block_size) {
-    error("cbc->decrypt(): Bad string length %d returned from crypt_block()\n",
-	  sp[-1].u.string->len);
+    error("cbc->decrypt(): Bad string length %ld returned from crypt_block()\n",
+	  DO_NOT_WARN((long)sp[-1].u.string->len));
   }
 
   for (i=0; i < block_size; i++) {

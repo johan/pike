@@ -220,7 +220,12 @@ void img_bmp_encode(INT32 args)
 	       get_storage(oc,image_colortable_program);
 	 }
 	 else if (image_colortable_size(nct)>(1<<bpp))
-	    bad_arg_error("Image.BMP.encode",sp-args,args,2,"mapping",sp+2-1-args,"colortable must have at most %d colors (has %d colors)\n",1<<bpp,image_colortable_size(nct));
+	    bad_arg_error("Image.BMP.encode", sp-args, args, 2, "mapping",
+			  sp+2-1-args,
+			  "colortable must have at most %d colors "
+			  "(has %ld colors)\n",
+			  1<<bpp,
+			  DO_NOT_WARN((long)image_colortable_size(nct)));
       case 24:
 	 break;
       default:
@@ -536,7 +541,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 
 	 if (len<54)
 	    error("Image.BMP.decode: unexpected EOF in header (at byte %d)\n",
-		  len);
+		  DO_NOT_WARN((long)len));
 
 	 push_text("xsize");
 	 push_int(xsize=int_from_32bit(s+14+4*1));
@@ -590,8 +595,8 @@ void i_img_bmp__decode(INT32 args,int header_only)
       case 12: /* dos (?) mode */
 
 	 if (len<54)
-	    error("Image.BMP.decode: unexpected EOF in header (at byte %d)\n",
-		  len);
+	    error("Image.BMP.decode: unexpected EOF in header (at byte %ld)\n",
+		  DO_NOT_WARN((long)len));
 
 	 push_text("xsize");
 	 push_int(xsize=int_from_16bit(s+14+4));
