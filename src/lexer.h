@@ -334,7 +334,7 @@ static int low_yylex(YYSTYPE *yylval)
       lex.pos -= (1<<SHIFT);
       READBUF(lex_isidchar(C));
 
-      yylval->number=lex.current_line;
+      PIKE_MEM_WO_RANGE (yylval, sizeof (YYSTYPE));
 
       if(len>1 && len<10)
       {
