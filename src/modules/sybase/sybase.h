@@ -19,7 +19,12 @@
 #ifdef HAVE_SYBASE
 
 #include "threads.h"
+
+#ifdef HAVE_SYBASEOPENCLIENT_SYBASEOPENCLIENT_H
+#include <SybaseOpenClient/SybaseOpenClient.h>
+#elif defined(HAVE_CTPUBLIC_H)
 #include <ctpublic.h>
+#endif /* HAVE_SYBASEOPENCLIENT_H || HAVE_CTPUBLIC_H */
 
 #define SYBASE_DRIVER_VERSION "9"
 

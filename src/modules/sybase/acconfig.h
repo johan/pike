@@ -15,17 +15,33 @@
 #define __PIKE_SYBASE_CONFIG_H
 
 @TOP@
+
+/* Define if you have libintl */
+#undef PIKE_HAVE_LIBINTL
+
+/* Define if you have libcomn */
+#undef PIKE_HAVE_LIBCOMN
+
+/* Define if you have libcs */
+#undef PIKE_HAVE_LIBCS
+
+/* Define if you have libsystcl */
+#undef PIKE_HAVE_LIBSYBTCL
+
+/* Define if you have libct */
+#undef PIKE_HAVE_LIBCT
+
+/* Define if you have -framework SybaseOpenClient */
+#undef HAVE_FRAMEWORK_SYBASEOPENCLIENT
+
 @BOTTOM@
 
 /* End of automatic session. Doing stuff now */
 
-#undef PIKE_HAVE_LIBCOMN
-#undef PIKE_HAVE_LIBCS
-#undef PIKE_HAVE_LIBCT
-#undef PIKE_HAVE_LIBINTL
-#undef PIKE_HAVE_LIBSYBTCL
-
-#if defined(PIKE_HAVE_LIBCOMN) && defined(PIKE_HAVE_LIBCS) \
+#if defined(HAVE_SYBASEOPENCLIENT_SYBASEOPENCLIENT_H) && \
+  defined(HAVE_FRAMEWORK_SYBASEOPENCLIENT)
+#define HAVE_SYBASE
+#elif defined(PIKE_HAVE_LIBCOMN) && defined(PIKE_HAVE_LIBCS) \
   && defined(PIKE_HAVE_LIBCT) && defined(PIKE_HAVE_LIBINTL) \
   && defined(PIKE_HAVE_LIBSYBTCL) && defined(HAVE_CTPUBLIC_H)
 #define HAVE_SYBASE 
