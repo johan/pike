@@ -60,6 +60,16 @@ import LR;
  * Classes
  */
 
+//. + verbose
+//.   Verbosity level
+//.   0 - none
+//.   1 - some
+int verbose=1;
+
+//. + error
+//.   Error code
+int error=0;
+
 //. o kernel
 //.   Implements an LR(1) state
 class kernel {
@@ -308,16 +318,6 @@ static private mapping(int : multiset(object(rule))) used_by = ([]);
 //. + start_state
 //.   The initial LR0 state.
 object(kernel) start_state;
-
-//. + verbose
-//.   Verbosity level
-//.   0 - none
-//.   1 - some
-int verbose=1;
-
-//. + error
-//.   Error code
-int error=0;
 
 /* Number of next rule (used only for conflict resolving) */
 static private int next_rule_number = 1;
