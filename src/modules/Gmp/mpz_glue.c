@@ -630,7 +630,7 @@ static void mpzmod_lsh(INT32 args)
     error("Wrong number of arguments to Gmp.mpz->rsh.\n");
   push_string(int_type_string);
   int_type_string->refs++;
-  f_cast(2);
+  f_cast();
   if(sp[-1].u.integer < 0)
     error("mpz->lsh on negative number.\n");
   res = clone_object(mpzmod_program, 0);
@@ -646,7 +646,7 @@ static void mpzmod_rsh(INT32 args)
     error("Wrong number of arguments to Gmp.mpz->rsh.\n");
   push_string(int_type_string);
   int_type_string->refs++;
-  f_cast(2);
+  f_cast();
   if (sp[-1].u.integer < 0)
     error("Gmp.mpz->rsh: Shift count must be positive.\n");
   res = clone_object(mpzmod_program, 0);

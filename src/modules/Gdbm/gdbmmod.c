@@ -312,7 +312,7 @@ static void gdbmmod_close(INT32 args)
 {
   pop_n_elems(args);
 
-  do_free(THIS->dbf);
+  do_free();
   push_int(0);
 }
 
