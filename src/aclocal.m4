@@ -417,7 +417,7 @@ pushdef([AC_OUTPUT],
 
   # Autoconf 2.50 and later stupidity...
   if test "0`echo 'if(AC_ACVERSION >= 2.50)1'|bc`" = "01"; then
-    AC_MSG_WARN(cleaning the environment from autoconf 2.5x pollution)
+    dnl AC_MSG_WARN(cleaning the environment from autoconf 2.5x pollution)
   
     unset ac_cv_env_build_alias_set
     unset ac_cv_env_build_alias_value
