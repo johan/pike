@@ -449,7 +449,8 @@ static void perlmod_parse(INT32 args)
     int env_block_size=0;
     char *env_blockp;
     struct keypair *k;
-    MAPPING_LOOP(env_mapping)
+    struct mapping_data *md = env_mapping->data;
+    NEW_MAPPING_LOOP(md)
       env_block_size+=k->ind.u.string->len+k->val.u.string->len+2;
 
     ps->env_block=xalloc(env_block_size);
@@ -457,7 +458,7 @@ static void perlmod_parse(INT32 args)
 
     env_blockp = ps->env_block;
     d=0;
-    MAPPING_LOOP(env_mapping)
+    NEW_MAPPING_LOOP(md)
       {
 	ps->env[d++]=env_blockp;
 	MEMCPY(env_blockp,k->ind.u.string->str,k->ind.u.string->len);

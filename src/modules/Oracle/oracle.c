@@ -1796,7 +1796,8 @@ static void f_big_typed_query_create(INT32 args)
   {
     INT32 e;
     struct keypair *k;
-    MAPPING_LOOP(bnds)
+    struct mapping_data *md = bnds->data;
+    NEW_MAPPING_LOOP(md)
       {
 	struct svalue *value=&k->val;
 	sword rc = 0;

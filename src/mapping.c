@@ -118,11 +118,13 @@ static void check_mapping_type_fields(struct mapping *m)
 {
   INT32 e;
   struct keypair *k=0,**prev;
+  struct mapping_data *md;
   TYPE_FIELD ind_types, val_types;
 
   ind_types=val_types=0;
 
-  MAPPING_LOOP(m) 
+  md = m->data;
+  NEW_MAPPING_LOOP(md)
     {
       val_types |= 1 << k->val.type;
       ind_types |= 1 << k->ind.type;

@@ -826,14 +826,16 @@ void o_cast(struct pike_type *type, INT32 run_time_type)
 	}else{
 	  INT32 e;
 	  struct keypair *k;
+	  struct mapping_data *md;
 #ifdef PIKE_DEBUG
 	  struct svalue *save_sp=sp+1;
 #endif
 	  push_mapping(m=allocate_mapping(m_sizeof(tmp)));
 	  
 	  SET_CYCLIC_RET(m);
-	  
-	  MAPPING_LOOP(tmp)
+
+	  md = tmp->data;
+	  NEW_MAPPING_LOOP(md)
 	  {
 	    push_svalue(& k->ind);
 	    o_cast(itype, run_time_itype);
