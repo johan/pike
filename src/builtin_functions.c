@@ -4555,9 +4555,9 @@ static ptrdiff_t low_parse_format(p_wchar0 *s, ptrdiff_t slen)
   return i;
 }
 
-/*! @decl array parse_format(string fmt)
- *!
- *!   Parses a sprintf/sscanf-style format string
+/** @decl array parse_format(string fmt)
+ **
+ **   Parses a sprintf/sscanf-style format string
  */
 static void f_parse_format(INT32 args)
 {
