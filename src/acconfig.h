@@ -159,6 +159,9 @@
 /* Define if you have infnan */
 #undef HAVE_INFNAN
 
+/* Define if you have _isnan */
+#undef HAVE__ISNAN
+
 /* Define if you have fork */
 #undef HAVE_FORK
 
