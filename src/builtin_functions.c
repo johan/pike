@@ -3813,16 +3813,16 @@ void f_master(INT32 args)
 void f_gethrvtime(INT32 args)
 {
   pop_n_elems(args);
-  push_int((INT32)(gethrvtime()/1000));
+  push_int64(gethrvtime()/1000);
 }
 
 void f_gethrtime(INT32 args)
 {
   pop_n_elems(args);
   if(args)
-    push_int((INT32)(gethrtime())); 
+    push_int64(gethrtime()); 
   else
-    push_int((INT32)(gethrtime()/1000)); 
+    push_int64(gethrtime()/1000);
 }
 #else
 void f_gethrtime(INT32 args)
@@ -3830,10 +3830,17 @@ void f_gethrtime(INT32 args)
   struct timeval tv;
   pop_n_elems(args);
   GETTIMEOFDAY(&tv);
+#ifdef INT64
   if(args)
-    push_int((INT32)((tv.tv_sec *1000000) + tv.tv_usec)*1000);
+    push_int64((((INT64)tv.tv_sec * 1000000) + tv.tv_usec)*1000);
   else
-    push_int((INT32)((tv.tv_sec *1000000) + tv.tv_usec));
+    push_int64(((INT64)tv.tv_sec * 1000000) + tv.tv_usec));
+#else /* !INT64 */
+  if(args)
+    push_int64(((tv.tv_sec * 1000000) + tv.tv_usec)*1000);
+  else
+    push_int64((tv.tv_sec * 1000000) + tv.tv_usec));
+#endif /* INT64 */
 }
 #endif /* HAVE_GETHRVTIME */
 
