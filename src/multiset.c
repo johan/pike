@@ -298,8 +298,9 @@ node * make_node_from_multiset(struct multiset *l)
  *! Construct a multiset.
  *!
  *! Construct a multiset with the arguments as indices.
- *! An alternative and more preferrable syntax is:
- *! @code{(< elem1, elem2, ... >)@}
+ *! This method is most useful when constructing multisets
+ *! with @[map] or similar; generally, the multiset literal
+ *! syntax is handier: @code{(< elem1, elem2, ... >)@}
  *!
  *! @seealso
  *!   @[sizeof()], @[multisetp()], @[mkmultiset()]
