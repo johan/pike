@@ -1,7 +1,7 @@
 /* cipher.cmod -*- c -*- */
+/* $Id$ */
 
 #include "global.h"
-RCSID("$Id$");
 #include "interpret.h"
 #include "svalue.h"
 #include "array.h"

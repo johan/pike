@@ -9,7 +9,6 @@
 
 #include "config.h"
 
-RCSID("$Id$");
 #include "stralloc.h"
 #include "pike_macros.h"
 #include "object.h"

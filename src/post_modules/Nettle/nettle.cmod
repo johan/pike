@@ -1,7 +1,7 @@
 /* nettle.cmod -*- c -*- */
+/* $Id$ */
 
 #include "global.h"
-RCSID("$Id$");
 #include "interpret.h"
 #include "svalue.h"
 /* For this_object() */

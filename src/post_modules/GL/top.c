@@ -39,7 +39,6 @@
 
 #endif /* HAVE_GL */
 
-RCSID("$Id$");
 #include "stralloc.h"
 #include "pike_macros.h"
 #include "object.h"

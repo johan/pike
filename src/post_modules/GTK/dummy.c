@@ -9,8 +9,6 @@
 #include "pgtk_config.h"
 #include "module.h"
 
-RCSID("$Id$");
-
 /* Well... Sort of basic, right? :-) */
 
 PIKE_MODULE_INIT
