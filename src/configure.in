@@ -2302,7 +2302,7 @@ fi
 #############################################################################
 
 AC_MSG_CHECKING(for isgraph)
-AC_CACHE_VAL(pike_cv_func_isgraph, [ AC_TRY_COMPILE([
+AC_CACHE_VAL(pike_cv_func_isgraph, [ AC_TRY_LINK([
 #include <ctype.h>
 ], [
 return(!isgraph('A'));
