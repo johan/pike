@@ -450,7 +450,7 @@ class Display
 		       m->minorCode, m->majorCode);
 		m->errorCode = ._Xlib.error_codes[errorCode];
 #ifdef DEBUG
-		m->failed_request = debug_requests[DEBUGEQ(m->sequenceNumber)];
+		m->failed_request = debug_requests[DEBUGREQ(m->sequenceNumber)];
 #endif
 #if 0
 		if (m->errorCode == "Success")
