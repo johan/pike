@@ -321,6 +321,7 @@ string|int got_data(string s)
   return res;
 }
 
+/* FIXME: Delete this function */
 void server()
 {
   handshake_state = STATE_server_wait_for_hello;
