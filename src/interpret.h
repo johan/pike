@@ -253,11 +253,7 @@ PMOD_EXPORT extern const char msg_pop_neg[];
     Pike_sp=s_;					\
 }while(0)
 
-#define stack_pop_to_no_free(X) do {					\
-    *(X)=*--Pike_sp;							\
-    DO_IF_DMALLOC(Pike_sp->type=PIKE_T_UNKNOWN; Pike_sp->u.refs=(void *)-1); \
-    PIKE_MEM_WO(*Pike_sp);						\
-  } while(0)
+#define stack_pop_to_no_free(X) move_svalue(X, --Pike_sp)
 #define stack_pop_to(X) do { struct svalue *_=(X); free_svalue(_); stack_pop_to_no_free(_); }while(0)
 
 /* This pops a number of arguments from the stack but keeps the top

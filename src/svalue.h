@@ -451,6 +451,16 @@ static inline union anything *dmalloc_check_union(union anything *u,int type, ch
   }						\
 }while(0)
 
+#define move_svalue(TO, FROM) do {					\
+    struct svalue *_to = (TO);						\
+    struct svalue *_from = (FROM);					\
+    dmalloc_touch_svalue(_from);					\
+    *_to = *_from;							\
+    dmalloc_touch_svalue(_to);						\
+    DO_IF_DMALLOC(_from->type = PIKE_T_UNKNOWN; _from->u.refs = (void *) -1); \
+    PIKE_MEM_WO(*_from);						\
+  } while (0)
+
 extern struct svalue dest_ob_zero;
 
 #define free_mixed_svalues(X,Y) do {		\
