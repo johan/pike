@@ -40,6 +40,8 @@ this_program remove(mixed left, mixed right)
 {
   if (val[left] && val[left][right])
     --items, val[left][right] = 0;
+  if (!sizeof(val[left]))
+      m_delete(val, left);
   return this;
 }
 
@@ -237,7 +239,7 @@ array find_shortest_path(mixed from, mixed to, void|multiset avoiding)
 
 string _sprintf(int mode)
 {
-  return mode=='O' && sprintf("%O(%O)", this_program, id);
+  return mode=='O' && sprintf("%O(%O %O)", this_program, id, _sizeof());
 }
 
 //! Return the ID value which was given as first argument to create().
