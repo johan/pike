@@ -520,7 +520,6 @@ int dbm_main(int argc, char **argv)
   init_lex();
   init_program();
   init_object();
-
   low_th_init();
 
   init_modules();
@@ -592,6 +591,7 @@ DECLSPEC(noreturn) void pike_do_exit(int num) ATTRIBUTE((noreturn))
 
 void low_init_main(void)
 {
+  init_mapping_stuff();
   init_pike_searching();
   init_error();
   init_pike_security();
