@@ -46,7 +46,7 @@ define([AC_CHECK_GZ],
 ])
 
 if test "$pike_cv_sys_os" = "Darwin"; then
-  CPPFLAGS="-I/System/Library/Frameworks/Zip.framework/Headers $CPPFLAGS"
+  CPPFLAGS="-I$with_root/System/Library/Frameworks/Zip.framework/Headers $CPPFLAGS"
   LDFLAGS="-framework Zip"
 fi
 
