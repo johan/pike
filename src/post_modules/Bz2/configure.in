@@ -23,7 +23,7 @@ if test x$with_bz2 = xyes ; then
     AC_CHECK_FUNCS(BZ2_bzCompressInit)
 
     AC_CHECK_HEADERS(bzlib.h string.h strings.h)
-    if test $ac_cv_header_jpeglib_h = yes ; then
+    if test $ac_cv_header_bzlib_h = yes ; then
        PIKE_FEATURE(Bz2,[yes (using libbz2)])
        AC_DEFINE(HAVE_BZ2LIB)
     else
