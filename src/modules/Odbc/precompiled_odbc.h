@@ -75,7 +75,7 @@ struct precompiled_odbc_result {
   struct precompiled_odbc *odbc;
   HSTMT hstmt;
   SWORD num_fields;
-  SDWORD num_rows;
+  SQLLEN num_rows;
   struct array *fields;
   struct field_info *field_info;
 };
