@@ -360,7 +360,7 @@ static void f_http_decode_string(INT32 args)
    newstr = begin_wide_shared_string(Pike_sp[-args].u.string->len - adjust_len,
 				     size_shift);
    if (size_shift) {
-     p_wchar1 dest = STR1(newstr);
+     p_wchar1 *dest = STR1(newstr);
 
      for (proc=0; bar<end; dest++)
        if (*bar=='%') {
