@@ -827,6 +827,10 @@ int main(int argc, char **argv)
 	fi
       ;;
 
+      xAIX*)
+        LIBS="${OLDLIBS} -lpthreads"
+      ;;
+
       *)
         LIBS="${OLDLIBS} -lpthread"
       ;;
