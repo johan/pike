@@ -676,7 +676,7 @@ class TopNode {
     string contents = "<table class='sidebar'><tr>";
     foreach(method_children/( sizeof(method_children)/4.0 ),
             array(Node) children)
-      contents += "<td nowrap='nowrap'>" +
+      contents += "<td nowrap='nowrap' valign='top'>" +
 	make_method_page(children) + "</td>";
 
     contents += "</tr><tr><td colspan='4' nowrap='nowrap'>" +
