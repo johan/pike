@@ -169,7 +169,7 @@ static void report_error(const char *function_name)
     break;
 #endif /* ESTALE */
   case ESRCH:
-    error_msg = "No suck process";
+    error_msg = "No such process";
     break;
   }
   error("%s(): Failed:%s\n", function_name, error_msg);
