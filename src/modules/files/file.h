@@ -41,7 +41,7 @@ struct my_file
   struct svalue write_oob_callback;
 #endif /* WITH_OOB */
 
-#ifdef HAVE_FD_FLOCK
+#if defined(HAVE_FD_FLOCK) || defined(HAVE_FD_LOCKF) 
   struct object *key;
 #endif
   struct object *myself;
