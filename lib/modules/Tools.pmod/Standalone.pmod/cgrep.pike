@@ -100,7 +100,15 @@ class PikeFile {
   }
 
   void grep(array(string) tokens) {
+    int old;
     foreach(tokens; int i; string token) {
+#if 0
+      if(line!=old) {
+        catch(write("\n%4d:%s\n", line+1, lines[line]));
+	old=line;
+      }
+      write("%O ", token);
+#endif
       if(in_token==1 && token==target) {
 	found();
 	line += String.count(token, "\n");
@@ -118,12 +126,12 @@ class PikeFile {
 	continue;
       }
       if(token[..1]=="/*") {
-	line--;
 	foreach(token[2..sizeof(token)-3]/"\n", string l) {
-	  line++;
 	  if(in_comment && has_value(l, target))
 	    found();
+	  line++;
 	}
+	line--;
 	continue;
       }
       if(token[0]=='#') {
@@ -260,7 +268,7 @@ int main(int num, array(string) args) {
 
   int matches;
   foreach(files, string fn)
-    if(recurse)
+    if(recurse && Stdio.is_dir(fn))
       foreach(Filesystem.Traversion(fn); string path; string fn)
 	matches += handle_file(path+fn, fn);
     else
