@@ -506,7 +506,7 @@ static void eat_enc_string(struct pike_string *str, struct iso2022enc_stor *s,
 	} else {
 	  /* Need to switch to another map */
 
-	  int mode, index=0, ch, ch2;
+	  int mode=0, index=0, ch, ch2;
 	  UNICHAR *ttab = NULL, *ttt;
 	  p_wchar1 *rmap = NULL;
 

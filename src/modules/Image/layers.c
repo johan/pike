@@ -2735,7 +2735,7 @@ static void image_layer_crop(INT32 args)
    struct layer *l;
    INT_TYPE x,y,xz,yz,xi,yi;
    int zot=0;
-   struct image *img;
+   struct image *img = NULL;
 
    get_all_args("Image.Layer->crop",args,"%d%d%d%d",&x,&y,&xz,&yz);
 

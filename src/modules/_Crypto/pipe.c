@@ -205,7 +205,7 @@ static void f_set_encrypt_key(INT32 args)
   }
   THIS->mode = 0;
   for (i=-args; i; i++) {
-    int n_args;
+    int n_args = 0;
 
     if (sp[i].type == T_STRING) {
       ref_push_string(sp[i].u.string);
@@ -234,7 +234,7 @@ static void f_set_decrypt_key(INT32 args)
   }
   THIS->mode = 1;
   for (i=-args; i; i++) {
-    int n_args;
+    int n_args = 0;
 
     if (sp[i].type == T_STRING) {
       ref_push_string(sp[i].u.string);

@@ -47,6 +47,7 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "operators.h"
 #include "mapping.h"
+#include "bignum.h"
 
 #include "gif_lzw.h"
 

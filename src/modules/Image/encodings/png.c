@@ -1039,7 +1039,7 @@ static void img_png_decode(INT32 args,int header_only)
 
    for (i=0; i<a->size; i++)
    {
-      struct array *b;
+      struct array *b = NULL;
       unsigned char *data;
       size_t len;
 
@@ -1424,7 +1424,7 @@ header_stuff:
 
 static void image_png_encode(INT32 args)
 {
-   struct image *img,*alpha=NULL;
+   struct image *img = NULL, *alpha = NULL;
    rgb_group *s,*sa=NULL;
    struct neo_colortable *ct=NULL;
 

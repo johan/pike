@@ -414,7 +414,7 @@ static void image_jpeg_encode(INT32 args)
    struct my_destination_mgr destmgr;
    struct jpeg_compress_struct cinfo;
 
-   struct image *img;
+   struct image *img = NULL;
 
    unsigned char *tmp;
    INT32 y;

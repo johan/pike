@@ -415,7 +415,7 @@ static void image_xface_decode(INT32 args)
 
 static void image_xface_encode(INT32 args)
 {
-  struct image *img;
+  struct image *img = NULL;
   struct pike_string *res;
 
   if (args<1 

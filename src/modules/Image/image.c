@@ -1958,7 +1958,7 @@ static void image_gradients(INT32 args)
 
    while (args--)
    {
-      struct array *a;
+      struct array *a = NULL;
       if (sp[-1].type!=T_ARRAY ||
 	  (a=sp[-1].u.array)->size!=5 ||
 	  a->item[0].type!=T_INT ||
@@ -3885,7 +3885,7 @@ void image_gamma(INT32 args)
    struct object *o;
    struct image *img;
    COLORTYPE _newg[256],_newb[256],*newg,*newb;
-   double gammar,gammab,gammag;
+   double gammar=0.0, gammab=0.0, gammag=0.0;
    COLORTYPE newr[256];
 
    if (!THIS->img) error("Called Image.Image object is not initialized\n");;

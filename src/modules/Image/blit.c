@@ -372,7 +372,7 @@ void image_paste(INT32 args)
 
 void image_paste_alpha(INT32 args)
 {
-   struct image *img;
+   struct image *img = NULL;
    INT32 x1,y1;
 
    if (args<2
@@ -457,7 +457,7 @@ void image_paste_alpha(INT32 args)
 
 void image_paste_mask(INT32 args)
 {
-   struct image *img,*mask;
+   struct image *img = NULL, *mask = NULL;
    INT32 x1,y1,x,y,x2,y2,smod,dmod,mmod;
    rgb_group *s,*d,*m;
    double q;
@@ -562,7 +562,7 @@ CHRONO("image_paste_mask end");
 
 void image_paste_alpha_color(INT32 args)
 {
-   struct image *mask;
+   struct image *mask = NULL;
    INT32 x1,y1,x,y,x2,y2;
    rgb_group rgb,*d,*m;
    INT32 mmod,dmod;

@@ -669,7 +669,7 @@ static void ttf_instance_setc(struct image_ttf_face_struct *face_s,
 
 static void image_ttf_faceinstance_create(INT32 args)
 {
-   struct image_ttf_face_struct *face_s;
+   struct image_ttf_face_struct *face_s = NULL;
    struct image_ttf_faceinstance_struct *face_i=THISi;
    int res;
 

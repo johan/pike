@@ -457,7 +457,7 @@ static void image_color_hsvf(INT32 args)
 {
    double max, min;
    double r,g,b, delta;
-   double h, s, v;
+   double h, s = 0.0, v;
 
    pop_n_elems(args);
 

@@ -128,16 +128,16 @@ static unsigned char swap_bits[256] =
 
 static void image_x_encode_truecolor(INT32 args)
 {
-   struct image *img;
+   struct image *img = NULL;
    struct neo_colortable *nct=NULL;
-   int rbits,rshift,gbits,gshift,bbits,bshift;
-   int bpp,alignbits;
+   int rbits=0, rshift=0, gbits=0, gshift=0, bbits=0, bshift=0;
+   int bpp=0, alignbits=0;
    unsigned long rfmask,gfmask,bfmask;
    unsigned char *d;
    struct pike_string *dest;
    ptrdiff_t x,y;
    rgb_group *s,*tmp=NULL;
-   int swap_bytes;
+   int swap_bytes=0;
 
    if (args<10)
       error("Image.X.encode_truecolor: too few arguments (expected 10 arguments)\n");
@@ -720,8 +720,8 @@ static void image_x_encode_pseudocolor_2byte(INT32 args,
 void image_x_encode_pseudocolor(INT32 args)
 {
    INT32 bpp,alignbits,vbpp;
-   struct image *img;
-   struct neo_colortable *nct;
+   struct image *img = NULL;
+   struct neo_colortable *nct = NULL;
    char *translate=NULL;
    
    if (args<5) 
@@ -1022,8 +1022,8 @@ void image_x_decode_pseudocolor(INT32 args)
    int i;
    INT32 n, m;
    rgb_group *d;
-   struct neo_colortable *nct;
-   struct object *ncto;
+   struct neo_colortable *nct = NULL;
+   struct object *ncto = NULL;
 
    if (args<7) 
       error("Image.X.decode_pseudocolor: too few arguments\n");
@@ -1135,7 +1135,7 @@ void image_x_encode_bitmap(INT32 args)
    struct pike_string *res;
    unsigned char *d;
    rgb_group *s;
-   struct image *img;
+   struct image *img = NULL;
 
    if (!args)
       SIMPLE_TOO_FEW_ARGS_ERROR("Image.X.encode_bitmap",1);

@@ -1398,9 +1398,9 @@ static void file_open(INT32 args)
 static void file_seek(INT32 args)
 {
 #ifdef HAVE_LSEEK64
-  INT64 to;
+  INT64 to = 0;
 #else
-  INT32 to;
+  INT32 to = 0;
 #endif
 
 #ifdef HAVE_LSEEK64

@@ -403,8 +403,11 @@ INLINE int tagsequal(char *s, char *t, ptrdiff_t len, char *end)
 {
   if(s+len >= end)  return 0;
 
-  while(len--) if(tolower(*(t++)) != tolower(*(s++)))
-    return 0;
+  while(len--) {
+    if(tolower(*((unsigned char *)(t++))) !=
+       tolower(*((unsigned char *)(s++))))
+      return 0;
+  }
 
   switch(*s) {
   case '>':

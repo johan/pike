@@ -2326,7 +2326,7 @@ void image_colortable_corners(INT32 args);
 
 void image_colortable_reduce_fs(INT32 args)
 {
-   int numcolors;
+   int numcolors = 1293791;	/* a lot */
    int i;
    struct object *o;
    struct neo_colortable *nct;
@@ -2336,8 +2336,6 @@ void image_colortable_reduce_fs(INT32 args)
 	SIMPLE_BAD_ARG_ERROR("Image.Colortable->reduce",1,"int");
      else
 	numcolors=sp[-args].u.integer;
-   else
-      numcolors=1293791; /* a lot */
 
    if (numcolors<2)
       SIMPLE_BAD_ARG_ERROR("Image.Colortable->reduce",1,"int(2..)");
