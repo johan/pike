@@ -1516,7 +1516,7 @@ static void lm_erase(rgb_group *s,rgb_group *l,rgb_group *d,
 
 /*** the add-layer function ***************************/
 
-static void INLINE img_lay_first_line(struct layer *l,
+static INLINE void img_lay_first_line(struct layer *l,
 				      int xoffs,int xsize,
 				      int y, /* in _this_ layer */
 				      rgb_group *d,rgb_group *da)
