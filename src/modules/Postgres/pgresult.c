@@ -67,6 +67,20 @@
 #include "builtin_functions.h"
 #include "module_support.h"
 
+/* <server/postgres_fe.h> doesn't suffice to be able to include
+ * <server/catalog/pg_type.h>.
+ */
+#ifdef HAVE_SERVER_POSTGRES_H
+#include <server/postgres.h>
+#elif defined(HAVE_POSTGRES_H)
+#include <postgres.h>
+#endif
+#ifdef HAVE_SERVER_CATALOG_PG_TYPE_H
+#include <server/catalog/pg_type.h>
+#elif defined(HAVE_CATALOG_PG_TYPE_H)
+#include <catalog/pg_type.h>
+#endif
+
 RCSID("$Id$");
 
 #ifdef _REENTRANT

@@ -46,11 +46,6 @@
 #include <postgres.h>
 #endif /* HAVE_POSTGRES_FE_H */
 #include <libpq-fe.h>
-#ifdef HAVE_SERVER_CATALOG_PG_TYPE_H
-#include <server/catalog/pg_type.h>
-#elif defined(HAVE_CATALOG_PG_TYPE_H)
-#include <catalog/pg_type.h>
-#endif
 
 #endif
 
