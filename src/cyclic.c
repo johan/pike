@@ -33,6 +33,9 @@ static void low_unlink_cyclic(CYCLIC *c)
     if(c == *p)
     {
       *p=c->next;
+#ifdef CYCLIC_DEBUG
+      fprintf (stderr, "%s: END_CYCLIC a=%p b=%p: no cycle\n", c->id, c->a, c->b);
+#endif
       return;
     }
   }
@@ -46,7 +49,7 @@ void unlink_cyclic(CYCLIC *c)
 }
 
 void *begin_cyclic(CYCLIC *c,
-		   void *id,
+		   char *id,
 		   void *th,
 		   void *a,
 		   void *b)
@@ -69,6 +72,9 @@ void *begin_cyclic(CYCLIC *c,
   {
     if(a == p->a && b==p->b && id==p->id)
     {
+#ifdef CYCLIC_DEBUG
+      fprintf (stderr, "%s: BEGIN_CYCLIC a=%p b=%p: found cycle\n", id, a, b);
+#endif
       ret=p->ret;
       break;
     }
@@ -82,5 +88,8 @@ void *begin_cyclic(CYCLIC *c,
   c->next=cyclic_hash[h];
   cyclic_hash[h]=c;
   SET_ONERROR(c->onerr, low_unlink_cyclic, c);
+#ifdef CYCLIC_DEBUG
+  if (!ret) fprintf (stderr, "%s: BEGIN_CYCLIC a=%p b=%p: no cycle\n", id, a, b);
+#endif
   return ret;
 }
