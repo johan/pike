@@ -3085,8 +3085,8 @@ static struct pike_string *replace_many(struct pike_string *str,
    */
   if (from->size > (ptrdiff_t)(LONG_MAX/sizeof(struct tupel)))
     Pike_error("Array too large (size %" PRINTPTRDIFFT "d "
-	       "exceeds %" PRINTSIZET "d).\n",
-	       from->size, (LONG_MAX/sizeof(struct tupel)));
+	       "exceeds %" PRINTSIZET "u).\n",
+	       from->size, (size_t)(LONG_MAX/sizeof(struct tupel)));
   ctx.v=(struct tupel *)xalloc(sizeof(struct tupel)*from->size);
   init_string_builder(&ctx.ret,str->size_shift);
   SET_ONERROR (uwp, free_replace_many_context, &ctx);
