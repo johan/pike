@@ -719,7 +719,7 @@ int append_file(string filename, string what, int|void access)
 
 int file_size(string s)
 {
-  int *stat;
+  array(int) stat;
   stat=file_stat(s);
   if(!stat) return -1;
   return stat[1]; 
