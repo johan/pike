@@ -654,13 +654,6 @@ node *debug_mknode(short token, node *a, node *b)
 	  res->tree_info |= a->tree_info;
 	}
 	if (i && IDENTIFIER_IS_FUNCTION(i->identifier_flags)) {
-#ifdef PIKE_DEBUG
-	  /* Temporary check to see that the flags aren't reset somewhere. */
-	  if (i->opt_flags != (OPT_SIDE_EFFECT | OPT_EXTERNAL_DEPEND)) {
-	    yywarning("Identifier %s has opt_flags 0x%04x!",
-		      i->name->str, i->opt_flags);
-	  }
-#endif /* PIKE_DEBUG */
 	  res->node_info |= i->opt_flags;
 	} else {
 	  res->node_info |= opt_flags;
