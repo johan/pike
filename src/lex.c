@@ -176,6 +176,7 @@ struct keyword instr_names[]=
 { "mark sp-X",          F_MARK_X, I_HASARG },
 { "mark",               F_MARK },
 { "mark mark",          F_MARK2 },
+{ "pop mark",           F_POP_MARK },
 { "negative number",	F_NEG_NUMBER, I_HASARG },
 { "number",             F_NUMBER, I_HASARG },
 { "pop",		F_POP_VALUE },	
