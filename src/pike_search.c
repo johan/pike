@@ -14,7 +14,6 @@
 #include "pike_memory.h"
 #include "stralloc.h"
 #include "interpret.h"
-#include "block_alloc.h"
 #include "pike_error.h"
 #include "module_support.h"
 #include "pike_macros.h"
