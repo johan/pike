@@ -59,7 +59,8 @@ struct pike_frame
   INT16 ident;
   struct pike_frame *next;
   struct pike_frame *scope;
-  PIKE_OPCODE_T *pc;		/* Program counter of last/next opcode. */
+  PIKE_OPCODE_T *pc;		/* Address of current opcode. */
+  PIKE_OPCODE_T *return_addr;	/* Address of opcode to continue at after call. */
   struct svalue *locals;	/* Start of local variables. */
 
   /*  This is <= locals, and this is where the
