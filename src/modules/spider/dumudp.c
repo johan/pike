@@ -179,6 +179,9 @@ void udp_read(INT32 args)
      case EWOULDBLOCK:
       push_int( 0 );
       return;
+
+     default:
+       error("Socket read failed with errno %d.\n",errno);
     }
   }
   /* Now comes the interresting part.
@@ -263,6 +266,7 @@ void udp_sendto(INT32 args)
 void zero_udp(struct object *ignored)
 {
   MEMSET(THIS, 0, sizeof(struct dumudp));
+  THIS->read_callback.type=T_INT;
   FD = -1;
 }
 
