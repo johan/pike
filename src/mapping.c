@@ -18,6 +18,7 @@ RCSID("$Id$");
 #include "interpret.h"
 #include "las.h"
 #include "gc.h"
+#include "stralloc.h"
 
 #define AVG_LINK_LENGTH 4
 #define MIN_LINK_LENGTH 1
