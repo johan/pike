@@ -1758,6 +1758,14 @@ class FILE
   //! If @[trim] is true, all @tt{'\r'@} characters will be removed
   //! from the input.
   //!
+  //! @note
+  //! It's not supported to call this method more than once
+  //! unless a call to @[seek] is done in advance. Also note that it's
+  //! not possible to intermingle calls to @[read], @[gets] or other
+  //! functions that read data with the line iterator, it will produce
+  //! unexpected results since the internal buffer in the iterator will not
+  //! contain sequential file-data in those cases.
+  //! 
   //! @seealso
   //!   @[_get_iterator()]
   {
@@ -2315,6 +2323,8 @@ int cp(string from, string to)
 {
   string data;
   Stat stat = file_stat(from, 1);
+  if( !stat ) 
+     return 0;
   if(stat->isdir)
   {
     // recursive copying of directories
