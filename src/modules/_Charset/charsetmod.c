@@ -16,6 +16,9 @@ RCSID("$Id$");
 /* MUST BE LAST INCLUDE */
 #include "module_magic.h"
 
+#define sp Pike_sp
+#define fp Pike_fp
+
 #ifdef __CHAR_UNSIGNED__
 #define SIGNED signed
 #else

@@ -14,6 +14,9 @@ RCSID("$Id$");
 /* must be included last */
 #include "module_magic.h"
 
+#define sp Pike_sp
+#define fp Pike_fp
+
 #define PARSER_INITER
 
 /*#define DEBUG*/

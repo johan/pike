@@ -19,6 +19,9 @@ RCSID("$Id$");
 #include "operators.h"
 #include "../Image/image.h"
 
+#define sp Pike_sp
+#define fp Pike_fp
+
 static FT_Library library;
 static struct program *face_program;
 #ifdef DYNAMIC_MODULE

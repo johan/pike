@@ -99,6 +99,9 @@ RCSID("$Id$");
 #undef timeval
 #endif
 
+#define sp Pike_sp
+#define fp Pike_fp
+
 
 #ifdef NSIG
 #define MAX_SIGNALS NSIG
@@ -4029,5 +4032,3 @@ void exit_signals(void)
     signal_callbacks[e].type=T_INT;
   }
 }
-
-

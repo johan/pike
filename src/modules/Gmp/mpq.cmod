@@ -42,6 +42,9 @@ RCSID("$Id$");
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
+#define fp Pike_fp
+
 #define THISMPQ (&(THIS->n))
 
 #define PUSH_REDUCED(o) push_object(o)

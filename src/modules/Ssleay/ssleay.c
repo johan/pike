@@ -36,6 +36,9 @@ RCSID("$Id$");
 #include <err.h>
 #include <x509.h>
 
+#define sp Pike_sp
+#define fp Pike_fp
+
 /* SSLeay defines _ as a macro. That's Puckat(TM). */
 #undef _
 
