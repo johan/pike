@@ -1,0 +1,6 @@
+dnl $Id$
+
+cond([[ master()->resolv("GTK")->setup_gtk ]],
+[[
+  test_do( GTK.setup_gtk("",1) )
+]])
