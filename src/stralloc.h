@@ -41,9 +41,14 @@ struct string_builder
 PMOD_EXPORT struct pike_string *debug_findstring(const struct pike_string *foo);
 #endif
 
-#define free_string(s) do{ struct pike_string *_=(s); debug_malloc_touch(_); if(sub_ref(_)<=0) really_free_string(_); }while(0)
+#define free_string(s) do{ \
+    struct pike_string *_=(s); \
+    debug_malloc_touch(_); \
+    if(sub_ref(_)<=0) \
+      really_free_string(_); \
+  } while(0)
 
-#define my_hash_string(X) ((size_t)(X))
+#define my_hash_string(X) ((size_t)(((char *)(X))-(char *)0))
 #define my_order_strcmp(X,Y) ((char *)(X)-(char *)(Y))
 #define is_same_string(X,Y) ((X)==(Y))
 
