@@ -92,6 +92,7 @@ RCSID("$Id$");
 **!
 **! note
 **!	$Id$
+**!
 **! class mysql
 **!
 **!	Mysql.mysql is a pre-compiled Pike program. It enables
@@ -1134,11 +1135,7 @@ static void f_list_tables(INT32 args)
 /*
 **! method array(int|mapping(string:mixed)) list_fields(string table)
 **! method array(int|mapping(string:mixed)) list_fields(string table, string wild)
-**!	List all fields
-**! arg string table
-**!	Name of table to list the fields of
-**! arg string wild
-**!	Wildcard to filter the result with
+**!	List all fields.
 **!
 **!	Returns an array of mappings with information about the fields in the
 **!	specified table.
@@ -1165,9 +1162,16 @@ static void f_list_tables(INT32 args)
 **!	 "not_null":	This field may not be NULL.
 **!	 "blob":	This field is a blob field.
 **!
+**! arg string table
+**!	Name of table to list the fields of
+**! arg string wild
+**!	Wildcard to filter the result with
+**!
 **! note
 **!	Michael Widenius recomends usage of the following query instead:
+**!	<pre>
 **!	 show fields in 'table' like "wild"
+**!	</pre>
 **!
 **! see also: list_dbs, list_tables, list_processes, fetch_fields
 **!
