@@ -958,6 +958,10 @@ static int do_docode2(node *n, INT16 flags)
 #endif
 
     f_aggregate(cases);
+
+    /* FIXME: get_switch_order might possibly be able to
+     * throw errors, add a catch around this! -Hubbe
+     */
     order=get_switch_order(Pike_sp[-1].u.array);
 
     if (!Pike_compiler->num_parse_error) {

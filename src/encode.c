@@ -468,6 +468,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
 	    /* This doesn't let bignums through. That's necessary as
 	     * long as they aren't handled deterministically by the
 	     * sort function. */
+	    /* They should be hanled deterministically now - Hubbe */
 	    error("Canonical encoding requires basic types in indices.\n");
 	}
 	order = get_switch_order(Pike_sp[-2].u.array);
