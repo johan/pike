@@ -35,6 +35,9 @@
 
 #ifdef HAVE_ORACLE
 
+/* VERY VERY UGLY */
+#define MOTIF
+
 #include <oci.h>
 #include <math.h>
 
@@ -1687,13 +1690,13 @@ static void call_atexits(void)
     (*atexit_fnc[--atexit_cnt])();
 }
 
-#else
+#else /* DYNAMIC_MODULE */
 
 static void call_atexits(void)
 {
 }
 
-#endif
+#endif /* DYNAMIC_MODULE */
 
 #else /* HAVE_ORACLE */
 
