@@ -363,11 +363,8 @@ pushdef([AC_OUTPUT],
   export CCSHARED
   AC_SUBST(CCSHARED)
 
-  PMOD_TARGETS=
-  for f in $srcdir/*.cmod; do
-    PMOD_TARGETS="$PMOD_TARGETS $f"
-  done
   PMOD_TARGETS=`echo $srcdir/*.cmod | sed -e "s/\.cmod/\.c/g" | sed -e "s|$srcdir/|\\$(SRCDIR)/|g"`
+  test "$PMOD_TARGETS" = '$(SRCDIR)/*.c' && PMOD_TARGETS=
   AC_SUBST(PMOD_TARGETS)
 
 ifdef([PIKE_INCLUDE_PATH],
