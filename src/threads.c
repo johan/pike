@@ -25,7 +25,7 @@ struct thread_starter
   struct array *args;
 };
 
-static void check_threads(struct callback *cb, void *arg)
+static void check_threads(struct callback *cb, void *arg, void * arg2)
 {
   THREADS_ALLOW();
 
