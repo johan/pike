@@ -89,6 +89,12 @@ struct svalue
 #define T_FLOAT 7
 #define T_INT 8
 
+/* forward compatibility */
+#define PIKE_T_INT T_INT
+#define PIKE_T_STRING T_STRING
+#define PIKE_T_OBJECT T_OBJECT
+#define PIKE_T_ARRAY T_ARRAY
+
 #define T_VOID 16
 #define T_MANY 17
 
