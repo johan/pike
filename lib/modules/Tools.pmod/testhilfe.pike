@@ -125,5 +125,9 @@ int main(int num, array(string) args) {
   test("_==__[-1];", "1");
   test("__[1]+__[2]+__[-1];", "7");
 
+  // Test for bug with undefined variable [bug 3023]
+  test("int n=0; foreach(({1,2,3}), int m){n+=m;}","Ok.\n");
+  test("n;","5");
+
   werror("Did %d tests, %d failed.\n", tests, fails);
 }
