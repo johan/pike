@@ -48,7 +48,7 @@ void image_neo_f__decode(INT32 args)
   struct object *img;
 
   struct pike_string *s, *fn;
-  unsigned char *q;
+  const unsigned char *q;
 
   get_all_args( "decode", args, "%S", &s );
   if(s->len!=32128)
@@ -61,7 +61,7 @@ void image_neo_f__decode(INT32 args)
     Pike_error("This is not a NEO file (invalid resolution).\n");
 
   /* Checks done... */
-  pop_n_elems(args);
+  stack_pop_n_elems_keep_top(args);
 
   if(res==0)
     pal = decode_atari_palette(q+4, 16);

@@ -223,7 +223,11 @@ RCSID("$Id$");
 #include "image.h"
 
 #ifdef TRY_USE_MMX
+#ifdef HAVE_MMX_H
 #include <mmx.h>
+#else
+#include <asm/mmx.h>
+#endif
 #endif
 
 
