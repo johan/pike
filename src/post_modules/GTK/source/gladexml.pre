@@ -196,7 +196,7 @@ FUNCTION(create, "function(void|int:void)");
   if(!glade_is_setup)
   {
     glade_init();
-#ifdef NEED_GNOMESUPPORT_H
+#if defined(NEED_GNOMESUPPORT_H) && defined(HAVE_GLADE_GNOME_INIT)
     if(args)
     {
       if(Pike_sp[-args].type == PIKE_T_INT && Pike_sp[-1].u.integer != 0)
