@@ -45,7 +45,6 @@ void gluLookAt(float|object eye,float|object center,float|object up,
 			     @(z->vect()), 0.0,
 			     0.0, 0.0, 0.0, 1.0 })/4)*({}); 
   
-  werror("%O\n",Matrix(m/4));
 //   glMultMatrix( m );
   
   /* Translate Eye to Origin */
