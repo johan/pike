@@ -552,7 +552,7 @@ class Revision
   string state;
 
   //! the (UTC) date and time when the revision was committed
-  Calendar.ISO.Second time;
+  object/* Calendar.ISO.Second */ time;
 
   //! the branch name on which this revision was committed (calculated
   //! according to how cvs manages branches)
