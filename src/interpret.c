@@ -1585,8 +1585,22 @@ void strict_apply_svalue(struct svalue *s, INT32 args)
     break;
   }
 
+  case T_INT:
+    if (!s->u.integer) {
+      error("Attempt to call the NULL-value\n");
+    } else {
+      error("Attempt to call the value %d\n", s->u.integer);
+    }
+  case T_STRING:
+    if (s->u.string->len > 20) {
+      error("Attempt to call the string \"%20s\"...\n", s->u.string->str);
+    } else {
+      error("Attempt to call the string \"%s\"\n", s->u.string->str);
+    }
+  case T_MAPPING:
+    error("Attempt to call a mapping\n");
   default:
-    error("Call to non-function value.\n");
+    error("Call to non-function value type:%d.\n", s->type);
   }
 
 #ifdef DEBUG
