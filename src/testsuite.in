@@ -5035,6 +5035,13 @@ test_true(programp(class c(string ... a){}))
 test_equal(indices(class c(string a,static int ... b){}("foo",0)), ({"a"}))
 test_equal(values(class c(static string a, int ... b){}("foo",0)), ({({0})}))
 
+test_do([[
+  class A (int i) {};
+  class B (int i, int j) {inherit A;};
+  class C {inherit B;};
+  C (1,1);
+]])
+
 // type checks
 test_compile_error([[} int foo() { return]]);
 test_compile_error([[} void foo() { return 1]]);
