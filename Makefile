@@ -104,6 +104,9 @@ pike: force
 install:
 	@$(MAKE) "METATARGET=install"
 
+install_interactive:
+	@$(MAKE) "METATARGET=install_interactive"
+
 just_verify:
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=just_verify"
 
