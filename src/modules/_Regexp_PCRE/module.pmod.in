@@ -10,6 +10,8 @@ inherit @module@; // C-module
 // so don't stop compiling because it's not complete:
 #if constant(@module@._pcre) // there are other maybe useful stuff
 
+//! @belongs Regexp.PCRE
+
 //! The main regexp class. Will provide anything needed 
 //! for matching regexps. 
 //!
