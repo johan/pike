@@ -85,11 +85,10 @@ struct marker
 #define GC_STRONG_REF		0x0100
 
 /* Debug mode flags. */
-#define GC_TOUCHED		0x0200
-#define GC_IS_REFERENCED	0x0400
-#define GC_XREFERENCED		0x0800
-#define GC_DO_FREE		0x1000
-#define GC_IS_ONLY_WEAK		0x2000
+#define GC_TOUCHED		0x0400
+#define GC_IS_REFERENCED	0x0800
+#define GC_XREFERENCED		0x1000
+#define GC_DO_FREE		0x2000
 #define GC_GOT_EXTRA_REF	0x4000
 #define GC_FOLLOWED_NONSTRONG	0x8000
 
