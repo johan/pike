@@ -308,7 +308,7 @@ do{ \
 #else
 #define IF_LOCAL_MUTEX(X)
 #define add_ref(X) (void)((X)->refs++)
-#define sub_ref(X) (--(X)->refs)
+#define sub_ref(X) (--(X)->refs > 0)
 #define pike_lock_data(X) (void)(X)
 #define pike_unlock_data(X) (void)(X)
 #endif
@@ -364,7 +364,7 @@ static inline union anything *dmalloc_check_union(union anything *u,int type, ch
 #define sub_ref(X) pike_atomic_dec_and_test32((INT32 *)debug_malloc_pass( &((X)->refs)))
 #else
 #define add_ref(X) (((INT32 *)debug_malloc_pass( &((X)->refs)))[0]++)
-#define sub_ref(X) (--((INT32 *)debug_malloc_pass( &((X)->refs)))[0])
+#define sub_ref(X) (--((INT32 *)debug_malloc_pass( &((X)->refs)))[0] > 0)
 #endif
 
 
