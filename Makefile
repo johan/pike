@@ -253,6 +253,10 @@ xenofarm:
 	-@if test ! -f "build/xenofarm/exportlog.txt"; then \
 	  cp "$(BUILDDIR)/testsuite" build/xenofarm/testsuite.txt; \
 	else :; fi
+	-@if test -f "core"; then \
+	  gdb --batch --nx --command=bin/xenofarm_gdb_cmd "$(BUILDDIR)/pike" core > \
+	    build/xenofarm/core.txt \
+	else :; fi
 	-@cp "$(BUILDDIR)/dumpmodule.log" build/xenofarm/dumplog.txt
 	-@cp export.stamp build/xenofarm/exportstamp.txt
 	-@uname -s -r -m > build/xenofarm/machineid.txt
