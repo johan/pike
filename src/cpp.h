@@ -34,4 +34,10 @@ void add_predefine(char *s);
 void exit_cpp(void);
 /* Prototypes end here */
 
+/* Return true if compat version is equal or less than MAJOR.MINOR */
+#define CPP_TEST_COMPAT(THIS,MAJOR,MINOR)      \
+  (THIS->compat_major < (MAJOR) ||	       \
+   (THIS->compat_major == (MAJOR) &&	       \
+    THIS->compat_minor <= (MINOR)))
+
 #endif

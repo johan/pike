@@ -24,6 +24,7 @@
 #include "stuff.h"
 #include "version.h"
 #include "pike_types.h"
+#include "cpp.h"
 
 #include <ctype.h>
 
@@ -1533,7 +1534,7 @@ static int do_safe_index_call(struct cpp *this, struct pike_string *s)
   if(!s) return 0;
 
   if (SETJMP_SP(recovery, 1)) {
-    if (TEST_COMPAT (7, 4)) {
+    if (CPP_TEST_COMPAT (this, 7, 4)) {
       free_svalue (&throw_value);
       throw_value.type = T_INT;
     }
