@@ -766,6 +766,9 @@ static void image_color__sprintf(INT32 args)
 	 }
 	 else
 	    image_color_hex(0);
+	 push_int(1);
+	 push_int(0x7ffff); /* a lot */
+	 f_index(3); /* remove the '#' */
 	 return;
       default:
 	 push_int(0);
