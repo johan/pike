@@ -295,6 +295,9 @@
 /* The last argument to accept() is an ACCEPT_SIZE_T * */
 #define ACCEPT_SIZE_T	int
 
+/* Can we compile in MMX support? */
+#undef TRY_USE_MMX
+
 @BOTTOM@
 
 /* NT stuff */

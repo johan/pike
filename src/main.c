@@ -44,6 +44,11 @@ RCSID("$Id$");
 #include <sys/resource.h>
 #endif
 
+#ifdef TRY_USE_MMX
+#include <mmx.h>
+int try_use_mmx;
+#endif
+
 
 char *master_file;
 char **ARGV;
@@ -130,6 +135,10 @@ int dbm_main(int argc, char **argv)
   struct array *a;
 #ifdef DECLARE_ENVIRON
   extern char **environ;
+#endif
+
+#ifdef TRY_USE_MMX
+  try_use_mmx=mmx_ok();
 #endif
 
   ARGV=argv;
