@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 
 #ifndef TESTING
 #include "global.h"
@@ -12,6 +13,7 @@
 RCSID("$Id$");
 
 #else /* TESTING */
+
 #ifndef _LARGEFILE_SOURCE
 #  define _FILE_OFFSET_BITS 64
 #  define _LARGEFILE_SOURCE 1
@@ -24,7 +26,8 @@ RCSID("$Id$");
 #include <sys/types.h>
 #undef PIKE_DEBUG
 #define fd_ioctl ioctl
-#endif
+
+#endif /* TESTING */
 
 #include "fd_control.h"
 
@@ -35,6 +38,8 @@ RCSID("$Id$");
 #ifdef HAVE_SYS_SOCKET_H
 #include <sys/socket.h>
 #endif
+
+#include <errno.h>
 
 #ifdef HAVE_SYS_ERRNO_H
 #include <sys/errno.h>
