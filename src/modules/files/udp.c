@@ -141,9 +141,10 @@ struct udp_storage {
   struct svalue read_callback;
 };
 
-// FIXME: This class does not keep an extra ref while the read
-// callback is registered. It'll probably segfault in
-// udp_read_callback if the object has run out of refs. /mast
+/* FIXME: This class does not keep an extra ref while the read
+ * callback is registered. It'll probably segfault in
+ * udp_read_callback if the object has run out of refs. /mast
+ */
 
 void zero_udp(struct object *ignored);
 void exit_udp(struct object *ignored);
