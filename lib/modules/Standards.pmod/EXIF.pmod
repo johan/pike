@@ -968,7 +968,7 @@ mapping get_properties(Stdio.File file)
 
   string skip=file->read(12);  // skip the jpeg header
 
-  if (skip[strlen(skip)-6..]!="Exif\0\0")
+  if (skip[sizeof(skip)-6..]!="Exif\0\0")
   {
      skip=file->read(100);
      int z=search(skip,"Exif\0\0");

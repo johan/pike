@@ -318,7 +318,7 @@ array(mapping(string:mixed)) list_fields (string table, void|string wild) {
 			"AND a.attrelid = c.oid AND a.atttypid = t.oid ORDER BY attnum");
 	while (row=res->fetch_row()) {
 		mapping m;
-    if (wild && strlen(wild) && !glob(wild,row[1]))
+    if (wild && sizeof(wild) && !glob(wild,row[1]))
       continue;
 		row=row[1..];
 		row[4]=mkbool(row[4]);

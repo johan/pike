@@ -36,7 +36,7 @@ program output_class=class
 
     file::seek(offset);
     data=file::read(BLOCK);
-    if(data && strlen(data))
+    if(data && sizeof(data))
     {
       written=socket::write(data);
       if(written >= 0)

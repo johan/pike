@@ -391,7 +391,7 @@ class imap_style
     while(1) {
       if (handle_literal)
       {
-	if (strlen(read_buffer) < literal_length)
+	if (sizeof(read_buffer) < literal_length)
 	  return;
 	string literal = read_buffer[..literal_length - 1];
 	read_buffer = read_buffer[literal_length..];

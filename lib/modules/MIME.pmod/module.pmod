@@ -928,7 +928,7 @@ class Message {
       data += "--"+boundary+"--\r\n";
     }
     
-    headers["content-length"] = ""+strlen(data);
+    headers["content-length"] = ""+sizeof(data);
 
     return map( indices(headers),
 		lambda(string hname){
@@ -1164,12 +1164,12 @@ int|object reconstruct_partial(array(object) collection)
       }, parts)));
     foreach(indices(reconstructed->headers), string h) {
       if(h != "message-id" && h != "encrypted" && h != "mime-version" &&
-	 h != "subject" && (strlen(h)<8 || h[0..7] != "content-"))
+	 h != "subject" && (sizeof(h)<8 || h[0..7] != "content-"))
 	m_delete(reconstructed->headers, h);
     }
     foreach(indices(enclosing_headers), string h) {
       if(h != "message-id" && h != "encrypted" && h != "mime-version" &&
-	 h != "subject" && (strlen(h)<8 || h[0..7] != "content-"))
+	 h != "subject" && (sizeof(h)<8 || h[0..7] != "content-"))
 	reconstructed->headers[h] = enclosing_headers[h];
     }
     return reconstructed;

@@ -31,7 +31,7 @@ object display_re = Regexp("^([^:]*):([0-9]+)(.[0-9]+|)$");
 
 string pad(string s)
 {
-  return s + ({ "", "\0\0\0", "\0\0", "\0" })[strlen(s) % 4];
+  return s + ({ "", "\0\0\0", "\0\0", "\0" })[sizeof(s) % 4];
 }
 
 array(string) window_attributes =

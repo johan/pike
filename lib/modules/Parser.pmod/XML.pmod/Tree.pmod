@@ -64,7 +64,7 @@ string roxen_text_quote(string data) {
     if ((sscanf(data[pos..], "&%[^ <>;&];", string entity) == 1) &&
 	search(entity, ".") >= 0) {
       out += text_quote(data[opos..pos - 1]) + "&" + entity + ";";
-      pos += strlen(entity) + 2;
+      pos += sizeof(entity) + 2;
     } else {
       out += text_quote(data[opos..pos]);
       pos++;
@@ -601,7 +601,7 @@ class Node {
       break;
 
     case XML_ELEMENT:
-      if (!strlen(n->get_tag_name()))
+      if (!sizeof(n->get_tag_name()))
 	break;
       data->add("<", n->get_tag_name());
       if (mapping attr = n->get_attributes()) {
@@ -626,7 +626,7 @@ class Node {
     case XML_PI:
       data->add("<?", n->get_tag_name());
       string text = n->get_text();
-      if (strlen(text))
+      if (sizeof(text))
 	data->add(" ", text);
       data->add("?>");
       break;
@@ -643,7 +643,7 @@ class Node {
 
     if (n->get_node_type() == XML_ELEMENT) {
       if (n->count_children())
-	if (strlen(n->get_tag_name()))
+	if (sizeof(n->get_tag_name()))
 	  data->add("</", n->get_tag_name(), ">");
     }
   }
@@ -791,14 +791,14 @@ private Node|int(0..0)
 	buffer_text += child->get_text();
       } else {
 	//  Process buffered text before this child is added
-	if (strlen(buffer_text)) {
+	if (sizeof(buffer_text)) {
 	  node->add_child(Node(XML_TEXT, "", 0, buffer_text));
 	  buffer_text = "";
 	}
 	node->add_child(child);
       }
     }
-    if (strlen(buffer_text))
+    if (sizeof(buffer_text))
       node->add_child(Node(XML_TEXT, "", 0, buffer_text));
     return (node);
 

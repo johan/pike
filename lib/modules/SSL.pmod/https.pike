@@ -46,7 +46,7 @@ class conn {
 
   void write_callback()
   {
-    if (index < strlen(message))
+    if (index < sizeof(message))
     {
       int written = sslfile->write(message[index..]);
       if (written > 0)
@@ -54,7 +54,7 @@ class conn {
       else
 	sslfile->close();
     }
-    if (index == strlen(message))
+    if (index == sizeof(message))
       sslfile->close();
   }
   

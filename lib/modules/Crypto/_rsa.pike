@@ -98,8 +98,8 @@ bignum rsa_pad(string message, int type, mixed|void random)
   string cookie;
   int len;
 
-  len = size - 3 - strlen(message);
-  /*  write(sprintf("%d, %d, %d, %s", len, size, strlen(message), message)); */
+  len = size - 3 - sizeof(message);
+  /*  write(sprintf("%d, %d, %d, %s", len, size, sizeof(message), message)); */
   if (len < 8)
     error( "Crypto.rsa->rsa_pad: Too large block.\n" );
 
@@ -128,7 +128,7 @@ string rsa_unpad(bignum block, int type)
   string s = block->digits(256);
   int i = search(s, "\0");
 
-  if ((i < 9) || (strlen(s) != (size - 1)) || (s[0] != type))
+  if ((i < 9) || (sizeof(s) != (size - 1)) || (s[0] != type))
     return 0;
   return s[i+1..];
 }

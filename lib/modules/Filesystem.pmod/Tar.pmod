@@ -215,7 +215,7 @@ class _Tar  // filesystem
       Record r;
       string s = this_program::fd->read(512);
 
-      if(s=="" || strlen(s)<512 || sscanf(s, "%*[\0]%*2s")==1)
+      if(s=="" || sizeof(s)<512 || sscanf(s, "%*[\0]%*2s")==1)
 	break;
 
       r = Record(s, pos+512);

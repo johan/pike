@@ -179,7 +179,7 @@ class Queue
 	if( !h[a]++ )
 	  res += "&"+a+"="+b;
     }
-    if( !strlen( res ) )
+    if( !sizeof( res ) )
       return 0;
     return res[1..];
   }

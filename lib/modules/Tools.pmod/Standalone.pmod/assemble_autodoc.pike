@@ -94,7 +94,7 @@ string visualize(Node n, int depth) {
   if(n->get_node_type() == XML_TEXT)
     return Parser.XML.Tree.text_quote(n->get_text());
   if(n->get_node_type() != XML_ELEMENT ||
-     !strlen(n->get_tag_name()))
+     !sizeof(n->get_tag_name()))
     return "";
 
   string name = n->get_tag_name();

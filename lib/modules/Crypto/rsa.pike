@@ -374,7 +374,7 @@ string sha_sign(string message, mixed|void r)
 
   hash->update(message);
   s = hash->digest();
-  s = sprintf("%c%s%c%s", 4, "sha1", strlen(s), s);
+  s = sprintf("%c%s%c%s", 4, "sha1", sizeof(s), s);
   return cooked_sign(s);
 }
   
@@ -387,7 +387,7 @@ int sha_verify(string message, string signature)
   
   hash->update(message);
   s = hash->digest();
-  s = sprintf("%c%s%c%s", 4, "sha1", strlen(s), s);
+  s = sprintf("%c%s%c%s", 4, "sha1", sizeof(s), s);
 
   return raw_verify(s, BIGNUM(signature, 256));
 }

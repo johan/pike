@@ -44,7 +44,7 @@ mapping _decode( string data )
 	sscanf(data[120..121],"%2c",p);  // extra header size
 	p=128+((p+127)/128)*128;         // data fork position
 
-	if (p<strlen(data) && l) // extra sanity check
+	if (p<sizeof(data) && l) // extra sanity check
 	   data=data[p..p+l-1];
      }
   }
@@ -203,7 +203,7 @@ local string load_file( void|object|string file )
     catch( data = file->read() );
   else
   {
-    if( catch( data = read_file( file ) ) || !data || !strlen(data) )
+    if( catch( data = read_file( file ) ) || !data || !sizeof(data) )
       catch( data = Protocols.HTTP.get_url_nice( file )[ 1 ] );
   }
   return data;

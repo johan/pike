@@ -231,8 +231,8 @@ array(string) split(string data, void|mapping state)
 	  {
 	    q=search(data,"\"",pos+1);
 	    s=search(data,"\\",pos+1);
-	    if(q==-1) q=strlen(data)-1;
-	    if(s==-1) s=strlen(data)-1;
+	    if(q==-1) q=sizeof(data)-1;
+	    if(s==-1) s=sizeof(data)-1;
 
 	    if(q<s)
 	    {
@@ -460,7 +460,7 @@ string reconstitute_with_line_numbers(array(string|object(Token)|array) tokens)
 	if((tok->line && tok->line != line) ||
 	   (tok->file && tok->file != file))
 	{
-	  if(strlen(ret) && ret[-1]!='\n') ret+="\n";
+	  if(sizeof(ret) && ret[-1]!='\n') ret+="\n";
 	  line=tok->line;
 	  if(tok->file) file=tok->file;
 	  ret+=sprintf("#line %d %O\n",line,file);

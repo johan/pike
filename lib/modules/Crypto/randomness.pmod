@@ -147,7 +147,7 @@ RandomSource reasonably_random()
 
   string seed = some_entropy();
 #if constant(Crypto.arcfour)
-  if (strlen(seed) < 2001)
+  if (sizeof(seed) < 2001)
     seed = random_string(2001); // Well, we're only at reasonably random...
   return (global_arcfour = arcfour_random(sprintf("%4c%O%s", time(),
 						  _memory_usage(), seed)));

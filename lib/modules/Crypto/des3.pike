@@ -31,7 +31,7 @@ private array(string) split_key(string key)
 {
   string k1 = key[..7];
   string k2 = key[8..15];
-  string k3 = (strlen(key) > 16) ? key[16..] : k1;
+  string k3 = (sizeof(key) > 16) ? key[16..] : k1;
   return ({ k1, k2, k3 });
 }
 

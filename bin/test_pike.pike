@@ -159,7 +159,7 @@ void run_watchdog(int pid) {
 #ifdef WATCHDOG_PIPE
   thread_create(lambda() {
 		  object o=Stdio.File("stdin");
-		  while(strlen(o->read(1) || ""))
+		  while(sizeof(o->read(1) || ""))
 		  {
 		    last_time=time();
 		  }

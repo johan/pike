@@ -669,7 +669,7 @@ void collect_rules(string file)
 	       if (links[s]) links[s]+=({t});
 	       else links[s]=({t});
 	    }
-	    else if (sscanf(line,"%*[ \t]%[-0-9]%s",s,t)==3 && strlen(s))
+	    else if (sscanf(line,"%*[ \t]%[-0-9]%s",s,t)==3 && sizeof(s))
 	    {
 	       if (!lastz) complain("implicit zone line w/o zone\n");
 	       lastz->add(s+t);
@@ -708,7 +708,7 @@ int main(int ac,array(string) am)
    tzrules=compile_string(t)();
 
    mv("TZrules.pmod","TZrules.pmod~");
-   werror("writing TZrules.pmod (%d bytes)...",strlen(t));
+   werror("writing TZrules.pmod (%d bytes)...",sizeof(t));
    Stdio.File("TZrules.pmod","wtc")->write(t);
    werror("\n");
 
@@ -762,7 +762,7 @@ int main(int ac,array(string) am)
        "// "+"-"*70+"\n");
 
    mv("TZs.pike","TZs.pike~");
-   werror("writing TZs.h (%d bytes)...",strlen(t));
+   werror("writing TZs.h (%d bytes)...",sizeof(t));
    Stdio.File("TZs.h","wtc")->write(t);
    werror("\n");
 
@@ -789,7 +789,7 @@ int main(int ac,array(string) am)
    t+="]);\n\n";
    
    mv("TZnames.pike","TZnames.pike~");
-   werror("writing TZnames.pmod (%d bytes)...",strlen(t));
+   werror("writing TZnames.pmod (%d bytes)...",sizeof(t));
    Stdio.File("TZnames.pmod","wtc")->write(t);
    werror("\n");
 

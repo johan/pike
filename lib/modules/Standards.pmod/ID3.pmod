@@ -733,7 +733,7 @@ class Framev1 {
   void create(string buffer, string name) {
     id = name;
     data = FrameDatav1(buffer, name);
-    size = strlen(buffer);
+    size = sizeof(buffer);
   }
 
 }
