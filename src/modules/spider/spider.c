@@ -872,6 +872,12 @@ void do_html_parse_lines(struct pike_string *ss,
 	mapping_index_no_free(&sval1,cont,&empty_string);
       if (sval1.type==T_STRING)
       {
+	if (last < i-1)
+	{ 
+	  push_string(make_shared_binary_string(s+last, i-last-1)); 
+	  (*strings)++; 
+	}
+
 	*(sp++)=sval1;
 #ifdef PIKE_DEBUG
 	sval1.type=99;
