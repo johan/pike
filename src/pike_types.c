@@ -976,8 +976,12 @@ static void internal_parse_typeA(const char **_s)
 	  INT32 min,max;
 	  ++*s;
 	  while(ISSPACE(**s)) ++*s;
-	  min=STRTOL((const char *)*s,(char **)s,0);
-	  while(ISSPACE(**s)) ++*s;
+	  if (**s != '.') {
+	    min=STRTOL((const char *)*s,(char **)s,0);
+	    while(ISSPACE(**s)) ++*s;
+	  } else {
+	    min = -0x80000000;
+	  }
 	  if(s[0][0]=='.' && s[0][1]=='.')
 	    s[0]+=2;
 	  else {
@@ -985,8 +989,12 @@ static void internal_parse_typeA(const char **_s)
 	  }
 	  
 	  while(ISSPACE(**s)) ++*s;
-	  max=STRTOL((const char *)*s,(char **)s,0);
-	  while(ISSPACE(**s)) ++*s;
+	  if (**s != ')') {
+	    max=STRTOL((const char *)*s,(char **)s,0);
+	    while(ISSPACE(**s)) ++*s;
+	  } else {
+	    max = 0x7fffffff;
+	  }
 
 	  if(**s != ')') yyerror("Missing ')' in integer range.");
 	  else
