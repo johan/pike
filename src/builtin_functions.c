@@ -6017,5 +6017,9 @@ void init_builtin_efuns(void)
   ADD_EFUN("_describe",f__describe,
 	   tFunc(tSetvar(1,tMix),tVar(1)),OPT_SIDE_EFFECT);
 #endif
+
+  ADD_EFUN("_gc_status",f__gc_status,
+	   tFunc(tNone,tMap(tString,tOr(tInt,tFloat))),
+	   OPT_EXTERNAL_DEPEND);
 }
 
