@@ -548,6 +548,7 @@ void do_export()
 			  "VBScriptCall":"FinalizePike",
 			  "Execute":"deferred",
 			])))->
+#if 0
       add_child(Standards.XML.Wix.line_feed)->
       add_child(WixNode("CustomAction", ([
 			  "Id":"OldFinalizePike",
@@ -563,7 +564,7 @@ void do_export()
 			])))->
       add_child(Standards.XML.Wix.line_feed)->
       add_child(WixNode("CustomAction", ([
-			  "Id":"InstallMaster",
+			  "Id":"OldInstallMaster",
 			  // Note: Need to use the kludge directory here
 			  //       rather than the root directory due to
 			  //       bugs in light.
@@ -574,6 +575,7 @@ void do_export()
 			  "-mlib\\master.pike bin\\install.pike "
 			  "--install-master BASEDIR=.",
 			])))->
+#endif /* 0 */
       add_child(Standards.XML.Wix.line_feed)->
       add_child(WixNode("Binary", ([
 			  "Id":"PikeInstaller",
@@ -590,11 +592,13 @@ void do_export()
 				    "Action":"FinalizePike",
 				    "After":"SetFinalizePike",
 				  ]), "REMOVE=\"\""))->
+#if 0
 		add_child(Standards.XML.Wix.line_feed)->
 		add_child(WixNode("Custom", ([
 				    "Action":"InstallMaster",
 				    "After":"FinalizePike",
 				  ]), "REMOVE=\"\""))->
+#endif /* 0 */
 		add_child(Standards.XML.Wix.line_feed))->
       add_child(Standards.XML.Wix.line_feed);
 
