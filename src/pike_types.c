@@ -1132,7 +1132,7 @@ static void internal_parse_typeA(const char **_s)
 
 static void internal_parse_typeB(const char **s)
 {
-  while(ISSPACE(**((const unsigned char **)s))) ++*s;
+  while(ISSPACE(EXTRACT_UCHAR(*s))) ++*s;
   switch(**s)
   {
   case '!':
@@ -1144,7 +1144,7 @@ static void internal_parse_typeB(const char **s)
   case '(':
     ++*s;
     internal_parse_type(s);
-    while(ISSPACE(**((const unsigned char **)s))) ++*s;
+    while(ISSPACE(EXTRACT_UCHAR(*s))) ++*s;
     if(**s != ')') Pike_error("Expecting ')'.\n");
     ++*s;
     break;
@@ -1159,12 +1159,12 @@ static void internal_parse_typeCC(const char **s)
 {
   internal_parse_typeB(s);
 
-  while(ISSPACE(**((const unsigned char **)s))) ++*s;
+  while(ISSPACE(EXTRACT_UCHAR(*s))) ++*s;
   
   while(**s == '*')
   {
     ++*s;
-    while(ISSPACE(**((const unsigned char **)s))) ++*s;
+    while(ISSPACE(EXTRACT_UCHAR(*s))) ++*s;
     push_type(T_ARRAY);
   }
 }
