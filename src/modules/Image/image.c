@@ -344,7 +344,7 @@ static INLINE rgb_group _pixel_apply_matrix(struct image *img,
 	 {
 	    r += DO_NOT_WARN((int)(matrix[i+j*width].r*img->img[xp+yp*img->xsize].r));
 	    g += DO_NOT_WARN((int)(matrix[i+j*width].g*img->img[xp+yp*img->xsize].g));
-	    b += DO_NOT_WARN((int)(matrix[i+j*width].b*img->img[xp+yp*img->xsize].b);
+	    b += DO_NOT_WARN((int)(matrix[i+j*width].b*img->img[xp+yp*img->xsize].b));
 #ifdef MATRIX_DEBUG
 	    fprintf(stderr,"%d,%d %d,%d->%d,%d,%d\n",
 		    i,j,xp,yp,
