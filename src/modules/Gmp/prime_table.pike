@@ -28,7 +28,7 @@ int main(int argc, array(string) argv)
 
   Gmp.mpz prime = Gmp.mpz(1);
   for (int i=0; i < count; i++) {
-    prime = (prime+1)->next_prime();
+    prime = ([object(Gmp.mpz)](prime+1))->next_prime();
     if (!(i%10)) {
       write(sprintf("\n   %d,", prime));
     } else {
