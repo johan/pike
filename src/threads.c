@@ -33,6 +33,10 @@ PMOD_EXPORT int threads_disabled = 0;
 
 #include <errno.h>
 
+#ifdef HAVE_SYS_PRCTL_H
+#include <sys/prctl.h>
+#endif /* HAVE_SYS_PRCTL_H */
+
 PMOD_EXPORT int live_threads = 0, disallow_live_threads = 0;
 PMOD_EXPORT COND_T live_threads_change;
 PMOD_EXPORT COND_T threads_disabled_change;
@@ -687,8 +691,17 @@ TH_RETURN_TYPE new_thread_func(void * data)
    * effective uid & gid.
    */
   if (!geteuid()) {
+#if defined(HAVE_PRCTL) && defined(PR_SET_DUMPABLE)
+    /* The sete?id calls will clear the dumpable state that we might
+     * have set with system.dumpable. */
+    int current = prctl(PR_GET_DUMPABLE);
+#endif
     setegid(arg.egid);
     seteuid(arg.euid);
+#if defined(HAVE_PRCTL) && defined(PR_SET_DUMPABLE)
+    if (prctl(PR_SET_DUMPABLE, current) == -1)
+      Pike_fatal ("Didn't expect prctl to go wrong. errno=%d\n", errno);
+#endif
   }
 #endif /* HAVE_BROKEN_LINUX_THREAD_EUID */
   
@@ -1676,8 +1689,17 @@ static TH_RETURN_TYPE farm(void *_a)
    * effective uid & gid.
    */
   if (!geteuid()) {
+#if defined(HAVE_PRCTL) && defined(PR_SET_DUMPABLE)
+    /* The sete?id calls will clear the dumpable state that we might
+     * have set with system.dumpable. */
+    int current = prctl(PR_GET_DUMPABLE);
+#endif
     setegid(me->egid);
     seteuid(me->euid);
+#if defined(HAVE_PRCTL) && defined(PR_SET_DUMPABLE)
+    if (prctl(PR_SET_DUMPABLE, current) == -1)
+      Pike_fatal ("Didn't expect prctl to go wrong. errno=%d\n", errno);
+#endif
   }
 #endif /* HAVE_BROKEN_LINUX_THREAD_EUID */
 
