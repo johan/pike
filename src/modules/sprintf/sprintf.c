@@ -587,7 +587,8 @@ INLINE static int do_one(struct string_builder *r,
 #endif
 
       /* Find end of entry */
-      for(e=0;COMPARE_PCHARP(rest,<,end) && INDEX_PCHARP(rest,e)!='\n';e++);
+      for(e=0;COMPARE_PCHARP(ADD_PCHARP(rest, e),<,end) &&
+	    INDEX_PCHARP(rest,e)!='\n';e++);
 
       fix_field(r,rest,e,f->flags,f->column_width,
 		f->pad_string,f->pad_length,f->pos_pad);
