@@ -1408,6 +1408,23 @@ PIKEFUN void|object get_video_info()
   push_int(0);
 }
 
+PIKEFUN void gl_set_attribute( int attribute, int value )
+{
+  SDL_GL_SetAttribute( attribute, value );
+}
+
+PIKEFUN int gl_get_attribute( int attribute )
+{
+  int res;
+  SDL_GL_GetAttribute( attribute, &res );
+  RETURN res;
+}
+
+PIKEFUN void gl_swap_buffers( )
+{
+  SDL_GL_SwapBuffers( );
+}
+
 PIKEFUN object set_video_mode(int width, int height, int bpp, int flags)
 {
   SDL_Surface *screen;
