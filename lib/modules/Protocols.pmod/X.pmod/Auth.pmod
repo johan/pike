@@ -58,9 +58,9 @@ class auth_file
       }
   }
 
-  void lookup_local(string name, int display)
+  mapping lookup_local(string name, int display)
   {
-    auth[256] && auth[256][make_key(name, display)];
+    return auth[256] && auth[256][make_key(name, display)];
   }
 
   string ip2string(string ip)
@@ -70,9 +70,9 @@ class auth_file
 				    { return (int) s; }));
   }
   
-  void lookup_ip(string ip, int display)
+  mapping lookup_ip(string ip, int display)
   {
-    auth[0] && auth[0][make_key(ip2string(ip), display)];
+    return auth[0] && auth[0][make_key(ip2string(ip), display)];
   }
 }
 
