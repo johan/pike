@@ -296,7 +296,9 @@ void assign_to_short_svalue(union anything *u,
     if(u->refs && --*(u->refs) <= 0) really_free_short_svalue(u,type);
     u->refs=0;
   }else{
-    error("Wrong type in assignment.\n");
+    error("Wrong type in assignment, expected %s, got %s.\n",
+	  get_name_of_type(type),
+	  get_name_of_type(s->type));
   }
 }
 
@@ -321,7 +323,9 @@ void assign_to_short_svalue_no_free(union anything *u,
   }else if(type<=MAX_REF_TYPE && IS_ZERO(s)){
     u->refs=0;
   }else{
-    error("Wrong type in assignment.\n");
+    error("Wrong type in assignment, expected %s, got %s.\n",
+	  get_name_of_type(type),
+	  get_name_of_type(s->type));
   }
 }
 
