@@ -917,7 +917,11 @@ class: F_CLASS optional_identifier '{'
       s.type=T_PROGRAM;
       s.subtype=0;
     }
-    if($2) add_constant($2, &s, 0);
+    if($2)
+    { 
+      add_constant($2, &s, 0);
+      free_string($2);
+    }
     $$=mksvaluenode(&s);
     free_svalue(&s);
   }
