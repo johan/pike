@@ -1881,14 +1881,17 @@ int string_to_svalue_inumber(struct svalue *r, char *str, char **ptr, int base,
 int convert_stack_top_string_to_inumber(int base)
 {
   struct svalue r;
+  int i;
 
   if(sp[-1].type != T_STRING)
     error("Cannot convert stack top to integer number.\n");
   
-  string_to_svalue_inumber(&r, sp[-1].u.string->str, 0, base, 0);
+  i = string_to_svalue_inumber(&r, sp[-1].u.string->str, 0, base, 0);
   
   free_string(sp[-1].u.string);
   sp[-1] = r;
+
+  return i;
 }
 
 /* Convert PCHARP to a double.  If ENDPTR is not NULL, a pointer to the
