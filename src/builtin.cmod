@@ -32,7 +32,8 @@
 #include "fsort.h"
 #include "port.h"
 
-/*! @decl array(array(int|string)) _describe_program(program p)
+/*! @decl array(array(int|string)) describe_program(program p)
+ *! @belongs Debug
  *!
  *! Debug function for showing the symbol table of a program.
  */
