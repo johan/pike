@@ -84,7 +84,6 @@ static void port_accept_callback(int fd,void *data);
 
 static void do_close(struct port *p, struct object *o)
 {
-  int do_free=0;
  retry:
   if(p->fd >= 0)
   {
