@@ -276,6 +276,6 @@ long STRTOL_PCHARP(PCHARP str, PCHARP *ptr, int base);
 #define begin_wide_shared_string debug_begin_wide_shared_string
 #endif
 
-#undef CONVERT(X,Y,Z)
+#undef CONVERT
 
 #endif /* STRALLOC_H */
