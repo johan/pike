@@ -1209,6 +1209,9 @@ PIKECLASS string_split_iterator
     RETURN res;
   }
 
+  /*! @decl void create(string buffer, int|array(int)|multiset(int) slit_set,@
+   *!                   int|void flags, function(:string)|void feed)
+   */
   PIKEFUN void create(string buffer, int|array(int)|multiset(int) split_set,
 		      int|void flags, function(:string)|void feed)
     {
