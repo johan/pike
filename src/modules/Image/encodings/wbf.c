@@ -28,8 +28,8 @@ extern struct program *image_program;
 
 /*
 **! module Image
-**! submodule WBF
-**!   WAP WBF format
+**! submodule WBMP
+**!   WAP WBMP format
 */
 
 struct buffer
