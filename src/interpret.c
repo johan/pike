@@ -1351,5 +1351,7 @@ void cleanup_interpret(void)
 
 void really_clean_up_interpret(void)
 {
+#ifdef DO_PIKE_CLEANUP
   free_all_pike_frame_blocks();
+#endif
 }

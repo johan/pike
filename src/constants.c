@@ -153,12 +153,13 @@ void quick_add_efun(char *name, int name_length,
 
 void cleanup_added_efuns(void)
 {
+#ifdef DO_PIKE_CLEANUP
   if(builtin_constants)
   {
     free_mapping(builtin_constants);
     builtin_constants=0;
   }
-  free_all_callable_blocks();
+#endif
 }
 void count_memory_in_callables(INT32 *num_, INT32 *size_)
 {

@@ -540,7 +540,6 @@ void low_exit_main(void)
   free_svalue(& throw_value);
   throw_value.type=T_INT;
 
-  exit_destroy_called_mark_hash();
 #if defined(PIKE_DEBUG) && defined(DEBUG_MALLOC)
   if(verbose_debug_exit)
   {
@@ -610,7 +609,12 @@ void low_exit_main(void)
 
   cleanup_shared_string_table();
 #endif
-  cleanup_callbacks();
+
   really_clean_up_interpret();
+#ifdef DO_PIKE_CLEANUP
+  cleanup_callbacks();
+  free_all_callable_blocks();
+  exit_destroy_called_mark_hash();
+#endif
 }
 
