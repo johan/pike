@@ -2290,9 +2290,7 @@ void zap_all_mappings(void)
       m->debug_size=0;
 #endif
     
-    next=m->next;
-    
-    /* free_mapping(m); */
+    SET_NEXT_AND_FREE(m, free_mapping);
   }
 }
 
