@@ -30,7 +30,6 @@ RCSID("$Id$");
 #include "image.h"
 #include "colortable.h"
 
-
 extern struct program *image_colortable_program;
 extern struct program *image_program;
 
@@ -174,12 +173,22 @@ static void parse_bmhd(struct BMHD *bmhd, unsigned char *s, INT32 len)
   bmhd->yAspect = s[15];
   bmhd->pageWidth = (EXTRACT_CHAR(s+16)<<8)|s[17];
   bmhd->pageHeight = (EXTRACT_CHAR(s+18)<<8)|s[19];
+
+#ifdef ILBM_DEBUG
+  fprintf(stderr, "w = %d, h = %d, x = %d, y = %d, nPlanes = %d,\n"
+	  "masking = %d, compression = %d, pad1 = %d, transparentColor = %d,\n"
+	  "xAspect = %d, yAspect = %d, pageWidth = %d, pageHeight = %d\n",
+	  bmhd->w, bmhd->h, bmhd->x, bmhd->y, bmhd->nPlanes, bmhd->masking,
+	  bmhd->compression, bmhd->pad1, bmhd->transparentColor, bmhd->xAspect,
+	  bmhd->yAspect, bmhd->pageWidth, bmhd->pageHeight);	  
+#endif
 }
 
 static INT32 unpackByteRun1(unsigned char *src, INT32 srclen,
 			    unsigned char *dest, int destlen, int depth)
 {
   unsigned char d, *src0 = src;
+
   while(depth>0) {
     int c, left = destlen;
     while(left>0) {
@@ -277,8 +286,10 @@ static void parse_body(struct BMHD *bmhd, unsigned char *body, INT32 blen,
       for(x=0; x<bmhd->w; x++)
 	if(*cptr<numcolors)
 	  *dest++ = entries[*cptr++].color;
-	else
+	else {
+	  dest++;
 	  cptr++;
+	}
     } else
       for(x=0; x<bmhd->w; x++) {
 	/* ILBM-24 */
