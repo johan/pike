@@ -5,7 +5,7 @@
 @TOP@
 @BOTTOM@
 
-/* Define this if you have -ljpeg */
+/* Define this if you have -lttf. */
 #undef HAVE_LIBTTF
 
 /* Define this if TT_Horizontal_Header has the member Reserved0 */
