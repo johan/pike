@@ -103,7 +103,7 @@ static void init_mapping(struct mapping *m, INT32 size)
 
 /* This function allocates an empty mapping with room for 'size' values
  */
-static struct mapping *allocate_mapping(int size)
+struct mapping *allocate_mapping(int size)
 {
   struct mapping *m;
 
@@ -463,6 +463,15 @@ struct svalue *low_mapping_lookup(struct mapping *m,
   }
 
   return 0;
+}
+
+struct svalue *low_mapping_string_lookup(struct mapping *m,
+					 struct pike_string *p)
+{
+  struct svalue tmp;
+  tmp.type=T_STRING;
+  tmp.u.string=p;
+  return low_mapping_lookup(m, &tmp);
 }
 
 void mapping_index_no_free(struct svalue *dest,
