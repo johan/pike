@@ -1,6 +1,7 @@
 // Moahahahah!
 // $Id$
-void `()(mixed ... args)
+void `()(string f, mixed ... args)
 {
-  throw( ({ sprintf(@args), backtrace() }) );
+  array(array) b = backtrace();
+  throw( ({ sprintf(f, @args), b[..sizeof(b)-2] }) );
 }
