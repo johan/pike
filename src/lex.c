@@ -74,7 +74,7 @@ struct instr_counter *init_instr_storage_pointers(int depth)
   return d;
 }
 
-void add_runned(int instr)
+void add_runned(PIKE_OPCODE_T instr)
 {
   int e;
   struct instr_counter **tmp=&instr_counter_storage;
