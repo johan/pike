@@ -163,6 +163,48 @@ static void image_ft_face_set_size( INT32 args )
   ref_push_object( fp->current_object );
 }
 
+/*! @decl array(string) list_encodings()
+ */
+static void image_ft_face_list_encodings( INT32 args )
+{
+  FT_Int enc_no;
+  pop_n_elems( args );
+  for(enc_no=0; enc_no<TFACE->num_charmaps; enc_no++) {
+    FT_Encoding e = TFACE->charmaps[enc_no]->encoding;
+    if(e == ft_encoding_none)
+      push_int( 0 );
+    else {
+      push_constant_text( "%4c" );
+      push_int( e );
+      f_sprintf( 2 );
+    }
+  }
+  f_aggregate( enc_no );
+}
+
+/*! @decl void select_encoding(string|int encoding)
+ */
+static void image_ft_face_select_encoding( INT32 args )
+{
+  FT_Encoding e;
+  FT_Error er;
+  if( args != 1 || (sp[-args].type != PIKE_T_INT &&
+		    sp[-args].type != PIKE_T_STRING) )
+    Pike_error("Illegal arguments to select_encoding\n");
+  if( sp[-args].type == PIKE_T_INT )
+    e = (sp[-args].u.integer == 0? ft_encoding_none : sp[-args].u.integer);
+  else if( sp[-args].u.string->len != 4 || sp[-args].u.string->size_shift )
+    Pike_error("Invalid encoding name in select_encoding\n");
+  else {
+    p_wchar0 *s = STR0(sp[-args].u.string);
+    FT_ENC_TAG( e, s[0], s[1], s[2], s[3] );
+  }
+  pop_n_elems( args );
+  er = FT_Select_Charmap(TFACE, e);
+  if( er )
+    Pike_error( "Character encoding not available in this font\n" );
+}
+
 /*! @decl mapping info()
  *! @returns
  *!   @mapping
@@ -177,6 +219,7 @@ static void image_ft_face_set_size( INT32 args )
  */
 static void image_ft_face_info( INT32 args )
 {
+  pop_n_elems( args );
   push_text( "family" );
   if( TFACE->family_name )
     push_text( TFACE->family_name );
@@ -282,6 +325,8 @@ PIKE_MODULE_INIT
     ADD_FUNCTION("create",image_ft_face_create, tFunc(tStr,tVoid), 0 );
     ADD_FUNCTION("set_size",image_ft_face_set_size,tFunc(tInt tInt,tObj),0);
     ADD_FUNCTION("attach_file",image_ft_face_attach_file,tFunc(tString,tVoid),0);
+    ADD_FUNCTION("list_encodings",image_ft_face_list_encodings,tFunc(tNone,tArr(tString)),0);
+    ADD_FUNCTION("select_encoding",image_ft_face_select_encoding,tFunc(tOr(tString,tInt),tVoid),0);
     ADD_FUNCTION("info",image_ft_face_info,tFunc(tVoid,tMapping),0);
     ADD_FUNCTION("write_char",image_ft_face_write_char,tFunc(tInt,tObj),0);
     ADD_FUNCTION("get_kerning",image_ft_face_get_kerning,
