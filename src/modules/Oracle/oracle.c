@@ -654,7 +654,7 @@ void pike_module_init(void)
 #endif
 }
 
-static void call_atexits();
+static void call_atexits(void);
 
 void pike_module_exit(void)
 {
@@ -685,7 +685,7 @@ int atexit(void (*func)(void))
   return 0;
 }
 
-static void call_atexits()
+static void call_atexits(void)
 {
   while(atexit_cnt)
     (*atexit_fnc[--atexit_cnt])();
@@ -693,7 +693,7 @@ static void call_atexits()
 
 #else
 
-static void call_atexits()
+static void call_atexits(void)
 {
 }
 
