@@ -536,10 +536,12 @@ int dbm_main(int argc, char **argv)
    */
 #if STACK_DIRECTION < 0
   /* Equvivalent with |= 0xffff */
-  Pike_interpreter.stack_top += (~((size_t)Pike_interpreter.stack_top)) & 0xffff;
+  Pike_interpreter.stack_top += (~(((char *)Pike_interpreter.stack_top)-
+				   (char *)0)) & 0xffff;
 #else /* STACK_DIRECTION >= 0 */
   /* Equvivalent with &= ~0xffff */
-  Pike_interpreter.stack_top -= ( ((size_t)Pike_interpreter.stack_top)) & 0xffff;
+  Pike_interpreter.stack_top -= (((char *)Pike_interpreter.stack_top)-
+				  (char *)0) & 0xffff;
 #endif /* STACK_DIRECTION < 0 */
 
 #ifdef PROFILING
