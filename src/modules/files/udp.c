@@ -331,6 +331,8 @@ void udp_read(INT32 args)
   }
   pop_n_elems(args);
   fd = FD;
+  if (FD < 0)
+    error("UDP: not open\n");
   do {
     THREADS_ALLOW();
     res = fd_recvfrom(fd, buffer, UDP_BUFFSIZE, flags,
