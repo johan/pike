@@ -3498,6 +3498,8 @@ static int low_implements(struct program *a, struct program *b)
     if(s == bid->name) continue;	/* Skip __INIT */
     i = find_shared_string_identifier(bid->name,a);
     if (i == -1) {
+      if (b->identifier_references[e].id_flags & (ID_OPTIONAL))
+	continue;		/* It's ok... */
 #if 0
       fprintf(stderr, "Missing identifier \"%s\"\n", bid->name->str);
 #endif /* 0 */
@@ -3559,6 +3561,8 @@ int yyexplain_not_implements(struct program *a, struct program *b)
     if(s == bid->name) continue;	/* Skip __INIT */
     i = find_shared_string_identifier(bid->name,a);
     if (i == -1) {
+      if (b->identifier_references[e].id_flags & (ID_OPTIONAL))
+	continue;		/* It's ok... */
       my_yyerror("Missing identifier \"%s\".", bid->name->str);
       return 0;
     }

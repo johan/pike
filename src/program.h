@@ -162,8 +162,9 @@ struct program_constant
 #define ID_INLINE          0x20
 #define ID_HIDDEN          0x40 /* needed? */
 #define ID_INHERITED       0x80
+#define ID_OPTIONAL       0x100
 
-#define ID_MODIFIER_MASK 0x00ff
+#define ID_MODIFIER_MASK 0x01ff
 
 #define ID_STRICT_TYPES	 0x8000
 

@@ -746,6 +746,9 @@ static int low_yylex(YYSTYPE *yylval)
 	  case TWO_CHAR('o','b'):
 	    if(ISWORD("object")) return F_OBJECT_ID;
 	  break;
+	  case TWO_CHAR('o','p'):
+	    if(ISWORD("optional")) return F_OPTIONAL;
+	  break;
 	  case TWO_CHAR('p','r'):
 	    if(ISWORD("program")) return F_PROGRAM_ID;
 	    if(ISWORD("predef")) return F_PREDEF;
