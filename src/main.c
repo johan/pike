@@ -583,13 +583,14 @@ int dbm_main(int argc, char **argv)
 	if((handle=dlopen(0, RTLD_LAZY)))
 	{
 	  bos_location=dlsym(handle,"__pthread_initial_thread_bos");
-	  dlclose(handle);
 
 	  if(bos_location && *bos_location &&
 	     (*bos_location - Pike_interpreter.stack_top) *STACK_DIRECTION < 0)
 	  {
 	    Pike_interpreter.stack_top=*bos_location;
 	  }
+
+	  dlclose(handle);
 	}
       }
 #else
