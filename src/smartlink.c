@@ -46,6 +46,8 @@ int add_path(char *buffer, char *path)
   char *p = buffer - 1;
   int len = strlen(path);
 
+  if (!len) return 0;	/* The empty path is not meaningful. */
+
   do {
     p++;
     if (!strncmp(p, path, len) && (p[len] == ':')) {
@@ -178,12 +180,10 @@ int main(int argc, char **argv)
 	if (!argv[i][2]) {
 	  i++;
 	  if (i < argc) {
-	    add_path(rpath, argv[i]);
-	    rpath_in_use = 1;
+	    rpath_in_use |= add_path(rpath, argv[i]);
 	  }
 	} else {
-	  add_path(rpath, argv[i] + 2);
-	  rpath_in_use = 1;
+	  rpath_in_use |= add_path(rpath, argv[i] + 2);
 	}
 	continue;
       } else if ((argv[i][1] == 'n') && (argv[i][2] == '3') &&
@@ -214,13 +214,11 @@ int main(int argc, char **argv)
 
     while (p = strchr(ld_lib_path, ':')) {
       *p = 0;
-      add_path(rpath, ld_lib_path);
+      rpath_in_use |= add_path(rpath, ld_lib_path);
       *p = ':';		/* Make sure LD_LIBRARY_PATH isn't modified */
       ld_lib_path = p+1;
     }
-    add_path(rpath, ld_lib_path);
-
-    rpath_in_use = 1;
+    rpath_in_use |= add_path(rpath, ld_lib_path);
   }
 
   if (rpath_in_use) {
