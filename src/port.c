@@ -59,6 +59,10 @@ time_t TIME(time_t *t)
 }
 #endif
 
+#ifndef HUGE
+#define HUGE HUGE_VAL
+#endif /*!HUGE*/
+
 /*
  * This file defines things that may have to be changem when porting
  * LPmud to new environments. Hopefully, there are #ifdef's that will take
