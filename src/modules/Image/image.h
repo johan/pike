@@ -132,6 +132,7 @@ void image_frompnm(INT32 args);
 
 void image_noise(INT32 args);
 void image_turbulence(INT32 args);
+void image_random(INT32 args);
 void image_noise_init(void);
 
 /* dct.c */
