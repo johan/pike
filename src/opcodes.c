@@ -806,7 +806,7 @@ static INT32 really_low_sscanf(char *input,
 			      e-cnt-2,
 			      &tmp,
 			      &yes);
-	    if(yes)
+	    if(yes && tmp)
 	    {
 	      f_aggregate(sp-save_sp);
 	      sval.u.array=append_array(sval.u.array,sp-1);
