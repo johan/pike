@@ -103,7 +103,7 @@ int(-1..1) peek(int|float|void timeout) {
 //! Always returns 0.
 //! @seealso
 //!   @[Stdio.File()->query_address()]
-int(0..0) query_address(void|int(0..1) is_local) { return 0; }
+string query_address(void|int(0..1) is_local) { return 0; }
 
 //! @seealso
 //!   @[Stdio.File()->read()]
