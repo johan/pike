@@ -361,7 +361,7 @@ extern const char *gc_found_place;
     gc_found_in_type = orig_gc_found_in_type;				\
   } while (0)
 
-static inline int debug_gc_check (void *a, const char *place)
+static INLINE int debug_gc_check (void *a, const char *place)
 {
   int res;
   const char *orig_gc_found_place = gc_found_place;
@@ -371,7 +371,7 @@ static inline int debug_gc_check (void *a, const char *place)
   return res;
 }
 
-static inline int debug_gc_check_weak (void *a, const char *place)
+static INLINE int debug_gc_check_weak (void *a, const char *place)
 {
   int res;
   const char *orig_gc_found_place = gc_found_place;

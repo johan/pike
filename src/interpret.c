@@ -486,8 +486,8 @@ union anything *get_pointer_if_this_type(struct svalue *lval, TYPE_T t)
 
 #ifdef PIKE_DEBUG
 
-inline void pike_trace(int level,char *fmt, ...) ATTRIBUTE((format (printf, 2, 3)));
-inline void pike_trace(int level,char *fmt, ...)
+INLINE void pike_trace(int level,char *fmt, ...) ATTRIBUTE((format (printf, 2, 3)));
+INLINE void pike_trace(int level,char *fmt, ...)
 {
   if(Pike_interpreter.trace_level > level)
   {
@@ -761,7 +761,7 @@ struct backlog
 struct backlog backlog[BACKLOG];
 int backlogp=BACKLOG-1;
 
-static inline void low_debug_instr_prologue (PIKE_INSTR_T instr)
+static INLINE void low_debug_instr_prologue (PIKE_INSTR_T instr)
 {
   if(Pike_interpreter.trace_level > 2)
   {
@@ -1365,7 +1365,7 @@ int lookup_sort_fun(const void *a, const void *b)
 
 #undef eval_instruction
 
-static inline int eval_instruction(unsigned char *pc)
+static INLINE int eval_instruction(unsigned char *pc)
 {
   if(d_flag || Pike_interpreter.trace_level>2)
     return eval_instruction_with_debug(pc);

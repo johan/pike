@@ -439,7 +439,7 @@ typedef struct p_wchar_p
 
 /* Some functions/macros used to avoid loss of precision warnings. */
 #ifdef __ECL
-static inline long PTRDIFF_T_TO_LONG(ptrdiff_t x)
+static INLINE long PTRDIFF_T_TO_LONG(ptrdiff_t x)
 {
   return DO_NOT_WARN((long)x);
 }

@@ -928,7 +928,7 @@ void check_pad(struct memhdr *mh, int freeok)
 #endif
 
 
-static inline unsigned long lhash(struct memhdr *m, LOCATION location)
+static INLINE unsigned long lhash(struct memhdr *m, LOCATION location)
 {
   unsigned long l;
   l=(long)m;

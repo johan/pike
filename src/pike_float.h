@@ -35,7 +35,7 @@
 #define PIKE_ISNAN(X)	_isnan(X)
 #else /* !HAVE__ISNAN */
 /* Fallback function */
-static inline int pike_isnan(double x)
+static INLINE int pike_isnan(double x)
 {
   return ((x == 0.0) == (x < 0.0)) &&
     ((x == 0.0) == (x > 0.0));

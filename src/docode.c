@@ -422,7 +422,7 @@ int generate_call_function(node *n)
   return 1;
 }
 
-static inline struct compiler_frame *find_local_frame(INT32 depth)
+static INLINE struct compiler_frame *find_local_frame(INT32 depth)
 {
   struct compiler_frame *f=Pike_compiler->compiler_frame;
   while(--depth>=0) f=f->previous;

@@ -541,7 +541,7 @@ struct program
 };
 
 #if 0
-static inline int CHECK_IDREF_RANGE (int x, const struct program *p)
+static INLINE int CHECK_IDREF_RANGE (int x, const struct program *p)
 {
   if (x < 0 || x >= p->num_identifier_references)
     debug_fatal ("Identifier reference index %d out of range 0..%d\n", x,

@@ -253,7 +253,7 @@ PIKEFUN string int2hex(int|object x)
 }
 
 
-static inline int hexchar( int v )
+static INLINE int hexchar( int v )
 {
   return v<10 ? v+'0' : (v-10)+'a';
 }

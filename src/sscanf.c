@@ -562,7 +562,7 @@ static INLINE FLOAT_TYPE low_parse_IEEE_float(char *b, int sz)
 
 /* Avoid some warnings about loss of precision */
 #ifdef __ECL
-static inline INT32 TO_INT32(ptrdiff_t x)
+static INLINE INT32 TO_INT32(ptrdiff_t x)
 {
   return DO_NOT_WARN((INT32)x);
 }

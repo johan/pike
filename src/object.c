@@ -1854,7 +1854,7 @@ PMOD_EXPORT void real_gc_cycle_check_object(struct object *o, int weak)
   } GC_CYCLE_LEAVE;
 }
 
-static inline void gc_check_object(struct object *o)
+static INLINE void gc_check_object(struct object *o)
 {
   int e;
   struct program *p;
