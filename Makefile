@@ -243,7 +243,6 @@ xenofarm_export:
 	    cp -f "$$f" bundles/; \
 	  fi; \
 	done >>export_result.txt
-	-cp "$$HOME/pike_bundles/"* bundles
 	@$(DO_MAKE) "CONFIGUREARGS=--disable-binary $(CONFIGUREARGS)" \
 	  "OS=source" "LIMITED_TARGETS=yes" "METATARGET=snapshot_export" \
 	  "EXPORT_NAME=Pike%maj.%min-%Y%M%D-%h%m%s" \
