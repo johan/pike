@@ -5,5 +5,6 @@
 void `()(string f, mixed ... args)
 {
   array(array) b = backtrace();
-  throw( ({ sprintf(f, @args), b[..sizeof(b)-2] }) );
+  if (sizeof(args)) f = sprintf(f, @args);
+  throw( ({ f, b[..sizeof(b)-2] }) );
 }
