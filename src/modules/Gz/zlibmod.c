@@ -564,8 +564,7 @@ void gz_file_open(INT32 args)
   }
 
   if (sp[-args].type == PIKE_T_INT) {
-    // We got an FD.
-    THIS->gzfile = gzdopen(dup(sp[-args].u.integer),
+    THIS->gzfile = gzdopen(sp[-args].u.integer,
 			   mode);
   } else {
     THIS->gzfile = gzopen(sp[-args].u.string->str,
