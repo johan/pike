@@ -1921,6 +1921,19 @@ static void internal_add_limit( struct perishables *storage,
  *! Process.create_process(({ "/usr/bin/env" }),
  *!                        (["env" : getenv() + (["TERM":"vt100"]) ]));
  *!
+ *! @example
+ *! //! Spawn a new process with the args @[args] and optionally a standard input
+ *! //! if you provide such a Stdio.File object. Returns that process and a pipe
+ *! //! from which you can read its output.
+ *! array(Process.Process|Stdio.File) spawn(Stdio.File|void stdin, string ... args)
+ *! {
+ *!   Stdio.File stdout = Stdio.File();
+ *!   mapping opts = ([ "stdout" : stdout->pipe() ]);
+ *!   if( stdin )
+ *!    opts->stdin = stdin;
+ *!   return ({ Process.create_process( args, opts ), stdout });
+ *! }
+ *!
  *! @note
  *! All parameters that accept both string or int input can be
  *! noticeably slower using a string instead of an integer; if maximum
