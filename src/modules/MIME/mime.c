@@ -928,7 +928,8 @@ static void low_tokenize( INT32 args, int mode )
  *! and not the set specified in RFC822.
  *!
  *! @seealso
- *!   @[MIME.quote()], @[tokenize_labled()]
+ *!   @[MIME.quote()], @[tokenize_labled()],
+ *!   @[decode_words_tokenized_remapped()].
  */
 static void f_tokenize( INT32 args )
 {
@@ -946,12 +947,12 @@ static void f_tokenize( INT32 args )
 
 /*! @decl array(array(string|int)) tokenize_labled(string header)
  *!
- *! Similar to @[tokenize()], but lables the contents, by making
+ *! Similar to @[tokenize()], but labels the contents, by making
  *! arrays with two elements; the first a label, and the second
  *! the value that @[tokenize()] would have put there, except
  *! for that comments are kept.
  *!
- *! The following lables exist:
+ *! The following labels exist:
  *! @string
  *!   @value "encoded-word"
  *!     Word encoded according to =?...
@@ -966,7 +967,8 @@ static void f_tokenize( INT32 args )
  *! @endstring
  *!
  *! @seealso
- *!   @[MIME.quote()], @[tokenize()]
+ *!   @[MIME.quote()], @[tokenize()],
+ *!   @[decode_words_tokenized_labled_remapped()]
  */
 static void f_tokenize_labled( INT32 args )
 {
