@@ -1356,24 +1356,24 @@ PMOD_EXPORT ptrdiff_t string_search(struct pike_string *haystack,
 				    struct pike_string *needle,
 				    ptrdiff_t start)
 {
+  SearchMojt mojt;
   struct generic_mem_searcher s;
   char *r;
 
-  if(needle->size_shift > haystack->size_shift)
+  if(needle->size_shift > haystack->size_shift ||
+     start + needle->len > haystack->len)
     return -1;
 
-  init_generic_memsearcher(&s,
-			   needle->str,
+  mojt=compile_memsearcher(MKPCHARP_STR(needle),
 			   needle->len,
-			   needle->size_shift,
-			   haystack->len-start,
-			   haystack->size_shift);
+			   0x7fffffff,
+			   needle);
 
-  
-  r=(char *)generic_memory_search(&s,
-				  haystack->str+(start<<haystack->size_shift),
-				  haystack->len-start,
-				  haystack->size_shift);
+  r=mojt.vtab->funcN(mojt.data,
+		     ADD_PCHARP(MKPCHARP_STR(haystack), start),
+		     haystack->len).ptr;
+
+  mojt.vtab->freeme(mojt.data);
 
   if(!r) return -1;
   return (r-haystack->str)>>haystack->size_shift;

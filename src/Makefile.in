@@ -127,6 +127,7 @@ OBJ= \
  lex.o \
  multiset.o \
  signal_handler.o \
+ pike_search.o \
  pike_types.o \
  main.o \
  mapping.o \

@@ -13,6 +13,8 @@
 #include "global.h"
 #include "stralloc.h"
 
+
+
 #define MEMSEARCH_LINKS 512
 
 struct link
@@ -40,6 +42,13 @@ struct mem_searcher
   struct link *set[MEMSEARCH_LINKS];
 };
 
+
+#if 1
+/* use new searching stuff */
+
+#include "pike_search.h"
+
+#else
 struct generic_mem_searcher
 {
   char needle_shift;
@@ -56,6 +65,8 @@ struct generic_mem_searcher
     } other;
   } data;
 };
+
+#endif
 
 #include "block_alloc_h.h"
 #define MEMCHR0 MEMCHR

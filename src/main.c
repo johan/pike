@@ -598,6 +598,7 @@ DECLSPEC(noreturn) void do_exit(int num) ATTRIBUTE((noreturn))
 
 void low_init_main(void)
 {
+  init_pike_searching();
   init_error();
   init_pike_security();
   th_init();
@@ -633,6 +634,7 @@ void low_exit_main(void)
   void exit_auto_bignum(void);
   exit_auto_bignum();
 #endif
+  exit_pike_searching();
   th_cleanup();
   exit_object();
   exit_dynamic_load();
