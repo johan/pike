@@ -5,7 +5,7 @@ AC_INIT(pcre_glue.cmod)
 AC_CONFIG_HEADER(pcre_machine.h)
 AC_ARG_WITH(libpcre,     [  --with(out)-libpcre       Support Regexp.PCRE],[],[with_libpcre=yes])
 
-AC_MODULE_INIT()
+AC_MODULE_INIT(_Regexp_PCRE)
 
 PIKE_FEATURE_WITHOUT(Regexp.PCRE)
 
