@@ -498,8 +498,8 @@ void font_write(INT32 args)
 
    for (j=0; j<args; j++)
    {
-     THREADS_ALLOW();
      to_write = sp[j-args].u.string->str;
+     THREADS_ALLOW();
      switch(this->justification)
      {
       case J_LEFT: xsize = 0; break;
