@@ -58,6 +58,9 @@ struct pike_creds
      Pike_error ERR;					\
  }while(0)
 
+#define ASSERT_SECURITY_ROOT(FUNC) CHECK_SECURITY_OR_ERROR( \
+  SECURITY_BIT_SECURITY, (FUNC ": permission denied.\n"))
+
 #define SET_CURRENT_CREDS(O) do { struct object *_o=(O);		\
  if(Pike_interpreter.frame_pointer)					\
  {									\
@@ -151,6 +154,7 @@ void exit_pike_security(void);
 #define INITIALIZE_PROT(X)
 #define FREE_PROT(X)
 #define CHECK_SECURITY_OR_ERROR(BIT,ERR)
+#define ASSERT_SECURITY_ROOT(FUNC)
 #define CHECK_DATA_SECURITY_OR_ERROR(DATA,BIT,ERR)
 
 #define init_pike_security()
