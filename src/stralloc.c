@@ -1042,16 +1042,16 @@ PMOD_EXPORT int c_compare_string(struct pike_string *s, char *foo, int len)
 
 #ifndef HAVE_STRCOLL
 /* No locale function available */
-int low_binary_strcmp(char *a, ptrdiff_t alen,
-		      char *b, ptrdiff_t blen)
+static int low_binary_strcmp(char *a, ptrdiff_t alen,
+			     char *b, ptrdiff_t blen)
 {
   low_quick_binary_strcmp(a,alen,b,blen);
 }
 #else
 
 /* takes locale into account */
-static int low_binary_strcmp(char *a,INT32 alen,
-			     char *b,INT32 blen)
+static int low_binary_strcmp(char *a, ptrdiff_t alen,
+			     char *b, ptrdiff_t blen)
 {
   INT32 tmp;
   while(alen>0 && blen>0)
