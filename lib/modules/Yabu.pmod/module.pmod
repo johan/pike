@@ -85,7 +85,8 @@ static private class ProcessLock {
       
       if(!rm(lock_file))
 	ERR("Lock removal failure (insufficient permissions?)");
-      sleep(10);
+
+      sleep(has_value(mode, "Q") ? 0.5 : 10);
     }
     ERR("Lock tryout error (insufficient permissions?)");
   }
@@ -609,6 +610,11 @@ class Transaction {
     return list_keys();
   }
 
+  array _values()
+  {
+    return map(_indices(), `[]);
+  }
+
   void create(object table_in, int id_in, object keep_ref_in)
   {
     table = table_in;
@@ -947,6 +953,11 @@ class Table {
     return list_keys();
   }
 
+  array _values()
+  {
+    return map(_indices(), `[]);
+  }
+
   mapping(string:string|int) statistics()
   {
     LOCK();
@@ -1066,6 +1077,11 @@ class _Table {
     return list_keys();
   }  
   
+  array _values()
+  {
+    return map(_indices(), `[]);
+  }
+
   void destroy()
   {
     if(table_destroyed)
@@ -1199,6 +1215,11 @@ class db {
   array _indices()
   {
     return list_tables();
+  }
+
+  array _values()
+  {
+    return map(_indices(), `[]);
   }
 
   /* Remove maximum one level of directories and files. */
