@@ -2176,10 +2176,10 @@ int main()
   }else{
     if(lim.rlim_max == RLIM_INFINITY)
     {
-      limit=16384; /* noone needs more */
+      limit=131072; /* Noone needs more :-) */
     }else{
       limit=lim.rlim_max;
-      if(limit > 16384) limit=16384;
+      if(limit > 131072) limit=131072;
     }
   }
 #else
