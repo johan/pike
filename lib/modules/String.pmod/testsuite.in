@@ -55,6 +55,14 @@ test_any([[
   b = b + "end";
   return teststr + "end" == b->get();
 ]], 1)
+test_any([[
+  String.Buffer b = String.Buffer();
+  b->add("abc");
+  b->add("\400\500");
+  b->putchar(256);
+  b->add("x");
+  return (string)b;
+]], "abc\400\500\400x")
 
 test_eval_error([[ String.Buffer()->add("x",0); ]])
 
