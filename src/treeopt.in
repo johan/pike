@@ -47,6 +47,10 @@ F_POP_VALUE(F_CAST(0, *), *):
 F_POP_VALUE(F_CONSTANT, *):
   -;
 
+// Why perform a calculation just to throw away the result?
+F_POP_VALUE(+[node_is_tossable($$)], *):
+  -;
+
 // Popping of variables.
 F_POP_VALUE(F_LOCAL, *):
   -;
@@ -188,7 +192,13 @@ F_COMMA_EXPR(0, -):
 F_COMMA_EXPR(F_CONSTANT, 0 = +):
   $0;
 
+F_COMMA_EXPR(+[node_is_tossable($$)], 0 = +):
+  $0;
+
 F_COMMA_EXPR(F_COMMA_EXPR(0, F_CONSTANT), 1 = +):
+  F_COMMA_EXPR($0, $1);
+
+F_COMMA_EXPR(F_COMMA_EXPR(0, +[node_is_tossable($$)]), 1 = +):
   F_COMMA_EXPR($0, $1);
 
 // Join adjacent F_POP_VALUE's.
@@ -467,6 +477,11 @@ F_SUB_EQ(0, 1 = F_CONSTANT[$$->u.sval.type == T_INT]
 
 F_INDEX(-, 0 = *):
   F_COMMA_EXPR(F_POP_VALUE($0, -), 0);
+
+// foo["str"]  ->  foo->str
+F_INDEX(0 [ !match_types($$->type, object_type_string) ],
+	1 = F_CONSTANT[$$->u.sval.type == T_STRING]):
+  F_ARROW($0, $1);
 
 
 F_ARROW(-, 0 = *):
