@@ -610,12 +610,16 @@ class client
 					   "/locations/resolver",
 					   "nameserver")) {
 	    nameservers = map(nameservers, `-, "\n");
+	  } else {
+	    nameservers = ({});
 	  }
 	  
 	  if (domains = System->get_netinfo_property(".",
 						    "/locations/resolver",
 						    "domain")) {
 	    domains = map(domains, `-, "\n");
+	  } else {
+	    domains = ({});
 	  }
 	} else {
 	  /* FIXME: Is this a good idea?
