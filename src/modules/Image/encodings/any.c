@@ -113,8 +113,7 @@ void image_any__decode(INT32 args)
 
       case CHAR2('G','I'):
 	 /* GIF */
-	 image_gif__decode(1);
-	 error("can't handle gif's yet\n");
+	 image_gif_decode_map(1);
 	 return;
 
       case CHAR2('F','O'):
@@ -177,9 +176,9 @@ void init_image_any(void)
    add_function("_decode",image_any__decode,
 		"function(string:mapping)",0);
    add_function("decode",image_any_decode,
-		"function(string:mapping)",0);
+		"function(string:object)",0);
    add_function("decode_alpha",image_any_decode_alpha,
-		"function(string:mapping)",0);
+		"function(string:object)",0);
 }
 
 void exit_image_any(void)
