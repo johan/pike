@@ -323,7 +323,7 @@ static void eat_string(struct pike_string *str, struct iso2022_stor *s)
     str = tmpstr;
   }
 
-  l = eat_chars(str->str, str->len, s);
+  l = eat_chars((unsigned char *)str->str, str->len, s);
 
   if(l>0)
     s->retain = make_shared_binary_string(str->str+str->len-l, l);
