@@ -50,9 +50,8 @@ extern struct program *image_program;
 struct buffer
 {
   struct pike_string *s;
-  int base_offset;
-  int base_len;
-
+  ptrdiff_t base_offset;
+  ptrdiff_t base_len;
   size_t len;
   unsigned char *str;
 };
@@ -179,8 +178,8 @@ static void f_substring_get_short( INT32 args )
 }
 
 static void push_substring( struct pike_string *s, 
-                            int offset,
-                            int len )
+                            ptrdiff_t offset,
+                            ptrdiff_t len )
 {
   struct object *o = clone_object( substring_program, 0 );
   struct substring *ss = SS(o);
@@ -191,7 +190,7 @@ static void push_substring( struct pike_string *s,
   push_object( o );
 }
 
-static void free_substring( )
+static void free_substring(struct object *o)
 {
   if( SS(fp->current_object)->s )
   {
