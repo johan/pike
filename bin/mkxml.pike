@@ -371,7 +371,7 @@ string doctype(string type,void|string indent)
 	       if (!q) return ({doctype(in[..i-1],indent+"  ")})+
 			  paramlist(in[i+1..],indent);
 	 }
-      return ({in});
+      return ({doctype(in,indent+"  ")});
    };
 
 
@@ -423,7 +423,7 @@ string doctype(string type,void|string indent)
 	 array z=paramlist(b,nindent);
 	 if (sizeof(z)!=2)
 	    werror("warning: confused mapping type: %O\n",type),
-	    z+=({"mixed","mixed"});
+	    z+=({"<mixed/>","<mixed/>"});
 	 return nindent+"<mapping><indextype>"+z[0]+"</indextype>"+
 	    nindent+"   <valuetype>"+z[1]+"</valuetype></mapping>";
       case "object":
@@ -432,7 +432,7 @@ string doctype(string type,void|string indent)
 	 z=paramlist(b,nindent);
 	 if (sizeof(z)<1)
 	    werror("warning: confused function type: %O\n",type),
-	    z+=({"mixed"});
+	    z+=({"<mixed/>"});
 	 return
 	    nindent+
 	    "<function>"+
