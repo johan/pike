@@ -130,16 +130,16 @@ ptrdiff_t pop_sp_mark(void)
 static void gc_check_stack_callback(struct callback *foo, void *bar, void *gazonk)
 {
   struct pike_frame *f;
-  debug_gc_xmark_svalues(Pike_interpreter.evaluator_stack,
-			 Pike_sp-Pike_interpreter.evaluator_stack-1,
-			 " on current interpreter stack");
+  gc_mark_external_svalues(Pike_interpreter.evaluator_stack,
+			   Pike_sp-Pike_interpreter.evaluator_stack,
+			   " on current interpreter stack");
 
   for(f=Pike_fp;f;f=f->next)
   {
     if(f->context.parent)
-      gc_external_mark2(f->context.parent,0," in Pike_fp->context.parent on current stack");
-    gc_external_mark2(f->current_object,0," in Pike_fp->current_object on current stack");
-    gc_external_mark2(f->context.prog,0," in Pike_fp->context.prog on current stack");
+      gc_mark_external (f->context.parent, " in Pike_fp->context.parent on current stack");
+    gc_mark_external (f->current_object, " in Pike_fp->current_object on current stack");
+    gc_mark_external (f->context.prog, " in Pike_fp->context.prog on current stack");
   }
 
 }

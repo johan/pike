@@ -833,7 +833,7 @@ PMOD_EXPORT void wrong_number_of_args_error(const char *name, int args, int expe
 #ifdef PIKE_DEBUG
 static void gc_check_throw_value(struct callback *foo, void *bar, void *gazonk)
 {
-  debug_gc_xmark_svalues(&throw_value,1," in the throw value");
+  gc_mark_external_svalues(&throw_value,1," in the throw value");
 }
 #endif
 

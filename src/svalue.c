@@ -1766,7 +1766,8 @@ void debug_check_type_hint (const struct svalue *svals, size_t num, TYPE_FIELD t
 }
 
 /* NOTE: Must handle num being negative. */
-PMOD_EXPORT void real_gc_xmark_svalues(const struct svalue *s, ptrdiff_t num)
+PMOD_EXPORT void real_gc_mark_external_svalues(const struct svalue *s, ptrdiff_t num,
+					       const char *place)
 {
   ptrdiff_t e;
 
@@ -1781,7 +1782,7 @@ PMOD_EXPORT void real_gc_xmark_svalues(const struct svalue *s, ptrdiff_t num)
     gc_svalue_location=(void *)s;
 
     if(s->type <= MAX_REF_TYPE)
-      gc_external_mark2(s->u.refs,0,0);
+      gc_mark_external (s->u.refs, place);
   }
   gc_svalue_location=0;
 }
@@ -1960,9 +1961,8 @@ void gc_check_weak_short_svalue(const union anything *u, TYPE_T type)
       }
 
 #define GC_DO_MARK(U, TN)						\
-      enqueue(&gc_mark_queue,						\
-	(queue_call) PIKE_CONCAT3(gc_mark_, TN, _as_referenced),	\
-	U.TN)
+      gc_mark_enqueue((queue_call) PIKE_CONCAT3(gc_mark_, TN, _as_referenced), \
+		      U.TN)
 
 #define GC_DONT_MARK(U, TN) do {} while (0)
 
