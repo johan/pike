@@ -1970,6 +1970,7 @@ void _main(array(string) orig_argv, array(string) env)
 #endif
 
       case "debug_without":
+	// FIXME: Disable loading of dumped modules?
         foreach( q[i][1]/",", string feature )
         {
           switch( feature )
