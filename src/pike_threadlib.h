@@ -756,6 +756,12 @@ PMOD_EXPORT extern const char msg_thr_allow_in_gc[];
 PMOD_EXPORT extern const char msg_thr_allow_in_disabled[];
 PMOD_EXPORT extern const char msg_global_dynbuf_in_use[];
 extern dynamic_buffer pike_global_buffer;
+#if defined(__ia64) && defined(__xlc__)
+/* Workaround for a code generation bug in xlc 5.5.0.0/ia64 . */
+#define DO_IF_NOT_XLC_IA64(X)
+#else /* !ia64 || !xlc */
+#define DO_IF_NOT_XLC_IA64(X)	X
+#endif
 #endif
 
 PMOD_EXPORT extern int Pike_in_gc;
@@ -780,8 +786,11 @@ PMOD_EXPORT extern int Pike_in_gc;
      } else {								\
        DO_IF_DEBUG(							\
 	 THREAD_T self = th_self();					\
-	 if (threads_disabled && !th_equal(threads_disabled_thread, self)) \
-	   Pike_fatal(msg_thr_allow_in_disabled);			\
+	 if (threads_disabled &&					\
+	     !th_equal(threads_disabled_thread, self))			\
+	   DO_IF_NOT_XLC_IA64(Pike_fatal(msg_thr_allow_in_disabled,	\
+					 self,				\
+					 threads_disabled_thread));	\
        );								\
      }									\
      DO_IF_DEBUG(_tmp->debug_flags |= THREAD_DEBUG_LOOSE;)		\
@@ -834,8 +843,11 @@ PMOD_EXPORT extern int Pike_in_gc;
      } else {								\
        DO_IF_DEBUG(							\
 	 THREAD_T self = th_self();					\
-	 if (threads_disabled && !th_equal(threads_disabled_thread, self)) \
-	   Pike_fatal(msg_thr_allow_in_disabled);			\
+	 if (threads_disabled &&					\
+	     !th_equal(threads_disabled_thread, self))			\
+	   DO_IF_NOT_XLC_IA64(Pike_fatal(msg_thr_allow_in_disabled,	\
+					 self,				\
+					 threads_disabled_thread));	\
        );								\
      }									\
      DO_IF_DEBUG(_tmp_uid->debug_flags |= THREAD_DEBUG_LOOSE;)		\
