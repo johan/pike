@@ -120,6 +120,7 @@ struct pike_string *describe_type(struct pike_string *type);
 TYPE_T compile_type_to_runtime_type(struct pike_string *s);
 int match_types(struct pike_string *a,struct pike_string *b);
 struct pike_string *index_type(struct pike_string *type, node *n);
+struct pike_string *key_type(struct pike_string *type, node *n);
 int check_indexing(struct pike_string *type,
 		   struct pike_string *index_type,
 		   node *n);

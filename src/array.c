@@ -1610,7 +1610,7 @@ void apply_array(struct array *a, INT32 args)
   argp=sp-args - evaluator_stack;
 
   check_stack(a->size + args + 1);
-
+  check_array_for_destruct(a);
   for(e=0;e<a->size;e++)
   {
     assign_svalues_no_free(sp,evaluator_stack+argp,args,BIT_MIXED);

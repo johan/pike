@@ -28,7 +28,7 @@ int multiset_member(struct multiset *l, struct svalue *ind)
 /*
  * allocate and init a new multiset
  */
-static struct multiset *allocate_multiset(struct array *ind)
+struct multiset *allocate_multiset(struct array *ind)
 {
   struct multiset *l;
   GC_ALLOC();
@@ -69,7 +69,8 @@ void really_free_multiset(struct multiset *l)
   GC_FREE();
 }
 
-static void order_multiset(struct multiset *l)
+
+void order_multiset(struct multiset *l)
 {
   INT32 *order;
   if(l->ind->size < 2) return;
