@@ -200,7 +200,7 @@ class table {
     if(!sizeof(cs))
       return sum();
     array f = remap(fields) - remap(cs);
-    mapping m = mkmapping(f, Array.map(f, lambda()
+    mapping m = mkmapping(f, Array.map(f, lambda(mixed unused)
 					  { return lambda(mixed x1,
 							  mixed x2)
 						   { return x1; }; }));
