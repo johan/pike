@@ -841,7 +841,7 @@ int mkdirhier (string dir, void|int mode)
   else path = "";
   foreach (dir / "/", string name) {
     path += name;
-    if (!exist (path) && !mkdir (path, mode)) return 0;
+    mkdir(path, mode);
     path += "/";
   }
   return is_dir (path);
