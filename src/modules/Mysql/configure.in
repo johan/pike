@@ -171,7 +171,8 @@ if test x$with_mysql = xyes; then
   else
     AC_DEFINE(HAVE_MYSQL)
 
-    AC_CHECK_FUNCS(mysql_real_query mysql_fetch_lengths)
+    # Note: mysql_port isn't a function, but that shouldn't matter
+    AC_CHECK_FUNCS(mysql_real_query mysql_fetch_lengths mysql_port)
   fi
 else
   :
