@@ -1465,7 +1465,7 @@ static int dl_load_coff_files(struct DLHandle *ret,
 	      name=SYMBOLS(sym).name.text;
 	      len=STRNLEN(name,8);
 	    }
-	    if(name[len])
+	    if(!name[len])
 	    {
 	      fprintf(stderr,"DL: reloc name=%s\n",name);
 	    }else{
