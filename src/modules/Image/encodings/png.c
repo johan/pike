@@ -210,6 +210,7 @@ static void image_png___decode(INT32 args)
    unsigned long len;
    struct pike_string *str;
    int n=0;
+   ONERROR uwp;
 
    if (args<1) 
       error("Image.PNG.__decode: too few arguments\n");
@@ -224,6 +225,7 @@ static void image_png___decode(INT32 args)
    add_ref(str=sp[-args].u.string);
    data=(unsigned char*)str->str;
    len=str->len;
+   SET_ONERROR(uwp,do_free_string,str);
 
    pop_n_elems(args);
 
@@ -237,6 +239,7 @@ static void image_png___decode(INT32 args)
        data[6]!=26 ||
        data[7]!=10)
    {
+      UNSET_ONERROR(uwp);
       free_string(str);
       push_int(0);
       return;
@@ -272,6 +275,7 @@ static void image_png___decode(INT32 args)
       data+=x+4;
    }
 
+   UNSET_ONERROR(uwp);
    free_string(str);
    f_aggregate(n);
 }
