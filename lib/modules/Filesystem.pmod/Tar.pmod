@@ -227,6 +227,7 @@ class _Tar  // filesystem
 	if(next_name) {
 	  r->fullpath = next_name;
 	  r->name = (next_name/"/")[-1];
+	  next_name = 0;
 	}
 	entries += ({ r });
       }
