@@ -464,7 +464,7 @@ struct program *id_to_program(INT32 id);
 void optimize_program(struct program *p);
 int program_function_index_compare(const void *a,const void *b);
 struct pike_string *find_program_name(struct program *p, INT32 *line);
-int override_identifier (struct reference *ref, struct pike_string *name, int cur_id);
+int override_identifier (struct reference *ref, struct pike_string *name);
 void fixate_program(void);
 struct program *low_allocate_program(void);
 void low_start_new_program(struct program *p,

@@ -3517,7 +3517,7 @@ static void decode_value2(struct decode_data *data)
 		 * identifiers, identifier_references
 		 */
 
-		if (n < 0 || (n = override_identifier (&ref, id.name, 0)) < 0) {
+		if (n < 0 || (n = override_identifier (&ref, id.name)) < 0) {
 		  n = p->num_identifier_references;
 		  add_to_identifier_references(ref);
 		}
