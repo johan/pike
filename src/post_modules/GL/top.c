@@ -22,8 +22,6 @@
 
 #endif /* HAVE_GL */
 
-#include "module_magic.h"
-
 #include "global.h"
 
 RCSID("$Id$");
@@ -35,6 +33,8 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "module_support.h"
 #include "pike_error.h"
+
+#include "module_magic.h"
 
 #ifdef HAVE_GL
 
