@@ -675,10 +675,9 @@ void low_exit_main(void)
   cleanup_interpret();
   cleanup_added_efuns();
   exit_operators();
-  cleanup_pike_types();
+  exit_iterators();
   cleanup_program();
   cleanup_compiler();
-  exit_iterators();
   cleanup_error();
   exit_backend();
 
@@ -692,6 +691,8 @@ void low_exit_main(void)
   do_gc();
 
   cleanup_gc();
+
+  cleanup_pike_types();
 
 #if defined(PIKE_DEBUG) && defined(DEBUG_MALLOC)
   if(verbose_debug_exit)
