@@ -3,6 +3,8 @@
  * dummy https server
  */
 
+//! Dummy HTTPS server
+
 #define PORT 25678
 
 import Stdio;

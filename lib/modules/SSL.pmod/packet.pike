@@ -3,6 +3,9 @@
  * SSL Record Layer
  */
 
+//! SSL Record Layer. Handle formatting and parsing of packets.
+
+
 inherit "constants";
 
 

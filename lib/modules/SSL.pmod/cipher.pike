@@ -2,6 +2,8 @@
  *
  */
 
+//! Encryption and MAC algorithms used in SSL.
+
 inherit "constants";
 
 class CipherSpec {

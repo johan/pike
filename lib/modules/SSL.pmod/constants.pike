@@ -2,6 +2,8 @@
  *
  */
 
+//! Protocol constants
+
 /* Packet types */
 constant PACKET_change_cipher_spec = 20;
 constant PACKET_alert              = 21;

@@ -2,6 +2,7 @@
  *
  */
 
+//! Interface similar to Stdio.File.
 
 inherit "connection" : connection;
 
