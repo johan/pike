@@ -311,14 +311,13 @@ define([AC_MODULE_INIT],
 AC_LOW_MODULE_INIT()
 PIKE_FEATURE_CLEAR()
 
-ifdef([PIKE_INCLUDE_PATH],
-[
-dynamic_module_makefile=PIKE_INCLUDE_PATH/dynamic_module_makefile
-static_module_makefile=PIKE_INCLUDE_PATH/dynamic_module_makefile
-],[
-dynamic_module_makefile=$BUILD_BASE/modules/dynamic_module_makefile
-static_module_makefile=$BUILD_BASE/modules/static_module_makefile
-])
+if test -d $BUILD_BASE/modules/. ; then
+  dynamic_module_makefile=$BUILD_BASE/modules/dynamic_module_makefile
+  static_module_makefile=$BUILD_BASE/modules/static_module_makefile
+else
+  dynamic_module_makefile=$BUILD_BASE/dynamic_module_makefile
+  static_module_makefile=$BUILD_BASE/dynamic_module_makefile
+fi
 
 ])
 
@@ -363,11 +362,6 @@ pushdef([AC_OUTPUT],
   test "$PMOD_TARGETS" = '$(SRCDIR)/*.c' && PMOD_TARGETS=
   AC_SUBST(PMOD_TARGETS)
 
-ifdef([PIKE_INCLUDE_PATH],
-[
-  dnl Is PIKE_INCLUDE_PATH really on the ../../... form, or is this broken?
-  make_variables_in=PIKE_INCLUDE_PATH/make_variables.in
-],[
   if test "x$PIKE_SRC_DIR" != "x" -a -f "${PIKE_SRC_DIR}/make_variables.in"; then
     make_variables_in="${PIKE_SRC_DIR}/make_variables.in"
   else
@@ -391,7 +385,6 @@ ifdef([PIKE_INCLUDE_PATH],
     make_variables_in=${uplevels}make_variables.in
     AC_MSG_RESULT(${uplevels}.)
   fi
-])
 
   AC_SUBST(make_variables_in)
 
