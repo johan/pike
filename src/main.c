@@ -115,7 +115,7 @@ PMOD_EXPORT struct callback *add_exit_callback(callback_func call,
 }
 
 #ifdef __NT__
-static void get_master_key(long cat)
+static void get_master_key(HKEY cat)
 {
   HKEY k;
   char buffer[4096];

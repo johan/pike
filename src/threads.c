@@ -67,7 +67,7 @@ int low_nt_create_thread(unsigned stack_size,
 			 void *arg,
 			 unsigned *id)
 {
-  HANDLE h=_beginthreadex(NULL, stack_size, fun, arg, 0, id);
+  HANDLE h = (HANDLE)_beginthreadex(NULL, stack_size, fun, arg, 0, id);
   if(h)
   {
     CloseHandle(h);
