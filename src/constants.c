@@ -178,14 +178,14 @@ PMOD_EXPORT struct callable *quick_add_efun(char *name, ptrdiff_t name_length,
 void present_constant_profiling(void)
 {
   struct callable_block *b;
-  int e;
+  size_t e;
   for(b=callable_blocks;b;b=b->next)
   {
     for(e=0;e<NELEM(b->x);e++)
     {
       if(b->x[e].name)
       {
-	fprintf(stderr,"%010d @E@: %s\n",b->x[e].runs, b->x[e].name->str);
+	fprintf(stderr,"%010ld @E@: %s\n",b->x[e].runs, b->x[e].name->str);
       }
     }
   }
