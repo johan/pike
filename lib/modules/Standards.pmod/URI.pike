@@ -363,6 +363,11 @@ string|mapping cast(string to)
   }
 }
 
+string get_path_query()
+{
+  return (path||"") + (query ? "?" + query : "");
+}
+
 string _sprintf(int how, mapping|void args)
 {
   string look, _scheme = scheme, _host = host, getstring;
