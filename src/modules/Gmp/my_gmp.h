@@ -61,6 +61,10 @@ struct pike_string *low_get_mpz_digits(MP_INT *mpz, int base);
 #define mpz_getlimbn(mpz, pos) ((mpz)->_mp_d[pos])
 #endif
 
+#ifndef HAVE_MPZ_FITS_ULONG_P
+#define mpz_fits_ulong_p(n) (!mpz_cmp_ui ((n), mpz_get_ui (n)))
+#endif
+
 extern struct program *mpzmod_program;
 extern struct program *mpq_program;
 extern struct program *mpf_program;
