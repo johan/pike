@@ -254,7 +254,7 @@ void do_pop(int x)
   current_stack_depth -= x;
 }
 
-void do_pop_mark(void)
+void do_pop_mark(void *ignored)
 {
   emit0(F_POP_MARK);
 }
