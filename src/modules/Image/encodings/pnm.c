@@ -244,6 +244,14 @@ void img_pnm_decode(INT32 args)
 **!	uses the most optimized encoding for this image (bitmap, grey
 **!	or truecolor) - P4, P5 or P6 respective P1, P2 or P3.
 **!
+**!	P1/P4 assumes the image is black and white. Use 
+**!	<ref>Image.image->threshold</ref>() or something like
+**!	<tt><ref>Image.colortable</ref>( ({({0,0,0}),({255,255,255})}) )->floyd_steinberg()->map(my_image)</ref></tt> 
+**!	to get a black and white image.
+**!
+**!	P2/P5 assumes the image is greyscale. Use
+**!	<ref>Image.image->grey</ref>() to get a greyscale image.
+**!
 **! see also: decode
 **!
 **! returns the encoded image as a string
