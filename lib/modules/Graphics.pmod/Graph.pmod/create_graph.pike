@@ -566,6 +566,9 @@ mapping(string:mixed) create_text(mapping(string:mixed) diagram_data)
       diagram_data["ymaxynames"]=ymaxynames;
       diagram_data["xmaxynames"]=xmaxynames;
       
+      if(!diagram_data->namesize)
+	diagram_data->namesize = diagram_data->fontsize;
+
       if (ymaxxnames+xmaxynames>diagram_data["ysize"]/2)
       {
 	tobig+=2;
@@ -931,7 +934,7 @@ int write_name(mapping diagram_data)
     y=diagram_data["namesize"];
   else
     y=diagram_data["fontsize"];
-  
+
   text=notext->write(UNICODE(diagram_data["name"],diagram_data["encoding"]))
     ->scale(0,y);
 
