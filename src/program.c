@@ -107,7 +107,7 @@ char *lfun_names[] = {
 };
 
 struct program *first_program = 0;
-static int current_program_id=0;
+static int current_program_id=0x10000;
 
 struct program *new_program=0;
 struct object *fake_object=0;

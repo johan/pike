@@ -480,6 +480,12 @@ int implements(struct program *a, struct program *b);
 #define add_function pike_add_function
 #endif
 
+#define START_NEW_PROGRAM_ID(ID) do { \
+  start_new_program();  \
+  new_program->id=PIKE_CONCAT3(PROG_,ID,_ID); \
+ }while(0)
+
+
 #endif /* PROGRAM_H */
 
 #ifdef DEBUG_MALLOC
@@ -496,3 +502,4 @@ int implements(struct program *a, struct program *b);
 #else
 #define start_new_program() debug_start_new_program()
 #endif
+
