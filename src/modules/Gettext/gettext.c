@@ -284,7 +284,7 @@ void f_setlocale(INT32 args)
   free_string(valstr); \
   } while(0)
 #define MAPINT(key, value) do {\
-  struct svalue val; struct pike_string *valstr; \
+  struct svalue val; \
   val.type = T_INT; \
   val.u.integer = (int)locale->value; \
   mapping_string_insert(map, make_shared_string(key), &val);\
@@ -400,7 +400,9 @@ void f_localeconv(INT32 args)
   map = allocate_mapping(18);
   locale = localeconv();
 
-  MAPSTR("decimal_point", decimal_point);  
+  pop_n_elems(args);
+
+  MAPSTR("decimal_point", decimal_point);
   MAPSTR("thousands_sep", thousands_sep);
   MAPSTR("int_curr_symbol", int_curr_symbol);
   MAPSTR("currency_symbol", currency_symbol);
