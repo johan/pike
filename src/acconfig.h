@@ -362,7 +362,7 @@
 #undef YYDEBUG
 
 /* The type of the last argument to __yy_memcpy (usually unsigned int). */
-#define YY_COUNT_TYPE unsigned int
+#define YY_COUNT_TYPE	unsigned
 
 /* Define if your compiler has a symbol __func__ */
 #undef HAVE_WORKING___FUNC__
