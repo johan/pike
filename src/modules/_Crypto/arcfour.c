@@ -53,7 +53,7 @@ void exit_pike_arcfour(struct object *o)
 
 /*! @decl string name()
  *!
- *! Returns the string @tt{"ARCFOUR"@}.
+ *! Returns the string @expr{"ARCFOUR"@}.
  */
 static void f_name(INT32 args)
 {
@@ -66,7 +66,7 @@ static void f_name(INT32 args)
 /*! @decl int query_key_length()
  *!
  *! Returns the minimum required encryption key length.
- *! Currently this is @tt{1@}.
+ *! Currently this is @expr{1@}.
  */
 static void f_query_key_length(INT32 args)
 {

@@ -64,7 +64,7 @@ void exit_pike_crypto_invert(struct object *o)
 
 /*! @decl string name()
  *!
- *! Returns the string @tt{"INVERT"@}.
+ *! Returns the string @expr{"INVERT"@}.
  */
 static void f_name(INT32 args)
 {

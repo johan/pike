@@ -93,7 +93,7 @@ static void exit_pike_crypto_rijndael(struct object *o)
 
 /*! @decl string name()
  *!
- *! Returns the string @tt{"RIJNDAEL"@}.
+ *! Returns the string @expr{"RIJNDAEL"@}.
  */
 static void f_name(INT32 args)
 {

@@ -124,7 +124,7 @@ void gdbmmod_fatal(char *err)
  *! in the database immediately. This is dangerous because the database
  *! can be left in an unusable state if Pike is terminated abnormally.
  *!
- *! The default mode is @tt{"rwc"@}.
+ *! The default mode is @expr{"rwc"@}.
  *!
  *! @note
  *!  The gdbm manual states that it is important that the database is

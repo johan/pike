@@ -25,27 +25,27 @@ class SGML
 //!     
 //! @example
 //!	A string
-//!     @tt{"<gat>&nbsp;<gurka>&nbsp;</gurka>&nbsp;<banan>&nbsp;<kiwi>&nbsp;</gat>"@}
+//!     @expr{"<gat>&nbsp;<gurka>&nbsp;</gurka>&nbsp;<banan>&nbsp;<kiwi>&nbsp;</gat>"@}
 //!     results in 
-//!	@pre{
+//!@code
+//!({
+//!    tag "gat" object with data:
+//!    ({
+//!        tag "gurka" object with data:
 //!	({
-//!	    tag "gat" object with data:
+//!            " "
+//!        })
+//!        tag "banan" object with data:
+//!	({
+//!            " "
+//!            tag "kiwi" object with data:
 //!	    ({
-//!	        tag "gurka" object with data:
-//!		({
-//!                 " "
-//!             })
-//!	        tag "banan" object with data:
-//!		({
-//!                 " "
-//!	            tag "kiwi" object with data:
-//!		    ({
-//!                    " "
-//!                 })
-//!             })
-//!         })
-//!     })
-//!	@}
+//!               " "
+//!            })
+//!        })
+//!    })
+//!})
+//!@endcode
 //!             
 //!	ie, simple "tags" (not containers) are not detected,
 //!	but containers are ended implicitely by a surrounding

@@ -210,7 +210,7 @@ PMOD_EXPORT char *my_memmem(char *needle,
  *! offset @[start].
  *!
  *! @returns
- *!   Returns the offset where a match was found, or @tt{-1@} on
+ *!   Returns the offset where a match was found, or @expr{-1@} on
  *!   failure.
  *!
  *! @seealso

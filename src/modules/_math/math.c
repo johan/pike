@@ -352,8 +352,8 @@ void f_pow(INT32 args)
  *! Return the closest integer value less or equal to @[f].
  *!
  *! @note
- *!   @[floor()] does @b{not@} return an @tt{int@}, merely an integer value
- *!   stored in a @tt{float@}.
+ *!   @[floor()] does @b{not@} return an @expr{int@}, merely an integer value
+ *!   stored in a @expr{float@}.
  *!
  *! @seealso
  *!   @[ceil()], @[round()]
@@ -370,8 +370,8 @@ void f_floor(INT32 args)
  *! Return the closest integer value greater or equal to @[f].
  *!
  *! @note
- *!   @[ceil()] does @b{not@} return an @tt{int@}, merely an integer value
- *!   stored in a @tt{float@}.
+ *!   @[ceil()] does @b{not@} return an @expr{int@}, merely an integer value
+ *!   stored in a @expr{float@}.
  *!
  *! @seealso
  *!   @[floor()], @[round()]
@@ -388,8 +388,8 @@ void f_ceil(INT32 args)
  *! Return the closest integer value to @[f].
  *!
  *! @note
- *!   @[round()] does @b{not@} return an @tt{int@}, merely an integer value
- *!   stored in a @tt{float@}.
+ *!   @[round()] does @b{not@} return an @expr{int@}, merely an integer value
+ *!   stored in a @expr{float@}.
  *!
  *! @seealso
  *!   @[floor()], @[ceil()]
@@ -490,8 +490,9 @@ void f_abs(INT32 args)
  *! Check the sign of a value.
  *!
  *! @returns
- *!   Returns @tt{-1@} if @[value] is less than @[zero],
- *!   @tt{1@} if @[value] is greater than @[zero] and @tt{0@} (zero) otherwise.
+ *!   Returns @expr{-1@} if @[value] is less than @[zero],
+ *!   @expr{1@} if @[value] is greater than @[zero] and @expr{0@}
+ *!   (zero) otherwise.
  *!
  *! @seealso
  *!   @[abs()]

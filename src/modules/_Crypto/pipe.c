@@ -174,9 +174,9 @@ static void f_create(INT32 args)
 
 /*! @decl string name()
  *!
- *! Returns the string @tt{"PIPE("@} followed by a
+ *! Returns the string @expr{"PIPE("@} followed by a
  *! comma-separated list of the names of contained ciphers, and
- *! terminated with the string @tt{")"@}.
+ *! terminated with the string @expr{")"@}.
  */
 static void f_name(INT32 args)
 {

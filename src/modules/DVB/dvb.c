@@ -466,8 +466,8 @@ static int do_tune(int fefd, uint ifreq, uint sr)
  *!  Frequency divided by 1000.
  *!
  *! @param pol
- *!  Polarization. @tt{0@} or @tt{"v"@} for vertical type,
- *!  @tt{1@} or @tt{"h"@} for horizontal one.
+ *!  Polarization. @expr{0@} or @expr{"v"@} for vertical type,
+ *!  @expr{1@} or @expr{"h"@} for horizontal one.
  *!
  *! @param sr
  *!  The service rate parameter.

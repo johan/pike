@@ -199,7 +199,7 @@ void f_textdomain(INT32 args)
  *! @[gettext()], @[dgettext()] or @[dcgettext()] are called. If @[domainname]
  *! is zero or an empty string, @[bindtextdomain()] returns 0.
  *!
- *! User defined domain names cannot begin with the string @tt{"SYS_"@}.
+ *! User defined domain names cannot begin with the string @expr{"SYS_"@}.
  *! Domain names beginning with this string are reserved for system use.
  *!
  *! @returns

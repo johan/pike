@@ -350,7 +350,7 @@ int _prof_gtim;
   //!
   //! @param url
   //!  LDAP server URL in form
-  //!    @tt{"ldap://hostname/basedn?attrlist?scope?ext"@}
+  //!    @expr{"ldap://hostname/basedn?attrlist?scope?ext"@}
   //!
   //! @param context
   //!  TLS context of connection
@@ -470,10 +470,10 @@ int _prof_gtim;
   //! by connection to the LDAP server.
   //!
   //! @param version
-  //!  Only @tt{2@} or @tt{3@} can be entered.
+  //!  Only @expr{2@} or @expr{3@} can be entered.
   //!
   //! @returns
-  //!  Returns @tt{1@} on success, @tt{0@} otherwise.
+  //!  Returns @expr{1@} on success, @expr{0@} otherwise.
   //!
   //! @note
   //!  Only simple authentication type is implemented. So be warned
@@ -558,7 +558,7 @@ int _prof_gtim;
   //!  The distinguished name of deleted entry.
   //!
   //! @returns
-  //!  Returns @tt{1@} on success, @tt{0@} otherwise.
+  //!  Returns @expr{1@} on success, @expr{0@} otherwise.
   //!
   //! @note
   //!   The API change: the returning code was changed in Pike 7.3+
@@ -617,7 +617,7 @@ int _prof_gtim;
   //!  The mapping of compared attributes and theirs values.
   //!
   //! @returns
-  //!  Returns @tt{1@} on success, @tt{0@} otherwise.
+  //!  Returns @expr{1@} on success, @expr{0@} otherwise.
   //!
   //! @note
   //!   The API change: the returning code was changed in Pike 7.3+
@@ -691,7 +691,7 @@ int _prof_gtim;
   //!  of the entry being added.
   //!
   //! @returns
-  //!  Returns @tt{1@} on success, @tt{0@} otherwise.
+  //!  Returns @expr{1@} on success, @expr{0@} otherwise.
   //!    
   //! @note
   //!   The API change: the returning code was changed in Pike 7.3+
@@ -938,7 +938,7 @@ int _prof_gtim;
   //!   the attribute values.
   //!
   //! @returns
-  //!   Returns object @[LDAP.client.result] on success, @tt{0@}
+  //!   Returns object @[LDAP.client.result] on success, @expr{0@}
   //!	otherwise.
   //!
   //! @note
@@ -1190,7 +1190,7 @@ int _prof_gtim;
   //!  which becomes the immediate superior of the existing entry.
   //!
   //! @returns
-  //!  Returns @tt{1@} on success, @tt{0@} otherwise.
+  //!  Returns @expr{1@} on success, @expr{0@} otherwise.
   //!
   //! @note
   //!   The API change: the returning code was changed in Pike 7.3+
@@ -1250,7 +1250,7 @@ int _prof_gtim;
   //!      exists, and is ignored if the attribute does not exist
   //!
   //! @returns
-  //!  Returns @tt{1@} on uccess, @tt{0@} otherwise.
+  //!  Returns @expr{1@} on uccess, @expr{0@} otherwise.
   //!
   //! @note
   //!   The API change: the returning code was changed in Pike 7.3+
@@ -1293,7 +1293,7 @@ int _prof_gtim;
   //! Gets referrals.
   //!
   //! @returns
-  //!   Returns array of referrals or @tt{0@}.
+  //!   Returns array of referrals or @expr{0@}.
   array|int get_referrals() {
     if(last_rv->referrals)
       return last_rv->referrals;

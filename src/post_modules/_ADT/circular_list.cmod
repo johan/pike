@@ -388,7 +388,7 @@ PIKECLASS CircularList
 
 /*! @decl int _search(mixed value, void|int start)
  *!   Search the list for a specific value. Return the index of the first 
- *!   value that is equal to @[value]. If no value was found @tt{UNDEFINED@} 
+ *!   value that is equal to @[value]. If no value was found @expr{UNDEFINED@} 
  *!   is returned insted
  *! 
  *! @param value
@@ -399,7 +399,7 @@ PIKECLASS CircularList
  *!   @[start].
  *!
  *! @returns
- *!   Returns the index of the found value or @tt{UNDEFINED@}.
+ *!   Returns the index of the found value or @expr{UNDEFINED@}.
  *!
  *! @throws 
  *!   An error if the start is out of range.
@@ -676,7 +676,7 @@ PIKECLASS CircularList
   /*! @decl int(0..1) is_empty()
    *!
    *! @returns
-   *!   Returns @tt{1@} if the list is empty otherwise @tt{0@}. 
+   *!   Returns @expr{1@} if the list is empty otherwise @expr{0@}. 
    */
 
   PIKEFUN int is_empty()

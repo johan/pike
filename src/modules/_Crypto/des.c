@@ -92,7 +92,7 @@ static void exit_pike_crypto_des(struct object *o)
 
 /*! @decl string name()
  *!
- *! Return the string @tt{"DES"@}.
+ *! Return the string @expr{"DES"@}.
  */
 static void f_name(INT32 args)
 {

@@ -251,8 +251,9 @@ static void do_reload_acl (INT32 args)
  *! With one argument, this function
  *! tries to connect to the specified (use hostname or IP address) database
  *! server. To connect to a server running on the local host via UNIX domain
- *! sockets use @tt{"localhost"@}. To connect to the local host via TCP/IP sockets
- *! you have to use the IP address @tt{"127.0.0.1"@}.
+ *! sockets use @expr{"localhost"@}. To connect to the local host via TCP/IP
+ *! sockets
+ *! you have to use the IP address @expr{"127.0.0.1"@}.
  *! With two arguments it also selects a database to use on the server.
  *! With no arguments it tries to connect to the server on localhost, using
  *! UNIX sockets.

@@ -422,7 +422,7 @@ void f_getpwuid(INT32 args)
  *!   using the systemfunction @tt{setpwent(3)@}.
  *!
  *! @returns
- *!   Always @tt{0@} (zero)
+ *!   Always @expr{0@} (zero)
  *!
  *! @seealso
  *!   @[get_all_users()]
@@ -450,7 +450,7 @@ void f_setpwent(INT32 args)
  *!   systemfunction @tt{endpwent(3)@}.
  *!
  *! @returns
- *!   Always @tt{0@} (zero)
+ *!   Always @expr{0@} (zero)
  *!
  *! @seealso
  *!   @[get_all_users()]

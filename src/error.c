@@ -451,7 +451,7 @@ PMOD_EXPORT DECLSPEC(noreturn) void debug_fatal(const char *fmt, ...) ATTRIBUTE(
  *! Cast operator.
  *!
  *! @note
- *!   The only supported type to cast to is @tt{"array"@}, which
+ *!   The only supported type to cast to is @expr{"array"@}, which
  *!   generates and old-style error.
  */
 static void f_error_cast(INT32 args)

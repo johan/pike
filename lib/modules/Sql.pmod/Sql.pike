@@ -99,8 +99,8 @@ function(string:int) decode_datetime;
 //!       @tt{dbtype://[user[:password]@@]hostname[:port][/database]@}
 //!       Use the dbtype protocol to connect to the database server
 //!       on the specified host.
-//!       If the hostname is @tt{""@}, access through a UNIX-domain
-//!	  socket or similar, e g @tt{"mysql://root@@:/tmp/mysql.sock/"@}
+//!       If the hostname is @expr{""@}, access through a UNIX-domain
+//!	  socket or similar, e g @expr{"mysql://root@@:/tmp/mysql.sock/"@}
 //!     @type int(0..0)
 //!       Access through a UNIX-domain socket or similar.
 //!   @endmixed

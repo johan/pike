@@ -364,14 +364,14 @@ static void cleanup_compilation(struct compilation_save *save)
  *! into Pike. The module is initialized and any programs or constants
  *! defined will immediately be available.
  *!
- *! When a module is loaded the function @tt{pike_module_init()@} will
+ *! When a module is loaded the C function @tt{pike_module_init()@} will
  *! be called to initialize it. When Pike exits @tt{pike_module_exit()@}
  *! will be called. These two functions @b{must@} be available in the module.
  *!
  *! @note
  *!   The current working directory is normally not searched for
- *!   dynamic modules. Please use @tt{"./name.so"@} instead of just
- *!   @tt{"name.so"@} to load modules from the current directory.
+ *!   dynamic modules. Please use @expr{"./name.so"@} instead of just
+ *!   @expr{"name.so"@} to load modules from the current directory.
  */
 void f_load_module(INT32 args)
 {

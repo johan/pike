@@ -48,7 +48,7 @@ static struct program *md2mod_program;
 
 /*! @decl string name()
  *!
- *! Returns the string @tt{"MD2"@}.
+ *! Returns the string @expr{"MD2"@}.
  */
 static void f_name(INT32 args)
 {

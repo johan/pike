@@ -87,7 +87,7 @@ class Mird
    //!           (200)
    //!	@endmapping
    //! 
-   //! 	@tt{"flags"@} is a string with any of these characters:
+   //! 	@expr{"flags"@} is a string with any of these characters:
    //!  @string
    //!    @value 'r'
    //! 	    Readonly.
@@ -300,8 +300,8 @@ class Mird
    //!	store key:value pairs in it, you get values from keys,
    //!	you delete keys.
    //!
-   //!	For convinience, the Table object overloads @tt{`[]()@},
-   //!	@tt{`[]=()@}, @tt{_indices()@} and @tt{_values()@}.
+   //!	For convinience, the Table object overloads @expr{`[]()@},
+   //!	@expr{`[]=()@}, @expr{_indices()@} and @expr{_values()@}.
    class Table 
    {
       int table_id;

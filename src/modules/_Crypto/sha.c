@@ -43,7 +43,7 @@ static struct program *shamod_program;
 
 /*! @decl string name()
  *!
- *! Returns the string @tt{"SHA"@}.
+ *! Returns the string @expr{"SHA"@}.
  */
 static void f_name(INT32 args)
 {

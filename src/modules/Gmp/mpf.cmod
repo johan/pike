@@ -319,9 +319,9 @@ PIKECLASS mpf
     }
   
   /*! @decl static int(0..1) _is_type(string arg)
-   *!   The Gmp.mpf object will claim to be a @tt{"float"@}.
+   *!   The Gmp.mpf object will claim to be a @expr{"float"@}.
    *! @fixme
-   *!   Perhaps it should also return true for @tt{"object"@}?
+   *!   Perhaps it should also return true for @expr{"object"@}?
    */
   PIKEFUN int(0..1) _is_type(string arg)
     flags ID_STATIC;

@@ -1025,8 +1025,8 @@ void f_setsid(INT32 args)
  *!   @endint
  *!
  *! @returns
- *!   Returns @tt{1@} if this process currently is capable of dumping core,
- *!   and @tt{0@} (zero) if not.
+ *!   Returns @expr{1@} if this process currently is capable of dumping core,
+ *!   and @expr{0@} (zero) if not.
  *!
  *! @note
  *!   This function is currently only available on some versions of Linux.

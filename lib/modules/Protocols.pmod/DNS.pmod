@@ -452,7 +452,7 @@ class server
   //! Overload this function to implement the proper lookup.
   //!
   //! @returns
-  //!   Returns @tt{0@} (zero) on failure, or a result mapping on success:
+  //!   Returns @expr{0@} (zero) on failure, or a result mapping on success:
   //!   @mapping
   //!     @member int "rcode"
   //!     @member array(mapping(string:string|int))|void "qd"

@@ -42,7 +42,7 @@ static struct program *md4mod_program;
 
 /*! @decl string name()
  *!
- *! Return the string @tt{"MD4"@}.
+ *! Return the string @expr{"MD4"@}.
  */
 static void f_name(INT32 args)
 {
