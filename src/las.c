@@ -370,13 +370,22 @@ static size_t hash_node(node *n)
 
 static void add_node(node *n)
 {
-  size_t hval = n->hash % node_hash.size;
+  size_t hval = (n->hash % node_hash.size);
 
 #ifdef PIKE_DEBUG
   node *probe = node_hash.table[hval];
   while(probe) {
-    if (probe == n) {
-      fatal("add_node(%p): Node already added!\n");
+    if (probe == n) 
+    {
+      fprintf(stderr, "add_node(%p == %p): Node already added!\n", probe, n);
+      fprintf( stderr, "   %d <-> %d\n", hval, (n->hash % node_hash.size) );
+      probe = node_hash.table[hval];
+      while( probe )
+      {
+        fprintf(stderr, "    %p\n", probe);
+        probe = probe->next;
+      }
+      fatal( "Node already added!\n" );
     }
     probe = probe->next;
   }
@@ -587,7 +596,7 @@ void debug_free_node(node *n)
 
   do {
 #ifdef PIKE_DEBUG
-    if(l_flag>9)
+   if(l_flag>9)
       print_tree(n);
 
 #ifdef SHARED_NODES
