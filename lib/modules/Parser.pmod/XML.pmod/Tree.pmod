@@ -1100,7 +1100,7 @@ class SimpleNode
   // Needed for cross-overloading
   void low_clone()
   {
-    VirtualNode::low_clone();
+    return VirtualNode::low_clone();
   }
 }
 
@@ -1194,7 +1194,7 @@ class Node
   // Needed for cross-overloading
   void low_clone()
   {
-    VirtualNode::low_clone();
+    return VirtualNode::low_clone();
   }
 
 //   int get_tag_code()
