@@ -128,6 +128,11 @@ void really_free_svalue(struct svalue *s)
   }
 }
 
+void do_free_svalue(struct svalue *s)
+{
+  free_svalue(s);
+}
+
 /* Free a bunch of normal svalues.
  * We put this routine here so the compiler can optimize the call
  * inside the loop if it wants to
