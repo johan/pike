@@ -1136,7 +1136,7 @@ unsigned short __dtoxmode(int attr, const char *name) {
   
   unix_mode |= (dos_mode & ATTR_READONLY)?_S_IREAD : (_S_IREAD|_S_IWRITE);
 
-  if (p=strchr(name, '.')) {
+  if ((p=strchr(name, '.'))) {
     if ( !strcmp(p, ".exe") ||
 	 !strcmp(p, ".cmd") ||
 	 !strcmp(p, ".bat") ||
