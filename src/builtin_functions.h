@@ -84,6 +84,7 @@ PMOD_EXPORT void f__compiler_trace(INT32 args);
 PMOD_EXPORT void f_gmtime(INT32 args);
 PMOD_EXPORT void f_localtime(INT32 args);
 PMOD_EXPORT void f_glob(INT32 args);
+PMOD_EXPORT void f_permute(INT32 args);
 struct diff_magic_link;
 struct diff_magic_link_pool;
 struct diff_magic_link_head;
