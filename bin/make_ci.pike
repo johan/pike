@@ -20,6 +20,14 @@ int main(int argc, array(string) argv)
   array(array(int)) ci = ({({ 0, CIM_NONE, 0 })});
   int prevchar = 0;
 
+  if (argc < 2) {
+    werror("Missing argument.\n"
+	   "\n"
+	   "Usage:\n"
+	   "\t%s case_info.h\n", argv[0]);
+    exit(1);
+  }
+
   string data = Stdio.stdin.read();
 
   foreach(data/"\n", string line) {
@@ -81,33 +89,43 @@ int main(int argc, array(string) argv)
     prevchar = char;
   }
 
-  write(sprintf("/*\n"
-		" * Created by\n"
-		" * $Id$\n"
-		" * on %s"
-		" *\n"
-		" * Table used for looking up the case of\n"
-		" * Unicode characters.\n"
-		" *\n"
-		" * Henrik Grubbström 1999-03-20\n"
-		" */\n\n", ctime(time())));
+  array(string) table = allocate(sizeof(ci));
 
-  foreach(ci, array(int) info) {
+  foreach(ci; int i; array(int) info) {
     if ((info[2] <= -0x8000) || (info[2] > 0x7fff)) {
       error("Case information out of range for shorts: %d\n", info[2]);
     }
-    write(sprintf("{ 0x%06x, %s, %s0x%04x, },\n",
-		  info[0],
-		  ({ "CIM_NONE", "CIM_UPPERDELTA", "CIM_LOWERDELTA",
-		     "CIM_CASEBIT", "CIM_CASEBITOFF" })[info[1]],
-		  (info[2]<0)?"-":"",
-		  (info[2]<0)?-info[2]:info[2]));
+    table[i] =
+      sprintf("{ 0x%06x, %s, %s0x%04x, },\n",
+	      info[0],
+	      ({ "CIM_NONE", "CIM_UPPERDELTA", "CIM_LOWERDELTA",
+		 "CIM_CASEBIT", "CIM_CASEBITOFF" })[info[1]],
+	      (info[2]<0)?"-":"",
+	      (info[2]<0)?-info[2]:info[2]);
   }
-  
+
+  Stdio.File outfile = Stdio.File(argv[1], "wct");
+
+  outfile->
+    write(sprintf("/*\n"
+		  " * Created by\n"
+		  " * $Id$\n"
+		  " * on %s"
+		  " *\n"
+		  " * Table used for looking up the case of\n"
+		  " * Unicode characters.\n"
+		  " *\n"
+		  " * Henrik Grubbström 1999-03-20\n"
+		  " */\n\n", ctime(time())));
+
+  map(table, outfile->write);
+
   for (lineno=0; lineno<sizeof(ci); lineno++)
     if (ci[lineno][0] > 0xff)
       break;
-  write(sprintf("#define CASE_INFO_SHIFT0_HIGH 0x%04x\n", lineno));
+
+  outfile->write(sprintf("\n\n#define CASE_INFO_SHIFT0_HIGH 0x%04x\n",
+			 lineno));
 
   exit(0);
 }
