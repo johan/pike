@@ -59,6 +59,9 @@
 /* Define if you have isspace */
 #undef HAVE_ISSPACE
 
+/* Define if you have fpsetmask */
+#undef HAVE_FPSETMASK
+
 /* Define if you have crypt.  */
 #undef HAVE_CRYPT
 
