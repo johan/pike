@@ -3128,7 +3128,7 @@ if test -z "$LDSHARED" ; then
     next*) LDSHARED="$CC $CFLAGS -nostdlib -r";;
     Linux*) LDSHARED="$CC -shared";;
     GNU*) LDSHARED="ld -Bshareable";;
-    FreeBSD*) LDSHARED="ld -Bshareable";;
+    FreeBSD*) LDSHARED="$CC -Wl,-Bshareable";;
     NetBSD*) LDSHARED="ld -Bshareable";;
     OpenBSD*) LDSHARED="ld -Bshareable";;
     BSD/OS*) LDSHARED="shlicc -r";;
