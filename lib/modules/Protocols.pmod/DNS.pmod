@@ -424,12 +424,12 @@ class client
 
 #if constant(RegGetKeyNames)
     foreach(RegGetKeyNames(HKEY_LOCAL_MACHINE,
-			   "SYSTEM\\CurrentControlSet\\Tcpip\\"
+			   "SYSTEM\\CurrentControlSet\\Services\\Tcpip\\"
 			   "Parameters\\Interfaces"), string key)
       {
 	catch {
 	  res += ({ RegGetValue(HKEY_LOCAL_MACHINE,
-				"SYSTEM\\CurrentControlSet\\Tcpip\\"
+				"SYSTEM\\CurrentControlSet\\Services\\Tcpip\\"
 				"Parameters\\Interfaces\\" + key, val) });
 	};
       }
