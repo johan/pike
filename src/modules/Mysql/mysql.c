@@ -376,6 +376,12 @@ static void pike_mysql_reconnect(void)
   socket = PIKE_MYSQL->socket;
   PIKE_MYSQL->socket = NULL;
 
+  if ((val = simple_mapping_string_lookup(PIKE_MYSQL->options,
+					  "connect_options")) &&
+      (val->type == T_INT) && (val->u.integer)) {
+    options = (unsigned int)val->u.integer;
+  }
+
   MYSQL_ALLOW();
 
 #if defined(HAVE_MYSQL_PORT) || defined(HAVE_MYSQL_UNIX_PORT)
@@ -401,12 +407,6 @@ static void pike_mysql_reconnect(void)
 #endif /* HAVE_MYSQL_UNIX_PORT */
 
 #ifdef HAVE_MYSQL_REAL_CONNECT
-  if ((val = simple_mapping_string_lookup(PIKE_MYSQL->options,
-					  "connect_options")) &&
-      (val->type == T_INT) && (val->u.integer)) {
-    options = (unsigned int)val->u.integer;
-  }
-
   socket = mysql_real_connect(mysql, host, user, password,
                               NULL, port, portptr, options);
 #else
