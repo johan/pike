@@ -490,7 +490,7 @@ static struct image_alpha ReadImage(struct buffer *fp, struct tga_header *hdr)
   unsigned char *cmap=NULL, *data;
   int itype=0;
   int really_no_alpha = 0;
-  ptrdiff_t (*myfread)(unsigned char *, int, int, struct buffer *);
+  ptrdiff_t (*myfread)(unsigned char *, size_t, size_t, struct buffer *);
 
   /* Find out whether the image is horizontally or vertically reversed.
      The GIMP likes things left-to-right, top-to-bottom. */
