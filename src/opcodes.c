@@ -401,7 +401,8 @@ void init_opcodes(void)
   }
 
 #ifdef PIKE_USE_MACHINE_CODE
-  instrs_checksum = hashmem(instrs, sizeof(instrs), sizeof(instrs));
+  instrs_checksum = hashmem((const unsigned char*)instrs, sizeof(instrs),
+			    sizeof(instrs));
   /* fprintf(stderr, "Instruction checksum: %d\n", instrs_checksum); */
 #endif /* PIKE_USE_MACHINE_CODE */
 
