@@ -1520,7 +1520,7 @@ void resolv_constant(node *n)
 	}
 	if(!state)
 	{
-	  yyerror("Failed to resolv external constant");
+	  yyerror("Failed to resolve external constant");
 	  push_int(0);
 	  return;
 	}
