@@ -162,7 +162,17 @@ AC_DEFUN(AC_SYS_COMPILER_FLAG,
     ac_link="[$]old_ac_link"
     if grep 'unrecognized option' <conftezt.out.2 >/dev/null; then
       pike_cv_option_$2=no
-    else :; fi
+    else
+      # gcc/FreeBSD-4.6/alpha says the following regarding -O2:
+      #
+      # cc1: warning: 
+      # ***
+      # ***     The -O2 flag TRIGGERS KNOWN OPTIMIZER BUGS ON THIS PLATFORM
+      # ***
+      if grep -i 'optimizer bugs' <conftezt.out.2 >/dev/null; then
+        pike_cv_option_$2=no
+      else :; fi
+    fi
     rm conftezt.out.2
   ])
   
