@@ -1722,7 +1722,7 @@ void pike_module_init(void)
   set_gc_mark_callback(gc_mark_file_struct);
 
   file_program=end_program();
-  add_program_constant("File",file_program,0);
+  add_program_constant("file",file_program,0);
 
   port_setup_program();
 
