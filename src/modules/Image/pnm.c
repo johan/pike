@@ -1,5 +1,10 @@
 /* $Id$ */
 
+/*
+**! module Image
+**! class image
+*/
+
 #include "global.h"
 
 #include <math.h>
@@ -141,6 +146,27 @@ static char* img_frompnm(struct pike_string *s)
    return NULL;
 }
 
+/*
+**! method string toppm()
+**!	Returns PPM (P6, binary pixmap) data from the
+**!     current image object.
+**! returns PPM data
+**! see also: frompnm, fromgif
+**!
+**! method object|string frompnm(string pnm)
+**! method object|string fromppm(string pnm)
+**!	Reads a PNM (PBM, PGM or PPM in ascii or binary)
+**!	to the called image object.
+**!
+**!	The method accepts P1 through P6 type of PNM data.
+**!
+**!	"fromppm" is an alias for "frompnm".
+**! returns the called object or a hint of what wronged.
+**! arg string pnm
+**!	pnm data, as a string
+**! see also: toppm, fromgif
+*/
+
 void image_toppm(INT32 args)
 {
    char buf[80];
@@ -156,7 +182,6 @@ void image_toppm(INT32 args)
    free_string(a);
    free_string(b);
 }
-
 
 void image_frompnm(INT32 args)
 {

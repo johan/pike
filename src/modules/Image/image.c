@@ -1733,13 +1733,20 @@ void image_select_from(INT32 args)
 **!	  ({0,-1, 2})}), 128,128,128, 5
 **!	</pre>
 **!
+**!	This function is not very fast, and it's hard to 
+**!	optimize it more, not using assembler.
+**!
 **! returns the new image object
 **!
 **! arg array(array(int|array(int)))
 **!     the matrix; innermost is a value or an array with red, green, blue
 **!     values for red, green, blue separation.
-**!	
-**!	
+**! arg int r
+**! arg int g
+**! arg int b
+**!	base level of result, default is zero
+**! arg int|float div
+**!	division factor, default is 1.0.
 */
 
 

@@ -1,5 +1,10 @@
 #include <config.h>
 
+/*
+**! module Image
+**! class font
+*/
+
 /* $Id$ */
 
 #include "global.h"
