@@ -4125,7 +4125,7 @@ void gc_zap_ext_weak_refs_in_multisets (void)
 size_t gc_free_all_unreferenced_multisets (void)
 {
   struct multiset *l, *next;
-  size_t freed = 0;
+  size_t unreferenced = 0;
 
   for (l = gc_internal_multiset; l; l = next) {
     if (gc_do_free (l)) {
@@ -4138,12 +4138,12 @@ size_t gc_free_all_unreferenced_multisets (void)
       }
       gc_free_extra_ref (l);
       SET_NEXT_AND_FREE (l, free_multiset);
-      freed++;
     }
     else next = l->next;
+    unreferenced++;
   }
 
-  return freed;
+  return unreferenced;
 }
 
 void init_multiset()
@@ -5676,7 +5676,7 @@ void gc_cycle_check_all_multisets(void)
 size_t gc_free_all_unreferenced_multisets(void)
 {
   struct multiset *l,*next;
-  size_t freed = 0;
+  size_t unreferenced = 0;
 
   for(l=gc_internal_multiset;l;l=next)
   {
@@ -5688,13 +5688,13 @@ size_t gc_free_all_unreferenced_multisets(void)
 
       gc_free_extra_ref(l);
       SET_NEXT_AND_FREE(l, free_multiset);
-      freed++;
     }else{
       next=l->next;
     }
+    unreferenced++;
   }
 
-  return freed;
+  return unreferenced;
 }
 
 void count_memory_in_multisets(INT32 *num_, INT32 *size_)

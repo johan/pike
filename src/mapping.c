@@ -2396,7 +2396,7 @@ size_t gc_free_all_unreferenced_mappings(void)
 {
   struct mapping *m,*next;
   struct mapping_data *md;
-  size_t freed = 0;
+  size_t unreferenced = 0;
 
   for(m=gc_internal_mapping;m;m=next)
   {
@@ -2421,15 +2421,15 @@ size_t gc_free_all_unreferenced_mappings(void)
 #endif
       gc_free_extra_ref(m);
       SET_NEXT_AND_FREE(m, free_mapping);
-      freed++;
     }
     else
     {
       next=m->next;
     }
+    unreferenced++;
   }
 
-  return freed;
+  return unreferenced;
 }
 
 #ifdef PIKE_DEBUG

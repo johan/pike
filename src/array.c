@@ -2247,7 +2247,7 @@ void gc_zap_ext_weak_refs_in_arrays(void)
 size_t gc_free_all_unreferenced_arrays(void)
 {
   struct array *a,*next;
-  size_t freed = 0;
+  size_t unreferenced = 0;
 
   for (a = gc_internal_array; a != &weak_empty_array; a = next)
   {
@@ -2263,15 +2263,15 @@ size_t gc_free_all_unreferenced_arrays(void)
 
       gc_free_extra_ref(a);
       SET_NEXT_AND_FREE(a, free_array);
-      freed++;
     }
     else
     {
       next=a->next;
     }
+    unreferenced++;
   }
 
-  return freed;
+  return unreferenced;
 }
 
 

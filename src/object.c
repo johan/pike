@@ -1726,7 +1726,7 @@ void gc_zap_ext_weak_refs_in_objects(void)
 size_t gc_free_all_unreferenced_objects(void)
 {
   struct object *o,*next;
-  size_t freed = 0;
+  size_t unreferenced = 0;
 
   for(o=gc_internal_object; o; o=next)
   {
@@ -1743,13 +1743,13 @@ size_t gc_free_all_unreferenced_objects(void)
 
       gc_free_extra_ref(o);
       SET_NEXT_AND_FREE(o,free_object);
-      freed++;
     }else{
       next=o->next;
     }
+    unreferenced++;
   }
 
-  return freed;
+  return unreferenced;
 }
 
 struct magic_index_struct
