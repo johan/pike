@@ -4495,6 +4495,34 @@ static struct pike_type *debug_low_make_pike_type(unsigned char *type_string,
     *cont = type_string + 6;	/* 1 + sizeof(INT32) + 1 */
     return mk_type(T_OBJECT, (void *)(ptrdiff_t)(type_string[1]),
 		   (void *)(ptrdiff_t)extract_type_int(type_string+2), 0);
+  case PIKE_T_NAME:
+    {
+      int size_shift = type_string[1]&127;
+      struct pike_string *str;
+      INT32 bytes;
+      switch(size_shift) {
+      case 0:
+	bytes = strlen(type_string+2);
+	break;
+      case 1:
+	for(bytes=0; ; bytes+=2)
+	  if(!type_string[bytes+3] && !type_string[bytes+2])
+	    break;
+	break;
+      case 2:
+	for(bytes=0; ; bytes+=4)
+	  if(!type_string[bytes+5] && !type_string[bytes+4] &&
+	     !type_string[bytes+3] && !type_string[bytes+2])
+	    break;
+	break;
+      }
+      str = begin_wide_shared_string(bytes>>size_shift, size_shift);
+      MEMCPY(str->str, type_string+2, bytes);
+      return mk_type(PIKE_T_NAME, (void *)end_shared_string(str),
+		     low_make_pike_type(type_string + 2 + bytes +
+					(1<<size_shift), cont),
+		     PT_COPY_CDR);
+    }
   default:
     Pike_fatal("compile_type_string(): Error in type string %d.\n", type);
     /* NOT_REACHED */

@@ -189,6 +189,9 @@ struct svalue
 #define tRef tOr(tString,tComplex)
 #define tIfnot(X,Y) tAnd(tNot(X),Y)
 #define tAny tOr(tVoid,tMix)
+#define tName(X,Y) "\361\0"X"\0"Y
+#define tName1(X,Y) "\361\1"X"\0\0"Y
+#define tName2(X,Y) "\361\2"X"\0\0\0\0"Y
 
 #define tSimpleCallable tOr3(tArray,tFunction,tObj)
 #define tCallable tOr3(tArr(tSimpleCallable),tFunction,tObj)
