@@ -168,7 +168,7 @@ void reorder(char *memory, INT32 nitems, INT32 size,INT32 *order)
 
 size_t hashmem(const unsigned char *a, size_t len, size_t mlen)
 {
-  unsigned INT32 ret;
+  size_t ret;
 
   ret = 9248339*len;
   if(len<mlen)
@@ -220,17 +220,7 @@ size_t hashmem(const unsigned char *a, size_t len, size_t mlen)
     }
   }
 #else
-  for(
-#if SIZEOF_CHAR_P == 4
-      mlen >>= 3;
-#else /* sizeof(char *) != 4 */
-#if SIZEOF_CHAR_P == 8
-      mlen >>= 4;
-#else /* sizeof(char *) != 8 */
-      mlen /= 2*sizeof(size_t);
-#endif /* sizeof(char *) == 8 */
-#endif /* sizeof(char *) == 4 */
-      --mlen >= 0;)
+  for(mlen >>= 3; mlen--;)
   {
     register size_t t1,t2;
     t1= *(a++);
