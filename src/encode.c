@@ -4019,9 +4019,11 @@ static void decode_value2(struct decode_data *data)
 	  if (PIKE_CONCAT(local_num_, NAME) != p->PIKE_CONCAT(num_,NAME)) { \
 	    ref_push_program (p);					\
 	    decode_error(Pike_sp - 1, NULL,				\
-			 "Value mismatch for num_" TOSTR(NAME) ": %d != %d\n", \
+			 "Value mismatch for num_" TOSTR(NAME) ": "	\
+			 "%d != %d (bytecode method: %d)\n",		\
 			 PIKE_CONCAT(local_num_, NAME),			\
-			 p->PIKE_CONCAT(num_, NAME));			\
+			 p->PIKE_CONCAT(num_, NAME),			\
+			 bytecode_method);				\
           }
 #include "program_areas.h"
 
