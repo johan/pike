@@ -9637,6 +9637,7 @@ test_any([[
     // OSF/1 issues two SIGTRAPS before the program starts executing.
     werror("Got extra SIGTRAP, OSF/1?\n");
     proc->cont();
+    code = proc->wait();
     if (code != -2) {
       proc->kill(signum("KILL"));
       return sprintf("Bad fallback returncode from wait():%d (expected -2)",
