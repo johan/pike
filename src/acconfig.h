@@ -37,7 +37,7 @@
 #undef AUTO_BIGNUM
 
 /* Define this to enable experimental code for multicpu machines */
-#define PIKE_RUN_UNLOCKED
+#undef PIKE_RUN_UNLOCKED
 
 /* Define this if you want to enable the shared nodes mode of the optimizer. */
 #undef SHARED_NODES
