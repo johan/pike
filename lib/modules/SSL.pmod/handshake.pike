@@ -17,6 +17,8 @@
 
 //#define SSL3_PROFILING
 
+#if constant(SSL.Cipher.DHKeyExchange)
+
 import .Constants;
 
 #ifdef SSL3_DEBUG
@@ -1217,3 +1219,5 @@ void create(int is_server, void|SSL.context ctx)
     send_packet(client_hello());
   }
 }
+
+#endif // constant(SSL.Cipher.DHKeyExchange)

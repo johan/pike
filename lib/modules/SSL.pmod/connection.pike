@@ -11,6 +11,8 @@
 //! sending packets, processing handshake packets, and providing a clear
 //! text packages for some application.
 
+#if constant(SSL.Cipher.CipherAlgorithm)
+
 .state current_read_state;
 .state current_write_state;
 string left_over;
@@ -392,3 +394,4 @@ string|int got_data(string|int s)
   return closing ? 1 : res;
 }
 
+#endif

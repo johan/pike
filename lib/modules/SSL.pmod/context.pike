@@ -9,6 +9,8 @@
 //! certificate, the server's private key(s), etc. It also includes the
 //! session cache.
 
+#if constant(Gmp.mpz) && constant(Crypto.Hash)
+
 import .Constants;
 
 //! The server's private key
@@ -271,3 +273,5 @@ private void update_trusted_issuers()
     trusted_issuers_cache += ({ chain });
   }
 }
+
+#endif // constant(Gmp.mpz) && constant(Crypto.Hash)

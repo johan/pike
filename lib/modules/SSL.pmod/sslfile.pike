@@ -3,6 +3,8 @@
 /* $Id$
  */
 
+#if constant(SSL.Cipher.CipherAlgorithm)
+
 //! Interface similar to @[Stdio.File].
 //!
 //! @ul
@@ -1404,3 +1406,5 @@ static int ssl_close_callback (int called_from_real_backend)
   // isn't clobbered by later I/O.
   return -1;
 }
+
+#endif

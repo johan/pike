@@ -3,6 +3,8 @@
 
 #pike __REAL_VERSION__
 
+#if constant(Crypto.Hash)
+
 //! Encryption and MAC algorithms used in SSL.
 
 import .Constants;
@@ -472,3 +474,5 @@ array lookup(int suite,int version)
 
   return ({ ke_method, res });
 }
+
+#endif // constant(Crypto.Hash)

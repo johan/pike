@@ -9,6 +9,8 @@
 
 #define PORT 25678
 
+#if constant(SSL.Cipher.CipherAlgorithm)
+
 import Stdio;
 
 inherit "sslport";
@@ -160,3 +162,4 @@ void create()
   sslport::create();
 }
 
+#endif

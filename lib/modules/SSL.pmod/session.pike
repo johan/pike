@@ -15,6 +15,8 @@
 //! It is also possible to change to a new session in the middle of a
 //! connection.
 
+#if constant(SSL.Cipher.CipherSpec)
+
 import .Constants;
 static constant Struct = ADT.struct;
 
@@ -323,3 +325,5 @@ array(.state) new_client_states(string client_random, string server_random,
   }
   return ({ read_state, write_state });
 }
+
+#endif // constant(SSL.Cipher.CipherSpec)

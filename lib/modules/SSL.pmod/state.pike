@@ -8,6 +8,8 @@
 //! stream of packets, and operates in either decryption or encryption
 //! mode.
 
+#if constant(SSL.Cipher.MACAlgorithm)
+
 import .Constants;
 
 void create(object/*(.session)*/ s)
@@ -168,4 +170,4 @@ Alert|.packet encrypt_packet(.packet packet, int version)
   return [object(Alert)]packet->check_size(version, 2048) || packet;
 }
 
-
+#endif // constant(SSL.Cipher.MACAlgorithm)
