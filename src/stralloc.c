@@ -728,6 +728,7 @@ void really_free_string(struct pike_string *s)
 #endif
   unlink_pike_string(s);
   debug_free((char *)s,DMALLOC_LOCATION(),1);
+  if (Pike_in_gc) remove_marker(s);
 }
 
 void debug_free_string(struct pike_string *s)

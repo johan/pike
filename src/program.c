@@ -942,7 +942,7 @@ void really_free_program(struct program *p)
   FREE_PROT(p);
   dmfree((char *)p);
 
-  GC_FREE();
+  GC_FREE(p);
 }
 
 #ifdef PIKE_DEBUG
@@ -3344,7 +3344,7 @@ static void exit_trampoline(struct object *o)
 static void gc_check_frame(struct pike_frame *f)
 {
   if(!f) return;
-  if(!debug_gc_check(f,T_UNKNOWN,f) && f->malloced_locals)
+  if(!debug_gc_check_nongarbed(f,T_UNKNOWN,f) && f->malloced_locals)
   {
     if(f->current_object) gc_check(f->current_object);
     if(f->context.prog)   gc_check(f->context.prog);

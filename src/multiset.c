@@ -66,7 +66,7 @@ void really_free_multiset(struct multiset *l)
   if(l->next)  l->next->prev = l->prev;
     
   free((char *)l);
-  GC_FREE();
+  GC_FREE(l);
 }
 
 
