@@ -460,6 +460,7 @@ void f_all_threads(INT32 args);
 #define th_init_programs()
 #define th_self() ((void*)0)
 #define co_signal(X)
+#define co_broadcast(X)
 #endif /* _REENTRANT */
 
 #ifdef __NT__
