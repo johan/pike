@@ -122,7 +122,7 @@ void check_all_args(const char *fnname, int args, ... )
  * many arguments were actually matched.
  * usage: get_args(sp-args, args, "%i",&an_int)
  * format specifiers:
- *   %i: INT32
+ *   %i: INT_TYPE
  *   %s: char *				Only 8bit strings
  *   %S: struct pike_string *		Only 8bit strings
  *   %W: struct pike_string *		Allow wide strings
