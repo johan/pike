@@ -2316,12 +2316,14 @@ static void f_nt_uname(INT32 args)
     case PROCESSOR_ARCHITECTURE_SHX:
       switch (sysinfo.dwProcessorType) {
       case PROCESSOR_HITACHI_SH3:
+      case PROCESSOR_SHx_SH3:
         push_text("SH3");
 	break;
       case PROCESSOR_HITACHI_SH3E:
         push_text("SH3e");
 	break;
       case PROCESSOR_HITACHI_SH4:
+      case PROCESSOR_SHx_SH4:
         push_text("SH4");
 	break;
       default:
