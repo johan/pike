@@ -5,6 +5,7 @@
 #ifndef IMAGE_ENCODINGS_ENCODINGS_H
 #define IMAGE_ENCODINGS_ENCODINGS_H
 
+void image_pcx_decode(INT32 args);
 void image_pvr_f__decode(INT32 args);
 void image_pvr_f_decode_header(INT32 args);
 void image_tim_f__decode(INT32 args);

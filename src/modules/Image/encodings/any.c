@@ -200,6 +200,12 @@ void image_any__decode(INT32 args)
 	 goto unknown_format;
 
       default:
+	if( sp[-args].u.string->str[0] == 10 ) {
+	  /* PCX */
+	  image_pcx_decode(1);
+	  push_text("image/x-pcx");
+	  goto simple_image;
+	}
 unknown_format:
 	 Pike_error("Unknown image format.\n");	 
    }
