@@ -599,6 +599,7 @@ static void emit_builtin_svalue(char *func)
 static int do_docode2(node *n, int flags)
 {
   ptrdiff_t tmp1,tmp2,tmp3;
+  int ret;
 
   if(!n) return 0;
 
@@ -1215,7 +1216,8 @@ static int do_docode2(node *n, int flags)
   }
 
   case ' ':
-    return do_docode(CAR(n),0)+do_docode(CDR(n),DO_LVALUE);
+    ret = do_docode(CAR(n),0);
+    return ret + do_docode(CDR(n),DO_LVALUE);
 
   case F_FOREACH:
   {
@@ -1974,7 +1976,8 @@ static int do_docode2(node *n, int flags)
   }
 
   case F_LVALUE_LIST:
-    return do_docode(CAR(n),DO_LVALUE)+do_docode(CDR(n),DO_LVALUE);
+    ret = do_docode(CAR(n),DO_LVALUE);
+    return ret + do_docode(CDR(n),DO_LVALUE);
 
     case F_ARRAY_LVALUE:
       tmp1=do_docode(CAR(n),DO_LVALUE);
