@@ -1459,6 +1459,7 @@ string describe_backtrace(mixed trace, void|int linewidth)
     {
       linewidth=_static_modules.files()->_stdin->tcgetattr()->columns;
     };
+    if(linewidth<10) linewidth=99999;
   }
 
   if((arrayp(trace) && sizeof(trace)==2 && stringp(trace[0])) ||
