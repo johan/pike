@@ -1593,8 +1593,8 @@ void check_all_programs()
 	if(cache[e].id<0 || cache[e].id > current_program_id)
 	  fatal("Error in find_function_cache[%d].id\n",e);
 
-	if(fun < -1 || fun > 65536)
-	  fatal("Error in find_function_cache[%d].name\n",e);
+	if(cache[e].fun < -1 || cache[e].fun > 65536)
+	  fatal("Error in find_function_cache[%d].fun\n",e);
       }
     }
   }
