@@ -194,7 +194,7 @@ static void f_cp(INT32 args)
   push_int(ret);
 }
 
-static void push_tchar(TCHAR *buf, DWORD len)
+static void push_tchar(const TCHAR *buf, DWORD len)
 {
   push_string(make_shared_binary_pcharp(
     MKPCHARP(buf,my_log2(sizeof(TCHAR))),len));
