@@ -565,16 +565,8 @@ static void image_ttf_face_names(INT32 args)
       push_text(hasname[what]);
       
       if (ihas==30)
-      {
-	 /* replace this unicode magic when pike has WIDESTRINGS */
-	 
-	 struct pike_string *str =
-	    begin_shared_string(b->item[4].u.string->len/2);
-	 int z,y;
-	 for (z=1,y=0; z<b->item[4].u.string->len; z+=2,y++)
-	    str->str[y]=b->item[4].u.string->str[z];
-	 push_string(end_shared_string(str));
-      }
+	 push_string(make_shared_binary_string1((p_wchar1 *)b->item[4].u.string->str,
+						b->item[4].u.string->len/2));
       else
 	 push_svalue(b->item+4);
       
