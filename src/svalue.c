@@ -1236,12 +1236,9 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 
 
     case T_FUNCTION:
-      /* FIXME: What if the functionname is a wide-string?
-       * /grubba 1999-10-21
-       */
       if(s->subtype == FUNCTION_BUILTIN)
       {
-	my_binary_strcat(s->u.efun->name->str,s->u.efun->name->len);
+	dsv_add_string_to_buf(s->u.efun->name);
       }else{
 	struct object *obj = s->u.object;
 	struct program *prog = obj->prog;
@@ -1316,7 +1313,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 		  Pike_interpreter.trace_level=save_t_flag;
 		
 		  dsv_add_string_to_buf( sp[-1].u.string );
-		  my_binary_strcat(name->str,name->len);
+		  dsv_add_string_to_buf(name);
 
 		  pop_stack();
 		  END_CYCLIC();
@@ -1334,7 +1331,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	  }
 
 	  if(name) {
-	    my_binary_strcat(name->str,name->len);
+	    dsv_add_string_to_buf(name);
 	    break;
 	  }
 	  else if (!prog) {
