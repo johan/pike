@@ -1894,6 +1894,7 @@ PMOD_EXPORT void init_string_builder(struct string_builder *s, int mag)
   s->malloced=256;
   s->s=begin_wide_shared_string(256,mag);
   s->s->len=0;
+  s->s->str[0] = 0;
   s->known_shift=0;
 }
 
@@ -1902,6 +1903,7 @@ PMOD_EXPORT void init_string_builder_alloc(struct string_builder *s, ptrdiff_t l
   s->malloced=length;
   s->s=begin_wide_shared_string(length,mag);
   s->s->len=0;
+  s->s->str[0] = 0;
   s->known_shift=0;
 }
 
