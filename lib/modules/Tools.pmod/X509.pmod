@@ -164,7 +164,7 @@ string make_selfsigned_dsa_certificate(Crypto.dsa dsa, int ttl, array name,
 }
 
 //!
-string rsa_sign_digest(Crypto.rsa rsa, object digest_id, string digest)
+string rsa_sign_digest(Crypto.RSA rsa, object digest_id, string digest)
 {
   Sequence digest_info = Sequence( ({ Sequence( ({ digest_id, Null() }) ),
 				      OctetString(digest) }) );
@@ -172,7 +172,7 @@ string rsa_sign_digest(Crypto.rsa rsa, object digest_id, string digest)
 }
 
 //!
-int(0..1) rsa_verify_digest(Crypto.rsa rsa, object digest_id,
+int(0..1) rsa_verify_digest(Crypto.RSA rsa, object digest_id,
 		      string digest, string s)
 {
   Sequence digest_info = Sequence( ({ Sequence( ({ digest_id, Null() }) ),
@@ -181,7 +181,7 @@ int(0..1) rsa_verify_digest(Crypto.rsa rsa, object digest_id,
 }
 
 //!
-string make_selfsigned_rsa_certificate(Crypto.rsa rsa, int ttl, array name,
+string make_selfsigned_rsa_certificate(Crypto.RSA rsa, int ttl, array name,
 				       array|void extensions)
 {
   Integer serial = Integer(1); /* Hard coded serial number */
@@ -219,14 +219,14 @@ class Verifier {
   int(0..1) verify(object,string,string);
   this_program init(string key);
 
-  optional Crypto.rsa rsa; // Ugly
+  optional Crypto.RSA rsa; // Ugly
 }
 
 //!
 class rsa_verifier
 {
   inherit Verifier;
-  Crypto.rsa rsa;
+  Crypto.RSA rsa;
 
   constant type = "rsa";
 

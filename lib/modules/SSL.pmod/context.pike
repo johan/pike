@@ -12,7 +12,7 @@
 import .Constants;
 
 //! The server's private key
-Crypto.rsa rsa;
+Crypto.RSA rsa;
 
 /* For client authentication */
 
@@ -95,8 +95,8 @@ int verify_certificates = 0;
 //! message with the (public part of) the long_rsa key.
 //!
 //! Otherwise, dont send any server_key_exchange message.
-Crypto.rsa long_rsa;
-Crypto.rsa short_rsa;
+Crypto.RSA long_rsa;
+Crypto.RSA short_rsa;
 
 //! Servers dsa key.
 Crypto.dsa dsa;

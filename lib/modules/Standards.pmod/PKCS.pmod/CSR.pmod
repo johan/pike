@@ -18,8 +18,8 @@ class CSR_Attributes
 }
 
 //!
-Sequence build_csr(Crypto.rsa rsa, object name,
-		 mapping(string:array(object)) attributes)
+Sequence build_csr(Crypto.RSA rsa, object name,
+		   mapping(string:array(object)) attributes)
 {
   Sequence info = Sequence( ({ Integer(0), name,
 			       .RSA.build_rsa_public_key(rsa),
@@ -29,7 +29,7 @@ Sequence build_csr(Crypto.rsa rsa, object name,
 		      Sequence(
 			       ({ .Identifiers.rsa_md5_id, Null() }) ),
 		      BitString(rsa->sign(info->get_der(),
-					  Crypto.md5)
+					  Crypto.MD5)
 				->digits(256)) }) );
 }
 

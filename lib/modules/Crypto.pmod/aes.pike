@@ -3,15 +3,15 @@
  *
  */
 
-//! Advanced Encryption Standard (AES), previously known as
-//! @[Crypto.rijndael].
+// Advanced Encryption Standard (AES), previously known as
+// @[Crypto.rijndael].
 
 #pike __REAL_VERSION__
 
-inherit Crypto.rijndael;
+inherit Nettle.AES_State;
 
-//! Returns the string @expr{"AES"@}.
-string name()
-{
-  return "AES";
-}
+string name() { return "AES"; }
+
+int query_key_length() { return 32; }
+int query_block_size() { return block_size(); }
+string crypt_block(string p) { return crypt(p); }

@@ -52,7 +52,7 @@ int certificate_state;
 int expect_change_cipher; /* Reset to 0 if a change_cipher message is
 			   * received */
 
-Crypto.rsa temp_key; /* Key used for session key exchange (if not the same
+Crypto.RSA temp_key; /* Key used for session key exchange (if not the same
 		      * as the server's certified key) */
 
 .Cipher.DHKeyExchange dh_state; /* For diffie-hellman key exchange */
@@ -1072,7 +1072,7 @@ int(-1..1) handle_handshake(int type, string data, string raw)
 
 	if(public_key->type == "rsa")
 	  {
-	    Crypto.rsa rsa = Crypto.rsa();
+	    Crypto.RSA rsa = Crypto.RSA();
 	    rsa->set_public_key(public_key->rsa->get_n(),
 				public_key->rsa->get_e());
 	    context->rsa = rsa;
@@ -1119,7 +1119,7 @@ int(-1..1) handle_handshake(int type, string data, string raw)
 			    backtrace()));
 	  return -1;
 	}
-	Crypto.rsa rsa = Crypto.rsa();
+	Crypto.RSA rsa = Crypto.RSA();
 	rsa->set_public_key(n, e);
 	context->rsa = rsa;
 	break;
