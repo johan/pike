@@ -20,6 +20,16 @@
  * Functions
  */
 
+string hex_to_string(string h)
+{
+  array c = allocate(strlen(h) / 2);
+  int i;
+
+  for (i = 0; i<sizeof(c); i++)
+    sscanf(h[2*i..2*i+1], "%x", c[i]);
+  return sprintf("%@c", c);
+}
+
 int main(int argc, string *argv)
 {
   int encrypt = 1;
