@@ -627,7 +627,10 @@ void really_free_object(struct object *o)
     FREE_PROT(o);
 
     free((char *)o);
-    GC_FREE_OBJ();
+
+    /* Not using GC_FREE_OBJ here, since it balks in gc pass 3. This
+     * case is ok, since no destroy() is called. */
+    LOW_GC_FREE();
   }
 }
 
