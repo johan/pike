@@ -1797,7 +1797,7 @@ PMOD_EXPORT void o_divide(void)
 	  
 	  for(last=0,e=0;e<size-1;e++)
 	  {
-	    pos=(INT32)((e+1)*len);
+	    pos = DO_NOT_WARN((ptrdiff_t)((e+1)*len));
 	    a->item[e].u.string=string_slice(sp[-2].u.string,
 					     last,
 					     pos-last);

@@ -487,7 +487,8 @@ PMOD_EXPORT ptrdiff_t array_search(struct array *v, struct svalue *s,
  * Slice a pice of an array (nondestructively)
  * return an array consisting of v[start..end-1]
  */
-PMOD_EXPORT struct array *slice_array(struct array *v,INT32 start,INT32 end)
+PMOD_EXPORT struct array *slice_array(struct array *v, ptrdiff_t start,
+				      ptrdiff_t end)
 {
   struct array *a;
 
@@ -516,7 +517,9 @@ PMOD_EXPORT struct array *slice_array(struct array *v,INT32 start,INT32 end)
  * Slice a pice of an array (nondestructively)
  * return an array consisting of v[start..end-1]
  */
-PMOD_EXPORT struct array *friendly_slice_array(struct array *v,INT32 start,INT32 end)
+PMOD_EXPORT struct array *friendly_slice_array(struct array *v,
+					       ptrdiff_t start,
+					       ptrdiff_t end)
 {
   struct array *a;
 

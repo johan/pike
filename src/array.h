@@ -105,8 +105,11 @@ PMOD_EXPORT struct array *array_shrink(struct array *v,INT32 size);
 PMOD_EXPORT struct array *array_remove(struct array *v,INT32 index);
 PMOD_EXPORT ptrdiff_t array_search(struct array *v, struct svalue *s,
 				   ptrdiff_t start);
-PMOD_EXPORT struct array *slice_array(struct array *v,INT32 start,INT32 end);
-PMOD_EXPORT struct array *friendly_slice_array(struct array *v,INT32 start,INT32 end);
+PMOD_EXPORT struct array *slice_array(struct array *v, ptrdiff_t start,
+				      ptrdiff_t end);
+PMOD_EXPORT struct array *friendly_slice_array(struct array *v,
+					       ptrdiff_t start,
+					       ptrdiff_t end);
 PMOD_EXPORT struct array *copy_array(struct array *v);
 PMOD_EXPORT void check_array_for_destruct(struct array *v);
 PMOD_EXPORT INT32 array_find_destructed_object(struct array *v);
