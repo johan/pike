@@ -156,7 +156,7 @@ PMOD_EXPORT unsigned INT32 my_rand(void)
 
 #ifndef CONFIGURE_TEST
 
-PMOD_EXPORT void *pike_realloc(void *ptr, size_t sz)
+PMOD_EXPORT /*@null@*/ void *pike_realloc(void *ptr, size_t sz)
 {
   if (!ptr) return malloc(sz);
 #ifndef HAVE_WORKING_REALLOC_NULL
@@ -186,14 +186,15 @@ long STRTOL(const char *str,char **ptr,int base)
     *ptr = (char *)str;		/* in case no number is formed */
   if (base < 0 || base > MBASE)
     return (0);			/* base is invalid -- should be a fatal error */
-  if (!isalnum(c = *str)) {
+  if (!isalnum(c = (int)*str)) {
     while (ISSPACE(c))
-      c = *++str;
+      c = (int)*++str;
     switch (c) {
     case '-':
       neg++;
-    case '+':			/* fall-through */
-      c = *++str;
+      /*@fallthrough@*/
+    case '+':
+      c = (int)*++str;
     }
   }
 
@@ -226,7 +227,8 @@ long STRTOL(const char *str,char **ptr,int base)
     }
   }
 
-  for (val = DIGIT(c); isalnum(c = *++str) && (xx = DIGIT(c)) < base; ) {
+  for (val = (unsigned long)DIGIT(c);
+       isalnum(c = *++str) && (xx = DIGIT(c)) < base; ) {
     if (val > mul_limit || (val == mul_limit && xx > add_limit))
       overflow = 1;
     else

@@ -303,21 +303,21 @@ PMOD_EXPORT unsigned INT16 EXTRACT_UWORD_(unsigned char *p);
 PMOD_EXPORT INT16 EXTRACT_WORD_(unsigned char *p);
 PMOD_EXPORT INT32 EXTRACT_INT_(unsigned char *p);
 #else
-static INLINE unsigned EXTRACT_UWORD_(unsigned char *p)
+/*@unused@*/ static INLINE unsigned EXTRACT_UWORD_(unsigned char *p)
 {
   unsigned INT16 a;
   MEMCPY((char *)&a,p,sizeof(a));
   return a;
 }
 
-static INLINE int EXTRACT_WORD_(unsigned char *p)
+/*@unused@*/ static INLINE int EXTRACT_WORD_(unsigned char *p)
 {
   INT16 a;
   MEMCPY((char *)&a,p,sizeof(a));
   return a;
 }
 
-static INLINE INT32 EXTRACT_INT_(unsigned char *p)
+/*@unused@*/ static INLINE INT32 EXTRACT_INT_(unsigned char *p)
 {
   INT32 a;
   MEMCPY((char *)&a,p,sizeof(a));
@@ -334,7 +334,7 @@ static INLINE INT32 EXTRACT_INT_(unsigned char *p)
 PMOD_EXPORT unsigned INT32 my_rand(void);
 PMOD_EXPORT void my_srand(INT32 seed);
 
-PMOD_EXPORT void *pike_realloc(void *ptr, size_t sz);
+PMOD_EXPORT /*@null@*/ void *pike_realloc(void *ptr, size_t sz);
 
 #ifdef OWN_GETHRTIME
 void own_gethrtime_init(void);
