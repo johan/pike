@@ -1352,6 +1352,11 @@ test_any([[
   return var;
 ]], 1);
 
+test_do([[
+  // Save our constants for future use...
+  add_constant("__saved_constants__", ([]) + all_constants());
+]])
+
 test_any([[
  Stdio.write_file("testsuite_test.pmod",
 	#"
@@ -1628,6 +1633,14 @@ test_do([[
   Stdio.recursive_rm ("testsuite_test_dir.pmod");
 ]]);
 ]]);
+
+test_do([[
+  // Restore constants that were zapped by the various masters used above.
+  foreach(__saved_constants__; string const; mixed val) {
+    add_constant(const, val);
+  }
+  add_constant("__saved_constants__");  
+]])
 
 test_compile_any([[int log() { return 17; } class Greta { int hanna() { return log(); } }]])
 test_compile_any([[int kajsa(int a,int b) { return 17; } class Jenny { int kajsa() { return 17; } class Greta { int hanna() { return kajsa(); } } }]])
