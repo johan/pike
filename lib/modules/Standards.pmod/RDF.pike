@@ -1,5 +1,7 @@
 // $Id$
 
+#pike __REAL_VERSION__
+
 //! Represents an RDF domain which can contain any number of complete
 //! statements.
 

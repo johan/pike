@@ -2,6 +2,8 @@
 
 // $Id$
 
+#pike __REAL_VERSION__
+
 // Source directory
 string srcdir;
 string make="make";

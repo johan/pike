@@ -1,6 +1,8 @@
 #! /usr/bin/env pike
 // -*- pike -*- $Id$
 
+#pike __REAL_VERSION__
+
 string version = ("$Revision$"/" ")[1];
 int verbosity = 1; // more output
 int overwrite = 1; // no backups

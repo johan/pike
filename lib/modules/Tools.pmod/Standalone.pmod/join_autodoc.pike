@@ -7,6 +7,8 @@
  * Usage: pike -x join_autodoc --post-process dest.xml files_to_join.xml [...]
  */
 
+#pike __REAL_VERSION__
+
 constant description = "Joins AutoDoc extractions.";
 mapping sub_cache = ([]);
 

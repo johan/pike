@@ -3,6 +3,8 @@
 //  $Id$
 //
 
+#pike __REAL_VERSION__
+
 //! ID3 decoder/encoder.
 //! Supports versions 1.0, 1.1, 2.2-2.4.
 //! For more info see http://www.id3.org

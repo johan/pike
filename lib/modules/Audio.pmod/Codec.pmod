@@ -8,6 +8,8 @@
 
  */
 
+#pike __REAL_VERSION__
+
   mapping codec_map = ([
 #if constant(_Ffmpeg.ffmpeg1)
 	"MP3": ([ "encoder": 0,
