@@ -18,12 +18,19 @@
 //!   Returns an array with the following content:
 //!   @array
 //!     @elem int mode
+//!       Access mode.
 //!     @elem int size
+//!       Size in bytes, or filetype indicator.
 //!     @elem int atime
+//!       Last access time.
 //!     @elem int mtime
+//!       Last modification time.
 //!     @elem int ctime
+//!       Last change time.
 //!     @elem int uid
+//!       User id.
 //!     @elem int gid
+//!       Group id.
 //!   @endarray
 //!
 //!   See @[predef::file_stat()] for a full description of the array.
