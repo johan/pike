@@ -16,7 +16,7 @@ if test x$with_libpcre = xyes ; then
     AC_CHECK_LIB(pcre, pcre_compile, [
       AC_DEFINE(HAVE_LIBPCRE) 
       LIBS="${LIBS-} -lpcre"
-      PIKE_FEATURE_OK(Regexp.PCRE)
+      PIKE_FEATURE(Regexp.PCRE,[yes, (using libpcre)])
     ])
   fi
 fi
