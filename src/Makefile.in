@@ -699,6 +699,8 @@ $(SRCDIR)/builtin.c: $(SRCDIR)/builtin.cmod precompile.sh-stamp $(TMP_BINDIR)/pr
 
 $(SRCDIR)/iterators.c: $(SRCDIR)/iterators.cmod precompile.sh-stamp $(TMP_BINDIR)/precompile.pike
 
+$(SRCDIR)/backend.c: $(SRCDIR)/backend.cmod precompile.sh-stamp $(TMP_BINDIR)/precompile.pike
+
 # UnixWare make needs help to find the source file...
 builtin.o: $(SRCDIR)/builtin.c
 

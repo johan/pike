@@ -942,9 +942,7 @@ void f_get_all_active_fd(INT32 args)
   int i,fds,q, ne;
   struct stat foo;
 
-  ne = fds_size;
-  if( MAX_OPEN_FILEDESCRIPTORS > ne )
-    ne = MAX_OPEN_FILEDESCRIPTORS;
+  ne = MAX_OPEN_FILEDESCRIPTORS;
 
   pop_n_elems(args);
   for (i=fds=0; i<ne; i++)
