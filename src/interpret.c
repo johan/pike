@@ -186,6 +186,12 @@ use_malloc:
     }
   }
 #endif
+#ifdef PROFILING
+#ifdef HAVE_GETHRTIME
+  accounted_time =0;
+  time_base =0;
+#endif
+#endif
 }
 
 void check_stack(INT32 size)
