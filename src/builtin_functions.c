@@ -1396,6 +1396,8 @@ static void f_mktime (INT32 args)
     timezone=tz;
     retval=mktime(&date);
     timezone=save_timezone;
+  }else{
+    retval=mktime(&date);
   }
 #else
   retval=mktime(&date);
