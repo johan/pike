@@ -1,8 +1,16 @@
+define([MY_AC_PROG_CC],
+[
+define(ac_cv_prog_CC,pike_cv_prog_CC)
+AC_PROG_CC
+undefine([ac_cv_prog_CC])
+])
+
 define([AC_LOW_MODULE_INIT],
 [
 # $Id$
 
-AC_PROG_CC
+MY_AC_PROG_CC
+
 AC_DEFINE(POSIX_SOURCE)
 AC_SUBST_FILE(dependencies)
 dependencies=$srcdir/dependencies
