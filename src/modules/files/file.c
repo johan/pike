@@ -1081,8 +1081,7 @@ static void file_open(INT32 args)
 {
   int flags,fd;
   int access;
-  struct pike_string *str;
-  char *flag_str;
+  struct pike_string *str, *flag_str;
   close_fd();
   
   if(args < 2)
@@ -1104,7 +1103,7 @@ static void file_open(INT32 args)
 
   str=sp[-args].u.string;
   
-  flags = parse(flag_str = sp[1-args].u.string->str);
+  flags = parse((flag_str = sp[1-args].u.string)->str);
 
 #ifdef PIKE_SECURITY
   if(!CHECK_SECURITY(SECURITY_BIT_SECURITY))
