@@ -247,6 +247,10 @@ test_compile_error_low([[
  mixed foo(mixed bar) { return 1/foo; }
 ]])
 
+test_compile_error_low([[
+  class A {int wrong = "bogus"; void create() {}}
+  class B {inherit A;}
+]])
 
 
 test_compile([[float x=(gauge { return; },1.0);]])
