@@ -381,7 +381,12 @@ class store
 
     int silent_mode = (data_item == "flags.silent");
 
-    if (server->store(session, message_set, list, mode, silent_mode)) {
+    if (state) {
+      // UID mode.
+      message_set = server->uid_to_local(session, message_set);
+    }
+
+    if (server->store(session, message_set, list, mode, silent_mode, state)) {
       send(tag, "OK");
     } else {
       send(tag, "NO");
