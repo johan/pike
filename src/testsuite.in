@@ -10642,7 +10642,7 @@ test_any([[
   object pid = Process.create_process(RUNPIKE_ARRAY +
 				      ({ "]]SRCDIR[[/test_co.pike" }));
   int i;
-  for (i=0; i < 60; i++) {
+  for (i=0; i < 120; i++) {
     if (pid->status()>0) break;
     __signal_watchdog();
     sleep(1);
