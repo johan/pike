@@ -859,7 +859,7 @@ static void f_fetch_row(INT32 args)
 
   pop_n_elems(args);
 
-  if(!dbquery->cols)
+  if(dbquery->cols==-2)
   {
     f_fetch_fields(0);
     pop_stack();
@@ -1350,6 +1350,11 @@ static void f_big_query_create(INT32 args)
 			    input_callback,
 			    (void *)(bind.bind + bind.bindnum),
 			    bind_output_callback);
+	  if(rc)
+	  {
+	    UNLOCK(dbcon->lock);
+	    ora_error_handler(dbcon->error_handle, rc, "OCiBindDynamic");
+	  }
 	}
       }
   }
