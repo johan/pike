@@ -35,9 +35,13 @@ class Plain
 		    ERROR.BADOPTION:"ERROR.BADOPTION",
 		    ERROR.BADMAGIC :"ERROR.BADMAGIC",
 		    ERROR.UNKNOWN_NODE:"ERROR.UNKNOWN_NODE",
+#if constant(@module@.ERROR.MATCHLIMIT)
 		    ERROR.MATCHLIMIT  :"ERROR.MATCHLIMIT",
-		    ERROR.CALLOUT     :"ERROR.CALLOUT"])[error_no]
-		  ||sprintf("unknown error: %d\n",error_no));
+#endif /* PCRE.ERROR.MATCHLIMIT */
+#if constant(@module@.ERROR.CALLOUT)
+		    ERROR.CALLOUT     :"ERROR.CALLOUT",
+#endif /* PCRE.ERROR.CALLOUT */
+		  ])[error_no] || sprintf("unknown error: %d\n",error_no));
       }
    }
 
