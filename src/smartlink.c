@@ -140,12 +140,13 @@ int main(int argc, char **argv)
 
 #ifdef USE_Wl
   strcat(rpath, "-Wl,-rpath,");
-  rpath += strlen(rpath);
+#elif defined(USE_Wl_R)
+  strcat(rpath, "-Wl,-R");
 #elif defined(USE_R)
   strcat(rpath, "-R");
 #elif defined(USE_LD_LIBRARY_PATH)
   strcat(rpath, "LD_LIBRARY_PATH=");
-#endif /* defined(USE_Wl) || defined(USE_R) || defined(USE_LD_LIBRARY_PATH) */
+#endif /* defined(USE_Wl) || defined(USE_Wl_R) || defined(USE_R) || defined(USE_LD_LIBRARY_PATH) */
   rpath += strlen(rpath);
 
   new_argv[new_argc++] = argv[1];
@@ -233,7 +234,7 @@ int main(int argc, char **argv)
     if (linking) {
       new_argv[new_argc++] = full_rpath;
     }
-#elif defined(USE_R)
+#elif defined(USE_R) || defined(USE_Wl_R)
     new_argv[new_argc++] = full_rpath;
 #elif defined(USE_LD_LIBRARY_PATH)
     if (putenv(full_rpath)) {
