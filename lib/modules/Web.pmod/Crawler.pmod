@@ -134,13 +134,25 @@ class Stats(int window_width,
   
 }
 
+//! The crawler policy object.
 class Policy
 {
+  //! Maximum number of fetchers. Defaults to 100.
   int max_concurrent_fetchers = 100;
+
+  //! Maximum number of bits per second. Defaults to off (0).
   int max_bits_per_second_total = 0;
+
+  //! Maximum number of bits per second, per host. Defaults to off (0).
   int max_bits_per_second_per_host = 0;
+
+  //! Bandwidth throttling floating window width. Defaults to 30.
   int bandwidth_throttling_floating_window_width = 30;
+
+  //! Maximum concurrent fetchers per host. Defaults to 1.
   int max_concurrent_fetchers_per_host = 1;
+
+  //! Minimum delay per host. Defaults to 0.
   int min_delay_per_host = 0;
 }
 
