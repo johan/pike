@@ -72,7 +72,7 @@ else
   AC_MSG_CHECKING(for glutSolidTeapot in GLUT.framework)
   AC_CACHE_VAL(pike_cv_framework_GLUT, [
     oldLIBS="$LIBS"
-    LIBS="-framework GLUT $LIBS"
+    LIBS="-framework GLUT -lobjc $LIBS"
     AC_TRY_LINK([
 #ifdef HAVE_GL_GLUT_H
 #include <GL/glut.h>
