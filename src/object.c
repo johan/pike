@@ -111,6 +111,7 @@ PMOD_EXPORT struct object *low_clone(struct program *p)
 #endif /* PROFILING */
 
   o=alloc_object();
+
   o->storage=p->storage_needed ? (char *)xalloc(p->storage_needed) : (char *)NULL;
 
   GC_ALLOC(o);
@@ -137,6 +138,7 @@ PMOD_EXPORT struct object *low_clone(struct program *p)
   }
 
   DOUBLELINK(first_object,o);
+
   INIT_PIKE_MEMOBJ(o);
 
 #ifdef PIKE_DEBUG
@@ -988,7 +990,10 @@ PMOD_EXPORT void schedule_really_free_object(struct object *o)
   debug_malloc_touch(o);
   debug_malloc_touch(o->storage);
 
-  DOUBLEUNLINK(first_object,o);
+  if (o->next != o) {
+    /* Don't unlink fake objects... */
+    DOUBLEUNLINK(first_object,o);
+  }
 
   if(o->prog)
   {
