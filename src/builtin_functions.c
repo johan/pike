@@ -2396,9 +2396,21 @@ static node *fix_overloaded_type(node *n, int lfun, const char *deftype, int def
   t=first_arg[0]->type;
   if(!t || match_types(t, object_type_string))
   {
-    if(t && (t->str[0] == T_OBJECT))
+    if(t && (
+#ifdef USE_PIKE_TYPE
+	     t->type
+#else /* !USE_PIKE_TYPE */
+	     t->str[0]
+#endif /* USE_PIKE_TYPE */
+	     == T_OBJECT))
     {
-      struct program *p = id_to_program(extract_type_int(t->str+2));
+      struct program *p = id_to_program(
+#ifdef USE_PIKE_TYPE
+					(ptrdiff_t)t->cdr
+#else /* !USE_PIKE_TYPE */
+					extract_type_int(t->str+2)
+#endif /* USE_PIKE_TYPE */
+					);
       if(p)
       {
 	int fun=FIND_LFUN(p, lfun);
