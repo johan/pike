@@ -954,8 +954,12 @@ node *debug_mknode(short token, node *a, node *b)
 	      break;
 
 	    case T_PROGRAM:
-	      if(a->u.sval.u.program->flags & PROGRAM_CONSTANT)
+	      if(a->u.sval.u.program->flags & PROGRAM_CONSTANT) {
 		opt_flags=0;
+	      }
+	      if (a->u.sval.u.program->flags & PROGRAM_USES_PARENT) {
+		yyerror("Can not clone program without parent context.");
+	      }
 	      break;
 	  }
 	  break;
