@@ -58,17 +58,15 @@
 **!	<ref>distancesq</ref>, 
 **!	<ref>grey</ref>,
 **!	<ref>invert</ref>, 
-**!	<ref>map_closest</ref>,
-**!	<ref>map_fast</ref>, 
-**!	<ref>select_colors</ref>,
 **!	<ref>modify_by_intensity</ref>,
 **!	<ref>select_from</ref>, 
 **!	<ref>rgb_to_hsv</ref>,
-**!	<ref>hsv_to_rgb</ref>
+**!	<ref>hsv_to_rgb</ref>,
+**!	<ref>Image.colortable</ref>
 **!
 **!	converting to other datatypes: 
 **!	<ref>Image.GIF</ref>,
-**!	<ref>Image.PNG</ref>
+**!	<ref>Image.PNM</ref>
 **!
 **!	special pattern drawing:
 **!	<ref>noise</ref>,

@@ -35,7 +35,7 @@ extern struct program *image_colortable_program;
 /*
 **! method string cast(string type)
 **! returns the image data as a string ("rgbrgbrgb...")
-**! see also: toppm, togif, tozbgr, to8bit, to8bit_rgbcube
+**! see also: Image.colortable
 **! bugs
 **!	always casts to string...
 */

@@ -26,6 +26,21 @@
 ** 	P7 - binary truecolor (used by xv for thumbnails)
 **!	</pre>
 **!
+**!	Simple encoding:<br>
+**!	<ref>encode</ref>,<br> <ref>encode_binary</ref>,<br>
+**!	<ref>encode_ascii</ref>
+**!
+**!	Simple decoding:<br>
+**!	<ref>decode</ref>
+**!
+**!	Advanced encoding:<br>
+**!	<ref>encode_P1</ref>, <br>
+**!	<ref>encode_P2</ref>, <br>
+**!	<ref>encode_P3</ref>, <br>
+**!	<ref>encode_P4</ref>, <br>
+**!	<ref>encode_P5</ref>, <br>
+**!	<ref>encode_P6</ref>
+**!
 **! see also: Image, Image.image, Image.GIF
 */
 
