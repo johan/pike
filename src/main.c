@@ -609,10 +609,10 @@ void low_exit_main(void)
   free(node_hash.table);
 #endif /* SHARED_NODES */
 
-  do_gc();
   exit_pike_security();
   free_svalue(& throw_value);
   throw_value.type=T_INT;
+  do_gc();
 
 #if defined(PIKE_DEBUG) && defined(DEBUG_MALLOC)
   if(verbose_debug_exit)
