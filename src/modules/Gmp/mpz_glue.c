@@ -1521,6 +1521,11 @@ static void mpzmod_popcount(INT32 args)
   pop_n_elems(args);
 #ifdef HAVE_MPZ_POPCOUNT
   push_int(mpz_popcount(THIS));  
+#if SIZEOF_INT_TYPE > 4
+/* need conversion from MAXUINT32 to -1 (otherwise it's done already) */
+  if (Pike_sp[-1].u.integer==0xffffffffLL)
+     Pike_sp[-1].u.integer=-1;
+#endif
 #else
   switch (mpz_sgn(THIS))
   {
@@ -1532,6 +1537,10 @@ static void mpzmod_popcount(INT32 args)
     break;
   case 1:
     push_int(mpn_popcount(THIS->_mp_d, THIS->_mp_size));
+#if SIZEOF_INT_TYPE > 4
+    if (Pike_sp[-1].u.integer==0xffffffffLL)
+       Pike_sp[-1].u.integer=-1;
+#endif
     break;
   default:
     Pike_fatal("Gmp.mpz->popcount: Unexpected sign!\n");
