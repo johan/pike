@@ -96,16 +96,16 @@ static mapping ext2type = ([
 
   "cgm"     : "image/cgm",
 // image/g3fax
-  "gif"     : "image/gif",
+  // (shortcut)  "gif"     : "image/gif",
   "ief"     : "image/ief",
   "jfif"    : "image/jpeg",
   "jpe"     : "image/jpeg",
-  "jpeg"    : "image/jpeg",
-  "jpg"     : "image/jpeg",
+  // (shortcut)  "jpeg"    : "image/jpeg",
+  // (shortcut)  "jpg"     : "image/jpeg",
   "pjp"     : "image/jpeg",
   "pjpg"    : "image/jpeg",
 // image/naplps
-  "png"     : "image/png",
+  // (shortcut)  "png"     : "image/png",
   "btif"    : "image/prs.btif",
   "btf"     : "image/prs.btif",
   "pti"     : "image/prs.pti",
@@ -242,11 +242,11 @@ static mapping ext2type = ([
 
   "ics"     : "text/calendar",
   "ifb"     : "text/calendar",
-  "css"     : "text/css",
+  // (shortcut)  "css"     : "text/css",
 // text/directory
 // text/enriched
   "htm"     : "text/html",
-  "html"    : "text/html",
+  // (shorcut) "html"    : "text/html",
   "htp"     : "text/html",
   "rxml"    : "text/html",
   "shtml"   : "text/html",
@@ -256,7 +256,7 @@ static mapping ext2type = ([
   "bat"     : "text/plain",
   "java"    : "text/plain",
   "text"    : "text/plain",
-  "txt"     : "text/plain",
+  // (shortcut)  "txt"     : "text/plain",
   "tag"     : "text/prs.lines.tag",
   "dsc"     : "text/prs.lines.tag",
 // text/rfc822-headers
@@ -830,7 +830,8 @@ static mapping ext2type = ([
 //! @decl string ext_to_media_type(string extension)
 //! @belongs MIME
 //! Returns the MIME media type for the provided filename @[extension].
-//! Zero will be returned on unknown file extensions.
+//! Currently 469 file extensions are known to this method. Zero will
+//! be returned on unknown file extensions.
 
 string `()(string ext) {
   return small_ext2type[ext] || ext2type[ext];
