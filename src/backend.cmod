@@ -1499,8 +1499,8 @@ PIKECLASS Backend
      */
     while (i--) {
       if (backends[i] == me) {
-	backends[i] = backends[num_backends-1];
-	backends[num_backends-1] = NULL;
+	backends[i] = backends[--num_backends];
+	backends[num_backends] = NULL;
 	return;	/* A backend is only supposed to be registered once. */
       }
     }
