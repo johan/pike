@@ -1884,6 +1884,22 @@ void gc_mark_all_strings(void)
   }
 }
 
+struct pike_string *next_pike_string (struct pike_string *s)
+{
+  struct pike_string *next = s->next;
+  if (!next) {
+    size_t h = s->hval;
+    do {
+      h++;
+      LOCK_BUCKET(h);
+      h %= htable_size;
+      next = base_table[h];
+      UNLOCK_BUCKET(h);
+    } while (!next);
+  }
+  return next;
+}
+
 PMOD_EXPORT void init_string_builder(struct string_builder *s, int mag)
 {
   s->malloced=256;

@@ -5536,7 +5536,7 @@ PMOD_EXPORT void f__next(INT32 args)
   case T_MAPPING: tmp.u.mapping=tmp.u.mapping->next; break;
   case T_MULTISET:tmp.u.multiset=tmp.u.multiset->next; break;
   case T_PROGRAM: tmp.u.program=tmp.u.program->next; break;
-  case T_STRING:  tmp.u.string=tmp.u.string->next; break;
+  case T_STRING:  tmp.u.string=next_pike_string(tmp.u.string); break;
   default:
     SIMPLE_BAD_ARG_ERROR("_next", 1,
 			 "object|array|mapping|multiset|program|string");
