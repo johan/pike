@@ -106,7 +106,7 @@ int main(int argc, string *argv)
 		      x->hour,
 		      x->min);
 #else
-    string tag+="-rel"+rel;
+    tag+="-rel"+rel;
 #endif
 
     werror("Creating tag "+tag+" in the background.\n");
