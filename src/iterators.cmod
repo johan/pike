@@ -1491,7 +1491,7 @@ PIKEFUN object Iterator(object|array|mapping|multiset|string data)
 
       if(FIND_LFUN(data->u.object->prog, LFUN__GET_ITERATOR) != -1)
       {
-	apply_lfun(data->u.object, LFUN__GET_ITERATOR, 1);
+	apply_lfun(data->u.object, LFUN__GET_ITERATOR, 0);
 	stack_unlink(1);
 	return;
       }
