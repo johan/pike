@@ -273,7 +273,7 @@ PIKEFUN array column(array data, mixed index)
   efun;
   optflags OPT_TRY_OPTIMIZE;
 {
-  RETURN array_column (data, index);
+  RETURN array_column (data, index, 1);
 }
 
 /*! @decl multiset mkmultiset(array a)
