@@ -1,6 +1,7 @@
+#include "global.h"
+
 #include "config.h"
 
-#include "global.h"
 RCSID("$Id$");
 #include "interpret.h"
 #include "svalue.h"

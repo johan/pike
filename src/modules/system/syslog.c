@@ -10,10 +10,10 @@
  * Includes
  */
 
+#include "global.h"
+
 #include "system_machine.h"
 #include "system.h"
-
-#include "global.h"
 
 #ifdef HAVE_SYSLOG
 

@@ -6,6 +6,9 @@
  * Henrik Grubbström 1996-12-21
  */
 
+/* Pike master include file */
+#include "global.h"
+
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
@@ -41,7 +44,6 @@
 typedef struct dynamic_buffer_s dynamic_buffer;
 
 /* From the Pike-dist */
-#include "global.h"
 #include "svalue.h"
 #include "mapping.h"
 #include "object.h"

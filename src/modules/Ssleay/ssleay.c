@@ -4,9 +4,10 @@
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
 
+#include "global.h"
+
 #include "config.h"
 
-#include "global.h"
 RCSID("$Id$");
 #include "interpret.h"
 #include "svalue.h"
