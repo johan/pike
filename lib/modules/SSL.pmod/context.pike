@@ -113,7 +113,7 @@ void forget_old_sessions()
   array pair;
   while ( (pair = [array]active_sessions->peek())
 	  && (pair[0] < t))
-    session_cache[([array(string)]active_sessions->get())[1]] = 0;
+    m_delete (session_cache, ([array(string)]active_sessions->get())[1]);
 }
 
 //! Lookup a session identifier in the cache. Returns the
@@ -156,7 +156,7 @@ void purge_session(object s)
   werror("SSL.context->purge_session: %O\n", s->identity || "");
 #endif
   if (s->identity)
-    session_cache[s->identity] = 0;
+    m_delete (session_cache, s->identity);
   /* There's no need to remove the id from the active_sessions queue */
 }
 
