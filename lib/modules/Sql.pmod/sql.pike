@@ -220,7 +220,8 @@ void create(void|string|object host, void|string db,
 	      } else {
 		master_sql = p();
 	      }
-	      break;
+	      if(master_sql)
+		break;
 	    };
 	    if (err) {
 	      if (throw_errors) {
