@@ -1883,7 +1883,7 @@ static void build_native_entry(JNIEnv *env, jclass cls,
       statc = 1;
     else {
       (*env)->ExceptionClear(env);
-      Pike_error("trying to register nonexistant function\n");
+      Pike_error("trying to register nonexistent function\n");
     }
   }
 
