@@ -2,6 +2,7 @@
 // $Id$
 
 #pike __REAL_VERSION__
+#if constant(GL.GL_FLOAT)
 
 //! GL Universal Environment
 
@@ -2047,3 +2048,5 @@ mapping(string:mixed) debug_stuff() {
     "fast_mipmap" : fast_mipmap,
   ]);
 }
+
+#endif
