@@ -25,12 +25,9 @@ if test x$with_fftw = xyes ; then
     AC_CHECK_LIB(fftw, fftw,,,-lm)
     AC_CHECK_LIB(rfftw, rfftw,,,-lm)
 
-    dnl Checks for typedefs, structures, and compiler characteristics.
-
-    dnl Checks for library functions.
-    AC_HEADER_STDC
-    if test "$ac_cv_lib_fftw_rfftw" = "yes"; then
-      PIKE_FEATURE_OK(Math.Transforms.FFT)
+    if test "$ac_cv_lib_rfftw_rfftw" = "yes" -a \
+            "$ac_cv_lib_fftw_fftw" = "yes"; then
+        PIKE_FEATURE(Math.Transforms.FFT,[yes])
     fi
   fi
 fi
