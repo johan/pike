@@ -993,7 +993,11 @@ static int do_docode2(node *n,int flags)
       return 2;
     }else{
       tmp1=do_docode(CAR(n), DO_NOT_COPY);
+
       code_expression(CDR(n), DO_NOT_COPY, "index");
+      if(CDR(n)->token != F_CONSTANT &&
+	match_types(CDR(n)->type, string_type_string))
+	emit2(F_CLEAR_STRING_SUBTYPE);
 
       emit2(F_INDEX);
 

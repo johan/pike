@@ -1257,6 +1257,8 @@ test_eq((<'f','o','o'>)['f'],1)
 test_eq((<'f','o','o'>)['b'],0)
 test_eq((<'f','o','o'>)[-1],0)
 
+test_eq([[class Z { mixed `->(mixed x) { return this_object()[x]; } int foo() { return 1; }}()->foo()]],1)
+
 // index assigning
 test_any(mixed a=({1}); a[0]=2; return equal(a,({2})),1)
 test_any(mixed a=(<1>); a[1]=2; return equal(a,(<1>)),1)
