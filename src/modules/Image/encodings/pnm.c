@@ -127,7 +127,7 @@ static INLINE INT32 getnextnum(struct pike_string *s,INT32 *pos)
 void img_pnm_decode(INT32 args)
 {
    INT32 type,c=0,maxval=255;
-   INT32 pos=0,x,y,i,n;
+   INT32 pos=0,x,y,i,n,nx;
    struct object *o;
    struct image *new;
    rgb_group *d;
@@ -174,6 +174,10 @@ void img_pnm_decode(INT32 args)
    n=x*y;
    i=0;
 
+   nx=x;
+
+   if (type=='6' && maxval==255) type='+';
+
    while (n--)
    {
       switch (type)
@@ -199,6 +203,7 @@ void img_pnm_decode(INT32 args)
 	       (unsigned char)~(((c>>7)&1)*255);
 	    c<<=1;
 	    i--;
+	    if (!--nx) { i=0; nx=x; } /* pbm; last byte on row is padded */
 	    break;
 	 case '5':
 	    c=getnext(s,&pos);
@@ -209,6 +214,11 @@ void img_pnm_decode(INT32 args)
 	    d->r=(unsigned char)((((INT32)getnext(s,&pos))*255L)/maxval);
 	    d->g=(unsigned char)((((INT32)getnext(s,&pos))*255L)/maxval);
 	    d->b=(unsigned char)((((INT32)getnext(s,&pos))*255L)/maxval);
+	    break;
+	 case '+': /* optimized P6 */
+	    d->r=getnext(s,&pos);
+	    d->g=getnext(s,&pos);
+	    d->b=getnext(s,&pos);
 	    break;
       }
       d++;
