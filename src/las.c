@@ -1967,6 +1967,10 @@ static void optimize(node *n)
 	CAAR(n)=CADR(n)=0;
 	goto use_tmp1;
       }
+      /* 0 || Y  ->  Y */
+      if (node_is_false(CAR(n))) goto use_cdr;
+      /* 1 || Y  ->  1 */
+      if (node_is_true(CAR(n))) goto use_car;
       break;
 
     case F_LAND: 
@@ -1977,6 +1981,10 @@ static void optimize(node *n)
 	CAAR(n)=CADR(n)=0;
 	goto use_tmp1;
       }
+      /* 0 && Y  ->  0 */
+      if (node_is_false(CAR(n))) goto use_car;
+      /* 1 && Y  ->  Y */
+      if (node_is_true(CAR(n))) goto use_cdr;
       break;
 
     case '?':
