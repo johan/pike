@@ -796,7 +796,7 @@ static void image_change_color(INT32 args)
    if (!THIS->img) error("no image\n");
 
    to=THIS->rgb;   
-   if (!(arg=getrgb(THIS,0,MAXIMUM(args,3),"Image.Image->change_color()")))
+   if (!(arg=getrgb(THIS,0,MINIMUM(args,3),"Image.Image->change_color()")))
       error("too few arguments to Image.Image->change_color()\n");
    from=THIS->rgb;
    if (getrgb(THIS,arg,args,"Image.Image->change_color()"))
