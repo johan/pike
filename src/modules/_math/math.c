@@ -198,6 +198,13 @@ void f_ceil(INT32 args)
   sp[-args].u.float_number=ceil(sp[-args].u.float_number);
 }
 
+void f_round(INT32 args)
+{
+  if(args<1) error("Too few arguments to round()\n");
+  if(sp[-args].type!=T_FLOAT) error("Bad argument 1 to round()\n");
+  sp[-args].u.float_number=rint(sp[-args].u.float_number);
+}
+
 void f_min(INT32 args)
 {
   INT32 i;
@@ -299,6 +306,12 @@ void pike_module_init(void)
   
 /* function(float:float) */
   ADD_EFUN("ceil",f_ceil,tFunc(tFlt,tFlt),0);
+
+/* function(float:float) */
+  ADD_EFUN("round",f_round,tFunc(tFlt,tFlt),0);
+
+/* function(float:float) */
+  ADD_EFUN("rint",f_round,tFunc(tFlt,tFlt),0);
 
 #define CMP_TYPE \
   "!function(!object...:mixed)&function(mixed...:mixed)|" \
