@@ -1240,6 +1240,23 @@ void pike_module_init(void)
 {
 #ifdef HAVE_LIBTTF
    unsigned char palette[5]={0,64,128,192,255};
+   TT_Error errcode;
+#endif /* HAVE_LIBTTF */
+
+   param_baseline=make_shared_string("baseline");
+   param_quality=make_shared_string("quality");
+
+#ifdef HAVE_LIBTTF
+   /* First check that we actually can initialize the FreeType library. */
+   if ((errcode = TT_Init_FreeType(&engine))) {
+#ifdef PIKE_DEBUG
+     fprintf(stderr, "TT_Init_FreeType() failed with code 0x%03x!\n", errcode);
+#endif /* PIKE_DEBUG */
+     return;
+   }
+
+   TT_Set_Raster_Gray_Palette(engine,(char*)palette);
+   TT_Init_Kerning_Extension( engine );
 
 #ifdef DYNAMIC_MODULE
    push_string(make_shared_string("Image"));
@@ -1301,12 +1318,5 @@ void pike_module_init(void)
       set_exit_callback(image_ttf_faceinstance_exit);
       image_ttf_faceinstance_program=end_program();
    }
-
-   TT_Init_FreeType(&engine);
-   TT_Set_Raster_Gray_Palette(engine,(char*)palette);
-   TT_Init_Kerning_Extension( engine );
 #endif /* HAVE_LIBTTF */
-
-   param_baseline=make_shared_string("baseline");
-   param_quality=make_shared_string("quality");
 }
