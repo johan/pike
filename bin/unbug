@@ -1,4 +1,5 @@
-#!/usr/local/bin/pike
+#! /usr/bin/env pike
+// -*- Pike -*-
 
 /* UNBUG - Pike debugger
  * Written by Fredrik Hübinette
@@ -2814,7 +2815,7 @@ string find_in_path(string cmd)
 int main(int argc, string *argv)
 {
   write(#"UNBUG $Id$
-Copyright 2001, Roxen Internet Software AB.
+Copyright 2001-2002, Roxen Internet Software AB.
 UNBUG is free software, covered by the GNU General Public License, and you are
 welcome to change it and/or distribute copies of it under certain conditions.
 ");
