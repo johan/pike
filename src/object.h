@@ -61,7 +61,6 @@ struct object *get_master(void);
 struct object *debug_master(void);
 struct destroy_called_mark;
 PTR_HASH_ALLOC(destroy_called_mark,128)
-static void call_destroy(struct object *o, int foo);
 void low_destruct(struct object *o,int do_free);
 void destruct(struct object *o);
 void destruct_objects_to_destruct(void);
