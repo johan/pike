@@ -114,6 +114,7 @@ static void udp_bind(INT32 args)
   }
 
   addr.sin_port = htons( ((u_short)sp[-args].u.integer) );
+  addr.sin_family = AF_INET;
 
   tmp=bind(fd, (struct sockaddr *)&addr, sizeof(addr))<0;
 
