@@ -806,10 +806,7 @@ int handle_handshake(int type, string data, string raw)
       array certs = ({ });
       int i=0;
       while(!input->is_empty())
-      {
 	certs += ({ input->get_var_string(3) });
-	Stdio.write_file("/home/sigge/cert"+i, certs[i++]);
-      }
       session->server_certificate = certs[0];
 
       if (catch
