@@ -1053,6 +1053,10 @@ static void report_child(int pid,
       /* FIXME: Is this a good idea?
        * Shouldn't this only be done if p->state is PROCESS_EXITED?
        *	/grubba 1999-04-23
+       *
+       * But that will only happen if there isn't a proper pid status
+       * object in the value, i.e. either a destructed object or
+       * garbage that shouldn't be in the mapping to begin with. /mast
        */
       map_delete(pid_mapping, &key);
 #ifdef PROC_DEBUG
@@ -1239,24 +1243,23 @@ static void f_pid_status_wait(INT32 args)
 
       if(err)
       {
-	struct svalue key,*s;
-	key.type=T_INT;
-	key.u.integer=pid;
-	s=low_mapping_lookup(pid_mapping, &key);
-	if(s && s->type == T_OBJECT && s->u.object == fp->current_object)
-	{
-	  dump_process_history(pid);
-	  Pike_fatal("Operating system failure: "
-		"Pike lost track of a child, pid=%d, errno=%d.\n",pid,err);
-
+	if (err == ECHILD) {
+	  /* We can get here if several threads are waiting on the
+	   * same process, or if the second sleep below wasn't enough
+	   * for receive_sigchild to put the entry into the wait_data
+	   * fifo. In either case we just loop and try again. */
+	  pid = -1;
+	  errno = ECHILD;
 	}
 	else
-	  Pike_error("Pike lost track of a child, pid=%d, errno=%d.\n",pid,err);
+	  Pike_error("Lost track of a child (pid %d, errno from wait %d).\n",pid,err);
+      }
+      else {
+	THREADS_ALLOW();
+	pid=WAITPID(pid,& status,0);
+	THREADS_DISALLOW();
       }
 
-      THREADS_ALLOW();
-      pid=WAITPID(pid,& status,0);
-      THREADS_DISALLOW();
       if(pid > 0)
       {
 	process_done(pid,"->wait");
