@@ -20,6 +20,7 @@
 #include "module_support.h"
 #include "fsort.h"
 #include "threads.h"
+#include "stuff.h"
 
 RCSID("$Id$");
 
