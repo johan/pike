@@ -89,6 +89,7 @@ MAKE_FLAGS = $(MOST_MAKE_FLAGS) "OTHERFLAGS=$(OTHERFLAGS)"
 OBJ= \
  language.o \
  security.o \
+ bignum.o \
  interpret.o \
  constants.o \
  cpp.o \

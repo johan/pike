@@ -24,6 +24,9 @@
 /* Define this to enable the internal Pike security system */
 #undef PIKE_SECURITY
 
+/* Define this to enable the internal bignum conversion */
+#undef AUTO_BIGNUM
+
 /* The following four are used by smartlink */
 /* Define this if your ld sets the run path with -rpath */
 #undef USE_RPATH
