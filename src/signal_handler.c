@@ -1540,7 +1540,7 @@ static void f_pid_status_wait(INT32 args)
 	  THREADS_DISALLOW();
 
 	  /* We can get here if several threads are waiting on the
-	   * same process, or if the second sleep below wasn't enough
+	   * same process, or if the second sleep above wasn't enough
 	   * for receive_sigchild to put the entry into the wait_data
 	   * fifo. In either case we just loop and try again. */
 	  PROC_FPRINTF((stderr,
