@@ -1589,6 +1589,7 @@ node **last_cmd(node **a)
 static node **low_get_arg(node **a,int *nr)
 {
   node **n;
+  if (!a[0]) return NULL;
   if(a[0]->token != F_ARG_LIST)
   {
     if(!(*nr)--)
