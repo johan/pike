@@ -61,7 +61,7 @@ configure_help: src/configure
 	cd src && ./configure --help
 
 compile:
-	@$(DO_MAKE) _make_in_builddir
+	@$(DO_MAKE) METATARGET=$(METATARGET) _make_in_builddir
 
 builddir:
 	@builddir="$(BUILDDIR)"; \
