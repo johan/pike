@@ -2654,11 +2654,9 @@ void PIKE_CONCAT(Y,_ref) (INT32 args) {				\
      extern int d_flag;                                         \
      if(d_flag)							\
      {								\
-       if(o)							\
-       {							\
-         fprintf(stderr,"Possible gc() failiure detected\n");	\
-         describe(o);						\
-       }							\
+       fprintf(stderr,"Possible gc() failiure detected\n");	\
+       describe(fp->current_object);				\
+       if(o) describe(o);					\
      }								\
    );								\
    error("Stdio.File(): not open.\n");				\
