@@ -38,6 +38,10 @@ struct frame;
 typedef struct ONERROR
 {
   struct ONERROR *previous;
+#ifdef DEBUG
+  const char *file;
+  int line;
+#endif /* DEBUG */
   error_call func;
   void *arg;
 } ONERROR;
@@ -60,6 +64,32 @@ extern int throw_severity;
 #define SETJMP(X) setjmp((init_recovery(&X)->recovery))
 #define UNSETJMP(X) recoveries=X.previous;
 
+#ifdef DEBUG
+#define SET_ONERROR(X,Y,Z) \
+  do{ \
+     if(!recoveries) break; \
+     X.func=(error_call)(Y); \
+     X.arg=(void *)(Z); \
+     X.previous=recoveries->onerror; \
+     X.file = __FILE__; \
+     X.line = __LINE__; \
+     recoveries->onerror=&X; \
+  }while(0)
+
+#define UNSET_ONERROR(X) do {\
+    if(!recoveries) break; \
+    if(recoveries->onerror != &(X)) { \
+      if (recoveries->onerror) { \
+        fatal("UNSET_ONERROR out of sync.\n" \
+              "Last SET_ONERROR is from %s:%d\n", \
+              recoveries->onerror->file, recoveries->onerror->line ); \
+      } else { \
+        fatal("UNSET_ONERROR out of sync.\n"); \
+      } \
+    } \
+    recoveries->onerror=(X).previous; \
+  } while(0)
+#else
 #define SET_ONERROR(X,Y,Z) \
   do{ \
      if(!recoveries) break; \
@@ -69,13 +99,6 @@ extern int throw_severity;
      recoveries->onerror=&X; \
   }while(0)
 
-#ifdef DEBUG
-#define UNSET_ONERROR(X) do {\
-  if(!recoveries) break; \
-  if(recoveries->onerror != &(X)) fatal("UNSET_ONERROR out of sync.\n"); \
-  recoveries->onerror=(X).previous; \
-  } while(0)
-#else
 #define UNSET_ONERROR(X) recoveries && (recoveries->onerror=X.previous)
 #endif
 
