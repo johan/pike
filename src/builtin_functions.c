@@ -5523,7 +5523,7 @@ void init_builtin_efuns(void)
 {
   struct program *pike___master_program;
 
-  extern init_builtin(void);
+  extern int init_builtin(void);
 
   init_builtin();
 
@@ -6063,8 +6063,6 @@ void init_builtin_efuns(void)
 	   OPT_TRY_OPTIMIZE);
 		
   ADD_FUNCTION("inherit_list",f_inherit_list,tFunc(tProgram,tArr(tProgram)),0);
-  ADD_FUNCTION("program_defined",f_program_defined,
-	       tFunc(tProgram,tString),0);
   ADD_FUNCTION("function_defined",f_function_defined,
 	       tFunc(tFunction,tString),0);
 
