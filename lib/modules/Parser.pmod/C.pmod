@@ -261,6 +261,11 @@ class Token
     {
       if(to=="string") return text;
     }
+
+  int|string `[](int a, void|int b) {
+    if(zero_type(b)) return text[a];
+    return text[a..b];
+  }
 }
 
 /* FIXME:
