@@ -9,6 +9,8 @@
 #include "object.h"
 #include "opcodes.h"
 
+#define sp Pike_sp
+
 RCSID("$Id$");
 
 /* Checks that args_to_check arguments are OK.

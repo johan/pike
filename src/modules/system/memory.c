@@ -86,6 +86,8 @@ RCSID("$Id$");
 
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 static void memory__mmap(INT32 args,int complain,int private);
 static void memory_allocate(INT32 args);
 static void memory_shm(INT32 args);
@@ -958,4 +960,3 @@ void init_system_memory(void)
    ADD_INT_CONSTANT("__MMAP__",1,0);
 #endif
 }
-

@@ -27,6 +27,8 @@
 #include "bignum.h"
 #include "operators.h"
 
+#define sp Pike_sp
+
 RCSID("$Id$");
 
 void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind)

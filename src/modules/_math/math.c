@@ -29,6 +29,8 @@
 #include <floatingpoint.h>
 #endif
 
+#define sp Pike_sp
+
 RCSID("$Id$");
 
 #ifndef M_PI

@@ -28,6 +28,8 @@
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 extern struct program *image_program;
 #ifdef THIS
 #undef THIS /* Needed for NT */

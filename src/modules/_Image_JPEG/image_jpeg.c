@@ -64,6 +64,8 @@ RCSID("$Id$");
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 #ifdef HAVE_JPEGLIB_H
 
 #include "../Image/image.h"

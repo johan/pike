@@ -47,6 +47,8 @@ RCSID("$Id$");
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 #ifdef PFLOAT
 #undef PFLOAT
 #endif
@@ -807,4 +809,3 @@ void exit_image_poly(void)
 {
    free_string(str_array);
 }
-

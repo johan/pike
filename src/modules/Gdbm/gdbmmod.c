@@ -17,9 +17,6 @@ RCSID("$Id$");
 #include "object.h"
 #include "pike_macros.h"
 
-/* THIS MUST BE INCLUDED LAST */
-#include "module_magic.h"
-
 #if defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM)
 
 #include <gdbm.h>
@@ -27,6 +24,11 @@ RCSID("$Id$");
 #ifdef _REENTRANT
 static MUTEX_T gdbm_lock STATIC_MUTEX_INIT;
 #endif  
+
+/* THIS MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
+#define sp Pike_sp
 
 struct gdbm_glue
 {

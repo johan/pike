@@ -19,7 +19,6 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "program.h"
 
-
 #include "image.h"
 #include "builtin_functions.h"
 #include "module_support.h"
@@ -27,6 +26,7 @@ RCSID("$Id$");
 /* MUST BE INCLUDED LAST */
 #include "module_magic.h"
 
+#define sp Pike_sp
 
 extern struct program *image_program;
 

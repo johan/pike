@@ -35,6 +35,8 @@ RCSID("$Id$");
 
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 /*! @module PDF
  */
 

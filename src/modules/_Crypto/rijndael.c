@@ -41,6 +41,8 @@
 /* THIS MUST BE INCLUDED LAST */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 struct pike_crypto_rijndael {
   int rounds;
   word8 keySchedule[MAXROUNDS+1][4][4];

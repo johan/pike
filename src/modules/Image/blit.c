@@ -32,6 +32,8 @@
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 extern struct program *image_program;
 #ifdef THIS
 #undef THIS /* Needed for NT */
@@ -641,5 +643,3 @@ void img_box(INT32 x1,INT32 y1,INT32 x2,INT32 y2)
    if (y1<0) y1 = 0;
    img_box_nocheck(MAXIMUM(x1,0),MAXIMUM(y1,0),MINIMUM(x2,THIS->xsize-1),MINIMUM(y2,THIS->ysize-1));
 }
-
-

@@ -40,6 +40,8 @@
 /* THIS MUST BE INCLUDED LAST */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 struct pike_crypto {
   struct object *object;
   ptrdiff_t block_size;
@@ -682,4 +684,3 @@ void pike_module_exit(void)
 
   /* END NATIONAL SECURITY */
 }
-

@@ -84,6 +84,8 @@ typedef struct dynamic_buffer_s dynamic_buffer;
 
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 #ifdef HAVE_MYSQL
 
 /* Local includes */

@@ -44,6 +44,7 @@ struct regexp_glue
 /* must be included last */
 #include "module_magic.h"
 
+#define sp Pike_sp
 
 #ifdef THIS
 #undef THIS

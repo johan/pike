@@ -18,6 +18,8 @@ RCSID("$Id$");
 /* MUST BE INCLUDED LAST */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 static ptrdiff_t low_parse_iff(unsigned char *data, ptrdiff_t len,
 			       unsigned char *hdr,
 			       struct mapping *m, unsigned char *stopchunk)

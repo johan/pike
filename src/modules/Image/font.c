@@ -137,6 +137,8 @@ extern unsigned char * image_default_font;
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 extern struct program *font_program;
 extern struct program *image_program;
 
@@ -946,5 +948,3 @@ void init_image_font(void)
 void exit_image_font(void) 
 {
 }
-
-

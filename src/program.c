@@ -39,6 +39,7 @@ RCSID("$Id$");
 #include <errno.h>
 #include <fcntl.h>
 
+#define sp Pike_sp
 
 #undef ATTRIBUTE
 #define ATTRIBUTE(X)

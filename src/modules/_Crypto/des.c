@@ -44,6 +44,8 @@
 /* THIS MUST BE INCLUDED LAST */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 struct pike_crypto_des {
   unsigned INT32 method[DES_EXPANDED_KEYLEN];
   void (*crypt_fun)(unsigned INT8 *dest,

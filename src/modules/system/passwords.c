@@ -49,6 +49,8 @@ RCSID("$Id$");
 # include <shadow.h>
 #endif /* HAVE_SHADOW_H */
 
+#define sp Pike_sp
+
 /*
  * Emulation
  */

@@ -29,6 +29,7 @@
 /* THIS MUST BE INCLUDED LAST */
 #include "module_magic.h"
 
+#define sp Pike_sp
 
 struct pike_crypto_cbc {
   struct object *object;

@@ -29,6 +29,8 @@
 
 #include <ctype.h>
 
+#define sp Pike_sp
+
 #undef ATTRIBUTE
 #define ATTRIBUTE(X)
 

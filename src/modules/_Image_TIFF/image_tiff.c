@@ -38,6 +38,8 @@ RCSID("$Id$");
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 #ifdef DYNAMIC_MODULE
 static struct program *image_program=NULL;
 static struct program *image_colortable_program=NULL;

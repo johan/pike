@@ -50,6 +50,7 @@ RCSID("$Id$");
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
 
 #define WEIGHT_NEEDED (nct_weight_t)(0x10000000)
 #define WEIGHT_REMOVE (nct_weight_t)(0x10000001)
@@ -4604,4 +4605,3 @@ void exit_image_colortable(void)
    free_string(s_mapping);
    free_string(s_string);
 }
-

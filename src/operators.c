@@ -30,6 +30,8 @@ RCSID("$Id$");
 #include "bignum.h"
 #include "builtin_functions.h"
 
+#define sp Pike_sp
+
 #define OP_DIVISION_BY_ZERO_ERROR(FUNC) \
      math_error(FUNC, sp-2, 2, 0, "Division by zero.\n")
 #define OP_MODULO_BY_ZERO_ERROR(FUNC) \

@@ -37,6 +37,8 @@
 #include <float.h>
 #endif /* HAVE_FLOAT_H */
 
+#define sp Pike_sp
+
 /* isnan()...
  */
 #ifdef HAVE_ISNAN

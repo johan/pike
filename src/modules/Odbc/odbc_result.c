@@ -39,6 +39,8 @@ RCSID("$Id$");
 /* must be included last */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 #ifdef HAVE_ODBC
 
 /* #define ODBC_DEBUG */

@@ -44,6 +44,7 @@ RCSID("$Id$");
 /* MUST BE INCLUDED LAST */
 #include "module_magic.h"
 
+#define sp Pike_sp
 
 /* PNG module uses "type" for something else than what we want to use
    it for.  Rename "type" to "_type", and insert our own "type"...  */

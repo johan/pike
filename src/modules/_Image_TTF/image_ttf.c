@@ -53,6 +53,8 @@ static TT_Engine engine;
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 static struct pike_string *param_baseline;
 static struct pike_string *param_quality;
 

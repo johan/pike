@@ -75,6 +75,8 @@ RCSID("$Id$");
 #include <process.h>
 #endif
 
+#define sp Pike_sp
+
 /* #define DEBUG_FILE */
 /* #define READDIR_DEBUG */
 

@@ -32,6 +32,8 @@
 /* must be included last */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 RCSID("$Id$");
 
 /*

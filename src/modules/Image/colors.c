@@ -215,6 +215,8 @@ RCSID("$Id$");
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 static struct mapping *colors=NULL;
 static struct object *colortable=NULL;
 static struct array *colornames=NULL;

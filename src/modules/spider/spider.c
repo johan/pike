@@ -90,6 +90,8 @@ RCSID("$Id$");
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 #define MAX_PARSE_RECURSE 102
 
 void do_html_parse(struct pike_string *ss,

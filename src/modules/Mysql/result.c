@@ -72,6 +72,8 @@ typedef struct dynamic_buffer_s dynamic_buffer;
 #include <memory.h>
 #endif
 
+#define sp Pike_sp
+
 /* Define this to get support for field->default. NOT SUPPORTED */
 #undef SUPPORT_DEFAULT
 

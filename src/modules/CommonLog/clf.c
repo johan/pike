@@ -19,6 +19,8 @@ RCSID("$Id$");
 /* MUST BE LAST */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 /** Forward declarations of functions implementing Pike functions **/
 
 static void f_read_clf( INT32 args );

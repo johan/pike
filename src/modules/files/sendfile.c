@@ -68,6 +68,8 @@
 #endif /* HAVE_SYS_MMAN_H */
 #endif
 
+#define sp Pike_sp
+
 /* #define SF_DEBUG */
 
 #ifdef SF_DEBUG

@@ -60,7 +60,6 @@ RCSID("$Id$");
 #include "pike_error.h"
 #include "operators.h"
 
-
 #include "image.h"
 #include "builtin_functions.h"
 
@@ -68,6 +67,8 @@ RCSID("$Id$");
 
 /* MUST BE INCLUDED LAST */
 #include "module_magic.h"
+
+#define sp Pike_sp
 
 extern struct program *image_colortable_program;
 extern struct program *image_program;

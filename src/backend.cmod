@@ -88,6 +88,8 @@ struct fd_datum
 #include <sys/poll.h>
 #endif /* HAVE_SYS_POLL_H */
 
+#define sp Pike_sp
+
 /* Some constants... */
 
 /* Notes on POLLRDNORM and POLLIN:
@@ -2161,4 +2163,3 @@ void exit_backend()
   cleanup_close_on_exec();
 #endif /* HAVE_BROKEN_F_SETFD */
 }
-

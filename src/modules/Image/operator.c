@@ -31,6 +31,8 @@
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 extern struct program *image_program;
 #ifdef THIS
 #undef THIS
@@ -1079,4 +1081,3 @@ void image_find_max(INT32 args)
 
    f_aggregate(2);
 }
-

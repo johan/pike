@@ -315,6 +315,8 @@ RCSID("$Id$");
 #include <fp_class.h>
 #endif
 
+#define sp Pike_sp
+
 #define FORMAT_INFO_STACK_SIZE 200
 #define RETURN_SHARED_STRING
 

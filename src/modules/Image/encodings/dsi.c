@@ -31,6 +31,8 @@ RCSID("$Id$");
 /* MUST BE INCLUDED LAST */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 extern struct program *image_program;
 
 void f__decode( INT32 args )

@@ -30,6 +30,8 @@
 /* This must be included last! */
 #include "module_magic.h"
 
+#define sp Pike_sp
+
 extern struct program *image_program;
 #ifdef THIS
 #undef THIS /* Needed for NT */
@@ -289,4 +291,3 @@ void image_orient4(INT32 args)
   pop_n_elems(1);
   f_aggregate(4);
 }
-

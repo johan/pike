@@ -44,6 +44,7 @@ RCSID("$Id$");
 
 #include "dmalloc.h"
 
+#define sp Pike_sp
 
 /* #define GC_VERBOSE */
 

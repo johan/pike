@@ -29,6 +29,7 @@
 #include "fsort.h"
 #include "port.h"
 
+#define sp Pike_sp
 
 /*! @decl array(array(int|string)) _describe_program(program p)
  *!

@@ -39,9 +39,6 @@ RCSID("$Id$");
 #include "array.h"
 #include "pike_error.h"
 
-
-
-
 #include "image.h"
 #include "colortable.h"
 #include "builtin_functions.h"
@@ -49,6 +46,7 @@ RCSID("$Id$");
 /* MUST BE INCLUDED LAST */
 #include "module_magic.h"
 
+#define sp Pike_sp
 
 /* #define BITDEBUG */
 
