@@ -498,13 +498,21 @@ static void mpzmod_div(INT32 args)
   struct object *res;
   
   for(e=0;e<args;e++)
-    if (!mpz_sgn(get_mpz(sp+e-args, 1)))
-      error("Division by zero.\n");	
+  {
+    if(sp[e-args].type != T_INT || sp[e-args].u.integer<=0)
+      if (!mpz_sgn(get_mpz(sp+e-args, 1)))
+	error("Division by zero.\n");	
+  }
   
   res = clone_object(mpzmod_program, 0);
   mpz_set(OBTOMPZ(res), THIS);
   for(e=0;e<args;e++)	
-    mpz_fdiv_q(OBTOMPZ(res), OBTOMPZ(res), OBTOMPZ(sp[e-args].u.object));
+  {
+    if(sp[e-args].type == T_INT)
+      mpz_fdiv_q_ui(OBTOMPZ(res), OBTOMPZ(res), sp[e-args].u.integer);
+   else
+      mpz_fdiv_q(OBTOMPZ(res), OBTOMPZ(res), OBTOMPZ(sp[e-args].u.object));
+  }
 
   pop_n_elems(args);
   push_object(res);
