@@ -12,6 +12,7 @@
 /lib
 /bin
 /man
+/packaging
 /refdoc/chapters
 /refdoc/presentation
 /refdoc/src_images
