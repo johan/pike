@@ -43,6 +43,26 @@ static struct math_class
    {"Transforms",init_math_transforms,&math_transforms_program},
 };
 
+/*! @module Math */
+
+/*! @decl constant pi
+ *! The constant pi (3.14159265358979323846).
+ */
+
+/*! @decl constant e
+ *! The constant e (2.7182818284590452354).
+ */
+
+/*! @decl constant inf
+ *! Floating point infinity.
+ */
+
+/*! @decl constant nan
+ *! Floating point not-a-number (e.g. inf/inf).
+ */
+
+/*! @endmodule */
+
 PIKE_MODULE_EXIT
 {
    int i;
