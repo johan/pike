@@ -271,5 +271,5 @@ void init_udp()
   add_function("send",udp_sendto,"function(string,int,string,void|int:int)",0);
   set_init_callback(zero_udp);
   set_exit_callback(exit_udp);
-  end_c_program("/precompiled/dumUDP");
+  end_class("dumUDP",0);
 }

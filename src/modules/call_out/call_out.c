@@ -395,7 +395,7 @@ void verify_all_call_outs()
 }
 #endif
 
-void init_call_out_efuns(void)
+void pike_module_init(void)
 {
   add_efun("call_out",f_call_out,"function(function,float|int,mixed...:mixed)",OPT_SIDE_EFFECT);
   add_efun("call_out_info",f_call_out_info,"function(:array*)",OPT_EXTERNAL_DEPEND);
@@ -403,9 +403,7 @@ void init_call_out_efuns(void)
   add_efun("remove_call_out",f_remove_call_out,"function(mixed:int)",OPT_SIDE_EFFECT);
 }
 
-void init_call_out_programs(void) {}
-
-void exit_call_out(void)
+void pike_module_exit(void)
 {
   free_all_call_outs();
 }

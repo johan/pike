@@ -556,9 +556,8 @@ void init_font_programs(void)
    set_init_callback(init_font_struct);
    set_exit_callback(exit_font_struct);
   
-   font_program=end_c_program("/precompiled/font");
-   
-   font_program->refs++;
+   font_program=end_program();
+   add_program_constant("font",font_program, 0);
 }
 
 void exit_font(void) 

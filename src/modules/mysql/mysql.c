@@ -637,14 +637,8 @@ static void f_binary_data(INT32 args)
  * Module linkage
  */
 
-void init_mysql_efuns(void)
-{
-#ifdef HAVE_MYSQL
-  init_mysql_res_efuns();
-#endif /* HAVE_MYSQL */
-}
 
-void init_mysql_programs(void)
+void pike_module_init(void)
 {
 #ifdef HAVE_MYSQL
   /*
@@ -691,14 +685,14 @@ void init_mysql_programs(void)
   set_init_callback(init_mysql_struct);
   set_exit_callback(exit_mysql_struct);
 
-  mysql_program = end_c_program("/precompiled/sql/mysql");
-  mysql_program->refs++;
+  mysql_program = end_program();
+  add_program_constant("mysql");
 
   init_mysql_res_programs();
 #endif /* HAVE_MYSQL */
 }
 
-void exit_mysql(void)
+void pike_module_exit(void)
 {
 #ifdef HAVE_MYSQL
   exit_mysql_res();
