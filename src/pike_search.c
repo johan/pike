@@ -207,7 +207,7 @@ void init_pike_searching(void)
 {
   start_new_program();
   pike_search_struct_offset=ADD_STORAGE(struct pike_mem_searcher);
-  map_variable("__s","string",0,
+  MAP_VARIABLE("__s", tStr, 0,
 	       pike_search_struct_offset + OFFSETOF(pike_mem_searcher,s),
 	       PIKE_T_STRING);
   pike_search_program=end_program();
