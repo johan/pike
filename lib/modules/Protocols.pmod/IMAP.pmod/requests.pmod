@@ -581,6 +581,9 @@ class fetch
 	origin = 0;
       }
       atom->options = ({ ([ "type":"atom", "atom":section ]) });
+
+      werror("Options specified. wanted: %O, section:%O, origin:%O, atom: %O\n",
+	     wanted, section, origin, atom);
     }
 
     /* Should requesting any part of the body really count as reading it? */
