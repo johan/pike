@@ -231,7 +231,11 @@ typedef int FD;
 
 #define fd_query_properties(X,Y) ( fd_INTERPROCESSABLE | (Y))
 #define fd_open open
+#ifdef HAVE_BROKEN_F_SETFD
+#define fd_close(FD__) (set_close_on_exec(FD__,0), close(FD__))
+#else /* !HAVE_BROKEN_F_SETFD */
 #define fd_close close
+#endif /* HAVE_BROKEN_F_SETFD */
 #define fd_read read
 #define fd_write write
 #define fd_ioctl ioctl
@@ -253,7 +257,11 @@ typedef int FD;
 #define fd_lseek lseek
 #define fd_fstat fstat
 #define fd_dup dup
+#ifdef HAVE_BROKEN_F_SETFD
+#define fd_dup2(FD__, FD2__)  (set_close_on_exec(FD2__, 0), dup2(FD__, FD2__))
+#else /* !HAVE_BROKEN_F_SETFD */
 #define fd_dup2 dup2
+#endif /* HAVE_BROKEN_F_SETFD */
 #define fd_listen listen
 
 #define fd_select select

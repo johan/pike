@@ -195,6 +195,9 @@
 /* Define if your cpp supports the ANSI concatenation operator ## */
 #undef HAVE_ANSI_CONCAT
 
+/* Define if you don't have F_SETFD, or it doesn't work */
+#undef HAVE_BROKEN_F_SETFD
+
 /* Define if your cpp supports K&R-style concatenation */
 #undef HAVE_KR_CONCAT
 
