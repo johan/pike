@@ -235,10 +235,10 @@ install: build
 
 	# /usr/share/doc/* links
 	for f in $(CURDIR)/*; do \
-	    if [ "$${$$f##*/}" = "patches" -o "$${$$f##*/}" = "$(PIKE)-core" ]; then \
+	    if [ "$${f##*/}" = "patches" -o "$${f##*/}" = "$(PIKE)-core" ]; then \
 		continue ; \
 	    fi ; \
-	    ln -sf ../$(PIKE)-core/ $(CURDIR)/debian/$${$$f##*/}/usr/share/doc/$${$$f##*/} ; \
+	    ln -sf ../$(PIKE)-core/ $(CURDIR)/debian/$${f##*/}/usr/share/doc/$${f##*/} ; \
 	done
 
 	dh_movefiles --sourcedir=debian/$(PIKE)-core
