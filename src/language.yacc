@@ -1452,7 +1452,7 @@ expr4: string
     { $$=mkefuncallnode("aggregate_mapping",$3); };
   | F_MULTISET_START expr_list F_MULTISET_END
     { $$=mkefuncallnode("aggregate_multiset",$2); }
-  | '(' error ')' { yyerrok; }
+  | '(' error ')' { $$=mkintnode(0); yyerrok; }
   | expr4 F_ARROW F_IDENTIFIER
   {
     $$=mknode(F_ARROW,$1,$3);
