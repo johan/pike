@@ -1632,7 +1632,7 @@ static void insert_small_number(INT32 a)
   {
     add_to_linenumbers(a);
   }else if(a>=-32768 && a<32768){
-    add_to_linenumbers(a);
+    add_to_linenumbers(-127);
     ins_short(a, add_to_linenumbers);
   }else{
     add_to_linenumbers(-128);

@@ -429,9 +429,9 @@ int yylex(YYSTYPE *yylval)
   t=yylex2(yylval);
   if(t<256)
   {
-    fprintf(stderr,"yylex() -> '%c' (%d)\n",t,t);
+    fprintf(stderr,"YYLEX: '%c' (%d) at %s:%d\n",t,t,lex.current_file->str,lex.current_line);
   }else{
-    fprintf(stderr,"yylex() -> %s (%d)\n",get_f_name(t),t);
+    fprintf(stderr,"YYLEX: %s (%d) at %s:%d\n",low_get_f_name(t,0),t,lex.current_file->str,lex.current_line);
   }
   return t;
 }
