@@ -125,10 +125,10 @@ extern struct shared_string_location *all_shared_string_locations;
 #define reference_shared_string(s) (s)->refs++
 #define copy_shared_string(to,s) ((to)=(s))->refs++
 
-#define MAKE_CONSTANT_SHARED_STRING(var, text)	\
- do { static struct pike_string *str_;		\
-    if(!str_) str_=make_shared_string((text));	\
-    copy_shared_string((var), str_);		\
+#define MAKE_CONSTANT_SHARED_STRING(var, text)                                  \
+ do { static struct pike_string *str_;                                          \
+    if(!str_) str_=make_shared_binary_string((text),CONSTANT_STRLEN(text));     \
+    copy_shared_string((var), str_);                                            \
  }while(0)
 
 #endif
