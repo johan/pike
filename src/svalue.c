@@ -1708,6 +1708,8 @@ void low_thorough_check_short_svalue (const union anything *u, TYPE_T type)
 #endif
   }
 
+  if (thoroughly_checking != &checking)
+    Pike_fatal ("Non-thread assumption doesn't hold.\n");
   thoroughly_checking = checking.next;
 }
 
