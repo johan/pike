@@ -373,6 +373,10 @@ PIKEFUN object Iterator(object|array|mapping|multiset|string data)
 {
   switch(data->type)
   {
+    case PIKE_T_STRING:
+      push_object(clone_object(string_iterator_program, 1));
+      return;
+
     case PIKE_T_MAPPING:
       push_object(clone_object(mapping_iterator_program,1));
       return;
