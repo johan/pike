@@ -1553,8 +1553,8 @@ static int generate_sum(node *n)
     {
       emit0(F_ADD_FLOATS);
     }
-    else if(first_arg[0]->type == int_type_string &&
-       second_arg[0]->type == int_type_string)
+    else if(pike_types_le(first_arg[0]->type, int_type_string) &&
+	    pike_types_le(second_arg[0]->type, int_type_string))
     {
       emit0(F_ADD_INTS);
     }
