@@ -1,5 +1,5 @@
 #include "global.h"
-#include "config.h"
+#include "pgtk_config.h"
 #include "module_magic.h"
 
 RCSID("$Id$");
