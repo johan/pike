@@ -2495,6 +2495,8 @@ static void exit_file_locking(void)
 
 void pike_module_exit(void)
 {
+  extern void exit_sendfile(void);
+
   exit_sendfile();
 
   if(file_program)
@@ -2558,6 +2560,7 @@ void pike_module_init(void)
 {
   struct object *o;
   extern void port_setup_program(void);
+  extern void init_sendfile(void);
   int e;
 
   init_files_efuns();
