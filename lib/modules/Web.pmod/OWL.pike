@@ -1,5 +1,7 @@
 // $Id$
 
+#pike __REAL_VERSION__
+
 //! Represents an RDF tuple set from an OWL perspective.
 
 inherit .RDFS; // RDFS in turn inherits RDF
