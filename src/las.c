@@ -470,10 +470,12 @@ void resolv_constant(node *n)
     case F_LOCAL:
 	yyerror("Expected constant, got local variable");
 	push_int(0);
+	break;
 
     case F_GLOBAL:
 	yyerror("Expected constant, got global variable");
 	push_int(0);
+	break;
     }
   }
 }
@@ -492,7 +494,7 @@ node *index_node(node *n, struct pike_string * id)
     UNSET_ONERROR(tmp);
     
     yyerror("Couldn't index module.");
-    push_svalue(0);
+    push_int(0);
   }else{
     resolv_constant(n);
     push_string(id);
@@ -652,6 +654,7 @@ node *copy_node(node *n)
 
 int is_const(node *n)
 {
+  if(!n) return 1;
   return !(n->tree_info & (OPT_SIDE_EFFECT |
 			   OPT_NOT_CONST |
 			   OPT_ASSIGNMENT |
