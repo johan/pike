@@ -86,10 +86,10 @@ PMOD_EXPORT const char msg_ssval_obj_wo_refs[] =
  * its type.
  */
 
-PMOD_EXPORT void really_free_short_svalue(void **s, TYPE_T type)
+PMOD_EXPORT void really_free_short_svalue_ptr(void **s, TYPE_T type)
 {
   union anything tmp;
-  tmp.program = *s;
+  tmp.ptr = *s;
   *s = NULL; /* Prevent cyclic calls */
   switch(type)
   {
@@ -1346,6 +1346,10 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	  sprintf(buf, ":%d", line);
 	  my_strcat(buf);
 	}
+#if 0
+	sprintf(buf, " %p", s->u.program);
+	my_strcat(buf);
+#endif
 	my_putchar(')');
       }
       else
