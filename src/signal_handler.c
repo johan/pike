@@ -2786,9 +2786,9 @@ void f_create_process(INT32 args)
 		      &proc);
     err=GetLastError();
     
-    UNLOCK_IMUTEX(&handle_protection_mutex);
-
     THREADS_DISALLOW_UID();
+
+    UNLOCK_IMUTEX(&handle_protection_mutex);
 
     if(env) pop_stack();
     if(command_line) free(command_line);
