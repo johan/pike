@@ -28,7 +28,6 @@
 #ifndef TRANSFORMS_SUPPORTED
 #define TRANSFORMS_SUPPORTED 1		/* 0 disables transform code */
 #endif
-#endif
 
 /*
  * Although rotating and flipping data expressed as DCT coefficients is not
@@ -202,3 +201,4 @@ EXTERN(void) jcopy_markers_setup
 EXTERN(void) jcopy_markers_execute
 	JPP((j_decompress_ptr srcinfo, j_compress_ptr dstinfo,
 	     JCOPY_OPTION option));
+#endif /* TRANSFORMS_NOT_SUPPORTED */
