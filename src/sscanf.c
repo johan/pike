@@ -1079,9 +1079,8 @@ CHAROPT2(								 \
 				  MKPCHARP(end_str_start, MATCH_SHIFT),	 \
 				       end_str_end - end_str_start,	 \
 				       input_len - eye);		 \
-              s2 = (void*)( searcher.mojt.vtab->funcN(searcher.mojt.data, \
-				       MKPCHARP(input+eye, INPUT_SHIFT), \
-				       input_len-eye) ).ptr;		 \
+              s2 = searcher.mojt.vtab-> PIKE_CONCAT(func,INPUT_SHIFT)	 \
+                     (searcher.mojt.data, input+eye, input_len-eye);	 \
 	      if(!s2)							 \
 	      {								 \
 		chars_matched[0]=eye;					 \
