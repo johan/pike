@@ -1302,11 +1302,14 @@ static void exit_stor(struct object *o)
 static void init_enc_stor(struct object *o)
 {
   struct iso2022enc_stor *s = (struct iso2022enc_stor *)fp->current_storage;
+  int i;
 
   s->replace = NULL;
 
   init_string_builder(&s->strbuild,0);
 
+  for(i=0; i<2; i++)
+    s->r[i].map = NULL;
   f_enc_clear(0);
   pop_n_elems(1);
 }
