@@ -18,6 +18,9 @@
 /* Define this if you want malloc debugging */
 #undef DEBUG_MALLOC
 
+/* Define this to enable the internal Pike security system */
+#undef PIKE_SECURITY
+
 @TOP@
 
 /* Enable profiling */
