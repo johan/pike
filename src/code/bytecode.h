@@ -24,8 +24,8 @@
 
 #define CHECK_RELOC(REL, PROG_SIZE)		\
   do {						\
-    if ((REL) >= (PROG_SIZE)-4) {		\
-      Pike_error("Bad relocation: %d >= %d\n",	\
+    if ((REL) > (PROG_SIZE)-4) {		\
+      Pike_error("Bad relocation: %d > %d\n",	\
 		 (REL), (PROG_SIZE)-4);		\
     }						\
   } while(0)
