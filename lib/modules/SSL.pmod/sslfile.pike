@@ -137,9 +137,9 @@ void close()
 
 string|int read(string|int ...args) {
 
-  #ifdef SSL3_DEBUG
+#ifdef SSL3_DEBUG
   werror(sprintf("sslfile.read called!, with args: %O \n",args));
-  #endif
+#endif
   
   int nbytes;
   int notall;
