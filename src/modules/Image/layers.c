@@ -1133,7 +1133,7 @@ static void image_layer_cast(INT32 args)
 	 push_text("xsize");        push_int(THIS->xsize);         n++;
 	 push_text("ysize");        push_int(THIS->ysize);         n++;
 	 push_text("image");        image_layer_image(0);          n++;
-	 push_text("alpha");        image_layer_image(0);          n++;
+	 push_text("alpha");        image_layer_alpha(0);          n++;
 	 push_text("xoffset");      push_int(THIS->xoffs);         n++;
 	 push_text("yoffset");      push_int(THIS->yoffs);         n++;
 	 push_text("alpha_value");  push_float(THIS->alpha_value); n++;
