@@ -251,7 +251,8 @@ array(string) split(string data, void|mapping state)
 	  pos = bqstart;
           UNKNOWN_TOKEN;
 	}
-        int chars = backquoteops[data[pos..pos+2]]
+        int chars = backquoteops[data[pos..pos+3]]
+	  || backquoteops[data[pos..pos+2]]
           || backquoteops[data[pos..pos+1]]
           || backquoteops[data[pos..pos]];
         if (chars)
