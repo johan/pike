@@ -18,7 +18,7 @@
 #include "interpret.h"
 #include "svalue.h"
 #include "object.h"
-#include "error.h"
+#include "pike_error.h"
 #include "las.h"
 #include "module_support.h"
 

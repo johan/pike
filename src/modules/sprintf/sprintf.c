@@ -104,7 +104,7 @@
 
 #include "global.h"
 RCSID("$Id$");
-#include "error.h"
+#include "pike_error.h"
 #include "array.h"
 #include "svalue.h"
 #include "stralloc.h"
@@ -1445,14 +1445,14 @@ void f_sprintf(INT32 num_arg)
       o_cast(string_type_string, PIKE_T_STRING);
       if (sp[-1].type != T_STRING) {
 	/* We don't accept objects... */
-	error("sprintf(): Cast to string failed.\n");
+	Pike_error("sprintf(): Cast to string failed.\n");
       }
       /* Replace the original object with the new string. */
       assign_svalue(argp, sp-1);
       /* Clean up the stack. */
       pop_stack();
     } else {
-      error("Bad argument 1 to sprintf.\n");
+      Pike_error("Bad argument 1 to sprintf.\n");
     }
   }
 

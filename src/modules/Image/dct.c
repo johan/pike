@@ -20,7 +20,7 @@
 #include "interpret.h"
 #include "svalue.h"
 #include "array.h"
-#include "error.h"
+#include "pike_error.h"
 
 #include "image.h"
 
@@ -81,7 +81,7 @@ void image_dct(INT32 args)
    double *costbl;
    rgb_group *pix;
    
-   if (!THIS->img) error("Called Image.Image object is not initialized\n");;
+   if (!THIS->img) Pike_error("Called Image.Image object is not initialized\n");;
 
    fprintf(stderr,"%lu bytes, %lu bytes\n",
 	   DO_NOT_WARN((unsigned long)(sizeof(rgbd_group)*THIS->xsize*THIS->ysize)),

@@ -33,7 +33,7 @@ RCSID("$Id$");
 #include "svalue.h"
 #include "threads.h"
 #include "array.h"
-#include "error.h"
+#include "pike_error.h"
 #include "threads.h"
 
 #include "image.h"
@@ -64,10 +64,10 @@ RCSID("$Id$");
 void image_any__decode(INT32 args)
 {
    if (args!=1 || sp[-args].type!=T_STRING)
-      error("Image.ANY.decode: illegal arguments\n");
+      Pike_error("Image.ANY.decode: illegal arguments\n");
    
    if (sp[-args].u.string->len<4)
-      error("Image.ANY.decode: too short string\n");
+      Pike_error("Image.ANY.decode: too short string\n");
 
 #define CHAR2(a,b) ((((unsigned char)(a))<<8)|((unsigned char)(b)))
    /* ok, try the heuristics */
@@ -178,7 +178,7 @@ void image_any__decode(INT32 args)
 
       default:
 unknown_format:
-	 error("Unknown image format.\n");	 
+	 Pike_error("Unknown image format.\n");	 
    }
 
 simple_image:
@@ -195,10 +195,10 @@ simple_image:
 void image_any_decode_header(INT32 args)
 {
    if (args!=1 || sp[-args].type!=T_STRING)
-      error("Image.ANY.decode_header: illegal arguments\n");
+      Pike_error("Image.ANY.decode_header: illegal arguments\n");
    
    if (sp[-args].u.string->len<4)
-      error("Image.ANY.decode_header: too short string\n");
+      Pike_error("Image.ANY.decode_header: too short string\n");
 
 #define CHAR2(a,b) ((((unsigned char)(a))<<8)|((unsigned char)(b)))
    /* ok, try the heuristics */
@@ -211,7 +211,7 @@ void image_any_decode_header(INT32 args)
       case CHAR2('P','5'):
       case CHAR2('P','6'):
       case CHAR2('P','7'):
-	 error("Image.ANY.decode: decoding of PNM header unimplemented\n");
+	 Pike_error("Image.ANY.decode: decoding of PNM header unimplemented\n");
 
       case CHAR2(255,216):
 	 /* JFIF */
@@ -266,7 +266,7 @@ void image_any_decode_header(INT32 args)
 	 return;
 
       case CHAR2('F','O'):
-	 error("Image.ANY.decode: decoding of ILBM header unimplemented\n");
+	 Pike_error("Image.ANY.decode: decoding of ILBM header unimplemented\n");
 
       case CHAR2('B','M'):
 	 /* BMP */
@@ -275,7 +275,7 @@ void image_any_decode_header(INT32 args)
 
       case CHAR2(0x59,0xa6):
 	 /* RAS */
-	 error("Image.ANY.decode: decoding of RAS header unimplemented\n");
+	 Pike_error("Image.ANY.decode: decoding of RAS header unimplemented\n");
 
       case CHAR2('P','V'):
       case CHAR2('G','B'):
@@ -301,7 +301,7 @@ void image_any_decode_header(INT32 args)
 
       default:
 unknown_format:
-	 error("Unknown image format.\n");	 
+	 Pike_error("Unknown image format.\n");	 
    }
 }
 

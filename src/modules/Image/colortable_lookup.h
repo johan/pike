@@ -40,7 +40,7 @@ CHRONO("init flat/cubicles");
 
       cub=cubs->cubicles=malloc(sizeof(struct nctlu_cubicle)*n2);
       
-      if (!cub) error("out of memory\n");
+      if (!cub) Pike_error("out of memory\n");
 
       while (n2--) /* initiate all to empty */
       {

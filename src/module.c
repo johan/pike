@@ -6,7 +6,7 @@
 #include "global.h"
 #include "module.h"
 #include "pike_macros.h"
-#include "error.h"
+#include "pike_error.h"
 #include "builtin_functions.h"
 #include "main.h"
 #include "svalue.h"

@@ -81,7 +81,7 @@ static void regexp_create(INT32 args)
 	char buf[1024];
 
 	regerror(err, &(THIS->regexp), buf, 1024);
-	error("Regexp.regexp->create(): Compilation failed:%s\n", buf);
+	Pike_error("Regexp.regexp->create(): Compilation failed:%s\n", buf);
       }
       for (i=0,paren_ptr=str; paren_ptr = strchr(paren_ptr, '('); i++) {
 	paren_ptr++;

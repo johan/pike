@@ -7,7 +7,7 @@
 #include "global.h"
 #include "pike_macros.h"
 #include "callback.h"
-#include "error.h"
+#include "pike_error.h"
 #include "block_alloc.h"
 
 RCSID("$Id$");

@@ -246,7 +246,7 @@ static void stat_create (INT32 args)
 	else if (ITEM(a)[i].type == T_OBJECT &&
 		 is_bignum_object (ITEM(a)[i].u.object)) {
 	  if (!int64_from_bignum (&val, ITEM(a)[i].u.object))
-	    error ("Stat create: Too big integer in stat array.\n");
+	    Pike_error ("Stat create: Too big integer in stat array.\n");
 	}
 #endif /* AUTO_BINUM */
 	else
@@ -511,7 +511,7 @@ static void stat_index_set (INT32 args)
 #if AUTO_BIGNUM
   else if (sp[-1].type == T_OBJECT && is_bignum_object (sp[-1].u.object)) {
     if (!int64_from_bignum (&int_val, sp[-1].u.object))
-      error ("Stat `[]=: Too big integer as value.\n");
+      Pike_error ("Stat `[]=: Too big integer as value.\n");
     else
       got_int_val = 1;
   }

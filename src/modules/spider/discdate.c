@@ -17,7 +17,7 @@
 #include "svalue.h"
 #include "mapping.h"
 #include "array.h"
-#include "error.h"
+#include "pike_error.h"
 #include "builtin_functions.h"
 #include <time.h>
 #include <string.h>
@@ -47,7 +47,7 @@ void f_discdate(INT32 argc)
   struct disc_time hastur;
   if (argc != 1) 
   {
-    error("Error: discdate(time)");
+    Pike_error("Error: discdate(time)");
     exit(1);
   } else {
     struct tm *eris;

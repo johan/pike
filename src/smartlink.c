@@ -295,7 +295,7 @@ int main(int argc, char **argv)
       fatal("Out of memory (7)!");
     }
 #else
-#error Unknown method
+#Pike_error Unknown method
 #endif
   }
 

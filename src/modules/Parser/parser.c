@@ -99,9 +99,9 @@ static void parser_magic_index(INT32 args)
    int i;
 
    if (args!=1) 
-      error("Parser.`[]: Too few or too many arguments\n");
+      Pike_error("Parser.`[]: Too few or too many arguments\n");
    if (sp[-1].type!=T_STRING)
-      error("Parser.`[]: Illegal type of argument\n");
+      Pike_error("Parser.`[]: Illegal type of argument\n");
 
    for (i=0; i<(int)NELEM(submagic)-1; i++)
       if (sp[-1].u.string==submagic[i].ps)

@@ -7,7 +7,7 @@
 /* Optimized for minimum amount of compares */
 
 #include "global.h"
-#include "error.h"
+#include "pike_error.h"
 #include "fsort.h"
 #include "main.h"
 

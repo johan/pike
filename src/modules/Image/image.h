@@ -5,7 +5,7 @@
 */
 
 #ifdef PIKE_IMAGE_IMAGE_H
-#error IMAGE.h included twice
+#Pike_error IMAGE.h included twice
 #endif
 
 #define PIKE_IMAGE_IMAGE_H

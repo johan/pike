@@ -66,7 +66,7 @@
 #endif /* HAVE_STRING_H */
 #include "pike_regexp.h"
 #include "pike_memory.h"
-#include "error.h"
+#include "pike_error.h"
 
 /* must be included last */
 #include "module_magic.h"
@@ -175,7 +175,7 @@
  * Utility definitions.
  */
 
-#define regerror(X) error("Regexp: %s\n",X);
+#define regerror(X) Pike_error("Regexp: %s\n",X);
 #define SPECIAL 0x100
 #define LBRAC	('('|SPECIAL)
 #define RBRAC	(')'|SPECIAL)

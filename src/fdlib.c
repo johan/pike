@@ -1,6 +1,6 @@
 #include "global.h"
 #include "fdlib.h"
-#include "error.h"
+#include "pike_error.h"
 #include <math.h>
 
 RCSID("$Id$");

@@ -107,9 +107,9 @@ static void image_magic_index(INT32 args)
    int i;
 
    if (args!=1) 
-      error("Image.`[]: Too few or too many arguments\n");
+      Pike_error("Image.`[]: Too few or too many arguments\n");
    if (sp[-1].type!=T_STRING)
-      error("Image.`[]: Illegal type of argument\n");
+      Pike_error("Image.`[]: Illegal type of argument\n");
 
    for (i=0; i<(int)NELEM(submagic); i++)
       if (sp[-1].u.string==submagic[i].ps)

@@ -6,7 +6,7 @@
 /**/
 #include "global.h"
 #include "pike_memory.h"
-#include "error.h"
+#include "pike_error.h"
 #include "pike_macros.h"
 #include "gc.h"
 
@@ -627,7 +627,7 @@ PMOD_EXPORT char *debug_xalloc(size_t size)
 {
   char *ret;
   if(!size) 
-     error("Allocating zero bytes.\n");
+     Pike_error("Allocating zero bytes.\n");
 
 #ifdef SOFTLIM
   if(softlim_should_be)
@@ -640,7 +640,7 @@ PMOD_EXPORT char *debug_xalloc(size_t size)
   ret=(char *)malloc(size);
   if(ret) return ret;
 
-  error("Out of memory.\n");
+  Pike_error("Out of memory.\n");
   return 0;
 }
 

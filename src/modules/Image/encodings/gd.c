@@ -16,7 +16,7 @@ RCSID("$Id$");
 #include "svalue.h"
 #include "threads.h"
 #include "array.h"
-#include "error.h"
+#include "pike_error.h"
 #include "operators.h"
 #include "builtin_functions.h"
 #include "module_support.h"
@@ -79,12 +79,12 @@ extern struct program *image_program;
 
 void image_gd_f_encode(INT32 args)
 {
-   error("not implemented\n");
+   Pike_error("not implemented\n");
 }
 
 void img_gd_decode(INT32 args,int header_only)
 {
-   error("not implemented\n");
+   Pike_error("not implemented\n");
 }
 
 static void image_gd_f_decode(INT32 args)

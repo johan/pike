@@ -9,7 +9,7 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "object.h"
 #include "module_support.h"
-#include "error.h"
+#include "pike_error.h"
 
 #include "iso2022.h"
 
@@ -358,7 +358,7 @@ static int call_repcb(struct svalue *repcb, p_wchar2 ch)
 	  } else if(rep != NULL) \
             eat_enc_string(rep, s, NULL, NULL); \
 	  else \
-	    error("Character unsupported by encoding.\n");
+	    Pike_error("Character unsupported by encoding.\n");
 
 
 static void eat_enc_string(struct pike_string *str, struct iso2022enc_stor *s,
@@ -527,7 +527,7 @@ static void eat_enc_string(struct pike_string *str, struct iso2022enc_stor *s,
 	    mode = MODE_96;
 	    index = map2[(map1[(c-0x100)>>2]>>((c&3)<<1))&3];
 	  } else {
-	    error("Not implemented.\n");
+	    Pike_error("Not implemented.\n");
 	  }
 
 	  if(index!=0 && (ttab = transltab[mode][index-0x10])!=NULL) {

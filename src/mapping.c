@@ -12,7 +12,7 @@ RCSID("$Id$");
 #include "svalue.h"
 #include "array.h"
 #include "pike_macros.h"
-#include "error.h"
+#include "pike_error.h"
 #include "pike_memory.h"
 #include "dynamic_buffer.h"
 #include "interpret.h"
@@ -1687,7 +1687,7 @@ PMOD_EXPORT void f_aggregate_mapping(INT32 args)
   struct mapping *m;
 
   if(args & 1)
-    error("Uneven number of arguments to aggregate_mapping.\n");
+    Pike_error("Uneven number of arguments to aggregate_mapping.\n");
 
   m=allocate_mapping(MAP_SLOTS(args / 2));
 

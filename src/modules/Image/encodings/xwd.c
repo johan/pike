@@ -33,7 +33,7 @@ RCSID("$Id$");
 #include "svalue.h"
 #include "threads.h"
 #include "array.h"
-#include "error.h"
+#include "pike_error.h"
 #include "mapping.h"
 
 #include "image.h"
@@ -134,7 +134,7 @@ void img_xwd__decode(INT32 args,int header_only,int skipcmap)
 
    if (args<1 ||
        sp[-args].type!=T_STRING)
-      error("Image.XWD._decode(): Illegal arguments\n");
+      Pike_error("Image.XWD._decode(): Illegal arguments\n");
    
    s=sp[-args].u.string;
 
@@ -142,16 +142,16 @@ void img_xwd__decode(INT32 args,int header_only,int skipcmap)
     * window name. */
 
    if (s->len<4) 
-      error("Image.XWD._decode: header to small\n");
+      Pike_error("Image.XWD._decode: header to small\n");
    header.header_size=CARD32n(s,0);
 
    if ((size_t)s->len < header.header_size || s->len<100)
-      error("Image.XWD._decode: header to small\n");
+      Pike_error("Image.XWD._decode: header to small\n");
 
    header.file_version=CARD32n(s,1);     
 
    if (header.file_version!=7)
-      error("Image.XWD._decode: don't understand any other file format then 7\n");
+      Pike_error("Image.XWD._decode: don't understand any other file format then 7\n");
 
    add_ref(s);
    pop_n_elems(args);
@@ -391,7 +391,7 @@ void image_xwd_decode_header(INT32 args)
 static void image_xwd_decode(INT32 args)
 {
    if (!args)
-      error("Image.XWD.decode: missing argument\n");
+      Pike_error("Image.XWD.decode: missing argument\n");
 
    pop_n_elems(args-1);
    push_int(1);

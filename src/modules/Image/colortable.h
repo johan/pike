@@ -5,13 +5,13 @@
 */
 
 #ifdef PIKE_IMAGE_COLORTABLE_H
-#error colortable.h included twice
+#Pike_error colortable.h included twice
 #endif
 
 #define PIKE_IMAGE_COLORTABLE_H
 
 #ifndef PIKE_IMAGE_IMAGE_H
-#error colortable.h needs image.h
+#Pike_error colortable.h needs image.h
 #endif /* !PIKE_IMAGE_IMAGE_H */
 
 

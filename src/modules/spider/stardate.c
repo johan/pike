@@ -15,7 +15,7 @@
 #include "mapping.h"
 #include "array.h"
 #include "builtin_functions.h"
-#include "error.h"
+#include "pike_error.h"
 
 RCSID("$Id$");
 
@@ -117,7 +117,7 @@ void f_stardate (INT32 args)
   char fmt[16];
 
   if (args < 2) 
-    error("Wrong number of arguments to stardate(int, int)\n");
+    Pike_error("Wrong number of arguments to stardate(int, int)\n");
   precis=sp[-args+1].u.integer;
   t=sp[-args].u.integer;
 

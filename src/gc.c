@@ -15,7 +15,7 @@ struct callback *gc_evaluator_callback=0;
 #include "program.h"
 #include "stralloc.h"
 #include "stuff.h"
-#include "error.h"
+#include "pike_error.h"
 #include "pike_memory.h"
 #include "pike_macros.h"
 #include "pike_types.h"

@@ -13,7 +13,7 @@
 #include "pike_memory.h"
 #include "interpret.h"
 #include "mapping.h"
-#include "error.h"
+#include "pike_error.h"
 #include "block_alloc.h"
 
 RCSID("$Id$");

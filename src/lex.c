@@ -16,7 +16,7 @@ RCSID("$Id$");
 #include "stuff.h"
 #include "pike_memory.h"
 #include "interpret.h"
-#include "error.h"
+#include "pike_error.h"
 #include "object.h"
 #include "las.h"
 #include "operators.h"

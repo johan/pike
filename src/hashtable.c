@@ -8,7 +8,7 @@
 #include "hashtable.h"
 #include "stralloc.h"
 #include "stuff.h"
-#include "error.h"
+#include "pike_error.h"
 
 RCSID("$Id$");
 

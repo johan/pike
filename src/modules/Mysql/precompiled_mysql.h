@@ -32,7 +32,7 @@
 #ifdef HAVE_MYSQL_MYSQL_H
 #include <mysql/mysql.h>
 #else
-#error Need mysql.h header-file
+#Pike_error Need mysql.h header-file
 #endif /* HAVE_MYSQL_MYSQL_H */
 #endif /* HAVE_MYSQL_H */
 #ifndef _mysql_h

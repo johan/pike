@@ -186,7 +186,7 @@ struct DATA *PIKE_CONCAT(make_,DATA)(void *ptr, ptrdiff_t hval)		     \
   struct DATA *p;							     \
 									     \
   DO_IF_DEBUG( if(!PIKE_CONCAT(DATA,_hash_table))			     \
-    fatal("Hash table error!\n"); )					     \
+    fatal("Hash table Pike_error!\n"); )					     \
   PIKE_CONCAT(num_,DATA)++;						     \
 									     \
   if(( PIKE_CONCAT(num_,DATA)>>2 ) >=					     \

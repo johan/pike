@@ -4,7 +4,7 @@
 #ifndef CYCLIC_H
 #define CYCLIC_H
 
-#include "error.h"
+#include "pike_error.h"
 #include "threads.h"
 
 typedef struct CYCLIC

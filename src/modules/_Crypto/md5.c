@@ -19,7 +19,7 @@
 #include "object.h"
 #include "interpret.h"
 #include "program.h"
-#include "error.h"
+#include "pike_error.h"
 #include "module_support.h"
 
 #include <md5.h>
@@ -39,7 +39,7 @@ static struct program *md5mod_program;
 static void f_name(INT32 args)
 {
   if (args) 
-    error("Too many arguments to md5->name()\n");
+    Pike_error("Too many arguments to md5->name()\n");
   
   push_string(make_shared_string("MD5"));
 }
@@ -50,7 +50,7 @@ static void f_create(INT32 args)
     {
       if ( ((sp-args)->type != T_OBJECT)
 	   || ((sp-args)->u.object->prog != md5mod_program) )
-	error("Object not of md5 type.\n");
+	Pike_error("Object not of md5 type.\n");
       md5_copy(THIS, OBTOCTX((sp-args)->u.object));
     }
   else

@@ -14,7 +14,7 @@ RCSID("$Id$");
 #include "program.h"
 #include "interpret.h"
 #include "builtin_functions.h"
-#include "error.h"
+#include "pike_error.h"
 
 #include "module_magic.h"
 

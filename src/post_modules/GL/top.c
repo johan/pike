@@ -34,7 +34,7 @@ RCSID("$Id$");
 #include "interpret.h"
 #include "builtin_functions.h"
 #include "module_support.h"
-#include "error.h"
+#include "pike_error.h"
 
 #ifdef HAVE_GL
 
@@ -363,7 +363,7 @@ static void f_glGet(INT32 args)
     break;
 
   default:
-    error("glGet: Unsupported parameter name\n");
+    Pike_error("glGet: Unsupported parameter name\n");
   }
 }
 

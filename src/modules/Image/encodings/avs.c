@@ -16,7 +16,7 @@ RCSID("$Id$");
 #include "svalue.h"
 #include "threads.h"
 #include "array.h"
-#include "error.h"
+#include "pike_error.h"
 #include "mapping.h"
 #include "operators.h"
 
@@ -62,10 +62,10 @@ void image_avs_f__decode(INT32 args)
   h = q[4]<<24 | q[5]<<16 | q[6]<<8 | q[7];
 
   if( w <= 0 || h <= 0)
-    error("This is not an AVS file (w=%d; h=%d)\n", w, h);
+    Pike_error("This is not an AVS file (w=%d; h=%d)\n", w, h);
 
   if((size_t)w*h*4+8 > (size_t)s->len)
-    error("This is not an AVS file (w=%d; h=%d; s=%ld)\n",
+    Pike_error("This is not an AVS file (w=%d; h=%d; s=%ld)\n",
 	  w, h,
 	  DO_NOT_WARN((long)s->len));
 
@@ -113,7 +113,7 @@ void image_avs_f_encode(INT32 args )
   get_all_args( "encode", args, "%o", &io);
   
   if(!(i = (struct image *)get_storage( io, image_program)))
-    error("Wrong argument 1 to Image.AVS.encode\n");
+    Pike_error("Wrong argument 1 to Image.AVS.encode\n");
   
   s = begin_shared_string( i->xsize*i->ysize*4+8 );
   MEMSET(s->str, 0, s->len );
