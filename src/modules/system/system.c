@@ -815,11 +815,12 @@ void f_uname(INT32 args)
   old_sp = sp;
 
   for(i=0; i < NELEM(si_fields); i++) {
-    int res;
+    long res;
     res = sysinfo(si_fields[i].command, buffer, PIKE_SI_BUFLEN);
 
-    if (res == 0) {
+    if (res >= 0) {
       push_text(si_fields[i].name);
+      /* FIXME: Get the length from the return value? */
       push_text(buffer);
     }
   }
