@@ -295,8 +295,9 @@ string doctype(string type,void|string indent)
    };
    string combine_or(string a,string b)
    {
-      if (b[..3]=="<or>") b=b[4..strlen(b)-6];
-      return "<or>"+a+b+"</or>";
+     b = String.trim_all_whites(b);
+     if (b[..3]=="<or>") b=b[4..strlen(b)-6];
+     return "<or>"+a+b+"</or>";
    };
    array(string) paramlist(string in,string indent)
    {
