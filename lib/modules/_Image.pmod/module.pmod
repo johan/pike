@@ -88,6 +88,7 @@ mapping _decode( string data, mixed|void tocolor )
   if(!i)
     foreach( ({ "ANY", "XCF", "PSD", "PNG",  "BMP",  "TGA", "PCX",
                 "XBM", "XPM", "TIFF", "ILBM", "PS", "PVR", "SVG",
+		"DWG",
        /* Image formats low on headers below this mark */
                 "DSI", "TIM", "HRZ", "AVS", "WBF",
        /* "XFace" Always succeds*/
