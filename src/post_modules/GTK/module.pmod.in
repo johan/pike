@@ -59,8 +59,8 @@ mixed `[](string what)
     return INDEX("s_"+what);
   if(!zero_type(INDEX(upper_case(what))))
     return INDEX(upper_case(what));
-  if(!zero_type(INDEX(unsillycaps(what))))
-    return INDEX(unsillycaps(what));
+//if(!zero_type(INDEX(unsillycaps(what))))
+//  return INDEX(unsillycaps(what));
   if(!zero_type(INDEX(upper_case(unsillycaps(what)))))
     return INDEX(upper_case(unsillycaps(what)));
   return  GTKSupport[what];
