@@ -6406,6 +6406,13 @@ test_any([[
   return ret;
 ]],315)
 
+test_any([[
+  String.Iterator iter = String.Iterator ("foo");
+  foreach (iter; int idx;)
+    if (idx != iter->index()) return 1;
+  return 0;
+]], 0)
+
 // do-while
 test_any(int e;string t=""; e=0; do{ t+=e; }while(++e<6); return t,"012345";)
 

@@ -1254,15 +1254,18 @@ static int do_docode2(node *n, INT16 flags)
       current_switch.jumptable=0;
       current_label->break_label=alloc_label();
       current_label->continue_label=alloc_label();
-      
-      tmp3=do_branch(-1);
+
+      /* Doubt it's necessary to use a label separate from
+       * current_label->break_label, but I'm playing safe. /mast */
+      tmp3 = alloc_label();
+      do_jump(F_FOREACH_START, DO_NOT_WARN((INT32) tmp3));
       tmp1=ins_label(-1);
       DO_CODE_BLOCK(CDR(n));
       ins_label(current_label->continue_label);
-      low_insert_label( DO_NOT_WARN((INT32)tmp3));
-      do_jump(F_NEW_FOREACH, DO_NOT_WARN((INT32)tmp1));
+      do_jump(F_FOREACH_LOOP, DO_NOT_WARN((INT32)tmp1));
       ins_label(current_label->break_label);
-      
+      low_insert_label( DO_NOT_WARN((INT32)tmp3));
+
       current_switch.jumptable = prev_switch_jumptable;
       POP_STATEMENT_LABEL;
       POP_AND_DO_CLEANUP;
