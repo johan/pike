@@ -48,7 +48,7 @@ static struct mapping *gc_mark_mapping_pos = 0;
    
 
 #undef EXIT_BLOCK
-#define EXIT_BLOCK(m)							\
+#define EXIT_BLOCK(m)	do{						\
   INT32 e;								\
 DO_IF_DEBUG(								\
   if(m->refs)								\
@@ -61,7 +61,8 @@ DO_IF_DEBUG(								\
 									\
   DOUBLEUNLINK(first_mapping, m);					\
 									\
-  GC_FREE(m);
+  GC_FREE(m);                                                           \
+}while(0)
 
 
 #undef COUNT_OTHER

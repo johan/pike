@@ -108,6 +108,7 @@ OBJ= \
  language.o \
  security.o \
  bignum.o \
+ pike_cpulib.o \
  interpret.o \
  constants.o \
  cpp.o \

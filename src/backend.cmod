@@ -2073,6 +2073,7 @@ void do_debug(void)
 
 void init_backend(void)
 {
+  init_call_out_s_blocks();
   INIT;
   {
     struct object *o=clone_object(Backend_program,0);

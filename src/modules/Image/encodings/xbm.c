@@ -1,7 +1,7 @@
+#define NO_PIKE_SHORTHAND
+
 #include "global.h"
 RCSID("$Id$");
-
-#define NO_PIKE_SHORTHAND
 
 #include "image_machine.h"
 

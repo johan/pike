@@ -2031,6 +2031,9 @@ static void initialize_dmalloc(void)
 #ifdef DMALLOC_REMEMBER_LAST_LOCATION
     th_key_create(&dmalloc_last_seen_location, 0);
 #endif
+    init_memloc_blocks();
+    init_memory_map_blocks();
+    init_memory_map_entry_blocks();
     init_memhdr_hash();
 
     for(e=0;e<(long)NELEM(rndbuf);e++) rndbuf[e]= (rand() % 511) | 1;

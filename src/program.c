@@ -4158,16 +4158,16 @@ void init_program(void)
 
   lfun_ids = allocate_mapping(NUM_LFUNS);
   lfun_types = allocate_mapping(NUM_LFUNS);
-  key.type = T_STRING;
-  id.type = T_INT;
-  val.type = T_TYPE;
   for (i=0; i < NUM_LFUNS; i++) {
     lfun_strings[i] = make_shared_string(lfun_names[i]);
 
+    id.type = T_INT;
     id.u.integer = i;
+    key.type = T_STRING;
     key.u.string = lfun_strings[i];
     mapping_insert(lfun_ids, &key, &id);
 
+    val.type = T_TYPE;
     val.u.type = make_pike_type(raw_lfun_types[i]);
     mapping_insert(lfun_types, &key, &val);
     free_type(val.u.type);

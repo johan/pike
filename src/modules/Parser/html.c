@@ -5165,6 +5165,8 @@ static void html_ignore_comments(INT32 args)
 void init_parser_html(void)
 {
    size_t offset;
+   init_piece_blocks();
+   init_out_piece_blocks();
 
    empty_string = make_shared_binary_string("", 0);
 

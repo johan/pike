@@ -6,6 +6,7 @@
 /**/
 #define NO_PIKE_SHORTHAND
 #include "global.h"
+#include "svalue.h"
 #include "pike_macros.h"
 #include "pike_error.h"
 #include "interpret.h"

@@ -434,4 +434,10 @@ char *crypt(char *, char *);
 #define pike_type	pike_string
 #endif /* !USE_PIKE_TYPE */
 
+#ifdef PIKE_RUN_UNLOCKED
+#define DO_IF_RUN_UNLOCKED(X) X
+#else
+#define DO_IF_RUN_UNLOCKED(X)
+#endif
+
 #endif
