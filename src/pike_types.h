@@ -77,6 +77,7 @@ extern struct pike_string *mixed_type_string;
 extern struct pike_string *void_type_string;
 extern struct pike_string *zero_type_string;
 extern struct pike_string *any_type_string;
+extern struct pike_string *weak_type_string;
 
 #define CONSTTYPE(X) make_shared_binary_string(X,CONSTANT_STRLEN(X))
 
