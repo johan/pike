@@ -519,8 +519,10 @@ PMOD_EXPORT unsigned INT32 hash_svalue(const struct svalue *s)
     q=DO_NOT_WARN((unsigned INT32)(s->u.float_number * 16843009.731757771173));
     break;
   }
+#if 0
   q+=q % 997;
   q+=((q + s->type) * 9248339);
+#endif
   
   return q;
 }
