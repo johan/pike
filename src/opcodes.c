@@ -1536,7 +1536,7 @@ CHAROPT2(								 \
 		x=switch_lookup(set.a, &tmp);				 \
 		if( set.neg != (x<0 && (x&1)) ) break;			 \
 	      }else{							 \
-		if(!set.net) break;					 \
+		if(!set.neg) break;					 \
 	      }								 \
 	    }								 \
 )									 \
