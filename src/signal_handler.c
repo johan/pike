@@ -902,8 +902,6 @@ void f_create_process(INT32 args)
 	    gid_request=1;
 	  }
 	  break;
-#else
-#error These ought to exist on Solaris.
 #endif
 	  
 	  default:
@@ -935,8 +933,6 @@ void f_create_process(INT32 args)
 	      }
 	      pop_stack();
 	    }
-#else
-#error These ought to exist on Solaris.
 #endif
 	    break;
 	    
