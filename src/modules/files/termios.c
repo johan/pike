@@ -287,7 +287,7 @@ void file_tcsetattr(INT32 args)
    if (!IS_UNDEFINED(sp-1)) 
    {
       if (sp[-1].type!=T_INT)  
-   	 error("illegal argument 1 to tcsetattr: key %s has illegal value","ospeed"); 
+   	 error("illegal argument 1 to tcsetattr: key %s has illegal value","ispeed"); 
       switch (sp[-1].u.integer)
       {
    #include "termios_flags.h"
