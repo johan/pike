@@ -1005,14 +1005,16 @@ class TeletexString
 #undef CA
 
   string der_encode() {
-    return build_der(replace(value, encode_from, encode_to));
+    return build_der(replace(value, [array(string)]encode_from,
+			     [array(string)]encode_to));
   }
 
   this_program decode_primitive (string contents) {
     record_der (contents);
 
     array(string) parts =
-      replace (contents, decode_from, decode_to) / DEC_COMB_MARK;
+      replace (contents, [array(string)]decode_from,
+	       [array(string)]decode_to) / DEC_COMB_MARK;
     value = parts[0];
     foreach (parts[1..], string part)
       value += (decode_comb[part[..1]] || DEC_ERR(part[..1])) + part[2..];
