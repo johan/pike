@@ -330,6 +330,29 @@ int sha_verify(string message, string signature)
   return raw_verify(s, BIGNUM(signature, 256));
 }
 
+string md5_sign(string message, mixed|void r)
+{
+  object hash = Crypto.md5();
+  string s;
+  
+  hash->update(message);
+  s = hash->digest();
+  s = "0 0\14\6\10*\x86H\x86\xf7\15\2\5\5\0\4\20"+s;
+  return cooked_sign(s);
+}
+
+int md5_verify(string message, string signature)
+{
+  object hash = Crypto.md5();
+  string s;
+  
+  hash->update(message);
+  s = hash->digest();
+  s = "0 0\14\6\10*\x86H\x86\xf7\15\2\5\5\0\4\20"+s;
+
+  return raw_verify(s, BIGNUM(signature, 256));
+}
+
 bignum get_prime(int bits, function r)
 {
   int len = (bits + 7) / 8;
