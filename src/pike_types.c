@@ -244,18 +244,39 @@ void type_stack_reverse(void)
   reverse((char *)(Pike_compiler->type_stackp-a),a,1);
 }
 
-void push_type_int(INT32 i)
+static void push_type_int(INT32 i)
 {
   ptrdiff_t e;
   for(e = 0; e < (ptrdiff_t)sizeof(i); e++)
     push_type(DO_NOT_WARN((unsigned char)((i>>(e*8)) & 0xff)));
 }
 
-void push_type_int_backwards(INT32 i)
+static void push_type_int_backwards(INT32 i)
 {
   int e;
   for(e=(int)sizeof(i);e-->0;)
     push_type( (i>>(e*8)) & 0xff );
+}
+
+void push_int_type(INT32 min, INT32 max)
+{
+  push_type_int(max);
+  push_type_int(min);
+  push_type(T_INT);
+}
+
+void push_object_type(int flag, INT32 id)
+{
+  push_type_int(id);
+  push_type(flag);
+  push_type(T_OBJECT);
+}
+
+void push_object_type_backwards(int flag, INT32 id)
+{
+  unsafe_push_type(T_OBJECT);
+  unsafe_push_type(flag);
+  push_type_int_backwards(id);
 }
 
 INT32 extract_type_int(char *p)

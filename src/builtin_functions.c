@@ -2069,10 +2069,11 @@ node *fix_this_object_type(node *n)
 {
   free_type(n->type);
   type_stack_mark();
-  push_type_int(Pike_compiler->new_program->id);
-  /*  push_type(1);   We are rather sure that we contain ourselves... */
-  push_type(0);		/* But it did not work yet, so... */
-  push_type(T_OBJECT);
+
+  /* We are rather sure that we contain ourselves... */
+  /* push_object_type(1, Pike_compiler->new_program->id); */
+  /* But it did not work yet, so... */
+  push_object_type(0, Pike_compiler->new_program->id);
   n->type = pop_unfinished_type();
   if (n->parent) {
     n->parent->node_info |= OPT_TYPE_NOT_FIXED;

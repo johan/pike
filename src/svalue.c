@@ -785,9 +785,7 @@ PMOD_EXPORT int is_lt(struct svalue *a,struct svalue *b)
 	Pike_error("Bad argument to comparison.");
       }
       type_stack_mark();
-      push_type_int(aa.u.program->id);
-      push_type(0);
-      push_type(T_OBJECT);
+      push_object_type(0, aa.u.program->id);
       aa.u.string = pop_unfinished_type();
       aa.type = T_TYPE;
       res = is_lt(&aa, b);
@@ -803,9 +801,7 @@ PMOD_EXPORT int is_lt(struct svalue *a,struct svalue *b)
 	Pike_error("Bad argument to comparison.");
       }
       type_stack_mark();
-      push_type_int(bb.u.program->id);
-      push_type(0);
-      push_type(T_OBJECT);
+      push_object_type(0, bb.u.program->id);
       bb.u.string = pop_unfinished_type();
       bb.type = T_TYPE;
       res = is_lt(a, &bb);
