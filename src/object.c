@@ -932,14 +932,14 @@ PMOD_EXPORT void low_object_index_no_free(struct svalue *to,
   switch(i->identifier_flags & (IDENTIFIER_FUNCTION | IDENTIFIER_CONSTANT))
   {
   case IDENTIFIER_PIKE_FUNCTION:
-#if 0
-    if (i->func.offset == -1) {	/* prototype */
+    if (i->func.offset == -1 && p->flags & PROGRAM_PASS_1_DONE) {
+      /* Prototype. In the first pass we must be able to get a
+       * function anyway. */
       to->type=T_INT;
       to->subtype=NUMBER_UNDEFINED;
       to->u.integer=0;
       break;
     }
-#endif
   case IDENTIFIER_FUNCTION:
   case IDENTIFIER_C_FUNCTION:
     to->type=T_FUNCTION;
