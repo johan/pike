@@ -16,6 +16,8 @@
 #define MAXKC			(256/32)
 #define MAXROUNDS		14
 
+#define RIJNDAEL_BLOCK_SIZE	16
+
 #ifndef USUAL_TYPES
 #define USUAL_TYPES
 typedef unsigned char	byte;
