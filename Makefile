@@ -269,8 +269,8 @@ xenofarm:
 	-rm -rf xenofarm_result
 	mkdir xenofarm_result
 	-CCACHE_LOGFILE="`pwd`/xenofarm_result/ccache.log.txt" \
-	  MAKE="$(MAKE_CMD)" CONFIGUREARGS="$(CONFIGUREARGS)" \
-	  BUILDDIR="$(BUILDDIR)" /bin/sh bin/xenofarm.sh
+	  MAKE="$(MAKE_CMD)" MAKE_FLAGS="$(MAKE_FLAGS)" \
+	  /bin/sh bin/xenofarm.sh
 	cd xenofarm_result && tar cf - . > ../xenofarm_result.tar
 	gzip -f9 xenofarm_result.tar
 
