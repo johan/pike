@@ -25,11 +25,6 @@ RCSID("$Id$");
 
 #include <limits.h>
 
-#ifdef USE_GMP2
-#include <gmp2/gmp.h>
-#else /* !USE_GMP2 */
-#include <gmp.h>
-#endif /* USE_GMP2 */
 
 #include "my_gmp.h"
 

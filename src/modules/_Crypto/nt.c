@@ -4,6 +4,11 @@
  * NT crypto stuff for Pike
  */
 
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0400
+#endif
+
+
 #include "global.h"
 #include "stralloc.h"
 #include "interpret.h"
@@ -16,9 +21,6 @@
 #ifdef __NT__
 
 
-#ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0400
-#endif
 #include <wincrypt.h>
 
 

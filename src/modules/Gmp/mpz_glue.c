@@ -31,15 +31,20 @@ RCSID("$Id$");
 #include "opcodes.h"
 #include "module_support.h"
 
-#ifdef USE_GMP2
-#include <gmp2/gmp.h>
-#else /* !USE_GMP2 */
-#include <gmp.h>
-#endif /* USE_GMP2 */
-
 #include "my_gmp.h"
 
 #include <limits.h>
+
+#ifdef _MSC_VER
+/* No random()... provide one for gmp
+ * This should possibly be a configure test
+ * /Hubbe
+ */
+long random(void)
+{
+  return my_rand();
+}
+#endif
 
 #undef THIS
 #define THIS ((MP_INT *)(fp->current_storage))

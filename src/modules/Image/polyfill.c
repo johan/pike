@@ -4,7 +4,9 @@ RCSID("$Id$");
 /* Prototypes are needed for these */
 extern double floor(double);
 
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <math.h>
 
 #include "config.h"
