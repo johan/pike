@@ -32,7 +32,7 @@ RCSID("$Id$");
 /* #define ENCODE_DEBUG */
 
 /* Use the old encoding method for programs. */
-#define OLD_PIKE_ENCODE_PROGRAM
+/* #define OLD_PIKE_ENCODE_PROGRAM */
 
 #ifdef ENCODE_DEBUG
 /* Pass a nonzero integer as the third arg to encode_value,
