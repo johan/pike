@@ -172,7 +172,7 @@ export:
 	  "OS=source" "LIMITED_TARGETS=yes" "METATARGET=export" compile
 
 
-small_export:
+autobuild_export:
 	@$(MAKE) "MAKE=$(MAKE)" "CONFIGUREARGS=--disable-binary $(CONFIGUREARGS)" \
 	  "OS=source" "LIMITED_TARGETS=yes" "METATARGET=small_export" compile
 
