@@ -565,7 +565,7 @@ class File
   //!
   //! @seealso
   //! @[open()], @[connect()], @[Stdio.FILE],
-  void create(int|string|void file,void|string mode,void|int bits)
+  static void create(int|string|void file,void|string mode,void|int bits)
   {
     if (zero_type(file)) return;
     debug_file = file;  
@@ -1205,9 +1205,9 @@ class Port
   //!
   //! @seealso
   //! @[bind]
-  void create( string|int|void p,
-               void|mixed cb,
-               string|void ip )
+  static void create( string|int|void p,
+		      void|mixed cb,
+		      string|void ip )
   {
     debug_ip = (ip||"ANY");
     debug_port = p;
@@ -2468,12 +2468,12 @@ static class nb_sendfile
 
   /* Starter */
 
-  void create(array(string) hd,
-	      File f, int off, int l,
-	      array(string) tr,
-	      File t,
-	      function(int, mixed ...:void)|void cb,
-	      mixed ... a)
+  static void create(array(string) hd,
+		     File f, int off, int l,
+		     array(string) tr,
+		     File t,
+		     function(int, mixed ...:void)|void cb,
+		     mixed ... a)
   {
     if (!l) {
       // No need for from.
