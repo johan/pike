@@ -701,6 +701,11 @@ void backend(void)
 	if((active_poll_fds[i].revents & POLLHUP) ||
 	   (active_poll_fds[i].revents & POLLERR)) {
 	  /* Closed or error */
+#ifdef DEBUG
+	  if (active_poll_fds[i].revents & POLLERR) {
+	    fprintf(stderr, "Got POLLERR on fd %d\n", i);
+	  }
+#endif /* DEBUG */
 	  if (fds[fd].read.callback) {
 	    (*(fds[fd].read.callback))(fd,fds[fd].read.data);
 	  }
