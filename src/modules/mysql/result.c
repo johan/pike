@@ -297,25 +297,15 @@ static void f_seek(INT32 args)
 /* int|array(string|int) fetch_row() */
 static void f_fetch_row(INT32 args)
 {
-  /* Based on Mysql.xs
-   */
+  int num_fields = mysql_num_fields(PIKE_MYSQL_RES->result);
   MYSQL_ROW row = mysql_fetch_row(PIKE_MYSQL_RES->result);
 
   pop_n_elems(args);
 
-  if (row) {
-    int num_fields, i;
+  if ((num_fields > 0) && row) {
+    int i;
 
-    /* Mysql.xs does a mysql_field_seek(result, 0) here,
-     * but that seems to be a NOOP.
-     */
-    if ((num_fields = mysql_num_fields(PIKE_MYSQL_RES->result)) <= 0) {
-      num_fields = 1;
-    }
     for (i=0; i < num_fields; i++) {
-      /* Mysql.xs does a mysql_fetch_field(result) here,
-       * but throws away the result.
-       */
       if (row[i]) {
 	push_text(row[i]);
       } else {
