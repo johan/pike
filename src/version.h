@@ -6,7 +6,7 @@
 */
 
 #define PIKE_MAJOR_VERSION 7
-#define PIKE_MINOR_VERSION 4
+#define PIKE_MINOR_VERSION 5
 #define PIKE_BUILD_VERSION 1
 
 /* Prototypes begin here */
