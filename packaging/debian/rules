@@ -62,6 +62,7 @@ configure-stamp:
 	    patch -p1 -f --no-backup-if-mismatch -d $(CURDIR) < $$f ; \
 	done
 	touch patched-stamp
+
 	# Add here commands to configure the package.
 	(cd $(BUILDDIR); $(CURDIR)/src/configure --prefix=/usr $(CFARGS))
 	touch configure-stamp
@@ -144,7 +145,7 @@ clean:
 	    for f in $(CURDIR)/debian/patches/*.diff; do \
 		patch -R -p1 -f --no-backup-if-mismatch -d $(CURDIR) < $$f ; \
 	    done ; \
-	    rm -f ; \
+	    rm -f patched-stamp ; \
 	fi
 
 	dh_clean
