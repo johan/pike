@@ -2910,9 +2910,9 @@ size_t do_gc(void *ignored, int explicit_call)
     alloc_threshold = (ptrdiff_t)new_threshold;
 
     if (!explicit_call && last_gc_time != (cpu_time_t) -1) {
-#if defined(PIKE_THREADS) && (CPU_TIME_IS_THREAD_LOCAL == YES)
+#if CPU_TIME_IS_THREAD_LOCAL == YES
       OBJ2THREAD(Pike_interpreter.thread_id)->auto_gc_time += last_gc_time;
-#elif !defined(PIKE_THREADS) || (CPU_TIME_IS_THREAD_LOCAL == NO)
+#elif CPU_TIME_IS_THREAD_LOCAL == NO
       auto_gc_time += last_gc_time;
 #endif
     }
