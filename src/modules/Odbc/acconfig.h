@@ -10,9 +10,13 @@
 #define PIKE_ODBC_CONFIG_H
 
 @TOP@
-@BOTTOM@
+
+/* Define if you have SQLLEN */
+#undef HAVE_SQLLEN
 
 /* Define if you have ODBC */
 #undef HAVE_ODBC
+
+@BOTTOM@
 
 #endif /* PIKE_ODBC_CONFIG_H */
