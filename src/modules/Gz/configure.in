@@ -45,7 +45,7 @@ if test x$with_zlib = xyes ; then
   PIKE_FEATURE_NODEP(Gz)
   AC_CHECK_HEADERS(zlib.h)
   if test $ac_cv_header_zlib_h = yes ; then
-    AC_MSG_CHECKING([if libz.h is new enough])
+    AC_MSG_CHECKING([if zlib.h is new enough])
     AC_TRY_LINK([
 #include <zlib.h>
     ],[
@@ -67,6 +67,10 @@ int foo = (int)(Z_NO_COMPRESSION | Z_VERSION_ERROR);
       fi
 
       AC_CHECK_GZ(z,[AC_CHECK_GZ(gz,[ ac_cv_lib_z_main=no ] ) ])
+
+      if test "x$done" = "xyes"; then
+        AC_HAVE_FUNCS(gzseek gztell gzeof gzsetparams)
+      fi
     fi
   fi
 fi
