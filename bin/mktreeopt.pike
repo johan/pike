@@ -690,7 +690,7 @@ string generate_car_match(array(object(node)) rule_set, string indent)
       res += generate_car_match(cdr_null, indent + "  ");
     }
     
-    if (sizeof(car_any_cdr_null)) {
+    if (label) {
       res += indent + label + ":\n";
     }
 
