@@ -25,8 +25,19 @@ private int is_open;
 void create(mixed ... args) {
   ::create();
 
-  if (sizeof(args))
+  if(sizeof(args))
     open(@args);
+}
+
+string _sprintf()
+{
+  return sprintf("GZipFile(/*%s open */)", is_open ? "" : " not"); 
+}
+
+int close()
+{
+  is_open = 0;
+  return ::close();
 }
 
 void destroy() {
