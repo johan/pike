@@ -535,6 +535,7 @@ int is_eq(struct svalue *a, struct svalue *b)
   switch(a->type)
   {
   case T_OBJECT:
+    if (a->u.object == b->u.object) return 1;
     if(FIND_LFUN(a->u.object->prog,LFUN_EQ) != -1)
       goto a_is_obj;
 
