@@ -1247,13 +1247,13 @@ identifier_type: idents
 	  push_int(0);
 	  yyerror("Destructed object used as program identifier.");
 	}else{
-	  extern void f_object_program(INT32);
 	  int f=FIND_LFUN(Pike_sp[-1].u.object->prog,LFUN_CALL);
 	  if(f!=-1)
 	  {
 	    Pike_sp[-1].subtype=f;
 	    Pike_sp[-1].type=T_FUNCTION;
 	  }else{
+	    extern void f_object_program(INT32);
 	    if (Pike_compiler->compiler_pass == 2) {
 	      yywarning("Using object as program identifier.");
 	    }
@@ -2059,9 +2059,9 @@ local_function: TOK_IDENTIFIER push_compiler_frame1 func_args
       if(Pike_compiler->compiler_frame->lexical_scope & 
 	 (SCOPE_SCOPE_USED | SCOPE_SCOPED))
       {
-	$$ = mktrampolinenode($<number>3,Pike_compiler->compiler_frame);
+	$$ = mktrampolinenode($<number>4,Pike_compiler->compiler_frame);
       }else{
-	$$ = mkidentifiernode($<number>3);
+	$$ = mkidentifiernode($<number>4);
       }
     }
   }
