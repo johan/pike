@@ -34,6 +34,7 @@ int  __thread_sys_behavior = 1;
 
 #if !defined(HAVE_PTHREAD_ATFORK) && !defined(th_atfork)
 #include "callback.h"
+#define PIKE_USE_OWN_ATFORK
 
 
 static struct callback_list atfork_prepare_callback;
@@ -1928,6 +1929,12 @@ void th_cleanup(void)
     free_program(thread_id_prog);
     thread_id_prog=0;
   }
+
+#ifdef PIKE_USE_OWN_ATFORK
+  free_callback_list(&atfork_prepare_callback);
+  free_callback_list(&atfork_parent_callback);
+  free_callback_list(&atfork_child_callback);
+#endif
 }
 
 #endif
