@@ -578,7 +578,7 @@ PMOD_EXPORT int svalue_is_true(const struct svalue *s)
 
     if(FIND_LFUN(s->u.object->prog,LFUN_NOT)!=-1)
     {
-      apply_lfun(s->u.object, LFUN_NOT , 1);
+      apply_lfun(s->u.object, LFUN_NOT, 0);
       if(sp[-1].type == T_INT && sp[-1].u.integer == 0)
       {
 	pop_stack();
