@@ -742,6 +742,10 @@ int main()
         LIBS="${OLDLIBS}"
       ;;
 
+      xAIX*)
+        LIBS="${OLDLIBS} -lpthreads"
+      ;;
+
       *)
         LIBS="${OLDLIBS} -lpthread"
       ;;
