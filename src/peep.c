@@ -880,6 +880,7 @@ static void do_optimization(int topop, ...)
   DO_OPTIMIZATION_POSTQUEL(q);
 }
 
+#include "peep_engine.c"
 
 static void asm_opt(void)
 {
@@ -905,7 +906,35 @@ static void asm_opt(void)
   }
 #endif
 
-#include "peep_engine.c"
+  len=instrbuf.s.len/sizeof(p_instr);
+  instructions=(p_instr *)instrbuf.s.str;
+  instrbuf.s.str=0;
+  fifo_len=0;
+  init_bytecode();
+
+  for(eye=0;eye<len || fifo_len;)
+  {
+
+#ifdef PIKE_DEBUG
+    if(a_flag>6) {
+      int e;
+      fprintf(stderr, "#%ld,%d:",
+              DO_NOT_WARN((long)eye),
+              fifo_len);
+      for(e=0;e<4;e++) {
+        fprintf(stderr," ");
+        dump_instr(instr(e));
+      }
+      fprintf(stderr,"\n");
+    }
+#endif
+
+    low_asm_opt();
+    advance();
+  }
+
+  for(eye=0;eye<len;eye++) free_string(instructions[eye].file);
+  free((char *)instructions);
 
 #ifdef PIKE_DEBUG
   if(a_flag > 4)
