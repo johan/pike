@@ -116,7 +116,7 @@ RCSID("$Id$");
  *! Mysql is available from @url{http://www.mysql.com@}.
  *!
  *! @seealso
- *!   @[Mysql.result], @[Sql.Sql]
+ *!   @[Mysql.mysql_result], @[Sql.Sql]
  */
 
 struct program *mysql_program = NULL;
@@ -1197,7 +1197,7 @@ static void f_protocol_info(INT32 args)
  *!
  *! @seealso
  *!   @[list_tables()], @[list_fields()], @[list_processes()],
- *!   @[mysql_result]
+ *!   @[Mysql.mysql_result]
  */
 static void f_list_dbs(INT32 args)
 {
@@ -1285,7 +1285,7 @@ static void f_list_dbs(INT32 args)
  *!
  *! @seealso
  *!   @[list_dbs()], @[list_fields()], @[list_processes()],
- *!   @[mysql_result]
+ *!   @[Mysql.mysql_result]
  */
 static void f_list_tables(INT32 args)
 {
@@ -1413,7 +1413,8 @@ static void f_list_tables(INT32 args)
  *!   @tt{show fields in 'table' like "wild"@}.
  *!
  *! @seealso
- *!   @[list_dbs()], @[list_tables()], @[list_processes()], @[mysql_result.fetch_field()]
+ *!   @[list_dbs()], @[list_tables()], @[list_processes()],
+ *!   @[Mysql.mysql_result.fetch_field()]
  */
 static void f_list_fields(INT32 args)
 {
