@@ -10,8 +10,6 @@
 ** please submit bug reports and patches to the author
 **
 ** also see http://www.mirar.org/mird/
-**
-** for licence, read the LICENCE file
 */
 
 /* handles hashtrie nodes

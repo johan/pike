@@ -4,6 +4,7 @@
 ||| for more information.
 ||| $Id$
 \*/
+
 /* define if there is an inline keyword */
 #undef HAS_INLINE
 

@@ -8,8 +8,6 @@
 /*
 ** libMird by Mirar <mirar@mirar.org>
 ** please submit bug reports and patches to the author
-**
-** for licence, read the LICENCE file
 */
 
 /* handles cells
