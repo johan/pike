@@ -140,6 +140,7 @@ else
   AC_MSG_RESULT(no)
 
   if echo foo "$CC" | grep rntcc >/dev/null; then
+    echo Warning: rntcc detected. Using the smartlink /bin/sh script.
     SMARTLINK="$BINDIR/smartlink"
   else
     rm -f "$SMARTLINK"
