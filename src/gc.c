@@ -831,7 +831,6 @@ void do_gc(void)
   double multiplier;
 #ifdef HAVE_GETHRTIME
 #ifdef PIKE_DEBUG
-#ifdef HAVE_GETHRTIME
   hrtime_t gcstarttime;
 #endif
 #endif
