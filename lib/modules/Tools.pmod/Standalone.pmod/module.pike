@@ -2,6 +2,8 @@
 
 // $Id$
 
+constant description = "Pike module installer.";
+
 // Source directory
 string srcdir;
 string make="make";

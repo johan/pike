@@ -1,7 +1,8 @@
 #! /usr/bin/env pike
 // -*- pike -*- $Id$
 
-string version = ("$Revision$"/" ")[1];
+constant version = ("$Revision$"/" ")[1];
+constant description = "Replaces strings in files.";
 int(0..1) verbosity = 1; // more output
 int(0..1) overwrite = 1; // no backups
 int(0..1) recursive = 0; // not recursive

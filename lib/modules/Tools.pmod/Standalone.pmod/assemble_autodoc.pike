@@ -1,5 +1,7 @@
 // $Id$
 
+constant description = "Assembles AutoDoc output file.";
+
 // AutoDoc mk II assembler
 
 #define Node Parser.XML.Tree.Node

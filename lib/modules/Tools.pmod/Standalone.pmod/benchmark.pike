@@ -1,5 +1,6 @@
 // $Id$
 
+constant description = "Runs some built in Pike benchmarks.";
 constant help = #"
 Benchmarks Pike with %d built in benchmark tests.
 Arguments:

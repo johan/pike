@@ -6,6 +6,8 @@
  * Henrik Grubbström 2001-01-08
  */
 
+constant description = "Extracts autodoc from Pike or C code.";
+
 string imgsrc;
 string imgdir;
 
