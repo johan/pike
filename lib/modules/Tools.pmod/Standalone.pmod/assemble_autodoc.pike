@@ -400,7 +400,7 @@ void move_items(Node n, mapping jobs, void|Node wrapper)
     mapping e = jobs[name];
     if(!e) continue;
 
-    Node wr = Node(XML_ELEMENT, "namespace",
+    Node wr = Node(XML_ELEMENT, "autodoc",
 		   n->get_attributes()+(["hidden":"1"]), 0);
     if(wrapper)
       wr = wrap( wr, wrapper->clone() );
