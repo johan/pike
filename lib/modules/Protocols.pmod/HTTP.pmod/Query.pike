@@ -2,7 +2,31 @@
 
 // $Id$
 
-//!	Open and execute an HTTP query.
+//! Open and execute an HTTP query.
+//!
+//! @example
+//! HTTP.Query o=HTTP.Query();
+//! 
+//! void ok()
+//! {
+//!    write("ok...\n");
+//!    write("%O\n", o->headers);
+//!    exit(0);
+//! }
+//! 
+//! void fail()
+//! {
+//!    write("fail\n");
+//!    exit(0);
+//! }
+//! 
+//! int main()
+//! {
+//!    o->set_callbacks(ok, fail);
+//!    o->async_request("pike.ida.liu.se", 80, "HEAD / HTTP/1.0");
+//!    return -1;
+//! }
+//! @endexample
 
 /****** variables **************************************************/
 
@@ -954,31 +978,3 @@ static string _sprintf(int t)
   return t=='O' && status && sprintf("%O(%d %s)", this_program,
 				     status, status_desc);
 }
-
-/************************ example *****************************/
-
-#if 0
-
-object o=HTTP.Query();
-
-void ok()
-{
-   write("ok...\n");
-   write(sprintf("%O\n",o->headers));
-   exit(0);
-}
-
-void fail()
-{
-   write("fail\n");
-   exit(0);
-}
-
-int main()
-{
-   o->set_callbacks(ok,fail);
-   o->async_request("www.roxen.com",80,"HEAD / HTTP/1.0");
-   return -1;
-}
-
-#endif
