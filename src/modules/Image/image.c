@@ -1176,6 +1176,7 @@ image_tuned_box_leftright(const rgba_group left, const rgba_group right,
 {
   int x, y=height, w;
   rgb_group *from = dest;
+  if(!xsize || !height) return;
   for(x=0; x<length; x++)
   {
     (dest+x)->r = (((long)left.r)*(length-x)+((long)right.r)*(x))/length;
@@ -1194,6 +1195,7 @@ image_tuned_box_topbottom(const rgba_group left, const rgba_group right,
 {
   int x,y;
   rgb_group color, *from, old;
+  if(!xsize || !height) return;
   if(length > 128)
   {
     for(y=0; y<height; y++)
