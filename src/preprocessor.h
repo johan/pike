@@ -791,10 +791,10 @@ static INT32 lower_cpp(struct cpp *this,
        * 	<CSI>[\040-\077]*[\100-\177]
        */
       while ((tmp = data[pos]) && (tmp == ((tmp & 0x1f)|0x20))) {
-	pos++
+	pos++;
       }
       if (tmp == ((tmp & 0x3f)|0x40)) {
-	pos++
+	pos++;
       } else {
 	/* FIXME: Warning here? */
       }
