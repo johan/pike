@@ -11,6 +11,8 @@
  * Henrik Grubbström 1997-03-06
  */
 
+#include <stdio.h>
+
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
