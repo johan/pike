@@ -881,9 +881,9 @@ again:
       INT32 line;
       int foo=0;
 
-      fprintf(stderr,"%*s**Program id: %ld, flags: %x\n",indent,"",
-	      (long)(p->id),
-	      p->flags);
+      fprintf(stderr,"%*s**Program id: %ld, flags: %x, parent id: %d\n",
+	      indent,"", (long)(p->id), p->flags,
+	      p->parent ? p->parent->id : -1);
 
       if(p->flags & PROGRAM_HAS_C_METHODS)
       {
