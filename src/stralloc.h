@@ -48,8 +48,7 @@ PMOD_EXPORT struct pike_string *debug_findstring(const struct pike_string *foo);
       really_free_string(_); \
   } while(0)
 
-#define my_hash_string(X) ((size_t)(((char *)(X))-(char *)0))
-#define my_order_strcmp(X,Y) ((char *)(X)-(char *)(Y))
+#define my_hash_string(X) PTR_TO_INT(X)
 #define is_same_string(X,Y) ((X)==(Y))
 
 #ifdef PIKE_DEBUG
