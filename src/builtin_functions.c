@@ -406,8 +406,8 @@ static struct case_info *find_ci_shift0(INT32 c)
 
 #define DO_LOWER_CASE(C) do {\
     INT32 c = C; \
-    struct case_info *ci = find_ci(c); \
     if(c<128){if(c >= 'A' && c <= 'Z' ) C=c+0x20;}else {\
+    struct case_info *ci = find_ci(c); \
     if (ci) { \
       switch(ci->mode) { \
       case CIM_NONE: case CIM_LOWERDELTA: break; \
