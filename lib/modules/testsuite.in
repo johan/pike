@@ -808,7 +808,7 @@ test_any([[
   Stdio.File input_fd = Stdio.File();
   Process.TraceProcess proc =
     Process.TraceProcess(({ "/bin/cat" }), ([
-      "stdin":input_fd->pipe(),
+      "stdin":input_fd->pipe(Stdio.PROP_IPC),
     ]));
 
   int initial_sleep = 5;
