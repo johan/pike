@@ -918,3 +918,8 @@ object|void send_message(string textstring, mapping options)
   if (objectp(res)) return res;
   return text(res);
 }
+
+void register_async_message_callback(function(int,int,string:void) cb)
+{
+  s->con->con->add_async_callback("async-send-message", cb);
+}
