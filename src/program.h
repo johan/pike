@@ -472,6 +472,7 @@ int override_identifier (struct reference *ref, struct pike_string *name);
 void fixate_program(void);
 struct program *low_allocate_program(void);
 void low_start_new_program(struct program *p,
+			   int pass,
 			   struct pike_string *name,
 			   int flags,
 			   int *idp);
