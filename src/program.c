@@ -975,6 +975,11 @@ static struct node_s *index_modules(struct pike_string *ident,
   return 0;
 }
 
+/*! @decl constant UNDEFINED
+ *!
+ *! The undefined value; ie a zero for which @[zero_type()] returns 1.
+ */
+
 struct node_s *resolve_identifier(struct pike_string *ident);
 
 struct node_s *find_module_identifier(struct pike_string *ident,
@@ -1102,6 +1107,22 @@ struct node_s *resolve_identifier(struct pike_string *ident)
 
   return 0;
 }
+
+/*! @decl constant this
+ *!
+ *! Builtin constant that evaluates to the current object.
+ *!
+ *! @seealso
+ *!   @[this_program], @[this_object()]
+ */
+
+/*! @decl constant this_program
+ *!
+ *! Builtin constant that evaluates to the current program.
+ *!
+ *! @seealso
+ *!   @[this], @[this_object()]
+ */
 
 /* If the identifier is recognized as one of the magic identifiers,
  * like "this", "this_program" or "`->" when preceded by ::, then a
