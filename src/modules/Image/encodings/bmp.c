@@ -567,7 +567,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
       else
       {
 	 struct pike_string *qs;
-	 MAKE_CONSTANT_SHARED_STRING(qs,"quality");
+	 MAKE_CONST_STRING(qs,"quality");
 	 parameter_int(sp+1-args,qs,&quality);
       }
    }
