@@ -853,7 +853,7 @@ static int alpha_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
 	return 0;
 	
       case T_STRING:
-	return DO_NOT_WARN((int)my_strcmp(a->u.string, b->u.string));
+	return DO_NOT_WARN((int)my_quick_strcmp(a->u.string, b->u.string));
 	
       case T_ARRAY:
 	if(a==b) return 0;
