@@ -131,8 +131,16 @@ static void image_ft_face_set_size( INT32 args )
 
 static void image_ft_face_info( INT32 args )
 {
-  push_text( "family" );  push_text( TFACE->family_name );
-  push_text( "style" );  push_text( TFACE->style_name );
+  push_text( "family" );
+  if( TFACE->family_name )
+    push_text( TFACE->family_name );
+  else
+    push_text( "unknown" );
+  push_text( "style" );
+  if( TFACE->style_name )
+    push_text( TFACE->style_name );
+  else
+    push_text( "unknown" );
   push_text( "face_flags" );  push_int( TFACE->face_flags );
   push_text( "style_flags" );  push_int( TFACE->style_flags );
   f_aggregate_mapping( 8 );
