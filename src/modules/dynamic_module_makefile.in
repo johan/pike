@@ -18,7 +18,7 @@ subdirs:
 	@for a in '' $(MODULE_SUBDIRS) ; do if test ! -z "$$a"; then echo making $$a ; ( cd $$a && $(MAKE) $(MAKE_FLAGS) ) || exit $$? ; else :; fi ; done
 
 dummy:	$(DUMMY) linker_options modlist_headers modlist_segment module.so
-	tmp="$(INSTALL_NAME)" ; \
+	@tmp="$(INSTALL_NAME)" ; \
 	if test x$$tmp = x ; then tmp="$(MODNAME)"; else :; fi ;\
 	$(INSTALL) module.so $(TMP_LIBDIR)/modules/$$tmp.so ;\
 	if [ -f $(SRCDIR)/module.pmod.in ]; then sed -e "s/@module@/\"$$tmp\"/" <$(SRCDIR)/module.pmod.in >$(TMP_LIBDIR)/modules/$$tmp.pmod ; else :; fi
