@@ -14,3 +14,5 @@
   } while(0)
 #define ins_byte(VAL)		add_to_program((VAL))
 #define ins_data(VAL)		ins_int((VAL), (void (*)(char))add_to_program)
+
+#define READ_INCR_BYTE(PC)	EXTRACT_UCHAR((PC)++)

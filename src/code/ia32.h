@@ -13,3 +13,4 @@
     ins_int((INT32)tmp, add_to_program);				\
 }while(0)
 
+#define READ_INCR_BYTE(PC)	EXTRACT_UCHAR((PC)++)
