@@ -23,6 +23,7 @@ struct object
   INT32 refs;                    /* Reference count, must be first. */
 #ifdef PIKE_SECURITY
   struct object *prot;
+  char *pad;		/* FIXME: Kluge to get longlong alignment of storage */
 #endif
   struct program *prog;
   struct object *parent;
