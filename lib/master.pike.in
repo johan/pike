@@ -2542,6 +2542,8 @@ void _main(array(string) orig_argv, array(string) env)
 	  prog = compile_string(
 	    "mixed create(int argc, array(string) argv,array(string) env){"+
 	    opts[1]+";}");
+	else if (intp (opts[1]))
+	  prog = compile_string ("mixed run() {}");
 	else {
 	  string code = opts[1];
 	  while(sscanf(code, "%sCHAR(%1s)%s", code, string c, string rest)==3)
