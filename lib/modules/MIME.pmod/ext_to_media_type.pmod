@@ -699,6 +699,7 @@ static mapping ext2type = ([
   "po"      : "application/x-form",
   "pqf"     : "application/x-cprplayer",
   "pqi"     : "application/cprplayer",
+  "psd"     : "application/x-photoshop",
   "psr"     : "application/datawindow",
   "ptlk"    : "application/listenup",
   "qrt"     : "application/quest",
