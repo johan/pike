@@ -934,6 +934,7 @@ static private int repair(object(kernel) state, multiset(int|string) conflicts)
 			     i->r->pri->value, pri->value));
 	    }
 	    i->direct_lookahead = (<>);
+	    i->next_state = 0;
 	  } else if ((pri->assoc <= 0) &&
 		     (reduce_pri->value == pri->value)) {
 	    if (verbose) {
@@ -943,6 +944,7 @@ static private int repair(object(kernel) state, multiset(int|string) conflicts)
 			     symbol_to_string(symbol)));
 	    }
 	    i->direct_lookahead = (<>);
+	    i->next_state = 0;
 	  } else {
 	    if (verbose) {
 	      werror(sprintf("Kept item\n%s\n"
