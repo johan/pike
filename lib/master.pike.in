@@ -1908,15 +1908,8 @@ void _main(array(string) orig_argv, array(string) env)
     exit(1);
   }
 
-  function(array(string):int) newmain;
-  if( _typeof(script->main) <= typeof(newmain) ) {
-    if(trace) predef::trace(trace);
-    i = script->main( argv );
-  }
-  else {
-    if(trace) predef::trace(trace);
-    i = script->main( sizeof(argv), argv, env );
-  }
+  if(trace) predef::trace(trace);
+  i=script->main(sizeof(argv),argv,env);
   if(i >=0) exit(i);
   _async=1;
   
