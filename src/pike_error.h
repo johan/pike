@@ -27,6 +27,10 @@ PMOD_EXPORT extern const char msg_fatal_error[];
  (fprintf(stderr,"%s: Fatal error:\n",__FILE__ ":" DEFINETOSTR(__LINE__) ),debug_fatal)
 #endif
 
+#ifndef NO_PIKE_SHORTHAND
+#define fatal Pike_fatal
+#endif
+
 PMOD_EXPORT DECLSPEC(noreturn) void debug_fatal(const char *fmt, ...) ATTRIBUTE((noreturn,format (printf, 1, 2)));
 
 
