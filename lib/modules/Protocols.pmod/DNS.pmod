@@ -564,10 +564,12 @@ class server
       port = 53;
     if(!udp::bind(port))
       error("DNS: failed to bind port "+port+".\n");
+#if 0
     werror("Protocols.DNS.server(%O)\n"
 	   "UDP Address: %s\n"
 	   "%s\n", port, udp::query_address(),
 	   describe_backtrace(backtrace()));
+#endif /* 0 */
     udp::set_read_callback(rec_data);
   }
 
@@ -812,9 +814,11 @@ class client
   {
     object udp = Stdio.UDP();
     udp->bind(0);
+#if 0
     werror("Protocols.DNS.client()->do_sync_query(%O)\n"
 	   "UDP Address: %s\n"
 	   "%s\n", s, udp->query_address(), describe_backtrace(backtrace()));
+#endif /* 0 */
     mapping m;
     int i;
     for (i=0; i < RETRIES; i++) {
@@ -1274,10 +1278,12 @@ class async_client
   {
     if(!udp::bind(0))
       error( "DNS: failed to bind a port.\n" );
+#if 0
     werror("Protocols.DNS.async_client(%O, %O)\n"
 	   "UDP Address: %s\n"
 	   "%s\n", server, domain, udp::query_address(),
 	   describe_backtrace(backtrace()));
+#endif /* 0 */
 
     udp::set_read_callback(rec_data);
     ::create(server,domain);
