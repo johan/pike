@@ -2423,6 +2423,19 @@ mixed a()
 }
 ]])
 
+test_program_eq([[
+  constant x = X;
+  class X {constant c = "right";}
+
+  constant y = Y;
+  class Y {constant c = "wrong";}
+
+  string a()
+  {
+    return ::`[]("x")->c;
+  }
+]], "right")
+
 
 dnl Come back when we decide that this should be possible
 dnl test_do([[
