@@ -352,6 +352,45 @@ class copy
   }
 }
 
+class expunge
+{
+  inherit request;
+
+  constant arg_info = ({});
+
+  mapping easy_process()
+  {
+    array(array(object|string)) res = server->expunge(session);
+    if (res) {
+      foreach(res, array(object|string)a) {
+	send("*", @a);
+      }
+      send(tag, "OK");
+    } else {
+      send(tag, "NO");
+    }
+    return ([ "action" : "finished" ]);
+  }
+}
+
+class close
+{
+  inherit request;
+
+  constant arg_info = ({});
+
+  mapping easy_process()
+  {
+    int res = server->close(session);
+    if (res) {
+      send(tag, "OK");
+    } else {
+      send(tag, "NO");
+    }
+    return ([ "action" : "logged_in_state" ]);
+  }
+}
+
 class store
 {
   inherit request;
@@ -885,5 +924,3 @@ constant unsubscribe = unimplemented;
 constant status = unimplemented;
 constant append = unimplemented;
 constant check = unimplemented;
-constant close = unimplemented;
-constant expunge = unimplemented;
