@@ -4,6 +4,8 @@
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
 
+#include <errno.h>
+
 #ifndef TESTING
 #include "global.h"
 #include "error.h"
