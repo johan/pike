@@ -112,6 +112,16 @@ string make_manpage(string base, string|SGML data, string ind, string fbase)
 	  stripws=1;
 	  break;
 
+	case "aarg":
+	  stripws = 1;
+	  res += "\n.br\n\\fB"+make_manpage(base,tag->data,ind,fbase)+"\\fR";
+	  continue;
+
+	case "adesc":
+	  stripws = 1;
+	  res += "\n.br\n.in +.8i .ll -.8i\n"+make_manpage(base,tag->data,ind,fbase) +"\n.in -.8i .ll +.8i\n";
+	  continue;
+	  
 	case "p":
 	  res+="\n.PP\n";
 	  stripws=1;
