@@ -272,7 +272,7 @@ static void ia32_local_lvalue(INT32 arg)
   ia32_get_local_addr(arg);
 
   MEMSET(tmp, 0, sizeof(tmp));
-  tmp[0].type=T_LVALUE;
+  tmp[0].type=T_SVALUE_PTR;
   tmp[0].u.lval=(struct svalue *)4711;
   tmp[1].type=T_VOID;
 

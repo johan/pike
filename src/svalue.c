@@ -1151,10 +1151,6 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
   indent+=2;
   switch(s->type)
   {
-    case T_LVALUE:
-      my_strcat("lvalue");
-      break;
-
     case T_INT:
       sprintf(buf,"%"PRINTPIKEINT"d",s->u.integer);
       my_strcat(buf);

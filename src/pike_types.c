@@ -144,7 +144,8 @@ char *get_name_of_type(int t)
     case T_FLOAT: return "float";
     case T_FUNCTION: return "function";
     case T_INT: return "int";
-    case T_LVALUE: return "lvalue";
+    case T_SVALUE_PTR: return "svalue_ptr";
+    case T_OBJ_INDEX: return "obj_index";
     case T_MAPPING: return "mapping";
     case T_MULTISET: return "multiset";
     case T_OBJECT: return "object";
