@@ -283,8 +283,10 @@ static struct pike_string *do_read(int fd,
     {
       return end_shared_string(str);
     }else{
+      struct pike_string *foo; /* Per */
+      foo = make_shared_binary_string(str->str,bytes_read);
       free((char *)str);
-      return make_shared_binary_string(str->str,bytes_read);
+      return foo;
     }
     
   }else{
