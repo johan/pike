@@ -633,8 +633,8 @@ void document(string enttype,
 	 string s="";
 	 foreach (huh->inherits,string what)
 	    res+="inherits "+make_nice_reference(what,prefix,what)+
-	       "<br>\n";
-	 res+="<br>\n";
+	      "<br/>\n";
+	 res+="<br/>\n";
       }
 
       res+=fixdesc(huh->desc,prefix,huh->_line)+"\n";
@@ -662,7 +662,7 @@ void document(string enttype,
 	       string rv,name,params;
 	       if (sscanf(arg,"%s %s(%s",rv,name,params)<2)
 		  name=arg;
-	       res+="   <param name="+S(name)+">\n";
+	       res+="   <param name="+S(name)+"/>\n";
 	    }
 	    res+=
 	       "<text>"+
