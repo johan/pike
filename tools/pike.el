@@ -175,7 +175,9 @@ Otherwise t is returned."
 
 (defun pike-font-lock-forward-syntactic-ws ()
   (let ((start (point)))
-    (forward-comment 134217727)
+    ;; If forward-comment in at least XEmacs 21 is given a large
+    ;; positive value, it'll loop all the way through if it hits eob.
+    (while (and (forward-comment 5) (not (eobp))))
     (while (cond ((looking-at "\\\\$")
 		  (forward-char)
 		  t)
@@ -194,7 +196,7 @@ Otherwise t is returned."
 		 ((looking-at "@[\n\r]\\s *//[.!|]")
 		  (goto-char (match-end 0))
 		  t))
-      (forward-comment 134217727))))
+      (while (and (forward-comment 5) (not (eobp)))))))
 
 (defun pike-font-lock-backward-syntactic-ws ()
   (save-match-data
