@@ -77,7 +77,7 @@ PMOD_EXPORT void low_reinit_buf(dynamic_buffer *buf)
   }
 }
 
-PMOD_EXPORT void low_init_buf_with_string(string s, dynamic_buffer *buf)
+PMOD_EXPORT void low_init_buf_with_string(dynbuf_string s, dynamic_buffer *buf)
 {
   if(buf->s.str) { free(buf->s.str); buf->s.str=NULL; } 
   buf->s=s;
@@ -92,9 +92,9 @@ PMOD_EXPORT void low_init_buf_with_string(string s, dynamic_buffer *buf)
 #endif
 }
 
-PMOD_EXPORT string complex_free_buf(void)
+PMOD_EXPORT dynbuf_string complex_free_buf(void)
 {
-  string tmp;
+  dynbuf_string tmp;
   if(!buff.s.str) return buff.s;
   my_putchar(0);
   buff.s.len--;
@@ -133,7 +133,7 @@ PMOD_EXPORT void my_binary_strcat(const char *b, ptrdiff_t l) { low_my_binary_st
 PMOD_EXPORT void my_strcat(const char *b) { my_binary_strcat(b,strlen(b)); }
 PMOD_EXPORT void initialize_global_buf(void) { buff.s.str = NULL; }
 PMOD_EXPORT void init_buf(void) { low_reinit_buf(&buff); }
-PMOD_EXPORT void init_buf_with_string(string s) { low_init_buf_with_string(s,&buff); }
+PMOD_EXPORT void init_buf_with_string(dynbuf_string s) { low_init_buf_with_string(s,&buff); }
 PMOD_EXPORT char *debug_return_buf(void)
 {
   my_putchar(0);

@@ -1240,7 +1240,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	     * with tracing...
 	     */
 	    int save_t_flag=t_flag;
-	    string save_buffer=complex_free_buf();
+	    dynbuf_string save_buffer=complex_free_buf();
 
 	    t_flag=0;
 	    SET_CYCLIC_RET(1);
@@ -1404,8 +1404,8 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 
 PMOD_EXPORT void print_svalue (FILE *out, const struct svalue *s)
 {
-  string orig_str;
-  string str;
+  dynbuf_string orig_str;
+  dynbuf_string str;
   orig_str = complex_free_buf();
   init_buf();
   describe_svalue (s, 0, 0);

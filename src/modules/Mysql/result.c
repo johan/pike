@@ -47,11 +47,6 @@
 #endif
 #endif
 
-/* dynamic_buffer.h contains a conflicting typedef for string
- * we don't use any dynamic buffers, so we have this work-around
- */
-#define DYNAMIC_BUFFER_H
-typedef struct dynamic_buffer_s dynamic_buffer;
 
 /* From the Pike-dist */
 #include "svalue.h"

@@ -1513,7 +1513,7 @@ static void low_pike_sprintf(struct format_stack *fs,
 
       case 'O':
       {
-	string s;
+	dynbuf_string s;
 	struct svalue *t;
 	DO_OP();
 	/* No need to do CHECK_OBJECT_SPRINTF() here,
@@ -1627,9 +1627,14 @@ static void low_pike_sprintf(struct format_stack *fs,
 
 
 /* An C-callable pike_sprintf
-string pike_sprintf(char *format,struct svalue *argp,int num_arg)
+
+** This doesn't seem to work at all.  The prototype for
+** low_pike_sprintf has changed _a lot_ since this code was
+** written.  It should probably be removed.  // Marcus
+
+dynbuf_string pike_sprintf(char *format,struct svalue *argp,int num_arg)
 {
-  string prefix;
+  dynbuf_string prefix;
   prefix.str=0;
   prefix.len=0;
 
