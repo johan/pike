@@ -143,6 +143,10 @@ static void f_create(INT32 args)
     int sub_size;
     int factor = 1;
 
+    /* E.g. arcfour has no query_block_size, since it's not a block cipher */
+    if( find_identifier("query_block_size", THIS->objects[i]->prog)==-1 )
+      continue;
+
     safe_apply(THIS->objects[i], "query_block_size", 0);
     if (sp[-1].type != T_INT) {
       Pike_error("_Crypto.pipe->create(): query_block_size() returned other than int\n"
