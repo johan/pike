@@ -2507,12 +2507,14 @@ static void init_dlopen(void)
     EXPORT(fread);
     EXPORT(strtol);
   }
+#if 0
 #ifdef _M_IA64
   {
     extern void *_gp[];
     EXPORT(_gp);
   }
 #endif
+#endif /* 0 */
 
 #define EXPORT_AS(X,Y) \
   DO_IF_DLDEBUG( fprintf(stderr,"EXP: %s = %s\n",#X,#Y); ) \
@@ -2790,12 +2792,14 @@ int main(int argc, char ** argv)
       EXPORT(rand);
       EXPORT(srand);
     }
+#if 0
 #ifdef _M_IA64
     {
       extern void *_gp[];
       EXPORT(_gp);
     }
 #endif
+#endif /* 0 */
   }
   
   /* FIXME: open argv[0] and check what dlls is it is linked
