@@ -573,6 +573,8 @@ PMOD_EXPORT int svalue_is_true(const struct svalue *s)
 	return 0;
       }
     } else {
+#if 0
+      /* We should never get a function svalue for a prototype. */
       struct identifier *i = ID_FROM_INT(s->u.object->prog, s->subtype);
       if (((i->identifier_flags & (IDENTIFIER_FUNCTION|IDENTIFIER_CONSTANT)) ==
 	   IDENTIFIER_PIKE_FUNCTION) &&
@@ -580,6 +582,7 @@ PMOD_EXPORT int svalue_is_true(const struct svalue *s)
 	/* Prototype. */
 	return 0;
       }
+#endif
     }
     return 1;
 
@@ -629,6 +632,8 @@ PMOD_EXPORT int safe_svalue_is_true(const struct svalue *s)
 	return 0;
       }
     } else {
+#if 0
+      /* We should never get a function svalue for a prototype. */
       struct identifier *i = ID_FROM_INT(s->u.object->prog, s->subtype);
       if (((i->identifier_flags & (IDENTIFIER_FUNCTION|IDENTIFIER_CONSTANT)) ==
 	   IDENTIFIER_PIKE_FUNCTION) &&
@@ -636,6 +641,7 @@ PMOD_EXPORT int safe_svalue_is_true(const struct svalue *s)
 	/* Prototype. */
 	return 0;
       }
+#endif
     }
     return 1;
 
