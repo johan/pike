@@ -1130,9 +1130,9 @@ idents: low_idents
   {
     $$=index_node($1, $3);
     free_node($1);
-    free_string($3);
-    free_string(last_identifier);
+    if(last_identifier) free_string(last_identifier);
     copy_shared_string(last_identifier, $3);
+    free_string($3);
   }
   ;
 

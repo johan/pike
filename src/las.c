@@ -508,6 +508,8 @@ node *index_node(node *n, struct pike_string * id)
     case T_STRING:
     case T_ARRAY:
       yyerror("Failed to index module (Not a module?)");
+      pop_stack();
+      push_int(0);
       break;
 
     default:
