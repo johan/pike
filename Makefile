@@ -260,6 +260,11 @@ solaris_pkg: solaris_pkg_configure bin/pike
 	@test -d "${BUILDDIR}/solaris_pkg_build" && rm -rf "${BUILDDIR}/solaris_pkg_build"
 	@ls -l *pkg
 
+xenofarm_feature:
+	$(MAKE) MAKE="$(MAKE)" BUILDDIR="$(BUILDDIR)" \
+	  CONFIGUREARGS="$(CONFIGUREARGS) --with-cdebug --with-security --with-double-precision --with-profiling --with-keypair-loop --with-new-multisets" \
+	  xenofarm
+
 xenofarm:
 	test -d build || mkdir build
 	-rm -rf build/xenofarm
