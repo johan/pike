@@ -354,12 +354,9 @@ void destruct(struct object *o)
   int e;
   struct program *p;
 
-  
-
 #ifdef PIKE_DEBUG
   if(d_flag > 20) do_debug();
 #endif
-
   if(!o || !(p=o->prog)) return; /* Object already destructed */
 
   add_ref(o);
