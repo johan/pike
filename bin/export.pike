@@ -206,12 +206,25 @@ int main(int argc, string *argv)
 	   get_files(vpath+"/lib"),
 	   get_files(vpath+"/bin"),
 	   get_files(vpath+"/man"),
-	   ({ vpath+"/autodoc/Makefile", vpath+"/autodoc/Makefile.in",
-	      vpath+"/autodoc/structure.xml", vpath+"/autodoc/tags.txt",
+	   get_files(vpath+"/autodoc/bin"),
+	   get_files(vpath+"/autodoc/not_extracted"),
+	   get_files(vpath+"/autodoc/presentation"),
+	   get_files(vpath+"/autodoc/src_images"),
+	   get_files(vpath+"/autodoc/structure"),
+	   ({ vpath+"/autodoc/Makefile",
+	      vpath+"/autodoc/Makefile.in",
+	      vpath+"/autodoc/inlining.txt",
+	      vpath+"/autodoc/keywords.txt",
+	      vpath+"/autodoc/syntax.txt",
+	      vpath+"/autodoc/tags.txt",
+	      vpath+"/autodoc/template.xsl",	      
+	      vpath+"/autodoc/tree-split-style.css",
+	      vpath+"/autodoc/tree-split-template.html",
+	      vpath+"/autodoc/xml.txt",
 	      vpath+"/autodoc/.cvsignore",
 	   }));
 
-  werror("Creating "+vpath+"-indigo.tar.gz:\n");
+  werror("Creating "+vpath+".tar.gz:\n");
   object o=Stdio.File();
 
   int first=1;
@@ -219,7 +232,7 @@ int main(int argc, string *argv)
     {
       if(Process.create_process(({"tar",
 				    first?"cvf":"rvf",
-				    pike_base_name+"/"+vpath+"-indigo.tar"
+				    pike_base_name+"/"+vpath+".tar"
 				    })+files)->wait())
       {
 	werror("Tar file creation failed!\n");
@@ -231,7 +244,7 @@ int main(int argc, string *argv)
 
   if(Process.create_process(({"gzip",
 				"-9",
-				pike_base_name+"/"+vpath+"-indigo.tar"
+				pike_base_name+"/"+vpath+".tar"
 })
 			    )->wait())
   {
