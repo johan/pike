@@ -1091,9 +1091,9 @@ static INT32 PIKE_CONCAT4(very_low_sscanf_,INPUT_SHIFT,_,MATCH_SHIFT)(	\
 	  case 'x': base = 16; break;					\
 	  }								\
 	  								\
-	  /* FIXME! */							\
-	  string_to_svalue_inumber(&sval, input+eye, &t,		\
-				   base, field_length);			\
+	  wide_string_to_svalue_inumber(&sval, input+eye, (void **)&t,	\
+					base, field_length,		\
+					INPUT_SHIFT);			\
 									\
 	  if(input + eye == t)						\
 	  {								\
