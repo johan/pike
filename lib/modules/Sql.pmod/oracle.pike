@@ -7,8 +7,5 @@
 #if constant(Oracle.oracle)
 inherit Oracle.oracle;
 #else /* !constant(Oracle.oracle) */
-void create()
-{
-  destruct();
-}
+#error "Oracle support not available.\n"
 #endif /* constant(Oracle.oracle) */

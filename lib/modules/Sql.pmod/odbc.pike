@@ -7,8 +7,5 @@
 #if constant(Odbc.odbc)
 inherit Odbc.odbc;
 #else /* !constant(Odbc.odbc) */
-void create()
-{
-  destruct();
-}
+#error "ODBC support not available.\n"
 #endif /* constant(Odbc.odbc) */

@@ -129,8 +129,5 @@ int decode_datetime (string timestr)
 }
 
 #else /* !constant(Mysql.mysql) */
-void create()
-{
-  destruct();
-}
+#error "Mysql support not available.\n"
 #endif /* constant(Mysql.mysql) */
