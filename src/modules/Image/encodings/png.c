@@ -1022,6 +1022,7 @@ static void img_png_decode(INT32 args,int header_only)
 	    break;
 	 case T_INT:
 	    pop_n_elems(1);
+	    break;
 	 default:
 	    Pike_error("Image.PNG._decode: illegal value of option \"palette\"\n");
       }
