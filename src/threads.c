@@ -1296,6 +1296,9 @@ void f_thread_id__sprintf (INT32 args)
 /*! @decl static int id_number()
  *!
  *! Returns an id number identifying the thread.
+ *!
+ *! @note
+ *!   This function was added in Pike 7.2.204.
  */
 void f_thread_id_id_number(INT32 args)
 {
