@@ -309,6 +309,7 @@ void f_pow(INT32 args)
   {
     case T_OBJECT * 17:
     case T_INT * 17:
+    case T_INT * 16 + T_OBJECT:
     case T_OBJECT * 16 + T_INT:
     case T_OBJECT * 16 + T_FLOAT:
       stack_swap();
@@ -328,6 +329,9 @@ void f_pow(INT32 args)
       push_float(pow((double)x, (double)y));
       return;
     }
+
+  default:
+    Pike_error("Invalid argument types to pow.\n");
   }
 }
 
