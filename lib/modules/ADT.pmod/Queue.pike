@@ -55,7 +55,7 @@ mixed get()
 //  werror(sprintf("Queue->get: %O\n", l[tail..head-1]));
   mixed res;
   if (tail == head)
-    return ([])[0];
+    return UNDEFINED;
   res = l[tail];
   l[tail++] = 0;
   return res;
