@@ -222,7 +222,7 @@ dnl this_program
 dnl
 test_true(this_program)
 test_any([[int this_program; return this_program;]], 0)
-test_true(class A { int a() { return this_program == A; }}; return A()->a();)
+test_any([[class A { int a() { return this_program == A; }}; return A()->a();]], 1)
 
 dnl test_compile_error(0())
 test_compile_error(1())
