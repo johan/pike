@@ -24,7 +24,7 @@ CFLAGS=$(PREFLAGS) $(OTHERFLAGS) $(MODULE_CFLAGS) @CCSHARED@
 
 PIKE_SRC_DIR=$(SRCDIR)/../../..
 
-all: encodings.a
+all: libmird.a
 
 .SUFFIXES: .c .o
 
@@ -40,10 +40,10 @@ all: encodings.a
 	  NO_ULIMIT=yes $(CC) $(PREFLAGS) $(NOOPTFLAGS) -c $< -o $@ ;\
 	fi
 
-encodings.a : $(OBJS)
-	rm -f encodings.a
-	$(AR) cq encodings.a $(OBJS)
-	$(RANLIB) encodings.a
+libmird.a : $(OBJS)
+	rm -f libmird.a
+	$(AR) cq libmird.a $(OBJS)
+	$(RANLIB) libmird.a
 
 depend:
 	gcc -MM $(PREFLAGS) $(SRCDIR)/*.c | $(TMP_BINDIR)/fixdepends.sh $(SRCDIR)
