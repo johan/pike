@@ -41,7 +41,7 @@ struct fd_source
 
   void (*when_data_cb)( void *a );
   void *when_data_cb_arg;
-  size_t len, skip;
+  INT64 len, skip;
 };
 
 

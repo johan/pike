@@ -270,7 +270,7 @@ PIKECLASS Shuffle
   {
     int l = BLOCK;
     SHUFFLE_DEBUG2("_send_more(%d)\n", t, fd );
-    if( t->leftovers.len )
+    if( t->leftovers.len > 0 )
       l = t->leftovers.len;
     _request( t, l );
   }
