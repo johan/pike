@@ -3025,6 +3025,11 @@ test_eq([[combine_path("/","../../foo")]],"/foo")
 test_eq([[combine_path("./foobar/.","..")]],".")
 test_eq([[combine_path("/","foo","bar","gazonk")]],"/foo/bar/gazonk")
 
+// - Stdio.append_path
+test_eq([[ Stdio.append_path("../foo/", "../bar") ]], "../foo/bar")
+test_eq([[ Stdio.append_path("../foo/", "../bar", "../baz") ]], "../foo/bar/baz")
+test_eq([[ Stdio.append_path("../foo/", "../bar", "../baz", "../fie/../faz") ]], "../foo/bar/baz/faz")
+
 // - compile_file
 // FIXME: add tests for compile_file
 
