@@ -61,7 +61,7 @@ test_equal([[ Regexp.replace("(a)", "abrakadabra", "·") ]], "·br·k·d·br·")
 dnl Compat
 test_false([[
 #pike 0.6
-Regexp->replace ]])
+Regexp()->replace ]])
 test_true([[
 #pike 7.4
 programp(Regexp) ]])
