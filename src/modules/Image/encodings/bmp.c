@@ -522,6 +522,8 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	 if (comp)
 	    error("Image.BMP.decode: can't handle compressed 24bpp BMP\n");
 
+	 skip=(4-(img->xsize*3)&3)&3;
+
 	 j=(len)/3;
 	 y=img->ysize;
 	 while (j && y--)
@@ -536,6 +538,7 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	       d->r=*(s++);
 	       d++;
 	    }
+	    if (j>=skip) { j-=skip; s+=skip; }
 	 }
 	 break;
       case 8:
