@@ -354,7 +354,6 @@ void f_add_constant(INT32 args)
 #ifndef __NT__
 #define IS_SEP(X) ( (X)=='/' )
 #define IS_ABS(X) (IS_SEP((X)[0])?1:0)
-#define 
 #else   
 #define IS_SEP(X) ( (X) == '/' || (X) == '\\' )
 #define IS_ABS(X) (IS_SEP((X)[0])?1:(isalpha((X)[0]) && (X)[1]==':' && IS_SEP((X)[2]))?3:0)
