@@ -1605,10 +1605,10 @@ static INLINE void
    *	This code MUST be MT-SAFE! (but also fast /per)
    */
 /*   HIDE_GLOBAL_VARIABLES(); */
-   sum->r=sum->r+rgba.r*factor;
-   sum->g=sum->g+rgba.g*factor;
-   sum->b=sum->b+rgba.b*factor;
-   sum->alpha=sum->alpha+rgba.alpha*factor;
+   sum->r = DO_NOT_WARN(sum->r + rgba.r*factor);
+   sum->g = DO_NOT_WARN(sum->g + rgba.g*factor);
+   sum->b = DO_NOT_WARN(sum->b + rgba.b*factor);
+   sum->alpha = DO_NOT_WARN(sum->alpha + rgba.alpha*factor);
 /*    REVEAL_GLOBAL_VARIABLES(); */
 }
 
@@ -1621,9 +1621,9 @@ static INLINE void
    *	This code MUST be MT-SAFE! (but also fast /per)
    */
 /*   HIDE_GLOBAL_VARIABLES(); */
-   sum->r=sum->r+rgba.r*factor;
-   sum->g=sum->g+rgba.g*factor;
-   sum->b=sum->b+rgba.b*factor;
+   sum->r = DO_NOT_WARN(sum->r+rgba.r*factor);
+   sum->g = DO_NOT_WARN(sum->g+rgba.g*factor);
+   sum->b = DO_NOT_WARN(sum->b+rgba.b*factor);
 /*    REVEAL_GLOBAL_VARIABLES(); */
 }
 
