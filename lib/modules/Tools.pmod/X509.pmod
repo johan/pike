@@ -9,6 +9,8 @@
 
 #if constant(Standards.ASN1.Types.asn1_sequence)
 
+constant dont_dump_module = 1;
+
 import Standards.ASN1.Types;
 import Standards.PKCS;
 
