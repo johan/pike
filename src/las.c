@@ -1836,7 +1836,7 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 
     push_svalue(&thrown);
     low_safe_apply_handler("compile_exception", error_handler, compat_handler, 1);
-    if (SAFE_IS_ZERO(Pike_sp-1)) yy_describe_exception(&thrown);
+    if (SAFE_IS_ZERO(Pike_sp-1)) yy_describe_exception(&thrown, 0);
     pop_stack();
     free_svalue(&thrown);
   }else{
@@ -1947,7 +1947,7 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 	      *(Pike_sp++) = thrown;
 	      thrown.type = PIKE_T_INT;
 	      low_safe_apply_handler("compile_exception", error_handler, compat_handler, 1);
-	      if (SAFE_IS_ZERO(Pike_sp-1)) yy_describe_exception(&thrown);
+	      if (SAFE_IS_ZERO(Pike_sp-1)) yy_describe_exception(&thrown, 0);
 	      pop_stack();
 	    }
 	  }else if (!(Pike_compiler->flags & COMPILATION_FORCE_RESOLVE)) {
@@ -5373,7 +5373,7 @@ ptrdiff_t eval_low(node *n,int print_error)
 	    push_svalue(&thrown);
 	    low_safe_apply_handler("compile_exception",
 				   error_handler, compat_handler, 1);
-	    if (SAFE_IS_ZERO(Pike_sp-1)) yy_describe_exception(&thrown);
+	    if (SAFE_IS_ZERO(Pike_sp-1)) yy_describe_exception(&thrown, 0);
 	    pop_stack();
 	    free_svalue(&thrown);
 	  }
