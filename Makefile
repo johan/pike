@@ -88,6 +88,7 @@ compile: configure
 	  metatarget="$(METATARGET)"; \
 	  if test "x$(LIMITED_TARGETS)" = "x"; then \
 	    if test -f master.pike -a -x pike; then :; \
+	    elif test "x$$metatarget" = xpike; then :; \
 	    else metatarget="all $$metatarget"; fi; \
 	    if test "x$$metatarget" = x; then metatarget=all; else :; fi; \
 	  else :; fi; \
