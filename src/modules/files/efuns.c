@@ -593,6 +593,7 @@ void f_werror(INT32 args)
 
   VALID_FILE_IO("werror","werror");
 
+  /* FIXME: Wide string handling. */
   write_to_stderr(sp[-args].u.string->str, sp[-args].u.string->len);
   pop_n_elems(args);
 }
