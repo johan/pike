@@ -647,10 +647,10 @@ scalar_mult:
    n=THIS->ysize; /* == mx->xsize */
    p=mx->ysize;
 
-   dmx=matrixX(_push_new_)(m,p);
+   dmx=matrixX(_push_new_)(p,m);
 
-   s1=THIS->m;
-   s2=mx->m;
+   s1=mx->m;
+   s2=THIS->m;
    d=dmx->m;
    for (k=0; k<p; k++)
       for (i=0; i<m; i++)
