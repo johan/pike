@@ -368,25 +368,29 @@ ifdef([PIKE_INCLUDE_PATH],
   dnl Is PIKE_INCLUDE_PATH really on the ../../... form, or is this broken?
   make_variables_in=PIKE_INCLUDE_PATH/make_variables.in
 ],[
-  AC_MSG_CHECKING([for the Pike base directory])
+  if test "x$PIKE_SRC_DIR" != "x" -a -f "${PIKE_SRC_DIR}/make_variables.in"; then
+    make_variables_in="${PIKE_SRC_DIR}/make_variables.in"
+  else
+    AC_MSG_CHECKING([for the Pike base directory])
 
-  counter=.
+    counter=.
 
-  uplevels=
-  while test ! -f "$srcdir/${uplevels}make_variables.in"
-  do
-    counter=.$counter
-    if test $counter = .......... ; then
-      AC_MSG_RESULT(failed)
-      exit 1
-    else
-      :
-    fi
-    uplevels=../$uplevels
-  done
+    uplevels=
+    while test ! -f "$srcdir/${uplevels}make_variables.in"
+    do
+      counter=.$counter
+      if test $counter = .......... ; then
+        AC_MSG_RESULT(failed)
+        exit 1
+      else
+        :
+      fi
+      uplevels=../$uplevels
+    done
 
-  make_variables_in=${uplevels}make_variables.in
-  AC_MSG_RESULT(${uplevels}.)
+    make_variables_in=${uplevels}make_variables.in
+    AC_MSG_RESULT(${uplevels}.)
+  fi
 ])
 
   AC_SUBST(make_variables_in)
