@@ -45,6 +45,13 @@ void create(int is_server, void|SSL.context ctx)
   handshake::create(is_server, ctx);
 }
 
+#if 0
+static void destroy()
+{
+  werror("Connection destructed:\n%s\n", describe_backtrace(backtrace()));
+}
+#endif /* 0 */
+
 //! Called with alert object, sequence number of bad packet,
 //! and raw data as arguments, if a bad packet is received.
 //!
