@@ -7,6 +7,17 @@
 //! may need to work on unaligned data units of sub byte size, without
 //! having to fry your brain while keeping track of all the bits
 //! yourself.
+//!
+//! @example
+//!   > ADT.BitBuffer b=ADT.BitBuffer();
+//!   > b->put1(2);
+//!   (1) Result: ADT.BitBuffer(11)
+//!   > b->put0(15);
+//!   (2) Result: ADT.BitBuffer("À\0"0)
+//!   > b->drain();
+//!   (3) Result: "À\0"
+//!   > sizeof(b);
+//!   (4) Result: 1
 
 
 #pike __REAL_VERSION__
