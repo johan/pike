@@ -263,10 +263,12 @@ class rsa_verifier
       return rsa_verify_digest(rsa, Identifiers.sha1_id,
 			       Crypto.SHA1.hash(msg),
 			       signature);
+#if constant(Crypto.MD2.hash)
     if (algorithm->get_der() == rsa_md2_algorithm->get_der())
       return rsa_verify_digest(rsa, Identifiers.md2_id,
 			       Crypto.MD2.hash(msg),
 			       signature);
+#endif
     return 0;
   }
 }
