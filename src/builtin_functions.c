@@ -636,8 +636,8 @@ void f_string_to_unicode(INT32 args)
       p_wchar1 *str1 = STR1(in);
       for(i = in->len; i--;) {
 	unsigned INT32 c = str1[i];
-	out->str[i * 2] = c >> 8;
 	out->str[i * 2 + 1] = c & 0xff;
+	out->str[i * 2] = c >> 8;
       }
     }
 #endif
@@ -736,7 +736,8 @@ void f_unicode_to_string(INT32 args)
     p_wchar1 *str1 = STR1(out);
 
     for (i = len; i--;) {
-      str1[i] = (in->str[i*2]<<8) + in->str[i*2 + 1];
+      str1[i] = (((unsigned char *)in->str)[i*2]<<8) +
+	((unsigned char *)in->str)[i*2 + 1];
     }
   }
 #endif /* BYTEORDER == 4321 */
