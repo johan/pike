@@ -90,19 +90,21 @@ class File {
   //! Reads data from the file.
   //! If no argument is given, the whole file is read.
   int|string read(void|int length) {
-    string ret = "";
-
     if (!is_open) {
       return 0;
     }
 
     if (!zero_type(length))
       return ::read(length);
-    else
-      while(!eof()) {
-	ret += ::read(1024*64);
-      }
-    return ret;
+
+    String.Buffer buf = String.Buffer();
+    do {
+      string data;
+
+      if (!(data = ::read(1024*64))) break;
+      buf->add(data);
+    } while (sizeof(data));
+    return (string)buf;
   }
 }
 
