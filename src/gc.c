@@ -1125,6 +1125,7 @@ int gc_cycle_push(void *x, struct marker *m, int weak)
       if(l == (struct multiset *) x) goto on_gc_internal_lists;
     gc_fatal(x, 0, "gc_cycle_check() called for thing not on gc_internal lists.\n");
   on_gc_internal_lists:
+    ; /* We must have a least one expression after a label! - Hubbe */
   }
 #endif
 
