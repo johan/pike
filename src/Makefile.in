@@ -414,6 +414,7 @@ TAGS:
 # verify / debug
 module_testsuites:
 	( cd modules && $(MAKE) $(MAKE_FLAGS) testsuites )
+	( cd post_modules && $(MAKE) $(MAKE_FLAGS) testsuites )
 
 just_verify: module_testsuites testsuite master.pike
 	if test "$(TESTARGS)" = "" ; then args="-a" ; else args="$(TESTARGS)" ; fi; \
