@@ -4031,6 +4031,9 @@ struct program *compile(struct pike_string *prog,
 	destruct(placeholder);
       } else {
 	/* FIXME: Is this correct? */
+	/* It would probably be nicer if it was possible to just call
+	 * destruct on the object, but this works too. -Hubbe
+	 */
 	free_program(placeholder->prog);
 	placeholder->prog = NULL;
       }
@@ -4129,6 +4132,9 @@ struct program *compile(struct pike_string *prog,
 	destruct(placeholder);
       } else {
 	/* FIXME: Is this correct? */
+	/* It would probably be nicer if it was possible to just call
+	 * destruct on the object, but this works too. -Hubbe
+	 */
 	free_program(placeholder->prog);
 	placeholder->prog = NULL;
       }
