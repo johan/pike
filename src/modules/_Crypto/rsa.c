@@ -238,7 +238,11 @@ static void f_set_private_key(INT32 args)
   struct array *extra = NULL;
   int code;
 
-  get_all_args("set_private_key", args, "%o%a", &priv, &extra);
+  if (args > 1) {
+    get_all_args("set_private_key", args, "%o%a", &priv, &extra);
+  } else {
+    get_all_args("set_private_key", args, "%o", &priv);
+  }
 
   if (THIS->private_key) {
     B_DestroyKeyObject(&(THIS->private_key));
