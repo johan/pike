@@ -32,7 +32,6 @@
 #include "builtin_functions.h"
 #include "opcodes.h"
 #include "pike_macros.h"
-#include "gc.h"
 
 #ifdef HAVE_ORACLE
 

@@ -16,7 +16,6 @@ RCSID("$Id$");
 #include "backend.h"
 #include "fd_control.h"
 #include "module_support.h"
-#include "gc.h"
 #include "opcodes.h"
 #include "operators.h"
 #include "security.h"
