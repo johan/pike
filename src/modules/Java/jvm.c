@@ -1623,7 +1623,7 @@ static void *low_make_stub(struct cpu_context *ctx, void *data, int statc,
 /* NB: Assumes that pointers are 64bit! */
 
 struct cpu_context {
-  unsigned void *code[6];
+  void *code[6];
 };
 
 static void *low_make_stub(struct cpu_context *ctx, void *data, int statc,
