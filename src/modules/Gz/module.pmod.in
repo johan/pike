@@ -330,10 +330,10 @@ class File {
   //! @seealso
   //!   @[open] @[Stdio.File]
   static void create(mixed ... args) {
-    ::create();
+    ::create(@args);
 
     if(sizeof(args)) {
-      open(@args);
+      is_open = 1;
     }
   }
 
