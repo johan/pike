@@ -6,7 +6,7 @@
 
 #pike __REAL_VERSION__
 
-#if constant(Odbc)
+#if constant(Odbc.odbc)
 inherit Odbc.odbc;
 
 int|object big_query(object|string q, mapping(string|int:mixed)|void bindings)
@@ -20,4 +20,4 @@ constant list_dbs = Odbc.list_dbs;
 
 #else
 constant this_program_does_not_exist=1;
-#endif /* constant(Odbc) */
+#endif /* constant(Odbc.odbc) */

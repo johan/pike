@@ -8,7 +8,7 @@
 
 #pike __REAL_VERSION__
 
-#if constant(sybase)
+#if constant(sybase.sybase)
 
 inherit sybase.sybase:mo;
 #define THROW(X) throw(({X+"\n",backtrace()}))

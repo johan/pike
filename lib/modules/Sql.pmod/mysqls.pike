@@ -19,7 +19,7 @@
 
 #pike __REAL_VERSION__
 
-#if constant(Mysql.mysql) && constant(Mysql.mysql.CLIENT_SSL)
+#if constant(Mysql.mysql.CLIENT_SSL)
 
 inherit Sql.mysql;
 

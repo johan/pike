@@ -9,7 +9,7 @@
 
 #pike __REAL_VERSION__
 
-#if constant(Mysql)
+#if constant(Mysql.mysql)
 
 inherit Mysql.mysql;
 
