@@ -27,6 +27,9 @@
     <chapter-ref file="chapters/operators.xml"/>
   </file>
   <file>
+    <chapter-ref file="chapters/special_functions.xml"/>
+  </file>
+  <file>
     <chapter title="LFUN">
       <insert-move entity="lfun::"/>
       <insert-move entity="::"/>
