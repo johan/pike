@@ -573,6 +573,8 @@ void f_has_value(INT32 args)
   }
 }
 
+/* Old backtrace */
+
 void f_backtrace(INT32 args)
 {
   INT32 frames;
