@@ -723,11 +723,7 @@ void count_memory_in_programs(INT32*,INT32*);
 #endif
 
 
-#ifdef PIKE_DEBUG
 #define start_new_program() debug_start_new_program(__LINE__,__FILE__)
-#else
-#define start_new_program() debug_start_new_program(0, "native module")
-#endif
 
 #define gc_cycle_check_program(X, WEAK) \
   gc_cycle_enqueue((gc_cycle_check_cb *) real_gc_cycle_check_program, (X), (WEAK))
