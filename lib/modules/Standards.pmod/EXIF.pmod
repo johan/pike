@@ -148,7 +148,7 @@ mapping canon_d30_multi1(array(int) data)
 {
   mapping res=([]);
   res->CanonWhiteBalance =
-    ({ "Auto", "Sunny", "Clody",
+    ({ "Auto", "Sunny", "Cloudy",
 	 "Tungsten", "Flourescent", "Flash", "Custom"})[data[7]];
   res->CanonBurstSequenceNumber=(string)data[9];
 //    res->CanonAutoFocusPoint=sprintf("%b",data[14]);
