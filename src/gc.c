@@ -560,9 +560,9 @@ INT32 real_gc_check(void *a)
     }
     return 0;
   }
-  m->flags |= GC_CHECKED;
 #endif
   
+  m->flags |= GC_CHECKED;
   return add_ref(m);
 }
 
@@ -767,8 +767,7 @@ int debug_gc_do_free(void *a)
 
   m=get_marker(debug_malloc_pass(a));
 
-  if( !(m->flags & GC_REFERENCED)  &&
-      ((m->flags & GC_XREFERENCED) || !(m->flags & GC_CHECKED)))
+  if( !(m->flags & GC_REFERENCED) && (m->flags & GC_XREFERENCED) )
   {
     INT32 refs=m->refs;
     INT32 xrefs=m->xrefs;
@@ -790,7 +789,7 @@ int debug_gc_do_free(void *a)
     }
   }
 
-  return !(m->flags & GC_REFERENCED);
+  return (m->flags & (GC_REFERENCED|GC_CHECKED)) == GC_CHECKED;
 }
 #endif
 
