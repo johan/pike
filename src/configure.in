@@ -1338,12 +1338,16 @@ else :; fi
 
 if test "x$with_valgrind" = "xno"; then
   VALGRIND=""
+  VALGRINDARGS=""
 else
   VALGRIND="$with_valgrind"
+  # Make valgrind a bit silent by default.
+  VALGRINDARGS=-q
   AC_DEFINE(USE_VALGRIND)
 fi
-export VALGRIND
+export VALGRIND VALGRINDARGS
 AC_SUBST(VALGRIND)
+AC_SUBST(VALGRINDARGS)
 
 if test "x$with_checker" = "xyes"; then
   AC_DEFINE(__CHECKER__)
