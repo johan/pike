@@ -3295,8 +3295,6 @@ struct pike_string *get_type_of_svalue(struct svalue *s)
       if((tmp=zzap_function_return(a, s->u.program->id)))
 	return tmp;
       tmp=describe_type(ID_FROM_INT(s->u.program, id)->type);
-      yywarning ("zzap_function_return() failed on the create() type: %s",
-		 tmp->str);
       free_string(tmp);
     }
 
