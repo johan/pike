@@ -144,7 +144,7 @@ array(string) split(string data)
 
 	  case "<<": case ">>":
 	    if(data[pos+2]=='=') pos++;
-	  case "==": case "<=": case ">=":
+	  case "==": case "!=": case "<=": case ">=":
 	  case "*=": case "/=": case "%=":
 	  case "&=": case "|=": case "^=":
 	  case "+=": case "-=":
