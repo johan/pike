@@ -6,6 +6,7 @@
 */
 
 #undef HAVE_LIBFT2
+#undef HAVE_FT_FT2BUILD
 @TOP@
 @BOTTOM@
 
