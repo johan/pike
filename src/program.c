@@ -2065,7 +2065,7 @@ struct program *compile(struct pike_string *prog)
   }
 
   threads_disabled--;
-  fprintf(stderr, "compile() Leave: threads_disabled:%d, compilation_depth:%d\n", threads_disabled, compilation_depth);
+  /* fprintf(stderr, "compile() Leave: threads_disabled:%d, compilation_depth:%d\n", threads_disabled, compilation_depth); */
   co_signal(&threads_disabled_change);
 
   UNSET_ONERROR(just_in_case);
