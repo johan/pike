@@ -587,6 +587,10 @@ static int low_yylex(YYSTYPE *yylval)
 	  {
 	    lex.pragmas |= ID_SAVE_PARENT;
 	  }
+	  else if (ISWORD("dont_save_parent"))
+	  {
+	    lex.pragmas |= ID_DONT_SAVE_PARENT;
+	  }
 	  break;
 	}
 	if(ISWORD("pike"))
