@@ -312,6 +312,9 @@
 /* Define if your signals are one-shot */
 #undef SIGNAL_ONESHOT
 
+/* Define this if eval_instruction gets large on your platform. */
+#undef PIKE_SMALL_EVAL_INSTRUCTION
+
 /* Define if you have gcc-style computed goto, and want to use them. */
 #undef HAVE_COMPUTED_GOTO
 
