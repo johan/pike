@@ -143,10 +143,10 @@ string _number(int num)
 string number(int num)
 {
   if (num<0) {
-    return("minus "+_number(-num));
+    return "minus "+_number(-num);
   } if (num) {
-    return(_number(num));
+    return _number(num);
   } else {
-    return("noll");
+    return "noll";
   }
 }

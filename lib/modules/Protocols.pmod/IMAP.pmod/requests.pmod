@@ -115,7 +115,7 @@ class unimplemented
   mapping easy_process()
   {
     // FIXME: Log.
-    return(bad("Not implemented"));
+    return bad("Not implemented");
   }
 }
 
@@ -337,7 +337,7 @@ class status
       send(tag, "NO", "STATUS failed");
       server->log(session, "STATUS", mailbox, 400);
     }
-    return([ "action" : "finished" ]);
+    return ([ "action" : "finished" ]);
   }
 }
 
@@ -1028,7 +1028,7 @@ class find
   mapping easy_process(string type, string glob)
   {
     if (lower_case(type) != "mailboxes") {
-      return(bad("Not supported."));
+      return bad("Not supported.");
     }
     /* Each element of the array should be an array with three elements,
      * attributes, hierarchy delimiter, and the name. */
