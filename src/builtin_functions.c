@@ -786,7 +786,7 @@ static char *combine_path(char *cwd,char *file)
   }
 #endif
 
-  SET_ONERROR(err, free_nonull, &cwdbuf);
+  SET_ONERROR(err, free_nonull, cwdbuf);
   
 #ifdef PIKE_DEBUG    
   if(!cwd)
