@@ -178,7 +178,7 @@
  *! Pike v7.4 release 13 running Hilfe v3.5 (Incremental Pike Frontend)
  *! > sprintf("The unicode character %c has character code %04X.", 'A', 'A');
  *! (1) Result: "The unicode character A has character code 0041."
- *! > sprintf("#%@02X is the HTML code for purple.", Image.Color.purple->rgb());
+ *! > sprintf("#%@@02X is the HTML code for purple.", Image.Color.purple->rgb());
  *! (2) Result: "#A020F0 is the HTML code for purple."
  *! > int n=4711;
  *! > sprintf("%d = hexadecimal %x = octal %o = %b binary", n, n, n, n);
