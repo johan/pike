@@ -159,7 +159,7 @@ static void f_create (INT32 args)
 		PQfinish(conn);
 		PQ_UNLOCK();
 		THREADS_DISALLOW();
-		error("Could not connect to database.\n");
+		error("Could not connect to database. Reason: \"%s\".\n",THIS->last_error->str);
 	}
 	THIS->dblink=conn;
 	if (!THIS->dblink)
@@ -175,7 +175,7 @@ static void f_select_db (INT32 args)
 	check_all_args("Postgres->select_db",args,BIT_STRING,0);
 	
 	if (!THIS->dblink)
-		error ("Internal error. How can you possibly not be linked to a "
+		error ("Driver error. How can you possibly not be linked to a "
 				"database already?\n");
 	conn=THIS->dblink;
 	THREADS_ALLOW();

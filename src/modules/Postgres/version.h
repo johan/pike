@@ -5,4 +5,4 @@
  * used as the module's release version
  */
 
-#define PGSQL_VERSION "Postgres/1.0"
+#define PGSQL_VERSION "Postgres/1.0.1"
