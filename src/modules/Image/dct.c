@@ -57,6 +57,10 @@ static const double pi=3.14159265358979323846;
 **! note
 **!	Do NOT use this function if you don't know what 
 **!     you're dealing with! Read some signal theory first...
+**!
+**!	It write's dots on stderr, to indicate some sort
+**!	of progress. It doesn't use any fct (compare: fft) 
+**!	algorithms.
 **! returns the new image object
 **! arg int newx
 **! arg int newy
