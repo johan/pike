@@ -7755,7 +7755,7 @@ void init_types(void)
 void cleanup_pike_types(void)
 {
 #if defined(USE_PIKE_TYPE) && defined(DEBUG_MALLOC)
-  struct pike_type *t = all_pike_type_locations;
+  struct pike_type_location *t = all_pike_type_locations;
 
   while(t) {
     free_type(t->t);
