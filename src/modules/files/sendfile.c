@@ -105,16 +105,19 @@
 #define THIS	((struct pike_sendfile *)(fp->current_storage))
 
 /*
- * Kludge for broken FreeBSD 4.0.16
+ * Disable any use of sendfile(2) if HAVE_BROKEN_SENDFILE is defined.
  */
-#ifdef HAVE_FREEBSD_SENDFILE
-#ifdef __FreeBSD_version
-#if __FreeBSD_version <= 400016
-#undef HAVE_FREEBSD_SENDFILE
+#ifdef HAVE_BROKEN_SENDFILE
+#ifdef HAVE_SENDFILE
 #undef HAVE_SENDFILE
-#endif /* __FreeBSD_version <= 400016 */
-#endif /* __FreeBSD_version */
+#endif /* HAVE_SENDFILE */
+#ifdef HAVE_FREEBSD_SENDFILE
+#undef HAVE_FREEBSD_SENDFILE
 #endif /* HAVE_FREEBSD_SENDFILE */
+#ifdef HAVE_HPUX_SENDFILE
+#undef HAVE_HPUX_SENDFILE
+#endif /* HAVE_HPUX_SENDFILE */
+#endif /* HAVE_BROKEN_SENDFILE */
 
 /*
  * Globals
