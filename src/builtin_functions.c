@@ -668,7 +668,11 @@ void f_crypt(INT32 args)
   {
     if(sp[1-args].type != T_STRING ||
        sp[1-args].u.string->len < 2)
-      error("Bad argument 2 to crypt()\n");
+    {
+      pop_n_elems(args);
+      push_int(0);
+      return;
+    }
       
     saltp=sp[1-args].u.string->str;
   } else {
