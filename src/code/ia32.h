@@ -118,10 +118,11 @@ void ia32_decode_program(struct program *p);
 
 INT32 ins_f_jump(unsigned int b);
 void update_f_jump(INT32 offset, INT32 to_offset);
+INT32 read_f_jump(INT32 offset);
 
 #define INS_F_JUMP ins_f_jump
 #define UPDATE_F_JUMP update_f_jump
-
+#define READ_F_JUMP read_f_jump
 
 void ia32_flush_code_generator(void);
 #define FLUSH_CODE_GENERATOR_STATE ia32_flush_code_generator

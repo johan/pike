@@ -291,6 +291,11 @@ void update_f_jump(INT32 offset, INT32 to_offset)
   upd_pointer(offset, to_offset - offset - 4);
 }
 
+INT32 read_f_jump(INT32 offset)
+{
+  return read_pointer(offset) + offset + 4;
+}
+
 void ia32_push_int(INT32 x)
 {
   struct svalue tmp;
