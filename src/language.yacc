@@ -371,8 +371,7 @@ optional_rename_inherit: ':' F_IDENTIFIER { $$=$2; }
 
 program_ref: string_constant
   {
-    reference_shared_string($1);
-    push_string($1);
+    ref_push_string($1);
     push_string($1);
     reference_shared_string(current_file);
     push_string(current_file);

@@ -1281,9 +1281,7 @@ static int do_lex2(int literal, YYSTYPE *yylval)
 #endif
 {
   int c;
-#ifdef MALLOC_DEBUG
-  check_sfltable();
-#endif
+
   while(1)
   {
     switch(c=GETC())

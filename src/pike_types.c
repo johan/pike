@@ -969,6 +969,8 @@ static struct pike_string *low_index_type(char *t, node *n)
     push_finished_type(b);
     push_finished_type(a);
     push_type(T_OR);
+    free_string(a);
+    free_string(b);
     return pop_unfinished_type();
   }
 

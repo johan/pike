@@ -45,6 +45,8 @@ RCSID("$Id$");
 #include "image.h"
 #include "colortable.h"
 
+#include "dmalloc.h"
+
 struct program *image_colortable_program;
 extern struct program *image_program;
 
@@ -708,6 +710,8 @@ rerun_rehash:
 	 hash=malloc(sizeof(struct color_hash_entry)*hashsize);
 	 if (!hash)
 	 {
+	   debug_malloc_touch(hash);
+	   debug_malloc_touch(oldhash);
 	    free(oldhash);
 	    error("out of memory\n");
 	 }
@@ -718,7 +722,13 @@ rerun_rehash:
 	    if (oldhash[j].pixels)
 	    {
 	       mark=insert_in_hash(oldhash[j].color,hash,hashsize);
-	       if (!mark) goto rerun_rehash;
+	       if (!mark)
+	       {
+		 debug_malloc_touch(hash);
+		 debug_malloc_touch(oldhash);
+		 free(hash);
+		 goto rerun_rehash;
+	       }
 	       mark->pixels=oldhash[j].pixels;
 	    }
 	 
@@ -729,6 +739,8 @@ rerun_rehash:
       i--;
       s++;
    }
+   
+   debug_malloc_touch(hash);
 
    if (i) /* restart, but with mask */
    {
@@ -762,7 +774,12 @@ rerun_mask:
 	 if (oldhash[j].pixels)
 	 {
 	    mark=insert_in_hash_mask(oldhash[j].color,hash,hashsize,rgb_mask);
-	    if (!mark) goto rerun_mask; /* increase mask level inst of hash */
+	    if (!mark)
+	    {
+	      debug_malloc_touch(oldhash);
+	      debug_malloc_touch(hash);
+	      goto rerun_mask; /* increase mask level inst of hash */
+	    }
 	    mark->pixels+=oldhash[j].pixels-1;
 	 }
 
@@ -771,7 +788,11 @@ rerun_mask:
       while (i) 
       {
 	 if (!insert_in_hash_mask(*s,hash,hashsize,rgb_mask))
-	    goto rerun_mask; /* increase mask */
+	 {
+	   debug_malloc_touch(hash);
+	   debug_malloc_touch(oldhash);
+	   goto rerun_mask; /* increase mask */
+	 }
 
 	 i--;
 	 s++;
@@ -779,6 +800,8 @@ rerun_mask:
    }
 
    /* convert to flat */
+
+   debug_malloc_touch(hash);
 
    i=hashsize;
    j=0;
@@ -810,6 +833,7 @@ rerun_mask:
 
    if (((int)j)!=flat.numentries) abort();
    
+   debug_malloc_touch(hash);
    free(hash);
 
    return flat;
@@ -2896,8 +2920,6 @@ static INLINE void _build_cubicle(struct neo_colortable *nct,
    } while (0)
 
 #include "colortable_lookup.h"
-
-#include "dmalloc.h"
 
 #undef NCTLU_DESTINATION
 #undef NCTLU_CACHE_HIT_WRITE

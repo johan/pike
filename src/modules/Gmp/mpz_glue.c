@@ -298,7 +298,13 @@ static void mpzmod_cast(INT32 args)
 }
 
 /* Converts an svalue, located on the stack, to an mpz object */
-static MP_INT *get_mpz(struct svalue *s, int throw_error)
+#if defined(__GNUC__) && defined(DEBUG_MALLOC)
+#define get_mpz(X,Y) ({ check_svalue(X); debug_get_mpz((X), (Y)); })
+#else
+#define get_mpz(X,Y) debug_get_mpz((X), (Y)
+#endif
+
+static MP_INT *debug_get_mpz(struct svalue *s, int throw_error)
 {
 #define ERROR(x) if (throw_error) error(x)
   struct object *o;
@@ -315,6 +321,7 @@ static MP_INT *get_mpz(struct svalue *s, int throw_error)
   case T_ARRAY:
 #endif
     o=clone_object(mpzmod_program,0);
+    debug_malloc_touch(o);
     get_new_mpz(OBTOMPZ(o), s);
     free_svalue(s);
     s->u.object=o;
