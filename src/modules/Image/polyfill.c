@@ -733,14 +733,14 @@ static INLINE struct vertex *polyfill_add(struct vertex *top,
    struct vertex *first,*last,*cur = NULL;
    int n;
 
-   for (n=0; n<a->size; n++)
-      if (a->item[n].type!=T_FLOAT &&
-	  a->item[n].type!=T_INT)
-      {
-	 polyfill_free(top);
-	 Pike_error("Illegal argument %d to %s, array index %d is not int nor float\n",arg,what,n);
-	 return NULL;
-      }
+   if(a->type_field & ~(T_INT|T_FLOAT)) {
+     array_fix_type_field(a);
+     if(a->type_field & ~(T_INT|T_FLOAT)) {
+       polyfill_free(top);
+       Pike_error("Illegal argument %d to %s. Expected array(float|int).\n",arg,what);
+       return NULL;
+     }
+   }
 
    if (a->size<6) 
    {
@@ -811,8 +811,8 @@ void image_polyfill(INT32 args)
       if (sp[-1].type!=T_ARRAY)
       {
 	 polyfill_free(v);
-	 Pike_error("Image.Image->polyfill: Illegal argument %d, expected array\n",
-	       args);
+	 SIMPLE_BAD_ARG_ERROR("Image.Image->polyfill", args,
+			      "array(int|float)");
       }
       if ((v_tmp=polyfill_add(v, sp[-1].u.array, args, "Image.Image->polyfill()"))) {
 	 v = v_tmp;
