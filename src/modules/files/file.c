@@ -107,6 +107,11 @@ RCSID("$Id$");
 
 #define READ_BUFFER 8192
 
+/* Don't try to use socketpair() on AmigaOS, socketpair_ultra works better */
+#ifdef __amigaos__
+#undef HAVE_SOCKETPAIR
+#endif
+
 /* #define SOCKETPAIR_DEBUG */
 
 struct program *file_program;
