@@ -1423,7 +1423,10 @@ static void low_pike_sprintf(struct format_stack *fs,
 
 	if (fs->fsp->precision==SPRINTF_UNDECIDED) fs->fsp->precision=3;
 
-	x=(char *)xalloc(100+MAXIMUM(fs->fsp->precision,3));
+	/* FIXME: The constant (320) is good for IEEE double precision
+	 * float, but will definitely fail for bigger precision! --aldem
+	 */
+	x=(char *)xalloc(320+MAXIMUM(fs->fsp->precision,3));
 	fs->fsp->fi_free_string=x;
 	fs->fsp->b=MKPCHARP(x,0);
 	sprintf(buffer,"%%*.*%c",EXTRACT_PCHARP(a));
