@@ -518,7 +518,7 @@ void image_gif_render_block(INT32 args)
 
 struct program *image_gif_module_program=NULL;
 
-void init_image_gif()
+void init_image_gif(void)
 {
    start_new_program();
    
@@ -534,7 +534,7 @@ void init_image_gif()
    pop_stack();
 }
 
-void exit_image_gif()
+void exit_image_gif(void)
 {
   if(image_gif_module_program)
   {
