@@ -368,6 +368,7 @@ void finish()
 	break;
 
       case 49: {
+	werror ("Testing leak in write(). ");
 	string data1="foobar" * 20;
 	string data2="fubar" * 20;
 	socks=spair(1);
