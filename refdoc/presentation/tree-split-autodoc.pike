@@ -387,6 +387,7 @@ class Node
 	"$type$": String.capitalize(type),
 	"$title$": make_class_path(),
 	"$style$": style,
+	"$imagedir$":image_prefix(),
       ]));
 
     Stdio.mkdirhier(combine_path(path+"/"+make_filename(), "../"));
