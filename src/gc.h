@@ -13,6 +13,7 @@
 #include "queue.h"
 #include "threads.h"
 #include "interpret.h"
+#include "pike_rusage.h"
 
 /* 1: Normal operation. 0: Disable automatic gc runs. -1: Disable
  * completely. */
