@@ -4890,6 +4890,7 @@ PMOD_EXPORT void f_map(INT32 args)
 	 Pike_sp--;                      /* allocate_multiset is destructive */
 	 dmalloc_touch_svalue(Pike_sp);
 	 push_multiset(allocate_multiset(Pike_sp->u.array));
+	 order_multiset(sp[-1].u.multiset);
 	 return;
 
       case T_STRING:
@@ -5263,6 +5264,7 @@ PMOD_EXPORT void f_filter(INT32 args)
 	 Pike_sp--;                      /* allocate_multiset is destructive */
 	 dmalloc_touch_svalue(Pike_sp);
 	 push_multiset(allocate_multiset(Pike_sp->u.array));
+	 order_multiset(sp[-1].u.multiset);
 	 return;
 
       case T_STRING:
@@ -6114,8 +6116,12 @@ void init_builtin_efuns(void)
 		       tFuncV(tString tFuncV(tInt,tMix,tInt),tMix,tString),
 		       tFuncV(tString tSet(tMix),tMix,tString),
 		       tFuncV(tString tMap(tMix,tInt), tMix, tString) ),
-		 
-		 tFuncV(tArr(tStringIndicable) tString,tMix,tMix),
+
+		 tOr4 (tFuncV(tArr(tStringIndicable) tString,tMix,tArray),
+		       tFuncV(tMap(tSetvar(3,tMix),tStringIndicable) tString,tMix,
+			      tMap(tVar(3),tMix)),
+		       tFuncV(tSet(tStringIndicable) tString,tMix,tSet(tMix)),
+		       tFuncV(tOr(tProgram,tFunction) tString,tMix,tMapping)),
 
 		 tFuncV(tObj,tMix,tMix) ),
 	    OPT_TRY_OPTIMIZE, fix_map_node_info, 0);
