@@ -248,6 +248,7 @@ static void *dlopen(const char *module_name, int how)
   NSObjectFileImageReturnCode code = 0;
   NSObjectFileImage image = NULL;
 
+  /* FIXME: Should be fixed to detect if the module already is loaded. */
   if ((code = NSCreateObjectFileImageFromFile(module_name, &image)) !=
       NSObjectFileImageSuccess) {
     fprintf(stderr, "NSCreateObjectFileImageFromFile(\"%s\") failed with %d\n",
@@ -255,6 +256,10 @@ static void *dlopen(const char *module_name, int how)
     return NULL;
   }
   /* FIXME: image should be freed somewhere! */
+
+  fprintf(stderr, "dlopen(\"%s\") ==> image:%p\n",
+	  module_name, image);
+
   return NSLinkModule(image, module_name,
 		      how | NSLINKMODULE_OPTION_RETURN_ON_ERROR |
 		      NSLINKMODULE_OPTION_PRIVATE);
