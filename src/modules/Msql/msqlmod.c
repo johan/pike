@@ -9,6 +9,7 @@
  */
 
 /* All this code is pretty useless if we don't have a msql library...*/
+#include "global.h"
 #include "msql_config.h"
 #ifdef HAVE_MSQL
 
@@ -21,7 +22,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "global.h"
 #include "threads.h"
 #include "machine.h"
 #include "interpret.h"

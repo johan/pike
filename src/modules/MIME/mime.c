@@ -6,9 +6,10 @@
  * Marcus Comstedt 1996-1997
  */
 
+#include "global.h"
+
 #include "config.h"
 
-#include "global.h"
 RCSID("$Id$");
 #include "stralloc.h"
 #include "pike_macros.h"

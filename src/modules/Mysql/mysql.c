@@ -6,6 +6,9 @@
  * Henrik Grubbström 1996-12-21
  */
 
+/* Master Pike headerfile */
+#include "global.h"
+
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
@@ -44,7 +47,6 @@ typedef struct dynamic_buffer_s dynamic_buffer;
 #endif /* HAVE_MYSQL */
 
 /* From the Pike-dist */
-#include "global.h"
 #include "svalue.h"
 #include "object.h"
 #include "stralloc.h"
