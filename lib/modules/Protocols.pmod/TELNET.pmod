@@ -75,17 +75,18 @@ class protocol
   ]);
 
   //. + option_states
-  //.   Negotiation state of all WILL/WON'T options.
+  //.   Negotiation states of all WILL/WON'T options.
+  //.   See RFC 1143 for a description of the states.
   static private array(int) option_states = allocate(256);
 
   // See RFC 1143 for the use and meaning of these.
-  constant option_us_yes	= 0x0001;
-  constant option_us_want	= 0x0002;
-  constant option_us_opposite	= 0x0010;
+  static private constant option_us_yes		= 0x0001;
+  static private constant option_us_want	= 0x0002;
+  static private constant option_us_opposite	= 0x0010;
 
-  constant option_him_yes	= 0x0100;
-  constant option_him_want	= 0x0200;
-  constant option_him_opposite	= 0x1000;
+  static private constant option_him_yes	= 0x0100;
+  static private constant option_him_want	= 0x0200;
+  static private constant option_him_opposite	= 0x1000;
 
   //. + to_send
   //.   Data queued to be sent.
