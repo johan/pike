@@ -368,7 +368,10 @@ class OutputController
   //!
   void newline()
   {
-    string cr = term->put("cr"), down = term->put("do");
+    string cr = term->put("cr");
+    // NOTE: Use "sf" in preference to "do" since "do" for "xterm" on HPUX
+    //       is "\33[B", which doesn't scroll when at the last line.
+    string down = term->put("sf") || term->put("do");
     if(active_attributes && !term->tgetflag("ms"))
       low_disable_attributes();
     if(cr && down)
