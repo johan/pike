@@ -51,9 +51,9 @@ typedef void (*modfun)(void);
 #ifdef USE_LOADLIBRARY
 #include <windows.h>
 
-static TCHAR *convert_string(const char *str, int len)
+static TCHAR *convert_string(const char *str, ptrdiff_t len)
 {
-  int e;
+  ptrdiff_t e;
   TCHAR *ret=(TCHAR *)xalloc((len+1) * sizeof(TCHAR));
   for(e=0;e<len;e++) ret[e]=EXTRACT_UCHAR(str+e);
   ret[e]=0;
