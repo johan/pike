@@ -1100,6 +1100,13 @@ static void decode_value2(struct decode_data *data)
 	  getdata2(p->program, p->num_program);
 	  getdata2(p->linenumbers, p->num_linenumbers);
 
+#ifdef DEBUG_MALLOC
+	  if(p->num_linenumbers && p->linenumbers &&
+	     EXTRACT_UCHAR(p->linenumbers))
+	    debug_malloc_name(p, p->linenumbers+1, 0);
+#endif
+	    
+
 	  for(d=0;d<p->num_identifier_index;d++)
 	  {
 	    decode_number(p->identifier_index[d],data);
