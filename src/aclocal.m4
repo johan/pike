@@ -393,7 +393,7 @@ pushdef([AC_OUTPUT],
     if test "0`echo 'if(AC_ACVERSION >= 2.50)1'|bc`" = "01"; then :; else
       # Kludge for autoconf 2.13 and earlier prefixing all substitution
       # source files with $ac_given_source_dir/ (aka $srcdir/).
-      make_variables_in="`echo $srcdir|sed -e 's@[[^/]]*@@g;s@/@../@g'`$make_variables_in"
+      make_variables_in="`cd $srcdir;pwd|sed -e 's@[[^/]]*@@g;s@/@../@g'`$make_variables_in"
     fi
   else
 
