@@ -7,7 +7,7 @@
 VPATH=.
 MAKE=make
 MAKEFLAGS=
-OS=`uname -s -r -m|sed 's/ /-/g'|tr \"[A-Z]\" \"[a-z]\"|tr \"/\" \"_\"`
+OS=`uname -s -r -m|sed \"s/ /-/g\"|tr \"[A-Z]\" \"[a-z]\"|tr \"/\" \"_\"`
 BUILDDIR=build/$(OS)
 METATARGET=
 
