@@ -97,13 +97,13 @@ extern struct program *image_program;
 **!	makes a new image out of the difference
 **! returns the new image object
 **!
-**! object operand
+**! arg object operand
 **!	the other image to compare with;
 **!	the images must have the same size.
-**! array(int) color
+**! arg array(int) color
 **!	an array in format ({r,g,b}), this is equal
 **!	to using an uniform-colored image.
-**! int value
+**! arg int value
 **!	equal to ({value,value,value}).
 **! see also: `+, `|, `&, `*, add_layers
 */
@@ -136,12 +136,12 @@ STANDARD_OPERATOR_HEADER("`-")
 **!	adds two images; values are truncated at 255.
 **! returns the new image object
 **!
-**! object operand
+**! arg object operand
 **!	the image which to add.
-**! array(int) color
+**! arg array(int) color
 **!	an array in format ({r,g,b}), this is equal
 **!	to using an uniform-colored image.
-**! int value
+**! arg int value
 **!	equal to ({value,value,value}).
 **! see also: `-, `|, `&, `*, add_layers
 */
@@ -179,13 +179,13 @@ STANDARD_OPERATOR_HEADER("`+")
 **!
 **!	<pre>image=image*128+64;</pre>
 **!
-**! object operand
+**! arg object operand
 **!	the other image to multiply with;
 **!	the images must have the same size.
-**! array(int) color
+**! arg array(int) color
 **!	an array in format ({r,g,b}), this is equal
 **!	to using an uniform-colored image.
-**! int value
+**! arg int value
 **!	equal to ({value,value,value}).
 **!
 **! see also: `-, `+, `|, `&, add_layers
@@ -221,13 +221,13 @@ STANDARD_OPERATOR_HEADER("`*")
 **!	
 **! returns the new image object
 **!
-**! object operand
+**! arg object operand
 **!	the other image to compare with;
 **!	the images must have the same size.
-**! array(int) color
+**! arg array(int) color
 **!	an array in format ({r,g,b}), this is equal
 **!	to using an uniform-colored image.
-**! int value
+**! arg int value
 **!	equal to ({value,value,value}).
 **! see also: `-, `+, `&, `*, add_layers
 */
@@ -261,13 +261,13 @@ STANDARD_OPERATOR_HEADER("`| 'maximum'")
 **!	
 **! returns the new image object
 **!
-**! object operand
+**! arg object operand
 **!	the other image to compare with;
 **!	the images must have the same size.
-**! array(int) color
+**! arg array(int) color
 **!	an array in format ({r,g,b}), this is equal
 **!	to using an uniform-colored image.
-**! int value
+**! arg int value
 **!	equal to ({value,value,value}).
 **! see also: `-, `+, `|, `*, add_layers
 */
