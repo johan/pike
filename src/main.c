@@ -262,6 +262,10 @@ int dbm_main(int argc, char **argv, char **env)
 
   push_int(0);
   f_exit(1);
+
+  /* NOT_REACHED */
+
+  return(1);	/* Keep compiler happy */
 }
 
 
