@@ -34,6 +34,8 @@
 
 #include <unistd.h>
 
+#include <sys/stat.h>
+
 #ifdef HAVE_SYS_UIO_H
 #include <sys/uio.h>
 #endif /* HAVE_SYS_UIO_H */
@@ -66,7 +68,19 @@
 
 #ifndef MAP_FAILED
 #define MAP_FAILED	((void *)-1)
-#endif /* MAP_FAILED */
+#endif /* !MAP_FAILED */
+
+#ifndef MAP_FILE
+#define MAP_FILE	0
+#endif /* !MAP_FILE */
+
+#ifndef S_ISREG
+#ifdef S_IFREG
+#define S_ISREG(mode)   (((mode) & (S_IFMT)) == (S_IFREG))
+#else /* !S_IFREG */
+#define S_ISREG(mode)   (((mode) & (_S_IFMT)) == (_S_IFREG))
+#endif /* S_IFREG */
+#endif /* !S_ISREG */
 
 
 /*
