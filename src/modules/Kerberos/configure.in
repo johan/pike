@@ -12,7 +12,7 @@ AC_ARG_WITH(krb5,     [  --with(out)-krb5       Support for Kerberos 5],[],[with
 
 AC_MODULE_INIT()
 
-PIKE_FEATURE_OK(Math.)
+PIKE_FEATURE_WITHOUT(Kerberos)
 
 AC_C_CHAR_UNSIGNED
 
