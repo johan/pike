@@ -5483,36 +5483,6 @@ void f_inherit_list(INT32 args)
 }
 
 
-void f_program_defined(INT32 args)
-{
-  struct program *p;
-  get_all_args("Program.defined",args,"%p",&p);
-
-  if(p && p->num_linenumbers)
-  {
-    char *tmp;
-    INT32 line;
-    if((tmp=get_line(p->program, p, &line)))
-    {
-      struct pike_string *tmp2;
-      tmp2=make_shared_string(tmp);
-      pop_n_elems(args);
-
-      push_string(tmp2);
-      if(line > 1)
-      {
-	push_constant_text(":");
-	push_int(line);
-	f_add(3);
-      }
-      return;
-    }
-  }
-
-  pop_n_elems(args);
-  push_int(0);
-}
-
 void f_function_defined(INT32 args)
 {
   check_all_args("Function.defined",args,BIT_FUNCTION, 0);
