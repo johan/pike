@@ -9,6 +9,7 @@
  */
 
 #if constant(_Ffmpeg)
+//! Decoder object.
 class decoder {
 
   private object codec;
