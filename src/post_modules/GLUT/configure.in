@@ -11,16 +11,16 @@ AC_ARG_WITH(GLUT,  [  --without-GLUT    no support for GLUT],[without_GLUT=yes],
 if test x$without_GLUT = xyes; then
   AUTO=""
 else
-
-AC_CHECK_LIB(X11, main)
-AC_CHECK_LIB(Xmu, main)
-AC_CHECK_LIB(GL,  main)
-AC_CHECK_LIB(OpenGL,  main)
-AC_CHECK_LIB(MesaGL,  main)
-AC_CHECK_LIB(MesaGLU,  main)
-AC_CHECK_LIB(Xinput, main)
-AC_CHECK_LIB(Xi, main)
-AC_CHECK_LIB(Xext, main)
+CPPFLAGS="$X_CFLAGS"
+AC_CHECK_LIB(X11, main,,,[$X_LIBS $X_PRE_LIBS -lXext -lX11 $X_EXTRA_LIBS])
+AC_CHECK_LIB(Xmu, main,,,[$X_LIBS $X_PRE_LIBS -lXext -lX11 $X_EXTRA_LIBS])
+AC_CHECK_LIB(GL,  main,,,[$X_LIBS $X_PRE_LIBS -lXext -lX11 $X_EXTRA_LIBS])
+AC_CHECK_LIB(OpenGL,  main,,,[$X_LIBS $X_PRE_LIBS -lXext -lX11 $X_EXTRA_LIBS])
+AC_CHECK_LIB(MesaGL,  main,,,[$X_LIBS $X_PRE_LIBS -lXext -lX11 $X_EXTRA_LIBS])
+AC_CHECK_LIB(MesaGLU,  main,,,[$X_LIBS $X_PRE_LIBS -lXext -lX11 $X_EXTRA_LIBS])
+AC_CHECK_LIB(Xinput, main,,,[$X_LIBS $X_PRE_LIBS -lXext -lX11 $X_EXTRA_LIBS])
+AC_CHECK_LIB(Xi, main,,,[$X_LIBS $X_PRE_LIBS -lXext -lX11 $X_EXTRA_LIBS])
+AC_CHECK_LIB(Xext, main,,,[$X_LIBS $X_PRE_LIBS -lXext -lX11 $X_EXTRA_LIBS])
 
 AC_CHECK_HEADERS(GL/glut.h)
 
