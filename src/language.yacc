@@ -2575,6 +2575,7 @@ enum_def: /* EMPTY */
 
 enum_list: enum_def
   | enum_list ',' enum_def
+  | error
   ;
 
 enum: modifiers TOK_ENUM
