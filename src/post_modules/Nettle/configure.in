@@ -10,6 +10,7 @@ PIKE_FEATURE_OK(Nettle)
 
 AC_CHECK_LIB(nettle, cbc_encrypt,,
 	     AC_MSG_WARN([The nettle library not found.
-No crypto functions will be available.]) )
+No crypto functions will be available.])
+	     PIKE_FEATURE_NODEP(Nettle))
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
