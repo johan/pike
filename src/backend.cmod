@@ -750,7 +750,7 @@ PIKECLASS Backend
 	  if (!me->fds[fd].write.callback) {
 	    MY_FD_CLR(&me->set, fd, MY_POLLWREXCEPT);
 	  } else {
-#ifdef WRBAND_ISPECIAL
+#ifdef WRBAND_IS_SPECIAL
 	    MY_FD_CLR(&me->set, fd, MY_POLLWRBAND);
 #endif
 	  }
@@ -1254,7 +1254,7 @@ PIKECLASS Backend
 	      if (!me->fds[fd].write.callback) {
 		MY_FD_CLR(&me->set, fd, MY_POLLWREXCEPT);
 	      } else {
-#ifdef WRBAND_ISPECIAL
+#ifdef WRBAND_IS_SPECIAL
 		MY_FD_CLR(&me->set, fd, MY_POLLWRBAND);
 #endif
 	      }
