@@ -43,7 +43,7 @@ dummy:	linker_options modlist_headers modlist_segment module.pmod module.a
 .SUFFIXES: .c .o .cmod
 
 .cmod.c:
-	$(BUILD_BASE)/precompile.sh $(TMP_BINDIR)/precompile.pike >"$@" "$<" || { rm "$@"; exit 1; }
+	$(BUILD_BASE)/precompile.sh precompile.pike >"$@" "$<" || { rm "$@"; exit 1; }
 
 # GCC dumps core on some files @ OSF1
 # This kluge should work around that...
