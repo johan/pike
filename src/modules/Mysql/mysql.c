@@ -653,7 +653,17 @@ static void f_big_query(INT32 args)
     int err;
 
     MYSQL_ALLOW();
-    err = (mysql_field_count(socket) && mysql_error(socket)[0]);
+    err = (
+#ifdef mysql_field_count
+	   mysql_field_count(socket)
+#else /* !mysql_field_count */
+#ifdef mysql_num_fields
+	   mysql_num_fields(socket)
+#else /* !mysql_num_fields */
+	   socket->field_count
+#endif /* mysql_num_fields */
+#endif /* mysql_field_count */
+	   && mysql_error(socket)[0]);
     MYSQL_DISALLOW();
 
     if (err) {
