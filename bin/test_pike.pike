@@ -211,11 +211,6 @@ int main(int argc, string *argv)
 	a=b=0;
       }
       
-      if(errors || verbose)
-      {
-	werror("Failed tests: "+errors+".\n");
-      }
-      
     }
     if(mem)
     {
@@ -241,6 +236,11 @@ int main(int argc, string *argv)
 		    total));
     }
   }
+  if(errors || verbose)
+  {
+    werror("Failed tests: "+errors+".\n");
+  }
+      
   if(verbose)
   {
     werror("Total tests: %d\n",successes+errors);
