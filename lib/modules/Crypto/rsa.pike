@@ -83,7 +83,7 @@ bignum rsa_pad(string message, int type, mixed|void random)
     else
       cookie = sprintf("%@c", Array.map(allocate(len), lambda(int dummy)
 					{
-					  return random(255) + 1;
+					  return predef::random(255) + 1;
 					} ));
     break;
   default:
