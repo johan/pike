@@ -663,7 +663,7 @@ HANDLE CheckValidHandle(HANDLE h);
 #endif
 
 extern int threads_disabled;
-extern int thread_storage_offset;
+extern ptrdiff_t thread_storage_offset;
 
 #ifndef NO_PIKE_SHORTHAND
 #define MUTEX_T PIKE_MUTEX_T
