@@ -685,7 +685,7 @@ this_program `|(mixed data) {
     if(r==data->rdf_subject) return rdf_subject;
     if(r==data->rdf_object) return rdf_object;
     if(r==data->rdf_type) return rdf_type;
-    if(!functionp(r->get_uri)) error("Unknown resource found\n");
+    if(!functionp(r->get_uri)) return r;
     return make_resource(r->get_uri());
   };
 
