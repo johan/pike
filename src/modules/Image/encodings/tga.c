@@ -27,7 +27,6 @@
 
 
 
-RCSID("$Id$");
 /*
 **! module Image
 **! submodule TGA
@@ -72,6 +71,8 @@ RCSID("$Id$");
 
 #include "image.h"
 #include "colortable.h"
+
+RCSID("$Id$");
 
 #ifndef MIN
 # define MIN(X,Y) ((X)<(Y)?(X):(Y))
