@@ -2385,12 +2385,20 @@ static newstate handle_result(struct parser_html_storage *this,
 	 /* first skip this in local feed*/
 	 if (skip) skip_feed_range(st,head,c_head,tail,c_tail);
 
-	 DEBUG((stderr,"handle_result: pushing string (len=%d) on feedstack\n",
-		sp[-1].u.string->len));
-
-	 add_local_feed (this, sp[-1].u.string);
-	 pop_stack();
-	 return STATE_REREAD; /* please reread stack head */
+	 if (sp[-1].u.string->len) {
+	   DEBUG((stderr,"handle_result: pushing string (len=%d) on feedstack\n",
+		  sp[-1].u.string->len));
+	   add_local_feed (this, sp[-1].u.string);
+	   pop_stack();
+	   return STATE_REREAD; /* please reread stack head */
+	 }
+	 else {
+	   DEBUG((stderr,"handle_result: not pushing empty string on feedstack\n",
+		  sp[-1].u.string->len));
+	   if (this->stack != st) /* got more feed recursively - reread */
+	     return STATE_REREAD;
+	   return STATE_DONE; /* continue */
+	 }
 
       case T_INT:
 	 switch (sp[-1].u.integer)
