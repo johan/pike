@@ -1484,8 +1484,8 @@ static void image_png_encode(INT32 args)
 
    if (ct)
    {
-      int sz;
-      sz=image_colortable_size(ct);
+      ptrdiff_t sz;
+      sz = image_colortable_size(ct);
       if (sz>256)
 	 error("Image.PNG.encode: palette size to large; "
 	       "PNG doesn't support bigger palettes then 256 colors\n");

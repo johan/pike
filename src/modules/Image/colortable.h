@@ -19,7 +19,7 @@
 
 #define COLORLOOKUPCACHEHASHSIZE 207
 
-typedef unsigned long nct_weight_t;
+typedef size_t nct_weight_t;
 
 struct nct_flat_entry /* flat colorentry */
 {

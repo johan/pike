@@ -453,7 +453,7 @@ static void image_ras_encode(INT32 args)
 
   if(ct) {
     struct pike_string *cts;
-    int i, n = image_colortable_size(ct);
+    ptrdiff_t i, n = image_colortable_size(ct);
     unsigned char *tmp;
     rs.ras_depth = 8;
     rs.ras_maptype = RMT_EQUAL_RGB;

@@ -151,7 +151,7 @@ void image_gif_header_block(INT32 args)
    int xs,ys,bkgi=0,aspect=0,gif87a=0;
    struct neo_colortable *nct=NULL;
    int globalpalette=0;
-   int numcolors=0;
+   ptrdiff_t numcolors=0;
    int bpp=1;
    char buf[20];
    struct pike_string *ps;
@@ -671,7 +671,7 @@ void image_gif_render_block(INT32 args)
 {
    struct image *img=NULL,*alpha=NULL;
    struct neo_colortable *nct=NULL;
-   int numcolors;
+   ptrdiff_t numcolors;
    int localpalette,xpos,ypos;
    int alphaidx=-1;
    rgb_group alphacolor;
@@ -978,7 +978,7 @@ void _image_gif_encode(INT32 args,int fs)
    rgbl_group ac={0,0,0};
    int alphaentry=0;
    int trans=0;
-   int tridx=0;
+   ptrdiff_t tridx=0;
 
    int n=0;
    int arg=2;
