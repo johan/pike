@@ -236,25 +236,9 @@ int debug_gc_check(void *x, TYPE_T t, void *data)
   return ret;
 }
 
-void describe_something(void *a, int t, int dm)
+void low_describe_something(void *a, int t, int dm)
 {
   struct program *p=(struct program *)a;
-  if(!a) return;
-
-#ifdef DEBUG_MALLOC
-  if(dm)
-    debug_malloc_dump_references(a);
-#endif
-
-  if(t==-1)
-  {
-    fprintf(stderr,"**Location description: %s\n",(char *)a);
-    return;
-  }
-
-  fprintf(stderr,"**Location: %p  Type: %s  Refs: %d\n",a,
-	  get_name_of_type(t),
-	  *(INT32 *)a);
 
   switch(t)
   {
@@ -358,6 +342,31 @@ void describe_something(void *a, int t, int dm)
       break;
     }
   }
+}
+
+void describe_something(void *a, int t, int dm)
+{
+  struct program *p=(struct program *)a;
+  if(!a) return;
+
+  if(t==-1)
+  {
+    fprintf(stderr,"**Location description: %s\n",(char *)a);
+    return;
+  }
+
+  fprintf(stderr,"**Location: %p  Type: %s  Refs: %d\n",a,
+	  get_name_of_type(t),
+	  *(INT32 *)a);
+
+  low_describe_something(a,t,dm);
+
+#ifdef DEBUG_MALLOC
+  if(dm)
+    debug_malloc_dump_references(a);
+#endif
+
+  
   fprintf(stderr,"*******************\n");
 }
 

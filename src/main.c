@@ -611,6 +611,7 @@ void low_exit_main(void)
   {
     INT32 num,size,recount=0;
     fprintf(stderr,"Exited normally, counting bytes.\n");
+    search_all_memheaders_for_references();
 
     count_memory_in_arrays(&num, &size);
     if(num)

@@ -28,6 +28,7 @@ extern int debug_malloc_register_fd(int, const char *, int);
 extern int debug_malloc_close_fd(int, const char *, int);
 
 void *debug_malloc_update_location(void *,const char *, int);
+void search_all_memheaders_for_references(void);
 
 /* Beware! names of named memory regions are never ever freed!! /Hubbe */
 void *debug_malloc_name(void *p,const char *fn, int line);
@@ -82,4 +83,5 @@ void dmalloc_accept_leak(void *);
 #define debug_free(X,Y,Z,Q) free((X))
 #define debug_malloc_name(P,FN,LINE)
 #define debug_malloc_copy_names(p,p2)
+#define search_all_memheaders_for_references()
 #endif
