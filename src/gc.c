@@ -2835,7 +2835,8 @@ int do_gc(void)
   return objs;
 }
 
-/*! @decl mapping(string:int|float) _gc_status()
+/*! @decl mapping(string:int|float) gc_status()
+ *! @belongs Debug
  *!
  *! Get statistics from the garbage collector.
  *!
