@@ -1026,8 +1026,6 @@ void f_getcwd(INT32 args)
     Pike_error("Failed to fetch current path.\n");
   }
 
-  fflush(stderr);
-
   pop_n_elems(args);
   push_string(make_shared_string(e));
   free(e);
