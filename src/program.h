@@ -146,6 +146,7 @@ union idptr
 #define IDENTIFIER_FUNCTION 3
 #define IDENTIFIER_CONSTANT 4
 #define IDENTIFIER_VARARGS 8	/* Used for functions only. */
+#define IDENTIFIER_NO_THIS_REF 8 /* Used for variables only: Don't count refs to self. */
 #define IDENTIFIER_PROTOTYPED 16
 #define IDENTIFIER_SCOPED 32   /* This is used for local functions only */
 #define IDENTIFIER_SCOPE_USED 64 /* contains scoped local functions */

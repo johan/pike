@@ -3806,7 +3806,7 @@ int define_variable(struct pike_string *name,
 			low_add_storage(sizeof_variable(run_time_type),
 					alignof_variable(run_time_type),0),
 			run_time_type);
-
+  ID_FROM_INT(Pike_compiler->new_program, n)->identifier_flags |= IDENTIFIER_NO_THIS_REF;
 
   return n;
 }
