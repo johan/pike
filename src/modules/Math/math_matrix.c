@@ -26,8 +26,6 @@
 #include "pike_macros.h"
 #include "math_module.h"
 
-/* must be included last */
-#include "module_magic.h"
 #include "bignum.h"
 
 /*

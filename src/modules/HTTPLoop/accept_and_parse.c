@@ -59,8 +59,6 @@
 
 #endif /* _REENTRANT */
 
-/* This must be included last! */
-#include "module_magic.h"
 
 #ifdef _REENTRANT
 
@@ -686,7 +684,7 @@ void f_aap_add_filesystem( INT32 args )
 #define OFFSETOF(str_type, field) ((long)& (((struct str_type *)0)->field))
 #endif
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #ifdef _REENTRANT
   ptrdiff_t offset;
@@ -779,7 +777,7 @@ void pike_module_init(void)
 #endif /* _REENTRANT */
 }
 
-void pike_module_exit(void) 
+PIKE_MODULE_EXIT
 {
 #ifdef _REENTRANT
   struct log *log = aap_first_log;

@@ -8,6 +8,7 @@
 #include "global.h"
 RCSID("$Id$");
 
+#include "module.h"
 #include "config.h"
 
 
@@ -57,9 +58,6 @@ RCSID("$Id$");
 
 #endif /* USE_GMP || USE_GMP2 */
 
-
-/* This must be included last! */
-#include "module_magic.h"
 
 #define sp Pike_sp
 
@@ -510,11 +508,11 @@ static void image_xface_decode_header(INT32 args)
 
 /*** module init & exit & stuff *****************************************/
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
 }
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #if defined(USE_GMP) || defined(USE_GMP2)
 #ifdef DYNAMIC_MODULE

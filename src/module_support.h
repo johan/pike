@@ -8,6 +8,8 @@
 #ifndef MODULE_SUPPORT_H
 #include <stdarg.h>
 
+#include "module.h"
+
 enum error_type {
   ERR_NONE,
   ERR_TOO_FEW,

@@ -304,6 +304,7 @@ RCSID("$Id$");
 #include "operators.h"
 #include "opcodes.h"
 #include "cyclic.h"
+#include "module.h"
 #include <ctype.h>
 
 #include "config.h"
@@ -316,8 +317,6 @@ RCSID("$Id$");
 #include <fp_class.h>
 #endif
 
-/* This must be included last! */
-#include "module_magic.h"
 
 #define sp Pike_sp
 
@@ -1734,7 +1733,7 @@ static node *optimize_sprintf(node *n)
   return 0;
 }
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
   /* function(string|object, mixed ... : string) */
   ADD_EFUN2("sprintf", 
@@ -1745,6 +1744,6 @@ void pike_module_init(void)
 	    0);
 }
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
 }

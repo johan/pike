@@ -94,9 +94,6 @@ RCSID("$Id$");
 #include "dmalloc.h"
 
 
-/* This must be included last! */
-#include "module_magic.h"
-
 #define sp Pike_sp
 
 #define MAX_PARSE_RECURSE 102
@@ -1097,7 +1094,7 @@ void f__dump_obj_table(INT32 args)
 /*! @endmodule
  */
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
   ref_push_string(make_shared_string(""));
   empty_string_svalue = sp[-1];
@@ -1177,7 +1174,7 @@ void pike_module_init(void)
 }
 
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
   free_string(empty_string_svalue.u.string);
   {

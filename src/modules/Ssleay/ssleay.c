@@ -15,6 +15,7 @@ RCSID("$Id$");
 #include "stralloc.h"
 #include "array.h"
 #include "object.h"
+#include "module.h"
 /*  #include "pike_macros.h" */
 /*  #include "backend.h" */
 /*  #include "program.h" */
@@ -23,9 +24,6 @@ RCSID("$Id$");
 #ifdef HAVE_SYS_TYPE_H
 #include <sys/types.h>
 #endif
-
-/* must be included last */
-#include "module_magic.h"
 
 
 #ifdef HAVE_SSLEAY
@@ -277,7 +275,7 @@ void exit_connection(struct object *o)
 
 #endif /* HAVE_SSLEAY */
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
 #ifdef HAVE_SSLEAY
   free_program(ssleay_connection_program);
@@ -287,7 +285,7 @@ void pike_module_exit(void)
 #endif
 }
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_SSLEAY
   ERR_load_ERR_strings();

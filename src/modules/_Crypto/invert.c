@@ -29,8 +29,6 @@
 #include "stralloc.h"
 #include "builtin_functions.h"
 
-/* THIS MUST BE INCLUDED LAST */
-#include "module_magic.h"
 
 #define sp Pike_sp
 

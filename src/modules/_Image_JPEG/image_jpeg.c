@@ -71,9 +71,6 @@ RCSID("$Id$");
 #include "module_support.h"
 #include "operators.h"
 
-/* This must be included last! */
-#include "module_magic.h"
-
 #define sp Pike_sp
 
 #ifdef HAVE_JPEGLIB_H
@@ -1475,7 +1472,7 @@ void image_jpeg_quant_tables(INT32 args)
 /*** module init & exit & stuff *****************************************/
 
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
    free_string(param_baseline);
    free_string(param_quality);
@@ -1498,7 +1495,7 @@ void pike_module_exit(void)
    free_string(param_transform);
 }
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_JPEGLIB_H
 #ifdef DYNAMIC_MODULE

@@ -15,11 +15,10 @@ RCSID("$Id$");
 #include "program_id.h"
 #include "object.h"
 #include "operators.h"
+#include "module.h"
 
 #include "parser.h"
 
-/* must be included last */
-#include "module_magic.h"
 
 #define sp Pike_sp
 #define fp Pike_fp
@@ -173,7 +172,7 @@ static void parser_magic_index(INT32 args)
    pop_stack();
 }
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #ifdef PIKE_DEBUG
    struct svalue *save_sp = sp;
@@ -229,7 +228,7 @@ void pike_module_init(void)
 		tFunc(tString,tMixed),0);
 }
 
-void pike_module_exit(void) 
+PIKE_MODULE_EXIT
 {
    int i;
    for (i=0; i<(int)NELEM(initclass); i++)

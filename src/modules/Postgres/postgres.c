@@ -66,8 +66,6 @@ PIKE_MUTEX_T pike_postgres_mutex STATIC_MUTEX_INIT;
 
 #include "pg_types.h"
 
-/* must be included last */
-#include "module_magic.h"
 
 #ifdef PGDEBUG
 #define pgdebug printf
@@ -669,7 +667,7 @@ static void f_host_info (INT32 args)
  *! @endmodule
  */
 
-void pike_module_init (void)
+PIKE_MODULE_INIT
 {
 	start_new_program();
 	ADD_STORAGE(struct pgres_object_data);
@@ -723,7 +721,7 @@ void pike_module_init (void)
 	pgresult_init(); 
 }
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
   extern struct program * pgresult_program;
 
@@ -741,7 +739,7 @@ void pike_module_exit(void)
 }
 
 #else /* HAVE_POSTGRES */
-#include "module_magic.h"
-void pike_module_init(void) {}
-void pike_module_exit(void) {}
+#include "module.h"
+PIKE_MODULE_INIT {}
+PIKE_MODULE_EXIT {}
 #endif /* HAVE_POSTGRES */

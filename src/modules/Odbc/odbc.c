@@ -38,8 +38,6 @@ RCSID("$Id$");
 
 #include "precompiled_odbc.h"
 
-/* must be included last */
-#include "module_magic.h"
 
 #define sp Pike_sp
 #define fp Pike_fp
@@ -435,7 +433,7 @@ static void f_list_dbs(INT32 args)
  * Module linkage
  */
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_ODBC
   RETCODE err = SQLAllocEnv(&odbc_henv);
@@ -505,7 +503,7 @@ void pike_module_init(void)
 #endif /* HAVE_ODBC */
 }
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
 #ifdef HAVE_ODBC
   exit_odbc_res();

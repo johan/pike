@@ -30,8 +30,6 @@
 #include <string.h>
 #include <stdio.h>
 
-/* This must be included last! */
-#include "module_magic.h"
 
 RCSID("$Id$");
 

@@ -138,8 +138,6 @@ struct att_storage {
 #define THIS_ATT ((struct att_storage *)(Pike_fp->current_storage))
 #endif /* _REENTRANT */
 
-#include "module_magic.h"
-
 /*
 
 TODO(?):
@@ -3266,11 +3264,9 @@ static void f_new_double_array(INT32 args)
     push_int(0);
 }
 
-#else
-#include "module_magic.h"
 #endif /* HAVE_JAVA */
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_JAVA
   struct svalue prog;
@@ -3457,7 +3453,7 @@ void pike_module_init(void)
 #endif /* HAVE_JAVA */
 }
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
 #ifdef HAVE_JAVA
   if(jarray_program) {

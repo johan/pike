@@ -49,8 +49,6 @@ RCSID("$Id$");
 #include "colortable.h"
 #include "initstuff.h"
 
-/* This must be included last! */
-#include "module_magic.h"
 
 #define sp Pike_sp
 

@@ -50,9 +50,6 @@ RCSID("$Id$");
 #include "sybase.h"
 
 
-/* This must be included last! */
-#include "module_magic.h"
-
 #define sp Pike_sp
 
 /* define this to enable debugging */
@@ -1186,12 +1183,12 @@ static void f_fetch_fields(INT32 args) {
 /********/
 
 static struct program* sybase_program;
-void pike_module_exit (void) {
+PIKE_MODULE_EXIT {
   SYB_MT_EXIT(mainlock);
   if(sybase_program) free_program(sybase_program);
 }
 
-void pike_module_init (void) {
+PIKE_MODULE_INIT {
 
   sybdebug((stderr,"sybase driver release " SYBASE_DRIVER_VERSION "\n"));
 
@@ -1260,8 +1257,8 @@ void pike_module_init (void) {
 
 #else /* HAVE_SYBASE */
 /* This must be included last! */
-#include "module_magic.h"
+#include "module.h"
 
-void pike_module_init (void) {}
-void pike_module_exit (void) {}
+PIKE_MODULE_INIT {}
+PIKE_MODULE_EXIT {}
 #endif /* HAVE_SYBASE */

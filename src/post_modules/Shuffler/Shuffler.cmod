@@ -25,9 +25,6 @@ RCSID("$Id$");
 #include "shuffler.h"
 #include "sources.h"
 
-/* must be included last */
-#include "module_magic.h"
-
 #if 0
 #include <stdio.h>
 #define SHUFFLE_DEBUG1(fmt, arg1)			fprintf(stderr,"Shuffle[%p]:" fmt, arg1)
@@ -818,7 +815,7 @@ PIKECLASS Shuffler
 /*! @endmodule
  */
 
-void pike_module_init()
+PIKE_MODULE_INIT
 {
   INIT;
   sources_init();
@@ -831,7 +828,7 @@ void pike_module_init()
   add_integer_constant( "USER_ABORT", USER_ABORT, 0 );
 }
 
-void pike_module_exit()
+PIKE_MODULE_EXIT
 {
   EXIT;
   sources_exit();

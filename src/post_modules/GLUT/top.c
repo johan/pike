@@ -17,8 +17,7 @@ RCSID("$Id$");
 #include "interpret.h"
 #include "builtin_functions.h"
 #include "pike_error.h"
-
-#include "module_magic.h"
+#include "module.h"
 
 #ifdef HAVE_LIBGLUT
 #ifdef HAVE_GL_GLUT_H
@@ -28,7 +27,7 @@ RCSID("$Id$");
 #endif
 
 
-void pike_module_init( void )
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_LIBGLUT
 #ifdef HAVE_GL_GLUT_H
@@ -39,6 +38,6 @@ void pike_module_init( void )
 }
 
 
-void pike_module_exit( void )
+PIKE_MODULE_EXIT
 {
 }

@@ -21,8 +21,6 @@ RCSID("$Id$");
 #include "buffer.h"
 #include "normalize.h"
 
-/* must be included last */
-#include "module_magic.h"
 struct comp
 {
   const int c1;

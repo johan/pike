@@ -9,6 +9,7 @@
 
 #include "global.h"
 RCSID("$Id$");
+#include "module.h"
 
 #ifdef HAVE_LIBTTF
 #if defined(HAVE_FREETYPE_FREETYPE_H) && defined(HAVE_FREETYPE_FTXKERN_H)
@@ -52,8 +53,6 @@ static TT_Engine engine;
 
 #endif /* HAVE_LIBTTF */
 
-/* This must be included last! */
-#include "module_magic.h"
 
 #define sp Pike_sp
 
@@ -1242,7 +1241,7 @@ static void image_ttf_faceinstance_face(INT32 args)
 /*** module init & exit & stuff *****************************************/
 
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
    free_string(param_baseline);
    free_string(param_quality);
@@ -1260,7 +1259,7 @@ void pike_module_exit(void)
 #endif /* HAVE_LIBTTF */
 }
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_LIBTTF
    unsigned char palette[5]={0,64,128,192,255};

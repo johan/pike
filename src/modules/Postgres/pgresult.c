@@ -81,8 +81,6 @@ PIKE_MUTEX_T pike_postgres_result_mutex STATIC_MUTEX_INIT;
 
 #include "pg_types.h"
 
-/* must be included last */
-#include "module_magic.h"
 
 
 #define THIS ((struct postgres_result_object_data *) Pike_fp->current_storage)

@@ -26,8 +26,6 @@
 #include <floatingpoint.h>
 #endif
 
-/* This must be included last! */
-#include "module_magic.h"
 
 #define sp Pike_sp
 
@@ -493,7 +491,7 @@ void f_sgn(INT32 args)
 
 #define tNUM tOr(tInt,tFlt)
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_FPSETMASK
   fpsetmask(0);
@@ -582,4 +580,4 @@ void pike_module_init(void)
   ADD_EFUN("sgn",f_sgn,tFunc(tMix tOr(tMix,tVoid),tInt),0);
 }
 
-void pike_module_exit(void) {}
+PIKE_MODULE_EXIT {}

@@ -87,7 +87,6 @@ RCSID("$Id$");
 
 #include "system.h"
 
-#include "module_magic.h"
 
 #define sp Pike_sp
 

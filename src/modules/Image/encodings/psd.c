@@ -37,8 +37,6 @@ RCSID("$Id$");
 #include <netinet/in.h>
 #endif
 
-/* MUST BE INCLUDED LAST */
-#include "module_magic.h"
 
 #define sp Pike_sp
 

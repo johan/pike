@@ -46,8 +46,6 @@
 #include "requestobject.h"
 #include "util.h"
 
-/* This must be included last! */
-#include "module_magic.h"
 
 #define sp Pike_sp
 

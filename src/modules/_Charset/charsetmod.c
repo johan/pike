@@ -20,8 +20,6 @@ RCSID("$Id$");
 
 #include "iso2022.h"
 
-/* MUST BE LAST INCLUDE */
-#include "module_magic.h"
 
 #define sp Pike_sp
 #define fp Pike_fp
@@ -1457,7 +1455,7 @@ static void f_feed_std16e(INT32 args)
 }
 
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
   int i;
   struct svalue prog;
@@ -1629,7 +1627,7 @@ void pike_module_init(void)
 			"function(string:string)|void:object)", 0);
 }
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
   extern void iso2022_exit(void);
 

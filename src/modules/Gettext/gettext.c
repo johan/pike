@@ -26,8 +26,6 @@
 #include "mapping.h"
 #include "module_support.h"
 
-/* This must be included last */
-#include "module_magic.h"
 
 #define sp Pike_sp
 
@@ -473,7 +471,7 @@ void f_localeconv(INT32 args)
 /*! @endmodule
  */
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 
 /* function(void:string) */
@@ -505,15 +503,15 @@ void pike_module_init(void)
   add_integer_constant("LC_TIME", LC_TIME, 0);
 }
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
 
 }
 #else
 
-#include "module_magic.h"
+#include "module.h"
 
-void pike_module_init(void) {}
-void pike_module_exit(void) {}
+PIKE_MODULE_INIT {}
+PIKE_MODULE_EXIT {}
 
 #endif

@@ -23,8 +23,6 @@ RCSID("$Id$");
 #include <stdio.h>
 #include <fcntl.h>
 
-/* MUST BE LAST */
-#include "module_magic.h"
 
 #define sp Pike_sp
 
@@ -62,7 +60,7 @@ static char char_class[1<<CHAR_BIT];
 
 /* Initialize and start module */
 
-void pike_module_init( void )
+PIKE_MODULE_INIT
 {
   int i;
 
@@ -89,7 +87,7 @@ void pike_module_init( void )
 
 /* Restore and exit module */
 
-void pike_module_exit( void )
+PIKE_MODULE_EXIT
 {
 }
 

@@ -18,17 +18,11 @@ RCSID("$Id$");
 #include "array.h"
 #include "object.h"
 #include "pike_macros.h"
+#include "module.h"
 
 #if defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM)
 
 #include <gdbm.h>
-
-#endif /* defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM) */
-
-/* THIS MUST BE INCLUDED LAST */
-#include "module_magic.h"
-
-#if defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM)
 
 #ifdef _REENTRANT
 static MUTEX_T gdbm_lock STATIC_MUTEX_INIT;
@@ -461,9 +455,9 @@ static void exit_gdbm_glue(struct object *o)
 
 #endif /* defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM) */
 
-void pike_module_exit(void) {}
+PIKE_MODULE_EXIT {}
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #if defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM)
   start_new_program();

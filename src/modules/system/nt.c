@@ -237,7 +237,7 @@ static void push_regvalue(DWORD type, char* buffer, DWORD len)
  * (On W2k/IA64 HKEY is typedefed to struct HKEY__ *).
  *
  * NOTE: Order must match the values specified with
- * ADD_GLOBAL_INTEGER_CONSTANT() in init_pike_module() below.
+ * ADD_GLOBAL_INTEGER_CONSTANT() in init_nt_system_calls() below.
  */
 static const HKEY hkeys[] = {
   HKEY_CLASSES_ROOT,

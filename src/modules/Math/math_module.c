@@ -8,12 +8,11 @@
 #include "global.h"
 #include "config.h"
 #include "program.h"
+#include "module.h"
 
 #include "math_module.h"
 #include "transforms.h"
 
-/* must be included last */
-#include "module_magic.h"
 
 /*** module init & exit & stuff *****************************************/
 
@@ -44,7 +43,7 @@ static struct math_class
    {"Transforms",init_math_transforms,&math_transforms_program},
 };
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
    int i;
    for (i=0; i<(int)(sizeof(sub)/sizeof(sub[0])); i++)
@@ -58,7 +57,7 @@ void pike_module_exit(void)
    exit_math_transforms();
 }
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
    int i;
    DECLARE_INF

@@ -110,8 +110,6 @@ RCSID("$Id$");
 
 #include "dmalloc.h"
 
-/* This must be included last! */
-#include "module_magic.h"
 
 #define sp Pike_sp
 
@@ -2484,7 +2482,7 @@ static void f_gettimeofday(INT32 args)
  * Module linkage
  */
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
   /*
    * From this file:
@@ -2807,7 +2805,7 @@ void pike_module_init(void)
 #include "add-errnos.h"
 }
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
 #ifdef __NT__
   {

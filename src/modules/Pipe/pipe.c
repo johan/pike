@@ -8,6 +8,7 @@
 #include "global.h"
 #include "config.h"
 #include "machine.h"
+#include "module.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -58,8 +59,6 @@ RCSID("$Id$");
 #endif
 #endif
 
-/* must be included last */
-#include "module_magic.h"
 
 #define sp Pike_sp
 
@@ -1298,7 +1297,7 @@ void f__pipe_debug(INT32 args)
   f_aggregate(7);
 }
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
    start_new_program();
    ADD_STORAGE(struct pipe);
@@ -1361,7 +1360,7 @@ void pike_module_init(void)
    add_program_constant("__output",output_program, 0);
 }
 
-void pike_module_exit(void) 
+PIKE_MODULE_EXIT
 {
   if(pipe_program) free_program(pipe_program);
   pipe_program=0;

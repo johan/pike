@@ -31,7 +31,6 @@ RCSID("$Id$");
 #include <GL/gl.h>
 #endif /* HAVE_GL_GL_H */
 
-#include "module_magic.h"
 
 #define sp Pike_sp
 

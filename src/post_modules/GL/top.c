@@ -36,7 +36,6 @@ RCSID("$Id$");
 #include "module_support.h"
 #include "pike_error.h"
 
-#include "module_magic.h"
 
 #ifdef HAVE_GL
 
@@ -372,7 +371,7 @@ static void f_glGet(INT32 args)
 #endif /* HAVE_GL */
 
 
-void pike_module_init( void )
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_GL
   extern void GL_add_auto_funcs(void);
@@ -385,6 +384,6 @@ void pike_module_init( void )
 }
 
 
-void pike_module_exit( void )
+PIKE_MODULE_EXIT
 {
 }

@@ -24,9 +24,6 @@
 #include "module_support.h"
 #include "builtin_functions.h"
 
-/* This must be included last! */
-#include "module_magic.h"
-
 
 #ifdef HAVE_WORKING_LIBFFMPEG
 
@@ -482,7 +479,7 @@ static void exit_ffmpeg_data(struct object *obj) {
  * ---------------------
  */
 
-void pike_module_init() {
+PIKE_MODULE_INIT {
 
   add_function("list_codecs", f_list_codecs, "function(:array|int)", 0);
 
@@ -595,24 +592,24 @@ void pike_module_init() {
   set_exit_callback(exit_ffmpeg_data);
   ffmpeg_program = end_program();
   add_program_constant("ffmpeg", ffmpeg_program, 0);
-} /* pike_module_init */
+} /* PIKE_MODULE_INIT */
 
-void pike_module_exit() {
+PIKE_MODULE_EXIT {
 
   if(ffmpeg_program) {
     free_program(ffmpeg_program);
     ffmpeg_program = NULL;
   }
-} /* pike_module_exit */
+} /* PIKE_MODULE_EXIT */
 
 #else
 
-void pike_module_init() {
+PIKE_MODULE_INIT {
 
   add_integer_constant("libffmpeg/libavcodec IS MISSING", 0, 0);
 }
 
-void pike_module_exit() {
+PIKE_MODULE_EXIT {
 }
 
 #endif

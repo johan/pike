@@ -9,6 +9,7 @@
 RCSID("$Id$");
 
 #include "zlib_machine.h"
+#include "module.h"
 
 #if !defined(HAVE_LIBZ) && !defined(HAVE_LIBGZ)
 #undef HAVE_ZLIB_H
@@ -30,12 +31,6 @@ RCSID("$Id$");
 
 #include <zlib.h>
 
-#endif /* HAVE_ZLIB_H */
-
-/* This must be included last! */
-#include "module_magic.h"
-
-#ifdef HAVE_ZLIB_H
 
 #define sp Pike_sp
 
@@ -839,9 +834,9 @@ static void exit_gz_file(struct object *o)
  */
 #endif
 
-void pike_module_exit(void) {}
+PIKE_MODULE_EXIT {}
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_ZLIB_H
   start_new_program();

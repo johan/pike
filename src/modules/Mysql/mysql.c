@@ -61,6 +61,7 @@
 #endif /* HAVE_MYSQL */
 
 /* From the Pike-dist */
+#include "module.h"
 #include "svalue.h"
 #include "object.h"
 #include "stralloc.h"
@@ -81,7 +82,6 @@
 #include <memory.h>
 #endif
 
-#include "module_magic.h"
 
 #define sp Pike_sp
 
@@ -1606,7 +1606,7 @@ static void f_binary_data(INT32 args)
  */
 
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_MYSQL
   /*
@@ -1690,7 +1690,7 @@ void pike_module_init(void)
 #endif /* HAVE_MYSQL */
 }
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
 #ifdef HAVE_MYSQL
   exit_mysql_res();

@@ -7,16 +7,16 @@
 
 #include "global.h"
 #include "pgtk_config.h"
-#include "module_magic.h"
+#include "module.h"
 
 RCSID("$Id$");
 
 /* Well... Sort of basic, right? :-) */
 
-void pike_module_init()
+PIKE_MODULE_INIT
 {
 }
 
-void pike_module_exit()
+PIKE_MODULE_EXIT
 {
 }

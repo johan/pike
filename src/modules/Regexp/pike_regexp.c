@@ -73,8 +73,6 @@
 #include "pike_memory.h"
 #include "pike_error.h"
 
-/* must be included last */
-#include "module_magic.h"
 
 /*
  * The "internal use only" fields in regexp.h are present to pass info from

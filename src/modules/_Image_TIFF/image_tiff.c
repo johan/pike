@@ -6,6 +6,7 @@
 */
 
 #include "global.h"
+#include "module.h"
 #include "config.h"
 /*
 **! module Image
@@ -42,8 +43,6 @@ RCSID("$Id$");
 #endif
 #include <tiffio.h>
 
-/* This must be included last! */
-#include "module_magic.h"
 
 #define sp Pike_sp
 
@@ -812,14 +811,9 @@ void my_tiff_warning_handler(const char* module, const char* fmt, va_list x){}
 /* Complies with the TIFFErrorHandler API */
 void my_tiff_error_handler(const char* module, const char* fmt, va_list x){}
 
-#else
-
-/* This must be included last! */
-#include "module_magic.h"
-
 #endif /* HAVE_LIBTIFF */
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_LIBTIFF
 #ifdef DYNAMIC_MODULE
@@ -888,7 +882,7 @@ void pike_module_init(void)
 #endif /* HAVE_LIBTIFF */
 }
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
 #ifdef HAVE_LIBTIFF
   free_string(opt_compression);

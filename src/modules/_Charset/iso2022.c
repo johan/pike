@@ -20,8 +20,6 @@ RCSID("$Id$");
 
 #include "iso2022.h"
 
-/* MUST BE LAST INCLUDE */
-#include "module_magic.h"
 
 #define sp Pike_sp
 #define fp Pike_fp

@@ -41,8 +41,6 @@ RCSID("$Id$");
 
 #include "precompiled_odbc.h"
 
-/* must be included last */
-#include "module_magic.h"
 
 #define sp Pike_sp
 

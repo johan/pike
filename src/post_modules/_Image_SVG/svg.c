@@ -6,6 +6,7 @@
 */
 
 #include "config.h"
+#include "module.h"
 
 #ifdef HAVE_SVG
 #include "global.h"
@@ -30,12 +31,6 @@ RCSID("$Id$");
 
 #include <librsvg/rsvg.h>
 
-#endif /* HAVE_SVG */
-
-/* This must be included last! */
-#include "module_magic.h"
-
-#ifdef HAVE_SVG
 
 /*! @module Image
  */
@@ -361,7 +356,7 @@ static void f_decode( INT32 args )
 }
 #endif
   
-void pike_module_init()
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_SVG
   g_type_init(); /* Initialize the glib type system. */
@@ -379,7 +374,7 @@ void pike_module_init()
 #endif
 }
 
-void pike_module_exit()
+PIKE_MODULE_EXIT
 {
 }
 

@@ -35,8 +35,6 @@
 #include "builtin_functions.h"
 #include "module_support.h"
 
-/* must be included last */
-#include "module_magic.h"
 
 #define sp Pike_sp
 
@@ -308,7 +306,7 @@ static void exit_yp_struct( struct object *o )
 /******************** PUBLIC FUNCTIONS BELOW THIS LINE */
 
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
   
 /* function(void:string) */
@@ -341,14 +339,14 @@ void pike_module_init(void)
   end_class("Domain", 0);
 }
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
   
 }
 #else
 
-#include "module_magic.h"
-void pike_module_init(void) {}
-void pike_module_exit(void) {}
+#include "module.h"
+PIKE_MODULE_INIT {}
+PIKE_MODULE_EXIT {}
 
 #endif

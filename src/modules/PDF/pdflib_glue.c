@@ -36,7 +36,6 @@ RCSID("$Id$");
 #include "program.h"
 #include "operators.h"
 
-#include "module_magic.h"
 
 #define sp Pike_sp
 

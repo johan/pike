@@ -8,6 +8,7 @@
 #include "global.h"
 RCSID("$Id$");
 #include "gmp_machine.h"
+#include "module.h"
 
 #if defined(HAVE_GMP2_GMP_H) && defined(HAVE_LIBGMP2)
 #define USE_GMP2
@@ -39,12 +40,6 @@ RCSID("$Id$");
 
 #include <limits.h>
 
-#endif /* defined(USE_GMP) || defined(USE_GMP2) */
-
-/* This must be included last! */
-#include "module_magic.h"
-
-#if defined(USE_GMP) || defined(USE_GMP2)
 
 #define sp Pike_sp
 #define fp Pike_fp
@@ -1587,7 +1582,7 @@ static void exit_mpz_glue(struct object *o)
 }
 #endif
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
   pike_exit_mpf_module();
   pike_exit_mpq_module();
@@ -1699,7 +1694,7 @@ void pike_module_exit(void)
   set_exit_callback(exit_mpz_glue);
 
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #if defined(USE_GMP) || defined(USE_GMP2)
   start_new_program();

@@ -27,8 +27,6 @@ RCSID("$Id$");
 
 #include "my_gmp.h"
 
-/* This must be included last! */
-#include "module_magic.h"
 
 void my_mpz_xor (mpz_ptr res, mpz_srcptr a, mpz_srcptr b)
 {
