@@ -498,12 +498,13 @@ PMOD_EXPORT struct pike_string *debug_begin_wide_shared_string(size_t len, int s
  */
 PMOD_EXPORT struct pike_string *low_end_shared_string(struct pike_string *s)
 {
-  ptrdiff_t len, h;
+  ptrdiff_t len;
+  size_t h;
   struct pike_string *s2;
 
   len = s->len;
   h = do_hash(s);
-  s2 = internal_findstring(s->str,len,s->size_shift,h);
+  s2 = internal_findstring(s->str, len, s->size_shift, h);
 #ifdef PIKE_DEBUG
   if(s2==s) 
     fatal("end_shared_string called twice! (or something like that)\n");
@@ -512,7 +513,7 @@ PMOD_EXPORT struct pike_string *low_end_shared_string(struct pike_string *s)
   if(s2)
   {
     free((char *)s);
-    s=s2;
+    s = s2;
   }else{
     link_pike_string(s, h);
   }
