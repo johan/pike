@@ -248,7 +248,8 @@ void push_unfinished_type(char *s)
   for(e--;e>=0;e--) push_type(s[e]);
 }
 
-static void push_unfinished_type_with_markers(char *s, struct pike_string **am)
+static void push_unfinished_type_with_markers(char *s,
+					      struct pike_string **am)
 {
   int d,e,c,len=type_length(s);
   type_stack_mark();
@@ -268,8 +269,12 @@ static void push_unfinished_type_with_markers(char *s, struct pike_string **am)
 	break;
 #endif
       case T_ASSIGN:
+#if 1
+	e++;
+#else
 	push_type(c);
 	push_type(EXTRACT_UCHAR(s+ ++e));
+#endif
 	break;
 
       case T_INT:
