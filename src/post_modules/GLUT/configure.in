@@ -70,8 +70,7 @@ else
     glutJoystickFunc glutKeyboardUpFunc glutLeaveGameMode \
     glutPostWindowOverlayRedisplay glutPostWindowRedisplay glutReportErrors \
     glutSetKeyRepeat glutSpecialUpFunc], [], [
-      ac_tr_func=`echo $ac_tr_func|sed -e 's/HAVE_/MISSING_/'`
-      AC_DEFINE_UNQUOTED($ac_tr_func)
+      AC_DEFINE_UNQUOTED(`echo "MISSING_$ac_func" | tr '[[a-z]]' '[[A-Z]]'`)
   ])
 fi
 
