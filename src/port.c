@@ -237,7 +237,6 @@ int MEMCMP(const void *bb,const void *aa,int s)
 #ifndef HAVE_MEMCHR
 char *MEMCHR(char *p,char c,int e)
 {
-  e++;
   while(--e >= 0) if(*(p++)==c) return p-1;
   return (char *)0;
 }
