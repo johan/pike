@@ -1071,6 +1071,21 @@ static int do_docode2(node *n, INT16 flags)
     {
       DO_CODE_BLOCK(CAR(n));
       return 0;
+    } else if (n->type == int_type_string) {
+      tmp1 = do_docode(CAR(n), 0);
+      if(!tmp1) { emit0(F_CONST0); tmp1=1; }
+      else {
+	if(tmp1>1) do_pop(DO_NOT_WARN((INT32)(tmp1-1)));
+	emit0(F_CAST_TO_INT);
+      }
+      return 1;
+    } else if (compile_type_to_runtime_type(n->type) == PIKE_T_MIXED) {
+      tmp1 = do_docode(CAR(n), 0);
+      if(!tmp1) 
+	emit0(F_CONST0);
+      else if(tmp1>1)
+	do_pop(DO_NOT_WARN((INT32)(tmp1-1)));
+      return 1;
     }
     {
       struct svalue sv;
