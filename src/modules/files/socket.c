@@ -619,9 +619,9 @@ void port_setup_program(void)
   ptrdiff_t offset;
   START_NEW_PROGRAM_ID (STDIO_PORT);
   offset = ADD_STORAGE(struct port);
-  map_variable("_accept_callback", "mixed", 0,
+  MAP_VARIABLE("_accept_callback", tMix, 0,
 	       offset + OFFSETOF(port, accept_callback), PIKE_T_MIXED);
-  map_variable("_id", "mixed", 0,
+  MAP_VARIABLE("_id", tMix, 0,
 	       offset + OFFSETOF(port, id), PIKE_T_MIXED);
   /* function(int|string,void|mixed,void|string:int) */
   ADD_FUNCTION("bind", port_bind,
