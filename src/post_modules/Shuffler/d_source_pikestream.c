@@ -187,7 +187,7 @@ struct source *source_pikestream_make( struct svalue *s,
   res->s.setup_callbacks = setup_callbacks;
   res->s.remove_callbacks = remove_callbacks;
   res->obj = s->u.object;
-  res->obj->refs++;
+  add_ref(res->obj);
 
   res->cb_obj = clone_object( callback_program, 0 );
   ((struct callback_prog *)res->cb_obj->storage)->s = res;

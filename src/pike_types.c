@@ -220,7 +220,7 @@ static size_t pike_type_hash_size = 0;
 void debug_free_type(struct pike_type *t)
 {
  loop:
-  if (!(--(((struct pike_type *)debug_malloc_pass(t))->refs))) {
+  if (!sub_ref(t)) {
     unsigned INT32 hash = t->hash % pike_type_hash_size;
     struct pike_type **t2 = pike_type_hash + hash;
     struct pike_type *car, *cdr;
@@ -391,7 +391,8 @@ static inline struct pike_type *debug_mk_type(unsigned INT32 type,
       
   debug_malloc_pass(t = alloc_pike_type());
 
-  t->refs = 1;
+  t->refs = 0;
+  add_ref(t);	/* For DMALLOC... */
   t->type = type;
   t->flags = 0;
   t->car = car;

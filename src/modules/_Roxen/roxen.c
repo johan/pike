@@ -200,13 +200,11 @@ static void f_hp_feed( INT32 args )
 	f_aggregate( 1 );
 	if( tmp->type == PIKE_T_ARRAY )
 	{
-	  tmp->u.array->refs++;
-	  push_array(tmp->u.array);
+	  ref_push_array(tmp->u.array);
 	  map_delete(headers, Pike_sp-3);
 	  f_add(2);
 	} else {
-	  tmp->u.string->refs++;
-	  push_string(tmp->u.string);
+	  ref_push_string(tmp->u.string);
 	  f_aggregate(1);
 	  map_delete(headers, Pike_sp-3);
 	  f_add(2);

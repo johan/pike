@@ -272,7 +272,7 @@ THREADS_DISALLOW();
 
   if (!w)
   {
-    o[4]->refs++;
+    add_ref(o[4]);
     pop_n_elems(5);
     push_object(o[4]);
   }

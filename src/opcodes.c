@@ -139,6 +139,7 @@ void o_index(void)
   *sp=s;
   dmalloc_touch_svalue(sp);
   sp++;
+  dmalloc_touch_svalue(Pike_sp-1);
 }
 
 /*! @class MasterObject
@@ -1647,6 +1648,7 @@ CHAROPT2(								 \
 		   pos+=8;						 \
 		   eye++;						 \
 		 }							 \
+                 dmalloc_touch_svalue(Pike_sp-1);			 \
 		 sval=*--sp;						 \
 		 break;							 \
 	       }							 \
@@ -1674,6 +1676,7 @@ CHAROPT2(								 \
 		   o_or();						 \
 		   eye++;						 \
 		 }							 \
+                 dmalloc_touch_svalue(Pike_sp-1);			 \
 		 sval=*--sp;						 \
 		 break;							 \
 	       }							 \
@@ -2048,6 +2051,7 @@ CHAROPT2(								 \
     }else{								 \
       check_stack(1);							 \
       *sp++=sval;							 \
+      dmalloc_touch_svalue(Pike_sp-1);					 \
       DO_IF_DEBUG(sval.type=99);					 \
     }									 \
   }									 \

@@ -364,6 +364,7 @@ void cpp_change_compat(struct cpp *this, int major, int minor)
   if(sp[-1].type == T_OBJECT)
   {
     this->compat_handler=sp[-1].u.object;
+    dmalloc_touch_svalue(Pike_sp-1);
     sp--;
   }
   this->compat_major=major;

@@ -91,6 +91,5 @@ THREADS_ALLOW();
 
 THREADS_DISALLOW();
 
-  o->refs++;
-  push_object(o);
+  ref_push_object(o);
 }

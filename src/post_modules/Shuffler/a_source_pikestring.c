@@ -69,15 +69,14 @@ struct source *source_pikestring_make( struct svalue *s,
   res->s.free_source = free_source;
   res->s.get_data = get_data;
 
-  res->str = s->u.string;
-  res->str->refs++;
+  copy_shared_string(res->str, s->u.string);
   res->offset = start;
 
   if( len != -1 )
   {
     if( len > res->str->len-start )
     {
-      res->str->refs--;
+      sub_ref(res->str);
       free(res);
       return 0;
     }
@@ -89,7 +88,7 @@ struct source *source_pikestring_make( struct svalue *s,
 
   if( res->len <= 0 )
   {
-    res->str->refs--;
+    sub_ref(res->str);
     free(res);
   }
   return (struct source *)res;

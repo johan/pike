@@ -722,7 +722,7 @@ static void f_scanner_nonblocking_row_scan( INT32 args )
   push_int( 1 );
   rsp->o = clone_object( image_program, 2 );
   rsp->t = Pike_fp->current_object;
-  Pike_fp->current_object->refs++;
+  add_ref(Pike_fp->current_object);
   rsp->r = ((struct image *)rsp->o->storage)->img;
   rsp->h = THIS->h;
   rsp->p = p;

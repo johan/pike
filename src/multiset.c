@@ -238,7 +238,8 @@ void free_multiset_data (struct multiset_data *msd);
 #define INIT_MULTISET(L) do {						\
     GC_ALLOC (L);							\
     INITIALIZE_PROT (L);						\
-    L->refs = 1;							\
+    L->refs = 0;							\
+    add_ref(L);	/* For DMALLOC... */					\
     L->node_refs = 0;							\
     DOUBLELINK (first_multiset, L);					\
   } while (0)
@@ -3603,6 +3604,7 @@ PMOD_EXPORT void f_aggregate_multiset (INT32 args)
   push_multiset (mkmultiset_2 (sp[-1].u.array, NULL, NULL));
   free_array (sp[-2].u.array);
   sp[-2] = sp[-1];
+  dmalloc_touch_svalue(Pike_sp-1);
   sp--;
 }
 

@@ -1440,6 +1440,7 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	    /* Why not just use ref_push_string(new_file)? */
 	    assign_svalue_no_free(Pike_sp,Pike_sp-1);
 	    Pike_sp++;
+	    dmalloc_touch_svalue(Pike_sp-1);
 	    
 	    /* FIXME: Ought to use safe_apply_handler()... */
 	    if(this->compat_handler)

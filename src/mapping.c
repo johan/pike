@@ -228,7 +228,8 @@ PMOD_EXPORT struct mapping *debug_allocate_mapping(int size)
   INITIALIZE_PROT(m);
   init_mapping(m,size,0);
 
-  m->refs = 1;
+  m->refs = 0;
+  add_ref(m);	/* For DMALLOC... */
 
   DOUBLELINK(first_mapping, m);
 
@@ -445,7 +446,8 @@ struct mapping_data *copy_mapping_data(struct mapping_data *md)
   }
 #endif /* PIKE_MAPPING_KEYPAIR_LOOP */
 
-  nmd->refs=1;
+  nmd->refs=0;
+  add_ref(nmd);	/* For DMALLOC... */
   nmd->valrefs=0;
   nmd->hardlinks=0;
 
@@ -458,7 +460,7 @@ struct mapping_data *copy_mapping_data(struct mapping_data *md)
     md->hardlinks--;
     md->valrefs--;
   }
-  md->refs--;
+  sub_ref(md);
 
   return nmd;
 }
@@ -575,7 +577,7 @@ struct mapping_data *copy_mapping_data(struct mapping_data *md)
   LOW_RELOC(k);					\
   free_mapping_data(md);                        \
   md=m->data;                                   \
-  md->refs++;                                   \
+  add_ref(md);                                   \
 }while(0)
 
 #define PREPARE_FOR_DATA_CHANGE() \
@@ -1344,7 +1346,7 @@ PMOD_EXPORT struct mapping *copy_mapping(struct mapping *m)
 #ifdef MAPPING_SIZE_DEBUG
   n->debug_size=n->data->size;
 #endif
-  n->data->refs++;
+  add_ref(n->data);
   n->data->valrefs++;
   n->data->hardlinks++;
   debug_malloc_touch(n->data);
@@ -1871,8 +1873,10 @@ PMOD_EXPORT struct mapping *copy_mapping_recursively(struct mapping *m,
   {
     copy_svalues_recursively_no_free(Pike_sp,&k->ind, 1, &doing);
     Pike_sp++;
+    dmalloc_touch_svalue(Pike_sp-1);
     copy_svalues_recursively_no_free(Pike_sp,&k->val, 1, &doing);
     Pike_sp++;
+    dmalloc_touch_svalue(Pike_sp-1);
     
     mapping_insert(ret, Pike_sp-2, Pike_sp-1);
     pop_n_elems(2);

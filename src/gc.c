@@ -2440,6 +2440,7 @@ static void warn_bad_cycles()
     for (p = kill_list; p;) {
       if ((cycle = CYCLE(p))) {
 	push_object((struct object *) p->data);
+	dmalloc_touch_svalue(Pike_sp-1);
 	*obj_arr_ = append_array(*obj_arr_, --Pike_sp);
       }
       p = NEXT(p);

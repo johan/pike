@@ -143,7 +143,7 @@ PMOD_EXPORT void really_free_array(struct array *v)
   add_ref(v);
   EXIT_PIKE_MEMOBJ(v);
   free_svalues(ITEM(v), v->size, v->type_field);
-  v->refs--;
+  sub_ref(v);
   array_free_no_free(v);
 }
 
@@ -217,8 +217,8 @@ PMOD_EXPORT void simple_array_index_no_free(struct svalue *s,
       ref_push_array(a);
       assign_svalue_no_free(Pike_sp++,ind);
       f_column(2);
-      s[0]=Pike_sp[-1];
       Pike_sp--;
+      *s = *Pike_sp;
       dmalloc_touch_svalue(Pike_sp);
       break;
     }
@@ -2390,6 +2390,7 @@ PMOD_EXPORT struct array *explode_array(struct array *a, struct array *b)
     } END_AGGREGATE_ARRAY;
   }
   tmp=(--Pike_sp)->u.array;
+  debug_malloc_touch(tmp);
   if(tmp->size) tmp->type_field=BIT_ARRAY;
   return tmp;
 }

@@ -181,7 +181,7 @@ struct source *source_stream_make( struct svalue *s,
   res->s.setup_callbacks = setup_callbacks;
   res->s.remove_callbacks = remove_callbacks;
   res->obj = s->u.object;
-  res->obj->refs++;
+  add_ref(res->obj);
   return (struct source *)res;
 }
 

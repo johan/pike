@@ -1497,6 +1497,7 @@ static void f_thread_id_result(INT32 args)
 
   assign_svalue_no_free(Pike_sp, &th->result);
   Pike_sp++;
+  dmalloc_touch_svalue(Pike_sp-1);
 }
 
 void init_thread_obj(struct object *o)

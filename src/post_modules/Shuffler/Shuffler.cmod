@@ -526,18 +526,15 @@ PIKECLASS Shuffle
       Pike_error("This class cannot be instantiated directly\n");
 
     THIS->file_obj = fd;
-    THIS->file_obj->refs++;
-    debug_malloc_touch( THIS->file_obj );
+    add_ref(THIS->file_obj);
 
     THIS->shuffler = shuffler;
-    THIS->shuffler->refs++;
-    debug_malloc_touch( THIS->shuffler );
+    add_ref(THIS->shuffler);
 
     if( throttler->type == PIKE_T_OBJECT )
     {
       THIS->throttler = throttler->u.object;
-      THIS->throttler->refs++;
-      debug_malloc_touch( THIS->throttler );
+      add_ref(THIS->throttler);
     }
 
     safe_apply( fd, "query_fd", 0 );

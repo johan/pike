@@ -106,8 +106,8 @@ static INLINE PCHARP MKPCHARP(void *ptr, int shift)
 
 
 #ifdef DEBUG_MALLOC
-#define reference_shared_string(s) do { struct pike_string *S_=(s); debug_malloc_touch(S_); S_->refs++; }while(0)
-#define copy_shared_string(to,s) do { struct pike_string *S_=(to)=(s); debug_malloc_touch(S_); S_->refs++; }while(0)
+#define reference_shared_string(s) do { struct pike_string *S_=(s); add_ref(S_); }while(0)
+#define copy_shared_string(to,s) do { struct pike_string *S_=(to)=(s); add_ref(S_); }while(0)
 
 struct shared_string_location
 {
@@ -129,8 +129,8 @@ extern struct shared_string_location *all_shared_string_locations;
 
 #else
 
-#define reference_shared_string(s) (s)->refs++
-#define copy_shared_string(to,s) ((to)=(s))->refs++
+#define reference_shared_string(s) add_ref(s)
+#define copy_shared_string(to,s) add_ref((to)=(s))
 
 #define MAKE_CONST_STRING(var, text)						\
  do { static struct pike_string *str_;                                          \

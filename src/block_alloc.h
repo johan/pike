@@ -23,7 +23,11 @@
 /* Note: The block_alloc mutex is held while PRE_INIT_BLOCK runs. */
 #define PRE_INIT_BLOCK(X)
 #define INIT_BLOCK(X)
+#ifdef DEBUG_MALLOC
+#define EXIT_BLOCK(X)	MEMSET((X), 0x55, sizeof(*(X)))
+#else
 #define EXIT_BLOCK(X)
+#endif /* DEBUG_MALLOC */
 #define COUNT_BLOCK(X)
 #define COUNT_OTHER()
 #define BLOCK_ALLOC_HSIZE_SHIFT 2
@@ -186,7 +190,7 @@ static void PIKE_CONCAT(check_free_,DATA)(struct DATA *d)               \
     return;                                                             \
   }                                                                     \
   Pike_fatal("really_free_%s called on non-block_alloc region (%p).\n",	\
-         #DATA, d);                                                     \
+	     #DATA, d);							\
 }                                                                       \
 )									\
 									\
@@ -248,10 +252,10 @@ void PIKE_CONCAT(really_free_,DATA)(struct DATA *d)			\
   }									\
 									\
   d->BLOCK_ALLOC_NEXT = (void *)blk->PIKE_CONCAT3(free_,DATA,s);	\
+  blk->PIKE_CONCAT3(free_,DATA,s)=d;					\
   PRE_INIT_BLOCK(d);							\
   /* Mark block as unavailable. */					\
   PIKE_MEM_NA(*d);							\
-  blk->PIKE_CONCAT3(free_,DATA,s)=d;					\
 									\
   if(!--blk->BLOCK_ALLOC_USED &&					\
      ++PIKE_CONCAT3(num_empty_,DATA,_blocks) > MAX_EMPTY_BLOCKS) {	\

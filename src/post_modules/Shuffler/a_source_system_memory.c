@@ -98,13 +98,13 @@ struct source *source_system_memory_make( struct svalue *s,
   res->s.free_source = free_source;
   res->s.get_data = get_data;
   res->obj = s->u.object;
-  res->obj->refs++;
+  add_ref(res->obj);
   res->offset = start;
 
   if( len != -1 )
     if( len > res->mem->len-start )
     {
-      res->obj->refs--;
+      sub_ref(res->obj);
       free(res);
       return 0;
     }
@@ -115,7 +115,7 @@ struct source *source_system_memory_make( struct svalue *s,
 
   if( res->len <= 0 )
   {
-    res->obj->refs--;
+    sub_ref(res->obj);
     free(res);
     return 0;
   }

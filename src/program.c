@@ -1840,7 +1840,8 @@ void low_start_new_program(struct program *p,
 
   Pike_compiler->fake_object->next=Pike_compiler->fake_object;
   Pike_compiler->fake_object->prev=Pike_compiler->fake_object;
-  Pike_compiler->fake_object->refs=1;
+  Pike_compiler->fake_object->refs=0;
+  add_ref(Pike_compiler->fake_object);	/* For DMALLOC... */
   Pike_compiler->fake_object->prog=p;
   add_ref(p);
 
@@ -6051,6 +6052,7 @@ struct program *compile(struct pike_string *aprog,
   }
   free_svalue(& c->default_module);
   c->default_module=Pike_sp[-1];
+  dmalloc_touch_svalue(Pike_sp-1);
   Pike_sp--;
 
 #ifdef PIKE_DEBUG
@@ -7266,6 +7268,7 @@ PMOD_EXPORT void change_compiler_compatibility(int major, int minor)
   if((Pike_sp[-1].type == T_OBJECT) && (Pike_sp[-1].u.object->prog))
   {
     compat_handler = dmalloc_touch(struct object *, Pike_sp[-1].u.object);
+    dmalloc_touch_svalue(Pike_sp-1);
     Pike_sp--;
   } else {
     pop_stack();

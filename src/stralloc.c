@@ -956,7 +956,7 @@ PMOD_EXPORT void really_free_string(struct pike_string *s)
 
 PMOD_EXPORT void debug_free_string(struct pike_string *s)
 {
-  if(--s->refs<=0)
+  if(!sub_ref(s))
     really_free_string(s);
 }
 

@@ -113,7 +113,7 @@ struct source *source_normal_file_make( struct svalue *s,
   res->s.get_data = get_data;
   res->s.free_source = free_source;
   res->obj = s->u.object;
-  res->obj->refs++;
+  add_ref(res->obj);
 
   if( fd_fstat( res->fd, &st ) < 0 )
   {

@@ -336,11 +336,6 @@ RCSID("$Id$");
 #define SAFE_FIFO_DEBUG_END()  }while(0)
 #endif
 
-/* Added so we are able to patch older versions of Pike. */
-#ifndef add_ref
-#define add_ref(X)	((X)->refs++)
-#endif /* add_ref */
-
 extern int fd_from_object(struct object *o);
 static int set_priority( int pid, char *to );
 

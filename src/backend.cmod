@@ -1592,6 +1592,7 @@ PIKECLASS Backend
      
      new->args=args;
      Pike_sp--;
+     dmalloc_touch_svalue(Pike_sp);
      
      
      me->num_pending_calls++;
