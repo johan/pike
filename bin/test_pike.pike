@@ -432,9 +432,11 @@ int main(int argc, array(string) argv)
     if (forked) {
       foreach(testsuites, string testsuite) {
 	Stdio.File p = Stdio.File();
+	Stdio.File p2 = p->pipe();
 	object pid =
 	  Process.create_process(forked + ({ testsuite }),
-				 ([ "stdout":p->pipe(Stdio.PROP_IPC) ]));
+				 ([ "stdout":p2 ]));
+	p2->close();
 	string raw_results;
 	string results = lower_case(raw_results = p->read());
 	int err = pid->wait();
