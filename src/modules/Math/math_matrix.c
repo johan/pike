@@ -756,6 +756,7 @@ void init_math_matrix()
 
    add_function("create",matrix_create,
 		"function(array(array(int|float)):object)|"
+		"function(array(int|float):object)|"
 		"function(string,mixed...:object)|"
 		"function(int(1..),int(1..),int|float|string|void:object)",
 		0);
