@@ -1,9 +1,10 @@
 #include "global.h"
-
+#include "config.h"
 #include <math.h>
 #include <ctype.h>
+#ifdef HAVE_NETINET_IN_H
 #include <netinet/in.h>
-
+#endif
 #include "stralloc.h"
 RCSID("$Id$");
 #include "pike_macros.h"

@@ -24,7 +24,9 @@ RCSID("$Id$");
 
 #include "image.h"
 #include "colortable.h"
+#ifdef HAVE_NETINET_IN_H
 #include <netinet/in.h>
+#endif
 
 extern struct program *image_colortable_program;
 extern struct program *image_program;
