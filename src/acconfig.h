@@ -477,6 +477,9 @@
 /* Enable use of /dev/epoll on Linux. */
 #undef WITH_EPOLL
 
+/* Define to the poll device (eg "/dev/poll") */
+#undef PIKE_POLL_DEVICE
+
 /* This works on Solaris or any UNIX where
  * waitpid can report ECHILD when running more than one at once
  * (or any UNIX where waitpid actually works)
