@@ -27,6 +27,7 @@ RCSID("$Id$");
 #include "bignum.h"
 #include "main.h"
 #include "opcodes.h"
+#include "cyclic.h"
 #include "block_alloc.h"
 
 #ifdef PIKE_DEBUG
@@ -4456,6 +4457,8 @@ void yyexplain_nonmatching_types(struct pike_type *type_a,
 				 struct pike_type *type_b,
 				 int flags)
 {
+  DECLARE_CYCLIC();
+
   implements_a=0;
   implements_b=0;
   implements_mode=0;
@@ -4483,6 +4486,13 @@ void yyexplain_nonmatching_types(struct pike_type *type_a,
     free_string(s2);
   }
 
+  /* Protect against circularities. */
+  if (BEGIN_CYCLIC(type_a, type_b)) {
+    END_CYCLIC();
+    return;
+  }
+  SET_CYCLIC_RET(1);
+
   if(implements_a && implements_b) {
     if (implements_mode) {
       yyexplain_not_implements(implements_a, implements_b, flags);
@@ -4490,6 +4500,7 @@ void yyexplain_nonmatching_types(struct pike_type *type_a,
       yyexplain_not_compatible(implements_a, implements_b, flags);
     }
   }
+  END_CYCLIC();
 }
 
 
