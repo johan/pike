@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 #ifndef REGEXP_H
 #define REGEXP_H
 /*
@@ -22,7 +23,7 @@ typedef struct regexp
   char regstart;		/* Internal use only. */
   char reganch;			/* Internal use only. */
   char *regmust;		/* Internal use only. */
-  int regmlen;			/* Internal use only. */
+  size_t regmlen;		/* Internal use only. */
   char program[1];		/* Unwarranted chumminess with compiler. */
 } regexp;
 
