@@ -1032,7 +1032,7 @@ static void low_pike_sprintf(struct format_stack *fs,
 	  sprintf_error(fs, "Error in format string, %c is not a format.\n",
 			EXTRACT_PCHARP(a));
 	}else{
-	  sprintf_error(fs,"Error in format string, u+%04x is not a format.\n",
+	  sprintf_error(fs,"Error in format string, U%08x is not a format.\n",
 			EXTRACT_PCHARP(a));
 	}
 
