@@ -2383,9 +2383,11 @@ struct program *end_first_pass(int finish)
 
   if(Pike_compiler->init_node)
   {
+    Pike_compiler->compiler_frame->current_function_number = -2;
     e=dooptcode(s,
 		mknode(F_COMMA_EXPR,
-		       Pike_compiler->init_node,mknode(F_RETURN,mkintnode(0),0)),
+		       Pike_compiler->init_node,
+		       mknode(F_RETURN,mkintnode(0),0)),
 		function_type_string,
 		ID_STATIC);
     Pike_compiler->init_node=0;
