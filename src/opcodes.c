@@ -844,8 +844,6 @@ static INLINE float low_parse_IEEE_float(char *b, int sz)
 #endif
 #endif
 
-#define make_shared_binary_string0(X,Y) make_shared_binary_string(X,Y)
-
 #define MK_VERY_LOW_SSCANF(INPUT_SHIFT, MATCH_SHIFT)			\
 static INT32 PIKE_CONCAT4(very_low_sscanf_,INPUT_SHIFT,_,MATCH_SHIFT)(	\
                          PIKE_CONCAT(p_wchar, INPUT_SHIFT) *input,	\
