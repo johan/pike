@@ -879,6 +879,23 @@ class File
     ::_enable_callbacks();
   }
 
+  //! @decl set_nonblocking_keep_callbacks()
+  //! @decl set_blocking_keep_callbacks()
+  //!    toggle between blocking and nonblocking,
+  //!    without changing the callbacks
+
+  void set_blocking_keep_callbacks()
+  {
+     CHECK_OPEN();
+     ::set_blocking();
+  }
+
+  void set_nonblocking_keep_callbacks()
+  {
+     CHECK_OPEN();
+     ::set_nonblocking();
+  }
+   
   static void destroy()
   {
     if(_fd)
