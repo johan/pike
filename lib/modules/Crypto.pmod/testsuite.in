@@ -315,12 +315,6 @@ dnl
 dnl  _Crypto tests
 dnl
 
-// Pike programs
-test_true([[programp(Crypto.des3_cbc)]])
-test_true([[programp(Crypto.des_cbc)]])
-test_true([[programp(Crypto.idea_cbc)]])
-test_true([[programp(Crypto.rsa)]])
-
 // DES
 test_eq(
   S(Crypto.DES()->set_encrypt_key(H("0101010101010180"))
