@@ -1110,15 +1110,13 @@ node *reference_inherited_identifier(struct pike_string *super_name,
     if(ISCONSTSTR(function_name,"`->") ||
        ISCONSTSTR(function_name,"`[]"))
     {
-      return mkapplynode(mkprgnode(magic_index_program),
-			 mknode(F_ARG_LIST,mkintnode(e),mkintnode(0)));
+      return mknode(F_MAGIC_INDEX,mkintnode(e),mkintnode(0));
     }
 
     if(ISCONSTSTR(function_name,"`->=") ||
        ISCONSTSTR(function_name,"`[]="))
     {
-      return mkapplynode(mkprgnode(magic_set_index_program),
-			 mknode(F_ARG_LIST,mkintnode(e),mkintnode(0)));
+      return mknode(F_MAGIC_SET_INDEX,mkintnode(e),mkintnode(0));
     }
   }
 

@@ -246,6 +246,8 @@ struct keyword instr_names[]=
 { "global=local;",      F_LOCAL_2_GLOBAL, I_HASARG },
 { "local->x",           F_LOCAL_ARROW, I_HASARG },
 { "global[local]",      F_GLOBAL_LOCAL_INDEX, I_HASARG },
+{ "::`[]",              F_MAGIC_INDEX, I_HASARG },
+{ "::`[]=",             F_MAGIC_SET_INDEX, I_HASARG },
 };
 
 struct instr instrs[F_MAX_INSTR - F_OFFSET];

@@ -92,6 +92,7 @@ void gc_mark_all_objects(void);
 void gc_free_all_unreferenced_objects(void);
 void count_memory_in_objects(INT32 *num_, INT32 *size_);
 struct magic_index_struct;
+void push_magic_index(struct program *type, int inherit_no, int parent_level);
 void init_object(void);
 void exit_object(void);
 /* Prototypes end here */

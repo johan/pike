@@ -237,6 +237,12 @@ static int do_docode2(node *n,int flags)
 
   switch(n->token)
   {
+  case F_MAGIC_INDEX:
+  case F_MAGIC_SET_INDEX:
+    emit(F_LDA, n->u.node.a->u.sval.u.integer);
+    emit(n->token, n->u.node.b->u.sval.u.integer);
+    return 1;
+      
   case F_EXTERNAL:
     emit(F_LDA, n->u.integer.a);
     if(flags & WANT_LVALUE)
