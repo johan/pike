@@ -71,6 +71,11 @@ extern struct program *bignum_program;
 #define OBTOMPQ(o) ((MP_RAT *)(o->storage))
 #define OBTOMPF(o) ((MP_FLT *)(o->storage))
 
+#if SIZEOF_INT_TYPE > SIZEOF_LONG
+/* INT_TYPE is too big to feed directly to mpz_set_si etc. */
+#define BIG_PIKE_INT
+#endif
+
 /* MPQ protos */
 void pike_init_mpq_module(void);
 void pike_exit_mpq_module(void);

@@ -26,7 +26,4 @@
 /* Define this if you have mpz_popcount */
 #undef HAVE_MPZ_POPCOUNT
 
-/* define this if INT_TYPE is bigger then signed long int */
-#undef BIG_PIKE_INT
-
 #endif
