@@ -30,5 +30,5 @@ typedef p_wchar1 UNICHAR;
 struct charset_def {
   char const *name;
   UNICHAR const *table;
-  int mode;
+  const int mode;
 };

@@ -30,7 +30,7 @@ RCSID("$Id$");
 #define SIGNED
 #endif
 
-p_wchar1 *misc_charset_lookup(char *name, int *rlo, int *rhi);
+p_wchar1 *misc_charset_lookup(const char *name, int *rlo, int *rhi);
 
 static struct program *std_cs_program = NULL, *std_rfc_program = NULL;
 static struct program *utf1_program = NULL, *utf1e_program = NULL;
