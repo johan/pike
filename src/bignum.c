@@ -47,7 +47,7 @@ PMOD_EXPORT void convert_stack_top_to_bignum(void)
   apply_svalue(&auto_bignum_program, 1);
 
   if(sp[-1].type != T_OBJECT)
-     if (auto_bignum_program.type!=T_INT)
+     if (auto_bignum_program.type!=T_PROGRAM)
 	Pike_error("Gmp.mpz conversion failed (Gmp.bignum not loaded).\n");
      else
 	Pike_error("Gmp.mpz conversion failed (unknown error).\n");
@@ -58,7 +58,7 @@ PMOD_EXPORT void convert_stack_top_with_base_to_bignum(void)
   apply_svalue(&auto_bignum_program, 2);
 
   if(sp[-1].type != T_OBJECT)
-     if (auto_bignum_program.type!=T_INT)
+     if (auto_bignum_program.type!=T_PROGRAM)
 	Pike_error("Gmp.mpz conversion failed (Gmp.bignum not loaded).\n");
      else
 	Pike_error("Gmp.mpz conversion failed (unknown error).\n");
