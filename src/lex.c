@@ -73,11 +73,13 @@ void exit_lex(void)
 
 #define OPCODE0(OP,DESC) { DESC, OP, 0 },
 #define OPCODE1(OP,DESC) { DESC, OP, I_HASARG },
-#define OPCODE2(OP,DESC) { DESC, OP, I_TWO_ARGS },
+#define OPCODE1ACC(OP,DESC) { DESC, OP, I_TWO_ARGS },
+#define OPCODE2(OP,DESC) { DESC, OP, I_HASARG },
 
 #define OPCODE0_TAIL(OP,DESC) { DESC, OP, 0 },
 #define OPCODE1_TAIL(OP,DESC) { DESC, OP, I_HASARG },
-#define OPCODE2_TAIL(OP,DESC) { DESC, OP, I_TWO_ARGS },
+#define OPCODE1ACC_TAIL(OP,DESC) { DESC, OP, I_TWO_ARGS },
+#define OPCODE2_TAIL(OP,DESC) { DESC, OP, I_HASARG },
 
 #define LEXER
 
