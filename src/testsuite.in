@@ -2447,14 +2447,14 @@ void thread_func()
 {
   int i;
 
-  for (i=0; i < 100; i++) {
+  for (i=0; i < 1000; i++) {
     compile_string(file);
   }
 }
 
 int main(int argc, array(string) argv)
 {
-  array(object) a = allocate(100, thread_create)(thread_func);
+  array(object) a = allocate(10, thread_create)(thread_func);
 
   a->wait();
 
