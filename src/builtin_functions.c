@@ -402,7 +402,7 @@ static struct case_info *find_ci_shift0(INT32 c)
 
 #define DO_LOWER_CASE(C) do {\
     INT32 c = C; \
-    if(c<128){if(c >= 'A' && c <= 'Z' ) C=c+0x20;}else {\
+    if(c<0xb5){if(c >= 'A' && c <= 'Z' ) C=c+0x20;}else {\
     struct case_info *ci = find_ci(c); \
     if (ci) { \
       switch(ci->mode) { \
@@ -417,7 +417,7 @@ static struct case_info *find_ci_shift0(INT32 c)
 
 #define DO_LOWER_CASE_SHIFT0(C) do {\
     INT32 c = C; \
-    if(c<128){if(c >= 'A' && c <= 'Z' ) C=c+0x20;}else {\
+    if(c<0xb5){if(c >= 'A' && c <= 'Z' ) C=c+0x20;}else {\
     struct case_info *ci = find_ci_shift0(c); \
     if (ci) { \
       switch(ci->mode) { \
@@ -432,7 +432,7 @@ static struct case_info *find_ci_shift0(INT32 c)
 
 #define DO_UPPER_CASE(C) do {\
     INT32 c = C; \
-    if(c<128){if(c >= 'a' && c <= 'z' ) C=c-0x20;}else {\
+    if(c<0xb5){if(c >= 'a' && c <= 'z' ) C=c-0x20;}else {\
     struct case_info *ci = find_ci(c); \
     if (ci) { \
       switch(ci->mode) { \
@@ -447,7 +447,7 @@ static struct case_info *find_ci_shift0(INT32 c)
 
 #define DO_UPPER_CASE_SHIFT0(C) do {\
     INT32 c = C; \
-    if(c<128){if(c >= 'a' && c <= 'z' ) C=c-0x20;}else {\
+    if(c<0xb5){if(c >= 'a' && c <= 'z' ) C=c-0x20;}else {\
     struct case_info *ci = find_ci_shift0(c); \
     if (ci) { \
       switch(ci->mode) { \
