@@ -2511,7 +2511,7 @@ string describe_program(program p)
   string s;
   if(!p) return 0;
 
-  if(s=get_clean_program_path(p, "program(", ")", ""))
+  if(s=get_clean_program_path(p, "object_program(", ")", ""))
     return s;
 
   if(mixed tmp=function_object(p))
