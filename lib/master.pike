@@ -441,7 +441,7 @@ void _main(string *argv, string *env)
 
   _master_file_name=backtrace()[-1][0];
   q=_master_file_name/"/";
-  pike_library_path = q[0..sizeof(q)-2] * "/";
+  pike_library_path = combine_path(getcwd(), q[0..sizeof(q)-2] * "/");
 
   add_include_path(pike_library_path+"/include");
   add_module_path(pike_library_path+"/modules");
