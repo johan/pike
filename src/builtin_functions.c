@@ -3081,7 +3081,8 @@ node *optimize_replace(node *n)
 }
 
 /*! @decl program compile(string source, object|void handler, @
- *!                       int|void major, int|void minor)
+ *!                       int|void major, int|void minor,@
+ *!                       program|void target, object|void placeholder)
  *!
  *!   Compile a string to a program.
  *!
