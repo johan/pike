@@ -141,6 +141,7 @@ void rbstack_shift (struct rbstack_ptr rbstack,
 #define RBSTACK_FREE_SET_ROOT(rbstack, node) do {			\
     if ((rbstack).ssp) {						\
       if ((rbstack).slice->up) rbstack_free (&(rbstack));		\
+      (rbstack).ssp = 0;						\
       (node) = (rbstack).slice->stack[0];				\
     }									\
     DO_IF_RB_STATS (							\
