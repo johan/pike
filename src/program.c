@@ -1096,8 +1096,13 @@ SIZE_T low_add_storage(SIZE_T size, SIZE_T alignment, int modulo_orig)
   if(offset < new_program->storage_needed)
     fatal("add_storage failed horribly!\n");
 
-  if( (offset + OFFSETOF(object,storage) - modulo ) % alignment )
-    fatal("add_storage failed horribly(2)!\n");
+  if( (offset + OFFSETOF(object,storage) - modulo_orig ) % alignment )
+    fatal("add_storage failed horribly(2) %d %d %d %d!\n",
+	  offset,
+	  OFFSETOF(object,storage),
+	  modulo_orig,
+	  alignment
+	  );
     
 #endif
 
