@@ -141,7 +141,7 @@ static private mapping(mixed : multiset(object(rule))) begins = ([]);
 
 
 /* Maps from symbol to which rules use that symbol
- * (used for findling nullable symbols)
+ * (used for finding nullable symbols)
  */
 static private mapping(int : multiset(object(rule))) used_by = ([]);
 
