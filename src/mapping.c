@@ -1144,6 +1144,8 @@ PMOD_EXPORT struct array *mapping_indices(struct mapping *m)
     fatal("Zero refs in mapping->data\n");
 #endif
 
+  check_mapping_for_destruct(m);
+
   a=allocate_array(m->data->size);
   s=ITEM(a);
 
@@ -1170,6 +1172,8 @@ PMOD_EXPORT struct array *mapping_values(struct mapping *m)
   if(m->data->refs <=0)
     fatal("Zero refs in mapping->data\n");
 #endif
+
+  check_mapping_for_destruct(m);
 
   a=allocate_array(m->data->size);
   s=ITEM(a);
