@@ -687,6 +687,7 @@ static void file_peek(INT32 args)
     ERRNO=errno;
     ret=-1;
   }else{
+    /* FIXME: What about POLLHUP and POLLERR? */
     ret = (ret > 0) && (fds.revents & POLLIN);
   }
 #else
