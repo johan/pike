@@ -6193,6 +6193,7 @@ static void sprintf_trampoline (INT32 args)
   str = complex_free_buf();
   pop_stack();
   push_string (make_shared_binary_string (str.str, str.len));
+  free (str.str);
 }
 
 static void init_trampoline(struct object *o)
