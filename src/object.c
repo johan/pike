@@ -1720,7 +1720,9 @@ void push_magic_index(struct program *type, int inherit_no, int parent_level)
   push_object(magic);
 }
 
-/*! @module lfun::
+/*! @module ::
+ *!
+ *! @endmodule
  */
 
 /*! @decl mixed ::`->(string index)
@@ -1808,9 +1810,6 @@ static void f_magic_set_index(INT32 args)
     push_int(0);
   }
 }
-
-/*! @endmodule
- */
 
 void init_object(void)
 {
