@@ -228,7 +228,9 @@ OPCODE1(F_NUMBER, "push int", 0, {
 /* always need to declare this opcode to make working dists */
 #if SIZEOF_INT_TYPE > 4
 OPCODE2(F_NUMBER64, "push 64-bit int", 0, {
-  push_int((((INT_TYPE)arg1)<<32)|((unsigned INT32)arg2));
+   push_int( (INT_TYPE)
+	     (( ((unsigned INT_TYPE)arg1) << 32) 
+	      | ((unsigned INT32)arg2)) );
 });
 #else
 OPCODE2(F_NUMBER64, "push 64-bit int", 0, {
