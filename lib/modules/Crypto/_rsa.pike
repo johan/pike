@@ -28,6 +28,21 @@ bignum get_e()
   return e;
 }
 
+bignum get_d()
+{
+  return d;
+}
+
+bignum get_p()
+{
+  return p;
+}
+
+bignum get_q()
+{
+  return q;
+}
+
 string cooked_get_n()
 {
   return n->digits(256);
@@ -36,6 +51,21 @@ string cooked_get_n()
 string cooked_get_e()
 {
   return e->digits(256);
+}
+
+string cooked_get_d()
+{
+  return d->digits(256);
+}
+
+string cooked_get_p()
+{
+  return p->digits(256);
+}
+
+string cooked_get_q()
+{
+  return q->digits(256);
 }
 
 object set_public_key(bignum modulo, bignum pub)
