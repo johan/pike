@@ -861,7 +861,14 @@ void create() {
 
   parser->add_containers( ([ "pre":tag_preserve_ws,
 			     "table":tag_preserve_ws,
-			     "ul":tag_preserve_ws ]) );
+			     "ul":tag_preserve_ws,
+			     "ol":tag_preserve_ws,
+  ]) );
+
+  parser->add_container("li",
+    lambda(Parser.HTML p, mapping m, string c) {
+      return "<group><item/><text>" + c + "</text></group>";
+    });
 
   parser->add_container("illustration",
     lambda(Parser.HTML p, mapping args, string c, string where)
