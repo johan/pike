@@ -33,7 +33,8 @@ PMOD_EXPORT COND_T live_threads_change;
 PMOD_EXPORT COND_T threads_disabled_change;
 PMOD_EXPORT size_t thread_stack_size=1024 * 1204;
  
-PMOD_EXPORT void thread_low_error (int errcode)
+PMOD_EXPORT void thread_low_error (int errcode, const char *cmd,
+                                   const char *fname, int lineno)
 {
   fatal ("%s:%d: %s\n"
 	 "Unexpected error from thread function: %d\n",
