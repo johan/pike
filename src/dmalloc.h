@@ -71,6 +71,7 @@ void dmalloc_check_block_free(void *, LOCATION, char *, describe_block_fn *);
 extern void dmalloc_free(void *p);
 extern int debug_malloc_touch_fd(int, LOCATION);
 extern int debug_malloc_register_fd(int, LOCATION);
+extern void debug_malloc_accept_leak_fd(int);
 extern int debug_malloc_close_fd(int, LOCATION);
 extern int dmalloc_mark_as_free(void*,int);
 
@@ -115,6 +116,7 @@ void debug_malloc_dump_fd(int fd);
 void dmalloc_accept_leak(void *);
 #define dmalloc_touch_fd(X) debug_malloc_touch_fd((X),DMALLOC_LOCATION())
 #define dmalloc_register_fd(X) debug_malloc_register_fd((X),DMALLOC_LOCATION())
+#define dmalloc_accept_leak_fd(X) debug_malloc_accept_leak_fd(X)
 #define dmalloc_close_fd(X) debug_malloc_close_fd((X),DMALLOC_LOCATION())
 
 /* Beware, these do not exist without DMALLOC */
@@ -138,6 +140,7 @@ int dmalloc_is_invalid_memory_block(void *block);
 
 #define dmalloc_touch_fd(X) (X)
 #define dmalloc_register_fd(X) (X)
+#define dmalloc_accept_leak_fd(X)
 #define dmalloc_close_fd(X) (X)
 #define dmfree(X) free((X))
 #define dmalloc_accept_leak(X) (void)(X)

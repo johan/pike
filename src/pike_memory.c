@@ -2466,6 +2466,11 @@ int debug_malloc_register_fd(int fd, LOCATION location)
   return fd;
 }
 
+void debug_malloc_accept_leak_fd(int fd)
+{
+  debug_malloc_accept_leak(FD2PTR(fd));
+}
+
 int debug_malloc_close_fd(int fd, LOCATION location)
 {
   if(fd==-1) return fd;
