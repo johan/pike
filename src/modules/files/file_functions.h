@@ -75,7 +75,7 @@ FILE_FUNC("open",file_open,"function(string,string,void|int:int)")
    FILE_FUNC("openpt",file_openpt,"function(string:int)")
 #endif
 
-#if defined(HAVE_GRANTPT) || defined(USE_PT_CHMOD)
+#if defined(HAVE_GRANTPT) || defined(USE_PT_CHMOD) || defined(USE_CHGPT)
    FILE_FUNC("grantpt",file_grantpt,"function(void:string)")
 #endif
 
