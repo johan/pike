@@ -61,12 +61,6 @@ RCSID("$Id$");
 
 struct program *odbc_result_program = NULL;
 
-/* BLOB buffer.
- *
- * This variable is global to avoid bugs with large autos in cl.
- */
-static char blob_buf[BLOB_BUFSIZ+1];
-
 /*
  * Functions
  */
@@ -417,6 +411,7 @@ static void f_fetch_row(INT32 args)
  
     for (i=0; i < PIKE_ODBC_RES->num_fields; i++) {
 	/* BLOB */
+        char blob_buf[BLOB_BUFSIZ+1];
 	int num_strings = 0;
 	SQLLEN len = 0;
 
@@ -436,7 +431,7 @@ static void f_fetch_row(INT32 args)
 	  }
 	  odbc_check_error("odbc->fetch_row", "SQLGetData() failed",
 			   code, NULL);
-	  if (code == SQL_NULL_DATA) {
+	  if (len == SQL_NULL_DATA) {
 #ifdef ODBC_DEBUG
 	    fprintf(stderr, "ODBC:fetch_row(): NULL\n");
 #endif /* ODBC_DEBUG */
@@ -450,7 +445,11 @@ static void f_fetch_row(INT32 args)
 #ifdef ODBC_DEBUG
 	    fprintf(stderr, "[%d] ", num_strings);
 #endif /* ODBC_DEBUG */
-	    if (len < BLOB_BUFSIZ) {
+	    if (len < BLOB_BUFSIZ
+#ifdef SQL_NO_TOTAL
+                && (len != SQL_NO_TOTAL)
+#endif /* SQL_NO_TOTAL */
+                ) {
 	      push_string(make_shared_binary_string(blob_buf, len));
 	      break;
 	    } else {
