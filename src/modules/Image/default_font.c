@@ -5,8 +5,6 @@
 || $Id$
 */
 
-#include "global.h"
-
 /* Use cpp to RLE-encode... */
 #define Z4	0,0,0,0
 #define Z8	Z4,Z4

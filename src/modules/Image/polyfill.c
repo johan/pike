@@ -11,8 +11,6 @@ RCSID("$Id$");
 /* Prototypes are needed for these */
 extern double floor(double);
 
-#include "global.h"
-
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
@@ -21,15 +19,9 @@ extern double floor(double);
 
 #include "image_machine.h"
 
-#include "stralloc.h"
-#include "pike_macros.h"
-#include "object.h"
-#include "constants.h"
 #include "interpret.h"
 #include "svalue.h"
-#include "array.h"
 #include "threads.h"
-#include "builtin_functions.h"
 
 #include "image.h"
 

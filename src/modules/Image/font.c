@@ -119,12 +119,9 @@ extern const unsigned char image_default_font[];
 #include <errno.h>
 
 #include "stralloc.h"
-#include "pike_macros.h"
 #include "object.h"
-#include "constants.h"
 #include "interpret.h"
 #include "svalue.h"
-#include "array.h"
 #include "threads.h"
 #include "builtin_functions.h"
 

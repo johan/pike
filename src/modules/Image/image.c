@@ -104,13 +104,11 @@
 RCSID("$Id$");
 #include "pike_macros.h"
 #include "object.h"
-#include "constants.h"
 #include "interpret.h"
 #include "svalue.h"
 #include "threads.h"
 #include "array.h"
 #include "pike_error.h"
-#include "operators.h"
 #include "module_support.h"
 
 

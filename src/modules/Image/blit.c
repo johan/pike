@@ -15,24 +15,15 @@
 #include <math.h>
 #include <ctype.h>
 
-#include "stralloc.h"
 #include "global.h"
 #include "pike_macros.h"
-#include "object.h"
-#include "constants.h"
 #include "interpret.h"
 #include "svalue.h"
-#include "array.h"
 #include "pike_error.h"
 #include "threads.h"
 
 #include "image.h"
 #include "image_machine.h"
-
-#ifdef ASSEMBLY_OK
-#include "assembly.h"
-#endif
-
 
 #define sp Pike_sp
 

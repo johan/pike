@@ -18,17 +18,12 @@
 #include "global.h"
 #include "pike_macros.h"
 #include "object.h"
-#include "constants.h"
 #include "interpret.h"
 #include "svalue.h"
 #include "threads.h"
-#include "array.h"
 #include "pike_error.h"
-#include "builtin_functions.h"
 
 #include "image.h"
-
-#include <builtin_functions.h>
 
 
 #define sp Pike_sp
