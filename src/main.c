@@ -35,6 +35,7 @@ RCSID("$Id$");
 #include "version.h"
 #include "program.h"
 #include "rusage.h"
+#include "module_support.h"
 
 #ifdef AUTO_BIGNUM
 #include "bignum.h"
