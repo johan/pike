@@ -3556,7 +3556,7 @@ CHRONO("apply_matrix, end");
 static void _image_outline(INT32 args,int mask)
 {
    static const unsigned char defaultmatrix[9]={0,1,0,1,1,1,0,1,0};
-   unsigned char *matrix=defaultmatrix;
+   unsigned char *matrix = (unsigned char *)defaultmatrix;
    int height=3;
    int width=3;
    unsigned char *tmp,*d;
