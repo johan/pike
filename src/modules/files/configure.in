@@ -17,7 +17,8 @@ AC_CHECK_LIB(bind, __inet_ntoa)
 AC_CHECK_LIB(socket, socket)
 
 AC_HAVE_FUNCS(getwd perror readdir_r statvfs statfs ustat lseek64 lstat fsync \
- socketpair writev sendfile munmap madvise poll setsockopt getprotobyname)
+ grantpt unlockpt ptsname socketpair writev sendfile munmap madvise poll \
+ setsockopt getprotobyname)
 
 AC_FUNC_MMAP
 

@@ -71,6 +71,10 @@ FILE_FUNC("open",file_open,"function(string,string,void|int:int)")
   FILE_FUNC("trylock",file_trylock,"function(void|int:object)")
 #endif
 
+#if defined(HAVE_GRANTPT)
+   FILE_FUNC("grantpt",file_grantpt,"function(void:string)")
+#endif
+
 #if defined(HAVE_TERMIOS_H)
    FILE_FUNC("tcgetattr",file_tcgetattr,"function(void:mapping)")
    FILE_FUNC("tcsetattr",file_tcsetattr,"function(mapping,void|string:int)")
