@@ -105,7 +105,7 @@ void f_add(INT32 args)
 	     FIND_LFUN(sp[-args].u.object->prog,LFUN_ADD_EQ) != -1)
 	  {
 	    apply_lfun(sp[-args].u.object, LFUN_ADD_EQ, args-1);
-	    pop_stack();
+	    stack_unlink(1);
 	    return;
 	  }
 	  if(FIND_LFUN(sp[-args].u.object->prog,LFUN_ADD) != -1)
