@@ -209,7 +209,10 @@ object read_node()
     pos++;
     eat_whitespace();
   } else {
-    res->token = read_id();
+    string token = read_id();
+    if (sizeof(token)) {
+      res->token = token;
+    }
     eat_whitespace();
     c = data[pos];
     while (c == '[') {
@@ -337,7 +340,23 @@ object read_node2()
       
     return res;
   }
-  if (('0' <= c) && (c <= '9')) {
+  if (c == '-') {
+    pos++;
+    c = data[pos];
+    if (('0' <= c) && (c <= '9')) {
+      // Negative mkintnode.
+      res->token = "T_INT";
+      res->tag = -read_int();
+      eat_whitespace();
+
+      return res;
+    } else {
+      res->token = "-";
+      eat_whitespace();
+
+      return res;
+    }
+  } else if (('0' <= c) && (c <= '9')) {
     // mkintnode.
     res->token = "T_INT";
     res->tag = read_int();
