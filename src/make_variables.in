@@ -32,3 +32,7 @@ AR=@AR@
 SRCDIR=@srcdir@
 PMOD_TARGETS=@PMOD_TARGETS@
 make_variables_in=@make_variables_in@
+
+MODNAME=@MODULE_NAME@
+MODPATH=@MODULE_PATH@
+MODDIR=@MODULE_DIR@
