@@ -120,6 +120,8 @@ static void verify_call_outs(void)
   if(num_pending_calls<0 || num_pending_calls>call_buffer_size)
     fatal("Error in call out tables.\n");
 
+  if(d_flag<2) return;
+
   for(e=0;e<num_pending_calls;e++)
   {
     if(e)
