@@ -146,9 +146,9 @@ PMOD_EXPORT INLINE struct pike_string *debug_check_size_shift(struct pike_string
 #endif
 
 #define CONVERT(FROM,TO) \
-INLINE void PIKE_CONCAT4(convert_,FROM,_to_,TO)(PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, int len) \
+INLINE void PIKE_CONCAT4(convert_,FROM,_to_,TO)(PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, ptrdiff_t len) \
 {  while(--len>=0) *(to++)=*(from++); } \
-INLINE INT32 PIKE_CONCAT4(compare_,FROM,_to_,TO)(const PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, int len) \
+INLINE INT32 PIKE_CONCAT4(compare_,FROM,_to_,TO)(const PIKE_CONCAT(p_wchar,TO) *to, const PIKE_CONCAT(p_wchar,FROM) *from, ptrdiff_t len) \
 { int tmp; while(--len>=0) if((tmp=*(to++)-*(from++))) return tmp; return 0; }
 
 
