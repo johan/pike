@@ -34,6 +34,17 @@ test_eq(-16, -0b10000)
 
 test_eval_error([[mixed x; return mkmapping(x,x)]])
 
+test_any([[int a=2147483648; a=a+17;  return 1]], 1)
+test_any([[int a=2147483648; a=a-17;  return 1]], 1)
+test_any([[int a=2147483648; a=a*17;  return 1]], 1)
+test_any([[int a=2147483648; a=a/17;  return 1]], 1)
+test_any([[int a=2147483648; a=a%17;  return 1]], 1)
+test_any([[int a=2147483648; a=a^17;  return 1]], 1)
+test_any([[int a=2147483648; a=a&17;  return 1]], 1)
+test_any([[int a=2147483648; a=a|17;  return 1]], 1)
+test_any([[int a=2147483648; a=a<<17; return 1]], 1)
+test_any([[int a=2147483648; a=a>>17; return 1]], 1)
+
 test_any([[return class Z {
 string bonk() { return "oiff"; }
 
@@ -120,7 +131,7 @@ class Bar
   inherit Foo;
 }
 ]])
-tes_compile_any([[
+test_compile_any([[
 class Bar
 {
   int f() {return 17;}
