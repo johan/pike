@@ -17,6 +17,8 @@
 //. SQL module.
 //.
 
+#if constant(Mysql.mysql)
+
 inherit Mysql.mysql;
 
 //. - quote
@@ -125,3 +127,10 @@ int decode_datetime (string timestr)
       return decode_date (timestr);
   }
 }
+
+#else /* !constant(Mysql.mysql) */
+void create()
+{
+  destruct();
+}
+#endif /* constant(Mysql.mysql) */
