@@ -2815,8 +2815,11 @@ void program_index_no_free(struct svalue *to, struct program *p,
 
 int get_small_number(char **q)
 {
+  /* This is a workaround for buggy cc & Tru64 */
   int ret;
-  switch(ret=(*(signed char **)q)++[0])
+  ret=*(signed char *)*q;
+  (*q)++;
+  switch(ret)
   {
   case -127:
     ret=EXTRACT_WORD((unsigned char*)*q);
