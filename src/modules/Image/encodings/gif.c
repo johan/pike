@@ -1604,6 +1604,7 @@ static void _gif_decode_lzw(unsigned char *s,
    int m=endcode;
    unsigned int q;
    unsigned int mask=(unsigned short)((1<<bits)-1);
+   struct lzwc *c;
 
 #ifdef GIF_DEBUG
    int debug=0;
