@@ -1249,11 +1249,9 @@ static int low_find_shared_string_identifier(struct pike_string *name,
       if(funp->flags & ID_INHERITED)
       {
         if(funp->flags & ID_PRIVATE) continue;
-	for(t=0; t>=0 && t<(int)prog->num_identifier_references; t++)
+	for(t=i+1; t>=0 && t<(int)prog->num_identifier_references; t++)
 	{
-	  if(t == i) continue;
-
-	  if(is_same_string(fun->name, ID_FROM_INT(prog, i)->name))
+	  if(is_same_string(fun->name, ID_FROM_INT(prog, t)->name))
 	    t=-10;
 	}
 	if(t < 0) continue;
