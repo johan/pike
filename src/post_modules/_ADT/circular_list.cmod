@@ -210,11 +210,12 @@ PIKECLASS CircularList
           
       //put the added array in a CircularList and return it
       push_array(a);
-      struct object *o=clone_object(CircularList_program, 1);
-      OBJ2_CIRCULARLIST(o)->size = THIS->size+l->size;
+      {
+	struct object *o=clone_object(CircularList_program, 1);
+	OBJ2_CIRCULARLIST(o)->size = THIS->size+l->size;
       
-      push_object(o);
-    
+	push_object(o);
+      }
     }
     else
     {
