@@ -99,6 +99,12 @@ struct pike_frame
 #define stack_dup() push_svalue(sp-1)
 #define stack_swap() do { struct svalue _=sp[-1]; sp[-1]=sp[-2]; sp[-2]=_; } while(0)
 
+/* This pops a number of arguments from the stack but keeps the top
+ * element on top. Used for popping the arguments while keeping the
+ * return value.
+ */
+#define stack_unlink(X) do { if(X) { free_svalue(sp-(X)-1); sp[-(X)-1]=sp[-1]; sp--; pop_n_elems(X-1); } }while(0)
+
 #define free_pike_frame(F) do{ struct pike_frame *f_=(F); debug_malloc_touch(f_); if(!--f_->refs) really_free_pike_frame(f_); }while(0)
 
 #define POP_PIKE_FRAME() do {						\

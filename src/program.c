@@ -100,6 +100,8 @@ char *lfun_names[] = {
   "``/",
   "``%",
   "`+=",
+  "_is_type",
+  "_sprintf",
 };
 
 struct program *first_program = 0;
@@ -2920,6 +2922,9 @@ void gc_check_all_programs(void)
   for(p=first_program;p;p=p->next)
   {
     int e;
+
+    dmalloc_touch(p);
+
     for(e=0;e<p->num_constants;e++)
       debug_gc_check_svalues(& p->constants[e].sval, 1, T_PROGRAM, p);
 
