@@ -2549,10 +2549,7 @@ void _image_map_compat(INT32 args,int fs) /* compat function */
   struct neo_colortable *nct;
   struct object *o,*co;
   struct image *this = THIS;
-  struct pike_string *res = begin_shared_string((this->xsize*this->ysize));
   rgb_group *d;
-
-  if(!res) error("Out of memory\n");
 
   co=clone_object(image_colortable_program,args);
   nct=(struct neo_colortable*)get_storage(co,image_colortable_program);
