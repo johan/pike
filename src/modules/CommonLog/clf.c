@@ -29,7 +29,7 @@ RCSID("$Id$");
 
 /** Forward declarations of functions implementing Pike functions **/
 
-static void f_read_clf( INT32 args );
+static void f_read( INT32 args );
 
 
 /** Global tables **/
@@ -79,7 +79,7 @@ PIKE_MODULE_INIT
   char_class['-'] = CLS_HYPHEN;
   char_class['+'] = CLS_PLUS;
 
-  add_function_constant( "read", f_read_clf,
+  add_function_constant( "read", f_read,
 			 "function(function(array(string|int),int|void:void),"
 			 "string|object,int|void:int)", 0 );
 }
@@ -150,7 +150,7 @@ PIKE_MODULE_EXIT
  *! The position in the file where the parser should begin.
  */
 
-static void f_read_clf( INT32 args )
+static void f_read( INT32 args )
 {
   char *read_buf;
   struct svalue *logfun, *file;
