@@ -73,7 +73,7 @@ int main(int num, array(string) args) {
     verbose++;
   }
 
-  test(".", version() + " running Hilfe v3.4 (Incremental Pike Frontend)\n");
+  test(".", version() + " running Hilfe v3.5 (Incremental Pike Frontend)\n");
   test("set format sprintf \"%s\"", "");
   test("1;", "1");
 
@@ -155,7 +155,7 @@ int main(int num, array(string) args) {
 
   // Clear history...
   testhilfe=TestHilfe();
-  test(".", version() + " running Hilfe v3.4 (Incremental Pike Frontend)\n");
+  test(".", version() + " running Hilfe v3.5 (Incremental Pike Frontend)\n");
   test("set format sprintf \"%s\"", "");
 
   // Testing history.
