@@ -1129,6 +1129,8 @@ static void low_pike_sprintf(struct string_builder *r,
 	GET_STRING(s);
 	fsp->b=MKPCHARP_STR(s);
 	fsp->len=s->len;
+	if(fsp->precision != SPRINTF_UNDECIDED && fsp->precision < fsp->len)
+	  fsp->len = (fsp->precision < 0 ? 0 : fsp->precision);
 	break;
       }
       }
