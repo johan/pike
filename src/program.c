@@ -5051,14 +5051,14 @@ PMOD_EXPORT struct pike_string *low_get_line (PIKE_OPCODE_T *pc,
     ptrdiff_t offset = pc - prog->program;
     if ((offset < (ptrdiff_t)prog->num_program) && (offset >= 0)) {
       static char *file = NULL;
-      static char *cnt;
+      static char *base, *cnt;
       static INT32 off,line,pid;
       static size_t len;
       static INT32 shift;
 
-      if(prog->id != pid || offset < off)
+      if(prog->linenumbers != base || prog->id != pid || offset < off)
       {
-	cnt=prog->linenumbers;
+	base = cnt = prog->linenumbers;
 	off=line=0;
 	pid=prog->id;
 	file = 0;
