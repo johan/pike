@@ -54,6 +54,8 @@ else :; fi
 
 AC_PROG_MAKE_SET
 
+
+rm "conftest_VPATH.in" 2>/dev/null
 touch "$srcdir/conftest_VPATH.in"
 if test -f conftest_VPATH; then :; else
   # Not building in source tree.
