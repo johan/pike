@@ -556,7 +556,7 @@ def: modifiers type_or_error optional_stars F_IDENTIFIER '(' arguments ')'
   | modifiers type_or_error name_list ';' {}
   | inheritance {}
   | constant {}
-  | class {}
+  | class { free_node($1); }
   | error 
   {
     reset_type_stack();
