@@ -6,7 +6,7 @@ PATH=`pwd`/tools:$PATH
 CC=rntcc
 NTTOOLS=`pwd`/tools/lib
 
-export NTHOST NTDRIVE NTCC CC PATH NTTOOLS
+export NTHOST NTDRIVE NTCC CC PATH NTTOOLS MNTREPLACE MNTREPLACE
 
 if [ "$#" != 0 ]; then
   exec $@
