@@ -22,6 +22,7 @@ PMOD_EXPORT int threads_disabled = 0;
 #include "operators.h"
 #include "bignum.h"
 #include "signal_handler.h"
+#include "rusage.h"
 
 #include <errno.h>
 
@@ -775,6 +776,12 @@ TH_RETURN_TYPE new_thread_func(void * data)
     remove_callback(threads_evaluator_callback);
     threads_evaluator_callback=0;
   }
+
+#ifdef INTERNAL_PROFILING
+  fprintf (stderr, "Thread usage summary:\n");
+  debug_print_rusage (stderr);
+#endif
+
   /* FIXME: What about threads_disable? */
   mt_unlock_interpreter();
   th_exit(0);

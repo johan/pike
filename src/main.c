@@ -34,6 +34,7 @@ RCSID("$Id$");
 #include "constants.h"
 #include "version.h"
 #include "program.h"
+#include "rusage.h"
 
 #ifdef AUTO_BIGNUM
 #include "bignum.h"
@@ -759,6 +760,15 @@ DECLSPEC(noreturn) void pike_do_exit(int num) ATTRIBUTE((noreturn))
 #ifdef PIKE_DEBUG
   /* For profiling */
   exit_lex();
+#endif
+
+#ifdef INTERNAL_PROFILING
+  fprintf (stderr, "Evaluator callback calls: %lu\n", evaluator_callback_calls);
+#ifdef PIKE_THREADS
+  fprintf (stderr, "Thread yields: %lu\n", thread_yields);
+#endif
+  fprintf (stderr, "Main thread summary:\n");
+  debug_print_rusage (stderr);
 #endif
 
   exit(num);

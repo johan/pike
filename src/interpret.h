@@ -329,7 +329,12 @@ do{ \
   } while(0)
 
 
+#ifdef INTERNAL_PROFILING
+PMOD_EXPORT extern unsigned long evaluator_callback_calls;
+#endif
+
 #define check_threads_etc() do { \
+  DO_IF_INTERNAL_PROFILING (evaluator_callback_calls++); \
   call_callback(& evaluator_callbacks, (void *)0); \
 }while(0) 
 

@@ -89,6 +89,10 @@ PMOD_EXPORT const char msg_pop_neg[] =
 static char trace_buffer[2000];
 #endif
 
+#ifdef INTERNAL_PROFILING
+PMOD_EXPORT unsigned long evaluator_callback_calls = 0;
+#endif
+
 
 /* Pike_sp points to first unused value on stack
  * (much simpler than letting it point at the last used value.)
