@@ -24,6 +24,7 @@ RCSID("$Id$");
 #include "threads.h"
 #include "constants.h"
 #include "operators.h"
+#include "builtin_functions.h"
 
 #include <errno.h>
 #include <fcntl.h>
