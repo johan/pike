@@ -15,8 +15,7 @@
 /* Define this if you have -ljpeg */
 #undef HAVE_LIBJPEG
 
-/* Define this if you have height_in_blocks member in struct 
- * jpeg_component_info */
-#undef HAVE_JPEG_HEIGHT_IN_BLOCKS
+/* Define this if you don't have image transformation capabilities in jpeglib*/
+#undef TRANSFORMS_NOT_SUPPORTED
 
 #endif

@@ -590,6 +590,7 @@ static void init_src(struct pike_string *raw_img,
    jpeg_read_header(&mds->cinfo,TRUE);
 }
 
+#ifdef TRANSFORMS_SUPPORTED
 void set_jpeg_transform_options(INT32 args, jpeg_transform_info *options)
 {
     int transform = 0;
@@ -610,6 +611,7 @@ void set_jpeg_transform_options(INT32 args, jpeg_transform_info *options)
     options->force_grayscale = FALSE;
     options->crop = FALSE;
 }
+#endif /*TRANSFORMS_SUPPORTED*/
 
 /*! @decl string encode(object image)
  *! @decl string encode(string|object image, mapping options)
@@ -746,8 +748,13 @@ static void image_jpeg_encode(INT32 args)
        cinfo.optimize_coding=(img->xsize*img->ysize)<50000;
    } else {
        /* "Compression" from JPEG block */
-       jvirt_barray_ptr *src_coef_arrays, *dst_coef_arrays;
+#ifdef TRANSFORMS_SUPPORTED
        jpeg_transform_info transformoption;
+       jvirt_barray_ptr *src_coef_arrays, *dst_coef_arrays;
+#else
+       Pike_error("Image.JPEG.encode: Raw JPEG data transformation not allowed"
+                  " when Pike is compiled with this version of libjpeg.\n"); 
+#endif /*TRANSFORMS_SUPPORTED*/
 
        jpeg_std_error(&errmgr);
 
@@ -767,6 +774,7 @@ static void image_jpeg_encode(INT32 args)
 
        init_src(sp[-args].u.string, &errmgr, &srcmgr, &mds);
 
+#ifdef TRANSFORMS_SUPPORTED
        set_jpeg_transform_options(args, &transformoption);
        jtransform_request_workspace(&mds.cinfo, &transformoption);
        src_coef_arrays = jpeg_read_coefficients(&mds.cinfo);
@@ -777,16 +785,18 @@ static void image_jpeg_encode(INT32 args)
 						      src_coef_arrays,
 						      &transformoption);
        jpeg_write_coefficients(&cinfo, dst_coef_arrays);
+#endif /*TRANSFORMS_SUPPORTED*/
+
        my_copy_jpeg_markers(args, &mds, &cinfo);
        /*jcopy_markers_execute(&mds.cinfo, &cinfo, JCOPYOPT_ALL);*/
+#ifdef TRANSFORMS_SUPPORTED
        jtransform_execute_transformation(&mds.cinfo, &cinfo,
 					 src_coef_arrays,
 					 &transformoption);
-
+#endif /*TRANSFORMS_SUPPORTED*/
    }
 
    /* check configuration */
-
    if (args>1)
    {
       INT32 p,q=95;
@@ -1515,6 +1525,7 @@ void pike_module_init(void)
    add_integer_constant("DEFAULT", JDCT_DEFAULT, 0);
    add_integer_constant("ISLOW", JDCT_ISLOW, 0);
    add_integer_constant("FASTEST", JDCT_FASTEST, 0);
+#ifdef TRANSFORMS_SUPPORTED
    add_integer_constant("FLIP_H", JXFORM_FLIP_H, 0);
    add_integer_constant("FLIP_V", JXFORM_FLIP_V, 0);
    add_integer_constant("NONE", JXFORM_NONE, 0);
@@ -1523,7 +1534,7 @@ void pike_module_init(void)
    add_integer_constant("ROT_270", JXFORM_ROT_270, 0);
    add_integer_constant("TRANSPOSE", JXFORM_TRANSPOSE, 0);
    add_integer_constant("TRANSVERSE", JXFORM_TRANSVERSE, 0);
-
+#endif /*TRANSFORMS_SUPPORTED*/
    ADD_FUNCTION("quant_tables",image_jpeg_quant_tables,
 		tFunc(tOr(tVoid,tInt),tMap(tInt,tArr(tArr(tInt)))),0);
 
