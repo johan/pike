@@ -2915,6 +2915,11 @@ static void decode_value2(struct decode_data *data)
 		  
 		  if(d == pp->num_inherits)
 		  {
+		    fsort_program_identifier_index(pp->identifier_index,
+						   pp->identifier_index +
+						   pp->num_identifier_index - 1,
+						   pp);
+
 		    pp->flags &=~ PROGRAM_AVOID_CHECK;
 		    pp->flags |= PROGRAM_FINISHED;
 		    
