@@ -304,7 +304,7 @@ static struct pike_string *do_read(int fd,
       i=read(fd, low_make_buf_space(try_read, &b), try_read);
       THREADS_DISALLOW();
 
-      check_signals();
+/*    check_signals();*/
       
       if(i==try_read)
       {

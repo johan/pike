@@ -470,7 +470,6 @@ static void eval_instruction(unsigned char *pc)
     if(!mt_trylock(& interpreter_lock))
       fatal("Interpreter running unlocked!\n");
 #endif
-
     sp[0].type=99; /* an invalid type */
     sp[1].type=99;
     sp[2].type=99;

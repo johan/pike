@@ -129,8 +129,10 @@ void th_init()
 #endif
   pthread_attr_setdetachstate(&pattr, PTHREAD_CREATE_DETACHED);
 
-  add_efun("thread_create",f_thread_create,"function(mixed ...:int)",OPT_SIDE_EFFECT);
-  add_efun("this_thread",f_this_thread,"function(:object)",OPT_EXTERNAL_DEPEND);
+  add_efun("thread_create",f_thread_create,"function(mixed ...:object)",
+           OPT_SIDE_EFFECT);
+  add_efun("this_thread",f_this_thread,"function(:object)",
+           OPT_EXTERNAL_DEPEND);
 }
 
 
