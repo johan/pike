@@ -57,7 +57,7 @@ build/lib/Makefile: Makefile.in build/lib
 	  <Makefile.in >build/lib/Makefile
 
 manual/Makefile: PostMakefile.in manual
-	@sed -e "s#@IMGDIR@#/images#" -e "s#@ROOT@#../#" \
+	@sed -e "s#@IMGDIR@#images#" -e "s#@ROOT@#../#" \
 	  -e "s#@DEST@#../html_manual/#" <PostMakefile.in >manual/Makefile
 
 # Directories
