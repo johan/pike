@@ -2448,9 +2448,9 @@ then
 	IRIX*)
 	  if test "$GCC" = yes ; then
 	    # egcs defaults to building -n32 objects
-	    LDSHARED="ld -shared -n32"
+	    LDSHARED="ld -shared -n32 -woff 84,85,134"
 	  else
-            LDSHARED="ld -shared"
+            LDSHARED="ld -shared -woff 84,85,134"
 	  fi
 	;;
 	SunOS*) LDSHARED="ld";;
