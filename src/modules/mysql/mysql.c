@@ -27,6 +27,7 @@ typedef struct dynamic_buffer_s dynamic_buffer;
 #endif /* HAVE_MYSQL */
 
 /* From the Pike-dist */
+#include <global.h>
 #include <svalue.h>
 #include <object.h>
 #include <stralloc.h>
@@ -51,6 +52,8 @@ typedef struct dynamic_buffer_s dynamic_buffer;
 /*
  * Globals
  */
+
+RCSID("$Id$");
 
 struct program *mysql_program = NULL;
 
@@ -370,7 +373,7 @@ static void f_list_fields(INT32 args)
 
 #endif /* 0 */
 
-/* object(mysql_res) list_processes(void|string wild) */
+/* object(mysql_res) list_processes() */
 static void f_list_processes(INT32 args)
 {
   pop_n_elems(args);
