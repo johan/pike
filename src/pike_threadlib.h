@@ -99,11 +99,12 @@ PMOD_EXPORT extern int live_threads, disallow_live_threads;
 struct object;
 PMOD_EXPORT extern size_t thread_stack_size;
 
-PMOD_EXPORT void thread_low_error (int errcode);
+PMOD_EXPORT void thread_low_error (int errcode, const char *fname, int lineno);
 
 #define LOW_THREAD_CHECK_NONZERO_ERROR(CALL) do {			\
     int thread_errcode_ = (CALL);					\
-    if (thread_errcode_) thread_low_error (thread_errcode_);		\
+    if (thread_errcode_)						\
+      thread_low_error(thread_errcode_, __FILE__, __LINE__);		\
   } while (0)
 
 #ifdef CONFIGURE_TEST
@@ -289,7 +290,8 @@ extern pthread_attr_t small_pattr;
 #include <windows.h>
 
 #define LOW_THREAD_CHECK_ZERO_ERROR(CALL) do {			\
-    if (!(CALL)) thread_low_error (GetLastError());		\
+    if (!(CALL))						\
+      thread_low_error(GetLastError(), __FILE__, __LINE__);	\
   } while (0)
 
 #define THREAD_T unsigned
