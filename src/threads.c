@@ -1052,6 +1052,12 @@ void th_init(void)
   set_init_callback(init_thread_obj);
   set_exit_callback(exit_thread_obj);
   thread_id_prog=end_program();
+
+  /* Some constants... */
+  add_integer_constant("THREAD_NOT_STARTED", THREAD_NOT_STARTED, 0);
+  add_integer_constant("THREAD_RUNNING", THREAD_RUNNING, 0);
+  add_integer_constant("THREAD_EXITED", THREAD_EXITED, 0);
+
   if(!mutex_key)
     fatal("Failed to initialize thread program!\n");
 
