@@ -134,6 +134,10 @@ void update_arg(int instr,INT32 arg)
   p[instr].arg=arg;
 }
 
+#ifndef FLUSH_CODE_GENERATOR_STATE
+#define FLUSH_CODE_GENERATOR_STATE()
+#endif
+
 
 /**** Bytecode Generator *****/
 
@@ -255,6 +259,7 @@ void assemble(void)
 #ifdef PIKE_DEBUG
   synch_depth = 0;
 #endif
+  FLUSH_CODE_GENERATOR_STATE();
   for(e=0;e<length;e++)
   {
     int linenumbers_stored=0;
@@ -302,6 +307,7 @@ void assemble(void)
 #endif
       labels[c->arg] = DO_NOT_WARN((INT32)PC);
       UPDATE_PC();
+      FLUSH_CODE_GENERATOR_STATE();
       break;
 
     case F_VOLATILE_RETURN:
