@@ -493,6 +493,9 @@
 /* set this to the modifier type string to print ptrdiff_t, like "" or "l" */
 #undef PRINTPTRDIFFT
 
+/* set this to the modifier type string to print INT64 if that type exists */
+#undef PRINTINT64
+
 /* set this to the modifier type string to print INT_TYPE, like "" or "ll" */
 #undef PRINTPIKEINT
 
