@@ -271,7 +271,7 @@ static char *dlerror(void)
 
 static void *dlsym(void *module, char *function)
 {
-  NSSymbol *symbol = NSLookupSymbolInModule(module, function);
+  NSSymbol symbol = NSLookupSymbolInModule(module, function);
   return symbol?NSAddressOfSymbol(symbol):NULL;
 }
 
