@@ -2404,7 +2404,7 @@ static void f_get_prof_info(INT32 args)
     error("get_profiling_info(): Too few arguments\n");
   }
   if (sp[-args].type == T_FUNCTION 
-      && s->subtype != FUNCTION_BUILTIN) {
+      && sp[-args].subtype != FUNCTION_BUILTIN) {
     prog = sp[-args].u.object->prog;
   } else if (sp[-args].type == T_OBJECT) {
     prog = sp[-args].u.object->prog;
