@@ -10,9 +10,6 @@
 
 @TOP@
 
-/* Define if you want to use the systems regexp's */
-#undef USE_SYSTEM_REGEXP
-
 @BOTTOM@
 
 #endif /* PIKE_MODULES_REGEXP_H */
