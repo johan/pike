@@ -2301,7 +2301,7 @@ static struct pike_type *low_match_types2(struct pike_type *a,
     case '0': case '1': case '2': case '3': case '4':
     case '5': case '6': case '7': case '8': case '9':
     {
-      int m= ((ptrdiff_t)b->car)-'0';
+      int m = b->type - '0';
       if(b_markers[m])
       {
 #ifdef PIKE_DEBUG
