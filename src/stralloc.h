@@ -76,7 +76,7 @@ typedef struct p_wchar_p
 #define INC_PCHARP(X,Y) (((X).ptr)+=(Y) << (X).shift)
 
 #define LOW_COMPARE_PCHARP(X,CMP,Y) (((char *)((X).ptr)) CMP ((char *)((Y).ptr)))
-#define LOW_SUBTRACT_PCHARP(X,Y) LOW_COMPARE_PCHARP((X),-,(Y))
+#define LOW_SUBTRACT_PCHARP(X,Y) (LOW_COMPARE_PCHARP((X),-,(Y))>>(X).shift)
 
 #ifdef PIKE_DEBUG
 #define SUBTRACT_PCHARP(X,Y)    ((X).shift!=(Y).shift?(fatal("Subtracting different size charp!\n")),0:LOW_SUBTRACT_PCHARP((X),(Y)))
