@@ -172,8 +172,14 @@ pike: bin/pike
 install: bin/pike
 	@$(DO_MAKE) $(MAKE_FLAGS) "METATARGET=install"
 
+install_nodoc: bin/pike
+	@$(DO_MAKE) $(MAKE_FLAGS) "METATARGET=install_nodoc"
+
 install_interactive: bin/pike
 	@$(DO_MAKE) $(MAKE_FLAGS) "METATARGET=install_interactive"
+
+install_interactive_nodoc: bin/pike
+	@$(DO_MAKE) $(MAKE_FLAGS) "METATARGET=install_interactive_nodoc"
 
 tinstall: bin/pike
 	@$(DO_MAKE) $(MAKE_FLAGS) "METATARGET=tinstall"
