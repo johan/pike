@@ -5549,7 +5549,9 @@ AC_CACHE_VAL(pike_cv_sys_ccshared,[
 	  CCSHARED="-fPIC"
 	;;
 	*)
-	  CCSHARED="-fPIC"
+	  AC_SYS_COMPILER_FLAG(-fPIC, fPIC, CCSHARED, [
+	    AC_SYS_COMPILER_FLAG(-fpic, fpic, CCSHARED)
+	  ])
 	;;
       esac
     else
