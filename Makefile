@@ -247,14 +247,14 @@ autobuild:
 autobuild_low:
 	@echo Begin build | tee -a build/autobuild/autobuildlog.txt
 	@date >> build/autobuild/autobuildlog.txt
-	@$(MAKE) $(MAKE_FLAGS) TERM=dumb > build/autobuild/makelog.txt 2>&1
+	@$(MAKE) $(MAKE_FLAGS) > build/autobuild/makelog.txt 2>&1
 	@echo Begin verify | tee -a build/autobuild/autobuildlog.txt
 	@date >> build/autobuild/autobuildlog.txt
-	@$(MAKE) $(MAKE_FLAGS) METATARGET=verify TERM=dumb TESTARGS="-a -q" > \
+	@$(MAKE) $(MAKE_FLAGS) METATARGET=verify TESTARGS="-a -q" > \
 	  build/autobuild/verifylog.txt 2>&1
 	@echo Begin export | tee -a build/autobuild/autobuildlog.txt
 	@date >> build/autobuild/autobuildlog.txt
-	@$(MAKE) $(MAKE_FLAGS) TERM=dumb bin_export > build/autobuild/exportlog.txt 2>&1
+	@$(MAKE) $(MAKE_FLAGS) bin_export > build/autobuild/exportlog.txt 2>&1
 
 clean:
 	-cd "$(BUILDDIR)" && test -f Makefile && $(MAKE) "MAKE=$(MAKE)" clean || { \
