@@ -199,6 +199,7 @@ if test $cflags_is_set = no; then
   AC_SYS_OS_COMPILER_FLAG(Solaris,-xdepend,xdepend,OPTIMIZE)
   AC_SYS_OS_COMPILER_FLAG(Solaris,-fd,fd,WARN)
   AC_SYS_OS_COMPILER_FLAG(Solaris,-xtransition,xtransition,WARN)
+  AC_SYS_OS_COMPILER_FLAG(Solaris,-xs,xs,CFLAGS)
   # Causes __STDC__ to be 1 which causes several headerfiles to behave
   # differently.
   # AC_SYS_OS_COMPILER_FLAG(Solaris,-Xc,Xc,WARN)
@@ -575,6 +576,10 @@ AC_CHECK_TYPE(time_t,INT32)
 dnl AC_CHECK_LIB(PW, alloca)
 
 AC_CHECK_LIB(m, floor)
+
+AC_CHECK_LIB(socket, socket)
+AC_CHECK_LIB(nsl, gethostbyname)
+
 AC_CHECK_LIB(dl, dlopen)
 AC_CHECK_LIB(dld, dld_link)
 
