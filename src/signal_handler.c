@@ -120,8 +120,8 @@ struct wait_data {
   WAITSTATUSTYPE status;
 };
 
-static struct wait_data wait_buf[WAIT_BUFFER];
-static int firstwait=0, lastwait=0;
+static volatile struct wait_data wait_buf[WAIT_BUFFER];
+static volatile int firstwait=0, lastwait=0;
 
 #endif /* ! NT */
 
