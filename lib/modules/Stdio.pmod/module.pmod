@@ -742,6 +742,9 @@ static class nb_sendfile
     } else {
       if (sizeof(to_write)) {
 	start_writer();
+      } else {
+	writer_done();
+	return;
       }
     }
   }
