@@ -547,6 +547,7 @@ static void file_close(INT32 args)
 static void file_open(INT32 args)
 {
   int flags,fd;
+  int access;
   struct pike_string *str;
   do_close(FD, FILE_READ | FILE_WRITE);
   FD=-1;
@@ -560,6 +561,14 @@ static void file_open(INT32 args)
   if(sp[1-args].type != T_STRING)
     error("Bad argument 2 to file->open()\n");
 
+  if (args > 2)
+  {
+    if (sp[2-args].type != T_INT)
+      error("Bad argument 3 to file->open()\n");
+    access = sp[2-args].u.integer;
+  } else
+    access = 00666;
+      
   str=sp[-args].u.string;
   
   flags=parse(sp[1-args].u.string->str);
@@ -569,7 +578,7 @@ static void file_open(INT32 args)
 
   THREADS_ALLOW();
   do {
-    fd=open(str->str,map(flags), 00666);
+    fd=open(str->str,map(flags), access);
   } while(fd < 0 && errno == EINTR);
   THREADS_DISALLOW();
 
