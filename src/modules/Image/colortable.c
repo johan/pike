@@ -3281,7 +3281,7 @@ static int* ordered_calculate_errors(int dxs,int dys)
    static int errors3x2[6]={4,0,2,1,5,3};
    static int errors3x3[9]={6,8,4,1,0,3,5,2,7};
 
-   int szx,szy,*errs,*errp,sz,*d,*s;
+   int szx,szy,*errs,sz,*d,*s;
    int xf,yf;
    int x,y;
    

@@ -48,6 +48,9 @@ extern struct program *image_program;
 **!	pnm data, as a string
 */
 
+void img_pnm_encode_binary(INT32 args);
+void img_pnm_decode(INT32 args);
+
 void image_toppm(INT32 args)
 {
    pop_n_elems(args);
