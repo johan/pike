@@ -810,6 +810,7 @@ void low_exit_main(void)
   free_all_mapping_blocks();
   first_object=0;
   free_all_object_blocks();
+  first_program=0;
   free_all_program_blocks();
   exit_rbtree();
 #endif
