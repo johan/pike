@@ -618,7 +618,7 @@ void th_farm(void (*fun)(void *), void *here);
 #define mt_lock(X)
 #define mt_unlock(X)
 #define mt_destroy(X)
-#define THREAS_ALLOW()
+#define THREADS_ALLOW()
 #define THREADS_DISALLOW()
 #define THREADS_ALLOW_UID()
 #define THREADS_DISALLOW_UID()
