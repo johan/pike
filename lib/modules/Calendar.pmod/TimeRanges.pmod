@@ -8,8 +8,6 @@
 
 import ".";
 
-constant CALUNKNOWN=-1000; // not calculated yet
-
 program SuperTimeRange=cSuperTimeRange;
 
 string calendar_name() { return "TimeRanges"; }
