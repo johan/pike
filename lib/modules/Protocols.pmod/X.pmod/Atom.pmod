@@ -62,7 +62,8 @@ class pending_intern
   {
     if (!success)
       {
-	error( "Atom.pending_intern->handle_reply: InternAtom failed!\n" );
+	throw( ({ "Atom.pending_intern->handle_reply: InternAtom failed!\n",
+		    backtrace() })  );
       }
     atom->id = reply;
     display->remember_atom(atom);
@@ -79,7 +80,8 @@ class pending_name_lookup
   {
     if (!success)
       {
-	error( "Atom.pending_intern->handle_reply: InternAtom failed!\n" );
+	throw( ({ "Atom.pending_intern->handle_reply: InternAtom failed!\n",
+		    backtrace() })  );
       }
     atom->name = reply;
     display->remember_atom(atom);

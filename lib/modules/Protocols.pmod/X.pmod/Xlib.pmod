@@ -196,7 +196,7 @@ class Display
 
 #ifdef DEBUG
   mapping debug_requests = ([ ]);
-# define DEBUGREQ(X) ((X)&0xfff)
+  #define DEBUGREQ(X) ((X)&0xfff)
 #endif
   
   void create()
