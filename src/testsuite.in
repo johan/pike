@@ -9754,7 +9754,7 @@ test_eq(a,this_object()->a)
 // - catch
 test_false([[class X { string test(string foo) { catch { return lower_case(foo); }; return foo; }}()->test(0); ]])
 test_true([[catch (1.0 / 0.0)]])
-test_true([[catch {1.0 / 0.0;}]])
+test_true([[catch {float f = 1.0 / 0.0;}]])
 
 
 // Pike modules
