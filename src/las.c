@@ -1028,6 +1028,12 @@ static void low_print_tree(node *foo,int needlval)
     low_print_tree(CDR(foo),needlval);
     return;
 
+    case F_ARRAY_LVALUE:
+      putchar('[');
+      low_print_tree(CAR(foo),1);
+      putchar(']');
+      break;
+
   case F_LVALUE_LIST:
     low_print_tree(CAR(foo),1);
     if(CAR(foo) && CDR(foo)) putchar(',');
@@ -1250,6 +1256,10 @@ static void find_written_vars(node *n,
     find_written_vars(CDR(n), p, 1);
     break;
 
+    case F_ARRAY_LVALUE:
+    find_written_vars(CAR(n), p, 1);
+    break;
+      
   case F_LVALUE_LIST:
     find_written_vars(CAR(n), p, 1);
     find_written_vars(CDR(n), p, 1);

@@ -152,6 +152,7 @@ struct keyword instr_names[]=
 { "ltosval2",		F_LTOSVAL2 },
 { "lvalue to svalue",	F_LTOSVAL },	
 { "lvalue_list",	F_LVALUE_LIST },	
+{ "[ lvalues ]",	F_ARRAY_LVALUE, I_HASARG },	
 { "mark",               F_MARK },
 { "mark mark",          F_MARK2 },
 { "negative number",	F_NEG_NUMBER, I_HASARG },
