@@ -508,7 +508,7 @@ void img_pvr_decode(INT32 args,int header_only)
    len = str->len;
    pop_n_elems(args-1);
 
-   if(len >= 12 && !strncmp(s, "GBIX", 4)) {
+   if(len >= 12 && !strncmp((char *)s, "GBIX", 4)) {
      INT32 l = s[4]|(s[5]<<8)|(s[6]<<16)|(s[7]<<24);
      if(l>=4 && l<=len-8) {
        push_text("global_index");
@@ -519,7 +519,7 @@ void img_pvr_decode(INT32 args,int header_only)
      }
    }
 
-   if(len < 16 || strncmp(s, "PVRT", 4))
+   if(len < 16 || strncmp((char *)s, "PVRT", 4))
      Pike_error("not a PVR texture\n");
    else {
      INT32 l = s[4]|(s[5]<<8)|(s[6]<<16)|(s[7]<<24);
