@@ -2130,10 +2130,6 @@ void init_image_layers(void)
    ADD_FUNCTION("fill",image_layer_fill,tFunc(tNone,tObj),0);
    ADD_FUNCTION("fill_alpha",image_layer_fill_alpha,tFunc(tNone,tObj),0);
 
-   ADD_FUNCTION("alpha_value",image_layer_alpha_value,tFunc(tNone,tFloat),0);
-   ADD_FUNCTION("fill",image_layer_fill,tFunc(tNone,tObj),0);
-   ADD_FUNCTION("fill_alpha",image_layer_fill_alpha,tFunc(tNone,tObj),0);
-
    ADD_FUNCTION("tiled",image_layer_tiled,tFunc(tNone,tInt01),0);
 
    /* image-object operations */
