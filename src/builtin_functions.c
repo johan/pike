@@ -3490,6 +3490,14 @@ PMOD_EXPORT void f_callablep(INT32 args)
       if( Pike_sp[-args].u.object->prog &&
 	  FIND_LFUN( Pike_sp[-args].u.object->prog, LFUN_CALL ) != -1 )
 	res = 1;
+      break;
+    case T_ARRAY:
+      /* FIXME: This is not completely finished. E.g. ({ 0 }) is
+	 callable, but isn't reported as such. */
+      if( Pike_sp[-args].u.array->type_field & (BIT_CALLABLE) ||
+	  !Pike_sp[-args].u.array->type_field)
+	res = 1;
+      break;
   }
   pop_n_elems(args);
   push_int(res);
