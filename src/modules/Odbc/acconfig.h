@@ -14,6 +14,9 @@
 /* Define if you have SQLLEN */
 #undef HAVE_SQLLEN
 
+/* Define if you have SQLULEN */
+#undef HAVE_SQLULEN
+
 /* Define if you have ODBC */
 #undef HAVE_ODBC
 
