@@ -12,6 +12,7 @@
 
 RCSID("$Id$");
 #include "fdlib.h"
+#include "pike_netlib.h"
 #include "interpret.h"
 #include "svalue.h"
 #include "stralloc.h"
@@ -77,10 +78,6 @@ RCSID("$Id$");
 #endif
 
 #endif /* HAVE_POLL */
-
-#ifdef HAVE_WINSOCK_H
-#include <winsock.h>
-#endif
 
 #if ! defined(EWOULDBLOCK) && defined(WSAEWOULDBLOCK)
 #define EWOULDBLOCK WSAEWOULDBLOCK

@@ -9,6 +9,7 @@
 #include "global.h"
 RCSID("$Id$");
 #include "fdlib.h"
+#include "pike_netlib.h"
 #include "interpret.h"
 #include "svalue.h"
 #include "stralloc.h"
@@ -57,8 +58,7 @@ RCSID("$Id$");
 #include <sys/uio.h>
 #endif /* HAVE_SYS_UIO_H */
 
-#ifdef HAVE_WINSOCK_H
-#  include <winsock.h>
+#if defined(HAVE_WINSOCK_H) || defined(HAVE_WINSOCK2_H)
 #ifndef EWOULDBLOCK
 #define EWOULDBLOCK WSAEWOULDBLOCK
 #endif

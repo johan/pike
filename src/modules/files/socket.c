@@ -9,6 +9,7 @@
 
 #include "global.h"
 #include "fdlib.h"
+#include "pike_netlib.h"
 #include "interpret.h"
 #include "svalue.h"
 #include "stralloc.h"
@@ -40,10 +41,6 @@ RCSID("$Id$");
 #endif
 #ifdef HAVE_SYS_SOCKET_H
 #include <sys/socket.h>
-#endif
-
-#ifdef HAVE_WINSOCK_H
-#include <winsock.h>
 #endif
 
 #ifdef HAVE_SYS_STREAM_H
