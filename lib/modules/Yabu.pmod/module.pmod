@@ -22,7 +22,7 @@ static private class FileIO {
   static private void seek(int offset)
   {
     if(file::seek(offset) == -1)
-      ERR("seek failed");
+      ERR(sprintf("seek failed with errno %d\n",file::errno()));
   }
 
   string read_at(int offset, int|void size)
