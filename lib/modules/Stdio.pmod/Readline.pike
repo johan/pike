@@ -1014,9 +1014,9 @@ class History
   static private mapping(int:string) historykeep=([]);
   static private int minhistory, maxhistory, historynum;
 
-  array(string) encode()
+  string encode()
   {
-    return historylist;
+    return historylist*"\n";
   }
   
   int get_history_num()
