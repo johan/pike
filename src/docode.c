@@ -71,7 +71,7 @@ void do_pop(int x)
   }
 }
 
-#define DO_CODE_BLOCK(X) do_pop(do_docode((X),DO_NOT_COPY | DO_POP));
+#define DO_CODE_BLOCK(X) do_pop(do_docode((X),DO_NOT_COPY | DO_POP | DO_DEFER_POP))
 
 int do_docode(node *n,INT16 flags)
 {
@@ -801,8 +801,8 @@ static int do_docode2(node *n,int flags)
       return 1;
     }
 
-  case F_COMMA_EXPR:
   case F_ARG_LIST:
+  case F_COMMA_EXPR:
     tmp1=do_docode(CAR(n),flags & ~WANT_LVALUE);
     tmp1+=do_docode(CDR(n),flags);
     return tmp1;

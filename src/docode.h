@@ -15,6 +15,7 @@
 #define DO_POP 4
 #define DO_INDIRECT 8
 #define DO_LVALUE_IF_POSSIBLE 16
+#define DO_DEFER_POP 32
 
 #define WANT_LVALUE (DO_LVALUE | DO_INDIRECT)
 
