@@ -238,7 +238,7 @@ static mapping ldap_type_proc =
                        16 : Standards.ASN1.Types.asn1_sequence,
                        17 : Standards.ASN1.Types.asn1_set,
                        19 : Standards.ASN1.Types.asn1_printable_string,
-                       20 : Standards.ASN1.Types.asn1_T61_string,
+                       20 : Standards.ASN1.Types.asn1_teletex_string,
                        23 : Standards.ASN1.Types.asn1_utc,
                        65 : asn1_application_sequence,
                        68 : asn1_application_sequence,

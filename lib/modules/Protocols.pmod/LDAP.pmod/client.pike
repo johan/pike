@@ -300,12 +300,10 @@
     if (!stringp(password))
       password = "";
     ldap_version = proto;
-#if UTF8_SUPPORT
     if(ldap_version == 3) {
-      dn = Standards.Unicode.UTF8.encode(dn, charset);
-      password = Standards.Unicode.UTF8.encode(password, charset);
+      name = string_to_utf8(name);
+      password = string_to_utf8(password);
     }
-#endif
     if(intp(raw = send_bind_op(name, password))) {
       THROW(({error_string()+"\n",backtrace()}));
       return(-ldap_errno);
@@ -374,11 +372,9 @@
       return(-ldap_errno);
     if (chk_dn(dn))
       return(-ldap_errno);
-#if UTF8_SUPPORT
     if(ldap_version == 3) {
-      dn = Standards.Unicode.UTF8.encode(dn, charset);
+      dn = string_to_utf8(dn);
     }
-#endif
     if(intp(raw = send_op_withdn(10, dn))) {
       THROW(({error_string()+"\n",backtrace()}));
       return(-ldap_errno);
@@ -428,12 +424,10 @@
       return(-ldap_errno);
     if (chk_dn(dn))
       return(-ldap_errno);
-#if UTF8_SUPPORT
     if(ldap_version == 3) {
-      dn = Standards.Unicode.UTF8.encode(dn, charset);
-      aval = Standards.Unicode.UTF8.encode(aval, charset);
+      dn = string_to_utf8(dn);
+      aval = Array.map(aval, string_to_utf8);
     }
-#endif
     if(intp(raw = send_compare_op(dn, aval))) {
       THROW(({error_string()+"\n",backtrace()}));
       return(-ldap_errno);
@@ -492,12 +486,13 @@
       return(-ldap_errno);
     if (chk_dn(dn))
       return(-ldap_errno);
-#if UTF8_SUPPORT
     if(ldap_version == 3) {
-      dn = Standards.Unicode.UTF8.encode(dn, charset);
-      attrs = Standards.Unicode.UTF8.encode(attrs, charset);
+      dn = string_to_utf8(dn);
+      array(string) keys = indices(attrs);
+      array(array(string)) vals = values(attrs);
+      attrs = mkmapping(Array.map(keys, string_to_utf8),
+			Array.map(vals, Array.map, string_to_utf8));
     }
-#endif
     if(intp(raw = send_add_op(dn, attrs))) {
       THROW(({error_string()+"\n",backtrace()}));
       return(-ldap_errno);
@@ -728,11 +723,9 @@
       return(-ldap_errno);
     if (chk_binded())
       return(-ldap_errno);
-#if UTF8_SUPPORT
     if(ldap_version == 3) {
-      filter = Standards.Unicode.UTF8.encode(filter, charset);
+      filter = string_to_utf8(filter);
     }
-#endif
     if(intp(raw = send_search_op(ldap_basedn, ldap_scope, ldap_deref,
 			ldap_sizelimit, ldap_timelimit, attrsonly, filter,
 			attrs))) {
@@ -776,11 +769,9 @@
 
     string old_dn = ldap_basedn;
 
-#if UTF8_SUPPORT
     if(ldap_version == 3) {
-      base_dn = Standards.Unicode.UTF8.encode(base_dn, charset);
+      base_dn = string_to_utf8(base_dn);
     }
-#endif
     ldap_basedn = base_dn;
     DWRITE_HI("client.SET_BASEDN = " + base_dn + "\n");
     return(old_dn);
@@ -916,12 +907,18 @@
       return(-ldap_errno);
     if (chk_dn(dn))
       return(-ldap_errno);
-#if UTF8_SUPPORT
     if(ldap_version == 3) {
-      dn = Standards.Unicode.UTF8.encode(dn, charset);
-      attrs = Standards.Unicode.UTF8.encode(attropval, charset);
+      dn = string_to_utf8(dn);
+      array(string) keys = indices(attropval);
+      array(array(mixed)) vals = values(attropval);
+      attropval = mkmapping(Array.map(keys, string_to_utf8),
+			    Array.map(vals, Array.map, lambda(mixed x) {
+							 return
+							   (stringp(x)?
+							    string_to_utf8(x) :
+							    x);
+						       }));
     }
-#endif
     if(intp(raw = send_modify_op(dn, attropval))) {
       THROW(({error_string()+"\n",backtrace()}));
       return(-ldap_errno);

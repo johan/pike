@@ -22,11 +22,6 @@
 #define LDAP_DEFAULT_HOST       "127.0.0.1"
 #define LDAP_DEFAULT_VERSION    2
 
-#define UTF8_SUPPORT 0
-#if UTF8_SUPPORT
-#define LDAP_DEFAULT_CHARSET    "iso-8859-1"
-#endif
-
 // --- Debug low level operations ---
 #define DWRITE(X)
 //#define DWRITE(X)       werror("Protocols.LDAP: "+X)
