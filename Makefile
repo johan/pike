@@ -368,7 +368,7 @@ docclean:
 	-rm -f "$(BUILDDIR)/onepage.xml"
 	-rm -f "$(BUILDDIR)/traditional.xml"
 
-docspotless:
+docspotless: docclean
 	if test -f "refdoc/Makefile"; then \
 	  cd refdoc; $(DO_MAKE) spotless; \
 	else :; fi
