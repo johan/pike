@@ -321,7 +321,7 @@ static void decodeface(char *data, INT32 len, rgb_group *out)
       if(face[i][j])
 	out->r = out->g = out->b = 0;
       else
-	out->r = out->g = out->b = ~0;
+	out->r = out->g = out->b = 0xff;
       out++;
     }
 }

@@ -312,7 +312,7 @@ static void parse_body(struct BMHD *bmhd, unsigned char *body, ptrdiff_t blen,
 	  unsigned char ss = *src++;
 	  for(x=0; x<bmhd->w; x++) {
 	    if(ss&bit) {
-	      adest->r = adest->g = adest->b = ~0;
+	      adest->r = adest->g = adest->b = 0xff;
 	    } else {
 	      adest->r = adest->g = adest->b = 0;
 	    }
@@ -328,7 +328,7 @@ static void parse_body(struct BMHD *bmhd, unsigned char *body, ptrdiff_t blen,
 	  if(cline[x] == bmhd->transparentColor)
 	    adest->r = adest->g = adest->b = 0;
 	  else
-	    adest->r = adest->g = adest->b = ~0;
+	    adest->r = adest->g = adest->b = 0xff;
 	  adest++;
 	}
 	break;
