@@ -50,6 +50,7 @@ PMOD_EXPORT void *pike_module_import_symbol(char *str,
 					    int len,
 					    char *module,
 					    int module_len);
+void cleanup_module_support (void);
 /* Prototypes end here */
 
 #endif

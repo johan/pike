@@ -810,6 +810,7 @@ void low_exit_main(void)
   exit_cpp();
   cleanup_interpret();
   cleanup_added_efuns();
+  cleanup_module_support();
   exit_operators();
   exit_iterators();
   cleanup_program();
