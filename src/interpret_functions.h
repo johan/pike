@@ -1395,9 +1395,8 @@ BREAK;
 OPCODE0(F_SOFT_CAST, "soft cast")
   /* Stack: type_string, value */
 #ifdef PIKE_DEBUG
-  if (Pike_sp[-2].type != T_STRING) {
-    /* FIXME: The type should really be T_TYPE... */
-    fatal("Argument 1 to soft_cast isn't a string!\n");
+  if (Pike_sp[-2].type != T_TYPE) {
+    fatal("Argument 1 to soft_cast isn't a type!\n");
   }
 #endif /* PIKE_DEBUG */
   if (runtime_options & RUNTIME_CHECK_TYPES) {

@@ -1228,7 +1228,7 @@ static void mpzmod_lsh(INT32 args)
   struct object *res = NULL;
   if (args != 1)
     Pike_error("Wrong number of arguments to Gmp.mpz->`<<.\n");
-  ref_push_string(int_type_string);
+  ref_push_type_value(int_type_string);
   stack_swap();
   f_cast();
   if(sp[-1].u.integer < 0)
@@ -1244,7 +1244,7 @@ static void mpzmod_rsh(INT32 args)
   struct object *res = NULL;
   if (args != 1)
     Pike_error("Wrong number of arguments to Gmp.mpz->`>>.\n");
-  ref_push_string(int_type_string);
+  ref_push_type_value(int_type_string);
   stack_swap();
   f_cast();
   if (sp[-1].u.integer < 0)

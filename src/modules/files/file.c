@@ -2658,7 +2658,7 @@ static void file_lsh(INT32 args)
 
   if(Pike_sp[-1].type != PIKE_T_STRING)
   {
-    ref_push_string(string_type_string);
+    ref_push_type_value(string_type_string);
     stack_swap();
     f_cast();
   }

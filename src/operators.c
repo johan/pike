@@ -806,7 +806,7 @@ static int float_promote(void)
   if(is_bignum_object_in_svalue(sp-2) && sp[-1].type==T_FLOAT)
   {
     stack_swap();
-    push_constant_text(tFloat);
+    ref_push_type_value(float_type_string);
     stack_swap();
     f_cast();
     stack_swap();
@@ -814,7 +814,7 @@ static int float_promote(void)
   }
   else if(is_bignum_object_in_svalue(sp-1) && sp[-2].type==T_FLOAT)
   {
-    push_constant_text(tFloat);
+    ref_push_type_value(float_type_string);
     stack_swap();
     f_cast();
     return 1;

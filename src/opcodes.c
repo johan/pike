@@ -644,7 +644,8 @@ PMOD_EXPORT void f_cast(void)
 #ifdef PIKE_DEBUG
   struct svalue *save_sp=sp;
   if(sp[-2].type != T_TYPE)
-    fatal("Cast expression destroyed stack or left droppings!\n");
+    fatal("Cast expression destroyed stack or left droppings! (Type:%d)\n",
+	  sp[-2].type);
 #endif
   o_cast(sp[-2].u.type,
 	 compile_type_to_runtime_type(sp[-2].u.string));
