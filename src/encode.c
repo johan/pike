@@ -1022,9 +1022,8 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
 
 	  if(p->inherits[d].parent)
 	  {
-	    ref_push_object(p->inherits[d].parent);
-	    Pike_sp[-1].subtype=p->inherits[d].parent_identifier;
-	    Pike_sp[-1].type=T_FUNCTION;
+	    ref_push_function(p->inherits[d].parent,
+			      p->inherits[d].parent_identifier);
 	    EDB(3,fprintf(stderr,"INHERIT%x coded as func { %p, %d }\n",
 			p->id, p->inherits[d].parent, p->inherits[d].parent_identifier););
 	  }else if(p->inherits[d].prog){
