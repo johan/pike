@@ -248,6 +248,7 @@ extern struct Pike_interpreter Pike_interpreter;
 
 #define Pike_sp Pike_interpreter.stack_pointer
 #define Pike_fp Pike_interpreter.frame_pointer
+#define Pike_mark_sp Pike_interpreter.mark_sp
 #ifdef PIKE_THREADS
 #define Pike_thread_id Pike_interpreter.thread_id
 #endif
