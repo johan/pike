@@ -56,7 +56,7 @@ static void parse_authority()
     DEBUG("parse_authority(): user=%O, password=%O", user, password);
   }
   if(scheme)
-    port = [int]Protocols.Ports.tcp[scheme]; // Set a good default á la RFC 1700
+    port = Protocols.Ports.tcp[scheme]; // Set a good default á la RFC 1700
   sscanf(authority, "%[^:]%*[:]%d", host, port);
   DEBUG("parse_authority(): host=%O, port=%O", host, port);
 }
