@@ -32,6 +32,9 @@
 /* Define if you have an x86 CPU */
 #undef HAVE_X86_CPU
 
+/* Define if you have an x86_64 CPU */
+#undef HAVE_X86_64_CPU
+
 /* Define if you have a PowerPC CPU */
 #undef HAVE_PPC_CPU
 
