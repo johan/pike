@@ -1629,7 +1629,7 @@ struct cpu_context {
 static void *low_make_stub(struct cpu_context *ctx, void *data, int statc,
 			   void (*dispatch)(), int args)
 {
-  unsigned INT32 *p = &ctx->code[2];
+  unsigned INT32 *p = (unsigned INT32 *)&ctx->code[2];
 
   /* The stub gets 3 parameters in $16, $17 and $18,
    * and must shift them one register to $17, $18 and $19,
