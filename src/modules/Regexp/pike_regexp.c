@@ -984,7 +984,7 @@ char           *prog;
 		register char   nextch;
 		register size_t no;
 		register char  *save;
-		register int    minimum;
+		register size_t minimum;
 
 		/*
 		 * Lookahead to avoid useless match attempts when we know
@@ -995,8 +995,8 @@ char           *prog;
 		    nextch = *OPERAND(nxt);
 		minimum = (OP(scan) == STAR) ? 0 : 1;
 		save = reginput;
-		no = regrepeat(OPERAND(scan)) + (minimum == 0);
-		while (no) {
+		no = regrepeat(OPERAND(scan));
+		while (no >= minimum) {
 		    /* If it could work, try it. */
 		    if (nextch == '\0' || *reginput == nextch)
 			if (regmatch(nxt))
