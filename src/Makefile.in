@@ -314,7 +314,12 @@ distclean: spotless
 	  -name 'config.cache' ')' -exec rm -f \{\} \;
 
 cvsclean: distclean
-# FIXME: Zap things that are in .cvsignore here.
+	( cd $(SRCDIR); \
+	  for d in `find . -type d -print`; do \
+	    if test -f "$$d/.cvsignore" ; then \
+	      cd $$d && rm -f `cat .cvsignore`; \
+	    else :; fi; \
+	  done)
 
 # create tags
 tags:
