@@ -509,7 +509,7 @@ void low_exit_main(void)
   free_svalue(& throw_value);
   throw_value.type=T_INT;
 
-#if defined(DEBUG) && defined(DEBUG_MALLOC)
+#if defined(PIKE_DEBUG) && defined(DEBUG_MALLOC)
   if(verbose_debug_exit)
   {
     INT32 num,size,recount=0;

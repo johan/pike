@@ -44,7 +44,7 @@ int last_instruction=0;
 
 void exit_lex(void)
 {
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
   if(p_flag)
   {
     int e;

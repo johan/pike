@@ -82,7 +82,7 @@ struct hash_table *hash_rehash(struct hash_table *h,int size)
   struct hash_table *new;
   int e;
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
   if( 1 << my_log2(size) != size)
     fatal("Size is not a exponent of two!\n");
 #endif
@@ -140,7 +140,7 @@ struct hash_table *hash_unlink(struct hash_table *h, struct hash_entry *s)
       return h;
     }
   }
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
   fatal("hash_entry not in hashtable\n");
 #endif
   return h;

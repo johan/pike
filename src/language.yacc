@@ -201,7 +201,7 @@ RCSID("$Id$");
 
 #define YYMAXDEPTH	1000
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 #ifndef YYDEBUG
 /* May also be defined by machine.h */
 #define YYDEBUG 1
@@ -639,7 +639,7 @@ def: modifiers type_or_error optional_stars F_IDENTIFIER
       }
 
       f=dooptcode($4->u.sval.u.string, $10, $<n>9->u.sval.u.string, $1);
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
       if(recoveries && sp-evaluator_stack < recoveries->sp)
 	fatal("Stack error (underflow)\n");
 #endif
@@ -2035,7 +2035,7 @@ void yyerror(char *str)
   extern int num_parse_error;
   extern int cumulative_parse_error;
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
   if(recoveries && sp-evaluator_stack < recoveries->sp)
     fatal("Stack error (underflow)\n");
 #endif

@@ -32,9 +32,9 @@
 #include "operators.h"
 
 /* Postgres includes */
-/* A hack, because DEBUG is defined both in pike's machine.h and in postgres */
-#ifdef DEBUG
-#undef DEBUG
+/* A hack, because PIKE_DEBUG is defined both in pike's machine.h and in postgres */
+#ifdef PIKE_DEBUG
+#undef PIKE_DEBUG
 #endif 
 
 #include <postgres.h>

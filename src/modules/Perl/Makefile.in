@@ -1,0 +1,14 @@
+# $Id$
+SRCDIR=@srcdir@
+VPATH=@srcdir@:@srcdir@/../..:../..
+MODULE_LDFLAGS=@LDFLAGS@ @LIBS@ @PERL_LDFLAGS@
+OBJS=perlmod.o perlxsi.o
+PERL=@perl@
+MODULE_CFLAGS=@PERL_CCFLAGS@
+
+@dynamic_module_makefile@
+
+perlxsi.c:
+	$(PERL) -MExtUtils::Embed -e xsinit -- -o perlxsi.c
+
+@dependencies@

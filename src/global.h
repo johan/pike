@@ -203,7 +203,7 @@ typedef unsigned INT32 p_wchar2;
  static char *rcsid = X
 #endif
 
-#if defined(__GNUC__) && !defined(DEBUG) && !defined(lint)
+#if defined(__GNUC__) && !defined(PIKE_DEBUG) && !defined(lint)
 #define INLINE inline
 #else
 #define INLINE

@@ -21,7 +21,7 @@
  * define PROGRAM_STATE to select the program state
  */
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 #define DO_DEBUG_CODE(X) X
 #else
 #define DO_DEBUG_CODE(X)
@@ -93,7 +93,7 @@
 #endif
 
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 #define STRMEMBER(X,Y) \
   PCODE(if(X) fatal("Variable %s not deallocated properly.\n",Y);) \
   ZMEMBER(struct pike_string *,X)

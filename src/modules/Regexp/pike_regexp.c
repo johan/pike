@@ -764,7 +764,7 @@ STATIC int      regtry(regexp *, char *);
 STATIC int      regmatch(char *);
 STATIC int      regrepeat(char *);
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 int             regnarrate = 0;
 void            regdump(regexp *);
 STATIC char    *regprop(char *op);
@@ -887,12 +887,12 @@ char           *prog;
     char           *nxt;	/* nxt node. */
 
     scan = prog;
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
     if (scan != (char *)NULL && regnarrate)
 	fprintf(stderr, "%s(\n", regprop(scan));
 #endif
     while (scan != (char *)NULL) {
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 	if (regnarrate)
 	    fprintf(stderr, "%s...\n", regprop(scan));
 #endif
@@ -1147,7 +1147,7 @@ register char  *p;
 	return (p + offset);
 }
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 
 STATIC char    *regprop(char *);
 

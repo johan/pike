@@ -288,7 +288,7 @@ void init_memsearch(struct mem_searcher *s,
 
       q=(unsigned char *)needle;
 
-#if BYTEORDER == 4321
+#if PIKE_BYTEORDER == 4321
       for(tmp=e=0;e<sizeof(INT32)-1;e++)
       {
 	tmp<<=8;
@@ -298,7 +298,7 @@ void init_memsearch(struct mem_searcher *s,
 
       for(e=0;e<max;e++)
       {
-#if BYTEORDER == 4321
+#if PIKE_BYTEORDER == 4321
 	tmp<<=8;
 	tmp|=*(q++);
 #else
@@ -1091,7 +1091,7 @@ void cleanup_memhdrs()
 
 	
 	fprintf(stderr, "LEAK: (%p) %ld bytes\n",p, m->size);
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 	describe_something(p, attempt_to_identify(p),0);
 #endif
 	mt_lock(&debug_malloc_mutex);

@@ -56,7 +56,7 @@ double LDEXP(double x, int exp)
 }
 #endif
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 #define encode_value2 encode_value2_
 #define decode_value2 decode_value2_
 #endif
@@ -224,7 +224,7 @@ one_more_type:
 
 static void encode_value2(struct svalue *val, struct encode_data *data)
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 #undef encode_value2
 #define encode_value2(X,Y) do { struct svalue *_=sp; encode_value2_(X,Y); if(sp!=_) fatal("encode_value2 failed!\n"); } while(0)
 #endif
@@ -674,7 +674,7 @@ one_more_type:
 
 static void decode_value2(struct decode_data *data)
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 #undef decode_value2
 #define decode_value2(X) do { struct svalue *_=sp; decode_value2_(X); if(sp!=_+1) fatal("decode_value2 failed!\n"); } while(0)
 #endif
