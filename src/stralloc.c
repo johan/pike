@@ -1398,7 +1398,7 @@ PMOD_EXPORT struct pike_string *realloc_unlinked_string(struct pike_string *a,
   } else if (size > SHORT_STRING_THRESHOLD) {
     r=(struct pike_string *)realloc((char *)a,
 				    sizeof(struct pike_string)+
-				    ((size+1)<<a->size_shift)); /* FIXME !! */
+				    ((size+1)<<a->size_shift));
   }
 	
   if(!r)
