@@ -279,6 +279,24 @@ void backend()
 	next_timeout.tv_sec=0;
 	if(select(max_fd+1, &sets.read, &sets.write, 0, &next_timeout) < 0 && errno == EBADF)
 	{
+	  int i;
+	  for(i=0;i<MAX_OPEN_FILEDESCRIPTORS;i++)
+	  {
+	    if(!FD_ISSET(i, &selectors.read) && !FD_ISSET(i,&selectors.write))
+	      continue;
+	    
+	    FD_ZERO(& sets.read);
+	    FD_ZERO(& sets.write);
+
+	    if(FD_ISSET(i, &selectors.read))  FD_SET(i, &sets.read);
+	    if(FD_ISSET(i, &selectors.write)) FD_SET(i, &sets.write);
+
+	    next_timeout.tv_usec=0;
+	    next_timeout.tv_sec=0;
+
+	    if(select(max_fd+1, &sets.read, &sets.write, 0, &next_timeout) < 0 && errno == EBADF)
+	      fatal("Filedescriptor %d caused EBADF.\n",i);
+	  }
 	  fatal("Bad filedescriptor to select().\n");
 	}
 	break;
