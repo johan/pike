@@ -14,9 +14,9 @@ if test "x$with_perl" = "xno"; then :; else
   PIKE_FEATURE_NODEP(Perl)
 
   if test "x$with_perl" = "xyes"; then
-    AC_CHECK_PROGS(perl, perl perl5, x)
+    MY_AC_CHECK_PROGS(perl, perl perl5, x)
   else
-    AC_CHECK_PROGS(perl, "$with_perl" perl perl5, x)
+    MY_AC_CHECK_PROGS(perl, "$with_perl" perl perl5, x)
   fi
 
   AC_MSG_CHECKING(if perl is embeddable)

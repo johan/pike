@@ -4,12 +4,14 @@ VPATH=@srcdir@:@srcdir@/../..:../..
 OBJS=unicode_module.o normalize.o split.o buffer.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 CONFIG_HEADERS=@CONFIG_HEADERS@
+SRC_TARGETS=$(SRCDIR)/wordbits.h \
+	$(SRCDIR)/decompositions.h $(SRCDIR)/canonicals.h
 @dynamic_module_makefile@
 
 UNICODEDATA=../../UnicodeData.txt
 
-$(SRCDIR)/unicode_module.c: $(SRCDIR)/unicode_module.cmod $(TMP_BINDIR)/precompile.pike
-	$(RUNPIKE) $(TMP_BINDIR)/precompile.pike >"$@" "$(SRCDIR)/unicode_module.cmod" || { rm "$@"; exit 1; }
+# UnixWare make needs help to find the source file...
+unicode_module.o: $(SRCDIR)/unicode_module.c
 
 $(SRCDIR)/decompositions.h: $(SRCDIR)/make_decompose.pike $(SRCDIR)/$(UNICODEDATA)
 	 $(RUNPIKE) $(SRCDIR)/make_decompose.pike 		\
