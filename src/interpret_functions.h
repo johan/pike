@@ -1566,6 +1566,11 @@ OPCODE1_JUMP(F_COND_RECUR,"recur if not overloaded")
   struct svalue *locals=fp->locals;
   struct svalue *save_sp, **save_mark_sp;
 
+  /* FIXME:
+   * this test should actually test if this function is
+   * overloaded or not. Currently it only tests if
+   * this context is inherited or not.
+   */
   if(fp->current_object->prog != fp->context.prog)
   {
     apply_low(Pike_fp->current_object,
