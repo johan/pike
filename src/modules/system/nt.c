@@ -20,7 +20,7 @@
 
 /*
  * Get some wrappers for functions not implemented in old versions
- * of WIN32.
+ * of WIN32. Needs a new Platform SDK installed.
  */
 #define COMPILE_NEWAPIS_STUBS
 /* We want GetLongPathName()... */
