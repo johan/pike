@@ -427,7 +427,7 @@ static program low_findprog(string pname, string ext, object|void handler)
       
 //      werror("2.5: %O\n",fname);
       
-      if ( mixed e=catch { ret=compile_file(fname); } )
+      if ( mixed e=catch { ret=compile_file(fname, handler); } )
       {
 //	werror("-3: %O\n",fname);
 	programs[fname]=0;
