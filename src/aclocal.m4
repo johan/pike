@@ -6,7 +6,8 @@ pushdef([AC_PROG_CC_WORKS],
     ac_prog_cc_works_this_run="${ac_cv_prog_cc_works-no}"
     export ac_prog_cc_works_this_run
   else
-    AC_MSG_RESULT([whether the C compiler ($CC $CFLAGS $LDFLAGS) works... yes])
+    AC_MSG_CHECKING([whether the C compiler ($CC $CFLAGS $LDFLAGS) works])
+    AC_MSG_RESULT([(cached) yes])
   fi
 ])
 
