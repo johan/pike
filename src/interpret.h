@@ -14,6 +14,12 @@
 #include "program.h"
 #include "pike_error.h"
 
+#ifdef SHORT_PIKE_OPCODE
+#define PIKE_OPCODE_T	unsigned INT16
+#else /* !SHORT_PIKE_OPCODE */
+#define PIKE_OPCODE_T	unsigned INT8
+#endif /* SHORT_PIKE_OPCODE */
+
 struct Pike_interpreter {
   /* Swapped variables */
   struct svalue *stack_pointer;
@@ -60,7 +66,7 @@ struct pike_frame
   INT16 ident;
   struct pike_frame *next;
   struct pike_frame *scope;
-  unsigned char *pc;
+  PIKE_OPCODE_T *pc;
   struct svalue *locals;
 
   /*  This is <= locals, and this is where the
@@ -386,18 +392,18 @@ struct Pike_stack
 
 
 #define PIKE_STACK_REQUIRE_BEGIN(num, base) do {			\
-  struct Pike_stack *old;						\
+  struct Pike_stack *old_stack_;					\
   if(Pike_interpreter.current_stack->top - Pike_sp < num)		\
   {									\
-    old=Pike_interpreter.current_stack;					\
-    old->save_ptr=Pike_sp;						\
+    old_stack_=Pike_interpreter.current_stack;				\
+    old_stack_->save_ptr=Pike_sp;					\
     Pike_interpreter.current_stack=allocate_array(MAXIMUM(num, 8192));	\
-    while(old_sp > base) *(Pike_sp++) = *--old->save_ptr;		\
+    while(old_sp > base) *(Pike_sp++) = *--old_stack_->save_ptr;	\
   }
 
 #define PIKE_STACK_REQUIRE_END()					   \
   while(Pike_sp > Pike_interpreter.current_stack->stack)		   \
-    *(old->save_ptr++) = *--Pike_sp;					   \
+    *(old_stack_->save_ptr++) = *--Pike_sp;				   \
   Pike_interpreter.current_stack=Pike_interpreter.current_stack->previous; \
 }while(0)  
 
