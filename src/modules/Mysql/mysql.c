@@ -562,7 +562,7 @@ static void mysql__sprintf(INT32 args)
       info = mysql_get_host_info(socket);
       MYSQL_DISALLOW();
 
-      push_text("Mysql(/* %s */)");
+      push_text("mysql(/* %s */)");
       push_text(info);
       f_sprintf(2);
 
@@ -574,7 +574,7 @@ static void mysql__sprintf(INT32 args)
 
     case 't':
     {
-      struct pike_string * res = make_shared_binary_string("Mysql", 5);
+      struct pike_string * res = make_shared_binary_string("mysql", 5);
       push_string(res);
       return;
     }
