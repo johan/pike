@@ -2212,10 +2212,13 @@ int define_variable(struct pike_string *name,
     if(n==-1)
       yyerror("Pass2: Variable disappeared!");
     else {
-      struct identifier *id;
-      id=ID_FROM_INT(Pike_compiler->new_program,n);
-      free_string(id->type);
-      copy_shared_string(id->type, type);
+      /* Don't mess with inherited variables... */
+      if(!IDENTIFIERP(n)->inherit_offset) {
+	struct identifier *id;
+	id = ID_FROM_INT(Pike_compiler->new_program, n);
+	free_string(id->type);
+	copy_shared_string(id->type, type);
+      }
       return n;
     }
   }
