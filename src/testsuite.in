@@ -1062,7 +1062,6 @@ test_any([[
  class handler
  { void compile_error(string file, int line, string err) { } };
 
-	werror("foo\n");
  catch {
    compile_string("import \".\"; "
 	"int foo() { testsuite_test_dir.a(); }",
