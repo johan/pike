@@ -671,9 +671,12 @@ static void image_jpeg_encode(INT32 args)
    }
 
    jpeg_start_compress(&cinfo, TRUE);
-   
-   parameter_comment(sp+1-args,param_comment,&cinfo);
-   parameter_marker(sp+1-args,param_marker,&cinfo);
+
+   if (args>1)
+   {
+      parameter_comment(sp+1-args,param_comment,&cinfo);
+      parameter_marker(sp+1-args,param_marker,&cinfo);
+   }
 
    y=img->ysize;
    s=img->img;
