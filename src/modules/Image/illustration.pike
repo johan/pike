@@ -27,7 +27,7 @@ string doit(string name,mapping has,object f,string src)
 
    if (has[s]) return has[s];
    
-   write_file("doc/"+name,o->togif());
+   write_file("doc/"+name,Image.GIF.encode(o));
 
    f->write(
       "<a name="+name+">"
