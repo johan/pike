@@ -112,8 +112,8 @@ void PIKE_CONCAT3(count_memory_in_,DATA,s)(INT32 *num_, INT32 *size_)	\
 									     \
 BLOCK_ALLOC(DATA,BSIZE)							     \
 									     \
-static struct DATA **PIKE_CONCAT(DATA,_hash_table)=0;			     \
-static int PIKE_CONCAT(DATA,_hash_table_size)=0;			     \
+struct DATA **PIKE_CONCAT(DATA,_hash_table)=0;				     \
+int PIKE_CONCAT(DATA,_hash_table_size)=0;				     \
 static int PIKE_CONCAT(num_,DATA)=0;					     \
 									     \
 inline struct DATA *							     \
@@ -267,6 +267,3 @@ void PIKE_CONCAT3(exit_,DATA,_hash)(void)				     \
   PIKE_CONCAT(DATA,_hash_table)=0;					     \
   PIKE_CONCAT(num_,DATA)=0;						     \
 }
-
-#define BLOCK_ALLOC_NEXT next
-

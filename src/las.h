@@ -15,6 +15,7 @@
 #include "svalue.h"
 #include "dynamic_buffer.h"
 #include "program.h"
+#include "block_alloc_h.h"
 
 #define MAX_GLOBAL_VARIABLES 1000
 typedef void (*c_fun)(INT32);
