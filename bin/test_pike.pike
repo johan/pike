@@ -227,7 +227,16 @@ int main(int argc, string *argv)
 	    switch(type)
 	    {
 	      case "FALSE":
-		a=!a;
+		if(a)
+		{
+		  werror(fname + " failed.\n");
+		  werror(test+"\n");
+		  werror(sprintf("o->a(): %O\n",a));
+		  errors++;
+		}else{
+		  successes++;
+		}
+		break;
 		
 	      case "TRUE":
 		if(!a)
