@@ -286,6 +286,7 @@ void debug_fatal(const char *fmt, ...) ATTRIBUTE((noreturn,format (printf, 1, 2)
       fprintf(stderr,"Pike was in GC stage %d when this fatal occured:\n",Pike_in_gc);
       Pike_in_gc=0;
     }
+  }
 
   (void)VFPRINTF(stderr, fmt, args);
 
