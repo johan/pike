@@ -442,7 +442,7 @@ facet: TOK_FACET TOK_IDENTIFIER ':' idents ';'
 	resolv_constant($4);
 	if (Pike_sp[-1].type == T_OBJECT) {
 	  o = Pike_sp[-1].u.object;
-	  push_string($2->u.sval.u.string);
+	  ref_push_string($2->u.sval.u.string);
 	  push_int(Pike_compiler->new_program->id);
 	  push_int(Pike_compiler->new_program->facet_class);
 	  safe_apply_low3(o, find_identifier("add_facet_class",o->prog), 3,
