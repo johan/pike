@@ -305,7 +305,9 @@ static private mapping(mixed : multiset(object(rule))) begins = ([]);
  */
 static private mapping(int : multiset(object(rule))) used_by = ([]);
 
-static private object(kernel) start_state;
+//. + start_state
+//.   The initial LR0 state.
+object(kernel) start_state;
 
 //. + verbose
 //.   Verbosity level
@@ -1308,11 +1310,8 @@ int compile()
 
 	/* Calculate Look-ahead for all items in look-back set */
 	
-	foreach (indices(i->relation), object(item) lookback) {
-	  /* Add Follow(i2) to the lookahead-set */
-
-	  i->direct_lookahead |= lookback->direct_lookahead;
-	}
+	i->direct_lookahead=`|(i->direct_lookahead,
+			       @indices(i->relation)->direct_lookahead);
       }
     }
   }
