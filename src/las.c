@@ -3718,7 +3718,7 @@ ptrdiff_t eval_low(node *n)
 
   num_strings=Pike_compiler->new_program->num_strings;
   num_constants=Pike_compiler->new_program->num_constants;
-  jump=PC;
+  jump = DO_NOT_WARN((INT32)PC);
 
   store_linenumbers=0;
   docode(dmalloc_touch(node *, n));
@@ -3972,7 +3972,8 @@ int dooptcode(struct pike_string *name,
 
 #ifdef PIKE_DEBUG
   if(a_flag > 1)
-    fprintf(stderr,"Doing function '%s' at %x\n",name->str,PC);
+    fprintf(stderr, "Doing function '%s' at %lx\n", name->str,
+	    DO_NOT_WARN((unsigned long)PC));
 #endif
 
   args=count_arguments(type);

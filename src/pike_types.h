@@ -103,8 +103,8 @@ extern struct pike_string *weak_type_string;
 #ifdef PIKE_DEBUG
 #define init_type_stack() type_stack_mark()
 #define exit_type_stack() do {\
-  int q_q_q_q=pop_stack_mark(); \
-  if(q_q_q_q) fatal("Type stack out of wack! %d\n",q_q_q_q); \
+    ptrdiff_t q_q_q_q = pop_stack_mark(); \
+    if(q_q_q_q) fatal("Type stack out of wack! %d\n", q_q_q_q); \
   } while(0)
 #else
 #define init_type_stack type_stack_mark

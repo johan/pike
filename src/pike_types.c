@@ -235,16 +235,16 @@ void type_stack_pop_to_mark(void)
 
 void type_stack_reverse(void)
 {
-  INT32 a;
+  ptrdiff_t a;
   a=pop_stack_mark();
   reverse((char *)(Pike_compiler->type_stackp-a),a,1);
 }
 
 void push_type_int(INT32 i)
 {
-  int e;
-  for(e=0;e<(int)sizeof(i);e++)
-    push_type( (i>>(e*8)) & 0xff );
+  ptrdiff_t e;
+  for(e = 0; e < (ptrdiff_t)sizeof(i); e++)
+    push_type(DO_NOT_WARN((unsigned char)((i>>(e*8)) & 0xff)));
 }
 
 void push_type_int_backwards(INT32 i)
@@ -265,7 +265,7 @@ INT32 extract_type_int(char *p)
 
 void push_unfinished_type(char *s)
 {
-  int e;
+  ptrdiff_t e;
   e=type_length(s);
   for(e--;e>=0;e--) push_type(s[e]);
 }
@@ -336,7 +336,7 @@ void push_finished_type_backwards(struct pike_string *type)
 
 struct pike_string *debug_pop_unfinished_type(void)
 {
-  int len,e;
+  ptrdiff_t len, e;
   struct pike_string *s;
   len=pop_stack_mark();
   s=begin_shared_string(len);

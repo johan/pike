@@ -1595,7 +1595,7 @@ static INT32 my_decode(struct pike_string *tmp,
 
 /* Compatibilidy decoder */
 
-static unsigned char extract_char(char **v, INT32 *l)
+static unsigned char extract_char(char **v, ptrdiff_t *l)
 {
   if(!*l) error("Format error, not enough place for char.\n");
   else (*l)--;
@@ -1603,7 +1603,7 @@ static unsigned char extract_char(char **v, INT32 *l)
   return ((unsigned char *)(*v))[-1];
 }
 
-static ptrdiff_t extract_int(char **v, INT32 *l)
+static ptrdiff_t extract_int(char **v, ptrdiff_t *l)
 {
   INT32 j;
   ptrdiff_t i;
@@ -1619,7 +1619,7 @@ static ptrdiff_t extract_int(char **v, INT32 *l)
   return i;
 }
 
-static void rec_restore_value(char **v, INT32 *l)
+static void rec_restore_value(char **v, ptrdiff_t *l)
 {
   ptrdiff_t t, i;
 

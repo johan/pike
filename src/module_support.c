@@ -192,7 +192,7 @@ int va_get_args(struct svalue *s,
       if(s->type == T_INT)
 	 *va_arg(ap, INT_TYPE *)=s->u.integer;
       else if(s->type == T_FLOAT)
-        *va_arg(ap, INT_TYPE *)=(INT_TYPE)s->u.float_number;
+        *va_arg(ap, INT_TYPE *) = DO_NOT_WARN((INT_TYPE)s->u.float_number);
       else 
       {
         push_text( "int" );

@@ -51,7 +51,7 @@ struct generic_mem_searcher
     {
       enum methods method;
       void *needle;
-      SIZE_T needlelen;
+      size_t needlelen;
       int first_char;
     } other;
   } data;

@@ -599,6 +599,16 @@ int debug_gc_check(void *x, TYPE_T t, void *data)
   return ret;
 }
 
+/* Avoid loss of precision warning. */
+#ifdef __ECL
+static inline long SIZE_T_TO_LONG(size_t x)
+{
+  return DO_NOT_WARN((long)x);
+}
+#else /* !__ECL */
+#define SIZE_T_TO_LONG(x)	((long)(x))
+#endif /* __ECL */
+
 void low_describe_something(void *a,
 			    int t,
 			    int indent,
@@ -684,7 +694,7 @@ void low_describe_something(void *a,
 	  foo=1;
 	  break;
 	}
-	if(pos+1>=(long)p->num_program)
+	if(pos+1>=(ptrdiff_t)p->num_program)
 	  break;
       }
 #if 0
@@ -709,7 +719,7 @@ void low_describe_something(void *a,
       {
 #define FOO(NUMTYPE,TYPE,NAME) \
       fprintf(stderr, "%*s* " #NAME " %p[%ld]\n", \
-              indent, "", p->NAME, (long)p->PIKE_CONCAT(num_,NAME));
+              indent, "", p->NAME, SIZE_T_TO_LONG(p->PIKE_CONCAT(num_,NAME)));
 #include "program_areas.h"
       }
 

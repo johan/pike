@@ -4040,7 +4040,7 @@ static struct array* diff_build(struct array *a,
 				struct array *seq)
 {
    struct array *ad,*bd;
-   int bi,ai,lbi,lai,i,eqstart;
+   ptrdiff_t bi, ai, lbi, lai, i, eqstart;
 
    /* FIXME(?) memory unfreed upon error here (and later) */
    ad=low_allocate_array(0,32);
