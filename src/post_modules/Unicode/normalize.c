@@ -69,10 +69,19 @@ static struct canonic_h   canonic_h[sizeof(_ca)/sizeof(_ca[0])];
 static struct canonic_h  *canonic_hash[HSIZE];
 
 
+#ifdef PIKE_DEBUG
+static int hashes_inited = 0;
+#endif
 
 static void init_hashes()
 {
   unsigned int i;
+
+#ifdef PIKE_DEBUG
+  if (hashes_inited) fatal ("init_hashes called twice\n");
+  hashes_inited = 1;
+#endif
+
   for( i = 0; i<sizeof(_d)/sizeof(_d[0]); i++ )
   {
     int h = _d[i].c%HSIZE;
