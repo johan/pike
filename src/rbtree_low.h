@@ -53,7 +53,7 @@ void rbstack_shift (struct rbstack_ptr rbstack,
   struct rbstack_slice PIKE_CONCAT3 (_, rbstack, _top_) = {		\
     DO_IF_RB_STATS (0 COMMA 0 COMMA)					\
     NULL,								\
-    {}									\
+    {NULL,}								\
   };									\
   struct rbstack_ptr rbstack = {					\
     (PIKE_CONCAT3 (_, rbstack, _top_).up = NULL,			\
