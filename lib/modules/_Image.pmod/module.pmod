@@ -30,7 +30,8 @@ mapping _decode( string data, mixed|void tocolor )
 
   if( mappingp( tocolor ) )
   {
-    opts = tocolor;
+    if( sizeof( tocolor ) )
+      opts = tocolor;
     tocolor = 0;
   }
 
