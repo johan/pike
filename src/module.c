@@ -27,6 +27,15 @@
 
 RCSID("$Id$");
 
+/* Define this to trace the initialization and cleanup of static modules. */
+/* #define TRACE_MODULE */
+
+#if defined(TRACE_MAIN) || defined(TRACE_MODULE)
+#define TRACE(X)	fprintf X
+#else /* !TRACE_MAIN */
+#define TRACE(X)
+#endif /* TRACE_MAIN */
+
 typedef void (*modfun)(void);
 
 struct static_module
@@ -66,6 +75,8 @@ void init_modules(void)
       free_program(end_program());
       call_handle_error();
     } else {
+      TRACE((stderr, "Initializing static module #%d: \"%s\"...\n",
+	     e, module_list[e].name));
       module_list[e].init();
       debug_end_class(module_list[e].name,strlen(module_list[e].name),0);
     }
@@ -87,8 +98,11 @@ void exit_modules(void)
   {
     if(SETJMP(recovery))
       call_handle_error();
-    else
+    else {
+      TRACE((stderr, "Exiting static module #%d: \"%s\"...\n",
+	     e, module_list[e].name));
       module_list[e].exit();
+    }
     UNSETJMP(recovery);
   }
 }
