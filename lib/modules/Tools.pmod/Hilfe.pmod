@@ -907,9 +907,9 @@ private class Expression {
 	  if( t=="(" ) plevel++;
 	  if( t==")" ) plevel--;
 	  if( !plevel ) {
-	    position++;
-	    t = `[](position);
-	    break;
+	    if( `[](position+1)=="|" )
+	      return endoftype(position+2);
+	    return position;
 	  }
 	  // We will not index outside the array,
 	  // since "|" can't be the last entry.
