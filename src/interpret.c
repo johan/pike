@@ -1596,6 +1596,23 @@ PMOD_EXPORT void f_call_function(INT32 args)
   mega_apply(APPLY_STACK,args,0,0);
 }
 
+/*! @class MasterObject
+ */
+
+/*! @decl void handle_error(mixed exception)
+ *!
+ *!   Called by the Pike runtime if an exception isn't caught.
+ *!
+ *! @param
+ *!   Value that was @[throw()]'n.
+ *!
+ *! @seealso
+ *!   @[describe_backtrace()]
+ */
+
+/*! @endclass
+ */
+
 PMOD_EXPORT void call_handle_error(void)
 {
   dmalloc_touch_svalue(&throw_value);
