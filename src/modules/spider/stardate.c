@@ -25,6 +25,9 @@ RCSID("$Id$");
 #include <time.h>
 #define	FIT(x,y) while((x)<0)(x)+=(y);while((x)>(y))(x)-=(y)
 
+/* This must be included last! */
+#include "module_magic.h"
+
 
 #define MAXPRECISION       7
 #define OUTPUTFORMAT       "%%%03d.%df"

@@ -22,6 +22,7 @@
 
 #endif /* HAVE_GL */
 
+#include "module_magic.h"
 
 #include "global.h"
 

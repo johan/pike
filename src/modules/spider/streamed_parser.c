@@ -24,6 +24,9 @@
 
 #include "streamed_parser.h"
 
+/* This must be included last! */
+#include "module_magic.h"
+
 RCSID("$Id$");
 
 #ifdef ENABLE_STREAMED_PARSER

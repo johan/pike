@@ -12,6 +12,10 @@ RCSID("$Id$");
 #include "assembly.h"
 #include "image_machine.h"
 
+/* This must be included last! */
+#include "module_magic.h"
+
+
 #define IMAGE_INITER
 
 /* #define DEBUG */

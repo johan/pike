@@ -8,6 +8,12 @@ AC_CHECK_LIB(bind, __inet_ntoa)
 AC_CHECK_LIB(socket, socket)
 AC_CHECK_LIB(nsl, gethostbyname)
 
+if test x"$pike_cv_sys_os" = xWindows_NT ; then
+  # FIXME: These look suspiciouly much like 32bit versions.
+  #        We probably want to use 64bit versions on IA64.
+  LIBS="-lkernel32 -lws2_32 -ladvapi32 $LIBS"
+fi
+
 AC_HAVE_HEADERS(syslog.h sys/syslog.h sys/types.h errno.h unistd.h pwd.h \
 	sys/conf.h sys/socket.h netinet/in.h arpa/inet.h netdb.h stdarg.h \
 	sys/utsname.h pwd.h passwd.h shadow.h grp.h sys/stat.h winsock.h \

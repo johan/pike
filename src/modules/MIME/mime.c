@@ -25,6 +25,8 @@ RCSID("$Id$");
 #define SIGNED
 #endif
 
+/* must be included last */
+#include "module_magic.h"
 
 /** Forward declarations of functions implementing Pike functions **/
 

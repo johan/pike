@@ -37,6 +37,9 @@ RCSID("$Id$");
 
 #include <limits.h>
 
+/* This must be included last! */
+#include "module_magic.h"
+
 #ifdef _MSC_VER
 /* No random()... provide one for gmp
  * This should possibly be a configure test
@@ -189,7 +192,6 @@ static void mpzmod_create(INT32 args)
 {
 #ifdef AUTO_BIGNUM
   /* Alert bignum.c that we have been loaded /Hubbe */
-  extern int gmp_library_loaded;
   if(THIS_PROGRAM == bignum_program)
     gmp_library_loaded=1;
 #endif

@@ -9,6 +9,9 @@
 
 #include "math_module.h"
 
+/* must be included last */
+#include "module_magic.h"
+
 /*** module init & exit & stuff *****************************************/
 
 /* add other parsers here */

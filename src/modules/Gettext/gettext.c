@@ -20,6 +20,9 @@
 #include "mapping.h"
 #include "module_support.h"
 
+/* This must be included last */
+#include "module_magic.h"
+
 RCSID("$Id$");
 
 /*
@@ -446,6 +449,8 @@ void pike_module_exit(void)
   
 }
 #else
+
+#include "module_magic.h"
 
 void pike_module_init(void) {}
 void pike_module_exit(void) {}

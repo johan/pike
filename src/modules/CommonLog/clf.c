@@ -1,4 +1,4 @@
-
+/* MUST BE FIRST */
 #include "global.h"
 RCSID("$Id$");
 #include "fdlib.h"
@@ -15,11 +15,12 @@ RCSID("$Id$");
 #include <stdio.h>
 #include <fcntl.h>
 
+/* MUST BE LAST */
+#include "module_magic.h"
+
 /** Forward declarations of functions implementing Pike functions **/
 
 static void f_read_clf( INT32 args );
-
-extern int fd_from_object(struct object *o);
 
 
 /** Global tables **/

@@ -236,6 +236,8 @@ RCSID("$Id$");
 
 #include "image.h"
 
+/* This must be included last! */
+#include "module_magic.h"
 
 #ifdef TRY_USE_MMX
 #include <mmx.h>

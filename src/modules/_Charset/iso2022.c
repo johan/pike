@@ -13,6 +13,8 @@ RCSID("$Id$");
 
 #include "iso2022.h"
 
+/* MUST BE LAST INCLUDE */
+#include "module_magic.h"
 
 #define PRGM_NAME "Locale.Charset.ISO2022"
 

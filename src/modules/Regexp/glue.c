@@ -39,6 +39,9 @@ struct regexp_glue
 
 #endif /* USE_SYSTEM_REGEXP */
 
+/* must be included last */
+#include "module_magic.h"
+
 
 #ifdef THIS
 #undef THIS

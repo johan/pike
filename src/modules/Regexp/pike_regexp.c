@@ -68,6 +68,9 @@
 #include "pike_memory.h"
 #include "error.h"
 
+/* must be included last */
+#include "module_magic.h"
+
 /*
  * The "internal use only" fields in regexp.h are present to pass info from
  * compile to execute that permits the execute phase to run lots faster on

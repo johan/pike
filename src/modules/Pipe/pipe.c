@@ -47,6 +47,10 @@ RCSID("$Id$");
 #endif
 #endif
 
+/* must be included last */
+#include "module_magic.h"
+
+
 /*
 #define PIPE_STRING_DEBUG
 #define PIPE_MMAP_DEBUG

@@ -38,16 +38,18 @@ RCSID("$Id$");
 
 #include "image.h"
 #include "builtin_functions.h"
-
+#include "operators.h"
 #include "encodings.h"
+
+/* MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
 
 extern struct program *image_colortable_program;
 extern struct program *image_program;
 
 void image_x_decode_truecolor_masks(INT32 args);
 void image_x_decode_pseudocolor(INT32 args);
-void f_aggregate_mapping(INT32 args);
-void f_index(INT32 args);
 
 /*
 **! method mapping _decode(string data)

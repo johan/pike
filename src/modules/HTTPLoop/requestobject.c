@@ -41,6 +41,9 @@
 #include <sys/uio.h>
 #endif
 
+/* This must be included last! */
+#include "module_magic.h"
+
 #ifdef _REENTRANT
 #include "accept_and_parse.h"
 #include "log.h"
@@ -442,7 +445,6 @@ void f_aap_index_op(INT32 args)
 
   if(s == s_my_fd)
   {
-    struct object *file_make_object_from_fd(int fd, int mode, int guess);
     /* 0x3800 is from modules/files/file.h, 
      * FILE_READ|FILE_WRITE|FILE_SET_CLOSE_ON_EXEC
      */

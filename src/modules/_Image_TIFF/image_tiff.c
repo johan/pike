@@ -6,12 +6,6 @@
 **!
 */
 
-
-
-
-
-
-
 #ifdef HAVE_LIBTIFF
 RCSID("$Id$");
 
@@ -39,6 +33,9 @@ RCSID("$Id$");
 #include <tiffiop.h>
 #endif
 #include <tiffio.h>
+
+/* This must be included last! */
+#include "module_magic.h"
 
 #ifdef DYNAMIC_MODULE
 static struct program *image_program=NULL;
@@ -774,11 +771,15 @@ static void image_tiff_encode( INT32 args )
 void my_tiff_warning_handler(const char* module, const char* fmt, ...){}
 void my_tiff_error_handler(const char* module, const char* fmt, ...){}
 
+#else
+
+/* This must be included last! */
+#include "module_magic.h"
+
 #endif /* HAVE_LIBTIFF */
 
 void pike_module_init(void)
 {
-  extern void f_index(INT32);
 #ifdef HAVE_LIBTIFF
 #ifdef DYNAMIC_MODULE
    push_string(make_shared_string("Image")); push_int(0);

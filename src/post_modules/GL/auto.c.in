@@ -29,6 +29,8 @@ RCSID("$Id$");
 #include <GL/gl.h>
 #endif /* HAVE_GL_GL_H */
 
+#include "module_magic.h"
+
 #define ZT_INT    1
 #define ZT_FLOAT  2
 #define ZT_DOUBLE 4

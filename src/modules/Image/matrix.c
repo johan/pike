@@ -25,6 +25,9 @@
 
 #include "image.h"
 
+/* This must be included last! */
+#include "module_magic.h"
+
 extern struct program *image_program;
 #ifdef THIS
 #undef THIS /* Needed for NT */

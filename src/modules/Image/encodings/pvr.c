@@ -24,6 +24,9 @@ RCSID("$Id$");
 
 #include "encodings.h"
 
+/* MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
 extern struct program *image_program;
 
 /*

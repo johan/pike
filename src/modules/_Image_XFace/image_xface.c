@@ -38,6 +38,9 @@ RCSID("$Id$");
 
 #include "../Image/image.h"
 
+/* This must be included last! */
+#include "module_magic.h"
+
 #ifdef DYNAMIC_MODULE
 static struct program *image_program=NULL;
 #else

@@ -86,6 +86,10 @@ RCSID("$Id$");
 
 #include "dmalloc.h"
 
+
+/* This must be included last! */
+#include "module_magic.h"
+
 #define MAX_PARSE_RECURSE 102
 
 void do_html_parse(struct pike_string *ss,
@@ -972,7 +976,6 @@ void f_get_all_active_fd(INT32 args)
 {
   int i,fds,q, ne;
   struct stat foo;
-  extern int fds_size;
 
   ne = fds_size;
   if( MAX_OPEN_FILEDESCRIPTORS > ne )

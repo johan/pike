@@ -8,6 +8,9 @@
 #include "image_machine.h"
 #include "gif_lzw.h"
 
+/* MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
 #define DEFAULT_OUTBYTES 16384
 #define STDLZWCODES 8192
 

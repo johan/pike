@@ -24,6 +24,8 @@ RCSID("$Id$");
 #include <GL/glut.h>
 #endif
 
+#include "module_magic.h"
+
 static void pre_init()
 {
 }

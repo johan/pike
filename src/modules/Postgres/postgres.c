@@ -48,6 +48,9 @@ MUTEX_T pike_postgres_mutex STATIC_MUTEX_INIT;
 
 #include "pg_types.h"
 
+/* must be included last */
+#include "module_magic.h"
+
 #ifdef PGDEBUG
 #define pgdebug printf
 #else
@@ -506,6 +509,7 @@ void pike_module_exit(void)
 }
 
 #else /* HAVE_POSTGRES */
+#include "module_magic.h"
 void pike_module_init(void) {}
 void pike_module_exit(void) {}
 #endif /* HAVE_POSTGRES */

@@ -24,6 +24,9 @@
 
 #include <md5.h>
 
+/* THIS MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
 #undef THIS
 #define THIS ((struct md5_ctx *)(fp->current_storage))
 #define OBTOCTX(o) ((struct md5_ctx *)(o->storage))

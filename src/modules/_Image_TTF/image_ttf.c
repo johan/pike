@@ -37,6 +37,7 @@ RCSID("$Id$");
 #ifdef HAVE_LIBTTF
 #include "../Image/image.h"
 
+
 #ifdef DYNAMIC_MODULE
 static struct program *image_program=NULL;
 #else
@@ -47,6 +48,9 @@ extern struct program *image_program;
 static TT_Engine engine;
 
 #endif /* HAVE_LIBTTF */
+
+/* This must be included last! */
+#include "module_magic.h"
 
 static struct pike_string *param_baseline;
 static struct pike_string *param_quality;
@@ -1216,7 +1220,6 @@ static void image_ttf_faceinstance_face(INT32 args)
 
 /*** module init & exit & stuff *****************************************/
 
-void f_index(INT32 args);
 
 void pike_module_exit(void)
 {

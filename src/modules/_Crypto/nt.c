@@ -24,6 +24,8 @@
 
 #include <wincrypt.h>
 
+/* THIS MUST BE INCLUDED LAST */
+#include "module_magic.h"
 
 static struct program *cryptcontext_program = NULL;
 

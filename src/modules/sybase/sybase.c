@@ -44,6 +44,8 @@ RCSID("$Id$");
 #include "sybase.h"
 
 
+/* This must be included last! */
+#include "module_magic.h"
 
 /* define this to enable debugging */
 /* #define SYBDEBUG */
@@ -1249,6 +1251,9 @@ void pike_module_init (void) {
 
 
 #else /* HAVE_SYBASE */
+/* This must be included last! */
+#include "module_magic.h"
+
 void pike_module_init (void) {}
 void pike_module_exit (void) {}
 #endif /* HAVE_SYBASE */

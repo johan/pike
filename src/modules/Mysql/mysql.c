@@ -80,6 +80,8 @@ typedef struct dynamic_buffer_s dynamic_buffer;
 #include <memory.h>
 #endif
 
+#include "module_magic.h"
+
 #ifdef HAVE_MYSQL
 
 /* Local includes */

@@ -15,6 +15,8 @@ RCSID("$Id$");
 #include "operators.h"
 #include "builtin_functions.h"
 
+/* MUST BE INCLUDED LAST */
+#include "module_magic.h"
 
 static INT32 low_parse_iff(unsigned char *data, INT32 len, unsigned char *hdr,
 			   struct mapping *m, unsigned char *stopchunk)

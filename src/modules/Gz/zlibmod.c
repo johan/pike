@@ -29,6 +29,9 @@ RCSID("$Id$");
 
 #include <zlib.h>
 
+/* This must be included last! */
+#include "module_magic.h"
+
 struct zipper
 {
   struct z_stream_s gz;

@@ -13,6 +13,9 @@ RCSID("$Id$");
 
 #include "iso2022.h"
 
+/* MUST BE LAST INCLUDE */
+#include "module_magic.h"
+
 #ifdef __CHAR_UNSIGNED__
 #define SIGNED signed
 #else

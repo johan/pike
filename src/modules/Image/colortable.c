@@ -45,6 +45,10 @@ RCSID("$Id$");
 #include "colortable.h"
 #include "initstuff.h"
 
+/* This must be included last! */
+#include "module_magic.h"
+
+
 #define WEIGHT_NEEDED (nct_weight_t)(0x10000000)
 #define WEIGHT_REMOVE (nct_weight_t)(0x10000001)
 

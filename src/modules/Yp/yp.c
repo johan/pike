@@ -28,6 +28,9 @@
 #include "builtin_functions.h"
 #include "module_support.h"
 
+/* must be included last */
+#include "module_magic.h"
+
 RCSID("$Id$");
 
 #define YPERROR(fun,err) do{ if(err) error("yp->%s(): %s\n", (fun), \
@@ -253,6 +256,7 @@ void pike_module_exit(void)
 }
 #else
 
+#include "module_magic.h"
 void pike_module_init(void) {}
 void pike_module_exit(void) {}
 

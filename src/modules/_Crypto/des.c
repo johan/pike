@@ -41,6 +41,9 @@
 
 #include <des.h>
 
+/* THIS MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
 struct pike_crypto_des {
   unsigned INT32 method[DES_EXPANDED_KEYLEN];
   void (*crypt_fun)(unsigned INT8 *dest,

@@ -46,6 +46,10 @@ RCSID("$Id$");
 #include "colortable.h"
 #include "builtin_functions.h"
 
+/* MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
+
 extern struct program *image_colortable_program;
 extern struct program *image_program;
 

@@ -1,9 +1,11 @@
 #include "global.h"
 #include "config.h"
+#include "module_magic.h"
 
 RCSID("$Id$");
 
 /* Well... Sort of basic, right? :-) */
+
 void pike_module_init()
 {
 }

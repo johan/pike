@@ -45,17 +45,19 @@ RCSID("$Id$");
 #include "image.h"
 #include "colortable.h"
 #include "builtin_functions.h"
+#include "operators.h"
 #include "mapping.h"
 
 #include "gif_lzw.h"
 
 #include "encodings.h"
 
+/* MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
 extern struct program *image_colortable_program;
 extern struct program *image_program;
 extern struct program *image_layer_program;
-
-extern void f_add(INT32 args);
 
 enum 
 {

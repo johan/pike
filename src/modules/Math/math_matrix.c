@@ -20,6 +20,9 @@
 
 #include "math_module.h"
 
+/* must be included last */
+#include "module_magic.h"
+
 /*
 **! module Math
 **! class Matrix

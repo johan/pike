@@ -185,6 +185,9 @@ Kerningtable types:
 
 #include "fdlib.h"
 
+/* This must be included last! */
+#include "module_magic.h"
+
 extern struct program *font_program;
 extern struct program *image_program;
 

@@ -34,7 +34,6 @@ RCSID("$Id$");
 #include "error.h"
 #include "operators.h"
 
-
 #include "image.h"
 #include "colortable.h"
 
@@ -42,7 +41,9 @@ RCSID("$Id$");
 
 #include "encodings.h"
 
-extern void f_add(INT32 args);
+/* MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
 
 extern struct program *image_colortable_program;
 extern struct program *image_program;

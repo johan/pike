@@ -28,6 +28,10 @@
 /* Prototypes */
 #include "crypto.h"
 
+/* THIS MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
+
 struct pike_crypto_cbc {
   struct object *object;
   unsigned INT8 *iv;

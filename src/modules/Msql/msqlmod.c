@@ -806,6 +806,7 @@ void pike_module_init(void)
 }
 
 #else /*HAVE_MSQL*/
+#include "module_magic.h"
 void pike_module_init(void) {}
 #endif /*HAVE_MSQL*/
 

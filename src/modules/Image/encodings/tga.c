@@ -77,6 +77,10 @@
 #include "image.h"
 #include "colortable.h"
 
+/* MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
+
 RCSID("$Id$");
 
 #ifndef MIN

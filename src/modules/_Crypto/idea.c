@@ -24,6 +24,9 @@
 /* Backend includes */
 #include <idea.h>
 
+/* THIS MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
 #undef THIS
 #define THIS ((unsigned INT16 *)(fp->current_storage))
 #define OBTOCTX(o) ((unsigned INT16 *)(o->storage))

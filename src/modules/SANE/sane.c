@@ -29,6 +29,9 @@
 
 #include "../Image/image.h"
 
+/* must be included last */
+#include "module_magic.h"
+
 RCSID("$Id$");
 
 /*
@@ -746,6 +749,7 @@ void pike_module_exit()
 }
 
 #else
+#include "module_magic.h"
 void pike_module_init() {}
 void pike_module_exit() {}
 #endif

@@ -60,6 +60,9 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "module_support.h"
 
+/* This must be included last! */
+#include "module_magic.h"
+
 #ifdef HAVE_JPEGLIB_H
 
 #include "../Image/image.h"
@@ -951,8 +954,6 @@ void image_jpeg_quant_tables(INT32 args)
 #endif /* HAVE_JPEGLIB_H */
 
 /*** module init & exit & stuff *****************************************/
-
-void f_index(INT32 args);
 
 
 void pike_module_exit(void)

@@ -203,6 +203,9 @@ RCSID("$Id$");
 #include "image.h"
 #include "colortable.h"
 
+/* This must be included last! */
+#include "module_magic.h"
+
 static struct mapping *colors=NULL;
 static struct object *colortable=NULL;
 static struct array *colornames=NULL;

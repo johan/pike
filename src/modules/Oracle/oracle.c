@@ -33,6 +33,9 @@
 #include "opcodes.h"
 #include "pike_macros.h"
 
+/* must be included last */
+#include "module_magic.h"
+
 #ifdef HAVE_ORACLE
 
 /* VERY VERY UGLY */

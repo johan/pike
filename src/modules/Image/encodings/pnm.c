@@ -58,12 +58,16 @@ RCSID("$Id$");
 #include "threads.h"
 #include "array.h"
 #include "error.h"
+#include "operators.h"
 
 
 #include "image.h"
 #include "builtin_functions.h"
 
 #include "encodings.h"
+
+/* MUST BE INCLUDED LAST */
+#include "module_magic.h"
 
 extern struct program *image_colortable_program;
 extern struct program *image_program;
@@ -301,8 +305,6 @@ void img_pnm_encode_P1(INT32 args) /* ascii PBM */
    free_string(a);
    free_string(b);
 }
-
-extern void f_add(INT32 args);
 
 void img_pnm_encode_P2(INT32 args) /* ascii PGM */
 {

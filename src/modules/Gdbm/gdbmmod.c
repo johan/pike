@@ -10,14 +10,17 @@ RCSID("$Id$");
 
 /* Todo: make sure only one thread accesses the same gdbmmod */
 
-#if defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM)
-
 #include "interpret.h"
 #include "svalue.h"
 #include "stralloc.h"
 #include "array.h"
 #include "object.h"
 #include "pike_macros.h"
+
+/* THIS MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
+#if defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM)
 
 #include <gdbm.h>
 

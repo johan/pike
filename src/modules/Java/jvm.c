@@ -3159,6 +3159,8 @@ static void f_new_double_array(INT32 args)
     push_int(0);
 }
 
+#else
+#include "module_magic.h"
 #endif /* HAVE_JAVA */
 
 void pike_module_init(void)

@@ -22,6 +22,10 @@
 
 #include <cast.h>
 
+/* THIS MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
+
 struct pike_crypto_cast {
   struct cast_key key;
   void (*crypt_fun)(struct cast_key* key, unsigned INT8* inblock,

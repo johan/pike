@@ -183,4 +183,11 @@ int sendfile(int out, int in, int *off, int size)
   fi
 fi
 
+if test x"$pike_cv_sys_os" = xWindows_NT ; then
+  # FIXME: These look suspiciouly much like 32bit versions.
+  #        We probably want to use 64bit versions on IA64.
+  LDFLAGS="-lws2_32  $LDFLAGS"
+fi
+
+
 AC_OUTPUT(Makefile,echo FOO >stamp-h )

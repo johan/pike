@@ -11,6 +11,9 @@ RCSID("$Id$");
 
 #include "parser.h"
 
+/* must be included last */
+#include "module_magic.h"
+
 #define PARSER_INITER
 
 /*#define DEBUG*/

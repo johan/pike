@@ -11,6 +11,9 @@
 #include "mapping.h"
 #include "perl_machine.h"
 
+/* must be included last */
+#include "module_magic.h"
+
 #ifdef HAVE_PERL
 
 /* #define PERL_560 1 */

@@ -28,6 +28,9 @@
 /* Prototypes */
 #include "crypto.h"
 
+/* THIS MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
 struct pike_crypto_pipe {
   struct object **objects;
   INT32 num_objs;

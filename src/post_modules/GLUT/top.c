@@ -16,6 +16,8 @@ RCSID("$Id$");
 #include "builtin_functions.h"
 #include "error.h"
 
+#include "module_magic.h"
+
 #ifdef HAVE_LIBGLUT
 #ifdef HAVE_GL_GLUT_H
 #define GLUT_API_VERSION 4

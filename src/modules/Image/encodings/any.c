@@ -40,6 +40,9 @@ RCSID("$Id$");
 
 #include "encodings.h"
 
+/* MUST BE INCLUDED LAST */
+#include "module_magic.h"
+
 /*
 **! method mapping _decode(string data)
 **! method object decode(string data)
