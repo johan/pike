@@ -80,6 +80,8 @@
 /* how can SET_NEXT_AND_FREE leave *next* pointing to a deallocated block?
  * -Hubbe
  */
+/* Afaik it doesn't, but it leaves no value that is usable for the
+ * purposes this macro was made for. /mast */
 #define FREE_AND_GET_REFERENCED(p, item_type, free_item) do {		\
   item_type *next;							\
   while (1) {								\
