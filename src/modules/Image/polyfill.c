@@ -863,3 +863,4 @@ void image_polygone(INT32 args)
    THISOBJ->refs++;
    push_object(THISOBJ);
 }
+
