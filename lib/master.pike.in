@@ -254,6 +254,7 @@ string dirname(string x)
   array(string) tmp=x/":";
   array(string) tmp2=tmp[-1]/"/";
   tmp[-1]=tmp2[..sizeof(tmp2)-2]*"/";
+  if(sizeof(tmp2) >= 2 && tmp2[-2]=="") tmp[-1]+="/";
   return tmp*":";
 #else
   array(string) tmp=EXPLODE_PATH(x);
