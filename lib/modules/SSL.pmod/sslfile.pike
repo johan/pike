@@ -175,6 +175,7 @@ void close()
   read_callback = 0;
   write_callback = 0;
   close_callback = 0;
+  accept_callback = 0;
 
   if (socket) {
     if (sizeof (write_buffer) && !blocking) {
