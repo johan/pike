@@ -225,8 +225,8 @@ void img_bmp_encode(INT32 args)
 
    /* FIXME: According to DMALLOC, oc leaks 1 ref in the testsuite */
 
-   if (oc) oc->refs++;
-   o->refs++;
+   if (oc) add_ref(oc);
+   add_ref(o);
    pop_n_elems(args);
 
    apply(o,"mirrory",0);
