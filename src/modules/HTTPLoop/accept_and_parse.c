@@ -673,12 +673,6 @@ void f_aap_add_filesystem( INT32 args )
 }
 
 
-
-
-#ifndef OFFSETOF
-#define OFFSETOF(str_type, field) ((long)& (((struct str_type *)0)->field))
-#endif
-
 PIKE_MODULE_INIT
 {
 #ifdef _REENTRANT

@@ -131,10 +131,6 @@ void debug_print_timeout_queue( struct timeout *target )
 }
 #endif /* PIKE_DEBUG */
 
-#ifndef OFFSETOF
-#define OFFSETOF(str_type, field) ((long)& (((struct str_type *)0)->field))
-#endif
-
 void aap_remove_timeout_thr(int *to)
 {
   mt_lock( &aap_timeout_mutex );
