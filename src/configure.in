@@ -1254,6 +1254,16 @@ Use --with-threads to force threads support.
            with_threads=no
         fi
      ;;
+     xOpenBSD*)
+        if test "`uname -r|sed -e 's/\([[0-9]]*\).*/\1/'`" -lt 4 \
+             -a "x`uname -m`" = "xalpha"; then
+           PIKE_MSG_WARN([
+OpenBSD/alpha <= 3.x detected, disabling threads.
+Use --with-threads to force threads support.
+])
+           with_threads=no
+        fi
+     ;;
    esac
 
    if test "x${with_threads-}" = x; then
