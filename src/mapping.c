@@ -2262,7 +2262,6 @@ unsigned gc_touch_all_mappings(void)
     fatal("Error in mapping link list.\n");
   for (m = first_mapping; m; m = m->next) {
     debug_gc_touch(m);
-    debug_gc_touch(m->data);
     n++;
     if (m->next && m->next->prev != m)
       fatal("Error in mapping link list.\n");

@@ -3825,6 +3825,84 @@ ifefun(gc,
     gc();
     return sizeof (m);
   ]], 1)
+
+  test_any([[
+    return class {
+      mapping x;
+      int test()
+      {
+	object o = class {
+	    mapping a = ([1: this_object()]);
+	    void destroy() {x = a;}
+	  }();
+	o = 0;
+	gc();
+	return x && !x[1];
+      }
+    }()->test();
+  ]], 1)
+  test_any([[
+    return class {
+      multiset x;
+      int test()
+      {
+	object o = class {
+	    multiset a = (<this_object()>);
+	    void destroy() {x = a;}
+	  }();
+	o = 0;
+	gc();
+	return x && !sizeof (x + (<>));
+      }
+    }()->test();
+  ]], 1)
+  test_any([[
+    return class {
+      array x;
+      int test()
+      {
+	object o = class {
+	    array a = ({this_object()});
+	    void destroy() {x = a;}
+	  }();
+	o = 0;
+	gc();
+	return x && !x[0];
+      }
+    }()->test();
+  ]], 1)
+  test_any([[
+    return class {
+      class Obj (object o) {void destroy() {}}
+      Obj x;
+      int test()
+      {
+	object o = class {
+	    Obj a = Obj (this_object());
+	    void destroy() {x = a;}
+	  }();
+	o = 0;
+	gc();
+	return !x;
+      }
+    }()->test();
+  ]], 1)
+  test_any([[
+    return class {
+      class Obj (object o) {}
+      Obj x;
+      int test()
+      {
+	object o = class {
+	    Obj a = Obj (this_object());
+	    void destroy() {x = a;}
+	  }();
+	o = 0;
+	gc();
+	return x && !x->o;
+      }
+    }()->test();
+  ]], 1)
 ]])
 
 cond([[ sizeof( cpp("__AUTO_BIGNUM__")/"__AUTO_BIGNUM__" ) == 1 ]],
