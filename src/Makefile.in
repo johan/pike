@@ -108,6 +108,7 @@ PIKE_MODULE_RELOC=@PIKE_MODULE_RELOC@
 
 # Set to an appropriate invocation of valgrind (or similar)
 VALGRIND=@VALGRIND@
+VALGRINDARGS=-q
 
 MAKE_FLAGS=
 

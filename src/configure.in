@@ -1339,7 +1339,7 @@ else :; fi
 if test "x$with_valgrind" = "xno"; then
   VALGRIND=""
 else
-  VALGRIND="$with_valgrind -q"
+  VALGRIND="$with_valgrind"
   AC_DEFINE(USE_VALGRIND)
 fi
 export VALGRIND
