@@ -27,13 +27,7 @@ RCSID("$Id$");
 
 PMOD_EXPORT struct array empty_array=
 {
-  1,                     /* Never free */
-#ifdef PIKE_SECURITY
-  0,
-#endif
-#ifdef USE_LOCAL_MUTEX
-  PTHREAD_MUTEX_INITIALIZER,
-#endif
+  PIKE_CONSTANT_MEMOBJ_INIT(1), /* Never free */
   &empty_array,          /* Next */
   &empty_array,          /* previous (circular) */
   0,                     /* Size = 0 */
