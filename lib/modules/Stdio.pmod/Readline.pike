@@ -884,7 +884,6 @@ class DefaultEditKeys
 
     if(ic->dumb) {
       ic->bind("^J", newline);
-      ic->bind("^M", lambda() { });
       return;
     }
     
