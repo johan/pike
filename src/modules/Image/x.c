@@ -61,8 +61,8 @@ void image_to8bit(INT32 args) /* compat function */
 
   if(!res) error("Out of memory\n");
 
-  o=clone_object(image_colortable_program,args);
-  nct=get_storage(o,image_colortable_program);
+  o = clone_object(image_colortable_program, args);
+  nct=(struct neo_colortable *)get_storage(o, image_colortable_program);
 
   i=this->xsize*this->ysize;
   s=this->img;
