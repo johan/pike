@@ -1,7 +1,7 @@
 /*\
 ||| This file is part of Pike. For copyright information see COPYRIGHT.
-||| Pike is distributed as GPL (General Public License)
-||| See the files COPYING and DISCLAIMER for more information.
+||| Pike is distributed under GPL, LGPL and MPL. See the file COPYING
+||| for more information.
 \*/
 /* fsort- a smarter quicksort /Hubbe */
 /* Optimized for minimum amount of compares */
