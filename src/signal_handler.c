@@ -523,8 +523,10 @@ void process_done(pid_t pid, char *from)
       break;
 
     default:
+#ifdef PROC_DEBUG
       dump_process_history(pid);
-      fatal("Process debug: Unknown child %ld in %s! (status=%d)\n",(long)pid,from,process_info[pid]);
+      fprintf(stderr,"Process debug: Unknown child %ld in %s! (status=%d)\n",(long)pid,from,process_info[pid]);
+#endif
   }
 }
 
