@@ -1083,6 +1083,8 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	      
 	      if(d->parts[e].argument & DEF_ARG_STRINGIFY)
 	      {
+		while(l && WC_ISSPACE(a[l-1]))
+		  l--;
 		PUSH_STRING(a,l,&tmp);
 	      }else{
 		if(DEF_ARG_NOPRESPACE)
