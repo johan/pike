@@ -7,6 +7,9 @@
 
 /* $Id$ */
 
+/* Source: System.Memory
+ * Argument: An initialized instance of the System.Memory class
+ */
 static struct program *shm_program;
 
 struct sm_source
@@ -68,6 +71,12 @@ struct source *source_system_memory_make( struct svalue *s,
     return 0;
   }
 
+  if( !res->mem->data || !res->mem->len )
+  {
+    free(res);
+    return 0;
+  }
+  
   res->s.free = free_source;
   res->s.get_data = get_data;
   res->obj = s->u.object;

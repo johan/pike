@@ -6,6 +6,10 @@
 #include "shuffler.h"
 /* $Id$ */
 
+/* Source: String
+ * Argument: 8-bit string
+ */
+
 struct ps_source
 {
   struct source s;
