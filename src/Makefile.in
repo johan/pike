@@ -705,7 +705,9 @@ export: full_export
 
 bin_export: 
 	@rm -f *.burk
-	@$(RUNPIKE) $(TMP_BINDIR)/install.pike --export \
+	@no_autodoc="--no-autodoc"; \
+	if [ -f autodoc.xml ]; then no_autodoc=""; fi; \
+	$(RUNPIKE) $(TMP_BINDIR)/install.pike --export $no_autodoc \
 	exec_prefix="$(exec_prefix)" lib_prefix="$(lib_prefix)" \
 	TMP_LIBDIR="$(TMP_LIBDIR)" LIBDIR_SRC="$(LIBDIR_SRC)" \
 	SRCDIR="$(SRCDIR)" prefix="$(prefix)" DOCDIR_SRC="$(DOCDIR_SRC)" \
