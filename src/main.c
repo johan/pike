@@ -243,6 +243,7 @@ int dbm_main(int argc, char **argv)
 #ifdef PIKE_NEW_MULTISETS
     init_multiset();
 #endif
+    init_builtin_constants();
   }
 
 #ifdef SHARED_NODES

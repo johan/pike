@@ -69,6 +69,7 @@ PMOD_EXPORT struct callable *quick_add_efun(char *name, ptrdiff_t name_length,
 					    INT16 flags,
 					    optimize_fun optimize,
 					    docode_fun docode);
+void init_builtin_constants(void);
 void cleanup_added_efuns(void);
 /* Prototypes end here */
 
