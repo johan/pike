@@ -481,6 +481,8 @@ int dbm_main(int argc, char **argv)
   
   GETTIMEOFDAY(&current_time);
   
+  low_th_init();
+
   init_shared_string_table();
   init_interpreter();
   init_types();
@@ -488,8 +490,6 @@ int dbm_main(int argc, char **argv)
   init_lex();
   init_program();
   init_object();
-
-  low_th_init();
 
   init_modules();
   master();
