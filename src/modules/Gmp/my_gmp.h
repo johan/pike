@@ -55,6 +55,10 @@ struct pike_string *low_get_mpz_digits(MP_INT *mpz, int base);
 #define mpz_xor my_mpz_xor
 #endif
 
+#ifndef HAVE_MPZ_GETLIMBN
+#define mpz_getlimbn(mpz, pos) ((mpz)->_mp_d[pos])
+#endif
+
 extern struct program *mpzmod_program;
 extern struct program *mpq_program;
 extern struct program *mpf_program;
@@ -74,6 +78,20 @@ extern struct program *bignum_program;
 #define OBTOMPZ(o) ((MP_INT *)(o->storage))
 #define OBTOMPQ(o) ((MP_RAT *)(o->storage))
 #define OBTOMPF(o) ((MP_FLT *)(o->storage))
+
+#ifndef GMP_NUMB_BITS
+#define GMP_NUMB_BITS (SIZEOF_MP_LIMB_T * CHAR_BIT)
+#endif
+#ifndef GMP_NUMB_MASK
+#define GMP_NUMB_MASK ((mp_limb_t) -1)
+#endif
+
+/* Bits excluding the sign bit, if any. */
+#define ULONG_BITS (SIZEOF_LONG * 8)
+#define INT_TYPE_BITS (SIZEOF_INT_TYPE * CHAR_BIT - 1)
+#ifdef INT64
+#define INT64_BITS (SIZEOF_INT64 * CHAR_BIT - 1)
+#endif
 
 /* MPQ protos */
 void pike_init_mpq_module(void);
