@@ -557,6 +557,14 @@ static void f_big_query(INT32 args)
 
   pop_n_elems(args);
 
+  if(curs->cda.ft != 4) {
+    ocan(&curs->cda);
+    curs->next = THIS->cdas;
+    THIS->cdas = curs;
+    push_int(0);
+    return;
+  }
+
   push_object(this_object());
 
   /*
