@@ -305,7 +305,10 @@ cpu_time_t get_cpu_time (void)
 
 cpu_time_t get_cpu_time (void)
 {
-  return gethrvtime() * (CPU_TIME_TICKS / 1000000000);
+  /* Faster than CONVERT_TIME(gethrvtime(), 1000000000, CPU_TIME_TICKS)
+   * It works under the assumtion that CPU_TIME_TICKS <= 1000000000
+   * and that 1000000000 % CPU_TIME_TICKS == 0. */
+  return gethrvtime() / (1000000000 / CPU_TIME_TICKS);
 }
 
 #elif defined (GETRUSAGE_THROUGH_PROCFS)
@@ -325,9 +328,9 @@ cpu_time_t get_cpu_time (void)
 
   return
     prs.pr_utime.tv_sec * CPU_TIME_TICKS +
-    prs.pr_utime.tv_nsec * (CPU_TIME_TICKS / 1000000000) +
+    prs.pr_utime.tv_nsec / (1000000000 / CPU_TIME_TICKS) +
     prs.pr_stime.tv_sec * CPU_TIME_TICKS +
-    prs.pr_stime.tv_nsec * (CPU_TIME_TICKS / 1000000000);
+    prs.pr_stime.tv_nsec / (1000000000 / CPU_TIME_TICKS);
 }
 
 #elif defined (HAVE_TIMES)
