@@ -85,7 +85,7 @@ int main(int argc, string *argv)
     }
     // Make s symlink to the proper place...
     tmp=reverse(tmp[e+1..]);
-    system("rm -f tmp/pike; mkdir tmp; ln -s "+tmp*"/"+"/0.6 tmp/pike");
+    system("rm -f tmp/pike; mkdir tmp; ln -s "+tmp*"/"+"/0.5 tmp/pike");
     cd("tmp");
     tmp = getcwd()/"/" - ({ "" });
   } else {
