@@ -412,7 +412,7 @@ int multiset_is_constant (struct multiset *l, struct processing *p);
 node *make_node_from_multiset (struct multiset *l);
 PMOD_EXPORT void f_aggregate_multiset (int args);
 struct multiset *copy_multiset_recursively (struct multiset *l,
-					    struct processing *p);
+					    struct mapping *p);
 PMOD_EXPORT ptrdiff_t multiset_get_nth (struct multiset *l, size_t n);
 
 unsigned gc_touch_all_multisets (void);

@@ -591,9 +591,9 @@ PMOD_EXPORT void print_short_svalue (FILE *out, const union anything *a, TYPE_T 
 PMOD_EXPORT void print_svalue_compact (FILE *out, const struct svalue *s);
 PMOD_EXPORT void print_short_svalue_compact (FILE *out, const union anything *a, TYPE_T type);
 PMOD_EXPORT void copy_svalues_recursively_no_free(struct svalue *to,
-				      const struct svalue *from,
-				      size_t num,
-				      struct processing *p);
+						  const struct svalue *from,
+						  size_t num,
+						  struct mapping *m);
 void check_short_svalue(const union anything *u, TYPE_T type);
 void debug_check_svalue(const struct svalue *s);
 void debug_check_type_hint (const struct svalue *svals, size_t num, TYPE_FIELD type_hint);

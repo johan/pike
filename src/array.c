@@ -2096,33 +2096,29 @@ PMOD_EXPORT struct pike_string *implode(struct array *a,struct pike_string *del)
   return low_end_shared_string(ret);
 }
 
-PMOD_EXPORT struct array *copy_array_recursively(struct array *a,struct processing *p)
+PMOD_EXPORT struct array *copy_array_recursively(struct array *a,
+						 struct mapping *m)
 {
-  struct processing doing;
   struct array *ret;
+  struct svalue aa, bb;
 
 #ifdef PIKE_DEBUG
   if(d_flag > 1)  array_check_type_field(a);
 #endif
 
-  doing.next=p;
-  doing.pointer_a=(void *)a;
-  for(;p;p=p->next)
-  {
-    if(p->pointer_a == (void *)a)
-    {
-      ret=(struct array *)p->pointer_b;
-      add_ref(ret);
-      return ret;
-    }
-  }
-
   ret=allocate_array_no_init(a->size,0);
-  doing.pointer_b=(void *)ret;
+
+  aa.type = T_ARRAY;
+  aa.subtype = 0;
+  aa.u.array = a;
+  bb.type = T_ARRAY;
+  bb.subtype = 0;
+  bb.u.array = ret;
+  low_mapping_insert(m, &aa, &bb);
 
   ret->flags = a->flags & ~ARRAY_LVALUE;
 
-  copy_svalues_recursively_no_free(ITEM(ret),ITEM(a),a->size,&doing);
+  copy_svalues_recursively_no_free(ITEM(ret),ITEM(a),a->size,m);
 
   ret->type_field=a->type_field;
   return ret;
