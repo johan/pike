@@ -546,7 +546,6 @@ void find_external_context(struct external_variable_context *loc,
 #ifdef DEBUG_MALLOC
     if (loc->inherit->storage_offset == 0x55555555) {
       fprintf(stderr, "The inherit %p has been zapped!\n", loc->inherit);
-      debug_malloc_dump_references(loc->inherit,0,2,0);
       fprintf(stderr, "It was extracted from the program %p %d\n", p, loc->parent_identifier);
       describe(p);
       fprintf(stderr, "Which was in turn taken from the object %p\n", loc->o);
