@@ -182,7 +182,7 @@ static int do_deflate(dynamic_buffer *buf,
    else
       do
       {
-	 this->gz.next_out=low_make_buf_space(
+	 this->gz.next_out=(Bytef *)low_make_buf_space(
 	    /* recommended by the zlib people */
 	    (this->gz.avail_out =
 	     this->gz.avail_in ?
@@ -531,7 +531,7 @@ static void gz_inflate(INT32 args)
       push_string(old_epilogue);
       this->epilogue = NULL;
     }
-    push_string(make_shared_binary_string(this->gz.next_in,
+    push_string(make_shared_binary_string((const char *)this->gz.next_in,
 					  this->gz.avail_in));
     if(old_epilogue)
       f_add(2);
