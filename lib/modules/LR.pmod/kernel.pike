@@ -97,29 +97,5 @@ int equalp(object /* (kernel) */ state)
     state->make_kernel_hash();
   }
   return(kernel_hash == state->kernel_hash);
-
-
-  /* Could probably make it test only kernel items */
-
-  foreach (state->items, object(item) i) {
-    if (search(items, i) == -1) {
-      int found = 0;
-
-      foreach (items, object(item) i2) {
-	/* Two items are the same if they have the same rule
-	 * and the same offset;
-	 */
-	if ((i->offset == i2->offset) &&
-	    (i->r == i2->r)) {
-	  found = 1;
-	  break;		/* BUG in Pike 0.3 beta */
-	}
-      }
-      if (!found) {
-	return(0);
-      }
-    }
-  }
-  return(1);
 }
 
