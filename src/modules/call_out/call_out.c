@@ -55,7 +55,7 @@ struct call_out_s
  (X)->prev_fun=(struct call_out_s **)-1; \
  (X)->caller=(struct object *)-1; \
  (X)->args=(struct array *)-1; \
- (X)->pos=-1;
+ (X)->pos=-1
 #else
 #define MESS_UP_BLOCK(X)
 #endif
@@ -66,8 +66,9 @@ struct call_out_s
   if(X->next_arr) X->next_arr->prev_arr=X->prev_arr; \
   *(X->prev_fun)=X->next_fun; \
   if(X->next_fun) X->next_fun->prev_fun=X->prev_fun; \
-  MESS_UP_BLOCK(X) ;
-BLOCK_ALLOC(call_out_s, 1022 )
+  MESS_UP_BLOCK(X)
+
+BLOCK_ALLOC(call_out_s, 1022)
 
 typedef struct call_out_s call_out;
 
