@@ -2748,34 +2748,34 @@ PIKE_MODULE_INIT
   
   init_sdl_constants();
    
- push_text("Image.Image");
+  push_text("Image.Image");
   SAFE_APPLY_MASTER("resolv", 1);
 
-  if(Pike_sp[-1].type == T_PROGRAM) {
-    _image_program = Pike_sp[-1];
-    image_program = program_from_svalue(&_image_program);
-  } else {
-    image_program = NULL;
-  }
+  _image_program = Pike_sp[-1];
+  dmalloc_touch_svalue(&_image_program);
+  image_program = program_from_svalue(&_image_program);
+
   Pike_sp--;
 
   push_text("Image.Color.Color");
   SAFE_APPLY_MASTER("resolv", 1);
   
-  if(Pike_sp[-1].type == T_PROGRAM) {
-    _image_color_program = Pike_sp[-1];
-    image_color_program = program_from_svalue(&_image_color_program);
-  } else {
-    image_color_program = NULL;
-  }
+  _image_color_program = Pike_sp[-1];
+  dmalloc_touch_svalue(&_image_program);
+  image_color_program = program_from_svalue(&_image_color_program);
+
   Pike_sp--;
 }
 
 PIKE_MODULE_EXIT
 {
   EXIT;
+  free_svalue(&_image_color_program);
+  _image_color_program.type = PIKE_T_INT;
+  image_color_program = NULL;
   free_svalue(&_image_program);
   _image_program.type = PIKE_T_INT;
+  image_program = NULL;
   SDL_Quit();
 }
 
