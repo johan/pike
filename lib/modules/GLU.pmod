@@ -13,7 +13,7 @@
 //! the GLU library (Mesa was used last time), tweak it so that
 //! it compiles as Pike code and then check it in into the CVS.
 
-#if constant(GL)
+#if constant(GL) && constant(GL.glOrtho)
 import GL;
 
 #ifndef M_PI

@@ -2,7 +2,7 @@
 // $Id$
 
 #pike __REAL_VERSION__
-#if constant(GL)
+#if constant(GL) && constant(GL.glOrtho)
 
 //! GL Universal Environment
 
