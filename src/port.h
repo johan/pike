@@ -222,9 +222,9 @@ unsigned long my_rand(void);
 void my_srand(long seed);
 
 #ifdef OWN_GETHRTIME
-void own_gethrtime_init();
+void own_gethrtime_init(void);
 void own_gethrtime_update(struct timeval *ptr);
-long long gethrtime();
+long long gethrtime(void);
 
 #define hrtime_t long long
 #endif
