@@ -614,7 +614,6 @@ rerun:
 		  if ((len<<2) > QUANT_MAXIMUM_NUMBER_OF_COLORS)
 		  {
 		     strip++;
-		     fprintf(stderr,"strip: %d\n",strip);
 		     free(tbl);
 		     goto rerun;
 		  }
