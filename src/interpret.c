@@ -531,13 +531,32 @@ static struct inherit dummy_inherit
 PMOD_EXPORT void find_external_context(struct external_variable_context *loc,
 				       int depth)
 {
-  struct program *p = loc->o->prog;
+  struct program *p;
 
   TRACE((4, "-find_external_context(%d, inherit=%ld)\n", depth,
 	 DO_NOT_WARN((long)(loc->o->prog ? loc->inherit - loc->o->prog->inherits : 0))));
 
+#ifdef PIKE_DEBUG
   if(!loc->o)
-    Pike_error("Current object is destructed\n");
+    Pike_fatal("No object\n");
+#endif
+
+  p = loc->o->prog;
+
+#ifdef DEBUG_MALLOC
+  if (loc->o->refs == 0x55555555) {
+    fprintf(stderr, "The object %p has been zapped!\n", loc->o);
+    describe(p);
+    Pike_fatal("Object zapping detected.\n");
+  }
+  if (p && p->refs == 0x55555555) {
+    fprintf(stderr, "The program %p has been zapped!\n", p);
+    describe(p);
+    fprintf(stderr, "Which taken from the object %p\n", loc->o);
+    describe(loc->o);
+    Pike_fatal("Looks like the program %p has been zapped!\n", p);
+  }
+#endif /* DEBUG_MALLOC */
 
   while(--depth>=0)
   {
@@ -620,16 +639,16 @@ PMOD_EXPORT void find_external_context(struct external_variable_context *loc,
       Pike_fatal("Looks like the program %p has been zapped!\n", p);
     }
 #endif /* DEBUG_MALLOC */
-    
-#ifdef PIKE_DEBUG
-    if(loc->parent_identifier < 0 ||
-       (p && loc->parent_identifier > p->num_identifier_references))
-      Pike_fatal("Identifier out of range, loc->parent_identifer=%d!\n",
-		 loc->parent_identifier);
-#endif
 
-    if (p)
+    if (p) {
+#ifdef PIKE_DEBUG
+      if(loc->parent_identifier < 0 ||
+	 loc->parent_identifier > p->num_identifier_references)
+	Pike_fatal("Identifier out of range, loc->parent_identifer=%d!\n",
+		   loc->parent_identifier);
+#endif
       loc->inherit=INHERIT_FROM_INT(p, loc->parent_identifier);
+    }
     else
       /* Return a valid pointer to a dummy inherit for the convenience
        * of the caller. Identifier offsets will be bogus but it'll
