@@ -6,7 +6,7 @@
  * Henrik Grubbström 1996-12-21
  */
 
-/* Pike master include file */
+/* Pike master headerfile */
 #include "global.h"
 
 #ifdef HAVE_CONFIG_H
