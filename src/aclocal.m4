@@ -77,9 +77,10 @@ pushdef([AC_PROG_CC],
   AC_MSG_CHECKING([if we are using TCC])
   AC_CACHE_VAL(pike_cv_prog_tcc, [
     case "`$CC -V 2>&1|head -n 1`" in
-      tcc*)
-        pike_cv_prog_tcc="yes"
-      ;;
+dnl test is broken, catches tinycc too, which doesn't like -Ysystem
+dnl      tcc*)
+dnl        pike_cv_prog_tcc="yes"
+dnl      ;;
       *) pike_cv_prog_tcc="no" ;;
     esac
   ])
