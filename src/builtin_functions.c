@@ -3115,10 +3115,12 @@ node *optimize_replace(node *n)
 	} else {
 	  extern struct program *multi_string_replace_program;
 	  INT16 lfun;
-	  struct object *replace_obj =
-	    clone_object(multi_string_replace_program,
-			 eval_low(*arg1) + eval_low(*arg2));
+	  struct object *replace_obj;
 	  node *ret = NULL;
+	  INT32 args = eval_low(*arg1);	/* NOTE: Addition splitted to ensure */
+	  args += eval_low(*arg2);	/*       correct evaluation order.   */
+
+	  replace_obj = clone_object(multi_string_replace_program, args);
 
 	  push_object(replace_obj);
 	  if (replace_obj->prog &&
