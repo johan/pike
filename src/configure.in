@@ -458,7 +458,6 @@ IRIX detected, disabling threads.
 Use --with-threads to force threads support.
 ])
            with_threads=no
-        fi
      ;;
    esac
 
