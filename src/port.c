@@ -269,9 +269,11 @@ void MEMCPY(void *bb,const void *aa,int s)
       /*     fprintf(stderr, "plain ol' memcpy\n"); */
       memcpy( bb, aa, s );
 #else
-      char *b=(char *)bb;
-      char *a=(char *)aa;
-      for(;s;s--) *(b++)=*(a++);
+      {
+	char *b=(char *)bb;
+	char *a=(char *)aa;
+	for(;s;s--) *(b++)=*(a++);
+      }
 #endif
 #ifdef TRY_USE_MMX
     }

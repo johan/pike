@@ -5499,7 +5499,7 @@ void init_builtin_efuns(void)
 		tFunc(tIntPos tMix tObj,tArr(tVar(1))),
 		tFunc(tIntPos tObj tOr(tVoid,tMix),tArr(tVar(1))),
 		tFunc(tIntPos tMix tMix 
-		      tFuncV(,tMix,tSetvar(1,tMix)),tArr(tVar(1)))),
+		      tFuncV(tNone,tMix,tSetvar(1,tMix)),tArr(tVar(1)))),
 	   OPT_TRY_OPTIMIZE);
 		
   ADD_FUNCTION("inherit_list",f_inherit_list,tFunc(tProgram,tArr(tProgram)),0);

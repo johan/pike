@@ -286,7 +286,7 @@ static INLINE off_t file_size(int fd)
 {
   struct stat tmp;
   if((!fd_fstat(fd, &tmp)) &&
-     S_ISREG(tmp.st_mode))
+     ( tmp.st_mode & S_IFMT) == S_IFREG)
      return (off_t)tmp.st_size;
   return -1;
 }

@@ -164,7 +164,13 @@ char *alloca ();
 
 /* we here define a few types with more defined values */
 
+#if SIZEOF_LONG >= 8
+#define INT64 long
+#else
+#if SIZEOF_LONG_LONG - 0 >= 8
 #define INT64 long long
+#endif
+#endif
 
 #if SIZEOF_SHORT >= 4
 #define INT32 short

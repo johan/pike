@@ -139,6 +139,12 @@
 /* Define if you have memmem.  */
 #undef HAVE_MEMMEM
 
+/* Define if you have memset.  */
+#undef HAVE_MEMSET
+
+/* Define if you have memcpy.  */
+#undef HAVE_MEMCPY
+
 /* Define this if you have dlopen */
 #undef HAVE_DLOPEN
 

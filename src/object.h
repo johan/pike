@@ -114,7 +114,7 @@ void check_all_objects(void);
 #define clone_object debug_clone_object
 #endif
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 #define master() ( get_master() ? get_master() : ( fatal("Couldn't load master object at %s:%d.\n",__LINE__,__FILE__), 0) )
 #else
 #define master() debug_master()
