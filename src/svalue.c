@@ -1296,6 +1296,7 @@ void real_gc_xmark_svalues(struct svalue *s, int num)
 
 #define ZAP_SVALUE()							\
       do {								\
+        debug_gc_check_count_free(s->u.refs);					\
 	free_svalue(s);							\
 	s->type = T_INT;						\
 	s->u.integer = 0;						\
@@ -1304,6 +1305,7 @@ void real_gc_xmark_svalues(struct svalue *s, int num)
 
 #define ZAP_SHORT_SVALUE()						\
       do {								\
+        debug_gc_check_count_free(u->refs);					\
 	free_short_svalue(u, type);					\
 	u->refs = 0;							\
       } while (0)
