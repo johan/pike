@@ -687,6 +687,7 @@ static void f_fetch_fields(INT32 args)
 	  break;
 
 	case SQLT_RID:
+	case SQLT_RDD:
 	  type_name="rowid";
 	  data_size=-1;
 	  type=SQLT_LNG;
