@@ -30,7 +30,7 @@ mapping _decode( string data )
 
   // macbinary decoding
   if (data[102..105]=="mBIN" ||
-      data[65..68]=="JPEG" ||    // wierd standard, that
+      data[65..68]=="JPEG" ||    // weird standard, that
       data[69..72]=="8BIM")
   {
      int i;

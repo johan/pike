@@ -3262,7 +3262,7 @@ static INLINE void _build_cubicle(struct neo_colortable *nct,
    cub->index=realloc(p,i*sizeof(struct nctlu_cubicle));
 
    if (!cub->index) 
-      cub->index=p; /* out of memory, or wierd */
+      cub->index=p; /* out of memory, or weird */
 }
 
 void build_rigid(struct neo_colortable *nct)

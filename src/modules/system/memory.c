@@ -274,7 +274,7 @@ static void memory__mmap(INT32 args,int complain,int private)
       f_call_function(1);
       if (sp[-1].type!=T_INT)
 	 SIMPLE_BAD_ARG_ERROR("Memory.mmap",1,
-			      "(string or) Stdio.File (wierd query_fd)");
+			      "(string or) Stdio.File (weird query_fd)");
       fd=sp[-1].u.integer;
       sp--;
       if (fd<0) {

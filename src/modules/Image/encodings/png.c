@@ -1266,7 +1266,7 @@ static void img_png_decode(INT32 args,int header_only)
    {
       png_decompress(ihdr.compression);
       if (sp[-1].type!=T_STRING)
-	 Pike_error("Image.PNG._decode: got wierd stuff from decompression\n");
+	 Pike_error("Image.PNG._decode: got weird stuff from decompression\n");
    }
    else
       Pike_error("Image.PNG._decode: illegal compression type 0x%02x\n",

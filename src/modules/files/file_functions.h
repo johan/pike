@@ -90,4 +90,8 @@ FILE_FUNC("open",file_open,"function(string,string,void|int:int)")
    FILE_FUNC("set_keepalive",file_set_keepalive,"function(int:int)")
 #endif
 
+#ifdef HAVE_NOTIFICATIONS
+   FILE_FUNC("notify", file_set_notify, "function(int,function,void|int:void)");
+#endif
+
 #undef FILE_FUNC

@@ -2235,7 +2235,7 @@ void image_gif_decode_layer(INT32 args)
 **!     </pre>
 **!
 **! note:
-**!	The wierd name of this function (not <tt>_decode</tt>
+**!	The weird name of this function (not <tt>_decode</tt>
 **!	as the other decoders) is because gif was the first
 **!	decoder and was written before the API was finally
 **!	defined. Sorry about that. /Mirar

@@ -736,7 +736,7 @@ void document(string enttype,
 		  method_names-=method->names;
 	       }
 	    if (method_names[method_name])
-	       werror("failed to find "+method_name+" again, wierd...\n");
+	       werror("failed to find "+method_name+" again, weird...\n");
 	 }
    }
 

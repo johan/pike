@@ -681,7 +681,7 @@ class TimeRange
 //!
 //! known bugs:
 //!	_equal is not currently possible to overload,
-//!	due to wierd bugs, so equal uses `== for now.
+//!	due to weird bugs, so equal uses `== for now.
 
    int(0..1) `==(TimeRange what) 
    { 

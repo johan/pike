@@ -558,7 +558,7 @@ static void image_ttf_face_names(INT32 args)
    image_ttf_face__names(args);
 
    if (sp[-1].type!=T_ARRAY)
-      Pike_error("Image.TTF.Face->names(): internal error, wierd _names()\n");
+      Pike_error("Image.TTF.Face->names(): internal error, weird _names()\n");
 
    a=sp[-1].u.array;
 
@@ -570,7 +570,7 @@ static void image_ttf_face_names(INT32 args)
       b=a->item[i].u.array;
 
       what=b->item[3].u.integer;
-      if (what>=8 || what<0) continue; /* wierd */
+      if (what>=8 || what<0) continue; /* weird */
       switch (b->item[0].u.integer*100+b->item[1].u.integer)
       {
 	 case 301: /* M$:  unicode */
@@ -585,7 +585,7 @@ static void image_ttf_face_names(INT32 args)
 
       push_text(hasname[what]);
 
-      if (ihas==30) /* unicode, M$ but wierd enough correct byteorder */
+      if (ihas==30) /* unicode, M$ but weird enough correct byteorder */
       {
 	 ptrdiff_t n = b->item[4].u.string->len/2;
 	 struct pike_string *ps=begin_wide_shared_string(n,1);

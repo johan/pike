@@ -3744,7 +3744,7 @@ static void try_feed(int finished)
 
 #ifdef PIKE_DEBUG
 	    if (THIS->stack->local_feed)
-	       Pike_fatal("internal wierdness in Parser.HTML: feed left\n");
+	       Pike_fatal("internal weirdness in Parser.HTML: feed left\n");
 #endif
 
 	    really_free_feed_stack (THIS->stack);

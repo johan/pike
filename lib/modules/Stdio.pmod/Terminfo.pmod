@@ -240,7 +240,7 @@ class Termcap {
 	map[name]=data;
 	
       }
-      else // wierd
+      else // weird
       {
 	// ignore
       }
@@ -492,7 +492,7 @@ class TermcapDB {
       while (sscanf(buf,"%*[ \t\r]%s",buf)<2 || !sizeof(buf))
 	if (!more_data()) {
 	  buf = "";
-	  return res; // eof, or illegal... wierd
+	  return res; // eof, or illegal... weird
 	}
       while ((i=search(buf, "\n"))<0)
       {

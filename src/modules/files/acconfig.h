@@ -77,4 +77,7 @@
 /* With termios */
 #undef WITH_TERMIOS 
 
+/* Filesystem notifications */
+#undef HAVE_NOTIFICATIONS
+
 #endif

@@ -284,7 +284,7 @@ void img_bmp_encode(INT32 args)
    if (sp[-1].type!=T_OBJECT ||
        !(img=(struct image*)get_storage(o=sp[-1].u.object,image_program))) {
       free_object(oc);
-      Pike_error("Image.BMP.encode: wierd result from ->mirrory()\n");
+      Pike_error("Image.BMP.encode: weird result from ->mirrory()\n");
    }
    if (nct) push_object(oc);
 
