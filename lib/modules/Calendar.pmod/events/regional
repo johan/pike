@@ -108,7 +108,11 @@
 # politic events
 
   Event "africa"                  - "Africa Day"              Fixed May 25
+
+# anzac day is australia-new zealand memorial day,
+# "Australian and New Zealand Army corpse", of those who died in WWII (?)
   Event "anzac"                   - "ANZAC Day"               Fixed Apr 25
+
   Event "arab league"             - "Arab League Day"         Fixed Mar 22
   Event "armistice"               - "Armistice Day"           Fixed Nov 11
   Event "columbus"                - "Columbus Day"            Fixed Oct 12
