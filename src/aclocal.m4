@@ -752,6 +752,7 @@ define(PIKE_ENABLE_BUNDLE, [
   test -f [$1].bundle && rm -f [$1].bundle
   if test "$pike_bundle_dir" = ""; then
     # Bundles not available.
+    echo "Bundles not available."
     ifelse([$3], , :, [ AC_MSG_ERROR([$3]) ])
   else
     for f in "$pike_bundle_dir/[$1]"*.tar.gz no; do
@@ -767,6 +768,7 @@ define(PIKE_ENABLE_BUNDLE, [
     ifelse([$3], , , [
       if test "$f" = "no"; then      
 	# Bundle not available.
+        echo "Bundle [$1] not available in $pike_bundle_dir."
 	AC_MSG_ERROR([$3])
       fi
     ])
