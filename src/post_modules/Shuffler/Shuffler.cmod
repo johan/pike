@@ -715,7 +715,7 @@ PIKECLASS Shuffle
     res = source_make( source, rstart, rlength );
 
     debug_malloc_touch( res );
-885e490
+
     SHUFFLE_DEBUG4("add_source(XX,%d,%d) --> %p\n", THIS,
 		  (int)rstart, (int)rlength, res );
     if( !res )
