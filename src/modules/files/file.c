@@ -1351,7 +1351,7 @@ int my_socketpair(int family, int type, int protocol, int sv[2])
    *
    * FIXME: Configure-test?
    */
-  PIKE_ACCEPT_TYPE len;
+  ACCEPT_SIZE_T len;
 
   MEMSET((char *)&addr,0,sizeof(struct sockaddr_in));
 
@@ -1423,7 +1423,7 @@ retry_connect:
       for(tmp2=0;tmp2<20;tmp2++)
       {
 	int tmp;
-	PIKE_ACCEPT_TYPE len2;
+	ACCEPT_SIZE_T len2;
 
 	len2=sizeof(addr);
 	tmp=fd_accept(fd,(struct sockaddr *)&addr,&len2);
@@ -1448,7 +1448,7 @@ retry_connect:
    */
   do
   {
-    PIKE_ACCEPT_TYPE len3;
+    ACCEPT_SIZE_T len3;
 
     len3=sizeof(addr);
   retry_accept:
@@ -1912,7 +1912,7 @@ static void file_query_address(INT32 args)
   /* XOPEN GROUP think this variable should a size_t, BSD thinks it should
    * be an int.
    */
-  PIKE_ACCEPT_TYPE len;
+  ACCEPT_SIZE_T len;
 
   if(FD <0)
     error("file->query_address(): Connection not open.\n");
