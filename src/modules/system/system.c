@@ -749,8 +749,13 @@ void get_inet_addr(struct sockaddr_in *addr,char *name)
     GETHOST_DECLARE;
     CALL_GETHOSTBYNAME(name);
 
-    if(!ret)
-      error("Invalid address '%s'\n",name);
+    if(!ret) {
+      if (strlen(name) < 1024) {
+	error("Invalid address '%s'\n",name);
+      } else {
+	error("Invalid address\n");
+      }
+    }
 
 #ifdef HAVE_H_ADDR_LIST
     MEMCPY((char *)&(addr->sin_addr),
@@ -762,7 +767,11 @@ void get_inet_addr(struct sockaddr_in *addr,char *name)
 	   ret->h_length);
 #endif
 #else
-    error("Invalid address '%s'\n",name);
+    if (strlen(name) < 1024) {
+      error("Invalid address '%s'\n",name);
+    } else {
+      error("Invalid address\n");
+    }
 #endif
   }
 }

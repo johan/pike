@@ -617,8 +617,13 @@ void object_set_index2(struct object *o,
   {
   case T_STRING:
     f=find_shared_string_identifier(index->u.string, p);
-    if(f<0)
-      error("No such variable (%s) in object.\n", index->u.string->str);
+    if(f<0) {
+      if (index->u.string->len < 1024) {
+	error("No such variable (%s) in object.\n", index->u.string->str);
+      } else {
+	error("No such variable in object.\n");
+      }
+    }
     break;
 
   case T_LVALUE:
@@ -631,7 +636,11 @@ void object_set_index2(struct object *o,
 
   if(f < 0)
   {
-    error("No such variable (%s) in object.\n", index->u.string->str);
+    if (index->u.string->len < 1024) {
+      error("No such variable (%s) in object.\n", index->u.string->str);
+    } else {
+      error("No such variable in object.\n");
+    }
   }else{
     object_low_set_index(o, f, from);
   }
