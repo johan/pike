@@ -1561,6 +1561,7 @@ PMOD_EXPORT struct pike_string *modify_shared_string(struct pike_string *a,
 
     if((((unsigned int)index) >= HASH_PREFIX) && (index < a->len-8))
     {
+      struct pike_string *old;
       /* Doesn't change hash value - sneak it in there */
       low_set_index(a,index,c);
       unlink_pike_string(a);
