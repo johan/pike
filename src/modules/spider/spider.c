@@ -1265,7 +1265,7 @@ void pike_module_init(void)
 				       tOr(tStr,tArr(tStr))))),
 		  tMix,
 		  tStr),
-	   0);
+	   OPT_SIDE_EFFECT);
 
 
   ADD_EFUN("parse_html_lines",f_parse_html_lines,
