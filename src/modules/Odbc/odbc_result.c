@@ -439,5 +439,7 @@ void exit_odbc_res(void)
   }
 }
 
+#else
+static int place_holder;	/* Keep the compiler happy */
 #endif /* HAVE_ODBC */
 

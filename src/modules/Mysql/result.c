@@ -463,4 +463,6 @@ void exit_mysql_res(void)
   }
 }
 
+#else
+static int place_holder;	/* Keep the compiler happy */
 #endif /* HAVE_MYSQL */
