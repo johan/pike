@@ -156,6 +156,7 @@ void assemble(void)
   int reoptimize=!(debug_options & NO_PEEP_OPTIMIZING);
 #ifdef PIKE_DEBUG
   int synch_depth = 0;
+  size_t fun_start = Pike_compiler->new_program->num_program;
 #endif
 
   c=(p_instr *)instrbuf.s.str;
@@ -549,6 +550,19 @@ void assemble(void)
   free((char *)jumps);
   free((char *)uses);
 
+#ifdef PIKE_DEBUG
+  if (a_flag > 6) {
+    size_t len = (Pike_compiler->new_program->num_program - fun_start)*
+      sizeof(PIKE_OPCODE_T);
+#ifdef DISASSEMBLE_CODE
+    DISASSEMBLE_CODE(Pike_compiler->new_program->program + fun_start, len);
+#else /* !DISASSEMBLE_CODE */
+    {
+      /* FIXME: Hexdump here. */
+    }
+#endif /* DISASSEMBLE_CODE */
+  }
+#endif /* PIKE_DEBUG */
 
   exit_bytecode();
 }
