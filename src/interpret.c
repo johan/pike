@@ -1369,6 +1369,8 @@ void apply_low(struct object *o, int fun, int args)
     return;
   }
 
+  o->refs++;
+
   fast_check_threads_etc(4);
   check_stack(256);
   check_mark_stack(256);
@@ -1403,7 +1405,7 @@ void apply_low(struct object *o, int fun, int args)
   new_frame.current_storage = o->storage+new_frame.context.storage_offset;
   new_frame.pc = 0;
 
-  new_frame.current_object->refs++;
+/* new_frame.current_object->refs++;  Moved to beginning of function / Hubbe */
   new_frame.context.prog->refs++;
 
 #ifdef DEBUG
