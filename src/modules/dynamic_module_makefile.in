@@ -35,7 +35,7 @@ $(MODULE_ARCHIVES) ThisIsAPhonyTargetBlaBlaBla: force
 	              ( test -f remake ; $(MAKE) $(MAKE_FLAGS) ) ) \
 	) || exit $$?
 
-dummy:	$(DUMMY) linker_options modlist_headers modlist_segment module.so
+dummy:	Makefile $(DUMMY) linker_options modlist_headers modlist_segment module.so
 	@tmp="$(INSTALL_NAME)" ; \
 	if test x$$tmp = x ; then tmp="$(MODNAME)"; else :; fi ;\
 	tmp2="___$$tmp" ; \

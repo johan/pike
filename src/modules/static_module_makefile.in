@@ -33,7 +33,7 @@ $(MODULE_ARCHIVES) ThisIsAPhonyTargetBlaBlaBla: force
 	              ( test -f remake ; $(MAKE) $(MAKE_FLAGS) ) ) \
 	) || exit $$?
 
-dummy:	linker_options modlist_headers modlist_segment module.pmod module.a
+dummy:	Makefile linker_options modlist_headers modlist_segment module.pmod module.a
 	@tmp="$(INSTALL_NAME)" ;\
 	if test x$$tmp = x ; then tmp="$(MODNAME)"; else :; fi ;\
 	$(TMP_BINDIR)/install_module module.pmod $(TMP_LIBDIR)/modules/$$tmp.pmod
