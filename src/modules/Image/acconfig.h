@@ -8,6 +8,9 @@
 /* define if you want lzw code to generate only rle packing */
 #undef GIF_LZW_RLE
 
+/* nasm exists and can be used to make .o-files */
+#undef ASSEMBLY_OK
+
 /* Define if you have the m library (-lm).  */
 #undef HAVE_LIBM
 

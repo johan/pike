@@ -14,6 +14,19 @@ AC_CHECK_HEADERS(math.h sys/fcntl.h fcntl.h stdlib.h netinet/in.h winsock.h)
 
 AC_CHECK_LIB(m, abs, [], [])
 
+# Do we have nasm?
+AC_SUBST(ASSEMBLY_OBJECTS)
+ASSEMBLY_OBJECTS=""
+AC_MSG_CHECKING( [if nasm can be used] )
+
+if nasm -f elf -o assembly.o $srcdir/assembly.s ; then
+  ASSEMBLY_OBJECTS=assembly.o
+  AC_DEFINE(ASSEMBLY_OK)
+  AC_MSG_RESULT(yes)
+else
+  AC_MSG_RESULT(no)
+fi
+
 # Perform this test by hand since Sun cc fails otherwise.
 AC_MSG_CHECKING([for fabs in -lm])
 AC_CACHE_VAL(pike_cv_lib_m_fabs,
