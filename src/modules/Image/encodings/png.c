@@ -519,7 +519,8 @@ static int _png_write_rgb(rgb_group *w1,
 
    unsigned long n0=n;
 
-   unsigned long x,mz;
+   unsigned long x;
+   int mz;
 
    /* write stuff to d1 */
 
@@ -1355,7 +1356,7 @@ static void image_png__decode(INT32 args)
 static void image_png_encode(INT32 args)
 {
    struct image *img,*alpha=NULL;
-   rgb_group *s,*sa;
+   rgb_group *s,*sa=NULL;
 
    int n=0,y,x;
    char buf[20];
