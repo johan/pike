@@ -8,18 +8,15 @@
 #ifndef MODULE_MAGIC_H
 #define MODULE_MAGIC_H
 
+#include "module.h"
+
+/* NB: module_magic will be deprecated in the next release.
+   Please use the PIKE_MODULE_INIT/PIKE_MODULE_EXIT macros
+   directly in new code. */
+
 #ifdef DYNAMIC_MODULE
-#ifdef __NT__
-
-#define pike_module_init mYDummyFunctioN1(void); __declspec(dllexport) void pike_module_init
-#define pike_module_exit mYDummyFunctioN2(void); __declspec(dllexport) void pike_module_exit
-
-#endif /* __NT__ */
+#define pike_module_init(X) mYDummyFunctioN1(void); PIKE_MODULE_INIT
+#define pike_module_exit(X) mYDummyFunctioN2(void); PIKE_MODULE_EXIT
 #endif /* DYNAMIC_MODULE */
-
-
-#ifndef PMOD_EXPORT
-#define PMOD_EXPORT
-#endif
 
 #endif /* MODULE_MAGIC_H */
