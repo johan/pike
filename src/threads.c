@@ -866,7 +866,7 @@ void f_mutex_trylock(INT32 args)
   if(!args)
     type=0;
   else
-    get_all_args("mutex->lock",args,"%i",&type);
+    get_all_args("mutex->trylock",args,"%i",&type);
 
   switch(type)
   {
