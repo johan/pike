@@ -165,7 +165,7 @@ void bump_version(int|void is_release)
 		     lines*"\r\n");
     Process.create_process( ({ "cvs", "commit", "-m",
 			       "release number bumped to "+rel+" by export.pike",
-			       "changelog" }),
+			       "pike.iss" }),
 			     ([ "cwd":pike_base_name+"/packaging/windows" ])
 			     )->wait();
   }
