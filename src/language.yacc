@@ -1738,6 +1738,7 @@ lambda: TOK_LAMBDA push_compiler_frame1
   | TOK_LAMBDA push_compiler_frame1 error
   {
     pop_compiler_frame();
+    $$ = mkintnode(0);
   }
   ;
 
