@@ -397,6 +397,9 @@
 /* Define this if you have Windows NT threads */
 #undef NT_THREADS
 
+/* Define this if your THREAD_T type is a pointer type. */
+#undef PIKE_THREAD_T_IS_POINTER
+
 /* Define this if your pthreads have pthread_condattr_default */
 #undef HAVE_PTHREAD_CONDATTR_DEFAULT
 

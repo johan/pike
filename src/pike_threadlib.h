@@ -755,5 +755,12 @@ PMOD_EXPORT HANDLE CheckValidHandle(HANDLE h);
 #define STATIC_COND_INIT
 #endif
 
+#ifndef THREAD_T_TO_PTR
+#ifdef PIKE_THREAD_T_IS_POINTER
+#define THREAD_T_TO_PTR(X)	((void *)(X))
+#else /* !PIKE_THREAD_T_IS_POINTER */
+#define THREAD_T_TO_PTR(X)	((void *)(ptrdiff_t)(X))
+#endif /* PIKE_THREAD_T_IS_POINTER */
+#endif /* !THREAD_T_TO_PTR */
 
 #endif /* PIKE_THREADLIB_H */

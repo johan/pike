@@ -31,7 +31,7 @@ typedef struct CYCLIC
   CYCLIC cyclic_struct__
 #define BEGIN_CYCLIC(A,B) \
    begin_cyclic(&cyclic_struct__, cyclic_identifier__, \
-                (void *)(ptrdiff_t)th_self(), (void *)(A), (void *)(B))
+                THREAD_T_TO_PTR(th_self()), (void *)(A), (void *)(B))
 
 #else  /* CYCLIC_DEBUG */
 
@@ -40,7 +40,7 @@ typedef struct CYCLIC
   CYCLIC cyclic_struct__
 #define BEGIN_CYCLIC(A,B) \
    begin_cyclic(&cyclic_struct__, &cyclic_identifier__, \
-                (void *)(ptrdiff_t)th_self(), (void *)(A), (void *)(B))
+                THREAD_T_TO_PTR(th_self()), (void *)(A), (void *)(B))
 
 #endif	/* !CYCLIC_DEBUG */
 
