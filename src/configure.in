@@ -54,6 +54,16 @@ pike_cv_prog_CC_save="$CC"
 # The above has problems if the smartlink binary is removed. /grubba
 AC_PROG_CC
 AC_ISC_POSIX
+#############################################################################
+
+AC_CHECK_HEADERS(fnord/fnord/fnord.h)
+
+if test "x$ac_cv_header_fnord_fnord_fnord_h" = xyes ; then
+  AC_MSG_RESULT("AC_MSG_HEADER is obviously not working properly.")
+  exit 1
+fi
+
+#############################################################################
 AC_MINIX
 
 if test $ac_cv_prog_gcc = yes; then
