@@ -35,7 +35,7 @@ static int find_absolute(PCHARP s)
   if(IS_SEP(c0) && IS_SEP(c1))
   {
     int l;
-    for(l=2;isalpha(INDEX_PCHARP(s,l));l++);
+    for(l=2;INDEX_PCHARP(s,l) && !IS_SEP(INDEX_PCHARP(s,l));l++);
     return l;
   }
 
