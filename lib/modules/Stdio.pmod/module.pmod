@@ -1,3 +1,4 @@
+
 // $Id$
 
 import String;
@@ -117,6 +118,7 @@ class File
   static private void _async_connected(mixed|void ignored)
   {
     // Copy the args to avoid races.
+    if(!_async_cb) return;
     function(int, mixed ...:void) cb = _async_cb;
     array(mixed) args = _async_args;
     _async_cb = 0;
@@ -127,6 +129,7 @@ class File
   static private void _async_failed(mixed|void ignored)
   {
     // Copy the args to avoid races.
+    if(!_async_cb) return;
     function(int, mixed ...:void) cb = _async_cb;
     array(mixed) args = _async_args;
     _async_cb = 0;
