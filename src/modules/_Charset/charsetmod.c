@@ -96,6 +96,8 @@ static void f_set_repcb(INT32 args)
 
   if(args>0)
     assign_svalue(&s->repcb, &sp[-args]);
+
+  pop_n_elems(args);
 }
 
 static void f_drain(INT32 args)
