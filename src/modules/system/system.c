@@ -2811,6 +2811,9 @@ static void f_getrusage(INT32 args)
 
 PIKE_MODULE_INIT
 {
+#ifdef GETHOSTBYNAME_MUTEX_EXISTS
+  mt_init(&gethostbyname_mutex);
+#endif
   /*
    * From this file:
    */
@@ -3154,5 +3157,8 @@ PIKE_MODULE_EXIT
     extern void exit_nt_system_calls(void);
     exit_nt_system_calls();
   }
+#endif
+#ifdef GETHOSTBYNAME_MUTEX_EXISTS
+  mt_destroy(&gethostbyname_mutex);
 #endif
 }
