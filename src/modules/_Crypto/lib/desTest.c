@@ -18,7 +18,7 @@ static char desTest_cRcs[] = "$Id$";
 #ifndef __NT__
 #include	<sys/time.h>
 #include	<sys/resource.h>
-extern getrusage();
+extern int getrusage();
 static struct rusage usage;
 #define	now(w)	(						\
 		(void)getrusage(RUSAGE_SELF, &usage),		\
@@ -29,6 +29,8 @@ static struct rusage usage;
 #include       <windows.h>
 #define now(w) 0
 #endif
+
+#define byte unsigned char
 
 /* test data
  * the tests (key0-3, text0-3) are cribbed from code which is (c) 1988 MIT
