@@ -10,11 +10,8 @@
 #ifdef HAVE_GL
 
 #ifdef HAVE_WINDEF_H
-#include <windef.h>
+#include <windows.h>
 #endif /* HAVE_WINDEF_H */
-#ifdef HAVE_WINGDI_H
-#include <wingdi.h>
-#endif /* HAVE_WINGDI_H */
 #ifdef HAVE_GL_GL_H
 #include <GL/gl.h>
 #endif /* HAVE_GL_GL_H */

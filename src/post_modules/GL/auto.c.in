@@ -22,11 +22,11 @@ RCSID("$Id$");
 #include "mapping.h"
 
 #ifdef HAVE_WINDEF_H
-#include <windef.h>
+#include <windows.h>
 #endif /* HAVE_WINDEF_H */
-#ifdef HAVE_WINGDI_H
-#include <wingdi.h>
-#endif /* HAVE_WINGDI_H */
+/* #ifdef HAVE_WINGDI_H */
+/* #include <wingdi.h> */
+/* #endif /* HAVE_WINGDI_H */ */
 #ifdef HAVE_GL_GL_H
 #include <GL/gl.h>
 #endif /* HAVE_GL_GL_H */
@@ -231,7 +231,7 @@ static void check_img_arg(struct svalue *a, struct zimage *img,
 	  Pike_error("Need mem_type for memory texture\n");
 	img->pixels = stor_mem->p;
 	if( (v=simple_mapping_string_lookup(a->u.mapping, "mem_offset" )) )
-	  img->pixels += v->u.integer;
+	  img->pixels = (char *)img->pixels + v->u.integer;
 	if(!img_inited)
 	  img_init();
 	return;
