@@ -5470,7 +5470,7 @@ PMOD_EXPORT void f__next(INT32 args)
  *!
  *! @note
  *! Unlike @[_next()] this function does not work on strings.
- */
+ *!
  *! @seealso
  *! @[next_object()], @[_prev()]
  */
