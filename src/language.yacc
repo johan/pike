@@ -202,6 +202,7 @@ RCSID("$Id$");
 #include "error.h"
 #include "docode.h"
 #include "machine.h"
+#include "main.h"
 
 #define YYMAXDEPTH	1000
 
@@ -680,13 +681,41 @@ def: modifiers type_or_error optional_stars F_IDENTIFIER
     if($10)
     {
       int f;
+      node *check_args = NULL;
+
       for(e=0; e<$7; e++)
       {
 	if(!compiler_frame->variable[e].name ||
 	   !compiler_frame->variable[e].name->len)
-	  {
-	    my_yyerror("Missing name for argument %d.",e);
+	{
+	  my_yyerror("Missing name for argument %d.",e);
+	} else {
+	  /* FIXME: Should probably use some other flag. */
+	  if (d_flag && (compiler_pass == 2) &&
+	      (compiler_frame->variable[e].type != mixed_type_string)) {
+	    node *local_node;
+
+	    /* fprintf(stderr, "Creating soft cast node for local #%d\n", e);*/
+
+	    local_node = mklocalnode(e, 0);
+
+	    /* The following is needed to go around the optimization in
+	     * mksoftcastnode().
+	     */
+	    free_string(local_node->type);
+	    copy_shared_string(local_node->type, mixed_type_string);
+
+	    check_args =
+	      mknode(F_COMMA_EXPR, check_args,
+		     mksoftcastnode(compiler_frame->variable[e].type,
+				    local_node));
 	  }
+	}
+      }
+
+      if (check_args) {
+	/* Prepend the arg checking code. */
+	$10 = mknode(F_COMMA_EXPR, mknode(F_POP_VALUE, check_args, NULL), $10);
       }
 
       f=dooptcode(check_node_hash($4)->u.sval.u.string, check_node_hash($10),
