@@ -1048,11 +1048,16 @@ void locate_references(void *a)
   gc_check_all_objects();
 
 #ifdef PIKE_DEBUG
-  if(master_object) gc_external_mark2(master_object,0," &master_object");
+  if(master_object) {
+    found_where = " as master_object";
+    gc_external_mark2(master_object,0," &master_object");
+  }
   {
     extern struct mapping *builtin_constants;
-    if(builtin_constants)
+    if(builtin_constants) {
+      found_where = " as builtin_constants";
       gc_external_mark2(builtin_constants,0," &builtin_constants");
+    }
   }
 #endif
   
