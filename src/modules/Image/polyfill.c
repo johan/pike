@@ -90,28 +90,31 @@ static void vertex_connect(struct vertex *above,
 			   struct vertex *below)
 {
    struct vertex_list *c,*d;
+   float diff;
 
    if (below==above) return;
 
-   c=malloc(sizeof(struct vertex_list));
-   c->above=above; c->below=below;
-   c->next=above->below;
-   if (below->y!=above->y)
-      c->dx=(below->x-above->x)/(below->y-above->y);
+   c = malloc(sizeof(struct vertex_list));
+   c->above = above; c->below = below;
+   c->next = above->below;
+   if (((diff = (below->y - above->y)) < 1.0e-10) &&
+       (diff > -1.0e-10))
+     c->dx = 1.0e10;
    else
-      c->dx=1e10;
-   if (below->x!=above->x)
-      c->dy=(below->y-above->y)/(below->x-above->x);
+     c->dx = (below->x - above->x)/diff;
+   if (((diff = (below->x - above->x)) < 1.0e-10) &&
+       (diff > -1.0e-10))
+     c->dy = 1.0e10;
    else
-      c->dy=1e10;
-   above->below=c;
+     c->dy = (below->y - above->y)/diff;
+   above->below = c;
 
-   d=malloc(sizeof(struct vertex_list));
-   d->above=above; d->below=below;
-   d->next=below->above;
-   d->dx=c->dx;
-   d->dy=c->dy;
-   below->above=d;
+   d = malloc(sizeof(struct vertex_list));
+   d->above = above; d->below = below;
+   d->next = below->above;
+   d->dx = c->dx;
+   d->dy = c->dy;
+   below->above = d;
 }
 
 static INLINE float vertex_xmax(struct vertex_list *v,float yp,float *ydest)
