@@ -151,7 +151,7 @@ do_dump: {
 	// Kludge: Resolve the module through master()->resolv since
 	// it handles cyclic references better than we do in
 	// compile_file above.
-	master()->resolv (master()->module_path_to_name (file));
+	master()->resolv (master()->program_path_to_name (file));
 
 	p=compile_file(file, Handler());
 
@@ -285,8 +285,10 @@ int main(int argc, array(string) argv)
 
   argv=Getopt.get_args(argv);
 
+#if 0
   // Hack to get Calendar files to compile in correct order.
   object tmp = Calendar;
+#endif
 
   foreach(argv, string file)
   {
