@@ -77,7 +77,7 @@ compile: configure
 	cd "$$builddir" && { \
 	  metatarget="$(METATARGET)"; \
 	  if test "x$(LIMITED_TARGETS)" = "x"; then \
-	    if test -f "$$builddir"/master.pike -a -x "$$builddir"/pike; then :; \
+	    if test -f master.pike -a -x pike; then :; \
 	    else metatarget="all $$metatarget"; fi; \
 	    if test "x$$metatarget" = x; then metatarget=all; else :; fi; \
 	  else :; fi; \
