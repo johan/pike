@@ -222,7 +222,8 @@ unsigned INT32 hashstr(const unsigned char *str,INT32 maxn)
 {
   unsigned INT32 ret,c;
   
-  ret=str++[0];
+  if(!(ret=str++[0]))
+    return ret;
   for(; maxn>=0; maxn--)
   {
     c=str++[0];
