@@ -663,10 +663,9 @@ void f_exit(INT32 args)
 void f_time(INT32 args)
 {
   pop_n_elems(args);
-  if(args)
-    push_int(current_time.tv_sec);
-  else
-    push_int((INT32)TIME(0));
+  if(!args)
+    GETTIMEOFDAY(&current_time);
+  push_int(current_time.tv_sec);
 }
 
 void f_crypt(INT32 args)
