@@ -25,6 +25,7 @@
   <file>
     <chapter title="LFUN">
       <insert-move entity="lfun::"/>
+      <insert-move entity="::"/>
     </chapter>
   </file>
   <file>

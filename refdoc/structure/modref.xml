@@ -23,5 +23,6 @@
     <insert-move entity="__builtin"/>
     <insert-move entity="_Roxen"/>
     <insert-move entity="lfun::"/>
+    <insert-move entity="::"/>
   </void>
 </manual>
