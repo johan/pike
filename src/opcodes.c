@@ -1797,6 +1797,25 @@ MK_VERY_LOW_SSCANF(2,1)
 MK_VERY_LOW_SSCANF(1,2)
 MK_VERY_LOW_SSCANF(2,2)
 
+/*! @decl int sscanf(string data, string format, mixed ... lvalues)
+ *!
+ *! The purpose of sscanf is to match one string against a format string and
+ *! place the matching results into a list of variables. The list of @[lvalues]
+ *! are destructively modified (which is only possible because sscanf really is
+ *! an opcode, rather than a pike function) with the values extracted from the
+ *! @[data] according to the @[format] specification. Only the variables up to
+ *! the last matching directive of the format string are touched.
+ *!
+ *! Refer to the @[chapter::sscanf] chapter for the complete list of directives
+ *! sscanf understands.
+ *!
+ *! @returns
+ *!   The number of directives matched in the format string. Note that a string
+ *!   directive (%s or %[]) always counts as a match, even when matching the
+ *!   empty string.
+ *! @seealso
+ *!   @[array_sscanf()], @[chapter::sscanf]
+ */
 void o_sscanf(INT32 args)
 {
   INT32 i=0;
