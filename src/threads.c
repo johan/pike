@@ -196,7 +196,7 @@ int co_destroy(COND_T *c)
 
 #define THIS_THREAD ((struct thread_state *)fp->current_storage)
 
-struct object *thread_id;
+struct object *thread_id = NULL;
 static struct callback *threads_evaluator_callback=0;
 int thread_id_result_variable;
 
@@ -1288,6 +1288,13 @@ void th_init(void)
 
 void th_cleanup(void)
 {
+  if(thread_id)
+  {
+    destruct(thread_id);
+    free_object(thread_id);
+    thread_id=0;
+  }
+
   if(mutex_key)
   {
     free_program(mutex_key);
@@ -1304,13 +1311,6 @@ void th_cleanup(void)
   {
     free_program(thread_id_prog);
     thread_id_prog=0;
-  }
-
-  if(thread_id)
-  {
-    destruct(thread_id);
-    free_object(thread_id);
-    thread_id=0;
   }
 }
 
