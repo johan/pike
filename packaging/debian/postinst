@@ -39,7 +39,6 @@ case "$1" in
             install -d -m 755 -o root -g root /usr/local/$d
         fi
     done
-    fi
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
