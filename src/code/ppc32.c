@@ -353,6 +353,19 @@ static void ppc32_escape_catch(void)
   goto *do_escape_catch_label;
 }
 
+static void maybe_update_pc(void)
+{
+  static int last_prog_id=-1;
+  static int last_num_linenumbers=-1;
+  if(last_prog_id != Pike_compiler->new_program->id ||
+     last_num_linenumbers != Pike_compiler->new_program->num_linenumbers)
+  {
+    last_prog_id=Pike_compiler->new_program->id;
+    last_num_linenumbers = Pike_compiler->new_program->num_linenumbers;
+    UPDATE_PC();
+  }
+}
+
 void ins_f_byte(unsigned int b)
 {
   void *addr;
@@ -367,19 +380,7 @@ void ins_f_byte(unsigned int b)
   if(b>255)
     Pike_error("Instruction too big %d\n",b);
 #endif
-    
-  {
-    static int last_prog_id=-1;
-    static int last_num_linenumbers=-1;
-    if(last_prog_id != Pike_compiler->new_program->id ||
-       last_num_linenumbers != Pike_compiler->new_program->num_linenumbers)
-    {
-      last_prog_id=Pike_compiler->new_program->id;
-      last_num_linenumbers = Pike_compiler->new_program->num_linenumbers;
-      UPDATE_PC();
-    }
-  }
-
+  maybe_update_pc();
   addr = instrs[b].address;
 
 #ifdef PIKE_DEBUG
@@ -429,6 +430,8 @@ void ins_f_byte(unsigned int b)
 
 void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b)
 {
+  maybe_update_pc();
+
 #ifdef PIKE_DEBUG
   if (d_flag < 3)
 #endif
@@ -501,6 +504,8 @@ void ins_f_byte_with_2_args(unsigned int a,
 			    unsigned INT32 b,
 			    unsigned INT32 c)
 {
+  maybe_update_pc();
+
 #ifdef PIKE_DEBUG
   if (d_flag < 3)
 #endif
