@@ -139,8 +139,9 @@ private void ssl_read_callback(mixed id, string s)
     read_buffer += data;
     if (!blocking && read_callback && strlen(read_buffer))
     {
-      read_callback(id, read_buffer);
+      string received = read_buffer;
       read_buffer = "";
+      read_callback(id, received);
     }
   } else {
     if (data > 0)
