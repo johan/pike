@@ -24,8 +24,10 @@ extern struct callback_list fork_child_callback;
 
 typedef void (*callback_func)(struct callback *, void *,void *);
 
+#include "block_alloc_h.h"
 /* Prototypes begin here */
 struct callback;
+BLOCK_ALLOC(callback, CALLBACK_CHUNK)
 void call_callback(struct callback_list *lst, void *arg);
 struct callback *debug_add_to_callback(struct callback_list *lst,
 				       callback_func call,

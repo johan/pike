@@ -46,6 +46,7 @@ extern struct program *magic_set_index_program;
 
 #define this_object() (add_ref(fp->current_object), fp->current_object)
 
+#include "block_alloc_h.h"
 /* Prototypes begin here */
 struct object *low_clone(struct program *p);
 void call_c_initializers(struct object *o);
@@ -57,6 +58,7 @@ struct object *parent_clone_object(struct program *p,
 				   int args);
 struct object *get_master(void);
 struct object *debug_master(void);
+PTR_HASH_ALLOC(destroy_called_mark,128)
 void destruct(struct object *o);
 void destruct_objects_to_destruct(void);
 void really_free_object(struct object *o);
