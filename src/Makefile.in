@@ -620,7 +620,7 @@ EXPORT_NAME=Pike-v%maj.%min-%Y%M%D
 snapshot_export: source
 	chmod +x $(SRCDIR)/install-sh
 	$(RUNPIKE) $(TMP_BINDIR)/export.pike --srcdir="$(SRCDIR)"  \
-	--exportlist=src/export_list --name=$(EXPORT_NAME)
+	--exportlist=src/export_list --name=$(EXPORT_NAME) $(EXPORTARGS)
 
 export: full_export
 
