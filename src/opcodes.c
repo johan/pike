@@ -224,7 +224,7 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	switch(sp[-1].type)
 	{
 	  case T_FLOAT:
-	    i=(int)(sp[-1].u.float_number);
+	    i=DO_NOT_WARN((int)(sp[-1].u.float_number));
 #ifdef AUTO_BIGNUM
 	    if((i < 0 ? -i : i) < floor(fabs(sp[-1].u.float_number)))
 	    {
