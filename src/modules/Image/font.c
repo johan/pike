@@ -9,7 +9,7 @@
 
 #define SPACE_CHAR 'i'
 
-extern unsigned char * image_default_font;
+extern const unsigned char image_default_font[];
 #define IMAGE_DEFAULT_FONT_SIZE 30596
 
 
