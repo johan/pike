@@ -416,6 +416,7 @@ PMOD_EXPORT void apply_shared(struct object *o,
 		  int args);
 PMOD_EXPORT void apply(struct object *o, const char *fun, int args);
 PMOD_EXPORT void apply_svalue(struct svalue *s, INT32 args);
+PMOD_EXPORT void apply_external(int depth, int fun, INT32 args);
 PMOD_EXPORT void slow_check_stack(void);
 PMOD_EXPORT void custom_check_stack(ptrdiff_t amount, const char *fmt, ...)
   ATTRIBUTE((format (printf, 2, 3)));

@@ -1874,6 +1874,23 @@ PMOD_EXPORT void apply_svalue(struct svalue *s, INT32 args)
   }
 }
 
+/* Apply function @[fun] in parent @[depth] levels up with @[args] arguments.
+ */
+PMOD_EXPORT void apply_external(int depth, int fun, INT32 args)
+{
+  struct external_variable_context loc;
+
+  loc.o = Pike_fp->current_object;
+  if (!loc.o->prog)
+    Pike_error("Cannot access parent of destructed object.\n");
+  loc.parent_identifier = Pike_fp->fun;
+  loc.inherit = INHERIT_FROM_INT(loc.o->prog, Pike_fp->fun);
+
+  find_external_context(&loc, depth);
+
+  apply_low(loc.o, fun + loc.inherit->identifier_level, args);
+}
+
 #ifdef PIKE_DEBUG
 void slow_check_stack(void)
 {
