@@ -47,7 +47,7 @@ class Map {
   }
   string server()
   {
-    return(domain->server());
+    return(domain->server(ypmap));
   }
   int order()
   {
