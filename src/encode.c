@@ -183,7 +183,7 @@ one_more_type:
 	/* FIXME: I assume the type is saved in network byte order. Is it?
 	 *	/grubba 1999-03-07
 	 */
-	for(i = 0; i < (int)2*sizeof(INT32); i++) {
+	for(i = 0; i < (int)(2*sizeof(INT32)); i++) {
 	  addchar(EXTRACT_UCHAR(t++));
 	}
       }
@@ -637,7 +637,7 @@ one_more_type:
 	/* FIXME: I assume the type is saved in network byte order. Is it?
 	 *	/grubba 1999-03-07
 	 */
-	for(i = 0; i < (int)2*sizeof(INT32); i++) {
+	for(i = 0; i < (int)(2*sizeof(INT32)); i++) {
 	  push_type(GETC());
 	}
       }
