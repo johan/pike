@@ -57,7 +57,7 @@ string *get_files(string path)
 
 void fix_configure(string dir)
 {
-  int *config,*config_in;
+  mixed config,config_in;
   config=file_stat(dir+"/configure");
   config_in=file_stat(dir+"/configure.in");
 
