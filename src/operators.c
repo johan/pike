@@ -1393,6 +1393,7 @@ static void speedup(INT32 args, void (*func)(void))
   {
     /* This method can be used for types where a op b === b op a */
     case T_MULTISET:
+#ifndef PIKE_NEW_MULTISETS
     {
       int e=-1;
       while(args > 1)
@@ -1412,6 +1413,7 @@ static void speedup(INT32 args, void (*func)(void))
       }
       return;
     }
+#endif
     
     /* Binary balanced tree method for types where
      * a op b may or may not be equal to b op a
