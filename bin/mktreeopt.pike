@@ -35,8 +35,23 @@
  *     / \
  *    -   -
  *
- * in the table above.
+ * in the table above. ie:
  *
+ *      X        X                    X      X                       	 X
+ *     / \  ->  / \                  / \    / \                      	/ \
+ *    -   -    -   -                -   *  *   -                       *   *
+ *			            
+ *      X             	X             X                        	  X      X
+ *     / \  ->         / \           / \                       	 / \    / \
+ *    -   X           -   X         -   *                      	*   X  *   *
+ *	              
+ *      X                      X             X             X           	 X
+ *     / \  ->                / \           / \           / \          	/ \
+ *    X   -                  X   -         *   -         X   *         *   *
+ *	                     
+ *      X                                           X      X      X      X
+ *     / \  ->                                     / \    / \    / \    / \
+ *    X   X                                       X   X  X   *  *   X  *   *
  *
  * Pseudocode: (Real code needs fixing...)
  *
