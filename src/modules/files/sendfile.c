@@ -161,6 +161,10 @@ static void init_pike_sendfile(struct object *o)
 {
   MEMSET(THIS, 0, sizeof(struct pike_sendfile));
 
+  /* callback doesn't actually need to be initialized since it is a
+   * mapped variable, but since we just zapped it with zeroes we need
+   * to set the type to T_INT again.. /Hubbe
+   */
   THIS->callback.type = T_INT;
 }
 
@@ -194,7 +198,10 @@ static void exit_pike_sendfile(struct object *o)
     free_object(THIS->self);
     THIS->self = NULL;
   }
-  free_svalue(&(THIS->callback));
+  /* This is not required since  this is a mapped variable
+   * /Hubbe
+   * free_svalue(&(THIS->callback));
+   */
 }
 
 /*
@@ -635,7 +642,9 @@ static void sf_create(INT32 args)
   get_all_args("sendfile", args, "%A%O%i%i%A%o%*",
 	       &(sf.headers), &(sf.from_file), &(sf.offset),
 	       &(sf.len), &(sf.trailers), &(sf.to_file), &cb);
-  sf.callback = *cb;
+
+  /* We need to give 'cb' another reference /Hubbe */
+  assign_svalue(&(sf.callback),cb);
 
   /* Fix the trailing args */
   push_array(sf.args = aggregate_array(args-7));
