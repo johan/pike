@@ -2155,6 +2155,8 @@ if test "$cflags_is_set" = "no"; then
       AC_SYS_COMPILER_FLAG(-wd177,wd177,WARN)
       #   remark #279: controlling expression is constant
       AC_SYS_COMPILER_FLAG(-wd279,wd279,WARN)
+      #   remark #869: parameter was never referenced
+      AC_SYS_COMPILER_FLAG(-wd869,wd869,WARN)
 
       AC_SYS_COMPILER_FLAG(-Ob2,Ob2,OPTIMIZE)
       AC_SYS_COMPILER_FLAG(-ipo,ipo,OPTIMIZE)
