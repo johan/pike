@@ -2892,16 +2892,7 @@ string describe_object(object o)
       if (objectp (tmp)) parent_obj = tmp;
 
       /* Try finding ourselves in parent_obj. */
-      int i;
-      if (object_program(o)) {
-	i = search(values(parent_obj), o);
-      } else {
-	i = search(map(values(parent_obj),
-		       lambda(mixed x) {
-			 if (program p = object_program(x)) return p;
-			 return 0;
-		       }), (mixed) o);
-      }
+      int i = search(values(parent_obj), o);
       if (i >= 0) {
 	s = [string]indices(parent_obj)[i];
 	return describe_module(parent_obj) + s;
