@@ -1250,6 +1250,12 @@ static INLINE struct marker *gc_check_debug(void *a, int weak)
     return 0;
   }
 
+#if 0
+  fprintf (stderr, "Ref: %s %p -> %p%s\n",
+	   get_name_of_type (found_in_type), found_in, a,
+	   found_where ? found_where : "");
+#endif
+
   if (Pike_in_gc != GC_PASS_CHECK)
     Pike_fatal("gc check attempted in invalid pass.\n");
 
