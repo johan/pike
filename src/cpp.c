@@ -1668,7 +1668,7 @@ void f_cpp(INT32 args)
   ONERROR tmp;
 #endif /* PIKE_DEBUG */
 
-  get_all_args("cpp", args, "%t.%T%*%O%i%i%i", &data, &current_file,
+  get_all_args("cpp", args, "%t.%T%*%O%d%d%d", &data, &current_file,
 	       &charset_sv, &handler, &compat_major, &compat_minor,
 	       &wicit);
 
