@@ -262,8 +262,8 @@ do_dump: {
       {
 	string s;
 	if ((err = catch {
-	    s=encode_value(p, Codec());
-	    p=decode_value(s,master()->Codec());
+	    s=encode_value(p, master()->Encoder());
+	    p=decode_value(s, master()->Decoder());
 	  }))
 	  logmsg_long(describe_backtrace(err));
 
