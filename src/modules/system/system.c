@@ -2189,3 +2189,5 @@ void pike_module_exit(void)
   }
 #endif
 }
+
+/*! @endmodule */
