@@ -771,6 +771,9 @@ void verify_all_objects(void)
 	frame.context=o->prog->inherits[e];
 	add_ref(frame.context.prog);
 	frame.current_storage=o->storage+frame.context.storage_offset;
+	/* Do frame stuff here */
+
+	free_program(frame.context.prog);
       }
 
       free_object(frame.current_object);
@@ -840,12 +843,12 @@ void cleanup_objects(void)
     next=o->next;
     free_object(o);
   }
-  destruct_objects_to_destruct();
 
   free_object(master_object);
   master_object=0;
   free_program(master_program);
   master_program=0;
+  destruct_objects_to_destruct();
 }
 
 struct array *object_indices(struct object *o)
