@@ -2155,8 +2155,10 @@ PMOD_EXPORT void f_exit(INT32 args)
   if(in_exit) Pike_error("exit already called!\n");
   in_exit=1;
 
-  if(args>1)
+  if(args>1 && Pike_sp[1-args].type==T_STRING) {
     f_werror(args-1);
+    args=1;
+  }
 
   assign_svalue(&throw_value, Pike_sp-args);
   throw_severity=THROW_EXIT;
