@@ -59,6 +59,14 @@ extern struct program *odbc_result_program;
  * Typedefs
  */
 
+#ifndef HAVE_SQLSMALLINT
+typedef SWORD	SQLSMALLINT;
+#endif /* HAVE_SQLSMALLINT */
+
+#ifndef HAVE_SQLUSMALLINT
+typedef UWORD	SQLUSMALLINT;
+#endif /* HAVE_SQLUSMALLINT */
+
 #ifndef HAVE_SQLINTEGER
 typedef SDWORD	SQLINTEGER;
 #endif /* !HAVE_SQLINTEGER */
