@@ -3,6 +3,7 @@
 ||| Pike is distributed as GPL (General Public License)
 ||| See the files COPYING and DISCLAIMER for more information.
 \*/
+/**/
 
 #include "global.h"
 #include "svalue.h"
@@ -14,5 +15,5 @@ RCSID("$Id$");
 void f_version(INT32 args)
 {
   pop_n_elems(args);
-  push_text("Pike v0.6 release 138");
+  push_text("Pike v0.6 release 139");
 }
