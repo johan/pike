@@ -49,6 +49,7 @@ extern int gmp_library_loaded;
 /* Prototypes begin here */
 struct program *get_auto_bignum_program(void);
 struct program *get_auto_bignum_program_or_zero(void);
+void init_auto_bignum(void);
 void exit_auto_bignum(void);
 void convert_stack_top_to_bignum(void);
 void convert_stack_top_with_base_to_bignum(void);
