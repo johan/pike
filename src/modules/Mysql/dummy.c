@@ -49,7 +49,7 @@ _ll_t mysql_dummy_dum_dum(_ull_t a, _ull_t b, _ll_t c, _ll_t d) {
   fileno(stderr);
 #endif
 #ifdef HAVE_PUTS
-  puts(0);
+  puts(" ");
 #endif
 #ifdef HAVE_FGETS
   fgets(0, 0, 0);
