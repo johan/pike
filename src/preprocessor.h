@@ -773,11 +773,11 @@ static INT32 lower_cpp(struct cpp *this,
 	  static WCHAR efun_[] = { 'e','f','u','n' };
 	  static WCHAR constant_[] = { 'c','o','n','s','t','a','n','t' };
 
-	  if(pos-tmp == 7 && !memcmp(defined_, data+tmp, 7<<SHIFT))
+	  if(pos-tmp == 7 && !MEMCMP(defined_, data+tmp, 7<<SHIFT))
 	  {
 	    d = defined_macro;
-	  } else if((pos-tmp == 4 && !memcmp(efun_, data+tmp, 4<<SHIFT)) ||
-		    (pos-tmp == 8 && !memcmp(constant_, data+tmp, 8<<SHIFT)))
+	  } else if((pos-tmp == 4 && !MEMCMP(efun_, data+tmp, 4<<SHIFT)) ||
+		    (pos-tmp == 8 && !MEMCMP(constant_, data+tmp, 8<<SHIFT)))
 	  {
 	    d = constant_macro;
 	  } else {
