@@ -1253,19 +1253,19 @@ node *debug_mkefuncallnode(char *function, node *args)
    * first place to look up these efuns in the module being compiled.
    * Wouldn't it be better if this function consulted
    * compiler_handler->get_default_module? /mast */
-  int orig_flags = Pike_compiler->flags;
-  Pike_compiler->flags |= COMPILATION_FORCE_RESOLVE;
+  int orig_flags;
+  SET_FORCE_RESOLVE(orig_flags);
   name = make_shared_string(function);
   if(!name || !(n=find_module_identifier(name,0)))
   {
     free_string(name);
     my_yyerror("Internally used efun undefined: %s",function);
-    Pike_compiler->flags = orig_flags;
+    UNSET_FORCE_RESOLVE(orig_flags);
     return mkintnode(0);
   }
   free_string(name);
+  UNSET_FORCE_RESOLVE(orig_flags);
   n = mkapplynode(n, args);
-  Pike_compiler->flags = orig_flags;
   return n;
 }
 

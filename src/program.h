@@ -31,6 +31,28 @@ PMOD_PROTO extern struct program_state * Pike_compiler;
 	/* This flag is set when resolve functions should force the lookup so
 	 * that we don't get a placeholder back. Used for inherits. */
 #define COMPILATION_FORCE_RESOLVE	0x02
+/* #define FORCE_RESOLVE_DEBUG */
+/* Helper macros for force_resolve */
+#ifdef FORCE_RESOLVE_DEBUG
+#define DO_IF_FRD(X)	X
+#else /* !FORCE_RESOLVE_DEBUG */
+#define DO_IF_FRD(X)
+#endif /* FORCE_RESOLVE_DEBUG */
+#define SET_FORCE_RESOLVE(OLD) do {					\
+    int tmp_ = (OLD) = Pike_compiler->flags;				\
+    Pike_compiler->flags |= COMPILATION_FORCE_RESOLVE;			\
+    DO_IF_FRD(fprintf(stderr,						\
+		      "Force resolve on. Flags:0x%04x (0x%04x)\n",	\
+		      Pike_compiler->flags, tmp_));			\
+  } while(0)
+#define UNSET_FORCE_RESOLVE(OLD) do {					\
+    int tmp_ = (Pike_compiler->flags & ~COMPILATION_FORCE_RESOLVE) |	\
+      ((OLD) & COMPILATION_FORCE_RESOLVE);				\
+    DO_IF_FRD(fprintf(stderr,						\
+		      "Force resolve unset. Flags:0x%04x (0x%04x)\n",	\
+		      tmp_, Pike_compiler->flags));			\
+    Pike_compiler->flags = tmp_;					\
+  } while(0)
 
 extern struct pike_string *this_program_string;
 
