@@ -44,7 +44,7 @@ static struct program *image_colortable_program=NULL;
 #else
 /* The image module is probably linked static too... */
 extern struct program *image_program; 
-extern struct program *image_colortable_program=NULL;
+extern struct program *image_colortable_program;
 #endif
 
 #ifndef MIN
