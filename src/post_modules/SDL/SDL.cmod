@@ -2212,7 +2212,7 @@ PIKECLASS CD {
     RETURN SDL_CDStop(THIS->cd);
   }
 
-  /*! @int eject()
+  /*! @decl int eject()
    *!
    *! @fixme
    *!   Document this function
