@@ -61,7 +61,7 @@ PIKECLASS HashInfo
       if (!THIS->meta)
 	Pike_error("HashInfo not properly initialized.\n");
 
-      push_string(make_shared_string(THIS->meta->name));
+      push_text(THIS->meta->name);
     }
 
   /*! @decl string digest_size(void)
