@@ -584,7 +584,8 @@ void f_seteuid(INT32 args)
 #else
   err = setresuid(-1, id, -1);
 #endif /* HAVE_SETEUID */
-  pop_n_elems(args-1);
+
+  pop_n_elems(args);
   push_int(err);
 }
 #endif /* HAVE_SETEUID || HAVE_SETRESUID */
@@ -617,7 +618,8 @@ void f_setegid(INT32 args)
 #else
   err = setresgid(-1, id, -1);
 #endif /* HAVE_SETEUID */
-  pop_n_elems(args-1);
+
+  pop_n_elems(args);
   push_int(err);
 }
 #endif /* HAVE_SETEGID || HAVE_SETRESGID */
