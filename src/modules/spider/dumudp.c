@@ -1,6 +1,11 @@
-#include "config.h"
+/*
+ * $Id$
+ */
 
 #include "global.h"
+
+#include "config.h"
+
 RCSID("$Id$");
 #include "fdlib.h"
 #include "interpret.h"
