@@ -2428,6 +2428,7 @@ void fix_type_field(node *n)
 	if (!match_types(compiler_frame->current_return_type,CAR(n)->type))
 	{
 	  yyerror("Wrong return type.");
+	  yyexplain_nonmatching_types(compiler_frame->current_return_type, CAR(n)->type);
 	}
 	else if (lex.pragmas & ID_STRICT_TYPES)
 	{
