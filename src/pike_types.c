@@ -1071,7 +1071,7 @@ struct pike_string *describe_type(struct pike_type *type)
   check_type_string(type);
   if(!type) return make_shared_string("mixed");
   init_buf();
-  my_describe_type(type->str);
+  my_describe_type(type);
   return free_buf();
 }
 
