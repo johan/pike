@@ -92,7 +92,7 @@ mapping _decode( string data )
 
   if(!i)
     foreach( ({ "PSD", "TGA", "XBM", "XPM",
-		"TIFF", "SVG",
+		"TIFF", "SVG", "NEO",
        /* Image formats low on headers below this mark */
                 "DSI", "HRZ", "AVS", "WBF",
        /* "XFace" Always succeds*/
