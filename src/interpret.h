@@ -34,6 +34,14 @@ struct pike_frame
   char *current_storage;
 };
 
+struct external_variable_context
+{
+  struct object *o;
+  struct inherit *inherit;
+  int parent_identifier;
+};
+
+
 #ifdef PIKE_DEBUG
 #define debug_check_stack() do{if(Pike_sp<Pike_evaluator_stack)fatal("Stack error.\n");}while(0)
 #define check__positive(X,Y) if((X)<0) fatal Y
@@ -185,6 +193,8 @@ do{ \
 void push_sp_mark(void);
 int pop_sp_mark(void);
 void init_interpreter(void);
+void find_external_context(struct external_variable_context *loc,
+			   int arg2);
 void lvalue_to_svalue_no_free(struct svalue *to,struct svalue *lval);
 void assign_lvalue(struct svalue *lval,struct svalue *from);
 union anything *get_pointer_if_this_type(struct svalue *lval, TYPE_T t);
