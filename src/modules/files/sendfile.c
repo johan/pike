@@ -707,7 +707,7 @@ static void sf_create(INT32 args)
   MEMSET(&sf, 0, sizeof(struct pike_sendfile));
   sf.callback.type = T_INT;
 
-  get_all_args("sendfile", args, "%A%O%i%i%A%o%*",
+  get_all_args("sendfile", args, "%A%O%l%l%A%o%*",
 	       &(sf.headers), &(sf.from_file), &(sf.offset),
 	       &(sf.len), &(sf.trailers), &(sf.to_file), &cb);
 
