@@ -520,7 +520,7 @@ void img_bmp_encode(INT32 args)
 **!	<ref>decode</ref> gives an image object,
 **!	<ref>_decode</ref> gives a mapping in the format
 **!	<pre>
-**!		"type":"image/bmp",
+**!		"type":"image/x-MS-bmp",
 **!		"image":image object,
 **!		"colortable":colortable object (if applicable)
 **!
@@ -680,6 +680,10 @@ void i_img_bmp__decode(INT32 args,int header_only)
 	       "(illegal info size %ld, expected 68, 40 or 12)\n",
 	       int_from_32bit(s+14));
    }
+
+   push_text("type");
+   push_text("image/x-MS-bmp");
+   n++;
 
    if (header_only)
    {
