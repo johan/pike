@@ -31,10 +31,11 @@ force:
 
 $(MODULE_ARCHIVES) ThisIsAPhonyTargetBlaBlaBla: force
 	@a=`echo $@ | sed -e 's@/[^/]*$$@@'` ; \
-	echo Making $(MODNAME)/$$a ; \
+	 m=`echo $@ | sed -e 's@.*/@@g'`; \
+	echo Making $(MODNAME)/$$a/$$m ; \
 	( rm $$a/remake >/dev/null 2>&1 ||: ; \
-	  cd $$a && ( $(MAKE) $(MAKE_FLAGS) || \
-	              ( test -f remake ; $(MAKE) $(MAKE_FLAGS) ) ) \
+	  cd $$a && ( $(MAKE) $(MAKE_FLAGS) $$m || \
+	              ( test -f remake ; $(MAKE) $(MAKE_FLAGS) $$m ) ) \
 	) || exit $$?
 
 dummy:	Makefile $(DUMMY) linker_options modlist_headers modlist_segment module.so
