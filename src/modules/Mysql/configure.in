@@ -255,7 +255,8 @@ $ret_type * STDCALL mysql_fetch_lengths(MYSQL_RES *mysql)
 	AC_DEFINE(FETCH_LENGTHS_TYPE, unsigned long)
       else
         AC_MSG_RESULT($pike_cv_mysql_fetch_lengths_ret_type)
-        AC_DEFINE(FETCH_LENGTHS_TYPE, $pike_cv_mysql_fetch_lengths_ret_type)
+        AC_DEFINE_UNQUOTED(FETCH_LENGTHS_TYPE,
+			   $pike_cv_mysql_fetch_lengths_ret_type)
       fi
     else :; fi
   fi
