@@ -158,6 +158,9 @@ pike_external_module: plib/modules
 plib/modules: plib
 	@test -d plib/modules || mkdir plib/modules
 
+plib/refdoc: plib
+	@test -d plib/refdoc || mkdir plib/refdoc
+
 plib:
 	@test -d plib || mkdir plib
 
@@ -188,3 +191,6 @@ gdb_verify: testsuite $(PIKE_EXTERNAL_MODULE)
 	@echo >>.gdbinit run -DNOT_INSTALLED -m $(TMP_BUILDDIR)/master.pike $(PIKEOPTS) -Mplib/modules $(TMP_BINDIR)/test_pike.pike testsuite -v -v -f
 	gdb $(TMP_BUILDDIR)/pike
 	@rm .gdbinit
+
+extract_autodoc: $(PIKE_EXTERNAL_MODULE) plib/refdoc
+	$(RUNPIKE) -x extract_autodoc --builddir=plib/refdoc --srcdir=plib/modules
