@@ -1061,9 +1061,9 @@ static int low_yylex(YYSTYPE *yylval)
     default:
       {
 	if (c > 31) {
-	  my_yyerror("Illegal character '%c' (0x%x)", c, c);
+	  my_yyerror("Illegal character '%c' (0x%02x)", c, c);
 	} else {
-	  my_yyerror("Illegal character 0x%x", c);
+	  my_yyerror("Illegal character 0x%02x", c);
 	}
 	return ' ';
       }
