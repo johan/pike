@@ -2795,7 +2795,11 @@ struct program *compile(struct pike_string *prog, struct object *handler)
 
   lex.current_line=1;
   lex.current_file=make_shared_string("-");
-  lex.pragmas=0;
+  if (debug_options & DEBUG_TYPES) {
+    lex.pragmas = ID_STRICT_TYPES;
+  } else {
+    lex.pragmas = 0;
+  }
 
   low_start_new_program(0,0,0);
   if(lex.current_file)
@@ -3322,13 +3326,12 @@ struct program *program_from_svalue(struct svalue *s)
 
       if (!p) return 0;
 
-      if (!s->subtype) {
-	if ((call_fun = FIND_LFUN(p, LFUN_CALL)) >= 0) {
-	  /* Get the program from the return type. */
-	  struct identifier *id = ID_FROM_INT(p, call_fun);
-	  /* FIXME: do it. */
-	  return 0;
-	}
+      if ((call_fun = FIND_LFUN(p, LFUN_CALL)) >= 0) {
+	/* Get the program from the return type. */
+	struct identifier *id = ID_FROM_INT(p, call_fun);
+	/* FIXME: do it. */
+	/* fprintf(stderr, "Object type has `()().\n"); */
+	return 0;
       }
       push_svalue(s);
       f_object_program(1);
