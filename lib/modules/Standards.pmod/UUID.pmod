@@ -294,6 +294,8 @@ UUID make_version1(int node) {
   return u;
 }
 
+#if constant(Crypto.MD5.hash)
+
 //! Creates a version 3 UUID with a @[name] string and a binary
 //! representation of a name space UUID.
 UUID make_version3(string name, string namespace) {
@@ -332,6 +334,8 @@ UUID make_version3(string name, string namespace) {
 
   return UUID(ret);
 }
+
+#endif
 
 //! Creates a version 4 (random) UUID.
 UUID make_version4() {
@@ -396,6 +400,7 @@ UUID make_null() {
   return u;
 }
 
+#if constant(Crypto.MD5.hash)
 #define H(X) String.hex2string((X)-"-")
 
 //! Creates a DNS UUID with the given DNS name.
@@ -417,4 +422,4 @@ UUID make_oid(string name) {
 UUID make_x500(string name) {
   return make_version3(name, H(NameSpace_X500));
 }
-
+#endif
