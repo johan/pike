@@ -1395,6 +1395,11 @@ void set_blocking()
 
 string edit(string data, string|void local_prompt)
 {
+  if(data && strlen(data) && input_controller->dumb)
+  {
+    string ret=edit("", (local_prompt || get_prompt()) +" ["+data+"] ");
+    return (!ret || !strlen(ret))?data:ret;
+  }
   string old_prompt;
   
   if(newline_func == read_newline)
