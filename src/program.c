@@ -2078,6 +2078,15 @@ void pike_set_prog_event_callback(void (*cb)(enum pike_program_event))
   Pike_compiler->new_program->event_handler=cb;
 }
 
+void pike_set_prog_optimize_callback(node *(*opt)(node *))
+{
+#ifdef PIKE_DEBUG
+  if(Pike_compiler->new_program->optimize)
+    fatal("Program already has an optimize handler!\n");
+#endif
+  Pike_compiler->new_program->optimize = opt;
+}
+
 int low_reference_inherited_identifier(struct program_state *q,
 				       int e,
 				       struct pike_string *name,
