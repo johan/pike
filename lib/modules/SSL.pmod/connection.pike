@@ -90,7 +90,11 @@ void send_packet(object packet, int|void priority)
 	          PACKET_handshake : PRI_urgent,
 		  PACKET_application_data : PRI_application ])[packet->content_type];
 #ifdef SSL3_DEBUG
-  werror(sprintf("SSL.connection->send_packet: type %d, %d, '%s'\n",
+  if (packet->content_type == 22)
+    werror(sprintf("SSL.connection->send_packet() called from:\n"
+		   "%s\n", describe_backtrace(backtrace())));
+
+  werror(sprintf("SSL.connection->send_packet: type %d, %d, '%O'\n",
 		 packet->content_type, priority,  packet->fragment[..5]));
 #endif
   switch (priority)
