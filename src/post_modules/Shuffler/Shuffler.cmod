@@ -212,7 +212,9 @@ PIKECLASS Shuffle
   EXIT
   {
     SHUFFLE_DEBUG1("exit()\n", THIS );
-    //change_fd_for_box(&THIS->box, -1);  // unnecessary?
+#if 0
+    change_fd_for_box(&THIS->box, -1);  /* unnecessary? */
+#endif
     { struct Backend_struct*ob = THIS->box.backend;
       unhook_fd_callback_box(&THIS->box);
       if(THIS->chainbox) {
