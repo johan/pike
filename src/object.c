@@ -496,7 +496,6 @@ static void get_master_cleanup (void *dummy)
 
 PMOD_EXPORT struct object *get_master(void)
 {
-  extern char *master_file;
   static int inside=0;
 
   if(master_object && master_object->prog)
