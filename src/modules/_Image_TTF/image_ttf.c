@@ -1216,9 +1216,7 @@ static void image_ttf_faceinstance_write(INT32 args)
 	 }
 	 ypos+=face_i->height;
       }
-
-/*       fprintf(stderr,"rastermap.rows=%d cols=%d width=%d\n", */
-/* 	      rastermap.rows,rastermap.cols,rastermap.width); */
+      free(pixmap);
       push_object(o);
    }
    else 
