@@ -8,15 +8,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include "callback.h"
-
 /* Prototypes begin here */
-PMOD_EXPORT struct callback *add_post_master_callback(callback_func call,
-					  void *arg,
-					  callback_func free_func);
-PMOD_EXPORT struct callback *add_exit_callback(callback_func call,
-				   void *arg,
-				   callback_func free_func);
 int main(int argc, char **argv);
 DECLSPEC(noreturn) void pike_do_exit(int num) ATTRIBUTE((noreturn));
 /* Prototypes end here */
