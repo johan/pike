@@ -2030,11 +2030,6 @@ double STRTOD_PCHARP(PCHARP nptr, PCHARP *endptr)
   if (EXTRACT_PCHARP(s) == '-' || EXTRACT_PCHARP(s) == '+')
     INC_PCHARP(s,1);
 
-  /* Get the sign.  */
-  sign = EXTRACT_PCHARP(s) == '-' ? -1 : 1;
-  if (EXTRACT_PCHARP(s) == '-' || EXTRACT_PCHARP(s) == '+')
-    INC_PCHARP(s,1);
-
   num = 0.0;
   got_dot = 0;
   got_digit = 0;
