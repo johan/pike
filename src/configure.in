@@ -4873,7 +4873,9 @@ AC_CACHE_VAL(pike_cv_sys_nonblock,
   else
     OCPPFLAGS="$CPPFLAGS"
     pike_cv_sys_nonblock=UNKNOWN
-    for method in USE_FCNTL_FNDELAY USE_FCNTL_O_NDELAY USE_FCNTL_O_NONBLOCK \
+    # USE_FCNTL_O_NONBLOCK seems to be the most common, so let's start
+    # with it.
+    for method in USE_FCNTL_O_NONBLOCK USE_FCNTL_FNDELAY USE_FCNTL_O_NDELAY \
 		  USE_IOCTL_FIONBIO USE_IOCTLSOCKET_FIONBIO; do
       # Make sure we can run configure in a separate directory,
       # and set the method to try.
