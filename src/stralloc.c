@@ -1604,7 +1604,7 @@ void string_builder_strcat(struct string_builder *s, char *str)
 
 void string_builder_shared_strcat(struct string_builder *s, struct pike_string *str)
 {
-  string_build_mkspace(s,str->len,s->s->size_shift);
+  string_build_mkspace(s,str->len,str->size_shift);
 
   pike_string_cpy(MKPCHARP_STR_OFF(s->s,s->s->len), str);
   s->known_shift=MAXIMUM(s->known_shift,str->size_shift);
