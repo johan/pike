@@ -527,6 +527,7 @@ void process_done(pid_t pid, char *from)
       dump_process_history(pid);
       fprintf(stderr,"Process debug: Unknown child %ld in %s! (status=%d)\n",(long)pid,from,process_info[pid]);
 #endif
+      break;
   }
 }
 
@@ -1775,14 +1776,12 @@ void f_create_process(INT32 args)
       initialize_buf(&buf);
       for(e=0;e<cmd->size;e++)
       {
-	int quote;
-	if(e)
+	int quote=0;
+	/* if(e) */
 	{
 	  low_my_putchar(' ', &buf);
 	  quote=STRCHR(ITEM(cmd)[e].u.string->str,'"') ||
 	    STRCHR(ITEM(cmd)[e].u.string->str,' ');
-	}else{
-	  quote=0;
 	}
 
 	if(quote)
