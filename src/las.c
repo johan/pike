@@ -1975,6 +1975,7 @@ void fix_type_field(node *n)
 	!CDR(n) || CDR(n)->type == void_type_string) {
       yyerror("Conditional contains void expression.");
       copy_shared_string(n->type, mixed_type_string);
+      break;
     }
     if(!match_types(CAR(n)->type,mixed_type_string))
       yyerror("Bad conditional expression.");
