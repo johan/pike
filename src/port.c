@@ -656,7 +656,7 @@ PMOD_EXPORT INT32 EXTRACT_INT_(unsigned char *p)
 }
 #endif
 
-#ifdef HAVE_BROKEN_STKCHK
+#ifdef HAVE_BROKEN_CHKSTK
 /* Intels ecl compiler adds calls to _stkchk() in the prologue,
  * MicroSoft seems to have renamed it to __stkchk() in later
  * versions of their SDK. This kludge attempts to workaround
