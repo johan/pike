@@ -917,17 +917,17 @@ static void encode_value2(struct svalue *val, struct encode_data *data)
 #ifdef ENCODE_PROGRAM
 #ifdef PIKE_DEBUG
 	{
-	  ptrdiff_t bufpos = data->buf.s->len;
+	  ptrdiff_t bufpos = data->buf.s.len;
 #endif /* PIKE_DEBUG */
 	  ENCODE_PROGRAM(p, &(data->buf));
 #ifdef PIKE_DEBUG
 	  if (p->num_program * sizeof(p->program[0]) !=
-	      data->buf.s->len - bufpos) {
+	      data->buf.s.len - bufpos) {
 	    fatal("ENCODE_PROGRAM() failed:\n"
 		  "Encoded data len: %ld\n"
 		  "Expected data len: %ld\n",
 		  DO_NOT_WARN((long)(p->num_program * sizeof(p->program[0]))),
-		  DO_NOT_WARN((long)(data->buf.s->len - bufpos)));
+		  DO_NOT_WARN((long)(data->buf.s.len - bufpos)));
 	  }
 	}
 #endif /* PIKE_DEBUG */
