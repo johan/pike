@@ -39,7 +39,7 @@ share_prefix = $(data_prefix)/pike
 man_prefix = $(prefix)/man
 
 # Arguments for test_pike.pike used by the verify targets.
-TESTARGS = -a
+# TESTARGS = -a
 
 # Arguments for install.pike used by the install targets.
 INSTALLARGS = --new-style
