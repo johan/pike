@@ -47,7 +47,7 @@ xenofarm_post_build() {
   $MAKE $MAKE_FLAGS bin_export > xenofarm_result/exportlog.txt 2>&1
   log_end $?
   [ $LASTERR = 0 ] || return 1
-  return POST_RESULT
+  return $POST_RESULT
 }
 
 
