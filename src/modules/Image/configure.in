@@ -4,8 +4,6 @@ AC_CONFIG_HEADER(image_machine.h)
 
 AC_SET_MAKE
 
-AC_CONFIG_SUBDIRS(encodings)
-
 AC_MODULE_INIT()
 
 PIKE_FEATURE_OK(Image)
@@ -73,3 +71,5 @@ fi
 AC_SUBST(RANLIB)
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
+
+AC_CONFIG_SUBDIRS(encodings)
