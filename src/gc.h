@@ -8,7 +8,7 @@
 #include "callback.h"
 #include "queue.h"
 
-extern struct queue gc_mark_queue;
+extern struct pike_queue gc_mark_queue;
 extern INT32 num_objects;
 extern INT32 num_allocs;
 extern INT32 alloc_threshold;
