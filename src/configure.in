@@ -172,6 +172,10 @@ fi
 
 #############################################################################
 
+if test "x$GCC" = "x"; then
+  GCC=no
+else :; fi
+
 if test "x$GCC" = "xno" -a "x$TCC" = "xno"; then
   #
   # We want 64bit mode if possible.
