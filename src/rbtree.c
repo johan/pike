@@ -1461,7 +1461,7 @@ struct rb_node_hdr *rb_make_tree (struct rb_node_hdr *list, size_t length)
 	stack = xalloc (stack_size);
 	stack_malloced = 1;
       }
-      top_idx = (unsigned *) stack + depth;
+      top_idx = (unsigned *) (stack + depth);
       memset (top_idx, 0, (depth + 1) * sizeof (unsigned));
       depth--;
     }
