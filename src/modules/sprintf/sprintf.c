@@ -958,7 +958,8 @@ static string low_pike_sprintf(char *format,
 	  break;
 	case 8:
 #ifdef DOUBLE_IS_IEEE_BIG
-	  MEMCPY(fsp->b, &tf, 8);
+	  td = (double)tf;
+	  MEMCPY(fsp->b, &td, 8);
 #else
 #ifdef DOUBLE_IS_IEEE_LITTLE
 	  td = (double)tf;
