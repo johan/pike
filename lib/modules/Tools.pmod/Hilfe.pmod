@@ -836,7 +836,7 @@ private class Expression {
 	   "do", "gauge", "catch" >)[ `[](pos) ] )
       return 1;
 
-    if( `[](pos+1)=="{" )
+    if( `[](pos+1)=="{" && `[](pos)!="(")
       return 1;
     if( `[](pos+1)!="(" )
       return 0;
