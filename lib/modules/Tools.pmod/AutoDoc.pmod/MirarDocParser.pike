@@ -786,7 +786,7 @@ string make_doc_files(string builddir, string imgdest, string|void namespace)
       namespace = namespace[..sizeof(namespace)-3];
    }
 
-   object f = class {
+   object f = class (string namespace) {
       string doc = "";
       int write(string in) {
 	 doc += in;
@@ -799,7 +799,7 @@ string make_doc_files(string builddir, string imgdest, string|void namespace)
 	    "</namespace>"
 	    "</autodoc>";
       }
-   }();
+   }(namespace);
 
    foreach (sort(indices(parse)-({"_order", " appendix"})),string module)
       document("module",parse[module],module,module+".", f);
