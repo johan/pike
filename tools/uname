@@ -116,9 +116,14 @@ if [ "$M$P" = "" ]; then :; else
   #   "ia64 Family 7 Model 1 Stepping 5, GenuineIntel"
   # or
   #   "x86 Family 6 Model 7 Stepping 3, GenuineIntel"
+  # PROCESSOR_LEVEL jumps to 15 with P4/Xeon
 
   if [ "$PROCESSOR_ARCHITECTURE" = "x86" ]; then
-    PROCESSOR_ARCHITECTURE="i`getntenv PROCESSOR_LEVEL`86"
+    PL=`getntenv PROCESSOR_LEVEL`
+    if [ "$PL" > 6 ]; then 
+      PL=6
+    fi
+    PROCESSOR_ARCHITECTURE="i${PL}86"
     if [ "$PROCESSOR_ARCHITECTURE" = "i86" ]; then
       # Probably not reached, but...
       PROCESSOR_ARCHITECTURE="i386"
