@@ -779,11 +779,15 @@ test_do([[
       }
     }
 
-    mixed eat_stack()
+    mixed eat_stack(int|void probe)
     {
+      // Avoid eating as much C-stack by releasing the
+      // catch at every level.
+      if (probe) return 1;
+      if (catch(eat_stack(1))) return 1;
       mixed err = 1;
-      if (catch (err = eat_stack()) || err != 10)
-	return intp (err) && err > 0 ? err + 1 : err;
+      if ((err = eat_stack()) != 10)
+	return intp(err) && err > 0 ? err + 1 : err;
       if (err = catch {
 
 	Foo foo;
@@ -4816,11 +4820,15 @@ test_any([[
   ]])
 
   test_do([[
-    mixed eat_stack()
+    mixed eat_stack(int|void probe)
     {
+      // Avoid eating as much C-stack by releasing the
+      // catch at every level.
+      if (probe) return 1;
+      if (catch(eat_stack(1))) return 1;
       mixed err = 1;
-      if (catch (err = eat_stack()) || err != 10)
-	return intp (err) && err ? err + 1 : err;
+      if ((err = eat_stack()) != 10)
+	return intp(err) && err > 0 ? err + 1 : err;
       if (err = catch {
 	class Foo
 	{
