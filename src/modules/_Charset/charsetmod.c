@@ -31,12 +31,6 @@
 
 p_wchar1 *misc_charset_lookup(const char *name, int *rlo, int *rhi);
 
-struct multichar_table {
-  const unsigned int lo;
-  const unsigned int hi;
-  UNICHAR const *table;
-};
-
 extern const struct multichar_table GBK[];
 extern const struct multichar_table cp949[];
 

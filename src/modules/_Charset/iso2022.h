@@ -28,7 +28,13 @@ typedef p_wchar1 UNICHAR;
 #define VARIANT_JP2 4
 
 struct charset_def {
-  char const *name;
-  UNICHAR const *table;
+  const char *const name;
+  const UNICHAR *const table;
   const int mode;
+};
+
+struct multichar_table {
+  const unsigned int lo;
+  const unsigned int hi;
+  const UNICHAR *const table;
 };
