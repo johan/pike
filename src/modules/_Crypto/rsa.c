@@ -615,7 +615,7 @@ static void f_rsa_size(INT32 args)
   }
 
   pop_n_elems(args);
-  push_int(THIS->n->len);
+  push_int(THIS->n->len*8);
 }
 
 /* int public_key_equal (object rsa) */
