@@ -1343,6 +1343,12 @@ static void mpzmod_lsh(INT32 args)
   if(sp[-1].type == T_INT) {
     if(sp[-1].u.integer < 0)
       Pike_error("Gmp.mpz->lsh on negative number.\n");
+#if SIZEOF_INT_TYPE > SIZEOF_LONG
+/* unsigned long int is the type of the argument to mpz_mul_2exp */
+    if (sp[-1].u.integer != (unsigned long int)sp[-1].u.integer)
+      if(mpz_cmp_si(THIS, -1)<0 || mpz_cmp_si(THIS, 1)>0)
+	Pike_error("Gmp.mpz->lsh: shift count too large.\n");
+#endif
     res = fast_clone_object(THIS_PROGRAM, 0);
     mpz_mul_2exp(OBTOMPZ(res), THIS, sp[-1].u.integer);
   } else {
@@ -1376,22 +1382,36 @@ static void mpzmod_rsh(INT32 args)
   ref_push_type_value(int_type_string);
   stack_swap();
   f_cast();
-  if(sp[-1].type == T_INT) {
-    if (sp[-1].u.integer < 0)
-      Pike_error("Gmp.mpz->rsh: Shift count must be positive.\n");
-    res = fast_clone_object(THIS_PROGRAM, 0);
-    mpz_fdiv_q_2exp(OBTOMPZ(res), THIS, sp[-1].u.integer);
-  } else {
-    INT32 i;
-    MP_INT *mi = get_mpz(sp-1,1);
-    if(mpz_sgn(mi)<0)
-      Pike_error("Gmp.mpz->rsh: Shift count must be positive.\n");
-    i=mpz_get_si(mi);
-    res = fast_clone_object(THIS_PROGRAM, 0);
-    if(mpz_cmp_si(mi, i))
-      mpz_set_si(OBTOMPZ(res), mpz_sgn(THIS)<0? -1:0);
-    else
-      mpz_fdiv_q_2exp(OBTOMPZ(res), THIS, i);
+  if(sp[-1].type == T_INT)
+  {
+     if (sp[-1].u.integer < 0)
+	Pike_error("Gmp.mpz->rsh: Shift count must be positive.\n");
+#if SIZEOF_INT_TYPE > SIZEOF_LONG
+/* unsigned long int is the type of the argument to mpz_mul_2exp */
+     if (sp[-1].u.integer != (unsigned long int)sp[-1].u.integer)
+     {
+	res = fast_clone_object(THIS_PROGRAM, 0);
+	mpz_set_si(OBTOMPZ(res), mpz_sgn(THIS)<0? -1:0);
+     }
+     else
+#endif
+     {
+	res = fast_clone_object(THIS_PROGRAM, 0);
+	mpz_fdiv_q_2exp(OBTOMPZ(res), THIS, sp[-1].u.integer);
+     } 
+  }
+  else 
+  {
+     INT32 i;
+     MP_INT *mi = get_mpz(sp-1,1);
+     if(mpz_sgn(mi)<0)
+	Pike_error("Gmp.mpz->rsh: Shift count must be positive.\n");
+     i=mpz_get_si(mi);
+     res = fast_clone_object(THIS_PROGRAM, 0);
+     if(mpz_cmp_si(mi, i))
+	mpz_set_si(OBTOMPZ(res), mpz_sgn(THIS)<0? -1:0);
+     else
+	mpz_fdiv_q_2exp(OBTOMPZ(res), THIS, i);
   }
   pop_n_elems(args);
   PUSH_REDUCED(res);
@@ -1469,7 +1489,7 @@ static void mpzmod_pow(INT32 args)
     if (sp[-1].u.integer < 0)
       Pike_error("Gmp.mpz->pow: Negative exponent.\n");
     res = fast_clone_object(THIS_PROGRAM, 0);
-#ifdef BIG_PIKE_INT
+#if SIZEOF_INT_TYPE > SIZEOF_LONG
 /* unsigned long int is the type of the argument to mpz_pow_ui */
     if (sp[-1].u.integer != (unsigned long int)sp[-1].u.integer)
       if(mpz_cmp_si(THIS, -1)<0 || mpz_cmp_si(THIS, 1)>0)
