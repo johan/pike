@@ -24,6 +24,12 @@
 /* Define this if you want checkpoints */
 #undef DMALLOC_TRACE
 
+/* With this, dmalloc will trace malloc(3) calls */
+#undef ENCAPSULATE_MALLOC
+
+/* With this, dmalloc will report leaks made by malloc(3) calls */
+#undef REPORT_ENCAPSULATED_MALLOC
+
 /* Define this to enable the internal Pike security system */
 #undef PIKE_SECURITY
 
