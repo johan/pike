@@ -315,7 +315,7 @@ void img_ras_decode(INT32 args)
 	      if(numcolors>0)
 		*rgb = entries[0].color;
 	      else
-		rgb->r = rgb->g = rgb->b = ~0;
+		rgb->r = rgb->g = rgb->b = 0xff;
 	    rgb++;
 	    data<<=1;
 	    --bits;
