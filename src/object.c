@@ -1237,6 +1237,8 @@ PMOD_EXPORT void gc_mark_object_as_referenced(struct object *o)
     int e;
     struct program *p;
 
+    if(o->next == o) return; /* Fake object used by compiler */
+
     if (o == gc_mark_object_pos)
       gc_mark_object_pos = o->next;
     if (o == gc_internal_object)
