@@ -22,7 +22,7 @@ void upd_pointer(INT32 off, INT32 ptr)
 
 void ins_align(INT32 align)
 {
-  while(Pike_compiler->new_program->num_program % c->arg) {
+  while(Pike_compiler->new_program->num_program % align) {
     add_to_program(0);
   }
 }
