@@ -278,6 +278,19 @@ static void f_big_query(INT32 args)
 	PQ_LOCK();
 	pgdebug("f_big_query(\"%s\")\n",query);
 	res=PQexec(conn,query);
+	/* A dirty hack to fix the reconnect bug.
+	 * we don't need to store the host/user/pass/db... etc..
+	 * PQreset() does all the job.
+	 *  Zsolt Varga <redax@agria.hu> 2000-apr-04
+	 */
+	if((PQstatus(conn) != CONNECTION_OK) ||
+	   (PQresultStatus(res) == PGRES_FATAL_ERROR) ||
+	   (PQresultStatus(res) == PGRES_BAD_RESPONSE)) {
+	  PQclear(res);
+	  PQreset(conn);
+	  res=PQexec(conn,query);
+	}
+
 	notification=PQnotifies(conn);
 	PQ_UNLOCK();
 	THREADS_DISALLOW();
