@@ -329,6 +329,9 @@ static void do_abort()
 
 PMOD_EXPORT void fatal_on_error(const void *msg)
 {
+  /* It's ok if we're exiting. */
+  if (throw_severity == THROW_EXIT) return;
+
 #ifdef PIKE_DEBUG
   dump_backlog();
 #endif
