@@ -141,5 +141,10 @@ mapping(string:mixed) all_constants()
 #if constant(System.getgrent)
   ret->setgrent = System.getgrent;
 #endif
+#ifdef __NT__
+  ret->explode_path=lambda(string x) { return replace(x,"\\","/")/"/"; };
+#else
+  ret->explode_path=lambda(string x) { return x/"/"; };
+#endif
   return ret;
 }
