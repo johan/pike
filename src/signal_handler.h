@@ -13,13 +13,22 @@
 typedef RETSIGTYPE (*sigfunctype) (int);
 
 /* Prototypes begin here */
-struct wait_data;
 struct sigdesc;
 void my_signal(int sig, sigfunctype fun);
+void check_signals(struct callback *foo, void *bar, void *gazonk);
+void set_default_signal_handler(int signum, void (*func)(INT32));
+void process_started(pid_t pid);
+void process_done(pid_t pid);
+struct wait_data;
 struct pid_status;
+struct perishables;
+struct plimit;
+struct perishables;
+void f_set_priority( INT32 args );
 void f_create_process(INT32 args);
 void f_fork(INT32 args);
-void check_signals(struct callback *foo, void *bar, void *gazonk);
+void f_kill(INT32 args);
+void f_atexit(INT32 args);
 void init_signals(void);
 void exit_signals(void);
 /* Prototypes end here */

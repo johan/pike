@@ -886,7 +886,12 @@ static void decode_value2(struct decode_data *data)
 	  
 	case 1:
 	  decode_value2(data);
-	  f_arrow(2);
+	  if(sp[-2].type==T_INT)
+	  {
+	    pop_stack();
+	  }else{
+	    f_arrow(2);
+	  }
 	  break;
 	  
 	default:

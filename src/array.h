@@ -31,8 +31,10 @@ struct array
   struct svalue item[1];
 };
 
-#define ARRAY_CYCLIC 1
-#define ARRAY_LVALUE 2
+#define ARRAY_WEAK_FLAG 1
+#define ARRAY_CYCLIC 2
+#define ARRAY_LVALUE 4
+#define ARRAY_WEAK_SHRINK 8
 
 extern struct array empty_array;
 

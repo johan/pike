@@ -977,34 +977,19 @@ int object_equal_p(struct object *a, struct object *b, struct processing *p)
 void cleanup_objects(void)
 {
   struct object *o, *next;
-  for(o=first_object;o;o=next)
-  {
-    add_ref(o);
-    call_destroy(o,1);
-    next=o->next;
-    free_object(o);
-  }
 
   for(o=first_object;o;o=next)
   {
     add_ref(o);
-    low_destruct(o,
-#ifdef DO_PIKE_CLEANUP
-		 1
-#else
-		 0
-#endif
-      );
+    low_destruct(o,1);
     next=o->next;
     free_object(o);
   }
-#ifdef DO_PIKE_CLEANUP
   free_object(master_object);
   master_object=0;
   free_program(master_program);
   master_program=0;
   destruct_objects_to_destruct();
-#endif
 }
 
 struct array *object_indices(struct object *o)
