@@ -51,6 +51,7 @@ struct neo_colortable
    enum nct_lookup_mode /* see union "lu" below */
    {
       NCT_CUBICLES, /* cubicle lookup */
+      NCT_RIGID, /* rigid lookup */
       NCT_FULL /* scan all values */
    } lookup_mode;
 
@@ -93,6 +94,11 @@ struct neo_colortable
 	    int *index; /* NULL if not initiated */
 	 } *cubicles; /* [r*g*b], index as [ri+(gi+bi*g)*r] */
       } cubicles;
+      struct nctlu_rigid
+      {
+	 int r,g,b; /* size */
+	 int *index;
+      } rigid;
    } lu;
 
    enum nct_dither_type
