@@ -341,6 +341,9 @@ quant: $(OBJ) master-stamp module_objects
 	-@mv pike pike.old 2>/dev/null || true
 	$(SMARTLINK) quantify $(REALCC) $(LDFLAGS) $(OBJ) `cat modules/linker_options  post_modules/linker_options` $(LIBS) -o pike
 
+splint:
+	splint $(PREFLAGS) -warnposix +charintliteral -realcompare -boolops -predboolint $(FILE)
+
 atom: pike
 	atom pike -tool atom -env threads -g -v `find lib/modules -type f -name '*.so' -print | sed -e 's/^/-incobj /g'`
 	mv pike pike.pre-atom
