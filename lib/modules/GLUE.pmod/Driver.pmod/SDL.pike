@@ -315,6 +315,8 @@ static int X_sym( SDL.Keysym sym )
     SDL.K_RIGHTPAREN:')', SDL.K_SEMICOLON:';',
     SDL.K_SLASH:'/', SDL.K_SPACE:' ', SDL.K_UNDERSCORE:'_',
 
+    SDL.K_KP_PLUS:'+', SDL.K_KP_MINUS:'-',
+
     // CARET CLEAR COMPOSE EURO FIRST HELP KP* LMETA LSUPER
     // MODE POWER RMETA RSUPER
 #endif
