@@ -29,8 +29,12 @@ void cleanup_compiler(void);
 
 extern int cumulative_parse_error;
 
+
+#ifndef STRUCT_NODE_S_DECLARED
+#define STRUCT_NODE_S_DECLARED
 struct node_s;
 typedef struct node_s node;
+#endif
 
 struct local_variable
 {
@@ -109,10 +113,6 @@ struct node_s
   unsigned INT16 token;
   union node_data u;
 };
-
-#ifndef STRUCT_NODE_S_DECLARED
-#define STRUCT_NODE_S_DECLARED
-#endif
 
 #ifdef SHARED_NODES_MK2
 
