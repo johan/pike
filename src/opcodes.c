@@ -700,6 +700,7 @@ void o_cast(struct pike_type *type, INT32 run_time_type)
 	      pop_stack();
 	    } while ((nodepos = multiset_next (tmp, nodepos)) >= 0);
 	    UNSET_ONERROR (uwp);
+	    sub_msnode_ref (tmp);
 	  }
 
 #else  /* PIKE_NEW_MULTISETS */
