@@ -66,7 +66,7 @@ string select(string name, array(string)|array(array(string)) choices,
 //! @param cell_callback
 //!   If provided, the cell callback will be called for each cell. As in parameters it
 //!   will get the current x and y coordinates in the table. The upper left cell is 0,0.
-//!   In addition to the coordinates it will also recieve the background color and the
+//!   In addition to the coordinates it will also receive the background color and the
 //!   contents of the current cell. It is expected to return a td-element.
 //!
 //! @example

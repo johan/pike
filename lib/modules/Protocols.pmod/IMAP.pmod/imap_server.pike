@@ -124,7 +124,7 @@ class connection
 	io->get_request();
 	break;
       case "expect_line":
-	/* Callback for next line recieved */
+	/* Callback for next line received */
 	io->get_line(get_line(action->handler));
 	break;
       case "expect_literal":

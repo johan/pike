@@ -385,8 +385,8 @@ void udp_wait(INT32 args)
  *! @returns
  *!  mapping(string:int|string) in the form 
  *!	([
- *!	   "data" : string recieved data
- *!	   "ip" : string   recieved from this ip
+ *!	   "data" : string received data
+ *!	   "ip" : string   received from this ip
  *!	   "port" : int    ...and this port
  *!	])
  *!
