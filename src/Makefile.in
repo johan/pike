@@ -485,6 +485,7 @@ all_exports: full_export
 	( cd .. ; $(TMP_BINDIR)/makedists )
 
 bin_export:
+	-rm log
 	PATH=$(TMP_BINDIR)/fakes:$$PATH INSTALL_LOG=`pwd`/log make install INSTALL=install
 	$(RUNPIKE) $(TMP_BINDIR)/parse_install_log <log $(SRCDIR) $(prefix)
 
