@@ -44,5 +44,6 @@ else
   AC_MSG_RESULT(no)
   AUTO=""
 fi
+fi
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
