@@ -1043,7 +1043,8 @@ $(SRCDIR)/y.tab.c $(SRCDIR)/language.h_src: $(SRCDIR)/language.yacc
 $(SRCDIR)/language.c: $(SRCDIR)/y.tab.c
 	sed -e 's/YY_COUNT_TYPE/@YY_COUNT_TYPE@/' \
 	    -e 's/YY_FROM_CONST/@YY_FROM_CONST@/' \
-	    -e 's/short[ 	]*int/int/g' \
+	    -e 's/short[ 	]*int[ 	]/\/* short *\/ int /g' \
+	    -e 's/(short[ 	]*int)/(\/* short *\/ int)/g' \
 	    < $(SRCDIR)/y.tab.c > $(SRCDIR)/language.c
 
 $(SRCDIR)/interpret_functions_fixed.h: $(SRCDIR)/interpret_functions.h precompile.sh-stamp
