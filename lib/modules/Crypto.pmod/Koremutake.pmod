@@ -65,3 +65,35 @@ int decrypt(string c) {
   }
   return m;
 }
+
+
+// Cipher interface
+
+string name() { return "koremutake"; }
+int block_size() { return 1; }
+int key_size() { return 0; }
+
+class `() {
+
+  string name() { return "koremutake"; }
+  int block_size() { return 1; }
+  int key_size() { return 0; }
+
+  static int mode;
+  this_program set_encrypt_key(void|mixed key) {
+    mode = 0;
+    return this;
+  }
+  this_program set_decrypt_key(void|mixed key) {
+    mode = 1;
+    return this;
+  }
+  this_program make_key() { return this; }
+
+  int|string crypt(int|string x) {
+    if(mode)
+      return decrypt(x);
+    else
+      return encrypt(x);
+  }
+}
