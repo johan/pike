@@ -3546,7 +3546,7 @@ void Pike_f_fork(INT32 args)
  *!   to its number.
  *!
  *!   Note that the kill function is not available on platforms that do not
- *!   supports signals. Some platforms may also have signals not listed here.
+ *!   support signals. Some platforms may also have signals not listed here.
  *!
  *! @seealso
  *!   @[signal()], @[signum()], @[signame()], @[fork()]
@@ -3607,7 +3607,7 @@ static void f_kill(INT32 args)
  *!
  *! @note
  *!   This function is only available on platforms that
- *!   supports signals.
+ *!   support signals.
  */
 static void f_pid_status_kill(INT32 args)
 {
@@ -3777,7 +3777,7 @@ static void f_getpid(INT32 args)
  *!   no previously scheduled alarm.
  *!
  *! @note
- *!   This function is only available on platforms that supports
+ *!   This function is only available on platforms that support
  *!   signals.
  *!
  *! @seealso
@@ -3823,7 +3823,7 @@ static void f_alarm(INT32 args)
  *!   no previously scheduled alarm.
  *!
  *! @note
- *!   This function is only available on platforms that supports
+ *!   This function is only available on platforms that support
  *!   signals.
  *!
  *! @seealso
