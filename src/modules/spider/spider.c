@@ -1353,6 +1353,7 @@ void finished_p(struct callback *foo, void *b, void *c)
     push_object( d->from );
     push_object( d->to );
     apply_svalue( &d->cb, 4 );
+    free_svalue( &d->cb );
     pop_stack();
     free(d);
   }
