@@ -71,6 +71,14 @@ array(string) read_tests( string fn ) {
     exit(1);
   }
 
+  if(has_prefix(tests, "START")) {
+    tests = tests[6..];
+    if(!has_suffix(tests, "END\n"))
+      werror("%s: Missing end marker.\n", fn);
+    else
+      tests = tests[..sizeof(tests)-1-4];
+  }
+
   tests = tests/"\n....\n";
   return tests[0..sizeof(tests)-2];
 }
