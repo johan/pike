@@ -1084,7 +1084,7 @@ soft_cast: '[' type ']'
     ;
 
 full_type: type8
-  | type8 '*'
+  | full_type '*'
   {
     if (Pike_compiler->compiler_pass == 2) {
        yywarning("The *-syntax in types is obsolete. Use array instead.");
