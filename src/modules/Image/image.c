@@ -1767,9 +1767,9 @@ static void image_tozbgr(INT32 args)
    while (i--)
    {
       *(d++)=0;
-      *(d++)=s.b;
-      *(d++)=s.g;
-      *(d++)=s.r;
+      *(d++)=s->b;
+      *(d++)=s->g;
+      *(d++)=s->r;
       s++;
    }
    THREADS_DISALLOW();
