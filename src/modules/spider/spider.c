@@ -1,3 +1,4 @@
+#include "global.h"
 #include "config.h"
 
 
@@ -28,7 +29,6 @@
 
 #include "fdlib.h"
 #include "stralloc.h"
-#include "global.h"
 #include "pike_macros.h"
 #include "machine.h"
 #include "object.h"
