@@ -113,7 +113,7 @@ RCSID("$Id$");
 #include "colortable.h"
 #include "builtin_functions.h"
 
-struct program *image_program;
+extern struct program *image_program;
 extern struct program *image_colortable_program;
 
 #ifdef THIS
