@@ -307,9 +307,9 @@ import SSL.Constants;
 #endif
 
 #ifdef LDAP_PROTOCOL_PROFILE
-#define PROFILE(STR, CODE) DWRITE_PROF(STR + ": %O\n", gauge {CODE;})
+#define PROFILE(STR, CODE...) DWRITE_PROF(STR + ": %O\n", gauge {CODE;})
 #else
-#define PROFILE(STR, CODE) do { CODE; } while(0)
+#define PROFILE(STR, CODE...) do { CODE; } while(0)
 #endif
 
   private int chk_ver() {
