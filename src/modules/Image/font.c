@@ -475,7 +475,7 @@ void font_write(INT32 args)
    if (!this)
       error("font->write: no font loaded\n");
 
-   maxwidth2=0;
+   maxwidth2=1;
 
    width_of=(int *)malloc((args+1)*sizeof(int));
    if(!width_of) error("Out of memory\n");
