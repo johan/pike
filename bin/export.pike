@@ -78,7 +78,7 @@ void bump_version()
   rel++;
   Stdio.File("pike/src/version.c","wct")->write(pre+" release "+rel+post);
   Process.create_process(({"cvs","commit","-m",
-			     "release number bumped by export.pike",
+			     "release number bumped to "+rel+" by export.pike",
 			     "version.c"}),
 			 (["cwd":"pike/src"]))->wait();
 }
