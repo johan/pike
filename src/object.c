@@ -449,11 +449,12 @@ PMOD_EXPORT struct object *get_master(void)
     char *tmp;
     struct stat stat_buf;
 
-    if(!simple_mapping_string_lookup(get_builtin_constants(),
+    if(!get_builtin_constants() ||
+       !simple_mapping_string_lookup(get_builtin_constants(),
 				     "_static_modules"))
     {
-      fprintf(stderr,"Cannot load master object yet!\n");
-      return 0; /* crash? */
+      /* fprintf(stderr,"Cannot load master object yet!\n"); */
+      return 0;
     }
 
     /* fprintf(stderr, "Master file: \"%s\"\n", master_file); */
