@@ -428,6 +428,7 @@ void f_add(INT32 args)
 
 static int generate_sum(node *n)
 {
+  node **first_arg, **second_arg;
   switch(count_args(CDR(n)))
   {
   case 1:
@@ -435,8 +436,24 @@ static int generate_sum(node *n)
     return 1;
 
   case 2:
+    first_arg=my_get_arg(&_CDR(n), 0);
+    second_arg=my_get_arg(&_CDR(n), 1);
+    
     do_docode(CDR(n),DO_NOT_COPY);
-    emit0(F_ADD);
+    if(first_arg[0]->type == float_type_string &&
+       second_arg[0]->type == float_type_string)
+    {
+      emit0(F_ADD_FLOATS);
+    }
+    else if(first_arg[0]->type == int_type_string &&
+       second_arg[0]->type == int_type_string)
+    {
+      emit0(F_ADD_INTS);
+    }
+    else
+    {
+      emit0(F_ADD);
+    }
     return 1;
 
   default:
