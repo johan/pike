@@ -5708,11 +5708,11 @@ esac
 #######################################################################
 
 MY_AC_CHECK_PRINTF_INT_TYPE(size_t,
-			    "" "l" "ll" "L", "",
+			    "z" "" "l" "ll" "L", "",
 			    PRINTSIZET,
 			    [%${res}u, %${res}x])
 MY_AC_CHECK_PRINTF_INT_TYPE(ptrdiff_t,
-			    "" "l" "ll" "L", "",
+			    "t" "" "l" "ll" "L", "",
 			    PRINTPTRDIFFT,
 			    [%${res}d, %${res}x])
 MY_AC_CHECK_PRINTF_INT_TYPE(INT_TYPE,
