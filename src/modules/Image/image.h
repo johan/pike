@@ -169,6 +169,7 @@ void image_to8bit_closest(INT32 args);
 void image_to8bit(INT32 args);
 void image_to8bit_fs(INT32 args);
 void image_tozbgr(INT32 args);
+void image_torgb(INT32 args);
 void image_to8bit_rgbcube(INT32 args);
 void image_to8bit_rgbcube_rdither(INT32 args);
 void image_tobitmap(INT32 args);
