@@ -397,11 +397,10 @@ static void f_pad(INT32 args)
     error("Too many arguments to crypto->pad()\n");
   }
 
-  len = THIS->block_size - 1 - THIS->backlog_len;
-  for (i=0; i < len; i++)
-    THIS->backlog[THIS->backlog_len + i] = my_rand() & 0xff;
+  for (i = THIS->backlog_len; i < THIS->block_size - 1; i++) 
+    THIS->backlog[i] = my_rand() & 0xff;
   
-  THIS->backlog[i] = len;
+  THIS->backlog[THIS->block_size - 1] = 7 - THIS->backlog_len;
 
   push_string(make_shared_binary_string((const char *)THIS->backlog,
 					THIS->block_size));
