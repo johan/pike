@@ -2114,8 +2114,14 @@ void my_yyerror(char *fmt,...)  ATTRIBUTE((format(printf,1,2)))
 {
   va_list args;
   char buf[8192];
+
   va_start(args,fmt);
-  VSPRINTF(buf,fmt,args);
+
+#ifdef HAVE_VSNPRINTF
+  vsnprintf(buf, 8190, fmt, args);
+#else /* !HAVE_VSNPRINTF */
+  VSPRINTF(buf, fmt, args);
+#endif /* HAVE_VSNPRINTF */
 
   if((long)strlen(buf) >= (long)sizeof(buf))
     fatal("Buffer overflow in my_yyerror.\n");
