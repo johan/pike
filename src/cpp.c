@@ -233,7 +233,7 @@ static void simple_add_define(struct cpp *this,
       break;							\
     }								\
 								\
-    if(e++>16)							\
+    if(e++>32)							\
     {								\
       cpp_error(this,"Too long character constant.");		\
       break;							\
