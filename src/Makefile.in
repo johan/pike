@@ -338,12 +338,12 @@ install: pike hilfe pike-module aclocal
 	else : ; fi
 
 optimize:
-	$(exec_prefix)/pike -m ./dumpmaster.pike $(lib_prefix)/master.pike
+	$(exec_prefix)/pike -m $(SRCDIR)/dumpmaster.pike $(lib_prefix)/master.pike
 	( \
 	  find $(lib_prefix)/modules -type f \( -name '*.pmod' -o -name '*.pike' \) -print  ; \
 	  find $(share_prefix)/modules -type f \( -name '*.pmod' -o -name '*.pike' \) -print \
 	) | \
-	while read file ; do $(exec_prefix)/pike ./dumpmodule.pike $$file ; done
+	while read file ; do $(exec_prefix)/pike $(SRCDIR)/dumpmodule.pike $$file ; done
 
 # tidy up a bit
 tidy:
