@@ -24,7 +24,7 @@ class Data {
   int _size=0;
   string _key=0;
   mixed _data=0;
-  private Yabu.table db, metadb;
+  private Yabu.Table db, metadb;
   
   int size() {
     if (_size) return _size;
