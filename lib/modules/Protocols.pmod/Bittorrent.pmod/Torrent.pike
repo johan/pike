@@ -223,7 +223,7 @@ class Target(string base,int length,int offset,void|array path)
 // 	     off-offset,off-offset+strlen(data),length);
       if (off>offset+length) return; // noop
       int end=off+strlen(data);
-      if (end<=off) return; // noop
+      if (end<=offset) return; // noop
 
       if (off<offset)
 	 data=data[offset-off..],off=offset;
