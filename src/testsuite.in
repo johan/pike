@@ -332,6 +332,8 @@ class b {
 ]])
 test_compile([[Stdio.File foo=Stdio.FILE();]])
 
+test_any([[string gurk="bozo"; string b(int x) { return (x?b(x-1)+gurk:""); }; return b(5)]],[["bozo"*5]])
+
 dnl this should really work...
 dnl test_compile_any([[void foo(int,string,...);]])
 
