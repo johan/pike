@@ -96,6 +96,7 @@ RCSID("$Id$");
 
 
 #include "image.h"
+#include "colortable.h"
 #include "builtin_functions.h"
 
 struct program *image_program;
@@ -2433,7 +2434,8 @@ void image_map_compat(INT32 args) /* compat function */
 {
   struct neo_colortable *nct;
   struct object *o,*co;
-  struct pike_string *res = begin_shared_string((THIS->xsize*THIS->ysize));
+  struct image *this = THIS;
+  struct pike_string *res = begin_shared_string((this->xsize*this->ysize));
   rgb_group *d;
 
   if(!res) error("Out of memory\n");
@@ -2441,16 +2443,16 @@ void image_map_compat(INT32 args) /* compat function */
   co=clone_object(image_colortable_program,args);
   nct=(struct neo_colortable*)get_storage(co,image_colortable_program);
 
-  push_int(THIS->xsize);
-  push_int(THIS->ysize);
+  push_int(this->xsize);
+  push_int(this->ysize);
   o=clone_object(image_program,2);
       
   d=((struct image*)(o->storage))->img;
 
   THREADS_ALLOW();
 
-  image_colortable_map_image(nct,THIS->img,d,
-			     THIS->xsize*THIS->ysize,THIS->xsize);
+  image_colortable_map_image(nct,this->img,d,
+			     this->xsize*this->ysize,this->xsize);
 
   THREADS_DISALLOW();
 
