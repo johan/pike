@@ -96,7 +96,7 @@ array(Image.Layer) decode_layers( string data, mixed|void tocolor )
               "XBM", "XPM", "TIFF", "ILBM", "PS",
               "HRZ", "AVS", "WBF",
   }), string fmt )
-    if( !catch(i = Image[fmt]->decode_layers( data )) && i )
+    if( !catch(i = Image[fmt]->decode_layers( data,tocolor )) && i )
       break;
 
   if(!i) // No image could be decoded at all.
