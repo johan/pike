@@ -1010,7 +1010,7 @@ static void f_signame(int args)
 #endif
 
 #ifdef HAVE_WAIT4
-#define MY_WAIT_ANY(STATUS,OPT) wait4(-1,(STATUS),(OPT),0 )
+#define MY_WAIT_ANY(STATUS,OPT) wait4(0,(STATUS),(OPT),0 )
 #else
 #ifdef HAVE_WAITPID
 #define MY_WAIT_ANY(STATUS,OPT) waitpid(-1,STATUS,OPT)
