@@ -53,6 +53,16 @@ struct string_builder
 #define APPEND_ZERO_PAD		32	/* Zero pad. */
 #define APPEND_LEFT		64	/* Left align. */
 
+#if SIZEOF_CHAR_P == SIZEOF_INT
+#define APPEND_WIDTH_PTR	0
+#elif SIZEOF_CHAR_P == SIZEOF_LONG
+#define APPEND_WIDTH_PTR	APPEND_WIDTH_LONG
+#elif SIZEOF_CHAR_P == SIZEOF_LONG_LONG
+#define APPEND_WIDTH_PTR	APPEND_WIDTH_LONG_LONG
+#else
+#error "Unknown way to read pointer-wide integers."
+#endif
+
 #ifdef PIKE_DEBUG
 PMOD_EXPORT struct pike_string *debug_findstring(const struct pike_string *foo);
 #endif
