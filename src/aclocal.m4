@@ -178,7 +178,7 @@ define(PIKE_FEATURE,[
 EOF])
 
 define(PIKE_FEATURE_WITHOUT,[
-  PIKE_FEATURE([$1],[$2]no (--without))
+  PIKE_FEATURE([$1],[$2]no (forced without))
 ])
 
 define(PIKE_FEATURE_NODEP,[
