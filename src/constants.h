@@ -61,9 +61,9 @@ struct callable *add_efun2(char *name,
 			    optimize_fun optimize,
 			    docode_fun docode);
 struct callable *add_efun(char *name, c_fun fun, char *type, INT16 flags);
-struct callable *quick_add_efun(char *name, int name_length,
+struct callable *quick_add_efun(char *name, ptrdiff_t name_length,
 				c_fun fun,
-				char *type, int type_length,
+				char *type, ptrdiff_t type_length,
 				INT16 flags,
 				optimize_fun optimize,
 				docode_fun docode);

@@ -134,12 +134,12 @@ PMOD_EXPORT struct callable *add_efun(char *name, c_fun fun, char *type, INT16 f
   return add_efun2(name,fun,type,flags,0,0);
 }
 
-PMOD_EXPORT struct callable *quick_add_efun(char *name, int name_length,
-				c_fun fun,
-				char *type, int type_length,
-				INT16 flags,
-				optimize_fun optimize,
-				docode_fun docode)
+PMOD_EXPORT struct callable *quick_add_efun(char *name, ptrdiff_t name_length,
+					    c_fun fun,
+					    char *type, ptrdiff_t type_length,
+					    INT16 flags,
+					    optimize_fun optimize,
+					    docode_fun docode)
 {
   struct svalue s;
   struct pike_string *n,*t;
