@@ -1542,8 +1542,8 @@ void image_test(INT32 args)
       push_int(THIS->xsize); f_random(1); 
       push_int(THIS->ysize); f_random(1);
       push_int((i!=0)?255:0); f_random(1);
-      push_int((i!=1)?255:0); f_random(1);
-      push_int((i!=2)?255:0); f_random(1);
+      push_int((i!=1)?255:0); if (i!=4) f_random(1);
+      push_int((i!=2)?255:0); if (i!=3) f_random(1);
       f_aggregate(5);
    }
    push_float(2.0);
