@@ -3450,7 +3450,7 @@ PMOD_EXPORT void f_compile(INT32 args)
     case 2:
       if(Pike_sp[1-args].type == T_OBJECT) {
 	if (Pike_sp[1-args].subtype) {
-	  Pike_fatal("compile: "
+	  Pike_error("compile: "
 		     "Subtyped handler objects are not supported yet.\n");
 	}
 	o=Pike_sp[1-args].u.object;
