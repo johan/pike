@@ -285,6 +285,9 @@ xenofarm:
 	cd build/xenofarm && tar cf - . > ../../xenofarm_result.tar
 	gzip -f9 xenofarm_result.tar
 
+benchmark:
+	@$(DO_MAKE) $(MAKE_FLAGS) "METATARGET=run_bench"
+
 clean:
 	-cd "$(BUILDDIR)" && test -f Makefile && $(DO_MAKE) clean || { \
 	  res=$$?; \
