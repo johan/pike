@@ -232,7 +232,6 @@
 	    int i;
 	    /* Note: touch the dead svalue too. */
 	    for (i=args+2; i > 0; i--) {
-	      fprintf(stderr, "Checking i:%d\n", i);
 	      dmalloc_touch_svalue(Pike_sp-i);
 	    }
 	  }
