@@ -73,6 +73,10 @@ PMOD_EXPORT struct pike_type *zero_type_string;
 PMOD_EXPORT struct pike_type *any_type_string;
 PMOD_EXPORT struct pike_type *weak_type_string;	/* array|mapping|multiset|function */
 
+#if defined(USE_PIKE_TYPE) && defined(DEBUG_MALLOC)
+struct pike_type_location *all_pike_type_locations = NULL;
+#endif /* USE_PIKE_TYPE && DEBUG_MALLOC */
+
 static struct pike_type *a_markers[10], *b_markers[10];
 
 static struct program *implements_a;
@@ -7750,6 +7754,15 @@ void init_types(void)
 
 void cleanup_pike_types(void)
 {
+#if defined(USE_PIKE_TYPE) && defined(DEBUG_MALLOC)
+  struct pike_type *t = all_pike_type_locations;
+
+  while(t) {
+    free_type(t->t);
+    t = t->next;
+  }
+#endif /* USE_PIKE_TYPE && DEBUG_MALLOC */
+
   free_type(string_type_string);
   free_type(int_type_string);
   free_type(float_type_string);
