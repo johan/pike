@@ -1800,7 +1800,7 @@ void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 #ifdef PROFILING
 #ifdef HAVE_GETHRTIME
   long long children_base = accounted_time;
-  long long start_time = gethrtime();
+  long long start_time = gethrtime() - time_base;
   unsigned INT32 self_time_base;
 #endif
 #endif
@@ -2107,7 +2107,7 @@ void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
       {
 	long long time_passed, time_in_children, self_time;
 	time_in_children=  accounted_time - children_base;
-	time_passed = gethrtime() - start_time;
+	time_passed = gethrtime() - time_base - start_time;
 	self_time=time_passed - time_in_children;
 	accounted_time+=self_time;
 #ifdef DEBUG
