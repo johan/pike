@@ -1677,7 +1677,7 @@ block:'{'
     unuse_modules(Pike_compiler->num_used_modules - $<number>1);
     pop_local_variables($<number>2);
     Pike_compiler->compiler_frame->last_block_level=$<number>4;
-    COPY_LINE_NUMBER_INFO($5, $3);
+    if ($5) COPY_LINE_NUMBER_INFO($5, $3);
     free_node ($3);
     $$=$5;
   }
