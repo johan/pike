@@ -80,8 +80,11 @@
 /* Filesystem notifications */
 #undef HAVE_NOTIFICATIONS
 
-/* Defined to path of pt_chmod to use pt_chmod directly rather than
-   calling grantpt (needed on Solaris) */
+/* Define to path of pseudo terminal master device if available */
+#undef PTY_MASTER_PATHNAME
+
+/* Define to path of pt_chmod/chgpt to use pt_chmod directly rather than
+   calling grantpt (needed on SysV) */
 #undef USE_PT_CHMOD
 
 #endif
