@@ -425,13 +425,12 @@ aclocal: $(SRCDIR)/aclocal.m4
 # Do not compile in source tree if you want to use this!
 # Beware that export archive this includes bison/yacc/byacc source
 # and thus has to follow the rules stated in that code.
-export: new_peep_engine $(SRCDIR)/language.c $(SRCDIR)/language.h depend
-	chmod +x $(SRCDIR)/install-sh
-	$(RUNPIKE) $(TMP_BINDIR)/export.pike --srcdir="$(SRCDIR)" Oracle rsql.pike rsqld.pike _Crypto
 
 full_export: new_peep_engine $(SRCDIR)/language.c $(SRCDIR)/language.h depend
 	chmod +x $(SRCDIR)/install-sh
 	$(RUNPIKE) $(TMP_BINDIR)/export.pike --srcdir="$(SRCDIR)" 
+
+export: full_export
 
 all_exports: full_export
 	( cd .. && $(TMP_BINDIR)/makedists )
