@@ -248,7 +248,7 @@ static void stat_create (INT32 args)
 	  if (!int64_from_bignum (&val, ITEM(a)[i].u.object))
 	    error ("Stat create: Too big integer in stat array.\n");
 	}
-#endif
+#endif /* AUTO_BINUM */
 	else
 	  SIMPLE_BAD_ARG_ERROR ("Stat create", 1, "array(int)");
 	stat_compat_set (i, val);
