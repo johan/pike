@@ -311,26 +311,27 @@ void async_fetch_close()
 string headers_encode(mapping h)
 {
    if (!h || !sizeof(h)) return "";
-   return Array.map( indices(h),
-		     lambda(string hname,mapping headers)
-		     {
-			if (stringp(headers[hname]) ||
-			    intp(headers[hname]))
-			   return String.capitalize(replace(hname,"_","-")) +
-			      ": " + headers[hname];
-			if (arrayp(headers[hname]))
-			{
-			   return map(headers[hname],
-				      lambda(string b,string hname)
-				      {
-					 return String.capitalize(
-					    replace(hname,"_","-")) +
-					    ": " + b;
-				      },hname)*"\r\n";
-			}
-			error("bad type in headers: %O=%O\n",
-			      hname,headers[hname]);
-		     }, h )*"\r\n" + "\r\n";
+   return (Array.map( 
+	      indices(h),
+	      lambda(string hname,mapping headers)
+	      {
+		 if (stringp(headers[hname]) ||
+		     intp(headers[hname]))
+		    return String.capitalize(replace(hname,"_","-")) +
+		       ": " + headers[hname];
+		 if (arrayp(headers[hname]))
+		 {
+		    return map(headers[hname],
+			       lambda(string b,string hname)
+			       {
+				  return String.capitalize(
+				     replace(hname,"_","-")) +
+				     ": " + b;
+			       },hname)*"\r\n";
+		 }
+		 error("bad type in headers: %O=%O\n",
+		       hname,headers[hname]);
+	      }, h )-({""}))*"\r\n" + "\r\n";
 }
 
 /****** helper methods *********************************************/
