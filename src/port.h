@@ -231,6 +231,8 @@ static INLINE INT32 EXTRACT_INT_(unsigned char *p)
 PMOD_EXPORT unsigned long my_rand(void);
 PMOD_EXPORT void my_srand(long seed);
 
+PMOD_EXPORT void *pike_realloc(void *ptr, size_t sz);
+
 #ifdef OWN_GETHRTIME
 void own_gethrtime_init(void);
 void own_gethrtime_update(struct timeval *ptr);

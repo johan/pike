@@ -125,6 +125,18 @@ PMOD_EXPORT unsigned long my_rand(void)
   return rndbuf[rnd_index] += rndbuf[rnd_index+RNDJUMP-(rnd_index<RNDBUF-RNDJUMP?0:RNDBUF)];
 }
 
+PMOD_EXPORT void *pike_realloc(void *ptr, size_t sz)
+{
+  if (!ptr) return malloc(sz);
+#ifndef HAVE_WORKING_REALLOC_NULL
+#undef realloc
+#endif	/* !HAVE_WORKING_REALLOC_NULL */
+  return realloc(ptr, sz);
+#ifndef HAVE_WORKING_REALLOC_NULL
+#define realloc(PTR, SZ)	pike_realloc((PTR),(SZ))
+#endif	/* !HAVE_WORKING_REALLOC_NULL */
+}
+
 #define DIGIT(x)	(isdigit(x) ? (x) - '0' : \
 			islower(x) ? (x) + 10 - 'a' : (x) + 10 - 'A')
 #define MBASE	('z' - 'a' + 1 + 10)
