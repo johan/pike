@@ -121,6 +121,27 @@ void ppc32_push_svalue(int reg, INT32 offs)
   /* bork: */
 }
 
+void ppc32_push_constant(INT32 arg)
+{
+  INT32 offs;
+  LOAD_FP_REG();
+  /* lwz r3,context.prog(pike_fp) */
+  LWZ(PPC_REG_ARG1, PPC_REG_PIKE_FP, OFFSETOF(pike_frame, context.prog));
+  /* lwz r3,constants(r3) */
+  LWZ(PPC_REG_ARG1, PPC_REG_ARG1, OFFSETOF(program, constants));
+
+  offs = arg*sizeof(struct program_constant)+OFFSETOF(program_constant, sval);
+
+  if(offs > 32767) {
+    /* addis r3,r3,%hi(offs) */
+    ADDIS(PPC_REG_ARG1, PPC_REG_ARG1, (offs+32768)>>16);
+    if((offs &= 0xffff) > 32767)
+      offs -= 65536;
+  }
+
+  ppc32_push_svalue(PPC_REG_ARG1, offs);
+}
+
 void ppc32_push_local(INT32 arg)
 {
   INT32 offs;
@@ -291,6 +312,10 @@ void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b)
 
    case F_NEG_NUMBER:
      ppc32_push_int(-b);
+     return;
+
+   case F_CONSTANT:
+     ppc32_push_constant(b);
      return;
 
      /*
