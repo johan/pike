@@ -1879,7 +1879,7 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	/* NOTE: Reuses undefine_ for undef_ */
       if(WGOBBLE2(undefine_) || WGOBBLE2(undef_))
 	{
-	  INT32 tmp;
+	  ptrdiff_t tmp;
 	  struct pike_string *s;
 
 	  SKIPSPACE();

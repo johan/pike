@@ -986,7 +986,8 @@ static void check_constant(struct cpp *this,
   struct svalue *save_stack=sp;
   struct svalue *sv;
   PCHARP data=args[0].arg;
-  int res,dlen,len=args[0].len;
+  int res;
+  ptrdiff_t dlen,len=args[0].len;
   struct pike_string *s;
   int c;
 
