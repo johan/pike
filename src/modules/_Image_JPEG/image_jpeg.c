@@ -986,6 +986,13 @@ static void img_jpeg_decode(INT32 args,int mode)
       }
    }
 
+   while (mds.first_marker)
+   {
+     struct my_marker *mm=mds.first_marker;
+     mds.first_marker=mm->next;
+     free(mm);
+   }
+
    if (mode!=IMG_DECODE_HEADER)
    {
       jpeg_start_decompress(&mds.cinfo);
