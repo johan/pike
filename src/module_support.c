@@ -229,9 +229,11 @@ int va_get_args(struct svalue *s,
       if (s->type == T_INT) {
 	*va_arg(ap, LONGEST *)=s->u.integer;
 	break;
+#ifdef AUTO_BIGNUM
       } else if (!is_bignum_object_in_svalue(s) ||
 		 !int64_from_bignum(va_arg(ap, LONGEST *), s->u.object)) {
 	return ret;
+#endif
       }
       break;
     case 's':
