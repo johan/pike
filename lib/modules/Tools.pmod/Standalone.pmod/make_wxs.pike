@@ -74,7 +74,7 @@ int main(int argc, array(string) argv)
     src = replace(src, "\\", "/");
     array(string) seg;
     string dest;
-    if (sizeof(seg = (srcdir/":")) > 1) {
+    if (sizeof(seg = (src/":")) > 1) {
       // The destination name may be specified with
       //   <dest>:<src>
       dest = seg[0];
