@@ -209,6 +209,9 @@ dump_modules:
 force_dump_modules:
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=force_dump_modules"
 
+delete_dumped_modules:
+	@$(MAKE) $(MAKE_FLAGS) "METATARGET=delete_dumped_modules"
+
 undump_modules:
 	@$(MAKE) $(MAKE_FLAGS) "METATARGET=undump_modules"
 
