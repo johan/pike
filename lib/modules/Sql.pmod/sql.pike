@@ -367,7 +367,7 @@ array(mapping(string:mixed)) query(object|string q,
 //.   Each index in the mapping corresponds to one such variable, and the
 //.   value for that index is substituted into the query wherever the variable
 //.   is used.  Binary values (BLOBs) may need to be placed in multisets.
-object big_query(object|string q, mapping(string|int:mixed)|void bindings)
+int|object big_query(object|string q, mapping(string|int:mixed)|void bindings)
 {
   object|array(mapping) pre_res;
 
