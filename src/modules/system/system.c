@@ -633,7 +633,6 @@ void f_cleargroups(INT32 args)
  *!   @[initgroups()], @[cleargroups()], @[getgroups()],
  *!   @[getgid()], @[getgid()], @[getegid()], @[setegid()]
  */
-/* NOT Implemented in Pike 0.5 */
 void f_setgroups(INT32 args)
 {
   static gid_t safeguard[1] = { 65534 };
@@ -861,8 +860,6 @@ void f_seteuid(INT32 args)
 #else
   err = setresuid(-1, id, -1);
 #endif /* HAVE_SETEUID */
-  if(err!=0)
-    Pike_error("seteuid failed.\n");
 
   pop_n_elems(args);
   push_int(err);
