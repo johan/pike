@@ -10,10 +10,13 @@
 #ifndef DOCODE_H
 #define DOCODE_H
 
-
 #define DO_LVALUE 1
 #define DO_NOT_COPY 2
 #define DO_POP 4
+#define DO_INDIRECT 8
+#define DO_LVALUE_IF_POSSIBLE 16
+
+#define WANT_LVALUE (DO_LVALUE | DO_INDIRECT)
 
 extern int store_linenumbers;
 

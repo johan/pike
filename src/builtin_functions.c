@@ -2919,8 +2919,6 @@ void f__locate_references(INT32 args)
 
 void init_builtin_efuns(void)
 {
-  init_operators();
-
   add_efun("gethrtime", f_gethrtime,"function(int|void:int)", OPT_EXTERNAL_DEPEND);
 
 #ifdef HAVE_GETHRVTIME

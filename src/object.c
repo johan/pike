@@ -748,8 +748,15 @@ union anything *object_get_item_ptr(struct object *o,
   }
 
   f=ARROW_INDEX_P(index) ? LFUN_ASSIGN_ARROW : LFUN_ASSIGN_INDEX;
+
   if(FIND_LFUN(p,f) != -1)
-    error("Cannot do incremental operations on overloaded index (yet).\n");
+  {
+    return 0;
+
+    /* error("Cannot do incremental operations on overloaded index (yet).\n");
+     */
+  }
+    
 
   switch(index->type)
   {
