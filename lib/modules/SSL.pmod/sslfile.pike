@@ -83,13 +83,17 @@ void close()
   close_callback = 0;
 }
 
-int write(string s)
+int write(string|array(atring) s)
 {
 #ifdef SSL3_DEBUG
   werror("SSL.sslfile->write\n");
 #endif
 
   if (is_closed) return -1;
+
+  if (arrayp(s)) {
+    s = s*"";
+  }
 
   int len = strlen(s);
   object packet;
