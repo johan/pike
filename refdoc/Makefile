@@ -24,6 +24,14 @@ modref: build/modref.xml
           pike_line_left.gif pike_line_middle.gif pike_line_right.gif ; do \
 	  cp src_images/$$file modref/images/ ; done
 
+wiki: build/modref.xml
+	rm -rf wiki || /bin/true
+	@mkdir wiki
+	@$(PIKE) presentation/wiki.pike \
+	  build/modref.xml structure/wiki.html wiki
+	@mkdir wiki/images
+	cp build/images/* wiki/images
+
 one_page: onepage build/onepage.xml
 	cp build/images/* onepage/
 	@$(PIKE) presentation/make_html.pike --img= build/onepage.xml
@@ -115,6 +123,11 @@ touch-mirardoc:
 	  uniq`
 	@touch `grep -r "//\! module" ../lib/modules/* | cut -d: -f1 | \
 	  uniq`
+
+nilsson:
+	@$(PIKE) presentation/tree-split-autodoc.pike \
+	  build/modref.xml structure/modref.html modref
+
 
 # Cleanup
 
