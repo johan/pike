@@ -723,6 +723,17 @@ test_any([[
   return zz->x + zz->y + zz->z;
 ]], 7)
 
+test_do([[
+  class X {
+    constant foo = Foo;
+    class Foo {}
+    void bar()
+    {
+      foo f = Foo();
+    }
+  };
+]])
+
 test_any([[
 class X {
  static string f() { return "p"; }
