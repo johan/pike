@@ -1443,7 +1443,7 @@ PIKECLASS Backend
 				    int num_arg,
 				    struct svalue *argp)
    {
-     call_out *new,;
+     call_out *new;
      struct array *args;
      size_t hval;
      
