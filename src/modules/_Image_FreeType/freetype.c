@@ -12,7 +12,12 @@ RCSID("$Id$");
 #include "pike_error.h"
 
 #ifdef HAVE_LIBFT2
+#ifndef HAVE_FT_FT2BUILD
 #include <freetype/freetype.h>
+#else
+#include <ft2build.h>
+#include FT_FREETYPE_H
+#endif
 #include "pike_macros.h"
 #include "object.h"
 #include "constants.h"
