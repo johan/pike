@@ -80,6 +80,18 @@ test_any([[function(:string)|function(mixed, mixed ...:int) f;
 	  return typeof(f(1)); ]],
 	 "int")
 
+test_any([[mapping(object:string)|mapping(string:int) f;
+	  return typeof(f[class{}()]); ]],
+	 "string")
+
+test_any([[mapping(object:string)|mapping(string:int) f;
+	  return typeof(f[""]); ]],
+	 "int")
+
+test_any([[mapping(object:string)|mapping(string:int) f;
+	  return sort((typeof(f[0]) - " ")/"|")*"|"; ]],
+	 "int|string")
+
 test_compile_any([[
   constant FOO = 0;
   mapping(int:string) foo = ([FOO: "foo"]);
