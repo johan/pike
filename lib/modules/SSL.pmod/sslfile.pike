@@ -987,6 +987,12 @@ string query_address(int|void arg)
   return stream->query_address(arg);
 }
 
+int is_open()
+//!
+{
+  return !explicitly_closed && stream && stream->is_open();
+}
+
 Stdio.File query_stream()
 //! Return the underlying stream.
 //!
