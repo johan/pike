@@ -977,6 +977,8 @@ class dumpfile
       string tmpname=symname;
       sscanf(tmpname,"%s@",tmpname);
 
+      if( !(type & 3) ) tmpname+="()";
+
       Symbol sym=global_symbols[tmpname];
       if(!sym)
 	global_symbols[tmpname]=sym=Symbol();
@@ -991,7 +993,7 @@ class dumpfile
 #ifdef DEBUG
       werror("Importing symbol: %O\n",symname);
 #endif
-      tmpname="__imp_"+tmpname+"()";
+      tmpname="__imp_"+tmpname+(tmpname[-1]==')'? "":"()");
 
       sym=global_symbols[tmpname];
       if(!sym)
