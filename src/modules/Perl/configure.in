@@ -7,7 +7,7 @@ AC_MODULE_INIT()
 AC_ARG_WITH(perl, [  --with-perl           enable the Perl module],[],
 	    [with_perl="no"])
 
-PIKE_FEATURE_WITHOUT(Perl)
+PIKE_FEATURE(Perl,[no (use --with-perl to compile it)])
 
 if test "x$with_perl" = "xno"; then :; else
 

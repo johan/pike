@@ -7,7 +7,7 @@ AC_MODULE_INIT()
 
 AC_ARG_WITH(ssleay,  [  --with-ssleay       enable the ssleay-module],[],[with_ssleay=no])
 
-PIKE_FEATURE_WITHOUT(Ssleay)
+PIKE_FEATURE(Ssleay,[no (use --with-ssleay to compile it)])
 
 if test x$with_ssleay = xyes; then
   PIKE_FEATURE_NODEP(Ssleay)
