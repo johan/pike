@@ -292,6 +292,9 @@
 /* Define if you don't have F_SETFD, or it doesn't work */
 #undef HAVE_BROKEN_F_SETFD
 
+/* Define if your thread implementation doesn't propagate euid & egid. */
+#undef HAVE_BROKEN_LINUX_THREAD_EUID
+
 /* Define if your cpp supports K&R-style concatenation */
 #undef HAVE_KR_CONCAT
 
