@@ -6561,7 +6561,7 @@ PMOD_EXPORT void f__dmalloc_set_name(INT32 args)
  *! @belongs Debug
  *!
  *! @note
- *!   Only available when comiled with dmalloc.
+ *!   Only available when compiled with dmalloc.
  */
 PMOD_EXPORT void f__list_open_fds(INT32 args)
 {

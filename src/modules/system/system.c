@@ -2648,7 +2648,7 @@ struct timeval
 };
 #endif
 
-/*! @decl array(int) gettimeoday()
+/*! @decl array(int) gettimeofday()
  *! Calls gettimeofday(); the result is an array of
  *! seconds, microseconds, and possible tz_minuteswes, tz_dstttime
  *! as given by the gettimeofday(2) system call 
