@@ -16,8 +16,6 @@
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
 
-#define NO_PIKE_SHORTHAND
-
 #include "global.h"
 RCSID("$Id$");
 #include "program.h"
@@ -1550,6 +1548,7 @@ static void make_java_exception(struct object *jvm, JNIEnv *env,
 				struct svalue *v)
 {
   union anything *a;
+  struct generic_error_struct *gen_err;
   struct jvm_storage *j =
     (struct jvm_storage *)get_storage(jvm, jvm_program);
 
@@ -1559,6 +1558,10 @@ static void make_java_exception(struct object *jvm, JNIEnv *env,
   if(v->type == PIKE_T_ARRAY && v->u.array->size &&
      (a=low_array_get_item_ptr(v->u.array, 0, PIKE_T_STRING))!=NULL) {
     (*env)->ThrowNew(env, j->class_runtimex, a->string->str);
+  } else if(v->type == PIKE_T_OBJECT &&
+	    (gen_err = (struct generic_error_struct *)
+	     get_storage(v->u.object, generic_error_program)) != NULL) {
+    (*env)->ThrowNew(env, j->class_runtimex, gen_err->desc->str);
   } else {
     (*env)->ThrowNew(env, j->class_runtimex,
 		     "Nonstandard pike exception thrown.");
