@@ -96,7 +96,7 @@ class constructed
 //! @fixme
 //!   Handling of implicit and explicit ASN.1 tagging, as well as
 //!   other context dependence, is next to non_existant.
-object der_decode(ADT.struct data, mapping(int:program(Object)) types)
+Object der_decode(ADT.struct data, mapping(int:program(Object)) types)
 {
   int raw_tag = data->get_uint(1);
   int len;
@@ -205,7 +205,7 @@ mapping(int:program(Object)) universal_types =
 //!   an object from @[Standards.ASN1.Types] or
 //!   either @[Standards.ASN1.Decode.primitive] or
 //!   @[Standards.ASN1.Decode.constructed] if the type is unknown.
-object|mapping simple_der_decode(string data)
+Object simple_der_decode(string data)
 {
   return der_decode(ADT.struct(data), universal_types);
 }
