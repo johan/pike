@@ -157,12 +157,12 @@
      else						\
        low_return();					\
 							\
-    DO_IF_DEBUG(if (Pike_interpreter.trace_level)	\
+    DO_IF_DEBUG(if (Pike_interpreter.trace_level > 5)	\
       fprintf(stderr, "Returning to 0x%p\n",		\
 	      Pike_fp->pc));				\
     DO_JUMP_TO(Pike_fp->pc);				\
   }							\
-  DO_IF_DEBUG(if (Pike_interpreter.trace_level)		\
+  DO_IF_DEBUG(if (Pike_interpreter.trace_level > 5)	\
     fprintf(stderr, "Inter return\n"));			\
   INTER_RETURN;						\
 }
