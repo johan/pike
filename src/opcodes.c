@@ -648,7 +648,7 @@ PMOD_EXPORT void f_cast(void)
 	  sp[-2].type);
 #endif
   o_cast(sp[-2].u.type,
-	 compile_type_to_runtime_type(sp[-2].u.string));
+	 compile_type_to_runtime_type(sp[-2].u.type));
 #ifdef PIKE_DEBUG
   if(save_sp != sp)
     fatal("Internal error: o_cast() left droppings on stack.\n");
