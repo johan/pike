@@ -14,8 +14,6 @@
 #define WERROR(x)
 #endif
 
-#define error(msg) throw( ({ msg, backtrace() }) )
-
 
 /* Combines tag and class as a single integer, in a somewhat arbitrary
  * way. This works also for tags beyond 31 (although not for tags
@@ -93,8 +91,7 @@ class asn1_object
 	return sprintf("%c", len);
       string s = Gmp.mpz(len)->digits(256);
       if (strlen(s) >= 0x80)
-	throw( ({ "asn1.encode.asn1_object->encode_length: Max length exceeded.\n",
-		  backtrace() }) );
+	error( "asn1.encode.asn1_object->encode_length: Max length exceeded.\n" );
       return sprintf("%c%s", strlen(s) | 0x80, s);
     }
   
@@ -142,8 +139,7 @@ class asn1_compound
       elements = args;
       foreach(elements, mixed o)
 	if (!o || !objectp(o))
-	  throw( ({ "asn1_compound: Non-object argument!\n",
-		    backtrace() }) );
+	  error( "asn1_compound: Non-object argument!\n" );
       WERROR(sprintf("asn1_compound: %O\n", elements));
       return this_object();
     }
@@ -387,8 +383,7 @@ class asn1_identifier
       if ( (sizeof(args) < 2)
 	   || (args[0] > 2)
 	   || (args[1] >= ( (args[0] < 2) ? 40 : 176) ))
-	throw( ({ "asn1.encode.asn1_identifier->init: Invalid object identifier.\n",
-		  backtrace() }) );
+	error( "asn1.encode.asn1_identifier->init: Invalid object identifier.\n" );
       id = args;
       return this_object();
     }
@@ -1006,14 +1001,12 @@ class asn1_universal_string
 
   string der_encode()
   {
-    throw (({"asn1_universal_string: Encoding not implemented\n",
-	     backtrace()}));
+    error( "asn1_universal_string: Encoding not implemented\n" );
   }
 
   object decode_primitive (string contents)
   {
-    throw (({"asn1_universal_string: Decoding not implemented\n",
-	     backtrace()}));
+    error( "asn1_universal_string: Decoding not implemented\n" );
   }
 }
 
