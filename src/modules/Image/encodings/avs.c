@@ -116,7 +116,7 @@ void image_avs_f_encode(INT32 args )
   s = begin_shared_string( i->xsize*i->ysize*4+8 );
   MEMSET(s->str, 0, s->len );
 
-  q = (int *)s->str;
+  q = (unsigned int *)s->str;
   *(q++) = htonl( i->xsize );
   *(q++) = htonl( i->ysize );
 
