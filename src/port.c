@@ -203,9 +203,9 @@ int STRNCMP(const char *a, const char *b, size_t maxlen)
 {
   size_t alen=STRNLEN(a,maxlen);
   size_t blen=STRNLEN(b,maxlen);
-  int ret=MEMCMP(a,b, a < b ? a : b);
+  int ret=MEMCMP(a,b, alen < blen ? alen : blen);
   if(ret) return ret;
-  return alen - blen;
+  return DO_NOT_WARN((int)(alen - blen));
 }
 #endif
 

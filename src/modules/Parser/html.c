@@ -555,7 +555,7 @@ static void init_html_struct(struct object *o)
    /* initialize feed */
    THIS->feed=NULL;
    THIS->out=NULL;
-   THIS->out_max_shift = THIS->out_length = 0;
+   THIS->out_length = THIS->out_max_shift = 0;
    THIS->cond_out=NULL;
    THIS->stack=NULL;
    reset_feed(THIS);

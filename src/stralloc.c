@@ -1165,16 +1165,16 @@ static int low_binary_strcmp(char *a, ptrdiff_t alen,
 static int low_binary_strcmp(char *a, ptrdiff_t alen,
 			     char *b, ptrdiff_t blen)
 {
-  INT32 tmp;
   while(alen>0 && blen>0)
   {
-    tmp=strcoll(a,b);
-    if(tmp) return (int)tmp;
-    tmp=strlen(a)+1;
-    a+=tmp;
-    b+=tmp;
-    alen-=tmp;
-    blen-=tmp;
+    int tmp1 = strcoll(a,b);
+    ptrdiff_t tmp2;
+    if(tmp1) return (int)tmp1;
+    tmp2 = strlen(a)+1;
+    a += tmp2;
+    b += tmp2;
+    alen -= tmp2;
+    blen -= tmp2;
   }
   if(alen==blen) return 0;
   if(alen > blen) return 1;

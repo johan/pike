@@ -1374,7 +1374,7 @@ static void image_get_color(INT32 args)
 	    f = sp[-1].u.array->item[0].u.float_number;
 	    pop_stack();
 	    pop_stack();
-	    push_int( (int)(255*f/100) ); 
+	    push_int( DO_NOT_WARN((int)(255*f/100)) ); 
                  /* grey100 is white, grey0 is black */
 	    stack_dup();
 	    stack_dup();

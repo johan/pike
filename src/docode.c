@@ -259,7 +259,7 @@ void do_pop_mark(void)
   emit0(F_POP_MARK);
 }
 
-void do_pop_to_mark(void)
+void do_pop_to_mark(void *ignored)
 {
   emit0(F_POP_TO_MARK);
 }
