@@ -2352,7 +2352,7 @@ dump state
 dump wrapper
       Show the latest Hilfe wrapper that the last expression was
       evaluated in. Useful when debugging Hilfe (i.e. investigating
-      why valid Pike expressions doesn't compile).
+      why valid Pike expressions don't compile).
 ";
 
 constant documentation_new =
