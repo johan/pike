@@ -515,7 +515,7 @@ PMOD_EXPORT INT32 pike_sizeof(struct svalue *s);
 
 #endif /* !NO_PIKE_SHORTHAND */
 
-#ifdef PIKE_RUN_UNLOCKED
+#if 0 /* PIKE_RUN_UNLOCKED */
 
 #include "pike_error.h"
 
