@@ -487,6 +487,19 @@ int main()
   }
 #endif /* constant(System.getrlimit) */
 
+#if constant(fork)
+  werror("\nForking...");
+  object pid = fork();
+  if (pid) {
+    int res = pid->wait();
+    if (res) {
+      werror("\nChild failed with errcode %d\n", res);
+      exit(res);
+    }
+    werror("\nRunning in parent...");
+  }
+#endif /* constant(fork) */
+
   if(!port1::bind(0, accept_callback))
   {
     werror("Bind failed. (%d)\n",port1::errno());
