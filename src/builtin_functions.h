@@ -118,6 +118,7 @@ PMOD_EXPORT void f_map_array(INT32 args);
 void init_builtin_efuns(void);
 void init_builtin(void);
 void exit_builtin(void);
+void f_werror (INT32 args);
 /* Prototypes end here */
 
 #endif
