@@ -374,6 +374,10 @@ node *mknode(short token,node *a,node *b)
     }
     break;
 
+  case F_MAGIC_INDEX:
+  case F_MAGIC_SET_INDEX:
+    res->node_info |= OPT_EXTERNAL_DEPEND;
+
   case F_UNDEFINED:
     res->node_info |= OPT_EXTERNAL_DEPEND | OPT_SIDE_EFFECT;
     break;
