@@ -71,8 +71,9 @@ void sparc_update_pc(void);
   } while(0)
 
 extern const unsigned INT32 sparc_flush_instruction_cache[];
-#define FLUSH_INSTRUCTION_CACHE(ADDR, LEN)				\
-  (((void (*)(void *,size_t))sparc_flush_instruction_cache)(ADDR, (LEN)))
+#define FLUSH_INSTRUCTION_CACHE(ADDR, LEN)			\
+  (((void (*)(void *,size_t))sparc_flush_instruction_cache)	\
+   (ADDR, (LEN)+sizeof(PIKE_OPCODE_T)))
 
 struct dynamic_buffer_s;
 
