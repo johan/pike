@@ -321,7 +321,7 @@ void image_pcx_decode( INT32 args )
 
 
 /*
-**! method object _decode(string data)
+**! method mapping _decode(string data)
 **! 	Decodes a PCX image to a mapping. 
 **!
 **! note
