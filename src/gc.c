@@ -1581,7 +1581,7 @@ int gc_mark_external (void *a, const char *place)
   if (gc_external_refs_zapped) {
     fprintf (stderr, "One external ref to %p found%s.\n",
 	     a, place ? place : "");
-    if (in) describe (in);
+    if (gc_found_in) describe (gc_found_in);
     return 0;
   }
 #endif
