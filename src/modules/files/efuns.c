@@ -807,10 +807,12 @@ void f_get_dir(INT32 args)
 
   if(!str) {
 #if defined(__amigaos4__) || defined(__NT__)
-    str = make_shared_string("");
+    push_constant_text("");
 #else
-    str = make_shared_string(".");
+    push_constant_text(".");
 #endif
+    str = Pike_sp[-1].u.string;
+    args++;
   }
 
   if (strlen(str->str) != (size_t)str->len) {
@@ -982,7 +984,8 @@ void f_get_dir(INT32 args)
     closedir(dir);
 
     END_AGGREGATE_ARRAY;
-    stack_pop_n_elems_keep_top(args);
+    if(args)
+      stack_pop_n_elems_keep_top(args);
   } else {
     pop_n_elems(args);
     push_int(0);
