@@ -2306,6 +2306,9 @@ void fix_type_field(node *n)
   if (old_type) {
     free_string(old_type);
   }
+#ifdef PIKE_DEBUG
+  check_type_string(n->type);
+#endif /* PIKE_DEBUG */
 }
 
 static void zapp_try_optimize(node *n)
