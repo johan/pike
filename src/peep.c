@@ -281,7 +281,6 @@ void assemble(void)
 
   for(e=0;e<=max_label;e++) labels[e]=jumps[e]=-1;
   
-  c=(p_instr *)instrbuf.s.str;
 #ifdef PIKE_DEBUG
   synch_depth = 0;
 #endif

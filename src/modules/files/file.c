@@ -464,7 +464,6 @@ static int map(int flags)
   return ret;
 }
 
-static void call_free(char *s) { free(s); }
 static void free_dynamic_buffer(dynamic_buffer *b) { free(b->s.str); }
 
 static struct pike_string *do_read(int fd,
@@ -1740,7 +1739,9 @@ static void file_open(INT32 args)
 static void file_openpt(INT32 args)
 {
   int flags,fd;
+#ifdef HAVE_POSIX_OPENPT
   struct pike_string *flag_str;
+#endif
   close_fd();
 
   if(args < 1)
@@ -2115,7 +2116,7 @@ static void file_set_nonblocking(INT32 args)
 
   THIS->open_mode |= FILE_NONBLOCKING;
 
-  /* FIXME: Shouldn't the stack be cleaned up here? */
+  pop_n_elems(args);
 }
 
 /*! @decl void set_blocking()
@@ -2892,7 +2893,6 @@ static void file_set_keepalive(INT32 args)
 static void file_connect_unix( INT32 args )
 {
   struct sockaddr_un name;
-  char *path;
   int tmp;
 
   if( args < 1 )
@@ -3025,27 +3025,6 @@ static void file_connect(INT32 args)
     pop_n_elems(args);
     push_int(1);
   }
-}
-
-static int isipnr(char *s)
-{
-  int e,i;
-  for(e=0;e<3;e++)
-  {
-    i=0;
-    while(*s==' ') s++;
-    while(*s>='0' && *s<='9') s++,i++;
-    if(!i) return 0;
-    if(*s!='.') return 0;
-    s++;
-  }
-  i=0;
-  while(*s==' ') s++;
-  while(*s>='0' && *s<='9') s++,i++;
-  if(!i) return 0;
-  while(*s==' ') s++;
-  if(*s) return 0;
-  return 1;
 }
 
 /*! @decl string query_address()

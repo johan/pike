@@ -414,7 +414,10 @@ static void socket_query_address(INT32 args)
 {
   PIKE_SOCKADDR addr;
   int i;
-  char buffer[496],*q;
+  char buffer[496];
+#ifndef HAVE_INET_NTOP
+  char *q;
+#endif
   ACCEPT_SIZE_T len;
 
   if(THIS->fd <0)
