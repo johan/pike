@@ -510,9 +510,12 @@ PMOD_EXPORT unsigned INT32 hash_svalue(const struct svalue *s)
       pop_stack();
       break;
     }
-
   default:
+#if SIZEOF_CHAR_P > 4
     q=DO_NOT_WARN((unsigned INT32)((ptrdiff_t)s->u.refs >> 2));
+#else
+    q=DO_NOT_WARN((unsigned INT32)((ptrdiff_t)s->u.refs));
+#endif
     break;
   case T_INT:   q=s->u.integer; break;
   case T_FLOAT:
