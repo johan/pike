@@ -42,17 +42,18 @@ extern int image_cpuid;
 
 /* Some marcos to avoid loss of precision warnings. */
 #ifdef __ECL
+#define DO_NOT_WARN(X)	(X)
 static inline int DOUBLE_TO_INT(double d)
 {
-  return (int)d;
+  return DO_NOT_WARN((int)d);
 }
 static inline char DOUBLE_TO_CHAR(double d)
 {
-  return (char)d;
+  return DO_NOT_WARN((char)d);
 }
 static inline COLORTYPE DOUBLE_TO_COLORTYPE(double d)
 {
-  return (COLORTYPE)d;
+  return DO_NOT_WARN((COLORTYPE)d);
 }
 #else /* !__ECL */
 #define DOUBLE_TO_INT(D)	((int)(D))
