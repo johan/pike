@@ -151,7 +151,7 @@ static char *raw_lfun_types[] = {
   tFuncV(tNone,tZero,tMix),	/* "``%", */
   tFuncV(tZero,tVoid,tMix),	/* "`+=", */
   tFuncV(tStr,tVoid,tInt),	/* "_is_type", */
-  tFuncV(tInt tMap(tStr,tInt),tVoid,tStr),	/* "_sprintf", */
+  tFuncV(tInt tOr(tMap(tStr,tInt),tVoid),tVoid,tStr),	/* "_sprintf", */
   tFuncV(tMix,tVoid,tInt),	/* "_equal", */
 };
 
