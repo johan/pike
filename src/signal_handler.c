@@ -3583,7 +3583,7 @@ static void f_pid_status_kill(INT32 args)
  *! Returns the process ID of this process.
  *!
  *! @seealso
- *!    @[getppid()], @[getpgrp()]
+ *!    @[system.getppid()], @[system.getpgrp()]
  */
 static void f_getpid(INT32 args)
 {
