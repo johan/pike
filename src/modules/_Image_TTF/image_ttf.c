@@ -1232,6 +1232,10 @@ void pike_module_exit(void)
      free_program(image_ttf_faceinstance_program);
      image_ttf_faceinstance_program = NULL;
    }
+   if (image_ttf_face_program) {
+     free_program(image_ttf_face_program);
+     image_ttf_face_program = NULL;
+   }
 }
 
 void pike_module_init(void)
