@@ -851,22 +851,17 @@ class dirnode
 #ifdef MODULE_TRACE
       werror("%*ndirnode(%O)->module_checker()->`!()\n",sizeof(backtrace()),dirname);
 #endif
-      if (mixed err = catch {
-	if(module=findmodule(dirname+"/module", handler))
-	{
-	  if(mixed tmp=module->_module_value)
-	    module=tmp;
+      if(module=findmodule(dirname+"/module", handler))
+      {
+	if(mixed tmp=module->_module_value)
+	  module=tmp;
 
-	  /* This allows for `[] to have side effects first time
-	   * it is called. (Specifically, the Calendar module uses
-	   * this
-	   */
-	  cache=([]);
-	  _cache_full=0;
-	}
-      }) {
-	if(!get_inhibit_compile_errors())
-	  throw(err);
+	/* This allows for `[] to have side effects first time
+	 * it is called. (Specifically, the Calendar module uses
+	 * this
+	 */
+	cache=([]);
+	_cache_full=0;
       }
 
       return !module;
