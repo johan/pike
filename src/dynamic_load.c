@@ -408,6 +408,7 @@ void f_load_module(INT32 args)
     struct module_list *mp;
     for (mp = dynamic_module_list; mp; mp = mp->next)
       if (mp->module == module && mp->module_prog) {
+	pop_n_elems(args);
 	ref_push_program(mp->module_prog);
 	return;
       }
