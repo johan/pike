@@ -13,32 +13,8 @@
 //!	Beware, and read about <tt>mmap</tt> before you try anything.
 //!	Don't blame Pike if you shoot your foot off.
 
-#ifndef _POSIX_MAPPED_FILES
-#define _POSIX_MAPPED_FILES
-#endif
-
 #include "global.h"
 RCSID("$Id$");
-
-#include "pike_macros.h"
-#include "object.h"
-#include "constants.h"
-#include "interpret.h"
-#include "svalue.h"
-#include "threads.h"
-#include "array.h"
-#include "mapping.h"
-#include "pike_error.h"
-#include "stralloc.h"
-#include "threads.h"
-#include "builtin_functions.h"
-#include "module_support.h"
-#include "program.h"
-#include "operators.h"
-#include "fdlib.h"
-#include "bignum.h"
-
-#include "system.h"
 
 #include "system_machine.h"
 
@@ -70,6 +46,26 @@ RCSID("$Id$");
 #define PAGE_SIZE PAGESIZE
 #endif
 #endif
+
+#include "pike_macros.h"
+#include "object.h"
+#include "constants.h"
+#include "interpret.h"
+#include "svalue.h"
+#include "threads.h"
+#include "array.h"
+#include "mapping.h"
+#include "pike_error.h"
+#include "stralloc.h"
+#include "threads.h"
+#include "builtin_functions.h"
+#include "module_support.h"
+#include "program.h"
+#include "operators.h"
+#include "fdlib.h"
+#include "bignum.h"
+
+#include "system.h"
 
 #include "module_magic.h"
 
