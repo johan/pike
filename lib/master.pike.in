@@ -407,7 +407,9 @@ class dirnode
   }
 };
 
-static mapping(string:mixed) fc=([]);
+// Variables mustn't be static to allow for replace_master().
+//	/grubba 1998-04-10
+mapping(string:mixed) fc=([]);
 
 object findmodule(string fullname)
 {
