@@ -29,7 +29,12 @@ RCSID("$Id$");
 
 #include "../Image/image.h"
 
+#ifdef DYNAMIC_MODULE
 static struct program *image_program=NULL;
+#else
+extern struct program *image_program=NULL; 
+/* Image module is probably linked static too. */
+#endif
 
 #endif /* HAVE_GMP_H */
 
@@ -285,6 +290,7 @@ void pike_module_exit(void)
 void pike_module_init(void)
 {
 #ifdef HAVE_GMP_H
+#ifdef DYNAMIC_MODULE
    push_string(make_shared_string("Image"));
    push_int(0);
    SAFE_APPLY_MASTER("resolv",2);
@@ -295,6 +301,7 @@ void pike_module_init(void)
       image_program=program_from_svalue(sp-1);
    }
    pop_n_elems(1);
+#endif /* DYNAMIC_MODULE */
 
    if (image_program)
    {
