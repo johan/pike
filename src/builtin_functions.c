@@ -3819,7 +3819,7 @@ PMOD_EXPORT void f_sort(INT32 args)
   else {
     /* If there are only simple types in the array we can use unstable
      * sorting. */
-    array_fix_bad_type_field (a);
+    array_fix_unfinished_type_field (a);
     if (a->type_field & BIT_COMPLEX)
       free (stable_sort_array_destructively (a));
     else
