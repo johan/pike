@@ -11,7 +11,7 @@
 //! file to @expr{"/etc/my.cnf"@}.
 //!
 //! @fixme
-//!   Ought to have load a suitable default configuration file for Win32 too.
+//!   Ought to load a suitable default configuration file for Win32 too.
 //!
 //! @note
 //!   This connection method only exists if the Mysql-module has been
