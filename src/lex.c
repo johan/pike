@@ -1862,6 +1862,7 @@ static void calcC()
       break;
 
     default:
+      push_int(0);
       yyerror("Syntax error in #if.");
       return;
   }
