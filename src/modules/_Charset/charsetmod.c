@@ -1079,7 +1079,7 @@ static void feed_utf7_5e(struct std_cs_stor *cs, struct string_builder *sb,
 	  string_builder_putchar(sb, 0xc0|((c>>6)&0x3f));
 	  string_builder_putchar(sb, 0xc0|(c&0x3f));	
 	} else
-	  REPLACE_CHAR(c, feed_utf8e, cs, p - STR2(str) - 1);
+	  REPLACE_CHAR(c, feed_utf7_5e, cs, p - STR2(str) - 1);
       /* FIXME: Encode using surrogates? */
     }
     break;
