@@ -34,14 +34,10 @@ RCSID("$Id$");
 #include "opcodes.h"
 #include "pikecode.h"
 
-#define LASDEBUG
-
 /* Define this if you want the optimizer to be paranoid about aliasing
  * effects to to indexing.
  */
 /* #define PARANOID_INDEXING */
-
-int lasdebug=0;
 
 static node *eval(node *);
 static void optimize(node *n);
