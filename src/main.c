@@ -256,7 +256,7 @@ void main(int argc, char **argv, char **env)
 }
 
 
-void init_main(void)
+void low_init_main(void)
 {
   th_init();
   init_builtin_efuns();
@@ -266,12 +266,20 @@ void init_main(void)
 
 void exit_main(void)
 {
+  cleanup_objects();
+}
+
+void init_main(void)
+{
+}
+
+void low_exit_main(void)
+{
   void cleanup_added_efuns(void);
   void cleanup_pike_types(void);
   void cleanup_program(void);
 
   th_cleanup();
-  cleanup_objects();
   exit_dynamic_load();
   exit_signals();
   exit_lex();

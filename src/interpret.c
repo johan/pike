@@ -750,6 +750,31 @@ static void eval_instruction(unsigned char *pc)
       sp++;
       break;
 
+
+      CASE(F_ADD_TO_AND_POP);
+      sp[0]=sp[-1];
+      lvalue_to_svalue_no_free(sp-1,sp-3);
+
+      /* this is so that foo+=bar (and similar things) will be faster, this
+       * is done by freeing the old reference to foo after it has been pushed
+       * on the stack. That way foo can have only 1 reference if we are lucky,
+       * and then the low array/multiset/mapping manipulation routines can be
+       * destructive if they like
+       */
+      if( (1 << sp[-1].type) & ( BIT_ARRAY | BIT_MULTISET | BIT_MAPPING | BIT_STRING ))
+      {
+	struct svalue s;
+	s.type=T_INT;
+	s.subtype=0;
+	s.u.integer=0;
+	assign_lvalue(sp-3,&s);
+      }
+      sp++;
+      f_add(2);
+      assign_lvalue(sp-3,sp-1);
+      pop_n_elems(3);
+      break;
+
       CASE(F_GLOBAL_LVALUE)
       {
 	struct identifier *i;

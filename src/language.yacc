@@ -63,6 +63,7 @@
 %token F_FOREACH
 
 %token F_SIZEOF F_SIZEOF_LOCAL
+%token F_ADD_TO_AND_POP
 
 /*
  * These are token values that needn't have an associated code for the
