@@ -263,6 +263,8 @@ test_compile_error([[ int b=17; float c=42.0; b-=c; ]])
 test_compile_error([[ float b=17.0; string a; a=b*42; ]])
 test_compile_error([[ float b=17.0; string a; a=b*42.0; ]])
 
+test_compile_error([[class F {inherit master()->dirnode;};]]);
+
 //
 
 test_any([[
