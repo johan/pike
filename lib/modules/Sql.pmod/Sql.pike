@@ -128,7 +128,7 @@ function(string:int) decode_datetime;
 //!
 void create(void|string|object host, void|string|mapping(string:int|string) db,
 	    void|string user, void|string password,
-	    mapping(string:int|string) options)
+	    void|mapping(string:int|string) options)
 {
   if (objectp(host)) {
     master_sql = host;
