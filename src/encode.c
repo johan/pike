@@ -51,7 +51,7 @@ RCSID("$Id$");
 #include <netinet/in.h>
 #endif
 
-#ifdef HAVE_IEEFP_H
+#ifdef HAVE_IEEEFP_H
 #include <ieeefp.h>
 #endif /* HAVE_IEEEFP_H */
 
