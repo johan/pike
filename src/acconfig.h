@@ -189,6 +189,12 @@
 /* Enable code to handle Out-Of-Band data */
 #undef WITH_OOB
 
+/* Enable individual tracing of threads */
+#undef TRACE_THREADS
+
+/* Enable tracing of the compiler */
+#undef YYDEBUG
+
 @BOTTOM@
 
 /* NT stuff */
