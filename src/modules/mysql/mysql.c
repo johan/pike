@@ -455,7 +455,7 @@ void init_mysql_programs(void)
   set_init_callback(init_mysql_struct);
   set_exit_callback(exit_mysql_struct);
 
-  mysql_program = end_c_program("/precompiled/mysql");
+  mysql_program = end_c_program("/precompiled/sql/mysql");
   mysql_program->refs++;
 
   init_mysql_res_programs();

@@ -346,7 +346,7 @@ void init_mysql_res_programs(void)
   set_init_callback(init_res_struct);
   set_exit_callback(exit_res_struct);
 
-  mysql_result_program = end_c_program("/precompiled/mysql_result");
+  mysql_result_program = end_c_program("/precompiled/sql/mysql_result");
   mysql_result_program->refs++;
 }
 
