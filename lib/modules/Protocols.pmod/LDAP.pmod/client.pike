@@ -519,10 +519,8 @@ import SSL.Constants;
       THROW(({"LDAP: Unknown/unsupported protocol version.\n",backtrace()}));
       return -ldap_errno;
     }
-    if(intp(raw = send_starttls_op(context||UNDEFINED))) {
-      THROW(({error_string()+"\n",backtrace()}));
-      return -ldap_errno;
-    }
+
+    return send_starttls_op(context||UNDEFINED);
 
     return 1;
   } // start_tls
