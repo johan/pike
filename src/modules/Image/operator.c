@@ -40,7 +40,7 @@ extern struct program *image_program;
 
 #define absdiff(a,b) ((a)<(b)?((b)-(a)):((a)-(b)))
 
-#define testrange(x) (DOUBLE_TO_COLORTYPE(MAXIMUM(MINIMUM(((int)x),255),0)))
+#define testrange(x) (MAXIMUM(MINIMUM(DOUBLE_TO_INT(x),255),0))
 
 #define STANDARD_OPERATOR_HEADER(what)					\
    struct object *o;							\
