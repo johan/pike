@@ -36,7 +36,7 @@ struct string_builder
 };
 
 #ifdef PIKE_DEBUG
-struct pike_string *debug_findstring(const struct pike_string *foo);
+PMOD_EXPORT struct pike_string *debug_findstring(const struct pike_string *foo);
 #endif
 
 #define free_string(s) do{ struct pike_string *_=(s); debug_malloc_touch(_); if(--_->refs<=0) really_free_string(_); }while(0)
