@@ -2425,6 +2425,21 @@ PMOD_EXPORT void apply_svalue(struct svalue *s, INT32 args)
   }
 }
 
+PMOD_EXPORT void safe_apply_svalue(struct svalue *s, int args, int handle_errors)
+{
+  JMP_BUF recovery;
+  free_svalue(& throw_value);
+  throw_value.type=T_INT;
+  if(SETJMP_SP(recovery, args))
+  {
+    if(handle_errors) call_handle_error();
+    push_int(0);
+  }else{
+    apply_svalue (s, args);
+  }
+  UNSETJMP(recovery);
+}
+
 /* Apply function @[fun] in parent @[depth] levels up with @[args] arguments.
  */
 PMOD_EXPORT void apply_external(int depth, int fun, INT32 args)
