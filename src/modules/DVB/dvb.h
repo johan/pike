@@ -10,9 +10,6 @@
 
 #define AUDIO_BLOCK_SIZE 4096
 
-/* PES extracting utility */
-/* (from excelent mpegtools package by Marcus Metzler) */
-
 #define MAX_PLENGTH 0xFFFF
 #define MMAX_PLENGTH (8*MAX_PLENGTH)
 

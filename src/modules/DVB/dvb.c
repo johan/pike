@@ -6,11 +6,9 @@
  * $Id$
  *
  * Credits:
- *  + Tuner zapping code based on 'szap' app from linux DVB driver
- *    package [ szap.c: (c) 2001 Johannes Stezenbach js@convergence.de ]
+ *  + Tuner zapping code inspired on 'szap' app from linux DVB driver
+ *    package
  *  + PMT,PAT,ECM parsing code based on 'mgcam' app [ by badfish :]
- *  + PES parsing code based on 'mpegtools' app from linux DVB driver
- *    package [ (c) 2000, 2001 Marcus Metzler marcus@convergence.de ]
  *
  * Distro: aconfig.h (automake-> config.h.in), configure.in, Makefile.in
  *
