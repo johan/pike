@@ -311,6 +311,7 @@ class smtp_style
   //!
   //! Overload this constant as apropriate.
   //!
+
   constant errorcodes = ([]);
 
   //! Send an SMTP-style return-code.

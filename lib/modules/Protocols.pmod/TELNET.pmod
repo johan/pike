@@ -410,6 +410,7 @@ class protocol
     enable_write();									\
   }
 
+  //! @ignore
   CONTROL(remote,DO,DONT,WILL,WONT,YES,NO)
 
   CONTROL(remote,DONT,DO,WONT,WILL,NO,YES)
@@ -417,6 +418,7 @@ class protocol
   CONTROL(local,WILL,WONT,DO,DONT,YES,NO)
 
   CONTROL(local,WONT,WILL,DONT,DO,NO,YES)
+  //! @endignore
 
   void remote_option_callback(int opt, int onoff)
   {

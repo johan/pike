@@ -16,7 +16,7 @@
 //! its position (starting from zero). All operations are non-destructive. That
 //! means that a new table object will be returned after, for example, a sort.
 
-
+//! The table base-class.
 class table {
   static private mapping fieldmap;
   static private array table, fields, types;
@@ -436,7 +436,9 @@ object Separated = class {
 
 //! @module ASCII
 
+//! @ignore
 object ASCII = class {
+//! @endignore
   object decode(string s, void|mapping options)
   {
     // Yet to be done.
@@ -483,7 +485,9 @@ object ASCII = class {
 				  { return indent+" "+row*"   "; },
 		      indent)*"\n"+(sizeof(table)>1?"\n":"")+l+"\n");
   }
+//! @ignore
 }();
+//! @endignore
 
 //! @endmodule
 
