@@ -720,7 +720,7 @@ static inline void low_debug_instr_prologue (PIKE_INSTR_T instr)
 {
   if(Pike_interpreter.trace_level > 2)
   {
-    char *file, *f;
+    char *file = NULL, *f;
     struct pike_string *filep;
     INT32 linep;
 
