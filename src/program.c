@@ -451,8 +451,8 @@ struct node_s *find_module_identifier(struct pike_string *ident,
 	}
       }
       pop_stack();
-      END_CYCLIC();
     }
+    END_CYCLIC();
     if(ret) return ret;
   }
 

@@ -502,8 +502,8 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	  if(save_sp!=sp)
 	    fatal("o_cast left stack droppings.\n");
 #endif
-	  END_CYCLIC();
 	}
+	END_CYCLIC();
 	assign_svalue(sp-3,sp-1);
 	pop_stack();
       }
@@ -550,8 +550,8 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	    fatal("o_cast left stack droppings.\n");
 #endif
 	  order_multiset(m);
-	  END_CYCLIC();
 	}
+	END_CYCLIC();
 	assign_svalue(sp-3,sp-1);
 	pop_stack();
       }
@@ -604,8 +604,8 @@ void o_cast(struct pike_string *type, INT32 run_time_type)
 	  if(save_sp!=sp)
 	    fatal("o_cast left stack droppings.\n");
 #endif
-	  END_CYCLIC();
 	}
+	END_CYCLIC();
 	assign_svalue(sp-4,sp-1);
 	pop_stack();
       }

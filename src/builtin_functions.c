@@ -2748,12 +2748,12 @@ void f_column(INT32 args)
     for(e=0;e<a->size;e++)
       index_no_free(ITEM(a)+e, ITEM(tmp)+e, val);
 
-    END_CYCLIC();
     sp--;
     dmalloc_touch_svalue(sp);
     pop_n_elems(args);
     push_array(a);
   }
+  END_CYCLIC();
 }
 
 #ifdef PIKE_DEBUG

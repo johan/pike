@@ -589,17 +589,25 @@ object cast_to_object(string oname, string current_file)
 class dirnode
 {
   string dirname;
-  mixed module;
+  mixed module=module_checker();
   mapping(string:mixed) cache=([]);
   array(string) files;
 
   void create(string name)
   {
     dirname=name;
+  }
 
-    if(module=findmodule(dirname+"/module"))
-      if(mixed tmp=module->_module_value)
-	module=tmp;
+  class module_checker
+  {
+    int `!()
+    {
+      module=0;
+      if(module=findmodule(dirname+"/module"))
+	if(mixed tmp=module->_module_value)
+	  module=tmp;
+      return !module;
+    }
   }
 
   static mixed ind(string index)
