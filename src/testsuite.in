@@ -1619,6 +1619,8 @@ test_search($1,$2,$3)
 test_search($1,$2+1,$3)
 test_search($1,$2+2,$3)
 test_search($1,$2+3,$3)
+test_search($1,$2+4,$3)
+test_search($1,$2+5,$3)
 ]])
 
 define(test_search3,[[dnl
@@ -1629,11 +1631,13 @@ test_search2($1,100000,$2)
 
 define(test_search4,[[dnl
 test_search3($1,"+-*")
-test_search3($1,($1[0..strlen($1)-2]))
-test_search3($1,($1[1..0x7fffffff]))
+test_search3($1,($1[..strlen($1)-2]))
+test_search3($1,($1[..strlen($1)-3]))
+test_search3($1,($1[1..]))
 ]])
 
 test_search4("SUNE")
+test_search4("kapitäl>")
 test_search4("-------------------+")
 test_search4("å-------------------")
 test_search4(sprintf("%'argel-bargel glop-glyf?'2000n"))
