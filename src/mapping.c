@@ -212,7 +212,8 @@ static void init_mapping(struct mapping *m,
 #endif
 }
 
-/* This function allocates an empty mapping with room for 'size' values
+/* This function allocates an empty mapping with initial room
+ * for 'size' values.
  */
 PMOD_EXPORT struct mapping *debug_allocate_mapping(int size)
 {
