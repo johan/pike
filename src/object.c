@@ -419,7 +419,7 @@ void object_index_no_free(struct svalue *to,
   {
     push_svalue(index);
     apply_lfun(o,lfun,1);
-    to=sp;
+    *to=*sp;
     sp--;
   } else {
     object_index_no_free2(to,o,index);
