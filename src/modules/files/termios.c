@@ -121,7 +121,7 @@ RCSID("$Id$");
 
 #undef THIS
 #define THIS ((struct my_file *)(Pike_fp->current_storage))
-#define FD (THIS->fd)
+#define FD (THIS->box.fd)
 #define ERRNO (THIS->my_errno)
 
 void file_tcgetattr(INT32 args)
