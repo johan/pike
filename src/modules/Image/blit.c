@@ -137,7 +137,7 @@ void img_box_nocheck(INT32 x1,INT32 y1,INT32 x2,INT32 y2)
    rgb=this->rgb;
    mod=this->xsize-(x2-x1)-1;
    foo=this->img+x1+y1*this->xsize;
-   end=this->img+x1+y2*this->xsize;
+   end=this->img+x2+y2*this->xsize+1;
 
    THREADS_ALLOW();
    if(!this->alpha)
