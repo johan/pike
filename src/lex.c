@@ -166,7 +166,6 @@ struct keyword instr_names[]=
 #ifndef PIKE_PRECOMPILER
 #include "interpret_protos.h"
 #endif /* !PIKE_PRECOMPILER */
-{ "!=",			F_NE,0 },	
 { "%=",			F_MOD_EQ,0 },	
 { "&=",			F_AND_EQ,0 },	
 { "|=",			F_OR_EQ,0 },	
@@ -174,12 +173,7 @@ struct keyword instr_names[]=
 { "+=",			F_ADD_EQ,0 },	
 { "-=",			F_SUB_EQ,0 },	
 { "/=",			F_DIV_EQ,0 },	
-{ "<",			F_LT,0 },	
 { "<<=",		F_LSH_EQ,0 },	
-{ "<=",			F_LE,0 },	
-{ "==",			F_EQ,0 },	
-{ ">",			F_GT,0 },	
-{ ">=",			F_GE,0 },	
 { ">>=",		F_RSH_EQ,0 },	
 { "^=",			F_XOR_EQ,0 },	
 { "arg+=1024",		F_PREFIX_1024,0 },
@@ -207,16 +201,6 @@ struct keyword instr_names[]=
 { "for",		F_FOR,0 },
 { "index",              F_INDEX,0 },
 
-{ "branch if <",	F_BRANCH_WHEN_LT, I_ISJUMP },
-{ "branch if >",	F_BRANCH_WHEN_GT, I_ISJUMP },
-{ "branch if <=",	F_BRANCH_WHEN_LE, I_ISJUMP },
-{ "branch if >=",	F_BRANCH_WHEN_GE, I_ISJUMP },
-{ "branch if ==",	F_BRANCH_WHEN_EQ, I_ISJUMP },
-{ "branch if !=",	F_BRANCH_WHEN_NE, I_ISJUMP },
-{ "++Loop",		F_INC_LOOP, I_ISJUMP },	
-{ "++Loop!=",		F_INC_NEQ_LOOP, I_ISJUMP },
-{ "--Loop",		F_DEC_LOOP, I_ISJUMP },	
-{ "--Loop!=",		F_DEC_NEQ_LOOP, I_ISJUMP },
 { "foreach",		F_FOREACH, I_ISJUMP },
 { "foreach++",		F_NEW_FOREACH, I_ISJUMP },
 { "pointer",		F_POINTER, I_ISPOINTER },
