@@ -23,6 +23,8 @@
 #include <assert.h>
 #include <math.h>
 #include <tchar.h>
+#include <interpret.h>
+#include <callback.h>
 
 /* In case we're compiling with NDEBUG */
 _CRTIMP void __cdecl _assert(void*, void*, unsigned);
