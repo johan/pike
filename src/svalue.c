@@ -151,7 +151,7 @@ void debug_free_svalues(struct svalue *s,INT32 num, INT32 type_hint DMALLOC_LINE
 
 #define DOTYPE(X,Y,Z) case X:						\
    while(--num>=0) {							\
-    DO_IF_DMALLOC(debug_malloc_update_location(s->u.Z DMALLOC_PROXY_ARGS));	\
+    DO_IF_DMALLOC(debug_malloc_update_location(s->u.Z, dmalloc_location));	\
     Y(s->u.Z);								\
     DO_IF_DMALLOC(s->u.Z=0);						\
     s++;								\
