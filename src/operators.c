@@ -2135,11 +2135,11 @@ PMOD_EXPORT void o_multiply(void)
 	    assign_svalues_no_free(pos, ret->item, asize, ret->type_field);
 	  }
 	} else if (asize) {
-	  assign_svalues_no_free(pos,
-				 src->item,
-				 asize,
-				 src->type_field);
-	  array_fix_type_field(ret);
+	  ret->type_field =
+	    assign_svalues_no_free(pos,
+				   src->item,
+				   asize,
+				   src->type_field);
 	}
 	pop_n_elems(2);
 	push_array(ret);

@@ -276,10 +276,9 @@ PIKECLASS Sequence
     a=allocate_array_no_init(size,0);
     while(--size>=0)
     {
-      ITEM(a)[size].type=T_INT;
-      ITEM(a)[size].subtype=NUMBER_NUMBER;
       ITEM(a)[size].u.integer = DO_NOT_WARN((INT_TYPE)size);
     }
+    a->type_field = BIT_INT;
     RETURN a;
   }
 

@@ -38,6 +38,7 @@ static void push_words( int *d, struct words *w )
       make_shared_binary_string2( d+w->words[i].start,
 				  w->words[i].size );
   }
+  r->type_field = BIT_STRING;
   push_array( r );
   uc_words_free( w );
 }

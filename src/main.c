@@ -744,6 +744,7 @@ int dbm_main(int argc, char **argv)
       ITEM(a)[num].u.string=make_shared_string(argv[num]);
       ITEM(a)[num].type=T_STRING;
     }
+    a->type_field = BIT_STRING;
     push_array(a);
     
     for(num=0;environ[num];num++);
@@ -753,6 +754,7 @@ int dbm_main(int argc, char **argv)
       ITEM(a)[num].u.string=make_shared_string(environ[num]);
       ITEM(a)[num].type=T_STRING;
     }
+    a->type_field = BIT_STRING;
     push_array(a);
   
     apply(master(),"_main",2);

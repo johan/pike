@@ -1247,6 +1247,7 @@ PMOD_EXPORT struct array *mapping_to_array(struct mapping *m)
       struct array *b=allocate_array(2);
       assign_svalue(b->item+0, & k->ind);
       assign_svalue(b->item+1, & k->val);
+      b->type_field = (1 << k->ind.type) | (1 << k->val.type);
       s->u.array=b;
       s->type=T_ARRAY;
       s++;

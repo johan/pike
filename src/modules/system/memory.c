@@ -510,11 +510,10 @@ static void memory_cast(INT32 args)
       sv=ITEM(a);
       for (i=0; i<sz; i++)
       {
-	 sv->type=T_INT;
-	 sv->subtype=0;
 	 sv->u.integer=(((unsigned char*)(THIS->p)))[i];
 	 sv++;
       }
+      a->type_field = BIT_INT;
 
       push_array(a);
 
