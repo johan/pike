@@ -254,6 +254,7 @@ class fetch
 
   mapping easy_process(object message_set, mapping request)
   {
+    werror(sprintf("fetch->easy_process(X, %O)\n", request));
     array fetch_attrs = 0;
     switch(request->type)
     {
