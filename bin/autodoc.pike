@@ -87,12 +87,17 @@ int main(int argc, array(string) argv)
 			// Usually not reached.
 			return p;
 		      });
-		foreach(reverse(segments), string seg) {
-		  Tools.AutoDoc.PikeObjects.Module m =
-		    Tools.AutoDoc.PikeObjects.Module();
-		  m->children = ({ info });
-		  m->name = seg;
-		  info = m;
+		foreach(reverse(segments) + ({ "" }), string seg) {
+		  if (info->name == "") {
+		    // Probably doesn't happen, but...
+		    info->name = seg;
+		  } else {
+		    Tools.AutoDoc.PikeObjects.Module m =
+		      Tools.AutoDoc.PikeObjects.Module();
+		    m->children = ({ info });
+		    m->name = seg;
+		    info = m;
+		  }
 		}
 		break;
 	      }
