@@ -249,7 +249,7 @@ void async_got_host(string server,int port)
    con->async_connect(server, port,
 		      lambda(int success)
 		      {
-			if (status) {
+			if (success) {
 			  // Connect ok.
 #if constant(SSL.sslfile) 
 			  if(https) {
