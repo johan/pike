@@ -447,7 +447,6 @@ void f_werror(INT32 args)
 
   if(args> 1)
   {
-    extern void f_sprintf(INT32);
     f_sprintf(args);
     args=1;
   }
