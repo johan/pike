@@ -85,7 +85,7 @@ fdtestsuites:
 
 testsuites:
 	for a in $(MODULES) ; do \
-	  (cd $$a && make module_testsuite) ; \
+	  (cd $$a && $(MAKE) module_testsuite) ; \
 	done
 
 extra_tests:
