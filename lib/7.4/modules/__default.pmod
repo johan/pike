@@ -136,5 +136,6 @@ mapping(string:mixed) all_constants()
 #if constant(System.getgrent)
   ret->setgrent = System.getgrent;
 #endif
+  ret->Regexp = Regexp.SimpleRegexp;
   return ret;
 }
