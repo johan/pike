@@ -650,7 +650,8 @@ void f_string_to_unicode(INT32 args)
     /* 32 bit characters -- Is someone writing in Klingon? */
     {
       p_wchar2 *str2 = STR2(in);
-      int j = (len = in->len * 2);
+      int j;
+      len = in->len * 2;
       /* Check how many extra wide characters there are. */
       for(i = in->len; i--;) {
 	if (str2[i] > 0xfffd) {
@@ -672,7 +673,7 @@ void f_string_to_unicode(INT32 args)
 	}
       }
       out = begin_shared_string(len);
-      /* j is initialized above. */
+      j = len;
       for(i = in->len; i--;) {
 	unsigned INT32 c = str2[i];
 
