@@ -1186,7 +1186,7 @@ void image_xcf_f__decode_tiles( INT32 args )
   int rxs, rys;
   rgb_group *colortable=NULL;
   rgb_group pix = {0,0,0};
-  rgb_group apix= {255,255,255}; // avoid may use uninitialized warnings
+  rgb_group apix= {255,255,255}; /* avoid may use uninitialized warnings */
 
   INT_TYPE rle, bpp, span, shrink;
   unsigned int l, x=0, y=0, cx, cy;
