@@ -51,7 +51,7 @@ void exit_lex(void)
     fprintf(stderr,"Opcode usage: (opcode, runned, compiled)\n");
     for(e=0;e<F_MAX_OPCODE-F_OFFSET;e++)
     {
-      fprintf(stderr,":: %-20s %8ld %8ld\n",
+      fprintf(stderr,":: %-30s %8ld %8ld\n",
 	      low_get_f_name(e+F_OFFSET,0),
 	      (long)instrs[e].runs,
 	      (long)instrs[e].compiles);
