@@ -125,7 +125,7 @@ int dooptcode(struct pike_string *name,
 #define INHERIT(i) (new_program->inherits+(i))
 #define PC (new_program->num_program)
 
-#ifndef DEBUG
+#ifndef PIKE_DEBUG
 #define check_tree(X,Y)
 #endif
 

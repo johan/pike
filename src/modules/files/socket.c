@@ -116,7 +116,7 @@ static void port_accept_callback(int fd,void *data)
   struct port *f;
   f=(struct port *)data;
 #ifndef __NT__
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
   if(!query_nonblocking(f->fd))
     fatal("Port is in blocking mode in port accept callback!!!\n");
 #endif

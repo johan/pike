@@ -199,7 +199,7 @@ struct program
   void (*exit)(struct object *);
   void (*gc_marked)(struct object *);
   void (*gc_check)(struct object *);
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
   unsigned INT32 checksum;
 #endif
 #ifdef PROFILING

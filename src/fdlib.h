@@ -147,7 +147,7 @@ struct my_fd_set_s
 
 typedef struct my_fd_set_s my_fd_set;
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 #define fd_check_fd(X) do { if(fd_type[X]>=0) fatal("FD_SET on closed fd %d (%d) %s:%d.\n",X,da_handle[X],__FILE__,__LINE__); }while(0)
 #else
 #define fd_check_fd(X)

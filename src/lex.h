@@ -26,7 +26,7 @@ struct keyword
 #define I_ISJUMP 7
 #define I_DATA 9
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 #define INSTR_PROFILING
 #endif
 
@@ -36,7 +36,7 @@ extern int last_instruction;
 
 struct instr
 {
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 #ifdef INSTR_PROFILING
   long reruns[256];
 #endif
@@ -47,7 +47,7 @@ struct instr
   char *name;
 };
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 #define ADD_COMPILED(X) instrs[(X)-F_OFFSET].compiles++
 #ifdef INSTR_PROFILING
 #define ADD_RUNNED(X) do { int _x=(X)-F_OFFSET; instrs[last_instruction].reruns[_x]++; instrs[last_instruction=_x].runs++; } while(0)

@@ -13,7 +13,7 @@
 #define DEFAULT_MASTER "@prefix@/lib/pike/master.pike"
 
 /* Define this if you want run time self tests */
-#undef DEBUG
+#undef PIKE_DEBUG
 
 /* Define this if you want malloc debugging */
 #undef DEBUG_MALLOC
@@ -148,7 +148,7 @@
 #undef DECLARE_ENVIRON
 
 /* What byteorder does your machie use most machines use 4321, PC use 1234 */
-#define BYTEORDER 0
+#define PIKE_BYTEORDER 0
 
 /* Number of possible filedesriptors */
 #define MAX_OPEN_FILEDESCRIPTORS 1024

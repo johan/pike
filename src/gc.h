@@ -15,7 +15,7 @@ extern INT32 alloc_threshold;
 
 extern struct callback *gc_evaluator_callback;
 extern struct callback_list evaluator_callbacks;
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 extern void *gc_svalue_location;
 #endif
 
@@ -51,7 +51,7 @@ int gc_do_free(void *a);
 void do_gc(void);
 /* Prototypes end here */
 
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 #define GC_FREE() do { num_objects-- ; if(num_objects < 0) fatal("Panic!! less than zero objects!\n"); }while(0)
 #else
 #define debug_gc_check_svalues(S,N,T,V) gc_check_svalues(S,N)

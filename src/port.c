@@ -534,7 +534,7 @@ int VFPRINTF(FILE *f,char *s,va_list args)
 }
 #endif
 
-#if defined(DEBUG) && !defined(HANDLES_UNALIGNED_MEMORY_ACCESS)
+#if defined(PIKE_DEBUG) && !defined(HANDLES_UNALIGNED_MEMORY_ACCESS)
 
 unsigned INT16 EXTRACT_UWORD_(unsigned char *p)
 {

@@ -953,7 +953,7 @@ void do_html_parse_lines(struct pike_string *ss,
 	}
 
 	*(sp++)=sval1;
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 	sval1.type=99;
 #endif
 	(*strings)++;
@@ -980,7 +980,7 @@ void do_html_parse_lines(struct pike_string *ss,
       else if (sval1.type!=T_INT)
       {
 	*(sp++)=sval2;
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 	sval2.type=99;
 #endif
 	k=push_parsed_tag(s+j,len-j);
@@ -1004,7 +1004,7 @@ void do_html_parse_lines(struct pike_string *ss,
       if (sval1.type==T_STRING)
       {
 	*(sp++)=sval1;
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 	sval1.type=99;
 #endif
 	(*strings)++;
@@ -1018,7 +1018,7 @@ void do_html_parse_lines(struct pike_string *ss,
       else if (sval1.type != T_INT)
       {
 	*(sp++)=sval2;
-#ifdef DEBUG
+#ifdef PIKE_DEBUG
 	sval2.type=99;
 #endif
 	m = push_parsed_tag(s+j, len-j) + j;
