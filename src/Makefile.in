@@ -817,7 +817,7 @@ stamp-h: $(SRCDIR)/stamp-h.in $(SRCDIR)/machine.h.in config.status
 	-@rm cfl.$@
 
 testsuite: $(SRCDIR)/testsuite.in
-	if test "$$PIKE_PATH_TRANSLATE" = ""; then
+	if test "$$PIKE_PATH_TRANSLATE" = ""; then \
 	  $(TMP_BINDIR)/mktestsuite $(SRCDIR)/testsuite.in >testsuite \
 	    -DSRCDIR="$(SRCDIR)"; \
 	else \
