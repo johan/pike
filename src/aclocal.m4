@@ -465,13 +465,14 @@ int main() {
   char buf[32];
   if (sizeof($1)>4)
   {
-    sprintf(buf, "%${mod}d,%d", (($1) 4711) << 32, 17);
-    return !!strcmp("20233590931456,17", buf);
+    sprintf(buf, "%${mod}d,%${mod}d,%d",
+	    (($1) 4711) << 32, -(($1) 4711) << 32, 17);
+    return !!strcmp("20233590931456,-20233590931456,17", buf);
   }
   else
   {
-    sprintf(buf, "%${mod}d,%d", ($1) 4711, 17);
-    return !!strcmp("4711,17", buf);
+    sprintf(buf, "%${mod}d,%${mod}d,%d", ($1) 4711, ($1)-4711, 17);
+    return !!strcmp("4711,-4711,17", buf);
   }
 }], [pike_cv_printf_$1="${mod}"; found=yes])
       test ${found} = yes && break
