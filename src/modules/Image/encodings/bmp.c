@@ -485,7 +485,7 @@ void img_bmp_encode(INT32 args)
 void i_img_bmp__decode(INT32 args,int header_only)
 {
    p_wchar0 *s,*os;
-   offset_t len, olen;
+   ptrdiff_t len, olen;
    int xsize=0,ysize=0,bpp=0,comp=0;
    struct image *img=NULL;
    struct neo_colortable *nct=NULL;
