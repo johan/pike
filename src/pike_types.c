@@ -369,7 +369,7 @@ static inline struct pike_type *debug_mk_type(unsigned INT32 type,
 	(car->type == T_STRING) &&
 	(cdr->type == T_FUNCTION) &&
 	(cdr->car->type == T_STRING) &&
-	(cdr->cdr->type == T_MULTI) &&
+	(cdr->cdr->type == T_MANY) &&
 	(cdr->cdr->car->type == T_VOID) &&
 	(cdr->cdr->cdr->type == T_STRING)) {
       /* Attempt to detect why we get a core-dump on OSF/1
