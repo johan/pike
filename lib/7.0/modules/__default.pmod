@@ -11,6 +11,8 @@
 //! @seealso
 //!   @[7.2::]
 
+//! @decl inherit 7.2::
+
 //! @decl array(int) file_stat(string path, void|int symlink)
 //!   Stat a file (Pike 7.0 compatibility).
 //!

@@ -8,6 +8,8 @@
 //! The symbols in this namespace will appear in
 //! programs that use @tt{#pike 7.2@} or lower.
 
+//! @decl inherit 7.4::
+
 //! Remove the last segment from @[path].
 //!
 //! This implementation differs from @[predef::dirname()]
