@@ -237,8 +237,8 @@ void f_syslog(INT32 args)
  
   if(args < 2)
     Pike_error("Wrong number of arguments to syslog(int, string)\n");
-  if(sp[-args].type != T_INT ||
-     sp[-args+1].type != T_STRING)
+  if(Pike_sp[-args].type != T_INT ||
+     Pike_sp[-args+1].type != T_STRING)
     Pike_error("Wrong type of arguments to syslog(int, string)\n");
  
   if(i & (1<<0)) pri |= LOG_EMERG;

@@ -123,8 +123,8 @@ void f_stardate (INT32 args)
 
   if (args < 2) 
     Pike_error("Wrong number of arguments to stardate(int, int)\n");
-  precis=sp[-args+1].u.integer;
-  t=sp[-args].u.integer;
+  precis=Pike_sp[-args+1].u.integer;
+  t=Pike_sp[-args].u.integer;
 
   if (precis < 1) precis = 1;
   if (precis > MAXPRECISION) precis = MAXPRECISION;

@@ -56,7 +56,7 @@ void f_discdate(INT32 argc)
     exit(1);
   } else {
     struct tm *eris;
-    t=sp[-argc].u.integer;
+    t=Pike_sp[-argc].u.integer;
     eris=localtime(&t);
     bob=eris->tm_yday;		/* days since Jan 1. */
     raw=eris->tm_year;		/* years since 1980 */
