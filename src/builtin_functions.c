@@ -369,9 +369,11 @@ void f_random_seed(INT32 args)
 #ifdef AUTO_BIGNUM
   check_all_args("random_seed",args,BIT_INT | BIT_OBJECT, 0);
   if(sp[-args].type == T_INT)
+  {
     i=sp[-args].u.integer;
-  else
+  }else{
     i=hash_svalue(sp-args);
+  }
 #else
   get_all_args("random_seed",args,"%i",&i);
 #endif
