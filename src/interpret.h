@@ -393,7 +393,8 @@ BLOCK_ALLOC(pike_frame,128)
 PMOD_EXPORT void find_external_context(struct external_variable_context *loc,
 				       int arg2);
 void really_free_pike_scope(struct pike_frame *scope);
-int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2);
+PIKE_OPCODE_T *low_mega_apply(enum apply_type type, int frame_flags,
+			      INT32 args, void *arg1, void *arg2);
 void low_return(void);
 void low_return_pop(void);
 void unlink_previous_frame(void);
