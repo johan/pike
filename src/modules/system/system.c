@@ -532,7 +532,7 @@ static MUTEX_T gethostbyname_mutex;
 
 #define GETHOST_DECLARE() struct hostent *ret
 
-#defne CALL_GETHOSTBYNAME(X) \
+#define CALL_GETHOSTBYNAME(X) \
     THREADS_ALLOW(); \
     mt_lock(&gethostbyname_mutex); \
     ret=gethostbyname(X); \
@@ -540,7 +540,7 @@ static MUTEX_T gethostbyname_mutex;
     THREADS_DISALLOW()
 
 
-#defne CALL_GETHOSTBYADDR(X,Y,Z) \
+#define CALL_GETHOSTBYADDR(X,Y,Z) \
     THREADS_ALLOW(); \
     mt_lock(&gethostbyname_mutex); \
     ret=gethostbyaddr((X),(Y),(Z)); \
