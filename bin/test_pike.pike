@@ -42,6 +42,7 @@ array find_testsuites(string dir)
   array(string) ret=({});
   if(array(string) s=get_dir(dir||"."))
   {
+    if(has_value(s,"no_testsuites")) return ret;
     foreach(s, string file)
       {
 	switch(file)
