@@ -271,7 +271,6 @@ void PIKE_CONCAT(really_free_,DATA)(struct DATA *d)			\
 									\
     DO_IF_DMALLOC({							\
 	size_t i;							\
-	extern void dmalloc_check_block_free(void *p, char *loc);	\
 	for (i = 0; i < (BSIZE); i++) {					\
 	  dmalloc_check_block_free(blk->x + i, DMALLOC_LOCATION());	\
 	  dmalloc_unregister(blk->x + i, 1);				\
@@ -295,7 +294,6 @@ static void PIKE_CONCAT3(free_all_,DATA,_blocks_unlocked)(void)		\
    for(tmp=PIKE_CONCAT(DATA,_blocks);tmp;tmp=tmp->next)                 \
    {                                                                    \
      size_t tmp2;							\
-     extern void dmalloc_check_block_free(void *p, char *loc);          \
      for(tmp2=0;tmp2<(BSIZE);tmp2++)					\
      {                                                                  \
        dmalloc_check_block_free(tmp->x+tmp2, DMALLOC_LOCATION());       \

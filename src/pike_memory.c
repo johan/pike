@@ -691,10 +691,6 @@ void *fake_calloc(size_t x, size_t y)
 #define strdup __real_strdup
 #endif
 
-#define LOCATION char *
-#define LOCATION_NAME(X) ((X)+1)
-#define LOCATION_IS_DYNAMIC(X) ((X)[0]=='D')
-
 
 static struct memhdr *my_find_memhdr(void *, int);
 
