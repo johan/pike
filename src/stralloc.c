@@ -1706,7 +1706,7 @@ void cleanup_shared_string_table(void)
   free_all_short_pike_string0_blocks();
   free_all_short_pike_string1_blocks();
   free_all_short_pike_string2_blocks();
-#endif DEBUG_MALLOC
+#endif /* DEBUG_MALLOC */
 }
 
 void count_memory_in_strings(INT32 *num, INT32 *size)
