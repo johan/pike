@@ -1317,7 +1317,12 @@ if test "$cflags_is_set" = "no"; then
     # AC_SYS_COMPILER_FLAG(-qalias=addr,qalias_addr,OPTIMIZE)    
     # AC_SYS_COMPILER_FLAG(-qlibansi,qlibansi,OPTIMIZE)
     # Tell the linker to generate a large toc if needed
-    AC_SYS_COMPILER_FLAG(-bbigtoc,bbigtoc,LDFLAGS)
+    # Tell the linker to generate a large toc if needed
+    #
+    # This option is not needed on AIX 5L/ia64.
+    if test "x`uname -p`" = "xia64"; then :; else
+      AC_SYS_COMPILER_FLAG(-bbigtoc,bbigtoc,LDFLAGS)
+    fi
   ])
 
   # HP-UX
