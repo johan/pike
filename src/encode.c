@@ -1034,16 +1034,20 @@ one_more_type:
 	low_decode_type(data);
       }
       push_type(T_MANY);
+      low_decode_type(data);
+      goto one_more_type;
 
     case T_MAPPING:
     case T_OR:
     case T_AND:
       push_type(tmp);
       low_decode_type(data);
+      goto one_more_type;
 
     case T_ARRAY:
     case T_MULTISET:
     case T_NOT:
+      push_type(tmp);
       goto one_more_type;
 
     case T_INT:
