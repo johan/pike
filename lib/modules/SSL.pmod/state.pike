@@ -50,7 +50,7 @@ string tls_unpad(string data) {
   foreach(values(padding), int tmp)
     {
       if(tmp!=plen) {
-	werror("Incorrect padding detected!!!\n");
+	werror("Incorrect padding detected!!!: %O\n", padding);
 	throw(0);
       }
     }
