@@ -150,7 +150,9 @@ private void ssl_read_callback(mixed id, string s)
       if (data < 0)
       {
 	/* Fatal error, remove from session cache */
-	die(-1);
+	if (this_object()) {
+	  die(-1);
+	}
 	return;
       }
   }

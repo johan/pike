@@ -219,7 +219,7 @@ string|int got_data(string s)
       send_packet(packet);
       if (alert_callback)
 	alert_callback(packet, current_read_state->seq_num, alert_context);
-      if (packet->level == ALERT_fatal)
+      if ((!packet) || (!this_object()) || (packet->level == ALERT_fatal))
 	return -1;
     }
     else
