@@ -115,7 +115,7 @@ void check_all_objects(void);
 #endif
 
 #ifdef PIKE_DEBUG
-#define master() ( get_master() ? get_master() : ( fatal("Couldn't load master object at %s:%d.\n",__LINE__,__FILE__), 0) )
+#define master() ( get_master() ? get_master() : ( fatal("Couldn't load master object at %s:%d.\n",__LINE__,__FILE__), NULL) )
 #else
 #define master() debug_master()
 #endif
