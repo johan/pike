@@ -440,7 +440,12 @@ AC_MSG_CHECKING(operating system)
 AC_CACHE_VAL(pike_cv_sys_os,
 [
 if test "$uname_prog" != "no"; then
-  pike_cv_sys_os="`uname`"
+  # uname on UNICOS doesn't work like other people's uname...
+  if getconf CRAY_RELEASE >/dev/null 2>&1; then
+    pike_cv_sys_os="UNICOS"
+  else
+    pike_cv_sys_os="`uname`"
+  fi
 
   case "$pike_cv_sys_os" in
     SunOS)
