@@ -361,15 +361,17 @@ void low_thorough_check_short_svalue (const union anything *u, TYPE_T type);
 PMOD_EXPORT extern const char msg_sval_obj_wo_refs[];
 #define check_refs(S) do {\
  if((S)->type <= MAX_REF_TYPE && (!(S)->u.refs || (S)->u.refs[0] < 0)) { \
- describe((S)->u.refs); \
- Pike_fatal(msg_sval_obj_wo_refs); \
-} }while(0)
+   fprintf (stderr, msg_sval_obj_wo_refs);				\
+   describe((S)->u.refs);						\
+   Pike_fatal(msg_sval_obj_wo_refs);					\
+ } }while(0)
 
 PMOD_EXPORT extern const char msg_ssval_obj_wo_refs[];
 #define check_refs2(S,T) do { \
 if((T) <= MAX_REF_TYPE && (S)->refs && (S)->refs[0] <= 0) {\
- describe((S)->refs); \
- Pike_fatal(msg_ssval_obj_wo_refs); \
+  fprintf (stderr, msg_ssval_obj_wo_refs);		   \
+  describe((S)->refs);					   \
+  Pike_fatal(msg_ssval_obj_wo_refs);			   \
 } }while(0)
 
 #define check_type_hint(SVALS, NUM, TYPE_HINT)				\
