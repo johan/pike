@@ -35,6 +35,12 @@ struct frame;
 #define THROW_EXIT 40
 #define THROW_MAX_SEVERITY 100
 
+#ifdef ONERROR_DEBUG
+#define OED_FPRINTF(X)	fprintf X
+#else /* !ONERROR_DEBUG */
+#define OED_FPRINTF(X)
+#endif /* ONERROR_DEBUG */
+
 typedef struct ONERROR
 {
   struct ONERROR *previous;
@@ -67,8 +73,8 @@ extern int throw_severity;
 #ifdef DEBUG
 #define SET_ONERROR(X,Y,Z) \
   do{ \
-     fprintf(stderr, "SET_ONERROR(%p, %p, %p) %s:%d\n", \
-             &(X), (Y), (Z), __FILE__, __LINE__); \
+     OED_FPRINTF((stderr, "SET_ONERROR(%p, %p, %p) %s:%d\n", \
+                  &(X), (Y), (Z), __FILE__, __LINE__)); \
      if(!recoveries) break; \
      X.func=(error_call)(Y); \
      X.arg=(void *)(Z); \
@@ -79,7 +85,8 @@ extern int throw_severity;
   }while(0)
 
 #define UNSET_ONERROR(X) do {\
-    fprintf(stderr, "UNSET_ONERROR(%p) %s:%d\n", &(X), __FILE__, __LINE__); \
+    OED_FPRINTF((stderr, "UNSET_ONERROR(%p) %s:%d\n", \
+                 &(X), __FILE__, __LINE__)); \
     if(!recoveries) break; \
     if(recoveries->onerror != &(X)) { \
       if (recoveries->onerror) { \
