@@ -1228,7 +1228,7 @@ void init_image_gif(void)
 
    image_gif_module_program=end_program();
    push_object(clone_object(image_gif_module_program,0));
-   add_constant(make_shared_string("GIF"),sp-1,0);
+   simple_add_constant("GIF",sp-1,0);
    pop_stack();
 }
 

@@ -59,6 +59,8 @@ RCSID("$Id$");
 #include <sys/stat.h>
 #endif /* HAVE_SYS_STAT_H */
 
+#include "dmalloc.h"
+
 /*
  * Functions
  */

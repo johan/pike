@@ -126,6 +126,7 @@ Kerningtable types:
 #include <sys/mman.h>
 #endif
 
+#include "dmalloc.h"
 
 static struct program *font_program;
 extern struct program *image_program;

@@ -56,7 +56,7 @@ struct callback *add_post_master_callback(callback_func call,
 }
 
 
-void main(int argc, char **argv, char **env)
+void dbm_main(int argc, char **argv, char **env)
 {
   JMP_BUF back;
   int e, num;

@@ -64,7 +64,12 @@ static void check_mapping_type_fields(struct mapping *m)
  * struct. The size is the max number of indices that can fit in the
  * allocated space.
  */
-static void init_mapping(struct mapping *m, INT32 size)
+#ifdef DEBUG_MALLOC
+#define init_mapping(X,Y) debug_init_mapping((struct mapping *)debug_malloc_touch(X),Y)
+#else
+#define init_mapping debug_init_mapping
+#endif
+static void debug_init_mapping(struct mapping *m, INT32 size)
 {
   char *tmp;
   INT32 e;
@@ -104,7 +109,7 @@ static void init_mapping(struct mapping *m, INT32 size)
 
 /* This function allocates an empty mapping with room for 'size' values
  */
-struct mapping *allocate_mapping(int size)
+struct mapping *debug_allocate_mapping(int size)
 {
   struct mapping *m;
 

@@ -45,14 +45,16 @@ void image_png__module_value(INT32 args)
 
 void init_image_png(void)
 {
+  struct program *p;
    start_new_program();
    
    add_function("_module_value",image_png__module_value,
 		"function(:object)",0);
 
-   push_object(clone_object(end_program(),0));
-   add_constant(make_shared_string("PNG"),sp-1,0);
+   push_object(clone_object(p=end_program(),0));
+   simple_add_constant("PNG",sp-1,0);
    pop_stack();
+   free_program(p);
 }
 
 void exit_image_png(void)

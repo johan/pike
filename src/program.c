@@ -144,8 +144,7 @@ int find_module_identifier(struct pike_string *ident)
     while(--e>=0)
     {
       push_svalue(modules+e);
-      push_string(ident);
-      ident->refs++;
+      ref_push_string(ident);
       f_index(2);
       
       if(!IS_UNDEFINED(sp-1))
@@ -623,7 +622,7 @@ if((prog->PTRS = areas[AREA].s.len/sizeof(TYPE))) \
   p+=MY_ALIGN(areas[AREA].s.len); \
 }
 
-struct program *end_program(void)
+struct program *debug_end_program(void)
 {
   struct pike_string **names;
   int size, i,e,t;

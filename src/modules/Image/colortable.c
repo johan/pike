@@ -2897,6 +2897,8 @@ static INLINE void _build_cubicle(struct neo_colortable *nct,
 
 #include "colortable_lookup.h"
 
+#include "dmalloc.h"
+
 #undef NCTLU_DESTINATION
 #undef NCTLU_CACHE_HIT_WRITE
 #undef NCTLU_DITHER_GOT

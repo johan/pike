@@ -1,3 +1,4 @@
+
 /* $Id$ */
 
 /*
@@ -2765,14 +2766,16 @@ void image_read_lsb_grey(INT32 args)
 
 #define RGB_TYPE "int|void,int|void,int|void,int|void"
 
-void init_font_programs(void);
-void exit_font(void);
-void init_colortable_programs(void);
-void exit_colortable(void);
-void init_image_gif(void);
-void exit_image_gif(void);
-void init_image_pnm(void);
-void exit_image_pnm(void);
+extern void init_font_programs(void);
+extern void exit_font(void);
+extern void init_colortable_programs(void);
+extern void exit_colortable(void);
+extern void init_image_gif(void);
+extern void exit_image_gif(void);
+extern void init_image_pnm(void);
+extern void exit_image_pnm(void);
+extern void init_image_png(void);
+extern void exit_image_png(void);
 
 void pike_module_init(void)
 {

@@ -81,6 +81,8 @@ RCSID("$Id$");
 
 #include "accesseddb.h"
 
+#include "dmalloc.h"
+
 #define MAX_PARSE_RECURSE 102
 
 void do_html_parse(struct pike_string *ss,

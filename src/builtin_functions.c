@@ -670,6 +670,14 @@ void f_exit(INT32 args)
   exit_modules();
 
   UNSET_ONERROR(tmp);
+
+#ifdef DEBUG_MALLOC
+  {
+    extern cleanup_memhdrs(void);
+    cleanup_memhdrs();
+  }
+#endif
+
   exit(i);
 }
 
