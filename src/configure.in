@@ -2068,7 +2068,6 @@ if test "$cflags_is_set" = "no"; then
     AC_SYS_COMPILER_FLAG_QSUPPRESS(1506-010)
 
     # Tell the linker to generate a large toc if needed
-    # Tell the linker to generate a large toc if needed
     #
     # This option is not needed on AIX 5L/ia64.
     if test "x`uname -p`" = "xia64"; then :; else
