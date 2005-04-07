@@ -347,6 +347,11 @@ AC_DEFUN(AC_SYS_COMPILER_FLAG,
       #
       # icc: Command line remark: option '-W' not supported
       pike_cv_option_$2=no
+    elif grep -i 'illegal option' <conftezt.out.2 >/dev/null; then
+      # cc/Solaris says the following regarding -xdepend:
+      #
+      # cc: Warning: illegal option -xdepend
+      pike_cv_option_$2=no
     else :; fi
     ifelse([$6], , ,[
     if test "$pike_cv_option_$2" = yes; then
@@ -2052,6 +2057,16 @@ if test "$cflags_is_set" = "no"; then
     AC_SYS_COMPILER_FLAG_QINFO(use)
     # AC_SYS_COMPILER_FLAG(-qalias=addr,qalias_addr,OPTIMIZE)    
     # AC_SYS_COMPILER_FLAG(-qlibansi,qlibansi,OPTIMIZE)
+
+    # Suppress warnings and informational messages we aren't interested in.
+    AC_DEFUN(AC_SYS_COMPILER_FLAG_QSUPPRESS, [
+      AC_SYS_COMPILER_FLAG(-qsuppress=$1,
+			   translit([qsuppress_$1],[-:],[__]),
+			   WARN)
+    ])
+    # 1506-010 (W) Macro XX invoked with a null argument for parameter Z.
+    AC_SYS_COMPILER_FLAG_QSUPPRESS(1506-010)
+
     # Tell the linker to generate a large toc if needed
     # Tell the linker to generate a large toc if needed
     #
