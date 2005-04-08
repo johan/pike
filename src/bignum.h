@@ -14,7 +14,7 @@
 
 #define INT_TYPE_SIGN(x)             ((x) < 0)
 
-#if HAVE_NICE_FPU_DIVISION
+#ifdef HAVE_NICE_FPU_DIVISION
 #define INT_TYPE_MUL_OVERFLOW(a, b)  ((b) && ((a)*(b))/(b) != (a))
 #else
 #define INT_TYPE_MUL_OVERFLOW(a, b)                                        \
