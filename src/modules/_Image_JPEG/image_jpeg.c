@@ -222,7 +222,7 @@ static boolean my_jpeg_marker_parser(j_decompress_ptr cinfo)
    mm->next=mds->first_marker;
    mds->first_marker=mm;
 
-   d=mm->data;
+   d = (char *)mm->data;
    while (length--) *(d++)=(char)jpeg_getc(cinfo);
 
    if (mm->id==JPEG_APP0+14)
@@ -1138,7 +1138,7 @@ static void img_jpeg_decode(INT32 args,int mode)
       {
 	 struct my_marker *mm=mds.first_marker;
 	 push_int(mm->id);
-	 push_string(make_shared_binary_string(mm->data,mm->len));
+	 push_string(make_shared_binary_string((char *)mm->data, mm->len));
 	 m++;
 	 mds.first_marker=mm->next;
 	 free(mm);
