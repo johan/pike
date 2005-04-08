@@ -393,7 +393,7 @@ static void f_http_decode_string(INT32 args)
 	 *dest=*(bar++);
        }
    } else {
-     foo = newstr->str;
+     foo = STR0(newstr);
      for (proc=0; bar<end; foo++)
        if (*bar=='%') {
 	 if (bar[1] == 'u' || bar[1] == 'U') {
