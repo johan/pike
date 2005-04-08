@@ -851,7 +851,7 @@ class File
 
     if (!___close_callback) return 0;
 
-#ifdef __NT__
+#ifndef __NT__
     if (!errno() && peek (0)) {
       // There's data to read...
       //
@@ -863,9 +863,9 @@ class File
       ::set_read_callback(0);
       //___close_callback = 0;
     }
-#endif
-
-    else {
+    else
+#endif /* !__NT__ */
+    {
 #ifdef BACKEND_DEBUG
       if (errno())
 	BE_WERR ("  got error " + strerror (errno()) + " from backend");
