@@ -39,7 +39,7 @@ extern size_t pike_type_hash_size;
 #define CDR_TO_INT(TYPE) ((char *) (TYPE)->cdr - (char *) 0)
 
 #include "block_alloc_h.h"
-BLOCK_ALLOC(pike_type, n/a)
+BLOCK_ALLOC(pike_type, n/a);
 
 /* pike_type flags: */
 #define PT_FLAG_MARKER	1	/* Type contains markers. */

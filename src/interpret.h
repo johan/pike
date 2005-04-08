@@ -667,7 +667,7 @@ void print_return_value(void);
 void reset_evaluator(void);
 struct backlog;
 void dump_backlog(void);
-BLOCK_ALLOC(pike_frame,128)
+BLOCK_ALLOC(pike_frame,128);
 
 #ifdef PIKE_USE_MACHINE_CODE
 #if defined(OPCODE_INLINE_BRANCH) || defined(INS_F_JUMP) || \

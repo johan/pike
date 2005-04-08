@@ -108,7 +108,7 @@ extern struct mapping *gc_internal_mapping;
 PMOD_PROTO void really_free_mapping(struct mapping *md);
 
 /* Prototypes begin here */
-BLOCK_ALLOC_FILL_PAGES(mapping, 2)
+BLOCK_ALLOC_FILL_PAGES(mapping, 2);
 
 
 

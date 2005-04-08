@@ -250,7 +250,7 @@ union msnode *debug_check_msnode (
 
 #endif
 
-BLOCK_ALLOC_FILL_PAGES (multiset, 2)
+BLOCK_ALLOC_FILL_PAGES (multiset, 2);
 
 /* See rbtree.h for a description of the operations.
  *

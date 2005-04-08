@@ -693,9 +693,9 @@ static struct memhdr *my_find_memhdr(void *, int);
 
 #include "block_alloc_h.h"
 
-BLOCK_ALLOC_FILL_PAGES(memloc, n/a)
-BLOCK_ALLOC_FILL_PAGES(memory_map, n/a)
-BLOCK_ALLOC_FILL_PAGES(memory_map_entry, n/a)
+BLOCK_ALLOC_FILL_PAGES(memloc, n/a);
+BLOCK_ALLOC_FILL_PAGES(memory_map, n/a);
+BLOCK_ALLOC_FILL_PAGES(memory_map_entry, n/a);
 
 #include "block_alloc.h"
 
