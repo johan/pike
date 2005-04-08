@@ -851,6 +851,7 @@ class File
 
     if (!___close_callback) return 0;
 
+#ifdef __NT__
     if (!errno() && peek (0)) {
       // There's data to read...
       //
@@ -862,6 +863,7 @@ class File
       ::set_read_callback(0);
       //___close_callback = 0;
     }
+#endif
 
     else {
 #ifdef BACKEND_DEBUG
