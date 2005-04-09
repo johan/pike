@@ -7,8 +7,17 @@
 
 #include "global.h"
 #include "config.h"
-#include "machine.h"
 #include "module.h"
+#include "threads.h"
+#include "stralloc.h"
+#include "pike_macros.h"
+#include "object.h"
+#include "constants.h"
+#include "interpret.h"
+#include "svalue.h"
+#include "pike_error.h"
+#include "builtin_functions.h"
+#include "fdlib.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -18,6 +27,13 @@
 #endif /* HAVE_SYS_FILE_H */
 
 #include <errno.h>
+
+/* Some <sys/mman.h>'s (eg AIX 5L/ia64) contain a #define of MAP_VARIABLE
+ * for use as the opposite of MAP_FIXED.
+ *
+ * "program.h" above has a conflicting definition of MAP_VARIABLE.
+ */
+#undef MAP_VARIABLE
 
 #ifdef HAVE_SYS_MMAN_H
 #include <sys/mman.h>
@@ -38,16 +54,6 @@
 
 #include <fcntl.h>
 
-#include "threads.h"
-#include "stralloc.h"
-#include "pike_macros.h"
-#include "object.h"
-#include "constants.h"
-#include "interpret.h"
-#include "svalue.h"
-#include "pike_error.h"
-#include "builtin_functions.h"
-#include "fdlib.h"
 
 #ifndef S_ISREG
 #ifdef S_IFREG
