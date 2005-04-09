@@ -3188,7 +3188,8 @@ static void autoconvert(INT32 args)
 
 	  push_constant_text("Locale.Charset.decoder");
 	  APPLY_MASTER("resolv",1);
-	  push_string(make_shared_binary_string(STR0(s)+encstart,pos-encstart));
+	  push_string(make_shared_binary_string0(STR0(s)+encstart,
+						 pos-encstart));
 	  f_call_function(2);
 	  push_constant_text("feed");
 	  f_index(2);
