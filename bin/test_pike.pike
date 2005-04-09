@@ -460,6 +460,12 @@ int main(int argc, array(string) argv)
       foreach(testsuites, string testsuite) {
 	Stdio.File p = Stdio.File();
 	Stdio.File p2 = p->pipe();
+	if(!p2) {
+	  werror("Failed to create pipe.\n");
+	  if(fail) exit(1);
+	  errors++;
+	  continue;
+	}
 	object pid =
 	  Process.create_process(forked + ({ testsuite }),
 				 ([ "stdout":p2 ]));
