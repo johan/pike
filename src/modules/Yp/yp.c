@@ -38,6 +38,10 @@
 #define sp Pike_sp
 
 #ifdef HAVE_YPERR_STRING
+#ifdef YPERR_STRING_PROTOTYPE_MISSING
+char *yperr_string(int incode);
+#endif /* YPERR_STRING_PROTOTYPE_MISSING */
+
 #define YPERROR(e) do{ if(err) Pike_error("%s\n", yperr_string(e)); }while(0)
 #else /* !HAVE_YPERR_STRING */
 #define YPERROR(e) do{ if(e) Pike_error("YP error %d.\n", (e)); }while(0)

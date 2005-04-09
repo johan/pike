@@ -14,4 +14,7 @@
 /* The last argument to yp_order() is a YP_ORDER_TYPE * */
 #define YP_ORDER_TYPE	unsigned
 
+/* Define if the prototype for yperr_string() is missing. */
+#undef YPERR_STRING_PROTOTYPE_MISSING
+
 #endif
