@@ -1231,11 +1231,9 @@ PIKE_MODULE_INIT {
   add_function("connect",f_connect,
                "function(void|string,void|string,void|string,void|string,int|void:void)",
                0);
-  add_function("error",f_error,"function(void:void|string)",OPT_RETURN);
-  add_function("big_query",f_big_query,"function(string:void|object)",
-               OPT_RETURN);
-  add_function("fetch_row", f_fetch_row,"function(void:void|array(mixed))",
-               OPT_RETURN);
+  add_function("error",f_error,"function(void:void|string)", 0);
+  add_function("big_query",f_big_query,"function(string:void|object)", 0);
+  add_function("fetch_row", f_fetch_row,"function(void:void|array(mixed))", 0);
   add_function("num_fields", f_num_fields, "function(void:int)",0);
   add_function("affected_rows",f_affected_rows,"function(void:int)",0);
   add_function("fetch_fields",f_fetch_fields,
