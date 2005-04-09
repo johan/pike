@@ -2681,7 +2681,7 @@ static void free_obj_arr(void *oa)
 /*! @endclass
  */
 
-static void warn_bad_cycles()
+static void warn_bad_cycles(void)
 {
   /* The reason for the extra level of indirection, is that it might
    * be clobbered by the longjump() in SET_ONERROR otherwise.

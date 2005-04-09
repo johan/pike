@@ -602,7 +602,7 @@ void cpp_func_constant(struct cpp *this, INT32 args)
 
 /* Macro handling. */
 
-static struct mapping *initial_predefs_mapping()
+static struct mapping *initial_predefs_mapping(void)
 {
   struct pike_predef_s *def;
   struct mapping *map = allocate_mapping (0);

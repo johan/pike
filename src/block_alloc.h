@@ -646,7 +646,7 @@ struct DATA *PIKE_CONCAT3(make_,DATA,_unlocked)(void *ptr,		     \
 						PIKE_HASH_T hval);	     \
 LOW_PTR_HASH_ALLOC(DATA,BSIZE)                                               \
                                                                              \
-static void PIKE_CONCAT(DATA,_rehash)()					     \
+static void PIKE_CONCAT(DATA,_rehash)(void)				     \
 {									     \
   /* Time to re-hash */							     \
   extern const INT32 hashprimes[32];					     \
