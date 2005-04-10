@@ -36,10 +36,8 @@ array(string) split(string data, void|mapping state) {
 
   array new = ({});
   for(int i; i<sizeof(r); i++)
-    if(r[i][..2]=="//") {
-      new += ({ r[i]+"\n" });
-      i++;
-    }
+    if(r[i][..1]=="//" && r[i][-1]=='\n')
+      new += ({ r[i][..<1], "\n" });
     else
       new += ({ r[i] });
 
