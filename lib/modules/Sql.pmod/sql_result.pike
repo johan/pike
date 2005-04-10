@@ -26,9 +26,9 @@ static void create(mixed res);
 static string _sprintf(int type, mapping|void flags)
 {
   int f;
-  return type=='O' && sprintf("%O(/* row %d/%d, %d field%s */)",
-			      this_program, index, num_rows(),
-			      f=num_fields(), f>1?"s":"");
+  return type=='O' && master_res && sprintf("%O(/* row %d/%d, %d field%s */)",
+					    this_program, index, num_rows(),
+					    f=num_fields(), f>1?"s":"");
 }
 
 //! Returns the number of rows in the result.
