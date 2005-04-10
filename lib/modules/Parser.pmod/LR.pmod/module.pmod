@@ -9,8 +9,7 @@
 
 #pike __REAL_VERSION__
 
-/*! LALR(1) parser generator
- */
+//! LALR(1) parser generator.
 
 #pragma strict_types
 
