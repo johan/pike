@@ -47,15 +47,15 @@ string emulate_bindings(string query, mapping(string|int:mixed)|void bindings,
   if (!bindings)
     return query;
   function my_quote=(driver&&driver->quote?driver->quote:quote);
-  v=Array.map(values(bindings),
-              lambda(mixed m) {
-		if(multisetp(m)) m = indices(m)[0];
-		return (stringp(m)? "'"+my_quote(m)+"'" : (string)m);
-	      });
+  v=map(values(bindings),
+	lambda(mixed m) {
+	  if(multisetp(m)) m = indices(m)[0];
+	  return (stringp(m)? "'"+my_quote(m)+"'" : (string)m);
+	});
   // Throws if mapping key is empty string.
-  k=Array.map(indices(bindings),lambda(string s){
-				  return ( (stringp(s)&&s[0]==':') ?
-					   s : ":"+s);
-				});
+  k=map(indices(bindings),lambda(string s){
+			    return ( (stringp(s)&&s[0]==':') ?
+				     s : ":"+s);
+			  });
   return replace(query,k,v);
 }
