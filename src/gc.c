@@ -198,7 +198,7 @@ void debug_free_gc_stack_frame (struct gc_stack_frame *f)
     gc_fatal (f->data, 0, "Freeing freed gc_stack_frame.\n");
   f->frameflags |= GC_LINK_FREED;
   f->s_prev = (struct gc_stack_frame *) (ptrdiff_t) -1;
-  if (f->frameflags |= GC_POP_FRAME) {
+  if (f->frameflags & GC_POP_FRAME) {
     struct gc_pop_frame *p = (struct gc_pop_frame *) f;
     p->prev = p->next = (struct gc_pop_frame *)(ptrdiff_t) -1;
   }
