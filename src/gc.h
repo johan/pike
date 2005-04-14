@@ -150,12 +150,12 @@ extern int gc_keep_markers;
   num_objects-- ;							\
 }while(0)
 
-struct gc_frame;
+struct gc_pop_frame;
 
 struct marker
 {
   struct marker *next;
-  struct gc_frame *frame;	/* Pointer into the cycle check stack. */
+  struct gc_pop_frame *frame;	/* Pointer to the cycle check pop frame. */
   void *data;
   INT32 refs;
   /* Internal references (both weak and nonweak). Increased during
