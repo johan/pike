@@ -309,7 +309,7 @@ static function(string:string) get_attr_encoder (string attr)
 	resultstring = 0;
       else if (ldap_version >= 3)
 	resultstring = utf8_to_string (resultstring);
-      DWRITE(sprintf("result.create: str=%s\n",resultstring));
+      DWRITE(sprintf("result.create: str=%O\n",resultstring));
 #ifdef V3_REFERRALS
       // referral (v3 mode)
       if(resultcode == 10) {
@@ -1384,7 +1384,7 @@ object get_default_filter()
 			       Standards.ASN1.Types.asn1_integer(0x7fffffff),
 			       cookie,			// cookie
 			     }))->get_der(),
-			   sizeof(cookie->value)?0:0xff)});
+			   sizeof(cookie->value))});
 	    },);
 	  object controls;
 	  if (sizeof(ctrls)) {
