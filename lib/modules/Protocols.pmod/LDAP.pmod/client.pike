@@ -1087,7 +1087,7 @@ import SSL.Constants;
 		Standards.ASN1.Types.asn1_sequence(({
 						// controlType
 		  Standards.ASN1.Types.asn1_octet_string("1.2.840.113556.1.4.319"),
-		  ASN1_BOOLEAN(sizeof(cookie->value)?0:0xff),	// criticality
+		  ASN1_BOOLEAN(sizeof(cookie->value)),	// criticality
 						// controlValue
 		  Standards.ASN1.Types.asn1_octet_string(
 		    Standards.ASN1.Types.asn1_sequence(({
