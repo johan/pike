@@ -2267,7 +2267,7 @@ static INT32 decode_portable_bytecode(INT32 string_no)
   bytecode = p->strings[string_no];
 
   if (bytecode->len % 3) {
-    Pike_error("Bad bytecode string length: %d (expected multiple of 3).\n",
+    Pike_error("Bad bytecode string length: %"PRINTPTRDIFFT"d (expected multiple of 3).\n",
 	       bytecode->len);
   }
 
@@ -4062,9 +4062,9 @@ static void decode_value2(struct decode_data *data)
 	  if (PIKE_CONCAT(local_num_, NAME) != p->PIKE_CONCAT(num_,NAME)) { \
 	    ref_push_program (p);					\
 	    decode_error(Pike_sp - 1, NULL,				\
-			 "Value mismatch for num_" TOSTR(NAME) ": %d != %d\n", \
-			 PIKE_CONCAT(local_num_, NAME),			\
-			 p->PIKE_CONCAT(num_, NAME));			\
+			 "Value mismatch for num_" TOSTR(NAME) ": %ld != %ld\n", \
+			 (long) PIKE_CONCAT(local_num_, NAME),		\
+			 (long) p->PIKE_CONCAT(num_, NAME));		\
           }
 #include "program_areas.h"
 

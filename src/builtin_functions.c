@@ -1610,7 +1610,7 @@ PMOD_EXPORT void f_utf8_to_string(INT32 args)
 	c = ((unsigned char *)(in->str))[i];				\
 	if ((c & 0xc0) != 0x80)						\
 	  Pike_error ("utf8_to_string: Expected continuation character " \
-		      "at index %d, got 0x%02x.\n", i, c);		\
+		      "at index %"PRINTPTRDIFFT"d, got 0x%02x.\n", i, c); \
       } while (0)
 
 #define UTF8_SEQ_ERROR(prefix, c, i, problem) do {			\
