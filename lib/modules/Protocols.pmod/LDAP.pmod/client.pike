@@ -131,7 +131,7 @@ static function(string:string) get_attr_decoder (string attr,
 #ifdef DEBUG
   else if (!nowarn && !has_suffix (attr, ";binary") && !has_value (attr, ";binary;"))
     werror ("Warning: Couldn't fetch attribute description for %O - "
-	    "binary content assumed.\n%s", attr, describe_backtrace(backtrace()));
+	    "binary content assumed.\n", attr);
 #endif
   return 0;
 }
