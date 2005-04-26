@@ -1016,6 +1016,15 @@ F_FOR(0 = +[node_is_true($$)], -):
 }
 ;
 
+F_FOR(0 = +[node_is_tossable($$)], -):
+{
+  /* CPU-wasting delay loop [bug 3907]. */
+  $$ = mknode(F_FOR, $0, mknode(':',
+				mkefuncallnode("sleep", mkintnode(1)),
+				0));
+}
+;
+
 
 F_FOR(F_INC(0, *), -):
   F_INC_NEQ_LOOP(F_VAL_LVAL(0, $0), -);
