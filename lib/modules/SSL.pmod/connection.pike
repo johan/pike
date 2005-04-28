@@ -314,6 +314,8 @@ string|int got_data(string|int s)
 	alert_callback(packet, current_read_state->seq_num, alert_context);
       if ((!packet) || (!this) || (packet->level == ALERT_fatal))
 	return -1;
+      if (alert_callback)
+	break;
     }
     else
     {
