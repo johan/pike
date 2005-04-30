@@ -46,6 +46,24 @@ AC_HAVE_FUNCS(getwd perror readdir_r statvfs statfs ustat lseek64 lstat fsync \
 
 AC_FUNC_MMAP
 
+AC_MSG_CHECKING(if struct stat has a blocks member)
+AC_CACHE_VAL(pike_cv_struct_stat_blocks, [
+	AC_TRY_COMPILE([
+#include <sys/stat.h>
+], [
+	struct stat s;
+        s.st_blocks = 10;
+        s.st_blksize = 1024;
+],  [pike_cv_struct_stat_blocks=yes],[pike_cv_struct_stat_blocks=no])
+])
+
+if test "$pike_cv_struct_stat_blocks" = "yes"; then
+  AC_MSG_RESULT(yes)
+  AC_DEFINE(HAVE_STRUCT_STAT_BLOCKS)
+else
+  AC_MSG_RESULT(no)
+fi
+
 AC_MSG_CHECKING(if struct iovec is defined)
 AC_CACHE_VAL(pike_cv_struct_iovec, [
   AC_TRY_COMPILE([

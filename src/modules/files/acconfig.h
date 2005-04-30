@@ -26,6 +26,9 @@
 /* Define this if you have a struct iovec */
 #undef HAVE_STRUCT_IOVEC
 
+/* Define this if you have a struct stat with 'blocks' member */
+#undef HAVE_STRUCT_STAT_BLOCKS
+
 /* Define if your statfs() call takes 4 arguments */
 #undef HAVE_SYSV_STATFS
 
