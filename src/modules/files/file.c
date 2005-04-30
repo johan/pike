@@ -66,6 +66,10 @@
 #include <sys/uio.h>
 #endif /* HAVE_SYS_UIO_H */
 
+#ifdef HAVE_SYS_XATTR_H
+#include <sys/xattr.h>
+#endif /* HAVE_SYS_XATTR_H */
+
 #if defined(HAVE_WINSOCK_H) || defined(HAVE_WINSOCK2_H)
 #ifndef EWOULDBLOCK
 #define EWOULDBLOCK WSAEWOULDBLOCK
@@ -2114,7 +2118,6 @@ static void file_stat(INT32 args)
 }
 
 #if defined(HAVE_FSETXATTR) && defined(HAVE_FGETXATTR) && defined(HAVE_FLISTXATTR)
-#include <attr/xattr.h>
 /* All A-OK.*/
 
 /*! @decl array(string) listxattr( )
