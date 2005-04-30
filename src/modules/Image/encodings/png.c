@@ -1079,6 +1079,8 @@ static void img_png_decode(INT32 args,int header_only)
 	  b->item[1].type!=T_STRING ||
 	  b->item[0].u.string->len!=4)
 	 Pike_error("Image.PNG._decode: Illegal stuff in array index %d\n",i);
+#else
+      b = a->item[i].u.array;
 #endif
 
       data = (unsigned char *)b->item[1].u.string->str;
