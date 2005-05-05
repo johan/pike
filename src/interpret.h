@@ -280,6 +280,8 @@ PMOD_EXPORT extern const char msg_pop_neg[];
     _sp_->type=PIKE_T_ARRAY;						\
   }while(0)
 
+#define push_empty_array() ref_push_array(&empty_array)
+
 #define push_multiset(L) do{						\
     struct multiset *_=(L);						\
     struct svalue *_sp_ = Pike_sp++;					\
@@ -300,6 +302,8 @@ PMOD_EXPORT extern const char msg_pop_neg[];
     _sp_->u.string=_;							\
     _sp_->type=PIKE_T_STRING;						\
   }while(0)
+
+#define push_empty_string() ref_push_string(empty_pike_string)
 
 #define push_type_value(S) do{						\
     struct pike_type *_=(S);						\
