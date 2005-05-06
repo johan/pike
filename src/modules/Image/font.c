@@ -536,7 +536,7 @@ void font_write(INT32 args)
 
    if (args==0)
    {
-      push_text("");
+      push_empty_string();
       args=1;
    }
 
@@ -756,7 +756,7 @@ void font_text_extents(INT32 args)
 
   if (args==0)
   {
-     push_text("");
+     push_empty_string();
      args=1;
   }
 

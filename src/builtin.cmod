@@ -1878,7 +1878,7 @@ PIKECLASS Buffer
 	}
       }
     }
-    push_text("");
+    push_empty_string();
     return;
   }
 
@@ -1900,7 +1900,7 @@ PIKECLASS Buffer
       RETURN s;
     }
     pop_n_elems(args);
-    push_text("");
+    push_empty_string();
     return;
   }
 

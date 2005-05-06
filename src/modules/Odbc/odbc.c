@@ -221,12 +221,12 @@ static void f_create(INT32 args)
     }
   }
   if (!user) {
-    push_constant_text("");
+    push_empty_string();
     user = sp[-1].u.string;
     args++;
   }
   if (!pwd) {
-    push_constant_text("");
+    push_empty_string();
     pwd = sp[-1].u.string;
     args++;
   }

@@ -1106,7 +1106,7 @@ static void file_write(INT32 args)
     if (args > 1) {
 #endif /* HAVE_WRITEV */
       ref_push_array(a);
-      push_constant_text("");
+      push_empty_string();
       o_multiply();
       Pike_sp--;
       dmalloc_touch_svalue(Pike_sp);
@@ -2173,7 +2173,7 @@ static void file_listxattr(INT32 args)
   ptr[0]=0;
   push_string( make_shared_binary_string( ptr, 1 ) );
   o_divide();
-  push_text( "" );
+  push_empty_string();
   f_aggregate(1);
   o_subtract();
 

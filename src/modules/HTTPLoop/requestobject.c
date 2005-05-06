@@ -617,7 +617,7 @@ void f_aap_index_op(INT32 args)
       f_index( 2 );
       ref_push_string(s_client);
       f_aap_index_op( 1 );
-      push_constant_text("");
+      push_empty_string();
       f_multiply( 2 );
       apply_svalue( sp-2, 1 );
       push_string(s_supports);

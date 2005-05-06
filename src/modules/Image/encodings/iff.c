@@ -109,7 +109,7 @@ struct pike_string *make_iff(char *id, struct array *chunks)
     if(chunks->size > 1)
       f_add(chunks->size);
   } else
-    push_text("");
+    push_empty_string();
   f_add(2);
   f_aggregate(2);
   res = low_make_iff(&sp[-1]);

@@ -109,7 +109,7 @@ struct group *getgrnam(char *name)
 #define SAFE_PUSH_TEXT(X) do {						\
     char *text_ = (X);							\
     if(text_) push_text(text_);						\
-    else push_constant_text("");					\
+    else push_empty_string();						\
   } while(0)
 
 /*

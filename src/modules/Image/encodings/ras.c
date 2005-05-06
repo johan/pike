@@ -492,7 +492,7 @@ static void img_ras_encode(INT32 args)
     image_colortable_initiate_dither(ct, &dith, img->xsize);
     ctfunc = image_colortable_index_8bit_function(ct);
   } else
-    push_text("");
+    push_empty_string();
 
   if(!rs.ras_depth) {
     INT32 px = img->xsize * img->ysize;

@@ -425,7 +425,7 @@ static void f_fetch_row(INT32 args)
 #endif /* ODBC_DEBUG */
 	    if (!num_strings) {
 	      num_strings++;
-	      push_constant_text("");
+	      push_empty_string();
 	    }
 	    break;
 	  }

@@ -658,9 +658,10 @@ static void mysql__sprintf(INT32 args)
       if (PIKE_MYSQL->mysql->options.use_ssl) {
 	push_text("using SSL");
       }
-      else push_text("");
+      else
+	push_empty_string();
 #else
-      push_text("");
+      push_empty_string();
 #endif /* HAVE_MYSQL_SSL */
 
       f_sprintf(3);

@@ -200,7 +200,7 @@ static void f_listxattr(INT32 args)
   ptr[0]=0;
   push_string( make_shared_binary_string( ptr, 1 ) );
   o_divide();
-  push_text( "" );
+  push_empty_string();
   f_aggregate(1);
   o_subtract();
 
@@ -1031,7 +1031,7 @@ void f_get_dir(INT32 args)
 
   if(!str) {
 #if defined(__amigaos4__)
-    push_constant_text("");
+    push_empty_string();
 #else
     push_constant_text(".");
 #endif

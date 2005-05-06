@@ -135,7 +135,7 @@ static void f_hp_feed( INT32 args )
      */
     if( (spc < 2) && tot_slash_n )
     {
-      push_constant_text( "" );
+      push_empty_string();
       /* This includes (all eventual) \r\n etc. */
       push_text((char *)hp->headers); 
       f_aggregate_mapping( 0 );

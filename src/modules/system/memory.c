@@ -593,7 +593,7 @@ static void memory_cast(INT32 args)
    	 Pike_error(NAME": reading (some) outside allocation\n");	\
    									\
       if (!rlen)							\
-   	 push_text("");							\
+   	 push_empty_string();						\
       else								\
    	 push_string(MAKER((void*)(THIS->p+pos),len));			\
    									\
@@ -828,7 +828,7 @@ static void memory_index(INT32 args)
    else
    {
       if (THIS->size==0)
-	 push_text("");
+	 push_empty_string();
       else
       {
 	 INT_TYPE pos1,pos2;
@@ -840,7 +840,7 @@ static void memory_index(INT32 args)
 	 else rpos2=(size_t)pos2;
 
 	 if (rpos2<rpos1)
-	    push_text("");
+	    push_empty_string();
 	 else
 	    push_string(make_shared_binary_string((char *)THIS->p+rpos1,
 						  rpos2-rpos1+1));
@@ -884,7 +884,7 @@ static void memory_index_write(INT32 args)
    else
    {
       if (THIS->size==0)
-	 push_text("");
+	 push_empty_string();
       else
       {
 	 INT_TYPE pos1,pos2;
