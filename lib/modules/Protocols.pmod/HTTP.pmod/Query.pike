@@ -999,6 +999,8 @@ class PseudoFile
 
       if (len && p+n>len) n=len-p;
 
+      // FIXME? A real file object returns as much data as it has,
+      // not 0.
       if (sizeof(buf)<n && con)
       {
 	 string s=con->read(n-sizeof(buf));
