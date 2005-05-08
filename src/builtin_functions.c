@@ -411,8 +411,8 @@ PMOD_EXPORT void f_copy_value(INT32 args)
 
 struct case_info {
   INT32 low;	/* low end of range. */
-  INT32 mode;
-  INT32 data;
+  INT16 mode;
+  INT16 data;
 };
 
 #define CIM_NONE	0	/* Case-less */
