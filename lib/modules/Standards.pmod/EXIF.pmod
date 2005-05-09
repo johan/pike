@@ -1061,11 +1061,11 @@ static mapping parse_tag(Stdio.File file, mapping tags, mapping exif_info,
       {
   	case "BIAS":
   	  if(long1>0)
-  	    val=sprintf("+%3.1f", long1*1.0/long2);
+  	    tags[tag_name] = sprintf("+%3.1f", long1*1.0/long2);
   	  else if(long1 < 0)
-  	    val=sprintf("-%3.1f", -long1*1.0/long2);
+  	    tags[tag_name] = sprintf("-%3.1f", -long1*1.0/long2);
   	  else
-  	    val = "±0.0";
+  	    tags[tag_name] = "0.0";
   	  break;
   	  
   	case "FLOAT":
