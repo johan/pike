@@ -1320,7 +1320,7 @@ static void img_png_decode(INT32 args,int header_only)
 	    free(w1); 
 	    if (wa1) free(wa1); 
 	    if (ta1) free(ta1); 
-	    if (ta1) free(t1); 
+	    if (t1) free(t1);
 	    Pike_error("Image.PNG._decode: out of memory (close one)\n");
 	 }
 	 /* loop over adam7 interlace's 
