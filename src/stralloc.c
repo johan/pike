@@ -1651,6 +1651,9 @@ PMOD_EXPORT struct pike_string *modify_shared_string(struct pike_string *a,
     if((((unsigned int)index) >= HASH_PREFIX) && (index < a->len-8))
     {
       struct pike_string *old;
+      if (wrong_hash(a)) {
+	Pike_fatal("Broken hash optimization.\n");
+      }
       /* Doesn't change hash value - sneak it in there */
       old = internal_findstring(a->str, a->len, a->size_shift, a->hval);
       if (old) {
@@ -1659,6 +1662,7 @@ PMOD_EXPORT struct pike_string *modify_shared_string(struct pike_string *a,
 	add_ref(a = old);
       } else {
 	link_pike_string(a, a->hval);
+	add_ref(a);
       }
     }else{
       a = end_shared_string(a);
