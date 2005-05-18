@@ -101,7 +101,7 @@ struct source *source_system_memory_make( struct svalue *s,
   res->offset = start;
 
   if( len != -1 )
-    if( len > res->mem->len-start )
+    if( len > (ptrdiff_t) res->mem->len - start )
     {
       sub_ref(res->obj);
       free(res);

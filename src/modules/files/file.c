@@ -188,7 +188,7 @@ static void debug_check_internals (struct my_file *f)
   for (ev = 0; ev < NELEM (f->event_cbs); ev++)
     if (f->event_cbs[ev].type == PIKE_T_INT &&
 	f->box.backend && f->box.events & (1 << ev))
-      Pike_fatal ("Got event flag but no callback for event %d.\n", ev);
+      Pike_fatal ("Got event flag but no callback for event %"PRINTSIZET"d.\n", ev);
 }
 #else
 #define debug_check_internals(f) do {} while (0)

@@ -1835,8 +1835,8 @@ PMOD_EXPORT void f_utf8_to_string(INT32 args)
 	if ((c & 0xc0) != 0x80)						\
 	  bad_arg_error ("utf8_to_string", Pike_sp - args, args, 1,	\
 			 NULL, Pike_sp - args,				\
-			 "Expected continuation character at index %d, " \
-			 "got 0x%02x.\n",				\
+			 "Expected continuation character "		\
+			 "at index %"PRINTPTRDIFFT"d, got 0x%02x.\n",	\
 			 i, c);						\
       } while (0)
 
@@ -1989,7 +1989,8 @@ PMOD_EXPORT void f_utf8_to_string(INT32 args)
   }
 #ifdef PIKE_DEBUG
   if (j != len) {
-    Pike_fatal("utf8_to_string(): Calculated and actual lengths differ: %d != %d\n",
+    Pike_fatal("utf8_to_string(): Calculated and actual lengths differ: "
+	       "%"PRINTPTRDIFFT"d != %"PRINTPTRDIFFT"d\n",
 	  len, j);
   }
 #endif /* PIKE_DEBUG */

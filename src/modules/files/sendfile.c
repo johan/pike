@@ -354,7 +354,7 @@ void low_do_sendfile(struct pike_sendfile *this)
 {
 #if defined(SOL_TCP) && (defined(TCP_CORK) || defined(TCP_NODELAY))
   int old_val = -1;
-  size_t old_len = sizeof(old_val);	/* Might want to use socklen_t here. */
+  socklen_t old_len = (socklen_t) sizeof(old_val);
 #ifdef TCP_CORK
   int new_val = 1;
 #else /* !TCP_CORK */

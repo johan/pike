@@ -998,7 +998,7 @@ again:
       {
 #define FOO(NUMTYPE,TYPE,ARGTYPE,NAME) \
       fprintf(stderr, "%*s* " #NAME " %p[%"PRINTSIZET"u]\n", \
-              indent, "", p->NAME, p->PIKE_CONCAT(num_,NAME));
+	      indent, "", p->NAME, (size_t) p->PIKE_CONCAT(num_,NAME));
 #include "program_areas.h"
       }
 
@@ -1058,7 +1058,7 @@ again:
     {
       struct pike_string *s=(struct pike_string *)a;
       fprintf(stderr,"%*s**size_shift: %d, len: %"PRINTPTRDIFFT"d, hash: %"PRINTSIZET"x\n",
-	      indent,"", s->len, s->size_shift, s->hval);
+	      indent,"", s->size_shift, s->len, s->hval);
       if (!s->size_shift && s->refs > 0) {
 	if(s->len>77)
 	{

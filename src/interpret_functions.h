@@ -2148,7 +2148,7 @@ OPCODE1_JUMP(F_CALL_OTHER_AND_RETURN,"call other & return", I_UPDATE_ALL, {
       Pike_fatal("Function popped too many arguments: %s\n",		 \
 	    s->u.efun->name->str);					 \
     if(Pike_sp>expected_stack+1)					 \
-      Pike_fatal("Function left %d droppings on stack: %s\n",		 \
+      Pike_fatal("Function left %"PRINTPTRDIFFT"d droppings on stack: %s\n", \
            Pike_sp-(expected_stack+1),					 \
 	    s->u.efun->name->str);					 \
     if(Pike_sp == expected_stack && !s->u.efun->may_return_void)	 \
