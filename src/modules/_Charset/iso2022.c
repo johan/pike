@@ -802,6 +802,7 @@ static void eat_enc_string(struct pike_string *str, struct iso2022enc_stor *s,
 	}
 	if (c < 0) {
 	  /* User reserved character. */
+	  /* FIXME: This doesn't work since p_wchar2 is unsigned. */
 	} else
 #ifdef OPTIMIZE_ISO2022
 	/* This optimization breaks on some 2022 decoders,

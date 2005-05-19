@@ -692,7 +692,7 @@ void debug_list_all_threads(void)
     for(s=thread_table_chains[x]; s; s=s->hashlink) {
       struct object *o = THREADSTATE2OBJ(s);
       fprintf(stderr,"ThTab[%d]: state=%p, obj=%p, "
-	      "swapped=%d, sp=%p (%+d), fp=%p, stackbase=%p",
+	      "swapped=%d, sp=%p (%+"PRINTPTRDIFFT"d), fp=%p, stackbase=%p",
 	      x, s, o, s->swapped,
 	      s->state.stack_pointer,
 	      s->state.stack_pointer - s->state.evaluator_stack,

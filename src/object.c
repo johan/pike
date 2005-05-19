@@ -477,7 +477,8 @@ static struct pike_string *low_read_file(const char *file)
 	  }
 	  Pike_fatal("low_read_file(%s) failed, errno=%d\n",file,errno);
 	}
-	Pike_fatal("low_read_file(%s) failed, short read: %d < %d\n",
+	Pike_fatal("low_read_file(%s) failed, short read: "
+		   "%"PRINTPTRDIFFT"d < %"PRINTPTRDIFFT"d\n",
 		   file, pos, len);
       }
       pos+=tmp;

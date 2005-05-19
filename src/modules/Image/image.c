@@ -4727,7 +4727,7 @@ void image__decode( INT32 args )
     w = a->item[0].u.integer;
     h = a->item[1].u.integer;
 
-    if( w*h*sizeof(rgb_group) != a->item[2].u.string->len )
+    if( w*h*(ptrdiff_t) sizeof(rgb_group) != a->item[2].u.string->len )
 	Pike_error("Illegal image data\n");
 
     if( THIS->img )

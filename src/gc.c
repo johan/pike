@@ -535,8 +535,7 @@ void describe_location(void *real_memblock,
 		e, p->constants[e].name ? p->constants[e].name->str : "no name");
 #else /* !0 */
 	fprintf(stderr,"%*s  **In p->constants[%"PRINTPTRDIFFT"d] "
-		"(%"PRINTPTRDIFFT"d)\n",
-		indent,"",
+		"(%"PRINTPTRDIFFT"d)\n",indent,"",
 		e, p->constants[e].offset);
 #endif /* 0 */
 	break;
@@ -1099,7 +1098,7 @@ again:
       {
 #define FOO(NUMTYPE,TYPE,ARGTYPE,NAME) \
       fprintf(stderr, "%*s* " #NAME " %p[%"PRINTSIZET"u]\n", \
-              indent, "", p->NAME, (size_t)p->PIKE_CONCAT(num_,NAME));
+	      indent, "", p->NAME, (size_t)p->PIKE_CONCAT(num_,NAME));
 #include "program_areas.h"
       }
 

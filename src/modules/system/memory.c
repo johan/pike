@@ -672,7 +672,7 @@ static void copy_reverse_string1_to_2(unsigned char *d,
      struct pike_string *ps;						\
      ps = begin_wide_shared_string(len, N);				\
      PIKE_CONCAT(copy_reverse_string, N)				\
-       (PIKE_CONCAT(STR, N)(ps), s, len);				\
+       ((unsigned char *) PIKE_CONCAT(STR, N)(ps), s, len);		\
      return end_shared_string(ps);					\
    }
 

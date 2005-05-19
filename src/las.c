@@ -642,7 +642,7 @@ void free_all_nodes(void)
 	}
 #ifdef PIKE_DEBUG
 	if(!cumulative_parse_error)
-	  Pike_fatal("Failed to free %d nodes when compiling!\n",e2);
+	  Pike_fatal("Failed to free %"PRINTSIZET"d nodes when compiling!\n",e2);
 #endif
       }
 #ifndef PIKE_DEBUG

@@ -2190,7 +2190,8 @@ PMOD_EXPORT void f_utf8_to_string(INT32 args)
 
 #ifdef PIKE_DEBUG
   if (j != len) {
-    Pike_fatal("utf8_to_string(): Calculated and actual lengths differ: %d != %d\n",
+    Pike_fatal("utf8_to_string(): Calculated and actual lengths differ: "
+	       "%"PRINTPTRDIFFT"d != %"PRINTPTRDIFFT"d\n",
 	  len, j);
   }
 #endif /* PIKE_DEBUG */

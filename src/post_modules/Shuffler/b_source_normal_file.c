@@ -37,7 +37,7 @@ struct fd_source
   off_t len;
 };
 
-static struct data get_data( struct source *_s, off_t len )
+static struct data get_data( struct source *_s, int len )
 {
   struct fd_source *s = (struct fd_source *)_s;
   struct data res;
@@ -61,7 +61,7 @@ static struct data get_data( struct source *_s, off_t len )
 
   res.len = rr;
 
-  if( rr<0 || (unsigned)rr < len )
+  if( rr<0 || rr < len )
     s->s.eof = 1;
   return res;
 }

@@ -702,7 +702,7 @@ ISWRAP(isHexChar)
 #ifdef PIKE_DEBUG
 #define CHECK_INPUT(INPUT) do {					\
     if ((INPUT).len < 0) {					\
-      Pike_fatal("Negative input length: %d\n", (INPUT).len);	\
+      Pike_fatal("Negative input length: %"PRINTPTRDIFFT"d\n", (INPUT).len); \
     }								\
   } while(0)
 #else /* !PIKE_DEBUG */
