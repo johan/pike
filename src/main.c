@@ -93,7 +93,7 @@ static char master_location[MAXPATHLEN * 2] = MASTER_COOKIE;
 static void set_master(const char *file)
 {
   if (strlen(file) >= MAXPATHLEN*2 - CONSTANT_STRLEN(MASTER_COOKIE)) {
-    fprintf(stderr, "Too long path to master: \"%s\" (limit:%d)\n",
+    fprintf(stderr, "Too long path to master: \"%s\" (limit:%"PRINTPTRDIFFT"d)\n",
 	    file, MAXPATHLEN*2 - CONSTANT_STRLEN(MASTER_COOKIE));
     exit(1);
   }
