@@ -827,12 +827,12 @@ PIKECLASS Backend
 
   /* An array indexed on fd with arbitrary upper and lower bounds. A
    * lower bould is used to cut down the size for backends that
+   * handle a single or only a few fd's. */
 #ifdef _REENTRANT
   /* FIXME: Ought to be CVARS. */
   static int set_busy;
   static COND_T set_change;
 #endif
-   * handle a single or only a few fd's. */
   CVAR struct fd_callback_box **fd_boxes;
   CVAR int fd_boxes_start, fd_boxes_size;
 
