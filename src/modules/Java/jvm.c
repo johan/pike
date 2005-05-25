@@ -3604,6 +3604,11 @@ PIKE_MODULE_INIT
   }
 #endif
 
+  /* Restore any signal handlers that may have been zapped
+   * when the jvm was loaded.
+   */
+  low_init_signals();
+
   start_new_program();
   ADD_STORAGE(struct jobj_storage);
   ADD_FUNCTION("cast", f_jobj_cast, tFunc(tStr,tMix), 0);
