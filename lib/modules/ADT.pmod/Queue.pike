@@ -99,5 +99,5 @@ static mixed cast(string to) {
 }
 
 static string _sprintf(int t) {
-  return t=='O' && sprintf("%O%O", this_program, cast("array"));
+  return t=='O' && l && sprintf("%O%O", this_program, cast("array"));
 }
