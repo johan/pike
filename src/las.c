@@ -3488,7 +3488,9 @@ void fix_type_field(node *n)
 	 *	/grubba 2005-02-15
 	 */
 	if (((CDR(n)->token != F_INDEX && CDR(n)->token != F_ARROW) ||
-	     !match_types(array_type_string, CADR(n)->type)) &&
+	     !((TEST_COMPAT (7, 6) && /* Bug compatibility. */
+		match_types(array_type_string, CDR(n)->type)) ||
+	       match_types(array_type_string, CADR(n)->type))) &&
 	    !match_types(CDR(n)->type,CAR(n)->type)) {
 	  yytype_error("Bad type in assignment.",
 		       CDR(n)->type, CAR(n)->type, 0);
