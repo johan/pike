@@ -4619,6 +4619,8 @@ void f_atexit(INT32 args)
  */
 PMOD_EXPORT void low_init_signals(void)
 {
+  int e;
+
   /* SIGCHLD */
 #ifdef USE_SIGCHILD
   my_signal(SIGCHLD, receive_sigchild);
