@@ -477,4 +477,6 @@ array lookup(int suite,int version)
   return ({ ke_method, res });
 }
 
-#endif // constant(Crypto.Hash)
+#else // constant(Crypto.Hash)
+constant this_program_does_not_exist = 1;
+#endif
