@@ -299,7 +299,7 @@ int(-1..0) reply_new_session(array(int) cipher_suites,
       struct->put_var_string(cert, 3);
     send_packet(handshake_packet(HANDSHAKE_certificate, struct->pop_data()));
   }
-  else if (context->cipher_spec->sign != .Cipher.anon_sign)
+  else if (session->cipher_spec->sign != .Cipher.anon_sign)
     // Otherwise the server will just silently send an invalid
     // ServerHello sequence.
     error ("Certificate(s) missing.\n");
