@@ -2345,7 +2345,10 @@ static void f_natives_create(INT32 args)
   }
 
   if((env = jvm_procure_env(c->jvm))) {
-    if (n->jnms) free(n->jnms);
+    if (n->jnms) {
+      free(n->jnms);
+      n->jnms = NULL;
+    }
     n->jnms = (JNINativeMethod *)
       xalloc(arr->size * sizeof(JNINativeMethod));
 
