@@ -469,7 +469,7 @@ static char *raw_lfun_types[] = {
  *!   Right side addition/concatenation callback.
  *!
  *!   This is used by @[predef::`+]. It's called with any arguments
- *!   that precedes this object in the argument list of the call to
+ *!   that precede this object in the argument list of the call to
  *!   @[predef::`+]. The returned value should be a new instance that
  *!   represents the addition/concatenation between the arguments in
  *!   the order they are given and this object.
@@ -3104,9 +3104,11 @@ struct program *end_first_pass(int finish)
     }
 
 #ifdef PIKE_DEBUG
-    check_program(prog);
-    if(l_flag)
-      dump_program_desc(prog);
+    if (prog) {
+      check_program(prog);
+      if(l_flag)
+	dump_program_desc(prog);
+    }
 #endif
   }
 
