@@ -7,8 +7,12 @@
 
 /* Who needs templates anyway? / Hubbe */
 
+#ifndef BAR
+#define BAR(NUMTYPE, TYPE, ARGTYPE, NAME) FOO(NUMTYPE, TYPE, ARGTYPE, NAME)
+#endif /* !BAR */
+
 /* Program *must* be first! */
-FOO(size_t,PIKE_OPCODE_T, PIKE_OPCODE_T, program)
+BAR(size_t,PIKE_OPCODE_T, PIKE_OPCODE_T, program)
 FOO(size_t,size_t, size_t, relocations)
 FOO(size_t,char, int, linenumbers)
 FOO(unsigned INT16,unsigned INT16, unsigned, identifier_index)
@@ -19,3 +23,4 @@ FOO(unsigned INT16,struct inherit, struct inherit, inherits)
 FOO(unsigned INT16,struct identifier, struct identifier, identifiers)
 FOO(unsigned INT16,struct program_constant, struct program_constant, constants)
 #undef FOO
+#undef BAR
