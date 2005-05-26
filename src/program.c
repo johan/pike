@@ -3151,9 +3151,11 @@ struct program *end_first_pass(int finish)
     }
 
 #ifdef PIKE_DEBUG
-    check_program(prog);
-    if(l_flag)
-      dump_program_desc(prog);
+    if (prog) {
+      check_program(prog);
+      if(l_flag)
+	dump_program_desc(prog);
+    }
 #endif
   }
 
