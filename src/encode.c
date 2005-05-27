@@ -1022,7 +1022,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 	/* Type 1 -- Old-style encoding. */
 
 	code_entry(TAG_PROGRAM, 1, data);
-	f_version(0);
+	push_compact_version();
 	encode_value2(Pike_sp-1,data, 0);
 	pop_stack();
 	code_number(p->flags,data);
@@ -1174,7 +1174,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 	code_number(p->flags,data);
 
 	/* version */
-	f_version(0);
+	push_compact_version();
 	encode_value2(Pike_sp-1, data, 0);
 	pop_stack();
 
@@ -2845,7 +2845,7 @@ static void decode_value2(struct decode_data *data)
 	    SET_ONERROR(err4, zap_placeholder, placeholder);
 
 	  decode_value2(data);
-	  f_version(0);
+	  push_compact_version();
 	  if(!is_eq(Pike_sp-1,Pike_sp-2))
 	    Pike_error("Cannot decode programs encoded with other pike version.\n");
 	  pop_n_elems(2);
@@ -3498,7 +3498,7 @@ static void decode_value2(struct decode_data *data)
 
 	  /* Check the version. */
 	  decode_value2(data);
-	  f_version(0);
+	  push_compact_version();
 	  if(!is_eq(Pike_sp-1,Pike_sp-2))
 	    Pike_error("Cannot decode programs encoded with other pike version.\n");
 	  pop_n_elems(2);

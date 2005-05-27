@@ -11,4 +11,5 @@
 
 /* Prototypes begin here */
 void f_version(INT32 args);
+void push_compact_version();
 /* Prototypes end here */
