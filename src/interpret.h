@@ -355,6 +355,12 @@ PMOD_EXPORT extern const char msg_pop_neg[];
     _sp_->type=PIKE_T_STRING;						\
   }while(0)
 
+#define push_constant_string_code(STR, CODE) do{			\
+    struct pike_string *STR;						\
+    REF_MAKE_CONST_STRING_CODE (STR, CODE);				\
+    push_string (STR);							\
+  }while(0)
+
 #define push_function(OBJ, FUN) do {					\
     struct object *_=(OBJ);						\
     struct svalue *_sp_ = Pike_sp++;					\
