@@ -54,6 +54,10 @@ RCSID("$Id$");
 
 /* Mac OS X interface is defined in <dns_sd.h> */
 #ifdef HAVE_DNS_SD_H
+
+/* Workaround for typo in 10.3 header (which 10.4 doesn't preserve) */
+#define kDNSServiceErr_BadinterfaceIndex kDNSServiceErr_BadInterfaceIndex
+
 #include <dns_sd.h>
 #endif
 
@@ -64,11 +68,6 @@ struct service {
   DNSServiceRef  service_ref;
 };
 
-
-/* Workaround for 10.4 header changes */
-#if !defined(kDNSServiceErr_BadinterfaceIndex)
-#  define kDNSServiceErr_BadinterfaceIndex kDNSServiceErr_BadInterfaceIndex
-#endif
 
 static void raise_error(char *msg, DNSServiceErrorType err)
 {
@@ -111,7 +110,7 @@ static void raise_error(char *msg, DNSServiceErrorType err)
   case kDNSServiceErr_Incompatible:
     reason = "Incompatible";
     break;
-  case kDNSServiceErr_BadinterfaceIndex:
+  case kDNSServiceErr_BadInterfaceIndex:
     reason = "Bad interface index";
     break;
   default:
