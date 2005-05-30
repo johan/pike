@@ -357,7 +357,7 @@ char *debug_qalloc(size_t size)
  * Allocation of executable memory.
  */
 
-#ifdef HAVE_MMAP
+#if defined(HAVE_MMAP) && defined(MEXEC_USES_MMAP)
 #ifndef PAGESIZE
 #define PAGESIZE	8192
 #endif /* !PAGESIZE */
@@ -635,7 +635,7 @@ void mexec_free(void *ptr)
 {
   free(ptr);
 }
-#endif /* HAVE_MMAP */
+#endif /* HAVE_MMAP && MEXEC_USES_MMAP */
 
 /* #define DMALLOC_TRACE */
 /* #define DMALLOC_TRACELOGSIZE	256*1024 */
