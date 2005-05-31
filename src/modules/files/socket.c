@@ -344,7 +344,7 @@ static void unix_bind(INT32 args)
 
   do_close(p);
 
-  get_all_args("Port->bind_unix", args, "%s.%*", &path, &cb);
+  get_all_args("Port->bind_unix", args, "%n%*", &path, &cb);
 
   tmp = sizeof(addr.sun_path);
 
