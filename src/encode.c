@@ -2904,6 +2904,10 @@ static void decode_value2(struct decode_data *data)
 
 	  if(data->pass == 1)
 	  {
+#ifdef PIKE_USE_MACHINE_CODE
+  /* We want our program to be in mexec-allocated memory... */
+#define BAR(NUMTYPE,TYPE,ARGTYPE,NAME)
+#endif /* PIKE_USE_MACHINE_CODE */ 
 #define FOO(NUMTYPE,TYPE,ARGTYPE,NAME) \
           size=DO_ALIGN(size, ALIGNOF(TYPE)); \
           size+=p->PIKE_CONCAT(num_,NAME)*sizeof(p->NAME[0]);
@@ -2913,6 +2917,12 @@ static void decode_value2(struct decode_data *data)
 	    debug_malloc_touch(dat);
 	    MEMSET(dat,0,size);
 	    size=0;
+#ifdef PIKE_USE_MACHINE_CODE
+  /* We want our program to be in mexec-allocated memory... */
+#define BAR(NUMTYPE,TYPE,ARGTYPE,NAME)					\
+          p->NAME = (TYPE *)mexec_alloc(p->PIKE_CONCAT(num_, NAME) *	\
+					sizeof(p->NAME[0]));
+#endif /* PIKE_USE_MACHINE_CODE */ 
 #define FOO(NUMTYPE,TYPE,ARGTYPE,NAME) \
 	  size=DO_ALIGN(size, ALIGNOF(TYPE)); \
           p->NAME=(TYPE *)(dat+size); \
