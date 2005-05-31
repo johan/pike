@@ -361,8 +361,8 @@ char *debug_qalloc(size_t size)
 #endif /* !PAGESIZE */
 #if 0
 #define MEXEC_MAGIC	0xdeadfeedf00dfaddLL
-static int dev_zero = -1;
 #endif /* 0 */
+static int dev_zero = -1;
 struct mexec_block {
   struct mexec_block *next;
   size_t size;
