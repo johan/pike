@@ -342,7 +342,7 @@ static void f_removexattr( INT32 args )
 #define SETXATTR(PATH, NAME, BUF, SZ, FL)	setxattr(PATH, NAME, BUF, SZ, 0, FL)
 #define LSETXATTR(PATH, NAME, BUF, SZ, FL)	setxattr(PATH, NAME, BUF, SZ, 0, (FL)|XATTR_NOFOLLOW)
 #else
-#define SETTXATTR(PATH, NAME, BUF, SZ, FL)	setxattr(PATH, NAME, BUF, SZ, FL)
+#define SETXATTR(PATH, NAME, BUF, SZ, FL)	setxattr(PATH, NAME, BUF, SZ, FL)
 #define LSETXATTR(PATH, NAME, BUF, SZ, FL)	lsetxattr(PATH, NAME, BUF, SZ, FL)
 #endif /* !HAVE_DARWIN_XATTR */
 
