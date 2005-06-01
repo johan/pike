@@ -4443,7 +4443,9 @@ static INT32 my_decode(struct pike_string *tmp,
 
   add_ref (data->data_str);
   add_ref (data->codec);
+#ifdef PIKE_THREADS
   add_ref (data->thread_obj);
+#endif
   SET_ONERROR(err, error_free_decode_data, data);
 
 #if TWO_PASS_DECODE_WORKS
