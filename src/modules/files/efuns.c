@@ -227,7 +227,7 @@ static void f_listxattr(INT32 args)
 #define GETXATTR(PATH, NAME, BUF, SZ)	getxattr(PATH, NAME, BUF, SZ, 0, 0)
 #define LGETXATTR(PATH, NAME, BUF, SZ)	getxattr(PATH, NAME, BUF, SZ, 0, XATTR_NOFOLLOW)
 #else
-#define GETTXATTR(PATH, NAME, BUF, SZ)	getxattr(PATH, NAME, BUF, SZ)
+#define GETXATTR(PATH, NAME, BUF, SZ)	getxattr(PATH, NAME, BUF, SZ)
 #define LGETXATTR(PATH, NAME, BUF, SZ)	lgetxattr(PATH, NAME, BUF, SZ)
 #endif /* !HAVE_DARWIN_XATTR */
 
