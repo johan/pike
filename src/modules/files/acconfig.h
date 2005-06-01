@@ -62,6 +62,9 @@
 /* Define if your readdir_r is HPUX compatible. */
 #undef HAVE_HPUX_READDIR_R
 
+/* Define if you have Darwin/MacOSX style xattr */
+#undef HAVE_DARWIN_XATTR
+
 /* Define if you have strerror.  */
 #undef HAVE_STRERROR
 
