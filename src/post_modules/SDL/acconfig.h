@@ -16,6 +16,8 @@
 
 #undef HAVE_SDL
 
+#undef HAVE_SDL_SDL_H
+
 # if defined(HAVE_LIBSDL_MIXER) && (defined(HAVE_SDL_MIXER_H) || defined(HAVE_SDL_SDL_MIXER_H))
 #  define HAVE_SDL_MIXER
 # endif
