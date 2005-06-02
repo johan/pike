@@ -71,6 +71,22 @@ pushdef([AC_PROG_CC],
   fi
 ])
 
+define([ORIG_AC_FUNC_MMAP], defn([AC_FUNC_MMAP]))
+define([AC_FUNC_MMAP], [
+  if_autoconf(2,50,[],[
+    cat >>confdefs.h <<\EOF
+/* KLUDGE for broken prototype in the autoconf 1.13 version of the test. */
+char *my_malloc(unsigned long sz) { return malloc(sz); } /* KLUDGE */
+#define malloc	my_malloc	/* KLUDGE */
+EOF
+  ])
+  ORIG_AC_FUNC_MMAP
+  if_autoconf(2,50,[],[
+    sed -e '/\/\* KLUDGE /d' <confdefs.h >confdefs.h.tmp
+    mv confdefs.h.tmp confdefs.h
+  ])
+])
+
 dnl option, descr, with, without, default
 define([MY_AC_ARG_WITH], [
   AC_ARG_WITH([$1], [$2], [
@@ -172,7 +188,7 @@ define([ORIG_CHECK_HEADERS], defn([AC_CHECK_HEADERS]))
 pushdef([AC_CHECK_HEADERS],
 [
   if test "x$enable_binary" != "xno"; then
-    ORIG_CHECK_HEADERS($1,$2,$3,$4)
+    ORIG_CHECK_HEADERS($1,$2,$3,$4,$5)
   else
     for ac_hdr in $1
     do
