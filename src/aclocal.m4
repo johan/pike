@@ -76,6 +76,7 @@ define([AC_FUNC_MMAP], [
   if_autoconf(2,50,[],[
     cat >>confdefs.h <<\EOF
 /* KLUDGE for broken prototype in the autoconf 1.13 version of the test. */
+#include <stdlib.h> /* KLUDGE */
 char *my_malloc(sz) unsigned long sz; { return malloc(sz); } /* KLUDGE */
 #define malloc	my_malloc	/* KLUDGE */
 EOF
