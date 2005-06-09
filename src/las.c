@@ -559,7 +559,7 @@ static node *freeze_node(node *orig)
 
 void free_all_nodes(void)
 {
-  if(!Pike_compiler->compiler_frame)
+  if(!Pike_compiler->previous)
   {
     node *tmp;
     struct node_s_block *tmp2;
