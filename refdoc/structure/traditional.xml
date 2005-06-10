@@ -127,6 +127,9 @@
     </chapter>
   </file>
   <file>
+    <chapter-ref file="chapters/compatibility.xml"/>
+  </file>
+  <file>
     <chapter-ref file="chapters/modules.xml"/>
   </file>
   <file>
