@@ -2483,6 +2483,17 @@ fi
 #Restore preprocessor warning sensitivity
 ac_c_preproc_warn_flag="$OLD_ac_c_preproc_warn_flag"
 
+extra_abi_dirs=""
+if type isainfo 2>/dev/null >/dev/null; then
+  # Solaris
+  # Some installations lack the symlink 64 -> amd64 or sparcv9,
+  # or the corresponding 32 link.
+  extra_abi_dirs=`isainfo -v 2>/dev/null|awk "/$with_abi"'-bit/ { print $2 }'`
+  if "x$extra_abi_dirs" = "x"; then :; else
+    extra_abi_dirs="/$extra_abi_dirs"
+  fi
+fi
+
 echo Searching for library directories...
 if test $ldflags_is_set = no ; then
   for dd in `echo ${with_lib_path} | sed 's/:/ /g'` \
@@ -2497,7 +2508,7 @@ if test $ldflags_is_set = no ; then
   do
     if test "$dd" = "/lib"; then continue; fi
     if test "$dd" = "/usr/lib"; then continue; fi
-    for suff in "$with_abi" "/$with_abi" ""; do
+    for suff in "$with_abi" "/$with_abi" $extra_abi_dirs ""; do
       d="$dd$suff"
       AC_MSG_CHECKING($d)
       if test -d "$d/." ; then
