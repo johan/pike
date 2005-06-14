@@ -358,7 +358,7 @@ AC_DEFUN(AC_SYS_COMPILER_FLAG,
         pike_cv_option_$2=no
       else :; fi
       if test -f conftezt.out.2; then
-        cat conftezt.out.2 >&2
+        cat conftezt.out.2 >&AC_FD_CC
       fi
       ifelse([$6], , , [
       if test "$pike_cv_option_$2" = yes; then
@@ -2489,7 +2489,7 @@ if type isainfo 2>/dev/null >/dev/null; then
   # Some installations lack the symlink 64 -> amd64 or sparcv9,
   # or the corresponding 32 link.
   extra_abi_dirs=`isainfo -v 2>/dev/null|awk "/$with_abi"'-bit/ { print $2 }'`
-  if "x$extra_abi_dirs" = "x"; then :; else
+  if test "x$extra_abi_dirs" = "x"; then :; else
     extra_abi_dirs="/$extra_abi_dirs"
   fi
 fi
