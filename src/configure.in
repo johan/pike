@@ -432,6 +432,9 @@ case "x$with_abi" in
       xx86_64)
 	with_abi="64"
       ;;
+      xalpha)
+	with_abi="64"
+      ;;
     esac
     if type isainfo 2>/dev/null >/dev/null; then
       # Solaris
@@ -2516,12 +2519,12 @@ if test $ldflags_is_set = no ; then
         for f in "$d"/* no; do
 	  if test -f "$f"; then
 	    filetype=`file "$f" 2>/dev/null | sed -e 's/.*://'`
-	    if echo "$filetype" | grep "$with_abi" >/dev/null; then
+	    if echo "$filetype" | grep "$with_abi-bit" >/dev/null; then
 	      bad_abi="";
 	      break;
-	    elif echo "$filetype" | grep "32" >/dev/null; then
+	    elif echo "$filetype" | grep "32-bit" >/dev/null; then
 	      bad_abi=32;
-	    elif echo "$filetype" | grep "64" >/dev/null; then
+	    elif echo "$filetype" | grep "64-bit" >/dev/null; then
 	      bad_abi=64;
 	    fi
 	  fi
