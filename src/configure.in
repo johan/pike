@@ -456,11 +456,11 @@ if test "x$with_abi" = "x64"; then
   #
   # We want 64bit mode if possible.
   #
-  AC_SYS_COMPILER_FLAG(-q64, q64, CPPFLAGS)
-  AC_SYS_COMPILER_FLAG(-m64, m64, CPPFLAGS)
+  AC_SYS_COMPILER_FLAG(-q64, q64, CPPFLAGS,,LDFLAGS="$LDFLAGS -q64")
+  AC_SYS_COMPILER_FLAG(-m64, m64, CPPFLAGS,,LDFLAGS="$LDFLAGS -m64")
   if test "$pike_cv_option_q64:$pike_cv_option_m64" = "no:no"; then
-    AC_SYS_COMPILER_FLAG(-q32, q32, CPPFLAGS)
-    AC_SYS_COMPILER_FLAG(-m32, m32, CPPFLAGS)
+    AC_SYS_COMPILER_FLAG(-q32, q32, CPPFLAGS,,LDFLAGS="$LDFLAGS -q32")
+    AC_SYS_COMPILER_FLAG(-m32, m32, CPPFLAGS,,LDFLAGS="$LDFLAGS -m32")
     if test "$pike_cv_option_q32:$pike_cv_option_m32" = "no:no"; then
       AC_MSG_WARN([Found no option to force 64 bit ABI.])
     else
@@ -472,11 +472,11 @@ else
   #
   # Try to force 32bit mode.
   #
-  AC_SYS_COMPILER_FLAG(-q32, q32, CPPFLAGS)
-  AC_SYS_COMPILER_FLAG(-m32, m32, CPPFLAGS)
+  AC_SYS_COMPILER_FLAG(-q32, q32, CPPFLAGS,,LDFLAGS="$LDFLAGS -q32")
+  AC_SYS_COMPILER_FLAG(-m32, m32, CPPFLAGS,,LDFLAGS="$LDFLAGS -m32")
   if test "$pike_cv_option_q32:$pike_cv_option_m32" = "no:no"; then
-    AC_SYS_COMPILER_FLAG(-q64, q64, CPPFLAGS)
-    AC_SYS_COMPILER_FLAG(-m64, m64, CPPFLAGS)
+    AC_SYS_COMPILER_FLAG(-q64, q64, CPPFLAGS,,LDFLAGS="$LDFLAGS -q64")
+    AC_SYS_COMPILER_FLAG(-m64, m64, CPPFLAGS,,LDFLAGS="$LDFLAGS -m64")
     if test "$pike_cv_option_q64:$pike_cv_option_m64" = "no:no"; then
       AC_MSG_WARN([Found no option to force 32 bit ABI.])
     else
