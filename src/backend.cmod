@@ -3399,6 +3399,11 @@ PIKECLASS Backend
 	if (fd_map[e] == me) fd_map[e] = NULL;
       }
 
+#ifdef BACKEND_USES_KQUEUE
+    unregister_backend(me);
+    fd_close(THIS->set);
+#endif /* BACKEND_USES_KQUEUE */
+
 #ifdef HAVE_POLL
 #ifdef BACKEND_USES_POLL_DEVICE
       unregister_backend(me);
@@ -3419,7 +3424,7 @@ PIKECLASS Backend
 #endif
 #endif /* HAVE_POLL */
 
-      /* CALL OUT */
+     /* CALL OUT */
       backend_verify_call_outs(me);
       for(e=0;e<me->num_pending_calls;e++)
       {
