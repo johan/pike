@@ -31,6 +31,16 @@
 #include <gmp.h>
 #endif /* USE_GMP2 */
 
+#ifdef PIKE_GMP_LIMB_BITS_INVALID
+/* Attempt to repair the header file... */
+#undef GMP_LIMB_BITS
+#define GMP_LIMB_BITS (SIZEOF_MP_LIMB_T * CHAR_BIT)
+#ifdef PIKE_GMP_NUMB_BITS
+#undef GMP_NUMB_BITS
+#define GMP_NUMB_BITS PIKE_GMP_NUMB_BITS
+#endif /* PIKE_GMP_NUMB_BITS */
+#endif /* PIKE_GMP_LIMB_BITS_INVALID */
+
 #ifndef mpz_odd_p
 #define mpz_odd_p(z)   ((int) ((z)->_mp_size != 0) & (int) (z)->_mp_d[0])
 #endif

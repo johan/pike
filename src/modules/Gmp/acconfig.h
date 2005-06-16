@@ -56,4 +56,10 @@
 /* Define if mpz_set_si works for LONG_MIN. */
 #undef MPZ_SET_SI_WORKS
 
+/* Define if GMP_LIMB_BITS lies. */
+#undef PIKE_GMP_LIMB_BITS_INVALID
+
+/* Define to the actual number of numb bits if known. */
+#undef PIKE_GMP_NUMB_BITS
+
 #endif
