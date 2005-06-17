@@ -458,10 +458,12 @@ if test "x$with_abi" = "x64"; then
   #
   AC_SYS_COMPILER_FLAG(-q64, q64, CC)
   AC_SYS_COMPILER_FLAG(-m64, m64, CC)
-  if test "$pike_cv_option_q64:$pike_cv_option_m64" = "no:no"; then
+  AC_SYS_COMPILER_FLAG(-xtarget=generic64, xtarget_generic64, CC)
+  if test "$pike_cv_option_q64:$pike_cv_option_m64:pike_cv_option_xtarget_generic64" = "no:no:no"; then
     AC_SYS_COMPILER_FLAG(-q32, q32, CC)
     AC_SYS_COMPILER_FLAG(-m32, m32, CC)
-    if test "$pike_cv_option_q32:$pike_cv_option_m32" = "no:no"; then
+    AC_SYS_COMPILER_FLAG(-xtarget=generic32, xtarget_generic32, CC)
+    if test "$pike_cv_option_q32:$pike_cv_option_m32:$pike_cv_option_xtarget_generic32" = "no:no:no"; then
       AC_MSG_WARN([Found no option to force 64 bit ABI.])
     else
       AC_MSG_WARN([$CC does not support 64 bit ABI.])
@@ -474,10 +476,12 @@ else
   #
   AC_SYS_COMPILER_FLAG(-q32, q32, CC)
   AC_SYS_COMPILER_FLAG(-m32, m32, CC)
-  if test "$pike_cv_option_q32:$pike_cv_option_m32" = "no:no"; then
+  AC_SYS_COMPILER_FLAG(-xtarget=generic32, xtarget_generic32, CC)
+  if test "$pike_cv_option_q32:$pike_cv_option_m32:$pike_cv_option_xtarget_generic32" = "no:no:no"; then
     AC_SYS_COMPILER_FLAG(-q64, q64, CC)
     AC_SYS_COMPILER_FLAG(-m64, m64, CC)
-    if test "$pike_cv_option_q64:$pike_cv_option_m64" = "no:no"; then
+    AC_SYS_COMPILER_FLAG(-xtarget=generic64, xtarget_generic64, CC)
+    if test "$pike_cv_option_q64:$pike_cv_option_m64:$pike_cv_option_xtarget_generic64" = "no:no:no"; then
       AC_MSG_WARN([Found no option to force 32 bit ABI.])
     else
       AC_MSG_WARN([$CC does not support 32 bit ABI.])
@@ -2110,7 +2114,12 @@ if test "$cflags_is_set" = "no"; then
   # Solaris
   DO_IF_OS(Solaris,
   [
-    AC_SYS_COMPILER_FLAG(-fast,fast,OPTIMIZE)
+    AC_SYS_COMPILER_FLAG(-fast,fast,OPTIMIZE,,[
+      if test "x$with_abi" = "x64"; then
+        # -fast implies -xarch=native, which implies 32-bit ABI.
+        AC_SYS_COMPILER_FLAG(-xtarget=generic64, xtarget_generic64, OPTIMIZE)
+      fi
+    ])
     AC_SYS_COMPILER_FLAG(-xdepend,xdepend,OPTIMIZE)
     AC_SYS_COMPILER_FLAG(-xs,xs,CFLAGS)
     # Causes __STDC__ to be 1 which causes several headerfiles to behave
