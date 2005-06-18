@@ -2177,12 +2177,12 @@ if test "$cflags_is_set" = "no"; then
     AC_DEFUN(AC_SYS_COMPILER_FLAG_QSUPPRESS, [
       AC_SYS_COMPILER_FLAG(-qsuppress=$1,
 			   translit([qsuppress_$1],[-:],[__]),
-			   WARN)
+			   ifelse([$2],,WARN,[$2]))
     ])
     # 1506-010 (W) Macro XX invoked with a null argument for parameter Z.
     AC_SYS_COMPILER_FLAG_QSUPPRESS(1506-010)
     # 1506-219 (W) #line value 40140 too large.
-    AC_SYS_COMPILER_FLAG_QSUPPRESS(1506-219)
+    AC_SYS_COMPILER_FLAG_QSUPPRESS(1506-219, CPPFLAGS)
 
     # Tell the linker to generate a large toc if needed
     #
