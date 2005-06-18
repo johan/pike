@@ -2452,6 +2452,10 @@ echo Searching for library and include directories...
 #Don't add include dirs if they give us warnings...
 OLD_ac_c_preproc_warn_flag="$ac_c_preproc_warn_flag"
 ac_c_preproc_warn_flag=yes
+AC_TRY_CPP([#include <stdio.h>], , [
+  AC_MSG_WARN([Turning on preprocessor warnings causes cpp test to fail.])
+  ac_c_preproc_warn_flag="$OLD_ac_c_preproc_warn_flag"
+])
 
 real_dirs='/ /usr'
 real_libs='/lib /usr/lib'
