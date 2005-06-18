@@ -459,7 +459,7 @@ if test "x$with_abi" = "x64"; then
   AC_SYS_COMPILER_FLAG(-q64, q64, CC)
   AC_SYS_COMPILER_FLAG(-m64, m64, CC)
   AC_SYS_COMPILER_FLAG(-xtarget=generic64, xtarget_generic64, CC)
-  if test "$pike_cv_option_q64:$pike_cv_option_m64:pike_cv_option_xtarget_generic64" = "no:no:no"; then
+  if test "$pike_cv_option_q64:$pike_cv_option_m64:$pike_cv_option_xtarget_generic64" = "no:no:no"; then
     AC_SYS_COMPILER_FLAG(-q32, q32, CC)
     AC_SYS_COMPILER_FLAG(-m32, m32, CC)
     AC_SYS_COMPILER_FLAG(-xtarget=generic32, xtarget_generic32, CC)
