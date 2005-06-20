@@ -644,9 +644,15 @@ static void low_ins_call(void *addr, int delay_ok, int i_flags)
        *       (Sparc Architecture Manual V9 p149.)
        */
 
+#ifdef PIKE_OPCODE_SPARC64
+      /* stx %o7, [ %pike_fp, %offsetof(pike_frame, pc) ] */
+      add_to_program(0xc0702000|(SPARC_REG_O7<<25)|(SPARC_REG_PIKE_FP<<14)|
+		     OFFSETOF(pike_frame, pc));
+#else /* !PIKE_OPCODE_SPARC64 */
       /* stw %o7, [ %pike_fp, %offsetof(pike_frame, pc) ] */
       add_to_program(0xc0202000|(SPARC_REG_O7<<25)|(SPARC_REG_PIKE_FP<<14)|
 		     OFFSETOF(pike_frame, pc));
+#endif /* PIKE_OPCODE_SPARC64 */
       
       delay_ok = 1;
     }
