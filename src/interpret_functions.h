@@ -849,7 +849,7 @@ OPCODE0(F_ADD_TO_AND_POP, "+= and pop", I_UPDATE_SP, {
 
 OPCODE1(F_GLOBAL_LVALUE, "& global", I_UPDATE_SP, {
   ref_push_object(Pike_fp->current_object);
-  push_obj_index(rg1 + Pike_fp->context.identifier_level);
+  push_obj_index(arg1 + Pike_fp->context.identifier_level);
 });
 
 OPCODE0(F_INC, "++x", I_UPDATE_SP, {
