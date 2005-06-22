@@ -59,13 +59,13 @@ PIKECLASS CircularList
   
   //convert an index in the circular list to the index in the underlaying array
   //add the pos and take modulo of the size
-  inline int circ2array(int index)
+  static inline int circ2array(int index)
     {
       return (index+THIS->pos)%THIS->a->size;
     }
   
   //convert an index in the underlaying array to the array in the circular list
-  inline int array2circ(int index)
+  static inline int array2circ(int index)
     {
       return (index-THIS->pos)%THIS->a->size;
     }
