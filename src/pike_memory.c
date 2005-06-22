@@ -711,7 +711,6 @@ void *mexec_realloc(void *ptr, size_t sz)
     /* FIXME: Consider using grow_mexec_hdr to grow our hdr. */
     old_hdr = hdr;
   } else {
-    fprintf(stderr, "low_mexec_alloc(%p, %p)\n", hdr, (void *)sz);
     res = low_mexec_alloc(hdr, sz);
   }
   if (!res) {
