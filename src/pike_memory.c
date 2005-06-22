@@ -999,7 +999,7 @@ void *mexec_realloc(void *ptr, size_t sz)
 
   /* fprintf(stderr, " ==> %p\n", res + 1); */
 
-  memcpy(res+1, old+1, old->size - sizeof(old));
+  memcpy(res+1, old+1, old->size - sizeof(*old));
   mexec_free(ptr);
 
 #ifdef PIKE_DEBUG
