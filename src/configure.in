@@ -7865,7 +7865,7 @@ $bundle_info])
 	if test -d "${patch_dir}/."; then
 	  # There are patches.
 	  if test -f "${bundle_source_dir}/pike-patch.stamp"; then :; else
-	    echo "Patching bundle $dist_file..."
+	    echo "Patching bundle $dist_file with files from ${patch_dir}..."
 	    ( cd "${patch_dir}" && tar cf - . ) | \
 	      ( cd "${bundle_source_dir}" && tar xf -)
 	    touch "${bundle_source_dir}/pike-patch.stamp"
