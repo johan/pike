@@ -7866,7 +7866,7 @@ $bundle_info])
 	  # There are patches.
 	  if test -f "${bundle_source_dir}/pike-patch.stamp"; then :; else
 	    echo "Patching bundle $dist_file..."
-	    ( cd "${patch_dir}" && tar cf - ) | \
+	    ( cd "${patch_dir}" && tar cf - . ) | \
 	      ( cd "${bundle_source_dir}" && tar xf -)
 	    touch "${bundle_source_dir}/pike-patch.stamp"
 	  fi
