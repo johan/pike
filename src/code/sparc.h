@@ -16,7 +16,7 @@
 #define PROG_COUNTER		(reg_pc + 2)
 #define SET_PROG_COUNTER(X)	(reg_pc = ((unsigned INT32 *)(X))-2)
 
-#define LOW_GET_JUMP()	(PROG_COUNTER[0])
+#define LOW_GET_JUMP()	((INT32)PROG_COUNTER[0])
 #define LOW_SKIPJUMP()	(SET_PROG_COUNTER(PROG_COUNTER + 1))
 
 /*
