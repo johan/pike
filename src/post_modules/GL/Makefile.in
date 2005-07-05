@@ -8,7 +8,7 @@ MODULE_CFLAGS=@X_CFLAGS@
 
 override:
 	@$(MAKE) \
-	  CFLAGS="`echo $(CFLAGS) | sed -e 's/-g//g' -e 's/-W[^ ]*//g' -e 's/-O[^ ]*//g'` -O" \
+	  CFLAGS="`echo $(CFLAGS) | sed -e 's/-g[^ ]*//g' -e 's/-W[^ ]*//g' -e 's/-O[^ ]*//g'` -O" \
 	  all
 
 @dynamic_module_makefile@
