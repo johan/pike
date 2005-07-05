@@ -7,13 +7,11 @@
 
 #include "config.h"
 
-#if defined(HAVE_SANE_SANE_H) || defined(HAVE_SANE_H)
+#if (defined(HAVE_SANE_SANE_H) || defined(HAVE_SANE_H)) && defined(HAVE_LIBSANE)
 #ifdef HAVE_SANE_SANE_H
 #include <sane/sane.h>
-#else
-#ifdef HAVE_SANE_H
+#elif defined(HAVE_SANE_H)
 #include <sane.h>
-#endif
 #endif
 #include <stdio.h>
 
