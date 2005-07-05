@@ -9,7 +9,7 @@ AC_ARG_WITH(sane,     [  --with(out)-sane       Support SANE],[],[with_sane=yes]
 AC_MODULE_INIT()
 if test x$with_sane = xyes ; then
   AC_CHECK_HEADERS(sane/sane.h sane.h)
+  AC_CHECK_LIB( sane, sane_open )
 fi
-AC_CHECK_LIB( sane, sane_open )
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
