@@ -424,7 +424,7 @@ int main(int argc, char **argv)
 }
 EOF
   pike_cv_default_compiler_abi="unknown"
-  if (eval $ac_compile) 2>&5; then
+  if (eval $ac_compile) 2>&AC_FD_CC; then
     filetype=`file "conftest.$ac_cv_objext" 2>/dev/null | sed -e 's/.*://'`
     case "$filetype" in
       *64-bit*)
