@@ -1782,6 +1782,11 @@ node *index_node(node *n, char *node_name, struct pike_string *id)
 
   check_tree(n,0);
 
+  if (!is_const(n)) {
+    if (n) add_ref(n);
+    return mknode(F_INDEX, n, mkstrnode(id));
+  }
+
   if(SETJMP(tmp))
   {
     if (node_name) {
