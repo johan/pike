@@ -748,7 +748,7 @@ class Crawler
 	error_cb(real_uri, status, headers, @args);
 	if(status>=300 && status <=307)
 	  if(headers->location && sizeof(headers->location))
-	    add_links(({ Standards.URI(headers->location) }));
+	    add_links(({ Standards.URI(headers->location, real_uri) }));
       }
       if(queue->get_stage(real_uri)<=1)
 	queue->set_stage(real_uri, 5);
