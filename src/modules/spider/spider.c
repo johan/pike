@@ -65,10 +65,6 @@
 
 #include "defs.h"
 
-#ifdef HAVE_SYS_CONF_H
-#include <sys/conf.h>
-#endif
-
 #ifdef HAVE_STROPTS_H
 #include <stropts.h>
 #endif
