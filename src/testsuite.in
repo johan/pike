@@ -2440,6 +2440,11 @@ test_compile_error_any([[
   class B {inherit A;}
 ]])
 
+test_any([[
+  // Test dynamic module indexing.
+  object protocols = Protocols;
+  return protocols.HTTP.get_url_data;
+]], [[ Protocols.HTTP.get_url_data ]])
 
 test_compile([[float x=(gauge { return; },1.0);]])
 cond( [[ master()->resolv("Gmp")->mpz ]],
