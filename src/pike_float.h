@@ -44,6 +44,14 @@ static INLINE int pike_isnan(double x)
 #endif /* HAVE__ISNAN */
 #endif /* HAVE_ISNAN */
 
+/* isinf()...
+ */
+#ifdef HAVE_ISINF
+#define PIKE_ISINF(X)	isinf(X)
+#else /* HAVE_ISINF */
+#define PIKE_ISINF(X)	((X) && ((X)+(X) == (X)))
+#endif /* HAVE_ISINF */
+
 #ifdef HAVE_ISUNORDERED
 #define PIKE_ISUNORDERED(X,Y) isunordered(X,Y)
 #else
