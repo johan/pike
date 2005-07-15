@@ -1386,7 +1386,7 @@ static void low_pike_sprintf(struct format_stack *fs,
 	  fs->fsp->b = MKPCHARP("nan", 0);
 	  fs->fsp->len = 3;
 	  break;
-	} else if (tf && (tf+tf == tf)) {
+	} else if (PIKE_ISINF(tf)) {
 	  /* Infinity. */
 	  if (tf > 0.0) {
 	    fs->fsp->b = MKPCHARP("inf", 0);
