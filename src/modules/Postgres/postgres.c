@@ -255,14 +255,17 @@ static void f_create (INT32 args)
 	switch(args) {
 		default:
 		case 5:
-			if (Pike_sp[2-args].type==PIKE_T_INT &&  /*this check is maybe redundant*/
-					Pike_sp[2-args].u.integer <=65535 && 
-			    		Pike_sp[2-args].u.integer >= 0) {
-				if (Pike_sp[2-args].u.integer>0) {
-					port=xalloc(10*sizeof(char)); /*we only need 6, we just checked.*/
-					sprintf(port,"%"PRINTPIKEINT"d",Pike_sp[2-args].u.integer);
-				}
+			if (/* Pike_sp[4-args].type==PIKE_T_INT && */
+			    Pike_sp[4-args].u.integer <=65535 &&
+			    Pike_sp[4-args].u.integer >= 0) {
+			  if (Pike_sp[4-args].u.integer>0) {
+			    port=xalloc(6*sizeof(char));
+			    sprintf(port, "%"PRINTPIKEINT"d",
+				    Pike_sp[4-args].u.integer);
+			  }
 			}
+			else
+			  SIMPLE_ARG_TYPE_ERROR("create", 5, "int(0..65535)");
 		case 4:
 			if (Pike_sp[3-args].type==PIKE_T_STRING && Pike_sp[3-args].u.string->len)
 				pass=Pike_sp[3-args].u.string->str;
