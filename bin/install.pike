@@ -460,7 +460,7 @@ string fakeroot(string s)
 				   vars->DOCDIR_SRC,
 				   vars->TMP_LIBDIR,
 				   vars->fakeroot,
-				 }),regquote)));
+				 }) - ({ 0 }), regquote)));
   }
   if(reg->match(s)) return s;
   return vars->fakeroot+s;
@@ -1416,7 +1416,7 @@ void dump_modules()
 		vars->TMP_LIBDIR,
 		vars->BASEDIR,
 		vars->fakeroot,
-	      }), globify)*":"),
+		   }) - ({ 0 }), globify)*":"),
       "-m",combine_path(vars->TMP_LIBDIR,"master.pike")
     });
 
