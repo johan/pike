@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 //!
 //! Support for Universal Unique Identifiers (UUID) and
 //! Globally Unique Identifiers (GUID).
