@@ -87,6 +87,11 @@ RCSID("$Id$");
  * This define cripples the Pike module to use static define buffers.
  * It may be required to work around bugs in some versions of the
  * oracle libraries - Hubbe
+ *
+ * Note: Some versions of Oracle fail with
+ *   "ORA-03106: fatal two-task communication protocolerror"
+ *   This seems to be due to having an invalid NLS_LANG on
+ *   the server. -Grubba 2005-08-05
  */
 
 /* For some reason this crashes if I make this larger than 8000
@@ -100,14 +105,16 @@ RCSID("$Id$");
  * -Grubba 2005-08-04
  */
 
-#define STATIC_BUFFERS 8000
+/* #define STATIC_BUFFERS 8000 */
 
 /* This define causes dynamically sized data to be fetched via the polling
- * api rather than by the callback api.
+ * API rather than by the callback API. Using the polling API has the
+ * advantage of allowing the OCIStmtFetch call being run in a
+ * THREADS_ALLOW() context.
  * NOTE: Ignored if STATIC_BUFFERS above is enabled.
  */
 
-/* #define POLLING_FETCH */
+#define POLLING_FETCH
 
 /* End user-changable defines */
 
