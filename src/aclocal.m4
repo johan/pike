@@ -779,7 +779,7 @@ define(PIKE_ENABLE_BUNDLE, [
     ifelse([$3], , :, [ AC_MSG_ERROR([$3]) ])
   elif test -f "$pike_bundle_prefix/installed/[$1]"; then
     # Bundle already installed.
-    echo "Bundle [$1]already installed."
+    echo "Bundle [$1] already installed."
     ifelse([$3], , :, [ AC_MSG_ERROR([$3]) ])
   else
     # Note: OSF/1 /bin/sh does not support glob expansion of
