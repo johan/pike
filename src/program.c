@@ -1451,11 +1451,6 @@ static struct node_s *index_modules(struct pike_string *ident,
   return 0;
 }
 
-/*! @decl constant UNDEFINED
- *!
- *! The undefined value; ie a zero for which @[zero_type()] returns 1.
- */
-
 struct node_s *resolve_identifier(struct pike_string *ident);
 
 struct node_s *find_module_identifier(struct pike_string *ident,
@@ -1497,6 +1492,16 @@ struct node_s *find_module_identifier(struct pike_string *ident,
     }
   }
 
+  return resolve_identifier(ident);
+}
+
+/*! @decl constant UNDEFINED
+ *!
+ *! The undefined value; ie a zero for which @[zero_type()] returns 1.
+ */
+
+struct node_s *resolve_identifier(struct pike_string *ident)
+{
   /* Handle UNDEFINED */
   if (ident == UNDEFINED_string) {
     struct svalue s;
@@ -1506,11 +1511,6 @@ struct node_s *find_module_identifier(struct pike_string *ident,
     return mkconstantsvaluenode(&s);
   }
 
-  return resolve_identifier(ident);
-}
-
-struct node_s *resolve_identifier(struct pike_string *ident)
-{
   if(resolve_cache)
   {
     struct svalue *tmp=low_mapping_string_lookup(resolve_cache,ident);
