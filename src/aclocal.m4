@@ -777,6 +777,10 @@ define(PIKE_ENABLE_BUNDLE, [
     # Bundles not available.
     echo "Bundles not available."
     ifelse([$3], , :, [ AC_MSG_ERROR([$3]) ])
+  elif test -f "$pike_bundle_prefix/installed/[$1]"; then
+    # Bundle already installed.
+    echo "Bundle [$1]already installed."
+    ifelse([$3], , :, [ AC_MSG_ERROR([$3]) ])
   else
     # Note: OSF/1 /bin/sh does not support glob expansion of
     #       expressions like "$pike_bundle_dir/[$1]"*.tar.gz.
