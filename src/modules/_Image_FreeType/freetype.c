@@ -145,6 +145,20 @@ static void image_ft_face_write_char( INT32 args )
           d->b = pv;
           d++;
         }
+  } else if( slot->bitmap.pixel_mode == ft_pixel_mode_mono ) {
+    int p = slot->bitmap.pitch;
+    char *s = slot->bitmap.buffer;
+    p *= 8;
+    if( s )
+      for( y = 0; y<i->ysize; y++ )
+        for( x = 0; x<i->xsize; x++ )
+        {
+          int pv =  ( ((s[(x + y*p) / 8]) << ((x + y*p) % 8)) & 128) ? 255 : 0;
+          d->r = pv;
+          d->g = pv;
+          d->b = pv;
+          d++;
+        }
   } else
     Pike_error("Unhandled bitmap format received from renderer\n");
 
