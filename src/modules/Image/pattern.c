@@ -379,11 +379,11 @@ void image_noise(INT32 args)
    o=clone_object(image_program,0);
    img=(struct image*)o->storage;
    *img=*THIS;
-   if (!(img->img=malloc(sizeof(rgb_group)*THIS->xsize*THIS->ysize+1)))
+   if (!(img->img=malloc(sizeof(rgb_group)*THIS->xsize*THIS->ysize)))
    {
       free_object(o);
       SIMPLE_OUT_OF_MEMORY_ERROR("noise",
-				 sizeof(rgb_group)*THIS->xsize*THIS->ysize+1);
+				 sizeof(rgb_group)*THIS->xsize*THIS->ysize);
    }
 
    cscale*=COLORRANGE_LEVELS;
@@ -460,11 +460,11 @@ void image_turbulence(INT32 args)
    o=clone_object(image_program,0);
    img=(struct image*)o->storage;
    *img=*THIS;
-   if (!(img->img=malloc(sizeof(rgb_group)*THIS->xsize*THIS->ysize+1)))
+   if (!(img->img=malloc(sizeof(rgb_group)*THIS->xsize*THIS->ysize)))
    {
       free_object(o);
       SIMPLE_OUT_OF_MEMORY_ERROR("noise",
-				 sizeof(rgb_group)*THIS->xsize*THIS->ysize+1);
+				 sizeof(rgb_group)*THIS->xsize*THIS->ysize);
    }
 
    cscale*=COLORRANGE_LEVELS;

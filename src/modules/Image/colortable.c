@@ -3696,7 +3696,7 @@ void image_colortable_map(INT32 args)
    dest=(struct image*)(o->storage);
    *dest=*src;
 
-   dest->img=malloc(sizeof(rgb_group)*src->xsize*src->ysize +1);
+   dest->img=malloc(sizeof(rgb_group)*src->xsize*src->ysize);
    if (!dest->img)
    {
       free_object(o);

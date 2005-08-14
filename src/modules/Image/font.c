@@ -612,7 +612,7 @@ void font_write(INT32 args)
    else
      img->ysize = this->height;
    img->rgb.r=img->rgb.g=img->rgb.b=255;
-   img->img=malloc(img->xsize*img->ysize*sizeof(rgb_group)+1);
+   img->img=malloc(img->xsize*img->ysize*sizeof(rgb_group));
 
    if (!img->img) {
      free_object(o);

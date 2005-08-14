@@ -509,7 +509,7 @@ void img_apply_max(struct image *dest,
    double qr,qg,qb;
    register double r=0,g=0,b=0;
 
-   d=xalloc(sizeof(rgb_group)*img->xsize*img->ysize +1);
+   d=xalloc(sizeof(rgb_group)*img->xsize*img->ysize);
 
 THREADS_ALLOW();
 
@@ -669,7 +669,7 @@ void image_apply_max(INT32 args)
    }
    if (width==-1) width=0;
 
-   matrix=xalloc(sizeof(rgbd_group)*width*height+1);
+   matrix=xalloc(sizeof(rgbd_group)*width*height);
 
    for (i=0; i<height; i++)
    {

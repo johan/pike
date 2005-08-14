@@ -88,9 +88,9 @@ void image_dct(INT32 args)
 	   DO_NOT_WARN((unsigned long)(sizeof(rgb_group)*THIS->xsize*THIS->ysize+1)));
 #endif
 
-   area=xalloc(sizeof(rgbd_group)*THIS->xsize*THIS->ysize+1);
+   area=xalloc(sizeof(rgbd_group)*THIS->xsize*THIS->ysize);
 
-   if (!(costbl=malloc(sizeof(double)*THIS->xsize+1)))
+   if (!(costbl=malloc(sizeof(double)*THIS->xsize)))
    {
       free(area);
       resource_error(NULL,0,0,"memory",0,"Out of memory.\n");
