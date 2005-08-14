@@ -136,7 +136,8 @@ static void MKNAME(_do_sort)(register TYPE *bas,
 #endif
       }
       DEC(a);
-      SWAP(a,bas);
+      if (a != bas)
+	SWAP(a,bas);
       DEC(a);
       
       if(  (char *)a - (char *)bas < (char *)last - (char *)b )
