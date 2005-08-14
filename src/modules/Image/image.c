@@ -2420,6 +2420,8 @@ void image_threshold(INT32 args)
       get_all_args("threshold",args,"%i",&level),level*=3;
    else if (!getrgb(THIS,0,args,args,"Image.Image->threshold()"))
       rgb.r=rgb.g=rgb.b=0;
+   else
+     rgb=THIS->rgb;
 
    o=clone_object(image_program,0);
    img=(struct image*)o->storage;
