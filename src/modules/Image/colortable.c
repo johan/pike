@@ -1925,9 +1925,9 @@ int image_colortable_initiate_dither(struct neo_colortable *nct,
 	 fprintf(stderr, "COLORTABLE image_colortable_initiate_dither: "
 		 "FLOYD_STEINBERG\n");
 #endif /* COLORTABLE_DEBUG */
-	 dith->u.floyd_steinberg.errors=malloc(rowlen*sizeof(rgbd_group));
+	 dith->u.floyd_steinberg.errors=malloc(rowlen*sizeof(rgbd_group)+1);
 	 if (!dith->u.floyd_steinberg.errors) return 0;
-	 dith->u.floyd_steinberg.nexterrors=malloc(rowlen*sizeof(rgbd_group));
+	 dith->u.floyd_steinberg.nexterrors=malloc(rowlen*sizeof(rgbd_group)+1);
 	 if (!dith->u.floyd_steinberg.nexterrors)
 	    { free(dith->u.floyd_steinberg.errors);  return 0; }
 
@@ -3696,7 +3696,7 @@ void image_colortable_map(INT32 args)
    dest=(struct image*)(o->storage);
    *dest=*src;
 
-   dest->img=malloc(sizeof(rgb_group)*src->xsize*src->ysize);
+   dest->img=malloc(sizeof(rgb_group)*src->xsize*src->ysize+1);
    if (!dest->img)
    {
       free_object(o);
