@@ -565,7 +565,7 @@ static void my_glDeleteTextures( INT32 args )
       {
 	free(ls);
 	Pike_error("Illegal argument %d to glDeleteTextures: Expected integer\n",
-		   i);
+		   i+1);
       }
       ls[i] = Pike_sp[i-args].u.integer;
     }
@@ -587,7 +587,8 @@ static void my_glCallLists( INT32 args )
       if( Pike_sp[i-args].type != PIKE_T_INT )
       {
 	free(ls);
-	Pike_error("Illegal argument %d to glCallLists: Expected integer\n",i);
+	Pike_error("Illegal argument %d to glCallLists: Expected integer\n",
+		   i+1);
       }
       ls[i] = Pike_sp[i-args].u.integer;
     }
