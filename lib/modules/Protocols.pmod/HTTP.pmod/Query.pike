@@ -1056,7 +1056,8 @@ void timed_async_fetch(function(object, mixed ...:void) ok_callback,
 		       mixed ... extra) {
   if (!con)
   {
-    callback_fail(@extra); // nothing to do, stupid...
+    // nothing to do, stupid...
+    call_out(fail_callback, 0, this_object(), @extra);
     return;
   }
   
