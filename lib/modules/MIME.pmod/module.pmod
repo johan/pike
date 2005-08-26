@@ -1081,8 +1081,11 @@ class Message {
       string epilogue = parts[-1];
       if ((sscanf(epilogue, "--%*[ \t]%s", epilogue)<2 ||
 	   (epilogue != "" && epilogue[0] != '\n' &&
-	    epilogue[0..1] != "\r\n")) && !guess)
-	error("multipart message improperly terminated (%O)\n", parts[-1]);
+	    epilogue[0..1] != "\r\n")) && !guess) {
+	error("multipart message improperly terminated (%O%s)\n",
+	      epilogue[..200],
+	      sizeof(epilogue) > 201 ? "[...]" : "");
+      }
       encoded_data = 0;
       decoded_data = parts[0][1..];
       if(sizeof(decoded_data) && decoded_data[-1]=='\r')
