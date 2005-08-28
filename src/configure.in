@@ -3478,7 +3478,9 @@ OLD_LIBOBJS="${LIBOBJS}"
 
 AC_FUNC_MEMCMP
 
-if test "x$ac_cv_func_memcmp_clean" = "xyes"; then
+# Old Autoconf set memcmp_clean while newer define memcmp_working
+if test "x$ac_cv_func_memcmp_clean" = "xyes" -o \
+        "x$ac_cv_func_memcmp_working" = "xyes"; then
   AC_DEFINE(HAVE_MEMCMP)
 fi
 
