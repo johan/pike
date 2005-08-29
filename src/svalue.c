@@ -966,6 +966,14 @@ PMOD_EXPORT int is_lt(const struct svalue *a, const struct svalue *b)
   check_refs(a);
   check_refs(b);
 
+  if ((a->type == b->type) && (a->type == T_INT)) {
+    /* Common case...
+     * Note: the case in the switch still needs to be kept,
+     *       since a or b may be a destructed object.
+     */
+    return a->u.integer < b->u.integer;
+  }
+
   safe_check_destructed(a);
   safe_check_destructed(b);
 
