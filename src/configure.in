@@ -439,6 +439,12 @@ EOF
       *32*)
         pike_cv_default_compiler_abi=32
 	;;
+      *386*)
+        # Probably NT or SCO file for i386:
+        #   iAPX 386 executable (COFF)
+        #   80386 COFF executable
+        pike_cv_default_compiler_abi=32
+	;;
     esac
   fi
   rm -f conftest.$ac_cv_objext conftest.$ac_ext
