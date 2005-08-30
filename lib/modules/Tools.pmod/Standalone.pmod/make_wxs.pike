@@ -9,6 +9,8 @@
  * 2004-11-02 Henrik Grubbström
  */
 
+#if constant(Standards.UUID.make_version3)
+
 int main(int argc, array(string) argv)
 {
   string base_guid = Standards.UUID.make_version1(-1)->str();
@@ -103,3 +105,9 @@ int main(int argc, array(string) argv)
 					 manufacturer, descr, version_guid,
 					 comments)->render_xml());
 }
+
+#else /* !constant(Standards.UUID.make_version3) */
+
+constant this_program_does_not_exist=1;
+
+#endif /* constant(Standards.UUID.make_version3) */
