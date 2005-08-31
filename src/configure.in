@@ -445,6 +445,10 @@ EOF
         #   80386 COFF executable
         pike_cv_default_compiler_abi=32
 	;;
+      *)
+        # Unknown.
+        PIKE_MSG_WARN([Unrecognized object file format: $filetype])
+        ;;
     esac
   fi
   rm -f conftest.$ac_cv_objext conftest.$ac_ext
