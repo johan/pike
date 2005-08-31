@@ -76,8 +76,7 @@ log_start response_assembly
   # Configuration
   (
     cd "$BUILDDIR"
-    test -f config.log && cat config.log
-    for f in `find modules post_modules -name config.log -type f`; do
+    for f in `find . -name config.log -type f | sort`; do
       echo
       echo '###################################################'
       echo '##' `dirname "$f"`
