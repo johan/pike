@@ -520,12 +520,16 @@ class ComplexQueue(Stats stats, Policy policy)
   {
     inherit ADT.Stack;
     int last_mod;
-    multiset(string) uris_md5=(<>);
+    static multiset(string) uris_md5=(<>);
     int num_active;
 
-    string do_md5(string in)
+    static string do_md5(string in)
     {
+#if constant(Crypto.MD5)
       return Crypto.MD5->hash(in);
+#else /* !constant(Crypto.MD5) */
+      return in;
+#endif /* constant(Crypto.MD5) */
     }
 
     void push(mixed val)
