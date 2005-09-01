@@ -370,6 +370,7 @@ void async_fetch_close()
      //destruct(con);
      con=0;
    }
+   remove_call_out(async_timeout);
    if (errno) {
      if (request_fail) (request_fail)(this_object(), @extra_args);
    } else {
