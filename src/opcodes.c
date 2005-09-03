@@ -325,7 +325,7 @@ const char *get_f_name(int n)
 }
 
 #ifdef HAVE_COMPUTED_GOTO
-char *get_opcode_name(PIKE_INSTR_T n)
+const char *get_opcode_name(PIKE_INSTR_T n)
 {
   int fcode;
   int low = 0;
