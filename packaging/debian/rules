@@ -23,6 +23,10 @@ endif
 
 CFLAGS = -DDEBIAN
 
+ifeq (,$(DEB_BUILD_ARCH))
+DEB_BUILD_ARCH=$(shell dpkg-architecture -qDEB_BUILD_ARCH)
+endif
+
 ifdef SSP
 SSP_FLAGS=-fstack-protector
 endif
