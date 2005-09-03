@@ -23,7 +23,7 @@ if test x$with_dnssd = xyes ; then
     AC_DEFINE(HAVE_HOWL)
     AC_CHECK_LIB(howl, sw_discovery_init, [
       PIKE_FEATURE(DNS-SD,[yes (howl.h)])
-      LIBS="{$LIBS-} -lhowl"
+      LIBS="${LIBS} -lhowl"
     ])
   fi
 fi
