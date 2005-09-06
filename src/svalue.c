@@ -40,6 +40,8 @@ const struct svalue dest_ob_zero = {
 #ifdef PIKE_DEBUG
 PMOD_EXPORT const char msg_type_error[] =
   "Type error: %d\n";
+PMOD_EXPORT const char msg_assign_svalue_error[] =
+  "assign_svalue_no_free(): to and from are both %p.\n";
 PMOD_EXPORT const char msg_sval_obj_wo_refs[] =
   "Svalue to object without references.\n";
 PMOD_EXPORT const char msg_ssval_obj_wo_refs[] =
