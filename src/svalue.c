@@ -1134,6 +1134,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 {
   char buf[50];
 
+  check_c_stack(1024);
   check_type(s->type);
   check_refs(s);
 
