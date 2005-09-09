@@ -1670,6 +1670,7 @@ void describe_all_types(void)
 
 static void low_describe_type(struct pike_type *t)
 {
+  check_c_stack(1024);
   /**** FIXME: ****/
   switch(t->type)
   {
