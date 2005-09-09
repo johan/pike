@@ -1020,8 +1020,9 @@ void handle_error(array|object trace)
       catch {
 	if (catch {
 	  string msg = [string]x[0];
+	  werror("%s", msg);
 	  array bt = [array]x[1];
-	  werror("%s%O\n", msg, bt);
+	  werror("%O\n", bt);
 	}) {
 	  werror("%O\n", x);
 	}
