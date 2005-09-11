@@ -647,15 +647,6 @@ PMOD_EXPORT void mapping_set_flags(struct mapping *m, int flags)
   md->flags = flags;
 }
 
-
-/** This function inserts key:val into the mapping m.
- * Same as doing m[key]=val; in pike.
- *
- * @param overwrite how to deal with existing values@n
- *   @b 0: Do not replace the value if the entry exists.@n
- *   @b 1: Replace the value if the entry exists.@n
- *   @b 2: Replace both the index and the value if the entry exists.
- */
 PMOD_EXPORT void low_mapping_insert(struct mapping *m,
 				    const struct svalue *key,
 				    const struct svalue *val,
