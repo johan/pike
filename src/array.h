@@ -214,7 +214,7 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
   gc_cycle_enqueue((gc_cycle_check_cb *) real_gc_cycle_check_array, (X), (WEAK))
 
 
-/* Macros for aggregating results built on the stack into an array,
+/** Macros for aggregating results built on the stack into an array,
  * while maintaining a bound on stack consumption. Use like this:
  *
  * check_stack(120);
@@ -228,7 +228,6 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
  *
  * The array is left on top of the stack.
  */
-
 #define BEGIN_AGGREGATE_ARRAY(estimated_size) do {			\
   struct svalue *base__;						\
   push_array(allocate_array_no_init(0, (estimated_size)));		\
@@ -261,7 +260,7 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
 } while (0)
 
 
-/*
+/**
  * Extract an svalue from an array
  */
 #define array_index_no_free(S,A,I) do {				\
@@ -276,7 +275,7 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
 }while(0)
 
 
-/*
+/**
  * Sets an index in an array. 
  * 
  * @param V the array to modify
