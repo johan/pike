@@ -197,6 +197,10 @@ static void udp_bind(INT32 args)
       Pike_sp[-args].u.string->size_shift))
     SIMPLE_BAD_ARG_ERROR("Stdio.UDP->bind", 1, "int|string (8bit)");
 
+  f_backtrace(0);
+  APPLY_MASTER("handle_error", 1);
+  pop_stack();
+
   if(FD != -1)
   {
     fd_close(FD);
@@ -496,7 +500,7 @@ void udp_wait(INT32 args)
   FD_SET(fd, &rset);
   tv.tv_sec = DO_NOT_WARN((int)timeout);
   tv.tv_usec = DO_NOT_WARN((int)((timeout - ((int)timeout)) * 1000000.0));
-  res = select(fd+1, &rset, NULL, NULL, &tv);
+  res = fd_select(fd+1, &rset, NULL, NULL, &tv);
   e = errno;
 
   THREADS_DISALLOW();
