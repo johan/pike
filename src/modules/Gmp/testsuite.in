@@ -98,6 +98,15 @@ cond( [[ master()->resolv("Gmp")->mpq ]],
   test_eq((int)Gmp.mpq(17),17)
   test_false(Gmp.mpq(0))
   test_true(Gmp.mpq(1))
+
+  cond([[ sizeof( cpp("__AUTO_BIGNUM__")/"__AUTO_BIGNUM__" ) == 1 ]],
+  [[
+    test_eq(Gmp.mpq(234,99)*Gmp.mpz(1000000000000000000000),Gmp.mpq(26000000000000000000000,11))
+    test_eq(Gmp.mpz(1000000000000000000000)*Gmp.mpq(234,99),Gmp.mpz(2000000000000000000000))
+    test_eq(Gmp.mpq(234,99)*1000000000000000000000,Gmp.mpq(26000000000000000000000,11))
+    test_eq(1000000000000000000000*Gmp.mpq(234,99),Gmp.mpq(26000000000000000000000,11))
+  ]])
+
 ]])
 
 cond( [[ master()->resolv("Gmp")->mpf ]],
