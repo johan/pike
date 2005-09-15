@@ -478,8 +478,7 @@ PIKECLASS mpf
 #endif
 	     )
 	  {
-	    fprintf(stderr, "get_mpf: got mpz or bignum.\n");
-	    prec=mpz_size(OBTOMPZ(s->u.object)) * 
+	    prec=mpz_size(OBTOMPZ(s->u.object)) *
 	      sizeof(mp_limb_t) * CHAR_BITS;
 	    break;
 	  }
