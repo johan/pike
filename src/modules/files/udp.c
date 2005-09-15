@@ -197,9 +197,11 @@ static void udp_bind(INT32 args)
       Pike_sp[-args].u.string->size_shift))
     SIMPLE_BAD_ARG_ERROR("Stdio.UDP->bind", 1, "int|string (8bit)");
 
+#if 0
   f_backtrace(0);
   APPLY_MASTER("handle_error", 1);
   pop_stack();
+#endif /* 0 */
 
   if(FD != -1)
   {
