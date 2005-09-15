@@ -1273,8 +1273,10 @@ PMOD_EXPORT void f_add(INT32 args)
 			    LFUN_RADD)) != -1)
 	  {
 	    /* There's an object with a lfun::``+() at argument @[e]. */
-	    if ((args = low_rop(o, i, e, args)) > 1)
+	    if ((args = low_rop(o, i, e, args)) > 1) {
 	      goto tail_recurse;
+	    }
+	    return;
 	  }
 	}
       }
