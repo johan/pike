@@ -108,8 +108,8 @@ static program find_dbm(string program_name) {
   program p;
   // we look in Sql.type and Sql.Provider.type.type for a valid sql class.
   p = Sql[program_name];
-  if(!p && Sql->Provider && Sql->Provider[program_name])
-    p = Sql->Provider[program_name][program_name];
+  if(!p && Sql.Provider && Sql.Provider[program_name])
+    p = Sql.Provider[program_name][program_name];
   return p;
 }
 
