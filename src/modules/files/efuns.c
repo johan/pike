@@ -252,9 +252,9 @@ static void f_getxattr(INT32 args)
   do {
     /* First try, for speed.*/
     if (nofollow)
-      LGETXATTR(file, name, buffer, sizeof(buffer));
+      res = LGETXATTR(file, name, buffer, sizeof(buffer));
     else
-      GETXATTR(file, name, buffer, sizeof(buffer));
+      res = GETXATTR(file, name, buffer, sizeof(buffer));
   } while( res < 0 && errno == EINTR );
   THREADS_DISALLOW();
 
@@ -272,9 +272,9 @@ static void f_getxattr(INT32 args)
       THREADS_ALLOW();
       do {
 	if (nofollow)
-	  LGETXATTR(file, name, ptr, blen);
+	  res = LGETXATTR(file, name, ptr, blen);
 	else
-	  GETXATTR(file, name, ptr, blen);
+	  res = GETXATTR(file, name, ptr, blen);
       } while( res < 0 && errno == EINTR );
       THREADS_DISALLOW();
       blen *= 2;
