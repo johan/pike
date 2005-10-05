@@ -1220,7 +1220,9 @@ void f_get_dir(INT32 args)
 #else
   dir = opendir(str->str);
 #ifdef USE_FPATHCONF
-  name_max = fpathconf(dirfd(dir), _PC_NAME_MAX);
+  if (dir) {
+    name_max = fpathconf(dirfd(dir), _PC_NAME_MAX);
+  }
 #endif
 #endif /* !HAVE_FDOPENDIR */
 #ifdef USE_PATHCONF
