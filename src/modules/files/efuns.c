@@ -810,7 +810,7 @@ void f_mkdir(INT32 args)
 #define USE_FDOPENDIR
 #define USE_FPATHCONF
 #elif defined(HAVE_DIRFD)
-#defined USE_FPATHCONF
+#define USE_FPATHCONF
 #endif
 
 #endif /* HAVE_FPATHCONF */
