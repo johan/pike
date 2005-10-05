@@ -52,7 +52,7 @@ AC_HAVE_FUNCS(getwd perror readdir_r statvfs statfs ustat lseek64 lstat fsync \
  grantpt unlockpt ptsname posix_openpt socketpair writev sendfile munmap \
  madvise poll setsockopt getprotobyname truncate64 ftruncate64 inet_ntoa \
  inet_ntop execve listxattr flistxattr getxattr fgetxattr setxattr fsetxattr \
- pathconf fpathconf dirfd)
+ fdopendir pathconf fpathconf dirfd)
 
 AC_FUNC_MMAP
 
