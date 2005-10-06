@@ -461,6 +461,7 @@ void f_file_stat(INT32 args)
 #endif
       i=fd_stat(str->str, &st);
   } while ((i == -1) && (errno == EINTR));
+
   THREADS_DISALLOW_UID();
   pop_n_elems(args);
   if(i==-1)
