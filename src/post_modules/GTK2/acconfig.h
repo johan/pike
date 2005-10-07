@@ -9,11 +9,13 @@
 #undef HAVE_GNOME
 #undef HAVE_DPMS
 #undef PGTK_AUTO_UTF8
+#undef HAVE_GTK_BETA
 #undef HAVE_GTK22
 #undef HAVE_GTK24
 #undef HAVE_GTK26
 #undef HAVE_ATK
 #undef HAVE_ATK18
+#undef HAVE_PANGO_BETA
 #undef HAVE_PANGO
 #undef HAVE_PANGO16
 #undef HAVE_PANGO14
