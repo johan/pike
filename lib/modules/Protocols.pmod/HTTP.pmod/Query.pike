@@ -1158,7 +1158,7 @@ void async_fetch(function callback,mixed ... extra)
 }
 
 //! Like @[async_fetch()], except with a timeout and a corresponding fail 
-//! callback function
+//! callback function.
 //!
 //! @seealso
 //!   @[async_fetch()], @[async_request()], @[set_callbacks()]
@@ -1184,7 +1184,10 @@ void timed_async_fetch(function(object, mixed ...:void) ok_callback,
   request_ok = ok_callback;
   request_fail = fail_callback;
   call_out(async_timeout, data_timeout);
-  
+
+  // NB: The timeout is currently not reset on each read, so the whole
+  // response has to be read within data_timeout seconds. Is that
+  // intentional? /mast
   con->set_nonblocking(async_fetch_read,0, async_fetch_close);
 }
 
