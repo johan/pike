@@ -258,6 +258,16 @@ export:
 	  echo ; \
 	  exit 1; \
 	fi
+	@if ls bundles/gmp-*.tar.gz > /dev/null 2>&1; then : ; else \
+	  echo ; \
+	  echo 'Missing GMP bundle.'; \
+	  exit 1; \
+	fi
+	@if ls bundles/nettle-*.tar.gz > /dev/null 2>&1; then : ; else \
+	  echo ; \
+	  echo 'Missing Nettle bundle.'; \
+	  exit 1; \
+	fi
 	@$(DO_MAKE) "CONFIGUREARGS=--disable-binary $(CONFIGUREARGS)" \
 	  "OS=source" "LIMITED_TARGETS=yes" "METATARGET=export" compile
 
