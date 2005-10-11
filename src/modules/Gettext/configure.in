@@ -11,6 +11,7 @@ AC_HAVE_HEADERS(locale.h libintl.h)
 ########################################################################
 
 AC_CHECK_FUNCS(setlocale)
+AC_CHECK_LIB(iconv, libiconv)
 AC_CHECK_LIB(intl, gettext)
 AC_CHECK_FUNC(gettext)
 
