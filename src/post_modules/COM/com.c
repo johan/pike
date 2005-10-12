@@ -86,9 +86,6 @@ struct cval_storage {
 #define TYPEINFO_VAR_DISPATCH    0x0800
 
 
-/* must be included last */
-#include "module_magic.h"
-
 /*
 TODO:
 */
@@ -1917,11 +1914,9 @@ static void f_com__sprintf(INT32 args)
   push_int(0);
 }
 
-#else
-#include "module_magic.h"
 #endif /* HAVE_COM */
 
-void pike_module_init(void)
+PIKE_MODULE_INIT
 {
 #ifdef HAVE_COM
   struct svalue prog;
@@ -2041,7 +2036,7 @@ void pike_module_init(void)
 #endif /* HAVE_COM */
 }
 
-void pike_module_exit(void)
+PIKE_MODULE_EXIT
 {
 #ifdef HAVE_COM
 #ifdef USE_COM_PROG
