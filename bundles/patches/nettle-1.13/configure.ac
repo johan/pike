@@ -2,7 +2,7 @@ dnl -*- mode: shell-script; sh-indentation: 2; -*-
 
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT([nettle], [1.12], [nettle-bugs@lists.lysator.liu.se])
+AC_INIT([nettle], [1.13], [nettle-bugs@lists.lysator.liu.se])
 AC_PREREQ(2.50)
 AC_CONFIG_SRCDIR([arcfour.c])
 # Needed to stop autoconf from looking for files in parent directories.
@@ -11,7 +11,7 @@ AC_CONFIG_AUX_DIR([.])
 AC_CONFIG_HEADER([config.h])
 
 SHLIBMAJOR=2
-SHLIBMINOR=3
+SHLIBMINOR=4
 
 AC_CANONICAL_HOST
 
@@ -49,6 +49,10 @@ AC_ARG_ENABLE(pic,
   [Do not try to compile library files as position independent code]),,
   [enable_pic=yes])
 
+AC_ARG_ENABLE(openssl,
+  AC_HELP_STRING([--disable-openssl], [Do not include openssl glue in the benchmark program]),,
+  [enable_openssl=yes])
+  
 LSH_RPATH_INIT([`echo $with_lib_path | sed 's/:/ /g'` \
     `echo $exec_prefix | sed "s@^NONE@$prefix/lib@g" | sed "s@^NONE@$ac_default_prefix/lib@g"` \
     /usr/local/lib /sw/local/lib /sw/lib \
@@ -73,6 +77,7 @@ fi
 
 AC_PROG_MAKE_SET
 AC_PROG_RANLIB
+AC_CHECK_TOOL(NM, nm, strings)
 
 if test "x$ac_cv_prog_cc_stdc" = xno ; then
   AC_ERROR([the C compiler doesn't handle ANSI-C])
@@ -81,6 +86,17 @@ fi
 AC_PROG_INSTALL
 
 LSH_DEPENDENCY_TRACKING
+
+if test x$enable_dependency_tracking = xyes ; then
+  # Since the makefiles use include to get the dependency files, we must
+  # make sure that the files exist. We generate some more files than are
+  # actually needed.
+
+  AC_CONFIG_COMMANDS([dummy-dep-files],
+  [(cd "$srcdir" && find . -name '*.c' -print) \
+ | sed 's/\.c$//' | (while read f; do echo > "$f.o.d"; echo > "$f.po.d"; done)
+])
+fi
 
 # Select assembler code
 asm_path=
@@ -163,7 +179,58 @@ else
 fi
 AC_SUBST([CCPIC_MAYBE])
 
-LSH_MAKE_CONDITIONAL([ENABLE_ASM], [test x$enable_assembler = xyes])
+ASM_SYMBOL_PREFIX=''
+ASM_ELF_STYLE='no'
+
+if test x$enable_assembler = xyes ; then
+  AC_CACHE_CHECK([if globals are prefixed by underscore],
+  nettle_cv_asm_underscore,
+  [ # Default is no underscore
+    nettle_cv_asm_underscore=no
+    AC_COMPILE_IFELSE(
+      [int a_global_symbol;],
+      [ $NM conftest.$OBJEXT >conftest.out
+        if grep _a_global_symbol conftest.out >/dev/null ; then
+          nettle_cv_asm_underscore=yes
+        elif grep a_global_symbol conftest.out >/dev/null ; then
+          nettle_cv_asm_underscore=no
+        else
+          AC_MSG_WARN([nm doesn't list a_global_symbol at all])
+	fi],
+      [AC_MSG_WARN([test program with a single global could not be compiled!?])])])
+  if test x$nettle_cv_asm_underscore = xyes ; then
+    ASM_SYMBOL_PREFIX='_'
+  fi
+  # With inspiration from GMP_TRY_ASSEMBLE
+  AC_CACHE_CHECK([for ELF-style pseudo-ops],
+    nettle_cv_asm_elf_style_pseudo_ops,
+    [cat >conftest.s <<EOF
+.text
+.globl foo
+.type foo @function
+foo:
+.Lend:
+
+.size foo, .Lend - foo
+EOF
+    nettle_assemble="$CC $CFLAGS $CPPFLAGS -c conftest.s >conftest.out 2>&1"
+    if AC_TRY_EVAL(nettle_assemble); then
+      cat conftest.out >&AC_FD_CC
+      nettle_cv_asm_elf_style_pseudo_ops=yes
+    else
+      cat conftest.out >&AC_FD_CC
+      echo "configure: failed program was:" >&AC_FD_CC
+      cat conftest.s >&AC_FD_CC
+      nettle_cv_asm_elf_style_pseudo_ops=no
+    fi
+    rm -f conftest.*])
+  if test x$nettle_cv_asm_elf_style_pseudo_ops = xyes ; then
+    ASM_ELF_STYLE='yes'
+  fi
+fi
+
+AC_SUBST(ASM_SYMBOL_PREFIX)
+AC_SUBST(ASM_ELF_STYLE)
 
 AC_SUBST(SHLIBCFLAGS)
 AC_SUBST(SHLIBMAJOR)
@@ -185,6 +252,10 @@ AC_TYPE_UID_T
 AC_TYPE_SIZE_T
 AC_HEADER_TIME
 
+AC_CHECK_HEADERS([openssl/blowfish.h openssl/des.h openssl/cast.h openssl/aes.h],,
+[enable_openssl=no
+ break])
+
 LSH_FUNC_ALLOCA
 
 # Needed by the supplied memcmp.c
@@ -195,7 +266,7 @@ LSH_GCC_ATTRIBUTES
 
 # According to Simon Josefsson, looking for uint32_t and friends in
 # sys/types.h is needed on some systems, in particular cygwin.
-AX_CREATE_STDINT_H([nettle-types.h], [sys/types.h])
+AX_CREATE_STDINT_H([nettle-stdint.h], [sys/types.h])
 
 # Checks for libraries
 AC_CHECK_LIB(gmp, __gmpz_getlimbn,,
@@ -217,16 +288,21 @@ AC_SUBST(RSA_EXAMPLES)
 # Add -R flags needed to run programs linked with gmp
 LSH_RPATH_FIX
 
-AH_TEMPLATE([HAVE_LIBCRYPTO],
-	    [Define if you have openssl's libcrypto (used for benchmarking)])
-
 OPENSSL_LIBFLAGS=''
 
 # Check for openssl's libcrypto (used only for benchmarking)
-AC_CHECK_LIB(crypto, BF_ecb_encrypt,
-  [AC_DEFINE(HAVE_LIBCRYPTO)
-   OPENSSL_LIBFLAGS='-lcrypto'
-])
+if test x$enable_openssl = xyes ; then
+  AC_CHECK_LIB(crypto, BF_ecb_encrypt,
+    [OPENSSL_LIBFLAGS='-lcrypto'],
+    [enable_openssl=no])
+fi
+
+AH_TEMPLATE([WITH_OPENSSL],
+	    [Define if you have openssl's libcrypto (used for benchmarking)])
+
+if test x$enable_openssl = xyes ; then
+  AC_DEFINE(WITH_OPENSSL)
+fi
 
 AC_SUBST(OPENSSL_LIBFLAGS)
 
