@@ -579,7 +579,7 @@ void push_psd_image( struct psd_image *i )
   ref_push_string( s_height ); push_int( i->rows );
   ref_push_string( s_width );  push_int( i->columns );
   ref_push_string( s_compression ); push_int( i->compression );
-  ref_push_string( s_depth ); push_int( i->compression );
+  ref_push_string( s_depth ); push_int( i->depth );
   ref_push_string( s_mode ); push_int( i->mode );
   ref_push_string( s_color_data ); push_buffer( &i->color_data );
 /*   ref_push_string( s_resource_data ); push_buffer( &i->resource_data ); */
