@@ -194,9 +194,9 @@ static void __yy_memcpy(char *to, YY_FROM_CONST char *from,
 #include <stdio.h>
 int yylex(YYSTYPE *yylval);
 /* Bison is stupid, and tries to optimize for space... */
-#ifdef YYBISON
-#define short int
-#endif /* YYBISON */
+#ifdef BISON_SHORT_EXPANSION
+#define short BISON_SHORT_EXPANSION
+#endif
 
 %}
 

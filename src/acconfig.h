@@ -83,6 +83,10 @@
 /* Enable internal profiling */
 #undef INTERNAL_PROFILING
 
+/* If possible, the expansion for a "#define short" to avoid that bison
+ * uses short everywhere internally. */
+#undef BISON_SHORT_EXPANSION
+
 /* The following USE_* are used by smartlink */
 /* Define this if your ld sets the run path with -rpath */
 #undef USE_RPATH
