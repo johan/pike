@@ -1025,7 +1025,7 @@ PIKECLASS file_line_iterator
 	Pike_error("iterators cannot be reused.\n");
       }
       if (!feed) {
-	Pike_error("iterator create arguement must be function(:string).\n");
+	Pike_error("iterator create argument must be function(:string).\n");
       }
       assign_svalue( &THIS->feed, feed );
       apply_svalue( &THIS->feed, 0 );
