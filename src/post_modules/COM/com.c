@@ -18,7 +18,6 @@
 #endif /* HAVE_CONFIG_H */
 
 #include "global.h"
-RCSID("$Id$");
 #include "program.h"
 #include "interpret.h"
 #include "stralloc.h"
@@ -148,9 +147,9 @@ static void com_throw_error2(HRESULT hr, EXCEPINFO excep)
         char errDesc[512];
         char errMsg[512];
         wcstombs(errDesc, excep.bstrDescription, 512);
-        sprintf(errMsg, "Run-time error %d:\n\n %s", 
-                excep.scode & 0x0000FFFF,  //Lower 16-bits of SCODE
-                errDesc);                  //Text error description
+        _snprintf(errMsg, sizeof(errMsg), "Run-time error %d:\n\n %s",
+		  excep.scode & 0x0000FFFF,  //Lower 16-bits of SCODE
+		  errDesc);                  //Text error description
         Pike_error("Server Error:%s\n", errMsg);
     }
     else
