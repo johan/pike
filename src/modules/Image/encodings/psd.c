@@ -172,15 +172,15 @@ struct layer
 {
   struct layer *next;
   struct layer *prev;
-  unsigned int top;
-  unsigned int left;
-  unsigned int right;
-  unsigned int bottom;
+  int top;
+  int left;
+  int right;
+  int bottom;
 
-  unsigned int mask_top;
-  unsigned int mask_left;
-  unsigned int mask_right;
-  unsigned int mask_bottom;
+  int mask_top;
+  int mask_left;
+  int mask_right;
+  int mask_bottom;
   unsigned int mask_default_color;
   unsigned int mask_flags;
 
