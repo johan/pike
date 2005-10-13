@@ -34,8 +34,6 @@
 
 #include <signal.h>
 
-RCSID("$Id$");
-
 
 #ifdef THIS
 #undef THIS
