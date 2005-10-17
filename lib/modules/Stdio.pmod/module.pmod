@@ -25,6 +25,8 @@ inherit files;
 #define register_close_file(id)
 #endif
 
+static constant LineIterator = __builtin.file_line_iterator;
+
 //! The Stdio.Stream API.
 //!
 //! This class exists purely for typing reasons.
@@ -409,8 +411,6 @@ class File
   {
     return lambda(){ return read( nbytes); };
   }
-
-  constant LineIterator = __builtin.file_line_iterator;
 
   String.SplitIterator|LineIterator line_iterator( int|void trim )
   //! Returns an iterator that will loop over the lines in this file. 
