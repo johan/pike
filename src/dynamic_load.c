@@ -612,6 +612,7 @@ void f_load_module(INT32 args)
       new_module->exit();
       dlclose(module);
       dynamic_module_list = new_module->next;
+      free_string(new_module->name);
       free(new_module);
       if (strlen(module_name->str) < 1024) {
 	Pike_error("Failed to initialize dynamic module \"%s\".\n",
