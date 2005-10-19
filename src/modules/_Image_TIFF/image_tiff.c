@@ -1001,8 +1001,10 @@ PIKE_MODULE_INIT
    image_program = PIKE_MODULE_IMPORT(Image, image_program);
    image_colortable_program = PIKE_MODULE_IMPORT(Image,
 						image_colortable_program);
-   if(!image_program || !image_colortable_program)
-    yyerror("Could not load Image module.\n");
+   if(!image_program || !image_colortable_program) {
+      yyerror("Could not load Image module.");
+      return;
+   }
 #endif /* DYNAMIC_MODULE */
 
    TIFFSetWarningHandler(my_tiff_warning_handler);

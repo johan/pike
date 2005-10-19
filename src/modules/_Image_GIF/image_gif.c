@@ -2742,8 +2742,10 @@ PIKE_MODULE_INIT
   image_layer_program = PIKE_MODULE_IMPORT(Image, image_layer_program);
 #endif /* DYNAMIC_MODULE */
 
-  if (!image_program || !image_colortable_program || !image_layer_program)
-    yyerror("Could not load Image module.\n");
+  if (!image_program || !image_colortable_program || !image_layer_program) {
+    yyerror("Could not load Image module.");
+    return;
+  }
 
   ADD_FUNCTION("render_block", image_gif_render_block,
 	       tFunc(tObj tObj

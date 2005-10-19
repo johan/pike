@@ -97,7 +97,7 @@ extern struct program *image_program;
 
 #endif /* HAVE_JPEGLIB_H */
 
-static struct pike_string *param_baseline;
+static struct pike_string *param_baseline = NULL;
 static struct pike_string *param_quality;
 static struct pike_string *param_optimize;
 static struct pike_string *param_smoothing;
@@ -1483,6 +1483,7 @@ void image_jpeg_quant_tables(INT32 args)
 
 PIKE_MODULE_EXIT
 {
+   if (!param_baseline) return;
    free_string(param_baseline);
    free_string(param_quality);
    free_string(param_optimize);
@@ -1509,8 +1510,10 @@ PIKE_MODULE_INIT
 #ifdef HAVE_JPEGLIB_H
 #ifdef DYNAMIC_MODULE
     image_program = PIKE_MODULE_IMPORT(Image, image_program);
-    if(!image_program)
-      yyerror("Could not load Image module.\n");
+    if(!image_program) {
+       yyerror("Could not load Image module.");
+       return;
+    }
 #endif /* DYNAMIC_MODULE */
 
 #define tOptions tMap(tStr,tOr3(					\
