@@ -1787,8 +1787,10 @@ void init_image_png(void)
 {
 #ifdef DYNAMIC_MODULE
    crc32 = PIKE_MODULE_IMPORT(Gz, crc32);
-   if(!crc32)
-     yyerror("Could not load Image module.\n");
+   if(!crc32) {
+     yyerror("Could not load Image module.");
+     return;
+   }
 #endif
 
    push_text("Gz");
