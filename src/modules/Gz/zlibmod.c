@@ -27,6 +27,7 @@
 #include "threads.h"
 #include "dynamic_buffer.h"
 #include "operators.h"
+#include "module_support.h"
 
 #include <zlib.h>
 
@@ -677,6 +678,7 @@ PIKE_MODULE_INIT
   ADD_FUNCTION("crc32",gz_crc32,tFunc(tStr tOr(tVoid,tInt),tInt),
 	       OPT_TRY_OPTIMIZE);
 
+  PIKE_MODULE_EXPORT(Gz, crc32);
 #endif
 }
 
