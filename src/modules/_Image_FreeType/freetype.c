@@ -384,11 +384,9 @@ PIKE_MODULE_INIT
   if( !FT_Init_FreeType( &library ) )
   {
 #ifdef DYNAMIC_MODULE
-    push_text("Image.Image");
-    SAFE_APPLY_MASTER("resolv",1);
-    if (sp[-1].type==T_PROGRAM)
-      image_program=program_from_svalue(sp-1);
-    pop_n_elems(1);
+    image_program = PIKE_MODULE_IMPORT(Image, image_program);
+    if(!image_program)
+      yyerror("Could not load Image module.\n");
 #endif /* DYNAMIC_MODULE */
 
     start_new_program( );
