@@ -154,6 +154,8 @@ static DNSServiceErrorType start_service(struct service *svc,
                            txtlen, txt, start_service_callback, NULL);
   if (err == kDNSServiceErr_NoError)
     svc->service_ref = ref;
+
+  err = DNSServiceProcessResult(ref);
   return err;
 }
 
