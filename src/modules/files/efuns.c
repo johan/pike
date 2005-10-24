@@ -851,7 +851,7 @@ void f_get_dir(INT32 args)
 #ifdef USE_FDOPENDIR
   int dir_fd;
 #endif
-  DIR *dir;
+  DIR *dir = NULL;
 #ifdef HAVE_READDIR_R
   ptrdiff_t name_max = -1;
 #endif
