@@ -46,8 +46,11 @@ mapping cert_data;
 
 array(int) version;
 
-//!
+//! the peer certificate chain
 array(string) peer_certificate_chain;
+
+//! our certificate chain
+array(string) certificate_chain;
 
 //! Sets the proper authentication method and cipher specification
 //! for the given cipher @[suite] and @[verison].
