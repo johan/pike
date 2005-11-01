@@ -3022,15 +3022,19 @@ int main()
 EOF
     if $YACC -d conftest.y 1>&AC_FD_CC 2>&AC_FD_CC; then
       if test "x$enable_binary" = "xno"; then
+        rm -f y.tab.*
 	break
       else
 	AC_TRY_RUN([
 #include "y.tab.c"
 ],pure_parser_works=yes,pure_parser_works=no,pure_parser_works=no)
+	rm -f y.tab.*
 	if test "$pure_parser_works" = "yes"; then
 	  break
 	fi
       fi
+    else
+      rm -f y.tab.*
     fi
   fi
 done
