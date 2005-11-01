@@ -7314,8 +7314,11 @@ PMOD_EXPORT void change_compiler_compatibility(int major, int minor)
 
 void make_program_executable(struct program *p)
 {
+#if !defined(HAVE_MMAP) || !defined(MEXEC_USES_MMAP)
   mprotect((void *)p->program, p->num_program*sizeof(p->program[0]),
 	   PROT_EXEC | PROT_READ | PROT_WRITE);
+#endif /* !HAVE_MMAP || !MEXEC_USES_MMAP */
+
 #ifdef FLUSH_INSTRUCTION_CACHE
   FLUSH_INSTRUCTION_CACHE(p->program,
 			  p->num_program*sizeof(p->program[0]));
