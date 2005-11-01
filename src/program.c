@@ -8078,8 +8078,10 @@ void make_program_executable(struct program *p)
 
 #else  /* _WIN32 */
 
+#if !defined(HAVE_MMAP) || !defined(MEXEC_USES_MMAP)
   mprotect((void *)p->program, p->num_program*sizeof(p->program[0]),
 	   PROT_EXEC | PROT_READ | PROT_WRITE);
+#endif /* !HAVE_MMAP || !MEXEC_USES_MMAP */
 
 #endif /* _WIN32 */
 
