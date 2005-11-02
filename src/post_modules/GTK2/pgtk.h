@@ -30,7 +30,7 @@
 */
 #include <gtk/gtk.h>
 #if defined(HAVE_GNOME)
-# include <libgnome.h>
+# include <libgnome/libgnome.h>
 /*# include <libgnorba/gnorba.h> */
 #endif
 
