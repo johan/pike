@@ -29,8 +29,12 @@
 #include <glib-object.h>
 */
 #include <gtk/gtk.h>
-#if defined(HAVE_GNOME)
+
+#ifdef HAVE_GNOME
 # include <libgnome/libgnome.h>
+# ifdef HAVE_GNOMEUI
+#  include <libgnomeui/libgnomeui.h>
+# endif
 /*# include <libgnorba/gnorba.h> */
 #endif
 
