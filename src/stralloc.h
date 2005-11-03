@@ -22,7 +22,8 @@
 
 #define PIKE_STRING_CONTENTS						\
   INT32 refs;								\
-  INT32 size_shift; /* 30 bit waste, but good for alignment... */	\
+  INT16 flags;								\
+  INT16 size_shift; /* 14 bit waste, but good for alignment... */	\
   ptrdiff_t len; /* Not counting terminating NUL. */			\
   size_t hval;								\
   struct pike_string *next 
@@ -39,6 +40,11 @@ struct string_builder
   ptrdiff_t malloced;
   INT32 known_shift;
 };
+
+/* Flags used in pike_string->flags. */
+#define STRING_NOT_HASHED	1	/* Hash value is invalid. */
+#define STRING_NOT_SHARED	2	/* String not shared. */
+#define STRING_IS_SHORT		4	/* String is blockalloced. */
 
 /* Flags used by string_builder_append_integer() */
 #define APPEND_SIGNED		1	/* Value is signed */
