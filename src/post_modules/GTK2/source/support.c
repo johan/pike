@@ -1048,9 +1048,12 @@ void pgtk_set_gvalue(GValue *gv, GType gt, struct svalue *sv) {
     return;
   }
 /*  if (G_TYPE_IS_OBJECT(gt)) { */
-  if (G_TYPE_IS_OBJECT(gt) || gt==GDK_TYPE_DISPLAY || 
+  if (G_TYPE_IS_OBJECT(gt) ||
+#ifdef HAVE_GTK22
+      gt==GDK_TYPE_DISPLAY || gt==GDK_TYPE_SCREEN ||
+#endif
       gt==GDK_TYPE_PIXBUF || gt==GDK_TYPE_PIXMAP || gt==GDK_TYPE_IMAGE ||
-      gt==GDK_TYPE_WINDOW || gt==GDK_TYPE_VISUAL || gt==GDK_TYPE_SCREEN ||
+      gt==GDK_TYPE_WINDOW || gt==GDK_TYPE_VISUAL ||
       gt==GDK_TYPE_DRAWABLE || gt==GDK_TYPE_GC) {
     if (sv->type==PIKE_T_OBJECT && get_gobject(sv->u.object) &&
 		G_IS_OBJECT(get_gobject(sv->u.object)))
