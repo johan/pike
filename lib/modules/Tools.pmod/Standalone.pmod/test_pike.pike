@@ -327,11 +327,17 @@ int main(int argc, array(string) argv)
 	case "fail": fail=1; break;
         case "forked": {
  	  array(string) orig_argv = backtrace()[0][3];
-	  int i = search(orig_argv, argv[0]);
+	  int i = search(orig_argv, "-x");
 	  if (i < 0) {
-	    werror("Forked operation failed: Failed to find %O in %O\n",
-		   argv[0], orig_argv);
-	    break;
+	    i = search(orig_argv, argv[0]);
+	    if (i < 0) {
+	      werror("Forked operation failed: Failed to find %O in %O\n",
+		     argv[0], orig_argv);
+	      break;
+	    }
+	  } else {
+	    // pike -x test_pike
+	    i++;
 	  }
 	  forked = orig_argv[..i];
 	  break;
