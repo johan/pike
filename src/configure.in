@@ -7946,7 +7946,7 @@ $bundle_info])
 	    CFLAGS="$CCSHARED $CFLAGS"
 	    export CFLAGS
 
-	    extra_configure_args="$BUNDLE_FLAGS"
+	    extra_configure_args="$BUNDLE_FLAGS --disable-openssl"
 	    # Some libraries insist in using config.guess;
 	    # they tend to have problems with rntcl...
 	    # Let's help them along.
