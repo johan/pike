@@ -36,6 +36,10 @@
 # include <libgnome/libgnome.h>
 #endif
 
+#ifdef HAVE_GNOMECANVAS
+#include <libgnomecanvas/libgnomecanvas.h>
+#endif
+
 #ifdef __NT__
 /* Sockets are unimplemented on NT */
 #undef GTK_TYPE_SOCKET
