@@ -11,6 +11,7 @@
 #define PGTK2_SYMBOL_REMAP_H
 
 /* Hand coded. */
+#define __pgtk_string_data	__pgtk2_string_data
 #define IS_OBJECT_PROGRAM	PGTK2_IS_OBJECT_PROGRAM
 #define gdkimage_from_pikeimage	pgtk2_gdkimage_from_pikeimage
 #define get_color_from_pikecolor	pgtk2_get_color_from_pikecolor
