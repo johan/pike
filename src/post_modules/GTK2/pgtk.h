@@ -48,7 +48,6 @@
 #ifdef HAVE_GTKEXTRA_GTKEXTRA_H
 # include <gtkextra/gtkextra.h>
 #endif
-#include "prototypes.h"
 #ifdef HAVE_SIGNAL_H
 #include <signal.h>
 #endif
@@ -95,6 +94,9 @@ struct my_pixel {
   unsigned char b;
   unsigned char padding;
 };
+
+#include "pgtk2_symbol_remap.h"
+#include "prototypes.h"
 
 extern const char __pgtk_string_data[];
 extern int pigtk_is_setup;
