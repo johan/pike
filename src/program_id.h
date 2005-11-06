@@ -136,7 +136,9 @@
 #define tObjImpl_IMAGE_COLOR_COLOR_ID "\003\000\000\000\000\310"
 #define   tObjIs_IMAGE_COLOR_COLOR_ID "\003\001\000\000\000\310"
 
-/* 1000 - 2000 reserved for GTK. */
+/* 1000 - 1999 reserved for GTK. */
+/* 2000 - 2999 reserved for GTK2. */
+
 
 /* Start for dynamically allocated program ids. */
 #define PROG_DYNAMIC_ID_START		0x10000
