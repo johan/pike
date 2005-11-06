@@ -1742,8 +1742,10 @@ struct program *id_to_program(INT32 id)
     default:
       if ((id >= 100) && (id <= 300)) {
 	module = "Image";
-      } else if ((id >= 1000) && (id <= 2000)) {
+      } else if ((id >= 1000) && (id < 2000)) {
 	module = "___GTK";
+      } else if ((id >= 2000) && (id < 3000)) {
+	module = "___GTK2";
       }
       break;
     }
