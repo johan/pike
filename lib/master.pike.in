@@ -981,7 +981,7 @@ program low_cast_to_program(string pname,
   if(IS_ABSOLUTE_PATH(pname))
   {
     program|NoValue prog = programs[pname];
-    if (programp (prog)) return prog;
+    if ((!zero_type(prog)) && (prog != no_value)) return prog;
     pname=combine_path("",pname);
     return findprog(pname,ext,handler,mkobj);
   }
