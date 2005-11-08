@@ -1508,7 +1508,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	prog = prog->inherits[s->subtype].prog;
 
 	if ((prog->flags & PROGRAM_FINISHED) &&
-	    Pike_interpreter.evaluator_stack && !Pike_in_gc && master_object) {
+	    Pike_interpreter.evaluator_stack && !Pike_in_gc) {
 	  DECLARE_CYCLIC();
 	  int fun=FIND_LFUN(prog, LFUN__SPRINTF);
 	  debug_malloc_touch(prog);
@@ -1530,7 +1530,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	      push_constant_text("indent");
 	      push_int(indent);
 	      f_aggregate_mapping(2);					      
-	      safe_apply_low2(obj, fun ,2,1);
+	      safe_apply_low2(obj, fun ,2, !!master_object);
 
 	      debug_malloc_touch(obj);
 
@@ -1560,7 +1560,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	    END_CYCLIC();
 	  }
 	  
-	  if (!BEGIN_CYCLIC(0, obj)) {
+	  if (!BEGIN_CYCLIC(0, obj) && master_object) {
 	    /* We require some tricky coding to make this work
 	     * with tracing...
 	     */
