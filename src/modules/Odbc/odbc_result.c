@@ -440,6 +440,18 @@ static void f_fetch_row(INT32 args)
 	      push_int(0);
 	    }
 	    break;
+	  } else if (code == SQL_SUCCESS_WITH_INFO) {
+	    /* Data truncated. */
+	    num_strings++;
+#ifdef ODBC_DEBUG
+	    fprintf(stderr, "[%d] ", num_strings);
+#endif /* ODBC_DEBUG */
+	    if (PIKE_ODBC_RES->field_info[i].type == SQL_C_BINARY) {
+	      push_string(make_shared_binary_string(blob_buf, BLOB_BUFSIZ));
+	    } else {
+	      /* SQL_C_CHAR's are NUL-terminated... */
+	      push_string(make_shared_binary_string(blob_buf, BLOB_BUFSIZ - 1));
+	    }
 	  } else {
 	    num_strings++;
 #ifdef ODBC_DEBUG
@@ -451,15 +463,27 @@ static void f_fetch_row(INT32 args)
 #endif /* SQL_NO_TOTAL */
                 ) {
 	      push_string(make_shared_binary_string(blob_buf, len));
-	      break;
 	    } else {
-	      if (PIKE_ODBC_RES->field_info[i].type == SQL_C_BINARY) {
-		push_string(make_shared_binary_string(blob_buf, BLOB_BUFSIZ));
-	      } else {
-		/* SQL_C_CHAR's are NUL-terminated... */
-		push_string(make_shared_binary_string(blob_buf, BLOB_BUFSIZ - 1));
+	      /* Truncated, but no support for chained SQLGetData calls. */
+	      char *buf = xalloc(len+2);
+	      SQLLEN newlen = 0;
+	      code = SQLGetData(PIKE_ODBC_RES->hstmt, (SQLUSMALLINT)(i+1),
+				PIKE_ODBC_RES->field_info[i].type,
+				buf, len+1, &newlen);
+	      if (code != SQL_SUCCESS) {
+		Pike_error("odbc->fetch_row(): "
+			   "Unexpected code from SQLGetData(): %d\n",
+			   code);
 	      }
+	      if (len != newlen) {
+		Pike_error("odbc->fetch_row(): "
+			   "Unexpected length from SQLGetData(): "
+			   "%d (expected %d)\n", newlen, len);
+	      }
+	      push_string(make_shared_binary_string(buf, len));
+	      free(buf);
 	    }
+	    break;
 	  }
 	}
 	if (num_strings > 1) {
