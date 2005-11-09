@@ -89,7 +89,7 @@
 #include "../Image/image.h"
 
 #ifdef DYNAMIC_MODULE
-static struct program *image_program=NULL;
+static struct program *image_program;
 #else
 extern struct program *image_program; 
 /* Image module is probably linked static too. */
