@@ -91,5 +91,5 @@ THREADS_ALLOW();
 
 THREADS_DISALLOW();
 
-  ref_push_object(o);
+  push_object(o);
 }
