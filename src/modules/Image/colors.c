@@ -1779,6 +1779,8 @@ void init_image_colors(void)
      PROGRAM_CONSTANT |
      PROGRAM_NO_EXPLICIT_DESTRUCT ;
 
+   PIKE_MODULE_EXPORT(Image, image_color_program);
+
    /* this is the Image.Color stuff */
    
    ADD_FUNCTION("`[]",image_colors_index,tFunc(tStr,tObjIs_IMAGE_COLOR_COLOR_ID),0);
