@@ -1670,7 +1670,7 @@ static void file_open(INT32 args)
   {
      str=Pike_sp[-args].u.string;
 
-     if (strlen(str->str) != (size_t)str->len) {
+     if (string_has_null(str)) {
        /* Filenames with NUL are not supported. */
        ERRNO = errno = ENOENT;
        pop_n_elems(args);
