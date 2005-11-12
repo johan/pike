@@ -1,7 +1,7 @@
 # $Id$
 @make_variables@
 VPATH=@srcdir@
-OBJS=parser.o html.o rcs.o c.o pike.o
+OBJS=parser.o html.o rcs.o c.o pike.o xml.o
 MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 
 CONFIG_HEADERS=@CONFIG_HEADERS@

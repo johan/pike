@@ -3242,7 +3242,7 @@ static void init_xml_struct(struct object *o)
 /*! @endmodule
  */
 
-void init_xml(void)
+void init_parser_xml(void)
 {
   ptrdiff_t off;
   init_xmlinput_blocks();
@@ -3285,7 +3285,7 @@ void init_xml(void)
   ADD_FUNCTION("allow_rxml_entities", allow_rxml_entities,
 	       tFunc(tInt, tVoid), 0);
   ADD_FUNCTION("compat_allow_errors", compat_allow_errors, tFunc(tStr, tVoid), 0);
-  end_class("XML",0);
+  end_class("Simple",0);
 
   ADD_FUNCTION("isbasechar",f_isBaseChar,tFunc(tInt,tInt),0);
   ADD_FUNCTION("isidographic",f_isIdeographic,tFunc(tInt,tInt),0);
@@ -3300,7 +3300,7 @@ void init_xml(void)
 }
 
 
-void exit_xml(void)
+void exit_parser_xml(void)
 {
   free_all_xmlinput_blocks();
   free_svalue(&location_string_svalue);
