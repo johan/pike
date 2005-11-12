@@ -1174,18 +1174,9 @@ PIKE_MODULE_INIT
 
   /* function(int:string) */
   ADD_FUNCTION("fd_info", f_fd_info,tFunc(tInt,tStr), OPT_EXTERNAL_DEPEND);
-
-  {
-    extern void init_xml(void);
-    init_xml();
-  }
 }
 
 
 PIKE_MODULE_EXIT
 {
-  {
-    extern void exit_xml(void);
-    exit_xml();
-  }
 }
