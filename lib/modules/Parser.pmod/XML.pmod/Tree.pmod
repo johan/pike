@@ -743,6 +743,12 @@ static class VirtualNode {
       mTagName = name;
   }
 
+  //! Return the (resolved) namespace for this node.
+  string get_namespace()
+  {
+    return mNamespace;
+  }
+
   //! Return fully qualified name of the element node.
   string get_full_name()
   {
@@ -1657,7 +1663,7 @@ SimpleNode simple_parse_input(string data,
 			      void|mapping predefined_entities,
 			      ParseFlags|void flags)
 {
-  Parser.XML.Simple xp = Parser.XML.Simple();
+  .Simple xp = .Simple();
   SimpleNode mRoot;
 
   if (!(flags & PARSE_DISALLOW_RXML_ENTITIES))
@@ -1737,7 +1743,7 @@ Node parse_input(string data, void|int(0..1) no_fallback,
 		 void|int(0..1) parse_namespaces,
 		 ParseFlags|void flags)
 {
-  Parser.XML.Simple xp = Parser.XML.Simple();
+  .Simple xp = .Simple();
   Node mRoot;
 
   if (!(flags & PARSE_DISALLOW_RXML_ENTITIES))
