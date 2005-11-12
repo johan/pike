@@ -10439,8 +10439,13 @@ test_do(trace(0))
 test_eq(trace(0),0)
 
 // - ualarm
+
 // - umask
+test_true(intp(System.umask()))
+test_eq(System.umask(System.umask()),System.umask())
+
 // - uname
+test_true(mappingp(uname()))
 
 // - unicode_to_string
 // See string_to_unicode
