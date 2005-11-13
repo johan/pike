@@ -458,10 +458,11 @@ static void f_fuse_run( INT32 nargs )
     argv = malloc( sizeof(char *) * args->size );
     for( i = 0; i<args->size; i++ )
     {
-	if( args->item[i].type != PIKE_T_STRING )
+	if( args->item[i].type != PIKE_T_STRING ||
+	    string_has_null(args->item[i].u.string) )
 	{
 	    free( argv );
-	    Pike_error("Argument %d is not a string\n", i );
+	    Pike_error("Argument %d is not a nonbinary string\n", i );
 	}
 	argv[i] = args->item[i].u.string->str;
     }
