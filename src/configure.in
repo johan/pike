@@ -2059,6 +2059,11 @@ if test "$cflags_is_set" = "no"; then
       with_dynamic_modules=yes
       AC_DEFINE(USE_MY_WIN32_DLOPEN)
     fi
+
+    if echo foo "$CC" | egrep 'rntc.|rnt.cl' >/dev/null; then
+      #Add icon resource to pike.exe
+      EXTRA_OBJS="${EXTRA_OBJS} icons.RES"
+    fi
   ])
 
 dnl
