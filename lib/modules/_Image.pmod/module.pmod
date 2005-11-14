@@ -23,7 +23,7 @@ static constant fmts = ([
 //! has some limited ability to decode macbinary files as well.
 mapping _decode( string data )
 {
-  Image.image i, a;
+  Image.Image i, a;
   string format;
 
   if(!data)
