@@ -31,6 +31,7 @@ struct expect_result {
 #define PIKE_MODULE_IMPORT(MOD, SYM) \
   pike_module_import_symbol(#MOD "." #SYM, CONSTANT_STRLEN(#MOD "." #SYM), #MOD, CONSTANT_STRLEN(#MOD))
 
+#define HIDE_MODULE() ADD_INT_CONSTANT("this_program_does_not_exist",1,0)
 
 /* Prototypes begin here */
 PMOD_EXPORT int check_args(int args, ...);
