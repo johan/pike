@@ -19,7 +19,7 @@ mapping(string:mixed) create_pie(mapping(string:mixed) diagram_data)
 
   string where_is_ax;
 
-  object(Image.image) piediagram;
+  Image.Image piediagram;
 
   init_bg(diagram_data);
   piediagram=diagram_data["image"];
@@ -99,11 +99,11 @@ mapping(string:mixed) create_pie(mapping(string:mixed) diagram_data)
 	      ->write(UNICODE((string)(names[i]),diagram_data["encoding"]))
 	      ->scale(0,diagram_data["fontsize"]);
 	  else
-	    text[i]=Image.image(diagram_data["fontsize"],
+	    text[i]=Image.Image(diagram_data["fontsize"],
 				diagram_data["fontsize"]);
 
 	  if (text[i]->xsize()<1)
-	    text[i]=Image.image(diagram_data["fontsize"],
+	    text[i]=Image.Image(diagram_data["fontsize"],
 				diagram_data["fontsize"]);
 
 	  if (text[i]->xsize()>diagram_data["xsize"]/5+diagram_data["3Ddepth"])
@@ -249,9 +249,9 @@ mapping(string:mixed) create_pie(mapping(string:mixed) diagram_data)
 	    diagram_data["3Ddepth"];
 	}
       object skugg;
-      skugg=Image.image(piediagram->xsize(),piediagram->ysize(), 255,255,255);
+      skugg=Image.Image(piediagram->xsize(),piediagram->ysize(), 255,255,255);
       object foo;
-      foo=Image.image(piediagram->xsize(),piediagram->ysize(), 255,255,255);
+      foo=Image.Image(piediagram->xsize(),piediagram->ysize(), 255,255,255);
       skugg->tuned_box(xc,yc-yr-1,xc+xr+1,1+yc+yr+diagram_data["3Ddepth"],  
 		       ({			 
 			 ({255,255,255}),
@@ -391,7 +391,7 @@ mapping(string:mixed) create_pie(mapping(string:mixed) diagram_data)
 	{
 	  
 	  
-	  tbild=Image.image(imxsize, imysize, 255, 255, 255)->
+	  tbild=Image.Image(imxsize, imysize, 255, 255, 255)->
 	    tuned_box(0, 0 , 1, imysize,
 		      ({a,a,b,b}));
 	  tbild=tbild->paste(tbild->copy(0,0,0, imysize), 1, 0);
