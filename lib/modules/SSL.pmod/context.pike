@@ -238,7 +238,7 @@ void record_session(.session s)
 }
 
 //! Remove a session from the cache.
-void purge_session(object s)
+void purge_session(.session s)
 {
 #ifdef SSL3_DEBUG
   werror("SSL.context->purge_session: %O\n", s->identity || "");
