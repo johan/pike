@@ -643,7 +643,7 @@ program objects_reverse_lookup (object obj)
   if (sizeof (rev_objects) < sizeof (objects)) {
     foreach (objects; program prog; object|NoValue obj)
       if (obj == no_value)
-	m_delete (objects, obj);
+	m_delete (rev_objects, obj);
       else
 	rev_objects[obj] = prog;
   }
