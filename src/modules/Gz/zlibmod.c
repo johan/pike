@@ -679,6 +679,9 @@ PIKE_MODULE_INIT
 	       OPT_TRY_OPTIMIZE);
 
   PIKE_MODULE_EXPORT(Gz, crc32);
+#else
+  if(!TEST_COMPAT(7,6))
+    HIDE_MODULE();
 #endif
 }
 

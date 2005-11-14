@@ -763,6 +763,9 @@ PIKE_MODULE_INIT
   set_init_callback( aap_init_request_object );
   set_exit_callback( aap_exit_request_object );
   add_program_constant("prog", (c_request_program = end_program()), 0);
+#else
+  if(!TEST_COMPAT(7,6))
+    HIDE_MODULE();
 #endif /* _REENTRANT */
 }
 

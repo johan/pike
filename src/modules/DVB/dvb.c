@@ -1769,8 +1769,8 @@ PIKE_MODULE_EXIT {
 #else
 
 PIKE_MODULE_INIT {
-
-  /*add_integer_constant("DVB support IS MISSING", 0, 0);*/
+  if(!TEST_COMPAT(7,6))
+    HIDE_MODULE();
 }
 
 PIKE_MODULE_EXIT {

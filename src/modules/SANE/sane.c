@@ -826,6 +826,10 @@ PIKE_MODULE_EXIT
 
 #else
 #include "module.h"
-PIKE_MODULE_INIT {}
+#include "module_support.h"
+PIKE_MODULE_INIT {
+  if(!TEST_COMPAT(7,6))
+    HIDE_MODULE();
+}
 PIKE_MODULE_EXIT {}
 #endif

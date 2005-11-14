@@ -490,5 +490,8 @@ PIKE_MODULE_INIT
   set_init_callback(init_gdbm_glue);
   set_exit_callback(exit_gdbm_glue);
   end_class("gdbm",0);
+#else
+  if(!TEST_COMPAT(7,6))
+    HIDE_MODULE();
 #endif
 }

@@ -546,6 +546,9 @@ PIKE_MODULE_INIT
 
   init_odbc_res_programs();
 
+#else
+  if(!TEST_COMPAT(7,6))
+    HIDE_MODULE();
 #endif /* HAVE_ODBC */
 }
 
