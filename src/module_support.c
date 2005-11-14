@@ -287,7 +287,10 @@ static int va_get_args_2(struct svalue *s,
     case 's':
       if(s->type != T_STRING) goto type_err;
       if(s->u.string->size_shift) goto type_err;
-      /* Ought to check for embedded NUL here? */
+
+      /* FIXME: Should set a better error message. */
+      if(string_has_null(s->u.string)) goto type_err;
+
       *va_arg(ap, char **)=s->u.string->str;
       break;
 
