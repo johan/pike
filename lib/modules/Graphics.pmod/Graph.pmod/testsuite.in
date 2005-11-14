@@ -6,7 +6,7 @@ constant data = ([ "data":
 		   ({ ({1.0}), ({2.0}), ({1.0}), ({2.0}) }),
                 ]);
 mapping verify = copy_value(data);
-Image.image img = Graphics.Graph.$1(data);
+Image.Image img = Graphics.Graph.$1(data);
 if(!img)
   error("No image.\n");
 if(!equal(data,verify))
