@@ -2304,9 +2304,9 @@ PMOD_EXPORT void apply_array(struct array *a, INT32 args)
   stack_pop_n_elems_keep_top(args);
 }
 
-/** reverse the elements in an array
- *  if the array has more than one reference, the array will be reversed
- *  into a new array. otherwise, the same array is reversed.
+/** Reverse the elements in an array. If the array has more than one
+ *  reference, the array will be reversed into a new array. Otherwise
+ *  the array will be destructively reversed in place.
  */
 PMOD_EXPORT struct array *reverse_array(struct array *a)
 {
