@@ -8,9 +8,7 @@
 
 #include "graph.h"
 
-inherit "polyline.pike";
-inherit "create_graph.pike";
-inherit "create_bars.pike";
+inherit .create_bars;
 
 mapping(string:mixed) create_pie(mapping(string:mixed) diagram_data)
 {
