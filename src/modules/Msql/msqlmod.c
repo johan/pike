@@ -9,6 +9,9 @@
 #include "global.h"
 #include "module.h"
 #include "msql_config.h"
+#include "program.h"
+#include "module_support.h"
+
 #ifdef HAVE_MSQL
 
 /* #define MSQL_DEBUG 1 */
@@ -24,9 +27,7 @@
 #include "machine.h"
 #include "interpret.h"
 #include "builtin_functions.h"
-#include "module_support.h"
 #include "svalue.h"
-#include "program.h"
 #include "array.h"
 #include "mapping.h"
 #include "stralloc.h"
