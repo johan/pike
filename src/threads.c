@@ -1460,9 +1460,10 @@ void exit_mutex_key_obj(struct object *o)
     THIS_KEY->mutex_obj = NULL;
     if (mut->num_waiting)
       co_signal(&mut->condition);
-    else if (!mutex_obj->prog)
+    else if (mutex_obj && !mutex_obj->prog)
       co_destroy (&mut->condition);
-    free_object(mutex_obj);
+    if (mutex_obj)
+      free_object(mutex_obj);
   }
 }
 
