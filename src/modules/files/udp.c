@@ -26,6 +26,7 @@
 #include "pike_types.h"
 #include "threads.h"
 #include "bignum.h"
+#include "pike_netlib.h"
 
 #include "module_support.h"
 #include "builtin_functions.h"
