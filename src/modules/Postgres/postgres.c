@@ -808,7 +808,7 @@ PIKE_MODULE_EXIT
 }
 
 #else /* HAVE_POSTGRES */
-#include "cpp.h"
+#include "program.h"
 #include "module.h"
 #include "module_support.h"
 PIKE_MODULE_INIT {

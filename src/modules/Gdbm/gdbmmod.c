@@ -15,7 +15,7 @@
 #include "svalue.h"
 #include "stralloc.h"
 #include "module.h"
-#include "cpp.h"
+#include "program.h"
 #include "module_support.h"
 
 #if defined(HAVE_GDBM_H) && defined(HAVE_LIBGDBM)
