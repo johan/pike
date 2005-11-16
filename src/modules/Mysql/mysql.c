@@ -77,6 +77,8 @@
 #include "fd_control.h"
 #include "mapping.h"
 #include "bignum.h"
+#include "cpp.h"
+#include "module_support.h"
 
 /* System includes */
 #ifdef HAVE_STRING_H
