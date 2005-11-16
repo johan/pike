@@ -2,7 +2,7 @@ START_MARKER
 // $Id$
 
 // gdbm
-cond( [[ master()->resolv("Gdbm")->gdbm ]],
+cond( [[ master()->resolv("Gdbm") ]],
 [[
   test_true(programp(Gdbm.gdbm))
   test_do(destruct(Gdbm.gdbm()))
