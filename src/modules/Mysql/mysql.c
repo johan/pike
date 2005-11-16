@@ -823,8 +823,12 @@ static void f_select_db(INT32 args)
   pop_n_elems(args);
 }
 
+#ifndef STDCALL
+#define STDCALL
+#endif
+
 static void low_query(INT32 args, char *name,
-		      MYSQL_RES* (*mysql_func)(MYSQL*))
+		      MYSQL_RES* STDCALL (*mysql_func)(MYSQL*))
 {
   MYSQL *socket = PIKE_MYSQL->socket;
   MYSQL_RES *result = NULL;
