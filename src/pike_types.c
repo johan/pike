@@ -4207,7 +4207,7 @@ static int low_minimum_arguments(struct pike_type *q)
   }
 }
 
-/* Count the minimum number of arguments for a funciton type.
+/* Count the minimum number of arguments for a function type.
  */
 int minimum_arguments(struct pike_type *s)
 {
