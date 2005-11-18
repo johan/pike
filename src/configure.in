@@ -4284,6 +4284,7 @@ AC_CHECK_FUNCS( \
  nanosleep \
  thr_yield \
  prctl \
+ SetFilePointerEx \
  sync_instruction_memory \
  MakeDataExecutable \
 )
