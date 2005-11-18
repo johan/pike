@@ -1736,8 +1736,8 @@ static node *optimize_sprintf(node *n)
 	  struct pike_string *percent_string;
 	  yywarning("Ignoring second argument to sprintf.");
 	  MAKE_CONST_STRING(percent_string, "%");
-	  ADD_NODE_REF2(*arg2,
-			ret = mknode(F_COMMA_EXPR, *arg2,
+	  ADD_NODE_REF2(*arg1,
+			ret = mknode(F_COMMA_EXPR, *arg1,
 				     mkstrnode(percent_string)));
 	  return ret;
 	}
