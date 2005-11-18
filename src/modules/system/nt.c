@@ -3153,7 +3153,7 @@ static void f_nt_uname(INT32 args)
       break;
   }
 
-  snprintf(buf, sizeof(buf), "Windows %s %ld.%ld.%ld",
+  SNPRINTF(buf, sizeof(buf), "Windows %s %ld.%ld.%ld",
 	  version,
 	  osversion.dwMajorVersion,
 	  osversion.dwMinorVersion,
