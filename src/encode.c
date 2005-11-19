@@ -31,7 +31,7 @@
 #include "opcodes.h"
 #include "peep.h"
 
-#define ENCODE_DEBUG
+/* #define ENCODE_DEBUG */
 
 /* Use the old encoding method for programs. */
 /* #define OLD_PIKE_ENCODE_PROGRAM */
