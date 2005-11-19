@@ -31,7 +31,7 @@
 #include "opcodes.h"
 #include "peep.h"
 
-/* #define ENCODE_DEBUG */
+#define ENCODE_DEBUG
 
 /* Use the old encoding method for programs. */
 /* #define OLD_PIKE_ENCODE_PROGRAM */
@@ -1433,7 +1433,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 		    /* Code the number of the string containing
 		     * the raw bytecode.
 		     */
-		    code_number(((INT32 *)(p->program+id->func.offset))[-1],
+		    code_number(read_data(p->program + id->func_offset, -1),
 				data);
 		  } else {
 		    /* Prototype */
