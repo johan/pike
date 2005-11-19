@@ -1433,7 +1433,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 		    /* Code the number of the string containing
 		     * the raw bytecode.
 		     */
-		    code_number(read_data(p->program + id->func_offset, -1),
+		    code_number(read_data(p->program + id->func.offset, -1),
 				data);
 		  } else {
 		    /* Prototype */
