@@ -52,6 +52,7 @@ void sparc_update_pc(void);
 #define ins_align(ALIGN)
 #define ins_byte(VAL)	  add_to_program((INT32)(VAL))
 #define ins_data(VAL)	  add_to_program((INT32)(VAL))
+#define read_data(PTR, OFF)	((INT32)((PTR)[OFF]))
 
 #define READ_INCR_BYTE(PC)	(((PC)++)[0])
 
