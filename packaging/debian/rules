@@ -282,8 +282,18 @@ install: build
 
 	# Some more permission changes
 	for f in run_autoconf precompile.sh smartlink fixdepends.sh install_module; do \
-	    chmod 755 $(CURDIR)/debian/$(PIKE)-dev/usr/include/pike/$(VERSION)/$$f ; \
+	    chmod 755 $(CURDIR)/debian/$(PIKE)-core/usr/include/pike/$(VERSION)/$$f ; \
 	done
+
+	# pike -x module fix
+	echo 's;\$$\(MODULE_BASE\)/dynamic_module_makefile;\$$\(PIKE_SRC_DIR\)/dynamic_module_makefile;g' > \
+	  $(CURDIR)/debian/sed-script.tmp
+	sed -r -f $(CURDIR)/debian/sed-script.tmp < \
+	  $(CURDIR)/debian/$(PIKE)-core/usr/include/pike/$(VERSION)/dynamic_module_makefile > \
+	  $(CURDIR)/debian/$(PIKE)-core/usr/include/pike/$(VERSION)/dynamic_module_makefile.new
+	mv $(CURDIR)/debian/$(PIKE)-core/usr/include/pike/$(VERSION)/dynamic_module_makefile.new \
+	   $(CURDIR)/debian/$(PIKE)-core/usr/include/pike/$(VERSION)/dynamic_module_makefile
+	rm -f $(CURDIR)/debian/sed-script.tmp
 
 	# Create the documentation links to save space
 	for f in `cat $(CURDIR)/debian/tocoredoc.txt`; do \
