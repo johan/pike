@@ -2466,7 +2466,7 @@ void f__exit(INT32 args)
   int code;
   ASSERT_SECURITY_ROOT("_exit");
 
-  get_all_args("_exit", args, "%i", &code);
+  get_all_args("_exit", args, "%d", &code);
 
 #ifdef PIKE_DEBUG
   {
