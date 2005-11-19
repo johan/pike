@@ -18,6 +18,7 @@
 #include "program_id.h"
 #include "pike_rusage.h"
 #include "block_alloc_h.h"
+#include "pikecode.h"
 
 /* Needed to support dynamic loading on NT */
 PMOD_PROTO extern struct program_state * Pike_compiler;
@@ -134,6 +135,10 @@ struct object;
 #define PIKE_BYTECODE_SPARC	2
 #define PIKE_BYTECODE_IA32	3
 #define PIKE_BYTECODE_PPC32     4
+
+#ifndef PIKE_BYTECODE_METHOD
+#error PIKE_BYTECODE_METHOD not set.
+#endif
 
 #if PIKE_BYTECODE_METHOD == PIKE_BYTECODE_IA32
 #define PIKE_OPCODE_T unsigned INT8
