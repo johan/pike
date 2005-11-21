@@ -135,7 +135,7 @@ build-indep-stamp:
 	# It's ok not to do anything here, if you don't need to build
 	#  anything for this package.
 	#/usr/bin/docbook-to-man debian/$(PIKE).sgml > $(PIKE).1
-	$(MAKE) -C$(CURDIR)/refdoc PIKE="$(RUNPIKE)"
+	#$(MAKE) -C$(CURDIR)/refdoc PIKE="$(RUNPIKE)"
 
 	touch build-indep-stamp
 
@@ -151,9 +151,6 @@ clean:
 	    mkdir -p src/lib/modules; \
 	    $(MAKE) -Csrc/ spotless; \
 	fi
-	- rm -rf refdoc/modref/
-	- rm -rf refdoc/traditional_manual/
-	- rm -rf refdoc/build/
 	- $(MAKE) cvsclean
 	- rm -f `find src -name "*.o" -print`
 	- rm -f `find src -name "*.a" -print`
