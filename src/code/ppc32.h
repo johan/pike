@@ -172,7 +172,7 @@ void ppc32_flush_code_generator_state(void);
 #define ins_align(ALIGN)
 #define ins_byte(VAL)	  add_to_program((INT32)(VAL))
 #define ins_data(VAL)	  add_to_program((INT32)(VAL))
-#define read_data(PTR, OFF)	((INT32)((PTR)[OFF]))
+#define read_program_data(PTR, OFF)	((INT32)((PTR)[OFF]))
 
 INT32 ppc32_ins_f_jump(unsigned int a, int backward_jump);
 INT32 ppc32_ins_f_jump_with_arg(unsigned int a, unsigned INT32 b, int backward_jump);
