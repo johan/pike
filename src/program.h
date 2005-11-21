@@ -18,7 +18,6 @@
 #include "program_id.h"
 #include "pike_rusage.h"
 #include "block_alloc_h.h"
-#include "pikecode.h"
 
 /* Needed to support dynamic loading on NT */
 PMOD_PROTO extern struct program_state * Pike_compiler;
