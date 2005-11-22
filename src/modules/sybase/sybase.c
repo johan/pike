@@ -79,11 +79,6 @@
 #define errdebug(err)
 #endif
 
-/* pike 0.6 compatibility stuff */
-#ifndef ADD_STORAGE
-#define ADD_STORAGE(X) add_storage(sizeof(X))
-#endif
-
 
 /* Actual code */
 #ifdef _REENTRANT
