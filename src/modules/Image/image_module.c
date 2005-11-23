@@ -310,11 +310,6 @@ PIKE_MODULE_INIT
    PIKE_MODULE_EXPORT(Image, image_colortable_program);
    PIKE_MODULE_EXPORT(Image, image_layer_program );
 #endif
-
-   /* compat stuff */
-   add_program_constant("font",image_font_program,0); 
-   add_program_constant("image",image_program,0); 
-   add_program_constant("colortable",image_colortable_program,0);
 }
 
 PIKE_MODULE_EXIT
