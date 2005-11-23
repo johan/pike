@@ -10,7 +10,7 @@
 
 /* Prototypes begin here */
 int main(int argc, char **argv);
-void pike_do_exit(int num);
+DECLSPEC(noreturn) void pike_do_exit(int num) ATTRIBUTE((noreturn));
 /* Prototypes end here */
 
 #endif /* !MAIN_H */
