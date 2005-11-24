@@ -300,20 +300,30 @@ static private array(mapping(string:mixed)) res_obj_to_array(object res_obj)
     array(mapping(string:mixed)) res = ({});
     array(string) fieldnames;
     array(mixed) row;
-    array(mapping) fields = res_obj->fetch_fields();
 
-    fieldnames = (map(fields,
-		      lambda (mapping(string:mixed) m) {
-			return (m->table||"") + "." + m->name;
-		      }) +
-                  fields->name);
+    array(mapping) fields = res_obj->fetch_fields();
+    if(!sizeof(fields)) return ({});
+
+    int has_table = fields[0]->table && fields[0]->table!="";
+
+    if(has_table)
+      fieldnames = (map(fields,
+			lambda (mapping(string:mixed) m) {
+			  return (m->table||"") + "." + m->name;
+			}) +
+		    fields->name);
+    else
+      fieldnames = fields->name;
 
     if (case_convert)
       fieldnames = map(fieldnames, lower_case);
 
-
-    while (row = res_obj->fetch_row())
-      res += ({ mkmapping(fieldnames, row + row) });
+    if(has_table)
+      while (row = res_obj->fetch_row())
+	res += ({ mkmapping(fieldnames, row + row) });
+    else
+      while (row = res_obj->fetch_row())
+	res += ({ mkmapping(fieldnames, row) });
 
     return res;
   }
