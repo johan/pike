@@ -1,7 +1,7 @@
 // $Id$
-#pike __REAL_VERSION__
+#pike 7.7
 
-inherit "../../../modules/Stdio.pmod/module.pmod";
+inherit Stdio.module;
 
 //! @decl string read_file(string filename)
 //! @decl string read_file(string filename, int start, int len)
