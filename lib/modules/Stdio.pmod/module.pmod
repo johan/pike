@@ -210,7 +210,7 @@ class File
 #ifdef __STDIO_DEBUG
     __closed_backtrace=0;
 #endif
-    if(query_num_arg()<3) bits=0666;
+    if (zero_type(bits)) bits=0666;
     debug_file = file;  debug_mode = mode;
     debug_bits = bits;
     if (::open(file,mode,bits)) {
