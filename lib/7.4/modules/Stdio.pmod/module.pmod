@@ -22,7 +22,9 @@ class File
   int open(string file, string mode, void|int bits)
   {
     _fd=Stdio.Fd();
-    return ::open(file,mode,bits);
+    if (query_num_arg() == 3)
+      return ::open(file, mode, bits);
+    return ::open(file, mode);
   }
 
 #if constant(files.__HAVE_OPENPT__)
