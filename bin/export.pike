@@ -135,11 +135,12 @@ void bump_version(int|void is_release)
 
 array(string) build_file_list(string vpath, string list_file)
 {
-  array(string) ret=({ }), missing=({ });
   if(!file_stat(list_file)) {
     werror("Could not find %s\n", list_file);
     exit(1);
   }
+
+  array(string) ret=({ }), missing=({ });
   foreach(Stdio.read_file(list_file) / "\n", string line)
     {
       if( !sizeof(line) || line[0]=='#' )
@@ -251,8 +252,6 @@ int main(int argc, array(string) argv)
     werror(documentation);
     return 1;
   }
-
-  export_list=srcdir+"/"+export_list;
 
   if(rebuild)
   {
