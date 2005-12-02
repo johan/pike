@@ -164,13 +164,13 @@ void bump_version(int|void is_release)
     }
     Stdio.write_file(pike_base_name+"/packaging/windows/pike.iss",
 		     lines*"\r\n");
-#endif
     Process.create_process( ({ "cvs", "commit", "-m",
 			       "release number bumped to "+rel+" by export.pike",
 			       "pike.iss" }),
 			     ([ "cwd":pike_base_name+"/packaging/windows" ])
 			     )->wait();
   }
+#endif
 }
 
 array(string) build_file_list(string vpath, string list_file)
