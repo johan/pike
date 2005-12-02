@@ -109,6 +109,11 @@
 #include <sys/ptrace.h>
 #endif
 
+#ifdef HAVE_SYS_PARAM_H
+/* Needed for <sys/user.h> on OpenBSD. */
+#include <sys/param.h>
+#endif
+
 #ifdef HAVE_SYS_USER_H
 /* NOTE: On AIX 4.x with COFF32 format, this file
  *       includes <syms.h>, which has incompatible
