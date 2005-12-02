@@ -284,24 +284,24 @@ An error occurred. See output on stderr (fd #2) for reason.
 .\" Set the paragraph distance to zero
 .PD 0
 .\" Basedirectory (bd)
-.ds bd /usr/local/pike/\n(mj.\n(mn.*
+.ds bd @PREFIX@
 .TP 24
-.B \*(bd/lib/master.pike
+.B \*(bd/lib/pike/pike\n(mj.\n(mn/master.pike
 default master program
 .TP
-.B \*(bd/lib/modules/*
+.B \*(bd/lib/pike/pike\n(mj.\n(mn/modules/*
 default module directory
 .TP
-.B \*(bd/lib/?.?/*
+.B \*(bd/lib/pike/pike\n(mj.\n(mn/?.?/*
 backward compatibility modules
 .TP
-.B \*(bd/lib/include/*
+.B \*(bd/lib/pike/pike\n(mj.\n(mn/include/*
 pike include files
 .TP
 .B \*(bd/tools/pike.el
 emacs fontlock definitions for pike-mode
 .TP
-.B \*(bd/include/pike/*
+.B \*(bd/include/pike/pike\n(mn.\n(mn/*
 C-include files
 .TP
 .B \*(bd/man/*
