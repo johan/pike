@@ -40,9 +40,11 @@ int va_get_args(struct svalue *s,
 		INT32 num_args,
 		const char *fmt,
 		va_list ap);
+#ifdef NOT_USED
 PMOD_EXPORT int get_args(struct svalue *s,
 	     INT32 num_args,
 	     const char *fmt, ...);
+#endif
 PMOD_EXPORT void get_all_args(const char *fname, INT32 args,
 			      const char *format,  ... );
 PMOD_EXPORT void pike_module_export_symbol(const char *str,

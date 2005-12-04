@@ -435,6 +435,7 @@ int va_get_args(struct svalue *s,
   return va_get_args_2 (s, num_args, fmt, ap, &info);
 }
 
+#ifdef NOT_USED
 /* get_args does NOT generate errors, it simply returns how
  * many arguments were actually matched.
  * usage: get_args(sp-args, args, "%i",&an_int)
@@ -450,6 +451,7 @@ PMOD_EXPORT int get_args(struct svalue *s,
   va_end(ptr);
   return ret;
 }
+#endif
 
 PMOD_EXPORT void get_all_args(const char *fname, INT32 args,
 			      const char *format,  ... )
