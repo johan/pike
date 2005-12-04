@@ -278,7 +278,7 @@ install: build
 	done; exit 0
 
 	# Some more permission changes
-	for f in run_autoconf precompile.sh smartlink fixdepends.sh install_module mktestsuite; do \
+	for f in run_autoconfig precompile.sh smartlink fixdepends.sh install_module mktestsuite; do \
 	    chmod 755 $(CURDIR)/debian/$(PIKE)-core/usr/include/pike/$(VERSION)/$$f ; \
 	done
 
