@@ -4779,6 +4779,13 @@ static struct pike_type *debug_low_make_pike_type(unsigned char *type_string,
     return mk_type(T_INT,
 		   (void *)(ptrdiff_t)extract_type_int(type_string+1),
 		   (void *)(ptrdiff_t)extract_type_int(type_string+5), 0);
+
+  case PIKE_T_INT_UNTYPED:
+    *cont = type_string + 1;
+    return mk_type(T_INT,
+		   (void *)(ptrdiff_t)0x80000000,
+		   (void *)(ptrdiff_t)0x7fffffff, 0);
+
   case T_OBJECT:
     *cont = type_string + 6;	/* 1 + sizeof(INT32) + 1 */
     return mk_type(T_OBJECT, (void *)(ptrdiff_t)(type_string[1]),
