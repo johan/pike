@@ -56,7 +56,7 @@ PMOD_EXPORT struct array weak_empty_array=
 
 struct array *first_array = &empty_array;
 struct array *gc_internal_array = 0;
-static struct array *gc_mark_array_pos = 0;
+static struct array *gc_mark_array_pos;
 
 #ifdef TRACE_UNFINISHED_TYPE_FIELDS
 PMOD_EXPORT int accept_unfinished_type_fields = 0;
