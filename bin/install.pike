@@ -1038,7 +1038,7 @@ int pre_install(array(string) argv)
     case "--traditional":
       exec_prefix=vars->exec_prefix||(prefix+"/bin/");
       lib_prefix=vars->lib_prefix||(prefix+"/lib/pike/");
-      include_prefix=combine_path(prefix,"include","pike");
+      include_prefix=vars->include_prefix||combine_path(prefix,"include","pike");
       doc_prefix=combine_path(prefix, "doc", "pike");
       man_prefix=vars->man_prefix||(prefix+"/man/");
       break;
@@ -1216,7 +1216,7 @@ int pre_install(array(string) argv)
     prefix = getcwd();
     exec_prefix = combine_path(prefix, "bin");
     lib_prefix = combine_path(prefix, "lib");
-    include_prefix = combine_path(prefix,"include","pike");
+    include_prefix = vars->include_prefix||combine_path(prefix,"include","pike");
     make_master("lib/master.pike", "lib/master.pike.in",
 		lib_prefix, include_prefix);
     status1("Installing master done.");
