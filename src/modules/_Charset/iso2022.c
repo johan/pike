@@ -60,13 +60,8 @@ struct iso2022enc_stor {
 extern struct charset_def charset_map[];
 extern int num_charset_def;
 
-extern const UNICHAR *iso2022_94[];
-extern const UNICHAR *iso2022_96[];
-extern const UNICHAR *iso2022_9494[];
-extern const UNICHAR *iso2022_9696[];
-
-static const UNICHAR **transltab[4] = { iso2022_94, iso2022_96,
-					iso2022_9494, iso2022_9696 };
+static const UNICHAR * const *transltab[4] = { iso2022_94, iso2022_96,
+					       iso2022_9494, iso2022_9696 };
 
 static ptrdiff_t eat_text(unsigned char *src, ptrdiff_t srclen,
 			  struct iso2022_stor *s, struct gdesc *g)

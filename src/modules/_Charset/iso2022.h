@@ -38,3 +38,9 @@ struct multichar_table {
   const unsigned int hi;
   const UNICHAR *const table;
 };
+
+extern const UNICHAR * const iso2022_94[];
+extern const UNICHAR * const iso2022_96[];
+extern const UNICHAR * const iso2022_9494[];
+extern const UNICHAR * const iso2022_9696[];
+
