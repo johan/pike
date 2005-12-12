@@ -83,6 +83,9 @@ static rgba_group decode_color( struct buffer *s )
   } 
   if(s->len==4&&(!strncmp(s->str,"None",4)||!strncmp(s->str,"none",4)))
   {
+#ifdef HIDE_WARNINGS
+      res.r = res.g = res.b = 0;
+#endif
     res.alpha = 0;
     return res;
   }
@@ -310,7 +313,7 @@ void f__xpm_write_rows( INT32 args )
           adst++;
         } else {
           dst++;
-          adst->r = adst->g = adst->b = color.alpha;
+          adst->r = adst->g = adst->b = 0;
 	  adst++;
         }
       }
