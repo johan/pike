@@ -334,6 +334,11 @@ static void f_decode_packbits_encoded(INT32 args)
   if(sp[-args].type != T_STRING)
     Pike_error("Internal argument error.\n");
 
+#ifdef HIDE_WARNINGS
+  b.str = NULL;
+  b.len = 0;
+#endif
+
 
   if(args == 5)
   {
