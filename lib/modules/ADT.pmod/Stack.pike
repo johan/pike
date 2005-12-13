@@ -130,6 +130,15 @@ this_program `+(this_program s) {
   return ns;
 }
 
+mixed cast(string to) {
+  switch(to) {
+  case "array":
+      return _values();
+  default:
+      error("Cannot cast to %s.\n", to);
+  }
+}
+
 string _sprintf(int t) {
   return t=='O' && sprintf("%O%O", this_program, _values());
 }
