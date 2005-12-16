@@ -157,7 +157,10 @@ import SSL.Constants;
 
       foreach(ar, string raw1)  {
 	oder = (.ldap_privates.ldap_der_decode(raw1)->elements[1]);
-	attrs = (["dn":({ASN1_DECODE_DN(oder)})]);
+	string dn = ASN1_DECODE_DN(oder);
+	if (ldap_version == 3)
+	  dn = utf2s(dn);
+	attrs = (["dn" : ({ dn }) ]);
 	if(catch(entry1 = ASN1_GET_ATTR_ARRAY(oder))) continue;
 	foreach(entry1, object attr1) {
 	  attrs += ([ASN1_GET_ATTR_NAME(attr1):_get_attr_values(ldap_version, attr1)]);
