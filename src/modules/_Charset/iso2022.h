@@ -32,3 +32,9 @@ struct charset_def {
   UNICHAR const *table;
   int mode;
 };
+
+extern const UNICHAR * const iso2022_94[];
+extern const UNICHAR * const iso2022_96[];
+extern const UNICHAR * const iso2022_9494[];
+extern const UNICHAR * const iso2022_9696[];
+
