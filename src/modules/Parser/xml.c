@@ -1524,6 +1524,9 @@ static void parse_optional_xmldecl(struct xmldata *data)
   {
     struct mapping *m;
 
+    if(data->input.pos != 5)
+      XMLERROR( "XML header must be at the first byte in the document." );
+
     push_constant_text("<?xml");
     push_int(0);
     push_mapping(m = allocate_mapping(3)); /* Attributes */
@@ -1534,7 +1537,6 @@ static void parse_optional_xmldecl(struct xmldata *data)
       XMLERROR("Missing '?>' at end of XML header.");
     else
       READ(2);
-
 
     if (!(THIS->flags & COMPAT_ALLOW_7_6_ERRORS)) {
       struct pike_string *str_version;
@@ -2416,9 +2418,6 @@ static struct pike_string *very_low_parse_xml(struct xmldata *data,
 		PEEK(3)=='m' &&
 		PEEK(4)=='l' &&
 		isSpace(PEEK(5))) {
-
-                /* Strictly we should throw an error if XMLDecl is
-                   anywhere but first in the document. */
                 parse_optional_xmldecl(data);
                 break;
 	    }else{
