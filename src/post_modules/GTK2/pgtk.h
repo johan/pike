@@ -223,6 +223,9 @@ void pgtk_free_str(gchar *s);
 #endif
 */
 
+#define GSTR0(X) (gchar*)STR0(X)
+#define CGSTR0(X) (const gchar*)STR0(X)
+
 /* Somewhat more complex than one could expect. Consider bignums. */
 LONGEST pgtk_get_int(struct svalue *s);
 int pgtk_is_int(struct svalue *s);
