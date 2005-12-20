@@ -153,6 +153,7 @@ class Directory
       }
     }
     if ((sizeof(base) > 8) || truncated) {
+      base = replace(base, " ", "_");
       int cnt;
       for (cnt = 0; cnt < 1000; cnt++) {
 	if (cnt < 10) {
