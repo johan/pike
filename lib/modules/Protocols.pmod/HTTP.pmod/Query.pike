@@ -565,7 +565,8 @@ this_program thread_request(string server, int port, string query,
 
    // prepare the request
 
-   errno = ok = protocol = headers = status_desc = status = datapos = 0;
+   errno = ok = protocol = this_program::headers = status_desc = status =
+     datapos = 0;
    buf = "";
 
    if (!data) data="";
