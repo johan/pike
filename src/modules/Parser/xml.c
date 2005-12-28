@@ -1524,8 +1524,10 @@ static void parse_optional_xmldecl(struct xmldata *data)
   {
     struct mapping *m;
 
+#if 0
     if(data->input.pos != 5)
       XMLERROR( "XML header must be at the first byte in the document." );
+#endif
 
     push_constant_text("<?xml");
     push_int(0);
