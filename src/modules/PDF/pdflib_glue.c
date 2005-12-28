@@ -807,7 +807,7 @@ static void pdf_open_image_file(INT32 args)
    INT_TYPE res=0,intparam=0;
    char *type=NULL,*filename=NULL,*stringparam=NULL;
    get_all_args("open_image_file",args,"%s%s.%s%d",&type,
-                &filename,&stringparam,&intoaram);
+                &filename,&stringparam,&intparam);
    if (!stringparam)
      stringparam="";
    if (!this->pdf) Pike_error("PDF not initiated\n");
