@@ -9,6 +9,11 @@
 #include <bignum.h>
 #include <stdarg.h>
 
+#ifndef INIT_VARIABLES
+extern struct program *image_color_program;
+extern struct program *image_program;
+#endif
+
 void pgtk_encode_grey(struct image *i, unsigned char *dest, int bpp, int bpl);
 
 void pgtk_verify_setup() {
