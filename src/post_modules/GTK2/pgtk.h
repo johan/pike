@@ -96,6 +96,8 @@ struct my_pixel {
 };
 
 #include "pgtk2_symbol_remap.h"
+
+/* Prototypes.h is generated in the build directory. */
 #include "prototypes.h"
 
 extern const char __pgtk_string_data[];
