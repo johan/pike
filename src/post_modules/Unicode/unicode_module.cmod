@@ -26,7 +26,7 @@
 
 static void push_words( struct buffer *data, struct words *w )
 {
-  int *d = data->data;
+  const p_wchar2 *d = data->data;
   struct array *r = allocate_array( w->size );
   unsigned int i;
   for( i=0; i<w->size; i++ )
@@ -46,13 +46,13 @@ static void push_words0( struct pike_string *ds, struct words *w )
 {
   /*    push_object( clone_object( words_program, 0 ) ); */
   struct array *r = allocate_array( w->size );
-  unsigned char *d = ds->str;
+  const p_wchar0 *d = STR0(ds);
   unsigned int i;
   for( i=0; i<w->size; i++ )
   {
     r->item[i].type = PIKE_T_STRING;
     r->item[i].u.string =
-      make_shared_binary_string( d+w->words[i].start,
+      make_shared_binary_string( (const char *)d+w->words[i].start,
 				 w->words[i].size );
   }
   r->type_field = BIT_STRING;
