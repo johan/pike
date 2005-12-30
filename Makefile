@@ -203,8 +203,8 @@ bin/pike: force
 pike: bin/pike
 	@$(DO_MAKE) "METATARGET=pike" _make_in_builddir
 
-lib: force
-	@$(DO_MAKE) "METATARGET=pike.so" _make_in_builddir
+libpike: force
+	@$(DO_MAKE) "METATARGET=libpike.so" _make_in_builddir
 
 install: bin/pike
 	@$(DO_MAKE) "METATARGET=install" _make_in_builddir

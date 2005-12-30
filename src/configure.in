@@ -7774,10 +7774,10 @@ done
 if test x$with_dynamic_modules = xyes ; then
   dmmsrc="modules/dynamic_module_makefile.in"
   CCSHARED="${CCSHARED} -DDYNAMIC_MODULE"
-  PIKE_LIB="pike.so"
+  PIKE_LIB="libpike.so"
 else
   dmmsrc="modules/static_module_makefile.in"
-  PIKE_LIB="pike.a"
+  PIKE_LIB="libpike.a"
 fi
 
 AC_SUBST(PIKE_LIB)
