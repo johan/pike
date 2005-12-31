@@ -512,7 +512,7 @@ inheritance: modifiers TOK_INHERIT inherit_ref optional_rename_inherit ';'
 			    find_identifier
 			    ("check_product_classes",
 			     Pike_compiler->new_program->facet_group->prog),
-			    0, o);
+			    0, 0);
 	  }
 	  pop_stack();
 	}
