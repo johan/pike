@@ -2280,20 +2280,6 @@ PMOD_EXPORT int apply_low_safe_and_stupid(struct object *o, INT32 offset)
   return ret;
 }
 
-PMOD_EXPORT void safe_apply_low3(struct object *o,int fun,int args, char *error)
-{
-  JMP_BUF recovery;
-  free_svalue(& throw_value);
-  throw_value.type=T_INT;
-  if(SETJMP_SP(recovery, args))
-  {
-    handle_compile_exception(error);
-  }else{
-    apply_low(o,fun,args);
-  }
-  UNSETJMP(recovery);
-}
-
 PMOD_EXPORT void safe_apply_low2(struct object *o,int fun,int args, int handle_errors)
 {
   JMP_BUF recovery;

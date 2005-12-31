@@ -711,7 +711,6 @@ PMOD_EXPORT void call_handle_error(void);
 PMOD_EXPORT int apply_low_safe_and_stupid(struct object *o, INT32 offset);
 PMOD_EXPORT void safe_apply_low(struct object *o,int fun,int args);
 PMOD_EXPORT void safe_apply_low2(struct object *o,int fun,int args, int handle_errors);
-PMOD_EXPORT void safe_apply_low3(struct object *o,int fun,int args, char *error);
 PMOD_EXPORT void safe_apply(struct object *o, const char *fun ,INT32 args);
 PMOD_EXPORT int low_unsafe_apply_handler(const char *fun,
 					 struct object *handler,
