@@ -549,10 +549,12 @@ struct program
   
   INT16 lfuns[NUM_LFUNS];
 
+#ifdef WITH_FACETS
   /* Facet related stuff */
   INT16 facet_class;   /* PROGRAM_IS_X_CLASS (X=FACET/PRODUCT) */
   INT32 facet_index;   /* Index to the facet this facet class belongs to */
   struct object *facet_group;
+#endif
 };
 
 #if 0

@@ -47,7 +47,9 @@
 static void init_builtin_modules(void)
 {
   void init_iterators(void);
+#ifdef WITH_FACETS
   void init_facetgroup(void);
+#endif
 
   init_cpp();
   init_backend();
@@ -63,14 +65,18 @@ static void init_builtin_modules(void)
   init_builtin_efuns();
   init_signals();
   init_dynamic_load();
+#ifdef WITH_FACETS
   init_facetgroup();
+#endif
 }
 
 static void exit_builtin_modules(void)
 {
 #ifdef DO_PIKE_CLEANUP
   void exit_iterators(void);
+#ifdef WITH_FACETS
   void exit_facetgroup(void);
+#endif
 
   /* Clear various global references. */
 
@@ -87,7 +93,9 @@ static void exit_builtin_modules(void)
   cleanup_module_support();
   exit_operators();
   exit_iterators();
+#ifdef WITH_FACETS
   exit_facetgroup();
+#endif
   cleanup_program();
   cleanup_compiler();
   cleanup_error();
