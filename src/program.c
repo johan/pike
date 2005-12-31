@@ -3775,11 +3775,10 @@ void check_for_facet_inherit(struct program *p)
       push_int(Pike_compiler->new_program->id);
       push_int(p->facet_index);
       push_int(p->id);
-      safe_apply_low3(p->facet_group,
+      safe_apply_low2(p->facet_group,
 		      find_identifier("add_product_class",
 				      p->facet_group->prog),
-		      3,
-		      "Unable to add product class");
+		      3, 0);
       pop_stack();
     }
   }
