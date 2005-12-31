@@ -4197,6 +4197,14 @@ size_t gc_free_all_unreferenced_multisets (void)
 void init_multiset()
 {
 #ifdef PIKE_DEBUG
+  /* This test is buggy in GCC 4 */
+#ifndef __GNUC__
+#define __GNUC__ 5
+#endif
+#if __GNUC__ > 4 || \
+    (__GNUC__ == 4 && (__GNUC_MINOR__ > 0 || \
+                       (__GNUC_MINOR__ == 0 && \
+                        __GNUC_PATCHLEVEL__ > 2)))
   union msnode test;
   HDR (&test)->flags = 0;
   test.i.ind.type = (1 << 8) - 1;
@@ -4222,6 +4230,7 @@ void init_multiset()
 	       test.i.ind.type, MULTISET_FLAG_MASK,
 	       RB_FLAG_MASK, MULTISET_FLAG_MARKER,
 	       test.i.ind.type);
+#endif
 #endif
 #ifndef HAVE_UNION_INIT
   svalue_int_one.u.integer = 1;
