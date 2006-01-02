@@ -215,17 +215,17 @@ static void f_hp_feed( INT32 args )
 
       if((tmp = low_mapping_lookup(headers, Pike_sp-2)))
       {
-	f_aggregate( 1 );
 	if( tmp->type == PIKE_T_ARRAY )
 	{
+          f_aggregate( 1 );
 	  ref_push_array(tmp->u.array);
 	  map_delete(headers, Pike_sp-3);
 	  f_add(2);
 	} else {
 	  ref_push_string(tmp->u.string);
-	  f_aggregate(1);
+          stack_swap();
+	  f_aggregate(2);
 	  map_delete(headers, Pike_sp-3);
-	  f_add(2);
 	}
       }
       mapping_insert(headers, Pike_sp-2, Pike_sp-1);
