@@ -224,8 +224,8 @@ static void f_hp_feed( INT32 args )
 	} else {
 	  ref_push_string(tmp->u.string);
           stack_swap();
-	  f_aggregate(2);
 	  map_delete(headers, Pike_sp-3);
+	  f_aggregate(2);
 	}
       }
       mapping_insert(headers, Pike_sp-2, Pike_sp-1);
