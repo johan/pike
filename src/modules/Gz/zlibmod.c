@@ -8,6 +8,8 @@
 #include "global.h"
 #include "zlib_machine.h"
 #include "module.h"
+#include "program.h"
+#include "module_support.h"
 
 #if !defined(HAVE_LIBZ) && !defined(HAVE_LIBGZ)
 #undef HAVE_ZLIB_H
@@ -20,14 +22,12 @@
 #include "stralloc.h"
 #include "array.h"
 #include "pike_macros.h"
-#include "program.h"
 #include "stralloc.h"
 #include "object.h"
 #include "pike_types.h"
 #include "threads.h"
 #include "dynamic_buffer.h"
 #include "operators.h"
-#include "module_support.h"
 
 #include <zlib.h>
 
