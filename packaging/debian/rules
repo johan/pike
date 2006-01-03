@@ -310,6 +310,10 @@ install: build
 	rm -r $(CURDIR)/debian/$(PIKE)-core/usr/lib/pike/$(VERSION)/doc
 	dh_movefiles --sourcedir=debian/$(PIKE)-core
 
+	# Need to move dynamic_module_makefile back to -core, since it contains platform-specific stuff
+	mv $(CURDIR)/debian/$(PIKE)-dev/usr/include/pike/$(VERSION)/dynamic_module_makefile \
+	   $(CURDIR)/debian/$(PIKE)-core/usr/include/pike/$(VERSION)/dynamic_module_makefile
+
 # Build architecture-independent files here.
 # Pass -i to all debhelper commands in this target to reduce clutter.
 binary-indep: install
