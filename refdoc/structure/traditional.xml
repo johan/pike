@@ -81,7 +81,7 @@
       <insert-move entity="Image.Layer"/>
       <insert-move entity="Image.Font"/>
       <insert-move entity="Image.Colortable"/>
-<!--      <insert-move entity="Image.colortable"/> -->
+<!--      <insert-move entity="Image.Colortable"/> -->
       <insert-move entity="Image.Color"/>
       <insert-move entity="Image.ANY"/>
       <insert-move entity="Image"/>

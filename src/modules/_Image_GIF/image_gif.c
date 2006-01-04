@@ -615,7 +615,7 @@ CHRONO("gif _render_block end");
 **!	</pre>
 **!
 **!	<illustration type=image/gif>
-**!	object nct=Image.colortable(lena(),32,({({0,0,0})}));
+**!	object nct=Image.Colortable(lena(),32,({({0,0,0})}));
 **!	string s=Image.GIF.header_block(lena()->xsize(),lena()->ysize(),nct);
 **!	foreach ( ({lena()->xsize(),
 **!		    (int)(lena()->xsize()*0.75),
@@ -636,7 +636,7 @@ CHRONO("gif _render_block end");
 **!	return s;
 **!	</illustration>The above animation is thus created:
 **!	<pre>
-**!	object nct=Image.colortable(lena,32,({({0,0,0})}));
+**!	object nct=Image.Colortable(lena,32,({({0,0,0})}));
 **!	string s=GIF.header_block(lena->xsize(),lena->ysize(),nct);
 **!	foreach ( ({lena->xsize(),
 **!		    (int)(lena->xsize()*0.75),
