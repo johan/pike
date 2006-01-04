@@ -329,7 +329,7 @@ static void f_execute(INT32 args)
 #ifdef SQL_WCHAR
   get_all_args("odbc_result->execute", args, "%W", &q);
   if (q->size_shift > 1) {
-    SIMPLE_ARG_TYPE_ERROR("execute", (ARG), "string(16bit)");
+    SIMPLE_ARG_TYPE_ERROR("execute", 1, "string(16bit)");
   }
 #else
   get_all_args("odbc_result->execute", args, "%S", &q);
