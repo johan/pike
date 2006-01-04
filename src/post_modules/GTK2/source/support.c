@@ -498,6 +498,16 @@ static int pgtk_push_gdk_event_param(GValue *a) {
   return NEED_RETURN;
 }
 
+static int pgtk_push_gdk_rectangle_param(GValue *a) {
+  GdkRectangle *r = (GdkRectangle *) g_value_get_boxed(a);
+  push_text("x"); push_int(r->x);
+  push_text("y"); push_int(r->y);
+  push_text("width"); push_int(r->width);
+  push_text("height"); push_int(r->height);
+  f_aggregate_mapping(8);
+  return PUSHED_VALUE;
+}
+
 static int pgtk_push_int_param(GValue *a) {
   LONGEST retval;
   switch (G_VALUE_TYPE(a)) {
@@ -599,6 +609,7 @@ static void build_push_callbacks() {
   CB( GDK_TYPE_DRAG_CONTEXT, pgtk_push_gdk_drag_context_param );
   /*#endif*/
   CB( GDK_TYPE_EVENT,        pgtk_push_gdk_event_param );
+  CB( GDK_TYPE_RECTANGLE, pgtk_push_gdk_rectangle_param );
 
   CB( GTK_TYPE_ACCEL_FLAGS,      pgtk_push_int_param );
   CB( GDK_TYPE_MODIFIER_TYPE,pgtk_push_int_param );
