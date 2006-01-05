@@ -1110,7 +1110,7 @@ AC_DEFUN(PIKE_SELECT_ABI,
   fi
 
   echo
-  echo "Using ABI $with_abi."
+  echo "Using ABI pike_cv_abi."
   echo
 
   # ABI-dirs
@@ -1122,7 +1122,7 @@ AC_DEFUN(PIKE_SELECT_ABI,
       # Solaris
       # Some installations lack the symlink 64 -> amd64 or sparcv9,
       # or the corresponding 32 link.
-      extra_abi_dirs=`isainfo -v 2>/dev/null|awk "/$with_abi"'-bit/ { print "/" [$]2 }'`
+      extra_abi_dirs=`isainfo -v 2>/dev/null|awk "/$pike_cv_abi"'-bit/ { print "/" [$]2 }'`
     fi
     pike_cv_abi_suffixes="$pike_cv_abi /$pike_cv_abi $extra_abi_dirs /."
   ])
