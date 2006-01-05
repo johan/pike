@@ -31,9 +31,6 @@
 
 p_wchar1 *misc_charset_lookup(const char *name, int *rlo, int *rhi);
 
-extern const struct multichar_table GBK[];
-extern const struct multichar_table cp949[];
-
 static struct program *std_cs_program = NULL, *std_rfc_program = NULL;
 static struct program *utf1_program = NULL, *utf1e_program = NULL;
 static struct program *utf7_program = NULL, *utf8_program = NULL;
@@ -620,21 +617,22 @@ static void f_create_euc(INT32 args)
 
 static void f_create_multichar(INT32 args)
 {
-  int no;
+  extern struct multichar_def multichar_map[];
+  char *name;
+  struct multichar_def *def = multichar_map;
   struct multichar_stor *s = (struct multichar_stor *)(fp->current_storage + multichar_stor_offs);
 
-  get_all_args("create()", args, "%d", &no);
+  get_all_args("create()", args, "%s", &name);
 
-  switch(no) {
-  case 1:
-    s->table = (const struct multichar_table *)&GBK;
-    break;
-  case 2:
-    s->table = (const struct multichar_table *)&cp949;
-    break;
-  default:
-    Pike_error("Unknown multichar table.\n");
+  while(1) {
+    if(def->name == 0)
+      Pike_error("Unknown multichar table.\n");
+    if( strcmp(name, def->name)==0 )
+      break;
+    def++;
   }
+
+  s->table = def->table;
 }
 
 static ptrdiff_t feed_multichar(const p_wchar0 *p, ptrdiff_t l,
@@ -1711,7 +1709,7 @@ PIKE_MODULE_INIT
   start_new_program();
   do_inherit(&prog, 0, NULL);
   multichar_stor_offs = ADD_STORAGE(struct multichar_stor);
-  ADD_FUNCTION("create", f_create_multichar,tFunc(tInt,tVoid), ID_STATIC);
+  ADD_FUNCTION("create", f_create_multichar,tFunc(tStr,tVoid), ID_STATIC);
   ADD_FUNCTION("feed", f_feed_multichar,tFunc(tStr,tObj), 0);
   add_program_constant("MulticharDec", multichar_program = end_program(), ID_STATIC|ID_NOMASK);
 

@@ -39,6 +39,11 @@ struct multichar_table {
   const UNICHAR *const table;
 };
 
+struct multichar_def {
+  const char *const name;
+  const struct multichar_table *const table;
+};
+
 extern const UNICHAR * const iso2022_94[];
 extern const UNICHAR * const iso2022_96[];
 extern const UNICHAR * const iso2022_9494[];
