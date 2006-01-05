@@ -1110,7 +1110,7 @@ AC_DEFUN(PIKE_SELECT_ABI,
   fi
 
   echo
-  echo "Using ABI pike_cv_abi."
+  echo "Using ABI $pike_cv_abi."
   echo
 
   # ABI-dirs
