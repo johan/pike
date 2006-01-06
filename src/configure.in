@@ -1242,7 +1242,7 @@ fi
 export pike_bundle_dir
 AC_ARG_WITH(site-prefixes,
 	    MY_DESCR([--with-site-prefixes],
-		     [list of prefixes to search for include, lib and bin dirs.]))
+		     [:-separated list of prefixes to search for include, lib and bin dirs.]))
 AC_ARG_WITH(include-path,
 	    MY_DESCR([--with-include-path],
 		     [a list of paths to search for include files.]))
