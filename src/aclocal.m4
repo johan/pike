@@ -755,7 +755,8 @@ int main() {
 ])
 
 dnl PIKE_MSG_WARN(message) 
-dnl == AC_MSG_WARN but prints with a bit more emphasis and adds to config.info.
+dnl == AC_MSG_WARN but prints with a bit more emphasis and adds to
+dnl    config.warnings.
 define(PIKE_MSG_WARN, [
   AC_MSG_WARN([
 
