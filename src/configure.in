@@ -2069,7 +2069,7 @@ if test "$cflags_is_set" = "no"; then
     else :; fi
 
     if test x$with_dynamic_modules = xno ; then :; else
-      PIKE_MSG_WARN([Enabling dynamic modules for Win32.])
+      PIKE_MSG_NOTE([Enabling dynamic modules for Win32.])
 #      EXTRA_MODULE_REQUIREMENTS="${EXTRA_MODULE_REQUIREMENTS} import_functions.h"
       DLOPEN_O="dlopen.o"
       pike_cv_sys_dynamic_loading=yes
