@@ -3029,6 +3029,9 @@ void fix_type_field(node *n)
       my_yyerror("Assigning a void expression.");
       copy_shared_string(n->type, void_type_string);
       break;
+    } else if (!CDR(n)) {
+      copy_pike_type(n->type, CAR(n)->type);
+      break;
     } else if(CAR(n) && CDR(n)) {
       /* Ensure that the type-fields are up to date. */
       fix_type_field(CAR(n));
