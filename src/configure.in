@@ -2340,7 +2340,6 @@ if test $ldflags_is_set = yes -a $cppflags_is_set = yes ; then :; else
   	  if test "x$libs_found" = "x"; then
   	    libs_found="no"
   	  fi
-  	  continue;
         ], [libs_found="yes"])
       done
     fi
