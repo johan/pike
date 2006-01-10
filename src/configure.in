@@ -2335,7 +2335,6 @@ if test $ldflags_is_set = yes -a $cppflags_is_set = yes ; then :; else
     if test $ldflags_is_set = yes ; then :; else
       for suff in "$with_abi" "/$with_abi" $extra_abi_dirs ""; do
         d="$dd/lib$suff"
-        AC_MSG_CHECKING($d)
         PIKE_CHECK_ABI_LIB_DIR($d, [libs_found="yes"], [
   	  if test "x$libs_found" = "x"; then
   	    libs_found="no"
