@@ -1179,7 +1179,7 @@ AC_DEFUN(PIKE_CHECK_ABI_DIR,
       abi_dir_ok="skip"
       break
     fi
-    [$]ifelse([$4], ,real_libs,[$4])="[$]ifelse([$4], ,real_libs,[$4]) $real_dir"
+    ifelse([$4], ,real_libs,[$4])="[$]ifelse([$4], ,real_libs,[$4]) $real_dir"
     if echo " $pike_cv_32bit_dirs " | grep " $real_dir " >/dev/null; then
       abi_32=yes
     elif echo " $pike_cv_not_32bit_dir " | grep " $real_dir " >/dev/null; then
