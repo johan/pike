@@ -1201,12 +1201,12 @@ AC_DEFUN(PIKE_CHECK_ABI_DIR,
           filetype=`file "$f" 2>/dev/null | sed -e 's/.*://'`
           if echo "$filetype" | grep "32-bit" >/dev/null; then
   	    abi_32=yes
-	    if test "$abi_64" = "unknown": then :; else
+	    if test "$abi_64" = "unknown"; then :; else
 	      break
 	    fi
   	  elif echo "$filetype" | grep "64-bit" >/dev/null; then
   	    abi_64=yes
-	    if test "$abi_32" = "unknown": then :; else
+	    if test "$abi_32" = "unknown"; then :; else
 	      break
 	    fi
   	  fi
@@ -1305,5 +1305,20 @@ int main(int argc, char **argv)
         ifelse([$2], , :, [$2])
       fi
     fi
+  ])
+])
+
+AC_DEFUN(PIKE_FIND_LIB_INCLUDE,
+[
+  AC_REQUIRE([PIKE_SELECT_ABI])dnl
+
+  echo Searching for library and include directories...
+
+  #Don't add include dirs if they give us warnings...
+  OLD_ac_c_preproc_warn_flag="$ac_c_preproc_warn_flag"
+  ac_c_preproc_warn_flag=yes
+  AC_TRY_CPP([#include <stdio.h>], , [
+    AC_MSG_WARN([Turning on preprocessor warnings causes cpp test to fail.])
+    ac_c_preproc_warn_flag="$OLD_ac_c_preproc_warn_flag"
   ])
 ])
