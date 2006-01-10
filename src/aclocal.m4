@@ -1194,7 +1194,7 @@ AC_DEFUN(PIKE_CHECK_ABI_DIR,
     else
       abi_64=unknown
     fi
-    if text "$abi_32:$abi_64" = "unknown:unknown"; then
+    if test "$abi_32:$abi_64" = "unknown:unknown"; then
       cached=""
       for f in "$d"/* no; do
         if test -f "$f"; then
