@@ -5571,6 +5571,9 @@ AC_TRY_RUN([
 #include <stdlib.h>
 #include <stddef.h>
 #endif
+#ifdef HAVE_POLL_H
+#include <poll.h>
+#endif
 VOLATILE sig_atomic_t sigrun[2]= { 0, 0 };
 RETSIGTYPE func(int sig)
 {
