@@ -1468,10 +1468,10 @@ PIKECLASS Backend
     }
     else
       timeout.tv_sec = -1;
-    pop_n_elems (args);
 
     low_backend_once(THIS, &timeout);
 
+    pop_n_elems (args);
     if (timeout.tv_sec < 0)
       push_int (0);
     else
