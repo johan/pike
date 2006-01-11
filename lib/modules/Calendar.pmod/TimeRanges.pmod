@@ -678,9 +678,7 @@ class TimeRange
 
    int(0..1) `==(TimeRange what) 
    { 
-      return object_program(what)==this_program &&
-	 what->ruleset()==ruleset() &&
-	 equals(what); 
+      return what->ruleset()==ruleset() && equals(what); 
    }
 
    int __hash();
