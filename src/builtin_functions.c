@@ -2305,7 +2305,7 @@ void f__exit(INT32 args)
  */
 PMOD_EXPORT void f_time(INT32 args)
 {
-  if(!args)
+  if(!args || (Pike_sp[-args].type == T_INT && Pike_sp[-args].u.integer == 0))
   {
     GETTIMEOFDAY(&current_time);
   }else{
