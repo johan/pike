@@ -622,6 +622,7 @@ PMOD_EXPORT struct pike_string *debug_begin_shared_string(size_t len)
   t->str[len]=0;
   t->len=len;
   t->size_shift=0;
+  DO_IF_DEBUG(t->next = NULL);
   return t;
 }
 
@@ -736,6 +737,7 @@ PMOD_EXPORT struct pike_string *debug_begin_wide_shared_string(size_t len, int s
   t->refs = 1;
   t->len=len;
   t->size_shift=shift;
+  DO_IF_DEBUG(t->next = NULL);
   low_set_index(t,len,0);
   return t;
 }
@@ -827,6 +829,16 @@ PMOD_EXPORT struct pike_string *end_shared_string(struct pike_string *s)
   }
 
   return low_end_shared_string(s);
+}
+
+PMOD_EXPORT struct pike_string *defer_end_string(struct pike_string *s)
+{
+#ifdef STRING_DEFER_THRESHOLD
+  if (s->len > STRING_DEFER_THRESHOLD) {
+    return s;
+  }
+#endif
+  return end_shared_string(s);
 }
 
 PMOD_EXPORT struct pike_string *end_and_resize_shared_string(struct pike_string *str, ptrdiff_t len)
