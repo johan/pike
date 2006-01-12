@@ -997,17 +997,27 @@ PMOD_EXPORT void low_object_index_no_free(struct svalue *to,
     }
 
   case 0:
-  {
-    void *ptr=LOW_GET_GLOBAL(o,f,i);
-    switch(i->run_time_type)
-    {
-      case T_MIXED:
-      {
-	struct svalue *s=(struct svalue *)ptr;
-	check_destructed(s);
-	assign_svalue_no_free(to, s);
-	break;
+    if (!PIKE_OBJ_STORAGE(o)) {
+      /* Variable storage not allocated. */
+#ifdef PIKE_DEBUG
+      if (p->flags & PROGRAM_FINISHED) {
+	Pike_fatal("Object without variable storage!\n");
       }
+#endif /* PIKE_DEBUG */
+      to->type = T_INT;
+      to->subtype = NUMBER_NUMBER;
+      to->u.integer = 0;      
+    } else {
+      void *ptr=LOW_GET_GLOBAL(o,f,i);
+      switch(i->run_time_type)
+      {
+      case T_MIXED:
+	{
+	  struct svalue *s=(struct svalue *)ptr;
+	  check_destructed(s);
+	  assign_svalue_no_free(to, s);
+	  break;
+	}
 
       case T_FLOAT:
 	to->type=T_FLOAT;
@@ -1022,22 +1032,23 @@ PMOD_EXPORT void low_object_index_no_free(struct svalue *to,
 	break;
 
       default:
-      {
-	struct ref_dummy *dummy;
-
-	to->subtype=0;
-	if((dummy=*(struct ref_dummy  **)ptr))
 	{
-	  add_ref(to->u.dummy=dummy);
-	  to->type=i->run_time_type;
-	}else{
-	  to->type=T_INT;
-	  to->u.integer=0;
+	  struct ref_dummy *dummy;
+
+	  to->subtype=0;
+	  if((dummy=*(struct ref_dummy  **)ptr))
+	  {
+	    add_ref(to->u.dummy=dummy);
+	    to->type=i->run_time_type;
+	  }else{
+	    to->type=T_INT;
+	    to->u.integer=0;
+	  }
+	  break;
 	}
-	break;
       }
     }
-  }
+    break;
   }
 }
 
