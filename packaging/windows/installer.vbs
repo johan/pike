@@ -62,7 +62,9 @@ Function FinalizePike()
     " TMP_BUILDDIR=bin", 0, True
 
   ' Extra cleanup.
-  fso.DeleteFile(targetdir & "bin\pike.exe.old")
+  If fso.FileExists(targetdir & "bin\pike.exe.old") Then
+    fso.DeleteFile(targetdir & "bin\pike.exe.old")
+  End If
 
   FinalizePike = 1
 End Function
