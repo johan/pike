@@ -63,7 +63,8 @@ Function FinalizePike()
 
   ' Extra cleanup.
   If fso.FileExists(targetdir & "bin\pike.exe.old") Then
-    fso.DeleteFile targetdir & "bin\pike.exe.old", True
+    WshShell.Run "%windir%\system32\cmd /c del bin\pike.exe.old" &_
+      " /f", 0, True
   End If
 
   FinalizePike = 1
