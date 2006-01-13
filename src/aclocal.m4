@@ -1305,7 +1305,7 @@ int main(int argc, char **argv)
         ifelse([$2], , :, [$2])
       fi
     fi
-  ])
+  ], $3)
 ])
 
 AC_DEFUN(PIKE_FIND_LIB_INCLUDE,
