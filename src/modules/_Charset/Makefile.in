@@ -11,4 +11,10 @@ CONFIG_HEADERS=@CONFIG_HEADERS@
 
 @dynamic_module_makefile@
 
+charsetmod.o: $(SRCDIR)/gb18030.h
+
+$(SRCDIR)/gb18030.h : $(SRCDIR)/gb-18030-2000.xml $(SRCDIR)/make_gb18030_h.pike
+	$(BUILD_BASE)/precompile.sh  $(SRCDIR)/make_gb18030_h.pike \
+	  $(SRCDIR)/gb-18030-2000.xml $(SRCDIR)/gb18030.h
+
 @dependencies@
