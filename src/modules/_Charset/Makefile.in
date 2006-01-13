@@ -5,6 +5,7 @@
 @make_variables@
 VPATH=@srcdir@
 OBJS=charsetmod.o iso2022.o tables.o misc.o
+SRC_TARGETS=$(SRCDIR)/gb18030.h
 MODULE_LDFLAGS=@LDFLAGS@
 
 CONFIG_HEADERS=@CONFIG_HEADERS@
