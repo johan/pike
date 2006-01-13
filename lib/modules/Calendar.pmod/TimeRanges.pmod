@@ -678,9 +678,10 @@ class TimeRange
 //!	_equal is not currently possible to overload,
 //!	due to weird bugs, so equal uses `== for now.
 
-   int(0..1) `==(TimeRange what) 
-   { 
-      return what->ruleset()==ruleset() && equals(what); 
+   int(0..1) `==(mixed what) 
+   {
+     return objectp(what) && functionp(what->ruleset) &&
+       what->ruleset()==ruleset() && equals(what); 
    }
 
    int __hash();
