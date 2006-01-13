@@ -63,7 +63,7 @@ Function FinalizePike()
 
   ' Extra cleanup.
   If fso.FileExists(targetdir & "bin\pike.exe.old") Then
-    fso.DeleteFile(targetdir & "bin\pike.exe.old", True)
+    fso.DeleteFile targetdir & "bin\pike.exe.old", True
   End If
 
   FinalizePike = 1
