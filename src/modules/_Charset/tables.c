@@ -16589,6 +16589,7 @@ static const struct multichar_table cp949[] = {
 };
 
 const struct multichar_def multichar_map[] = {
+  { "gb18030", GBK },	/* NOTE: MUST be first! */
   { "gbk", GBK },
   { "936", GBK },
   { "949", cp949 },
