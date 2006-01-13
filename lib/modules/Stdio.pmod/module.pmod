@@ -409,7 +409,7 @@ class File
   //! functions, eg for the fourth argument to
   //! @[String.SplitIterator].
   {
-    return lambda(){ return read( nbytes); };
+    return lambda(){ return read(nbytes); };
   }
 
   String.SplitIterator|LineIterator line_iterator( int|void trim )
