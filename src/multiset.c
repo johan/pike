@@ -1245,8 +1245,11 @@ PMOD_EXPORT int msnode_is_deleted (struct multiset *l, ptrdiff_t nodepos)
 
   if (IS_DESTRUCTED (low_use_multiset_index (node, ind))) {
     if (msd->refs == 1) {
+      ONERROR uwp;
       add_msnode_ref (l);
+      SET_ONERROR (uwp, do_sub_msnode_ref, l);
       multiset_delete_node (l, nodepos);
+      UNSET_ONERROR (uwp);
     }
     return 1;
   }
@@ -1635,7 +1638,11 @@ PMOD_EXPORT ptrdiff_t multiset_first (struct multiset *l)
   node = low_multiset_first (msd);
   while (node && IS_DESTRUCTED (low_use_multiset_index (node, ind)))
     if (msd->refs == 1) {
+      ONERROR uwp;
+      add_msnode_ref (l);
+      SET_ONERROR (uwp, do_sub_msnode_ref, l);
       multiset_delete_node (l, MSNODE2OFF (msd, node));
+      UNSET_ONERROR (uwp);
       msd = l->msd;
       node = low_multiset_first (msd);
     }
@@ -1661,7 +1668,11 @@ PMOD_EXPORT ptrdiff_t multiset_last (struct multiset *l)
   node = low_multiset_last (msd);
   while (node && IS_DESTRUCTED (low_use_multiset_index (node, ind)))
     if (msd->refs == 1) {
+      ONERROR uwp;
+      add_msnode_ref (l);
+      SET_ONERROR (uwp, do_sub_msnode_ref, l);
       multiset_delete_node (l, MSNODE2OFF (msd, node));
+      UNSET_ONERROR (uwp);
       msd = l->msd;
       node = low_multiset_last (msd);
     }
@@ -1707,9 +1718,12 @@ PMOD_EXPORT ptrdiff_t multiset_prev (struct multiset *l, ptrdiff_t nodepos)
   while (node && IS_DESTRUCTED (low_use_multiset_index (node, ind))) {
     union msnode *prev = low_multiset_prev (node);
     if (msd->refs == 1) {
+      ONERROR uwp;
       nodepos = prev ? MSNODE2OFF (msd, prev) : -1;
       add_msnode_ref (l);
+      SET_ONERROR (uwp, do_sub_msnode_ref, l);
       multiset_delete_node (l, MSNODE2OFF (msd, node));
+      UNSET_ONERROR (uwp);
       msd = l->msd;
       node = nodepos >= 0 ? OFF2MSNODE (msd, nodepos) : NULL;
     }
@@ -1752,9 +1766,12 @@ PMOD_EXPORT ptrdiff_t multiset_next (struct multiset *l, ptrdiff_t nodepos)
   while (node && IS_DESTRUCTED (low_use_multiset_index (node, ind))) {
     union msnode *next = low_multiset_next (node);
     if (msd->refs == 1) {
+      ONERROR uwp;
       nodepos = next ? MSNODE2OFF (msd, next) : -1;
       add_msnode_ref (l);
+      SET_ONERROR (uwp, do_sub_msnode_ref, l);
       multiset_delete_node (l, MSNODE2OFF (msd, node));
+      UNSET_ONERROR (uwp);
       msd = l->msd;
       node = nodepos >= 0 ? OFF2MSNODE (msd, nodepos) : NULL;
     }
@@ -4075,6 +4092,7 @@ void gc_mark_multiset_as_referenced (struct multiset *l)
 	     * shrunk data blocks won't be shared. */
 	    l->msd = resize_multiset_data (msd, ALLOC_SIZE (msd->size), 0);
 	    msd = l->msd;
+	    gc_mark (msd);
 	  }
 	}
 
