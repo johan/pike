@@ -4246,6 +4246,9 @@ void init_multiset()
 {
 #ifdef PIKE_DEBUG
   /* This test is buggy in GCC 4 */
+  /* Perhaps it works better if the test variable is made volatile? (I
+   * can't really test since it works well anyway in my gcc 4.0.2
+   * 20050808 (prerelease).) /mast */
 #ifndef __GNUC__
 #define __GNUC__ 5
 #endif
