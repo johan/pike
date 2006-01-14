@@ -713,8 +713,8 @@ static class VirtualNode {
   static string		mShortNamespace = "";	// Namespace prefix
   static string		mNamespace;	// Resolved namespace
   static string         mTagName;
-  static mapping        mAttributes;		// Resolved attributes
-  static mapping	mShortAttributes;	// Shortened attributes
+  static mapping(string:string) mAttributes;		// Resolved attributes
+  static mapping(string:string)	mShortAttributes;	// Shortened attributes
   static array(Node) mAttrNodes;   //  created on demand
   static string         mText;
   static int            mDocOrder;
@@ -738,7 +738,7 @@ static class VirtualNode {
   //  Public methods
   //! Returns this nodes attributes, which can be altered
   //! destructivly to alter the nodes attributes.
-  mapping get_attributes()   { return (mAttributes); }
+  mapping(string:string) get_attributes()   { return (mAttributes); }
 
   //! Returns this nodes name-space adjusted attributes.
   //!
