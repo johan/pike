@@ -2190,7 +2190,6 @@ PMOD_EXPORT ptrdiff_t multiset_add (struct multiset *l,
 	  if (prepare_for_add (l, 1)) {
 	    rbstack_shift (rbstack, HDR (msd->nodes), HDR (l->msd->nodes));
 	    msd = l->msd;
-	    gc_mark (msd);
 	  }
 	  ALLOC_MSNODE (msd, l->node_refs, new);
 	  goto add;
@@ -4064,6 +4063,7 @@ void gc_mark_multiset_as_referenced (struct multiset *l)
 	   * shrunk data blocks won't be shared. */
 	  l->msd = resize_multiset_data (msd, ALLOC_SIZE (msd->size), 0);
 	  msd = l->msd;
+	  gc_mark (msd);
 	}
       }
 
