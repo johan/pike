@@ -1007,12 +1007,14 @@ static void file__enable_callbacks(INT32 args)
   size_t ev;
   int cb_events = 0;
 
+#if 0
   if(FD<0)
     Pike_error("File is not open.\n");
+#endif
 
   debug_check_internals (f);
 
-  if (!(fd_query_properties(FD, fd_CAN_NONBLOCK) & fd_CAN_NONBLOCK))
+  if (FD >= 0 && !(fd_query_properties(FD, fd_CAN_NONBLOCK) & fd_CAN_NONBLOCK))
     Pike_error("Callback operations not supported for this file.\n");
 
   for (ev = 0; ev < NELEM (f->event_cbs); ev++)
@@ -1029,8 +1031,10 @@ static void file__disable_callbacks(INT32 args)
 {
   struct my_file *f = THIS;
 
+#if 0
   if(FD<0)
     Pike_error("File is not open.\n");
+#endif
 
   SUB_FD_EVENTS (f, ~0);
 
