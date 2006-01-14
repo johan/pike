@@ -103,6 +103,7 @@ struct my_pixel {
 /* Prototypes.h is generated in the build directory. */
 #include "prototypes.h"
 
+extern struct pike_string * pstr_vector[];
 extern const char __pgtk_string_data[];
 extern int pigtk_is_setup;
 struct program *pgtk_type_to_program(GObject *widget);
