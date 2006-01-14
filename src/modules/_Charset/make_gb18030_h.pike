@@ -8,6 +8,13 @@
 
 import Parser.XML.Tree;
 
+#if !constant(Parser.XML.Tree.SimpleNode)
+// Old Pike 7.2 or older.
+// Fall back to using fully linked nodes.
+#define SimpleNode Node
+#define simple_parse_input(X)	parse_input(X)
+#endif /* !constant(Parser.XML.Tree.SimpleNode) */
+
 int decode_4bytes(array(string) hex_bytes)
 {
   int i;
@@ -181,7 +188,7 @@ int main(int argc, array(string) argv)
 			chmap->get_attributes()->id || "UNKNOWN",
 			chmap->get_attributes()->version || "UNKNOWN",
 			dec_table,
-			sizeof(dec_table)+1);
+			sizeof(dec_table));
   //write(code);
   Stdio.write_file(argv[2], code);
   return 0;
