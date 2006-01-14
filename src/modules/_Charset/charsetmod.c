@@ -792,7 +792,7 @@ static ptrdiff_t feed_gb18030(const p_wchar0 *p, ptrdiff_t l,
     return 0;
   }
   index *= 126;
-  index = p[2] - 0x81;
+  index += p[2] - 0x81;
 
   if ((p[3] < 0x30) || (p[3] > 0x39)) {
 #if 0
