@@ -1378,7 +1378,8 @@ PIKECLASS Backend
 		    tmp.tv_sec, tmp.tv_usec);
 	 else
 	   fprintf (stderr, "BACKEND[%d]: backend_do_call_outs: "
-		    "no outstanding call outs\n");
+		    "no outstanding call outs\n",
+		    me->id);
        );
 
        return call_count;
