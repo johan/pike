@@ -845,7 +845,9 @@ static ptrdiff_t feed_multichar(const p_wchar0 *p, ptrdiff_t l,
 	    return delta;
 	  }
 	} 
-	Pike_error("Illegal character: 0x%02x.\n", ch);
+	Pike_error("Illegal character pair: 0x%02x 0x%02x "
+		   "(expected 0x%02x 0x%02x..0x%02x).\n",
+		   p[-2], ch, p[-2], page.lo, page.hi);
       }
       else
 	string_builder_putchar(&s->strbuild, page.table[ch-page.lo]);
