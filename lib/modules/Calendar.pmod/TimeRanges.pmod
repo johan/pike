@@ -126,16 +126,10 @@ class TimeRange
    static void convert_from(TimeRange other)
    {
 // inheriting class must take care of size
-      if (other->julian_day)
-      {
-	 int|float jd=other->julian_day();
-	 if (floatp(jd) && other->unix_time)
-	    create("unix_r",other->unix_time(),other->ruleset());
-	 else
-	    create("julian_r",jd,other->ruleset());
-      }
-      else if (other->unix_time)
+      if (other->unix_time)
 	 create("unix_r",other->unix_time(),other->ruleset());
+      else if (other->julian_day)
+         create("julian_r",other->julian_day(),other->ruleset());
       else 
 	 error("Can't convert %O->%s.%O\n",other,
 	       calendar_name(), this_program);
