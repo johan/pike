@@ -3334,6 +3334,14 @@ static int low_pike_types_le2(struct pike_type *a, struct pike_type *b,
       struct program *ap = id_to_program(CDR_TO_INT(a));
       struct program *bp = id_to_program(CDR_TO_INT(b));
 
+#if 0
+      fprintf(stderr,
+	      "id_to_program(%d) ==> %p\n"
+	      "id_to_program(%d) ==> %p\n",
+	      CDR_TO_INT(a), ap,
+	      CDR_TO_INT(b), bp);
+#endif /* 0 */
+
       if (!ap || !bp) {
 	/* Shouldn't happen... */
 	/* fprintf(stderr, "ap:%p bp:%p\n", ap, bp); */
@@ -3342,11 +3350,17 @@ static int low_pike_types_le2(struct pike_type *a, struct pike_type *b,
       if ((flags & LE_WEAK_OBJECTS) &&
 	  (!TEST_COMPAT(7,4) || (!a->car))) {
 	implements_mode = 0;
-	/* fprintf(stderr, "is_compat(%p, %p)\n", ap, bp); */
+#if 0
+	fprintf(stderr, "  is_compat(%p(%d), %p(%d))\n",
+		ap, ap->id, bp, bp->id);
+#endif /* 0 */
 	return is_compatible(implements_a=ap, implements_b=bp);
       }
       implements_mode = 1;
-      /* fprintf(stderr, "implements(%p, %p)\n", ap, bp); */
+#if 0
+      fprintf(stderr, "  implements(%p(%d), %p(%d))\n",
+	      ap, ap->id, bp, bp->id);
+#endif /* 0 */
       return implements(implements_a=ap, implements_b=bp);
     }
     break;
