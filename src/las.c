@@ -3633,7 +3633,7 @@ void fix_type_field(node *n)
       struct pike_type *f;	/* Expected type. */
       struct pike_type *s;	/* Actual type */
       struct pike_string *name = NULL;
-      char *alternate_name;
+      char *alternate_name = NULL;
       INT32 max_args,args;
 
 #ifdef NEW_ARG_CHECK
