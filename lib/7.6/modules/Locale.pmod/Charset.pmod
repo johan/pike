@@ -1,0 +1,2 @@
+// $Id$
+inherit _Charset;
