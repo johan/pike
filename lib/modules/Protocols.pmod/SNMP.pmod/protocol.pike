@@ -239,6 +239,9 @@ void create(int|void rem_port, string|void rem_addr, int|void loc_port,
 mapping readmsg(int|float|void timeout) {
   mapping rv;
 
+  if(timeout && !wait(timeout))
+    return 0;
+
   rv = read();
   return rv;
 }
