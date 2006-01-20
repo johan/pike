@@ -4529,6 +4529,20 @@ PMOD_EXPORT void f__assembler_debug(INT32 args)
   a_flag = l;
 }
 
+/*! @decl void _dump_program_tables(program p)
+ *!
+ *! Dumps the internal tables for the program @[p] on stderr.
+ */
+void f__dump_program_tables(INT32 args)
+{
+  struct program *p;
+
+  ASSERT_SECURITY_ROOT("_dump_program_tables");	/* FIXME: Might want lower. */
+  get_all_args("_dump_program_tables", args, "%p", &p);
+
+  dump_program_tables(p, 0);
+  pop_n_elems(args);
+}
 
 #ifdef YYDEBUG
 
@@ -8748,6 +8762,9 @@ void init_builtin_efuns(void)
 /* function(int:int) */
   ADD_EFUN("_assembler_debug",f__assembler_debug,
 	   tFunc(tInt,tInt), OPT_SIDE_EFFECT|OPT_EXTERNAL_DEPEND);
+
+  ADD_EFUN("_dump_program_tables", f__dump_program_tables,
+	   tFunc(tPrg(tObj),tVoid), OPT_SIDE_EFFECT|OPT_EXTERNAL_DEPEND);
 
 #ifdef YYDEBUG
   
