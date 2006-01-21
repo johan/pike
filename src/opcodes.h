@@ -227,6 +227,7 @@ enum Pike_opcodes
   F_RANGE_FROM_BEG,		/* a[i.. */
   F_RANGE_FROM_END,		/* a[<i.. */
   F_RANGE_OPEN,			/* a[.. */
+  F_VERSION,
 
   F_ALIGN,
   F_POINTER,
