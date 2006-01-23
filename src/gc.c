@@ -3323,13 +3323,15 @@ size_t do_gc(void *ignored, int explicit_call)
 	timestr[0] = 0;
 #ifdef DO_PIKE_CLEANUP
       if (gc_destruct_everything)
-	fprintf(stderr, "done (%u was destructed)%s\n",
-		destroy_count, timestr);
+	fprintf(stderr, "done (%u %s destructed)%s\n",
+		destroy_count, destroy_count == 1 ? "was" : "were", timestr);
       else
 #endif
 	fprintf(stderr, "done (%"PRINTSIZET"d of %"PRINTSIZET"d "
-		"was unreferenced)%s\n",
-		unreferenced, start_num_objs, timestr);
+		"%s unreferenced)%s\n",
+		unreferenced, start_num_objs,
+		unreferenced == 1 ? "was" : "were",
+		timestr);
     }
   }
 
