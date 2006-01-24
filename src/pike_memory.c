@@ -825,6 +825,7 @@ int dmalloc_print_trace;
 
 #ifdef DO_PIKE_CLEANUP
 int exit_with_cleanup = 1;
+int exit_cleanup_in_progress = 0;
 #endif
 
 #ifdef DEBUG_MALLOC

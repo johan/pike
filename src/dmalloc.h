@@ -40,6 +40,7 @@ void gc_check_zapped (void *a, TYPE_T type, const char *file, int line);
 
 #ifdef DO_PIKE_CLEANUP
 extern int exit_with_cleanup;
+extern int exit_cleanup_in_progress;
 #define DO_IF_PIKE_CLEANUP(X) X
 #else
 #define DO_IF_PIKE_CLEANUP(X)
