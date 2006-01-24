@@ -2945,6 +2945,7 @@ void really_clean_up_interpret(void)
     for(e=0;e<128;e++)
       debug_malloc_dump_references( p->x + e);
 #endif
+  free_callback_list (&evaluator_callbacks);
   free_all_pike_frame_blocks();
 #endif
 }
