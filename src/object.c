@@ -116,6 +116,16 @@ PMOD_EXPORT struct object *low_clone(struct program *p)
 
   GC_ALLOC(o);
 
+#ifdef DO_PIKE_CLEANUP
+  if (exit_cleanup_in_progress) {
+    INT32 line;
+    struct pike_string *file = get_program_line (p, &line);
+    fprintf (stderr,
+	     "Warning: Object %p created during exit cleanup from %s:%d\n",
+	     o, file->str, line);
+  }
+#endif
+
 #ifdef DEBUG_MALLOC
   if(!debug_malloc_copy_names(o, p)) 
   {
