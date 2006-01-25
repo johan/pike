@@ -145,6 +145,7 @@ private void do_cleanup(function expiry_function, object storage) {
   cleanup_lock=0;
 }
 
+#if constant(thread_create)
 static Thread.Thread cleanup_thread;
 
 static void destroy()
@@ -154,6 +155,7 @@ static void destroy()
     t->wait();
   }
 }
+#endif
 
 //!
 void start_cleanup_cycle() {
