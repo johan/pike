@@ -1984,6 +1984,11 @@ class Evaluator {
     mapping(string:mixed) hilfe_symbols;
 
     mapping(string:mixed) get_default_module() {
+      object compat = get_active_compilation_handler();
+      if (compat && compat->get_default_module) {
+	// Support things like @expr{7.4::rusage}.
+	return compat->get_default_module() + hilfe_symbols;
+      }
       return all_constants() + hilfe_symbols;
     }
 
