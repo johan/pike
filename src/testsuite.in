@@ -9360,6 +9360,10 @@ test_hash_7_0("b\666arqwerty1234", 2142487018, 1858424874)
 test_hash_7_0("",0)
 test_eval_error( return hash_7_0("foo",0) )
 
+// Versioned scope.
+test_eq(7.0::hash, hash_7_0)
+test_eq(7.4::hash, hash_7_4)
+
 // - indices
 test_equal(indices("foo"),({0,1,2}))
 test_equal(indices(({'f','o','o'})),({0,1,2}))
