@@ -1501,7 +1501,7 @@ struct pike_cond {
   int wait_count;
 };
 
-#define THIS_COND ((pike_cond *)(CURRENT_STORAGE))
+#define THIS_COND ((struct pike_cond *)(CURRENT_STORAGE))
 
 /*! @decl void wait(Thread.MutexKey mutex_key)
  *!
