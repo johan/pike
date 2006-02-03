@@ -71,7 +71,8 @@ void push_sqlwchar(SQLWCHAR *str, size_t num_bytes)
 	       "%zd (shift:%d) (sz:%d)\n", num_bytes, shift, sizeof(SQLWCHAR));
   }
 #endif /* PIKE_DEBUG */
-  push_string(make_shared_pcharp(MKPCHARP(str, shift), num_bytes>>shift));
+  push_string(make_shared_binary_pcharp(MKPCHARP(str, shift),
+					num_bytes>>shift));
 }
 
 void odbc_error(const char *fun, const char *msg,
