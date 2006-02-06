@@ -492,6 +492,18 @@ static void f_fetch_row(INT32 args)
 	SQLLEN len = 0;
 
 	while(1) {
+#ifdef ODBC_DEBUG
+	  fprintf(stderr, "ODBC:fetch_row(): field_info[%d].type: ", i);
+	  if (PIKE_ODBC_RES->field_info[i].type == SQL_C_CHAR) {
+	    fprintf(stderr, "SQL_C_CHAR\n");
+#ifdef SQL_WCHAR
+	  } else if (PIKE_ODBC_RES->field_info[i].type == SQL_C_WCHAR) {
+	    fprintf(stderr, "SQL_C_WCHAR\n");
+#endif /* SQL_WCHAR */
+	  } else {
+	    fprintf(stderr, "%d\n", PIKE_ODBC_RES->field_info[i].type);
+	  }
+#endif /* ODBC_DEBUG */
 	  code = SQLGetData(PIKE_ODBC_RES->hstmt, (SQLUSMALLINT)(i+1),
 			    PIKE_ODBC_RES->field_info[i].type,
 			    blob_buf, BLOB_BUFSIZ
