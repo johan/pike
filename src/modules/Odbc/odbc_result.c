@@ -162,11 +162,6 @@ static void odbc_fix_fields(void)
 			&name_len,
 			&sql_type, &precision, &scale, &nullable),
 		       NULL, NULL);
-#ifdef SQL_WCHAR
-      /* NOTE: For some stupid reason name_len is in bytes. */
-      name_len /= sizeof(SQLWCHAR);
-#endif
-
       if (name_len < (ptrdiff_t)buf_size) {
 	break;
       }
