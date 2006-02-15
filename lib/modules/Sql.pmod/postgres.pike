@@ -320,21 +320,27 @@ array(string) list_tables (void|string glob) {
 array(mapping(string:mixed)) list_fields (string table, void|string wild)
 {
   array row, ret=({});
+  string schema;
 
   if (has_relexpires == "unknown")
   {
-    if (catch (big_query("SELECT c.relexpires FROM pg_class WHERE 1 == 0")))
+    if (catch (big_query("SELECT relexpires FROM pg_class WHERE 1 = 0")))
       has_relexpires = "no";
     else
       has_relexpires = "yes";
   }
 
+  sscanf(table, "%s.%s", schema, table);
+
   object res = big_query(
 	"SELECT a.attnum, a.attname, t.typname, a.attlen, c.relowner, "
 	"c.relisshared, c.relhasrules, t.typdefault " +
         (has_relexpires == "yes" ? ", c.relexpires " : "") +
-	"FROM pg_class c, pg_attribute a, pg_type t "
-	"WHERE c.relname = '"+table+"' AND a.attnum > 0 "
+	(schema ? ", s.schemaname " : "") +
+	"FROM pg_class c, pg_attribute a, pg_type t " +
+	(schema ? ", pg_tables s " : "") +
+	"WHERE c.relname = '"+table+"' AND a.attnum > 0 " +
+	(schema ? "AND s.tablename = '"+table+"' " : "") +
 	"AND a.attrelid = c.oid AND a.atttypid = t.oid ORDER BY attnum");
 
   while (row = res->fetch_row())
