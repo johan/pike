@@ -323,7 +323,7 @@ array(mapping(string:mixed)) list_fields (string table, void|string wild)
 
   if (has_relexpires == "unknown")
   {
-    if (catch (big_query("SELECT c.relexpires FROM pg_class WHERE 1 == 0")))
+    if (catch (big_query("SELECT relexpires FROM pg_class WHERE 1 = 0")))
       has_relexpires = "no";
     else
       has_relexpires = "yes";
