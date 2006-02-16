@@ -968,6 +968,9 @@ static {
 	  // FALL_THROUGH
 	case TDS_ORDERBY_TOKEN:
 	  /* Ignore. */
+	case TDS_ERROR_TOKEN:
+	case TDS_INFO_TOKEN:
+	case TDS_EED_TOKEN:
 	  inp->get_byte();
 	  process_default_tokens(inp, token_type);
 	  break;
