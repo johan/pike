@@ -962,6 +962,11 @@ static {
 	case TDS_ROW_TOKEN:
 	  TDS_WERROR("  TDS_ROW_TOKEN pending\n");
 	  return column_info;
+	case TDS_RETURNSTATUS_TOKEN:
+	  inp->get_byte();
+	  int ret_status = inp->get_int();
+	  TDS_WERROR("Return status: %d\n", ret_status);
+	  break;
 	default:
 	  werror("TDS: WARNING: Unhandled token in process_result_tokens: %d\n",
 		 token_type);
