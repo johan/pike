@@ -482,7 +482,7 @@ string reconstitute_with_line_numbers(array(string|object(Token)|array) tokens)
 	tok=tok->text + tok->trailing_whitespaces;
       }
       ret+=tok;
-      line+=sizeof(tok/"\n")-1;
+      line+=String.count(tok,"\n");
     }
 
   return ret;
