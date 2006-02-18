@@ -2066,6 +2066,23 @@ int gc_mark(void *a)
   }
 }
 
+void gc_move_marker (void *old, void *new)
+{
+  struct marker *m = get_marker (debug_malloc_pass (old));
+
+#ifdef PIKE_DEBUG
+  if (!old) Pike_fatal("Got null pointer in old.\n");
+  if (!new) Pike_fatal("Got null pointer in new.\n");
+  if (!m) Pike_fatal ("Have no marker for old block %p.\n", old);
+  if (find_marker (new))
+    Pike_fatal ("New block %p already got a marker.\n", new);
+  if (!Pike_in_gc || Pike_in_gc >= GC_PASS_FREE)
+    Pike_fatal ("gc move mark attempted in invalid pass.\n");
+#endif
+
+  move_marker (m, new);
+}
+
 PMOD_EXPORT void gc_cycle_enqueue(gc_cycle_check_cb *checkfn, void *data, int weak)
 {
   struct gc_link_frame *l = alloc_link_frame();
