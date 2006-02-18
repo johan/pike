@@ -4091,8 +4091,8 @@ void gc_mark_multiset_as_referenced (struct multiset *l)
 	     * can end up with larger memory consumption since the
 	     * shrunk data blocks won't be shared. */
 	    l->msd = resize_multiset_data (msd, ALLOC_SIZE (msd->size), 0);
+	    gc_move_marker (msd, l->msd);
 	    msd = l->msd;
-	    gc_mark (msd);
 	  }
 	}
 
@@ -4161,6 +4161,7 @@ void real_gc_cycle_check_multiset (struct multiset *l, int weak)
 	   * can end up with larger memory consumption since the
 	   * shrunk data blocks won't be shared. */
 	  l->msd = resize_multiset_data (msd, ALLOC_SIZE (msd->size), 0);
+	  gc_move_marker (msd, l->msd);
 	  msd = l->msd;
 	}
       }
