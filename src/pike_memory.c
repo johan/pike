@@ -285,7 +285,7 @@ PMOD_EXPORT void *debug_xalloc(size_t size)
   ret=(void *)malloc(size);
   if(ret) return ret;
 
-  Pike_error("Out of memory.\n");
+  Pike_error(msg_out_of_mem);
   return 0;
 }
 
