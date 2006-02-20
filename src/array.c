@@ -443,15 +443,19 @@ PMOD_EXPORT struct array *array_shrink(struct array *v, ptrdiff_t size)
     Pike_fatal("Illegal argument to array_shrink.\n");
 #endif
 
+  if (size == v->size) return v;
+
   if( !size )
   {
     free_array(v);
+    /* FIXME: What about weak markers etc? */
     add_ref(&empty_array);
     return &empty_array;
   }
 
   /* Free items outside the new array. */
   free_svalues(ITEM(v) + size, v->size - size, v->type_field);
+  v->size=size;
 
   if(size*4 < v->malloced_size + 4) /* Should we realloc it? */
   {
@@ -465,7 +469,6 @@ PMOD_EXPORT struct array *array_shrink(struct array *v, ptrdiff_t size)
     free_array(v);
     return a;
   }else{
-    v->size=size;
     return v;
   }
 }
