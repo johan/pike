@@ -2880,7 +2880,7 @@ static void decode_value2(struct decode_data *data)
 	    INT32 bytecode_method = 0;
 	    decode_number(bytecode_method, data);
 	    if (bytecode_method != PIKE_BYTECODE_METHOD) {
-	      Pike_error("Unsupported bytecode method: %d. Expected %d\n",
+	      Pike_error("Unsupported byte-code method: %d. Expected %d\n",
 			 bytecode_method, PIKE_BYTECODE_METHOD);
 	    }
 	  }
