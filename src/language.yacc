@@ -3870,7 +3870,7 @@ int low_add_local_name(struct compiler_frame *frame,
   debug_malloc_touch(type);
   debug_malloc_touch(str);
   reference_shared_string(str);
-  if (frame->current_number_of_locals == MAX_LOCAL)
+  if (frame->current_number_of_locals == MAX_LOCAL-1)
   {
     yyerror("Too many local variables.");
     return -1;
