@@ -1242,7 +1242,7 @@ static {
 	  if (!l && !(year & 3) && ((year % 100) || !(year % 400)))
 	    yday++;
 	  string res = sprintf("%04d-%02d-%02dT%02d:%02d:%02d",
-			       year, mon, mday, hour, min, sec);
+			       year, mon+1, mday, hour, min, sec);
 	  TDS_CONV_WERROR("%O ==> %O\n", raw, res);
 	  return res;
 	}
