@@ -2016,7 +2016,7 @@ void *debug_malloc(size_t s, LOCATION location)
     low_make_memhdr(m, s, location)->flags|=MEM_PADDED;
   } else {
     flush_blocks_to_free();
-    if (m=(char *)real_malloc(s + DEBUG_MALLOC_PAD*2)) {
+    if ((m=(char *)real_malloc(s + DEBUG_MALLOC_PAD*2))) {
       m=do_pad(m, s);
       low_make_memhdr(m, s, location)->flags|=MEM_PADDED;
     }
