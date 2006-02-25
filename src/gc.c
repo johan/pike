@@ -2068,7 +2068,7 @@ int gc_mark(void *a)
 
 void gc_move_marker (void *old, void *new)
 {
-  struct marker *m = get_marker (debug_malloc_pass (old));
+  struct marker *m = get_marker (old);
 
 #ifdef PIKE_DEBUG
   if (!old) Pike_fatal("Got null pointer in old.\n");
@@ -2080,7 +2080,7 @@ void gc_move_marker (void *old, void *new)
     Pike_fatal ("gc move mark attempted in invalid pass.\n");
 #endif
 
-  move_marker (m, new);
+  move_marker (m, debug_malloc_pass (new));
 }
 
 PMOD_EXPORT void gc_cycle_enqueue(gc_cycle_check_cb *checkfn, void *data, int weak)
