@@ -3947,11 +3947,12 @@ static node *lexical_islocal(struct pike_string *str)
 	  q=q->previous;
 	}
 
-	if(depth)
+	if(depth) {
 	  q->lexical_scope|=SCOPE_SCOPE_USED;
 
-	if(q->min_number_of_locals < e+1)
-	  q->min_number_of_locals = e+1;
+	  if(q->min_number_of_locals < e+1)
+	    q->min_number_of_locals = e+1;
+	}
 
 	if(f->variable[e].def) {
 	  /*fprintf(stderr, "Found prior definition of \"%s\"\n", str->str); */
