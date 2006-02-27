@@ -352,7 +352,11 @@ class AbstractSimpleNode {
   void zap_tree()
   {
     if (mChildren)
-      mChildren->zap_tree();
+      // Avoid mChildren->zap_tree() since applying an array causes
+      // pike to recurse more heavily on the C stack than a normal
+      // function call.
+      foreach (mChildren, AbstractSimpleNode child)
+	child->zap_tree();
     destruct (this);
   }
 
