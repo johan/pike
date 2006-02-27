@@ -4185,7 +4185,12 @@ void real_gc_cycle_check_multiset (struct multiset *l, int weak)
 	  /* Only shrink the multiset if it isn't shared, or else we
 	   * can end up with larger memory consumption since the
 	   * shrunk data blocks won't be shared. */
+#ifdef PIKE_DEBUG
+	  l->msd = resize_multiset_data_2 (msd, ALLOC_SIZE (msd->size), 0,
+					   1);
+#else
 	  l->msd = resize_multiset_data (msd, ALLOC_SIZE (msd->size), 0);
+#endif
 	  gc_move_marker (msd, l->msd);
 	  msd = l->msd;
 	}
