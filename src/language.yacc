@@ -42,7 +42,7 @@
 %token TOK_CASE
 %token TOK_CLASS
 %token TOK_COLON_COLON
-%token TOK_CONTINUE 
+%token TOK_CONTINUE
 %token TOK_DEFAULT
 %token TOK_DIV_EQ
 %token TOK_DO
@@ -123,6 +123,7 @@
 #include "interpret.h"
 #include "array.h"
 #include "object.h"
+#include "mapping.h"
 #include "stralloc.h"
 #include "las.h"
 #include "interpret.h"
