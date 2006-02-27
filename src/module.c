@@ -33,7 +33,9 @@
 #include "module_support.h"
 
 #include "modules/modlist_headers.h"
+#ifndef PRE_PIKE
 #include "post_modules/modlist_headers.h"
+#endif
 
 /* Define this to trace the initialization and cleanup of static modules. */
 /* #define TRACE_MODULE */
@@ -284,7 +286,9 @@ struct static_module
 static const struct static_module module_list[] = {
   { "Builtin", init_builtin_modules, exit_builtin_modules }
 #include "modules/modlist.h"
+#ifndef PRE_PIKE
 #include "post_modules/modlist.h"
+#endif
 };
 
 void init_modules(void)
