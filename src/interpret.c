@@ -1441,8 +1441,8 @@ static int eval_instruction_low(PIKE_OPCODE_T *pc)
   }
 
   /* This else is important to avoid an overoptimization bug in (at
-   * least) gcc 4.0.2 20050808 which caused the address to be stored
-   * in do_inter_return_label to be at the CALL_MACHINE_CODE below. */
+   * least) gcc 4.0.2 20050808 which caused the address stored in
+   * do_inter_return_label to be at the CALL_MACHINE_CODE below. */
   else {
     CALL_MACHINE_CODE(pc);
 
