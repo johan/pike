@@ -117,9 +117,6 @@ void ia32_flush_code_generator(void);
 #if defined(_M_IX86) && !defined(__GNUC__)
 
 #define CALL_MACHINE_CODE(pc)                                   \
-  /* This code does not clobber %eax, %ebx, %ecx & %edx, but    \
-   * the code jumped to does.                                   \
-   */                                                           \
   __asm {                                                       \
     __asm sub esp,12                                            \
     __asm inc ebx /* dummy: forces the compiler to save ebx */  \
