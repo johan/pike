@@ -1440,15 +1440,20 @@ static int eval_instruction_low(PIKE_OPCODE_T *pc)
       return 0;
   }
 
-  CALL_MACHINE_CODE(pc);
+  /* This else is important to avoid an overoptimization bug in (at
+   * least) gcc 4.0.2 20050808 which caused the address to be stored
+   * in do_inter_return_label to be at the CALL_MACHINE_CODE below. */
+  else {
+    CALL_MACHINE_CODE(pc);
 
-  /* This code is never reached, but will
-   * prevent gcc from optimizing the labels below too much
-   */
+    /* This code is never reached, but will
+     * prevent gcc from optimizing the labels below too much
+     */
 
 #ifdef PIKE_DEBUG
-  fprintf(stderr,"We have reached the end of the world!\n");
+    fprintf(stderr,"We have reached the end of the world!\n");
 #endif
+  }
 
 #ifdef __GNUC__
   goto *dummy_label;
