@@ -59,13 +59,13 @@ void uc_words_free( struct words *w )
 
 static inline int _unicode_is_wordchar( int c )
 {
-  /* Ideographs */
   unsigned int i;
-  if( c>=0x5000 && c<= 0x9fff ) /* CJK */
-    return 2;
   for( i = 0; i<sizeof(ranges)/sizeof(ranges[0]); i++ )
     if( c <= ranges[i].end )
-      return c>=ranges[i].start;
+      return (c>=ranges[i].start?
+	      ( (c >= 0x3400 && c <= 0x9fff) ||
+		(c >= 0x20000 && c <= 0x2ffff) ? /* CJK */ 2 : 1 )
+	      : 0);
   return 0;
 }
 
