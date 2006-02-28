@@ -777,7 +777,7 @@ void debug_gc_fatal(void *a, int flags, const char *fmt, ...)
 
 #ifdef PIKE_DEBUG
   if (a) {
-    /* Temporarily jumping out of gc to avoid being catched in debug
+    /* Temporarily jumping out of gc to avoid being caught in debug
      * checks in describe(). */
     Pike_in_gc = 0;
     describe(a);
