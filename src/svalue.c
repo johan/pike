@@ -1749,6 +1749,7 @@ PMOD_EXPORT void safe_describe_svalue (const struct svalue *s, int i,
 {
   no_pike_calls = 1;
   describe_svalue (s, i, p);
+  no_pike_calls = 0;
 }
 
 PMOD_EXPORT void print_svalue (FILE *out, const struct svalue *s)
