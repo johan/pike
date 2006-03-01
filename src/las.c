@@ -3711,7 +3711,7 @@ void fix_type_field(node *n)
       }
 
       if (!pike_types_le(f, function_type_string)) {
-	yytype_error("Calling non function value.", f, s, 0);
+	yytype_error("Calling non function value.", s, f, 0);
 	copy_pike_type(n->type, mixed_type_string);
 
 	/* print_tree(n); */
