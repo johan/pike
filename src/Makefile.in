@@ -228,7 +228,7 @@ documentation: onepage.xml traditional.xml modref.xml
 # Backward compat.
 post_modules: post_module_objects
 
-post_module_objects: tpike
+post_module_objects: $(MODULE_REQUIREMENTS) tpike
 	@( cd post_modules ; rm remake >/dev/null 2>&1 || : ; \
 	   $(MAKE) $(MAKE_PARALLEL) $(MAKE_FLAGS) || \
 	     ( test -f remake && $(MAKE) $(MAKE_PARALLEL) $(MAKE_FLAGS) ) ) || exit $$?
