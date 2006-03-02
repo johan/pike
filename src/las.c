@@ -1189,7 +1189,12 @@ node *debug_mklocalnode(int var, int depth)
   _CDR(res) = 0;
 #endif
   res->u.integer.a = var;
-  res->u.integer.b = depth;
+  if (depth < 0) {
+    res->node_info |= OPT_ASSIGNMENT;
+    res->u.integer.b = 0;
+  } else {
+    res->u.integer.b = depth;
+  }
 
 #ifdef SHARED_NODES
   /* FIXME: Not common-subexpression optimized.
