@@ -3638,7 +3638,7 @@ lvalue: expr4
   {
     int id = add_local_name($2->u.sval.u.string,compiler_pop_type(),0);
     if (id >= 0)
-      $$=mklocalnode(id,0);
+      $$=mklocalnode(id,-1);
     else
       $$ = 0;
     free_node($2);
