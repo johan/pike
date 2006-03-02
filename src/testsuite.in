@@ -273,6 +273,15 @@ test_scopes(256, 1, 1)
 test_scopes(16, 17, 0)
 test_scopes(17, 16, 0)
 
+test_any([[
+  // LysLysKOM 14180500
+  if (1) {
+    string var = "Reinitialization error.";
+  }
+  sscanf("", "%d", int zero);
+  return zero;
+]], 0);
+
 dnl FIXME: Add test that local and local:: in combination
 dnl        with recursion works correctly.
 
