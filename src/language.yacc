@@ -2635,7 +2635,7 @@ lvalue: expr4
   | type6 F_IDENTIFIER
   {
     add_local_name($2->u.sval.u.string,compiler_pop_type(),0);
-    $$=mklocalnode(islocal($2->u.sval.u.string),0);
+    $$=mklocalnode(islocal($2->u.sval.u.string),-1);
     free_node($2);
   }
   | bad_expr_ident
