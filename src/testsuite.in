@@ -282,6 +282,17 @@ test_any([[
   return zero;
 ]], 0);
 
+test_any([[
+  // LysLysKOM 14189033
+  int i;
+  for (i = 0; i < 4; i++) {
+    sscanf("", "%d", int test);
+    if (test) return test;
+    test = i+1;
+  }
+  return 0;
+]], 0)
+
 dnl FIXME: Add test that local and local:: in combination
 dnl        with recursion works correctly.
 
