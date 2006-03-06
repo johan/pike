@@ -130,6 +130,8 @@ void f_stardate (INT32 args)
   if (precis < 1) precis = 1;
   if (precis > MAXPRECISION) precis = MAXPRECISION;
   tm = gmtime (&t);
+  if(!tm)
+    Pike_error("gmtime failed\n");
   jd = DO_NOT_WARN((int)julian_day(tm->tm_mon + 1, tm->tm_mday,
 				   tm->tm_year + 1900));
 
