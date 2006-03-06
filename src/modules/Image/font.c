@@ -358,7 +358,7 @@ void font_load(INT32 args)
 	 else
 	    new_font->mmaped_size=size;
 #else
-	 new_font->mem = malloc(size);
+	 new_font->mem = xalloc(size);
 #ifdef FONT_DEBUG
 	 fprintf(stderr,"FONT Malloced %p (%d)\n",new_font->mem,size);
 #endif
