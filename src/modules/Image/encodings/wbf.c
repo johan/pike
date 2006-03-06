@@ -132,7 +132,7 @@ static struct wbf_header decode_header( struct buffer *data )
          {
            struct ext_header *eh;
            q = read_uchar( data );
-           eh = malloc( sizeof( struct ext_header ) );
+           eh = xalloc( sizeof( struct ext_header ) );
            MEMSET( eh, 0, sizeof( struct ext_header ) );
            eh->name_len = ((q>>4) & 0x7) + 1;
            eh->value_len = (q & 0xf) + 1;
@@ -360,7 +360,7 @@ static void push_wap_type0_image_data( struct image *i )
   int x, y;
   unsigned char *data, *p;
   rgb_group *is;
-  data = malloc( i->ysize * (i->xsize+7)/8 );
+  data = xalloc( i->ysize * (i->xsize+7)/8 );
   MEMSET( data, 0, i->ysize * (i->xsize+7)/8 );
   is = i->img;
   for( y = 0; y<i->ysize; y++ )

@@ -449,7 +449,7 @@ static struct pike_string *encode_pcx_24( struct pcx_header *pcx_header,
   push_string( make_shared_binary_string( (char *)pcx_header, 
                                           sizeof(struct pcx_header) ) );
   
-  buffer = malloc(data->xsize*data->ysize*3);
+  buffer = xalloc(data->xsize*data->ysize*3);
   s = data->img;
   for(y=0; y<data->ysize; y++)
   {
@@ -487,7 +487,7 @@ static struct pike_string *encode_pcx_8( struct pcx_header *pcx_header,
                                           sizeof(struct pcx_header) ) );
 
 
-  buffer = malloc(data->xsize*data->ysize);
+  buffer = xalloc(data->xsize*data->ysize);
   image_colortable_index_8bit_image( opts->colortable, data->img,
 				     (unsigned char *)buffer,
 				     data->xsize*data->ysize, data->xsize );
