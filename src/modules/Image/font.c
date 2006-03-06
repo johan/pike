@@ -344,7 +344,7 @@ void font_load(INT32 args)
 	else
 	{
 #endif
-	  fh = (struct file_head *)malloc(size);
+	  fh = (struct file_head *)xalloc(size);
 #ifdef FONT_DEBUG
 	  fprintf(stderr,"FONT Malloced %p (%d)\n", fh, size);
 #endif
