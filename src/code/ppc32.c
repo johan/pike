@@ -453,9 +453,13 @@ void ins_f_byte(unsigned int b)
 
   case F_EXIT_CATCH - F_OFFSET:
     ppc32_push_int(0, 1);
+    addr = instrs[b = F_ESCAPE_CATCH-F_OFFSET].address;
+    break;
+#if 0
   case F_ESCAPE_CATCH - F_OFFSET:
     ppc32_escape_catch();
     return;
+#endif /* 0 */
   }
 
   FLUSH_CODE_GENERATOR_STATE();
