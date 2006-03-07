@@ -824,7 +824,10 @@ void image_polyfill(INT32 args)
       pop_stack();
    }
 
-   if (!v) return; /* no vertices */
+   if (!v) {
+     free(buf);
+     return; /* no vertices */
+   }
 
    polyfill_some(THIS,v,buf);
    
