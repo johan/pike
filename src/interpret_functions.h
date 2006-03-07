@@ -1279,8 +1279,8 @@ OPCODE0_PTRJUMP(F_CATCH, "catch", I_UPDATE_ALL, {
       init_recovery (&new_catch_ctx->recovery, 0);
     );
     new_catch_ctx->save_expendible = Pike_fp->expendible;
-    new_catch_ctx->continue_reladdr = GET_JUMP();
     JUMP_SET_TO_PC_AT_NEXT (addr);
+    new_catch_ctx->continue_reladdr = GET_JUMP();
     new_catch_ctx->next_addr = addr;
     new_catch_ctx->prev = Pike_interpreter.catch_ctx;
     Pike_interpreter.catch_ctx = new_catch_ctx;
@@ -1288,20 +1288,26 @@ OPCODE0_PTRJUMP(F_CATCH, "catch", I_UPDATE_ALL, {
 
   Pike_fp->expendible = Pike_fp->locals + Pike_fp->num_locals;
 
+  /* Need to adjust next_addr by sizeof(INT32) to skip past the jump
+   * address to the continue position after the catch block. */
+  addr = (PIKE_OPCODE_T *) ((INT32 *) addr + 1);
+
   if (Pike_interpreter.catching_eval_jmpbuf) {
     /* There's already a catching_eval_instruction around our
      * eval_instruction, so we can just continue. */
     debug_malloc_touch_named (Pike_interpreter.catch_ctx, "(1)");
-    SKIPJUMP();
+#ifdef ENTRY_PROLOGUE_SIZE
+    /* We also need to skip past the entry prologue... */
+    addr += ENTRY_PROLOGUE_SIZE;
+#endif
+    SET_PROG_COUNTER(addr);
+    FETCH;
+    JUMP_DONE;
   }
 
   else {
     debug_malloc_touch_named (Pike_interpreter.catch_ctx, "(2)");
     check_c_stack(8192);
-
-    /* Need to adjust next_addr by sizeof(INT32) to skip past the jump
-     * address to the continue position after the catch block. */
-    addr = (PIKE_OPCODE_T *) ((INT32 *) addr + 1);
 
     while (1) {
       /* Loop here every time an exception is caught. Once we've
@@ -1815,7 +1821,7 @@ OPCODE1(F_STRING_INDEX, "string index", 0, {
 });
 
 OPCODE1(F_POS_INT_INDEX, "int index", 0, {
-  push_int(arg1);
+    push_int((ptrdiff_t)(int)arg1);
   print_return_value();
   DO_INDEX;
 });
