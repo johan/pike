@@ -1103,7 +1103,7 @@ static void image_layer_mode(INT32 args)
 	 return;
       }
 
-   Pike_fatal("illegal mode: %p\n", (void *)layer_mode[i].func);
+   Pike_fatal("illegal mode: %p\n", (void *)layer_mode[i-1].func);
 }
 
 static void image_layer_available_modes(INT32 args)
