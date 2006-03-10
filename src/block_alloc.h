@@ -373,7 +373,7 @@ struct DATA *PIKE_CONCAT(find_,DATA)(void *ptr)				     \
   struct DATA *p;                                                            \
   size_t hval = (size_t)ptr;						     \
   DO_IF_RUN_UNLOCKED(mt_lock(&PIKE_CONCAT(DATA,_mutex)));                    \
-  if(!PIKE_CONCAT(DATA,_hash_table_size)) {                                  \
+  if(!PIKE_CONCAT(DATA,_hash_table)) {                                       \
     DO_IF_RUN_UNLOCKED(mt_unlock(&PIKE_CONCAT(DATA,_mutex)));                \
     return 0;                                                                \
   }                                                                          \
@@ -404,7 +404,7 @@ static struct DATA *PIKE_CONCAT(just_find_,DATA)(void *ptr)		     \
   struct DATA *p;                                                            \
   size_t hval = (size_t)ptr;						     \
   DO_IF_RUN_UNLOCKED(mt_lock(&PIKE_CONCAT(DATA,_mutex)));                    \
-  if(!PIKE_CONCAT(DATA,_hash_table_size)) {                                  \
+  if(!PIKE_CONCAT(DATA,_hash_table)) {                                       \
     DO_IF_RUN_UNLOCKED(mt_unlock(&PIKE_CONCAT(DATA,_mutex)));                \
     return 0;                                                                \
   }                                                                          \
