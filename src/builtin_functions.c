@@ -3342,20 +3342,15 @@ static int find_longest_prefix(char *str,
     }
     else if(tmp>0)
     {
-      fprintf(stderr, "v[%d] == \"%s\"  >  \"%s\"\n",
-	      c, v[c].ind->str, str);
       b=c;
     }
     else
     {
-      fprintf(stderr, "v[%d] == \"%s\"  is prefix to  \"%s\"\n",
-	      c, v[c].ind->str, str);
       a=c+1; /* There might still be a better match... */
       match=c;
       match_len = v[c].ind->len;
     }
   }
-  fprintf(stderr, "Result: %d\n", match);
   return match;
 }
 			       
