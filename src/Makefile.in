@@ -207,7 +207,7 @@ SRC_TARGETS= \
 #
 
 # Update the dumped modules, but only if dump_modules has been used earlier.
-all: post_module_objects tools
+all: module_objects post_module_objects tools
 	if [ -f dumpversion ]; then $(MAKE) $(MAKE_FLAGS) dump_modules; else :; fi
 	$(MAKE) $(MAKE_FLAGS) $(MAKE_PARALLEL) pike
 	@if [ "`find . -name '*.fail' -print`" = "" ]; then :; else \
