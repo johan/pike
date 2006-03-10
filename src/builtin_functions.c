@@ -3466,6 +3466,7 @@ static struct pike_string *replace_many(struct pike_string *str,
 
   length=str->len;
 
+  /* FIXME: We really ought to build a trie! */
   for(s=0;length > 0;)
   {
     INT32 a,b;
