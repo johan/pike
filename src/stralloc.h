@@ -291,6 +291,10 @@ PMOD_EXPORT ptrdiff_t generic_quick_binary_strcmp(const char *a,
 						  ptrdiff_t alen, int asize,
 						  const char *b,
 						  ptrdiff_t blen, int bsize);
+PMOD_EXPORT ptrdiff_t generic_find_binary_prefix(const char *a,
+						 ptrdiff_t alen, int asize,
+						 const char *b,
+						 ptrdiff_t blen, int bsize);
 PMOD_EXPORT int c_compare_string(struct pike_string *s, char *foo, int len);
 PMOD_EXPORT ptrdiff_t my_quick_strcmp(struct pike_string *a,
 				      struct pike_string *b);
