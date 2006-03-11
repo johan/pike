@@ -27,6 +27,25 @@ PMOD_EXPORT void debug_f_aggregate(INT32 args);
 #define f_aggregate(X) debug_f_aggregate(X)
 #endif
 
+struct replace_many_tupel
+{
+  int prefix;
+  int is_prefix;
+  struct pike_string *ind;
+  struct pike_string *val;
+};
+
+struct replace_many_context
+{
+  struct replace_many_tupel *v;
+  struct pike_string *empty_repl;
+  int set_start[256];
+  int set_end[256];
+  int other_start;
+  int num;
+  int flags;
+};
+
 PMOD_EXPORT void f_equal(INT32 args);
 PMOD_EXPORT void f_hash(INT32 args);
 PMOD_EXPORT void f_copy_value(INT32 args);
@@ -61,8 +80,20 @@ PMOD_EXPORT void f_indices(INT32 args);
 PMOD_EXPORT void f_values(INT32 args);
 PMOD_EXPORT void f_next_object(INT32 args);
 PMOD_EXPORT void f_object_program(INT32 args);
+int find_longest_prefix(char *str,
+			ptrdiff_t len,
+			int size_shift,
+			struct replace_many_tupel *v,
+			INT32 a,
+			INT32 b);
+void free_replace_many_context(struct replace_many_context *ctx);
+void compile_replace_many(struct replace_many_context *ctx,
+			  struct array *from,
+			  struct array *to,
+			  int reference_strings);
+struct pike_string *execute_replace_many(struct replace_many_context *ctx,
+					 struct pike_string *str);
 PMOD_EXPORT void f_reverse(INT32 args);
-struct tupel;
 PMOD_EXPORT void f_replace(INT32 args);
 PMOD_EXPORT void f_compile(INT32 args);
 PMOD_EXPORT void f_objectp(INT32 args);
