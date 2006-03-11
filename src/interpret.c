@@ -1078,6 +1078,8 @@ BLOCK_ALLOC_FILL_PAGES (catch_context, 1)
 #define POP_CATCH_CONTEXT do {						\
     struct catch_context *cc = Pike_interpreter.catch_ctx;		\
     DO_IF_DEBUG (							\
+      TRACE((3,"-   Popping catch context %p ==> %p\n",			\
+	     cc, cc->prev));						\
       if (!Pike_interpreter.catching_eval_jmpbuf)			\
 	Pike_fatal ("Not in catching eval.\n");				\
       if (!cc)								\
