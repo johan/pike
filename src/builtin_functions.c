@@ -3312,8 +3312,6 @@ int find_longest_prefix(char *str,
 
     if(tmp<0)
     {
-      int d;
-
       /* Check if we might have a valid prefix that is better than
        * the current match. */
       if (~tmp > match_len) {
@@ -3334,6 +3332,17 @@ int find_longest_prefix(char *str,
     else if(tmp>0)
     {
       b=c;
+      while ((c = v[b].prefix) > a) {
+	if (v[c].ind->len < tmp) {
+	  if (v[c].ind->len > match_len) {
+	    match = c;
+	    match_len = v[c].ind->len;
+	  }
+	  a = c+1;
+	  break;
+	}
+	b = c;
+      }
     }
     else
     {
