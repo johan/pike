@@ -1306,9 +1306,12 @@ PMOD_EXPORT ptrdiff_t generic_quick_binary_strcmp(const char *a,
     INT32 pos;
     for(pos=0;pos< MINIMUM(alen,blen) ;pos++)
     {
-      INT32 ac=generic_extract(a,asize,pos);
-      INT32 bc=generic_extract(b,bsize,pos);
-      if(ac-bc) return ac-bc;
+      p_wchar2 ac=generic_extract(a,asize,pos);
+      p_wchar2 bc=generic_extract(b,bsize,pos);
+      if(ac != bc) {
+	if (ac < bc) return -1;
+	return 1;
+      }
     }
     return alen-blen;
   }
