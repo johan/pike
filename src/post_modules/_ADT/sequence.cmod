@@ -45,8 +45,9 @@ PIKECLASS Sequence
   {
     if (THIS->a->refs > 1)
     {
+      struct array b = copy_array(THIS->a);
       free_array(THIS->a);
-      THIS->a = copy_array(THIS->a);
+      THIS->a = b;
     }
   }    
 
@@ -494,11 +495,14 @@ PIKECLASS Sequence
   {
     if (arg->type == T_INT)
     {
-      THIS->a =allocate_array_no_init(arg->u.integer, 0);
+      struct array *b = allocate_array_no_init(arg->u.integer, 0);
+      free_array(THIS->a);
+      THIS->a = b;
       THIS->a->type_field = BIT_INT;
     }
     else if (arg->type == T_ARRAY)
     {
+      free_array(THIS->a);
       add_ref(THIS->a=arg->u.array);
     } 
     pop_n_elems(args);
@@ -540,7 +544,7 @@ PIKECLASS Sequence
 
   INIT 
   {
-    THIS->a=0;
+    add_ref(THIS->a = empty_array);
     THIS->pos=0;
   }
 
