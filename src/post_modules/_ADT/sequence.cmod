@@ -45,7 +45,7 @@ PIKECLASS Sequence
   {
     if (THIS->a->refs > 1)
     {
-      struct array b = copy_array(THIS->a);
+      struct array *b = copy_array(THIS->a);
       free_array(THIS->a);
       THIS->a = b;
     }
