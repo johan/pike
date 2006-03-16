@@ -7579,11 +7579,10 @@ EOF
     # FIXME: Intra-bundle dependencies?
     for bundle in $bundles; do
       AC_MSG_CHECKING(for bundle $bundle)
-      for dist_file in `cd "$pike_bundle_dir" && echo ${bundle}*.tar.gz` \
-		       no; do
-        if test -f "$pike_bundle_dir/$dist_file"; then
-	  dist_file="$pike_bundle_dir/$dist_file"
-	  break
+      dist_file=no
+      for dist in no `cd "$pike_bundle_dir" && echo ${bundle}*.tar.gz`; do
+        if test -f "$pike_bundle_dir/$dist"; then
+	  dist_file="$pike_bundle_dir/$dist"
 	fi
       done
       AC_MSG_RESULT($dist_file)
