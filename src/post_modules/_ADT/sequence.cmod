@@ -544,7 +544,7 @@ PIKECLASS Sequence
 
   INIT 
   {
-    add_ref(THIS->a = empty_array);
+    add_ref(THIS->a = &empty_array);
     THIS->pos=0;
   }
 
