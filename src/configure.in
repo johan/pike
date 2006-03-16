@@ -1913,6 +1913,8 @@ if test "$cflags_is_set" = "no"; then
         AC_SYS_COMPILER_FLAG(-xtarget=generic64, xtarget_generic64, OPTIMIZE)
         AC_SYS_COMPILER_FLAG(-xarch=generic64, xarch_generic64, OPTIMIZE)
       fi
+      # -fast implies -fns, which turns off gradual underflow.
+      AC_SYS_COMPILER_FLAG(-fns=no, fns_no, OPTIMIZE)
     ])
     AC_SYS_COMPILER_FLAG(-xdepend,xdepend,OPTIMIZE)
     AC_SYS_COMPILER_FLAG(-xs,xs,CFLAGS)
