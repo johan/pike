@@ -3034,8 +3034,8 @@ static ptrdiff_t generic_find_binary_prefix(const char *a,
     case TWO_SIZES(AZ, BZ): {			\
       PIKE_CONCAT(p_wchar, AZ) *a_arr =		\
 	(PIKE_CONCAT(p_wchar, AZ) *)a;		\
-      PIKE_CONCAT(p_wchar, AZ) *b_arr =		\
-	(PIKE_CONCAT(p_wchar, AZ) *)b;		\
+      PIKE_CONCAT(p_wchar, BZ) *b_arr =		\
+	(PIKE_CONCAT(p_wchar, BZ) *)b;		\
       for (pos=0; pos<len; pos++) {		\
 	if (a_arr[pos] == b_arr[pos])		\
 	  continue;				\
