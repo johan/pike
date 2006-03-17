@@ -47,6 +47,13 @@ program compile_file(string file)
 
 class Codec
 {
+  mixed encode_object(object o)
+  {
+    if (o->_encode) return o->_encode();
+    werror("Can't encode object %O without _encode function.\n", o);
+    throw(({ "No _encode().\n", backtrace() }));
+  }
+
   string nameof(mixed x)
   {
     if(mixed tmp=search(all_constants(),x))  return tmp;
