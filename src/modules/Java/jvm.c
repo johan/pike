@@ -3805,6 +3805,7 @@ PIKE_MODULE_INIT
   set_gc_recurse_callback(natives_gc_recurse);
   natives_program = end_program();
   natives_program->flags |= PROGRAM_DESTRUCT_IMMEDIATE;
+  add_integer_constant("NATIVE_METHODS", 1, 0);
 #endif /* SUPPORT_NATIVE_METHODS */
 
 #ifdef _REENTRANT
