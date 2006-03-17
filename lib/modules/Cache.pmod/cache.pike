@@ -181,6 +181,7 @@ void async_cleanup_cache() {
     throw (err);
 }
 
+#if constant(thread_create)
 //!
 void threaded_cleanup_cycle() {
   while (1) {
@@ -195,6 +196,7 @@ void threaded_cleanup_cycle() {
     do_cleanup(policy->expire,storage);
   }
 }
+#endif
 
 //! Creates a new cache object. Required are a storage manager, and an
 //! expiration policy object.
