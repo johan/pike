@@ -22,7 +22,7 @@
 #else
 #ifdef PIKE_DEBUG
       if (fun < 0)
-	Pike_fatal ("Invalid function offset.\n");
+	Pike_fatal ("Invalid function offset: %d.\n", fun);
 #endif
 #endif
 
@@ -344,6 +344,7 @@
 	  + ENTRY_PROLOGUE_SIZE
 #endif /* ENTRY_PROLOGUE_SIZE */
 	  ;
+
 	return 1;
       }
 
