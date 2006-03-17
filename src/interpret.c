@@ -2401,8 +2401,8 @@ PMOD_EXPORT void safe_apply_low2(struct object *o, int fun, int args,
   }else{
     if (fun >= 0) {
       apply_low(o,fun,args);
-    } else if (handle_errors) {
-      Pike_error("Cannot call unknown function \"%s\".\n", handle_errors);
+    } else if (fun_name) {
+      Pike_error("Cannot call unknown function \"%s\".\n", fun_name);
     } else {
       pop_n_elems(args);
       push_int(0);
