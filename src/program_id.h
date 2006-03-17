@@ -93,7 +93,7 @@
 #define   tObjIs_GMP_MPZ                      "\003\001\000\000\000\040"
 
 /* Classes in builtin.cmod. */
-#define     PROG_SIGNLE_STRING_REPLACE_ID			    050
+#define     PROG_SINGLE_STRING_REPLACE_ID			    050
 #define     PROG_BOOTSTRING_ID					    051
 #define     PROG_TIME_ID					    052
 /* Kludge for #define TIME time in port.h */
