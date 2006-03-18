@@ -7,6 +7,10 @@ dnl newer Autoconf calls changequote m4_changequote
 ifdef([changequote], ,[m4_copy([m4_changequote],[changequote])])
 dnl Autoconf 2.53+ hides their version numbers in m4_PACKAGE_VERSION.
 ifdef([AC_ACVERSION], ,[m4_copy([m4_PACKAGE_VERSION],[AC_ACVERSION])])
+dnl Old autoconf doesn't have _AC_OUTPUT_SUBDIRS.
+ifdef([_AC_OUTPUT_SUBDIRS], ,
+      [define([_AC_OUTPUT_SUBDIRS],
+	      [AC_OUTPUT_SUBDIRS(AC_LIST_SUBDIRS)])])
 
 dnl Not really a prerequisite, but suggest the use of Autoconf 2.50 to
 dnl autoconf-wrapper if it is used.  dnl can't be used since the wrapper
