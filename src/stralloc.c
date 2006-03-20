@@ -2490,7 +2490,7 @@ PMOD_EXPORT void string_builder_quote_string(struct string_builder *buf,
 	/* No. */
 	if (flags & QUOTE_NO_STRING_CONCAT) {
 	  string_builder_putchar(buf, 'u');
-	  string_builder_append_integer(buf, 16, ch, APPEND_ZERO_PAD, 4, 4);
+	  string_builder_append_integer(buf, ch, 16, APPEND_ZERO_PAD, 4, 4);
 	} else {
 	  string_builder_append_integer(buf, ch, 8, 0, 1, 1);
 	  string_builder_binary_strcat(buf, "\"\"", 2);
