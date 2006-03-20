@@ -1565,9 +1565,10 @@ static void low_pike_sprintf(struct format_stack *fs,
 
 	init_string_builder_alloc(&buf, s->len+2, 0);
 	string_builder_putchar(&buf, '"');
-	string_builder_quote_string(&buf, s, QUOTE_NO_STRING_CONCAT,
+	string_builder_quote_string(&buf, s, 0,
 				    (fs->fsp->precision == SPRINTF_UNDECIDED)?
-				    0x7fffffff:fs->fsp->precision-1);
+				    0x7fffffff:fs->fsp->precision-1,
+				    QUOTE_NO_STRING_CONCAT);
 	string_builder_putchar(&buf, '"');
 
 	fs->fsp->b = MKPCHARP_STR(buf.s);
