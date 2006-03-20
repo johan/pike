@@ -69,6 +69,9 @@ struct string_builder
 #error "Unknown way to read pointer-wide integers."
 #endif
 
+/* Flags used by string_builder_quote_string() */
+#define QUOTE_NO_STRING_CONCAT	1	/* Don't use string concat in output */
+
 #ifdef PIKE_DEBUG
 PMOD_EXPORT struct pike_string *debug_findstring(const struct pike_string *foo);
 #endif
@@ -352,6 +355,9 @@ PMOD_EXPORT void string_builder_fill(struct string_builder *s,
 				     ptrdiff_t offset);
 PMOD_EXPORT void string_builder_strcat(struct string_builder *s, char *str);
 PMOD_EXPORT void string_builder_shared_strcat(struct string_builder *s, struct pike_string *str);
+PMOD_EXPORT void string_builder_quote_string(struct string_builder *buf,
+					     struct pike_string *str,
+					     int flags, ptrdiff_t max_len);
 PMOD_EXPORT void string_builder_append_integer(struct string_builder *s,
 					       LONGEST val,
 					       unsigned int base,
