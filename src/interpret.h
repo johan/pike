@@ -154,12 +154,15 @@ PMOD_EXPORT extern const char Pike_check_mark_stack_errmsg[];
 PMOD_EXPORT extern const char Pike_check_c_stack_errmsg[];
 
 #define check_c_stack(X) do {						\
-  ptrdiff_t x_= ((char *)&x_) +						\
-    STACK_DIRECTION * (Pike_interpreter.c_stack_margin + (X)) -		\
-    Pike_interpreter.stack_top ;					\
+    ptrdiff_t x_= (((char *)&x_) - Pike_interpreter.stack_top) +	\
+      STACK_DIRECTION * (Pike_interpreter.c_stack_margin + (X));	\
   x_*=STACK_DIRECTION;							\
-  if(x_>0)								\
+  if(x_>0) {								\
     low_error(Pike_check_c_stack_errmsg);				\
+    /* Pike_fatal("C stack overflow: x_:%p &x_:%p top:%p margin:%p\n",	\
+	       x_, &x_, Pike_interpreter.stack_top,			\
+	       Pike_interpreter.c_stack_margin + (X)); */		\
+  }									\
   }while(0)
 
 #define fatal_check_c_stack(X) do { 			\
