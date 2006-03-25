@@ -9948,6 +9948,10 @@ test_any_equal([[
   return sort (a);
 ]], sort(({0, "foo", "gnu"})))
 
+test_equal([[
+  sort(({"\Uffffffff","\0", "", "\177", "\377", "\U7fffffff"}));
+]], ({ "", "\0", "\177", "\377", "\U7fffffff", "\Uffffffff" }))
+
 // test large searches (find string, size, pattern)
 define(test_search,[[
 test_eq(sprintf($1+"%'"+$3+"'*n",$2)[..strlen($1)-1],$1)
