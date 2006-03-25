@@ -1865,7 +1865,16 @@ static int generate_comparison(node *n)
     else if(CAR(n)->u.sval.u.efun->function == f_ge)
       emit0(F_GE);
     else
-      Pike_fatal("Couldn't generate comparison!\n");
+      Pike_fatal("Couldn't generate comparison!\n"
+		 "efun->function: %p\n"
+		 "f_eq: %p\n"
+		 "f_ne: %p\n"
+		 "f_lt: %p\n"
+		 "f_le: %p\n"
+		 "f_gt: %p\n"
+		 "f_ge: %p\n",
+		 CAR(n)->u.sval.u.efun->function,
+		 f_eq, f_ne, f_lt, f_le, f_gt, f_ge);
     return 1;
   }
   return 0;
