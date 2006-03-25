@@ -40,6 +40,8 @@ constant DefaultBackend = __builtin.__backend;
 
 constant gc_parameters = __builtin.gc_parameters;
 
+constant get_runtime_info = __builtin.get_runtime_info;
+
 program Encoder = [program] master()->Encoder;
 program Decoder = [program] master()->Decoder;
 program Codec = [program] master()->Codec;
