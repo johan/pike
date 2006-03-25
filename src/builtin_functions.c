@@ -3295,13 +3295,11 @@ int find_longest_prefix(char *str,
   {
     c=(a+b)/2;
 
-#if 1
     if (v[c].ind->len <= match_len) {
       /* Can't be a suffix of (or is equal to) the current match. */
       b = c;
       continue;
     }
-#endif
 
     tmp=generic_find_binary_prefix(v[c].ind->str,
 				   v[c].ind->len,
