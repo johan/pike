@@ -2136,9 +2136,13 @@ if test "$cflags_is_set" = "no"; then
       AC_SYS_COMPILER_FLAG(-wd869,wd869,WARN)
 
       AC_SYS_COMPILER_FLAG(-Ob2,Ob2,OPTIMIZE)
-      AC_SYS_COMPILER_FLAG(-ipo,ipo,OPTIMIZE)
-      AC_SYS_COMPILER_FLAG(-ipo,ipo,EXTRALDFLAGS)
-      AC_SYS_COMPILER_FLAG(-ipo_obj,ipo_obj,OPTIMIZE)
+      AC_SYS_COMPILER_FLAG(-ip,ip,OPTIMIZE)
+      # Iterprocedural optimization accross object files.
+      # This slows down the compiler quite a bit with Pike's
+      # large number of object files.
+      # AC_SYS_COMPILER_FLAG(-ipo,ipo,OPTIMIZE)
+      # AC_SYS_COMPILER_FLAG(-ipo,ipo,EXTRALDFLAGS)
+      # AC_SYS_COMPILER_FLAG(-ipo_obj,ipo_obj,OPTIMIZE)
       AC_SYS_COMPILER_FLAG(-parallel, parallel,OPTIMIZE)
       AC_SYS_COMPILER_FLAG(-parallel, parallel,LDFLAGS)
       # arch dependent optimizations while maintaining
