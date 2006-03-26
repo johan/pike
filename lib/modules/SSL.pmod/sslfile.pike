@@ -1237,7 +1237,7 @@ static void update_internal_state()
     if (install_read_cbs) {
       stream->set_read_callback (ssl_read_callback);
       stream->set_close_callback (ssl_close_callback);
-      if (got_extra_read_call_out < 0) {
+      if (got_extra_read_call_out < 0 || sizeof (read_buffer)) {
 	real_backend->call_out (ssl_read_callback, 0, 1, 0);
 	got_extra_read_call_out = 1;
       }
