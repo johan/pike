@@ -1523,21 +1523,7 @@ PIKEFUN mapping(string:int|string) get_runtime_info()
 {
   pop_n_elems(args);
   push_constant_text("bytecode_method");
-  
-#if PIKE_BYTECODE_METHOD == PIKE_BYTECODE_IA32
-  push_constant_text("ia32");
-#elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_SPARC
-  push_constant_text("sparc");
-#elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_PPC32
-  push_constant_text("ppc32");
-#elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_GOTO
-  push_constant_text("computed_goto");
-#elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_DEFAULT
-  push_constant_text("default");
-#else
-  push_constant_text("unknown");
-#endif
-
+  push_constant_text(PIKE_BYTECODE_METHOD_NAME);
   push_constant_text("abi");
   push_int(sizeof(void *) * 8);
   push_constant_text("native_byteorder");
