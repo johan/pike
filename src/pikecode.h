@@ -33,14 +33,19 @@ void ins_f_byte_with_2_args(unsigned int a,
 
 #if PIKE_BYTECODE_METHOD == PIKE_BYTECODE_IA32
 #include "code/ia32.h"
+#define PIKE_BYTECODE_METHOD_NAME	"ia32"
 #elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_SPARC
 #include "code/sparc.h"
+#define PIKE_BYTECODE_METHOD_NAME	"sparc"
 #elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_PPC32
 #include "code/ppc32.h"
+#define PIKE_BYTECODE_METHOD_NAME	"ppc32"
 #elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_GOTO
 #include "code/computedgoto.h"
+#define PIKE_BYTECODE_METHOD_NAME	"computed_goto"
 #else
 #include "code/bytecode.h"
+#define PIKE_BYTECODE_METHOD_NAME	"default"
 #endif
 
 #ifndef CHECK_RELOC
