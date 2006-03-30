@@ -32,6 +32,7 @@
 #include "port.h"
 #include "gc.h"
 #include "block_alloc.h"
+#include "pikecode.h"
 #include <assert.h>
 
 /*! @decl array(array(int|string|type)) describe_program(program p)
