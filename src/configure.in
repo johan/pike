@@ -7414,6 +7414,11 @@ $bundle_info])
 	      extra_configure_args="${extra_configure_args} --build=${cpu}-unknown-winnt`uname -r|sed -e 's/-/_/g'` --disable-assembler"
 	    fi
 
+            # Nettle doesn't support assembler on Darwin x86 yet.
+            if [ "`uname -m`" = "i386" -a "`uname -s`" = "Darwin" ]; then
+	      extra_configure_args="${extra_configure_args} --disable-assembler"
+            fi
+
 	    echo "${CONFIG_SHELL-/bin/sh} \"$bundle_source_dir/configure\"" \
 	      "--prefix=\"$pike_bundle_prefix\"" ${extra_configure_args} \
 	      "--disable-shared --cache-file=config.cache"
