@@ -2289,7 +2289,9 @@ PMOD_EXPORT void apply_array(struct array *a, INT32 args)
     hash = hash * 33 + (INT32)Pike_sp[-e-1].u.ptr;
 
   if (!(cycl = (struct array *)BEGIN_CYCLIC(a, (ptrdiff_t)hash))) {
+    ONERROR err;
     aa = allocate_array(a->size);
+    SET_ONERROR(err, do_free_array, aa);
     for (e=0; e<a->size; e++)
     {
 	assign_svalues_no_free(Pike_sp, argp, args, BIT_MIXED);
@@ -2305,6 +2307,7 @@ PMOD_EXPORT void apply_array(struct array *a, INT32 args)
     array_check_type_field(aa);
 #endif
     pop_n_elems(args);
+    UNSET_ONERROR(err);
     push_array(aa);
   }
   else {
