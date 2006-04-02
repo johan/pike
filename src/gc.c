@@ -1337,7 +1337,11 @@ void debug_gc_touch(void *a)
   switch (Pike_in_gc) {
     case GC_PASS_PRETOUCH:
       m = find_marker(a);
-      if (m && !(m->flags & (GC_PRETOUCHED
+      if (
+#ifdef DO_PIKE_CLEANUP
+	  !gc_keep_markers &&
+#endif
+	  m && !(m->flags & (GC_PRETOUCHED
 #ifdef PIKE_DEBUG
 			     |GC_WATCHED
 #endif
