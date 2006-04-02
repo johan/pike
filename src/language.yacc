@@ -2068,6 +2068,7 @@ void add_local_name(struct pike_string *str,
   if (compiler_frame->current_number_of_locals == MAX_LOCAL)
   {
     yyerror("Too many local variables.");
+    free_string(type);
   }else {
     reference_shared_string(str);
     compiler_frame->variable[compiler_frame->current_number_of_locals].type = type;
