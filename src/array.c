@@ -2298,7 +2298,7 @@ PMOD_EXPORT void apply_array(struct array *a, INT32 args)
       apply_svalue(ITEM(a)+e,args);
       new_types |= 1 << Pike_sp[-1].type;
       assign_svalue_no_free(ITEM(aa)+e, &Pike_sp[-1]);
-      aa->size = e;
+      aa->size = e+1;
       pop_stack();
     }
     aa->type_field = new_types;
