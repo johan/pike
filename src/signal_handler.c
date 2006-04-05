@@ -3433,6 +3433,7 @@ void f_create_process(INT32 args)
 		 errnum);
     } else if(pid) {
       int olderrno;
+      int cnt = 0;
 
       PROC_FPRINTF((stderr, "[%d] Parent\n", getpid()));
 
@@ -3521,8 +3522,16 @@ void f_create_process(INT32 args)
 
       PROC_FPRINTF((stderr, "[%d] Parent: Wait for child...\n", getpid()));
       /* Wait for exec or error */
+#if defined(EBADF) && defined(EPIPE)
+      /* Attempt to workaround spurious errors from read(2) on FreeBSD. */
+      while (((e = read(control_pipe[0], buf, 3)) < 0) &&
+	     (errno != EBADF) && (errno != EPIPE) && (cnt++ < 16))
+	;
+#else /* !EBADF || !EPIPE */
+      /* This code *should* work... */
       while (((e = read(control_pipe[0], buf, 3)) < 0) && (errno == EINTR))
 	;
+#endif /* EBADF && EPIPE */
       /* Paranoia in case close() sets errno. */
       olderrno = errno;
 
