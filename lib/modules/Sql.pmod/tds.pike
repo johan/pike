@@ -584,7 +584,7 @@ static {
 #if constant(Crypto.md4)
       Crypto.md4 md4 = Crypto.md4();
 #else
-      error("MD4 hashes not supported in this Pike.\n");
+      predef::error("MD4 hashes not supported in this Pike.\n");
       mixed md4;
 #endif
 #endif
