@@ -2143,8 +2143,9 @@ if test "$cflags_is_set" = "no"; then
       # AC_SYS_COMPILER_FLAG(-ipo,ipo,OPTIMIZE)
       # AC_SYS_COMPILER_FLAG(-ipo,ipo,EXTRALDFLAGS)
       # AC_SYS_COMPILER_FLAG(-ipo_obj,ipo_obj,OPTIMIZE)
-      AC_SYS_COMPILER_FLAG(-parallel, parallel,OPTIMIZE)
-      AC_SYS_COMPILER_FLAG(-parallel, parallel,LDFLAGS)
+      # -parallel seems to generate broken code with icc 8.0/ia64.
+      # AC_SYS_COMPILER_FLAG(-parallel, parallel,OPTIMIZE)
+      # AC_SYS_COMPILER_FLAG(-parallel, parallel,LDFLAGS)
       # arch dependent optimizations while maintaining
       # i386 compatibility
       AC_SYS_COMPILER_FLAG(-axKW,axKW,OPTIMIZE)
