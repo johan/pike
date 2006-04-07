@@ -1694,6 +1694,15 @@ void f_thread_backtrace(INT32 args)
 }
 
 /*! @decl int status()
+ *!
+ *! Returns the status of the thread.
+ *!
+ *! @returns
+ *!   @int
+ *!     @value @[Thread.THREAD_NOT_STARTED]
+ *!     @value @[Thread.THREAD_RUNNING]
+ *!     @value @[Thread.THREAD_EXITED]
+ *!   @endint
  */
 void f_thread_id_status(INT32 args)
 {
