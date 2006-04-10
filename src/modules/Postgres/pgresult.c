@@ -369,7 +369,11 @@ badresult:
 		  break;
 #endif
 		}
-		push_string(make_shared_binary_string(value,k));
+                if (PQgetisnull(THIS->result, THIS->cursor, j)) {
+                  push_int(0);
+                } else {
+		  push_string(make_shared_binary_string(value,k));
+		}
 		if(binbuf)
 		  free(binbuf);
 	}
