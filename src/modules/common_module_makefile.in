@@ -108,14 +108,14 @@ module.pmod: Makefile $(MODULE_PMOD_IN)
 	@if [ "x$(MODULE_PMOD_IN)" != "x" ]; then \
 	  echo "Making module.pmod" ; \
 	  if [ -f "$(MODULE_PMOD_IN)" ]; then \
-	    sed -e "s/@module@/$(MODULE_PROGRAM)/" \
+	    sed -e "s#@module@#$(MODULE_PROGRAM)#" \
 	      <"$(MODULE_PMOD_IN)" >module.pmod; \
 	  else \
 	   if [ -d "$(MODULE_PMOD_IN)" ]; then \
-	     find "$(MODULE_PMOD_IN)" -type d -print | sed -e "s/$(MODULE_PMOD_IN)/module.pmod/" | xargs -n 1 mkdir -p ;\
-	     for mi in `find "$(MODULE_PMOD_IN)" -type f -print | sed -e "s/$(MODULE_PMOD_IN)//"` ;\
+	     find "$(MODULE_PMOD_IN)" -type d -print | sed -e "s#$(MODULE_PMOD_IN)#module.pmod#" | xargs -n 1 mkdir -p ;\
+	     for mi in `find "$(MODULE_PMOD_IN)" -type f -print | sed -e "s#$(MODULE_PMOD_IN)##"` ;\
 	     do \
-	       sed -e "s/@module@/$(MODULE_PROGRAM)/" \
+	       sed -e "s#@module@#$(MODULE_PROGRAM)#" \
 	         <"$(MODULE_PMOD_IN)/$$mi" > "module.pmod/$$mi" ; \
 	     done; \
 	  else \
