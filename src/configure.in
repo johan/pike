@@ -7767,6 +7767,24 @@ $bundle_info])
 	    done
 	  fi
 
+	  # Do we need to patch the assembler files?
+	  if test "$pike_cv_sys_os:$pike_cv_com_arch" = "Darwin:i386"; then
+	    # as/Darwin complains about alignments > 15.
+	    # Nettle uses alignment 16...
+	    find . -type f -name '*.asm' -print | while read asm; do
+	      if egrep '^[ 	]*.align[ 	]*16' "$asm" >/dev/null; then
+	        echo "Patching alignment in $asm..."
+	        if sed -e 's/^\([ 	]*.align[ 	]*\)16/\18/' \
+		  <"$asm" >"$asm.new"; then
+		  mv "$asm" "$asm.orig"
+		  mv -f "$asm.new" "$asm"
+		else
+		  PIKE_MSG_WARN(Patching of bundle assembler file $asm failed.)
+		fi
+	      fi
+	    done
+	  fi
+
 	  # Compile bundle.
 	  echo "Compiling bundle $bundle in `pwd`..."
 	  ${MAKE-make} || exit 1
