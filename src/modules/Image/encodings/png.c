@@ -34,7 +34,7 @@ static struct program *gz_deflate=NULL;
 #ifdef DYNAMIC_MODULE
 typedef unsigned INT32 (_crc32)(unsigned INT32, unsigned char*,
 				unsigned INT32);
-_crc32 *crc32;
+static _crc32 *crc32;
 #else
 extern unsigned INT32 crc32(unsigned INT32, unsigned char*, unsigned INT32);
 #endif
