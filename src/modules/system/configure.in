@@ -95,7 +95,7 @@ AC_HAVE_FUNCS(syslog link symlink readlink resolvepath realpath chown \
         getgrnam_r getgrent_r getgrgid_r \
         getpwnam_r getpwent_r getpwuid_r \
         getspnam_r innetgr utime sleep usleep nanosleep \
-        getrlimit setrlimit  \
+        getrlimit setrlimit setproctitle \
         setitimer getitimer mmap munmap \
 	gettimeofday settimeofday prctl inet_ntoa inet_ntop getaddrinfo)
 
