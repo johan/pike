@@ -10,7 +10,7 @@ AC_HAVE_HEADERS(locale.h libintl.h)
 #   gettext checking (localization)
 ########################################################################
 
-AC_CHECK_LIB(libiconv, iconv)
+AC_CHECK_LIB(iconv, libiconv)
 AC_CHECK_LIB(intl, gettext)
 AC_CHECK_FUNCS(setlocale gettext iconv)
 
