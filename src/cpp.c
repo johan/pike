@@ -1862,6 +1862,9 @@ void f_cpp(INT32 args)
 #ifdef __amigaos__
     simple_add_define(&this, "__amigaos__", " 1 ");
 #endif
+#ifdef __APPLE__
+    simple_add_define(&this, "__APPLE__", " 1 ");
+#endif
     simple_add_define(&this, "SIZEOF_INT",
 		      " " DEFINETOSTR(SIZEOF_INT) " ");
     simple_add_define(&this, "SIZEOF_FLOAT",
