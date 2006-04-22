@@ -2305,7 +2305,7 @@ void finalize_pike()
   }
 
   if(export) {
-    low_install_file(pike_bin_file, pike, 0, "BIN_PIKE");
+    low_install_file(pike_bin_file, pike, 0755, "BIN_PIKE");
 #ifdef SUPPORT_WIX
     if (export == 2) {
       low_install_regkey("bin", "HKLM",
