@@ -1507,7 +1507,8 @@ PIKECLASS backtrace_frame
  *!       The number of bits in the ABI. Usually @expr{32@} or @expr{64@}.
  *!     @member int "native_byteorder"
  *!       The byte order used by the native cpu.
- *!       Usually @expr{1234@} (aka little endian) or @{4321@} (aka bigendian).
+ *!       Usually @expr{1234@} (aka little endian) or
+ *!       @expr{4321@} (aka bigendian).
  *!     @member int "int_size"
  *!       The number of bits in the native integer type.
  *!       Usually @expr{32@} or @expr{64@}.
