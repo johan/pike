@@ -1133,7 +1133,11 @@ constant master_efuns = ({
 
 enum bool { false=0, true=1 };
 
+//! Prefix for Pike-related C header files.
 string include_prefix;
+
+//! Prefix for autodoc files.
+string doc_prefix;
 
 
 //! @decl int strlen(string|multiset|array|mapping|object thing)
@@ -1191,6 +1195,9 @@ static void create()
 
 #if "¤include_prefix¤"[0]!='¤'
   include_prefix = "¤include_prefix¤";
+#endif
+#if "¤doc_prefix¤"[0]!='¤'
+  doc_prefix = "¤doc_prefix¤";
 #endif
   system_module_path=pike_module_path;
   if (master() && master() != this_object()) {
