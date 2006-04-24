@@ -261,7 +261,16 @@ void o_cast_to_int(void)
     break;
 
   case T_FLOAT:
-    {
+    if (
+#ifdef HAVE_ISINF
+	isinf(sp[-1].u.float_number) ||
+#endif
+#ifdef HAVE_ISNAN
+	isnan(sp[-1].u.float_number) ||
+#endif	
+	0) {
+      Pike_error("Can't cast inifinites or NaN to int.\n");
+    } else {
       int i=DO_NOT_WARN((int)(sp[-1].u.float_number));
 #ifdef AUTO_BIGNUM
       if((i < 0 ? -i : i) < floor(fabs(sp[-1].u.float_number)))
