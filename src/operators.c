@@ -269,7 +269,7 @@ void o_cast_to_int(void)
 	isnan(sp[-1].u.float_number) ||
 #endif	
 	0) {
-      Pike_error("Can't cast inifinites or NaN to int.\n");
+      Pike_error("Can't cast infinites or NaN to int.\n");
     } else {
       int i=DO_NOT_WARN((int)(sp[-1].u.float_number));
 #ifdef AUTO_BIGNUM
