@@ -3936,8 +3936,10 @@ AC_CHECK_FUNCS( \
  bcopy \
  bzero \
  clock \
+ closefrom \
  crypt \
  fchmod \
+ fdwalk \
  gethrtime \
  gethrvtime \
  getenv \
