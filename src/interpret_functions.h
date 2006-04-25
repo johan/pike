@@ -1326,12 +1326,14 @@ OPCODE0_PTRJUMP(F_CATCH, "catch", I_UPDATE_ALL, {
        * inside catching_eval_instruction, we keep doing it until it's
        * time to return. */
 
+      int res;
+
       DO_IF_DEBUG({
 	  TRACE((3,"-   Activating catch; calling %p in context %p\n",
 		 addr, Pike_interpreter.catch_ctx));
 	});
 
-      int res = catching_eval_instruction (addr);
+      res = catching_eval_instruction (addr);
 
       DO_IF_DEBUG({
 	  TRACE((3,"-   catching_eval_instruction(%p) returned %d\n",
