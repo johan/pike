@@ -756,7 +756,7 @@ PMOD_EXPORT void hash_string(struct pike_string *s)
 PMOD_EXPORT struct pike_string *low_end_shared_string(struct pike_string *s)
 {
   ptrdiff_t len;
-  size_t h;
+  size_t h=0;
   struct pike_string *s2;
 
   len = s->len;
