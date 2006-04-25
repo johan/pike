@@ -729,28 +729,25 @@ static int _png_write_rgb(rgb_group *w1,
 		  while (n)
 		  {
 		     int i;
-		     for (i=8; i;)
+		     for (i=8; i; i--)
 		     {
-			i--;
-			if (x) 
-			{
-			   int m=((*s)>>i)&1;
-			   x--;
-			   *(d1++)=ct->u.flat.entries[CUTPLTE(m,mz)].color;
-			   if (m>=trns->len)
-			      *(da1++)=white;
-			   else
-			   {
-			      da1->r=trns->str[m];
-			      da1->g=trns->str[m];
-			      da1->b=trns->str[m];
-			      da1++;
-			   }
-			}
+                       int m=((*s)>>(i-1))&1;
+                       if (!x) break;
+                       x--;
+                       *(d1++)=ct->u.flat.entries[CUTPLTE(m,mz)].color;
+                       if (m>=trns->len)
+                         *(da1++)=white;
+                       else
+                       {
+                         da1->r=trns->str[m];
+                         da1->g=trns->str[m];
+                         da1->b=trns->str[m];
+                         da1++;
+                       }
 		     }
 		     s++;
-		     if (n<8) break;
-		     n-=8;
+		     if (n<8 && n<width) break;
+		     n -= (8-i);
 		     if (!x) x=width;
 		  }
 	       break;
