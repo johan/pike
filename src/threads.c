@@ -1642,7 +1642,7 @@ void exit_cond_obj(struct object *o)
    *	/grubba 2006-01-29
    */
   while (THIS_COND->wait_count) {
-    co_broadcast(THIS_COND);
+    co_broadcast(&(THIS_COND->cond));
 
     THREADS_ALLOW();
 #ifdef HAVE_NO_YIELD
