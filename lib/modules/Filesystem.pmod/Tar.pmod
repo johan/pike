@@ -273,7 +273,7 @@ class _TarFS
   }
 
   void destroy() {
-    if(tar && tar->fd) tar->fd->close();
+    if(tar && tar->fd && !tar->fd->is_fake_file) tar->fd->close();
   }
 
   string _sprintf(int t)
