@@ -3909,6 +3909,7 @@ void f_create_process(INT32 args)
 	      do {
 		errno = 0;
 		closefrom(fd);
+		/* OpenBSD sets errno to EBADF if fd is > than any open fd. */
 	      } while (errno && (errno != EBADF));
 	      break;
 	    }
