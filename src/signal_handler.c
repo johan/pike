@@ -3909,7 +3909,7 @@ void f_create_process(INT32 args)
 	      do {
 		errno = 0;
 		closefrom(fd);
-	      } while (errno);
+	      } while (errno && (errno != EBADF));
 	      break;
 	    }
 #endif
