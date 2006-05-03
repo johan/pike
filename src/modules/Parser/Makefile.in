@@ -6,7 +6,7 @@ MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 
 CONFIG_HEADERS=@CONFIG_HEADERS@
 
-$(SRCDIR)/xml.c : xml.cmod
+xml.o : $(SRCDIR)/xml.c
 
 @dynamic_module_makefile@
 @dependencies@
