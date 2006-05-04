@@ -244,7 +244,12 @@ void reparse_uri(this_program|string|void base_uri)
   DEBUG("Found query %O", query);
 
   // Parse path:
-  path = uri;
+  if ((uri == "") && (this_program::base_uri)) {
+    // Empty path.
+    path = this_program::base_uri->path;
+  } else {
+    path = uri;
+  }
   DEBUG("Found path %O", path);
 
   // 3) If the scheme component is defined, indicating that the reference
