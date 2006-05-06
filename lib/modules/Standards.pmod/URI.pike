@@ -244,7 +244,7 @@ void reparse_uri(this_program|string|void base_uri)
   DEBUG("Found query %O", query);
 
   // Parse path:
-  if ((uri == "") && (this_program::base_uri)) {
+  if ((uri == "") && !scheme && !authority && (this_program::base_uri)) {
     // Empty path.
     path = this_program::base_uri->path;
   } else {
