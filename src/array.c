@@ -97,7 +97,8 @@ PMOD_EXPORT struct array *low_allocate_array(ptrdiff_t size, ptrdiff_t extra_spa
   v=(struct array *)malloc(sizeof(struct array)+
 			   (size+extra_space-1)*sizeof(struct svalue));
   if(!v)
-    Pike_error(msg_out_of_mem);
+    Pike_error(msg_out_of_mem_2, sizeof(struct array)+
+	       (size+extra_space-1)*sizeof(struct svalue));
 
   GC_ALLOC(v);
 

@@ -287,7 +287,8 @@ PMOD_EXPORT void *debug_xalloc(size_t size)
   ret=(void *)malloc(size);
   if(ret) return ret;
 
-  Pike_error("Out of memory.\n");
+  Pike_error("Out of memory - failed to allocate %"PRINTSIZET"d bytes.\n",
+	     size);
   return 0;
 }
 
@@ -346,7 +347,8 @@ char *debug_qalloc(size_t size)
   }
 #endif
 
-  Pike_fatal("Completely out of memory!\n");
+  Pike_fatal("Completely out of memory - "
+	     "failed to allocate %"PRINTSIZET"d bytes!\n", size);
   /* NOT_REACHED */
   return NULL;	/* Keep the compiler happy. */
 }

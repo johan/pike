@@ -51,6 +51,8 @@ PMOD_EXPORT const char msg_bad_arg_2[] =
   "Bad argument %d to %s(). %s\n";
 PMOD_EXPORT const char msg_out_of_mem[] =
   "Out of memory.\n";
+PMOD_EXPORT const char msg_out_of_mem_2[] =
+  "Out of memory - failed to allocate %"PRINTSIZET"d bytes.\n";
 PMOD_EXPORT const char msg_div_by_zero[] =
   "Division by zero.\n";
 
