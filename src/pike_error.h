@@ -326,8 +326,23 @@ PMOD_EXPORT extern const char msg_bad_arg_2[];
   wrong_number_of_args_error (FUNC, args, ARG)
 
 PMOD_EXPORT extern const char msg_out_of_mem[];
+PMOD_EXPORT extern const char msg_out_of_mem_2[];
+
+static INLINE void DECLSPEC(noreturn) out_of_memory_error (
+  const char *func,
+  struct svalue *base_sp,  int args,
+  size_t amount) ATTRIBUTE((noreturn));
+static INLINE void DECLSPEC(noreturn) out_of_memory_error (
+  const char *func,
+  struct svalue *base_sp,  int args,
+  size_t amount)
+{
+  resource_error (func, base_sp, args, "memory", amount,
+		  msg_out_of_mem_2, amount);
+}
+
 #define SIMPLE_OUT_OF_MEMORY_ERROR(FUNC, AMOUNT) \
-   resource_error(FUNC, Pike_sp-args, args, "memory", AMOUNT, msg_out_of_mem)
+   out_of_memory_error(FUNC, Pike_sp-args, args, AMOUNT)
 
 PMOD_EXPORT extern const char msg_div_by_zero[];
 #define SIMPLE_DIVISION_BY_ZERO_ERROR(FUNC) \
