@@ -122,7 +122,7 @@ if [ "$M$P" = "" ]; then :; else
 
   if [ "$PROCESSOR_ARCHITECTURE" = "x86" ]; then
     PL=`getntenv PROCESSOR_LEVEL`
-    if [ "$PL" > 6 ]; then 
+    if [ "$PL" -gt 6 ]; then
       PL=6
     fi
     PROCESSOR_ARCHITECTURE="i${PL}86"
