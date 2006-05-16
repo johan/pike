@@ -440,6 +440,35 @@ private void do_list(string|void name)
   }
 }
 
+string generate_components(string root_directory)
+{
+  object s;
+
+  s = file_stat(root_directory);
+
+  if(!s ||!s->isdir)
+  {
+    throw(Error.Generic(root_directory + " is not a directory.\n"));
+  }
+
+  array components = ({});
+  string pdir;
+
+  foreach(Filesystem.Traversion(root_directory); string dir; string file)
+  {
+    // we skip all CVS directories.
+    if(dir[sizeof(dir)-4..] == "CVS/") continue;
+    if(dir != pdir)
+    {
+      pdir = dir;
+      components += ({ "  \"" + dir + "\"" });
+    }
+
+    components += ({ "  \"" + dir + file + "\"" });
+  }
+
+  return "({ \n" + ( components * ",\n") + "\n })";
+}
 
 class xmlrpc_handler
 {
