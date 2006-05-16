@@ -1056,7 +1056,8 @@ class Message {
 
     return map( indices(headers),
 		lambda(string hname){
-		  return map(headers[hname]/"\0",
+		  return map(arrayp(headers[hname]) ? headers[hname] :
+			     headers[hname]/"\0",
 			     lambda(string header,string hname) {
 			       return hname+": "+header;
 			     },
