@@ -640,12 +640,13 @@ class RobotExcluder
 	      void|mixed _user_agent, void|mixed ... _args)
   {
     base_uri=_base_uri; done_cb=_done_cb;
-    user_agent = _user_agent || "PikeCrawler";
+    user_agent = _user_agent || "Mozilla 4.0 (PikeCrawler)";
     args = _args;
     set_callbacks(request_ok, request_fail);
     async_request(base_uri->host, base_uri->port,
 		  "GET /robots.txt HTTP/1.0",
-		  ([ "Host":base_uri->host+":"+base_uri->port]));
+		  ([ "Host":base_uri->host+":"+base_uri->port,
+		     "user-agent":user_agent ]));
   }
   
   int check(string uri)
