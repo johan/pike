@@ -94,7 +94,7 @@ test_hilfe("b=2.0;", "Compiler Error: 1:Bad type in assignment.\n"
        "Compiler Error: 1:Expected: int\n"
        "Compiler Error: 1:Got     : float\n")
 test_hilfe("Image.Image i=Image.Image();", "")
-test_hilfe("i;", "Image.Image( 0 x 0 /""* 0.0Kb *""/)")
+test_hilfe("i;", [["Image.Image( 0 x 0 /""* 0.0Kb *""/)"]])
 test_hilfe([["constant z=`+(1,2),y=2;"]], "")
 test_hilfe("z;", "3")
 test_hilfe("y;", "2")
