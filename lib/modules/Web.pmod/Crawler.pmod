@@ -688,9 +688,9 @@ class RobotExcluder
     array(string) collect_rejected=({});
     int rejected=0,
       parsed_disallow=0; 
+    robottxt = replace(robottxt, ({ "\r\n", "\r" }), "\n");
     foreach( robottxt/"\n"-({""}), string line )
     {
-      line -= "\r";
       string field, value;
       if(sscanf(line, "%s:%*[ \t]%[^ \t#]", field, value)==3)
       {
