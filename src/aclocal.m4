@@ -15,10 +15,10 @@ define([require_autoconf_2_50],[AC_PREREQ(2.50)])
 
 define([if_autoconf],
 [ifelse(ifelse(index(AC_ACVERSION,.),-1,0,[m4_eval(
-  substr(AC_ACVERSION, 0, index(AC_ACVERSION,.))-0 >= $1 &&
+  translit(substr(AC_ACVERSION, 0, index(AC_ACVERSION,.)),[A-Za-z])-0 >= $1 &&
   (
-   substr(AC_ACVERSION, 0, index(AC_ACVERSION,.))-0 > $1 ||
-   substr(AC_ACVERSION, index(+AC_ACVERSION,.))-0 >= $2
+   translit(substr(AC_ACVERSION, 0, index(AC_ACVERSION,.)),[A-Za-z])-0 > $1 ||
+   translit(substr(AC_ACVERSION, index(+AC_ACVERSION,.)),[A-Za-z])-0 >= $2
   )
 )]),1,$3,$4)])
 
