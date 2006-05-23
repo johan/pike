@@ -1642,9 +1642,9 @@ void f_thread_backtrace(INT32 args)
  *!
  *! @returns
  *!   @int
- *!     @value @[Thread.THREAD_NOT_STARTED]
- *!     @value @[Thread.THREAD_RUNNING]
- *!     @value @[Thread.THREAD_EXITED]
+ *!     @value Thread.THREAD_NOT_STARTED
+ *!     @value Thread.THREAD_RUNNING
+ *!     @value Thread.THREAD_EXITED
  *!   @endint
  */
 void f_thread_id_status(INT32 args)
