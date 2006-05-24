@@ -728,6 +728,38 @@ static void f_host_info (INT32 args)
 	Pike_error ("Bad connection.\n");
 }
 
+/*! @decl string quote(string s)
+ *!
+ *! Escape a string to prevent SQL injection, using the current connection's
+ *! character encoding settings.
+ */
+#if defined(HAVE_PQESCAPESTRINGCONN) || defined(HAVE_PQESCAPESTRING)
+static void f_quote(INT32 args)
+{
+	int err;
+	int len;
+	struct pike_string *ret;
+	char *err_msg;
+
+	check_all_args("Postgres->quote", args, BIT_STRING, 0);
+
+	ret = begin_shared_string(Pike_sp[-args].u.string->len * 2 + 1);
+#ifdef HAVE_PQESCAPESTRINGCONN
+	len = PQescapeStringConn(THIS->dblink, ret->str, Pike_sp[-args].u.string->str, Pike_sp[-args].u.string->len, &err);
+	if (err != 0) {
+		err_msg = PQerrorMessage(THIS->dblink);
+		set_error(err_msg);
+		Pike_error(err_msg);
+	}
+#else
+	len = PQescapeString(ret->str, Pike_sp[-args].u.string->str, Pike_sp[-args].u.string->len);
+#endif
+	pop_n_elems(args);
+	ref_push_string(end_and_resize_shared_string(ret, len));
+}
+#endif /* HAVE_PQESCAPESTRINGCONN || HAVE_PQESCAPESTRING */
+
+
 /*! @endclass
  *!
  *! @endmodule
@@ -761,6 +793,11 @@ PIKE_MODULE_INIT
 	/* function(void:string) */
   ADD_FUNCTION("host_info",f_host_info,tFunc(tVoid,tStr),
 			OPT_EXTERNAL_DEPEND|OPT_RETURN);
+
+  /* function(string:string) */
+#if defined(HAVE_PQESCAPESTRINGCONN) || defined(HAVE_PQESCAPESTRING)
+  ADD_FUNCTION("quote", f_quote, tFunc(tStr,tStr), 0);
+#endif
 
 	/* postgres-specific functions */
 	/* function(void:void) */
