@@ -197,6 +197,12 @@ static INLINE time_t convert_filetime_to_time_t(FILETIME *tmp)
  * the filesystem type.
  */
 
+#ifdef HAVE___LOCTOTIME32_T
+/* This internal function in Microsoft CRT has changed name somewhere
+ * between VC98 and Visual Studio 8. */
+#define __loctotime_t __loctotime32_t
+#endif
+
 static int fat_filetime_to_time_t (FILETIME *in, time_t *out)
 {
   FILETIME local_ft;
