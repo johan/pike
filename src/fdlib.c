@@ -182,6 +182,12 @@ static int IsUncRoot(char *path)
   return 0 ;
 }
 
+#ifdef HAVE___LOCTOTIME32_T
+/* This internal function in Microsoft CRT has changed name somewhere
+ * between VC98 and Visual Studio 8. */
+#define __loctotime_t __loctotime32_t
+#endif
+
 static int low_stat (const char *file, PIKE_STAT_T *buf)
 {
   char            *path;
