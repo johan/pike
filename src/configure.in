@@ -3369,6 +3369,7 @@ AC_CHECK_FUNCS( \
  thr_yield \
  prctl \
  MakeDataExecutable \
+ __loctotime32_t \
 )
 
 AC_MSG_CHECKING(for the type of the last argument to accept)
