@@ -739,23 +739,24 @@ static void f_quote(INT32 args)
 	int err;
 	int len;
 	struct pike_string *ret;
+	struct pike_string *s;
 	char *err_msg;
 
-	check_all_args("Postgres->quote", args, BIT_STRING, 0);
+	get_all_args("Postgres->quote", args, "%S", &s);
 
-	ret = begin_shared_string(Pike_sp[-args].u.string->len * 2 + 1);
+	ret = begin_shared_string(s->len * 2 + 1);
 #ifdef HAVE_PQESCAPESTRINGCONN
-	len = PQescapeStringConn(THIS->dblink, ret->str, Pike_sp[-args].u.string->str, Pike_sp[-args].u.string->len, &err);
+	len = PQescapeStringConn(THIS->dblink, ret->str, s->str, s->len, &err);
 	if (err != 0) {
 		err_msg = PQerrorMessage(THIS->dblink);
 		set_error(err_msg);
 		Pike_error(err_msg);
 	}
 #else
-	len = PQescapeString(ret->str, Pike_sp[-args].u.string->str, Pike_sp[-args].u.string->len);
+	len = PQescapeString(ret->str, s->str, s->len);
 #endif
 	pop_n_elems(args);
-	ref_push_string(end_and_resize_shared_string(ret, len));
+	push_string(end_and_resize_shared_string(ret, len));
 }
 #endif /* HAVE_PQESCAPESTRINGCONN || HAVE_PQESCAPESTRING */
 
