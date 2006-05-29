@@ -229,6 +229,22 @@ static function(string:string) get_attr_encoder (string attr)
 	}								\
       } while (0)
 
+#define IMPROVE_DECODE_ERRS(DECODE, ATTR, VALUE, DECODER_FN) do {	\
+	if (mixed err = catch {DECODE;}) {				\
+	  mapping descr1, descr2;					\
+	  catch (descr1 = get_attr_type_descr (ATTR));			\
+	  catch (descr2 = get_attr_type_descr (ATTR, 1));		\
+	  catch {							\
+	    err[0] =							\
+	      sprintf ("Error decoding value %O for attribute %O "	\
+		       "using %O: %s"					\
+		       "Used attribute type %O, server reports %O\n",	\
+		       VALUE, ATTR, DECODER_FN, err[0], descr1, descr2); \
+	  };								\
+	  throw (err);							\
+	}								\
+      } while (0)
+
       if (ldap_version < 3) {
 	// Use the values raw.
 	if (flags & SEARCH_LOWER_ATTRS)
@@ -258,7 +274,9 @@ static function(string:string) get_attr_encoder (string attr)
 		  // send the nowarn flag to get_attr_encoder to avoid
 		  // complaints about that.
 		  get_attr_decoder (attr, DO_IF_DEBUG (dn == "")))
-		attrs[attr] = map (ASN1_GET_ATTR_VALUES (derattr), decoder);
+		IMPROVE_DECODE_ERRS (
+		  attrs[attr] = map (ASN1_GET_ATTR_VALUES (derattr), decoder),
+		  attr, ASN1_GET_ATTR_VALUES (derattr), decoder);
 	      else
 		attrs[attr] = ASN1_GET_ATTR_VALUES (derattr);
 	    });
@@ -267,7 +285,9 @@ static function(string:string) get_attr_encoder (string attr)
 	      attr = ASN1_GET_ATTR_NAME (derattr);
 	      if (function(string:string) decoder =
 		  get_attr_decoder (attr, DO_IF_DEBUG (dn == "")))
-		attrs[attr] = map (ASN1_GET_ATTR_VALUES (derattr), decoder);
+		IMPROVE_DECODE_ERRS (
+		  attrs[attr] = map (ASN1_GET_ATTR_VALUES (derattr), decoder),
+		  attr, ASN1_GET_ATTR_VALUES (derattr), decoder);
 	      else
 		attrs[attr] = ASN1_GET_ATTR_VALUES (derattr);
 	    });
