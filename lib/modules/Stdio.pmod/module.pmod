@@ -851,8 +851,7 @@ class File
 
     if (!___close_callback) return 0;
 
-#ifndef __NT__
-    if (!errno() && peek (0)) {
+    if (!errno()) {
       // There's data to read...
       //
       // FIXME: This doesn't work well since the close callback might
@@ -864,7 +863,6 @@ class File
       //___close_callback = 0;
     }
     else
-#endif /* !__NT__ */
     {
 #ifdef BACKEND_DEBUG
       if (errno())
