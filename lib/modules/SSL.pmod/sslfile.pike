@@ -374,9 +374,10 @@ static THREAD_T op_thread;
 	FIX_ERRNOS ({							\
 	    SSL3_DEBUG_MSG ("Local backend ended with error\n");	\
 	    if (stream) {						\
-	      stream->set_backend (real_backend);			\
 	      stream->set_id (1);					\
 	      update_internal_state();					\
+	      /* Switch backend after updating the installed callbacks. */ \
+	      stream->set_backend (real_backend);			\
 	    }								\
 	    {ERROR_CODE;}						\
 	    break run_local_backend;					\
@@ -398,9 +399,10 @@ static THREAD_T op_thread;
 	}								\
       }									\
 									\
-      stream->set_backend (real_backend);				\
       stream->set_id (1);						\
       update_internal_state();						\
+      /* Switch backend after updating the installed callbacks. */	\
+      stream->set_backend (real_backend);				\
     }									\
   } while (0)
 
