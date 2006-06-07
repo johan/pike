@@ -138,7 +138,7 @@ static void com_throw_error(HRESULT hr)
   SET_ONERROR(tmp, LocalFree, lpMsgBuf);
   Pike_error("Com Error: %s\n", lpMsgBuf);
   /* NOT_REACHED */
-  ACC_AND_UNSET_ONERROR(tmp);
+  CALL_AND_UNSET_ONERROR(tmp);
 }
 
 static void com_throw_error2(HRESULT hr, EXCEPINFO excep)
