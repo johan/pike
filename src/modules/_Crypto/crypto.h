@@ -13,6 +13,7 @@
 extern void assert_is_crypto_module(struct object *);
 
 extern void pike_nt_init(void);
+extern void pike_nt_exit(void);
 extern void pike_md2_init(void);
 extern void pike_md2_exit(void);
 extern void pike_md4_init(void);

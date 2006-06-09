@@ -676,6 +676,7 @@ PIKE_MODULE_EXIT
   pike_cbc_exit();
   pike_pipe_exit();
   pike_invert_exit();
+  pike_nt_exit();
 
   /* BEGIN NATIONAL SECURITY */
 
