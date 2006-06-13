@@ -2120,19 +2120,15 @@ int is_link(string path)
 //! Returns true if the given path exists (is a directory or file),
 //! otherwise false.
 //!
+//! @note
+//!   May fail with eg @[errno()] @tt{EFBIG@} if the file exists,
+//!   but the filesystem doesn't support the file size.
+//!
 //! @seealso
 //! @[is_dir()], @[is_file()], @[is_link()], @[file_stat()]
-//!
 int exist(string path)
 {
-  // NOTE: file_stat() may fail with eg EFBIG if the file exists,
-  //       but the filesystem, doesn't support the file size.
-  return !!file_stat(path) || !(<
-#if constant(System.WSAENOTSUPP)
-    System.WSAENOTSUPP,
-#endif /* constant(System.WSAENOTSUPP) */
-    System.ENOENT,
-  >)[errno()];
+  return !!file_stat(path);
 }
 
 #define BLOCK 65536
