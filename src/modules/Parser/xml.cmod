@@ -648,7 +648,7 @@ PIKECLASS Simple
   DECLARE_STORAGE;
 
   /* Forward decl. */
-  static ptrdiff_t Simple_Context_program_fun_num;
+  static int Simple_Context_program_fun_num;
 
   struct xmlinput
   {
