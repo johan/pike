@@ -44,10 +44,10 @@ force:
 	-@$(BIN_TRUE)
 
 src/configure:
-	cd src && ./run_autoconfig . 2>&1 | grep -v warning
+	cd src && ./run_autoconfig .
 
 force_autoconfig:
-	cd src && ./run_autoconfig . 2>&1 | grep -v warning
+	cd src && ./run_autoconfig .
 
 force_configure:
 	-builddir="$(BUILDDIR)"; rm -f "$$builddir/Makefile"
