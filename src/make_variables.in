@@ -23,13 +23,11 @@
 @propagated_variables@
 #propagated_variables: CC CPP LDSHARED AR INSTALL
 #propagated_variables: OPTIMIZE WARN
-#propagated_variables: PIKE_SRC_DIR BUILD_BASE
+#propagated_variables: TMP_BUILDDIR TMP_BINDIR PIKE_SRC_DIR BUILD_BASE
 
 @SET_MAKE@
 prefix=@prefix@
 exec_prefix=$(prefix)/bin
-TMP_BUILDDIR=@BUILDDIR@
-TMP_BINDIR=@BINDIR@
 DEFINES=@CPPFLAGS@ @DEFS@
 TMP_LIBDIR=$(TMP_BUILDDIR)/lib
 
