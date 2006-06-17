@@ -383,6 +383,13 @@ define([PIKE_RETAIN_VARIABLES],
     sed -e 's/}/\\}/g' -e 's/\$/\\$/g' -e 's/^\([[^=]]*\)=\(.*\)$/\1=${\1=\2}/' < propagated_variables > propvars.sh
     . ./propvars.sh && rm propvars.sh
   fi
+
+  dnl This allows module configure scripts to extend these variables, as
+  dnl they often do (they should perhaps use the MODULE_* varieties
+  dnl instead).
+  CFLAGS=$BASE_CFLAGS
+  CPPFLAGS=$BASE_CPPFLAGS
+  LDFLAGS=$BASE_LDFLAGS
 ])
 
 
@@ -504,18 +511,12 @@ pushdef([AC_OUTPUT],
 
   AC_SUBST(prefix)
   export prefix
-  AC_SUBST(exec_prefix)
-  export exec_prefix
-  AC_SUBST(BINDIR)
-  export BINDIR
   AC_SUBST(CFLAGS)
   export CFLAGS
   AC_SUBST(CPPFLAGS)
   export CPPFLAGS
-  AC_SUBST(OPTIMIZE)
-  export OPTIMIZE
-  AC_SUBST(WARN)
-  export WARN
+  AC_SUBST(LDFLAGS)
+  export LDFLAGS
   AC_SUBST(CCSHARED)
   export CCSHARED
 

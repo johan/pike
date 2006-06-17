@@ -8,15 +8,6 @@
 # dynamic_module_makefile or static_module_makefile as appropriate.
 #
 
-# These are set by make_variables.
-# CC=@CC@
-# CPP=@CPP@
-# AR=@AR@
-REAL_LDFLAGS=@LDFLAGS@
-REAL_LDSHARED=@LDSHARED@
-REAL_CFLAGS=@CFLAGS@
-REAL_CPPFLAGS=@CPPFLAGS@
-
 PREFLAGS=-I. -I$(SRCDIR) -I$(BUILD_BASE) -I$(PIKE_SRC_DIR) $(LINKAGE_CPPFLAGS) $(MODULE_CPPFLAGS) $(DEFINES)
 CFLAGS=$(MODULE_CFLAGS) $(PREFLAGS) $(OTHERFLAGS) $(LINKAGE_CFLAGS)
 NOOPT_CFLAGS=$(MODULE_CFLAGS) $(PREFLAGS) $(NOOPTFLAGS) $(LINKAGE_CFLAGS)
@@ -102,10 +93,8 @@ $(CONFIG_HEADERS) dummy_config_header: config.status
 $(SRCDIR)/configure: $(SRCDIR)/configure.in $(PIKE_SRC_DIR)/aclocal.m4
 	cd $(SRCDIR) && $(PIKE_SRC_DIR)/run_autoconfig .
 
-propagated_variables:
-
 config.status: $(SRCDIR)/configure propagated_variables
-	CFLAGS="$(REAL_CFLAGS)" LDFLAGS="$(REAL_LDFLAGS)" LDSHARED="$(REAL_LDSHARED)" CPPFLAGS="$(REAL_CPPFLAGS)" ./config.status --recheck
+	./config.status --recheck
 
 module.pmod: Makefile $(MODULE_PMOD_IN)
 	@if [ "x$(MODULE_PMOD_IN)" != "x" ]; then \
