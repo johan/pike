@@ -1,6 +1,8 @@
 # $Id$
 AC_INIT(dynamic_module_makefile.in)
 
+PIKE_RETAIN_VARIABLES()
+
 AC_SET_MAKE
 
 dirs=
