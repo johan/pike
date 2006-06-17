@@ -7530,11 +7530,8 @@ AC_SUBST(PIKE_LIB)
 
 #############################################################################
 
-PMOD_TARGETS=
-for f in $srcdir/*.cmod; do
-  PMOD_TARGETS="$PMOD_TARGETS $f"
-done
 PMOD_TARGETS=`echo $srcdir/*.cmod | sed -e "s/\.cmod/\.c/g" | sed -e "s|$srcdir/|\\$(SRCDIR)/|g"`
+test "$PMOD_TARGETS" = '$(SRCDIR)/*.c' && PMOD_TARGETS=
 AC_SUBST(PMOD_TARGETS)
 
 #############################################################################
