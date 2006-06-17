@@ -7611,8 +7611,12 @@ AC_SUBST_FILE(common_module_makefile)
 
 # Afaik BUILDDIR/TMP_BUILDDIR and BINDIR/TMP_BINDIR are always the
 # same thing. Can it be cleaned up? /mast
-TMP_BUILDDIR=${BUILDDIR}
-TMP_BINDIR=${BINDIR}
+TMP_BUILDDIR=$BUILDDIR
+TMP_BINDIR=$BINDIR
+
+BASE_CFLAGS=$CFLAGS
+BASE_CPPFLAGS=$CPPFLAGS
+BASE_LDFLAGS=$LDFLAGS
 
 #
 # Note: We must output before visiting the subdirs,
