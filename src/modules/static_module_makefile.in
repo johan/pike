@@ -28,9 +28,6 @@ linker_options: Makefile $(MODULE_ARCHIVES)
 	  fi; \
 	done
 
-modlist_headers: Makefile
-	@echo >modlist_headers "void pike_module_$(UNIQUE_MODNAME)_init(void), pike_module_$(UNIQUE_MODNAME)_exit(void);"
-
 modlist_segment: Makefile
 	@echo >modlist_segment " ,{ \"$(MODULE_PROGRAM)\", pike_module_$(UNIQUE_MODNAME)_init, pike_module_$(UNIQUE_MODNAME)_exit } "
 
