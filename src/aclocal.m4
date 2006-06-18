@@ -555,18 +555,13 @@ pushdef([AC_OUTPUT],
 
   AC_SUBST(make_variables_in)
 
-  #Ensure a proper IFS.
-
-  pike_save_ifs="$IFS"
-  IFS=" 	
-"
   rm propagated_variables.new 2>/dev/null
   prop_var_changes=""
   for var in `sed -n -e 's/^#propagated_variables:\(.*\)$/\1/p' < $make_variables_in`; do
+    echo "var: #$var#"
     eval export $var
     eval echo \"${var}=\$$var\" >> propagated_variables.new
   done
-  IFS="$pike_save_ifs"
 
   propvar_diff=yes
   if test -f propagated_variables.old; then
