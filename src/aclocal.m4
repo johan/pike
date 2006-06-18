@@ -390,6 +390,10 @@ define([PIKE_RETAIN_VARIABLES],
   CFLAGS=$BASE_CFLAGS
   CPPFLAGS=$BASE_CPPFLAGS
   LDFLAGS=$BASE_LDFLAGS
+
+  dnl Make these known under their old configure script names.
+  BUILDDIR=$TMP_BUILDDIR
+  BINDIR=$TMP_BINDIR
 ])
 
 
