@@ -559,10 +559,6 @@ pushdef([AC_OUTPUT],
 
   AC_SUBST(make_variables_in)
 
-  if test "x$IFS" = "x:"; then
-    # Attempt to restore IFS...
-    IFS="$as_save_ifs$ac_save_ifs"
-  fi
   rm propagated_variables.new 2>/dev/null
   prop_var_changes=""
   for var in `sed -n -e 's/^#propagated_variables:\(.*\)$/\1/p' < $make_variables_in`; do
