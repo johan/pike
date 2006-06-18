@@ -669,6 +669,9 @@ define(MY_AC_CHECK_PROGS,[
 ])
 define(MY_AC_PATH_PROG,[
   if test "x$enable_binary" = "xno"; then
+    # The following test (and probably many more) will leak a bogus
+    # value in IFS if the last argument is empty. Observed with
+    # autoconf 2.59.
     AC_PATH_PROG($1,nobinary_dummy,$3,$BINDIR)
   else
     AC_PATH_PROG($1,$2,$3,$4)
