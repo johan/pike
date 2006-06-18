@@ -558,7 +558,8 @@ pushdef([AC_OUTPUT],
   rm propagated_variables.new 2>/dev/null
   prop_var_changes=""
   for var in `sed -n -e 's/^#propagated_variables:\(.*\)$/\1/p' < $make_variables_in`; do
-    echo "var: #$var#"
+    # NB: If you get a strange error here you probably got a bogus
+    # value in IFS.
     eval export $var
     eval echo \"${var}=\$$var\" >> propagated_variables.new
   done
