@@ -559,7 +559,7 @@ pushdef([AC_OUTPUT],
   prop_var_changes=""
   for var in `sed -n -e 's/^#propagated_variables:\(.*\)$/\1/p' < $make_variables_in`; do
     eval export $var
-    eval echo "${var}=\$$var" >> propagated_variables.new
+    eval echo \"${var}=\$$var\" >> propagated_variables.new
   done
 
   propvar_diff=yes
