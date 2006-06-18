@@ -20,9 +20,6 @@ linker_options: Makefile
 	else : ; fi ; \
 	echo "$(LINKER_OPTIONS)" >linker_options
 
-modlist_headers: Makefile
-	@echo "" >modlist_headers
-
 modlist_segment: Makefile
 	@echo "" >modlist_segment
 

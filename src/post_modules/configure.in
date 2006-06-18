@@ -18,7 +18,7 @@ do
         yesno=`eval echo \\$with_$a`
         if test "x${yesno-}" != xno ; then
           MODULE_LINKOPTS="$MODULE_LINKOPTS $a/linker_options"
-          MODULE_SEGMENTS="$MODULE_SEGMENTS $a/modlist_headers"
+	  MODULE_SEGMENTS="$MODULE_SEGMENTS $a/modlist_segment"
           module_names="$module_names $a"
 	  if test "x$RECONFIGURE_BUNDLES" = "xyes"; then
 	    if test x`find "$a" -name '*.bundle' -print -exec rm \{\} \;` = x; then
