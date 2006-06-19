@@ -70,7 +70,7 @@ depend: Makefile
 	@for a in $(MODULES) no ; do test $$a = no || \
 	  ( cd $$a && { \
 	    echo "Fixing depends in $(MY_DIR)/$$a"; \
-	    rm -f remake; \
+	    rm -f remake || :; \
 	    ${MAKE} $(MAKE_FLAGS) depend || \
 	      if test -f remake; then ${MAKE} $(MAKE_FLAGS) depend; else exit $$?; fi; \
 	  }); \
