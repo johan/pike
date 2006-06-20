@@ -3806,7 +3806,6 @@ AC_CHECK_FUNCS( \
  thr_yield \
  prctl \
  MakeDataExecutable \
- __loctotime32_t \
 )
 
 # SunOS 4 realloc() returns NULL when reallocing NULL.
