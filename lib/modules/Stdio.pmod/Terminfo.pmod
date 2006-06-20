@@ -379,6 +379,7 @@ class Terminfo {
       array(string) strarr = Array.map(array_sscanf(stroffs, "%2c"*nstr),
 				       lambda(int offs, string buf) {
 					 return offs<0xfffe &&
+					   offs<sizeof(buf) &&
 					   buf[offs..
 					      search(buf, "\0", offs)-1];
 				       }, strbuf+"\0");
