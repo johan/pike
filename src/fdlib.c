@@ -302,6 +302,8 @@ static int fat_filetimes_to_stattimes (FILETIME *creation,
   }
   else
     stat->st_ctime = stat->st_mtime;
+
+  return 0;
 }
 
 static void nonfat_filetimes_to_stattimes (FILETIME *creation,
