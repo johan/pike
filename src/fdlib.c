@@ -372,8 +372,7 @@ static int IsUncRoot(char *path)
  *
  * Note 2: Root directories (e.g. C:\) and network share roots (e.g.
  * \\server\foo\) have no time information at all. All timestamps are
- * set to approximately one year past the start of the epoch for
- * these.
+ * set to one year past the start of the epoch for these.
  *
  * Note 3: s->st_ctime is set to the file creation time. It should
  * probably be the last access time to be closer to the unix
