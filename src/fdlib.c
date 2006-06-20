@@ -418,7 +418,7 @@ int debug_fd_stat(const char *file, PIKE_STAT_T *buf)
 
   if ( hFind == INVALID_HANDLE_VALUE )
   {
-    char abspath[ _MAX_PATH ];
+    char abspath[_MAX_PATH + 1];
     UINT drive_type;
 
     if (!strpbrk(file, "./\\") ||
