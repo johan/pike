@@ -3983,6 +3983,7 @@ AC_CHECK_FUNCS( \
  index \
  localtime \
  gmtime \
+ gmtime_r \
  memchr \
  mktime \
  perror \
@@ -4052,7 +4053,9 @@ AC_CHECK_FUNCS( \
  SetFilePointerEx \
  sync_instruction_memory \
  MakeDataExecutable \
- __loctotime32_t \
+ _get_timezone \
+ _get_daylight \
+ _localtime_s \
 )
 
 # SunOS 4 realloc() returns NULL when reallocing NULL.
