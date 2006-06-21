@@ -1050,8 +1050,6 @@ static void image_ttf_faceinstance_write(INT32 args)
 			     base);
 	 break;
        case 2:
-         free( sstr );
-         free( slen );
 	 Pike_error("Too wide string for truetype\n");
 	 break;
       }
