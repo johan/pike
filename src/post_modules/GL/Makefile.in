@@ -8,9 +8,9 @@ MODULE_CFLAGS=@X_CFLAGS@
 
 override:
 	@echo "Original CFLAGS:$(CFLAGS)"
-	@echo "Modified CFLAGS:`echo $(CFLAGS) | sed -eh -e 's/.*\(-gcc-version[^ ]*\).*/\1/p' -eg -e 's/-g[^ ]*//g' -e 's/-W[^ ]*//g' -e 's/-O[^ ]*//g'` -O"
+	@echo "Modified CFLAGS: `echo ' $(CFLAGS) ' | sed -e 's/ -g[^ ]*//g' -e 's/ -W[^ ]*//g' -e 's/ -O[^ ]*//g'` -O `echo ' $(CFLAGS) ' | sed -e 's/.*\( -gcc-version[^ ]*\).*/\1/'`"
 	@$(MAKE) \
-	  CFLAGS="`echo $(CFLAGS) | sed -eh -e 's/.*\(-gcc-version[^ ]*\).*/\1/p' -eg -e 's/-g[^ ]*//g' -e 's/-W[^ ]*//g' -e 's/-O[^ ]*//g'` -O" \
+	  CFLAGS="`echo ' $(CFLAGS) ' | sed -e 's/ -g[^ ]*//g' -e 's/ -W[^ ]*//g' -e 's/ -O[^ ]*//g'` -O `echo ' $(CFLAGS) ' | sed -e 's/.*\( -gcc-version[^ ]*\).*/\1/'`" \
 	  all
 
 @dynamic_module_makefile@
