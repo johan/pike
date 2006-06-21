@@ -390,6 +390,7 @@ define([PIKE_RETAIN_VARIABLES],
   CFLAGS=$BASE_CFLAGS
   CPPFLAGS=$BASE_CPPFLAGS
   LDFLAGS=$BASE_LDFLAGS
+  LIBS=$BASE_LIBS
 
   dnl Make these known under their old configure script names.
   BUILDDIR=$TMP_BUILDDIR
@@ -513,8 +514,8 @@ pushdef([AC_OUTPUT],
 [
   AC_SET_MAKE
 
-  AC_SUBST(prefix)
-  export prefix
+  #AC_SUBST(prefix) # autoconf substitutes this already.
+  #export prefix
   AC_SUBST(CFLAGS)
   export CFLAGS
   AC_SUBST(CPPFLAGS)
