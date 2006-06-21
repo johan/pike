@@ -36,7 +36,7 @@ dynamic:
 	@:
 
 linker_options: Makefile $(MODULE_ARCHIVES)
-	@linkopts="`pwd`/module.a $(MODULE_LDFLAGS)"; \
+	@linkopts="`pwd`/module.a `echo '$(MODULE_LDFLAGS)' | sed -e 's@$(BASE_LDFLAGS)@@' -e 's@$(BASE_LIBS)@@'`"; \
 	for a in '' $(MODULE_ARCHIVES) ; do \
 	  if test "x$$a" = "x"; then :; else \
 	    case "$$a" in \
