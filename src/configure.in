@@ -7616,8 +7616,12 @@ TMP_BINDIR=$BINDIR
 
 BASE_CFLAGS=$CFLAGS
 BASE_CPPFLAGS=$CPPFLAGS
-BASE_LDFLAGS=$LDFLAGS
-BASE_LIBS=$LIBS
+
+# Put LIBS into the LDFLAGS that the modules will use. This is
+# necessary to keep compatibility with module configure scripts. Some
+# modules don't expand @LIBS@ at all, so we can't use a BASE_LIBS to
+# init the module LIBS.
+BASE_LDFLAGS="$LDFLAGS $LIBS"
 
 #
 # Note: We must output before visiting the subdirs,

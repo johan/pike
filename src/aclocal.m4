@@ -384,13 +384,12 @@ define([PIKE_RETAIN_VARIABLES],
     . ./propvars.sh && rm propvars.sh
   fi
 
-  dnl This allows module configure scripts to extend these variables.
+  # This allows module configure scripts to extend these variables.
   CFLAGS=$BASE_CFLAGS
   CPPFLAGS=$BASE_CPPFLAGS
   LDFLAGS=$BASE_LDFLAGS
-  LIBS=$BASE_LIBS
 
-  dnl Make these known under their old configure script names.
+  # Make these known under their old configure script names.
   BUILDDIR=$TMP_BUILDDIR
   BINDIR=$TMP_BINDIR
 ])
