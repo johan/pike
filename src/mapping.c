@@ -1699,7 +1699,7 @@ void describe_mapping(struct mapping *m,struct processing *p,int indent)
     }
   }
 
-  if (Pike_in_gc) {
+  if (Pike_in_gc && Pike_in_gc < GC_PASS_FREE) {
     /* Have to do without any temporary allocations. */
     struct keypair *k;
     int notfirst = 0;
