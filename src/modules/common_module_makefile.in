@@ -48,7 +48,7 @@ $(MODULE_ARCHIVES) ThisIsAPhonyTargetBlaBlaBla: force
 # GCC dumps core on some files @ OSF1
 # This kluge should work around that...
 .c.o:
-	@echo "Compiling $<" ;\
+	@echo "Compiling `echo '$<' | sed -e 's|^$(PIKE_SRC_DIR)/||'`" ; \
 	rm -f $@.fail >/dev/null 2>&1; \
 	if $(CC) $(PREFLAGS) $(CFLAGS) -c $< -o $@ ; then : ; else \
 	  status=$$?; \
