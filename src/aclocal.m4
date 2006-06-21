@@ -384,9 +384,7 @@ define([PIKE_RETAIN_VARIABLES],
     . ./propvars.sh && rm propvars.sh
   fi
 
-  dnl This allows module configure scripts to extend these variables, as
-  dnl they often do (they should perhaps use the MODULE_* varieties
-  dnl instead).
+  dnl This allows module configure scripts to extend these variables.
   CFLAGS=$BASE_CFLAGS
   CPPFLAGS=$BASE_CPPFLAGS
   LDFLAGS=$BASE_LDFLAGS
