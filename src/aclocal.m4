@@ -511,15 +511,6 @@ pushdef([AC_OUTPUT],
 [
   AC_SET_MAKE
 
-  #AC_SUBST(prefix) # autoconf substitutes this already.
-  #export prefix
-  AC_SUBST(CFLAGS)
-  export CFLAGS
-  AC_SUBST(CPPFLAGS)
-  export CPPFLAGS
-  AC_SUBST(LDFLAGS)
-  export LDFLAGS
-
   PMOD_TARGETS=`echo $srcdir/*.cmod | sed -e "s/\.cmod/\.c/g" | sed -e "s|$srcdir/|\\$(SRCDIR)/|g"`
   test "$PMOD_TARGETS" = '$(SRCDIR)/*.c' && PMOD_TARGETS=
   AC_SUBST(PMOD_TARGETS)
