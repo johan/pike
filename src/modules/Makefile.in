@@ -21,7 +21,7 @@ force:
 # target to avoid running the default target twice.
 $(MODULES) no : Makefile force
 	@test $@ = "no" || \
-	( echo "Making $${MODULE_BUILD_TYPE}: $(MY_DIR)/$@"; \
+	( echo "#### Making $${MODULE_BUILD_TYPE}: $(MY_DIR)/$@"; \
 	  cd $@ && \
 	  { test -f build_type || \
 	    { rm remake >/dev/null 2>&1 || :; \
