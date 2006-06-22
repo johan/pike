@@ -389,6 +389,9 @@ define([PIKE_RETAIN_VARIABLES],
   CPPFLAGS=$BASE_CPPFLAGS
   LDFLAGS=$BASE_LDFLAGS
 
+  # Since BASE_LDFLAGS contains the libs too, we start with an empty LIBS.
+  LIBS=
+
   # Make these known under their old configure script names.
   BUILDDIR=$TMP_BUILDDIR
   BINDIR=$TMP_BINDIR
