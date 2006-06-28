@@ -7290,7 +7290,10 @@ else :; fi
 
 #############################################################################
 
-cat >conftest.c <<EOF
+AC_MSG_CHECKING(if dynamic loading works)
+AC_CACHE_VAL(pike_cv_sys_dynamic_loading,
+[
+  cat >conftest.c <<EOF
 #include <stdio.h>
 #include <stdlib.h>
 void testfunc(void) {
@@ -7301,9 +7304,6 @@ void testfunc(void) {
 }
 EOF
 
-AC_MSG_CHECKING(if dynamic loading works)
-AC_CACHE_VAL(pike_cv_sys_dynamic_loading,
-[
   echo $CC -c $CFLAGS $CCSHARED conftest.c -o conftest.o 1>&AC_FD_CC
   $CC -c $CFLAGS $CCSHARED conftest.c -o conftest.o 1>&AC_FD_CC 2>&AC_FD_CC
 
