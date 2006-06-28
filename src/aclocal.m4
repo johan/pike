@@ -620,7 +620,7 @@ pushdef([AC_OUTPUT],
   ])
 
   popdef([AC_OUTPUT])
-  AC_OUTPUT(make_variables:$make_variables_in $][1,$][2,$][3)
+  AC_OUTPUT([make_variables:$make_variables_in $1],[$2],[$3])
 ])
 dnl
 dnl
