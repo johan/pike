@@ -21,9 +21,10 @@
 # core configure script (e.g. through "make force_configure" in the
 # top directory).
 @propagated_variables@
-#propagated_variables: CC CPP LDSHARED AR INSTALL
+#propagated_variables: CC CPP MOD_LDSHARED AR INSTALL
 #propagated_variables: BASE_CFLAGS BASE_CPPFLAGS CCSHARED BASE_LDFLAGS
 #propagated_variables: OPTIMIZE WARN PROFIL
+#propagated_variables: LDSHARED_MODULE_REQS
 #propagated_variables: TMP_BUILDDIR TMP_BINDIR PIKE_SRC_DIR BUILD_BASE
 
 @SET_MAKE@
