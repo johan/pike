@@ -2141,7 +2141,7 @@ fi
 
 #############################################################################
 
-if test x$"pike_cv_sys_os" != xWindows_NT ; then
+if test x$pike_cv_sys_os != xWindows_NT ; then
 
 echo Searching for include-file directories...
 
