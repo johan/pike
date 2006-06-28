@@ -7634,9 +7634,11 @@ AC_OUTPUT(Makefile \
           post_modules/static_module_makefile:modules/static_module_makefile.in \
           modules/dynamic_module_makefile:$dmmsrc \
           post_modules/dynamic_module_makefile:$dmmsrc \
-          precompile.sh specs, [
-            echo foo >stamp-h
-            chmod +x precompile.sh
+	  precompile.sh specs, [
+	    case "x$CONFIG_HEADERS" in
+	      *machine.h*) echo foo >stamp-h ;;
+	    esac
+	    chmod +x precompile.sh
           ])
 
 # Check if we have to enable some bundles
