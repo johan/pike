@@ -4090,7 +4090,7 @@ AC_CHECK_FUNCS( \
  MakeDataExecutable \
  _get_timezone \
  _get_daylight \
- _localtime_s \
+ localtime_s \
 )
 
 # SunOS 4 realloc() returns NULL when reallocing NULL.
