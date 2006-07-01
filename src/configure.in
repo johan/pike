@@ -661,6 +661,10 @@ fi
 ])
 AC_MSG_RESULT($pike_cv_sys_os)
 
+if test "x$pike_cv_sys_os" = xWindows_NT; then
+  PIKE_FUNCS_NEED_DECLS(yes)
+fi
+
 if test "$GCC" = "yes"; then :; else
 #
 # Special hack for HP-UX stupid cc
@@ -2914,6 +2918,11 @@ else
 fi
 
 #############################################################################
+
+# Note: For function detection to work correctly with
+# PIKE_FUNCS_NEED_DECLS (i.e. windows), it's necessary that
+# AC_CHECK_HEADERS tests all potential header files for a function
+# before AC_CHECK_FUNCS is used.
 
 AC_HEADER_TIME
 AC_HEADER_STDC
