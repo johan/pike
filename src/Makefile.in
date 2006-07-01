@@ -603,7 +603,7 @@ spotless: clean_here
 	-( cd post_modules; $(MAKE) $(MAKE_FLAGS) spotless )
 	-(cd $(SRCDIR); find . -type f -name '*.h.in' -print) | \
 	  sed -e 's/\.in$$//' | xargs rm -f
-	-rm -f Makefile config.* make_variables specs pike.syms
+	-rm -f Makefile config.* make_variables specs pike.syms hdrlist.h
 	-rm -f core core.* .pure stamp-h
 	-rm -f lexical.c mon.out *.ln
 	-rm -f pike pike.old l.outa* num_files_to_install

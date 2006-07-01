@@ -130,7 +130,7 @@ clean: clean_here
 	done
 
 spotless: clean_here
-	-rm -f config.cache config.log config.status Makefile propagated_variables make_variables dependencies pike_*.feature
+	-rm -f config.cache config.log config.status Makefile propagated_variables make_variables dependencies pike_*.feature hdrlist.h
 	-rm -f core core.* .pure conftest.* $(MODULE_SPOTLESS_EXTRA)
 	@for a in '' $(MODULE_SUBDIRS) ; do \
 	  if test "x$$a" = "x"; then :; \
