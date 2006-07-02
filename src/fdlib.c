@@ -13,6 +13,10 @@
 
 #if defined(HAVE_WINSOCK_H)
 
+#ifdef HAVE_DIRECT_H
+#include <direct.h>
+#endif
+
 #include <time.h>
 
 /* Old versions of the headerfiles don't have this constant... */
