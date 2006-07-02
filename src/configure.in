@@ -4019,6 +4019,7 @@ AC_CHECK_FUNCS( \
  localtime \
  gmtime \
  gmtime_r \
+ gmtime_s \
  memchr \
  mktime \
  perror \
