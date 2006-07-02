@@ -180,7 +180,7 @@ AC_DEFUN([AC_CHECK_HEADER],
   AC_REQUIRE([PIKE_FUNCS_NEED_DECLS])
   ORIG_AC_CHECK_HEADER([$1], [
     if test x$pike_cv_funcs_need_decls = xyes; then
-      def=HAVE_`echo "$1" | tr 'a-z---./' 'A-Z___'`
+      def=HAVE_`echo "$1" | tr '[[a-z]]' '[[A-Z]]' | sed -e 's,[[-./]],_,g'`
       cat >> hdrlist.h <<EOF
 #ifdef $def
 #include <$1>
