@@ -4820,7 +4820,7 @@ static void encode_struct_tm(struct tm *tm)
 }
 #endif
 
-#ifdef HAVE_GMTIME
+#if defined (HAVE_GMTIME) || defined (HAVE_GMTIME_R) || defined (HAVE_GMTIME_S)
 /*! @decl mapping(string:int) gmtime(int timestamp)
  *!
  *!   Convert seconds since 00:00:00 UTC, Jan 1, 1970 into components.
@@ -4833,6 +4833,9 @@ static void encode_struct_tm(struct tm *tm)
  */
 PMOD_EXPORT void f_gmtime(INT32 args)
 {
+#if defined (HAVE_GMTIME_R) || defined (HAVE_GMTIME_S)
+  struct tm tm_s;
+#endif
   struct tm *tm;
   INT_TYPE tt;
   time_t t;
@@ -4840,7 +4843,13 @@ PMOD_EXPORT void f_gmtime(INT32 args)
   get_all_args("gmtime", args, "%i", &tt);
 
   t = tt;
+#ifdef HAVE_GMTIME_R
+  tm = gmtime_r (&t, &tm_s);
+#elif defined (HAVE_GMTIME_S)
+  if (!gmtime_s (&tm_s, &t)) tm = &tm_s;
+#else
   tm = gmtime(&t);
+#endif
   if (!tm) Pike_error ("gmtime() on this system cannot handle "
 		       "the timestamp %ld.\n", (long) t);
   pop_n_elems(args);
