@@ -408,4 +408,8 @@ double FREXP(double x, int *exp);
 double LDEXP(double x, int exp);
 #endif
 
+#ifdef __MINGW32__
+void _dosmaperr(int x);
+#endif
+
 #endif
