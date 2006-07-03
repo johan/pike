@@ -31,9 +31,13 @@ extern struct program *image_program;
 static struct program *gz_inflate=NULL;
 static struct program *gz_deflate=NULL;
 
+#ifdef DYNAMIC_MODULE
 typedef unsigned INT32 (_crc32)(unsigned INT32, unsigned char*,
 				unsigned INT32);
 static _crc32 *crc32;
+#else
+extern unsigned INT32 crc32(unsigned INT32, unsigned char*, unsigned INT32);
+#endif
 
 static struct pike_string *param_palette;
 static struct pike_string *param_spalette;
@@ -1798,11 +1802,13 @@ void exit_image_png(void)
 
 void init_image_png(void)
 {
+#ifdef DYNAMIC_MODULE
    crc32 = PIKE_MODULE_IMPORT(Gz, crc32);
    if(!crc32) {
      yyerror("Could not load Image module.");
      return;
    }
+#endif
 
    push_text("Gz");
    SAFE_APPLY_MASTER("resolv",1);
