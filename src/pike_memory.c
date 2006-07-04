@@ -515,6 +515,11 @@ void mexec_free(void *ptr)
 	       ptr, mblk->magic, hdr);
   }
 #endif /* MEXEC_MAGIC */
+
+#ifdef VALGRIND_DISCARD_TRANSLATIONS
+  VALGRIND_DISCARD_TRANSLATIONS (mblk, mblk->size);
+#endif
+
   blk = (struct mexec_free_block *)mblk;
 
   next = hdr->free;
