@@ -227,6 +227,9 @@ PIKECLASS ResObj
   }
 }
 
+#undef THIS
+#define THIS THIS_SQLITE
+
   /* @decl void create(string path)
    */
   PIKEFUN void create(string path, mixed|void a, mixed|void b, mixed|void c)
