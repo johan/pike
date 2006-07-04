@@ -128,6 +128,9 @@ PMOD_EXPORT extern const char Pike_is8bitalnum_vector[];
 /* Useful to get a literal comma in an argument to a macro. */
 #define COMMA ,
 
+/* Necessary to pass an empty argument to a macro for some preprocessors. */
+#define NOTHING
+
 /* Needed for fsort_template.h */
 PMOD_EXPORT int my_log2(size_t x);
 
