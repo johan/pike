@@ -161,8 +161,9 @@ int main()
    return 0;
 }],[],[],[:])
       if test -f config.gmpversion; then
-         AC_MSG_RESULT(`cat config.gmpversion`)
-         PIKE_FEATURE([Gmp (bignums)],[yes (version `cat config.gmpversion`, using lib$1)])
+	 gmpversion=`cat config.gmpversion`
+	 AC_MSG_RESULT($gmpversion)
+	 PIKE_FEATURE([Gmp (bignums)],[yes (version $gmpversion, using lib$1)])
       else
          AC_MSG_RESULT(unknown)
          PIKE_FEATURE([Gmp (bignums)],[yes (using lib$1)])
