@@ -586,7 +586,7 @@ void f_ceil(INT32 args)
 void f_round(INT32 args)
 {
   ARG_CHECK("round");
-  sp[-1].u.float_number = FL1(RINT,sp[-1].u.float_number);
+  sp[-1].u.float_number = FL1(rint,sp[-1].u.float_number);
 }
 
 
