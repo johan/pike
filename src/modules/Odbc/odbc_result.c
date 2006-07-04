@@ -162,12 +162,20 @@ static void odbc_fix_fields(void)
 			&name_len,
 			&sql_type, &precision, &scale, &nullable),
 		       NULL, NULL);
-      if (name_len < (ptrdiff_t)buf_size) {
+      if (name_len
+#ifdef SQL_WCHAR
+	  * sizeof(SQLWCHAR)
+#endif
+	  < (ptrdiff_t)buf_size) {
 	break;
       }
       do {
 	buf_size *= 2;
-      } while (name_len >= (ptrdiff_t)buf_size);
+      } while (name_len
+#ifdef SQL_WCHAR
+	       * sizeof(SQLWCHAR)
+#endif
+	       >= (ptrdiff_t)buf_size);
       if (!(buf = alloca(
 			 buf_size
 #ifdef SQL_WCHAR
@@ -193,7 +201,7 @@ static void odbc_fix_fields(void)
     /* Create the mapping */
     push_text("name");
 #ifdef SQL_WCHAR
-    push_sqlwchar(buf, name_len);
+    push_sqlwchar(buf, name_len * sizeof(SQLWCHAR));
 #else
     push_string(make_shared_binary_string((char *)buf, name_len));
 #endif
