@@ -776,7 +776,43 @@ void *mexec_realloc(void *ptr, size_t sz)
   verify_mexec_hdr(hdr);
   return res + 1;
 }
-#else
+
+#elif defined (VALGRIND_DISCARD_TRANSLATIONS)
+
+void *mexec_alloc (size_t sz)
+{
+  size_t *blk = malloc (sz + sizeof (size_t));
+  if (!blk) return NULL;
+  *blk = sz;
+  return blk + 1;
+}
+
+void *mexec_realloc (void *ptr, size_t sz)
+{
+  if (ptr) {
+    size_t *oldblk = ptr;
+    size_t oldsz = oldblk[-1];
+    size_t *newblk = realloc (oldblk - 1, sz + sizeof (size_t));
+    if (!newblk) return NULL;
+    if (newblk != oldblk)
+      VALGRIND_DISCARD_TRANSLATIONS (oldblk, oldsz);
+    else if (oldsz > sz)
+      VALGRIND_DISCARD_TRANSLATIONS (newblk + sz, oldsz - sz);
+    *newblk = sz;
+    return newblk + 1;
+  }
+  return mexec_malloc (sz);
+}
+
+void mexec_free (void *ptr)
+{
+  size_t *blk = ptr;
+  VALGRIND_DISCARD_TRANSLATIONS (blk, blk[-1]);
+  free (blk - 1);
+}
+
+#else  /* !(HAVE_MMAP && MEXEC_USES_MMAP) && !VALGRIND_DISCARD_TRANSLATIONS */
+
 void *mexec_alloc(size_t sz)
 {
   return malloc(sz);
@@ -790,7 +826,8 @@ void mexec_free(void *ptr)
 {
   free(ptr);
 }
-#endif /* HAVE_MMAP && MEXEC_USES_MMAP */
+
+#endif  /* !(HAVE_MMAP && MEXEC_USES_MMAP) && !VALGRIND_DISCARD_TRANSLATIONS */
 
 /* #define DMALLOC_TRACE */
 /* #define DMALLOC_TRACELOGSIZE	256*1024 */
