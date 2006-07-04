@@ -195,7 +195,7 @@ static void odbc_fix_fields(void)
     /* Create the mapping */
     push_text("name");
 #ifdef SQL_WCHAR
-    push_sqlwchar(buf, name_len);
+    push_sqlwchar(buf, name_len * sizeof(SQLWCHAR));
 #else
     push_string(make_shared_binary_string((char *)buf, name_len));
 #endif
