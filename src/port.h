@@ -140,14 +140,15 @@ time_t TIME(time_t *);
 #endif
 
 #ifndef HAVE_RINT
-#define RINTF(X) floorf ((X) + 0.5)
-#define RINT(X) floor( (X) + 0.5 )
-#define RINTL(X) floorl ((X) + 0.5)
-#else
+#define rintf(X) floorf ((X) + 0.5)
+#define rint(X) floor( (X) + 0.5 )
+#define rintl(X) floorl ((X) + 0.5)
+#endif
+
+/* Compat. */
 #define RINTF rintf
 #define RINT rint
 #define RINTL rintl
-#endif
 
 long STRTOL(const char *str,char **ptr,int base);
 PMOD_EXPORT double STRTOD(const char * nptr, char **endptr);
