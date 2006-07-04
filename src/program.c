@@ -2516,12 +2516,6 @@ static void exit_program_struct(struct program *p)
   }
 #endif
 
-#if defined(PIKE_USE_MACHINE_CODE) && defined(VALGRIND_DISCARD_TRANSLATIONS)
-  if(p->program) {
-    VALGRIND_DISCARD_TRANSLATIONS(p->program,
-				  p->num_program*sizeof(p->program[0]));
-  }
-#endif /* PIKE_USE_MACHINE_CODE && VALGRIND_DISCARD_TRANSLATIONS */
   if(p->flags & PROGRAM_OPTIMIZED)
   {
 #ifdef PIKE_USE_MACHINE_CODE
