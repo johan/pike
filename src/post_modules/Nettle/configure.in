@@ -22,6 +22,7 @@ else
     PIKE_FEATURE_OK(Nettle)
 
     # md4 is available in later versions of nettle
+    AC_CHECK_HEADERS(nettle/md4.h)
     AC_CHECK_FUNCS(nettle_md4_init)
 
     AC_MSG_CHECKING([for idea.c])

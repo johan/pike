@@ -198,6 +198,9 @@ AC_MSG_RESULT(no)
     ], [])
   fi
 
+  # Header check necessary for PIKE_FUNCS_NEED_DECLS.
+  AC_CHECK_HEADERS(pthread.h)
+
   # Pthreads is still needed in 3.20.0.
   AC_CHECK_FUNC(pthread_self, [], [
     AC_CHECK_LIB(pthread, pthread_self, [
