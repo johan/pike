@@ -77,7 +77,7 @@ module.so: $(MODULE_ARCHIVES) $(OBJS) $(LDSHARED_MODULE_REQS)
 	  exit 1; \
 	fi
 
-$(OBJS) : $(MODULE_BASE)/dynamic_module_makefile
+$(OBJS): propagated_variables
 
 #
 # install a standard module with optional c component in the system module path
