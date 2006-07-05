@@ -508,7 +508,7 @@ static INLINE struct DATA *						     \
  PIKE_CONCAT3(just_find_,DATA,_unlocked)(void *ptr,			     \
 					 PIKE_HASH_T hval)		     \
 {									     \
-  struct DATA *p,**pp;							     \
+  struct DATA *p;							     \
   p=PIKE_CONCAT(DATA,_hash_table)[hval];                                     \
   if(!p || p->PTR_HASH_ALLOC_DATA == ptr)				     \
   {                                                                          \

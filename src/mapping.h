@@ -111,7 +111,7 @@ extern struct mapping *gc_internal_mapping;
       really_free_mapping(m_);						\
   }while(0)
 
-#endif	/* !DYNAMIC_MODULE */
+#endif	/* !(USE_DLL && DYNAMIC_MODULE) */
 
 /** Free only the mapping data leaving the mapping structure itself intact.
   *
