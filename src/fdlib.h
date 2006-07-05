@@ -67,9 +67,11 @@ typedef int FD;
 #if _INTEGRAL_MAX_BITS >= 64
 typedef struct _stati64 PIKE_STAT_T;
 typedef __int64 PIKE_OFF_T;
+#define PRINTPIKEOFFT PRINTINT64
 #else
 typedef struct stat PIKE_STAT_T;
 typedef off_t PIKE_OFF_T;
+#define PRINTPIKEOFFT PRINTOFFT
 #endif
 
 #define SOCKFUN1(NAME,T1) PMOD_EXPORT int PIKE_CONCAT(debug_fd_,NAME) (FD,T1);
