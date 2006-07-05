@@ -5,6 +5,8 @@
 || $Id$
 */
 
+/* Note: This is not used if --enable-dll is. */
+
 #include <global.h>
 #include "fdlib.h"
 #define DL_INTERNAL
