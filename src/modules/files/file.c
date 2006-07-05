@@ -4333,21 +4333,21 @@ PIKE_MODULE_INIT
 
   o=file_make_object_from_fd(0, FILE_READ , fd_CAN_NONBLOCK);
   ((struct my_file *)(o->storage))->flags |= FILE_NO_CLOSE_ON_DESTRUCT;
-  dmalloc_register_fd(0);
+  (void) dmalloc_register_fd(0);
   dmalloc_accept_leak_fd(0);
   add_object_constant("_stdin",o,0);
   free_object(o);
 
   o=file_make_object_from_fd(1, FILE_WRITE, fd_CAN_NONBLOCK);
   ((struct my_file *)(o->storage))->flags |= FILE_NO_CLOSE_ON_DESTRUCT;
-  dmalloc_register_fd(1);
+  (void) dmalloc_register_fd(1);
   dmalloc_accept_leak_fd(1);
   add_object_constant("_stdout",o,0);
   free_object(o);
 
   o=file_make_object_from_fd(2, FILE_WRITE, fd_CAN_NONBLOCK);
   ((struct my_file *)(o->storage))->flags |= FILE_NO_CLOSE_ON_DESTRUCT;
-  dmalloc_register_fd(2);
+  (void) dmalloc_register_fd(2);
   dmalloc_accept_leak_fd(2);
   add_object_constant("_stderr",o,0);
   free_object(o);
