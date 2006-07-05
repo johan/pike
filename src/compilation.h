@@ -50,7 +50,7 @@
 #define IMEMBER2(X,Y,Z,Q)
 #define ZMEMBER(X,Y,Z)
 #define ZMEMBER2(X,Y,Z,Q)
-#define SNAME(X,Y) extern struct X * Y;
+#define SNAME(X,Y) PMOD_EXPORT extern struct X * Y;
 #define SEND
 #endif
 

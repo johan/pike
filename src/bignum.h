@@ -42,6 +42,7 @@
 #ifdef AUTO_BIGNUM
 
 /* Prototypes begin here */
+PMOD_EXPORT extern struct svalue auto_bignum_program;
 PMOD_EXPORT struct program *get_auto_bignum_program(void);
 PMOD_EXPORT struct program *get_auto_bignum_program_or_zero(void);
 void init_auto_bignum(void);

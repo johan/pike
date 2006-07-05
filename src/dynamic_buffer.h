@@ -26,7 +26,7 @@ struct dynamic_buffer_s
 
 typedef struct dynamic_buffer_s dynamic_buffer;
 
-extern dynamic_buffer pike_global_buffer;
+PMOD_EXPORT extern dynamic_buffer pike_global_buffer;
 
 /* Prototypes begin here */
 PMOD_EXPORT char *low_make_buf_space(size_t space, dynamic_buffer *buf);
