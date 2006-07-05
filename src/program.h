@@ -708,12 +708,12 @@ int find_inherit(struct program *p, struct pike_string *name);
 node *reference_inherited_identifier(struct pike_string *super_name,
 				     struct pike_string *function_name);
 void rename_last_inherit(struct pike_string *n);
-void low_inherit(struct program *p,
-		 struct object *parent,
-		 int parent_identifier,
-		 int parent_offset,
-		 INT32 flags,
-		 struct pike_string *name);
+PMOD_EXPORT void low_inherit(struct program *p,
+			     struct object *parent,
+			     int parent_identifier,
+			     int parent_offset,
+			     INT32 flags,
+			     struct pike_string *name);
 PMOD_EXPORT void do_inherit(struct svalue *s,
 		INT32 flags,
 		struct pike_string *name);

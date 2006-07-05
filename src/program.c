@@ -3804,12 +3804,12 @@ void check_for_facet_inherit(struct program *p)
 /*
  * make this program inherit another program
  */
-void low_inherit(struct program *p,
-		 struct object *parent,
-		 int parent_identifier,
-		 int parent_offset,
-		 INT32 flags,
-		 struct pike_string *name)
+PMOD_EXPORT void low_inherit(struct program *p,
+			     struct object *parent,
+			     int parent_identifier,
+			     int parent_offset,
+			     INT32 flags,
+			     struct pike_string *name)
 {
   int e;
   ptrdiff_t inherit_offset, storage_offset;
