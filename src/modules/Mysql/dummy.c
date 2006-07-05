@@ -25,6 +25,10 @@
 
 #include <stdio.h>
 
+#ifdef HAVE_IO_H
+#include <io.h>
+#endif
+
 typedef INT64 _ll_t;
 typedef unsigned INT64 _ull_t;
 
