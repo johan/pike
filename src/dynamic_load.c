@@ -50,14 +50,14 @@
 #define EMULATE_DLOPEN
 #else
 
-#if 0
+#ifdef USE_DLL
 #if defined(HAVE_LOADLIBRARY) && defined(HAVE_FREELIBRARY) && \
     defined(HAVE_GETPROCADDRESS) && defined(HAVE_WINBASE_H)
 #define USE_LOADLIBRARY
 #define HAVE_SOME_DLOPEN
 #define EMULATE_DLOPEN
 #endif
-#endif /* 0 */
+#endif
 
 #ifdef HAVE_MACH_O_DYLD_H
 /* MacOS X... */
@@ -65,7 +65,7 @@
 #define HAVE_SOME_DLOPEN
 #define EMULATE_DLOPEN
 #else /* !HAVE_MACH_O_DYLD_H */
-#ifdef USE_MY_WIN32_DLOPEN
+#if !defined (USE_DLL) && defined (USE_MY_WIN32_DLOPEN)
 #include "pike_dlfcn.h"
 #define HAVE_SOME_DLOPEN
 #define HAVE_DLOPEN
@@ -102,15 +102,6 @@ static void *dlopen(const char *foo, int how)
   tmp=convert_string(foo, strlen(foo));
   ret=LoadLibrary(tmp);
   free((char *)tmp);
-  if(ret)
-  {
-    void ** psym=(void **)GetProcAddress(ret, "PikeSymbol");
-    if(psym)
-    {
-      extern void *PikeSymbol[];
-      *psym = PikeSymbol;
-    }
-  }
   return (void *)ret;
 }
 
