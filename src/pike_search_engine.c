@@ -107,7 +107,7 @@ int NameN(init_hubbe_search)(struct hubbe_searcher *s,
   hsize--;
   
   if(max > (ptrdiff_t)needlelen) max=needlelen;
-  max=(max-sizeof(INT32)+1) & -sizeof(INT32);
+  max=(max-sizeof(INT32)+1) & ~(sizeof(INT32) - 1);
   if(max > MEMSEARCH_LINKS) max=MEMSEARCH_LINKS;
   
   /* This assumes 512 buckets - Hubbe */

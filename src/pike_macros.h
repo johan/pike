@@ -54,7 +54,7 @@ PMOD_EXPORT extern const char Pike_is8bitalnum_vector[];
 
 
 
-#define DO_ALIGN(X,Y) (((size_t)(X)+((Y)-1)) & -(Y))
+#define DO_ALIGN(X,Y) (((size_t)(X)+((Y)-1)) & ~((Y)-1))
 #define CONSTANT_STRLEN(X) (sizeof(X) - sizeof(""))
 
 #define SET_NEXT_AND_FREE(p,free_item) do{	\
