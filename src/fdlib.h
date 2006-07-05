@@ -278,7 +278,10 @@ PMOD_EXPORT void closedir(DIR *dir);
 #define HAVE_POSIX_READDIR_R
 
 /* Do not use these... */
+#if 0
+/* Why not? Want to use this one for _getdrive. /mast */
 #undef HAVE_DIRECT_H
+#endif
 #undef HAVE_NDIR_H
 #undef HAVE_SYS_NDIR_H
 #undef HAVE_DIRENT_H
