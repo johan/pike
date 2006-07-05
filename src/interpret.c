@@ -2159,7 +2159,7 @@ static void restore_catching_eval_jmpbuf (LOW_JMP_BUF *p)
   Pike_interpreter.catching_eval_jmpbuf = p;
 }
 
-void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
+PMOD_EXPORT void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 {
   /* The C stack margin is normally 8 kb, but if we get here during a
    * lowered margin then don't fail just because of that, unless it's

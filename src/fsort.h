@@ -11,10 +11,10 @@
 typedef int (*fsortfun)(const void *,const void *);
 
 /* Prototypes begin here */
-void fsort(void *base,
-	   long elms,
-	   long elmSize,
-	   fsortfun cmpfunc);
+PMOD_EXPORT void fsort(void *base,
+		       long elms,
+		       long elmSize,
+		       fsortfun cmpfunc);
 /* Prototypes end here */
 
 

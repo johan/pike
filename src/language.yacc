@@ -4076,7 +4076,7 @@ void low_yyerror(struct pike_string *str)
   STACK_LEVEL_DONE(0);
 }
 
-void yyerror(char *str)
+PMOD_EXPORT void yyerror(char *str)
 {
   push_text(str);
   low_yyerror(Pike_sp[-1].u.string);

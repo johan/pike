@@ -336,7 +336,7 @@ void o_cast_to_int(void)
 }
 
 /* Special case for casting to string. */
-void o_cast_to_string(void)
+PMOD_EXPORT void o_cast_to_string(void)
 {
   char buf[200];
   switch(sp[-1].type)
