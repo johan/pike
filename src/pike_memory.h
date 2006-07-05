@@ -138,9 +138,9 @@ PMOD_EXPORT void debug_xfree(void *mem);
 PMOD_EXPORT void *debug_xrealloc(void *m, size_t s);
 PMOD_EXPORT void *debug_xcalloc(size_t n, size_t s);
 
-void *mexec_alloc(size_t sz);
-void *mexec_realloc(void *ptr, size_t sz);
-void mexec_free(void *ptr);
+PMOD_EXPORT void *mexec_alloc(size_t sz);
+PMOD_EXPORT void *mexec_realloc(void *ptr, size_t sz);
+PMOD_EXPORT void mexec_free(void *ptr);
 
 #undef BLOCK_ALLOC
 

@@ -81,10 +81,10 @@
 #undef EXTRA_ARGS
 #undef XARGS
 
-void fsort(void *base,
-	   long elms,
-	   long elmSize,
-	   fsortfun cmpfunc)
+PMOD_EXPORT void fsort(void *base,
+		       long elms,
+		       long elmSize,
+		       fsortfun cmpfunc)
 {
 
   if(elms<=0) return;

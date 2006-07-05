@@ -143,7 +143,7 @@ struct pike_type *debug_compiler_pop_type(void)
   }
 }
 
-char *get_name_of_type(TYPE_T t)
+PMOD_EXPORT char *get_name_of_type(TYPE_T t)
 {
   switch(t)
   {

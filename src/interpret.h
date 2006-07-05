@@ -729,7 +729,7 @@ int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2);
 void low_return(void);
 void low_return_pop(void);
 void unlink_previous_frame(void);
-void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2);
+PMOD_EXPORT void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2);
 PMOD_EXPORT void f_call_function(INT32 args);
 PMOD_EXPORT void call_handle_error(void);
 PMOD_EXPORT int apply_low_safe_and_stupid(struct object *o, INT32 offset);

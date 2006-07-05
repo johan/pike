@@ -468,6 +468,6 @@ static INLINE void string_builder_binary_strcat(struct string_builder *s,
 
 #undef CONVERT
 
-PMOD_PROTO extern void f_sprintf(INT32 num_arg);
+PMOD_EXPORT void f_sprintf(INT32 num_arg);
 
 #endif /* STRALLOC_H */
