@@ -1054,7 +1054,7 @@ PMOD_EXPORT PIKE_OFF_T debug_fd_lseek(FD fd, PIKE_OFF_T pos, int where)
     /* Windows 9x based. */
     LONG high = DO_NOT_WARN((LONG)(pos >> 32));
     DWORD err;
-    pos &= (1 << 32) - 1;
+    pos &= (1LL << 32) - 1;
     ret = SetFilePointer(h, DO_NOT_WARN((LONG)pos), &high, where);
     if (ret == INVALID_SET_FILE_POINTER &&
 	(err = GetLastError()) != NO_ERROR) {
@@ -1104,7 +1104,7 @@ PMOD_EXPORT int debug_fd_ftruncate(FD fd, PIKE_OFF_T len)
 
 #ifdef INT64
   len_hi = DO_NOT_WARN ((LONG) (len >> 32));
-  len &= (1 << 32) - 1;
+  len &= (1LL << 32) - 1;
 #else
   len_hi = 0;
 #endif
