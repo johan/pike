@@ -695,7 +695,7 @@ PMOD_EXPORT void find_external_context(struct external_variable_context *loc,
 #ifdef PIKE_DEBUG  
 	TRACE((5, "-   parent_identifier: %d\n"
 	       "-   o: %p\n"
-	       "-   inh: %d\n",
+	       "-   inh: %"PRINTPTRDIFFT"d\n",
 	       loc->parent_identifier,
 	       loc->o,
 	       loc->inherit - loc->o->prog->inherits));
@@ -760,7 +760,7 @@ PMOD_EXPORT void find_external_context(struct external_variable_context *loc,
 		   loc->parent_identifier);
 #endif
       loc->inherit=INHERIT_FROM_INT(p, loc->parent_identifier);
-      TRACE((5, "-   loc->inherit: %d\n",
+      TRACE((5, "-   loc->inherit: %"PRINTPTRDIFFT"d\n",
 	     loc->inherit - loc->o->prog->inherits));
     }
     else
