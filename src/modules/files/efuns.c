@@ -522,7 +522,7 @@ void f_file_truncate(INT32 args)
       DWORD err;
 #ifdef INT64
       high = DO_NOT_WARN ((LONG) (len >> 32));
-      len &= (1LL << 32) - 1;
+      len &= ((INT64) 1 << 32) - 1;
 #else
       high = 0;
 #endif
