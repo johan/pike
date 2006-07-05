@@ -144,7 +144,7 @@ void f_asin(INT32 args)
     sp[-1].u.float_number = FL1(asin,sp[-1].u.float_number);
   } else {
     DECLARE_NAN;
-    sp[-1].u.float_number = MAKE_NAN();
+    sp[-1].u.float_number = (FLOAT_TYPE) MAKE_NAN();
   }
 }
 
@@ -178,7 +178,7 @@ void f_acos(INT32 args)
     sp[-1].u.float_number = FL1(acos,sp[-1].u.float_number);
   } else {
     DECLARE_NAN;
-    sp[-1].u.float_number = MAKE_NAN();
+    sp[-1].u.float_number = (FLOAT_TYPE) MAKE_NAN();
   }
 }
 
@@ -600,7 +600,6 @@ void f_round(INT32 args)
  */
 void f_limit(INT32 args)
 {
-  INT32 i;
   INT32 minpos = 0;
 
   if(args != 3) 
