@@ -83,7 +83,7 @@ static void free_mem_searcher(void *m)
  ( ((PTR)[3] << 24) + ( (PTR)[2] << 16 ) +( (PTR)[1] << 8 ) +  (PTR)[0] )
 #endif /* PIKE_BYTEORDER == 4321 */
 
-#define HUBBE_ALIGN0(q) q=(char *)(PTR_TO_INT(q) & -sizeof(INT32))
+#define HUBBE_ALIGN0(q) q=(char *)(PTR_TO_INT(q) & ~(sizeof(INT32) - 1))
 #define GET_4_ALIGNED_CHARS0(PTR)  (*(INT32 *)(PTR))
 #define GET_4_UNALIGNED_CHARS0(PTR)  EXTRACT_INT(PTR)
 
