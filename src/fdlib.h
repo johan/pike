@@ -296,6 +296,7 @@ PMOD_EXPORT void closedir(DIR *dir);
 typedef int FD;
 typedef struct stat PIKE_STAT_T;
 typedef off_t PIKE_OFF_T;
+#define PRINTPIKEOFFT PRINTOFFT
 
 #define fd_info(X) ""
 #define fd_init()
