@@ -626,7 +626,7 @@ static void exit_port_struct(struct object *o)
 /*! @endmodule
  */
 
-struct program *port_program = NULL;
+PMOD_EXPORT struct program *port_program = NULL;
 
 void port_exit_program(void)
 {
