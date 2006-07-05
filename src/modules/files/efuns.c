@@ -268,7 +268,7 @@ void f_file_truncate(INT32 args)
       DWORD err;
 #ifdef INT64
       high = len >> 32;
-      len &= (1 << 32) - 1;
+      len &= (1LL << 32) - 1;
 #else
       high = 0;
 #endif
