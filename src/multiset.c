@@ -4234,6 +4234,7 @@ void init_multiset()
 #ifdef PIKE_DEBUG
   /* This test is buggy in GCC 4.0.1, hence the volatile. */
   volatile union msnode test;
+#define msnode_check(X) ((volatile union msnode *) (X))
   HDR (&test)->flags = 0;
   test.i.ind.type = (1 << 8) - 1;
   test.i.ind.subtype = (1 << 16) - 1;
@@ -4258,6 +4259,7 @@ void init_multiset()
 	       HDR(&test)->flags, MULTISET_FLAG_MASK,
 	       RB_FLAG_MASK, MULTISET_FLAG_MARKER,
 	       test.i.ind.type);
+#undef msnode_check
 #endif
 #ifndef HAVE_UNION_INIT
   svalue_int_one.u.integer = 1;

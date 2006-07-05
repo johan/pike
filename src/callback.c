@@ -67,8 +67,7 @@ static int is_in_free_list(struct callback * c)
 
 static void check_callback_chain(struct callback_list *lst)
 {
-  int e,len=0;
-  struct callback_block *tmp;
+  int len=0;
   struct callback *foo;
   if(d_flag>4)
   {
@@ -95,8 +94,11 @@ static void check_callback_chain(struct callback_list *lst)
      * when dmalloc is used. Something like this should perhaps be
      * provided by a consistency check function in block_alloc.
      * /mast */
+    {
+      struct callback_block *tmp;
     for(tmp=callback_blocks;tmp;tmp=tmp->next)
     {
+      int e;
       for(e=0;e<CALLBACK_CHUNK;e++)
       {
 	int d;
@@ -134,6 +136,7 @@ static void check_callback_chain(struct callback_list *lst)
 	    Pike_fatal("Callback next pointer pointing to Z'ha'dum\n");
 	}
       }
+    }
     }
 #endif
   }

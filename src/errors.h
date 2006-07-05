@@ -47,7 +47,8 @@ struct PIKE_CONCAT(NAME,_error_struct) { \
   MAP_VARIABLE(#NAME2, CTYPE, 0, \
 	       current_offset + (((char *)&(foo.NAME2))-((char *)&foo)), RUNTYPE);
 
-#define EMPTY
+/* Reference foo just to avoid warning. */
+#define EMPTY &foo;
 
 #define ERR_INHERIT(NAME) \
   low_inherit(PIKE_CONCAT(NAME,_error_program),0,0,0,0,0);

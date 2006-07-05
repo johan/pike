@@ -117,7 +117,7 @@ BLOCK_ALLOC_FILL_PAGES(mapping, 2)
 static void check_mapping_type_fields(struct mapping *m)
 {
   INT32 e;
-  struct keypair *k=0,**prev;
+  struct keypair *k=0;
   struct mapping_data *md;
   TYPE_FIELD ind_types, val_types;
 
