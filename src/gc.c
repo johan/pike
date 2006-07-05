@@ -350,7 +350,7 @@ const char *gc_found_place = NULL;
 #ifdef DO_PIKE_CLEANUP
 /* To keep the markers after the gc. Only used for the leak report at exit. */
 int gc_keep_markers = 0;
-int gc_external_refs_zapped = 0;
+PMOD_EXPORT int gc_external_refs_zapped = 0;
 #endif
 
 #ifdef PIKE_DEBUG
@@ -1706,7 +1706,7 @@ void exit_gc(void)
 }
 
 #ifdef PIKE_DEBUG
-void gc_check_zapped (void *a, TYPE_T type, const char *file, int line)
+PMOD_EXPORT void gc_check_zapped (void *a, TYPE_T type, const char *file, int line)
 {
   struct marker *m = find_marker (a);
   if (m && (m->flags & GC_CLEANUP_FREED))
