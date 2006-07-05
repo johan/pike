@@ -866,8 +866,8 @@ static void f_cval__sprintf(INT32 args)
   {
     case 'O':
       init_string_builder(&s, 0);
-      string_builder_vsprintf(&s, "Com.cval(\"%s\" %d %x)",
-			      cval->method, cval->dispid, cval->pIDispatch);
+      string_builder_sprintf(&s, "Com.cval(\"%s\" %d %x)",
+			     cval->method, cval->dispid, cval->pIDispatch);
       push_string(finish_string_builder(&s));
       stack_pop_n_elems_keep_top(args);
       return;
