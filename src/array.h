@@ -142,7 +142,7 @@ PMOD_EXPORT struct array *order_array(struct array *v, INT32 *order);
 PMOD_EXPORT struct array *reorder_and_copy_array(struct array *v, INT32 *order);
 PMOD_EXPORT TYPE_FIELD array_fix_type_field(struct array *v);
 #ifdef PIKE_DEBUG
-void array_check_type_field(struct array *v);
+PMOD_EXPORT void array_check_type_field(struct array *v);
 #endif
 PMOD_EXPORT union anything *low_array_get_item_ptr(struct array *a,
 				       INT32 ind,
