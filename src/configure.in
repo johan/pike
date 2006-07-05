@@ -6842,6 +6842,10 @@ MY_AC_CHECK_PRINTF_INT_TYPE(ptrdiff_t,
 			    "t" "" "l" "ll" "L", "",
 			    PRINTPTRDIFFT,
 			    [%${res}d, %${res}x])
+MY_AC_CHECK_PRINTF_INT_TYPE(off_t,
+			    "" "t" "j" "l" "ll" "L", "",
+			    PRINTOFFT,
+			    [%${res}d, %${res}x])
 MY_AC_CHECK_PRINTF_INT_TYPE(INT64,
 			    "" "l" "ll" "I64" "L", "l",
 			    PRINTINT64,
