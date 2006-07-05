@@ -667,7 +667,7 @@ PMOD_EXPORT void f_all_threads(INT32 args)
 }
 
 #ifdef PIKE_DEBUG
-void debug_list_all_threads(void)
+PMOD_EXPORT void debug_list_all_threads(void)
 {
   INT32 x;
   struct thread_state *s;

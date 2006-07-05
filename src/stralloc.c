@@ -2011,7 +2011,7 @@ void init_shared_string_table(void)
 }
 
 #ifdef DO_PIKE_CLEANUP
-struct shared_string_location *all_shared_string_locations;
+PMOD_EXPORT struct shared_string_location *all_shared_string_locations;
 #endif
 
 
