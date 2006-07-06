@@ -43,7 +43,7 @@
 #define BL(LI) PPC_INSTR_I_FORM(18,LI,0,1)
 #define BLA(LI) PPC_INSTR_I_FORM(18,LI,1,1)
 
-#define LOW_GET_JUMP()	(PROG_COUNTER[JUMP_EPILOGUE_SIZE])
+#define LOW_GET_JUMP()	((INT32)PROG_COUNTER[JUMP_EPILOGUE_SIZE])
 #define LOW_SKIPJUMP()	(SET_PROG_COUNTER(PROG_COUNTER + JUMP_EPILOGUE_SIZE + 1))
 
 #define SET_REG(REG, X) do {						  \
@@ -248,7 +248,7 @@ void ppc32_decode_program(struct program *p);
 #ifdef OPCODE_RETURN_JUMPADDR
 
 /* Don't need an lvalue in this case. */
-#define PROG_COUNTER ((INT32 *)__builtin_return_address(0))
+#define PROG_COUNTER ((PIKE_OPCODE_T *)__builtin_return_address(0))
 
 #define JUMP_EPILOGUE_SIZE 2
 #define JUMP_SET_TO_PC_AT_NEXT(PC) \
@@ -258,10 +258,10 @@ void ppc32_decode_program(struct program *p);
 
 #ifdef __linux
 /* SVR4 ABI */
-#define PROG_COUNTER (((INT32 **)__builtin_frame_address(1))[1])
+#define PROG_COUNTER (((PIKE_OPCODE_T **)__builtin_frame_address(1))[1])
 #else
 /* PowerOpen ABI */
-#define PROG_COUNTER (((INT32 **)__builtin_frame_address(1))[2])
+#define PROG_COUNTER (((PIKE_OPCODE_T **)__builtin_frame_address(1))[2])
 #endif
 
 #define JUMP_EPILOGUE_SIZE 0
