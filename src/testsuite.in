@@ -4655,6 +4655,19 @@ test_do([[
     if (!a[i]) error ("Can't find multiset member in itself: %O\n", i);
 ]])
 
+test_any_equal([[
+  multiset m=(<"Stone","2","%70">);
+  foreach(m;string k;)
+  {
+      if(k=="%70")
+      {   
+	  m[k]=0;
+	  break;
+      }
+  }
+  return sort ((array) (m - (<>)));
+]], ({"2", "Stone"}))
+
 // mapping tests
 
 test_any([[mapping m=([]);int e;
