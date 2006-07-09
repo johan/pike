@@ -37,6 +37,10 @@
 #include <objbase.h>
 #endif /* HAVE_OBJBASE_H */
 
+#ifdef HAVE_OLE2_H
+#include <ole2.h>
+#endif
+
 #ifdef HAVE_WINBASE_H
 #include <winbase.h>
 #endif /* HAVE_WINBASE_H */
