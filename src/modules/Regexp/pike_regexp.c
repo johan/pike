@@ -73,6 +73,7 @@
 #include "pike_memory.h"
 #include "pike_error.h"
 
+#undef NOTHING
 
 /*
  * The "internal use only" fields in regexp.h are present to pass info from
