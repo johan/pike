@@ -121,6 +121,12 @@ typedef struct node_s node;
 struct object;
 #endif
 
+#undef EXTERN
+#undef STRUCT
+#undef PUSH
+#undef POP
+#undef DECLARE
+
 #define STRUCT
 #include "compilation.h"
 
