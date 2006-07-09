@@ -22,6 +22,10 @@
 #include "image.h"
 #include "colortable.h"
 
+#ifdef __MINGW32__
+/* encodings.a will never contain a crc32 symbol. */
+#define DYNAMIC_MODULE
+#endif
 
 #define sp Pike_sp
 
