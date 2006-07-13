@@ -351,9 +351,9 @@ mixed `[]=(string property, mixed value)
     case "user":
     case "password":
     case "host":
-    case "port":
       if(!stringp(value) && value!=0)
 	error("%s value not string.\n", property);
+    case "port":
       ::`[]=(property, value);
       authority = (user ? user + (password ? ":" + password : "") + "@" : "") +
 	(host?(has_value(host, ":")?("["+host+"]"):host):"") +
