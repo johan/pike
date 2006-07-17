@@ -439,7 +439,11 @@ static void clean_async_dns()
     return;
   }
   async_id = 0;
+
+  if(async_dns)
+    async_dns->close();
   async_dns = 0;
+
   last_async_dns = 0;
 }
 
@@ -1051,6 +1055,9 @@ static void destroy()
      remove_call_out(async_id);
    }
    async_id = 0;
+
+   if(async_dns)
+     async_dns->close();
    async_dns = 0;
 
    catch (con->set_blocking()); // Only to remove callbacks to avoid cycles.
