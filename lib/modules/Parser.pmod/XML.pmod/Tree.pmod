@@ -1072,9 +1072,10 @@ static class VirtualNode {
       data->add("<!DOCTYPE ", n->get_short_name());
       mapping attrs = n->get_attributes();
       if (attrs->PUBLIC) {
-	data->add(" PUBLIC %O %O", attrs->PUBLIC, attrs->SYSTEM || "");
+	data->add(sprintf(" PUBLIC %O %O",
+			  attrs->PUBLIC, attrs->SYSTEM || ""));
       } else if (attrs->SYSTEM) {
-	data->add(" SYSTEM %O", attrs->SYSTEM);
+	data->add(sprintf(" SYSTEM %O", attrs->SYSTEM));
       }
       if (n->count_children()) {
 	data->add(" [ ");
