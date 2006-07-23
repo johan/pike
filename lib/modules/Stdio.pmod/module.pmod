@@ -2130,7 +2130,8 @@ int file_size(string filename)
   Stat stat;
   stat = file_stat(filename);
   if(!stat) return -1;
-  return [int]stat->size;
+  // Please note that stat->size is not always the same thing as stat[1]. /mast
+  return [int]stat[1];
 }
 
 //! Append @[relative] paths to an @[absolute] path and remove any
