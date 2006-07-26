@@ -135,7 +135,14 @@ static void gz_deflate_create(INT32 args)
     if(sp[1-args].type != T_INT)
       Pike_error("Bad argument 2 to gz->create()\n");
     strategy=sp[1-args].u.integer;
-    if(strategy != Z_DEFAULT_STRATEGY && strategy != Z_FILTERED &&
+    if(strategy != Z_DEFAULT_STRATEGY &&
+       strategy != Z_FILTERED &&
+#ifdef Z_RLE
+       strategy != Z_RLE &&
+#endif
+#ifdef Z_FIXED
+       strategy != Z_FIXED &&
+#endif
        strategy != Z_HUFFMAN_ONLY)
     {
       Pike_error("Invalid compression strategy for gz_deflate->create()\n");
@@ -660,6 +667,12 @@ PIKE_MODULE_INIT
   add_integer_constant("PARTIAL_FLUSH",Z_PARTIAL_FLUSH,0);
   add_integer_constant("SYNC_FLUSH",Z_SYNC_FLUSH,0);
   add_integer_constant("FINISH",Z_FINISH,0);
+#ifdef Z_RLE
+  add_integer_constant("RLE", Z_RLE,0);
+#endif
+#ifdef Z_FIXED
+  add_integer_constant("FIXED", Z_FIXED,0);
+#endif
 
   set_init_callback(init_gz_inflate);
   set_exit_callback(exit_gz_inflate);
@@ -673,6 +686,12 @@ PIKE_MODULE_INIT
   add_integer_constant("DEFAULT_STRATEGY", Z_DEFAULT_STRATEGY,0);
   add_integer_constant("FILTERED", Z_FILTERED,0);
   add_integer_constant("HUFFMAN_ONLY", Z_HUFFMAN_ONLY,0);
+#ifdef Z_RLE
+  add_integer_constant("RLE", Z_RLE,0);
+#endif
+#ifdef Z_FIXED
+  add_integer_constant("FIXED", Z_FIXED,0);
+#endif
 
   /* function(string,void|int:int) */
   ADD_FUNCTION("crc32",gz_crc32,tFunc(tStr tOr(tVoid,tInt),tInt),
