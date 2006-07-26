@@ -274,6 +274,9 @@ undump_modules:
 run_hilfe:
 	@$(DO_MAKE) "METATARGET=run_hilfe" _make_in_builddir
 
+gdb_hilfe:
+	@$(DO_MAKE) "METATARGET=gdb_hilfe" _make_in_builddir
+
 source:
 	@$(DO_MAKE) "CONFIGUREARGS=--disable-binary $(CONFIGUREARGS)" \
 	  "OS=source" "LIMITED_TARGETS=yes" "METATARGET=source" _make_in_builddir
