@@ -8,7 +8,7 @@
 #ifndef MACROS_H
 #define MACROS_H
 
-#include <global.h>
+#include "global.h"
 
 #ifdef HAVE_SYS_PARAM_H
 #include <sys/param.h>
@@ -119,7 +119,6 @@ PMOD_EXPORT extern const char Pike_is8bitalnum_vector[];
 						\
   if(o->next) o->next->prev=o->prev;		\
 }while(0)
-
 
 #define PIKE_XCONCAT(X,Y)	PIKE_CONCAT(X,Y)
 #define PIKE_XCONCAT3(X,Y,Z)	PIKE_CONCAT(X,Y,Z)
