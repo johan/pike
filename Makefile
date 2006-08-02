@@ -20,7 +20,7 @@
 
 # Tip: Remove "-r" from the line below if you don't want to rebuild
 # from scratch every time you upgrade the kernel.
-OS=`uname -s -r -m|sed \"s/ /-/g\"|tr \"[A-Z]\" \"[a-z]\"|tr \"/()\" \"___\"`
+OS=`uname -s -m|sed \"s/ /-/g\"|tr \"[A-Z]\" \"[a-z]\"|tr \"/()\" \"___\"`
 
 VPATH=.
 BUILDDIR=build/$(OS)
@@ -135,8 +135,8 @@ configure: src/configure builddir
 	    echo "$$configureargs" > .configureargs; \
 	    if test "x$$oldconfigureargs" = "x$$configureargs"; then :; \
 	    else \
-	      echo Configure arguments have changed - doing make clean; \
-	      $${MAKE} "MAKE=$${MAKE}" clean || exit $$?; \
+	      echo Configure arguments have changed - doing make config_change_clean; \
+	      $${MAKE} "MAKE=$${MAKE}" config_change_clean || exit $$?; \
 	      if test "x$(METATARGET)" = "xsource"; then :; \
 	      elif test "x$(METATARGET)" = "xexport"; then :; \
 	      else \
