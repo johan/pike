@@ -7149,6 +7149,7 @@ if test -z "$LDSHARED" ; then
 	LDSHARED_MODULE_ARGS="-l`pwd`/pike"
 	LDSHARED_MODULE_REQS="`pwd`/pike.lib"
       fi
+      LDSHARED_MODULE_ARGS="$LDSHARED_MODULE_ARGS -pdb:\$\$modname.pdb"
     ;;
     *) LDSHARED="ld";;
   esac
