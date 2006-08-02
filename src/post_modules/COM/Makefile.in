@@ -7,7 +7,6 @@ VPATH=@srcdir@:@srcdir@/../..:../..
 MODULE_CPPFLAGS=@DEFS@ @CPPFLAGS@
 OBJS=com.o
 MODULE_LDFLAGS=@LDFLAGS@ @COM_LIBS@
-LINKER_OPTIONS=@LINKER_OPTIONS@
 
 # DUMMY=module.pmod.in
 
