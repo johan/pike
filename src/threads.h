@@ -8,7 +8,6 @@
 #ifndef THREADS_H
 #define THREADS_H
 
-#include "machine.h"
 #include "object.h"
 #include "pike_error.h"
 #include "interpret.h"

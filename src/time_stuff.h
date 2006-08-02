@@ -8,9 +8,7 @@
 #ifndef TIME_STUFF_H
 #define TIME_STUFF_H
 
-#ifndef CONFIGURE_TEST
-#include "machine.h"
-#endif
+#include "global.h"
 
 #if TIME_WITH_SYS_TIME
 # include <sys/time.h>
@@ -79,6 +77,5 @@ struct timeval
   long tv_usec;
 };
 #endif
-
 
 #endif
