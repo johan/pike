@@ -219,8 +219,8 @@ static void free_pack(struct zipper *z)
   toss_buffer((dynamic_buffer *)z->gz.opaque);
 }
 
-static void pack(struct pike_string *data, dynamic_buffer *buf,
-                 int level, int strategy, int wbits)
+void pack(struct pike_string *data, dynamic_buffer *buf,
+	  int level, int strategy, int wbits)
 {
   struct zipper z;
   ONERROR err;
