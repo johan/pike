@@ -490,14 +490,18 @@ AC_SUBST(CROSS)
 if test "x$enable_binary" = "xno"; then
   CC="$BINDIR/nobinary_dummy cc"
   RUNPIKE="USE_PIKE"
+  RUNTPIKE="USE_PIKE"
 else
   if test "x$cross_compiling" = "xyes"; then
-    RUNPIKE="USE_PIKE"
+    RUNPIKE="DEFAULT_RUNPIKE"
+    RUNTPIKE="USE_PIKE"
   else
     RUNPIKE="DEFAULT_RUNPIKE"
+    RUNTPIKE="USE_TPIKE"
   fi
 fi
 AC_SUBST(RUNPIKE)
+AC_SUBST(RUNTPIKE)
 
 #############################################################################
 if test "x$enable_binary" != "xno"; then
