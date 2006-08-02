@@ -29,7 +29,7 @@ all:
 build_type:
 	@echo static > build_type
 
-static: module-preamble module-main
+static: Makefile $(DUMMY) module-preamble module-main
 	@:
 
 dynamic:

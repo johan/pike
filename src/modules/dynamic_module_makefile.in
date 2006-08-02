@@ -31,10 +31,12 @@ all:
 build_type:
 	@echo dynamic > build_type
 
-static: module-preamble
+static: Makefile $(DUMMY) module-preamble
 	@:
 
-dynamic: module-main
+# Depend on $(DUMMY) here too for the sake of post modules, where the
+# static target never gets called.
+dynamic: $(DUMMY) module-main
 	@:
 
 linker_options: Makefile
