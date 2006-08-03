@@ -26,7 +26,7 @@ Function FinalizePike()
   Set re = New RegExp
   re.Global = True
 
-  re.Pattern = "\"
+  re.Pattern = "\\"
   targetdir_unix = re.Replace(targetdir, "/")
 
   re.Pattern = "¤lib_prefix¤"
