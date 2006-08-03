@@ -216,10 +216,10 @@ class Directory
       ]);
       if (source) {
 	attrs->src = replace(source, "/", "\\");
-      }
-      if (has_suffix(lower_case(source), ".ttf")) {
-	// Orca doesn't like us otherwise...
-	attrs->DefaultLanguage="1033";
+	if (has_suffix(lower_case(source), ".ttf")) {
+	  // Orca doesn't like us otherwise...
+	  attrs->DefaultLanguage="1033";
+	}
       }
       return WixNode("File", attrs);
     }
