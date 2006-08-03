@@ -330,6 +330,12 @@ class Directory
       Shortcut(dest, directory, id, target, arguments, working_dir, show);
   }
 
+  string get_component_id (void|string path)
+  {
+    Directory d = path ? low_add_path (path / "/") : this;
+    return "C_" + d->id;
+  }
+
   void merge_module(string dest, string module, string id,
 		    string|void dir_id)
   {
@@ -449,7 +455,7 @@ class Directory
     }
     if (sizeof(files) || sizeof(other_entries)) {
       WixNode component = WixNode("Component", ([
-				    "Id":"C_" + id,
+				    "Id": get_component_id(),
 				    "Guid":guid->str(),
 				  ]), "\n");
       foreach(files;; File f) {
