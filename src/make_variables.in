@@ -27,6 +27,7 @@
 #propagated_variables: LDSHARED_MODULE_REQS
 #propagated_variables: TMP_BUILDDIR TMP_BINDIR PIKE_SRC_DIR BUILD_BASE
 #propagated_variables: BUILD_PIKE POST_MODULE_BUILD_TYPE
+#propagated_variables: MT_FIX_MODULE_SO
 
 @SET_MAKE@
 prefix=@prefix@
