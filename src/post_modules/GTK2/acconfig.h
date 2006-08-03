@@ -30,3 +30,4 @@
 #undef HAVE_PANGO_BETA
 #undef HAVE_GLADE
 #undef HAVE_GNOMEUI
+#undef HAVE_CAIRO
