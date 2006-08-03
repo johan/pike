@@ -24,6 +24,10 @@
 #include <windows.h>
 #endif
 
+#ifdef HAVE_IO_H
+#include <io.h>
+#endif
+
 #include "module_support.h"
 #include "las.h"
 #include "interpret.h"
