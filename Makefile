@@ -335,6 +335,9 @@ xenofarm_export:
 bin_export:
 	@$(DO_MAKE) "METATARGET=bin_export" _make_in_builddir
 
+wix:
+	@$(DO_MAKE) "METATARGET=wix" _make_in_builddir
+
 feature_list:
 	@$(DO_MAKE) "METATARGET=feature_list" _make_in_builddir
 
