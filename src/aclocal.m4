@@ -101,6 +101,34 @@ pushdef([AC_PROG_CC],
   fi
 ])
 
+dnl Like AC_PATH_PROG but if $2 isn't found and $RNTANY is set, tries
+dnl to execute "$RNTANY $2 /?" and defines $1 to "$RNTANY $2" if that
+dnl succeeds.
+define([PIKE_NT_PROG], [
+  AC_PATH_PROG([$1], [$2], , [$4])
+  if test "x$$1" = x; then
+    if test "x$RNTANY" != x; then
+      AC_MSG_CHECKING([if $RNTANY $2 /? can be executed])
+      AC_CACHE_VAL(pike_cv_exec_rntany_$1, [
+	if $RNTANY $2 '/?' >/dev/null 2>&1; then
+	  pike_cv_exec_rntany_$1=yes
+	else
+	  pike_cv_exec_rntany_$1=no
+	fi
+      ])
+      if test "x$pike_cv_exec_rntany_$1" = xyes; then
+	AC_MSG_RESULT(yes)
+	$1="$RNTANY $2"
+      else
+	AC_MSG_RESULT(no)
+	$1="$3"
+      fi
+    else
+      $1="$3"
+    fi
+  fi
+])
+
 define([ORIG_AC_FUNC_MMAP], defn([AC_FUNC_MMAP]))
 define([AC_FUNC_MMAP], [
   if_autoconf(2,50,[],[
