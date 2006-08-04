@@ -2126,17 +2126,19 @@ void make_wix()
   root->merge_module(".", "Pike_module.msm", "Pike", "TARGETDIR");
 
   // FIXME: Use the proper WIX method for this.
+  // FIXME: Add an installer action that refreshes the icons in the
+  // shell (call SHChangeNotify somehow?)
   root->install_regkey("bin", "HKCR", ".pike", "", "pike_file",
-		       "RE__PSF");  
-  root->install_regkey("bin", "HKCR", "pike_file", "", "Pike Script file",
+		       "RE__PF");
+  root->install_regkey("bin", "HKCR", "pike_file", "", "Pike Script File",
 		       "RE__PSF");
-  root->install_regkey("bin", "HKCR", "pike_file\\shell", "", "run",
-		       "RE__VERB");
+  root->install_regkey("bin", "HKCR", "pike_file\\shell\\run", "",
+		       "Run", "RE__VERB");
   root->install_regkey("bin", "HKCR", "pike_file\\shell\\run\\command", "",
-		       "\"[TARGETDIR]\\bin\\pike.exe\" \"%1\" %*",
+		       "\"[TARGETDIR]bin\\pike.exe\" \"%1\" %*",
 		       "RE__COMMAND");
   root->install_regkey("bin", "HKCR", "pike_file\\DefaultIcon", "",
-		       "[TARGETDIR]\\lib\\pike.ico", "RE__ICON");
+		       "[TARGETDIR]bin\\pike.exe", "RE__ICON");
 
   string title = 
 #if 1
