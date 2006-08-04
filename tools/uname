@@ -4,12 +4,12 @@
 
 . $NTTOOLS
 
-S=
-R=
-M=
-N=
-V=
-P=
+S=$INIT_UNAME
+R=$INIT_UNAME
+M=$INIT_UNAME
+N=$INIT_UNAME
+V=$INIT_UNAME
+P=$INIT_UNAME
 
 for a in "$@"
 do
