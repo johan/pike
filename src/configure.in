@@ -7732,6 +7732,12 @@ fi
 
 AC_SUBST(MT_FIX_PIKE_EXE)
 
+if test "x$RCEXE" != x; then
+  # Windows icon
+  PIKE_ICON_RES=pike_icon.res
+fi
+AC_SUBST(PIKE_ICON_RES)
+
 #############################################################################
 
 echo
