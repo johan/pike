@@ -2155,6 +2155,9 @@ void make_wix()
 	      "Id":"F_Pike",
 	    ]))->
     add_child(line_feed)->
+    add_child(WixNode ("ComponentRef",
+		       (["Id": root->get_component_id("bin")])))->
+    add_child(line_feed)->
     add_child(WixNode("MergeRef", ([ "Id":"Pike" ])))->
     add_child(line_feed);
 
