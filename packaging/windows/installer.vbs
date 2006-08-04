@@ -54,7 +54,10 @@ Function FinalizePike()
     " TMP_BUILDDIR=bin", 0, True
 
   ' Extra cleanup.
-  fso.DeleteFile(targetdir & "bin\pike.exe.old")
+  If fso.FileExists(targetdir & "bin\pike.exe.old") Then
+    WshShell.Run "%windir%\system32\cmd /c del bin\pike.exe.old" &_
+      " /f", 0, True
+  End If
 
   FinalizePike = 1
 End Function
