@@ -8069,8 +8069,10 @@ void make_program_executable(struct program *p)
 {
 #ifdef _WIN32
   DWORD old_prot;
-  VirtualProtect((void *)p->program, p->num_program*sizeof(p->program[0]),
-                 PAGE_EXECUTE_READWRITE, &old_prot);
+  if (!VirtualProtect (p->program,
+		       p->num_program * sizeof (p->program[0]),
+		       PAGE_EXECUTE_READWRITE, &old_prot))
+    Pike_fatal ("VirtualProtect failed, code %d.\n", GetLastError());
 
 #else  /* _WIN32 */
 
