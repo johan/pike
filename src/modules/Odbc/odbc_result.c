@@ -577,12 +577,13 @@ static void f_fetch_row(INT32 args)
 #endif
 	    } else {
 	      /* Truncated, but no support for chained SQLGetData calls. */
-	      char *buf = xalloc((len+2)
-#ifdef SQL_WCHAR
-				 * sizeof(SQLWCHAR)
-#endif
-				 );
+	      char *buf;
 	      SQLLEN newlen = 0;
+#ifdef SQL_WCHAR
+	      buf = xalloc((len+2) * sizeof(SQLWCHAR));
+#else
+	      buf = xalloc(len+2);
+#endif
 	      code = SQLGetData(PIKE_ODBC_RES->hstmt, (SQLUSMALLINT)(i+1),
 				PIKE_ODBC_RES->field_info[i].type,
 				buf, (len+1)
