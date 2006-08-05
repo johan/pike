@@ -254,18 +254,23 @@ struct marker
  * references were lost. */
 #endif
 
-#ifdef PIKE_DEBUG
+PMOD_EXPORT struct marker *pmod_get_marker (void *p);
+PMOD_EXPORT struct marker *pmod_find_marker (void *p);
+
 #define get_marker debug_get_marker
 #define find_marker debug_find_marker
-#endif
 
 #include "block_alloc_h.h"
 PTR_HASH_ALLOC_FIXED_FILL_PAGES(marker, n/a);
 
-#ifdef PIKE_DEBUG
 #undef get_marker
-#define get_marker(X) ((struct marker *) debug_malloc_pass(debug_get_marker(X)))
 #undef find_marker
+
+#ifdef DYNAMIC_MODULE
+#define get_marker(X) ((struct marker *) debug_malloc_pass(pmod_get_marker(X)))
+#define find_marker(X) ((struct marker *) debug_malloc_pass(pmod_find_marker(X)))
+#else
+#define get_marker(X) ((struct marker *) debug_malloc_pass(debug_get_marker(X)))
 #define find_marker(X) ((struct marker *) debug_malloc_pass(debug_find_marker(X)))
 #endif
 
