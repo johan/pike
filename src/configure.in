@@ -8237,6 +8237,7 @@ PAD_FEATURE([signal handler])$signal_handler
 PAD_FEATURE([cdebug])$with_cdebug
 PAD_FEATURE([rtldebug])$with_rtldebug
 PAD_FEATURE([dmalloc])$with_dmalloc
+PAD_FEATURE([dlmalloc])$enable_dlmalloc
 PAD_FEATURE([mmx])$with_mmx$mmx_reason
 PAD_FEATURE([byte code format])$byte_code_format
 PAD_FEATURE([module reloc])${with_relocatable_dumped_modules:-no}
