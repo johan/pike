@@ -163,6 +163,10 @@ define([MY_DESCR],
 
 define([MY_AC_PROG_CC],
 [
+  dnl Note: It's tricky to speed this up by only doing it once when
+  dnl the modules are configured with the base - different autoconfs
+  dnl set different variables that might not get propagated, e.g.
+  dnl $ac_exeext in 2.59.
   define(ac_cv_prog_CC,pike_cv_prog_CC)
   AC_PROG_CC
   undefine([ac_cv_prog_CC])
