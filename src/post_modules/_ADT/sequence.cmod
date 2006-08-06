@@ -286,7 +286,7 @@ PIKECLASS Sequence
 /*! @decl void _insert_element(int index, mixed value)
  *! Insert an element in the sequence at the position @[index], the value
  *! at the position @[index] and all above will have their index increased 
- *! with one.
+ *! by one.
  *! 
  *! @param index 
  *!   The index to insert the value at.
