@@ -408,7 +408,7 @@ PMOD_EXPORT struct array *array_insert(struct array *v,struct svalue *s,INT32 in
   }else{
     struct array *ret;
 
-    ret = array_set_flags(allocate_array_no_init(v->size+1, (v->size >> 3) + 1),
+    ret = array_set_flags(allocate_array_no_init(v->size+1, v->size),
 			  v->flags);
     ret->type_field = v->type_field;
 
