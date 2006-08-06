@@ -1341,6 +1341,8 @@ AC_ARG_ENABLE(dlmalloc, MY_DESCR([--enable-dlmalloc],
 if test "x$enable_dlmalloc" = xyes; then
   EXTRA_OBJS="$EXTRA_OBJS malloc.o"
   AC_DEFINE(USE_DL_MALLOC)
+else
+  enable_dlmalloc=no
 fi
 
 MY_AC_ARG_WITH(cleanup-on-exit,
