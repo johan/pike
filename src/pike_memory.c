@@ -611,6 +611,17 @@ PMOD_EXPORT void *debug_xcalloc(size_t n, size_t s)
   return calloc(n,s);
 }
 
+PMOD_EXPORT char *debug_xstrdup(const char *src)
+{
+  char *dst = NULL;
+  if (src) {
+    int len = strlen (src) + 1;
+    dst = malloc (len);
+    MEMCPY (dst, src, len);
+  }
+  return dst;
+}
+
 char *debug_qalloc(size_t size)
 {
   char *ret;
@@ -1132,6 +1143,17 @@ static MUTEX_T debug_malloc_mutex;
 #undef strdup
 #undef main
 
+#ifdef USE_DL_MALLOC
+#undef ENCAPSULATE_MALLOC
+#define calloc    dlcalloc
+#define free	  dlfree
+#define malloc	  dlmalloc
+#define memalign  dlmemalign
+#define realloc	  dlrealloc
+#define valloc	  dlvalloc
+#define pvalloc	  dlpvalloc
+#endif
+
 #ifdef HAVE_DLOPEN
 #ifdef HAVE_DLFCN_H
 #include <dlfcn.h>
@@ -1417,6 +1439,8 @@ void *fake_calloc(size_t x, size_t y)
 #endif
 
 
+/* Don't understand what this is supposed to do, but it won't work
+ * with USE_DL_MALLOC. /mast */
 #ifdef WRAP
 #define malloc __real_malloc
 #define free __real_free

@@ -43,6 +43,9 @@ static mapping(string:array(string)) copyrights = ([
 
   "JPEG transform code":
   ({ "Copyright © 1991-1998, Thomas G. Lane, Independent JPEG Group" }),
+
+  "Doug Lea's Malloc":
+  ({ "Copyright © 1987-2005 Doug Lea" }),
 ]);
 
 //! Adds a copyright message for the copyright @[holders] for the
