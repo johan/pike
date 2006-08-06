@@ -38,6 +38,9 @@
 /* Define this if you are going to use a memory access checker (like Purify) */
 #undef __CHECKER__
 
+/* Defined if Doug Leas malloc implementation is used. */
+#undef USE_DL_MALLOC
+
 /* Define this if you want malloc debugging */
 #undef DEBUG_MALLOC
 

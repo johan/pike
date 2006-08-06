@@ -136,6 +136,27 @@ int dmalloc_is_invalid_memory_block(void *block);
 
 #else /* DEBUG_MALLOC */
 
+#ifdef USE_DL_MALLOC
+PMOD_EXPORT void* dlmalloc(size_t);
+PMOD_EXPORT void  dlfree(void*);
+PMOD_EXPORT void* dlcalloc(size_t, size_t);
+PMOD_EXPORT void* dlrealloc(void*, size_t);
+PMOD_EXPORT void* dlmemalign(size_t, size_t);
+PMOD_EXPORT void* dlvalloc(size_t);
+PMOD_EXPORT void* dlpvalloc(size_t);
+#define malloc	  dlmalloc
+#define free	  dlfree
+#define calloc    dlcalloc
+#define realloc	  dlrealloc
+#define memalign  dlmemalign
+#define valloc	  dlvalloc
+#define pvalloc	  dlpvalloc
+#ifdef strdup
+#undef strdup
+#endif
+#define strdup    debug_xstrdup
+#endif
+
 #define dmalloc_touch_fd(X) (X)
 #define dmalloc_register_fd(X) (X)
 #define dmalloc_close_fd(X) (X)
@@ -153,12 +174,14 @@ int dmalloc_is_invalid_memory_block(void *block);
 #define xcalloc debug_xcalloc
 #define xrealloc debug_xrealloc
 #define xfree debug_xfree
-#else /* defined(DYNAMIC_MODULE) && defined(__NT__) */
+#define xstrdup debug_xstrdup
+#else
 #define xmalloc malloc
 #define xcalloc calloc
 #define xrealloc realloc
 #define xfree free
-#endif /* !(defined(DYNAMIC_MODULE) && defined(__NT__)) */
+#define xstrdup strdup
+#endif
 
 #define dbm_main main
 #define DO_IF_DMALLOC(X)
