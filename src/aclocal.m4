@@ -641,12 +641,13 @@ pushdef([AC_OUTPUT],
   AC_MSG_CHECKING([for the Pike base directory])
   if test "x$PIKE_SRC_DIR" != "x" -a -f "${PIKE_SRC_DIR}/make_variables.in"; then
     make_variables_in="${PIKE_SRC_DIR}/make_variables.in"
+    make_variables_in_subst=$make_variables_in
     AC_MSG_RESULT(${PIKE_SRC_DIR})
 
     if_autoconf(2,50,,[
       # Kludge for autoconf 2.13 and earlier prefixing all substitution
       # source files with $ac_given_source_dir/ (aka $srcdir/).
-      make_variables_in="`cd $srcdir;pwd|sed -e 's@[[[^/]]]*@@g;s@/@../@g'`$make_variables_in"
+      make_variables_in_subst="`cd $srcdir;pwd|sed -e 's@[[[^/]]]*@@g;s@/@../@g'`$make_variables_in_subst"
     ])
   else
 
@@ -666,10 +667,11 @@ pushdef([AC_OUTPUT],
     done
 
     make_variables_in=${uplevels}make_variables.in
+    make_variables_in_subst=$make_variables_in
     AC_MSG_RESULT(${uplevels}.)
   fi
 
-  AC_SUBST(make_variables_in)
+  AC_SUBST(make_variables_in_subst)
 
   rm propagated_variables.new 2>/dev/null
   prop_var_changes=""
