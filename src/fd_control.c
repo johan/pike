@@ -13,7 +13,6 @@
 #else /* TESTING */
 
 #define PMOD_EXPORT
-#define PMOD_PROTO
 
 #ifndef _LARGEFILE_SOURCE
 #  define _FILE_OFFSET_BITS 64
