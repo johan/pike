@@ -292,8 +292,8 @@ PIKECLASS CircularList
 
 /*! @decl void _insert_element(int index, mixed value)
  *! Insert an element in the list at the position @[index], the value
- *! at the position @[index] and all above will have thier index increased 
- *! with one.
+ *! at the position @[index] and all above will have their index increased
+ *! by one.
  *! 
  *! @param index 
  *!   The index to insert the value at.
