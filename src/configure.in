@@ -4149,6 +4149,9 @@ AC_CHECK_FUNCS( \
  _get_timezone \
  _get_daylight \
  localtime_s \
+ sysconf \
+ getpagesize \
+ GetSystemInfo \
 )
 
 # SunOS 4 realloc() returns NULL when reallocing NULL.

@@ -114,6 +114,8 @@ struct mem_searcher
 #include "block_alloc_h.h"
 #define MEMCHR0 MEMCHR
 
+extern int page_size;
+
 /* Note to self: Prototypes must be updated manually /Hubbe */
 PMOD_EXPORT ptrdiff_t pcharp_memcmp(PCHARP a, PCHARP b, int sz);
 PMOD_EXPORT long pcharp_strlen(PCHARP a);
@@ -141,6 +143,7 @@ PMOD_EXPORT void *debug_xcalloc(size_t n, size_t s);
 PMOD_EXPORT void *mexec_alloc(size_t sz);
 PMOD_EXPORT void *mexec_realloc(void *ptr, size_t sz);
 PMOD_EXPORT void mexec_free(void *ptr);
+void init_pike_memory (void);
 
 #undef BLOCK_ALLOC
 
@@ -228,11 +231,5 @@ PMOD_EXPORT void mexec_free(void *ptr);
   							\
     RET = ret;						\
   } while(0)
-
-#ifdef DEBUG_MALLOC
-void initialize_dmalloc(void);
-#else
-#define initialize_dmalloc()
-#endif
 
 #endif
