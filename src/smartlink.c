@@ -87,6 +87,7 @@ int main(int argc, char **argv)
   int new_argc;
   int n32 = 0;
   int linking = 1;	/* Maybe */
+  int compiling = 1;	/* Maybe */
 
   prog_name = argv[0];
 
@@ -172,22 +173,22 @@ int main(int argc, char **argv)
   /* NOTE: Skip arg 1 */
   for(i=2; i<argc; i++) {
     if (argv[i][0] == '-') {
-      if ((argv[i][1] == 'R') || (argv[i][1] == 'L')) {
-	/* -R & -L */
-	if (argv[i][1] == 'L') {
-	  if (!argv[i][2]) {
-	    if (i+1 < argc) {
-	      if (add_path(lpath, argv[i+1])) {
-		new_argv[new_argc++] = argv[i];
-		new_argv[new_argc++] = argv[i+1];
-	      }
-	    }
-	  } else {
-	    if (add_path(lpath, argv[i]+2)) {
+      if (argv[i][1] == 'L') {
+	/* -L */
+	if (!argv[i][2]) {
+	  if (i+1 < argc) {
+	    if (add_path(lpath, argv[i+1])) {
 	      new_argv[new_argc++] = argv[i];
+	      new_argv[new_argc++] = argv[i+1];
 	    }
 	  }
+	} else {
+	  if (add_path(lpath, argv[i]+2)) {
+	    new_argv[new_argc++] = argv[i];
+	  }
 	}
+      } else if (argv[i][1] == 'R') {
+	/* -R */
 	if (!argv[i][2]) {
 	  i++;
 	  if (i < argc) {
@@ -207,8 +208,38 @@ int main(int argc, char **argv)
 	/* Not linking */
 	linking = 0;
       }
+    } else {
+      int len = strlen(argv[i]);
+      if ((len > 2) && ((argv[i][len-1] == 's') || (argv[i][len-1] == 'S')) &&
+	  (argv[i][len-2] == '.')) {
+	/* Assembler files involved.
+	 * gcc 3.4/sparc/Solaris 10 generates unlinkable object files
+	 * when assembling handcoded assembler files with debug.
+	 */
+	compiling = 0;
+      }
     }
     new_argv[new_argc++] = argv[i];
+  }
+
+  if (!compiling) {
+    /* Filter -g and -ggdb3 from the options. */
+    int not_so_new_argc = new_argc;
+    new_argc = 0;
+    for (i=0; i < not_so_new_argc; i++) {
+      if ((new_argv[i][0] == '-') &&
+	  (new_argv[i][1] == 'g') &&
+	  (!new_argv[i][2] ||
+	   (new_argv[i][2] == 'g') &&
+	   (new_argv[i][3] == 'd') &&
+	   (new_argv[i][4] == 'b') &&
+	   (new_argv[i][5] == '3') &&
+	   (new_argv[i][6] == '0'))) {
+	/* Skip. */
+	continue;
+      }
+      new_argv[new_argc++] = new_argv[i];
+    }
   }
 
 #ifndef USE_Wl
