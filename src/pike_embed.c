@@ -113,7 +113,7 @@ const char *master_file = NULL;
 
 void init_pike(char **argv, const char *file)
 {
-  initialize_dmalloc();
+  init_pike_memory();
 
   init_rusage();
 
