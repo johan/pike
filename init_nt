@@ -206,5 +206,5 @@ if [ "$#" = "0" ]; then
     ;;
   esac
 else
-  exec $@
+  exec "$@"
 fi
