@@ -8228,7 +8228,7 @@ void make_program_executable(struct program *p)
 #endif /* 0 */
     }
   }
-#endif /* USE_MY_MEXEC_ALLOC */
+#endif /* !USE_MY_MEXEC_ALLOC */
 
 #ifdef HAVE_SYNC_INSTRUCTION_MEMORY
   sync_instruction_memory(p->program,
