@@ -993,6 +993,9 @@ AC_ARG_WITH(extra_debug_checks,
   if test "x$pike_cv_sys_os" = "xOSF1"; then
     # Attempt to detect the cause for test_resolv to fail on Unicode.so.
     with_extra_debug_checks="yes"
+  elif test "x$pike_cv_sys_os" = "xOpenBSD"; then
+    # Attempt to detect cause of dmalloc failure on OpenBSD.
+    with_extra_debug_checks="yes"
   else
     with_extra_debug_checks=no
   fi
@@ -7885,12 +7888,10 @@ EOF
         AC_MSG_WARN([Bundle $bundle not found.
 Requested from:
 $bundle_info])
-        bundle_info=`echo "$bundle_info" | grep -v "$bundle.bundle"`
       elif test -f "$pike_bundle_prefix/installed/$bundle"; then
 	AC_MSG_WARN([Bundle $bundle already installed.
 Requested from:
 $bundle_info])
-        bundle_info=`echo "$bundle_info" | grep -v "$bundle.bundle"`
       else
         # First extract the bundle.
 
