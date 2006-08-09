@@ -4459,6 +4459,26 @@ AC_MSG_RESULT($pike_cv_has_struct_sockaddr_in6)
 
 #############################################################################
 
+if test $ac_cv_header_malloc_h = yes; then
+  AC_MSG_CHECKING(struct mallinfo in malloc.h)
+  AC_CACHE_VAL(pike_cv_struct_mallinfo, [
+    AC_TRY_LINK([
+#ifdef HAVE_MALLOC_H
+#include <malloc.h>
+#endif
+    ], [
+      struct mallinfo foo;
+    ], pike_cv_struct_mallinfo=yes, pike_cv_struct_mallinfo=no)
+  ])
+  if test $pike_cv_struct_mallinfo = yes; then
+    AC_DEFINE(HAVE_STRUCT_MALLINFO, 1,
+	      [Defined if malloc.h contains a struct mallinfo.])
+  fi
+  AC_MSG_RESULT($pike_cv_struct_mallinfo)
+fi
+
+#############################################################################
+
 if test "x$ac_cv_func_strtol" = "xyes"; then
   AC_MSG_CHECKING(if strtol works for large hexadecimal constants)
   AC_CACHE_VAL(pike_cv_func_strtol_works, [
