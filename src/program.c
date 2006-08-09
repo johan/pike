@@ -8210,22 +8210,13 @@ void make_program_executable(struct program *p)
     return;
   }
 
-#ifdef _WIN32
-  {
-    DWORD old_prot;
-    if (!VirtualProtect (p->program,
-			 p->num_program * sizeof (p->program[0]),
-			 PAGE_EXECUTE_READWRITE, &old_prot))
-      Pike_fatal ("VirtualProtect failed, code %d.\n", GetLastError());
-  }
-#else  /* _WIN32 */
+#ifndef USE_MY_MEXEC_ALLOC
   {
     /* Perform page alignment. */
     void *addr = (void *)(((size_t)p->program) & ~(page_size-1));
     size_t len = (((char *)(p->program + p->num_program)) - ((char *)addr) +
 		  (page_size - 1)) & ~(page_size-1);
 
-#if !defined(HAVE_MMAP) || !defined(MEXEC_USES_MMAP)
     if (mprotect(addr, len, PROT_EXEC | PROT_READ | PROT_WRITE) < 0) {
 #if 0
       fprintf(stderr, "%p:%d: mprotect(%p, %lu, 0x%04x): errno: %d\n",
@@ -8236,9 +8227,8 @@ void make_program_executable(struct program *p)
 	      errno);
 #endif /* 0 */
     }
-#endif /* !HAVE_MMAP || !MEXEC_USES_MMAP */
   }
-#endif /* _WIN32 */
+#endif /* USE_MY_MEXEC_ALLOC */
 
 #ifdef HAVE_SYNC_INSTRUCTION_MEMORY
   sync_instruction_memory(p->program,

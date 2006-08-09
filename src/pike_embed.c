@@ -516,11 +516,7 @@ DECLSPEC(noreturn) void pike_do_exit(int num)
 
   exit_modules();
 
-#ifdef DEBUG_MALLOC
-  cleanup_memhdrs();
-  cleanup_debug_malloc();
-#endif
-
+  exit_pike_memory();
 
 #ifdef PROFILING
   {

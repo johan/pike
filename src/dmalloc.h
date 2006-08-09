@@ -82,8 +82,6 @@ PMOD_EXPORT int dmalloc_mark_as_free(void*,int);
 PMOD_EXPORT void *debug_malloc_update_location(void *, LOCATION);
 PMOD_EXPORT void *debug_malloc_update_location_ptr(void *, ptrdiff_t, LOCATION);
 void search_all_memheaders_for_references(void);
-void cleanup_memhdrs(void);
-void cleanup_debug_malloc(void);
 
 /* Beware! names of named memory regions are never ever freed!! /Hubbe */
 PMOD_EXPORT void *debug_malloc_name(void *p, const char *fn, int line);
