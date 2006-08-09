@@ -2690,6 +2690,10 @@ static void low_search_all_memheaders_for_references(void)
 #if defined(__NT__) && !defined(__GNUC__)
 	  __try {
 #endif
+#ifdef PIKE_EXTRA_DEBUG
+	    fprintf("Scanning memory block at %p, %ld bytes, generation %d, flags: 0x%08x\n",
+		    m->data, m->size, m->gc_generation, m->flags);
+#endif /* PIKE_EXTRA_DEBUG */
 	    for(e=0;e<m->size/sizeof(void *);e++) {
 	      void *addr = p[e];
 	      if (!addr || ((sizeof(void *)-1) & (size_t)addr)) {
