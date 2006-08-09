@@ -3128,7 +3128,7 @@ static int low_parse_xml(struct pike_string *end)
       apply_current(f_Simple_Context_push_string_fun_num, 1);
     }
   }
-  /* !@endclass
+  /*! @endclass
    */
 }
 /*! @endclass
