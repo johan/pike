@@ -102,7 +102,6 @@
       <insert-move entity="Mysql"/>
       <insert-move entity="Postgres"/>
 <!--      <insert-move entity="Oracle"/> -->
-      <insert-move entity="Mird"/>
       <insert-move entity="Gdbm"/>
 <!--      <insert-move entity="Yabu"/> -->
     </chapter>
