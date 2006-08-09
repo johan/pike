@@ -378,7 +378,7 @@ char *debug_qalloc(size_t size)
 #endif /* !MAP_ANONYMOUS && MAP_ANON */
 
 #ifdef MAP_ANONYMOUS
-#define dev_zero 0
+#define dev_zero -1
 #else
 static int dev_zero = -1;
 #define INIT_DEV_ZERO
@@ -390,8 +390,8 @@ static INLINE void *mexec_do_alloc (void *start, size_t length)
   void *blk = mmap(start, length, PROT_EXEC|PROT_READ|PROT_WRITE,
 		   MAP_PRIVATE|MAP_ANONYMOUS, dev_zero, 0);
   if (blk == MAP_FAILED) {
-    fprintf(stderr, "mmap of %"PRINTSIZET"u bytes failed, errno=%d.\n",
-	    length, errno);
+    fprintf(stderr, "mmap of %"PRINTSIZET"u bytes failed, errno=%d. "
+	    "(dev_zero=%d)\n", length, errno, dev_zero);
     return NULL;
   }
   return blk;
