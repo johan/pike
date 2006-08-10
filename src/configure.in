@@ -2381,8 +2381,10 @@ if test "x$with_lib_path" = "x"; then
     if test "x$GCC" = "xno"; then :; else
       # Extract the default library paths from gcc,
       # so that we can pass them along to ld later on.
-      for dd in `$CC -print-search-dirs 2>/dev/null | sed -e '/^libraries:/s/^[[^=]]*=//p' -ed | sed -e 's/:/ /g'` /lib; do
+      for dd in `$CC -print-search-dirs 2>/dev/null | sed -e '/^libraries:/s/^[[^=]]*=//p' -ed | sed -e 's/\/:/ /g' -e 's/:/ /g' -e 's/\/$//'` /lib; do
         if test -d "$dd"; then :; else continue; fi
+	# Normalize the paths.
+	dd=`cd "$dd" && pwd`
 	if test "$dd" = "/lib"; then continue; fi
 	if test "$dd" = "/usr/lib"; then continue; fi
 	for suff in $pike_cv_abi_suffixes; do
