@@ -2381,7 +2381,7 @@ if test "x$with_lib_path" = "x"; then :; else
     if test "x$GCC" = "xno"; then :; else
       # Extract the default library paths from gcc,
       # so that we can pass them along to ld later on.
-      for dd in `$CC -print-search-dirs | sed -e '/^libraries:/s/^[^=]*=//p' -ed | sed -e 's/:/ /g'`; do
+      for dd in `$CC -print-search-dirs | sed -e '/^libraries:/s/^[[^=]]*=//p' -ed | sed -e 's/:/ /g'` /lib; do
         if test -d "$dd"; then :; else continue; fi
 	if test "$dd" = "/lib"; then continue; fi
 	if test "$dd" = "/usr/lib"; then continue; fi
