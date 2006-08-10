@@ -2389,13 +2389,16 @@ if test "x$with_lib_path" = "x"; then :; else
 	  d="$dd$suff"
 	  PIKE_CHECK_ABI_DIR($d, [
 	    # NOTE: Don't add these to the run path.
-	    AC_MSG_CHECKING([do we need to add it to LDFLAGS])
+	    AC_MSG_CHECKING([do we need to add $real_dir to LDFLAGS])
 	    case " $LDFLAGS " in
 	      *\ -L$d\ *)
 	        AC_MSG_RESULT([no - already added])
 		;;
+	      *\ -L$real_dir\ *)
+	        AC_MSG_RESULT([no - already added])
+		;;
 	      *)
-	        LDFLAGS="$LDFLAGS -L$d"
+	        LDFLAGS="$LDFLAGS -L$real_dir"
 		AC_MSG_RESULT([yes - added])
 		;;
 	    esac
