@@ -2685,6 +2685,7 @@ static void low_search_all_memheaders_for_references(void)
       }
       if( ! ((sizeof(void *)-1) & (size_t)p ))
       {
+#if 0
 	if(m->size > 0)
 	{
 #if defined(__NT__) && !defined(__GNUC__)
@@ -2734,6 +2735,7 @@ static void low_search_all_memheaders_for_references(void)
 	  }
 #endif
 	}
+#endif
       }
     }
   }
