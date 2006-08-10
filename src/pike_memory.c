@@ -2691,7 +2691,9 @@ static void low_search_all_memheaders_for_references(void)
 	  __try {
 #endif
 #ifdef PIKE_EXTRA_DEBUG
-	    fprintf("Scanning memory block at %p, %ld bytes, generation %d, flags: 0x%08x\n",
+	    fprintf(stderr, "PIKE_EXTRA_DEBUG:\n"
+		    "  Scanning memory block at %p, %ld bytes, "
+		    "generation %d, flags: 0x%08x\n",
 		    m->data, m->size, m->gc_generation, m->flags);
 #endif /* PIKE_EXTRA_DEBUG */
 	    for(e=0;e<m->size/sizeof(void *);e++) {
