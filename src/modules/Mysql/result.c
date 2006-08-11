@@ -83,6 +83,14 @@
 /* Define this to get field_seek() and fetch_field() */
 /* #define SUPPORT_FIELD_SEEK */
 
+/* These aren't present in old mysqlclients. */
+#ifndef ZEROFILL_FLAG
+#define ZEROFILL_FLAG	64
+#endif
+#ifndef BINARY_FLAG
+#define BINARY_FLAG	128
+#endif
+
 /*
  * Globals
  */
@@ -203,6 +211,14 @@ void mysqlmod_parse_field(MYSQL_FIELD *field, int support_default)
     if (IS_BLOB(field->flags)) {
       nbits++;
       push_text("blob");
+    }
+    if (field->flags & ZEROFILL_FLAG) {
+      nbits++;
+      push_text("zerofill");
+    }
+    if (field->flags & BINARY_FLAG) {
+      nbits++;
+      push_text("binary");
     }
     f_aggregate_multiset(nbits);
 
