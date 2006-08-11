@@ -133,8 +133,10 @@ class UnicodeWrapper (
   {
     int|array(string) row = master_result->fetch_row();
     if (!arrayp(row)) return row;
+    array(int|mapping(string:mixed)) field_info = fetch_fields();
     foreach(row; int i; string|int val) {
-      if (stringp(val)) {
+      if (stringp(val) && field_info[i]->flags &&
+	  !field_info[i]->flags->binary) {
 	row[i] = utf8_to_string(val);
       }
     }
