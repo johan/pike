@@ -712,7 +712,9 @@ static void create(string|void host, string|void database,
 
     update_unicode_encode_mode_from_charset (lower_case (charset));
 
-    if (options->unicode_decode_mode)
+    if (charset == "unicode")
+      utf8_mode |= UNICODE_DECODE_MODE;
+    else if (options->unicode_decode_mode)
       set_unicode_decode_mode (1);
 
   } else {
