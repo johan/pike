@@ -646,34 +646,29 @@ static void mysql__sprintf(INT32 args)
   {
     case 'O':
     {
-      struct pike_string *res;
-      MYSQL *socket;
-      const char *info;
+      MYSQL *socket = PIKE_MYSQL->socket;
 
-      if(!PIKE_MYSQL->socket)
-	pike_mysql_reconnect();
-      socket = PIKE_MYSQL->socket;
-
-      MYSQL_ALLOW();
-      info = mysql_get_host_info(socket);
-      MYSQL_DISALLOW();
-
-      push_text("mysql(/* %s %s*/)");
-      push_text(info);
+      if (socket) {
+	const char *info;
+	MYSQL_ALLOW();
+	info = mysql_get_host_info(socket);
+	MYSQL_DISALLOW();
+	push_text("mysql(/*%s%s*/)");
+	push_text(info);
 #ifdef HAVE_MYSQL_SSL
-      if (PIKE_MYSQL->mysql->options.use_ssl) {
-	push_text("using SSL");
-      }
-      else push_text("");
+	if (PIKE_MYSQL->mysql->options.use_ssl) {
+	  push_text(", SSL");
+	}
+	else
+	  push_text("");
 #else
-      push_text("");
+	push_text("");
 #endif /* HAVE_MYSQL_SSL */
+	f_sprintf(3);
+      }
+      else
+	push_constant_text ("mysql()");
 
-      f_sprintf(3);
-
-      res = Pike_sp[-1].u.string;
-      Pike_sp--;
-      push_string(res);
       return;
     }
 
