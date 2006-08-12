@@ -35,6 +35,9 @@
 /* Define if you have mysql_options(). */
 #undef HAVE_MYSQL_OPTIONS
 
+/* Define if you have mysql_set_character_set(). */
+#undef HAVE_MYSQL_SET_CHARACTER_SET
+
 /* Define if you have the mysql_port variable. */
 #undef HAVE_MYSQL_PORT
 
@@ -70,5 +73,8 @@
 
 /* Define if your mysql.h defines SHUTDOWN_DEFAULT */
 #undef HAVE_SHUTDOWN_DEFAULT
+
+/* Define if your mysql.h defines FIELD_TYPE_GEOMETRY */
+#undef HAVE_FIELD_TYPE_GEOMETRY
 
 #endif /* PIKE_MYSQL_CONFIG_H */
