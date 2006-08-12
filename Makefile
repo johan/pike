@@ -20,7 +20,7 @@
 
 # Tip: Remove "-r" from the line below if you don't want to rebuild
 # from scratch every time you upgrade the kernel.
-OS=`uname -s -m|sed \"s/ /-/g\"|tr \"[A-Z]\" \"[a-z]\"|tr \"/()\" \"___\"`
+OS=`uname -s -r -m|sed \"s/ /-/g\"|tr \"[A-Z]\" \"[a-z]\"|tr \"/()\" \"___\"`
 
 VPATH=.
 BUILDDIR=build/$(OS)
