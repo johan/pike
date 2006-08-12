@@ -212,6 +212,10 @@ static void exit_mysql_struct(struct object *o)
     free_string(PIKE_MYSQL->host);
     PIKE_MYSQL->host = NULL;
   }
+  if (PIKE_MYSQL->options) {
+    free_mapping (PIKE_MYSQL->options);
+    PIKE_MYSQL->options = NULL;
+  }
 
   MYSQL_ALLOW();
 
