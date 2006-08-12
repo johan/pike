@@ -652,8 +652,6 @@ static void f_create(INT32 args)
     }
   }
 
-  pop_n_elems(args);
-
   pike_mysql_set_ssl(PIKE_MYSQL->options);
 
   pike_mysql_reconnect (0);
@@ -671,6 +669,8 @@ static void f_create(INT32 args)
       PIKE_MYSQL->conn_charset = NULL;
   }
 #endif
+
+  pop_n_elems(args);
 }
 
 /*! @decl string _sprintf(int type, void|mapping flags)
