@@ -149,7 +149,7 @@ PMOD_EXPORT char *get_name_of_type(TYPE_T t)
   {
     case T_ARRAY: return "array";
     case T_FLOAT: return "float";
-    case T_FUNCTION: return "function";
+    case T_MANY: case T_FUNCTION: return "function";
     case T_INT: return "int";
     case T_SVALUE_PTR: return "svalue_ptr";
     case T_OBJ_INDEX: return "obj_index";
