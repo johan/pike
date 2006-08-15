@@ -40,6 +40,7 @@ void o_cast_to_int(void);
 PMOD_EXPORT void o_cast_to_string(void);
 void o_cast(struct pike_type *type, INT32 run_time_type);
 PMOD_EXPORT void f_cast(void);
+void o_check_soft_cast(struct svalue *s, struct pike_type *type);
 
 PMOD_EXPORT void f_ne(INT32 args);
 COMPARISON(f_eq,"`==", is_eq)
