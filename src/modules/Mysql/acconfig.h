@@ -74,4 +74,7 @@
 /* Define if your mysql.h defines FIELD_TYPE_GEOMETRY */
 #undef HAVE_FIELD_TYPE_GEOMETRY
 
+/* Define if your mysql.h defines CLIENT_INTERACTIVE */
+#undef HAVE_CLIENT_INTERACTIVE
+
 #endif /* PIKE_MYSQL_CONFIG_H */
