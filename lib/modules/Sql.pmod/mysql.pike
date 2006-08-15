@@ -576,7 +576,7 @@ int decode_datetime (string timestr)
     if (new_send_charset != send_charset) {				\
       if (mixed err =							\
 	  ::big_query ("SET character_set_client=" + new_send_charset)) { \
-	if (new_send_charset = "utf8")					\
+	if (new_send_charset == "utf8")					\
 	  predef::error ("The query is a wide string "			\
 			 "and the MySQL server doesn't support UTF-8: %s\n", \
 			 describe_error (err));				\
