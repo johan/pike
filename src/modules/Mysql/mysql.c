@@ -1766,7 +1766,7 @@ static void f_set_charset (INT32 args)
   ref_push_string (charset);
   push_constant_text ("'");
   f_add (3);
-  low_query (1, "set_charset", PIKE_MYSQL_FLAG_STORE_RESULT);
+  big_query(1);
   args++;
   if (PIKE_MYSQL->conn_charset)
     free_string (PIKE_MYSQL->conn_charset);
