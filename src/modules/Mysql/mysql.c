@@ -1665,8 +1665,8 @@ static void f_set_charset (INT32 args)
   struct pike_string *charset;
   get_all_args ("set_charset", args, "%n", &charset);
   if (string_has_null (charset))
-    SIMPLE_ARG_ERROR ("set_charset", 0,
-		      "The charset name cannot contain a NUL character.");
+    SIMPLE_BAD_ARG_ERROR ("set_charset", 1,
+			  "The charset name cannot contain a NUL character.");
 
 #ifdef HAVE_MYSQL_SET_CHARACTER_SET
   {
@@ -1729,9 +1729,9 @@ static void f__can_send_as_latin1 (INT32 args)
   int res;
 
   if (args != 1)
-    SIMPLE_WRONG_NUM_ARGS_ERROR ("_can_send_as_latin1", 1);
+    SIMPLE_TOO_FEW_ARGS_ERROR("_can_send_as_latin1", 1);
   if (Pike_sp[-1].type != T_STRING)
-    SIMPLE_ARG_TYPE_ERROR ("_can_send_as_latin1", 0, "string");
+    SIMPLE_BAD_ARG_ERROR("_can_send_as_latin1", 1, "string");
   str = Pike_sp[-1].u.string;
 
   if (str->size_shift)
