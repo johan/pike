@@ -1661,7 +1661,7 @@ static void f_binary_data(INT32 args)
 static void f_set_charset (INT32 args)
 {
   struct pike_string *charset;
-  get_all_args ("set_charset", args, "%n", &charset);
+  get_all_args ("set_charset", args, "%S", &charset);
   if (string_has_null (charset))
     SIMPLE_BAD_ARG_ERROR ("set_charset", 1,
 			  "The charset name cannot contain a NUL character.");
