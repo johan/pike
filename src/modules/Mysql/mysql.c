@@ -24,9 +24,7 @@
  * Includes
  */
 
-#ifdef HAVE_WINSOCK2_H
-#include <winsock2.h>
-#elif defined(HAVE_WINSOCK_H)
+#ifdef HAVE_WINSOCK_H
 #include <winsock.h>
 #endif
 
