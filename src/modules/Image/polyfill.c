@@ -7,8 +7,12 @@
 
 #include "global.h"
 
+#if 0
 /* Prototypes are needed for these */
+/* Should really exist in math.h. This prototype might conflict with
+ * dllimport stuff on Windows. /mast */
 extern double floor(double);
+#endif
 
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
