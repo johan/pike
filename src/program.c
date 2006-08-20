@@ -8067,13 +8067,17 @@ PMOD_EXPORT void change_compiler_compatibility(int major, int minor)
 
 void make_program_executable(struct program *p)
 {
-#ifdef _WIN32
-  DWORD old_prot;
-  if (!VirtualProtect (p->program,
-		       p->num_program * sizeof (p->program[0]),
-		       PAGE_EXECUTE_READWRITE, &old_prot))
-    Pike_fatal ("VirtualProtect failed, code %d.\n", GetLastError());
+  if (!p->num_program)
+    return;
 
+#ifdef _WIN32
+  {
+    DWORD old_prot;
+    if (!VirtualProtect (p->program,
+                         p->num_program * sizeof (p->program[0]),
+                         PAGE_EXECUTE_READWRITE, &old_prot))
+      Pike_fatal ("VirtualProtect failed, code %d.\n", GetLastError());
+  }
 #else  /* _WIN32 */
 
 #if !defined(HAVE_MMAP) || !defined(MEXEC_USES_MMAP)
