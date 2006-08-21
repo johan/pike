@@ -928,8 +928,9 @@ int low_check_soft_cast(struct svalue *s, struct pike_type *type)
   case T_NOT:
     return !low_check_soft_cast(s, type->car);
   }
+  if ((s->type == PIKE_T_INT) && !s->u.integer) return 1;
   if (s->type == type->type) {
-    if (type->type == PIKE_T_INT) return 1;
+    if (type->type == PIKE_T_INT) return 1;	/* FIXME: Check range. */
     if (type->type == PIKE_T_FLOAT) return 1;
     if (type->type == PIKE_T_STRING) return 1;
     switch(type->type) {
