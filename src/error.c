@@ -774,6 +774,24 @@ static void f_error__sprintf(INT32 args)
   f_add(3);
 }
 
+/*! @decl int(0..1) _is_type(string t)
+ *!
+ *! Claims that the error object is an array.
+ */
+static void f_error__is_type(INT32 args)
+{
+  struct pike_string *array_string;
+  int ret;
+  MAKE_CONST_STRING(array_string, "array");
+  if (args < 0) SIMPLE_TOO_FEW_ARGS_ERROR("_is_type", 1);
+  if (args > 1) SIMPLE_WRONG_NUM_ARGS_ERROR("_is_type", 1);
+  if (Pike_sp[-args].type != PIKE_T_STRING)
+    SIMPLE_ARG_TYPE_ERROR("_is_type", 1, "string");
+  ret = Pike_sp[-args].u.string == array_string;
+  pop_n_elems(args);
+  push_int(ret);
+}
+
 /*! @decl void create(string message)
  */
 static void f_error_create(INT32 args)
