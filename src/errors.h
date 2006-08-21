@@ -89,6 +89,7 @@ DECLARE_ERROR(generic, Generic, EMPTY ,
   ERR_FUNC("backtrace",f_error_backtrace,tFunc(tVoid,tArr(tMixed)),0)
   ERR_FUNC("_sprintf", f_error__sprintf,
 	   tFunc(tOr(tInt,tVoid) tOr(tMapping,tVoid),tString), ID_STATIC)
+  ERR_FUNC("_is_type", f_error__is_type, tFunc(tString, tInt01), ID_STATIC)
   ERR_FUNC("create",f_error_create,tFunc(tStr tOr(tVoid,tArr(tMixed)),tVoid),ID_STATIC)
 )
 
