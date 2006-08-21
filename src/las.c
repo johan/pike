@@ -398,8 +398,6 @@ static int check_node_type(node *n, struct pike_type *t, const char *msg)
     } else {
       yywarning("Failed to find place to insert soft cast.");
     }
-    fprintf(stderr, "After insert:\n");
-    print_tree(p->parent);
   }
   return 1;
 }
