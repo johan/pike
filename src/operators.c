@@ -989,11 +989,9 @@ int low_check_soft_cast(struct svalue *s, struct pike_type *type)
     }
     if ((lfun = FIND_LFUN(s->u.object->prog, LFUN__IS_TYPE)) != -1) {
       int ret;
-      fprintf(stderr, "_is_type(\"%s\")...", get_name_of_type(type->type));
       push_text(get_name_of_type(type->type));
       apply_low(s->u.object, lfun, 1);
       ret = !UNSAFE_IS_ZERO(Pike_sp-1);
-      fprintf(stderr, "%d\n", ret);
       pop_stack();
       return ret;
     }
