@@ -35,6 +35,9 @@
 /* Define if you have mysql_set_character_set(). */
 #undef HAVE_MYSQL_SET_CHARACTER_SET
 
+/* Define if you have mysql_character_set_name(). */
+#undef HAVE_MYSQL_CHARACTER_SET_NAME
+
 /* Define if you have the mysql_port variable. */
 #undef HAVE_MYSQL_PORT
 
