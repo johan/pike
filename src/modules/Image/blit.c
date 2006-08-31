@@ -172,7 +172,7 @@ void img_box_nocheck(INT32 x1,INT32 y1,INT32 x2,INT32 y2)
    {
      THREADS_ALLOW();
      do {
-       for (; foo<=end; foo+=mod) for (x=x1; x<=x2; x++,foo++) 
+       for (; foo<end; foo+=mod) for (x=x1; x<=x2; x++,foo++)
 	 set_rgb_group_alpha(*foo,rgb,this->alpha);
      } while(0);
      THREADS_DISALLOW();
