@@ -657,6 +657,7 @@ static void f_create(INT32 args)
   pike_mysql_reconnect (0);
 
 #ifndef HAVE_MYSQL_SET_CHARACTER_SET
+#ifdef HAVE_MYSQL_CHARACTER_SET_NAME
   {
     const char *charset = mysql_character_set_name (PIKE_MYSQL->socket);
     if (PIKE_MYSQL->conn_charset)
@@ -668,6 +669,11 @@ static void f_create(INT32 args)
        * a string. */
       PIKE_MYSQL->conn_charset = NULL;
   }
+#else
+  if (PIKE_MYSQL->conn_charset)
+    free_string (PIKE_MYSQL->conn_charset);
+  PIKE_MYSQL->conn_charset = NULL;
+#endif
 #endif
 
   pop_n_elems(args);
@@ -1796,6 +1802,8 @@ static void f_get_charset (INT32 args)
   pop_n_elems (args);
 #ifdef HAVE_MYSQL_SET_CHARACTER_SET
   {
+    /* mysql_character_set_name should always exist if
+     * mysql_set_character_set exists. */
     const char *charset = mysql_character_set_name (PIKE_MYSQL->socket);
     if (charset)
       push_text (charset);
