@@ -4,6 +4,10 @@
 //! Support for Universal Unique Identifiers (UUID) and
 //! Globally Unique Identifiers (GUID).
 //!
+//! @seealso
+//!   RFC4122: A Universally Unique IDentifier (UUID) URN Namespace
+//!
+
 // $Id$
 //
 // 2004-10-01 Henrik Grubbström
@@ -11,7 +15,7 @@
 
 // Specifications:
 //
-// draft-mealling-uuid-urn-03.txt (I-D; Microsoft, Verisign, DataPower)
+// RFC 4122: A Universally Unique IDentifier (UUID) URN Namespace
 // CDE 1.1: Remote Procedure Call: Universal Unique Identifier (Open Group)
 
 // UUID format:
@@ -55,6 +59,7 @@
 //   For systems without an IEEE 802 address, a random value
 //   with the multicast bit set may be used.
 
+// TODO: Check changes between draft-mealling-uuid-urn-03.txt and RFV 4122.
 
 #if 0
   constant clk_offset = Calendar.ISO.Second(1582,10,15,0,0,0)->
