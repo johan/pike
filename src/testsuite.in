@@ -4176,6 +4176,17 @@ test_any_equal([[
 ]])
 
 test_true(mappingp(_memory_usage()))
+test_any([[
+  int ret = 1;
+  foreach(_memory_usage(); string type; int value)
+    if(value<0)
+    {
+      werror("_memory_usage()->%s has value %d which is <0\n",
+             type, value);
+      ret = 0;
+    }
+  return ret;
+]],1)
 test_true(_refs(""));
 test_true(_refs(({})));
 test_true(_refs(([])));
