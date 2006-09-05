@@ -47,7 +47,7 @@ void exit_bytecode(void)
   c=(p_instr *)instrbuf.s.str;
   length=instrbuf.s.len / sizeof(p_instr);
 
-  for(e=0;e<length;e++) free_string(c->file);
+  for(e=0;e<length;e++) free_string(c[e].file);
   
   toss_buffer(&instrbuf);
 }
