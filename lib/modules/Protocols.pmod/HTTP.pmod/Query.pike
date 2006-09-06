@@ -205,7 +205,9 @@ static void async_close()
   if(!https)
   {
     con->set_blocking();
-    ponder_answer();
+    if (ponder_answer() <= 0) {
+      async_failed();
+    }
   }
 }
 
