@@ -232,7 +232,9 @@ static void connect(string server,int port,int blocking)
 static void async_close()
 {
   con->set_blocking();
-  ponder_answer();
+  if (ponder_answer() <= 0) {
+    async_failed();
+  }
 }
 
 static void async_read(mixed dummy,string s)
