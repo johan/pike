@@ -476,7 +476,7 @@ void ins_f_byte(unsigned int b)
 #endif
 }
 
-void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b)
+void ins_f_byte_with_arg(unsigned int a, INT32 b)
 {
   maybe_update_pc();
 
@@ -549,8 +549,8 @@ void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b)
 }
 
 void ins_f_byte_with_2_args(unsigned int a,
-			    unsigned INT32 b,
-			    unsigned INT32 c)
+			    INT32 b,
+			    INT32 c)
 {
   maybe_update_pc();
 

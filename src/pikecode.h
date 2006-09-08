@@ -26,10 +26,8 @@ void ins_data(INT32 val);
 void ins_align(INT32 align);
 
 void ins_f_byte(unsigned int b);
-void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b);
-void ins_f_byte_with_2_args(unsigned int a,
-			    unsigned INT32 c,
-			    unsigned INT32 b);
+void ins_f_byte_with_arg(unsigned int a, INT32 b);
+void ins_f_byte_with_2_args(unsigned int a, INT32 c, INT32 b);
 
 #if PIKE_BYTECODE_METHOD == PIKE_BYTECODE_AMD64
 #warning using amd64
