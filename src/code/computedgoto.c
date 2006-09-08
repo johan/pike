@@ -52,15 +52,15 @@ void ins_f_byte(unsigned int b)
   add_to_program(fcode_to_opcode[b]);
 }
 
-void ins_f_byte_with_arg(unsigned int a,unsigned INT32 b)
+void ins_f_byte_with_arg(unsigned int a, INT32 b)
 {
   ins_f_byte(a);
   add_to_program((PIKE_OPCODE_T)b);
 }
 
 void ins_f_byte_with_2_args(unsigned int a,
-			    unsigned INT32 c,
-			    unsigned INT32 b)
+			    INT32 c,
+			    INT32 b)
 {
   ins_f_byte_with_arg(a,c);
   add_to_program((PIKE_OPCODE_T)b);

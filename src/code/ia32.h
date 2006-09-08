@@ -129,8 +129,15 @@ void ia32_init_interpreter_state(void);
 void ia32_flush_code_generator(void);
 #define FLUSH_CODE_GENERATOR_STATE ia32_flush_code_generator
 
+void ia32_flush_instruction_cache(void *addr, size_t len);
+#define FLUSH_INSTRUCTION_CACHE	ia32_flush_instruction_cache
+
+void ia32_init_interpreter_state(void);
+#define INIT_INTERPRETER_STATE	ia32_init_interpreter_state
 
 #ifdef USE_CL_IA32_ASM_STYLE
+
+#define USE_CL_IA32_ASM_STYLE
 
 #define CALL_MACHINE_CODE(pc)                                   \
   __asm {                                                       \
@@ -143,6 +150,8 @@ void ia32_flush_code_generator(void);
   __asm { __asm add esp,12 }
 
 #else  /* USE_GCC_IA32_ASM_STYLE */
+
+#define USE_GCC_IA32_ASM_STYLE
 
 #define CALL_MACHINE_CODE(pc)						\
   /* This code does not clobber %eax, %ebx, %ecx & %edx, but		\
