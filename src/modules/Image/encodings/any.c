@@ -150,7 +150,7 @@ void image_any__decode(INT32 args)
 
       case CHAR2('M','M'):
 	/* TIFF */
-	push_text("Image.TIFF._decode");:
+	push_text("Image.TIFF._decode");
 	SAFE_APPLY_MASTER("resolv_or_error",1);
 	stack_swap();
 	f_call_function(2);
