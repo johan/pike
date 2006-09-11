@@ -4722,6 +4722,7 @@ void image_tobitmap(INT32 args)
 
 
 /***************** Serialization methods ***********************/
+
 void image__encode( INT32 args )
 {
     push_int( THIS->xsize );
@@ -4738,7 +4739,9 @@ void image__decode( INT32 args )
     int w, h;
     if( Pike_sp[-1].type != PIKE_T_ARRAY ||
 	Pike_sp[-1].u.array->size != 3 ||
-	(a=Pike_sp[-1].u.array)->item[2].type != PIKE_T_STRING )
+	(a=Pike_sp[-1].u.array)->item[2].type != PIKE_T_STRING ||
+        a->item[0].type != PIKE_T_INT ||
+        a->item[1].type != PIKE_T_INT )
 	Pike_error( "Illegal arguments to decode\n");
 
     w = a->item[0].u.integer;
