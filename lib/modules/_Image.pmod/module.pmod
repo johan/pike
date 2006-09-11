@@ -74,8 +74,7 @@ mapping _decode( string data )
 #if constant(Image.TIFF)
       if (tiff_start && tiff_len) {
 	catch {
-	  [i,a] =
-	    Image.TIFF.decode(data[tiff_start..tiff_start + tiff_len -1]);
+	  i = Image.TIFF.decode(data[tiff_start..tiff_start + tiff_len -1]);
 	  format = "TIFF";
 	};
 	if (i) break;
