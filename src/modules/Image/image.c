@@ -4561,6 +4561,46 @@ void image_tobitmap(INT32 args)
    push_string(end_shared_string(res));
 }
 
+/***************** Serialization methods ***********************/
+
+void image__encode( INT32 args )
+{
+    push_int( THIS->xsize );
+    push_int( THIS->ysize );
+    push_string( make_shared_binary_string((char *)THIS->img,
+					   THIS->xsize*THIS->ysize
+					   *sizeof(rgb_group)) );
+    f_aggregate( 3 );
+}
+
+void image__decode( INT32 args )
+{
+    struct array *a;
+    int w, h;
+    if( Pike_sp[-1].type != PIKE_T_ARRAY ||
+	Pike_sp[-1].u.array->size != 3 ||
+	(a=Pike_sp[-1].u.array)->item[2].type != PIKE_T_STRING ||
+        a->item[0].type != PIKE_T_INT ||
+        a->item[1].type != PIKE_T_INT )
+	Pike_error( "Illegal arguments to decode\n");
+
+    w = a->item[0].u.integer;
+    h = a->item[1].u.integer;
+
+    if( w*h*(ptrdiff_t) sizeof(rgb_group) != a->item[2].u.string->len )
+	Pike_error("Illegal image data\n");
+
+    if( THIS->img )
+	free( THIS->img );
+
+    THIS->xsize = w;
+    THIS->ysize = h;
+    THIS->img = xalloc( sizeof(rgb_group)*w*h+1 );
+
+    memcpy( THIS->img, a->item[2].u.string->str, a->item[2].u.string->len );
+    pop_stack();
+}
+
 /***************** global init etc *****************************/
 
 #define tRGB tOr3(tColor,tVoid,tInt) tOr(tInt,tVoid) tOr(tInt,tVoid)
@@ -4576,6 +4616,9 @@ void init_image_image(void)
    ADD_STORAGE(struct image);
    
    ADD_FUNCTION("_sprintf", image__sprintf, tFunc(tInt , tString), 0 );
+
+   ADD_FUNCTION("_encode", image__encode, tFunc(tVoid,tArray), 0 );
+   ADD_FUNCTION("_decode", image__decode, tFunc(tArray,tVoid), 0 );
 
    ADD_FUNCTION("create",image_create,
 		tOr(tFunc(tOr(tInt,tVoid) tOr(tInt,tVoid) tRGB,tVoid),
