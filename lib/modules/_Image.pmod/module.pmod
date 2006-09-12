@@ -72,7 +72,7 @@ mapping _decode( string data )
       if (csum != 65535) {
 	// FIXME: Verify checksum.
       }
-#if constant(Image.TIFF)
+#if constant(Image.TIFF.decode)
       if (tiff_start && tiff_len) {
 	catch {
 	  i = Image.TIFF.decode(data[tiff_start..tiff_start + tiff_len -1]);
