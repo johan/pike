@@ -167,7 +167,8 @@ void image_any__decode(INT32 args)
 	 push_text("image/x-ilbm");
 	 goto simple_image;
 
-      case CHAR2('M','M'):
+      case CHAR2('I','I'):	/* Little endian. */
+      case CHAR2('M','M'):	/* Big endian. */
 	/* TIFF */
 	push_text("Image.TIFF._decode");
 	SAFE_APPLY_MASTER("resolv_or_error",1);
