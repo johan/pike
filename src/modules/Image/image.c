@@ -703,13 +703,9 @@ void img_read_cmyk(INT32 args)
 
    while (n--)
    {
-      /* NOTE: The black channel may cause overflows. */
-      int tmp = COLORMAX-*s1-*s4;
-      d->r = (tmp>0)?tmp:0;
-      tmp = COLORMAX-*s2-*s4;
-      d->g = (tmp>0)?tmp:0;
-      tmp = COLORMAX-*s3-*s4;
-      d->b = (tmp>0)?tmp:0;
+      d->r = ((COLORMAX-*s1)*(COLORMAX-*s4))/COLORMAX;
+      d->g = ((COLORMAX-*s2)*(COLORMAX-*s4))/COLORMAX;
+      d->b = ((COLORMAX-*s3)*(COLORMAX-*s4))/COLORMAX;
       s1+=m1;
       s2+=m2;
       s3+=m3;
