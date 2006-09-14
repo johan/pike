@@ -65,7 +65,7 @@ string emulate_bindings(string query, mapping(string|int:mixed)|void bindings,
 //! Useful for eg Mysql connections which have been set to utf8-mode
 //! using eg @expr{"SET NAMES 'utf8'"@}.
 class UnicodeWrapper (
-		      //! The wrapped result object.
+		      // The wrapped result object.
 		      static object master_result
 		      )
 {
