@@ -640,6 +640,12 @@ static struct nct_flat _img_reduce_number_of_colors(struct nct_flat flat,
 
    i = reduce_recurse(flat.entries,newe, flat.numentries, maxcols, 0, sf,
 		      pos, space, NCT_REDUCE_WEIGHT);
+   if( i==0 )
+   {
+     free(newe);
+     return flat;
+   }
+
 
    free(flat.entries);
 
