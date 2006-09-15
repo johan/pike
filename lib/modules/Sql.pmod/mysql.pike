@@ -608,7 +608,7 @@ int decode_datetime (string timestr)
 			 "and the MySQL server doesn't support UTF-8: %s\n", \
 			 describe_error (err));				\
 	else								\
-	  throw err;							\
+	  throw (err);							\
       }									\
       send_charset = new_send_charset;					\
     }									\
