@@ -286,6 +286,48 @@ void create(string|object host, void|string|mapping(string:int|string) db,
   decode_datetime = master_sql->decode_datetime || .sql_util.fallback;
 }
 
+void set_charset (string charset)
+//! Changes the charset that the connection uses for queries and
+//! returned text strings.
+//!
+//! @param charset
+//!   The charset to use. The valid values and their meanings depends
+//!   on the database brand. However, the special value
+//!   @expr{"unicode"@} (if supported) selects a mode where the query
+//!   and result strings are unencoded (and possibly wide) unicode
+//!   strings.
+//!
+//! @throws
+//!   An error is thrown if the connection doesn't support the
+//!   specified charset, or doesn't support charsets being set this
+//!   way at all.
+//!
+//! @note
+//!   See the @expr{set_charset@} functions for each database
+//!   connection type for further details about the effects on the
+//!   connection.
+//!
+//! @seealso
+//!   @[get_charset], @[Sql.mysql.set_charset]
+{
+  if (!master_sql->set_charset)
+    predef::error ("This database connection does not "
+		   "support charset switching.\n");
+  master_sql->set_charset (charset);
+}
+
+string get_charset()
+//! Returns the (database dependent) name of the charset used for (at
+//! least) query strings. Returns zero if the connection doesn't
+//! support charsets this way (typically means that a call to
+//! @[set_charset] will throw an error).
+//!
+//! @seealso
+//!   @[set_charset], @[Sql.mysql.get_charset]
+{
+  return master_sql->get_charset && master_sql->get_charset();
+}
+
 static string _sprintf(int type, mapping|void flags)
 {
   if(type=='O' && master_sql && master_sql->_sprintf)
