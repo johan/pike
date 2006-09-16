@@ -1758,7 +1758,7 @@ static void f_set_charset (INT32 args)
     MYSQL_ALLOW();
     res = mysql_set_character_set (socket, charset->str);
     MYSQL_DISALLOW();
-    if (!res) {
+    if (res) {
       const char *err;
       MYSQL_ALLOW();
       err = mysql_error(socket);
