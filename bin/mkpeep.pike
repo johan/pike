@@ -490,13 +490,7 @@ int main(int argc, array(string) argv)
 	argv[1], Calendar.ISO.now()->format_time());
 
   array(Switch) a = [array(Switch)]make_switches(data);
-#if 0
-  if(sizeof(a)!=1 || !a[0]->is_switch) {
-    error("Expected one top switch Num: %d.\n", sizeof(a));
-  }
 
-  a[0]->make_child_fun();
-#endif
   a->make_child_fun();
 
   write( functions );
