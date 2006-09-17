@@ -455,7 +455,7 @@ array(Switch|Breakable) make_switches(array(Rule) data)
 	ops += ({ ({ sizeof(args)+1+", ", fcode+", ",
 		     @map(args,treat)[*]+", " }) });
       }
-      opargs += reverse(ops) * ({});
+      opargs += ({ sizeof(ops) + ", " }) + reverse(ops) * ({});
       buf->add_line(" "*ind+"do_optimization(", opargs, "0);");
 
       buf->add_line( sprintf("%*nreturn 1;", ind) );
