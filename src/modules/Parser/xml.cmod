@@ -1038,6 +1038,7 @@ PIKECLASS Simple
 #define CHECK_INPUT(INPUT)
 #endif /* PIKE_DEBUG */
 
+
 static inline int xmlread(int z, int line)
 {
   int popped=0;
@@ -1589,7 +1590,7 @@ static void read_attvalue(struct string_builder *X,
 			  p_wchar2 Y,
 			  int keepspace)
 {
-  struct smlinput *input = THIS->input;
+  struct xmlinput *input = THIS->input;
   while(THIS->input)
   {
     if(XMLEOF()) {
