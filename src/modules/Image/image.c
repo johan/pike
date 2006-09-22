@@ -945,9 +945,10 @@ void image_create(INT32 args)
 	
    THIS->xsize=sp[-args].u.integer;
    THIS->ysize=sp[1-args].u.integer;
+#if 0
    if (THIS->xsize<0) THIS->xsize=0;
    if (THIS->ysize<0) THIS->ysize=0;
-
+#endif
    if (image_too_big(THIS->xsize,THIS->ysize)) 
       Pike_error("Image.Image->create(): image too large (>2Gpixels)\n");
 
