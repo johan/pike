@@ -90,6 +90,7 @@ struct source *source_pikestring_make( struct svalue *s,
   {
     sub_ref(res->str);
     free(res);
+    return 0;
   }
   return (struct source *)res;
 }
