@@ -1679,6 +1679,7 @@ fi
 
 
 DLOPEN_O=""
+OSFLAGS=""
 WARN=""
 OPTIMIZE="${OPTFLAGS-}"
 
@@ -7866,6 +7867,7 @@ export BUILD_BASE
 default_master=$prefix/pike/%d.%d.%d/lib/master.pike
 AC_DEFINE_UNQUOTED(DEFAULT_MASTER,"$default_master")
 
+AC_SUBST(OSFLAGS)
 AC_SUBST(WARN)
 AC_SUBST(PROFIL)
 AC_SUBST(OPTIMIZE)
