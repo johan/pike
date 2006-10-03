@@ -8,7 +8,7 @@
 #ifndef MACROS_H
 #define MACROS_H
 
-#include <global.h>
+#include "global.h"
 
 #ifdef HAVE_SYS_PARAM_H
 #include <sys/param.h>
