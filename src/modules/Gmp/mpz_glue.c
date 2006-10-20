@@ -517,6 +517,11 @@ static void mpzmod_get_int(INT32 args)
 #ifdef AUTO_BIGNUM
   add_ref(fp->current_object);
   mpzmod_reduce(fp->current_object);
+  if( Pike_sp[-1].type == T_OBJECT &&
+      Pike_sp[-1].u.object->prog != bignum_program )
+  {
+    apply_svalue(&auto_bignum_program, 1);
+  }
 #else
   push_int(mpz_get_si(THIS));
 #endif /* AUTO_BIGNUM */
