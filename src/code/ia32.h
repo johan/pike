@@ -134,13 +134,13 @@ void ia32_flush_code_generator(void);
   /* This code does not clobber %eax, %ebx, %ecx & %edx, but		\
    * the code jumped to does.						\
    */									\
-  __asm__ __volatile__( "	sub $12,%%esp\n"			\
+  __asm__ __volatile__( "	sub $16,%%esp\n"			\
 			"	jmp *%0"				\
 			: "=m" (pc)					\
 			:						\
 			: "cc", "memory", "eax", "ebx", "ecx", "edx" )
 
 #define EXIT_MACHINE_CODE()						\
-  __asm__ __volatile__( "add $12,%%esp\n" : : )
+  __asm__ __volatile__( "add $16,%%esp\n" : : )
 
 #endif /* _M_IX86 */

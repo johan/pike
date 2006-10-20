@@ -69,7 +69,7 @@ PROFIL=@PROFIL@
 #
 # OS dependant flags
 #
-OSFLAGS=
+OSFLAGS=@OSFLAGS@
 
 #
 #Enable warnings from the compiler, if wanted.
