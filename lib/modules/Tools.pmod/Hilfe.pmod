@@ -1581,6 +1581,7 @@ class Evaluator {
     while( p<sizeof(expr)) {
       if( expr->is_block(p) ) {
 	string type = expr[p++];
+        if(type=="class") top=0;
 	multiset(string) new_scope = symbols+(<>);
 
 	// No () for catch, gauge, do and possibly class.
