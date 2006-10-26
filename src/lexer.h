@@ -398,7 +398,7 @@ static struct pike_string *readstring(void)
     }
     break;
   }
-  return finish_string_builder(&tmp);
+  return dmalloc_touch(struct pike_string *, finish_string_builder(&tmp));
 }
 
 
@@ -649,7 +649,7 @@ static int low_yylex(YYSTYPE *yylval)
 	{
 	  struct pike_string *tmp=readstring();
 	  free_string(lex.current_file);
-	  lex.current_file=tmp;
+	  lex.current_file = dmalloc_touch(struct pike_string *, tmp);
 	}
 	if (Pike_compiler->compiler_pass == 1 &&
 	    !Pike_compiler->new_program->num_linenumbers) {
@@ -1049,6 +1049,35 @@ static int low_yylex(YYSTYPE *yylval)
       case '-':
 	if(GOBBLE('>'))
 	{
+	  if ((offset == 2) && lex_isidchar(LOOK())) {
+	    /* Getter/setter
+	     *
+	     * Either
+	     *   `->symbol
+	     * Or
+	     *   `->symbol=
+	     */
+	    char *buf;
+	    size_t len;
+	    struct pike_string *s;
+	    READBUF(lex_isidchar(C));
+	    if (GOBBLE('=')) len += 1<<SHIFT;
+	    /* Adjust for the prefix (`->). */
+	    len += 3<<SHIFT;
+	    buf -= 3<<SHIFT;
+#if (SHIFT == 0)
+	    s = make_shared_binary_string(buf, len);
+#else /* SHIFT != 0 */
+#if (SHIFT == 1)
+	    s = make_shared_binary_string1((p_wchar1 *)buf, len);
+#else /* SHIFT != 1 */
+	    s = make_shared_binary_string2((p_wchar2 *)buf, len);
+#endif /* SHIFT == 1 */
+#endif /* SHIFT == 0 */
+	    yylval->n = mkstrnode(s);
+	    free_string(s);
+	    return TOK_IDENTIFIER;
+	  }
 	  tmp="```->";
 	  if(GOBBLE('=')) tmp="```->=";
 	}else{
