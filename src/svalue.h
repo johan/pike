@@ -120,6 +120,9 @@ struct svalue
 
 #define PIKE_T_INT_UNTYPED  18 /* Optimization of int type size */
 
+#define PIKE_T_GET_SET 32	/* Getter setter.
+				 * Only valid in struct identifier */
+
 #define PIKE_T_RING 240
 #define PIKE_T_NAME 241		/**< Named type. */
 #define PIKE_T_SCOPE 243	/**< Not supported yet */
