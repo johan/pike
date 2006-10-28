@@ -246,9 +246,12 @@ enum Pike_opcodes
 
   F_MAX_INSTR,
 
-  /* These are only used for dumping. */
+  /* These two are only used for dumping. */
   F_FILENAME,
   F_LINE,
+
+  /* Alias for F_EXTERNAL when the identifier is a getter/setter. */
+  F_GET_SET,
 };
 
 #undef OPCODE0
