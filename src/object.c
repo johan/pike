@@ -868,7 +868,7 @@ PMOD_EXPORT void destruct_object (struct object *o, enum object_destruct_reason 
 	  dmalloc_touch_svalue(s);
 #endif /* DEBUG_MALLOC */
 	}
-      }else{
+      }else if(rtt != PIKE_T_GET_SET){
 	union anything *u;
 	u=(union anything *)(storage + id->func.offset);
 #ifdef DEBUG_MALLOC
