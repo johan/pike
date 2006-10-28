@@ -1061,9 +1061,9 @@ static int low_yylex(YYSTYPE *yylval)
 	    size_t len;
 	    struct pike_string *s;
 	    READBUF(lex_isidchar(C));
-	    if (GOBBLE('=')) len += 1<<SHIFT;
+	    if (GOBBLE('=')) len += 1;
 	    /* Adjust for the prefix (`->). */
-	    len += 3<<SHIFT;
+	    len += 3;
 	    buf -= 3<<SHIFT;
 #if (SHIFT == 0)
 	    s = make_shared_binary_string(buf, len);
