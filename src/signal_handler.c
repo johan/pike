@@ -4346,6 +4346,14 @@ static void f_kill(INT32 args)
 
 /*! @decl int kill(int signal)
  *!
+ *! @returns
+ *!   @int
+ *!     @value 1
+ *!       Success
+ *!     @value 0
+ *!       Failure. errno is set to EINVAL, EPERM or ESRCH.
+ *!   @endint
+ *!
  *! @note
  *!   This function is only available on platforms that
  *!   support signals.
