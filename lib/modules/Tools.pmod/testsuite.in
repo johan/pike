@@ -173,6 +173,8 @@ test_hilfe("if(a) a=0;", "Ok.\n")
 test_hilfe("else a=1;", "Ok.\n");
 test_hilfe("a;", "1")
 
+test_hilfe("if(a) a=0; else a=1;", "Ok.\n");
+
 test_hilfe("class B { int i; void create(int x) { i=x; } }", "")
 test_hilfe("object b=B(3);", "")
 test_hilfe("b->i;", "3");
