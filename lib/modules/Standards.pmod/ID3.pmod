@@ -775,7 +775,7 @@ class Frame_TMED {
     // Some client adds paranthesis here...
     foreach(texts; int pos; string t)
       if(sizeof(t) && t[0]=='(' && t[-1]==')')
-	texts[pos] = t[1..sizeof(t)-2];
+	texts[pos] = t[1..<1];
   }
 }
 

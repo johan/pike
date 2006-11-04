@@ -618,7 +618,7 @@ class protocol
 	    case EC:	// Erase Character
 	      for (j=i; j--;) {
 		if (sizeof(a[j])) {
-		  a[j] = a[j][..sizeof(a[j])-2];
+		  a[j] = a[j][..<1];
 		  break;
 		}
 	      }

@@ -148,7 +148,7 @@ loop:
 		  else if(symbol_is_branch(revision))
 		  {
 		      array(string) nums = revision / "."; // "a.b.c.d.0.e"
-		      revision = nums[..sizeof(nums)-3] * "." + "." + nums[-1]; // "a.b.c.d.e"
+		      revision = nums[..<2] * "." + "." + nums[-1]; // "a.b.c.d.e"
 		      branches[revision] = name;
 		  }
 		  else

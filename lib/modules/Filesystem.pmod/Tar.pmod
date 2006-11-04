@@ -234,8 +234,8 @@ class _Tar  // filesystem
     foreach(entries, Record r)
     {
       array path = r->fullpath/"/";
-      if(path[..sizeof(path)-2]==last) continue; // same dir
-      last = path[..sizeof(path)-2];
+      if(path[..<1]==last) continue; // same dir
+      last = path[..<1];
 
       for(int i = 0; i<sizeof(last); i++)
 	if(!filename_to_entry[last[..i]*"/"])

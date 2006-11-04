@@ -57,8 +57,8 @@ array(string) _indices() {
   foreach(local_path,string lp)
     tmp+=get_dir(lp);
   return Array.uniq(map(glob("*.pike",tmp)+glob("*.pmod",tmp)+glob("*.so",tmp),
-             lambda(string in){ if(glob("*.so",in)) return in[..sizeof(in)-4];
-             return in[..sizeof(in)-6]; }));
+             lambda(string in){ if(glob("*.so",in)) return in[..<3];
+             return in[..<5]; }));
 }
 
 // _values intentionally not overloaded

@@ -247,7 +247,7 @@ string encode_dn_value (string str)
 		 ({",",   "+",   "\"",   "\\",   "<",   ">",   ";"}),
 		 ({"\\,", "\\+", "\\\"", "\\\\", "\\<", "\\>", "\\;"}));
   if (has_suffix (str, " "))
-    str = str[..sizeof (str) - 2] + "\\ ";
+    str = str[..<1] + "\\ ";
   if (has_prefix (str, " ") || has_prefix (str, "#"))
     str = "\\" + str;
   return str;
@@ -1336,7 +1336,7 @@ class FilterError
     if (sizeof (args)) msg = sprintf (msg, @args);
     error_message = msg;
     error_backtrace = backtrace();
-    error_backtrace = error_backtrace[..sizeof (error_backtrace) - 2];
+    error_backtrace = error_backtrace[..<1];
     throw (this_object());
   }
 }
@@ -1530,7 +1530,7 @@ object make_filter (string filter, void|int ldap_version)
 
 	    array(object) subs = sizeof (parts[0]) ?
 	      ({ASN1_CONTEXT_OCTET_STRING (0, parts[0])}) : ({});
-	    foreach (parts[1..sizeof (parts) - 2], string middle)
+	    foreach (parts[1..<1], string middle)
 	      subs += ({ASN1_CONTEXT_OCTET_STRING (1, middle)});
 	    if (sizeof (parts) > 1 && sizeof (parts[-1]))
 	      subs += ({ASN1_CONTEXT_OCTET_STRING (2, parts[-1])});

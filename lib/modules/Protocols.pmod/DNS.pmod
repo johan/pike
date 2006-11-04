@@ -798,7 +798,7 @@ class client
       domains -= ({ "" });
       domains = Array.map(domains, lambda(string d) {
 				     if (d[-1] == '.') {
-				       return d[..sizeof(d)-2];
+				       return d[..<1];
 				     }
 				     return d;
 				   });

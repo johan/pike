@@ -56,7 +56,7 @@ string tls_unpad(string data) {
     }
 #endif
 
-  return data[..sizeof(data)-plen-2];
+  return data[..<plen+1];
 }
 
 //! Destructively decrypts a packet (including inflating and MAC-verification,

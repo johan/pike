@@ -346,7 +346,7 @@ mapping(string:mixed) decode_radix64(string data) {
 
   if(lines[-1][0]=='=') {
     ret->checksum = (int)Gmp.mpz(MIME.decode_base64(lines[-1][1..]),256);
-    lines = lines[..sizeof(lines)-2];
+    lines = lines[..<1];
   }
 
   ret->data = MIME.decode_base64(lines*"\n");

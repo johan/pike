@@ -35,7 +35,7 @@ array(string) split(string data, void|mapping state)
       pos = search(data, "*/");
       if(pos==-1) {
 	state->in_token = 1;
-	state->remains += data[..sizeof(data)-2];
+	state->remains += data[..<1];
 	return ret;
       }
       ret += ({ state->remains + data[..pos+1] });
@@ -169,7 +169,7 @@ array(string) split(string data, void|mapping state)
 	    pos=search(data,"*/",pos);
 	    if(pos==-1) {
 	      if(state) {
-		state->remains = data[start..sizeof(data)-3];
+		state->remains = data[start..<2];
 		state->in_token = 1;
 		return ret;
 	      }
