@@ -219,7 +219,7 @@ mapping(string:mixed) create_pie(mapping(string:mixed) diagram_data)
   if (sizeof(diagram_data->datacolors)>
       sizeof(diagram_data->data[0]))
     diagram_data->datacolors=diagram_data->datacolors
-      [0..sizeof(diagram_data->data[0])-1];
+      [..sizeof(diagram_data->data[0])-1];
   
   int t=sizeof(diagram_data->datacolors);
 

@@ -389,7 +389,7 @@ class BitString
     {
       value = value[..(len + 7)/8];
       unused = (- len) % 8;
-      value = sprintf("%s%c", value[..sizeof(value)-2], value[-1]
+      value = sprintf("%s%c", value[..<1], value[-1]
 		      & ({ 0xff, 0xfe, 0xfc, 0xf8,
 			   0xf0, 0xe0, 0xc0, 0x80 })[unused]);
     } else {

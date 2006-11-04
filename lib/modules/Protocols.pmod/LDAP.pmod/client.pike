@@ -1491,7 +1491,7 @@ object get_default_filter()
 	    }
 	    if (cookie) {
 	      // Remove the extra end marker.
-	      rawarr = rawarr[..sizeof(rawarr)-2];
+	      rawarr = rawarr[..<1];
 	    }
 	  }
 	    

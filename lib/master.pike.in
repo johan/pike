@@ -734,10 +734,10 @@ static string base_from_filename(string fname)
   if (has_prefix(low_name, ".#")) return 0;
   if (has_suffix(low_name, ".pike") ||
       has_suffix(low_name, ".pmod")) {
-    return fname[..sizeof(fname)-6];
+    return fname[..<5];
   }
   if (has_suffix(low_name, ".so")) {
-    return fname[..sizeof(fname)-4];
+    return fname[..<3];
   }
   return 0;
 }

@@ -102,7 +102,7 @@ string combine_uri_path(string base, string rel)
   //    last (right-most) slash character, if any, are excluded.
   array segments=base/"/";
   if(has_value(base, "/"))
-    buf=segments[..sizeof(segments)-2]*"/"+"/";
+    buf=segments[..<1]*"/"+"/";
   else
     buf=base;
 
@@ -121,7 +121,7 @@ string combine_uri_path(string base, string rel)
   // d) If the buffer string ends with "." as a complete path segment,
   //    that "." is removed.
   if(segments[-1]==".")
-    segments=segments[..sizeof(segments)-2]+({""});
+    segments=segments[..<1]+({""});
 
   // e) All occurrences of "<segment>/../", where <segment> is a
   //    complete path segment not equal to "..", are removed from the
@@ -151,7 +151,7 @@ string combine_uri_path(string base, string rel)
   //    "<segment>/.." is removed.
   if(sizeof(segments)>=2)
     if(segments[-2]!=".." && segments[-1]=="..")
-      segments=segments[..sizeof(segments)-3]+({""});
+      segments=segments[..<2]+({""});
 
   // g) If the resulting buffer string still begins with one or more
   //    complete path segments of "..", then the reference is

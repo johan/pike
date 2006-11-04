@@ -893,7 +893,7 @@ static class VirtualNode {
       if (has_value(name, ":") && sscanf (name, "%*[^/:]%*c") == 2) {
 	sscanf(reverse(name), "%[^/:]", mTagName);
 	mTagName=reverse(mTagName);
-	mNamespace=name[..sizeof(name)-(1+sizeof(mTagName))];
+	mNamespace=name[..<sizeof(mTagName)];
       }
       else {
 	mTagName = name;

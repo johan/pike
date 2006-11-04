@@ -397,7 +397,7 @@ class MyRule
 	    array resa=res/"\n";
 	    resa[-2]=replace(resa[-2],",  ","});");
 	 
-	    t+=resa[..sizeof(resa)-2]*"\n"+"\n";
+	    t+=resa[..<1]*"\n"+"\n";
 	    s=t+s;
 	 }
       res+=(s+

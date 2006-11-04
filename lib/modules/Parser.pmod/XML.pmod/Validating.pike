@@ -380,7 +380,7 @@ static private mixed validate(string kind, string name, mapping attributes,
      }
      if(!__element_stack[-1]->accept_element(0))
        xmlerror("Invalid content for element %s.", name);
-     __element_stack = __element_stack[..sizeof(__element_stack)-2];
+     __element_stack = __element_stack[..<1];
      break;
    case "":
    case "<![CDATA[":

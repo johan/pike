@@ -1172,7 +1172,7 @@ static {
 	  } else if (sizeof(res) == scale) {
 	    res = "0." + res;
 	  } else if (scale) {
-	    res = res[..sizeof(res)-(scale+1)] + "." +
+	    res = res[..<scale] + "." +
 	      res[sizeof(res)-scale..];
 	  }
 
@@ -1679,7 +1679,7 @@ static void create(string|void server, string|void database,
     array(string) tmp = server/":";
     if (sizeof(tmp) > 1) {
       port = (int)tmp[-1];
-      server = tmp[..sizeof(tmp)-2]*":";
+      server = tmp[..<1]*":";
     }
   } else {
     server = "127.0.0.1";

@@ -431,7 +431,7 @@ string utf8_encode_query (string q, function(string:string) encode_fn)
 	  sscanf (encoding[1..], "%[a-zA-Z0-9]", encoding);
 	else
 	  encoding = "utf8";	// Gotta be "N".
-	s = s[1..sizeof (s) - 2];
+	s = s[1..<1];
 	if (sizeof (s) > 40) s = sprintf ("%O...", s[..37]);
 	else s = sprintf ("%O", s);
 	predef::error ("A string in the query should be %s encoded "
