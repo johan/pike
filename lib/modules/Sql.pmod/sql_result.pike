@@ -65,3 +65,50 @@ void seek(int skip) {
 
 //! Fetch the next row from the result.
 int|array(string|int) fetch_row();
+
+// --- Iterator API
+
+class _get_iterator
+{
+  static int|array(string|int) row = fetch_row();
+  static int pos = 0;
+
+  int index()
+  {
+    return pos;
+  }
+
+  int|array(string|int) value()
+  {
+    return row;
+  }
+
+  int(0..1) next()
+  {
+    pos++;
+    return !!(row = fetch_row());
+  }
+
+  this_program `+=(int steps)
+  {
+    if(!steps) return this;
+    if(steps<0) error("Iterator must advance a positive numbe of steps.\n");
+    if(steps>1)
+    {
+      pos += steps-1;
+      seek(steps-1);
+    }
+    next();
+    return this;
+  }
+
+  int(0..1) `!()
+  {
+    return eof();
+  }
+
+  int _sizeof()
+  {
+    return num_fields();
+  }
+}
