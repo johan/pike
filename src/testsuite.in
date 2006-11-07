@@ -7472,6 +7472,26 @@ test_any([[
   return 0;
 ]], 0)
 
+test_any([[
+  mapping(object:int) x = ([]);
+  object o = class {}();
+  x[o] = 1;
+  destruct (o);
+  int i;
+  foreach (x; object p;) i++;
+  return i;
+]], 0)
+
+test_any([[
+  multiset(object) x = (<>);
+  object o = class {}();
+  x[o] = 1;
+  destruct (o);
+  int i;
+  foreach (x; object p;) i++;
+  return i;
+]], 0)
+
 // do-while
 test_any(int e;string t=""; e=0; do{ t+=e; }while(++e<6); return t,"012345";)
 
