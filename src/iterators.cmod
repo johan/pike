@@ -306,13 +306,17 @@ PIKECLASS mapping_iterator
   static int step_bucket(struct mapping_iterator_struct *i)
     {
       if (i->md) {
-	while(! i->current)
-	{
-	  i->bucket++;
-	  if(i->bucket >= i->md->hashsize)
-	    return 0;
-	  i->current=i->md->hash[i->bucket];
-	}
+	do {
+	  while(!i->current)
+	  {
+	    i->bucket++;
+	    if(i->bucket >= i->md->hashsize)
+	      return 0;
+	    i->current=i->md->hash[i->bucket];
+	  }
+	  if (!IS_DESTRUCTED (&i->current->ind)) break;
+	  i->current = i->current->next;
+	} while (1);
       }
       return 1;
     }
@@ -2042,7 +2046,7 @@ int foreach_iterate(struct object *o, int do_step)
 
 #if 0
   /* NOTE: This code has not been updated since the introduction of
-   *       support for step().
+   *       support for next().
    *		/grubba 2004-11-26
    */
 
