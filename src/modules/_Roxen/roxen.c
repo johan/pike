@@ -219,6 +219,7 @@ static void f_hp_feed( INT32 args )
 	{
           f_aggregate( 1 );
 	  ref_push_array(tmp->u.array);
+          stack_swap();
 	  map_delete(headers, Pike_sp-3);
 	  f_add(2);
 	} else {
