@@ -649,7 +649,7 @@ void udp_read(INT32 args)
 /*! @decl int send(string to, int|string port, string message)
  *! @decl int send(string to, int|string port, string message, int flags)
  *!
- *! Send data to a UDP socket. The recepient address will be @[to]
+ *! Send data to a UDP socket. The recipient address will be @[to]
  *! and port will be @[port].
  *!
  *! Flag @[flag] is a bitfield, 1 for out of band data and
