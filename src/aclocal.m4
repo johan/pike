@@ -611,7 +611,7 @@ define([AC_MODULE_INIT],
   AC_LOW_MODULE_INIT()
   PIKE_FEATURE_CLEAR()
 
-  if test -e "$srcdir/module.pmod.in"; then
+  if test -f "$srcdir/module.pmod.in"; then
     MODULE_PMOD_IN="$srcdir/module.pmod.in"
     MODULE_WRAPPER_PREFIX="___"
   else
