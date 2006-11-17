@@ -75,6 +75,7 @@
 #include "fd_control.h"
 #include "mapping.h"
 #include "bignum.h"
+#include "module_support.h"
 
 /* System includes */
 #ifdef HAVE_STRING_H
@@ -1861,6 +1862,10 @@ PIKE_MODULE_INIT
 #endif
   add_integer_constant( "CLIENT_NO_SCHEMA", CLIENT_NO_SCHEMA, 0);
   add_integer_constant( "CLIENT_ODBC", CLIENT_ODBC, 0);
+
+#ifdef HAVE_MYSQL_FIELD_CHARSETNR
+  add_integer_constant ("HAVE_MYSQL_FIELD_CHARSETNR", 1, 0);
+#endif
 
   set_init_callback(init_mysql_struct);
   set_exit_callback(exit_mysql_struct);
