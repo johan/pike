@@ -77,6 +77,7 @@
 #include "fd_control.h"
 #include "mapping.h"
 #include "bignum.h"
+#include "module_support.h"
 
 /* System includes */
 #ifdef HAVE_STRING_H
@@ -1943,6 +1944,10 @@ PIKE_MODULE_INIT
 
 #ifdef HAVE_MYSQL_SSL
   add_integer_constant( "CLIENT_SSL", CLIENT_SSL, 0);
+#endif
+
+#ifdef HAVE_MYSQL_FIELD_CHARSETNR
+  add_integer_constant ("HAVE_MYSQL_FIELD_CHARSETNR", 1, 0);
 #endif
 
   set_init_callback(init_mysql_struct);

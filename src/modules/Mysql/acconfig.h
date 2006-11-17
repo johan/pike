@@ -83,4 +83,7 @@
 /* Define if your mysql.h defines CLIENT_INTERACTIVE */
 #undef HAVE_CLIENT_INTERACTIVE
 
+/* Define if MYSQL_FIELD has a charsetnr member */
+#undef HAVE_MYSQL_FIELD_CHARSETNR
+
 #endif /* PIKE_MYSQL_CONFIG_H */
