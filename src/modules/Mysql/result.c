@@ -134,6 +134,8 @@ void mysqlmod_parse_field(MYSQL_FIELD *field, int support_default)
 {
   if (field) {
     int nbits = 0;
+    struct svalue *save_sp = Pike_sp;
+
     push_text("name"); push_text(field->name);
     push_text("table"); push_text(field->table);
     if (support_default) {
@@ -251,12 +253,12 @@ void mysqlmod_parse_field(MYSQL_FIELD *field, int support_default)
     f_aggregate_multiset(nbits);
 
     push_text("decimals"); push_int(field->decimals);
-      
-    if (support_default) {
-      f_aggregate_mapping(8*2);
-    } else {
-      f_aggregate_mapping(7*2);
-    }
+
+#ifdef HAVE_MYSQL_FIELD_CHARSETNR
+    push_text ("charsetnr"); push_int (field->charsetnr);
+#endif
+
+    f_aggregate_mapping (Pike_sp - save_sp);
   } else {
     /*
      * Should this be an error?
