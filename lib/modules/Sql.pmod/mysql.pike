@@ -139,7 +139,9 @@ int get_unicode_encode_mode()
 #if constant (Mysql.mysql.HAVE_MYSQL_FIELD_CHARSETNR)
 void set_unicode_decode_mode (int enable)
 #else
+//! @ignore
 static void broken_set_unicode_decode_mode (int enable)
+//! @endignore
 #endif
 //! Enable or disable unicode decode mode.
 //!
