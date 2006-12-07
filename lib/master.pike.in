@@ -2914,6 +2914,7 @@ class Describer
     while (sizeof (identify_stack)) {
       stuff = identify_stack[-1];
       identify_stack = identify_stack[..sizeof (identify_stack) - 2];
+      if (!intp(ident[stuff])) continue;	// Already identified.
       if (objectp (stuff) || functionp (stuff) || programp (stuff))
 	ident[stuff]++;
       else if (arrayp (stuff)) {
