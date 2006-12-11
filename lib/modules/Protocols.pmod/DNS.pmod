@@ -385,7 +385,6 @@ class protocol
           m->name=x[2..]*".";
         }
 
-        m->ttl=decode_int(s,next);
         break;
       case T_A:
 	m->a=sprintf("%{.%d%}",values(s[next[0]..next[0]+m->len-1]))[1..];
