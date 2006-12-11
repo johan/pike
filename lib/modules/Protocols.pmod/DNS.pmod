@@ -346,7 +346,6 @@ class protocol
           m->name=x[2..]*".";
         }
 
-        m->ttl=decode_int(s,next);
         break;
       case T_A:
       case T_AAAA:
