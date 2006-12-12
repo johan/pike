@@ -29,7 +29,7 @@
  */
 #define BACKEND_USES_POLL_DEVICE
 #define BACKEND_USES_DEVPOLL
-#elif defined(HAVE_SYS_EPOLL_H) && defined(PIKE_POLL_DEVICE)
+#elif defined(HAVE_SYS_EPOLL_H)
 /*
  * Backend using /dev/epoll-style poll device.
  *

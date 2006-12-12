@@ -387,6 +387,10 @@ int POLL_DEVICE_SET_EVENTS(struct Backend_struct *me,
  */
 #include <sys/epoll.h>
 
+#ifndef PIKE_POLL_DEVICE
+#define PIKE_POLL_DEVICE	"epoll"
+#endif
+
 /* The following three are defined by <gnu/stubs.h> which is included
  * from <features.h> which is included from just about everywhere, so
  * it is safe to assume that they have been defined if appropriate.
