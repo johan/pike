@@ -29,15 +29,12 @@
  */
 #define BACKEND_USES_POLL_DEVICE
 #define BACKEND_USES_DEVPOLL
-#elif defined(HAVE_SYS_EPOLL_H)
+#elif defined(HAVE_SYS_EPOLL_H) && defined(WITH_EPOLL)
 /*
  * Backend using /dev/epoll-style poll device.
  *
  * Used on:
  *   Linux 2.6 and above.
- * Note:
- *   Some libc's are missing wrappers for the system calls, so
- *   we include the appropriate wrappers below.
  */
 #define BACKEND_USES_POLL_DEVICE
 #define BACKEND_USES_DEVEPOLL
