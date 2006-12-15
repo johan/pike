@@ -372,7 +372,7 @@ int POLL_DEVICE_SET_EVENTS(struct Backend_struct *me,
   return e;
 }
 	
-#elif defined(HAVE_SYS_EPOLL_H)
+#elif defined(HAVE_SYS_EPOLL_H) && defined(WITH_EPOLL)
 /*
  * Backend using /dev/epoll-style poll device.
  *
