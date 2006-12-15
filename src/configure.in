@@ -3193,7 +3193,7 @@ int main(int argc, char **argv)
     ])
     AC_MSG_RESULT($pike_cv_epoll_works)
     if test "x$pike_cv_epoll_works" = "xyes"; then
-      AC_DEFINE(PIKE_WITH_EPOLL)
+      AC_DEFINE(WITH_EPOLL)
     fi
   fi
 fi
