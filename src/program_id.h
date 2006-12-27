@@ -84,9 +84,12 @@
 #define tObjImpl_STDIO_IPPROTO		      "\003\000\000\000\000\034"
 #define   tObjIs_STDIO_IPPROTO		      "\003\001\000\000\000\034"
 
-#define     PROG_THREAD_MUTEX_COMPAT_7_4_ID                          35
+#define     PROG_THREAD_MUTEX_COMPAT_7_4_ID                         035
 #define tObjImpl_THREAD_MUTEX_COMPAT_7_4      "\003\000\000\000\000\035"
 #define   tObjIs_THREAD_MUTEX_COMPAT_7_4      "\003\001\000\000\000\035"
+#define     PROG_PROCESS_ID					    036
+#define tObjImpl_PROCESS                      "\003\000\000\000\000\036"
+#define   tObjIs_PROCESS                      "\003\001\000\000\000\036"
 
 #define     PROG_GMP_MPZ_ID                                         040
 #define tObjImpl_GMP_MPZ                      "\003\000\000\000\000\040"
