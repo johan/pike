@@ -917,7 +917,7 @@ int next()
 {
   vars->prefix = entry1->get_text();
   vars->pike_name = entry2->get_text();
-  install_type="--new_style";
+  install_type="--new-style";
 
   destruct(table1);
 
