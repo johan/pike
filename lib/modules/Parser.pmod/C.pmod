@@ -382,7 +382,7 @@ array(Token|array) group(array(string|Token) tokens,
 	    (groupings[(string)ret[0]] != (string)token)) {
 	  // Mismatch
 	  werror ("%s:%d: Expected %O, got %O\n",
-		  token->file, token->line,
+		  token->file||"-", token->line,
 		  groupings[(string)ret[0]], (string) token);
 	  return ret;
 	}
