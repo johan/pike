@@ -581,7 +581,7 @@ PIKECLASS Proxy {
   }
 
   /*! @decl string name()
-   *! Returns the string @expr{"CBC(x)"@} where x is the
+   *! Returns the string @expr{"Proxy(x)"@} where x is the
    *! encapsulated algorithm.
    */
   PIKEFUN string name()
