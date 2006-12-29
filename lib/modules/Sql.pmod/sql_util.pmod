@@ -62,7 +62,7 @@ string emulate_bindings(string query, mapping(string|int:mixed)|void bindings,
 
 //! Result object wrapper performing utf8 decoding of all fields.
 class UnicodeWrapper (
-		      //! The wrapped result object.
+		      // The wrapped result object.
 		      static object master_result
 		      )
 {
