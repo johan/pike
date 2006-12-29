@@ -38,4 +38,7 @@
 /* Define if libavcodec.h or so defines uint8_t */
 #undef HAVE_UINT8_T
 
+/* Define if AVCodecContext contains the field frame_rate. */
+#undef HAVE_AVCODECCONTEXT_FRAME_RATE
+
 #endif
