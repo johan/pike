@@ -7,6 +7,8 @@
 //
 // Anders Johansson & Henrik Grubbström
 
+#pike __REAL_VERSION__
+
 mapping(int:mapping(int:string)) fields =
   ([
     1: ([   // ENVELOPE RECORD

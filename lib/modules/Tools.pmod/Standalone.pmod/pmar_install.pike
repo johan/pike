@@ -1,4 +1,6 @@
 
+#pike __REAL_VERSION__
+
 int DEBUG=1;
 
 constant version = ("$Revision$"/" ")[1];
