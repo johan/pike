@@ -1,3 +1,5 @@
+#pike __REAL_VERSION__
+
 // Extracts IPTC Information Interchange Model data (aka "IPTC
 // headers") from JPEG files created with PhotoShop.
 // 
