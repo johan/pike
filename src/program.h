@@ -316,7 +316,7 @@ struct reference
   unsigned INT16 identifier_offset;
 
   /* ID_* flags - static, private etc.. */
-  INT16 id_flags;
+  unsigned INT16 id_flags;
 };
 
 /* Magic value used as identifier reference integer to refer to this. */
