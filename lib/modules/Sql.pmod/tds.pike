@@ -6,6 +6,8 @@
  * Henrik Grubbström 2006-02-08.
  */
 
+#pike __REAL_VERSION__
+
 #define TDS_DEBUG
 #define TDS_CONVERT_DEBUG
 
