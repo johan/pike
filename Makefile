@@ -191,6 +191,9 @@ legal: bin/pike
 	bin/pike -e 'Stdio.write_file("COPYING", \
 	  Tools.Legal.License.get_text());'
 
+release_checks: bin/pike
+	bin/pike tools/release_checks.pike
+
 # Don't make bin/pike if we're recursing with a $(METATARGET) since we
 # don't want the backquote expression which usually is part of
 # $(BUILDDIR) to be expanded in that script. It's better to evaluate
