@@ -4997,8 +4997,8 @@ int pike_type_allow_premature_toss(struct pike_type *type)
     case T_VOID:
       return 1;
   default:
-    Pike_fatal("pike_type_allow_premature_toss: Unknown type code (%d)\n",
-	  ((unsigned char *)type)[-1]);
+    Pike_fatal("pike_type_allow_premature_toss: Unknown type (code: %d)\n",
+	       type->type);
     /* NOT_REACHED */
     return 0;
   }
