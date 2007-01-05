@@ -975,6 +975,8 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
       }
       if (data->canonic)
 	Pike_error("Canonical encoding of programs not supported.\n");
+      if (!(val->u.program->flags & PROGRAM_FIXED))
+	Pike_error("Encoding of unfixated programs not supported.\n");
       check_stack(1);
       push_svalue(val);
       apply(data->codec,"nameof", 1);
@@ -1518,7 +1520,9 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 
 		default:;
 #ifdef PIKE_DEBUG
-		  Pike_fatal ("Unknown identifier type.\n");
+		  Pike_fatal ("Unknown identifier type: 0x%04x for symbol \"%s\".\n",
+			      id->identifier_flags & IDENTIFIER_TYPE_MASK,
+			      id->name->str);
 #endif
 		}
 	      }
