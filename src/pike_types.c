@@ -4994,6 +4994,7 @@ int pike_type_allow_premature_toss(struct pike_type *type)
     case T_INT:
     case T_FLOAT:
     case T_STRING:
+    case PIKE_T_ZERO:
     case T_VOID:
       return 1;
   default:
