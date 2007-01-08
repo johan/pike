@@ -530,7 +530,7 @@ PIKE_MODULE_INIT {
   add_function("list_codecs", f_list_codecs, "function(:array|int)", 0);
 
 #ifdef LIBAVCODEC_VERSION
-  add_string_constant("lib_version", LIBAVCODEC_VERSION, 0);
+  add_string_constant("lib_version", DEFINETOSTR(LIBAVCODEC_VERSION), 0);
 #else
 #ifdef FFMPEG_VERSION
   add_string_constant("lib_version", FFMPEG_VERSION, 0);
