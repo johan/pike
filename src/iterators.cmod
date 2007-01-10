@@ -1545,12 +1545,12 @@ PIKECLASS string_split_iterator
       }
       add_ref(THIS->buffer = buffer);
       if (args > 2) {
-	if (flags->type == T_INT) {
+	if (flags && (flags->type == T_INT)) {
 	  THIS->flags = flags->u.integer;
 	} else {
 	  THIS->flags = 0;
 	}
-	if (args > 3) {
+	if (feed) {
 	  assign_svalue(&THIS->feed, feed);
 	} else {
 	  /* NB: THIS->feed has already been set to 0 by the init code. */
