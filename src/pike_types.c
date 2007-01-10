@@ -1048,7 +1048,7 @@ static void internal_parse_typeA(const char **_s)
 
   for(len=0;isidchar(EXTRACT_UCHAR(s[0]+len));len++)
   {
-    if(len>=sizeof(buf)) {
+    if(len>=sizeof(buf)-1) {
       my_yyerror("Buffer overflow in parse_type(\"%s\") (limit %"PRINTSIZET"d).",
 		 *s, sizeof(buf));
       push_type(T_MIXED);
