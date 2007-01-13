@@ -1597,7 +1597,8 @@ static void f_pid_status_wait(INT32 args)
 #endif /* _REENTRANT */
 
       default:
-	Pike_error("Lost track of a child (pid %d, errno from wait %d).\n",pid,err);
+	Pike_error("Lost track of a child (pid %d, errno from wait %d).\n",
+		   THIS->pid, err);
 	break;
       }
     } else {
