@@ -2487,9 +2487,15 @@ PMOD_EXPORT void f_exit(INT32 args)
   in_exit=1;
 
   if(args>1 && Pike_sp[1-args].type==T_STRING) {
-    apply_svalue(simple_mapping_string_lookup(get_builtin_constants(),
-					      "werror"), args-1);
-    pop_stack();
+    struct svalue *s =
+      simple_mapping_string_lookup(get_builtin_constants(), "werror");
+    if (s) {
+      apply_svalue(s, args-1);
+      pop_stack();
+    } else if (args > 1) {
+      fprintf(stderr, "No efun::werror() at exit.\n");
+      pop_n_elems(args-1);
+    }
     args=1;
   }
 
