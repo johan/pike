@@ -168,6 +168,7 @@ static node *optimize_f_aggregate(node *n)
   }
 
   for(; args; args = args->parent) {
+    if (!CDR(args)) continue;
     if (CDR(args)->token == F_PUSH_ARRAY) {
       if (count) {
 	add_args = mknode(F_ARG_LIST, add_args,
@@ -814,6 +815,10 @@ void f_query_num_arg(INT32 args)
  *!   If @[start] is supplied to an iterator object without an
  *!   @[lfun::_search()], @[haystack] will need to implement
  *!   @[Iterator()->set_index()].
+ *!
+ *! @note
+ *!   For mappings and object @[UNDEFINED] will be returned when not found.
+ *!   In all other cases @expr{-1@} will be returned when not found.
  *!
  *! @seealso
  *!   @[indices()], @[values()], @[zero_type()]
