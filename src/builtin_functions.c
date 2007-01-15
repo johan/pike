@@ -2492,7 +2492,7 @@ PMOD_EXPORT void f_exit(INT32 args)
     if (s) {
       apply_svalue(s, args-1);
       pop_stack();
-    } else if (args > 1) {
+    } else {
       fprintf(stderr, "No efun::werror() at exit.\n");
       pop_n_elems(args-1);
     }
