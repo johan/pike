@@ -6528,6 +6528,24 @@ PMOD_EXPORT void f_diff(INT32 args)
 
    get_all_args("diff", args, "%a%a", &a, &b);
 
+   if ((a == b) || !a->size || !b->size) {
+     if (!a->size && !b->size) {
+       /* Both arrays are empty. */
+       ref_push_array(a);
+       ref_push_array(b);
+       f_aggregate(2);
+     } else {
+       /* The arrays are equal or one of them is empty. */
+       ref_push_array(a);
+       f_aggregate(1);
+       ref_push_array(b);
+       f_aggregate(1);
+       f_aggregate(2);
+     }
+     stack_pop_n_elems_keep_top(args);
+     return;
+   }
+
    cmptbl = diff_compare_table(a, b, &uniq);
 
    push_array(cmptbl);
