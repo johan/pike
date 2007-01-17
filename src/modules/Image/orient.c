@@ -100,8 +100,8 @@ static INLINE int sq(int a) { return a*a; }
 static INLINE int my_abs(int a) { return (a<0)?-a:a; }
 
 static void _image_orient(struct image *source,
-			  struct object *o[4],
-			  struct image *img[4])
+			  struct object *o[5],
+			  struct image *img[5])
 {
    int i;
    struct { int x,y; } or[4]={ {1,0}, {1,1}, {0,1}, {-1,1} };
