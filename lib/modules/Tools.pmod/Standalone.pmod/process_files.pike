@@ -36,11 +36,10 @@ string version;
 //!   string version = ("$Revision$"/" ")[1];
 
 string description = "Boilerplate for making rsif-like tools.";
-//! Your hack's version number. If you version control your file with cvs, we
-//! suggest you set the contents of this variable to something that that will
-//! automatically expand to a number for every new revision, for instance
-//! @example
-//!   string version = ("$Revision$"/" ")[1];
+//! One-liner that gets shown for this tool when running @tt{pike -x} without
+//! additional options. (Assuming your tool resides in @tt{Standalone.pmod}.)
+//! Does not include the name of the tool itself; just provide a nice, terse
+//! description, ending with a period for conformity.
 
 string usage;
 //! Long description of the purpose and usage of your tool, for --help and the
