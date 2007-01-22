@@ -3,7 +3,7 @@
 #pike __REAL_VERSION__
 
 #ifdef SUGGESTED_MODE_OF_USAGE
-inherit .process_files;
+inherit Toole.Standalone.process_files;
 string version = ("$Revision$"/" ")[1];
 string description = "One-liner tool description for plain \"pike -x\" here.";
 string usage = #"Long usage description here; see rsif.pike for inspiration";
@@ -171,12 +171,12 @@ int(0..) main( int argc, array(string) argv ) {
   if( want_args )
      args = argv[1..want_args];
   if( argc == min_args && argv[-1] == "-" ) {
-    string file = Stdio.stdin.read();
-    if( file ) {
+    string input = Stdio.stdin.read();
+    if( input ) {
       if( verbosity > 1 )
 	werror( "Processing stdin.\n" );
-      string output = process( file, @args );
-      write( "%s", output || file );
+      string output = process( input, @args );
+      write( "%s", output || input );
     }
     return 0;
   }
