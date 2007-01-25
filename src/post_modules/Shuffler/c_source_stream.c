@@ -170,6 +170,7 @@ struct source *source_stream_make( struct svalue *s,
     return 0;
 
   res = malloc( sizeof( struct fd_source ) );
+  if (!res) return NULL;
   MEMSET( res, 0, sizeof( struct fd_source ) );
 
   apply( s->u.object, "query_fd", 0 );
