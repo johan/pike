@@ -66,6 +66,7 @@ static struct data get_data( struct source *_s, off_t len )
   struct data res;
   res.off = res.do_free = 0;
   res.len = s->available;
+  res.data = NULL;
 
   if( s->available ) /* There is data in the buffer. Return it. */
   {
