@@ -1461,7 +1461,7 @@ void f_getcwd(INT32 args)
 
   pop_n_elems(args);
   push_text(e);
-  free(e);
+  free(tmp);
 }
 
 #ifdef HAVE_EXECVE
