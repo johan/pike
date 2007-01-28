@@ -209,6 +209,8 @@ if test x$ac_cv_lib_pq_PQclear != xyes -o x$ac_pike_postgres_works != xyes;then
 else
   echo "Postgres found, module configured."
   POSTGRES_SUPPORTED="yes"
+  HAVE_WORKING_POSTGRES="yes"
+  AC_DEFINE(HAVE_WORKING_POSTGRES)
   PIKE_FEATURE_OK(Postgres)
 fi
 
