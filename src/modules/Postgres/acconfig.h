@@ -30,7 +30,8 @@
      defined(HAVE_POSTGRESQL_SERVER_POSTGRES_H) || \
      defined(HAVE_POSTGRESQL_SERVER_POSTGRES_FE_H) || \
      defined(HAVE_PG72)) && \
-    defined(HAVE_LIBPQ_FE_H)
+    defined(HAVE_LIBPQ_FE_H) && \
+     defined(HAVE_WORKING_POSTGRES)
 #define HAVE_POSTGRES
 
 /* This is needed to avoid broken <openssl/kssl.h> headerfiles. */
