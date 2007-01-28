@@ -13,7 +13,7 @@
 /* Define if we are running PostgreSQL 7.2 or newer */
 #undef HAVE_PG72
 
-/* Define if postgres passwd sanity tests. */
+/* Define if postgres passed sanity tests. */
 #undef HAVE_WORKING_POSTGRES
 
 /* If the PQsetnonblocking function is available, it means we're using
