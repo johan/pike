@@ -633,7 +633,10 @@ F_LOR(F_COMMA_EXPR(0, 1), 2):
 F_LOR(0 = F_ASSIGN(*, +[node_is_true($$)]), *):
   $0;
 
-F_LOR(0, F_CONSTANT[node_is_false($$)]):
+// Note: Objects are special...
+F_LOR(0, F_CONSTANT
+         [$$->u.sval.type == T_INT]
+         [!$$->u.sval.u.integer]):
   $0;
 
 F_LOR(+[node_is_false($$)], 0):
