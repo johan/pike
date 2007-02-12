@@ -133,7 +133,8 @@ void recurse(string srcdir, string builddir, int root_ts, array(string) root)
       if(!has_suffix(fn, ".pike") && !has_suffix(fn, ".pike.in") &&
 	 !has_suffix(fn, ".pmod") && !has_suffix(fn, ".pmod.in") &&
 	 //       !has_suffix(fn, ".cmod") && !has_suffix(fn, ".cmod.in") &&
-	 !has_suffix(fn, ".c")) continue;
+	 !has_suffix(fn, ".c") && !has_suffix(fn, ".cc") &&
+         !has_suffix(fn, ".m")) continue;
 
       Stdio.Stat dstat = file_stat(builddir+fn+".xml");
 
