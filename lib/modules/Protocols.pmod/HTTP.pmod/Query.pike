@@ -27,6 +27,8 @@
 //!    return -1;
 //! }
 
+// FIXME: Uses hardcoded errnos from Linux/i386.
+
 /****** variables **************************************************/
 
 // open
@@ -288,7 +290,7 @@ static void low_async_failed(int errno)
 
 static void async_failed()
 {
-  low_async_failed(con?con->errno():113);	// EHOSTUNREACH
+  low_async_failed(con?con->errno():113);	// EHOSTUNREACH/Linux-i386
 }
 
 static void async_timeout()
@@ -303,7 +305,7 @@ static void async_timeout()
       //destruct(con);
    }
    con=0;
-   low_async_failed(110);	// ETIMEDOUT
+   low_async_failed(110);	// ETIMEDOUT/Linux-i386
 }
 
 void async_got_host(string server,int port)
