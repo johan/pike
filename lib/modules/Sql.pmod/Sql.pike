@@ -472,8 +472,8 @@ static array(string|mapping(string|int:mixed))
 //!
 //! @seealso
 //!   @[big_query]
-array(mapping(string:mixed)) query(object|string q,
-                                   mixed ... extraargs)
+array(mapping(string:string)) query(object|string q,
+				    mixed ... extraargs)
 {
   if (sizeof(extraargs)) {
     mapping(string|int:mixed) bindings;
