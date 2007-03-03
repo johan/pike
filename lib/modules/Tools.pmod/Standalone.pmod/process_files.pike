@@ -21,12 +21,13 @@ string process( string input, string arg1, string arg2 ) {
 //! of all files action was taken for, and returning an exit status of how many
 //! files that would have been taken action on which could not be written back.
 //!
-//! The all-round quickest way of making one of these tools is nicking the top
-//! portion of @tt{lib/modules/Tools.pmod/Standalone.pmod/process_files.pike}
-//! or copying @tt{rsif.pike} from the same directory. (The latter is 20 lines
-//! long, including docs, or about four lines of code.) Inherit process_files,
-//! and define your own @[version], @[description], @[usage], @[process], and,
-//! if you want arguments, @[want_args].
+//! The all-round quickest way of making one of these tools is nicking
+//! the top portion of
+//! @tt{lib/modules/Tools.pmod/Standalone.pmod/process_files.pike@} or
+//! copying @tt{rsif.pike@} from the same directory. (The latter is 20
+//! lines long, including docs, or about four lines of code.) Inherit
+//! process_files, and define your own @[version], @[description],
+//! @[usage], @[process], and, if you want arguments, @[want_args].
 
 string version;
 //! Your hack's version number. If you version control your file with cvs, we
@@ -36,10 +37,11 @@ string version;
 //!   string version = ("$Revision$"/" ")[1];
 
 string description = "Boilerplate for making rsif-like tools.";
-//! One-liner that gets shown for this tool when running @tt{pike -x} without
-//! additional options. (Assuming your tool resides in @tt{Standalone.pmod}.)
-//! Does not include the name of the tool itself; just provide a nice, terse
-//! description, ending with a period for conformity.
+//! One-liner that gets shown for this tool when running @tt{pike -x@}
+//! without additional options. (Assuming your tool resides in
+//! @tt{Standalone.pmod@}.) Does not include the name of the tool
+//! itself; just provide a nice, terse description, ending with a
+//! period for conformity.
 
 string usage;
 //! Long description of the purpose and usage of your tool, for --help and the
