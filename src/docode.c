@@ -1559,11 +1559,12 @@ static int do_docode2(node *n, int flags)
     }
 
   case F_CAST:
-    if(n->type==void_type_string)
-    {
+    switch(n->type->type) {
+    case T_VOID:
       DO_CODE_BLOCK(CAR(n));
       return 0;
-    } else if (n->type == int_type_string) {
+    case T_INT:
+      /* FIXME: Integer range? */
       tmp1 = do_docode(CAR(n), 0);
       if(!tmp1)
 	emit0(F_CONST0);
@@ -1573,7 +1574,8 @@ static int do_docode2(node *n, int flags)
 	emit0(F_CAST_TO_INT);
       }
       return 1;
-    } else if (n->type == string_type_string) {
+    case T_STRING:
+      /* FIXME: String width? */
       tmp1 = do_docode(CAR(n), 0);
       if(!tmp1)
 	emit0(F_CONST0);
@@ -1581,13 +1583,15 @@ static int do_docode2(node *n, int flags)
 	do_pop(DO_NOT_WARN((INT32)(tmp1-1)));
       emit0(F_CAST_TO_STRING);
       return 1;
-    } else if (compile_type_to_runtime_type(n->type) == PIKE_T_MIXED) {
-      tmp1 = do_docode(CAR(n), 0);
-      if(!tmp1) 
-	emit0(F_CONST0);
-      else if(tmp1>1)
-	do_pop(DO_NOT_WARN((INT32)(tmp1-1)));
-      return 1;
+    default:
+      if (compile_type_to_runtime_type(n->type) == PIKE_T_MIXED) {
+	tmp1 = do_docode(CAR(n), 0);
+	if(!tmp1) 
+	  emit0(F_CONST0);
+	else if(tmp1>1)
+	  do_pop(DO_NOT_WARN((INT32)(tmp1-1)));
+	return 1;
+      }
     }
     {
       struct svalue sv;
