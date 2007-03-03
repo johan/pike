@@ -123,6 +123,7 @@ struct svalue
 #define PIKE_T_GET_SET 32	/* Getter setter.
 				 * Only valid in struct identifier */
 
+#define PIKE_T_NSTRING 239	/* Narrow string. Only for serialization. */
 #define PIKE_T_RING 240
 #define PIKE_T_NAME 241		/**< Named type. */
 #define PIKE_T_SCOPE 243	/**< Not supported yet */
@@ -178,6 +179,10 @@ struct svalue
 #define tProgram(X) "\005" X
 #define tStr "\006"
 #define tString "\006"
+#define tStr7 "\357\007"
+#define tStr8 "\357\010"
+#define tStr16 "\357\020"
+#define tStr32 "\006"
 #define tType(T) "\007" T
 #define tInt "\022"
 #define tInt0 "\010\000\000\000\000\000\000\000\000"
