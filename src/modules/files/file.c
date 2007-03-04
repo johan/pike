@@ -2301,11 +2301,11 @@ static void file_removexattr( INT32 args )
  *!
  *! The flags parameter can be used to refine the semantics of the operation.  
  *!
- *! @[XATTR_CREATE] specifies a pure create, which
+ *! @[Stdio.XATTR_CREATE] specifies a pure create, which
  *! fails if the named attribute exists already.  
  *!
- *! @[XATTR_REPLACE] specifies a pure replace operation, which fails if the named
- *! attribute does not already exist. 
+ *! @[Stdio.XATTR_REPLACE] specifies a pure replace operation, which
+ *! fails if the named attribute does not already exist.
  *!
  *! By default (no flags), the extended attribute will be created if need be, 
  *! or will simply replace the value if the attribute exists.
@@ -4370,7 +4370,16 @@ PIKE_MODULE_INIT
   init_udp();
 
 #if defined(HAVE_FSETXATTR)
+  /*! @decl constant XATTR_CREATE
+   *! Used by @[setxattr] function and method to signify a pure
+   *! create, which will fail if the attribute already exists.
+   */
   add_integer_constant("XATTR_CREATE", XATTR_CREATE, 0 );
+
+  /*! @decl constant XATTR_REPLACE
+   *! Used by @[setxattr] function and method to signify a replace,
+   *! which will fail the the attribute does not already exists.
+   */
   add_integer_constant("XATTR_REPLACE", XATTR_REPLACE, 0 );
 #endif
   add_integer_constant("PROP_IPC",fd_INTERPROCESSABLE,0);
