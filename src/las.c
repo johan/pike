@@ -1222,14 +1222,13 @@ node *debug_mkstrnode(struct pike_string *str)
 {
   node *res = mkemptynode();
   res->token = F_CONSTANT;
-  copy_pike_type(res->type, string_type_string);
   res->node_info = 0;
   res->u.sval.type = T_STRING;
 #ifdef __CHECKER__
   res->u.sval.subtype = 0;
 #endif
   copy_shared_string(res->u.sval.u.string, str);
-
+  res->type = get_type_of_svalue(&res->u.sval);
   return freeze_node(res);
 }
 
