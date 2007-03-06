@@ -258,6 +258,8 @@ PIKECLASS Shuffle
     {
       debug_malloc_touch(THIS->leftovers.data);
       free( THIS->leftovers.data );
+      THIS->leftovers.data = NULL;
+      THIS->leftovers.do_free;
     }
   }
   
@@ -385,6 +387,8 @@ PIKECLASS Shuffle
     {
       debug_malloc_touch( t->leftovers.data );
       free( t->leftovers.data );
+      t->leftovers.data = NULL;
+      t->leftovers.do_free;
     }
 
     t->leftovers.data = 0;
@@ -520,7 +524,11 @@ PIKECLASS Shuffle
       {
 	t->leftovers.len = 0;
 	if( t->leftovers.do_free )
+        {
 	  free( t->leftovers.data );
+         t->leftovers.data = NULL;
+         t->leftovers.do_free;
+        }
       }
       else
       {
