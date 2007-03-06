@@ -162,7 +162,7 @@ static private class FileIO {
     while(sizeof(s)) {
       int n = file::write(s);
       if(n < 0 && !(<11,12,16,24,28,49>)[file::errno()])
-	ERR(strerror(file::errno()));
+	ERR(strerror(file::errno())+sprintf(" [%d]", file::errno()));
       if(n == sizeof(s))
 	break;
       s = s[n..];
