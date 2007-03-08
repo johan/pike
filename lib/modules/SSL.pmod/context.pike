@@ -170,6 +170,9 @@ int use_cache = 1;
 //! connection using the session dies unexpectedly.
 int session_lifetime = 600;
 
+//! Maximum number of sessions to keep in the cache.
+int max_sessions = 300;
+
 /* Session cache */
 ADT.Queue active_sessions;  /* Queue of pairs (time, id), in cronological order */
 mapping(string:.session) session_cache;
@@ -183,8 +186,13 @@ void forget_old_sessions()
   int t = time() - session_lifetime;
   array pair;
   while ( (pair = [array]active_sessions->peek())
-	  && (pair[0] < t))
-    m_delete (session_cache, ([array(string)]active_sessions->get())[1]);
+	  && (pair[0] < t)) {
+#ifdef SSL3_DEBUG
+    werror ("SSL.context->forget_old_sessions: "
+	    "garbing session %O due to session_lifetime limit\n", pair[1]);
+#endif
+    m_delete (session_cache, ([array]active_sessions->get())[1]);
+  }
 }
 
 //! Lookup a session identifier in the cache. Returns the
@@ -194,7 +202,6 @@ void forget_old_sessions()
 {
   if (use_cache)
   {
-    forget_old_sessions();
     return session_cache[id];
   }
   else
@@ -215,6 +222,18 @@ void record_session(.session s)
 {
   if (use_cache && s->identity)
   {
+    while (active_sessions->head - active_sessions->tail >= max_sessions) {
+      array pair = [array] active_sessions->get();
+#ifdef SSL3_DEBUG
+      werror ("SSL.context->record_session: "
+	      "garbing session %O due to max_sessions limit\n", pair[1]);
+#endif
+      m_delete (session_cache, pair[1]);
+    }
+    forget_old_sessions();
+#ifdef SSL3_DEBUG
+    werror ("SSL.context->record_session: caching session %O\n", s->identity);
+#endif
     active_sessions->put( ({ time(), s->identity }) );
     session_cache[s->identity] = s;
   }
