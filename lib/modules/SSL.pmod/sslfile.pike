@@ -244,7 +244,7 @@ static void thread_error (string msg, THREAD_T other_thread)
 static void thread_error (string msg, THREAD_T other_thread)
 {
 #if 0 && constant (_locate_references)
-  werror ("%s\n%O got %d refs", msg, _refs (this));
+  werror ("%s\n%O got %d refs", msg, this, _refs (this));
   _locate_references (this);
 #endif
   error ("%s"
