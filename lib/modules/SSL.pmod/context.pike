@@ -208,7 +208,7 @@ void forget_old_sessions()
     werror ("SSL.context->forget_old_sessions: "
 	    "garbing session %O due to session_lifetime limit\n", pair[1]);
 #endif
-    m_delete (session_cache, ([array]active_sessions->get())[1]);
+    m_delete (session_cache, [string]([array]active_sessions->get())[1]);
   }
 }
 
@@ -245,7 +245,7 @@ void record_session(.session s)
       werror ("SSL.context->record_session: "
 	      "garbing session %O due to max_sessions limit\n", pair[1]);
 #endif
-      m_delete (session_cache, pair[1]);
+      m_delete (session_cache, [string]pair[1]);
     }
     forget_old_sessions();
 #ifdef SSL3_DEBUG
