@@ -1277,7 +1277,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 
 	  if(name && (prog->flags & PROGRAM_FINISHED) &&
 	     Pike_interpreter.evaluator_stack &&
-	     (!Pike_in_gc || Pike_in_gc >= GC_PASS_FREE) &&
+	     (Pike_in_gc <= GC_PASS_PREPARE || Pike_in_gc >= GC_PASS_FREE) &&
 	     master_object) {
 	    DECLARE_CYCLIC();
 	    debug_malloc_touch(obj);
@@ -1363,7 +1363,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
       else {
 	if ((prog->flags & PROGRAM_FINISHED) &&
 	    Pike_interpreter.evaluator_stack &&
-	    (!Pike_in_gc || Pike_in_gc >= GC_PASS_FREE) &&
+	    (Pike_in_gc <= GC_PASS_PREPARE || Pike_in_gc >= GC_PASS_FREE) &&
 	    master_object) {
 	  DECLARE_CYCLIC();
 	  int fun=FIND_LFUN(prog, LFUN__SPRINTF);
@@ -1490,7 +1490,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 
       if((prog->flags & PROGRAM_FINISHED) &&
 	 Pike_interpreter.evaluator_stack &&
-	 (!Pike_in_gc || Pike_in_gc >= GC_PASS_FREE) &&
+	 (Pike_in_gc <= GC_PASS_PREPARE || Pike_in_gc >= GC_PASS_FREE) &&
 	 master_object) {
 	DECLARE_CYCLIC();
 	debug_malloc_touch(prog);
@@ -2204,7 +2204,7 @@ int gc_cycle_check_weak_short_svalue(union anything *u, TYPE_T type)
 
 void real_gc_free_svalue(struct svalue *s)
 {
-  if (Pike_in_gc && Pike_in_gc < GC_PASS_FREE) {
+  if (Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_FREE) {
 #ifdef PIKE_DEBUG
     if (Pike_in_gc != GC_PASS_MARK && Pike_in_gc != GC_PASS_CYCLE &&
 	Pike_in_gc != GC_PASS_ZAP_WEAK)
@@ -2218,7 +2218,7 @@ void real_gc_free_svalue(struct svalue *s)
 
 void real_gc_free_short_svalue(union anything *u, TYPE_T type)
 {
-  if (Pike_in_gc && Pike_in_gc < GC_PASS_FREE) {
+  if (Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_FREE) {
 #ifdef PIKE_DEBUG
     if (Pike_in_gc != GC_PASS_MARK && Pike_in_gc != GC_PASS_CYCLE &&
 	Pike_in_gc != GC_PASS_ZAP_WEAK)
