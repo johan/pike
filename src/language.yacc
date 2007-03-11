@@ -2820,7 +2820,7 @@ int low_add_local_name(struct compiler_frame *frame,
   if (frame->current_number_of_locals == MAX_LOCAL)
   {
     yyerror("Too many local variables.");
-    free_type(type);
+    free_string(type);
     if (def) free_node(def);
     return 0;
   }else {

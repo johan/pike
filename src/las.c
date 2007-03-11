@@ -2239,7 +2239,7 @@ void fix_type_field(node *n)
       copy_shared_string(n->type, void_type_string);
       break;
     } else if (!CDR(n)) {
-      copy_pike_type(n->type, CAR(n)->type);
+      copy_shared_string(n->type, CAR(n)->type);
       break;
     } else if(CAR(n) && CDR(n)) {
       /* Ensure that the type-fields are up to date. */
