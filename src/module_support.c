@@ -298,9 +298,7 @@ int get_args(struct svalue *s,
   int ret;
   va_start(ptr, fmt);
   ret=va_get_args(s, num_args, fmt, ptr);
-#ifndef __TenDRA__
   va_end(ptr);
-#endif /* !__TenDRA */
   return ret;
 }
 
