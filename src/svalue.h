@@ -179,6 +179,7 @@ struct svalue
 #define tProgram(X) "\005" X
 #define tStr "\006"
 #define tString "\006"
+#define tStr0 "\357\000"
 #define tStr7 "\357\007"
 #define tStr8 "\357\010"
 #define tStr16 "\357\020"
