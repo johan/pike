@@ -58,7 +58,15 @@ _ll_t mysql_dummy_dum_dum(_ull_t a, _ull_t b, _ll_t c, _ll_t d) {
 #ifdef HAVE_FGETS
   fgets(0, 0, 0);
 #endif
-
+#ifdef HAVE__FINDFIRST
+  _findfirst(0,0);
+#endif
+#ifdef HAVE__FINDNEXT
+  _findnext(0,0);
+#endif
+#ifdef HAVE__FINDCLOSE
+  _findclose(0);
+#endif
   return(a%b+(c%d)+(c/d)+(a/b));
 }
 
