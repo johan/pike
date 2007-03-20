@@ -55,6 +55,7 @@ static int indent=0;
 
 int max_correct_args;
 
+PMOD_EXPORT struct pike_type *string0_type_string;
 PMOD_EXPORT struct pike_type *string_type_string;
 PMOD_EXPORT struct pike_type *int_type_string;
 PMOD_EXPORT struct pike_type *float_type_string;
@@ -3769,8 +3770,8 @@ static struct pike_type *debug_low_index_type(struct pike_type *t,
     {
       struct pike_type *a;
 
-      if(low_pike_types_le(string_type_string, index_type, 0, 0) &&
-	 (a = low_index_type(t->car, string_type_string, n))) {
+      if(low_pike_types_le(string0_type_string, index_type, 0, 0) &&
+	 (a = low_index_type(t->car, string0_type_string, n))) {
 	/* Possible to index the array with a string. */
 	type_stack_mark();
 	push_finished_type(a);
@@ -5241,7 +5242,8 @@ void init_types(void)
   pike_type_hash_size = PIKE_TYPE_HASH_SIZE;
   init_pike_type_blocks();
 
-  string_type_string = CONSTTYPE(tString);
+  string0_type_string = CONSTTYPE(tStr0);
+  string_type_string = CONSTTYPE(tStr32);
   int_type_string = CONSTTYPE(tInt);
   object_type_string = CONSTTYPE(tObj);
   program_type_string = CONSTTYPE(tPrg(tObj));
@@ -5270,6 +5272,7 @@ void cleanup_pike_types(void)
   }
 #endif /* DEBUG_MALLOC */
 
+  free_type(string0_type_string);
   free_type(string_type_string);
   free_type(int_type_string);
   free_type(float_type_string);
