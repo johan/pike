@@ -5175,11 +5175,12 @@ static void low_type_to_string(struct pike_type *t)
   case T_STRING:
     {
       INT32 width = (INT32)CAR_TO_INT(t);
-      my_putchar(T_STRING);
-      my_putchar((width >> 24) & 0xff);
-      my_putchar((width >> 16) & 0xff);
-      my_putchar((width >> 8) & 0xff);
-      my_putchar(width & 0xff);
+      if (width == 32) {
+	my_putchar(T_STRING);
+      } else {
+	my_putchar(PIKE_T_NSTRING);
+	my_putchar(width & 0xff);
+      }
     }
     break;
 
