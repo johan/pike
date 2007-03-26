@@ -42,6 +42,11 @@ constant gc_parameters = __builtin.gc_parameters;
 
 constant get_runtime_info = __builtin.get_runtime_info;
 
+// Type-checking:
+constant check_call = predef::__check_call;
+constant get_return_type = predef::__get_return_type;
+constant get_first_arg_type = predef::__get_first_arg_type;
+
 program Encoder = [program] master()->Encoder;
 program Decoder = [program] master()->Decoder;
 program Codec = [program] master()->Codec;
