@@ -4838,7 +4838,11 @@ struct pike_type *low_new_check_call(struct pike_type *arg_type,
     return res;
   }
 
-  if (!(tmp = lower_new_check_call(arg_type, fun_type, flags, 0))) {
+  if (!(tmp = lower_new_check_call(arg_type, fun_type, flags
+#ifdef PIKE_TYPE_DEBUG
+				   , 0
+#endif
+				   ))) {
     return NULL;
   }
   return tmp;
