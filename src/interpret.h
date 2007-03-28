@@ -265,6 +265,13 @@ PMOD_EXPORT extern const char msg_pop_neg[];
     _sp_->subtype=NUMBER_UNDEFINED;					\
   }while(0)
 
+#define push_obj_index(I) do{						\
+    int _=(I);								\
+    struct svalue *_sp_ = Pike_sp++;					\
+    _sp_->u.identifier=_;						\
+    _sp_->type=T_OBJ_INDEX;						\
+  }while(0)
+
 #define push_mapping(M) do{						\
     struct mapping *_=(M);						\
     struct svalue *_sp_ = Pike_sp++;					\
