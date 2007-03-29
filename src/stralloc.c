@@ -1044,7 +1044,7 @@ PMOD_EXPORT void really_free_string(struct pike_string *s)
 #endif
     Pike_fatal("Freeing string with %d references.\n", s->refs);
   }
-  if(d_flag > 2)
+  if(d_flag > 2 && !(s->flags & STRING_NOT_SHARED))
   {
     if(s->next == (struct pike_string *)(ptrdiff_t)-1)
       Pike_fatal("Freeing shared string again!\n");
