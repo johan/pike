@@ -233,8 +233,8 @@ struct pike_type *check_call(struct pike_type *args,
 			     struct pike_type *type,
 			     int strict);
 struct pike_type *get_argument_type(struct pike_type *fun, int arg_no);
-struct pike_type *low_new_check_call(struct pike_type *arg_type,
-				     struct pike_type *fun_type,
+struct pike_type *low_new_check_call(struct pike_type *fun_type,
+				     struct pike_type *arg_type,
 				     INT32 flags);
 struct pike_type *new_get_return_type(struct pike_type *fun_type,
 				      INT32 flags);
