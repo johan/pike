@@ -9184,7 +9184,7 @@ void init_builtin_efuns(void)
 	   tFunc(tStr8,tStr8),OPT_TRY_OPTIMIZE);
 
   ADD_EFUN("__low_check_call", f___low_check_call,
-	   tFunc(tType(tMix) tType(tCallable) tOr(tInt,tVoid),
+	   tFunc(tType(tCallable) tType(tMix) tOr(tInt,tVoid),
 		 tType(tCallable)),
 	   OPT_TRY_OPTIMIZE);
 
