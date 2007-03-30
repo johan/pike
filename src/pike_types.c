@@ -1913,11 +1913,23 @@ static void low_describe_type(struct pike_type *t)
     case T_OBJECT:
       if (t->cdr)
       {
-	char buffer[100];
-	sprintf(buffer,"object(%s %"PRINTPTRDIFFT"d)",
-		t->car?"is":"implements",
-		CDR_TO_INT(t));
-	my_strcat(buffer);
+	struct svalue s;
+	if (t->car) {
+	  my_strcat("object(is ");
+	} else {
+	  my_strcat("object(implements ");
+	}
+	if ((s.u.program = id_to_program(CDR_TO_INT(t)))) {
+	  s.type = T_PROGRAM;
+	  s.subtype = 0;
+	  describe_svalue(&s, 0, NULL);
+	  my_strcat(")");
+	} else {
+	  char buffer[100];
+	  sprintf(buffer,"%"PRINTPTRDIFFT"d)",
+		  CDR_TO_INT(t));
+	  my_strcat(buffer);
+	}
       }else{
 	my_strcat("object");
       }
