@@ -1193,6 +1193,9 @@ AC_DEFUN(PIKE_WITH_ABI,
           xalpha)
 	    pike_cv_wanted_abi="64"
           ;;
+	  xppc64)
+	    pike_cv_wanted_abi="64"
+          ;;
         esac
         if type isainfo 2>/dev/null >/dev/null; then
           # Solaris
