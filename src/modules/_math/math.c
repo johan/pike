@@ -822,22 +822,12 @@ PIKE_MODULE_INIT
 /* function(float:float) */
   ADD_EFUN("round",f_round,tFunc(tFlt,tFlt),0);
 
-#define CMP_TYPE \
-  tOr4(tFuncV(tNone,tString,tString), \
-       tFunc(tVoid,tInt0), \
-       tFuncV(tNone,tSetvar(0,tOr(tInt,tFloat)),tVar(0)), \
-       tIfnot(tFuncV(tNone,tString,tMix), \
-              tIfnot(tFuncV(tNone,tOr(tInt,tFloat),tMix), \
-	             tIfnot(tFuncV(tNone,tNot(tOr(tObj,tMix)),tMix), \
-		            tFuncV(tNone,tMix,tMix)))))
-    /*
-     * "!function(!object...:mixed)&function(mixed...:mixed)|" \
-     * "function(int|zero...:int)|" \
-     * "function(float...:float)|" \
-     * "function(string...:string)|"  \
-     * "function(:int(0..0)|" \
-     * "!function(int...:mixed)&!function(float...:mixed)&function(int|float...:int|float)"
-     */
+#define CMP_TYPE							\
+  tOr4(tFuncV(tNone,tString,tString),					\
+       tFunc(tVoid,tInt0),						\
+       tFuncV(tNone,tSetvar(0,tOr(tInt,tFloat)),tVar(0)),		\
+       tIfnot(tFuncV(tNone,tNot(tOr(tObj,tMix)),tMix),			\
+	      tFuncV(tNone,tMix,tMix)))
 
   ADD_EFUN("max",f_max,CMP_TYPE,0);
   ADD_EFUN("min",f_min,CMP_TYPE,0);
