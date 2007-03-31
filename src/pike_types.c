@@ -5354,7 +5354,7 @@ struct pike_type *new_check_call(struct pike_string *fun_name,
 
 #ifdef PIKE_DEBUG
     if (l_flag>2) {
-      fprintf(stderr, "\n  The argument is a splice operator.");
+      fprintf(stderr, "\n  The argument is a splice operator.\n");
     }
 #endif /* PIKE_DEBUG */
 
@@ -6359,11 +6359,10 @@ void cleanup_pike_type_table(void)
    * It's needed for dmalloc to survive.
    */
   pike_type_hash_size = 0;
-#if 0
+
 #ifdef DO_PIKE_CLEANUP
   free_all_pike_type_blocks();
 #endif /* DO_PIKE_CLEANUP */
-#endif /* 0 */
 }
 
 #if 0
