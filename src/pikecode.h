@@ -45,6 +45,9 @@ void ins_f_byte_with_2_args(unsigned int a, INT32 c, INT32 b);
 #elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_PPC32
 #include "code/ppc32.h"
 #define PIKE_BYTECODE_METHOD_NAME	"ppc32"
+#elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_PPC64
+#include "code/ppc64.h"
+#define PIKE_BYTECODE_METHOD_NAME	"ppc64"
 #elif PIKE_BYTECODE_METHOD == PIKE_BYTECODE_GOTO
 #include "code/computedgoto.h"
 #define PIKE_BYTECODE_METHOD_NAME	"computed_goto"
