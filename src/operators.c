@@ -5494,7 +5494,7 @@ multiset & mapping -> mapping
 
 #define F_AND_TYPE(Z)						\
 	    tOr(tFunc(tSetvar(0,Z),tVar(0)),			\
-		tIfnot(tFunc(Z,tMix),				\
+		tIfnot(tFuncV(tNone, tNot(Z), tMix),		\
 		       tFuncV(tSetvar(1,Z),tSetvar(2,Z),	\
 			      tOr(tVar(1),tVar(2)))))		
 			     
