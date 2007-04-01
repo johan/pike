@@ -3514,6 +3514,7 @@ void yytype_error(char *msg, struct pike_type *expected_t,
     } else {
       my_yyerror("Expected: %S", s);
     }
+    free_string(s);
   } else if (got_t) {
     struct pike_string *s = describe_type(got_t);
     if (flags & YYTE_IS_WARNING) {
@@ -3521,6 +3522,7 @@ void yytype_error(char *msg, struct pike_type *expected_t,
     } else {
       my_yyerror("Got     : %S", s);
     }
+    free_string(s);
   }
 }
 
@@ -3820,7 +3822,7 @@ void fix_type_field(node *n)
      *
      * It probably ought to be something similar to MANY(..., VOID).
      */
-    copy_pike_type(n->type, mixed_type_string);
+    n->type = index_type(CAR(n)->type, int_type_string, n);
     break;
 
   case F_AUTO_MAP_MARKER:
