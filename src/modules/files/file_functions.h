@@ -91,7 +91,8 @@ FILE_FUNC("pipe",file_pipe, tFunc(tOr(tVoid,tInt),tObjImpl_STDIO_FD))
 /* function(int,string|void:void) */
 FILE_FUNC("set_buffer",file_set_buffer, tFunc(tInt tOr(tStr,tVoid),tVoid))
 /* function(int|string|void,string|void:int) */
-FILE_FUNC("open_socket",file_open_socket, tFunc(tOr3(tInt,tStr,tVoid) tOr(tStr,tVoid),tInt))
+FILE_FUNC("open_socket",file_open_socket,
+	  tFunc(tOr3(tInt,tStr,tVoid) tOr(tStr,tVoid) tOr(tInt,tVoid),tInt))
 /* function(string,int|string:int)|function(string,int|string,string,int|string:int) */
 FILE_FUNC("connect",file_connect, tOr(tFunc(tStr tOr(tInt,tStr),tInt),tFunc(tStr tOr(tInt,tStr) tStr tOr(tInt,tStr),tInt)))
 #ifdef HAVE_SYS_UN_H
