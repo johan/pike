@@ -5509,7 +5509,6 @@ static void optimize(node *n)
 void optimize_node(node *n)
 {
   if(n &&
-     !Pike_compiler->num_parse_error &&
      Pike_compiler->compiler_pass==2 &&
      (n->node_info & OPT_TRY_OPTIMIZE))
   {
