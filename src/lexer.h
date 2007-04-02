@@ -794,7 +794,13 @@ static int low_yylex(YYSTYPE *yylval)
 	if(GOBBLE('.')) return TOK_DOT_DOT_DOT;
 	return TOK_DOT_DOT;
       }
-      return c;
+      if (((c = INDEX_CHARP(lex.pos, 0, SHIFT)) <= '9') &&
+	  (c >= '0')) {
+	/* FIXME: Only in Pike 7.7 and later mode? */
+	lex.pos -= (1<<SHIFT);
+	goto read_float;
+      }
+      return '.';
   
     case '0':
     {
@@ -842,6 +848,7 @@ static int low_yylex(YYSTYPE *yylval)
 	    my_yyerror("Illegal octal digit '%c'.",
 		       INDEX_CHARP(lex.pos, l, SHIFT));
 
+    read_float:
       f=lex_strtod(lex.pos, &p1);
 
       sval.type = PIKE_T_INT;
