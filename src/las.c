@@ -3500,7 +3500,7 @@ void yytype_error(char *msg, struct pike_type *expected_t,
   if (msg)
   {
     if (flags & YYTE_IS_WARNING)
-      yywarning("%s", msg);
+      yywarning("%S", msg);
     else
       yyerror(msg);
   }
@@ -3510,7 +3510,7 @@ void yytype_error(char *msg, struct pike_type *expected_t,
   } else if (expected_t) {
     struct pike_string *s = describe_type(expected_t);
     if (flags & YYTE_IS_WARNING) {
-      yywarning("Expected: %s", s->str);
+      yywarning("Expected: %S", s);
     } else {
       my_yyerror("Expected: %S", s);
     }
@@ -3518,7 +3518,7 @@ void yytype_error(char *msg, struct pike_type *expected_t,
   } else if (got_t) {
     struct pike_string *s = describe_type(got_t);
     if (flags & YYTE_IS_WARNING) {
-      yywarning("Got     : %s", s->str);
+      yywarning("Got     : %S", s);
     } else {
       my_yyerror("Got     : %S", s);
     }
