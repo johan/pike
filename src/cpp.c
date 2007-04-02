@@ -1954,6 +1954,7 @@ void init_cpp()
 			       tOr(tObj,tVoid)
 			       tOr(tInt,tVoid)
 			       tOr(tInt,tVoid)
+			       tOr(tInt,tVoid)
 			       , tStr),
 	   /* OPT_SIDE_EFFECT since we might instantiate modules etc. */
 	   OPT_EXTERNAL_DEPEND|OPT_SIDE_EFFECT);
