@@ -5445,7 +5445,7 @@ void init_operators(void)
 
   ADD_EFUN2("`+",f_add,
 	    tOr7(tIfnot(tFuncV(tNone,tNot(tOr(tObj,tMix)),tMix),
-			tFuncV(tNone,tMix,tMix),
+			tFuncV(tNone,tMix,tMix)),
 		 tFuncV(tInt,tInt,tInt),
 		 tIfnot(tFuncV(tNone, tNot(tFlt), tMix),
 			tFuncV(tOr(tInt,tFlt),tOr(tInt,tFlt),tFlt)),
