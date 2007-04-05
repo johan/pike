@@ -449,7 +449,7 @@ class Parser
       items = symbol_items[symbol];
       if (items) {
 	array(int) item_ids = [array(int)]map(sort(indices(items)->item_id),
-					      `+, 1);
+					      [function(int,int...:int)]`+, 1);
 	string kernel_hash = sprintf("%@4c", item_ids);
 
 	Kernel new_state = known_states[kernel_hash];
