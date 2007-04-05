@@ -2804,7 +2804,7 @@ static struct pike_type *low_match_types2(struct pike_type *a,
 	  Pike_fatal("Cyclic type!\n");
 #endif
 	b_markers[m] = NULL;
-	res = low_match_types(a, b_markers[m], flags);
+	res = low_match_types(a, t, flags);
 	b_markers[m] = t;
 	return res;
       }
