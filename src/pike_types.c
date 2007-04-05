@@ -5157,7 +5157,7 @@ static struct pike_type *low_get_first_arg_type(struct pike_type *arg_type,
 	  or_pike_types(tmp,
 			tmp2 = low_get_first_arg_type(arg_type->car, flags),
 			1);
-	if (tmp2) free_type(tmp);
+	if (tmp2) free_type(tmp2);
 	free_type(tmp);
 	return res;
       }
