@@ -98,7 +98,7 @@ class WarningFlag {
 
   void compile_warning(string file, int line, string text) {
     if (pushed_warnings[text]) return;
-    warnings += ({ line+": "+text });
+    warnings += ({ sprintf("%s:%d: %s", file, line, text) });
     warning = 1;
   }
 
