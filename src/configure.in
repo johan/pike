@@ -1301,8 +1301,10 @@ if test -d bundles/.; then
   test -d bundles/include/. || mkdir bundles/include
   CPPFLAGS="$CPPFLAGS -I$pike_bundle_prefix/include"
   test -d bundles/lib/. || mkdir bundles/lib
+  touch bundles/lib/keep
   for d in $pike_cv_abi_suffixes; do
     test -d "bundles/lib$d/." || mkdir "bundles/lib$d"
+    touch "bundles/lib$d/keep"
     LDFLAGS="$LDFLAGS -L$pike_bundle_prefix/lib$d"
   done
 fi
