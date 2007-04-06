@@ -509,12 +509,9 @@ class DeltatextIterator
 //!   @[parse_deltatext_sections], @[create]
 this_program parse(array raw, void|function(string:void) progress_callback)
 {
-    parse_deltatext_sections
-	(parse_delta_sections
-	 (parse_admin_section( raw,progress_callback ),
-	  progress_callback),
-	 progress_callback);
-    return this;
+  parse_deltatext_sections(parse_delta_sections(parse_admin_section(raw)),
+			   progress_callback);
+  return this;
 }
 
 
