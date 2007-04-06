@@ -73,6 +73,7 @@ BLOCK_ALLOC(pike_type, n/a);
  */
 #define CALL_STRICT	0x0001	/* Strict checking. */
 #define CALL_LAST_ARG	0x0002	/* This is the last argument. */
+#define CALL_7_6	0x0004	/* Pike 7.6 compatibility mode. */
 
 void debug_free_type(struct pike_type *t);
 #ifdef DEBUG_MALLOC
