@@ -2715,7 +2715,14 @@ static struct pike_type *low_match_types2(struct pike_type *a,
 #endif
 	a_markers[m] = NULL;
 	res = low_match_types(t, b, flags);
-	a_markers[m] = t;
+	if (a_markers[m]) {
+	  struct pike_type *tmp;
+	  a_markers[m] = or_pike_types(tmp = a_markers[m], t, 0);
+	  free_type(tmp);
+	  free_type(t);
+	} else {
+	  a_markers[m] = t;
+	}
 	return res;
       }
       else
@@ -2805,7 +2812,14 @@ static struct pike_type *low_match_types2(struct pike_type *a,
 #endif
 	b_markers[m] = NULL;
 	res = low_match_types(a, t, flags);
-	b_markers[m] = t;
+	if (b_markers[m]) {
+	  struct pike_type *tmp;
+	  b_markers[m] = or_pike_types(tmp = b_markers[m], t, 0);
+	  free_type(tmp);
+	  free_type(t);
+	} else {
+	  b_markers[m] = t;
+	}
 	return res;
       }
       else
