@@ -161,7 +161,9 @@
  *!       the moon or anything else the _sprintf method implementor
  *!       wanted for debugging.
  *!     @value 'n'
- *!       No operation (ignore the argument).
+ *!       No argument. Same as '%s' with an empty string as argument.
+ *!       Note: Does take an argument array (but ignores its content)
+ *!       if the modifier '@' is active.
  *!     @value 't'
  *!       Type of the argument.
  *!     @value '{'
@@ -1962,6 +1964,12 @@ static int push_sprintf_argument_types(PCHARP format, ptrdiff_t format_len,
 	break;
 
       case 'n':
+	if (num_snurkel) {
+	  /* NOTE: Does take an argument if '@' is active! */
+	  push_type(PIKE_T_ZERO);
+	}
+	break;
+
       case 't':
       {
 	push_type(T_MIXED);
