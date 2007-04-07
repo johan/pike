@@ -1588,7 +1588,8 @@ done
   chmod(tmpname+".x",0755);
   string script=sprintf("#!/bin/sh\n"
 			"tar xf \"$0\" %s.x\n"
-			"exec ./%s.x \"$0\" \"$@\"\n", tmpname, tmpname, tmpname);
+			"exec ./%s.x \"$0\" \"$@\"\n",
+			tmpname, tmpname);
   if(sizeof(script) >= 100)
   {
     error_msg ("Script too long!!\n");
