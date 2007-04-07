@@ -3904,7 +3904,7 @@ void fix_type_field(node *n)
 	free_type(s);
       } else {
 	my_yyerror("Type checking error for function call to %S.", name);
-	yytype_error(NULL, f, NULL, 0);
+	yytype_error(NULL, NULL, f, 0);
       }
       free_type(f);
       break;
