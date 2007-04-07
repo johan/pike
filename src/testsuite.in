@@ -3910,7 +3910,7 @@ class Test
     {
       array c = ({"subres"});
       object o = compile (
-	#"string res() {return `+(@c());}
+	#"string res() {return `+(@((array(function(:string)))c)());}
 	string subres() {return \"foo\";}",
 	Resolver (c))();
       for (int i = 0; i < sizeof (c); i++)
@@ -3947,7 +3947,7 @@ class Test
       object o = compile_string (#"
 	constant x = ({0});
 	int f() {return 17;}
-	int g() {return x[0]();}
+	int g() {return ((array(function(:int)))x)[0]();}
       ")();
       o->x[0] = o->f;
       function e=encode_value;
