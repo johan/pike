@@ -139,8 +139,8 @@ class protocol
       sscanf(addr6, ":%s", addr6);
     }
     if(has_value(addr6, "."))
-      return sprintf("%2c%2c%2c%2c%2c%2c%c%c%c%c",
-		     array_sscanf(addr6, "%x:%x:%x:%x:%x:%x:%x.%x.%x.%x"));
+      return sprintf("%2c%2c%2c%2c%2c%2c%1c%1c%1c%1c",
+		     @array_sscanf(addr6, "%x:%x:%x:%x:%x:%x:%x.%x.%x.%x"));
     else
       return sprintf("%@2c",
 		     array_sscanf(addr6, "%x:%x:%x:%x:%x:%x:%x:%x"));
