@@ -116,11 +116,11 @@ pushdef([AC_PROG_CC],
     AC_MSG_CHECKING([if it is ICC 9.0 or later])
     icc_version="`$CC -V 2>&1 | sed -e '/^Version /s/Version \([0-9]*\)\..*/\1/p' -ed`"
     if test "0$icc_version" -ge 9; then
-      if echo "$CC $LDFLAGS $LIBS" | grep " -i-" >/dev/null; then :; else
+      if echo "$CC $LDFLAGS $LIBS" | grep " -i-" >/dev/null; then
+        AC_MSG_RESULT(yes - $icc_version)
+      else
         AC_MSG_RESULT(yes - $icc_version - Adding -i-static)
         LDFLAGS="-i-static $LDFLAGS"
-      else
-        AC_MSG_RESULT(yes - $icc_version)
       fi
     else
       if test "x$icc_version" = x; then
