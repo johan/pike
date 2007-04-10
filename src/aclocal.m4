@@ -99,6 +99,40 @@ pushdef([AC_PROG_CC],
     AC_MSG_RESULT(no)
     TCC=no
   fi
+
+  AC_MSG_CHECKING([if we are using ICC (Intel C Compiler)])
+  AC_CACHE_VAL(pike_cv_prog_icc, [
+    if $CC -V 2>&1 | grep -i Intel >/dev/null; then
+      pike_cv_prog_icc="yes"
+    else
+      pike_cv_prog_icc="no"
+    fi
+  ])
+  if test "x$pike_cv_prog_icc" = "xyes"; then
+    AC_MSG_RESULT(yes)
+    ICC="yes"
+    # Make sure libimf et al are linked statically.
+    # NB: icc 6, 7 and 8 only have static versions.
+    AC_MSG_CHECKING([if it is ICC 9.0 or later])
+    icc_version="`$CC -V 2>&1 | sed -e '/^Version /s/Version \([0-9]*\)\..*/\1/p' -ed`"
+    if test "0$icc_version" -ge 9; then
+      if echo "$CC $LDFLAGS $LIBS" | grep " -i-" >/dev/null; then :; else
+        AC_MSG_RESULT(yes - $icc_version - Adding -i-static)
+        LDFLAGS="-i-static $LDFLAGS"
+      else
+        AC_MSG_RESULT(yes - $icc_version)
+      fi
+    else
+      if test "x$icc_version" = x; then
+	AC_MSG_RESULT(no - no version information)
+      else
+	AC_MSG_RESULT(no - $icc_version)
+      fi
+    fi
+  else
+    AC_MSG_RESULT(no)
+    ICC=no
+  fi
 ])
 
 dnl Like AC_PATH_PROG but if $2 isn't found and $RNTANY is set, tries
