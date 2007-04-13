@@ -75,6 +75,11 @@ BLOCK_ALLOC(pike_type, n/a);
 #define CALL_LAST_ARG	0x0002	/* This is the last argument. */
 #define CALL_7_6	0x0004	/* Pike 7.6 compatibility mode. */
 
+/*
+ * soft_cast() flags
+ */
+#define SOFT_WEAKER	0x0001	/* Soft cast to a weaker type. */
+
 void debug_free_type(struct pike_type *t);
 #ifdef DEBUG_MALLOC
 #define copy_pike_type(D, S) add_ref((struct pike_type *)debug_malloc_pass(D = (S)))
@@ -234,6 +239,9 @@ struct pike_type *check_call(struct pike_type *args,
 			     struct pike_type *type,
 			     int strict);
 struct pike_type *get_argument_type(struct pike_type *fun, int arg_no);
+struct pike_type *soft_cast(struct pike_type *soft_type,
+			    struct pike_type *orig_type,
+			    int flags);
 struct pike_type *low_new_check_call(struct pike_type *fun_type,
 				     struct pike_type *arg_type,
 				     INT32 flags);
