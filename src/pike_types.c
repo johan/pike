@@ -4751,7 +4751,8 @@ struct pike_type *soft_cast(struct pike_type *soft_type,
 	while((soft_type->type == T_FUNCTION) ||
 	      (orig_type->type == T_FUNCTION)) {
 	  if (!(tmp2 = soft_cast(soft_type->car, orig_type->car,
-				 flags ^ SOFT_WEAKER))) {
+				 flags ^ SOFT_WEAKER)) ||
+	      (tmp2 == void_type_string)) {
 	    goto function_cast_fail;
 	  }
 	  push_finished_type(tmp2);
