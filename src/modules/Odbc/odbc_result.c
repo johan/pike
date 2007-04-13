@@ -182,7 +182,7 @@ static void odbc_fix_fields(void)
 #ifdef ODBC_DEBUG
     fprintf(stderr, "ODBC:odbc_fix_fields():\n"
 #ifdef SQL_WCHAR
-	    "name:%ws\n"
+	    "name:%ls\n"
 #else
 	    "name:%s\n"
 #endif

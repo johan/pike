@@ -137,7 +137,7 @@ void odbc_error(const char *fun, const char *msg,
   case SQL_SUCCESS_WITH_INFO:
 #ifdef SQL_WCHAR
     Pike_error("%s(): %s:\n"
-	  "%d:%ws:%ws\n",
+	  "%d:%ls:%ls\n",
 	  fun, msg, code, errcode, errmsg);
 #else
     Pike_error("%s(): %s:\n"
