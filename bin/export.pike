@@ -141,16 +141,12 @@ void bump_version(int|void is_release)
     for (int i=0; i < sizeof(lines); i++) {
       if (has_prefix(lines[i], "#define MAJOR ")) {
 	lines[i] = sprintf("#define MAJOR \"%d\"", version[0]);
-        break;
       } else if (has_prefix(lines[i], "#define MINOR ")) {
 	lines[i] = sprintf("#define MINOR \"%d\"", version[1]);
-        break;
       } else if (has_prefix(lines[i], "#define BUILD ")) {
 	lines[i] = sprintf("#define BUILD \"%d\"", version[2]);
-	break;
       } else if (has_prefix(lines[i], "#define INST ")) {
 	lines[i] = "#define INST \"1\"";
-	break;
       }
     }
 
