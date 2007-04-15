@@ -133,6 +133,12 @@ static int img_inited=0;
 
 static void img_init()
 {
+  /* FIXME: Should be glPixelStorei, but that function pointer is messed
+     up on win32. Retry with masts linker later on and change it back. */
+#ifdef __NT__
+#define glPixelStorei(X,Y) glPixelStoref(X,(float)Y)
+#endif
+
   glPixelStorei(GL_PACK_SWAP_BYTES, 0);
   glPixelStorei(GL_PACK_LSB_FIRST, 0);
   glPixelStorei(GL_PACK_ROW_LENGTH, 0);
@@ -146,6 +152,12 @@ static void img_init()
   glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
   glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
   img_inited=1;
+
+  /* FIXME: And undefine again. The hack above will not work if all of
+     the glPixelStorei's in check_img_arg() are not kept. */ 
+#ifdef __NT__
+#undef glPixelStorei
+#endif
 }
 
 static struct program *shm_program=NULL;
