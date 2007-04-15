@@ -1422,7 +1422,7 @@ static void do_trace_call(INT32 args, dynamic_buffer *old_buf)
       file = "...";
     else {
       file = filep->str;
-      while((f=STRCHR(file,'/')))
+      while((f=STRCHR(file,'/')) || (f=STRCHR(file,'\\')))
 	file=f+1;
     }
   }else{
@@ -1431,7 +1431,7 @@ static void do_trace_call(INT32 args, dynamic_buffer *old_buf)
   }
 
   {
-    char buf[40];
+    char buf[100];
     if (linep)
       SNPRINTF(buf, sizeof (buf), "%s:%ld:", file, (long)linep);
     else
