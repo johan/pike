@@ -1655,7 +1655,7 @@ node *debug_mksoftcastnode(struct pike_type *type, node *n)
       } else if (result_type == n->type) {
 	struct pike_string *t1 = describe_type(type);
 	struct pike_string *t2 = describe_type(n->type);
-	yywarning("Soft cast of %S to %S is a noop."
+	yywarning("Soft cast of %S to %S is a noop.",
 		   t2, t1);
 	free_string(t2);
 	free_string(t1);
