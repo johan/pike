@@ -4819,12 +4819,12 @@ struct pike_type *soft_cast(struct pike_type *soft_type,
 	} else {
 	  push_finished_type(zero_type_string);
 	}
-	if ((tmp2 = soft_cast(soft_type->car, orig_type->car, flags))) {
-	  push_finished_type(tmp);
+	if ((tmp2 = soft_cast(soft_type->cdr, orig_type->cdr, flags))) {
+	  push_finished_type(tmp2);
 	} else {
 	  push_finished_type(zero_type_string);
 	}
-	push_type(T_MAPPING);
+	push_reverse_type(T_MAPPING);
 	res = pop_unfinished_type();
 	break;
       case T_ARRAY:
