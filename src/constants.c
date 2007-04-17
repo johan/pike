@@ -68,7 +68,7 @@ PMOD_EXPORT void add_global_program(const char *name, struct program *p)
   s.type=T_PROGRAM;
   s.subtype=0;
   s.u.program=p;
-  low_add_constant(name, &s);
+  low_add_constant(name, p?&s:NULL);
 }
 
 #undef INIT_BLOCK
