@@ -2292,8 +2292,6 @@ static int lower_or_pike_types(struct pike_type *t1,
 #endif
   if (t1 == t2) {
     t = t1;
-  } else if (zero_implied && (t1->type == T_MIXED || t2->type == T_MIXED)) {
-    t = mixed_type_string;
   } else if (t1->type < t2->type) {
     t = t1;
     ret = -1;
@@ -2388,6 +2386,9 @@ static int lower_or_pike_types(struct pike_type *t1,
   } else {
     switch(t->type) {
     case T_FLOAT:
+    case T_MIXED:
+    case T_VOID:
+    case T_ZERO:
       /* There can only be one. */
       break;
     case T_INT:
