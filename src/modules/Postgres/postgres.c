@@ -690,7 +690,8 @@ static void f_trace (INT32 args)
 
 static void f_callback(INT32 args)
 {
-	check_all_args("postgres->_set_notify_callback()",BIT_INT|BIT_FUNCTION,0);
+	check_all_args("postgres->_set_notify_callback()",
+		       args, BIT_INT|BIT_FUNCTION, 0);
 
 	if (Pike_sp[-args].type==PIKE_T_INT) {
 		if (THIS->notify_callback->type!=PIKE_T_INT) {
