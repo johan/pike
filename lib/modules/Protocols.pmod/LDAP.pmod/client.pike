@@ -1349,7 +1349,7 @@ object get_default_filter()
     mixed raw;
     array(string) rawarr = ({});
 
-    DWRITE_HI("client.SEARCH: " + (string)filter + "\n");
+    DWRITE_HI(sprintf ("client.SEARCH: %O\n", filter));
     if (chk_ver())
       return 0;
     if (chk_binded())
