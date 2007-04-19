@@ -166,8 +166,9 @@ while [ x`eval echo \\$NTMOUNT$num` != x ]; do
 "
   PIKE_PATH_TRANSLATE="$PIKE_PATH_TRANSLATE${PIKE_PATH_TRANSLATE+;}s!^$mount!$drive!"
   if [ x$num = x ]; then num=2; else num=`expr $num + 1`; fi
-IFS=' 	
-'
+done
+IFS='
+	 '
 
 export NTHOST NTCC CC CXX PATH NTTOOLS MNTREPLACE
 export NTPORT USE_SPRSH IFS REMOTE_METHOD watcom INCLUDE
