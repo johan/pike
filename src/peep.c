@@ -922,13 +922,14 @@ static int advance(void)
 static void pop_n_opcodes(int n)
 {
   int e;
+  p_instr *p;
 
 #ifdef PIKE_DEBUG
   if (n > num_instrs)
     Pike_fatal("Popping out of instructions.\n");
 #endif
 
-  p_instr *p = ((p_instr *)low_make_buf_space(0, &instrbuf)) - n;
+  p = ((p_instr *)low_make_buf_space(0, &instrbuf)) - n;
   for (e = 0; e < n; e++) {
     free_string(dmalloc_touch_named(struct pike_string *, p[e].file,
 				    "pop_n_opcodes"));
