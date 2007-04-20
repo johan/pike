@@ -105,9 +105,12 @@ PMOD_EXPORT int debug_fd_query_properties(int fd, int guess)
   {
     case FD_SOCKET:
       return fd_BUFFERED | fd_CAN_NONBLOCK | fd_CAN_SHUTDOWN;
+
     case FD_FILE:
-    case FD_CONSOLE:
       return fd_INTERPROCESSABLE;
+
+    case FD_CONSOLE:
+      return fd_CAN_NONBLOCK | fd_INTERPROCESSABLE;
 
     case FD_PIPE:
       return fd_INTERPROCESSABLE | fd_BUFFERED;
