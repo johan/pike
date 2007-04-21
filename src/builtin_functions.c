@@ -9332,7 +9332,7 @@ void init_builtin_efuns(void)
 		tFunc(tArray,tArr(tInt)), 0, OPT_TRY_OPTIMIZE);
 
 #define tMapStuff(IN,SUB,OUTFUN,OUTSET,OUTPROG,OUTMIX,OUTARR,OUTMAP) \
-  tOr6( tFuncV(IN tFuncV(SUB,tSetvar(0,tMix),tSetvar(2,tAny)),tVar(0),	\
+  tOr6( tFuncV(IN tFuncV(SUB,tSetvar(0,tAnd(tMix,tZero)),tSetvar(2,tAny)),tVar(0), \
 	       OUTFUN),							\
 	tFuncV(IN tSet(tMix),tMix,OUTSET), \
 	tFuncV(IN tMap(tMix, tSetvar(2,tMix)), tMix, OUTMAP), \
