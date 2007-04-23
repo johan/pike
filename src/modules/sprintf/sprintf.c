@@ -163,7 +163,7 @@
  *!     @value 'H'
  *!       Binary hollerith string. Equivalent to sprintf("%c%s",
  *!       strlen(str), str). Arguments (such as width etc) adjust the
- *!       length-part of the format.
+ *!       length-part of the format. Requires 8-bit strings.
  *!     @value 'n'
  *!       No argument. Same as '%s' with an empty string as argument.
  *!       Note: Does take an argument array (but ignores its content)
@@ -1327,19 +1327,11 @@ static void low_pike_sprintf(struct format_stack *fs,
 	DO_OP();
 	CHECK_OBJECT_SPRINTF()
 	GET_STRING(s);
-
+	if( s->size_shift )
+	    Pike_error("sprintf(): %%H requires all characters in the string to be at most eight bits large\n");
 	tmp = s->len;
 
-	if(fs->fsp->width == SPRINTF_UNDECIDED)
-	{
-	  x=(char *)alloca(4);
-	  if(tmp<256) fs->fsp->b=MKPCHARP(x,0);
-	  else if(tmp<65536) fs->fsp->b=MKPCHARP(x,1);
-	  else  fs->fsp->b=MKPCHARP(x,2);
-	  SET_INDEX_PCHARP(fs->fsp->b,0,tmp);
-	  fs->fsp->len=1;
-	}
-	else if ( (fs->fsp->flags&FIELD_LEFT) )
+        if ( (fs->fsp->flags&FIELD_LEFT) )
 	{
 	  l=1;
 	  if(fs->fsp->width > 0) l=fs->fsp->width;
@@ -2094,9 +2086,15 @@ static int push_sprintf_argument_types(PCHARP format, ptrdiff_t format_len,
 	break;
       }
 #endif
+      case 'H':
+      {
+	push_object_type(0, 0);
+	push_string_type(8);
+	push_type(T_OR);
+	break;
+      }
 
       case 'q':
-      case 'H':
       case 's':
       {
 	push_object_type(0, 0);
