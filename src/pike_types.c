@@ -7284,7 +7284,7 @@ void init_types(void)
   any_type_string = CONSTTYPE(tOr(tVoid,tMix));
   weak_type_string = CONSTTYPE(tOr4(tArray,tMultiset,tMapping,
 				    tFuncV(tNone,tZero,tOr(tMix,tVoid))));
-  /* add_ref(weak_type_string);	/* LEAK */
+  /* add_ref(weak_type_string);	*//* LEAK */
 
   builtin_attributes = allocate_mapping(20);
 
