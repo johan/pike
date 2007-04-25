@@ -89,9 +89,9 @@ PMOD_EXPORT struct pike_type *zero_type_string;
 PMOD_EXPORT struct pike_type *any_type_string;
 PMOD_EXPORT struct pike_type *weak_type_string;	/* array|mapping|multiset|function */
 
-#ifdef DEBUG_MALLOC
+#ifdef DO_PIKE_CLEANUP
 struct pike_type_location *all_pike_type_locations = NULL;
-#endif /* DEBUG_MALLOC */
+#endif /* DO_PIKE_CLEANUP */
 
 static struct pike_type *a_markers[10], *b_markers[10];
 
@@ -7403,14 +7403,14 @@ void init_types(void)
 
 void cleanup_pike_types(void)
 {
-#ifdef DEBUG_MALLOC
+#ifdef DO_PIKE_CLEANUP
   struct pike_type_location *t = all_pike_type_locations;
 
   while(t) {
     free_type(t->t);
     t = t->next;
   }
-#endif /* DEBUG_MALLOC */
+#endif /* DO_PIKE_CLEANUP */
 
   if (builtin_attributes) {
     free_mapping(builtin_attributes);
