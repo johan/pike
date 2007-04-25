@@ -3962,7 +3962,7 @@ if test "x$pike_cv_thread_t_type" = "xpointer"; then
 fi
 
 if test "x$pike_cv_sys_os" = "xWindows_NT" -o "x$pike_cv_sys_os" = "xAmigaOS"; then :; else
-  AC_MSG_CHECKING(Initial stack limit)
+  AC_MSG_CHECKING(initial stack limit)
   AC_CACHE_VAL(pike_cv_initial_stack_size,[
     AC_TRY_RUN([
 #include <stdio.h>
