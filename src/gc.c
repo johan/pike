@@ -1778,6 +1778,9 @@ void locate_references(void *a)
     gc_check_all_mappings();
     gc_check_all_programs();
     gc_check_all_objects();
+#if defined (PIKE_DEBUG) || defined (DO_PIKE_CLEANUP)
+    debug_gc_check_all_types();
+#endif
   } GC_LEAVE;
 
 #ifdef DEBUG_MALLOC
@@ -2939,9 +2942,6 @@ size_t do_gc(void *ignored, int explicit_call)
     n += gc_touch_all_programs();
     n += gc_touch_all_objects();
 #ifdef PIKE_DEBUG
-#if 0
-    gc_touch_all_types();
-#endif
     gc_touch_all_strings();
 #endif
     if (n != (unsigned) num_objects)
@@ -2964,6 +2964,9 @@ size_t do_gc(void *ignored, int explicit_call)
     gc_check_all_mappings();
     gc_check_all_programs();
     gc_check_all_objects();
+#if defined (PIKE_DEBUG) || defined (DO_PIKE_CLEANUP)
+    debug_gc_check_all_types();
+#endif
   } END_ACCEPT_UNFINISHED_TYPE_FIELDS;
 
   GC_VERBOSE_DO(fprintf(stderr, "| check: %u references in %d things, "
