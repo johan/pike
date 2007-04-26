@@ -1618,7 +1618,7 @@ class Font
     Image.Image lw;
     mixed err;
     if( ((err=catch(lw = font->write( sprintf( "%c", c ) )->scale(0.5)))
-	 && (err=catch( lw = font->write( sprintf( "", c ) )->scale(0.5))))
+	 && (err=catch( lw = font->write("")->scale(0.5))))
 	|| (!lw || !lw->xsize()  || !lw->ysize()) )
       lw = Image.Image( 1,1 );
     if(err)
