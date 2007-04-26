@@ -5297,7 +5297,7 @@ struct pike_type *soft_cast(struct pike_type *soft_type,
 	    break;
 	  }
 	} else if (orig_type->type == T_OBJECT) {
-	  if ((tmp == low_object_lfun_type(orig_type, LFUN_CALL))) {
+	  if ((tmp = low_object_lfun_type(orig_type, LFUN_CALL))) {
 	    orig_type = tmp;
 	    tmp = NULL;
 	  } else {
