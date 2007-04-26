@@ -300,6 +300,7 @@ static void encode_type(struct pike_type *t, struct encode_data *data)
 
       break;
 
+    case PIKE_T_ATTRIBUTE:	/* FIXME: Strip this in compat mode. */
     case PIKE_T_NAME:
       {
 	struct svalue sval;
@@ -2182,6 +2183,18 @@ static void low_decode_type(struct decode_data *data)
     case T_VOID:
     case PIKE_T_UNKNOWN:
       push_type(tmp);
+      break;
+
+    case PIKE_T_ATTRIBUTE:
+      decode_value2(data);
+
+      if (Pike_sp[-1].type != PIKE_T_STRING) {
+	Pike_error("decode_value(): Type attribute is not a string (%s)\n",
+		   get_name_of_type(Pike_sp[-1].type));
+      }
+      low_decode_type(data);
+      push_type_attribute(Pike_sp[-1].u.string);
+      pop_stack();
       break;
 
     case PIKE_T_NAME:
