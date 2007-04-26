@@ -189,7 +189,7 @@ class ErrorHandler
 	      mixed ... args)
   {
     if (level > -verbose) {
-      werror("%s: %s: "+msg+"\n",
+      werror([string(8)]("%s: %s: "+msg+"\n"),
 	     severity_kind[level], subsystem, @args);
     }
   }
