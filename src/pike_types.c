@@ -2311,10 +2311,17 @@ void free_all_leaked_types (void)
       struct marker *m = find_marker (t);
       INT32 m_refs = m ? m->refs : 0;
       INT32 refs = t->refs;
-      while (refs > m_refs) {
-	if (m) m->flags |= GC_CLEANUP_FREED;
-	free_type (t);
-	refs--;
+      if (refs > m_refs) {
+	do {
+	  if (m) m->flags |= GC_CLEANUP_FREED;
+	  free_type (t);
+	  refs--;
+	} while (refs > m_refs);
+	/* t is invalid here, as is its next pointer.
+	 * Start over from the top of this hash entry.
+	 */
+	index--;
+	break;
       }
     }
   }
