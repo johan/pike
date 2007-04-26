@@ -2312,8 +2312,8 @@ void free_all_leaked_types (void)
       INT32 m_refs = m ? m->refs : 0;
       INT32 refs = t->refs;
       if (refs > m_refs) {
+	if (m) m->flags |= GC_CLEANUP_FREED;
 	do {
-	  if (m) m->flags |= GC_CLEANUP_FREED;
 	  free_type (t);
 	  refs--;
 	} while (refs > m_refs);
