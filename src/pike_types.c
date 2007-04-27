@@ -2362,7 +2362,9 @@ void free_all_leaked_types (void)
       INT32 m_refs = m ? m->refs : 0;
       INT32 refs = t->refs;
       if (refs > m_refs) {
+#ifdef PIKE_DEBUG
 	if (m) m->flags |= GC_CLEANUP_FREED;
+#endif /* PIKE_DEBUG */
 	do {
 	  free_type (t);
 	  refs--;
