@@ -68,6 +68,8 @@ BLOCK_ALLOC(pike_type, n/a);
 #define PT_FLAG_ASSIGN_9	0x200000	/* The subtree assigns '9'. */
 #define PT_FLAG_ASSIGN		0x3ff000	/* The subtree holds assigns. */
 
+#define PT_FLAG_MARK_ASSIGN	0x3ff3ff	/* Assigns AND Markers. */
+
 /*
  * new_check_call() flags
  */
