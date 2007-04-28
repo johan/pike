@@ -381,10 +381,10 @@ clean:
    if ( (mtr->db->flags & MIRD_SYNC_END) )
    {
       MIRD_SYSCALL_COUNT(mtr->db,0);
-      if ( FDATASYNC(mtr->db->db_fd)==-1 )
+      if ( MIRD_FDATASYNC(mtr->db->db_fd)==-1 )
 	 return mird_generate_error(MIRDE_DB_SYNC,0,errno,0);
       MIRD_SYSCALL_COUNT(mtr->db,0);
-      if ( FDATASYNC(mtr->db->jo_fd)==-1 )
+      if ( MIRD_FDATASYNC(mtr->db->jo_fd)==-1 )
 	 return mird_generate_error(MIRDE_JO_SYNC,0,errno,0);
       if ( ( mtr->db->flags & MIRD_CALL_SYNC ) )
       {
