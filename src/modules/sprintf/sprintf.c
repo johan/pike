@@ -167,7 +167,7 @@
  *!     @value 'n'
  *!       No argument. Same as '%s' with an empty string as argument.
  *!       Note: Does take an argument array (but ignores its content)
- *!       if the modifier '@' is active.
+ *!       if the modifier '@@' is active.
  *!     @value 't'
  *!       Type of the argument.
  *!     @value '{'
