@@ -34,9 +34,9 @@
 /* what method to sync? */
 
 #ifdef HAVE_FDATASYNC
-#define FDATASYNC fdatasync
+#define MIRD_FDATASYNC fdatasync
 #else
-#define FDATASYNC fsync
+#define MIRD_FDATASYNC fsync
 #endif
 
 /* what lseek? */
