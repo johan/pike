@@ -328,7 +328,7 @@ class FrameData {
   string encode();
 }
 
-//!
+//! Manages the common frame information.
 class Frame {
 
   string id;
@@ -352,6 +352,7 @@ class Frame {
 
   FrameData data;
 
+  //!
   void create(string|Buffer in, TagHeader thd) {
     header = thd;
     if(in) {
