@@ -1452,7 +1452,7 @@ INT32 low_sscanf(struct pike_string *data, struct pike_string *format)
  *!     present in the set. If followed by normal text, %s will match all
  *!     characters up to but not including the first occurrence of that text.
  *!   @value "%H"
- *!     Reads a hollorith-encoded string, i.e. first reads the length
+ *!     Reads a Hollerith-encoded string, i.e. first reads the length
  *!     of the string and then that number of characters. The size and
  *!     byte order of the length descriptor can be modified in the
  *!     same way as @tt{%c@}. As an example @expr{"%2H"@} first reads
