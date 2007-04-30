@@ -431,8 +431,17 @@ class TermcapDB {
 	// Termcap is in "C:/msys/1.0/etc/termcap"
 	filename = combine_path(filename, "../../etc/termcap");
       }
-      else
-	filename = "/etc/termcap";
+      else {
+	filename = "/etc/termcap";	// Default.
+	foreach(({ "/etc/termcap", "/usr/share/termcap",
+		   "/usr/share/misc/termcap", }), string fname) {
+	  .Stat s = file_stat(fname);
+	  if (s && s->type == "file") {
+	    filename = fname;
+	    break;
+	  }
+	}
+      }
     }
     if (!::open(filename, "r")) {
       error("failed to open termcap file %O\n", filename);
