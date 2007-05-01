@@ -531,14 +531,11 @@ static inline struct pike_type *debug_mk_type(unsigned INT32 type,
     if (flag_method == PT_IS_MARKER) {
       t->flags = PT_FLAG_MARKER_0 << (type-'0');
     } else {
-      /* Clear markers that are assigned in the respective subtrees,
-       * but copy the rest.
-       */
       if (car && (flag_method & PT_COPY_CAR)) {
-	t->flags |= car->flags & ~(car->flags >> PT_ASSIGN_SHIFT);
+	t->flags |= car->flags;
       }
       if (cdr && (flag_method & PT_COPY_CDR)) {
-	t->flags |= cdr->flags & ~(cdr->flags >> PT_ASSIGN_SHIFT);
+	t->flags |= cdr->flags;
       }
     }
   }
