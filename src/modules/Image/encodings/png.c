@@ -135,11 +135,15 @@ static void png_decompress(int style)
 static void png_compress(int style, int zlevel, int zstrategy)
 {
   dynamic_buffer buf;
+  ONERROR err;
 
   if (style)
     Pike_error("Internal error: Illegal decompression style %d.\n",style);
 
+  initialize_buf(&buf);
+  SET_ONERROR(err, toss_buffer, &buf);
   zlibmod_pack(Pike_sp[-1].u.string, &buf, zlevel, zstrategy, 15);
+  UNSET_ONERROR(err);
 
   pop_stack();
   push_string(low_free_buf(&buf));
