@@ -436,7 +436,7 @@ class TermcapDB {
 	foreach(({ "/etc/termcap", "/usr/share/termcap",
 		   "/usr/share/misc/termcap", }), string fname) {
 	  .Stat s = file_stat(fname);
-	  if (s && s->type == "file") {
+	  if (s && s->type == "reg") {
 	    filename = fname;
 	    break;
 	  }
