@@ -485,6 +485,8 @@ pushdef([AC_OUTPUT],
     unset ac_cv_env_CFLAGS_value
     unset ac_cv_env_LDFLAGS_set
     unset ac_cv_env_LDFLAGS_value
+    unset ac_cv_env_LIBS_set
+    unset ac_cv_env_LIBS_value
     unset ac_cv_env_CPPFLAGS_set
     unset ac_cv_env_CPPFLAGS_value
     unset ac_cv_env_CPP_set
