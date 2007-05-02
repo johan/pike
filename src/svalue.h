@@ -184,10 +184,10 @@ struct svalue
 #define tProgram(X) "\005" X
 #define tStr "\006"
 #define tString "\006"
-#define tStr0 "\357\000"
-#define tStr7 "\357\007"
-#define tStr8 "\357\010"
-#define tStr16 "\357\020"
+#define tStr0 "\357" tZero
+#define tStr7 "\357" "\010\000\000\000\000\000\000\000\177"
+#define tStr8 "\357" "\010\000\000\000\000\000\000\000\377"
+#define tStr16 "\357" "\010\000\000\000\000\000\000\377\377"
 #define tStr32 "\006"
 #define tType(T) "\007" T
 #define tInt "\022"

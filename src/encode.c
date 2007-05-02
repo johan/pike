@@ -282,12 +282,12 @@ static void encode_type(struct pike_type *t, struct encode_data *data)
     addchar(T_FUNCTION);
     addchar(T_MANY);
   } else if (t->type == T_STRING) {
-    if (CAR_TO_INT(t) == 32) {
+    if (t->car == int_type_string) {
       addchar(T_STRING);
     } else {
       /* Narrow string */
       addchar(PIKE_T_NSTRING);
-      addchar(CAR_TO_INT(t));
+      encode_type(t->car, data);
     }
     return;
   } else {
@@ -380,7 +380,6 @@ static void encode_type(struct pike_type *t, struct encode_data *data)
     case '8':
     case '9':
     case T_FLOAT:
-    case T_STRING:
     case T_MIXED:
     case T_ZERO:
     case T_VOID:
@@ -2157,13 +2156,14 @@ static void low_decode_type(struct decode_data *data)
 
     case T_STRING:
       /* Common case and compat */
-      push_string_type(32);
+      push_finished_type(int_type_string);
+      push_type(T_STRING);
       break;
 
     case PIKE_T_NSTRING:
       {
-	INT32 width = GETC();
-	push_string_type(width);
+	low_decode_type(data);
+	push_type(T_STRING);
       }
       break;
 
