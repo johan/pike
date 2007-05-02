@@ -161,7 +161,7 @@
  *!       the moon or anything else the _sprintf method implementor
  *!       wanted for debugging.
  *!     @value 'H'
- *!       Binary hollerith string. Equivalent to sprintf("%c%s",
+ *!       Binary Hollerith string. Equivalent to sprintf("%c%s",
  *!       strlen(str), str). Arguments (such as width etc) adjust the
  *!       length-part of the format. Requires 8-bit strings.
  *!     @value 'n'
@@ -1946,7 +1946,8 @@ static int push_sprintf_argument_types(PCHARP format, ptrdiff_t format_len,
 
       case '~':
       {
-	push_string_type(32);
+	push_finished_type(int_type_string);
+	push_type(T_STRING);
 	continue;
       }
 
@@ -2085,7 +2086,8 @@ static int push_sprintf_argument_types(PCHARP format, ptrdiff_t format_len,
       case 'H':
       {
 	push_object_type(0, 0);
-	push_string_type(8);
+	push_int_type(0, 255);
+	push_type(T_STRING);
 	push_type(T_OR);
 	break;
       }
@@ -2094,7 +2096,8 @@ static int push_sprintf_argument_types(PCHARP format, ptrdiff_t format_len,
       case 's':
       {
 	push_object_type(0, 0);
-	push_string_type(32);
+	push_finished_type(int_type_string);
+	push_type(T_STRING);
 	push_type(T_OR);
 	break;
       }
