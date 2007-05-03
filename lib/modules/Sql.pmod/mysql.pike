@@ -23,7 +23,7 @@ inherit Mysql.mysql;
 #define CH_DEBUG(X...)
 #endif
 
-#ifndef (Mysql.mysql.HAVE_MYSQL_FIELD_CHARSETNR)
+#if !constant (Mysql.mysql.HAVE_MYSQL_FIELD_CHARSETNR)
 // Recognition constant to tell that the unicode decode mode would use
 // the buggy MySQLBrokenUnicodeWrapper if it would be enabled through
 // any of the undocumented methods.
