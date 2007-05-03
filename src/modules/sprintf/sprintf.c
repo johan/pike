@@ -2170,11 +2170,17 @@ static node *optimize_sprintf(node *n)
 #ifndef NEW_ARG_CHECK
     type_stack_mark();
     type_stack_mark();
-    push_string_type(8 << fmt->size_shift);	/* fmt */
+    if (fmt->size_shift == 2) {
+      push_finished_type(int_type_string);
+    } else {
+      push_int_type(0, (1<<(8<<fmt->size_shift))-1);
+    }
+    push_type(T_STRING);	/* fmt */
     if (push_sprintf_argument_types(MKPCHARP(fmt->str, fmt->size_shift),
 				    fmt->len, -1)) {
       push_type(T_VOID);	/* No more args */
-      push_string_type(32);	/* return type */
+      push_finished_type(int_type_string);
+      push_type(T_STRING);	/* return type */
       push_reverse_type(T_MANY);
       fmt_count = pop_stack_mark();
       while (fmt_count > 1) {
