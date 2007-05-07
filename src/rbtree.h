@@ -18,7 +18,7 @@
 #include "array.h"
 
 /* A red/black tree is a binary tree with one extra bit of info in
- * each node - the color of it. The following properties holds:
+ * each node - the color of it. The following properties hold:
  *
  * o  Every node is either red or black.
  * o  A NULL leaf is considered black.
