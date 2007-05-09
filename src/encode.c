@@ -337,6 +337,12 @@ static void encode_type(struct pike_type *t, struct encode_data *data)
       t = t->cdr;
       goto one_more_type;
 
+    case T_SCOPE:
+      {
+	ptrdiff_t val = CAR_TO_INT(t);
+	addchar(val & 0xff);
+      }
+      /* FALL_THOUGH */
     case T_MAPPING:
     case T_OR:
     case T_AND:
@@ -2102,6 +2108,12 @@ static void low_decode_type(struct decode_data *data)
       }
       low_decode_type(data);
       push_assign_type(tmp);	/* Actually reverse, but they're the same */
+      break;
+
+    case T_SCOPE:
+      tmp = GETC();
+      low_decode_type(data);
+      push_scope_type(tmp);	/* Actually reverse, but they're the same */
       break;
 
     case T_FUNCTION:
