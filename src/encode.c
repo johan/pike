@@ -342,7 +342,9 @@ static void encode_type(struct pike_type *t, struct encode_data *data)
 	ptrdiff_t val = CAR_TO_INT(t);
 	addchar(val & 0xff);
       }
-      /* FALL_THOUGH */
+      t = t->cdr;
+      goto one_more_type;
+
     case T_MAPPING:
     case T_OR:
     case T_AND:
