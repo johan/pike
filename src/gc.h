@@ -303,6 +303,7 @@ PMOD_EXPORT void describe(void *x);
 void debug_describe_svalue(struct svalue *s);
 void gc_watch(void *a);
 void debug_gc_touch(void *a);
+int gc_object_is_live (struct object *o);
 PMOD_EXPORT int real_gc_check(void *a);
 int real_gc_check_weak(void *a);
 void exit_gc(void);
@@ -536,9 +537,7 @@ extern int gc_in_cycle_check;
   struct object *_thing_ = (X);						\
   struct marker *_m_ = get_marker(_thing_);				\
   if (!(_m_->flags & GC_MARKED)) {					\
-    if (_thing_->prog &&						\
-	(FIND_LFUN(_thing_->prog, LFUN_DESTROY) != -1 ||		\
-	 (gc_destruct_everything && _thing_->prog->event_handler)))	\
+    if (gc_object_is_live (_thing_))					\
       _m_->flags |= GC_LIVE|GC_LIVE_OBJ;				\
     DO_IF_DEBUG(							\
       if (gc_in_cycle_check)						\
