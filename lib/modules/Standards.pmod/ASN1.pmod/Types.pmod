@@ -550,7 +550,7 @@ class UTF8String
     return build_der(string_to_utf8(value));
   }
 
-  this_program decode_primitive(string contents) {
+  this_program decode_primitive(string(0..255) contents) {
     record_der(contents);
     if (catch {
       value = utf8_to_string(contents);
@@ -1125,7 +1125,7 @@ class BMPString
     return build_der (string_to_unicode (value));
   }
 
-  this_program decode_primitive (string contents) {
+  this_program decode_primitive (string(0..255) contents) {
     record_der (contents);
     value = unicode_to_string (contents);
     return this;
