@@ -229,8 +229,8 @@ struct marker
 
 #define GC_PRETOUCHED		0x4000
 /* The thing has been visited by debug_gc_touch() in the pretouch pass. */
-#define GC_MIDDLETOUCHED	0x8000
-/* The thing has been visited by debug_gc_touch() in the middletouch pass. */
+#define GC_POSTTOUCHED		0x8000
+/* The thing has been visited by debug_gc_touch() in the posttouch pass. */
 
 #ifdef PIKE_DEBUG
 #define GC_IS_REFERENCED	0x00040000
@@ -495,11 +495,10 @@ static INLINE int debug_gc_check_weak (void *a, const char *place)
 #define GC_PASS_MARK		200
 #define GC_PASS_CYCLE		250
 #define GC_PASS_ZAP_WEAK	260
-#define GC_PASS_MIDDLETOUCH	270
+#define GC_PASS_POSTTOUCH	270
 #define GC_PASS_FREE		300
 #define GC_PASS_KILL		400
 #define GC_PASS_DESTRUCT	500
-#define GC_PASS_POSTTOUCH	510
 
 #define GC_PASS_LOCATE -1
 #define GC_PASS_DISABLED -2
