@@ -364,12 +364,10 @@ void exit_modules(void)
     if (!count) {
       struct object *o;
       for (o = first_object; o; o = o->next)
-	if (o->prog && (FIND_LFUN (o->prog, LFUN_DESTROY) != -1 ||
-			o->prog->event_handler))
+	if (gc_object_is_live (o))
 	  gc_fatal (o, 0, "Object missed in gc_destruct_everything mode.\n");
       for (o = objects_to_destruct; o; o = o->next)
-	if (o->prog && (FIND_LFUN (o->prog, LFUN_DESTROY) != -1 ||
-			o->prog->event_handler))
+	if (gc_object_is_live (o))
 	  gc_fatal (o, 0, "Object missed in gc_destruct_everything mode"
 		    " (is on objects_to_destruct list).\n");
     }
