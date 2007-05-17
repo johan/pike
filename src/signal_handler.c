@@ -3776,6 +3776,7 @@ void f_create_process(INT32 args)
 
       if (!keep_signals) 
       {
+	int i;
 	/* Restore the signals to the defaults. */
 #ifdef HAVE_SIGNAL
 #ifdef _sys_nsig
