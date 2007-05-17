@@ -4210,6 +4210,7 @@ AC_CHECK_FUNCS( \
  setrlimit \
  setresuid \
  setvbuf \
+ signal \
  sigaction \
  sigblock \
  sigprocmask \
