@@ -247,6 +247,17 @@ int main(int argc, char **argv)
   int e, num;
   char *p;
 
+#ifdef PIKE_EXTRA_DEBUG
+#ifdef HAVE_SIGNAL
+  if (sizeof(void *) == 8) {
+    /* 64-bit Solaris 10 in Xenofarm fails with SIGPIPE.
+     * Force a core dump.
+     */
+    signal(SIGPIPE, abort);
+  }
+#endif
+#endif
+
   TRACE((stderr, "Init master...\n"));
   
   find_lib_dir(argc, argv);
