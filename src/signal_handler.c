@@ -4761,6 +4761,21 @@ PMOD_EXPORT void low_init_signals(void)
   my_signal(SIGFPE, SIG_IGN);
 #endif
 
+  /* SIGPIPE */
+#ifdef SIGPIPE
+#ifdef PIKE_EXTRA_DEBUG
+  set_pike_debug_options(DEBUG_SIGNALS, DEBUG_SIGNALS);
+#endif
+  if (set_pike_debug_options(0,0) & DEBUG_SIGNALS) {
+    if (sizeof(void *) == 8) {
+      /* 64-bit Solaris 10 in Xenofarm fails with SIGPIPE.
+       * Force a core dump.
+       */
+      my_signal(SIGPIPE, abort);
+    }
+  }
+#endif
+
   /* Restore aby custom signals if needed. */
   for(e=0;e<MAX_SIGNALS;e++) {
     
