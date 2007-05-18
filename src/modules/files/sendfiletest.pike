@@ -192,6 +192,9 @@ void test7()
 
 int main(int argc, array(string) argv)
 {
+#if constant(alarm)
+  alarm(5*60);	// 5 minutes should be sufficient for this test.
+#endif
   werror("\n");
   loopback->bind(0);
   loopbackport = (int)((loopback->query_address()/" ")[1]);
