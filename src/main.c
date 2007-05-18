@@ -69,6 +69,10 @@
 /* Define this to trace the execution of main(). */
 /* #define TRACE_MAIN */
 
+#ifdef PIKE_EXTRA_DEBUG
+#define TRACE_MAIN
+#endif /* PIKE_EXTRA_DEBUG */
+
 #ifdef TRACE_MAIN
 #define TRACE(X)	fprintf X
 #else /* !TRACE_MAIN */
