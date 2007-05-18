@@ -83,6 +83,14 @@ int try_use_mmx;
 /* Define this to trace the execution of main(). */
 /* #define TRACE_MAIN */
 
+/* Define this for extra C-stack debug. */
+/* #define STACK_DEBUG */
+
+#ifdef PIKE_EXTRA_DEBUG
+#define TRACE_MAIN
+#define STACK_DEBUG
+#endif
+
 #ifdef TRACE_MAIN
 #define TRACE(X)	fprintf X
 #else /* !TRACE_MAIN */
