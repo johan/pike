@@ -1621,9 +1621,9 @@ else
   VALGRINDARGS="-q --tool=memcheck"
   AC_DEFINE(USE_VALGRIND)
 
-  if test "x$with_cleanup_on_exit" = "x"; then
-    AC_DEFINE(DO_PIKE_CLEANUP)
-  fi
+#  if test "x$with_cleanup_on_exit" = "x"; then
+#    AC_DEFINE(DO_PIKE_CLEANUP)
+#  fi
 
   if test "x$with_copt" != "xno"; then
     PIKE_MSG_WARN([--without-copt is advisable when using valgrind!])
