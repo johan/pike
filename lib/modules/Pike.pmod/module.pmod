@@ -35,7 +35,11 @@ constant OPEN_BOUND = __builtin.OPEN_BOUND;
 
 constant BacktraceFrame = __builtin.backtrace_frame;
 
+#if constant(__builtin.GenericBackend)
+constant Backend = __builtin.GenericBackend;
+#else
 constant Backend = __builtin.Backend;
+#endif
 constant DefaultBackend = __builtin.__backend;
 
 constant gc_parameters = __builtin.gc_parameters;
