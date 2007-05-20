@@ -841,6 +841,8 @@ CHAROPT2(								 \
           int e,len=0;							\
           if(field_length == -1)					\
 	    field_length=1;						\
+          if(field_length == 0)                                         \
+            Pike_error("%%H size field is 0.\n");                       \
           if(eye+field_length > input_len)				\
 	  {								\
 	    chars_matched[0]=eye;					\
