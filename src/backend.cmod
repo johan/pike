@@ -2911,7 +2911,7 @@ PIKECLASS GenericBackend
     int changed_events = old_events ^ new_events;
 
     IF_PD(fprintf (stderr, "[%d]BACKEND[%d]: gb_update_fd_set(.., %d, %d, %d):\n",
-		   THR_NO, me->>id, fd, old_events, new_events));
+		   THR_NO, me->id, fd, old_events, new_events));
     
 
     if (changed_events) {
