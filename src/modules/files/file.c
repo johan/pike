@@ -1793,8 +1793,6 @@ static void file_open(INT32 args)
      if (fd<0)
 	Pike_error("Not a valid FD.\n");
 
-     fprintf(stderr, "Creating a file object for fd %d...\n", fd);
-
      /* FIXME: What are the intended semantics for the flag FILE_NOT_OPENED?
       *        (grubba 2004-09-01
       */
