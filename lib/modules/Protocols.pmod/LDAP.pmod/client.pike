@@ -113,6 +113,8 @@ import ".";
     mapping lauth = ([]);
     object default_filter_obj;	// Filter object parsed from lauth->filter.
     result last_rv;		// last returned value
+    // FIXME: Should remove last_rv to avoid ref cycles. The only
+    // problem is the get_referrals function.
   }
 
 //! @ignore
