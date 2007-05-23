@@ -784,7 +784,8 @@ void reset_options()
   //! by connection to the LDAP server.
   //!
   //! @param version
-  //!  Only @expr{2@} or @expr{3@} can be entered.
+  //!  The desired protocol version (current @expr{2@} or @expr{3@}).
+  //!  Defaults to @expr{3@} if zero or left out.
   //!
   //! @returns
   //!  Returns @expr{1@} on success, @expr{0@} otherwise.
