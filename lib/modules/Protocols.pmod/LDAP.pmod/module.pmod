@@ -1657,6 +1657,7 @@ find_connection:
 
       int now = time();
       object/*(client)*/ rebind_conn;
+      string md5_pass;
       for (int i = 0; i < sizeof (conns);) {
 	conn = conns[i];
 	int last_use = conn->get_last_io_time();
@@ -1668,6 +1669,9 @@ find_connection:
 	else {
 	  if (!binddn ||
 	      (conn->get_bound_dn() == binddn &&
+	       (conn->get_bind_password_hash() ==
+		(md5_pass ||
+		 (md5_pass = Crypto.MD5()->update (pass || "")->digest()))) &&
 	       (!version || conn->get_protocol_version() == version))) {
 	    DWRITE ("Reusing connection which has been idle for %d s.\n",
 		    now - last_use);
