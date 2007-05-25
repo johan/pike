@@ -100,8 +100,8 @@
 /* #define CALL_OUT_DEBUG */
 
 #ifdef PIKE_EXTRA_DEBUG
-#define POLL_DEBUG
-#define CALL_OUT_DEBUG
+/* #define POLL_DEBUG */
+/* #define CALL_OUT_DEBUG */
 #endif
 
 #ifdef POLL_DEBUG
