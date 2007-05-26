@@ -370,7 +370,7 @@ PIKECLASS Backend
    * It's called from the signal handler so it must not lock any mutex
    * whatsoever. E.g. dmalloc stuff is verboten here.
    */
-  void backend_wake_up_backend(struct Backend_struct *me)
+  PMOD_EXPORT void backend_wake_up_backend(struct Backend_struct *me)
   {
     char foo=0;
 
