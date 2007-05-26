@@ -80,6 +80,7 @@ PMOD_EXPORT extern struct Backend_struct *default_backend;
 extern struct callback_list do_debug_callbacks;
 PMOD_EXPORT extern struct program *Backend_program;
 
+
 PMOD_EXPORT void debug_check_fd_not_in_use (int fd);
 #if 1
 struct Backend_struct *get_backend_for_fd(int fd);
@@ -197,7 +198,17 @@ PMOD_EXPORT void *query_read_oob_callback_data(int fd);
 PMOD_EXPORT void *query_write_oob_callback_data(int fd);
 #endif
 
+PMOD_EXPORT void backend_wake_up_backend(struct Backend_struct *be);
+PMOD_EXPORT struct object *get_backend_obj (struct Backend_struct *b);
+PMOD_EXPORT struct callback *backend_debug_add_backend_callback(
+    struct Backend_struct *be, callback_func call, void *arg,
+    callback_func free_func);
+
 #define add_backend_callback(X,Y,Z) \
   dmalloc_touch(struct callback *,debug_add_backend_callback((X),(Y),(Z)))
+
+#define backend_add_backend_callback(B,X,Y,Z) \
+  dmalloc_touch(struct callback *,\
+                backend_debug_add_backend_callback((B),(X),(Y),(Z)))
 
 #endif
