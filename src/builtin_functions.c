@@ -5643,20 +5643,26 @@ static int does_match(struct pike_string *s,int j,
 }
 
 /*! @decl int(0..1) glob(string glob, string str)
- *! @decl array(string) glob(string glob, array(string) arr)
+ *! @decl array(string) glob(string glob, array(string) str)
  *!
- *!   Match strings against globs.
+ *! Match strings against a glob pattern.
  *!
- *!   In a glob string a question sign matches any character and
- *!   an asterisk matches any string.
+ *! @param glob
+ *!   The glob pattern. A question sign ('?') matches any character
+ *!   and an asterisk ('*') matches a string of arbitrary length. All
+ *!   other characters only match themselves.
  *!
- *!   When the second argument is a string and @[str] matches
- *!   the glob @[glob] @expr{1@} will be returned, @expr{0@} (zero) otherwise.
+ *! @param str
+ *!   @mixed
+ *!     @type string
+ *!       @expr{1@} is returned if the string @[str] matches @[glob],
+ *!       @expr{0@} (zero) otherwise.
  *!
- *!   When the second argument is an array then an array is returned
- *!   that only contains the strings in it that match @[glob]. The
- *!   order among the returned strings is the same as in the input
- *!   array.
+ *!     @type array(string)
+ *!       All strings in the array @[str] are matched against @[glob],
+ *!       and those that match are returned in an array (in the same
+ *!       order).
+ *!   @endmixed
  *!
  *! @seealso
  *!   @[sscanf()], @[Regexp]
