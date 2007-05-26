@@ -2072,7 +2072,7 @@ size_t gc_free_all_unreferenced_objects(void)
     {
       /* Got an extra ref from gc_cycle_pop_object(). */
 #ifdef PIKE_DEBUG
-      if (o->prog && FIND_LFUN(o->prog, LFUN_DESTROY) != -1 &&
+      if (gc_object_is_live (o) &&
 	  !find_destroy_called_mark(o))
 	gc_fatal(o,0,"Can't free a live object in gc_free_all_unreferenced_objects().\n");
 #endif
