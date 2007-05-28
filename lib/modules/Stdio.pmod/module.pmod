@@ -695,7 +695,7 @@ class File
     BE_WERR("dup()\n");
     File to = File();
     to->is_file = is_file;
-    to->_fd = _fd->dup();
+    to->_fd = _fd;
 
     to->set_read_callback(query_read_callback());
     to->set_write_callback(query_write_callback());
