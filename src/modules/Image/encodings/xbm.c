@@ -132,7 +132,8 @@ static struct object *load_xbm( struct pike_string *data )
             dest->r = dest->g = dest->b = 255;
           dest++;
         }
-      }
+      } else
+	Pike_error("This is not a XBM image!\n");
     }
   }
   return io;
