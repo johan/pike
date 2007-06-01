@@ -18,7 +18,6 @@ constant hilfe_todo = #"List of known Hilfe bugs/room for improvements:
   method to Readline.History and calling it from StdinHilfe's
   destroy.
 - Add some better multiline edit support.
-- Tab completion of variable and module names.
 ";
 
 // The Big To Do:
@@ -851,7 +850,7 @@ private constant reference = (< ".", "->" >);
 
 private constant group = ([ "(":")", "({":"})", "([":"])", "(<":">)", "[":"]" ]);
 
-private constant notype = infix+prefix+postfix+prepostfix+seperator+reference;
+private constant notype = (infix+prefix+postfix+prepostfix+seperator+reference) - (< "." >);
 
 string typeof_token(string token)
 {
