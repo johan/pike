@@ -2763,11 +2763,10 @@ static void describe_event(struct Backend_struct *me, POLL_EVENT event)
 #endif /* POLL_DEBUG */
 
 /*! @class GenericBackend
+ *! @inherit Backend
  */
 PIKECLASS GenericBackend
 {
-  /*! @inherit Backend
-   */
   INHERIT Backend;
 
   /* Helpers to find the above inherit. */
