@@ -21,3 +21,18 @@ constant Compilation = __builtin.CompilationError;
 constant MasterLoad = __builtin.MasterLoadError;
 
 constant ModuleLoad = __builtin.ModuleLoadError;
+
+//! returns an Error object for any argument it receives.
+//! if the argument already is an Error object or is empty, it does nothing.
+object mkerror(mixed error)
+{
+  if (error == UNDEFINED)
+    return error;
+  if (objectp(error) && error->is_generic_error)
+    return error;
+  if (arrayp(error))
+    return Error.Generic(@error);
+  if (stringp(error))
+    return Error.Generic(error);
+  return Error.Generic(sprintf("%O", error));
+}
