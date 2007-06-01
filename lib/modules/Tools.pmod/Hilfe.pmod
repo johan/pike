@@ -850,7 +850,9 @@ private constant reference = (< ".", "->" >);
 
 private constant group = ([ "(":")", "({":"})", "([":"])", "(<":">)", "[":"]" ]);
 
-private constant notype = (infix+prefix+postfix+prepostfix+seperator+reference) - (< "." >);
+// Symbols not valid in type expressions.
+// All of the above except ".", "|", "&" and "~".
+private constant notype = (infix+prefix+postfix+prepostfix+seperator+reference) - (< ".", "|", "&", "~" >);
 
 string typeof_token(string token)
 {
