@@ -762,7 +762,7 @@ void update_xml_sourcefiles(array filelist) {
 	      lambda(object foo, mapping m) {
 		if(!m->project || m->project=="") {
 		  werror("\n * Error: Missing project in %s\n",
-			 m->project, filename);
+			 filename);
 		  exit(1);
 		}
 		if(args->project && m->project!=args->project)
