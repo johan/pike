@@ -289,7 +289,7 @@ void zlibmod_pack(struct pike_string *data, dynamic_buffer *buf,
 }
 
 /*! @decl string compress(string data, void|int(0..1) raw, @
- *!                       void|int(0..9) level, void|int strategy @
+ *!                       void|int(0..9) level, void|int strategy, @
  *!                       void|int(8..15) window_size)
  *!
  */
