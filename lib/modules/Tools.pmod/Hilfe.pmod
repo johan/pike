@@ -2502,7 +2502,10 @@ class StdinHilfe
     string prefix = String.common_prefix(completions)[sizeof(file)..];
 
     if (sizeof(prefix))
+    {
       readline->insert(prefix, readline->getcursorpos());
+      return ({});
+    }
 
     if (sizeof(completions) == 1 && file_stat(dir+"/"+completions[0])->isdir )
     {
@@ -2571,7 +2574,10 @@ class StdinHilfe
           string module;
 
           if (sizeof(prefix))
+          {
             readline->insert(prefix, readline->getcursorpos());
+            return ({});
+          }
 
           if (sizeof(modules)>1)
             return modules;
@@ -2600,10 +2606,8 @@ class StdinHilfe
             // class
             if (objectp(thismodule) || mappingp(thismodule))
             {
-              modules = sort(indices(thismodule));
-
               readline->insert(ref, readline->getcursorpos());
-              return modules;
+              return ({});
             }
             else if(functionp(thismodule) || programp(thismodule))
             {
