@@ -1097,6 +1097,16 @@ void handle_error(array|object trace)
   // predef::trace(0);
 }
 
+mixed handle_attribute_constant(string attr, mixed arg,
+				mixed arg_type, mixed cont_type)
+{
+#if 0
+  werror("handle_attribute_constant(%O, %O, %O, %O)\n",
+	 attr, arg, arg_type, cont_type);
+#endif /* 0 */
+  return __handle_attribute_constant(attr, arg, arg_type, cont_type);
+}
+
 /* This array contains the names of the functions
  * that a replacing master-object may want to override.
  */
