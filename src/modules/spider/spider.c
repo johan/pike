@@ -127,7 +127,7 @@ void f_parse_accessed_database(INT32 args)
     SIMPLE_TOO_FEW_ARGS_ERROR("parse_accessed_database",1);
 
   if ((sp[-args].type != T_STRING) || (sp[-args].u.string->size_shift)) {
-    Pike_error("Bad argument 1 to parse_accessed_database(string(8)).\n");
+    Pike_error("Bad argument 1 to parse_accessed_database(string(0..255)).\n");
   }
 
   /* Pop all but the first argument */
