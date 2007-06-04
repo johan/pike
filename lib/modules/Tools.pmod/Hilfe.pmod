@@ -2488,8 +2488,12 @@ class StdinHilfe
   array get_file_completions(string path)
   {
     array files = ({});
-    if (!sizeof(path) || (path[0] != '/' 
-         && (< ".", "./", "..", "../", "/..", "./." >)[path[<2..<0]]))
+    if (!sizeof(path) ||
+	(path[0] != '/' 
+	 && ((<".", "..">)[path] ||
+	     has_suffix(path, "/") ||
+	     has_suffix(path, "/.") ||
+	     has_suffix(path, "/.."))))
       files += ({ ".." });
 
     if (!sizeof(path) || path[0] != '/')
