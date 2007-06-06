@@ -2488,12 +2488,7 @@ class StdinHilfe
   array get_file_completions(string path)
   {
     array files = ({});
-    if (!sizeof(path) ||
-	(path[0] != '/' 
-	 && ((<".", "..">)[path] ||
-	     has_suffix(path, "/") ||
-	     has_suffix(path, "/.") ||
-	     has_suffix(path, "/.."))))
+    if ( (< "", ".", ".." >)[path-"../"] )
       files += ({ ".." });
 
     if (!sizeof(path) || path[0] != '/')
@@ -2529,7 +2524,13 @@ class StdinHilfe
     {
       foreach(completions; int count; string item)
       {
-        completions[count] += types[file_stat(dir+"/"+item)->type]||"";
+        object stat = file_stat(dir+"/"+item);
+        if (objectp(stat))
+          completions[count] += types[stat->type]||"";
+
+        stat = file_stat(dir+"/"+item, 1);
+        if (objectp(stat) && stat->type == "lnk")
+          completions[count] += types["lnk"];
       }
       return completions;
     }
