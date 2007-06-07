@@ -411,24 +411,27 @@ int main(int argc, array(string) argv)
 
   if(use_watchdog && !forked)
   {
+    object watchdog_tmp;
 #ifdef WATCHDOG_PIPE
-    object watchdog_tmp=Stdio.File();
-    watchdog_pipe=watchdog_tmp->pipe(Stdio.PROP_IPC);
+    watchdog_tmp = Stdio.File();
+    watchdog_pipe = watchdog_tmp->pipe(Stdio.PROP_IPC);
+    add_constant("__signal_watchdog",lambda(){});
+#endif
     watchdog=Process.create_process(
       backtrace()[0][3] + ({  "--watchdog="+getpid() }),
-      (["stdin":watchdog_tmp ]));
-    destruct(watchdog_tmp);
-#endif
-
-#ifdef WATCHDOG_SIGNAL
-    watchdog=Process.create_process(
-      backtrace()[0][3] + ({  "--watchdog="+getpid() }) );
-#endif
+      ([
+	"stdin" :watchdog_tmp || Stdio.stdin,
+	"stdout":Stdio.stderr,
+	"stderr":Stdio.stderr,
+      ]));
+    if (watchdog_tmp) destruct(watchdog_tmp);
   }
+#endif
+#if defined(WATCHDOG_SIGNAL) && defined(WATCHDOG)
   add_constant("__signal_watchdog",signal_watchdog);
-#else
-  add_constant("__signal_watchdog",lambda(){});
-#endif // else WATCHDOG_PIPE
+#else // WATCHDOG_PIPE or !WATCHDOG
+    add_constant("__signal_watchdog",lambda(){});
+#endif // WATCHDOG_SIGNAL && WATCHDOG
 
   add_constant("_verbose", verbose);
   if(verbose)
