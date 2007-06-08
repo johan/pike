@@ -2068,7 +2068,7 @@ class Evaluator {
 
   private string hch_errors = "";
   private string hch_warnings = "";
-  private class HilfeCompileHandler {
+  static class HilfeCompileHandler {
 
     int stack_level;
     void create(int _stack_level) {
@@ -2346,13 +2346,13 @@ class StdinHilfe
   //! once .hilferc has been executed.
   void create(void|array(string) init)
   {
-    write=predef::write;
+    readline = Stdio.Readline();
+    write = readline->write;
     ::create();
 
     load_hilferc();
     if(init) map(init, add_buffer);
 
-    readline = Stdio.Readline();
     load_history();
     if(!readline->get_history())
       readline->enable_history(512);
@@ -2370,12 +2370,16 @@ class StdinHilfe
       save_history();
       add_input_line(s);
     }
-    destruct(readline);
     write("Terminal closed.\n");
+    destruct(readline);
   }
 
   void handle_tab(string key)
   {
+    mixed old_handler = master()->get_inhibit_compile_errors();
+    HilfeCompileHandler handler = HilfeCompileHandler(sizeof(backtrace()));
+    master()->set_inhibit_compile_errors(handler);
+
     array modules, tokens;
     string input = readline->gettext()[..readline->getcursorpos()-1];
     array completions;
@@ -2480,6 +2484,10 @@ class StdinHilfe
       else if (variables->DEBUG_COMPLETIONS)
         readline->message(sprintf("input: %s\ntokens: %O\ncompletable: %O\n", input, tokens, completable, ));
     }
+
+    handler->show_errors();
+    handler->show_warnings();
+    master()->set_inhibit_compile_errors(old_handler);
 
     if(completions && sizeof(completions))
         readline->list_completions(completions);
