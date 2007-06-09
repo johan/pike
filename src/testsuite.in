@@ -7374,6 +7374,17 @@ test_any([[array z=({lambda(mixed x){return x;},17});return `()(@z);]],17)
 
 // testing +=
 test_any(int a=1; a+=10; return a,11)
+test_any_equal(mapping m=([]); m->x+=([]); return m->x, ([]))
+test_any_equal(mapping m=([]); m->x+=(<>); return m->x, (<>))
+test_any_equal(mapping m=([]); m->x+=({}); return m->x, ({}))
+test_any_equal([[
+  array a = ({});
+  catch {
+    a += Array.reduce(`+,({}));
+  };
+  return a;
+]],({}))
+
 // testing -=
 test_any(int a=1; a-=10; return a,-9)
 // testing &=
