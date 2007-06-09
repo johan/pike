@@ -3965,6 +3965,8 @@ fi
 if test "x$pike_cv_sys_os" = "xWindows_NT" -o "x$pike_cv_sys_os" = "xAmigaOS"; then :; else
   AC_MSG_CHECKING(initial stack limit)
   AC_CACHE_VAL(pike_cv_initial_stack_size,[
+    old_core_limit=`ulimit -c`
+    ulimit -Sc 0
     AC_TRY_RUN([
 #include <stdio.h>
 
@@ -4001,6 +4003,8 @@ if test "x$pike_cv_sys_os" = "xWindows_NT" -o "x$pike_cv_sys_os" = "xAmigaOS"; t
         pike_cv_initial_stack_size=$x ;
       done <confdefs.out.2
     ], [pike_cv_initial_stack_size=''])
+    ulimit -c $old_core_limit
+    unset old_core_limit
     rm -f confdefs.out.2 >/dev/null 2>/dev/null || :
   ])
   if test x$pike_cv_initial_stack_size = x ; then
