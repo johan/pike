@@ -5,17 +5,18 @@
 || $Id$
 */
 
-#ifndef CONFIGURE_TEST
 #include "global.h"
 RCSID("$Id$");
 
 PMOD_EXPORT int num_threads = 1;
 PMOD_EXPORT int threads_disabled = 0;
-#endif	/* !CONFIGURE_TEST */
 
 /* #define PICKY_MUTEX */
 
 #ifdef _REENTRANT
+
+#include "pike_macros.h"
+#include "pike_error.h"
 
 #ifndef CONFIGURE_TEST
 
@@ -25,7 +26,6 @@ PMOD_EXPORT int threads_disabled = 0;
 #include "array.h"
 #include "mapping.h"
 #include "object.h"
-#include "pike_macros.h"
 #include "callback.h"
 #include "builtin_functions.h"
 #include "constants.h"
