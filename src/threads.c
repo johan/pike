@@ -5,16 +5,16 @@
 || $Id$
 */
 
-#ifndef CONFIGURE_TEST
 #include "global.h"
 
 PMOD_EXPORT int num_threads = 1;
 PMOD_EXPORT int threads_disabled = 0;
-#endif	/* !CONFIGURE_TEST */
 
 /* #define PICKY_MUTEX */
 
 #ifdef _REENTRANT
+
+#include "pike_error.h"
 
 #ifndef CONFIGURE_TEST
 
@@ -66,9 +66,16 @@ PMOD_EXPORT size_t thread_stack_size=PIKE_THREAD_C_STACK_SIZE;
 PMOD_EXPORT void thread_low_error (int errcode, const char *cmd,
 				   const char *fname, int lineno)
 {
+#ifdef CONFIGURE_TEST
+  fprintf (stderr, "%s:%d: %s\n"
+	   "Unexpected error from thread function: %d\n",
+	   fname, lineno, cmd, errcode);
+  abort();
+#else
   Pike_fatal ("%s:%d: %s\n"
 	      "Unexpected error from thread function: %d\n",
 	      fname, lineno, cmd, errcode);
+#endif
 }
 
 /* SCO magic... */

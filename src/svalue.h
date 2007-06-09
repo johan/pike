@@ -9,6 +9,7 @@
 #define SVALUE_H
 
 #include "global.h"
+#include "dmalloc.h"
 
 #ifndef STRUCT_ARRAY_DECLARED
 #define STRUCT_ARRAY_DECLARED

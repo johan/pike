@@ -15,11 +15,9 @@
  */
 
 
-#ifndef CONFIGURE_TEST
 #include "global.h"
 #include "pike_embed.h"
 #include "pike_rusage.h"
-#endif
 
 /* Needed for the sigset_t typedef, which is needed for
  * the pthread_sigsetmask() prototype on Solaris 2.x.
