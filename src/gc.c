@@ -120,7 +120,7 @@ static double objects_alloced = 0.0;
 static double objects_freed = 0.0;
 static double gc_time = 0.0, non_gc_time = 0.0;
 static cpu_time_t last_gc_end_time = 0;
-#if CPU_TIME_IS_THREAD_LOCAL == PIKE_NO
+#ifdef CPU_TIME_MIGHT_NOT_BE_THREAD_LOCAL
 cpu_time_t auto_gc_time = 0;
 #endif
 
@@ -2438,7 +2438,7 @@ static void check_cycle_ids_on_stack (struct gc_rec_frame *beg,
       fprintf (stderr, "cycle_id for frame %p not earlier on stack (%s).\n",
 	       err, where);
       for (l = stack_top; l != &sentinel_frame; l = l->prev) {
-	fprintf (stderr,
+	fprintf (stderr, "  %p%s ", l,
 		 l == beg ? " (beg):" : l == pos ? " (pos):" : ":      ");
 	describe_rec_frame (l);
 	fputc ('\n', stderr);
@@ -3691,11 +3691,10 @@ size_t do_gc(void *ignored, int explicit_call)
       alloc_threshold = (ALLOC_COUNT_TYPE) new_threshold;
 
     if (!explicit_call && last_gc_time != (cpu_time_t) -1) {
-#if CPU_TIME_IS_THREAD_LOCAL == PIKE_YES
-      Pike_interpreter.thread_state->auto_gc_time += last_gc_time;
-#elif CPU_TIME_IS_THREAD_LOCAL == PIKE_NO
-      auto_gc_time += last_gc_time;
-#endif
+      if (cpu_time_is_thread_local)
+	Pike_interpreter.thread_state->auto_gc_time += last_gc_time;
+      else
+	auto_gc_time += last_gc_time;
     }
 
     if(GC_VERBOSE_DO(1 ||) gc_trace)
