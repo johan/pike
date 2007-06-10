@@ -572,10 +572,10 @@
 /* Define to the page size (handled efficiently by malloc). */
 #undef PIKE_MALLOC_PAGE_SIZE
 
-/* PIKE_YES if the number reported by get_cpu_time (rusage.c) is
- * thread local, PIKE_NO if it isn't, PIKE_UNKNOWN if it couldn't be
- * established. */
-#undef CPU_TIME_IS_THREAD_LOCAL
+/* PIKE_YES if the number reported by fallback_get_cpu_time (rusage.c)
+ * is thread local, PIKE_NO if it isn't, PIKE_UNKNOWN if it couldn't
+ * be established. */
+#undef FB_CPU_TIME_IS_THREAD_LOCAL
 
 @BOTTOM@
 

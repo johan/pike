@@ -72,7 +72,9 @@ extern ALLOC_COUNT_TYPE num_allocs, alloc_threshold;
 PMOD_EXPORT extern int Pike_in_gc;
 extern int gc_generation;
 extern int gc_trace, gc_debug;
+#ifdef CPU_TIME_MIGHT_NOT_BE_THREAD_LOCAL
 extern cpu_time_t auto_gc_time;
+#endif
 
 extern struct callback *gc_evaluator_callback;
 #ifdef PIKE_DEBUG

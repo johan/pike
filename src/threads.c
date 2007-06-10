@@ -1872,7 +1872,7 @@ void init_thread_obj(struct object *o)
   THIS_THREAD->result.u.integer = 0;
   co_init(& THIS_THREAD->status_change);
   THIS_THREAD->thread_local=NULL;
-#if CPU_TIME_IS_THREAD_LOCAL == PIKE_YES
+#ifdef CPU_TIME_MIGHT_BE_THREAD_LOCAL
   THIS_THREAD->auto_gc_time = 0;
 #endif
 }
