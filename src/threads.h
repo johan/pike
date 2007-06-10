@@ -51,7 +51,7 @@ struct thread_state {
   struct mapping *thread_local;
   struct thread_state *hashlink, **backlink;
   struct svalue result;
-#if CPU_TIME_IS_THREAD_LOCAL == PIKE_YES
+#ifdef CPU_TIME_MIGHT_BE_THREAD_LOCAL
   cpu_time_t auto_gc_time;
 #endif
 #ifdef PIKE_DEBUG
