@@ -4680,6 +4680,8 @@ AC_CACHE_VAL(pike_cv_configure_test_port_c, [
   AC_TRY_RUN([
 #include <stdio.h>
 #define CONFIGURE_TEST
+/* Don't need stralloc.h in this mode, but it often gets indirectly included. */
+#define STRALLOC_H
 #include "port.c"
 int main()
 {
@@ -4777,6 +4779,8 @@ if test "x$ac_cv_func_gethrvtime" = xyes; then
   AC_CACHE_VAL(pike_cv_func_gethrvtime_works, [
     AC_TRY_RUN([
 #define CONFIGURE_TEST
+/* Don't need stralloc.h in this mode, but it often gets indirectly included. */
+#define STRALLOC_H
 
 #include "port.c"
 
@@ -7142,6 +7146,8 @@ AC_CACHE_VAL(pike_cv_configure_test_rusage_c, [
   AC_TRY_RUN([
 #include <stdio.h>
 #define CONFIGURE_TEST
+/* Don't need stralloc.h in this mode, but it often gets indirectly included. */
+#define STRALLOC_H
 #include "rusage.c"
 int main()
 {
@@ -7168,6 +7174,8 @@ AC_CACHE_VAL(pike_cv_configure_test_threads_c, [
   AC_TRY_RUN([
 #include <stdio.h>
 #define CONFIGURE_TEST
+/* Don't need stralloc.h in this mode, but it often gets indirectly included. */
+#define STRALLOC_H
 #include "threads.c"
 int main()
 {
@@ -7202,6 +7210,8 @@ AC_CACHE_VAL(pike_cv_thread_local_cpu_time, [
 #ifdef PIKE_THREADS
 
 #define CONFIGURE_TEST
+/* Don't need stralloc.h in this mode, but it often gets indirectly included. */
+#define STRALLOC_H
 
 #include "port.c"
 #include "rusage.c"
