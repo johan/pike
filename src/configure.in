@@ -7165,6 +7165,7 @@ AC_CACHE_VAL(pike_cv_configure_test_rusage_c, [
 #define SVALUE_H
 #define ARRAY_H
 
+#include "port.c"		/* Tested earlier, but might be required. */
 #include "rusage.c"
 
 int main()
@@ -7199,6 +7200,7 @@ AC_CACHE_VAL(pike_cv_configure_test_threads_c, [
 #define SVALUE_H
 #define ARRAY_H
 
+#include "port.c"		/* Tested earlier, but might be required. */
 #include "threads.c"
 
 int main()
