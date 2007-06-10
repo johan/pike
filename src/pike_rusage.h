@@ -58,7 +58,10 @@
 #ifdef CONFIGURE_TEST_FALLBACK_GCT
 /* In the configure test that tries to figure out whether the fallback
  * get_cpu_time is thread local or not. */
+#  define cpu_time_is_thread_local -1
+#  define fallback_gct_impl get_cpu_time_impl
 #  define fallback_gct get_cpu_time
+#  define fallback_gct_res get_cpu_time_res
 #  define GCT_IS_FALLBACK
 #else
 
