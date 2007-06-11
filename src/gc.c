@@ -2680,7 +2680,7 @@ int gc_cycle_push(void *data, struct marker *m, int weak)
 	}
       }
 
-      else {			/* weak < 0 */
+      else if (weak < 0) {
 	struct gc_rec_frame *r;
 	CYCLE_DEBUG_MSG (cycle_frame, "gc_cycle_push, search strong");
 	/* Find the last weakly linked thing and the last one which
@@ -2727,6 +2727,8 @@ int gc_cycle_push(void *data, struct marker *m, int weak)
 	 * rotation). */
 	CYCLE_DEBUG_MSG (weakly_refd, "gc_cycle_push, weak break");
 	rotate_rec_stack (cycle_frame, weakly_refd);
+	/* FIXME: Motivate why it isn't necessary to mark up new
+	 * cycle_id's here. */
 #ifdef DEBUG_MALLOC
 	check_cycle_ids_on_stack (cycle_frame, weakly_refd, "after weak break");
 #endif
