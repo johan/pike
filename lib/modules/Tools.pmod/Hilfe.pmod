@@ -2436,6 +2436,7 @@ class StdinHilfe
     if(!readline->get_history())
       readline->enable_history(512);
     readline->get_input_controller()->bind("\t", handle_tab);
+    readline->get_input_controller()->bind("^D", handle_doc);
 
     signal(signum("SIGINT"),signal_trap);
 
@@ -2477,6 +2478,21 @@ class StdinHilfe
     }
 
     return reverse(completable);
+  }
+
+  void handle_doc(string key)
+  {
+    array modules, tokens;
+    string input = readline->gettext()[..readline->getcursorpos()-1];
+    mixed error = catch
+    {
+      tokens = Parser.Pike.split(input);
+    };
+    if (error)
+      return;
+
+    array completable = get_resolvable(tokens);
+    add_input_line("doc "+completable*"");
   }
 
   void handle_tab(string key)
