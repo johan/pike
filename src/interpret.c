@@ -475,6 +475,12 @@ PMOD_EXPORT void assign_lvalue(struct svalue *lval,struct svalue *from)
   }
 }
 
+/* On error callback. lvalue is followed by value to assign. */
+static void o_assign_lvalue(struct svalue *lvalue)
+{
+  assign_lvalue(lvalue, lvalue+2);
+}
+
 union anything *get_pointer_if_this_type(struct svalue *lval, TYPE_T t)
 {
 #ifdef PIKE_SECURITY
