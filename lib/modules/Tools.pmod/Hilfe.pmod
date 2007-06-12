@@ -308,7 +308,7 @@ private class CommandExit {
 
 private class CommandDoc {
   inherit Command;
-  string help(string what) { return "Show documentation for pike modules and classes.\n"; }
+  string help(string what) { return "Show documentation for pike modules and classes."; }
 
   void exec(Evaluator e, string line, array(string) words,
 	    array(string) tokens) 
@@ -365,7 +365,7 @@ Rewritten by Martin Nilsson 2002
 
     if(sizeof(words)>1 && e->commands[words[1]]) {
       string ret = e->commands[words[1]]->doc(words[1], words[2..]*"");
-      if(ret) write(ret);
+      if(ret) write(ret+"\n");
       return;
     }
 
