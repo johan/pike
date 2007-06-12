@@ -308,7 +308,7 @@ private class CommandExit {
 
 private class CommandDoc {
   inherit Command;
-  string help(string what) { return "Show documentation for pike modules and classes."; }
+  string help(string what) { return "Show documentation for pike modules and classes.\n"; }
 
   void exec(Evaluator e, string line, array(string) words,
 	    array(string) tokens) 
