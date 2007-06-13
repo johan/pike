@@ -789,7 +789,8 @@ array(string) module_defined(object mod)
 //! Enable caching of sources from compile_string()
 void enable_source_cache()
 {
-  source_cache = ([]);
+  if (!source_cache)
+    source_cache = ([]);
 }
 
 //! Show documentation for the item @[obj]
