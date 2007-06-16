@@ -1227,14 +1227,18 @@ static void report_child(int pid,
 	      p->result = WEXITSTATUS(status);
 	    } else {
 	      if (WIFSIGNALED(status)) {
+#if 0
 		if (WTERMSIG(status) != 9) {
 		  fprintf(stderr, "Process %d died of signal %d.\n",
 			  pid, WTERMSIG(status));
 		}
+#endif
 		p->sig = WTERMSIG(status);
 	      } else {
+#ifdef PIKE_DEBUG
 		fprintf(stderr, "Process %d died of strange cause 0x%08lx.\n",
 			pid, (unsigned long)status);
+#endif
 	      }
 	      p->result=-1;
 	    }
