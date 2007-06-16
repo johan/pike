@@ -498,13 +498,13 @@ int main(int argc, array(string) argv)
 	  if (err == -1) {
 	    werror("Failed to parse subresult "
 		   "(subprocess died of signal %s):\n"
-		   "%O",
+		   "%O\n",
 		   signame (pid->last_signal()) || (string) pid->last_signal(),
 		   raw_results);
 	  } else {
 	    werror("Failed to parse subresult "
 		   "(subprocess exited with error code %d):\n"
-		   "%O", err, raw_results);
+		   "%O\n", err, raw_results);
 	  }
 	  errors++;
 	} else {
