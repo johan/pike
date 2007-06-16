@@ -65,6 +65,7 @@ PMOD_EXPORT extern const char msg_fatal_error[];
 #define fatal Pike_fatal
 #endif
 
+PMOD_EXPORT DECLSPEC(noreturn) void debug_va_fatal(const char *fmt, va_list args) ATTRIBUTE((noreturn));
 PMOD_EXPORT DECLSPEC(noreturn) void debug_fatal(const char *fmt, ...) ATTRIBUTE((noreturn));
 
 
