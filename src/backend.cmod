@@ -3124,6 +3124,7 @@ PIKECLASS Backend
       /* me->set.num_fds=0; */
 #endif /* OPEN_POLL_DEVICE || HAVE_POLL */
 
+      me->may_need_wakeup = 0;
       {
 	int pipe[2];
 	if(pike_make_pipe(pipe) < 0)
@@ -3139,7 +3140,6 @@ PIKECLASS Backend
 	set_close_on_exec(pipe[0], 1);
 	set_close_on_exec(pipe[1], 1);
       }
-      me->may_need_wakeup = 0;
 
       register_backend(me);
 
