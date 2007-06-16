@@ -496,13 +496,15 @@ int main(int argc, array(string) argv)
 	     (sscanf(results, "%*s(%d tests skipped)", skip) != 2)) == 3) {
 	  // Failed to parse the result totally.
 	  if (err == -1) {
-	    werror("Failed to parse subresult for testsuite %O "
-		   "(died of signal %d).\n"
-		   "%O", testsuite, pid->last_signal(), raw_results);
+	    werror("Failed to parse subresult "
+		   "(subprocess died of signal %s):\n"
+		   "%O",
+		   signame (pid->last_signal()) || (string) pid->last_signal(),
+		   raw_results);
 	  } else {
-	    werror("Failed to parse subresult for testsuite %O "
-		   "(exitcode:%d):\n"
-		   "%O", testsuite, err, raw_results);
+	    werror("Failed to parse subresult "
+		   "(subprocess exited with error code %d):\n"
+		   "%O", err, raw_results);
 	  }
 	  errors++;
 	} else {
@@ -511,9 +513,18 @@ int main(int argc, array(string) argv)
 	  errors += failed;
 	  successes += total - failed;
 	  skipped += skip;
-	  werror("Accumulated: %d tests, %d failed, %d skipped\n",
-		 successes + errors, errors, skipped);
+	  if (err == -1) {
+	    werror ("Subprocess died of signal %s.\n",
+		    signame (pid->last_signal()) || (string) pid->last_signal());
+	    errors++;
+	  }
+	  else if (err) {
+	    werror ("Subprocess exited with error code %d.\n", err);
+	    errors++;
+	  }
 	}
+	werror("Accumulated: %d tests, %d failed, %d skipped\n",
+	       successes + errors, errors, skipped);
 	if (fail && errors) {
 	  exit(1);
 	}
