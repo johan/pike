@@ -22,10 +22,10 @@ array(int) a()
 
     if( l[0] == '@' )
     {
-      if( opl ) werror("Done. "+(tests-opl+1)+" tests.\n" );
-      werror("\n");
+      if( opl ) write("Done. "+(tests-opl+1)+" tests.\n" );
+      write("\n");
       opl = tests+1;
-      werror( replace( l[1..], " #", ":") +"\n" );
+      write( replace( l[1..], " #", ":") +"\n" );
       part++;
       continue;
     }
@@ -51,7 +51,7 @@ array(int) a()
       foreach( t, string tt )
 	if( Unicode.normalize( tt, method ) != ok )
 	{
-	  werror("\n");
+	  write("\n");
 	  werror("Test %d/%s failed:\n"
 		"expected: %s\n"
 		"got:      %s\n"
@@ -73,7 +73,7 @@ array(int) a()
     test( c4, "NFKC", c1, c2, c3, c4, c5 );
     test( c5, "NFKD", c1, c2, c3, c4, c5 );
   }
-  werror( "Done. "+(tests-opl+1)+" tests.\n" );
+  write( "Done. "+(tests-opl+1)+" tests.\n" );
 
   return ({tests, fail});
 }
@@ -81,11 +81,11 @@ array(int) a()
 void main(int argc, array argv)
 {
 
-  werror("Performing Unicode normalization tests\n");
-  werror("See http://www.unicode.org/Public/3.2-Update/NormalizationTest-3.2.0.txt\n");
+  write("Performing Unicode normalization tests\n");
+  write("See http://www.unicode.org/Public/3.2-Update/NormalizationTest-3.2.0.txt\n");
   if( argc<2 || has_value( argv, "--help" ) )
   {
-    werror("\nUsage %s <path>\nwhere path is the path to the directory with the NormalizationTest.txt file.\n",
+    write("\nUsage %s <path>\nwhere path is the path to the directory with the NormalizationTest.txt file.\n",
 	  argv[0]);
     exit(0);
   }
