@@ -2344,6 +2344,10 @@ int POLL_DEVICE_SET_EVENTS(struct Backend_struct *me,
     ev.events = events;
     ev.data.fd = fd;
 
+    /* To avoid valgrind complaints when fd doesn't fill up the
+     * ev.data union. */
+    PIKE_MEM_RW (ev.data);
+
     /* The /dev/epoll interface exposes kernel implementation details...
      */
     IF_PD(fprintf(stderr, "epoll_ctl(%d, EPOLL_CTL_MOD, %d, { 0x%08x, %d })\n",
