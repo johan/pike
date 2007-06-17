@@ -1045,6 +1045,7 @@ static void rec_stack_fatal (struct gc_rec_frame *err, const char *err_name,
     describe_rec_frame (err);
     fputc ('\n', stderr);
   }
+  d_flag = 0; /* The instruction backlog is never of any use here. */
   debug_fatal (NULL);
   va_end (args);
 }
