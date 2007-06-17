@@ -84,7 +84,7 @@ void next()
   if (!(test = this_object()["test"+testno])) exit(0);
   mixed err;
   if (err = catch {
-    werror("Sendfile test: %d\n", testno);
+    write("Sendfile test: %d\n", testno);
     test();
   }) {
     catch {
@@ -195,7 +195,7 @@ int main(int argc, array(string) argv)
 #if constant(alarm)
   alarm(5*60);	// 5 minutes should be sufficient for this test.
 #endif
-  werror("\n");
+  write("\n");
   loopback->bind(0);
   loopbackport = (int)((loopback->query_address()/" ")[1]);
   call_out(next, 0);
