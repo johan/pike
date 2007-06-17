@@ -2212,7 +2212,7 @@ static void check_rec_stack (struct gc_rec_frame *p1, const char *p1n,
 			     const char *file, int line)
 {
 #ifndef DEBUG_MALLOC
-  if (1 || gc_debug)
+  if (gc_debug)
 #endif
   {
     struct gc_rec_frame *l, *last_cycle_id;
