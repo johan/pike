@@ -2839,15 +2839,15 @@ static void file_dup2(INT32 args)
 
 
   if(fd->box.fd < 0) {
-    /* FIXME: Use change_fd_for_box here! */
-    /* fd->box.revents = 0; */
-    if((fd->box.fd = fd_dup(FD)) < 0)
+    int new_fd;
+    if((new_fd = fd_dup(FD)) < 0)
     {
       ERRNO = errno;
       pop_n_elems(args);
       push_int(0);
       return;
     }
+    change_fd_for_box (&fd->box, new_fd);
   } else {
     if (fd->flags & FILE_LOCK_FD) {
       Pike_error("File has been temporarily locked from closing.\n");
