@@ -253,12 +253,14 @@ define(test_scopes,[[
 		   })) * "" +
        "}\n";
     program p;
+    if ($3) master()->set_inhibit_compile_errors (1);
     mixed err = catch {
       p = compile_string("int a() {\n" + line + (s * $2) +
 			 "  return 0;\n"
 			 "}\n");
     };
     if ($3) {
+      master()->set_inhibit_compile_errors (0);
       if (err) return 0;
       error("Expected a compilation error for $1 variables in $2 scope%s.\n",
             ($2>1)?"s":"");
