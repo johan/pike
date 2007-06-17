@@ -1038,6 +1038,7 @@ static void rec_stack_fatal (struct gc_rec_frame *err, const char *err_name,
   va_start (args, fmt);
   fprintf (stderr, msg_fatal_error, file, line);
   (void) VFPRINTF (stderr, fmt, args);
+#if defined (PIKE_DEBUG) || defined (GC_CYCLE_DEBUG)
   fputs ("Recursion stack:\n", stderr);
   describe_rec_stack (err, err_name, p1, p1n, p2, p2n);
   if (err) {
@@ -1045,6 +1046,7 @@ static void rec_stack_fatal (struct gc_rec_frame *err, const char *err_name,
     describe_rec_frame (err);
     fputc ('\n', stderr);
   }
+#endif
   d_flag = 0; /* The instruction backlog is never of any use here. */
   debug_fatal (NULL);
   va_end (args);
