@@ -228,9 +228,7 @@ class Watchdog
 	in = replace (in[..<nl], "\n", "\n" + ts) + in[<nl - 1..];
 	stdout_buf += in;
 	while (sizeof (stdout_buf) > 100000 &&
-	       sscanf (stdout_buf, "%*s%[\n\r]%s",
-		       string lf, stdout_buf) == 3 &&
-	       lf != "") {}
+	       sscanf (stdout_buf, "%*s\n%s", stdout_buf) == 2) {}
       }
     }
   }
