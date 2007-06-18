@@ -10980,22 +10980,7 @@ cond([[all_constants()->_verify_internals]],
 test_tests([[
 array a()
 {
-  Stdio.File p = Stdio.File();
-  object pid = Process.create_process(RUNPIKE_ARRAY +
-				      ({ "]]SRCDIR[[/test_resolve.pike" }),
-				      ([ "stdout":p->pipe(Stdio.PROP_IPC) ]));
-  __signal_watchdog();
-  string results = lower_case(p->read());
-  __signal_watchdog();
-  int err = pid->wait();
-  int ok;
-  int failed;
-  if (((sscanf(results, "%*sok:%d", ok) != 2) +
-       (sscanf(results, "%*sfailed:%d", failed) != 2)) == 2) {
-    // No "ok", and no "failed".
-    return ({ err, results });
-  }
-  return ({ ok, failed });
+  return Tools.Testsuite.run_script ("]]SRCDIR[[/test_resolve.pike");
 }
 ]])
 
