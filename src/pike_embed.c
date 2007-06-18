@@ -38,6 +38,7 @@
 #include "module_support.h"
 #include "opcodes.h"
 #include "pike_memory.h"
+#include "pike_cpulib.h"
 
 #include "pike_embed.h"
 
