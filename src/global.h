@@ -496,7 +496,10 @@ static INLINE long PTRDIFF_T_TO_LONG(ptrdiff_t x)
 
 #include "port.h"
 #include "dmalloc.h"
-#include "pike_cpulib.h"
+
+/* Either this include must go or the include of threads.h in
+ * pike_cpulib.h. Otherwise we get pesky include loops. */
+/* #include "pike_cpulib.h" */
 
 #ifdef BUFSIZ
 #define PROT_STDIO(x) PROT(x)
