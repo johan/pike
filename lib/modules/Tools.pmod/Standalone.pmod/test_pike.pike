@@ -261,7 +261,7 @@ class Watchdog
       // respond, it goes too.
       watched_pid = parent_pid;
       timeout_phase = 0;
-      call_out (timeout, 10);
+      call_out (timeout, WATCHDOG_TIMEOUT);
     }
 
     else {
