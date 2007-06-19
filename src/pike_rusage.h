@@ -105,6 +105,17 @@
 #  define CPU_TIME_MIGHT_NOT_BE_THREAD_LOCAL
 #endif
 
+/* Always consider cpu time as not thread local if we're compiling
+ * without thread support. */
+#ifndef PIKE_THREADS
+#  undef cpu_time_is_thread_local
+#  define cpu_time_is_thread_local 0
+#  undef CPU_TIME_MIGHT_BE_THREAD_LOCAL
+#  ifndef CPU_TIME_MIGHT_NOT_BE_THREAD_LOCAL
+#    define CPU_TIME_MIGHT_NOT_BE_THREAD_LOCAL
+#  endif
+#endif
+
 #endif	/* !CONFIGURE_TEST_FALLBACK_GCT */
 
 /* Choose get_real_time implementation. Prefer one that isn't affected
@@ -161,7 +172,9 @@ typedef unsigned long cpu_time_t;
 #endif
 
 #ifdef GCT_RUNTIME_CHOICE
+#ifndef cpu_time_is_thread_local
 PMOD_EXPORT extern int cpu_time_is_thread_local;
+#endif
 PMOD_EXPORT extern const char *get_cpu_time_impl;
 PMOD_EXPORT extern cpu_time_t (*get_cpu_time) (void);
 PMOD_EXPORT extern cpu_time_t (*get_cpu_time_res) (void);
