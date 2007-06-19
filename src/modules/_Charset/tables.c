@@ -66,7 +66,7 @@ extern UNICHAR map_videotex_suppl[];
  *
  * Note that this means that the non-spacing 0xe3xx characters
  * map straight to the corresponding combiners at 0x03xx. There
- * are thus only three private characters left after reordering.
+ * are thus only two private characters left after reordering.
  */
 
 static const UNICHAR map_ISO_646_irv_1983[] = {
