@@ -34,7 +34,7 @@ AAIAJg==
     object n = t->_obj->register_natives(({({"func", "(BDSI)D", `+})}));
     return t->newInstance()->entry(17, 42.5, 99, 777);
 #else
-    werror("Warning: Native methods not supported.\n");
+    write("Warning: Native methods not supported.\n");
     return 935.5;
 #endif
   ]],935.5)
