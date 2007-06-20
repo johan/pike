@@ -99,14 +99,8 @@ void odbc_error(const char *fun, const char *msg,
   SWORD errmsg_len = 0;
   SDWORD native_error;
 
-  _code =
-#ifdef SQL_WCHAR
-    SQLErrorW
-#else
-    SQLError
-#endif
-    (odbc_henv, odbc->hdbc, hstmt, errcode, &native_error,
-		    errmsg, SQL_MAX_MESSAGE_LENGTH-1, &errmsg_len);
+  _code = SQLError(odbc_henv, odbc->hdbc, hstmt, errcode, &native_error,
+		   errmsg, SQL_MAX_MESSAGE_LENGTH-1, &errmsg_len);
   errmsg[errmsg_len] = '\0';
 
   if (odbc) {
