@@ -2422,7 +2422,7 @@ array(object|array(string)) resolv(Evaluator e, array completable, void|object b
       else
         return ({ base, completable, type });
     }
-    if (newbase=base[completable[0]]) 
+    if (!functionp(base) && (newbase=base[completable[0]]) )
       return resolv(e, completable[1..], newbase, type);
   }
 
