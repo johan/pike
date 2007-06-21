@@ -112,7 +112,7 @@ static ptrdiff_t eat_text(unsigned char *src, ptrdiff_t srclen,
       char x = (*src++)&0x7f;
       if(x==0x20 || x==0x7f)
 	EMIT((UNICHAR)x);
-      else if (g->transl[x-0x21] != 0xe000)
+      else if (g->transl[x-0x21] != 0xe000) {
 	EMIT(g->transl[x-0x21]);
     }
     return 0;
