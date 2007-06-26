@@ -767,10 +767,10 @@ static int prio_from_filename(string fname)
 //! @returns
 //!   An array of strings with filenames.
 //!   (one for each file in a joinnode, or just one otherwise)
-array(string) module_defined(object mod)
+array(string) module_defined(object|program mod)
 {
   array files = ({});
-  if (!objectp(mod) && programp(mod))
+  if (programp(mod))
     return ({ Builtin()->program_defined([program]mod) });
 
   array mods;
