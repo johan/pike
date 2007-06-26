@@ -694,6 +694,7 @@ static void worker(void *this_)
 {
   struct pike_sendfile *this = this_;
   struct Backend_struct *backend;
+  struct timeval tv;
 
   low_do_sendfile(this);
 
@@ -743,8 +744,9 @@ static void worker(void *this_)
     backend_add_backend_callback(backend, call_callback_and_free, this, 0);
 
   /* Call as soon as possible. */
-  next_timeout.tv_usec = 0;
-  next_timeout.tv_sec = 0;
+  tv.tv_usec = 0;
+  tv.tv_sec = 0;
+  backend_lower_timeout(backend, &tv);
 
   /* Wake up the backend */
   backend_wake_up_backend(backend);
