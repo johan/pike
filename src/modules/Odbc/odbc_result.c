@@ -41,7 +41,7 @@
 
 #ifdef HAVE_ODBC
 
-#define ODBC_DEBUG
+/* #define ODBC_DEBUG */
 
 /*
  * Constants
