@@ -61,18 +61,17 @@ HENV odbc_henv = SQL_NULL_HENV;
  */
 
 #ifdef SQL_WCHAR
-void push_sqlwchar(SQLWCHAR *str, size_t num_bytes)
+struct pike_string *make_shared_binary_sqlwchar(SQLWCHAR *str,
+						size_t len)
 {
   int shift = 1;
-  struct pike_string *res;
   if (sizeof(SQLWCHAR) == 4) shift = 2;
-#ifdef PIKE_DEBUG
-  if (num_bytes & ((1<<shift)-1)) {
-    Pike_fatal("Odd number of bytes to push_wstring(): "
-	       "%zd (shift:%d) (sz:%d)\n", num_bytes, shift, sizeof(SQLWCHAR));
-  }
-#endif /* PIKE_DEBUG */
-  push_string(make_shared_binary_pcharp(MKPCHARP(str, shift), num_bytes>>shift));
+  return make_shared_binary_pcharp(MKPCHARP(str, shift), len);
+}
+
+void push_sqlwchar(SQLWCHAR *str, size_t len)
+{
+  push_string(make_shared_binary_sqlwchar(str, len));
 }
 #endif /* SQL_WCHAR */
 
