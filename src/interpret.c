@@ -1784,11 +1784,12 @@ int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 
       CHECK_INTERPRETER_LOCK();
 
-      if( Pike_interpreter.thread_state &&
-	  !th_equal(Pike_interpreter.thread_state->id, self) )
-	Pike_fatal("Current thread is wrong.\n");
+      if (Pike_interpreter.thread_state) {
+	if (!th_equal(Pike_interpreter.thread_state->id, self))
+	  Pike_fatal("Current thread is wrong.\n");
 
-      DEBUG_CHECK_THREAD();
+	DEBUG_CHECK_THREAD();
+      }
     }
 #endif
 
