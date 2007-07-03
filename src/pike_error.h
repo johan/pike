@@ -339,7 +339,7 @@ static INLINE void DECLSPEC(noreturn) out_of_memory_error (
   size_t amount)
 {
   resource_error (func, base_sp, args, "memory", amount,
-		  msg_out_of_mem_2, amount);
+		  amount ? msg_out_of_mem_2 : msg_out_of_mem, amount);
 }
 
 #define SIMPLE_OUT_OF_MEMORY_ERROR(FUNC, AMOUNT) \
