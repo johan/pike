@@ -44,7 +44,7 @@
 #define THIS ((struct pgres_object_data *) (Pike_fp->current_storage))
 
 /* Actual code */
-#ifdef _REENTRANT
+#ifdef PIKE_THREADS
 # ifdef PQ_THREADSAFE
 #  define PQ_FETCH() PIKE_MUTEX_T *pg_mutex = &THIS->mutex;
 #  define PQ_LOCK() mt_lock(pg_mutex)
