@@ -180,11 +180,15 @@ static void gz_deflate_create(INT32 args)
     Pike_error("libz not compatible with zlib.h!!!\n");
     break;
 
+  case Z_MEM_ERROR:
+    Pike_error ("Out of memory while initializing Gz.deflate.\n");
+    break;
+
   default:
     if(THIS->gz.msg)
-      Pike_error("Failed to initialize gz_deflate: %s\n",THIS->gz.msg);
+      Pike_error("Failed to initialize Gz.deflate: %s\n",THIS->gz.msg);
     else
-      Pike_error("Failed to initialize gz_deflate\n");
+      Pike_error("Failed to initialize Gz.deflate (%d).\n", tmp);
   }
 }
 
@@ -269,12 +273,16 @@ void zlibmod_pack(struct pike_string *data, dynamic_buffer *buf,
     Pike_error("libz not compatible with zlib.h!!!\n");
     break;
 
+  case Z_MEM_ERROR:
+    Pike_error ("Out of memory while initializing Gz.compress.\n");
+    break;
+
   default:
     deflateEnd(&z.gz);
     if(z.gz.msg)
-      Pike_error("Failed to initialize gz: %s\n", z.gz.msg);
+      Pike_error("Failed to initialize Gz.compress: %s\n", z.gz.msg);
     else
-      Pike_error("Failed to initialize gz\n");
+      Pike_error("Failed to initialize Gz.compress (%d).\n", ret);
   }
 
   mt_init(&z.lock);
@@ -515,11 +523,15 @@ static void gz_inflate_create(INT32 args)
     Pike_error("libz not compatible with zlib.h!!!\n");
     break;
 
+  case Z_MEM_ERROR:
+    Pike_error ("Out of memory while initializing Gz.inflate.\n");
+    break;
+
   default:
     if(THIS->gz.msg)
-      Pike_error("Failed to initialize gz_inflate: %s\n",THIS->gz.msg);
+      Pike_error("Failed to initialize Gz.inflate: %s\n",THIS->gz.msg);
     else
-      Pike_error("Failed to initialize gz_inflate\n");
+      Pike_error("Failed to initialize Gz.inflate (%d).\n", tmp);
   }
 }
 
@@ -609,12 +621,17 @@ void zlibmod_unpack(struct pike_string *data, dynamic_buffer *buf, int raw)
     Pike_error("libz not compatible with zlib.h!!!\n");
     break;
 
+  case Z_MEM_ERROR:
+    Pike_error ("Out of memory while initializing Gz.uncompress.\n");
+    inflateEnd(&z.gz);
+    break;
+
   default:
     inflateEnd( &z.gz );
     if(z.gz.msg)
-      Pike_error("Failed to initialize gz: %s\n", z.gz.msg);
+      Pike_error("Failed to initialize Gz.uncompress: %s\n", z.gz.msg);
     else
-      Pike_error("Failed to initialize gz\n");
+      Pike_error("Failed to initialize Gz.uncompress (%d).\n", ret);
   }
 
   mt_init(&z.lock);
