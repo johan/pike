@@ -4054,6 +4054,7 @@ static void decode_value2(struct decode_data *data)
 		/* identifier_offset */
 		ref.identifier_offset =
 		  Pike_compiler->new_program->num_identifiers;
+		add_to_identifiers(id);
 
 		/* ref.inherit_offset */
 		ref.inherit_offset = 0;
@@ -4082,7 +4083,6 @@ static void decode_value2(struct decode_data *data)
 			       "(expected %d, got %d) for ", no, n);
 		}
 
-		add_to_identifiers(id);
 		dmalloc_touch_svalue(Pike_sp-1);
 		dmalloc_touch_svalue(Pike_sp-2);
 		Pike_sp -= 2;
