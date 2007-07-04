@@ -133,11 +133,6 @@ PMOD_EXPORT DECLSPEC(noreturn) void pike_throw(void) ATTRIBUTE((noreturn))
   if(!Pike_interpreter.recoveries)
     Pike_fatal("No error recovery context.\n");
 
-#ifdef PIKE_DEBUG
-  if(Pike_sp - Pike_interpreter.evaluator_stack < Pike_interpreter.recoveries->stack_pointer)
-    Pike_fatal("Stack error in error.\n");
-#endif
-
   while(Pike_fp != Pike_interpreter.recoveries->frame_pointer)
   {
 #ifdef PIKE_DEBUG
@@ -147,14 +142,23 @@ PMOD_EXPORT DECLSPEC(noreturn) void pike_throw(void) ATTRIBUTE((noreturn))
     POP_PIKE_FRAME();
   }
 
-  pop_n_elems(Pike_sp - Pike_interpreter.evaluator_stack - Pike_interpreter.recoveries->stack_pointer);
-  Pike_mark_sp = Pike_interpreter.mark_stack + Pike_interpreter.recoveries->mark_sp;
+  /* Don't pop the stack before the onerrors have run; they might need
+   * items from the stack.
+   */
 
   while(Pike_interpreter.recoveries->onerror)
   {
     (*Pike_interpreter.recoveries->onerror->func)(Pike_interpreter.recoveries->onerror->arg);
     Pike_interpreter.recoveries->onerror=Pike_interpreter.recoveries->onerror->previous;
   }
+
+#ifdef PIKE_DEBUG
+  if(Pike_sp - Pike_interpreter.evaluator_stack < Pike_interpreter.recoveries->stack_pointer)
+    Pike_fatal("Stack error in error.\n");
+#endif
+
+  pop_n_elems(Pike_sp - Pike_interpreter.evaluator_stack - Pike_interpreter.recoveries->stack_pointer);
+  Pike_mark_sp = Pike_interpreter.mark_stack + Pike_interpreter.recoveries->mark_sp;
 
 #if defined(DEBUG_MALLOC) && defined(PIKE_DEBUG)
   /* This will tell us where the value was caught (I hope) */
