@@ -239,6 +239,9 @@ static void exit_mysql_struct(struct object *o)
 }
 void pike_mysql_set_ssl(struct mapping *options) {
 
+  // for some reason, we may get here without an options mapping.
+  if(!options) return;
+
 #ifdef HAVE_MYSQL_SSL
     char *ssl_key = NULL;
     char *ssl_cert = NULL;
