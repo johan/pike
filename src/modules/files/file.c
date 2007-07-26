@@ -826,7 +826,11 @@ static void file_peek(INT32 args)
     ERRNO=errno;
     ret=-1;
   } else if (fd.revents & (POLLERR | POLLHUP)) {
-    ret = 0;
+    int err = EPIPE;	/* Value in case of non-socket. */
+    ACCEPT_SIZE_T len = sizeof(err);
+    ret = -1;
+    getsockopt(PD, SOL_SOCKET, SO_ERROR, (void *)&err, &len);
+    ERRNO = err;
   }else{
     ret = (ret > 0) && (fds.revents & POLLIN);
   }
