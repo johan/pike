@@ -15,7 +15,7 @@ FILE_FUNC("close",file_close, tFunc(tOr(tStr,tVoid),tInt))
 FILE_FUNC("read",file_read, tFunc(tOr(tInt,tVoid) tOr(tInt,tVoid),tStr))
 #ifndef __NT__
 /* function(float|int|void:int) */
-FILE_FUNC("peek",file_peek, tFunc(tOr3(tFlt,tInt,tVoid),tInt))
+FILE_FUNC("peek",file_peek, tFunc(tOr3(tFlt,tInt,tVoid) tOr(tInt,tVoid), tInt))
 #endif
 /* function(string|array(string),mixed...:int) */
 FILE_FUNC("write",file_write,
