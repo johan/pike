@@ -234,6 +234,11 @@ void mysqlmod_parse_field(MYSQL_FIELD *field, int support_default)
       nbits++;
       push_text("primary_key");
     }
+    if (field->flags & UNIQUE_KEY_FLAG)
+    {
+      push_text("unique");
+      nbits++;
+    }
     if (IS_NOT_NULL(field->flags)) {
       nbits++;
       push_text("not_null");
