@@ -27,13 +27,13 @@ static void create(mixed res);
 static string _sprintf(int type, mapping|void flags)
 {
   int f = num_fields();
-  int r = num_rows();
+  catch( int r = num_rows() );
   int e = eof();
   return type=='O' && master_res &&
     sprintf("%O(/* row %d/%s, %d field%s */)",
 	    this_program, index,
-	    (index==r && !e)?"?":(string)num_rows(),
-	    f=num_fields(), f>1?"s":"");
+	    (!r || index==r && !e)?"?":(string)num_rows(),
+	    f = num_fields(), f!=1?"s":"");
 }
 
 //! Returns the number of rows in the result.
