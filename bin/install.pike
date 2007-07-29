@@ -2696,8 +2696,8 @@ the PRIVATE_CRT stuff in install.pike.\n");
 		       combine_path(include_prefix, "specs"));
       low_install_file(combine_path(vars->TMP_BUILDDIR,
 				    "modules/dynamic_module_makefile"),
-		       combine_path(include_prefix,
-				    "dynamic_module_makefile"));
+		       combine_path(include_prefix, 
+				    "modules/dynamic_module_makefile"));
       low_install_file(combine_path(vars->SRCDIR,"install-welcome"),
 		       combine_path(prefix, "build/install-welcome"));
       low_install_file(combine_path(vars->SRCDIR,"dumpmaster.pike"),
@@ -2765,9 +2765,11 @@ the PRIVATE_CRT stuff in install.pike.\n");
 		   combine_path(include_prefix,f));
 
     if(!export) {
+      mkdirhier(combine_path(include_prefix, "modules"));
       fix_smartlink(combine_path(vars->TMP_BUILDDIR,
 				 "modules/dynamic_module_makefile"),
-		    combine_path(include_prefix,"dynamic_module_makefile"),
+		    combine_path(include_prefix,
+				 "modules/dynamic_module_makefile"),
 		    include_prefix);
       fix_smartlink(combine_path(vars->TMP_BUILDDIR,"specs"),
 		    combine_path(include_prefix,"specs"), include_prefix);
