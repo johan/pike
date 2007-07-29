@@ -857,16 +857,16 @@ static void file_peek(INT32 args)
     {
       ERRNO=errno;
       ret=-1;
-    } else if (fd.revents & POLLERR) {
+    } else if (fds.revents & POLLERR) {
       int err = EPIPE;	/* Value in case of non-socket. */
       ACCEPT_SIZE_T len = sizeof(err);
       ret = -1;
       getsockopt(FD, SOL_SOCKET, SO_ERROR, (void *)&err, &len);
       ERRNO = err;
-    } else if (fd.revents & POLLNVAL) {
+    } else if (fds.revents & POLLNVAL) {
       ret = -1;
       errno = EINVAL;
-    } else if (not_eof && (fd.revents & POLLHUP)) {
+    } else if (not_eof && (fds.revents & POLLHUP)) {
       ret = -1;
       ERRNO = EPIPE;
     }else{
