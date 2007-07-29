@@ -861,7 +861,7 @@ static void file_peek(INT32 args)
       int err = EPIPE;	/* Value in case of non-socket. */
       ACCEPT_SIZE_T len = sizeof(err);
       ret = -1;
-      getsockopt(PD, SOL_SOCKET, SO_ERROR, (void *)&err, &len);
+      getsockopt(FD, SOL_SOCKET, SO_ERROR, (void *)&err, &len);
       ERRNO = err;
     } else if (fd.revents & POLLNVAL) {
       ret = -1;
