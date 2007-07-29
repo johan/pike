@@ -163,11 +163,7 @@ void do_make(array(string) cmd)
     ({"PIKE_INCLUDES=-I"+include_path,
       "PIKE_SRC_DIR="+src_path,
       "BUILD_BASE="+include_path,
-#ifdef NOT_INSTALLED
       "MODULE_BASE="+include_path+"/modules",
-#else
-      "MODULE_BASE="+include_path,
-#endif
       "TMP_BINDIR="+bin_path,
       "SRCDIR="+fix("$src"),
       "FULL_SRCDIR=" + full_srcdir,
