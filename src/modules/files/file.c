@@ -845,7 +845,7 @@ static void file_peek(INT32 args)
     struct pollfd fds;
     int timeout;
     timeout = (int)(tf*1000); /* ignore overflow for now */
-    if (!timeout) timeout = 1;/
+    if (!timeout) timeout = 1;
     fds.fd=FD;
     fds.events=POLLIN;
     fds.revents=0;
