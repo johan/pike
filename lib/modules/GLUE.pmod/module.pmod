@@ -1368,16 +1368,8 @@ class BaseDWIM {
 	  height = imgs->ysize;
 	  width = imgs->xsize;
 	}
-#if 0 // It is not possible to compare Image.Image with e.g. strings.
-	args -= ({ arg });
-#else
-	foreach(args; int pos; mixed value)
-	  if(objectp(value) && value==arg) {
-	    args[pos] = "\0";
-	    args -= ({ "\0" });
-	    break;
-	  }
-#endif
+
+        args = args[..pos-1] + args[pos+1..];
 	continue;
       }
       if(stringp(arg)) {
