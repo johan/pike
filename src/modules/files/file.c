@@ -799,7 +799,7 @@ static void file_read(INT32 args)
  *!       at EOF.
  *!
  *!     @value 1
- *!       Regard EOF as an error. Return @{-1@} and set @[errno] to
+ *!       Regard EOF as an error. Return @expr{-1@} and set @[errno] to
  *!       @expr{EPIPE@} at EOF.
  *!   @endint
  *!
