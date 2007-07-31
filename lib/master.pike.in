@@ -1329,6 +1329,8 @@ static void create()
   // add path for architecture-dependant files
   add_include_path(__embedded_resource_directory + "/lib/include");
   add_module_path(__embedded_resource_directory + "/lib/modules");
+  add_module_path(__embedded_resource_directory + "/" + replace(uname()->machine, " ", "_") + "/modules");
+
 #endif
 
   system_module_path=pike_module_path;
