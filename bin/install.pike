@@ -18,8 +18,8 @@ string version_str = sprintf("%d.%d.%d",
 			     __REAL_MAJOR__,
 			     __REAL_MINOR__,
 			     __REAL_BUILD__);
-string version_guid = Standards.UUID.make_version3(pike_upgrade_guid,
-						   version_str)->str();
+string version_guid = Standards.UUID.make_version3(version_str,
+						   pike_upgrade_guid)->str();
 
 int last_len;
 int redump_all;
