@@ -125,7 +125,7 @@ test_eq([[Standards.IDNA.Punycode.decode("b1abfaaepdrnnbgefbaDotcwatmq2g4l")]],
 
 // - UUID
 test_eq(Standards.UUID.make_dns("www.widgets.com")->str(),
-        "e902893a-9d22-3c7e-a7b8-d6e313b71d9f")
+        "3d813cbb-47fb-32ba-91df-831e1593ac29")
 test_eq(Standards.UUID.make_null()->str(),
         "00000000-0000-0000-0000-000000000000")
 
