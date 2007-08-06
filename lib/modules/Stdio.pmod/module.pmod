@@ -2016,7 +2016,8 @@ int mkdirhier (string pathname, void|int mode)
     path += name;
     if (!file_stat(path)) {
       if (!mkdir(path, mode)) {
-	return 0;
+	if (errno() != System.EEXIST)
+	  return 0;
       }
     }
     path += "/";
