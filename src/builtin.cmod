@@ -313,7 +313,7 @@ PIKEFUN string string2hex(string s)
   optflags OPT_TRY_OPTIMIZE;
 {
   struct pike_string *hex;
-  unsigned char *st = s->str;
+  unsigned char *st = (unsigned char *)s->str;
   int i;
 
   if (s->size_shift)
@@ -344,7 +344,7 @@ PIKEFUN string hex2string(string hex)
 {
   struct pike_string *s;
   int i, o=0;
-  unsigned char *q = hex->str;
+  unsigned char *q = (unsigned char *)hex->str;
   int l = hex->len>>1;
   if(hex->size_shift) Pike_error("Only hex digits allowed.\n");
   if(hex->len&1) Pike_error("Can't have odd number of digits.\n");
