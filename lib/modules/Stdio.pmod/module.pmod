@@ -787,7 +787,13 @@ class File
     BE_WERR("__stdio_read_callback()");
 
     if (!___read_callback) {
-      if (___close_callback) return __stdio_close_callback();
+      if (___close_callback) {
+#if 0
+	/* This code only works for the POLL case! */
+	if ((peek(0, 1) == -1) && (errno() == System.EPIPE))
+#endif /* 0 */
+	  return __stdio_close_callback();
+      }
       return 0;
     }
 
@@ -2478,7 +2484,8 @@ int mkdirhier (string pathname, void|int mode)
     path += name;
     if (!file_stat(path)) {
       if (!mkdir(path, mode)) {
-	return 0;
+	if (errno() != System.EEXIST)
+	  return 0;
       }
     }
     path += "/";
