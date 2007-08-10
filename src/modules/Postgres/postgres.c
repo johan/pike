@@ -91,7 +91,7 @@ static void pgres_create (struct object * o) {
 	THIS->dofetch=0;
 	THIS->lastcommit=0;
         THIS->last_rows=-1;
-#ifdef PQ_THREADSAFE
+#if defined(PIKE_THREADS) && defined(PQ_THREADSAFE)
 	mt_init(&THIS->mutex);
 #endif
 
@@ -119,7 +119,7 @@ static void pgres_destroy (struct object * o)
 		free_svalue(THIS->notify_callback);
 	}
 	free(THIS->notify_callback);
-#ifdef PQ_THREADSAFE
+#if defined(PIKE_THREADS) && defined(PQ_THREADSAFE)
 	mt_destroy(&THIS->mutex);
 #endif
 }

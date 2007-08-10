@@ -26,7 +26,7 @@ struct pgres_object_data {
 	int docommit;
 	int lastcommit;
         int last_rows;
-#ifdef PQ_THREADSAFE
+#if defined(PIKE_THREADS) && defined(PQ_THREADSAFE)
         PIKE_MUTEX_T mutex;
 #endif
 };
