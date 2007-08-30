@@ -2496,7 +2496,6 @@ class StdinHilfe
     if(!readline->get_history())
       readline->enable_history(512);
     readline->get_input_controller()->bind("\t", handle_completions);
-    readline->get_input_controller()->bind("^H", handle_doc);
     readline->get_input_controller()->bind("\\!k1", handle_doc);
 
     signal(signum("SIGINT"),signal_trap);
