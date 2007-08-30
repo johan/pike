@@ -31,7 +31,10 @@ mixed `[](string name) {
   //        resolver. // mikael
   
   foreach(local_path,string lp){
-    program r=(program)combine_path(lp,name);
+    program r;
+    catch{ 
+      r=(program)combine_path(lp,name); 
+    };
     if(r)
       return r;
     Stdio.Stat st;
