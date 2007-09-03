@@ -1289,6 +1289,9 @@ static void create()
     else
       error("Function %O is missing from master.pike.\n", e);
 
+  add_constant("__dirnode", dirnode);
+  add_constant("__joinnode", joinnode);
+
   add_constant("strlen", sizeof);
   add_constant("write", write);
   add_constant("werror", werror);
