@@ -126,6 +126,9 @@ class asn1_object
     }
 }
 
+// Forward compat.
+constant Object = asn1_object;
+
 class asn1_compound
 {
   inherit asn1_object;
