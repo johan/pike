@@ -3492,6 +3492,25 @@ test_any([[
   return (y->x1 + y->x2) * y->x;
 ]], 6)
 
+test_any([[
+  // Triggered fatal error "Getter/setter variable outside program!".
+  class X {
+    static int xx;
+    int `->x() { return xx; }
+    void `->x=(int xxx) { xx = xxx; }
+    static void create(int xxx) {
+      x = xxx;
+    }
+  };
+  class Y {
+    inherit X;
+    static void create(int yyy) {
+      X:x = yyy + 2;
+    }
+  };
+  return Y(5)->x;
+]], 7)
+
 test_compile_error([[
   class X {
     int x;
