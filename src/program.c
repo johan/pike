@@ -3104,9 +3104,10 @@ void check_program(struct program *p)
       ptrdiff_t offset = INHERIT_FROM_INT(p, e)->storage_offset+i->func.offset;
       if (i->run_time_type == PIKE_T_GET_SET) {
 	struct reference *ref = PTR_FROM_INT(p, e);
-	if (!(ref->id_flags & ID_INHERITED)) {
+	if (!ref->inherit_offset) {
 	  INT32 *gs_info = (INT32 *)(p->program + i->func.offset);
 	  if ((gs_info + 2) > (INT32 *)(p->program + p->num_program)) {
+	    dump_program_tables(p, 0);
 	    Pike_fatal("Getter/setter variable outside program!\n");
 	  }
 	  if (gs_info[0] >= p->num_identifier_references) {
