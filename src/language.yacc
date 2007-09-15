@@ -599,8 +599,7 @@ constant_name: TOK_IDENTIFIER '=' safe_expr0
     if(!is_const($3))
     {
       if(Pike_compiler->compiler_pass==2)
-	my_yyerror("Constant definition is not constant (0x%04x).",
-		   $3->tree_info);
+	yyerror("Constant definition is not constant.");
       else
 	add_constant($1->u.sval.u.string, 0,
 		     Pike_compiler->current_modifiers & ~ID_EXTERN);
