@@ -180,6 +180,16 @@ void msg(string x, mixed ... y) {
     werror(x, @y);
 }
 
+int handle_file_safe(string path, string fn) {
+  mixed err = catch {
+    return handle_file( path, fn );
+  };
+  if( err ) {
+    msg("Error while tokanizing %O:\n%s", fn, describe_backtrace(err));
+    return 0;
+  }
+}
+
 int handle_file(string path, string fn) {
   if(Stdio.is_dir(path)) {
     msg("%O is a directory.\n", path);
@@ -197,9 +207,10 @@ int handle_file(string path, string fn) {
   string suffix = parts[-1];
   if(suffix=="in" && sizeof(parts)>1)
     suffix = parts[-2];
-  if( (< "pike", "pmod" >)[suffix] )
+
+  if( (< "pike", "pmod", "java" >)[suffix] )
     f = PikeFile(fn);
-  else if( (< "h", "c", "cmod" >)[suffix] )
+  else if( (< "h", "c", "cmod", "cpp" >)[suffix] )
     f = CFile(fn);
 
   // We could add some heuristics here looking for #! rows ending
@@ -287,9 +298,9 @@ int main(int num, array(string) args) {
   foreach(files, string fn)
     if(recurse && Stdio.is_dir(fn))
       foreach(Filesystem.Traversion(fn); string path; string fn)
-	matches += handle_file(path+fn, fn);
+	matches += handle_file_safe(path+fn, fn);
     else
-      matches += handle_file(fn, basename(fn));
+      matches += handle_file_safe(fn, basename(fn));
 
   if(summarize)
     write("Total matches: %d\n", matches);
