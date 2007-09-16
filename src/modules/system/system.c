@@ -1685,7 +1685,6 @@ int my_isipv6nr(char *s)
     } \
     THREADS_DISALLOW()
 
-#endif
 #endif /* HAVE_OSF1_GETSERVBYNAME_R */
 #endif /* HAVE_SOLARIS_GETSERVBYNAME_R */
 
