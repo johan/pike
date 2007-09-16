@@ -1179,6 +1179,7 @@ class Message {
 	       s[offset]>='A' && s[offset]<='Z')))
 	   headers["content-disposition"] =
 	     s[0..offset-1] + replace(s[offset..], "\\", "\\\\");
+        }
       }
       array(array(string|int)) arr =
 	tokenize(headers["content-disposition"]) / ({';'});
