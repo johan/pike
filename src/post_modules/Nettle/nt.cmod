@@ -59,6 +59,10 @@ PIKECLASS CryptContext
     flags ID_STATIC;
   {
     if(THIS->handle) Pike_error("Already initialized.\n");
+    if(str1->type==T_STRING && str1->u.string->shift_size)
+      Pike_error("Bad argument 1. Must be 8-bit string.\n");
+    if(str2->type==T_STRING && str2->u.string->shift_size)
+      Pike_error("Bad argument 2. Must be 8-bit string.\n");
     if(!CryptAcquireContext(&THIS->handle,
 			    (str1->type==T_STRING ? str1->u.string->str : 0),
 			    (str2->type==T_STRING ? str2->u.string->str : 0),
