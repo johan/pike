@@ -3132,9 +3132,9 @@ PIKECLASS Backend
 
 	set_nonblocking(pipe[0],1);
 	set_nonblocking(pipe[1],1);
+	me->wakeup_pipe_send_fd = pipe[1];
 	INIT_FD_CALLBACK_BOX (&me->wakeup_cb_box, me, NULL,
 			      pipe[0], PIKE_BIT_FD_READ, wakeup_callback);
-	me->wakeup_pipe_send_fd = pipe[1];
 
 	/* Don't keep these on exec! */
 	set_close_on_exec(pipe[0], 1);
