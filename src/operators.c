@@ -97,19 +97,10 @@ void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind)
 		    get_name_of_type (ind->type));
     }
 
-  case T_PROGRAM:
-    program_index_no_free(to, what->u.program, ind);
-    break;
-
   case T_FUNCTION:
-    {
-      struct program *p = program_from_svalue(what);
-      if (p) {
-	program_index_no_free(to, p, ind);
-	break;
-      }
-    }
-    /* FALL THROUGH */
+  case T_PROGRAM:
+    if (program_index_no_free(to, what, ind)) break;
+    goto index_error;
 
 #ifdef AUTO_BIGNUM
   case T_INT:
@@ -135,6 +126,7 @@ void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind)
 #endif /* AUTO_BIGNUM */    
 
   default:
+  index_error:
     if (ind->type == T_INT)
       Pike_error ("Cannot index %s with %"PRINTPIKEINT"d.\n",
 		  (what->type == T_INT && !what->u.integer)?
