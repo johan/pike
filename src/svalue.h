@@ -251,6 +251,11 @@ struct svalue
 #define tName2(X,Y) "\361\2"X"\0\0\0\0"Y
 #endif /* PIKE_BYTEORDER == 1234 */
 
+/* Some convenience macros for common attributes. */
+#define tSprintfFormat(X)	tAttr("sprintf_format", X)
+#define tSprintfArgs(X)		tAttr("sprintf_args", X)
+#define tDeprecated(X)		tAttr("deprecated", X)
+
 #define tSimpleCallable tOr3(tArray,tFunction,tObj)
 #define tCallable tOr3(tArr(tSimpleCallable),tFunction,tObj)
 
