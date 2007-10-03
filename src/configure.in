@@ -1519,7 +1519,7 @@ AC_ARG_WITH(typechecker, MY_DESCR([--with-typechecker=new|old],[]))
 AC_ARG_WITH(type-checker,
 	    MY_DESCR([--with-type-checker=new|old],
 		     [select type-checker behaviour]),
- 		[],[with_type_checker="${with_typechecker:-old}"])
+ 		[],[with_type_checker="${with_typechecker:-new}"])
 if test "x$with_type_checker" = "xold"; then :;
   PIKE_MSG_WARN([Old type checker selected.])
 else
