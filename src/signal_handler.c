@@ -1450,6 +1450,8 @@ static TH_RETURN_TYPE wait_thread(void *data)
  *!       The exit code of the process.
  *!     @value -1
  *!       The process was killed by a signal.
+ *!     @value -2
+ *!       The process is stopped.
  *!   @endint
  *!
  *! @seealso
