@@ -152,10 +152,6 @@ static void exit_builtin_modules(void)
    * THREADS_ALLOW/DISALLOW are NOPs beyond this point. */
   th_cleanup();
 
-#ifdef SHARED_NODES
-  free(node_hash.table);
-#endif /* SHARED_NODES */
-
   exit_pike_security();
   free_svalue(& throw_value);
   throw_value.type=T_INT;

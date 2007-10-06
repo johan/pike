@@ -183,17 +183,6 @@ void init_pike(char **argv, const char *file)
     init_builtin_constants();
   }
 
-#ifdef SHARED_NODES
-  TRACE((stderr, "Init shared nodes...\n"));
-  
-  node_hash.table = malloc(sizeof(node *)*32831);
-  if (!node_hash.table) {
-    Pike_fatal("Out of memory!\n");
-  }
-  MEMSET(node_hash.table, 0, sizeof(node *)*32831);
-  node_hash.size = 32831;
-#endif /* SHARED_NODES */
-
 #ifdef HAVE_TZSET
   tzset();
 #endif /* HAVE_TZSET */
