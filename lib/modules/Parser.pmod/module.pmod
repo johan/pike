@@ -393,6 +393,12 @@ string parse_html_entities(string in,void|int noerror)
 
 static mapping(string:string) rev_html_entities;
 
+//! Encode characters to HTML entities, e.g. turning @expr{"<"@} into
+//! @expr{"&lt;"@}.
+//!
+//! The characters that will be encoded are characters <= 32,
+//! @expr{"\"&'<>"@} and characters >= 127 and <= 160 and characters
+//! >= 255.
 string encode_html_entities(string raw)
 {
   if (!rev_html_entities) {
