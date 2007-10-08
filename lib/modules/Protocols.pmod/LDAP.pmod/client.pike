@@ -373,7 +373,9 @@ typedef mapping(string:ResultAttributeValue) ResultEntry;
       if (resultstring == "")
 	resultstring = 0;
       else if (ldap_version >= 3)
-	resultstring = utf8_to_string (resultstring);
+	if (mixed err = catch (resultstring = utf8_to_string (resultstring)))
+	  DWRITE (sprintf ("Failed to decode result string %O: %s",
+			   resultstring, describe_error (err)));
       DWRITE(sprintf("result.create: str=%O\n",resultstring));
 #ifdef V3_REFERRALS
       // referral (v3 mode)
