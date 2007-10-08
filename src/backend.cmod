@@ -2352,6 +2352,9 @@ int POLL_DEVICE_SET_EVENTS(struct Backend_struct *me,
 
   if (events) {
     struct epoll_event ev;
+#ifdef __CHECKER__
+    MEMSET(&ev, 0, sizeof(ev));
+#endif
     ev.events = events;
     ev.data.fd = fd;
 
