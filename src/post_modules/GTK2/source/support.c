@@ -1274,9 +1274,10 @@ void pgtk2_marshaller(GClosure *closure,
     data1=g_value_peek_pointer(param_values+0);
     data2=closure->data;
   }
-
+/*  fprintf(stderr,"marshaller:  before:  nvals==%d\n",n_params-1); */
   callback=(pgtk2_marshal_func)(marshal_data?marshal_data:cc->callback);
   callback(data1,data2,n_params-1,param_values+1,return_value);
+/*  fprintf(stderr,"marshaller:  after:  nvals==%d\n",n_params-1); */
 }
 
 int pgtk2_tree_view_row_separator_func(GtkTreeModel *model,
