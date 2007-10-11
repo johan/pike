@@ -2089,7 +2089,7 @@ lambda: TOK_LAMBDA line_number_info push_compiler_frame1
     f=dooptcode(name,
 		$7,
 		type,
-		ID_STATIC | ID_PRIVATE | ID_INLINE);
+		ID_STATIC | ID_PRIVATE | ID_INLINE | ID_USED);
 
 #ifdef LAMBDA_DEBUG
     fprintf(stderr, "%d:   lexical_scope: 0x%08x\n",
@@ -3304,7 +3304,7 @@ optional_block: /* EMPTY */ { $$=0; }
     f=dooptcode(name,
 		$5,
 		type,
-		ID_STATIC | ID_PRIVATE | ID_INLINE);
+		ID_STATIC | ID_PRIVATE | ID_INLINE | ID_USED);
 
     if(Pike_compiler->compiler_frame->lexical_scope & SCOPE_SCOPED) {
       $$ = mktrampolinenode(f,Pike_compiler->compiler_frame->previous);
