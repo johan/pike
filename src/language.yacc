@@ -2169,7 +2169,7 @@ local_function: TOK_IDENTIFIER push_compiler_frame1 func_args
     }else{
       id=define_function(name,
 			 type,
-			 ID_INLINE,
+			 ID_INLINE|ID_USED,
 			 IDENTIFIER_PIKE_FUNCTION |
 			 (Pike_compiler->varargs?IDENTIFIER_VARARGS:0),
 			 0,
@@ -2301,7 +2301,7 @@ local_function2: optional_stars TOK_IDENTIFIER push_compiler_frame1 func_args
     }else{
       id=define_function(name,
 			 type,
-			 ID_INLINE,
+			 ID_INLINE|ID_USED,
 			 IDENTIFIER_PIKE_FUNCTION|
 			 (Pike_compiler->varargs?IDENTIFIER_VARARGS:0),
 			 0,
