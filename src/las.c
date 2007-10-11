@@ -1160,6 +1160,9 @@ node *debug_mkexternalnode(struct program *parent_prog, int i)
     }
 #endif
 
+    /* Mark the identifier reference as used. */
+    PTR_FROM_INT(parent_prog, i)->id_flags |= ID_USED;
+
     copy_pike_type(res->type, id->type);
 
     /* FIXME */
