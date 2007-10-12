@@ -1289,9 +1289,12 @@ again:
 	    inh_id_end = inh->identifier_level + inh->prog->num_identifier_references;
 	  }
 
+#if 0
+	  /* Can be illuminating to see these too.. */
 	  if (id_ref->id_flags & ID_HIDDEN ||
 	      (id_ref->id_flags & (ID_INHERITED|ID_PRIVATE)) ==
 	      (ID_INHERITED|ID_PRIVATE)) continue;
+#endif
 
 	  id_inh = INHERIT_FROM_PTR (p, id_ref);
 	  id = id_inh->prog->identifiers + id_ref->identifier_offset;
@@ -1315,12 +1318,14 @@ again:
 	  if (id_ref->id_flags & ID_PROTECTED) strcat (prot, ",pro");
 	  if (id_ref->id_flags & ID_INLINE)    strcat (prot, ",inl");
 	  if (id_ref->id_flags & ID_OPTIONAL)  strcat (prot, ",opt");
+	  if (id_ref->id_flags & ID_HIDDEN)    strcat (prot, ",hid");
+	  if (id_ref->id_flags & ID_INHERITED) strcat (prot, ",inh");
 	  if (id_ref->id_flags & ID_EXTERN)    strcat (prot, ",ext");
 	  if (id_ref->id_flags & ID_VARIANT)   strcat (prot, ",var");
 
 	  sprintf (descr, "%s: %s", type, prot + 1);
-	  fprintf (stderr, "%*s**%*s%-18s name: ",
-		   indent, "", id_inh->inherit_level + 1, "", descr);
+	  fprintf (stderr, "%*s**%*s%-3"PRINTPTRDIFFT"d %-18s name: ",
+		   indent, "", id_inh->inherit_level + 1, "", id_idx, descr);
 
 	  if (id->name->size_shift)
 	    safe_print_short_svalue (stderr, (union anything *) &id->name,
