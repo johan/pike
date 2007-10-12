@@ -1997,14 +1997,27 @@ int override_identifier (struct reference *new_ref, struct pike_string *name)
 
       /* Check if the symbol was used before it was inherited. */
       if (sub_ref->id_flags & ID_USED) {
-	if (!pike_types_le(ID_FROM_PTR(inh->prog, sub_ref)->type,
-			   ID_FROM_PTR(Pike_compiler->new_program,
-				       new_ref)->type)) {
-	  yywarning("Type mismatch when overloading %S.", name);
-	  yytype_error(NULL,
-		       ID_FROM_PTR(inh->prog, sub_ref)->type,
-		       ID_FROM_PTR(Pike_compiler->new_program, new_ref)->type,
-		       YYTE_IS_WARNING);
+	struct identifier *sub_id = ID_FROM_PTR(inh->prog, sub_ref);
+	if (IDENTIFIER_IS_FUNCTION(sub_id->identifier_flags)) {
+	  if (!pike_types_le(ID_FROM_PTR(Pike_compiler->new_program,
+					 new_ref)->type, sub_id->type)) {
+	    yywarning("Type mismatch when overloading function %S.", name);
+	    yytype_error(NULL,
+			 ID_FROM_PTR(inh->prog, sub_ref)->type,
+			 ID_FROM_PTR(Pike_compiler->new_program, new_ref)->type,
+			 YYTE_IS_WARNING);
+	  }
+	} else {
+	  /* Variable or constant. */
+	  if (!pike_types_le(sub_id->type,
+			     ID_FROM_PTR(Pike_compiler->new_program,
+					 new_ref)->type)) {
+	    yywarning("Type mismatch when overloading %S.", name);
+	    yytype_error(NULL,
+			 ID_FROM_PTR(inh->prog, sub_ref)->type,
+			 ID_FROM_PTR(Pike_compiler->new_program, new_ref)->type,
+			 YYTE_IS_WARNING);
+	  }
 	}
       }
     }
@@ -2098,7 +2111,7 @@ void fixate_program(void)
 	  {
 	    if (funp->id_flags & ID_USED) {
 	      /* Verify that the types are compatible. */
-	      if (!pike_types_le(fun->type, funb->type)) {
+	      if (!pike_types_le(funb->type, fun->type)) {
 		yywarning("Type mismatch when overloading %S.", fun->name);
 		yytype_error(NULL, fun->type, funb->type, YYTE_IS_WARNING);
 	      }
@@ -2110,7 +2123,7 @@ void fixate_program(void)
 	  {
 	    if (funpb->id_flags & ID_USED) {
 	      /* Verify that the types are compatible. */
-	      if (!pike_types_le(funb->type, fun->type)) {
+	      if (!pike_types_le(fun->type, funb->type)) {
 		yywarning("Type mismatch when overloading %S.", fun->name);
 		yytype_error(NULL, funb->type, fun->type, YYTE_IS_WARNING);
 	      }
