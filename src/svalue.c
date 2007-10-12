@@ -1582,8 +1582,12 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
     }
 
     case T_FLOAT:
-      sprintf(buf,"%f",(double)s->u.float_number);
+      sprintf(buf,"%.16g",(double)s->u.float_number);
       my_strcat(buf);
+      if (!STRCHR (buf, '.') && !STRCHR (buf, 'e'))
+	/* A small float number without fraction can be
+	 * indistinguishable from an integer when formatted by %g. */
+	my_strcat (".0");
       break;
 
     case T_ARRAY:
