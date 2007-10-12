@@ -1573,8 +1573,12 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	    my_strcat("-inf");
 	  }
 	} else {
-	  sprintf(buf, "%f", d);
+	  sprintf(buf, "%.16g", d);
 	  my_strcat(buf);
+	  if (!STRCHR (buf, '.') && !STRCHR (buf, 'e'))
+	    /* A small float number without fraction can be
+	     * indistinguishable from an integer when formatted by %g. */
+	    my_strcat (".0");
 	}
       }
       break;
