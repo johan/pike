@@ -645,9 +645,13 @@ PMOD_EXPORT int is_le(const struct svalue *a, const struct svalue *b);
 PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct processing *p);
 PMOD_EXPORT void safe_describe_svalue(const struct svalue *s,int indent,struct processing *p);
 PMOD_EXPORT void print_svalue (FILE *out, const struct svalue *s);
+PMOD_EXPORT void safe_print_svalue (FILE *out, const struct svalue *s);
 PMOD_EXPORT void print_short_svalue (FILE *out, const union anything *a, TYPE_T type);
+PMOD_EXPORT void safe_print_short_svalue (FILE *out, const union anything *a, TYPE_T type);
 PMOD_EXPORT void print_svalue_compact (FILE *out, const struct svalue *s);
+PMOD_EXPORT void safe_print_svalue_compact (FILE *out, const struct svalue *s);
 PMOD_EXPORT void print_short_svalue_compact (FILE *out, const union anything *a, TYPE_T type);
+PMOD_EXPORT void safe_print_short_svalue_compact (FILE *out, const union anything *a, TYPE_T type);
 PMOD_EXPORT void copy_svalues_recursively_no_free(struct svalue *to,
 						  const struct svalue *from,
 						  size_t num,
