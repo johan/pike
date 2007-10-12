@@ -8,6 +8,7 @@ inherit Regexp;
 private string replace(string in, string|function(string:string) transform)
 {
   return ::replace(in, transform);
+  replace;	// Disable warning for unused symbol...
 }
 
 static string _sprintf()
