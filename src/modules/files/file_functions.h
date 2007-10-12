@@ -12,7 +12,7 @@ FILE_FUNC("open",file_open, tFunc(tStr tStr tOr(tVoid,tInt),tInt))
 /* function(string|void:int) */
 FILE_FUNC("close",file_close, tFunc(tOr(tStr,tVoid),tInt))
 /* function(int|void,int|void:string) */
-FILE_FUNC("read",file_read, tFunc(tOr(tInt,tVoid) tOr(tInt,tVoid),tStr))
+FILE_FUNC("read",file_read, tFunc(tOr(tInt,tVoid) tOr(tInt01,tVoid),tStr))
 #ifndef __NT__
 /* function(float|int|void:int) */
 FILE_FUNC("peek",file_peek, tFunc(tOr3(tFlt,tInt,tVoid) tOr(tInt,tVoid), tInt))
