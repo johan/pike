@@ -3514,7 +3514,9 @@ idents2: idents
 	    struct reference *refp;
 	    refp = Pike_compiler->new_program->identifier_references + d;
 
-	    if(!MEMCMP((char *)refp,(char *)&funp,sizeof funp)) {
+	    if((refp->inherit_offset == funp.inherit_offset) &&
+	       (refp->identifier_offset == funp.identifier_offset) &&
+	       ((refp->id_flags | ID_USED) == (funp.id_flags | ID_USED))) {
 	      i = d;
 	      break;
 	    }
