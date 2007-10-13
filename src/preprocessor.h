@@ -1798,9 +1798,11 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	  nflags = CPP_EXPECT_ELSE | CPP_EXPECT_ENDIF | CPP_NO_OUTPUT;
 	  if(!OUTP())
 	    nflags|=CPP_REALLY_NO_OUTPUT;
-	  if(find_define(s))
-	    nflags&=~CPP_NO_OUTPUT;
-	  free_string (s);
+	  if (s) {
+	    if(find_define(s))
+	      nflags&=~CPP_NO_OUTPUT;
+	    free_string (s);
+	  }
 
 	  pos += lower_cpp(this, data+pos, len-pos, nflags,
 			   auto_convert, charset);
@@ -1820,9 +1822,11 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	  nflags=CPP_EXPECT_ELSE | CPP_EXPECT_ENDIF;
 	  if(!OUTP())
 	    nflags|=CPP_REALLY_NO_OUTPUT;
-	  if(find_define(s))
-	    nflags|=CPP_NO_OUTPUT;
-	  free_string (s);
+	  if (s) {
+	    if(find_define(s))
+	      nflags|=CPP_NO_OUTPUT;
+	    free_string (s);
+	  }
 
 	  pos += lower_cpp(this, data+pos, len-pos, nflags,
 			   auto_convert, charset);
@@ -2335,8 +2339,14 @@ static ptrdiff_t lower_cpp(struct cpp *this,
     unknown_preprocessor_directive:
       {
 	struct pike_string *unknown = GOBBLE_IDENTIFIER();
-	cpp_error_sprintf(this, "Unknown preprocessor directive %S.", unknown);
-	free_string (unknown);
+	if (unknown) {
+	  cpp_error_sprintf(this, "Unknown preprocessor directive %S.",
+			    unknown);
+	  free_string(unknown);
+	} else {
+	  cpp_error_sprintf(this, "Invalid preprocessor directive character at %d: '%c'.",
+			    pos, data[pos]);
+	}
       }
     }
     }
