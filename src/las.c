@@ -5438,7 +5438,7 @@ int dooptcode(struct pike_string *name,
     if(a_flag > 2)
     {
       fputs("Coding: ", stderr);
-      /*print_tree(n);*/
+      print_tree(n);
     }
 #endif
     if(!Pike_compiler->num_parse_error)
