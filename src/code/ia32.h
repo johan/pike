@@ -30,6 +30,7 @@
 /* Don't need an lvalue in this case. */
 #define PROG_COUNTER ((unsigned char *)__builtin_return_address(0))
 #else
+#error This method to tweak the jump address does not work with gcc >= 4.x
 #define PROG_COUNTER (((unsigned char **)__builtin_frame_address(0))[1])
 #endif
 
