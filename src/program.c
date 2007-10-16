@@ -8447,7 +8447,11 @@ void yywarning(char *fmt, ...)
   msg = finish_string_builder(&s);
 
   if (master_object) {
-    ref_push_string(lex.current_file);
+    if (lex.current_file) {
+      ref_push_string(lex.current_file);
+    } else {
+      push_constant_text("-");
+    }
     push_int(lex.current_line);
     push_string(msg);
 
