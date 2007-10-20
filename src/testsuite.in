@@ -8200,6 +8200,18 @@ dnltest_any([[
 dnl#include <conftest.h>
 dnl]],17)
 
+test_any([[
+// bug 2440 (a)
+#define FILENAME "conftest.h"
+return #string FILENAME;
+]], "return 17;\n")
+
+test_any([[
+// bug 2440 (b)
+#define FILENAME "conftest.h"
+#include FILENAME
+]], 17)
+
 test_true( rm("conftest.h") )
 
 test_true(intp(__LINE__))
