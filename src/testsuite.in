@@ -8212,6 +8212,13 @@ test_any([[
 #include FILENAME
 ]], 17)
 
+test_any([[
+// Double expansion
+string FILENAME = "";
+#define FILENAME "conftest.h"	 + FILENAME
+return #string FILENAME;
+]], "return 17;\n")
+
 test_true( rm("conftest.h") )
 
 test_true(intp(__LINE__))
