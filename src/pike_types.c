@@ -687,10 +687,14 @@ void debug_push_int_type(INT_TYPE min, INT_TYPE max)
 	       min, max);
 #endif /* PIKE_DEBUG */
 
-  *(++Pike_compiler->type_stackp) = mk_type(T_INT,
-					    (void *)(ptrdiff_t)min,
-					    (void *)(ptrdiff_t)max, 0);
-
+  if (!min && !max) {
+    /* Special case... */
+    push_type(T_ZERO);
+  } else {
+    *(++Pike_compiler->type_stackp) = mk_type(T_INT,
+					      (void *)(ptrdiff_t)min,
+					      (void *)(ptrdiff_t)max, 0);
+  }
   TYPE_STACK_DEBUG("push_int_type");
 }
 
