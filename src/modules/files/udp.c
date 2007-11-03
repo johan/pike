@@ -278,6 +278,13 @@ static void udp_bind(INT32 args)
     return;
   }
 
+  if(!Pike_fp->current_object->prog)
+  {
+    if (fd >= 0)
+      while (fd_close(fd) && errno == EINTR) {}
+    Pike_error("Object destructed in Stdio.UDP->bind()\n");
+  }
+
   change_fd_for_box (&THIS->box, fd);
   pop_n_elems(args);
   ref_push_object(THISOBJ);
