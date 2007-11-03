@@ -205,8 +205,9 @@ static void udp_bind(INT32 args)
 
   if(FD != -1)
   {
-    fd_close(FD);
+    fd = FD;
     change_fd_for_box (&THIS->box, -1);
+    fd_close(fd);
   }
 
   addr_len = get_inet_addr(&addr, (args > 1 && Pike_sp[1-args].type==PIKE_T_STRING?
@@ -759,14 +760,15 @@ int low_exit_udp()
   int fd = FD;
   int ret = 0;
 
+  unhook_fd_callback_box(&THIS->box);
+  FD = -1;
+
   if(fd != -1)
   {
     THREADS_ALLOW();
     ret = fd_close(fd);
     THREADS_DISALLOW();
   }
-
-  unhook_fd_callback_box (&THIS->box);
 
   /* map_variable handles read_callback. */
 
