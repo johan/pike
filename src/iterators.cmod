@@ -1876,7 +1876,6 @@ int foreach_iterate(struct object *o, int do_step)
 {
   struct program *prog = o->prog;
   int fun;
-  int res;
 
   if(!prog)
     Pike_error("foreach on destructed iterator.\n");
