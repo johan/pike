@@ -35,11 +35,7 @@ struct pf_source
 static struct data get_data( struct source *_s, off_t len )
 {
   struct pf_source *s = (struct pf_source *)_s;
-  struct data res;
-
-  res.len  = 0;
-  res.off  = 0;
-  res.do_free = 0;
+  struct data res = { 0, 0, 0, NULL };
 
   if( s->len>0 && len > s->len ) {
     len = s->len;
