@@ -3036,7 +3036,7 @@ static void low_build_function_type(node *n)
   }
 }
 
-void yytype_error(char *msg, struct pike_type *expected_t,
+void yytype_error(const char *msg, struct pike_type *expected_t,
 		  struct pike_type *got_t, unsigned int flags)
 {
   if (msg)

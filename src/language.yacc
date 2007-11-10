@@ -4199,14 +4199,14 @@ void low_yyerror(struct pike_string *str)
   STACK_LEVEL_DONE(0);
 }
 
-PMOD_EXPORT void yyerror(char *str)
+PMOD_EXPORT void yyerror(const char *str)
 {
   push_text(str);
   low_yyerror(Pike_sp[-1].u.string);
   pop_stack();
 }
 
-static void yyerror_reserved(char *keyword)
+static void yyerror_reserved(const char *keyword)
 {
   char fmt[100];
   SNPRINTF(fmt, sizeof(fmt), "%s is a reserved word.", keyword);
