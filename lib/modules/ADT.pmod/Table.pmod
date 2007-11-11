@@ -298,6 +298,8 @@ class table {
 	  m[d] += ({ t[r] });
       }
       array i = indices(m), v = values(m);
+      if(types[c] && types[c]->type=="num")
+        i = (array(float))i;
       predef::sort(i, v);
       t = (is_reversed ? predef::reverse(v) : v)*({});
     }
