@@ -207,6 +207,7 @@ void debug_push_unfinished_type(char *s);
 void debug_push_assign_type(int marker);
 void debug_push_finished_type(struct pike_type *type);
 void debug_push_finished_type_backwards(struct pike_type *type);
+void debug_push_scope_type(int level);
 struct pike_type *debug_pop_unfinished_type(void);
 struct pike_type *debug_pop_type(void);
 struct pike_type *debug_compiler_pop_type(void);
