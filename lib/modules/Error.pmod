@@ -22,8 +22,8 @@ constant MasterLoad = __builtin.MasterLoadError;
 
 constant ModuleLoad = __builtin.ModuleLoadError;
 
-//! returns an Error object for any argument it receives.
-//! if the argument already is an Error object or is empty, it does nothing.
+//! Returns an Error object for any argument it receives. If the
+//! argument already is an Error object or is empty, it does nothing.
 object mkerror(mixed error)
 {
   if (error == UNDEFINED)
