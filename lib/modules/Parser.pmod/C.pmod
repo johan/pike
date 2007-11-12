@@ -382,7 +382,7 @@ array(Token|array) group(array(string|Token) tokens,
 	    (groupings[(string)ret[0]] != (string)token)) {
 	  // Mismatch
 	  werror ("%s:%d: Expected %O, got %O\n",
-		  token->file, token->line,
+		  token->file||"-", token->line,
 		  groupings[(string)ret[0]], (string) token);
 	  return ret;
 	}
@@ -428,6 +428,7 @@ array hide_whitespaces(array tokens)
 	  case ' ':
 	  case '\t':
 	  case '\14':
+          case '\r':
 	  case '\n':
 	    mixed tmp=ret[-1];
 	    while(arrayp(tmp)) tmp=tmp[-1];
@@ -476,7 +477,7 @@ string reconstitute_with_line_numbers(array(string|object(Token)|array) tokens)
 	  if(sizeof(ret) && ret[-1]!='\n') ret+="\n";
 	  line=tok->line;
 	  if(tok->file) file=tok->file;
-	  ret+=sprintf("#line %d %O\n",line,file);
+	  ret+=sprintf("#line %d %O\n",line,file||"-");
 	}
 	tok=tok->text + tok->trailing_whitespaces;
       }
