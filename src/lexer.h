@@ -1057,7 +1057,7 @@ static int low_yylex(YYSTYPE *yylval)
 	if(GOBBLE('>'))
 	{
 	  if ((offset == 2) && lex_isidchar(LOOK())) {
-	    /* Getter/setter
+	    /* Getter/setter (old-style)
 	     *
 	     * Either
 	     *   `->symbol
@@ -1107,6 +1107,35 @@ static int low_yylex(YYSTYPE *yylval)
 	break;
 
       default:
+	  if (!offset && lex_isidchar(LOOK())) {
+	    /* Getter/setter (new-style)
+	     *
+	     * Either
+	     *   `symbol
+	     * Or
+	     *   `symbol=
+	     */
+	    char *buf;
+	    size_t len;
+	    struct pike_string *s;
+	    READBUF(lex_isidchar(C));
+	    if (GOBBLE('=')) len += 1;
+	    /* Adjust for the prefix (`). */
+	    len += 1;
+	    buf -= 1<<SHIFT;
+#if (SHIFT == 0)
+	    s = make_shared_binary_string(buf, len);
+#else /* SHIFT != 0 */
+#if (SHIFT == 1)
+	    s = make_shared_binary_string1((p_wchar1 *)buf, len);
+#else /* SHIFT != 1 */
+	    s = make_shared_binary_string2((p_wchar2 *)buf, len);
+#endif /* SHIFT == 1 */
+#endif /* SHIFT == 0 */
+	    yylval->n = mkstrnode(s);
+	    free_string(s);
+	    return TOK_IDENTIFIER;
+	  }
 	yyerror("Illegal ` identifier.");
 	lex.pos -= (1<<SHIFT);
 	tmp="```";
