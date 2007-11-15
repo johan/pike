@@ -171,6 +171,7 @@ mixed lookup(string|array(int) key)
     }
     return value;
   }
+  if (!trie) return UNDEFINED;
   this_program o = trie[key[offset]];
   if (!o) return UNDEFINED;
   return o->lookup(key);
