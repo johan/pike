@@ -59,8 +59,6 @@ class Request
 
 // ----------------
 
-   int(0..1) con_https; // internal flag
-
 //!	Prepares the HTTP Query object for the connection,
 //!	and returns the parameters to use with @[do_sync],
 //!	@[do_async] or @[do_thread].
@@ -84,7 +82,8 @@ class Request
 	       "protocols than HTTP or HTTPS\n",
 	       url->scheme);
   
-      con_https= (url->scheme=="https")? 1 : 0;
+      if(!con) con=give_me_connection(url_requested);
+      con->https= (url->scheme=="https")? 1 : 0;
 #else
       if(url->scheme!="http"	)
 	 error("Protocols.HTTP can't handle %O or any other "
