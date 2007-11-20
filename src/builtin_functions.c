@@ -9401,7 +9401,8 @@ void init_builtin_efuns(void)
 	tFuncV(IN tSet(tMix),tMix,OUTSET), \
 	tFuncV(IN tMap(tMix, tSetvar(2,tMix)), tMix, OUTMAP), \
         tFuncV(IN tArray, tMix, OUTARR), \
-        tFuncV(IN tInt0, tMix, OUTMIX), \
+	tIfnot(tFuncV(IN, tNot(tMix), tMix), \
+	       tFuncV(IN, tMix, OUTMIX)), \
 	tFuncV(IN, tVoid, OUTMIX) )
 
   ADD_EFUN2("map", f_map,
