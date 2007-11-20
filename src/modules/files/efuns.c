@@ -538,7 +538,7 @@ void f_filesystem_stat(INT32 args)
     num_fields += 6;
 #ifdef HAVE_STATFS_F_BAVAIL
     push_text("bavail");       push_int(st.f_bavail);
-    num_fields++
+    num_fields++;
 #endif /* HAVE_STATFS_F_BAVAIL */
 #else /* !HAVE_STRUCT_STATFS */
 #ifdef HAVE_STRUCT_FS_DATA
