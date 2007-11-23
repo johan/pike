@@ -405,10 +405,10 @@ class Cookie
 {
    string key="?";
    string data="?";
+   string site="?";
    int expires=-1;
    string path="/";
    string domain="";
-   string site="?";
    int secure=0;
 
    string _sprintf(int t)
