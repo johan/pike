@@ -759,7 +759,7 @@ Request do_method_url(string method,
 {
    if (method=="POST")
       extra_headers=
-	 (extra_headers||([]))||
+	 (extra_headers||([]))+
 	 (["content-type":"application/x-www-form-urlencoded"]);
    
    Request p=Request();
@@ -879,7 +879,7 @@ Request async_do_method_url(string method,
 
    if (method=="POST")
       extra_headers=
-	 (extra_headers||([]))||
+	 (extra_headers||([]))+
 	 (["content-type":"application/x-www-form-urlencoded"]);
 
    p->do_async(p->prepare_method(method,url,query_variables,
