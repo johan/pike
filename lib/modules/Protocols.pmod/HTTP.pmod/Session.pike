@@ -110,14 +110,9 @@ class Request
       array v=get_cookies(url_requested);
       if (v && sizeof(v))
 	 if (request_headers->cookie)
-	    if (!arrayp(request_headers->cookie))
-	       request_headers->cookie=
-		  ({request_headers->cookie})+v;
-	    else
-	       request_headers->cookie=
-		  request_headers->cookie+v;
+	    request_headers->cookie+="; "+v*"; ";
 	 else
-	    request_headers->cookie=v;
+	    request_headers->cookie=v*"; ";
 
       string query=url->query;
       if(query_variables && sizeof(query_variables))
