@@ -684,6 +684,46 @@ void push_gvalue_r(const GValue *param, GType t) {
     return;
   } else {
     const char *s=(char *)g_type_name(t);
+    if( s && (s[0] == 'g') ) // FIXME: How to get these types from GTK?
+    {
+	switch( s[1] )
+	{
+	    case 'c':
+		if( !strcmp( s, "gchararray" ) )
+		{
+		    pgtk2_push_string_param(param);
+		    return;
+		}
+		break;
+	    case 'f':
+	    case 'd':
+		if( !strcmp( s, "gfloat" ) )
+		{
+		    push_float( g_value_get_float( param ) );
+		    return;
+		}
+		if( !strcmp( s, "gdouble" ) )
+		{
+		    push_float( g_value_get_double( param ) );
+		    return;
+		}
+		break;
+	    case 'i':
+	    case 'u':
+		if( !strcmp( s, "gint" ) )
+		{
+		    push_int(g_value_get_int(param));
+		    return;
+		}
+		else if( !strcmp( s, "guint" ) )
+		{
+		    push_int64(g_value_get_uint(param));
+		    return;
+		}
+		break;
+	}
+    }
+
     char *a="";
     if (!s) {
       a="Unknown child of ";
@@ -1274,10 +1314,9 @@ void pgtk2_marshaller(GClosure *closure,
     data1=g_value_peek_pointer(param_values+0);
     data2=closure->data;
   }
-/*  fprintf(stderr,"marshaller:  before:  nvals==%d\n",n_params-1); */
+
   callback=(pgtk2_marshal_func)(marshal_data?marshal_data:cc->callback);
   callback(data1,data2,n_params-1,param_values+1,return_value);
-/*  fprintf(stderr,"marshaller:  after:  nvals==%d\n",n_params-1); */
 }
 
 int pgtk2_tree_view_row_separator_func(GtkTreeModel *model,
