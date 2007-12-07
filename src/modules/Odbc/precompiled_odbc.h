@@ -137,6 +137,19 @@ struct precompiled_odbc_result {
 /* Flags */
 #define PIKE_ODBC_CONNECTED	1
 
+/* http://msdn2.microsoft.com/en-us/library/ms715361.aspx says:
+ *
+ *   On multithread operating systems, drivers must be thread-safe.
+ *   That is, it must be possible for applications to use the same
+ *   handle on more than one thread.
+ *
+ * This means we don't need a lock at all on the connection when we
+ * release the interpreter lock. If this really is true remains to be
+ * seen..
+ */
+#define ODBC_ALLOW() THREADS_ALLOW()
+#define ODBC_DISALLOW() THREADS_DISALLOW()
+
 /*
  * Prototypes
  */
