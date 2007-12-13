@@ -906,14 +906,15 @@ string data(int|void max_length)
        werror ("<- data() read 5\n");
 #endif
        string s = con->read(l);
-       if (!s) {
+       if (!s && strlen(buf) <= datapos) {
 	 errno = con->errno();
 #ifdef HTTP_QUERY_DEBUG
 	 werror ("<- (read error: %s)\n", strerror (errno));
 #endif
 	 return 0;
        }
-       buf += s;
+       if( s ) 
+	 buf += s;
      }
    }
    if(zero_type( len ))
