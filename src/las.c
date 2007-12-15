@@ -161,6 +161,7 @@ void check_tree(node *n, int depth)
 
     if(d_flag<2) break;
 
+#ifdef PIKE_DEBUG
     if(!(depth & 1023))
     {
       node *q;
@@ -168,6 +169,7 @@ void check_tree(node *n, int depth)
 	if(q->parent==n)
 	  Pike_fatal("Cyclic node structure found.\n");
     }
+#endif
 
     if(car_is_node(n))
     {
