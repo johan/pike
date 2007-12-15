@@ -828,7 +828,7 @@ static struct buffer save_tga(struct image *img, struct image *alpha,
     free(data);
   }
   UNSET_ONERROR(err);
-  obuf.len -= buf.len;
+  obuf.len -= fp->len;
   return obuf;
 }
 
