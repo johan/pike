@@ -708,7 +708,7 @@ fi
 case "$pike_cv_sys_os" in
    CYGWIN*)
       # Cygwin has both Windows includes and Unix ones.
-      # Hiding them make it a somewhat Unix compliant OS.
+      # Hiding them makes it a somewhat Unix compliant OS.
       echo 'Cygwin host detected. Enabling workarounds...'
       # winsock.h, winbase.h, winsock2.h, windows.h, wingdi.h, windef.h
       # are part of VC api but given as headers in cygwin. We
@@ -3948,6 +3948,10 @@ extern pthread_t bar;
     AC_MSG_RESULT(no)
     LIBS="$OLDLIBS"
     CFLAGS="$OLDCFLAGS"
+
+    echo "POSIX threads not working." >&AC_FD_CC
+    ulimit -a >&AC_FD_CC 2>&AC_FD_CC
+    echo >&AC_FD_CC
 
     # No POSIX threads.
 
