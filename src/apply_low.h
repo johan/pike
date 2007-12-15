@@ -204,6 +204,12 @@
       new_frame->self_time_base=function->total_time;
 #endif
 
+#ifdef PIKE_DEBUG
+      if (IDENTIFIER_IS_ALIAS(function->identifier_flags)) {
+	Pike_fatal("Calling an alias!\n");
+      }
+#endif
+
       switch(function->identifier_flags & IDENTIFIER_TYPE_MASK)
       {
       case IDENTIFIER_C_FUNCTION:
