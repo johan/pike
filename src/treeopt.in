@@ -901,6 +901,12 @@ F_SUB_EQ(0, 1 = F_CONSTANT[$$->u.sval.type == T_INT]
 	 [($$->u.sval.u.integer) == -1]):
   F_INC($0, -);
 
+// a += ({ args... })  ->  F_APPEND_ARRAY(a, args...)
+F_ADD_EQ(0, F_APPLY(F_CONSTANT
+		    [$$->u.sval.type == T_FUNCTION]
+		    [$$->u.sval.subtype == FUNCTION_BUILTIN]
+		    [$$->u.sval.u.efun->function == debug_f_aggregate], 1)):
+  F_APPEND_ARRAY($0, $1);
 
 F_INDEX(-, 0 = *):
   F_COMMA_EXPR(F_POP_VALUE($0, -), 0);
