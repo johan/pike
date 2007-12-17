@@ -1794,6 +1794,10 @@ OPCODE0(F_PUSH_ARRAY, "@", I_UPDATE_SP, {
   push_array_items(Pike_sp->u.array);
 });
 
+OPCODE0(F_APPEND_ARRAY, "append array", I_UPDATE_SP|I_UPDATE_M_SP, {
+    o_append_array(Pike_sp - *(--Pike_mark_sp));
+  });
+
 OPCODE2(F_LOCAL_LOCAL_INDEX, "local[local]", I_UPDATE_SP, {
   LOCAL_VAR(struct svalue *s);
   s = Pike_fp->locals + arg1;
