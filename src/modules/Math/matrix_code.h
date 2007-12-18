@@ -293,6 +293,8 @@ void matrixX(_cast)(INT32 args)
 	    f_aggregate(ys);
 	    return;
 	 }
+         else
+           Pike_error("Can only cast to array.\n");
 
    SIMPLE_BAD_ARG_ERROR("cast",1,"string");
 }
@@ -675,7 +677,7 @@ static void matrixX(_cross)(INT32 args)
    FTYPE *a,*b,*d;
 
    if (args<1)
-      SIMPLE_TOO_FEW_ARGS_ERROR("matrix->`×",1);
+      SIMPLE_TOO_FEW_ARGS_ERROR("cross",1);
 
    pop_n_elems(args-1); /* shouldn't be needed */
 
