@@ -1014,7 +1014,7 @@ static void image_ttf_faceinstance_write(INT32 args)
 
    if (!args)
    {
-      push_text("");
+      push_empty_string();
       args=1;
    }
 

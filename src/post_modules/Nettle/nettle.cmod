@@ -688,7 +688,7 @@ PIKECLASS Proxy {
 	       data->str, data->len);
 	THIS->backlog_len += data->len;
 	pop_n_elems(args);
-	push_constant_text("");
+	push_empty_string();
 	return;
       }
     }

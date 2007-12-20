@@ -2463,7 +2463,7 @@ PIKE_MODULE_INIT
   NULL_program=end_program();
   add_program_constant("NULL", NULL_program, 0);
 
-  push_text("");
+  push_empty_string();
   add_object_constant("NULLstring",nullstring_object=clone_object(NULL_program,1),0);
 
   push_int(0);
