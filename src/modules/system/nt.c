@@ -213,7 +213,7 @@ static void push_regvalue(DWORD type, char* buffer, DWORD len)
       
     case REG_SZ:
       if (!len) {
-	push_constant_text("");
+	push_empty_string();
       } else {
 	push_string(make_shared_binary_string(buffer,len-1));
       }
@@ -231,7 +231,7 @@ static void push_regvalue(DWORD type, char* buffer, DWORD len)
       
     case REG_MULTI_SZ:
       if (!len) {
-	ref_push_array(&empty_array);
+        push_empty_array();
       } else {
 	push_string(make_shared_binary_string(buffer,len-1));
 	push_string(make_shared_binary_string("\000",1));
