@@ -1174,11 +1174,36 @@ static int alpha_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
 #undef TYPE
 #undef ID
 
+/* Same, but only integers. */
+static int alpha_int_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
+{
+#ifdef PIKE_DEBUG
+  if ((a->type != T_INT) || (b->type != T_INT)) {
+    Pike_fatal("Invalid elements in supposedly integer array.\n");
+  }
+#endif /* PIKE_DEBUG */
+  if(a->u.integer < b->u.integer) return -1;
+  if(a->u.integer > b->u.integer) return  1;
+  return 0;
+}
+
+#define CMP(X,Y) alpha_int_svalue_cmpfun(X,Y)
+#define TYPE struct svalue
+#define ID low_sort_int_svalues
+#include "fsort_template.h"
+#undef CMP
+#undef TYPE
+#undef ID
+
 /** This sort is unstable. */
 PMOD_EXPORT void sort_array_destructively(struct array *v)
 {
   if(!v->size) return;
-  low_sort_svalues(ITEM(v), ITEM(v)+v->size-1);
+  if (v->type_field == BIT_INT) {
+    low_sort_int_svalues(ITEM(v), ITEM(v)+v->size-1);
+  } else {
+    low_sort_svalues(ITEM(v), ITEM(v)+v->size-1);
+  }
 }
 
 #define SORT_BY_INDEX
