@@ -204,8 +204,8 @@ done_made:
       }
       else if (Pike_sp[-args].u.string==s_rotate)
       {
-	 float r;
-	 float x,y,z;
+	 FLOAT_TYPE r;
+	 FLOAT_TYPE x,y,z;
 	 double c,s;
 	 struct matrixX(_storage) *mx=NULL;
 
