@@ -712,19 +712,19 @@ static void matrixX(_dot)(INT32 args)
   FTYPE *a,*b;
   
   if (args<1)
-     SIMPLE_TOO_FEW_ARGS_ERROR("dot",1);
+     SIMPLE_TOO_FEW_ARGS_ERROR("dot_product",1);
   
   pop_n_elems(args-1); 
   
   if (Pike_sp[-1].type!=T_OBJECT ||
       !((mx=(struct matrixX(_storage)*)
 	 get_storage(Pike_sp[-1].u.object,XmatrixY(math_,_program)))))
-    SIMPLE_BAD_ARG_ERROR("dot",1,"object(Math.Matrix)");
+    SIMPLE_BAD_ARG_ERROR("dot_product",1,"object(Math.Matrix)");
   
   if(!(mx->xsize==THIS->xsize &&
        mx->ysize==THIS->ysize &&
        (mx->xsize==1 || mx->ysize==1)))
-    math_error("dot",Pike_sp-args,args,0,
+    math_error("dot_product",Pike_sp-args,args,0,
 	       "Matrices must be the same sizes, and one-dimensional\n");
   
   res=(FTYPE)0;
