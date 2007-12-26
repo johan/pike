@@ -1724,7 +1724,6 @@ if test "$cflags_is_set" = "no"; then
   fi
 
   if test "x$enable_pedantic" = "xyes"; then
-    AC_SYS_COMPILER_FLAG(-ansi,ansi,WARN)
     AC_SYS_COMPILER_FLAG(-pedantic,pedantic,WARN)
   fi
 
@@ -2655,9 +2654,7 @@ fi
 
 #############################################################################
 
-AC_DEFINE(POSIX_SOURCE, 1)
-AC_DEFINE(_POSIX_SOURCE, 1)
-AC_DEFINE(_POSIX_C_SOURCE, 99999999L)
+AC_DEFINE(POSIX_SOURCE)
 
 AC_MSG_CHECKING(ansi prototype capability)
 AC_CACHE_VAL(pike_cv_sys_ansi_prototypes,
