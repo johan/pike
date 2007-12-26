@@ -10,7 +10,17 @@
 
 /* We must define this *always* */
 #ifndef POSIX_SOURCE
-#define POSIX_SOURCE
+#define POSIX_SOURCE	1
+#endif
+
+/* We must define this *always* */
+#ifndef _POSIX_SOURCE
+#define _POSIX_SOURCE	1
+#endif
+
+/* We must define this *always* */
+#ifndef _POSIX_C_SOURCE
+#define _POSIX_C_SOURCE	99999999L
 #endif
 
 /* Get more declarations in GNU libc. */
