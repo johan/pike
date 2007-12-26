@@ -3219,7 +3219,10 @@ PIKECLASS Backend
 	if (fd_map[e] == me) fd_map[e] = NULL;
       }
 
-#ifdef HAVE_POLL
+#if defined(HAVE_KQUEUE)
+  unregister_backend(me);
+  fd_close(THIS->set);
+#elif defined(HAVE_POLL)
 #ifdef USE_POLL_DEVICE
       unregister_backend(me);
       fd_close(THIS->set);
