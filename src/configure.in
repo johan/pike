@@ -1724,7 +1724,7 @@ if test "$cflags_is_set" = "no"; then
   fi
 
   if test "x$enable_pedantic" = "xyes"; then
-    AC_SYS_COMPILER_FLAG(-ansi,ansi,CFLAGS)
+    AC_SYS_COMPILER_FLAG(-ansi,ansi,WARN)
     AC_SYS_COMPILER_FLAG(-pedantic,pedantic,WARN)
   fi
 
