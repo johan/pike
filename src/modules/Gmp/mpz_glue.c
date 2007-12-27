@@ -195,7 +195,10 @@ static int gmp_int64_from_bignum (INT64 *i, struct object *bignum)
   size_t pos = (INT64_BITS + GMP_NUMB_BITS - 1) / GMP_NUMB_BITS - 1;
 
 #ifdef PIKE_DEBUG
-  if (bignum->prog != bignum_program) Pike_fatal ("Not a Gmp.bignum.\n");
+  if ((bignum->prog != bignum_program) &&
+      (bignum->prog != mpzmod_program)) {
+    Pike_fatal("cast_to_int(): Not a Gmp.bignum or Gmp.mpz.\n");
+  }
 #endif
 
   if (mpz_size (mpz) <= pos + 1) {
