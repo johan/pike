@@ -109,7 +109,7 @@ static void matrixX(_create)(INT32 args)
 	      case T_OBJECT:
 		{
 		  INT64 x;
-		  if (a->item[i].u.object->prog != get_auto_bignum_program()) {
+		  if (a->item[j].u.object->prog != get_auto_bignum_program()) {
 		    /* Use push_svalue() so that we support subtypes... */
 		    push_svalue(a->item+j);
 		    o_cast_to_int();
