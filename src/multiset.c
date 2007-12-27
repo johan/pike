@@ -3649,17 +3649,17 @@ node *make_node_from_multiset (struct multiset *l)
   }
 }
 
-/* @decl multiset aggregate_multiset(mixed ... elems)
- *
- * Construct a multiset with the arguments as indices. The multiset
- * will not contain any values. This method is most useful when
- * constructing multisets with @[map] or similar; generally, the
- * multiset literal syntax is handier: @expr{(<elem1, elem2, ...>)@}
- * With it, it's also possible to construct a multiset with values:
- * @expr{(<index1: value1, index2: value2, ...>)@}
- *
- * @seealso
- *   @[sizeof()], @[multisetp()], @[mkmultiset()]
+/*! @decl multiset aggregate_multiset(mixed ... elems)
+ *!
+ *! Construct a multiset with the arguments as indices. The multiset
+ *! will not contain any values. This method is most useful when
+ *! constructing multisets with @[map] or similar; generally, the
+ *! multiset literal syntax is handier: @expr{(<elem1, elem2, ...>)@}
+ *! With it, it's also possible to construct a multiset with values:
+ *! @expr{(<index1: value1, index2: value2, ...>)@}
+ *!
+ *! @seealso
+ *!   @[sizeof()], @[multisetp()], @[mkmultiset()]
  */
 PMOD_EXPORT void f_aggregate_multiset (INT32 args)
 {
