@@ -643,7 +643,7 @@ string programs_reverse_lookup (program prog)
 }
 
 program objects_reverse_lookup (object obj)
-//! Returns the program for @[obj] in @[objects], if it got any.
+//! Returns the program for @[obj], if known to the master.
 {
   if (sizeof (rev_objects) < sizeof (objects)) {
     foreach (objects; program prog; object|NoValue obj)
