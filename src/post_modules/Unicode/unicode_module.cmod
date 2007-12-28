@@ -195,7 +195,7 @@ PIKEFUN int is_wordchar( int c )
 }
 
 /*! @decl constant version
- *! Contains the verison of the current Unicode database as a string,
+ *! Contains the version of the current Unicode database as a string,
  *! e.g. @expr{"5.0.0"@}.
  */
 
