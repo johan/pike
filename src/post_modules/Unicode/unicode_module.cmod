@@ -20,6 +20,7 @@
 #include "normalize.h"
 #include "split.h"
 #include "buffer.h"
+#include "uversion.h"
 
 /*! @module Unicode
  */
@@ -193,6 +194,11 @@ PIKEFUN int is_wordchar( int c )
   RETURN unicode_is_wordchar( c );
 }
 
+/*! @decl constant version
+ *! Contains the verison of the current Unicode database as a string,
+ *! e.g. @expr{"5.0.0"@}.
+ */
+
 /*! @endmodule
  */
 
@@ -200,6 +206,7 @@ PIKE_MODULE_INIT
 {
   INIT
   unicode_normalize_init();
+  add_string_constant("version", UVERSION, 0);
 }
 
 PIKE_MODULE_EXIT
