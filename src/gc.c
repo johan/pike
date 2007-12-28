@@ -1313,7 +1313,7 @@ again:
 	  }
 	  else
 	    if (id_ref->id_flags & ID_STATIC) strcat (prot, ",sta");
-	  if (id_ref->id_flags & ID_NOMASK)    strcat (prot, ",nom");
+	  if (id_ref->id_flags & ID_FINAL)     strcat (prot, ",fin");
 	  if (id_ref->id_flags & ID_PUBLIC)    strcat (prot, ",pub");
 	  if (id_ref->id_flags & ID_PROTECTED) strcat (prot, ",pro");
 	  if (id_ref->id_flags & ID_INLINE)    strcat (prot, ",inl");

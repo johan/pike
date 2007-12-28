@@ -293,7 +293,7 @@ struct program_constant
 #define ID_STATIC          0x01	/* Symbol is not visible by indexing */
 #define ID_PRIVATE         0x02	/* Symbol is not visible by inherit */
 #define ID_FINAL           0x04	/* Symbol may not be overloaded */
-#define ID_NOMASK          0x04	/* Symbol may not be overloaded */
+#define ID_NOMASK          0x04	/* Symbol may not be overloaded (deprecated) */
 #define ID_PUBLIC          0x08 /* Anti private */
 #define ID_USED		   0x10 /* This reference has been used. Check
 				 * that the type is compatible when

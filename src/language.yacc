@@ -1178,8 +1178,8 @@ arguments2: new_arg_name { $$ = 1; }
   ;
 
 modifier:
-    TOK_NO_MASK    { $$ = ID_NOMASK; }
-  | TOK_FINAL_ID   { $$ = ID_NOMASK; }
+    TOK_NO_MASK    { $$ = ID_FINAL; }
+  | TOK_FINAL_ID   { $$ = ID_FINAL; }
   | TOK_STATIC     { $$ = ID_STATIC; }
   | TOK_EXTERN     { $$ = ID_EXTERN; }
   | TOK_OPTIONAL   { $$ = ID_OPTIONAL; }
