@@ -672,9 +672,9 @@ static int low_yylex(YYSTYPE *yylval)
 	  {
 	    lex.pragmas |= ID_INLINE;
 	  }
-	  else if (ISWORD("all_nomask"))
+	  else if (ISWORD("all_final") || ISWORD("all_nomask"))
 	  {
-	    lex.pragmas |= ID_NOMASK;
+	    lex.pragmas |= ID_FINAL;
 	  }
 	  else if (ISWORD("strict_types"))
 	  {
