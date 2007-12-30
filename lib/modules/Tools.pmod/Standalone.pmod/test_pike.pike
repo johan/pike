@@ -549,7 +549,7 @@ int main(int argc, array(string) argv)
       // do nonblocking on (Linux 2.6/glibc 2.5). Maybe a bug in the new
       // epoll stuff? /mast
 #ifdef __NT__
-      Stdio.File pipe_2 = pipe_1->pipe (Stdio.PROP_IPC|Stdio.PROP_NONBLOCK);
+      Stdio.File pipe_2 = pipe_1->pipe(Stdio.PROP_IPC);
 #else /* !__NT__ */
       Stdio.File pipe_2 = pipe_1->pipe (Stdio.PROP_IPC|
 					Stdio.PROP_NONBLOCK|
