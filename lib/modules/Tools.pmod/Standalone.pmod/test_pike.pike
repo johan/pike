@@ -324,7 +324,12 @@ class Watchdog
     this_program::verbose = verbose;
     WATCHDOG_DEBUG_MSG ("Watchdog started.\n");
     stdin = Stdio.File ("stdin");
+#ifdef __NT__
+    stdin->set_read_callback(stdin_read);
+    stdin->set_close_callback(stdin_close);
+#else /* !__NT__ */
     stdin->set_nonblocking (stdin_read, 0, stdin_close);
+#endif /* __NT__ */
     call_out (check_parent_pid, 10);
     call_out (timeout, WATCHDOG_TIMEOUT);
   }
