@@ -1024,7 +1024,7 @@ static void set_fd_event_cb (struct my_file *f, struct svalue *cb, int event)
   }
   else {
 #ifdef __NT__
-    if (!(fd_query_properties(f->fd, fd_CAN_NONBLOCK) & fd_CAN_NONBLOCK)) {
+    if (!(fd_query_properties(f->box.fd, fd_CAN_NONBLOCK) & fd_CAN_NONBLOCK)) {
       Pike_error("Setting backend callback on a non-socket!\n");
     }
 #endif /* __NT__ */
@@ -2465,7 +2465,7 @@ static void file_set_backend (INT32 args)
     SIMPLE_BAD_ARG_ERROR ("Stdio.File->set_backend", 1, "object(Pike.Backend)");
 
 #ifdef __NT__
-  if (!(fd_query_properties(THIS->fd, fd_CAN_NONBLOCK) & fd_CAN_NONBLOCK)) {
+  if (!(fd_query_properties(THIS->box.fd, fd_CAN_NONBLOCK) & fd_CAN_NONBLOCK)) {
     Pike_error("set_backend() on non-socket!\n");
   }
 #endif /* __NT__ */
