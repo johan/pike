@@ -8221,7 +8221,8 @@ void low_pop_local_variables(int level)
   {
     int e;
     e=--(Pike_compiler->compiler_frame->current_number_of_locals);
-    if (!(Pike_compiler->compiler_frame->variable[e].flags &
+    if ((Pike_compiler->compiler_pass == 2) &&
+	!(Pike_compiler->compiler_frame->variable[e].flags &
 	  LOCAL_VAR_IS_USED)) {
       struct pike_string *save_file = lex.current_file;
       int save_line = lex.current_line;
@@ -8251,7 +8252,8 @@ void pop_local_variables(int level)
      *        actually is used from a nested scope. */
     for(;level<Pike_compiler->compiler_frame->min_number_of_locals;level++)
     {
-      if (!(Pike_compiler->compiler_frame->variable[level].flags &
+      if ((Pike_compiler->compiler_pass == 2) &&
+	  !(Pike_compiler->compiler_frame->variable[level].flags &
 	    LOCAL_VAR_IS_USED)) {
 	struct pike_string *save_file = lex.current_file;
 	int save_line = lex.current_line;
