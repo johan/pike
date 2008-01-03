@@ -39,13 +39,18 @@ struct node_s;
 typedef struct node_s node;
 #endif
 
+/* local variable flags */
+#define LOCAL_VAR_IS_USED		1
+
 struct local_variable
 {
   struct pike_string *name;
   struct pike_type *type;
   node *def;
+  /* FIXME: Consider moving these two to the def node above? */
   struct pike_string *file;
   int line;
+  unsigned int flags;
 };
 
 struct compiler_frame
