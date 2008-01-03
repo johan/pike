@@ -4423,6 +4423,8 @@ static node *lexical_islocal(struct pike_string *str)
       {
 	struct compiler_frame *q=Pike_compiler->compiler_frame;
 
+	f->variable[e].flags |= LOCAL_VAR_IS_USED;
+
 	while(q!=f) 
 	{
 	  q->lexical_scope|=SCOPE_SCOPED;
