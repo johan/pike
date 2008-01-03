@@ -4289,6 +4289,7 @@ int low_add_local_name(struct compiler_frame *frame,
       free_type(type);
       copy_pike_type(type, zero_type_string);
     }
+    frame->variable[var].type = type;
     frame->variable[var].name = str;
     reference_shared_string(str);
     frame->variable[var].def = def;
