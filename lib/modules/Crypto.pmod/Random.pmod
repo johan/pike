@@ -128,6 +128,7 @@ static class RND {
   string random_string(int len) {
     object key = lock->lock();
     return low_random_string(len);
+    key = 0;	// Fix warning.
   }
 
   string low_random_string(int len) {
