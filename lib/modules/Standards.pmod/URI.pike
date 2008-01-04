@@ -467,7 +467,7 @@ string http_encode(string in)
 
 //! Return the query part, coded according to RFC 1738.
 string get_http_query() {
-  mapping out = ([]);
+  mapping(string:string) out = ([]);
   foreach(get_query_variables(); string name; string value)
     out[http_encode(name)] = http_encode(value);
   return ((array)out)[*]*"="*"&";
