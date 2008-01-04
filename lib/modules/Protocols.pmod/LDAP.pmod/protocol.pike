@@ -37,7 +37,7 @@ import Protocols.LDAP;
   private int ok;				// read buffer status
   /*private*/ string writebuf="";		// write buffer
 //  private written;				// count of written chars
-  private function con_ok, con_fail;		// async callback functions
+  private function con_ok;			// async callback functions
   object conthread;				// thread connection
   array extra_args;				// not used, yet
 //  /*private*/ int errno;

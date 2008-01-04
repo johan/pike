@@ -196,7 +196,7 @@ private mapping msgpool = ([]);
 //:
 //: callback support
 //:
-private function con_ok, con_fail;
+private function con_fail;
 private array extra_args;
 
 //! create a new SNMP protocol object
