@@ -15,7 +15,6 @@ private string builddir;
 private int use_force=0;
 private int use_local=0;
 private string my_command;
-private string argument;
 private string my_version;
 private string run_pike;
 private array(string) pike_args = ({});
