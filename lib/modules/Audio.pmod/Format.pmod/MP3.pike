@@ -19,11 +19,7 @@
 //! A MP3 file parser with ID3 tag support.
 
   inherit .module.ANY;
-  private int metainterval;
-  private int new_meta;
-  private string metadata;
   private int start = 1;
-  private int name;
 
   void create() { }
 
