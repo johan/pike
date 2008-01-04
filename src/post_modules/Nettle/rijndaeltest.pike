@@ -176,7 +176,6 @@ int check_cbc_d_m()
 int check_ecb_tbl()
 {
   int fail;
-  string keysize;
 
   object aes_e = Crypto.AES();
   object aes_d = Crypto.AES();

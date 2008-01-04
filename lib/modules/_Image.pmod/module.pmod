@@ -192,7 +192,7 @@ array(Image.Layer) decode_layers( string data, mapping|void opt )
 string read_file(string file)
 {
   string ext="";
-  sscanf(reverse(file),"%s.%s",ext,string rest);
+  sscanf(reverse(file),"%s.%*s",ext);
   string dcc;
 
   switch(lower_case(reverse(ext)))
