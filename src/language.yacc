@@ -1059,6 +1059,11 @@ def: modifiers type_or_error optional_constant optional_stars
 
       lex.current_line = save_line;
       lex.current_file = save_file;
+    } else {
+      /* Prototype; don't warn about unused arguments. */
+      for (e = Pike_compiler->compiler_frame->num_variables; e--;) {
+	Pike_compiler->compiler_frame->variable[e].flags |= LOCAL_VAR_IS_USED;
+      }
     }
     pop_compiler_frame();
     free_node($5);
