@@ -703,7 +703,6 @@ class TerminfoDB {
   {
     LOCK;
     if (!complete_index) {
-      array(string) files;
       foreach (get_dir(dir), string a)
 	if (sizeof(a) == 1)
 	  foreach (get_dir(dir+a), string b)
