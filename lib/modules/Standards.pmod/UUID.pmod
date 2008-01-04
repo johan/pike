@@ -210,7 +210,7 @@ class UUID {
       in = String.hex2string(in);
       // fallthrough
     case 16:
-      int time_low, time_mid, time_hi_and_version, clk_seq_res;
+      int time_low, time_mid, time_hi_and_version;
       sscanf(in, "%4c%2c%2c%2c%6c", time_low, time_mid, time_hi_and_version,
 	     clk_seq, node);
       version = (time_hi_and_version & 0xf000)>>12;
