@@ -8228,7 +8228,7 @@ void low_pop_local_variables(int level)
       int save_line = lex.current_line;
       lex.current_file = Pike_compiler->compiler_frame->variable[e].file;
       lex.current_line = Pike_compiler->compiler_frame->variable[e].line;
-      yywarning("Unused local variable %S.\n",
+      yywarning("Unused local variable %S.",
 		Pike_compiler->compiler_frame->variable[e].name);
       lex.current_file = save_file;
       lex.current_line = save_line;
@@ -8259,7 +8259,7 @@ void pop_local_variables(int level)
 	int save_line = lex.current_line;
 	lex.current_file = Pike_compiler->compiler_frame->variable[level].file;
 	lex.current_line = Pike_compiler->compiler_frame->variable[level].line;
-	yywarning("Unused local variable %S.\n",
+	yywarning("Unused local variable %S.",
 		Pike_compiler->compiler_frame->variable[level].name);
 	lex.current_file = save_file;
 	lex.current_line = save_line;
