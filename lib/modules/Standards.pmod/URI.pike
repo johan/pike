@@ -483,7 +483,7 @@ string get_http_path_query() {
 
 string _sprintf(int how, mapping|void args)
 {
-  string look, _scheme = scheme, _host = host, getstring;
+  string look, _host = host, getstring;
   switch(how)
   {
     case 't':
@@ -491,6 +491,7 @@ string _sprintf(int how, mapping|void args)
 
     case 'x': // A case-mangling version, especially suited for readable hash values
       if(_host) _host = lower_case(_host);
+    default:
     case 's':
     case 'O':
       getstring = (path||"") +
