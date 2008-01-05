@@ -346,7 +346,6 @@ int main(int argc, array(string) argv)
   int skipped;
   array(string) tests;
   array(string) forked;
-  program testprogram;
   int start, fail, mem;
   int loop=1;
   int end=0x7fffffff;
