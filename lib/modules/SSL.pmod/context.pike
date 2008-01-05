@@ -320,6 +320,8 @@ array(int) acceptable_types, array(string) acceptable_authority_dns)
           return context->client_certificates[[int](cert->chain)];
       }
   }
+  // FIXME: Check acceptable_authority_dns.
+  acceptable_authority_dns;
 }
 
 // update the cached decoded issuers list
