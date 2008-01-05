@@ -156,7 +156,7 @@ static struct pike_string *get_new_name();
 int add_local_name(struct pike_string *, struct pike_type *, node *);
 int low_add_local_name(struct compiler_frame *,
 		       struct pike_string *, struct pike_type *, node *);
-static mark_lvalues_as_used(node *n);
+static void mark_lvalues_as_used(node *n);
 static node *lexical_islocal(struct pike_string *);
 static void safe_inc_enum(void);
 static int call_handle_import(struct pike_string *s);
@@ -4367,7 +4367,7 @@ int add_local_name(struct pike_string *str,
 }
 
 /* Mark local variables declared in a multi-assign expression as used. */
-static mark_lvalues_as_used(node *n)
+static void mark_lvalues_as_used(node *n)
 {
   while (n && n->token == F_LVALUE_LIST) {
     if (CAR(n)->token == F_ARRAY_LVALUE) {
