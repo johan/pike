@@ -16,10 +16,10 @@ int(8..8) query_block_size() { return 8; }
 int(0..0) query_key_length() { return 0; }
 
 //! Set the encryption key (currently a no op).
-void set_encrypt_key(string data) {}
+void set_encrypt_key(string key) {key;}
 
 //! Set the decryption key (currently a no op).
-void set_decrypt_key(string data) {}
+void set_decrypt_key(string key) {key;}
 
 //! De/encrypt the string @[data] with the invert crypto
 //! (ie invert the string).
