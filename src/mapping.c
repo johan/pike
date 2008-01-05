@@ -274,7 +274,7 @@ PMOD_EXPORT void really_free_mapping_data(struct mapping_data *md)
 PMOD_EXPORT void do_free_mapping(struct mapping *m)
 {
   if (m)
-    free_mapping(m);
+    inl_free_mapping(m);
 }
 
 /* This function is used to rehash a mapping without loosing the internal
