@@ -8263,6 +8263,9 @@ void pop_local_variables(int level)
 		Pike_compiler->compiler_frame->variable[level].name);
 	lex.current_file = save_file;
 	lex.current_line = save_line;
+	/* Make sure we only warn once... */
+	Pike_compiler->compiler_frame->variable[level].flags |=
+	  LOCAL_VAR_IS_USED;
       }
       free_string(Pike_compiler->compiler_frame->variable[level].name);
       copy_shared_string(Pike_compiler->compiler_frame->variable[level].name,
