@@ -120,7 +120,7 @@
       p++;
       if( (patt & 0xfff0) == 0xfff0 )
       {
-	int srate, channels, layer, ID, pad, blen;
+	int srate, layer, ID, pad, blen;
 	int header = ((patt&0xffff)<<16);
 	if( (by = buffer->getbytes( 2 )) < 0 )
 	  break;

@@ -308,7 +308,6 @@ int write(string|array(string) s)
   int call_write = !sizeof (write_buffer);
   int len = strlen(s);
   object packet;
-  int res;
   while(strlen(s))
   {
     packet = Packet();
