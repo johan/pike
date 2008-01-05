@@ -386,8 +386,6 @@ Packet certificate_request_packet(SSL.context context)
 
 Packet certificate_packet(array(string) certificates)
 {
-  Packet p;
-
   ADT.struct struct = ADT.struct();
   int len = 0;
   
@@ -820,7 +818,7 @@ int(-1..1) handle_handshake(int type, string data, string raw)
 	if (catch{
 	    // FIXME: Support for restarting sessions?
 	  cipher_suites = input->get_fix_uint_array(3, ci_len/3);
-	  string session = input->get_fix_string(id_len);
+	  input->get_fix_string(id_len);	// session.
 	  challenge = input->get_fix_string(ch_len);
 	} || !input->is_empty()) 
 	{
@@ -982,7 +980,9 @@ int(-1..1) handle_handshake(int type, string data, string raw)
        if (e = catch {
 	 int certs_len = input->get_uint(3);
 #ifdef SSL3_DEBUG
-      werror("got %d certificate bytes\n", certs_len);
+	 werror("got %d certificate bytes\n", certs_len);
+#else
+	 certs_len;	// Fix warning.
 #endif
 	 array(string) certs = ({ });
 	 while(!input->is_empty())
@@ -1127,7 +1127,7 @@ int(-1..1) handle_handshake(int type, string data, string raw)
          break;
 
       SSL3_DEBUG_MSG("Handshake: Certificate message received\n");
-      int certs_len = input->get_uint(3);
+      int certs_len = input->get_uint(3); certs_len;
       array(string) certs = ({ });
       while(!input->is_empty())
 	certs += ({ input->get_var_string(3) });
