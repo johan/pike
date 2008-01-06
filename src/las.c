@@ -4068,7 +4068,10 @@ void fix_type_field(node *n)
 	      free_string(t);
 	    }
 	    
-	    if (!CDAR(n) || pike_types_le(CDAR(n)->type, void_type_string)) {
+	    if (!CDAR(n)) {
+	      /* No loop variable. Will be converted to a counted loop
+	       * by treeopt. */
+	    } else if (pike_types_le(CDAR(n)->type, void_type_string)) {
 	      yyerror("Bad argument 2 to foreach().");
 	    } else {
 	      struct pike_type *array_value_type;
