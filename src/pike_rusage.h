@@ -159,7 +159,7 @@ long *low_rusage(void);
 /* The time is returned in nanoseconds. */
 typedef INT64 cpu_time_t;
 #define LONG_CPU_TIME
-#define CPU_TIME_TICKS /* per second */ ((INT64)1000000000L)
+#define CPU_TIME_TICKS /* per second */ (1000000000L)
 #define CPU_TIME_UNIT "ns"
 #define PRINT_CPU_TIME PRINTINT64 "d"
 #else
