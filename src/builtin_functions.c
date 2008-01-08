@@ -7399,10 +7399,6 @@ PMOD_EXPORT void f_gethrtime(INT32 args)
 #endif
   }
   else {
-    fprintf(stderr,
-	    "time:  %ld\n"
-	    "ticks: %ld\n",
-	    time, CPU_TIME_TICKS);
 #if CPU_TIME_TICKS_LOW > 1000000
     push_int64(time / (CPU_TIME_TICKS / 1000000));
 #else
