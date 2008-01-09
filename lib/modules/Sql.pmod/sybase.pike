@@ -91,7 +91,9 @@ void seek(int skipthismany) {
 }
 
 void create(void|string host, void|string db, void|string user,
-            void|string pass) {
+	    void|string _pass) {
+  string pass = _pass;
+  _pass = "CENSORED";
   mo::create(host||"",db||"",user||"",pass||"");
   if (db && stringp(db) && sizeof(db)) {
     mo::big_query("use "+db);
