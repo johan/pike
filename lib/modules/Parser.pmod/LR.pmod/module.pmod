@@ -228,7 +228,7 @@ class Parser
   /* Priority table for terminal symbols */
   static mapping(string : Priority) operator_priority = ([]);
 
-  static multiset(mixed) nullable = (< >);
+  static multiset(int|string) nullable = (< >);
 
 #if 0
   static mapping(mixed : multiset(Rule)) derives = ([]);
@@ -704,7 +704,6 @@ class Parser
   //! Rule to add.
   void add_rule(Rule r)
   {
-    array(Rule) rules;
     int|string symbol;
 
     /* DEBUG */
@@ -918,7 +917,7 @@ class Parser
 
   static void shift_conflict(int empty)
   {
-    /* Ignored */
+    empty; /* Ignored */
   }
 
   static void handle_shift_conflicts()
@@ -950,6 +949,7 @@ class Parser
 
   static void follow_conflict(int empty)
   {
+    empty; /* Ignored */
   }
 
   static void handle_follow_conflicts()
@@ -982,7 +982,6 @@ class Parser
   static int go_through(Kernel state, int item_id,
 			Item current_item)
   {
-    int index;
     Item i, master;
 
     i = state->item_id_to_item[item_id];
