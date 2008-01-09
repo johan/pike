@@ -15,6 +15,7 @@ class Source {
   static void create(int(0..1) no_block) {
     ctx = Nettle.NT.CryptContext(0, 0, Nettle.NT.PROV_RSA_FULL,
 				 Nettle.NT.CRYPT_VERIFYCONTEXT );
+    no_block;	// Fix warning.
   }
 
   string read(int bytes) {
