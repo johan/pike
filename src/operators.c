@@ -5565,7 +5565,8 @@ multiset & mapping -> mapping
 	    "function(string,float:string) 
   */
   ADD_EFUN2("`*", f_multiply,
-	    tOr9(tIfnot(tFuncV(tNone,tNot(tOr(tObj,tMix)),tMix),tFunction),
+	    tOr9(tIfnot(tFuncV(tNone,tNot(tOr(tObj,tMix)),tMix),
+			tFuncV(tNone,tOr(tMix,tVoid),tMix)),
 		 tFunc(tArr(tArr(tSetvar(1,tMix))) 
 		       tArr(tSetvar(1,tMix)),tArr(tVar(1))),
 		 tFuncV(tInt,tInt,tInt),
