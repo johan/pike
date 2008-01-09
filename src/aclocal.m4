@@ -124,6 +124,38 @@ pushdef([AC_CONFIG_HEADER],
   AC_CONFIG_HEADER($1)
 ])
 
+AC_DEFUN([PIKE_CHECK_GNU_STUBS_H],[
+  AC_CHECK_HEADERS([gnu/stubs.h])
+])
+
+define([ORIG_AC_CHECK_FUNC], defn([AC_CHECK_FUNC]))
+AC_DEFUN([AC_CHECK_FUNC],
+[AC_REQUIRE([PIKE_CHECK_GNU_STUBS_H])dnl
+AC_MSG_CHECKING([for $1])
+AC_CACHE_VAL(ac_cv_func_$1,
+[AC_TRY_LINK([
+#ifdef HAVE_GNU_STUBS_H
+/* This file contains __stub_ defines for broken functions. */
+#include <gnu/stubs.h>
+#endif
+char $1();
+], [
+#if defined (__stub_$1) || defined (__stub___$1)
+#error stupidity are us...
+#else
+$1();
+#endif
+], eval "ac_cv_func_$1=yes", eval "ac_cv_func_$1=no")])
+if eval "test \"`echo '$ac_cv_func_'$1`\" = yes"; then
+  AC_MSG_RESULT(yes)
+  ifelse([$2], , :, [$2])
+else
+  AC_MSG_RESULT(no)
+ifelse([$3], , , [$3
+])dnl
+fi
+])
+
 define([ORIG_AC_CHECK_SIZEOF], defn([AC_CHECK_SIZEOF]))
 pushdef([AC_CHECK_SIZEOF],
 [
