@@ -7709,8 +7709,6 @@ AC_MSG_RESULT($LINKFORSHARED)
 
 #############################################################################
 
-PIKE_CHECK_LIBGCC
-
 # In case we're going to use gcc for linking shared objects,
 # we should use the -static-libgcc flag if it exists.
 # Shared libgcc is nothing but trouble.

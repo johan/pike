@@ -2,7 +2,6 @@
 # $Id$
 #
 
-LIBGCC=@LIBGCC@
 LC_REQ=@LC_REQ@
 
 LINKAGE_CPPFLAGS=
