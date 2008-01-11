@@ -904,6 +904,22 @@ AC_DEFUN(PIKE_AC_DEBUG, [
 
 PIKE_AC_DEBUG
 
+AC_MSG_CHECKING([if the stack ulimit is excessive])
+if ulimit -s 1>&AC_FD_CC 2>&AC_FD_CC; then
+  orig_ulimit="`ulimit -s 2>&AC_FD_CC`"
+  if test "$orig_ulimit" -gt "65536"; then
+    AC_MSG_RESULT([yes, $orig_ulimit - reducing to 4096.])
+    if ulimit -s 4096 1>&AC_FD_CC 2>&AC_FD_CC; then :; else
+      AC_MSG_WARN([Failed to reduce stack ulimit to 4096.])
+    fi
+    PIKE_AC_DEBUG
+  else
+    AC_MSG_RESULT([no, $orig_ulimit])
+  fi
+else
+  AC_MSG_RESULT([unknown, ulimit -s failed.])
+fi
+
 # Restore the -O2 that the default AC_PROG_CC adds.
 
 AC_SYS_COMPILER_FLAG(+O3,plus_O3,OPTIMIZE, [
