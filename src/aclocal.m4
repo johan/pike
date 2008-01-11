@@ -649,6 +649,8 @@ define([AC_LOW_MODULE_INIT],
     fi
   fi
   AC_SUBST(RUNPIKE)
+
+  PIKE_CHECK_LIBGCC
 ])
 
 
