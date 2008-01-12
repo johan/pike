@@ -908,9 +908,9 @@ AC_MSG_CHECKING([if the stack ulimit is excessive])
 if ulimit -s 1>&AC_FD_CC 2>&AC_FD_CC; then
   orig_ulimit="`ulimit -s 2>&AC_FD_CC`"
   if test "$orig_ulimit" -gt "65536"; then
-    AC_MSG_RESULT([yes, $orig_ulimit - reducing to 4096.])
-    if ulimit -s 4096 1>&AC_FD_CC 2>&AC_FD_CC; then :; else
-      AC_MSG_WARN([Failed to reduce stack ulimit to 4096.])
+    AC_MSG_RESULT([yes, $orig_ulimit - reducing to 8192.])
+    if ulimit -s 8192 1>&AC_FD_CC 2>&AC_FD_CC; then :; else
+      AC_MSG_WARN([Failed to reduce stack ulimit to 8192.])
     fi
     PIKE_AC_DEBUG
   else
