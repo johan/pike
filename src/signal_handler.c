@@ -2245,8 +2245,8 @@ static int set_priority( int pid, char *to )
       long pad2[10];
     } foo;
 
-    MEMSET(&params, sizeof(params), 0);
-    MEMSET(&foo, sizeof(foo), 0);
+    MEMSET(&params, 0, sizeof(params));
+    MEMSET(&foo, 0, sizeof(foo));
 
     strcpy(foo.pc_clname, "RT");
     if( priocntl((idtype_t)0, (id_t)0, PC_GETCID, (void *)(&foo)) == -1)
@@ -2271,8 +2271,8 @@ static int set_priority( int pid, char *to )
       long pad2[10];
     } foo;
 
-    MEMSET(&params, sizeof(params), 0);
-    MEMSET(&foo, sizeof(foo), 0);
+    MEMSET(&params, 0, sizeof(params));
+    MEMSET(&foo, 0, sizeof(foo));
     strcpy(foo.pc_clname, "TS");
     if( priocntl((idtype_t)0, (id_t)0, PC_GETCID, (void *)(&foo)) == -1)
       return 0;
