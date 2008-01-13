@@ -3896,11 +3896,12 @@ node *optimize_replace(node *n)
   struct pike_type *array_zero;
   struct pike_type *mapping_zero;
 
+  if (!arg0) return NULL;
+
   MAKE_CONSTANT_TYPE(array_zero, tArr(tZero));
   MAKE_CONSTANT_TYPE(mapping_zero, tMap(tZero, tZero));
 
-  if (arg0 &&
-      (pike_types_le(array_zero, (*arg0)->type) ||
+  if ((pike_types_le(array_zero, (*arg0)->type) ||
        pike_types_le(mapping_zero, (*arg0)->type))) {
     /* First argument might be an array or a mapping.
      *
