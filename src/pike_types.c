@@ -1412,7 +1412,7 @@ static void internal_parse_typeA(const char **_s)
 	      while(ISSPACE(**s)) ++*s;
 	      if(**s != ':') {
 		yyerror("Missing ':' after ... in function type.");
-		*s--;
+		--*s;
 	      }
 	      break;
 	    } else {
