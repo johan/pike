@@ -2714,9 +2714,9 @@ static const char *safe_idname_from_int(struct program *prog, int func)
   id = prog->identifiers + ref->identifier_offset;
   if (!id->name)
     return "<null identifier->name>";
-  if (!id->name->str)
-    return "<null identifier->name->str>";
-  /* FIXME: Wide string identifiers. */
+  if (id->name->size_shift)
+    return "<wide identifier->name->str>";
+  /* FIXME: Convert wide string identifiers to narrow strings? */
   return id->name->str;
 }
 
