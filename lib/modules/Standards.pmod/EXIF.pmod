@@ -1056,7 +1056,6 @@ static mapping parse_tag(Stdio.File file, mapping tags, mapping exif_info,
     {
       int long1=long_value(file->read(4), order);
       int long2=long_value(file->read(4), order);
-      string val;
       switch(tag_format)
       {
   	case "BIAS":

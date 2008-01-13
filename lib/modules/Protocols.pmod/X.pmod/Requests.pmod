@@ -318,7 +318,6 @@ class GetAtomName
 
   string handle_reply(mapping reply)
   {
-    string name;
     int length;
     sscanf(reply->rest, "%2c", length);
     return reply->rest[24..23+length];

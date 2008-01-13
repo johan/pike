@@ -197,7 +197,6 @@ loop:
 //!   Does not handle rcsfile(5) newphrase skipping.
 array parse_delta_sections(array raw)
 {
-  array got;
   string revision, ptr;
   revisions = ([]);
   

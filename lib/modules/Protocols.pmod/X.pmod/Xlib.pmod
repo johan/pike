@@ -268,7 +268,6 @@ class Display
 
   void default_event_handler(object me, mapping event)
   {
-    int wid;
     object w;
     array a;
     

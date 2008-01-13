@@ -89,7 +89,6 @@ class client {
 //! Returns 1 if success, 0 otherwise.
   int send_job(string queue, string job)
   {
-    int r;
     string resp;
 
     if(!queue) return 0;

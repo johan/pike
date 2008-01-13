@@ -85,7 +85,6 @@ class Data {
 private object(Sql.sql_result) enum_result;
 int(0..0)|string first() {
   debug("first()");
-  array res;
   if (enum_result)
     destruct(enum_result);
   enum_result=db->big_query("select cachekey from cache");
@@ -143,8 +142,6 @@ void set(string key, mixed value,
          void|multiset(string) dependants) {
   debug("setting value for key %s (e: %d, v: %f",key,expire_time,
         preciousness?preciousness:1.0);
-  mixed err;
-  mixed tmp;
   db->query("delete from cache where cachekey='%s'",key);
   db->query("insert into cache "
             "(cachekey,atime,ctime,etime,cost,data, dependants) "

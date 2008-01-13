@@ -786,14 +786,12 @@ class Crawler
     
     void create(Standards.URI _uri, void|Standards.URI _real_uri, mapping extra_headers)
     {
-      string pq;
-      mapping headers;
       uri=_uri;
       real_uri=_real_uri;
       if(!real_uri)
 	real_uri=uri;
 
-      headers = ([
+      mapping headers = ([
 	"host": uri->host+":"+uri->port,
 	"user-agent": "Mozilla 4.0 (PikeCrawler)",
       ]);
