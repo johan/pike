@@ -4523,6 +4523,7 @@ int low_define_alias(struct pike_string *name, struct pike_type *type,
   dummy.run_time_type = id->run_time_type;	/* Not actually used. */
   dummy.func.ext_ref.depth = depth;
   dummy.func.ext_ref.id = refno;
+  dummy.opt_flags = 0;
 #ifdef PROFILING
   dummy.self_time=0;
   dummy.num_calls=0;
@@ -4646,6 +4647,7 @@ int low_define_variable(struct pike_string *name,
   dummy.identifier_flags = IDENTIFIER_VARIABLE;
   dummy.run_time_type=run_time_type;
   dummy.func.offset=offset - Pike_compiler->new_program->inherits[0].storage_offset;
+  dummy.opt_flags = 0;
 #ifdef PROFILING
   dummy.self_time=0;
   dummy.num_calls=0;
