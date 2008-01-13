@@ -240,7 +240,7 @@ static void f_read( INT32 args )
       check_threads_etc();
     } while (1);
 
-    if(errno < 0)
+    if(f < 0)
       Pike_error("CommonLog.read(): Failed to open file for reading (errno=%d).\n",
 	    errno);
   } else
