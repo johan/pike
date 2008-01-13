@@ -82,10 +82,12 @@ class `() {
 
   static int mode;
   this_program set_encrypt_key(void|mixed key) {
+    key;
     mode = 0;
     return this;
   }
   this_program set_decrypt_key(void|mixed key) {
+    key;
     mode = 1;
     return this;
   }
