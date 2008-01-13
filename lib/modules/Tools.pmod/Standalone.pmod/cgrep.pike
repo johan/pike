@@ -111,7 +111,6 @@ class PikeFile {
   }
 
   void grep(array(string) tokens) {
-    int old;
     foreach(tokens; int i; string token) {
 #if 0
       if(line!=old) {

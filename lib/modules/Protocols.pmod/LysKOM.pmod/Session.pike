@@ -1255,7 +1255,6 @@ object|void _create_text(string textstring,
 object|void send_message(string textstring, mapping options)
 {
   int|object res;
-  string call;
 
   if(!options) options = ([]);
 

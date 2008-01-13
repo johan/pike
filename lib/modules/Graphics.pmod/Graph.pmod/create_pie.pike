@@ -15,8 +15,6 @@ mapping(string:mixed) create_pie(mapping(string:mixed) diagram_data)
   //Only tested with xsize>=100
   int si=diagram_data->fontsize;
 
-  string where_is_ax;
-
   Image.Image piediagram;
 
   init_bg(diagram_data);
@@ -375,7 +373,6 @@ mapping(string:mixed) create_pie(mapping(string:mixed) diagram_data)
   //And now some shading!
   if (!twoD)
     {
-      object below;
       array(int) b=({70,70,70});
       array(int) a=({0,0,0});
       

@@ -206,7 +206,6 @@ int get_last_io_time() {return last_io_time;}
     object msgval;
     object msgid;
     int rv = 0, msgnum;
-    string s;
 
     //THREAD_LOCK
     msgnum = next_id++;
@@ -311,7 +310,6 @@ int get_last_io_time() {return last_io_time;}
     object msgval;
     object msgid;
     int rv = 0, msgnum;
-    string s;
 
     //THREAD_LOCK
     msgnum = next_id++;

@@ -158,10 +158,6 @@ Usage: pike -x monger [options] modulename
 
 void do_query(string name, string|void version)
 {
-  mixed e; // for catching errors
-  int module_id;
-
-
   mapping vi = get_module_action_data(name, version);
   if( !vi ) return;
 
@@ -254,9 +250,6 @@ mapping get_module_action_data(string name, string|void version)
 
 void do_download(string name, string|void version)
 {
-  mixed e; // for catching errors
-  int module_id;
-
   mapping vi = get_module_action_data(name, version);
 
   if(vi->download)
@@ -277,8 +270,6 @@ void do_download(string name, string|void version)
 
 void do_install(string name, string|void version)
 {
-  mixed e; // for catching errors
-  int module_id;
   int res;
 
   mapping vi = get_module_action_data(name, version);
@@ -396,7 +387,6 @@ void do_install(string name, string|void version)
 
 void do_list(string|void name)
 {
-  mixed e; // for catching errors
   array results;
 
   object x = xmlrpc_handler(repository);

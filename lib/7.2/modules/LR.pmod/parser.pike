@@ -475,7 +475,6 @@ void set_symbol_to_string(void|function(int|string:string) s_to_s)
 //! Rule to add.
 void add_rule(object(rule) r)
 {
-  array(object(rule)) rules;
   int|string symbol;
 
   /* DEBUG */
@@ -759,7 +758,6 @@ static private void handle_follow_conflicts()
 static private int go_through(object(kernel) state, int item_id,
 			      object(item) current_item)
 {
-  int index;
   object(item) i, master;
 
   i = state->item_id_to_item[item_id];
