@@ -4221,10 +4221,10 @@ PMOD_EXPORT void low_inherit(struct program *p,
 	  for(e=1;e<inherit.parent_offset;e++)
 	  {
 	    struct inherit *in;
-	    if(!par->prog)
+	    if(!par || !par->prog)
 	    {
-	      par=0;
-	      pid=-1;
+	      par = NULL;
+	      pid = -1;
 	      break;
 	    }
 
@@ -4258,8 +4258,8 @@ PMOD_EXPORT void low_inherit(struct program *p,
 		  pid = PARENT_INFO(par)->parent_identifier;
 		  par = PARENT_INFO(par)->parent;
 		}else{
-		  pid=-1;
-		  par=0;
+		  pid = -1;
+		  par = NULL;
 		}
 	    }
 	  }
