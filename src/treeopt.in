@@ -971,11 +971,7 @@ F_LOOP(0, -):
 // foreach(arr ; ; val) body; -> foreach(arr, val) body;
 F_FOREACH(F_VAL_LVAL(0[ pike_types_le($$->type, array_type_string) ],
 		     ':'(-, 1) ), 2):
-{
-  $$ = mknode(F_FOREACH, mknode(F_VAL_LVAL, $0, $1), $2);
-}
-;
-//  F_FOREACH(F_VAL_LVAL($0, $1), $2);
+  F_FOREACH(F_VAL_LVAL($0, $1), $2);
 
 // foreach(arr, -) body;  ->  loop(sizeof(arr)) body;
 F_FOREACH(F_VAL_LVAL(0, -), 1):
