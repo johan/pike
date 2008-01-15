@@ -476,8 +476,8 @@ static void f_decode_image_data( INT32 args )
          dst->r = ct->str[*source];
          dst->g = ct->str[*source+256];
          dst->b = ct->str[*source+256*2];
-         *source++;
-         *dst++;
+         source++;
+         dst++;
        }
        else
        {
