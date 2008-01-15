@@ -26,6 +26,13 @@ void low_yyerror(struct pike_string *str);
 PMOD_EXPORT void yyerror(const char *s);
 static void yyerror_reserved(const char *keyword);
 int islocal(struct pike_string *str);
+int low_add_local_name(struct compiler_frame *frame,
+                       struct pike_string *str,
+                       struct pike_type *type,
+                       node *def);
+int add_local_name(struct pike_string *str,
+                   struct pike_type *type,
+                   node *def);
 int verify_declared(struct pike_string *str);
 void cleanup_compiler(void);
 
