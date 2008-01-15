@@ -44,7 +44,7 @@ static void LM_FUNC(rgb_group *s,rgb_group *l,rgb_group *d,
 	 while (len--)
 	 {
 	    L_CHANNEL_DO_V(*s,*l,*d,white,alpha);
-	    l++; s++; la++; d++; sa++; 
+	    l++; s++; d++; sa++; 
 	 }
       else
 	 while (len--)
