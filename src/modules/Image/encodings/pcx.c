@@ -576,7 +576,7 @@ void image_pcx_encode( INT32 args )
 
   img = ((struct image *)get_storage( i, image_program ));
   
-  MEMSET(&c, sizeof(c), 0);
+  MEMSET(&c, 0, sizeof(c));
   c.hdpi = 150;
   c.vdpi = 150;
   c.raw = 0;
