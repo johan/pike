@@ -1470,7 +1470,6 @@ F_LOOP(0 = +[ !depend_p($$, $$)]
   struct pike_type *type = $0->type;
   struct pike_string *tmpname;
   int tmpvar;
-  void add_local_name(struct pike_string *, struct pike_type *, node *);
 
   MAKE_CONST_STRING(tmpname, " ");
   tmpvar = islocal(tmpname);
