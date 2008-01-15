@@ -1598,7 +1598,7 @@ int my_isipv6nr(char *s)
 #endif /* REENTRANT */
 
 #ifndef GETHOST_DECLARE
-#ifdef HAVE_GETHOSTBYNAME
+#if defined(HAVE_GETHOSTBYNAME) || defined(__NT__)
 
 #define GETHOST_DECLARE struct hostent *ret
 #define CALL_GETHOSTBYNAME(X) ret=gethostbyname(X)
@@ -1776,7 +1776,7 @@ void f_gethostbyname(INT32 args)
   }
   describe_hostent(ret);
 }  
-#endif /* HAVE_GETHOSTBYNAME */
+#endif /* GETHOST_DECLARE */
 
 #ifdef GETHOSTBYNAME_MUTEX_EXISTS
 static void cleanup_after_fork(struct callback *cb, void *arg0, void *arg1)
