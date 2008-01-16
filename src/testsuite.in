@@ -9675,9 +9675,11 @@ define(test_hash_value, [[
 test_hash_value(77)
 test_hash_value(5.0)
 test_hash_value("hello")
-test_hash_value((<>))
 test_hash_value(({}))
-test_hash_value(([]))
+dnl (<>) is mutable.
+test_true(intp(hash_value((<>))))
+dnl ([]) is mutable.
+test_true(intp(hash_value(([]))))
 test_hash_value(time)
 test_hash_value(ADT.Stack)
 dnl test_hash_value(String)
