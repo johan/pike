@@ -186,16 +186,16 @@ long STRTOL(const char *str,char **ptr,int base)
   if (ptr != (char **)NULL)
     *ptr = (char *)str;		/* in case no number is formed */
   if (base < 0 || base > MBASE)
-    return (0);			/* base is invalid -- should be a fatal error */
-  if (!isalnum(c = (int)*str)) {
+    return 0;		/* base is invalid -- should be a fatal error */
+  if (!isalnum(c = *str & 0xff)) {
     while (ISSPACE(c))
-      c = (int)*++str;
+      c = *++str & 0xff;
     switch (c) {
     case '-':
       neg++;
       /*@fallthrough@*/
     case '+':
-      c = (int)*++str;
+      c = *++str & 0xff;
     }
   }
 
@@ -216,7 +216,7 @@ long STRTOL(const char *str,char **ptr,int base)
     return (0);			/* no number formed */
   if (base == 16 && c == '0' && isxdigit(((const unsigned char *)str)[2]) &&
       (str[1] == 'x' || str[1] == 'X'))
-    c = *(str += 2);		/* skip over leading "0x" or "0X" */
+    c = *(str += 2) & 0xff;		/* skip over leading "0x" or "0X" */
 
   mul_limit = LONG_MAX / base;
   add_limit = (int) (LONG_MAX % base);
