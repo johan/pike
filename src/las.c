@@ -811,6 +811,7 @@ node *debug_mknode(int token, node *a, node *b)
     int e;
     struct program_state *state = Pike_compiler;
     res->node_info |= OPT_EXTERNAL_DEPEND;
+    if (!b) break;	/* Paranoia; probably compiler error. */
     for(e=0;e<b->u.sval.u.integer;e++)
     {
       state->new_program->flags |= PROGRAM_USES_PARENT | PROGRAM_NEEDS_PARENT;
