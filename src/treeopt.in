@@ -763,6 +763,9 @@ F_LOR(+[node_is_false($$)], 0):
 F_LOR(0 = +[node_is_true($$)], *):
   $0;
 
+// Cut
+F_LOR(0 = F_LOR(*, +[node_is_true($$)]), *):
+  $0;
 
 F_LAND(-, 0):
   -;
@@ -796,6 +799,14 @@ F_LAND(+[node_is_true($$)], 0):
 F_LAND(0 = +[node_is_false($$)], *):
   $0;
 
+// Cut
+F_LAND(0 = F_LAND(*, +[node_is_false($$)]), *):
+  $0;
+
+// Not sound, since it doesn't take zero-type into account.
+// F_LAND(+[!($$->node_info & OPT_SIDE_EFFECT)],
+//        0 = +[node_is_false($$)]):
+//   $0;
 
 // Optimizations of if statements.
 '?'(-, -):
@@ -821,6 +832,12 @@ F_LAND(0 = +[node_is_false($$)], *):
 
 '?'(+[node_is_false($$)], ':'(*, 0)):
   $0;
+
+'?'(F_LAND(0 = +, +[node_is_false($$)]), ':'(*, 1)):
+  F_COMMA_EXPR($0, $1);
+
+'?'(F_LOR(0 = +, +[node_is_true($$)]), ':'(1, *)):
+  F_COMMA_EXPR($0, $1);
 
 '?'(0, ':'(1, $1)):
   F_COMMA_EXPR($0, $1);
