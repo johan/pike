@@ -1182,6 +1182,8 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 	  code_entry (TAG_PROGRAM, 5, data);
 	  data->delayed = append_array (data->delayed, val);
 	  tmp = low_mapping_lookup (data->encoded, val);
+	  if (!tmp)
+	    Pike_error("Internal error in delayed encoder of programs.\n");
 	  tmp->u.integer = CONVERT_ENTRY_ID (tmp->u.integer);
 	  goto encode_done;
 	}
