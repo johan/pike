@@ -2938,7 +2938,7 @@ void image_lay(INT32 args)
       return;
    }
 
-   l=(struct layer**)xalloc(sizeof(struct layer)*layers);
+   l=(struct layer**)xalloc(sizeof(struct layer *)*layers);
 
    SET_ONERROR(err, free, l);
 
