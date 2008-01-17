@@ -2419,7 +2419,13 @@ static INT32 decode_portable_bytecode(INT32 string_no)
 	current_file = p->strings[strno];		\
       } else if (STR(bytecode)[e] == F_LINE) {		\
 	current_line = STR(bytecode)[e+1];		\
-      } else 
+      } else if (!current_file) {			\
+	Pike_error("Missing filename directive in "	\
+		   "byte code.\n");			\
+      } else if (!current_line) {			\
+	Pike_error("Missing line directive in "		\
+		   "byte code.\n");			\
+      } else
 
 #define EMIT_BYTECODE(STR, X) do {		\
     for (e = 0; e < bytecode->len; e += 3) {	\
