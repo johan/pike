@@ -977,8 +977,8 @@ string generate_match(array(object(node)) rule_set, string indent)
 
   string tpos = rule_set[0]->tpos;
 
-  string label;
-  int any_cdr_last;
+  // string label;
+  // int any_cdr_last;
 
   int last_was_if = 0;
   if (sizeof(node_classes[NULL_CAR]) ||
@@ -1234,7 +1234,6 @@ string generate_extras_match(array(object(node)) rule_set, string indent)
   array(object(node)) no_extras = ({});
 
   foreach(rule_set, object(node) n) {
-    string t = 0;
     if (n->extras && sizeof(n->extras)) {
       extra_set[n->extras * (") &&\n" +
 			     indent + "    (")] += ({ n });
