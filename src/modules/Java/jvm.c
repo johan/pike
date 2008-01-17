@@ -426,8 +426,6 @@ static void f_jobj_instance(INT32 args)
 {
   struct jobj_storage *c, *jo = THIS_JOBJ;
   JNIEnv *env;
-  struct jvm_storage *j =
-    (struct jvm_storage *)get_storage(jo->jvm, jvm_program);
   struct object *cls;
   int n=0;
 
@@ -450,8 +448,6 @@ static void f_monitor_enter(INT32 args)
 {
   struct jobj_storage *jo = THIS_JOBJ;
   JNIEnv *env;
-  struct jvm_storage *j =
-    (struct jvm_storage *)get_storage(jo->jvm, jvm_program);
 
   pop_n_elems(args);
   if((env=jvm_procure_env(jo->jvm))) {
@@ -471,8 +467,6 @@ static void f_jobj_get_class(INT32 args)
 {
   struct jobj_storage *jo = THIS_JOBJ;
   JNIEnv *env;
-  struct jvm_storage *j =
-    (struct jvm_storage *)get_storage(jo->jvm, jvm_program);
 
   pop_n_elems(args);
   if((env=jvm_procure_env(jo->jvm))) {
