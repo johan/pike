@@ -2450,7 +2450,15 @@ static INT32 decode_portable_bytecode(INT32 string_no)
     break;
   case 0:
 #undef EMIT_BYTECODE2
-#define EMIT_BYTECODE2(X)
+#define EMIT_BYTECODE2(X)				\
+    if (!current_file) {				\
+      Pike_error("Missing filename directive in "	\
+		 "byte code.\n");			\
+    } else if (!current_line) {				\
+      Pike_error("Missing line directive in "		\
+		 "byte code.\n");			\
+    } else
+
     EMIT_BYTECODE(STR0, EMIT_BYTECODE2);
     break;
 #undef SIGNED_CHAR
