@@ -2140,7 +2140,7 @@ void image_gif_decode(INT32 args)
 void image_gif_decode_layers(INT32 args)
 {
    struct array *a,*b;
-   struct image *src,*alpha;
+   struct image *alpha;
    int n;
    int numlayers=0;
 
@@ -2173,8 +2173,7 @@ void image_gif_decode_layers(INT32 args)
 	  && b->item[0].type==T_INT 
 	  && b->item[0].u.integer==GIF_RENDER
 	  && b->item[3].type==T_OBJECT
-	  && (src=(struct image*)get_storage(b->item[3].u.object,
-					     image_program)) )
+	  && get_storage(b->item[3].u.object, image_program) )
       {
 	 if (b->item[4].type==T_OBJECT)
 	    alpha=(struct image*)get_storage(b->item[4].u.object,
