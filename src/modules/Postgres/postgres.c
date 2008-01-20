@@ -403,6 +403,11 @@ static void f_big_query(INT32 args)
 #define LIMITLENSC	(sizeof(LIMIT1STRSC)-1)
 #define LIMITLEN	(sizeof(LIMIT1STR)-1)
 	res = 0;
+	/* FIXME: The following code looks seriously broken;
+	 *        and why attempt do do this to begin with??????
+	 *	/grubba 2008-01-20
+	 */
+#if 0
 	if(!strncmp(query,SELECTSTR,sizeof(SELECTSTR)-1))
 	{
 #define CURSORPREFIX	"DECLARE "CURSORNAME" CURSOR FOR "
@@ -453,6 +458,7 @@ yupbegin:       res=PQexec(conn,"BEGIN");
 	    free(nquery);
 	  }
 	}
+#endif /* 0 */
 	lastcommit=0;
 	if(!res)
 	  res=PQexec(conn,query);
