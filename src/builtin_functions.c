@@ -3959,8 +3959,13 @@ node *optimize_replace(node *n)
 	node *ret = NULL;
 	INT32 args;
 	args = eval_low(*arg1, 1);
+	if (args != 1) return NULL;
 	if (arg2) {
-	  args += eval_low(*arg2,1);
+	  args += eval_low(*arg2, 1);
+	  if (!args) {
+	    /* eval_low() returned -1. */
+	    return NULL;
+	  }
 	}
 
 	replace_obj = clone_object(replace_compiler, args);
