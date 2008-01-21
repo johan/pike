@@ -4304,11 +4304,9 @@ PMOD_EXPORT void low_inherit(struct program *p,
   for (e=0; e < (int)p->num_identifier_references; e++)
   {
     struct reference fun;
-    struct pike_string *name;
 
     fun = p->identifier_references[e]; /* Make a copy */
 
-    name=ID_FROM_PTR(p,&fun)->name;
     fun.inherit_offset += inherit_offset;
 
     if (fun.id_flags & ID_FINAL)
