@@ -1225,6 +1225,7 @@ void image_xcf_f__decode_tiles( INT32 args )
     if(!tile_ss)
       continue;
 
+    tile.s = tile_ss->s;
     tile.str = (unsigned char *)(tile_ss->s->str + tile_ss->offset);
     tile.len = tile_ss->len;
 
