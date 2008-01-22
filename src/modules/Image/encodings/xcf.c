@@ -1225,7 +1225,7 @@ void image_xcf_f__decode_tiles( INT32 args )
     if(!tile_ss)
       continue;
 
-    tile.s = tile_ss->s;
+    tile.s = NULL;
     tile.str = (unsigned char *)(tile_ss->s->str + tile_ss->offset);
     tile.len = tile_ss->len;
 
@@ -1238,6 +1238,7 @@ void image_xcf_f__decode_tiles( INT32 args )
     {
       struct buffer s = tile, od, d;
       int i;
+      od.s = NULL;
       od.len = eheight*ewidth*bpp;  /* Max and only size, really */
       df = (char *)(od.str = (unsigned char *)xalloc( eheight*ewidth*bpp+1 ));
       d = od;
