@@ -719,9 +719,8 @@ static void worker(void *this_)
     this->to->flags &= ~FILE_LOCK_FD;
   } else {
     /* Destructed */
-    if (this->to_fd >= 0) {
-      fd_close(this->to_fd);
-    }
+    fd_close(this->to_fd);
+
     /* Paranoia */
     change_fd_for_box (&this->to->box, -1);
   }
