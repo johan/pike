@@ -3959,12 +3959,12 @@ node *optimize_replace(node *n)
 	node *ret = NULL;
 	INT32 args;
 	args = eval_low(*arg1, 1);
-	if (args != 1) return NULL;
+	if (args != 1) goto failed;
 	if (arg2) {
 	  args += eval_low(*arg2, 1);
 	  if (!args) {
 	    /* eval_low() returned -1. */
-	    return NULL;
+	    goto failed;
 	  }
 	}
 
@@ -3988,6 +3988,7 @@ node *optimize_replace(node *n)
 	  return ret;
 	}
       }
+    failed:
       UNSETJMP(tmp);
       pop_n_elems(Pike_sp - save_sp);
     }
