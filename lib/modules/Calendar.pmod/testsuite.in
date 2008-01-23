@@ -122,4 +122,21 @@ test_any([[
   return k->second(1)!=k->second(2);
 ]], 1)
 
+test_eq([[Calendar.ISO.Day (2007, 12, 31)->week()->month_day()]], 31);
+
+dnl Tests for year spanning weeks.
+test_any([[
+  object d = Calendar.ISO.dwim_day ("2007-12-01");
+  d->week_day();
+  return d->range (d)->week()->year_no();
+]], 2007)
+test_eq([[Calendar.ISO.Day (2007, 12, 31)->format_iso_week()]], "2008-W01")
+test_eq([[Calendar.ISO.Day (2007, 12, 31)->format_iso_week_short()]], "200801")
+test_eq([[Calendar.ISO.Day (2007, 12, 31)->set_size (Calendar.ISO.Week())->format_iso_week()]], "2008-W01")
+test_eq([[Calendar.ISO.Day (2007, 12, 31)->set_size (Calendar.ISO.Week())->year_no()]], 2008)
+test_eq([[Calendar.ISO.Week (2008, 1)->set_size (Calendar.ISO.Day())->format_ymd()]], "2007-12-31")
+test_eq([[Calendar.ISO.Week (2008, 1)->set_size (Calendar.ISO.Day())->year_no()]], 2007)
+test_eq([[Calendar.ISO.Week (2008, 1)->year_no()]], 2008)
+test_eq([[Calendar.ISO.Year (Calendar.ISO.Week (2008, 1))->year_no()]], 2008)
+
 END_MARKER
