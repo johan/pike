@@ -732,7 +732,7 @@ static void call_destroy(struct object *o, enum object_destruct_reason reason)
     if(Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_FREE)
       Pike_fatal("Calling destroy() inside gc.\n");
 #endif
-    if(check_destroy_called_mark_semafore(o))
+    if(check_destroy_called_mark_semaphore(o))
     {
       JMP_BUF jmp;
 
