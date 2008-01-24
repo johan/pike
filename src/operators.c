@@ -286,6 +286,7 @@ void o_cast_to_int(void)
 #endif /* AUTO_BIGNUM */
       {
 	sp[-1].type=T_INT;
+	sp[-1].subtype = NUMBER_NUMBER;
 	sp[-1].u.integer=i;
       }
     }
@@ -306,6 +307,7 @@ void o_cast_to_int(void)
       int i=atoi(sp[-1].u.string->str);
       free_string(sp[-1].u.string);
       sp[-1].type=T_INT;
+      sp[-1].subtype = NUMBER_NUMBER;
       sp[-1].u.integer=i;
     }
     else
@@ -320,6 +322,7 @@ void o_cast_to_int(void)
       int i=STRTOL(sp[-1].u.string->str,0,10);
       free_string(sp[-1].u.string);
       sp[-1].type=T_INT;
+      sp[-1].subtype = NUMBER_NUMBER;
       sp[-1].u.integer=i;
     }
 #endif /* AUTO_BIGNUM */
@@ -3913,6 +3916,7 @@ PMOD_EXPORT void o_not(void)
   default:
     free_svalue(sp-1);
     sp[-1].type=T_INT;
+    sp[-1].subtype = NUMBER_NUMBER;
     sp[-1].u.integer=0;
   }
 }
