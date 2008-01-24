@@ -2908,6 +2908,7 @@ PMOD_EXPORT void o_not(void)
   default:
     free_svalue(sp-1);
     sp[-1].type=T_INT;
+    sp[-1].subtype = NUMBER_NUMBER;
     sp[-1].u.integer=0;
   }
 }
