@@ -2176,8 +2176,8 @@ void fixate_program(void)
       if(found_better!=-1)
 	continue;
     }
-    if ((fun->func.offset == -1) && (funp->id_flags & ID_INLINE) &&
-	IDENTIFIER_IS_PIKE_FUNCTION(fun->identifier_flags)) {
+    if (IDENTIFIER_IS_PIKE_FUNCTION(fun->identifier_flags) &&
+	(fun->func.offset == -1) && (funp->id_flags & ID_INLINE)) {
       my_yyerror("Missing definition for local function %S.",
 		 fun->name);
     }
