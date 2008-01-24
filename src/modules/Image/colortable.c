@@ -3217,7 +3217,7 @@ static INLINE void _build_cubicle(struct neo_colortable *nct,
    INT32 n = nct->u.flat.numentries;
 
    int i=0;
-   int *p=xalloc(n*sizeof(struct nctlu_cubicle));
+   int *p = xalloc(n * sizeof(INT32));
    int *pp; /* write */
 
    rmin=(r*256)/red;   rmax=((r+1)*256)/red-1;
@@ -3270,8 +3270,8 @@ static INLINE void _build_cubicle(struct neo_colortable *nct,
    while (0);
 #endif
 
-   cub->n=i;
-   cub->index=realloc(p,i*sizeof(struct nctlu_cubicle));
+   cub->n = i;
+   cub->index = realloc(p, i * sizeof(INT32));
 
    if (!cub->index) 
       cub->index=p; /* out of memory, or weird */
