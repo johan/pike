@@ -593,6 +593,7 @@ void f_aap_index_op(INT32 args)
     else
     {
       sp[-1].type = T_INT;
+      sp[-1].subtype = NUMBER_NUMBER;
       sp[-1].u.integer = 0;
     }
     push_string(s_since);

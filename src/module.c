@@ -154,7 +154,7 @@ static void exit_builtin_modules(void)
 
   exit_pike_security();
   free_svalue(& throw_value);
-  throw_value.type=T_INT;
+  mark_free_svalue (&throw_value);
 
   do_gc(NULL, 1);
 

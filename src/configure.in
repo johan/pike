@@ -2681,8 +2681,6 @@ fi
 
 #############################################################################
 
-AC_DEFINE(POSIX_SOURCE)
-
 AC_MSG_CHECKING(ansi prototype capability)
 AC_CACHE_VAL(pike_cv_sys_ansi_prototypes,
 [

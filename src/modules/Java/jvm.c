@@ -2035,7 +2035,7 @@ static void do_native_dispatch(void *arg)
     pop_n_elems(Pike_sp-osp);
     UNSETJMP(recovery);
     free_svalue(&throw_value);
-    throw_value.type = PIKE_T_INT;
+    mark_free_svalue (&throw_value);
     return;
   }
 

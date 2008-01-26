@@ -1063,7 +1063,7 @@ static void name(INT32 args)						\
        case T_STRING:                                                   \
         MEMMOVE(sp-args+1, sp-args, sizeof(struct svalue)*args);        \
         sp++; args++;                                                   \
-        sp[-args].type=T_INT;                                           \
+	sp[-args].type=PIKE_T_FREE;					\
         sp[-args].u.string=low_get_mpz_digits(THIS, 10);                \
         sp[-args].type=T_STRING;                                        \
         f_add(args);                                                    \
@@ -1154,7 +1154,7 @@ static void PIKE_CONCAT(name,_eq)(INT32 args)				\
        case T_STRING:                                                   \
         MEMMOVE(sp-args+1, sp-args, sizeof(struct svalue)*args);        \
         sp++; args++;                                                   \
-        sp[-args].type=T_INT;                                           \
+	sp[-args].type=PIKE_T_FREE;					\
         sp[-args].u.string=low_get_mpz_digits(THIS, 10);                \
         sp[-args].type=T_STRING;                                        \
         f_add(args);                                                    \
@@ -2081,7 +2081,7 @@ PIKE_MODULE_EXIT
   {
     extern struct svalue auto_bignum_program;
     free_svalue(&auto_bignum_program);
-    auto_bignum_program.type=T_INT;
+    auto_bignum_program.type=PIKE_T_FREE;
     if(bignum_program)
     {
       free_program(bignum_program);

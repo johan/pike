@@ -607,7 +607,7 @@ PMOD_EXPORT struct object *get_master(void)
 	/* do nothing */
 	UNSETJMP(tmp);
 	free_svalue(&throw_value);
-	throw_value.type = T_INT;
+	mark_free_svalue (&throw_value);
       }else{
 	f_decode_value(2);
 	UNSETJMP(tmp);
@@ -743,14 +743,14 @@ static void call_destroy(struct object *o, enum object_destruct_reason reason)
 #endif
 
       free_svalue (&throw_value);
-      throw_value.type = T_INT;
+      mark_free_svalue (&throw_value);
 
       if (SETJMP (jmp)) {
 	UNSETJMP (jmp);
 	if (gc_destruct_everything) {
 	  struct svalue err;
 	  move_svalue (&err, &throw_value);
-	  throw_value.type = T_INT;
+	  mark_free_svalue (&throw_value);
 	  if (!SETJMP (jmp)) {
 	    push_svalue (&err);
 	    push_int (0);

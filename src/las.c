@@ -5163,11 +5163,11 @@ ptrdiff_t eval_low(node *n,int print_error)
 	  handle_compile_exception("Error evaluating constant.");
 	else {
 	  free_svalue(&throw_value);
-	  throw_value.type = T_INT;
+	  mark_free_svalue (&throw_value);
 	}
       else {
 	free_svalue(&throw_value);
-	throw_value.type = T_INT;
+	mark_free_svalue (&throw_value);
 	/* Assume the node will throw errors at runtime too. */
 	n->tree_info |= OPT_SIDE_EFFECT;
 	n->node_info |= OPT_SIDE_EFFECT;

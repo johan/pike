@@ -283,11 +283,10 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
  * @param I the index of the array to set
  * @param S the svalue to set
  */
-#define array_set_index(V,I,S) do {					 \
+#define array_set_index_no_free(V,I,S) do {				\
   struct array *v_=(V);							 \
   INT32 index_=(I);							 \
   struct svalue *s_=(S);						 \
-  struct svalue tmp_;							 \
 									 \
   DO_IF_DEBUG(								 \
   if(index_<0 || index_>v_->size)					 \
@@ -295,11 +294,24 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
     )									 \
 									 \
   check_destructed(s_);							 \
-  tmp_=ITEM(v_)[index_];						 \
 									 \
   v_->type_field |= 1 << s_->type;					 \
   assign_svalue_no_free( ITEM(v_) + index_, s_);			 \
-  free_svalue(&tmp_);							 \
+}while(0)
+#define array_set_index(V,I,S) do {					\
+  struct array *v_=(V);							 \
+  INT32 index_=(I);							 \
+  struct svalue *s_=(S);						 \
+									 \
+  DO_IF_DEBUG(								 \
+  if(index_<0 || index_>v_->size)					 \
+    Pike_fatal("Illegal index in low level array set routine.\n");	 \
+    )									 \
+									 \
+  check_destructed(s_);							 \
+									 \
+  v_->type_field |= 1 << s_->type;					 \
+  assign_svalue( ITEM(v_) + index_, s_);				\
 }while(0)
 
 #define array_fix_unfinished_type_field(A) do {				\

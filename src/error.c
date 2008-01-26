@@ -196,7 +196,7 @@ PMOD_EXPORT void push_error(const char *description)
 }
 
 PMOD_EXPORT struct svalue throw_value = {
-  PIKE_T_INT, 0,
+  PIKE_T_INT, NUMBER_NUMBER,
 #ifdef HAVE_UNION_INIT
   {0}, /* Only to avoid warnings. */
 #endif
@@ -482,7 +482,7 @@ PMOD_EXPORT void exit_on_error(const void *msg)
     fprintf(stderr,"Attempting to dump raw error: (may fail)\n");
     init_buf(&save_buf);
     move_svalue (&thrown, &throw_value);
-    throw_value.type = PIKE_T_INT;
+    mark_free_svalue (&throw_value);
     describe_svalue(&thrown,0,0);
     free_svalue (&thrown);
     s=simple_free_buf(&save_buf);

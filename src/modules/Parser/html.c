@@ -3991,7 +3991,7 @@ static void html_read(INT32 args)
 	 struct out_piece *z = THIS->out;
 	 type_field |= 1 << z->v.type;
 	 ITEM(res)[i] = z->v;
-	 z->v.type = T_INT;
+	 mark_free_svalue (&z->v);
 	 THIS->out = THIS->out->next;
 	 really_free_out_piece (z);
       }
@@ -4038,7 +4038,7 @@ static void html_read(INT32 args)
        if (THIS->out->v.u.string->len == n) {
 	 struct out_piece *z = THIS->out;
 	 push_string (z->v.u.string);
-	 z->v.type = T_INT;
+	 mark_free_svalue (&z->v);
 	 THIS->out = z->next;
 	 really_free_out_piece (z);
        }

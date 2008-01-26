@@ -703,6 +703,7 @@ void f_abs(INT32 args)
 {
   struct svalue zero;
   zero.type=T_INT;
+  zero.subtype = NUMBER_NUMBER;
   zero.u.integer=0;
 
   check_all_args("abs",args,BIT_INT|BIT_FLOAT|BIT_OBJECT,0);

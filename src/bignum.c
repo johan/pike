@@ -18,7 +18,7 @@
 #define sp Pike_sp
 
 PMOD_EXPORT struct svalue auto_bignum_program = {
-  T_INT, 0,
+  PIKE_T_FREE, 0,
 #ifdef HAVE_UNION_INIT
   {0}, /* Only to avoid warnings. */
 #endif
@@ -31,7 +31,7 @@ PMOD_EXPORT struct program *get_auto_bignum_program(void)
 
 PMOD_EXPORT struct program *get_auto_bignum_program_or_zero(void)
 {
-  if (auto_bignum_program.type == T_INT)
+  if (auto_bignum_program.type == PIKE_T_FREE)
     return 0;
   return program_from_function(&auto_bignum_program);
 }
@@ -39,7 +39,7 @@ PMOD_EXPORT struct program *get_auto_bignum_program_or_zero(void)
 void exit_auto_bignum(void)
 {
   free_svalue(&auto_bignum_program);
-  auto_bignum_program.type=T_INT;
+  mark_free_svalue (&auto_bignum_program);
 }
 
 PMOD_EXPORT void convert_stack_top_to_bignum(void)

@@ -1202,6 +1202,7 @@ CHAROPT2(								 \
 		  INT32 x;						 \
 		  struct svalue tmp;					 \
 		  tmp.type=T_INT;					 \
+		  tmp.subtype = NUMBER_NUMBER;				\
 		  tmp.u.integer=input[eye];				 \
 		  x=switch_lookup(set.a, &tmp);				 \
 		  if( set.neg != (x<0 && (x&1)) ) break;		 \

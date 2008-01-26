@@ -553,7 +553,7 @@ static void finished_p(struct callback *foo, void *b, void *c)
 /*       JMP_BUF recovery; */
 
 /*       free_svalue(& throw_value); */
-/*       throw_value.type=T_INT; */
+/*       mark_free_svalue (&throw_value); */
 
 /*       if(SETJMP(recovery)) */
 /*       { */

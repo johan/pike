@@ -263,7 +263,7 @@ void f_parse_html_lines(INT32 args)
     return;
   }
 
-  sp[-args].type=T_INT;
+  mark_free_svalue (sp - args);
 
   add_ref(single=sp[1-args].u.mapping);
   add_ref(cont=sp[2-args].u.mapping);

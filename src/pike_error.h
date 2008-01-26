@@ -386,7 +386,7 @@ PMOD_EXPORT extern const char msg_div_by_zero[];
                 __exception_rethrow = 1; \
             if(__is_exception) { \
 		free_svalue(&throw_value); \
-		throw_value.type = T_INT; \
+		mark_free_svalue (&throw_value); \
 	    } \
 	    else \
                 UNSETJMP(exception); \

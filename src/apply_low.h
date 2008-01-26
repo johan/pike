@@ -254,12 +254,11 @@
 	      dmalloc_touch_svalue(Pike_sp-i);
 	    }
 	  }
-#endif /* DEBUG_MALLOC */	      
-	  Pike_sp[-args-1].type=T_INT;
+#endif /* DEBUG_MALLOC */
 	}else{
 	  free_svalue(Pike_sp-args-1);
-	  Pike_sp[-args-1].type=T_INT;
 	}
+	mark_free_svalue (Pike_sp - args - 1);
 	low_object_index_no_free(Pike_sp-args-1,o,fun);
 
 	/* No profiling code for calling variables - Hubbe */
