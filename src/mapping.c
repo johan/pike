@@ -1214,10 +1214,9 @@ PMOD_EXPORT void mapping_index_no_free(struct svalue *dest,
 
   if(!IS_DESTRUCTED (key) && (p=low_mapping_lookup(m,key)))
   {
-#if 0
+    /* Never return NUMBER_UNDEFINED for existing entries. */
     if(p->type==T_INT)
       p->subtype=NUMBER_NUMBER;
-#endif
 
     assign_svalue_no_free(dest, p);
   }else{
