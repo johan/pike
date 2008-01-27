@@ -749,7 +749,7 @@ static struct buffer save_tga(struct image *img, struct image *alpha,
   /* We like our images top-to-bottom, thank you! */
   hdr.descriptor |= TGA_DESC_VERTICAL;
 
-  /* Choose the imageType based on alpha precense and compression options. */
+  /* Choose the imageType based on alpha presence and compression options. */
 
   hdr.bpp = 24;
   hdr.imageType = TGA_TYPE_COLOR;
@@ -781,8 +781,7 @@ static struct buffer save_tga(struct image *img, struct image *alpha,
 
   buf.len = width*height*(alpha?4:3)+strlen(SAVE_ID_STRING)+sizeof(hdr)+65535;
   buf.str = xalloc(buf.len);
-  obuf.len = buf.len;
-  obuf.str = buf.str;
+  obuf = buf;
   SET_ONERROR(err, free, obuf.str);
 
   /* Just write the header. */
@@ -836,6 +835,7 @@ static struct buffer save_tga(struct image *img, struct image *alpha,
     free(data);
   }
   UNSET_ONERROR(err);
+
   obuf.len -= fp->len;
   return obuf;
 }
