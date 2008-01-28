@@ -748,6 +748,7 @@ PMOD_EXPORT void low_mapping_insert(struct mapping *m,
      * possible to tell the difference. */
     assign_svalue (&k->ind, key);
   assign_svalue(& k->val, val);
+  if (val->type == T_INT) k->val.subtype = NUMBER_NUMBER;
 #ifdef PIKE_DEBUG
   if(d_flag>1)  check_mapping(m);
 #endif
@@ -789,6 +790,7 @@ PMOD_EXPORT void low_mapping_insert(struct mapping *m,
   md->val_types |= 1 << val->type;
   assign_svalue_no_free(& k->ind, key);
   assign_svalue_no_free(& k->val, val);
+  if (val->type == T_INT) k->val.subtype = NUMBER_NUMBER;
   k->hval = h2;
   md->size++;
 #ifdef MAPPING_SIZE_DEBUG
@@ -981,7 +983,7 @@ PMOD_EXPORT void map_delete_no_free(struct mapping *m,
   *prev=k->next;
   free_svalue(& k->ind);
   if(to)
-    to[0]=k->val;
+    move_svalue (to, &k->val);
   else
     free_svalue(& k->val);
 
@@ -1214,9 +1216,14 @@ PMOD_EXPORT void mapping_index_no_free(struct svalue *dest,
 
   if(!IS_DESTRUCTED (key) && (p=low_mapping_lookup(m,key)))
   {
+#if 0
     /* Never return NUMBER_UNDEFINED for existing entries. */
+    /* No, but UNDEFINED values are reasonably not stored in the first
+     * place. (Or it's at least more efficient to take care of that
+     * when they're stored.) /mast */
     if(p->type==T_INT)
       p->subtype=NUMBER_NUMBER;
+#endif
 
     assign_svalue_no_free(dest, p);
   }else{
