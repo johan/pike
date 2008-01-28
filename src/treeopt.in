@@ -661,6 +661,53 @@ F_COMMA_EXPR(F_ASSIGN(0, 1 = F_LOCAL),
   }
   ;
 
+// // [ vars... ] = ({ vals... })  ==>  multi_assign(vals, vars)
+// F_ASSIGN(F_APPLY(F_CONSTANT
+// 		 [$$->u.sval.type == T_FUNCTION]
+// 		 [$$->u.sval.subtype == FUNCTION_BUILTIN]
+// 		 [$$->u.sval.u.efun->function == debug_f_aggregate],
+// 		 0),
+// 	 F_ARRAY_LVALUE(1, -)):
+//   F_MULTI_ASSIGN($0, $1);
+
+// [ vars... ] = allocate(n, x)
+//   ==>
+//  vars[n-1] = vars[n-2] = ... = vars[0] = x
+F_ASSIGN(0 = F_APPLY(F_CONSTANT
+		     [$$->u.sval.type == T_FUNCTION]
+		     [$$->u.sval.subtype == FUNCTION_BUILTIN]
+		     [$$->u.sval.u.efun->function == f_allocate],
+		     *),
+	 F_ARRAY_LVALUE(1, -)):
+  {
+    int cnt = 0;
+    node **arg1 = my_get_arg(&_CDR($0), 0);
+    node **arg2 = my_get_arg(&_CDR($0), 1);
+    if (arg1) {
+      node *res;
+      node *lvalues = $1;
+
+      if (arg2 && *arg2) {
+	ADD_NODE_REF2(*arg2, res = *arg2;);
+      } else {
+	res = mkintnode(0);
+      }
+      while (lvalues && (lvalues->token == F_LVALUE_LIST)) {
+	ADD_NODE_REF2(CAR(lvalues),
+		      res = mknode(F_ASSIGN, res, CAR(lvalues)););
+	lvalues = CDR(lvalues);
+	cnt++;
+      }
+      if (lvalues) {
+	ADD_NODE_REF2(lvalues, res = mknode(F_ASSIGN, res, lvalues););
+	cnt++;
+      }
+      /* FIXME: Check that the number of arguments actually matches arg1. */
+      $$ = res;
+    }
+  }
+  ;
+
 // Canonicalize the argument list.
 F_ARG_LIST(-, 0):
   $0;
