@@ -284,6 +284,9 @@ const struct keyword instr_names[]=
 { "align",		F_ALIGN, I_HASARG NULLADDR },
 { "nop",                F_NOP,0 NULLADDR },
 { "entry",		F_ENTRY,0 NULLADDR },
+{ "filename", 		F_FILENAME, 0 NULLADDR },
+{ "line",		F_LINE, 0 NULLADDR },
+{ "get/set",		F_GET_SET, 0 NULLADDR },
 { "function start",     F_START_FUNCTION,0 NULLADDR },
 { "notreached!",        F_NOTREACHED, 0 NULLADDR },
 };
@@ -299,7 +302,7 @@ const char *low_get_f_name(int n, struct program *p)
   
   if (n<F_MAX_OPCODE)
   {
-    if ((n >= 0) && instrs[n-F_OFFSET].name)
+    if ((n >= F_OFFSET) && instrs[n-F_OFFSET].name)
       return instrs[n-F_OFFSET].name;
     sprintf(buf, "<OTHER %d>", n);
     return buf;
