@@ -1989,19 +1989,14 @@ void debug_check_svalue(const struct svalue *s)
      ((PIKE_POINTER_ALIGNMENT-1) & (ptrdiff_t)(s->u.refs)))
     Pike_fatal("Odd pointer! type=%d u->refs=%p\n",s->type,s->u.refs);
 
-#if 0
   if(s->type==T_INT) {
     if(s->subtype!=NUMBER_NUMBER &&
        s->subtype!=NUMBER_UNDEFINED && s->subtype!=NUMBER_DESTRUCTED) {
-      Pike_fatal("Unknown int subtype %d\n", s->subtype);
+      Pike_fatal("Unknown integer subtype %d\n", s->subtype);
     }
+    if (s->u.integer && s->subtype != NUMBER_NUMBER)
+      Pike_fatal ("Invalid subtype %d in nonzero integer.\n", s->subtype);
   }
-  else if(s->type==T_FUNCTION) {
-    if(s->subtype!=0 && s->subtype!=FUNCTION_BUILTIN) {
-      Pike_fatal("Unknown function subtype %d\n", s->subtype);
-    }
-  }
-#endif
 
   check_refs(s);
   low_check_short_svalue(& s->u, s->type);
