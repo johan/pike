@@ -1605,7 +1605,7 @@ struct node_s *resolve_identifier(struct pike_string *ident)
     struct svalue *tmp=low_mapping_string_lookup(resolve_cache,ident);
     if(tmp)
     {
-      if(!(SAFE_IS_ZERO(tmp) && tmp->subtype==1))
+      if (!SAFE_IS_ZERO(tmp))
 	return mkconstantsvaluenode(tmp);
 
       return 0;
@@ -2657,6 +2657,10 @@ static void exit_program_struct(struct program *p)
     /* Make sure to break the circularity... */
     struct program *parent = p->parent;
     p->parent = NULL;
+    if (!parent->refs) {
+      dump_program_tables(p, 2);
+      Pike_fatal("Program parent is dead.\n");
+    }
     free_program(parent);
   }
 
