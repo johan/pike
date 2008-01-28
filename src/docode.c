@@ -644,8 +644,6 @@ static void emit_multi_assign(node *vals, node *vars, int no)
   node *val;
   node **valp = my_get_arg(&vals, no);
 
-  fprintf(stderr, "emit_multi_assign(%p, %p)\n", vals, vars);
-
   if (!vars && (!valp || !*valp)) return;
   if (!(vars && valp && (val = *valp))) {
     yyerror("Argument count mismatch for multi-assignment.\n");
