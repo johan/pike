@@ -2657,10 +2657,12 @@ static void exit_program_struct(struct program *p)
     /* Make sure to break the circularity... */
     struct program *parent = p->parent;
     p->parent = NULL;
+#ifdef PIKE_DEBUG
     if (!parent->refs) {
       dump_program_tables(p, 2);
       Pike_fatal("Program parent is dead.\n");
     }
+#endif
     free_program(parent);
   }
 
