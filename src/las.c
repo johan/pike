@@ -862,6 +862,7 @@ node *debug_mknode(int token, node *a, node *b)
     break;
 
   case F_APPEND_ARRAY:
+  case F_MULTI_ASSIGN:
   case F_ASSIGN:
   case F_MOD_EQ:
   case F_AND_EQ:
