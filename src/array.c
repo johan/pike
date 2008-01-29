@@ -2476,20 +2476,29 @@ PMOD_EXPORT void apply_array(struct array *a, INT32 args)
  *  reference, the array will be reversed into a new array. Otherwise
  *  the array will be destructively reversed in place.
  */
-PMOD_EXPORT struct array *reverse_array(struct array *a)
+PMOD_EXPORT struct array *reverse_array(struct array *a, int start, int end)
 {
   INT32 e;
   struct array *ret;
+
+  if ((end <= start) || (start >= a->size)) {
+    add_ref(a);
+    return a;
+  }
+  if (end >= a->size) {
+    end = a->size;
+  } else {
+    end++;
+  }
 
   if(a->refs == 1)
     /* Reverse in-place. */
   {
     struct svalue *tmp0, *tmp1, swap;
     
-    tmp0 = ITEM(a);
-    tmp1 = ITEM(a) + a->size;
-    for(e = a->size>>1; 0 < e; e--)
-    {
+    tmp0 = ITEM(a) + start;
+    tmp1 = ITEM(a) + end;
+    while (tmp0 < tmp1) {
       swap = *tmp0;
       *(tmp0++) = *(--tmp1);
       *tmp1 = swap;
@@ -2500,10 +2509,16 @@ PMOD_EXPORT struct array *reverse_array(struct array *a)
     add_ref(a);
     return a;
   }
+
+  // fprintf(stderr, "R");
   
   ret=allocate_array_no_init(a->size,0);
-  for(e=0;e<a->size;e++)
-    assign_svalue_no_free(ITEM(ret)+e,ITEM(a)+a->size+~e);
+  for(e=0;e<start;e++)
+    assign_svalue_no_free(ITEM(ret)+e,ITEM(a)+e);
+  for(;e<end;e++)
+    assign_svalue_no_free(ITEM(ret)+e,ITEM(a)+end+~e-start);
+  for(;e<a->size;e++)
+    assign_svalue_no_free(ITEM(ret)+e,ITEM(a)+e);
   ret->type_field = a->type_field;
   return ret;
 }
