@@ -50,15 +50,15 @@ struct program *odbc_program = NULL;
 
 SQLHENV odbc_henv = SQL_NULL_HENV;
 
-/*
- * Functions
- */
-
 #ifdef PIKE_THREADS
 /* See f_connect_lock doc below. */
 static int enable_connect_lock = 1;
 static PIKE_MUTEX_T connect_mutex STATIC_MUTEX_INIT;
 #endif
+
+/*
+ * Functions
+ */
 
 /*
  * Helper functions
