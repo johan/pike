@@ -270,7 +270,9 @@ void push_gobjectclass(void *obj, struct program *def) {
   call_c_initializers(o);
   ((struct object_wrapper *)o->storage)->obj=obj;
   pgtk2__init_object(o);
-  ref_push_object(o);
+
+  /* Extra ref already added in pgtk2__init_object */
+  push_object(o); 
   return;
 }
 
@@ -284,7 +286,11 @@ void push_pgdk2object(void *obj, struct program *def) {
   o=low_clone(def);
   call_c_initializers(o);
   ((struct object_wrapper *)o->storage)->obj=obj;
-  ref_push_object(o);
+
+  /* TODO: Check all usage of this function to see that it does not
+   * assume 2 refs on the object instead of 1. 
+   */
+  push_object(o); 
   return;
 }
 
