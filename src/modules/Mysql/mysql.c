@@ -242,11 +242,8 @@ static void exit_mysql_struct(struct object *o)
 
   DESTROY_MYSQL_LOCK();
 }
-void pike_mysql_set_ssl(struct mapping *options) {
-
-  // for some reason, we may get here without an options mapping.
-  if(!options) return;
-
+void pike_mysql_set_ssl(struct mapping *options)
+{
 #ifdef HAVE_MYSQL_SSL
     char *ssl_key = NULL;
     char *ssl_cert = NULL;
@@ -254,7 +251,12 @@ void pike_mysql_set_ssl(struct mapping *options) {
     char *ssl_capath = NULL;
     char *ssl_cipher = NULL;
     struct svalue *val = NULL;
+#endif /* HAVE_MYSQL_SSL */
 
+  // for some reason, we may get here without an options mapping.
+  if(!options) return;
+
+#ifdef HAVE_MYSQL_SSL
     if ((val = simple_mapping_string_lookup(options, "ssl_key")) &&
 	(val->type == T_STRING) &&
 	(!val->u.string->size_shift))
