@@ -74,6 +74,7 @@ struct object_wrapper {
   GObject *obj;
   int extra_int;
   void *extra_data;
+  int owned;
 };
 
 struct mixin_wrapper {
@@ -175,8 +176,8 @@ void pgtk2_clear_obj_struct(struct object *o);
 void pgtk2_setup_mixin(struct object *o, struct program *p);
 void pgtk2_default__sprintf(int n, int a, int l);
 
-void push_pgdk2object(void *obj, struct program *def);
-#define push_gdkobject(X,Y) push_pgdk2object(X,pgdk2_##Y##_program)
+void push_pgdk2object(void *obj, struct program *def, int owned);
+#define push_gdkobject(X,Y,Z) push_pgdk2object(X,pgdk2_##Y##_program,Z)
 
 
 GdkImage *pgtk2_gdkimage_from_pikeimage(struct object *img, int fast, GdkImage *i);
