@@ -8228,10 +8228,18 @@ EOF
         AC_MSG_WARN([Bundle $bundle not found.
 Requested from:
 $bundle_info])
+	if test "x$RECONFIGURE_BUNDLES" = "xyes"; then
+	  # Avoid infinite loop.
+	  exit 1;
+	fi
       elif test -f "$pike_bundle_prefix/installed/$bundle"; then
 	AC_MSG_WARN([Bundle $bundle already installed.
 Requested from:
 $bundle_info])
+	if test "x$RECONFIGURE_BUNDLES" = "xyes"; then
+	  # Avoid infinite loop.
+	  exit 1;
+	fi
       else
         # First extract the bundle.
 
