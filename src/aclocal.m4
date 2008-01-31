@@ -1274,16 +1274,10 @@ AC_DEFUN(PIKE_WITH_ABI,
         # Defaults
         pike_cv_wanted_abi="32"
         case "x`uname -m`" in
-          xia64)
+          x*64)
             pike_cv_wanted_abi="64"
           ;;
-          xx86_64)
-	    pike_cv_wanted_abi="64"
-          ;;
           xalpha)
-	    pike_cv_wanted_abi="64"
-          ;;
-	  xppc64)
 	    pike_cv_wanted_abi="64"
           ;;
         esac
