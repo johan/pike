@@ -8467,6 +8467,10 @@ $bundle_info])
         fi
       done
     fi
+    for f in $bundle_info; do
+      echo "Removing request for bundle $f..."
+      rm -f "$f"
+    done
     # Rerun configure
     cat <<EOF
 
