@@ -3183,6 +3183,7 @@ void check_program(struct program *p)
 	if( (p->identifiers[e].func.offset /* + OFFSETOF(object,storage)*/ ) &
 	    (alignof_variable(p->identifiers[e].run_time_type)-1))
 	{
+	  dump_program_tables(p, 0);
 	  Pike_fatal("Variable %s offset is not properly aligned (%ld).\n",
 		     p->identifiers[e].name->str,
 		     PTRDIFF_T_TO_LONG(p->identifiers[e].func.offset));
