@@ -2047,14 +2047,15 @@ int override_identifier (struct reference *new_ref, struct pike_string *name)
 	  struct identifier *new_id;
 	  /* Variable or constant.
 	   *
-	   * Note: Use weaker check for integers.
+	   * Note: Use weaker check for integers (especially for constants).
 	   */
 	  if (!pike_types_le(sub_id->type,
 			     (new_id = ID_FROM_PTR(Pike_compiler->new_program,
 						   new_ref))->type) &&
 	      !((i->run_time_type == PIKE_T_INT) &&
 		(new_id->run_time_type == PIKE_T_INT) &&
-		match_types(sub_id->type, new_id->type))) {
+		(IDENTIFIER_IS_CONSTANT(sub_id->identifier_flags) ||
+		 match_types(sub_id->type, new_id->type)))) {
 	    yywarning("Type mismatch when overloading %S.", name);
 	    yyexplain_nonmatching_types(sub_id->type, new_id->type,
 					YYTE_IS_WARNING);
