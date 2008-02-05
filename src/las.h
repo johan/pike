@@ -20,6 +20,8 @@ typedef void (*c_fun)(INT32);
 /* Flags used by yytype_error() */
 #define YYTE_IS_WARNING	1
 
+struct compiler_frame;		/* Avoid gcc warning. */
+
 void yytype_error(const char *msg, struct pike_type *expected_t,
 		  struct pike_type *got_t, unsigned int flags);
 void low_yyerror(struct pike_string *str);
