@@ -1102,8 +1102,16 @@ static void low_pike_sprintf(struct format_stack *fs,
       case '.': setwhat=2; continue;
       case ':': setwhat=1; continue;
 
-      case '=': fs->fsp->flags|=LINEBREAK; continue;
-      case '/': fs->fsp->flags|=ROUGH_LINEBREAK; continue;
+      case '=': fs->fsp->flags|=LINEBREAK;
+	if (fs->fsp->flags & ROUGH_LINEBREAK)
+	  sprintf_error(fs,
+			"Combining modifiers '=' and '/' is not allowed.\n");
+	continue;
+      case '/': fs->fsp->flags|=ROUGH_LINEBREAK;
+	if (fs->fsp->flags & LINEBREAK)
+	  sprintf_error(fs,
+			"Combining modifiers '=' and '/' is not allowed.\n");
+	continue;
       case '#': fs->fsp->flags|=COLUMN_MODE; continue;
       case '$': fs->fsp->flags|=INVERSE_COLUMN_MODE; continue;
 
