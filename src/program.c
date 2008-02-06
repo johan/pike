@@ -4842,9 +4842,9 @@ int define_variable(struct pike_string *name,
 	 * can change the compile-time type. */
 	n2 = define_alias(name, type, flags & ~ID_EXTERN, 0, n);
 
-	/* Hide the old variable and make it local. */
+	/* Hide the old variable. */
 	Pike_compiler->new_program->identifier_references[n].id_flags |=
-	  ID_HIDDEN|ID_INLINE;
+	  ID_HIDDEN;
 	return n2;
       }
     }
