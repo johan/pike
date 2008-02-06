@@ -1465,8 +1465,6 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 		  ref_push_type_value(id->type);
 		  encode_value2(Pike_sp-1, data, 0);
 		  pop_stack();
-		  break;
-		  
 		} else switch (id->identifier_flags & IDENTIFIER_TYPE_MASK) {
 		case IDENTIFIER_CONSTANT:
 		  EDB(3,
