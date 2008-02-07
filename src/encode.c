@@ -78,7 +78,7 @@
  *   TAG_TYPE == PIKE_T_FLOAT == 9
  * These are NOT to be renumbered unless the file-format version is changed!
  */
-/* Current encoding: ¶ik0
+/* Current encoding: ¶ke0
  *
  * +---+-+-+-------+
  * |s z|s|n|t y p e|
