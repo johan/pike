@@ -2363,7 +2363,7 @@ static void cleanup_new_program_decode (int *orig_compilation_depth)
   debug_malloc_touch(Pike_compiler->new_program);
   debug_malloc_touch(Pike_compiler->new_program->parent);
   /* The program is consistent enough to be freed... */
-  p->flags &= ~PROGRAM_AVOID_CHECK;
+  Pike_compiler->new_program->flags &= ~PROGRAM_AVOID_CHECK;
   end_first_pass(0);
   compilation_depth = *orig_compilation_depth;
 }
