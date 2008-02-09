@@ -14,6 +14,13 @@ constant wix_ns = "http://schemas.microsoft.com/wix/2003/01/wi";
 Parser.XML.Tree.SimpleTextNode line_feed =
   Parser.XML.Tree.SimpleTextNode("\n");
 
+#if constant(Standards.UUID.make_version3)
+#define MK_UUID(NAME, PARENT_UUID)	Standards.UUID.make_version3((NAME), (PARENT_UUID))
+#else /* !constant(Standards.UUID.make_version3) */
+// Standards.UUID.make_version3() only exists if MD5 is available.
+#define MK_UUID(NAME, PARENT_UUID)	Standards.UUID.make_version1(-1)
+#endif /* constant(Standards.UUID.make_version3) */
+
 // FIXME: Generate deterministic output!
 
 class WixNode
@@ -128,7 +135,7 @@ class Directory
   static void create(string name, string parent_guid,
 		     string|void id, string|void short_name)
   {
-    guid = Standards.UUID.make_version3(name, parent_guid);
+    guid = MK_UUID(name, parent_guid);
     if (!id) id = "_"+guid->str()-"-";
     Directory::name = name;
     Directory::short_name = short_name;
@@ -231,7 +238,7 @@ class Directory
   {
     if (!id) {
       id = "_" +
-	Standards.UUID.make_version3(dest, guid->encode())->str() -
+	MK_UUID(dest, guid->encode())->str() -
 	"-";
     }
     files[dest] = File(dest, src, id);
@@ -282,8 +289,7 @@ class Directory
     other_entries[pattern] =
       UninstallFile(pattern,
 		    "RF_" +
-		    Standards.UUID.make_version3(pattern,
-						 guid->encode())->str() -
+		    MK_UUID(pattern, guid->encode())->str() -
 		    "-");
   }
 
