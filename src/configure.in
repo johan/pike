@@ -7649,6 +7649,11 @@ $bundle_info])
 	        cpu="i386"
 	      fi
 	      extra_configure_args="${extra_configure_args} --build=${cpu}-unknown-winnt`uname -r|sed -e 's/-/_/g'` --disable-assembler"
+	    else
+	    # Regular cross-compilation, without rtncl
+	      if test "x$cross_compiling" = "xyes" -a "x$host_alias" != x; then
+		extra_configure_args="${extra_configure_args} --host=$host_alias"
+	      fi
 	    fi
 
             # Nettle doesn't support assembler on Darwin x86 yet.
