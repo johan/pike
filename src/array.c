@@ -1230,7 +1230,7 @@ PMOD_EXPORT INT32 *stable_sort_array_destructively(struct array *v)
 
   if(!v->size) return NULL;
 
-  /* Overlow safe: ((1<<29)-4)*4 < ULONG_MAX */
+  /* Overflow safe: ((1<<29)-4)*4 < ULONG_MAX */
   current_order=(INT32 *)xalloc(v->size * sizeof(INT32));
   SET_ONERROR(tmp, free, current_order);
   for(e=0; e<v->size; e++) current_order[e]=e;
