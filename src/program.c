@@ -3246,9 +3246,12 @@ void check_program(struct program *p)
 
     i=ID_FROM_INT(p, e);
 
-    if(IDENTIFIER_IS_VARIABLE(i->identifier_flags) &&
-       !IDENTIFIER_IS_ALIAS(i->identifier_flags))
-    {
+    if (IDENTIFIER_IS_ALIAS(i->identifier_flags)) {
+      if ((!i->func.ext_ref.depth) && (i->func.ext_ref.id == e)) {
+	dump_program_tables(p, 0);
+	Pike_fatal("Circular alias for reference %d!\n", e);
+      }
+    } else if (IDENTIFIER_IS_VARIABLE(i->identifier_flags)) {
       size_t q, size;
       /* Variable */
       ptrdiff_t offset = INHERIT_FROM_INT(p, e)->storage_offset+i->func.offset;
