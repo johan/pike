@@ -1446,6 +1446,15 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 		}
 
 		if (IDENTIFIER_IS_ALIAS(id->identifier_flags)) {
+		  if ((!id->func.ext_ref.depth) &&
+   		      IDENTIFIER_IS_VARIABLE(id->identifier_flags)) {
+      		    /* Let define_variable() handle the decoding. */
+		    EDB(3, fprintf(stderr, "%*sencode: encoding aliased variable\n", data->depth, ""));
+    		    goto encode_entry_variable;
+    		  }
+	 	  EDB(3, fprintf(stderr, "%*sencode: encoding alias\n",
+				 data->depth, ""));
+
 		  code_number(ID_ENTRY_ALIAS, data);
 
 		  /* flags */
@@ -1549,7 +1558,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 		  EDB(3,
 		      fprintf(stderr, "%*sencode: encoding variable\n",
 			      data->depth, ""));
-
+		encode_entry_variable:
 		  code_number(ID_ENTRY_VARIABLE, data);
 		  if (gs_flags >= 0) {
 		    code_number(gs_flags, data);
