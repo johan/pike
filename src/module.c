@@ -217,15 +217,16 @@ static void exit_builtin_modules(void)
 		     x->refs - (m->refs + is_static));			\
 	    print_short_svalue (stderr, (union anything *) &x, T_TYPE);	\
 	    fputc ('\n', stderr);					\
-	    if (T_TYPE == T_PROGRAM) {					\
-	      struct program *p = (struct program *)x;			\
-	      if (p->parent) {						\
-		fprintf(stderr, "    Parent is: %p\n", p->parent);	\
-		dump_program_tables(p->parent, 6);			\
-	      }								\
-	      fprintf(stderr, "  Symbol tables:\n");			\
-	      dump_program_tables(p, 4);				\
-	    }								\
+	    DO_IF_DEBUG(if (T_TYPE == T_PROGRAM) {			\
+			  struct program *p = (struct program *)x;	\
+			  if (p->parent) {				\
+			    fprintf(stderr, "    Parent is: %p\n", \
+				    p->parent);				\
+			    dump_program_tables(p->parent, 6);		\
+			  }						\
+			  fprintf(stderr, "  Symbol tables:\n");	\
+			  dump_program_tables(p, 4);			\
+			});						\
 	    DO_IF_DMALLOC (debug_malloc_dump_references (x, 2, 1, 0));	\
 	  }								\
 	}								\
