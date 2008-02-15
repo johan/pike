@@ -41,4 +41,7 @@
 /* Define for debug if you java has ibmFindDLL(). */
 #undef HAVE_IBMFINDDLL
 
+/* Define in you have libffi */
+#define HAVE_FFI
+
 #endif /* PIKE_JAVA_CONFIG_H */
