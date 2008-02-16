@@ -8357,10 +8357,20 @@ $bundle_info])
 	      "--disable-shared --cache-file=config.cache"
 	    ${CONFIG_SHELL-/bin/sh} "$bundle_source_dir/configure" \
 	      --prefix="$pike_bundle_prefix" ${extra_configure_args} \
-	      --disable-shared --cache-file=config.cache || exit 1
+	      --disable-shared --cache-file=config.cache
+
+	    code="$?"
 
 	    # Restore CFLAGS
 	    CFLAGS="$OLD_CFLAGS"
+
+	    if test "x$code" = "x0"; then :; else
+	      echo "Configure of bundle $bundle failed. Disabling." >&2
+	      echo "Configure of bundle $bundle failed. Disabling." >&AC_FD_CC
+	      # Mark bundle as installed.
+	      touch "${pike_bundle_prefix}/installed/$bundle"
+	      return 0
+	    fi
 
 	    if test -f "Makefile"; then :; else
 	      echo "Makefile not found in `pwd`."
