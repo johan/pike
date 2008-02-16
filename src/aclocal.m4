@@ -1074,7 +1074,7 @@ dnl Checks if bundle_name is available, and if it is enables it and
 dnl invalidates the cache variables specified in invalidate_set.
 dnl Otherwise if opt_error_msg has been specified performs an error exit.
 define(PIKE_ENABLE_BUNDLE, [
-  PIKE_LOW_ENABLE_BUNDLE([$1], [$2], ifelse([$3], , , [AC_MSG_ERROR([$3])]))
+  PIKE_LOW_ENABLE_BUNDLE([$1], [$2], ifelse([$3], , , [AC_MSG_ERROR([[$3]])]))
 ])
 
 #############################################################################
