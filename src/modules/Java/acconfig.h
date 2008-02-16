@@ -42,6 +42,6 @@
 #undef HAVE_IBMFINDDLL
 
 /* Define in you have libffi */
-#define HAVE_FFI
+#undef HAVE_FFI
 
 #endif /* PIKE_JAVA_CONFIG_H */
