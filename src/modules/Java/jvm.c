@@ -1482,6 +1482,13 @@ static void native_dispatch(struct native_method_context *ctx,
 
 #ifdef HAVE_FFI
 
+#ifndef HAVE_FFI_ARG
+#define ffi_arg UINT_ARG
+#endif
+#ifndef HAVE_FFI_SARG
+#define ffi_sarg SINT_ARG
+#endif
+
 struct cpu_context {
   ffi_closure closure;
   ffi_cif cif;
