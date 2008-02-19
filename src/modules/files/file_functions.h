@@ -9,6 +9,10 @@
 
 /* function(string,string,void|int:int) */
 FILE_FUNC("open",file_open, tFunc(tStr tStr tOr(tVoid,tInt),tInt))
+#ifdef HAVE_OPENAT
+/* function(string,string,void|int:int) */
+FILE_FUNC("openat",file_openat, tFunc(tStr tStr tOr(tVoid,tInt),tInt))
+#endif
 /* function(string|void:int) */
 FILE_FUNC("close",file_close, tFunc(tOr(tStr,tVoid),tInt))
 /* function(int|void,int|void:string) */
