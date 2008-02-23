@@ -49,6 +49,10 @@ FILE_FUNC("tell",file_tell, tFunc(tNone,tInt))
 FILE_FUNC("truncate",file_truncate, tFunc(tInt,tInt))
 /* function(:object) */
 FILE_FUNC("stat",file_stat, tFunc(tNone,tObjImpl_STDIO_STAT))
+#ifdef HAVE_FSTATAT
+FILE_FUNC("statat", file_statat,
+	  tFunc(tStr tOr(tVoid, tInt01), tObjImpl_STDIO_STAT))
+#endif /* HAVE_FSTATAT */
 /* function(:int) */
 FILE_FUNC("errno",file_errno, tFunc(tNone,tInt))
 /* function(:int) */
