@@ -2346,7 +2346,7 @@ static void file_statat(INT32 args)
 
  retry:
   THREADS_ALLOW();
-  tmp = fstatat(dirfd, path->str, &s, nofollow?AT_SYMLINK_NOFOLLOW:0);
+  tmp = fstatat(fd, path->str, &s, nofollow?AT_SYMLINK_NOFOLLOW:0);
   THREADS_DISALLOW();
 
   if(tmp < 0)
