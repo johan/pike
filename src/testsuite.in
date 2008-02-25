@@ -3852,6 +3852,8 @@ test_encode(100000.0)
 test_encode(3.1875)
 test_encode(0.0000019073486328125)
 test_encode(({}))
+// This should work both with and without bignums.
+test_encode(({0xffffffff+1, 0xffffffff+2}))
 test_encode(([]))
 test_encode("foobar")
 test_encode((<>))
