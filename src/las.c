@@ -3472,12 +3472,14 @@ void fix_type_field(node *n)
 		     array_type, CAR(n)->type, 0);
       }
       free_type(array_type);
+      /* FIXME: The type field of the splice operator is not yet utilized.
+       *
+       * It probably ought to be something similar to MANY(..., VOID).
+       */
+      n->type = index_type(CAR(n)->type, int_type_string, n);
+    } else {
+      copy_pike_type(n->type, mixed_type_string);
     }
-    /* FIXME: The type field of the splice operator is not yet utilized.
-     *
-     * It probably ought to be something similar to MANY(..., VOID).
-     */
-    n->type = index_type(CAR(n)->type, int_type_string, n);
     break;
 
   case F_AUTO_MAP_MARKER:
