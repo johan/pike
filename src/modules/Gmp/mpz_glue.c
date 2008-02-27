@@ -57,7 +57,7 @@ long random(void)
 
 #undef THIS
 #define THIS ((MP_INT *)(fp->current_storage))
-#define THIS_PROGRAM (fp->context.prog)
+#define THIS_PROGRAM (fp->context->prog)
 
 struct program *mpzmod_program = NULL;
 #ifdef AUTO_BIGNUM

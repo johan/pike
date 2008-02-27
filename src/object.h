@@ -163,7 +163,7 @@ void check_all_objects(void);
 
 #define low_index_current_object_no_free(TO, FUN)			\
   low_object_index_no_free((TO), Pike_fp->current_object,		\
-			   Pike_fp->context.identifier_level + (FUN))
+			   Pike_fp->context->identifier_level + (FUN))
 
 
 #endif /* OBJECT_H */

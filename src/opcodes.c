@@ -322,8 +322,8 @@ const char *low_get_f_name(int n, struct program *p)
 
 const char *get_f_name(int n)
 {
-  if (Pike_fp && Pike_fp->context.prog)
-    return low_get_f_name(n, Pike_fp->context.prog);
+  if (Pike_fp && Pike_fp->context)
+    return low_get_f_name(n, Pike_fp->context->prog);
   return low_get_f_name(n, NULL);
 }
 

@@ -1608,7 +1608,7 @@ void low_backtrace(struct Pike_interpreter *i)
 
     bf = OBJ2_BACKTRACE_FRAME(o);
 
-    if ((bf->prog = f->context.prog)) {
+    if ((bf->prog = f->context->prog)) {
       add_ref(bf->prog);
       bf->pc = f->pc;
     }
