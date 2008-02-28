@@ -518,7 +518,7 @@ static void sparc_push_lfun(unsigned int no)
   /* add %i0, 1, %i0 */
   SPARC_ADD(SPARC_REG_I0, SPARC_REG_I0, 1, 1);
   /* lduw [ %pike_fp, %offset(pike_frame, context) ], %i1 */
-  PIKE_LDPTR(SPARC_REG_PIKE_OBJ, SPARC_REG_I1,
+  PIKE_LDPTR(SPARC_REG_I1, SPARC_REG_PIKE_FP,
 	     OFFSETOF(pike_frame, context), 1);
   /* stw %i0, [ %pike_obj, %offset(object, refs) ] */
   SPARC_STW(SPARC_REG_I0, SPARC_REG_PIKE_OBJ,
