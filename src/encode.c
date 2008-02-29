@@ -2690,8 +2690,13 @@ static void decode_value2(struct decode_data *data)
 	  break;
       }
 
-      if(Pike_sp[-1].type != T_OBJECT && data->pickyness)
-	decode_error(NULL, Pike_sp - 1, "Failed to decode object. Got: ");
+      if((Pike_sp[-1].type != T_OBJECT) && data->pickyness) {
+	if (num != 2) {
+	  decode_error(NULL, Pike_sp - 1, "Failed to decode object. Got: ");
+	} else if (Pike_sp[-1].type != PIKE_T_INT) {
+	  decode_error(NULL, Pike_sp - 1, "Failed to decode bignum. Got: ");
+	}
+      }
 
       break;
     }
