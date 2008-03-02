@@ -1344,6 +1344,13 @@ if test -d bundles/.; then
     touch "bundles/lib$d/keep"
     LDFLAGS="$LDFLAGS -L$pike_bundle_prefix/lib$d"
   done
+  if test -d bundles/lib/pkgconfig/.; then
+    for pc in `find bundles/lib/pkgconfig/. -name '*.pc'`; do
+      CPPFLAGS="$CPPFLAGS `for x in \`sed -e '/^$/q' < "$pc"\`; do eval $x; done; eval \`sed -ne 's/^Cflags: /echo /p' < "$pc"\``"
+    done
+  else
+    :
+  fi
 fi
 export pike_bundle_dir
 AC_ARG_WITH(site-prefixes,
