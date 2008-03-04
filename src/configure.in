@@ -1353,6 +1353,7 @@ if test -d bundles/.; then
   fi
 fi
 export pike_bundle_dir
+export pike_bundle_prefix
 AC_ARG_WITH(site-prefixes,
 	    MY_DESCR([--with-site-prefixes],
 		     [:-separated list of prefixes to search for include, lib and bin dirs.]))
