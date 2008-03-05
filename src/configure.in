@@ -1330,7 +1330,7 @@ if test "$with_bundles" = "no"; then :; else
     pike_bundle_dir=`cd "$srcdir/../bundles" && pwd`
   fi
 fi
-test -d bundles/. || mkdir bundles;
+test -d bundles/. || mkdir bundles
 if test -d bundles/.; then
   touch bundles/no_testsuites
   pike_bundle_prefix="`pwd`/bundles"  
@@ -1344,13 +1344,13 @@ if test -d bundles/.; then
     touch "bundles/lib$d/keep"
     LDFLAGS="$LDFLAGS -L$pike_bundle_prefix/lib$d"
   done
-  if test -d bundles/lib/pkgconfig/.; then
-    for pc in `find bundles/lib/pkgconfig/. -name '*.pc'`; do
-      CPPFLAGS="$CPPFLAGS `for x in \`sed -e '/^$/q' < "$pc"\`; do eval $x; done; eval \`sed -ne 's/^Cflags: /echo /p' < "$pc"\``"
-    done
+  test -d bundles/lib/pkgconfig/. || mkdir bundles/lib/pkgconfig
+  if test "x$PKG_CONFIG_PATH" = "x"; then
+    PKG_CONFIG_PATH="${pike_bundle_prefix}/lib/pkgconfig"
   else
-    :
+    PKG_CONFIG_PATH="$PKG_CONFIG_PATH:${pike_bundle_prefix}/lib/pkgconfig"
   fi
+  export PKG_CONFIG_PATH
 fi
 export pike_bundle_dir
 export pike_bundle_prefix
@@ -8449,15 +8449,6 @@ $bundle_info])
 	  # Done.
 	  echo "Bundle $bundle installed successfully."
 	) || exit 1
-
-        # Update with flags from pkgconfig.
-        pc="${pike_bundle_prefix}/lib/pkgconfig/$bundle.pc"
-        if test -f "$pc"; then
-          echo "Updating CPPFLAGS with stuff from pkgconfig."
-          CPPFLAGS="$CPPFLAGS `for x in \`sed -e '/^$/q' < "$pc"\`; do eval $x; done; eval \`sed -ne 's/^Cflags: /echo /p' < "$pc"\``"
-        else
-          :
-        fi
       fi
     done
     echo "Fixing libraries..."
