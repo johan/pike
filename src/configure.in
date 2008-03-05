@@ -8449,6 +8449,15 @@ $bundle_info])
 	  # Done.
 	  echo "Bundle $bundle installed successfully."
 	) || exit 1
+
+        # Update with flags from pkgconfig.
+        pc="${pike_bundle_prefix}/lib/pkgconfig/$bundle.pc"
+        if test -f "$pc"; then
+          echo "Updating CPPFLAGS with stuff from pkgconfig."
+          CPPFLAGS="$CPPFLAGS `for x in \`sed -e '/^$/q' < "$pc"\`; do eval $x; done; eval \`sed -ne 's/^Cflags: /echo /p' < "$pc"\``"
+        else
+          :
+        fi
       fi
     done
     echo "Fixing libraries..."
@@ -8475,14 +8484,6 @@ $bundle_info])
       fi
       $RANLIB $f
     done
-    # Update with flags from pkgconfig.
-    pc="${pike_bundle_prefix}/lib/pkgconfig/$bundle.pc"
-    if test -f "$pc"; then
-      echo "Updating CPPFLAGS with stuff from pkgconfig."
-      CPPFLAGS="$CPPFLAGS `for x in \`sed -e '/^$/q' < "$pc"\`; do eval $x; done; eval \`sed -ne 's/^Cflags: /echo /p' < "$pc"\``"
-    else
-      :
-    fi
     # Clear the caches.
     echo Clearing cached variables related to the bundles.
     for varname in `cat $bundle_info|sed -e 's/^[[ 	]]*//'|sort|uniq` no; do
