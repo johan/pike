@@ -1621,7 +1621,7 @@ AC_DEFUN(PIKE_FIND_LIB_INCLUDE,
 ])
 
 AC_DEFUN(PIKE_PROG_PKG_CONFIG,
-xo[
+[
   MY_AC_PATH_PROG(PKG_CONFIG, ${ac_tool_prefix}pkg-config, no)
 ])
 
@@ -1629,18 +1629,18 @@ dnl package, variable, options
 AC_DEFUN(PIKE_LOW_PKG_CONFIG,
 [
   AC_MSG_CHECKING([for stuff to add to $2])
-  pkg_stuff="`PKG_CONFIG $3 $1`"
-  AC_MSG_RESULT($pkg_stuff)
-  $2="[$]$2 $pkg_stuff"
+  pkg_stuff="`${PKG_CONFIG} $3 $1`"
+  AC_MSG_RESULT(${pkg_stuff})
+  $2="[$]$2 ${pkg_stuff}"
 ])
 
 dnl package
 AC_DEFUN(PIKE_PKG_CONFIG,
 [
   AC_REQUIRE([PIKE_PROG_PKG_CONFIG])dnl
-  if test "$PKG_CONFIG" = no; then :; else
+  if test "${PKG_CONFIG}" = no; then :; else
     AC_MSG_CHECKING([if a pkg-config based $1 is installed])
-    if "$PKG_CONFIG" "$1"; then
+    if "${PKG_CONFIG}" "$1"; then
       AC_MSG_RESULT(yes)
       PIKE_LOW_PKG_CONFIG([$1], [CPPFLAGS], [--cflags-only-I])
       PIKE_LOW_PKG_CONFIG([$1], [CFLAGS],   [--cflags-only-other])
