@@ -565,6 +565,7 @@ class File
     }
   }
 
+#if constant(files.__HAVE_OPENAT__)
   //! @decl File openat(string filename, string mode)
   //! @decl File openat(string filename, string mode, int mask)
   //!
@@ -588,6 +589,7 @@ class File
       return 0;
     }
   }
+#endif
 
   //! @decl void create()
   //! @decl void create(string filename)
@@ -1682,6 +1684,7 @@ class FILE
     return query_num_arg() ? file::pipe(flags) : file::pipe();
   }
 
+#if constant(files.__HAVE_OPENAT__)
   //! @decl FILE openat(string filename, string mode)
   //! @decl FILE openat(string filename, string mode, int mask)
   //!
@@ -1706,6 +1709,7 @@ class FILE
       return 0;
     }
   }
+#endif
   
   int assign(File|FILE foo)
   {
