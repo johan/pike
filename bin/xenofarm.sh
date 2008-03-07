@@ -32,8 +32,12 @@ xenofarm_build() {
 
 xenofarm_post_build() {
   POST_RESULT=0
+  log_start features
+  bin/pike -x features > xenofarm_result/features.txt 2>&1
+  log_end $?
+  [ $LASTERR = 0 ] || return 1
   log_start benchmark
-  $MAKE benchmark > xenofarm_result/benchmark.txt 2>&1
+  $MAKE benchmark > xenofarm_result/benchmark.txt 2>/dev/null
   log_end $?
   POST_RESULT=$LASTERR
 
