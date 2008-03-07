@@ -4711,6 +4711,21 @@ PIKE_MODULE_INIT
   add_integer_constant("__HAVE_OPENPT__",1,0);
 #endif
 
+#ifdef HAVE_OPENAT
+  add_integer_constant("__HAVE_OPENAT__",1,0);
+#endif
+
+#ifdef HAVE_FSTATAT
+  add_integer_constant("__HAVE_STATAT__",1,0);
+#endif
+
+#if 0
+  /* Not implemented yet. */
+#ifdef HAVE_UNLINKAT
+  add_integer_constant("__HAVE_UNLINKAT__",1,0);
+#endif
+#endif /* 0 */
+
   /* function(:array(int)) */
   ADD_FUNCTION2("get_all_active_fd", f_get_all_active_fd,
 		tFunc(tNone,tArr(tInt)), 0, OPT_EXTERNAL_DEPEND);
