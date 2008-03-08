@@ -8249,6 +8249,10 @@ $bundle_info])
 	  exit 1;
 	fi
       else
+	# Mark bundle as installed to avoid loops.
+	# FIXME: Depencencies between bundles?
+	touch "${pike_bundle_prefix}/installed/$bundle"
+
         # First extract the bundle.
 
         # Bundle source is expected to be extracted into a directory
@@ -8375,8 +8379,6 @@ $bundle_info])
 	    if test "x$code" = "x0"; then :; else
 	      echo "Configure of bundle $bundle failed. Disabling." >&2
 	      echo "Configure of bundle $bundle failed. Disabling." >&AC_FD_CC
-	      # Mark bundle as installed.
-	      touch "${pike_bundle_prefix}/installed/$bundle"
 	      return 0
 	    fi
 
@@ -8434,21 +8436,20 @@ $bundle_info])
 
 	  # Compile bundle.
 	  echo "Compiling bundle $bundle in `pwd`..."
-	  ${MAKE-make} || exit 1
+	  ${MAKE-make} || return 1
 
 	  # Install bundle.
 	  echo "Installing bundle $bundle in ${pike_bundle_prefix}..."
-	  ${MAKE-make} install || exit 1
-
-	  # Mark bundle as installed.
-	  touch "${pike_bundle_prefix}/installed/$bundle"
+	  ${MAKE-make} install || return 1
 
 	  # Restore PATH
 	  PATH="$OLD_PATH"
 
 	  # Done.
 	  echo "Bundle $bundle installed successfully."
-	) || exit 1
+	) || (
+	  PIKE_MSG_WARN([Failed to install bundle $bundle.])
+        )
       fi
     done
     echo "Fixing libraries..."
