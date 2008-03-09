@@ -2337,7 +2337,7 @@ PMOD_EXPORT int apply_low_safe_and_stupid(struct object *o, INT32 offset)
     struct reference dummy_ref = {
       0, 0, ID_HIDDEN,
     };
-    copy_shared_string(dummy.name, empty_string);
+    copy_shared_string(dummy.name, empty_pike_string);
     copy_pike_type(dummy.type, function_type_string);
     dummy.identifier_flags = IDENTIFIER_PIKE_FUNCTION|IDENTIFIER_HAS_BODY;
     dummy.func.offset = offset;
