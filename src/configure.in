@@ -8379,7 +8379,7 @@ $bundle_info])
 	    if test "x$code" = "x0"; then :; else
 	      echo "Configure of bundle $bundle failed. Disabling." >&2
 	      echo "Configure of bundle $bundle failed. Disabling." >&AC_FD_CC
-	      return 0
+	      exit 1
 	    fi
 
 	    if test -f "Makefile"; then :; else
@@ -8436,11 +8436,11 @@ $bundle_info])
 
 	  # Compile bundle.
 	  echo "Compiling bundle $bundle in `pwd`..."
-	  ${MAKE-make} || return 1
+	  ${MAKE-make} || exit 1
 
 	  # Install bundle.
 	  echo "Installing bundle $bundle in ${pike_bundle_prefix}..."
-	  ${MAKE-make} install || return 1
+	  ${MAKE-make} install || exit 1
 
 	  # Restore PATH
 	  PATH="$OLD_PATH"
