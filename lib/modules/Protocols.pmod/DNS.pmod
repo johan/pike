@@ -950,7 +950,7 @@ class client
     string ret;
     foreach(m->an, mapping m2)
     {
-      if(m2->preference<minpref)
+      if(m2->mx && m2->preference<minpref)
       {
 	ret=m2->mx;
 	minpref=m2->preference;
@@ -978,7 +978,7 @@ class client
     if (!m) {
       return 0;
     }
-    array a = m->an;
+    array a = filter(m->an, `[], "mx");
     array(string) b = column( a, "mx");
     sort( column( a, "preference"), b);
 
