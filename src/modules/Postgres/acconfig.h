@@ -40,6 +40,20 @@
 /* This is needed to avoid broken <openssl/kssl.h> headerfiles. */
 #define OPENSSL_NO_KRB5
 
+/* This is needed to avoid broken prototypes for some builtin functions
+ * (cf <server/port.h>). We don't care about the prototypes, since
+ * we won't use those functions in this module anyway.
+ *	/grubba 2008-03-13
+ */
+#define HAVE_CRYPT 1
+#define HAVE_GETOPT 1
+#define HAVE_ISINF 1
+#define HAVE_RINT 1
+#define HAVE_STRDUP 1
+#define HAVE_RANDOM 1
+#define HAVE_UNSETENV 1
+#define HAVE_SRANDOM 1
+
 /* Time to include stuff. */
 
 /* postgres_fe.h should be used in preference to postgres.h in
