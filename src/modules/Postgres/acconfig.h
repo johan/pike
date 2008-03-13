@@ -5,6 +5,8 @@
 || $Id$
 */
 
+#ifndef PIKE_POSTGRES_H
+
 #undef STDC_HEADERS
 
 @TOP@
@@ -76,3 +78,4 @@
 
 #endif
 
+#endif /* !PIKE_POSTGRES_H */
