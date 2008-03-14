@@ -52,6 +52,9 @@ FILE_FUNC("stat",file_stat, tFunc(tNone,tObjImpl_STDIO_STAT))
 #ifdef HAVE_FSTATAT
 FILE_FUNC("statat", file_statat,
 	  tFunc(tStr tOr(tVoid, tInt01), tObjImpl_STDIO_STAT))
+#ifdef HAVE_UNLINKAT
+FILE_FUNC("unlinkat", file_unlinkat, tFunc(tStr, tInt01));
+#endif /* HAVE_UNLINKAT */
 #endif /* HAVE_FSTATAT */
 /* function(:int) */
 FILE_FUNC("errno",file_errno, tFunc(tNone,tInt))
