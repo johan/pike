@@ -4460,6 +4460,12 @@ int call_handle_inherit(struct pike_string *s)
 
   reference_shared_string(s);
   push_string(s);
+  if (!TEST_COMPAT(7,6)) {
+    /* In Pike 7.7 and later filenames belonging to Pike are assumed
+     * to be encoded according to UTF-8.
+     */
+    f_string_to_utf8(1);
+  }
   ref_push_string(lex.current_file);
   if (error_handler && error_handler->prog) {
     ref_push_object(error_handler);
