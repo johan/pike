@@ -408,7 +408,8 @@ static void pike_mysql_reconnect (int reconnect)
   socket = PIKE_MYSQL->socket;
   PIKE_MYSQL->socket = NULL;
 
-  if ((val = simple_mapping_string_lookup(PIKE_MYSQL->options,
+  if (PIKE_MYSQL->options &&
+      (val = simple_mapping_string_lookup(PIKE_MYSQL->options,
 					  "connect_options")) &&
       (val->type == T_INT) && (val->u.integer)) {
     options = (unsigned int)val->u.integer;
