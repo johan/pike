@@ -1220,7 +1220,8 @@ static int do_docode2(node *n, int flags)
 	node *args = CDAR(n);
 	if (args) {
 	  node **arg = my_get_arg(&args, 0);
-	  if (arg && node_is_eq(CDR(n), *arg)) {
+	  if (arg && node_is_eq(CDR(n), *arg) &&
+	      !(args->tree_info & OPT_ASSIGNMENT)) {
 	    /* First arg is the lvalue.
 	     *
 	     * We optimize this to allow for destructive operations.
