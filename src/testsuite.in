@@ -7416,6 +7416,7 @@ test_any(int a=1; a-=10; return a,-9)
 test_any(int a=3; a&=10; return a,2)
 // testing |=
 test_any(int a=3; a|=10; return a,11)
+test_any(int a = UNDEFINED; a|=1; return zero_type(a), 0)
 // testing ^=
 test_any(int a=3; a^=10; return a,9)
 // testing <<=
