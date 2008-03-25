@@ -921,7 +921,7 @@ static void low_tokenize( const char *funname, INT32 args, int mode )
  *! @param flags
  *!   An optional set of flags. Currently only one flag is defined:
  *!   @int
- *!     @value @[TOKENIZE_KEEP_ESCAPES]
+ *!     @value TOKENIZE_KEEP_ESCAPES
  *!       Keep backslash-escapes in quoted-strings.
  *!   @endint
  *!
@@ -983,7 +983,7 @@ static void f_tokenize( INT32 args )
  *! @param flags
  *!   An optional set of flags. Currently only one flag is defined:
  *!   @int
- *!     @value @[TOKENIZE_KEEP_ESCAPES]
+ *!     @value TOKENIZE_KEEP_ESCAPES
  *!       Keep backslash-escapes in quoted-strings.
  *!   @endint
  *!
