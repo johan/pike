@@ -1857,7 +1857,7 @@ static void file_open(INT32 args)
  *! Open a file relative to an opened directory.
  *!
  *! @returns
- *!   Returns a new file object on success, and @expr{0} (zero) on failure.
+ *!   Returns a new file object on success, and @expr{0@} (zero) on failure.
  *!
  *! @note
  *!   Not available on all architectures, or in Pike 7.6 and earlier.
