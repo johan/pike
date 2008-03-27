@@ -799,7 +799,7 @@ class File
   }
 #endif
 
-  /*FIXME: deprecated*/ this_program set_peek_file_before_read_callback(int(0..1) ignored)
+  __deprecated__(this_program) set_peek_file_before_read_callback(int(0..1) ignored)
   {
     // This hack is not necessary anymore - the backend now properly
     // ignores events if other callbacks/threads has managed to read
