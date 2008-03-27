@@ -1846,7 +1846,7 @@ void simple_describe_type(struct pike_type *s)
 	break;
 
       case PIKE_T_ATTRIBUTE:
-	fprintf(stderr, "attribute(%s, ",
+	fprintf(stderr, "__attribute__(\"%s\", ",
 		((struct pike_string *)s->car)->str);
 	simple_describe_type(s->cdr);
 	fprintf(stderr, ")");
@@ -2189,10 +2189,10 @@ static void low_describe_type(struct pike_type *t)
       
     case PIKE_T_ATTRIBUTE:
       if (!((struct pike_string *)t->car)->size_shift) {
-	my_strcat("attribute(");
+	my_strcat("__attribute__(\"");
 	my_binary_strcat(((struct pike_string *)t->car)->str,
 			 ((struct pike_string *)t->car)->len);
-	my_strcat(", ");
+	my_strcat("\", ");
 	my_describe_type(t->cdr);
 	my_strcat(")");
       } else {
