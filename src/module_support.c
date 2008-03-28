@@ -555,7 +555,7 @@ PMOD_EXPORT void pike_module_export_symbol(const char *name,
   if(!exported_symbols) exported_symbols=allocate_mapping(10);
   s.u.ptr=ptr;
   s.type=T_INT;
-  s.subtype=4711;
+  s.subtype=NUMBER_NUMBER;
   mapping_string_insert(exported_symbols, str, &s);
   free_string(str);
 }
@@ -573,7 +573,7 @@ PMOD_EXPORT void *pike_module_import_symbol(const char *name,
     if(s)
     {
 #ifdef PIKE_DEBUG
-      if (s->type != T_INT || s->subtype != 4711)
+      if (s->type != T_INT || s->subtype != NUMBER_NUMBER)
 	Pike_fatal("Unexpected value in exported_symbols.\n");
 #endif
       free_string(str);
@@ -593,7 +593,7 @@ PMOD_EXPORT void *pike_module_import_symbol(const char *name,
     if(s)
     {
 #ifdef PIKE_DEBUG
-      if (s->type != T_INT || s->subtype != 4711)
+      if (s->type != T_INT || s->subtype != NUMBER_NUMBER)
 	Pike_fatal("Unexpected value in exported_symbols.\n");
 #endif
       free_string(str);
