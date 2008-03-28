@@ -1626,7 +1626,7 @@ static void *pike_mp_realloc (void *ptr, size_t old_size, size_t new_size)
   return ret;
 }
 
-static void *pike_mp_free (void *ptr, size_t size)
+static void pike_mp_free (void *ptr, size_t size)
 {
   free (ptr);
 }
