@@ -4504,6 +4504,7 @@ static int call_old_range_lfun (int bound_types, struct object *o,
   switch (bound_types & (RANGE_LOW_FROM_BEG|RANGE_LOW_FROM_END|RANGE_LOW_OPEN)) {
     case RANGE_LOW_FROM_BEG:
       move_svalue (sp++, low);
+      mark_free_svalue (low);
       break;
     case RANGE_LOW_OPEN:
       push_int (0);
@@ -4511,6 +4512,7 @@ static int call_old_range_lfun (int bound_types, struct object *o,
     default:
       push_svalue (&end_pos);
       move_svalue (sp++, low);
+      mark_free_svalue (low);
       o_subtract();
       break;
   }
@@ -4518,6 +4520,7 @@ static int call_old_range_lfun (int bound_types, struct object *o,
   switch (bound_types & (RANGE_HIGH_FROM_BEG|RANGE_HIGH_FROM_END|RANGE_HIGH_OPEN)) {
     case RANGE_HIGH_FROM_BEG:
       move_svalue (sp++, high);
+      mark_free_svalue (high);
       break;
     case RANGE_HIGH_OPEN:
       push_int (MAX_INT_TYPE);
@@ -4525,6 +4528,7 @@ static int call_old_range_lfun (int bound_types, struct object *o,
     default:
       push_svalue (&end_pos);
       move_svalue (sp++, high);
+      mark_free_svalue (high);
       o_subtract();
       break;
   }
