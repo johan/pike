@@ -363,7 +363,7 @@ PMOD_EXPORT void simple_set_index(struct array *a,struct svalue *ind,struct sval
     {
       INT32 i, n;
       check_stack(2);
-      Pike_sp++->type = T_VOID;
+      mark_free_svalue (Pike_sp++);
       push_svalue(ind);
       for (i = 0, n = a->size; i < n; i++) {
 	assign_svalue(Pike_sp-2, &a->item[i]);
