@@ -2027,9 +2027,8 @@ void low_return(void)
   }else{
     if(save_sp+1 < Pike_sp)
     {
-      assign_svalue(save_sp,Pike_sp-1);
-      pop_n_elems(Pike_sp-save_sp-1);
-      
+      stack_pop_n_elems_keep_top (Pike_sp - save_sp - 1);
+
       /* consider using a flag for immediate destruct instead... */
       destruct_objects_to_destruct();
     }
