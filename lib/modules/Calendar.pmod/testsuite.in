@@ -19,6 +19,7 @@ test_eq(Calendar.ISO.Week(2002,1)->day()->format_ymd(),"2001-12-31")
 
 test_eval_error(Calendar.ISO.set_timezone("Europe/Stockholm")
 		->dwim_time("2000-03-26 02:01:17"))
+test_eval_error(Calendar.Second()->set_timezone("n"))
 
 test_eq(Calendar.ISO_UTC.dwim_time("2000-03-26 02:01:17")->unix_time(),
 	954036077)
