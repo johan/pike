@@ -6630,6 +6630,30 @@ else
   AC_MSG_RESULT(no)
 fi
 
+# Can't use AC_CHECK_FUNC for this since it usually is a macro.
+AC_MSG_CHECKING(for va_copy)
+AC_CACHE_VAL(pike_cv_has_va_copy, [
+  AC_TRY_LINK([
+#include <stdarg.h>
+#ifndef va_copy
+void *f = (void *) va_copy;
+#endif
+], [
+#ifdef va_copy
+/* If there's a macro with this name we assume it takes the place of the function. */
+return 0;
+#else
+return f != va_copy;
+#endif
+], pike_cv_has_va_copy=yes, pike_cv_has_va_copy=no)
+])
+if test "$pike_cv_has_va_copy" = yes; then
+  AC_MSG_RESULT(yes)
+  AC_DEFINE(HAVE_VA_COPY)
+else
+  AC_MSG_RESULT(no)
+fi
+
 #############################################################################
 
 AC_MSG_CHECKING(how to set things nonblocking)

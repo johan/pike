@@ -358,6 +358,9 @@
 /* Your va_list is a state pointer? */
 #undef VA_LIST_IS_STATE_PTR
 
+/* Defined if va_copy exists in stdarg.h. */
+#undef HAVE_VA_COPY
+
 /* Does your compiler grock 'volatile' */
 #define VOLATILE volatile
 
