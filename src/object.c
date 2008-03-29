@@ -2607,7 +2607,8 @@ void check_object_context(struct object *o,
     }else{
       union anything *u;
       u=(union anything *)(current_storage + id->func.offset);
-      check_short_svalue(u, id->run_time_type);
+      if (id->run_time_type != PIKE_T_GET_SET)
+	check_short_svalue(u, id->run_time_type);
     }
   }
 }
