@@ -539,14 +539,24 @@ PMOD_EXPORT DECLSPEC(noreturn) void debug_va_fatal(const char *fmt, va_list args
   /* Prevent double fatal. */
   if (in_fatal)
   {
-    if (fmt) (void)VFPRINTF(stderr, fmt, args);
+    if (fmt) {
+      va_list a;
+      va_copy (a, args);	/* FIXME: Assumes C99. */
+      (void)VFPRINTF(stderr, fmt, a);
+      va_end (a);
+    }
     do_abort();
   }
 
   in_fatal = 1;
 #ifdef PIKE_DEBUG
   if (d_flag) {
-    if (fmt) (void)VFPRINTF(stderr, fmt, args);
+    if (fmt) {
+      va_list a;
+      va_copy (a, args);	/* FIXME: Assumes C99. */
+      (void)VFPRINTF(stderr, fmt, a);
+      va_end (a);
+    }
     dump_backlog();
   }
 #endif
