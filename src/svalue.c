@@ -2079,10 +2079,10 @@ PMOD_EXPORT void real_gc_mark_external_svalues(const struct svalue *s, ptrdiff_t
 
 #define DO_CHECK_FUNC_SVALUE(U, T, ZAP, GC_DO)				\
       if (s->subtype == FUNCTION_BUILTIN) {				\
-	DO_IF_DEBUG(							\
-	  if (d_flag && !gc_check(s->u.efun)) {				\
-	    gc_check(s->u.efun->name);					\
-	    gc_check(s->u.efun->type);					\
+	DO_IF_DEBUG_OR_CLEANUP (					\
+	  if (!gc_check (s->u.efun)) {					\
+	    DO_IF_DEBUG (if (d_flag) gc_check (s->u.efun->name));	\
+	    gc_check (s->u.efun->type);					\
 	  }								\
 	)								\
 	break;								\
@@ -2236,12 +2236,10 @@ void gc_check_weak_short_svalue(const union anything *u, TYPE_T type)
 
 #define DO_MARK_FUNC_SVALUE(U, T, ZAP, GC_DO)				\
       if (s->subtype == FUNCTION_BUILTIN) {				\
-	DO_IF_DEBUG(							\
-	  if (d_flag) {							\
-	    gc_mark(s->u.efun->name);					\
-	    gc_mark(s->u.efun->type);					\
-	  }								\
-	)								\
+	DO_IF_DEBUG (if (d_flag) gc_mark (s->u.efun->name));		\
+	DO_IF_DEBUG_OR_CLEANUP (					\
+	  gc_mark_enqueue ((queue_call) gc_mark_type_as_referenced,	\
+			   s->u.efun->type));				\
 	break;								\
       }									\
       /* Fall through to T_OBJECT. */

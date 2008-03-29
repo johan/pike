@@ -435,6 +435,12 @@ typedef struct p_wchar_p
 #define NDEBUG
 #endif
 
+#if defined (PIKE_DEBUG) || defined (DO_PIKE_CLEANUP)
+#define DO_IF_DEBUG_OR_CLEANUP(X) X
+#else
+#define DO_IF_DEBUG_OR_CLEANUP(X)
+#endif
+
 #ifdef INTERNAL_PROFILING
 #define DO_IF_INTERNAL_PROFILING(X) X
 #else
