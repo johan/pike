@@ -1982,11 +1982,9 @@ void check_short_svalue(const union anything *u, TYPE_T type)
   low_check_short_svalue(u,type);
 }
 
-PMOD_EXPORT void debug_check_suspect_svalue_type (const struct svalue *s)
+PMOD_EXPORT void debug_svalue_type_error (const struct svalue *s)
 {
-  /* This is only called if s->type is suspect, i.e:
-   * t > MAX_TYPE && t != T_SVALUE_PTR && t != T_OBJ_INDEX &&
-   * t != T_VOID && t != T_DELETED && t != T_ARRAY_LVALUE */
+  /* This is only called if s->type is invalid. */
   if (s->type == PIKE_T_FREE || s->type == PIKE_T_UNKNOWN) {
 #ifdef DEBUG_MALLOC
     Pike_fatal ("Using %s freed svalue at %p.\nIt was freed at %s.\n",
