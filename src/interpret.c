@@ -339,6 +339,7 @@ PMOD_EXPORT void init_interpreter(void)
  * object[index] : { object, index } (external object indexing)
  * local variable : { svalue pointer (T_SVALUE_PTR), nothing (T_VOID) }
  * global variable : { object, identifier index (T_OBJ_INDEX) } (internal object indexing)
+ * lvalue array: { T_ARRAY_LVALUE, array with lvalue pairs }
  */
 
 void lvalue_to_svalue_no_free(struct svalue *to,struct svalue *lval)
