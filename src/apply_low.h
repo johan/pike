@@ -166,9 +166,20 @@
       if(new_frame->scope) add_ref(new_frame->scope);
 #endif
 #ifdef PIKE_DEBUG      
-      if (Pike_fp && (new_frame->locals < Pike_fp->locals)) {
-	fatal("New locals below old locals: %p < %p\n",
-	      new_frame->locals, Pike_fp->locals);
+      if (Pike_fp) {
+	if (new_frame->locals < Pike_fp->locals) {
+	  fatal("New locals below old locals: %p < %p\n",
+		new_frame->locals, Pike_fp->locals);
+	}
+
+	if (d_flag > 1) {
+	  /* Liberal use of variables for debugger convenience. */
+	  size_t i;
+	  struct svalue *l = Pike_fp->locals;
+	  for (i = 0; l + i < Pike_sp; i++)
+	    if (l[i].type != PIKE_T_FREE)
+	      debug_check_svalue (l + i);
+	}
       }
 #endif /* PIKE_DEBUG */
 
