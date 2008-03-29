@@ -80,7 +80,7 @@ union anything
   struct svalue *lval;		/**< Used with T_SVALUE_PTR. */
   void *ptr;
 #ifdef DEBUG_MALLOC
-  char *loc;			/* Only used for PIKE_T_UNKNOWN debugging. */
+  char *loc;			/* Only used for free svalue debugging. */
 #endif
 };
 
