@@ -845,7 +845,7 @@ void reset_evaluator(void)
 
 #ifdef PIKE_DEBUG
 
-#define BACKLOG 1024
+#define BACKLOG 100
 struct backlog
 {
   PIKE_INSTR_T instruction;
