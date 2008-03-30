@@ -1482,8 +1482,8 @@ again:
     }
 
     default:
-      fprintf(stderr, "%*s**Cannot describe block of unknown type %d\n",
-	      indent, "", t);
+      fprintf(stderr, "%*s**Cannot describe block of type %s (%d)\n",
+	      indent, "", get_name_of_type (t), t);
   }
 }
 
@@ -1871,13 +1871,13 @@ static void cleanup_markers (void)
   size_t e=0;
 
   if (gc_keep_markers) {
-    /* Carry over any GC_CLEANUP_FREED flags but reinitialize them
+    /* Carry over any GC_CLEANUP_LEAKED flags but reinitialize them
      * otherwise. */
     for(e=0;e<marker_hash_table_size;e++) {
       struct marker *m;
       for (m = marker_hash_table[e]; m; m = m->next) {
 #ifdef PIKE_DEBUG
-	m->flags &= GC_CLEANUP_FREED;
+	m->flags &= GC_CLEANUP_LEAKED;
 	m->xrefs = 0;
 	m->saved_refs = -1;
 #else
@@ -1940,7 +1940,7 @@ void exit_gc(void)
 PMOD_EXPORT void gc_check_zapped (void *a, TYPE_T type, const char *file, int line)
 {
   struct marker *m = find_marker (a);
-  if (m && (m->flags & GC_CLEANUP_FREED))
+  if (m && (m->flags & GC_CLEANUP_LEAKED))
     fprintf (stderr, "Free of leaked %s %p from %s:%d, %d refs remaining\n",
 	     get_name_of_type (type), a, file, line, *(INT32 *)a - 1);
 }
@@ -1987,7 +1987,7 @@ void locate_references(void *a)
     gc_check_all_mappings();
     gc_check_all_programs();
     gc_check_all_objects();
-    debug_gc_check_all_types();
+    gc_check_all_types();
   } GC_LEAVE;
 
 #ifdef DEBUG_MALLOC
