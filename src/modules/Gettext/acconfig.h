@@ -13,6 +13,9 @@
 /* define if you have gettext */
 #undef HAVE_GETTEXT
 
+/* Defined if bindtextdomain(3) copes with NULL as dirname */
+#undef BINDTEXTDOMAIN_HANDLES_NULL
+
 @BOTTOM@
 
 #endif
