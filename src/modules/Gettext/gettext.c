@@ -250,6 +250,7 @@ void f_bindtextdomain(INT32 args)
       Pike_error ("Pike has been compiled with a version of libintl "
 		  "that doesn't support NULL as directory name.\n");
 #endif
+  }
 
   pop_n_elems(args);
   if(returnstring == NULL)
