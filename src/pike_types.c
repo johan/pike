@@ -7651,6 +7651,7 @@ static void gc_mark_external_types(struct callback *cb, void *a, void *b)
   if (weak_type_string)
     gc_mark_external(weak_type_string, " as weak_type_string");
 
+#ifdef DO_PIKE_CLEANUP
   {
     struct pike_type_location *t = all_pike_type_locations;
     while(t) {
@@ -7658,6 +7659,7 @@ static void gc_mark_external_types(struct callback *cb, void *a, void *b)
       t = t->next;
     }
   }
+#endif
 }
 #endif
 
