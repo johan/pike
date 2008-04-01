@@ -535,7 +535,7 @@ LINKFUNC(BOOL,lookupaccountsid,
 LINKFUNC(BOOL,setnamedsecurityinfo,
          (LPTSTR,SE_OBJECT_TYPE,SECURITY_INFORMATION,PSID,PSID,PACL,PACL) );
 LINKFUNC(DWORD,getnamedsecurityinfo,
-         (LPTSTR,SE_OBJECT_TYPE,SECURITY_INFORMATION,PSID*,PSID*,PACL*,PACL*,PSECURITY_DESCRIPTOR) );
+         (LPTSTR,SE_OBJECT_TYPE,SECURITY_INFORMATION,PSID*,PSID*,PACL*,PACL*,PSECURITY_DESCRIPTOR*) );
 
 LINKFUNC(BOOL,initializeacl, (PACL,DWORD,DWORD) );
 LINKFUNC(BOOL,addaccessallowedace, (PACL,DWORD,DWORD,PSID) );
@@ -3215,8 +3215,8 @@ struct sctx_storage {
   int        hctxt_alloced;
   TCHAR      lpPackageName[1024];
   DWORD      cbMaxMessage;
-  char *     buf;
-  int        cBuf;
+  BYTE *     buf;
+  DWORD      cBuf;
   int        done;
   int        lastError;
 };
