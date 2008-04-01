@@ -76,9 +76,9 @@
 void f_gettext(INT32 args)
 {
   const char *domain, *msg;
-  INT32 cat;
+  int cat;
 
-  get_all_args("Locale.Gettext.gettext", args, "%c.%C%I", &msg, &domain, &cat);
+  get_all_args("Locale.Gettext.gettext", args, "%c.%C%D", &msg, &domain, &cat);
 
   switch(args) {
 #ifdef PIKE_DEBUG
@@ -141,9 +141,9 @@ void f_dgettext(INT32 args)
 void f_dcgettext(INT32 args)
 {
   const char *domain, *msg;
-  INT_TYPE category;
+  int category;
 
-  get_all_args("Locale.Gettext.dcgettext", args, "%c%c%i",
+  get_all_args("Locale.Gettext.dcgettext", args, "%c%c%d",
 	       &domain, &msg, &category);
 
   push_text(dcgettext(domain, msg, category));
@@ -271,8 +271,8 @@ void f_setlocale(INT32 args)
 {
   char *returnstring;
   const char *locale;
-  INT_TYPE category;
-  get_all_args("Locale.Gettext.setlocale", args, "%i%c", &category, &locale);
+  int category;
+  get_all_args("Locale.Gettext.setlocale", args, "%d%c", &category, &locale);
 
   returnstring = setlocale(category, locale);
   pop_n_elems(args);
