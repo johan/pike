@@ -3154,12 +3154,13 @@ retry_connect:
 
     len3=sizeof(addr);
   retry_accept:
+    retries++;
     sv[0]=fd_accept(socketpair_fd,(struct sockaddr *)&addr,&len3);
 
     if(sv[0] < 0) {
       SP_DEBUG((stderr, "my_socketpair:fd_accept() failed, errno:%d (2)\n",
 		errno));
-      if(errno==EINTR) goto retry_accept;
+      if(retries <= 20) goto retry_accept;
       while (fd_close(sv[1]) && errno == EINTR) {}
       return -1;
     }
