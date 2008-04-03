@@ -268,6 +268,7 @@ private mapping get_module_action_data(string name, string|void version)
   return vi + info;
 }
 
+#if 0
 private void do_download(string name, string|void version)
 {
   mapping vi = get_module_action_data(name, version);
@@ -410,6 +411,7 @@ private void do_list(string|void name)
   foreach(results, string r)
     write("%s\n", r);
 }
+#endif /* 0 */
 
 string generate_components(string root_directory)
 {
