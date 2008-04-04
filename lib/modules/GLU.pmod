@@ -49,7 +49,6 @@ void gluLookAt(float|object eye,float|object center,float|object up,
 	       float ... old_api)
 {
   Math.Matrix x,y,z;
-  float mag;
 
   if (!objectp(eye))
   {
