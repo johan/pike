@@ -581,6 +581,7 @@ static int low_yylex(YYSTYPE *yylval)
 	  break;
 	case TWO_CHAR('_','_'):
 	  if(ISWORD("__attribute__")) return TOK_ATTRIBUTE_ID;
+	  if(ISWORD("__deprecated__")) return TOK_DEPRECATED_ID;
 	  if(ISWORD("__FUNCTION__")) return TOK_FUNCTION_NAME;
 	  break;
 	}
