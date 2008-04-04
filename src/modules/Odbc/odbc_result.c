@@ -11,6 +11,11 @@
  * Henrik Grubbström
  */
 
+/* FIXME: ODBC allows for multiple result sets from the same query.
+ * Support for SQLMoreResults should be added to support that (and it
+ * needs to work also in the case when the first result set has no
+ * columns). */
+
 /*
  * Includes
  */
