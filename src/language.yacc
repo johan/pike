@@ -3736,7 +3736,7 @@ inherit_specifier: TOK_IDENTIFIER TOK_COLON_COLON
       if (inherit_depth == compilation_depth) break;
       if (!TEST_COMPAT (7, 2) &&
 	  ID_FROM_INT (inherit_state->previous->new_program,
-		       inherit_state->previous->parent_identifier)->name ==
+		       inherit_state->parent_identifier)->name ==
 	  $1->u.sval.u.string) {
 	e = 0;
 	break;

@@ -2362,21 +2362,8 @@ void low_start_new_program(struct program *p,
   }
 #endif
 
-#if 0
-#ifdef SHARED_NODES
-  if (!node_hash.table) {
-    node_hash.table = malloc(sizeof(node *)*32831);
-    if (!node_hash.table) {
-      Pike_fatal("Out of memory!\n");
-    }
-    MEMSET(node_hash.table, 0, sizeof(node *)*32831);
-    node_hash.size = 32831;
-  }
-#endif /* SHARED_NODES */
-#endif /* 0 */
-
   /* We don't want to change thread, but we don't want to
-   * wait for the other threads to complete.
+   * wait for the other threads to complete either.
    */
   low_init_threads_disable();
 
@@ -2421,7 +2408,6 @@ void low_start_new_program(struct program *p,
       add_ref(p->parent = Pike_compiler->new_program);
   }
   p->flags &=~ PROGRAM_VIRGIN;
-  Pike_compiler->parent_identifier=id;
   if(idp) *idp=id;
 
   CDFPRINTF((stderr, "th(%ld) %p low_start_new_program() %s "
@@ -2435,6 +2421,7 @@ void low_start_new_program(struct program *p,
 #define PUSH
 #include "compilation.h"
 
+  Pike_compiler->parent_identifier=id;
   Pike_compiler->compiler_pass = pass;
 
   Pike_compiler->num_used_modules=0;
