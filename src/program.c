@@ -7501,7 +7501,7 @@ static void compilation_event_handler(int e)
   }
 }
 
-/*! @decl compile(string code)
+/*! @decl void compile(string code)
  *!
  *!   Compile a segment of Pike code.
  */
@@ -7511,7 +7511,7 @@ static void f_compilation_compile(INT32 args)
   push_int(0);
 }
 
-/*! @decl report(SeverityLevel severity, @
+/*! @decl void report(SeverityLevel severity, @
  *!              string filename, int linenumber, @
  *!              string subsystem, @
  *!              string message, mixed ... extra_args)
