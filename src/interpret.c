@@ -2176,6 +2176,14 @@ static void restore_catching_eval_jmpbuf (LOW_JMP_BUF *p)
 
 PMOD_EXPORT void mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 {
+  /* Save and clear Pike_interpreter.catching_eval_jmpbuf so that the
+   * following eval_instruction will install a LOW_JMP_BUF of its
+   * own to handle catches. */
+  LOW_JMP_BUF *saved_jmpbuf = Pike_interpreter.catching_eval_jmpbuf;
+  ONERROR uwp;
+  Pike_interpreter.catching_eval_jmpbuf = NULL;
+  SET_ONERROR (uwp, restore_catching_eval_jmpbuf, saved_jmpbuf);
+
   /* The C stack margin is normally 8 kb, but if we get here during a
    * lowered margin then don't fail just because of that, unless it's
    * practically zero. */
@@ -2184,24 +2192,14 @@ PMOD_EXPORT void mega_apply(enum apply_type type, INT32 args, void *arg1, void *
 
   if(low_mega_apply(type, args, arg1, arg2))
   {
-    /* Save and clear Pike_interpreter.catching_eval_jmpbuf so that the
-     * following eval_instruction will install a LOW_JMP_BUF of its
-     * own to handle catches. */
-    LOW_JMP_BUF *saved_jmpbuf = Pike_interpreter.catching_eval_jmpbuf;
-    ONERROR uwp;
-    Pike_interpreter.catching_eval_jmpbuf = NULL;
-    SET_ONERROR (uwp, restore_catching_eval_jmpbuf, saved_jmpbuf);
-
     eval_instruction(Pike_fp->pc
 #ifdef ENTRY_PROLOGUE_SIZE
 		     - ENTRY_PROLOGUE_SIZE
 #endif /* ENTRY_PROLOGUE_SIZE */
 		     );
     low_return();
-
-    Pike_interpreter.catching_eval_jmpbuf = saved_jmpbuf;
-    UNSET_ONERROR (uwp);
   }
+  CALL_AND_UNSET_ONERROR(uwp);
 }
 
 /* Put catch outside of eval_instruction, so the setjmp won't affect
