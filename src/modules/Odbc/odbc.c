@@ -345,7 +345,7 @@ static void f_create_dsn(INT32 args)
 {
   struct pike_string *connectstring = NULL;
 
-  SQLCHAR outconnectionstring[1024]; // Smallest allowed buffer = 1024
+  SQLCHAR outconnectionstring[1024]; /* Smallest allowed buffer = 1024 */
   SQLSMALLINT stringlength2;
 
   get_all_args("odbc->create_dsn", args, "%S", &connectstring);
