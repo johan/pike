@@ -57,5 +57,6 @@ struct compilation
 #define CE_REPORT_FUN_NUM		0
 #define CE_PIKE_COMPILER_FUN_NUM	1
 #define CE_COMPILE_FUN_NUM		2
+#define CE_RESOLV_FUN_NUM		3
 
 #endif	/* !PIKE_COMPILER_H */
