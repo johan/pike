@@ -4339,7 +4339,7 @@ void low_yyerror(struct pike_string *str)
   push_int(c->lex.current_line);
   push_constant_text("parse");
   ref_push_string(str);
-  safe_apply_current(0, 5);	/* report(). */
+  safe_apply_current(CE_REPORT_FUN_NUM, 5);
   pop_stack();
   STACK_LEVEL_DONE(0);
 }
