@@ -9,12 +9,12 @@
 #include "lex.h"
 #include "stuff.h"
 #include "bignum.h"
+#include "pike_compiler.h"
+#include "interpret.h"
 
 #include <ctype.h>
 
 #define LEXDEBUG 0
-
-struct lex lex;
 
 /* Must do like this since at least gcc is a little too keen on
  * optimizing INT_TYPE_MUL_OVERFLOW otherwise. */
@@ -34,9 +34,12 @@ static unsigned INT32 eight = 8, sixteen = 16, ten = 10;
 
 int yylex(YYSTYPE *yylval)
 {
+  struct lex *lex;
+  CHECK_COMPILER();
+  lex = &THIS_COMPILATION->lex;
 #if LEXDEBUG>8
   fprintf(stderr, "YYLEX: Calling lexer at 0x%08lx\n",
-	  (long)lex.current_lexer);
+	  (long)lex->current_lexer);
 #endif /* LEXDEBUG > 8 */
-  return(lex.current_lexer(yylval));
+  return(lex->current_lexer(lex, yylval));
 }

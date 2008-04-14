@@ -2505,6 +2505,8 @@ void init_object(void)
 {
   ptrdiff_t offset;
 
+  enter_compiler(NULL, 0);
+
   init_destroy_called_mark_hash();
   start_new_program();
   offset=ADD_STORAGE(struct magic_index_struct);
@@ -2534,6 +2536,8 @@ void init_object(void)
 	       offset + OFFSETOF(magic_index_struct, o), T_OBJECT);
   ADD_FUNCTION("`()",f_magic_values,tFunc(tOr(tVoid,tInt),tArray),0);
   magic_values_program=end_program();
+
+  exit_compiler();
 }
 
 void exit_object(void)

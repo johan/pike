@@ -17,9 +17,9 @@
 
 #define WANT_LVALUE (DO_LVALUE | DO_INDIRECT)
 
-#define emit0(X)     insert_opcode0((X),lex.current_line, lex.current_file)
-#define emit1(X,Y)   insert_opcode1((X),(Y),lex.current_line, lex.current_file)
-#define emit2(X,Y,Z) insert_opcode2((X),(Y),(Z),lex.current_line, lex.current_file)
+#define emit0(X)     insert_opcode0((X),c->lex.current_line, c->lex.current_file)
+#define emit1(X,Y)   insert_opcode1((X),(Y),c->lex.current_line, c->lex.current_file)
+#define emit2(X,Y,Z) insert_opcode2((X),(Y),(Z),c->lex.current_line, c->lex.current_file)
 
 /* Prototypes begin here */
 void upd_int(int offset, INT32 tmp);
