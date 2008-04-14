@@ -4334,12 +4334,12 @@ void low_yyerror(struct pike_string *str)
   Pike_compiler->num_parse_error++;
   cumulative_parse_error++;
 
-  push_int(2);	/* ERROR */
+  push_int(REPORT_ERROR);
   ref_push_string(c->lex.current_file);
   push_int(c->lex.current_line);
   push_constant_text("parse");
   ref_push_string(str);
-  apply_current(0, 5);	/* report(). */
+  safe_apply_current(0, 5);	/* report(). */
   pop_stack();
   STACK_LEVEL_DONE(0);
 }

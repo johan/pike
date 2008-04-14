@@ -8869,7 +8869,7 @@ void low_pop_local_variables(int level)
     if ((Pike_compiler->compiler_pass == 2) &&
 	!(Pike_compiler->compiler_frame->variable[e].flags &
 	  LOCAL_VAR_IS_USED)) {
-      push_int(1); /* Warning */
+      push_int(REPORT_WARNING);
       ref_push_string(Pike_compiler->compiler_frame->variable[e].file);
       push_int(Pike_compiler->compiler_frame->variable[e].line);
       push_constant_text("parse");
@@ -8901,7 +8901,7 @@ void pop_local_variables(int level)
       if ((Pike_compiler->compiler_pass == 2) &&
 	  !(Pike_compiler->compiler_frame->variable[level].flags &
 	    LOCAL_VAR_IS_USED)) {
-	push_int(1); /* Warning */
+	push_int(REPORT_WARNING); /* Warning */
 	ref_push_string(Pike_compiler->compiler_frame->variable[level].file);
 	push_int(Pike_compiler->compiler_frame->variable[level].line);
 	push_constant_text("parse");
@@ -9137,7 +9137,7 @@ void yywarning(char *fmt, ...)
   va_end(args);
   msg = finish_string_builder(&s);
 
-  push_int(1);	/* Warning. */
+  push_int(REPORT_WARNING);
   ref_push_string(c->lex.current_file);
   push_int(c->lex.current_line);
   push_constant_text("parse");
