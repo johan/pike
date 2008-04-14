@@ -741,10 +741,10 @@ PMOD_EXPORT void mega_apply(enum apply_type type, INT32 args, void *arg1, void *
 PMOD_EXPORT void f_call_function(INT32 args);
 PMOD_EXPORT void call_handle_error(void);
 PMOD_EXPORT int apply_low_safe_and_stupid(struct object *o, INT32 offset);
-PMOD_EXPORT void safe_apply_low(struct object *o,int fun,int args);
-PMOD_EXPORT void safe_apply_low2(struct object *o,int fun,int args,
+PMOD_EXPORT int safe_apply_low(struct object *o,int fun,int args);
+PMOD_EXPORT int safe_apply_low2(struct object *o,int fun,int args,
 				 const char *fun_name);
-PMOD_EXPORT void safe_apply(struct object *o, const char *fun ,INT32 args);
+PMOD_EXPORT int safe_apply(struct object *o, const char *fun ,INT32 args);
 PMOD_EXPORT int low_unsafe_apply_handler(const char *fun,
 					 struct object *handler,
 					 struct object *compat,
