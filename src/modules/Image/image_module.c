@@ -135,11 +135,13 @@ static void image_magic_index(INT32 args)
 	 if (!submagic[i].o)
 	 {
 	    struct program *p;
+	    enter_compiler(submagic[i].ps, 0);
 	    start_new_program();
 	    (submagic[i].init)();
 	    IMAGE_CHECK_STACK(submagic[i].name);
 	    p=end_program();
 	    p->id = PROG_IMAGE_SUBMAGIC_START+i;
+	    exit_compiler();
 	    submagic[i].o=clone_object(p,0);
 	    free_program(p);
 	 }
