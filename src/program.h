@@ -884,8 +884,8 @@ int call_dependants(struct Supporter *s, int finish);
 int report_compiler_dependency(struct program *p);
 struct compilation;
 void run_pass2(struct compilation *c);
-void enter_compiler(struct pike_string *filename, int linenumber);
-void exit_compiler(void);
+PMOD_EXPORT void enter_compiler(struct pike_string *filename, int linenumber);
+PMOD_EXPORT void exit_compiler(void);
 struct program *compile(struct pike_string *aprog,
 			struct object *ahandler,
 			int amajor, int aminor,

@@ -7822,7 +7822,7 @@ static void low_enter_compiler(struct object *ce, int inherit)
   Pike_fp = new_frame;
 }
 
-void enter_compiler(struct pike_string *filename, int linenumber)
+PMOD_EXPORT void enter_compiler(struct pike_string *filename, int linenumber)
 {
   struct object *ce = clone_object(compilation_program, 0);
   struct compilation *c;
@@ -7841,7 +7841,7 @@ void enter_compiler(struct pike_string *filename, int linenumber)
 
 /* Reverse the effect of enter_compiler().
  */
-void exit_compiler(void)
+PMOD_EXPORT void exit_compiler(void)
 {
 #ifdef PIKE_DEBUG
   if ((Pike_fp->current_program != compilation_program) ||
