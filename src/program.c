@@ -36,6 +36,7 @@
 #include "block_alloc.h"
 #include "pikecode.h"
 #include "pike_compiler.h"
+#include "module_support.h"
 
 #include <errno.h>
 #include <fcntl.h>
@@ -8906,7 +8907,7 @@ void low_pop_local_variables(int level)
       ref_push_string(Pike_compiler->compiler_frame->variable[e].file);
       push_int(Pike_compiler->compiler_frame->variable[e].line);
       push_constant_text("parse");
-      push_constant_text("Unused local variable %S.");
+      push_constant_text("Unused local variable %s.");
       ref_push_string(Pike_compiler->compiler_frame->variable[e].name);
       safe_apply_current(CE_REPORT_FUN_NUM, 6);
       pop_stack();
@@ -8938,7 +8939,7 @@ void pop_local_variables(int level)
 	ref_push_string(Pike_compiler->compiler_frame->variable[level].file);
 	push_int(Pike_compiler->compiler_frame->variable[level].line);
 	push_constant_text("parse");
-	push_constant_text("Unused local variable %S.");
+	push_constant_text("Unused local variable %s.");
 	ref_push_string(Pike_compiler->compiler_frame->variable[level].name);
 	safe_apply_current(CE_REPORT_FUN_NUM, 6);
 	pop_stack();
