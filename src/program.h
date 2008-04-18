@@ -661,7 +661,9 @@ BLOCK_ALLOC_FILL_PAGES(program, n/a);
 
 extern struct program *first_program;
 extern struct program *null_program;
+extern struct program *compilation_env_program;
 extern struct program *compilation_program;
+extern struct object *compilation_environment;
 extern struct program *pike_trampoline_program;
 extern struct program *gc_internal_program;
 extern struct program *placeholder_program;

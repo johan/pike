@@ -4107,18 +4107,11 @@ node *optimize_replace(node *n)
  *!
  *! @seealso
  *!   @[compile_string()], @[compile_file()], @[cpp()], @[master()],
- *!   @[CompilationHandler]
+ *!   @[CompilationHandler], @[DefaultCompilationEnvironment]
  */
 PMOD_EXPORT void f_compile(INT32 args)
 {
-  struct object *ce = clone_object(compilation_program, 0);
-  ONERROR err;
-
-  SET_ONERROR(err, do_free_object, ce);
-
-  apply_low(ce, CE_COMPILE_FUN_NUM, args);
-
-  CALL_AND_UNSET_ONERROR(err);
+  apply_low(compilation_environment, CE_COMPILE_FUN_NUM, args);
 }
 
 
