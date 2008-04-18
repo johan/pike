@@ -382,6 +382,10 @@ void init_pike_runtime(void (*exit_cb)(int))
 
   init_opcodes();
 
+  TRACE((stderr, "Init destruct...\n"));
+
+  low_init_object();
+
   TRACE((stderr, "Init programs...\n"));
 
   init_program();

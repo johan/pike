@@ -133,6 +133,7 @@ void gc_zap_ext_weak_refs_in_objects(void);
 size_t gc_free_all_unreferenced_objects(void);
 struct magic_index_struct;
 void push_magic_index(struct program *type, int inherit_no, int parent_level);
+void low_init_object(void);
 void init_object(void);
 void exit_object(void);
 void check_object_context(struct object *o,
