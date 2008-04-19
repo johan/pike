@@ -7110,6 +7110,21 @@ int report_compiler_dependency(struct program *p)
   return ret;
 }
 
+/*! @module DefaultCompilationEnvironment
+ *!
+ *!   The @[CompilerEnvironment] object that is used
+ *!   for loading C-modules and by @[predef::compile()].
+ *!
+ *! @note
+ *!   @[predef::compile()] is essentially an alias for the
+ *!   @[CompilerEnvironment::compile()] in this object.
+ *!
+ *! @seealso
+ *!   @[CompilerEnvironment], @[predef::compile()]
+ */
+
+/*! @endmodule
+ */
 
 /*! @class CompilerEnviroment
  *!
@@ -7198,6 +7213,15 @@ static void f_compilation_env_report(INT32 args)
  *!
  *!   The optional arguments @[major] and @[minor] are used to tell the
  *!   compiler to attempt to be compatible with Pike @[major].@[minor].
+ *!
+ *! @note
+ *!   This function essentially performs
+ *!   @code
+ *!     program compile(mixed ... args)
+ *!     {
+ *!       return PikeCompiler(@@args)->compile();
+ *!     }
+ *!   @endcode
  *!
  *! @note
  *!   Note that @[source] must contain the complete source for a program.
