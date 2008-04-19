@@ -7253,9 +7253,6 @@ static void f_compilation_env_resolv(INT32 args)
   }
 }
 
-/*! @endclass
- */
-
 /*! @class PikeCompiler
  *!
  *!   The Pike compiler.
