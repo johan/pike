@@ -805,6 +805,11 @@ static INLINE void strict_apply_svalue(struct svalue *sval, INT32 args)
 		 (FUN) + Pike_fp->context->identifier_level,	\
 		 (ARGS))
 
+#define safe_apply_current2(FUN, ARGS, FUNNAME)			\
+  safe_apply_low2(Pike_fp->current_object,			\
+		  (FUN) + Pike_fp->context->identifier_level,	\
+		  (ARGS), (FUNNAME))
+
 PMOD_EXPORT extern int d_flag; /* really in main.c */
 
 PMOD_EXPORT extern int Pike_stack_size;
