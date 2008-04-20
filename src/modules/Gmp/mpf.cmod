@@ -450,7 +450,7 @@ PIKECLASS mpf
   static struct object *get_mpf_with_prec(unsigned long int prec)
     {
       struct object *o=clone_object(mpf_program,0);
-      mpf_init2(OBTOMPF(o), prec);
+      mpf_set_prec(OBTOMPF(o), prec);
       return o;
     }
 
@@ -567,12 +567,12 @@ PIKECLASS mpf
       RETURN res;
     }
 
-  /* @decl static Gmp.mpf ``+(int|float|object .. a)
+  /* @decl static Gmp.mpf ``+(int|float|object ... a)
    */
   PIKEFUN object ``+(int|float|object ... a)
     flags ID_STATIC;
     {
-      struct object *res;
+      struct object *res = NULL;
 
       res = get_mpf_with_prec( add_convert_args(args) );
 
