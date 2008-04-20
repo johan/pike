@@ -1628,7 +1628,7 @@ struct node_s *resolve_identifier(struct pike_string *ident)
   } else {
     push_int(0);
   }
-  if (!safe_apply_current(PC_RESOLV_FUN_NUM, 3)) {
+  if (!safe_apply_current2(PC_RESOLV_FUN_NUM, 3, NULL)) {
     if(Pike_compiler->compiler_pass==2) {
       if (throw_value.type == T_STRING) {
 	my_yyerror("%S", throw_value.u.string);
