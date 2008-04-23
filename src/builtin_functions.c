@@ -4631,7 +4631,7 @@ PMOD_EXPORT void f_localtime(INT32 args)
 
 #if SIZEOF_TIME_T < SIZEOF_LONGEST
   if (tt > MAX_TIME_T || tt < MIN_TIME_T)
-    SIMPLE_ARG_ERROR ("gmtime", 1, "Timestamp outside valid range.");
+    SIMPLE_ARG_ERROR ("localtime", 1, "Timestamp outside valid range.");
 #endif
   t = (time_t) tt;
 
