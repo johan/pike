@@ -59,14 +59,20 @@ struct compilation
 #define REPORT_FATAL	3	/* Unrecoverable error. */
 
 /* CompilerEnvironment function numbers. */
-#define CE_REPORT_FUN_NUM		0
-#define CE_COMPILE_FUN_NUM		1
-#define CE_RESOLV_FUN_NUM		2
-#define CE_PIKE_COMPILER_FUN_NUM	3
+#define CE_REPORT_FUN_NUM				0
+#define CE_COMPILE_FUN_NUM				1
+#define CE_RESOLV_FUN_NUM				2
+#define CE_PIKE_COMPILER_FUN_NUM			3
+#define CE_GET_COMPILATION_HANDLER_FUN_NUM		4
+#define CE_GET_DEFAULT_MODULE_FUN_NUM			5
 
 /* PikeCompiler function numbers. */
-#define PC_REPORT_FUN_NUM		0
-#define PC_COMPILE_FUN_NUM		1
-#define PC_RESOLV_FUN_NUM		2
+#define PC_REPORT_FUN_NUM				0
+#define PC_COMPILE_FUN_NUM				1
+#define PC_RESOLV_FUN_NUM				2
+#define PC_CREATE_FUN_NUM				3
+#define PC_GET_COMPILATION_HANDLER_FUN_NUM		4
+#define PC_GET_DEFAULT_MODULE_FUN_NUM			5
+#define PC_CHANGE_COMPILER_COMPATIBILITY_FUN_NUM	6
 
 #endif	/* !PIKE_COMPILER_H */
