@@ -17,7 +17,7 @@ struct compilation
   struct pike_string *prog;		/* String to compile. */
   struct object *handler;		/* error_handler */
   struct object *compat_handler;	/* compat_handler */
-  int major, minor;			/* compat version */
+  int major, minor;			/* Base compat version */
   struct program *target;		/* Program being compiled. */
   struct object *placeholder;
   int flags;
