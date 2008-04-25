@@ -549,6 +549,7 @@ PMOD_EXPORT struct object *get_master(void)
        !simple_mapping_string_lookup(get_builtin_constants(),
 				     "_static_modules"))
     {
+      inside = 0;
       /* fprintf(stderr, "Builtin_constants: %p\n", get_builtin_constants()); */
       /* fprintf(stderr,"Cannot load master object yet!\n"); */
       return 0;
