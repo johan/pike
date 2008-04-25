@@ -11,6 +11,11 @@ array encoded=({});
 
 private function werror = _static_modules.files()->_stderr->write;
 
+mapping get_default_module()
+{
+  return 0;	// Use the builitin default.
+}
+
 void handle_error(mixed err)
 {
   foreach(encoded, mixed o)
