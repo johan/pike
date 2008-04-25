@@ -174,7 +174,7 @@ class Constructed
   werror("Decoding Primitive\n");
 #endif
   // Primitive encoding
-  return p ? p()->decode_primitive(contents)
+  return p ? p()->decode_primitive(contents, this_object(), types)
     : Primitive(tag, contents);
 }
 
