@@ -833,7 +833,8 @@ static struct pike_type *lfun_setter_type_string = NULL;
  *!   It's assumed that this function is side-effect free.
  */
 
-/*! @decl mixed lfun::`[..](zero low, int low_bound_type, zero high, int high_bound_type)
+/*! @decl mixed lfun::`[..](zero low, int low_bound_type, @
+ *!                         zero high, int high_bound_type)
  *!
  *!   Subrange callback.
  *!
