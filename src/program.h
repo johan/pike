@@ -669,8 +669,6 @@ extern struct program *gc_internal_program;
 extern struct program *placeholder_program;
 extern struct object *placeholder_object;
 
-extern int compilation_depth;
-
 /* Flags for identifier finding... */
 #define SEE_STATIC 1
 #define SEE_PRIVATE 2

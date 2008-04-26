@@ -3730,6 +3730,7 @@ idents: low_idents
 
 inherit_specifier: TOK_IDENTIFIER TOK_COLON_COLON
   {
+    struct compilation *c = THIS_COMPILATION;
     int e = -1;
 
     inherit_state = Pike_compiler;
@@ -3740,7 +3741,7 @@ inherit_specifier: TOK_IDENTIFIER TOK_COLON_COLON
 	e = inh;
 	break;
       }
-      if (inherit_depth == compilation_depth) break;
+      if (inherit_depth == c->compilation_depth) break;
       if (!TEST_COMPAT (7, 2) &&
 	  ID_FROM_INT (inherit_state->previous->new_program,
 		       inherit_state->parent_identifier)->name ==
@@ -3768,8 +3769,9 @@ inherit_specifier: TOK_IDENTIFIER TOK_COLON_COLON
   }
   | TOK_GLOBAL TOK_COLON_COLON
   {
+    struct compilation *c = THIS_COMPILATION;
     inherit_state = Pike_compiler;
-    for (inherit_depth = 0; inherit_depth < compilation_depth;
+    for (inherit_depth = 0; inherit_depth < c->compilation_depth;
 	 inherit_depth++, inherit_state = inherit_state->previous) {}
     $$ = 0;
   }
