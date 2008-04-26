@@ -4137,7 +4137,7 @@ if test "x$pike_cv_sys_os" = "xWindows_NT" -o "x$pike_cv_sys_os" = "xAmigaOS"; t
       pike_cv_initial_stack_size=32768
       while read x; do
 	# Some paranoia in case fprintf outputs junk at and of stack...
-	if test "$x" -gt "$pike_cv_initial_stack_size"; then
+	if test "$pike_cv_initial_stack_size" -lt "$x"; then
           pike_cv_initial_stack_size="$x";
 	fi
       done <confdefs.out.2
