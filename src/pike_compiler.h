@@ -26,10 +26,13 @@ struct compilation
   struct lex lex;
   int compilation_inherit;		/* Inherit in supporter->self containing
 					 * compilation_program. */
+
+  dynamic_buffer used_modules;		/* Stack of svalues with imported
+					 * modules. */
+  INT32 num_used_modules;		/* Number of entries on the stack. */
+
   int save_depth;
   int saved_threads_disabled;
-  dynamic_buffer used_modules_save;
-  INT32 num_used_modules_save;
   struct mapping *resolve_cache_save;
 
   struct svalue default_module;
