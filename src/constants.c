@@ -115,7 +115,6 @@ PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
     free_type(z);
   }
   f->runs=0;
-  f->compiles=0;
 #endif
   return f;
 }
