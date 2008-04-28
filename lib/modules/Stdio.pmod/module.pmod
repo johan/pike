@@ -1547,6 +1547,18 @@ class FILE
   //! @[charset].
   //!
   //! The default charset is @tt{"ISO-8859-1"@}.
+  //!
+  //! @fixme
+  //!   Consider using one of
+  //!   ISO-IR-190 (@tt{"\e%/G"@} - switch to UTF-8 level 1)
+  //!   or ISO-IR-162 (@tt{"\e%/@@"@} - switch to UCS-2 level 1)
+  //!   or ISO-IR-163 (@tt{"\e%/A"@} - switch to UCS-4 level 1)
+  //!   or ISO-IR-174 (@tt{"\e%/C"@} - switch to UCS-2 level 2)
+  //!   or ISO-IR-175 (@tt{"\e%/D"@} - switch to UCS-4 level 2)
+  //!   or ISO-IR-176 (@tt{"\e%/E"@} - switch to UCS-2 level 3)
+  //!   or ISO-IR-177 (@tt{"\e%/F"@} - switch to UCS-4 level 3)
+  //!   or ISO-IR-178 (@tt{"\e%B"@} - switch to UTF-1)
+  //!   automatically to encode wide strings.
   {
     charset = lower_case( charset );
     if( charset != "iso-8859-1" &&
