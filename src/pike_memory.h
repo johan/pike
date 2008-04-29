@@ -5,8 +5,8 @@
 || $Id$
 */
 
-#ifndef MEMORY_H
-#define MEMORY_H
+#ifndef PIKE_MEMORY_H
+#define PIKE_MEMORY_H
 
 #include "global.h"
 #include "stralloc.h"
@@ -30,6 +30,12 @@
 #endif	/* USE_VALGRIND */
 
 #ifdef HAVE_VALGRIND_MACROS
+
+#ifndef VALGRIND_MAKE_NOACCESS
+#define VALGRIND_MAKE_NOACCESS VALGRIND_MAKE_MEM_NOACCESS
+#define VALGRIND_MAKE_WRITABLE VALGRIND_MAKE_MEM_UNDEFINED
+#define VALGRIND_MAKE_READABLE VALGRIND_MAKE_MEM_DEFINED
+#endif
 
 /* No Access */
 #define PIKE_MEM_NA(lvalue) do {					\
