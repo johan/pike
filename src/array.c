@@ -2443,7 +2443,7 @@ PMOD_EXPORT void apply_array(struct array *a, INT32 args)
   check_stack(args);
   check_array_for_destruct(a);
   for (e=0; e<args; e++)
-    hash = hash * 33 + DO_NOT_WARN ((INT32)(size_t)Pike_sp[-e-1].u.ptr);
+    hash = hash * 33 + DO_NOT_WARN ((INT32) PTR_TO_INT (Pike_sp[-e-1].u.ptr));
 
   if (!(cycl = (struct array *)BEGIN_CYCLIC(a, (ptrdiff_t)hash))) {
     push_array(aa = allocate_array_no_init(0, a->size));
