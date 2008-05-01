@@ -4774,7 +4774,7 @@ PMOD_EXPORT void low_init_signals(void)
       /* 64-bit Solaris 10 in Xenofarm fails with SIGPIPE.
        * Force a core dump.
        */
-      my_signal(SIGPIPE, abort);
+      my_signal(SIGPIPE, (sigfunctype) abort);
     }
   }
 #endif
