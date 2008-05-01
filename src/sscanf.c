@@ -848,14 +848,16 @@ CHAROPT2(								 \
 	    chars_matched[0]=eye;					\
 	    return matches;						\
 	  }								\
-          for(e=0;e<field_length;e++)					\
-          {								\
-	    if(input[eye+e]>255)					\
+	  CHAROPT2 (							\
+	    for(e=0;e<field_length;e++)					\
 	    {								\
-	      chars_matched[0]=eye;					\
-	      return matches;						\
+	      if(input[eye+e]>255)					\
+	      {								\
+		chars_matched[0]=eye;					\
+		return matches;						\
+	      }								\
 	    }								\
-          }								\
+	  );								\
 	  if (minus_flag)						\
 	  {								\
 	    int x, pos=0;						\
