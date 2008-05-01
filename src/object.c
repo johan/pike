@@ -1175,7 +1175,7 @@ PMOD_EXPORT void low_object_index_no_free(struct svalue *to,
       if (fun >= 0) {
 	DECLARE_CYCLIC();
 	fun += p->inherits[ref->inherit_offset].identifier_level;
-	if (!BEGIN_CYCLIC(o, fun)) {
+	if (!BEGIN_CYCLIC(o, (size_t) fun)) {
 	  SET_CYCLIC_RET(1);
 	  apply_low(o, fun, 0);
 	} else {
@@ -1443,7 +1443,7 @@ PMOD_EXPORT void object_low_set_index(struct object *o,
     if (fun >= 0) {
       DECLARE_CYCLIC();
       fun += p->inherits[ref->inherit_offset].identifier_level;
-      if (!BEGIN_CYCLIC(o, fun)) {
+      if (!BEGIN_CYCLIC(o, (size_t) fun)) {
 	SET_CYCLIC_RET(1);
 	push_svalue(from);
 	apply_low(o, fun, 1);

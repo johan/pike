@@ -329,7 +329,7 @@ PMOD_EXPORT struct pike_string *string_replace(struct pike_string *str,
 				   struct pike_string *to);
 void init_shared_string_table(void);
 void cleanup_shared_string_table(void);
-void count_memory_in_strings(INT32 *num, INT32 *size);
+void count_memory_in_strings(size_t *num, size_t *size);
 unsigned gc_touch_all_strings(void);
 void gc_mark_all_strings(void);
 struct pike_string *next_pike_string (struct pike_string *s);

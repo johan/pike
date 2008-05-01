@@ -2816,9 +2816,9 @@ void debug_dump_array(struct array *a)
  *  memory allocated for arrays (array structs + svalues). Called from
  *  _memory_usage, which is exposed through Debug.memory_usage().
  */
-void count_memory_in_arrays(INT32 *num_, INT32 *size_)
+void count_memory_in_arrays(size_t *num_, size_t *size_)
 {
-  INT32 num=0, size=0;
+  size_t num=0, size=0;
   struct array *m;
   for(m=first_array;m;m=m->next)
   {

@@ -935,7 +935,7 @@ PMOD_EXPORT void change_compiler_compatibility(int major, int minor);
 void make_program_executable(struct program *p);
 /* Prototypes end here */
 
-void count_memory_in_programs(INT32*,INT32*);
+void count_memory_in_programs(size_t *, size_t *);
 
 #ifndef PIKE_USE_MACHINE_CODE
 #define make_program_executable(X)

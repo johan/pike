@@ -2036,11 +2036,12 @@ void cleanup_shared_string_table(void)
 
   if (exit_with_cleanup)
   {
-    INT32 num,size;
+    size_t num,size;
     count_memory_in_strings(&num,&size);
     if(num)
     {
-      fprintf(stderr,"Strings left: %d (%d bytes) (zapped)\n",num,size);
+      fprintf(stderr,"Strings left: %"PRINTSIZET"d "
+	      "(%"PRINTSIZET"d bytes) (zapped)\n",num,size);
 #ifdef PIKE_DEBUG
       dump_stralloc_strings();
 #endif
@@ -2074,9 +2075,10 @@ void cleanup_shared_string_table(void)
 #endif /* DO_PIKE_CLEANUP */
 }
 
-void count_memory_in_strings(INT32 *num, INT32 *size)
+void count_memory_in_strings(size_t *num, size_t *size)
 {
-  unsigned INT32 e, num_=0, size_=0;
+  unsigned INT32 e;
+  size_t num_=0, size_=0;
   if(!base_table)
   {
     *num=*size=0;

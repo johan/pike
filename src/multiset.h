@@ -446,7 +446,7 @@ void check_all_multisets (int safe);
 void debug_dump_multiset (struct multiset *l);
 #endif
 
-void count_memory_in_multisets (INT32 *num, INT32 *size);
+void count_memory_in_multisets (size_t *num, size_t *size);
 void init_multiset (void);
 void exit_multiset (void);
 void test_multiset (void);
