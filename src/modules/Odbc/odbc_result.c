@@ -474,10 +474,10 @@ static void f_list_tables(INT32 args)
   table_name_pattern = Pike_sp[-args].u.string;
 
   ODBC_ALLOW();
-  code = SQLTables(hstmt, "%", 1, "%", 1,
-		   table_name_pattern->str,
+  code = SQLTables(hstmt, (SQLCHAR *) "%", 1, (SQLCHAR *) "%", 1,
+		   (SQLCHAR *) table_name_pattern->str,
 		   DO_NOT_WARN((SQLSMALLINT)table_name_pattern->len),
-		   "%", 1);
+		   (SQLCHAR *) "%", 1);
   if (code != SQL_SUCCESS && code != SQL_SUCCESS_WITH_INFO)
     err_msg = "Query failed";
   else {
@@ -686,7 +686,8 @@ static void f_fetch_row(INT32 args)
 #endif /* ODBC_DEBUG */
 	    if (len < (BLOB_BUFSIZ
 #ifdef SQL_WCHAR
-		       * ((field_type == SQL_C_WCHAR) ? sizeof(SQLWCHAR):1)
+		       * ((field_type == SQL_C_WCHAR) ?
+			  (int) sizeof(SQLWCHAR):1)
 #endif
 		      )
 #ifdef SQL_NO_TOTAL
