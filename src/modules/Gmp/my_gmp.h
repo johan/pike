@@ -144,6 +144,7 @@ extern struct program *bignum_program;
 #define INT_TYPE_BITS (SIZEOF_INT_TYPE * CHAR_BIT - 1)
 #ifdef INT64
 #define INT64_BITS (SIZEOF_INT64 * CHAR_BIT - 1)
+#define UINT64_BITS (SIZEOF_INT64 * CHAR_BIT)
 #endif
 
 #if SIZEOF_INT_TYPE > SIZEOF_LONG
