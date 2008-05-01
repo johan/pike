@@ -470,7 +470,7 @@ class SimpleOptions
     }
 
     sscanf( arg, "-%s=%s", name, value ) || sscanf( arg, "-%s", name );
-    if( !name ) return 0;
+    if( !name || !sizeof(name) ) return 0;
     foreach( name/1; int pos; string c )
       if( pos == sizeof(name)-1 )
         values[c] = value||1;
