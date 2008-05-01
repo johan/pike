@@ -79,7 +79,7 @@ void image_avs_f__decode(INT32 args)
   push_int( h );
   ao = clone_object( image_program, 2);
 
-  for(c=0; c<w*h; c++)
+  for(c=0; c< (unsigned) w * h; c++)
   {
     rgb_group pix, apix;
     apix.r = apix.g = apix.b = q[c*4+8];
