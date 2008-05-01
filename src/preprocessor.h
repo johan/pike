@@ -494,7 +494,7 @@ static ptrdiff_t calcC(struct cpp *this, WCHAR *data, ptrdiff_t len,
 
   case '\'':
   {
-    int tmp = data[++pos];
+    unsigned tmp = data[++pos];
     if (tmp == '\\') READCHAR(tmp);
     pos++;
     if(!GOBBLE('\''))

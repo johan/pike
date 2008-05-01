@@ -1021,7 +1021,7 @@ while(1)					\
   case '"':  break;				\
   case '\\':					\
   {						\
-    int tmp;					\
+    unsigned tmp;				\
     if(data[pos+1]=='\n')			\
     {						\
       pos++;					\
@@ -1112,7 +1112,7 @@ while(1)					\
   case '"':  break;				\
   case '\\':					\
   {						\
-    int tmp;					\
+    unsigned tmp;				\
     if(data[pos+1]=='\n')			\
     {						\
       pos++;					\
