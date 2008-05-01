@@ -3068,7 +3068,7 @@ void dump_program_tables (struct program *p, int indent)
 	  "%*s  ####: Value\n",
 	  indent, "", indent, "");
   for (d = 0; d < p->num_strings; d++) {
-    fprintf(stderr, "%*s  %4d: [%p]\"%s\"(%d characters)\n",
+    fprintf(stderr, "%*s  %4d: [%p]\"%s\"(%"PRINTPTRDIFFT"d characters)\n",
 	    indent, "", (int)d, p->strings[d], p->strings[d]->str, p->strings[d]->len);
   }
 
