@@ -514,7 +514,7 @@ PMOD_EXPORT struct callback *add_exit_callback(callback_func call,
   return add_to_callback(&exit_callbacks, call, arg, free_func);
 }
 
-DECLSPEC(noreturn) void pike_do_exit(int num)
+void pike_do_exit(int num)
 {
   call_callback(&exit_callbacks, NULL);
   free_callback_list(&exit_callbacks);
