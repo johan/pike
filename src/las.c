@@ -3543,7 +3543,7 @@ void fix_type_field(node *n)
       if ((n->type = new_get_return_type(dmalloc_touch(struct pike_type *, f),
 					 0))) {
 	/* Type/argument-check OK. */
-	debug_malloc_pass(n->type);
+	debug_malloc_touch(n->type);
 
 	free_type(f);
 	if(n->token == F_AUTO_MAP)
