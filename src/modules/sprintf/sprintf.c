@@ -1348,7 +1348,7 @@ static void low_pike_sprintf(struct format_stack *fs,
           sprintf_error(fs, "Length of string to %%H is 0.\n");
 
         if( tmp >= (1<<(l*8)) )
-          sprintf_error(fs, "Length of string to %%%dH too large.\n", l);
+	  sprintf_error(fs, "Length of string to %%%"PRINTPTRDIFFT"dH too large.\n", l);
 
 
         x=(char *)alloca(l);
