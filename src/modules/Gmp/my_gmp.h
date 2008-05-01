@@ -140,11 +140,11 @@ extern struct program *bignum_program;
 #endif
 
 /* Bits excluding the sign bit, if any. */
-#define ULONG_BITS (SIZEOF_LONG * 8)
+#define ULONG_BITS (SIZEOF_LONG * CHAR_BIT)
+#define ULONGEST_BITS (SIZEOF_LONGEST * CHAR_BIT)
 #define INT_TYPE_BITS (SIZEOF_INT_TYPE * CHAR_BIT - 1)
 #ifdef INT64
 #define INT64_BITS (SIZEOF_INT64 * CHAR_BIT - 1)
-#define UINT64_BITS (SIZEOF_INT64 * CHAR_BIT)
 #endif
 
 #if SIZEOF_INT_TYPE > SIZEOF_LONG
