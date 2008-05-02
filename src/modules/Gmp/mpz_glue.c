@@ -250,8 +250,25 @@ static void gmp_push_ulongest (unsigned LONGEST i)
 #if SIZEOF_LONG >= SIZEOF_LONGEST
     mpz_set_ui (mpz, i);
 #else
-#error LONGEST should always be at least the same size as long.
-#endif
+    {
+#ifdef HAVE_MPZ_IMPORT
+      mpz_import (mpz, 1, 1, SIZEOF_LONGEST, 0, 0, &i);
+#else
+      {
+	size_t n =
+	  ((SIZEOF_LONGEST + SIZEOF_LONG - 1) / SIZEOF_LONG - 1)
+	  /* The above is the position of the top unsigned long in the INT64. */
+	  * ULONG_BITS;
+	mpz_set_ui (mpz, (unsigned long) (i >> n));
+	while (n) {
+	  n -= ULONG_BITS;
+	  mpz_mul_2exp (mpz, mpz, ULONG_BITS);
+	  mpz_add_ui (mpz, mpz, (unsigned long) (i >> n));
+	}
+      }
+#endif	/* !HAVE_MPZ_IMPORT */
+    }
+#endif	/* SIZEOF_LONG < SIZEOF_LONGEST */
   }
 }
 
