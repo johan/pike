@@ -69,6 +69,7 @@ struct compilation
 #define CE_PIKE_COMPILER_FUN_NUM			3
 #define CE_GET_COMPILATION_HANDLER_FUN_NUM		4
 #define CE_GET_DEFAULT_MODULE_FUN_NUM			5
+#define CE_HANDLE_INHERIT_FUN_NUM			6
 
 /* PikeCompiler function numbers. */
 #define PC_REPORT_FUN_NUM				0
@@ -78,5 +79,6 @@ struct compilation
 #define PC_GET_COMPILATION_HANDLER_FUN_NUM		4
 #define PC_GET_DEFAULT_MODULE_FUN_NUM			5
 #define PC_CHANGE_COMPILER_COMPATIBILITY_FUN_NUM	6
+#define PC_HANDLE_INHERIT_FUN_NUM			7
 
 #endif	/* !PIKE_COMPILER_H */
