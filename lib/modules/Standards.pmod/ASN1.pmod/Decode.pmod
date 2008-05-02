@@ -3,7 +3,7 @@
 //
 
 #pike __REAL_VERSION__
-//#pragma strict_types
+#pragma strict_types
 #define COMPATIBILITY
 
 //! Decodes a DER object.

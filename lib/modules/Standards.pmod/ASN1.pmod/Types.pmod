@@ -6,7 +6,7 @@
 //! Encoding Rules (DER)
 
 #pike __REAL_VERSION__
-//#pragma strict_types
+#pragma strict_types
 #define COMPATIBILITY
 
 #if constant(Gmp) && constant(Gmp.mpz)
