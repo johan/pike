@@ -4179,6 +4179,7 @@ void f_count_memory (INT32 args)
 
   gc_mark_run_queue();
 
+#if 0
 #ifdef PIKE_DEBUG
   {
     size_t num, size;
@@ -4188,6 +4189,7 @@ void f_count_memory (INT32 args)
 	     "used %"PRINTSIZET"u bytes for %"PRINTSIZET"u markers.\n",
 	     checked, marked, size, num);
   }
+#endif
 #endif
 
   Pike_in_gc = 0;
