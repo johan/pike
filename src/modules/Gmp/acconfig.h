@@ -62,4 +62,7 @@
 /* Define to the actual number of numb bits if known. */
 #undef PIKE_GMP_NUMB_BITS
 
+/* Defined if mpz_t has _mp_alloc in it. */
+#undef MPZ_T_HAS__MP_ALLOC
+
 #endif

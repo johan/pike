@@ -33,6 +33,7 @@
 #include "bignum.h"
 #include "operators.h"
 #include "mapping.h"
+#include "gc.h"
 
 #include "my_gmp.h"
 
@@ -898,7 +899,13 @@ PIKECLASS mpf
 #endif
       mpf_clear(THISMPF);
     }
-  
+
+  GC_RECURSE
+  {
+    if (Pike_in_gc == GC_PASS_COUNT_MEMORY)
+      /* FIXME: Should count the allocated size. */
+      gc_counted_bytes += (mpf_get_prec (THISMPF) + 7) / 8 + sizeof (mpf_t);
+  }
 }
 
 /*! @endclass

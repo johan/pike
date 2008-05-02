@@ -2614,6 +2614,12 @@ void gc_mark_array_as_referenced(struct array *a)
 {
   if(gc_mark(a))
     GC_ENTER (a, T_ARRAY) {
+      if (Pike_in_gc == GC_PASS_COUNT_MEMORY) {
+	gc_counted_bytes += sizeof (struct array) +
+	  (a->malloced_size - 1) * sizeof (struct svalue);
+	gc_check_array (a);
+      }
+
       if (a == gc_mark_array_pos)
 	gc_mark_array_pos = a->next;
       if (a == gc_internal_array)

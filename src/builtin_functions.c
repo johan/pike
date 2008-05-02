@@ -9579,6 +9579,7 @@ void init_builtin_efuns(void)
   ADD_EFUN("_gc_status",f__gc_status,
 	   tFunc(tNone,tMap(tString,tOr(tInt,tFloat))),
 	   OPT_EXTERNAL_DEPEND);
+  ADD_FUNCTION ("count_memory", f_count_memory, tFuncV(tZero,tMix,tInt), 0);
 
   ADD_INT_CONSTANT ("NATIVE_INT_MAX", MAX_INT_TYPE, 0);
   ADD_INT_CONSTANT ("NATIVE_INT_MIN", MIN_INT_TYPE, 0);

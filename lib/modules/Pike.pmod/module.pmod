@@ -43,6 +43,7 @@ constant Backend = __builtin.Backend;
 constant DefaultBackend = __builtin.__backend;
 
 constant gc_parameters = __builtin.gc_parameters;
+constant count_memory = __builtin.count_memory;
 
 constant get_runtime_info = __builtin.get_runtime_info;
 

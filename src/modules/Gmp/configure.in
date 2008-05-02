@@ -376,6 +376,20 @@ if you know that you do not need GMP, you may re-run configure
 with the option --without-bignums instead.
     ])
   fi
+
+  AC_MSG_CHECKING([if mpz_t has _mp_alloc])
+  AC_CACHE_VAL(pike_cv_mpz_t_has__mp_alloc, [
+    AC_TRY_COMPILE([
+    ],[
+      int s;
+      mpz_t foo;
+      s = foo[0]._mp_alloc;
+    ], pike_cv_mpz_t_has__mp_alloc=yes, pike_cv_mpz_t_has__mp_alloc=no)
+  ])
+  AC_MSG_RESULT($pike_cv_mpz_t_has__mp_alloc)
+  if test "$pike_cv_mpz_t_has__mp_alloc" = "yes"; then
+    AC_DEFINE(MPZ_T_HAS__MP_ALLOC)
+  fi
 fi
 
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
