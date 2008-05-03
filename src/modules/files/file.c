@@ -3855,12 +3855,28 @@ static void file_query_address(INT32 args)
     return;
   }
 #ifdef HAVE_INET_NTOP
-  inet_ntop(SOCKADDR_FAMILY(addr), SOCKADDR_IN_ADDR(addr),
-	    buffer, sizeof(buffer)-20);
+  if(!inet_ntop(SOCKADDR_FAMILY(addr), SOCKADDR_IN_ADDR(addr),
+		buffer, sizeof(buffer)-20))
+  {
+    ERRNO=errno;
+    push_int(0);
+    return;
+  }
 #else
-  q=inet_ntoa(*SOCKADDR_IN_ADDR(addr));
-  strncpy(buffer,q,sizeof(buffer)-20);
-  buffer[sizeof(buffer)-20]=0;
+  if(SOCKADDR_FAMILY(addr) == AF_INET)
+  {
+    q=inet_ntoa(*SOCKADDR_IN_ADDR(addr));
+    strncpy(buffer,q,sizeof(buffer)-20);
+    buffer[sizeof(buffer)-20]=0;
+  }else{
+#ifdef EAFNOSUPPORT
+    ERRNO=EAFNOSUPPORT;
+#else
+    ERRNO=EINVAL;
+#endif
+    push_int(0);
+    return;
+  }
 #endif
   sprintf(buffer+strlen(buffer)," %d",(int)(ntohs(addr.ipv4.sin_port)));
 
