@@ -11131,6 +11131,39 @@ test_compile_error_any(class A {nomask int f(){}} class B {inherit A; int f;})
 test_compile_any(class A {local int f(){}} class B {inherit A; int f;})
 test_compile_any(class A {inline int f(){}} class B {inherit A; int f;})
 
+// - attributes
+test_compile_any(
+  class A { __deprecated__ int foo(int x) { return x; } };
+)
+test_compile_warning(
+  class A { __deprecated__ int foo(int x) { return x; } };
+  A()->foo(0);
+)
+test_compile_warning(
+  class A { __deprecated__ int foo(int x) { return x; } };
+  function bar = A()->foo;
+)
+test_compile_warning(
+  class A { __deprecated__(int) foo(int x) { return x; } };
+)
+test_compile_any(
+  class A { __deprecated__(int) foo(int x) { return (__deprecated__(int))x; } };
+)
+test_compile_warning(
+  class A { int foo(__deprecated__(int)|void x) { return x; } };
+)
+test_compile_warning(
+  class A { int foo(__deprecated__(int)|void x) { return (int)x; } };
+)
+test_compile_warning(
+  class A { int foo(__deprecated__(int)|void x) { return (int)x; } };
+  A()->foo(0);
+)
+test_compile_any(
+  class A { int foo(__deprecated__(int)|void x) { return (int)x; } };
+  A()->foo();
+)
+
 // - modifiers, compile time access properties
 
 test_compile_error_any(class A {} class B {inherit A; int q; void g(){q=v;}})
