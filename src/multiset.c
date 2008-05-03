@@ -4094,9 +4094,9 @@ void gc_mark_multiset_as_referenced (struct multiset *l)
 
       if (gc_mark (msd)) {
 	if (Pike_in_gc == GC_PASS_COUNT_MEMORY) {
-	  gc_counted_bytes += (l->msd->flags & MULTISET_INDVAL ?
-			       NODE_OFFSET (msnode_indval, l->msd->allocsize) :
-			       NODE_OFFSET (msnode_ind, l->msd->allocsize));
+	  gc_counted_bytes += (msd->flags & MULTISET_INDVAL ?
+			       NODE_OFFSET (msnode_indval, msd->allocsize) :
+			       NODE_OFFSET (msnode_ind, msd->allocsize));
 	  gc_check_msd (l);
 	}
 
