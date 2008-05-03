@@ -1835,7 +1835,7 @@ PMOD_EXPORT void gc_mark_object_as_referenced(struct object *o)
       struct program *p = o->prog;
 
       if (Pike_in_gc == GC_PASS_COUNT_MEMORY) {
-	if (p) gc_counted_bytes += p->storage_needed;
+	if (p) gc_counted_bytes += p->storage_needed + sizeof (struct object);
 	gc_check_object (o);
       }
 
