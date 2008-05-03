@@ -501,7 +501,7 @@ inheritance: modifiers TOK_INHERIT inherit_ref optional_rename_inherit ';'
     if (($1 & ID_EXTERN) && (Pike_compiler->compiler_pass == 1)) {
       yywarning("Extern declared inherit.");
     }
-    if($3 && !(Pike_compiler->new_program->flags & PROGRAM_PASS_1_DONE))
+    if($3)
     {
       struct pike_string *s=Pike_sp[-1].u.string;
       if($4) s=$4->u.sval.u.string;

@@ -2442,6 +2442,26 @@ class b {
 ]])
 test_compile([[Stdio.File foo=Stdio.FILE();]])
 
+test_any([[
+  // Test symbol lookup for inherit in multi-pass.
+  // LysLysKOM 16472935
+  // An old pike will attempt to lookup X in the innermost X
+  // during the second pass and thus fail with a compilation error.
+  class X {
+    constant foo = "outer";
+    class X {
+      constant foo = "middle";
+      class X {
+        constant foo = "inner";
+      }
+    }
+  };
+  class Y {
+    inherit X.X;
+  };
+  return Y()->foo;
+]], "middle")
+
 test_any([[string gurk="bozo"; string b(int x) { return (x?b(x-1)+gurk:""); }; return b(5)]],[["bozo"*5]])
 
 dnl this should really work...

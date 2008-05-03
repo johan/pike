@@ -164,6 +164,7 @@
   ZMEMBER(INT32,current_modifiers,0)
   ZMEMBER(int,varargs,0)
   ZMEMBER(int, num_create_args, 0)
+  ZMEMBER(int, num_inherits, 0)	/* Used during second pass. */
   STRMEMBER(last_identifier,0)
   ZMEMBER(struct mapping *,module_index_cache,0)
   STACKMEMBER(struct pike_type **,type_stackp,type_stack)
