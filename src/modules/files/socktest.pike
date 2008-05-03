@@ -14,7 +14,7 @@ import String;
 #endif
 
 #ifdef SOCK_DEBUG
-#define DEBUG_WERR(X...)	write(X)
+#define DEBUG_WERR(X...)	predef::write(X)
 #else /* !SOCK_DEBUG */
 #define DEBUG_WERR(X...)
 #endif /* SOCK_DEBUG */
@@ -129,7 +129,7 @@ class Socket {
     if(sizeof(output_buffer))
     {
       int tmp=write(output_buffer);
-      DEBUG_WERR("write_callback(): Wrote %d bytes.\n", tmp, output_buffer);
+      DEBUG_WERR("write_callback(): Wrote %d bytes.\n", tmp /*, output_buffer*/);
       if(tmp >= 0)
       {
 	output_buffer=output_buffer[tmp..];
