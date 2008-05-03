@@ -4075,7 +4075,7 @@ void dump_gc_info(void)
  *! @note
  *! The result of @expr{Pike.count_memory(0,a,b)@} might be larger
  *! than the sum of @expr{Pike.count_memory(0,a)@} and
- *! @expr{Pike.count_memory(0,b)@} since @expt{a@} and @expr{b@}
+ *! @expr{Pike.count_memory(0,b)@} since @expr{a@} and @expr{b@}
  *! together might reference things that aren't referenced from
  *! anywhere else.
  *!
