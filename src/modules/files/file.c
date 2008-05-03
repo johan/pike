@@ -3722,6 +3722,9 @@ static void file_connect(INT32 args)
   struct svalue *src_port = NULL;
 
   int tmp, was_closed = FD < 0;
+#ifdef EADDRINUSE
+  int tries = 10;
+#endif
 
   if (args < 4) {
     get_all_args("Stdio.File->connect", args, "%S%*", &dest_addr, &dest_port);
@@ -3763,10 +3766,16 @@ static void file_connect(INT32 args)
     pop_stack();
   }
 
-  tmp=FD;
-  THREADS_ALLOW();
-  tmp=fd_connect(tmp, (struct sockaddr *)&addr, addr_len);
-  THREADS_DISALLOW();
+#ifdef EADDRINUSE
+  do {
+#endif
+    tmp=FD;
+    THREADS_ALLOW();
+    tmp=fd_connect(tmp, (struct sockaddr *)&addr, addr_len);
+    THREADS_DISALLOW();
+#ifdef EADDRINUSE
+  } while(tmp < 0 && errno==EADDRINUSE && --tries);
+#endif
 
   if(tmp < 0
 #ifdef EINPROGRESS
