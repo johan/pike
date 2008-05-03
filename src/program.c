@@ -1576,8 +1576,8 @@ struct node_s *find_module_identifier(struct pike_string *ident,
 	      ((p->num_inherits + 1) < p->new_program->num_inherits) &&
 	      (PTR_FROM_INT(p->new_program, i)->inherit_offset >
 	       p->num_inherits)) {
-	    /* Don't look up symbols inherited later, when looking up
-	     * inherits...
+	    /* Don't look up symbols inherited later, since we need to get
+	     * the same symbol in both passes in the force_resolve mode.
 	     */
 	    continue;
 	  }
