@@ -446,10 +446,12 @@ PMOD_EXPORT void o_cast_to_string(void)
 	  }
 	}
 	break;
+#ifdef PIKE_DEBUG
       default:
 	free_string(end_shared_string(s));
 	Pike_fatal("cast: Bad shift: %d.\n", shift);
 	break;
+#endif
       }
       s = end_shared_string(s);
       pop_stack();

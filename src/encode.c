@@ -2548,8 +2548,10 @@ static INT32 decode_portable_bytecode(INT32 string_no)
 #undef SIGNED_CHAR
 #undef EMIT_BYTECODE
 #undef EMIT_BYTECODE2
+#ifdef PIKE_DEBUG
   default:
     Pike_fatal("Bad size_shift: %d\n", bytecode->size_shift);
+#endif
   }
   UNSET_ONERROR(err);
   return assemble(1);

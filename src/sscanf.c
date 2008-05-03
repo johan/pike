@@ -1390,10 +1390,12 @@ INT32 low_sscanf(struct pike_string *data, struct pike_string *format)
 			    STR2(format), format->len,
 			    &matched_chars, &x);
     break;
+#ifdef PIKE_DEBUG
   default:
     Pike_fatal("Unsupported shift-combination to low_sscanf(): %d:%d\n",
 	       data->size_shift, format->size_shift);
     break;
+#endif
   }
   return i;
 }
