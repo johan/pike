@@ -11152,16 +11152,16 @@ test_compile_any(
 test_compile_warning(
   class A { int foo(__deprecated__(int)|void x) { return x; } };
 )
-test_compile_warning(
+test_compile_any(
   class A { int foo(__deprecated__(int)|void x) { return (int)x; } };
 )
 test_compile_warning(
   class A { int foo(__deprecated__(int)|void x) { return (int)x; } };
-  A()->foo(0);
+  A()->foo(1);
 )
 test_compile_any(
   class A { int foo(__deprecated__(int)|void x) { return (int)x; } };
-  A()->foo();
+  mixed bar = A()->foo();
 )
 
 // - modifiers, compile time access properties
