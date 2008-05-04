@@ -82,5 +82,6 @@ struct compilation
 #define PC_HANDLE_INHERIT_FUN_NUM			7
 #define PC_POP_TYPE_ATTRIBUTE_FUN_NUM			8
 #define PC_PUSH_TYPE_ATTRIBUTE_FUN_NUM			9
+#define PC_APPLY_TYPE_ATTRIBUTE_FUN_NUM			10
 
 #endif	/* !PIKE_COMPILER_H */
