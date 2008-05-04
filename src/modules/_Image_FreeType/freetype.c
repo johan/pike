@@ -152,7 +152,7 @@ static void image_ft_face_write_char( INT32 args )
         }
   } else if( slot->bitmap.pixel_mode == ft_pixel_mode_mono ) {
     int p = slot->bitmap.pitch;
-    char *s = slot->bitmap.buffer;
+    unsigned char *s = slot->bitmap.buffer;
     p *= 8;
     if( s )
       for( y = 0; y<i->ysize; y++ )
