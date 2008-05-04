@@ -1024,8 +1024,10 @@ static void feed_gb18030e(struct std_cs_stor *cs, struct string_builder *sb,
       }
     }
     break;
+#ifdef PIKE_DEBUG
   default:
     Pike_fatal("Illegal shift size!\n");
+#endif
   }
 }
 
@@ -1103,8 +1105,10 @@ static void feed_gbke(struct std_cs_stor *cs, struct string_builder *sb,
       }
     }
     break;
+#ifdef PIKE_DEBUG
   default:
     Pike_fatal("Illegal shift size!\n");
+#endif
   }
 }
 
@@ -1617,8 +1621,10 @@ static void feed_utf8e(struct std_cs_stor *cs, struct string_builder *sb,
       }
     }
     break;
+#ifdef PIKE_DEBUG
   default:
     Pike_fatal("Illegal shift size!\n");
+#endif
   }
 }
 
@@ -1751,8 +1757,10 @@ static void feed_utf_ebcdice(struct std_cs_stor *cs, struct string_builder *sb,
       }
     }
     break;
+#ifdef PIKE_DEBUG
   default:
     Pike_fatal("Illegal shift size!\n");
+#endif
   }
 }
 
@@ -1822,8 +1830,10 @@ static void feed_utf7_5e(struct std_cs_stor *cs, struct string_builder *sb,
       /* FIXME: Encode using surrogates? */
     }
     break;
+#ifdef PIKE_DEBUG
   default:
     Pike_fatal("Illegal shift size!\n");
+#endif
   }
 }
 
@@ -1976,8 +1986,10 @@ static void feed_utf7e(struct utf7_stor *u7, struct string_builder *sb,
 	}
     }
     break;
+#ifdef PIKE_DEBUG
   default:
     Pike_fatal("Illegal shift size!\n");
+#endif
   }
 
   u7->dat = dat;
@@ -2083,8 +2095,10 @@ static void feed_std8e(struct std8e_stor *s8, struct string_builder *sb,
 	  REPLACE_CHAR(c, feed_std8e, s8, p - STR2(str) - 1);
     }
     break;
+#ifdef PIKE_DEBUG
   default:
     Pike_fatal("Illegal shift size!\n");
+#endif
   }
 }
 
@@ -2189,8 +2203,10 @@ static void feed_std16e(struct std16e_stor *s16, struct string_builder *sb,
 	  REPLACE_CHAR(c, feed_std16e, s16, p - STR2(str) - 1);
     }
     break;
+#ifdef PIKE_DEBUG
   default:
     Pike_fatal("Illegal shift size!\n");
+#endif
   }
 }
 
