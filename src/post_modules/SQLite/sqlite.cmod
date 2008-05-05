@@ -130,7 +130,7 @@ PIKECLASS SQLite
   CVAR sqlite3 *db;
 
 PIKECLASS ResObj
-  flags ID_PRIVATE | ID_STATIC;
+  flags ID_PRIVATE | ID_STATIC | ID_HIDDEN;
 {
   CVAR struct object *dbobj;
   CVAR struct mapping *bindings;
