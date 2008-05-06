@@ -46,6 +46,10 @@ test_any([[class Bar { array(int) foo = ({}); };
 	   class Foo { inherit Bar; array(int) foo = ({1}); };
 	   return sizeof(Foo()->foo);]],1);
 
+# __func__
+test_eq(__func__, "a")
+test_eq("b", __func__)
+
 test_eq(8, 0b1000);
 test_eq(-8, -0b1000);
 test_eq(16, 0b10000);
