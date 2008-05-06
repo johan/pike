@@ -227,6 +227,7 @@ struct marker
  * references but only weak external references. */
 #define GC_USER_1		0x0100
 #define GC_USER_2		0x0200
+#define GC_USER_3		0x0400
 /* Flags free for use in the gc callbacks for the specific data types.
  * E.g. multisets use these flags on the multiset_data blocks. */
 
