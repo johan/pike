@@ -2128,7 +2128,9 @@ push_compiler_frame1: /* empty */
 
 implicit_identifier: /* empty */
   {
-    $$=mkstrnode(get_new_name());
+    struct pike_string *name;
+    $$=mkstrnode(name = get_new_name());
+    free_string(name);
   }
   ;
 
@@ -2249,7 +2251,6 @@ lambda: TOK_LAMBDA line_number_info implicit_identifier push_compiler_frame1
     } else {
       $$ = mkidentifiernode(f);
     }
-    free_string(name);
     free_type(type);
     c->lex.current_line = save_line;
     c->lex.current_file = save_file;
@@ -3534,8 +3535,13 @@ apply:
 
 implicit_modifiers:
   {
-    $$ = Pike_compiler->current_modifiers = ID_STATIC|ID_INLINE|ID_PRIVATE |
-      (THIS_COMPILATION->lex.pragmas & ID_MODIFIER_MASK);
+    if (TEST_COMPAT(7, 6)) {
+      $$ = Pike_compiler->current_modifiers =
+	(THIS_COMPILATION->lex.pragmas & ID_MODIFIER_MASK);
+    } else {
+      $$ = Pike_compiler->current_modifiers = ID_STATIC|ID_INLINE|ID_PRIVATE |
+	(THIS_COMPILATION->lex.pragmas & ID_MODIFIER_MASK);
+    }
   }
   ;
 
