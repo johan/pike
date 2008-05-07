@@ -791,6 +791,13 @@ test_compile_error( [[
   mixed x = all_constants()[undefined_identifier];
 ]])
 
+test_compile_any([[
+  #pike 7.4
+  #pragma strict_types
+  string x (string s) {return s;}
+  void y (void|string s) {x (s);}
+]])
+
 cond( [[ master()->resolv("Pike")->Security ]],[[
   test_any( [[
   // bug [2830] ------------------------------------------------------------
