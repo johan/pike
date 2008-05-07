@@ -11343,6 +11343,13 @@ test_equal(indices(class {class A {int f(){}} class B {nomask inherit A;} class 
 test_equal(indices(class {class A {int f(){}} class B {local inherit A;} class C {inherit B;}}()->C()), ({"f"}))
 test_equal(indices(class {class A {int f(){}} class B {inline inherit A;} class C {inherit B;}}()->C()), ({"f"}))
 
+test_any([[
+  class Y {
+    static object x = class X {}();
+  };
+  return has_index (Y(), "X");
+]], 1)
+
 // - modifiers, binding and redefinition properties with compile time access
 
 test_any(class A {int v=1;}; class B {inherit A; int v=2; int t(){return v;}}; return B()->t(), 2)
