@@ -269,7 +269,15 @@ void do_download(string name, string|void version)
   if(vi->download)
   {
     write("beginning download of version %s...\n", vi->version);
-    array rq = Protocols.HTTP.get_url_nice(vi->download);
+    array rq;
+    if(arrayp(vi->download))
+      foreach(vi->download;; string u)
+      {
+        rq = Protocols.HTTP.get_url_nice(u);
+        if(rq) break;  
+      }
+    else
+      rq = Protocols.HTTP.get_url_nice(vi->download);
     if(!rq) 
       exit(1, "download error: unable to access download url\n");
     else
@@ -294,7 +302,15 @@ void do_install(string name, string|void version)
     cd(builddir);
 
     write("beginning download of version %s...\n", vi->version);
-    array rq = Protocols.HTTP.get_url_nice(vi->download);
+    array rq;
+    if(arrayp(vi->download))
+      foreach(vi->download;; string u)
+      {
+        rq = Protocols.HTTP.get_url_nice(u);
+        if(rq) break;  
+      }
+    else
+      rq = Protocols.HTTP.get_url_nice(vi->download);
     if(!rq) 
       exit(1, "download error: unable to access download url\n");
     else
