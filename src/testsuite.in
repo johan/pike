@@ -11351,6 +11351,7 @@ test_equal(indices(class {class A {int f(){}} class B {local inherit A;} class C
 test_equal(indices(class {class A {int f(){}} class B {inline inherit A;} class C {inherit B;}}()->C()), ({"f"}))
 
 test_any([[
+#pike 7.6
   class Y {
     static object x = class X {}();
   };
