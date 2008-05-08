@@ -5950,13 +5950,13 @@ static struct pike_type *lower_new_check_call(struct pike_type *fun_type,
     }
 #endif /* PIKE_DEBUG */
     /* No need to parform advanced checking in the trivial case... */
-    if (arg_type != fun_type->car) {
+    if (arg_type != (tmp2 = fun_type->car)) {
       if ((flags & CALL_7_6) && (arg_type == void_type_string)) {
 	/* Compat with Pike 7.6 and earlier. */
 	arg_type = zero_type_string;
       }
 
-      if (!low_pike_types_le(arg_type, tmp2 = fun_type->car, 0, 0) &&
+      if (!low_pike_types_le(arg_type, tmp2, 0, 0) &&
 	  ((flags & CALL_STRICT) ||
 	   !low_match_types(arg_type, tmp2, NO_SHORTCUTS))) {
       /* No match. */
