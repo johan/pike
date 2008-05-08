@@ -801,8 +801,8 @@ test_compile_any([[
 test_compile_warning([[
   #pragma strict_types
   // NB: This case used to leak the type function(:string).
-  string x (string s) {return s;}
-  void y (string|int s) {x (s);}
+  string x (string s) {return s;};
+  void y (string|int s) {x (s);};
 ]])
 
 cond( [[ master()->resolv("Pike")->Security ]],[[
