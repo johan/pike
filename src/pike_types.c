@@ -5949,18 +5949,26 @@ static struct pike_type *lower_new_check_call(struct pike_type *fun_type,
       fprintf(stderr, ".\n");
     }
 #endif /* PIKE_DEBUG */
-    if (!low_pike_types_le(arg_type, tmp2 = fun_type->car, 0, 0) &&
-	((flags & CALL_STRICT) ||
- 	 !low_match_types(arg_type, tmp2, NO_SHORTCUTS))) {
+    /* No need to parform advanced checking in the trivial case... */
+    if (arg_type != fun_type->car) {
+      if ((flags & CALL_7_6) && (arg_type == void_type_string)) {
+	/* Compat with Pike 7.6 and earlier. */
+	arg_type = zero_type_string;
+      }
+
+      if (!low_pike_types_le(arg_type, tmp2 = fun_type->car, 0, 0) &&
+	  ((flags & CALL_STRICT) ||
+	   !low_match_types(arg_type, tmp2, NO_SHORTCUTS))) {
       /* No match. */
 #ifdef PIKE_DEBUG
-      if (l_flag>2) {
-	fprintf(stderr, "%*sNo match.\n", indent*2+2, "");
-      }
+	if (l_flag>2) {
+	  fprintf(stderr, "%*sNo match.\n", indent*2+2, "");
+	}
 #endif /* PIKE_DEBUG */
-      res = NULL;
-      if (tmp) free_type(tmp);
-      break;
+	res = NULL;
+	if (tmp) free_type(tmp);
+	break;
+      }
     }
     /* Match. */
     if (fun_type->type == PIKE_T_FUNCTION) {
@@ -6116,6 +6124,7 @@ struct pike_type *low_new_check_call(struct pike_type *fun_type,
     }
     if (!(tmp2 = low_new_check_call(fun_type, arg_type->cdr, flags, sval))) {
       if (flags & CALL_STRICT) {
+	free_type(tmp);
 	return NULL;
       }
       return tmp;
