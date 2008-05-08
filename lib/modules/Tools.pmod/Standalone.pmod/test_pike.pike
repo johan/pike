@@ -847,7 +847,7 @@ int main(int argc, array(string) argv)
 	    break;
 	  }
 	}
-	string linetester="int __cpp_line=__LINE__; int __rtl_line=[int]backtrace()[-1][1];\n";
+	string linetester="int __cpp_line=__LINE__; int __rtl_line=([array(array(int))]backtrace())[-1][1];\n";
 
 	string to_compile = test + linetester + widener;
 
@@ -1153,6 +1153,9 @@ int main(int argc, array(string) argv)
 		  }
 		}
 	      }
+#if constant(_dump_program_tables)
+	      _dump_program_tables(object_program(o));
+#endif
 	    }
 	    else {
 	      successes++;
