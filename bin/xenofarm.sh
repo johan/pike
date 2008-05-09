@@ -33,13 +33,14 @@ xenofarm_build() {
 xenofarm_post_build() {
   POST_RESULT=0
   log_start features
-  bin/pike -x features > xenofarm_result/features.txt 2>/dev/null
+  bin/pike -x features > xenofarm_result/features.txt 2>&1
   log_end $?
-  [ $LASTERR = 0 ] || return 1
+  [ $LASTERR = 0 ] || POST_RESULT=$LASTERR
+
   log_start benchmark
   $MAKE benchmark > xenofarm_result/benchmark.txt 2>&1
   log_end $?
-  POST_RESULT=$LASTERR
+  [ $LASTERR = 0 ] || POST_RESULT=$LASTERR
 
   log_start verify
   # Note: verify and valgrind_verify perform the same actions
