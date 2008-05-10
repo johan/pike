@@ -1891,6 +1891,14 @@ int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
       apply_array(s->u.array,args);
       break;
 
+    case PIKE_T_TYPE:
+      if (args != 1) {
+	/* FIXME: Casts to object ought to propagate to apply program below. */
+	SIMPLE_WRONG_NUM_ARGS_ERROR("cast", 1);
+      }
+      o_cast(s->u.type, compile_type_to_runtime_type(s->u.type));
+      break;
+
     case T_PROGRAM:
       if(Pike_interpreter.trace_level)
       {
