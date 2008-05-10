@@ -1405,7 +1405,9 @@ void ins_short(int i, void (*func)(char tmp))
   }
 }
 
-#ifdef PIKE_DEBUG
+#if 0
+/* This check is not possible to do since the identifier is added
+ * before checking for duplicates in add_constant. */
 static void debug_add_to_identifiers (struct identifier id)
 {
   if (d_flag) {
