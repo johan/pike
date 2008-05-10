@@ -1153,7 +1153,7 @@ int main(int argc, array(string) argv)
 		  }
 		}
 	      }
-#if constant(_dump_program_tables)
+#if 0 && constant(_dump_program_tables)
 	      _dump_program_tables(object_program(o));
 #endif
 	    }
