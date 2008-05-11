@@ -7075,10 +7075,10 @@ PMOD_EXPORT void f__memory_usage(INT32 args)
 
 #ifdef DEBUG_MALLOC
   {
-    extern void count_memory_in_memory_maps(INT32*, INT32*);
-    extern void count_memory_in_memory_map_entrys(INT32*, INT32*);
-    extern void count_memory_in_memlocs(INT32*, INT32*);
-    extern void count_memory_in_memhdrs(INT32*, INT32*);
+    extern void count_memory_in_memory_maps(size_t*, size_t*);
+    extern void count_memory_in_memory_map_entrys(size_t*, size_t*);
+    extern void count_memory_in_memlocs(size_t*, size_t*);
+    extern void count_memory_in_memhdrs(size_t*, size_t*);
 
     count_memory_in_memory_maps(&num, &size);
     push_text("num_memory_maps");
