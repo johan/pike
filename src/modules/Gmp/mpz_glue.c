@@ -2151,8 +2151,8 @@ static void exit_mpz_glue(struct object *o)
 
 static void gc_recurse_mpz (struct object *o)
 {
-  if (Pike_in_gc == GC_PASS_COUNT_MEMORY)
-    gc_counted_bytes +=
+  if (mc_count_bytes (o))
+    mc_counted_bytes +=
 #ifdef MPZ_T_HAS__MP_ALLOC
       THIS[0]._mp_alloc * sizeof (mp_limb_t) +
 #else

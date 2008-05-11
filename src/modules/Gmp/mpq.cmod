@@ -940,8 +940,8 @@ PIKECLASS mpq
 
   GC_RECURSE
   {
-    if (Pike_in_gc == GC_PASS_COUNT_MEMORY)
-      gc_counted_bytes +=
+    if (mc_count_bytes (THIS))
+      mc_counted_bytes +=
 #ifdef MPZ_T_HAS__MP_ALLOC
 	mpq_numref (THISMPQ)[0]._mp_alloc * sizeof (mp_limb_t) +
 	mpq_denref (THISMPQ)[0]._mp_alloc * sizeof (mp_limb_t) +
