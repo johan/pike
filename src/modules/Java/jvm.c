@@ -3408,8 +3408,12 @@ static void f_create(INT32 args)
 
   /* load and initialize a Java VM, return a JNI interface 
    * pointer in env */
-  if(JNI_CreateJavaVM(&j->jvm, (void**)&j->env, &j->vm_args))
-    Pike_error( "Failed to create virtual machine\n" );
+  {
+    union {JNIEnv **envp; void **vp;} p_cnv; /* To avoid aliasing. */
+    p_cnv.envp = &j->env;
+    if(JNI_CreateJavaVM(&j->jvm, p_cnv.vp, &j->vm_args))
+      Pike_error( "Failed to create virtual machine\n" );
+  }
 
   /* Java tries to be a wiseguy with the locale... */
 #ifdef HAVE_SETLOCALE
