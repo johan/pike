@@ -2007,7 +2007,7 @@ void low_return(void)
   struct svalue *save_sp = Pike_fp->save_sp;
   int trace_level = Pike_interpreter.trace_level;
   struct object *o;
-  int fun = 0;
+  int fun;
 
   if (trace_level > 1) {
     o = Pike_fp->current_object;
