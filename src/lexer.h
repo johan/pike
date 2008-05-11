@@ -826,7 +826,7 @@ static int low_yylex(struct lex *lex, YYSTYPE *yylval)
 	sval.u.integer = 0;
 	wide_string_to_svalue_inumber(&sval,
 				      lex->pos,
-				      (void **)&lex->pos,
+				      &lex->pos,
 				      base,
 				      0,
 				      SHIFT);
@@ -842,7 +842,7 @@ static int low_yylex(struct lex *lex, YYSTYPE *yylval)
     {
       char *p1, *p2;
       double f;
-      long l = 0;
+      long l = 0;		/* GCC thinks l is unitialized here. Hmm..? */
       struct svalue sval;
 
       lex->pos -= (1<<SHIFT);
