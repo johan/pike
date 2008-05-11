@@ -168,16 +168,17 @@ PMOD_EXPORT SearchMojt compile_memsearcher(PCHARP needle,
 {
   switch(needle.shift)
   {
+    default:
+#ifdef PIKE_DEBUG
+      Pike_fatal("Illegal shift\n");
     case 0:
+#endif
       return compile_memsearcher0((p_wchar0*)needle.ptr, needlelen, max_haystacklen,hashkey);
     case 1:
       return compile_memsearcher1((p_wchar1*)needle.ptr, needlelen, max_haystacklen,hashkey);
     case 2:
       return compile_memsearcher2((p_wchar2*)needle.ptr, needlelen, max_haystacklen,hashkey);
   }
-#ifdef PIKE_DEBUG
-  Pike_fatal("Illegal shift\n");
-#endif
   /* NOTREACHED */
 }
 
