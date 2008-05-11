@@ -3847,7 +3847,7 @@ static void visit_multiset_data (struct multiset_data *msd, int action,
   }
 }
 
-void visit_multiset (struct multiset *l, int action)
+PMOD_EXPORT void visit_multiset (struct multiset *l, int action)
 {
   switch (action) {
 #ifdef PIKE_DEBUG

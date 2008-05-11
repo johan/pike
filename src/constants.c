@@ -190,7 +190,7 @@ PMOD_EXPORT struct callable *quick_add_efun(const char *name, ptrdiff_t name_len
   return ret;
 }
 
-void visit_callable (struct callable *c, int action)
+PMOD_EXPORT void visit_callable (struct callable *c, int action)
 {
   switch (action) {
 #ifdef PIKE_DEBUG

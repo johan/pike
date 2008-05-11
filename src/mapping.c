@@ -2347,7 +2347,7 @@ static void visit_mapping_data (struct mapping_data *md, int action,
   }
 }
 
-void visit_mapping (struct mapping *m, int action)
+PMOD_EXPORT void visit_mapping (struct mapping *m, int action)
 {
   switch (action) {
 #ifdef PIKE_DEBUG

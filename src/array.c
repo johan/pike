@@ -2595,7 +2595,7 @@ void check_all_arrays(void)
 #endif /* PIKE_DEBUG */
 
 
-void visit_array (struct array *a, int action)
+PMOD_EXPORT void visit_array (struct array *a, int action)
 {
   switch (action) {
 #ifdef PIKE_DEBUG

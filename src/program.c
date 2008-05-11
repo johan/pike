@@ -9416,7 +9416,7 @@ void cleanup_program(void)
 }
 
 
-void visit_program (struct program *p, int action)
+PMOD_EXPORT void visit_program (struct program *p, int action)
 {
   switch (action) {
 #ifdef PIKE_DEBUG

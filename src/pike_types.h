@@ -275,7 +275,7 @@ struct pike_type *object_type_to_program_type(struct pike_type *obj_t);
 PMOD_EXPORT char *get_name_of_type(TYPE_T t);
 void cleanup_pike_types(void);
 void cleanup_pike_type_table(void);
-void visit_type (struct pike_type *t, int action);
+PMOD_EXPORT void visit_type (struct pike_type *t, int action);
 void gc_mark_type_as_referenced(struct pike_type *t);
 void gc_check_type (struct pike_type *t);
 void gc_check_all_types (void);

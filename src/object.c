@@ -1822,7 +1822,7 @@ PMOD_EXPORT struct array *object_values(struct object *o)
 }
 
 
-void visit_object (struct object *o, int action)
+PMOD_EXPORT void visit_object (struct object *o, int action)
 {
   struct program *p = o->prog;
 

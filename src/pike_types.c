@@ -7837,7 +7837,7 @@ void cleanup_pike_type_table(void)
 #endif /* DO_PIKE_CLEANUP */
 }
 
-void visit_type (struct pike_type *t, int action)
+PMOD_EXPORT void visit_type (struct pike_type *t, int action)
 {
   switch (action) {
 #ifdef PIKE_DEBUG
