@@ -2994,7 +2994,7 @@ static LOCATION low_dynamic_location(char type, const char *file, int line)
 {
   struct dmalloc_string **prev, *str;
   int len=strlen(file);
-  unsigned long h,hval=hashmem(file,len,64)+line;
+  unsigned long h,hval=hashmem((const unsigned char *) file,len,64)+line;
   h=hval % DSTRHSIZE;
 
   mt_lock(&debug_malloc_mutex);
