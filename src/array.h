@@ -192,6 +192,7 @@ void array_replace(struct array *a,
 PMOD_EXPORT void check_array(struct array *a);
 void check_all_arrays(void);
 #endif
+void visit_array (struct array *a, int action);
 void gc_mark_array_as_referenced(struct array *a);
 void real_gc_cycle_check_array(struct array *a, int weak);
 unsigned gc_touch_all_arrays(void);
@@ -211,6 +212,9 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
 
 #define array_get_flags(a) ((a)->flags)
 
+#define visit_array_ref(A, REF_TYPE)					\
+  visit_ref (pass_array (A), (REF_TYPE),				\
+	     (visit_thing_fn *) &visit_array, NULL)
 #define gc_cycle_check_array(X, WEAK) \
   gc_cycle_enqueue((gc_cycle_check_cb *) real_gc_cycle_check_array, (X), (WEAK))
 

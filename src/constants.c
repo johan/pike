@@ -16,6 +16,8 @@
 #include "mapping.h"
 #include "pike_error.h"
 #include "pike_security.h"
+#include "gc.h"
+
 #include "block_alloc.h"
 
 struct mapping *builtin_constants = 0;
@@ -186,6 +188,30 @@ PMOD_EXPORT struct callable *quick_add_efun(const char *name, ptrdiff_t name_len
   free_svalue(&s);
   free_string(n);
   return ret;
+}
+
+void visit_callable (struct callable *c, int action)
+{
+  switch (action) {
+#ifdef PIKE_DEBUG
+    default:
+      Pike_fatal ("Unknown visit action %d.\n", action);
+    case VISIT_NORMAL:
+    case VISIT_COMPLEX_ONLY:
+      break;
+#endif
+    case VISIT_COUNT_BYTES:
+      mc_counted_bytes += sizeof (struct callable);
+      break;
+  }
+
+  if (!(action & VISIT_COMPLEX_ONLY)) {
+    visit_type_ref (c->type, REF_TYPE_NORMAL);
+    visit_string_ref (c->name, REF_TYPE_NORMAL);
+  }
+
+  /* Looks like the c->prog isn't refcounted..? */
+  /* visit_program_ref (c->prog, REF_TYPE_NORMAL); */
 }
 
 #ifdef PIKE_DEBUG

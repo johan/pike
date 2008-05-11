@@ -429,6 +429,7 @@ struct multiset *copy_multiset_recursively (struct multiset *l,
 					    struct mapping *p);
 PMOD_EXPORT ptrdiff_t multiset_get_nth (struct multiset *l, size_t n);
 
+void visit_multiset (struct multiset *l, int action);
 unsigned gc_touch_all_multisets (void);
 void gc_check_all_multisets (void);
 void gc_mark_multiset_as_referenced (struct multiset *l);
@@ -437,6 +438,10 @@ void gc_zap_ext_weak_refs_in_multisets (void);
 void real_gc_cycle_check_multiset (struct multiset *l, int weak);
 void gc_cycle_check_all_multisets (void);
 size_t gc_free_all_unreferenced_multisets (void);
+
+#define visit_multiset_ref(L, REF_TYPE)				\
+  visit_ref (pass_multiset (L), (REF_TYPE),			\
+	     (visit_thing_fn *) &visit_multiset, NULL)
 #define gc_cycle_check_multiset(X, WEAK) \
   gc_cycle_enqueue ((gc_cycle_check_cb *) real_gc_cycle_check_multiset, (X), (WEAK))
 

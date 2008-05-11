@@ -275,6 +275,7 @@ struct pike_type *object_type_to_program_type(struct pike_type *obj_t);
 PMOD_EXPORT char *get_name_of_type(TYPE_T t);
 void cleanup_pike_types(void);
 void cleanup_pike_type_table(void);
+void visit_type (struct pike_type *t, int action);
 void gc_mark_type_as_referenced(struct pike_type *t);
 void gc_check_type (struct pike_type *t);
 void gc_check_all_types (void);
@@ -288,6 +289,10 @@ int pike_type_allow_premature_toss(struct pike_type *type);
 void register_attribute_handler(struct pike_string *attr,
 				struct svalue *handler);
 /* Prototypes end here */
+
+#define visit_type_ref(T, REF_TYPE)				\
+  visit_ref (pass_type (T), (REF_TYPE),				\
+	     (visit_thing_fn *) &visit_type, NULL)
 
 #if 0 /* FIXME: Not supported under USE_PIKE_TYPE yet. */
 /* "Dynamic types" - use with ADD_FUNCTION_DTYPE */

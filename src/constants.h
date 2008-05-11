@@ -75,10 +75,14 @@ PMOD_EXPORT struct callable *quick_add_efun(const char *name, ptrdiff_t name_len
 					    int flags,
 					    optimize_fun optimize,
 					    docode_fun docode);
+void visit_callable (struct callable *c, int action);
 void init_builtin_constants(void);
 void exit_builtin_constants(void);
 /* Prototypes end here */
 
+#define visit_callable_ref(C, REF_TYPE)				\
+  visit_ref (pass_callable (C), (REF_TYPE),			\
+	     (visit_thing_fn *) &visit_callable, NULL)
 
 #include "pike_macros.h"
 

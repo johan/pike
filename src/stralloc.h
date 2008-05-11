@@ -330,6 +330,7 @@ PMOD_EXPORT struct pike_string *string_replace(struct pike_string *str,
 void init_shared_string_table(void);
 void cleanup_shared_string_table(void);
 void count_memory_in_strings(size_t *num, size_t *size);
+void visit_string (struct pike_string *s, int action);
 void gc_mark_string_as_referenced (struct pike_string *s);
 unsigned gc_touch_all_strings(void);
 void gc_mark_all_strings(void);
@@ -414,6 +415,10 @@ static INLINE void string_builder_binary_strcat(struct string_builder *s,
 }
 
 #define ISCONSTSTR(X,Y) c_compare_string((X),Y,sizeof(Y)-sizeof(""))
+
+#define visit_string_ref(S, REF_TYPE)				\
+  visit_ref (pass_string (S), (REF_TYPE),			\
+	     (visit_thing_fn *) &visit_string, NULL)
 
 #ifdef DEBUG_MALLOC
 #define make_shared_string(X) \

@@ -905,6 +905,7 @@ void check_all_programs(void);
 void placeholder_index(INT32 args);
 void init_program(void);
 void cleanup_program(void);
+void visit_program (struct program *p, int action);
 void gc_mark_program_as_referenced(struct program *p);
 void real_gc_cycle_check_program(struct program *p, int weak);
 unsigned gc_touch_all_programs(void);
@@ -1009,6 +1010,9 @@ void count_memory_in_programs(size_t *, size_t *);
 
 #define start_new_program() debug_start_new_program(__LINE__,__FILE__)
 
+#define visit_program_ref(P, REF_TYPE)				\
+  visit_ref (pass_program (P), (REF_TYPE),			\
+	     (visit_thing_fn *) &visit_program, NULL)
 #define gc_cycle_check_program(X, WEAK) \
   gc_cycle_enqueue((gc_cycle_check_cb *) real_gc_cycle_check_program, (X), (WEAK))
 
