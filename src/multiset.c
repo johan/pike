@@ -145,8 +145,13 @@ PMOD_EXPORT const char msg_multiset_no_node_refs[] =
    ((MSD_B)->cmp_less.type != T_INT &&					\
     is_identical (&(MSD_A)->cmp_less, &(MSD_B)->cmp_less)))
 
+union nodeptr {
+  union msnode *ms;
+  struct rb_node_hdr *rb;
+};
+
 #define HDR(NODE) ((struct rb_node_hdr *) msnode_check (NODE))
-#define PHDR(NODEPTR) ((struct rb_node_hdr **) msnode_ptr_check (NODEPTR))
+#define PHDR(NODEPTR) (&((union nodeptr *) msnode_ptr_check (NODEPTR))->rb)
 #define RBNODE(NODE) ((union msnode *) rb_node_check (NODE))
 #define INODE(NODE) ((union msnode *) msnode_ind_check (NODE))
 #define IVNODE(NODE) ((union msnode *) msnode_indval_check (NODE))
