@@ -611,7 +611,7 @@ static void emit_range (node *n DO_IF_DEBUG (COMMA int num_args))
 {
   struct compilation *c = THIS_COMPILATION;
   node *low = CADR (n), *high = CDDR (n);
-  int bound_types;
+  int bound_types;		/* Got bogus gcc warning here. */
 
   switch (low->token) {
     case F_RANGE_FROM_BEG: bound_types = RANGE_LOW_FROM_BEG; break;

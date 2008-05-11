@@ -2006,8 +2006,8 @@ void low_return(void)
 {
   struct svalue *save_sp = Pike_fp->save_sp;
   int trace_level = Pike_interpreter.trace_level;
-  struct object *o;
-  int fun;
+  struct object *o;		/* Got bogus gcc warning here. */
+  int fun;			/* Got bogus gcc warning here. */
 
   if (trace_level > 1) {
     o = Pike_fp->current_object;

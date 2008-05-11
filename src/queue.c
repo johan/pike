@@ -16,6 +16,11 @@ struct queue_entry
   void *data;
 };
 
+/* FIXME: Add a way to keep the first block even when the queue
+ * becomes empty. In e.g. the gc the queue becomes empty very
+ * frequently which causes the first block to be freed and allocated a
+ * lot. */
+
 #define QUEUE_ENTRIES 8191
 
 struct queue_block
