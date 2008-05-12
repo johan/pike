@@ -384,7 +384,7 @@ PMOD_EXPORT void simple_set_index(struct array *a,struct svalue *ind,struct sval
 }
 
 /**
- * Insert an svalue into an array and grow the array if nessesary.
+ * Insert an svalue into an array and grow the array if necessary.
  */
 PMOD_EXPORT struct array *array_insert(struct array *v,struct svalue *s,INT32 index)
 {
@@ -418,9 +418,21 @@ PMOD_EXPORT struct array *array_insert(struct array *v,struct svalue *s,INT32 in
     ret->type_field = v->type_field;
 
     MEMCPY(ITEM(ret), ITEM(v), sizeof(struct svalue) * index);
-    MEMCPY(ITEM(ret)+index+1, ITEM(v)+index, sizeof(struct svalue) * (v->size-index));
+    MEMCPY(ITEM(ret)+index+1, ITEM(v)+index,
+	   sizeof(struct svalue) * (v->size-index));
     assert_free_svalue (ITEM(ret) + index);
-    v->size=0;
+    if (v->refs == 1) {
+      /* Optimization: Steal the references. */
+      v->size = 0;
+    } else if (v->type_field & BIT_REF_TYPES) {
+      /* Adjust the references. */
+      int e = v->size;
+      struct svalue *s = ITEM(ret);
+      while (e--) {
+	if (s->type <= MAX_REF_TYPE) add_ref(s->u.dummy);
+	s++;
+      }
+    }
     free_array(v);
     v=ret;
   }
