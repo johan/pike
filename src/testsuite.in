@@ -328,6 +328,17 @@ test_any([[
   return sizeof(tmp[0]);
 ]], 0)
 
+test_any([[
+  // Bug 4537.
+  void fiddle(array(int) a)
+  {
+    a += ({ 2 });
+  };
+
+  array(int) a = ({ 1 });
+  fiddle(a);
+  return sizeof(a);
+]], 1)
 
 test_any([[int a=0xffffffff; return a+17]], 0x100000010);
 test_any([[int a=0xffffffff; return a-17]], 0xffffffee);
