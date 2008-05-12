@@ -588,9 +588,9 @@ static void socket_query_address(INT32 args)
     buffer[sizeof(buffer)-20]=0;
   }else{
 #ifdef EAFNOSUPPORT
-    ERRNO=EAFNOSUPPORT;
+    THIS->my_errno = EAFNOSUPPORT;
 #else
-    ERRNO=EINVAL;
+    THIS->my_errno = EINVAL;
 #endif
     push_int(0);
     return;
