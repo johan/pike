@@ -3822,7 +3822,11 @@ static void file_connect(INT32 args)
  *!   @expr{"x:x:x:x:x:x:x:x port"@} (IPv6).
  *!
  *!   If this file is not a socket, is not connected, or some other
- *!   error occurrs, @expr{0@} (zero) is returned.
+ *!   error occurs, @expr{0@} (zero) is returned and @[errno()] will
+ *!   return the error code.
+ *!
+ *! @throws
+ *!   An error is thrown if the socket (or file) isn't open.
  *!
  *! @seealso
  *!   @[connect()]
@@ -3831,7 +3835,7 @@ static void file_query_address(INT32 args)
 {
   PIKE_SOCKADDR addr;
   int i;
-  char buffer[496],*q;
+  char buffer[496];
   /* XOPEN GROUP thinks this variable should be a size_t.
    * BSD thinks it should be an int.
    */
@@ -3854,6 +3858,7 @@ static void file_query_address(INT32 args)
     push_int(0);
     return;
   }
+
 #ifdef HAVE_INET_NTOP
   if(!inet_ntop(SOCKADDR_FAMILY(addr), SOCKADDR_IN_ADDR(addr),
 		buffer, sizeof(buffer)-20))
@@ -3865,7 +3870,7 @@ static void file_query_address(INT32 args)
 #else
   if(SOCKADDR_FAMILY(addr) == AF_INET)
   {
-    q=inet_ntoa(*SOCKADDR_IN_ADDR(addr));
+    char *q = inet_ntoa(*SOCKADDR_IN_ADDR(addr));
     strncpy(buffer,q,sizeof(buffer)-20);
     buffer[sizeof(buffer)-20]=0;
   }else{
