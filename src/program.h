@@ -205,6 +205,13 @@ union idptr
     unsigned short id;		/* Reference number. */
   } ext_ref;
 
+  /* Getter/setter reference pair. (IDENTIFIER_VARIABLE && PIKE_T_GET_SET)
+   */
+  struct {
+    INT16 getter;		/* Reference to getter. */
+    INT16 setter;		/* Reference to setter. */
+  } gs_info;
+
   /* C function pointer. (IDENTIFIER_C_FUNCTION) */
   void (*c_fun)(INT32);
 

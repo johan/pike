@@ -737,7 +737,7 @@ static void emit_multi_assign(node *vals, node *vars, int no)
 		     id->run_time_type);
 	}
 #endif /* PIKE_DEBUG */
-	f = ((INT32 *)(inh->prog->program + id->func.offset))[1];
+	f = id->func.gs_info.setter;
 	if (f == -1) {
 	  yywarning("Variable %S lacks a setter.", id->name);
 	} else if (!level) {
@@ -891,7 +891,7 @@ static int do_docode2(node *n, int flags)
 		       id->run_time_type);
 	  }
 #endif /* PIKE_DEBUG */
-	  f = ((INT32 *)(inh->prog->program + id->func.offset))[0];
+	  f = id->func.gs_info.getter;
 	  if (f == -1) {
 	    yywarning("Variable %S lacks a getter.", id->name);
 	  } else if (!level) {
@@ -1260,7 +1260,7 @@ static int do_docode2(node *n, int flags)
 	  }
 	}
       }
-
+      /* FALL_THROUGH */
     default:
       switch(CDR(n)->token)
       {
@@ -1324,7 +1324,7 @@ static int do_docode2(node *n, int flags)
 			   id->run_time_type);
 	      }
 #endif /* PIKE_DEBUG */
-	      f = ((INT32 *)(inh->prog->program + id->func.offset))[1];
+	      f = id->func.gs_info.setter;
 	      if (f == -1) {
 		yywarning("Variable %S lacks a setter.", id->name);
 	      } else if (!level) {

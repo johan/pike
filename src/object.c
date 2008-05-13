@@ -1171,8 +1171,7 @@ PMOD_EXPORT void low_object_index_no_free(struct svalue *to,
   case IDENTIFIER_VARIABLE:
     if (i->run_time_type == PIKE_T_GET_SET) {
       struct reference *ref = p->identifier_references + f;
-      struct program *pp = p->inherits[ref->inherit_offset].prog;
-      int fun = ((INT32 *)(pp->program + i->func.offset))[0];
+      int fun = i->func.gs_info.getter;
       if (fun >= 0) {
 	DECLARE_CYCLIC();
 	fun += p->inherits[ref->inherit_offset].identifier_level;
@@ -1440,7 +1439,7 @@ PMOD_EXPORT void object_low_set_index(struct object *o,
     /* Getter/setter type variable. */
     struct reference *ref = p->identifier_references + f;
     struct program *pp = p->inherits[ref->inherit_offset].prog;
-    int fun = ((INT32 *)(pp->program + i->func.offset))[1];
+    int fun = i->func.gs_info.setter;
     if (fun >= 0) {
       DECLARE_CYCLIC();
       fun += p->inherits[ref->inherit_offset].identifier_level;
