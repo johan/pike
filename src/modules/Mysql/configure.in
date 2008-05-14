@@ -87,7 +87,7 @@ else
       pike_cv_mysql_include_dir="no"
       for incdir in include/mysql include; do
         if test -d "$pike_cv_mysql_lib_dir_prefix/$incdir/."; then
-          $pike_cv_mysql_include_dir="$pike_cv_mysql_lib_dir_prefix/$incdir"
+          pike_cv_mysql_include_dir="$pike_cv_mysql_lib_dir_prefix/$incdir"
 	  break
         fi
       done
