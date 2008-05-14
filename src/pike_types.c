@@ -6211,14 +6211,16 @@ struct pike_type *low_new_check_call(struct pike_type *fun_type,
      */
 
   case T_OR:
-    if (!(tmp = low_new_check_call(fun_type, arg_type->car, flags, sval))) {
+    if (!(tmp = low_new_check_call(fun_type, arg_type->car,
+				   flags | CALL_WEAK_VOID, sval))) {
       if (flags & CALL_STRICT) {
 	return NULL;
       }
       arg_type = arg_type->cdr;
       goto loop;
     }
-    if (!(tmp2 = low_new_check_call(fun_type, arg_type->cdr, flags, sval))) {
+    if (!(tmp2 = low_new_check_call(fun_type, arg_type->cdr,
+				    flags | CALL_WEAK_VOID, sval))) {
       if (flags & CALL_STRICT) {
 	free_type(tmp);
 	return NULL;
@@ -6231,10 +6233,12 @@ struct pike_type *low_new_check_call(struct pike_type *fun_type,
     return res;
 
   case T_AND:
-    if (!(tmp = low_new_check_call(fun_type, arg_type->car, flags, sval))) {
+    if (!(tmp = low_new_check_call(fun_type, arg_type->car,
+				   flags & ~CALL_WEAK_VOID, sval))) {
       return NULL;
     }
-    if (!(tmp2 = low_new_check_call(fun_type, arg_type->cdr, flags, sval))) {
+    if (!(tmp2 = low_new_check_call(fun_type, arg_type->cdr,
+				    flags & ~CALL_WEAK_VOID, sval))) {
       free_type(tmp);
       return NULL;
     }
@@ -6245,13 +6249,17 @@ struct pike_type *low_new_check_call(struct pike_type *fun_type,
 
   case T_VOID:
     if (!(flags & CALL_7_6)) {
+      if ((flags & (CALL_WEAK_VOID|CALL_STRICT)) == CALL_STRICT) {
+	return NULL;
+      }
       /* Promote void arguments to zero. */
       arg_type = zero_type_string;
     }
     break;
   }
 
-  if (!(tmp = lower_new_check_call(fun_type, arg_type, flags, sval
+  if (!(tmp = lower_new_check_call(fun_type, arg_type,
+				   flags & ~CALL_WEAK_VOID, sval
 #ifdef PIKE_TYPE_DEBUG
 				   , 0
 #endif
