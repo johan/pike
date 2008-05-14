@@ -4926,7 +4926,7 @@ int define_variable(struct pike_string *name,
 				   identifier_flags))
 	{
 	  my_yyerror("Illegal to redefine inherited symbol %S "
-		     "to a variable.", name);
+		     "as a variable.", name);
 	  return n;
 	}
 
