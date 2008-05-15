@@ -354,7 +354,9 @@ CHAROPT(							\
       }								\
 )								\
       continue;							\
-    }								\
+    } else if(cnt>=match_len)					\
+      Pike_error("Error in sscanf format string.\n");		\
+								\
     last=match[cnt];						\
     if(last < (size_t)sizeof(set->c))				\
       set->c[last]=1;						\
