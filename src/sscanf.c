@@ -313,7 +313,7 @@ static ptrdiff_t PIKE_CONCAT(read_set,SIZE) (			\
       Pike_error("Error in sscanf format string.\n");		\
   }								\
 								\
-  for(;match[cnt]!=']';cnt++)					\
+  for(;match[cnt]!=']';)					\
   {								\
     if(match[cnt]=='-')						\
     {								\
@@ -353,27 +353,28 @@ CHAROPT(							\
 	sp[-1].u.integer=match[cnt];				\
       }								\
 )								\
-      continue;							\
-    } else if(cnt>=match_len)					\
-      Pike_error("Error in sscanf format string.\n");		\
-								\
-    last=match[cnt];						\
-    if(last < (size_t)sizeof(set->c))				\
-      set->c[last]=1;						\
+    } else {							\
+      last=match[cnt];						\
+      if(last < (size_t)sizeof(set->c))				\
+        set->c[last]=1;						\
 CHAROPT(							\
-    else{							\
-      if(set_size &&						\
-	 ((size_t)sp[-1].u.integer) == last-1)			\
-      {								\
-	sp[-1].u.integer++;					\
-      }else{							\
-	check_stack(2);						\
-	push_int64(last);					\
-	push_int64(last);					\
-	set_size++;						\
+      else{							\
+        if(set_size &&						\
+	   ((size_t)sp[-1].u.integer) == last-1)		\
+        {							\
+	  sp[-1].u.integer++;					\
+        }else{							\
+	  check_stack(2);					\
+	  push_int64(last);					\
+	  push_int64(last);					\
+	  set_size++;						\
+        }							\
       }								\
+  )								\
     }								\
-)								\
+    cnt++;							\
+    if(cnt>=match_len)						\
+      Pike_error("Error in sscanf format string.\n");		\
   }								\
 								\
 CHAROPT(							\
