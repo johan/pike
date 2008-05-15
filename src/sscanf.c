@@ -1561,7 +1561,7 @@ INT32 low_sscanf(struct pike_string *data, struct pike_string *format)
  *!   @[sprintf], @[array_sscanf]
  *    @[parse_format]
  */
-void o_sscanf(INT32 args)
+void o_sscanf(INT32 args, INT32 flags)
 {
   INT32 i=0;
   int x;
