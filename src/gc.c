@@ -2252,10 +2252,9 @@ static void check_rec_stack (struct gc_rec_frame *p1, const char *p1n,
 			     struct gc_rec_frame *p2, const char *p2n,
 			     const char *file, int line)
 {
-#ifndef DEBUG_MALLOC
-  if (gc_debug)
-#endif
-  {
+  /* This debug check is disabled during the final cleanup since this
+   * is O(n^2) on the stack size, and the stack gets a lot larger then. */
+  if (gc_debug && !gc_destruct_everything) {
     struct gc_rec_frame *l, *last_cycle_id;
     for (l = &sentinel_frame; l != stack_top;) {
       l = l->next;
