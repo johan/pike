@@ -267,7 +267,7 @@ struct identifier
 {
   struct pike_string *name;
   struct pike_type *type;
-  struct pike_string *filename;
+  unsigned INT32 filename_strno;	/* Index in strings. */
   unsigned INT32 linenumber;
   unsigned INT8 identifier_flags;	/* IDENTIFIER_??? */
   unsigned INT8 run_time_type;		/* PIKE_T_??? */
