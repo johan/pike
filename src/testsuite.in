@@ -6943,6 +6943,9 @@ class Bar {
   return Bar()->foo()
 ]], "foobarbaz")
 
+test_equal( array_sscanf("^^;|", "%[^-|]%s"), ({ "^^", ";|" }) )
+test_any([[mixed a; sscanf("^^;|","%[^-|]",a); return a]],"^^")
+
 // sscanf %O -------------------------------------------------------------
 
 define(test_percent_o_raw, [[

@@ -9318,6 +9318,9 @@ void init_builtin_efuns(void)
 /* function(string,string:array) */
   ADD_EFUN("array_sscanf",f_sscanf,tFunc(tStr tStr,tArray),0);
 
+/* function(string,string:array) */
+  ADD_EFUN("array_sscanf_76",f_sscanf_76,tFunc(tStr tStr,tArray),0);
+
   /* Some Wide-string stuff */
   
 /* function(string:string(0..255)) */

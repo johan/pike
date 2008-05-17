@@ -8,8 +8,11 @@
 #ifndef SSCANF_H
 #define SSCANF_H
 
-INT32 low_sscanf(struct pike_string *data, struct pike_string *format);
+#define SSCANF_FLAG_76_COMPAT 0x1
+
+INT32 low_sscanf(struct pike_string *data, struct pike_string *format, INT32 flags);
 void o_sscanf(INT32 args, INT32 flags);
 PMOD_EXPORT void f_sscanf(INT32 args);
+void f_sscanf_76(INT32 args);
 
 #endif

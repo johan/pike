@@ -63,6 +63,7 @@ mapping(string:mixed) all_constants()
 
   ret->_describe_program = _describe_program;
   ret->sprintf = sprintf_76;
+  ret->array_sscanf = array_sscanf_76;
   ret->master = get_master_76;
   return ret;
 }
