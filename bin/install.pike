@@ -2358,7 +2358,7 @@ void dump_modules()
       error_msg ("Dumping of master.pike failed (not fatal)\n%s\n",
 		 describe_backtrace(error));
     if(retcode)
-      error_msg ("Dumping of master.pike failed (not fatal) (0x%08x)\n",
+      error_msg ("Dumping of master.pike failed (not fatal) (0x%:08x)\n",
 		 retcode);
   }
 
@@ -2414,7 +2414,7 @@ void dump_modules()
 			       delta_dump, options);
       int retcode=p->wait();
       if (retcode)
-	error_msg ("Dumping of some modules failed (not fatal) (0x%08x)\n",
+	error_msg ("Dumping of some modules failed (not fatal) (0x%:08x)\n",
 		   retcode);
     };
     if (err) {
