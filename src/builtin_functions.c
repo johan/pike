@@ -9316,10 +9316,18 @@ void init_builtin_efuns(void)
   ADD_EFUN2("zero_type",f_zero_type,tFunc(tMix,tInt01),0,0,generate_zero_type);
   
 /* function(string,string:array) */
-  ADD_EFUN("array_sscanf",f_sscanf,tFunc(tStr tStr,tArray),0);
+  ADD_EFUN("array_sscanf", f_sscanf,
+	   tFunc(tStr tAttr("sscanf_format", tStr),
+		 tArr(tAttr("sscanf_args", tMix))), 0);
 
 /* function(string,string:array) */
-  ADD_EFUN("array_sscanf_76",f_sscanf_76,tFunc(tStr tStr,tArray),0);
+  ADD_EFUN("array_sscanf_76", f_sscanf_76,
+	   tFunc(tStr tAttr("sscanf_76_format", tStr),
+		 tArr(tAttr("sscanf_args", tMix))), 0);
+
+  ADD_EFUN("__handle_sscanf_format", f___handle_sscanf_format,
+	   tFunc(tStr tStr tType(tMix) tType(tMix), tType(tMix)),
+	   0);
 
   /* Some Wide-string stuff */
   
