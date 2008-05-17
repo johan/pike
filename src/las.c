@@ -4108,9 +4108,9 @@ void fix_type_field(node *n)
 	!CADAR(n) || !CDDAR(n)) {
       yyerror("Too few arguments to sscanf().");
     } else {
-      check_node_type(CAAR(n), string_type_string,
+      check_node_type(CADAR(n), string_type_string,
 		      "Bad argument 1 to sscanf().");
-      check_node_type(CDAR(n), string_type_string,
+      check_node_type(CDDAR(n), string_type_string,
 		      "Bad argument 2 to sscanf().");
     }
     /* FIXME: */
