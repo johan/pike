@@ -4118,7 +4118,7 @@ void fix_type_field(node *n)
       }	
       args = mknode(F_ARG_LIST, CDAR(n), CDR(n));
       add_ref(CDAR(n));
-      add_ref(CDR(n));
+      if (CDR(n)) add_ref(CDR(n));
       sscanf_type = new_check_call(sscanf_name, sscanf_type, args, &argno, 0);
       free_node(args);
       if (sscanf_type) {
