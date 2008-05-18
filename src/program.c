@@ -10067,12 +10067,12 @@ int find_child(struct program *parent, struct program *child)
 
 void yywarning(char *fmt, ...)
 {
-  struct compilation *c = THIS_COMPILATION;
+  struct compilation *c = MAYBE_THIS_COMPILATION;
   struct string_builder s;
   struct pike_string *msg;
   va_list args;
 
-  CHECK_COMPILER();
+  if (!c) return;
 
   /* If we have parse errors we might get erroneous warnings,
    * so don't print them.

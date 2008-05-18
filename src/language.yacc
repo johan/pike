@@ -4392,8 +4392,10 @@ bad_expr_ident:
 
 void low_yyerror(struct pike_string *str)
 {
-  struct compilation *c = THIS_COMPILATION;
+  struct compilation *c = MAYBE_THIS_COMPILATION;
   extern int cumulative_parse_error;
+
+  if (!c) return;
 
   STACK_LEVEL_START(0);
 
