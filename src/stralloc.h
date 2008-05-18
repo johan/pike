@@ -475,5 +475,6 @@ static INLINE void string_builder_binary_strcat(struct string_builder *s,
 #undef CONVERT
 
 PMOD_EXPORT void f_sprintf(INT32 num_arg);
+void f___handle_sprintf_format(INT32 args);
 
 #endif /* STRALLOC_H */
