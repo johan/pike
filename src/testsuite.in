@@ -6741,7 +6741,7 @@ test_do(add_constant("test"))
 
 // sscanf
 test_any([[mixed a; return sscanf("11","%d",a)]],1)
-test_any([[mixed a; return sscanf("11","%*d",a)]],1)
+test_any([[return sscanf("11","%*d")]],1)
 test_any([[mixed a; return sscanf("11","_%d",a)]],0)
 test_any([[mixed a,b,c; return sscanf("11","%1d%1d%1d",a,b,c)]],2)
 
