@@ -1708,7 +1708,7 @@ static void push_sscanf_argument_types(PCHARP format, ptrdiff_t format_len,
 	    push_type(PIKE_T_ARRAY);
 	    push_type(PIKE_T_ARRAY);
 	  }
-	  cnt = e+2;
+	  cnt = e;
 	  break;
 	}
 
@@ -1799,8 +1799,9 @@ static void push_sscanf_argument_types(PCHARP format, ptrdiff_t format_len,
 	  break;
 
 	default:
-	  my_yyerror("Unknown sscanf token %%%c(0x%02x).",
-		     INDEX_PCHARP(format, cnt), INDEX_PCHARP(format, cnt));
+	  my_yyerror("Unknown sscanf token %%%c(0x%02x) at offset %d.",
+		     INDEX_PCHARP(format, cnt), INDEX_PCHARP(format, cnt),
+		     cnt-1);
 	  break;
       }
       break;
