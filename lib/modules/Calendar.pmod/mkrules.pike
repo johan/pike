@@ -676,7 +676,7 @@ void collect_rules(string file)
 	    }
 	    else if ((t="",sscanf(line,"%[ \t]",t),t==line))
 	       ;
-	    else if (sscanf(line,"%*[ \t]#%s",t,s)==2)
+	    else if (sscanf(line,"%*[ \t]#%s",t)==2)
 	       ;
 	    else
 	       complain("unknown keyword %O...\n",line[..10]);
