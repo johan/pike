@@ -1965,9 +1965,11 @@ void f___handle_sscanf_format(INT32 args)
       push_sscanf_argument_types(MKPCHARP(fmt->str, fmt->size_shift),
 				 fmt->len, 0, flags);
       /* Join the argument types. */
-      push_type(PIKE_T_ZERO);
-      for (fmt_count = pop_stack_mark(); fmt_count > 1; fmt_count--) {
+      if (!(fmt_count = pop_stack_mark())) {
+	push_type(PIKE_T_ZERO);
+      } else while (fmt_count > 2) {
 	push_type(T_OR);
+	fmt_count--;
       }
       while (array_cnt--) {
 	push_type(PIKE_T_ARRAY);
