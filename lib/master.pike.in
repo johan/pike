@@ -4158,7 +4158,7 @@ class Encoder
     }
 
     name = "r" + name;
-    string|array res = has_value (name, ".") ? name / "." : name;
+    string|array res = name;
 
     if (append)
       if (module_object) {
