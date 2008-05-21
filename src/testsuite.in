@@ -46,6 +46,15 @@ test_any([[class Bar { array(int) foo = ({}); };
 	   class Foo { inherit Bar; array(int) foo = ({1}); };
 	   return sizeof(Foo()->foo);]],1);
 
+test_eq([["(" + 0x7fffffff + ")"]], "(2147483647)")
+test_eq([["(" + -0x80000000 + ")"]], "(-2147483648)")
+cond(0x8000000000000000, [[
+  test_eq([["(" + 0x7fffffffffffffff + ")"]], "(9223372036854775807)")
+  test_eq([["(" + -0x8000000000000000 + ")"]], "(-9223372036854775808)")
+]])
+test_eq([["(" + Int.NATIVE_MAX + ")"]], [[sprintf ("(%d)", Int.NATIVE_MAX)]])
+test_eq([["(" + Int.NATIVE_MIN + ")"]], [[sprintf ("(%d)", Int.NATIVE_MIN)]])
+
 # __func__
 test_eq(__func__, "a")
 test_eq("b", __func__)
