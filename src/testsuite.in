@@ -6947,6 +6947,13 @@ class Bar {
 test_equal( array_sscanf("^^;|", "%[^-|]%s"), ({ "^^", ";|" }) )
 test_any([[mixed a; sscanf("^^;|","%[^-|]",a); return a]],"^^")
 
+test_any([[
+#pike 7.6
+  int foo;
+  sscanf ("11", "%s", foo);
+  return foo;
+]], "11")
+
 // sscanf %O -------------------------------------------------------------
 
 define(test_percent_o_raw, [[
