@@ -210,6 +210,7 @@ private class CommandSet {
 	e->warnings = 1;
 	e->strict_types = 0;
 	return;
+      case "off":
       default:
 	e->warnings = 0;
 	e->strict_types = 1;
@@ -2087,7 +2088,7 @@ class Evaluator {
   int(0..1) strict_types;
 
   //! Show warnings?
-  int(0..1) warnings;
+  int(0..1) warnings = 1;
 
   //! The current trace level.
   int trace_level;
@@ -2996,7 +2997,7 @@ warnings
     Change the current level of warnings checking. Possible
     values are:
        off     No warnings are shown.
-       on      Normal warnings are shown.
+       on      Normal warnings are shown (default).
        strict  Try a little harder to show warnings.
 ";
 
