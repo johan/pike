@@ -395,11 +395,11 @@ PMOD_EXPORT void f_add(INT32 args)
 	break;
 
       case T_INT:
-	size+=14;
+	size += (4 + (SIZEOF_INT_TYPE * 5 + 1) / 2);
 	break;
 
       case T_FLOAT:
-	size+=22;
+	size += (12 + (SIZEOF_FLOAT_TYPE * 5 + 1) / 2);
 	break;
       }
     }
