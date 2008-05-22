@@ -593,6 +593,15 @@ test_compile_error([[ float b=17.0; string a; a=b*42.0; ]])
 
 test_compile_error([[class F {inherit master()->dirnode;};]]);
 
+test_program_equal([[
+#pike 7.6
+  string a()
+  {
+    string|array(string) res = ({"spud"});
+    return res + ({});
+  }
+]], ({"spud"}))
+
 // Warnings
 
 test_compile_warning([[ int *a ]])
