@@ -974,8 +974,11 @@ int main(int argc, array(string) argv)
 
 	  at = gauge {
 	    err=catch {
-		// Is it intentional that compilation errors are
-		// considered success too? /mast
+	      // Is it intentional that compilation errors are
+	      // considered success too? /mast
+	      // Yes, apparently it is. There are tests that doesn't
+	      // care whether the error is catched during compilation
+	      // or evaluation. /mast
 	      a = compile_string(to_compile, testsuite)()->a();
 	    };
 	  };
