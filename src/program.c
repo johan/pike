@@ -3066,7 +3066,7 @@ void dump_program_tables (struct program *p, int indent)
     struct identifier *id = p->identifiers + d;
 
     fprintf(stderr,
-	    "%*s  %4d: %5x %6"PRINTPTRDIFFT"d %4d \"%s\"\n",
+	    "%*s  %4d: %5x %6"PRINTPTRDIFFT"d %4d \"%s\"\n"
 	    "%*s        %s:%d\n",
 	    indent, "",
 	    d, id->identifier_flags, id->func.offset,
