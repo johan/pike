@@ -1265,9 +1265,12 @@ multiset(string) get_supported_controls()
 //! @seealso
 //!   @[search]
 {
-  if (!supported_controls)
+  if (!supported_controls) {
     if (array(string) res = get_root_dse_attr ("supportedControl"))
       supported_controls = mkmultiset (res);
+    else
+      supported_controls = (<>);
+  }
   return supported_controls;
 }
 
