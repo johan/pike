@@ -921,10 +921,6 @@ TH_RETURN_TYPE new_thread_func(void *data)
   {
     if(throw_severity <= THROW_ERROR)
       call_handle_error();
-    if(throw_severity == THROW_EXIT)
-    {
-      pike_do_exit(throw_value.u.integer);
-    }
   } else {
     INT32 args=arg.args->size;
     back.severity=THROW_EXIT;
@@ -935,6 +931,8 @@ TH_RETURN_TYPE new_thread_func(void *data)
     /* copy return value to the arg.thread_state here */
     assign_svalue(&arg.thread_state->result, Pike_sp-1);
     pop_stack();
+
+    throw_severity = THROW_N_A;
   }
 
   UNSETJMP(back);
@@ -983,6 +981,11 @@ TH_RETURN_TYPE new_thread_func(void *data)
   fprintf (stderr, "Thread usage summary:\n");
   debug_print_rusage (stderr);
 #endif
+
+  if (throw_severity == THROW_EXIT)
+    /* Do this after all thread cleanup to avoid false alarms if using
+     * DO_PIKE_CLEANUP. */
+    pike_do_exit (throw_value.u.integer);
 
   /* FIXME: What about threads_disable? */
   mt_unlock_interpreter();
