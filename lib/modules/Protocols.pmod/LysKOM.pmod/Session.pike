@@ -1275,5 +1275,5 @@ void register_async_message_callback(function(int,int,string:void) cb)
 
 string _sprintf(int t)
 {
-  return t=='O' && sprintf("%O(%s)", this_program, server);
+  return t=='O' && sprintf("%O(%s)", this_program, server||"");
 }
