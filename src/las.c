@@ -3237,8 +3237,8 @@ void fix_type_field(node *n)
 	}
 	ref_push_type_value(CAR(n)->type);
 	ref_push_type_value(soft_type);
-	yytype_report(REPORT_ERROR, NULL, 0, NULL, NULL, 0, NULL, 2,
-		      "Soft cast of %O to %O isn't a valid cast.");
+	yytype_report(REPORT_ERROR, NULL, 0, NULL, NULL, 0, NULL,
+		      2, "Soft cast of %O to %O isn't a valid cast.");
       } else {
 	yytype_report(REPORT_ERROR, NULL, 0, type_type_string,
 		      NULL, 0, CDR(n)->type, 0,
@@ -3249,8 +3249,8 @@ void fix_type_field(node *n)
       if (!check_soft_cast(old_type, CAR(n)->type)) {
 	ref_push_type_value(old_type);
 	ref_push_type_value(CAR(n)->type);
-	yytype_report(REPORT_ERROR, NULL, 0, NULL, NULL, 0, NULL, 2,
-		      "Soft cast to %S isn't a restriction of %S.",
+	yytype_report(REPORT_ERROR, NULL, 0, NULL, NULL, 0, NULL,
+		      2, "Soft cast to %S isn't a restriction of %S.",
 		      t1, t2);
       }
       /* FIXME: check_soft_cast() is weaker than pike_types_le()
