@@ -56,12 +56,6 @@ struct compilation
 #define COMPILER_BUSY	1	/* The compiler is busy compiling. */
 #define COMPILER_DONE	2	/* The is finished compiling. */
 
-/* Report levels */
-#define REPORT_NOTICE	0	/* FYI. */
-#define REPORT_WARNING	1	/* Compiler warning. */
-#define REPORT_ERROR	2	/* Compilation error. */
-#define REPORT_FATAL	3	/* Unrecoverable error. */
-
 /* CompilerEnvironment function numbers. */
 #define CE_REPORT_FUN_NUM				0
 #define CE_COMPILE_FUN_NUM				1
