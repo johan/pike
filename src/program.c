@@ -6896,7 +6896,11 @@ PMOD_EXPORT void va_yyreport(int severity_level,
   struct string_builder s;
   struct pike_string *msg;
 
-  if (!c) return;	/* No compiler context. */
+  if (!c) {
+    /* No compiler context. */
+    pop_n_elems(args);
+    return;
+  }
 
   STACK_LEVEL_START(args);
 
