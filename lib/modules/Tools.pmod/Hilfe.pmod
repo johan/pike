@@ -2064,7 +2064,7 @@ class Evaluator {
     }
 
     // parse expressions
-    evaluate("return [mixed]" + expr->code(), 1);
+    evaluate("return " + expr->code(), 1);
     return 0;
   }
 
