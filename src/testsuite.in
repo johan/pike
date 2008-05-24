@@ -593,6 +593,9 @@ test_compile_error([[ float b=17.0; string a; a=b*42.0; ]])
 
 test_compile_error([[class F {inherit master()->dirnode;};]]);
 
+ignore_warning("Wrong return type.", [[
+ignore_warning("Expected: string.", [[
+ignore_warning("Got     : array(string).", [[
 test_program_equal([[
 #pike 7.6
   string a()
@@ -601,6 +604,7 @@ test_program_equal([[
     return res + ({});
   }
 ]], ({"spud"}))
+]])]])]])
 
 // Warnings
 
