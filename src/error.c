@@ -129,14 +129,17 @@ PMOD_EXPORT DECLSPEC(noreturn) void pike_throw(void) ATTRIBUTE((noreturn))
       Pike_interpreter.recoveries->onerror=Pike_interpreter.recoveries->onerror->previous;
     }
 
-    if (Pike_interpreter.catch_ctx &&
-	&Pike_interpreter.catch_ctx->recovery == Pike_interpreter.recoveries) {
-      struct catch_context *cc = Pike_interpreter.catch_ctx;
-      Pike_interpreter.catch_ctx = cc->prev;
-      really_free_catch_context (cc);
+    {
+      JMP_BUF *prev_rec = Pike_interpreter.recoveries->previous;
+      if (Pike_interpreter.catch_ctx &&
+	  (&Pike_interpreter.catch_ctx->recovery ==
+	   Pike_interpreter.recoveries)) {
+	struct catch_context *cc = Pike_interpreter.catch_ctx;
+	Pike_interpreter.catch_ctx = cc->prev;
+	really_free_catch_context (cc);
+      }
+      Pike_interpreter.recoveries = prev_rec;
     }
-
-    Pike_interpreter.recoveries=Pike_interpreter.recoveries->previous;
   }
 
   if(!Pike_interpreter.recoveries)
