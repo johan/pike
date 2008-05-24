@@ -6912,11 +6912,11 @@ PMOD_EXPORT void va_yyreport(int severity_level,
   /* Convert type errors to warnings in non-strict compat mode. */
   if ((system == type_check_system_string) &&
       (severity_level == REPORT_ERROR) &&
-      (c->major != -1) &&
+      (Pike_compiler->compat_major != -1) &&
       !(c->lex.pragmas & ID_STRICT_TYPES) &&
-      ((c->major < PIKE_MAJOR_VERSION) ||
-       ((c->major == PIKE_MAJOR_VERSION) &&
-	(c->minor < PIKE_MINOR_VERSION)))) {
+      ((Pike_compiler->compat_major < PIKE_MAJOR_VERSION) ||
+       ((Pike_compiler->compat_major == PIKE_MAJOR_VERSION) &&
+	(Pike_compiler->compat_minor < PIKE_MINOR_VERSION)))) {
     severity_level = REPORT_WARNING;
   }
 
