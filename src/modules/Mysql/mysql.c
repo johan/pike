@@ -253,8 +253,8 @@ void pike_mysql_set_ssl(struct mapping *options)
     struct svalue *val = NULL;
 #endif /* HAVE_MYSQL_SSL */
 
-  // for some reason, we may get here without an options mapping.
-  if(!options) return;
+    /* For some reason, we may get here without an options mapping. */
+    if(!options) return;
 
 #ifdef HAVE_MYSQL_SSL
     if ((val = simple_mapping_string_lookup(options, "ssl_key")) &&
