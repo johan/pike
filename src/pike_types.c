@@ -7266,10 +7266,10 @@ void yyexplain_nonmatching_types(int severity_level,
 
     ref_push_type_value(type_a);
     yytype_report(severity_level, NULL, 0, NULL, a_file, a_line, NULL,
-		  1, "Expected: %O");
+		  1, "Expected: %O.");
     ref_push_type_value(type_b);
     yytype_report(severity_level, NULL, 0, NULL, b_file, b_line, NULL,
-		  1, "Got     : %O");
+		  1, "Got     : %O.");
   }
 
   /* Protect against circularities. */
