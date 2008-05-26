@@ -4537,8 +4537,8 @@ static void decode_value2(struct decode_data *data)
 	    debug_malloc_touch(c->placeholder);
 	    free_program(c->placeholder->prog);
 	    add_ref(c->placeholder->prog = p);
-	    c->placeholder->storage=c->p->storage_needed ?
-	      (char *)xalloc(c->p->storage_needed) :
+	    c->placeholder->storage = p->storage_needed ?
+	      (char *)xalloc(p->storage_needed) :
 	      (char *)NULL;
 	    call_c_initializers(c->placeholder);
 	    call_pike_initializers(c->placeholder,0);
