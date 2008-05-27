@@ -40,6 +40,7 @@
     start_new_program();				\
     INHERIT						\
     add_string_constant("error_type", #SCNAME, 0);	\
+    add_string_constant ("error_name", "Error." #SCNAME, ID_PRIVATE|ID_USED); \
     add_integer_constant("is_" #NAME "_error",1,0);	\
     PIKE_CONCAT(NAME,_error_program)=end_program();	\
     add_program_constant( #SCNAME "Error",PIKE_CONCAT(NAME,_error_program),0); \
@@ -124,8 +125,6 @@ DECLARE_ERROR(generic, Generic, EMPTY ,
   ERR_FUNC("_is_type", f_error__is_type, tFunc(tString, tInt01), ID_STATIC)
   ERR_FUNC("create",f_error_create,tFunc(tStr tOr(tVoid,tArr(tMixed)),tVoid),ID_STATIC)
 )
-
-#define GENERIC_ERROR_THIS ((struct generic_error_struct *)CURRENT_STORAGE)
 
 DECLARE_ERROR(index, Index,
 	      ERR_INHERIT(generic),
