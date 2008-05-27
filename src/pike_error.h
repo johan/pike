@@ -257,7 +257,7 @@ PMOD_EXPORT DECLSPEC(noreturn) void Pike_error(const char *fmt,...) ATTRIBUTE((n
 PMOD_EXPORT DECLSPEC(noreturn) void debug_fatal(const char *fmt, ...) ATTRIBUTE((noreturn));
 PMOD_EXPORT DECLSPEC(noreturn) void generic_error_va(
   struct object *o, const char *func, const struct svalue *base_sp, int args,
-  const char *fmt, va_list fmt_args)
+  const char *fmt, va_list *fmt_args)
   ATTRIBUTE((noreturn));
 PMOD_EXPORT DECLSPEC(noreturn) void throw_error_object(
   struct object *o,
