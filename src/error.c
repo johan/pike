@@ -77,7 +77,7 @@ PMOD_EXPORT void check_recovery_context(void)
     fprintf(stderr, "Recoveries is out biking (Pike_interpreter.recoveries=%p, Pike_sp=%p, %ld)!\n",
 	    Pike_interpreter.recoveries, &foo,
 	    DO_NOT_WARN((long)TESTILITEST));
-    fprintf(stderr, "Last recovery was added at %s:\n",
+    fprintf(stderr, "Last recovery was added at %s:%d\n",
 	    Pike_interpreter.recoveries->file,
 	    Pike_interpreter.recoveries->line);
     push_int((ptrdiff_t)Pike_interpreter.recoveries);
