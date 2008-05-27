@@ -440,7 +440,7 @@ void f_load_module(INT32 args)
 
   if(!module)
   {
-    struct object *err_obj = low_clone (module_load_error_program);
+    struct object *err_obj = fast_clone_object(module_load_error_program);
 #define LOADERR_STRUCT(OBJ) \
     ((struct module_load_error_struct *) (err_obj->storage + module_load_error_offset))
 

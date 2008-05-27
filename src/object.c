@@ -642,8 +642,8 @@ PMOD_EXPORT struct object *get_master(void)
       sp--;
       dmalloc_touch_svalue(sp);
     }else{
-      throw_error_object (low_clone (master_load_error_program), 0, 0, 0,
-			  "Couldn't load master program from %s.\n", master_file);
+      throw_error_object(fast_clone_object(master_load_error_program), 0, 0, 0,
+			 "Couldn't load master program from %s.\n", master_file);
     }
   }
 
