@@ -3331,11 +3331,21 @@ PMOD_EXPORT void f_object_program(INT32 args)
 
     if(p)
     {
-      p = p->inherits[Pike_sp[-args].subtype].prog;
-      /* FIXME: Does the following actually work for
-       *        the object subtype case?
-       */
-      if((p->flags & PROGRAM_USES_PARENT) && 
+      if (Pike_sp[-args].subtype) {
+	/* FIXME: This probably works for the subtype-less case as well.
+	 */
+	struct external_variable_context loc;
+	loc.o = o;
+	p = (loc.inherit = p->inherits + Pike_sp[-args].subtype)->prog;
+	if (p->flags & PROGRAM_USES_PARENT) {
+	  loc.parent_identifier = loc.inherit->parent_identifier;
+	  find_external_context(&loc, 1);
+	  add_ref(loc.o);
+	  pop_n_elems(args);
+	  push_function(loc.o, loc.parent_identifier);
+	  return;
+	}
+      } else if((p->flags & PROGRAM_USES_PARENT) && 
 	 PARENT_INFO(o)->parent &&
 	 PARENT_INFO(o)->parent->prog)
       {
@@ -3345,12 +3355,11 @@ PMOD_EXPORT void f_object_program(INT32 args)
 	pop_n_elems(args);
 	push_function(o, id);
 	return;
-      }else{
-	add_ref(p);
-	pop_n_elems(args);
-	push_program(p);
-	return;
       }
+      add_ref(p);
+      pop_n_elems(args);
+      push_program(p);
+      return;
     }
   }
 
