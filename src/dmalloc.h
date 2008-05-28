@@ -197,7 +197,7 @@ PMOD_EXPORT void* dlpvalloc(size_t);
 #define DO_IF_NOT_DMALLOC(X) X
 #define dmalloc_trace(X)
 #define dmalloc_register(X,Y,Z)
-#define dmalloc_unregister(X,Y)
+#define dmalloc_unregister(X,Y) 1
 #define debug_free(X,Y,Z) free((X))
 #define debug_malloc_name(P,FN,LINE)
 #define debug_malloc_copy_names(p,p2) 0
