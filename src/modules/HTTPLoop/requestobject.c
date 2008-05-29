@@ -426,7 +426,7 @@ void f_aap_index_op(INT32 args)
   if(!THIS->misc_variables) 
   {
     struct svalue s;
-    object_index_no_free2(&s, Pike_fp->current_object, sp-1);
+    object_index_no_free2(&s, Pike_fp->current_object, 0, sp-1);
     pop_stack();
     *sp=s;
     sp++;
@@ -672,7 +672,7 @@ void f_aap_index_op(INT32 args)
   }
   {
     struct svalue s;
-    object_index_no_free2(&s, Pike_fp->current_object, sp-1);
+    object_index_no_free2(&s, Pike_fp->current_object, 0, sp-1);
     pop_stack();
     *sp=s;
     sp++;

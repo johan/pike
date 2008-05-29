@@ -417,7 +417,7 @@ static void stat_index(INT32 args)
 	   /* Fall back to a normal index on this object, in case
 	    * someone inherited us. */
 	   struct svalue res;
-	   object_index_no_free2 (&res, fp->current_object, sp-1);
+	   object_index_no_free2 (&res, fp->current_object, 0, sp-1);
 	   pop_stack();
 	   *sp++ = res;
 	   return;
@@ -663,7 +663,7 @@ static void stat_index_set (INT32 args)
     if (!code) {
       /* Fall back to a normal index set on this object, in case
        * someone inherited us. */
-      object_set_index2 (fp->current_object, sp-2, sp-1);
+      object_set_index2 (fp->current_object, 0, sp-2, sp-1);
       stack_swap();
       pop_stack();
       return;

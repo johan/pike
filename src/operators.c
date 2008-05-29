@@ -58,7 +58,7 @@ void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind)
     break;
 
   case T_OBJECT:
-    object_index_no_free(to, what->u.object, ind);
+    object_index_no_free(to, what->u.object, what->subtype, ind);
     break;
 
   case T_MULTISET: {
