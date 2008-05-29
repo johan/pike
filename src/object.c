@@ -1193,7 +1193,7 @@ PMOD_EXPORT void low_object_index_no_free(struct svalue *to,
     } else if ((i->run_time_type == PIKE_T_FREE) || !PIKE_OBJ_STORAGE(o)) {
       /* Variable storage not allocated. */
 #ifdef PIKE_DEBUG
-      if (p->flags & PROGRAM_FINISHED) {
+      if ((i->run_time_type != PIKE_T_FREE) && (p->flags & PROGRAM_FINISHED)) {
 	Pike_fatal("Object without variable storage!\n");
       }
 #endif /* PIKE_DEBUG */
