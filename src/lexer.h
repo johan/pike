@@ -693,6 +693,14 @@ static int low_yylex(struct lex *lex, YYSTYPE *yylval)
 	  {
 	    lex->pragmas |= ID_DONT_SAVE_PARENT;
 	  }
+	  else if (ISWORD("no_deprecation_warnings"))
+	  {
+	    lex->pragmas |= ID_NO_DEPRECATION_WARNINGS;
+	  }
+	  else if (ISWORD("deprecation_warnings"))
+	  {
+	    lex->pragmas &= ~ID_NO_DEPRECATION_WARNINGS;
+	  }
 	  break;
 	}
 
