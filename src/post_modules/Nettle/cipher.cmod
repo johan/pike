@@ -298,6 +298,7 @@ PIKECLASS CipherState
     }
 
   EXIT
+    gc_trivial;
     {
       if (THIS->ctx && Pike_fp->current_object->prog)
       {
