@@ -119,13 +119,16 @@ PIKECLASS CryptContext
 
   INIT
   {
-    THIS->handle = 0;
+    THIS->handle = NULL;
   }
   EXIT
     gc_trivial;
   {
     if(THIS->handle)
+    {
       CryptReleaseContext(THIS->handle, 0);
+      THIS->handle = NULL;
+    }
   }
 }
 

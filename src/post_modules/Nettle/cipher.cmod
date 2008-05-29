@@ -306,7 +306,9 @@ PIKECLASS CipherState
 	assert(info);
 	assert(info->meta);
 	memset(THIS->ctx, 0, info->meta->context_size);
+        THIS->ctx = NULL;
       }
+      THIS->crypt = NULL;
     }
 }
 /*! @endclass CipherState */
