@@ -1349,6 +1349,7 @@ again:
 	  if (id_ref->id_flags & ID_INHERITED) strcat (prot, ",inh");
 	  if (id_ref->id_flags & ID_EXTERN)    strcat (prot, ",ext");
 	  if (id_ref->id_flags & ID_VARIANT)   strcat (prot, ",var");
+	  if (id_ref->id_flags & ID_USED)      strcat (prot, ",use");
 
 	  sprintf (descr, "%s: %s", type, prot + 1);
 	  fprintf (stderr, "%*s**%*s%-3"PRINTPTRDIFFT"d %-18s name: ",
