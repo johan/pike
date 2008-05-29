@@ -1491,7 +1491,8 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
       if (!prog)
 	my_strcat("0");
       else {
-	prog = prog->inherits[s->subtype].prog;
+	struct inherit *inh;
+	prog = (inh = prog->inherits + s->subtype)->prog;
 
 	if ((prog->flags & PROGRAM_FINISHED) &&
 	    Pike_interpreter.evaluator_stack &&
@@ -1519,7 +1520,8 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	      push_constant_text("indent");
 	      push_int(indent);
 	      f_aggregate_mapping(2);					      
-	      safe_apply_low2(obj, fun ,2, master_object?"_sprintf":NULL);
+	      safe_apply_low2(obj, fun + inh->identifier_level, 2,
+			      master_object?"_sprintf":NULL);
 
 	      debug_malloc_touch(obj);
 
