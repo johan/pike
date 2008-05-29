@@ -276,6 +276,7 @@ PIKECLASS FFT
     }
 
   EXIT
+    gc_trivial;
     {
       if (THIS->r_cr_plan_size>0)
 	rfftw_destroy_plan(THIS->r_cr_plan);

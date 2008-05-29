@@ -996,6 +996,7 @@ PIKECLASS Simple
     }
 
     EXIT
+      gc_trivial;
     {
       while (THIS->input)
 	POP();

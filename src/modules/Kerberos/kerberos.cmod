@@ -48,6 +48,7 @@ PIKECLASS Context
   }
 
   EXIT
+    gc_trivial;
   {
     if (THIS->ctx) {
       krb5_free_context(THIS->ctx);

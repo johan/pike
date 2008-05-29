@@ -930,6 +930,7 @@ PIKECLASS mpq
     }
   
   EXIT
+    gc_trivial;
     {
 #ifdef PIKE_DEBUG
       if(!fp) Pike_fatal("ZERO FP\n");

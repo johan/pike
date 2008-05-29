@@ -2015,6 +2015,7 @@ PIKECLASS Backend
   }
   
   EXIT
+    gc_trivial;
   {
     struct Backend_struct *me=THIS;
     int e;
@@ -3747,6 +3748,7 @@ PIKECLASS GenericBackend
   }
   
   EXIT
+    gc_trivial;
   {
     struct Backend_struct *me = THIS->backend;
     int e;
