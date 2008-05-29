@@ -93,6 +93,11 @@ mapping m_delete(mapping m, mixed x)
 //! @seealso
 //!   @[predef::hash_7_0()], @[predef::hash()]
 
+object master()
+{
+  return __REAL_VERSION__::master()->get_compat_master(7, 0);
+}
+
 mapping(string:mixed) all_constants()
 {
   mapping(string:mixed) ret=predef::all_constants()+([]);
@@ -105,6 +110,7 @@ mapping(string:mixed) all_constants()
   ret->_typeof=_typeof;
   ret->m_delete=m_delete;
   ret->hash=hash_7_0;
+  ret->master=master;
 
   return ret;
 }

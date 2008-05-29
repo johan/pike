@@ -114,6 +114,11 @@ SPIDER(get_all_active_fd);
 SPIDER(fd_info);
 //! @endignore
 
+object master()
+{
+  return __REAL_VERSION__::master()->get_compat_master(7, 2);
+}
+
 mapping(string:mixed) all_constants()
 {
   mapping(string:mixed) ret=predef::all_constants()+([]);
@@ -127,6 +132,8 @@ mapping(string:mixed) all_constants()
 #endif
   ADD(new);
   ADD(clone);
+
+  ADD(master);
 
   // spider
   ADD(_low_program_name);
