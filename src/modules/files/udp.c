@@ -175,7 +175,7 @@ static void udp_close(INT32 args)
 /*! @decl UDP bind(int|string port)
  *! @decl UDP bind(int|string port, string address)
  *!
- *! Binds a port for recieving or transmitting UDP.
+ *! Binds a port for receiving or transmitting UDP.
  *! @throws
  *!   Throws error when unable to bind port.
  */
