@@ -3837,6 +3837,9 @@ inherit_specifier: TOK_IDENTIFIER TOK_COLON_COLON
   | inherit_specifier TOK_IDENTIFIER TOK_COLON_COLON
   {
     int e = 0;
+    if ($1 < 0) {
+      $1 = 0;
+    }
 #if 0
     /* FIXME: The inherit modifiers aren't kept. */
     if (!(inherit_state->new_program->inherits[$1].flags & ID_PRIVATE)) {
@@ -3857,11 +3860,7 @@ inherit_specifier: TOK_IDENTIFIER TOK_COLON_COLON
       $$ = -1;
     } else {
       /* We know stuff about the inherit structure... */
-      if ($1 >= 0) {
-	$$ = e + $1;
-      } else {
-	$$ = e;
-      }
+      $$ = e + $1;
     }
     free_node($2);
   }
