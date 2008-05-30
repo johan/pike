@@ -1004,4 +1004,14 @@ struct ref_dummy
   PIKE_MEMORY_OBJECT_MEMBERS;
 };
 
+/* The following macro is useful to initialize static svalues. Note
+ * that the value isn't always set. */
+#ifdef HAVE_UNION_INIT
+#define SVALUE_INIT_INT(VAL) {T_INT, NUMBER_NUMBER, {VAL}}
+#define SVALUE_INIT_FREE {PIKE_T_FREE, NUMBER_NUMBER, {0}}
+#else
+#define SVALUE_INIT_INT(VAL) {T_INT, NUMBER_NUMBER}
+#define SVALUE_INIT_FREE {PIKE_T_FREE, NUMBER_NUMBER}
+#endif
+
 #endif /* !SVALUE_H */
