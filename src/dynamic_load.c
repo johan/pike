@@ -550,8 +550,10 @@ void exit_dynamic_load(void)
     else
       (*tmp->exit)();
     UNSETJMP(recovery);
-    free_program(tmp->module_prog);
-    tmp->module_prog = NULL;
+    if (tmp->module_prog) {
+      free_program(tmp->module_prog);
+      tmp->module_prog = NULL;
+    }
   }
 #endif
 }
