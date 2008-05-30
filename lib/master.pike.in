@@ -4192,7 +4192,9 @@ string describe_backtrace(mixed trace, void|int linewidth)
   }
 
   else {
+#if constant(_gdb_breakpoint)
     _gdb_breakpoint();
+#endif
     return sprintf ("<Invalid backtrace/error container: %O>\n"
 		    "%s\n", trace, describe_backtrace(backtrace()));
   }
