@@ -3836,29 +3836,31 @@ inherit_specifier: TOK_IDENTIFIER TOK_COLON_COLON
   }
   | inherit_specifier TOK_IDENTIFIER TOK_COLON_COLON
   {
-    if ($1 >= 0) {
-      int e = 0;
+    int e = 0;
 #if 0
-      /* FIXME: The inherit modifiers aren't kept. */
-      if (!(inherit_state->new_program->inherits[$1].flags & ID_PRIVATE)) {
+    /* FIXME: The inherit modifiers aren't kept. */
+    if (!(inherit_state->new_program->inherits[$1].flags & ID_PRIVATE)) {
 #endif /* 0 */
-	e = find_inherit(inherit_state->new_program->inherits[$1].prog,
-			 $2->u.sval.u.string);
+      e = find_inherit(inherit_state->new_program->inherits[$1].prog,
+		       $2->u.sval.u.string);
 #if 0
-      }
+    }
 #endif /* 0 */
-      if (!e) {
-	if (inherit_state->new_program->inherits[$1].name) {
-	  my_yyerror("No such inherit %S::%S.",
-		     inherit_state->new_program->inherits[$1].name,
-		     $2->u.sval.u.string);
-	} else {
-	  my_yyerror("No such inherit %S.", $2->u.sval.u.string);
-	}
-	$$ = -1;
+    if (!e) {
+      if (inherit_state->new_program->inherits[$1].name) {
+	my_yyerror("No such inherit %S::%S.",
+		   inherit_state->new_program->inherits[$1].name,
+		   $2->u.sval.u.string);
       } else {
-	/* We know stuff about the inherit structure... */
+	my_yyerror("No such inherit %S.", $2->u.sval.u.string);
+      }
+      $$ = -1;
+    } else {
+      /* We know stuff about the inherit structure... */
+      if ($1 >= 0) {
 	$$ = e + $1;
+      } else {
+	$$ = e;
       }
     }
     free_node($2);
