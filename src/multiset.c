@@ -3326,8 +3326,20 @@ PMOD_EXPORT struct multiset *add_multisets (struct svalue *vect, int count)
 {
   struct multiset *res, *l;
   int size = 0, idx, indval = 0;
-  struct svalue *cmp_less = count ? &vect[0].u.multiset->msd->cmp_less : NULL;
+  struct svalue *cmp_less;
   ONERROR uwp;
+
+  if (count) {
+    struct svalue *first_cmp_less;
+    assert (vect[0].type == T_MULTISET);
+    first_cmp_less = &vect[0].u.multiset->msd->cmp_less;
+    if (first_cmp_less->type == T_INT)
+      cmp_less = NULL;
+    else
+      cmp_less = first_cmp_less;
+  }
+  else
+    cmp_less = NULL;
 
   for (idx = 0; idx < count; idx++) {
     struct multiset *l = vect[idx].u.multiset;
