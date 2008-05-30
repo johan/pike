@@ -546,9 +546,9 @@ void f_load_module(INT32 args)
   UNSET_ONERROR(err);
 #ifdef PIKE_DEBUG
   if(Pike_sp != save_sp)
-    Pike_fatal("load_module(%s) left %ld droppings on stack!\n",
-	       module_name->str,
-	       PTRDIFF_T_TO_LONG(Pike_sp - save_sp));
+    Pike_fatal("pike_module_init in %S left "
+	       "%"PRINTPTRDIFFT"d droppings on stack.\n",
+	       module_name, Pike_sp - save_sp);
   }
 #endif
 
@@ -573,7 +573,17 @@ void f_load_module(INT32 args)
       }
     } else {
       /* Initialization failed. */
+#ifdef PIKE_DEBUG
+      struct svalue *save_sp=Pike_sp;
+#endif
       new_module->exit();
+#ifdef PIKE_DEBUG
+      if(Pike_sp != save_sp)
+	Pike_fatal("pike_module_exit in %S left "
+		   "%"PRINTPTRDIFFT"d droppings on stack.\n",
+		   module_name, Pike_sp - save_sp);
+#endif
+
       dlclose(module);
       dynamic_module_list = new_module->next;
       free_string(new_module->name);
@@ -610,9 +620,20 @@ void exit_dynamic_load(void)
   {
     if(SETJMP(recovery))
       call_handle_error();
-    else
-      (*tmp->exit)();
+    else {
+#ifdef PIKE_DEBUG
+      struct svalue *save_sp=Pike_sp;
+#endif
+      tmp->exit();
+#ifdef PIKE_DEBUG
+      if(Pike_sp != save_sp)
+	Pike_fatal("pike_module_exit in %S left "
+		   "%"PRINTPTRDIFFT"d droppings on stack.\n",
+		   tmp->name, Pike_sp - save_sp);
+#endif
+    }
     UNSETJMP(recovery);
+
     if (tmp->module_prog) {
       free_program(tmp->module_prog);
       tmp->module_prog = NULL;
