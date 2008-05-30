@@ -86,8 +86,8 @@ struct multiset
  *    nodes. Note that deleted nodes might still be on the free list
  *    even when there are no node references (see below).
  *
- * o  multiset_data.cmp_less.type is T_INT when the internal set order
- *    is used.
+ * o  multiset_data.cmp_less is the integer zero when the internal set
+ *    order is used. It must not have any other integer value.
  *
  * o  multset_data.refs counts the number of "independent" references
  *    to the data block. When it's greater than one, the data block
