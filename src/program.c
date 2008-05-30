@@ -1507,13 +1507,8 @@ static struct node_s *index_modules(struct pike_string *ident,
     JMP_BUF tmp;
 
     if(SETJMP(tmp))
-    {
-      if (!ident->size_shift) {
-	handle_compile_exception ("Couldn't index a module with '%s'.", ident->str);
-      } else {
-	handle_compile_exception ("Couldn't index a module.");
-      }
-    } else {
+      handle_compile_exception ("Couldn't index a module with %S.", ident);
+    else {
       int e = num_used_modules;
       struct svalue *m = modules - num_used_modules;
 
