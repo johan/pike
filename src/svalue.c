@@ -2012,7 +2012,7 @@ PMOD_EXPORT void debug_check_svalue(const struct svalue *s)
        s->subtype!=NUMBER_UNDEFINED && s->subtype!=NUMBER_DESTRUCTED) {
       Pike_fatal("Unknown integer subtype %d\n", s->subtype);
     }
-    if (s->u.integer && s->subtype != NUMBER_NUMBER)
+    if (s->subtype != NUMBER_NUMBER && s->u.integer)
       Pike_fatal ("Invalid subtype %d in nonzero integer.\n", s->subtype);
   }
 
