@@ -3832,7 +3832,7 @@ inherit_specifier: TOK_IDENTIFIER TOK_COLON_COLON
     inherit_state = Pike_compiler;
     for (inherit_depth = 0; inherit_depth < c->compilation_depth;
 	 inherit_depth++, inherit_state = inherit_state->previous) {}
-    $$ = 0;
+    $$ = -1;
   }
   | inherit_specifier TOK_IDENTIFIER TOK_COLON_COLON
   {
