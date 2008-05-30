@@ -109,7 +109,7 @@ typedef struct ONERROR
 typedef struct JMP_BUF
 {
   struct JMP_BUF *previous;
-  volatile LOW_JMP_BUF recovery;
+  LOW_JMP_BUF recovery;
   struct pike_frame *frame_pointer;
   ptrdiff_t stack_pointer;
   ptrdiff_t mark_sp;
