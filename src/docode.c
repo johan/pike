@@ -934,7 +934,7 @@ static int do_docode2(node *n, int flags)
       if (!state) {
 	my_yyerror("Program parent %d lost during compiling.", n->u.integer.a);
 	emit1(F_NUMBER,0);
-      } else if (!level && !inh) {
+      } else if (!level && (inh < 0)) {
 	emit1(F_THIS_OBJECT, 0);
       } else {
 	emit2(F_THIS, level, inh);
