@@ -546,9 +546,9 @@ void f_load_module(INT32 args)
   UNSET_ONERROR(err);
 #ifdef PIKE_DEBUG
   if(Pike_sp != save_sp)
-    Pike_fatal("pike_module_init in %S left "
+    Pike_fatal("pike_module_init in %s left "
 	       "%"PRINTPTRDIFFT"d droppings on stack.\n",
-	       module_name, Pike_sp - save_sp);
+	       module_name->str, Pike_sp - save_sp);
   }
 #endif
 
@@ -579,9 +579,9 @@ void f_load_module(INT32 args)
       new_module->exit();
 #ifdef PIKE_DEBUG
       if(Pike_sp != save_sp)
-	Pike_fatal("pike_module_exit in %S left "
+	Pike_fatal("pike_module_exit in %s left "
 		   "%"PRINTPTRDIFFT"d droppings on stack.\n",
-		   module_name, Pike_sp - save_sp);
+		   module_name->str, Pike_sp - save_sp);
 #endif
 
       dlclose(module);
@@ -627,9 +627,9 @@ void exit_dynamic_load(void)
       tmp->exit();
 #ifdef PIKE_DEBUG
       if(Pike_sp != save_sp)
-	Pike_fatal("pike_module_exit in %S left "
+	Pike_fatal("pike_module_exit in %s left "
 		   "%"PRINTPTRDIFFT"d droppings on stack.\n",
-		   tmp->name, Pike_sp - save_sp);
+		   tmp->name->str, Pike_sp - save_sp);
 #endif
     }
     UNSETJMP(recovery);
