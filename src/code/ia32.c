@@ -570,11 +570,7 @@ static void ia32_push_int(INT32 x)
 static void ia32_push_string (INT32 x, int subtype)
 {
   size_t e;
-  struct svalue tmp = {PIKE_T_STRING, subtype,
-#ifdef HAVE_UNION_INIT
-		       {0}
-#endif
-		      };
+  struct svalue tmp = SVALUE_INIT (PIKE_T_STRING, subtype, 0);
 
   enum ia32_reg tmp_reg = alloc_reg ((1 << fp_reg) | (1 << sp_reg));
   load_fp_reg ((1 << tmp_reg) | (1 << sp_reg));

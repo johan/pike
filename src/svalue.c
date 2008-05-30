@@ -30,12 +30,12 @@
 
 #define sp Pike_sp
 
-const struct svalue dest_ob_zero = {
-  T_INT, 0,
+PMOD_EXPORT const struct svalue svalue_int_zero = SVALUE_INIT_INT (0);
 #ifdef HAVE_UNION_INIT
-  {0}, /* Only to avoid warnings. */
+PMOD_EXPORT const struct svalue svalue_int_one = SVALUE_INIT_INT (1);
+#else
+PMOD_EXPORT struct svalue svalue_int_one = SVALUE_INIT_INT (1);
 #endif
-};
 
 #ifdef PIKE_DEBUG
 PMOD_EXPORT const char msg_type_error[] =

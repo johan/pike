@@ -17,12 +17,7 @@
 
 #define sp Pike_sp
 
-PMOD_EXPORT struct svalue auto_bignum_program = {
-  PIKE_T_FREE, 0,
-#ifdef HAVE_UNION_INIT
-  {0}, /* Only to avoid warnings. */
-#endif
-};
+PMOD_EXPORT struct svalue auto_bignum_program = SVALUE_INIT_FREE;
 
 PMOD_EXPORT struct program *get_auto_bignum_program(void)
 {

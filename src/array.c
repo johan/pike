@@ -38,9 +38,7 @@ PMOD_EXPORT struct array empty_array=
   0,                     /* no types */
   0,			 /* no flags */
   empty_array.real_item, /* Initialize the item pointer. */
-#ifdef HAVE_UNION_INIT
-  {{0, 0, {0}}}, /* Only to avoid warnings. */
-#endif
+  {SVALUE_INIT_FREE},
 };
 
 /** The empty weak array. */
@@ -49,9 +47,7 @@ PMOD_EXPORT struct array weak_empty_array=
   PIKE_CONSTANT_MEMOBJ_INIT(1),
   0, &empty_array, 0, 0, 0, ARRAY_WEAK_FLAG,
   weak_empty_array.real_item,
-#ifdef HAVE_UNION_INIT
-  {{0, 0, {0}}}, /* Only to avoid warnings. */
-#endif
+  {SVALUE_INIT_FREE},
 };
 
 struct array *first_array = &empty_array;

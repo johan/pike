@@ -498,12 +498,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 #endif
 
 {
-  static struct svalue dested = {
-    T_INT, NUMBER_DESTRUCTED,
-#ifdef HAVE_UNION_INIT
-    {0}, /* Only to avoid warnings. */
-#endif
-  };
+  static struct svalue dested = SVALUE_INIT (T_INT, NUMBER_DESTRUCTED, 0);
   INT32 i;
   struct svalue *tmp;
   struct svalue entry_id;
@@ -4900,12 +4895,7 @@ static INT32 my_decode(struct pike_string *tmp,
 #endif
        ) {
       struct svalue *res;
-      struct svalue val = {
-	T_INT, NUMBER_NUMBER,
-#ifdef HAVE_UNION_INIT
-	{0},	/* Only to avoid warnings. */
-#endif /* HAVE_UNION_INIT */
-      };
+      struct svalue val = SVALUE_INIT_INT (0);
       val.u.integer = COUNTER_START;
       if ((res = low_mapping_lookup(data->decoded, &val))) {
 	push_svalue(res);

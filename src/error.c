@@ -235,12 +235,7 @@ PMOD_EXPORT void push_error(const char *description)
   f_aggregate(2);
 }
 
-PMOD_EXPORT struct svalue throw_value = {
-  PIKE_T_INT, NUMBER_NUMBER,
-#ifdef HAVE_UNION_INIT
-  {0}, /* Only to avoid warnings. */
-#endif
-};
+PMOD_EXPORT struct svalue throw_value = SVALUE_INIT_FREE;
 int throw_severity;
 static const char *in_error;
 
