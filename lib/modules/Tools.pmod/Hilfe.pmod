@@ -2159,7 +2159,7 @@ class Evaluator {
 	file = master()->trim_file_name(file)+":";
       if(err[-1]!='\n') err += "\n";
       string linestr = line?(string)line:"-";
-      return sprintf(": %s%s:%s", file, linestr, err);
+      return sprintf(": %s%s: %s", file, linestr, err);
     }
 
     void compile_error(string file, int line, string err) {
