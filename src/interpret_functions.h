@@ -2669,8 +2669,12 @@ OPCODE2(F_THIS, "this", I_UPDATE_SP, {
 	     arg1,
 	     loc.inherit->identifier_level));
     });
-    ref_push_object_inherit(loc.o,
-			    (loc.inherit - loc.o->prog->inherits) + arg2);
+    if (args2 < 0) {
+      ref_push_object(loc.o);
+    } else {
+      ref_push_object_inherit(loc.o,
+			      (loc.inherit - loc.o->prog->inherits) + arg2);
+    }
     print_return_value();
 });
 
