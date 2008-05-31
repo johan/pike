@@ -890,6 +890,8 @@ PMOD_EXPORT struct pike_string *get_line(PIKE_OPCODE_T *pc,
 					 struct program *prog, INT32 *linep);
 PMOD_EXPORT struct pike_string *low_get_function_line (struct object *o,
 						       int fun, INT32 *linep);
+PMOD_EXPORT struct pike_string *get_identifier_line(struct program *p,
+						    int fun, INT32 *linep);
 PMOD_EXPORT void va_yyreport(int severity_level,
 			     struct pike_string *file, INT32 line,
 			     struct pike_string *system, INT32 args,
