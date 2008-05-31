@@ -10561,7 +10561,7 @@ void yyexplain_not_compatible(int severity_level,
       INT32 aid_line = a_line;
       INT32 bid_line = b_line;
       struct pike_string *aid_file = get_identifier_line(a, i, &aid_line);
-      struct pike_string *bid_file = get_identifier_line(b, i, &bid_line);
+      struct pike_string *bid_file = get_identifier_line(b, e, &bid_line);
       if (!aid_file) aid_file = a_file;
       if (!bid_file) bid_file = b_file;
       ref_push_string(bid->name);
@@ -10627,7 +10627,7 @@ void yyexplain_not_implements(int severity_level,
       INT32 aid_line = a_line;
       INT32 bid_line = b_line;
       struct pike_string *aid_file = get_identifier_line(a, i, &aid_line);
-      struct pike_string *bid_file = get_identifier_line(b, i, &bid_line);
+      struct pike_string *bid_file = get_identifier_line(b, e, &bid_line);
       if (!aid_file) aid_file = a_file;
       if (!bid_file) bid_file = b_file;
       if(!match_types(ID_FROM_INT(a,i)->type, bid->type)) {
