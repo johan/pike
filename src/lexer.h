@@ -606,6 +606,7 @@ static int low_yylex(struct lex *lex, YYSTYPE *yylval)
 	  push_string(make_shared_binary_pcharp(MKPCHARP(buf, SHIFT), len));
 	  low_yyreport(REPORT_ERROR, NULL, 0, parser_system_string,
 		       1, "Unknown reserved symbol %s.");
+	  break;
 	}
       }
       {
