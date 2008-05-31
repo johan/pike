@@ -4326,6 +4326,9 @@ static void decode_value2(struct decode_data *data)
 		int no;
 		int n;
 
+		id.filename_strno = store_prog_string(c->lex.current_file);
+		id.linenumber = c->lex.current_line;
+
 		id.name = Pike_sp[-2].u.string;
 		id.type = Pike_sp[-1].u.type;
 
