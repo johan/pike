@@ -549,6 +549,7 @@ PIKECLASS Sequence
   }
 
   EXIT
+    gc_trivial;
   {
     free_array(THIS->a);
   }
@@ -944,11 +945,17 @@ PIKECLASS Sequence
     {
       THIS->sequence=0;
       THIS->pos=0;
+      THIS->obj = NULL;
     }
 
     EXIT
+      gc_trivial;
     {
-      free_object(THIS->obj);
+      if( THIS->obj )
+      {
+        free_object(THIS->obj);
+        THIS->obj = NULL;
+      }
     }
     
   }
