@@ -496,6 +496,10 @@ int(0..1) main(int num, array(string) args) {
 
   werror("Writing final manual source file.\n");
   write( (string)n );
+  // Zap the XML trees so that the gc doesn't have to.
+  m->zap_tree();
+  n->zap_tree();
   werror("Took %d seconds.\n\n", time()-T);
+
   return 0;
 }
