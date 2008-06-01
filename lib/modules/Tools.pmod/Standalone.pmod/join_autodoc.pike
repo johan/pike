@@ -153,6 +153,7 @@ int(0..1) join_files(array(string) files, string save_to, int(0..1) post_process
       }
       fail = 1;
     }
+    src->zap_tree();
   }
 
   if(post_process) {
@@ -167,5 +168,6 @@ int(0..1) join_files(array(string) files, string save_to, int(0..1) post_process
     Stdio.write_file(save_to, dest->html_of_node());
     sub_cache[save_to] = dest;
   }
+  dest->zap_tree();
   return fail;
 }
