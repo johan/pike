@@ -414,7 +414,7 @@ class AbstractSimpleNode {
       // pike to recurse more heavily on the C stack than a normal
       // function call.
       foreach (mChildren, AbstractSimpleNode child)
-	child->zap_tree();
+	child && child->zap_tree();
     destruct (this);
   }
 
