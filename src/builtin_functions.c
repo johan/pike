@@ -4138,7 +4138,7 @@ node *optimize_replace(node *n)
  *!
  *! @seealso
  *!   @[compile_string()], @[compile_file()], @[cpp()], @[master()],
- *!   @[CompilationHandler], @[DefaultCompilationEnvironment]
+ *!   @[CompilationHandler], @[DefaultCompilerEnvironment]
  */
 PMOD_EXPORT void f_compile(INT32 args)
 {
