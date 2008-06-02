@@ -10166,7 +10166,7 @@ static struct get_storage_cache
   ptrdiff_t offset;
 } get_storage_cache[GET_STORAGE_CACHE_SIZE];
 
-ptrdiff_t low_get_storage(struct program *o, struct program *p)
+PMOD_EXPORT ptrdiff_t low_get_storage(struct program *o, struct program *p)
 {
   INT32 oid, pid;
   ptrdiff_t offset;
