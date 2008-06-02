@@ -1887,8 +1887,11 @@ node *copy_node(node *n)
   node *b;
   debug_malloc_touch(n);
   debug_malloc_touch(n->type);
+#if 0
+  /* The following needs to be node type specific. */
   debug_malloc_touch(n->u.node.a);
   debug_malloc_touch(n->u.node.b);
+#endif
   check_tree(n,0);
   if(!n) return n;
   switch(n->token)
