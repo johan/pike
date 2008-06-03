@@ -291,7 +291,7 @@ PMOD_EXPORT void call_c_initializers(struct object *o)
 }
 
 
-void call_prog_event(struct object *o, int event)
+PMOD_EXPORT void call_prog_event(struct object *o, int event)
 {
   int e;
   struct program *p=o->prog;

@@ -78,7 +78,7 @@ enum object_destruct_reason {
 BLOCK_ALLOC_FILL_PAGES(object, 2);
 PMOD_EXPORT struct object *low_clone(struct program *p);
 PMOD_EXPORT void call_c_initializers(struct object *o);
-void call_prog_event(struct object *o, int event);
+PMOD_EXPORT void call_prog_event(struct object *o, int event);
 void call_pike_initializers(struct object *o, int args);
 PMOD_EXPORT void do_free_object(struct object *o);
 PMOD_EXPORT struct object *debug_clone_object(struct program *p, int args);
