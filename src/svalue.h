@@ -681,8 +681,6 @@ static INLINE struct callable *pass_callable (struct callable *c) {return c;}
     assert_free_svalue (_from);						\
   } while (0)
 
-extern const struct svalue dest_ob_zero;
-
 /* Handles PIKE_T_FREE. */
 #define free_mixed_svalues(X,Y) do {		\
   struct svalue *s_=(X);			\
