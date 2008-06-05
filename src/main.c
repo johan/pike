@@ -578,9 +578,7 @@ int main(int argc, char **argv)
 
       pike_push_argv(argc, argv);
 
-      pike_push_env();
-  
-      apply(m, "_main", 2);
+      apply(m, "_main", 1);
       pop_stack();
       num=0;
     } else {
