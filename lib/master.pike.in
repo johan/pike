@@ -1885,7 +1885,7 @@ static void create()
 
   system_module_path=pike_module_path;
   if (master() && master() != this_object() &&
-      (compat_major < 7 || (compat_major == 7 && compat_minor <= 6)) {
+      (compat_major < 7 || (compat_major == 7 && compat_minor <= 6))) {
     // getenv() and putenv() will get confused if we don't do this.
     // This is only for pike <= 7.6 compat.
     if (mapping e = master()->environment) environment = e;
