@@ -9,6 +9,8 @@
 import Stdio;
 import String;
 
+// FIXME: Ought to test all the available backends.
+
 #if !efun(strerror)
 #define strerror(X) ("ERRNO = "+(string)(X))
 #endif
