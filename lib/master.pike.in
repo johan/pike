@@ -2890,7 +2890,7 @@ class CompatResolver
       compat_major=saved_compat_major;
       compat_minor=saved_compat_minor;
       if(err) throw(err);
-      return x;
+      return x || all_constants();
     }
 
   // _static_modules -- default for global::
