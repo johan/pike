@@ -32,5 +32,7 @@ mapping(string:mixed) all_constants()
   ret->sprintf = sprintf_76;
   ret->array_sscanf = array_sscanf_76;
   ret->master = master;
+  ret->getenv = master()->getenv;
+  ret->putenv = master()->putenv;
   return ret;
 }
