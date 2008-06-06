@@ -35,11 +35,18 @@ constant OPEN_BOUND = __builtin.OPEN_BOUND;
 
 constant BacktraceFrame = __builtin.backtrace_frame;
 
-#if constant(__builtin.GenericBackend)
-constant Backend = __builtin.GenericBackend;
-#else
-constant Backend = __builtin.Backend;
+constant Backend = __builtin.DefaultBackendClass;
+
+#if constant(__builtin.PollDeviceBackend)
+constant PollDeviceBackend = __builtin.PollDeviceBackend;
 #endif
+
+#if constant(__builtin.PollBackend)
+constant PollBackend = __builtin.PollBackend;
+#endif
+
+constant SelectBackend = __builtin.SelectBackend;
+
 constant DefaultBackend = __builtin.__backend;
 
 constant gc_parameters = __builtin.gc_parameters;

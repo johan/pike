@@ -72,7 +72,6 @@
 #endif	/* HAVE_POLL || BACKEND_USES_KQUEUE */
 
 struct Backend_struct;
-struct selectors;
 
 PMOD_EXPORT extern struct timeval current_time;
 PMOD_EXPORT extern struct Backend_struct *default_backend;
