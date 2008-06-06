@@ -2239,10 +2239,15 @@ class Evaluator {
     }
 
     string prog;
-    if(strict_types)
-      prog = "#pragma strict_types\n";
+    int major = master()->compat_major;
+    int minor = master()->compat_minor;
+    if( major!=-1 || minor!=-1 )
+      prog = sprintf("#pike %d.%d\n", major, minor);
     else
       prog = "";
+
+    if(strict_types)
+      prog += "#pragma strict_types\n";
 
     prog +=
       map(inherits, lambda(string f) { return "inherit "+f+";\n"; }) * "" +
