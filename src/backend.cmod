@@ -2617,7 +2617,7 @@ int pdb_MY_FD_CLR(int *pfd, int fd, int filter)
   return kevent(*pfd, &ev, 1, NULL, 0, NULL);
 }
 
-int MY_FD_SET(int *pfd, int fd, int filter)
+int pdb_MY_FD_SET(int *pfd, int fd, int filter)
 {
   struct kevent ev[2];
 
