@@ -1248,6 +1248,11 @@ EOF
           #   80386 COFF executable
           pike_cv_default_compiler_abi=32
 	  ;;
+	*ppc*)
+          # Probably 32-bit MacOS X object file:
+          #   Mach-O object ppc
+          pike_cv_default_compiler_abi=32
+	  ;;
         *)
           # Unknown. Probably cross-compiling.
           PIKE_MSG_WARN([Unrecognized object file format: $filetype])
@@ -1406,6 +1411,11 @@ AC_DEFUN(PIKE_SELECT_ABI,
       # or the corresponding 32 link.
       extra_abi_dirs=`isainfo -v 2>/dev/null|awk "/$pike_cv_abi"'-bit/ { print "/" [$]2 }'`
     fi
+    if test "x`uname -p`" = "xpowerpc"; then
+      # MacOS X
+      # The 64-bit libraries are typically in the subdirectory ppc64.
+      extra_abi_dirs="$extra_abi_dirs /ppc$pike_cv_abi"
+    fi
     pike_cv_abi_suffixes="$pike_cv_abi /$pike_cv_abi $extra_abi_dirs /."
   ])
   AC_MSG_RESULT($pike_cv_abi_suffixes)
@@ -1488,6 +1498,9 @@ AC_DEFUN(PIKE_CHECK_ABI_DIR,
 	      ;;
 	    *386*)
   	      abi_32=yes
+	      ;;
+	    *ppc*)
+              abi_32=yes
 	      ;;
 	  esac
 	  case "$filetype" in
