@@ -28,6 +28,7 @@ mapping(string:mixed) all_constants()
 {
   mapping(string:mixed) ret = predef::all_constants()+([]);
 
+  ret->all_constants = all_constants;
   ret->_describe_program = _describe_program;
   ret->sprintf = sprintf_76;
   ret->array_sscanf = array_sscanf_76;
