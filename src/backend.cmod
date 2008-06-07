@@ -2632,6 +2632,9 @@ int pdb_MY_FD_SET(int *pfd, int fd, int filter)
   return kevent(*pfd, ev, 2, NULL, 0, NULL);
 }
 
+#define pdb_MY_FD_CLR_RDBAND(SET, FD)
+#define pdb_MY_FD_CLR_WRBAND(SET, FD)
+
 #endif
 
 /*
