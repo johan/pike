@@ -244,7 +244,10 @@ static class Pike_0_6_master
 			   new_env)
   {
     compat_environment = new_env;
-    if (!new_env) compat_environment_copy = 0;
+    if (!new_env)
+      compat_environment_copy = 0;
+    else if (!compat_environment_copy)
+      compat_environment_copy = ([]);
   }
 #pragma deprecation_warnings
 
