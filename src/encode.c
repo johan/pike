@@ -2946,7 +2946,7 @@ static void decode_value2(struct decode_data *data)
 			   "Cannot decode objects without a "
 			   "\"decode_object\" function in the codec.\n");
 	    apply_low(data->codec,fun,2);
-	    if ((Pike_sp[-1].type == T_ARRAY) &&
+	    if ((Pike_sp[-1].type == T_ARRAY) && o->prog &&
 		((fun = FIND_LFUN(o->prog, LFUN_CREATE)) != -1)) {
 	      /* Call lfun::create(@args). */
 	      INT32 args;
