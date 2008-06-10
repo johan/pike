@@ -1709,6 +1709,11 @@ struct node_s *program_magic_identifier (struct program_state *state,
 	   state_depth, inherit_num, ident->str, colon_colon_ref);
 #endif
 
+  if (!inherit_num && TEST_COMPAT(7,6)) {
+    /* Pike 7.6 and earlier couldn't refer to the current inherit. */
+    inherit_num = -1;
+  }
+
   if ((inherit_num == -1) || (!TEST_COMPAT(7,6) && (inherit_num >= 0))) {
     if (ident == this_string) {
       /* Handle this. */
