@@ -3437,7 +3437,7 @@ PIKECLASS PollDeviceBackend
 
     if (THIS->set >= 0)
       fd_close(THIS->set);
-    unregister_pdb_backend(me);
+    unregister_pdb_backend(THIS);
   }
 }
 
