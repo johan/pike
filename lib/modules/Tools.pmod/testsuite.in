@@ -186,6 +186,9 @@ test_hilfe("class B { int i; void create(int x) { i=x; } }", "")
 test_hilfe("object b=B(3);", "")
 test_hilfe("b->i;", "3");
 
+test_hilfe("sscanf(\"abc\"[0..2],\"%s\",string s);", "1")
+test_hilfe("s;","\"abc\"")
+
 test_do( add_constant("testhilfe") )
 
 test_true([[ Tools.Hilfe.StdinHilfe ]])

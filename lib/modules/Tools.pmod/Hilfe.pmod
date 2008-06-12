@@ -1079,7 +1079,9 @@ class Expression {
     // Any sequence beginning with any of these can't be
     // a type declaration.
     if( (< "break", "continue", "class", "!", "-",
-           "(", "~", "[", "`", "else" >)[ t ] )
+           "(", "~", "[", "`", "else", ".." >)[ t ] )
+      return -1;
+    if( t[0]>='0' && t[0]<='9' )
       return -1;
     if( notype[ t ] )
       return -1;
