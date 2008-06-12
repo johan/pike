@@ -1670,6 +1670,11 @@ static void insert_current_major(struct cpp *this,
  *! This define contains the file path and name of the source file.
  */
 
+/*! @decl constant __DIR__
+ *!
+ *! This define contains the directory path of the source file.
+ */
+
 /*! @decl constant __DATE__
  *!
  *! This define contains the current date at the time of compilation,
