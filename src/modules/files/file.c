@@ -3474,7 +3474,7 @@ static void file_dup2(INT32 args)
  *!   Duplicate the file.
  *!
  *! @seealso
- *!   [@dup2()]
+ *!   @[dup2()]
  */
 static void file_dup(INT32 args)
 {
