@@ -145,7 +145,7 @@ struct fd_callback_box
     box__->events = (EVENTS);						\
     box__->revents = 0;							\
     box__->callback = (CALLBACK);					\
-    hook_fd_callback_box (box__);					\
+    if (box__->backend) hook_fd_callback_box (box__);			\
   } while (0)
 
 /* The event types. */
