@@ -1507,13 +1507,15 @@ static void insert_current_dir_as_string(struct cpp *this,
                                          struct string_builder *tmp)
 {
   ref_push_string(this->current_file);
-  push_constant_text("..");
 #ifdef __NT__
+  push_constant_text("..");
   f_combine_path_nt(2);
 #else
 #ifdef __amigaos__
+  push_constant_text("/");
   f_combine_path_amigaos(2);
 #else
+  push_constant_text("..");
   f_combine_path_unix(2);
 #endif
 #endif

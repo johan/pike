@@ -8484,7 +8484,13 @@ test_true( rm("conftest.h") )
 
 test_true(intp(__LINE__))
 test_true(stringp(__FILE__))
-test_eq(combine_path(__FILE__,".."),__DIR__)
+test_eq(combine_path(__FILE__,
+#ifdef __amigaos__
+"/"
+#else
+".."
+#endif
+),__DIR__)
 test_true(stringp(__DATE__))
 test_true([[ sscanf(__DATE__, "%3s %d %d", string m, int d, int y) == 3 &&
 	     search(({"Jan", "Feb", "Mar", "Apr", "May", "Jun",
