@@ -1457,7 +1457,7 @@ PIKECLASS Backend
 					   struct Backend_struct *new)
   {
     struct Backend_struct *old = box->backend;
-    check_box (box, INT_MAX);
+    if (old) check_box (box, INT_MAX);
 
 #ifdef PIKE_DEBUG
     if (!new) Pike_fatal ("New backend is invalid.\n");
