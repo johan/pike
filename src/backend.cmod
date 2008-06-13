@@ -1488,8 +1488,6 @@ PIKECLASS Backend
     }
   }
 
-  static void gdb_breakpoint(void) {}
-
   PMOD_EXPORT void change_fd_for_box (struct fd_callback_box *box, int new_fd)
   {
     int old_fd = box->fd;
