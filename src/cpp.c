@@ -1506,8 +1506,8 @@ static void insert_current_dir_as_string(struct cpp *this,
                                          struct define_argument *args,
                                          struct string_builder *tmp)
 {
-  push_string(this->current_file);
-  push_text("..");
+  ref_push_string(this->current_file);
+  push_constant_text("..");
 #ifdef __NT__
   f_combine_path_nt(2);
 #else
