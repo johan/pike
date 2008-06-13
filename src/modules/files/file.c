@@ -3327,7 +3327,7 @@ static void file_handle_events(int event)
     case PROG_EVENT_INIT:
       f->box.backend = NULL;
       init_fd (-1, 0, 0);
-      f->box.ref_obj = o;
+      INIT_FD_CALLBACK_BOX(&f->box, NULL, o, f->box.fd, 0, got_fd_event);
       break;
 
     case PROG_EVENT_EXIT:
