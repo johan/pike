@@ -3501,7 +3501,8 @@ static void file_dup(INT32 args)
   push_object(o);
 }
 
-/*! @decl int(0..1) open_socket(int|void port, string|void addr, int|void family)
+/*! @decl int(0..1) open_socket(int|void port, string|void addr, @
+ *!                             int|void family)
  */
 static void file_open_socket(INT32 args)
 {
