@@ -490,6 +490,10 @@ extern struct program *file_program;
  *! If no connection request is waiting and the port is in nonblocking
  *! mode (i.e. an accept callback is installed) then zero is returned.
  *! Otherwise this function waits until a connection has arrived.
+ *!
+ *! @note
+ *!   In Pike 7.7 and later the resulting file object will be assigned
+ *!   to the same backend as the port object.
  */
 
 static void port_accept(INT32 args)
@@ -531,6 +535,11 @@ static void port_accept(INT32 args)
 
   my_set_close_on_exec(fd,1);
   o=file_make_object_from_fd(fd,FILE_READ | FILE_WRITE, SOCKET_CAPABILITIES);
+
+  if (this->box.backend) {
+    struct my_file *f = (struct my_file *)o->storage;
+    change_backend_for_box(&f->box, this->box.backend);
+  }
 
   pop_n_elems(args);
   push_object(o);
