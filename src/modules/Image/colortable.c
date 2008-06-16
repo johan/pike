@@ -3750,7 +3750,7 @@ void image_colortable_index_32bit(INT32 args)
 					   (unsigned INT32 *)ps->str,
 					   src->xsize*src->ysize,src->xsize))
    {
-      free_string(end_shared_string(ps));
+      do_free_unlinked_pike_string (ps);
       SIMPLE_BAD_ARG_ERROR("Colortable.index",1,"non-empty image object");
       return;
    }

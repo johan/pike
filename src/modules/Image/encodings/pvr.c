@@ -648,7 +648,7 @@ void image_pvr_f_encode(INT32 args)
     if(twiddle)
       attr ^= MODE_TWIDDLE^MODE_COMPRESSED;
     else {
-      free_string(end_shared_string(res));
+      do_free_unlinked_pike_string (res);
       Pike_error("Image.PVR.encode: illegal image size for VQ compression\n");
     }
   }

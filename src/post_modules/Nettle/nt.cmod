@@ -112,7 +112,7 @@ PIKECLASS CryptContext
     }
     else {
       pop_n_elems(args);
-      free_string(end_shared_string(res));
+      do_free_unlinked_pike_string (res);
       push_int(0);
     }
   }

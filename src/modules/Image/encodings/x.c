@@ -638,7 +638,7 @@ static void image_x_encode_pseudocolor_1byte(INT32 args,
       if (bit==8) *(++d)=0,bit=0;
    }
 
-   free_string(end_shared_string(dest));
+   do_free_unlinked_pike_string (dest);
    pop_n_elems(args);
    push_string(end_shared_string(dest2));
 }
@@ -663,7 +663,7 @@ static void image_x_encode_pseudocolor_2byte(INT32 args,
 					  (unsigned char*)(dest->str),
 					  img->xsize*img->ysize,img->xsize))
    {
-      free_string(end_shared_string(dest));
+      do_free_unlinked_pike_string (dest);
       Pike_error("Image.x.encode_pseudocolor: colortable not initialised.\n");
    }
 
@@ -724,7 +724,7 @@ static void image_x_encode_pseudocolor_2byte(INT32 args,
       if (bit==8) *(++d)=0,bit=0;
    }
 
-   free_string(end_shared_string(dest));
+   do_free_unlinked_pike_string (dest);
    pop_n_elems(args);
    push_string(end_shared_string(dest2));
 }
