@@ -261,8 +261,7 @@ static void exit_stor(struct object *o)
     s->replace = NULL;
   }
 
-  reset_string_builder(&s->strbuild);
-  free_string(finish_string_builder(&s->strbuild));
+  free_string_builder(&s->strbuild);
 }
 
 static void f_std_feed(INT32 args, ptrdiff_t (*func)(const p_wchar0 *,

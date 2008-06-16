@@ -1445,8 +1445,7 @@ static void exit_stor(struct object *o)
     s->retain = NULL;
   }
 
-  reset_string_builder(&s->strbuild);
-  free_string(finish_string_builder(&s->strbuild));
+  free_string_builder(&s->strbuild);
 }
 
 static void init_enc_stor(struct object *o)
@@ -1479,8 +1478,7 @@ static void exit_enc_stor(struct object *o)
     s->replace = NULL;
   }
 
-  reset_string_builder(&s->strbuild);
-  free_string(finish_string_builder(&s->strbuild));
+  free_string_builder(&s->strbuild);
 }
 
 void iso2022_init(void)
