@@ -9,6 +9,8 @@
  * 2004-11-02 Henrik Grubbström
  */
 
+constant description = "Creates a Wix modules source XML file.";
+
 #if constant(Standards.UUID.make_version3)
 
 int main(int argc, array(string) argv)

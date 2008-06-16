@@ -3,6 +3,8 @@
 
 /* $Id$ */
 
+constant description = "Executes tests according to testsuite files.";
+
 #if !constant(_verify_internals)
 #define _verify_internals()
 #endif
