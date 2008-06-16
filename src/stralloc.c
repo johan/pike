@@ -602,7 +602,7 @@ BLOCK_ALLOC(short_pike_string2, SHORT_STRING_BLOCK)
      } \
    } while(0)
 
-#define really_free_pike_string(s) do { \
+#define free_unlinked_pike_string(s) do { \
     if (s->len <= SHORT_STRING_THRESHOLD) { \
       really_free_short_pike_string(s); \
     } else { \
@@ -1036,16 +1036,10 @@ PMOD_EXPORT void do_free_string(struct pike_string *s)
     free_string(s);
 }
 
-PMOD_EXPORT void do_really_free_string(struct pike_string *s)
+PMOD_EXPORT void do_free_unlinked_pike_string(struct pike_string *s)
 {
   if (s)
-    really_free_string(s);
-}
-
-PMOD_EXPORT void do_really_free_pike_string(struct pike_string *s)
-{
-  if (s)
-    really_free_pike_string(s);
+    free_unlinked_pike_string(s);
 }
 
 PMOD_EXPORT void really_free_string(struct pike_string *s)
@@ -1073,8 +1067,14 @@ PMOD_EXPORT void really_free_string(struct pike_string *s)
 #endif
   if (!(s->flags & STRING_NOT_SHARED))
     unlink_pike_string(s);
-  really_free_pike_string(s);
+  free_unlinked_pike_string(s);
   GC_FREE_SIMPLE_BLOCK(s);
+}
+
+PMOD_EXPORT void do_really_free_string(struct pike_string *s)
+{
+  if (s)
+    really_free_string(s);
 }
 
 PMOD_EXPORT void debug_free_string(struct pike_string *s)
@@ -2074,7 +2074,7 @@ void cleanup_shared_string_table(void)
     {
       next=s->next;
 #ifdef REALLY_FREE
-      really_free_pike_string(s);
+      free_unlinked_pike_string(s);
 #else
       s->next=0;
 #endif

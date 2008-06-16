@@ -701,7 +701,7 @@ PMOD_EXPORT void f_upper_case(INT32 args)
 	  }
 
 	/* Discard the too narrow string and use the new one instead. */
-	do_really_free_pike_string(ret);
+	do_free_unlinked_pike_string(ret);
 	ret = wret;
 	break;
       }

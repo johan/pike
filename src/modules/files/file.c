@@ -480,7 +480,7 @@ static struct pike_string *do_read(int fd,
 
     str=begin_shared_string(r);
 
-    SET_ONERROR(ebuf, do_really_free_pike_string, str);
+    SET_ONERROR(ebuf, do_free_unlinked_pike_string, str);
 
     do{
       int fd=FD;
@@ -507,7 +507,7 @@ static struct pike_string *do_read(int fd,
 	*err=e;
 	if(!bytes_read)
 	{
-	  do_really_free_pike_string(str);
+	  do_free_unlinked_pike_string(str);
 	  UNSET_ONERROR(ebuf);
 	  return 0;
 	}
@@ -612,7 +612,7 @@ static struct pike_string *do_read_oob(int fd,
 
     str=begin_shared_string(r);
 
-    SET_ONERROR(ebuf, do_really_free_pike_string, str);
+    SET_ONERROR(ebuf, do_free_unlinked_pike_string, str);
 
     do{
       int e;
@@ -639,7 +639,7 @@ static struct pike_string *do_read_oob(int fd,
 	*err=e;
 	if(!bytes_read)
 	{
-	  do_really_free_pike_string(str);
+	  do_free_unlinked_pike_string(str);
 	  UNSET_ONERROR(ebuf);
 	  return 0;
 	}
