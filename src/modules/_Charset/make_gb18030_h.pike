@@ -287,7 +287,7 @@ int main(int argc, array(string) argv)
 			"\n"
 			"#define NUM_GB18030E_INFO %d\n"
 			"\n"
-			"static const struct gb18030e_info * const\n"
+			"static const struct gb18030e_info *\n"
 			"  get_gb18030e_info(p_wchar2 u)\n"
 			"{\n"
 			"  static int last_j;\n"
