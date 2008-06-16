@@ -1104,7 +1104,7 @@ def: modifiers optional_attributes type_or_error optional_constant optional_star
   {
     if ($2)
       free_node($2);
-    free_type(compiler_pop_type());
+    compiler_discard_type();
   }
     '(' arguments ')' block_or_semi
   {
