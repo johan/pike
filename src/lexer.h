@@ -602,20 +602,22 @@ static int low_yylex(struct lex *lex, YYSTYPE *yylval)
 	     (INDEX_CHARP(buf, len-1, SHIFT) != '_') ||
 	     (INDEX_CHARP(buf, 0, SHIFT) != '_') ||
 	     (INDEX_CHARP(buf, 1, SHIFT) != '_')) break;
-	  /* Double underscore before and after is reserved for keywords. */
+	  {
+	    /* Double underscore before and after is reserved for keywords. */
 #if (SHIFT == 0)
-	  struct pike_string *tmp = make_shared_binary_string(buf, len);
+	    struct pike_string *tmp = make_shared_binary_string(buf, len);
 #else /* SHIFT != 0 */
 #if (SHIFT == 1)
-	  struct pike_string *tmp = make_shared_binary_string1((p_wchar1 *)buf,
-							       len);
+	    struct pike_string *tmp = make_shared_binary_string1((p_wchar1 *)buf,
+								 len);
 #else /* SHIFT != 1 */
-	  struct pike_string *tmp = make_shared_binary_string2((p_wchar2 *)buf,
-							       len);
+	    struct pike_string *tmp = make_shared_binary_string2((p_wchar2 *)buf,
+								 len);
 #endif /* SHIFT == 1 */
 #endif /* SHIFT == 0 */
-	  yylval->n=mkstrnode(tmp);
-	  free_string(tmp);
+	    yylval->n=mkstrnode(tmp);
+	    free_string(tmp);
+	  }
 	  return TOK_RESERVED;
 	}
       }
