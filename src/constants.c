@@ -93,11 +93,11 @@ int global_callable_flags=0;
 
 /* Eats one ref to 'type' and 'name' */
 PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
-				   struct pike_string *name,
-				   struct pike_type *type,
-				   int flags,
-				   optimize_fun optimize,
-				   docode_fun docode)
+					       struct pike_string *name,
+					       struct pike_type *type,
+					       int flags,
+					       optimize_fun optimize,
+					       docode_fun docode)
 {
   struct callable *f=alloc_callable();
   INIT_PIKE_MEMOBJ(f);
@@ -111,7 +111,14 @@ PMOD_EXPORT struct callable *low_make_callable(c_fun fun,
   f->internal_flags = global_callable_flags;
 #ifdef PIKE_DEBUG
   {
-    struct pike_type *z = check_call(function_type_string, type, 0);
+    struct pike_type *z = NULL;
+    add_ref(type);
+    type = check_splice_call(name, type, 1, mixed_type_string, NULL,
+			     CALL_INHIBIT_WARNINGS);
+    if (type) {
+      z = new_get_return_type(type, CALL_INHIBIT_WARNINGS);
+      free_type(type);
+    }
     f->may_return_void = (z == void_type_string);
     if(!z) Pike_fatal("Function has no valid return type.\n");
     free_type(z);
