@@ -3,7 +3,8 @@
 
 #pike __REAL_VERSION__
 
-constant version = ("$Revision$"/" ")[1];
+constant version =
+ sprintf("%d.%d.%d",(int)__REAL_VERSION__,__REAL_MINOR__,__REAL_BUILD__);
 constant description = "Replaces strings in files.";
 int(0..1) verbosity = 1; // more output
 int(0..1) overwrite = 1; // no backups

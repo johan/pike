@@ -336,7 +336,7 @@ Output control:
       --summarize           print a summary of the number of matches
 ";
 
-constant version = #"cgrep $Revision$
+constant version = sprintf(#"cgrep %d.%d.%d
 A token based grep with UI stolen from GNU grep.
 By Martin Nilsson 2003.
-";
+",(int)__REAL_VERSION__,__REAL_MINOR__,__REAL_BUILD__);
