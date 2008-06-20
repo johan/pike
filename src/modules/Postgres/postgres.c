@@ -243,8 +243,8 @@ static void f_create (INT32 args)
 		     &pass,
 		     &port_no);
 
-	if (port_no != -1) {
-	  if ((port_no >= 0) && (port_no < 65536)) {
+	if (port_no > 0) {
+	  if (port_no < 65536) {
 	    sprintf(port = port_buffer, "%d", port_no);
 	  } else {
 	    SIMPLE_ARG_TYPE_ERROR("create", 5, "int(0..65535)");
