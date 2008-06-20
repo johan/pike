@@ -1050,8 +1050,8 @@ int main(int argc, array(string) argv) {
 
   if( (!(xml_name && args->sync && args->xmlpath && args->baselang)) &&
       (!sizeof(files) || args->help) ) {
-    sscanf("$Revision$", "$"+"Revision: %s $", string v);
-    werror("\n  Locale Extractor Utility "+v+"\n\n");
+    werror("\n  Locale Extractor Utility %d.%d.%d\n\n",
+     (int)__REAL_VERSION__,__REAL_MINOR__,__REAL_BUILD__);
     werror("  Syntax: pike -x extract_locale [arguments] infile(s)\n\n");
     werror("  Arguments: --project=name  default: first found in infile\n");
     werror("             --config=file   default: [project].xml\n");

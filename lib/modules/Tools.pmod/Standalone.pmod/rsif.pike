@@ -3,7 +3,8 @@
 #pike __REAL_VERSION__
 
 inherit Tools.Standalone.process_files;
-string version = ("$Revision$"/" ")[1];
+string version =
+ sprintf("%d.%d.%d",(int)__REAL_VERSION__,__REAL_MINOR__,__REAL_BUILD__);
 string description = "Replaces strings in files.";
 string usage = #"[options] <from> <to> <files>
 
