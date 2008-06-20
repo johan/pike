@@ -115,8 +115,8 @@ static void pgres_destroy (struct object * o)
 			free_string(THIS->last_error);
 		THIS->last_error=NULL;
 	}
-	free_svalue(THIS->notify_callback);
-	free(THIS->notify_callback);
+	free_svalue(&THIS->notify_callback);
+	mark_free_svalue(&THIS->notify_callback);
 #if defined(PIKE_THREADS) && defined(PQ_THREADSAFE)
 	mt_destroy(&THIS->mutex);
 #endif
@@ -644,7 +644,7 @@ static void f_callback(INT32 args)
 
 	if (Pike_sp[-args].type==PIKE_T_INT) {
 		if (THIS->notify_callback->type!=PIKE_T_FREE) {
-			free_svalue(THIS->notify_callback);
+			free_svalue(&THIS->notify_callback);
 			mark_free_svalue (&THIS->notify_callback);
 		}
 		pop_n_elems(args);
