@@ -368,7 +368,9 @@ import SSL.constants;
   void create(string|void url, object|void context)
   {
 
-    info = ([ "code_revision" : ("$Revision$"/" ")[1] ]);
+    info = ([ "code_revision" :
+     sprintf("%d.%d.%d",(int)__REAL_VERSION__,__REAL_MINOR__,__REAL_BUILD__)
+    ]);
 
     if(!url || !sizeof(url))
       url = LDAP_DEFAULT_URL;
