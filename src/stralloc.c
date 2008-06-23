@@ -1606,7 +1606,7 @@ PMOD_EXPORT struct pike_string *realloc_unlinked_string(struct pike_string *a,
 
   if (a->len <= SHORT_STRING_THRESHOLD) {
     if (size <= SHORT_STRING_THRESHOLD) {
-      /* There's already place enough. */
+      /* There's already space enough. */
       a->len = size;
       low_set_index(a, size, 0);
       return a;
@@ -3034,13 +3034,14 @@ PMOD_EXPORT void free_string_builder(struct string_builder *s)
 
 PMOD_EXPORT struct pike_string *finish_string_builder(struct string_builder *s)
 {
-  /* Ensure NUL-termination */
-  low_set_index(s->s,s->s->len,0);
-  if (s->s->len <= SHORT_STRING_THRESHOLD) {
-    ptrdiff_t len = s->s->len;
+  ptrdiff_t len = s->s->len;
+  if (len != s->malloced) {
     s->s->len = s->malloced;
     s->s = realloc_unlinked_string(s->s, len);
   }
+  else
+    /* Ensure NUL-termination */
+    low_set_index(s->s,s->s->len,0);
   if(s->known_shift == s->s->size_shift)
     return low_end_shared_string(s->s);
   return end_shared_string(s->s);
