@@ -271,7 +271,6 @@ static void f_create (INT32 args)
 
 	if (!conn)
 		Pike_error ("Could not conneect to server\n");
-	THIS->dblink=conn;
 	if (PQstatus(conn)!=CONNECTION_OK) {
 		set_error(PQerrorMessage(conn));
 		THREADS_ALLOW();
@@ -281,7 +280,9 @@ static void f_create (INT32 args)
 		THREADS_DISALLOW();
 		Pike_error("Could not connect to database. Reason: \"%S\".\n",
 			   THIS->last_error);
+		conn=NULL;
 	}
+	THIS->dblink=conn;
 	pop_n_elems(args);
 }
 
@@ -344,6 +345,7 @@ static void f_select_db (INT32 args)
 		set_error(PQerrorMessage(conn));
 		PQfinish(conn);
 		Pike_error("Could not connect to database.\n");
+		conn=NULL;
 	}
 	THIS->dblink=conn;
 	pop_n_elems(args);
