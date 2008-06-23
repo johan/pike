@@ -188,6 +188,9 @@ void exit_pike_memory (void);
 #endif /* sizeof(char *) == 8 */
 #endif /* sizeof(char *) == 4 */
 
+/* MLEN is the length of the longest prefix of A to use for hashing.
+ * (If A is longer then additionally some bytes at the end are
+ * included.) */
 /* NB: RET should be an lvalue of type size_t. */
 #define DO_HASHMEM(RET, A, LEN, MLEN)			\
   do {							\
