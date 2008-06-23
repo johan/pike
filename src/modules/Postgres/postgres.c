@@ -343,7 +343,9 @@ static void f_select_db (INT32 args)
 	THREADS_DISALLOW();
 	if (PQstatus(conn)==CONNECTION_BAD) {
 		set_error(PQerrorMessage(conn));
+		PQ_LOCK();
 		PQfinish(conn);
+		PQ_UNLOCK();
 		Pike_error("Could not connect to database.\n");
 		conn=NULL;
 	}
