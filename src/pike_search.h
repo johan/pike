@@ -22,7 +22,6 @@ struct hubbe_search_link
 
 struct hubbe_searcher
 {
-  struct object *o; /* must be first */
   void *needle;
   ptrdiff_t needlelen;
 
@@ -33,7 +32,6 @@ struct hubbe_searcher
 
 struct boyer_moore_hubbe_searcher
 {
-  struct object *o; /* must be first */
   void *needle;
   ptrdiff_t needlelen;
 
@@ -59,18 +57,18 @@ struct SearchMojtVtable
   SearchMojtFunc1 func1;
   SearchMojtFunc2 func2;
   SearchMojtFuncN funcN;
-  void (*freeme)(void *);
 };
 
 typedef struct SearchMojt
 {
   const struct SearchMojtVtable *vtab;
   void *data;
+  struct object *container;	/* Refcounted if non-NULL. */
 } SearchMojt;
 
 struct pike_mem_searcher
 {
-  SearchMojt mojt;
+  SearchMojt mojt; /* Exception: mojt.container not refcounted here. */
   struct pike_string *s; /* search string */
   union memsearcher_data
   {

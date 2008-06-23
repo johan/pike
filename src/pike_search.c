@@ -20,6 +20,8 @@
 #include "pike_search.h"
 #include "bignum.h"
 
+#include <assert.h>
+
 ptrdiff_t pike_search_struct_offset;
 #define OB2MSEARCH(O) ((struct pike_mem_searcher *)((O)->storage+pike_search_struct_offset))
 #define THIS_MSEARCH ((struct pike_mem_searcher *)(Pike_fp->current_storage))
@@ -45,31 +47,12 @@ static PCHARP nil_searchN(void *no_data,
   return haystack;
 }
 
-static void nil_search_free(void *data) {}
-#define memchr_memcmp2_free nil_search_free
-#define memchr_memcmp3_free nil_search_free
-#define memchr_memcmp4_free nil_search_free
-#define memchr_memcmp5_free nil_search_free
-#define memchr_memcmp6_free nil_search_free
-#define memchr_search_free nil_search_free
-
-
 static const struct SearchMojtVtable nil_search_vtable = {
   (SearchMojtFunc0) nil_search,
   (SearchMojtFunc1) nil_search,
   (SearchMojtFunc2) nil_search,
   (SearchMojtFuncN) nil_searchN,
-  nil_search_free
 };
-
-
-static void free_mem_searcher(void *m)
-{
-  free_object(*(struct object **)m);
-}
-
-#define boyer_moore_hubbe_free free_mem_searcher
-#define hubbe_search_free  free_mem_searcher
 
 /* magic stuff for hubbesearch */
 /* NOTE: GENERIC_GET4_CHARS(PTR) must be compatible with
