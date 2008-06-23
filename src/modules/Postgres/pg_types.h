@@ -21,7 +21,7 @@ struct pgres_object_data {
 	PGconn *dblink;
 	struct pike_string *last_error;
 	PGresult * last_result;
-	struct svalue * notify_callback;
+	struct svalue notify_callback;
 	int dofetch;
 	int docommit;
 	int lastcommit;
