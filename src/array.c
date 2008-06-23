@@ -2285,6 +2285,7 @@ PMOD_EXPORT struct array *explode(struct pike_string *str,
     }
   }else{
     SearchMojt mojt;
+    ONERROR uwp;
     explode_searchfunc f = (explode_searchfunc)0;
     
     s=str->str;
@@ -2297,6 +2298,7 @@ PMOD_EXPORT struct array *explode(struct pike_string *str,
 			     del->len,
 			     str->len,
 			     del);
+    SET_ONERROR (uwp, do_free_object, mojt.container);
 
     switch(str->size_shift)
     {
@@ -2343,7 +2345,8 @@ PMOD_EXPORT struct array *explode(struct pike_string *str,
 
     ITEM(ret)[ret->size].type=T_STRING;
     ret->size++;
-    mojt.vtab->freeme(mojt.data);
+
+    CALL_AND_UNSET_ONERROR (uwp);
   }
   ret->type_field=BIT_STRING;
   return ret;
