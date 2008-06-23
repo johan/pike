@@ -3770,7 +3770,7 @@ PMOD_EXPORT void set_exit_callback(void (*exit)(struct object *))
  * the C level then you should add something like this to the recurse
  * callback so that Pike.count_memory remains accurate:
  *
- *   if (mc_count_bytes (Pike_fp->current_storage))
+ *   if (mc_count_bytes (Pike_fp->current_object))
  *     mc_counted_bytes += <size of the allocated memory block(s)>
  *
  * If the allocated memory is shared between objects then it gets more

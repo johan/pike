@@ -941,7 +941,7 @@ PIKECLASS mpq
 
   GC_RECURSE
   {
-    if (mc_count_bytes (THIS))
+    if (mc_count_bytes (Pike_fp->current_object))
       mc_counted_bytes +=
 #ifdef MPZ_T_HAS__MP_ALLOC
 	mpq_numref (THISMPQ)[0]._mp_alloc * sizeof (mp_limb_t) +
