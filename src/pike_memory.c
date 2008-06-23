@@ -2483,13 +2483,13 @@ void dump_memhdr_locations(struct memhdr *from,
       continue;
 
     
-    fprintf(stderr,"%*s%s %s (%d times) %s\n",
+    fprintf(stderr,"%*s%s %s (%d times)%s\n",
 	    indent,"",
 	    LOCATION_IS_DYNAMIC(l->location) ? "-->" : "***",
 	    LOCATION_NAME(l->location),
 	    l->times,
 	    find_location(&no_leak_memlocs, l->location) ? "" :
-	    ( from->flags & MEM_REFERENCED ? "*" : "!*!")
+	    ( from->flags & MEM_REFERENCED ? " *" : " !*!")
 	    );
 
     /* Allow linked memhdrs */
