@@ -119,11 +119,19 @@ object master()
   return __REAL_VERSION__::master()->get_compat_master(7, 2);
 }
 
+static Mapping.ShadowedMapping compat_all_constants =
+  Mapping.ShadowedMapping(predef::all_constants());
+
 mapping(string:mixed) all_constants()
 {
-  mapping(string:mixed) ret=predef::all_constants()+([]);
+  // Intentional lie in the return type.
+  mixed x = compat_all_constants;
+  return x;
+}
 
-#define ADD(X) ret->##X=X
+static void create()
+{
+#define ADD(X) compat_all_constants->##X=X
 
   ADD(all_constants);
   ADD(dirname);
@@ -147,7 +155,5 @@ mapping(string:mixed) all_constants()
   ADD(stardate);
   ADD(get_all_active_fd);
   ADD(fd_info);
-
-  return ret;
 }
 
