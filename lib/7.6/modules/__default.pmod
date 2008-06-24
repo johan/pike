@@ -24,14 +24,18 @@ object master()
   return __REAL_VERSION__::master()->get_compat_master(7, 6);
 }
 
+static object compat_all_constants =
+  __REAL_VERSION__::master()->CompatAllConstants (
+    (["all_constants": all_constants,
+      "_describe_program": _describe_program,
+      "sprintf": sprintf_76,
+      "array_sscanf": array_sscanf_76,
+      "master": master,
+    ]));
+
 mapping(string:mixed) all_constants()
 {
-  mapping(string:mixed) ret = predef::all_constants()+([]);
-
-  ret->all_constants = all_constants;
-  ret->_describe_program = _describe_program;
-  ret->sprintf = sprintf_76;
-  ret->array_sscanf = array_sscanf_76;
-  ret->master = master;
-  return ret;
+  // Intentional lie in the return type.
+  mixed x = compat_all_constants;
+  return x;
 }

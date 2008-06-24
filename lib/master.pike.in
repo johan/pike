@@ -681,6 +681,38 @@ static class Pike_7_6_master
 //!   @[get_compat_master()]
 static inherit Pike_7_6_master;
 
+class CompatAllConstants (mapping(string:mixed) compat_overrides)
+// Wrapper for the mapping returned by all_constants in compat mode.
+{
+  static mixed `[] (string sym)
+  {
+    mixed val = compat_overrides[sym];
+    if (zero_type (val)) val = predef::all_constants()[sym];
+    return val;
+  }
+  static mixed `-> (string sym)
+    {return `[] (sym);}
+
+  static mixed `[]= (string sym, mixed val)
+    {return predef::all_constants()[sym]= val;}
+  static mixed `->= (string sym, mixed val)
+    {return `[]= (sym, val);}
+
+  static array(string) _indices()
+    {return indices (predef::all_constants() | compat_overrides);}
+  static array(mixed) _values()
+    {return values (predef::all_constants() | compat_overrides);}
+
+  static mapping `+ (mapping other)
+    {return (predef::all_constants() | compat_overrides) + other;}
+  static mapping ``+ (mapping other)
+    {return other + (predef::all_constants() | compat_overrides);}
+  static mapping `| (mapping other)
+    {return (predef::all_constants() | compat_overrides) | other;}
+  static mapping ``| (mapping other)
+    {return other | (predef::all_constants() | compat_overrides);}
+}
+
 //! @appears error
 //! Throws an error. A more readable version of the code
 //! @expr{throw( ({ sprintf(f, @@args), backtrace() }) )@}.
