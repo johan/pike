@@ -607,6 +607,7 @@ PIKEFUN int m_generation(mapping|object m)
     if (fun >= 0) {
       apply_low(o, fun + id_level, 0);
       stack_pop_n_elems_keep_top(args);
+      return;
     }
   }
   SIMPLE_BAD_ARG_ERROR("m_generation", 1, "mapping");
