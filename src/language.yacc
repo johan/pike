@@ -411,12 +411,20 @@ low_program_ref: string_constant
 
     ref_push_string($1->u.sval.u.string);
     if (call_handle_inherit($1->u.sval.u.string)) {
+      STACK_LEVEL_CHECK(2);
       $$=mksvaluenode(Pike_sp-1);
       pop_stack();
     }
     else
       $$=mknewintnode(0);
+    STACK_LEVEL_CHECK(1);
     if($$->name) free_string($$->name);
+#ifdef PIKE_DEBUG
+    if (Pike_sp[-1].type != T_STRING) {
+      Pike_fatal("Compiler lost track of program name.\n");
+    }
+#endif /* PIKE_DEBUG */
+    /* FIXME: Why not use $1->u.sval.u.string here? */
     add_ref( $$->name=Pike_sp[-1].u.string );
     free_node($1);
 
