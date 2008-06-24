@@ -109,6 +109,7 @@ extern struct pike_string *type_check_system_string;
  *       ie use low_find_lfun(), and NOT FIND_LFUN()!
  */
 #define LFUN__SEARCH 45
+#define LFUN__M_GENERATION 46
 
 extern const char *const lfun_names[];
 
