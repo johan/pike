@@ -24,14 +24,16 @@ object master()
   return __REAL_VERSION__::master()->get_compat_master(7, 6);
 }
 
+mapping(string:mixed) all_constants_overrides = ([
+  "all_constants": all_constants,
+  "_describe_program": _describe_program,
+  "sprintf": sprintf_76,
+  "array_sscanf": array_sscanf_76,
+  "master": master,
+]);
+
 static object compat_all_constants =
-  __REAL_VERSION__::master()->CompatAllConstants (
-    (["all_constants": all_constants,
-      "_describe_program": _describe_program,
-      "sprintf": sprintf_76,
-      "array_sscanf": array_sscanf_76,
-      "master": master,
-    ]));
+  __REAL_VERSION__::master()->CompatAllConstants (all_constants_overrides);
 
 mapping(string:mixed) all_constants()
 {
