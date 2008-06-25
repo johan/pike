@@ -122,7 +122,7 @@ object master()
 static Mapping.ShadowedMapping compat_all_constants =
   Mapping.ShadowedMapping(predef::all_constants(),
 			  ([
-#define ADD(X) ##X: X
+#define ADD(X) #X: X
 
 			    ADD(all_constants),
 			    ADD(dirname),
