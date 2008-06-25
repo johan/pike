@@ -1640,7 +1640,7 @@ static void f_fetch_row(INT32 args)
 
     if(rc==OCI_NO_DATA)
     {
-      push_int(0);
+      push_undefined();
       return;
     }
 #ifdef POLLING_FETCH
@@ -2646,6 +2646,8 @@ PIKE_MODULE_INIT
   }
   NULL_program=end_program();
   add_program_constant("NULL", NULL_program, 0);
+
+  /* FIXME: These NULL objects should be derived from push_undefined */
 
   push_empty_string();
   add_object_constant("NULLstring",nullstring_object=clone_object(NULL_program,1),0);

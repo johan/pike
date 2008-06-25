@@ -345,14 +345,14 @@ static void f_fetch_row (INT32 args)
 	    THIS->cursor=0;
 	  } else {
 badresult:
-	    push_int(0);
+	    push_undefined();
 	    return;
 	  }
 	}
 	numfields=PQnfields(THIS->result);
 	for (j=0;j<numfields;j++) {
 	  if (PQgetisnull(THIS->result, THIS->cursor, j)) {
-	    push_int(0);
+	    push_undefined();
 	  } else {
 #if defined(HAVE_PQUNESCAPEBYTEA) && defined(BYTEAOID)
 	    void *binbuf = 0;

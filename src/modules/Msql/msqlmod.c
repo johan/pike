@@ -608,7 +608,7 @@ static void do_query (INT32 args)
 		row=msqlFetchRow(result);
 		for (k=0;k<num_fields;k++) {
 			if (!row[k]) {
-				push_int(0);
+				push_undefined();
 				continue;
 			}
 			push_text((char *)row[k]); break;

@@ -50,7 +50,8 @@ string emulate_bindings(string query, mapping(string|int:mixed)|void bindings,
   v=map(values(bindings),
 	lambda(mixed m) {
 	  if(multisetp(m)) m = indices(m)[0];
-	  return (stringp(m)? "'"+my_quote(m)+"'" : (string)m);
+	  return (stringp(m)? "'"+my_quote(m)+"'" :
+	   zero_type(m)?"NULL":(string)m);
 	});
   // Throws if mapping key is empty string.
   k=map(indices(bindings),lambda(string s){
