@@ -5092,12 +5092,12 @@ PMOD_EXPORT void f_gmtime(INT32 args)
 #ifdef HAVE_GMTIME_R
   tm = gmtime_r (&t, &tm_s);
 #elif defined (HAVE_GMTIME_S)
-  if (!gmtime_s (&tm_s, &t)) tm = &tm_s;
+  if (!gmtime_s (&tm_s, &t)) tm = &tm_s; else tm = NULL;
 #else
   tm = gmtime(&t);
 #endif
   if (!tm) Pike_error ("gmtime() on this system cannot handle "
-		       "the timestamp %ld.\n", (long) t);
+		       "the timestamp %"PRINTLONGEST"d.\n", (LONGEST) t);
   pop_n_elems(args);
   encode_struct_tm(tm);
 
