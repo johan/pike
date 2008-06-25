@@ -806,6 +806,9 @@ def: modifiers optional_attributes type_or_error optional_constant optional_star
 	      Pike_compiler->new_program->identifiers + e;
 	    add_ref(id->type);
 	    add_local_name(empty_pike_string, id->type, 0);
+	    /* Note: add_local_name() above will return e. */
+	    Pike_compiler->compiler_frame->variable[e].flags |=
+	      LOCAL_VAR_IS_USED;
 	  }
 	} else {
 	  for (e = 0; e < Pike_compiler->num_create_args; e++) {
@@ -813,6 +816,9 @@ def: modifiers optional_attributes type_or_error optional_constant optional_star
 	      Pike_compiler->new_program->identifiers + e;
 	    add_ref(id->type);
 	    add_local_name(empty_pike_string, id->type, 0);
+	    /* Note: add_local_name() above will return e. */
+	    Pike_compiler->compiler_frame->variable[e].flags |=
+	      LOCAL_VAR_IS_USED;
 	  }
 	}
 	$<number>$ = e;
@@ -2731,7 +2737,8 @@ class: TOK_CLASS line_number_info optional_identifier
       MAKE_CONST_STRING(create_string, "create");
       if (((ref_id = isidentifier(create_string)) < 0) ||
 	  (ref = PTR_FROM_INT(Pike_compiler->new_program, ref_id))->inherit_offset ||
-	  (id = ID_FROM_PTR(Pike_compiler->new_program, ref))->func.offset == -1) {
+	  (((id = ID_FROM_PTR(Pike_compiler->new_program, ref))->func.offset == -1) &&
+	   (Pike_compiler->compiler_pass == 2))) {
 	int e;
 	node *create_code = NULL;
 	struct pike_type *type = NULL;
