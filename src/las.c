@@ -3490,17 +3490,6 @@ void fix_type_field(node *n)
       int old_refs;
       INT32 max_args,args;
 
-      if (!match_types(CAR(n)->type, function_type_string) &&
-	  !match_types(CAR(n)->type, array_type_string)) {
-	yytype_report(REPORT_ERROR, NULL, 0, function_type_string,
-		      NULL, 0, CAR(n)->type,
-		      0, "Calling non function value.");
-	copy_pike_type(n->type, mixed_type_string);
-
-	/* print_tree(n); */
-	break;
-      }
-
 #ifdef NEW_ARG_CHECK
 
       args = 0;
@@ -3554,6 +3543,17 @@ void fix_type_field(node *n)
       free_type(f);
       break;
 #else /* !NEW_ARG_CHECK */
+
+      if (!match_types(CAR(n)->type, function_type_string) &&
+	  !match_types(CAR(n)->type, array_type_string)) {
+	yytype_report(REPORT_ERROR, NULL, 0, function_type_string,
+		      NULL, 0, CAR(n)->type,
+		      0, "Calling non function value.");
+	copy_pike_type(n->type, mixed_type_string);
+
+	/* print_tree(n); */
+	break;
+      }
 
       push_type(T_MIXED); /* match any return type */
       push_type(T_VOID);  /* even void */
