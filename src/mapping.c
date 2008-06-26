@@ -415,6 +415,8 @@ static struct mapping *rehash(struct mapping *m, int new_size)
   if(d_flag>1)  check_mapping(m);
 #endif
 
+  if (md->hashsize == new_size) return m;
+
   init_mapping(m, new_size, md->flags);
   debug_malloc_touch(m);
   new_md=m->data;
@@ -1009,10 +1011,11 @@ PMOD_EXPORT void map_delete_no_free(struct mapping *m,
   {
     debug_malloc_touch(m);
     rehash(m, MAP_SLOTS(m->data->size + !!md->generation_cnt));
+    if (m->data->hashsize)
+      m->data->flags |= MAPPING_DIRTY;
   }
-
-  /* Note: md may be invalid here dure to the rehash above. */
-  m->data->flags |= MAPPING_DIRTY;
+  else
+    md->flags |= MAPPING_DIRTY;
 
 #ifdef PIKE_DEBUG
   if(d_flag>1)  check_mapping(m);
