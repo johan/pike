@@ -9131,7 +9131,7 @@ void init_builtin_efuns(void)
 
   ADD_EFUN("hash_value",f_hash_value,tFunc(tMix,tInt),OPT_TRY_OPTIMIZE);
 
-#if 0
+#if 1
   ADD_EFUN2("indices",f_indices,
 	    tIfnot(tFuncV(tNone,tNot(tOr6(tArray, tMap(tMix, tMix), tSet(tMix),
 					  tStr, tObj, tPrg(tObj))),
