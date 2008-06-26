@@ -1208,10 +1208,8 @@ new_arg_name: type7 optional_dot_dot_dot optional_identifier
 		 $3->u.sval.u.string);
     
     i = add_local_name($3->u.sval.u.string, compiler_pop_type(),0);
-    if (i >= 0 &&
-	(!$3->u.sval.u.string->len ||
-	 !(THIS_COMPILATION->lex.pragmas & ID_STRICT_TYPES))) {
-      /* Only warn about unused arguments in strict types mode. */
+    if (i >= 0) {
+      /* Don't warn about unused arguments. */
       Pike_compiler->compiler_frame->variable[i].flags |= LOCAL_VAR_IS_USED;
     }
     free_node($3);
