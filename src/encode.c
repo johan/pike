@@ -800,7 +800,7 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 	encode_value2(ITEM(Pike_sp[-1].u.array)+i, data, 0); /* values */
       }
       pop_n_elems(2);
-      /* FIXME: What about flags and generation_cnt? */
+      /* FIXME: What about flags? */
       break;
 
     case T_MULTISET: {

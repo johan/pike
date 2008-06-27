@@ -159,7 +159,6 @@ const char *const lfun_names[]  = {
   "`[..]",
   /* NOTE: After this point there are only fake lfuns. */
   "_search",
-  "_m_generation",
 };
 
 struct pike_string *lfun_strings[NELEM(lfun_names)];
@@ -217,7 +216,6 @@ static const char *const raw_lfun_types[] = {
   tFuncV(tZero tRangeBound tZero tRangeBound, tVoid, tMix), /* "`[..]" */
   /* NOTE: After this point there are only fake lfuns. */
   tFuncV(tZero tOr(tZero, tVoid), tVoid, tMix), /* "_search", */
-  tFuncV(tNone,tVoid,tInt),	/* "_m_generation", */
 };
 
 /* These two are not true LFUNs! */
@@ -1121,14 +1119,6 @@ static struct pike_type *lfun_setter_type_string = NULL;
  *!
  *! @seealso
  *!   @[predef::search()]
- */
-
-/*! @decl int lfun::_m_generation()
- *!
- *!   Generation callback.
- *!
- *! @seealso
- *!   @[predef::m_generation()]
  */
 
 /*! @decl mixed lfun::`symbol()

@@ -17,7 +17,6 @@
 #define MAPPING_WEAK_VALUES	4
 #define MAPPING_WEAK		6
 #define MAPPING_FLAG_WEAK	6 /* Compat. */
-#define MAPPING_DIRTY		0x0100	/* Bump generation_cnt. */
 
 struct keypair
 {
@@ -33,7 +32,6 @@ struct mapping_data
   INT32 hardlinks;
   INT32 size, hashsize;
   INT32 num_keypairs;
-  INT32 generation_cnt;
   TYPE_FIELD ind_types, val_types;
   INT16 flags;
   struct keypair *free_list;
