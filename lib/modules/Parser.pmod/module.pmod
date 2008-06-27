@@ -391,7 +391,7 @@ string parse_html_entities(string in,void|int noerror)
    return html_entity_parser(noerror)->finish(in)->read();
 }
 
-static mapping(string:string) rev_html_entities;
+static mapping(int:string) rev_html_entities;
 
 //! Encode characters to HTML entities, e.g. turning @expr{"<"@} into
 //! @expr{"&lt;"@}.
