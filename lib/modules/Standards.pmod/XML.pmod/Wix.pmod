@@ -115,6 +115,7 @@ class Merge
       "src":source,
       "Language": language || "1033",
       "DiskId":"1",
+      "FileCompression": "yes",
     ]);
     return WixNode("Merge", attrs);
   }
