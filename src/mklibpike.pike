@@ -183,7 +183,7 @@ int main(int argc, array(string) argv)
     }
     string rettype = String.trim_whites(Parser.C.simple_reconstitute(info[0]));
     string params = Parser.C.simple_reconstitute(info[1]);
-    out->write("static %s (*vec_%s)%s;\n"
+    out->write("protected %s (*vec_%s)%s;\n"
 	       "%s %s%s\n"
 	       "{\n"
 	       // FIXME: Code to resolve the symbol here.

@@ -2856,7 +2856,7 @@ PIKECLASS Time
     f_Time_cq__backtick_2D_3E( args );
   }
 
-  /*! @decl static void create( int fast );
+  /*! @decl protected void create( int fast );
    *!
    *! If @[fast] is true, do not request a new time from the system,
    *! instead use the global current time variable.
@@ -2907,7 +2907,7 @@ PIKECLASS Timer
     return;
   }
 
-  /*! @decl static void create( int|void fast )
+  /*! @decl protected void create( int|void fast )
    *!   Create a new timer object. The timer keeps track of relative time
    *!   with sub-second precision.
    *!   

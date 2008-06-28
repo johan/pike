@@ -85,7 +85,7 @@ PIKECLASS Iterator
    *! if there is any.
    *!
    *! The iterator does not need to support being reused, so this
-   *! function is typically static.
+   *! function is typically protected.
    */
   PIKEFUN void create(void|mixed data)
     flags ID_STATIC;
