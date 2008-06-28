@@ -1514,24 +1514,36 @@ static struct mapping *or_mappings(struct mapping *a, struct mapping *b)
   if (!b_md->size) return copy_mapping(a);
   if (a_md == b_md) return copy_mapping(a);
 
-  /* Copy the second mapping. */
-  res = copy_mapping(b);
-  SET_ONERROR(err, do_free_mapping, res);
+  if (a_md->size <= b_md->size) {
+    /* Copy the second mapping. */
+    res = copy_mapping(b);
+    SET_ONERROR(err, do_free_mapping, res);
 
-  /* Add elements in a that aren't in b. */
-  NEW_MAPPING_LOOP(a_md) {
-    size_t h = k->hval % b_md->hashsize;
-    struct keypair *k2;
-    for (k2 = b_md->hash[h]; k2; k2 = k2->next) {
-      if ((k2->hval == k->hval) && is_eq(&k2->ind, &k->ind)) {
-	break;
+    /* Add elements in a that aren't in b. */
+    NEW_MAPPING_LOOP(a_md) {
+      size_t h = k->hval % b_md->hashsize;
+      struct keypair *k2;
+      for (k2 = b_md->hash[h]; k2; k2 = k2->next) {
+	if ((k2->hval == k->hval) && is_eq(&k2->ind, &k->ind)) {
+	  break;
+	}
+      }
+      if (!k2) {
+	mapping_insert(res, &k->ind, &k->val);
       }
     }
-    if (!k2) {
+    UNSET_ONERROR(err);
+  } else {
+    /* Copy the first mapping. */
+    res = copy_mapping(a);
+    SET_ONERROR(err, do_free_mapping, res);
+
+    /* Add all elements in b. */
+    NEW_MAPPING_LOOP(b_md) {
       mapping_insert(res, &k->ind, &k->val);
     }
+    UNSET_ONERROR(err);
   }
-  UNSET_ONERROR(err);
   return res;
 }
 
