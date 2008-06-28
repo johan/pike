@@ -5,7 +5,7 @@
 #if constant(thread_create)
 #define LOCK object m_key = mutex->lock()
 #define UNLOCK destruct(m_key)
-#define MUTEX static private object(Thread.Mutex) mutex = Thread.Mutex();
+#define MUTEX protected private object(Thread.Mutex) mutex = Thread.Mutex();
 #else
 #define LOCK
 #define UNLOCK
