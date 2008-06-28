@@ -350,7 +350,7 @@ struct reference
    * above. See ID_FROM_PTR and ID_FROM_INT. */
   unsigned INT16 identifier_offset;
 
-  /* ID_* flags - static, private etc.. */
+  /* ID_* flags - protected, private etc.. */
   unsigned INT16 id_flags;
 };
 
