@@ -127,7 +127,6 @@ PIKECLASS CryptContext
     if(THIS->handle)
     {
       CryptReleaseContext(THIS->handle, 0);
-      THIS->handle = 0;
     }
   }
 }

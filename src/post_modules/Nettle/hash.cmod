@@ -327,7 +327,6 @@ PIKECLASS HashState
 	  GET_META(Pike_fp->current_object);
 	assert(meta);
 	memset(THIS->ctx, 0, meta->context_size);
-        THIS->ctx = NULL;
       }
     }
 }
