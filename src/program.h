@@ -605,9 +605,6 @@ struct program
   unsigned INT32 num_clones;
 #endif /* PROFILING */
 
-  /* Normally the total allocated size. In Pike_compiler->
-   * malloc_size_program this is the number of elements in
-   * Pike_compiler->program which have been made executable so far. */
   size_t total_size;
 
 #define FOO(NUMTYPE,TYPE,ARGTYPE,NAME) TYPE * NAME ;

@@ -2547,8 +2547,6 @@ void low_start_new_program(struct program *p,
       Pike_compiler->new_program->PIKE_CONCAT(num_,NAME);
 #include "program_areas.h"
 
-    Pike_compiler->malloc_size_program->total_size = 0;
-
     {
       INT32 line=0, off=0;
       size_t len = 0;
