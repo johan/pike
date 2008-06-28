@@ -2442,12 +2442,14 @@ void dump_modules()
 			       delta_dump, options);
       int retcode=p->wait();
       if (retcode)
-	error_msg ("Dumping of some modules failed (not fatal) (0x%:08x)\n",
-		   retcode);
+	error_msg("Dumping of some modules failed (not fatal) (0x%:08x):\n"
+		  "%{  %O\n%}",
+		  retcode, delta_dump);
     };
     if (err) {
       error_msg ("Failed to spawn module dumper (not fatal):\n"
 		 "%s\n", describe_backtrace(err));
+      break;
     }
 
     offset += sizeof(delta_dump);
