@@ -5206,7 +5206,7 @@ ptrdiff_t eval_low(node *n,int print_error)
       size_t len = (prog->num_program - malloc_prog->total_size) *
 	sizeof (prog->program[0]);
       make_area_executable (start, len);
-endif
+#endif
       malloc_prog->total_size = prog->num_program;
     }
 
