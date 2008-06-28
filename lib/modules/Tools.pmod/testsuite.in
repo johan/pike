@@ -216,7 +216,7 @@ test_true([[ stringp( Tools.Legal.License.get_text() ) ]])
 test_any([[
   int ret=1;
   foreach(indices(Tools.Standalone);; string name)
-    if( programp(Tools.Standalone[name]) &&
+    if( name!="process_files" && programp(Tools.Standalone[name]) &&
         !stringp(Tools.Standalone[name]()->description) )
     {
       ret=0;
