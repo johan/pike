@@ -11,4 +11,3 @@ inherit Mysql.mysql_result;
 #else /* !constant(Mysql.mysql_result) */
 constant this_program_does_not_exist=1;
 #endif /* constant(Mysql.mysql_result) */
-

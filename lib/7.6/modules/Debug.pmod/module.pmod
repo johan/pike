@@ -12,4 +12,3 @@
 //! Debug function for showing the symbol table of a program.
 
 constant describe_program = predef::_describe_program;
-

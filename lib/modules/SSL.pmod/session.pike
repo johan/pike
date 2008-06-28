@@ -330,4 +330,3 @@ array(.state) new_client_states(string client_random, string server_random,
 }
 
 #endif // constant(SSL.Cipher.CipherSpec)
-

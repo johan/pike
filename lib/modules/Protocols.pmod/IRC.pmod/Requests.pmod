@@ -132,4 +132,3 @@ class mode
       return 1;
    }
 };
-

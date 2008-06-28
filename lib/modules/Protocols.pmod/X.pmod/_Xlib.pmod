@@ -284,5 +284,4 @@ array(string) amiwm_pens =
   "bardetail",          /* text/detail in screen-bar/menus */
   "barblock",           /* screen-bar/menus fill */
   "bartrim",            /* trim under screen-bar */
-}); 
-  
+});

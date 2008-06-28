@@ -130,4 +130,3 @@ void delete(string key, void|int(0..1) hard) {
   }
   return 0;
 }
-

@@ -382,5 +382,3 @@ constant this_program_does_not_exist=1;
 #endif
 
 // ------------- end of ASN.1 API hack -----------------------------
-
-

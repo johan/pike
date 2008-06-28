@@ -247,5 +247,3 @@ Index parse_xml(string|Parser.XML.Tree.Node n, void|string base) {
   .RDF rdf=.RDF()->parse_xml(n, base);
   return Index(rdf);
 }
-
-

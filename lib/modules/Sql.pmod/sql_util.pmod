@@ -205,4 +205,3 @@ class MySQLBrokenUnicodeWrapper
 }
 
 #endif
-

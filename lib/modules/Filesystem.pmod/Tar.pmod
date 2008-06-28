@@ -361,5 +361,3 @@ class `()
 	      tar && tar->filename, root, wd);
   }
 }
-
-

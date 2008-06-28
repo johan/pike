@@ -332,4 +332,3 @@ void hide_cursor() {
 }
 
 #endif /* constant(SDL.Surface) */
-

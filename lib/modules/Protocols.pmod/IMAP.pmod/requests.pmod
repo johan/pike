@@ -1051,4 +1051,3 @@ class find
     return ([ "action" : "finished" ]);
   }
 }
-

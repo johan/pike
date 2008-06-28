@@ -95,4 +95,3 @@ TYPE check_call(TYPE fun_type, TYPE ... arg_types)
   return ret;
 }
 #endif /* 0 */
-

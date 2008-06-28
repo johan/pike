@@ -9,4 +9,3 @@
 inherit Gmp;
 
 constant pow = predef::pow;
-

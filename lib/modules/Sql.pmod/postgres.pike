@@ -392,4 +392,3 @@ int|object big_query(object|string q, mapping(string|int:mixed)|void bindings)
 #else
 constant this_program_does_not_exist=1;
 #endif /* constant(Postgres.postgres) */
-

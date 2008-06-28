@@ -1971,4 +1971,3 @@ protected int ssl_close_callback (int called_from_real_backend)
 #else // constant(SSL.Cipher.CipherAlgorithm)
 constant this_program_does_not_exist = 1;
 #endif
-

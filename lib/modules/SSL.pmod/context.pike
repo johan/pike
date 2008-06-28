@@ -346,4 +346,3 @@ private void update_trusted_issuers()
 }
 
 #endif // constant(Gmp.mpz) && constant(Crypto.Hash)
-

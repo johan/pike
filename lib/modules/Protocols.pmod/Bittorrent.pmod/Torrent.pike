@@ -1380,4 +1380,3 @@ void destroy()
 constant this_program_does_not_exist=1;
 
 #endif /* constant(Crypto.SHA1) */
-

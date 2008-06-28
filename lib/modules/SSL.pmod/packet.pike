@@ -136,4 +136,3 @@ string send()
   return sprintf("%c%c%c%2c%s", content_type, @protocol_version,
 		 sizeof(fragment), fragment);
 }
-

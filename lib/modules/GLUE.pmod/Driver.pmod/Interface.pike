@@ -21,11 +21,3 @@ void swap_buffers();
 void exit();
 
 void init(void|string title, void|string icon);
-
-
-
-
-
-
-
-

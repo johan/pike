@@ -21,4 +21,3 @@
 void expire(Cache.Storage.Base storage) {
   throw("Override this!");
 }
-

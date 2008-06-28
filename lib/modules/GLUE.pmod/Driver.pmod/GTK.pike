@@ -204,4 +204,3 @@ void show_cursor() {
 }
 
 #endif /* constant(GTK.GLArea) */
-

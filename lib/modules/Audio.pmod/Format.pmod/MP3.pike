@@ -228,5 +228,3 @@
     DEBUG("ss2int: ret=%O\n", res);
     return res;
   }
-
-

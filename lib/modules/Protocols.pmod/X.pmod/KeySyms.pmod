@@ -1558,5 +1558,3 @@
     compose_state="";
     return _LookupKeysym( keysym );
   }
-
-

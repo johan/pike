@@ -424,4 +424,3 @@ void ShapedWindowImage(object in, object color, object|void alpha,
     }
   }
 }
-                      

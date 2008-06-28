@@ -456,5 +456,3 @@ array parse_dtd(string data,
 }
 
 /* define_entity? */
-
-

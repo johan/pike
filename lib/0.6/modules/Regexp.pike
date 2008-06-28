@@ -11,7 +11,7 @@ private string replace(string in, string|function(string:string) transform)
   replace;	// Disable warning for unused symbol...
 }
 
-static string _sprintf()
+protected string _sprintf()
 {
   return "Regexp 0.6";
 }

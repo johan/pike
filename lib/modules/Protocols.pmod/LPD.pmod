@@ -238,4 +238,3 @@ werror("job file:\n\n" + control  + "\n\n");
     jobnum=1;
   }
 }
-

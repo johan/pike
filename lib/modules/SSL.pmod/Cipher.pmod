@@ -480,4 +480,3 @@ array lookup(int suite,int version)
 #else // constant(Crypto.Hash)
 constant this_program_does_not_exist = 1;
 #endif
-

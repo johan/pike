@@ -42,4 +42,3 @@ void create(int l, int d, int version, string|void m, mixed|void t)
   packet::protocol_version = ({ 3, version });
   packet::fragment = sprintf("%c%c", level, description);
 }
-    

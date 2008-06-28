@@ -566,4 +566,3 @@ Parser.XML.Tree.SimpleRootNode get_xml_node()
 }
 
 #endif /* 0 */
-

@@ -1299,4 +1299,3 @@ constant asn1_bmp_string = BMPString;
 #else
 constant this_program_does_not_exist=1;
 #endif /* Gmp.mpz */
-

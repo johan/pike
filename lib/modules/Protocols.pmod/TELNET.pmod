@@ -1066,5 +1066,3 @@ class Readline
     ::close();
   }
 }
-
-

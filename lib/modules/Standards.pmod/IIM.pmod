@@ -368,5 +368,4 @@ mapping get_information(Stdio.File fd)
   }
 
   return res;
-}  
-
+}

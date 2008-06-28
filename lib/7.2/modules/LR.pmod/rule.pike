@@ -99,4 +99,3 @@ void create(int nt, array(string|int) r, function|string|void a)
 
   num_nonnullables = sizeof(r);
 }
-

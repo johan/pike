@@ -242,4 +242,3 @@ array(float) gluProject(float objx, float objy,
 #else /* constant(GL) */
 constant this_program_does_not_exist=1;
 #endif
-
