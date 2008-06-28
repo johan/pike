@@ -459,9 +459,13 @@ int(0..1) main(int num, array(string) args) {
 
   int T = time();
   if(has_value(args, "--version"))
-     werror("$Id$\n");
+    exit(0, "$Id$\n");
+
+  if(has_value(args, "--help"))
+    exit(0, "pike -x assemble_autodoc <structure file> <autodoc file>\n");
+
   if(num<3)
-    error("To few arguments\n");
+    exit(1," Too few arguments\n");
 
   werror("Parsing structure file %O.\n", args[1]);
   Node n = parse_file(args[1]);

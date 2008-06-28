@@ -31,10 +31,9 @@ int main(int n, array(string) args) {
     args -= ({ "--quiet" });
   } 
 
-  if(sizeof(args)<3) {
-    write("pike -x %s <destination.xml> <builddir>\n", args[0]);
-    write("pike -x %s --post-process <dest.xml> files_to_join.xml [...]\n",
-	  args[0]);
+  if(has_value(args, "--help") || sizeof(args)<3) {
+    write("pike -x join_autodoc <destination.xml> <builddir>\n");
+    write("pike -x join_autodoc --post-process <dest.xml> files_to_join.xml [...]\n");
     return 1;
   }
 
