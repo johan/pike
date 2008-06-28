@@ -1102,7 +1102,6 @@ static void name(INT32 args)						\
   if(THIS_PROGRAM == bignum_program)					\
   {									\
     double ret;								\
-  tail_recurse:								\
     for(e=0; e<args; e++)						\
     {									\
       switch(sp[e-args].type)						\
@@ -1563,7 +1562,6 @@ static void mpzmod_invert(INT32 args)
 static void mpzmod_fac(INT32 args)
 {
   struct object *res;
-  unsigned long n;
   if (mpz_sgn (THIS) < 0)
     Pike_error ("Cannot calculate factorial for negative integer.\n");
   if (!mpz_fits_ulong_p (THIS))
