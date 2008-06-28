@@ -574,7 +574,7 @@ PIKECLASS Shuffle
 		       object shuffler,
 		       mixed throttler,
 		       mixed backend )
-    flags ID_STATIC;
+    flags ID_PROTECTED;
   {
     struct Backend_struct*be = default_backend;
 
