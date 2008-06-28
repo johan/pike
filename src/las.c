@@ -5201,10 +5201,12 @@ ptrdiff_t eval_low(node *n,int print_error)
     foo.yes=0;
 
     if (prog->num_program > malloc_prog->total_size) {
+#ifdef PIKE_USE_MACHINE_CODE
       char *start = (char *) (prog->program + malloc_prog->total_size);
       size_t len = (malloc_prog->num_program - malloc_prog->total_size) *
 	sizeof (prog->program[0]);
       make_area_executable (start, len);
+endif
       malloc_prog->total_size = malloc_prog->num_program;
     }
 
