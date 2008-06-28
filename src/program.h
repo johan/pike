@@ -605,6 +605,9 @@ struct program
   unsigned INT32 num_clones;
 #endif /* PROFILING */
 
+  /* Normally the total allocated size. In Pike_compiler->
+   * malloc_size_program this is the number of elements in
+   * Pike_compiler->program which have been made executable so far. */
   size_t total_size;
 
 #define FOO(NUMTYPE,TYPE,ARGTYPE,NAME) TYPE * NAME ;
@@ -975,6 +978,7 @@ void yyexplain_not_implements(int severity_level,
 			      struct program *a, struct program *b);
 PMOD_EXPORT void *parent_storage(int depth);
 PMOD_EXPORT void change_compiler_compatibility(int major, int minor);
+void make_area_executable (char *start, size_t len);
 void make_program_executable(struct program *p);
 /* Prototypes end here */
 
