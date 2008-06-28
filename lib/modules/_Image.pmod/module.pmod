@@ -2,7 +2,7 @@
 
 // $Id$
 
-static constant fmts = ([
+protected constant fmts = ([
   "image/x-pnm" : "PNM",
   "image/jpeg" : "JPEG",
   "image/x-gimp-image" : "XCF",

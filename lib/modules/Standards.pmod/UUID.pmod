@@ -242,7 +242,7 @@ class UUID {
 
 // Internal clock sequence class. Only works for variant 4, but all others are
 // reserved, so it shouldn't be a problem in practice.
-static class ClkSeq
+protected class ClkSeq
 {
   int clk_seq = random(1<<14);
   int last_time;
@@ -276,7 +276,7 @@ static class ClkSeq
   }
 }
 
-static ClkSeq clk_seq = ClkSeq();
+protected ClkSeq clk_seq = ClkSeq();
 
 //! Returns the internal clock state. Can be used for persistent
 //! storage when an application is terminated.
@@ -497,3 +497,4 @@ UUID make_x500(string name) {
 }
 
 #endif
+

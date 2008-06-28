@@ -105,7 +105,7 @@ class MyMaster
     logmsg_long (describe_backtrace (trace));
   }
 
-  static void create()
+  protected void create()
   {
     object old_master = master();
     ::create();

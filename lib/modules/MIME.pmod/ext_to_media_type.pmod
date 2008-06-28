@@ -2,7 +2,7 @@
 
 #pike __REAL_VERSION__
 
-static constant small_ext2type = ([
+protected constant small_ext2type = ([
   "html" : "text/html",
   "txt"  : "text/plain",
   "css"  : "text/css",
@@ -12,7 +12,7 @@ static constant small_ext2type = ([
   "png"  : "image/png",
 ]);
 
-static mapping ext2type = ([
+protected mapping ext2type = ([
 
 // Last synchronized with IANA media types list: 2002-02-05 (except
 // applications)

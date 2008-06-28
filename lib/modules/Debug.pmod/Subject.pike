@@ -36,7 +36,7 @@
 
 #define PROXY(X,Y) X(mixed ... args) { ENTER(X); return Y; }
 
-static string id = "";
+protected string id = "";
 
 void create(mixed ... args)
 {

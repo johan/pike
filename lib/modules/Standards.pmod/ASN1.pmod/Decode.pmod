@@ -36,7 +36,7 @@ class Primitive
     raw = r;
   }
 
-  static string _sprintf(int t) {
+  protected string _sprintf(int t) {
     return t=='O' && sprintf("%O(%d)", this_program, combined_tag);
   }
 
@@ -77,7 +77,7 @@ class Constructed
     elements = e;
   }
 
-  static string _sprintf(int t) {
+  protected string _sprintf(int t) {
     return t=='O' && sprintf("%O(%d)", this_program, combined_tag);
   }
 }
@@ -221,3 +221,4 @@ constant constructed = Constructed;
 #else
 constant this_program_does_not_exist=1;
 #endif
+

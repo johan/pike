@@ -2,8 +2,8 @@
 
 // $Id$
 
-static constant name = "GNU General Public License 2";
-static constant text = #string "gpl.txt";
+protected constant name = "GNU General Public License 2";
+protected constant text = #string "gpl.txt";
 
 string get_name() {
   return name;

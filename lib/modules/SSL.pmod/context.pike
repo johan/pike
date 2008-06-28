@@ -68,7 +68,7 @@ array(string) get_authorities()
   return authorities;
 }
 
-static array(string) authorities = ({});
+protected array(string) authorities = ({});
 array(Tools.X509.TBSCertificate) authorities_cache = ({});
 
 //! Sets the list of trusted certificate issuers. 
@@ -95,7 +95,7 @@ array(array(string)) get_trusted_issuers()
   return trusted_issuers;
 }
 
-static array(array(string)) trusted_issuers = ({});
+protected array(array(string)) trusted_issuers = ({});
 array(array(Tools.X509.TBSCertificate)) trusted_issuers_cache = ({});
 
 //! Determines whether certificates presented by the peer are verified, or 
@@ -346,3 +346,4 @@ private void update_trusted_issuers()
 }
 
 #endif // constant(Gmp.mpz) && constant(Crypto.Hash)
+

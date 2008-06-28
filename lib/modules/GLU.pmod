@@ -179,7 +179,7 @@ void gluPickMatrix(float x, float y,
   glMultMatrix( m );
 }
 
-static void transform_point(array(float) out, array(float)m,
+protected void transform_point(array(float) out, array(float)m,
 			    array(float) in)
 {
 #define M(row,col)  m[col*4+row]
@@ -242,3 +242,4 @@ array(float) gluProject(float objx, float objy,
 #else /* constant(GL) */
 constant this_program_does_not_exist=1;
 #endif
+

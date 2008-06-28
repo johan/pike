@@ -344,7 +344,7 @@ array(Token) tokenize(array(string) s, void|string file)
   return ret;
 }
 
-static constant global_groupings = ([ "{":"}", "(":")", "[":"]" ]);
+protected constant global_groupings = ([ "{":"}", "(":")", "[":"]" ]);
 
 //! Fold sub blocks of an array of tokens into sub arrays,
 //! for grouping purposes.

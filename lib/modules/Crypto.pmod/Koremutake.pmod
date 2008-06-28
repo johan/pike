@@ -15,7 +15,7 @@
 //! pieces of information are a lot easier to remember than a sequence
 //! of digits.
 
-static constant table = ({
+protected constant table = ({
  "BA", "BE", "BI", "BO", "BU", "BY", "DA", "DE",
  "DI", "DO", "DU", "DY", "FA", "FE", "FI", "FO",
  "FU", "FY", "GA", "GE", "GI", "GO", "GU", "GY",
@@ -80,7 +80,7 @@ class `() {
   int block_size() { return 1; }
   int key_size() { return 0; }
 
-  static int mode;
+  protected int mode;
   this_program set_encrypt_key(void|mixed key) {
     key;
     mode = 0;

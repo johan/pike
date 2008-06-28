@@ -18,9 +18,9 @@
 
 inherit __joinnode;
 
-static array(string) local_path;
+protected array(string) local_path;
 
-static void create()
+protected void create()
 {
   ::create(({}));
 

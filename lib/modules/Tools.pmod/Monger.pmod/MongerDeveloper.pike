@@ -454,7 +454,7 @@ class xmlrpc_handler
   }
  
 
-  static class _caller (string n){
+  protected class _caller (string n){
 
     mixed `()(mixed ... args)
     {

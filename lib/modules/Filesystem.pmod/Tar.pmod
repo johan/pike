@@ -27,9 +27,9 @@ class _Tar  // filesystem
   {
     inherit Stdio.FakeFile;
 
-    static private int start, pos, len;
+    protected private int start, pos, len;
 
-    static string _sprintf(int t)
+    protected string _sprintf(int t)
     {
       return t=='O' && sprintf("Filesystem.Tar.ReadFile(%d, %d /* pos = %d */)",
 		     start, len, pos);
@@ -361,4 +361,5 @@ class `()
 	      tar && tar->filename, root, wd);
   }
 }
+
 

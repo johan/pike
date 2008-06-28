@@ -26,7 +26,7 @@
 
 //! an abstract class used to provide features for implimenting
 //! X11 extensions. Provides no useful functionality on its own.
-static class extension
+protected class extension
 {
   object dpy;
   int major, error, event;

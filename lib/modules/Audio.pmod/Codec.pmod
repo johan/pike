@@ -48,7 +48,7 @@ class decoder {
   //!
   //! @seealso
   //!  @[_Ffmpeg.ffmpeg], @[_Ffmpeg.CODEC_ID_MP2]
-  static void create(string|void codecname, object|void _codec) {
+  protected void create(string|void codecname, object|void _codec) {
     if(stringp(codecname))
       init(codecname);
   }
@@ -116,9 +116,10 @@ class decoder {
     return codec && codec->get_codec_status();
   }
 
-  static mixed _sprintf(int|void type) {
+  protected mixed _sprintf(int|void type) {
     return type=='O' && sprintf("Audio.Codec(/* %O */)", codec);
   }
 
 }
 #endif
+

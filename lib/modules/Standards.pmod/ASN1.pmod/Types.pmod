@@ -206,7 +206,7 @@ class Compound
     return this;
   }
 
-  static string _sprintf(int t) {
+  protected string _sprintf(int t) {
     return t=='O' && sprintf("%O(%s %O)", this_program, type_name, elements);
   }
 
@@ -246,7 +246,7 @@ class String
     return this;
   }
 
-  static string _sprintf(int t) {
+  protected string _sprintf(int t) {
     return t=='O' && sprintf("%O(%s, %O)", this_program, type_name, value);
   }
 
@@ -292,7 +292,7 @@ class Boolean
     return this;
   }
 
-  static string _sprintf(int t) {
+  protected string _sprintf(int t) {
     return t=='O' && sprintf("%O(%s)", this_program, (value?"TRUE":"FALSE"));
   }
 
@@ -351,7 +351,7 @@ class Integer
     return this;
   }
 
-  static string _sprintf(int t) {
+  protected string _sprintf(int t) {
     return t=='O' && sprintf("%O(%d %s)", this_program,
 			     value->size(), value->digits());
   }
@@ -433,7 +433,7 @@ class BitString
     return this;
   }
 
-  static string _sprintf(int t) {
+  protected string _sprintf(int t) {
     int size = sizeof(value)*8-unused;
     return t=='O' && sprintf("%O(%d %0"+size+"s)", this_program, size,
 			     ([object(Gmp.mpz)](Gmp.mpz(value, 256) >> unused))
@@ -537,7 +537,7 @@ class Identifier
     return this;
   }
 
-  static string _sprintf(int t) {
+  protected string _sprintf(int t) {
     return t=='O' && sprintf("%O(%s)", this_program, (array(string))id*".");
   }
 
@@ -1252,7 +1252,7 @@ class MetaExplicit
       return valid_types || types;
     }
 
-    static string _sprintf(int t) {
+    protected string _sprintf(int t) {
       return t=='O' && sprintf("%O(%s %d %O)", this_program, type_name,
 			       real_tag, contents);
     }
@@ -1299,3 +1299,4 @@ constant asn1_bmp_string = BMPString;
 #else
 constant this_program_does_not_exist=1;
 #endif /* Gmp.mpz */
+

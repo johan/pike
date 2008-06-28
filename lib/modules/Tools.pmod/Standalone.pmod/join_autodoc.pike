@@ -14,7 +14,7 @@ mapping sub_cache = ([]);
 
 int verbosity = 2;
 
-static constant Node = Parser.XML.Tree.SimpleNode;
+protected constant Node = Parser.XML.Tree.SimpleNode;
 
 int main(int n, array(string) args) {
 

@@ -113,13 +113,13 @@ mapping(int:multiset(int)) binary_fields = ([
   2: (<0>),
 ]);
 
-static int short_value(string str)
+protected int short_value(string str)
 {
   return (str[0]<<8)|str[1];
   //return (str[1]<<8)|str[0];
 }
 
-static mapping(string:string|array(string)) decode_photoshop_data(string data)
+protected mapping(string:string|array(string)) decode_photoshop_data(string data)
 {
   mapping(string:string|array(string)) res = ([]);
 
@@ -369,3 +369,4 @@ mapping get_information(Stdio.File fd)
 
   return res;
 }  
+

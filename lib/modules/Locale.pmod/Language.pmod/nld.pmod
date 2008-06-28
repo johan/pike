@@ -74,7 +74,7 @@ string date(int timestamp, string|void m)
     return snumber(num/(unit))+(name)+snumber(num%(unit))
  
 
-static string snumber(int num)
+protected string snumber(int num)
 {
   if(num<0)
     return "min "+snumber(-num);

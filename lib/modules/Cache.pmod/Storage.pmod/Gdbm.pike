@@ -54,7 +54,7 @@ class Data {
     sync();
   }
   
-  static void create(string key, Gdbm.gdbm data_db, 
+  protected void create(string key, Gdbm.gdbm data_db, 
 		     Gdbm.gdbm metadata_db, string dumped_metadata) {
     mapping m=decode_value(dumped_metadata);
     _key=key;

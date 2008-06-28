@@ -184,7 +184,7 @@ class Watchdog
   int verbose, timeout_phase;
   int start_time = time();
 
-  static inherit Tools.Testsuite.WatchdogFilterStream;
+  protected inherit Tools.Testsuite.WatchdogFilterStream;
 
   string format_timestamp()
   {

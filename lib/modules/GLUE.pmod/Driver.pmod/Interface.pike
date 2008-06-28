@@ -5,7 +5,7 @@
 
 // Internal interface class for Drivers.
 
-static void create( function event, function config );
+protected void create( function event, function config );
 
 void set_resolution( int(0..) x, int(0..) y );
 
@@ -21,6 +21,7 @@ void swap_buffers();
 void exit();
 
 void init(void|string title, void|string icon);
+
 
 
 

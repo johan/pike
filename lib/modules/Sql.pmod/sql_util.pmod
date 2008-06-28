@@ -64,7 +64,7 @@ string emulate_bindings(string query, mapping(string|int:mixed)|void bindings,
 //! Result object wrapper performing utf8 decoding of all fields.
 class UnicodeWrapper (
 		      // The wrapped result object.
-		      static object master_result
+		      protected object master_result
 		      )
 {
   //! Returns the number of rows in the result.
@@ -86,7 +86,7 @@ class UnicodeWrapper (
   }
 
   //! Cached @[fetch_fields()] result.
-  static array(int|mapping(string:mixed)) field_info;
+  protected array(int|mapping(string:mixed)) field_info;
 
   //! Returns Information about the fields in the result.
   //!
@@ -205,3 +205,4 @@ class MySQLBrokenUnicodeWrapper
 }
 
 #endif
+

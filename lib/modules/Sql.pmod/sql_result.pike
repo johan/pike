@@ -22,9 +22,9 @@ int index;
 //!
 //! @param res
 //!   Result to use as base.
-static void create(mixed res);
+protected void create(mixed res);
 
-static string _sprintf(int type, mapping|void flags)
+protected string _sprintf(int type, mapping|void flags)
 {
   int f = num_fields();
   catch( int r = num_rows() );
@@ -70,8 +70,8 @@ int|array(string|int) fetch_row();
 
 class _get_iterator
 {
-  static int|array(string|int) row = fetch_row();
-  static int pos = 0;
+  protected int|array(string|int) row = fetch_row();
+  protected int pos = 0;
 
   int index()
   {

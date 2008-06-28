@@ -5,7 +5,7 @@
 //! Contains functions and information to store and present
 //! copyright information about Pike and it's components.
 
-static mapping(string:array(string)) copyrights = ([
+protected mapping(string:array(string)) copyrights = ([
 
   "Pike":
   ({

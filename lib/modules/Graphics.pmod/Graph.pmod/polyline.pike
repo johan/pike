@@ -25,7 +25,7 @@ constant PI = 3.1415926535897932384626433832795080;
  * /grubba (who got tired of BG being so slow)
  */
 
-static array(float) init_cap_sin_table()
+protected array(float) init_cap_sin_table()
 {
   array(float) s_t = allocate(CAPSTEPS);
 
@@ -35,9 +35,9 @@ static array(float) init_cap_sin_table()
   return s_t;
 }
 
-static array(float) cap_sin_table = init_cap_sin_table();
+protected array(float) cap_sin_table = init_cap_sin_table();
 
-static array(float) init_cap_cos_table()
+protected array(float) init_cap_cos_table()
 {
   array(float) c_t = allocate(CAPSTEPS);
 
@@ -47,11 +47,11 @@ static array(float) init_cap_cos_table()
   return c_t;
 }
 
-static array(float) cap_cos_table = init_cap_cos_table();
+protected array(float) cap_cos_table = init_cap_cos_table();
 
 
 
-static private array(float) xyreverse(array(float) a)
+protected private array(float) xyreverse(array(float) a)
 {
   array(float) r = reverse(a);
   int n = sizeof(r)/2;

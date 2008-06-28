@@ -116,7 +116,7 @@ object|mapping der_decode(object data, mapping types)
   }
 }
 
-static mapping snmp_type_proc =
+protected mapping snmp_type_proc =
                     ([ 1 : Standards.ASN1.Types.asn1_boolean,
                        2 : Standards.ASN1.Types.asn1_integer,
                        3 : Standards.ASN1.Types.asn1_bit_string,

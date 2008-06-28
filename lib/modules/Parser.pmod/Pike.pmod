@@ -58,7 +58,7 @@ class UnterminatedStringError
   string err_str;
   //! The string that failed to be tokenized
 
-  static void create(string _err_str, void|array bt)
+  protected void create(string _err_str, void|array bt)
   { 
     err_str = _err_str;
     ::create(sprintf("Unterminated string: %O\n", err_str), bt);

@@ -54,14 +54,14 @@
     }
   }
 
-  static array(array(int)) bitrates_map =
+  protected array(array(int)) bitrates_map =
   ({
     ({0,32,64,96,128,160,192,224,256,288,320,352,384,416,448}),
     ({0,32,48,56,64,80,96,112,128,160,192,224,256,320,384}),
     ({0,32,40,48,56,64,80,96,112,128,160,192,224,256,320}),
   });
 
-  static array(string) channels_map =
+  protected array(string) channels_map =
   ({ "stereo", "joint", "dual", "single" });
 
   string|int get_data(int maxlen) {
@@ -228,4 +228,5 @@
     DEBUG("ss2int: ret=%O\n", res);
     return res;
   }
+
 

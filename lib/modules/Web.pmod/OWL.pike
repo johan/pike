@@ -52,7 +52,7 @@ void add_Thing(Resource c)
   add_statement(c, rdf_type, owl_Thing);
 }
 
-static Resource _add_list(Resource ... list_members)
+protected Resource _add_list(Resource ... list_members)
 {
   Resource list = rdf_nil;
 

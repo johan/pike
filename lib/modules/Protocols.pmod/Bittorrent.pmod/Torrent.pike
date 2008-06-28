@@ -445,7 +445,7 @@ void open_port(void|int port)
 
 // helper functions
 
-private static inline string generate_peer_id()
+private protected inline string generate_peer_id()
 {
    array v=array_sscanf(cvsid,"%*s %*s %d.%d %d/%d/%d");
    int day=Calendar.Day(@v[2..4])->julian_day()-2452991;
@@ -710,7 +710,7 @@ void start_update_tracker(void|int interval)
    update_tracker_loop();
 }
 
-static void update_tracker_loop()
+protected void update_tracker_loop()
 {
    call_out(update_tracker_loop,tracker_update_interval);
    if (!sizeof(peers))
@@ -1380,3 +1380,4 @@ void destroy()
 constant this_program_does_not_exist=1;
 
 #endif /* constant(Crypto.SHA1) */
+

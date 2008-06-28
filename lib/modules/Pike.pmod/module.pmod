@@ -64,7 +64,7 @@ program Decoder = [program] master()->Decoder;
 program Codec = [program] master()->Codec;
 
 #if 0
-static constant TYPE = typeof(typeof([mixed]0));
+protected constant TYPE = typeof(typeof([mixed]0));
 
 TYPE check_call(TYPE fun_type, TYPE ... arg_types)
 {
@@ -95,3 +95,4 @@ TYPE check_call(TYPE fun_type, TYPE ... arg_types)
   return ret;
 }
 #endif /* 0 */
+

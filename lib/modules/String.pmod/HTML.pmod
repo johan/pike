@@ -136,7 +136,7 @@ array(array(string)) pad_rows( array(array(string)) rows, void|string padding ) 
 //!   simple_obox
 class OBox {
 
-  static {
+  protected {
     string frame_color;
     string cell_color = "#ffffff";
     string width;
