@@ -302,7 +302,7 @@ void low_image_tiff_encode( struct buffer *buf,
   n = 0;
 
  retry:
-  tif = TIFFClientOpen( "memoryfile", "w", buf,
+  tif = TIFFClientOpen( "memoryfile", "w", (thandle_t) buf,
 			read_buffer, write_buffer,
 			seek_buffer, close_buffer,
 			size_buffer, map_buffer,
@@ -391,7 +391,7 @@ void low_image_tiff_encode( struct buffer *buf,
 	 */
 	CALL_AND_UNSET_ONERROR(tmp);
 
-	seek_buffer(buf, 0, SEEK_SET);
+	seek_buffer((thandle_t) buf, 0, SEEK_SET);
 	buf->real_len = 0;	/* Truncate file. */
 	n++;
 	goto retry;
@@ -433,7 +433,7 @@ void low_image_tiff_decode( struct buffer *buf,
   unsigned int i;
   uint32 w, h, *raster,  *s;
   rgb_group *di, *da=NULL;
-  tif = TIFFClientOpen("memoryfile", "r", buf,
+  tif = TIFFClientOpen("memoryfile", "r", (thandle_t) buf,
 		       read_buffer, write_buffer,
 		       seek_buffer, close_buffer,
 		       size_buffer, map_buffer,

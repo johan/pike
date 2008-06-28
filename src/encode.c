@@ -2190,7 +2190,7 @@ static int my_extract_char(struct decode_data *data)
    INT32 what, e;				\
    INT64 num;					\
    DECODE("decode_number");			\
-   X=(what & TAG_MASK) | (num<<4);		\
+   X=(what & TAG_MASK) | ((INT32) num<<4);	\
    EDB(5, fprintf(stderr, "%*s  ==>%ld\n",	\
 		  data->depth, "", (long) X));	\
   }while(0)					\

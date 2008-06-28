@@ -13,6 +13,7 @@ PMOD_EXPORT extern void debug_xfree(void *);
 PMOD_EXPORT extern void *debug_xmalloc(size_t);
 PMOD_EXPORT extern void *debug_xcalloc(size_t,size_t);
 PMOD_EXPORT extern void *debug_xrealloc(void *,size_t);
+PMOD_EXPORT char *debug_xstrdup(const char *src);
 
 #if defined (HAVE_EXECINFO_H) && defined (HAVE_BACKTRACE)
 /* GNU libc provides some tools to inspect the stack. */

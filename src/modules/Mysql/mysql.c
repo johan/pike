@@ -695,7 +695,6 @@ static void f_create(INT32 args)
 static void mysql__sprintf(INT32 args)
 {
   INT_TYPE type;
-  struct mapping * flags;
 
   if(args < 1)
     SIMPLE_TOO_FEW_ARGS_ERROR("_sprintf",2);
