@@ -10706,7 +10706,9 @@ PMOD_EXPORT void change_compiler_compatibility(int major, int minor)
 #include <sys/mman.h>
 #endif
 
+#ifdef HAVE_EXECINFO_H
 #include <execinfo.h>
+#endif
 
 void make_area_executable (char *start, size_t len)
 {
