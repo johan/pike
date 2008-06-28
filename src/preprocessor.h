@@ -1646,8 +1646,6 @@ static ptrdiff_t lower_cpp(struct cpp *this,
 	      } else {
 		/* Try macro expanding (Bug 2440). */
 		struct string_builder save = this->buf, tmp;
-		PCHARP ptr;
-		p_wchar2 c;
 		int save_line = this->current_line;
 		init_string_builder(&this->buf, SHIFT);
 

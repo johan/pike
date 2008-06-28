@@ -851,7 +851,6 @@ TH_RETURN_TYPE new_thread_func(void *data)
   struct object *thread_obj;
   struct thread_state *thread_state;
   JMP_BUF back;
-  INT32 tmp;
 
   THREADS_FPRINTF(0, (stderr,"new_thread_func(): Thread %p created...\n",
 		      arg.thread_state));
@@ -1028,7 +1027,6 @@ void f_thread_create(INT32 args)
   struct thread_starter arg;
   struct thread_state *thread_state =
     (struct thread_state *)Pike_fp->current_storage;
-  ONERROR err;
   int tmp;
 
   if (thread_state->status != THREAD_NOT_STARTED) {

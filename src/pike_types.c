@@ -7311,8 +7311,6 @@ void yyexplain_nonmatching_types(int severity_level,
        type_b->str[0]==T_OBJECT))
 #endif /* 0 */
   {
-    struct pike_string *s1, *s2;
-
     ref_push_type_value(type_a);
     yytype_report(severity_level, NULL, 0, NULL, a_file, a_line, NULL,
 		  1, "Expected: %O.");
@@ -7362,7 +7360,6 @@ static void low_make_pike_type(unsigned char *type_string,
 			       unsigned char **cont)
 {
   unsigned INT32 type;
-  struct pike_type *tmp;
 
   switch(type = *type_string) {
 #ifdef PIKE_DEBUG

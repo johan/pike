@@ -4527,8 +4527,6 @@ PIKECLASS SelectBackend
     gc_trivial;
   {
     struct Backend_struct *me = THIS->backend;
-    int e;
-
     IF_PD (fprintf (stderr, "[%d]BACKEND[%d]: exit generic backend\n",
 		    THR_NO, me->id));
   }

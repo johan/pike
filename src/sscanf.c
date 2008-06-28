@@ -867,7 +867,7 @@ CHAROPT2(								 \
 	  );								\
 	  if (minus_flag)						\
 	  {								\
-	    int x, pos=0;						\
+	    int pos=0;							\
 	    pos = (eye += field_length);				\
             while(--field_length >= 0)					\
 	    {								\

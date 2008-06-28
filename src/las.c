@@ -3489,8 +3489,7 @@ void fix_type_field(node *n)
 #ifndef NEW_ARG_CHECK
       char *alternate_name = NULL;
 #endif
-      int old_refs;
-      INT32 max_args,args;
+      INT32 args;
 
 #ifdef NEW_ARG_CHECK
 
