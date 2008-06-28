@@ -340,7 +340,7 @@ PMOD_EXPORT struct svalue svalue_int_one;
 #define UNSAFE_IS_ZERO(X) ((X)->type==PIKE_T_INT?(X)->u.integer==0:(1<<(X)->type)&(BIT_OBJECT|BIT_FUNCTION)?!svalue_is_true(X):0)
 #define SAFE_IS_ZERO(X) ((X)->type==PIKE_T_INT?(X)->u.integer==0:(1<<(X)->type)&(BIT_OBJECT|BIT_FUNCTION)?!safe_svalue_is_true(X):0)
 
-#define IS_UNDEFINED(X) (check_svalue (X), (X)->type==PIKE_T_INT&&(X)->subtype==1)
+#define IS_UNDEFINED(X) (check_svalue (X), (X)->type==PIKE_T_INT&&(X)->subtype==NUMBER_UNDEFINED)
 
 #define IS_DESTRUCTED(X) \
   (((X)->type == PIKE_T_OBJECT || (X)->type==PIKE_T_FUNCTION) && !(X)->u.object->prog)
