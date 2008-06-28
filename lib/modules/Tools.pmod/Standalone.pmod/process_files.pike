@@ -38,7 +38,7 @@ string version;
 //!   string version =
 //!    sprintf("%d.%d.%d",(int)__REAL_VERSION__,__REAL_MINOR__,__REAL_BUILD__);
 
-string description = "Boilerplate for making rsif-like tools.";
+string description;
 //! One-liner that gets shown for this tool when running @tt{pike -x@}
 //! without additional options. (Assuming your tool resides in
 //! @tt{Standalone.pmod@}.) Does not include the name of the tool
