@@ -582,7 +582,7 @@ PIKE_MODULE_INIT
   set_init_callback( f_hp_init );
   set_exit_callback( f_hp_exit );
   ADD_FUNCTION( "feed", f_hp_feed, tFunc(tStr,tArr(tOr(tStr,tMapping))), 0 );
-  ADD_FUNCTION( "create", f_hp_create, tFunc(tNone,tVoid), ID_STATIC );
+  ADD_FUNCTION( "create", f_hp_create, tFunc(tNone,tVoid), ID_PROTECTED );
   end_class( "HeaderParser", 0 );
 }
 

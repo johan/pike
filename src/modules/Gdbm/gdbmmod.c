@@ -526,7 +526,7 @@ PIKE_MODULE_INIT
   
   /* function(void|string,void|string:void) */
   ADD_FUNCTION("create", gdbmmod_create,
-	       tFunc(tOr(tVoid,tStr) tOr(tVoid,tStr), tVoid), 0 /*ID_STATIC*/);
+	       tFunc(tOr(tVoid,tStr) tOr(tVoid,tStr), tVoid), 0 /*ID_PROTECTED*/);
 
   /* function(:void) */
   ADD_FUNCTION("close",gdbmmod_close,tFunc(tNone,tVoid),0);

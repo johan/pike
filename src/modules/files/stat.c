@@ -983,7 +983,7 @@ void init_files_stat()
 
    ADD_FUNCTION ("create", stat_create,
 		 tFunc(tOr5(tVoid,tObjImpl_STDIO_STAT,tPrg(tObj),tMapping,tArr(tInt)),
-		       tVoid), ID_STATIC);
+		       tVoid), ID_PROTECTED);
 
    ADD_FUNCTION("`[]",stat_index,
 		tOr(tFunc(tOr(tStr,tInt06),tOr3(tStr,tInt,tFunction)),

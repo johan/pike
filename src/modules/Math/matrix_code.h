@@ -962,7 +962,7 @@ void Xmatrix(init_math_)(void)
 		tOr4( tFunc(tArr(tArr(tOr(tInt,tFloat))), tVoid),
 		      tFunc(tArr(tOr(tInt,tFloat)), tVoid),
 		      tFuncV(tStr, tMix, tVoid),
-		      tFunc(tInt1Plus tInt1Plus tOr4(tInt,tFloat,tString,tVoid), tVoid)), ID_STATIC);
+		      tFunc(tInt1Plus tInt1Plus tOr4(tInt,tFloat,tString,tVoid), tVoid)), ID_PROTECTED);
 
    ADD_FUNCTION("cast",matrixX(_cast),
 		tFunc(tStr, tArr(tArr(tFloat))), 0);

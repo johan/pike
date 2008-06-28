@@ -807,7 +807,7 @@ PIKE_MODULE_INIT
   ADD_FUNCTION( "get_parameters", f_scanner_get_parameters,
 		tFunc(tNone, tMapping), 0 );
 
-  ADD_FUNCTION( "create", f_scanner_create, tFunc(tStr, tVoid), ID_STATIC );
+  ADD_FUNCTION( "create", f_scanner_create, tFunc(tStr, tVoid), ID_PROTECTED );
 
   set_init_callback(init_scanner_struct);
   set_exit_callback(exit_scanner_struct);

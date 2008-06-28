@@ -1941,7 +1941,7 @@ PIKE_MODULE_INIT
   ADD_FUNCTION ("set_charset", f_set_charset, tFunc(tStr,tVoid), ID_PUBLIC);
   ADD_FUNCTION ("get_charset", f_get_charset, tFunc(tVoid,tStr), ID_PUBLIC);
   ADD_FUNCTION ("_can_send_as_latin1", f__can_send_as_latin1,
-		tFunc(tStr,tInt01), ID_STATIC);
+		tFunc(tStr,tInt01), ID_PROTECTED);
 
   add_integer_constant( "CLIENT_COMPRESS", CLIENT_COMPRESS, 0);
   add_integer_constant( "CLIENT_FOUND_ROWS", CLIENT_FOUND_ROWS, 0);
