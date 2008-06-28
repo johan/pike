@@ -1180,7 +1180,10 @@ void do_export()
 			  "Id":"FinalizePike",
 			  "BinaryKey":"PikeInstaller",
 			  "VBScriptCall":"FinalizePike",
+			  // The following are necessary to allow the script to
+			  // run with elevated privileges in UAC mode.
 			  "Execute":"deferred",
+			  "Impersonate": "no",
 			])))->
       add_child(Standards.XML.Wix.line_feed)->
       add_child(WixNode("Binary", ([
