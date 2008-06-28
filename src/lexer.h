@@ -740,6 +740,10 @@ static int low_yylex(struct lex *lex, YYSTYPE *yylval)
 	  {
 	    lex->pragmas &= ~ID_NO_DEPRECATION_WARNINGS;
 	  }
+          else
+          {
+            yywarning("Unknown #pragma directive.");
+          }
 	  break;
 	}
 

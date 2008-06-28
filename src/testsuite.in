@@ -9069,10 +9069,10 @@ return 0;
 
 // #pragma
 // FIXME: add tests for real pragmas
-test_any([[
+test_compile_warning([[
 #pragma whatever
 return 1;
-]],1)
+]])
 
 test_compile_warning([[
 class A {
