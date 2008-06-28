@@ -153,12 +153,32 @@ static void set_default_master(void)
 
   if(!master_location[CONSTANT_STRLEN(MASTER_COOKIE)])
   {
-    sprintf(master_location + CONSTANT_STRLEN(MASTER_COOKIE),
-	    DEFAULT_MASTER,
-	    PIKE_MAJOR_VERSION,
-	    PIKE_MINOR_VERSION,
-	    PIKE_BUILD_VERSION);
+    SNPRINTF (master_location + CONSTANT_STRLEN(MASTER_COOKIE),
+	      sizeof (master_location) - CONSTANT_STRLEN (MASTER_COOKIE),
+	      DEFAULT_MASTER,
+	      PIKE_MAJOR_VERSION,
+	      PIKE_MINOR_VERSION,
+	      PIKE_BUILD_VERSION);
   }
+
+#ifdef __NT__
+  if (master_location[CONSTANT_STRLEN (MASTER_COOKIE)] != '/' &&
+      master_location[CONSTANT_STRLEN (MASTER_COOKIE)] != '\\') {
+    char exepath[MAXPATHLEN];
+    if (!GetModuleFileName (NULL, exepath, _MAX_PATH))
+      fprintf (stderr, "Failed to get path to exe file: %d\n",
+	       GetLastError());
+    else {
+      char tmp[MAXPATHLEN * 2];
+      char *p = strrchr (exepath, '\\');
+      if (p) *p = 0;
+      SNPRINTF (tmp, sizeof (tmp), "%s/%s", exepath,
+		master_location + CONSTANT_STRLEN (MASTER_COOKIE));
+      strncpy (master_location + CONSTANT_STRLEN (MASTER_COOKIE), tmp,
+	       sizeof (master_location) - CONSTANT_STRLEN (MASTER_COOKIE));
+    }
+  }
+#endif
 
   TRACE((stderr, "Default master at \"%s\"...\n",
 	 master_location + CONSTANT_STRLEN(MASTER_COOKIE)));
