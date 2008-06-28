@@ -10,7 +10,7 @@
 
 //! @decl inherit predef::
 
-static array(array(int|string)) _describe_program(program p)
+protected array(array(int|string)) _describe_program(program p)
 {
   return map(predef::_describe_program(p),
 	     lambda(array(mixed) symbol_info) {
@@ -24,7 +24,7 @@ object master()
   return __REAL_VERSION__::master()->get_compat_master(7, 6);
 }
 
-static Mapping.ShadowedMapping compat_all_constants =
+protected Mapping.ShadowedMapping compat_all_constants =
   Mapping.ShadowedMapping(predef::all_constants(),
 			  ([
 			    "all_constants": all_constants,
@@ -41,6 +41,6 @@ mapping(string:mixed) all_constants()
   return x;
 }
 
-static void create()
+protected void create()
 {
 }

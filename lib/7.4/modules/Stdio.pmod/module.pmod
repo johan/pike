@@ -65,7 +65,7 @@ class File
       return ::pipe (required_properties);
   }
 
-  static void create(int|string... args)
+  protected void create(int|string... args)
   {
     ::create (@args);
     if (!sizeof (args)) _fd = 0;

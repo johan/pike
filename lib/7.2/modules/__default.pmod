@@ -119,7 +119,7 @@ object master()
   return __REAL_VERSION__::master()->get_compat_master(7, 2);
 }
 
-static Mapping.ShadowedMapping compat_all_constants =
+protected Mapping.ShadowedMapping compat_all_constants =
   Mapping.ShadowedMapping(predef::all_constants(),
 			  ([
 #define ADD(X) #X: X
@@ -154,5 +154,3 @@ mapping(string:mixed) all_constants()
   mixed x = compat_all_constants;
   return x;
 }
-
-

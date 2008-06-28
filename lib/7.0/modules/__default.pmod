@@ -86,7 +86,7 @@ object master()
   return __REAL_VERSION__::master()->get_compat_master(7, 0);
 }
 
-static Mapping.ShadowedMapping compat_all_constants =
+protected Mapping.ShadowedMapping compat_all_constants =
   Mapping.ShadowedMapping(predef::all_constants(),
 			  ([
 			    "all_constants": all_constants,

@@ -8,7 +8,7 @@ class result
 {
   inherit orig_client::result;
 
-  static array decode_entries (array(object) rawres)
+  protected array decode_entries (array(object) rawres)
   {
     // The "dn" field wasn't correctly utf-8 decoded in 7.6 and
     // earlier, and older apps therefore might do that themselves.
