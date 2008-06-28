@@ -1156,7 +1156,7 @@ void ia32_init_interpreter_state(void)
     if (cpu_info.feature_flags_edx & 0x00080000) {
       /* CLFLUSH present. */
       /* fprintf (stderr, "Enabling clflush, size %d\n", cpu_info.clflush_size); */
-      ia32_clflush_size = cpu_info.clflush_size;
+      ia32_clflush_size = cpu_info.clflush_size * 8;
     }
   }
 }
