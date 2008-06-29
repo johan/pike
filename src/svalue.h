@@ -524,13 +524,13 @@ static INLINE struct callable *pass_callable (struct callable *c) {return c;}
 
 #else  /* !PIKE_DEBUG */
 
-#define check_svalue(S) 0
-#define check_short_svalue(U, T) 0
+#define check_svalue(S) ((void) 0)
+#define check_short_svalue(U, T) ((void) 0)
 #define check_type(T) do {} while (0)
 #define check_svalue_type(S) do {} while (0)
 #define check_refs(S) do {} while (0)
 #define check_refs2(S,T) do {} while (0)
-#define check_type_hint(SVALS, NUM, TYPE_HINT) 0
+#define check_type_hint(SVALS, NUM, TYPE_HINT) ((void) 0)
 #define dmalloc_check_svalue(S,L) (S)
 #define dmalloc_check_svalues(S,L,N) (S)
 #define dmalloc_check_union(U,T,L) (U)
