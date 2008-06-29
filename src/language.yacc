@@ -3711,7 +3711,7 @@ idents2: idents
 					    Pike_compiler->new_program)) >= 0) ||
 	((i = really_low_find_shared_string_identifier(Pike_compiler->last_identifier,
 						       Pike_compiler->new_program,
-						       SEE_STATIC|
+						       SEE_PROTECTED|
 						       SEE_PRIVATE)) >= 0)) {
       struct reference *ref = Pike_compiler->new_program->identifier_references + i;
       if (!TEST_COMPAT (7, 2) &&
@@ -4017,11 +4017,11 @@ low_idents: TOK_IDENTIFIER
       id = low_reference_inherited_identifier(inherit_state,
 					      $1,
 					      Pike_compiler->last_identifier,
-					      SEE_STATIC);
+					      SEE_PROTECTED);
     else
       id = really_low_find_shared_string_identifier(Pike_compiler->last_identifier,
 						    inherit_state->new_program,
-						    SEE_STATIC|SEE_PRIVATE);
+						    SEE_PROTECTED|SEE_PRIVATE);
 
     if (id != -1) {
       if (inherit_depth > 0) {
@@ -4065,7 +4065,7 @@ low_idents: TOK_IDENTIFIER
     for(e=1;e<(int)Pike_compiler->new_program->num_inherits;e++)
     {
       if(Pike_compiler->new_program->inherits[e].inherit_level!=1) continue;
-      i=low_reference_inherited_identifier(0,e,$2->u.sval.u.string,SEE_STATIC);
+      i=low_reference_inherited_identifier(0,e,$2->u.sval.u.string,SEE_PROTECTED);
       if(i==-1) continue;
       if($$)
       {
