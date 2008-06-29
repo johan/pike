@@ -10539,8 +10539,13 @@ test_any_equal([[
 ]], sort(({0, "foo", "gnu"})))
 
 test_equal([[
+  #pike 7.6
   sort(({"\Uffffffff","\0", "", "\177", "\377", "\U7fffffff"}));
 ]], ({ "", "\0", "\177", "\377", "\U7fffffff", "\Uffffffff" }))
+
+test_equal([[
+  sort(({"\Uffffffff","\0", "", "\177", "\377", "\U7fffffff"}));
+]], ({ "", "\Uffffffff", "\0", "\177", "\377", "\U7fffffff" }))
 
 // test large searches (find string, size, pattern)
 define(test_search,[[
