@@ -663,7 +663,6 @@ install: pike-complete-stamp tools
 install_interactive: pike-complete-stamp tools
 	@$(RUNPIKE) $(TMP_BINDIR)/install.pike --interactive \
 	exec_prefix="$(exec_prefix)"  prefix=$(prefix) \
-	include_prefix="$(include_prefix)" \
 	TMP_LIBDIR="$(TMP_LIBDIR)" LIBDIR_SRC="$(LIBDIR_SRC)" \
 	SRCDIR="$(SRCDIR)" DOCDIR_SRC="$(DOCDIR_SRC)" \
 	MANDIR_SRC="$(MANDIR_SRC)" \
