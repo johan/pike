@@ -3700,7 +3700,7 @@ void compile_replace_many(struct replace_many_context *ctx,
 
       if (ctx->v[num-1-e].ind->len) {
 	x=index_shared_string(ctx->v[num-1-e].ind,0);
-	if (x<NELEM(ctx->set_start))
+	if ((size_t) x < NELEM(ctx->set_start))
 	  ctx->set_start[x]=num-e-1;
 	else
 	  ctx->other_start = num-e-1;
@@ -3708,7 +3708,7 @@ void compile_replace_many(struct replace_many_context *ctx,
 
       if (ctx->v[e].ind->len) {
 	x=index_shared_string(ctx->v[e].ind,0);
-	if (x<NELEM(ctx->set_end))
+	if ((size_t) x < NELEM(ctx->set_end))
 	  ctx->set_end[x]=e+1;
       }
     }
@@ -3835,7 +3835,7 @@ struct pike_string *execute_replace_many(struct replace_many_context *ctx,
 #define OPT_IS_CHAR(X)	1
     CASE(0);
 #undef OPT_IS_CHAR
-#define OPT_IS_CHAR(X)	((X) < NELEM(ctx->set_end))
+#define OPT_IS_CHAR(X)	((size_t) (X) < NELEM(ctx->set_end))
     CASE(1);
     CASE(2);
 #undef OPT_IS_CHAR
