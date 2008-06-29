@@ -31,9 +31,9 @@ struct lex
 
 /* Prototypes begin here */
 
-int parse_esc_seq0 (p_wchar0 *buf, unsigned *chr, ptrdiff_t *len);
-int parse_esc_seq1 (p_wchar1 *buf, unsigned *chr, ptrdiff_t *len);
-int parse_esc_seq2 (p_wchar2 *buf, unsigned *chr, ptrdiff_t *len);
+int parse_esc_seq0 (p_wchar0 *buf, p_wchar2 *chr, ptrdiff_t *len);
+int parse_esc_seq1 (p_wchar1 *buf, p_wchar2 *chr, ptrdiff_t *len);
+int parse_esc_seq2 (p_wchar2 *buf, p_wchar2 *chr, ptrdiff_t *len);
 
 int yylex0(struct lex *, YYSTYPE *);
 int yylex1(struct lex *, YYSTYPE *);

@@ -1023,7 +1023,7 @@ while(1)					\
   case '"':  break;				\
   case '\\':					\
   {						\
-    unsigned tmp;				\
+    p_wchar2 tmp;				\
     if(data[pos+1]=='\n')			\
     {						\
       pos++;					\
@@ -1114,7 +1114,7 @@ while(1)					\
   case '"':  break;				\
   case '\\':					\
   {						\
-    unsigned tmp;				\
+    p_wchar2 tmp;				\
     if(data[pos+1]=='\n')			\
     {						\
       pos++;					\
