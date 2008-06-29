@@ -314,7 +314,7 @@ OPCODE1(F_LOOKUP_LFUN, "->lfun", 0, {
     int id = FIND_LFUN(p, arg1);
     if ((id != -1) &&
 	(!(p->identifier_references[id].id_flags &
-	   (ID_STATIC|ID_PRIVATE|ID_HIDDEN)))) {
+	   (ID_PROTECTED|ID_PRIVATE|ID_HIDDEN)))) {
       id += o->prog->inherits[Pike_sp[-1].subtype].identifier_level;
       low_object_index_no_free(&tmp, o, id);
     } else {

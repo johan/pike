@@ -197,7 +197,7 @@ void init_pike_searching(void)
 	       pike_search_struct_offset + OFFSETOF(pike_mem_searcher,s),
 	       PIKE_T_STRING);
   pike_search_program=end_program();
-  add_program_constant("Search",pike_search_program,ID_STATIC);
+  add_program_constant("Search",pike_search_program,ID_PROTECTED);
 
   memsearch_cache=allocate_mapping(10);
   memsearch_cache->data->flags |= MAPPING_FLAG_WEAK;

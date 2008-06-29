@@ -4843,7 +4843,7 @@ void init_signals(void)
 #ifndef __NT__
   PIKE_MAP_VARIABLE("__callback", OFFSETOF(pid_status, callback),
 		    tFunc(tObjIs_PROCESS,tVoid), T_MIXED,
-		    ID_STATIC|ID_PRIVATE);
+		    ID_PROTECTED|ID_PRIVATE);
 #endif /* !__NT__ */
   set_init_callback(init_pid_status);
   set_exit_callback(exit_pid_status);
@@ -4889,7 +4889,7 @@ void init_signals(void)
 
   start_new_program();
   Pike_compiler->new_program->flags |= PROGRAM_USES_PARENT;
-  ADD_FUNCTION("`[]", f_proc_reg_index, tFunc(tMix, tInt), ID_STATIC);
+  ADD_FUNCTION("`[]", f_proc_reg_index, tFunc(tMix, tInt), ID_PROTECTED);
   end_class("Registers", 0);
 
 #endif /* 0 */

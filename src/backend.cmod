@@ -2112,7 +2112,7 @@ PIKECLASS Backend
   }
 
   PIKEFUN void create()
-    flags ID_STATIC;
+    flags ID_PROTECTED;
   {
     struct Backend_struct *me = THIS;
 
