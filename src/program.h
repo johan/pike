@@ -685,6 +685,7 @@ extern struct object *placeholder_object;
 
 /* Flags for identifier finding... */
 #define SEE_STATIC 1
+#define SEE_PROTECTED 1
 #define SEE_PRIVATE 2
 
 /* Report levels */
