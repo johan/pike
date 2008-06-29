@@ -154,13 +154,13 @@ typedef void rb_free_fn (struct rb_node_hdr *node, void *extra);
 
 struct rb_node_hdr *rb_insert (struct rb_node_hdr **root,
 			       rb_find_fn *find_fn, void *key,
-			       struct rb_node_hdr *new);
+			       struct rb_node_hdr *new_node);
 void rb_add (struct rb_node_hdr **root,
 	     rb_find_fn *find_fn, void *key,
-	     struct rb_node_hdr *new);
+	     struct rb_node_hdr *new_node);
 void rb_add_after (struct rb_node_hdr **root,
 		   rb_find_fn *find_fn, void *key,
-		   struct rb_node_hdr *new,
+		   struct rb_node_hdr *new_node,
 		   struct rb_node_hdr *existing);
 struct rb_node_hdr *rb_remove (struct rb_node_hdr **root,
 			       rb_find_fn *find_fn, void *key);

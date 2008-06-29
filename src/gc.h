@@ -320,7 +320,7 @@ int gc_do_weak_free(void *a);
 void gc_delayed_free(void *a, int type);
 void debug_gc_mark_enqueue(queue_call call, void *data);
 int gc_mark(void *a);
-void gc_move_marker (void *old, void *new);
+void gc_move_marker (void *old_thing, void *new_thing);
 PMOD_EXPORT void gc_cycle_enqueue(gc_cycle_check_cb *checkfn, void *data, int weak);
 void gc_cycle_run_queue(void);
 int gc_cycle_push(void *x, struct marker *m, int weak);

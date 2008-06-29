@@ -155,9 +155,9 @@ void rbstack_shift (struct rbstack_ptr rbstack,
 
 void low_rb_init_root (struct rb_node_hdr *new_root);
 void low_rb_link_at_prev (struct rb_node_hdr **root, struct rbstack_ptr rbstack,
-			  struct rb_node_hdr *new);
+			  struct rb_node_hdr *new_node);
 void low_rb_link_at_next (struct rb_node_hdr **root, struct rbstack_ptr rbstack,
-			  struct rb_node_hdr *new);
+			  struct rb_node_hdr *new_node);
 struct rb_node_hdr *low_rb_unlink_with_move (struct rb_node_hdr **root,
 					     struct rbstack_ptr *rbstack_ptr,
 					     int keep_rbstack,
