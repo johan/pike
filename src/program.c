@@ -8769,10 +8769,10 @@ static void f_compilation_apply_type_attribute(INT32 args)
 	(!b ||
 	 ((b->type == T_INT) && (b->subtype == NUMBER_UNDEFINED) &&
 	  (!b->u.integer)))) {
-      push_svalue(a);
+      /* push_svalue(a); */
       yytype_report(REPORT_WARNING, NULL, 0, NULL,
 		    NULL, 0, NULL,
-		    1, "Calling a deprecated %O value.");
+		    0, "Calling a deprecated value.");
     }
   }
   pop_n_elems(args);
