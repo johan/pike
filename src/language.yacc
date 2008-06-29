@@ -1237,7 +1237,14 @@ arguments2: new_arg_name { $$ = 1; }
   ;
 
 modifier:
-    TOK_NO_MASK    { $$ = ID_FINAL | ID_INLINE; }
+    TOK_NO_MASK
+    {
+      $$ = ID_FINAL | ID_INLINE;
+      if( !(THIS_COMPILATION->lex.pragmas & ID_NO_DEPRECATION_WARNINGS) &&
+          !TEST_COMPAT(7, 6) && Pike_compiler->compiler_pass==1 )
+        yywarning("Keyword nomask is deprecated in favor for 'final'.");
+
+    }
   | TOK_FINAL_ID   { $$ = ID_FINAL | ID_INLINE; }
   | TOK_STATIC     { $$ = ID_STATIC; }
   | TOK_EXTERN     { $$ = ID_EXTERN; }

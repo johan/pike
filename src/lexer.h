@@ -539,11 +539,7 @@ static int low_yylex(struct lex *lex, YYSTYPE *yylval)
 	  if(ISWORD("multiset")) return TOK_MULTISET_ID;
 	  break;
 	case TWO_CHAR('n','o'):
-	  if(ISWORD("nomask")) {
-            if( !(lex->pragmas & ID_NO_DEPRECATION_WARNINGS) )
-              yywarning("Keyword nomask is deprecated in favor for 'final'.");
-            return TOK_NO_MASK;
-          }
+	  if(ISWORD("nomask")) return TOK_NO_MASK;
 	  break;
 	case TWO_CHAR('o','b'):
 	  if(ISWORD("object")) return TOK_OBJECT_ID;
