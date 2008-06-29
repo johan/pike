@@ -5,15 +5,9 @@
 || $Id$
 */
 
-#include "iso2022.h"
+#include "charsetmod.h"
 
 /* Updates can be found at http://www.itscj.ipsj.or.jp/ISO-IR/ */
-
-extern UNICHAR map_ANSI_X3_110_1983[];
-extern UNICHAR map_T_61_8bit[];
-extern UNICHAR map_T_101_G2[];
-extern UNICHAR map_iso_ir_90[];
-extern UNICHAR map_videotex_suppl[];
 
 /*
  * The private characters used by RFC1345 have been mapped as follows:
