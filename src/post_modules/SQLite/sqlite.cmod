@@ -493,7 +493,6 @@ PIKECLASS ResObj
 	  THREADS_DISALLOW();
 	} else break;
       }
-      THIS->db = NULL;
     }
   }
 
