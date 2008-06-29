@@ -78,44 +78,6 @@
 #endif /* CAN_HAVE_NONSHARED_LINUX_SYSCALL4 */
 #endif /* HAVE_BROKEN_SENDFILE */
 
-#if defined(CAN_HAVE_LINUX_SYSCALL4) || \
-    !defined(DYNAMIC_MODULE) && defined(CAN_HAVE_NONSHARED_LINUX_SYSCALL4)
-
-#include <asm/unistd.h>
-#ifndef __NR_sendfile
-#define __NR_sendfile 187
-#endif
-_syscall4(ssize_t,sendfile,int,out,int,in,off_t*,off,size_t,size);
-#define HAVE_SENDFILE
-
-#elif defined(CAN_HAVE_SENDFILE)
-
-ssize_t sendfile(int out, int in, off_t *off, size_t size)
-{
-  ssize_t retval;
-  asm volatile(
-               "pushl %%ebx\n\t"
-               "movl %%edi,%%ebx\n\t"
-               "int $0x80\n\t"
-               "popl %%ebx"
-               :"=a" (retval)
-               :"0" (187),
-               "D" (out), /* pseudo-ebx (put it in edi)*/
-               "c" (in),
-               "d" (off),
-               "S" (size)
-               );
-  if ((unsigned long) retval > (unsigned long)-1000) 
-  {
-    errno = -retval;
-    retval = -1;
-  }
-  return retval;
-}
-# define HAVE_SENDFILE
-#endif
-
-
 /* Define local global string variables ... */
 #define STRING(X,Y) /*extern*/ struct pike_string *X
 #include "static_strings.h"
