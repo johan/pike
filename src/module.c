@@ -358,7 +358,7 @@ static void exit_builtin_modules(void)
   first_program=0;
   free_all_program_blocks();
   exit_multiset();
-#endif
+#endif /* DO_PIKE_CLEANUP */
 }
 
 typedef void (*modfun)(void);
@@ -463,14 +463,14 @@ void exit_modules(void)
 	  gc_fatal (o, 0, "Object missed in gc_destruct_everything mode"
 		    " (is on objects_to_destruct list).\n");
     }
-#endif
+#endif /* PIKE_DEBUG */
     gc_destruct_everything = 0;
     exit_cleanup_in_progress = 1; /* Warn about object creation from now on. */
   }
 
   /* Unload dynamic modules before static ones. */
   exit_dynamic_load();
-#endif
+#endif /* DO_PIKE_CLEANUP */
 
   for(e=NELEM(module_list)-1;e>=0;e--)
   {
