@@ -1094,7 +1094,7 @@ PMOD_EXPORT void really_free_string(struct pike_string *s)
   if (!(s->flags & STRING_NOT_SHARED))
     unlink_pike_string(s);
   if (s->flags & STRING_CLEAR_ON_EXIT)
-    MEMSET(s->str, 0, s->len);
+    MEMSET(s->str, 0, s->len<<s->size_shift);
   free_unlinked_pike_string(s);
   GC_FREE_SIMPLE_BLOCK(s);
 }
