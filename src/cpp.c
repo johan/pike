@@ -1507,18 +1507,7 @@ static void insert_current_dir_as_string(struct cpp *this,
                                          struct string_builder *tmp)
 {
   ref_push_string(this->current_file);
-#ifdef __NT__
-  push_constant_text("..");
-  f_combine_path_nt(2);
-#else
-#ifdef __amigaos__
-  push_constant_text("/");
-  f_combine_path_amigaos(2);
-#else
-  push_constant_text("..");
-  f_combine_path_unix(2);
-#endif
-#endif
+  SAFE_APPLY_MASTER("dirname",1);
   PUSH_STRING_SHIFT(Pike_sp[-1].u.string->str, Pike_sp[-1].u.string->len,
                     Pike_sp[-1].u.string->size_shift, tmp);
   pop_stack();
