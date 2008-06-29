@@ -70,7 +70,7 @@ PMOD_EXPORT void f_utf8_to_string(INT32 args);
 PMOD_EXPORT void f_all_constants(INT32 args);
 PMOD_EXPORT void f_allocate(INT32 args);
 void f_this_object(INT32 args);
-PMOD_EXPORT void f_throw(INT32 args);
+PMOD_EXPORT DECLSPEC(noreturn) void f_throw(INT32 args) ATTRIBUTE((noreturn));
 PMOD_EXPORT void f_exit(INT32 args);
 void f__exit(INT32 args);
 PMOD_EXPORT void f_time(INT32 args);
