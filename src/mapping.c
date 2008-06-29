@@ -1421,6 +1421,7 @@ PMOD_EXPORT struct mapping *copy_mapping(struct mapping *m)
 
 #endif
 
+/* copy_mapping() for when destructive operations are ok. */
 static struct mapping *destructive_copy_mapping(struct mapping *m)
 {
   if ((m->refs == 1) && !m->data->hardlinks &&
