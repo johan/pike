@@ -46,7 +46,7 @@ struct iso2022enc_stor {
   struct gdesc g[2];
   struct {
     p_wchar1 *map;
-    unsigned lo, hi;
+    int lo, hi;
   } r[2];
   int variant;
   struct pike_string *replace;
