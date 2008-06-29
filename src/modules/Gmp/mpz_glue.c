@@ -1653,7 +1653,9 @@ static void name(INT32 args)				\
   INT32 i;						\
   MP_INT *arg;						\
   if(!args) SIMPLE_TOO_FEW_ARGS_ERROR (errmsg_name, 1);	\
-  if (!(arg = get_mpz(sp-args, 0, NULL, 0, 0)))		\
+  if (((sp[-args].type != PIKE_T_INT) &&		\
+       (sp[-args].type != PIKE_T_OBJECT)) ||		\
+      !(arg = get_mpz(sp-args, 0, NULL, 0, 0)))		\
     default;						\
   else							\
     i=mpz_cmp(THIS, arg) cmp 0;				\
