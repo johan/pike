@@ -118,7 +118,11 @@ object master()
 #pragma no_deprecation_warnings
 int hash(string s, int|void modulo)
 {
-  return predef::hash_7_4(s, modulo);
+  if (query_num_arg() > 1) {
+    return predef::hash_7_4(s, modulo);
+  } else {
+    return predef::hash_7_4(s);
+  }
 }
 #pragma deprecation_warnings
 
