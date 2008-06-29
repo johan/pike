@@ -13,7 +13,7 @@ constant cvs_id = "$Id$";
 #define WARN(msg) werror(msg)
 #define DEB(msg) /* werror(msg) */
 #if constant(hash_7_0)
-#define hash hash_7_0
+#define hash 7.0::hash
 #endif
 
 #define CHECKSUM(s) (hash(s) & 0xffffffff)
@@ -407,7 +407,7 @@ class Chunk {
       if(attributes)
 	return 0;
       else
-	ERR(sprintf("Unknown key '%O'", key));
+	ERR(sprintf("Unknown key '%O', keys: %O", key, keys));
     }
 
     int offset, type;
