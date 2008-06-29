@@ -10538,10 +10538,14 @@ test_any_equal([[
   return sort (a);
 ]], sort(({0, "foo", "gnu"})))
 
-test_equal([[
-  #pike 7.6
-  sort(({"\Uffffffff","\0", "", "\177", "\377", "\U7fffffff"}));
-]], ({ "", "\0", "\177", "\377", "\U7fffffff", "\Uffffffff" }))
+// Some versions of Pike prior to 7.8 had unsigned characters.
+// We regard this as an implementation bug, and thus no compat.
+cond([[0]], [[
+  test_equal([[
+    #pike 7.6
+    sort(({"\Uffffffff","\0", "", "\177", "\377", "\U7fffffff"}));
+  ]], ({ "", "\0", "\177", "\377", "\U7fffffff", "\Uffffffff" }))
+]])
 
 test_equal([[
   sort(({"\Uffffffff","\0", "", "\177", "\377", "\U7fffffff"}));
