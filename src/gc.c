@@ -1336,13 +1336,12 @@ again:
 	  prot[0] = prot[1] = 0;
 	  if (id_ref->id_flags & ID_PRIVATE) {
 	    strcat (prot, ",pri");
-	    if (!(id_ref->id_flags & ID_STATIC)) strcat (prot, ",!sta");
+	    if (!(id_ref->id_flags & ID_PROTECTED)) strcat (prot, ",!pro");
 	  }
 	  else
-	    if (id_ref->id_flags & ID_STATIC) strcat (prot, ",sta");
+	    if (id_ref->id_flags & ID_PROTECTED) strcat (prot, ",pro");
 	  if (id_ref->id_flags & ID_FINAL)     strcat (prot, ",fin");
 	  if (id_ref->id_flags & ID_PUBLIC)    strcat (prot, ",pub");
-	  if (id_ref->id_flags & ID_PROTECTED) strcat (prot, ",pro");
 	  if (id_ref->id_flags & ID_INLINE)    strcat (prot, ",inl");
 	  if (id_ref->id_flags & ID_OPTIONAL)  strcat (prot, ",opt");
 	  if (id_ref->id_flags & ID_HIDDEN)    strcat (prot, ",hid");
