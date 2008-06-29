@@ -815,6 +815,7 @@ PMOD_EXPORT int is_eq(const struct svalue *a, const struct svalue *b)
   }
 }
 
+/* Returns 0 or 1. */
 PMOD_EXPORT int low_is_equal(const struct svalue *a,
 			     const struct svalue *b,
 			     struct processing *p)
