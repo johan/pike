@@ -2190,7 +2190,7 @@ static void feed_std8e(struct std8e_stor *s8, struct string_builder *sb,
     {
       p_wchar2 c, *p = STR2(str);
       while(l--)
-	if((unsigned) (c=*p++)<lowtrans)
+	if((unsigned INT32) (c=*p++)<lowtrans)
 	  string_builder_putchar(sb, c);
 	else if(c>=lo && c<hi && (ch=tab[c-lo])!=0)
 	  string_builder_putchar(sb, ch);
@@ -2293,7 +2293,7 @@ static void feed_std16e(struct std16e_stor *s16, struct string_builder *sb,
     {
       p_wchar2 c, *p = STR2(str);
       while(l--)
-	if((unsigned) (c=*p++)<lowtrans)
+	if((unsigned INT32) (c=*p++)<lowtrans)
 	  string_builder_putchar(sb, c);
 	else if(c>=lo && c<hi && (ch=tab[c-lo])!=0) {
 	  if(sshift && !(ch & 0x80)) {
