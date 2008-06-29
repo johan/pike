@@ -45,6 +45,7 @@ struct string_builder
 #define STRING_NOT_HASHED	1	/* Hash value is invalid. */
 #define STRING_NOT_SHARED	2	/* String not shared. */
 #define STRING_IS_SHORT		4	/* String is blockalloced. */
+#define STRING_CLEAR_ON_EXIT    8       /* Overwrite before free. */
 
 /* Flags used by string_builder_append_integer() */
 #define APPEND_SIGNED		1	/* Value is signed */
