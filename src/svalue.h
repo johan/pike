@@ -323,10 +323,6 @@ struct svalue
 
 #define FUNCTION_BUILTIN USHRT_MAX
 
-#define STRING_STRING 0
-#define STRING_ARROWINDEX 1
-#define STRING_SECURE 2
-
 PMOD_EXPORT const struct svalue svalue_int_zero;
 #ifdef HAVE_UNION_INIT
 PMOD_EXPORT const struct svalue svalue_int_one;
