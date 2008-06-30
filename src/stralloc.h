@@ -238,8 +238,8 @@ INT32 PIKE_CONCAT4(compare_,FROM,_to_,TO)(const PIKE_CONCAT(p_wchar,TO) *to, con
 PMOD_EXPORT extern struct pike_string *empty_pike_string;
 
 /* Prototypes begin here */
-PMOD_EXPORT unsigned INT32 index_shared_string(struct pike_string *s,
-					       ptrdiff_t pos);
+PMOD_EXPORT p_wchar2 index_shared_string(struct pike_string *s,
+					 ptrdiff_t pos);
 PMOD_EXPORT void low_set_index(struct pike_string *s, ptrdiff_t pos,
 			       int value);
 PMOD_EXPORT struct pike_string *debug_check_size_shift(struct pike_string *a,int shift);
