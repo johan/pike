@@ -400,17 +400,24 @@ static void f_big_query(INT32 args)
 	THREADS_ALLOW();
 	PQ_LOCK();
 	pgdebug("f_big_query(\"%s\")\n",query);
+        /*
+         * libpq implements partial reads from a SELECT through
+         * a mechanism of a CURSOR incombination with FETCH.
+         *
+         * Cursors are only used if the query starts with "SELECT "
+         * and does not end in "LIMIT 1" or "LIMIT 1;"
+         * The checks are case-sensitive by design.
+         *
+         * Cursors can only be used within a transaction, so you'll end
+         * up trying to start a transaction; if a transaction already is
+         * in progress, that will be noticed and it will not be disrupted.
+         */
 #define SELECTSTR	"SELECT "
 #define LIMIT1STR	"LIMIT 1"
 #define LIMIT1STRSC	LIMIT1STR";"
 #define LIMITLENSC	(sizeof(LIMIT1STRSC)-1)
 #define LIMITLEN	(sizeof(LIMIT1STR)-1)
 	res = 0;
-	/* FIXME: The following code looks seriously broken;
-	 *        and why attempt do do this to begin with??????
-	 *	/grubba 2008-01-20
-	 */
-#if 0
 	if(!strncmp(query,SELECTSTR,sizeof(SELECTSTR)-1))
 	{
 #define CURSORPREFIX	"DECLARE "CURSORNAME" CURSOR FOR "
@@ -461,7 +468,6 @@ yupbegin:       res=PQexec(conn,"BEGIN");
 	    free(nquery);
 	  }
 	}
-#endif /* 0 */
 	lastcommit=0;
 	if(!res)
 	  res=PQexec(conn,query);
