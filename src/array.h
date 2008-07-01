@@ -242,7 +242,7 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
 #define DO_AGGREGATE_ARRAY(max_keep_on_stack)				\
   do {									\
     ptrdiff_t diff__ = Pike_sp - base__;				\
-    if (diff__ > (max_keep_on_stack)) {					\
+    if (!(max_keep_on_stack) || diff__ > (max_keep_on_stack)) {		\
       INT32 oldsize__ = base__[-1].u.array->size;			\
       ACCEPT_UNFINISHED_TYPE_FIELDS {					\
 	base__[-1].u.array =						\
