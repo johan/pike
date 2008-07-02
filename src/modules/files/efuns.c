@@ -564,7 +564,7 @@ void f_filesystem_stat(INT32 args)
     push_text("bfree");      push_int(st.f_tfree);
     push_text("ffree");      push_int(st.f_tinode);
     push_text("fsname");     push_text(st.f_fname);
-    num_feilds += 3;
+    num_fields += 3;
 #else
     /* Should not be reached */
 #error No stat function for filesystems.
