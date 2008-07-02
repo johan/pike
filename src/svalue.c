@@ -1263,15 +1263,16 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 
     case T_STRING:
       {
-	int i;
+	struct pike_string *str = s->u.string;
+	int i, len = str->len;
 	my_putchar('"');
-	for(i=0; i < s->u.string->len; i++)
+	for(i=0; i < len; i++)
         {
-	  unsigned j;
-	  switch(j = index_shared_string(s->u.string,i))
+	  p_wchar2 j;
+	  switch(j = index_shared_string(str,i))
           {
 	  case '\n':
-	    if (i == s->u.string->len-1) {
+	    if (i == len-1) {
 	      /* String ends with a new-line. */
 	      my_strcat("\\n");
 	    } else {
@@ -1357,7 +1358,6 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
         my_putchar('"');
       }
       break;
-
 
     case T_FUNCTION:
       if(s->subtype == FUNCTION_BUILTIN)
