@@ -794,7 +794,7 @@ void f_filesystem_stat(INT32 args)
     num_fields += 6;
 #ifdef HAVE_STATFS_F_BAVAIL
     push_text("bavail");       push_int(st.f_bavail);
-    num_feilds++;
+    num_fields++;
 #endif /* HAVE_STATFS_F_BAVAIL */
 #else /* !HAVE_STRUCT_STATFS */
 #ifdef HAVE_STRUCT_FS_DATA
@@ -803,7 +803,7 @@ void f_filesystem_stat(INT32 args)
     push_text("blocks");       push_int(st.fd_btot);
     push_text("bfree");        push_int(st.fd_bfree);
     push_text("bavail");       push_int(st.fd_bfreen);
-    num_feilds += 4;
+    num_fields += 4;
 #else /* !HAVE_STRUCT_FS_DATA */
     /* Should not be reached */
 #error No struct to hold statfs() data.
