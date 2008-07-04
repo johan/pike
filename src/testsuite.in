@@ -9842,6 +9842,7 @@ test_eval_error([[
   array a=({"a","b",3});
   return glob("*", a);
 ]])
+test_equal([[glob("foo", ({}))]], ({}))
 
 // - gmtime
 cond([[all_constants()->localtime && all_constants()->mktime]],[[
