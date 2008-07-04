@@ -9,6 +9,7 @@
 .nfs*
 *_src
 *.compiled
+*.nolines
 *dependencies
 *configure
 *stamp-h.in
