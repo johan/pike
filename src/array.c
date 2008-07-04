@@ -564,7 +564,8 @@ PMOD_EXPORT struct array *array_shrink(struct array *v, ptrdiff_t size)
 }
 
 /**
- * Resize an array destructively.
+ * Resize an array destructively, with the exception that a may be one
+ * of the static empty arrays.
  */
 PMOD_EXPORT struct array *resize_array(struct array *a, INT32 size)
 {
@@ -573,7 +574,7 @@ PMOD_EXPORT struct array *resize_array(struct array *a, INT32 size)
 #endif
 
   /* Ensure that one of the empty arrays are returned if size is zero. */
-  if (!size) return array_shrink (a, size);
+  if (!size && a->malloced_size) return array_shrink (a, size);
 
   if(a->size == size) return a;
   if(size > a->size)
