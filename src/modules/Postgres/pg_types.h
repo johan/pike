@@ -38,4 +38,6 @@ extern struct program *postgres_program, *pgresult_program;
 #define CURSORNAME	"_pikecursor"
 #define FETCHCMD	"FETCH " FETCHSIZESTR " IN " CURSORNAME
 
+#define BINARYCUTOFF	32	 /* binding parameters at least this size
+				    are presumed to be in binary format */
 #endif
