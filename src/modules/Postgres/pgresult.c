@@ -55,6 +55,14 @@
  * 20 characters', where in Postgres it means 'any string long exactly 20
  * characters'. With Postgres you have to use type varchar otherwise, but
  * this makes its SQL incompatible with other servers'.
+ *
+ * Newer versions of Postgres seem to do this by themselves already.
+ * Newer meaning at least 7.4 and later.  Since Postgres 7.4 is the oldest
+ * Postgres version that is still supported (by the Postgres team itself),
+ * we might as well drop support for any earlier versions as well.
+ *
+ * FIXME: test the CUT_TRAILING_SPACES macro, and delete it if it is already
+ * being done by the DB.
  */
 
 #define CUT_TRAILING_SPACES
@@ -257,8 +265,11 @@ static void f_fetch_fields (INT32 args)
 		/* no default value information is availible */
 		push_text("type");
 		push_int(PQftype(res,j));
-		/* ARGH! I'd kill 'em! How am I supposed to know how types are coded
-		 * internally!?!?!?!?
+		/* ARGH! I'd kill 'em! How am I supposed to know how types are
+  	         * coded internally!?!?!?!?
+  	         *
+  	         * The internal encoding is well defined for the standard
+  	         * types (big endian).  The problem are the extended types.
 		 */
 		push_text("length");
 		tmp=PQfsize(res,j);

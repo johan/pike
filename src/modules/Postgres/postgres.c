@@ -370,8 +370,9 @@ static void f_select_db (INT32 args)
  *! @note
  *! This function @b{can@} raise exceptions.
  *!
- *! The program @[Sql.postgres_result] is exactly
- *! the same as @[Postgres.postgres_result].
+ *! The program @[Sql.postgres_result] is a superset of
+ *! the raw @[Postgres.postgres_result] which does not do chunking to
+ *! avoid excessive memory usage in case of large resultsets.
  *!
  *! @seealso
  *!  @[Sql.Sql], @[Sql.sql_result]
