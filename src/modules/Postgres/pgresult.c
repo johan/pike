@@ -266,10 +266,10 @@ static void f_fetch_fields (INT32 args)
 		push_text("type");
 		push_int(PQftype(res,j));
 		/* ARGH! I'd kill 'em! How am I supposed to know how types are
- 	         * coded internally!?!?!?!?
- 	         *
- 	         * The internal encoding is well defined for the standard
- 	         * types (big endian).  The problem are the extended types.
+		 * coded internally!?!?!?!?
+		 *
+		 * The internal encoding is well defined for the standard
+		 * types (big endian).  The problem are the extended types.
 		 */
 		push_text("length");
 		tmp=PQfsize(res,j);
