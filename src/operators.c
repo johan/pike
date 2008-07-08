@@ -39,6 +39,15 @@
 #define OP_MODULO_BY_ZERO_ERROR(FUNC) \
      math_error(FUNC, sp-2, 2, 0, "Modulo by zero.\n")
 
+/* The destructive multiset merge code is broken.
+ * l->msd gets -1 refs.
+ *
+ * Disable it for now.
+ *	/grubba 2008-07-08
+ */
+#undef PIKE_MERGE_DESTR_A
+#define PIKE_MERGE_DESTR_A	0
+
 void index_no_free(struct svalue *to,struct svalue *what,struct svalue *ind)
 {
 #ifdef PIKE_SECURITY
