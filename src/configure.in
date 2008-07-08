@@ -7489,25 +7489,31 @@ fi
 
 #######################################################################
 
-AC_MSG_CHECKING([if putenv() always requires a '='])
-AC_CACHE_VAL(pike_cv_putenv_always_requires_equal, [
-  AC_TRY_RUN([
-#include <stdlib.h>
+AC_CHECK_FUNCS([setenv unsetenv])
 
-    int main()
-    {
-      putenv ("foo=bar");
-      if (putenv ("foo") && !putenv ("foo=") && !getenv ("foo")) return 1;
-      return 0;
-    }],
-    pike_cv_putenv_always_requires_equal=no,
-    pike_cv_putenv_always_requires_equal=yes
-  )
-])
-AC_MSG_RESULT($pike_cv_putenv_always_requires_equal)
-if test "x$pike_cv_putenv_always_requires_equal" = "xyes"; then
-  AC_DEFINE(PUTENV_ALWAYS_REQUIRES_EQUAL, [],
-	    [Defined if putenv() always requires a '='])
+if test "$ac_cv_func_setenv:$ac_cv_func_unsetenv" = "yes:yes"; then
+  :
+else
+  AC_MSG_CHECKING([if putenv() always requires a '='])
+  AC_CACHE_VAL(pike_cv_putenv_always_requires_equal, [
+    AC_TRY_RUN([
+  #include <stdlib.h>
+  
+      int main()
+      {
+        putenv ("foo=bar");
+        if (putenv ("foo") && !putenv ("foo=") && !getenv ("foo")) return 1;
+        return 0;
+      }],
+      pike_cv_putenv_always_requires_equal=no,
+      pike_cv_putenv_always_requires_equal=yes
+    )
+  ])
+  AC_MSG_RESULT($pike_cv_putenv_always_requires_equal)
+  if test "x$pike_cv_putenv_always_requires_equal" = "xyes"; then
+    AC_DEFINE(PUTENV_ALWAYS_REQUIRES_EQUAL, [],
+  	    [Defined if putenv() always requires a '='])
+  fi
 fi
 
 #######################################################################
