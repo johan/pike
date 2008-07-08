@@ -23,7 +23,7 @@ string bin_path=include_path;
 #endif
 
 // this is not the ideal location for all systems, but it's a start.
-string local_module_path=combine_path(getenv("HOME"),"lib/pike/modules");
+string local_module_path=combine_path(getenv("HOME")||"","lib/pike/modules");
 bool old_style_module = false;
 // we prefer the last element, because if there are more than one
 // master() puts the lib/modules path last.
