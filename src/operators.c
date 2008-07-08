@@ -2254,7 +2254,13 @@ PMOD_EXPORT void o_subtract(void)
   case T_MULTISET:
   {
     struct multiset *l;
-    l=merge_multisets(sp[-2].u.multiset, sp[-1].u.multiset, PIKE_ARRAY_OP_SUB);
+    if (sp[-2].u.multiset->refs == 1) {
+      l=merge_multisets(sp[-2].u.multiset, sp[-1].u.multiset,
+			PIKE_ARRAY_OP_SUB | PIKE_MERGE_DESTR_A);
+    } else {
+      l=merge_multisets(sp[-2].u.multiset, sp[-1].u.multiset,
+			PIKE_ARRAY_OP_SUB);
+    }
     pop_n_elems(2);
     push_multiset(l);
     return;
@@ -2516,7 +2522,13 @@ PMOD_EXPORT void o_and(void)
   case T_MULTISET:
   {
     struct multiset *l;
-    l=merge_multisets(sp[-2].u.multiset, sp[-1].u.multiset, PIKE_ARRAY_OP_AND);
+    if (sp[-2].u.multiset->refs == 1) {
+      l=merge_multisets(sp[-2].u.multiset, sp[-1].u.multiset,
+			PIKE_ARRAY_OP_AND | PIKE_MERGE_DESTR_A);
+    } else {
+      l=merge_multisets(sp[-2].u.multiset, sp[-1].u.multiset,
+			PIKE_ARRAY_OP_AND);
+    }
     pop_n_elems(2);
     push_multiset(l);
     return;
@@ -2809,7 +2821,13 @@ PMOD_EXPORT void o_or(void)
   case T_MULTISET:
   {
     struct multiset *l;
-    l=merge_multisets(sp[-2].u.multiset, sp[-1].u.multiset, PIKE_ARRAY_OP_OR_LEFT);
+    if (sp[-2].u.multiset->refs == 1) {
+      l=merge_multisets(sp[-2].u.multiset, sp[-1].u.multiset,
+			PIKE_ARRAY_OP_OR_LEFT | PIKE_MERGE_DESTR_A);
+    } else {
+      l=merge_multisets(sp[-2].u.multiset, sp[-1].u.multiset,
+			PIKE_ARRAY_OP_OR_LEFT);
+    }
     pop_n_elems(2);
     push_multiset(l);
     return;
@@ -3045,7 +3063,13 @@ PMOD_EXPORT void o_xor(void)
   case T_MULTISET:
   {
     struct multiset *l;
-    l=merge_multisets(sp[-2].u.multiset, sp[-1].u.multiset, PIKE_ARRAY_OP_XOR);
+    if (sp[-2].u.multiset->refs == 1) {
+      l=merge_multisets(sp[-2].u.multiset, sp[-1].u.multiset,
+			PIKE_ARRAY_OP_XOR | PIKE_MERGE_DESTR_A);
+    } else {
+      l=merge_multisets(sp[-2].u.multiset, sp[-1].u.multiset,
+			PIKE_ARRAY_OP_XOR);
+    }
     pop_n_elems(2);
     push_multiset(l);
     return;
