@@ -7681,6 +7681,7 @@ static void free_compilation(struct compilation *c)
   }
   free_svalue(& c->default_module);
   c->default_module.type = T_INT;
+  c->default_module.subtype = NUMBER_NUMBER;
   free_supporter(&c->supporter);
   verify_supporters();
 }
