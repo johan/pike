@@ -323,7 +323,7 @@ struct svalue
 
 #define FUNCTION_BUILTIN USHRT_MAX
 
-PMOD_EXPORT const struct svalue svalue_int_zero;
+PMOD_EXPORT const struct svalue svalue_undefined, svalue_int_zero;
 #ifdef HAVE_UNION_INIT
 PMOD_EXPORT const struct svalue svalue_int_one;
 #else

@@ -555,6 +555,10 @@ void pike_do_exit(int num)
       svalue_int_zero.subtype != NUMBER_NUMBER ||
       svalue_int_zero.u.integer != 0)
     Pike_fatal ("svalue_int_zero has been changed.\n");
+  if (svalue_undefined.type != T_INT ||
+      svalue_undefined.subtype != NUMBER_UNDEFINED ||
+      svalue_undefined.u.integer != 0)
+    Pike_fatal ("svalue_undefined has been changed.\n");
   if (svalue_int_one.type != T_INT ||
       svalue_int_one.subtype != NUMBER_NUMBER ||
       svalue_int_one.u.integer != 1)
