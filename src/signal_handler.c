@@ -4206,6 +4206,7 @@ void Pike_f_fork(INT32 args)
 	  frame = frame->next;
 	}
       });
+    in_forked_child = 1;
   }
   
   if(pid==-1) {
