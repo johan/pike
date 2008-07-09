@@ -1931,7 +1931,17 @@ if test "$cflags_is_set" = "no"; then
 	 ])
 	;;
      esac
-    ;;
+   ;;
+   ia64)
+     case "`uname -p`" in
+       [Ii]tanium*2)
+         AC_SYS_COMPILER_FLAG(-mtune=itanium2,mtune_itanium2,CFLAGS)
+       ;;
+       [Ii]tanium)
+         AC_SYS_COMPILER_FLAG(-mtune=itanium1,mtune_itanium1,CFLAGS)
+       ;;
+     esac
+   ;;
   esac
 
   # AIX
