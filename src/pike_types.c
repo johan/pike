@@ -7012,7 +7012,7 @@ struct pike_type *zzap_function_return(struct pike_type *a,
   return NULL;
 }
 
-struct pike_type *get_type_of_svalue(struct svalue *s)
+struct pike_type *get_type_of_svalue(const struct svalue *s)
 {
   struct pike_type *ret;
   switch(s->type)

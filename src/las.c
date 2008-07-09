@@ -1776,7 +1776,7 @@ node *debug_mktypenode(struct pike_type *t)
   return res;
 }
 
-node *low_mkconstantsvaluenode(struct svalue *s)
+node *low_mkconstantsvaluenode(const struct svalue *s)
 {
   node *res = mkemptynode();
   res->token = F_CONSTANT;
@@ -1791,12 +1791,12 @@ node *low_mkconstantsvaluenode(struct svalue *s)
   return res;
 }
 
-node *debug_mkconstantsvaluenode(struct svalue *s)
+node *debug_mkconstantsvaluenode(const struct svalue *s)
 {
   return low_mkconstantsvaluenode(s);
 }
 
-node *debug_mkliteralsvaluenode(struct svalue *s)
+node *debug_mkliteralsvaluenode(const struct svalue *s)
 {
   node *res = low_mkconstantsvaluenode(s);
 
