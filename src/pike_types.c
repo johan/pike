@@ -3719,10 +3719,7 @@ static int low_pike_types_le(struct pike_type *a, struct pike_type *b,
 			     int array_cnt, unsigned int flags)
 #ifdef PIKE_TYPE_DEBUG
 {
-  int e;
-  char *s;
   int res;
-  char buf[50];
 
   if (l_flag>2) {
     fprintf(stderr, "%*slow_pike_types_le(", indent*2, "");
