@@ -772,7 +772,7 @@ INPUT_IS_WIDE(								 \
 INPUT_IS_WIDE(								 \
           for(e=0;e<field_length;e++)					 \
           {								 \
-             if(input[eye+e]>255)					 \
+	    if((unsigned INT32) input[eye+e] > 255)			\
              {								 \
                chars_matched[0]=eye;					 \
                return matches;						 \
@@ -860,7 +860,7 @@ INPUT_IS_WIDE(								 \
 	  INPUT_IS_WIDE (						\
 	    for(e=0;e<field_length;e++)					\
 	    {								\
-	      if(input[eye+e]>255)					\
+	      if((unsigned INT32) input[eye+e] > 255)			\
 	      {								\
 		chars_matched[0]=eye;					\
 		return matches;						\
