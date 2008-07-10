@@ -7592,7 +7592,7 @@ if test -z "$LDSHARED" ; then
       fi
     ;;
     Darwin*)
-      LDSHARED="gcc -bundle -bind_at_load -flat_namespace -undefined suppress"
+      LDSHARED="$REALCC $CFLAGS -bundle -bind_at_load -flat_namespace -undefined suppress"
     ;;
     IRIX*)
       if test "$GCC" = yes ; then
