@@ -535,17 +535,34 @@ void low_do_sendfile(struct pike_sendfile *this)
 		 DO_NOT_WARN((long)this->sent)));
     
 #if defined(HAVE_SENDFILE) && !defined(HAVE_FREEBSD_SENDFILE) && !defined(HAVE_HPUX_SENDFILE) && !defined(HAVE_MACOSX_SENDFILE)
-    SF_DFPRINTF((stderr, "sendfile: Sending file with sendfile()\n"));
-
+    SF_DFPRINTF((stderr,
+		 "sendfile: Sending file with sendfile() Linux & Solaris.\n"));
     {
-      int fail = sendfile(this->to_fd, this->from_fd,
-			  &this->offset, this->len);
-
-      if (fail < 0) {
-	/* Failed: Try normal... */
-	goto normal;
+      int fail;
+      off_t offset = this->offset;
+      if (this->len < 0) {
+	PIKE_STAT_T st;
+	if (!fd_fstat(this->from_fd, &st) &&
+	    S_ISREG(st.st_mode)) {
+	  this->len = st.st_size - offset;	/* To end of file */
+	} else {
+	  this->len = MAX_LONGEST;
+	}
       }
-      this->sent += fail;
+      while (this->len > 0) {
+	do {
+	  fail = sendfile(this->to_fd, this->from_fd, &offset, this->len);
+	} while ((fail < 0) && (errno == EINTR));
+	this->offset = offset;
+
+	if (fail <= 0) {
+	  if (!fail) break;	/* EOF */
+	  /* Failed: Try normal... */
+	  goto normal;
+	}
+	this->sent += fail;
+	this->len -= fail;
+      }
       goto send_trailers;
     }
   normal:
