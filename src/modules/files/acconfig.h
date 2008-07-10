@@ -26,7 +26,7 @@
 
 /* Define this if you have a MacOS X-style (6 args) sendfile()
  * with struct sf_hdtr. */
-#undef HAVE_HPUX_SENDFILE
+#undef HAVE_MACOSX_SENDFILE
 
 /* Define this if you want to disable the use of sendfile(2). */
 #undef HAVE_BROKEN_SENDFILE
