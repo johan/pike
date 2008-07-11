@@ -1325,7 +1325,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	      break;
 
             default:
-	      if(j<256) {
+	      if((unsigned INT32) j < 256) {
 		if (isprint(j))
 		  my_putchar(j);
 
