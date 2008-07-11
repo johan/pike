@@ -3348,7 +3348,6 @@ PIKEFUN string autoconvert(string s)
 
 void init_parser_xml(void)
 {
-  ptrdiff_t off;
   init_xmlinput_blocks();
   push_text("location");
   location_string_svalue=sp[-1];
