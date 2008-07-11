@@ -546,7 +546,6 @@ static void my_glGenTextures( INT32 args )
 {
   GLint *res;
   struct array *a;
-  struct svalue tmp;
   int ntexts;
   int i;
   if( args != 1 || Pike_sp[-1].type != PIKE_T_INT )
