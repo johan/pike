@@ -3001,10 +3001,6 @@ PMOD_EXPORT void low_cleanup_interpret(struct Pike_interpreter *interpreter)
 
 PMOD_EXPORT void cleanup_interpret(void)
 {
-#ifdef PIKE_DEBUG
-  int e;
-#endif
-
   while(Pike_fp)
     POP_PIKE_FRAME();
 
