@@ -593,6 +593,20 @@ test_compile_error([[ float b=17.0; string a; a=b*42.0; ]])
 
 test_compile_error([[class F {inherit master()->dirnode;};]]);
 
+test_any([[
+  class A {
+    constant i = -1;
+    string f() {
+      return ([1: "foo"])[i] || "bar"; // No warning here. C.f. lyslys 16630665.
+    }
+  };
+  class B {
+    inherit A;
+    constant i = 1;
+  };
+  return B()->f();
+]], "foo")
+
 ignore_warning("Wrong return type.", [[
 ignore_warning("Expected: string.", [[
 ignore_warning("Got     : array(string).", [[
