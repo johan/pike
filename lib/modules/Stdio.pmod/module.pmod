@@ -1866,8 +1866,22 @@ class FILE
   //! This function puts a string back in the input buffer. The string
   //! can then be read with eg @[read()], @[gets()] or @[getchar()].
   //!
+  //! @seealso
+  //! @[read()], @[gets()], @[getchar()]
+  //!
+  void unget(string s)
+  {
+    cached_lines = ({});
+    lp = 0;
+    b=s+b[bpos..];
+    bpos=0;
+  }
+
+  //! This function puts a line back in the input buffer. The string
+  //! can then be read with eg @[read()], @[gets()] or @[getchar()].
+  //!
   //! @note
-  //!   The string must not contain line-feeds.
+  //!   The string is autoterminated by an extra line-feed.
   //!
   //! @seealso
   //! @[read()], @[gets()], @[getchar()]
