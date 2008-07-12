@@ -56,7 +56,8 @@ array(mapping(string:mixed)) fetch_fields();
 //! @param skip
 //!   Number of rows to skip.
 void seek(int skip) {
-  if(skip<0) error("Skip argument not positive\n");
+  if(skip<0)
+    error("Cannot seek to negative result indices\n");
   while(skip--) {
     index++;
     master_res->fetch_row();
