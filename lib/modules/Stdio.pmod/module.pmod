@@ -1621,6 +1621,12 @@ class FILE
     return file::seek(pos);
   }
 
+  int(-1..1) peek(void|int|float timeout)
+  {
+    if(sizeof(b)-bpos) return 1;
+    return file::peek(timeout);
+  }
+
   int tell()
   {
     return file::tell()-sizeof(b)+bpos;
