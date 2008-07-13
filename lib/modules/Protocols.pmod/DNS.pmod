@@ -6,14 +6,14 @@
 
 #pike __REAL_VERSION__
 
-constant NOERROR=0;
-constant FORMERR=1;
-constant SERVFAIL=2;
-constant NXDOMAIN=3;
-constant NOTIMPL=4;
-constant NXRRSET=8;
+final constant NOERROR=0;
+final constant FORMERR=1;
+final constant SERVFAIL=2;
+final constant NXDOMAIN=3;
+final constant NOTIMPL=4;
+final constant NXRRSET=8;
 
-constant QUERY=0;
+final constant QUERY=0;
 
 //! Resource classes
 enum ResourceClass
