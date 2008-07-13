@@ -640,7 +640,7 @@ constant_name: TOK_IDENTIFIER '=' safe_expr0
       if (TEST_COMPAT(7, 6) &&
 	  (Pike_compiler->current_modifiers & ID_EXTERN) &&
 	  (Pike_compiler->compiler_pass == 1)) {
-	yyerror("Extern declared constant.");
+	yywarning("Extern declared constant.");
       }
       if(!is_const($3)) {
 	yyerror("Constant definition is not constant.");
