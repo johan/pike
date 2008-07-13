@@ -2453,7 +2453,7 @@ PMOD_EXPORT struct array *copy_array_recursively(struct array *a,
  *  Note that the array a may be modified destructively if it has
  *  only a single reference.
  */
-PMOD_EXPORT void apply_array(struct array *a, INT32 args)
+PMOD_EXPORT void apply_array(struct array *a, INT32 args, int flags)
 {
   INT32 e, hash = 0;
   struct svalue *argp = Pike_sp-args;
@@ -2467,7 +2467,7 @@ PMOD_EXPORT void apply_array(struct array *a, INT32 args)
 
   if (!(cycl = (struct array *)BEGIN_CYCLIC(a, (ptrdiff_t)hash))) {
     TYPE_FIELD new_types = 0;
-    if (a->refs == 1) {
+    if ((flags & 1) && (a->refs == 1)) {
       /* Destructive operation possible. */
       ref_push_array(a);
       a->type_field |= BIT_UNFINISHED;

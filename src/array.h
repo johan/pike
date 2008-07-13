@@ -183,7 +183,7 @@ PMOD_EXPORT struct array *explode(struct pike_string *str,
 PMOD_EXPORT struct pike_string *implode(struct array *a,struct pike_string *del);
 PMOD_EXPORT struct array *copy_array_recursively(struct array *a,
 						 struct mapping *p);
-PMOD_EXPORT void apply_array(struct array *a, INT32 args);
+PMOD_EXPORT void apply_array(struct array *a, INT32 args, int flags);
 PMOD_EXPORT struct array *reverse_array(struct array *a, int start, int end);
 void array_replace(struct array *a,
 		   struct svalue *from,

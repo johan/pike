@@ -1887,7 +1887,7 @@ int low_mega_apply(enum apply_type type, INT32 args, void *arg1, void *arg2)
 	safe_describe_svalue(s,0,0);
 	do_trace_call(args, &save_buf);
       }
-      apply_array(s->u.array,args);
+      apply_array(s->u.array, args, (type == APPLY_SVALUE_STRICT));
       break;
 
     case PIKE_T_TYPE:
