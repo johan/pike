@@ -3815,7 +3815,7 @@ void fix_type_field(node *n)
       push_finished_type(CAR(n)->type);
       push_type(T_VOID);
       push_type(T_MANY);
-      push_finished_type(CDR(n)->type);
+      push_finished_type(CDR(n)?CDR(n)->type:mixed_type_string);
       push_type(T_FUNCTION);
       push_finished_type(CAR(n)->type);
       push_type(T_FUNCTION);
