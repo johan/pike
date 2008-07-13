@@ -15,9 +15,9 @@ class _file {
   protected private string read_buf;
   protected private int file_pos, crc, write_mode, at_eof;
 
-  constant SEEK_SET = 0;
-  constant SEEK_CUR = 1;
-  constant SEEK_END = 2;
+  final constant SEEK_SET = 0;
+  final constant SEEK_CUR = 1;
+  final constant SEEK_END = 2;
 
   protected int check_header(string|void buf)
   {

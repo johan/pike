@@ -2,7 +2,7 @@
 
 /* $Id$ */
 
-constant TEST_SIZE = 16384;
+final constant TEST_SIZE = 16384;
 
 string testdata = random_string(TEST_SIZE);
 
