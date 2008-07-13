@@ -643,8 +643,10 @@ constant_name: TOK_IDENTIFIER '=' safe_expr0
 	yywarning("Extern declared constant.");
       }
       if(!is_const($3)) {
-	yyerror("Constant definition is not constant.");
-	add_constant($1->u.sval.u.string, &svalue_undefined,
+	if (Pike_compiler->compiler_pass == 2) {
+	  yyerror("Constant definition is not constant.");
+	}
+	add_constant($1->u.sval.u.string, 0,
 		     Pike_compiler->current_modifiers & ~ID_EXTERN);
       } else {
 	if(!Pike_compiler->num_parse_error)
