@@ -2485,7 +2485,6 @@ PMOD_EXPORT void apply_array(struct array *a, INT32 args, int flags)
 #ifdef PIKE_DEBUG
       array_check_type_field(a);
 #endif
-      stack_pop_n_elems_keep_top(args);
     } else {
       struct array *aa;
       push_array(aa = allocate_array_no_init(0, a->size));
