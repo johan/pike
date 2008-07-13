@@ -1944,6 +1944,13 @@ if test "$cflags_is_set" = "no"; then
        ;;
      esac
    ;;
+   ppc64)
+    case "`uname -p 2>/dev/null`" in
+      Cell\ Broadband\ Engine*)
+	AC_SYS_COMPILER_FLAG(-mcpu=cell,mcpu_cell,CFLAGS)
+      ;;
+    esac
+   ;;
   esac
 
   # AIX
