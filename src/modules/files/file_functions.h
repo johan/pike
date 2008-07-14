@@ -17,10 +17,8 @@ FILE_FUNC("openat",file_openat, tFunc(tStr tStr tOr(tVoid,tInt),tObjImpl_STDIO_F
 FILE_FUNC("close",file_close, tFunc(tOr(tStr,tVoid),tInt))
 /* function(int|void,int|void:string) */
 FILE_FUNC("read",file_read, tFunc(tOr(tInt,tVoid) tOr(tInt01,tVoid),tStr))
-#ifndef __NT__
 /* function(float|int|void:int) */
 FILE_FUNC("peek",file_peek, tFunc(tOr3(tFlt,tInt,tVoid) tOr(tInt,tVoid), tInt))
-#endif
 /* function(string|array(string),mixed...:int) */
 FILE_FUNC("write",file_write,
 	  tOr3(tFunc(tStr8, tInt),
