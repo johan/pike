@@ -359,6 +359,12 @@ struct pike_type *find_return_type(node *n)
 int check_tailrecursion(void)
 {
   int e;
+  if (Pike_compiler->compiler_frame->lexical_scope & SCOPE_SCOPE_USED)) {
+    /* There might be a lambda around that has references to the old context
+     * in which case we can't reuse it with a tail-recursive call.
+     */
+    return 0;
+  }
   if(debug_options & NO_TAILRECURSION) return 0;
   for(e=0;e<Pike_compiler->compiler_frame->max_number_of_locals;e++)
   {
@@ -3953,7 +3959,7 @@ void fix_type_field(node *n)
     break;
 
   case F_CONSTANT:
-    n->type = get_type_of_svalue(& n->u.sval);
+    n->type = get_type_of_svalue(&n->u.sval);
     break;
 
   case F_FOREACH:
