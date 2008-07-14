@@ -2642,10 +2642,10 @@ class StdinHilfe
             if (group[token])
               completions += ({ group[token] }) ;
             break;
-          case "infix":
           case "postfix":
             completions += (array)postfix;
             break;
+          case "infix":
           case "seperator":
           default:
             completions += (array)prefix;
