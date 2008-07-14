@@ -1617,7 +1617,7 @@ class FILE
 
   int seek(int pos)
   {
-    bpos=0;  b=""; cached_lines = ({});
+    bpos=0;  b=""; cached_lines = ({}); lp=0;
     return file::seek(pos);
   }
 
