@@ -860,10 +860,11 @@ void export_file (string from, string tmp, string to, void|string id)
 #ifdef SUPPORT_WIX
     mapping translator = ([
       "":"",
-      prefix:"",
-      getcwd():"",
+      replace (prefix, "\\", "/"):"",
+      replace (getcwd(), "\\", "/"):"",
     ]);
-    root->install_file(translate(to, translator), from, id);
+    root->install_file(translate(replace (to, "\\", "/"), translator),
+		       from, id);
 #else /* !SUPPORT_WIX */
     error("Wix mode not supported.\n");
 #endif /* SUPPORT_WIX */
@@ -1126,9 +1127,19 @@ Variables:
 
 string translate(string filename, mapping translator)
 {
-  return translator[filename] ||
-    combine_path(translate(dirname(filename),translator),basename(filename));
-};
+  array(string) split = filename / "/";
+  string rest = "";
+  for (int i = sizeof (split) - 1; i >= 0; i--) {
+    string d = split[..i] * "/";
+    if (string r = translator[d]) {
+      r = combine_path (r, rest);
+      return r[..sizeof (r) - 2];
+    }
+    rest = split[i] + "/" + rest;
+  }
+  werror ("Warning: Didn't translate %O\n", filename);
+  return filename;
+}
 
 void tarfilter(string filename)
 {
