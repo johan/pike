@@ -426,6 +426,17 @@ int|object big_query(object|string q, mapping(string|int:mixed)|void bindings)
   return ::big_query(q, paramValues);
 }
 
+//! This is an alias for @[big_query()], since @[big_query()] already supports
+//! streaming.
+//!
+//! @seealso
+//!   @[big_query], @[Sql.Sql], @[Sql.sql_result]
+int|object streaming_query(object|string q,
+ mapping(string|int:mixed)|void bindings)
+{
+  return big_query(q, bindings);
+}
+
 #else
 constant this_program_does_not_exist=1;
 #endif /* constant(Postgres.postgres) */
