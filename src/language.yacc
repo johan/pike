@@ -1254,7 +1254,7 @@ modifier:
   | TOK_STATIC     { $$ = ID_PROTECTED; }
   | TOK_EXTERN     { $$ = ID_EXTERN; }
   | TOK_OPTIONAL   { $$ = ID_OPTIONAL; }
-  | TOK_PRIVATE    { $$ = ID_PRIVATE | ID_PROTECTED | ID_INLINE; }
+  | TOK_PRIVATE    { $$ = ID_PRIVATE | ID_PROTECTED; }
   | TOK_LOCAL_ID   { $$ = ID_INLINE; }
   | TOK_PUBLIC     { $$ = ID_PUBLIC; }
   | TOK_PROTECTED  { $$ = ID_PROTECTED; }
