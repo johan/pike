@@ -1,4 +1,4 @@
-#!/usr/local/bin/pike
+#!/usr/bin/env pike
 // -*- Pike -*-
 
 // Partial linker for COFF files, written by Fredrik Hubinette 2000 - 2001
