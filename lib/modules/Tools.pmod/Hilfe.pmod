@@ -2897,8 +2897,11 @@ class StdinHilfe
               thismodule = other[module];
               type = "object";
             }
-            else if (base[module])
+            else if (intp(base[module]) || floatp(base[module]) || stringp(base[module]) )
+              return (array)infix;
+            else 
             {
+              // FIXME: need to check if thismodule is something indexable
               thismodule = base[module];
               if (!type)
                 type = "module";
