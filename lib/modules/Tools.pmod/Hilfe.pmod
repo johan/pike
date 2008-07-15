@@ -888,7 +888,8 @@ private constant modifier = (< "extern", "final", "inline", "local", "nomask",
 			       "static", "variant" >);
 
 private constant types = (< "string", "int", "float", "array", "mapping",
-                            "multiset", "mixed", "object", "program" >);
+                            "multiset", "mixed", "object", "program",
+			    "function", "void" >);
 
 // infix token may appear between two literals
 private constant infix = (< "!=", "%", "%=", "&", "&=", "*", "*=", 
@@ -1051,9 +1052,7 @@ class Expression {
   //! token or tokens from @[position] can not be a type declaration.
   int(-1..) endoftype(int(-1..) position) {
     string t = `[](position);
-    if( (< "int", "float", "string",
-           "array", "mapping", "multiset",
-           "function", "object", "program", "void" >)[ t ] ) {
+    if(types[ t ] ) {
       // We are in a type declaration.
       position++;
 
