@@ -228,7 +228,7 @@ PMOD_EXPORT struct pike_string *debug_check_size_shift(struct pike_string *a,
 					    const PIKE_CONCAT(p_wchar,FROM) *from, \
 					    ptrdiff_t len)		\
   {									\
-    while(--len>=0) *(to++)=*(from++);					\
+    while(--len>=0) *(to++)= (PIKE_CONCAT (p_wchar, TO)) *(from++);	\
   }									\
   INT32 PIKE_CONCAT4(compare_,FROM,_to_,TO) (const PIKE_CONCAT(p_wchar,TO) *to,	\
 					     const PIKE_CONCAT(p_wchar,FROM) *from, \
