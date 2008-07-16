@@ -13,7 +13,7 @@
 
 PMOD_EXPORT dynamic_buffer pike_global_buffer;
 
-PMOD_EXPORT char *low_make_buf_space(size_t space, dynamic_buffer *buf)
+PMOD_EXPORT char *low_make_buf_space(ptrdiff_t space, dynamic_buffer *buf)
 {
   char *ret;
 #ifdef PIKE_DEBUG

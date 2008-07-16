@@ -1469,7 +1469,8 @@ void unuse_modules(INT32 howmany)
 #endif
   c->num_used_modules -= howmany;
   Pike_compiler->num_used_modules-=howmany;
-  low_make_buf_space(-sizeof(struct svalue)*howmany, &c->used_modules);
+  low_make_buf_space((ptrdiff_t) sizeof(struct svalue) * -howmany,
+		     &c->used_modules);
   free_svalues((struct svalue *)low_make_buf_space(0, &c->used_modules),
 	       howmany,
 	       BIT_MAPPING | BIT_OBJECT | BIT_PROGRAM);
