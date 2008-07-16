@@ -2085,7 +2085,6 @@ void gc_check_thread_local (struct object *o)
   /* Only used by with locate_references. */
   if (Pike_in_gc == GC_PASS_LOCATE) {
     struct svalue key, *val;
-    INT32 x;
     struct thread_state *s;
 
     key.u.integer = ((struct thread_local *)CURRENT_STORAGE)->id;

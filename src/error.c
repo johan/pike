@@ -73,7 +73,6 @@ PMOD_EXPORT void check_recovery_context(void)
   if(Pike_interpreter.recoveries &&
      Pike_interpreter.recoveries->on_stack &&
      TESTILITEST > 0) {
-    struct svalue *s;
     fprintf(stderr, "Recoveries is out biking (Pike_interpreter.recoveries=%p, Pike_sp=%p, %ld)!\n",
 	    Pike_interpreter.recoveries, &foo,
 	    DO_NOT_WARN((long)TESTILITEST));
