@@ -573,17 +573,17 @@ undump_modules: delete_dumped_modules
 	)
 
 .wxs.wixobj:
-	@if test -f "$@"; then rm "$@"; else :; fi # Paranoia
+	@if test -f "$@"; then rm -f "$@"; else :; fi # Paranoia
 	$(CANDLE) "$<" -out "$@"
 
 .wixobj.msm:
 	@test -d cab_cache || mkdir cab_cache
-	@if test -f "$@"; then rm "$@"; else :; fi # Paranoia
+	@if test -f "$@"; then rm -f "$@"; else :; fi # Paranoia
 	$(LIGHT) "$<" -cc cab_cache -o "$@"
 
 .wixobj.msi:
 	@test -d cab_cache || mkdir cab_cache
-	@if test -f "$@"; then rm "$@"; else :; fi # Paranoia
+	@if test -f "$@"; then rm -f "$@"; else :; fi # Paranoia
 	$(LIGHT) "$<" -cc cab_cache -o "$@"
 
 Pike_banner.bmp: $(SRCDIR)/make_banner.pike $(SRCDIR)/../refdoc/src_images/pike_logo.gif
