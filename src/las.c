@@ -2949,7 +2949,6 @@ static int depend_p3(node *a,node *b)
 #ifdef PIKE_DEBUG
 static int depend_p(node *a,node *b)
 {
-  int ret;
   if(l_flag > 3)
   {
     fputs("Checking if: ", stderr);
