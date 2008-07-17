@@ -171,6 +171,19 @@ test_any([[
 ]],7)
 
 test_any([[
+  // Test that F_RECUR et al are not used for inlined functions
+  // where the scope is in use.
+  class X {
+    inline function(int:int) foo(int x, int y)
+    {
+      if (y) return foo(x+y, y-1);
+      return lambda(int z) { return x+z; };
+    }
+  };
+  return X()->foo(10, 3)(5);
+]], 21)
+
+test_any([[
   // Test that loop optimizer isn't too aggressive.
   // Thanks to Alexander Demenshin <aldem-pike@aldem.net>
   int x,y,a;
