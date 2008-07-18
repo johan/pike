@@ -2967,6 +2967,8 @@ enum_def: /* EMPTY */
       }
       pop_stack();
       free_node($1);
+    } else if ($2) {
+      free_node($2);
     }
   }
   ;
