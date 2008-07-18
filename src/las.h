@@ -141,6 +141,9 @@ struct node_s
 #define OPT_APPLY           0x1000 /* contains apply */
 #define OPT_FLAG_NODE	    0x2000 /* don't optimize away unless the
 				    * parent also is optimized away */
+#define OPT_SAFE            0x4000 /* Known to not throw error (which normally
+				    * isn't counted as side effect). Only used
+				    * in tree_info. */
 
 
 /* This is a statement which got custom break/continue label handling.
