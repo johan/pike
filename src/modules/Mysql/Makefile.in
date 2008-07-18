@@ -5,7 +5,7 @@
 @make_variables@
 VPATH=@srcdir@
 OBJS=mysql.o result.o
-MODULE_LDFLAGS=@LDFLAGS@ @MYSQL_LIBS@
+MODULE_LDFLAGS=@LDFLAGS@ @LIBS@
 
 DUMMY=dummy.o
 LINKER_OPTIONS=modules/Mysql/dummy.o
