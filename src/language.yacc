@@ -310,7 +310,6 @@ int yylex(YYSTYPE *yylval);
 %type <n> catch_arg
 %type <n> class
 %type <n> enum
-%type <n> enum_def
 %type <n> enum_value
 %type <n> safe_comma_expr
 %type <n> comma_expr
