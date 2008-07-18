@@ -726,7 +726,7 @@ PMOD_EXPORT struct array *slice_array(struct array *v, ptrdiff_t start,
 
   if(v->refs==1)	/* Can we use the same array? */
   {
-    if((end-start)*2 > v->malloced_size) /* don't waste too much memory */
+    if((end-start)*4 > v->malloced_size) /* don't waste too much memory */
     {
       add_ref(v);
       free_svalues(ITEM(v) + end, v->size - end, v->type_field);
