@@ -313,8 +313,13 @@ F_POP_VALUE(0 = F_POP_VALUE, *):
   $0;
 
 // Casts usually don't have side-effects.
-F_POP_VALUE(F_CAST[!($$->node_info & OPT_SIDE_EFFECT)](0, *), *):
-  F_POP_VALUE($0, -);
+//
+// But they can throw errors. This gets optimized anyway if the
+// expression is constant. Otherwise it's just an ad-hoc rule for the
+// general case when there's "side-effect free" nodes at the top. /mast
+//
+//F_POP_VALUE(F_CAST[!($$->node_info & OPT_SIDE_EFFECT)](0, *), *):
+//  F_POP_VALUE($0, -);
 
 // Don't push constants just to pop them.
 F_POP_VALUE(F_CONSTANT, *):
