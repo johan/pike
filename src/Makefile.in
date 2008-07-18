@@ -899,7 +899,7 @@ valgrind_hilfe: master.pike
 	$(VALGRIND) $(VALGRINDARGS) $(RUNPIKE) $(ARGS)
 
 feature_list:
-	$(RUNPIKE) $(TMP_BINDIR)/feature_list
+	$(RUNPIKE) --features
 
 run_bench:
 	$(RUNPIKE) $(ARGS) -x benchmark $(BENCHARGS)
