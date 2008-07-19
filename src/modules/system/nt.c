@@ -44,10 +44,10 @@
  * of WIN32. Needs a Platform SDK installed. The SDK included in 
  * MSVS 6.0 is not enough.
  */
+#ifdef HAVE_NEWAPIS_H
 #define COMPILE_NEWAPIS_STUBS
 /* We want GetLongPathName()... */
 #define WANT_GETLONGPATHNAME_WRAPPER
-#ifndef __MINGW32__
 #include <NewAPIs.h>
 #endif
 
@@ -2542,10 +2542,15 @@ static void f_normalize_path(INT32 args)
   ret = str->len;    /* Guess that the result will have the same length... */
   do{
     string_builder_allocate(&res, ret, 0);
+#ifdef WANT_GETLONGPATHNAME_WRAPPER
     /* NOTE: Use the emulated GetLongPathName(), since it normalizes all
      * components of the path.
      */
     ret = Emulate_GetLongPathName(file, res.s->str, res.malloced);
+#else
+    /* FIXME */
+    ret = GetLongPathName (file, res.s->str, res.malloced);
+#endif
     if (!ret) {
       free_string_builder(&res);
       if (file != str->str) xfree(file);
