@@ -40,11 +40,6 @@
 #include <libgnomecanvas/libgnomecanvas.h>
 #endif
 
-#ifdef __NT__
-/* Sockets are unimplemented on NT */
-#undef GTK_TYPE_SOCKET
-#endif
-
 #ifdef HAVE_GTKEXTRA_GTKEXTRA_H
 # include <gtkextra/gtkextra.h>
 #endif
