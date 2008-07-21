@@ -103,7 +103,7 @@ class Server {
    //!  This function is called for each recipient in the "rcpt to" command
    //!  after the client sends the "data" command
    //!  It must have the following synopsis:
-   //!  int|array cb_data(object mime, string sender, array(string) recipients,@
+   //!  int|array cb_data(object mime, string sender, string recipient,@
    //!  void|string rawdata)
    //!  object mime : the mime data object
    //!  string sender : sender of the mail (from the mailfrom command)
@@ -127,10 +127,10 @@ class Server {
    //!   return 250;
    //! }
    //! 
-   //! int cb_data(object mime, string sender, array(string) recipients)
+   //! int cb_data(object mime, string sender, string recipient)
    //! {
    //!   write(sprintf("smtpd: mailfrom=%s, to=%s, headers=%O\ndata=%s\n", 
-   //!   sender, recipients * ", ", mime->headers, mime->getdata()));
+   //!   sender, recipient, mime->headers, mime->getdata()));
    //!   // check the data and deliver the mail here
    //!   if(mime->body_parts)
    //!   {
