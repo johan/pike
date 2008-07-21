@@ -574,7 +574,7 @@ define([PIKE_RETAIN_VARIABLES],
 [
   if test -f propagated_variables; then
     # Retain values for propagated variables; see make_variables.in.
-    sed -e 's/'"'"'/'"'"'"'"'"'"'"'"'/g' -e 's/^\([[^=]]*\)=\(.*\)$/\1=${\1='"'"'\2'"'"'}/' < propagated_variables > propvars.sh
+    sed -e 's/'"'"'/'"'"'"'"'"'"'"'"'/g' -e 's/^\([[^=]]*\)=\(.*\)$/\1=${\1='"'"'\2'"'"'};export \1/' < propagated_variables > propvars.sh
     . ./propvars.sh && rm propvars.sh
   fi
 
