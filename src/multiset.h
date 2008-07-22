@@ -246,7 +246,7 @@ void really_free_multiset (struct multiset *l);
 
 #ifdef PIKE_DEBUG
 
-union msnode *debug_check_msnode (
+PMOD_EXPORT union msnode *debug_check_msnode (
   struct multiset *l, ptrdiff_t nodepos, int allow_deleted,
   char *file, int line);
 #define check_msnode(L, NODEPOS, ALLOW_DELETED)				\
@@ -379,7 +379,7 @@ PMOD_EXPORT struct multiset *real_allocate_multiset (int allocsize,
 						     int flags,
 						     struct svalue *cmp_less);
 PMOD_EXPORT void do_free_multiset (struct multiset *l);
-void multiset_fix_type_field (struct multiset *l);
+PMOD_EXPORT void multiset_fix_type_field (struct multiset *l);
 PMOD_EXPORT void multiset_set_flags (struct multiset *l, int flags);
 PMOD_EXPORT void multiset_set_cmp_less (struct multiset *l,
 					struct svalue *cmp_less);
