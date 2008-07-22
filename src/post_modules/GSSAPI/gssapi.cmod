@@ -413,6 +413,17 @@ static void convert_from_oid_set_and_push (gss_OID_set set)
  *!
  *! This is pike glue for GSS-API ver 2 as specified in RFC 2743.
  *!
+ *! GSS-API is used to authenticate users and servers, and optionally
+ *! also to encrypt communication between them. The API is generic and
+ *! can be used without any knowledge of the actual implementation of
+ *! these security services, which is typically provided by the
+ *! operating system.
+ *!
+ *! The most common implementation at the time of writing is Kerberos,
+ *! which means that the main benefit of this API is to allow clients
+ *! and servers to authenticate each other using Kerberos, thereby
+ *! making single sign-on possible in a Kerberized environment.
+ *!
  *! All functions in this module that wraps GSS-API routines might throw
  *! @[GSSAPI.Error], and by default they do for all such errors. Only in
  *! some special cases do they return when a GSS-API error has happened,
