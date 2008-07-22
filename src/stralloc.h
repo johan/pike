@@ -396,6 +396,12 @@ PMOD_EXPORT int wide_string_to_svalue_inumber(struct svalue *r,
 					      int base,
 					      ptrdiff_t maxlength,
 					      int shift);
+int safe_wide_string_to_svalue_inumber(struct svalue *r,
+				       void * str,
+				       void *ptr,
+				       int base,
+				       ptrdiff_t maxlength,
+				       int shift);
 PMOD_EXPORT int pcharp_to_svalue_inumber(struct svalue *r,
 					 PCHARP str,
 					 PCHARP *ptr,

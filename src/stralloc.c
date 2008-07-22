@@ -3184,6 +3184,38 @@ PMOD_EXPORT int wide_string_to_svalue_inumber(struct svalue *r,
   return ret;
 }
 
+int safe_wide_string_to_svalue_inumber(struct svalue *r,
+				       void * str,
+				       void *ptr,
+				       int base,
+				       ptrdiff_t maxlength,
+				       int shift)
+/* For use from the lexer where we can't let errors be thrown. */
+{
+  PCHARP tmp;
+  JMP_BUF recovery;
+  int ret = 0;
+
+  free_svalue (&throw_value);
+  mark_free_svalue (&throw_value);
+
+  if (SETJMP (recovery)) {
+    /* We know that pcharp_to_svalue_inumber has initialized the
+     * svalue before any error might be thrown. */
+    call_handle_error();
+    ret = 0;
+  }
+  else
+    ret = pcharp_to_svalue_inumber(r,
+				   MKPCHARP(str,shift),
+				   &tmp,
+				   base,
+				   maxlength);
+  UNSETJMP (recovery);
+  if(ptr) *(p_wchar0 **)ptr=tmp.ptr;
+  return ret;
+}
+
 PMOD_EXPORT int pcharp_to_svalue_inumber(struct svalue *r,
 					 PCHARP str,
 					 PCHARP *ptr,
