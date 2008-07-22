@@ -29,10 +29,6 @@
  * /mast
  */
 
-/* This module has compat goo to work in 7.4. Let's keep it for the
- * time being until the module has stabilized a bit, so that there are
- * less source differences between the 7.4 and current versions. */
-
 /* #define GSSAPI_DEBUG */
 /* #define GSSAPI_DEBUG_MORE */
 
