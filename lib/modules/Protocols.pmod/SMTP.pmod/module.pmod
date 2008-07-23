@@ -496,8 +496,8 @@ class Connection {
         }
         if(!relayok && !has_value(cfg->domains, "*"))
         {
-          log("relaying denied, command=%O, cfg->domains=%O, domain=%O\n",
-	      what, cfg->domains, domain);
+          log("relaying denied, command=%O, cfg->domains=%O, domains=%O\n",
+	      what, cfg->domains, domains);
           return 553;
         }
       }
