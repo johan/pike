@@ -5,4 +5,5 @@
 || $Id$
 */
 
+/* Define if you have a working GSSAPI. */
 #undef HAVE_GSSAPI
