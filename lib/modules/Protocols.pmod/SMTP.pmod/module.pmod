@@ -48,7 +48,7 @@ class Client
 {
   inherit Protocol;
 
-  protected private int cmd(string c, string|void comment)
+  protected int cmd(string c, string|void comment)
   {
     int r = command(c);
     switch(r) {
