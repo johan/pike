@@ -35,6 +35,14 @@ constant OPEN_BOUND = __builtin.OPEN_BOUND;
 
 constant BacktraceFrame = __builtin.backtrace_frame;
 
+constant __Backend = __builtin.Backend;
+
+//! The class of the @[DefaultBackend].
+//!
+//! Typically something that has inherited @[__Backend].
+//!
+//! @seealso
+//!   @[__Backend], @[DefaultBackend]
 constant Backend = __builtin.DefaultBackendClass;
 
 #if constant(__builtin.PollDeviceBackend)
