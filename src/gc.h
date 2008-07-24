@@ -67,8 +67,7 @@ extern double gc_average_slowness;
 #define PRINT_ALLOC_COUNT_TYPE "%lu"
 #endif
 
-extern INT32 num_objects;
-extern int got_unlinked_things;
+extern int num_objects, got_unlinked_things;
 extern ALLOC_COUNT_TYPE num_allocs, alloc_threshold;
 PMOD_EXPORT extern int Pike_in_gc;
 extern int gc_generation;
