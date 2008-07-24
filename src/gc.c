@@ -105,6 +105,7 @@ double gc_average_slowness = 0.9;
 #endif
 
 int num_objects = 2;		/* Account for *_empty_array. */
+int got_unlinked_things;
 ALLOC_COUNT_TYPE num_allocs =0;
 ALLOC_COUNT_TYPE alloc_threshold = GC_MIN_ALLOC_THRESHOLD;
 PMOD_EXPORT int Pike_in_gc = 0;
