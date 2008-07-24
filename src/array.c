@@ -1606,7 +1606,7 @@ PMOD_EXPORT struct array *add_arrays(struct svalue *argp, INT32 args)
       if(v->refs == 1 && v->malloced_size >= size)
       {
 	if (((v->item - v->real_item) >= tmp) &&
-	    ((v->item + size) <= (v->real_item + v->malloced_size))) {
+	    ((v->item + size - tmp) <= (v->real_item + v->malloced_size))) {
 	  /* There's enough space before and after. */
 	  debug_malloc_touch(v);
 	  mark_free_svalue(argp + e);
