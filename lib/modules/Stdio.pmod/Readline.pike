@@ -1544,11 +1544,6 @@ void message(string msg)
 void write(string msg,void|int word_wrap)
 {
   int p = cursorpos;
-  setcursorpos(0);
-  if(!input_controller->dumb) {
-    output_controller->bol();
-    output_controller->clear(1);
-  }
   array(string) tmp=msg/"\n";
   foreach(tmp[..<1],string l)
   {
