@@ -2560,7 +2560,8 @@ class StdinHilfe
     }
 
     // keep the last whitespace
-    if (typeof_token(tokens[-1]) == "whitespace")
+    if (arrayp(tokens) && sizeof(tokens) && 
+        typeof_token(tokens[-1]) == "whitespace")
       completable = ({ " " }) + completable;
     return reverse(completable);
   }
