@@ -5,7 +5,7 @@
  *
  */
 
-#if 0	 /* set to 1 to enable this module  */
+#if 1	 /* set to 1 to enable this module  */
 
 #include "global.h"
 #include "config.h"
@@ -17,6 +17,7 @@
 #include "interpret.h"
 #include "threads.h"
 #include "builtin_functions.h"
+#include "fdlib.h"
 
 #include <stdio.h>
 #include <stdlib.h>
