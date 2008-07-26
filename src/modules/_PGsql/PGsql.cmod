@@ -441,6 +441,7 @@ simple:             push_int(nextword);
       f_aggregate(cols);
       rowsreceived++;
       nrows++;
+      inflight--;
       if(medium_peek(0)>0)
         switch(low_getbyte()) {
 	  case PGMSG_DATAROW:
