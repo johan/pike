@@ -6,6 +6,4 @@ AC_CONFIG_HEADER(config.h)
 
 AC_MODULE_INIT()
 
-PIKE_FEATURE(_PGsql,[yes])
-
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
