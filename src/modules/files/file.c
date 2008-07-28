@@ -842,9 +842,10 @@ static void file_peek(INT32 args)
   {
 #ifdef HAVE_AND_USE_POLL
     struct pollfd fds;
-    int timeout;
-    timeout = (int)(tf*1000); /* ignore overflow for now */
-    if (!timeout) timeout = 1;
+    int timeout = 1;
+    if (args && !IS_UNDEFINED(Pike_sp - args)) {
+      timeout = (int)(tf*1000); /* ignore overflow for now */
+    }
     fds.fd=FD;
     fds.events=POLLIN;
     fds.revents=0;
@@ -882,8 +883,10 @@ static void file_peek(INT32 args)
     fd_FD_SET(FD, &tmp);
     ret = FD;
 
-    tv.tv_sec=(int)tf;
-    tv.tv_usec=(int)(1000000*(tf-tv.tv_sec));
+    if (args && !IS_UNDEFINED(Pike_sp - args)) {
+      tv.tv_sec=(int)tf;
+      tv.tv_usec=(int)(1000000*(tf-tv.tv_sec));
+    }
 
     /* FIXME: Handling of EOF and not_eof */
 
