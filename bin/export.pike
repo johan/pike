@@ -133,7 +133,7 @@ int main(int argc, string *argv)
     if(file_size("pike/src/modules/"+tmp) == -2)
       fix_configure("modules/"+tmp);
 
-    werror("vpath = %s\n",vpath);
+  werror("vpath = %s\n",vpath);
   system("ln -s pike "+vpath);
 
   files=sum(({ vpath+"/README", vpath+"/ANNOUNCE" }),
