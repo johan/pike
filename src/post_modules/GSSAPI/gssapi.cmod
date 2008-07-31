@@ -53,6 +53,8 @@
 #include "threads.h"
 #include "version.h"
 
+#define DEFAULT_CMOD_STORAGE static
+
 DECLARATIONS
 
 #ifdef HAVE_GSSAPI
@@ -2917,7 +2919,7 @@ PIKECLASS Context
     RETURN THIS->last_confidential;
   }
 
-  extern struct program *InitContext_program, *AcceptContext_program;
+  static struct program *InitContext_program, *AcceptContext_program;
 
   PIKEFUN string _sprintf (int flag, ...)
     flags ID_STATIC;
