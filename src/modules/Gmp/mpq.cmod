@@ -44,6 +44,8 @@
 #define sp Pike_sp
 #define fp Pike_fp
 
+DECLARATIONS
+
 #define THISMPQ (&(THIS->n))
 
 #define PUSH_REDUCED(o) push_object(o)

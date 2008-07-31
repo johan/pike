@@ -30,6 +30,8 @@
 /*! @module PCRE
  */
 
+DECLARATIONS
+
 #ifdef HAVE_LIBPCRE
 
 #include <pcre.h>

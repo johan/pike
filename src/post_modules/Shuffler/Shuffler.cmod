@@ -25,6 +25,8 @@
 #include "shuffler.h"
 #include "sources.h"
 
+DECLARATIONS
+
 #if 0
 #include <stdio.h>
 #define SHUFFLE_DEBUG1(fmt, arg1)			fprintf(stderr,"Shuffle[%p]:" fmt, arg1)

@@ -37,6 +37,8 @@
 #include <errno.h>
 #include <math.h>
 
+DECLARATIONS
+
 /*! @decl array(array(int|string|type)) describe_program(program p)
  *! @belongs Debug
  *!

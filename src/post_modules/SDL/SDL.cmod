@@ -23,6 +23,8 @@
 
 #include "sdl_config.h"
 
+DECLARATIONS
+
 #ifdef HAVE_SDL
 
 /*! @module SDL

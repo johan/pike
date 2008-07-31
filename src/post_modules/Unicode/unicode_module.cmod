@@ -22,6 +22,8 @@
 #include "buffer.h"
 #include "uversion.h"
 
+DECLARATIONS
+
 /*! @module Unicode
  */
 
