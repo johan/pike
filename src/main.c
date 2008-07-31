@@ -559,7 +559,7 @@ int main(int argc, char **argv)
 		  /* Maybe set this too? Don't know exactly when it
 		   * has effect. /mast */
 		  /*SEM_NOOPENFILEERRORBOX | */
-		  GetErrorMode());
+		  SetErrorMode (0));
   }
 #endif
 
