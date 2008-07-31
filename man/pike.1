@@ -70,6 +70,19 @@ Turn off tail recursion optimization (debug).
 .B \-dT
 Enable extra checks in the thread library, e.g. mutex sanity checks (debug).
 .TP
+.B \-dL
+.B Windows only:
+Enable Windows error dialogs when dll files cannot be loaded.
+
+It is common that Pike has modules which are linked to dll files that
+are not available in all installations. Therefore these error dialogs
+are disabled by default so that Pike does not hang on them when
+attempting to load certain modules.
+
+However, the error dialogs are the only way to see which dll's that
+could not be loaded, so this option may be necessary to find out why a
+certain module does not load.
+.TP
 .B \-l
 Increase the debug level of the global optimizer with 1 (debug).
 .TP
@@ -119,19 +132,6 @@ Turn on runtime checking of arguments to function calls, and soft casts.
 Turn on
 .B #pragma strict_types
 for all files.
-.TP
-.B \-rl
-.B Windows only:
-Enable Windows error dialogs when dll files cannot be loaded.
-
-It is common that Pike has modules which are linked to dll files that
-are not available in all installations. Therefore these error dialogs
-are disabled by default so that Pike does not hang on them when
-attempting to load certain modules.
-
-However, the error dialogs are the only way to see which dll's that
-could not be loaded, so this option may be necessary to find out why a
-certain module does not load.
 .LP
 The following options are supported by the default master program:
 .TP
