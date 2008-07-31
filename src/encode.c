@@ -2495,7 +2495,7 @@ static DECLSPEC(noreturn) void decode_error (struct svalue *decoding,
   }
   push_text (buf); n++;
   if (other) {
-    push_constant_text ("%O (%t)\n");
+    push_constant_text ("%O (%s)\n");
     push_svalue (other);
     push_text(get_name_of_type(other->type));
     f_sprintf (3); n++;
