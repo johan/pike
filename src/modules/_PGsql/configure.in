@@ -6,4 +6,6 @@ AC_CONFIG_HEADER(config.h)
 
 AC_MODULE_INIT()
 
+AC_CHECK_HEADERS(sys/socket.h netinet/tcp.h)
+
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
