@@ -15,10 +15,6 @@
 #include "module.h"
 #include "interpret.h"
 
-#if defined(HAVE_KRB5_H) && defined(HAVE_LIBKRB5)
-#define HAVE_KRB5
-#endif
-
 DECLARATIONS
 
 /* #define KRB_DEBUG */
