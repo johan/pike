@@ -2495,9 +2495,10 @@ static DECLSPEC(noreturn) void decode_error (struct svalue *decoding,
   }
   push_text (buf); n++;
   if (other) {
-    push_constant_text ("%O\n");
+    push_constant_text ("%O (%t)\n");
     push_svalue (other);
-    f_sprintf (2); n++;
+    push_text(get_name_of_type(other->type));
+    f_sprintf (3); n++;
   }
   f_add (n);
 
@@ -3017,6 +3018,7 @@ static void decode_value2(struct decode_data *data)
 
     case TAG_FUNCTION:
       decode_value2(data);
+      stack_dup();	/* For diagnostic purposes... */
 
       switch(num)
       {
@@ -3075,7 +3077,10 @@ static void decode_value2(struct decode_data *data)
       }
 
       if(Pike_sp[-1].type != T_FUNCTION && data->pickyness)
-	decode_error(NULL, Pike_sp - 1, "Failed to decode function. Got: ");
+	decode_error(Pike_sp - 2, Pike_sp - 1,
+		     "Failed to decode function. Got: ");
+
+      stack_pop_keep_top();
 
       break;
 
