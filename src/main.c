@@ -472,7 +472,7 @@ int main(int argc, char **argv)
 	    set_pike_runtime_options (RUNTIME_ERROR_DIALOGS,
 				      RUNTIME_ERROR_DIALOGS);
 	    p++;
-	    goto more_d_flags;
+	    goto more_r_flags;
 
          default:
             p++;
