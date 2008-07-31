@@ -4453,6 +4453,7 @@ AC_CHECK_FUNCS( \
  GetSystemInfo \
  clock_getcpuclockid \
  backtrace \
+ SetErrorMode \
 )
 
 # SunOS 4 realloc() returns NULL when reallocing NULL.

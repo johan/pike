@@ -33,8 +33,9 @@ extern int yydebug;
 int set_pike_debug_options(int bits, int mask);
 
 /* Runtime options */
-#define RUNTIME_CHECK_TYPES  1
-#define RUNTIME_STRICT_TYPES 2
+#define RUNTIME_CHECK_TYPES	1
+#define RUNTIME_STRICT_TYPES	2
+#define RUNTIME_ERROR_DIALOGS	4
 
 int set_pike_runtime_options(int bits, int mask);
 
