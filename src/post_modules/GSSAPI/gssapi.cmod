@@ -2919,7 +2919,7 @@ PIKECLASS Context
     RETURN THIS->last_confidential;
   }
 
-  static struct program *InitContext_program, *AcceptContext_program;
+  struct program *InitContext_program, *AcceptContext_program;
 
   PIKEFUN string _sprintf (int flag, ...)
     flags ID_STATIC;
