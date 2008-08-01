@@ -5,6 +5,10 @@
  *
  */
 
+#pike __REAL_VERSION__
+
+#if constant(Postgres.postgres)
+
 //! This is an interface to the Postgres (Postgres95, pgsql) database
 //! server. This module may or may not be available on your Pike,
 //! depending whether the appropriate include and library files could
@@ -51,10 +55,6 @@
 //!
 //! @seealso
 //!  @[Sql.pgsql], @[Sql.Sql], @[Postgres.postgres], @[Sql.postgres_result]
-
-#pike __REAL_VERSION__
-
-#if constant(Postgres.postgres)
 
 #define ERROR(X) throw (({X,backtrace()}))
 
@@ -458,6 +458,5 @@ int|object streaming_query(object|string q,
 //!
 //! @seealso
 //!   @[Sql.pgsql], @[Sql.Sql]
-
 inherit Sql.pgsql;
 #endif /* constant(Postgres.postgres) */
