@@ -324,6 +324,8 @@ static void close_fd_quietly(void)
 	}
 
 	case EBADF:
+	  break;
+
 #ifdef SOLARIS
 	  /* It's actually OK. This is a bug in Solaris 8. */
        case EAGAIN:
