@@ -113,11 +113,6 @@ static void do_trace_call(INT32 args, dynamic_buffer *old_buf);
 static void do_trace_func_return (int got_retval, struct object *o, int fun);
 static void do_trace_return (int got_retval, dynamic_buffer *old_buf);
 
-void gdb_stop_here(void)
-{
-  ;
-}
-
 
 void push_sp_mark(void)
 {
