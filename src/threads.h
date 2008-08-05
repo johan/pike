@@ -103,6 +103,7 @@ void f_thread_local_get(INT32 args);
 void f_thread_local_set(INT32 args);
 void low_th_init(void);
 void th_init(void);
+void cleanup_all_other_threads (void);
 void th_cleanup(void);
 int th_num_idle_farmers(void);
 int th_num_farmers(void);
