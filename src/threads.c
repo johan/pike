@@ -2466,12 +2466,15 @@ void cleanup_all_other_threads (void)
     THREADS_DISALLOW();
   }
 
+#if 0
   if (num_kills) {
-    fprintf (stderr, "Killed %d thread(s)", num_kills - num_pending_interrupts);
+    fprintf (stderr, "Killed %d thread(s) in exit cleanup",
+	     num_kills - num_pending_interrupts);
     if (num_pending_interrupts)
-      fprintf (stderr, ", %d haven't responded", num_pending_interrupts);
+      fprintf (stderr, ", %d more haven't responded", num_pending_interrupts);
     fputs (".\n", stderr);
   }
+#endif
 }
 #endif
 
