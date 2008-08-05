@@ -167,7 +167,9 @@ static void exit_builtin_modules(void)
 #ifdef PIKE_THREADS
     if(count_pike_threads())
     {
-      fprintf(stderr,"Byte counting aborted, because all threads have not exited properly.\n");
+      fprintf(stderr,"Cleanup-on-exit aborted "
+	      "because %d thread(s) still are running.\n",
+	      count_pike_threads());
       exit_with_cleanup = 0;
       return;
     }
