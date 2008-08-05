@@ -20,6 +20,15 @@ PMOD_EXPORT char *debug_xstrdup(const char *src);
 #include <execinfo.h>
 typedef void *c_stack_frame;
 #define C_STACK_TRACE
+
+#define DUMP_C_STACK_TRACE() do {					\
+    c_stack_frame bt[100];						\
+    int n = backtrace (bt, 100);					\
+    backtrace_symbols_fd (bt, n, 2);					\
+  } while (0)
+
+#else
+#define DUMP_C_STACK_TRACE() do {} while (0)
 #endif
 
 #define DMALLOC_NAMED_LOCATION(NAME)	\
