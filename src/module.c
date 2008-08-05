@@ -163,7 +163,7 @@ static void exit_builtin_modules(void)
     int leak_found = 0;
 
 #ifdef _REENTRANT
-    if(count_pike_threads()>1)
+    if(count_pike_threads())
     {
       fprintf(stderr,"Byte counting aborted, because all threads have not exited properly.\n");
       exit_with_cleanup = 0;
