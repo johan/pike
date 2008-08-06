@@ -4541,12 +4541,12 @@ int call_handle_inherit(struct pike_string *s)
     if (Pike_sp[-1].type != T_INT)
       return 1;
     else {
-      pop_stack();
       my_yyerror("Couldn't find program %S", s);
     }
   else {
     handle_compile_exception ("Error finding program");
   }
+  pop_stack();
 
   return 0;
 }
