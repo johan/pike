@@ -880,6 +880,12 @@ test_compile_warning([[
   void y (string|int s) {x (s);};
 ]])
 
+test_compile_any([[
+  #pragma strict_types
+  array(string) x = ({"A", "B"});
+  mixed a() {return map (x, lower_case);}
+]])
+
 cond( [[ master()->resolv("Pike")->Security ]],[[
   test_any( [[
   // bug [2830] ------------------------------------------------------------
