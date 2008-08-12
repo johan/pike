@@ -34,7 +34,7 @@
 
 DECLARATIONS
 
-/*#define PGSQL_DEBUG /**/
+/*#define PGSQL_DEBUG */
 
 #ifdef PGSQL_DEBUG
 #define PD(X)	fprintf X
@@ -230,7 +230,7 @@ bad:
   PIKEFUN void setportal(void|object portal) {
     if(THIS->portal)
       free_object(THIS->portal);
-    if(THIS->portal=portal) {
+    if((THIS->portal=portal)) {
       debug_malloc_touch(THIS->portal);
       Pike_sp--;				/* don't decrease references */
     }
