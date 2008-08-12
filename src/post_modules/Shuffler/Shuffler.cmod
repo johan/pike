@@ -170,7 +170,7 @@ PIKECLASS Shuffle
     SHUFFLE_DEBUG2("set_throttler(%p)\n", THIS, t );
     if( THIS->throttler )
       free_object( THIS->throttler );
-    if( THIS->throttler = t ) {
+    if( (THIS->throttler = t) ) {
       debug_malloc_touch(THIS->throttler);
       Pike_sp--;
     }
