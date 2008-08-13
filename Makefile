@@ -297,6 +297,10 @@ export:
 	  echo 'Missing Nettle bundle.'; \
 	  EXPORT_PREREQ=FAIL ; \
 	fi ; \
+	if ls bundles/libffi-*.tar.gz > /dev/null 2>&1; then : ; else \
+	  echo 'Missing libffi bundle.'; \
+	  EXPORT_PREREQ=FAIL ; \
+	fi ; \
 	if [ "$$EXPORT_PREREQ" = "FAIL" ]; then : \
 	  echo 'Fix the above error(s) and rerun "make export", or'; \
 	  echo '"make export_forced" to bypass these checks.';\
