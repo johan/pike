@@ -8011,6 +8011,11 @@ static void run_cleanup(struct compilation *c, int delayed)
       SAFE_APPLY_MASTER("unregister",1);
       pop_stack();
 
+      /* Free the target here to avoid false alarms in the debug check
+       * below. */
+      free_program (c->target);
+      c->target = NULL;
+
 #ifdef PIKE_DEBUG
       if (p->refs > 1) {
 	/* Other programs can have indexed out constants from p, which
