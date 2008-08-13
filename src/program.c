@@ -7970,6 +7970,11 @@ static void run_cleanup(struct compilation *c, int delayed)
   }
 #endif /* PIKE_DEBUG */
 
+  /* We can get called several times when a compilation registered as
+   * delayed has failed and is cleaned up right away regardless (see
+   * the lines with the run_pass1() calls in f_compilation_compile and
+   * compile). It's not at all certain that this is the correct way to
+   * deal with it, though.. /mast */
   if (c->flags & COMPILER_CLEANUP) {
     CDFPRINTF((stderr,
 	       "th(%ld) %p run_cleanup() - already cleaned up.\n",
