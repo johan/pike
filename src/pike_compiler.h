@@ -55,7 +55,6 @@ struct compilation
 /* Flags. */
 #define COMPILER_BUSY	1	/* The compiler is busy compiling. */
 #define COMPILER_DONE	2	/* The compiler is finished compiling. */
-#define COMPILER_CLEANUP 4	/* run_cleanup has cleaned up the program. */
 
 /* CompilerEnvironment function numbers. */
 #define CE_REPORT_FUN_NUM				0
