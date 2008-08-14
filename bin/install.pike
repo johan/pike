@@ -2855,7 +2855,7 @@ the PRIVATE_CRT stuff in install.pike.\n");
     install_file(combine_path(vars->SRCDIR,"run_autoconfig"),
 		 combine_path(include_prefix,"run_autoconfig"));
     install_file(combine_path(vars->SRCDIR,"precompile2.sh"),
-		 combine_path(include_prefix,"precompile.sh"));
+		 combine_path(include_prefix,"precompile.sh"), 0755);
 
     if (!no_autodoc) {
       // install the core extracted autodocs
