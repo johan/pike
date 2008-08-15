@@ -9204,7 +9204,7 @@ static void compile_compiler(void)
   PIKE_MAP_VARIABLE("target", OFFSETOF(compilation, target),
 		    tPrg(tObj), PIKE_T_PROGRAM, ID_HIDDEN);
   PIKE_MAP_VARIABLE("placeholder", OFFSETOF(compilation, placeholder),
-		    tObj, PIKE_T_PROGRAM, ID_HIDDEN);
+		    tObj, PIKE_T_OBJECT, ID_HIDDEN);
   PIKE_MAP_VARIABLE("p", OFFSETOF(compilation, p),
 		    tPrg(tObj), PIKE_T_PROGRAM, ID_HIDDEN);
   PIKE_MAP_VARIABLE("current_file", OFFSETOF(compilation, lex.current_file),
