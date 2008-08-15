@@ -609,8 +609,10 @@ fi
 
 ## Build smartlink
 AC_ARG_ENABLE(smartlink_binary, MY_DESCR([--disable-smartlink-binary],
-   [do not build and use the smartlink binary]),
-	      [], [force_smartlink_script_only=yes])
+              [do not build and use the smartlink binary]),
+	      [if test "x$enableval" = "xno"; then
+                 force_smartlink_script_only=yes
+               fi])
 
 if test -x /usr/bin/uname 2>/dev/null; then
   UNAME=`/usr/bin/uname -sr`
