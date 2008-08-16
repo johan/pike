@@ -8,4 +8,6 @@ AC_MODULE_INIT()
 
 AC_CHECK_HEADERS(sys/socket.h netinet/in.h netinet/tcp.h)
 
+PIKE_FEATURE_OK(PostgresNative)
+
 AC_OUTPUT(Makefile,echo FOO >stamp-h )
