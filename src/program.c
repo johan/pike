@@ -9367,6 +9367,8 @@ struct program *compile(struct pike_string *aprog,
     run_cleanup(c,0);
     
     ret=c->p;
+    /* FIXME: Looks like ret should get an extra ref here, but I'm not
+     * sure. Besides, this function isn't used anymore. /mast */
 
     debug_malloc_touch(c);
     free_object(ce);
@@ -9375,6 +9377,7 @@ struct program *compile(struct pike_string *aprog,
       CDFPRINTF((stderr, "th(%ld) %p compile() reporting failure "
 		 "since a dependant failed.\n",
 		 (long) th_self(), c->target));
+      if (ret) free_program(ret);
       throw_error_object(fast_clone_object(compilation_error_program), 0, 0, 0,
 			 "Compilation failed.\n");
     }
