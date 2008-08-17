@@ -8446,7 +8446,6 @@ static void f_compilation_compile(INT32 args)
       CDFPRINTF((stderr, "th(%ld) %p f_compilation_compile() reporting failure "
 		 "since a dependant failed.\n",
 		 (long) th_self(), c->target));
-      if (ret) free_program(ret);
       throw_error_object(fast_clone_object(compilation_error_program), 0, 0, 0,
 			 "Compilation failed.\n");
     }
@@ -9376,7 +9375,6 @@ struct program *compile(struct pike_string *aprog,
       CDFPRINTF((stderr, "th(%ld) %p compile() reporting failure "
 		 "since a dependant failed.\n",
 		 (long) th_self(), c->target));
-      if (ret) free_program(ret);
       throw_error_object(fast_clone_object(compilation_error_program), 0, 0, 0,
 			 "Compilation failed.\n");
     }
