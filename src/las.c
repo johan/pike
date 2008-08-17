@@ -3526,6 +3526,12 @@ void fix_type_field(node *n)
 
       name = get_name_of_function(CAR(n));
 
+#ifdef PIKE_DEBUG
+      if (l_flag>2)
+	safe_pike_fprintf (stderr, "Checking call to %S at %S:%d.\n", name,
+			   n->current_file, n->line_number);
+#endif /* PIKE_DEBUG */
+
       /* NOTE: new_check_call() steals a reference from f! */
       copy_pike_type(f, CAR(n)->type);
       f = debug_malloc_pass(new_check_call(name, f, CDR(n), &args, 0));
