@@ -2464,6 +2464,33 @@ test_do([[
   Stdio.recursive_rm("testsuite_test_dir.pmod");
 ]]);
 
+test_do([[
+  Stdio.write_file ("testsuite_test_a.pmod", #"
+    class a {}
+    testsuite_test_b.b2 foo() {return testsuite_test_b.b2 (17);}");
+
+  Stdio.recursive_rm ("testsuite_test_b.pmod");
+  mkdir ("testsuite_test_b.pmod");
+  Stdio.write_file ("testsuite_test_b.pmod/b1.pike", #"
+    protected void create() {}");
+  Stdio.write_file ("testsuite_test_b.pmod/b2.pike", #"
+    inherit testsuite_test_b.b1;
+    constant a = testsuite_test_a.a;
+    protected void create (int i) {}");
+
+  object orig_master = master();
+  replace_master (object_program (orig_master)());
+  master()->add_module_path (getcwd());
+  mixed err = catch {
+      compile_string ("inherit testsuite_test_b.b2;");
+    };
+  replace_master (orig_master);
+  if (err) throw (err);
+
+  Stdio.recursive_rm ("testsuite_test_a.pmod");
+  Stdio.recursive_rm ("testsuite_test_b.pmod");
+]])
+
 cond(0,[[
 test_do([[
   // This is a case of cyclic references I think should work, but
