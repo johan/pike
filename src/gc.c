@@ -1822,8 +1822,10 @@ static INLINE struct marker *gc_check_debug(void *a, int weak)
   if (m->refs + m->xrefs >= *(INT32 *) a)
     /* m->refs will be incremented by the caller. */
     gc_fatal (a, 1, "Thing is getting more internal refs (%d + %d) "
-	      "than refs (%d) (a pointer has probably been checked "
-	      "more than once).\n", m->refs, m->xrefs, *(INT32 *) a);
+	      "than refs (%d).\n"
+	      "(Could be an extra free somewhere, or "
+	      "a pointer might have been checked more than once.)\n",
+	      m->refs, m->xrefs, *(INT32 *) a);
   checked++;
 
   return m;
