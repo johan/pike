@@ -670,15 +670,6 @@ PMOD_EXPORT void gc_check_zapped (void *a, TYPE_T type, const char *file, int li
   }while(0)
 #endif
 
-/* FIXME: Maybe try to replace free_program with this in the future to
- * catch more bugs, but there's code that requires the current one. */
-/* FIXME: Cleanup all the misguided "<foo> = NULL" in exit functions. */
-#define free_program_ptr(P) do {					\
-    struct program **pp_ = &(P);					\
-    free_program (*pp_);						\
-    MARK_INVALID_PTR (*pp_);						\
-  } while (0)
-
 BLOCK_ALLOC_FILL_PAGES(program, n/a);
 
 
