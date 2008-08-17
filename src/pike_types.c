@@ -6865,7 +6865,6 @@ struct pike_type *new_check_call(struct pike_string *fun_name,
     }
     fprintf(stderr, "\n  fun_type: ");
     simple_describe_type(fun_type);
-    fputc ('\n', stderr);
   }
 #endif /* PIKE_DEBUG */
 
@@ -6893,30 +6892,35 @@ struct pike_type *new_check_call(struct pike_string *fun_name,
 #endif /* PIKE_DEBUG */
 
     return res;
-  } else if ((res = low_new_check_call(fun_type, args->type, flags, sval))) {
-    /* OK. */
+  } else {
 #ifdef PIKE_DEBUG
-    if (l_flag>2) {
-      fprintf(stderr, " OK.\n");
-    }
-#endif /* PIKE_DEBUG */
-    if ((c->lex.pragmas & ID_STRICT_TYPES) &&
-	/* FIXME: Strict types not supported for lvalues yet. */
-	!(flags & CALL_ARG_LVALUE)){
-      if (!(tmp = low_new_check_call(fun_type, args->type,
-				     flags|CALL_STRICT, sval))) {
-	tmp = get_first_arg_type(fun_type, 0);
-	yytype_report(REPORT_WARNING, NULL, 0, tmp,
-		      NULL, 0, args->type,
-		      0, "Type mismatch in argument %d to %S.",
-		      *argno, fun_name);
-	if (tmp) free_type(tmp);
-      } else {
-	free_type(tmp);
+    if (l_flag>2) fputc ('\n', stderr);
+#endif
+    if ((res = low_new_check_call(fun_type, args->type, flags, sval))) {
+      /* OK. */
+#ifdef PIKE_DEBUG
+      if (l_flag>2) {
+	fprintf(stderr, " OK.\n");
       }
+#endif /* PIKE_DEBUG */
+      if ((c->lex.pragmas & ID_STRICT_TYPES) &&
+	  /* FIXME: Strict types not supported for lvalues yet. */
+	  !(flags & CALL_ARG_LVALUE)){
+	if (!(tmp = low_new_check_call(fun_type, args->type,
+				       flags|CALL_STRICT, sval))) {
+	  tmp = get_first_arg_type(fun_type, 0);
+	  yytype_report(REPORT_WARNING, NULL, 0, tmp,
+			NULL, 0, args->type,
+			0, "Type mismatch in argument %d to %S.",
+			*argno, fun_name);
+	  if (tmp) free_type(tmp);
+	} else {
+	  free_type(tmp);
+	}
+      }
+      free_type(fun_type);
+      return res;
     }
-    free_type(fun_type);
-    return res;
   }
 
   if ((tmp = get_first_arg_type(fun_type, flags))) {
