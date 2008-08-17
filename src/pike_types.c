@@ -6865,6 +6865,7 @@ struct pike_type *new_check_call(struct pike_string *fun_name,
     }
     fprintf(stderr, "\n  fun_type: ");
     simple_describe_type(fun_type);
+    fputc ('\n', stderr);
   }
 #endif /* PIKE_DEBUG */
 
