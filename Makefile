@@ -15,7 +15,7 @@
 
 # Set to a flag for parallelizing make, e.g. -j2. It's given to make
 # at the level where it's most effective.
-#MAKE_PARALLEL=-j`test -f /proc/cpuinfo && grep processor /proc/cpuinfo | wc -l || echo 1`
+#MAKE_PARALLEL=-j`test -f /proc/cpuinfo && grep ^processor /proc/cpuinfo | wc -l || echo 1`
 
 # Tip: Remove "-r" from the line below if you don't want to rebuild
 # from scratch every time you upgrade the kernel.
