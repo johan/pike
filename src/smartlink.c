@@ -74,8 +74,9 @@ static int isexecutable(char *file)
 {
   struct stat stbuf;
 
-  return !stat(file, &stbuf) && !S_ISDIR(stbuf)
-   && stbuf.st_mode&(S_IXUSR|S_IXGRP|S_IXOTH);
+  return !stat(file, &stbuf)
+   && !S_ISDIR(stbuf.st_mode)
+   && stbuf.st_mode & (S_IXUSR | S_IXGRP | S_IXOTH);
 }
 
 int main(int argc, char **argv)
