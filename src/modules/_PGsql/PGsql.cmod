@@ -184,7 +184,7 @@ ret2:     PD((stderr,"PGsql getstring %d\n",length));
           return low_end_shared_string(retval);
         }
         memcpy(p,THIS->plow,left);
-        len-=left;p+=left;
+        len-=left;p+=left;THIS->plow+=left;
       }
       else {
         p=memchr(THIS->plow,0,left);
