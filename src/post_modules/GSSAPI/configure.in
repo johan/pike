@@ -5,6 +5,14 @@ AC_CONFIG_HEADER(gssapi_config.h)
 
 AC_MODULE_INIT()
 
+PIKE_FEATURE_WITHOUT(GSSAPI)
+
+AC_ARG_WITH(gssapi,
+        [  --with(out)-gssapi                 GSS-API support],
+        [],[with_gssapi=yes])
+
+if test x$with_gssapi = xyes; then
+
 PIKE_FEATURE(GSSAPI, [no (gssapi.h not found)])
 AC_CHECK_HEADERS(gssapi.h gssapi/gssapi.h gssglue/gssapi/gssapi.h, break)
 AC_CHECK_HEADERS(gssapi_krb5.h gssapi/gssapi_krb5.h gssglue/gssapi/gssapi_krb5.h, break)
@@ -72,6 +80,8 @@ if test x$ac_cv_header_gssapi_h = xyes -o \
   PIKE_CHECK_GSS_OID(GSS_C_NT_HOSTBASED_SERVICE)
   PIKE_CHECK_GSS_OID(GSS_C_NT_ANONYMOUS)
   PIKE_CHECK_GSS_OID(GSS_C_NT_EXPORT_NAME)
+fi
+
 fi
 
 AC_OUTPUT(Makefile, test -z "$CONFIG_HEADERS" || echo FOO >stamp-h)
