@@ -9,7 +9,7 @@ PRIME_LIMIT=1024
 
 CONFIG_HEADERS=@CONFIG_HEADERS@
 
-@dynamic_module_makefile@
+@static_module_makefile@
 
 # UnixWare make needs help to find the source file...
 mpq.o: $(SRCDIR)/mpq.c
