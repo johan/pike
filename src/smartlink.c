@@ -241,7 +241,7 @@ int main(int argc, char **argv)
   if (!compiling) {
     /* Filter -g and -ggdb3 from the options. */
     int not_so_new_argc = new_argc;
-    new_argc = 0;
+    new_argc = 1;
     /* Note: Skip the name of the binary at new_argv[0]. */
     for (i=1; i < not_so_new_argc; i++) {
       if ((new_argv[i][0] == '-') &&
