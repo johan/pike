@@ -841,6 +841,22 @@ case "$pike_cv_run_path_method" in
   ;;
 esac
 
+# Smartlink needs to know if OS X uses flat or two-level namespace
+if test "$pike_cv_sys_os" = "Darwin" ; then
+  AC_MSG_CHECKING([for Darwin linker namespace])
+  case "`uname -r`" in
+    [1-6].*)
+      AC_MSG_RESULT([flat (10.2 or older)])
+      pike_cv_osx_twolevel_namespace=no
+    ;;
+    *)
+      AC_DEFINE(USE_OSX_TWOLEVEL_NAMESPACE)
+      AC_MSG_RESULT([two-level (10.3 or newer)])
+      pike_cv_osx_twolevel_namespace=yes
+    ;;
+  esac
+fi
+
 
 # Fix a smartlink
 SMARTLINK="$BUILDDIR/smartlink"
@@ -7612,7 +7628,16 @@ if test -z "$LDSHARED" ; then
       fi
     ;;
     Darwin*)
-      LDSHARED="$REALCC $CFLAGS -bundle -bind_at_load -flat_namespace -undefined suppress"
+      if test "$pike_cv_osx_twolevel_namespace" = yes ; then
+        # 10.3 or newer take advantage of two-level namespaces to avoid
+        # symbol collisions for e.g. libjpeg which is referenced from both
+        # _Image_JPEG and _Image_TIFF. It requires MACOSX_DEPLOYMENT_TARGET
+        # which is initialized in smartlink to 10.3.
+        LDSHARED="$REALCC $CFLAGS -bundle -bind_at_load -undefined dynamic_lookup"
+      else
+        # Mac OS X prior to 10.3 need -flat_namespace to support dynamic modules
+        LDSHARED="$REALCC $CFLAGS -bundle -bind_at_load -flat_namespace -undefined suppress"
+      fi
     ;;
     IRIX*)
       if test "$GCC" = yes ; then

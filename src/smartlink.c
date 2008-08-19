@@ -389,6 +389,14 @@ int main(int argc, char **argv)
     }
   }
 
+#ifdef USE_OSX_TWOLEVEL_NAMESPACE
+  /* Mac OS X needs to be 10.3 or better for ld to accept
+     "-undefined dynamic_lookup" */
+  if (putenv("MACOSX_DEPLOYMENT_TARGET=10.3")) {
+    fatal("Out of memory (8)!\n");
+  }
+#endif
+
   execv(argv[1], new_argv);
   fprintf(stderr, "%s: exec of %s failed!\n", argv[0], argv[1]);
   exit(1);
