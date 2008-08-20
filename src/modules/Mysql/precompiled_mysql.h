@@ -56,7 +56,7 @@ struct precompiled_mysql {
   DEFINE_MUTEX(lock);
 #endif /* PIKE_THREADS */
 
-  MYSQL		*mysql, *socket;
+  MYSQL		*mysql;
   struct pike_string	*host, *database, *user, *password;	/* Reconnect */
   struct mapping   *options;
 #ifndef HAVE_MYSQL_SET_CHARACTER_SET
