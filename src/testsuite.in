@@ -7701,6 +7701,10 @@ test_eq([[(float)1]],[[1.0]])
 test_eq([[(float)-1]],[[-1.0]])
 test_eq([[(string)1]],[["1"]])
 test_eq([[(string)-1]],[["-1"]])
+test_do(return (string)1e308)
+test_do(return (string)1e200)
+test_do(return (string)1e-200)
+test_do(return (string)1e-307)
 test_any([[
   array foo=({ 1 });
   return (string)sizeof(foo);
