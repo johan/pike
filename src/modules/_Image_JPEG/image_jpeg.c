@@ -221,10 +221,8 @@ struct my_destination_mgr
    size_t len;
 };
 
-//#define DEFAULT_BUF_SIZE 8192
-//#define BUF_INCREMENT 8192
-#define DEFAULT_BUF_SIZE 256
-#define BUF_INCREMENT 256
+#define DEFAULT_BUF_SIZE 8192
+#define BUF_INCREMENT 8192
 
 static void my_init_destination(struct jpeg_compress_struct *cinfo)
 {
