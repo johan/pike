@@ -15,18 +15,9 @@
 
 #ifdef HAVE_JPEGLIB_H
 
-#define FILE void
-#define size_t unsigned int
-/* NOTE: INT32 and INT16 are redefined by <jmorecfg.h>. */
-#if 0
-#ifdef INT16
-#undef INT16
-#endif /* INT16 */
-#ifdef INT32
-#undef INT32
-#endif
-#endif /* 0 */
+#include <stdio.h>
 
+/* NOTE: INT32 and INT16 are redefined by <jmorecfg.h>. */
 #define XMD_H /* Avoid INT16 / INT32 being redefined */
 
 /* FAR is defined by windef.h and jmorecfg.h */
@@ -49,16 +40,8 @@
 #include <jpeglib.h>
 #include "transupp.h" /* Support routines for jpeg transformations */
 
-#undef size_t
-#undef FILE
-#undef _SIZE_T_DEFINED
-#undef _FILE_DEFINED
-
 #endif /* HAVE_JPEGLIB_H */
 
-#ifdef HAVE_STDLIB_H
-#undef HAVE_STDLIB_H
-#endif
 RCSID("$Id$");
 
 /* jpeglib defines EXTERN for some reason.
