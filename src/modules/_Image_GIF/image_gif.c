@@ -282,7 +282,8 @@ void image_gif_header_block(INT32 args)
    {
       ps=begin_shared_string((1<<bpp)*3);
       image_colortable_write_rgb(nct,(unsigned char *)ps->str);
-      MEMSET(ps->str+(numcolors+alphaentry)*3,0,((1<<bpp)-numcolors)*3);
+      MEMSET(ps->str + (numcolors + alphaentry) * 3, 0,
+	     ((1 << bpp) - numcolors - alphaentry) * 3);
 
       if (alphaentry) 
       {
