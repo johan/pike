@@ -4025,12 +4025,15 @@ void f__gc_status(INT32 args)
 #ifdef PIKE_DEBUG
   push_constant_text ("max_rec_frames");
   push_int64 (DO_NOT_WARN ((INT64) tot_max_rec_frames));
+  size++;
 
   push_constant_text ("max_link_frames");
   push_int64 (DO_NOT_WARN ((INT64) tot_max_link_frames));
+  size++;
 
   push_constant_text ("max_free_extra_frames");
   push_int64 (DO_NOT_WARN ((INT64) tot_max_free_extra_frames));
+  size++;
 #endif
 
   f_aggregate_mapping(size * 2);
