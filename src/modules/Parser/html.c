@@ -41,8 +41,8 @@ extern struct program *parser_html_program;
 #define DEBUG_MARK_SPOT debug_mark_spot
 #define HTML_DEBUG
 #else
-#define DEBUG(X) do; while(0)
-#define DEBUG_MARK_SPOT(TEXT,FEED,C) do; while(0)
+#define DEBUG(X) do {} while(0)
+#define DEBUG_MARK_SPOT(TEXT,FEED,C) do {} while(0)
 #endif
 
 #if 0
