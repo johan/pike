@@ -97,7 +97,8 @@
  * the payload data (i.e. that aren't x). This can be used in BSIZE to
  * make the block fit within a page. */
 #ifndef BLOCK_HEADER_SIZE
-#define BLOCK_HEADER_SIZE (3 * sizeof (void *) + sizeof (INT32))
+#define BLOCK_HEADER_SIZE (3 * sizeof (void *) + sizeof (INT32) \
+			   DO_IF_DMALLOC( + sizeof(INT32)))
 #endif
 
 #define BLOCK_ALLOC(DATA,BSIZE)						\
