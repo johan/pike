@@ -277,13 +277,12 @@ static void PIKE_CONCAT3(dmalloc_free_,DATA,_block) (			\
 }									\
 )									\
 									\
-void PIKE_CONCAT(really_free_,DATA)(struct DATA *d)			\
+BA_STATIC BA_INLINE							\
+void BA_UL(PIKE_CONCAT(really_free_,DATA))(struct DATA *d)		\
 {									\
   struct PIKE_CONCAT(DATA,_block) *blk;					\
 									\
   EXIT_BLOCK(d);							\
-									\
-  DO_IF_RUN_UNLOCKED(mt_lock(&PIKE_CONCAT(DATA,_mutex)));               \
 									\
   DO_IF_DMALLOC({							\
       blk = PIKE_CONCAT(DATA,_free_blocks);				\
@@ -410,9 +409,15 @@ void PIKE_CONCAT(really_free_,DATA)(struct DATA *d)			\
 									\
     --PIKE_CONCAT3(num_empty_,DATA,_blocks);				\
   }									\
-									\
-  DO_IF_RUN_UNLOCKED(mt_unlock(&PIKE_CONCAT(DATA,_mutex)));             \
 }									\
+									\
+DO_IF_RUN_UNLOCKED(                                                     \
+		   void PIKE_CONCAT(really_free_,DATA)(struct DATA *d)	\
+{									\
+  DO_IF_RUN_UNLOCKED(mt_lock(&PIKE_CONCAT(DATA,_mutex)));		\
+  BA_UL(PIKE_CONCAT(really_free_,DATA))(d);				\
+  DO_IF_RUN_UNLOCKED(mt_unlock(&PIKE_CONCAT(DATA,_mutex)));             \
+})									\
 									\
 static void PIKE_CONCAT3(free_all_,DATA,_blocks_unlocked)(void)		\
 {									\
