@@ -50,6 +50,10 @@
 
 #ifdef HAVE_FFI_H
 #include <ffi.h>
+#else
+#ifdef HAVE_FFI_FFI_H
+#include <ffi/ffi.h>
+#endif /* HAVE_FFI_FFI_H */
 #endif /* HAVE_FFI_H */
 
 #ifdef _REENTRANT
