@@ -690,7 +690,7 @@ static void mysql__sprintf(INT32 args)
 	info = mysql_get_host_info(mysql);
 	MYSQL_DISALLOW();
 	push_text("mysql(/*%s%s*/)");
-	push_text(info);
+	push_text(info ? info : "");
 #ifdef HAVE_MYSQL_SSL
 	if (PIKE_MYSQL->mysql->options.use_ssl) {
 	  push_text(", SSL");
