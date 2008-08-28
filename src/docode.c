@@ -247,6 +247,16 @@ static int ins_label(int lbl)
   return lbl;
 }
 
+void modify_stack_depth(int delta)
+{
+  current_stack_depth += delta;
+#ifdef PIKE_DEBUG
+  if (current_stack_depth < 0) {
+    Pike_fatal("Popped out of virtual stack.\n");
+  }
+#endif
+}
+
 void do_pop(int x)
 {
   struct compilation *c = THIS_COMPILATION;

@@ -29,6 +29,7 @@ void push_explicit(INT32 address);
 INT32 pop_address(void);
 int alloc_label(void);
 int do_jump(int token,INT32 lbl);
+void modify_stack_depth(int delta);
 void do_pop(int x);
 int do_docode(node *n, int flags);
 void do_cond_jump(node *n, int label, int iftrue, int flags);
