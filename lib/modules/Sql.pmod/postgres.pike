@@ -405,6 +405,8 @@ int|object big_query(object|string q, mapping(string|int:mixed)|void bindings)
         // Special parameter
         continue;
       }
+      if(search(q,name)<0)
+	continue;			     // Omit unused references
     }
     from[rep]=name;
     string rval;
@@ -427,7 +429,7 @@ int|object big_query(object|string q, mapping(string|int:mixed)|void bindings)
   if(rep--) {
     q=replace(q,from[..rep],to[..rep]);
   }
-  return ::big_query(q, paramValues);
+  return paramValues ? ::big_query(q, paramValues): ::big_query(q);
 }
 
 //! This is an alias for @[big_query()], since @[big_query()] already supports
