@@ -35,6 +35,15 @@
 Pike.BACKEND backend = Pike.BACKEND();
 #endif
 
+#ifndef SOCKTEST_TIMEOUT
+#if constant(_debug)
+// RTL debug enabled Pike.
+#define SOCKTEST_TIMEOUT	60
+#else
+#define SOCKTEST_TIMEOUT	20
+#endif
+#endif
+
 //int idnum;
 //mapping in_cleanup=([]);
 
@@ -217,7 +226,7 @@ class Socket2
 
 void die()
 {
-  write("No callbacks for 20 seconds!\n");
+  write("No callbacks for %d seconds!\n", SOCKTEST_TIMEOUT);
   fd_fail();
 }
 
@@ -237,10 +246,10 @@ void got_callback()
 #endif /* OOB_DEBUG */
 #ifdef BACKEND
   backend->remove_call_out(die);
-  backend->call_out(die,20);
+  backend->call_out(die, SOCKTEST_TIMEOUT);
 #else
   remove_call_out(die);
-  call_out(die,20);
+  call_out(die, SOCKTEST_TIMEOUT);
 #endif
 }
 
