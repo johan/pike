@@ -631,6 +631,9 @@ protected class Pike_7_4_master
   inherit Pike_7_2_master;
   local protected object Pike_7_4_compat_handler;
   void error(string f, mixed ... args);
+  void add_predefine (string name, string value);
+  void remove_predefine (string name);
+  mapping get_predefines();
   local mixed resolv(string identifier, string|void current_file)
   {
     if (!Pike_7_4_compat_handler) {
