@@ -65,6 +65,8 @@ static INLINE struct msnode_indval *msnode_indval_check (struct msnode_indval *x
     if (!sub_ref (X)) Pike_fatal ("Got too few refs to " #X ".\n");	\
   } while (0)
 
+PMOD_EXPORT const char msg_no_multiset_flag_marker[] =
+  "Multiset index lacks MULTISET_FLAG_MARKER. It might be externally clobbered.\n";
 PMOD_EXPORT const char msg_multiset_no_node_refs[] =
   "Multiset got no node refs.\n";
 
