@@ -2133,7 +2133,7 @@ string read_bytes(string filename, void|int start,void|int len)
   case 3:
     if(start)
       if (f->seek(start) < 0)
-	error ("Failed to seek in %O: %s\n", filename, f->errno());
+	error ("Failed to seek in %O: %s\n", filename, strerror(f->errno()));
   }
   ret=f->read(len);
   if (!ret)
