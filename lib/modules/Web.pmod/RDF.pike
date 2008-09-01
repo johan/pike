@@ -587,7 +587,7 @@ int parse_n_triples(string in) {
     case '_':
       // nodeID
       if(in[pos+1]!=':')
-	error("No ':' in nodeID (position %s).\n", pos);
+	error("No ':' in nodeID (position %d).\n", pos);
       while( !(< ' ', '\t', '\r', '\n' >)[in[++pos]] );
       tokens += ({ TempNode( in[start+2..pos-1] ) });
       continue;

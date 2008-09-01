@@ -258,7 +258,7 @@ class Target(string base,int length,int offset,void|array path)
       fd->seek(off-offset);
       if (fd->write(data)<strlen(data))
 	 error("failed to write %d bytes to %O: %s\n",
-	       filename,strerror(fd->errno()));
+	       strlen(data),filename,strerror(fd->errno()));
    }
 
    string pread(int off,int bytes)

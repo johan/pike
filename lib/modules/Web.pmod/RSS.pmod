@@ -21,7 +21,7 @@ protected class Thing {
   void `[]=(string i, mixed v) {
     if(!zero_type(attributes[i])) {
       if(!stringp(v) && !objectp(v))
-	error("%s is string|Standards.URI.\n");
+	error("Variable %O is string|Standards.URI.\n", i);
 
       attributes[i] = v;
       .RDF.Resource attr = rdf->make_resource(ns+thing);

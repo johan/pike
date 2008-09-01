@@ -392,7 +392,7 @@ protected void start_driver(string|array(string)|
 
   foreach(driver_names, string name) {
     if(!has_value(drivers, name))
-      error("Driver %O is not available.\n");
+      error("Driver %O is not available.\n", name);
     catch {
       driver = .Driver[name](event_callback, configure_event);
       if(driver->init)
