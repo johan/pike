@@ -8095,7 +8095,7 @@ static void run_cleanup(struct compilation *c, int delayed)
 	  fprintf(stderr, "Warning: Program %p still got %d "
 		  "external refs after unregister:\n", p, p->refs);
 	  locate_references(p);
-	  fprintf (stderr, "Describing program: %p\n", p);
+	  fprintf (stderr, "Describing program:\n");
 	  describe_something (p, T_PROGRAM, 0, 0, 0, NULL);
 	}
 #endif
