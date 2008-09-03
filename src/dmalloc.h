@@ -15,7 +15,7 @@ PMOD_EXPORT extern void *debug_xcalloc(size_t,size_t);
 PMOD_EXPORT extern void *debug_xrealloc(void *,size_t);
 PMOD_EXPORT char *debug_xstrdup(const char *src);
 
-#if defined (HAVE_EXECINFO_H) && defined (HAVE_BACKTRACE)
+#if defined (HAVE_EXECINFO_H) && defined (HAVE_BACKTRACE) && defined(DMALLOC_C_STACK_TRACE)
 /* GNU libc provides some tools to inspect the stack. */
 #include <execinfo.h>
 typedef void *c_stack_frame;

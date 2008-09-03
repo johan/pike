@@ -1439,6 +1439,9 @@ MY_AC_ARG_WITH(dmalloc-malloc-leaks,
 MY_AC_ARG_WITH(dmalloc-trace, MY_DESCR([--with-dmalloc-trace],
 				       [enable tracepoints]),
 	       [with_dmalloc_trace="yes" AC_DEFINE(DMALLOC_TRACE,10)])
+MY_AC_ARG_WITH(dmalloc-c-stack-trace, MY_DESCR([--with-dmalloc-c-stack-trace],
+				       [enable C backtraces]),
+	       [AC_DEFINE(DMALLOC_C_STACK_TRACE)])
 MY_AC_ARG_WITH(dmalloc-track-free, MY_DESCR([--with-dmalloc-track-free],
 				       [track freed memory too]),
 	       [ with_dmalloc_track_free="yes"

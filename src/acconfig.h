@@ -53,6 +53,9 @@
 /* Define this if you want checkpoints */
 #undef DMALLOC_TRACE
 
+/* Define this if you want backtraces for C code in your dmalloc output. */
+#undef DMALLOC_C_STACK_TRACE
+
 /* Define this if you want dmalloc to keep track of freed memory. */
 #undef DMALLOC_TRACK_FREE
 
