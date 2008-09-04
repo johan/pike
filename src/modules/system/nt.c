@@ -2485,7 +2485,7 @@ static void f_NetWkstaUserEnum(INT32 args)
 
 /*! @decl string normalize_path(string path)
  *!
- *!   Normalize an NT filesystem path.
+ *!   Normalize an existing Windows file system path.
  *!
  *!   The following transformations are currently done:
  *!   @ul
@@ -2511,8 +2511,8 @@ static void f_NetWkstaUserEnum(INT32 args)
  *!     @item
  *!       Drive letters are returned in uppercase.
  *!     @item
- *!       The host and share parts are returned in lowercase for UNC
- *!       paths.
+ *!       The host and share parts of UNC paths are returned in
+ *!       lowercase.
  *!   @endul
  *!
  *! @returns
