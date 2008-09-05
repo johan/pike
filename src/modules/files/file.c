@@ -1698,6 +1698,10 @@ static void file_close(INT32 args)
  *! @expr{00666@}, but note that on UNIX systems it's masked with the
  *! process umask before use.
  *!
+ *! @returns
+ *!   Returns nonzero on success and @expr{0@} (zero) on failure. If
+ *!   there is a failure then @[errno] returns the error code.
+ *!
  *! @seealso
  *!   @[close()]
  */
