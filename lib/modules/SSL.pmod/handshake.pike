@@ -654,7 +654,7 @@ int verify_certificate_chain(array(string) certs)
 //!
 //! This function returns 0 if hadshake is in progress, 1 if handshake
 //! is finished, and -1 if a fatal error occured. It uses the
-//! send_packet() function to trasnmit packets.
+//! send_packet() function to transmit packets.
 int(-1..1) handle_handshake(int type, string data, string raw)
 {
   ADT.struct input = ADT.struct(data);
