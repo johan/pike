@@ -1405,7 +1405,7 @@ object get_default_filter()
   //!
   //! @seealso
   //!  @[result], @[result.fetch], @[read], @[get_supported_controls],
-  //!  @[Protocols.LDAP.quote_filter_value], @[Protocols.LDAP.make_filter]
+  //!  @[Protocols.LDAP.ldap_encode_string], @[Protocols.LDAP.make_filter]
   result|int search (string|object|void filter, array(string)|void attrs,
 		     int|void attrsonly,
 		     void|mapping(string:array(int|string)) controls,
