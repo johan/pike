@@ -947,11 +947,13 @@ PMOD_EXPORT HANDLE CheckValidHandle(HANDLE h);
 
 /* Initializer macros for static mutex and condition variables */
 #ifdef PTHREAD_MUTEX_INITIALIZER
+#define HAS_STATIC_MUTEX_INIT
 #define STATIC_MUTEX_INIT  = PTHREAD_MUTEX_INITIALIZER
 #else
 #define STATIC_MUTEX_INIT
 #endif
 #ifdef PTHREAD_COND_INITIALIZER
+#define HAS_STATIC_COND_INIT
 #define STATIC_COND_INIT   = PTHREAD_COND_INITIALIZER
 #else
 #define STATIC_COND_INIT
