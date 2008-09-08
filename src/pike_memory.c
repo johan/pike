@@ -31,6 +31,7 @@ int page_size;
 
 /* strdup() is used by several modules, so let's provide it */
 #ifndef HAVE_STRDUP
+#undef strdup
 char *strdup(const char *str)
 {
   char *res = NULL;
@@ -42,7 +43,7 @@ char *strdup(const char *str)
   }
   return(res);
 }
-#endif /* !HAVE_STRDUP */
+#endif /* !HAVE_STRDUP && !strdup */
 
 ptrdiff_t pcharp_memcmp(PCHARP a, PCHARP b, int sz)
 {
