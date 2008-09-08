@@ -31,6 +31,7 @@ RCSID("$Id$");
 
 /* strdup() is used by several modules, so let's provide it */
 #ifndef HAVE_STRDUP
+#undef strdup
 char *strdup(const char *str)
 {
   char *res = NULL;
