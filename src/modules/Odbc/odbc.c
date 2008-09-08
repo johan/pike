@@ -648,6 +648,10 @@ PIKE_MODULE_INIT
     /*    Pike_error("odbc_module_init(): SQLAllocEnv() failed with code %08x\n", err); */
   }
 
+#if defined (PIKE_THREADS) && !defined (HAS_STATIC_MUTEX_INIT)
+  mt_init (&connect_mutex);
+#endif
+
   start_new_program();
   ADD_STORAGE(struct precompiled_odbc);
 
@@ -717,6 +721,10 @@ PIKE_MODULE_EXIT
 {
 #ifdef HAVE_ODBC
   exit_odbc_res();
+
+#if defined (PIKE_THREADS) && !defined (HAS_STATIC_MUTEX_INIT)
+  mt_destroy (&connect_mutex);
+#endif
  
   if (odbc_program) {
     free_program(odbc_program);
