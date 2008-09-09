@@ -1093,8 +1093,8 @@ void f_thread_create(INT32 args)
     Pike_error("Failed to create thread (errno = %d).\n", tmp);
   }
 
-  THREADS_FPRINTF(0, (stderr, "THREAD_CREATE -> t:%08x\n",
-		      (unsigned int)thread_state));
+  THREADS_FPRINTF(0, (stderr, "THREAD_CREATE -> t:%p\n",
+		      thread_state));
   push_int(0);
 }
 
