@@ -3731,6 +3731,12 @@ static int low_pike_types_le(struct pike_type *a, struct pike_type *b,
   int res;
 
   if (l_flag>2) {
+#if 0
+    struct compilation *c = MAYBE_THIS_COMPILATION;
+    if (c && c->lex.current_file)
+      fprintf (stderr, "%*s%s:%d:\n", indent * 2, "",
+	       c->lex.current_file->str, c->lex.current_line);
+#endif
     fprintf(stderr, "%*slow_pike_types_le(", indent*2, "");
     simple_describe_type(a);
     fprintf(stderr, ",\n%*s", indent*2 + 18, "");
