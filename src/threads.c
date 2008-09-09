@@ -286,7 +286,7 @@ PMOD_EXPORT const char msg_ip_not_locked[] =
 PMOD_EXPORT const char msg_ip_not_locked_this_thr[] =
   "Interpreter not locked by this thread.\n";
 PMOD_EXPORT const char msg_thr_swapped_over[] =
-  "Thread %08x swapped in over existing thread %08x.\n";
+  "Thread 0x%08x swapped in over existing thread 0x%08x.\n";
 PMOD_EXPORT const char msg_saved_thread_id[] =
   "Saved thread id: ";
 PMOD_EXPORT const char msg_swap_in_cur_thr_failed[] =
@@ -302,7 +302,7 @@ PMOD_EXPORT const char msg_thr_allow_in_gc[] =
   "Threads allowed during garbage collection (pass %d).\n";
 PMOD_EXPORT const char msg_thr_allow_in_disabled[] =
   "Threads allowed from a different thread "
-  "while threads are disabled. (self: %08x, disabler: %08x)\n";
+  "while threads are disabled. (self: 0x%08x, disabler: 0x%08x)\n";
 PMOD_EXPORT const char msg_global_dynbuf_in_use[] =
   "Threads allowed while the global dynamic buffer is in use.\n";
 #endif
