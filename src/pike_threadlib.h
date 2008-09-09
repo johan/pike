@@ -545,11 +545,11 @@ PMOD_EXPORT extern const char msg_ip_not_locked_this_thr[];
 static INLINE int threads_disabled_wait(void)
 {
   do {
-    THREADS_FPRINTF(1, (stderr, "Thread %d: Wait on threads_disabled\n",
+    THREADS_FPRINTF(1, (stderr, "Thread 0x%x: Wait on threads_disabled\n",
 			(int) th_self()));
     low_co_wait_interpreter(&threads_disabled_change);
   } while (threads_disabled);
-  THREADS_FPRINTF(1, (stderr, "Thread %d: Continue after threads_disabled\n",
+  THREADS_FPRINTF(1, (stderr, "Thread 0x%x: Continue after threads_disabled\n",
 		      (int) th_self()));
   return 0;
 }
