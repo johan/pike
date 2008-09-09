@@ -4754,6 +4754,12 @@ void test()
 #endif
   return 1;
 ]], 1);
+
+  test_do([[
+    object l = _disable_threads();
+    Thread.thread_create (lambda () {});
+    destruct (l);
+  ]])
 ]])
 
 cond([[0]],
