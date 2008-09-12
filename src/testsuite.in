@@ -567,6 +567,12 @@ test_type_error(object,array,({1,2,3}))
 test_type_error(object,mapping,([1:2,3:4]))
 test_type_error(object,multiset,(<1,2,3>))
 
+// Check that complex function types survive soft casting to function.
+// FIXME: Globbing in ignoring warnings.
+ignore_warning("Soft cast of scope(0,function((0=multiset), (1=multiset) ... : 0 | 1) | function((0=mapping), (1=mapping) ... : 0 | 1) | function((0=array), (1=array) ... : 0 | 1) | function(int, int ... : int) | !function(!string ... : mixed) & function(string | int | float, string | int | float ... : string) | !function(!(object | mixed) ... : mixed) & function(mixed ... : mixed) | !function(!float ... : mixed) & function(int | float, int | float ... : float)) to function is a noop.", [[
+  test_eq(typeof([function]`+), typeof(`+))
+]])
+
 test_any([[
   /* Detect bug in modify_shared_string().
    *
@@ -8313,6 +8319,13 @@ test_do([[
   foreach (({1,2,3}), int j)
     do
       if (17 + j + gauge {break;}) return 0;
+    while (0);
+]]);
+test_do([[
+  // Note: This is valid <= 7.0 code.
+  foreach (({1,2,3}), int j)
+    do
+      if (17 - j - gauge {break;}) return 0;
     while (0);
 ]]);
 test_do([[
