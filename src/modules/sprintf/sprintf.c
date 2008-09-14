@@ -840,8 +840,8 @@ static void low_pike_sprintf(struct string_builder *r,
 	struct pike_string *s;
 	GET_STRING(s);
 	if (s->len) {
-	  fs->fsp->pad_string=MKPCHARP_STR(s);
-	  fs->fsp->pad_length=s->len;
+	  fsp->pad_string=MKPCHARP_STR(s);
+	  fsp->pad_length=s->len;
 	}
 	continue;
       }
