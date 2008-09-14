@@ -5028,7 +5028,15 @@ int define_variable(struct pike_string *name,
 	Pike_compiler->new_program->identifier_references[n].id_flags |=
 	  ID_HIDDEN;
 	return n2;
+      } else if ((IDENTIFIERP(n)->id_flags & (ID_INLINE|ID_INHERITED)) ==
+		 (ID_INLINE|ID_INHERITED)) {
+	/* Hide the overloaded inherited symbol. */
+	IDENTIFIERP(n)->id_flags |= ID_HIDDEN;
       }
+    } else if ((IDENTIFIERP(n)->id_flags & (ID_EXTERN|ID_INHERITED)) ==
+	       (ID_EXTERN|ID_INHERITED)) {
+      /* Hide the overloaded inherited symbol. */
+      IDENTIFIERP(n)->id_flags |= ID_HIDDEN;
     }
   }
 
