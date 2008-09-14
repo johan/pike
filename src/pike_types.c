@@ -1461,12 +1461,12 @@ static int indent=0;
  * match two type strings, return zero if they don't match, and return
  * the part of 'a' that _did_ match if it did.
  */
+static char *low_match_types2(char *a,char *b, int flags);
 static char *low_match_types(char *a,char *b, int flags)
 #ifdef PIKE_TYPE_DEBUG
 {
   int e;
   char *s;
-  static char *low_match_types2(char *a,char *b, int flags);
 
   if (l_flag>2) {
     init_buf();
@@ -1979,14 +1979,14 @@ static char *low_match_types2(char *a,char *b, int flags)
  * with a mapping(int:int) won't change the type of the mapping after the
  * operation.
  */
+static int low_pike_types_le2(char *a, char *b,
+			      int array_cnt, unsigned int flags);
 static int low_pike_types_le(char *a, char *b,
 			     int array_cnt, unsigned int flags)
 #ifdef PIKE_TYPE_DEBUG
 {
   int e;
   char *s;
-  static int low_pike_types_le2(char *a, char *b,
-				int array_cnt, unsigned int flags);
   int res;
   char buf[50];
 
