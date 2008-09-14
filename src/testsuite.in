@@ -728,6 +728,84 @@ class C
 }
 }()->C()->D()->bonk_me()]],"oiff")
 
+test_any_equal([[
+  // Test hiding of inherited symbols with protected.
+  class A {
+    local mixed a() {}
+    mixed b();
+    mixed c;
+    local mixed d;
+    extern mixed e;
+    local mixed f;
+    this_program get_a() { return this_program::this; }
+  };
+  class B {
+    inherit A;
+    protected mixed a() {}
+    protected mixed b() {}
+    protected mixed c = a();
+    protected mixed d = b();
+    protected mixed e = a();
+    protected local mixed f = b();
+    this_program get_b() { return this_program::this; }
+  };
+  class C {
+    inherit B;
+    this_program get_c() { return this_program::this; }
+  };
+  class D {
+    inherit C;
+    this_program get_d() { return this_program::this; }
+  };
+  object(D) d = D();
+  return ({ "A", sort(indices(d->get_a())),
+            "B", sort(indices(d->get_b())),
+            "C", sort(indices(d->get_c())),
+            "D", sort(indices(d->get_d())) });
+]], ({ "A", ({ "a", "b", "c", "d", "e", "f", "get_a" }),
+       "B", ({ "get_a", "get_b" }),
+       "C", ({ "get_a", "get_b", "get_c" }),
+       "D", ({ "get_a", "get_b", "get_c", "get_d" }) }))
+
+test_any_equal([[
+  // Test hiding of inherited symbols with private.
+  class A {
+    local mixed a() {}
+    mixed b();
+    mixed c;
+    local mixed d;
+    extern mixed e;
+    local mixed f;
+    this_program get_a() { return this_program::this; }
+  };
+  class B {
+    inherit A;
+    private mixed a() {}
+    private mixed b() {}
+    private mixed c = a();
+    private mixed d = b();
+    private mixed e = a();
+    private local mixed f = b();
+    this_program get_b() { return this_program::this; }
+  };
+  class C {
+    inherit B;
+    this_program get_c() { return this_program::this; }
+  };
+  class D {
+    inherit C;
+    this_program get_d() { return this_program::this; }
+  };
+  object(D) d = D();
+  return ({ "A", sort(indices(d->get_a())),
+            "B", sort(indices(d->get_b())),
+            "C", sort(indices(d->get_c())),
+            "D", sort(indices(d->get_d())) });
+]], ({ "A", ({ "a", "b", "c", "d", "e", "f", "get_a" }),
+       "B", ({ "get_a", "get_b" }),
+       "C", ({ "get_a", "get_b", "get_c" }),
+       "D", ({ "get_a", "get_b", "get_c", "get_d" }) }))
+
 test_compile_error([[
  class A { constant q = "x"; }
  class B { inherit A; string z="z"; constant q="x"+z; }
