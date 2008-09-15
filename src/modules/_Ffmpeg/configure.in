@@ -81,23 +81,23 @@ dnl my libavcodec needs libmp3lame that needs libm /Mirar
 #include <avcodec.h>
 #endif
 #endif
-        ], [
+      ], [
     extern AVCodec *thecodec;
   
     thecodec->type = 0;
-        ], [
-          pike_cv_ffmpeg_working=yes
-        ], [
-          pike_cv_ffmpeg_working=no
-        ])
+      ], [
+        pike_cv_ffmpeg_working=yes
+      ], [
+        pike_cv_ffmpeg_working=no
       ])
-      AC_MSG_RESULT($pike_cv_ffmpeg_working)
-      if test "x$pike_cv_ffmpeg_working" = "xyes"; then
-        AC_DEFINE(HAVE_WORKING_LIBFFMPEG)
-        dnl PIKE_FEATURE(FFmpeg)
-      else 
-        PIKE_FEATURE(FFmpeg,[no (not working)])
-      fi
+    ])
+    AC_MSG_RESULT($pike_cv_ffmpeg_working)
+    if test "x$pike_cv_ffmpeg_working" = "xyes"; then
+      AC_DEFINE(HAVE_WORKING_LIBFFMPEG)
+      dnl PIKE_FEATURE(FFmpeg)
+    else 
+      PIKE_FEATURE(FFmpeg,[no (not working)])
+    fi
 
 
     AC_MSG_CHECKING([if UINT8 et al are redefined])
