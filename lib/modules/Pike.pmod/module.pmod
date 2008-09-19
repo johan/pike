@@ -53,6 +53,19 @@ constant PollDeviceBackend = __builtin.PollDeviceBackend;
 constant PollBackend = __builtin.PollBackend;
 #endif
 
+#if constant(__builtin.PollBackend)
+constant SmallBackend = __builtin.PollBackend;
+#elif constant(__builtin.PollDeviceBackend)
+constant SmallBackend = __builtin.PollDeviceBackend;
+#else
+constant SmallBackend = __builtin.SelectBackend;
+#endif
+
+//! @decl program(Pike.Backend) SmallBackend
+//!
+//! This is the most suitable backend implementation if you only want
+//! to monitor a small number of @[Stdio.File] objects.
+
 constant SelectBackend = __builtin.SelectBackend;
 
 constant DefaultBackend = __builtin.__backend;
