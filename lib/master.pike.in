@@ -4069,14 +4069,14 @@ class Describer
     canclip++;
     if(sizeof(m) < maxlen)
     {
-      string t = sprintf("%O", m);
+      string t = sprintf("%q", m);
       if (sizeof(t) < (maxlen + 2))
 	return t;
       t = 0;
     }
     clipped++;
     if(maxlen>10)
-      return sprintf("%O+[%d]",m[..maxlen-5],sizeof(m)-(maxlen-5));
+      return sprintf("%q+[%d]",m[..maxlen-5],sizeof(m)-(maxlen-5));
 
     return "string["+sizeof(m)+"]";
   }
