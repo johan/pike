@@ -91,14 +91,6 @@ extern struct array *gc_internal_array;
       really_free_array(v_);						\
   }while(0)
 
-/* FIXME: Maybe try to replace free_array with this in the future to
- * catch more bugs, but there's code that requires the current one. */
-#define free_array_ptr(V) do {						\
-    struct array **vp_ = &(V);						\
-    free_array (*vp_);							\
-    MARK_INVALID_PTR (*vp_);						\
-  } while (0)
-
 #define allocate_array(X) low_allocate_array((X),0)
 #define allocate_array_no_init(X,Y) low_allocate_array((X),(Y))
 
