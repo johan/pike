@@ -267,7 +267,7 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
       }									\
     }									\
     else								\
-      DO_AGGREGATE_ARRAY (0);						\
+      AGGR_ARR_CHECK (base_sval, 0);					\
     if (base_sval[-1].u.array->type_field & BIT_UNFINISHED)		\
       array_fix_type_field(Pike_sp[-1].u.array);			\
     DO_IF_DEBUG(if (Pike_sp[-1].type != T_ARRAY) {			\
