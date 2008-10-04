@@ -519,6 +519,10 @@ class AbstractNode {
   //  Private member variables
   /* static */ AbstractNode           mParent = 0;
 
+  // Instruct Pike.count_memory to search three steps: mChildren (in
+  // VirtualNode also mAttrNodes) -> array value -> mParent.
+  constant pike_cycle_depth = 3;
+
   //  Public methods
 
   //! Sets the parent node to @[parent].
@@ -1767,6 +1771,9 @@ class SimpleRootNode
   //! @returns
   //!   Returns the element node with the specified id
   //!   if any. Returns @[UNDEFINED] otherwise.
+  //!
+  //! @seealso
+  //!   @[flush_node_id_cache]
   SimpleElementNode get_element_by_id(string id, int|void force)
   {
     if (!node_ids || force) {
@@ -1787,6 +1794,12 @@ class SimpleRootNode
       node_ids = new_lookup;
     }
     return node_ids[id];
+  }
+
+  void flush_node_id_cache()
+  //! Clears the node id cache built and used by @[get_element_by_id].
+  {
+    node_ids = 0;
   }
 
   protected SimpleNode low_clone()
@@ -1989,6 +2002,9 @@ class RootNode
   //! @returns
   //!   Returns the element node with the specified id
   //!   if any. Returns @[UNDEFINED] otherwise.
+  //!
+  //! @seealso
+  //!   @[flush_node_id_cache]
   ElementNode get_element_by_id(string id, int|void force)
   {
     if (!node_ids || force) {
@@ -2009,6 +2025,12 @@ class RootNode
       node_ids = new_lookup;
     }
     return node_ids[id];
+  }
+
+  void flush_node_id_cache()
+  //! Clears the node id cache built and used by @[get_element_by_id].
+  {
+    node_ids = 0;
   }
 
   protected Node low_clone()
