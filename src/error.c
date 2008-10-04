@@ -388,12 +388,12 @@ PMOD_EXPORT void DECLSPEC(noreturn) va_error(const char *fmt, va_list args)
     /* FIXME: Why not use Pike_fatal() here? */
 #ifdef PIKE_DEBUG
     if (d_flag) {
-      fprintf(stderr,"No error recovery context!\n%s",s.s->str);
+      fprintf(stderr,"No error recovery context!\n%s", fmt);
       dump_backlog();
     }
 #endif
 
-    fprintf(stderr,"No error recovery context!\n%s",s.s->str);
+    fprintf(stderr,"No error recovery context!\n%s", fmt);
     exit(99);
   }
 
