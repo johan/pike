@@ -298,9 +298,11 @@ static void parse_query(void)
   struct svalue *q;
   struct mapping *v = allocate_mapping(10); /* variables */
   push_string(s_query);
-  if(!(q = low_mapping_lookup(THIS->misc_variables, sp-1))) 
+  if(!(q = low_mapping_lookup(THIS->misc_variables, sp-1))) {
     f_aap_scan_for_query(0);
-  q = low_mapping_lookup(THIS->misc_variables, sp-1);
+    /* q will not be 0 below, as we have inserted the value now */
+    q = low_mapping_lookup(THIS->misc_variables, sp-1);
+  }
   sp--;
 
   if(q->type == T_STRING) 
