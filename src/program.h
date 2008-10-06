@@ -8,7 +8,6 @@
 #ifndef PROGRAM_H
 #define PROGRAM_H
 
-#include <stdarg.h>
 #include "global.h"
 #include "pike_macros.h"
 #include "pike_error.h"

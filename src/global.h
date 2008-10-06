@@ -214,6 +214,7 @@ void *alloca();
 #endif
 
 #include <stdio.h>
+#include <stdarg.h>
 
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>

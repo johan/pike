@@ -6,7 +6,6 @@
 */
 
 #ifndef MODULE_SUPPORT_H
-#include <stdarg.h>
 
 #include "module.h"
 

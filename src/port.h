@@ -231,10 +231,6 @@ char *STRCHR(char *s,int c);
 #  endif
 #endif
 
-#if !defined(HAVE_VFPRINTF) || !defined(HAVE_VSPRINTF) || !defined(HAVE_VSNPRINTF)
-#  include <stdarg.h>
-#endif
-
 #ifndef HAVE_VFPRINTF
 PMOD_EXPORT int VFPRINTF(FILE *f,const char *s,va_list args);
 #else

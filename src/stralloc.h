@@ -9,8 +9,6 @@
 #define STRALLOC_H
 #include "global.h"
 
-#include <stdarg.h>
-
 #include "pike_macros.h"
 #include "block_alloc_h.h"
 

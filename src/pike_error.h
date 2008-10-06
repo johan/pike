@@ -8,8 +8,6 @@
 #ifndef PIKE_ERROR_H
 #define PIKE_ERROR_H
 
-#include <stdarg.h>
-
 #ifdef CONFIGURE_TEST
 
 #include <stdio.h>
