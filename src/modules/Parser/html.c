@@ -1558,7 +1558,7 @@ static INLINE void skip_piece_range(struct location *loc,
    {
 #define LOOP(TYPE)							\
      {									\
-       TYPE *s=(TYPE *)p->s->str;					\
+       TYPE *s=(TYPE *)p->s->str + start;				\
        for (;start<stop;start++)					\
        {								\
 	 if (*(s++)=='\n')						\
