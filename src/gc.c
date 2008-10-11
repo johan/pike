@@ -4244,7 +4244,7 @@ PMOD_EXPORT TYPE_T type_from_visit_fn (visit_thing_fn *fn)
 
 /* #define MEMORY_COUNT_DEBUG */
 
-#define MC_WQ_START_SIZE 8 /*1024*/
+#define MC_WQ_START_SIZE 1024
 
 PMOD_EXPORT int mc_pass;
 PMOD_EXPORT size_t mc_counted_bytes;
