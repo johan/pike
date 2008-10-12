@@ -53,7 +53,6 @@ extern char *get_type_name(int);
 
 int car_is_node(node *n)
 {
-  if (!_CAR(n)) return 0;
   switch(n->token)
   {
   case F_EXTERNAL:
@@ -67,13 +66,12 @@ int car_is_node(node *n)
     return 0;
 
   default:
-    return 1;
+    return !!_CAR(n);
   }
 }
 
 int cdr_is_node(node *n)
 {
-  if (!_CDR(n)) return 0;
   switch(n->token)
   {
   case F_EXTERNAL:
@@ -87,7 +85,7 @@ int cdr_is_node(node *n)
     return 0;
 
   default:
-    return 1;
+    return !!_CDR(n);
   }
 }
 
