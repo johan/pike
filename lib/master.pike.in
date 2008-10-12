@@ -104,6 +104,9 @@ private constant Files = _static_modules.files;
 private function write = Files()->_stdout->write;
 private function werror = Files()->_stderr->write;
 
+// Tell Pike.count_memory this is global.
+constant pike_cycle_depth = 0;
+
 #ifdef RESOLV_DEBUG
 
 #if constant (thread_local)
