@@ -362,6 +362,30 @@ test_any([[
   return sizeof(a);
 ]], 1)
 
+dnl bug in for loop optimization in combination with +=
+
+test_any([[
+array v=({1,2,3}); 
+  for (int i=0; i<sizeof(v); i++) 
+    for (int j=0; j<i; j++) 
+    { 
+       v+=({1+i}); 
+       if (i==17) { i=10000; break; } 
+    } 
+    return sizeof(v); // if buggy, will be 6 and not 140
+]], 140);
+
+test_any([[
+array v=({1,2,3}); 
+  for (int i=0; i<sizeof(v); i++) 
+    for (int j=0; j<i; j++) 
+    { 
+       v=v+({1+i}); 
+       if (i==17) { i=10000; break; } 
+    } 
+    return sizeof(v); // not buggy, will be 140
+]], 140);
+
 test_any([[int a=0xffffffff; return a+17]], 0x100000010);
 test_any([[int a=0xffffffff; return a-17]], 0xffffffee);
 test_any([[int a=0xffffffff; return a*17]], 0x10ffffffef);
