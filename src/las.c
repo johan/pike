@@ -2775,10 +2775,12 @@ static void find_written_vars(node *n,
     break;
 
   case F_ASSIGN:
+  case F_MULTI_ASSIGN:
     find_written_vars(CAR(n), p, 0);
     find_written_vars(CDR(n), p, 1);
     break;
 
+    case F_APPEND_ARRAY:
     case F_AND_EQ:
     case F_OR_EQ:
     case F_XOR_EQ:
