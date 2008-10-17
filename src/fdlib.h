@@ -117,6 +117,7 @@ typedef off_t PIKE_OFF_T;
 
 
 /* Prototypes begin here */
+PMOD_EXPORT void set_errno_from_win32_error (unsigned long err);
 PMOD_EXPORT char *debug_fd_info(int fd);
 PMOD_EXPORT int debug_fd_query_properties(int fd, int guess);
 void fd_init();
