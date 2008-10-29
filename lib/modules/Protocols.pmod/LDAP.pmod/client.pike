@@ -701,16 +701,18 @@ typedef mapping(string:ResultAttributeValue) ResultEntry;
       });
     }
 #endif
+
+    Stdio.File low_fd = Stdio.File();
+
     if(!(low_fd->connect(lauth->host, lauth->port))) {
       //errno = ldapfd->errno();
-      seterr (LDAP_SERVER_DOWN);
-      DWRITE("client.create: ERROR: can't open socket.\n");
+      seterr (LDAP_SERVER_DOWN, strerror (low_fd->errno()));
       //ldapfd->destroy();
       //ldap=0;
       //ok = 0;
       //if(con_fail)
       //  con_fail(this, @extra_args);
-      THROW(({"Failed to connect to LDAP server.\n",backtrace()}));
+      ERROR ("Failed to connect to LDAP server: %s\n", ldap_rem_errstr);
     }
 
 #if constant(SSL.Cipher.CipherAlgorithm)
