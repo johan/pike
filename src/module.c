@@ -153,6 +153,7 @@ static void exit_builtin_modules(void)
    * THREADS_ALLOW/DISALLOW are NOPs beyond this point. */
   th_cleanup();
 #endif
+  free_all_pike_list_node_blocks();
 
   exit_pike_security();
   free_svalue(& throw_value);
