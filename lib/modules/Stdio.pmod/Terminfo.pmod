@@ -348,7 +348,7 @@ class Terminfo {
     aliases = (f->read(sname)-"\0")/"|";
     {
       int blen = nbool;
-      if((nbool&1) && !bug_compat)
+      if(((nbool+sname)&1) && !bug_compat)
 	blen++;
       array(int) bools = values(f->read(blen)[..nbool-1]);
       if (sizeof(bools)>sizeof(boolnames))
