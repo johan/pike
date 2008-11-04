@@ -308,7 +308,7 @@ class TimeRange
 //!	the time period. <tt>t*17</tt> is
 //!	the same as doing <tt>t-><ref>set_size</ref>(t,17)</tt>.
 
-   function ``* = `*;
+   TimeRange ``* (int n) {return `* (n);}
    TimeRange `*(int n)
    {
       return set_size(n,this_object());
@@ -708,7 +708,8 @@ class TimeRange
 //!          &gt;----- cut -----&lt;
 //!	</pre>
 
-   function ``& = `&;
+   TimeRange|zero ``& (TimeRange with, mixed... extra)
+    {return `& (with, @extra);}
    TimeRange|zero `&(TimeRange with, mixed ...extra)
    {
       if (with->is_nulltimerange) 
@@ -744,7 +745,7 @@ class TimeRange
 //!     &lt;----------union----------&gt;
 //!	</pre>
 
-   function ``| = `|;
+   TimeRange ``| (TimeRange with, mixed... extra) {return `| (with, @extra);}
    TimeRange `|(TimeRange with,mixed ...extra)
    {
       if (with->is_nulltimerange) 
@@ -783,7 +784,7 @@ class TimeRange
 //!     &lt;----|               |---->   - exclusive or
 //!	</pre>
 
-   function ``^ = `^;
+   TimeRange ``^ (TimeRange with, mixed... extra) {return `^ (with, @extra);}
    TimeRange `^(TimeRange with,mixed ... extra)
    {
       if (with->is_supertimerange)
