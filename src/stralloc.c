@@ -898,11 +898,9 @@ PMOD_EXPORT struct pike_string *end_and_resize_shared_string(struct pike_string 
      *
      * NOTE: We lose track of the actual buffer length here, so don't
      *       use this function to shorten a string in decrements.
-     *
-     * FIXME: Wide strings get only a partial NUL-termination.
      */
     str->len=len;
-    str->str[len]=0;
+    SET_INDEX_PCHARP(MKPCHARP_STR(str), len, 0);
     return end_shared_string(str);
   }
   tmp = make_shared_binary_pcharp(MKPCHARP_STR(str),len);
