@@ -2200,11 +2200,13 @@ class Evaluator {
     }
 
     void show_errors() {
-      safe_write(hch_errors);
+      if (sizeof(hch_errors))
+        safe_write(hch_errors);
     }
 
     void show_warnings() {
-      safe_write(hch_warnings);
+      if (sizeof(hch_warnings))
+        safe_write(hch_warnings);
     }
   };
 
