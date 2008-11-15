@@ -707,7 +707,9 @@ PIKE_MODULE_INIT
   /* function(void|string:array(string)) */
   ADD_FUNCTION("list_dbs", f_list_dbs,tFunc(tOr(tVoid,tStr),tArr(tStr)), ID_PUBLIC);
 
+#ifdef PIKE_THREADS
   ADD_FUNCTION ("connect_lock", f_connect_lock, tFunc(tOr(tVoid,tInt),tInt01), ID_PUBLIC);
+#endif
 
   init_odbc_res_programs();
 
