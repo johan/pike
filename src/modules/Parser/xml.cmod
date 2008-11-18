@@ -1634,7 +1634,7 @@ static void read_pubid(struct string_builder *X,
     if(XMLEOF())
     {
       if(Y)
-	XMLERROR("End of file while looking for end of attribute value.");
+	XMLERROR("End of file while looking for end of pubid.");
       break;
     }
     if(PEEK(0)==Y)
@@ -1662,22 +1662,20 @@ static void read_pubid(struct string_builder *X,
 static void read_entityvalue(struct string_builder *X,
 			     p_wchar2 Y)
 {
-  while(1)
+  while(THIS->input)
   {
     if(XMLEOF())
     {
-      if(Y)
-	XMLERROR("End of file while looking for end of attribute value.");
-      break;
+      POP();
+      continue;
     }
     if(PEEK(0)==Y)
     {
       READ(1);
-      break;
+      return;
     }
     switch(PEEK(0))
     {
-	
 
       case '%':
 	READ_PEREFERENCE(1,(*X), read_entityvalue(X, 0));
@@ -1712,6 +1710,8 @@ static void read_entityvalue(struct string_builder *X,
 	READ(1);
     }
   }
+  if (Y)
+    XMLERROR("End of file while looking for end of entity value.");
 }
 
 static void simple_read_system_literal(void)
