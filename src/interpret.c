@@ -1129,6 +1129,9 @@ void *dummy_label = NULL;
 #define EXIT_MACHINE_CODE()
 #endif
 
+/* Intended to be called from machine code before inlined function
+ * calls (primarily the CALL_BUILTIN opcodes), to ensure thread
+ * switching. */
 void call_check_threads_etc()
 {
   FAST_CHECK_THREADS_ON_CALL();
