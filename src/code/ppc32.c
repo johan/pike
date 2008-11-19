@@ -540,6 +540,7 @@ void ins_f_byte_with_arg(unsigned int a, INT32 b)
    case F_CALL_BUILTIN1:
      if(Pike_compiler->new_program->constants[b].sval.u.efun->internal_flags & CALLABLE_DYNAMIC)
        break;
+     /* FIXME: Add call to call_check_threads_etc. */
      if(a == F_CALL_BUILTIN1)
        SET_REG(PPC_REG_ARG1, 1);
      else
