@@ -704,7 +704,17 @@ extern int fast_check_threads_counter;
  * on 1000-3000 check_threads_etc calls per second in mixed code, but
  * it can vary greatly - from 0 to 30000+ calls/sec. In a test case
  * with about 22000 calls/sec, it took 0.042% of the cpu. */
-#define FAST_CHECK_THREADS_ON_CALL() fast_check_threads_etc (6)
+#define FAST_CHECK_THREADS_ON_CALL() do {				\
+    if (++fast_check_threads_counter >= (1 << 6)) {			\
+      fast_check_threads_counter = 0;					\
+      check_threads_etc();						\
+    }									\
+    else if (objects_to_destruct)					\
+      /* De facto pike semantics requires that freed objects are */	\
+      /* destructed before function calls. Otherwise done through */	\
+      /* evaluator_callbacks. */					\
+      destruct_objects_to_destruct_cb();				\
+  } while (0)
 
 /* Used before any sort of backward branch. This is only a safeguard
  * for some corner cases with loops without calls - not relevant in
