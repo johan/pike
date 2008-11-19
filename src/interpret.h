@@ -740,6 +740,7 @@ BLOCK_ALLOC (catch_context, 0);
 BLOCK_ALLOC(pike_frame,128);
 
 #ifdef PIKE_USE_MACHINE_CODE
+void call_check_threads_etc();
 #if defined(OPCODE_INLINE_BRANCH) || defined(INS_F_JUMP) || \
     defined(INS_F_JUMP_WITH_ARG) || defined(INS_F_JUMP_WITH_TWO_ARGS)
 void branch_check_threads_etc();

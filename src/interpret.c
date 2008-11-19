@@ -1129,6 +1129,11 @@ void *dummy_label = NULL;
 #define EXIT_MACHINE_CODE()
 #endif
 
+void call_check_threads_etc()
+{
+  FAST_CHECK_THREADS_ON_CALL();
+}
+
 #if defined(OPCODE_INLINE_BRANCH) || defined(INS_F_JUMP) || \
     defined(INS_F_JUMP_WITH_ARG) || defined(INS_F_JUMP_WITH_TWO_ARGS)
 /* Intended to be called from machine code on backward branch jumps,
