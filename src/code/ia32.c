@@ -856,6 +856,7 @@ void ins_f_byte_with_arg(unsigned int a, INT32 b)
       if(Pike_compiler->new_program->constants[b].sval.u.efun->internal_flags & CALLABLE_DYNAMIC)
 	break;
       ins_debug_instr_prologue (a - F_OFFSET, b, 0);
+      ia32_call_c_function (call_check_threads_etc);
       update_arg1(0);
       ia32_call_c_function(Pike_compiler->new_program->constants[b].sval.u.efun->function);
       return;
@@ -864,6 +865,7 @@ void ins_f_byte_with_arg(unsigned int a, INT32 b)
       if(Pike_compiler->new_program->constants[b].sval.u.efun->internal_flags & CALLABLE_DYNAMIC)
 	break;
       ins_debug_instr_prologue (a - F_OFFSET, b, 0);
+      ia32_call_c_function (call_check_threads_etc);
       update_arg1(1);
       ia32_call_c_function(Pike_compiler->new_program->constants[b].sval.u.efun->function);
       return;
