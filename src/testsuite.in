@@ -985,6 +985,16 @@ test_compile_error( [[
 ]])
 
 test_compile_error( [[
+  // This triggs a segfault on Pike 7.4.
+  void f()
+  {
+    constant days = 
+      ([ "1" : "Sunday"
+	 "2" : "Monday" ]);
+  }
+]])
+
+test_compile_error( [[
   // This triggs a compiler bug on old Pike 7.5.
   return lambda(object (([mixed]a)->syntax_error) { return 0; }(0);
 ]])
