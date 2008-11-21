@@ -27,7 +27,7 @@ else
       # Darwin x86 can output ELF even though we can't use it
       # FIXME: Investigate using nasm -f macho for Mach-O output
       AC_MSG_RESULT([no, Mach-O not yet supported])
-    elif test x"$pike_cv_machine_code_arch" != "ia32"; then
+    elif test x"$pike_cv_machine_code_arch" != x"ia32"; then
       # target is not ia32...
       AC_MSG_RESULT([yes, but we are not on an IA32 machine])
     elif test x"$pike_cv_sys_os" = x"OpenBSD"; then
