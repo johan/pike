@@ -186,7 +186,7 @@ void set_unicode_decode_mode (int enable)
   }
   else {
     CH_DEBUG("Disabling unicode decode mode.\n");
-    ::big_query ("SET character_set_results = " + get_charset());
+    ::big_query ("SET character_set_results = " + ::get_charset());
     utf8_mode &= ~UNICODE_DECODE_MODE;
   }
 }
