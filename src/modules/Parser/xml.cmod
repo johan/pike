@@ -2564,6 +2564,11 @@ static int really_low_parse_dtd(void)
 		  push_constant_text("<![IGNORE[");
 		  push_int(0);
 		  push_int(0);
+		  SKIPSPACE();
+		  if(XMLEOF() || PEEK(0)!='[')
+		    XMLERROR_STAY("Missing '[' in <![IGNORE.");
+		  else
+		    READ(1);
 		  while(1)
 		  {
 		    if(XMLEOF())
