@@ -10,7 +10,6 @@
 //    installed programs list (but not e.g. for the install dir).
 // o  Add cleanup rule for the generated master.pike for uninstall.
 // o  Pike icon for the .msi file and in the installed programs list.
-// o  Remove "IDA" from the install path.
 // o  Remove meaningless "please click next" dialog.
 // o  Include dumped files.
 
