@@ -513,6 +513,8 @@ string dns_lookup(string hostname)
        //  Prefer IPv4 addresses
        array(string) v6 = filter(ip, has_value, ":");
        array(string) v4 = ip - v6;
+       if (sizeof(v4))
+	 return v4[random(sizeof(v4))];
        return sizeof(v6) && v6[random(sizeof(v6))];
      }
    return 0;
