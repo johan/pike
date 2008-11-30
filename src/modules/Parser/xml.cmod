@@ -2366,6 +2366,7 @@ static int really_low_parse_dtd(void)
 			while(PEEK(0)=='|')
 			{
 			  READ(1);
+			  SKIPSPACE();
 			  SIMPLE_READNMTOKEN();
 			  SKIPSPACE();
 			  check_stack(1);
