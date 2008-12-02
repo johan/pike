@@ -2344,7 +2344,15 @@ static void init_dlopen(void)
 
       data->peaout=(union PEAOUT *)(data->coff + 1);
 
+#if 1
+      /* Workaround for "fatal error C1001: INTERNAL COMPILER ERROR" in vc98. */
+      if (data->peaout->pe32.aout.magic == 0x20b)
+	global_imagebase = data->peaout->pe32plus.image_base;
+      else
+	global_imagebase = data->peaout->pe32.image_base;
+#else
       global_imagebase = PEAOUT_GET(*data->peaout, image_base);
+#endif
 
     } else
 
