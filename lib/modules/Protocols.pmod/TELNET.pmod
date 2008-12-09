@@ -1147,7 +1147,7 @@ static class Low_Readline
     }
   }
   
-  protected void readline_close_callback(string data)
+  protected int readline_close_callback()
   {
     close_cb2(id);
   }
@@ -1194,7 +1194,7 @@ static class Low_Readline
 	  case TELOPT_NAWS:
 	    if(sscanf(data[1..],"%2c%2c",width,height)==2)
 	      if(readline)
-		readline->redisplay();
+		readline->redisplay(0);
 	    break;
 	}
     }
