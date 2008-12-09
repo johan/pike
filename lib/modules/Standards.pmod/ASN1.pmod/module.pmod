@@ -1,5 +1,7 @@
 // $Id$
 
+#pike __REAL_VERSION__
+
 string encode_der_oid (string dotted_decimal)
 //! Convenience function to convert an oid (object identifier) on
 //! dotted-decimal form (e.g. @expr{"1.3.6.1.4.1.1466.115.121.1.38"@})

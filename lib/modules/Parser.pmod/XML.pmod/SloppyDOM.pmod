@@ -1,5 +1,7 @@
 // $Id$
 
+#pike __REAL_VERSION__
+
 //! A somewhat DOM-like library that implements lazy generation of the
 //! node tree, i.e. it's generated from the data upon lookup. There's
 //! also a little bit of XPath evaluation to do queries on the node
