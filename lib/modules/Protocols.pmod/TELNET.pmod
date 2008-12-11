@@ -891,7 +891,7 @@ class protocol
   //!
   //! Created specifically for overloading
   //!
-  void setup()
+  protected void setup()
   {
   }
 
@@ -910,11 +910,11 @@ class protocol
   //! @param new_id
   //!   Value to send to the various callbacks.
   //!
-  void create(object f,
-	      function(mixed,string:void) r_cb,
-	      function(mixed|void:string) w_cb,
-	      function(mixed|void:void) c_cb,
-	      mapping callbacks, mixed|void new_id)
+  protected void create(object f,
+			function(mixed,string:void) r_cb,
+			function(mixed|void:string) w_cb,
+			function(mixed|void:void) c_cb,
+			mapping callbacks, mixed|void new_id)
   {
     fd = f;
     cb = callbacks;
@@ -993,7 +993,7 @@ class LineMode
   }
 
   //! Perform the initial TELNET handshaking for LINEMODE.
-  void setup()
+  protected void setup()
   {
     send_DO(TELOPT_BINARY);
     send_DO(TELOPT_SGA);
@@ -1011,7 +1011,7 @@ class LineMode
 //! Implements the @[Stdio.NonblockingStream] API.
 
 //! @ignore
-static class Low_Readline
+protected class Low_Readline
 {
   //! @endignore
 
@@ -1216,7 +1216,7 @@ static class Low_Readline
     ::remote_option_callback(opt,onoff);
   }
   
-  void setup()
+  protected void setup()
   {
     send_DO(TELOPT_SGA);
     send_DO(TELOPT_BINARY);
@@ -1298,11 +1298,11 @@ class Readline
   //! @param new_id
   //!   Value to send to the various callbacks.
   //!
-  void create(object f,
-	      function(mixed,string:void) r_cb,
-	      function(mixed|void:string) w_cb,
-	      function(mixed|void:void) c_cb,
-	      mapping callbacks, mixed|void new_id)
+  protected void create(object f,
+			function(mixed,string:void) r_cb,
+			function(mixed|void:string) w_cb,
+			function(mixed|void:void) c_cb,
+			mapping callbacks, mixed|void new_id)
   {
     read_cb2 = r_cb;
     write_cb2 = w_cb;
