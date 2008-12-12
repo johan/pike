@@ -1802,6 +1802,7 @@ if test "$cflags_is_set" = "no"; then
     AC_SYS_COMPILER_FLAG(-Wno-unused,Wno_unused,WARN)
     AC_SYS_COMPILER_FLAG(-Wcomment,Wcomment,WARN)
     AC_SYS_COMPILER_FLAG(-Wformat,Wformat,WARN)
+    AC_SYS_COMPILER_FLAG(-Wformat-security,Wformat_security,WARN)
     AC_SYS_COMPILER_FLAG(-Wimplicit-function-declaration,Wimplicit_function_declaration,WARN)
     AC_SYS_COMPILER_FLAG(-Wmultichar,Wmultichar,WARN)
     AC_SYS_COMPILER_FLAG(-Wswitch,Wswitch,WARN)
