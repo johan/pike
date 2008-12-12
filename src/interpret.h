@@ -122,7 +122,7 @@ extern struct op_2_f {
 
 #ifdef PIKE_DEBUG
 PMOD_EXPORT extern const char msg_stack_error[];
-#define debug_check_stack() do{if(Pike_sp<Pike_interpreter.evaluator_stack)Pike_fatal(msg_stack_error);}while(0)
+#define debug_check_stack() do{if(Pike_sp<Pike_interpreter.evaluator_stack)Pike_fatal("%s", msg_stack_error);}while(0)
 #define check__positive(X,Y) if((X)<0) Pike_fatal Y
 #else
 #define check__positive(X,Y)
