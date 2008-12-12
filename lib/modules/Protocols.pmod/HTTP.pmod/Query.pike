@@ -481,7 +481,12 @@ void dns_lookup_async(string hostname,function callback,mixed ...extra)
       call_out(callback,0,0,@extra); // can't lookup that...
       return;
    }
-   sscanf(hostname,"%[0-9.]",id);
+   if (has_value(hostname, ":")) {
+     //  IPv6
+     sscanf(hostname, "%[0-9a-fA-F:]", id);
+   } else {
+     sscanf(hostname,"%[0-9.]",id);
+   }
    if (hostname==id ||
        (id=hostname_cache[hostname]))
    {
@@ -502,7 +507,12 @@ void dns_lookup_async(string hostname,function callback,mixed ...extra)
 string dns_lookup(string hostname)
 {
    string id;
-   sscanf(hostname,"%[0-9.]",id);
+   if (has_value(hostname, ":")) {
+     //  IPv6
+     sscanf(hostname, "%[0-9a-fA-F:]", id);
+   } else {
+     sscanf(hostname,"%[0-9.]",id);
+   }
    if (hostname==id ||
        (id=hostname_cache[hostname]))
       return id;
