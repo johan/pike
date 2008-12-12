@@ -483,7 +483,7 @@ void dns_lookup_async(string hostname,function callback,mixed ...extra)
    }
    if (has_value(hostname, ":")) {
      //  IPv6
-     sscanf(hostname, "%[0-9a-fA-F:]", id);
+     sscanf(hostname, "%[0-9a-fA-F:.]", id);
    } else {
      sscanf(hostname,"%[0-9.]",id);
    }
@@ -509,7 +509,7 @@ string dns_lookup(string hostname)
    string id;
    if (has_value(hostname, ":")) {
      //  IPv6
-     sscanf(hostname, "%[0-9a-fA-F:]", id);
+     sscanf(hostname, "%[0-9a-fA-F:.]", id);
    } else {
      sscanf(hostname,"%[0-9.]",id);
    }
