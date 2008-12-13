@@ -622,7 +622,7 @@ struct program
 #endif
 };
 
-#if PIKE_DEBUG
+#ifdef PIKE_DEBUG
 static INLINE int CHECK_IDREF_RANGE (int x, const struct program *p)
 {
   if (x < 0 || x >= p->num_identifier_references)
