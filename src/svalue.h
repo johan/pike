@@ -453,9 +453,9 @@ PMOD_EXPORT extern const char msg_sval_obj_wo_refs[];
 PMOD_EXPORT extern const char msg_ssval_obj_wo_refs[];
 #define check_refs2(S,T) do { \
 if((T) <= MAX_REF_TYPE && (S)->refs && (S)->refs[0] <= 0) {\
-  fprintf (stderr, msg_ssval_obj_wo_refs);		   \
+  fprintf (stderr, "%s", msg_ssval_obj_wo_refs);	   \
   describe((S)->refs);					   \
-  Pike_fatal(msg_ssval_obj_wo_refs);			   \
+  Pike_fatal("%s", msg_ssval_obj_wo_refs);		   \
 } }while(0)
 
 #define check_type_hint(SVALS, NUM, TYPE_HINT)				\

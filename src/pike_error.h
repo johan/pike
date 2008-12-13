@@ -135,7 +135,7 @@ PMOD_EXPORT extern const char msg_unsetjmp_nosync_2[];
 	Pike_fatal(msg_unsetjmp_nosync_1,			\
 		   Pike_interpreter.recoveries->file);		\
       else							\
-	Pike_fatal(msg_unsetjmp_nosync_2);			\
+	Pike_fatal("%s", msg_unsetjmp_nosync_2);		\
     }								\
     Pike_interpreter.recoveries=X.previous;			\
     check_recovery_context();					\
@@ -193,7 +193,7 @@ PMOD_EXPORT extern const char msg_unset_onerr_nosync_2[];
 	           Pike_interpreter.recoveries->onerror, &(X),	\
                    Pike_interpreter.recoveries->onerror->file); \
       } else {							\
-        Pike_fatal(msg_unset_onerr_nosync_2);			\
+	Pike_fatal("%s", msg_unset_onerr_nosync_2);		\
       }								\
     }								\
     Pike_interpreter.recoveries->onerror=(X).previous;		\
