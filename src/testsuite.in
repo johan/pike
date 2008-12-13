@@ -4290,6 +4290,22 @@ test_true(class c { optional constant i=0; mixed `[](string s) { if(s=="i") retu
 test_true(class c { mixed `[]=(mixed a, mixed b) { if(a!=b) throw(1); }}()[1]=1)
 test_true(class c { mixed `->=(mixed a, mixed b) { if(a!=b) throw(1); }}()->i="i")
 
+test_do([[
+#pragma strict_types
+class A { int a; optional int x; };
+class B { int a; };
+A a = B();
+return a;
+]])
+
+test_compile_error_any([[
+#pragma strict_types
+class A { int a; optional int x; };
+class B { int b; };
+A a = B();
+return a;
+]])
+
 test_eq((["static":42])->static,42)
 test_eq((["protected":42])->protected,42)
 
