@@ -288,7 +288,7 @@ class File
   //!   You may specify an address to bind to if your machine has many IP
   //!   numbers.
   //!
-  //! @param protocol
+  //! @param family
   //!   A protocol family for the socket can be specified. If no family is
   //!   specified, one which is appropriate for the address is automatically
   //!   selected. Thus, there is normally no need to specify it. You can
