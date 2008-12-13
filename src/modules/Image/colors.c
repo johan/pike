@@ -1519,7 +1519,6 @@ static void image_color__encode( INT32 args )
 static void image_color__decode( INT32 args )
 {
     struct svalue *a;
-    int r, g, b;
     if( Pike_sp[-1].type != PIKE_T_ARRAY || Pike_sp[-1].u.array->size != 3 )
 	Pike_error("Illegal argument to _decode\n");
     a=Pike_sp[-1].u.array->item;

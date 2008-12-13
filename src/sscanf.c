@@ -782,7 +782,7 @@ INPUT_IS_WIDE(								 \
 	  sval.u.integer=0;						 \
 	  if (minus_flag)						 \
 	  {								 \
-	     int x, pos=0;						 \
+	     int pos=0;						 \
 	     if (field_length >= 0) {					 \
 	       pos = (eye += field_length);				 \
 	     }								 \
@@ -847,7 +847,7 @@ INPUT_IS_WIDE(								 \
  								         \
       case 'H':								\
 	{								\
-          int e,len=0;							\
+          int len=0;							\
           if(field_length == -1)					\
 	    field_length=1;						\
           if(field_length == 0)                                         \
