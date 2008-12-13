@@ -4841,8 +4841,8 @@ PIKE_MODULE_INIT
 
 #ifdef AF_UNIX
   /*! @decl constant AF_UNIX
-  /*! @decl constant AF_LOCAL
-  /*! @decl constant AF_FILE
+   *! @decl constant AF_LOCAL
+   *! @decl constant AF_FILE
    *! Address family identifier for local pipes. Note that this
    *! is system-dependent. AF_LOCAL and AF_FILE are aliases for
    *! AF_UNIX.
