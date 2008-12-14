@@ -10012,8 +10012,10 @@ int main(int argc, array(string) argv)
     int i;
     for(i = 0; i < 1000; i++) {
       compile_string(file);
-      if (!(i%10))
-        __signal_watchdog();
+      //if (!(i%10))
+      //  __signal_watchdog();
+      if (!(i % 100))
+        write ("%s: %O at %d\n", ctime (time())[..<1], this_thread(), i);
     }
   } )->wait();
 
