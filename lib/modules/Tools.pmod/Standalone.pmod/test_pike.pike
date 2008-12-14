@@ -594,7 +594,7 @@ int main(int argc, array(string) argv)
 	(["stdin": pipe_1, "stdout": orig_stdout]));
       pipe_1->close();
       orig_stdout->close();
-      WATCHDOG_DEBUG_MSG ("Forked watchdog %d.\n", watchdog->pid());
+      werror ("Forked watchdog pid %d.\n", watchdog->pid());
     }
   }
 
