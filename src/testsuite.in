@@ -10012,10 +10012,14 @@ int main(int argc, array(string) argv)
     int i;
     for(i = 0; i < 1000; i++) {
       compile_string(file);
+      // These watchdog calls shouldn't be necessary - the timeframe
+      // is at least 20 minutes between two calls, so doing these can
+      // extend the test time to up to 20000 minutes before the
+      // watchdog kicks in.. /mast
       //if (!(i%10))
       //  __signal_watchdog();
-      if (!(i % 100))
-        write ("%s: %O at %d\n", ctime (time())[..<1], this_thread(), i);
+      //if (!(i % 100))
+      //  write ("%s: %O at %d\n", ctime (time())[..<1], this_thread(), i);
     }
   } )->wait();
 
