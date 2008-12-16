@@ -943,7 +943,7 @@ string data(int|void max_length)
    werror("buf[..datapos+len] : %O\n", buf[max(0, datapos+len-19)
 				       ..min(sizeof(buf), datapos+len)]);
 #endif
-   return buf[datapos..datapos+len];
+   return buf[datapos..datapos+len-1];
 }
 
 protected Locale.Charset.Decoder charset_decoder;
