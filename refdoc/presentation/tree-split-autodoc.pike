@@ -614,6 +614,7 @@ class TopNode {
 
     _data = parser->finish(_data)->read();
     ::create("autodoc", "", _data);
+    sort(namespace_children->name, namespace_children);
     foreach(namespace_children, Node x)
       if(x->type=="namespace" && x->name==default_namespace) {
 	//	namespace_children -= ({ x });
