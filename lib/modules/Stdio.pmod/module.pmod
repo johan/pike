@@ -3134,7 +3134,7 @@ object sendfile(array(string) headers,
   };
 
 #ifdef SENDFILE_DEBUG
-  werror("files.sendfile() failed:\n%s\n", describe_backtrace(err)));
+  werror("files.sendfile() failed:\n%s\n", describe_backtrace(err));
 #endif /* SENDFILE_DEBUG */
 
 #endif /* !DISABLE_FILES_SENDFILE && files.sendfile */
