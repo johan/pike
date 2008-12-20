@@ -323,12 +323,12 @@ struct svalue
 
 #define FUNCTION_BUILTIN USHRT_MAX
 
-PMOD_EXPORT const struct svalue svalue_undefined, svalue_int_zero;
+extern PMOD_EXPORT const struct svalue svalue_undefined, svalue_int_zero;
 #ifdef HAVE_UNION_INIT
-PMOD_EXPORT const struct svalue svalue_int_one;
+extern PMOD_EXPORT const struct svalue svalue_int_one;
 #else
 /* The value 1 is initialized first thing in init_pike. */
-PMOD_EXPORT struct svalue svalue_int_one;
+extern PMOD_EXPORT struct svalue svalue_int_one;
 #endif
 
 #define is_gt(a,b) is_lt(b,a)

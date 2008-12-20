@@ -29,7 +29,7 @@ extern "C++" {
 	struct { char x; T y;} *bar = NULL;
 	return PTR_TO_INT(&bar->y);
     }
-};
+}
 #define ALIGNOF(X) low_alignof_((X*)NULL)
 #else
 #define ALIGNOF(X) OFFSETOF({ char ignored_; X fooo_;}, fooo_)
