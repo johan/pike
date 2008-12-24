@@ -18,6 +18,7 @@
 bin/pike
 Pike*
 build
+.build*
 xenofarm_result
 src/treeopt.h
 src/peep_engine.c
