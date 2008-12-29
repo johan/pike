@@ -147,7 +147,7 @@ PMOD_EXPORT extern const char msg_unsetjmp_nosync_2[];
 #define PERR_LOCATION() ( __FILE__ ":" DEFINETOSTR(__LINE__) )
 #endif
 
-#define DEBUG_INIT_REC_ARGS , int on_stack, char *location
+#define DEBUG_INIT_REC_ARGS , int on_stack, const char *location
 #define SETJMP(X) LOW_SETJMP((init_recovery(&X, 0, 1, PERR_LOCATION())->recovery))
 #define SETJMP_SP(jmp, stack_pop_levels)				\
   LOW_SETJMP((init_recovery(&jmp, stack_pop_levels, 1, PERR_LOCATION())->recovery))
