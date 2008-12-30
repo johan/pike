@@ -50,6 +50,7 @@ define(dotest,[[
   test_eq(Gz.compress("a test",0,9,Gz.DEFAULT_STRATEGY),Gz.compress("a test",0,9))
   test_eq(Gz.uncompress(Gz.compress("a test",0,9,Gz.FILTERED)),"a test")
   test_eq(Gz.uncompress(Gz.compress("a test",0,9,Gz.HUFFMAN_ONLY)),"a test")
+]])
 cond_resolv(Gz.RLE,
 [[
   test_eq(Gz.uncompress(Gz.compress("a test",0,9,Gz.RLE)),"a test")
@@ -58,6 +59,8 @@ cond_resolv(Gz.FIXED,
 [[
   test_eq(Gz.uncompress(Gz.compress("a test",0,9,Gz.FIXED)),"a test")
 ]])
+cond_resolv(Gz.deflate,
+[[
   test_eq(Gz.uncompress(Gz.compress("a test",0,9,Gz.DEFAULT_STRATEGY,8)),"a test")
   test_eq(Gz.uncompress(Gz.compress("a test",0,9,Gz.DEFAULT_STRATEGY,15)),"a test")
 
