@@ -380,7 +380,7 @@ protected array(mapping(string:mixed)) res_obj_to_array(object res_obj)
 //! Return last error message.
 int|string error()
 {
-  if (functionp (master_sql->error))
+  if (master_sql && functionp (master_sql->error))
     return master_sql->error();
   return "Unknown error";
 }
