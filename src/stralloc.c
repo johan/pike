@@ -2233,22 +2233,18 @@ struct pike_string *next_pike_string (struct pike_string *s)
   return next;
 }
 
-PMOD_EXPORT void init_string_builder(struct string_builder *s, int mag)
-{
-  s->malloced=256;
-  s->s=begin_wide_shared_string(256,mag);
-  s->s->len=0;
-  low_set_index (s->s, 0, 0);
-  s->known_shift=0;
-}
-
 PMOD_EXPORT void init_string_builder_alloc(struct string_builder *s, ptrdiff_t length, int mag)
 {
-  s->malloced=length;
   s->s=begin_wide_shared_string(length,mag);
+  s->malloced=length;
+  s->known_shift=0;
   s->s->len=0;
   low_set_index (s->s, 0, 0);
-  s->known_shift=0;
+}
+
+PMOD_EXPORT void init_string_builder(struct string_builder *s, int mag)
+{
+  init_string_builder_alloc(s, 256, mag);
 }
 
 PMOD_EXPORT void init_string_builder_copy(struct string_builder *to,
