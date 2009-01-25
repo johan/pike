@@ -272,7 +272,7 @@ PMOD_EXPORT int co_wait_timeout(COND_T *c, PIKE_MUTEX_T *m, int s, int nanos)
   return pthread_cond_timedwait(c, m, &timeout);
 #endif /* HAVE_PTHREAD_COND_RELTIMEDWAIT_NP */
 #else /* !POSIX_THREADS */
-#error co_wait_timeout doesn't support this thread model.
+#error co_wait_timeout does not support this thread model.
 #endif /* POSIX_THREADS */
 }
 #endif /* !CONFIGURE_TEST */
