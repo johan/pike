@@ -254,6 +254,7 @@ PMOD_EXPORT int co_destroy(COND_T *c)
 
 #else /* !SIMULATE_COND_WITH_EVENT */
 
+#ifndef CONFIGURE_TEST
 PMOD_EXPORT int co_wait_timeout(COND_T *c, PIKE_MUTEX_T *m, int s, int nanos)
 {
 #ifdef POSIX_THREADS
@@ -274,6 +275,7 @@ PMOD_EXPORT int co_wait_timeout(COND_T *c, PIKE_MUTEX_T *m, int s, int nanos)
 #error co_wait_timeout doesn't support this thread model.
 #endif /* POSIX_THREADS */
 }
+#endif /* !CONFIGURE_TEST */
 
 #endif /* SIMULATE_COND_WITH_EVENT */
 
