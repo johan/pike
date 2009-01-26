@@ -342,6 +342,8 @@ extern pthread_attr_t small_pattr;
 #define event_wait(X)							\
   LOW_THREAD_CHECK_ZERO_ERROR (						\
     WaitForSingleObject(CheckValidHandle(*(X)), INFINITE) == WAIT_OBJECT_0)
+#define event_wait_msec(X, MSEC)					\
+  WaitForSingleObject(CheckValidHandle(*(X)), (MSEC))
 
 /* No fork -- no atfork */
 #define th_atfork(X,Y,Z)
