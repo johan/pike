@@ -40,8 +40,12 @@ class _Tar  // filesystem
 //      assign(fd/*->dup()*/);
       start = p;
       len = l;
-      fd->seek(start);
-      ::create(fd->read(len));
+      if (fd->seek(start) < 0)
+	error ("Failed to seek to position %d in %O.\n", start, fd);
+      string data = fd->read(len);
+      if (sizeof (data) != len)
+	error ("Failed to read %d bytes from position %d in %O.\n", len, start);
+      ::create();
       seek(0);
     }
   }
@@ -223,7 +227,8 @@ class _Tar  // filesystem
       pos += 512 + r->size;
       if(pos%512)
 	pos += 512 - (pos%512);
-      this_program::fd->seek(pos);
+      if (this_program::fd->seek(pos) < 0)
+	error ("Failed to seek to position %d in %O.\n", pos, fd);
     }
 
     filename_to_entry = mkmapping(entries->fullpath, entries);
