@@ -44,8 +44,9 @@ class _Tar  // filesystem
 	error ("Failed to seek to position %d in %O.\n", start, fd);
       string data = fd->read(len);
       if (sizeof (data) != len)
-	error ("Failed to read %d bytes from position %d in %O.\n", len, start);
-      ::create();
+	error ("Failed to read %d bytes from position %d in %O.\n",
+	       len, start, fd);
+      ::create(data);
       seek(0);
     }
   }
