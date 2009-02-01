@@ -521,7 +521,10 @@ int debug_fd_stat(const char *file, PIKE_STAT_T *buf)
     else
       res = GetVolumeInformation (NULL, NULL, 0, NULL, NULL,NULL,
 				  (LPSTR)&fstype, sizeof (fstype));
-    if (!res) {
+    if (!res &&
+	/* Get ERROR_MORE_DATA if the fstype buffer wasn't long
+	 * enough, so let's ignore it. */
+	GetLastError() != ERROR_MORE_DATA) {
       set_errno_from_win32_error (GetLastError());
       FindClose (hFind);
       return -1;
