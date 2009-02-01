@@ -530,7 +530,7 @@ int debug_fd_stat(const char *file, PIKE_STAT_T *buf)
       return -1;
     }
 
-    if (!strcmp (fstype, "FAT")) {
+    if (res && !strcmp (fstype, "FAT")) {
       if (!fat_filetimes_to_stattimes (&findbuf.ftCreationTime,
 				       &findbuf.ftLastAccessTime,
 				       &findbuf.ftLastWriteTime,
