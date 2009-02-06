@@ -402,15 +402,18 @@ PMOD_EXPORT void o_cast_to_string(void)
 	    
   case T_ARRAY:
     {
-      int i;
+      int i, alen;
       struct array *a = sp[-1].u.array;
       struct pike_string *s;
       int shift = 0;
+      alen = a->size;
 
-      for(i = a->size; i--; ) {
+      for(i = 0; i<alen; i++) {
 	INT_TYPE val;
 	if (a->item[i].type != T_INT) {
-	  Pike_error("cast: Item %d is not an integer: %O\n", i, a->item + i);
+	  Pike_error(
+         "Can only cast array(int) to string, item %d is not an integer: %O\n",
+	   i, a->item + i);
 	}
 	val = a->item[i].u.integer;
 	switch (shift) { /* Trust the compiler to strength reduce this. */
