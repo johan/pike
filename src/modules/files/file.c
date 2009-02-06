@@ -632,8 +632,9 @@ static struct pike_string *do_read_oob(int fd,
 	bytes_read+=i;
 	if(!all) break;
       }
-      else if(i==0)
+      else if ((i==0) || (e == EINVAL))
       {
+	/* No out of band data available. */
 	break;
       }
       else if(e != EINTR)
