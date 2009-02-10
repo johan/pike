@@ -235,13 +235,14 @@ class OutputController
 	if(spos==-1)
 	{
 	  outfd->write(line);
+	  xpos+=l;
 	}else{
 	  l=sizeof(line)-spos;
 	  outfd->write(line[..l-2]);
+	  xpos+=l-1;
 	}
 	s=s[l..];
 	n-=l;
-	xpos+=l;
 	if(xpos<columns || !term->tgetflag("am"))
 	  outfd->write((term->put("cr")||"")+(term->put("do")||"\n"));
 	xpos = 0;
