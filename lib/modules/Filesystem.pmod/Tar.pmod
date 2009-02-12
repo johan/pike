@@ -417,7 +417,7 @@ class _Tar  // filesystem
 		error ("Failed to create %q: %s\n",
 		       destpath, strerror (o->errno()));
 
-	      Stdio.BlockFile i = open_record (r, "r");
+	      Stdio.BlockFile i = r->open ("r");
 	      do {
 		string data = i->read (1024 * 1024);
 		if (data == "") break;
