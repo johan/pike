@@ -261,8 +261,8 @@ static void f_fetch_fields (INT32 args)
 	{
 		push_text("name");
 		push_text(PQfname(res,j));
-		/* no table information is availible */
-		/* no default value information is availible */
+		/* no table information is available */
+		/* no default value information is available */
 		push_text("type");
 		push_int(PQftype(res,j));
 		/* ARGH! I'd kill 'em! How am I supposed to know how types are
