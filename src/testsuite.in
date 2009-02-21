@@ -4643,13 +4643,26 @@ test_any([[
 
 test_any([[
   class Foo {  };
-  return  function_name(object_program(Foo()));
+  return function_name(object_program(Foo()));
 ]], "Foo")
 
 test_any([[
   int q;
   return stringp(function_name( lambda() { return q; }));
 ]],1)
+
+test_any([[
+  // Named lambda.
+  int foo(){};
+  return function_name(foo);
+]], "foo")
+
+test_any([[
+  // Named trampoline.
+  int q;
+  int foo() { return q; };
+  return function_name(foo);
+]], "foo")
 
 test_any([[
   int q;
