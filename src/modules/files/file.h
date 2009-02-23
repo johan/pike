@@ -117,6 +117,8 @@ CBFUNCS(write_oob_callback)
 
 static void file_write(INT32 args);
 PMOD_EXPORT struct object *file_make_object_from_fd(int fd, int mode, int guess);
+PMOD_EXPORT void push_new_fd_object(int factory_fun_num,
+				    int fd, int mode, int guess);
 int my_socketpair(int family, int type, int protocol, int sv[2]);
 int socketpair_ultra(int family, int type, int protocol, int sv[2]);
 struct new_thread_data;
