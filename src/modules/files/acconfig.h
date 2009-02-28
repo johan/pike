@@ -43,10 +43,10 @@
 #undef HAVE_STRUCT_MSGHDR
 
 /* Define this if you have a struct msghdr with 'msg_control' member */
-#undef HAVE_STRUCT_MSGHDR_CONTROL
+#undef HAVE_STRUCT_MSGHDR_MSG_CONTROL
 
 /* Define this if you have a struct msghdr with 'msg_accrights' member */
-#undef HAVE_STRUCT_MSGHDR_ACCRIGHTS
+#undef HAVE_STRUCT_MSGHDR_MSG_ACCRIGHTS
 
 /* Define this if you have a struct stat with 'blocks' member */
 #undef HAVE_STRUCT_STAT_BLOCKS
