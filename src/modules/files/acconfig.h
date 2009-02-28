@@ -39,6 +39,15 @@
 /* Define this if you have a struct iovec */
 #undef HAVE_STRUCT_IOVEC
 
+/* Define this if you have a struct msghdr */
+#undef HAVE_STRUCT_MSGHDR
+
+/* Define this if you have a struct msghdr with 'msg_control' member */
+#undef HAVE_STRUCT_MSGHDR_CONTROL
+
+/* Define this if you have a struct msghdr with 'msg_accrights' member */
+#undef HAVE_STRUCT_MSGHDR_ACCRIGHTS
+
 /* Define this if you have a struct stat with 'blocks' member */
 #undef HAVE_STRUCT_STAT_BLOCKS
 
