@@ -1270,6 +1270,7 @@ PMOD_EXPORT void do_free_program (struct program *p)
 #ifndef RELOCATE_program
 #define RELOCATE_program(ORIG, NEW)
 #endif /* !RELOCATE_program */
+#define RELOCATE_identifier_cache(ORIG,NEW)
 #define RELOCATE_linenumbers(ORIG,NEW)
 #define RELOCATE_identifier_index(ORIG,NEW)
 #define RELOCATE_variable_index(ORIG,NEW)
@@ -10769,7 +10770,7 @@ void yyexplain_not_implements(int severity_level,
       struct pike_string *bid_file;
       if (b->identifier_references[e].id_flags & (ID_OPTIONAL))
 	continue;		/* It's ok... */
-      bid_file = get_identifier_line(b, i, &bid_line);
+      bid_file = get_identifier_line(b, e, &bid_line);
       if (!bid_file) bid_file = b_file;
       yytype_report(severity_level,
 		    bid_file, bid_line, bid->type,
