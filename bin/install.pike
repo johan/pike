@@ -2387,17 +2387,17 @@ void make_master(string dest, string master, string lib_prefix,
     error("Failed to read master template file %O\n", master);
   }
   master_data=replace(master_data, ({
-			"¤lib_prefix¤",
-			"¤include_prefix¤",
-			"¤share_prefix¤",
-			"¤doc_prefix¤",
-			"¤cflags¤",
-			"¤ldflags¤",
+			"#lib_prefix#",
+			"#include_prefix#",
+			"#share_prefix#",
+			"#doc_prefix#",
+			"#cflags#",
+			"#ldflags#",
 		      }), ({
 			replace(lib_prefix,"\\","\\\\"),
 			replace(include_prefix,"\\","\\\\"),
-			replace(share_prefix||"¤share_prefix¤", "\\", "\\\\"),
-			replace(doc_prefix||"¤doc_prefix¤", "\\", "\\\\"),
+			replace(share_prefix||"#share_prefix#", "\\", "\\\\"),
+			replace(doc_prefix||"#doc_prefix#", "\\", "\\\\"),
 			replace(cflags||"", "\\", "\\\\"),
 			replace(ldflags||"", "\\", "\\\\"),
 		      }));
