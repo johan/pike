@@ -1507,6 +1507,7 @@ static void insert_current_dir_as_string(struct cpp *this,
                                          struct string_builder *tmp)
 {
   ref_push_string(this->current_file);
+  /* FIXME: This isn't safe if the master hasn't been compiled yet. */
   SAFE_APPLY_MASTER("dirname",1);
   PUSH_STRING_SHIFT(Pike_sp[-1].u.string->str, Pike_sp[-1].u.string->len,
                     Pike_sp[-1].u.string->size_shift, tmp);
