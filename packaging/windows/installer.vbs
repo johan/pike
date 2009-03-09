@@ -18,7 +18,7 @@ Function FinalizePike()
   ' Note: Opening the files in ASCII-mode, there doesn't seem to be any
   '       binary mode. This means that 8-bit characters might get mangled.
   Set source = fso.OpenTextFile(targetdir & "lib\master.pike.in", 1, False, 0)
-  Set dest = fso.CreateTextFile(targetdir & "lib\master.pike", 2, True, 0)
+  Set dest = fso.CreateTextFile(targetdir & "lib\master.pike", True, False)
 
   source_txt = source.ReadAll
 
