@@ -6,7 +6,7 @@
 ' 2004-12-01 Henrik Grubbström
 '
 
-Option Compare Binary
+'Option Compare Binary
 
 ' At call time the CustomActionData property has been set to [TARGETDIR]
 Function FinalizePike()
