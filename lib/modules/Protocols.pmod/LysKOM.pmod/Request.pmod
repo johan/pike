@@ -23,8 +23,8 @@ class _Request
    private mixed res;
 
 #if constant(thread_create) && !LYSKOM_UNTHREADED
-   private object wait_lock;
-   private object wait_mutex;
+  private object wait_cond = Thread.Condition();
+  private object wait_mutex = Thread.Mutex();
 #endif
 
    function callback;
@@ -65,6 +65,9 @@ class _Request
 
    mixed _reply(object|array what)
    {
+#if constant(thread_create) && !LYSKOM_UNTHREADED
+      object key = wait_mutex->lock();
+#endif
       if (objectp(what))
       {
 	 error=what;
@@ -76,8 +79,8 @@ class _Request
 	 res=reply(what);
       }
 #if constant(thread_create) && !LYSKOM_UNTHREADED
-      if (wait_lock)
-	 destruct(wait_lock);
+      wait_cond->signal();
+      destruct(key);
 #endif
       if (callback) callback(error||res);
 
@@ -94,11 +97,12 @@ class _Request
 #if constant(thread_create) && !LYSKOM_UNTHREADED
    mixed `()() // wait
    {
-      if (ok || error) return res;
-      wait_mutex=Thread.Mutex();
-      wait_lock=wait_mutex->lock(); // lock it
-      wait_lock=wait_mutex->lock(1); // lock it again, ie wait
-      return res;
+      object key = wait_mutex->lock();
+      do {
+	if (ok || error)
+	  return res;
+	wait_cond->wait(key);
+      } while (1);
    }
 #else
    mixed `()() // wait
