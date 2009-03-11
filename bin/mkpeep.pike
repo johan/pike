@@ -451,7 +451,7 @@ int main(int argc, array(string) argv)
 	"#ifdef PIKE_DEBUG\n"
 	"    if(a_flag>6) {\n"
 	"      int e;\n"
-	"      fprintf(stderr, \"#%ld,%d:\",\n"
+	"      fprintf(stderr, %O,\n"
 	"              DO_NOT_WARN((long)eye),\n"
 	"              fifo_len);\n"
 	"      for(e=0;e<4;e++) {\n"
@@ -460,7 +460,8 @@ int main(int argc, array(string) argv)
 	"      }\n"
 	"      fprintf(stderr,\"\\n\");\n"
 	"    }\n"
-	"#endif\n\n");
+	"#endif\n\n",
+	"%ld,%d:");
 
   dump2(data,4);
 
