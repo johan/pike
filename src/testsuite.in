@@ -525,6 +525,11 @@ test_eval_error([[
   ([function] set_weak_flag) (17, "foo");
 ]])
 
+// Check that write() and error() with one argument are not
+// incorrectly subjected to sprintf() argument
+test_compile([[write("%\u2323");]])
+test_compile([[error("%\u2323");]])
+
 // type checks
 
 define(test_type_error, [[
