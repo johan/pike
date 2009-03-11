@@ -461,7 +461,7 @@ int main(int argc, array(string) argv)
 	"      fprintf(stderr,\"\\n\");\n"
 	"    }\n"
 	"#endif\n\n",
-	"%ld,%d:");
+	"#%ld,%d:");
 
   dump2(data,4);
 
