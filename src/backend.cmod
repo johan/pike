@@ -1931,13 +1931,17 @@ PIKECLASS Backend
 	   *       if the read-end has been closed.
 	   */
 #ifdef PIKE_DEBUG
+#ifdef ENOTSOCK
 	  if (errno != ENOTSOCK) {
+#endif
 	    fprintf(stderr,
 		    "Got POLLERR on non-socket fd %d (getsockopt errno=%d)\n",
 		    fd, errno);
+#ifdef ENOTSOCK
 	  } else {
 	    IF_PD(fprintf(stderr, "Got POLLERR on non-socket fd %d\n", fd));
 	  }
+#endif
 #endif /* PIKE_DEBUG */
 	  errno = err = EPIPE;
 	}
