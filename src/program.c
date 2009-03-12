@@ -8980,6 +8980,11 @@ static void f_compilation_apply_attribute_constant(INT32 args)
     f___handle_sprintf_format(args);
     return;
   }
+  MAKE_CONST_STRING(test, "strict_sprintf_format");
+  if (attribute == test) {
+    f___handle_sprintf_format(args);
+    return;
+  }
   MAKE_CONST_STRING(test, "sscanf_format");
   if (attribute == test) {
     f___handle_sscanf_format(args);
