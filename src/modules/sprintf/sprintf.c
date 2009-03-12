@@ -2021,8 +2021,6 @@ static int push_sprintf_argument_types(PCHARP format, ptrdiff_t format_len,
       case '[':
 	/* FIXME: !!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 	if (ret > 0) ret = 0;	/* FAILURE! */
-	continue;
-#if 0
 	INC_PCHARP(a,1);
 	if(EXTRACT_PCHARP(a)=='*') {
 	  push_int_type(0, num_arg);
@@ -2041,7 +2039,6 @@ static int push_sprintf_argument_types(PCHARP format, ptrdiff_t format_len,
 		   0, "Not enough arguments to [%d].", tmp);
 	  ret = -1;
 	}
-#endif /* 0 */
 	/* arg = argp+tmp; */
 	continue;
 	
