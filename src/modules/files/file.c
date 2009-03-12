@@ -2943,6 +2943,8 @@ static void file_take_fd(INT32 args)
   pop_n_elems(args);
 }
 
+/* Use ptrdiff_t for the fd since we're passed a void * and should
+ * read it as an integer of the same size. */
 static void do_close_fd(ptrdiff_t fd)
 {
   int ret;
