@@ -2027,7 +2027,7 @@ static int push_sprintf_argument_types(PCHARP format, ptrdiff_t format_len,
 	if (ret > 0) ret = 0;	/* FAILURE! */
 	INC_PCHARP(a,1);
 	if(EXTRACT_PCHARP(a)=='*') {
-	  push_int_type(0, num_arg);
+	  push_int_type(0, /*num_arg*/ MAX_INT32);
 	  INC_PCHARP(a,1);
 	  tmp = 0;
 	} else
@@ -2038,11 +2038,13 @@ static int push_sprintf_argument_types(PCHARP format, ptrdiff_t format_len,
 		   EXTRACT_PCHARP(a));
 	  ret = -1;
 	}
+#if 0
 	if(tmp >= num_arg) {
 	  yyreport(severity, type_check_system_string,
 		   0, "Not enough arguments to [%d].", tmp);
 	  ret = -1;
 	}
+#endif /* 0 */
 	/* arg = argp+tmp; */
 	continue;
 	
