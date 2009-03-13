@@ -277,6 +277,20 @@ static const HKEY hkeys[] = {
   /* HKEY_CURRENT_CONFIG */
 };
 
+/*! @decl constant HKEY_CLASSES_ROOT = 0
+ *! @decl constant HKEY_LOCAL_MACHINE = 1
+ *! @decl constant HKEY_CURRENT_USER = 2
+ *! @decl constant HKEY_USERS = 3
+ *!
+ *!   Root handles in the Windows registry.
+ *!
+ *! @note
+ *!   These constants are only available on Win32 systems.
+ *!
+ *! @seealso
+ *!   @[RegGetValue()], @[RegGetValues()], @[RegGetKeyNames()]
+ */
+
 /*! @decl string|int|array(string) RegGetValue(int hkey, string key, @
  *!                                            string index)
  *!
