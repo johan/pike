@@ -72,9 +72,6 @@
 
 #define sp Pike_sp
 
-/*! @module System
- */
-
 static void throw_nt_error(char *funcname, int err)
 /*
  *  Give string equivalents to some of the more common NT error codes.
@@ -635,6 +632,9 @@ static void f_sid_account(INT32 args)
   push_array(allocate_array(3));
   
 }
+
+/*! @module System
+ */
 
 /*! @decl object LogonUser(string username, string|int(0..0) domain, @
  *!                        string password, int|void logon_type, @
