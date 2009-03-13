@@ -84,6 +84,9 @@ PMOD_EXPORT extern struct program *thread_id_prog;
 #ifdef HAVE_THREAD_H
 #include <thread.h>
 #endif
+#ifdef HAVE_SCHED_H
+#include <sched.h>
+#endif
 
 #ifdef HAVE_MACH_TASK_INFO_H
 #include <mach/task_info.h>
@@ -185,14 +188,14 @@ void th_atfork_child(void);
  * threaded.
  */
 #define th_setconcurrency(X) 
-#ifdef HAVE_PTHREAD_YIELD
+#ifdef HAVE_SCHED_YIELD
+#define low_th_yield() sched_yield()
+#elif defined (HAVE_PTHREAD_YIELD)
 #define low_th_yield()	pthread_yield()
-#else
-#ifdef HAVE_PTHREAD_YIELD_NP
+#elif defined (HAVE_PTHREAD_YIELD_NP)
 /* Some pthread libs define yield as non-portable function. */
 #define low_th_yield()	pthread_yield_np()
-#endif /* HAVE_PTHREAD_YIELD_NP */
-#endif /* HAVE_PTHREAD_YIELD */
+#endif
 extern pthread_attr_t pattr;
 extern pthread_attr_t small_pattr;
 

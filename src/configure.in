@@ -4464,6 +4464,7 @@ AC_CHECK_FUNCS( \
  setpriority \
  usleep \
  nanosleep \
+ sched_yield \
  thr_yield \
  prctl \
  SetFilePointerEx \
