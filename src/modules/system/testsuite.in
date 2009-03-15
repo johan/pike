@@ -176,8 +176,8 @@ test_any( [[
   return mem->pread(13,6);
 ]], "\0hopp\0" )
 
-cond([[ System["__MMAP__"] ]],
-[[
+cond_begin([[ System["__MMAP__"] ]])
+
   test_any( [[
     object f=Stdio.File();
     f->open("testsuite1.mmap.tmp","wtc");
@@ -246,5 +246,7 @@ cond([[ System["__MMAP__"] ]],
     werror("warning: failed to mmap writeable file writeable\n");
     return "testprositsting";
   ]], "testprositsting" )
-]])
+
+cond_end // System["__MMAP__"]
+
 END_MARKER
