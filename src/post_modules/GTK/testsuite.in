@@ -1,6 +1,7 @@
+START_MARKER
 dnl $Id$
 
-dnl cond([[ master()->resolv("GTK")->setup_gtk ]],
-dnl [[
+dnl cond_begin([[ master()->resolv("GTK")->setup_gtk ]])
 dnl   test_do( GTK.setup_gtk("",1) )
-dnl ]])
+dnl cond_end
+END_MARKER
