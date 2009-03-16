@@ -32,6 +32,11 @@ protected Mapping.ShadowedMapping compat_all_constants =
 			    "sprintf": sprintf_76,
 			    "array_sscanf": array_sscanf_76,
 			    "master": master,
+#if constant(System.RegGetValue_76)
+			    "RegGetValue", System.RegGetValue_76,
+			    "RegGetKeyNames", System.RegGetKeyNames_76,
+			    "RegGetValues", System.RegGetValues_76,
+#endif
 			  ]), 1);
 
 mapping(string:mixed) all_constants()
