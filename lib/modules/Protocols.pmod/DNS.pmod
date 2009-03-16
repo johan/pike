@@ -761,6 +761,7 @@ class client
       }
     };
 #endif
+    res -= ({ UNDEFINED });
     return sizeof(res) ? res : ({ fallbackvalue });
   }
 
