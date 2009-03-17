@@ -819,7 +819,10 @@ rerun_rehash:
 	    if (oldhash[j].pixels)
 	    {
 	       mark=insert_in_hash(oldhash[j].color,hash,hashsize);
-	       if (!mark) goto rerun_rehash;
+	       if (!mark) {
+                   free(hash);
+                   goto rerun_rehash;
+               }
 	       mark->pixels=oldhash[j].pixels;
 	    }
 	 
@@ -863,7 +866,10 @@ rerun_mask:
 	 if (oldhash[j].pixels)
 	 {
 	    mark=insert_in_hash_mask(oldhash[j].color,hash,hashsize,rgb_mask);
-	    if (!mark) goto rerun_mask; /* increase mask level inst of hash */
+	    if (!mark) {
+                free( oldhash );
+                goto rerun_mask; /* increase mask level inst of hash */
+            }
 	    mark->pixels+=oldhash[j].pixels-1;
 	 }
 
