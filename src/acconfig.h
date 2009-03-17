@@ -442,6 +442,18 @@
 /* Define if you have struct sockaddr_in6 */
 #undef HAVE_STRUCT_SOCKADDR_IN6
 
+/* Define this if you have a struct iovec */
+#undef HAVE_STRUCT_IOVEC
+
+/* Define this if you have a struct msghdr */
+#undef HAVE_STRUCT_MSGHDR
+
+/* Define this if you have a struct msghdr with 'msg_control' member */
+#undef HAVE_STRUCT_MSGHDR_MSG_CONTROL
+
+/* Define this if you have a struct msghdr with 'msg_accrights' member */
+#undef HAVE_STRUCT_MSGHDR_MSG_ACCRIGHTS
+
 /* Define this to the max value of an unsigned short unless <limits.h> does.. */
 #undef USHRT_MAX
 
