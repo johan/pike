@@ -92,6 +92,14 @@ struct svalue;
 struct timeval;
 #endif
 
+#ifndef HAVE_STRUCT_IOVEC
+#define HAVE_STRUCT_IOVEC
+struct iovec {
+  void *iov_base;
+  size_t iov_len;
+};
+#endif /* !HAVE_STRUCT_IOVEC */
+
 #ifndef CONFIGURE_TEST
 /* machine.h doesn't exist if we're included from a configure test
  * program. In that case these defines will already be included. */
