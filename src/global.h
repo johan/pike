@@ -92,6 +92,12 @@ struct svalue;
 struct timeval;
 #endif
 
+#ifndef CONFIGURE_TEST
+/* machine.h doesn't exist if we're included from a configure test
+ * program. In that case these defines will already be included. */
+#include "machine.h"
+#endif
+
 #ifndef HAVE_STRUCT_IOVEC
 #define HAVE_STRUCT_IOVEC
 struct iovec {
@@ -99,12 +105,6 @@ struct iovec {
   size_t iov_len;
 };
 #endif /* !HAVE_STRUCT_IOVEC */
-
-#ifndef CONFIGURE_TEST
-/* machine.h doesn't exist if we're included from a configure test
- * program. In that case these defines will already be included. */
-#include "machine.h"
-#endif
 
 /* Some identifiers used as flags in the machine.h defines. */
 #define PIKE_YES	1
