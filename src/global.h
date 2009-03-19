@@ -98,14 +98,6 @@ struct timeval;
 #include "machine.h"
 #endif
 
-#ifndef HAVE_STRUCT_IOVEC
-#define HAVE_STRUCT_IOVEC
-struct iovec {
-  void *iov_base;
-  size_t iov_len;
-};
-#endif /* !HAVE_STRUCT_IOVEC */
-
 /* Some identifiers used as flags in the machine.h defines. */
 #define PIKE_YES	1
 #define PIKE_NO		2
@@ -510,6 +502,14 @@ static INLINE long PTRDIFF_T_TO_LONG(ptrdiff_t x)
 #else /* !__ECL */
 #define PTRDIFF_T_TO_LONG(x)       ((long)(x))
 #endif /* __ECL */
+
+#ifndef HAVE_STRUCT_IOVEC
+#define HAVE_STRUCT_IOVEC
+struct iovec {
+  void *iov_base;
+  size_t iov_len;
+};
+#endif /* !HAVE_STRUCT_IOVEC */
 
 #include "port.h"
 #include "dmalloc.h"
