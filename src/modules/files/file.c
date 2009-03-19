@@ -1108,14 +1108,17 @@ static void file__enable_callbacks(INT32 args)
 
   debug_check_internals (f);
 
-  if (FD >= 0 && !(fd_query_properties(FD, fd_CAN_NONBLOCK) & fd_CAN_NONBLOCK))
-    Pike_error("Callback operations not supported for this file.\n");
-
   for (ev = 0; ev < NELEM (f->event_cbs); ev++)
     if (!UNSAFE_IS_ZERO (&f->event_cbs[ev]))
       cb_events |= 1 << ev;
 
-  if (cb_events) ADD_FD_EVENTS (f, cb_events);
+  if (cb_events) {
+    if (FD >= 0 &&
+	!(fd_query_properties(FD, fd_CAN_NONBLOCK) & fd_CAN_NONBLOCK))
+      Pike_error("Callback operations not supported for this file.\n");
+
+    ADD_FD_EVENTS (f, cb_events);
+  }
 
   pop_n_elems(args);
   push_int(0);
