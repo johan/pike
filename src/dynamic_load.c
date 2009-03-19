@@ -108,7 +108,13 @@ static void *dlopen(const char *foo, int how)
 static char * dlerror(void)
 {
   static char buffer[200];
-  sprintf(buffer,"LoadLibrary failed with error: %d",GetLastError());
+  int err = GetLastError();
+  switch(err) {
+  case ERROR_MOD_NOT_FOUND:
+    return "The specified module could not be found.";
+  default:
+    sprintf(buffer,"LoadLibrary failed with error: %d",GetLastError());
+  }
   return buffer;
 }
 
