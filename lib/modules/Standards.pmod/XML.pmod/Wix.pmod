@@ -39,29 +39,6 @@ class WixNode
   }
 }
 
-class UninstallFile
-{
-  string id;
-  string name;
-
-  protected void create(string name, string id)
-  {
-    UninstallFile::name = name;
-    UninstallFile::id = id;
-  }
-
-  WixNode gen_xml()
-  {
-    mapping(string:string) attrs = ([
-      "Id":id,
-      "Name":name,
-      "LongName":name,
-      "On":"uninstall",
-    ]);
-    return WixNode("RemoveFile", attrs);
-  }
-}
-
 class RegistryEntry
 {
   string root;
@@ -290,6 +267,29 @@ class Directory
       IniFile::id = id;
       IniFile::name = name;
       IniFile::contents = contents;
+    }
+  }
+
+  class UninstallFile
+  {
+    string id;
+    string name;
+
+    protected void create(string name, string id)
+    {
+      UninstallFile::name = name;
+      UninstallFile::id = id;
+    }
+
+    WixNode gen_xml()
+    {
+      mapping(string:string) attrs = ([
+	"Id":id,
+	"Name":gen_8dot3(name),
+	"LongName":name,
+	"On":"uninstall",
+      ]);
+      return WixNode("RemoveFile", attrs);
     }
   }
 
