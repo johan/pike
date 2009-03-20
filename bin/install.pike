@@ -2808,6 +2808,7 @@ the PRIVATE_CRT stuff in install.pike.\n");
 #endif
 	low_install_file(unpack_master,
 			 combine_path(prefix, "build/master.pike"));
+#ifdef SUPPORT_WIX
       } else {
 #if 0
 	unpack_master = "unpack_master.pike";
@@ -2819,6 +2820,8 @@ the PRIVATE_CRT stuff in install.pike.\n");
 	low_install_file(combine_path(vars->SRCDIR,
 				      "../packaging/windows/pike.ico"),
 			 combine_path(prefix, "lib/pike.ico"));
+	root->uninstall_file("lib/master.pike");
+#endif /* SUPPORT_WIX */
       }
 
       low_install_file(combine_path(vars->TMP_BUILDDIR,"specs"),
