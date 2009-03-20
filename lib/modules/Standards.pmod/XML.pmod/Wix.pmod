@@ -153,8 +153,8 @@ class Directory
     string base;
     long_name = upper_case(long_name);
     if (long_name != (base = replace(long_name,
-				     " +,;=[]"/"",
-				     ({"", @("______"/"")})))) {
+				     " +-,;=[]"/"",
+				     ({"", @("_______"/"")})))) {
       truncated = 1;
     }
     array(string) segs = base/".";
