@@ -228,8 +228,7 @@ string encode_word( string|array(string) word, string encoding )
 protected string remap(array(string) item)
 {
   if (sizeof(item)>1 && item[1])
-    return master()->resolv("Locale")["Charset"]
-      ->decoder(item[1])->feed(item[0])->drain();
+    return Locale.Charset.decoder(item[1])->feed(item[0])->drain();
   else
     return item[0];
 }
@@ -241,8 +240,7 @@ protected array(string) reremap(string word, string|function(string:string) sele
     return ({ word,0 });
   string s = stringp(selector)? selector : selector(word);
   return s?
-    ({ master()->resolv("Locale")["Charset"]
-       ->encoder(s,replacement,repcb)->feed(word)->drain(), s }) :
+    ({ Locale.Charset.encoder(s,replacement,repcb)->feed(word)->drain(), s }) :
     ({ word,0 });
 }
 
