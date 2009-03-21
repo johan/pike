@@ -2380,7 +2380,7 @@ void f___handle_sprintf_format(INT32 args)
 	    /* Add the type where the fmt isn't sent to sprintf(). */
 	    type_stack_mark();
 	    for (arg = Pike_sp[-1].u.type; arg != tmp; arg = arg->cdr) {
-	      push_finished_type(arg->car);	      
+	      push_finished_type(arg->car);
 	    }
 	    push_type(T_VOID);			/* No more args */
 	    push_finished_type(tmp->cdr);	/* Return type */
