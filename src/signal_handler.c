@@ -1217,6 +1217,7 @@ static void report_child(int pid,
 	    add_ref(o);
 	    add_to_callback(&evaluator_callbacks, call_pid_status_callback,
 			    o, NULL);
+            wake_up_backend();
 	  }
 	  if(WIFSTOPPED(status)) {
 	    p->sig = WSTOPSIG(status);
