@@ -1178,11 +1178,7 @@ class Message {
 	    else
 	      error("invalid parameter %O in Content-Type %O (%O)\n",
 		    p[0], headers["content-type"], guess);
-	  params[ lower_case(p[0]) ] = map(p[2..],
-                                           lambda(string|int x) {
-                                             if(intp(x))
-                                               return sprintf("%c",x);
-                                             return x; })*"";
+	  params[ lower_case(p[0]) ] = quote(p[2..]);
 	}
       charset = lower_case(params["charset"] || charset);
       boundary = params["boundary"];
