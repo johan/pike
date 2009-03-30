@@ -1152,11 +1152,9 @@ class Message {
 	foreach( indices(hdrs), hname )
 	  headers[lower_case(hname)] = hdrs[hname];
       body_parts = parts;
-    } else if (message) {
-      array(mapping(string:string)|string) h = parse_headers(message);
-      headers = h[0];
-      encoded_data = h[1];
-    }
+    } else if (message)
+      [ headers, encoded_data ] = parse_headers(message);
+
     if (headers["content-type"]) {
       array(array(string|int)) arr =
 	tokenize(headers["content-type"]) / ({';'});
@@ -1180,7 +1178,11 @@ class Message {
 	    else
 	      error("invalid parameter %O in Content-Type %O (%O)\n",
 		    p[0], headers["content-type"], guess);
-	  params[ lower_case(p[0]) ] = p[2..]*"";
+	  params[ lower_case(p[0]) ] = map(p[2..],
+                                           lambda(string|int x) {
+                                             if(intp(x))
+                                               return sprintf("%c",x);
+                                             return x; })*"";
 	}
       charset = lower_case(params["charset"] || charset);
       boundary = params["boundary"];
