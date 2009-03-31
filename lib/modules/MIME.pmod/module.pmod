@@ -1229,8 +1229,12 @@ class Message {
 		error("invalid parameter %O in Content-Disposition\n", p[0]);
 	    string param = lower_case(p[0]);
 	    string val = p[2..]*"";
+	    
+	    //  Previous MSIE check might not always throw error, so perform
+	    //  additional test for "filename" parameter. We'll try to accept
+	    //  both local and UNC paths.
 	    if ((param == "filename") && guess && arr2 &&
-		!has_value(val, "/") && !has_value(val, "\\")) {
+		!has_value(val, "/") && !has_value(val[1..], "\\")) {
 	      // Check for MSIE.
 	      string val2;
 	      foreach(arr2, array(string|int) p2) {
