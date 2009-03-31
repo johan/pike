@@ -1178,7 +1178,18 @@ class Message {
 	    else
 	      error("invalid parameter %O in Content-Type %O (%O)\n",
 		    p[0], headers["content-type"], guess);
-	  params[ lower_case(p[0]) ] = quote(p[2..]);
+	  if (guess) {
+	    params[ lower_case(p[0]) ] =
+	      map(p[2..], lambda(string|int x) {
+			    return intp(x)?sprintf("%c",x):x;
+			  })*"";
+	  } else if (sizeof(filter(p[2..], intp))) {
+	    error("invalid quoting of parameter %O in Content-Type %O (%O)\n",
+		  p[0], headers["content-type"], guess);
+	  } else {
+	    // Note: Decoded quoting.
+	    params[ lower_case(p[0]) ] = p[2..]*"";
+	  }
 	}
       charset = lower_case(params["charset"] || charset);
       boundary = params["boundary"];
