@@ -1332,7 +1332,6 @@ OPCODE0_PTRJUMP(F_CATCH, "catch", I_UPDATE_ALL, {
 
   else {
     debug_malloc_touch_named (Pike_interpreter.catch_ctx, "(2)");
-    check_c_stack(8192);
 
     while (1) {
       /* Loop here every time an exception is caught. Once we've

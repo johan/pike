@@ -2240,7 +2240,9 @@ static int catching_eval_instruction (PIKE_OPCODE_T *pc)
 #endif
     return -3;
   }else{
-    int x = eval_instruction(pc);
+    int x;
+    check_c_stack(8192);
+    x = eval_instruction(pc);
     Pike_interpreter.catching_eval_jmpbuf = NULL;
 #ifdef PIKE_DEBUG
     pike_trace(3, "-    catching_eval_instruction(%p) ==> %d\n", pc, x);
