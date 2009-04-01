@@ -644,7 +644,8 @@ PIKECLASS string_iterator
 
   EXIT
     {
-      free_string(THIS->s);
+      if (THIS->s)
+	free_string(THIS->s);
     }
 };
 
