@@ -924,7 +924,8 @@ PIKECLASS string_iterator
   EXIT
     gc_trivial;
     {
-      free_string(THIS->s);
+      if (THIS->s)
+	free_string(THIS->s);
     }
 };
 
