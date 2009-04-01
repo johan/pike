@@ -7526,7 +7526,7 @@ PMOD_EXPORT void f_gethrvtime(INT32 args)
  *! It's system dependent whether or not this time is monotonic, i.e.
  *! if it's unaffected by adjustments of the calendaric clock in the
  *! system. @[System.REAL_TIME_IS_MONOTONIC] tells what it is. Pike
- *! tries to use monotonic time for this function if it's avaiable.
+ *! tries to use monotonic time for this function if it's available.
  *!
  *! @note
  *!   The actual accuracy on many systems is significantly less than
