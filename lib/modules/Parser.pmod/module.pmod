@@ -71,7 +71,7 @@ class SGML
 
       string _sprintf(int t,mapping m)
       {
-	 if (t=='O')
+	 if (t=='s')
 	 {
 	    string res=name;
 	    if (sizeof(args))
@@ -79,14 +79,27 @@ class SGML
 		  res+=sprintf(" %s=%O",i,v);
 
 	    res="<"+res+">";
-	    string i=" "*(m->indent);
-	    if (sizeof(data))
-	       foreach (data,SGMLatom a)
-		  res+=replace(sprintf("\n%O",a),
-			       "\n","\n"+i);
+	    if (m->indent > 50) {
+	      res += "...</" + name + ">";
+	    }
+	    else {
+	      string i=" "*(m->indent + 1);
+	      if (sizeof(data)) {
+		mapping sub_m = (["indent": m->indent + 1]);
+		foreach (data,string|SGMLatom a)
+		  if (stringp (a))
+		    res += sprintf ("\n%s%s", i, a);
+		  else
+		    res += "\n" + i + a->_sprintf ('O', sub_m);
+	      }
+	      res += "\n" + (" " * m->indent) + "</" + name + ">";
+	    }
 
-	    return "SGMLatom("+res+")";
+	    return res;
 	 }
+
+	 else if (t == 'O')
+	   return sprintf ("SGMLatom(size %d)", sizeof (data));
       }
    }
 
