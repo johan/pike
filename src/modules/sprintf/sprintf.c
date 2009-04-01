@@ -980,6 +980,10 @@ INLINE static int do_one(struct format_stack *fs,
  * the buffer in save_objectII.c
  */
 
+#if 0
+/* Looks to me like forgotten debug code. Anyway, we can't make this
+ * fatal since it might trig in _sprintf/sprintf recursions in pike
+ * code. /mast */
 #undef check_c_stack
 #define check_c_stack(X) do {                                           \
     ptrdiff_t x_= (((char *)&x_) - Pike_interpreter.stack_top) +	\
@@ -992,6 +996,7 @@ INLINE static int do_one(struct format_stack *fs,
                Pike_interpreter.c_stack_margin);                        \
   }                                                                     \
   }while(0)
+#endif
 
 
 static void low_pike_sprintf(struct format_stack *fs,
