@@ -46,6 +46,10 @@ void recurse(array(string) sources, string save_to, int post_process) {
 
   foreach(sources, string builddir) {
     Stdio.Stat stat = file_stat(builddir);
+    if (!stat) {
+      werror("File %O not found\n", builddir);
+      exit(1);
+    }
     if(stat->isdir) {
 
       if(builddir[-1]!='/') builddir += "/";
