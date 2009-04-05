@@ -73,8 +73,8 @@
 	 {
 	    string res=name;
 	    if (sizeof(args))
-	       foreach ( (array)args, [string i,string v])
-		  res+=sprintf(" %s=%O",i,v);
+	       foreach (args; string i; string v)
+		  res+=sprintf(" %s=%q",i,v);
 
 	    res="<"+res+">";
 	    if (m->indent > 50) {
@@ -97,7 +97,13 @@
 	 }
 
 	 else if (t == 'O')
-	   return sprintf ("SGMLatom(size %d)", sizeof (data));
+	   return sprintf ("SGMLatom(%s%s)",
+			   name,
+			   (args && sizeof (args) ?
+			    map ((array) args,
+				 lambda (array arg) {
+				   return sprintf (" %s=%q", arg[0], arg[1]);
+				 }) * "" : ""));
       }
    }
 
