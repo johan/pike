@@ -88,7 +88,7 @@
 		  if (stringp (a))
 		    res += sprintf ("\n%s%s", i, a);
 		  else
-		    res += "\n" + i + a->_sprintf ('O', sub_m);
+		    res += "\n" + i + a->_sprintf ('s', sub_m);
 	      }
 	      res += "\n" + (" " * m->indent) + "</" + name + ">";
 	    }
