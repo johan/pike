@@ -1063,6 +1063,96 @@ void low_rb_unlink_without_move (struct rb_node_hdr **root,
 }
 #endif
 
+/* Constructs a stack from the given root down to the given node. The
+ * stack is constructed at *rbstack_ptr, and it's updated so that the
+ * node is on its top on return. The given root must be the root of
+ * the tree - no thread pointers may point to nodes above it.
+ *
+ * Note that this operation isn't very cheap - it uses the thread
+ * pointers to work itself upwards which means it might be more than
+ * O(log n), but it should be less than O(n). */
+void low_rb_build_stack (struct rb_node_hdr *root, struct rb_node_hdr *node,
+			 struct rbstack_ptr *rbstack_ptr)
+{
+  struct rb_node_hdr *thr_ptr_prev, *thr_ptr_next;
+
+  if (root == node) {
+    RBSTACK_PUSH (*rbstack_ptr, node);
+    return;
+  }
+
+  thr_ptr_prev = node;
+  while (1) {
+    if (thr_ptr_prev->flags & RB_THREAD_PREV) {
+      thr_ptr_prev = thr_ptr_prev->prev;
+      break;
+    }
+    thr_ptr_prev = thr_ptr_prev->prev;
+  }
+
+  thr_ptr_next = node;
+  while (1) {
+    if (thr_ptr_next->flags & RB_THREAD_NEXT) {
+      thr_ptr_next = thr_ptr_next->next;
+      break;
+    }
+    thr_ptr_next = thr_ptr_next->next;
+  }
+
+  /* One of the thread pointers is always the direct parent of the
+   * node, and the other is higher up in the stack along a well
+   * defined path: If thr_ptr_prev is the direct parent then
+   * thr_ptr_prev->next == node, and both thr_ptr_prev and node are
+   * always found by following next pointers from thr_ptr_next->prev. */
+
+  if (thr_ptr_prev && thr_ptr_prev->next == node) {
+    struct rb_node_hdr *p;
+
+    if (thr_ptr_next) {
+      low_rb_build_stack (root, thr_ptr_next, rbstack_ptr);
+      p = thr_ptr_next->prev;
+    }
+    else
+      p = root;
+
+    RBSTACK_PUSH (*rbstack_ptr, p);
+    do {
+      p = p->next;
+#ifdef PIKE_DEBUG
+      if (!p) rb_fatal (root, "Got corrupt thread pointers from %p, "
+			"or the tree doesn't contain it.\n", node);
+#endif
+      RBSTACK_PUSH (*rbstack_ptr, p);
+    } while (p != node);
+  }
+
+  else {
+    struct rb_node_hdr *p;
+
+#ifdef PIKE_DEBUG
+    if (!thr_ptr_next || thr_ptr_next->prev != node)
+      rb_fatal (root, "Got corrupt thread pointers from %p.\n", node);
+#endif
+
+    if (thr_ptr_prev) {
+      low_rb_build_stack (root, thr_ptr_prev, rbstack_ptr);
+      p = thr_ptr_prev->next;
+    }
+    else
+      p = root;
+
+    RBSTACK_PUSH (*rbstack_ptr, p);
+    do {
+      p = p->prev;
+#ifdef PIKE_DEBUG
+      if (!p) rb_fatal (root, "Got corrupt thread pointers from %p, "
+			"or the tree doesn't contain it.\n", node);
+#endif
+      RBSTACK_PUSH (*rbstack_ptr, p);
+    } while (p != node);
+  }
+}
+
 #ifdef ENABLE_UNUSED_RB_FUNCTIONS
 /* These functions are disabled since they aren't used from anywhere.
  * If you like to use them, just let me know (they are tested). /mast */

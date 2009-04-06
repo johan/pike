@@ -166,7 +166,7 @@ void low_rb_unlink_without_move (struct rb_node_hdr **root,
 				 struct rbstack_ptr *rbstack_ptr,
 				 int keep_rbstack);
 void low_rb_build_stack (struct rb_node_hdr *root, struct rb_node_hdr *node,
-			 struct rbstack_ptr *rbstack);
+			 struct rbstack_ptr *rbstack_ptr);
 
 #if defined (PIKE_DEBUG) || defined (TEST_MULTISET)
 
