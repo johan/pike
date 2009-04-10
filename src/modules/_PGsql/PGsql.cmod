@@ -398,7 +398,6 @@ outofmem: Pike_fatal("Out of memory\n");
 	      push_string(low_getstring(collen));
 	      break;
 	    case TEXTOID:
-	    case XMLOID:
 	    case BPCHAROID:
 	    case VARCHAROID:
 	      push_string(low_getstring(collen));
