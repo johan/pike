@@ -2552,13 +2552,13 @@ PMOD_EXPORT ptrdiff_t string_builder_quote_string(struct string_builder *buf,
       /* Printable character or DEL. */
       if (ch == '\177') {
 	/* DEL */
-	string_builder_binary_strcat(buf, "\\177", 4);
-	goto next;
+	goto ctrl_char;
       } else if ((ch == '"') || (ch == '\\')) {
 	string_builder_putchar(buf, '\\');
       }
       string_builder_putchar(buf, ch);
     } else {
+    ctrl_char:
       p_wchar2 next_ch;
       /* Control character. */
       string_builder_putchar(buf, '\\');
