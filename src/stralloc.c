@@ -2558,8 +2558,8 @@ PMOD_EXPORT ptrdiff_t string_builder_quote_string(struct string_builder *buf,
       }
       string_builder_putchar(buf, ch);
     } else {
-    ctrl_char:
       p_wchar2 next_ch;
+    ctrl_char:
       /* Control character. */
       string_builder_putchar(buf, '\\');
       if ((ch > 6) && (ch < 14)) {
