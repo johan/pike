@@ -36,11 +36,13 @@ src/modules/Gmp/mpq.c
 src/modules/Kerberos/kerberos.c
 src/modules/Math/transforms.c
 src/modules/Parser/xml.c
+src/modules/_PGsql/PGsql.c
 src/modules/_Charset/gb18030.h
 src/modules/_Charset/gbk_tables.h
 src/modules/_Regexp_PCRE/pcre_glue.c
 src/modules/system/add-errnos.h
 src/post_modules/Bz2/libbzip2mod.c
+src/post_modules/GSSAPI/gssapi.c
 src/post_modules/Nettle/cipher.c
 src/post_modules/Nettle/hash.c
 src/post_modules/Nettle/nettle.c
