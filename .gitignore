@@ -58,5 +58,3 @@ src/post_modules/Unicode/wordbits.h
 src/post_modules/_ADT/adt.c
 src/post_modules/_ADT/circular_list.c
 src/post_modules/_ADT/sequence.c
-src/modules/_PGsql/PGsql.c
-src/post_modules/GSSAPI/gssapi.c
