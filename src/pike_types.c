@@ -3976,6 +3976,7 @@ static int low_pike_types_le2(struct pike_type *a, struct pike_type *b,
 #ifdef TYPE_GROUPING
     if (!ret != !(flags & LE_B_GROUPED)) {
       if ((a->flags | b->flags) & PT_FLAG_ASSIGN) {
+	/* Note: Needed for side effects... */
 	low_pike_types_le(a, b->cdr, array_cnt, flags);
       }
       return ret;
