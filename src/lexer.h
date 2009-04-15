@@ -597,8 +597,6 @@ static int low_yylex(struct lex *lex, YYSTYPE *yylval)
 	    return TOK_DEPRECATED_ID;
 	  if(ISWORD("__func__"))
 	    return TOK_FUNCTION_NAME;
-	  if(ISWORD("__OOB__"))
-	    break;
 	  /* Allow triple (or more) underscore for the user, and make sure we
 	   * don't get false matches below for wide strings.
 	   */
@@ -622,7 +620,21 @@ static int low_yylex(struct lex *lex, YYSTYPE *yylval)
 #endif /* SHIFT == 1 */
 #endif /* SHIFT == 0 */
 	    yylval->n=mkstrnode(tmp);
-	    free_string(tmp);
+	    /* - But only for lower case US-ASCII.
+	     * - Upper case is used for symbols intended for #if constant().
+	     */
+	    if (tmp->size_shift) {
+	      free_string(tmp);	    
+	      return TOK_IDENTIFIER;
+	    }
+	    while(len--) {
+	      int c = tmp->str[len];
+	      if ((c >= 'A') && (c <= 'Z')) {
+		free_string(tmp);
+		return TOK_IDENTIFIER;
+	      }
+	    }
+	    free_string(tmp);	    
 	  }
 	  return TOK_RESERVED;
 	}
