@@ -440,7 +440,7 @@ protected ZeroWrapper zero = ZeroWrapper();
 //!   The arguments following the query.
 //!
 //! @returns
-//!   Returns an arrsy with two elements:
+//!   Returns an array with two elements:
 //!   @array
 //!     @elem string 0
 //!       The query altered to use bindings-syntax.
