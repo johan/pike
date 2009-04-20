@@ -3788,7 +3788,7 @@ int main(int argc, char **argv)
   PIKE_AC_DEBUG
 
   AC_CHECK_FUNCS(pthread_init pthread_mutexattr_init pthread_kill \
-                 pthread_cond_reltimedwait_np)
+                 pthread_cond_reltimedwait_np pthread_mach_thread_np)
 
   AC_MSG_CHECKING(posix threads)
 
