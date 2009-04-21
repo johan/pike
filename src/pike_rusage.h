@@ -129,8 +129,7 @@
 #elif defined (MIGHT_HAVE_POSIX_MONOTONIC_GRT)
 #  define GRT_RUNTIME_CHOICE
 #elif defined (HAVE_HOST_GET_CLOCK_SERVICE)
-/* Define GRT_RUNTIME_CHOICE to allow MIGHT_HAVE_POSIX_MONOTONIC_GRT
- * to take precedence at runtime, if it would become possible. */
+/* Define this to avoid special cases in init_rusage. */
 #  define GRT_RUNTIME_CHOICE
 #elif defined (HAVE_POSIX_REALTIME_GRT)
 #  define real_time_is_monotonic 0
