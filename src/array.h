@@ -261,7 +261,7 @@ PMOD_EXPORT struct array *implode_array(struct array *a, struct array *b);
 #define AGGR_ARR_EPILOGUE(base_sval) do {				\
     ptrdiff_t diff__ = Pike_sp - base_sval;				\
     if (!diff__) {							\
-      if (base_sval[-1].u.array->size) {				\
+      if (!base_sval[-1].u.array->size) {				\
 	free_array (base_sval[-1].u.array);				\
 	add_ref (base_sval[-1].u.array = &empty_array);			\
       }									\
