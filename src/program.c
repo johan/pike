@@ -6192,7 +6192,7 @@ int store_constant(struct svalue *foo,
       if (foo->type == c->sval.type) {
 	/* Make sure only to compare within the same basic type. */
 	if (foo->type == T_OBJECT) {
-	  /* Special case objects -- We don't want stange LFUN effects... */
+	  /* Special case objects -- We don't want strange LFUN effects... */
 	  if ((foo->u.object == c->sval.u.object) &&
 	      (foo->subtype == c->sval.subtype)) {
 	    UNSETJMP(jmp);
@@ -6200,7 +6200,9 @@ int store_constant(struct svalue *foo,
 	  }
 	} else if (foo->type == T_INT) {
 	  if (foo->u.integer == c->sval.u.integer) {
-	    if (foo->u.integer || (foo->subtype == c->sval.subtype)) {
+	    /* Make sure UNDEFINED is kept (but not in compat mode). */
+	    if (foo->u.integer || (foo->subtype == c->sval.subtype) ||
+		TEST_COMPAT(7, 6)) {
 	      UNSETJMP(jmp);
 	      return e;
 	    }
@@ -7007,6 +7009,11 @@ PMOD_EXPORT struct pike_string *get_identifier_line(struct program *p,
  * NOTE: The format string fmt (and vargs) is only formatted with
  *       string_builder_vsprintf() if the number of extra
  *       Pike stack arguments (args) is zero.
+ *
+ * NOTE: This function may be called from functions that sometimes
+ *       execute outside of the compilation context, eg by
+ *       __handle_sprintf_format(), which can be called directly
+ *       by Pike-code, in which case it is a NO-OP.
  */
 PMOD_EXPORT void va_yyreport(int severity_level,
 			     struct pike_string *file, INT32 line,
