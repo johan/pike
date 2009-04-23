@@ -1634,7 +1634,7 @@ static void low_pike_sprintf(struct format_stack *fs,
 #if SIZEOF_FLOAT_TYPE > 4
 	    /* Some paranoia in case libc doesn't handle
 	     * conversion to denormalized floats. */
-	    if (f != 0.0) {
+	    if ((f != 0.0) || (tf == 0.0)) {
 #endif
 #ifdef FLOAT_IS_IEEE_BIG
 	      MEMCPY(x, &f, 4);
