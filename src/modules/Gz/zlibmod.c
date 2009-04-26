@@ -790,10 +790,10 @@ static void gz_uncompress(INT32 args)
  *!
  *! @example
  *! // whole file
- *! write(Gz_inflate()->inflate(stdin->read(0x7fffffff));
+ *! write(Gz.inflate()->inflate(stdin->read(0x7fffffff));
  *!
  *! // streaming (blocks)
- *! function inflate=Gz_inflate()->inflate;
+ *! function inflate=Gz.inflate()->inflate;
  *! while(string s=stdin->read(8192))
  *!   write(inflate(s));
  *!
