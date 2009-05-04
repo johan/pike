@@ -464,6 +464,7 @@ class Directory
       WixNode component = WixNode("Component", ([
 				    "Id": get_component_id(),
 				    "Guid":guid->str(),
+				    "DiskId":"1",
 				  ]) +
 				  (contains_dlls ? ([
 				    "SharedDllRefCount":"yes"
