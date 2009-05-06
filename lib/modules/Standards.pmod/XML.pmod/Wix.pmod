@@ -432,7 +432,7 @@ class Directory
     }
   }
 
-  WixNode gen_xml(string|void parent)
+  WixNode gen_xml(string|void parent, string|void disk_id)
   {
     if (!parent) parent = "";
     parent += "/" + name;
@@ -458,14 +458,16 @@ class Directory
 	add_child(line_feed);
     }
     foreach(sub_dirs;; object(Directory)|Merge d) {
-      root->add_child(d->gen_xml(parent))->add_child(line_feed);
+      root->add_child(d->gen_xml(parent, disk_id))->add_child(line_feed);
     }
     if (sizeof(files) || sizeof(other_entries)) {
       WixNode component = WixNode("Component", ([
 				    "Id": get_component_id(),
 				    "Guid":guid->str(),
-				    "DiskId":"1",
 				  ]) +
+				  (disk_id ? ([
+				    "DiskId":disk_id
+				  ]):([])) +
 				  (contains_dlls ? ([
 				    "SharedDllRefCount":"yes"
 				  ]):([])), "\n");
