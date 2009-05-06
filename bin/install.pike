@@ -2341,7 +2341,7 @@ an extra CRT instance.\n");
 					    "Id":"1",
 					  ])))->
 			add_child(line_feed)->
-			add_child(root->gen_xml())->
+			add_child(root->gen_xml(UNDEFINED, "1"))->
 			add_child(line_feed)->
 			add_child(feature_node)->
 			add_child(line_feed)->
