@@ -109,6 +109,7 @@ typedef HSTMT	SQLHSTMT;
 
 struct field_info {
   SWORD type;
+  SQLULEN size;
 };
 
 struct precompiled_odbc {
