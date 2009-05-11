@@ -587,11 +587,36 @@ static void f_fetch_row(INT32 args)
        * always supported for all data types (eg for INTEGER/MSSQL),
        * where we instead use the width returned by SQLDescribeCol()
        * earlier.
+       *
+       * Note also that FreeTDS/UnixODBC apparently has both a broken
+       * SQLDescribeCol() (which returns the SQL_C_BINARY size for
+       * eg INTEGER even if SQL_C_CHAR has been requested, and a
+       * SQLGetData() which doesn't properly support streamed fetching.
+       *
+       * We solve this by performing SQLGetData with zero size, and
+       * using the result if it succeeded, using the SQLDescribeCol()
+       * size if not zero, and otherwise throw an error.
        */
 
-      if (!len) {
-	ODBC_ALLOW();
+      ODBC_ALLOW();
 
+#ifdef ODBC_DEBUG
+      fprintf(stderr, "ODBC:fetch_row(): Field %d: "
+	      "SQLGetData(X, %d, %d, X, 0, X)...\n",
+	      i + 1, i+1, field_type);
+#endif /* ODBC_DEBUG */
+      code = SQLGetData(hstmt, (SQLUSMALLINT)(i+1),
+			field_type, dummy_buf, 0, &len);
+#ifdef SQL_WCHAR
+      if (code == SQL_NULL_DATA && (field_type == SQL_C_WCHAR)) {
+	/* Kludge for FreeTDS which doesn't support WCHAR.
+	 * Refetch as a normal char.
+	 */
+#ifdef ODBC_DEBUG
+	fprintf(stderr, "ODBC:fetch_row(): Field %d: WCHAR not supported.\n",
+		i + 1);
+#endif /* ODBC_DEBUG */
+	field_type = SQL_C_CHAR;
 #ifdef ODBC_DEBUG
 	fprintf(stderr, "ODBC:fetch_row(): Field %d: "
 		"SQLGetData(X, %d, %d, X, 0, X)...\n",
@@ -599,46 +624,28 @@ static void f_fetch_row(INT32 args)
 #endif /* ODBC_DEBUG */
 	code = SQLGetData(hstmt, (SQLUSMALLINT)(i+1),
 			  field_type, dummy_buf, 0, &len);
-#ifdef SQL_WCHAR
-	if (code == SQL_NULL_DATA && (field_type == SQL_C_WCHAR)) {
-	  /* Kludge for FreeTDS which doesn't support WCHAR.
-	   * Refetch as a normal char.
-	   */
-#ifdef ODBC_DEBUG
-	  fprintf(stderr, "ODBC:fetch_row(): Field %d: WCHAR not supported.\n",
-		  i + 1);
-#endif /* ODBC_DEBUG */
-	  field_type = SQL_C_CHAR;
-#ifdef ODBC_DEBUG
-	  fprintf(stderr, "ODBC:fetch_row(): Field %d: "
-		  "SQLGetData(X, %d, %d, X, 0, X)...\n",
-		  i + 1, i+1, field_type);
-#endif /* ODBC_DEBUG */
-	  code = SQLGetData(hstmt, (SQLUSMALLINT)(i+1),
-			    field_type, dummy_buf, 0, &len);
-	}
-#endif
-
-#ifdef ODBC_DEBUG
-	fprintf(stderr, "ODBC:fetch_row(): Field %d: "
-		"SQLGetData(X, %d, %d, X, 0, X, X) ==> code: %d, len: %ld.\n",
-		i + 1,
-		i+1, field_type, code, len);
-#endif /* ODBC_DEBUG */
-
-	ODBC_DISALLOW();
-
-#ifdef SQL_WCHAR
-	/* In case the type got changed in the kludge above. */
-	PIKE_ODBC_RES->field_info[i].type = field_type;
-#endif
-#ifdef ODBC_DEBUG
-      } else {
-	fprintf(stderr, "ODBC:fetch_row(): Field %d: "
-		"field_type: %d, len: %ld.\n",
-		i + 1, field_type, len);
-#endif /* ODBC_DEBUG */
       }
+#endif
+
+#ifdef ODBC_DEBUG
+      fprintf(stderr, "ODBC:fetch_row(): Field %d: "
+	      "SQLGetData(X, %d, %d, X, 0, X, X) ==> code: %d, len: %ld.\n",
+	      i + 1,
+	      i+1, field_type, code, len);
+#endif /* ODBC_DEBUG */
+
+      ODBC_DISALLOW();
+
+#ifdef SQL_WCHAR
+      /* In case the type got changed in the kludge above. */
+      PIKE_ODBC_RES->field_info[i].type = field_type;
+#endif
+
+#ifdef ODBC_DEBUG
+      fprintf(stderr, "ODBC:fetch_row(): Field %d: "
+	      "field_type: %d, len: %ld, code: %d.\n",
+	      i + 1, field_type, len, code);
+#endif /* ODBC_DEBUG */
 
       if (code == SQL_NO_DATA_FOUND) {
 	/* All data already returned. */
@@ -648,8 +655,10 @@ static void f_fetch_row(INT32 args)
 	push_empty_string();
 	continue;
       }
-      odbc_check_error("odbc->fetch_row", "SQLGetData() failed",
-		       code, NULL, NULL);
+      if (!len) {
+	odbc_check_error("odbc->fetch_row", "SQLGetData() failed",
+			 code, NULL, NULL);
+      }
       if (len == SQL_NULL_DATA) {
 #ifdef ODBC_DEBUG
 	fprintf(stderr, "ODBC:fetch_row(): NULL\n");
