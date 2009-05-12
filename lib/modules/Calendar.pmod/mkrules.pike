@@ -691,12 +691,22 @@ void collect_rules(string file)
 
 int main(int ac,array(string) am)
 {
-   if (sizeof(am)<1)
+   array(string) files = am[1..];
+   if (!sizeof(files))
    {
-      werror("USAGE: %s datafile [datafile ...]\n",am[0]);
-      return 1;
+      werror("defaulting to reading zonefiles from %s...",
+	     combine_path(__FILE__, "../tzdata"));
+      files = get_dir(combine_path(__FILE__, "../tzdata"));
+      files = map(sort(files),
+		  lambda(string fname) {
+		    if ((< "CVS", "factory", "leapseconds", >)[fname] ||
+			has_prefix(fname, "solar") ||
+			has_suffix(fname, ".sh") ||
+			has_suffix(fname, ".tab")) return 0;
+		    return combine_path(__FILE__, "../tzdata", fname);
+		  }) - ({ 0 });
    }
-   map(am[1..],collect_rules);
+   map(files, collect_rules);
 
    write("thinking...\n");
 
