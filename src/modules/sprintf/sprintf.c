@@ -222,7 +222,7 @@
  *!
  *! @example
  *! @code
- *! Pike v7.4 release 13 running Hilfe v3.5 (Incremental Pike Frontend)
+ *! Pike v7.8 release 236 running Hilfe v3.5 (Incremental Pike Frontend)
  *! > sprintf("The unicode character %c has character code %04X.", 'A', 'A');
  *! (1) Result: "The unicode character A has character code 0041."
  *! > sprintf("#%@@02X is the HTML code for purple.", Image.Color.purple->rgb());
@@ -314,6 +314,9 @@
  *! > write("%|*s\n",screen_width, "THE END");
  *!                                THE END
  *! (14) Result: 71
+ *! > write("%|*s\n", ([ "width":screen_width ]), "ALTERNATIVE END");
+ *!                            ALTERNATIVE END
+ *! (15) Result: 71
  *! @endcode
  *!
  *! @seealso
