@@ -1426,9 +1426,9 @@ static void low_pike_sprintf(struct format_stack *fs,
         else if(fs->fsp->flags&ZERO_PAD)
           sprintf_error(fs, "Length of string to %%H is 0.\n");
 
-	/* Note: Workaround for optimizer bug in gcc/ia32, where
-	 *       (tmp>>(l*8)) is a noop for l = 4. */
-        if( (tmp>>((l-1)*8)) & ~0xff )
+	/* Note: The >>-operator performs an implicit % (sizeof(tmp)*8)
+	 *       on the shift operand on some architectures. */
+        if( (l < sizeof(tmp)) && (tmp>>(l*8)))
 	  sprintf_error(fs, "Length of string to %%%"PRINTPTRDIFFT"dH "
 			"too large.\n", l);
 
