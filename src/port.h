@@ -139,6 +139,14 @@ time_t TIME(time_t *);
 #  define TIME time
 #endif
 
+#ifndef HAVE_SNPRINTF
+#ifdef HAVE__SNPRINTF
+/* In WIN32 snprintf is known as _snprintf... */
+#define snprintf _snprintf
+#define HAVE_SNPRINTF
+#endif
+#endif
+
 #ifndef HAVE_RINT
 #define rintf(X) floorf ((X) + 0.5)
 #define rint(X) floor( (X) + 0.5 )
