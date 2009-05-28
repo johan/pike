@@ -647,9 +647,9 @@ void udp_read(INT32 args)
   push_string( make_shared_binary_string(buffer, res) );
 
   push_constant_text("ip");
-#ifdef HAVE_INET_NTOP
-  push_text( inet_ntop( SOCKADDR_FAMILY(from), SOCKADDR_IN_ADDR(from),
-			buffer, sizeof(buffer) ) );
+#ifdef fd_inet_ntop
+  push_text( fd_inet_ntop( SOCKADDR_FAMILY(from), SOCKADDR_IN_ADDR(from),
+			   buffer, sizeof(buffer) ) );
 #else
   push_text( inet_ntoa( *SOCKADDR_IN_ADDR(from) ) );
 #endif
@@ -959,9 +959,9 @@ static void udp_query_address(INT32 args)
     return;
   }
 
-#ifdef HAVE_INET_NTOP
-  inet_ntop(SOCKADDR_FAMILY(addr), SOCKADDR_IN_ADDR(addr),
-	    buffer, sizeof(buffer)-20);
+#ifdef fd_inet_ntop
+  fd_inet_ntop(SOCKADDR_FAMILY(addr), SOCKADDR_IN_ADDR(addr),
+	       buffer, sizeof(buffer)-20);
 #else
   q=inet_ntoa(*SOCKADDR_IN_ADDR(addr));
   strncpy(buffer,q,sizeof(buffer)-20);

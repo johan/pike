@@ -3995,9 +3995,9 @@ static void file_query_address(INT32 args)
     return;
   }
 
-#ifdef HAVE_INET_NTOP
-  if(!inet_ntop(SOCKADDR_FAMILY(addr), SOCKADDR_IN_ADDR(addr),
-		buffer, sizeof(buffer)-20))
+#ifdef fd_inet_ntop
+  if(!fd_inet_ntop(SOCKADDR_FAMILY(addr), SOCKADDR_IN_ADDR(addr),
+		   buffer, sizeof(buffer)-20))
   {
     ERRNO=errno;
     push_int(0);
