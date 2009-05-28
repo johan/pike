@@ -430,11 +430,11 @@ void f_aap_index_op(INT32 args)
 
   if(s == s_remoteaddr)
   {
-#ifdef HAVE_INET_NTOP
+#ifdef fd_inet_ntop
     char buffer[64];
-    push_text(inet_ntop(SOCKADDR_FAMILY(THIS->request->from),
-			SOCKADDR_IN_ADDR(THIS->request->from),
-			buffer, sizeof(buffer)) );
+    push_text(fd_inet_ntop(SOCKADDR_FAMILY(THIS->request->from),
+			   SOCKADDR_IN_ADDR(THIS->request->from),
+			   buffer, sizeof(buffer)) );
 #else
     push_text(inet_ntoa(*SOCKADDR_IN_ADDR(THIS->request->from)));
 #endif
