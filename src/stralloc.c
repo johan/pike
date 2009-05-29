@@ -1571,6 +1571,7 @@ PMOD_EXPORT struct pike_string *modify_shared_string(struct pike_string *a,
 	add_ref(a = old);
       } else {
 	link_pike_string(a, a->hval);
+	add_ref(a);
       }
       return a;
     }else{
