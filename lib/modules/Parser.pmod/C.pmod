@@ -65,6 +65,7 @@ array(string) split(string data, void|mapping state)
 	  pos=search(data,"\n",pos+1);
 	break;
 
+      case '`':
       case 'a'..'z':
       case 'A'..'Z':
       case 128..65536: // Lets simplify things for now...
@@ -74,6 +75,7 @@ array(string) split(string data, void|mapping state)
 	  switch(data[pos])
 	  {
            case '$': // allowed in some C (notably digital)
+	   case '`':
            case 'a'..'z':
            case 'A'..'Z':
            case '0'..'9':
@@ -138,9 +140,6 @@ array(string) split(string data, void|mapping state)
 
       default:
 	error("Unknown token %O\n",data[pos..pos+20]);
-
-      case  '`':
-	while(data[pos]=='`') data[pos]++;
 
       case '\\': pos++; continue; /* IGNORED */
 
