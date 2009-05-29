@@ -36,6 +36,7 @@ array(string) split(string data)
 	while(data[pos-1]=='\\') pos=search(data,"\n",pos+1);
 	break;
 
+      case '`':
       case 'a'..'z':
       case 'A'..'Z':
       case 128..65536: // Lets simplify things for now...
@@ -45,6 +46,7 @@ array(string) split(string data)
 	  switch(data[pos])
 	  {
            case '$': // allowed in some C (notably digital)
+	   case '`':
            case 'a'..'z':
            case 'A'..'Z':
            case '0'..'9':
@@ -108,9 +110,6 @@ array(string) split(string data)
 
       default:
 	error("Unknown token %O\n",data[pos..pos+20]);
-
-      case  '`':
-	while(data[pos]=='`') data[pos]++;
 
       case '\\': pos++; continue; /* IGNORED */
 
