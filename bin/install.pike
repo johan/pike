@@ -2107,7 +2107,7 @@ int pre_install(array(string) argv)
       exec_prefix=combine_path(prefix,"bin");
       lib_prefix=combine_path(prefix,"lib");
       doc_prefix=combine_path(prefix,"doc");
-      include_prefix=vars->include_prefix||combine_path(prefix,"include","pike");
+      include_prefix=combine_path(prefix,"include","pike");
       man_prefix=combine_path(prefix,"share/man");
       if (export) {
 	low_install_file(combine_path(vars->TMP_BINDIR,"install.pike"),
