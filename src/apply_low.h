@@ -144,7 +144,7 @@
 #endif
 
 
-      new_frame->expendible =new_frame->locals = Pike_sp - args;
+      new_frame->expendible = new_frame->locals = Pike_sp - args;
       new_frame->args = args;
       new_frame->pc = 0;
 #ifdef SCOPE
@@ -167,6 +167,7 @@
 #endif
 #ifdef PIKE_DEBUG      
       if (Pike_fp) {
+
 	if (new_frame->locals < Pike_fp->locals) {
 	  fatal("New locals below old locals: %p < %p\n",
 		new_frame->locals, Pike_fp->locals);
@@ -311,7 +312,7 @@
 
 	if(function->identifier_flags & IDENTIFIER_SCOPE_USED)
 	  new_frame->expendible+=num_locals;
-	
+
 	num_args = READ_INCR_BYTE(pc);
 
 #ifdef PIKE_DEBUG
