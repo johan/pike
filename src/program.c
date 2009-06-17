@@ -6963,6 +6963,7 @@ PMOD_EXPORT struct pike_string *low_get_function_line (struct object *o,
   if (o->prog) {
     struct program *p;
     struct identifier *id;
+    struct pike_string *ret;
     while (1) {
       struct external_variable_context loc;
       struct reference *idref = o->prog->identifier_references + fun;
@@ -6976,8 +6977,13 @@ PMOD_EXPORT struct pike_string *low_get_function_line (struct object *o,
       fun = id->func.ext_ref.id + loc.inherit->identifier_level;
       o = loc.o;
     }
-    if (IDENTIFIER_IS_PIKE_FUNCTION(id->identifier_flags))
+    if (IDENTIFIER_IS_PIKE_FUNCTION(id->identifier_flags) &&
+	(id->func.offset != -1))
       return low_get_line (p->program + id->func.offset, p, linep);
+    if ((ret = get_identifier_line(p, fun, linep))) {
+      add_ref(ret);
+      return ret;
+    }
     return low_get_program_line(o->prog, linep);
   }
   *linep = 0;
