@@ -2135,7 +2135,7 @@ void fixate_program(void)
 	(p->identifiers[i].run_time_type == T_MIXED)) {
       /* Get rid of the remaining tentative type marker. */
       /* FIXME: Should probably never be reachable.
-       *        Consider a fatal?
+       *        Consider this a fatal?
        */
       p->identifiers[i].run_time_type = T_FUNCTION;
     }
@@ -2185,7 +2185,12 @@ void fixate_program(void)
 
 	if(fun->name==funb->name)
 	{
-	  found_better=t;
+	  if (!(funpb->id_flags & ID_PROTECTED)) {
+	    /* Only regard this symbol as better if it
+	     * will end up in the index further below.
+	     */
+	    found_better=t;
+	  }
 
 	  /* FIXME: Is this stuff needed?
 	   *        It looks like it already is done by define_function().
