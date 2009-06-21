@@ -835,6 +835,24 @@ test_any_equal([[
        "C", ({ "get_a", "get_b", "get_c" }),
        "D", ({ "get_a", "get_b", "get_c", "get_d" }) }))
 
+test_any([[
+  // Test multiple inherit of same symbol,
+  // where later symbol is protected.
+  class A { constant foo = 1; };
+  class B { constant foo = 2; };
+  class C { inherit A; protected inherit B; };
+  return C()->foo;
+]], 1)
+
+test_any([[
+  // Test multiple inherit of same symbol,
+  // where later symbol is protected.
+  class A { constant foo = 1; };
+  class B { protected constant foo = 2; };
+  class C { inherit A; inherit B; };
+  return C()->foo;
+]], 1)
+
 test_any_equal([[
   // Test that extern works as intended.
   class A { extern mixed foo; };
