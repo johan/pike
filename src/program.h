@@ -573,6 +573,13 @@ struct parent_info
   INT16 parent_identifier;
 };
 
+/* Single entry cache for object indexing. */
+struct identifier_lookup_cache
+{
+  INT32 program_id;
+  INT32 identifier_id;
+};
+
 struct program
 {
   PIKE_MEMORY_OBJECT_MEMBERS; /* Must be first */
@@ -625,9 +632,11 @@ struct program
 #ifdef PIKE_DEBUG
 static INLINE int CHECK_IDREF_RANGE (int x, const struct program *p)
 {
-  if (x < 0 || x >= p->num_identifier_references)
+  if (x < 0 || x >= p->num_identifier_references) {
+    dump_program_tables(p);
     debug_fatal ("Identifier reference index %d out of range 0..%d\n", x,
 		 p->num_identifier_references - 1);
+  }
   return x;
 }
 #else
