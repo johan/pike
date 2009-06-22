@@ -596,6 +596,12 @@ test_type_error(object,array,({1,2,3}))
 test_type_error(object,mapping,([1:2,3:4]))
 test_type_error(object,multiset,(<1,2,3>))
 
+test_any_equal([[
+  // This code caused a NULL dereference in Pike 7.8.306 and earlier.
+  indices foo;
+  return typeof(foo);
+]], typeof(indices((mixed)0)))
+
 // Check that complex function types survive soft casting to function.
 ignore_warning("Soft cast of scope(0,function(*)) to function is a noop.", [[
   test_eq(typeof([function]`+), typeof(`+))
