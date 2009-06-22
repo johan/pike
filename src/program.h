@@ -629,6 +629,7 @@ struct program
 #endif
 };
 
+void dump_program_tables (struct program *p, int indent);
 #ifdef PIKE_DEBUG
 static INLINE int CHECK_IDREF_RANGE (int x, const struct program *p)
 {
@@ -779,7 +780,6 @@ void low_start_new_program(struct program *p,
 PMOD_EXPORT void debug_start_new_program(int line, const char *file);
 void dump_program_desc(struct program *p);
 int sizeof_variable(int run_time_type);
-void dump_program_tables (struct program *p, int indent);
 void check_program(struct program *p);
 struct program *end_first_pass(int finish);
 PMOD_EXPORT struct program *debug_end_program(void);
