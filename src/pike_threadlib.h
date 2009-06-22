@@ -932,6 +932,9 @@ PMOD_EXPORT extern int Pike_in_gc;
      DO_IF_PIKE_CLEANUP (}) \
    } while(0)
 
+/* FIXME! The macro below leaks live_threads!
+ *        Avoid if possible!
+ */
 #define SWAP_IN_THREAD_IF_REQUIRED() do { 			\
   struct thread_state *_tmp=thread_state_for_id(th_self());	\
   HIDE_GLOBAL_VARIABLES();					\
