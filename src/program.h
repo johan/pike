@@ -633,7 +633,7 @@ struct program
 static INLINE int CHECK_IDREF_RANGE (int x, const struct program *p)
 {
   if (x < 0 || x >= p->num_identifier_references) {
-    dump_program_tables(p);
+    dump_program_tables(p, 4);
     debug_fatal ("Identifier reference index %d out of range 0..%d\n", x,
 		 p->num_identifier_references - 1);
   }
