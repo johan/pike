@@ -7003,7 +7003,7 @@ PMOD_EXPORT struct pike_string *low_get_function_line (struct object *o,
     if (IDENTIFIER_IS_PIKE_FUNCTION(id->identifier_flags) &&
 	(id->func.offset != -1))
       return low_get_line (p->program + id->func.offset, p, linep);
-    if ((ret = get_identifier_line(p, fun, linep))) {
+    if ((ret = get_identifier_line(o->prog, fun, linep))) {
       add_ref(ret);
       return ret;
     }
