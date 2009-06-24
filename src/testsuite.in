@@ -845,8 +845,8 @@ test_any([[
   // Test that backtraces with prototypes are rendered correctly by
   // describe_backtrace() et al. These backtraces have caused both
   // "Bad offset" and "Identifier reference index out of range".
-  class A { void foo(); }
-  class B { int gazonk; inherit A; void bar() { foo(); } }
+  class A { void foo(); };
+  class B { int gazonk; inherit A; void bar() { foo(); } };
   return sizeof(describe_backtrace(catch { B()->bar(); })) > 0;
 ]], 1)
 
