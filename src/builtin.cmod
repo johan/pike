@@ -1507,12 +1507,16 @@ PIKECLASS backtrace_frame
     THIS->lineno = -1;
   }
 
-  PIKEFUN mixed `fun()
+  /* NOTE: Use old-style getter/setter syntax for compatibility with
+   *       old Parser.Pike.split() used by precompile.pike.
+   */
+
+  PIKEFUN mixed `->fun()
   {
     push_svalue(&THIS->_fun);
   }
 
-  PIKEFUN void `fun=(mixed val)
+  PIKEFUN void `->=fun(mixed val)
   {
     /* FIXME: Should we allow this at all?
      *        Linenumber info etc won't match.
