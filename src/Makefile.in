@@ -1352,7 +1352,12 @@ precompile.sh: $(SRCDIR)/precompile.sh.in ./config.status
 #
 # Note that gnu touch is stupid, and warns about the syntax; thus the
 # redirect of stderr.
-precompile.sh-stamp: precompile.sh
+#
+# BSD make is stupid, and doesn't restat precompile.sh-stamp and
+# recalculate the dependencies after executing the rule, thus the
+# recursive use of make.
+precompile.sh-stamp:
+	@if [ -f precompile.sh ]; then :; else $(MAKE) precompile.sh; fi
 	@touch 0101010185 precompile.sh-stamp 2>/dev/null
 
 $(SRCDIR)/machine.h.in: $(SRCDIR)/stamp-h.in
