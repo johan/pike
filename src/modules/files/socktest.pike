@@ -696,7 +696,15 @@ int main(int argc, array(string) argv)
 #if constant(System.EAFNOSUPPORT)
     if (port1::errno() == System.EAFNOSUPPORT) {
       /* No IPv6 support on this machine (Linux). */
-      write("\nBind failed: Address familty not supported.\n"
+      write("\nBind failed: Address family not supported.\n"
+	     "IPv6 not supported.\n");
+      exit(0);      
+    }
+#endif /* EAFNOSUPPORT */
+#if constant(System.EPROTONOSUPPORT)
+    if (port1::errno() == System.EPROTONOSUPPORT) {
+      /* No IPv6 support on this machine (FreeBSD). */
+      write("\nBind failed: Protocol not supported.\n"
 	     "IPv6 not supported.\n");
       exit(0);      
     }
