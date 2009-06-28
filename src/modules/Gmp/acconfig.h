@@ -41,6 +41,9 @@
 /* Define this if you have mpz_fits_ulong_p */
 #undef HAVE_MPZ_FITS_ULONG_P
 
+/* Define this if you have mpz_bin_ui */
+#undef HAVE_MPZ_BIN_UI
+
 /* Define if your cpp supports the ANSI concatenation operator ## */
 #undef HAVE_ANSI_CONCAT
 
