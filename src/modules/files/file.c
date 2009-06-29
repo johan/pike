@@ -4171,6 +4171,7 @@ static TH_RETURN_TYPE proxy_thread(void * data)
     while(w<len)
     {
       ptrdiff_t wl = fd_write(p->to, p->buffer+w, len-w);
+      if (!wl) break;
       if(wl<0)
       {
 	if(errno==EINTR) continue;
