@@ -3710,6 +3710,7 @@ static void file_open_socket(INT32 args)
      * Linux 2.6.x seems to have reserved a slot for the option, but not
      * enabled it. Survive libc's with the option on kernels without.
      */
+    o=1;
     if((fd_setsockopt(fd, SOL_SOCKET, SO_REUSEPORT, (char *)&o, sizeof(int)) < 0)
 #ifdef ENOPROTOOPT
        && (errno != ENOPROTOOPT)
@@ -3758,6 +3759,7 @@ static void file_open_socket(INT32 args)
      * Linux 2.6.x seems to have reserved a slot for the option, but not
      * enabled it. Survive libc's with the option on kernels without.
      */
+    o=1;
     if((fd_setsockopt(fd, SOL_SOCKET, SO_REUSEPORT, (char *)&o, sizeof(int)) < 0)
 #ifdef ENOPROTOOPT
        && (errno != ENOPROTOOPT)
