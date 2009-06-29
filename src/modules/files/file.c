@@ -4171,7 +4171,9 @@ static TH_RETURN_TYPE proxy_thread(void * data)
     while(w<len)
     {
       ptrdiff_t wl = fd_write(p->to, p->buffer+w, len-w);
-      if (!wl) break;
+      if (!wl) {
+	goto close_and_exit;
+      }
       if(wl<0)
       {
 	if(errno==EINTR) continue;
@@ -4182,6 +4184,7 @@ static TH_RETURN_TYPE proxy_thread(void * data)
     }
   }
 
+ close_and_exit:
 /*  fprintf(stderr,"Closing %d and %d\n",p->to,p->from); */
 
   while (fd_close(p->to) && errno == EINTR) {}
