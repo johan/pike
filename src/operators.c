@@ -483,12 +483,9 @@ PMOD_EXPORT void o_cast_to_string(void)
   case T_FLOAT:
     sprintf(buf,"%.*"PRINTPIKEFLOAT"g",
      MAX_FLOAT_PREC_LEN, sp[-1].u.float_number);
-    /* Ensure that a decimal point gets printed, since "g" removes it
-     * completely if only zeroes would follow. Don't need to check for
-     * an 'e', since if that is printed then "g" behaved like the "e"
-     * format, and it always prints a '.' if the precision isn't
-     * zero. */
-    if (!strchr (buf, '.'))
+    /* Ensure that either an exponent or a decimal point gets printed,
+     * since %g can remove both which would make it look like an integer. */
+    if (!strchr (buf, '.') && !strchr (buf, 'e'))
       strcat (buf, ".0");
     break;
 
@@ -1629,7 +1626,7 @@ PMOD_EXPORT void f_add(INT32 args)
 	sprintf(buffer,"%.*"PRINTPIKEFLOAT"g",
          MAX_FLOAT_PREC_LEN, sp[e].u.float_number);
 	/* See comment for T_FLOAT in o_cast_to_string. */
-	if (!strchr (buffer, '.'))
+	if (!strchr (buffer, '.') && !strchr (buffer, 'e'))
 	  strcat (buffer, ".0");
 #ifdef PIKE_DEBUG
 	if (strlen (buffer) > MAX_FLOAT_SPRINTF_LEN)
