@@ -78,6 +78,23 @@ else
     if test "x$pike_cv_nettle_struct_yarrow256_ctx_seed_file" = "xyes"; then
       AC_DEFINE(HAVE_STRUCT_YARROW256_CTX_SEED_FILE)
     fi
+
+    AC_MSG_CHECKING([whether nettle_crypt_func is a pointer type])
+    AC_CACHE_VAL(pike_cv_nettle_crypt_func_is_pointer, [
+      pike_cv_nettle_crypt_func_is_pointer=no
+      AC_TRY_COMPILE([
+#include <nettle/nettle-types.h>
+      ], [
+  nettle_crypt_func foo = (nettle_crypt_func)(void *)0;
+  return (int)foo;
+      ], [
+        pike_cv_nettle_crypt_func_is_pointer=yes
+      ])
+    ])
+    AC_MSG_RESULT($pike_cv_nettle_crypt_func_is_pointer);
+    if test "x$pike_cv_nettle_crypt_func_is_pointer" = "xyes"; then
+      AC_DEFINE(HAVE_NETTLE_CRYPT_FUNC_IS_POINTER)
+    fi
   else
     if test "$ac_cv_lib_gmp_mpz_init:$ac_cv_lib_gmp___mpz_init:$ac_cv_lib_gmp___gmpz_init" = "no:no:no"; then
       # No gmp found; enable it if possible.
