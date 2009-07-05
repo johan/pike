@@ -57,7 +57,11 @@ PIKECLASS Yarrow
    *	/grubba 2009-07-05
    */
   PIKEVAR string seed_file flags ID_PRIVATE|ID_STATIC;
+#endif
 
+  DECLARE_STORAGE;
+
+#ifndef HAVE_STRUCT_YARROW256_CTX_SEED_FILE
   static void pike_generate_seed_file(void)
   {
     struct pike_string *seed_file =
