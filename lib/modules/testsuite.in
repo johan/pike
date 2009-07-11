@@ -730,6 +730,18 @@ dnl - Process
 test_equal([[Process.split_quoted_string("test ")]],[[({"test"})]])
 test_equal([[Process.split_quoted_string("'test'")]],[[({"test"})]])
 test_equal([[Process.split_quoted_string("foo 'test' bar")]],[[({"foo","test","bar"})]])
+test_equal([[Process.split_quoted_string ("\\\"")]],
+	   [[({"\""})]])
+test_equal([[Process.split_quoted_string ("\\a")]],
+	   [[({"a"})]])
+test_equal([[Process.split_quoted_string ("\\ ")]],
+	   [[({" "})]])
+test_equal([[Process.split_quoted_string ("x\\")]],
+	   [[({"x"})]])
+test_equal([[Process.split_quoted_string ("\"\\\"foo bar\"")]],
+	   [[({"\"foo bar"})]])
+test_equal([[Process.split_quoted_string ("\"\"foo bar\"")]],
+	   [[({"foo", "bar"})]])
 test_equal([[Process.split_quoted_string("pike -m master.pike 'write(\"test\");'")]],[[({"pike","-m","master.pike","write(\"test\");"})]])
 test_false([[
 #ifdef __NT__
