@@ -481,8 +481,14 @@ PMOD_EXPORT void o_cast_to_string(void)
     return;
 
   case T_FLOAT:
-    sprintf(buf,"%.*"PRINTPIKEFLOAT"g",
-     MAX_FLOAT_PREC_LEN, sp[-1].u.float_number);
+    if (sp[-1].u.float_number < 0) {
+      /* Some libc's have bugs in the handling of large negative floats... */
+      sprintf(buf,"-%.*"PRINTPIKEFLOAT"g",
+	      MAX_FLOAT_PREC_LEN, -sp[-1].u.float_number);
+    } else {
+      sprintf(buf,"%.*"PRINTPIKEFLOAT"g",
+	      MAX_FLOAT_PREC_LEN, sp[-1].u.float_number);
+    }
     /* Ensure that either an exponent or a decimal point gets printed,
      * since %g can remove both which would make it look like an integer. */
     if (!strchr (buf, '.') && !strchr (buf, 'e'))
