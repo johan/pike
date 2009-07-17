@@ -2598,7 +2598,7 @@ class joinnode
     if (sizeof(joined_modules) &&
 	joined_modules[0] == node) return;
     joined_modules = ({ node }) + (joined_modules - ({ node }));
-    // FIXME: Propagate!
+    cache = ([]);
   }
 
   void rem_path(string path)
@@ -2610,8 +2610,7 @@ class joinnode
 				!node->is_resolv_dirnode ||
 				(node->dirname != path);
 			    });
-    // FIXME: What about the cache?
-    // FIXME: Propagate!
+    cache = ([]);
   }
 
   protected mixed ind(string index)
