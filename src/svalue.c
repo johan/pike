@@ -2048,7 +2048,8 @@ PMOD_EXPORT void debug_check_svalue(const struct svalue *s)
   check_svalue_type (s);
   if(s->type<=MAX_REF_TYPE &&
      ((PIKE_POINTER_ALIGNMENT-1) & (ptrdiff_t)(s->u.refs)))
-    Pike_fatal("Odd pointer! type=%d u->refs=%p\n",s->type,s->u.refs);
+    Pike_fatal("Odd pointer! type=%d u->refs=%p, align: %d\n",
+	       s->type, s->u.refs, PIKE_POINTER_ALIGNMENT);
 
   if(s->type==T_INT) {
     if(s->subtype!=NUMBER_NUMBER &&
