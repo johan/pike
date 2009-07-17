@@ -26,7 +26,7 @@
 **!	P4(PBM) - binary bitmap 
 **!	P5(PGM) - binary greymap 
 **!	P6(PPM) - binary truecolor
-** 	P7 - binary truecolor (used by xv for thumbnails)
+**! 	P7 - binary truecolor (used by xv for thumbnails)
 **!	</pre>
 **!
 **!	Simple encoding:<br>

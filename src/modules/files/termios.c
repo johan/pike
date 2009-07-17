@@ -40,7 +40,7 @@
  */
 
 /* The class below is not accurate, but it's the lowest exposed API
- * interface, which make the functions appear where users actually
+ * interface, which makes the functions appear where users actually
  * look for them. /mast */
 
 /*! @class File
@@ -59,7 +59,7 @@
  *!   @member int(-1..) "ospeed"
  *!     Out baud rate.
  *!   @member int(-1..-1)|int(5..8) "csize"
- *!     Character size.
+ *!     Character size in bits.
  *!   @member int "rows"
  *!     Terminal rows.
  *!   @member int "columns"

@@ -62,6 +62,8 @@ static struct pike_string *colortable_string = NULL;
  * 0006 - 0007	Reserved
  * 0008 - 0009	Reserved
  * 000a - 000d	Offset to bitmap (offs)
+ *
+ * Bitmap info from this point.
  * 000e - 0011	Size of info struct (0x28)
  * 0012 - 0015	Width
  * 0016 - 0019	Height
