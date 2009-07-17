@@ -938,8 +938,8 @@ static void f_error_create(INT32 args)
   struct object *o; \
   va_start(foo,desc); \
   ASSERT_THREAD_SWAPPED_IN(); \
-  o=fast_clone_object(PIKE_CONCAT(FEL,_error_program)); \
-  DWERROR((stderr, "%s(): Throwing a " #FEL " error\n", func))
+  DWERROR((stderr, "%s(): Throwing a " #FEL " error\n", func)); \
+  o=fast_clone_object(PIKE_CONCAT(FEL,_error_program))
 
 #define ERROR_DONE(FOO) \
   PIKE_CONCAT(FOO,_error_va(o,func, \
