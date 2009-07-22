@@ -805,6 +805,9 @@ test_encoding(XBM,[[
   img=c*img;
 ]],)
 
+test_equal( Image.PNG.decode_header(Image.PNG.encode(Image.Image(20,20))),
+(["bpp":8, "type":2, "xsize":20, "ysize":20 ]) )
+
 cond( (master()->resolv("Image.XFace")||([]))->encode,[[
   test_any([[
     object img=Image.Image(48,48)->test(43);
