@@ -170,7 +170,10 @@ PMOD_EXPORT extern const char msg_unsetjmp_nosync_2[];
     X.func=(error_call)(Y);					\
     DO_IF_DMALLOC( if( X.func == free ) X.func=dmalloc_free);	\
     X.arg=(void *)(Z);						\
-    if(!Pike_interpreter.recoveries) break;			\
+    if(!Pike_interpreter.recoveries) {				\
+      X.previous = NULL;					\
+      break;							\
+    }								\
     X.previous=Pike_interpreter.recoveries->onerror;		\
     X.file = __FILE__;						\
     X.line = __LINE__;						\
