@@ -1248,6 +1248,7 @@ static struct nct_cube _img_get_cube_from_args(INT32 args)
       np=&(s->next);
    }
    cube.numentries=no;
+   cube.weight = WEIGHT_NEEDED;
 
    return cube;
 }
