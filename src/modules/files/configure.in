@@ -111,6 +111,29 @@ else
   AC_MSG_RESULT(no)
 fi
 
+AC_MSG_CHECKING([if struct sockaddr_un has a sun_len member (BSD)])
+AC_CACHE_VAL(pike_cv_struct_sockaddr_un_sun_len, [
+	AC_TRY_COMPILE([
+#ifdef HAVE_SYS_TYPES_H
+#include <sys/types.h>
+#endif /* HAVE_SYS_TYPES_H */
+#ifdef HAVE_SYS_SOCKET_H
+#include <sys/socket.h>
+#endif /* HAVE_SYS_SOCKET_H */
+], [
+	struct sockaddr_un addr;
+        addr.sun_len = 10;
+],  [pike_cv_struct_sockaddr_un_sun_len=yes],
+    [pike_cv_struct_sockaddr_un_sun_len=no])
+])
+
+if test "$pike_cv_struct_sockaddr_un_sun_len" = "yes"; then
+  AC_MSG_RESULT(yes)
+  AC_DEFINE(HAVE_STRUCT_SOCKADDR_UN_SUN_LEN)
+else
+  AC_MSG_RESULT(no)
+fi
+
 if test "$ac_cv_func_sendfile" = "yes"; then
   AC_MSG_CHECKING(if sendfile takes 4(Linux) or 6(HP/UX or MacOS X) or 7(FreeBSD) arguments)
   AC_CACHE_VAL(pike_cv_sendfile_args, [

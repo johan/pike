@@ -36,8 +36,11 @@
 /* Define this if you want to disable the use of sendfile(2). */
 #undef HAVE_BROKEN_SENDFILE
 
-/* Define this if you have a struct stat with 'blocks' member */
+/* Define this if you have a struct stat with 'blocks' member. */
 #undef HAVE_STRUCT_STAT_BLOCKS
+
+/* Define this if you have a struct sockaddr_un with 'sun_len' member. */
+#undef HAVE_STRUCT_SOCKADDR_UN_SUN_LEN
 
 /* Define if your statfs() call takes 4 arguments */
 #undef HAVE_SYSV_STATFS
