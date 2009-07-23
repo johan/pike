@@ -3871,6 +3871,10 @@ static void file_connect_unix( INT32 args )
 
   name->sun_family=AF_UNIX;
   strcpy( name->sun_path, Pike_sp[-args].u.string->str );
+#ifdef HAVE_STRUCT_SOCKADDR_UN_SUN_LEN
+  /* Length including NUL. */
+  name->sun_len = Pike_sp[-args].u.string->len + 1;
+#endif
   pop_n_elems(args);
 
   close_fd();

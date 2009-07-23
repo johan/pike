@@ -362,6 +362,10 @@ static void unix_bind(INT32 args)
 
   strcpy(addr->sun_path, path->str);
   addr->sun_family = AF_UNIX;
+#ifdef HAVE_STRUCT_SOCKADDR_UN_SUN_LEN
+  /* Length including NUL. */
+  name->sun_len = path->len + 1;
+#endif
 
   fd=fd_socket(AF_UNIX, SOCK_STREAM, 0);
 
