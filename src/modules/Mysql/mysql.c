@@ -1534,9 +1534,9 @@ static void f_list_tables(INT32 args)
  *!   @member string "type"
  *!	The SQL type of the field.
  *!   @member int "length"
- *!	The length of the field.
- *!   @member int "max_length"
- *!	The length of the longest element in this field.
+ *!	The length of the longest possible value that can be stored in
+ *!	the field. Note that this measures the display length in
+ *!	string form.
  *!   @member multiset(string) "flags"
  *!	Some flags.
  *!   @member int decimals
