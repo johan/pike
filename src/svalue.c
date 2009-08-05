@@ -1715,7 +1715,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 
     case T_FLOAT:
       {
-	double d = s->u.float_number;
+	FLOAT_TYPE d = s->u.float_number;
 	if (d != d) {
 	  my_strcat("nan");
 	} else if (d && (d+d == d)) {
@@ -1725,7 +1725,7 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	    my_strcat("-inf");
 	  }
 	} else {
-	  sprintf(buf, "%.16g", d);
+	  sprintf(buf, "%.*"PRINTPIKEFLOAT"g", PIKEFLOAT_DIG, d);
 	  my_strcat(buf);
 	  if (!STRCHR (buf, '.') && !STRCHR (buf, 'e'))
 	    /* A small float number without fraction can be
