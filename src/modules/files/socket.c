@@ -385,6 +385,7 @@ static void unix_bind(INT32 args)
 		     SO_REUSEADDR, (char *)&o, sizeof(int)) < 0)
     {
       p->my_errno=errno;
+      free(addr);
       while (fd_close(fd) && errno == EINTR) {}
       errno = p->my_errno;
       pop_n_elems(args);
