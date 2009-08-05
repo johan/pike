@@ -53,14 +53,13 @@
 
     /* One extra char for the sign. */
 #define MAX_INT_SPRINTF_LEN (1 + (SIZEOF_INT_TYPE * 5 + 1) / 2)
-    /* Three quarters of the float is the mantissa. */
-#define MAX_FLOAT_PREC_LEN ((SIZEOF_FLOAT_TYPE * 15 + 4) / 8)
+
     /* One quarter of the float is the exponent. */
 #define MAX_FLOAT_EXP_LEN ((SIZEOF_FLOAT_TYPE * 5 + 4) / 8)
     /* Six extra chars: Mantissa sign, decimal point, zero before the
-     * decimal point, the 'e', exponent sign, and an extra digit due
+     * decimal point, the 'e' exponent sign, and an extra digit due
      * to the mantissa/exponent split. */
-#define MAX_FLOAT_SPRINTF_LEN (6 + MAX_FLOAT_PREC_LEN + MAX_FLOAT_EXP_LEN)
+#define MAX_FLOAT_SPRINTF_LEN (6 + PIKEFLOAT_DIG + MAX_FLOAT_EXP_LEN)
 
     /* Enough to hold a Pike float or int in textform including a trailing \0
      */
@@ -486,7 +485,7 @@ PMOD_EXPORT void o_cast_to_string(void)
 
   case T_FLOAT:
     sprintf(buf,"%.*"PRINTPIKEFLOAT"g",
-	    MAX_FLOAT_PREC_LEN, sp[-1].u.float_number);
+	    PIKEFLOAT_DIG, sp[-1].u.float_number);
     /* Ensure that either an exponent or a decimal point gets printed,
      * since %g can remove both which would make it look like an integer. */
     if (!strchr (buf, '.') && !strchr (buf, 'e'))
@@ -1628,7 +1627,7 @@ PMOD_EXPORT void f_add(INT32 args)
 
       case T_FLOAT:
 	sprintf(buffer,"%.*"PRINTPIKEFLOAT"g",
-         MAX_FLOAT_PREC_LEN, sp[e].u.float_number);
+		PIKEFLOAT_DIG, sp[e].u.float_number);
 	/* See comment for T_FLOAT in o_cast_to_string. */
 	if (!strchr (buffer, '.') && !strchr (buffer, 'e'))
 	  strcat (buffer, ".0");
