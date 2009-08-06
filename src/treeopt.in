@@ -1601,10 +1601,12 @@ F_LOOP(0 = +[ !depend_p($$, $$)]
     add_ref(mixed_type_string);
     tmpvar = add_local_name(tmpname, mixed_type_string, 0);
   }
-  $$ = mknode('?', mknode(F_ASSIGN, $0, mklocalnode(tmpvar,0)),
-	      mknode(':',mknode(F_RETURN,
-				mksoftcastnode(type, mklocalnode(tmpvar,0)),
-				0),
-		     $1));
+  if (tmpvar >= 0) {
+    $$ = mknode('?', mknode(F_ASSIGN, $0, mklocalnode(tmpvar,0)),
+		mknode(':',mknode(F_RETURN,
+				  mksoftcastnode(type, mklocalnode(tmpvar,0)),
+				  0),
+		       $1));
+  }
 }
 ;
