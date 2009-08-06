@@ -2655,12 +2655,16 @@ PMOD_EXPORT void apply_external(int depth, int fun, INT32 args)
 
   loc.o = Pike_fp->current_object;
   loc.parent_identifier = Pike_fp->fun;
-  if (loc.o->prog)
+  if (loc.o->prog) {
     loc.inherit = INHERIT_FROM_INT(loc.o->prog, loc.parent_identifier);
 
-  find_external_context(&loc, depth);
+    find_external_context(&loc, depth);
 
-  apply_low(loc.o, fun + loc.inherit->identifier_level, args);
+    apply_low(loc.o, fun + loc.inherit->identifier_level, args);
+  } else {
+    PIKE_ERROR("destructed object", "Apply on parent of destructed object.\n",
+	       Pike_sp, args);
+  }
 }
 
 #ifdef PIKE_DEBUG
