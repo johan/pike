@@ -1915,19 +1915,11 @@ node *debug_mksvaluenode(struct svalue *s)
  */
 
 
-/* FIXME: Ought to use parent pointer to avoid recursion.
- * In the SHARED_NODES case there's no need of course.
- */
 node *copy_node(node *n)
 {
   node *b;
   debug_malloc_touch(n);
   debug_malloc_touch(n->type);
-#if 0
-  /* The following needs to be node type specific. */
-  debug_malloc_touch(n->u.node.a);
-  debug_malloc_touch(n->u.node.b);
-#endif
   check_tree(n,0);
   if(!n) return n;
   switch(n->token)
@@ -1945,18 +1937,6 @@ node *copy_node(node *n)
     add_ref(n);
     return n;
   }
-  if(n->name)
-  {
-    if(b->name) free_string(b->name);
-    add_ref(b->name=n->name);
-  }
-  /* FIXME: Should b->name be kept if n->name is NULL?
-   * /grubba 1999-09-22
-   */
-  b->line_number = n->line_number;
-  b->node_info = n->node_info;
-  b->tree_info = n->tree_info;
-  return b;
 }
 
 int is_const(node *n)
