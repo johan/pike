@@ -249,7 +249,8 @@ void img_xwd__decode(INT32 args,int header_only,int skipcmap)
 
    /* header.ncolors XWDColor structs */
 
-   if (!skipcmap || 
+   /* NB: The cmap needs to be decoded if the image is to be decoded. */
+   if (!skipcmap || !header_only ||
        header.visual_class==3 || 
        header.visual_class==5)
    {
@@ -354,8 +355,13 @@ void img_xwd__decode(INT32 args,int header_only,int skipcmap)
 	    push_int(header.bits_per_pixel);
 	    push_int(header.bitmap_pad);
 	    push_int(header.byte_order==1);
-	    ref_push_object(co);
-	    image_x_decode_pseudocolor(7);
+	    if (!co)
+	       image_x_decode_pseudocolor(6);
+	    else
+	    {
+	       ref_push_object(co);
+	       image_x_decode_pseudocolor(7);
+	    }
 	    break;
 	 default:
 	    pop_stack();
