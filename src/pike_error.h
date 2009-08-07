@@ -217,7 +217,10 @@ PMOD_EXPORT extern const char msg_assert_onerr[];
      X.func=(error_call)(Y); \
      X.arg=(void *)(Z); \
      X.frame_pointer = Pike_interpreter.frame_pointer; \
-     if(!Pike_interpreter.recoveries) break; \
+     if(!Pike_interpreter.recoveries) {		       \
+       X.previous = NULL;			       \
+       break;					       \
+     }						       \
      X.previous=Pike_interpreter.recoveries->onerror; \
      Pike_interpreter.recoveries->onerror=&X; \
   }while(0)
