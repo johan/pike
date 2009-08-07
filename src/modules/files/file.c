@@ -4751,8 +4751,9 @@ static void fd__sprintf(INT32 args)
   {
     case 'O':
     {
-      char buf[20];
-      sprintf (buf, "Fd(%d)", FD);
+      /* NB: A signed 64-bit int maxes out at 21 characters. */
+      char buf[30];
+      sprintf (buf, "Fd(%ld)", (long)FD);
       push_text(buf);
       return;
     }
@@ -4763,8 +4764,7 @@ static void fd__sprintf(INT32 args)
       return;
     }
   }
-  push_int( 0 );
-  Pike_sp[-1].subtype = 1;
+  push_undefined();
 }
 
 
