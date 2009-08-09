@@ -1556,6 +1556,9 @@ static void encode_value2(struct svalue *val, struct encode_data *data, int forc
 
 		  /* run-time type */
 		  code_number(id->run_time_type, data);
+
+		  /* opt flags */
+		  code_number(id->opt_flags, data);
 		  break;
 
 		case IDENTIFIER_PIKE_FUNCTION:
@@ -4343,6 +4346,9 @@ static void decode_value2(struct decode_data *data)
 
 		/* run_time_type */
 		decode_number(id.run_time_type, data);
+
+		/* opt_flags */
+		decode_number(id.opt_flags, data);
 
 		/* Expected identifier number. */
 		decode_number(no, data);
