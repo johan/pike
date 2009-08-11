@@ -2526,7 +2526,7 @@ static void file_listxattr(INT32 args)
 
   if( res < 0 )
   {
-    if( do_free && ptr )
+    if( do_free )
       free(ptr);
     push_int(0);
     ERRNO=errno;
@@ -2541,7 +2541,7 @@ static void file_listxattr(INT32 args)
   f_aggregate(1);
   o_subtract();
 
-  if( do_free && ptr ) 
+  if( do_free ) 
     free( ptr );
 }
 
