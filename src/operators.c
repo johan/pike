@@ -1751,6 +1751,7 @@ PMOD_EXPORT void f_add(INT32 args)
     }									\
 									\
     DO_IF_DEBUG (Pike_fatal ("Shouldn't be reached.\n"));		\
+    break;								\
   } while (0)
 
 #define ADD(TYPE, ADD_FUNC, PUSH_FUNC) do {				\
