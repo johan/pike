@@ -37,9 +37,9 @@ struct fd_source
   off_t len;
 };
 
-static struct data get_data( struct source *_s, int len )
+static struct data get_data( struct source *src, int len )
 {
-  struct fd_source *s = (struct fd_source *)_s;
+  struct fd_source *s = (struct fd_source *)src;
   struct data res;
   int rr;
   len = CHUNK; /* It's safe to ignore the 'len' argument */
@@ -67,9 +67,9 @@ static struct data get_data( struct source *_s, int len )
 }
 
 
-static void free_source( struct source *_s )
+static void free_source( struct source *src )
 {
-  free_object(((struct fd_source *)_s)->obj);
+  free_object(((struct fd_source *)src)->obj);
 }
 
 struct source *source_normal_file_make( struct svalue *s,

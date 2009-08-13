@@ -31,9 +31,9 @@ struct sm_source
   int offset, len;
 };
 
-static struct data get_data( struct source *_s, off_t len )
+static struct data get_data( struct source *src, off_t len )
 {
-  struct sm_source *s = (struct sm_source *)_s;
+  struct sm_source *s = (struct sm_source *)src;
   struct data res;
   
   res.do_free = 0;
@@ -54,9 +54,9 @@ static struct data get_data( struct source *_s, off_t len )
   return res;
 }
 
-static void free_source( struct source *_s )
+static void free_source( struct source *src )
 {
-  free_object(((struct sm_source *)_s)->obj);
+  free_object(((struct sm_source *)src)->obj);
 }
 
 struct source *source_system_memory_make( struct svalue *s,

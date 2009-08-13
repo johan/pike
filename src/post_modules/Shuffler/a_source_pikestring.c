@@ -25,9 +25,9 @@ struct ps_source
   int offset, len;
 };
 
-static struct data get_data( struct source *_s, off_t len )
+static struct data get_data( struct source *src, off_t len )
 {
-  struct ps_source *s = (struct ps_source *)_s;
+  struct ps_source *s = (struct ps_source *)src;
   struct data res;
   
   res.do_free = 0;
@@ -48,9 +48,9 @@ static struct data get_data( struct source *_s, off_t len )
   return res;
 }
 
-static void free_source( struct source *_s )
+static void free_source( struct source *src )
 {
-  free_string(((struct ps_source *)_s)->str);
+  free_string(((struct ps_source *)src)->str);
 }
 
 struct source *source_pikestring_make( struct svalue *s,
