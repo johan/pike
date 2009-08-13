@@ -2109,7 +2109,6 @@ static int push_sprintf_argument_types(PCHARP format, ptrdiff_t format_len,
       case '<':
 	/* FIXME: !!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 	if (ret > 0) ret = 0;	/* FAILURE! */
-	continue;
 #if 0
 	if(!lastarg) {
 	  yyreport(severity, type_check_system_string,
