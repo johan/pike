@@ -418,7 +418,8 @@ string get_path_query()
 
 //! Returns the query variables as a @expr{mapping(string:string)@}.
 mapping(string:string) get_query_variables() {
-  return (mapping(string:string))(((query||"")/"&")[*]/"=");
+  if(!query) return ([]);
+  return (mapping(string:string))((query/"&")[*]/"=");
 }
 
 //! Sets the query variables from the provided mapping.
