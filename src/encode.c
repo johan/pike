@@ -3987,8 +3987,9 @@ static void decode_value2(struct decode_data *data)
 	      Pike_error("Failed to decode program. (string too short)\n");
 	    }
 	    low_add_many_to_program(Pike_compiler,
-				    (PIKE_OPCODE_T *)data->data + data->ptr,
+				    (PIKE_OPCODE_T *)(data->data + data->ptr),
 				    local_num_program);
+	    data->ptr += local_num_program * sizeof(PIKE_OPCODE_T);
 
 	    /* Decode relocations */
 	    for (e=0; e<(int)local_num_relocations; e++) {
