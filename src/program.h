@@ -710,7 +710,11 @@ extern struct object *placeholder_object;
 
 #define STORAGE_NEEDED(X) ((X)->storage_needed - (X)->inherits[0].storage_offset)
 
-#define FOO(NUMTYPE,TYPE,ARGTYPE,NAME) void PIKE_CONCAT(add_to_,NAME(ARGTYPE ARG));
+#define FOO(NUMTYPE,TYPE,ARGTYPE,NAME) \
+  void PIKE_CONCAT(add_to_,NAME)(ARGTYPE ARG);
+#define BAR(NUMTYPE,TYPE,ARGTYPE,NAME) \
+  void PIKE_CONCAT(low_add_many_to_,NAME)(struct program_state *state, ARGTYPE *ARG, NUMTYPE cnt); \
+  void PIKE_CONCAT(add_to_,NAME)(ARGTYPE ARG);
 #include "program_areas.h"
 
 typedef int supporter_callback (void *, int);
