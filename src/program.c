@@ -1928,7 +1928,7 @@ struct program *id_to_program(INT32 id)
       }
       break;
     }
-    if (module) {
+    if (module && get_master()) {
       /* fprintf(stderr, "%s... ", module); */
       push_text(module);
       SAFE_APPLY_MASTER("resolv", 1);
@@ -5798,7 +5798,9 @@ INT32 define_function(struct pike_string *name,
 	fprintf(stderr, "%.*sidentifier is local\n",
 		c->compilation_depth, "");
 #endif
-
+	/* Hide the previous definition, and make a new definition. */
+	Pike_compiler->new_program->identifier_references[i].id_flags |=
+	  ID_PROTECTED;
 	goto make_a_new_def;
       }
 
