@@ -1503,12 +1503,11 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	  (prog->flags & PROGRAM_FINISHED) &&
 	  Pike_interpreter.evaluator_stack &&
 	  (Pike_in_gc <= GC_PASS_PREPARE || Pike_in_gc >= GC_PASS_FREE) &&
-	  master_object &&
 	  !no_pike_calls;
 	if (describe_nicely) {
 	  /* Don't call _sprintf's or other pike code when we're low
 	   * on stack, since that code tends to do sprintf("%O",...)
-	   * on stuff which means we usually ends up here again
+	   * on stuff which means we usually end up here again
 	   * quickly. */
 	  if (low_stack_check (50)) describe_nicely = 0;
 	  else low_check_c_stack (Pike_interpreter.c_stack_margin + 1000,
