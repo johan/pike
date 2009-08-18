@@ -801,7 +801,7 @@ test_any_equal([[
             "B", sort(indices(d->get_b())),
             "C", sort(indices(d->get_c())),
             "D", sort(indices(d->get_d())) });
-]], ({ "A", ({ "a", "b", "c", "d", "e", "f", "g", "h", "get_a" }),
+]], ({ "A", ({ "a", "b", "c", "d", "e", "f", "g", "get_a", "h" }),
        "B", ({ "get_a", "get_b" }),
        "C", ({ "get_a", "get_b", "get_c" }),
        "D", ({ "get_a", "get_b", "get_c", "get_d" }) }))
