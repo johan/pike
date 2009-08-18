@@ -4032,6 +4032,26 @@ PIKECLASS List
 /*! @endmodule
  */
 
+/*! @class MasterCodec
+ *!
+ *! This codec is used when loading a dumped master.
+ *!
+ *! @seealso
+ *!   @[Codec]
+ */
+PIKECLASS MasterCodec
+  flags ID_PROTECTED;
+{
+  /*! Look up a function in @[all_constants()].
+   */
+  PIKEFUN mixed functionof(mixed symbol)
+  {
+    mapping_index_no_free(Pike_sp, get_builtin_constants(), symbol);
+    Pike_sp++;
+    stack_pop_keep_top();
+  }
+}
+
 void init_builtin(void)
 {
   init_pike_list_node_blocks();
