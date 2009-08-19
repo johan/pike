@@ -259,19 +259,24 @@ class TimeRange
 //!	of steps the motion will be. It does <i>never</i> represent
 //!	any <i>fixed</i> amount of time, like seconds or days.
 
-   TimeRange `+(program|this_program|int n)
+   TimeRange `+(program|this_program|int n,
+		program|this_program|int ... more)
    {
+      if (sizeof(more)) n = predef::`+(n, @more);
       if (objectp(n)) return add(1,n);
       return add(n);
    }
 
-   TimeRange ``+(int n)
+  TimeRange ``+(int n, int ... more)
    {
+      if (sizeof(more)) n = predef::`+(n, @more);
       return add(n);
    }
 
-   TimeRange `-(TimeRange|program|int n)
+   TimeRange `-(program|this_program|int n,
+		TimeRange|this_program|int ... more)
    {
+      if (sizeof(more)) n = predef::`+(n, @more);
       if (objectp(n)) return add(-1,n);
       return add(-n);
    }
