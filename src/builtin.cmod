@@ -4073,7 +4073,7 @@ PIKECLASS MasterCodec
     stack_pop_keep_top();
   }
   /*! @decl object decode_object(object obj, mixed data)
-   *! Calls @expr{@obj->_decode(@[data])@}.
+   *! Calls @expr{obj->_decode(@[data])@}.
    */
   PIKEFUN object decode_object(object obj, mixed data)
   {
