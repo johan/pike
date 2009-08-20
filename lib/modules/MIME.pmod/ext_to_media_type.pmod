@@ -301,6 +301,8 @@ protected mapping ext2type = ([
   "hdml"    : "text/x-hdml",
   "htt"     : "text/webviewhtml",
   "pgr"     : "text/parsnegar-document",
+  "pike"    : "text/x-pike-code",
+  "pmod"    : "text/x-pike-code",
   "rt"      : "text/vnd.rn-realtext",
 // "src"     : "text/speech",
 // "talk"    : "text/speech",
