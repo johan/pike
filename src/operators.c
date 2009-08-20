@@ -486,9 +486,8 @@ PMOD_EXPORT void o_cast_to_string(void)
   case T_FLOAT:
     sprintf(buf,"%.*"PRINTPIKEFLOAT"g",
 	    PIKEFLOAT_DIG, sp[-1].u.float_number);
-    /* Ensure that either an exponent or a decimal point gets printed,
-     * since %g can remove both which would make it look like an integer. */
-    if (!strchr (buf, '.') && !strchr (buf, 'e'))
+    /* Same kludge as in svalue.c:describe_svalue. */
+    if (!STRCHR (buf, '.') && !STRCHR (buf, ',') && !STRCHR (buf, 'e'))
       strcat (buf, ".0");
     break;
 

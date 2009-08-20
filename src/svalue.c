@@ -1727,9 +1727,14 @@ PMOD_EXPORT void describe_svalue(const struct svalue *s,int indent,struct proces
 	} else {
 	  sprintf(buf, "%.*"PRINTPIKEFLOAT"g", PIKEFLOAT_DIG, d);
 	  my_strcat(buf);
-	  if (!STRCHR (buf, '.') && !STRCHR (buf, 'e'))
+	  if (!STRCHR (buf, '.') && !STRCHR (buf, ',') && !STRCHR (buf, 'e'))
 	    /* A small float number without fraction can be
-	     * indistinguishable from an integer when formatted by %g. */
+	     * indistinguishable from an integer when formatted by %g.
+	     * Kludge: Check for ',' too if someone has managed to
+	     * meddle with the LC_NUMERIC locale (not that the dot
+	     * below is really the right thing then, but at least it
+	     * doesn't become "47,11.0"). */
+	    /* Note: Code dup in operators.c:o_cast_to_string. */
 	    my_strcat (".0");
 	}
       }
