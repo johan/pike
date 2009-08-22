@@ -1,5 +1,3 @@
-#!/usr/local/bin/pike
-
 /*
  * $Id$
  *
@@ -180,30 +178,3 @@ class scan {
 }
 
 object(scan) scanner = scan();
-
-int main(int argc, array(string) argv)
-{
-  mixed result;
-
-  werror("Grammar:\n\n" + (string) g);
-
-#if efun(_memory_usage)
-  werror("Memory usage:\n%O\n", _memory_usage());
-#endif
-
-  werror("Compiling...\n");
-
-  g->set_error_handler(ErrorHandler(0)->report);
-
-  g->compile();
-
-  werror("Compilation finished!\n");
-
-#if efun(_memory_usage)
-  werror("Memory usage:\n%O\n", _memory_usage());
-#endif
-
-  result = g->parse(scanner->scan);
-
-  werror("Result of parsing: \"%s\"\n", result + "");
-}
