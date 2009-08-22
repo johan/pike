@@ -1,4 +1,3 @@
-#!/usr/local/bin/pike
 
 #pike 7.2
 
