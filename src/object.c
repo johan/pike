@@ -50,6 +50,7 @@
 #define sp Pike_sp
 
 /* #define GC_VERBOSE */
+/* #define DEBUG */
 
 
 #ifndef SEEK_SET
@@ -595,8 +596,14 @@ PMOD_EXPORT struct object *get_master(void)
       if(SETJMP_SP(tmp, 2))
       {
 #ifdef DEBUG
-	if(d_flag)
-	  debug_describe_svalue(&throw_value);
+	if(d_flag) {
+	  struct svalue sval;
+	  /* Note: Save the svalue before attempting to describe it,
+	   *       since it might get overwritten... */
+	  assign_svalue_no_free(&sval, &throw_value);
+	  debug_describe_svalue(&sval);
+	  free_svalue(&sval);
+	}
 #endif
 	/* do nothing */
 	UNSETJMP(tmp);
@@ -2352,12 +2359,12 @@ void push_magic_index(struct program *type, int inherit_no, int parent_level)
   struct external_variable_context loc;
   struct object *magic;
 
-  loc.o=Pike_fp->current_object;
+  loc.o = Pike_fp->current_object;
   if(!loc.o) Pike_error("Illegal magic index call.\n");
 
-  loc.parent_identifier=Pike_fp->fun;
-  if (loc.o->prog)
-    loc.inherit=INHERIT_FROM_INT(loc.o->prog, loc.parent_identifier);
+  loc.parent_identifier = Pike_fp->fun;
+  loc.inherit = Pike_fp->context;
+
   find_external_context(&loc, parent_level);
 
   if (!loc.o->prog)
