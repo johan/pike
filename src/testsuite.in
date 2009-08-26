@@ -10250,6 +10250,12 @@ test_any([[
   return a[0] == a[1];
 ]], 1)
 
+test_any([[
+  class X {int __hash() {return 17;}};
+  mixed c = copy_value (X());
+  return objectp (c) && object_program (c) == X;
+]], 1)
+
 // - cos
 // Tested in _math
 
