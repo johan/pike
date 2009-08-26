@@ -437,7 +437,7 @@ PMOD_EXPORT void f_copy_value(INT32 args)
     SIMPLE_TOO_FEW_ARGS_ERROR("copy_value",1);
 
   pop_n_elems(args-1);
-  Pike_sp++;
+  push_undefined();	/* Placeholder */
   copy_svalues_recursively_no_free(Pike_sp-1,Pike_sp-2,1,0);
   free_svalue(Pike_sp-2);
   move_svalue (Pike_sp - 2, Pike_sp - 1);
