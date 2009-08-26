@@ -113,3 +113,41 @@ class _get_iterator
     return num_fields();
   }
 }
+
+static string encode_json(mixed msg)
+{
+  if (stringp(msg))
+    return "\"" + replace(msg, ([ "\"" : "\\\"",
+				  "\\" : "\\\\",
+				  "\n" : "\\n",
+				  "\b" : "\\b",
+				  "\f" : "\\f",
+				  "\r" : "\\r",
+				  "\t" : "\\t" ])) + "\"";
+  else if (arrayp(msg))
+    return "[" + (map(msg, encode_json) * ",") + "]";
+  else if (mappingp(msg))
+    return "{" + (map(sort(indices(msg)), // Sort for determinism (cachability)
+		      lambda (string ind)
+		      {
+			return encode_json(ind) + ":" + encode_json(msg[ind]);
+		      }) * ",") + "}";
+  return (string)msg;
+}
+
+//! Fetch remaining result as JSON, utf8 encoded.
+int|string fetch_json_result()
+{
+  if (arrayp(master_res) || !master_res->fetch_json_result) {
+    array res = ({});
+    for (;;) {
+      array row = fetch_row();
+      if (!row)
+	break;
+      res += ({ row });
+    }
+    return string_to_utf8(encode_json(res));
+  }
+  index = num_rows();
+  return master_res->fetch_json_result();
+}

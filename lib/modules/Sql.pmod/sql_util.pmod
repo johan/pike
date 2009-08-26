@@ -141,6 +141,12 @@ class UnicodeWrapper (
     }
     return row;
   }
+
+  //! JSON is always utf8 default, do nothing.
+  int|string fetch_json_result()
+  {
+    return master_result->fetch_json_result();
+  }
 }
 
 #if constant (Mysql.mysql.HAVE_MYSQL_FIELD_CHARSETNR)
