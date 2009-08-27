@@ -683,12 +683,13 @@ static void f_fetch_json_result(INT32 args)
 #ifdef HAVE_MYSQL_FETCH_LENGTHS
   FETCH_LENGTHS_TYPE *row_lengths;
 #endif /* HAVE_MYSQL_FETCH_LENGTHS */
+  struct string_builder res;
+  int r = 0;
 
   if (!PIKE_MYSQL_RES->result) {
     Pike_error("Can't fetch data from an uninitialized result object.\n");
   }
 
-  struct string_builder res;
   init_string_builder(&res, 0);
   string_builder_putchar(&res, '[');
 
@@ -697,7 +698,6 @@ static void f_fetch_json_result(INT32 args)
 
   pop_n_elems(args);
 
-  int r = 0;
 next_row:
   row = mysql_fetch_row(PIKE_MYSQL_RES->result);
 #ifdef HAVE_MYSQL_FETCH_LENGTHS
