@@ -652,12 +652,14 @@ static int do_inflate(dynamic_buffer *buf,
 		      int flush)
 {
   int fail=0;
-  ONERROR uwp;
 
+#ifdef _REENTRANT
+  ONERROR uwp;
   THREADS_ALLOW();
   mt_lock(& this->lock);
   THREADS_DISALLOW();
   SET_ONERROR (uwp, do_mt_unlock, &this->lock);
+#endif
 
   if(!this->gz.state)
   {
@@ -708,7 +710,9 @@ static int do_inflate(dynamic_buffer *buf,
     } while(!this->gz.avail_out || flush==Z_FINISH || this->gz.avail_in);
   }
 
+#ifdef _REENTRANT
   CALL_AND_UNSET_ONERROR (uwp);
+#endif
   return fail;
 }
 
