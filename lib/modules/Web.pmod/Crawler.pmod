@@ -579,7 +579,7 @@ class ComplexQueue(Stats stats, Policy policy)
       return -1;
 
     //    policy->min_delay_per_host
-    URIStack uri_stack=host_heap->top();
+    URIStack uri_stack = host_heap->pop();
     if(!uri_stack->size())
       return 0;
     
