@@ -1123,9 +1123,18 @@ class Message {
   {
     if(sizeof(entry)) {
       if(sizeof(entry)<3 || entry[1]!='=' || !stringp(entry[0]))
-	if(guess)
-	  return; // just ignore the broken data we failed to parse
-	else
+	if(guess) {
+	  if ((sizeof(entry) == 1) && stringp(entry[0])) {
+	    if (sizeof(entry = (entry[0]/"-")) > 1) {
+	      // Assume there's a typo where the '=' has been replaced
+	      // with a '-'.
+	      entry = ({ entry[0], '=', entry[1..]*"-" });
+	    }
+	    // Just use the entry as a param with "" as the value.
+	  }
+	  else
+	    return; // just ignore the broken data we failed to parse
+	} else
 	  error("invalid parameter %O in %s %O (%O)\n",
 		entry[0], header, headers[lower_case(header)], guess);
       string param = lower_case(entry[0]);
