@@ -2869,10 +2869,25 @@ PMOD_EXPORT void o_or(void)
     
   case T_ARRAY:
   {
-    struct array *a;
-    a=merge_array_with_order(sp[-2].u.array, sp[-1].u.array, PIKE_ARRAY_OP_OR_LEFT);
-    pop_n_elems(2);
-    push_array(a);
+    if (sp[-1].u.array->size == 1) {
+      /* Common case (typically the |= operator). */
+      int i = array_search(sp[-2].u.array, sp[-1].u.array->item, 0);
+      if (i == -1) {
+	f_add(2);
+      } else {
+	pop_stack();
+      }
+    } else if ((sp[-2].u.array == sp[-1].u.array) &&
+	       (sp[-1].u.array->refs == 2)) {
+      /* Not common, but easy to detect... */
+      pop_stack();
+    } else {
+      struct array *a;
+      a=merge_array_with_order(sp[-2].u.array, sp[-1].u.array,
+			       PIKE_ARRAY_OP_OR_LEFT);
+      pop_n_elems(2);
+      push_array(a);
+    }
     return;
   }
 
