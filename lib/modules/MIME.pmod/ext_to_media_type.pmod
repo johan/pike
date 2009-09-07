@@ -839,3 +839,8 @@ protected mapping ext2type = ([
 string `()(string ext) {
   return small_ext2type[ext] || ext2type[ext];
 }
+
+protected mixed cast(string to)
+{
+  if(to=="mapping") return small_ext2type + ext2type;
+}
