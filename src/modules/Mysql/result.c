@@ -663,14 +663,12 @@ static void json_escape(struct string_builder *res,
 
 /*! @decl int|string fetch_json()
  *!
- *! Fetch all remaining rows and return JSON, utf8 encoded.
+ *! Fetch all remaining rows and return then as JSON encoded data.
  *!
  *! Returns @expr{0@} (zero) XXX.
  *!
  *! @seealso
  *!   @[fetch_row()]
- *!
- *! FIXME: Encode binary fields as utf8.
  *!
  */
 static void f_fetch_json_result(INT32 args)
