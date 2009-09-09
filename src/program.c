@@ -7623,6 +7623,16 @@ int report_compiler_dependency(struct program *p)
 /*! @class CompilerEnvironment
  *!
  *!   The compiler environment.
+ *!
+ *!   By inheriting this class and overloading the functions,
+ *!   it is possible to make a custom Pike compiler.
+ *!
+ *! @note
+ *!   Prior to Pike 7.8 this sort of customization has to be done
+ *!   either via custom master objects, or via @[CompilationHandler]s.
+ *!
+ *! @seealso
+ *!   @[CompilationHandler], @[MasterObject], @[master()], @[replace_master()]
  */
 
 /*! @decl enum SeverityLevel
