@@ -669,7 +669,7 @@ static void json_escape(struct string_builder *res,
  *!   @[fetch_row()]
  *!
  *! @fixme
- *!   Ensure that all fields (including binary fileds) are UTF-8 encoded.
+ *!   Ensure that all fields (including binary fields) are UTF-8 encoded.
  */
 static void f_fetch_json_result(INT32 args)
 {
