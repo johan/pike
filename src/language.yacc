@@ -468,7 +468,7 @@ facet: TOK_FACET TOK_IDENTIFIER ':' idents ';'
 #ifdef WITH_FACETS
     struct object *o;
     if (Pike_compiler->compiler_pass == 1) {
-      if (Pike_compiler->new_program->facet_class == PROGRAM_IS_FACET_CLASS) {
+      if (Pike_compiler->new_program->flags & PROGRAM_IS_FACET) {
 	yyerror("A class can only belong to one facet.");
       }
       else {
@@ -478,11 +478,12 @@ facet: TOK_FACET TOK_IDENTIFIER ':' idents ';'
 	  o = Pike_sp[-1].u.object;
 	  ref_push_string($2->u.sval.u.string);
 	  push_int(Pike_compiler->new_program->id);
-	  push_int(Pike_compiler->new_program->facet_class);
+	  push_int(!!(Pike_compiler->new_program->flags & PROGRAM_IS_PRODUCT));
 	  safe_apply(o, "add_facet_class", 3);
 	  if (Pike_sp[-1].type == T_INT &&
 	      Pike_sp[-1].u.integer >= 0) {
-	    Pike_compiler->new_program->facet_class = PROGRAM_IS_FACET_CLASS;
+	    Pike_compiler->new_program->flags &= ~PROGRAM_IS_PRODUCT;
+	    Pike_compiler->new_program->flags |= PROGRAM_IS_FACET;
 	    Pike_compiler->new_program->facet_index = Pike_sp[-1].u.integer;
 	    add_ref(Pike_compiler->new_program->facet_group = o);
 	  }
@@ -530,7 +531,7 @@ inheritance: modifiers TOK_INHERIT inherit_ref optional_rename_inherit ';'
     /* If this is a product class, check that all product classes in its
      * facet-group inherit from all facets */
     if($3 && Pike_compiler->compiler_pass == 2) {
-      if (Pike_compiler->new_program->facet_class==PROGRAM_IS_PRODUCT_CLASS){
+      if (Pike_compiler->new_program->flags & PROGRAM_IS_PRODUCT) {
 	if (!Pike_compiler->new_program->facet_group)
 	  yyerror("Product class without facet group.");
 	else {
