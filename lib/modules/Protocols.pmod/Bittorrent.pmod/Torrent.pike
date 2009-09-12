@@ -140,6 +140,9 @@ void load_metainfo(string filename)
    if (!s)
       error("Failed to read metainfo file %O: %s\n",
 	    filename,strerror(errno()));
+   catch {
+     s = utf8_to_string(s);
+   };
    mixed err=catch {
      decode_metainfo(s);
    };
