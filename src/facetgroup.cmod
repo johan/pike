@@ -38,12 +38,14 @@ DECLARATIONS
 /*! @class FacetGroup
  *! 
  *! This class is used to handle facets in the system. All facets 
- *! in the system have to belong to a facet group. The facet 
+ *! in the system have to belong to a facet group. A facet 
  *! group is a pike module that inherits from this class. For 
  *! example you can create a file MyFacetgroup.pmod with the following
  *! content:
  *!
- *! @expr{inherit FacetGroup; @}
+ *! @code
+ *!   inherit FacetGroup;
+ *! @endcode
  *!
  *! You can then use the facet group MyFacetGroup in a facet-class 
  *! like this:
