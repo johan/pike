@@ -638,6 +638,11 @@ Pike.msi: Pike.wixobj Pike_ui.wixobj Pike_module.msm Pike_banner.bmp UpFldrBtn.i
 
 wix: Pike.msi
 
+wix_export: Pike.msi
+	VER=`$(RUNPIKE) --dumpversion` ;\
+	cp Pike.msi $(BASEDIR)/Pike-v$(VER)-win32.msi ;\
+	cp config.info $(BASEDIR)/Pike-v$(VER)-win32.info
+
 force :
 	@:
 
