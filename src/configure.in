@@ -789,7 +789,7 @@ case "$pike_cv_sys_os" in
    ;;
 esac
 
-# Skip fi user does not wish to use smartlink binary.
+# Skip if user does not wish to use smartlink binary.
 if test "x$force_smartlink_script_only" = "x"; then
 # Strip smartlink from $CC
 REALCC="`echo $CC|sed -e 's/.*smartlink //'`"
@@ -5971,7 +5971,7 @@ else
 fi
 
 #############################################################################
-AC_ARG_WITH(copt, MY_DESCR([--without-mmx], [disable MMX usage]), [], [with_mmx=])
+AC_ARG_WITH(mmx, MY_DESCR([--without-mmx], [disable MMX usage]), [], [with_mmx=])
 
 mmx_reason=' (no mmx.h found)'
 if test "x$with_mmx" = xno; then
