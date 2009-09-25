@@ -214,7 +214,7 @@ do_dump: {
 
       }) && programp (p))
     {
-      if(!p->dont_dump_module && !p->dont_dump_program)
+      if(!p->dont_dump_module && !p->dont_dump_program && !p->this_program_does_not_exist)
       {
 	string s;
 	if ((err = catch {
