@@ -5090,6 +5090,19 @@ void test()
     return 1;
   ]], 1)
 
+  test_any([[
+    Stdio.write_file ("testsuite_test.pike", #"\
+      int main()
+      {
+	Thread.Mutex m = Thread.Mutex();
+	Thread.MutexKey l = m->lock();
+	Thread.thread_create (lambda () {m->lock(); exit (0);});
+	call_out (destruct, 0, l);
+	return -1;
+      }");
+    return Process.system (RUNPIKE +" testsuite_test.pike");
+  ]], 0)
+
 cond_end // thread_create
 
 cond([[0]],
