@@ -635,9 +635,12 @@ static void mysql__sprintf(INT32 args)
 
       if (socket) {
 	const char *info;
-	MYSQL_ALLOW();
+	/* _sprintf functions must not hang. mysql_get_host_info is
+	 * safe to execute anyway, because it only returns a field in
+	 * the MYSQL struct. */
+	/* MYSQL_ALLOW(); */
 	info = mysql_get_host_info(socket);
-	MYSQL_DISALLOW();
+	/* MYSQL_DISALLOW(); */
 	push_text("mysql(/*%s%s*/)");
 	push_text(info);
 	push_text("");
