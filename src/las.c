@@ -3468,8 +3468,10 @@ void fix_type_field(node *n)
     else {
       node *low = CADR (n), *high = CDDR (n);
       n->type = range_type(CAR(n)->type,
-			   low->token == F_RANGE_OPEN ? NULL : CAR (low)->type,
-			   high->token == F_RANGE_OPEN ? NULL : CAR (high)->type);
+			   ((low->token == F_RANGE_OPEN) || !CAR(low)) ?
+			   NULL : CAR (low)->type,
+			   ((high->token == F_RANGE_OPEN) || !CAR(high)) ?
+			   NULL : CAR (high)->type);
     }
     break;
 
