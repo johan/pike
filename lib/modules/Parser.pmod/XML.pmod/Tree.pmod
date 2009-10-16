@@ -998,16 +998,33 @@ static class VirtualNode {
     mShortNamespace = "";
     if (sizeof(mNamespace)) {
       if (!(mShortNamespace = forward_lookup[mNamespace])) {
-	// We need to allocate a short namespace symbol.
-	// FIXME: This is O(n²).
-	int i;
-	while(backward_lookup[mShortNamespace = ("NS"+i+":")]) {
-	  i++;
+	string found;
+	string full_name = get_full_name();
+	// Check if there are any longer namespaces that might match.
+	foreach(forward_lookup; string long;) {
+	  if (has_prefix(full_name, long) &&
+	      (!found || (sizeof(found) < sizeof(long)))) {
+	    found = long;
+	    break;
+	  }
 	}
-	backward_lookup[mShortNamespace] = mNamespace;
-	forward_lookup[mNamespace] = mShortNamespace;
-	attrs["xmlns:NS"+i] = mNamespace;
-	short_attrs["xmlns:NS"+i] = mNamespace;
+
+	if (found) {
+	  mTagName = full_name[sizeof(found)..];
+	  mNamespace = found;
+	  mShortNamespace = forward_lookup[found];
+	} else {
+	  // We need to allocate a short namespace symbol.
+	  // FIXME: This is O(n²).
+	  int i;
+	  while(backward_lookup[mShortNamespace = ("NS"+i+":")]) {
+	    i++;
+	  }
+	  backward_lookup[mShortNamespace] = mNamespace;
+	  forward_lookup[mNamespace] = mShortNamespace;
+	  attrs["xmlns:NS"+i] = mNamespace;
+	  short_attrs["xmlns:NS"+i] = mNamespace;
+	}
       }
     }
     // Then set the short namespaces for any attributes.
