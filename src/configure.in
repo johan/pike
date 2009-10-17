@@ -8405,6 +8405,12 @@ if test "x$RCEXE" != x; then
 fi
 AC_SUBST(PIKE_ICON_RES)
 
+if test "x$enable_pikelib" != "xno"; then
+  # Everything needs to be compiled for library use.
+  CFLAGS="$CFLAGS $CCSHARED"
+  CCSHARED=""
+fi
+
 #############################################################################
 
 echo
