@@ -2758,7 +2758,7 @@ static void f_normalize_path(INT32 args)
     if (!wfile) SIMPLE_OUT_OF_MEMORY_ERROR ("normalize_path", (l + 1) * 2);
     SET_ONERROR (wfile_uwp, free, wfile);
     wfile[l] = 0;
-    while (l--) wfile[l] = file[l];
+    while (l--) wfile[l] = (unsigned char) file[l];
 
     hres = isf->lpVtbl->ParseDisplayName (isf, NULL, NULL, wfile,
 					  NULL, &idl, NULL);
