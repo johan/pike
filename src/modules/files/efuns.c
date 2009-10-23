@@ -442,8 +442,8 @@ void f_file_stat(INT32 args)
 
   if(args<1)
     SIMPLE_TOO_FEW_ARGS_ERROR("file_stat", 1);
-  if(sp[-args].type != T_STRING)
-    SIMPLE_BAD_ARG_ERROR("file_stat", 1, "string");
+  if((sp[-args].type != T_STRING) || sp[-args].u.string->size_shift)
+    SIMPLE_BAD_ARG_ERROR("file_stat", 1, "string(0..255)");
 
   str = sp[-args].u.string;
   l = (args>1 && !UNSAFE_IS_ZERO(sp+1-args))?1:0;
