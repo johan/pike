@@ -1466,8 +1466,11 @@ static void img_png_decode(INT32 args, int mode)
      pop_stack();
 
      if(trns)
-       CALL_AND_UNSET_ONERROR(err);
+       UNSET_ONERROR(err);
    }
+
+   if (trns)
+     png_free_string (trns);
 
    if ( mode != MODE_IMAGE_ONLY )
    {
