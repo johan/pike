@@ -2504,8 +2504,15 @@ static void dbdate_sprintf(INT32 args)
 		   &bsize,
 		   buffer);
 		
-  if(!IS_SUCCESS(rc))
+  if(!IS_SUCCESS(rc)) {
+    if (mode == 'O') {
+      /* Be fault tolerant in debug mode. */
+      pop_n_elems (args);
+      push_undefined();
+      return;
+    }
     ora_error_handler(get_global_error_handle(), rc,"OCIDateToText");
+  }
 
   pop_n_elems(args);
   push_text(buffer);
