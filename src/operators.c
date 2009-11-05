@@ -324,7 +324,7 @@ PMOD_EXPORT void o_cast_to_int(void)
     if( (sp[-1].u.string->len >= 10) || sp[-1].u.string->size_shift )
       convert_stack_top_string_to_inumber(10);
     else
-#else
+#endif /* AUTO_BIGNUM */
     {
       INT_TYPE i = STRTOL(sp[-1].u.string->str, 0, 10);
       free_string(sp[-1].u.string);
@@ -332,7 +332,6 @@ PMOD_EXPORT void o_cast_to_int(void)
       sp[-1].subtype = NUMBER_NUMBER;
       sp[-1].u.integer=i;
     }
-#endif /* AUTO_BIGNUM */
     break;
 
   case PIKE_T_INT:
