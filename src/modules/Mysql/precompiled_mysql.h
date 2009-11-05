@@ -72,6 +72,7 @@ struct precompiled_mysql_result {
   struct object *connection;
   MYSQL_RES	*result;
   int eof;
+  int typed_mode;
 };
 
 /*
