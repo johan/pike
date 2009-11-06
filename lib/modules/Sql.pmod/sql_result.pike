@@ -86,7 +86,7 @@ void seek(int skip) {
 //!   @endmixed
 //!
 //! @note
-//!    @tt{TYPED@}-operation was not supported at all prior to Pike 7.8.361,
+//!    @tt{TYPED@}-operation was not supported at all prior to Pike 7.8.363,
 //!    and may not be supported for all databases.
 int|array(string|int|float) fetch_row();
 

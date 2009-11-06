@@ -633,7 +633,7 @@ int|object big_typed_query(object|string q, mixed ... extraargs)
     pre_res = master_sql->big_typed_query(q);
   }
 
-  if(pre_res) return .sql_object_result(pre_res, 3);
+  if(pre_res) return .sql_object_result(pre_res);
   return 0;
 }
 
