@@ -1066,6 +1066,16 @@ test_compile_any([[
   mixed a() {return map (x, lower_case);}
 ]])
 
+test_compile_any([[
+  class X {
+    X bar();
+  }
+  class Y {
+    constant X = global::X;
+    X foo();
+  }
+]])
+
 cond( [[ master()->resolv("Pike")->Security ]],[[
   test_any( [[
   // bug [2830] ------------------------------------------------------------
