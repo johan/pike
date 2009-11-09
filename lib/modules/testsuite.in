@@ -723,6 +723,8 @@ dnl - Mapping
 dnl Mapping.delete
 dnl Mapping.Iterator
 
+test_do(get_iterator(([1:1]))->_random())
+
 dnl - Multiset
 dnl Multiset.Iterator
 
