@@ -175,7 +175,7 @@ PMOD_EXPORT /*@null@*/ void *pike_realloc(void *ptr, size_t sz)
 			islower(x) ? (x) + 10 - 'a' : (x) + 10 - 'A')
 #define MBASE	('z' - 'a' + 1 + 10)
 
-long STRTOL(const char *str, char **ptr, int base)
+PMOD_EXPORT long STRTOL(const char *str, char **ptr, int base)
 {
   /* Note: Code duplication in STRTOL_PCHARP and pcharp_to_svalue_inumber. */
 
