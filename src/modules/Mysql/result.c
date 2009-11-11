@@ -626,7 +626,11 @@ static void f_fetch_row(INT32 args)
 	}
       } else {
 	/* NULL */
-	push_undefined();
+	if (PIKE_MYSQL_RES->typed_mode) {
+	  ref_push_object(SqlNULL_object);
+	} else {
+	  push_undefined();
+	}
 	if(i+1<num_fields)
 	  mysql_field_seek(PIKE_MYSQL_RES->result, i+1);
       }
