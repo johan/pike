@@ -9727,7 +9727,7 @@ void init_builtin_efuns(void)
 	   tFunc(tNone,tMap(tString,tOr(tInt,tFloat))),
 	   OPT_EXTERNAL_DEPEND);
   ADD_FUNCTION ("implicit_gc_real_time", f_implicit_gc_real_time,
-		tFunc(tNone,tInt), OPT_EXTERNAL_DEPEND);
+		tFunc(tOr(tInt,tVoid),tInt), OPT_EXTERNAL_DEPEND);
   ADD_FUNCTION ("count_memory", f_count_memory,
 		tFuncV(tOr(tInt,tMap(tString,tInt)),
 		       tOr8(tArray,tMultiset,tMapping,tObj,tPrg(tObj),
