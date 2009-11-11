@@ -710,6 +710,9 @@ Mysql.mysql_result big_query (string query,
 //!   A @[Mysql.mysql_result] object is returned if the query is of a
 //!   kind that returns a result. Zero is returned otherwise.
 //!
+//!   The individual fields are returned as strings except for @tt{NULL@},
+//!   which is returned as @[UNDEFINED].
+//!
 //! @seealso
 //!   @[Sql.big_query()], @[big_typed_query()], @[streaming_query()]
 {
@@ -744,8 +747,8 @@ Mysql.mysql_result big_typed_query (string query,
 //! The types of the result fields depend on the corresponding SQL types.
 //! They are mapped as follows:
 //! @mixed
-//!   @type zero
-//!     The @tt{NULL@} value is returned as @[UNDEFINED].
+//!   @type Sql.Null
+//!     The @tt{NULL@} value is returned as @[Sql.NULL].
 //!   @type int
 //!     Integer values are returned as @tt{int@} values.
 //!   @type float
