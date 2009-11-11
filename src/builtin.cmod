@@ -3365,7 +3365,7 @@ PIKECLASS SqlNull
     }
   }
 
-  PIKEFUN int _hash()
+  PIKEFUN int __hash()
     flags ID_PROTECTED;
   {
     pop_n_elems(args);
