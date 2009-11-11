@@ -189,6 +189,11 @@ test_hilfe("b->i;", "3");
 test_hilfe("sscanf(\"abc\"[0..2],\"%s\",string s);", "1")
 test_hilfe("s;","\"abc\"")
 
+test_hilfe("new", "")
+test_hilfe("int a = 3;", "")
+test_hilfe("int b = 23;", "")
+test_hilfe("a & b;", "3")
+
 test_do( add_constant("testhilfe") )
 
 test_true([[ Tools.Hilfe.StdinHilfe ]])

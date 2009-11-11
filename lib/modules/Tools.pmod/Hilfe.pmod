@@ -1104,7 +1104,7 @@ class Expression {
         continue;
       }
 
-      if( `[](position+1)=="|" ) {
+      if( (< "|", "&" >)[`[](position+1)] ) {
 	return endoftype(position+2);
       }
 
