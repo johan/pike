@@ -71,6 +71,7 @@ constant SelectBackend = __builtin.SelectBackend;
 constant DefaultBackend = __builtin.__backend;
 
 constant gc_parameters = __builtin.gc_parameters;
+constant implicit_gc_real_time = __builtin.implicit_gc_real_time;
 constant count_memory = __builtin.count_memory;
 
 constant get_runtime_info = __builtin.get_runtime_info;

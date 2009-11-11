@@ -329,6 +329,7 @@ void do_gc_recurse_short_svalue(union anything *u, int type);
 int gc_do_free(void *a);
 size_t do_gc(void *ignored, int explicit_call);
 void f__gc_status(INT32 args);
+void f_implicit_gc_real_time (INT32 args);
 void f_count_memory (INT32 args);
 void cleanup_gc(void);
 
