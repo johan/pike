@@ -46,8 +46,7 @@ struct replace_many_context
   int flags;
 };
 
-extern struct object *SqlNULL_object;
-extern struct program *SqlNull_program;
+PMOD_EXPORT struct object *get_sql_null(void);
 
 PMOD_EXPORT void f_equal(INT32 args);
 PMOD_EXPORT void f_hash(INT32 args);

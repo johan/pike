@@ -4156,7 +4156,13 @@ PIKECLASS MasterCodec
 /*! @endmodule
  */
 
-struct object *SqlNULL_object;
+static struct object *SqlNULL_object;
+
+/* Proxy function needed for dynamic linkage on WIN32. */
+PMOD_EXPORT struct object *get_sql_null(void)
+{
+  return SqlNULL_object;
+}
 
 void init_builtin(void)
 {
