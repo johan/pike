@@ -1040,7 +1040,7 @@ void ia32_flush_instruction_cache(void *start, size_t len)
 	clflush [eax];
       }
 #else  /* USE_GCC_IA32_ASM_STYLE */
-#ifdef HAVE_ASM_CLFLUSH
+#if 1
       __asm__ __volatile__("clflush %0" :: "m" (*addr));
 #else
       /* clflush (%eax) */
