@@ -2973,6 +2973,7 @@ class GenericAsyncHilfe
 
   void write_callback()
   {
+    if (!sizeof(outbuffer)) return;
     int i=outfile->write(outbuffer);
     outbuffer=outbuffer[i..];
   }
