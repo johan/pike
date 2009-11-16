@@ -121,7 +121,9 @@ constant ALERT_descriptions = (< ALERT_close_notify,
  				 ALERT_certificate_revoked,
  				 ALERT_certificate_expired,
  				 ALERT_certificate_unknown,
- 				 ALERT_illegal_parameter >);
+				 ALERT_illegal_parameter,
+				 ALERT_no_renegotiation,
+			      >);
  			      
 constant CONNECTION_client 	= 0;
 constant CONNECTION_server 	= 1;
