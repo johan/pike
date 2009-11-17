@@ -908,7 +908,7 @@ void init_rusage (void)
   else
 #endif
 
-#ifdef MIGHT_HAVE_POSIX_THREAD_GCT
+#ifdef MIGHT_HAVE_POSIX_PROCESS_GCT
     if (sysconf (_SC_CPUTIME) > 0 && posix_cputime_is_reliable()) {
 #ifndef cpu_time_is_thread_local
       cpu_time_is_thread_local = 0;
