@@ -5104,6 +5104,10 @@ class Encoder
 #endif
 	  }
 	}
+	if (prog == object_program(_static_modules)) {
+	  ENC_MSG ("  got _static_modules.\n");
+	  ENC_RETURN ("c" + "_static_modules");
+	}
       }
 
       if (string path = fc_reverse_lookup (what)) {
