@@ -276,6 +276,11 @@ void create(string|object host, void|string|mapping(string:int|string) db,
       } else {
 	master_sql = p();
       }
+      if (!master_sql->query && !master_sql->big_query) {
+	master_sql = UNDEFINED;
+	ERROR("Failed to index module Sql.%s or Sql.Provider.%s.\n",
+	      program_name, program_name);
+      }
     } else {
       ERROR("Failed to index module Sql.%s or Sql.Provider.%s.\n",
 	    program_name, program_name);
