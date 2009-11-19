@@ -1207,12 +1207,17 @@ node *debug_mkexternalnode(struct program *parent_prog, int i)
   res->u.integer.a = parent_prog->id;
   res->u.integer.b = i;
 
-  /* Bzot-i-zot */
-  state = Pike_compiler;
-  while(parent_prog != state->new_program)
-  {
-    state->new_program->flags |= PROGRAM_USES_PARENT | PROGRAM_NEEDS_PARENT;
-    state=state->previous;
+  /* Don't do this if res about to get inherited, since the inherit won't
+   * be affected by later overloading of the inherited class in our parents.
+   */
+  if (!(Pike_compiler->flags & COMPILATION_FORCE_RESOLVE)) {
+    /* Bzot-i-zot */
+    state = Pike_compiler;
+    while(parent_prog != state->new_program)
+    {
+      state->new_program->flags |= PROGRAM_USES_PARENT | PROGRAM_NEEDS_PARENT;
+      state=state->previous;
+    }
   }
 
   return res;
