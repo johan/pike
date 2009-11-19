@@ -1210,7 +1210,7 @@ node *debug_mkexternalnode(struct program *parent_prog, int i)
   /* Don't do this if res about to get inherited, since the inherit won't
    * be affected by later overloading of the inherited class in our parents.
    */
-  if (!(Pike_compiler->flags & COMPILATION_FORCE_RESOLVE)) {
+/*   if (!(Pike_compiler->flags & COMPILATION_FORCE_RESOLVE)) { */
     /* Bzot-i-zot */
     state = Pike_compiler;
     while(parent_prog != state->new_program)
@@ -1218,7 +1218,7 @@ node *debug_mkexternalnode(struct program *parent_prog, int i)
       state->new_program->flags |= PROGRAM_USES_PARENT | PROGRAM_NEEDS_PARENT;
       state=state->previous;
     }
-  }
+/*   } */
 
   return res;
 #endif /* 0 */
