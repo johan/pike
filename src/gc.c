@@ -3732,6 +3732,21 @@ size_t do_gc(void *ignored, int explicit_call)
 	  /* Can't do this while the list is being freed below. */
 	  CHECK_KILL_LIST_FRAME (r);
       }
+
+      /* A helper to locate garbage through trampolines.
+       * FIXME: This ought to be accessible even when pike is compiled
+       * without rtldebug. */
+      if (gc_trace >= 3 && !gc_destruct_everything) {
+	struct gc_rec_frame *r;
+	for (r = kill_list; r != &sentinel_frame; r = r->next) {
+	  struct object *o = (struct object *) r->data;
+	  if (o->prog == pike_trampoline_program && o->refs > 1) {
+	    fprintf (stderr, "Got trampoline garbage:\n");
+	    describe_something (o, T_OBJECT, 0, 0, 0, NULL);
+	    locate_references (o);
+	  }
+	}
+      }
 #endif
 
     while (kill_list != &sentinel_frame) {
