@@ -4383,6 +4383,27 @@ PMOD_EXPORT void low_inherit(struct program *p,
 	       "compiler cannot handle.)");
     }
 
+
+    if(p->flags & PROGRAM_NEEDS_PARENT)
+    {
+      struct program_state *state=Pike_compiler;
+
+      if(!parent && !parent_offset)
+      {
+	yyerror("Parent pointer lost, cannot inherit!");
+	/* We've inherited it anyway, to avoid causing more errors */
+      }
+
+#if 0
+      /* FIXME: we don't really need to set this flag on ALL
+       * previous compilations, but I'm too lazy to figure out
+       * exactly how deep down we need to go...
+       */
+      for(e=0;e<c->compilation_depth;e++,state=state->previous)
+	state->new_program->flags |= PROGRAM_USES_PARENT;
+#endif
+    }
+
     return;
   }
 
@@ -4402,26 +4423,6 @@ PMOD_EXPORT void low_inherit(struct program *p,
   if (p == placeholder_program) {
     yyerror("Trying to inherit placeholder program (resolver problem).");
     return;
-  }
-
-  if(p->flags & PROGRAM_NEEDS_PARENT)
-  {
-    struct program_state *state=Pike_compiler;
-
-    if(!parent && !parent_offset)
-    {
-      yyerror("Parent pointer lost, cannot inherit!");
-      /* We inherit it anyway, to avoid causing more errors */
-    }
-
-#if 0
-    /* FIXME: we don't really need to set this flag on ALL
-     * previous compilations, but I'm too lazy to figure out
-     * exactly how deep down we need to go...
-     */
-    for(e=0;e<c->compilation_depth;e++,state=state->previous)
-      state->new_program->flags |= PROGRAM_USES_PARENT;
-#endif
   }
 
  /* parent offset was increased by 42 for above test.. */
@@ -4674,6 +4675,18 @@ void compiler_do_inherit(node *n,
 		      offset+42,
 		      flags,
 		      name);
+	}
+	if (n->token == F_EXTERNAL) {
+	  struct program *p=program_from_svalue(s);
+	  if (p->flags & (PROGRAM_NEEDS_PARENT|PROGRAM_NEEDS_PARENT)) {
+	    /* We'll need the parent pointer as well... */
+	    struct program_state *state = Pike_compiler;
+
+	    while (state && (state->new_program->id != n->u.integer.a)) {
+	      state->new_program->flags |= PROGRAM_NEEDS_PARENT|PROGRAM_USES_PARENT;
+	      state = state->previous;
+	    }
+	  }
 	}
       }else{
 	yyerror("Inherit identifier is not a constant program");

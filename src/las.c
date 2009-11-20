@@ -1207,6 +1207,7 @@ node *debug_mkexternalnode(struct program *parent_prog, int i)
   res->u.integer.a = parent_prog->id;
   res->u.integer.b = i;
 
+#if 0
   /* Don't do this if res about to get inherited, since the inherit won't
    * be affected by later overloading of the inherited class in our parents.
    */
@@ -1219,6 +1220,7 @@ node *debug_mkexternalnode(struct program *parent_prog, int i)
       state=state->previous;
     }
 /*   } */
+#endif /* 0 */
 
   return res;
 #endif /* 0 */

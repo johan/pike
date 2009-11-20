@@ -870,6 +870,7 @@ static int do_docode2(node *n, int flags)
       int level = 0;
       struct program_state *state = Pike_compiler;
       while (state && (state->new_program->id != n->u.integer.a)) {
+	state->new_program->flags |= PROGRAM_USES_PARENT | PROGRAM_NEEDS_PARENT;
 	state = state->previous;
 	level++;
       }
@@ -2529,12 +2530,18 @@ static int do_docode2(node *n, int flags)
 #if 0
 	  struct object *o;
 
-	  for(o=Pike_compiler->fake_object;o!=n->u.sval.u.object;o=o->parent)
+	  for(o=Pike_compiler->fake_object;o!=n->u.sval.u.object;o=o->parent) {
+	    state->new_program->flags |=
+	      PROGRAM_USES_PARENT | PROGRAM_NEEDS_PARENT;
 	    x++;
+	  }
 #else
 	  struct program_state *state=Pike_compiler;
-	  for(;state->fake_object!=n->u.sval.u.object;state=state->previous)
+	  for(;state->fake_object!=n->u.sval.u.object;state=state->previous) {
+	    state->new_program->flags |=
+	      PROGRAM_USES_PARENT | PROGRAM_NEEDS_PARENT;
 	    x++;
+	  }
 #endif
 	  emit2(F_EXTERNAL, n->u.sval.subtype, x);
 	  Pike_compiler->new_program->flags |=
