@@ -272,7 +272,7 @@ protected THREAD_T op_thread;
 #define CHECK_CB_MODE(CUR_THREAD) do {					\
     if (Pike.Backend backend = stream && stream->query_backend()) {	\
       THREAD_T backend_thread = backend->executing_thread();		\
-      if (backend_thread != CUR_THREAD &&				\
+      if (backend_thread && backend_thread != CUR_THREAD &&		\
 	  (stream->query_read_callback() ||				\
 	   stream->query_write_callback() ||				\
 	   stream->query_close_callback()))				\
