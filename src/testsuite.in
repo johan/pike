@@ -229,6 +229,37 @@ test_any([[
   return x("")+1+1;
 ]], "11")
 
+test_any([[
+  // Check that parent pointers aren't added unnecessarily [bug 2672].
+  class I {};
+
+  class X
+  {
+    // Neither the inherit nor the variable type should add
+    // a parent pointer requirement.
+    inherit I;
+    I i;
+  };
+
+  X x = ((program) X)(); // Error: Parent lost, cannot clone program.
+  return 0;
+]], 0)
+
+test_eval_error([[
+  // Check that parent pointers aren't added unnecessarily [bug 2672].
+  class I {};
+
+  class X
+  {
+    // The cloning of I makes X need its parent.
+    inherit I;
+    I i = I();
+  };
+
+  X x = ((program) X)(); // Error: Parent lost, cannot clone program.
+  return 0;
+]], 0)
+
 test_compile_any([[
   mixed foo() 
   {
