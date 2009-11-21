@@ -106,3 +106,11 @@ void sparc_disassemble_code(void *addr, size_t bytes);
     }								\
   } while(0)
 #endif /* !PIKE_DEBUG */
+
+#ifdef __GNUC__
+#if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 3)
+/* Avoid an overoptimization bug in gcc 4.3.4 which caused the address
+ * stored in do_inter_return_label to be at the CALL_MACHINE_CODE line. */
+#define EXIT_MACHINE_CODE() do { __asm__ __volatile__(""); } while(0)
+#endif
+#endif
