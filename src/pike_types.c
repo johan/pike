@@ -8022,7 +8022,7 @@ PMOD_EXPORT void visit_type (struct pike_type *t, int action)
 
 void gc_mark_type_as_referenced(struct pike_type *t)
 {
-  if (gc_mark(t)) {
+  if (gc_mark(t, PIKE_T_TYPE)) {
     GC_ENTER(t, PIKE_T_TYPE) {
       switch(t->type) {
       case PIKE_T_SCOPE:

@@ -2583,7 +2583,7 @@ void gc_mark_mapping_as_referenced(struct mapping *m)
   debug_malloc_touch(m);
   debug_malloc_touch(m->data);
 
-  if(gc_mark(m))
+  if(gc_mark(m, T_MAPPING))
     GC_ENTER (m, T_MAPPING) {
       struct mapping_data *md = m->data;
 
@@ -2596,7 +2596,8 @@ void gc_mark_mapping_as_referenced(struct mapping *m)
 	DOUBLELINK(first_mapping, m); /* Linked in first. */
       }
 
-      if(gc_mark(md) && ((md->ind_types | md->val_types) & BIT_COMPLEX)) {
+      if(gc_mark(md, T_MAPPING_DATA) &&
+	 ((md->ind_types | md->val_types) & BIT_COMPLEX)) {
 	TYPE_FIELD ind_types = 0, val_types = 0;
 	if (MAPPING_DATA_IN_USE(md)) {
 	  /* Must leave the mapping data untouched if it's busy. */

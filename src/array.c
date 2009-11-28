@@ -2689,7 +2689,7 @@ static void gc_check_array(struct array *a)
 
 void gc_mark_array_as_referenced(struct array *a)
 {
-  if(gc_mark(a))
+  if(gc_mark(a, T_ARRAY))
     GC_ENTER (a, T_ARRAY) {
       if (a == gc_mark_array_pos)
 	gc_mark_array_pos = a->next;

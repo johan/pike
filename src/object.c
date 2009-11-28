@@ -2027,7 +2027,7 @@ PMOD_EXPORT void gc_mark_object_as_referenced(struct object *o)
   debug_malloc_touch(o);
   debug_malloc_touch(o->storage);
 
-  if(gc_mark(o)) {
+  if(gc_mark(o, T_OBJECT)) {
     if(o->next == o) return; /* Fake object used by compiler */
 
     GC_ENTER (o, T_OBJECT) {

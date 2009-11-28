@@ -4163,7 +4163,7 @@ static void gc_unlink_msnode_shared (struct multiset_data *msd,
 
 void gc_mark_multiset_as_referenced (struct multiset *l)
 {
-  if (gc_mark (l))
+  if (gc_mark (l, T_MULTISET))
     GC_ENTER (l, T_MULTISET) {
       struct multiset_data *msd = l->msd;
 
@@ -4176,7 +4176,7 @@ void gc_mark_multiset_as_referenced (struct multiset *l)
 	DOUBLELINK (first_multiset, l); /* Linked in first. */
       }
 
-      if (gc_mark (msd) && msd->root &&
+      if (gc_mark (msd, T_MULTISET_DATA) && msd->root &&
 	  ((msd->ind_types | msd->val_types) & BIT_COMPLEX)) {
 	struct marker *m = get_marker (msd);
 	TYPE_FIELD ind_types = 0, val_types = 0;

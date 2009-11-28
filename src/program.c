@@ -10185,7 +10185,7 @@ void gc_mark_program_as_referenced(struct program *p)
      */
     debug_malloc_touch(p);
 
-    if (gc_mark(p)) {
+    if (gc_mark(p, T_PROGRAM)) {
       if (p == gc_mark_program_pos)
 	gc_mark_program_pos = p->next;
       if (p == gc_internal_program)
@@ -10199,7 +10199,7 @@ void gc_mark_program_as_referenced(struct program *p)
     return;
   }
   
-  if(gc_mark(p))
+  if(gc_mark(p, T_PROGRAM))
     GC_ENTER (p, T_PROGRAM) {
       int e;
 
