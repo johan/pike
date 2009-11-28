@@ -2391,7 +2391,7 @@ PMOD_EXPORT struct pike_string *implode(struct array *a,
   ret=begin_wide_shared_string(len,max_shift);
   r=MKPCHARP_STR(ret);
   len = del->len;
-  if(e = a->size)
+  if((e = a->size))
     for(ae=a->item;;ae++)
     {
       switch(ae->type)
