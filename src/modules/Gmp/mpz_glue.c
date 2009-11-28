@@ -1841,7 +1841,7 @@ static void mpzmod_popcount(INT32 args)
        Pike_sp[-1].u.integer=-1;
 #endif
     break;
-  default:
+  default:;
 #ifdef PIKE_DEBUG
     Pike_fatal("Gmp.mpz->popcount: Unexpected sign!\n");
 #endif
