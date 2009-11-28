@@ -994,7 +994,7 @@ static INLINE int lfun_cmp (const struct svalue *a, const struct svalue *b)
   return 2;
 }
 
-INLINE int set_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
+int set_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
 {
   int res, typediff = a->type - b->type;
 
@@ -1090,7 +1090,7 @@ static int switch_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
   }
 }
 
-static int alpha_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
+int alpha_svalue_cmpfun(const struct svalue *a, const struct svalue *b)
 {
   int res, typediff = a->type - b->type;
 
