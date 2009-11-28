@@ -2470,7 +2470,7 @@ void gc_delayed_free(void *a, int type)
   m->flags |= GC_GOT_DEAD_REF;
 }
 
-int gc_mark_func(void *a DO_IF_DEBUG (COMMA int type))
+int real_gc_mark(void *a DO_IF_DEBUG (COMMA int type))
 {
   struct marker *m;
 
