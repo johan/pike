@@ -6853,6 +6853,10 @@ test_true([[Float.MAX_10_EXP >= 37]])
 test_true([[Float.MIN <= 1e-37]])
 test_true([[Float.MAX >= 1e37]])
 test_true([[Float.EPSILON <= 1e-5]])
+test_true([[1 <= 1.0]])
+test_true([[1 >= 1.0]])
+test_true([[1.0 <= 1]])
+test_true([[1.0 >= 1]])
 
 cond_begin([[ sizeof( cpp("__AUTO_BIGNUM__")/"__AUTO_BIGNUM__" ) == 1 ]])
 
