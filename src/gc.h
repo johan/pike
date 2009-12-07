@@ -50,7 +50,7 @@ extern void *gc_svalue_location;
 #else
 #define GC_ALLOC(OBJ)  do{						\
   LOW_GC_ALLOC(OBJ);							\
-  if(num_allocs == alloc_threshold)		\
+  if(num_allocs >= alloc_threshold)					\
     ADD_GC_CALLBACK();							\
 } while(0)
 #endif
