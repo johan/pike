@@ -2055,9 +2055,14 @@ if test "$cflags_is_set" = "no"; then
         # Darwin x86 runs on Intel Core Solo/Duo (based on Pentium M) and newer
         AC_SYS_COMPILER_FLAG(-march=pentium-m, arch_pentium_m, OPTIMIZE)
         AC_SYS_COMPILER_FLAG(-msse3, opt_sse3, OPTIMIZE)
+        AC_SYS_COMPILER_FLAG(-mfpmath=sse, opt_mfpmath_sse, OPTIMIZE)
 
 	# no-pic required for machine code to work
 	AC_SYS_COMPILER_FLAG(-mdynamic-no-pic, dynamicnopic, OSFLAGS)
+
+	# Silence warnings about not working on systems older than the base
+	# version of the current machine. We'll convert e.g. 10.5.8 to 1050.
+	AC_SYS_COMPILER_FLAG(-DMAC_OS_X_VERSION_MIN_REQUIRED=`sw_vers -productVersion | tr -d . | cut -c -3`0, osxminversion, CFLAGS)
       ;;
       ppc970|ppc7450|ppc7400)
 	# Improve performance on G4 and G5. Note that if the build machine
