@@ -1871,6 +1871,7 @@ PMOD_EXPORT void print_short_svalue_compact (FILE *out, const union anything *a,
   else {
     struct svalue sval;
     sval.type = type;
+    sval.subtype = 0;		/* Just in case type == T_INT. */
     sval.u = *a;
     print_svalue_compact (out, &sval);
   }
