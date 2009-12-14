@@ -324,7 +324,8 @@ typedef mapping(string:ResultAttributeValue) ResultEntry;
 
       foreach (ent; string attr; ResultAttributeValue vals) {
 	if (function(string:string) decoder =
-	    get_attr_decoder (attr, DO_IF_DEBUG (dn == ""))) {
+	    get_attr_decoder (attr, DO_IF_DEBUG (stringp (dn) ?
+						 dn == "" : dn[0] == ""))) {
 	  if (stringp (vals)) {
 	    DECODE_VALUE (attr, vals, decoder);
 	    ent[attr] = vals;
