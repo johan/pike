@@ -1488,6 +1488,8 @@ protected void call_compile_warning (object handler, string file,
   msg = trim_all_whites (msg);
   if (handler && handler->compile_warning)
     handler->compile_warning (file, 0, msg);
+  else if (master()->compile_warning)
+    master()->compile_warning (file, 0, msg);
   else
     compile_warning (file, 0, msg);
 }
