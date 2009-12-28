@@ -3812,6 +3812,8 @@ void _main(array(string) orig_argv)
       // The main reason for this catch is actually to get a new call
       // to eval_instruction in interpret.c so that the debug and
       // trace levels set above take effect in the bytecode evaluator.
+      // Note that it won't work if there's another catch surrounding
+      // this one.
       object script;
       if(cur_compat_ver <= Version(7,4)) {
 	script=prog();
