@@ -181,6 +181,7 @@ PMOD_EXPORT void f_ctime(INT32 args);
 PMOD_EXPORT void f_mkmapping(INT32 args);
 PMOD_EXPORT void f_string_count(INT32 args);
 PMOD_EXPORT void f_string_trim_whites(INT32 args);
+PMOD_EXPORT void f_string_normalize_space(INT32 args);
 PMOD_EXPORT void f_string_trim_all_whites(INT32 args);
 PMOD_EXPORT void f_program_implements(INT32 args);
 PMOD_EXPORT void f_program_inherits(INT32 args);
