@@ -688,7 +688,7 @@ string expand_keywords_for_revision( string|Revision rev, string|void text,
 	result += sprintf( "%s$%s: %s $", before, keyword, expansion );
       else
       {
-	if( sscanf( rest, "%*[^\n]$%s", rest ) != 2 )
+	if( sscanf( rest, "%*[^\n$]$%s", rest ) != 2 )
 	{
 	  result += text;
 	  break;
