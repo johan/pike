@@ -803,8 +803,7 @@ PIKEFUN string string_normalize_space (string s, string|void whitespace)
 	  wstemp = xalloc(wlen<<shift);
 	  pcnws = MKPCHARP(wstemp, shift);
 	  if(wshift>shift) {
-	    PCHARP pcows;
-	    pcows = MKPCHARP_STR(whitespace);
+	    PCHARP pcows = MKPCHARP_STR(whitespace);
 	    size_t clen = wlen, i;
 	    i = wlen = 0;
 	    do {
