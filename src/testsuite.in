@@ -2809,6 +2809,37 @@ test_any([[
   return Y()->foo;
 ]], "middle")
 
+test_any([[
+  // Test symbol lookup in multi-pass.
+  // LysLysKOM 18285732
+  // An old pike will fail with the fatal
+  // "Identifier out of range, loc->parent_identifer=-1!"
+  // during __INIT().
+
+  class A
+  {
+    static string foo = "bar";
+  };
+  
+  string to_compile=#"
+    constant fum = \"gazonk\";
+    
+    class B()
+    {
+       inherit A;
+       string fi()
+       {
+          return fum?1:0;
+       }
+    }
+  ";
+  
+  add_constant("A",A);
+  compile_string(to_compile);
+  add_constant("A");
+  return 0;
+]], 0)
+
 test_any([[string gurk="bozo"; string b(int x) { return (x?b(x-1)+gurk:""); }; return b(5)]],[["bozo"*5]])
 
 dnl this should really work...
