@@ -2810,7 +2810,7 @@ test_any([[
 ]], "middle")
 
 test_any([[
-  // Test symbol lookup in multi-pass.
+  // Test external symbol lookup in las.c:eval_low_safe_and_stupid().
   // LysLysKOM 18285732
   // An old pike will fail with the fatal
   // "Identifier out of range, loc->parent_identifer=-1!"
@@ -2827,7 +2827,7 @@ test_any([[
     class B()
     {
        inherit A;
-       string fi()
+       int fi()
        {
           return fum?1:0;
        }
