@@ -3151,6 +3151,7 @@ cond: TOK_IF
 		mknode(':',
 		       mkcastnode(void_type_string, $8),
 		       mkcastnode(void_type_string, $9)));
+    COPY_LINE_NUMBER_INFO($$, $3);
     $$ = mkcastnode(void_type_string, $$);
     COPY_LINE_NUMBER_INFO($$, $3);
     free_node ($3);
