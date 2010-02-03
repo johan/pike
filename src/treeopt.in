@@ -399,7 +399,7 @@ F_POP_VALUE(0 = F_LOOP, *):
 F_POP_VALUE(0 = F_SWITCH, *):
   $0;
 
-F_POP_VALUE('?'(0, ':'(1, 2)), *):
+F_POP_VALUE(# = '?'(0, ':'(1, 2)), *):
   '?'($0, ':'(F_POP_VALUE($1, -), F_POP_VALUE($2, -)));
 
 
