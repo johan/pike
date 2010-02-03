@@ -85,7 +85,7 @@
 /*
  * Conditionals:
  *
- * During evaluation of the expression $$ referrs to the current node,
+ * During evaluation of the expression $$ refers to the current node,
  * and $tag to prior tagged nodes.
  *
  */
@@ -466,12 +466,31 @@ string fix_extras(string s)
   return a * "";
 }
 
-object(node) read_node()
+object(node) read_node(array(string) linepos)
 {
   object(node) res = node();
 
   eat_whitespace();
   int c = data[pos];
+
+  if (c == '#') {
+    // Line number information holder.
+    linepos[0] = tpos;
+    pos++;
+    eat_whitespace();
+    c = data[pos];
+
+    if ((c != '=') && (c != '[')) {
+      // Implicit any node converted to plus node.
+      res->token = "+";
+      return res;
+    }
+    if (c == '=') {
+      pos++;
+      eat_whitespace();
+      c = data[pos];
+    }
+  }
 
   if (('0' <= c) && (c <= '9')) {
     res->tag = read_int();
@@ -554,7 +573,7 @@ object(node) read_node()
 	}
 	eat_whitespace();
       } else {
-	res->car = res->real_car = read_node();
+	res->car = res->real_car = read_node(linepos);
       }
 
       expect(',');
@@ -581,7 +600,7 @@ object(node) read_node()
 	}
 	eat_whitespace();
       } else {
-	res->cdr = res->real_cdr = read_node();
+	res->cdr = res->real_cdr = read_node(linepos);
       }
 
       tpos = otpos;
@@ -767,7 +786,8 @@ void parse_data()
   while (pos < sizeof(data)) {
     marks = allocate(10);
 
-    object(node) n = read_node();
+    array(string) linepos = ({ "" });
+    object(node) n = read_node(linepos);
 
     // werror(sprintf("%s:\n", n));
 
@@ -848,6 +868,22 @@ void parse_data()
       // Used to force code generation for eg NULL-detection.
       // Obsolete.
       action = "";
+    }
+
+    if (linepos[0] != "") {
+      // Update with linenumber information.
+      action = sprintf("#ifdef PIKE_DEBUG\n"
+		       "  if (l_flag > 4) {\n"
+		       "    fprintf(stderr,\n"
+		       "            \"Setting line position to %%s:%%d\\n\",\n"
+		       "            C%sR(n)->current_file->str,\n"
+		       "            C%sR(n)->line_number);\n"
+		       "  }\n"
+		       "#endif /* PIKE_DEBUG */\n"
+		       "c->lex.current_line = C%sR(n)->line_number;\n"
+		       "c->lex.current_file = C%sR(n)->current_file;\n",
+		       linepos[0], linepos[0], linepos[0], linepos[0]) +
+	action;
     }
 
     action = sprintf("#ifdef PIKE_DEBUG\n"
