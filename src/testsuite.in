@@ -2277,6 +2277,22 @@ test_program([[
   int a() {return y == 3;}
 ]])
 
+dnl This test used to get the last line of the else block
+test_any([[
+  int expected_line;
+  void foo(object o)
+  {
+    expected_line = __LINE__ + 1;
+    if (o->a && b) {
+      o->a = o->b;
+    } else if (o->b) {
+      o->b = o->a;
+    }
+  };
+  mixed err = catch { foo(UNDEFINED); };
+  return err[1][-1][1] - expected_line;
+]], 0)
+
 dnl ----------------------------------------------------------------
 dnl scopes and stuff
 dnl ----------------------------------------------------------------
