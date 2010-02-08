@@ -9208,7 +9208,15 @@ static void f_compilation_apply_attribute_constant(INT32 args)
   struct compilation *c = THIS_COMPILATION;
   struct pike_string *attribute;
   struct pike_string *test;
-  get_all_args("apply_attribute_constant", args, "%S", &attribute);
+  struct svalue *sval;
+  get_all_args("apply_attribute_constant", args, "%S%*", &attribute, &sval);
+
+  if ((sval->type == T_INT) && !sval->u.integer) {
+    pop_n_elems(args);
+    push_undefined();
+    return;
+  }
+
   MAKE_CONST_STRING(test, "sprintf_format");
   if (attribute == test) {
     f___handle_sprintf_format(args);
