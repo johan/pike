@@ -2650,6 +2650,8 @@ static void decode_value2(struct decode_data *data)
   data->depth += 2;
 #endif
 
+  check_c_stack(1024);
+
   DECODE("decode_value2");
 
   switch(what & TAG_MASK)
