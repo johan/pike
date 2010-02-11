@@ -329,3 +329,5 @@ void pgtk2_marshaller(GClosure *closure, GValue *return_value,
 int pgtk2_tree_view_row_separator_func(GtkTreeModel *model,
 				       GtkTreeIter *iter,
 				       struct signal_data *d);
+
+struct svalue *pgtk2_get_doc(GObject *o, int pushv);
