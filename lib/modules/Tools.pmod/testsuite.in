@@ -65,7 +65,7 @@ test_hilfe("1;", "1")
 test_hilfe([[ ({ "(", "." }) ]], "")
 test_hilfe( ({ "int", "." }), "")
 test_hilfe("string a=\"hej",
-	   "Hilfe Error: Unterminated string: \"string a=\\\"hej\\n\"\n")
+	   "Hilfe Error: Unterminated string \"\\\"hej\\n\" at line 1\n")
 test_hilfe("({)",[[ "Hilfe Error: \")\" end parenthesis does not match "
        "closest start parenthesis \"{\".\n" ]])
 test_hilfe( ({ "int c // =3;", "=4;" }), "")
