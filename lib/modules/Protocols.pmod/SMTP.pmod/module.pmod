@@ -48,9 +48,10 @@ class Client
 {
   inherit Protocol;
 
+  int errorcode = 0;
   protected int cmd(string c, string|void comment)
   {
-    int r = command(c);
+    int r = errorcode = command(c);
     switch(r) {
     case 200..399:
       break;
