@@ -825,7 +825,7 @@ cond( Gz.RLE, [[
   test_true( Image.PNG.encode(Image.Image(5,5), (["zstrategy":Gz.RLE])) )
 ]])
 test_true( Image.PNG.encode(Image.Image(5,5), (["zstrategy":Gz.HUFFMAN_ONLY])) )
-cond( Gz.FIXED, [[
+cond_resolv( Gz.FIXED, [[
   test_true( Image.PNG.encode(Image.Image(5,5), (["zstrategy":Gz.FIXED])) )
 ]])
 
