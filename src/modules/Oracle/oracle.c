@@ -2229,7 +2229,13 @@ static void f_big_typed_query_create(INT32 args)
 	  case T_STRING:
 	    addr = (ub1 *)value->u.string->str;
 	    len = value->u.string->len;
-	    fty = SQLT_LNG;
+	    if (len < 4000)
+            {
+	      rlen = 4000;
+	      fty = SQLT_CHR;
+	    }
+	    else
+	      fty = SQLT_LNG;
 	    break;
 	    
 	  case T_FLOAT:
