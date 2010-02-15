@@ -821,7 +821,7 @@ test_true( Image.PNG.encode(Image.Image(5,5), (["zlevel":0])) )
 test_true( Image.PNG.encode(Image.Image(5,5), (["zlevel":9])) )
 test_true( Image.PNG.encode(Image.Image(5,5), (["zstrategy":Gz.DEFAULT_STRATEGY])) )
 test_true( Image.PNG.encode(Image.Image(5,5), (["zstrategy":Gz.FILTERED])) )
-cond( Gz.RLE, [[
+cond_resolv( Gz.RLE, [[
   test_true( Image.PNG.encode(Image.Image(5,5), (["zstrategy":Gz.RLE])) )
 ]])
 test_true( Image.PNG.encode(Image.Image(5,5), (["zstrategy":Gz.HUFFMAN_ONLY])) )
