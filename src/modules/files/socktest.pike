@@ -364,6 +364,7 @@ array(object(Socket)) stdtest()
 
   // TIME_WAIT is typically 4 minutes.
   for (i = 0; i < 4*60; i++) {
+    got_callback();
     sock=Socket();
     DEBUG_WERR("Connecting to %O port %d...\n", LOOPBACK, portno2);
     if (sock->connect(LOOPBACK, portno2)) {
@@ -390,19 +391,21 @@ array(object(Socket)) stdtest()
     if (sock->errno() == System.EADDRINUSE) {
       /* Out of sockets on the loopback interface? */
       if (!i) {
-	write("Connect failed: Address in use. Waiting for better times.\n");
+	write("\nConnect failed: Address in use. Waiting for better times. ");
       }
       sleep(1);
       continue;
     }
-    write("Connect failed: (%d, %O)\n", sock->errno(), strerror(sock->errno()));
+    write("\nConnect failed: (%d, %O)\n",
+	  sock->errno(), strerror(sock->errno()));
     sleep(1);
     fd_fail();
   }
   if (i) {
     // Sleep some more for good measure.
-    write("Succeeded after %d seconds.\n", i);
+    write("\nSucceeded after %d seconds.\n ", i);
     sleep(1);
+    got_callback();
   }
   DEBUG_WERR("Accepting...\n");
   sock2=port2::accept();
