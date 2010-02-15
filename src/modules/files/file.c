@@ -895,7 +895,7 @@ static void file_peek(INT32 args)
       ret=poll(&fds, 1, timeout);
       THREADS_DISALLOW();
     } else {
-      ret=poll(&fds, 1, 0);
+      ret=poll(&fds, 1, 1);
     }
 
     if(ret < 0)
