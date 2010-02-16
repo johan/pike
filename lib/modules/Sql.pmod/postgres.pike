@@ -17,8 +17,8 @@
 //! connect to the database over a TCP/IP socket.
 //!
 //! @note
-//! Please note that there is a more advanced driver to access PostgreSQL
-//! databases: @[Sql.pgsql].
+//! This driver has been @b{deprecated@}.  You should use the
+//! more advanced driver @[Sql.pgsql] to access PostgreSQL databases instead.
 //!
 //! @note
 //! Also note that @b{this module uses blocking I/O@} to connect
