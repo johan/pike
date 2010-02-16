@@ -1664,8 +1664,18 @@ int main(int argc, char **argv)
         ifelse([$2], , :, [$2])
       fi
     fi
+    AC_MSG_CHECKING([for pkgconfig directory])
+    if test -d "$real_dir/pkgconfig/."; then
+      PKG_CONFIG_PATH="$PKG_CONFIG_PATH${PKG_CONFIG_PATH:+:}$real_dir/pkgconfig"
+      export PKG_CONFIG_PATH
+      AC_MSG_RESULT(yes - $real_dir/pkgconfig)
+    else
+      AC_MSG_RESULT(no)
+    fi
   ], $3)
 ])
+
+AC_SUBST(PKG_CONFIG_PATH)
 
 AC_DEFUN(PIKE_FIND_LIB_INCLUDE,
 [

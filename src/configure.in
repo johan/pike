@@ -2586,6 +2586,7 @@ if test $ldflags_is_set = yes -a $cppflags_is_set = yes ; then :; else
   for dd in \
     `echo "${with_site_prefixes}"|sed -e 's/:/ /g'` \
     `echo $exec_prefix | sed "s@^NONE@$prefix@g" | sed "s@^NONE@$with_root$ac_default_prefix@g"` \
+    $with_root/usr \
     $with_root/usr/local $with_root/sw/local $with_root/sw \
     $with_root/usr/gnu $with_root/opt/gnu $with_root/sw/gnu \
     $with_root/usr/freeware $with_root/usr/pkg \
@@ -2595,7 +2596,7 @@ if test $ldflags_is_set = yes -a $cppflags_is_set = yes ; then :; else
     $with_root/usr/ccs
   do
     if test "$dd" = "/"; then continue; fi
-    if test "$dd" = "/usr"; then continue; fi
+    #if test "$dd" = "/usr"; then continue; fi
     AC_MSG_CHECKING($dd)
     if test -d "$dd/."; then :; else
       AC_MSG_RESULT(no)
