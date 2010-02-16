@@ -882,7 +882,7 @@ static void file_peek(INT32 args)
   {
 #ifdef HAVE_AND_USE_POLL
     struct pollfd fds;
-    int timeout = 1;
+    int timeout = 0;
     if (args && !IS_UNDEFINED(Pike_sp - args)) {
       timeout = (int)(tf*1000); /* ignore overflow for now */
     }
