@@ -4016,6 +4016,7 @@ static void file_connect(INT32 args)
 	    break;
 	  }
           sysleep(INUSE_BUSYWAIT_DELAY);
+	  /* FALL_THROUGH */
 #endif
 	case EINTR:
 	  continue;
