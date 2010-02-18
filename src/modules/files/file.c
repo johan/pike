@@ -3139,6 +3139,8 @@ static void file_set_buffer(INT32 args)
 #ifndef errno
 extern int errno;
 #endif /* !errno */
+
+#ifndef HAVE_SOCKETPAIR
 static int socketpair_fd = -1;
 int my_socketpair(int family, int type, int protocol, int sv[2])
 {
@@ -3344,7 +3346,6 @@ int socketpair_ultra(int family, int type, int protocol, int sv[2])
   }
 }
 
-#ifndef HAVE_SOCKETPAIR
 #define socketpair socketpair_ultra
 #endif
 
@@ -3400,7 +3401,7 @@ static void file_pipe(INT32 args)
 
     if(!(type & ~(SOCKET_CAPABILITIES)))
     {
-      i=socketpair_ultra(AF_UNIX, SOCK_STREAM, 0, &inout[0]);
+      i=socketpair(AF_UNIX, SOCK_STREAM, 0, &inout[0]);
       if (i >= 0) {
 	type=SOCKET_CAPABILITIES;
 	break;
@@ -4665,10 +4666,12 @@ PIKE_MODULE_EXIT
     file_ref_program=0;
   }
   exit_file_locking();
+#ifndef HAVE_SOCKETPAIR
   if (socketpair_fd >= 0) {
     while (fd_close(socketpair_fd) && errno == EINTR) {}
     socketpair_fd = -1;
   }
+#endif
   port_exit_program();
 }
 
