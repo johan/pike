@@ -5214,7 +5214,7 @@ PMOD_EXPORT int simple_add_variable(const char *name,
 }
 
 PMOD_EXPORT int add_constant(struct pike_string *name,
-			     struct svalue *c,
+			     const struct svalue *c,
 			     INT32 flags)
 {
   int n;
@@ -6320,7 +6320,7 @@ int store_prog_string(struct pike_string *str)
 }
 
 /* NOTE: O(n²)! */
-int store_constant(struct svalue *foo,
+int store_constant(const struct svalue *foo,
 		   int equal,
 		   struct pike_string *constant_name)
 {

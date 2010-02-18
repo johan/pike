@@ -2561,7 +2561,7 @@ PMOD_EXPORT INT32 pike_sizeof(const struct svalue *s)
   }
 }
 
-int svalues_are_constant(struct svalue *s,
+int svalues_are_constant(const struct svalue *s,
 			 INT32 num,
 			 TYPE_FIELD hint,
 			 struct processing *p)

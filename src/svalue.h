@@ -799,7 +799,7 @@ int gc_cycle_check_weak_short_svalue(union anything *u, TYPE_T type);
 void real_gc_free_svalue(struct svalue *s);
 void real_gc_free_short_svalue(union anything *u, TYPE_T type);
 PMOD_EXPORT INT32 pike_sizeof(const struct svalue *s);
-int svalues_are_constant(struct svalue *s,
+int svalues_are_constant(const struct svalue *s,
 			 INT32 num,
 			 TYPE_FIELD hint,
 			 struct processing *p);
