@@ -317,6 +317,8 @@ PMOD_EXPORT INT32 EXTRACT_INT_(unsigned char *p);
 PMOD_EXPORT unsigned INT32 my_rand(void);
 PMOD_EXPORT void my_srand(INT32 seed);
 
+PMOD_EXPORT void sysleep(double left);
+
 PMOD_EXPORT /*@null@*/ void *pike_realloc(void *ptr, size_t sz);
 
 #ifdef OWN_GETHRTIME

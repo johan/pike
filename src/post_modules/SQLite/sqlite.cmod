@@ -33,14 +33,7 @@
 #include <sqlite3.h>
 #include <time.h>
 
-#ifdef __NT__
-#define SLEEP() Sleep (0) /* Sleeps for the remainder of the time slice. */
-#elif defined (HAVE_USLEEP)
-#define SLEEP() usleep(100)
-#else
-#define SLEEP() sleep(1)
-#endif
-
+#define SLEEP() sysleep(0.0001)
 
 DECLARATIONS
 

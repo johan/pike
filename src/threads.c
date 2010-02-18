@@ -2667,13 +2667,7 @@ void cleanup_all_other_threads (void)
 
   while (num_pending_interrupts && time (NULL) < timeout) {
     THREADS_ALLOW();
-#ifdef __NT__
-    Sleep (1);
-#elif defined (HAVE_USLEEP)
-    usleep (1000);
-#else
-    sleep (1);
-#endif
+    sysleep(1.0);
     THREADS_DISALLOW();
   }
 
