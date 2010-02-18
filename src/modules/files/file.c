@@ -3991,6 +3991,11 @@ static void file_connect(INT32 args)
     if(tmp<0)
       switch(errno)
       {
+#if 0
+	/* Even though this code is robust(er) now,
+	 * it has no business here and should be dealt
+	 * with at the Pike programming level.
+	 */
 #ifdef EADDRINUSE
 	case EADDRINUSE:
 #endif
@@ -4003,6 +4008,7 @@ static void file_connect(INT32 args)
 	    break;
 	  }
           sysleep(INUSE_BUSYWAIT_DELAY);
+#endif
 	case EINTR:
 	  continue;
       }
