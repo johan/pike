@@ -115,7 +115,7 @@ typedef struct JMP_BUF
   ONERROR *onerror;
 #ifdef PIKE_DEBUG
   int line;
-  char *file;
+  const char *file;
   int on_stack;
 #endif
 } JMP_BUF;
