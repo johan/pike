@@ -671,7 +671,7 @@ static struct pike_string *do_read_oob(int fd,
 	bytes_read+=i;
 	if(!all) break;
       }
-      else if ((i==0) || (e == EINVAL)
+      else if ((i==0) || (e == EINVAL) || (e == ECONNRESET)
 #ifdef EOPNOTSUPP
 	 || (e == EOPNOTSUPP)
 #endif
