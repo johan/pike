@@ -102,6 +102,7 @@ class Socket {
       finish();
       DEBUG_WERR("Closing fd:%O\n", query_fd());
       close();
+      set_blocking();
       destruct(this_object());
     }
   }
@@ -399,9 +400,9 @@ array(object(Socket)) stdtest()
       warned = 1;
       if(i<=0)
       {
+	write("Dropping socket because of insufficient system resources.\n");
 	// This is supposed to let go of the socket and consider this
 	// socket a success
-	// It seems to work sometimes, but not always, FIXME.
 	sock->input_finished=sock->output_finished=1;
 	sock->cleanup();
         return 0;
