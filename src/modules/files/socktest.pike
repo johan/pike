@@ -361,7 +361,6 @@ int portno2;
 array(object(Socket)) stdtest()
 {
   object sock,sock2;
-  int i;
   int warned = 0;
 
   sock=Socket();
