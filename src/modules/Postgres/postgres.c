@@ -710,7 +710,7 @@ static void f_trace (INT32 args)
  *! 
  *! The callback function must return no value, and takes a string argument,
  *! which will be the name of the table on which the notification event
- *! has occured. In future versions, support for user-specified arguments
+ *! has occurred. In future versions, support for user-specified arguments
  *! will be added.
  *!
  *! @note

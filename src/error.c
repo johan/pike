@@ -609,7 +609,7 @@ PMOD_EXPORT DECLSPEC(noreturn) void debug_va_fatal(const char *fmt, va_list args
   if (fmt) (void)VFPRINTF(stderr, fmt, args);
 
   if(Pike_in_gc)
-    fprintf(stderr,"Pike was in GC stage %d when this fatal occured.\n",Pike_in_gc);
+    fprintf(stderr,"Pike was in GC stage %d when this fatal occurred.\n",Pike_in_gc);
   Pike_in_gc = GC_PASS_DISABLED;
 
   d_flag=Pike_interpreter.trace_level=0;

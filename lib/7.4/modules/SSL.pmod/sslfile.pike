@@ -266,7 +266,7 @@ string|int read(string|int ...args) {
 
   string|int data=got_data(read_blocking_packet());
   if(!stringp(data)) {
-    return ""; //EOF or ssl-fatal error occured.
+    return ""; //EOF or ssl-fatal error occurred.
   }
 
   while(stringp(data)) {

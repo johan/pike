@@ -2296,7 +2296,7 @@ void check_mapping(const struct mapping *m)
   {
     if(Pike_in_gc)
     {
-      fprintf(stderr,"Pike was in GC stage %d when this fatal occured:\n",Pike_in_gc);
+      fprintf(stderr,"Pike was in GC stage %d when this fatal occurred:\n",Pike_in_gc);
       Pike_in_gc=0;
     }
     
