@@ -1378,7 +1378,7 @@ class Message {
 
 	start = found;
       }
-      string epilogue += data[start..];
+      string epilogue = data[start..];
       if (!decoded_data) {
 	if (guess) {
 	  decoded_data = epilogue;
