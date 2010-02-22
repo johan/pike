@@ -681,7 +681,7 @@ reposition the cursor to fontify more identifiers."
 	      pike-font-lock-identifier-regexp)
      1 font-lock-variable-name-face)
 
-    ;; Simple types that might not have been catched by the
+    ;; Simple types that might not have been caught by the
     ;; earlier rules.
     (,pike-font-lock-type-regexp
      1 font-lock-type-face)

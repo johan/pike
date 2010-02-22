@@ -987,8 +987,8 @@ int main(int argc, array(string) argv)
 	    err=catch {
 	      // Is it intentional that compilation errors are
 	      // considered success too? /mast
-	      // Yes, apparently it is. There are tests that doesn't
-	      // care whether the error is catched during compilation
+	      // Yes, apparently it is. There are tests that don't
+	      // care whether the error is caught during compilation
 	      // or evaluation. /mast
 	      a = compile_string(to_compile, testsuite)()->a();
 	    };

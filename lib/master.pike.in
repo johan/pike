@@ -3957,7 +3957,7 @@ void compile_warning(string file,int line,string err)
 }
 
 
-//! This function is called when an exception is catched during
+//! This function is called when an exception is caught during
 //! compilation. Its message is also reported to @[compile_error] if
 //! this function returns zero.
 int compile_exception (array|object trace)
