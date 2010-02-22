@@ -1348,9 +1348,9 @@ class Message {
 
 	  // Strip the terminating LF or CRLF.
 	  if ((found > 1) && (data[found - 2] == '\r')) {
-	    part = ({ data[start..found-3] });
+	    part = data[start..found-3];
 	  } else {
-	    part = ({ data[start..found-2] });
+	    part = data[start..found-2];
 	  }
 	  if (start) {
 	    parts += ({ part });
