@@ -1007,10 +1007,7 @@ PIKECLASS Backend
        pop_n_elems(args);
        if(e==-1)
        {
-	 Pike_sp->type = T_INT;
-	 Pike_sp->subtype = NUMBER_UNDEFINED;
-	 Pike_sp->u.integer=-1;
-	 Pike_sp++;
+	 push_undefined();
        }else{
 	 push_int(CALL(e)->tv.tv_sec - current_time.tv_sec);
        }
