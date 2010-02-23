@@ -1100,7 +1100,7 @@ PMOD_EXPORT void f_has_prefix(INT32 args)
       Pike_sp[-1].u.integer = i;
       /* Note: Integers do not need to be freed. */
       object_index_no_free(Pike_sp-1, o, inherit_no, Pike_sp-1);
-      if (Pike_sp[-1].type != T_INTEGER) {
+      if (Pike_sp[-1].type != PIKE_T_INT) {
 	Pike_error("Unexepected value returned from index operator.\n");
       }
       if (ch != Pike_sp[-1].u.integer) {
@@ -1109,7 +1109,7 @@ PMOD_EXPORT void f_has_prefix(INT32 args)
 	return;
       }
     }
-    pop_n_elems(arg+1);
+    pop_n_elems(args+1);
     push_int(1);
     return;
   }
