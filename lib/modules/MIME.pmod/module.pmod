@@ -1352,7 +1352,7 @@ class Message {
     charset = "us-ascii";
     boundary = 0;
     disposition = 0;
-    if (message && !objectp(message) && (sizeof(message) > 0x10000)) {
+    if (message && !objectp(message) && (sizeof(message) > 0x100000)) {
       // Message is larger than 1 MB.
       // Attempt to reduce memory use by using StringRange.
       message = StringRange(message, 0, sizeof(message));
