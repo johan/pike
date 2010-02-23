@@ -1468,7 +1468,7 @@ class Message {
 #else
       // Rewrite to avoid lots of temporary strings.
 
-      string data = getdata();
+      string|StringRange data = decoded_data || getdata();
       string separator = "--" + boundary;
       array(string) parts = ({});
       int start = 0;
