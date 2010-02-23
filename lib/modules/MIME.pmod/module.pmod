@@ -168,7 +168,7 @@ protected class StringRange
   }
 }
 
-#if (__REAL_VERSION__ < 7.8) || ((__REAL_VERSION__) < 7.9 && (__REAL_BUILD__ < 15))
+#if (__REAL_VERSION__ < 7.8) || ((__REAL_VERSION__) < 7.9 && (__REAL_BUILD__ < 413))
 // Compat with some older Pikes...
 
 // Support has_prefix on objects.
