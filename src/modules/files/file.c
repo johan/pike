@@ -3911,7 +3911,7 @@ static void file_connect_unix( INT32 args )
    *       paths longer than what fits into a plain struct sockaddr_un.
    */
   addr_len = sizeof(struct sockaddr_un) + Pike_sp[-args].u.string->len + 1 -
-    sizeof(addr->sun_path);
+    sizeof(name->sun_path);
   name = xalloc(addr_len);
 
   name->sun_family=AF_UNIX;
