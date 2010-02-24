@@ -52,8 +52,6 @@ struct pike_sendfile
 {
   struct object *self;
 
-  LONGEST sent;
-
   struct array *headers;
   struct array *trailers;
 
@@ -69,6 +67,8 @@ struct pike_sendfile
 
   struct my_file *from;
   struct my_file *to;
+
+  LONGEST sent;
 
   LONGEST offset;
   LONGEST len;
