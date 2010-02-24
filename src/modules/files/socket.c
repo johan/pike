@@ -357,7 +357,11 @@ static void bind_unix(INT32 args)
 
   get_all_args("Port->bind_unix", args, "%n.%*", &path, &cb);
 
-  addr_len = sizeof(struct sockaddr_un) + path->len;
+  /* NOTE: Some operating systems (eg Linux 2.6) do not support
+   *       paths longer than what fits into a plain struct sockaddr_un.
+   */
+  addr_len = sizeof(struct sockaddr_un) + path->len + 1 -
+    sizeof(addr->sun_path);
   addr = xalloc(addr_len);
 
   strcpy(addr->sun_path, path->str);
@@ -391,10 +395,12 @@ static void bind_unix(INT32 args)
   my_set_close_on_exec(fd,1);
 
   THREADS_ALLOW_UID();
+  fprintf(stderr, "Binding...\n");
   do {
     tmp = fd_bind(fd, (struct sockaddr *)addr, addr_len);
   } while ((tmp < 0) && (errno == EINTR));
   if (tmp >= 0) {
+    fprintf(stderr, "Listening...\n");
     do {
       tmp = fd_listen(fd, 16384);
     } while ((tmp < 0) && (errno == EINTR));
@@ -413,6 +419,7 @@ static void bind_unix(INT32 args)
   if(tmp < 0)
   {
     p->my_errno=errno;
+    fprintf(stderr, "Failure: %d.\n", errno);
     while (fd_close(fd) && errno == EINTR) {}
     errno = p->my_errno;
     pop_n_elems(args);
