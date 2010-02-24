@@ -395,12 +395,10 @@ static void bind_unix(INT32 args)
   my_set_close_on_exec(fd,1);
 
   THREADS_ALLOW_UID();
-  fprintf(stderr, "Binding...\n");
   do {
     tmp = fd_bind(fd, (struct sockaddr *)addr, addr_len);
   } while ((tmp < 0) && (errno == EINTR));
   if (tmp >= 0) {
-    fprintf(stderr, "Listening...\n");
     do {
       tmp = fd_listen(fd, 16384);
     } while ((tmp < 0) && (errno == EINTR));
@@ -419,7 +417,6 @@ static void bind_unix(INT32 args)
   if(tmp < 0)
   {
     p->my_errno=errno;
-    fprintf(stderr, "Failure: %d.\n", errno);
     while (fd_close(fd) && errno == EINTR) {}
     errno = p->my_errno;
     pop_n_elems(args);
