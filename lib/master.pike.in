@@ -1650,16 +1650,13 @@ protected program low_findprog(string pname,
 
 #ifdef THREADED
   object key;
-  // FIXME: The catch is needed, since we might be called in
-  // a context when threads are disabled.
-  // (compile() disables threads).
+  // The catch is needed, since we might be called in a context when
+  // threads are disabled. (compile() disables threads).
   mixed err = catch {
     key=compilation_mutex->lock(2);
   };
-  if (err) {
-    werror( "low_findprog: Caught spurious error:\n"
-	    "%s\n", describe_backtrace(err) );
-  }
+  if (err && !has_suffix (err[0], "when threads are disabled!"))
+    throw (err);
 #endif
 
 #ifdef PIKE_MODULE_RELOC
