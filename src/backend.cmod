@@ -1168,6 +1168,11 @@ PIKECLASS Backend
 #endif /* WITH_OOB */
 	      if (me->fds[i].write.callback) {
 		(*(me->fds[i].write.callback))(i, me->fds[i].write.data);
+	      } else {
+		/* Write notification without corresponding callback.
+		 * Clear the bit in the set to avoid infinite looping.
+		 */
+		MY_FD_CLR(&me->set, i, MY_POLLOUT);
 	      }
 	  }
 	}
