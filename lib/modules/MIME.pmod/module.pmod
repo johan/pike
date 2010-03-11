@@ -147,13 +147,12 @@ protected class StringRange
   }
   protected int _search(string frag, int|void pos)
   {
-    if (pos < 0) {
+    if (pos < 0)
       error("Start must be greater or equal to zero.\n");
-    }
     int npos = pos + start;
-    if (npos > end) {
+    if (npos > end)
       error("Start must not be greater than the length of the string.\n");
-    }
+    if ((npos + sizeof(frag)) > end) return -1;
     npos = search(data, frag, npos);
     if (npos < 0) return npos;
     if ((npos + sizeof(frag)) > end) return -1;
