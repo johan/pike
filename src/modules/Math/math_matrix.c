@@ -16,6 +16,7 @@
 #include "operators.h"
 #include "builtin_functions.h"
 #include "module_support.h"
+#include "operators.h"
 
 #include "math_module.h"
 
