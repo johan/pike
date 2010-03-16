@@ -1543,6 +1543,8 @@ static void gmp_fac(INT32 args)
   PUSH_REDUCED(res);
 }
 
+PMOD_EXPORT void f_random_string(INT32 args);
+
 static void mpzmod_random(INT32 args)
 {
   struct object *res = 0;   /* Make gcc happy. */
@@ -1551,9 +1553,18 @@ static void mpzmod_random(INT32 args)
     Pike_error("random on negative number.\n");
 
   res=fast_clone_object(THIS_PROGRAM,0);
-  /* We add two to assure reasonably uniform randomness */
-  mpz_random(OBTOMPZ(res), DO_NOT_WARN((int)(mpz_size(THIS) + 2)));
+  /* We add four to assure reasonably uniform randomness */
+  push_int(mpz_size(THIS)*sizeof(mp_limb_t) + 4);
+  f_random_string(1);
+  if (sp[-1].type != T_STRING) {
+    Pike_error("random_string(%"PRINTSIZET"d) returned non string.\n",
+	       mpz_size(THIS)*sizeof(mp_limb_t) + 4);
+  }
+  get_mpz_from_digits(OBTOMPZ(res), sp[-1].u.string, 256);
+  pop_stack();
   mpz_fdiv_r(OBTOMPZ(res), OBTOMPZ(res), THIS); /* modulo */
+  Pike_sp--;
+  dmalloc_touch_svalue(Pike_sp);
   PUSH_REDUCED(res);
 }
   
