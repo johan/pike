@@ -1552,7 +1552,7 @@ static void mpzmod_random(INT32 args)
   if(mpz_sgn(THIS) <= 0)
     Pike_error("random on negative number.\n");
 
-  res=fast_clone_object(THIS_PROGRAM,0);
+  push_object(res=fast_clone_object(THIS_PROGRAM,0));
   /* We add four to assure reasonably uniform randomness */
   push_int(mpz_size(THIS)*sizeof(mp_limb_t) + 4);
   f_random_string(1);
