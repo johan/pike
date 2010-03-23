@@ -1096,6 +1096,13 @@ PIKEFUN mixed random(object o)
 PIKEFUN int random(int i)
 {
   if(i <= 0) RETURN 0;
+#ifdef AUTO_BIGNUM
+  if(i >> 31) {
+    unsigned INT_TYPE a = my_rand();
+    unsigned INT_TYPE b = my_rand();
+    RETURN (INT_TYPE)(((a<<32)|b) % i);
+  }
+#endif
   RETURN  my_rand() % i;
 }      
 
