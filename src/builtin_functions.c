@@ -868,7 +868,8 @@ void f_query_num_arg(INT32 args)
  *!   In all other cases @expr{-1@} will be returned when not found.
  *!
  *! @seealso
- *!   @[indices()], @[values()], @[zero_type()]
+ *!   @[indices()], @[values()], @[zero_type()], @[has_value()], 
+ *!   @[has_prefix()], @[has_suffix()]
  */
 PMOD_EXPORT void f_search(INT32 args)
 {
@@ -1075,6 +1076,9 @@ PMOD_EXPORT void f_search(INT32 args)
  *!
  *!   Returns @expr{1@} if the string @[s] starts with @[prefix],
  *!   returns @expr{0@} (zero) otherwise.
+ *!
+ *! @seealso
+ *!    @[has_suffix()], @[has_value()], @[search()]
  */
 PMOD_EXPORT void f_has_prefix(INT32 args)
 {
@@ -1170,6 +1174,9 @@ PMOD_EXPORT void f_has_prefix(INT32 args)
  *!
  *!   Returns @expr{1@} if the string @[s] ends with @[suffix],
  *!   returns @expr{0@} (zero) otherwise.
+ *!
+ *! @seealso
+ *!    @[has_prefix()], @[has_value()], @[search()]
  */
 PMOD_EXPORT void f_has_suffix(INT32 args)
 {
@@ -1258,7 +1265,8 @@ PMOD_EXPORT void f_has_suffix(INT32 args)
  *!   a proper index by @[has_index()]
  *!
  *! @seealso
- *!   @[has_value()], @[indices()], @[search()], @[values()], @[zero_type()]
+ *!   @[has_value()], @[has_prefix()], @[has_suffix()], @[indices()],
+ *!   @[search()], @[values()], @[zero_type()]
  */
 PMOD_EXPORT void f_has_index(INT32 args)
 {
@@ -1355,7 +1363,8 @@ PMOD_EXPORT void f_has_index(INT32 args)
  *! @endcode
  *!
  *! @seealso
- *!   @[has_index()], @[indices()], @[search()], @[values()], @[zero_type()]
+ *!   @[has_index()], @[indices()], @[search()], @[has_prefix()], 
+ *!   @[has_suffix()], @[values()], @[zero_type()]
  */
 PMOD_EXPORT void f_has_value(INT32 args)
 {
