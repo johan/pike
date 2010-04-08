@@ -1504,6 +1504,7 @@ class Message {
 		      "");
     }
   }
+
   protected string _sprintf(int c)
   {
     if (c == 'O')
