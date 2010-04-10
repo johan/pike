@@ -2583,6 +2583,8 @@ void low_start_new_program(struct program *p,
   if (Pike_compiler->fake_object->storage) {
     /* Stipple to find illegal accesses */
     MEMSET(Pike_compiler->fake_object->storage,0x55,256*sizeof(struct svalue));
+    PIKE_MEM_WO_RANGE (Pike_compiler->fake_object->storage,
+		       256 * sizeof (struct svalue));
   }
 #else
   Pike_compiler->fake_object->storage=(char *)malloc(sizeof(struct parent_info));
