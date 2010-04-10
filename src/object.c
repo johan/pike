@@ -807,7 +807,11 @@ PMOD_EXPORT void destruct_object (struct object *o, enum object_destruct_reason 
   SET_ONERROR(uwp, fatal_on_error,
 	      "Shouldn't get an exception in destruct().\n");
   if(d_flag > 20) do_debug();
+
+  if (Pike_in_gc >= GC_PASS_PRETOUCH && Pike_in_gc < GC_PASS_FREE)
+    gc_fatal (o, 1, "Destructing objects is not allowed inside the gc.\n");
 #endif
+
 #ifdef GC_VERBOSE
   if (Pike_in_gc > GC_PASS_PREPARE) {
     fprintf(stderr, "|   Destructing %p with %d refs", o, o->refs);
@@ -1020,8 +1024,10 @@ PMOD_EXPORT void schedule_really_free_object(struct object *o)
 #endif
     Pike_fatal("Object got %d references in schedule_really_free_object().\n", o->refs);
   }
-  if (Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_FREE && o->next != o)
-    Pike_fatal("Freeing objects is not allowed inside the gc.\n");
+  if (Pike_in_gc > GC_PASS_PREPARE && Pike_in_gc < GC_PASS_FREE &&
+      /* Fake objects are invisible to the gc. */
+      o->next != o)
+    gc_fatal(o, 0, "Freeing objects is not allowed inside the gc.\n");
 #endif
 
   debug_malloc_touch(o);
