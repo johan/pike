@@ -91,6 +91,7 @@ double gc_average_slowness = 0.9;
  * Note: Keep the doc for lfun::destroy up-to-date with the above.
  */
 
+/* #define GC_DEBUG */
 /* #define GC_VERBOSE */
 /* #define GC_CYCLE_DEBUG */
 /* #define GC_STACK_DEBUG */
@@ -3447,7 +3448,11 @@ size_t do_gc(void *ignored, int explicit_call)
   Pike_in_gc=GC_PASS_PREPARE;
   gc_start_time = get_cpu_time();
   gc_start_real_time = get_real_time();
+#ifdef GC_DEBUG
+  gc_debug = (GC_DEBUG + 0) || 1;
+#else
   gc_debug = d_flag;
+#endif
 #ifdef PIKE_DEBUG
   SET_ONERROR(uwp, fatal_on_error, "Shouldn't get an exception inside the gc.\n");
   if (gc_is_watching)
