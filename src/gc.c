@@ -1152,6 +1152,17 @@ again:
 	  fprintf(stderr,"%*s**The object is on objects_to_destruct.\n",indent,"");
       }
 
+      {
+	struct program_state *ps;
+	for (ps = Pike_compiler; ps; ps = ps->previous)
+	  if (ps->fake_object == (struct object *) a) {
+	    fprintf (stderr, "%*s**The object is a fake for new program %p "
+		     "in compiler program state %p.\n",
+		     indent, "", ps->new_program, ps);
+	    break;
+	  }
+      }
+
       if(!p)
       {
 	p=id_to_program(((struct object *)a)->program_id);
@@ -1691,7 +1702,7 @@ static void gc_watched_found (struct marker *m, const char *found_in)
 
 #ifndef GC_MARK_DEBUG
 struct pike_queue gc_mark_queue;
-#else  /* !GC_MARK_DEBUG */
+#else  /* GC_MARK_DEBUG */
 
 /* Cut'n'paste from queue.c. */
 
