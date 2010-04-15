@@ -439,6 +439,7 @@ typedef struct p_wchar_p
 
 #ifdef PIKE_DEBUG
 #define DO_IF_DEBUG(X) X
+#undef NDEBUG
 #else
 #define DO_IF_DEBUG(X)
 #define NDEBUG
