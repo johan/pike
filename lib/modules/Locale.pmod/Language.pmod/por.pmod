@@ -7,7 +7,7 @@
 
 inherit "abstract";
 
-constant name = ""; // FIXME
+constant name = "Português";
 constant english_name = "portuguese";
 constant iso_639_1 = "pt";
 constant iso_639_2 = "por";
