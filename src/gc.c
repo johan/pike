@@ -3557,6 +3557,7 @@ size_t do_gc(void *ignored, int explicit_call)
      * follow the same reference several times, e.g. with shared mapping
      * data blocks. */
     ACCEPT_UNFINISHED_TYPE_FIELDS {
+      assert (!gc_mark_queue.first); /* Should be empty. */
       gc_mark_all_arrays();
       gc_mark_run_queue();
       gc_mark_all_multisets();
@@ -5060,6 +5061,7 @@ static void current_only_visit_ref (void *thing, int ref_type,
   struct mc_marker *ref_to = find_mc_marker (thing);
   int ref_from_flags;
 
+  assert (mc_pass);
   assert (mc_lookahead < 0);
 #ifdef PIKE_DEBUG
   assert (mc_ref_from != (void *) (ptrdiff_t) -1);
