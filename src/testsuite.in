@@ -6916,6 +6916,25 @@ cond([[has_value (cpp ("__AUTO_BIGNUM__"), "1")]], [[
 ]])
 test_do([[add_constant("count_memory_stats")]])
 
+test_program([[
+  function ff()
+  {
+    array x;
+    array b() {return x;};
+    x = ({b});
+    return b;
+  }
+
+  int a()
+  {
+    function f = ff();
+    int s = Pike.count_memory (0, f());
+    f = 0;
+    gc();
+    return s > 0;
+  }
+]])
+
 // Numerical limits.
 test_true([[Int.NATIVE_MIN <= -2147483648]])
 test_true([[Int.NATIVE_MAX >= 2147483647]])
