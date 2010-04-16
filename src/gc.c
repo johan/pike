@@ -4268,6 +4268,13 @@ PMOD_EXPORT TYPE_T type_from_visit_fn (visit_thing_fn *fn)
   return PIKE_T_UNKNOWN;
 }
 
+PMOD_EXPORT void real_visit_svalues (const struct svalue *s, size_t num,
+				     int ref_type)
+{
+  for (; num; num--, s++)
+    visit_svalue (s, ref_type);
+}
+
 /* Memory counting
  *
  * This mode is used by f_count_memory, and it's recognized by a
