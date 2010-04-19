@@ -3557,7 +3557,13 @@ size_t do_gc(void *ignored, int explicit_call)
      * follow the same reference several times, e.g. with shared mapping
      * data blocks. */
     ACCEPT_UNFINISHED_TYPE_FIELDS {
-      assert (!gc_mark_queue.first); /* Should be empty. */
+      /* The queue should be empty here. */
+#ifdef GC_MARK_DEBUG
+      assert (!gc_mark_first);
+#else
+      assert (!gc_mark_queue.first);
+#endif
+
       gc_mark_all_arrays();
       gc_mark_run_queue();
       gc_mark_all_multisets();
