@@ -370,7 +370,14 @@ void gc_mark_discard_queue();
 #else  /* !GC_MARK_DEBUG */
 
 extern struct pike_queue gc_mark_queue;
-#define gc_mark_enqueue(FN, DATA) enqueue (&gc_mark_queue, (FN), (DATA))
+#define gc_mark_enqueue(FN, DATA) do {					\
+    DO_IF_DEBUG (							\
+      if (Pike_in_gc != GC_PASS_MARK && Pike_in_gc != GC_PASS_ZAP_WEAK)	\
+	gc_fatal ((DATA), 0,						\
+		  "gc_mark_enqueue() called in invalid gc pass.\n");	\
+    );									\
+    enqueue (&gc_mark_queue, (FN), (DATA));				\
+  } while (0)
 #define gc_mark_run_queue() run_queue (&gc_mark_queue)
 #define gc_mark_discard_queue() discard_queue (&gc_mark_queue)
 
