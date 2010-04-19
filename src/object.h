@@ -129,7 +129,7 @@ PMOD_EXPORT int object_equal_p(struct object *a, struct object *b, struct proces
 PMOD_EXPORT struct array *object_indices(struct object *o, int inherit_level);
 PMOD_EXPORT struct array *object_values(struct object *o, int inherit_level);
 PMOD_EXPORT void visit_object (struct object *o, int action);
-PMOD_EXPORT void visit_function (struct svalue *s, int ref_type);
+PMOD_EXPORT void visit_function (const struct svalue *s, int ref_type);
 PMOD_EXPORT void gc_mark_object_as_referenced(struct object *o);
 PMOD_EXPORT void real_gc_cycle_check_object(struct object *o, int weak);
 unsigned gc_touch_all_objects(void);

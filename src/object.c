@@ -2020,7 +2020,7 @@ PMOD_EXPORT void visit_object (struct object *o, int action)
   }
 }
 
-PMOD_EXPORT void visit_function (struct svalue *s, int ref_type)
+PMOD_EXPORT void visit_function (const struct svalue *s, int ref_type)
 {
 #ifdef PIKE_DEBUG
   if (s->type != T_FUNCTION)
