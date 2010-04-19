@@ -4276,11 +4276,12 @@ PMOD_EXPORT TYPE_T type_from_visit_fn (visit_thing_fn *fn)
   return PIKE_T_UNKNOWN;
 }
 
-PMOD_EXPORT void real_visit_svalues (const struct svalue *s, size_t num,
+PMOD_EXPORT TYPE_FIELD real_visit_svalues (const struct svalue *s, size_t num,
 				     int ref_type)
 {
   for (; num; num--, s++)
     visit_svalue (s, ref_type);
+  return 0;
 }
 
 /* Memory counting
