@@ -8934,6 +8934,7 @@ touch confdefs.h 2>/dev/null
 OLD_CPPFLAGS="$CPPFLAGS"
 CPPFLAGS="-I. -I$srcdir $CPPFLAGS"
 AC_TRY_RUN([
+#include <stdio.h>
 #include "svalue.h"
 
 int main()
