@@ -756,6 +756,14 @@ static void f_fetch_row(INT32 args)
 	      free_string(s);
 	      push_empty_string();
 	      break;
+	    } else if (len == SQL_NULL_DATA) {
+	      free_string(s);
+	      if (num_strings > 1) {
+		num_strings--;
+	      } else {
+		push_undefined();
+	      }
+	      break;
 #ifdef SQL_NO_TOTAL
 	    } else if (len == SQL_NO_TOTAL) {
 	      /* More data remaining... */
